@@ -37,15 +37,18 @@ end
 
 --- Create a structure of type DirectoryVpcSettings
 -- <p>Contains VPC information for the <a>CreateDirectory</a> or <a>CreateMicrosoftAD</a> operation.</p>
--- @param _SubnetIds [SubnetIds] <p>The identifiers of the subnets for the directory servers. The two subnets must be in different Availability Zones. AWS Directory Service creates a directory server and a DNS server in each of these subnets.</p>
--- @param _VpcId [VpcId] <p>The identifier of the VPC in which to create the directory.</p>
--- Required parameter: VpcId
--- Required parameter: SubnetIds
-function M.DirectoryVpcSettings(_SubnetIds, _VpcId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryVpcSettings")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetIds [SubnetIds] <p>The identifiers of the subnets for the directory servers. The two subnets must be in different Availability Zones. AWS Directory Service creates a directory server and a DNS server in each of these subnets.</p>
+-- * VpcId [VpcId] <p>The identifier of the VPC in which to create the directory.</p>
+-- Required key: VpcId
+-- Required key: SubnetIds
+-- @return DirectoryVpcSettings structure as a key-value pair table
+function M.DirectoryVpcSettings(args)
+	assert(args, "You must provdide an argument table when creating DirectoryVpcSettings")
 	local t = { 
-		["SubnetIds"] = _SubnetIds,
-		["VpcId"] = _VpcId,
+		["SubnetIds"] = args["SubnetIds"],
+		["VpcId"] = args["VpcId"],
 	}
 	asserts.AssertDirectoryVpcSettings(t)
 	return t
@@ -65,13 +68,16 @@ end
 
 --- Create a structure of type UnsupportedOperationException
 -- <p>The operation is not supported.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.UnsupportedOperationException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedOperationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return UnsupportedOperationException structure as a key-value pair table
+function M.UnsupportedOperationException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedOperationException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertUnsupportedOperationException(t)
 	return t
@@ -93,16 +99,19 @@ end
 
 --- Create a structure of type DisableSsoRequest
 -- <p>Contains the inputs for the <a>DisableSso</a> operation.</p>
--- @param _UserName [UserName] <p>The username of an alternate account to use to disable single-sign on. This is only used for AD Connector directories. This account must have privileges to remove a service principal name.</p> <p>If the AD Connector service account does not have privileges to remove a service principal name, you can specify an alternate account with the <i>UserName</i> and <i>Password</i> parameters. These credentials are only used to disable single sign-on and are not stored by the service. The AD Connector service account is not changed.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory for which to disable single-sign on.</p>
--- @param _Password [ConnectPassword] <p>The password of an alternate account to use to disable single-sign on. This is only used for AD Connector directories. For more information, see the <i>UserName</i> parameter.</p>
--- Required parameter: DirectoryId
-function M.DisableSsoRequest(_UserName, _DirectoryId, _Password, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableSsoRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [UserName] <p>The username of an alternate account to use to disable single-sign on. This is only used for AD Connector directories. This account must have privileges to remove a service principal name.</p> <p>If the AD Connector service account does not have privileges to remove a service principal name, you can specify an alternate account with the <i>UserName</i> and <i>Password</i> parameters. These credentials are only used to disable single sign-on and are not stored by the service. The AD Connector service account is not changed.</p>
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory for which to disable single-sign on.</p>
+-- * Password [ConnectPassword] <p>The password of an alternate account to use to disable single-sign on. This is only used for AD Connector directories. For more information, see the <i>UserName</i> parameter.</p>
+-- Required key: DirectoryId
+-- @return DisableSsoRequest structure as a key-value pair table
+function M.DisableSsoRequest(args)
+	assert(args, "You must provdide an argument table when creating DisableSsoRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["DirectoryId"] = _DirectoryId,
-		["Password"] = _Password,
+		["UserName"] = args["UserName"],
+		["DirectoryId"] = args["DirectoryId"],
+		["Password"] = args["Password"],
 	}
 	asserts.AssertDisableSsoRequest(t)
 	return t
@@ -123,14 +132,17 @@ end
 
 --- Create a structure of type DeleteTrustRequest
 -- <p>Deletes the local side of an existing trust relationship between the Microsoft AD in the AWS cloud and the external domain.</p>
--- @param _TrustId [TrustId] <p>The Trust ID of the trust relationship to be deleted.</p>
--- @param _DeleteAssociatedConditionalForwarder [DeleteAssociatedConditionalForwarder] <p>Delete a conditional forwarder as part of a DeleteTrustRequest.</p>
--- Required parameter: TrustId
-function M.DeleteTrustRequest(_TrustId, _DeleteAssociatedConditionalForwarder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTrustRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrustId [TrustId] <p>The Trust ID of the trust relationship to be deleted.</p>
+-- * DeleteAssociatedConditionalForwarder [DeleteAssociatedConditionalForwarder] <p>Delete a conditional forwarder as part of a DeleteTrustRequest.</p>
+-- Required key: TrustId
+-- @return DeleteTrustRequest structure as a key-value pair table
+function M.DeleteTrustRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteTrustRequest")
 	local t = { 
-		["TrustId"] = _TrustId,
-		["DeleteAssociatedConditionalForwarder"] = _DeleteAssociatedConditionalForwarder,
+		["TrustId"] = args["TrustId"],
+		["DeleteAssociatedConditionalForwarder"] = args["DeleteAssociatedConditionalForwarder"],
 	}
 	asserts.AssertDeleteTrustRequest(t)
 	return t
@@ -150,13 +162,16 @@ end
 
 --- Create a structure of type DescribeTrustsResult
 -- <p>The result of a DescribeTrust request.</p>
--- @param _NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>DescribeTrusts</a> to retrieve the next set of items.</p>
--- @param _Trusts [Trusts] <p>The list of Trust objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
-function M.DescribeTrustsResult(_NextToken, _Trusts, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>DescribeTrusts</a> to retrieve the next set of items.</p>
+-- * Trusts [Trusts] <p>The list of Trust objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
+-- @return DescribeTrustsResult structure as a key-value pair table
+function M.DescribeTrustsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrustsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Trusts"] = _Trusts,
+		["NextToken"] = args["NextToken"],
+		["Trusts"] = args["Trusts"],
 	}
 	asserts.AssertDescribeTrustsResult(t)
 	return t
@@ -175,11 +190,14 @@ end
 
 --- Create a structure of type DeleteDirectoryResult
 -- <p>Contains the results of the <a>DeleteDirectory</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The directory identifier.</p>
-function M.DeleteDirectoryResult(_DirectoryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDirectoryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The directory identifier.</p>
+-- @return DeleteDirectoryResult structure as a key-value pair table
+function M.DeleteDirectoryResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteDirectoryResult")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
+		["DirectoryId"] = args["DirectoryId"],
 	}
 	asserts.AssertDeleteDirectoryResult(t)
 	return t
@@ -199,13 +217,16 @@ end
 
 --- Create a structure of type DirectoryUnavailableException
 -- <p>The specified directory is unavailable or could not be found.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.DirectoryUnavailableException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return DirectoryUnavailableException structure as a key-value pair table
+function M.DirectoryUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating DirectoryUnavailableException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertDirectoryUnavailableException(t)
 	return t
@@ -225,13 +246,16 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- <p>One or more parameters are not valid.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.InvalidParameterException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertInvalidParameterException(t)
 	return t
@@ -251,13 +275,16 @@ end
 
 --- Create a structure of type CreateAliasResult
 -- <p>Contains the results of the <a>CreateAlias</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory.</p>
--- @param _Alias [AliasName] <p>The alias for the directory.</p>
-function M.CreateAliasResult(_DirectoryId, _Alias, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAliasResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory.</p>
+-- * Alias [AliasName] <p>The alias for the directory.</p>
+-- @return CreateAliasResult structure as a key-value pair table
+function M.CreateAliasResult(args)
+	assert(args, "You must provdide an argument table when creating CreateAliasResult")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["Alias"] = _Alias,
+		["DirectoryId"] = args["DirectoryId"],
+		["Alias"] = args["Alias"],
 	}
 	asserts.AssertCreateAliasResult(t)
 	return t
@@ -276,11 +303,14 @@ end
 
 --- Create a structure of type CreateDirectoryResult
 -- <p>Contains the results of the <a>CreateDirectory</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory that was created.</p>
-function M.CreateDirectoryResult(_DirectoryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDirectoryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory that was created.</p>
+-- @return CreateDirectoryResult structure as a key-value pair table
+function M.CreateDirectoryResult(args)
+	assert(args, "You must provdide an argument table when creating CreateDirectoryResult")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
+		["DirectoryId"] = args["DirectoryId"],
 	}
 	asserts.AssertCreateDirectoryResult(t)
 	return t
@@ -302,16 +332,19 @@ end
 
 --- Create a structure of type ListIpRoutesRequest
 --  
--- @param _DirectoryId [DirectoryId] <p>Identifier (ID) of the directory for which you want to retrieve the IP addresses.</p>
--- @param _NextToken [NextToken] <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
--- @param _Limit [Limit] <p>Maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.</p>
--- Required parameter: DirectoryId
-function M.ListIpRoutesRequest(_DirectoryId, _NextToken, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIpRoutesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>Identifier (ID) of the directory for which you want to retrieve the IP addresses.</p>
+-- * NextToken [NextToken] <p>The <i>ListIpRoutes.NextToken</i> value from a previous call to <a>ListIpRoutes</a>. Pass null if this is the first call.</p>
+-- * Limit [Limit] <p>Maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.</p>
+-- Required key: DirectoryId
+-- @return ListIpRoutesRequest structure as a key-value pair table
+function M.ListIpRoutesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListIpRoutesRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
+		["DirectoryId"] = args["DirectoryId"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListIpRoutesRequest(t)
 	return t
@@ -330,11 +363,14 @@ end
 
 --- Create a structure of type GetSnapshotLimitsResult
 -- <p>Contains the results of the <a>GetSnapshotLimits</a> operation.</p>
--- @param _SnapshotLimits [SnapshotLimits] <p>A <a>SnapshotLimits</a> object that contains the manual snapshot limits for the specified directory.</p>
-function M.GetSnapshotLimitsResult(_SnapshotLimits, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSnapshotLimitsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnapshotLimits [SnapshotLimits] <p>A <a>SnapshotLimits</a> object that contains the manual snapshot limits for the specified directory.</p>
+-- @return GetSnapshotLimitsResult structure as a key-value pair table
+function M.GetSnapshotLimitsResult(args)
+	assert(args, "You must provdide an argument table when creating GetSnapshotLimitsResult")
 	local t = { 
-		["SnapshotLimits"] = _SnapshotLimits,
+		["SnapshotLimits"] = args["SnapshotLimits"],
 	}
 	asserts.AssertGetSnapshotLimitsResult(t)
 	return t
@@ -352,8 +388,11 @@ end
 
 --- Create a structure of type DisableSsoResult
 -- <p>Contains the results of the <a>DisableSso</a> operation.</p>
-function M.DisableSsoResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableSsoResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisableSsoResult structure as a key-value pair table
+function M.DisableSsoResult(args)
+	assert(args, "You must provdide an argument table when creating DisableSsoResult")
 	local t = { 
 	}
 	asserts.AssertDisableSsoResult(t)
@@ -376,17 +415,20 @@ end
 
 --- Create a structure of type DescribeSnapshotsRequest
 -- <p>Contains the inputs for the <a>DescribeSnapshots</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory for which to retrieve snapshot information.</p>
--- @param _NextToken [NextToken] <p>The <i>DescribeSnapshotsResult.NextToken</i> value from a previous call to <a>DescribeSnapshots</a>. Pass null if this is the first call.</p>
--- @param _Limit [Limit] <p>The maximum number of objects to return.</p>
--- @param _SnapshotIds [SnapshotIds] <p>A list of identifiers of the snapshots to obtain the information for. If this member is null or empty, all snapshots are returned using the <i>Limit</i> and <i>NextToken</i> members.</p>
-function M.DescribeSnapshotsRequest(_DirectoryId, _NextToken, _Limit, _SnapshotIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSnapshotsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory for which to retrieve snapshot information.</p>
+-- * NextToken [NextToken] <p>The <i>DescribeSnapshotsResult.NextToken</i> value from a previous call to <a>DescribeSnapshots</a>. Pass null if this is the first call.</p>
+-- * Limit [Limit] <p>The maximum number of objects to return.</p>
+-- * SnapshotIds [SnapshotIds] <p>A list of identifiers of the snapshots to obtain the information for. If this member is null or empty, all snapshots are returned using the <i>Limit</i> and <i>NextToken</i> members.</p>
+-- @return DescribeSnapshotsRequest structure as a key-value pair table
+function M.DescribeSnapshotsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeSnapshotsRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
-		["SnapshotIds"] = _SnapshotIds,
+		["DirectoryId"] = args["DirectoryId"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
+		["SnapshotIds"] = args["SnapshotIds"],
 	}
 	asserts.AssertDescribeSnapshotsRequest(t)
 	return t
@@ -406,12 +448,15 @@ end
 
 --- Create a structure of type DeleteSnapshotRequest
 -- <p>Contains the inputs for the <a>DeleteSnapshot</a> operation.</p>
--- @param _SnapshotId [SnapshotId] <p>The identifier of the directory snapshot to be deleted.</p>
--- Required parameter: SnapshotId
-function M.DeleteSnapshotRequest(_SnapshotId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSnapshotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnapshotId [SnapshotId] <p>The identifier of the directory snapshot to be deleted.</p>
+-- Required key: SnapshotId
+-- @return DeleteSnapshotRequest structure as a key-value pair table
+function M.DeleteSnapshotRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSnapshotRequest")
 	local t = { 
-		["SnapshotId"] = _SnapshotId,
+		["SnapshotId"] = args["SnapshotId"],
 	}
 	asserts.AssertDeleteSnapshotRequest(t)
 	return t
@@ -431,13 +476,16 @@ end
 
 --- Create a structure of type ListTagsForResourceResult
 --  
--- @param _NextToken [NextToken] <p>Reserved for future use.</p>
--- @param _Tags [Tags] <p>List of tags returned by the ListTagsForResource operation.</p>
-function M.ListTagsForResourceResult(_NextToken, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>Reserved for future use.</p>
+-- * Tags [Tags] <p>List of tags returned by the ListTagsForResource operation.</p>
+-- @return ListTagsForResourceResult structure as a key-value pair table
+function M.ListTagsForResourceResult(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Tags"] = _Tags,
+		["NextToken"] = args["NextToken"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertListTagsForResourceResult(t)
 	return t
@@ -456,11 +504,14 @@ end
 
 --- Create a structure of type DeleteSnapshotResult
 -- <p>Contains the results of the <a>DeleteSnapshot</a> operation.</p>
--- @param _SnapshotId [SnapshotId] <p>The identifier of the directory snapshot that was deleted.</p>
-function M.DeleteSnapshotResult(_SnapshotId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSnapshotResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnapshotId [SnapshotId] <p>The identifier of the directory snapshot that was deleted.</p>
+-- @return DeleteSnapshotResult structure as a key-value pair table
+function M.DeleteSnapshotResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteSnapshotResult")
 	local t = { 
-		["SnapshotId"] = _SnapshotId,
+		["SnapshotId"] = args["SnapshotId"],
 	}
 	asserts.AssertDeleteSnapshotResult(t)
 	return t
@@ -480,13 +531,16 @@ end
 
 --- Create a structure of type InsufficientPermissionsException
 -- <p>The account does not have sufficient permission to perform the operation.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.InsufficientPermissionsException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientPermissionsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return InsufficientPermissionsException structure as a key-value pair table
+function M.InsufficientPermissionsException(args)
+	assert(args, "You must provdide an argument table when creating InsufficientPermissionsException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertInsufficientPermissionsException(t)
 	return t
@@ -522,45 +576,48 @@ end
 
 --- Create a structure of type DirectoryDescription
 -- <p>Contains information about an AWS Directory Service directory.</p>
--- @param _AccessUrl [AccessUrl] <p>The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as <code>d-XXXXXXXXXX</code>.</p>
--- @param _DirectoryId [DirectoryId] <p>The directory identifier.</p>
--- @param _SsoEnabled [SsoEnabled] <p>Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and <a>DisableSso</a>.</p>
--- @param _Name [DirectoryName] <p>The fully-qualified name of the directory.</p>
--- @param _RadiusStatus [RadiusStatus] <p>The status of the RADIUS MFA server connection.</p>
--- @param _DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is connected.</p>
--- @param _VpcSettings [DirectoryVpcSettingsDescription] <p>A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory. This member is only present if the directory is a Simple AD or Managed AD directory.</p>
--- @param _ConnectSettings [DirectoryConnectSettingsDescription] <p>A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD Connector directory. This member is only present if the directory is an AD Connector directory.</p>
--- @param _RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this directory.</p>
--- @param _StageLastUpdatedDateTime [LastUpdatedDateTime] <p>The date and time that the stage was last updated.</p>
--- @param _Alias [AliasName] <p>The alias for the directory. If no alias has been created for the directory, the alias is the directory identifier, such as <code>d-XXXXXXXXXX</code>.</p>
--- @param _LaunchTime [LaunchTime] <p>Specifies when the directory was created.</p>
--- @param _StageReason [StageReason] <p>Additional information about the directory stage.</p>
--- @param _Description [Description] <p>The textual description for the directory.</p>
--- @param _ShortName [DirectoryShortName] <p>The short name of the directory.</p>
--- @param _Stage [DirectoryStage] <p>The current stage of the directory.</p>
--- @param _Type [DirectoryType] <p>The directory size.</p>
--- @param _Size [DirectorySize] <p>The directory size.</p>
-function M.DirectoryDescription(_AccessUrl, _DirectoryId, _SsoEnabled, _Name, _RadiusStatus, _DnsIpAddrs, _VpcSettings, _ConnectSettings, _RadiusSettings, _StageLastUpdatedDateTime, _Alias, _LaunchTime, _StageReason, _Description, _ShortName, _Stage, _Type, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccessUrl [AccessUrl] <p>The access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>. If no alias has been created for the directory, <code>&lt;alias&gt;</code> is the directory identifier, such as <code>d-XXXXXXXXXX</code>.</p>
+-- * DirectoryId [DirectoryId] <p>The directory identifier.</p>
+-- * SsoEnabled [SsoEnabled] <p>Indicates if single-sign on is enabled for the directory. For more information, see <a>EnableSso</a> and <a>DisableSso</a>.</p>
+-- * Name [DirectoryName] <p>The fully-qualified name of the directory.</p>
+-- * RadiusStatus [RadiusStatus] <p>The status of the RADIUS MFA server connection.</p>
+-- * DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the DNS servers for the directory. For a Simple AD or Microsoft AD directory, these are the IP addresses of the Simple AD or Microsoft AD directory servers. For an AD Connector directory, these are the IP addresses of the DNS servers or domain controllers in the on-premises directory to which the AD Connector is connected.</p>
+-- * VpcSettings [DirectoryVpcSettingsDescription] <p>A <a>DirectoryVpcSettingsDescription</a> object that contains additional information about a directory. This member is only present if the directory is a Simple AD or Managed AD directory.</p>
+-- * ConnectSettings [DirectoryConnectSettingsDescription] <p>A <a>DirectoryConnectSettingsDescription</a> object that contains additional information about an AD Connector directory. This member is only present if the directory is an AD Connector directory.</p>
+-- * RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server configured for this directory.</p>
+-- * StageLastUpdatedDateTime [LastUpdatedDateTime] <p>The date and time that the stage was last updated.</p>
+-- * Alias [AliasName] <p>The alias for the directory. If no alias has been created for the directory, the alias is the directory identifier, such as <code>d-XXXXXXXXXX</code>.</p>
+-- * LaunchTime [LaunchTime] <p>Specifies when the directory was created.</p>
+-- * StageReason [StageReason] <p>Additional information about the directory stage.</p>
+-- * Description [Description] <p>The textual description for the directory.</p>
+-- * ShortName [DirectoryShortName] <p>The short name of the directory.</p>
+-- * Stage [DirectoryStage] <p>The current stage of the directory.</p>
+-- * Type [DirectoryType] <p>The directory size.</p>
+-- * Size [DirectorySize] <p>The directory size.</p>
+-- @return DirectoryDescription structure as a key-value pair table
+function M.DirectoryDescription(args)
+	assert(args, "You must provdide an argument table when creating DirectoryDescription")
 	local t = { 
-		["AccessUrl"] = _AccessUrl,
-		["DirectoryId"] = _DirectoryId,
-		["SsoEnabled"] = _SsoEnabled,
-		["Name"] = _Name,
-		["RadiusStatus"] = _RadiusStatus,
-		["DnsIpAddrs"] = _DnsIpAddrs,
-		["VpcSettings"] = _VpcSettings,
-		["ConnectSettings"] = _ConnectSettings,
-		["RadiusSettings"] = _RadiusSettings,
-		["StageLastUpdatedDateTime"] = _StageLastUpdatedDateTime,
-		["Alias"] = _Alias,
-		["LaunchTime"] = _LaunchTime,
-		["StageReason"] = _StageReason,
-		["Description"] = _Description,
-		["ShortName"] = _ShortName,
-		["Stage"] = _Stage,
-		["Type"] = _Type,
-		["Size"] = _Size,
+		["AccessUrl"] = args["AccessUrl"],
+		["DirectoryId"] = args["DirectoryId"],
+		["SsoEnabled"] = args["SsoEnabled"],
+		["Name"] = args["Name"],
+		["RadiusStatus"] = args["RadiusStatus"],
+		["DnsIpAddrs"] = args["DnsIpAddrs"],
+		["VpcSettings"] = args["VpcSettings"],
+		["ConnectSettings"] = args["ConnectSettings"],
+		["RadiusSettings"] = args["RadiusSettings"],
+		["StageLastUpdatedDateTime"] = args["StageLastUpdatedDateTime"],
+		["Alias"] = args["Alias"],
+		["LaunchTime"] = args["LaunchTime"],
+		["StageReason"] = args["StageReason"],
+		["Description"] = args["Description"],
+		["ShortName"] = args["ShortName"],
+		["Stage"] = args["Stage"],
+		["Type"] = args["Type"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertDirectoryDescription(t)
 	return t
@@ -582,15 +639,18 @@ end
 
 --- Create a structure of type RegisterEventTopicRequest
 -- <p>Registers a new event topic.</p>
--- @param _DirectoryId [DirectoryId] <p>The Directory ID that will publish status messages to the SNS topic.</p>
--- @param _TopicName [TopicName] <p>The SNS topic name to which the directory will publish status messages. This SNS topic must be in the same region as the specified Directory ID.</p>
--- Required parameter: DirectoryId
--- Required parameter: TopicName
-function M.RegisterEventTopicRequest(_DirectoryId, _TopicName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterEventTopicRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The Directory ID that will publish status messages to the SNS topic.</p>
+-- * TopicName [TopicName] <p>The SNS topic name to which the directory will publish status messages. This SNS topic must be in the same region as the specified Directory ID.</p>
+-- Required key: DirectoryId
+-- Required key: TopicName
+-- @return RegisterEventTopicRequest structure as a key-value pair table
+function M.RegisterEventTopicRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterEventTopicRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["TopicName"] = _TopicName,
+		["DirectoryId"] = args["DirectoryId"],
+		["TopicName"] = args["TopicName"],
 	}
 	asserts.AssertRegisterEventTopicRequest(t)
 	return t
@@ -610,13 +670,16 @@ end
 
 --- Create a structure of type IpRouteLimitExceededException
 -- <p>The maximum allowed number of IP addresses was exceeded. The default limit is 100 IP address blocks.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.IpRouteLimitExceededException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IpRouteLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return IpRouteLimitExceededException structure as a key-value pair table
+function M.IpRouteLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating IpRouteLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertIpRouteLimitExceededException(t)
 	return t
@@ -644,29 +707,32 @@ end
 
 --- Create a structure of type Trust
 -- <p>Describes a trust relationship between an Microsoft AD in the AWS cloud and an external domain.</p>
--- @param _DirectoryId [DirectoryId] <p>The Directory ID of the AWS directory involved in the trust relationship.</p>
--- @param _StateLastUpdatedDateTime [StateLastUpdatedDateTime] <p>The date and time that the TrustState was last updated.</p>
--- @param _LastUpdatedDateTime [LastUpdatedDateTime] <p>The date and time that the trust relationship was last updated.</p>
--- @param _CreatedDateTime [CreatedDateTime] <p>The date and time that the trust relationship was created.</p>
--- @param _TrustStateReason [TrustStateReason] <p>The reason for the TrustState.</p>
--- @param _RemoteDomainName [RemoteDomainName] <p>The Fully Qualified Domain Name (FQDN) of the external domain involved in the trust relationship.</p>
--- @param _TrustType [TrustType] <p>The trust relationship type.</p>
--- @param _TrustId [TrustId] <p>The unique ID of the trust relationship.</p>
--- @param _TrustDirection [TrustDirection] <p>The trust relationship direction.</p>
--- @param _TrustState [TrustState] <p>The trust relationship state.</p>
-function M.Trust(_DirectoryId, _StateLastUpdatedDateTime, _LastUpdatedDateTime, _CreatedDateTime, _TrustStateReason, _RemoteDomainName, _TrustType, _TrustId, _TrustDirection, _TrustState, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Trust")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The Directory ID of the AWS directory involved in the trust relationship.</p>
+-- * StateLastUpdatedDateTime [StateLastUpdatedDateTime] <p>The date and time that the TrustState was last updated.</p>
+-- * LastUpdatedDateTime [LastUpdatedDateTime] <p>The date and time that the trust relationship was last updated.</p>
+-- * CreatedDateTime [CreatedDateTime] <p>The date and time that the trust relationship was created.</p>
+-- * TrustStateReason [TrustStateReason] <p>The reason for the TrustState.</p>
+-- * RemoteDomainName [RemoteDomainName] <p>The Fully Qualified Domain Name (FQDN) of the external domain involved in the trust relationship.</p>
+-- * TrustType [TrustType] <p>The trust relationship type.</p>
+-- * TrustId [TrustId] <p>The unique ID of the trust relationship.</p>
+-- * TrustDirection [TrustDirection] <p>The trust relationship direction.</p>
+-- * TrustState [TrustState] <p>The trust relationship state.</p>
+-- @return Trust structure as a key-value pair table
+function M.Trust(args)
+	assert(args, "You must provdide an argument table when creating Trust")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["StateLastUpdatedDateTime"] = _StateLastUpdatedDateTime,
-		["LastUpdatedDateTime"] = _LastUpdatedDateTime,
-		["CreatedDateTime"] = _CreatedDateTime,
-		["TrustStateReason"] = _TrustStateReason,
-		["RemoteDomainName"] = _RemoteDomainName,
-		["TrustType"] = _TrustType,
-		["TrustId"] = _TrustId,
-		["TrustDirection"] = _TrustDirection,
-		["TrustState"] = _TrustState,
+		["DirectoryId"] = args["DirectoryId"],
+		["StateLastUpdatedDateTime"] = args["StateLastUpdatedDateTime"],
+		["LastUpdatedDateTime"] = args["LastUpdatedDateTime"],
+		["CreatedDateTime"] = args["CreatedDateTime"],
+		["TrustStateReason"] = args["TrustStateReason"],
+		["RemoteDomainName"] = args["RemoteDomainName"],
+		["TrustType"] = args["TrustType"],
+		["TrustId"] = args["TrustId"],
+		["TrustDirection"] = args["TrustDirection"],
+		["TrustState"] = args["TrustState"],
 	}
 	asserts.AssertTrust(t)
 	return t
@@ -685,11 +751,14 @@ end
 
 --- Create a structure of type DescribeConditionalForwardersResult
 -- <p>The result of a DescribeConditionalForwarder request.</p>
--- @param _ConditionalForwarders [ConditionalForwarders] <p>The list of conditional forwarders that have been created.</p>
-function M.DescribeConditionalForwardersResult(_ConditionalForwarders, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConditionalForwardersResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConditionalForwarders [ConditionalForwarders] <p>The list of conditional forwarders that have been created.</p>
+-- @return DescribeConditionalForwardersResult structure as a key-value pair table
+function M.DescribeConditionalForwardersResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeConditionalForwardersResult")
 	local t = { 
-		["ConditionalForwarders"] = _ConditionalForwarders,
+		["ConditionalForwarders"] = args["ConditionalForwarders"],
 	}
 	asserts.AssertDescribeConditionalForwardersResult(t)
 	return t
@@ -707,8 +776,11 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceResult
 --  
-function M.RemoveTagsFromResourceResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RemoveTagsFromResourceResult structure as a key-value pair table
+function M.RemoveTagsFromResourceResult(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceResult")
 	local t = { 
 	}
 	asserts.AssertRemoveTagsFromResourceResult(t)
@@ -729,13 +801,16 @@ end
 
 --- Create a structure of type ListSchemaExtensionsResult
 --  
--- @param _SchemaExtensionsInfo [SchemaExtensionsInfo] <p>Information about the schema extensions applied to the directory.</p>
--- @param _NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to <code>ListSchemaExtensions</code> to retrieve the next set of items.</p>
-function M.ListSchemaExtensionsResult(_SchemaExtensionsInfo, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSchemaExtensionsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaExtensionsInfo [SchemaExtensionsInfo] <p>Information about the schema extensions applied to the directory.</p>
+-- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to <code>ListSchemaExtensions</code> to retrieve the next set of items.</p>
+-- @return ListSchemaExtensionsResult structure as a key-value pair table
+function M.ListSchemaExtensionsResult(args)
+	assert(args, "You must provdide an argument table when creating ListSchemaExtensionsResult")
 	local t = { 
-		["SchemaExtensionsInfo"] = _SchemaExtensionsInfo,
-		["NextToken"] = _NextToken,
+		["SchemaExtensionsInfo"] = args["SchemaExtensionsInfo"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListSchemaExtensionsResult(t)
 	return t
@@ -755,13 +830,16 @@ end
 
 --- Create a structure of type DirectoryLimitExceededException
 -- <p>The maximum number of directories in the region has been reached. You can use the <a>GetDirectoryLimits</a> operation to determine your directory limits in the region.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.DirectoryLimitExceededException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return DirectoryLimitExceededException structure as a key-value pair table
+function M.DirectoryLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating DirectoryLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertDirectoryLimitExceededException(t)
 	return t
@@ -783,15 +861,18 @@ end
 
 --- Create a structure of type AddTagsToResourceRequest
 --  
--- @param _ResourceId [ResourceId] <p>Identifier (ID) for the directory to which to add the tag.</p>
--- @param _Tags [Tags] <p>The tags to be assigned to the directory.</p>
--- Required parameter: ResourceId
--- Required parameter: Tags
-function M.AddTagsToResourceRequest(_ResourceId, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [ResourceId] <p>Identifier (ID) for the directory to which to add the tag.</p>
+-- * Tags [Tags] <p>The tags to be assigned to the directory.</p>
+-- Required key: ResourceId
+-- Required key: Tags
+-- @return AddTagsToResourceRequest structure as a key-value pair table
+function M.AddTagsToResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToResourceRequest")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["Tags"] = _Tags,
+		["ResourceId"] = args["ResourceId"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertAddTagsToResourceRequest(t)
 	return t
@@ -811,13 +892,16 @@ end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>The <i>NextToken</i> value is not valid.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.InvalidNextTokenException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return InvalidNextTokenException structure as a key-value pair table
+function M.InvalidNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertInvalidNextTokenException(t)
 	return t
@@ -839,15 +923,18 @@ end
 
 --- Create a structure of type RemoveIpRoutesRequest
 --  
--- @param _DirectoryId [DirectoryId] <p>Identifier (ID) of the directory from which you want to remove the IP addresses.</p>
--- @param _CidrIps [CidrIps] <p>IP address blocks that you want to remove.</p>
--- Required parameter: DirectoryId
--- Required parameter: CidrIps
-function M.RemoveIpRoutesRequest(_DirectoryId, _CidrIps, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveIpRoutesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>Identifier (ID) of the directory from which you want to remove the IP addresses.</p>
+-- * CidrIps [CidrIps] <p>IP address blocks that you want to remove.</p>
+-- Required key: DirectoryId
+-- Required key: CidrIps
+-- @return RemoveIpRoutesRequest structure as a key-value pair table
+function M.RemoveIpRoutesRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveIpRoutesRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["CidrIps"] = _CidrIps,
+		["DirectoryId"] = args["DirectoryId"],
+		["CidrIps"] = args["CidrIps"],
 	}
 	asserts.AssertRemoveIpRoutesRequest(t)
 	return t
@@ -868,14 +955,17 @@ end
 
 --- Create a structure of type DescribeConditionalForwardersRequest
 -- <p>Describes a conditional forwarder.</p>
--- @param _DirectoryId [DirectoryId] <p>The directory ID for which to get the list of associated conditional forwarders.</p>
--- @param _RemoteDomainNames [RemoteDomainNames] <p>The fully qualified domain names (FQDN) of the remote domains for which to get the list of associated conditional forwarders. If this member is null, all conditional forwarders are returned.</p>
--- Required parameter: DirectoryId
-function M.DescribeConditionalForwardersRequest(_DirectoryId, _RemoteDomainNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConditionalForwardersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The directory ID for which to get the list of associated conditional forwarders.</p>
+-- * RemoteDomainNames [RemoteDomainNames] <p>The fully qualified domain names (FQDN) of the remote domains for which to get the list of associated conditional forwarders. If this member is null, all conditional forwarders are returned.</p>
+-- Required key: DirectoryId
+-- @return DescribeConditionalForwardersRequest structure as a key-value pair table
+function M.DescribeConditionalForwardersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeConditionalForwardersRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["RemoteDomainNames"] = _RemoteDomainNames,
+		["DirectoryId"] = args["DirectoryId"],
+		["RemoteDomainNames"] = args["RemoteDomainNames"],
 	}
 	asserts.AssertDescribeConditionalForwardersRequest(t)
 	return t
@@ -899,21 +989,24 @@ end
 
 --- Create a structure of type DirectoryConnectSettingsDescription
 -- <p>Contains information about an AD Connector directory.</p>
--- @param _CustomerUserName [UserName] <p>The username of the service account in the on-premises directory.</p>
--- @param _VpcId [VpcId] <p>The identifier of the VPC that the AD Connector is in.</p>
--- @param _SubnetIds [SubnetIds] <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
--- @param _SecurityGroupId [SecurityGroupId] <p>The security group identifier for the AD Connector directory.</p>
--- @param _AvailabilityZones [AvailabilityZones] <p>A list of the Availability Zones that the directory is in.</p>
--- @param _ConnectIps [IpAddrs] <p>The IP addresses of the AD Connector servers.</p>
-function M.DirectoryConnectSettingsDescription(_CustomerUserName, _VpcId, _SubnetIds, _SecurityGroupId, _AvailabilityZones, _ConnectIps, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryConnectSettingsDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CustomerUserName [UserName] <p>The username of the service account in the on-premises directory.</p>
+-- * VpcId [VpcId] <p>The identifier of the VPC that the AD Connector is in.</p>
+-- * SubnetIds [SubnetIds] <p>A list of subnet identifiers in the VPC that the AD connector is in.</p>
+-- * SecurityGroupId [SecurityGroupId] <p>The security group identifier for the AD Connector directory.</p>
+-- * AvailabilityZones [AvailabilityZones] <p>A list of the Availability Zones that the directory is in.</p>
+-- * ConnectIps [IpAddrs] <p>The IP addresses of the AD Connector servers.</p>
+-- @return DirectoryConnectSettingsDescription structure as a key-value pair table
+function M.DirectoryConnectSettingsDescription(args)
+	assert(args, "You must provdide an argument table when creating DirectoryConnectSettingsDescription")
 	local t = { 
-		["CustomerUserName"] = _CustomerUserName,
-		["VpcId"] = _VpcId,
-		["SubnetIds"] = _SubnetIds,
-		["SecurityGroupId"] = _SecurityGroupId,
-		["AvailabilityZones"] = _AvailabilityZones,
-		["ConnectIps"] = _ConnectIps,
+		["CustomerUserName"] = args["CustomerUserName"],
+		["VpcId"] = args["VpcId"],
+		["SubnetIds"] = args["SubnetIds"],
+		["SecurityGroupId"] = args["SecurityGroupId"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
+		["ConnectIps"] = args["ConnectIps"],
 	}
 	asserts.AssertDirectoryConnectSettingsDescription(t)
 	return t
@@ -941,25 +1034,28 @@ end
 
 --- Create a structure of type ConnectDirectoryRequest
 -- <p>Contains the inputs for the <a>ConnectDirectory</a> operation.</p>
--- @param _Name [DirectoryName] <p>The fully-qualified name of the on-premises directory, such as <code>corp.example.com</code>.</p>
--- @param _ConnectSettings [DirectoryConnectSettings] <p>A <a>DirectoryConnectSettings</a> object that contains additional information for the operation.</p>
--- @param _Description [Description] <p>A textual description for the directory.</p>
--- @param _ShortName [DirectoryShortName] <p>The NetBIOS name of the on-premises directory, such as <code>CORP</code>.</p>
--- @param _Password [ConnectPassword] <p>The password for the on-premises user account.</p>
--- @param _Size [DirectorySize] <p>The size of the directory.</p>
--- Required parameter: Name
--- Required parameter: Password
--- Required parameter: Size
--- Required parameter: ConnectSettings
-function M.ConnectDirectoryRequest(_Name, _ConnectSettings, _Description, _ShortName, _Password, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConnectDirectoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DirectoryName] <p>The fully-qualified name of the on-premises directory, such as <code>corp.example.com</code>.</p>
+-- * ConnectSettings [DirectoryConnectSettings] <p>A <a>DirectoryConnectSettings</a> object that contains additional information for the operation.</p>
+-- * Description [Description] <p>A textual description for the directory.</p>
+-- * ShortName [DirectoryShortName] <p>The NetBIOS name of the on-premises directory, such as <code>CORP</code>.</p>
+-- * Password [ConnectPassword] <p>The password for the on-premises user account.</p>
+-- * Size [DirectorySize] <p>The size of the directory.</p>
+-- Required key: Name
+-- Required key: Password
+-- Required key: Size
+-- Required key: ConnectSettings
+-- @return ConnectDirectoryRequest structure as a key-value pair table
+function M.ConnectDirectoryRequest(args)
+	assert(args, "You must provdide an argument table when creating ConnectDirectoryRequest")
 	local t = { 
-		["Name"] = _Name,
-		["ConnectSettings"] = _ConnectSettings,
-		["Description"] = _Description,
-		["ShortName"] = _ShortName,
-		["Password"] = _Password,
-		["Size"] = _Size,
+		["Name"] = args["Name"],
+		["ConnectSettings"] = args["ConnectSettings"],
+		["Description"] = args["Description"],
+		["ShortName"] = args["ShortName"],
+		["Password"] = args["Password"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertConnectDirectoryRequest(t)
 	return t
@@ -979,12 +1075,15 @@ end
 
 --- Create a structure of type VerifyTrustRequest
 -- <p>Initiates the verification of an existing trust relationship between a Microsoft AD in the AWS cloud and an external domain.</p>
--- @param _TrustId [TrustId] <p>The unique Trust ID of the trust relationship to verify.</p>
--- Required parameter: TrustId
-function M.VerifyTrustRequest(_TrustId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VerifyTrustRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrustId [TrustId] <p>The unique Trust ID of the trust relationship to verify.</p>
+-- Required key: TrustId
+-- @return VerifyTrustRequest structure as a key-value pair table
+function M.VerifyTrustRequest(args)
+	assert(args, "You must provdide an argument table when creating VerifyTrustRequest")
 	local t = { 
-		["TrustId"] = _TrustId,
+		["TrustId"] = args["TrustId"],
 	}
 	asserts.AssertVerifyTrustRequest(t)
 	return t
@@ -1006,15 +1105,18 @@ end
 
 --- Create a structure of type Tag
 -- <p>Metadata assigned to a directory consisting of a key-value pair.</p>
--- @param _Value [TagValue] <p>The optional value of the tag. The string value can be Unicode characters. The string can contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
--- @param _Key [TagKey] <p>Required name of the tag. The string value can be Unicode characters and cannot be prefixed with "aws:". The string can contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
--- Required parameter: Key
--- Required parameter: Value
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The optional value of the tag. The string value can be Unicode characters. The string can contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
+-- * Key [TagKey] <p>Required name of the tag. The string value can be Unicode characters and cannot be prefixed with "aws:". The string can contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
+-- Required key: Key
+-- Required key: Value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -1032,8 +1134,11 @@ end
 
 --- Create a structure of type AddIpRoutesResult
 --  
-function M.AddIpRoutesResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddIpRoutesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AddIpRoutesResult structure as a key-value pair table
+function M.AddIpRoutesResult(args)
+	assert(args, "You must provdide an argument table when creating AddIpRoutesResult")
 	local t = { 
 	}
 	asserts.AssertAddIpRoutesResult(t)
@@ -1060,22 +1165,25 @@ end
 
 --- Create a structure of type CreateComputerRequest
 -- <p>Contains the inputs for the <a>CreateComputer</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory in which to create the computer account.</p>
--- @param _ComputerName [ComputerName] <p>The name of the computer account.</p>
--- @param _Password [ComputerPassword] <p>A one-time password that is used to join the computer to the directory. You should generate a random, strong password to use for this parameter.</p>
--- @param _ComputerAttributes [Attributes] <p>An array of <a>Attribute</a> objects that contain any LDAP attributes to apply to the computer account.</p>
--- @param _OrganizationalUnitDistinguishedName [OrganizationalUnitDN] <p>The fully-qualified distinguished name of the organizational unit to place the computer account in.</p>
--- Required parameter: DirectoryId
--- Required parameter: ComputerName
--- Required parameter: Password
-function M.CreateComputerRequest(_DirectoryId, _ComputerName, _Password, _ComputerAttributes, _OrganizationalUnitDistinguishedName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateComputerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory in which to create the computer account.</p>
+-- * ComputerName [ComputerName] <p>The name of the computer account.</p>
+-- * Password [ComputerPassword] <p>A one-time password that is used to join the computer to the directory. You should generate a random, strong password to use for this parameter.</p>
+-- * ComputerAttributes [Attributes] <p>An array of <a>Attribute</a> objects that contain any LDAP attributes to apply to the computer account.</p>
+-- * OrganizationalUnitDistinguishedName [OrganizationalUnitDN] <p>The fully-qualified distinguished name of the organizational unit to place the computer account in.</p>
+-- Required key: DirectoryId
+-- Required key: ComputerName
+-- Required key: Password
+-- @return CreateComputerRequest structure as a key-value pair table
+function M.CreateComputerRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateComputerRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["ComputerName"] = _ComputerName,
-		["Password"] = _Password,
-		["ComputerAttributes"] = _ComputerAttributes,
-		["OrganizationalUnitDistinguishedName"] = _OrganizationalUnitDistinguishedName,
+		["DirectoryId"] = args["DirectoryId"],
+		["ComputerName"] = args["ComputerName"],
+		["Password"] = args["Password"],
+		["ComputerAttributes"] = args["ComputerAttributes"],
+		["OrganizationalUnitDistinguishedName"] = args["OrganizationalUnitDistinguishedName"],
 	}
 	asserts.AssertCreateComputerRequest(t)
 	return t
@@ -1097,15 +1205,18 @@ end
 
 --- Create a structure of type EnableRadiusRequest
 -- <p>Contains the inputs for the <a>EnableRadius</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory for which to enable MFA.</p>
--- @param _RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server.</p>
--- Required parameter: DirectoryId
--- Required parameter: RadiusSettings
-function M.EnableRadiusRequest(_DirectoryId, _RadiusSettings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableRadiusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory for which to enable MFA.</p>
+-- * RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server.</p>
+-- Required key: DirectoryId
+-- Required key: RadiusSettings
+-- @return EnableRadiusRequest structure as a key-value pair table
+function M.EnableRadiusRequest(args)
+	assert(args, "You must provdide an argument table when creating EnableRadiusRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["RadiusSettings"] = _RadiusSettings,
+		["DirectoryId"] = args["DirectoryId"],
+		["RadiusSettings"] = args["RadiusSettings"],
 	}
 	asserts.AssertEnableRadiusRequest(t)
 	return t
@@ -1127,17 +1238,20 @@ end
 
 --- Create a structure of type DirectoryVpcSettingsDescription
 -- <p>Contains information about the directory.</p>
--- @param _SubnetIds [SubnetIds] <p>The identifiers of the subnets for the directory servers.</p>
--- @param _VpcId [VpcId] <p>The identifier of the VPC that the directory is in.</p>
--- @param _AvailabilityZones [AvailabilityZones] <p>The list of Availability Zones that the directory is in.</p>
--- @param _SecurityGroupId [SecurityGroupId] <p>The security group identifier for the directory. If the directory was created before 8/1/2014, this is the identifier of the directory members security group that was created when the directory was created. If the directory was created after this date, this value is null.</p>
-function M.DirectoryVpcSettingsDescription(_SubnetIds, _VpcId, _AvailabilityZones, _SecurityGroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryVpcSettingsDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetIds [SubnetIds] <p>The identifiers of the subnets for the directory servers.</p>
+-- * VpcId [VpcId] <p>The identifier of the VPC that the directory is in.</p>
+-- * AvailabilityZones [AvailabilityZones] <p>The list of Availability Zones that the directory is in.</p>
+-- * SecurityGroupId [SecurityGroupId] <p>The security group identifier for the directory. If the directory was created before 8/1/2014, this is the identifier of the directory members security group that was created when the directory was created. If the directory was created after this date, this value is null.</p>
+-- @return DirectoryVpcSettingsDescription structure as a key-value pair table
+function M.DirectoryVpcSettingsDescription(args)
+	assert(args, "You must provdide an argument table when creating DirectoryVpcSettingsDescription")
 	local t = { 
-		["SubnetIds"] = _SubnetIds,
-		["VpcId"] = _VpcId,
-		["AvailabilityZones"] = _AvailabilityZones,
-		["SecurityGroupId"] = _SecurityGroupId,
+		["SubnetIds"] = args["SubnetIds"],
+		["VpcId"] = args["VpcId"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
+		["SecurityGroupId"] = args["SecurityGroupId"],
 	}
 	asserts.AssertDirectoryVpcSettingsDescription(t)
 	return t
@@ -1157,13 +1271,16 @@ end
 
 --- Create a structure of type ClientException
 -- <p>A client exception has occurred.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.ClientException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClientException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return ClientException structure as a key-value pair table
+function M.ClientException(args)
+	assert(args, "You must provdide an argument table when creating ClientException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertClientException(t)
 	return t
@@ -1182,11 +1299,14 @@ end
 
 --- Create a structure of type CreateTrustResult
 -- <p>The result of a CreateTrust request.</p>
--- @param _TrustId [TrustId] <p>A unique identifier for the trust relationship that was created.</p>
-function M.CreateTrustResult(_TrustId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrustResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrustId [TrustId] <p>A unique identifier for the trust relationship that was created.</p>
+-- @return CreateTrustResult structure as a key-value pair table
+function M.CreateTrustResult(args)
+	assert(args, "You must provdide an argument table when creating CreateTrustResult")
 	local t = { 
-		["TrustId"] = _TrustId,
+		["TrustId"] = args["TrustId"],
 	}
 	asserts.AssertCreateTrustResult(t)
 	return t
@@ -1211,23 +1331,26 @@ end
 
 --- Create a structure of type SchemaExtensionInfo
 -- <p>Information about a schema extension.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory to which the schema extension is applied.</p>
--- @param _Description [Description] <p>A description of the schema extension.</p>
--- @param _SchemaExtensionStatus [SchemaExtensionStatus] <p>The current status of the schema extension.</p>
--- @param _SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension.</p>
--- @param _EndDateTime [EndDateTime] <p>The date and time that the schema extension was completed.</p>
--- @param _StartDateTime [StartDateTime] <p>The date and time that the schema extension started being applied to the directory.</p>
--- @param _SchemaExtensionStatusReason [SchemaExtensionStatusReason] <p>The reason for the <code>SchemaExtensionStatus</code>.</p>
-function M.SchemaExtensionInfo(_DirectoryId, _Description, _SchemaExtensionStatus, _SchemaExtensionId, _EndDateTime, _StartDateTime, _SchemaExtensionStatusReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SchemaExtensionInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory to which the schema extension is applied.</p>
+-- * Description [Description] <p>A description of the schema extension.</p>
+-- * SchemaExtensionStatus [SchemaExtensionStatus] <p>The current status of the schema extension.</p>
+-- * SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension.</p>
+-- * EndDateTime [EndDateTime] <p>The date and time that the schema extension was completed.</p>
+-- * StartDateTime [StartDateTime] <p>The date and time that the schema extension started being applied to the directory.</p>
+-- * SchemaExtensionStatusReason [SchemaExtensionStatusReason] <p>The reason for the <code>SchemaExtensionStatus</code>.</p>
+-- @return SchemaExtensionInfo structure as a key-value pair table
+function M.SchemaExtensionInfo(args)
+	assert(args, "You must provdide an argument table when creating SchemaExtensionInfo")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["Description"] = _Description,
-		["SchemaExtensionStatus"] = _SchemaExtensionStatus,
-		["SchemaExtensionId"] = _SchemaExtensionId,
-		["EndDateTime"] = _EndDateTime,
-		["StartDateTime"] = _StartDateTime,
-		["SchemaExtensionStatusReason"] = _SchemaExtensionStatusReason,
+		["DirectoryId"] = args["DirectoryId"],
+		["Description"] = args["Description"],
+		["SchemaExtensionStatus"] = args["SchemaExtensionStatus"],
+		["SchemaExtensionId"] = args["SchemaExtensionId"],
+		["EndDateTime"] = args["EndDateTime"],
+		["StartDateTime"] = args["StartDateTime"],
+		["SchemaExtensionStatusReason"] = args["SchemaExtensionStatusReason"],
 	}
 	asserts.AssertSchemaExtensionInfo(t)
 	return t
@@ -1245,8 +1368,11 @@ end
 
 --- Create a structure of type RemoveIpRoutesResult
 --  
-function M.RemoveIpRoutesResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveIpRoutesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RemoveIpRoutesResult structure as a key-value pair table
+function M.RemoveIpRoutesResult(args)
+	assert(args, "You must provdide an argument table when creating RemoveIpRoutesResult")
 	local t = { 
 	}
 	asserts.AssertRemoveIpRoutesResult(t)
@@ -1267,13 +1393,16 @@ end
 
 --- Create a structure of type ListIpRoutesResult
 --  
--- @param _IpRoutesInfo [IpRoutesInfo] <p>A list of <a>IpRoute</a>s.</p>
--- @param _NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>ListIpRoutes</a> to retrieve the next set of items.</p>
-function M.ListIpRoutesResult(_IpRoutesInfo, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIpRoutesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IpRoutesInfo [IpRoutesInfo] <p>A list of <a>IpRoute</a>s.</p>
+-- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>ListIpRoutes</a> to retrieve the next set of items.</p>
+-- @return ListIpRoutesResult structure as a key-value pair table
+function M.ListIpRoutesResult(args)
+	assert(args, "You must provdide an argument table when creating ListIpRoutesResult")
 	local t = { 
-		["IpRoutesInfo"] = _IpRoutesInfo,
-		["NextToken"] = _NextToken,
+		["IpRoutesInfo"] = args["IpRoutesInfo"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListIpRoutesResult(t)
 	return t
@@ -1295,15 +1424,18 @@ end
 
 --- Create a structure of type DeleteConditionalForwarderRequest
 -- <p>Deletes a conditional forwarder.</p>
--- @param _DirectoryId [DirectoryId] <p>The directory ID for which you are deleting the conditional forwarder.</p>
--- @param _RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domain with which you are deleting the conditional forwarder.</p>
--- Required parameter: DirectoryId
--- Required parameter: RemoteDomainName
-function M.DeleteConditionalForwarderRequest(_DirectoryId, _RemoteDomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConditionalForwarderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The directory ID for which you are deleting the conditional forwarder.</p>
+-- * RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domain with which you are deleting the conditional forwarder.</p>
+-- Required key: DirectoryId
+-- Required key: RemoteDomainName
+-- @return DeleteConditionalForwarderRequest structure as a key-value pair table
+function M.DeleteConditionalForwarderRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteConditionalForwarderRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["RemoteDomainName"] = _RemoteDomainName,
+		["DirectoryId"] = args["DirectoryId"],
+		["RemoteDomainName"] = args["RemoteDomainName"],
 	}
 	asserts.AssertDeleteConditionalForwarderRequest(t)
 	return t
@@ -1324,15 +1456,18 @@ end
 
 --- Create a structure of type Computer
 -- <p>Contains information about a computer account in a directory.</p>
--- @param _ComputerName [ComputerName] <p>The computer name.</p>
--- @param _ComputerAttributes [Attributes] <p>An array of <a>Attribute</a> objects containing the LDAP attributes that belong to the computer account.</p>
--- @param _ComputerId [SID] <p>The identifier of the computer.</p>
-function M.Computer(_ComputerName, _ComputerAttributes, _ComputerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Computer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComputerName [ComputerName] <p>The computer name.</p>
+-- * ComputerAttributes [Attributes] <p>An array of <a>Attribute</a> objects containing the LDAP attributes that belong to the computer account.</p>
+-- * ComputerId [SID] <p>The identifier of the computer.</p>
+-- @return Computer structure as a key-value pair table
+function M.Computer(args)
+	assert(args, "You must provdide an argument table when creating Computer")
 	local t = { 
-		["ComputerName"] = _ComputerName,
-		["ComputerAttributes"] = _ComputerAttributes,
-		["ComputerId"] = _ComputerId,
+		["ComputerName"] = args["ComputerName"],
+		["ComputerAttributes"] = args["ComputerAttributes"],
+		["ComputerId"] = args["ComputerId"],
 	}
 	asserts.AssertComputer(t)
 	return t
@@ -1358,21 +1493,24 @@ end
 
 --- Create a structure of type DirectoryConnectSettings
 -- <p>Contains information for the <a>ConnectDirectory</a> operation when an AD Connector directory is being created.</p>
--- @param _CustomerDnsIps [DnsIpAddrs] <p>A list of one or more IP addresses of DNS servers or domain controllers in the on-premises directory.</p>
--- @param _CustomerUserName [UserName] <p>The username of an account in the on-premises directory that is used to connect to the directory. This account must have the following privileges:</p> <ul> <li> <p>Read users and groups</p> </li> <li> <p>Create computer objects</p> </li> <li> <p>Join computers to the domain</p> </li> </ul>
--- @param _SubnetIds [SubnetIds] <p>A list of subnet identifiers in the VPC in which the AD Connector is created.</p>
--- @param _VpcId [VpcId] <p>The identifier of the VPC in which the AD Connector is created.</p>
--- Required parameter: VpcId
--- Required parameter: SubnetIds
--- Required parameter: CustomerDnsIps
--- Required parameter: CustomerUserName
-function M.DirectoryConnectSettings(_CustomerDnsIps, _CustomerUserName, _SubnetIds, _VpcId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryConnectSettings")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CustomerDnsIps [DnsIpAddrs] <p>A list of one or more IP addresses of DNS servers or domain controllers in the on-premises directory.</p>
+-- * CustomerUserName [UserName] <p>The username of an account in the on-premises directory that is used to connect to the directory. This account must have the following privileges:</p> <ul> <li> <p>Read users and groups</p> </li> <li> <p>Create computer objects</p> </li> <li> <p>Join computers to the domain</p> </li> </ul>
+-- * SubnetIds [SubnetIds] <p>A list of subnet identifiers in the VPC in which the AD Connector is created.</p>
+-- * VpcId [VpcId] <p>The identifier of the VPC in which the AD Connector is created.</p>
+-- Required key: VpcId
+-- Required key: SubnetIds
+-- Required key: CustomerDnsIps
+-- Required key: CustomerUserName
+-- @return DirectoryConnectSettings structure as a key-value pair table
+function M.DirectoryConnectSettings(args)
+	assert(args, "You must provdide an argument table when creating DirectoryConnectSettings")
 	local t = { 
-		["CustomerDnsIps"] = _CustomerDnsIps,
-		["CustomerUserName"] = _CustomerUserName,
-		["SubnetIds"] = _SubnetIds,
-		["VpcId"] = _VpcId,
+		["CustomerDnsIps"] = args["CustomerDnsIps"],
+		["CustomerUserName"] = args["CustomerUserName"],
+		["SubnetIds"] = args["SubnetIds"],
+		["VpcId"] = args["VpcId"],
 	}
 	asserts.AssertDirectoryConnectSettings(t)
 	return t
@@ -1394,16 +1532,19 @@ end
 
 --- Create a structure of type ListSchemaExtensionsRequest
 --  
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory from which to retrieve the schema extension information.</p>
--- @param _NextToken [NextToken] <p>The <code>ListSchemaExtensions.NextToken</code> value from a previous call to <code>ListSchemaExtensions</code>. Pass null if this is the first call.</p>
--- @param _Limit [Limit] <p>The maximum number of items to return.</p>
--- Required parameter: DirectoryId
-function M.ListSchemaExtensionsRequest(_DirectoryId, _NextToken, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSchemaExtensionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory from which to retrieve the schema extension information.</p>
+-- * NextToken [NextToken] <p>The <code>ListSchemaExtensions.NextToken</code> value from a previous call to <code>ListSchemaExtensions</code>. Pass null if this is the first call.</p>
+-- * Limit [Limit] <p>The maximum number of items to return.</p>
+-- Required key: DirectoryId
+-- @return ListSchemaExtensionsRequest structure as a key-value pair table
+function M.ListSchemaExtensionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListSchemaExtensionsRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
+		["DirectoryId"] = args["DirectoryId"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListSchemaExtensionsRequest(t)
 	return t
@@ -1422,11 +1563,14 @@ end
 
 --- Create a structure of type DescribeEventTopicsResult
 -- <p>The result of a DescribeEventTopic request.</p>
--- @param _EventTopics [EventTopics] <p>A list of SNS topic names that receive status messages from the specified Directory ID.</p>
-function M.DescribeEventTopicsResult(_EventTopics, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventTopicsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventTopics [EventTopics] <p>A list of SNS topic names that receive status messages from the specified Directory ID.</p>
+-- @return DescribeEventTopicsResult structure as a key-value pair table
+function M.DescribeEventTopicsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventTopicsResult")
 	local t = { 
-		["EventTopics"] = _EventTopics,
+		["EventTopics"] = args["EventTopics"],
 	}
 	asserts.AssertDescribeEventTopicsResult(t)
 	return t
@@ -1448,15 +1592,18 @@ end
 
 --- Create a structure of type DeregisterEventTopicRequest
 -- <p>Removes the specified directory as a publisher to the specified SNS topic.</p>
--- @param _DirectoryId [DirectoryId] <p>The Directory ID to remove as a publisher. This directory will no longer send messages to the specified SNS topic.</p>
--- @param _TopicName [TopicName] <p>The name of the SNS topic from which to remove the directory as a publisher.</p>
--- Required parameter: DirectoryId
--- Required parameter: TopicName
-function M.DeregisterEventTopicRequest(_DirectoryId, _TopicName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterEventTopicRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The Directory ID to remove as a publisher. This directory will no longer send messages to the specified SNS topic.</p>
+-- * TopicName [TopicName] <p>The name of the SNS topic from which to remove the directory as a publisher.</p>
+-- Required key: DirectoryId
+-- Required key: TopicName
+-- @return DeregisterEventTopicRequest structure as a key-value pair table
+function M.DeregisterEventTopicRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterEventTopicRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["TopicName"] = _TopicName,
+		["DirectoryId"] = args["DirectoryId"],
+		["TopicName"] = args["TopicName"],
 	}
 	asserts.AssertDeregisterEventTopicRequest(t)
 	return t
@@ -1475,11 +1622,14 @@ end
 
 --- Create a structure of type VerifyTrustResult
 -- <p>Result of a VerifyTrust request.</p>
--- @param _TrustId [TrustId] <p>The unique Trust ID of the trust relationship that was verified.</p>
-function M.VerifyTrustResult(_TrustId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VerifyTrustResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrustId [TrustId] <p>The unique Trust ID of the trust relationship that was verified.</p>
+-- @return VerifyTrustResult structure as a key-value pair table
+function M.VerifyTrustResult(args)
+	assert(args, "You must provdide an argument table when creating VerifyTrustResult")
 	local t = { 
-		["TrustId"] = _TrustId,
+		["TrustId"] = args["TrustId"],
 	}
 	asserts.AssertVerifyTrustResult(t)
 	return t
@@ -1497,8 +1647,11 @@ end
 
 --- Create a structure of type CreateConditionalForwarderResult
 -- <p>The result of a CreateConditinalForwarder request.</p>
-function M.CreateConditionalForwarderResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateConditionalForwarderResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateConditionalForwarderResult structure as a key-value pair table
+function M.CreateConditionalForwarderResult(args)
+	assert(args, "You must provdide an argument table when creating CreateConditionalForwarderResult")
 	local t = { 
 	}
 	asserts.AssertCreateConditionalForwarderResult(t)
@@ -1519,13 +1672,16 @@ end
 
 --- Create a structure of type DescribeDirectoriesResult
 -- <p>Contains the results of the <a>DescribeDirectories</a> operation.</p>
--- @param _DirectoryDescriptions [DirectoryDescriptions] <p>The list of <a>DirectoryDescription</a> objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
--- @param _NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>DescribeDirectories</a> to retrieve the next set of items.</p>
-function M.DescribeDirectoriesResult(_DirectoryDescriptions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDirectoriesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryDescriptions [DirectoryDescriptions] <p>The list of <a>DirectoryDescription</a> objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
+-- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>DescribeDirectories</a> to retrieve the next set of items.</p>
+-- @return DescribeDirectoriesResult structure as a key-value pair table
+function M.DescribeDirectoriesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeDirectoriesResult")
 	local t = { 
-		["DirectoryDescriptions"] = _DirectoryDescriptions,
-		["NextToken"] = _NextToken,
+		["DirectoryDescriptions"] = args["DirectoryDescriptions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeDirectoriesResult(t)
 	return t
@@ -1545,12 +1701,15 @@ end
 
 --- Create a structure of type GetSnapshotLimitsRequest
 -- <p>Contains the inputs for the <a>GetSnapshotLimits</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>Contains the identifier of the directory to obtain the limits for.</p>
--- Required parameter: DirectoryId
-function M.GetSnapshotLimitsRequest(_DirectoryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSnapshotLimitsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>Contains the identifier of the directory to obtain the limits for.</p>
+-- Required key: DirectoryId
+-- @return GetSnapshotLimitsRequest structure as a key-value pair table
+function M.GetSnapshotLimitsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSnapshotLimitsRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
+		["DirectoryId"] = args["DirectoryId"],
 	}
 	asserts.AssertGetSnapshotLimitsRequest(t)
 	return t
@@ -1576,22 +1735,25 @@ end
 
 --- Create a structure of type CreateMicrosoftADRequest
 -- <p>Creates a Microsoft AD in the AWS cloud.</p>
--- @param _ShortName [DirectoryShortName] <p>The NetBIOS name for your domain. A short identifier for your domain, such as <code>CORP</code>. If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, <code>CORP</code> for the directory DNS <code>corp.example.com</code>. </p>
--- @param _Password [Password] <p>The password for the default administrative user named <code>Admin</code>.</p>
--- @param _Name [DirectoryName] <p>The fully qualified domain name for the directory, such as <code>corp.example.com</code>. This name will resolve inside your VPC only. It does not need to be publicly resolvable.</p>
--- @param _VpcSettings [DirectoryVpcSettings] 
--- @param _Description [Description] <p>A textual description for the directory. This label will appear on the AWS console <code>Directory Details</code> page after the directory is created.</p>
--- Required parameter: Name
--- Required parameter: Password
--- Required parameter: VpcSettings
-function M.CreateMicrosoftADRequest(_ShortName, _Password, _Name, _VpcSettings, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateMicrosoftADRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShortName [DirectoryShortName] <p>The NetBIOS name for your domain. A short identifier for your domain, such as <code>CORP</code>. If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, <code>CORP</code> for the directory DNS <code>corp.example.com</code>. </p>
+-- * Password [Password] <p>The password for the default administrative user named <code>Admin</code>.</p>
+-- * Name [DirectoryName] <p>The fully qualified domain name for the directory, such as <code>corp.example.com</code>. This name will resolve inside your VPC only. It does not need to be publicly resolvable.</p>
+-- * VpcSettings [DirectoryVpcSettings] 
+-- * Description [Description] <p>A textual description for the directory. This label will appear on the AWS console <code>Directory Details</code> page after the directory is created.</p>
+-- Required key: Name
+-- Required key: Password
+-- Required key: VpcSettings
+-- @return CreateMicrosoftADRequest structure as a key-value pair table
+function M.CreateMicrosoftADRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateMicrosoftADRequest")
 	local t = { 
-		["ShortName"] = _ShortName,
-		["Password"] = _Password,
-		["Name"] = _Name,
-		["VpcSettings"] = _VpcSettings,
-		["Description"] = _Description,
+		["ShortName"] = args["ShortName"],
+		["Password"] = args["Password"],
+		["Name"] = args["Name"],
+		["VpcSettings"] = args["VpcSettings"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateMicrosoftADRequest(t)
 	return t
@@ -1611,13 +1773,16 @@ end
 
 --- Create a structure of type DescribeEventTopicsRequest
 -- <p>Describes event topics.</p>
--- @param _DirectoryId [DirectoryId] <p>The Directory ID for which to get the list of associated SNS topics. If this member is null, associations for all Directory IDs are returned.</p>
--- @param _TopicNames [TopicNames] <p>A list of SNS topic names for which to obtain the information. If this member is null, all associations for the specified Directory ID are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
-function M.DescribeEventTopicsRequest(_DirectoryId, _TopicNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventTopicsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The Directory ID for which to get the list of associated SNS topics. If this member is null, associations for all Directory IDs are returned.</p>
+-- * TopicNames [TopicNames] <p>A list of SNS topic names for which to obtain the information. If this member is null, all associations for the specified Directory ID are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
+-- @return DescribeEventTopicsRequest structure as a key-value pair table
+function M.DescribeEventTopicsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventTopicsRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["TopicNames"] = _TopicNames,
+		["DirectoryId"] = args["DirectoryId"],
+		["TopicNames"] = args["TopicNames"],
 	}
 	asserts.AssertDescribeEventTopicsRequest(t)
 	return t
@@ -1639,17 +1804,20 @@ end
 
 --- Create a structure of type DescribeTrustsRequest
 -- <p>Describes the trust relationships for a particular Microsoft AD in the AWS cloud. If no input parameters are are provided, such as directory ID or trust ID, this request describes all the trust relationships.</p>
--- @param _Limit [Limit] <p>The maximum number of objects to return.</p>
--- @param _DirectoryId [DirectoryId] <p>The Directory ID of the AWS directory that is a part of the requested trust relationship.</p>
--- @param _NextToken [NextToken] <p>The <i>DescribeTrustsResult.NextToken</i> value from a previous call to <a>DescribeTrusts</a>. Pass null if this is the first call.</p>
--- @param _TrustIds [TrustIds] <p>A list of identifiers of the trust relationships for which to obtain the information. If this member is null, all trust relationships that belong to the current account are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
-function M.DescribeTrustsRequest(_Limit, _DirectoryId, _NextToken, _TrustIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [Limit] <p>The maximum number of objects to return.</p>
+-- * DirectoryId [DirectoryId] <p>The Directory ID of the AWS directory that is a part of the requested trust relationship.</p>
+-- * NextToken [NextToken] <p>The <i>DescribeTrustsResult.NextToken</i> value from a previous call to <a>DescribeTrusts</a>. Pass null if this is the first call.</p>
+-- * TrustIds [TrustIds] <p>A list of identifiers of the trust relationships for which to obtain the information. If this member is null, all trust relationships that belong to the current account are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
+-- @return DescribeTrustsRequest structure as a key-value pair table
+function M.DescribeTrustsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrustsRequest")
 	local t = { 
-		["Limit"] = _Limit,
-		["DirectoryId"] = _DirectoryId,
-		["NextToken"] = _NextToken,
-		["TrustIds"] = _TrustIds,
+		["Limit"] = args["Limit"],
+		["DirectoryId"] = args["DirectoryId"],
+		["NextToken"] = args["NextToken"],
+		["TrustIds"] = args["TrustIds"],
 	}
 	asserts.AssertDescribeTrustsRequest(t)
 	return t
@@ -1671,16 +1839,19 @@ end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param _ResourceId [ResourceId] <p>Identifier (ID) of the directory for which you want to retrieve tags.</p>
--- @param _NextToken [NextToken] <p>Reserved for future use.</p>
--- @param _Limit [Limit] <p>Reserved for future use.</p>
--- Required parameter: ResourceId
-function M.ListTagsForResourceRequest(_ResourceId, _NextToken, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [ResourceId] <p>Identifier (ID) of the directory for which you want to retrieve tags.</p>
+-- * NextToken [NextToken] <p>Reserved for future use.</p>
+-- * Limit [Limit] <p>Reserved for future use.</p>
+-- Required key: ResourceId
+-- @return ListTagsForResourceRequest structure as a key-value pair table
+function M.ListTagsForResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
+		["ResourceId"] = args["ResourceId"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListTagsForResourceRequest(t)
 	return t
@@ -1698,8 +1869,11 @@ end
 
 --- Create a structure of type UpdateRadiusResult
 -- <p>Contains the results of the <a>UpdateRadius</a> operation.</p>
-function M.UpdateRadiusResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRadiusResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateRadiusResult structure as a key-value pair table
+function M.UpdateRadiusResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateRadiusResult")
 	local t = { 
 	}
 	asserts.AssertUpdateRadiusResult(t)
@@ -1720,12 +1894,15 @@ end
 
 --- Create a structure of type DisableRadiusRequest
 -- <p>Contains the inputs for the <a>DisableRadius</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory for which to disable MFA.</p>
--- Required parameter: DirectoryId
-function M.DisableRadiusRequest(_DirectoryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableRadiusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory for which to disable MFA.</p>
+-- Required key: DirectoryId
+-- @return DisableRadiusRequest structure as a key-value pair table
+function M.DisableRadiusRequest(args)
+	assert(args, "You must provdide an argument table when creating DisableRadiusRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
+		["DirectoryId"] = args["DirectoryId"],
 	}
 	asserts.AssertDisableRadiusRequest(t)
 	return t
@@ -1745,13 +1922,16 @@ end
 
 --- Create a structure of type AuthenticationFailedException
 -- <p>An authentication error occurred.</p>
--- @param _Message [ExceptionMessage] <p>The textual message for the exception.</p>
--- @param _RequestId [RequestId] <p>The identifier of the request that caused the exception.</p>
-function M.AuthenticationFailedException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AuthenticationFailedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] <p>The textual message for the exception.</p>
+-- * RequestId [RequestId] <p>The identifier of the request that caused the exception.</p>
+-- @return AuthenticationFailedException structure as a key-value pair table
+function M.AuthenticationFailedException(args)
+	assert(args, "You must provdide an argument table when creating AuthenticationFailedException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertAuthenticationFailedException(t)
 	return t
@@ -1771,13 +1951,16 @@ end
 
 --- Create a structure of type ServiceException
 -- <p>An exception has occurred in AWS Directory Service.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.ServiceException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return ServiceException structure as a key-value pair table
+function M.ServiceException(args)
+	assert(args, "You must provdide an argument table when creating ServiceException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertServiceException(t)
 	return t
@@ -1799,15 +1982,18 @@ end
 
 --- Create a structure of type CreateAliasRequest
 -- <p>Contains the inputs for the <a>CreateAlias</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory for which to create the alias.</p>
--- @param _Alias [AliasName] <p>The requested alias.</p> <p>The alias must be unique amongst all aliases in AWS. This operation throws an <code>EntityAlreadyExistsException</code> error if the alias already exists.</p>
--- Required parameter: DirectoryId
--- Required parameter: Alias
-function M.CreateAliasRequest(_DirectoryId, _Alias, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAliasRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory for which to create the alias.</p>
+-- * Alias [AliasName] <p>The requested alias.</p> <p>The alias must be unique amongst all aliases in AWS. This operation throws an <code>EntityAlreadyExistsException</code> error if the alias already exists.</p>
+-- Required key: DirectoryId
+-- Required key: Alias
+-- @return CreateAliasRequest structure as a key-value pair table
+function M.CreateAliasRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateAliasRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["Alias"] = _Alias,
+		["DirectoryId"] = args["DirectoryId"],
+		["Alias"] = args["Alias"],
 	}
 	asserts.AssertCreateAliasRequest(t)
 	return t
@@ -1828,15 +2014,18 @@ end
 
 --- Create a structure of type ConditionalForwarder
 -- <p>Points to a remote domain with which you are setting up a trust relationship. Conditional forwarders are required in order to set up a trust relationship with another domain.</p>
--- @param _RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domains pointed to by the conditional forwarder.</p>
--- @param _DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the remote DNS server associated with RemoteDomainName. This is the IP address of the DNS server that your conditional forwarder points to.</p>
--- @param _ReplicationScope [ReplicationScope] <p>The replication scope of the conditional forwarder. The only allowed value is <code>Domain</code>, which will replicate the conditional forwarder to all of the domain controllers for your AWS directory.</p>
-function M.ConditionalForwarder(_RemoteDomainName, _DnsIpAddrs, _ReplicationScope, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConditionalForwarder")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domains pointed to by the conditional forwarder.</p>
+-- * DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the remote DNS server associated with RemoteDomainName. This is the IP address of the DNS server that your conditional forwarder points to.</p>
+-- * ReplicationScope [ReplicationScope] <p>The replication scope of the conditional forwarder. The only allowed value is <code>Domain</code>, which will replicate the conditional forwarder to all of the domain controllers for your AWS directory.</p>
+-- @return ConditionalForwarder structure as a key-value pair table
+function M.ConditionalForwarder(args)
+	assert(args, "You must provdide an argument table when creating ConditionalForwarder")
 	local t = { 
-		["RemoteDomainName"] = _RemoteDomainName,
-		["DnsIpAddrs"] = _DnsIpAddrs,
-		["ReplicationScope"] = _ReplicationScope,
+		["RemoteDomainName"] = args["RemoteDomainName"],
+		["DnsIpAddrs"] = args["DnsIpAddrs"],
+		["ReplicationScope"] = args["ReplicationScope"],
 	}
 	asserts.AssertConditionalForwarder(t)
 	return t
@@ -1859,17 +2048,20 @@ end
 
 --- Create a structure of type AddIpRoutesRequest
 --  
--- @param _DirectoryId [DirectoryId] <p>Identifier (ID) of the directory to which to add the address block.</p>
--- @param _UpdateSecurityGroupForDirectoryControllers [UpdateSecurityGroupForDirectoryControllers] <p>If set to true, updates the inbound and outbound rules of the security group that has the description: "AWS created security group for <i>directory ID</i> directory controllers." Following are the new rules: </p> <p>Inbound:</p> <ul> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 88, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 123, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 138, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 389, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 464, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 445, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 88, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 135, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 445, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 464, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 636, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 1024-65535, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 3268-33269, Source: 0.0.0.0/0</p> </li> <li> <p>Type: DNS (UDP), Protocol: UDP, Range: 53, Source: 0.0.0.0/0</p> </li> <li> <p>Type: DNS (TCP), Protocol: TCP, Range: 53, Source: 0.0.0.0/0</p> </li> <li> <p>Type: LDAP, Protocol: TCP, Range: 389, Source: 0.0.0.0/0</p> </li> <li> <p>Type: All ICMP, Protocol: All, Range: N/A, Source: 0.0.0.0/0</p> </li> </ul> <p/> <p>Outbound:</p> <ul> <li> <p>Type: All traffic, Protocol: All, Range: All, Destination: 0.0.0.0/0</p> </li> </ul> <p>These security rules impact an internal network interface that is not exposed publicly.</p>
--- @param _IpRoutes [IpRoutes] <p>IP address blocks, using CIDR format, of the traffic to route. This is often the IP address block of the DNS server used for your on-premises domain.</p>
--- Required parameter: DirectoryId
--- Required parameter: IpRoutes
-function M.AddIpRoutesRequest(_DirectoryId, _UpdateSecurityGroupForDirectoryControllers, _IpRoutes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddIpRoutesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>Identifier (ID) of the directory to which to add the address block.</p>
+-- * UpdateSecurityGroupForDirectoryControllers [UpdateSecurityGroupForDirectoryControllers] <p>If set to true, updates the inbound and outbound rules of the security group that has the description: "AWS created security group for <i>directory ID</i> directory controllers." Following are the new rules: </p> <p>Inbound:</p> <ul> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 88, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 123, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 138, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 389, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 464, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom UDP Rule, Protocol: UDP, Range: 445, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 88, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 135, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 445, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 464, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 636, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 1024-65535, Source: 0.0.0.0/0</p> </li> <li> <p>Type: Custom TCP Rule, Protocol: TCP, Range: 3268-33269, Source: 0.0.0.0/0</p> </li> <li> <p>Type: DNS (UDP), Protocol: UDP, Range: 53, Source: 0.0.0.0/0</p> </li> <li> <p>Type: DNS (TCP), Protocol: TCP, Range: 53, Source: 0.0.0.0/0</p> </li> <li> <p>Type: LDAP, Protocol: TCP, Range: 389, Source: 0.0.0.0/0</p> </li> <li> <p>Type: All ICMP, Protocol: All, Range: N/A, Source: 0.0.0.0/0</p> </li> </ul> <p/> <p>Outbound:</p> <ul> <li> <p>Type: All traffic, Protocol: All, Range: All, Destination: 0.0.0.0/0</p> </li> </ul> <p>These security rules impact an internal network interface that is not exposed publicly.</p>
+-- * IpRoutes [IpRoutes] <p>IP address blocks, using CIDR format, of the traffic to route. This is often the IP address block of the DNS server used for your on-premises domain.</p>
+-- Required key: DirectoryId
+-- Required key: IpRoutes
+-- @return AddIpRoutesRequest structure as a key-value pair table
+function M.AddIpRoutesRequest(args)
+	assert(args, "You must provdide an argument table when creating AddIpRoutesRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["UpdateSecurityGroupForDirectoryControllers"] = _UpdateSecurityGroupForDirectoryControllers,
-		["IpRoutes"] = _IpRoutes,
+		["DirectoryId"] = args["DirectoryId"],
+		["UpdateSecurityGroupForDirectoryControllers"] = args["UpdateSecurityGroupForDirectoryControllers"],
+		["IpRoutes"] = args["IpRoutes"],
 	}
 	asserts.AssertAddIpRoutesRequest(t)
 	return t
@@ -1887,8 +2079,11 @@ end
 
 --- Create a structure of type RegisterEventTopicResult
 -- <p>The result of a RegisterEventTopic request.</p>
-function M.RegisterEventTopicResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterEventTopicResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RegisterEventTopicResult structure as a key-value pair table
+function M.RegisterEventTopicResult(args)
+	assert(args, "You must provdide an argument table when creating RegisterEventTopicResult")
 	local t = { 
 	}
 	asserts.AssertRegisterEventTopicResult(t)
@@ -1911,15 +2106,18 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceRequest
 --  
--- @param _ResourceId [ResourceId] <p>Identifier (ID) of the directory from which to remove the tag.</p>
--- @param _TagKeys [TagKeys] <p>The tag key (name) of the tag to be removed.</p>
--- Required parameter: ResourceId
--- Required parameter: TagKeys
-function M.RemoveTagsFromResourceRequest(_ResourceId, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [ResourceId] <p>Identifier (ID) of the directory from which to remove the tag.</p>
+-- * TagKeys [TagKeys] <p>The tag key (name) of the tag to be removed.</p>
+-- Required key: ResourceId
+-- Required key: TagKeys
+-- @return RemoveTagsFromResourceRequest structure as a key-value pair table
+function M.RemoveTagsFromResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceRequest")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["TagKeys"] = _TagKeys,
+		["ResourceId"] = args["ResourceId"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertRemoveTagsFromResourceRequest(t)
 	return t
@@ -1947,25 +2145,28 @@ end
 
 --- Create a structure of type CreateTrustRequest
 -- <p>AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your Microsoft AD in the AWS cloud, and your existing on-premises Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.</p> <p>This action initiates the creation of the AWS side of a trust relationship between a Microsoft AD in the AWS cloud and an external domain.</p>
--- @param _TrustPassword [TrustPassword] <p>The trust password. The must be the same password that was used when creating the trust relationship on the external domain.</p>
--- @param _DirectoryId [DirectoryId] <p>The Directory ID of the Microsoft AD in the AWS cloud for which to establish the trust relationship.</p>
--- @param _RemoteDomainName [RemoteDomainName] <p>The Fully Qualified Domain Name (FQDN) of the external domain for which to create the trust relationship.</p>
--- @param _ConditionalForwarderIpAddrs [DnsIpAddrs] <p>The IP addresses of the remote DNS server associated with RemoteDomainName.</p>
--- @param _TrustType [TrustType] <p>The trust relationship type.</p>
--- @param _TrustDirection [TrustDirection] <p>The direction of the trust relationship.</p>
--- Required parameter: DirectoryId
--- Required parameter: RemoteDomainName
--- Required parameter: TrustPassword
--- Required parameter: TrustDirection
-function M.CreateTrustRequest(_TrustPassword, _DirectoryId, _RemoteDomainName, _ConditionalForwarderIpAddrs, _TrustType, _TrustDirection, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrustRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrustPassword [TrustPassword] <p>The trust password. The must be the same password that was used when creating the trust relationship on the external domain.</p>
+-- * DirectoryId [DirectoryId] <p>The Directory ID of the Microsoft AD in the AWS cloud for which to establish the trust relationship.</p>
+-- * RemoteDomainName [RemoteDomainName] <p>The Fully Qualified Domain Name (FQDN) of the external domain for which to create the trust relationship.</p>
+-- * ConditionalForwarderIpAddrs [DnsIpAddrs] <p>The IP addresses of the remote DNS server associated with RemoteDomainName.</p>
+-- * TrustType [TrustType] <p>The trust relationship type.</p>
+-- * TrustDirection [TrustDirection] <p>The direction of the trust relationship.</p>
+-- Required key: DirectoryId
+-- Required key: RemoteDomainName
+-- Required key: TrustPassword
+-- Required key: TrustDirection
+-- @return CreateTrustRequest structure as a key-value pair table
+function M.CreateTrustRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateTrustRequest")
 	local t = { 
-		["TrustPassword"] = _TrustPassword,
-		["DirectoryId"] = _DirectoryId,
-		["RemoteDomainName"] = _RemoteDomainName,
-		["ConditionalForwarderIpAddrs"] = _ConditionalForwarderIpAddrs,
-		["TrustType"] = _TrustType,
-		["TrustDirection"] = _TrustDirection,
+		["TrustPassword"] = args["TrustPassword"],
+		["DirectoryId"] = args["DirectoryId"],
+		["RemoteDomainName"] = args["RemoteDomainName"],
+		["ConditionalForwarderIpAddrs"] = args["ConditionalForwarderIpAddrs"],
+		["TrustType"] = args["TrustType"],
+		["TrustDirection"] = args["TrustDirection"],
 	}
 	asserts.AssertCreateTrustRequest(t)
 	return t
@@ -1987,15 +2188,18 @@ end
 
 --- Create a structure of type CancelSchemaExtensionRequest
 --  
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory whose schema extension will be canceled.</p>
--- @param _SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension that will be canceled.</p>
--- Required parameter: DirectoryId
--- Required parameter: SchemaExtensionId
-function M.CancelSchemaExtensionRequest(_DirectoryId, _SchemaExtensionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelSchemaExtensionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory whose schema extension will be canceled.</p>
+-- * SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension that will be canceled.</p>
+-- Required key: DirectoryId
+-- Required key: SchemaExtensionId
+-- @return CancelSchemaExtensionRequest structure as a key-value pair table
+function M.CancelSchemaExtensionRequest(args)
+	assert(args, "You must provdide an argument table when creating CancelSchemaExtensionRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["SchemaExtensionId"] = _SchemaExtensionId,
+		["DirectoryId"] = args["DirectoryId"],
+		["SchemaExtensionId"] = args["SchemaExtensionId"],
 	}
 	asserts.AssertCancelSchemaExtensionRequest(t)
 	return t
@@ -2017,15 +2221,18 @@ end
 
 --- Create a structure of type UpdateRadiusRequest
 -- <p>Contains the inputs for the <a>UpdateRadius</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory for which to update the RADIUS server information.</p>
--- @param _RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server.</p>
--- Required parameter: DirectoryId
--- Required parameter: RadiusSettings
-function M.UpdateRadiusRequest(_DirectoryId, _RadiusSettings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRadiusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory for which to update the RADIUS server information.</p>
+-- * RadiusSettings [RadiusSettings] <p>A <a>RadiusSettings</a> object that contains information about the RADIUS server.</p>
+-- Required key: DirectoryId
+-- Required key: RadiusSettings
+-- @return UpdateRadiusRequest structure as a key-value pair table
+function M.UpdateRadiusRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateRadiusRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["RadiusSettings"] = _RadiusSettings,
+		["DirectoryId"] = args["DirectoryId"],
+		["RadiusSettings"] = args["RadiusSettings"],
 	}
 	asserts.AssertUpdateRadiusRequest(t)
 	return t
@@ -2049,21 +2256,24 @@ end
 
 --- Create a structure of type Snapshot
 -- <p>Describes a directory snapshot.</p>
--- @param _Status [SnapshotStatus] <p>The snapshot status.</p>
--- @param _DirectoryId [DirectoryId] <p>The directory identifier.</p>
--- @param _Name [SnapshotName] <p>The descriptive name of the snapshot.</p>
--- @param _StartTime [StartTime] <p>The date and time that the snapshot was taken.</p>
--- @param _SnapshotId [SnapshotId] <p>The snapshot identifier.</p>
--- @param _Type [SnapshotType] <p>The snapshot type.</p>
-function M.Snapshot(_Status, _DirectoryId, _Name, _StartTime, _SnapshotId, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Snapshot")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [SnapshotStatus] <p>The snapshot status.</p>
+-- * DirectoryId [DirectoryId] <p>The directory identifier.</p>
+-- * Name [SnapshotName] <p>The descriptive name of the snapshot.</p>
+-- * StartTime [StartTime] <p>The date and time that the snapshot was taken.</p>
+-- * SnapshotId [SnapshotId] <p>The snapshot identifier.</p>
+-- * Type [SnapshotType] <p>The snapshot type.</p>
+-- @return Snapshot structure as a key-value pair table
+function M.Snapshot(args)
+	assert(args, "You must provdide an argument table when creating Snapshot")
 	local t = { 
-		["Status"] = _Status,
-		["DirectoryId"] = _DirectoryId,
-		["Name"] = _Name,
-		["StartTime"] = _StartTime,
-		["SnapshotId"] = _SnapshotId,
-		["Type"] = _Type,
+		["Status"] = args["Status"],
+		["DirectoryId"] = args["DirectoryId"],
+		["Name"] = args["Name"],
+		["StartTime"] = args["StartTime"],
+		["SnapshotId"] = args["SnapshotId"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertSnapshot(t)
 	return t
@@ -2082,11 +2292,14 @@ end
 
 --- Create a structure of type CreateMicrosoftADResult
 -- <p>Result of a CreateMicrosoftAD request.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory that was created.</p>
-function M.CreateMicrosoftADResult(_DirectoryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateMicrosoftADResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory that was created.</p>
+-- @return CreateMicrosoftADResult structure as a key-value pair table
+function M.CreateMicrosoftADResult(args)
+	assert(args, "You must provdide an argument table when creating CreateMicrosoftADResult")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
+		["DirectoryId"] = args["DirectoryId"],
 	}
 	asserts.AssertCreateMicrosoftADResult(t)
 	return t
@@ -2104,8 +2317,11 @@ end
 
 --- Create a structure of type EnableSsoResult
 -- <p>Contains the results of the <a>EnableSso</a> operation.</p>
-function M.EnableSsoResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableSsoResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return EnableSsoResult structure as a key-value pair table
+function M.EnableSsoResult(args)
+	assert(args, "You must provdide an argument table when creating EnableSsoResult")
 	local t = { 
 	}
 	asserts.AssertEnableSsoResult(t)
@@ -2133,24 +2349,27 @@ end
 
 --- Create a structure of type CreateDirectoryRequest
 -- <p>Contains the inputs for the <a>CreateDirectory</a> operation. </p>
--- @param _Name [DirectoryName] <p>The fully qualified name for the directory, such as <code>corp.example.com</code>.</p>
--- @param _VpcSettings [DirectoryVpcSettings] <p>A <a>DirectoryVpcSettings</a> object that contains additional information for the operation.</p>
--- @param _Description [Description] <p>A textual description for the directory.</p>
--- @param _ShortName [DirectoryShortName] <p>The short name of the directory, such as <code>CORP</code>.</p>
--- @param _Password [Password] <p>The password for the directory administrator. The directory creation process creates a directory administrator account with the username <code>Administrator</code> and this password.</p>
--- @param _Size [DirectorySize] <p>The size of the directory.</p>
--- Required parameter: Name
--- Required parameter: Password
--- Required parameter: Size
-function M.CreateDirectoryRequest(_Name, _VpcSettings, _Description, _ShortName, _Password, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDirectoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DirectoryName] <p>The fully qualified name for the directory, such as <code>corp.example.com</code>.</p>
+-- * VpcSettings [DirectoryVpcSettings] <p>A <a>DirectoryVpcSettings</a> object that contains additional information for the operation.</p>
+-- * Description [Description] <p>A textual description for the directory.</p>
+-- * ShortName [DirectoryShortName] <p>The short name of the directory, such as <code>CORP</code>.</p>
+-- * Password [Password] <p>The password for the directory administrator. The directory creation process creates a directory administrator account with the username <code>Administrator</code> and this password.</p>
+-- * Size [DirectorySize] <p>The size of the directory.</p>
+-- Required key: Name
+-- Required key: Password
+-- Required key: Size
+-- @return CreateDirectoryRequest structure as a key-value pair table
+function M.CreateDirectoryRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDirectoryRequest")
 	local t = { 
-		["Name"] = _Name,
-		["VpcSettings"] = _VpcSettings,
-		["Description"] = _Description,
-		["ShortName"] = _ShortName,
-		["Password"] = _Password,
-		["Size"] = _Size,
+		["Name"] = args["Name"],
+		["VpcSettings"] = args["VpcSettings"],
+		["Description"] = args["Description"],
+		["ShortName"] = args["ShortName"],
+		["Password"] = args["Password"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertCreateDirectoryRequest(t)
 	return t
@@ -2170,12 +2389,15 @@ end
 
 --- Create a structure of type RestoreFromSnapshotRequest
 -- <p>An object representing the inputs for the <a>RestoreFromSnapshot</a> operation.</p>
--- @param _SnapshotId [SnapshotId] <p>The identifier of the snapshot to restore from.</p>
--- Required parameter: SnapshotId
-function M.RestoreFromSnapshotRequest(_SnapshotId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RestoreFromSnapshotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnapshotId [SnapshotId] <p>The identifier of the snapshot to restore from.</p>
+-- Required key: SnapshotId
+-- @return RestoreFromSnapshotRequest structure as a key-value pair table
+function M.RestoreFromSnapshotRequest(args)
+	assert(args, "You must provdide an argument table when creating RestoreFromSnapshotRequest")
 	local t = { 
-		["SnapshotId"] = _SnapshotId,
+		["SnapshotId"] = args["SnapshotId"],
 	}
 	asserts.AssertRestoreFromSnapshotRequest(t)
 	return t
@@ -2195,13 +2417,16 @@ end
 
 --- Create a structure of type Attribute
 -- <p>Represents a named directory attribute.</p>
--- @param _Name [AttributeName] <p>The name of the attribute.</p>
--- @param _Value [AttributeValue] <p>The value of the attribute.</p>
-function M.Attribute(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Attribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [AttributeName] <p>The name of the attribute.</p>
+-- * Value [AttributeValue] <p>The value of the attribute.</p>
+-- @return Attribute structure as a key-value pair table
+function M.Attribute(args)
+	assert(args, "You must provdide an argument table when creating Attribute")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertAttribute(t)
 	return t
@@ -2221,13 +2446,16 @@ end
 
 --- Create a structure of type DescribeSnapshotsResult
 -- <p>Contains the results of the <a>DescribeSnapshots</a> operation.</p>
--- @param _NextToken [NextToken] <p>If not null, more results are available. Pass this value in the <i>NextToken</i> member of a subsequent call to <a>DescribeSnapshots</a>.</p>
--- @param _Snapshots [Snapshots] <p>The list of <a>Snapshot</a> objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
-function M.DescribeSnapshotsResult(_NextToken, _Snapshots, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSnapshotsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>If not null, more results are available. Pass this value in the <i>NextToken</i> member of a subsequent call to <a>DescribeSnapshots</a>.</p>
+-- * Snapshots [Snapshots] <p>The list of <a>Snapshot</a> objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
+-- @return DescribeSnapshotsResult structure as a key-value pair table
+function M.DescribeSnapshotsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeSnapshotsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Snapshots"] = _Snapshots,
+		["NextToken"] = args["NextToken"],
+		["Snapshots"] = args["Snapshots"],
 	}
 	asserts.AssertDescribeSnapshotsResult(t)
 	return t
@@ -2245,8 +2473,11 @@ end
 
 --- Create a structure of type GetDirectoryLimitsRequest
 -- <p>Contains the inputs for the <a>GetDirectoryLimits</a> operation.</p>
-function M.GetDirectoryLimitsRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDirectoryLimitsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetDirectoryLimitsRequest structure as a key-value pair table
+function M.GetDirectoryLimitsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDirectoryLimitsRequest")
 	local t = { 
 	}
 	asserts.AssertGetDirectoryLimitsRequest(t)
@@ -2268,14 +2499,17 @@ end
 
 --- Create a structure of type CreateSnapshotRequest
 -- <p>Contains the inputs for the <a>CreateSnapshot</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory of which to take a snapshot.</p>
--- @param _Name [SnapshotName] <p>The descriptive name to apply to the snapshot.</p>
--- Required parameter: DirectoryId
-function M.CreateSnapshotRequest(_DirectoryId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSnapshotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory of which to take a snapshot.</p>
+-- * Name [SnapshotName] <p>The descriptive name to apply to the snapshot.</p>
+-- Required key: DirectoryId
+-- @return CreateSnapshotRequest structure as a key-value pair table
+function M.CreateSnapshotRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSnapshotRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["Name"] = _Name,
+		["DirectoryId"] = args["DirectoryId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateSnapshotRequest(t)
 	return t
@@ -2296,15 +2530,18 @@ end
 
 --- Create a structure of type DescribeDirectoriesRequest
 -- <p>Contains the inputs for the <a>DescribeDirectories</a> operation.</p>
--- @param _DirectoryIds [DirectoryIds] <p>A list of identifiers of the directories for which to obtain the information. If this member is null, all directories that belong to the current account are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
--- @param _NextToken [NextToken] <p>The <i>DescribeDirectoriesResult.NextToken</i> value from a previous call to <a>DescribeDirectories</a>. Pass null if this is the first call.</p>
--- @param _Limit [Limit] <p>The maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.</p>
-function M.DescribeDirectoriesRequest(_DirectoryIds, _NextToken, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDirectoriesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryIds [DirectoryIds] <p>A list of identifiers of the directories for which to obtain the information. If this member is null, all directories that belong to the current account are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
+-- * NextToken [NextToken] <p>The <i>DescribeDirectoriesResult.NextToken</i> value from a previous call to <a>DescribeDirectories</a>. Pass null if this is the first call.</p>
+-- * Limit [Limit] <p>The maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.</p>
+-- @return DescribeDirectoriesRequest structure as a key-value pair table
+function M.DescribeDirectoriesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDirectoriesRequest")
 	local t = { 
-		["DirectoryIds"] = _DirectoryIds,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
+		["DirectoryIds"] = args["DirectoryIds"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeDirectoriesRequest(t)
 	return t
@@ -2323,11 +2560,14 @@ end
 
 --- Create a structure of type CreateSnapshotResult
 -- <p>Contains the results of the <a>CreateSnapshot</a> operation.</p>
--- @param _SnapshotId [SnapshotId] <p>The identifier of the snapshot that was created.</p>
-function M.CreateSnapshotResult(_SnapshotId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSnapshotResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnapshotId [SnapshotId] <p>The identifier of the snapshot that was created.</p>
+-- @return CreateSnapshotResult structure as a key-value pair table
+function M.CreateSnapshotResult(args)
+	assert(args, "You must provdide an argument table when creating CreateSnapshotResult")
 	local t = { 
-		["SnapshotId"] = _SnapshotId,
+		["SnapshotId"] = args["SnapshotId"],
 	}
 	asserts.AssertCreateSnapshotResult(t)
 	return t
@@ -2345,8 +2585,11 @@ end
 
 --- Create a structure of type CancelSchemaExtensionResult
 --  
-function M.CancelSchemaExtensionResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelSchemaExtensionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CancelSchemaExtensionResult structure as a key-value pair table
+function M.CancelSchemaExtensionResult(args)
+	assert(args, "You must provdide an argument table when creating CancelSchemaExtensionResult")
 	local t = { 
 	}
 	asserts.AssertCancelSchemaExtensionResult(t)
@@ -2371,18 +2614,21 @@ end
 
 --- Create a structure of type UpdateConditionalForwarderRequest
 -- <p>Updates a conditional forwarder.</p>
--- @param _DirectoryId [DirectoryId] <p>The directory ID of the AWS directory for which to update the conditional forwarder.</p>
--- @param _RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domain with which you will set up a trust relationship.</p>
--- @param _DnsIpAddrs [DnsIpAddrs] <p>The updated IP addresses of the remote DNS server associated with the conditional forwarder.</p>
--- Required parameter: DirectoryId
--- Required parameter: RemoteDomainName
--- Required parameter: DnsIpAddrs
-function M.UpdateConditionalForwarderRequest(_DirectoryId, _RemoteDomainName, _DnsIpAddrs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConditionalForwarderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The directory ID of the AWS directory for which to update the conditional forwarder.</p>
+-- * RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domain with which you will set up a trust relationship.</p>
+-- * DnsIpAddrs [DnsIpAddrs] <p>The updated IP addresses of the remote DNS server associated with the conditional forwarder.</p>
+-- Required key: DirectoryId
+-- Required key: RemoteDomainName
+-- Required key: DnsIpAddrs
+-- @return UpdateConditionalForwarderRequest structure as a key-value pair table
+function M.UpdateConditionalForwarderRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateConditionalForwarderRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["RemoteDomainName"] = _RemoteDomainName,
-		["DnsIpAddrs"] = _DnsIpAddrs,
+		["DirectoryId"] = args["DirectoryId"],
+		["RemoteDomainName"] = args["RemoteDomainName"],
+		["DnsIpAddrs"] = args["DnsIpAddrs"],
 	}
 	asserts.AssertUpdateConditionalForwarderRequest(t)
 	return t
@@ -2406,18 +2652,21 @@ end
 
 --- Create a structure of type CreateConditionalForwarderRequest
 -- <p>Initiates the creation of a conditional forwarder for your AWS Directory Service for Microsoft Active Directory. Conditional forwarders are required in order to set up a trust relationship with another domain.</p>
--- @param _DirectoryId [DirectoryId] <p>The directory ID of the AWS directory for which you are creating the conditional forwarder.</p>
--- @param _RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domain with which you will set up a trust relationship.</p>
--- @param _DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the remote DNS server associated with RemoteDomainName.</p>
--- Required parameter: DirectoryId
--- Required parameter: RemoteDomainName
--- Required parameter: DnsIpAddrs
-function M.CreateConditionalForwarderRequest(_DirectoryId, _RemoteDomainName, _DnsIpAddrs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateConditionalForwarderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The directory ID of the AWS directory for which you are creating the conditional forwarder.</p>
+-- * RemoteDomainName [RemoteDomainName] <p>The fully qualified domain name (FQDN) of the remote domain with which you will set up a trust relationship.</p>
+-- * DnsIpAddrs [DnsIpAddrs] <p>The IP addresses of the remote DNS server associated with RemoteDomainName.</p>
+-- Required key: DirectoryId
+-- Required key: RemoteDomainName
+-- Required key: DnsIpAddrs
+-- @return CreateConditionalForwarderRequest structure as a key-value pair table
+function M.CreateConditionalForwarderRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateConditionalForwarderRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["RemoteDomainName"] = _RemoteDomainName,
-		["DnsIpAddrs"] = _DnsIpAddrs,
+		["DirectoryId"] = args["DirectoryId"],
+		["RemoteDomainName"] = args["RemoteDomainName"],
+		["DnsIpAddrs"] = args["DnsIpAddrs"],
 	}
 	asserts.AssertCreateConditionalForwarderRequest(t)
 	return t
@@ -2435,8 +2684,11 @@ end
 
 --- Create a structure of type AddTagsToResourceResult
 --  
-function M.AddTagsToResourceResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AddTagsToResourceResult structure as a key-value pair table
+function M.AddTagsToResourceResult(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToResourceResult")
 	local t = { 
 	}
 	asserts.AssertAddTagsToResourceResult(t)
@@ -2455,8 +2707,11 @@ end
 
 --- Create a structure of type DeregisterEventTopicResult
 -- <p>The result of a DeregisterEventTopic request.</p>
-function M.DeregisterEventTopicResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterEventTopicResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeregisterEventTopicResult structure as a key-value pair table
+function M.DeregisterEventTopicResult(args)
+	assert(args, "You must provdide an argument table when creating DeregisterEventTopicResult")
 	local t = { 
 	}
 	asserts.AssertDeregisterEventTopicResult(t)
@@ -2475,8 +2730,11 @@ end
 
 --- Create a structure of type DeleteConditionalForwarderResult
 -- <p>The result of a DeleteConditionalForwarder request.</p>
-function M.DeleteConditionalForwarderResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConditionalForwarderResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteConditionalForwarderResult structure as a key-value pair table
+function M.DeleteConditionalForwarderResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteConditionalForwarderResult")
 	local t = { 
 	}
 	asserts.AssertDeleteConditionalForwarderResult(t)
@@ -2496,11 +2754,14 @@ end
 
 --- Create a structure of type ConnectDirectoryResult
 -- <p>Contains the results of the <a>ConnectDirectory</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the new directory.</p>
-function M.ConnectDirectoryResult(_DirectoryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConnectDirectoryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the new directory.</p>
+-- @return ConnectDirectoryResult structure as a key-value pair table
+function M.ConnectDirectoryResult(args)
+	assert(args, "You must provdide an argument table when creating ConnectDirectoryResult")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
+		["DirectoryId"] = args["DirectoryId"],
 	}
 	asserts.AssertConnectDirectoryResult(t)
 	return t
@@ -2519,11 +2780,14 @@ end
 
 --- Create a structure of type StartSchemaExtensionResult
 --  
--- @param _SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension that will be applied.</p>
-function M.StartSchemaExtensionResult(_SchemaExtensionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartSchemaExtensionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension that will be applied.</p>
+-- @return StartSchemaExtensionResult structure as a key-value pair table
+function M.StartSchemaExtensionResult(args)
+	assert(args, "You must provdide an argument table when creating StartSchemaExtensionResult")
 	local t = { 
-		["SchemaExtensionId"] = _SchemaExtensionId,
+		["SchemaExtensionId"] = args["SchemaExtensionId"],
 	}
 	asserts.AssertStartSchemaExtensionResult(t)
 	return t
@@ -2543,13 +2807,16 @@ end
 
 --- Create a structure of type EntityDoesNotExistException
 -- <p>The specified entity could not be found.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.EntityDoesNotExistException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EntityDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return EntityDoesNotExistException structure as a key-value pair table
+function M.EntityDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating EntityDoesNotExistException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertEntityDoesNotExistException(t)
 	return t
@@ -2575,25 +2842,28 @@ end
 
 --- Create a structure of type RadiusSettings
 -- <p>Contains information about a Remote Authentication Dial In User Service (RADIUS) server.</p>
--- @param _DisplayLabel [RadiusDisplayLabel] <p>Not currently used.</p>
--- @param _UseSameUsername [UseSameUsername] <p>Not currently used.</p>
--- @param _RadiusTimeout [RadiusTimeout] <p>The amount of time, in seconds, to wait for the RADIUS server to respond.</p>
--- @param _AuthenticationProtocol [RadiusAuthenticationProtocol] <p>The protocol specified for your RADIUS endpoints.</p>
--- @param _RadiusPort [PortNumber] <p>The port that your RADIUS server is using for communications. Your on-premises network must allow inbound traffic over this port from the AWS Directory Service servers.</p>
--- @param _RadiusRetries [RadiusRetries] <p>The maximum number of times that communication with the RADIUS server is attempted.</p>
--- @param _RadiusServers [Servers] <p>An array of strings that contains the IP addresses of the RADIUS server endpoints, or the IP addresses of your RADIUS server load balancer.</p>
--- @param _SharedSecret [RadiusSharedSecret] <p>Not currently used.</p>
-function M.RadiusSettings(_DisplayLabel, _UseSameUsername, _RadiusTimeout, _AuthenticationProtocol, _RadiusPort, _RadiusRetries, _RadiusServers, _SharedSecret, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RadiusSettings")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisplayLabel [RadiusDisplayLabel] <p>Not currently used.</p>
+-- * UseSameUsername [UseSameUsername] <p>Not currently used.</p>
+-- * RadiusTimeout [RadiusTimeout] <p>The amount of time, in seconds, to wait for the RADIUS server to respond.</p>
+-- * AuthenticationProtocol [RadiusAuthenticationProtocol] <p>The protocol specified for your RADIUS endpoints.</p>
+-- * RadiusPort [PortNumber] <p>The port that your RADIUS server is using for communications. Your on-premises network must allow inbound traffic over this port from the AWS Directory Service servers.</p>
+-- * RadiusRetries [RadiusRetries] <p>The maximum number of times that communication with the RADIUS server is attempted.</p>
+-- * RadiusServers [Servers] <p>An array of strings that contains the IP addresses of the RADIUS server endpoints, or the IP addresses of your RADIUS server load balancer.</p>
+-- * SharedSecret [RadiusSharedSecret] <p>Not currently used.</p>
+-- @return RadiusSettings structure as a key-value pair table
+function M.RadiusSettings(args)
+	assert(args, "You must provdide an argument table when creating RadiusSettings")
 	local t = { 
-		["DisplayLabel"] = _DisplayLabel,
-		["UseSameUsername"] = _UseSameUsername,
-		["RadiusTimeout"] = _RadiusTimeout,
-		["AuthenticationProtocol"] = _AuthenticationProtocol,
-		["RadiusPort"] = _RadiusPort,
-		["RadiusRetries"] = _RadiusRetries,
-		["RadiusServers"] = _RadiusServers,
-		["SharedSecret"] = _SharedSecret,
+		["DisplayLabel"] = args["DisplayLabel"],
+		["UseSameUsername"] = args["UseSameUsername"],
+		["RadiusTimeout"] = args["RadiusTimeout"],
+		["AuthenticationProtocol"] = args["AuthenticationProtocol"],
+		["RadiusPort"] = args["RadiusPort"],
+		["RadiusRetries"] = args["RadiusRetries"],
+		["RadiusServers"] = args["RadiusServers"],
+		["SharedSecret"] = args["SharedSecret"],
 	}
 	asserts.AssertRadiusSettings(t)
 	return t
@@ -2612,11 +2882,14 @@ end
 
 --- Create a structure of type CreateComputerResult
 -- <p>Contains the results for the <a>CreateComputer</a> operation.</p>
--- @param _Computer [Computer] <p>A <a>Computer</a> object that represents the computer account.</p>
-function M.CreateComputerResult(_Computer, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateComputerResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Computer [Computer] <p>A <a>Computer</a> object that represents the computer account.</p>
+-- @return CreateComputerResult structure as a key-value pair table
+function M.CreateComputerResult(args)
+	assert(args, "You must provdide an argument table when creating CreateComputerResult")
 	local t = { 
-		["Computer"] = _Computer,
+		["Computer"] = args["Computer"],
 	}
 	asserts.AssertCreateComputerResult(t)
 	return t
@@ -2638,16 +2911,19 @@ end
 
 --- Create a structure of type EnableSsoRequest
 -- <p>Contains the inputs for the <a>EnableSso</a> operation.</p>
--- @param _UserName [UserName] <p>The username of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. This account must have privileges to add a service principal name.</p> <p>If the AD Connector service account does not have privileges to add a service principal name, you can specify an alternate account with the <i>UserName</i> and <i>Password</i> parameters. These credentials are only used to enable single sign-on and are not stored by the service. The AD Connector service account is not changed.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory for which to enable single-sign on.</p>
--- @param _Password [ConnectPassword] <p>The password of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. For more information, see the <i>UserName</i> parameter.</p>
--- Required parameter: DirectoryId
-function M.EnableSsoRequest(_UserName, _DirectoryId, _Password, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableSsoRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [UserName] <p>The username of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. This account must have privileges to add a service principal name.</p> <p>If the AD Connector service account does not have privileges to add a service principal name, you can specify an alternate account with the <i>UserName</i> and <i>Password</i> parameters. These credentials are only used to enable single sign-on and are not stored by the service. The AD Connector service account is not changed.</p>
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory for which to enable single-sign on.</p>
+-- * Password [ConnectPassword] <p>The password of an alternate account to use to enable single-sign on. This is only used for AD Connector directories. For more information, see the <i>UserName</i> parameter.</p>
+-- Required key: DirectoryId
+-- @return EnableSsoRequest structure as a key-value pair table
+function M.EnableSsoRequest(args)
+	assert(args, "You must provdide an argument table when creating EnableSsoRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["DirectoryId"] = _DirectoryId,
-		["Password"] = _Password,
+		["UserName"] = args["UserName"],
+		["DirectoryId"] = args["DirectoryId"],
+		["Password"] = args["Password"],
 	}
 	asserts.AssertEnableSsoRequest(t)
 	return t
@@ -2665,8 +2941,11 @@ end
 
 --- Create a structure of type EnableRadiusResult
 -- <p>Contains the results of the <a>EnableRadius</a> operation.</p>
-function M.EnableRadiusResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableRadiusResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return EnableRadiusResult structure as a key-value pair table
+function M.EnableRadiusResult(args)
+	assert(args, "You must provdide an argument table when creating EnableRadiusResult")
 	local t = { 
 	}
 	asserts.AssertEnableRadiusResult(t)
@@ -2690,19 +2969,22 @@ end
 
 --- Create a structure of type EventTopic
 -- <p>Information about SNS topic and AWS Directory Service directory associations.</p>
--- @param _CreatedDateTime [CreatedDateTime] <p>The date and time of when you associated your directory with the SNS topic.</p>
--- @param _DirectoryId [DirectoryId] <p>The Directory ID of an AWS Directory Service directory that will publish status messages to an SNS topic.</p>
--- @param _TopicName [TopicName] <p>The name of an AWS SNS topic the receives status messages from the directory.</p>
--- @param _TopicArn [TopicArn] <p>The SNS topic ARN (Amazon Resource Name).</p>
--- @param _Status [TopicStatus] <p>The topic registration status.</p>
-function M.EventTopic(_CreatedDateTime, _DirectoryId, _TopicName, _TopicArn, _Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventTopic")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreatedDateTime [CreatedDateTime] <p>The date and time of when you associated your directory with the SNS topic.</p>
+-- * DirectoryId [DirectoryId] <p>The Directory ID of an AWS Directory Service directory that will publish status messages to an SNS topic.</p>
+-- * TopicName [TopicName] <p>The name of an AWS SNS topic the receives status messages from the directory.</p>
+-- * TopicArn [TopicArn] <p>The SNS topic ARN (Amazon Resource Name).</p>
+-- * Status [TopicStatus] <p>The topic registration status.</p>
+-- @return EventTopic structure as a key-value pair table
+function M.EventTopic(args)
+	assert(args, "You must provdide an argument table when creating EventTopic")
 	local t = { 
-		["CreatedDateTime"] = _CreatedDateTime,
-		["DirectoryId"] = _DirectoryId,
-		["TopicName"] = _TopicName,
-		["TopicArn"] = _TopicArn,
-		["Status"] = _Status,
+		["CreatedDateTime"] = args["CreatedDateTime"],
+		["DirectoryId"] = args["DirectoryId"],
+		["TopicName"] = args["TopicName"],
+		["TopicArn"] = args["TopicArn"],
+		["Status"] = args["Status"],
 	}
 	asserts.AssertEventTopic(t)
 	return t
@@ -2722,12 +3004,15 @@ end
 
 --- Create a structure of type DeleteDirectoryRequest
 -- <p>Contains the inputs for the <a>DeleteDirectory</a> operation.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory to delete.</p>
--- Required parameter: DirectoryId
-function M.DeleteDirectoryRequest(_DirectoryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDirectoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory to delete.</p>
+-- Required key: DirectoryId
+-- @return DeleteDirectoryRequest structure as a key-value pair table
+function M.DeleteDirectoryRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDirectoryRequest")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
+		["DirectoryId"] = args["DirectoryId"],
 	}
 	asserts.AssertDeleteDirectoryRequest(t)
 	return t
@@ -2751,21 +3036,24 @@ end
 
 --- Create a structure of type IpRouteInfo
 -- <p>Information about one or more IP address blocks.</p>
--- @param _DirectoryId [DirectoryId] <p>Identifier (ID) of the directory associated with the IP addresses.</p>
--- @param _IpRouteStatusReason [IpRouteStatusReason] <p>The reason for the IpRouteStatusMsg.</p>
--- @param _Description [Description] <p>Description of the <a>IpRouteInfo</a>.</p>
--- @param _AddedDateTime [AddedDateTime] <p>The date and time the address block was added to the directory.</p>
--- @param _CidrIp [CidrIp] <p>IP address block in the <a>IpRoute</a>.</p>
--- @param _IpRouteStatusMsg [IpRouteStatusMsg] <p>The status of the IP address block.</p>
-function M.IpRouteInfo(_DirectoryId, _IpRouteStatusReason, _Description, _AddedDateTime, _CidrIp, _IpRouteStatusMsg, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IpRouteInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryId [DirectoryId] <p>Identifier (ID) of the directory associated with the IP addresses.</p>
+-- * IpRouteStatusReason [IpRouteStatusReason] <p>The reason for the IpRouteStatusMsg.</p>
+-- * Description [Description] <p>Description of the <a>IpRouteInfo</a>.</p>
+-- * AddedDateTime [AddedDateTime] <p>The date and time the address block was added to the directory.</p>
+-- * CidrIp [CidrIp] <p>IP address block in the <a>IpRoute</a>.</p>
+-- * IpRouteStatusMsg [IpRouteStatusMsg] <p>The status of the IP address block.</p>
+-- @return IpRouteInfo structure as a key-value pair table
+function M.IpRouteInfo(args)
+	assert(args, "You must provdide an argument table when creating IpRouteInfo")
 	local t = { 
-		["DirectoryId"] = _DirectoryId,
-		["IpRouteStatusReason"] = _IpRouteStatusReason,
-		["Description"] = _Description,
-		["AddedDateTime"] = _AddedDateTime,
-		["CidrIp"] = _CidrIp,
-		["IpRouteStatusMsg"] = _IpRouteStatusMsg,
+		["DirectoryId"] = args["DirectoryId"],
+		["IpRouteStatusReason"] = args["IpRouteStatusReason"],
+		["Description"] = args["Description"],
+		["AddedDateTime"] = args["AddedDateTime"],
+		["CidrIp"] = args["CidrIp"],
+		["IpRouteStatusMsg"] = args["IpRouteStatusMsg"],
 	}
 	asserts.AssertIpRouteInfo(t)
 	return t
@@ -2784,11 +3072,14 @@ end
 
 --- Create a structure of type GetDirectoryLimitsResult
 -- <p>Contains the results of the <a>GetDirectoryLimits</a> operation.</p>
--- @param _DirectoryLimits [DirectoryLimits] <p>A <a>DirectoryLimits</a> object that contains the directory limits for the current region.</p>
-function M.GetDirectoryLimitsResult(_DirectoryLimits, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDirectoryLimitsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryLimits [DirectoryLimits] <p>A <a>DirectoryLimits</a> object that contains the directory limits for the current region.</p>
+-- @return GetDirectoryLimitsResult structure as a key-value pair table
+function M.GetDirectoryLimitsResult(args)
+	assert(args, "You must provdide an argument table when creating GetDirectoryLimitsResult")
 	local t = { 
-		["DirectoryLimits"] = _DirectoryLimits,
+		["DirectoryLimits"] = args["DirectoryLimits"],
 	}
 	asserts.AssertGetDirectoryLimitsResult(t)
 	return t
@@ -2808,13 +3099,16 @@ end
 
 --- Create a structure of type SnapshotLimitExceededException
 -- <p>The maximum number of manual snapshots for the directory has been reached. You can use the <a>GetSnapshotLimits</a> operation to determine the snapshot limits for a directory.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.SnapshotLimitExceededException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return SnapshotLimitExceededException structure as a key-value pair table
+function M.SnapshotLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating SnapshotLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertSnapshotLimitExceededException(t)
 	return t
@@ -2835,15 +3129,18 @@ end
 
 --- Create a structure of type SnapshotLimits
 -- <p>Contains manual snapshot limit information for a directory.</p>
--- @param _ManualSnapshotsCurrentCount [Limit] <p>The current number of manual snapshots of the directory.</p>
--- @param _ManualSnapshotsLimit [Limit] <p>The maximum number of manual snapshots allowed.</p>
--- @param _ManualSnapshotsLimitReached [ManualSnapshotsLimitReached] <p>Indicates if the manual snapshot limit has been reached.</p>
-function M.SnapshotLimits(_ManualSnapshotsCurrentCount, _ManualSnapshotsLimit, _ManualSnapshotsLimitReached, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SnapshotLimits")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ManualSnapshotsCurrentCount [Limit] <p>The current number of manual snapshots of the directory.</p>
+-- * ManualSnapshotsLimit [Limit] <p>The maximum number of manual snapshots allowed.</p>
+-- * ManualSnapshotsLimitReached [ManualSnapshotsLimitReached] <p>Indicates if the manual snapshot limit has been reached.</p>
+-- @return SnapshotLimits structure as a key-value pair table
+function M.SnapshotLimits(args)
+	assert(args, "You must provdide an argument table when creating SnapshotLimits")
 	local t = { 
-		["ManualSnapshotsCurrentCount"] = _ManualSnapshotsCurrentCount,
-		["ManualSnapshotsLimit"] = _ManualSnapshotsLimit,
-		["ManualSnapshotsLimitReached"] = _ManualSnapshotsLimitReached,
+		["ManualSnapshotsCurrentCount"] = args["ManualSnapshotsCurrentCount"],
+		["ManualSnapshotsLimit"] = args["ManualSnapshotsLimit"],
+		["ManualSnapshotsLimitReached"] = args["ManualSnapshotsLimitReached"],
 	}
 	asserts.AssertSnapshotLimits(t)
 	return t
@@ -2863,13 +3160,16 @@ end
 
 --- Create a structure of type IpRoute
 -- <p>IP address block. This is often the address block of the DNS server used for your on-premises domain. </p>
--- @param _Description [Description] <p>Description of the address block.</p>
--- @param _CidrIp [CidrIp] <p>IP address block using CIDR format, for example 10.0.0.0/24. This is often the address block of the DNS server used for your on-premises domain. For a single IP address use a CIDR address block with /32. For example 10.0.0.0/32.</p>
-function M.IpRoute(_Description, _CidrIp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IpRoute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [Description] <p>Description of the address block.</p>
+-- * CidrIp [CidrIp] <p>IP address block using CIDR format, for example 10.0.0.0/24. This is often the address block of the DNS server used for your on-premises domain. For a single IP address use a CIDR address block with /32. For example 10.0.0.0/32.</p>
+-- @return IpRoute structure as a key-value pair table
+function M.IpRoute(args)
+	assert(args, "You must provdide an argument table when creating IpRoute")
 	local t = { 
-		["Description"] = _Description,
-		["CidrIp"] = _CidrIp,
+		["Description"] = args["Description"],
+		["CidrIp"] = args["CidrIp"],
 	}
 	asserts.AssertIpRoute(t)
 	return t
@@ -2896,27 +3196,30 @@ end
 
 --- Create a structure of type DirectoryLimits
 -- <p>Contains directory limit information for a region.</p>
--- @param _CloudOnlyMicrosoftADCurrentCount [Limit] <p>The current number of Microsoft AD directories in the region.</p>
--- @param _ConnectedDirectoriesLimitReached [ConnectedDirectoriesLimitReached] <p>Indicates if the connected directory limit has been reached.</p>
--- @param _ConnectedDirectoriesLimit [Limit] <p>The maximum number of connected directories allowed in the region.</p>
--- @param _CloudOnlyDirectoriesLimit [Limit] <p>The maximum number of cloud directories allowed in the region.</p>
--- @param _CloudOnlyMicrosoftADLimit [Limit] <p>The maximum number of Microsoft AD directories allowed in the region.</p>
--- @param _ConnectedDirectoriesCurrentCount [Limit] <p>The current number of connected directories in the region.</p>
--- @param _CloudOnlyMicrosoftADLimitReached [CloudOnlyDirectoriesLimitReached] <p>Indicates if the Microsoft AD directory limit has been reached.</p>
--- @param _CloudOnlyDirectoriesCurrentCount [Limit] <p>The current number of cloud directories in the region.</p>
--- @param _CloudOnlyDirectoriesLimitReached [CloudOnlyDirectoriesLimitReached] <p>Indicates if the cloud directory limit has been reached.</p>
-function M.DirectoryLimits(_CloudOnlyMicrosoftADCurrentCount, _ConnectedDirectoriesLimitReached, _ConnectedDirectoriesLimit, _CloudOnlyDirectoriesLimit, _CloudOnlyMicrosoftADLimit, _ConnectedDirectoriesCurrentCount, _CloudOnlyMicrosoftADLimitReached, _CloudOnlyDirectoriesCurrentCount, _CloudOnlyDirectoriesLimitReached, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryLimits")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CloudOnlyMicrosoftADCurrentCount [Limit] <p>The current number of Microsoft AD directories in the region.</p>
+-- * ConnectedDirectoriesLimitReached [ConnectedDirectoriesLimitReached] <p>Indicates if the connected directory limit has been reached.</p>
+-- * ConnectedDirectoriesLimit [Limit] <p>The maximum number of connected directories allowed in the region.</p>
+-- * CloudOnlyDirectoriesLimit [Limit] <p>The maximum number of cloud directories allowed in the region.</p>
+-- * CloudOnlyMicrosoftADLimit [Limit] <p>The maximum number of Microsoft AD directories allowed in the region.</p>
+-- * ConnectedDirectoriesCurrentCount [Limit] <p>The current number of connected directories in the region.</p>
+-- * CloudOnlyMicrosoftADLimitReached [CloudOnlyDirectoriesLimitReached] <p>Indicates if the Microsoft AD directory limit has been reached.</p>
+-- * CloudOnlyDirectoriesCurrentCount [Limit] <p>The current number of cloud directories in the region.</p>
+-- * CloudOnlyDirectoriesLimitReached [CloudOnlyDirectoriesLimitReached] <p>Indicates if the cloud directory limit has been reached.</p>
+-- @return DirectoryLimits structure as a key-value pair table
+function M.DirectoryLimits(args)
+	assert(args, "You must provdide an argument table when creating DirectoryLimits")
 	local t = { 
-		["CloudOnlyMicrosoftADCurrentCount"] = _CloudOnlyMicrosoftADCurrentCount,
-		["ConnectedDirectoriesLimitReached"] = _ConnectedDirectoriesLimitReached,
-		["ConnectedDirectoriesLimit"] = _ConnectedDirectoriesLimit,
-		["CloudOnlyDirectoriesLimit"] = _CloudOnlyDirectoriesLimit,
-		["CloudOnlyMicrosoftADLimit"] = _CloudOnlyMicrosoftADLimit,
-		["ConnectedDirectoriesCurrentCount"] = _ConnectedDirectoriesCurrentCount,
-		["CloudOnlyMicrosoftADLimitReached"] = _CloudOnlyMicrosoftADLimitReached,
-		["CloudOnlyDirectoriesCurrentCount"] = _CloudOnlyDirectoriesCurrentCount,
-		["CloudOnlyDirectoriesLimitReached"] = _CloudOnlyDirectoriesLimitReached,
+		["CloudOnlyMicrosoftADCurrentCount"] = args["CloudOnlyMicrosoftADCurrentCount"],
+		["ConnectedDirectoriesLimitReached"] = args["ConnectedDirectoriesLimitReached"],
+		["ConnectedDirectoriesLimit"] = args["ConnectedDirectoriesLimit"],
+		["CloudOnlyDirectoriesLimit"] = args["CloudOnlyDirectoriesLimit"],
+		["CloudOnlyMicrosoftADLimit"] = args["CloudOnlyMicrosoftADLimit"],
+		["ConnectedDirectoriesCurrentCount"] = args["ConnectedDirectoriesCurrentCount"],
+		["CloudOnlyMicrosoftADLimitReached"] = args["CloudOnlyMicrosoftADLimitReached"],
+		["CloudOnlyDirectoriesCurrentCount"] = args["CloudOnlyDirectoriesCurrentCount"],
+		["CloudOnlyDirectoriesLimitReached"] = args["CloudOnlyDirectoriesLimitReached"],
 	}
 	asserts.AssertDirectoryLimits(t)
 	return t
@@ -2935,11 +3238,14 @@ end
 
 --- Create a structure of type DeleteTrustResult
 -- <p>The result of a DeleteTrust request.</p>
--- @param _TrustId [TrustId] <p>The Trust ID of the trust relationship that was deleted.</p>
-function M.DeleteTrustResult(_TrustId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTrustResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrustId [TrustId] <p>The Trust ID of the trust relationship that was deleted.</p>
+-- @return DeleteTrustResult structure as a key-value pair table
+function M.DeleteTrustResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteTrustResult")
 	local t = { 
-		["TrustId"] = _TrustId,
+		["TrustId"] = args["TrustId"],
 	}
 	asserts.AssertDeleteTrustResult(t)
 	return t
@@ -2957,8 +3263,11 @@ end
 
 --- Create a structure of type UpdateConditionalForwarderResult
 -- <p>The result of an UpdateConditionalForwarder request.</p>
-function M.UpdateConditionalForwarderResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConditionalForwarderResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateConditionalForwarderResult structure as a key-value pair table
+function M.UpdateConditionalForwarderResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateConditionalForwarderResult")
 	local t = { 
 	}
 	asserts.AssertUpdateConditionalForwarderResult(t)
@@ -2977,8 +3286,11 @@ end
 
 --- Create a structure of type DisableRadiusResult
 -- <p>Contains the results of the <a>DisableRadius</a> operation.</p>
-function M.DisableRadiusResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableRadiusResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisableRadiusResult structure as a key-value pair table
+function M.DisableRadiusResult(args)
+	assert(args, "You must provdide an argument table when creating DisableRadiusResult")
 	local t = { 
 	}
 	asserts.AssertDisableRadiusResult(t)
@@ -3005,21 +3317,24 @@ end
 
 --- Create a structure of type StartSchemaExtensionRequest
 --  
--- @param _CreateSnapshotBeforeSchemaExtension [CreateSnapshotBeforeSchemaExtension] <p>If true, creates a snapshot of the directory before applying the schema extension.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the directory for which the schema extension will be applied to.</p>
--- @param _LdifContent [LdifContent] <p>The LDIF file represented as a string. To construct the LdifContent string, precede each line as it would be formatted in an ldif file with \n. See the example request below for more details. The file size can be no larger than 1MB.</p>
--- @param _Description [Description] <p>A description of the schema extension.</p>
--- Required parameter: DirectoryId
--- Required parameter: CreateSnapshotBeforeSchemaExtension
--- Required parameter: LdifContent
--- Required parameter: Description
-function M.StartSchemaExtensionRequest(_CreateSnapshotBeforeSchemaExtension, _DirectoryId, _LdifContent, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartSchemaExtensionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreateSnapshotBeforeSchemaExtension [CreateSnapshotBeforeSchemaExtension] <p>If true, creates a snapshot of the directory before applying the schema extension.</p>
+-- * DirectoryId [DirectoryId] <p>The identifier of the directory for which the schema extension will be applied to.</p>
+-- * LdifContent [LdifContent] <p>The LDIF file represented as a string. To construct the LdifContent string, precede each line as it would be formatted in an ldif file with \n. See the example request below for more details. The file size can be no larger than 1MB.</p>
+-- * Description [Description] <p>A description of the schema extension.</p>
+-- Required key: DirectoryId
+-- Required key: CreateSnapshotBeforeSchemaExtension
+-- Required key: LdifContent
+-- Required key: Description
+-- @return StartSchemaExtensionRequest structure as a key-value pair table
+function M.StartSchemaExtensionRequest(args)
+	assert(args, "You must provdide an argument table when creating StartSchemaExtensionRequest")
 	local t = { 
-		["CreateSnapshotBeforeSchemaExtension"] = _CreateSnapshotBeforeSchemaExtension,
-		["DirectoryId"] = _DirectoryId,
-		["LdifContent"] = _LdifContent,
-		["Description"] = _Description,
+		["CreateSnapshotBeforeSchemaExtension"] = args["CreateSnapshotBeforeSchemaExtension"],
+		["DirectoryId"] = args["DirectoryId"],
+		["LdifContent"] = args["LdifContent"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertStartSchemaExtensionRequest(t)
 	return t
@@ -3039,13 +3354,16 @@ end
 
 --- Create a structure of type EntityAlreadyExistsException
 -- <p>The specified entity already exists.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.EntityAlreadyExistsException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EntityAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return EntityAlreadyExistsException structure as a key-value pair table
+function M.EntityAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating EntityAlreadyExistsException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertEntityAlreadyExistsException(t)
 	return t
@@ -3063,8 +3381,11 @@ end
 
 --- Create a structure of type RestoreFromSnapshotResult
 -- <p>Contains the results of the <a>RestoreFromSnapshot</a> operation.</p>
-function M.RestoreFromSnapshotResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RestoreFromSnapshotResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RestoreFromSnapshotResult structure as a key-value pair table
+function M.RestoreFromSnapshotResult(args)
+	assert(args, "You must provdide an argument table when creating RestoreFromSnapshotResult")
 	local t = { 
 	}
 	asserts.AssertRestoreFromSnapshotResult(t)
@@ -3085,13 +3406,16 @@ end
 
 --- Create a structure of type TagLimitExceededException
 -- <p>The maximum allowed number of tags was exceeded.</p>
--- @param _Message [ExceptionMessage] 
--- @param _RequestId [RequestId] 
-function M.TagLimitExceededException(_Message, _RequestId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- * RequestId [RequestId] 
+-- @return TagLimitExceededException structure as a key-value pair table
+function M.TagLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating TagLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
-		["RequestId"] = _RequestId,
+		["Message"] = args["Message"],
+		["RequestId"] = args["RequestId"],
 	}
 	asserts.AssertTagLimitExceededException(t)
 	return t

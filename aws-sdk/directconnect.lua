@@ -42,27 +42,30 @@ end
 
 --- Create a structure of type Interconnect
 -- <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
--- @param _awsDevice [AwsDevice] <p>The Direct Connection endpoint which the physical connection terminates on.</p>
--- @param _region [Region] 
--- @param _lagId [LagId] 
--- @param _bandwidth [Bandwidth] 
--- @param _location [LocationCode] 
--- @param _interconnectName [InterconnectName] 
--- @param _interconnectId [InterconnectId] 
--- @param _loaIssueTime [LoaIssueTime] <p>The time of the most recent call to DescribeInterconnectLoa for this Interconnect.</p>
--- @param _interconnectState [InterconnectState] 
-function M.Interconnect(_awsDevice, _region, _lagId, _bandwidth, _location, _interconnectName, _interconnectId, _loaIssueTime, _interconnectState, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Interconnect")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * awsDevice [AwsDevice] <p>The Direct Connection endpoint which the physical connection terminates on.</p>
+-- * region [Region] 
+-- * lagId [LagId] 
+-- * bandwidth [Bandwidth] 
+-- * location [LocationCode] 
+-- * interconnectName [InterconnectName] 
+-- * interconnectId [InterconnectId] 
+-- * loaIssueTime [LoaIssueTime] <p>The time of the most recent call to DescribeInterconnectLoa for this Interconnect.</p>
+-- * interconnectState [InterconnectState] 
+-- @return Interconnect structure as a key-value pair table
+function M.Interconnect(args)
+	assert(args, "You must provdide an argument table when creating Interconnect")
 	local t = { 
-		["awsDevice"] = _awsDevice,
-		["region"] = _region,
-		["lagId"] = _lagId,
-		["bandwidth"] = _bandwidth,
-		["location"] = _location,
-		["interconnectName"] = _interconnectName,
-		["interconnectId"] = _interconnectId,
-		["loaIssueTime"] = _loaIssueTime,
-		["interconnectState"] = _interconnectState,
+		["awsDevice"] = args["awsDevice"],
+		["region"] = args["region"],
+		["lagId"] = args["lagId"],
+		["bandwidth"] = args["bandwidth"],
+		["location"] = args["location"],
+		["interconnectName"] = args["interconnectName"],
+		["interconnectId"] = args["interconnectId"],
+		["loaIssueTime"] = args["loaIssueTime"],
+		["interconnectState"] = args["interconnectState"],
 	}
 	asserts.AssertInterconnect(t)
 	return t
@@ -80,8 +83,11 @@ end
 
 --- Create a structure of type DuplicateTagKeysException
 -- <p>A tag key was specified more than once.</p>
-function M.DuplicateTagKeysException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateTagKeysException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DuplicateTagKeysException structure as a key-value pair table
+function M.DuplicateTagKeysException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateTagKeysException")
 	local t = { 
 	}
 	asserts.AssertDuplicateTagKeysException(t)
@@ -102,12 +108,15 @@ end
 
 --- Create a structure of type DeleteInterconnectRequest
 -- <p>Container for the parameters to the DeleteInterconnect operation.</p>
--- @param _interconnectId [InterconnectId] 
--- Required parameter: interconnectId
-function M.DeleteInterconnectRequest(_interconnectId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInterconnectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * interconnectId [InterconnectId] 
+-- Required key: interconnectId
+-- @return DeleteInterconnectRequest structure as a key-value pair table
+function M.DeleteInterconnectRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteInterconnectRequest")
 	local t = { 
-		["interconnectId"] = _interconnectId,
+		["interconnectId"] = args["interconnectId"],
 	}
 	asserts.AssertDeleteInterconnectRequest(t)
 	return t
@@ -127,12 +136,15 @@ end
 
 --- Create a structure of type ConfirmPublicVirtualInterfaceRequest
 -- <p>Container for the parameters to the ConfirmPublicVirtualInterface operation.</p>
--- @param _virtualInterfaceId [VirtualInterfaceId] 
--- Required parameter: virtualInterfaceId
-function M.ConfirmPublicVirtualInterfaceRequest(_virtualInterfaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmPublicVirtualInterfaceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualInterfaceId [VirtualInterfaceId] 
+-- Required key: virtualInterfaceId
+-- @return ConfirmPublicVirtualInterfaceRequest structure as a key-value pair table
+function M.ConfirmPublicVirtualInterfaceRequest(args)
+	assert(args, "You must provdide an argument table when creating ConfirmPublicVirtualInterfaceRequest")
 	local t = { 
-		["virtualInterfaceId"] = _virtualInterfaceId,
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
 	asserts.AssertConfirmPublicVirtualInterfaceRequest(t)
 	return t
@@ -154,16 +166,19 @@ end
 
 --- Create a structure of type DescribeConnectionLoaRequest
 -- <p>Container for the parameters to the DescribeConnectionLoa operation.</p>
--- @param _loaContentType [LoaContentType] 
--- @param _connectionId [ConnectionId] 
--- @param _providerName [ProviderName] <p>The name of the APN partner or service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
--- Required parameter: connectionId
-function M.DescribeConnectionLoaRequest(_loaContentType, _connectionId, _providerName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionLoaRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * loaContentType [LoaContentType] 
+-- * connectionId [ConnectionId] 
+-- * providerName [ProviderName] <p>The name of the APN partner or service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
+-- Required key: connectionId
+-- @return DescribeConnectionLoaRequest structure as a key-value pair table
+function M.DescribeConnectionLoaRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeConnectionLoaRequest")
 	local t = { 
-		["loaContentType"] = _loaContentType,
-		["connectionId"] = _connectionId,
-		["providerName"] = _providerName,
+		["loaContentType"] = args["loaContentType"],
+		["connectionId"] = args["connectionId"],
+		["providerName"] = args["providerName"],
 	}
 	asserts.AssertDescribeConnectionLoaRequest(t)
 	return t
@@ -185,15 +200,18 @@ end
 
 --- Create a structure of type AssociateConnectionWithLagRequest
 -- <p>Container for the parameters to the AssociateConnectionWithLag operation.</p>
--- @param _lagId [LagId] <p>The ID of the LAG with which to associate the connection.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
--- @param _connectionId [ConnectionId] <p>The ID of the connection.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
--- Required parameter: connectionId
--- Required parameter: lagId
-function M.AssociateConnectionWithLagRequest(_lagId, _connectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateConnectionWithLagRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lagId [LagId] <p>The ID of the LAG with which to associate the connection.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
+-- Required key: connectionId
+-- Required key: lagId
+-- @return AssociateConnectionWithLagRequest structure as a key-value pair table
+function M.AssociateConnectionWithLagRequest(args)
+	assert(args, "You must provdide an argument table when creating AssociateConnectionWithLagRequest")
 	local t = { 
-		["lagId"] = _lagId,
-		["connectionId"] = _connectionId,
+		["lagId"] = args["lagId"],
+		["connectionId"] = args["connectionId"],
 	}
 	asserts.AssertAssociateConnectionWithLagRequest(t)
 	return t
@@ -212,11 +230,14 @@ end
 
 --- Create a structure of type DeleteInterconnectResponse
 -- <p>The response received when DeleteInterconnect is called.</p>
--- @param _interconnectState [InterconnectState] 
-function M.DeleteInterconnectResponse(_interconnectState, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInterconnectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * interconnectState [InterconnectState] 
+-- @return DeleteInterconnectResponse structure as a key-value pair table
+function M.DeleteInterconnectResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteInterconnectResponse")
 	local t = { 
-		["interconnectState"] = _interconnectState,
+		["interconnectState"] = args["interconnectState"],
 	}
 	asserts.AssertDeleteInterconnectResponse(t)
 	return t
@@ -236,13 +257,16 @@ end
 
 --- Create a structure of type DescribeVirtualInterfacesRequest
 -- <p>Container for the parameters to the DescribeVirtualInterfaces operation.</p>
--- @param _connectionId [ConnectionId] 
--- @param _virtualInterfaceId [VirtualInterfaceId] 
-function M.DescribeVirtualInterfacesRequest(_connectionId, _virtualInterfaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVirtualInterfacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionId [ConnectionId] 
+-- * virtualInterfaceId [VirtualInterfaceId] 
+-- @return DescribeVirtualInterfacesRequest structure as a key-value pair table
+function M.DescribeVirtualInterfacesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeVirtualInterfacesRequest")
 	local t = { 
-		["connectionId"] = _connectionId,
-		["virtualInterfaceId"] = _virtualInterfaceId,
+		["connectionId"] = args["connectionId"],
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
 	asserts.AssertDescribeVirtualInterfacesRequest(t)
 	return t
@@ -261,11 +285,14 @@ end
 
 --- Create a structure of type DescribeLagsRequest
 -- <p>Container for the parameters to the DescribeLags operation.</p>
--- @param _lagId [LagId] <p>The ID of the LAG.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
-function M.DescribeLagsRequest(_lagId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lagId [LagId] <p>The ID of the LAG.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
+-- @return DescribeLagsRequest structure as a key-value pair table
+function M.DescribeLagsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeLagsRequest")
 	local t = { 
-		["lagId"] = _lagId,
+		["lagId"] = args["lagId"],
 	}
 	asserts.AssertDescribeLagsRequest(t)
 	return t
@@ -284,11 +311,14 @@ end
 
 --- Create a structure of type Interconnects
 -- <p>A structure containing a list of interconnects.</p>
--- @param _interconnects [InterconnectList] <p>A list of interconnects.</p>
-function M.Interconnects(_interconnects, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Interconnects")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * interconnects [InterconnectList] <p>A list of interconnects.</p>
+-- @return Interconnects structure as a key-value pair table
+function M.Interconnects(args)
+	assert(args, "You must provdide an argument table when creating Interconnects")
 	local t = { 
-		["interconnects"] = _interconnects,
+		["interconnects"] = args["interconnects"],
 	}
 	asserts.AssertInterconnects(t)
 	return t
@@ -307,11 +337,14 @@ end
 
 --- Create a structure of type DescribeInterconnectLoaResponse
 -- <p>The response received when DescribeInterconnectLoa is called.</p>
--- @param _loa [Loa] 
-function M.DescribeInterconnectLoaResponse(_loa, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInterconnectLoaResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * loa [Loa] 
+-- @return DescribeInterconnectLoaResponse structure as a key-value pair table
+function M.DescribeInterconnectLoaResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeInterconnectLoaResponse")
 	local t = { 
-		["loa"] = _loa,
+		["loa"] = args["loa"],
 	}
 	asserts.AssertDescribeInterconnectLoaResponse(t)
 	return t
@@ -333,15 +366,18 @@ end
 
 --- Create a structure of type DisassociateConnectionFromLagRequest
 -- <p>Container for the parameters to the DisassociateConnectionFromLag operation.</p>
--- @param _lagId [LagId] <p>The ID of the LAG.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
--- @param _connectionId [ConnectionId] <p>The ID of the connection to disassociate from the LAG.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
--- Required parameter: connectionId
--- Required parameter: lagId
-function M.DisassociateConnectionFromLagRequest(_lagId, _connectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateConnectionFromLagRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lagId [LagId] <p>The ID of the LAG.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
+-- * connectionId [ConnectionId] <p>The ID of the connection to disassociate from the LAG.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
+-- Required key: connectionId
+-- Required key: lagId
+-- @return DisassociateConnectionFromLagRequest structure as a key-value pair table
+function M.DisassociateConnectionFromLagRequest(args)
+	assert(args, "You must provdide an argument table when creating DisassociateConnectionFromLagRequest")
 	local t = { 
-		["lagId"] = _lagId,
-		["connectionId"] = _connectionId,
+		["lagId"] = args["lagId"],
+		["connectionId"] = args["connectionId"],
 	}
 	asserts.AssertDisassociateConnectionFromLagRequest(t)
 	return t
@@ -368,23 +404,26 @@ end
 
 --- Create a structure of type CreateLagRequest
 -- <p>Container for the parameters to the CreateLag operation.</p>
--- @param _connectionId [ConnectionId] <p>The ID of an existing connection to migrate to the LAG.</p> <p>Default: None</p>
--- @param _lagName [LagName] <p>The name of the LAG.</p> <p>Example: "<code>3x10G LAG to AWS</code>"</p> <p>Default: None</p>
--- @param _numberOfConnections [Count] <p>The number of physical connections initially provisioned and bundled by the LAG.</p> <p>Default: None</p>
--- @param _location [LocationCode] <p>The AWS Direct Connect location in which the LAG should be allocated.</p> <p>Example: EqSV5</p> <p>Default: None</p>
--- @param _connectionsBandwidth [Bandwidth] <p>The bandwidth of the individual physical connections bundled by the LAG.</p> <p>Default: None</p> <p>Available values: 1Gbps, 10Gbps</p>
--- Required parameter: numberOfConnections
--- Required parameter: location
--- Required parameter: connectionsBandwidth
--- Required parameter: lagName
-function M.CreateLagRequest(_connectionId, _lagName, _numberOfConnections, _location, _connectionsBandwidth, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLagRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionId [ConnectionId] <p>The ID of an existing connection to migrate to the LAG.</p> <p>Default: None</p>
+-- * lagName [LagName] <p>The name of the LAG.</p> <p>Example: "<code>3x10G LAG to AWS</code>"</p> <p>Default: None</p>
+-- * numberOfConnections [Count] <p>The number of physical connections initially provisioned and bundled by the LAG.</p> <p>Default: None</p>
+-- * location [LocationCode] <p>The AWS Direct Connect location in which the LAG should be allocated.</p> <p>Example: EqSV5</p> <p>Default: None</p>
+-- * connectionsBandwidth [Bandwidth] <p>The bandwidth of the individual physical connections bundled by the LAG.</p> <p>Default: None</p> <p>Available values: 1Gbps, 10Gbps</p>
+-- Required key: numberOfConnections
+-- Required key: location
+-- Required key: connectionsBandwidth
+-- Required key: lagName
+-- @return CreateLagRequest structure as a key-value pair table
+function M.CreateLagRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateLagRequest")
 	local t = { 
-		["connectionId"] = _connectionId,
-		["lagName"] = _lagName,
-		["numberOfConnections"] = _numberOfConnections,
-		["location"] = _location,
-		["connectionsBandwidth"] = _connectionsBandwidth,
+		["connectionId"] = args["connectionId"],
+		["lagName"] = args["lagName"],
+		["numberOfConnections"] = args["numberOfConnections"],
+		["location"] = args["location"],
+		["connectionsBandwidth"] = args["connectionsBandwidth"],
 	}
 	asserts.AssertCreateLagRequest(t)
 	return t
@@ -403,11 +442,14 @@ end
 
 --- Create a structure of type Connections
 -- <p>A structure containing a list of connections.</p>
--- @param _connections [ConnectionList] <p>A list of connections.</p>
-function M.Connections(_connections, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Connections")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connections [ConnectionList] <p>A list of connections.</p>
+-- @return Connections structure as a key-value pair table
+function M.Connections(args)
+	assert(args, "You must provdide an argument table when creating Connections")
 	local t = { 
-		["connections"] = _connections,
+		["connections"] = args["connections"],
 	}
 	asserts.AssertConnections(t)
 	return t
@@ -428,14 +470,17 @@ end
 
 --- Create a structure of type Tag
 -- <p>Information about a tag.</p>
--- @param _value [TagValue] <p>The value of the tag.</p>
--- @param _key [TagKey] <p>The key of the tag.</p>
--- Required parameter: key
-function M.Tag(_value, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [TagValue] <p>The value of the tag.</p>
+-- * key [TagKey] <p>The key of the tag.</p>
+-- Required key: key
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["value"] = _value,
-		["key"] = _key,
+		["value"] = args["value"],
+		["key"] = args["key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -455,12 +500,15 @@ end
 
 --- Create a structure of type DescribeConnectionsOnInterconnectRequest
 -- <p>Container for the parameters to the DescribeConnectionsOnInterconnect operation.</p>
--- @param _interconnectId [InterconnectId] <p>ID of the interconnect on which a list of connection is provisioned.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
--- Required parameter: interconnectId
-function M.DescribeConnectionsOnInterconnectRequest(_interconnectId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionsOnInterconnectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * interconnectId [InterconnectId] <p>ID of the interconnect on which a list of connection is provisioned.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
+-- Required key: interconnectId
+-- @return DescribeConnectionsOnInterconnectRequest structure as a key-value pair table
+function M.DescribeConnectionsOnInterconnectRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeConnectionsOnInterconnectRequest")
 	local t = { 
-		["interconnectId"] = _interconnectId,
+		["interconnectId"] = args["interconnectId"],
 	}
 	asserts.AssertDescribeConnectionsOnInterconnectRequest(t)
 	return t
@@ -479,11 +527,14 @@ end
 
 --- Create a structure of type Lags
 -- <p>A structure containing a list of LAGs.</p>
--- @param _lags [LagList] <p>A list of LAGs.</p>
-function M.Lags(_lags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Lags")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lags [LagList] <p>A list of LAGs.</p>
+-- @return Lags structure as a key-value pair table
+function M.Lags(args)
+	assert(args, "You must provdide an argument table when creating Lags")
 	local t = { 
-		["lags"] = _lags,
+		["lags"] = args["lags"],
 	}
 	asserts.AssertLags(t)
 	return t
@@ -502,11 +553,14 @@ end
 
 --- Create a structure of type DeleteBGPPeerResponse
 -- <p>The response received when DeleteBGPPeer is called.</p>
--- @param _virtualInterface [VirtualInterface] 
-function M.DeleteBGPPeerResponse(_virtualInterface, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBGPPeerResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualInterface [VirtualInterface] 
+-- @return DeleteBGPPeerResponse structure as a key-value pair table
+function M.DeleteBGPPeerResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteBGPPeerResponse")
 	local t = { 
-		["virtualInterface"] = _virtualInterface,
+		["virtualInterface"] = args["virtualInterface"],
 	}
 	asserts.AssertDeleteBGPPeerResponse(t)
 	return t
@@ -528,15 +582,18 @@ end
 
 --- Create a structure of type ConfirmPrivateVirtualInterfaceRequest
 -- <p>Container for the parameters to the ConfirmPrivateVirtualInterface operation.</p>
--- @param _virtualGatewayId [VirtualGatewayId] <p>ID of the virtual private gateway that will be attached to the virtual interface.</p> <p> A virtual private gateway can be managed via the Amazon Virtual Private Cloud (VPC) console or the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">EC2 CreateVpnGateway</a> action.</p> <p>Default: None</p>
--- @param _virtualInterfaceId [VirtualInterfaceId] 
--- Required parameter: virtualInterfaceId
--- Required parameter: virtualGatewayId
-function M.ConfirmPrivateVirtualInterfaceRequest(_virtualGatewayId, _virtualInterfaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmPrivateVirtualInterfaceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualGatewayId [VirtualGatewayId] <p>ID of the virtual private gateway that will be attached to the virtual interface.</p> <p> A virtual private gateway can be managed via the Amazon Virtual Private Cloud (VPC) console or the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">EC2 CreateVpnGateway</a> action.</p> <p>Default: None</p>
+-- * virtualInterfaceId [VirtualInterfaceId] 
+-- Required key: virtualInterfaceId
+-- Required key: virtualGatewayId
+-- @return ConfirmPrivateVirtualInterfaceRequest structure as a key-value pair table
+function M.ConfirmPrivateVirtualInterfaceRequest(args)
+	assert(args, "You must provdide an argument table when creating ConfirmPrivateVirtualInterfaceRequest")
 	local t = { 
-		["virtualGatewayId"] = _virtualGatewayId,
-		["virtualInterfaceId"] = _virtualInterfaceId,
+		["virtualGatewayId"] = args["virtualGatewayId"],
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
 	asserts.AssertConfirmPrivateVirtualInterfaceRequest(t)
 	return t
@@ -556,13 +613,16 @@ end
 
 --- Create a structure of type Location
 -- <p>An AWS Direct Connect location where connections and interconnects can be requested.</p>
--- @param _locationName [LocationName] <p>The name of the AWS Direct Connect location. The name includes the colocation partner name and the physical site of the lit building.</p>
--- @param _locationCode [LocationCode] <p>The code used to indicate the AWS Direct Connect location.</p>
-function M.Location(_locationName, _locationCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Location")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * locationName [LocationName] <p>The name of the AWS Direct Connect location. The name includes the colocation partner name and the physical site of the lit building.</p>
+-- * locationCode [LocationCode] <p>The code used to indicate the AWS Direct Connect location.</p>
+-- @return Location structure as a key-value pair table
+function M.Location(args)
+	assert(args, "You must provdide an argument table when creating Location")
 	local t = { 
-		["locationName"] = _locationName,
-		["locationCode"] = _locationCode,
+		["locationName"] = args["locationName"],
+		["locationCode"] = args["locationCode"],
 	}
 	asserts.AssertLocation(t)
 	return t
@@ -581,11 +641,14 @@ end
 
 --- Create a structure of type DescribeConnectionLoaResponse
 -- <p>The response received when DescribeConnectionLoa is called.</p>
--- @param _loa [Loa] 
-function M.DescribeConnectionLoaResponse(_loa, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionLoaResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * loa [Loa] 
+-- @return DescribeConnectionLoaResponse structure as a key-value pair table
+function M.DescribeConnectionLoaResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeConnectionLoaResponse")
 	local t = { 
-		["loa"] = _loa,
+		["loa"] = args["loa"],
 	}
 	asserts.AssertDescribeConnectionLoaResponse(t)
 	return t
@@ -605,12 +668,15 @@ end
 
 --- Create a structure of type ConfirmConnectionRequest
 -- <p>Container for the parameters to the ConfirmConnection operation.</p>
--- @param _connectionId [ConnectionId] 
--- Required parameter: connectionId
-function M.ConfirmConnectionRequest(_connectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmConnectionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionId [ConnectionId] 
+-- Required key: connectionId
+-- @return ConfirmConnectionRequest structure as a key-value pair table
+function M.ConfirmConnectionRequest(args)
+	assert(args, "You must provdide an argument table when creating ConfirmConnectionRequest")
 	local t = { 
-		["connectionId"] = _connectionId,
+		["connectionId"] = args["connectionId"],
 	}
 	asserts.AssertConfirmConnectionRequest(t)
 	return t
@@ -645,43 +711,46 @@ end
 
 --- Create a structure of type VirtualInterface
 -- <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
--- @param _virtualInterfaceState [VirtualInterfaceState] 
--- @param _asn [ASN] 
--- @param _vlan [VLAN] 
--- @param _customerAddress [CustomerAddress] 
--- @param _ownerAccount [OwnerAccount] <p>The AWS account that will own the new virtual interface.</p>
--- @param _connectionId [ConnectionId] 
--- @param _addressFamily [AddressFamily] 
--- @param _virtualGatewayId [VirtualGatewayId] 
--- @param _virtualInterfaceId [VirtualInterfaceId] 
--- @param _authKey [BGPAuthKey] 
--- @param _routeFilterPrefixes [RouteFilterPrefixList] 
--- @param _location [LocationCode] 
--- @param _bgpPeers [BGPPeerList] 
--- @param _customerRouterConfig [RouterConfig] <p>Information for generating the customer router configuration.</p>
--- @param _amazonAddress [AmazonAddress] 
--- @param _virtualInterfaceType [VirtualInterfaceType] 
--- @param _virtualInterfaceName [VirtualInterfaceName] 
-function M.VirtualInterface(_virtualInterfaceState, _asn, _vlan, _customerAddress, _ownerAccount, _connectionId, _addressFamily, _virtualGatewayId, _virtualInterfaceId, _authKey, _routeFilterPrefixes, _location, _bgpPeers, _customerRouterConfig, _amazonAddress, _virtualInterfaceType, _virtualInterfaceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VirtualInterface")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualInterfaceState [VirtualInterfaceState] 
+-- * asn [ASN] 
+-- * vlan [VLAN] 
+-- * customerAddress [CustomerAddress] 
+-- * ownerAccount [OwnerAccount] <p>The AWS account that will own the new virtual interface.</p>
+-- * connectionId [ConnectionId] 
+-- * addressFamily [AddressFamily] 
+-- * virtualGatewayId [VirtualGatewayId] 
+-- * virtualInterfaceId [VirtualInterfaceId] 
+-- * authKey [BGPAuthKey] 
+-- * routeFilterPrefixes [RouteFilterPrefixList] 
+-- * location [LocationCode] 
+-- * bgpPeers [BGPPeerList] 
+-- * customerRouterConfig [RouterConfig] <p>Information for generating the customer router configuration.</p>
+-- * amazonAddress [AmazonAddress] 
+-- * virtualInterfaceType [VirtualInterfaceType] 
+-- * virtualInterfaceName [VirtualInterfaceName] 
+-- @return VirtualInterface structure as a key-value pair table
+function M.VirtualInterface(args)
+	assert(args, "You must provdide an argument table when creating VirtualInterface")
 	local t = { 
-		["virtualInterfaceState"] = _virtualInterfaceState,
-		["asn"] = _asn,
-		["vlan"] = _vlan,
-		["customerAddress"] = _customerAddress,
-		["ownerAccount"] = _ownerAccount,
-		["connectionId"] = _connectionId,
-		["addressFamily"] = _addressFamily,
-		["virtualGatewayId"] = _virtualGatewayId,
-		["virtualInterfaceId"] = _virtualInterfaceId,
-		["authKey"] = _authKey,
-		["routeFilterPrefixes"] = _routeFilterPrefixes,
-		["location"] = _location,
-		["bgpPeers"] = _bgpPeers,
-		["customerRouterConfig"] = _customerRouterConfig,
-		["amazonAddress"] = _amazonAddress,
-		["virtualInterfaceType"] = _virtualInterfaceType,
-		["virtualInterfaceName"] = _virtualInterfaceName,
+		["virtualInterfaceState"] = args["virtualInterfaceState"],
+		["asn"] = args["asn"],
+		["vlan"] = args["vlan"],
+		["customerAddress"] = args["customerAddress"],
+		["ownerAccount"] = args["ownerAccount"],
+		["connectionId"] = args["connectionId"],
+		["addressFamily"] = args["addressFamily"],
+		["virtualGatewayId"] = args["virtualGatewayId"],
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
+		["authKey"] = args["authKey"],
+		["routeFilterPrefixes"] = args["routeFilterPrefixes"],
+		["location"] = args["location"],
+		["bgpPeers"] = args["bgpPeers"],
+		["customerRouterConfig"] = args["customerRouterConfig"],
+		["amazonAddress"] = args["amazonAddress"],
+		["virtualInterfaceType"] = args["virtualInterfaceType"],
+		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
 	asserts.AssertVirtualInterface(t)
 	return t
@@ -701,12 +770,15 @@ end
 
 --- Create a structure of type DeleteVirtualInterfaceRequest
 -- <p>Container for the parameters to the DeleteVirtualInterface operation.</p>
--- @param _virtualInterfaceId [VirtualInterfaceId] 
--- Required parameter: virtualInterfaceId
-function M.DeleteVirtualInterfaceRequest(_virtualInterfaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVirtualInterfaceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualInterfaceId [VirtualInterfaceId] 
+-- Required key: virtualInterfaceId
+-- @return DeleteVirtualInterfaceRequest structure as a key-value pair table
+function M.DeleteVirtualInterfaceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteVirtualInterfaceRequest")
 	local t = { 
-		["virtualInterfaceId"] = _virtualInterfaceId,
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
 	asserts.AssertDeleteVirtualInterfaceRequest(t)
 	return t
@@ -734,24 +806,27 @@ end
 
 --- Create a structure of type AllocateHostedConnectionRequest
 -- <p>Container for the parameters to theHostedConnection operation.</p>
--- @param _ownerAccount [OwnerAccount] <p>The numeric account ID of the customer for whom the connection will be provisioned.</p> <p>Example: 123443215678</p> <p>Default: None</p>
--- @param _connectionId [ConnectionId] <p>The ID of the interconnect or LAG on which the connection will be provisioned.</p> <p>Example: dxcon-456abc78 or dxlag-abc123</p> <p>Default: None</p>
--- @param _bandwidth [Bandwidth] <p>The bandwidth of the connection.</p> <p>Example: <code>500Mbps</code> </p> <p>Default: None</p> <p>Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps</p>
--- @param _vlan [VLAN] <p>The dedicated VLAN provisioned to the hosted connection.</p> <p>Example: 101</p> <p>Default: None</p>
--- @param _connectionName [ConnectionName] <p>The name of the provisioned connection.</p> <p>Example: "<code>500M Connection to AWS</code>"</p> <p>Default: None</p>
--- Required parameter: connectionId
--- Required parameter: ownerAccount
--- Required parameter: bandwidth
--- Required parameter: connectionName
--- Required parameter: vlan
-function M.AllocateHostedConnectionRequest(_ownerAccount, _connectionId, _bandwidth, _vlan, _connectionName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AllocateHostedConnectionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ownerAccount [OwnerAccount] <p>The numeric account ID of the customer for whom the connection will be provisioned.</p> <p>Example: 123443215678</p> <p>Default: None</p>
+-- * connectionId [ConnectionId] <p>The ID of the interconnect or LAG on which the connection will be provisioned.</p> <p>Example: dxcon-456abc78 or dxlag-abc123</p> <p>Default: None</p>
+-- * bandwidth [Bandwidth] <p>The bandwidth of the connection.</p> <p>Example: <code>500Mbps</code> </p> <p>Default: None</p> <p>Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps</p>
+-- * vlan [VLAN] <p>The dedicated VLAN provisioned to the hosted connection.</p> <p>Example: 101</p> <p>Default: None</p>
+-- * connectionName [ConnectionName] <p>The name of the provisioned connection.</p> <p>Example: "<code>500M Connection to AWS</code>"</p> <p>Default: None</p>
+-- Required key: connectionId
+-- Required key: ownerAccount
+-- Required key: bandwidth
+-- Required key: connectionName
+-- Required key: vlan
+-- @return AllocateHostedConnectionRequest structure as a key-value pair table
+function M.AllocateHostedConnectionRequest(args)
+	assert(args, "You must provdide an argument table when creating AllocateHostedConnectionRequest")
 	local t = { 
-		["ownerAccount"] = _ownerAccount,
-		["connectionId"] = _connectionId,
-		["bandwidth"] = _bandwidth,
-		["vlan"] = _vlan,
-		["connectionName"] = _connectionName,
+		["ownerAccount"] = args["ownerAccount"],
+		["connectionId"] = args["connectionId"],
+		["bandwidth"] = args["bandwidth"],
+		["vlan"] = args["vlan"],
+		["connectionName"] = args["connectionName"],
 	}
 	asserts.AssertAllocateHostedConnectionRequest(t)
 	return t
@@ -776,23 +851,26 @@ end
 
 --- Create a structure of type BGPPeer
 -- <p>A structure containing information about a BGP peer.</p>
--- @param _bgpStatus [BGPStatus] 
--- @param _customerAddress [CustomerAddress] 
--- @param _addressFamily [AddressFamily] 
--- @param _authKey [BGPAuthKey] 
--- @param _bgpPeerState [BGPPeerState] 
--- @param _amazonAddress [AmazonAddress] 
--- @param _asn [ASN] 
-function M.BGPPeer(_bgpStatus, _customerAddress, _addressFamily, _authKey, _bgpPeerState, _amazonAddress, _asn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BGPPeer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * bgpStatus [BGPStatus] 
+-- * customerAddress [CustomerAddress] 
+-- * addressFamily [AddressFamily] 
+-- * authKey [BGPAuthKey] 
+-- * bgpPeerState [BGPPeerState] 
+-- * amazonAddress [AmazonAddress] 
+-- * asn [ASN] 
+-- @return BGPPeer structure as a key-value pair table
+function M.BGPPeer(args)
+	assert(args, "You must provdide an argument table when creating BGPPeer")
 	local t = { 
-		["bgpStatus"] = _bgpStatus,
-		["customerAddress"] = _customerAddress,
-		["addressFamily"] = _addressFamily,
-		["authKey"] = _authKey,
-		["bgpPeerState"] = _bgpPeerState,
-		["amazonAddress"] = _amazonAddress,
-		["asn"] = _asn,
+		["bgpStatus"] = args["bgpStatus"],
+		["customerAddress"] = args["customerAddress"],
+		["addressFamily"] = args["addressFamily"],
+		["authKey"] = args["authKey"],
+		["bgpPeerState"] = args["bgpPeerState"],
+		["amazonAddress"] = args["amazonAddress"],
+		["asn"] = args["asn"],
 	}
 	asserts.AssertBGPPeer(t)
 	return t
@@ -812,13 +890,16 @@ end
 
 --- Create a structure of type CreateBGPPeerRequest
 -- <p>Container for the parameters to the CreateBGPPeer operation.</p>
--- @param _newBGPPeer [NewBGPPeer] <p>Detailed information for the BGP peer to be created.</p> <p>Default: None</p>
--- @param _virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface on which the BGP peer will be provisioned.</p> <p>Example: dxvif-456abc78</p> <p>Default: None</p>
-function M.CreateBGPPeerRequest(_newBGPPeer, _virtualInterfaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBGPPeerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * newBGPPeer [NewBGPPeer] <p>Detailed information for the BGP peer to be created.</p> <p>Default: None</p>
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface on which the BGP peer will be provisioned.</p> <p>Example: dxvif-456abc78</p> <p>Default: None</p>
+-- @return CreateBGPPeerRequest structure as a key-value pair table
+function M.CreateBGPPeerRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateBGPPeerRequest")
 	local t = { 
-		["newBGPPeer"] = _newBGPPeer,
-		["virtualInterfaceId"] = _virtualInterfaceId,
+		["newBGPPeer"] = args["newBGPPeer"],
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
 	asserts.AssertCreateBGPPeerRequest(t)
 	return t
@@ -842,18 +923,21 @@ end
 
 --- Create a structure of type AllocatePrivateVirtualInterfaceRequest
 -- <p>Container for the parameters to the AllocatePrivateVirtualInterface operation.</p>
--- @param _ownerAccount [OwnerAccount] <p>The AWS account that will own the new private virtual interface.</p> <p>Default: None</p>
--- @param _connectionId [ConnectionId] <p>The connection ID on which the private virtual interface is provisioned.</p> <p>Default: None</p>
--- @param _newPrivateVirtualInterfaceAllocation [NewPrivateVirtualInterfaceAllocation] <p>Detailed information for the private virtual interface to be provisioned.</p> <p>Default: None</p>
--- Required parameter: connectionId
--- Required parameter: ownerAccount
--- Required parameter: newPrivateVirtualInterfaceAllocation
-function M.AllocatePrivateVirtualInterfaceRequest(_ownerAccount, _connectionId, _newPrivateVirtualInterfaceAllocation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AllocatePrivateVirtualInterfaceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ownerAccount [OwnerAccount] <p>The AWS account that will own the new private virtual interface.</p> <p>Default: None</p>
+-- * connectionId [ConnectionId] <p>The connection ID on which the private virtual interface is provisioned.</p> <p>Default: None</p>
+-- * newPrivateVirtualInterfaceAllocation [NewPrivateVirtualInterfaceAllocation] <p>Detailed information for the private virtual interface to be provisioned.</p> <p>Default: None</p>
+-- Required key: connectionId
+-- Required key: ownerAccount
+-- Required key: newPrivateVirtualInterfaceAllocation
+-- @return AllocatePrivateVirtualInterfaceRequest structure as a key-value pair table
+function M.AllocatePrivateVirtualInterfaceRequest(args)
+	assert(args, "You must provdide an argument table when creating AllocatePrivateVirtualInterfaceRequest")
 	local t = { 
-		["ownerAccount"] = _ownerAccount,
-		["connectionId"] = _connectionId,
-		["newPrivateVirtualInterfaceAllocation"] = _newPrivateVirtualInterfaceAllocation,
+		["ownerAccount"] = args["ownerAccount"],
+		["connectionId"] = args["connectionId"],
+		["newPrivateVirtualInterfaceAllocation"] = args["newPrivateVirtualInterfaceAllocation"],
 	}
 	asserts.AssertAllocatePrivateVirtualInterfaceRequest(t)
 	return t
@@ -875,15 +959,18 @@ end
 
 --- Create a structure of type UntagResourceRequest
 -- <p>Container for the parameters to the UntagResource operation.</p>
--- @param _resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p>
--- @param _tagKeys [TagKeyList] <p>The list of tag keys to remove.</p>
--- Required parameter: resourceArn
--- Required parameter: tagKeys
-function M.UntagResourceRequest(_resourceArn, _tagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p>
+-- * tagKeys [TagKeyList] <p>The list of tag keys to remove.</p>
+-- Required key: resourceArn
+-- Required key: tagKeys
+-- @return UntagResourceRequest structure as a key-value pair table
+function M.UntagResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
 	local t = { 
-		["resourceArn"] = _resourceArn,
-		["tagKeys"] = _tagKeys,
+		["resourceArn"] = args["resourceArn"],
+		["tagKeys"] = args["tagKeys"],
 	}
 	asserts.AssertUntagResourceRequest(t)
 	return t
@@ -905,16 +992,19 @@ end
 
 --- Create a structure of type DescribeInterconnectLoaRequest
 -- <p>Container for the parameters to the DescribeInterconnectLoa operation.</p>
--- @param _interconnectId [InterconnectId] 
--- @param _providerName [ProviderName] <p>The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
--- @param _loaContentType [LoaContentType] 
--- Required parameter: interconnectId
-function M.DescribeInterconnectLoaRequest(_interconnectId, _providerName, _loaContentType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInterconnectLoaRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * interconnectId [InterconnectId] 
+-- * providerName [ProviderName] <p>The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
+-- * loaContentType [LoaContentType] 
+-- Required key: interconnectId
+-- @return DescribeInterconnectLoaRequest structure as a key-value pair table
+function M.DescribeInterconnectLoaRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeInterconnectLoaRequest")
 	local t = { 
-		["interconnectId"] = _interconnectId,
-		["providerName"] = _providerName,
-		["loaContentType"] = _loaContentType,
+		["interconnectId"] = args["interconnectId"],
+		["providerName"] = args["providerName"],
+		["loaContentType"] = args["loaContentType"],
 	}
 	asserts.AssertDescribeInterconnectLoaRequest(t)
 	return t
@@ -934,13 +1024,16 @@ end
 
 --- Create a structure of type Loa
 -- <p>A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.</p>
--- @param _loaContentType [LoaContentType] 
--- @param _loaContent [LoaContent] 
-function M.Loa(_loaContentType, _loaContent, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Loa")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * loaContentType [LoaContentType] 
+-- * loaContent [LoaContent] 
+-- @return Loa structure as a key-value pair table
+function M.Loa(args)
+	assert(args, "You must provdide an argument table when creating Loa")
 	local t = { 
-		["loaContentType"] = _loaContentType,
-		["loaContent"] = _loaContent,
+		["loaContentType"] = args["loaContentType"],
+		["loaContent"] = args["loaContent"],
 	}
 	asserts.AssertLoa(t)
 	return t
@@ -959,11 +1052,14 @@ end
 
 --- Create a structure of type DescribeInterconnectsRequest
 -- <p>Container for the parameters to the DescribeInterconnects operation.</p>
--- @param _interconnectId [InterconnectId] 
-function M.DescribeInterconnectsRequest(_interconnectId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInterconnectsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * interconnectId [InterconnectId] 
+-- @return DescribeInterconnectsRequest structure as a key-value pair table
+function M.DescribeInterconnectsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeInterconnectsRequest")
 	local t = { 
-		["interconnectId"] = _interconnectId,
+		["interconnectId"] = args["interconnectId"],
 	}
 	asserts.AssertDescribeInterconnectsRequest(t)
 	return t
@@ -985,15 +1081,18 @@ end
 
 --- Create a structure of type AssociateVirtualInterfaceRequest
 -- <p>Container for the parameters to the AssociateVirtualInterface operation.</p>
--- @param _connectionId [ConnectionId] <p>The ID of the LAG or connection with which to associate the virtual interface.</p> <p>Example: dxlag-abc123 or dxcon-abc123</p> <p>Default: None</p>
--- @param _virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p> <p>Example: dxvif-123dfg56</p> <p>Default: None</p>
--- Required parameter: virtualInterfaceId
--- Required parameter: connectionId
-function M.AssociateVirtualInterfaceRequest(_connectionId, _virtualInterfaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateVirtualInterfaceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionId [ConnectionId] <p>The ID of the LAG or connection with which to associate the virtual interface.</p> <p>Example: dxlag-abc123 or dxcon-abc123</p> <p>Default: None</p>
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface.</p> <p>Example: dxvif-123dfg56</p> <p>Default: None</p>
+-- Required key: virtualInterfaceId
+-- Required key: connectionId
+-- @return AssociateVirtualInterfaceRequest structure as a key-value pair table
+function M.AssociateVirtualInterfaceRequest(args)
+	assert(args, "You must provdide an argument table when creating AssociateVirtualInterfaceRequest")
 	local t = { 
-		["connectionId"] = _connectionId,
-		["virtualInterfaceId"] = _virtualInterfaceId,
+		["connectionId"] = args["connectionId"],
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
 	asserts.AssertAssociateVirtualInterfaceRequest(t)
 	return t
@@ -1017,18 +1116,21 @@ end
 
 --- Create a structure of type AllocatePublicVirtualInterfaceRequest
 -- <p>Container for the parameters to the AllocatePublicVirtualInterface operation.</p>
--- @param _ownerAccount [OwnerAccount] <p>The AWS account that will own the new public virtual interface.</p> <p>Default: None</p>
--- @param _connectionId [ConnectionId] <p>The connection ID on which the public virtual interface is provisioned.</p> <p>Default: None</p>
--- @param _newPublicVirtualInterfaceAllocation [NewPublicVirtualInterfaceAllocation] <p>Detailed information for the public virtual interface to be provisioned.</p> <p>Default: None</p>
--- Required parameter: connectionId
--- Required parameter: ownerAccount
--- Required parameter: newPublicVirtualInterfaceAllocation
-function M.AllocatePublicVirtualInterfaceRequest(_ownerAccount, _connectionId, _newPublicVirtualInterfaceAllocation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AllocatePublicVirtualInterfaceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ownerAccount [OwnerAccount] <p>The AWS account that will own the new public virtual interface.</p> <p>Default: None</p>
+-- * connectionId [ConnectionId] <p>The connection ID on which the public virtual interface is provisioned.</p> <p>Default: None</p>
+-- * newPublicVirtualInterfaceAllocation [NewPublicVirtualInterfaceAllocation] <p>Detailed information for the public virtual interface to be provisioned.</p> <p>Default: None</p>
+-- Required key: connectionId
+-- Required key: ownerAccount
+-- Required key: newPublicVirtualInterfaceAllocation
+-- @return AllocatePublicVirtualInterfaceRequest structure as a key-value pair table
+function M.AllocatePublicVirtualInterfaceRequest(args)
+	assert(args, "You must provdide an argument table when creating AllocatePublicVirtualInterfaceRequest")
 	local t = { 
-		["ownerAccount"] = _ownerAccount,
-		["connectionId"] = _connectionId,
-		["newPublicVirtualInterfaceAllocation"] = _newPublicVirtualInterfaceAllocation,
+		["ownerAccount"] = args["ownerAccount"],
+		["connectionId"] = args["connectionId"],
+		["newPublicVirtualInterfaceAllocation"] = args["newPublicVirtualInterfaceAllocation"],
 	}
 	asserts.AssertAllocatePublicVirtualInterfaceRequest(t)
 	return t
@@ -1047,11 +1149,14 @@ end
 
 --- Create a structure of type DescribeConnectionsRequest
 -- <p>Container for the parameters to the DescribeConnections operation.</p>
--- @param _connectionId [ConnectionId] 
-function M.DescribeConnectionsRequest(_connectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionId [ConnectionId] 
+-- @return DescribeConnectionsRequest structure as a key-value pair table
+function M.DescribeConnectionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeConnectionsRequest")
 	local t = { 
-		["connectionId"] = _connectionId,
+		["connectionId"] = args["connectionId"],
 	}
 	asserts.AssertDescribeConnectionsRequest(t)
 	return t
@@ -1070,11 +1175,14 @@ end
 
 --- Create a structure of type ConfirmPublicVirtualInterfaceResponse
 -- <p>The response received when ConfirmPublicVirtualInterface is called.</p>
--- @param _virtualInterfaceState [VirtualInterfaceState] 
-function M.ConfirmPublicVirtualInterfaceResponse(_virtualInterfaceState, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmPublicVirtualInterfaceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualInterfaceState [VirtualInterfaceState] 
+-- @return ConfirmPublicVirtualInterfaceResponse structure as a key-value pair table
+function M.ConfirmPublicVirtualInterfaceResponse(args)
+	assert(args, "You must provdide an argument table when creating ConfirmPublicVirtualInterfaceResponse")
 	local t = { 
-		["virtualInterfaceState"] = _virtualInterfaceState,
+		["virtualInterfaceState"] = args["virtualInterfaceState"],
 	}
 	asserts.AssertConfirmPublicVirtualInterfaceResponse(t)
 	return t
@@ -1093,11 +1201,14 @@ end
 
 --- Create a structure of type RouteFilterPrefix
 -- <p>A route filter prefix that the customer can advertise through Border Gateway Protocol (BGP) over a public virtual interface.</p>
--- @param _cidr [CIDR] <p>CIDR notation for the advertised route. Multiple routes are separated by commas.</p> <p>IPv6 CIDRs must be at least a /64 or shorter</p> <p>Example: 10.10.10.0/24,10.10.11.0/24,2001:db8::/64</p>
-function M.RouteFilterPrefix(_cidr, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RouteFilterPrefix")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cidr [CIDR] <p>CIDR notation for the advertised route. Multiple routes are separated by commas.</p> <p>IPv6 CIDRs must be at least a /64 or shorter</p> <p>Example: 10.10.10.0/24,10.10.11.0/24,2001:db8::/64</p>
+-- @return RouteFilterPrefix structure as a key-value pair table
+function M.RouteFilterPrefix(args)
+	assert(args, "You must provdide an argument table when creating RouteFilterPrefix")
 	local t = { 
-		["cidr"] = _cidr,
+		["cidr"] = args["cidr"],
 	}
 	asserts.AssertRouteFilterPrefix(t)
 	return t
@@ -1117,13 +1228,16 @@ end
 
 --- Create a structure of type VirtualGateway
 -- <p>You can create one or more AWS Direct Connect private virtual interfaces linking to your virtual private gateway.</p> <p>Virtual private gateways can be managed using the Amazon Virtual Private Cloud (Amazon VPC) console or the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">Amazon EC2 CreateVpnGateway action</a>.</p>
--- @param _virtualGatewayId [VirtualGatewayId] 
--- @param _virtualGatewayState [VirtualGatewayState] 
-function M.VirtualGateway(_virtualGatewayId, _virtualGatewayState, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VirtualGateway")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualGatewayId [VirtualGatewayId] 
+-- * virtualGatewayState [VirtualGatewayState] 
+-- @return VirtualGateway structure as a key-value pair table
+function M.VirtualGateway(args)
+	assert(args, "You must provdide an argument table when creating VirtualGateway")
 	local t = { 
-		["virtualGatewayId"] = _virtualGatewayId,
-		["virtualGatewayState"] = _virtualGatewayState,
+		["virtualGatewayId"] = args["virtualGatewayId"],
+		["virtualGatewayState"] = args["virtualGatewayState"],
 	}
 	asserts.AssertVirtualGateway(t)
 	return t
@@ -1146,19 +1260,22 @@ end
 
 --- Create a structure of type NewBGPPeer
 -- <p>A structure containing information about a new BGP peer.</p>
--- @param _authKey [BGPAuthKey] 
--- @param _amazonAddress [AmazonAddress] 
--- @param _customerAddress [CustomerAddress] 
--- @param _asn [ASN] 
--- @param _addressFamily [AddressFamily] 
-function M.NewBGPPeer(_authKey, _amazonAddress, _customerAddress, _asn, _addressFamily, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NewBGPPeer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * authKey [BGPAuthKey] 
+-- * amazonAddress [AmazonAddress] 
+-- * customerAddress [CustomerAddress] 
+-- * asn [ASN] 
+-- * addressFamily [AddressFamily] 
+-- @return NewBGPPeer structure as a key-value pair table
+function M.NewBGPPeer(args)
+	assert(args, "You must provdide an argument table when creating NewBGPPeer")
 	local t = { 
-		["authKey"] = _authKey,
-		["amazonAddress"] = _amazonAddress,
-		["customerAddress"] = _customerAddress,
-		["asn"] = _asn,
-		["addressFamily"] = _addressFamily,
+		["authKey"] = args["authKey"],
+		["amazonAddress"] = args["amazonAddress"],
+		["customerAddress"] = args["customerAddress"],
+		["asn"] = args["asn"],
+		["addressFamily"] = args["addressFamily"],
 	}
 	asserts.AssertNewBGPPeer(t)
 	return t
@@ -1180,16 +1297,19 @@ end
 
 --- Create a structure of type DescribeLoaRequest
 -- <p>Container for the parameters to the DescribeLoa operation.</p>
--- @param _loaContentType [LoaContentType] <p>A standard media type indicating the content type of the LOA-CFA document. Currently, the only supported value is "application/pdf".</p> <p>Default: application/pdf</p>
--- @param _connectionId [ConnectionId] <p>The ID of a connection, LAG, or interconnect for which to get the LOA-CFA information.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
--- @param _providerName [ProviderName] <p>The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
--- Required parameter: connectionId
-function M.DescribeLoaRequest(_loaContentType, _connectionId, _providerName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoaRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * loaContentType [LoaContentType] <p>A standard media type indicating the content type of the LOA-CFA document. Currently, the only supported value is "application/pdf".</p> <p>Default: application/pdf</p>
+-- * connectionId [ConnectionId] <p>The ID of a connection, LAG, or interconnect for which to get the LOA-CFA information.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
+-- * providerName [ProviderName] <p>The name of the service provider who establishes connectivity on your behalf. If you supply this parameter, the LOA-CFA lists the provider name alongside your company name as the requester of the cross connect.</p> <p>Default: None</p>
+-- Required key: connectionId
+-- @return DescribeLoaRequest structure as a key-value pair table
+function M.DescribeLoaRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeLoaRequest")
 	local t = { 
-		["loaContentType"] = _loaContentType,
-		["connectionId"] = _connectionId,
-		["providerName"] = _providerName,
+		["loaContentType"] = args["loaContentType"],
+		["connectionId"] = args["connectionId"],
+		["providerName"] = args["providerName"],
 	}
 	asserts.AssertDescribeLoaRequest(t)
 	return t
@@ -1207,8 +1327,11 @@ end
 
 --- Create a structure of type UntagResourceResponse
 -- <p>The response received when UntagResource is called.</p>
-function M.UntagResourceResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UntagResourceResponse structure as a key-value pair table
+function M.UntagResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating UntagResourceResponse")
 	local t = { 
 	}
 	asserts.AssertUntagResourceResponse(t)
@@ -1230,15 +1353,18 @@ end
 
 --- Create a structure of type DeleteBGPPeerRequest
 -- <p>Container for the parameters to the DeleteBGPPeer operation.</p>
--- @param _customerAddress [CustomerAddress] 
--- @param _asn [ASN] 
--- @param _virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface from which the BGP peer will be deleted.</p> <p>Example: dxvif-456abc78</p> <p>Default: None</p>
-function M.DeleteBGPPeerRequest(_customerAddress, _asn, _virtualInterfaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBGPPeerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * customerAddress [CustomerAddress] 
+-- * asn [ASN] 
+-- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface from which the BGP peer will be deleted.</p> <p>Example: dxvif-456abc78</p> <p>Default: None</p>
+-- @return DeleteBGPPeerRequest structure as a key-value pair table
+function M.DeleteBGPPeerRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBGPPeerRequest")
 	local t = { 
-		["customerAddress"] = _customerAddress,
-		["asn"] = _asn,
-		["virtualInterfaceId"] = _virtualInterfaceId,
+		["customerAddress"] = args["customerAddress"],
+		["asn"] = args["asn"],
+		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
 	asserts.AssertDeleteBGPPeerRequest(t)
 	return t
@@ -1268,33 +1394,36 @@ end
 
 --- Create a structure of type Connection
 -- <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
--- @param _partnerName [PartnerName] <p>The name of the AWS Direct Connect service provider associated with the connection.</p>
--- @param _awsDevice [AwsDevice] <p>The Direct Connection endpoint which the physical connection terminates on.</p>
--- @param _vlan [VLAN] 
--- @param _ownerAccount [OwnerAccount] <p>The AWS account that will own the new connection.</p>
--- @param _connectionId [ConnectionId] 
--- @param _lagId [LagId] 
--- @param _connectionState [ConnectionState] 
--- @param _bandwidth [Bandwidth] <p>Bandwidth of the connection.</p> <p>Example: 1Gbps (for regular connections), or 500Mbps (for hosted connections)</p> <p>Default: None</p>
--- @param _location [LocationCode] 
--- @param _connectionName [ConnectionName] 
--- @param _loaIssueTime [LoaIssueTime] <p>The time of the most recent call to <a>DescribeLoa</a> for this connection.</p>
--- @param _region [Region] 
-function M.Connection(_partnerName, _awsDevice, _vlan, _ownerAccount, _connectionId, _lagId, _connectionState, _bandwidth, _location, _connectionName, _loaIssueTime, _region, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Connection")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * partnerName [PartnerName] <p>The name of the AWS Direct Connect service provider associated with the connection.</p>
+-- * awsDevice [AwsDevice] <p>The Direct Connection endpoint which the physical connection terminates on.</p>
+-- * vlan [VLAN] 
+-- * ownerAccount [OwnerAccount] <p>The AWS account that will own the new connection.</p>
+-- * connectionId [ConnectionId] 
+-- * lagId [LagId] 
+-- * connectionState [ConnectionState] 
+-- * bandwidth [Bandwidth] <p>Bandwidth of the connection.</p> <p>Example: 1Gbps (for regular connections), or 500Mbps (for hosted connections)</p> <p>Default: None</p>
+-- * location [LocationCode] 
+-- * connectionName [ConnectionName] 
+-- * loaIssueTime [LoaIssueTime] <p>The time of the most recent call to <a>DescribeLoa</a> for this connection.</p>
+-- * region [Region] 
+-- @return Connection structure as a key-value pair table
+function M.Connection(args)
+	assert(args, "You must provdide an argument table when creating Connection")
 	local t = { 
-		["partnerName"] = _partnerName,
-		["awsDevice"] = _awsDevice,
-		["vlan"] = _vlan,
-		["ownerAccount"] = _ownerAccount,
-		["connectionId"] = _connectionId,
-		["lagId"] = _lagId,
-		["connectionState"] = _connectionState,
-		["bandwidth"] = _bandwidth,
-		["location"] = _location,
-		["connectionName"] = _connectionName,
-		["loaIssueTime"] = _loaIssueTime,
-		["region"] = _region,
+		["partnerName"] = args["partnerName"],
+		["awsDevice"] = args["awsDevice"],
+		["vlan"] = args["vlan"],
+		["ownerAccount"] = args["ownerAccount"],
+		["connectionId"] = args["connectionId"],
+		["lagId"] = args["lagId"],
+		["connectionState"] = args["connectionState"],
+		["bandwidth"] = args["bandwidth"],
+		["location"] = args["location"],
+		["connectionName"] = args["connectionName"],
+		["loaIssueTime"] = args["loaIssueTime"],
+		["region"] = args["region"],
 	}
 	asserts.AssertConnection(t)
 	return t
@@ -1322,26 +1451,29 @@ end
 
 --- Create a structure of type NewPrivateVirtualInterfaceAllocation
 -- <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
--- @param _customerAddress [CustomerAddress] 
--- @param _vlan [VLAN] 
--- @param _asn [ASN] 
--- @param _authKey [BGPAuthKey] 
--- @param _amazonAddress [AmazonAddress] 
--- @param _addressFamily [AddressFamily] 
--- @param _virtualInterfaceName [VirtualInterfaceName] 
--- Required parameter: virtualInterfaceName
--- Required parameter: vlan
--- Required parameter: asn
-function M.NewPrivateVirtualInterfaceAllocation(_customerAddress, _vlan, _asn, _authKey, _amazonAddress, _addressFamily, _virtualInterfaceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NewPrivateVirtualInterfaceAllocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * customerAddress [CustomerAddress] 
+-- * vlan [VLAN] 
+-- * asn [ASN] 
+-- * authKey [BGPAuthKey] 
+-- * amazonAddress [AmazonAddress] 
+-- * addressFamily [AddressFamily] 
+-- * virtualInterfaceName [VirtualInterfaceName] 
+-- Required key: virtualInterfaceName
+-- Required key: vlan
+-- Required key: asn
+-- @return NewPrivateVirtualInterfaceAllocation structure as a key-value pair table
+function M.NewPrivateVirtualInterfaceAllocation(args)
+	assert(args, "You must provdide an argument table when creating NewPrivateVirtualInterfaceAllocation")
 	local t = { 
-		["customerAddress"] = _customerAddress,
-		["vlan"] = _vlan,
-		["asn"] = _asn,
-		["authKey"] = _authKey,
-		["amazonAddress"] = _amazonAddress,
-		["addressFamily"] = _addressFamily,
-		["virtualInterfaceName"] = _virtualInterfaceName,
+		["customerAddress"] = args["customerAddress"],
+		["vlan"] = args["vlan"],
+		["asn"] = args["asn"],
+		["authKey"] = args["authKey"],
+		["amazonAddress"] = args["amazonAddress"],
+		["addressFamily"] = args["addressFamily"],
+		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
 	asserts.AssertNewPrivateVirtualInterfaceAllocation(t)
 	return t
@@ -1361,12 +1493,15 @@ end
 
 --- Create a structure of type DeleteConnectionRequest
 -- <p>Container for the parameters to the DeleteConnection operation.</p>
--- @param _connectionId [ConnectionId] 
--- Required parameter: connectionId
-function M.DeleteConnectionRequest(_connectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConnectionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionId [ConnectionId] 
+-- Required key: connectionId
+-- @return DeleteConnectionRequest structure as a key-value pair table
+function M.DeleteConnectionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteConnectionRequest")
 	local t = { 
-		["connectionId"] = _connectionId,
+		["connectionId"] = args["connectionId"],
 	}
 	asserts.AssertDeleteConnectionRequest(t)
 	return t
@@ -1386,12 +1521,15 @@ end
 
 --- Create a structure of type DescribeTagsRequest
 -- <p>Container for the parameters to the DescribeTags operation.</p>
--- @param _resourceArns [ResourceArnList] <p>The Amazon Resource Names (ARNs) of the Direct Connect resources.</p>
--- Required parameter: resourceArns
-function M.DescribeTagsRequest(_resourceArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceArns [ResourceArnList] <p>The Amazon Resource Names (ARNs) of the Direct Connect resources.</p>
+-- Required key: resourceArns
+-- @return DescribeTagsRequest structure as a key-value pair table
+function M.DescribeTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagsRequest")
 	local t = { 
-		["resourceArns"] = _resourceArns,
+		["resourceArns"] = args["resourceArns"],
 	}
 	asserts.AssertDescribeTagsRequest(t)
 	return t
@@ -1420,28 +1558,31 @@ end
 
 --- Create a structure of type NewPublicVirtualInterface
 -- <p>A structure containing information about a new public virtual interface.</p>
--- @param _customerAddress [CustomerAddress] 
--- @param _vlan [VLAN] 
--- @param _addressFamily [AddressFamily] 
--- @param _authKey [BGPAuthKey] 
--- @param _routeFilterPrefixes [RouteFilterPrefixList] 
--- @param _amazonAddress [AmazonAddress] 
--- @param _asn [ASN] 
--- @param _virtualInterfaceName [VirtualInterfaceName] 
--- Required parameter: virtualInterfaceName
--- Required parameter: vlan
--- Required parameter: asn
-function M.NewPublicVirtualInterface(_customerAddress, _vlan, _addressFamily, _authKey, _routeFilterPrefixes, _amazonAddress, _asn, _virtualInterfaceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NewPublicVirtualInterface")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * customerAddress [CustomerAddress] 
+-- * vlan [VLAN] 
+-- * addressFamily [AddressFamily] 
+-- * authKey [BGPAuthKey] 
+-- * routeFilterPrefixes [RouteFilterPrefixList] 
+-- * amazonAddress [AmazonAddress] 
+-- * asn [ASN] 
+-- * virtualInterfaceName [VirtualInterfaceName] 
+-- Required key: virtualInterfaceName
+-- Required key: vlan
+-- Required key: asn
+-- @return NewPublicVirtualInterface structure as a key-value pair table
+function M.NewPublicVirtualInterface(args)
+	assert(args, "You must provdide an argument table when creating NewPublicVirtualInterface")
 	local t = { 
-		["customerAddress"] = _customerAddress,
-		["vlan"] = _vlan,
-		["addressFamily"] = _addressFamily,
-		["authKey"] = _authKey,
-		["routeFilterPrefixes"] = _routeFilterPrefixes,
-		["amazonAddress"] = _amazonAddress,
-		["asn"] = _asn,
-		["virtualInterfaceName"] = _virtualInterfaceName,
+		["customerAddress"] = args["customerAddress"],
+		["vlan"] = args["vlan"],
+		["addressFamily"] = args["addressFamily"],
+		["authKey"] = args["authKey"],
+		["routeFilterPrefixes"] = args["routeFilterPrefixes"],
+		["amazonAddress"] = args["amazonAddress"],
+		["asn"] = args["asn"],
+		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
 	asserts.AssertNewPublicVirtualInterface(t)
 	return t
@@ -1460,11 +1601,14 @@ end
 
 --- Create a structure of type Locations
 -- <p>A location is a network facility where AWS Direct Connect routers are available to be connected. Generally, these are colocation hubs where many network providers have equipment, and where cross connects can be delivered. Locations include a name and facility code, and must be provided when creating a connection.</p>
--- @param _locations [LocationList] <p>A list of colocation hubs where network providers have equipment. Most regions have multiple locations available.</p>
-function M.Locations(_locations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Locations")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * locations [LocationList] <p>A list of colocation hubs where network providers have equipment. Most regions have multiple locations available.</p>
+-- @return Locations structure as a key-value pair table
+function M.Locations(args)
+	assert(args, "You must provdide an argument table when creating Locations")
 	local t = { 
-		["locations"] = _locations,
+		["locations"] = args["locations"],
 	}
 	asserts.AssertLocations(t)
 	return t
@@ -1492,24 +1636,27 @@ end
 
 --- Create a structure of type AllocateConnectionOnInterconnectRequest
 -- <p>Container for the parameters to the AllocateConnectionOnInterconnect operation.</p>
--- @param _interconnectId [InterconnectId] <p>ID of the interconnect on which the connection will be provisioned.</p> <p>Example: dxcon-456abc78</p> <p>Default: None</p>
--- @param _bandwidth [Bandwidth] <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default: None</p> <p>Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps</p>
--- @param _vlan [VLAN] <p>The dedicated VLAN provisioned to the connection.</p> <p>Example: 101</p> <p>Default: None</p>
--- @param _ownerAccount [OwnerAccount] <p>Numeric account Id of the customer for whom the connection will be provisioned.</p> <p>Example: 123443215678</p> <p>Default: None</p>
--- @param _connectionName [ConnectionName] <p>Name of the provisioned connection.</p> <p>Example: "<i>500M Connection to AWS</i>"</p> <p>Default: None</p>
--- Required parameter: bandwidth
--- Required parameter: connectionName
--- Required parameter: ownerAccount
--- Required parameter: interconnectId
--- Required parameter: vlan
-function M.AllocateConnectionOnInterconnectRequest(_interconnectId, _bandwidth, _vlan, _ownerAccount, _connectionName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AllocateConnectionOnInterconnectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * interconnectId [InterconnectId] <p>ID of the interconnect on which the connection will be provisioned.</p> <p>Example: dxcon-456abc78</p> <p>Default: None</p>
+-- * bandwidth [Bandwidth] <p>Bandwidth of the connection.</p> <p>Example: "<i>500Mbps</i>"</p> <p>Default: None</p> <p>Values: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, or 500Mbps</p>
+-- * vlan [VLAN] <p>The dedicated VLAN provisioned to the connection.</p> <p>Example: 101</p> <p>Default: None</p>
+-- * ownerAccount [OwnerAccount] <p>Numeric account Id of the customer for whom the connection will be provisioned.</p> <p>Example: 123443215678</p> <p>Default: None</p>
+-- * connectionName [ConnectionName] <p>Name of the provisioned connection.</p> <p>Example: "<i>500M Connection to AWS</i>"</p> <p>Default: None</p>
+-- Required key: bandwidth
+-- Required key: connectionName
+-- Required key: ownerAccount
+-- Required key: interconnectId
+-- Required key: vlan
+-- @return AllocateConnectionOnInterconnectRequest structure as a key-value pair table
+function M.AllocateConnectionOnInterconnectRequest(args)
+	assert(args, "You must provdide an argument table when creating AllocateConnectionOnInterconnectRequest")
 	local t = { 
-		["interconnectId"] = _interconnectId,
-		["bandwidth"] = _bandwidth,
-		["vlan"] = _vlan,
-		["ownerAccount"] = _ownerAccount,
-		["connectionName"] = _connectionName,
+		["interconnectId"] = args["interconnectId"],
+		["bandwidth"] = args["bandwidth"],
+		["vlan"] = args["vlan"],
+		["ownerAccount"] = args["ownerAccount"],
+		["connectionName"] = args["connectionName"],
 	}
 	asserts.AssertAllocateConnectionOnInterconnectRequest(t)
 	return t
@@ -1529,13 +1676,16 @@ end
 
 --- Create a structure of type ResourceTag
 -- <p>The tags associated with a Direct Connect resource.</p>
--- @param _resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p>
--- @param _tags [TagList] <p>The tags.</p>
-function M.ResourceTag(_resourceArn, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceTag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p>
+-- * tags [TagList] <p>The tags.</p>
+-- @return ResourceTag structure as a key-value pair table
+function M.ResourceTag(args)
+	assert(args, "You must provdide an argument table when creating ResourceTag")
 	local t = { 
-		["resourceArn"] = _resourceArn,
-		["tags"] = _tags,
+		["resourceArn"] = args["resourceArn"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertResourceTag(t)
 	return t
@@ -1557,16 +1707,19 @@ end
 
 --- Create a structure of type UpdateLagRequest
 -- <p>Container for the parameters to the UpdateLag operation.</p>
--- @param _lagId [LagId] <p>The ID of the LAG to update.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
--- @param _minimumLinks [Count] <p>The minimum number of physical connections that must be operational for the LAG itself to be operational.</p> <p>Default: None</p>
--- @param _lagName [LagName] <p>The name for the LAG.</p> <p>Example: "<code>3x10G LAG to AWS</code>"</p> <p>Default: None</p>
--- Required parameter: lagId
-function M.UpdateLagRequest(_lagId, _minimumLinks, _lagName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateLagRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lagId [LagId] <p>The ID of the LAG to update.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
+-- * minimumLinks [Count] <p>The minimum number of physical connections that must be operational for the LAG itself to be operational.</p> <p>Default: None</p>
+-- * lagName [LagName] <p>The name for the LAG.</p> <p>Example: "<code>3x10G LAG to AWS</code>"</p> <p>Default: None</p>
+-- Required key: lagId
+-- @return UpdateLagRequest structure as a key-value pair table
+function M.UpdateLagRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateLagRequest")
 	local t = { 
-		["lagId"] = _lagId,
-		["minimumLinks"] = _minimumLinks,
-		["lagName"] = _lagName,
+		["lagId"] = args["lagId"],
+		["minimumLinks"] = args["minimumLinks"],
+		["lagName"] = args["lagName"],
 	}
 	asserts.AssertUpdateLagRequest(t)
 	return t
@@ -1588,15 +1741,18 @@ end
 
 --- Create a structure of type CreatePublicVirtualInterfaceRequest
 -- <p>Container for the parameters to the CreatePublicVirtualInterface operation.</p>
--- @param _newPublicVirtualInterface [NewPublicVirtualInterface] <p>Detailed information for the public virtual interface to be created.</p> <p>Default: None</p>
--- @param _connectionId [ConnectionId] 
--- Required parameter: connectionId
--- Required parameter: newPublicVirtualInterface
-function M.CreatePublicVirtualInterfaceRequest(_newPublicVirtualInterface, _connectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePublicVirtualInterfaceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * newPublicVirtualInterface [NewPublicVirtualInterface] <p>Detailed information for the public virtual interface to be created.</p> <p>Default: None</p>
+-- * connectionId [ConnectionId] 
+-- Required key: connectionId
+-- Required key: newPublicVirtualInterface
+-- @return CreatePublicVirtualInterfaceRequest structure as a key-value pair table
+function M.CreatePublicVirtualInterfaceRequest(args)
+	assert(args, "You must provdide an argument table when creating CreatePublicVirtualInterfaceRequest")
 	local t = { 
-		["newPublicVirtualInterface"] = _newPublicVirtualInterface,
-		["connectionId"] = _connectionId,
+		["newPublicVirtualInterface"] = args["newPublicVirtualInterface"],
+		["connectionId"] = args["connectionId"],
 	}
 	asserts.AssertCreatePublicVirtualInterfaceRequest(t)
 	return t
@@ -1615,11 +1771,14 @@ end
 
 --- Create a structure of type DescribeTagsResponse
 -- <p>The response received when DescribeTags is called.</p>
--- @param _resourceTags [ResourceTagList] <p>Information about the tags.</p>
-function M.DescribeTagsResponse(_resourceTags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceTags [ResourceTagList] <p>Information about the tags.</p>
+-- @return DescribeTagsResponse structure as a key-value pair table
+function M.DescribeTagsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagsResponse")
 	local t = { 
-		["resourceTags"] = _resourceTags,
+		["resourceTags"] = args["resourceTags"],
 	}
 	asserts.AssertDescribeTagsResponse(t)
 	return t
@@ -1637,8 +1796,11 @@ end
 
 --- Create a structure of type TooManyTagsException
 -- <p>You have reached the limit on the number of tags that can be assigned to a Direct Connect resource.</p>
-function M.TooManyTagsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTagsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyTagsException structure as a key-value pair table
+function M.TooManyTagsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyTagsException")
 	local t = { 
 	}
 	asserts.AssertTooManyTagsException(t)
@@ -1658,11 +1820,14 @@ end
 
 --- Create a structure of type CreateBGPPeerResponse
 -- <p>The response received when CreateBGPPeer is called.</p>
--- @param _virtualInterface [VirtualInterface] 
-function M.CreateBGPPeerResponse(_virtualInterface, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBGPPeerResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualInterface [VirtualInterface] 
+-- @return CreateBGPPeerResponse structure as a key-value pair table
+function M.CreateBGPPeerResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateBGPPeerResponse")
 	local t = { 
-		["virtualInterface"] = _virtualInterface,
+		["virtualInterface"] = args["virtualInterface"],
 	}
 	asserts.AssertCreateBGPPeerResponse(t)
 	return t
@@ -1680,8 +1845,11 @@ end
 
 --- Create a structure of type TagResourceResponse
 -- <p>The response received when TagResource is called.</p>
-function M.TagResourceResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TagResourceResponse structure as a key-value pair table
+function M.TagResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating TagResourceResponse")
 	local t = { 
 	}
 	asserts.AssertTagResourceResponse(t)
@@ -1701,11 +1869,14 @@ end
 
 --- Create a structure of type DeleteVirtualInterfaceResponse
 -- <p>The response received when DeleteVirtualInterface is called.</p>
--- @param _virtualInterfaceState [VirtualInterfaceState] 
-function M.DeleteVirtualInterfaceResponse(_virtualInterfaceState, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVirtualInterfaceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualInterfaceState [VirtualInterfaceState] 
+-- @return DeleteVirtualInterfaceResponse structure as a key-value pair table
+function M.DeleteVirtualInterfaceResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteVirtualInterfaceResponse")
 	local t = { 
-		["virtualInterfaceState"] = _virtualInterfaceState,
+		["virtualInterfaceState"] = args["virtualInterfaceState"],
 	}
 	asserts.AssertDeleteVirtualInterfaceResponse(t)
 	return t
@@ -1734,28 +1905,31 @@ end
 
 --- Create a structure of type NewPublicVirtualInterfaceAllocation
 -- <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
--- @param _customerAddress [CustomerAddress] 
--- @param _vlan [VLAN] 
--- @param _addressFamily [AddressFamily] 
--- @param _authKey [BGPAuthKey] 
--- @param _routeFilterPrefixes [RouteFilterPrefixList] 
--- @param _amazonAddress [AmazonAddress] 
--- @param _asn [ASN] 
--- @param _virtualInterfaceName [VirtualInterfaceName] 
--- Required parameter: virtualInterfaceName
--- Required parameter: vlan
--- Required parameter: asn
-function M.NewPublicVirtualInterfaceAllocation(_customerAddress, _vlan, _addressFamily, _authKey, _routeFilterPrefixes, _amazonAddress, _asn, _virtualInterfaceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NewPublicVirtualInterfaceAllocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * customerAddress [CustomerAddress] 
+-- * vlan [VLAN] 
+-- * addressFamily [AddressFamily] 
+-- * authKey [BGPAuthKey] 
+-- * routeFilterPrefixes [RouteFilterPrefixList] 
+-- * amazonAddress [AmazonAddress] 
+-- * asn [ASN] 
+-- * virtualInterfaceName [VirtualInterfaceName] 
+-- Required key: virtualInterfaceName
+-- Required key: vlan
+-- Required key: asn
+-- @return NewPublicVirtualInterfaceAllocation structure as a key-value pair table
+function M.NewPublicVirtualInterfaceAllocation(args)
+	assert(args, "You must provdide an argument table when creating NewPublicVirtualInterfaceAllocation")
 	local t = { 
-		["customerAddress"] = _customerAddress,
-		["vlan"] = _vlan,
-		["addressFamily"] = _addressFamily,
-		["authKey"] = _authKey,
-		["routeFilterPrefixes"] = _routeFilterPrefixes,
-		["amazonAddress"] = _amazonAddress,
-		["asn"] = _asn,
-		["virtualInterfaceName"] = _virtualInterfaceName,
+		["customerAddress"] = args["customerAddress"],
+		["vlan"] = args["vlan"],
+		["addressFamily"] = args["addressFamily"],
+		["authKey"] = args["authKey"],
+		["routeFilterPrefixes"] = args["routeFilterPrefixes"],
+		["amazonAddress"] = args["amazonAddress"],
+		["asn"] = args["asn"],
+		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
 	asserts.AssertNewPublicVirtualInterfaceAllocation(t)
 	return t
@@ -1785,33 +1959,36 @@ end
 
 --- Create a structure of type Lag
 -- <p>Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.</p>
--- @param _awsDevice [AwsDevice] <p>The AWS Direct Connection endpoint that hosts the LAG.</p>
--- @param _allowsHostedConnections [BooleanFlag] <p>Indicates whether the LAG can host other connections.</p> <note> <p>This is intended for use by AWS Direct Connect partners only.</p> </note>
--- @param _numberOfConnections [Count] <p>The number of physical connections bundled by the LAG, up to a maximum of 10.</p>
--- @param _lagState [LagState] 
--- @param _ownerAccount [OwnerAccount] <p>The owner of the LAG.</p>
--- @param _lagName [LagName] <p>The name of the LAG.</p>
--- @param _connections [ConnectionList] <p>A list of connections bundled by this LAG.</p>
--- @param _lagId [LagId] 
--- @param _minimumLinks [Count] <p>The minimum number of physical connections that must be operational for the LAG itself to be operational. If the number of operational connections drops below this setting, the LAG state changes to <code>down</code>. This value can help to ensure that a LAG is not overutilized if a significant number of its bundled connections go down.</p>
--- @param _connectionsBandwidth [Bandwidth] <p>The individual bandwidth of the physical connections bundled by the LAG.</p> <p>Available values: 1Gbps, 10Gbps</p>
--- @param _region [Region] 
--- @param _location [LocationCode] 
-function M.Lag(_awsDevice, _allowsHostedConnections, _numberOfConnections, _lagState, _ownerAccount, _lagName, _connections, _lagId, _minimumLinks, _connectionsBandwidth, _region, _location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Lag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * awsDevice [AwsDevice] <p>The AWS Direct Connection endpoint that hosts the LAG.</p>
+-- * allowsHostedConnections [BooleanFlag] <p>Indicates whether the LAG can host other connections.</p> <note> <p>This is intended for use by AWS Direct Connect partners only.</p> </note>
+-- * numberOfConnections [Count] <p>The number of physical connections bundled by the LAG, up to a maximum of 10.</p>
+-- * lagState [LagState] 
+-- * ownerAccount [OwnerAccount] <p>The owner of the LAG.</p>
+-- * lagName [LagName] <p>The name of the LAG.</p>
+-- * connections [ConnectionList] <p>A list of connections bundled by this LAG.</p>
+-- * lagId [LagId] 
+-- * minimumLinks [Count] <p>The minimum number of physical connections that must be operational for the LAG itself to be operational. If the number of operational connections drops below this setting, the LAG state changes to <code>down</code>. This value can help to ensure that a LAG is not overutilized if a significant number of its bundled connections go down.</p>
+-- * connectionsBandwidth [Bandwidth] <p>The individual bandwidth of the physical connections bundled by the LAG.</p> <p>Available values: 1Gbps, 10Gbps</p>
+-- * region [Region] 
+-- * location [LocationCode] 
+-- @return Lag structure as a key-value pair table
+function M.Lag(args)
+	assert(args, "You must provdide an argument table when creating Lag")
 	local t = { 
-		["awsDevice"] = _awsDevice,
-		["allowsHostedConnections"] = _allowsHostedConnections,
-		["numberOfConnections"] = _numberOfConnections,
-		["lagState"] = _lagState,
-		["ownerAccount"] = _ownerAccount,
-		["lagName"] = _lagName,
-		["connections"] = _connections,
-		["lagId"] = _lagId,
-		["minimumLinks"] = _minimumLinks,
-		["connectionsBandwidth"] = _connectionsBandwidth,
-		["region"] = _region,
-		["location"] = _location,
+		["awsDevice"] = args["awsDevice"],
+		["allowsHostedConnections"] = args["allowsHostedConnections"],
+		["numberOfConnections"] = args["numberOfConnections"],
+		["lagState"] = args["lagState"],
+		["ownerAccount"] = args["ownerAccount"],
+		["lagName"] = args["lagName"],
+		["connections"] = args["connections"],
+		["lagId"] = args["lagId"],
+		["minimumLinks"] = args["minimumLinks"],
+		["connectionsBandwidth"] = args["connectionsBandwidth"],
+		["region"] = args["region"],
+		["location"] = args["location"],
 	}
 	asserts.AssertLag(t)
 	return t
@@ -1830,11 +2007,14 @@ end
 
 --- Create a structure of type ConfirmPrivateVirtualInterfaceResponse
 -- <p>The response received when ConfirmPrivateVirtualInterface is called.</p>
--- @param _virtualInterfaceState [VirtualInterfaceState] 
-function M.ConfirmPrivateVirtualInterfaceResponse(_virtualInterfaceState, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmPrivateVirtualInterfaceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualInterfaceState [VirtualInterfaceState] 
+-- @return ConfirmPrivateVirtualInterfaceResponse structure as a key-value pair table
+function M.ConfirmPrivateVirtualInterfaceResponse(args)
+	assert(args, "You must provdide an argument table when creating ConfirmPrivateVirtualInterfaceResponse")
 	local t = { 
-		["virtualInterfaceState"] = _virtualInterfaceState,
+		["virtualInterfaceState"] = args["virtualInterfaceState"],
 	}
 	asserts.AssertConfirmPrivateVirtualInterfaceResponse(t)
 	return t
@@ -1856,15 +2036,18 @@ end
 
 --- Create a structure of type AssociateHostedConnectionRequest
 -- <p>Container for the parameters to the AssociateHostedConnection operation.</p>
--- @param _connectionId [ConnectionId] <p>The ID of the hosted connection.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
--- @param _parentConnectionId [ConnectionId] <p>The ID of the interconnect or the LAG.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
--- Required parameter: connectionId
--- Required parameter: parentConnectionId
-function M.AssociateHostedConnectionRequest(_connectionId, _parentConnectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateHostedConnectionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionId [ConnectionId] <p>The ID of the hosted connection.</p> <p>Example: dxcon-abc123</p> <p>Default: None</p>
+-- * parentConnectionId [ConnectionId] <p>The ID of the interconnect or the LAG.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
+-- Required key: connectionId
+-- Required key: parentConnectionId
+-- @return AssociateHostedConnectionRequest structure as a key-value pair table
+function M.AssociateHostedConnectionRequest(args)
+	assert(args, "You must provdide an argument table when creating AssociateHostedConnectionRequest")
 	local t = { 
-		["connectionId"] = _connectionId,
-		["parentConnectionId"] = _parentConnectionId,
+		["connectionId"] = args["connectionId"],
+		["parentConnectionId"] = args["parentConnectionId"],
 	}
 	asserts.AssertAssociateHostedConnectionRequest(t)
 	return t
@@ -1889,20 +2072,23 @@ end
 
 --- Create a structure of type CreateInterconnectRequest
 -- <p>Container for the parameters to the CreateInterconnect operation.</p>
--- @param _interconnectName [InterconnectName] <p>The name of the interconnect.</p> <p>Example: "<i>1G Interconnect to AWS</i>"</p> <p>Default: None</p>
--- @param _bandwidth [Bandwidth] <p>The port bandwidth</p> <p>Example: 1Gbps</p> <p>Default: None</p> <p>Available values: 1Gbps,10Gbps</p>
--- @param _lagId [LagId] 
--- @param _location [LocationCode] <p>Where the interconnect is located</p> <p>Example: EqSV5</p> <p>Default: None</p>
--- Required parameter: interconnectName
--- Required parameter: bandwidth
--- Required parameter: location
-function M.CreateInterconnectRequest(_interconnectName, _bandwidth, _lagId, _location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInterconnectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * interconnectName [InterconnectName] <p>The name of the interconnect.</p> <p>Example: "<i>1G Interconnect to AWS</i>"</p> <p>Default: None</p>
+-- * bandwidth [Bandwidth] <p>The port bandwidth</p> <p>Example: 1Gbps</p> <p>Default: None</p> <p>Available values: 1Gbps,10Gbps</p>
+-- * lagId [LagId] 
+-- * location [LocationCode] <p>Where the interconnect is located</p> <p>Example: EqSV5</p> <p>Default: None</p>
+-- Required key: interconnectName
+-- Required key: bandwidth
+-- Required key: location
+-- @return CreateInterconnectRequest structure as a key-value pair table
+function M.CreateInterconnectRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateInterconnectRequest")
 	local t = { 
-		["interconnectName"] = _interconnectName,
-		["bandwidth"] = _bandwidth,
-		["lagId"] = _lagId,
-		["location"] = _location,
+		["interconnectName"] = args["interconnectName"],
+		["bandwidth"] = args["bandwidth"],
+		["lagId"] = args["lagId"],
+		["location"] = args["location"],
 	}
 	asserts.AssertCreateInterconnectRequest(t)
 	return t
@@ -1921,11 +2107,14 @@ end
 
 --- Create a structure of type DirectConnectClientException
 -- <p>The API was called with invalid parameters. The error message will contain additional details about the cause.</p>
--- @param _message [ErrorMessage] <p>This is an exception thrown when there is an issue with the input provided by the API call. For example, the name provided for a connection contains a pound sign (#). This can also occur when a valid value is provided, but is otherwise constrained. For example, the valid VLAN tag range is 1-4096 but each can only be used once per connection.</p>
-function M.DirectConnectClientException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectConnectClientException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>This is an exception thrown when there is an issue with the input provided by the API call. For example, the name provided for a connection contains a pound sign (#). This can also occur when a valid value is provided, but is otherwise constrained. For example, the valid VLAN tag range is 1-4096 but each can only be used once per connection.</p>
+-- @return DirectConnectClientException structure as a key-value pair table
+function M.DirectConnectClientException(args)
+	assert(args, "You must provdide an argument table when creating DirectConnectClientException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDirectConnectClientException(t)
 	return t
@@ -1944,11 +2133,14 @@ end
 
 --- Create a structure of type VirtualGateways
 -- <p>A structure containing a list of virtual private gateways.</p>
--- @param _virtualGateways [VirtualGatewayList] <p>A list of virtual private gateways.</p>
-function M.VirtualGateways(_virtualGateways, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VirtualGateways")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualGateways [VirtualGatewayList] <p>A list of virtual private gateways.</p>
+-- @return VirtualGateways structure as a key-value pair table
+function M.VirtualGateways(args)
+	assert(args, "You must provdide an argument table when creating VirtualGateways")
 	local t = { 
-		["virtualGateways"] = _virtualGateways,
+		["virtualGateways"] = args["virtualGateways"],
 	}
 	asserts.AssertVirtualGateways(t)
 	return t
@@ -1973,20 +2165,23 @@ end
 
 --- Create a structure of type CreateConnectionRequest
 -- <p>Container for the parameters to the CreateConnection operation.</p>
--- @param _lagId [LagId] 
--- @param _bandwidth [Bandwidth] 
--- @param _location [LocationCode] 
--- @param _connectionName [ConnectionName] 
--- Required parameter: location
--- Required parameter: bandwidth
--- Required parameter: connectionName
-function M.CreateConnectionRequest(_lagId, _bandwidth, _location, _connectionName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateConnectionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lagId [LagId] 
+-- * bandwidth [Bandwidth] 
+-- * location [LocationCode] 
+-- * connectionName [ConnectionName] 
+-- Required key: location
+-- Required key: bandwidth
+-- Required key: connectionName
+-- @return CreateConnectionRequest structure as a key-value pair table
+function M.CreateConnectionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateConnectionRequest")
 	local t = { 
-		["lagId"] = _lagId,
-		["bandwidth"] = _bandwidth,
-		["location"] = _location,
-		["connectionName"] = _connectionName,
+		["lagId"] = args["lagId"],
+		["bandwidth"] = args["bandwidth"],
+		["location"] = args["location"],
+		["connectionName"] = args["connectionName"],
 	}
 	asserts.AssertCreateConnectionRequest(t)
 	return t
@@ -2016,29 +2211,32 @@ end
 
 --- Create a structure of type NewPrivateVirtualInterface
 -- <p>A structure containing information about a new private virtual interface.</p>
--- @param _virtualGatewayId [VirtualGatewayId] 
--- @param _customerAddress [CustomerAddress] 
--- @param _vlan [VLAN] 
--- @param _addressFamily [AddressFamily] 
--- @param _authKey [BGPAuthKey] 
--- @param _amazonAddress [AmazonAddress] 
--- @param _asn [ASN] 
--- @param _virtualInterfaceName [VirtualInterfaceName] 
--- Required parameter: virtualInterfaceName
--- Required parameter: vlan
--- Required parameter: asn
--- Required parameter: virtualGatewayId
-function M.NewPrivateVirtualInterface(_virtualGatewayId, _customerAddress, _vlan, _addressFamily, _authKey, _amazonAddress, _asn, _virtualInterfaceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NewPrivateVirtualInterface")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualGatewayId [VirtualGatewayId] 
+-- * customerAddress [CustomerAddress] 
+-- * vlan [VLAN] 
+-- * addressFamily [AddressFamily] 
+-- * authKey [BGPAuthKey] 
+-- * amazonAddress [AmazonAddress] 
+-- * asn [ASN] 
+-- * virtualInterfaceName [VirtualInterfaceName] 
+-- Required key: virtualInterfaceName
+-- Required key: vlan
+-- Required key: asn
+-- Required key: virtualGatewayId
+-- @return NewPrivateVirtualInterface structure as a key-value pair table
+function M.NewPrivateVirtualInterface(args)
+	assert(args, "You must provdide an argument table when creating NewPrivateVirtualInterface")
 	local t = { 
-		["virtualGatewayId"] = _virtualGatewayId,
-		["customerAddress"] = _customerAddress,
-		["vlan"] = _vlan,
-		["addressFamily"] = _addressFamily,
-		["authKey"] = _authKey,
-		["amazonAddress"] = _amazonAddress,
-		["asn"] = _asn,
-		["virtualInterfaceName"] = _virtualInterfaceName,
+		["virtualGatewayId"] = args["virtualGatewayId"],
+		["customerAddress"] = args["customerAddress"],
+		["vlan"] = args["vlan"],
+		["addressFamily"] = args["addressFamily"],
+		["authKey"] = args["authKey"],
+		["amazonAddress"] = args["amazonAddress"],
+		["asn"] = args["asn"],
+		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
 	asserts.AssertNewPrivateVirtualInterface(t)
 	return t
@@ -2057,11 +2255,14 @@ end
 
 --- Create a structure of type DirectConnectServerException
 -- <p>A server-side error occurred during the API call. The error message will contain additional details about the cause.</p>
--- @param _message [ErrorMessage] <p>This is an exception thrown when there is a backend issue on the server side.</p>
-function M.DirectConnectServerException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectConnectServerException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>This is an exception thrown when there is a backend issue on the server side.</p>
+-- @return DirectConnectServerException structure as a key-value pair table
+function M.DirectConnectServerException(args)
+	assert(args, "You must provdide an argument table when creating DirectConnectServerException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDirectConnectServerException(t)
 	return t
@@ -2080,11 +2281,14 @@ end
 
 --- Create a structure of type VirtualInterfaces
 -- <p>A structure containing a list of virtual interfaces.</p>
--- @param _virtualInterfaces [VirtualInterfaceList] <p>A list of virtual interfaces.</p>
-function M.VirtualInterfaces(_virtualInterfaces, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VirtualInterfaces")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * virtualInterfaces [VirtualInterfaceList] <p>A list of virtual interfaces.</p>
+-- @return VirtualInterfaces structure as a key-value pair table
+function M.VirtualInterfaces(args)
+	assert(args, "You must provdide an argument table when creating VirtualInterfaces")
 	local t = { 
-		["virtualInterfaces"] = _virtualInterfaces,
+		["virtualInterfaces"] = args["virtualInterfaces"],
 	}
 	asserts.AssertVirtualInterfaces(t)
 	return t
@@ -2106,15 +2310,18 @@ end
 
 --- Create a structure of type TagResourceRequest
 -- <p>Container for the parameters to the TagResource operation.</p>
--- @param _resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p> <p>Example: arn:aws:directconnect:us-east-1:123456789012:dxcon/dxcon-fg5678gh</p>
--- @param _tags [TagList] <p>The list of tags to add.</p>
--- Required parameter: resourceArn
--- Required parameter: tags
-function M.TagResourceRequest(_resourceArn, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the Direct Connect resource.</p> <p>Example: arn:aws:directconnect:us-east-1:123456789012:dxcon/dxcon-fg5678gh</p>
+-- * tags [TagList] <p>The list of tags to add.</p>
+-- Required key: resourceArn
+-- Required key: tags
+-- @return TagResourceRequest structure as a key-value pair table
+function M.TagResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating TagResourceRequest")
 	local t = { 
-		["resourceArn"] = _resourceArn,
-		["tags"] = _tags,
+		["resourceArn"] = args["resourceArn"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertTagResourceRequest(t)
 	return t
@@ -2134,12 +2341,15 @@ end
 
 --- Create a structure of type DeleteLagRequest
 -- <p>Container for the parameters to the DeleteLag operation.</p>
--- @param _lagId [LagId] <p>The ID of the LAG to delete.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
--- Required parameter: lagId
-function M.DeleteLagRequest(_lagId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLagRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lagId [LagId] <p>The ID of the LAG to delete.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
+-- Required key: lagId
+-- @return DeleteLagRequest structure as a key-value pair table
+function M.DeleteLagRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteLagRequest")
 	local t = { 
-		["lagId"] = _lagId,
+		["lagId"] = args["lagId"],
 	}
 	asserts.AssertDeleteLagRequest(t)
 	return t
@@ -2159,12 +2369,15 @@ end
 
 --- Create a structure of type DescribeHostedConnectionsRequest
 -- <p>Container for the parameters to the DescribeHostedConnections operation.</p>
--- @param _connectionId [ConnectionId] <p>The ID of the interconnect or LAG on which the hosted connections are provisioned.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
--- Required parameter: connectionId
-function M.DescribeHostedConnectionsRequest(_connectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHostedConnectionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionId [ConnectionId] <p>The ID of the interconnect or LAG on which the hosted connections are provisioned.</p> <p>Example: dxcon-abc123 or dxlag-abc123</p> <p>Default: None</p>
+-- Required key: connectionId
+-- @return DescribeHostedConnectionsRequest structure as a key-value pair table
+function M.DescribeHostedConnectionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeHostedConnectionsRequest")
 	local t = { 
-		["connectionId"] = _connectionId,
+		["connectionId"] = args["connectionId"],
 	}
 	asserts.AssertDescribeHostedConnectionsRequest(t)
 	return t
@@ -2183,11 +2396,14 @@ end
 
 --- Create a structure of type ConfirmConnectionResponse
 -- <p>The response received when ConfirmConnection is called.</p>
--- @param _connectionState [ConnectionState] 
-function M.ConfirmConnectionResponse(_connectionState, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfirmConnectionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionState [ConnectionState] 
+-- @return ConfirmConnectionResponse structure as a key-value pair table
+function M.ConfirmConnectionResponse(args)
+	assert(args, "You must provdide an argument table when creating ConfirmConnectionResponse")
 	local t = { 
-		["connectionState"] = _connectionState,
+		["connectionState"] = args["connectionState"],
 	}
 	asserts.AssertConfirmConnectionResponse(t)
 	return t
@@ -2209,15 +2425,18 @@ end
 
 --- Create a structure of type CreatePrivateVirtualInterfaceRequest
 -- <p>Container for the parameters to the CreatePrivateVirtualInterface operation.</p>
--- @param _connectionId [ConnectionId] 
--- @param _newPrivateVirtualInterface [NewPrivateVirtualInterface] <p>Detailed information for the private virtual interface to be created.</p> <p>Default: None</p>
--- Required parameter: connectionId
--- Required parameter: newPrivateVirtualInterface
-function M.CreatePrivateVirtualInterfaceRequest(_connectionId, _newPrivateVirtualInterface, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePrivateVirtualInterfaceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionId [ConnectionId] 
+-- * newPrivateVirtualInterface [NewPrivateVirtualInterface] <p>Detailed information for the private virtual interface to be created.</p> <p>Default: None</p>
+-- Required key: connectionId
+-- Required key: newPrivateVirtualInterface
+-- @return CreatePrivateVirtualInterfaceRequest structure as a key-value pair table
+function M.CreatePrivateVirtualInterfaceRequest(args)
+	assert(args, "You must provdide an argument table when creating CreatePrivateVirtualInterfaceRequest")
 	local t = { 
-		["connectionId"] = _connectionId,
-		["newPrivateVirtualInterface"] = _newPrivateVirtualInterface,
+		["connectionId"] = args["connectionId"],
+		["newPrivateVirtualInterface"] = args["newPrivateVirtualInterface"],
 	}
 	asserts.AssertCreatePrivateVirtualInterfaceRequest(t)
 	return t

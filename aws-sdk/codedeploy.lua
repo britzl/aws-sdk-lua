@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type GetDeploymentConfigOutput
 -- <p>Represents the output of a GetDeploymentConfig operation.</p>
--- @param _deploymentConfigInfo [DeploymentConfigInfo] <p>Information about the deployment configuration.</p>
-function M.GetDeploymentConfigOutput(_deploymentConfigInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentConfigOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentConfigInfo [DeploymentConfigInfo] <p>Information about the deployment configuration.</p>
+-- @return GetDeploymentConfigOutput structure as a key-value pair table
+function M.GetDeploymentConfigOutput(args)
+	assert(args, "You must provdide an argument table when creating GetDeploymentConfigOutput")
 	local t = { 
-		["deploymentConfigInfo"] = _deploymentConfigInfo,
+		["deploymentConfigInfo"] = args["deploymentConfigInfo"],
 	}
 	asserts.AssertGetDeploymentConfigOutput(t)
 	return t
@@ -60,15 +63,18 @@ end
 
 --- Create a structure of type AddTagsToOnPremisesInstancesInput
 -- <p>Represents the input of, and adds tags to, an on-premises instance operation.</p>
--- @param _instanceNames [InstanceNameList] <p>The names of the on-premises instances to which to add tags.</p>
--- @param _tags [TagList] <p>The tag key-value pairs to add to the on-premises instances.</p> <p>Keys and values are both required. Keys cannot be null or empty strings. Value-only tags are not allowed.</p>
--- Required parameter: tags
--- Required parameter: instanceNames
-function M.AddTagsToOnPremisesInstancesInput(_instanceNames, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToOnPremisesInstancesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceNames [InstanceNameList] <p>The names of the on-premises instances to which to add tags.</p>
+-- * tags [TagList] <p>The tag key-value pairs to add to the on-premises instances.</p> <p>Keys and values are both required. Keys cannot be null or empty strings. Value-only tags are not allowed.</p>
+-- Required key: tags
+-- Required key: instanceNames
+-- @return AddTagsToOnPremisesInstancesInput structure as a key-value pair table
+function M.AddTagsToOnPremisesInstancesInput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToOnPremisesInstancesInput")
 	local t = { 
-		["instanceNames"] = _instanceNames,
-		["tags"] = _tags,
+		["instanceNames"] = args["instanceNames"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertAddTagsToOnPremisesInstancesInput(t)
 	return t
@@ -87,11 +93,14 @@ end
 
 --- Create a structure of type ListGitHubAccountTokenNamesInput
 -- <p>Represents the input of a ListGitHubAccountTokenNames operation.</p>
--- @param _nextToken [NextToken] <p>An identifier returned from the previous ListGitHubAccountTokenNames call. It can be used to return the next set of names in the list. </p>
-function M.ListGitHubAccountTokenNamesInput(_nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGitHubAccountTokenNamesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>An identifier returned from the previous ListGitHubAccountTokenNames call. It can be used to return the next set of names in the list. </p>
+-- @return ListGitHubAccountTokenNamesInput structure as a key-value pair table
+function M.ListGitHubAccountTokenNamesInput(args)
+	assert(args, "You must provdide an argument table when creating ListGitHubAccountTokenNamesInput")
 	local t = { 
-		["nextToken"] = _nextToken,
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListGitHubAccountTokenNamesInput(t)
 	return t
@@ -111,13 +120,16 @@ end
 
 --- Create a structure of type RevisionInfo
 -- <p>Information about an application revision.</p>
--- @param _revisionLocation [RevisionLocation] <p>Information about the location and type of an application revision.</p>
--- @param _genericRevisionInfo [GenericRevisionInfo] <p>Information about an application revision, including usage details and associated deployment groups.</p>
-function M.RevisionInfo(_revisionLocation, _genericRevisionInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RevisionInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * revisionLocation [RevisionLocation] <p>Information about the location and type of an application revision.</p>
+-- * genericRevisionInfo [GenericRevisionInfo] <p>Information about an application revision, including usage details and associated deployment groups.</p>
+-- @return RevisionInfo structure as a key-value pair table
+function M.RevisionInfo(args)
+	assert(args, "You must provdide an argument table when creating RevisionInfo")
 	local t = { 
-		["revisionLocation"] = _revisionLocation,
-		["genericRevisionInfo"] = _genericRevisionInfo,
+		["revisionLocation"] = args["revisionLocation"],
+		["genericRevisionInfo"] = args["genericRevisionInfo"],
 	}
 	asserts.AssertRevisionInfo(t)
 	return t
@@ -135,8 +147,11 @@ end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>The next token was specified in an invalid format.</p>
-function M.InvalidNextTokenException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidNextTokenException structure as a key-value pair table
+function M.InvalidNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
 	local t = { 
 	}
 	asserts.AssertInvalidNextTokenException(t)
@@ -155,8 +170,11 @@ end
 
 --- Create a structure of type InvalidDeploymentInstanceTypeException
 -- <p>An instance type was specified for an in-place deployment. Instance types are supported for blue/green deployments only.</p>
-function M.InvalidDeploymentInstanceTypeException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDeploymentInstanceTypeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidDeploymentInstanceTypeException structure as a key-value pair table
+function M.InvalidDeploymentInstanceTypeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidDeploymentInstanceTypeException")
 	local t = { 
 	}
 	asserts.AssertInvalidDeploymentInstanceTypeException(t)
@@ -175,8 +193,11 @@ end
 
 --- Create a structure of type InvalidTagException
 -- <p>The specified tag was specified in an invalid format.</p>
-function M.InvalidTagException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTagException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTagException structure as a key-value pair table
+function M.InvalidTagException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTagException")
 	local t = { 
 	}
 	asserts.AssertInvalidTagException(t)
@@ -195,8 +216,11 @@ end
 
 --- Create a structure of type InstanceNotRegisteredException
 -- <p>The specified on-premises instance is not registered.</p>
-function M.InstanceNotRegisteredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceNotRegisteredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InstanceNotRegisteredException structure as a key-value pair table
+function M.InstanceNotRegisteredException(args)
+	assert(args, "You must provdide an argument table when creating InstanceNotRegisteredException")
 	local t = { 
 	}
 	asserts.AssertInstanceNotRegisteredException(t)
@@ -218,15 +242,18 @@ end
 
 --- Create a structure of type ListOnPremisesInstancesInput
 -- <p>Represents the input of a ListOnPremisesInstances operation.</p>
--- @param _nextToken [NextToken] <p>An identifier returned from the previous list on-premises instances call. It can be used to return the next set of on-premises instances in the list.</p>
--- @param _registrationStatus [RegistrationStatus] <p>The registration status of the on-premises instances:</p> <ul> <li> <p>Deregistered: Include deregistered on-premises instances in the resulting list.</p> </li> <li> <p>Registered: Include registered on-premises instances in the resulting list.</p> </li> </ul>
--- @param _tagFilters [TagFilterList] <p>The on-premises instance tags that will be used to restrict the corresponding on-premises instance names returned.</p>
-function M.ListOnPremisesInstancesInput(_nextToken, _registrationStatus, _tagFilters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOnPremisesInstancesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>An identifier returned from the previous list on-premises instances call. It can be used to return the next set of on-premises instances in the list.</p>
+-- * registrationStatus [RegistrationStatus] <p>The registration status of the on-premises instances:</p> <ul> <li> <p>Deregistered: Include deregistered on-premises instances in the resulting list.</p> </li> <li> <p>Registered: Include registered on-premises instances in the resulting list.</p> </li> </ul>
+-- * tagFilters [TagFilterList] <p>The on-premises instance tags that will be used to restrict the corresponding on-premises instance names returned.</p>
+-- @return ListOnPremisesInstancesInput structure as a key-value pair table
+function M.ListOnPremisesInstancesInput(args)
+	assert(args, "You must provdide an argument table when creating ListOnPremisesInstancesInput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["registrationStatus"] = _registrationStatus,
-		["tagFilters"] = _tagFilters,
+		["nextToken"] = args["nextToken"],
+		["registrationStatus"] = args["registrationStatus"],
+		["tagFilters"] = args["tagFilters"],
 	}
 	asserts.AssertListOnPremisesInstancesInput(t)
 	return t
@@ -244,8 +271,11 @@ end
 
 --- Create a structure of type MultipleIamArnsProvidedException
 -- <p>Both an IAM user ARN and an IAM session ARN were included in the request. Use only one ARN type.</p>
-function M.MultipleIamArnsProvidedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MultipleIamArnsProvidedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MultipleIamArnsProvidedException structure as a key-value pair table
+function M.MultipleIamArnsProvidedException(args)
+	assert(args, "You must provdide an argument table when creating MultipleIamArnsProvidedException")
 	local t = { 
 	}
 	asserts.AssertMultipleIamArnsProvidedException(t)
@@ -264,8 +294,11 @@ end
 
 --- Create a structure of type InvalidDeploymentStyleException
 -- <p>An invalid deployment style was specified. Valid deployment types include "IN_PLACE" and "BLUE_GREEN". Valid deployment options include "WITH_TRAFFIC_CONTROL" and "WITHOUT_TRAFFIC_CONTROL".</p>
-function M.InvalidDeploymentStyleException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDeploymentStyleException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidDeploymentStyleException structure as a key-value pair table
+function M.InvalidDeploymentStyleException(args)
+	assert(args, "You must provdide an argument table when creating InvalidDeploymentStyleException")
 	local t = { 
 	}
 	asserts.AssertInvalidDeploymentStyleException(t)
@@ -284,8 +317,11 @@ end
 
 --- Create a structure of type InvalidAutoRollbackConfigException
 -- <p>The automatic rollback configuration was specified in an invalid format. For example, automatic rollback is enabled but an invalid triggering event type or no event types were listed.</p>
-function M.InvalidAutoRollbackConfigException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAutoRollbackConfigException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidAutoRollbackConfigException structure as a key-value pair table
+function M.InvalidAutoRollbackConfigException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAutoRollbackConfigException")
 	local t = { 
 	}
 	asserts.AssertInvalidAutoRollbackConfigException(t)
@@ -305,11 +341,14 @@ end
 
 --- Create a structure of type CreateDeploymentConfigOutput
 -- <p>Represents the output of a CreateDeploymentConfig operation.</p>
--- @param _deploymentConfigId [DeploymentConfigId] <p>A unique deployment configuration ID.</p>
-function M.CreateDeploymentConfigOutput(_deploymentConfigId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentConfigOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentConfigId [DeploymentConfigId] <p>A unique deployment configuration ID.</p>
+-- @return CreateDeploymentConfigOutput structure as a key-value pair table
+function M.CreateDeploymentConfigOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateDeploymentConfigOutput")
 	local t = { 
-		["deploymentConfigId"] = _deploymentConfigId,
+		["deploymentConfigId"] = args["deploymentConfigId"],
 	}
 	asserts.AssertCreateDeploymentConfigOutput(t)
 	return t
@@ -331,15 +370,18 @@ end
 
 --- Create a structure of type GetDeploymentGroupInput
 -- <p>Represents the input of a GetDeploymentGroup operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- @param _deploymentGroupName [DeploymentGroupName] <p>The name of an existing deployment group for the specified application.</p>
--- Required parameter: applicationName
--- Required parameter: deploymentGroupName
-function M.GetDeploymentGroupInput(_applicationName, _deploymentGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentGroupInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- * deploymentGroupName [DeploymentGroupName] <p>The name of an existing deployment group for the specified application.</p>
+-- Required key: applicationName
+-- Required key: deploymentGroupName
+-- @return GetDeploymentGroupInput structure as a key-value pair table
+function M.GetDeploymentGroupInput(args)
+	assert(args, "You must provdide an argument table when creating GetDeploymentGroupInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["deploymentGroupName"] = _deploymentGroupName,
+		["applicationName"] = args["applicationName"],
+		["deploymentGroupName"] = args["deploymentGroupName"],
 	}
 	asserts.AssertGetDeploymentGroupInput(t)
 	return t
@@ -359,12 +401,15 @@ end
 
 --- Create a structure of type GetDeploymentConfigInput
 -- <p>Represents the input of a GetDeploymentConfig operation.</p>
--- @param _deploymentConfigName [DeploymentConfigName] <p>The name of a deployment configuration associated with the applicable IAM user or AWS account.</p>
--- Required parameter: deploymentConfigName
-function M.GetDeploymentConfigInput(_deploymentConfigName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentConfigInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentConfigName [DeploymentConfigName] <p>The name of a deployment configuration associated with the applicable IAM user or AWS account.</p>
+-- Required key: deploymentConfigName
+-- @return GetDeploymentConfigInput structure as a key-value pair table
+function M.GetDeploymentConfigInput(args)
+	assert(args, "You must provdide an argument table when creating GetDeploymentConfigInput")
 	local t = { 
-		["deploymentConfigName"] = _deploymentConfigName,
+		["deploymentConfigName"] = args["deploymentConfigName"],
 	}
 	asserts.AssertGetDeploymentConfigInput(t)
 	return t
@@ -387,19 +432,22 @@ end
 
 --- Create a structure of type S3Location
 -- <p>Information about the location of application artifacts stored in Amazon S3.</p>
--- @param _bundleType [BundleType] <p>The file type of the application revision. Must be one of the following:</p> <ul> <li> <p>tar: A tar archive file.</p> </li> <li> <p>tgz: A compressed tar archive file.</p> </li> <li> <p>zip: A zip archive file.</p> </li> </ul>
--- @param _version [VersionId] <p>A specific version of the Amazon S3 object that represents the bundled artifacts for the application revision.</p> <p>If the version is not specified, the system will use the most recent version by default.</p>
--- @param _bucket [S3Bucket] <p>The name of the Amazon S3 bucket where the application revision is stored.</p>
--- @param _key [S3Key] <p>The name of the Amazon S3 object that represents the bundled artifacts for the application revision.</p>
--- @param _eTag [ETag] <p>The ETag of the Amazon S3 object that represents the bundled artifacts for the application revision.</p> <p>If the ETag is not specified as an input parameter, ETag validation of the object will be skipped.</p>
-function M.S3Location(_bundleType, _version, _bucket, _key, _eTag, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3Location")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * bundleType [BundleType] <p>The file type of the application revision. Must be one of the following:</p> <ul> <li> <p>tar: A tar archive file.</p> </li> <li> <p>tgz: A compressed tar archive file.</p> </li> <li> <p>zip: A zip archive file.</p> </li> </ul>
+-- * version [VersionId] <p>A specific version of the Amazon S3 object that represents the bundled artifacts for the application revision.</p> <p>If the version is not specified, the system will use the most recent version by default.</p>
+-- * bucket [S3Bucket] <p>The name of the Amazon S3 bucket where the application revision is stored.</p>
+-- * key [S3Key] <p>The name of the Amazon S3 object that represents the bundled artifacts for the application revision.</p>
+-- * eTag [ETag] <p>The ETag of the Amazon S3 object that represents the bundled artifacts for the application revision.</p> <p>If the ETag is not specified as an input parameter, ETag validation of the object will be skipped.</p>
+-- @return S3Location structure as a key-value pair table
+function M.S3Location(args)
+	assert(args, "You must provdide an argument table when creating S3Location")
 	local t = { 
-		["bundleType"] = _bundleType,
-		["version"] = _version,
-		["bucket"] = _bucket,
-		["key"] = _key,
-		["eTag"] = _eTag,
+		["bundleType"] = args["bundleType"],
+		["version"] = args["version"],
+		["bucket"] = args["bucket"],
+		["key"] = args["key"],
+		["eTag"] = args["eTag"],
 	}
 	asserts.AssertS3Location(t)
 	return t
@@ -419,13 +467,16 @@ end
 
 --- Create a structure of type ListApplicationRevisionsOutput
 -- <p>Represents the output of a ListApplicationRevisions operation.</p>
--- @param _nextToken [NextToken] <p>If a large amount of information is returned, an identifier will also be returned. It can be used in a subsequent list application revisions call to return the next set of application revisions in the list.</p>
--- @param _revisions [RevisionLocationList] <p>A list of locations that contain the matching revisions.</p>
-function M.ListApplicationRevisionsOutput(_nextToken, _revisions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListApplicationRevisionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>If a large amount of information is returned, an identifier will also be returned. It can be used in a subsequent list application revisions call to return the next set of application revisions in the list.</p>
+-- * revisions [RevisionLocationList] <p>A list of locations that contain the matching revisions.</p>
+-- @return ListApplicationRevisionsOutput structure as a key-value pair table
+function M.ListApplicationRevisionsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListApplicationRevisionsOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["revisions"] = _revisions,
+		["nextToken"] = args["nextToken"],
+		["revisions"] = args["revisions"],
 	}
 	asserts.AssertListApplicationRevisionsOutput(t)
 	return t
@@ -443,8 +494,11 @@ end
 
 --- Create a structure of type DeploymentAlreadyCompletedException
 -- <p>The deployment is already complete.</p>
-function M.DeploymentAlreadyCompletedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentAlreadyCompletedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentAlreadyCompletedException structure as a key-value pair table
+function M.DeploymentAlreadyCompletedException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentAlreadyCompletedException")
 	local t = { 
 	}
 	asserts.AssertDeploymentAlreadyCompletedException(t)
@@ -463,8 +517,11 @@ end
 
 --- Create a structure of type InstanceNameRequiredException
 -- <p>An on-premises instance name was not specified.</p>
-function M.InstanceNameRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceNameRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InstanceNameRequiredException structure as a key-value pair table
+function M.InstanceNameRequiredException(args)
+	assert(args, "You must provdide an argument table when creating InstanceNameRequiredException")
 	local t = { 
 	}
 	asserts.AssertInstanceNameRequiredException(t)
@@ -484,11 +541,14 @@ end
 
 --- Create a structure of type ELBInfo
 -- <p>Information about a load balancer in Elastic Load Balancing to use in a deployment.</p>
--- @param _name [ELBName] <p>For blue/green deployments, the name of the load balancer that will be used to route traffic from original instances to replacement instances in a blue/green deployment. For in-place deployments, the name of the load balancer that instances are deregistered from so they are not serving traffic during a deployment, and then re-registered with after the deployment completes.</p>
-function M.ELBInfo(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ELBInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [ELBName] <p>For blue/green deployments, the name of the load balancer that will be used to route traffic from original instances to replacement instances in a blue/green deployment. For in-place deployments, the name of the load balancer that instances are deregistered from so they are not serving traffic during a deployment, and then re-registered with after the deployment completes.</p>
+-- @return ELBInfo structure as a key-value pair table
+function M.ELBInfo(args)
+	assert(args, "You must provdide an argument table when creating ELBInfo")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertELBInfo(t)
 	return t
@@ -509,14 +569,17 @@ end
 
 --- Create a structure of type ListDeploymentGroupsInput
 -- <p>Represents the input of a ListDeploymentGroups operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- @param _nextToken [NextToken] <p>An identifier returned from the previous list deployment groups call. It can be used to return the next set of deployment groups in the list.</p>
--- Required parameter: applicationName
-function M.ListDeploymentGroupsInput(_applicationName, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentGroupsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- * nextToken [NextToken] <p>An identifier returned from the previous list deployment groups call. It can be used to return the next set of deployment groups in the list.</p>
+-- Required key: applicationName
+-- @return ListDeploymentGroupsInput structure as a key-value pair table
+function M.ListDeploymentGroupsInput(args)
+	assert(args, "You must provdide an argument table when creating ListDeploymentGroupsInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["nextToken"] = _nextToken,
+		["applicationName"] = args["applicationName"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListDeploymentGroupsInput(t)
 	return t
@@ -537,15 +600,18 @@ end
 
 --- Create a structure of type AlarmConfiguration
 -- <p>Information about alarms associated with the deployment group.</p>
--- @param _ignorePollAlarmFailure [Boolean] <p>Indicates whether a deployment should continue if information about the current state of alarms cannot be retrieved from Amazon CloudWatch. The default value is false.</p> <ul> <li> <p>true: The deployment will proceed even if alarm status information can't be retrieved from Amazon CloudWatch.</p> </li> <li> <p>false: The deployment will stop if alarm status information can't be retrieved from Amazon CloudWatch.</p> </li> </ul>
--- @param _alarms [AlarmList] <p>A list of alarms configured for the deployment group. A maximum of 10 alarms can be added to a deployment group.</p>
--- @param _enabled [Boolean] <p>Indicates whether the alarm configuration is enabled.</p>
-function M.AlarmConfiguration(_ignorePollAlarmFailure, _alarms, _enabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AlarmConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ignorePollAlarmFailure [Boolean] <p>Indicates whether a deployment should continue if information about the current state of alarms cannot be retrieved from Amazon CloudWatch. The default value is false.</p> <ul> <li> <p>true: The deployment will proceed even if alarm status information can't be retrieved from Amazon CloudWatch.</p> </li> <li> <p>false: The deployment will stop if alarm status information can't be retrieved from Amazon CloudWatch.</p> </li> </ul>
+-- * alarms [AlarmList] <p>A list of alarms configured for the deployment group. A maximum of 10 alarms can be added to a deployment group.</p>
+-- * enabled [Boolean] <p>Indicates whether the alarm configuration is enabled.</p>
+-- @return AlarmConfiguration structure as a key-value pair table
+function M.AlarmConfiguration(args)
+	assert(args, "You must provdide an argument table when creating AlarmConfiguration")
 	local t = { 
-		["ignorePollAlarmFailure"] = _ignorePollAlarmFailure,
-		["alarms"] = _alarms,
-		["enabled"] = _enabled,
+		["ignorePollAlarmFailure"] = args["ignorePollAlarmFailure"],
+		["alarms"] = args["alarms"],
+		["enabled"] = args["enabled"],
 	}
 	asserts.AssertAlarmConfiguration(t)
 	return t
@@ -563,8 +629,11 @@ end
 
 --- Create a structure of type DeploymentConfigDoesNotExistException
 -- <p>The deployment configuration does not exist with the applicable IAM user or AWS account.</p>
-function M.DeploymentConfigDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentConfigDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentConfigDoesNotExistException structure as a key-value pair table
+function M.DeploymentConfigDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentConfigDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertDeploymentConfigDoesNotExistException(t)
@@ -583,8 +652,11 @@ end
 
 --- Create a structure of type BucketNameFilterRequiredException
 -- <p>A bucket name is required, but was not provided.</p>
-function M.BucketNameFilterRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BucketNameFilterRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BucketNameFilterRequiredException structure as a key-value pair table
+function M.BucketNameFilterRequiredException(args)
+	assert(args, "You must provdide an argument table when creating BucketNameFilterRequiredException")
 	local t = { 
 	}
 	asserts.AssertBucketNameFilterRequiredException(t)
@@ -605,13 +677,16 @@ end
 
 --- Create a structure of type ListOnPremisesInstancesOutput
 -- <p>Represents the output of list on-premises instances operation.</p>
--- @param _nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list on-premises instances call to return the next set of on-premises instances in the list.</p>
--- @param _instanceNames [InstanceNameList] <p>The list of matching on-premises instance names.</p>
-function M.ListOnPremisesInstancesOutput(_nextToken, _instanceNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOnPremisesInstancesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list on-premises instances call to return the next set of on-premises instances in the list.</p>
+-- * instanceNames [InstanceNameList] <p>The list of matching on-premises instance names.</p>
+-- @return ListOnPremisesInstancesOutput structure as a key-value pair table
+function M.ListOnPremisesInstancesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListOnPremisesInstancesOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["instanceNames"] = _instanceNames,
+		["nextToken"] = args["nextToken"],
+		["instanceNames"] = args["instanceNames"],
 	}
 	asserts.AssertListOnPremisesInstancesOutput(t)
 	return t
@@ -630,11 +705,14 @@ end
 
 --- Create a structure of type GreenFleetProvisioningOption
 -- <p>Information about the instances that belong to the replacement environment in a blue/green deployment.</p>
--- @param _action [GreenFleetProvisioningAction] <p>The method used to add instances to a replacement environment.</p> <ul> <li> <p>DISCOVER_EXISTING: Use instances that already exist or will be created manually.</p> </li> <li> <p>COPY_AUTO_SCALING_GROUP: Use settings from a specified Auto Scaling group to define and create instances in a new Auto Scaling group.</p> </li> </ul>
-function M.GreenFleetProvisioningOption(_action, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GreenFleetProvisioningOption")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * action [GreenFleetProvisioningAction] <p>The method used to add instances to a replacement environment.</p> <ul> <li> <p>DISCOVER_EXISTING: Use instances that already exist or will be created manually.</p> </li> <li> <p>COPY_AUTO_SCALING_GROUP: Use settings from a specified Auto Scaling group to define and create instances in a new Auto Scaling group.</p> </li> </ul>
+-- @return GreenFleetProvisioningOption structure as a key-value pair table
+function M.GreenFleetProvisioningOption(args)
+	assert(args, "You must provdide an argument table when creating GreenFleetProvisioningOption")
 	local t = { 
-		["action"] = _action,
+		["action"] = args["action"],
 	}
 	asserts.AssertGreenFleetProvisioningOption(t)
 	return t
@@ -656,15 +734,18 @@ end
 
 --- Create a structure of type GetApplicationRevisionInput
 -- <p>Represents the input of a GetApplicationRevision operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of the application that corresponds to the revision.</p>
--- @param _revision [RevisionLocation] <p>Information about the application revision to get, including type and location.</p>
--- Required parameter: applicationName
--- Required parameter: revision
-function M.GetApplicationRevisionInput(_applicationName, _revision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetApplicationRevisionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of the application that corresponds to the revision.</p>
+-- * revision [RevisionLocation] <p>Information about the application revision to get, including type and location.</p>
+-- Required key: applicationName
+-- Required key: revision
+-- @return GetApplicationRevisionInput structure as a key-value pair table
+function M.GetApplicationRevisionInput(args)
+	assert(args, "You must provdide an argument table when creating GetApplicationRevisionInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["revision"] = _revision,
+		["applicationName"] = args["applicationName"],
+		["revision"] = args["revision"],
 	}
 	asserts.AssertGetApplicationRevisionInput(t)
 	return t
@@ -699,43 +780,46 @@ end
 
 --- Create a structure of type DeploymentGroupInfo
 -- <p>Information about a deployment group.</p>
--- @param _applicationName [ApplicationName] <p>The application name.</p>
--- @param _deploymentGroupId [DeploymentGroupId] <p>The deployment group ID.</p>
--- @param _loadBalancerInfo [LoadBalancerInfo] <p>Information about the load balancer to use in a deployment.</p>
--- @param _blueGreenDeploymentConfiguration [BlueGreenDeploymentConfiguration] <p>Information about blue/green deployment options for a deployment group.</p>
--- @param _deploymentConfigName [DeploymentConfigName] <p>The deployment configuration name.</p>
--- @param _autoScalingGroups [AutoScalingGroupList] <p>A list of associated Auto Scaling groups.</p>
--- @param _alarmConfiguration [AlarmConfiguration] <p>A list of alarms associated with the deployment group.</p>
--- @param _ec2TagFilters [EC2TagFilterList] <p>The Amazon EC2 tags on which to filter.</p>
--- @param _lastSuccessfulDeployment [LastDeploymentInfo] <p>Information about the most recent successful deployment to the deployment group.</p>
--- @param _autoRollbackConfiguration [AutoRollbackConfiguration] <p>Information about the automatic rollback configuration associated with the deployment group.</p>
--- @param _deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</p>
--- @param _triggerConfigurations [TriggerConfigList] <p>Information about triggers associated with the deployment group.</p>
--- @param _lastAttemptedDeployment [LastDeploymentInfo] <p>Information about the most recent attempted deployment to the deployment group.</p>
--- @param _serviceRoleArn [Role] <p>A service role ARN.</p>
--- @param _deploymentGroupName [DeploymentGroupName] <p>The deployment group name.</p>
--- @param _targetRevision [RevisionLocation] <p>Information about the deployment group's target revision, including type and location.</p>
--- @param _onPremisesInstanceTagFilters [TagFilterList] <p>The on-premises instance tags on which to filter.</p>
-function M.DeploymentGroupInfo(_applicationName, _deploymentGroupId, _loadBalancerInfo, _blueGreenDeploymentConfiguration, _deploymentConfigName, _autoScalingGroups, _alarmConfiguration, _ec2TagFilters, _lastSuccessfulDeployment, _autoRollbackConfiguration, _deploymentStyle, _triggerConfigurations, _lastAttemptedDeployment, _serviceRoleArn, _deploymentGroupName, _targetRevision, _onPremisesInstanceTagFilters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentGroupInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The application name.</p>
+-- * deploymentGroupId [DeploymentGroupId] <p>The deployment group ID.</p>
+-- * loadBalancerInfo [LoadBalancerInfo] <p>Information about the load balancer to use in a deployment.</p>
+-- * blueGreenDeploymentConfiguration [BlueGreenDeploymentConfiguration] <p>Information about blue/green deployment options for a deployment group.</p>
+-- * deploymentConfigName [DeploymentConfigName] <p>The deployment configuration name.</p>
+-- * autoScalingGroups [AutoScalingGroupList] <p>A list of associated Auto Scaling groups.</p>
+-- * alarmConfiguration [AlarmConfiguration] <p>A list of alarms associated with the deployment group.</p>
+-- * ec2TagFilters [EC2TagFilterList] <p>The Amazon EC2 tags on which to filter.</p>
+-- * lastSuccessfulDeployment [LastDeploymentInfo] <p>Information about the most recent successful deployment to the deployment group.</p>
+-- * autoRollbackConfiguration [AutoRollbackConfiguration] <p>Information about the automatic rollback configuration associated with the deployment group.</p>
+-- * deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</p>
+-- * triggerConfigurations [TriggerConfigList] <p>Information about triggers associated with the deployment group.</p>
+-- * lastAttemptedDeployment [LastDeploymentInfo] <p>Information about the most recent attempted deployment to the deployment group.</p>
+-- * serviceRoleArn [Role] <p>A service role ARN.</p>
+-- * deploymentGroupName [DeploymentGroupName] <p>The deployment group name.</p>
+-- * targetRevision [RevisionLocation] <p>Information about the deployment group's target revision, including type and location.</p>
+-- * onPremisesInstanceTagFilters [TagFilterList] <p>The on-premises instance tags on which to filter.</p>
+-- @return DeploymentGroupInfo structure as a key-value pair table
+function M.DeploymentGroupInfo(args)
+	assert(args, "You must provdide an argument table when creating DeploymentGroupInfo")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["deploymentGroupId"] = _deploymentGroupId,
-		["loadBalancerInfo"] = _loadBalancerInfo,
-		["blueGreenDeploymentConfiguration"] = _blueGreenDeploymentConfiguration,
-		["deploymentConfigName"] = _deploymentConfigName,
-		["autoScalingGroups"] = _autoScalingGroups,
-		["alarmConfiguration"] = _alarmConfiguration,
-		["ec2TagFilters"] = _ec2TagFilters,
-		["lastSuccessfulDeployment"] = _lastSuccessfulDeployment,
-		["autoRollbackConfiguration"] = _autoRollbackConfiguration,
-		["deploymentStyle"] = _deploymentStyle,
-		["triggerConfigurations"] = _triggerConfigurations,
-		["lastAttemptedDeployment"] = _lastAttemptedDeployment,
-		["serviceRoleArn"] = _serviceRoleArn,
-		["deploymentGroupName"] = _deploymentGroupName,
-		["targetRevision"] = _targetRevision,
-		["onPremisesInstanceTagFilters"] = _onPremisesInstanceTagFilters,
+		["applicationName"] = args["applicationName"],
+		["deploymentGroupId"] = args["deploymentGroupId"],
+		["loadBalancerInfo"] = args["loadBalancerInfo"],
+		["blueGreenDeploymentConfiguration"] = args["blueGreenDeploymentConfiguration"],
+		["deploymentConfigName"] = args["deploymentConfigName"],
+		["autoScalingGroups"] = args["autoScalingGroups"],
+		["alarmConfiguration"] = args["alarmConfiguration"],
+		["ec2TagFilters"] = args["ec2TagFilters"],
+		["lastSuccessfulDeployment"] = args["lastSuccessfulDeployment"],
+		["autoRollbackConfiguration"] = args["autoRollbackConfiguration"],
+		["deploymentStyle"] = args["deploymentStyle"],
+		["triggerConfigurations"] = args["triggerConfigurations"],
+		["lastAttemptedDeployment"] = args["lastAttemptedDeployment"],
+		["serviceRoleArn"] = args["serviceRoleArn"],
+		["deploymentGroupName"] = args["deploymentGroupName"],
+		["targetRevision"] = args["targetRevision"],
+		["onPremisesInstanceTagFilters"] = args["onPremisesInstanceTagFilters"],
 	}
 	asserts.AssertDeploymentGroupInfo(t)
 	return t
@@ -753,8 +837,11 @@ end
 
 --- Create a structure of type InvalidSortOrderException
 -- <p>The sort order was specified in an invalid format.</p>
-function M.InvalidSortOrderException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSortOrderException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidSortOrderException structure as a key-value pair table
+function M.InvalidSortOrderException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSortOrderException")
 	local t = { 
 	}
 	asserts.AssertInvalidSortOrderException(t)
@@ -773,8 +860,11 @@ end
 
 --- Create a structure of type DeploymentIsNotInReadyStateException
 -- <p>The deployment does not have a status of Ready and can't continue yet.</p>
-function M.DeploymentIsNotInReadyStateException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentIsNotInReadyStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentIsNotInReadyStateException structure as a key-value pair table
+function M.DeploymentIsNotInReadyStateException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentIsNotInReadyStateException")
 	local t = { 
 	}
 	asserts.AssertDeploymentIsNotInReadyStateException(t)
@@ -793,8 +883,11 @@ end
 
 --- Create a structure of type IamSessionArnAlreadyRegisteredException
 -- <p>The request included an IAM session ARN that has already been used to register a different instance.</p>
-function M.IamSessionArnAlreadyRegisteredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IamSessionArnAlreadyRegisteredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return IamSessionArnAlreadyRegisteredException structure as a key-value pair table
+function M.IamSessionArnAlreadyRegisteredException(args)
+	assert(args, "You must provdide an argument table when creating IamSessionArnAlreadyRegisteredException")
 	local t = { 
 	}
 	asserts.AssertIamSessionArnAlreadyRegisteredException(t)
@@ -813,8 +906,11 @@ end
 
 --- Create a structure of type TriggerTargetsLimitExceededException
 -- <p>The maximum allowed number of triggers was exceeded.</p>
-function M.TriggerTargetsLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TriggerTargetsLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TriggerTargetsLimitExceededException structure as a key-value pair table
+function M.TriggerTargetsLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating TriggerTargetsLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertTriggerTargetsLimitExceededException(t)
@@ -837,17 +933,20 @@ end
 
 --- Create a structure of type DeploymentConfigInfo
 -- <p>Information about a deployment configuration.</p>
--- @param _deploymentConfigId [DeploymentConfigId] <p>The deployment configuration ID.</p>
--- @param _minimumHealthyHosts [MinimumHealthyHosts] <p>Information about the number or percentage of minimum healthy instance.</p>
--- @param _createTime [Timestamp] <p>The time at which the deployment configuration was created.</p>
--- @param _deploymentConfigName [DeploymentConfigName] <p>The deployment configuration name.</p>
-function M.DeploymentConfigInfo(_deploymentConfigId, _minimumHealthyHosts, _createTime, _deploymentConfigName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentConfigInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentConfigId [DeploymentConfigId] <p>The deployment configuration ID.</p>
+-- * minimumHealthyHosts [MinimumHealthyHosts] <p>Information about the number or percentage of minimum healthy instance.</p>
+-- * createTime [Timestamp] <p>The time at which the deployment configuration was created.</p>
+-- * deploymentConfigName [DeploymentConfigName] <p>The deployment configuration name.</p>
+-- @return DeploymentConfigInfo structure as a key-value pair table
+function M.DeploymentConfigInfo(args)
+	assert(args, "You must provdide an argument table when creating DeploymentConfigInfo")
 	local t = { 
-		["deploymentConfigId"] = _deploymentConfigId,
-		["minimumHealthyHosts"] = _minimumHealthyHosts,
-		["createTime"] = _createTime,
-		["deploymentConfigName"] = _deploymentConfigName,
+		["deploymentConfigId"] = args["deploymentConfigId"],
+		["minimumHealthyHosts"] = args["minimumHealthyHosts"],
+		["createTime"] = args["createTime"],
+		["deploymentConfigName"] = args["deploymentConfigName"],
 	}
 	asserts.AssertDeploymentConfigInfo(t)
 	return t
@@ -865,8 +964,11 @@ end
 
 --- Create a structure of type ApplicationAlreadyExistsException
 -- <p>An application with the specified name already exists with the applicable IAM user or AWS account.</p>
-function M.ApplicationAlreadyExistsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ApplicationAlreadyExistsException structure as a key-value pair table
+function M.ApplicationAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ApplicationAlreadyExistsException")
 	local t = { 
 	}
 	asserts.AssertApplicationAlreadyExistsException(t)
@@ -885,8 +987,11 @@ end
 
 --- Create a structure of type InvalidDeployedStateFilterException
 -- <p>The deployed state filter was specified in an invalid format.</p>
-function M.InvalidDeployedStateFilterException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDeployedStateFilterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidDeployedStateFilterException structure as a key-value pair table
+function M.InvalidDeployedStateFilterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidDeployedStateFilterException")
 	local t = { 
 	}
 	asserts.AssertInvalidDeployedStateFilterException(t)
@@ -905,8 +1010,11 @@ end
 
 --- Create a structure of type InvalidAlarmConfigException
 -- <p>The format of the alarm configuration is invalid. Possible causes include:</p> <ul> <li> <p>The alarm list is null.</p> </li> <li> <p>The alarm object is null.</p> </li> <li> <p>The alarm name is empty or null or exceeds the 255 character limit.</p> </li> <li> <p>Two alarms with the same name have been specified.</p> </li> <li> <p>The alarm configuration is enabled but the alarm list is empty.</p> </li> </ul>
-function M.InvalidAlarmConfigException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAlarmConfigException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidAlarmConfigException structure as a key-value pair table
+function M.InvalidAlarmConfigException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAlarmConfigException")
 	local t = { 
 	}
 	asserts.AssertInvalidAlarmConfigException(t)
@@ -925,8 +1033,11 @@ end
 
 --- Create a structure of type DeploymentConfigInUseException
 -- <p>The deployment configuration is still in use.</p>
-function M.DeploymentConfigInUseException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentConfigInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentConfigInUseException structure as a key-value pair table
+function M.DeploymentConfigInUseException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentConfigInUseException")
 	local t = { 
 	}
 	asserts.AssertDeploymentConfigInUseException(t)
@@ -946,11 +1057,14 @@ end
 
 --- Create a structure of type GetOnPremisesInstanceOutput
 -- <p>Represents the output of a GetOnPremisesInstance operation.</p>
--- @param _instanceInfo [InstanceInfo] <p>Information about the on-premises instance.</p>
-function M.GetOnPremisesInstanceOutput(_instanceInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOnPremisesInstanceOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceInfo [InstanceInfo] <p>Information about the on-premises instance.</p>
+-- @return GetOnPremisesInstanceOutput structure as a key-value pair table
+function M.GetOnPremisesInstanceOutput(args)
+	assert(args, "You must provdide an argument table when creating GetOnPremisesInstanceOutput")
 	local t = { 
-		["instanceInfo"] = _instanceInfo,
+		["instanceInfo"] = args["instanceInfo"],
 	}
 	asserts.AssertGetOnPremisesInstanceOutput(t)
 	return t
@@ -968,8 +1082,11 @@ end
 
 --- Create a structure of type InstanceIdRequiredException
 -- <p>The instance ID was not specified.</p>
-function M.InstanceIdRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceIdRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InstanceIdRequiredException structure as a key-value pair table
+function M.InstanceIdRequiredException(args)
+	assert(args, "You must provdide an argument table when creating InstanceIdRequiredException")
 	local t = { 
 	}
 	asserts.AssertInstanceIdRequiredException(t)
@@ -988,8 +1105,11 @@ end
 
 --- Create a structure of type IamUserArnRequiredException
 -- <p>An IAM user ARN was not specified.</p>
-function M.IamUserArnRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IamUserArnRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return IamUserArnRequiredException structure as a key-value pair table
+function M.IamUserArnRequiredException(args)
+	assert(args, "You must provdide an argument table when creating IamUserArnRequiredException")
 	local t = { 
 	}
 	asserts.AssertIamUserArnRequiredException(t)
@@ -1012,15 +1132,18 @@ end
 
 --- Create a structure of type RemoveTagsFromOnPremisesInstancesInput
 -- <p>Represents the input of a RemoveTagsFromOnPremisesInstances operation.</p>
--- @param _instanceNames [InstanceNameList] <p>The names of the on-premises instances from which to remove tags.</p>
--- @param _tags [TagList] <p>The tag key-value pairs to remove from the on-premises instances.</p>
--- Required parameter: tags
--- Required parameter: instanceNames
-function M.RemoveTagsFromOnPremisesInstancesInput(_instanceNames, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromOnPremisesInstancesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceNames [InstanceNameList] <p>The names of the on-premises instances from which to remove tags.</p>
+-- * tags [TagList] <p>The tag key-value pairs to remove from the on-premises instances.</p>
+-- Required key: tags
+-- Required key: instanceNames
+-- @return RemoveTagsFromOnPremisesInstancesInput structure as a key-value pair table
+function M.RemoveTagsFromOnPremisesInstancesInput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromOnPremisesInstancesInput")
 	local t = { 
-		["instanceNames"] = _instanceNames,
-		["tags"] = _tags,
+		["instanceNames"] = args["instanceNames"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertRemoveTagsFromOnPremisesInstancesInput(t)
 	return t
@@ -1041,14 +1164,17 @@ end
 
 --- Create a structure of type StopDeploymentInput
 -- <p>Represents the input of a StopDeployment operation.</p>
--- @param _deploymentId [DeploymentId] <p>The unique ID of a deployment.</p>
--- @param _autoRollbackEnabled [NullableBoolean] <p>Indicates, when a deployment is stopped, whether instances that have been updated should be rolled back to the previous version of the application revision.</p>
--- Required parameter: deploymentId
-function M.StopDeploymentInput(_deploymentId, _autoRollbackEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopDeploymentInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentId [DeploymentId] <p>The unique ID of a deployment.</p>
+-- * autoRollbackEnabled [NullableBoolean] <p>Indicates, when a deployment is stopped, whether instances that have been updated should be rolled back to the previous version of the application revision.</p>
+-- Required key: deploymentId
+-- @return StopDeploymentInput structure as a key-value pair table
+function M.StopDeploymentInput(args)
+	assert(args, "You must provdide an argument table when creating StopDeploymentInput")
 	local t = { 
-		["deploymentId"] = _deploymentId,
-		["autoRollbackEnabled"] = _autoRollbackEnabled,
+		["deploymentId"] = args["deploymentId"],
+		["autoRollbackEnabled"] = args["autoRollbackEnabled"],
 	}
 	asserts.AssertStopDeploymentInput(t)
 	return t
@@ -1066,8 +1192,11 @@ end
 
 --- Create a structure of type TagRequiredException
 -- <p>A tag was not specified.</p>
-function M.TagRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TagRequiredException structure as a key-value pair table
+function M.TagRequiredException(args)
+	assert(args, "You must provdide an argument table when creating TagRequiredException")
 	local t = { 
 	}
 	asserts.AssertTagRequiredException(t)
@@ -1089,14 +1218,17 @@ end
 
 --- Create a structure of type CreateDeploymentConfigInput
 -- <p>Represents the input of a CreateDeploymentConfig operation.</p>
--- @param _minimumHealthyHosts [MinimumHealthyHosts] <p>The minimum number of healthy instances that should be available at any time during the deployment. There are two parameters expected in the input: type and value.</p> <p>The type parameter takes either of the following values:</p> <ul> <li> <p>HOST_COUNT: The value parameter represents the minimum number of healthy instances as an absolute value.</p> </li> <li> <p>FLEET_PERCENT: The value parameter represents the minimum number of healthy instances as a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the deployment, AWS CodeDeploy converts the percentage to the equivalent number of instance and rounds up fractional instances.</p> </li> </ul> <p>The value parameter takes an integer.</p> <p>For example, to set a minimum of 95% healthy instance, specify a type of FLEET_PERCENT and a value of 95.</p>
--- @param _deploymentConfigName [DeploymentConfigName] <p>The name of the deployment configuration to create.</p>
--- Required parameter: deploymentConfigName
-function M.CreateDeploymentConfigInput(_minimumHealthyHosts, _deploymentConfigName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentConfigInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * minimumHealthyHosts [MinimumHealthyHosts] <p>The minimum number of healthy instances that should be available at any time during the deployment. There are two parameters expected in the input: type and value.</p> <p>The type parameter takes either of the following values:</p> <ul> <li> <p>HOST_COUNT: The value parameter represents the minimum number of healthy instances as an absolute value.</p> </li> <li> <p>FLEET_PERCENT: The value parameter represents the minimum number of healthy instances as a percentage of the total number of instances in the deployment. If you specify FLEET_PERCENT, at the start of the deployment, AWS CodeDeploy converts the percentage to the equivalent number of instance and rounds up fractional instances.</p> </li> </ul> <p>The value parameter takes an integer.</p> <p>For example, to set a minimum of 95% healthy instance, specify a type of FLEET_PERCENT and a value of 95.</p>
+-- * deploymentConfigName [DeploymentConfigName] <p>The name of the deployment configuration to create.</p>
+-- Required key: deploymentConfigName
+-- @return CreateDeploymentConfigInput structure as a key-value pair table
+function M.CreateDeploymentConfigInput(args)
+	assert(args, "You must provdide an argument table when creating CreateDeploymentConfigInput")
 	local t = { 
-		["minimumHealthyHosts"] = _minimumHealthyHosts,
-		["deploymentConfigName"] = _deploymentConfigName,
+		["minimumHealthyHosts"] = args["minimumHealthyHosts"],
+		["deploymentConfigName"] = args["deploymentConfigName"],
 	}
 	asserts.AssertCreateDeploymentConfigInput(t)
 	return t
@@ -1117,15 +1249,18 @@ end
 
 --- Create a structure of type TriggerConfig
 -- <p>Information about notification triggers for the deployment group.</p>
--- @param _triggerEvents [TriggerEventTypeList] <p>The event type or types for which notifications are triggered.</p>
--- @param _triggerTargetArn [TriggerTargetArn] <p>The ARN of the Amazon Simple Notification Service topic through which notifications about deployment or instance events are sent.</p>
--- @param _triggerName [TriggerName] <p>The name of the notification trigger.</p>
-function M.TriggerConfig(_triggerEvents, _triggerTargetArn, _triggerName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TriggerConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * triggerEvents [TriggerEventTypeList] <p>The event type or types for which notifications are triggered.</p>
+-- * triggerTargetArn [TriggerTargetArn] <p>The ARN of the Amazon Simple Notification Service topic through which notifications about deployment or instance events are sent.</p>
+-- * triggerName [TriggerName] <p>The name of the notification trigger.</p>
+-- @return TriggerConfig structure as a key-value pair table
+function M.TriggerConfig(args)
+	assert(args, "You must provdide an argument table when creating TriggerConfig")
 	local t = { 
-		["triggerEvents"] = _triggerEvents,
-		["triggerTargetArn"] = _triggerTargetArn,
-		["triggerName"] = _triggerName,
+		["triggerEvents"] = args["triggerEvents"],
+		["triggerTargetArn"] = args["triggerTargetArn"],
+		["triggerName"] = args["triggerName"],
 	}
 	asserts.AssertTriggerConfig(t)
 	return t
@@ -1145,13 +1280,16 @@ end
 
 --- Create a structure of type TimeRange
 -- <p>Information about a time range.</p>
--- @param _start [Timestamp] <p>The start time of the time range.</p> <note> <p>Specify null to leave the start time open-ended.</p> </note>
--- @param _end [Timestamp] <p>The end time of the time range.</p> <note> <p>Specify null to leave the end time open-ended.</p> </note>
-function M.TimeRange(_start, _end, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TimeRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * start [Timestamp] <p>The start time of the time range.</p> <note> <p>Specify null to leave the start time open-ended.</p> </note>
+-- * end [Timestamp] <p>The end time of the time range.</p> <note> <p>Specify null to leave the end time open-ended.</p> </note>
+-- @return TimeRange structure as a key-value pair table
+function M.TimeRange(args)
+	assert(args, "You must provdide an argument table when creating TimeRange")
 	local t = { 
-		["start"] = _start,
-		["end"] = _end,
+		["start"] = args["start"],
+		["end"] = args["end"],
 	}
 	asserts.AssertTimeRange(t)
 	return t
@@ -1169,8 +1307,11 @@ end
 
 --- Create a structure of type InvalidTriggerConfigException
 -- <p>The trigger was specified in an invalid format.</p>
-function M.InvalidTriggerConfigException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTriggerConfigException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTriggerConfigException structure as a key-value pair table
+function M.InvalidTriggerConfigException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTriggerConfigException")
 	local t = { 
 	}
 	asserts.AssertInvalidTriggerConfigException(t)
@@ -1191,13 +1332,16 @@ end
 
 --- Create a structure of type AutoScalingGroup
 -- <p>Information about an Auto Scaling group.</p>
--- @param _hook [AutoScalingGroupHook] <p>An Auto Scaling lifecycle event hook name.</p>
--- @param _name [AutoScalingGroupName] <p>The Auto Scaling group name.</p>
-function M.AutoScalingGroup(_hook, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * hook [AutoScalingGroupHook] <p>An Auto Scaling lifecycle event hook name.</p>
+-- * name [AutoScalingGroupName] <p>The Auto Scaling group name.</p>
+-- @return AutoScalingGroup structure as a key-value pair table
+function M.AutoScalingGroup(args)
+	assert(args, "You must provdide an argument table when creating AutoScalingGroup")
 	local t = { 
-		["hook"] = _hook,
-		["name"] = _name,
+		["hook"] = args["hook"],
+		["name"] = args["name"],
 	}
 	asserts.AssertAutoScalingGroup(t)
 	return t
@@ -1215,8 +1359,11 @@ end
 
 --- Create a structure of type UnsupportedActionForDeploymentTypeException
 -- <p>A call was submitted that is not supported for the specified deployment type.</p>
-function M.UnsupportedActionForDeploymentTypeException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedActionForDeploymentTypeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UnsupportedActionForDeploymentTypeException structure as a key-value pair table
+function M.UnsupportedActionForDeploymentTypeException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedActionForDeploymentTypeException")
 	local t = { 
 	}
 	asserts.AssertUnsupportedActionForDeploymentTypeException(t)
@@ -1237,13 +1384,16 @@ end
 
 --- Create a structure of type DeploymentStyle
 -- <p>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</p>
--- @param _deploymentType [DeploymentType] <p>Indicates whether to run an in-place deployment or a blue/green deployment.</p>
--- @param _deploymentOption [DeploymentOption] <p>Indicates whether to route deployment traffic behind a load balancer.</p>
-function M.DeploymentStyle(_deploymentType, _deploymentOption, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentStyle")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentType [DeploymentType] <p>Indicates whether to run an in-place deployment or a blue/green deployment.</p>
+-- * deploymentOption [DeploymentOption] <p>Indicates whether to route deployment traffic behind a load balancer.</p>
+-- @return DeploymentStyle structure as a key-value pair table
+function M.DeploymentStyle(args)
+	assert(args, "You must provdide an argument table when creating DeploymentStyle")
 	local t = { 
-		["deploymentType"] = _deploymentType,
-		["deploymentOption"] = _deploymentOption,
+		["deploymentType"] = args["deploymentType"],
+		["deploymentOption"] = args["deploymentOption"],
 	}
 	asserts.AssertDeploymentStyle(t)
 	return t
@@ -1261,8 +1411,11 @@ end
 
 --- Create a structure of type InvalidIamSessionArnException
 -- <p>The IAM session ARN was specified in an invalid format.</p>
-function M.InvalidIamSessionArnException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidIamSessionArnException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidIamSessionArnException structure as a key-value pair table
+function M.InvalidIamSessionArnException(args)
+	assert(args, "You must provdide an argument table when creating InvalidIamSessionArnException")
 	local t = { 
 	}
 	asserts.AssertInvalidIamSessionArnException(t)
@@ -1281,8 +1434,11 @@ end
 
 --- Create a structure of type DeploymentDoesNotExistException
 -- <p>The deployment does not exist with the applicable IAM user or AWS account.</p>
-function M.DeploymentDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentDoesNotExistException structure as a key-value pair table
+function M.DeploymentDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertDeploymentDoesNotExistException(t)
@@ -1301,8 +1457,11 @@ end
 
 --- Create a structure of type InvalidDeploymentConfigNameException
 -- <p>The deployment configuration name was specified in an invalid format.</p>
-function M.InvalidDeploymentConfigNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDeploymentConfigNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidDeploymentConfigNameException structure as a key-value pair table
+function M.InvalidDeploymentConfigNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidDeploymentConfigNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidDeploymentConfigNameException(t)
@@ -1322,11 +1481,14 @@ end
 
 --- Create a structure of type SkipWaitTimeForInstanceTerminationInput
 --  
--- @param _deploymentId [DeploymentId] <p>The ID of the blue/green deployment for which you want to skip the instance termination wait time.</p>
-function M.SkipWaitTimeForInstanceTerminationInput(_deploymentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SkipWaitTimeForInstanceTerminationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentId [DeploymentId] <p>The ID of the blue/green deployment for which you want to skip the instance termination wait time.</p>
+-- @return SkipWaitTimeForInstanceTerminationInput structure as a key-value pair table
+function M.SkipWaitTimeForInstanceTerminationInput(args)
+	assert(args, "You must provdide an argument table when creating SkipWaitTimeForInstanceTerminationInput")
 	local t = { 
-		["deploymentId"] = _deploymentId,
+		["deploymentId"] = args["deploymentId"],
 	}
 	asserts.AssertSkipWaitTimeForInstanceTerminationInput(t)
 	return t
@@ -1346,13 +1508,16 @@ end
 
 --- Create a structure of type AutoRollbackConfiguration
 -- <p>Information about a configuration for automatically rolling back to a previous version of an application revision when a deployment doesn't complete successfully.</p>
--- @param _enabled [Boolean] <p>Indicates whether a defined automatic rollback configuration is currently enabled.</p>
--- @param _events [AutoRollbackEventsList] <p>The event type or types that trigger a rollback.</p>
-function M.AutoRollbackConfiguration(_enabled, _events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutoRollbackConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * enabled [Boolean] <p>Indicates whether a defined automatic rollback configuration is currently enabled.</p>
+-- * events [AutoRollbackEventsList] <p>The event type or types that trigger a rollback.</p>
+-- @return AutoRollbackConfiguration structure as a key-value pair table
+function M.AutoRollbackConfiguration(args)
+	assert(args, "You must provdide an argument table when creating AutoRollbackConfiguration")
 	local t = { 
-		["enabled"] = _enabled,
-		["events"] = _events,
+		["enabled"] = args["enabled"],
+		["events"] = args["events"],
 	}
 	asserts.AssertAutoRollbackConfiguration(t)
 	return t
@@ -1370,8 +1535,11 @@ end
 
 --- Create a structure of type InvalidSortByException
 -- <p>The column name to sort by is either not present or was specified in an invalid format.</p>
-function M.InvalidSortByException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSortByException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidSortByException structure as a key-value pair table
+function M.InvalidSortByException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSortByException")
 	local t = { 
 	}
 	asserts.AssertInvalidSortByException(t)
@@ -1395,19 +1563,22 @@ end
 
 --- Create a structure of type GenericRevisionInfo
 -- <p>Information about an application revision.</p>
--- @param _lastUsedTime [Timestamp] <p>When the revision was last used by AWS CodeDeploy.</p>
--- @param _firstUsedTime [Timestamp] <p>When the revision was first used by AWS CodeDeploy.</p>
--- @param _registerTime [Timestamp] <p>When the revision was registered with AWS CodeDeploy.</p>
--- @param _description [Description] <p>A comment about the revision.</p>
--- @param _deploymentGroups [DeploymentGroupsList] <p>The deployment groups for which this is the current target revision.</p>
-function M.GenericRevisionInfo(_lastUsedTime, _firstUsedTime, _registerTime, _description, _deploymentGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GenericRevisionInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lastUsedTime [Timestamp] <p>When the revision was last used by AWS CodeDeploy.</p>
+-- * firstUsedTime [Timestamp] <p>When the revision was first used by AWS CodeDeploy.</p>
+-- * registerTime [Timestamp] <p>When the revision was registered with AWS CodeDeploy.</p>
+-- * description [Description] <p>A comment about the revision.</p>
+-- * deploymentGroups [DeploymentGroupsList] <p>The deployment groups for which this is the current target revision.</p>
+-- @return GenericRevisionInfo structure as a key-value pair table
+function M.GenericRevisionInfo(args)
+	assert(args, "You must provdide an argument table when creating GenericRevisionInfo")
 	local t = { 
-		["lastUsedTime"] = _lastUsedTime,
-		["firstUsedTime"] = _firstUsedTime,
-		["registerTime"] = _registerTime,
-		["description"] = _description,
-		["deploymentGroups"] = _deploymentGroups,
+		["lastUsedTime"] = args["lastUsedTime"],
+		["firstUsedTime"] = args["firstUsedTime"],
+		["registerTime"] = args["registerTime"],
+		["description"] = args["description"],
+		["deploymentGroups"] = args["deploymentGroups"],
 	}
 	asserts.AssertGenericRevisionInfo(t)
 	return t
@@ -1425,8 +1596,11 @@ end
 
 --- Create a structure of type InvalidEC2TagException
 -- <p>The tag was specified in an invalid format.</p>
-function M.InvalidEC2TagException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidEC2TagException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidEC2TagException structure as a key-value pair table
+function M.InvalidEC2TagException(args)
+	assert(args, "You must provdide an argument table when creating InvalidEC2TagException")
 	local t = { 
 	}
 	asserts.AssertInvalidEC2TagException(t)
@@ -1447,12 +1621,15 @@ end
 
 --- Create a structure of type DeleteDeploymentConfigInput
 -- <p>Represents the input of a DeleteDeploymentConfig operation.</p>
--- @param _deploymentConfigName [DeploymentConfigName] <p>The name of a deployment configuration associated with the applicable IAM user or AWS account.</p>
--- Required parameter: deploymentConfigName
-function M.DeleteDeploymentConfigInput(_deploymentConfigName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeploymentConfigInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentConfigName [DeploymentConfigName] <p>The name of a deployment configuration associated with the applicable IAM user or AWS account.</p>
+-- Required key: deploymentConfigName
+-- @return DeleteDeploymentConfigInput structure as a key-value pair table
+function M.DeleteDeploymentConfigInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteDeploymentConfigInput")
 	local t = { 
-		["deploymentConfigName"] = _deploymentConfigName,
+		["deploymentConfigName"] = args["deploymentConfigName"],
 	}
 	asserts.AssertDeleteDeploymentConfigInput(t)
 	return t
@@ -1472,13 +1649,16 @@ end
 
 --- Create a structure of type DeploymentReadyOption
 -- <p>Information about how traffic is rerouted to instances in a replacement environment in a blue/green deployment.</p>
--- @param _actionOnTimeout [DeploymentReadyAction] <p>Information about when to reroute traffic from an original environment to a replacement environment in a blue/green deployment.</p> <ul> <li> <p>CONTINUE_DEPLOYMENT: Register new instances with the load balancer immediately after the new application revision is installed on the instances in the replacement environment.</p> </li> <li> <p>STOP_DEPLOYMENT: Do not register new instances with load balancer unless traffic is rerouted manually. If traffic is not rerouted manually before the end of the specified wait period, the deployment status is changed to Stopped.</p> </li> </ul>
--- @param _waitTimeInMinutes [Duration] <p>The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the STOP_DEPLOYMENT option for actionOnTimeout</p>
-function M.DeploymentReadyOption(_actionOnTimeout, _waitTimeInMinutes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentReadyOption")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionOnTimeout [DeploymentReadyAction] <p>Information about when to reroute traffic from an original environment to a replacement environment in a blue/green deployment.</p> <ul> <li> <p>CONTINUE_DEPLOYMENT: Register new instances with the load balancer immediately after the new application revision is installed on the instances in the replacement environment.</p> </li> <li> <p>STOP_DEPLOYMENT: Do not register new instances with load balancer unless traffic is rerouted manually. If traffic is not rerouted manually before the end of the specified wait period, the deployment status is changed to Stopped.</p> </li> </ul>
+-- * waitTimeInMinutes [Duration] <p>The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the STOP_DEPLOYMENT option for actionOnTimeout</p>
+-- @return DeploymentReadyOption structure as a key-value pair table
+function M.DeploymentReadyOption(args)
+	assert(args, "You must provdide an argument table when creating DeploymentReadyOption")
 	local t = { 
-		["actionOnTimeout"] = _actionOnTimeout,
-		["waitTimeInMinutes"] = _waitTimeInMinutes,
+		["actionOnTimeout"] = args["actionOnTimeout"],
+		["waitTimeInMinutes"] = args["waitTimeInMinutes"],
 	}
 	asserts.AssertDeploymentReadyOption(t)
 	return t
@@ -1501,19 +1681,22 @@ end
 
 --- Create a structure of type LifecycleEvent
 -- <p>Information about a deployment lifecycle event.</p>
--- @param _endTime [Timestamp] <p>A timestamp indicating when the deployment lifecycle event ended.</p>
--- @param _status [LifecycleEventStatus] <p>The deployment lifecycle event status:</p> <ul> <li> <p>Pending: The deployment lifecycle event is pending.</p> </li> <li> <p>InProgress: The deployment lifecycle event is in progress.</p> </li> <li> <p>Succeeded: The deployment lifecycle event ran successfully.</p> </li> <li> <p>Failed: The deployment lifecycle event has failed.</p> </li> <li> <p>Skipped: The deployment lifecycle event has been skipped.</p> </li> <li> <p>Unknown: The deployment lifecycle event is unknown.</p> </li> </ul>
--- @param _diagnostics [Diagnostics] <p>Diagnostic information about the deployment lifecycle event.</p>
--- @param _startTime [Timestamp] <p>A timestamp indicating when the deployment lifecycle event started.</p>
--- @param _lifecycleEventName [LifecycleEventName] <p>The deployment lifecycle event name, such as ApplicationStop, BeforeInstall, AfterInstall, ApplicationStart, or ValidateService.</p>
-function M.LifecycleEvent(_endTime, _status, _diagnostics, _startTime, _lifecycleEventName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleEvent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * endTime [Timestamp] <p>A timestamp indicating when the deployment lifecycle event ended.</p>
+-- * status [LifecycleEventStatus] <p>The deployment lifecycle event status:</p> <ul> <li> <p>Pending: The deployment lifecycle event is pending.</p> </li> <li> <p>InProgress: The deployment lifecycle event is in progress.</p> </li> <li> <p>Succeeded: The deployment lifecycle event ran successfully.</p> </li> <li> <p>Failed: The deployment lifecycle event has failed.</p> </li> <li> <p>Skipped: The deployment lifecycle event has been skipped.</p> </li> <li> <p>Unknown: The deployment lifecycle event is unknown.</p> </li> </ul>
+-- * diagnostics [Diagnostics] <p>Diagnostic information about the deployment lifecycle event.</p>
+-- * startTime [Timestamp] <p>A timestamp indicating when the deployment lifecycle event started.</p>
+-- * lifecycleEventName [LifecycleEventName] <p>The deployment lifecycle event name, such as ApplicationStop, BeforeInstall, AfterInstall, ApplicationStart, or ValidateService.</p>
+-- @return LifecycleEvent structure as a key-value pair table
+function M.LifecycleEvent(args)
+	assert(args, "You must provdide an argument table when creating LifecycleEvent")
 	local t = { 
-		["endTime"] = _endTime,
-		["status"] = _status,
-		["diagnostics"] = _diagnostics,
-		["startTime"] = _startTime,
-		["lifecycleEventName"] = _lifecycleEventName,
+		["endTime"] = args["endTime"],
+		["status"] = args["status"],
+		["diagnostics"] = args["diagnostics"],
+		["startTime"] = args["startTime"],
+		["lifecycleEventName"] = args["lifecycleEventName"],
 	}
 	asserts.AssertLifecycleEvent(t)
 	return t
@@ -1531,8 +1714,11 @@ end
 
 --- Create a structure of type AlarmsLimitExceededException
 -- <p>The maximum number of alarms for a deployment group (10) was exceeded.</p>
-function M.AlarmsLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AlarmsLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AlarmsLimitExceededException structure as a key-value pair table
+function M.AlarmsLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating AlarmsLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertAlarmsLimitExceededException(t)
@@ -1557,21 +1743,24 @@ end
 
 --- Create a structure of type InstanceSummary
 -- <p>Information about an instance in a deployment.</p>
--- @param _status [InstanceStatus] <p>The deployment status for this instance:</p> <ul> <li> <p>Pending: The deployment is pending for this instance.</p> </li> <li> <p>In Progress: The deployment is in progress for this instance.</p> </li> <li> <p>Succeeded: The deployment has succeeded for this instance.</p> </li> <li> <p>Failed: The deployment has failed for this instance.</p> </li> <li> <p>Skipped: The deployment has been skipped for this instance.</p> </li> <li> <p>Unknown: The deployment status is unknown for this instance.</p> </li> </ul>
--- @param _instanceId [InstanceId] <p>The instance ID.</p>
--- @param _lifecycleEvents [LifecycleEventList] <p>A list of lifecycle events for this instance.</p>
--- @param _deploymentId [DeploymentId] <p>The deployment ID.</p>
--- @param _lastUpdatedAt [Timestamp] <p>A timestamp indicating when the instance information was last updated.</p>
--- @param _instanceType [InstanceType] <p>Information about which environment an instance belongs to in a blue/green deployment.</p> <ul> <li> <p>BLUE: The instance is part of the original environment.</p> </li> <li> <p>GREEN: The instance is part of the replacement environment.</p> </li> </ul>
-function M.InstanceSummary(_status, _instanceId, _lifecycleEvents, _deploymentId, _lastUpdatedAt, _instanceType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [InstanceStatus] <p>The deployment status for this instance:</p> <ul> <li> <p>Pending: The deployment is pending for this instance.</p> </li> <li> <p>In Progress: The deployment is in progress for this instance.</p> </li> <li> <p>Succeeded: The deployment has succeeded for this instance.</p> </li> <li> <p>Failed: The deployment has failed for this instance.</p> </li> <li> <p>Skipped: The deployment has been skipped for this instance.</p> </li> <li> <p>Unknown: The deployment status is unknown for this instance.</p> </li> </ul>
+-- * instanceId [InstanceId] <p>The instance ID.</p>
+-- * lifecycleEvents [LifecycleEventList] <p>A list of lifecycle events for this instance.</p>
+-- * deploymentId [DeploymentId] <p>The deployment ID.</p>
+-- * lastUpdatedAt [Timestamp] <p>A timestamp indicating when the instance information was last updated.</p>
+-- * instanceType [InstanceType] <p>Information about which environment an instance belongs to in a blue/green deployment.</p> <ul> <li> <p>BLUE: The instance is part of the original environment.</p> </li> <li> <p>GREEN: The instance is part of the replacement environment.</p> </li> </ul>
+-- @return InstanceSummary structure as a key-value pair table
+function M.InstanceSummary(args)
+	assert(args, "You must provdide an argument table when creating InstanceSummary")
 	local t = { 
-		["status"] = _status,
-		["instanceId"] = _instanceId,
-		["lifecycleEvents"] = _lifecycleEvents,
-		["deploymentId"] = _deploymentId,
-		["lastUpdatedAt"] = _lastUpdatedAt,
-		["instanceType"] = _instanceType,
+		["status"] = args["status"],
+		["instanceId"] = args["instanceId"],
+		["lifecycleEvents"] = args["lifecycleEvents"],
+		["deploymentId"] = args["deploymentId"],
+		["lastUpdatedAt"] = args["lastUpdatedAt"],
+		["instanceType"] = args["instanceType"],
 	}
 	asserts.AssertInstanceSummary(t)
 	return t
@@ -1593,17 +1782,20 @@ end
 
 --- Create a structure of type LastDeploymentInfo
 -- <p>Information about the most recent attempted or successful deployment to a deployment group.</p>
--- @param _status [DeploymentStatus] <p>The status of the most recent deployment.</p>
--- @param _deploymentId [DeploymentId] <p>The deployment ID.</p>
--- @param _endTime [Timestamp] <p>A timestamp indicating when the most recent deployment to the deployment group completed.</p>
--- @param _createTime [Timestamp] <p>A timestamp indicating when the most recent deployment to the deployment group started.</p>
-function M.LastDeploymentInfo(_status, _deploymentId, _endTime, _createTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LastDeploymentInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [DeploymentStatus] <p>The status of the most recent deployment.</p>
+-- * deploymentId [DeploymentId] <p>The deployment ID.</p>
+-- * endTime [Timestamp] <p>A timestamp indicating when the most recent deployment to the deployment group completed.</p>
+-- * createTime [Timestamp] <p>A timestamp indicating when the most recent deployment to the deployment group started.</p>
+-- @return LastDeploymentInfo structure as a key-value pair table
+function M.LastDeploymentInfo(args)
+	assert(args, "You must provdide an argument table when creating LastDeploymentInfo")
 	local t = { 
-		["status"] = _status,
-		["deploymentId"] = _deploymentId,
-		["endTime"] = _endTime,
-		["createTime"] = _createTime,
+		["status"] = args["status"],
+		["deploymentId"] = args["deploymentId"],
+		["endTime"] = args["endTime"],
+		["createTime"] = args["createTime"],
 	}
 	asserts.AssertLastDeploymentInfo(t)
 	return t
@@ -1621,8 +1813,11 @@ end
 
 --- Create a structure of type InvalidBucketNameFilterException
 -- <p>The bucket name either doesn't exist or was specified in an invalid format.</p>
-function M.InvalidBucketNameFilterException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidBucketNameFilterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidBucketNameFilterException structure as a key-value pair table
+function M.InvalidBucketNameFilterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidBucketNameFilterException")
 	local t = { 
 	}
 	asserts.AssertInvalidBucketNameFilterException(t)
@@ -1641,8 +1836,11 @@ end
 
 --- Create a structure of type LifecycleHookLimitExceededException
 -- <p>The limit for lifecycle hooks was exceeded.</p>
-function M.LifecycleHookLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleHookLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LifecycleHookLimitExceededException structure as a key-value pair table
+function M.LifecycleHookLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LifecycleHookLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertLifecycleHookLimitExceededException(t)
@@ -1665,15 +1863,18 @@ end
 
 --- Create a structure of type BatchGetDeploymentGroupsInput
 -- <p>Represents the input of a BatchGetDeploymentGroups operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- @param _deploymentGroupNames [DeploymentGroupsList] <p>The deployment groups' names.</p>
--- Required parameter: applicationName
--- Required parameter: deploymentGroupNames
-function M.BatchGetDeploymentGroupsInput(_applicationName, _deploymentGroupNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetDeploymentGroupsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- * deploymentGroupNames [DeploymentGroupsList] <p>The deployment groups' names.</p>
+-- Required key: applicationName
+-- Required key: deploymentGroupNames
+-- @return BatchGetDeploymentGroupsInput structure as a key-value pair table
+function M.BatchGetDeploymentGroupsInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetDeploymentGroupsInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["deploymentGroupNames"] = _deploymentGroupNames,
+		["applicationName"] = args["applicationName"],
+		["deploymentGroupNames"] = args["deploymentGroupNames"],
 	}
 	asserts.AssertBatchGetDeploymentGroupsInput(t)
 	return t
@@ -1692,11 +1893,14 @@ end
 
 --- Create a structure of type BatchGetApplicationsOutput
 -- <p>Represents the output of a BatchGetApplications operation.</p>
--- @param _applicationsInfo [ApplicationsInfoList] <p>Information about the applications.</p>
-function M.BatchGetApplicationsOutput(_applicationsInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetApplicationsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationsInfo [ApplicationsInfoList] <p>Information about the applications.</p>
+-- @return BatchGetApplicationsOutput structure as a key-value pair table
+function M.BatchGetApplicationsOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetApplicationsOutput")
 	local t = { 
-		["applicationsInfo"] = _applicationsInfo,
+		["applicationsInfo"] = args["applicationsInfo"],
 	}
 	asserts.AssertBatchGetApplicationsOutput(t)
 	return t
@@ -1714,8 +1918,11 @@ end
 
 --- Create a structure of type InvalidFileExistsBehaviorException
 -- <p>An invalid fileExistsBehavior option was specified to determine how AWS CodeDeploy handles files or directories that already exist in a deployment target location but weren't part of the previous successful deployment. Valid values include "DISALLOW", "OVERWRITE", and "RETAIN".</p>
-function M.InvalidFileExistsBehaviorException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFileExistsBehaviorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidFileExistsBehaviorException structure as a key-value pair table
+function M.InvalidFileExistsBehaviorException(args)
+	assert(args, "You must provdide an argument table when creating InvalidFileExistsBehaviorException")
 	local t = { 
 	}
 	asserts.AssertInvalidFileExistsBehaviorException(t)
@@ -1734,8 +1941,11 @@ end
 
 --- Create a structure of type InvalidTimeRangeException
 -- <p>The specified time range was specified in an invalid format.</p>
-function M.InvalidTimeRangeException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTimeRangeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTimeRangeException structure as a key-value pair table
+function M.InvalidTimeRangeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTimeRangeException")
 	local t = { 
 	}
 	asserts.AssertInvalidTimeRangeException(t)
@@ -1756,13 +1966,16 @@ end
 
 --- Create a structure of type UpdateApplicationInput
 -- <p>Represents the input of an UpdateApplication operation.</p>
--- @param _applicationName [ApplicationName] <p>The current name of the application you want to change.</p>
--- @param _newApplicationName [ApplicationName] <p>The new name to give the application.</p>
-function M.UpdateApplicationInput(_applicationName, _newApplicationName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApplicationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The current name of the application you want to change.</p>
+-- * newApplicationName [ApplicationName] <p>The new name to give the application.</p>
+-- @return UpdateApplicationInput structure as a key-value pair table
+function M.UpdateApplicationInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateApplicationInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["newApplicationName"] = _newApplicationName,
+		["applicationName"] = args["applicationName"],
+		["newApplicationName"] = args["newApplicationName"],
 	}
 	asserts.AssertUpdateApplicationInput(t)
 	return t
@@ -1780,8 +1993,11 @@ end
 
 --- Create a structure of type IamUserArnAlreadyRegisteredException
 -- <p>The specified IAM user ARN is already registered with an on-premises instance.</p>
-function M.IamUserArnAlreadyRegisteredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IamUserArnAlreadyRegisteredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return IamUserArnAlreadyRegisteredException structure as a key-value pair table
+function M.IamUserArnAlreadyRegisteredException(args)
+	assert(args, "You must provdide an argument table when creating IamUserArnAlreadyRegisteredException")
 	local t = { 
 	}
 	asserts.AssertIamUserArnAlreadyRegisteredException(t)
@@ -1801,11 +2017,14 @@ end
 
 --- Create a structure of type GetApplicationOutput
 -- <p>Represents the output of a GetApplication operation.</p>
--- @param _application [ApplicationInfo] <p>Information about the application.</p>
-function M.GetApplicationOutput(_application, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetApplicationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * application [ApplicationInfo] <p>Information about the application.</p>
+-- @return GetApplicationOutput structure as a key-value pair table
+function M.GetApplicationOutput(args)
+	assert(args, "You must provdide an argument table when creating GetApplicationOutput")
 	local t = { 
-		["application"] = _application,
+		["application"] = args["application"],
 	}
 	asserts.AssertGetApplicationOutput(t)
 	return t
@@ -1824,11 +2043,14 @@ end
 
 --- Create a structure of type ListApplicationsInput
 -- <p>Represents the input of a ListApplications operation.</p>
--- @param _nextToken [NextToken] <p>An identifier returned from the previous list applications call. It can be used to return the next set of applications in the list.</p>
-function M.ListApplicationsInput(_nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListApplicationsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>An identifier returned from the previous list applications call. It can be used to return the next set of applications in the list.</p>
+-- @return ListApplicationsInput structure as a key-value pair table
+function M.ListApplicationsInput(args)
+	assert(args, "You must provdide an argument table when creating ListApplicationsInput")
 	local t = { 
-		["nextToken"] = _nextToken,
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListApplicationsInput(t)
 	return t
@@ -1846,8 +2068,11 @@ end
 
 --- Create a structure of type ApplicationDoesNotExistException
 -- <p>The application does not exist with the applicable IAM user or AWS account.</p>
-function M.ApplicationDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ApplicationDoesNotExistException structure as a key-value pair table
+function M.ApplicationDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating ApplicationDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertApplicationDoesNotExistException(t)
@@ -1868,13 +2093,16 @@ end
 
 --- Create a structure of type TargetInstances
 -- <p>Information about the instances to be used in the replacement environment in a blue/green deployment.</p>
--- @param _autoScalingGroups [AutoScalingGroupNameList] <p>The names of one or more Auto Scaling groups to identify a replacement environment for a blue/green deployment.</p>
--- @param _tagFilters [EC2TagFilterList] <p>The tag filter key, type, and value used to identify Amazon EC2 instances in a replacement environment for a blue/green deployment.</p>
-function M.TargetInstances(_autoScalingGroups, _tagFilters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TargetInstances")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * autoScalingGroups [AutoScalingGroupNameList] <p>The names of one or more Auto Scaling groups to identify a replacement environment for a blue/green deployment.</p>
+-- * tagFilters [EC2TagFilterList] <p>The tag filter key, type, and value used to identify Amazon EC2 instances in a replacement environment for a blue/green deployment.</p>
+-- @return TargetInstances structure as a key-value pair table
+function M.TargetInstances(args)
+	assert(args, "You must provdide an argument table when creating TargetInstances")
 	local t = { 
-		["autoScalingGroups"] = _autoScalingGroups,
-		["tagFilters"] = _tagFilters,
+		["autoScalingGroups"] = args["autoScalingGroups"],
+		["tagFilters"] = args["tagFilters"],
 	}
 	asserts.AssertTargetInstances(t)
 	return t
@@ -1892,8 +2120,11 @@ end
 
 --- Create a structure of type ResourceValidationException
 -- <p>The specified resource could not be validated.</p>
-function M.ResourceValidationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceValidationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceValidationException structure as a key-value pair table
+function M.ResourceValidationException(args)
+	assert(args, "You must provdide an argument table when creating ResourceValidationException")
 	local t = { 
 	}
 	asserts.AssertResourceValidationException(t)
@@ -1914,12 +2145,15 @@ end
 
 --- Create a structure of type GetOnPremisesInstanceInput
 -- <p>Represents the input of a GetOnPremisesInstance operation.</p>
--- @param _instanceName [InstanceName] <p>The name of the on-premises instance about which to get information.</p>
--- Required parameter: instanceName
-function M.GetOnPremisesInstanceInput(_instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOnPremisesInstanceInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [InstanceName] <p>The name of the on-premises instance about which to get information.</p>
+-- Required key: instanceName
+-- @return GetOnPremisesInstanceInput structure as a key-value pair table
+function M.GetOnPremisesInstanceInput(args)
+	assert(args, "You must provdide an argument table when creating GetOnPremisesInstanceInput")
 	local t = { 
-		["instanceName"] = _instanceName,
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertGetOnPremisesInstanceInput(t)
 	return t
@@ -1937,8 +2171,11 @@ end
 
 --- Create a structure of type InvalidApplicationNameException
 -- <p>The application name was specified in an invalid format.</p>
-function M.InvalidApplicationNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidApplicationNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidApplicationNameException structure as a key-value pair table
+function M.InvalidApplicationNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidApplicationNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidApplicationNameException(t)
@@ -1962,19 +2199,22 @@ end
 
 --- Create a structure of type ApplicationInfo
 -- <p>Information about an application.</p>
--- @param _applicationName [ApplicationName] <p>The application name.</p>
--- @param _gitHubAccountName [GitHubAccountTokenName] <p>The name for a connection to a GitHub account.</p>
--- @param _linkedToGitHub [Boolean] <p>True if the user has authenticated with GitHub for the specified application; otherwise, false.</p>
--- @param _applicationId [ApplicationId] <p>The application ID.</p>
--- @param _createTime [Timestamp] <p>The time at which the application was created.</p>
-function M.ApplicationInfo(_applicationName, _gitHubAccountName, _linkedToGitHub, _applicationId, _createTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The application name.</p>
+-- * gitHubAccountName [GitHubAccountTokenName] <p>The name for a connection to a GitHub account.</p>
+-- * linkedToGitHub [Boolean] <p>True if the user has authenticated with GitHub for the specified application; otherwise, false.</p>
+-- * applicationId [ApplicationId] <p>The application ID.</p>
+-- * createTime [Timestamp] <p>The time at which the application was created.</p>
+-- @return ApplicationInfo structure as a key-value pair table
+function M.ApplicationInfo(args)
+	assert(args, "You must provdide an argument table when creating ApplicationInfo")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["gitHubAccountName"] = _gitHubAccountName,
-		["linkedToGitHub"] = _linkedToGitHub,
-		["applicationId"] = _applicationId,
-		["createTime"] = _createTime,
+		["applicationName"] = args["applicationName"],
+		["gitHubAccountName"] = args["gitHubAccountName"],
+		["linkedToGitHub"] = args["linkedToGitHub"],
+		["applicationId"] = args["applicationId"],
+		["createTime"] = args["createTime"],
 	}
 	asserts.AssertApplicationInfo(t)
 	return t
@@ -1994,13 +2234,16 @@ end
 
 --- Create a structure of type Tag
 -- <p>Information about a tag.</p>
--- @param _Value [Value] <p>The tag's value.</p>
--- @param _Key [Key] <p>The tag's key.</p>
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [Value] <p>The tag's value.</p>
+-- * Key [Key] <p>The tag's key.</p>
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -2023,19 +2266,22 @@ end
 
 --- Create a structure of type ListDeploymentsInput
 -- <p>Represents the input of a ListDeployments operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- @param _createTimeRange [TimeRange] <p>A time range (start and end) for returning a subset of the list of deployments.</p>
--- @param _nextToken [NextToken] <p>An identifier returned from the previous list deployments call. It can be used to return the next set of deployments in the list.</p>
--- @param _deploymentGroupName [DeploymentGroupName] <p>The name of an existing deployment group for the specified application.</p>
--- @param _includeOnlyStatuses [DeploymentStatusList] <p>A subset of deployments to list by status:</p> <ul> <li> <p>Created: Include created deployments in the resulting list.</p> </li> <li> <p>Queued: Include queued deployments in the resulting list.</p> </li> <li> <p>In Progress: Include in-progress deployments in the resulting list.</p> </li> <li> <p>Succeeded: Include successful deployments in the resulting list.</p> </li> <li> <p>Failed: Include failed deployments in the resulting list.</p> </li> <li> <p>Stopped: Include stopped deployments in the resulting list.</p> </li> </ul>
-function M.ListDeploymentsInput(_applicationName, _createTimeRange, _nextToken, _deploymentGroupName, _includeOnlyStatuses, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- * createTimeRange [TimeRange] <p>A time range (start and end) for returning a subset of the list of deployments.</p>
+-- * nextToken [NextToken] <p>An identifier returned from the previous list deployments call. It can be used to return the next set of deployments in the list.</p>
+-- * deploymentGroupName [DeploymentGroupName] <p>The name of an existing deployment group for the specified application.</p>
+-- * includeOnlyStatuses [DeploymentStatusList] <p>A subset of deployments to list by status:</p> <ul> <li> <p>Created: Include created deployments in the resulting list.</p> </li> <li> <p>Queued: Include queued deployments in the resulting list.</p> </li> <li> <p>In Progress: Include in-progress deployments in the resulting list.</p> </li> <li> <p>Succeeded: Include successful deployments in the resulting list.</p> </li> <li> <p>Failed: Include failed deployments in the resulting list.</p> </li> <li> <p>Stopped: Include stopped deployments in the resulting list.</p> </li> </ul>
+-- @return ListDeploymentsInput structure as a key-value pair table
+function M.ListDeploymentsInput(args)
+	assert(args, "You must provdide an argument table when creating ListDeploymentsInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["createTimeRange"] = _createTimeRange,
-		["nextToken"] = _nextToken,
-		["deploymentGroupName"] = _deploymentGroupName,
-		["includeOnlyStatuses"] = _includeOnlyStatuses,
+		["applicationName"] = args["applicationName"],
+		["createTimeRange"] = args["createTimeRange"],
+		["nextToken"] = args["nextToken"],
+		["deploymentGroupName"] = args["deploymentGroupName"],
+		["includeOnlyStatuses"] = args["includeOnlyStatuses"],
 	}
 	asserts.AssertListDeploymentsInput(t)
 	return t
@@ -2055,13 +2301,16 @@ end
 
 --- Create a structure of type ListGitHubAccountTokenNamesOutput
 -- <p>Represents the output of a ListGitHubAccountTokenNames operation.</p>
--- @param _nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent ListGitHubAccountTokenNames call to return the next set of names in the list. </p>
--- @param _tokenNameList [GitHubAccountTokenNameList] <p>A list of names of connections to GitHub accounts.</p>
-function M.ListGitHubAccountTokenNamesOutput(_nextToken, _tokenNameList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGitHubAccountTokenNamesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent ListGitHubAccountTokenNames call to return the next set of names in the list. </p>
+-- * tokenNameList [GitHubAccountTokenNameList] <p>A list of names of connections to GitHub accounts.</p>
+-- @return ListGitHubAccountTokenNamesOutput structure as a key-value pair table
+function M.ListGitHubAccountTokenNamesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListGitHubAccountTokenNamesOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["tokenNameList"] = _tokenNameList,
+		["nextToken"] = args["nextToken"],
+		["tokenNameList"] = args["tokenNameList"],
 	}
 	asserts.AssertListGitHubAccountTokenNamesOutput(t)
 	return t
@@ -2080,11 +2329,14 @@ end
 
 --- Create a structure of type GetDeploymentGroupOutput
 -- <p>Represents the output of a GetDeploymentGroup operation.</p>
--- @param _deploymentGroupInfo [DeploymentGroupInfo] <p>Information about the deployment group.</p>
-function M.GetDeploymentGroupOutput(_deploymentGroupInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentGroupOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentGroupInfo [DeploymentGroupInfo] <p>Information about the deployment group.</p>
+-- @return GetDeploymentGroupOutput structure as a key-value pair table
+function M.GetDeploymentGroupOutput(args)
+	assert(args, "You must provdide an argument table when creating GetDeploymentGroupOutput")
 	local t = { 
-		["deploymentGroupInfo"] = _deploymentGroupInfo,
+		["deploymentGroupInfo"] = args["deploymentGroupInfo"],
 	}
 	asserts.AssertGetDeploymentGroupOutput(t)
 	return t
@@ -2102,8 +2354,11 @@ end
 
 --- Create a structure of type InvalidTargetInstancesException
 -- <p>The target instance configuration is invalid. Possible causes include:</p> <ul> <li> <p>Configuration data for target instances was entered for an in-place deployment.</p> </li> <li> <p>The limit of 10 tags for a tag type was exceeded.</p> </li> <li> <p>The combined length of the tag names exceeded the limit. </p> </li> <li> <p>A specified tag is not currently applied to any instances.</p> </li> </ul>
-function M.InvalidTargetInstancesException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTargetInstancesException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTargetInstancesException structure as a key-value pair table
+function M.InvalidTargetInstancesException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTargetInstancesException")
 	local t = { 
 	}
 	asserts.AssertInvalidTargetInstancesException(t)
@@ -2122,8 +2377,11 @@ end
 
 --- Create a structure of type InvalidOperationException
 -- <p>An invalid operation was detected.</p>
-function M.InvalidOperationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOperationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidOperationException structure as a key-value pair table
+function M.InvalidOperationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidOperationException")
 	local t = { 
 	}
 	asserts.AssertInvalidOperationException(t)
@@ -2142,8 +2400,11 @@ end
 
 --- Create a structure of type InvalidIamUserArnException
 -- <p>The IAM user ARN was specified in an invalid format.</p>
-function M.InvalidIamUserArnException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidIamUserArnException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidIamUserArnException structure as a key-value pair table
+function M.InvalidIamUserArnException(args)
+	assert(args, "You must provdide an argument table when creating InvalidIamUserArnException")
 	local t = { 
 	}
 	asserts.AssertInvalidIamUserArnException(t)
@@ -2164,13 +2425,16 @@ end
 
 --- Create a structure of type BatchGetDeploymentInstancesOutput
 -- <p>Represents the output of a BatchGetDeploymentInstances operation.</p>
--- @param _instancesSummary [InstanceSummaryList] <p>Information about the instance.</p>
--- @param _errorMessage [ErrorMessage] <p>Information about errors that may have occurred during the API call.</p>
-function M.BatchGetDeploymentInstancesOutput(_instancesSummary, _errorMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetDeploymentInstancesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instancesSummary [InstanceSummaryList] <p>Information about the instance.</p>
+-- * errorMessage [ErrorMessage] <p>Information about errors that may have occurred during the API call.</p>
+-- @return BatchGetDeploymentInstancesOutput structure as a key-value pair table
+function M.BatchGetDeploymentInstancesOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetDeploymentInstancesOutput")
 	local t = { 
-		["instancesSummary"] = _instancesSummary,
-		["errorMessage"] = _errorMessage,
+		["instancesSummary"] = args["instancesSummary"],
+		["errorMessage"] = args["errorMessage"],
 	}
 	asserts.AssertBatchGetDeploymentInstancesOutput(t)
 	return t
@@ -2188,8 +2452,11 @@ end
 
 --- Create a structure of type InvalidDeploymentGroupNameException
 -- <p>The deployment group name was specified in an invalid format.</p>
-function M.InvalidDeploymentGroupNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDeploymentGroupNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidDeploymentGroupNameException structure as a key-value pair table
+function M.InvalidDeploymentGroupNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidDeploymentGroupNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidDeploymentGroupNameException(t)
@@ -2208,8 +2475,11 @@ end
 
 --- Create a structure of type InvalidBlueGreenDeploymentConfigurationException
 -- <p>The configuration for the blue/green deployment group was provided in an invalid format. For information about deployment configuration format, see <a>CreateDeploymentConfig</a>.</p>
-function M.InvalidBlueGreenDeploymentConfigurationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidBlueGreenDeploymentConfigurationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidBlueGreenDeploymentConfigurationException structure as a key-value pair table
+function M.InvalidBlueGreenDeploymentConfigurationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidBlueGreenDeploymentConfigurationException")
 	local t = { 
 	}
 	asserts.AssertInvalidBlueGreenDeploymentConfigurationException(t)
@@ -2244,39 +2514,42 @@ end
 
 --- Create a structure of type UpdateDeploymentGroupInput
 -- <p>Represents the input of an UpdateDeploymentGroup operation.</p>
--- @param _applicationName [ApplicationName] <p>The application name corresponding to the deployment group to update.</p>
--- @param _autoScalingGroups [AutoScalingGroupNameList] <p>The replacement list of Auto Scaling groups to be included in the deployment group, if you want to change them. To keep the Auto Scaling groups, enter their names. To remove Auto Scaling groups, do not enter any Auto Scaling group names.</p>
--- @param _loadBalancerInfo [LoadBalancerInfo] <p>Information about the load balancer used in a deployment.</p>
--- @param _currentDeploymentGroupName [DeploymentGroupName] <p>The current name of the deployment group.</p>
--- @param _blueGreenDeploymentConfiguration [BlueGreenDeploymentConfiguration] <p>Information about blue/green deployment options for a deployment group.</p>
--- @param _deploymentConfigName [DeploymentConfigName] <p>The replacement deployment configuration name to use, if you want to change it.</p>
--- @param _triggerConfigurations [TriggerConfigList] <p>Information about triggers to change when the deployment group is updated. For examples, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html">Modify Triggers in an AWS CodeDeploy Deployment Group</a> in the AWS CodeDeploy User Guide.</p>
--- @param _alarmConfiguration [AlarmConfiguration] <p>Information to add or change about Amazon CloudWatch alarms when the deployment group is updated.</p>
--- @param _ec2TagFilters [EC2TagFilterList] <p>The replacement set of Amazon EC2 tags on which to filter, if you want to change them. To keep the existing tags, enter their names. To remove tags, do not enter any tag names.</p>
--- @param _serviceRoleArn [Role] <p>A replacement ARN for the service role, if you want to change it.</p>
--- @param _autoRollbackConfiguration [AutoRollbackConfiguration] <p>Information for an automatic rollback configuration that is added or changed when a deployment group is updated.</p>
--- @param _deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</p>
--- @param _newDeploymentGroupName [DeploymentGroupName] <p>The new name of the deployment group, if you want to change it.</p>
--- @param _onPremisesInstanceTagFilters [TagFilterList] <p>The replacement set of on-premises instance tags on which to filter, if you want to change them. To keep the existing tags, enter their names. To remove tags, do not enter any tag names.</p>
--- Required parameter: applicationName
--- Required parameter: currentDeploymentGroupName
-function M.UpdateDeploymentGroupInput(_applicationName, _autoScalingGroups, _loadBalancerInfo, _currentDeploymentGroupName, _blueGreenDeploymentConfiguration, _deploymentConfigName, _triggerConfigurations, _alarmConfiguration, _ec2TagFilters, _serviceRoleArn, _autoRollbackConfiguration, _deploymentStyle, _newDeploymentGroupName, _onPremisesInstanceTagFilters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDeploymentGroupInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The application name corresponding to the deployment group to update.</p>
+-- * autoScalingGroups [AutoScalingGroupNameList] <p>The replacement list of Auto Scaling groups to be included in the deployment group, if you want to change them. To keep the Auto Scaling groups, enter their names. To remove Auto Scaling groups, do not enter any Auto Scaling group names.</p>
+-- * loadBalancerInfo [LoadBalancerInfo] <p>Information about the load balancer used in a deployment.</p>
+-- * currentDeploymentGroupName [DeploymentGroupName] <p>The current name of the deployment group.</p>
+-- * blueGreenDeploymentConfiguration [BlueGreenDeploymentConfiguration] <p>Information about blue/green deployment options for a deployment group.</p>
+-- * deploymentConfigName [DeploymentConfigName] <p>The replacement deployment configuration name to use, if you want to change it.</p>
+-- * triggerConfigurations [TriggerConfigList] <p>Information about triggers to change when the deployment group is updated. For examples, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html">Modify Triggers in an AWS CodeDeploy Deployment Group</a> in the AWS CodeDeploy User Guide.</p>
+-- * alarmConfiguration [AlarmConfiguration] <p>Information to add or change about Amazon CloudWatch alarms when the deployment group is updated.</p>
+-- * ec2TagFilters [EC2TagFilterList] <p>The replacement set of Amazon EC2 tags on which to filter, if you want to change them. To keep the existing tags, enter their names. To remove tags, do not enter any tag names.</p>
+-- * serviceRoleArn [Role] <p>A replacement ARN for the service role, if you want to change it.</p>
+-- * autoRollbackConfiguration [AutoRollbackConfiguration] <p>Information for an automatic rollback configuration that is added or changed when a deployment group is updated.</p>
+-- * deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</p>
+-- * newDeploymentGroupName [DeploymentGroupName] <p>The new name of the deployment group, if you want to change it.</p>
+-- * onPremisesInstanceTagFilters [TagFilterList] <p>The replacement set of on-premises instance tags on which to filter, if you want to change them. To keep the existing tags, enter their names. To remove tags, do not enter any tag names.</p>
+-- Required key: applicationName
+-- Required key: currentDeploymentGroupName
+-- @return UpdateDeploymentGroupInput structure as a key-value pair table
+function M.UpdateDeploymentGroupInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateDeploymentGroupInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["autoScalingGroups"] = _autoScalingGroups,
-		["loadBalancerInfo"] = _loadBalancerInfo,
-		["currentDeploymentGroupName"] = _currentDeploymentGroupName,
-		["blueGreenDeploymentConfiguration"] = _blueGreenDeploymentConfiguration,
-		["deploymentConfigName"] = _deploymentConfigName,
-		["triggerConfigurations"] = _triggerConfigurations,
-		["alarmConfiguration"] = _alarmConfiguration,
-		["ec2TagFilters"] = _ec2TagFilters,
-		["serviceRoleArn"] = _serviceRoleArn,
-		["autoRollbackConfiguration"] = _autoRollbackConfiguration,
-		["deploymentStyle"] = _deploymentStyle,
-		["newDeploymentGroupName"] = _newDeploymentGroupName,
-		["onPremisesInstanceTagFilters"] = _onPremisesInstanceTagFilters,
+		["applicationName"] = args["applicationName"],
+		["autoScalingGroups"] = args["autoScalingGroups"],
+		["loadBalancerInfo"] = args["loadBalancerInfo"],
+		["currentDeploymentGroupName"] = args["currentDeploymentGroupName"],
+		["blueGreenDeploymentConfiguration"] = args["blueGreenDeploymentConfiguration"],
+		["deploymentConfigName"] = args["deploymentConfigName"],
+		["triggerConfigurations"] = args["triggerConfigurations"],
+		["alarmConfiguration"] = args["alarmConfiguration"],
+		["ec2TagFilters"] = args["ec2TagFilters"],
+		["serviceRoleArn"] = args["serviceRoleArn"],
+		["autoRollbackConfiguration"] = args["autoRollbackConfiguration"],
+		["deploymentStyle"] = args["deploymentStyle"],
+		["newDeploymentGroupName"] = args["newDeploymentGroupName"],
+		["onPremisesInstanceTagFilters"] = args["onPremisesInstanceTagFilters"],
 	}
 	asserts.AssertUpdateDeploymentGroupInput(t)
 	return t
@@ -2294,8 +2567,11 @@ end
 
 --- Create a structure of type DeploymentLimitExceededException
 -- <p>The number of allowed deployments was exceeded.</p>
-function M.DeploymentLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentLimitExceededException structure as a key-value pair table
+function M.DeploymentLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertDeploymentLimitExceededException(t)
@@ -2319,17 +2595,20 @@ end
 
 --- Create a structure of type RegisterApplicationRevisionInput
 -- <p>Represents the input of a RegisterApplicationRevision operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- @param _description [Description] <p>A comment about the revision.</p>
--- @param _revision [RevisionLocation] <p>Information about the application revision to register, including type and location.</p>
--- Required parameter: applicationName
--- Required parameter: revision
-function M.RegisterApplicationRevisionInput(_applicationName, _description, _revision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterApplicationRevisionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- * description [Description] <p>A comment about the revision.</p>
+-- * revision [RevisionLocation] <p>Information about the application revision to register, including type and location.</p>
+-- Required key: applicationName
+-- Required key: revision
+-- @return RegisterApplicationRevisionInput structure as a key-value pair table
+function M.RegisterApplicationRevisionInput(args)
+	assert(args, "You must provdide an argument table when creating RegisterApplicationRevisionInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["description"] = _description,
-		["revision"] = _revision,
+		["applicationName"] = args["applicationName"],
+		["description"] = args["description"],
+		["revision"] = args["revision"],
 	}
 	asserts.AssertRegisterApplicationRevisionInput(t)
 	return t
@@ -2347,8 +2626,11 @@ end
 
 --- Create a structure of type InvalidDeploymentIdException
 -- <p>At least one of the deployment IDs was specified in an invalid format.</p>
-function M.InvalidDeploymentIdException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDeploymentIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidDeploymentIdException structure as a key-value pair table
+function M.InvalidDeploymentIdException(args)
+	assert(args, "You must provdide an argument table when creating InvalidDeploymentIdException")
 	local t = { 
 	}
 	asserts.AssertInvalidDeploymentIdException(t)
@@ -2370,15 +2652,18 @@ end
 
 --- Create a structure of type GetApplicationRevisionOutput
 -- <p>Represents the output of a GetApplicationRevision operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of the application that corresponds to the revision.</p>
--- @param _revisionInfo [GenericRevisionInfo] <p>General information about the revision.</p>
--- @param _revision [RevisionLocation] <p>Additional information about the revision, including type and location.</p>
-function M.GetApplicationRevisionOutput(_applicationName, _revisionInfo, _revision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetApplicationRevisionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of the application that corresponds to the revision.</p>
+-- * revisionInfo [GenericRevisionInfo] <p>General information about the revision.</p>
+-- * revision [RevisionLocation] <p>Additional information about the revision, including type and location.</p>
+-- @return GetApplicationRevisionOutput structure as a key-value pair table
+function M.GetApplicationRevisionOutput(args)
+	assert(args, "You must provdide an argument table when creating GetApplicationRevisionOutput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["revisionInfo"] = _revisionInfo,
-		["revision"] = _revision,
+		["applicationName"] = args["applicationName"],
+		["revisionInfo"] = args["revisionInfo"],
+		["revision"] = args["revision"],
 	}
 	asserts.AssertGetApplicationRevisionOutput(t)
 	return t
@@ -2396,8 +2681,11 @@ end
 
 --- Create a structure of type DeploymentConfigLimitExceededException
 -- <p>The deployment configurations limit was exceeded.</p>
-function M.DeploymentConfigLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentConfigLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentConfigLimitExceededException structure as a key-value pair table
+function M.DeploymentConfigLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentConfigLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertDeploymentConfigLimitExceededException(t)
@@ -2416,8 +2704,11 @@ end
 
 --- Create a structure of type InvalidRoleException
 -- <p>The service role ARN was specified in an invalid format. Or, if an Auto Scaling group was specified, the specified service role does not grant the appropriate permissions to Auto Scaling.</p>
-function M.InvalidRoleException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRoleException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRoleException structure as a key-value pair table
+function M.InvalidRoleException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRoleException")
 	local t = { 
 	}
 	asserts.AssertInvalidRoleException(t)
@@ -2436,8 +2727,11 @@ end
 
 --- Create a structure of type InvalidRevisionException
 -- <p>The revision was specified in an invalid format.</p>
-function M.InvalidRevisionException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRevisionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRevisionException structure as a key-value pair table
+function M.InvalidRevisionException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRevisionException")
 	local t = { 
 	}
 	asserts.AssertInvalidRevisionException(t)
@@ -2456,8 +2750,11 @@ end
 
 --- Create a structure of type InstanceNameAlreadyRegisteredException
 -- <p>The specified on-premises instance name is already registered.</p>
-function M.InstanceNameAlreadyRegisteredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceNameAlreadyRegisteredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InstanceNameAlreadyRegisteredException structure as a key-value pair table
+function M.InstanceNameAlreadyRegisteredException(args)
+	assert(args, "You must provdide an argument table when creating InstanceNameAlreadyRegisteredException")
 	local t = { 
 	}
 	asserts.AssertInstanceNameAlreadyRegisteredException(t)
@@ -2477,11 +2774,14 @@ end
 
 --- Create a structure of type BatchGetApplicationsInput
 -- <p>Represents the input of a BatchGetApplications operation.</p>
--- @param _applicationNames [ApplicationsList] <p>A list of application names separated by spaces.</p>
-function M.BatchGetApplicationsInput(_applicationNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetApplicationsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationNames [ApplicationsList] <p>A list of application names separated by spaces.</p>
+-- @return BatchGetApplicationsInput structure as a key-value pair table
+function M.BatchGetApplicationsInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetApplicationsInput")
 	local t = { 
-		["applicationNames"] = _applicationNames,
+		["applicationNames"] = args["applicationNames"],
 	}
 	asserts.AssertBatchGetApplicationsInput(t)
 	return t
@@ -2499,8 +2799,11 @@ end
 
 --- Create a structure of type InstanceDoesNotExistException
 -- <p>The specified instance does not exist in the deployment group.</p>
-function M.InstanceDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InstanceDoesNotExistException structure as a key-value pair table
+function M.InstanceDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating InstanceDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertInstanceDoesNotExistException(t)
@@ -2524,18 +2827,21 @@ end
 
 --- Create a structure of type ListDeploymentInstancesInput
 -- <p>Represents the input of a ListDeploymentInstances operation.</p>
--- @param _instanceStatusFilter [InstanceStatusList] <p>A subset of instances to list by status:</p> <ul> <li> <p>Pending: Include those instance with pending deployments.</p> </li> <li> <p>InProgress: Include those instance where deployments are still in progress.</p> </li> <li> <p>Succeeded: Include those instances with successful deployments.</p> </li> <li> <p>Failed: Include those instance with failed deployments.</p> </li> <li> <p>Skipped: Include those instance with skipped deployments.</p> </li> <li> <p>Unknown: Include those instance with deployments in an unknown state.</p> </li> </ul>
--- @param _deploymentId [DeploymentId] <p>The unique ID of a deployment.</p>
--- @param _nextToken [NextToken] <p>An identifier returned from the previous list deployment instances call. It can be used to return the next set of deployment instances in the list.</p>
--- @param _instanceTypeFilter [InstanceTypeList] <p>The set of instances in a blue/green deployment, either those in the original environment ("BLUE") or those in the replacement environment ("GREEN"), for which you want to view instance information.</p>
--- Required parameter: deploymentId
-function M.ListDeploymentInstancesInput(_instanceStatusFilter, _deploymentId, _nextToken, _instanceTypeFilter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentInstancesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceStatusFilter [InstanceStatusList] <p>A subset of instances to list by status:</p> <ul> <li> <p>Pending: Include those instance with pending deployments.</p> </li> <li> <p>InProgress: Include those instance where deployments are still in progress.</p> </li> <li> <p>Succeeded: Include those instances with successful deployments.</p> </li> <li> <p>Failed: Include those instance with failed deployments.</p> </li> <li> <p>Skipped: Include those instance with skipped deployments.</p> </li> <li> <p>Unknown: Include those instance with deployments in an unknown state.</p> </li> </ul>
+-- * deploymentId [DeploymentId] <p>The unique ID of a deployment.</p>
+-- * nextToken [NextToken] <p>An identifier returned from the previous list deployment instances call. It can be used to return the next set of deployment instances in the list.</p>
+-- * instanceTypeFilter [InstanceTypeList] <p>The set of instances in a blue/green deployment, either those in the original environment ("BLUE") or those in the replacement environment ("GREEN"), for which you want to view instance information.</p>
+-- Required key: deploymentId
+-- @return ListDeploymentInstancesInput structure as a key-value pair table
+function M.ListDeploymentInstancesInput(args)
+	assert(args, "You must provdide an argument table when creating ListDeploymentInstancesInput")
 	local t = { 
-		["instanceStatusFilter"] = _instanceStatusFilter,
-		["deploymentId"] = _deploymentId,
-		["nextToken"] = _nextToken,
-		["instanceTypeFilter"] = _instanceTypeFilter,
+		["instanceStatusFilter"] = args["instanceStatusFilter"],
+		["deploymentId"] = args["deploymentId"],
+		["nextToken"] = args["nextToken"],
+		["instanceTypeFilter"] = args["instanceTypeFilter"],
 	}
 	asserts.AssertListDeploymentInstancesInput(t)
 	return t
@@ -2553,8 +2859,11 @@ end
 
 --- Create a structure of type ApplicationLimitExceededException
 -- <p>More applications were attempted to be created than are allowed.</p>
-function M.ApplicationLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ApplicationLimitExceededException structure as a key-value pair table
+function M.ApplicationLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating ApplicationLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertApplicationLimitExceededException(t)
@@ -2573,8 +2882,11 @@ end
 
 --- Create a structure of type InvalidInstanceNameException
 -- <p>The specified on-premises instance name was specified in an invalid format.</p>
-function M.InvalidInstanceNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInstanceNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidInstanceNameException structure as a key-value pair table
+function M.InvalidInstanceNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidInstanceNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidInstanceNameException(t)
@@ -2593,8 +2905,11 @@ end
 
 --- Create a structure of type ApplicationNameRequiredException
 -- <p>The minimum number of required application names was not specified.</p>
-function M.ApplicationNameRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationNameRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ApplicationNameRequiredException structure as a key-value pair table
+function M.ApplicationNameRequiredException(args)
+	assert(args, "You must provdide an argument table when creating ApplicationNameRequiredException")
 	local t = { 
 	}
 	asserts.AssertApplicationNameRequiredException(t)
@@ -2614,11 +2929,14 @@ end
 
 --- Create a structure of type GetDeploymentInstanceOutput
 -- <p>Represents the output of a GetDeploymentInstance operation.</p>
--- @param _instanceSummary [InstanceSummary] <p>Information about the instance.</p>
-function M.GetDeploymentInstanceOutput(_instanceSummary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentInstanceOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceSummary [InstanceSummary] <p>Information about the instance.</p>
+-- @return GetDeploymentInstanceOutput structure as a key-value pair table
+function M.GetDeploymentInstanceOutput(args)
+	assert(args, "You must provdide an argument table when creating GetDeploymentInstanceOutput")
 	local t = { 
-		["instanceSummary"] = _instanceSummary,
+		["instanceSummary"] = args["instanceSummary"],
 	}
 	asserts.AssertGetDeploymentInstanceOutput(t)
 	return t
@@ -2636,8 +2954,11 @@ end
 
 --- Create a structure of type InvalidTagFilterException
 -- <p>The specified tag filter was specified in an invalid format.</p>
-function M.InvalidTagFilterException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTagFilterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTagFilterException structure as a key-value pair table
+function M.InvalidTagFilterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTagFilterException")
 	local t = { 
 	}
 	asserts.AssertInvalidTagFilterException(t)
@@ -2658,12 +2979,15 @@ end
 
 --- Create a structure of type CreateApplicationInput
 -- <p>Represents the input of a CreateApplication operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of the application. This name must be unique with the applicable IAM user or AWS account.</p>
--- Required parameter: applicationName
-function M.CreateApplicationInput(_applicationName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of the application. This name must be unique with the applicable IAM user or AWS account.</p>
+-- Required key: applicationName
+-- @return CreateApplicationInput structure as a key-value pair table
+function M.CreateApplicationInput(args)
+	assert(args, "You must provdide an argument table when creating CreateApplicationInput")
 	local t = { 
-		["applicationName"] = _applicationName,
+		["applicationName"] = args["applicationName"],
 	}
 	asserts.AssertCreateApplicationInput(t)
 	return t
@@ -2682,11 +3006,14 @@ end
 
 --- Create a structure of type CreateApplicationOutput
 -- <p>Represents the output of a CreateApplication operation.</p>
--- @param _applicationId [ApplicationId] <p>A unique application ID.</p>
-function M.CreateApplicationOutput(_applicationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationId [ApplicationId] <p>A unique application ID.</p>
+-- @return CreateApplicationOutput structure as a key-value pair table
+function M.CreateApplicationOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateApplicationOutput")
 	local t = { 
-		["applicationId"] = _applicationId,
+		["applicationId"] = args["applicationId"],
 	}
 	asserts.AssertCreateApplicationOutput(t)
 	return t
@@ -2729,59 +3056,62 @@ end
 
 --- Create a structure of type DeploymentInfo
 -- <p>Information about a deployment.</p>
--- @param _autoRollbackConfiguration [AutoRollbackConfiguration] <p>Information about the automatic rollback configuration associated with the deployment.</p>
--- @param _additionalDeploymentStatusInfo [AdditionalDeploymentStatusInfo] <p>Provides information about the results of a deployment, such as whether instances in the original environment in a blue/green deployment were not terminated.</p>
--- @param _creator [DeploymentCreator] <p>The means by which the deployment was created:</p> <ul> <li> <p>user: A user created the deployment.</p> </li> <li> <p>autoscaling: Auto Scaling created the deployment.</p> </li> <li> <p>codeDeployRollback: A rollback process created the deployment.</p> </li> </ul>
--- @param _previousRevision [RevisionLocation] <p>Information about the application revision that was deployed to the deployment group before the most recent successful deployment.</p>
--- @param _fileExistsBehavior [FileExistsBehavior] <p>Information about how AWS CodeDeploy handles files that already exist in a deployment target location but weren't part of the previous successful deployment.</p> <ul> <li> <p>DISALLOW: The deployment fails. This is also the default behavior if no option is specified.</p> </li> <li> <p>OVERWRITE: The version of the file from the application revision currently being deployed replaces the version already on the instance.</p> </li> <li> <p>RETAIN: The version of the file already on the instance is kept and used as part of the new deployment.</p> </li> </ul>
--- @param _completeTime [Timestamp] <p>A timestamp indicating when the deployment was complete.</p>
--- @param _applicationName [ApplicationName] <p>The application name.</p>
--- @param _deploymentOverview [DeploymentOverview] <p>A summary of the deployment status of the instances in the deployment.</p>
--- @param _deploymentId [DeploymentId] <p>The deployment ID.</p>
--- @param _ignoreApplicationStopFailures [Boolean] <p>If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the deployment to that instance will not be considered to have failed at that point and will continue on to the BeforeInstall deployment lifecycle event.</p> <p>If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the deployment to that instance will stop, and the deployment to that instance will be considered to have failed.</p>
--- @param _updateOutdatedInstancesOnly [Boolean] <p>Indicates whether only instances that are not running the latest application revision are to be deployed to.</p>
--- @param _rollbackInfo [RollbackInfo] <p>Information about a deployment rollback.</p>
--- @param _targetInstances [TargetInstances] <p>Information about the instances that belong to the replacement environment in a blue/green deployment.</p>
--- @param _revision [RevisionLocation] <p>Information about the location of stored application artifacts and the service from which to retrieve them.</p>
--- @param _status [DeploymentStatus] <p>The current state of the deployment as a whole.</p>
--- @param _description [Description] <p>A comment about the deployment.</p>
--- @param _errorInformation [ErrorInformation] <p>Information about any error associated with this deployment.</p>
--- @param _startTime [Timestamp] <p>A timestamp indicating when the deployment was deployed to the deployment group.</p> <p>In some cases, the reported value of the start time may be later than the complete time. This is due to differences in the clock settings of back-end servers that participate in the deployment process.</p>
--- @param _instanceTerminationWaitTimeStarted [Boolean] <p>Indicates whether the wait period set for the termination of instances in the original environment has started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period starts.</p>
--- @param _deploymentGroupName [DeploymentGroupName] <p>The deployment group name.</p>
--- @param _createTime [Timestamp] <p>A timestamp indicating when the deployment was created.</p>
--- @param _loadBalancerInfo [LoadBalancerInfo] <p>Information about the load balancer used in the deployment.</p>
--- @param _blueGreenDeploymentConfiguration [BlueGreenDeploymentConfiguration] <p>Information about blue/green deployment options for this deployment.</p>
--- @param _deploymentConfigName [DeploymentConfigName] <p>The deployment configuration name.</p>
--- @param _deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</p>
-function M.DeploymentInfo(_autoRollbackConfiguration, _additionalDeploymentStatusInfo, _creator, _previousRevision, _fileExistsBehavior, _completeTime, _applicationName, _deploymentOverview, _deploymentId, _ignoreApplicationStopFailures, _updateOutdatedInstancesOnly, _rollbackInfo, _targetInstances, _revision, _status, _description, _errorInformation, _startTime, _instanceTerminationWaitTimeStarted, _deploymentGroupName, _createTime, _loadBalancerInfo, _blueGreenDeploymentConfiguration, _deploymentConfigName, _deploymentStyle, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * autoRollbackConfiguration [AutoRollbackConfiguration] <p>Information about the automatic rollback configuration associated with the deployment.</p>
+-- * additionalDeploymentStatusInfo [AdditionalDeploymentStatusInfo] <p>Provides information about the results of a deployment, such as whether instances in the original environment in a blue/green deployment were not terminated.</p>
+-- * creator [DeploymentCreator] <p>The means by which the deployment was created:</p> <ul> <li> <p>user: A user created the deployment.</p> </li> <li> <p>autoscaling: Auto Scaling created the deployment.</p> </li> <li> <p>codeDeployRollback: A rollback process created the deployment.</p> </li> </ul>
+-- * previousRevision [RevisionLocation] <p>Information about the application revision that was deployed to the deployment group before the most recent successful deployment.</p>
+-- * fileExistsBehavior [FileExistsBehavior] <p>Information about how AWS CodeDeploy handles files that already exist in a deployment target location but weren't part of the previous successful deployment.</p> <ul> <li> <p>DISALLOW: The deployment fails. This is also the default behavior if no option is specified.</p> </li> <li> <p>OVERWRITE: The version of the file from the application revision currently being deployed replaces the version already on the instance.</p> </li> <li> <p>RETAIN: The version of the file already on the instance is kept and used as part of the new deployment.</p> </li> </ul>
+-- * completeTime [Timestamp] <p>A timestamp indicating when the deployment was complete.</p>
+-- * applicationName [ApplicationName] <p>The application name.</p>
+-- * deploymentOverview [DeploymentOverview] <p>A summary of the deployment status of the instances in the deployment.</p>
+-- * deploymentId [DeploymentId] <p>The deployment ID.</p>
+-- * ignoreApplicationStopFailures [Boolean] <p>If true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the deployment to that instance will not be considered to have failed at that point and will continue on to the BeforeInstall deployment lifecycle event.</p> <p>If false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the deployment to that instance will stop, and the deployment to that instance will be considered to have failed.</p>
+-- * updateOutdatedInstancesOnly [Boolean] <p>Indicates whether only instances that are not running the latest application revision are to be deployed to.</p>
+-- * rollbackInfo [RollbackInfo] <p>Information about a deployment rollback.</p>
+-- * targetInstances [TargetInstances] <p>Information about the instances that belong to the replacement environment in a blue/green deployment.</p>
+-- * revision [RevisionLocation] <p>Information about the location of stored application artifacts and the service from which to retrieve them.</p>
+-- * status [DeploymentStatus] <p>The current state of the deployment as a whole.</p>
+-- * description [Description] <p>A comment about the deployment.</p>
+-- * errorInformation [ErrorInformation] <p>Information about any error associated with this deployment.</p>
+-- * startTime [Timestamp] <p>A timestamp indicating when the deployment was deployed to the deployment group.</p> <p>In some cases, the reported value of the start time may be later than the complete time. This is due to differences in the clock settings of back-end servers that participate in the deployment process.</p>
+-- * instanceTerminationWaitTimeStarted [Boolean] <p>Indicates whether the wait period set for the termination of instances in the original environment has started. Status is 'false' if the KEEP_ALIVE option is specified; otherwise, 'true' as soon as the termination wait period starts.</p>
+-- * deploymentGroupName [DeploymentGroupName] <p>The deployment group name.</p>
+-- * createTime [Timestamp] <p>A timestamp indicating when the deployment was created.</p>
+-- * loadBalancerInfo [LoadBalancerInfo] <p>Information about the load balancer used in the deployment.</p>
+-- * blueGreenDeploymentConfiguration [BlueGreenDeploymentConfiguration] <p>Information about blue/green deployment options for this deployment.</p>
+-- * deploymentConfigName [DeploymentConfigName] <p>The deployment configuration name.</p>
+-- * deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</p>
+-- @return DeploymentInfo structure as a key-value pair table
+function M.DeploymentInfo(args)
+	assert(args, "You must provdide an argument table when creating DeploymentInfo")
 	local t = { 
-		["autoRollbackConfiguration"] = _autoRollbackConfiguration,
-		["additionalDeploymentStatusInfo"] = _additionalDeploymentStatusInfo,
-		["creator"] = _creator,
-		["previousRevision"] = _previousRevision,
-		["fileExistsBehavior"] = _fileExistsBehavior,
-		["completeTime"] = _completeTime,
-		["applicationName"] = _applicationName,
-		["deploymentOverview"] = _deploymentOverview,
-		["deploymentId"] = _deploymentId,
-		["ignoreApplicationStopFailures"] = _ignoreApplicationStopFailures,
-		["updateOutdatedInstancesOnly"] = _updateOutdatedInstancesOnly,
-		["rollbackInfo"] = _rollbackInfo,
-		["targetInstances"] = _targetInstances,
-		["revision"] = _revision,
-		["status"] = _status,
-		["description"] = _description,
-		["errorInformation"] = _errorInformation,
-		["startTime"] = _startTime,
-		["instanceTerminationWaitTimeStarted"] = _instanceTerminationWaitTimeStarted,
-		["deploymentGroupName"] = _deploymentGroupName,
-		["createTime"] = _createTime,
-		["loadBalancerInfo"] = _loadBalancerInfo,
-		["blueGreenDeploymentConfiguration"] = _blueGreenDeploymentConfiguration,
-		["deploymentConfigName"] = _deploymentConfigName,
-		["deploymentStyle"] = _deploymentStyle,
+		["autoRollbackConfiguration"] = args["autoRollbackConfiguration"],
+		["additionalDeploymentStatusInfo"] = args["additionalDeploymentStatusInfo"],
+		["creator"] = args["creator"],
+		["previousRevision"] = args["previousRevision"],
+		["fileExistsBehavior"] = args["fileExistsBehavior"],
+		["completeTime"] = args["completeTime"],
+		["applicationName"] = args["applicationName"],
+		["deploymentOverview"] = args["deploymentOverview"],
+		["deploymentId"] = args["deploymentId"],
+		["ignoreApplicationStopFailures"] = args["ignoreApplicationStopFailures"],
+		["updateOutdatedInstancesOnly"] = args["updateOutdatedInstancesOnly"],
+		["rollbackInfo"] = args["rollbackInfo"],
+		["targetInstances"] = args["targetInstances"],
+		["revision"] = args["revision"],
+		["status"] = args["status"],
+		["description"] = args["description"],
+		["errorInformation"] = args["errorInformation"],
+		["startTime"] = args["startTime"],
+		["instanceTerminationWaitTimeStarted"] = args["instanceTerminationWaitTimeStarted"],
+		["deploymentGroupName"] = args["deploymentGroupName"],
+		["createTime"] = args["createTime"],
+		["loadBalancerInfo"] = args["loadBalancerInfo"],
+		["blueGreenDeploymentConfiguration"] = args["blueGreenDeploymentConfiguration"],
+		["deploymentConfigName"] = args["deploymentConfigName"],
+		["deploymentStyle"] = args["deploymentStyle"],
 	}
 	asserts.AssertDeploymentInfo(t)
 	return t
@@ -2799,8 +3129,11 @@ end
 
 --- Create a structure of type RevisionRequiredException
 -- <p>The revision ID was not specified.</p>
-function M.RevisionRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RevisionRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RevisionRequiredException structure as a key-value pair table
+function M.RevisionRequiredException(args)
+	assert(args, "You must provdide an argument table when creating RevisionRequiredException")
 	local t = { 
 	}
 	asserts.AssertRevisionRequiredException(t)
@@ -2819,8 +3152,11 @@ end
 
 --- Create a structure of type InstanceLimitExceededException
 -- <p>The maximum number of allowed on-premises instances in a single call was exceeded.</p>
-function M.InstanceLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InstanceLimitExceededException structure as a key-value pair table
+function M.InstanceLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating InstanceLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertInstanceLimitExceededException(t)
@@ -2846,23 +3182,26 @@ end
 
 --- Create a structure of type InstanceInfo
 -- <p>Information about an on-premises instance.</p>
--- @param _instanceArn [InstanceArn] <p>The ARN of the on-premises instance.</p>
--- @param _iamSessionArn [IamSessionArn] <p>The ARN of the IAM session associated with the on-premises instance.</p>
--- @param _tags [TagList] <p>The tags currently associated with the on-premises instance.</p>
--- @param _registerTime [Timestamp] <p>The time at which the on-premises instance was registered.</p>
--- @param _iamUserArn [IamUserArn] <p>The IAM user ARN associated with the on-premises instance.</p>
--- @param _deregisterTime [Timestamp] <p>If the on-premises instance was deregistered, the time at which the on-premises instance was deregistered.</p>
--- @param _instanceName [InstanceName] <p>The name of the on-premises instance.</p>
-function M.InstanceInfo(_instanceArn, _iamSessionArn, _tags, _registerTime, _iamUserArn, _deregisterTime, _instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceArn [InstanceArn] <p>The ARN of the on-premises instance.</p>
+-- * iamSessionArn [IamSessionArn] <p>The ARN of the IAM session associated with the on-premises instance.</p>
+-- * tags [TagList] <p>The tags currently associated with the on-premises instance.</p>
+-- * registerTime [Timestamp] <p>The time at which the on-premises instance was registered.</p>
+-- * iamUserArn [IamUserArn] <p>The IAM user ARN associated with the on-premises instance.</p>
+-- * deregisterTime [Timestamp] <p>If the on-premises instance was deregistered, the time at which the on-premises instance was deregistered.</p>
+-- * instanceName [InstanceName] <p>The name of the on-premises instance.</p>
+-- @return InstanceInfo structure as a key-value pair table
+function M.InstanceInfo(args)
+	assert(args, "You must provdide an argument table when creating InstanceInfo")
 	local t = { 
-		["instanceArn"] = _instanceArn,
-		["iamSessionArn"] = _iamSessionArn,
-		["tags"] = _tags,
-		["registerTime"] = _registerTime,
-		["iamUserArn"] = _iamUserArn,
-		["deregisterTime"] = _deregisterTime,
-		["instanceName"] = _instanceName,
+		["instanceArn"] = args["instanceArn"],
+		["iamSessionArn"] = args["iamSessionArn"],
+		["tags"] = args["tags"],
+		["registerTime"] = args["registerTime"],
+		["iamUserArn"] = args["iamUserArn"],
+		["deregisterTime"] = args["deregisterTime"],
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertInstanceInfo(t)
 	return t
@@ -2880,8 +3219,11 @@ end
 
 --- Create a structure of type DeploymentGroupLimitExceededException
 -- <p> The deployment groups limit was exceeded.</p>
-function M.DeploymentGroupLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentGroupLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentGroupLimitExceededException structure as a key-value pair table
+function M.DeploymentGroupLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentGroupLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertDeploymentGroupLimitExceededException(t)
@@ -2901,11 +3243,14 @@ end
 
 --- Create a structure of type BatchGetOnPremisesInstancesOutput
 -- <p>Represents the output of a BatchGetOnPremisesInstances operation.</p>
--- @param _instanceInfos [InstanceInfoList] <p>Information about the on-premises instances.</p>
-function M.BatchGetOnPremisesInstancesOutput(_instanceInfos, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetOnPremisesInstancesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceInfos [InstanceInfoList] <p>Information about the on-premises instances.</p>
+-- @return BatchGetOnPremisesInstancesOutput structure as a key-value pair table
+function M.BatchGetOnPremisesInstancesOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetOnPremisesInstancesOutput")
 	local t = { 
-		["instanceInfos"] = _instanceInfos,
+		["instanceInfos"] = args["instanceInfos"],
 	}
 	asserts.AssertBatchGetOnPremisesInstancesOutput(t)
 	return t
@@ -2923,8 +3268,11 @@ end
 
 --- Create a structure of type DeploymentGroupDoesNotExistException
 -- <p>The named deployment group does not exist with the applicable IAM user or AWS account.</p>
-function M.DeploymentGroupDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentGroupDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentGroupDoesNotExistException structure as a key-value pair table
+function M.DeploymentGroupDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentGroupDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertDeploymentGroupDoesNotExistException(t)
@@ -2945,13 +3293,16 @@ end
 
 --- Create a structure of type ListApplicationsOutput
 -- <p>Represents the output of a ListApplications operation.</p>
--- @param _applications [ApplicationsList] <p>A list of application names.</p>
--- @param _nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list applications call to return the next set of applications, will also be returned. in the list.</p>
-function M.ListApplicationsOutput(_applications, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListApplicationsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applications [ApplicationsList] <p>A list of application names.</p>
+-- * nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list applications call to return the next set of applications, will also be returned. in the list.</p>
+-- @return ListApplicationsOutput structure as a key-value pair table
+function M.ListApplicationsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListApplicationsOutput")
 	local t = { 
-		["applications"] = _applications,
-		["nextToken"] = _nextToken,
+		["applications"] = args["applications"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListApplicationsOutput(t)
 	return t
@@ -2970,11 +3321,14 @@ end
 
 --- Create a structure of type LoadBalancerInfo
 -- <p>Information about the load balancer used in a deployment.</p>
--- @param _elbInfoList [ELBInfoList] <p>An array containing information about the load balancer in Elastic Load Balancing to use in a deployment.</p>
-function M.LoadBalancerInfo(_elbInfoList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * elbInfoList [ELBInfoList] <p>An array containing information about the load balancer in Elastic Load Balancing to use in a deployment.</p>
+-- @return LoadBalancerInfo structure as a key-value pair table
+function M.LoadBalancerInfo(args)
+	assert(args, "You must provdide an argument table when creating LoadBalancerInfo")
 	local t = { 
-		["elbInfoList"] = _elbInfoList,
+		["elbInfoList"] = args["elbInfoList"],
 	}
 	asserts.AssertLoadBalancerInfo(t)
 	return t
@@ -2992,8 +3346,11 @@ end
 
 --- Create a structure of type DeploymentIdRequiredException
 -- <p>At least one deployment ID must be specified.</p>
-function M.DeploymentIdRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentIdRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentIdRequiredException structure as a key-value pair table
+function M.DeploymentIdRequiredException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentIdRequiredException")
 	local t = { 
 	}
 	asserts.AssertDeploymentIdRequiredException(t)
@@ -3014,13 +3371,16 @@ end
 
 --- Create a structure of type BlueInstanceTerminationOption
 -- <p>Information about whether instances in the original environment are terminated when a blue/green deployment is successful.</p>
--- @param _action [InstanceAction] <p>The action to take on instances in the original environment after a successful blue/green deployment.</p> <ul> <li> <p>TERMINATE: Instances are terminated after a specified wait time.</p> </li> <li> <p>KEEP_ALIVE: Instances are left running after they are deregistered from the load balancer and removed from the deployment group.</p> </li> </ul>
--- @param _terminationWaitTimeInMinutes [Duration] <p>The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.</p>
-function M.BlueInstanceTerminationOption(_action, _terminationWaitTimeInMinutes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BlueInstanceTerminationOption")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * action [InstanceAction] <p>The action to take on instances in the original environment after a successful blue/green deployment.</p> <ul> <li> <p>TERMINATE: Instances are terminated after a specified wait time.</p> </li> <li> <p>KEEP_ALIVE: Instances are left running after they are deregistered from the load balancer and removed from the deployment group.</p> </li> </ul>
+-- * terminationWaitTimeInMinutes [Duration] <p>The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.</p>
+-- @return BlueInstanceTerminationOption structure as a key-value pair table
+function M.BlueInstanceTerminationOption(args)
+	assert(args, "You must provdide an argument table when creating BlueInstanceTerminationOption")
 	local t = { 
-		["action"] = _action,
-		["terminationWaitTimeInMinutes"] = _terminationWaitTimeInMinutes,
+		["action"] = args["action"],
+		["terminationWaitTimeInMinutes"] = args["terminationWaitTimeInMinutes"],
 	}
 	asserts.AssertBlueInstanceTerminationOption(t)
 	return t
@@ -3041,15 +3401,18 @@ end
 
 --- Create a structure of type RevisionLocation
 -- <p>Information about the location of an application revision.</p>
--- @param _revisionType [RevisionLocationType] <p>The type of application revision:</p> <ul> <li> <p>S3: An application revision stored in Amazon S3.</p> </li> <li> <p>GitHub: An application revision stored in GitHub.</p> </li> </ul>
--- @param _s3Location [S3Location] <p>Information about the location of application artifacts stored in Amazon S3. </p>
--- @param _gitHubLocation [GitHubLocation] <p>Information about the location of application artifacts stored in GitHub.</p>
-function M.RevisionLocation(_revisionType, _s3Location, _gitHubLocation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RevisionLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * revisionType [RevisionLocationType] <p>The type of application revision:</p> <ul> <li> <p>S3: An application revision stored in Amazon S3.</p> </li> <li> <p>GitHub: An application revision stored in GitHub.</p> </li> </ul>
+-- * s3Location [S3Location] <p>Information about the location of application artifacts stored in Amazon S3. </p>
+-- * gitHubLocation [GitHubLocation] <p>Information about the location of application artifacts stored in GitHub.</p>
+-- @return RevisionLocation structure as a key-value pair table
+function M.RevisionLocation(args)
+	assert(args, "You must provdide an argument table when creating RevisionLocation")
 	local t = { 
-		["revisionType"] = _revisionType,
-		["s3Location"] = _s3Location,
-		["gitHubLocation"] = _gitHubLocation,
+		["revisionType"] = args["revisionType"],
+		["s3Location"] = args["s3Location"],
+		["gitHubLocation"] = args["gitHubLocation"],
 	}
 	asserts.AssertRevisionLocation(t)
 	return t
@@ -3067,8 +3430,11 @@ end
 
 --- Create a structure of type InvalidInstanceStatusException
 -- <p>The specified instance status does not exist.</p>
-function M.InvalidInstanceStatusException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInstanceStatusException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidInstanceStatusException structure as a key-value pair table
+function M.InvalidInstanceStatusException(args)
+	assert(args, "You must provdide an argument table when creating InvalidInstanceStatusException")
 	local t = { 
 	}
 	asserts.AssertInvalidInstanceStatusException(t)
@@ -3087,8 +3453,11 @@ end
 
 --- Create a structure of type RevisionDoesNotExistException
 -- <p>The named revision does not exist with the applicable IAM user or AWS account.</p>
-function M.RevisionDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RevisionDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RevisionDoesNotExistException structure as a key-value pair table
+function M.RevisionDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating RevisionDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertRevisionDoesNotExistException(t)
@@ -3109,12 +3478,15 @@ end
 
 --- Create a structure of type DeregisterOnPremisesInstanceInput
 -- <p>Represents the input of a DeregisterOnPremisesInstance operation.</p>
--- @param _instanceName [InstanceName] <p>The name of the on-premises instance to deregister.</p>
--- Required parameter: instanceName
-function M.DeregisterOnPremisesInstanceInput(_instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterOnPremisesInstanceInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [InstanceName] <p>The name of the on-premises instance to deregister.</p>
+-- Required key: instanceName
+-- @return DeregisterOnPremisesInstanceInput structure as a key-value pair table
+function M.DeregisterOnPremisesInstanceInput(args)
+	assert(args, "You must provdide an argument table when creating DeregisterOnPremisesInstanceInput")
 	local t = { 
-		["instanceName"] = _instanceName,
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertDeregisterOnPremisesInstanceInput(t)
 	return t
@@ -3132,8 +3504,11 @@ end
 
 --- Create a structure of type GitHubAccountTokenDoesNotExistException
 -- <p>No GitHub account connection exists with the named specified in the call.</p>
-function M.GitHubAccountTokenDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GitHubAccountTokenDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GitHubAccountTokenDoesNotExistException structure as a key-value pair table
+function M.GitHubAccountTokenDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating GitHubAccountTokenDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertGitHubAccountTokenDoesNotExistException(t)
@@ -3153,11 +3528,14 @@ end
 
 --- Create a structure of type BatchGetDeploymentsInput
 -- <p>Represents the input of a BatchGetDeployments operation.</p>
--- @param _deploymentIds [DeploymentsList] <p>A list of deployment IDs, separated by spaces.</p>
-function M.BatchGetDeploymentsInput(_deploymentIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetDeploymentsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentIds [DeploymentsList] <p>A list of deployment IDs, separated by spaces.</p>
+-- @return BatchGetDeploymentsInput structure as a key-value pair table
+function M.BatchGetDeploymentsInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetDeploymentsInput")
 	local t = { 
-		["deploymentIds"] = _deploymentIds,
+		["deploymentIds"] = args["deploymentIds"],
 	}
 	asserts.AssertBatchGetDeploymentsInput(t)
 	return t
@@ -3176,11 +3554,14 @@ end
 
 --- Create a structure of type ContinueDeploymentInput
 --  
--- @param _deploymentId [DeploymentId] <p>The deployment ID of the blue/green deployment for which you want to start rerouting traffic to the replacement environment.</p>
-function M.ContinueDeploymentInput(_deploymentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContinueDeploymentInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentId [DeploymentId] <p>The deployment ID of the blue/green deployment for which you want to start rerouting traffic to the replacement environment.</p>
+-- @return ContinueDeploymentInput structure as a key-value pair table
+function M.ContinueDeploymentInput(args)
+	assert(args, "You must provdide an argument table when creating ContinueDeploymentInput")
 	local t = { 
-		["deploymentId"] = _deploymentId,
+		["deploymentId"] = args["deploymentId"],
 	}
 	asserts.AssertContinueDeploymentInput(t)
 	return t
@@ -3199,11 +3580,14 @@ end
 
 --- Create a structure of type ListDeploymentConfigsInput
 -- <p>Represents the input of a ListDeploymentConfigs operation.</p>
--- @param _nextToken [NextToken] <p>An identifier returned from the previous list deployment configurations call. It can be used to return the next set of deployment configurations in the list. </p>
-function M.ListDeploymentConfigsInput(_nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentConfigsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>An identifier returned from the previous list deployment configurations call. It can be used to return the next set of deployment configurations in the list. </p>
+-- @return ListDeploymentConfigsInput structure as a key-value pair table
+function M.ListDeploymentConfigsInput(args)
+	assert(args, "You must provdide an argument table when creating ListDeploymentConfigsInput")
 	local t = { 
-		["nextToken"] = _nextToken,
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListDeploymentConfigsInput(t)
 	return t
@@ -3225,15 +3609,18 @@ end
 
 --- Create a structure of type GetDeploymentInstanceInput
 -- <p>Represents the input of a GetDeploymentInstance operation.</p>
--- @param _instanceId [InstanceId] <p>The unique ID of an instance in the deployment group.</p>
--- @param _deploymentId [DeploymentId] <p>The unique ID of a deployment.</p>
--- Required parameter: deploymentId
--- Required parameter: instanceId
-function M.GetDeploymentInstanceInput(_instanceId, _deploymentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentInstanceInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceId [InstanceId] <p>The unique ID of an instance in the deployment group.</p>
+-- * deploymentId [DeploymentId] <p>The unique ID of a deployment.</p>
+-- Required key: deploymentId
+-- Required key: instanceId
+-- @return GetDeploymentInstanceInput structure as a key-value pair table
+function M.GetDeploymentInstanceInput(args)
+	assert(args, "You must provdide an argument table when creating GetDeploymentInstanceInput")
 	local t = { 
-		["instanceId"] = _instanceId,
-		["deploymentId"] = _deploymentId,
+		["instanceId"] = args["instanceId"],
+		["deploymentId"] = args["deploymentId"],
 	}
 	asserts.AssertGetDeploymentInstanceInput(t)
 	return t
@@ -3253,13 +3640,16 @@ end
 
 --- Create a structure of type GitHubLocation
 -- <p>Information about the location of application artifacts stored in GitHub.</p>
--- @param _commitId [CommitId] <p>The SHA1 commit ID of the GitHub commit that represents the bundled artifacts for the application revision.</p>
--- @param _repository [Repository] <p>The GitHub account and repository pair that stores a reference to the commit that represents the bundled artifacts for the application revision. </p> <p>Specified as account/repository.</p>
-function M.GitHubLocation(_commitId, _repository, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GitHubLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * commitId [CommitId] <p>The SHA1 commit ID of the GitHub commit that represents the bundled artifacts for the application revision.</p>
+-- * repository [Repository] <p>The GitHub account and repository pair that stores a reference to the commit that represents the bundled artifacts for the application revision. </p> <p>Specified as account/repository.</p>
+-- @return GitHubLocation structure as a key-value pair table
+function M.GitHubLocation(args)
+	assert(args, "You must provdide an argument table when creating GitHubLocation")
 	local t = { 
-		["commitId"] = _commitId,
-		["repository"] = _repository,
+		["commitId"] = args["commitId"],
+		["repository"] = args["repository"],
 	}
 	asserts.AssertGitHubLocation(t)
 	return t
@@ -3278,11 +3668,14 @@ end
 
 --- Create a structure of type CreateDeploymentGroupOutput
 -- <p>Represents the output of a CreateDeploymentGroup operation.</p>
--- @param _deploymentGroupId [DeploymentGroupId] <p>A unique deployment group ID.</p>
-function M.CreateDeploymentGroupOutput(_deploymentGroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentGroupOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentGroupId [DeploymentGroupId] <p>A unique deployment group ID.</p>
+-- @return CreateDeploymentGroupOutput structure as a key-value pair table
+function M.CreateDeploymentGroupOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateDeploymentGroupOutput")
 	local t = { 
-		["deploymentGroupId"] = _deploymentGroupId,
+		["deploymentGroupId"] = args["deploymentGroupId"],
 	}
 	asserts.AssertCreateDeploymentGroupOutput(t)
 	return t
@@ -3303,15 +3696,18 @@ end
 
 --- Create a structure of type BatchGetApplicationRevisionsOutput
 -- <p>Represents the output of a BatchGetApplicationRevisions operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of the application that corresponds to the revisions.</p>
--- @param _errorMessage [ErrorMessage] <p>Information about errors that may have occurred during the API call.</p>
--- @param _revisions [RevisionInfoList] <p>Additional information about the revisions, including the type and location.</p>
-function M.BatchGetApplicationRevisionsOutput(_applicationName, _errorMessage, _revisions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetApplicationRevisionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of the application that corresponds to the revisions.</p>
+-- * errorMessage [ErrorMessage] <p>Information about errors that may have occurred during the API call.</p>
+-- * revisions [RevisionInfoList] <p>Additional information about the revisions, including the type and location.</p>
+-- @return BatchGetApplicationRevisionsOutput structure as a key-value pair table
+function M.BatchGetApplicationRevisionsOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetApplicationRevisionsOutput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["errorMessage"] = _errorMessage,
-		["revisions"] = _revisions,
+		["applicationName"] = args["applicationName"],
+		["errorMessage"] = args["errorMessage"],
+		["revisions"] = args["revisions"],
 	}
 	asserts.AssertBatchGetApplicationRevisionsOutput(t)
 	return t
@@ -3329,8 +3725,11 @@ end
 
 --- Create a structure of type InvalidLoadBalancerInfoException
 -- <p>An invalid load balancer name, or no load balancer name, was specified.</p>
-function M.InvalidLoadBalancerInfoException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLoadBalancerInfoException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidLoadBalancerInfoException structure as a key-value pair table
+function M.InvalidLoadBalancerInfoException(args)
+	assert(args, "You must provdide an argument table when creating InvalidLoadBalancerInfoException")
 	local t = { 
 	}
 	asserts.AssertInvalidLoadBalancerInfoException(t)
@@ -3360,30 +3759,33 @@ end
 
 --- Create a structure of type CreateDeploymentInput
 -- <p>Represents the input of a CreateDeployment operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- @param _autoRollbackConfiguration [AutoRollbackConfiguration] <p>Configuration information for an automatic rollback that is added when a deployment is created.</p>
--- @param _description [Description] <p>A comment about the deployment.</p>
--- @param _deploymentConfigName [DeploymentConfigName] <p>The name of a deployment configuration associated with the applicable IAM user or AWS account.</p> <p>If not specified, the value configured in the deployment group will be used as the default. If the deployment group does not have a deployment configuration associated with it, then CodeDeployDefault.OneAtATime will be used by default.</p>
--- @param _ignoreApplicationStopFailures [Boolean] <p>If set to true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the deployment to that instance will not be considered to have failed at that point and will continue on to the BeforeInstall deployment lifecycle event.</p> <p>If set to false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to fail to an instance, the deployment to that instance will stop, and the deployment to that instance will be considered to have failed.</p>
--- @param _updateOutdatedInstancesOnly [Boolean] <p>Indicates whether to deploy to all instances or only to instances that are not running the latest application revision.</p>
--- @param _targetInstances [TargetInstances] <p>Information about the instances that will belong to the replacement environment in a blue/green deployment.</p>
--- @param _deploymentGroupName [DeploymentGroupName] <p>The name of the deployment group.</p>
--- @param _fileExistsBehavior [FileExistsBehavior] <p>Information about how AWS CodeDeploy handles files that already exist in a deployment target location but weren't part of the previous successful deployment.</p> <p>The fileExistsBehavior parameter takes any of the following values:</p> <ul> <li> <p>DISALLOW: The deployment fails. This is also the default behavior if no option is specified.</p> </li> <li> <p>OVERWRITE: The version of the file from the application revision currently being deployed replaces the version already on the instance.</p> </li> <li> <p>RETAIN: The version of the file already on the instance is kept and used as part of the new deployment.</p> </li> </ul>
--- @param _revision [RevisionLocation] <p>The type and location of the revision to deploy.</p>
--- Required parameter: applicationName
-function M.CreateDeploymentInput(_applicationName, _autoRollbackConfiguration, _description, _deploymentConfigName, _ignoreApplicationStopFailures, _updateOutdatedInstancesOnly, _targetInstances, _deploymentGroupName, _fileExistsBehavior, _revision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- * autoRollbackConfiguration [AutoRollbackConfiguration] <p>Configuration information for an automatic rollback that is added when a deployment is created.</p>
+-- * description [Description] <p>A comment about the deployment.</p>
+-- * deploymentConfigName [DeploymentConfigName] <p>The name of a deployment configuration associated with the applicable IAM user or AWS account.</p> <p>If not specified, the value configured in the deployment group will be used as the default. If the deployment group does not have a deployment configuration associated with it, then CodeDeployDefault.OneAtATime will be used by default.</p>
+-- * ignoreApplicationStopFailures [Boolean] <p>If set to true, then if the deployment causes the ApplicationStop deployment lifecycle event to an instance to fail, the deployment to that instance will not be considered to have failed at that point and will continue on to the BeforeInstall deployment lifecycle event.</p> <p>If set to false or not specified, then if the deployment causes the ApplicationStop deployment lifecycle event to fail to an instance, the deployment to that instance will stop, and the deployment to that instance will be considered to have failed.</p>
+-- * updateOutdatedInstancesOnly [Boolean] <p>Indicates whether to deploy to all instances or only to instances that are not running the latest application revision.</p>
+-- * targetInstances [TargetInstances] <p>Information about the instances that will belong to the replacement environment in a blue/green deployment.</p>
+-- * deploymentGroupName [DeploymentGroupName] <p>The name of the deployment group.</p>
+-- * fileExistsBehavior [FileExistsBehavior] <p>Information about how AWS CodeDeploy handles files that already exist in a deployment target location but weren't part of the previous successful deployment.</p> <p>The fileExistsBehavior parameter takes any of the following values:</p> <ul> <li> <p>DISALLOW: The deployment fails. This is also the default behavior if no option is specified.</p> </li> <li> <p>OVERWRITE: The version of the file from the application revision currently being deployed replaces the version already on the instance.</p> </li> <li> <p>RETAIN: The version of the file already on the instance is kept and used as part of the new deployment.</p> </li> </ul>
+-- * revision [RevisionLocation] <p>The type and location of the revision to deploy.</p>
+-- Required key: applicationName
+-- @return CreateDeploymentInput structure as a key-value pair table
+function M.CreateDeploymentInput(args)
+	assert(args, "You must provdide an argument table when creating CreateDeploymentInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["autoRollbackConfiguration"] = _autoRollbackConfiguration,
-		["description"] = _description,
-		["deploymentConfigName"] = _deploymentConfigName,
-		["ignoreApplicationStopFailures"] = _ignoreApplicationStopFailures,
-		["updateOutdatedInstancesOnly"] = _updateOutdatedInstancesOnly,
-		["targetInstances"] = _targetInstances,
-		["deploymentGroupName"] = _deploymentGroupName,
-		["fileExistsBehavior"] = _fileExistsBehavior,
-		["revision"] = _revision,
+		["applicationName"] = args["applicationName"],
+		["autoRollbackConfiguration"] = args["autoRollbackConfiguration"],
+		["description"] = args["description"],
+		["deploymentConfigName"] = args["deploymentConfigName"],
+		["ignoreApplicationStopFailures"] = args["ignoreApplicationStopFailures"],
+		["updateOutdatedInstancesOnly"] = args["updateOutdatedInstancesOnly"],
+		["targetInstances"] = args["targetInstances"],
+		["deploymentGroupName"] = args["deploymentGroupName"],
+		["fileExistsBehavior"] = args["fileExistsBehavior"],
+		["revision"] = args["revision"],
 	}
 	asserts.AssertCreateDeploymentInput(t)
 	return t
@@ -3402,11 +3804,14 @@ end
 
 --- Create a structure of type DeleteDeploymentGroupOutput
 -- <p>Represents the output of a DeleteDeploymentGroup operation.</p>
--- @param _hooksNotCleanedUp [AutoScalingGroupList] <p>If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, AWS CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the Amazon EC2 instances in the Auto Scaling group. If the output contains data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the Amazon EC2 instances in the Auto Scaling group.</p>
-function M.DeleteDeploymentGroupOutput(_hooksNotCleanedUp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeploymentGroupOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * hooksNotCleanedUp [AutoScalingGroupList] <p>If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, AWS CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the Amazon EC2 instances in the Auto Scaling group. If the output contains data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the Amazon EC2 instances in the Auto Scaling group.</p>
+-- @return DeleteDeploymentGroupOutput structure as a key-value pair table
+function M.DeleteDeploymentGroupOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteDeploymentGroupOutput")
 	local t = { 
-		["hooksNotCleanedUp"] = _hooksNotCleanedUp,
+		["hooksNotCleanedUp"] = args["hooksNotCleanedUp"],
 	}
 	asserts.AssertDeleteDeploymentGroupOutput(t)
 	return t
@@ -3426,13 +3831,16 @@ end
 
 --- Create a structure of type BatchGetDeploymentGroupsOutput
 -- <p>Represents the output of a BatchGetDeploymentGroups operation.</p>
--- @param _errorMessage [ErrorMessage] <p>Information about errors that may have occurred during the API call.</p>
--- @param _deploymentGroupsInfo [DeploymentGroupInfoList] <p>Information about the deployment groups.</p>
-function M.BatchGetDeploymentGroupsOutput(_errorMessage, _deploymentGroupsInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetDeploymentGroupsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errorMessage [ErrorMessage] <p>Information about errors that may have occurred during the API call.</p>
+-- * deploymentGroupsInfo [DeploymentGroupInfoList] <p>Information about the deployment groups.</p>
+-- @return BatchGetDeploymentGroupsOutput structure as a key-value pair table
+function M.BatchGetDeploymentGroupsOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetDeploymentGroupsOutput")
 	local t = { 
-		["errorMessage"] = _errorMessage,
-		["deploymentGroupsInfo"] = _deploymentGroupsInfo,
+		["errorMessage"] = args["errorMessage"],
+		["deploymentGroupsInfo"] = args["deploymentGroupsInfo"],
 	}
 	asserts.AssertBatchGetDeploymentGroupsOutput(t)
 	return t
@@ -3450,8 +3858,11 @@ end
 
 --- Create a structure of type DeploymentConfigAlreadyExistsException
 -- <p>A deployment configuration with the specified name already exists with the applicable IAM user or AWS account.</p>
-function M.DeploymentConfigAlreadyExistsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentConfigAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentConfigAlreadyExistsException structure as a key-value pair table
+function M.DeploymentConfigAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentConfigAlreadyExistsException")
 	local t = { 
 	}
 	asserts.AssertDeploymentConfigAlreadyExistsException(t)
@@ -3470,8 +3881,11 @@ end
 
 --- Create a structure of type InvalidInstanceTypeException
 -- <p>An invalid instance type was specified for instances in a blue/green deployment. Valid values include "Blue" for an original environment and "Green" for a replacement environment.</p>
-function M.InvalidInstanceTypeException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInstanceTypeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidInstanceTypeException structure as a key-value pair table
+function M.InvalidInstanceTypeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidInstanceTypeException")
 	local t = { 
 	}
 	asserts.AssertInvalidInstanceTypeException(t)
@@ -3506,38 +3920,41 @@ end
 
 --- Create a structure of type CreateDeploymentGroupInput
 -- <p>Represents the input of a CreateDeploymentGroup operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- @param _autoScalingGroups [AutoScalingGroupNameList] <p>A list of associated Auto Scaling groups.</p>
--- @param _loadBalancerInfo [LoadBalancerInfo] <p>Information about the load balancer used in a deployment.</p>
--- @param _blueGreenDeploymentConfiguration [BlueGreenDeploymentConfiguration] <p>Information about blue/green deployment options for a deployment group.</p>
--- @param _deploymentConfigName [DeploymentConfigName] <p>If specified, the deployment configuration name can be either one of the predefined configurations provided with AWS CodeDeploy or a custom deployment configuration that you create by calling the create deployment configuration operation.</p> <p>CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't specified for the deployment or the deployment group.</p> <p>For more information about the predefined deployment configurations in AWS CodeDeploy, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.</p>
--- @param _triggerConfigurations [TriggerConfigList] <p>Information about triggers to create when the deployment group is created. For examples, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.</p>
--- @param _alarmConfiguration [AlarmConfiguration] <p>Information to add about Amazon CloudWatch alarms when the deployment group is created.</p>
--- @param _ec2TagFilters [EC2TagFilterList] <p>The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified tags.</p>
--- @param _autoRollbackConfiguration [AutoRollbackConfiguration] <p>Configuration information for an automatic rollback that is added when a deployment group is created.</p>
--- @param _deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, in-place or blue/green, that you want to run and whether to route deployment traffic behind a load balancer.</p>
--- @param _serviceRoleArn [Role] <p>A service role ARN that allows AWS CodeDeploy to act on the user's behalf when interacting with AWS services.</p>
--- @param _deploymentGroupName [DeploymentGroupName] <p>The name of a new deployment group for the specified application.</p>
--- @param _onPremisesInstanceTagFilters [TagFilterList] <p>The on-premises instance tags on which to filter. The deployment group will include on-premises instances with any of the specified tags.</p>
--- Required parameter: applicationName
--- Required parameter: deploymentGroupName
--- Required parameter: serviceRoleArn
-function M.CreateDeploymentGroupInput(_applicationName, _autoScalingGroups, _loadBalancerInfo, _blueGreenDeploymentConfiguration, _deploymentConfigName, _triggerConfigurations, _alarmConfiguration, _ec2TagFilters, _autoRollbackConfiguration, _deploymentStyle, _serviceRoleArn, _deploymentGroupName, _onPremisesInstanceTagFilters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentGroupInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- * autoScalingGroups [AutoScalingGroupNameList] <p>A list of associated Auto Scaling groups.</p>
+-- * loadBalancerInfo [LoadBalancerInfo] <p>Information about the load balancer used in a deployment.</p>
+-- * blueGreenDeploymentConfiguration [BlueGreenDeploymentConfiguration] <p>Information about blue/green deployment options for a deployment group.</p>
+-- * deploymentConfigName [DeploymentConfigName] <p>If specified, the deployment configuration name can be either one of the predefined configurations provided with AWS CodeDeploy or a custom deployment configuration that you create by calling the create deployment configuration operation.</p> <p>CodeDeployDefault.OneAtATime is the default deployment configuration. It is used if a configuration isn't specified for the deployment or the deployment group.</p> <p>For more information about the predefined deployment configurations in AWS CodeDeploy, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html">Working with Deployment Groups in AWS CodeDeploy</a> in the AWS CodeDeploy User Guide.</p>
+-- * triggerConfigurations [TriggerConfigList] <p>Information about triggers to create when the deployment group is created. For examples, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html">Create a Trigger for an AWS CodeDeploy Event</a> in the AWS CodeDeploy User Guide.</p>
+-- * alarmConfiguration [AlarmConfiguration] <p>Information to add about Amazon CloudWatch alarms when the deployment group is created.</p>
+-- * ec2TagFilters [EC2TagFilterList] <p>The Amazon EC2 tags on which to filter. The deployment group will include EC2 instances with any of the specified tags.</p>
+-- * autoRollbackConfiguration [AutoRollbackConfiguration] <p>Configuration information for an automatic rollback that is added when a deployment group is created.</p>
+-- * deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, in-place or blue/green, that you want to run and whether to route deployment traffic behind a load balancer.</p>
+-- * serviceRoleArn [Role] <p>A service role ARN that allows AWS CodeDeploy to act on the user's behalf when interacting with AWS services.</p>
+-- * deploymentGroupName [DeploymentGroupName] <p>The name of a new deployment group for the specified application.</p>
+-- * onPremisesInstanceTagFilters [TagFilterList] <p>The on-premises instance tags on which to filter. The deployment group will include on-premises instances with any of the specified tags.</p>
+-- Required key: applicationName
+-- Required key: deploymentGroupName
+-- Required key: serviceRoleArn
+-- @return CreateDeploymentGroupInput structure as a key-value pair table
+function M.CreateDeploymentGroupInput(args)
+	assert(args, "You must provdide an argument table when creating CreateDeploymentGroupInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["autoScalingGroups"] = _autoScalingGroups,
-		["loadBalancerInfo"] = _loadBalancerInfo,
-		["blueGreenDeploymentConfiguration"] = _blueGreenDeploymentConfiguration,
-		["deploymentConfigName"] = _deploymentConfigName,
-		["triggerConfigurations"] = _triggerConfigurations,
-		["alarmConfiguration"] = _alarmConfiguration,
-		["ec2TagFilters"] = _ec2TagFilters,
-		["autoRollbackConfiguration"] = _autoRollbackConfiguration,
-		["deploymentStyle"] = _deploymentStyle,
-		["serviceRoleArn"] = _serviceRoleArn,
-		["deploymentGroupName"] = _deploymentGroupName,
-		["onPremisesInstanceTagFilters"] = _onPremisesInstanceTagFilters,
+		["applicationName"] = args["applicationName"],
+		["autoScalingGroups"] = args["autoScalingGroups"],
+		["loadBalancerInfo"] = args["loadBalancerInfo"],
+		["blueGreenDeploymentConfiguration"] = args["blueGreenDeploymentConfiguration"],
+		["deploymentConfigName"] = args["deploymentConfigName"],
+		["triggerConfigurations"] = args["triggerConfigurations"],
+		["alarmConfiguration"] = args["alarmConfiguration"],
+		["ec2TagFilters"] = args["ec2TagFilters"],
+		["autoRollbackConfiguration"] = args["autoRollbackConfiguration"],
+		["deploymentStyle"] = args["deploymentStyle"],
+		["serviceRoleArn"] = args["serviceRoleArn"],
+		["deploymentGroupName"] = args["deploymentGroupName"],
+		["onPremisesInstanceTagFilters"] = args["onPremisesInstanceTagFilters"],
 	}
 	asserts.AssertCreateDeploymentGroupInput(t)
 	return t
@@ -3555,8 +3972,11 @@ end
 
 --- Create a structure of type DeploymentGroupAlreadyExistsException
 -- <p>A deployment group with the specified name already exists with the applicable IAM user or AWS account.</p>
-function M.DeploymentGroupAlreadyExistsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentGroupAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentGroupAlreadyExistsException structure as a key-value pair table
+function M.DeploymentGroupAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentGroupAlreadyExistsException")
 	local t = { 
 	}
 	asserts.AssertDeploymentGroupAlreadyExistsException(t)
@@ -3579,15 +3999,18 @@ end
 
 --- Create a structure of type BatchGetApplicationRevisionsInput
 -- <p>Represents the input of a BatchGetApplicationRevisions operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application about which to get revision information.</p>
--- @param _revisions [RevisionLocationList] <p>Information to get about the application revisions, including type and location.</p>
--- Required parameter: applicationName
--- Required parameter: revisions
-function M.BatchGetApplicationRevisionsInput(_applicationName, _revisions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetApplicationRevisionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application about which to get revision information.</p>
+-- * revisions [RevisionLocationList] <p>Information to get about the application revisions, including type and location.</p>
+-- Required key: applicationName
+-- Required key: revisions
+-- @return BatchGetApplicationRevisionsInput structure as a key-value pair table
+function M.BatchGetApplicationRevisionsInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetApplicationRevisionsInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["revisions"] = _revisions,
+		["applicationName"] = args["applicationName"],
+		["revisions"] = args["revisions"],
 	}
 	asserts.AssertBatchGetApplicationRevisionsInput(t)
 	return t
@@ -3606,11 +4029,14 @@ end
 
 --- Create a structure of type UpdateDeploymentGroupOutput
 -- <p>Represents the output of an UpdateDeploymentGroup operation.</p>
--- @param _hooksNotCleanedUp [AutoScalingGroupList] <p>If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, AWS CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the AWS account. If the output contains data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the AWS account.</p>
-function M.UpdateDeploymentGroupOutput(_hooksNotCleanedUp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDeploymentGroupOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * hooksNotCleanedUp [AutoScalingGroupList] <p>If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, AWS CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the AWS account. If the output contains data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the AWS account.</p>
+-- @return UpdateDeploymentGroupOutput structure as a key-value pair table
+function M.UpdateDeploymentGroupOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateDeploymentGroupOutput")
 	local t = { 
-		["hooksNotCleanedUp"] = _hooksNotCleanedUp,
+		["hooksNotCleanedUp"] = args["hooksNotCleanedUp"],
 	}
 	asserts.AssertUpdateDeploymentGroupOutput(t)
 	return t
@@ -3630,13 +4056,16 @@ end
 
 --- Create a structure of type ListDeploymentConfigsOutput
 -- <p>Represents the output of a ListDeploymentConfigs operation.</p>
--- @param _nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment configurations call to return the next set of deployment configurations in the list.</p>
--- @param _deploymentConfigsList [DeploymentConfigsList] <p>A list of deployment configurations, including built-in configurations such as CodeDeployDefault.OneAtATime.</p>
-function M.ListDeploymentConfigsOutput(_nextToken, _deploymentConfigsList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentConfigsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment configurations call to return the next set of deployment configurations in the list.</p>
+-- * deploymentConfigsList [DeploymentConfigsList] <p>A list of deployment configurations, including built-in configurations such as CodeDeployDefault.OneAtATime.</p>
+-- @return ListDeploymentConfigsOutput structure as a key-value pair table
+function M.ListDeploymentConfigsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListDeploymentConfigsOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["deploymentConfigsList"] = _deploymentConfigsList,
+		["nextToken"] = args["nextToken"],
+		["deploymentConfigsList"] = args["deploymentConfigsList"],
 	}
 	asserts.AssertListDeploymentConfigsOutput(t)
 	return t
@@ -3658,15 +4087,18 @@ end
 
 --- Create a structure of type DeleteDeploymentGroupInput
 -- <p>Represents the input of a DeleteDeploymentGroup operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- @param _deploymentGroupName [DeploymentGroupName] <p>The name of an existing deployment group for the specified application.</p>
--- Required parameter: applicationName
--- Required parameter: deploymentGroupName
-function M.DeleteDeploymentGroupInput(_applicationName, _deploymentGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeploymentGroupInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- * deploymentGroupName [DeploymentGroupName] <p>The name of an existing deployment group for the specified application.</p>
+-- Required key: applicationName
+-- Required key: deploymentGroupName
+-- @return DeleteDeploymentGroupInput structure as a key-value pair table
+function M.DeleteDeploymentGroupInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteDeploymentGroupInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["deploymentGroupName"] = _deploymentGroupName,
+		["applicationName"] = args["applicationName"],
+		["deploymentGroupName"] = args["deploymentGroupName"],
 	}
 	asserts.AssertDeleteDeploymentGroupInput(t)
 	return t
@@ -3686,13 +4118,16 @@ end
 
 --- Create a structure of type StopDeploymentOutput
 -- <p>Represents the output of a StopDeployment operation.</p>
--- @param _status [StopStatus] <p>The status of the stop deployment operation:</p> <ul> <li> <p>Pending: The stop operation is pending.</p> </li> <li> <p>Succeeded: The stop operation was successful.</p> </li> </ul>
--- @param _statusMessage [Message] <p>An accompanying status message.</p>
-function M.StopDeploymentOutput(_status, _statusMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopDeploymentOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [StopStatus] <p>The status of the stop deployment operation:</p> <ul> <li> <p>Pending: The stop operation is pending.</p> </li> <li> <p>Succeeded: The stop operation was successful.</p> </li> </ul>
+-- * statusMessage [Message] <p>An accompanying status message.</p>
+-- @return StopDeploymentOutput structure as a key-value pair table
+function M.StopDeploymentOutput(args)
+	assert(args, "You must provdide an argument table when creating StopDeploymentOutput")
 	local t = { 
-		["status"] = _status,
-		["statusMessage"] = _statusMessage,
+		["status"] = args["status"],
+		["statusMessage"] = args["statusMessage"],
 	}
 	asserts.AssertStopDeploymentOutput(t)
 	return t
@@ -3711,11 +4146,14 @@ end
 
 --- Create a structure of type CreateDeploymentOutput
 -- <p>Represents the output of a CreateDeployment operation.</p>
--- @param _deploymentId [DeploymentId] <p>A unique deployment ID.</p>
-function M.CreateDeploymentOutput(_deploymentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentId [DeploymentId] <p>A unique deployment ID.</p>
+-- @return CreateDeploymentOutput structure as a key-value pair table
+function M.CreateDeploymentOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateDeploymentOutput")
 	local t = { 
-		["deploymentId"] = _deploymentId,
+		["deploymentId"] = args["deploymentId"],
 	}
 	asserts.AssertCreateDeploymentOutput(t)
 	return t
@@ -3735,13 +4173,16 @@ end
 
 --- Create a structure of type ListDeploymentsOutput
 -- <p>Represents the output of a ListDeployments operation.</p>
--- @param _nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployments call to return the next set of deployments in the list.</p>
--- @param _deployments [DeploymentsList] <p>A list of deployment IDs.</p>
-function M.ListDeploymentsOutput(_nextToken, _deployments, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployments call to return the next set of deployments in the list.</p>
+-- * deployments [DeploymentsList] <p>A list of deployment IDs.</p>
+-- @return ListDeploymentsOutput structure as a key-value pair table
+function M.ListDeploymentsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListDeploymentsOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["deployments"] = _deployments,
+		["nextToken"] = args["nextToken"],
+		["deployments"] = args["deployments"],
 	}
 	asserts.AssertListDeploymentsOutput(t)
 	return t
@@ -3759,8 +4200,11 @@ end
 
 --- Create a structure of type InvalidMinimumHealthyHostValueException
 -- <p>The minimum healthy instance value was specified in an invalid format.</p>
-function M.InvalidMinimumHealthyHostValueException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidMinimumHealthyHostValueException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidMinimumHealthyHostValueException structure as a key-value pair table
+function M.InvalidMinimumHealthyHostValueException(args)
+	assert(args, "You must provdide an argument table when creating InvalidMinimumHealthyHostValueException")
 	local t = { 
 	}
 	asserts.AssertInvalidMinimumHealthyHostValueException(t)
@@ -3780,11 +4224,14 @@ end
 
 --- Create a structure of type BatchGetDeploymentsOutput
 -- <p>Represents the output of a BatchGetDeployments operation.</p>
--- @param _deploymentsInfo [DeploymentsInfoList] <p>Information about the deployments.</p>
-function M.BatchGetDeploymentsOutput(_deploymentsInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetDeploymentsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentsInfo [DeploymentsInfoList] <p>Information about the deployments.</p>
+-- @return BatchGetDeploymentsOutput structure as a key-value pair table
+function M.BatchGetDeploymentsOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetDeploymentsOutput")
 	local t = { 
-		["deploymentsInfo"] = _deploymentsInfo,
+		["deploymentsInfo"] = args["deploymentsInfo"],
 	}
 	asserts.AssertBatchGetDeploymentsOutput(t)
 	return t
@@ -3802,8 +4249,11 @@ end
 
 --- Create a structure of type IamArnRequiredException
 -- <p>No IAM ARN was included in the request. You must use an IAM session ARN or IAM user ARN in the request.</p>
-function M.IamArnRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IamArnRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return IamArnRequiredException structure as a key-value pair table
+function M.IamArnRequiredException(args)
+	assert(args, "You must provdide an argument table when creating IamArnRequiredException")
 	local t = { 
 	}
 	asserts.AssertIamArnRequiredException(t)
@@ -3822,8 +4272,11 @@ end
 
 --- Create a structure of type DeploymentConfigNameRequiredException
 -- <p>The deployment configuration name was not specified.</p>
-function M.DeploymentConfigNameRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentConfigNameRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentConfigNameRequiredException structure as a key-value pair table
+function M.DeploymentConfigNameRequiredException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentConfigNameRequiredException")
 	local t = { 
 	}
 	asserts.AssertDeploymentConfigNameRequiredException(t)
@@ -3848,21 +4301,24 @@ end
 
 --- Create a structure of type DeploymentOverview
 -- <p>Information about the deployment status of the instances in the deployment.</p>
--- @param _Skipped [InstanceCount] <p>The number of instances in the deployment in a skipped state.</p>
--- @param _Succeeded [InstanceCount] <p>The number of instances in the deployment to which revisions have been successfully deployed.</p>
--- @param _Failed [InstanceCount] <p>The number of instances in the deployment in a failed state.</p>
--- @param _Ready [InstanceCount] <p>The number of instances in a replacement environment ready to receive traffic in a blue/green deployment.</p>
--- @param _InProgress [InstanceCount] <p>The number of instances in which the deployment is in progress.</p>
--- @param _Pending [InstanceCount] <p>The number of instances in the deployment in a pending state.</p>
-function M.DeploymentOverview(_Skipped, _Succeeded, _Failed, _Ready, _InProgress, _Pending, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentOverview")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Skipped [InstanceCount] <p>The number of instances in the deployment in a skipped state.</p>
+-- * Succeeded [InstanceCount] <p>The number of instances in the deployment to which revisions have been successfully deployed.</p>
+-- * Failed [InstanceCount] <p>The number of instances in the deployment in a failed state.</p>
+-- * Ready [InstanceCount] <p>The number of instances in a replacement environment ready to receive traffic in a blue/green deployment.</p>
+-- * InProgress [InstanceCount] <p>The number of instances in which the deployment is in progress.</p>
+-- * Pending [InstanceCount] <p>The number of instances in the deployment in a pending state.</p>
+-- @return DeploymentOverview structure as a key-value pair table
+function M.DeploymentOverview(args)
+	assert(args, "You must provdide an argument table when creating DeploymentOverview")
 	local t = { 
-		["Skipped"] = _Skipped,
-		["Succeeded"] = _Succeeded,
-		["Failed"] = _Failed,
-		["Ready"] = _Ready,
-		["InProgress"] = _InProgress,
-		["Pending"] = _Pending,
+		["Skipped"] = args["Skipped"],
+		["Succeeded"] = args["Succeeded"],
+		["Failed"] = args["Failed"],
+		["Ready"] = args["Ready"],
+		["InProgress"] = args["InProgress"],
+		["Pending"] = args["Pending"],
 	}
 	asserts.AssertDeploymentOverview(t)
 	return t
@@ -3880,8 +4336,11 @@ end
 
 --- Create a structure of type InvalidRegistrationStatusException
 -- <p>The registration status was specified in an invalid format.</p>
-function M.InvalidRegistrationStatusException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRegistrationStatusException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRegistrationStatusException structure as a key-value pair table
+function M.InvalidRegistrationStatusException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRegistrationStatusException")
 	local t = { 
 	}
 	asserts.AssertInvalidRegistrationStatusException(t)
@@ -3908,24 +4367,27 @@ end
 
 --- Create a structure of type ListApplicationRevisionsInput
 -- <p>Represents the input of a ListApplicationRevisions operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- @param _s3KeyPrefix [S3Key] <p>A key prefix for the set of Amazon S3 objects to limit the search for revisions.</p>
--- @param _s3Bucket [S3Bucket] <p>An Amazon S3 bucket name to limit the search for revisions.</p> <p>If set to null, all of the user's buckets will be searched.</p>
--- @param _sortBy [ApplicationRevisionSortBy] <p>The column name to use to sort the list results:</p> <ul> <li> <p>registerTime: Sort by the time the revisions were registered with AWS CodeDeploy.</p> </li> <li> <p>firstUsedTime: Sort by the time the revisions were first used in a deployment.</p> </li> <li> <p>lastUsedTime: Sort by the time the revisions were last used in a deployment.</p> </li> </ul> <p>If not specified or set to null, the results will be returned in an arbitrary order.</p>
--- @param _nextToken [NextToken] <p>An identifier returned from the previous list application revisions call. It can be used to return the next set of applications in the list.</p>
--- @param _deployed [ListStateFilterAction] <p>Whether to list revisions based on whether the revision is the target revision of an deployment group:</p> <ul> <li> <p>include: List revisions that are target revisions of a deployment group.</p> </li> <li> <p>exclude: Do not list revisions that are target revisions of a deployment group.</p> </li> <li> <p>ignore: List all revisions.</p> </li> </ul>
--- @param _sortOrder [SortOrder] <p>The order in which to sort the list results:</p> <ul> <li> <p>ascending: ascending order.</p> </li> <li> <p>descending: descending order.</p> </li> </ul> <p>If not specified, the results will be sorted in ascending order.</p> <p>If set to null, the results will be sorted in an arbitrary order.</p>
--- Required parameter: applicationName
-function M.ListApplicationRevisionsInput(_applicationName, _s3KeyPrefix, _s3Bucket, _sortBy, _nextToken, _deployed, _sortOrder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListApplicationRevisionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- * s3KeyPrefix [S3Key] <p>A key prefix for the set of Amazon S3 objects to limit the search for revisions.</p>
+-- * s3Bucket [S3Bucket] <p>An Amazon S3 bucket name to limit the search for revisions.</p> <p>If set to null, all of the user's buckets will be searched.</p>
+-- * sortBy [ApplicationRevisionSortBy] <p>The column name to use to sort the list results:</p> <ul> <li> <p>registerTime: Sort by the time the revisions were registered with AWS CodeDeploy.</p> </li> <li> <p>firstUsedTime: Sort by the time the revisions were first used in a deployment.</p> </li> <li> <p>lastUsedTime: Sort by the time the revisions were last used in a deployment.</p> </li> </ul> <p>If not specified or set to null, the results will be returned in an arbitrary order.</p>
+-- * nextToken [NextToken] <p>An identifier returned from the previous list application revisions call. It can be used to return the next set of applications in the list.</p>
+-- * deployed [ListStateFilterAction] <p>Whether to list revisions based on whether the revision is the target revision of an deployment group:</p> <ul> <li> <p>include: List revisions that are target revisions of a deployment group.</p> </li> <li> <p>exclude: Do not list revisions that are target revisions of a deployment group.</p> </li> <li> <p>ignore: List all revisions.</p> </li> </ul>
+-- * sortOrder [SortOrder] <p>The order in which to sort the list results:</p> <ul> <li> <p>ascending: ascending order.</p> </li> <li> <p>descending: descending order.</p> </li> </ul> <p>If not specified, the results will be sorted in ascending order.</p> <p>If set to null, the results will be sorted in an arbitrary order.</p>
+-- Required key: applicationName
+-- @return ListApplicationRevisionsInput structure as a key-value pair table
+function M.ListApplicationRevisionsInput(args)
+	assert(args, "You must provdide an argument table when creating ListApplicationRevisionsInput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["s3KeyPrefix"] = _s3KeyPrefix,
-		["s3Bucket"] = _s3Bucket,
-		["sortBy"] = _sortBy,
-		["nextToken"] = _nextToken,
-		["deployed"] = _deployed,
-		["sortOrder"] = _sortOrder,
+		["applicationName"] = args["applicationName"],
+		["s3KeyPrefix"] = args["s3KeyPrefix"],
+		["s3Bucket"] = args["s3Bucket"],
+		["sortBy"] = args["sortBy"],
+		["nextToken"] = args["nextToken"],
+		["deployed"] = args["deployed"],
+		["sortOrder"] = args["sortOrder"],
 	}
 	asserts.AssertListApplicationRevisionsInput(t)
 	return t
@@ -3946,15 +4408,18 @@ end
 
 --- Create a structure of type BlueGreenDeploymentConfiguration
 -- <p>Information about blue/green deployment options for a deployment group.</p>
--- @param _terminateBlueInstancesOnDeploymentSuccess [BlueInstanceTerminationOption] <p>Information about whether to terminate instances in the original fleet during a blue/green deployment.</p>
--- @param _deploymentReadyOption [DeploymentReadyOption] <p>Information about the action to take when newly provisioned instances are ready to receive traffic in a blue/green deployment.</p>
--- @param _greenFleetProvisioningOption [GreenFleetProvisioningOption] <p>Information about how instances are provisioned for a replacement environment in a blue/green deployment.</p>
-function M.BlueGreenDeploymentConfiguration(_terminateBlueInstancesOnDeploymentSuccess, _deploymentReadyOption, _greenFleetProvisioningOption, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BlueGreenDeploymentConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * terminateBlueInstancesOnDeploymentSuccess [BlueInstanceTerminationOption] <p>Information about whether to terminate instances in the original fleet during a blue/green deployment.</p>
+-- * deploymentReadyOption [DeploymentReadyOption] <p>Information about the action to take when newly provisioned instances are ready to receive traffic in a blue/green deployment.</p>
+-- * greenFleetProvisioningOption [GreenFleetProvisioningOption] <p>Information about how instances are provisioned for a replacement environment in a blue/green deployment.</p>
+-- @return BlueGreenDeploymentConfiguration structure as a key-value pair table
+function M.BlueGreenDeploymentConfiguration(args)
+	assert(args, "You must provdide an argument table when creating BlueGreenDeploymentConfiguration")
 	local t = { 
-		["terminateBlueInstancesOnDeploymentSuccess"] = _terminateBlueInstancesOnDeploymentSuccess,
-		["deploymentReadyOption"] = _deploymentReadyOption,
-		["greenFleetProvisioningOption"] = _greenFleetProvisioningOption,
+		["terminateBlueInstancesOnDeploymentSuccess"] = args["terminateBlueInstancesOnDeploymentSuccess"],
+		["deploymentReadyOption"] = args["deploymentReadyOption"],
+		["greenFleetProvisioningOption"] = args["greenFleetProvisioningOption"],
 	}
 	asserts.AssertBlueGreenDeploymentConfiguration(t)
 	return t
@@ -3972,8 +4437,11 @@ end
 
 --- Create a structure of type DeploymentGroupNameRequiredException
 -- <p>The deployment group name was not specified.</p>
-function M.DeploymentGroupNameRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentGroupNameRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentGroupNameRequiredException structure as a key-value pair table
+function M.DeploymentGroupNameRequiredException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentGroupNameRequiredException")
 	local t = { 
 	}
 	asserts.AssertDeploymentGroupNameRequiredException(t)
@@ -3993,11 +4461,14 @@ end
 
 --- Create a structure of type Alarm
 -- <p>Information about an alarm.</p>
--- @param _name [AlarmName] <p>The name of the alarm. Maximum length is 255 characters. Each alarm name can be used only once in a list of alarms.</p>
-function M.Alarm(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Alarm")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [AlarmName] <p>The name of the alarm. Maximum length is 255 characters. Each alarm name can be used only once in a list of alarms.</p>
+-- @return Alarm structure as a key-value pair table
+function M.Alarm(args)
+	assert(args, "You must provdide an argument table when creating Alarm")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertAlarm(t)
 	return t
@@ -4016,11 +4487,14 @@ end
 
 --- Create a structure of type BatchGetOnPremisesInstancesInput
 -- <p>Represents the input of a BatchGetOnPremisesInstances operation.</p>
--- @param _instanceNames [InstanceNameList] <p>The names of the on-premises instances about which to get information.</p>
-function M.BatchGetOnPremisesInstancesInput(_instanceNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetOnPremisesInstancesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceNames [InstanceNameList] <p>The names of the on-premises instances about which to get information.</p>
+-- @return BatchGetOnPremisesInstancesInput structure as a key-value pair table
+function M.BatchGetOnPremisesInstancesInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetOnPremisesInstancesInput")
 	local t = { 
-		["instanceNames"] = _instanceNames,
+		["instanceNames"] = args["instanceNames"],
 	}
 	asserts.AssertBatchGetOnPremisesInstancesInput(t)
 	return t
@@ -4042,15 +4516,18 @@ end
 
 --- Create a structure of type BatchGetDeploymentInstancesInput
 -- <p>Represents the input of a BatchGetDeploymentInstances operation.</p>
--- @param _deploymentId [DeploymentId] <p>The unique ID of a deployment.</p>
--- @param _instanceIds [InstancesList] <p>The unique IDs of instances in the deployment group.</p>
--- Required parameter: deploymentId
--- Required parameter: instanceIds
-function M.BatchGetDeploymentInstancesInput(_deploymentId, _instanceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetDeploymentInstancesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentId [DeploymentId] <p>The unique ID of a deployment.</p>
+-- * instanceIds [InstancesList] <p>The unique IDs of instances in the deployment group.</p>
+-- Required key: deploymentId
+-- Required key: instanceIds
+-- @return BatchGetDeploymentInstancesInput structure as a key-value pair table
+function M.BatchGetDeploymentInstancesInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetDeploymentInstancesInput")
 	local t = { 
-		["deploymentId"] = _deploymentId,
-		["instanceIds"] = _instanceIds,
+		["deploymentId"] = args["deploymentId"],
+		["instanceIds"] = args["instanceIds"],
 	}
 	asserts.AssertBatchGetDeploymentInstancesInput(t)
 	return t
@@ -4071,15 +4548,18 @@ end
 
 --- Create a structure of type TagFilter
 -- <p>Information about an on-premises instance tag filter.</p>
--- @param _Type [TagFilterType] <p>The on-premises instance tag filter type:</p> <ul> <li> <p>KEY_ONLY: Key only.</p> </li> <li> <p>VALUE_ONLY: Value only.</p> </li> <li> <p>KEY_AND_VALUE: Key and value.</p> </li> </ul>
--- @param _Value [Value] <p>The on-premises instance tag filter value.</p>
--- @param _Key [Key] <p>The on-premises instance tag filter key.</p>
-function M.TagFilter(_Type, _Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [TagFilterType] <p>The on-premises instance tag filter type:</p> <ul> <li> <p>KEY_ONLY: Key only.</p> </li> <li> <p>VALUE_ONLY: Value only.</p> </li> <li> <p>KEY_AND_VALUE: Key and value.</p> </li> </ul>
+-- * Value [Value] <p>The on-premises instance tag filter value.</p>
+-- * Key [Key] <p>The on-premises instance tag filter key.</p>
+-- @return TagFilter structure as a key-value pair table
+function M.TagFilter(args)
+	assert(args, "You must provdide an argument table when creating TagFilter")
 	local t = { 
-		["Type"] = _Type,
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Type"] = args["Type"],
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTagFilter(t)
 	return t
@@ -4097,8 +4577,11 @@ end
 
 --- Create a structure of type RoleRequiredException
 -- <p>The role ID was not specified.</p>
-function M.RoleRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RoleRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RoleRequiredException structure as a key-value pair table
+function M.RoleRequiredException(args)
+	assert(args, "You must provdide an argument table when creating RoleRequiredException")
 	local t = { 
 	}
 	asserts.AssertRoleRequiredException(t)
@@ -4119,12 +4602,15 @@ end
 
 --- Create a structure of type GetApplicationInput
 -- <p>Represents the input of a GetApplication operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- Required parameter: applicationName
-function M.GetApplicationInput(_applicationName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetApplicationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- Required key: applicationName
+-- @return GetApplicationInput structure as a key-value pair table
+function M.GetApplicationInput(args)
+	assert(args, "You must provdide an argument table when creating GetApplicationInput")
 	local t = { 
-		["applicationName"] = _applicationName,
+		["applicationName"] = args["applicationName"],
 	}
 	asserts.AssertGetApplicationInput(t)
 	return t
@@ -4144,13 +4630,16 @@ end
 
 --- Create a structure of type MinimumHealthyHosts
 -- <p>Information about minimum healthy instance.</p>
--- @param _type [MinimumHealthyHostsType] <p>The minimum healthy instance type:</p> <ul> <li> <p>HOST_COUNT: The minimum number of healthy instance as an absolute value.</p> </li> <li> <p>FLEET_PERCENT: The minimum number of healthy instance as a percentage of the total number of instance in the deployment.</p> </li> </ul> <p>In an example of nine instance, if a HOST_COUNT of six is specified, deploy to up to three instances at a time. The deployment will be successful if six or more instances are deployed to successfully; otherwise, the deployment fails. If a FLEET_PERCENT of 40 is specified, deploy to up to five instance at a time. The deployment will be successful if four or more instance are deployed to successfully; otherwise, the deployment fails.</p> <note> <p>In a call to the get deployment configuration operation, CodeDeployDefault.OneAtATime will return a minimum healthy instance type of MOST_CONCURRENCY and a value of 1. This means a deployment to only one instance at a time. (You cannot set the type to MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.) In addition, with CodeDeployDefault.OneAtATime, AWS CodeDeploy will try to ensure that all instances but one are kept in a healthy state during the deployment. Although this allows one instance at a time to be taken offline for a new deployment, it also means that if the deployment to the last instance fails, the overall deployment still succeeds.</p> </note> <p>For more information, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/instances-health.html">AWS CodeDeploy Instance Health</a> in the <i>AWS CodeDeploy User Guide</i>.</p>
--- @param _value [MinimumHealthyHostsValue] <p>The minimum healthy instance value.</p>
-function M.MinimumHealthyHosts(_type, _value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MinimumHealthyHosts")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * type [MinimumHealthyHostsType] <p>The minimum healthy instance type:</p> <ul> <li> <p>HOST_COUNT: The minimum number of healthy instance as an absolute value.</p> </li> <li> <p>FLEET_PERCENT: The minimum number of healthy instance as a percentage of the total number of instance in the deployment.</p> </li> </ul> <p>In an example of nine instance, if a HOST_COUNT of six is specified, deploy to up to three instances at a time. The deployment will be successful if six or more instances are deployed to successfully; otherwise, the deployment fails. If a FLEET_PERCENT of 40 is specified, deploy to up to five instance at a time. The deployment will be successful if four or more instance are deployed to successfully; otherwise, the deployment fails.</p> <note> <p>In a call to the get deployment configuration operation, CodeDeployDefault.OneAtATime will return a minimum healthy instance type of MOST_CONCURRENCY and a value of 1. This means a deployment to only one instance at a time. (You cannot set the type to MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.) In addition, with CodeDeployDefault.OneAtATime, AWS CodeDeploy will try to ensure that all instances but one are kept in a healthy state during the deployment. Although this allows one instance at a time to be taken offline for a new deployment, it also means that if the deployment to the last instance fails, the overall deployment still succeeds.</p> </note> <p>For more information, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/instances-health.html">AWS CodeDeploy Instance Health</a> in the <i>AWS CodeDeploy User Guide</i>.</p>
+-- * value [MinimumHealthyHostsValue] <p>The minimum healthy instance value.</p>
+-- @return MinimumHealthyHosts structure as a key-value pair table
+function M.MinimumHealthyHosts(args)
+	assert(args, "You must provdide an argument table when creating MinimumHealthyHosts")
 	local t = { 
-		["type"] = _type,
-		["value"] = _value,
+		["type"] = args["type"],
+		["value"] = args["value"],
 	}
 	asserts.AssertMinimumHealthyHosts(t)
 	return t
@@ -4171,15 +4660,18 @@ end
 
 --- Create a structure of type RollbackInfo
 -- <p>Information about a deployment rollback.</p>
--- @param _rollbackTriggeringDeploymentId [DeploymentId] <p>The deployment ID of the deployment that was underway and triggered a rollback deployment because it failed or was stopped.</p>
--- @param _rollbackMessage [Description] <p>Information describing the status of a deployment rollback; for example, whether the deployment can't be rolled back, is in progress, failed, or succeeded. </p>
--- @param _rollbackDeploymentId [DeploymentId] <p>The ID of the deployment rollback.</p>
-function M.RollbackInfo(_rollbackTriggeringDeploymentId, _rollbackMessage, _rollbackDeploymentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RollbackInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * rollbackTriggeringDeploymentId [DeploymentId] <p>The deployment ID of the deployment that was underway and triggered a rollback deployment because it failed or was stopped.</p>
+-- * rollbackMessage [Description] <p>Information describing the status of a deployment rollback; for example, whether the deployment can't be rolled back, is in progress, failed, or succeeded. </p>
+-- * rollbackDeploymentId [DeploymentId] <p>The ID of the deployment rollback.</p>
+-- @return RollbackInfo structure as a key-value pair table
+function M.RollbackInfo(args)
+	assert(args, "You must provdide an argument table when creating RollbackInfo")
 	local t = { 
-		["rollbackTriggeringDeploymentId"] = _rollbackTriggeringDeploymentId,
-		["rollbackMessage"] = _rollbackMessage,
-		["rollbackDeploymentId"] = _rollbackDeploymentId,
+		["rollbackTriggeringDeploymentId"] = args["rollbackTriggeringDeploymentId"],
+		["rollbackMessage"] = args["rollbackMessage"],
+		["rollbackDeploymentId"] = args["rollbackDeploymentId"],
 	}
 	asserts.AssertRollbackInfo(t)
 	return t
@@ -4199,13 +4691,16 @@ end
 
 --- Create a structure of type ListDeploymentInstancesOutput
 -- <p>Represents the output of a ListDeploymentInstances operation.</p>
--- @param _nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment instances call to return the next set of deployment instances in the list.</p>
--- @param _instancesList [InstancesList] <p>A list of instance IDs.</p>
-function M.ListDeploymentInstancesOutput(_nextToken, _instancesList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentInstancesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment instances call to return the next set of deployment instances in the list.</p>
+-- * instancesList [InstancesList] <p>A list of instance IDs.</p>
+-- @return ListDeploymentInstancesOutput structure as a key-value pair table
+function M.ListDeploymentInstancesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListDeploymentInstancesOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["instancesList"] = _instancesList,
+		["nextToken"] = args["nextToken"],
+		["instancesList"] = args["instancesList"],
 	}
 	asserts.AssertListDeploymentInstancesOutput(t)
 	return t
@@ -4227,17 +4722,20 @@ end
 
 --- Create a structure of type Diagnostics
 -- <p>Diagnostic information about executable scripts that are part of a deployment.</p>
--- @param _errorCode [LifecycleErrorCode] <p>The associated error code:</p> <ul> <li> <p>Success: The specified script ran.</p> </li> <li> <p>ScriptMissing: The specified script was not found in the specified location.</p> </li> <li> <p>ScriptNotExecutable: The specified script is not a recognized executable file type.</p> </li> <li> <p>ScriptTimedOut: The specified script did not finish running in the specified time period.</p> </li> <li> <p>ScriptFailed: The specified script failed to run as expected.</p> </li> <li> <p>UnknownError: The specified script did not run for an unknown reason.</p> </li> </ul>
--- @param _scriptName [ScriptName] <p>The name of the script.</p>
--- @param _logTail [LogTail] <p>The last portion of the diagnostic log.</p> <p>If available, AWS CodeDeploy returns up to the last 4 KB of the diagnostic log.</p>
--- @param _message [LifecycleMessage] <p>The message associated with the error.</p>
-function M.Diagnostics(_errorCode, _scriptName, _logTail, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Diagnostics")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errorCode [LifecycleErrorCode] <p>The associated error code:</p> <ul> <li> <p>Success: The specified script ran.</p> </li> <li> <p>ScriptMissing: The specified script was not found in the specified location.</p> </li> <li> <p>ScriptNotExecutable: The specified script is not a recognized executable file type.</p> </li> <li> <p>ScriptTimedOut: The specified script did not finish running in the specified time period.</p> </li> <li> <p>ScriptFailed: The specified script failed to run as expected.</p> </li> <li> <p>UnknownError: The specified script did not run for an unknown reason.</p> </li> </ul>
+-- * scriptName [ScriptName] <p>The name of the script.</p>
+-- * logTail [LogTail] <p>The last portion of the diagnostic log.</p> <p>If available, AWS CodeDeploy returns up to the last 4 KB of the diagnostic log.</p>
+-- * message [LifecycleMessage] <p>The message associated with the error.</p>
+-- @return Diagnostics structure as a key-value pair table
+function M.Diagnostics(args)
+	assert(args, "You must provdide an argument table when creating Diagnostics")
 	local t = { 
-		["errorCode"] = _errorCode,
-		["scriptName"] = _scriptName,
-		["logTail"] = _logTail,
-		["message"] = _message,
+		["errorCode"] = args["errorCode"],
+		["scriptName"] = args["scriptName"],
+		["logTail"] = args["logTail"],
+		["message"] = args["message"],
 	}
 	asserts.AssertDiagnostics(t)
 	return t
@@ -4259,16 +4757,19 @@ end
 
 --- Create a structure of type RegisterOnPremisesInstanceInput
 -- <p>Represents the input of the register on-premises instance operation.</p>
--- @param _iamUserArn [IamUserArn] <p>The ARN of the IAM user to associate with the on-premises instance.</p>
--- @param _instanceName [InstanceName] <p>The name of the on-premises instance to register.</p>
--- @param _iamSessionArn [IamSessionArn] <p>The ARN of the IAM session to associate with the on-premises instance.</p>
--- Required parameter: instanceName
-function M.RegisterOnPremisesInstanceInput(_iamUserArn, _instanceName, _iamSessionArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterOnPremisesInstanceInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * iamUserArn [IamUserArn] <p>The ARN of the IAM user to associate with the on-premises instance.</p>
+-- * instanceName [InstanceName] <p>The name of the on-premises instance to register.</p>
+-- * iamSessionArn [IamSessionArn] <p>The ARN of the IAM session to associate with the on-premises instance.</p>
+-- Required key: instanceName
+-- @return RegisterOnPremisesInstanceInput structure as a key-value pair table
+function M.RegisterOnPremisesInstanceInput(args)
+	assert(args, "You must provdide an argument table when creating RegisterOnPremisesInstanceInput")
 	local t = { 
-		["iamUserArn"] = _iamUserArn,
-		["instanceName"] = _instanceName,
-		["iamSessionArn"] = _iamSessionArn,
+		["iamUserArn"] = args["iamUserArn"],
+		["instanceName"] = args["instanceName"],
+		["iamSessionArn"] = args["iamSessionArn"],
 	}
 	asserts.AssertRegisterOnPremisesInstanceInput(t)
 	return t
@@ -4287,11 +4788,14 @@ end
 
 --- Create a structure of type GetDeploymentOutput
 -- <p>Represents the output of a GetDeployment operation.</p>
--- @param _deploymentInfo [DeploymentInfo] <p>Information about the deployment.</p>
-function M.GetDeploymentOutput(_deploymentInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentInfo [DeploymentInfo] <p>Information about the deployment.</p>
+-- @return GetDeploymentOutput structure as a key-value pair table
+function M.GetDeploymentOutput(args)
+	assert(args, "You must provdide an argument table when creating GetDeploymentOutput")
 	local t = { 
-		["deploymentInfo"] = _deploymentInfo,
+		["deploymentInfo"] = args["deploymentInfo"],
 	}
 	asserts.AssertGetDeploymentOutput(t)
 	return t
@@ -4312,15 +4816,18 @@ end
 
 --- Create a structure of type ListDeploymentGroupsOutput
 -- <p>Represents the output of a ListDeploymentGroups operation.</p>
--- @param _applicationName [ApplicationName] <p>The application name.</p>
--- @param _nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment groups call to return the next set of deployment groups in the list.</p>
--- @param _deploymentGroups [DeploymentGroupsList] <p>A list of corresponding deployment group names.</p>
-function M.ListDeploymentGroupsOutput(_applicationName, _nextToken, _deploymentGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentGroupsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The application name.</p>
+-- * nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment groups call to return the next set of deployment groups in the list.</p>
+-- * deploymentGroups [DeploymentGroupsList] <p>A list of corresponding deployment group names.</p>
+-- @return ListDeploymentGroupsOutput structure as a key-value pair table
+function M.ListDeploymentGroupsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListDeploymentGroupsOutput")
 	local t = { 
-		["applicationName"] = _applicationName,
-		["nextToken"] = _nextToken,
-		["deploymentGroups"] = _deploymentGroups,
+		["applicationName"] = args["applicationName"],
+		["nextToken"] = args["nextToken"],
+		["deploymentGroups"] = args["deploymentGroups"],
 	}
 	asserts.AssertListDeploymentGroupsOutput(t)
 	return t
@@ -4338,8 +4845,11 @@ end
 
 --- Create a structure of type InvalidDeploymentStatusException
 -- <p>The specified deployment status doesn't exist or cannot be determined.</p>
-function M.InvalidDeploymentStatusException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDeploymentStatusException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidDeploymentStatusException structure as a key-value pair table
+function M.InvalidDeploymentStatusException(args)
+	assert(args, "You must provdide an argument table when creating InvalidDeploymentStatusException")
 	local t = { 
 	}
 	asserts.AssertInvalidDeploymentStatusException(t)
@@ -4358,8 +4868,11 @@ end
 
 --- Create a structure of type InvalidAutoScalingGroupException
 -- <p>The Auto Scaling group was specified in an invalid format or does not exist.</p>
-function M.InvalidAutoScalingGroupException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAutoScalingGroupException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidAutoScalingGroupException structure as a key-value pair table
+function M.InvalidAutoScalingGroupException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAutoScalingGroupException")
 	local t = { 
 	}
 	asserts.AssertInvalidAutoScalingGroupException(t)
@@ -4381,15 +4894,18 @@ end
 
 --- Create a structure of type EC2TagFilter
 -- <p>Information about an EC2 tag filter.</p>
--- @param _Type [EC2TagFilterType] <p>The tag filter type:</p> <ul> <li> <p>KEY_ONLY: Key only.</p> </li> <li> <p>VALUE_ONLY: Value only.</p> </li> <li> <p>KEY_AND_VALUE: Key and value.</p> </li> </ul>
--- @param _Value [Value] <p>The tag filter value.</p>
--- @param _Key [Key] <p>The tag filter key.</p>
-function M.EC2TagFilter(_Type, _Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EC2TagFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [EC2TagFilterType] <p>The tag filter type:</p> <ul> <li> <p>KEY_ONLY: Key only.</p> </li> <li> <p>VALUE_ONLY: Value only.</p> </li> <li> <p>KEY_AND_VALUE: Key and value.</p> </li> </ul>
+-- * Value [Value] <p>The tag filter value.</p>
+-- * Key [Key] <p>The tag filter key.</p>
+-- @return EC2TagFilter structure as a key-value pair table
+function M.EC2TagFilter(args)
+	assert(args, "You must provdide an argument table when creating EC2TagFilter")
 	local t = { 
-		["Type"] = _Type,
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Type"] = args["Type"],
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertEC2TagFilter(t)
 	return t
@@ -4407,8 +4923,11 @@ end
 
 --- Create a structure of type DescriptionTooLongException
 -- <p>The description is too long.</p>
-function M.DescriptionTooLongException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescriptionTooLongException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DescriptionTooLongException structure as a key-value pair table
+function M.DescriptionTooLongException(args)
+	assert(args, "You must provdide an argument table when creating DescriptionTooLongException")
 	local t = { 
 	}
 	asserts.AssertDescriptionTooLongException(t)
@@ -4429,13 +4948,16 @@ end
 
 --- Create a structure of type ErrorInformation
 -- <p>Information about a deployment error.</p>
--- @param _message [ErrorMessage] <p>An accompanying error message.</p>
--- @param _code [ErrorCode] <p>For information about additional error codes, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html">Error Codes for AWS CodeDeploy</a> in the <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide">AWS CodeDeploy User Guide</a>.</p> <p>The error code:</p> <ul> <li> <p>APPLICATION_MISSING: The application was missing. This error code will most likely be raised if the application is deleted after the deployment is created but before it is started.</p> </li> <li> <p>DEPLOYMENT_GROUP_MISSING: The deployment group was missing. This error code will most likely be raised if the deployment group is deleted after the deployment is created but before it is started.</p> </li> <li> <p>HEALTH_CONSTRAINTS: The deployment failed on too many instances to be successfully deployed within the instance health constraints specified.</p> </li> <li> <p>HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully deployed within the instance health constraints specified.</p> </li> <li> <p>IAM_ROLE_MISSING: The service role cannot be accessed.</p> </li> <li> <p>IAM_ROLE_PERMISSIONS: The service role does not have the correct permissions.</p> </li> <li> <p>INTERNAL_ERROR: There was an internal error.</p> </li> <li> <p>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the Amazon EC2 service.</p> </li> <li> <p>NO_INSTANCES: No instance were specified, or no instance can be found.</p> </li> <li> <p>OVER_MAX_INSTANCES: The maximum number of instance was exceeded.</p> </li> <li> <p>THROTTLED: The operation was throttled because the calling account exceeded the throttling limits of one or more AWS services.</p> </li> <li> <p>TIMEOUT: The deployment has timed out.</p> </li> <li> <p>REVISION_MISSING: The revision ID was missing. This error code will most likely be raised if the revision is deleted after the deployment is created but before it is started.</p> </li> </ul>
-function M.ErrorInformation(_message, _code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ErrorInformation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>An accompanying error message.</p>
+-- * code [ErrorCode] <p>For information about additional error codes, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html">Error Codes for AWS CodeDeploy</a> in the <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide">AWS CodeDeploy User Guide</a>.</p> <p>The error code:</p> <ul> <li> <p>APPLICATION_MISSING: The application was missing. This error code will most likely be raised if the application is deleted after the deployment is created but before it is started.</p> </li> <li> <p>DEPLOYMENT_GROUP_MISSING: The deployment group was missing. This error code will most likely be raised if the deployment group is deleted after the deployment is created but before it is started.</p> </li> <li> <p>HEALTH_CONSTRAINTS: The deployment failed on too many instances to be successfully deployed within the instance health constraints specified.</p> </li> <li> <p>HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully deployed within the instance health constraints specified.</p> </li> <li> <p>IAM_ROLE_MISSING: The service role cannot be accessed.</p> </li> <li> <p>IAM_ROLE_PERMISSIONS: The service role does not have the correct permissions.</p> </li> <li> <p>INTERNAL_ERROR: There was an internal error.</p> </li> <li> <p>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the Amazon EC2 service.</p> </li> <li> <p>NO_INSTANCES: No instance were specified, or no instance can be found.</p> </li> <li> <p>OVER_MAX_INSTANCES: The maximum number of instance was exceeded.</p> </li> <li> <p>THROTTLED: The operation was throttled because the calling account exceeded the throttling limits of one or more AWS services.</p> </li> <li> <p>TIMEOUT: The deployment has timed out.</p> </li> <li> <p>REVISION_MISSING: The revision ID was missing. This error code will most likely be raised if the revision is deleted after the deployment is created but before it is started.</p> </li> </ul>
+-- @return ErrorInformation structure as a key-value pair table
+function M.ErrorInformation(args)
+	assert(args, "You must provdide an argument table when creating ErrorInformation")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
+		["message"] = args["message"],
+		["code"] = args["code"],
 	}
 	asserts.AssertErrorInformation(t)
 	return t
@@ -4453,8 +4975,11 @@ end
 
 --- Create a structure of type DeploymentNotStartedException
 -- <p>The specified deployment has not started.</p>
-function M.DeploymentNotStartedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentNotStartedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeploymentNotStartedException structure as a key-value pair table
+function M.DeploymentNotStartedException(args)
+	assert(args, "You must provdide an argument table when creating DeploymentNotStartedException")
 	local t = { 
 	}
 	asserts.AssertDeploymentNotStartedException(t)
@@ -4473,8 +4998,11 @@ end
 
 --- Create a structure of type InvalidKeyPrefixFilterException
 -- <p>The specified key prefix filter was specified in an invalid format.</p>
-function M.InvalidKeyPrefixFilterException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidKeyPrefixFilterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidKeyPrefixFilterException structure as a key-value pair table
+function M.InvalidKeyPrefixFilterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidKeyPrefixFilterException")
 	local t = { 
 	}
 	asserts.AssertInvalidKeyPrefixFilterException(t)
@@ -4495,12 +5023,15 @@ end
 
 --- Create a structure of type DeleteApplicationInput
 -- <p>Represents the input of a DeleteApplication operation.</p>
--- @param _applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
--- Required parameter: applicationName
-function M.DeleteApplicationInput(_applicationName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApplicationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationName [ApplicationName] <p>The name of an AWS CodeDeploy application associated with the applicable IAM user or AWS account.</p>
+-- Required key: applicationName
+-- @return DeleteApplicationInput structure as a key-value pair table
+function M.DeleteApplicationInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteApplicationInput")
 	local t = { 
-		["applicationName"] = _applicationName,
+		["applicationName"] = args["applicationName"],
 	}
 	asserts.AssertDeleteApplicationInput(t)
 	return t
@@ -4518,8 +5049,11 @@ end
 
 --- Create a structure of type BatchLimitExceededException
 -- <p>The maximum number of names or IDs allowed for this request (100) was exceeded.</p>
-function M.BatchLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BatchLimitExceededException structure as a key-value pair table
+function M.BatchLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating BatchLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertBatchLimitExceededException(t)
@@ -4540,12 +5074,15 @@ end
 
 --- Create a structure of type GetDeploymentInput
 -- <p>Represents the input of a GetDeployment operation.</p>
--- @param _deploymentId [DeploymentId] <p>A deployment ID associated with the applicable IAM user or AWS account.</p>
--- Required parameter: deploymentId
-function M.GetDeploymentInput(_deploymentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deploymentId [DeploymentId] <p>A deployment ID associated with the applicable IAM user or AWS account.</p>
+-- Required key: deploymentId
+-- @return GetDeploymentInput structure as a key-value pair table
+function M.GetDeploymentInput(args)
+	assert(args, "You must provdide an argument table when creating GetDeploymentInput")
 	local t = { 
-		["deploymentId"] = _deploymentId,
+		["deploymentId"] = args["deploymentId"],
 	}
 	asserts.AssertGetDeploymentInput(t)
 	return t
@@ -4563,8 +5100,11 @@ end
 
 --- Create a structure of type TagLimitExceededException
 -- <p>The maximum allowed number of tags was exceeded.</p>
-function M.TagLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TagLimitExceededException structure as a key-value pair table
+function M.TagLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating TagLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertTagLimitExceededException(t)

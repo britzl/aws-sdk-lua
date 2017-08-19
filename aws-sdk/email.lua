@@ -38,17 +38,20 @@ end
 
 --- Create a structure of type SetIdentityNotificationTopicRequest
 -- <p>Represents a request to specify the Amazon SNS topic to which Amazon SES will publish bounce, complaint, or delivery notifications for emails sent with that identity as the Source. For information about Amazon SES notifications, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-sns.html">Amazon SES Developer Guide</a>.</p>
--- @param _NotificationType [NotificationType] <p>The type of notifications that will be published to the specified Amazon SNS topic.</p>
--- @param _Identity [Identity] <p>The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
--- @param _SnsTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is omitted from the request or a null value is passed, <code>SnsTopic</code> is cleared and publishing is disabled.</p>
--- Required parameter: Identity
--- Required parameter: NotificationType
-function M.SetIdentityNotificationTopicRequest(_NotificationType, _Identity, _SnsTopic, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityNotificationTopicRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NotificationType [NotificationType] <p>The type of notifications that will be published to the specified Amazon SNS topic.</p>
+-- * Identity [Identity] <p>The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
+-- * SnsTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is omitted from the request or a null value is passed, <code>SnsTopic</code> is cleared and publishing is disabled.</p>
+-- Required key: Identity
+-- Required key: NotificationType
+-- @return SetIdentityNotificationTopicRequest structure as a key-value pair table
+function M.SetIdentityNotificationTopicRequest(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityNotificationTopicRequest")
 	local t = { 
-		["NotificationType"] = _NotificationType,
-		["Identity"] = _Identity,
-		["SnsTopic"] = _SnsTopic,
+		["NotificationType"] = args["NotificationType"],
+		["Identity"] = args["Identity"],
+		["SnsTopic"] = args["SnsTopic"],
 	}
 	asserts.AssertSetIdentityNotificationTopicRequest(t)
 	return t
@@ -70,15 +73,18 @@ end
 
 --- Create a structure of type ReorderReceiptRuleSetRequest
 -- <p>Represents a request to reorder the receipt rules within a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to reorder.</p>
--- @param _RuleNames [ReceiptRuleNamesList] <p>A list of the specified receipt rule set's receipt rules in the order that you want to put them.</p>
--- Required parameter: RuleSetName
--- Required parameter: RuleNames
-function M.ReorderReceiptRuleSetRequest(_RuleSetName, _RuleNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReorderReceiptRuleSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to reorder.</p>
+-- * RuleNames [ReceiptRuleNamesList] <p>A list of the specified receipt rule set's receipt rules in the order that you want to put them.</p>
+-- Required key: RuleSetName
+-- Required key: RuleNames
+-- @return ReorderReceiptRuleSetRequest structure as a key-value pair table
+function M.ReorderReceiptRuleSetRequest(args)
+	assert(args, "You must provdide an argument table when creating ReorderReceiptRuleSetRequest")
 	local t = { 
-		["RuleSetName"] = _RuleSetName,
-		["RuleNames"] = _RuleNames,
+		["RuleSetName"] = args["RuleSetName"],
+		["RuleNames"] = args["RuleNames"],
 	}
 	asserts.AssertReorderReceiptRuleSetRequest(t)
 	return t
@@ -96,8 +102,11 @@ end
 
 --- Create a structure of type DescribeActiveReceiptRuleSetRequest
 -- <p>Represents a request to return the metadata and receipt rules for the receipt rule set that is currently active. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
-function M.DescribeActiveReceiptRuleSetRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActiveReceiptRuleSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DescribeActiveReceiptRuleSetRequest structure as a key-value pair table
+function M.DescribeActiveReceiptRuleSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeActiveReceiptRuleSetRequest")
 	local t = { 
 	}
 	asserts.AssertDescribeActiveReceiptRuleSetRequest(t)
@@ -118,13 +127,16 @@ end
 
 --- Create a structure of type InvalidFirehoseDestinationException
 -- <p>Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.</p>
--- @param _EventDestinationName [EventDestinationName] 
--- @param _ConfigurationSetName [ConfigurationSetName] 
-function M.InvalidFirehoseDestinationException(_EventDestinationName, _ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFirehoseDestinationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventDestinationName [EventDestinationName] 
+-- * ConfigurationSetName [ConfigurationSetName] 
+-- @return InvalidFirehoseDestinationException structure as a key-value pair table
+function M.InvalidFirehoseDestinationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidFirehoseDestinationException")
 	local t = { 
-		["EventDestinationName"] = _EventDestinationName,
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["EventDestinationName"] = args["EventDestinationName"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertInvalidFirehoseDestinationException(t)
 	return t
@@ -145,15 +157,18 @@ end
 
 --- Create a structure of type Destination
 -- <p>Represents the destination of the message, consisting of To:, CC:, and BCC: fields.</p> <p> By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p>
--- @param _CcAddresses [AddressList] <p>The CC: field(s) of the message.</p>
--- @param _BccAddresses [AddressList] <p>The BCC: field(s) of the message.</p>
--- @param _ToAddresses [AddressList] <p>The To: field(s) of the message.</p>
-function M.Destination(_CcAddresses, _BccAddresses, _ToAddresses, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Destination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CcAddresses [AddressList] <p>The CC: field(s) of the message.</p>
+-- * BccAddresses [AddressList] <p>The BCC: field(s) of the message.</p>
+-- * ToAddresses [AddressList] <p>The To: field(s) of the message.</p>
+-- @return Destination structure as a key-value pair table
+function M.Destination(args)
+	assert(args, "You must provdide an argument table when creating Destination")
 	local t = { 
-		["CcAddresses"] = _CcAddresses,
-		["BccAddresses"] = _BccAddresses,
-		["ToAddresses"] = _ToAddresses,
+		["CcAddresses"] = args["CcAddresses"],
+		["BccAddresses"] = args["BccAddresses"],
+		["ToAddresses"] = args["ToAddresses"],
 	}
 	asserts.AssertDestination(t)
 	return t
@@ -173,12 +188,15 @@ end
 
 --- Create a structure of type VerifyDomainDkimRequest
 -- <p>Represents a request to generate the CNAME records needed to set up Easy DKIM with Amazon SES. For more information about setting up Easy DKIM, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon SES Developer Guide</a>.</p>
--- @param _Domain [Domain] <p>The name of the domain to be verified for Easy DKIM signing.</p>
--- Required parameter: Domain
-function M.VerifyDomainDkimRequest(_Domain, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VerifyDomainDkimRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Domain [Domain] <p>The name of the domain to be verified for Easy DKIM signing.</p>
+-- Required key: Domain
+-- @return VerifyDomainDkimRequest structure as a key-value pair table
+function M.VerifyDomainDkimRequest(args)
+	assert(args, "You must provdide an argument table when creating VerifyDomainDkimRequest")
 	local t = { 
-		["Domain"] = _Domain,
+		["Domain"] = args["Domain"],
 	}
 	asserts.AssertVerifyDomainDkimRequest(t)
 	return t
@@ -201,18 +219,21 @@ end
 
 --- Create a structure of type S3Action
 -- <p>When included in a receipt rule, this action saves the received message to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>To enable Amazon SES to write emails to your Amazon S3 bucket, use an AWS KMS key to encrypt your emails, or publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <note> <p>When you save your emails to an Amazon S3 bucket, the maximum email size (including headers) is 30 MB. Emails larger than that will bounce.</p> </note> <p>For information about specifying Amazon S3 actions in receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html">Amazon SES Developer Guide</a>.</p>
--- @param _KmsKeyArn [AmazonResourceName] <p>The customer master key that Amazon SES should use to encrypt your emails before saving them to the Amazon S3 bucket. You can use the default master key or a custom master key you created in AWS KMS as follows:</p> <ul> <li> <p>To use the default master key, provide an ARN in the form of <code>arn:aws:kms:REGION:ACCOUNT-ID-WITHOUT-HYPHENS:alias/aws/ses</code>. For example, if your AWS account ID is 123456789012 and you want to use the default master key in the US West (Oregon) region, the ARN of the default master key would be <code>arn:aws:kms:us-west-2:123456789012:alias/aws/ses</code>. If you use the default master key, you don't need to perform any extra steps to give Amazon SES permission to use the key.</p> </li> <li> <p>To use a custom master key you created in AWS KMS, provide the ARN of the master key and ensure that you add a statement to your key's policy to give Amazon SES permission to use it. For more information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> </li> </ul> <p>For more information about key policies, see the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS KMS Developer Guide</a>. If you do not specify a master key, Amazon SES will not encrypt your emails.</p> <important> <p>Your mail is encrypted by Amazon SES using the Amazon S3 encryption client before the mail is submitted to Amazon S3 for storage. It is not encrypted using Amazon S3 server-side encryption. This means that you must use the Amazon S3 encryption client to decrypt the email after retrieving it from Amazon S3, as the service has no access to use your AWS KMS keys for decryption. This encryption client is currently available with the <a href="http://aws.amazon.com/sdk-for-java/">AWS Java SDK</a> and <a href="http://aws.amazon.com/sdk-for-ruby/">AWS Ruby SDK</a> only. For more information about client-side encryption using AWS KMS master keys, see the <a href="http://alpha-docs-aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html">Amazon S3 Developer Guide</a>.</p> </important>
--- @param _ObjectKeyPrefix [S3KeyPrefix] <p>The key prefix of the Amazon S3 bucket. The key prefix is similar to a directory name that enables you to store similar data under the same directory in a bucket.</p>
--- @param _BucketName [S3BucketName] <p>The name of the Amazon S3 bucket to which to save the received email.</p>
--- @param _TopicArn [AmazonResourceName] <p>The ARN of the Amazon SNS topic to notify when the message is saved to the Amazon S3 bucket. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
--- Required parameter: BucketName
-function M.S3Action(_KmsKeyArn, _ObjectKeyPrefix, _BucketName, _TopicArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3Action")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KmsKeyArn [AmazonResourceName] <p>The customer master key that Amazon SES should use to encrypt your emails before saving them to the Amazon S3 bucket. You can use the default master key or a custom master key you created in AWS KMS as follows:</p> <ul> <li> <p>To use the default master key, provide an ARN in the form of <code>arn:aws:kms:REGION:ACCOUNT-ID-WITHOUT-HYPHENS:alias/aws/ses</code>. For example, if your AWS account ID is 123456789012 and you want to use the default master key in the US West (Oregon) region, the ARN of the default master key would be <code>arn:aws:kms:us-west-2:123456789012:alias/aws/ses</code>. If you use the default master key, you don't need to perform any extra steps to give Amazon SES permission to use the key.</p> </li> <li> <p>To use a custom master key you created in AWS KMS, provide the ARN of the master key and ensure that you add a statement to your key's policy to give Amazon SES permission to use it. For more information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> </li> </ul> <p>For more information about key policies, see the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS KMS Developer Guide</a>. If you do not specify a master key, Amazon SES will not encrypt your emails.</p> <important> <p>Your mail is encrypted by Amazon SES using the Amazon S3 encryption client before the mail is submitted to Amazon S3 for storage. It is not encrypted using Amazon S3 server-side encryption. This means that you must use the Amazon S3 encryption client to decrypt the email after retrieving it from Amazon S3, as the service has no access to use your AWS KMS keys for decryption. This encryption client is currently available with the <a href="http://aws.amazon.com/sdk-for-java/">AWS Java SDK</a> and <a href="http://aws.amazon.com/sdk-for-ruby/">AWS Ruby SDK</a> only. For more information about client-side encryption using AWS KMS master keys, see the <a href="http://alpha-docs-aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html">Amazon S3 Developer Guide</a>.</p> </important>
+-- * ObjectKeyPrefix [S3KeyPrefix] <p>The key prefix of the Amazon S3 bucket. The key prefix is similar to a directory name that enables you to store similar data under the same directory in a bucket.</p>
+-- * BucketName [S3BucketName] <p>The name of the Amazon S3 bucket to which to save the received email.</p>
+-- * TopicArn [AmazonResourceName] <p>The ARN of the Amazon SNS topic to notify when the message is saved to the Amazon S3 bucket. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
+-- Required key: BucketName
+-- @return S3Action structure as a key-value pair table
+function M.S3Action(args)
+	assert(args, "You must provdide an argument table when creating S3Action")
 	local t = { 
-		["KmsKeyArn"] = _KmsKeyArn,
-		["ObjectKeyPrefix"] = _ObjectKeyPrefix,
-		["BucketName"] = _BucketName,
-		["TopicArn"] = _TopicArn,
+		["KmsKeyArn"] = args["KmsKeyArn"],
+		["ObjectKeyPrefix"] = args["ObjectKeyPrefix"],
+		["BucketName"] = args["BucketName"],
+		["TopicArn"] = args["TopicArn"],
 	}
 	asserts.AssertS3Action(t)
 	return t
@@ -230,8 +251,11 @@ end
 
 --- Create a structure of type SetIdentityNotificationTopicResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.SetIdentityNotificationTopicResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityNotificationTopicResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetIdentityNotificationTopicResponse structure as a key-value pair table
+function M.SetIdentityNotificationTopicResponse(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityNotificationTopicResponse")
 	local t = { 
 	}
 	asserts.AssertSetIdentityNotificationTopicResponse(t)
@@ -254,15 +278,18 @@ end
 
 --- Create a structure of type ExtensionField
 -- <p>Additional X-headers to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
--- @param _Name [ExtensionFieldName] <p>The name of the header to add. Must be between 1 and 50 characters, inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes only.</p>
--- @param _Value [ExtensionFieldValue] <p>The value of the header to add. Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").</p>
--- Required parameter: Name
--- Required parameter: Value
-function M.ExtensionField(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExtensionField")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ExtensionFieldName] <p>The name of the header to add. Must be between 1 and 50 characters, inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes only.</p>
+-- * Value [ExtensionFieldValue] <p>The value of the header to add. Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").</p>
+-- Required key: Name
+-- Required key: Value
+-- @return ExtensionField structure as a key-value pair table
+function M.ExtensionField(args)
+	assert(args, "You must provdide an argument table when creating ExtensionField")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertExtensionField(t)
 	return t
@@ -284,15 +311,18 @@ end
 
 --- Create a structure of type UpdateConfigurationSetEventDestinationRequest
 -- <p>Represents a request to update the event destination of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _EventDestination [EventDestination] <p>The event destination object that you want to apply to the specified configuration set.</p>
--- @param _ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set that you want to update.</p>
--- Required parameter: ConfigurationSetName
--- Required parameter: EventDestination
-function M.UpdateConfigurationSetEventDestinationRequest(_EventDestination, _ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConfigurationSetEventDestinationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventDestination [EventDestination] <p>The event destination object that you want to apply to the specified configuration set.</p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set that you want to update.</p>
+-- Required key: ConfigurationSetName
+-- Required key: EventDestination
+-- @return UpdateConfigurationSetEventDestinationRequest structure as a key-value pair table
+function M.UpdateConfigurationSetEventDestinationRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateConfigurationSetEventDestinationRequest")
 	local t = { 
-		["EventDestination"] = _EventDestination,
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["EventDestination"] = args["EventDestination"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertUpdateConfigurationSetEventDestinationRequest(t)
 	return t
@@ -312,13 +342,16 @@ end
 
 --- Create a structure of type Body
 -- <p>Represents the body of the message. You can specify text, HTML, or both. If you use both, then the message should display correctly in the widest variety of email clients.</p>
--- @param _Text [Content] <p>The content of the message, in text format. Use this for text-based email clients, or clients on high-latency networks (such as mobile devices).</p>
--- @param _Html [Content] <p>The content of the message, in HTML format. Use this for email clients that can process HTML. You can include clickable links, formatted text, and much more in an HTML message.</p>
-function M.Body(_Text, _Html, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Body")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Text [Content] <p>The content of the message, in text format. Use this for text-based email clients, or clients on high-latency networks (such as mobile devices).</p>
+-- * Html [Content] <p>The content of the message, in HTML format. Use this for email clients that can process HTML. You can include clickable links, formatted text, and much more in an HTML message.</p>
+-- @return Body structure as a key-value pair table
+function M.Body(args)
+	assert(args, "You must provdide an argument table when creating Body")
 	local t = { 
-		["Text"] = _Text,
-		["Html"] = _Html,
+		["Text"] = args["Text"],
+		["Html"] = args["Html"],
 	}
 	asserts.AssertBody(t)
 	return t
@@ -336,8 +369,11 @@ end
 
 --- Create a structure of type InvalidConfigurationSetException
 -- <p>Indicates that the configuration set is invalid. See the error message for details.</p>
-function M.InvalidConfigurationSetException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidConfigurationSetException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidConfigurationSetException structure as a key-value pair table
+function M.InvalidConfigurationSetException(args)
+	assert(args, "You must provdide an argument table when creating InvalidConfigurationSetException")
 	local t = { 
 	}
 	asserts.AssertInvalidConfigurationSetException(t)
@@ -358,12 +394,15 @@ end
 
 --- Create a structure of type DeleteConfigurationSetRequest
 -- <p>Represents a request to delete a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to delete.</p>
--- Required parameter: ConfigurationSetName
-function M.DeleteConfigurationSetRequest(_ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigurationSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to delete.</p>
+-- Required key: ConfigurationSetName
+-- @return DeleteConfigurationSetRequest structure as a key-value pair table
+function M.DeleteConfigurationSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteConfigurationSetRequest")
 	local t = { 
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertDeleteConfigurationSetRequest(t)
 	return t
@@ -386,18 +425,21 @@ end
 
 --- Create a structure of type BouncedRecipientInfo
 -- <p>Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
--- @param _RecipientArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to receive email for the recipient of the bounced email. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
--- @param _Recipient [Address] <p>The email address of the recipient of the bounced email.</p>
--- @param _BounceType [BounceType] <p>The reason for the bounce. You must provide either this parameter or <code>RecipientDsnFields</code>.</p>
--- @param _RecipientDsnFields [RecipientDsnFields] <p>Recipient-related DSN fields, most of which would normally be filled in automatically when provided with a <code>BounceType</code>. You must provide either this parameter or <code>BounceType</code>.</p>
--- Required parameter: Recipient
-function M.BouncedRecipientInfo(_RecipientArn, _Recipient, _BounceType, _RecipientDsnFields, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BouncedRecipientInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RecipientArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to receive email for the recipient of the bounced email. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- * Recipient [Address] <p>The email address of the recipient of the bounced email.</p>
+-- * BounceType [BounceType] <p>The reason for the bounce. You must provide either this parameter or <code>RecipientDsnFields</code>.</p>
+-- * RecipientDsnFields [RecipientDsnFields] <p>Recipient-related DSN fields, most of which would normally be filled in automatically when provided with a <code>BounceType</code>. You must provide either this parameter or <code>BounceType</code>.</p>
+-- Required key: Recipient
+-- @return BouncedRecipientInfo structure as a key-value pair table
+function M.BouncedRecipientInfo(args)
+	assert(args, "You must provdide an argument table when creating BouncedRecipientInfo")
 	local t = { 
-		["RecipientArn"] = _RecipientArn,
-		["Recipient"] = _Recipient,
-		["BounceType"] = _BounceType,
-		["RecipientDsnFields"] = _RecipientDsnFields,
+		["RecipientArn"] = args["RecipientArn"],
+		["Recipient"] = args["Recipient"],
+		["BounceType"] = args["BounceType"],
+		["RecipientDsnFields"] = args["RecipientDsnFields"],
 	}
 	asserts.AssertBouncedRecipientInfo(t)
 	return t
@@ -417,12 +459,15 @@ end
 
 --- Create a structure of type CloudWatchDestination
 -- <p>Contains information associated with an Amazon CloudWatch event destination to which email sending events are published.</p> <p>Event destinations, such as Amazon CloudWatch, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _DimensionConfigurations [CloudWatchDimensionConfigurations] <p>A list of dimensions upon which to categorize your emails when you publish email sending events to Amazon CloudWatch.</p>
--- Required parameter: DimensionConfigurations
-function M.CloudWatchDestination(_DimensionConfigurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchDestination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DimensionConfigurations [CloudWatchDimensionConfigurations] <p>A list of dimensions upon which to categorize your emails when you publish email sending events to Amazon CloudWatch.</p>
+-- Required key: DimensionConfigurations
+-- @return CloudWatchDestination structure as a key-value pair table
+function M.CloudWatchDestination(args)
+	assert(args, "You must provdide an argument table when creating CloudWatchDestination")
 	local t = { 
-		["DimensionConfigurations"] = _DimensionConfigurations,
+		["DimensionConfigurations"] = args["DimensionConfigurations"],
 	}
 	asserts.AssertCloudWatchDestination(t)
 	return t
@@ -443,14 +488,17 @@ end
 
 --- Create a structure of type IdentityVerificationAttributes
 -- <p>Represents the verification attributes of a single identity.</p>
--- @param _VerificationToken [VerificationToken] <p>The verification token for a domain identity. Null for email address identities.</p>
--- @param _VerificationStatus [VerificationStatus] <p>The verification status of the identity: "Pending", "Success", "Failed", or "TemporaryFailure".</p>
--- Required parameter: VerificationStatus
-function M.IdentityVerificationAttributes(_VerificationToken, _VerificationStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdentityVerificationAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VerificationToken [VerificationToken] <p>The verification token for a domain identity. Null for email address identities.</p>
+-- * VerificationStatus [VerificationStatus] <p>The verification status of the identity: "Pending", "Success", "Failed", or "TemporaryFailure".</p>
+-- Required key: VerificationStatus
+-- @return IdentityVerificationAttributes structure as a key-value pair table
+function M.IdentityVerificationAttributes(args)
+	assert(args, "You must provdide an argument table when creating IdentityVerificationAttributes")
 	local t = { 
-		["VerificationToken"] = _VerificationToken,
-		["VerificationStatus"] = _VerificationStatus,
+		["VerificationToken"] = args["VerificationToken"],
+		["VerificationStatus"] = args["VerificationStatus"],
 	}
 	asserts.AssertIdentityVerificationAttributes(t)
 	return t
@@ -469,11 +517,14 @@ end
 
 --- Create a structure of type ListVerifiedEmailAddressesResponse
 -- <p>A list of email addresses that you have verified with Amazon SES under your AWS account.</p>
--- @param _VerifiedEmailAddresses [AddressList] <p>A list of email addresses that have been verified.</p>
-function M.ListVerifiedEmailAddressesResponse(_VerifiedEmailAddresses, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVerifiedEmailAddressesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VerifiedEmailAddresses [AddressList] <p>A list of email addresses that have been verified.</p>
+-- @return ListVerifiedEmailAddressesResponse structure as a key-value pair table
+function M.ListVerifiedEmailAddressesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListVerifiedEmailAddressesResponse")
 	local t = { 
-		["VerifiedEmailAddresses"] = _VerifiedEmailAddresses,
+		["VerifiedEmailAddresses"] = args["VerifiedEmailAddresses"],
 	}
 	asserts.AssertListVerifiedEmailAddressesResponse(t)
 	return t
@@ -491,8 +542,11 @@ end
 
 --- Create a structure of type DeleteIdentityResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.DeleteIdentityResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteIdentityResponse structure as a key-value pair table
+function M.DeleteIdentityResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteIdentityResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteIdentityResponse(t)
@@ -513,13 +567,16 @@ end
 
 --- Create a structure of type EventDestinationAlreadyExistsException
 -- <p>Indicates that the event destination could not be created because of a naming conflict.</p>
--- @param _EventDestinationName [EventDestinationName] 
--- @param _ConfigurationSetName [ConfigurationSetName] 
-function M.EventDestinationAlreadyExistsException(_EventDestinationName, _ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventDestinationAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventDestinationName [EventDestinationName] 
+-- * ConfigurationSetName [ConfigurationSetName] 
+-- @return EventDestinationAlreadyExistsException structure as a key-value pair table
+function M.EventDestinationAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating EventDestinationAlreadyExistsException")
 	local t = { 
-		["EventDestinationName"] = _EventDestinationName,
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["EventDestinationName"] = args["EventDestinationName"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertEventDestinationAlreadyExistsException(t)
 	return t
@@ -539,12 +596,15 @@ end
 
 --- Create a structure of type VerifyDomainIdentityResponse
 -- <p>Returns a TXT record that you must publish to the DNS server of your domain to complete domain verification with Amazon SES.</p>
--- @param _VerificationToken [VerificationToken] <p>A TXT record that must be placed in the DNS settings for the domain, in order to complete domain verification.</p>
--- Required parameter: VerificationToken
-function M.VerifyDomainIdentityResponse(_VerificationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VerifyDomainIdentityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VerificationToken [VerificationToken] <p>A TXT record that must be placed in the DNS settings for the domain, in order to complete domain verification.</p>
+-- Required key: VerificationToken
+-- @return VerifyDomainIdentityResponse structure as a key-value pair table
+function M.VerifyDomainIdentityResponse(args)
+	assert(args, "You must provdide an argument table when creating VerifyDomainIdentityResponse")
 	local t = { 
-		["VerificationToken"] = _VerificationToken,
+		["VerificationToken"] = args["VerificationToken"],
 	}
 	asserts.AssertVerifyDomainIdentityResponse(t)
 	return t
@@ -562,8 +622,11 @@ end
 
 --- Create a structure of type DeleteConfigurationSetResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.DeleteConfigurationSetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigurationSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteConfigurationSetResponse structure as a key-value pair table
+function M.DeleteConfigurationSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteConfigurationSetResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteConfigurationSetResponse(t)
@@ -582,8 +645,11 @@ end
 
 --- Create a structure of type CreateReceiptFilterResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.CreateReceiptFilterResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptFilterResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateReceiptFilterResponse structure as a key-value pair table
+function M.CreateReceiptFilterResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateReceiptFilterResponse")
 	local t = { 
 	}
 	asserts.AssertCreateReceiptFilterResponse(t)
@@ -602,8 +668,11 @@ end
 
 --- Create a structure of type VerifyEmailIdentityResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.VerifyEmailIdentityResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VerifyEmailIdentityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return VerifyEmailIdentityResponse structure as a key-value pair table
+function M.VerifyEmailIdentityResponse(args)
+	assert(args, "You must provdide an argument table when creating VerifyEmailIdentityResponse")
 	local t = { 
 	}
 	asserts.AssertVerifyEmailIdentityResponse(t)
@@ -631,26 +700,29 @@ end
 
 --- Create a structure of type SendRawEmailRequest
 -- <p>Represents a request to send a single raw email using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.</p>
--- @param _ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-RETURN-PATH-ARN</code> in the raw message of the email. If you use both the <code>ReturnPathArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>ReturnPathArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
--- @param _Tags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send using <code>SendRawEmail</code>. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.</p>
--- @param _RawMessage [RawMessage] <p>The raw text of the message. The client is responsible for ensuring the following:</p> <ul> <li> <p>Message must contain a header and a body, separated by a blank line.</p> </li> <li> <p>All required header fields must be present.</p> </li> <li> <p>Each part of a multipart MIME message must be formatted properly.</p> </li> <li> <p>MIME content types must be among those supported by Amazon SES. For more information, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon SES Developer Guide</a>.</p> </li> <li> <p>Must be base64-encoded.</p> </li> </ul>
--- @param _Source [Address] <p>The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)</p> <p> By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p> <note> <p>If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header that you might include in the raw text of the message.</p> </note>
--- @param _ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to use when you send an email using <code>SendRawEmail</code>.</p>
--- @param _FromArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to specify a particular "From" address in the header of the raw email.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-FROM-ARN</code> in the raw message of the email. If you use both the <code>FromArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>FromArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
--- @param _SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-SOURCE-ARN</code> in the raw message of the email. If you use both the <code>SourceArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>SourceArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
--- @param _Destinations [AddressList] <p>A list of destinations for the message, consisting of To:, CC:, and BCC: addresses.</p>
--- Required parameter: RawMessage
-function M.SendRawEmailRequest(_ReturnPathArn, _Tags, _RawMessage, _Source, _ConfigurationSetName, _FromArn, _SourceArn, _Destinations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendRawEmailRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-RETURN-PATH-ARN</code> in the raw message of the email. If you use both the <code>ReturnPathArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>ReturnPathArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
+-- * Tags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send using <code>SendRawEmail</code>. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.</p>
+-- * RawMessage [RawMessage] <p>The raw text of the message. The client is responsible for ensuring the following:</p> <ul> <li> <p>Message must contain a header and a body, separated by a blank line.</p> </li> <li> <p>All required header fields must be present.</p> </li> <li> <p>Each part of a multipart MIME message must be formatted properly.</p> </li> <li> <p>MIME content types must be among those supported by Amazon SES. For more information, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html">Amazon SES Developer Guide</a>.</p> </li> <li> <p>Must be base64-encoded.</p> </li> </ul>
+-- * Source [Address] <p>The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)</p> <p> By default, the string must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p> <note> <p>If you specify the <code>Source</code> parameter and have feedback forwarding enabled, then bounces and complaints will be sent to this email address. This takes precedence over any <i>Return-Path</i> header that you might include in the raw text of the message.</p> </note>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to use when you send an email using <code>SendRawEmail</code>.</p>
+-- * FromArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to specify a particular "From" address in the header of the raw email.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-FROM-ARN</code> in the raw message of the email. If you use both the <code>FromArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>FromArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
+-- * SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>Instead of using this parameter, you can use the X-header <code>X-SES-SOURCE-ARN</code> in the raw message of the email. If you use both the <code>SourceArn</code> parameter and the corresponding X-header, Amazon SES uses the value of the <code>SourceArn</code> parameter.</p> <note> <p>For information about when to use this parameter, see the description of <code>SendRawEmail</code> in this guide, or see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-delegate-sender-tasks-email.html">Amazon SES Developer Guide</a>.</p> </note>
+-- * Destinations [AddressList] <p>A list of destinations for the message, consisting of To:, CC:, and BCC: addresses.</p>
+-- Required key: RawMessage
+-- @return SendRawEmailRequest structure as a key-value pair table
+function M.SendRawEmailRequest(args)
+	assert(args, "You must provdide an argument table when creating SendRawEmailRequest")
 	local t = { 
-		["ReturnPathArn"] = _ReturnPathArn,
-		["Tags"] = _Tags,
-		["RawMessage"] = _RawMessage,
-		["Source"] = _Source,
-		["ConfigurationSetName"] = _ConfigurationSetName,
-		["FromArn"] = _FromArn,
-		["SourceArn"] = _SourceArn,
-		["Destinations"] = _Destinations,
+		["ReturnPathArn"] = args["ReturnPathArn"],
+		["Tags"] = args["Tags"],
+		["RawMessage"] = args["RawMessage"],
+		["Source"] = args["Source"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
+		["FromArn"] = args["FromArn"],
+		["SourceArn"] = args["SourceArn"],
+		["Destinations"] = args["Destinations"],
 	}
 	asserts.AssertSendRawEmailRequest(t)
 	return t
@@ -670,12 +742,15 @@ end
 
 --- Create a structure of type GetIdentityVerificationAttributesResponse
 -- <p>The Amazon SES verification status of a list of identities. For domain identities, this response also contains the verification token.</p>
--- @param _VerificationAttributes [VerificationAttributes] <p>A map of Identities to IdentityVerificationAttributes objects.</p>
--- Required parameter: VerificationAttributes
-function M.GetIdentityVerificationAttributesResponse(_VerificationAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityVerificationAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VerificationAttributes [VerificationAttributes] <p>A map of Identities to IdentityVerificationAttributes objects.</p>
+-- Required key: VerificationAttributes
+-- @return GetIdentityVerificationAttributesResponse structure as a key-value pair table
+function M.GetIdentityVerificationAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityVerificationAttributesResponse")
 	local t = { 
-		["VerificationAttributes"] = _VerificationAttributes,
+		["VerificationAttributes"] = args["VerificationAttributes"],
 	}
 	asserts.AssertGetIdentityVerificationAttributesResponse(t)
 	return t
@@ -693,8 +768,11 @@ end
 
 --- Create a structure of type DeleteReceiptFilterResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.DeleteReceiptFilterResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptFilterResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteReceiptFilterResponse structure as a key-value pair table
+function M.DeleteReceiptFilterResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteReceiptFilterResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteReceiptFilterResponse(t)
@@ -717,15 +795,18 @@ end
 
 --- Create a structure of type SetIdentityFeedbackForwardingEnabledRequest
 -- <p>Represents a request to enable or disable whether Amazon SES forwards you bounce and complaint notifications through email. For information about email feedback forwarding, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-email.html">Amazon SES Developer Guide</a>.</p>
--- @param _ForwardingEnabled [Enabled] <p>Sets whether Amazon SES will forward bounce and complaint notifications as email. <code>true</code> specifies that Amazon SES will forward bounce and complaint notifications as email, in addition to any Amazon SNS topic publishing otherwise specified. <code>false</code> specifies that Amazon SES will publish bounce and complaint notifications only through Amazon SNS. This value can only be set to <code>false</code> when Amazon SNS topics are set for both <code>Bounce</code> and <code>Complaint</code> notification types.</p>
--- @param _Identity [Identity] <p>The identity for which to set bounce and complaint notification forwarding. Examples: <code>user@example.com</code>, <code>example.com</code>.</p>
--- Required parameter: Identity
--- Required parameter: ForwardingEnabled
-function M.SetIdentityFeedbackForwardingEnabledRequest(_ForwardingEnabled, _Identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityFeedbackForwardingEnabledRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ForwardingEnabled [Enabled] <p>Sets whether Amazon SES will forward bounce and complaint notifications as email. <code>true</code> specifies that Amazon SES will forward bounce and complaint notifications as email, in addition to any Amazon SNS topic publishing otherwise specified. <code>false</code> specifies that Amazon SES will publish bounce and complaint notifications only through Amazon SNS. This value can only be set to <code>false</code> when Amazon SNS topics are set for both <code>Bounce</code> and <code>Complaint</code> notification types.</p>
+-- * Identity [Identity] <p>The identity for which to set bounce and complaint notification forwarding. Examples: <code>user@example.com</code>, <code>example.com</code>.</p>
+-- Required key: Identity
+-- Required key: ForwardingEnabled
+-- @return SetIdentityFeedbackForwardingEnabledRequest structure as a key-value pair table
+function M.SetIdentityFeedbackForwardingEnabledRequest(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityFeedbackForwardingEnabledRequest")
 	local t = { 
-		["ForwardingEnabled"] = _ForwardingEnabled,
-		["Identity"] = _Identity,
+		["ForwardingEnabled"] = args["ForwardingEnabled"],
+		["Identity"] = args["Identity"],
 	}
 	asserts.AssertSetIdentityFeedbackForwardingEnabledRequest(t)
 	return t
@@ -744,11 +825,14 @@ end
 
 --- Create a structure of type SendBounceResponse
 -- <p>Represents a unique message ID.</p>
--- @param _MessageId [MessageId] <p>The message ID of the bounce message.</p>
-function M.SendBounceResponse(_MessageId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendBounceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MessageId [MessageId] <p>The message ID of the bounce message.</p>
+-- @return SendBounceResponse structure as a key-value pair table
+function M.SendBounceResponse(args)
+	assert(args, "You must provdide an argument table when creating SendBounceResponse")
 	local t = { 
-		["MessageId"] = _MessageId,
+		["MessageId"] = args["MessageId"],
 	}
 	asserts.AssertSendBounceResponse(t)
 	return t
@@ -768,12 +852,15 @@ end
 
 --- Create a structure of type VerifyEmailAddressRequest
 -- <p>Represents a request to begin email address verification with Amazon SES. For information about email address verification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html">Amazon SES Developer Guide</a>.</p>
--- @param _EmailAddress [Address] <p>The email address to be verified.</p>
--- Required parameter: EmailAddress
-function M.VerifyEmailAddressRequest(_EmailAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VerifyEmailAddressRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EmailAddress [Address] <p>The email address to be verified.</p>
+-- Required key: EmailAddress
+-- @return VerifyEmailAddressRequest structure as a key-value pair table
+function M.VerifyEmailAddressRequest(args)
+	assert(args, "You must provdide an argument table when creating VerifyEmailAddressRequest")
 	local t = { 
-		["EmailAddress"] = _EmailAddress,
+		["EmailAddress"] = args["EmailAddress"],
 	}
 	asserts.AssertVerifyEmailAddressRequest(t)
 	return t
@@ -797,18 +884,21 @@ end
 
 --- Create a structure of type SetIdentityHeadersInNotificationsEnabledRequest
 -- <p>Represents a request to set whether Amazon SES includes the original email headers in the Amazon SNS notifications of a specified type. For information about notifications, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-sns.html">Amazon SES Developer Guide</a>.</p>
--- @param _Enabled [Enabled] <p>Sets whether Amazon SES includes the original email headers in Amazon SNS notifications of the specified notification type. A value of <code>true</code> specifies that Amazon SES will include headers in notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in notifications.</p> <p>This value can only be set when <code>NotificationType</code> is already set to use a particular Amazon SNS topic.</p>
--- @param _NotificationType [NotificationType] <p>The notification type for which to enable or disable headers in notifications. </p>
--- @param _Identity [Identity] <p>The identity for which to enable or disable headers in notifications. Examples: <code>user@example.com</code>, <code>example.com</code>.</p>
--- Required parameter: Identity
--- Required parameter: NotificationType
--- Required parameter: Enabled
-function M.SetIdentityHeadersInNotificationsEnabledRequest(_Enabled, _NotificationType, _Identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityHeadersInNotificationsEnabledRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Enabled [Enabled] <p>Sets whether Amazon SES includes the original email headers in Amazon SNS notifications of the specified notification type. A value of <code>true</code> specifies that Amazon SES will include headers in notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in notifications.</p> <p>This value can only be set when <code>NotificationType</code> is already set to use a particular Amazon SNS topic.</p>
+-- * NotificationType [NotificationType] <p>The notification type for which to enable or disable headers in notifications. </p>
+-- * Identity [Identity] <p>The identity for which to enable or disable headers in notifications. Examples: <code>user@example.com</code>, <code>example.com</code>.</p>
+-- Required key: Identity
+-- Required key: NotificationType
+-- Required key: Enabled
+-- @return SetIdentityHeadersInNotificationsEnabledRequest structure as a key-value pair table
+function M.SetIdentityHeadersInNotificationsEnabledRequest(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityHeadersInNotificationsEnabledRequest")
 	local t = { 
-		["Enabled"] = _Enabled,
-		["NotificationType"] = _NotificationType,
-		["Identity"] = _Identity,
+		["Enabled"] = args["Enabled"],
+		["NotificationType"] = args["NotificationType"],
+		["Identity"] = args["Identity"],
 	}
 	asserts.AssertSetIdentityHeadersInNotificationsEnabledRequest(t)
 	return t
@@ -826,8 +916,11 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>Indicates that a resource could not be created because of service limits. For a list of Amazon SES limits, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/limits.html">Amazon SES Developer Guide</a>.</p>
-function M.LimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
 	}
 	asserts.AssertLimitExceededException(t)
@@ -848,12 +941,15 @@ end
 
 --- Create a structure of type ConfigurationSet
 -- <p>The name of the configuration set.</p> <p>Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _Name [ConfigurationSetName] <p>The name of the configuration set. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
--- Required parameter: Name
-function M.ConfigurationSet(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ConfigurationSetName] <p>The name of the configuration set. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- Required key: Name
+-- @return ConfigurationSet structure as a key-value pair table
+function M.ConfigurationSet(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationSet")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertConfigurationSet(t)
 	return t
@@ -873,12 +969,15 @@ end
 
 --- Create a structure of type GetIdentityMailFromDomainAttributesRequest
 -- <p>Represents a request to return the Amazon SES custom MAIL FROM attributes for a list of identities. For information about using a custom MAIL FROM domain, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>.</p>
--- @param _Identities [IdentityList] <p>A list of one or more identities.</p>
--- Required parameter: Identities
-function M.GetIdentityMailFromDomainAttributesRequest(_Identities, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityMailFromDomainAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Identities [IdentityList] <p>A list of one or more identities.</p>
+-- Required key: Identities
+-- @return GetIdentityMailFromDomainAttributesRequest structure as a key-value pair table
+function M.GetIdentityMailFromDomainAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityMailFromDomainAttributesRequest")
 	local t = { 
-		["Identities"] = _Identities,
+		["Identities"] = args["Identities"],
 	}
 	asserts.AssertGetIdentityMailFromDomainAttributesRequest(t)
 	return t
@@ -900,15 +999,18 @@ end
 
 --- Create a structure of type GetIdentityPoliciesRequest
 -- <p>Represents a request to return the requested sending authorization policies for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
--- @param _PolicyNames [PolicyNameList] <p>A list of the names of policies to be retrieved. You can retrieve a maximum of 20 policies at a time. If you do not know the names of the policies that are attached to the identity, you can use <code>ListIdentityPolicies</code>.</p>
--- @param _Identity [Identity] <p>The identity for which the policies will be retrieved. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
--- Required parameter: Identity
--- Required parameter: PolicyNames
-function M.GetIdentityPoliciesRequest(_PolicyNames, _Identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyNames [PolicyNameList] <p>A list of the names of policies to be retrieved. You can retrieve a maximum of 20 policies at a time. If you do not know the names of the policies that are attached to the identity, you can use <code>ListIdentityPolicies</code>.</p>
+-- * Identity [Identity] <p>The identity for which the policies will be retrieved. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
+-- Required key: Identity
+-- Required key: PolicyNames
+-- @return GetIdentityPoliciesRequest structure as a key-value pair table
+function M.GetIdentityPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityPoliciesRequest")
 	local t = { 
-		["PolicyNames"] = _PolicyNames,
-		["Identity"] = _Identity,
+		["PolicyNames"] = args["PolicyNames"],
+		["Identity"] = args["Identity"],
 	}
 	asserts.AssertGetIdentityPoliciesRequest(t)
 	return t
@@ -926,8 +1028,11 @@ end
 
 --- Create a structure of type SetIdentityDkimEnabledResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.SetIdentityDkimEnabledResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityDkimEnabledResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetIdentityDkimEnabledResponse structure as a key-value pair table
+function M.SetIdentityDkimEnabledResponse(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityDkimEnabledResponse")
 	local t = { 
 	}
 	asserts.AssertSetIdentityDkimEnabledResponse(t)
@@ -950,15 +1055,18 @@ end
 
 --- Create a structure of type CreateConfigurationSetEventDestinationRequest
 -- <p>Represents a request to create a configuration set event destination. A configuration set event destination, which can be either Amazon CloudWatch or Amazon Kinesis Firehose, describes an AWS service in which Amazon SES publishes the email sending events associated with a configuration set. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _EventDestination [EventDestination] <p>An object that describes the AWS service to which Amazon SES will publish the email sending events associated with the specified configuration set.</p>
--- @param _ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to which to apply the event destination.</p>
--- Required parameter: ConfigurationSetName
--- Required parameter: EventDestination
-function M.CreateConfigurationSetEventDestinationRequest(_EventDestination, _ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateConfigurationSetEventDestinationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventDestination [EventDestination] <p>An object that describes the AWS service to which Amazon SES will publish the email sending events associated with the specified configuration set.</p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to which to apply the event destination.</p>
+-- Required key: ConfigurationSetName
+-- Required key: EventDestination
+-- @return CreateConfigurationSetEventDestinationRequest structure as a key-value pair table
+function M.CreateConfigurationSetEventDestinationRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateConfigurationSetEventDestinationRequest")
 	local t = { 
-		["EventDestination"] = _EventDestination,
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["EventDestination"] = args["EventDestination"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertCreateConfigurationSetEventDestinationRequest(t)
 	return t
@@ -978,12 +1086,15 @@ end
 
 --- Create a structure of type GetIdentityDkimAttributesRequest
 -- <p>Represents a request for the status of Amazon SES Easy DKIM signing for an identity. For domain identities, this request also returns the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES successfully verified that these tokens were published. For more information about Easy DKIM, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon SES Developer Guide</a>.</p>
--- @param _Identities [IdentityList] <p>A list of one or more verified identities - email addresses, domains, or both.</p>
--- Required parameter: Identities
-function M.GetIdentityDkimAttributesRequest(_Identities, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityDkimAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Identities [IdentityList] <p>A list of one or more verified identities - email addresses, domains, or both.</p>
+-- Required key: Identities
+-- @return GetIdentityDkimAttributesRequest structure as a key-value pair table
+function M.GetIdentityDkimAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityDkimAttributesRequest")
 	local t = { 
-		["Identities"] = _Identities,
+		["Identities"] = args["Identities"],
 	}
 	asserts.AssertGetIdentityDkimAttributesRequest(t)
 	return t
@@ -1004,14 +1115,17 @@ end
 
 --- Create a structure of type StopAction
 -- <p>When included in a receipt rule, this action terminates the evaluation of the receipt rule set and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>For information about setting a stop action in a receipt rule, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html">Amazon SES Developer Guide</a>.</p>
--- @param _Scope [StopScope] <p>The scope to which the Stop action applies. That is, what is being stopped.</p>
--- @param _TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the stop action is taken. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
--- Required parameter: Scope
-function M.StopAction(_Scope, _TopicArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Scope [StopScope] <p>The scope to which the Stop action applies. That is, what is being stopped.</p>
+-- * TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the stop action is taken. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
+-- Required key: Scope
+-- @return StopAction structure as a key-value pair table
+function M.StopAction(args)
+	assert(args, "You must provdide an argument table when creating StopAction")
 	local t = { 
-		["Scope"] = _Scope,
-		["TopicArn"] = _TopicArn,
+		["Scope"] = args["Scope"],
+		["TopicArn"] = args["TopicArn"],
 	}
 	asserts.AssertStopAction(t)
 	return t
@@ -1041,30 +1155,33 @@ end
 
 --- Create a structure of type SendEmailRequest
 -- <p>Represents a request to send a single formatted email using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-formatted.html">Amazon SES Developer Guide</a>.</p>
--- @param _Tags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send using <code>SendEmail</code>. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.</p>
--- @param _ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. </p>
--- @param _ReplyToAddresses [AddressList] <p>The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address will receive the reply.</p>
--- @param _Destination [Destination] <p>The destination for this email, composed of To:, CC:, and BCC: fields.</p>
--- @param _Source [Address] <p>The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html">Amazon SES Developer Guide</a>.</p> <p>If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the <code>SourceArn</code> parameter. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p> <p> In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p>
--- @param _ReturnPath [Address] <p>The email address to which bounces and complaints are to be forwarded when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the <code>ReturnPath</code> parameter. The <code>ReturnPath</code> parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. </p>
--- @param _ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to use when you send an email using <code>SendEmail</code>.</p>
--- @param _Message [Message] <p>The message to be sent.</p>
--- @param _SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. </p>
--- Required parameter: Source
--- Required parameter: Destination
--- Required parameter: Message
-function M.SendEmailRequest(_Tags, _ReturnPathArn, _ReplyToAddresses, _Destination, _Source, _ReturnPath, _ConfigurationSetName, _Message, _SourceArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendEmailRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Tags [MessageTagList] <p>A list of tags, in the form of name/value pairs, to apply to an email that you send using <code>SendEmail</code>. Tags correspond to characteristics of the email that you define, so that you can publish email sending events.</p>
+-- * ReturnPathArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the email address specified in the <code>ReturnPath</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to use <code>feedback@example.com</code>, then you would specify the <code>ReturnPathArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>ReturnPath</code> to be <code>feedback@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. </p>
+-- * ReplyToAddresses [AddressList] <p>The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address will receive the reply.</p>
+-- * Destination [Destination] <p>The destination for this email, composed of To:, CC:, and BCC: fields.</p>
+-- * Source [Address] <p>The email address that is sending the email. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. For information about verifying identities, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html">Amazon SES Developer Guide</a>.</p> <p>If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the <code>SourceArn</code> parameter. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p> <p> In all cases, the email address must be 7-bit ASCII. If the text must contain any other characters, then you must use MIME encoded-word syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax uses the following form: <code>=?charset?encoding?encoded-text?=</code>. For more information, see <a href="http://tools.ietf.org/html/rfc2047">RFC 2047</a>. </p>
+-- * ReturnPath [Address] <p>The email address to which bounces and complaints are to be forwarded when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the <code>ReturnPath</code> parameter. The <code>ReturnPath</code> parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. </p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to use when you send an email using <code>SendEmail</code>.</p>
+-- * Message [Message] <p>The message to be sent.</p>
+-- * SourceArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the <code>Source</code> parameter.</p> <p>For example, if the owner of <code>example.com</code> (which has ARN <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>) attaches a policy to it that authorizes you to send from <code>user@example.com</code>, then you would specify the <code>SourceArn</code> to be <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>, and the <code>Source</code> to be <code>user@example.com</code>.</p> <p>For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>. </p>
+-- Required key: Source
+-- Required key: Destination
+-- Required key: Message
+-- @return SendEmailRequest structure as a key-value pair table
+function M.SendEmailRequest(args)
+	assert(args, "You must provdide an argument table when creating SendEmailRequest")
 	local t = { 
-		["Tags"] = _Tags,
-		["ReturnPathArn"] = _ReturnPathArn,
-		["ReplyToAddresses"] = _ReplyToAddresses,
-		["Destination"] = _Destination,
-		["Source"] = _Source,
-		["ReturnPath"] = _ReturnPath,
-		["ConfigurationSetName"] = _ConfigurationSetName,
-		["Message"] = _Message,
-		["SourceArn"] = _SourceArn,
+		["Tags"] = args["Tags"],
+		["ReturnPathArn"] = args["ReturnPathArn"],
+		["ReplyToAddresses"] = args["ReplyToAddresses"],
+		["Destination"] = args["Destination"],
+		["Source"] = args["Source"],
+		["ReturnPath"] = args["ReturnPath"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
+		["Message"] = args["Message"],
+		["SourceArn"] = args["SourceArn"],
 	}
 	asserts.AssertSendEmailRequest(t)
 	return t
@@ -1083,11 +1200,14 @@ end
 
 --- Create a structure of type InvalidSnsTopicException
 -- <p>Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
--- @param _Topic [AmazonResourceName] 
-function M.InvalidSnsTopicException(_Topic, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSnsTopicException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Topic [AmazonResourceName] 
+-- @return InvalidSnsTopicException structure as a key-value pair table
+function M.InvalidSnsTopicException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSnsTopicException")
 	local t = { 
-		["Topic"] = _Topic,
+		["Topic"] = args["Topic"],
 	}
 	asserts.AssertInvalidSnsTopicException(t)
 	return t
@@ -1107,12 +1227,15 @@ end
 
 --- Create a structure of type DeleteVerifiedEmailAddressRequest
 -- <p>Represents a request to delete an email address from the list of email addresses you have attempted to verify under your AWS account.</p>
--- @param _EmailAddress [Address] <p>An email address to be removed from the list of verified addresses.</p>
--- Required parameter: EmailAddress
-function M.DeleteVerifiedEmailAddressRequest(_EmailAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVerifiedEmailAddressRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EmailAddress [Address] <p>An email address to be removed from the list of verified addresses.</p>
+-- Required key: EmailAddress
+-- @return DeleteVerifiedEmailAddressRequest structure as a key-value pair table
+function M.DeleteVerifiedEmailAddressRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteVerifiedEmailAddressRequest")
 	local t = { 
-		["EmailAddress"] = _EmailAddress,
+		["EmailAddress"] = args["EmailAddress"],
 	}
 	asserts.AssertDeleteVerifiedEmailAddressRequest(t)
 	return t
@@ -1137,21 +1260,24 @@ end
 
 --- Create a structure of type EventDestination
 -- <p>Contains information about the event destination to which the specified email sending events are published.</p> <note> <p>When you create or update an event destination, you must provide one, and only one, destination. The destination can be either Amazon CloudWatch or Amazon Kinesis Firehose.</p> </note> <p>Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch or Amazon Kinesis Firehose. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _MatchingEventTypes [EventTypes] <p>The type of email sending events to publish to the event destination.</p>
--- @param _Enabled [Enabled] <p>Sets whether Amazon SES publishes events to this destination when you send an email with the associated configuration set. Set to <code>true</code> to enable publishing to this destination; set to <code>false</code> to prevent publishing to this destination. The default value is <code>false</code>.</p>
--- @param _Name [EventDestinationName] <p>The name of the event destination. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
--- @param _CloudWatchDestination [CloudWatchDestination] <p>An object that contains the names, default values, and sources of the dimensions associated with an Amazon CloudWatch event destination.</p>
--- @param _KinesisFirehoseDestination [KinesisFirehoseDestination] <p>An object that contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event destination.</p>
--- Required parameter: Name
--- Required parameter: MatchingEventTypes
-function M.EventDestination(_MatchingEventTypes, _Enabled, _Name, _CloudWatchDestination, _KinesisFirehoseDestination, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventDestination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MatchingEventTypes [EventTypes] <p>The type of email sending events to publish to the event destination.</p>
+-- * Enabled [Enabled] <p>Sets whether Amazon SES publishes events to this destination when you send an email with the associated configuration set. Set to <code>true</code> to enable publishing to this destination; set to <code>false</code> to prevent publishing to this destination. The default value is <code>false</code>.</p>
+-- * Name [EventDestinationName] <p>The name of the event destination. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- * CloudWatchDestination [CloudWatchDestination] <p>An object that contains the names, default values, and sources of the dimensions associated with an Amazon CloudWatch event destination.</p>
+-- * KinesisFirehoseDestination [KinesisFirehoseDestination] <p>An object that contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event destination.</p>
+-- Required key: Name
+-- Required key: MatchingEventTypes
+-- @return EventDestination structure as a key-value pair table
+function M.EventDestination(args)
+	assert(args, "You must provdide an argument table when creating EventDestination")
 	local t = { 
-		["MatchingEventTypes"] = _MatchingEventTypes,
-		["Enabled"] = _Enabled,
-		["Name"] = _Name,
-		["CloudWatchDestination"] = _CloudWatchDestination,
-		["KinesisFirehoseDestination"] = _KinesisFirehoseDestination,
+		["MatchingEventTypes"] = args["MatchingEventTypes"],
+		["Enabled"] = args["Enabled"],
+		["Name"] = args["Name"],
+		["CloudWatchDestination"] = args["CloudWatchDestination"],
+		["KinesisFirehoseDestination"] = args["KinesisFirehoseDestination"],
 	}
 	asserts.AssertEventDestination(t)
 	return t
@@ -1169,8 +1295,11 @@ end
 
 --- Create a structure of type DeleteReceiptRuleSetResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.DeleteReceiptRuleSetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptRuleSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteReceiptRuleSetResponse structure as a key-value pair table
+function M.DeleteReceiptRuleSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteReceiptRuleSetResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteReceiptRuleSetResponse(t)
@@ -1195,18 +1324,21 @@ end
 
 --- Create a structure of type IdentityMailFromDomainAttributes
 -- <p>Represents the custom MAIL FROM domain attributes of a verified identity (email address or domain).</p>
--- @param _MailFromDomain [MailFromDomainName] <p>The custom MAIL FROM domain that the identity is configured to use.</p>
--- @param _BehaviorOnMXFailure [BehaviorOnMXFailure] <p>The action that Amazon SES takes if it cannot successfully read the required MX record when you send an email. A value of <code>UseDefaultValue</code> indicates that if Amazon SES cannot read the required MX record, it uses amazonses.com (or a subdomain of that) as the MAIL FROM domain. A value of <code>RejectMessage</code> indicates that if Amazon SES cannot read the required MX record, Amazon SES returns a <code>MailFromDomainNotVerified</code> error and does not send the email.</p> <p>The custom MAIL FROM setup states that result in this behavior are <code>Pending</code>, <code>Failed</code>, and <code>TemporaryFailure</code>.</p>
--- @param _MailFromDomainStatus [CustomMailFromStatus] <p>The state that indicates whether Amazon SES has successfully read the MX record required for custom MAIL FROM domain setup. If the state is <code>Success</code>, Amazon SES uses the specified custom MAIL FROM domain when the verified identity sends an email. All other states indicate that Amazon SES takes the action described by <code>BehaviorOnMXFailure</code>.</p>
--- Required parameter: MailFromDomain
--- Required parameter: MailFromDomainStatus
--- Required parameter: BehaviorOnMXFailure
-function M.IdentityMailFromDomainAttributes(_MailFromDomain, _BehaviorOnMXFailure, _MailFromDomainStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdentityMailFromDomainAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MailFromDomain [MailFromDomainName] <p>The custom MAIL FROM domain that the identity is configured to use.</p>
+-- * BehaviorOnMXFailure [BehaviorOnMXFailure] <p>The action that Amazon SES takes if it cannot successfully read the required MX record when you send an email. A value of <code>UseDefaultValue</code> indicates that if Amazon SES cannot read the required MX record, it uses amazonses.com (or a subdomain of that) as the MAIL FROM domain. A value of <code>RejectMessage</code> indicates that if Amazon SES cannot read the required MX record, Amazon SES returns a <code>MailFromDomainNotVerified</code> error and does not send the email.</p> <p>The custom MAIL FROM setup states that result in this behavior are <code>Pending</code>, <code>Failed</code>, and <code>TemporaryFailure</code>.</p>
+-- * MailFromDomainStatus [CustomMailFromStatus] <p>The state that indicates whether Amazon SES has successfully read the MX record required for custom MAIL FROM domain setup. If the state is <code>Success</code>, Amazon SES uses the specified custom MAIL FROM domain when the verified identity sends an email. All other states indicate that Amazon SES takes the action described by <code>BehaviorOnMXFailure</code>.</p>
+-- Required key: MailFromDomain
+-- Required key: MailFromDomainStatus
+-- Required key: BehaviorOnMXFailure
+-- @return IdentityMailFromDomainAttributes structure as a key-value pair table
+function M.IdentityMailFromDomainAttributes(args)
+	assert(args, "You must provdide an argument table when creating IdentityMailFromDomainAttributes")
 	local t = { 
-		["MailFromDomain"] = _MailFromDomain,
-		["BehaviorOnMXFailure"] = _BehaviorOnMXFailure,
-		["MailFromDomainStatus"] = _MailFromDomainStatus,
+		["MailFromDomain"] = args["MailFromDomain"],
+		["BehaviorOnMXFailure"] = args["BehaviorOnMXFailure"],
+		["MailFromDomainStatus"] = args["MailFromDomainStatus"],
 	}
 	asserts.AssertIdentityMailFromDomainAttributes(t)
 	return t
@@ -1225,11 +1357,14 @@ end
 
 --- Create a structure of type GetSendStatisticsResponse
 -- <p>Represents a list of data points. This list contains aggregated data from the previous two weeks of your sending activity with Amazon SES.</p>
--- @param _SendDataPoints [SendDataPointList] <p>A list of data points, each of which represents 15 minutes of activity.</p>
-function M.GetSendStatisticsResponse(_SendDataPoints, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSendStatisticsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SendDataPoints [SendDataPointList] <p>A list of data points, each of which represents 15 minutes of activity.</p>
+-- @return GetSendStatisticsResponse structure as a key-value pair table
+function M.GetSendStatisticsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSendStatisticsResponse")
 	local t = { 
-		["SendDataPoints"] = _SendDataPoints,
+		["SendDataPoints"] = args["SendDataPoints"],
 	}
 	asserts.AssertGetSendStatisticsResponse(t)
 	return t
@@ -1251,15 +1386,18 @@ end
 
 --- Create a structure of type SetIdentityDkimEnabledRequest
 -- <p>Represents a request to enable or disable Amazon SES Easy DKIM signing for an identity. For more information about setting up Easy DKIM, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html">Amazon SES Developer Guide</a>.</p>
--- @param _DkimEnabled [Enabled] <p>Sets whether DKIM signing is enabled for an identity. Set to <code>true</code> to enable DKIM signing for this identity; <code>false</code> to disable it. </p>
--- @param _Identity [Identity] <p>The identity for which DKIM signing should be enabled or disabled.</p>
--- Required parameter: Identity
--- Required parameter: DkimEnabled
-function M.SetIdentityDkimEnabledRequest(_DkimEnabled, _Identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityDkimEnabledRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DkimEnabled [Enabled] <p>Sets whether DKIM signing is enabled for an identity. Set to <code>true</code> to enable DKIM signing for this identity; <code>false</code> to disable it. </p>
+-- * Identity [Identity] <p>The identity for which DKIM signing should be enabled or disabled.</p>
+-- Required key: Identity
+-- Required key: DkimEnabled
+-- @return SetIdentityDkimEnabledRequest structure as a key-value pair table
+function M.SetIdentityDkimEnabledRequest(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityDkimEnabledRequest")
 	local t = { 
-		["DkimEnabled"] = _DkimEnabled,
-		["Identity"] = _Identity,
+		["DkimEnabled"] = args["DkimEnabled"],
+		["Identity"] = args["Identity"],
 	}
 	asserts.AssertSetIdentityDkimEnabledRequest(t)
 	return t
@@ -1284,22 +1422,25 @@ end
 
 --- Create a structure of type ReceiptRule
 -- <p>Receipt rules enable you to specify which actions Amazon SES should take when it receives mail on behalf of one or more email addresses or domains that you own.</p> <p>Each receipt rule defines a set of email addresses or domains to which it applies. If the email addresses or domains match at least one recipient address of the message, Amazon SES executes all of the receipt rule's actions on the message.</p> <p>For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>.</p>
--- @param _Name [ReceiptRuleName] <p>The name of the receipt rule. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
--- @param _Recipients [RecipientsList] <p>The recipient domains and email addresses to which the receipt rule applies. If this field is not specified, this rule will match all recipients under all verified domains.</p>
--- @param _Enabled [Enabled] <p>If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.</p>
--- @param _ScanEnabled [Enabled] <p>If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses. The default value is <code>false</code>.</p>
--- @param _Actions [ReceiptActionsList] <p>An ordered list of actions to perform on messages that match at least one of the recipient email addresses or domains specified in the receipt rule.</p>
--- @param _TlsPolicy [TlsPolicy] <p>Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails that are not received over TLS. The default is <code>Optional</code>.</p>
--- Required parameter: Name
-function M.ReceiptRule(_Name, _Recipients, _Enabled, _ScanEnabled, _Actions, _TlsPolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReceiptRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ReceiptRuleName] <p>The name of the receipt rule. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- * Recipients [RecipientsList] <p>The recipient domains and email addresses to which the receipt rule applies. If this field is not specified, this rule will match all recipients under all verified domains.</p>
+-- * Enabled [Enabled] <p>If <code>true</code>, the receipt rule is active. The default value is <code>false</code>.</p>
+-- * ScanEnabled [Enabled] <p>If <code>true</code>, then messages to which this receipt rule applies are scanned for spam and viruses. The default value is <code>false</code>.</p>
+-- * Actions [ReceiptActionsList] <p>An ordered list of actions to perform on messages that match at least one of the recipient email addresses or domains specified in the receipt rule.</p>
+-- * TlsPolicy [TlsPolicy] <p>Specifies whether Amazon SES should require that incoming email is delivered over a connection encrypted with Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon SES will bounce emails that are not received over TLS. The default is <code>Optional</code>.</p>
+-- Required key: Name
+-- @return ReceiptRule structure as a key-value pair table
+function M.ReceiptRule(args)
+	assert(args, "You must provdide an argument table when creating ReceiptRule")
 	local t = { 
-		["Name"] = _Name,
-		["Recipients"] = _Recipients,
-		["Enabled"] = _Enabled,
-		["ScanEnabled"] = _ScanEnabled,
-		["Actions"] = _Actions,
-		["TlsPolicy"] = _TlsPolicy,
+		["Name"] = args["Name"],
+		["Recipients"] = args["Recipients"],
+		["Enabled"] = args["Enabled"],
+		["ScanEnabled"] = args["ScanEnabled"],
+		["Actions"] = args["Actions"],
+		["TlsPolicy"] = args["TlsPolicy"],
 	}
 	asserts.AssertReceiptRule(t)
 	return t
@@ -1317,8 +1458,11 @@ end
 
 --- Create a structure of type CreateReceiptRuleSetResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.CreateReceiptRuleSetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptRuleSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateReceiptRuleSetResponse structure as a key-value pair table
+function M.CreateReceiptRuleSetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateReceiptRuleSetResponse")
 	local t = { 
 	}
 	asserts.AssertCreateReceiptRuleSetResponse(t)
@@ -1344,23 +1488,26 @@ end
 
 --- Create a structure of type ReceiptAction
 -- <p>An action that Amazon SES can take when it receives an email on behalf of one or more email addresses or domains that you own. An instance of this data type can represent only one action.</p> <p>For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>.</p>
--- @param _AddHeaderAction [AddHeaderAction] <p>Adds a header to the received email.</p>
--- @param _S3Action [S3Action] <p>Saves the received message to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes a notification to Amazon SNS.</p>
--- @param _SNSAction [SNSAction] <p>Publishes the email content within a notification to Amazon SNS.</p>
--- @param _BounceAction [BounceAction] <p>Rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p>
--- @param _LambdaAction [LambdaAction] <p>Calls an AWS Lambda function, and optionally, publishes a notification to Amazon SNS.</p>
--- @param _StopAction [StopAction] <p>Terminates the evaluation of the receipt rule set and optionally publishes a notification to Amazon SNS.</p>
--- @param _WorkmailAction [WorkmailAction] <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon SNS.</p>
-function M.ReceiptAction(_AddHeaderAction, _S3Action, _SNSAction, _BounceAction, _LambdaAction, _StopAction, _WorkmailAction, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReceiptAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AddHeaderAction [AddHeaderAction] <p>Adds a header to the received email.</p>
+-- * S3Action [S3Action] <p>Saves the received message to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes a notification to Amazon SNS.</p>
+-- * SNSAction [SNSAction] <p>Publishes the email content within a notification to Amazon SNS.</p>
+-- * BounceAction [BounceAction] <p>Rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p>
+-- * LambdaAction [LambdaAction] <p>Calls an AWS Lambda function, and optionally, publishes a notification to Amazon SNS.</p>
+-- * StopAction [StopAction] <p>Terminates the evaluation of the receipt rule set and optionally publishes a notification to Amazon SNS.</p>
+-- * WorkmailAction [WorkmailAction] <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon SNS.</p>
+-- @return ReceiptAction structure as a key-value pair table
+function M.ReceiptAction(args)
+	assert(args, "You must provdide an argument table when creating ReceiptAction")
 	local t = { 
-		["AddHeaderAction"] = _AddHeaderAction,
-		["S3Action"] = _S3Action,
-		["SNSAction"] = _SNSAction,
-		["BounceAction"] = _BounceAction,
-		["LambdaAction"] = _LambdaAction,
-		["StopAction"] = _StopAction,
-		["WorkmailAction"] = _WorkmailAction,
+		["AddHeaderAction"] = args["AddHeaderAction"],
+		["S3Action"] = args["S3Action"],
+		["SNSAction"] = args["SNSAction"],
+		["BounceAction"] = args["BounceAction"],
+		["LambdaAction"] = args["LambdaAction"],
+		["StopAction"] = args["StopAction"],
+		["WorkmailAction"] = args["WorkmailAction"],
 	}
 	asserts.AssertReceiptAction(t)
 	return t
@@ -1380,12 +1527,15 @@ end
 
 --- Create a structure of type DeleteReceiptRuleSetRequest
 -- <p>Represents a request to delete a receipt rule set and all of the receipt rules it contains. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to delete.</p>
--- Required parameter: RuleSetName
-function M.DeleteReceiptRuleSetRequest(_RuleSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptRuleSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to delete.</p>
+-- Required key: RuleSetName
+-- @return DeleteReceiptRuleSetRequest structure as a key-value pair table
+function M.DeleteReceiptRuleSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteReceiptRuleSetRequest")
 	local t = { 
-		["RuleSetName"] = _RuleSetName,
+		["RuleSetName"] = args["RuleSetName"],
 	}
 	asserts.AssertDeleteReceiptRuleSetRequest(t)
 	return t
@@ -1403,8 +1553,11 @@ end
 
 --- Create a structure of type SetReceiptRulePositionResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.SetReceiptRulePositionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetReceiptRulePositionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetReceiptRulePositionResponse structure as a key-value pair table
+function M.SetReceiptRulePositionResponse(args)
+	assert(args, "You must provdide an argument table when creating SetReceiptRulePositionResponse")
 	local t = { 
 	}
 	asserts.AssertSetReceiptRulePositionResponse(t)
@@ -1425,12 +1578,15 @@ end
 
 --- Create a structure of type GetIdentityNotificationAttributesRequest
 -- <p>Represents a request to return the notification attributes for a list of identities you verified with Amazon SES. For information about Amazon SES notifications, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html">Amazon SES Developer Guide</a>.</p>
--- @param _Identities [IdentityList] <p>A list of one or more identities. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
--- Required parameter: Identities
-function M.GetIdentityNotificationAttributesRequest(_Identities, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityNotificationAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Identities [IdentityList] <p>A list of one or more identities. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p>
+-- Required key: Identities
+-- @return GetIdentityNotificationAttributesRequest structure as a key-value pair table
+function M.GetIdentityNotificationAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityNotificationAttributesRequest")
 	local t = { 
-		["Identities"] = _Identities,
+		["Identities"] = args["Identities"],
 	}
 	asserts.AssertGetIdentityNotificationAttributesRequest(t)
 	return t
@@ -1449,11 +1605,14 @@ end
 
 --- Create a structure of type InvalidS3ConfigurationException
 -- <p>Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
--- @param _Bucket [S3BucketName] 
-function M.InvalidS3ConfigurationException(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3ConfigurationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [S3BucketName] 
+-- @return InvalidS3ConfigurationException structure as a key-value pair table
+function M.InvalidS3ConfigurationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidS3ConfigurationException")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertInvalidS3ConfigurationException(t)
 	return t
@@ -1475,16 +1634,19 @@ end
 
 --- Create a structure of type SetIdentityMailFromDomainRequest
 -- <p>Represents a request to enable or disable the Amazon SES custom MAIL FROM domain setup for a verified identity. For information about using a custom MAIL FROM domain, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>.</p>
--- @param _MailFromDomain [MailFromDomainName] <p>The custom MAIL FROM domain that you want the verified identity to use. The MAIL FROM domain must 1) be a subdomain of the verified identity, 2) not be used in a "From" address if the MAIL FROM domain is the destination of email feedback forwarding (for more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>), and 3) not be used to receive emails. A value of <code>null</code> disables the custom MAIL FROM setting for the identity.</p>
--- @param _Identity [Identity] <p>The verified identity for which you want to enable or disable the specified custom MAIL FROM domain.</p>
--- @param _BehaviorOnMXFailure [BehaviorOnMXFailure] <p>The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. If you choose <code>UseDefaultValue</code>, Amazon SES will use amazonses.com (or a subdomain of that) as the MAIL FROM domain. If you choose <code>RejectMessage</code>, Amazon SES will return a <code>MailFromDomainNotVerified</code> error and not send the email.</p> <p>The action specified in <code>BehaviorOnMXFailure</code> is taken when the custom MAIL FROM domain setup is in the <code>Pending</code>, <code>Failed</code>, and <code>TemporaryFailure</code> states.</p>
--- Required parameter: Identity
-function M.SetIdentityMailFromDomainRequest(_MailFromDomain, _Identity, _BehaviorOnMXFailure, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityMailFromDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MailFromDomain [MailFromDomainName] <p>The custom MAIL FROM domain that you want the verified identity to use. The MAIL FROM domain must 1) be a subdomain of the verified identity, 2) not be used in a "From" address if the MAIL FROM domain is the destination of email feedback forwarding (for more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>), and 3) not be used to receive emails. A value of <code>null</code> disables the custom MAIL FROM setting for the identity.</p>
+-- * Identity [Identity] <p>The verified identity for which you want to enable or disable the specified custom MAIL FROM domain.</p>
+-- * BehaviorOnMXFailure [BehaviorOnMXFailure] <p>The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. If you choose <code>UseDefaultValue</code>, Amazon SES will use amazonses.com (or a subdomain of that) as the MAIL FROM domain. If you choose <code>RejectMessage</code>, Amazon SES will return a <code>MailFromDomainNotVerified</code> error and not send the email.</p> <p>The action specified in <code>BehaviorOnMXFailure</code> is taken when the custom MAIL FROM domain setup is in the <code>Pending</code>, <code>Failed</code>, and <code>TemporaryFailure</code> states.</p>
+-- Required key: Identity
+-- @return SetIdentityMailFromDomainRequest structure as a key-value pair table
+function M.SetIdentityMailFromDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityMailFromDomainRequest")
 	local t = { 
-		["MailFromDomain"] = _MailFromDomain,
-		["Identity"] = _Identity,
-		["BehaviorOnMXFailure"] = _BehaviorOnMXFailure,
+		["MailFromDomain"] = args["MailFromDomain"],
+		["Identity"] = args["Identity"],
+		["BehaviorOnMXFailure"] = args["BehaviorOnMXFailure"],
 	}
 	asserts.AssertSetIdentityMailFromDomainRequest(t)
 	return t
@@ -1502,8 +1664,11 @@ end
 
 --- Create a structure of type DeleteConfigurationSetEventDestinationResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.DeleteConfigurationSetEventDestinationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigurationSetEventDestinationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteConfigurationSetEventDestinationResponse structure as a key-value pair table
+function M.DeleteConfigurationSetEventDestinationResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteConfigurationSetEventDestinationResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteConfigurationSetEventDestinationResponse(t)
@@ -1526,15 +1691,18 @@ end
 
 --- Create a structure of type UpdateReceiptRuleRequest
 -- <p>Represents a request to update a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to which the receipt rule belongs.</p>
--- @param _Rule [ReceiptRule] <p>A data structure that contains the updated receipt rule information.</p>
--- Required parameter: RuleSetName
--- Required parameter: Rule
-function M.UpdateReceiptRuleRequest(_RuleSetName, _Rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateReceiptRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to which the receipt rule belongs.</p>
+-- * Rule [ReceiptRule] <p>A data structure that contains the updated receipt rule information.</p>
+-- Required key: RuleSetName
+-- Required key: Rule
+-- @return UpdateReceiptRuleRequest structure as a key-value pair table
+function M.UpdateReceiptRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateReceiptRuleRequest")
 	local t = { 
-		["RuleSetName"] = _RuleSetName,
-		["Rule"] = _Rule,
+		["RuleSetName"] = args["RuleSetName"],
+		["Rule"] = args["Rule"],
 	}
 	asserts.AssertUpdateReceiptRuleRequest(t)
 	return t
@@ -1552,8 +1720,11 @@ end
 
 --- Create a structure of type SetIdentityHeadersInNotificationsEnabledResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.SetIdentityHeadersInNotificationsEnabledResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityHeadersInNotificationsEnabledResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetIdentityHeadersInNotificationsEnabledResponse structure as a key-value pair table
+function M.SetIdentityHeadersInNotificationsEnabledResponse(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityHeadersInNotificationsEnabledResponse")
 	local t = { 
 	}
 	asserts.AssertSetIdentityHeadersInNotificationsEnabledResponse(t)
@@ -1575,14 +1746,17 @@ end
 
 --- Create a structure of type WorkmailAction
 -- <p>When included in a receipt rule, this action calls Amazon WorkMail and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS). You will typically not use this action directly because Amazon WorkMail adds the rule automatically during its setup procedure.</p> <p>For information using a receipt rule to call Amazon WorkMail, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-workmail.html">Amazon SES Developer Guide</a>.</p>
--- @param _OrganizationArn [AmazonResourceName] <p>The ARN of the Amazon WorkMail organization. An example of an Amazon WorkMail organization ARN is <code>arn:aws:workmail:us-west-2:123456789012:organization/m-68755160c4cb4e29a2b2f8fb58f359d7</code>. For information about Amazon WorkMail organizations, see the <a href="http://docs.aws.amazon.com/workmail/latest/adminguide/organizations_overview.html">Amazon WorkMail Administrator Guide</a>.</p>
--- @param _TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the WorkMail action is called. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
--- Required parameter: OrganizationArn
-function M.WorkmailAction(_OrganizationArn, _TopicArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkmailAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OrganizationArn [AmazonResourceName] <p>The ARN of the Amazon WorkMail organization. An example of an Amazon WorkMail organization ARN is <code>arn:aws:workmail:us-west-2:123456789012:organization/m-68755160c4cb4e29a2b2f8fb58f359d7</code>. For information about Amazon WorkMail organizations, see the <a href="http://docs.aws.amazon.com/workmail/latest/adminguide/organizations_overview.html">Amazon WorkMail Administrator Guide</a>.</p>
+-- * TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the WorkMail action is called. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
+-- Required key: OrganizationArn
+-- @return WorkmailAction structure as a key-value pair table
+function M.WorkmailAction(args)
+	assert(args, "You must provdide an argument table when creating WorkmailAction")
 	local t = { 
-		["OrganizationArn"] = _OrganizationArn,
-		["TopicArn"] = _TopicArn,
+		["OrganizationArn"] = args["OrganizationArn"],
+		["TopicArn"] = args["TopicArn"],
 	}
 	asserts.AssertWorkmailAction(t)
 	return t
@@ -1604,15 +1778,18 @@ end
 
 --- Create a structure of type ReceiptFilter
 -- <p>A receipt IP address filter enables you to specify whether to accept or reject mail originating from an IP address or range of IP addresses.</p> <p>For information about setting up IP address filters, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html">Amazon SES Developer Guide</a>.</p>
--- @param _IpFilter [ReceiptIpFilter] <p>A structure that provides the IP addresses to block or allow, and whether to block or allow incoming mail from them.</p>
--- @param _Name [ReceiptFilterName] <p>The name of the IP address filter. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
--- Required parameter: Name
--- Required parameter: IpFilter
-function M.ReceiptFilter(_IpFilter, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReceiptFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IpFilter [ReceiptIpFilter] <p>A structure that provides the IP addresses to block or allow, and whether to block or allow incoming mail from them.</p>
+-- * Name [ReceiptFilterName] <p>The name of the IP address filter. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- Required key: Name
+-- Required key: IpFilter
+-- @return ReceiptFilter structure as a key-value pair table
+function M.ReceiptFilter(args)
+	assert(args, "You must provdide an argument table when creating ReceiptFilter")
 	local t = { 
-		["IpFilter"] = _IpFilter,
-		["Name"] = _Name,
+		["IpFilter"] = args["IpFilter"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertReceiptFilter(t)
 	return t
@@ -1630,8 +1807,11 @@ end
 
 --- Create a structure of type SetIdentityFeedbackForwardingEnabledResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.SetIdentityFeedbackForwardingEnabledResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityFeedbackForwardingEnabledResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetIdentityFeedbackForwardingEnabledResponse structure as a key-value pair table
+function M.SetIdentityFeedbackForwardingEnabledResponse(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityFeedbackForwardingEnabledResponse")
 	local t = { 
 	}
 	asserts.AssertSetIdentityFeedbackForwardingEnabledResponse(t)
@@ -1651,11 +1831,14 @@ end
 
 --- Create a structure of type ConfigurationSetAlreadyExistsException
 -- <p>Indicates that the configuration set could not be created because of a naming conflict.</p>
--- @param _ConfigurationSetName [ConfigurationSetName] 
-function M.ConfigurationSetAlreadyExistsException(_ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSetAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationSetName [ConfigurationSetName] 
+-- @return ConfigurationSetAlreadyExistsException structure as a key-value pair table
+function M.ConfigurationSetAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationSetAlreadyExistsException")
 	local t = { 
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertConfigurationSetAlreadyExistsException(t)
 	return t
@@ -1675,13 +1858,16 @@ end
 
 --- Create a structure of type DescribeReceiptRuleSetResponse
 -- <p>Represents the details of the specified receipt rule set.</p>
--- @param _Rules [ReceiptRulesList] <p>A list of the receipt rules that belong to the specified receipt rule set.</p>
--- @param _Metadata [ReceiptRuleSetMetadata] <p>The metadata for the receipt rule set, which consists of the rule set name and the timestamp of when the rule set was created.</p>
-function M.DescribeReceiptRuleSetResponse(_Rules, _Metadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReceiptRuleSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [ReceiptRulesList] <p>A list of the receipt rules that belong to the specified receipt rule set.</p>
+-- * Metadata [ReceiptRuleSetMetadata] <p>The metadata for the receipt rule set, which consists of the rule set name and the timestamp of when the rule set was created.</p>
+-- @return DescribeReceiptRuleSetResponse structure as a key-value pair table
+function M.DescribeReceiptRuleSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeReceiptRuleSetResponse")
 	local t = { 
-		["Rules"] = _Rules,
-		["Metadata"] = _Metadata,
+		["Rules"] = args["Rules"],
+		["Metadata"] = args["Metadata"],
 	}
 	asserts.AssertDescribeReceiptRuleSetResponse(t)
 	return t
@@ -1700,11 +1886,14 @@ end
 
 --- Create a structure of type ListReceiptRuleSetsRequest
 -- <p>Represents a request to list the receipt rule sets that exist under your AWS account. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _NextToken [NextToken] <p>A token returned from a previous call to <code>ListReceiptRuleSets</code> to indicate the position in the receipt rule set list.</p>
-function M.ListReceiptRuleSetsRequest(_NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListReceiptRuleSetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>A token returned from a previous call to <code>ListReceiptRuleSets</code> to indicate the position in the receipt rule set list.</p>
+-- @return ListReceiptRuleSetsRequest structure as a key-value pair table
+function M.ListReceiptRuleSetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListReceiptRuleSetsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListReceiptRuleSetsRequest(t)
 	return t
@@ -1724,12 +1913,15 @@ end
 
 --- Create a structure of type VerifyEmailIdentityRequest
 -- <p>Represents a request to begin email address verification with Amazon SES. For information about email address verification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html">Amazon SES Developer Guide</a>.</p>
--- @param _EmailAddress [Address] <p>The email address to be verified.</p>
--- Required parameter: EmailAddress
-function M.VerifyEmailIdentityRequest(_EmailAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VerifyEmailIdentityRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EmailAddress [Address] <p>The email address to be verified.</p>
+-- Required key: EmailAddress
+-- @return VerifyEmailIdentityRequest structure as a key-value pair table
+function M.VerifyEmailIdentityRequest(args)
+	assert(args, "You must provdide an argument table when creating VerifyEmailIdentityRequest")
 	local t = { 
-		["EmailAddress"] = _EmailAddress,
+		["EmailAddress"] = args["EmailAddress"],
 	}
 	asserts.AssertVerifyEmailIdentityRequest(t)
 	return t
@@ -1751,15 +1943,18 @@ end
 
 --- Create a structure of type MessageTag
 -- <p>Contains the name and value of a tag that you can provide to <code>SendEmail</code> or <code>SendRawEmail</code> to apply to an email.</p> <p>Message tags, which you use with configuration sets, enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _Name [MessageTagName] <p>The name of the tag. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
--- @param _Value [MessageTagValue] <p>The value of the tag. The value must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
--- Required parameter: Name
--- Required parameter: Value
-function M.MessageTag(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MessageTag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [MessageTagName] <p>The name of the tag. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
+-- * Value [MessageTagValue] <p>The value of the tag. The value must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
+-- Required key: Name
+-- Required key: Value
+-- @return MessageTag structure as a key-value pair table
+function M.MessageTag(args)
+	assert(args, "You must provdide an argument table when creating MessageTag")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertMessageTag(t)
 	return t
@@ -1779,12 +1974,15 @@ end
 
 --- Create a structure of type GetIdentityMailFromDomainAttributesResponse
 -- <p>Represents the custom MAIL FROM attributes for a list of identities.</p>
--- @param _MailFromDomainAttributes [MailFromDomainAttributes] <p>A map of identities to custom MAIL FROM attributes.</p>
--- Required parameter: MailFromDomainAttributes
-function M.GetIdentityMailFromDomainAttributesResponse(_MailFromDomainAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityMailFromDomainAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MailFromDomainAttributes [MailFromDomainAttributes] <p>A map of identities to custom MAIL FROM attributes.</p>
+-- Required key: MailFromDomainAttributes
+-- @return GetIdentityMailFromDomainAttributesResponse structure as a key-value pair table
+function M.GetIdentityMailFromDomainAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityMailFromDomainAttributesResponse")
 	local t = { 
-		["MailFromDomainAttributes"] = _MailFromDomainAttributes,
+		["MailFromDomainAttributes"] = args["MailFromDomainAttributes"],
 	}
 	asserts.AssertGetIdentityMailFromDomainAttributesResponse(t)
 	return t
@@ -1805,14 +2003,17 @@ end
 
 --- Create a structure of type ListIdentitiesResponse
 -- <p>A list of all identities that you have attempted to verify under your AWS account, regardless of verification status.</p>
--- @param _NextToken [NextToken] <p>The token used for pagination.</p>
--- @param _Identities [IdentityList] <p>A list of identities.</p>
--- Required parameter: Identities
-function M.ListIdentitiesResponse(_NextToken, _Identities, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentitiesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token used for pagination.</p>
+-- * Identities [IdentityList] <p>A list of identities.</p>
+-- Required key: Identities
+-- @return ListIdentitiesResponse structure as a key-value pair table
+function M.ListIdentitiesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListIdentitiesResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Identities"] = _Identities,
+		["NextToken"] = args["NextToken"],
+		["Identities"] = args["Identities"],
 	}
 	asserts.AssertListIdentitiesResponse(t)
 	return t
@@ -1834,15 +2035,18 @@ end
 
 --- Create a structure of type Message
 -- <p>Represents the message to be sent, composed of a subject and a body.</p>
--- @param _Body [Body] <p>The message body.</p>
--- @param _Subject [Content] <p>The subject of the message: A short summary of the content, which will appear in the recipient's inbox.</p>
--- Required parameter: Subject
--- Required parameter: Body
-function M.Message(_Body, _Subject, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Message")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Body [Body] <p>The message body.</p>
+-- * Subject [Content] <p>The subject of the message: A short summary of the content, which will appear in the recipient's inbox.</p>
+-- Required key: Subject
+-- Required key: Body
+-- @return Message structure as a key-value pair table
+function M.Message(args)
+	assert(args, "You must provdide an argument table when creating Message")
 	local t = { 
-		["Body"] = _Body,
-		["Subject"] = _Subject,
+		["Body"] = args["Body"],
+		["Subject"] = args["Subject"],
 	}
 	asserts.AssertMessage(t)
 	return t
@@ -1862,12 +2066,15 @@ end
 
 --- Create a structure of type DescribeReceiptRuleSetRequest
 -- <p>Represents a request to return the details of a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to describe.</p>
--- Required parameter: RuleSetName
-function M.DescribeReceiptRuleSetRequest(_RuleSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReceiptRuleSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to describe.</p>
+-- Required key: RuleSetName
+-- @return DescribeReceiptRuleSetRequest structure as a key-value pair table
+function M.DescribeReceiptRuleSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeReceiptRuleSetRequest")
 	local t = { 
-		["RuleSetName"] = _RuleSetName,
+		["RuleSetName"] = args["RuleSetName"],
 	}
 	asserts.AssertDescribeReceiptRuleSetRequest(t)
 	return t
@@ -1894,24 +2101,27 @@ end
 
 --- Create a structure of type SendBounceRequest
 -- <p>Represents a request to send a bounce message to the sender of an email you received through Amazon SES.</p>
--- @param _OriginalMessageId [MessageId] <p>The message ID of the message to be bounced.</p>
--- @param _BounceSenderArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the address in the "From" header of the bounce. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
--- @param _Explanation [Explanation] <p>Human-readable text for the bounce message to explain the failure. If not specified, the text will be auto-generated based on the bounced recipient information.</p>
--- @param _BouncedRecipientInfoList [BouncedRecipientInfoList] <p>A list of recipients of the bounced message, including the information required to create the Delivery Status Notifications (DSNs) for the recipients. You must specify at least one <code>BouncedRecipientInfo</code> in the list.</p>
--- @param _BounceSender [Address] <p>The address to use in the "From" header of the bounce message. This must be an identity that you have verified with Amazon SES.</p>
--- @param _MessageDsn [MessageDsn] <p>Message-related DSN fields. If not specified, Amazon SES will choose the values.</p>
--- Required parameter: OriginalMessageId
--- Required parameter: BounceSender
--- Required parameter: BouncedRecipientInfoList
-function M.SendBounceRequest(_OriginalMessageId, _BounceSenderArn, _Explanation, _BouncedRecipientInfoList, _BounceSender, _MessageDsn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendBounceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OriginalMessageId [MessageId] <p>The message ID of the message to be bounced.</p>
+-- * BounceSenderArn [AmazonResourceName] <p>This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the address in the "From" header of the bounce. For more information about sending authorization, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
+-- * Explanation [Explanation] <p>Human-readable text for the bounce message to explain the failure. If not specified, the text will be auto-generated based on the bounced recipient information.</p>
+-- * BouncedRecipientInfoList [BouncedRecipientInfoList] <p>A list of recipients of the bounced message, including the information required to create the Delivery Status Notifications (DSNs) for the recipients. You must specify at least one <code>BouncedRecipientInfo</code> in the list.</p>
+-- * BounceSender [Address] <p>The address to use in the "From" header of the bounce message. This must be an identity that you have verified with Amazon SES.</p>
+-- * MessageDsn [MessageDsn] <p>Message-related DSN fields. If not specified, Amazon SES will choose the values.</p>
+-- Required key: OriginalMessageId
+-- Required key: BounceSender
+-- Required key: BouncedRecipientInfoList
+-- @return SendBounceRequest structure as a key-value pair table
+function M.SendBounceRequest(args)
+	assert(args, "You must provdide an argument table when creating SendBounceRequest")
 	local t = { 
-		["OriginalMessageId"] = _OriginalMessageId,
-		["BounceSenderArn"] = _BounceSenderArn,
-		["Explanation"] = _Explanation,
-		["BouncedRecipientInfoList"] = _BouncedRecipientInfoList,
-		["BounceSender"] = _BounceSender,
-		["MessageDsn"] = _MessageDsn,
+		["OriginalMessageId"] = args["OriginalMessageId"],
+		["BounceSenderArn"] = args["BounceSenderArn"],
+		["Explanation"] = args["Explanation"],
+		["BouncedRecipientInfoList"] = args["BouncedRecipientInfoList"],
+		["BounceSender"] = args["BounceSender"],
+		["MessageDsn"] = args["MessageDsn"],
 	}
 	asserts.AssertSendBounceRequest(t)
 	return t
@@ -1935,18 +2145,21 @@ end
 
 --- Create a structure of type CloudWatchDimensionConfiguration
 -- <p>Contains the dimension configuration to use when you publish email sending events to Amazon CloudWatch.</p> <p>For information about publishing email sending events to Amazon CloudWatch, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _DimensionName [DimensionName] <p>The name of an Amazon CloudWatch dimension associated with an email sending metric. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
--- @param _DimensionValueSource [DimensionValueSource] <p>The place where Amazon SES finds the value of a dimension to publish to Amazon CloudWatch. If you want Amazon SES to use the message tags that you specify using an <code>X-SES-MESSAGE-TAGS</code> header or a parameter to the <code>SendEmail</code>/<code>SendRawEmail</code> API, choose <code>messageTag</code>. If you want Amazon SES to use your own email headers, choose <code>emailHeader</code>.</p>
--- @param _DefaultDimensionValue [DefaultDimensionValue] <p>The default value of the dimension that is published to Amazon CloudWatch if you do not provide the value of the dimension when you send an email. The default value must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
--- Required parameter: DimensionName
--- Required parameter: DimensionValueSource
--- Required parameter: DefaultDimensionValue
-function M.CloudWatchDimensionConfiguration(_DimensionName, _DimensionValueSource, _DefaultDimensionValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchDimensionConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DimensionName [DimensionName] <p>The name of an Amazon CloudWatch dimension associated with an email sending metric. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
+-- * DimensionValueSource [DimensionValueSource] <p>The place where Amazon SES finds the value of a dimension to publish to Amazon CloudWatch. If you want Amazon SES to use the message tags that you specify using an <code>X-SES-MESSAGE-TAGS</code> header or a parameter to the <code>SendEmail</code>/<code>SendRawEmail</code> API, choose <code>messageTag</code>. If you want Amazon SES to use your own email headers, choose <code>emailHeader</code>.</p>
+-- * DefaultDimensionValue [DefaultDimensionValue] <p>The default value of the dimension that is published to Amazon CloudWatch if you do not provide the value of the dimension when you send an email. The default value must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).</p> </li> <li> <p>Contain less than 256 characters.</p> </li> </ul>
+-- Required key: DimensionName
+-- Required key: DimensionValueSource
+-- Required key: DefaultDimensionValue
+-- @return CloudWatchDimensionConfiguration structure as a key-value pair table
+function M.CloudWatchDimensionConfiguration(args)
+	assert(args, "You must provdide an argument table when creating CloudWatchDimensionConfiguration")
 	local t = { 
-		["DimensionName"] = _DimensionName,
-		["DimensionValueSource"] = _DimensionValueSource,
-		["DefaultDimensionValue"] = _DefaultDimensionValue,
+		["DimensionName"] = args["DimensionName"],
+		["DimensionValueSource"] = args["DimensionValueSource"],
+		["DefaultDimensionValue"] = args["DefaultDimensionValue"],
 	}
 	asserts.AssertCloudWatchDimensionConfiguration(t)
 	return t
@@ -1966,12 +2179,15 @@ end
 
 --- Create a structure of type ListIdentityPoliciesRequest
 -- <p>Represents a request to return a list of sending authorization policies that are attached to an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
--- @param _Identity [Identity] <p>The identity that is associated with the policy for which the policies will be listed. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
--- Required parameter: Identity
-function M.ListIdentityPoliciesRequest(_Identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Identity [Identity] <p>The identity that is associated with the policy for which the policies will be listed. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
+-- Required key: Identity
+-- @return ListIdentityPoliciesRequest structure as a key-value pair table
+function M.ListIdentityPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListIdentityPoliciesRequest")
 	local t = { 
-		["Identity"] = _Identity,
+		["Identity"] = args["Identity"],
 	}
 	asserts.AssertListIdentityPoliciesRequest(t)
 	return t
@@ -1990,11 +2206,14 @@ end
 
 --- Create a structure of type AlreadyExistsException
 -- <p>Indicates that a resource could not be created because of a naming conflict.</p>
--- @param _Name [RuleOrRuleSetName] 
-function M.AlreadyExistsException(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [RuleOrRuleSetName] 
+-- @return AlreadyExistsException structure as a key-value pair table
+function M.AlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating AlreadyExistsException")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertAlreadyExistsException(t)
 	return t
@@ -2013,11 +2232,14 @@ end
 
 --- Create a structure of type DescribeReceiptRuleResponse
 -- <p>Represents the details of a receipt rule.</p>
--- @param _Rule [ReceiptRule] <p>A data structure that contains the specified receipt rule's name, actions, recipients, domains, enabled status, scan status, and Transport Layer Security (TLS) policy.</p>
-function M.DescribeReceiptRuleResponse(_Rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReceiptRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rule [ReceiptRule] <p>A data structure that contains the specified receipt rule's name, actions, recipients, domains, enabled status, scan status, and Transport Layer Security (TLS) policy.</p>
+-- @return DescribeReceiptRuleResponse structure as a key-value pair table
+function M.DescribeReceiptRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeReceiptRuleResponse")
 	local t = { 
-		["Rule"] = _Rule,
+		["Rule"] = args["Rule"],
 	}
 	asserts.AssertDescribeReceiptRuleResponse(t)
 	return t
@@ -2037,12 +2259,15 @@ end
 
 --- Create a structure of type GetIdentityDkimAttributesResponse
 -- <p>Represents the status of Amazon SES Easy DKIM signing for an identity. For domain identities, this response also contains the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES successfully verified that these tokens were published.</p>
--- @param _DkimAttributes [DkimAttributes] <p>The DKIM attributes for an email address or a domain.</p>
--- Required parameter: DkimAttributes
-function M.GetIdentityDkimAttributesResponse(_DkimAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityDkimAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DkimAttributes [DkimAttributes] <p>The DKIM attributes for an email address or a domain.</p>
+-- Required key: DkimAttributes
+-- @return GetIdentityDkimAttributesResponse structure as a key-value pair table
+function M.GetIdentityDkimAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityDkimAttributesResponse")
 	local t = { 
-		["DkimAttributes"] = _DkimAttributes,
+		["DkimAttributes"] = args["DkimAttributes"],
 	}
 	asserts.AssertGetIdentityDkimAttributesResponse(t)
 	return t
@@ -2065,17 +2290,20 @@ end
 
 --- Create a structure of type CreateReceiptRuleRequest
 -- <p>Represents a request to create a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _After [ReceiptRuleName] <p>The name of an existing rule after which the new rule will be placed. If this parameter is null, the new rule will be inserted at the beginning of the rule list.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to which to add the rule.</p>
--- @param _Rule [ReceiptRule] <p>A data structure that contains the specified rule's name, actions, recipients, domains, enabled status, scan status, and TLS policy.</p>
--- Required parameter: RuleSetName
--- Required parameter: Rule
-function M.CreateReceiptRuleRequest(_After, _RuleSetName, _Rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * After [ReceiptRuleName] <p>The name of an existing rule after which the new rule will be placed. If this parameter is null, the new rule will be inserted at the beginning of the rule list.</p>
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to which to add the rule.</p>
+-- * Rule [ReceiptRule] <p>A data structure that contains the specified rule's name, actions, recipients, domains, enabled status, scan status, and TLS policy.</p>
+-- Required key: RuleSetName
+-- Required key: Rule
+-- @return CreateReceiptRuleRequest structure as a key-value pair table
+function M.CreateReceiptRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateReceiptRuleRequest")
 	local t = { 
-		["After"] = _After,
-		["RuleSetName"] = _RuleSetName,
-		["Rule"] = _Rule,
+		["After"] = args["After"],
+		["RuleSetName"] = args["RuleSetName"],
+		["Rule"] = args["Rule"],
 	}
 	asserts.AssertCreateReceiptRuleRequest(t)
 	return t
@@ -2097,15 +2325,18 @@ end
 
 --- Create a structure of type DeleteReceiptRuleRequest
 -- <p>Represents a request to delete a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set that contains the receipt rule to delete.</p>
--- @param _RuleName [ReceiptRuleName] <p>The name of the receipt rule to delete.</p>
--- Required parameter: RuleSetName
--- Required parameter: RuleName
-function M.DeleteReceiptRuleRequest(_RuleSetName, _RuleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set that contains the receipt rule to delete.</p>
+-- * RuleName [ReceiptRuleName] <p>The name of the receipt rule to delete.</p>
+-- Required key: RuleSetName
+-- Required key: RuleName
+-- @return DeleteReceiptRuleRequest structure as a key-value pair table
+function M.DeleteReceiptRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteReceiptRuleRequest")
 	local t = { 
-		["RuleSetName"] = _RuleSetName,
-		["RuleName"] = _RuleName,
+		["RuleSetName"] = args["RuleSetName"],
+		["RuleName"] = args["RuleName"],
 	}
 	asserts.AssertDeleteReceiptRuleRequest(t)
 	return t
@@ -2126,14 +2357,17 @@ end
 
 --- Create a structure of type SNSAction
 -- <p>When included in a receipt rule, this action publishes a notification to Amazon Simple Notification Service (Amazon SNS). This action includes a complete copy of the email content in the Amazon SNS notifications. Amazon SNS notifications for all other actions simply provide information about the email. They do not include the email content itself.</p> <p>If you own the Amazon SNS topic, you don't need to do anything to give Amazon SES permission to publish emails to it. However, if you don't own the Amazon SNS topic, you need to attach a policy to the topic to give Amazon SES permissions to access it. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <important> <p>You can only publish emails that are 150 KB or less (including the header) to Amazon SNS. Larger emails will bounce. If you anticipate emails larger than 150 KB, use the S3 action instead.</p> </important> <p>For information about using a receipt rule to publish an Amazon SNS notification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-sns.html">Amazon SES Developer Guide</a>.</p>
--- @param _TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
--- @param _Encoding [SNSActionEncoding] <p>The encoding to use for the email within the Amazon SNS notification. UTF-8 is easier to use, but may not preserve all special characters when a message was encoded with a different encoding format. Base64 preserves all special characters. The default value is UTF-8.</p>
--- Required parameter: TopicArn
-function M.SNSAction(_TopicArn, _Encoding, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SNSAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
+-- * Encoding [SNSActionEncoding] <p>The encoding to use for the email within the Amazon SNS notification. UTF-8 is easier to use, but may not preserve all special characters when a message was encoded with a different encoding format. Base64 preserves all special characters. The default value is UTF-8.</p>
+-- Required key: TopicArn
+-- @return SNSAction structure as a key-value pair table
+function M.SNSAction(args)
+	assert(args, "You must provdide an argument table when creating SNSAction")
 	local t = { 
-		["TopicArn"] = _TopicArn,
-		["Encoding"] = _Encoding,
+		["TopicArn"] = args["TopicArn"],
+		["Encoding"] = args["Encoding"],
 	}
 	asserts.AssertSNSAction(t)
 	return t
@@ -2151,8 +2385,11 @@ end
 
 --- Create a structure of type DeleteIdentityPolicyResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.DeleteIdentityPolicyResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteIdentityPolicyResponse structure as a key-value pair table
+function M.DeleteIdentityPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteIdentityPolicyResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteIdentityPolicyResponse(t)
@@ -2175,16 +2412,19 @@ end
 
 --- Create a structure of type MessageDsn
 -- <p>Message-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
--- @param _ArrivalDate [ArrivalDate] <p>When the message was received by the reporting mail transfer agent (MTA), in <a href="https://www.ietf.org/rfc/rfc0822.txt">RFC 822</a> date-time format.</p>
--- @param _ReportingMta [ReportingMta] <p>The reporting MTA that attempted to deliver the message, formatted as specified in <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a> (<code>mta-name-type; mta-name</code>). The default value is <code>dns; inbound-smtp.[region].amazonaws.com</code>.</p>
--- @param _ExtensionFields [ExtensionFieldList] <p>Additional X-headers to include in the DSN.</p>
--- Required parameter: ReportingMta
-function M.MessageDsn(_ArrivalDate, _ReportingMta, _ExtensionFields, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MessageDsn")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ArrivalDate [ArrivalDate] <p>When the message was received by the reporting mail transfer agent (MTA), in <a href="https://www.ietf.org/rfc/rfc0822.txt">RFC 822</a> date-time format.</p>
+-- * ReportingMta [ReportingMta] <p>The reporting MTA that attempted to deliver the message, formatted as specified in <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a> (<code>mta-name-type; mta-name</code>). The default value is <code>dns; inbound-smtp.[region].amazonaws.com</code>.</p>
+-- * ExtensionFields [ExtensionFieldList] <p>Additional X-headers to include in the DSN.</p>
+-- Required key: ReportingMta
+-- @return MessageDsn structure as a key-value pair table
+function M.MessageDsn(args)
+	assert(args, "You must provdide an argument table when creating MessageDsn")
 	local t = { 
-		["ArrivalDate"] = _ArrivalDate,
-		["ReportingMta"] = _ReportingMta,
-		["ExtensionFields"] = _ExtensionFields,
+		["ArrivalDate"] = args["ArrivalDate"],
+		["ReportingMta"] = args["ReportingMta"],
+		["ExtensionFields"] = args["ExtensionFields"],
 	}
 	asserts.AssertMessageDsn(t)
 	return t
@@ -2204,12 +2444,15 @@ end
 
 --- Create a structure of type VerifyDomainDkimResponse
 -- <p>Returns CNAME records that you must publish to the DNS server of your domain to set up Easy DKIM with Amazon SES.</p>
--- @param _DkimTokens [VerificationTokenList] <p>A set of character strings that represent the domain's identity. If the identity is an email address, the tokens represent the domain of that address.</p> <p>Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign emails originating from that domain.</p> <p>For more information about creating DNS records using DKIM tokens, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html">Amazon SES Developer Guide</a>.</p>
--- Required parameter: DkimTokens
-function M.VerifyDomainDkimResponse(_DkimTokens, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VerifyDomainDkimResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DkimTokens [VerificationTokenList] <p>A set of character strings that represent the domain's identity. If the identity is an email address, the tokens represent the domain of that address.</p> <p>Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign emails originating from that domain.</p> <p>For more information about creating DNS records using DKIM tokens, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html">Amazon SES Developer Guide</a>.</p>
+-- Required key: DkimTokens
+-- @return VerifyDomainDkimResponse structure as a key-value pair table
+function M.VerifyDomainDkimResponse(args)
+	assert(args, "You must provdide an argument table when creating VerifyDomainDkimResponse")
 	local t = { 
-		["DkimTokens"] = _DkimTokens,
+		["DkimTokens"] = args["DkimTokens"],
 	}
 	asserts.AssertVerifyDomainDkimResponse(t)
 	return t
@@ -2227,8 +2470,11 @@ end
 
 --- Create a structure of type ListReceiptFiltersRequest
 -- <p>Represents a request to list the IP address filters that exist under your AWS account. You use IP address filters when you receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
-function M.ListReceiptFiltersRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListReceiptFiltersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ListReceiptFiltersRequest structure as a key-value pair table
+function M.ListReceiptFiltersRequest(args)
+	assert(args, "You must provdide an argument table when creating ListReceiptFiltersRequest")
 	local t = { 
 	}
 	asserts.AssertListReceiptFiltersRequest(t)
@@ -2250,14 +2496,17 @@ end
 
 --- Create a structure of type DescribeConfigurationSetRequest
 -- <p>Represents a request to return the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _ConfigurationSetAttributeNames [ConfigurationSetAttributeList] <p>A list of configuration set attributes to return.</p>
--- @param _ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to describe.</p>
--- Required parameter: ConfigurationSetName
-function M.DescribeConfigurationSetRequest(_ConfigurationSetAttributeNames, _ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationSetAttributeNames [ConfigurationSetAttributeList] <p>A list of configuration set attributes to return.</p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set to describe.</p>
+-- Required key: ConfigurationSetName
+-- @return DescribeConfigurationSetRequest structure as a key-value pair table
+function M.DescribeConfigurationSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigurationSetRequest")
 	local t = { 
-		["ConfigurationSetAttributeNames"] = _ConfigurationSetAttributeNames,
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["ConfigurationSetAttributeNames"] = args["ConfigurationSetAttributeNames"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertDescribeConfigurationSetRequest(t)
 	return t
@@ -2275,8 +2524,11 @@ end
 
 --- Create a structure of type CreateConfigurationSetEventDestinationResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.CreateConfigurationSetEventDestinationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateConfigurationSetEventDestinationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateConfigurationSetEventDestinationResponse structure as a key-value pair table
+function M.CreateConfigurationSetEventDestinationResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateConfigurationSetEventDestinationResponse")
 	local t = { 
 	}
 	asserts.AssertCreateConfigurationSetEventDestinationResponse(t)
@@ -2297,12 +2549,15 @@ end
 
 --- Create a structure of type SendRawEmailResponse
 -- <p>Represents a unique message ID.</p>
--- @param _MessageId [MessageId] <p>The unique message identifier returned from the <code>SendRawEmail</code> action. </p>
--- Required parameter: MessageId
-function M.SendRawEmailResponse(_MessageId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendRawEmailResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MessageId [MessageId] <p>The unique message identifier returned from the <code>SendRawEmail</code> action. </p>
+-- Required key: MessageId
+-- @return SendRawEmailResponse structure as a key-value pair table
+function M.SendRawEmailResponse(args)
+	assert(args, "You must provdide an argument table when creating SendRawEmailResponse")
 	local t = { 
-		["MessageId"] = _MessageId,
+		["MessageId"] = args["MessageId"],
 	}
 	asserts.AssertSendRawEmailResponse(t)
 	return t
@@ -2322,12 +2577,15 @@ end
 
 --- Create a structure of type GetIdentityVerificationAttributesRequest
 -- <p>Represents a request to return the Amazon SES verification status of a list of identities. For domain identities, this request also returns the verification token. For information about verifying identities with Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html">Amazon SES Developer Guide</a>.</p>
--- @param _Identities [IdentityList] <p>A list of identities.</p>
--- Required parameter: Identities
-function M.GetIdentityVerificationAttributesRequest(_Identities, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityVerificationAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Identities [IdentityList] <p>A list of identities.</p>
+-- Required key: Identities
+-- @return GetIdentityVerificationAttributesRequest structure as a key-value pair table
+function M.GetIdentityVerificationAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityVerificationAttributesRequest")
 	local t = { 
-		["Identities"] = _Identities,
+		["Identities"] = args["Identities"],
 	}
 	asserts.AssertGetIdentityVerificationAttributesRequest(t)
 	return t
@@ -2347,12 +2605,15 @@ end
 
 --- Create a structure of type CreateReceiptFilterRequest
 -- <p>Represents a request to create a new IP address filter. You use IP address filters when you receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _Filter [ReceiptFilter] <p>A data structure that describes the IP address filter to create, which consists of a name, an IP address range, and whether to allow or block mail from it.</p>
--- Required parameter: Filter
-function M.CreateReceiptFilterRequest(_Filter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptFilterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Filter [ReceiptFilter] <p>A data structure that describes the IP address filter to create, which consists of a name, an IP address range, and whether to allow or block mail from it.</p>
+-- Required key: Filter
+-- @return CreateReceiptFilterRequest structure as a key-value pair table
+function M.CreateReceiptFilterRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateReceiptFilterRequest")
 	local t = { 
-		["Filter"] = _Filter,
+		["Filter"] = args["Filter"],
 	}
 	asserts.AssertCreateReceiptFilterRequest(t)
 	return t
@@ -2371,11 +2632,14 @@ end
 
 --- Create a structure of type CannotDeleteException
 -- <p>Indicates that the delete operation could not be completed.</p>
--- @param _Name [RuleOrRuleSetName] 
-function M.CannotDeleteException(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CannotDeleteException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [RuleOrRuleSetName] 
+-- @return CannotDeleteException structure as a key-value pair table
+function M.CannotDeleteException(args)
+	assert(args, "You must provdide an argument table when creating CannotDeleteException")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCannotDeleteException(t)
 	return t
@@ -2395,13 +2659,16 @@ end
 
 --- Create a structure of type ListReceiptRuleSetsResponse
 -- <p>A list of receipt rule sets that exist under your AWS account.</p>
--- @param _NextToken [NextToken] <p>A token indicating that there are additional receipt rule sets available to be listed. Pass this token to successive calls of <code>ListReceiptRuleSets</code> to retrieve up to 100 receipt rule sets at a time.</p>
--- @param _RuleSets [ReceiptRuleSetsLists] <p>The metadata for the currently active receipt rule set. The metadata consists of the rule set name and the timestamp of when the rule set was created.</p>
-function M.ListReceiptRuleSetsResponse(_NextToken, _RuleSets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListReceiptRuleSetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>A token indicating that there are additional receipt rule sets available to be listed. Pass this token to successive calls of <code>ListReceiptRuleSets</code> to retrieve up to 100 receipt rule sets at a time.</p>
+-- * RuleSets [ReceiptRuleSetsLists] <p>The metadata for the currently active receipt rule set. The metadata consists of the rule set name and the timestamp of when the rule set was created.</p>
+-- @return ListReceiptRuleSetsResponse structure as a key-value pair table
+function M.ListReceiptRuleSetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListReceiptRuleSetsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["RuleSets"] = _RuleSets,
+		["NextToken"] = args["NextToken"],
+		["RuleSets"] = args["RuleSets"],
 	}
 	asserts.AssertListReceiptRuleSetsResponse(t)
 	return t
@@ -2423,15 +2690,18 @@ end
 
 --- Create a structure of type CloneReceiptRuleSetRequest
 -- <p>Represents a request to create a receipt rule set by cloning an existing one. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
--- @param _OriginalRuleSetName [ReceiptRuleSetName] <p>The name of the rule set to clone.</p>
--- Required parameter: RuleSetName
--- Required parameter: OriginalRuleSetName
-function M.CloneReceiptRuleSetRequest(_RuleSetName, _OriginalRuleSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloneReceiptRuleSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- * OriginalRuleSetName [ReceiptRuleSetName] <p>The name of the rule set to clone.</p>
+-- Required key: RuleSetName
+-- Required key: OriginalRuleSetName
+-- @return CloneReceiptRuleSetRequest structure as a key-value pair table
+function M.CloneReceiptRuleSetRequest(args)
+	assert(args, "You must provdide an argument table when creating CloneReceiptRuleSetRequest")
 	local t = { 
-		["RuleSetName"] = _RuleSetName,
-		["OriginalRuleSetName"] = _OriginalRuleSetName,
+		["RuleSetName"] = args["RuleSetName"],
+		["OriginalRuleSetName"] = args["OriginalRuleSetName"],
 	}
 	asserts.AssertCloneReceiptRuleSetRequest(t)
 	return t
@@ -2451,13 +2721,16 @@ end
 
 --- Create a structure of type DescribeConfigurationSetResponse
 -- <p>Represents the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _EventDestinations [EventDestinations] <p>A list of event destinations associated with the configuration set. </p>
--- @param _ConfigurationSet [ConfigurationSet] <p>The configuration set object associated with the specified configuration set.</p>
-function M.DescribeConfigurationSetResponse(_EventDestinations, _ConfigurationSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventDestinations [EventDestinations] <p>A list of event destinations associated with the configuration set. </p>
+-- * ConfigurationSet [ConfigurationSet] <p>The configuration set object associated with the specified configuration set.</p>
+-- @return DescribeConfigurationSetResponse structure as a key-value pair table
+function M.DescribeConfigurationSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigurationSetResponse")
 	local t = { 
-		["EventDestinations"] = _EventDestinations,
-		["ConfigurationSet"] = _ConfigurationSet,
+		["EventDestinations"] = args["EventDestinations"],
+		["ConfigurationSet"] = args["ConfigurationSet"],
 	}
 	asserts.AssertDescribeConfigurationSetResponse(t)
 	return t
@@ -2475,8 +2748,11 @@ end
 
 --- Create a structure of type SetActiveReceiptRuleSetResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.SetActiveReceiptRuleSetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetActiveReceiptRuleSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetActiveReceiptRuleSetResponse structure as a key-value pair table
+function M.SetActiveReceiptRuleSetResponse(args)
+	assert(args, "You must provdide an argument table when creating SetActiveReceiptRuleSetResponse")
 	local t = { 
 	}
 	asserts.AssertSetActiveReceiptRuleSetResponse(t)
@@ -2497,12 +2773,15 @@ end
 
 --- Create a structure of type CreateReceiptRuleSetRequest
 -- <p>Represents a request to create an empty receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
--- Required parameter: RuleSetName
-function M.CreateReceiptRuleSetRequest(_RuleSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptRuleSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the rule set to create. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- Required key: RuleSetName
+-- @return CreateReceiptRuleSetRequest structure as a key-value pair table
+function M.CreateReceiptRuleSetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateReceiptRuleSetRequest")
 	local t = { 
-		["RuleSetName"] = _RuleSetName,
+		["RuleSetName"] = args["RuleSetName"],
 	}
 	asserts.AssertCreateReceiptRuleSetRequest(t)
 	return t
@@ -2520,8 +2799,11 @@ end
 
 --- Create a structure of type PutIdentityPolicyResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.PutIdentityPolicyResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutIdentityPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PutIdentityPolicyResponse structure as a key-value pair table
+function M.PutIdentityPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating PutIdentityPolicyResponse")
 	local t = { 
 	}
 	asserts.AssertPutIdentityPolicyResponse(t)
@@ -2542,12 +2824,15 @@ end
 
 --- Create a structure of type RawMessage
 -- <p>Represents the raw data of the message.</p>
--- @param _Data [RawMessageData] <p>The raw data of the message. The client must ensure that the message format complies with Internet email standards regarding email header fields, MIME types, MIME encoding, and base64 encoding.</p> <p>The To:, CC:, and BCC: headers in the raw message can contain a group list.</p> <p>If you are using <code>SendRawEmail</code> with sending authorization, you can include X-headers in the raw message to specify the "Source," "From," and "Return-Path" addresses. For more information, see the documentation for <code>SendRawEmail</code>. </p> <important> <p>Do not include these X-headers in the DKIM signature, because they are removed by Amazon SES before sending the email.</p> </important> <p>For more information, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>. </p>
--- Required parameter: Data
-function M.RawMessage(_Data, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RawMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Data [RawMessageData] <p>The raw data of the message. The client must ensure that the message format complies with Internet email standards regarding email header fields, MIME types, MIME encoding, and base64 encoding.</p> <p>The To:, CC:, and BCC: headers in the raw message can contain a group list.</p> <p>If you are using <code>SendRawEmail</code> with sending authorization, you can include X-headers in the raw message to specify the "Source," "From," and "Return-Path" addresses. For more information, see the documentation for <code>SendRawEmail</code>. </p> <important> <p>Do not include these X-headers in the DKIM signature, because they are removed by Amazon SES before sending the email.</p> </important> <p>For more information, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>. </p>
+-- Required key: Data
+-- @return RawMessage structure as a key-value pair table
+function M.RawMessage(args)
+	assert(args, "You must provdide an argument table when creating RawMessage")
 	local t = { 
-		["Data"] = _Data,
+		["Data"] = args["Data"],
 	}
 	asserts.AssertRawMessage(t)
 	return t
@@ -2567,12 +2852,15 @@ end
 
 --- Create a structure of type SendEmailResponse
 -- <p>Represents a unique message ID.</p>
--- @param _MessageId [MessageId] <p>The unique message identifier returned from the <code>SendEmail</code> action. </p>
--- Required parameter: MessageId
-function M.SendEmailResponse(_MessageId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendEmailResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MessageId [MessageId] <p>The unique message identifier returned from the <code>SendEmail</code> action. </p>
+-- Required key: MessageId
+-- @return SendEmailResponse structure as a key-value pair table
+function M.SendEmailResponse(args)
+	assert(args, "You must provdide an argument table when creating SendEmailResponse")
 	local t = { 
-		["MessageId"] = _MessageId,
+		["MessageId"] = args["MessageId"],
 	}
 	asserts.AssertSendEmailResponse(t)
 	return t
@@ -2594,16 +2882,19 @@ end
 
 --- Create a structure of type LambdaAction
 -- <p>When included in a receipt rule, this action calls an AWS Lambda function and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>To enable Amazon SES to call your AWS Lambda function or to publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <p>For information about using AWS Lambda actions in receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html">Amazon SES Developer Guide</a>.</p>
--- @param _InvocationType [InvocationType] <p>The invocation type of the AWS Lambda function. An invocation type of <code>RequestResponse</code> means that the execution of the function will immediately result in a response, and a value of <code>Event</code> means that the function will be invoked asynchronously. The default value is <code>Event</code>. For information about AWS Lambda invocation types, see the <a href="http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html">AWS Lambda Developer Guide</a>.</p> <important> <p>There is a 30-second timeout on <code>RequestResponse</code> invocations. You should use <code>Event</code> invocation in most cases. Use <code>RequestResponse</code> only when you want to make a mail flow decision, such as whether to stop the receipt rule or the receipt rule set.</p> </important>
--- @param _FunctionArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the AWS Lambda function. An example of an AWS Lambda function ARN is <code>arn:aws:lambda:us-west-2:account-id:function:MyFunction</code>. For more information about AWS Lambda, see the <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">AWS Lambda Developer Guide</a>.</p>
--- @param _TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the Lambda action is taken. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
--- Required parameter: FunctionArn
-function M.LambdaAction(_InvocationType, _FunctionArn, _TopicArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InvocationType [InvocationType] <p>The invocation type of the AWS Lambda function. An invocation type of <code>RequestResponse</code> means that the execution of the function will immediately result in a response, and a value of <code>Event</code> means that the function will be invoked asynchronously. The default value is <code>Event</code>. For information about AWS Lambda invocation types, see the <a href="http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html">AWS Lambda Developer Guide</a>.</p> <important> <p>There is a 30-second timeout on <code>RequestResponse</code> invocations. You should use <code>Event</code> invocation in most cases. Use <code>RequestResponse</code> only when you want to make a mail flow decision, such as whether to stop the receipt rule or the receipt rule set.</p> </important>
+-- * FunctionArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the AWS Lambda function. An example of an AWS Lambda function ARN is <code>arn:aws:lambda:us-west-2:account-id:function:MyFunction</code>. For more information about AWS Lambda, see the <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">AWS Lambda Developer Guide</a>.</p>
+-- * TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the Lambda action is taken. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
+-- Required key: FunctionArn
+-- @return LambdaAction structure as a key-value pair table
+function M.LambdaAction(args)
+	assert(args, "You must provdide an argument table when creating LambdaAction")
 	local t = { 
-		["InvocationType"] = _InvocationType,
-		["FunctionArn"] = _FunctionArn,
-		["TopicArn"] = _TopicArn,
+		["InvocationType"] = args["InvocationType"],
+		["FunctionArn"] = args["FunctionArn"],
+		["TopicArn"] = args["TopicArn"],
 	}
 	asserts.AssertLambdaAction(t)
 	return t
@@ -2622,11 +2913,14 @@ end
 
 --- Create a structure of type RuleDoesNotExistException
 -- <p>Indicates that the provided receipt rule does not exist.</p>
--- @param _Name [RuleOrRuleSetName] 
-function M.RuleDoesNotExistException(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RuleDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [RuleOrRuleSetName] 
+-- @return RuleDoesNotExistException structure as a key-value pair table
+function M.RuleDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating RuleDoesNotExistException")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertRuleDoesNotExistException(t)
 	return t
@@ -2646,13 +2940,16 @@ end
 
 --- Create a structure of type ReceiptRuleSetMetadata
 -- <p>Information about a receipt rule set.</p> <p>A receipt rule set is a collection of rules that specify what Amazon SES should do with mail it receives on behalf of your account's verified domains.</p> <p>For information about setting up receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html">Amazon SES Developer Guide</a>.</p>
--- @param _CreatedTimestamp [Timestamp] <p>The date and time the receipt rule set was created.</p>
--- @param _Name [ReceiptRuleSetName] <p>The name of the receipt rule set. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
-function M.ReceiptRuleSetMetadata(_CreatedTimestamp, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReceiptRuleSetMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreatedTimestamp [Timestamp] <p>The date and time the receipt rule set was created.</p>
+-- * Name [ReceiptRuleSetName] <p>The name of the receipt rule set. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
+-- @return ReceiptRuleSetMetadata structure as a key-value pair table
+function M.ReceiptRuleSetMetadata(args)
+	assert(args, "You must provdide an argument table when creating ReceiptRuleSetMetadata")
 	local t = { 
-		["CreatedTimestamp"] = _CreatedTimestamp,
-		["Name"] = _Name,
+		["CreatedTimestamp"] = args["CreatedTimestamp"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertReceiptRuleSetMetadata(t)
 	return t
@@ -2670,8 +2967,11 @@ end
 
 --- Create a structure of type MailFromDomainNotVerifiedException
 -- <p> Indicates that the message could not be sent because Amazon SES could not read the MX record required to use the specified MAIL FROM domain. For information about editing the custom MAIL FROM domain settings for an identity, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-edit.html">Amazon SES Developer Guide</a>.</p>
-function M.MailFromDomainNotVerifiedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MailFromDomainNotVerifiedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MailFromDomainNotVerifiedException structure as a key-value pair table
+function M.MailFromDomainNotVerifiedException(args)
+	assert(args, "You must provdide an argument table when creating MailFromDomainNotVerifiedException")
 	local t = { 
 	}
 	asserts.AssertMailFromDomainNotVerifiedException(t)
@@ -2695,17 +2995,20 @@ end
 
 --- Create a structure of type SetReceiptRulePositionRequest
 -- <p>Represents a request to set the position of a receipt rule in a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _After [ReceiptRuleName] <p>The name of the receipt rule after which to place the specified receipt rule.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set that contains the receipt rule to reposition.</p>
--- @param _RuleName [ReceiptRuleName] <p>The name of the receipt rule to reposition.</p>
--- Required parameter: RuleSetName
--- Required parameter: RuleName
-function M.SetReceiptRulePositionRequest(_After, _RuleSetName, _RuleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetReceiptRulePositionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * After [ReceiptRuleName] <p>The name of the receipt rule after which to place the specified receipt rule.</p>
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set that contains the receipt rule to reposition.</p>
+-- * RuleName [ReceiptRuleName] <p>The name of the receipt rule to reposition.</p>
+-- Required key: RuleSetName
+-- Required key: RuleName
+-- @return SetReceiptRulePositionRequest structure as a key-value pair table
+function M.SetReceiptRulePositionRequest(args)
+	assert(args, "You must provdide an argument table when creating SetReceiptRulePositionRequest")
 	local t = { 
-		["After"] = _After,
-		["RuleSetName"] = _RuleSetName,
-		["RuleName"] = _RuleName,
+		["After"] = args["After"],
+		["RuleSetName"] = args["RuleSetName"],
+		["RuleName"] = args["RuleName"],
 	}
 	asserts.AssertSetReceiptRulePositionRequest(t)
 	return t
@@ -2723,8 +3026,11 @@ end
 
 --- Create a structure of type SetIdentityMailFromDomainResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.SetIdentityMailFromDomainResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityMailFromDomainResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetIdentityMailFromDomainResponse structure as a key-value pair table
+function M.SetIdentityMailFromDomainResponse(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityMailFromDomainResponse")
 	local t = { 
 	}
 	asserts.AssertSetIdentityMailFromDomainResponse(t)
@@ -2744,11 +3050,14 @@ end
 
 --- Create a structure of type ConfigurationSetDoesNotExistException
 -- <p>Indicates that the configuration set does not exist.</p>
--- @param _ConfigurationSetName [ConfigurationSetName] 
-function M.ConfigurationSetDoesNotExistException(_ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSetDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationSetName [ConfigurationSetName] 
+-- @return ConfigurationSetDoesNotExistException structure as a key-value pair table
+function M.ConfigurationSetDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationSetDoesNotExistException")
 	local t = { 
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertConfigurationSetDoesNotExistException(t)
 	return t
@@ -2768,12 +3077,15 @@ end
 
 --- Create a structure of type GetIdentityPoliciesResponse
 -- <p>Represents the requested sending authorization policies.</p>
--- @param _Policies [PolicyMap] <p>A map of policy names to policies.</p>
--- Required parameter: Policies
-function M.GetIdentityPoliciesResponse(_Policies, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policies [PolicyMap] <p>A map of policy names to policies.</p>
+-- Required key: Policies
+-- @return GetIdentityPoliciesResponse structure as a key-value pair table
+function M.GetIdentityPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityPoliciesResponse")
 	local t = { 
-		["Policies"] = _Policies,
+		["Policies"] = args["Policies"],
 	}
 	asserts.AssertGetIdentityPoliciesResponse(t)
 	return t
@@ -2792,11 +3104,14 @@ end
 
 --- Create a structure of type RuleSetDoesNotExistException
 -- <p>Indicates that the provided receipt rule set does not exist.</p>
--- @param _Name [RuleOrRuleSetName] 
-function M.RuleSetDoesNotExistException(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RuleSetDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [RuleOrRuleSetName] 
+-- @return RuleSetDoesNotExistException structure as a key-value pair table
+function M.RuleSetDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating RuleSetDoesNotExistException")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertRuleSetDoesNotExistException(t)
 	return t
@@ -2816,12 +3131,15 @@ end
 
 --- Create a structure of type DeleteReceiptFilterRequest
 -- <p>Represents a request to delete an IP address filter. You use IP address filters when you receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _FilterName [ReceiptFilterName] <p>The name of the IP address filter to delete.</p>
--- Required parameter: FilterName
-function M.DeleteReceiptFilterRequest(_FilterName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptFilterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FilterName [ReceiptFilterName] <p>The name of the IP address filter to delete.</p>
+-- Required key: FilterName
+-- @return DeleteReceiptFilterRequest structure as a key-value pair table
+function M.DeleteReceiptFilterRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteReceiptFilterRequest")
 	local t = { 
-		["FilterName"] = _FilterName,
+		["FilterName"] = args["FilterName"],
 	}
 	asserts.AssertDeleteReceiptFilterRequest(t)
 	return t
@@ -2841,13 +3159,16 @@ end
 
 --- Create a structure of type ListConfigurationSetsRequest
 -- <p>Represents a request to list the configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _NextToken [NextToken] <p>A token returned from a previous call to <code>ListConfigurationSets</code> to indicate the position of the configuration set in the configuration set list.</p>
--- @param _MaxItems [MaxItems] <p>The number of configuration sets to return.</p>
-function M.ListConfigurationSetsRequest(_NextToken, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListConfigurationSetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>A token returned from a previous call to <code>ListConfigurationSets</code> to indicate the position of the configuration set in the configuration set list.</p>
+-- * MaxItems [MaxItems] <p>The number of configuration sets to return.</p>
+-- @return ListConfigurationSetsRequest structure as a key-value pair table
+function M.ListConfigurationSetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListConfigurationSetsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxItems"] = _MaxItems,
+		["NextToken"] = args["NextToken"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListConfigurationSetsRequest(t)
 	return t
@@ -2866,11 +3187,14 @@ end
 
 --- Create a structure of type InvalidLambdaFunctionException
 -- <p>Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
--- @param _FunctionArn [AmazonResourceName] 
-function M.InvalidLambdaFunctionException(_FunctionArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLambdaFunctionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionArn [AmazonResourceName] 
+-- @return InvalidLambdaFunctionException structure as a key-value pair table
+function M.InvalidLambdaFunctionException(args)
+	assert(args, "You must provdide an argument table when creating InvalidLambdaFunctionException")
 	local t = { 
-		["FunctionArn"] = _FunctionArn,
+		["FunctionArn"] = args["FunctionArn"],
 	}
 	asserts.AssertInvalidLambdaFunctionException(t)
 	return t
@@ -2892,15 +3216,18 @@ end
 
 --- Create a structure of type ReceiptIpFilter
 -- <p>A receipt IP address filter enables you to specify whether to accept or reject mail originating from an IP address or range of IP addresses.</p> <p>For information about setting up IP address filters, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-ip-filters.html">Amazon SES Developer Guide</a>.</p>
--- @param _Policy [ReceiptFilterPolicy] <p>Indicates whether to block or allow incoming mail from the specified IP addresses.</p>
--- @param _Cidr [Cidr] <p>A single IP address or a range of IP addresses that you want to block or allow, specified in Classless Inter-Domain Routing (CIDR) notation. An example of a single email address is 10.0.0.1. An example of a range of IP addresses is 10.0.0.1/24. For more information about CIDR notation, see <a href="https://tools.ietf.org/html/rfc2317">RFC 2317</a>.</p>
--- Required parameter: Policy
--- Required parameter: Cidr
-function M.ReceiptIpFilter(_Policy, _Cidr, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReceiptIpFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [ReceiptFilterPolicy] <p>Indicates whether to block or allow incoming mail from the specified IP addresses.</p>
+-- * Cidr [Cidr] <p>A single IP address or a range of IP addresses that you want to block or allow, specified in Classless Inter-Domain Routing (CIDR) notation. An example of a single email address is 10.0.0.1. An example of a range of IP addresses is 10.0.0.1/24. For more information about CIDR notation, see <a href="https://tools.ietf.org/html/rfc2317">RFC 2317</a>.</p>
+-- Required key: Policy
+-- Required key: Cidr
+-- @return ReceiptIpFilter structure as a key-value pair table
+function M.ReceiptIpFilter(args)
+	assert(args, "You must provdide an argument table when creating ReceiptIpFilter")
 	local t = { 
-		["Policy"] = _Policy,
-		["Cidr"] = _Cidr,
+		["Policy"] = args["Policy"],
+		["Cidr"] = args["Cidr"],
 	}
 	asserts.AssertReceiptIpFilter(t)
 	return t
@@ -2923,17 +3250,20 @@ end
 
 --- Create a structure of type IdentityDkimAttributes
 -- <p>Represents the DKIM attributes of a verified email address or a domain.</p>
--- @param _DkimTokens [VerificationTokenList] <p>A set of character strings that represent the domain's identity. Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign email originating from that domain. (This only applies to domain identities, not email address identities.)</p> <p>For more information about creating DNS records using DKIM tokens, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html">Amazon SES Developer Guide</a>.</p>
--- @param _DkimEnabled [Enabled] <p>True if DKIM signing is enabled for email sent from the identity; false otherwise. The default value is true.</p>
--- @param _DkimVerificationStatus [VerificationStatus] <p>Describes whether Amazon SES has successfully verified the DKIM DNS records (tokens) published in the domain name's DNS. (This only applies to domain identities, not email address identities.)</p>
--- Required parameter: DkimEnabled
--- Required parameter: DkimVerificationStatus
-function M.IdentityDkimAttributes(_DkimTokens, _DkimEnabled, _DkimVerificationStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdentityDkimAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DkimTokens [VerificationTokenList] <p>A set of character strings that represent the domain's identity. Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign email originating from that domain. (This only applies to domain identities, not email address identities.)</p> <p>For more information about creating DNS records using DKIM tokens, go to the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html">Amazon SES Developer Guide</a>.</p>
+-- * DkimEnabled [Enabled] <p>True if DKIM signing is enabled for email sent from the identity; false otherwise. The default value is true.</p>
+-- * DkimVerificationStatus [VerificationStatus] <p>Describes whether Amazon SES has successfully verified the DKIM DNS records (tokens) published in the domain name's DNS. (This only applies to domain identities, not email address identities.)</p>
+-- Required key: DkimEnabled
+-- Required key: DkimVerificationStatus
+-- @return IdentityDkimAttributes structure as a key-value pair table
+function M.IdentityDkimAttributes(args)
+	assert(args, "You must provdide an argument table when creating IdentityDkimAttributes")
 	local t = { 
-		["DkimTokens"] = _DkimTokens,
-		["DkimEnabled"] = _DkimEnabled,
-		["DkimVerificationStatus"] = _DkimVerificationStatus,
+		["DkimTokens"] = args["DkimTokens"],
+		["DkimEnabled"] = args["DkimEnabled"],
+		["DkimVerificationStatus"] = args["DkimVerificationStatus"],
 	}
 	asserts.AssertIdentityDkimAttributes(t)
 	return t
@@ -2955,15 +3285,18 @@ end
 
 --- Create a structure of type AddHeaderAction
 -- <p>When included in a receipt rule, this action adds a header to the received email.</p> <p>For information about adding a header using a receipt rule, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-add-header.html">Amazon SES Developer Guide</a>.</p>
--- @param _HeaderName [HeaderName] <p>The name of the header to add. Must be between 1 and 50 characters, inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes only.</p>
--- @param _HeaderValue [HeaderValue] <p>Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").</p>
--- Required parameter: HeaderName
--- Required parameter: HeaderValue
-function M.AddHeaderAction(_HeaderName, _HeaderValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddHeaderAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HeaderName [HeaderName] <p>The name of the header to add. Must be between 1 and 50 characters, inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and dashes only.</p>
+-- * HeaderValue [HeaderValue] <p>Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").</p>
+-- Required key: HeaderName
+-- Required key: HeaderValue
+-- @return AddHeaderAction structure as a key-value pair table
+function M.AddHeaderAction(args)
+	assert(args, "You must provdide an argument table when creating AddHeaderAction")
 	local t = { 
-		["HeaderName"] = _HeaderName,
-		["HeaderValue"] = _HeaderValue,
+		["HeaderName"] = args["HeaderName"],
+		["HeaderValue"] = args["HeaderValue"],
 	}
 	asserts.AssertAddHeaderAction(t)
 	return t
@@ -2984,14 +3317,17 @@ end
 
 --- Create a structure of type Content
 -- <p>Represents textual data, plus an optional character set specification.</p> <p>By default, the text must be 7-bit ASCII, due to the constraints of the SMTP protocol. If the text must contain any other characters, then you must also specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.</p>
--- @param _Charset [Charset] <p>The character set of the content.</p>
--- @param _Data [MessageData] <p>The textual data of the content.</p>
--- Required parameter: Data
-function M.Content(_Charset, _Data, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Content")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Charset [Charset] <p>The character set of the content.</p>
+-- * Data [MessageData] <p>The textual data of the content.</p>
+-- Required key: Data
+-- @return Content structure as a key-value pair table
+function M.Content(args)
+	assert(args, "You must provdide an argument table when creating Content")
 	local t = { 
-		["Charset"] = _Charset,
-		["Data"] = _Data,
+		["Charset"] = args["Charset"],
+		["Data"] = args["Data"],
 	}
 	asserts.AssertContent(t)
 	return t
@@ -3013,15 +3349,18 @@ end
 
 --- Create a structure of type KinesisFirehoseDestination
 -- <p>Contains the delivery stream ARN and the IAM role ARN associated with an Amazon Kinesis Firehose event destination.</p> <p>Event destinations, such as Amazon Kinesis Firehose, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _DeliveryStreamARN [AmazonResourceName] <p>The ARN of the Amazon Kinesis Firehose stream to which to publish email sending events.</p>
--- @param _IAMRoleARN [AmazonResourceName] <p>The ARN of the IAM role under which Amazon SES publishes email sending events to the Amazon Kinesis Firehose stream.</p>
--- Required parameter: IAMRoleARN
--- Required parameter: DeliveryStreamARN
-function M.KinesisFirehoseDestination(_DeliveryStreamARN, _IAMRoleARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KinesisFirehoseDestination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryStreamARN [AmazonResourceName] <p>The ARN of the Amazon Kinesis Firehose stream to which to publish email sending events.</p>
+-- * IAMRoleARN [AmazonResourceName] <p>The ARN of the IAM role under which Amazon SES publishes email sending events to the Amazon Kinesis Firehose stream.</p>
+-- Required key: IAMRoleARN
+-- Required key: DeliveryStreamARN
+-- @return KinesisFirehoseDestination structure as a key-value pair table
+function M.KinesisFirehoseDestination(args)
+	assert(args, "You must provdide an argument table when creating KinesisFirehoseDestination")
 	local t = { 
-		["DeliveryStreamARN"] = _DeliveryStreamARN,
-		["IAMRoleARN"] = _IAMRoleARN,
+		["DeliveryStreamARN"] = args["DeliveryStreamARN"],
+		["IAMRoleARN"] = args["IAMRoleARN"],
 	}
 	asserts.AssertKinesisFirehoseDestination(t)
 	return t
@@ -3039,8 +3378,11 @@ end
 
 --- Create a structure of type UpdateReceiptRuleResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.UpdateReceiptRuleResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateReceiptRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateReceiptRuleResponse structure as a key-value pair table
+function M.UpdateReceiptRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateReceiptRuleResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateReceiptRuleResponse(t)
@@ -3063,15 +3405,18 @@ end
 
 --- Create a structure of type DescribeReceiptRuleRequest
 -- <p>Represents a request to return the details of a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to which the receipt rule belongs.</p>
--- @param _RuleName [ReceiptRuleName] <p>The name of the receipt rule.</p>
--- Required parameter: RuleSetName
--- Required parameter: RuleName
-function M.DescribeReceiptRuleRequest(_RuleSetName, _RuleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReceiptRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to which the receipt rule belongs.</p>
+-- * RuleName [ReceiptRuleName] <p>The name of the receipt rule.</p>
+-- Required key: RuleSetName
+-- Required key: RuleName
+-- @return DescribeReceiptRuleRequest structure as a key-value pair table
+function M.DescribeReceiptRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeReceiptRuleRequest")
 	local t = { 
-		["RuleSetName"] = _RuleSetName,
-		["RuleName"] = _RuleName,
+		["RuleSetName"] = args["RuleSetName"],
+		["RuleName"] = args["RuleName"],
 	}
 	asserts.AssertDescribeReceiptRuleRequest(t)
 	return t
@@ -3091,13 +3436,16 @@ end
 
 --- Create a structure of type DescribeActiveReceiptRuleSetResponse
 -- <p>Represents the metadata and receipt rules for the receipt rule set that is currently active.</p>
--- @param _Rules [ReceiptRulesList] <p>The receipt rules that belong to the active rule set.</p>
--- @param _Metadata [ReceiptRuleSetMetadata] <p>The metadata for the currently active receipt rule set. The metadata consists of the rule set name and a timestamp of when the rule set was created.</p>
-function M.DescribeActiveReceiptRuleSetResponse(_Rules, _Metadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActiveReceiptRuleSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [ReceiptRulesList] <p>The receipt rules that belong to the active rule set.</p>
+-- * Metadata [ReceiptRuleSetMetadata] <p>The metadata for the currently active receipt rule set. The metadata consists of the rule set name and a timestamp of when the rule set was created.</p>
+-- @return DescribeActiveReceiptRuleSetResponse structure as a key-value pair table
+function M.DescribeActiveReceiptRuleSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeActiveReceiptRuleSetResponse")
 	local t = { 
-		["Rules"] = _Rules,
-		["Metadata"] = _Metadata,
+		["Rules"] = args["Rules"],
+		["Metadata"] = args["Metadata"],
 	}
 	asserts.AssertDescribeActiveReceiptRuleSetResponse(t)
 	return t
@@ -3118,15 +3466,18 @@ end
 
 --- Create a structure of type GetSendQuotaResponse
 -- <p>Represents your Amazon SES daily sending quota, maximum send rate, and the number of emails you have sent in the last 24 hours.</p>
--- @param _Max24HourSend [Max24HourSend] <p>The maximum number of emails the user is allowed to send in a 24-hour interval. A value of -1 signifies an unlimited quota.</p>
--- @param _SentLast24Hours [SentLast24Hours] <p>The number of emails sent during the previous 24 hours.</p>
--- @param _MaxSendRate [MaxSendRate] <p>The maximum number of emails that Amazon SES can accept from the user's account per second.</p> <note> <p>The rate at which Amazon SES accepts the user's messages might be less than the maximum send rate.</p> </note>
-function M.GetSendQuotaResponse(_Max24HourSend, _SentLast24Hours, _MaxSendRate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSendQuotaResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Max24HourSend [Max24HourSend] <p>The maximum number of emails the user is allowed to send in a 24-hour interval. A value of -1 signifies an unlimited quota.</p>
+-- * SentLast24Hours [SentLast24Hours] <p>The number of emails sent during the previous 24 hours.</p>
+-- * MaxSendRate [MaxSendRate] <p>The maximum number of emails that Amazon SES can accept from the user's account per second.</p> <note> <p>The rate at which Amazon SES accepts the user's messages might be less than the maximum send rate.</p> </note>
+-- @return GetSendQuotaResponse structure as a key-value pair table
+function M.GetSendQuotaResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSendQuotaResponse")
 	local t = { 
-		["Max24HourSend"] = _Max24HourSend,
-		["SentLast24Hours"] = _SentLast24Hours,
-		["MaxSendRate"] = _MaxSendRate,
+		["Max24HourSend"] = args["Max24HourSend"],
+		["SentLast24Hours"] = args["SentLast24Hours"],
+		["MaxSendRate"] = args["MaxSendRate"],
 	}
 	asserts.AssertGetSendQuotaResponse(t)
 	return t
@@ -3153,25 +3504,28 @@ end
 
 --- Create a structure of type RecipientDsnFields
 -- <p>Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
--- @param _Status [DsnStatus] <p>The status code that indicates what went wrong. This is required by <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a>.</p>
--- @param _FinalRecipient [Address] <p>The email address to which the message was ultimately delivered. This corresponds to the <code>Final-Recipient</code> in the DSN. If not specified, <code>FinalRecipient</code> will be set to the <code>Recipient</code> specified in the <code>BouncedRecipientInfo</code> structure. Either <code>FinalRecipient</code> or the recipient in <code>BouncedRecipientInfo</code> must be a recipient of the original bounced message.</p> <note> <p>Do not prepend the <code>FinalRecipient</code> email address with <code>rfc 822;</code>, as described in <a href="https://tools.ietf.org/html/rfc3798">RFC 3798</a>.</p> </note>
--- @param _DiagnosticCode [DiagnosticCode] <p>An extended explanation of what went wrong; this is usually an SMTP response. See <a href="https://tools.ietf.org/html/rfc3463">RFC 3463</a> for the correct formatting of this parameter.</p>
--- @param _LastAttemptDate [LastAttemptDate] <p>The time the final delivery attempt was made, in <a href="https://www.ietf.org/rfc/rfc0822.txt">RFC 822</a> date-time format.</p>
--- @param _ExtensionFields [ExtensionFieldList] <p>Additional X-headers to include in the DSN.</p>
--- @param _RemoteMta [RemoteMta] <p>The MTA to which the remote MTA attempted to deliver the message, formatted as specified in <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a> (<code>mta-name-type; mta-name</code>). This parameter typically applies only to propagating synchronous bounces.</p>
--- @param _Action [DsnAction] <p>The action performed by the reporting mail transfer agent (MTA) as a result of its attempt to deliver the message to the recipient address. This is required by <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a>.</p>
--- Required parameter: Action
--- Required parameter: Status
-function M.RecipientDsnFields(_Status, _FinalRecipient, _DiagnosticCode, _LastAttemptDate, _ExtensionFields, _RemoteMta, _Action, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecipientDsnFields")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [DsnStatus] <p>The status code that indicates what went wrong. This is required by <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a>.</p>
+-- * FinalRecipient [Address] <p>The email address to which the message was ultimately delivered. This corresponds to the <code>Final-Recipient</code> in the DSN. If not specified, <code>FinalRecipient</code> will be set to the <code>Recipient</code> specified in the <code>BouncedRecipientInfo</code> structure. Either <code>FinalRecipient</code> or the recipient in <code>BouncedRecipientInfo</code> must be a recipient of the original bounced message.</p> <note> <p>Do not prepend the <code>FinalRecipient</code> email address with <code>rfc 822;</code>, as described in <a href="https://tools.ietf.org/html/rfc3798">RFC 3798</a>.</p> </note>
+-- * DiagnosticCode [DiagnosticCode] <p>An extended explanation of what went wrong; this is usually an SMTP response. See <a href="https://tools.ietf.org/html/rfc3463">RFC 3463</a> for the correct formatting of this parameter.</p>
+-- * LastAttemptDate [LastAttemptDate] <p>The time the final delivery attempt was made, in <a href="https://www.ietf.org/rfc/rfc0822.txt">RFC 822</a> date-time format.</p>
+-- * ExtensionFields [ExtensionFieldList] <p>Additional X-headers to include in the DSN.</p>
+-- * RemoteMta [RemoteMta] <p>The MTA to which the remote MTA attempted to deliver the message, formatted as specified in <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a> (<code>mta-name-type; mta-name</code>). This parameter typically applies only to propagating synchronous bounces.</p>
+-- * Action [DsnAction] <p>The action performed by the reporting mail transfer agent (MTA) as a result of its attempt to deliver the message to the recipient address. This is required by <a href="https://tools.ietf.org/html/rfc3464">RFC 3464</a>.</p>
+-- Required key: Action
+-- Required key: Status
+-- @return RecipientDsnFields structure as a key-value pair table
+function M.RecipientDsnFields(args)
+	assert(args, "You must provdide an argument table when creating RecipientDsnFields")
 	local t = { 
-		["Status"] = _Status,
-		["FinalRecipient"] = _FinalRecipient,
-		["DiagnosticCode"] = _DiagnosticCode,
-		["LastAttemptDate"] = _LastAttemptDate,
-		["ExtensionFields"] = _ExtensionFields,
-		["RemoteMta"] = _RemoteMta,
-		["Action"] = _Action,
+		["Status"] = args["Status"],
+		["FinalRecipient"] = args["FinalRecipient"],
+		["DiagnosticCode"] = args["DiagnosticCode"],
+		["LastAttemptDate"] = args["LastAttemptDate"],
+		["ExtensionFields"] = args["ExtensionFields"],
+		["RemoteMta"] = args["RemoteMta"],
+		["Action"] = args["Action"],
 	}
 	asserts.AssertRecipientDsnFields(t)
 	return t
@@ -3190,11 +3544,14 @@ end
 
 --- Create a structure of type SetActiveReceiptRuleSetRequest
 -- <p>Represents a request to set a receipt rule set as the active receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
--- @param _RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to make active. Setting this value to null disables all email receiving.</p>
-function M.SetActiveReceiptRuleSetRequest(_RuleSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetActiveReceiptRuleSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to make active. Setting this value to null disables all email receiving.</p>
+-- @return SetActiveReceiptRuleSetRequest structure as a key-value pair table
+function M.SetActiveReceiptRuleSetRequest(args)
+	assert(args, "You must provdide an argument table when creating SetActiveReceiptRuleSetRequest")
 	local t = { 
-		["RuleSetName"] = _RuleSetName,
+		["RuleSetName"] = args["RuleSetName"],
 	}
 	asserts.AssertSetActiveReceiptRuleSetRequest(t)
 	return t
@@ -3216,15 +3573,18 @@ end
 
 --- Create a structure of type DeleteIdentityPolicyRequest
 -- <p>Represents a request to delete a sending authorization policy for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
--- @param _PolicyName [PolicyName] <p>The name of the policy to be deleted.</p>
--- @param _Identity [Identity] <p>The identity that is associated with the policy that you want to delete. You can specify the identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
--- Required parameter: Identity
--- Required parameter: PolicyName
-function M.DeleteIdentityPolicyRequest(_PolicyName, _Identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [PolicyName] <p>The name of the policy to be deleted.</p>
+-- * Identity [Identity] <p>The identity that is associated with the policy that you want to delete. You can specify the identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
+-- Required key: Identity
+-- Required key: PolicyName
+-- @return DeleteIdentityPolicyRequest structure as a key-value pair table
+function M.DeleteIdentityPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteIdentityPolicyRequest")
 	local t = { 
-		["PolicyName"] = _PolicyName,
-		["Identity"] = _Identity,
+		["PolicyName"] = args["PolicyName"],
+		["Identity"] = args["Identity"],
 	}
 	asserts.AssertDeleteIdentityPolicyRequest(t)
 	return t
@@ -3242,8 +3602,11 @@ end
 
 --- Create a structure of type CreateConfigurationSetResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.CreateConfigurationSetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateConfigurationSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateConfigurationSetResponse structure as a key-value pair table
+function M.CreateConfigurationSetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateConfigurationSetResponse")
 	local t = { 
 	}
 	asserts.AssertCreateConfigurationSetResponse(t)
@@ -3266,15 +3629,18 @@ end
 
 --- Create a structure of type DeleteConfigurationSetEventDestinationRequest
 -- <p>Represents a request to delete a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _EventDestinationName [EventDestinationName] <p>The name of the event destination to delete.</p>
--- @param _ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set from which to delete the event destination.</p>
--- Required parameter: ConfigurationSetName
--- Required parameter: EventDestinationName
-function M.DeleteConfigurationSetEventDestinationRequest(_EventDestinationName, _ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigurationSetEventDestinationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventDestinationName [EventDestinationName] <p>The name of the event destination to delete.</p>
+-- * ConfigurationSetName [ConfigurationSetName] <p>The name of the configuration set from which to delete the event destination.</p>
+-- Required key: ConfigurationSetName
+-- Required key: EventDestinationName
+-- @return DeleteConfigurationSetEventDestinationRequest structure as a key-value pair table
+function M.DeleteConfigurationSetEventDestinationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteConfigurationSetEventDestinationRequest")
 	local t = { 
-		["EventDestinationName"] = _EventDestinationName,
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["EventDestinationName"] = args["EventDestinationName"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertDeleteConfigurationSetEventDestinationRequest(t)
 	return t
@@ -3295,15 +3661,18 @@ end
 
 --- Create a structure of type ListIdentitiesRequest
 -- <p>Represents a request to return a list of all identities (email addresses and domains) that you have attempted to verify under your AWS account, regardless of verification status.</p>
--- @param _IdentityType [IdentityType] <p>The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is omitted, then all identities will be listed.</p>
--- @param _NextToken [NextToken] <p>The token to use for pagination.</p>
--- @param _MaxItems [MaxItems] <p>The maximum number of identities per page. Possible values are 1-1000 inclusive.</p>
-function M.ListIdentitiesRequest(_IdentityType, _NextToken, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentitiesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityType [IdentityType] <p>The type of the identities to list. Possible values are "EmailAddress" and "Domain". If this parameter is omitted, then all identities will be listed.</p>
+-- * NextToken [NextToken] <p>The token to use for pagination.</p>
+-- * MaxItems [MaxItems] <p>The maximum number of identities per page. Possible values are 1-1000 inclusive.</p>
+-- @return ListIdentitiesRequest structure as a key-value pair table
+function M.ListIdentitiesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListIdentitiesRequest")
 	local t = { 
-		["IdentityType"] = _IdentityType,
-		["NextToken"] = _NextToken,
-		["MaxItems"] = _MaxItems,
+		["IdentityType"] = args["IdentityType"],
+		["NextToken"] = args["NextToken"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListIdentitiesRequest(t)
 	return t
@@ -3332,27 +3701,30 @@ end
 
 --- Create a structure of type IdentityNotificationAttributes
 -- <p>Represents the notification attributes of an identity, including whether an identity has Amazon Simple Notification Service (Amazon SNS) topics set for bounce, complaint, and/or delivery notifications, and whether feedback forwarding is enabled for bounce and complaint notifications.</p>
--- @param _BounceTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish bounce notifications.</p>
--- @param _HeadersInBounceNotificationsEnabled [Enabled] <p>Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type <code>Bounce</code>. A value of <code>true</code> specifies that Amazon SES will include headers in bounce notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in bounce notifications.</p>
--- @param _DeliveryTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish delivery notifications.</p>
--- @param _HeadersInDeliveryNotificationsEnabled [Enabled] <p>Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type <code>Delivery</code>. A value of <code>true</code> specifies that Amazon SES will include headers in delivery notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in delivery notifications.</p>
--- @param _ComplaintTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish complaint notifications.</p>
--- @param _HeadersInComplaintNotificationsEnabled [Enabled] <p>Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type <code>Complaint</code>. A value of <code>true</code> specifies that Amazon SES will include headers in complaint notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in complaint notifications.</p>
--- @param _ForwardingEnabled [Enabled] <p>Describes whether Amazon SES will forward bounce and complaint notifications as email. <code>true</code> indicates that Amazon SES will forward bounce and complaint notifications as email, while <code>false</code> indicates that bounce and complaint notifications will be published only to the specified bounce and complaint Amazon SNS topics.</p>
--- Required parameter: BounceTopic
--- Required parameter: ComplaintTopic
--- Required parameter: DeliveryTopic
--- Required parameter: ForwardingEnabled
-function M.IdentityNotificationAttributes(_BounceTopic, _HeadersInBounceNotificationsEnabled, _DeliveryTopic, _HeadersInDeliveryNotificationsEnabled, _ComplaintTopic, _HeadersInComplaintNotificationsEnabled, _ForwardingEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdentityNotificationAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BounceTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish bounce notifications.</p>
+-- * HeadersInBounceNotificationsEnabled [Enabled] <p>Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type <code>Bounce</code>. A value of <code>true</code> specifies that Amazon SES will include headers in bounce notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in bounce notifications.</p>
+-- * DeliveryTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish delivery notifications.</p>
+-- * HeadersInDeliveryNotificationsEnabled [Enabled] <p>Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type <code>Delivery</code>. A value of <code>true</code> specifies that Amazon SES will include headers in delivery notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in delivery notifications.</p>
+-- * ComplaintTopic [NotificationTopic] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES will publish complaint notifications.</p>
+-- * HeadersInComplaintNotificationsEnabled [Enabled] <p>Describes whether Amazon SES includes the original email headers in Amazon SNS notifications of type <code>Complaint</code>. A value of <code>true</code> specifies that Amazon SES will include headers in complaint notifications, and a value of <code>false</code> specifies that Amazon SES will not include headers in complaint notifications.</p>
+-- * ForwardingEnabled [Enabled] <p>Describes whether Amazon SES will forward bounce and complaint notifications as email. <code>true</code> indicates that Amazon SES will forward bounce and complaint notifications as email, while <code>false</code> indicates that bounce and complaint notifications will be published only to the specified bounce and complaint Amazon SNS topics.</p>
+-- Required key: BounceTopic
+-- Required key: ComplaintTopic
+-- Required key: DeliveryTopic
+-- Required key: ForwardingEnabled
+-- @return IdentityNotificationAttributes structure as a key-value pair table
+function M.IdentityNotificationAttributes(args)
+	assert(args, "You must provdide an argument table when creating IdentityNotificationAttributes")
 	local t = { 
-		["BounceTopic"] = _BounceTopic,
-		["HeadersInBounceNotificationsEnabled"] = _HeadersInBounceNotificationsEnabled,
-		["DeliveryTopic"] = _DeliveryTopic,
-		["HeadersInDeliveryNotificationsEnabled"] = _HeadersInDeliveryNotificationsEnabled,
-		["ComplaintTopic"] = _ComplaintTopic,
-		["HeadersInComplaintNotificationsEnabled"] = _HeadersInComplaintNotificationsEnabled,
-		["ForwardingEnabled"] = _ForwardingEnabled,
+		["BounceTopic"] = args["BounceTopic"],
+		["HeadersInBounceNotificationsEnabled"] = args["HeadersInBounceNotificationsEnabled"],
+		["DeliveryTopic"] = args["DeliveryTopic"],
+		["HeadersInDeliveryNotificationsEnabled"] = args["HeadersInDeliveryNotificationsEnabled"],
+		["ComplaintTopic"] = args["ComplaintTopic"],
+		["HeadersInComplaintNotificationsEnabled"] = args["HeadersInComplaintNotificationsEnabled"],
+		["ForwardingEnabled"] = args["ForwardingEnabled"],
 	}
 	asserts.AssertIdentityNotificationAttributes(t)
 	return t
@@ -3370,8 +3742,11 @@ end
 
 --- Create a structure of type CreateReceiptRuleResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.CreateReceiptRuleResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReceiptRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateReceiptRuleResponse structure as a key-value pair table
+function M.CreateReceiptRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateReceiptRuleResponse")
 	local t = { 
 	}
 	asserts.AssertCreateReceiptRuleResponse(t)
@@ -3390,8 +3765,11 @@ end
 
 --- Create a structure of type MessageRejected
 -- <p>Indicates that the action failed, and the message could not be sent. Check the error stack for more information about what caused the error.</p>
-function M.MessageRejected(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MessageRejected")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MessageRejected structure as a key-value pair table
+function M.MessageRejected(args)
+	assert(args, "You must provdide an argument table when creating MessageRejected")
 	local t = { 
 	}
 	asserts.AssertMessageRejected(t)
@@ -3410,8 +3788,11 @@ end
 
 --- Create a structure of type InvalidPolicyException
 -- <p>Indicates that the provided policy is invalid. Check the error stack for more information about what caused the error.</p>
-function M.InvalidPolicyException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPolicyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidPolicyException structure as a key-value pair table
+function M.InvalidPolicyException(args)
+	assert(args, "You must provdide an argument table when creating InvalidPolicyException")
 	local t = { 
 	}
 	asserts.AssertInvalidPolicyException(t)
@@ -3430,8 +3811,11 @@ end
 
 --- Create a structure of type CloneReceiptRuleSetResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.CloneReceiptRuleSetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloneReceiptRuleSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CloneReceiptRuleSetResponse structure as a key-value pair table
+function M.CloneReceiptRuleSetResponse(args)
+	assert(args, "You must provdide an argument table when creating CloneReceiptRuleSetResponse")
 	local t = { 
 	}
 	asserts.AssertCloneReceiptRuleSetResponse(t)
@@ -3452,12 +3836,15 @@ end
 
 --- Create a structure of type ListIdentityPoliciesResponse
 -- <p>A list of names of sending authorization policies that apply to an identity.</p>
--- @param _PolicyNames [PolicyNameList] <p>A list of names of policies that apply to the specified identity.</p>
--- Required parameter: PolicyNames
-function M.ListIdentityPoliciesResponse(_PolicyNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyNames [PolicyNameList] <p>A list of names of policies that apply to the specified identity.</p>
+-- Required key: PolicyNames
+-- @return ListIdentityPoliciesResponse structure as a key-value pair table
+function M.ListIdentityPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListIdentityPoliciesResponse")
 	local t = { 
-		["PolicyNames"] = _PolicyNames,
+		["PolicyNames"] = args["PolicyNames"],
 	}
 	asserts.AssertListIdentityPoliciesResponse(t)
 	return t
@@ -3477,12 +3864,15 @@ end
 
 --- Create a structure of type DeleteIdentityRequest
 -- <p>Represents a request to delete one of your Amazon SES identities (an email address or domain).</p>
--- @param _Identity [Identity] <p>The identity to be removed from the list of identities for the AWS Account.</p>
--- Required parameter: Identity
-function M.DeleteIdentityRequest(_Identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Identity [Identity] <p>The identity to be removed from the list of identities for the AWS Account.</p>
+-- Required key: Identity
+-- @return DeleteIdentityRequest structure as a key-value pair table
+function M.DeleteIdentityRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteIdentityRequest")
 	local t = { 
-		["Identity"] = _Identity,
+		["Identity"] = args["Identity"],
 	}
 	asserts.AssertDeleteIdentityRequest(t)
 	return t
@@ -3500,8 +3890,11 @@ end
 
 --- Create a structure of type UpdateConfigurationSetEventDestinationResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.UpdateConfigurationSetEventDestinationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConfigurationSetEventDestinationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateConfigurationSetEventDestinationResponse structure as a key-value pair table
+function M.UpdateConfigurationSetEventDestinationResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateConfigurationSetEventDestinationResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateConfigurationSetEventDestinationResponse(t)
@@ -3528,22 +3921,25 @@ end
 
 --- Create a structure of type BounceAction
 -- <p>When included in a receipt rule, this action rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>For information about sending a bounce message in response to a received email, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-bounce.html">Amazon SES Developer Guide</a>.</p>
--- @param _Message [BounceMessage] <p>Human-readable text to include in the bounce message.</p>
--- @param _Sender [Address] <p>The email address of the sender of the bounced email. This is the address from which the bounce message will be sent.</p>
--- @param _SmtpReplyCode [BounceSmtpReplyCode] <p>The SMTP reply code, as defined by <a href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>.</p>
--- @param _TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the bounce action is taken. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
--- @param _StatusCode [BounceStatusCode] <p>The SMTP enhanced status code, as defined by <a href="https://tools.ietf.org/html/rfc3463">RFC 3463</a>.</p>
--- Required parameter: SmtpReplyCode
--- Required parameter: Message
--- Required parameter: Sender
-function M.BounceAction(_Message, _Sender, _SmtpReplyCode, _TopicArn, _StatusCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BounceAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [BounceMessage] <p>Human-readable text to include in the bounce message.</p>
+-- * Sender [Address] <p>The email address of the sender of the bounced email. This is the address from which the bounce message will be sent.</p>
+-- * SmtpReplyCode [BounceSmtpReplyCode] <p>The SMTP reply code, as defined by <a href="https://tools.ietf.org/html/rfc5321">RFC 5321</a>.</p>
+-- * TopicArn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the bounce action is taken. An example of an Amazon SNS topic ARN is <code>arn:aws:sns:us-west-2:123456789012:MyTopic</code>. For more information about Amazon SNS topics, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html">Amazon SNS Developer Guide</a>.</p>
+-- * StatusCode [BounceStatusCode] <p>The SMTP enhanced status code, as defined by <a href="https://tools.ietf.org/html/rfc3463">RFC 3463</a>.</p>
+-- Required key: SmtpReplyCode
+-- Required key: Message
+-- Required key: Sender
+-- @return BounceAction structure as a key-value pair table
+function M.BounceAction(args)
+	assert(args, "You must provdide an argument table when creating BounceAction")
 	local t = { 
-		["Message"] = _Message,
-		["Sender"] = _Sender,
-		["SmtpReplyCode"] = _SmtpReplyCode,
-		["TopicArn"] = _TopicArn,
-		["StatusCode"] = _StatusCode,
+		["Message"] = args["Message"],
+		["Sender"] = args["Sender"],
+		["SmtpReplyCode"] = args["SmtpReplyCode"],
+		["TopicArn"] = args["TopicArn"],
+		["StatusCode"] = args["StatusCode"],
 	}
 	asserts.AssertBounceAction(t)
 	return t
@@ -3563,13 +3959,16 @@ end
 
 --- Create a structure of type ListConfigurationSetsResponse
 -- <p>A list of configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _ConfigurationSets [ConfigurationSets] <p>A list of configuration sets.</p>
--- @param _NextToken [NextToken] <p>A token indicating that there are additional configuration sets available to be listed. Pass this token to successive calls of <code>ListConfigurationSets</code>. </p>
-function M.ListConfigurationSetsResponse(_ConfigurationSets, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListConfigurationSetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationSets [ConfigurationSets] <p>A list of configuration sets.</p>
+-- * NextToken [NextToken] <p>A token indicating that there are additional configuration sets available to be listed. Pass this token to successive calls of <code>ListConfigurationSets</code>. </p>
+-- @return ListConfigurationSetsResponse structure as a key-value pair table
+function M.ListConfigurationSetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListConfigurationSetsResponse")
 	local t = { 
-		["ConfigurationSets"] = _ConfigurationSets,
-		["NextToken"] = _NextToken,
+		["ConfigurationSets"] = args["ConfigurationSets"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListConfigurationSetsResponse(t)
 	return t
@@ -3592,19 +3991,22 @@ end
 
 --- Create a structure of type SendDataPoint
 -- <p>Represents sending statistics data. Each <code>SendDataPoint</code> contains statistics for a 15-minute period of sending activity. </p>
--- @param _Complaints [Counter] <p>Number of unwanted emails that were rejected by recipients.</p>
--- @param _Timestamp [Timestamp] <p>Time of the data point.</p>
--- @param _DeliveryAttempts [Counter] <p>Number of emails that have been sent.</p>
--- @param _Bounces [Counter] <p>Number of emails that have bounced.</p>
--- @param _Rejects [Counter] <p>Number of emails rejected by Amazon SES.</p>
-function M.SendDataPoint(_Complaints, _Timestamp, _DeliveryAttempts, _Bounces, _Rejects, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendDataPoint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Complaints [Counter] <p>Number of unwanted emails that were rejected by recipients.</p>
+-- * Timestamp [Timestamp] <p>Time of the data point.</p>
+-- * DeliveryAttempts [Counter] <p>Number of emails that have been sent.</p>
+-- * Bounces [Counter] <p>Number of emails that have bounced.</p>
+-- * Rejects [Counter] <p>Number of emails rejected by Amazon SES.</p>
+-- @return SendDataPoint structure as a key-value pair table
+function M.SendDataPoint(args)
+	assert(args, "You must provdide an argument table when creating SendDataPoint")
 	local t = { 
-		["Complaints"] = _Complaints,
-		["Timestamp"] = _Timestamp,
-		["DeliveryAttempts"] = _DeliveryAttempts,
-		["Bounces"] = _Bounces,
-		["Rejects"] = _Rejects,
+		["Complaints"] = args["Complaints"],
+		["Timestamp"] = args["Timestamp"],
+		["DeliveryAttempts"] = args["DeliveryAttempts"],
+		["Bounces"] = args["Bounces"],
+		["Rejects"] = args["Rejects"],
 	}
 	asserts.AssertSendDataPoint(t)
 	return t
@@ -3622,8 +4024,11 @@ end
 
 --- Create a structure of type ReorderReceiptRuleSetResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.ReorderReceiptRuleSetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReorderReceiptRuleSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ReorderReceiptRuleSetResponse structure as a key-value pair table
+function M.ReorderReceiptRuleSetResponse(args)
+	assert(args, "You must provdide an argument table when creating ReorderReceiptRuleSetResponse")
 	local t = { 
 	}
 	asserts.AssertReorderReceiptRuleSetResponse(t)
@@ -3644,12 +4049,15 @@ end
 
 --- Create a structure of type VerifyDomainIdentityRequest
 -- <p>Represents a request to begin Amazon SES domain verification and to generate the TXT records that you must publish to the DNS server of your domain to complete the verification. For information about domain verification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.html">Amazon SES Developer Guide</a>.</p>
--- @param _Domain [Domain] <p>The domain to be verified.</p>
--- Required parameter: Domain
-function M.VerifyDomainIdentityRequest(_Domain, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VerifyDomainIdentityRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Domain [Domain] <p>The domain to be verified.</p>
+-- Required key: Domain
+-- @return VerifyDomainIdentityRequest structure as a key-value pair table
+function M.VerifyDomainIdentityRequest(args)
+	assert(args, "You must provdide an argument table when creating VerifyDomainIdentityRequest")
 	local t = { 
-		["Domain"] = _Domain,
+		["Domain"] = args["Domain"],
 	}
 	asserts.AssertVerifyDomainIdentityRequest(t)
 	return t
@@ -3669,13 +4077,16 @@ end
 
 --- Create a structure of type EventDestinationDoesNotExistException
 -- <p>Indicates that the event destination does not exist.</p>
--- @param _EventDestinationName [EventDestinationName] 
--- @param _ConfigurationSetName [ConfigurationSetName] 
-function M.EventDestinationDoesNotExistException(_EventDestinationName, _ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventDestinationDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventDestinationName [EventDestinationName] 
+-- * ConfigurationSetName [ConfigurationSetName] 
+-- @return EventDestinationDoesNotExistException structure as a key-value pair table
+function M.EventDestinationDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating EventDestinationDoesNotExistException")
 	local t = { 
-		["EventDestinationName"] = _EventDestinationName,
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["EventDestinationName"] = args["EventDestinationName"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertEventDestinationDoesNotExistException(t)
 	return t
@@ -3695,12 +4106,15 @@ end
 
 --- Create a structure of type GetIdentityNotificationAttributesResponse
 -- <p>Represents the notification attributes for a list of identities.</p>
--- @param _NotificationAttributes [NotificationAttributes] <p>A map of Identity to IdentityNotificationAttributes.</p>
--- Required parameter: NotificationAttributes
-function M.GetIdentityNotificationAttributesResponse(_NotificationAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityNotificationAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NotificationAttributes [NotificationAttributes] <p>A map of Identity to IdentityNotificationAttributes.</p>
+-- Required key: NotificationAttributes
+-- @return GetIdentityNotificationAttributesResponse structure as a key-value pair table
+function M.GetIdentityNotificationAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityNotificationAttributesResponse")
 	local t = { 
-		["NotificationAttributes"] = _NotificationAttributes,
+		["NotificationAttributes"] = args["NotificationAttributes"],
 	}
 	asserts.AssertGetIdentityNotificationAttributesResponse(t)
 	return t
@@ -3718,8 +4132,11 @@ end
 
 --- Create a structure of type DeleteReceiptRuleResponse
 -- <p>An empty element returned on a successful request.</p>
-function M.DeleteReceiptRuleResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReceiptRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteReceiptRuleResponse structure as a key-value pair table
+function M.DeleteReceiptRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteReceiptRuleResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteReceiptRuleResponse(t)
@@ -3740,13 +4157,16 @@ end
 
 --- Create a structure of type InvalidCloudWatchDestinationException
 -- <p>Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.</p>
--- @param _EventDestinationName [EventDestinationName] 
--- @param _ConfigurationSetName [ConfigurationSetName] 
-function M.InvalidCloudWatchDestinationException(_EventDestinationName, _ConfigurationSetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCloudWatchDestinationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventDestinationName [EventDestinationName] 
+-- * ConfigurationSetName [ConfigurationSetName] 
+-- @return InvalidCloudWatchDestinationException structure as a key-value pair table
+function M.InvalidCloudWatchDestinationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidCloudWatchDestinationException")
 	local t = { 
-		["EventDestinationName"] = _EventDestinationName,
-		["ConfigurationSetName"] = _ConfigurationSetName,
+		["EventDestinationName"] = args["EventDestinationName"],
+		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
 	asserts.AssertInvalidCloudWatchDestinationException(t)
 	return t
@@ -3766,12 +4186,15 @@ end
 
 --- Create a structure of type CreateConfigurationSetRequest
 -- <p>Represents a request to create a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
--- @param _ConfigurationSet [ConfigurationSet] <p>A data structure that contains the name of the configuration set.</p>
--- Required parameter: ConfigurationSet
-function M.CreateConfigurationSetRequest(_ConfigurationSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateConfigurationSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationSet [ConfigurationSet] <p>A data structure that contains the name of the configuration set.</p>
+-- Required key: ConfigurationSet
+-- @return CreateConfigurationSetRequest structure as a key-value pair table
+function M.CreateConfigurationSetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateConfigurationSetRequest")
 	local t = { 
-		["ConfigurationSet"] = _ConfigurationSet,
+		["ConfigurationSet"] = args["ConfigurationSet"],
 	}
 	asserts.AssertCreateConfigurationSetRequest(t)
 	return t
@@ -3790,11 +4213,14 @@ end
 
 --- Create a structure of type ListReceiptFiltersResponse
 -- <p>A list of IP address filters that exist under your AWS account.</p>
--- @param _Filters [ReceiptFilterList] <p>A list of IP address filter data structures, which each consist of a name, an IP address range, and whether to allow or block mail from it.</p>
-function M.ListReceiptFiltersResponse(_Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListReceiptFiltersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Filters [ReceiptFilterList] <p>A list of IP address filter data structures, which each consist of a name, an IP address range, and whether to allow or block mail from it.</p>
+-- @return ListReceiptFiltersResponse structure as a key-value pair table
+function M.ListReceiptFiltersResponse(args)
+	assert(args, "You must provdide an argument table when creating ListReceiptFiltersResponse")
 	local t = { 
-		["Filters"] = _Filters,
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertListReceiptFiltersResponse(t)
 	return t
@@ -3818,18 +4244,21 @@ end
 
 --- Create a structure of type PutIdentityPolicyRequest
 -- <p>Represents a request to add or update a sending authorization policy for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer Guide</a>.</p>
--- @param _Policy [Policy] <p>The text of the policy in JSON format. The policy cannot exceed 4 KB.</p> <p>For information about the syntax of sending authorization policies, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html">Amazon SES Developer Guide</a>. </p>
--- @param _PolicyName [PolicyName] <p>The name of the policy.</p> <p>The policy name cannot exceed 64 characters and can only include alphanumeric characters, dashes, and underscores.</p>
--- @param _Identity [Identity] <p>The identity to which the policy will apply. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
--- Required parameter: Identity
--- Required parameter: PolicyName
--- Required parameter: Policy
-function M.PutIdentityPolicyRequest(_Policy, _PolicyName, _Identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutIdentityPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [Policy] <p>The text of the policy in JSON format. The policy cannot exceed 4 KB.</p> <p>For information about the syntax of sending authorization policies, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html">Amazon SES Developer Guide</a>. </p>
+-- * PolicyName [PolicyName] <p>The name of the policy.</p> <p>The policy name cannot exceed 64 characters and can only include alphanumeric characters, dashes, and underscores.</p>
+-- * Identity [Identity] <p>The identity to which the policy will apply. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: <code>user@example.com</code>, <code>example.com</code>, <code>arn:aws:ses:us-east-1:123456789012:identity/example.com</code>.</p> <p>To successfully call this API, you must own the identity.</p>
+-- Required key: Identity
+-- Required key: PolicyName
+-- Required key: Policy
+-- @return PutIdentityPolicyRequest structure as a key-value pair table
+function M.PutIdentityPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating PutIdentityPolicyRequest")
 	local t = { 
-		["Policy"] = _Policy,
-		["PolicyName"] = _PolicyName,
-		["Identity"] = _Identity,
+		["Policy"] = args["Policy"],
+		["PolicyName"] = args["PolicyName"],
+		["Identity"] = args["Identity"],
 	}
 	asserts.AssertPutIdentityPolicyRequest(t)
 	return t

@@ -33,8 +33,11 @@ end
 
 --- Create a structure of type InvalidRequestException
 -- <p>Indicates that one or more of the request parameters are not valid.</p>
-function M.InvalidRequestException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRequestException structure as a key-value pair table
+function M.InvalidRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRequestException")
 	local t = { 
 	}
 	asserts.AssertInvalidRequestException(t)
@@ -57,15 +60,18 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceRequest
 --  
--- @param _ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource.</p>
--- @param _TagKeyList [TagKeyList] <p>The tag key or keys to remove.</p> <p>Specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use <a>AddTagsToResource</a>.</p>
--- Required parameter: ResourceArn
--- Required parameter: TagKeyList
-function M.RemoveTagsFromResourceRequest(_ResourceArn, _TagKeyList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource.</p>
+-- * TagKeyList [TagKeyList] <p>The tag key or keys to remove.</p> <p>Specify only the tag key to remove (not the value). To overwrite the value for an existing tag, use <a>AddTagsToResource</a>.</p>
+-- Required key: ResourceArn
+-- Required key: TagKeyList
+-- @return RemoveTagsFromResourceRequest structure as a key-value pair table
+function M.RemoveTagsFromResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceRequest")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["TagKeyList"] = _TagKeyList,
+		["ResourceArn"] = args["ResourceArn"],
+		["TagKeyList"] = args["TagKeyList"],
 	}
 	asserts.AssertRemoveTagsFromResourceRequest(t)
 	return t
@@ -85,13 +91,16 @@ end
 
 --- Create a structure of type ListHsmsResponse
 -- <p>Contains the output of the <a>ListHsms</a> operation.</p>
--- @param _HsmList [HsmList] <p>The list of ARNs that identify the HSMs.</p>
--- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHsms</a> to retrieve the next set of items.</p>
-function M.ListHsmsResponse(_HsmList, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListHsmsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HsmList [HsmList] <p>The list of ARNs that identify the HSMs.</p>
+-- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHsms</a> to retrieve the next set of items.</p>
+-- @return ListHsmsResponse structure as a key-value pair table
+function M.ListHsmsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListHsmsResponse")
 	local t = { 
-		["HsmList"] = _HsmList,
-		["NextToken"] = _NextToken,
+		["HsmList"] = args["HsmList"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListHsmsResponse(t)
 	return t
@@ -109,8 +118,11 @@ end
 
 --- Create a structure of type ListAvailableZonesRequest
 -- <p>Contains the inputs for the <a>ListAvailableZones</a> action.</p>
-function M.ListAvailableZonesRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAvailableZonesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ListAvailableZonesRequest structure as a key-value pair table
+function M.ListAvailableZonesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAvailableZonesRequest")
 	local t = { 
 	}
 	asserts.AssertListAvailableZonesRequest(t)
@@ -130,11 +142,14 @@ end
 
 --- Create a structure of type CreateLunaClientResponse
 -- <p>Contains the output of the <a>CreateLunaClient</a> action.</p>
--- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
-function M.CreateLunaClientResponse(_ClientArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLunaClientResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClientArn [ClientArn] <p>The ARN of the client.</p>
+-- @return CreateLunaClientResponse structure as a key-value pair table
+function M.CreateLunaClientResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateLunaClientResponse")
 	local t = { 
-		["ClientArn"] = _ClientArn,
+		["ClientArn"] = args["ClientArn"],
 	}
 	asserts.AssertCreateLunaClientResponse(t)
 	return t
@@ -153,11 +168,14 @@ end
 
 --- Create a structure of type CreateHsmResponse
 -- <p>Contains the output of the <a>CreateHsm</a> operation.</p>
--- @param _HsmArn [HsmArn] <p>The ARN of the HSM.</p>
-function M.CreateHsmResponse(_HsmArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateHsmResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HsmArn [HsmArn] <p>The ARN of the HSM.</p>
+-- @return CreateHsmResponse structure as a key-value pair table
+function M.CreateHsmResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateHsmResponse")
 	local t = { 
-		["HsmArn"] = _HsmArn,
+		["HsmArn"] = args["HsmArn"],
 	}
 	asserts.AssertCreateHsmResponse(t)
 	return t
@@ -179,15 +197,18 @@ end
 
 --- Create a structure of type AddTagsToResourceRequest
 --  
--- @param _ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.</p>
--- @param _TagList [TagList] <p>One or more tags.</p>
--- Required parameter: ResourceArn
--- Required parameter: TagList
-function M.AddTagsToResourceRequest(_ResourceArn, _TagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.</p>
+-- * TagList [TagList] <p>One or more tags.</p>
+-- Required key: ResourceArn
+-- Required key: TagList
+-- @return AddTagsToResourceRequest structure as a key-value pair table
+function M.AddTagsToResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToResourceRequest")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["TagList"] = _TagList,
+		["ResourceArn"] = args["ResourceArn"],
+		["TagList"] = args["TagList"],
 	}
 	asserts.AssertAddTagsToResourceRequest(t)
 	return t
@@ -206,11 +227,14 @@ end
 
 --- Create a structure of type ListLunaClientsRequest
 --  
--- @param _NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>. Pass null if this is the first call.</p>
-function M.ListLunaClientsRequest(_NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLunaClientsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>. Pass null if this is the first call.</p>
+-- @return ListLunaClientsRequest structure as a key-value pair table
+function M.ListLunaClientsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListLunaClientsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListLunaClientsRequest(t)
 	return t
@@ -230,12 +254,15 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceResponse
 --  
--- @param _Status [String] <p>The status of the operation.</p>
--- Required parameter: Status
-function M.RemoveTagsFromResourceResponse(_Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The status of the operation.</p>
+-- Required key: Status
+-- @return RemoveTagsFromResourceResponse structure as a key-value pair table
+function M.RemoveTagsFromResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceResponse")
 	local t = { 
-		["Status"] = _Status,
+		["Status"] = args["Status"],
 	}
 	asserts.AssertRemoveTagsFromResourceResponse(t)
 	return t
@@ -255,12 +282,15 @@ end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param _ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource.</p>
--- Required parameter: ResourceArn
-function M.ListTagsForResourceRequest(_ResourceArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS CloudHSM resource.</p>
+-- Required key: ResourceArn
+-- @return ListTagsForResourceRequest structure as a key-value pair table
+function M.ListTagsForResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
+		["ResourceArn"] = args["ResourceArn"],
 	}
 	asserts.AssertListTagsForResourceRequest(t)
 	return t
@@ -280,12 +310,15 @@ end
 
 --- Create a structure of type DeleteHsmRequest
 -- <p>Contains the inputs for the <a>DeleteHsm</a> operation.</p>
--- @param _HsmArn [HsmArn] <p>The ARN of the HSM to delete.</p>
--- Required parameter: HsmArn
-function M.DeleteHsmRequest(_HsmArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHsmRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HsmArn [HsmArn] <p>The ARN of the HSM to delete.</p>
+-- Required key: HsmArn
+-- @return DeleteHsmRequest structure as a key-value pair table
+function M.DeleteHsmRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteHsmRequest")
 	local t = { 
-		["HsmArn"] = _HsmArn,
+		["HsmArn"] = args["HsmArn"],
 	}
 	asserts.AssertDeleteHsmRequest(t)
 	return t
@@ -304,11 +337,14 @@ end
 
 --- Create a structure of type ModifyHsmResponse
 -- <p>Contains the output of the <a>ModifyHsm</a> operation.</p>
--- @param _HsmArn [HsmArn] <p>The ARN of the HSM.</p>
-function M.ModifyHsmResponse(_HsmArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHsmResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HsmArn [HsmArn] <p>The ARN of the HSM.</p>
+-- @return ModifyHsmResponse structure as a key-value pair table
+function M.ModifyHsmResponse(args)
+	assert(args, "You must provdide an argument table when creating ModifyHsmResponse")
 	local t = { 
-		["HsmArn"] = _HsmArn,
+		["HsmArn"] = args["HsmArn"],
 	}
 	asserts.AssertModifyHsmResponse(t)
 	return t
@@ -335,27 +371,30 @@ end
 
 --- Create a structure of type DescribeHapgResponse
 -- <p>Contains the output of the <a>DescribeHapg</a> action.</p>
--- @param _PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers that belong to the high-availability partition group.</p>
--- @param _HsmsPendingRegistration [HsmList] 
--- @param _HsmsLastActionFailed [HsmList] 
--- @param _HsmsPendingDeletion [HsmList] 
--- @param _LastModifiedTimestamp [Timestamp] <p>The date and time the high-availability partition group was last modified.</p>
--- @param _Label [Label] <p>The label for the high-availability partition group.</p>
--- @param _HapgSerial [String] <p>The serial number of the high-availability partition group.</p>
--- @param _State [CloudHsmObjectState] <p>The state of the high-availability partition group.</p>
--- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
-function M.DescribeHapgResponse(_PartitionSerialList, _HsmsPendingRegistration, _HsmsLastActionFailed, _HsmsPendingDeletion, _LastModifiedTimestamp, _Label, _HapgSerial, _State, _HapgArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHapgResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers that belong to the high-availability partition group.</p>
+-- * HsmsPendingRegistration [HsmList] 
+-- * HsmsLastActionFailed [HsmList] 
+-- * HsmsPendingDeletion [HsmList] 
+-- * LastModifiedTimestamp [Timestamp] <p>The date and time the high-availability partition group was last modified.</p>
+-- * Label [Label] <p>The label for the high-availability partition group.</p>
+-- * HapgSerial [String] <p>The serial number of the high-availability partition group.</p>
+-- * State [CloudHsmObjectState] <p>The state of the high-availability partition group.</p>
+-- * HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
+-- @return DescribeHapgResponse structure as a key-value pair table
+function M.DescribeHapgResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeHapgResponse")
 	local t = { 
-		["PartitionSerialList"] = _PartitionSerialList,
-		["HsmsPendingRegistration"] = _HsmsPendingRegistration,
-		["HsmsLastActionFailed"] = _HsmsLastActionFailed,
-		["HsmsPendingDeletion"] = _HsmsPendingDeletion,
-		["LastModifiedTimestamp"] = _LastModifiedTimestamp,
-		["Label"] = _Label,
-		["HapgSerial"] = _HapgSerial,
-		["State"] = _State,
-		["HapgArn"] = _HapgArn,
+		["PartitionSerialList"] = args["PartitionSerialList"],
+		["HsmsPendingRegistration"] = args["HsmsPendingRegistration"],
+		["HsmsLastActionFailed"] = args["HsmsLastActionFailed"],
+		["HsmsPendingDeletion"] = args["HsmsPendingDeletion"],
+		["LastModifiedTimestamp"] = args["LastModifiedTimestamp"],
+		["Label"] = args["Label"],
+		["HapgSerial"] = args["HapgSerial"],
+		["State"] = args["State"],
+		["HapgArn"] = args["HapgArn"],
 	}
 	asserts.AssertDescribeHapgResponse(t)
 	return t
@@ -375,12 +414,15 @@ end
 
 --- Create a structure of type ListTagsForResourceResponse
 --  
--- @param _TagList [TagList] <p>One or more tags.</p>
--- Required parameter: TagList
-function M.ListTagsForResourceResponse(_TagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagList [TagList] <p>One or more tags.</p>
+-- Required key: TagList
+-- @return ListTagsForResourceResponse structure as a key-value pair table
+function M.ListTagsForResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceResponse")
 	local t = { 
-		["TagList"] = _TagList,
+		["TagList"] = args["TagList"],
 	}
 	asserts.AssertListTagsForResourceResponse(t)
 	return t
@@ -399,11 +441,14 @@ end
 
 --- Create a structure of type ListHapgsRequest
 --  
--- @param _NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHapgs</a>. Pass null if this is the first call.</p>
-function M.ListHapgsRequest(_NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListHapgsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHapgs</a>. Pass null if this is the first call.</p>
+-- @return ListHapgsRequest structure as a key-value pair table
+function M.ListHapgsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListHapgsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListHapgsRequest(t)
 	return t
@@ -427,18 +472,21 @@ end
 
 --- Create a structure of type GetConfigRequest
 --  
--- @param _HapgList [HapgList] <p>A list of ARNs that identify the high-availability partition groups that are associated with the client.</p>
--- @param _ClientVersion [ClientVersion] <p>The client version.</p>
--- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
--- Required parameter: ClientArn
--- Required parameter: ClientVersion
--- Required parameter: HapgList
-function M.GetConfigRequest(_HapgList, _ClientVersion, _ClientArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetConfigRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HapgList [HapgList] <p>A list of ARNs that identify the high-availability partition groups that are associated with the client.</p>
+-- * ClientVersion [ClientVersion] <p>The client version.</p>
+-- * ClientArn [ClientArn] <p>The ARN of the client.</p>
+-- Required key: ClientArn
+-- Required key: ClientVersion
+-- Required key: HapgList
+-- @return GetConfigRequest structure as a key-value pair table
+function M.GetConfigRequest(args)
+	assert(args, "You must provdide an argument table when creating GetConfigRequest")
 	local t = { 
-		["HapgList"] = _HapgList,
-		["ClientVersion"] = _ClientVersion,
-		["ClientArn"] = _ClientArn,
+		["HapgList"] = args["HapgList"],
+		["ClientVersion"] = args["ClientVersion"],
+		["ClientArn"] = args["ClientArn"],
 	}
 	asserts.AssertGetConfigRequest(t)
 	return t
@@ -458,12 +506,15 @@ end
 
 --- Create a structure of type CreateHapgRequest
 -- <p>Contains the inputs for the <a>CreateHapgRequest</a> action.</p>
--- @param _Label [Label] <p>The label of the new high-availability partition group.</p>
--- Required parameter: Label
-function M.CreateHapgRequest(_Label, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateHapgRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Label [Label] <p>The label of the new high-availability partition group.</p>
+-- Required key: Label
+-- @return CreateHapgRequest structure as a key-value pair table
+function M.CreateHapgRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateHapgRequest")
 	local t = { 
-		["Label"] = _Label,
+		["Label"] = args["Label"],
 	}
 	asserts.AssertCreateHapgRequest(t)
 	return t
@@ -483,12 +534,15 @@ end
 
 --- Create a structure of type DescribeHapgRequest
 -- <p>Contains the inputs for the <a>DescribeHapg</a> action.</p>
--- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group to describe.</p>
--- Required parameter: HapgArn
-function M.DescribeHapgRequest(_HapgArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHapgRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HapgArn [HapgArn] <p>The ARN of the high-availability partition group to describe.</p>
+-- Required key: HapgArn
+-- @return DescribeHapgRequest structure as a key-value pair table
+function M.DescribeHapgRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeHapgRequest")
 	local t = { 
-		["HapgArn"] = _HapgArn,
+		["HapgArn"] = args["HapgArn"],
 	}
 	asserts.AssertDescribeHapgRequest(t)
 	return t
@@ -509,14 +563,17 @@ end
 
 --- Create a structure of type ListHapgsResponse
 --  
--- @param _HapgList [HapgList] <p>The list of high-availability partition groups.</p>
--- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHapgs</a> to retrieve the next set of items.</p>
--- Required parameter: HapgList
-function M.ListHapgsResponse(_HapgList, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListHapgsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HapgList [HapgList] <p>The list of high-availability partition groups.</p>
+-- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHapgs</a> to retrieve the next set of items.</p>
+-- Required key: HapgList
+-- @return ListHapgsResponse structure as a key-value pair table
+function M.ListHapgsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListHapgsResponse")
 	local t = { 
-		["HapgList"] = _HapgList,
-		["NextToken"] = _NextToken,
+		["HapgList"] = args["HapgList"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListHapgsResponse(t)
 	return t
@@ -536,13 +593,16 @@ end
 
 --- Create a structure of type DescribeHsmRequest
 -- <p>Contains the inputs for the <a>DescribeHsm</a> operation. </p>
--- @param _HsmSerialNumber [HsmSerialNumber] <p>The serial number of the HSM. Either the <i>HsmArn</i> or the <i>HsmSerialNumber</i> parameter must be specified.</p>
--- @param _HsmArn [HsmArn] <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i> parameter must be specified.</p>
-function M.DescribeHsmRequest(_HsmSerialNumber, _HsmArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHsmRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HsmSerialNumber [HsmSerialNumber] <p>The serial number of the HSM. Either the <i>HsmArn</i> or the <i>HsmSerialNumber</i> parameter must be specified.</p>
+-- * HsmArn [HsmArn] <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i> parameter must be specified.</p>
+-- @return DescribeHsmRequest structure as a key-value pair table
+function M.DescribeHsmRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeHsmRequest")
 	local t = { 
-		["HsmSerialNumber"] = _HsmSerialNumber,
-		["HsmArn"] = _HsmArn,
+		["HsmSerialNumber"] = args["HsmSerialNumber"],
+		["HsmArn"] = args["HsmArn"],
 	}
 	asserts.AssertDescribeHsmRequest(t)
 	return t
@@ -565,19 +625,22 @@ end
 
 --- Create a structure of type DescribeLunaClientResponse
 --  
--- @param _LastModifiedTimestamp [Timestamp] <p>The date and time the client was last modified.</p>
--- @param _Label [Label] <p>The label of the client.</p>
--- @param _CertificateFingerprint [CertificateFingerprint] <p>The certificate fingerprint.</p>
--- @param _Certificate [Certificate] <p>The certificate installed on the HSMs used by this client.</p>
--- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
-function M.DescribeLunaClientResponse(_LastModifiedTimestamp, _Label, _CertificateFingerprint, _Certificate, _ClientArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLunaClientResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastModifiedTimestamp [Timestamp] <p>The date and time the client was last modified.</p>
+-- * Label [Label] <p>The label of the client.</p>
+-- * CertificateFingerprint [CertificateFingerprint] <p>The certificate fingerprint.</p>
+-- * Certificate [Certificate] <p>The certificate installed on the HSMs used by this client.</p>
+-- * ClientArn [ClientArn] <p>The ARN of the client.</p>
+-- @return DescribeLunaClientResponse structure as a key-value pair table
+function M.DescribeLunaClientResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeLunaClientResponse")
 	local t = { 
-		["LastModifiedTimestamp"] = _LastModifiedTimestamp,
-		["Label"] = _Label,
-		["CertificateFingerprint"] = _CertificateFingerprint,
-		["Certificate"] = _Certificate,
-		["ClientArn"] = _ClientArn,
+		["LastModifiedTimestamp"] = args["LastModifiedTimestamp"],
+		["Label"] = args["Label"],
+		["CertificateFingerprint"] = args["CertificateFingerprint"],
+		["Certificate"] = args["Certificate"],
+		["ClientArn"] = args["ClientArn"],
 	}
 	asserts.AssertDescribeLunaClientResponse(t)
 	return t
@@ -597,12 +660,15 @@ end
 
 --- Create a structure of type DeleteLunaClientRequest
 --  
--- @param _ClientArn [ClientArn] <p>The ARN of the client to delete.</p>
--- Required parameter: ClientArn
-function M.DeleteLunaClientRequest(_ClientArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLunaClientRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClientArn [ClientArn] <p>The ARN of the client to delete.</p>
+-- Required key: ClientArn
+-- @return DeleteLunaClientRequest structure as a key-value pair table
+function M.DeleteLunaClientRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteLunaClientRequest")
 	local t = { 
-		["ClientArn"] = _ClientArn,
+		["ClientArn"] = args["ClientArn"],
 	}
 	asserts.AssertDeleteLunaClientRequest(t)
 	return t
@@ -622,13 +688,16 @@ end
 
 --- Create a structure of type CloudHsmServiceException
 -- <p>Indicates that an exception occurred in the AWS CloudHSM service.</p>
--- @param _message [String] <p>Additional information about the error.</p>
--- @param _retryable [Boolean] <p>Indicates if the action can be retried.</p>
-function M.CloudHsmServiceException(_message, _retryable, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudHsmServiceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>Additional information about the error.</p>
+-- * retryable [Boolean] <p>Indicates if the action can be retried.</p>
+-- @return CloudHsmServiceException structure as a key-value pair table
+function M.CloudHsmServiceException(args)
+	assert(args, "You must provdide an argument table when creating CloudHsmServiceException")
 	local t = { 
-		["message"] = _message,
-		["retryable"] = _retryable,
+		["message"] = args["message"],
+		["retryable"] = args["retryable"],
 	}
 	asserts.AssertCloudHsmServiceException(t)
 	return t
@@ -647,11 +716,14 @@ end
 
 --- Create a structure of type ModifyHapgResponse
 --  
--- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
-function M.ModifyHapgResponse(_HapgArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHapgResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
+-- @return ModifyHapgResponse structure as a key-value pair table
+function M.ModifyHapgResponse(args)
+	assert(args, "You must provdide an argument table when creating ModifyHapgResponse")
 	local t = { 
-		["HapgArn"] = _HapgArn,
+		["HapgArn"] = args["HapgArn"],
 	}
 	asserts.AssertModifyHapgResponse(t)
 	return t
@@ -671,12 +743,15 @@ end
 
 --- Create a structure of type DeleteLunaClientResponse
 --  
--- @param _Status [String] <p>The status of the action.</p>
--- Required parameter: Status
-function M.DeleteLunaClientResponse(_Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLunaClientResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The status of the action.</p>
+-- Required key: Status
+-- @return DeleteLunaClientResponse structure as a key-value pair table
+function M.DeleteLunaClientResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteLunaClientResponse")
 	local t = { 
-		["Status"] = _Status,
+		["Status"] = args["Status"],
 	}
 	asserts.AssertDeleteLunaClientResponse(t)
 	return t
@@ -697,14 +772,17 @@ end
 
 --- Create a structure of type ListLunaClientsResponse
 --  
--- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this to <a>ListLunaClients</a> to retrieve the next set of items.</p>
--- @param _ClientList [ClientList] <p>The list of clients.</p>
--- Required parameter: ClientList
-function M.ListLunaClientsResponse(_NextToken, _ClientList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLunaClientsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this to <a>ListLunaClients</a> to retrieve the next set of items.</p>
+-- * ClientList [ClientList] <p>The list of clients.</p>
+-- Required key: ClientList
+-- @return ListLunaClientsResponse structure as a key-value pair table
+function M.ListLunaClientsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListLunaClientsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ClientList"] = _ClientList,
+		["NextToken"] = args["NextToken"],
+		["ClientList"] = args["ClientList"],
 	}
 	asserts.AssertListLunaClientsResponse(t)
 	return t
@@ -726,16 +804,19 @@ end
 
 --- Create a structure of type ModifyHapgRequest
 --  
--- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group to modify.</p>
--- @param _PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers to make members of the high-availability partition group.</p>
--- @param _Label [Label] <p>The new label for the high-availability partition group.</p>
--- Required parameter: HapgArn
-function M.ModifyHapgRequest(_HapgArn, _PartitionSerialList, _Label, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHapgRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HapgArn [HapgArn] <p>The ARN of the high-availability partition group to modify.</p>
+-- * PartitionSerialList [PartitionSerialList] <p>The list of partition serial numbers to make members of the high-availability partition group.</p>
+-- * Label [Label] <p>The new label for the high-availability partition group.</p>
+-- Required key: HapgArn
+-- @return ModifyHapgRequest structure as a key-value pair table
+function M.ModifyHapgRequest(args)
+	assert(args, "You must provdide an argument table when creating ModifyHapgRequest")
 	local t = { 
-		["HapgArn"] = _HapgArn,
-		["PartitionSerialList"] = _PartitionSerialList,
-		["Label"] = _Label,
+		["HapgArn"] = args["HapgArn"],
+		["PartitionSerialList"] = args["PartitionSerialList"],
+		["Label"] = args["Label"],
 	}
 	asserts.AssertModifyHapgRequest(t)
 	return t
@@ -754,11 +835,14 @@ end
 
 --- Create a structure of type ModifyLunaClientResponse
 --  
--- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
-function M.ModifyLunaClientResponse(_ClientArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyLunaClientResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClientArn [ClientArn] <p>The ARN of the client.</p>
+-- @return ModifyLunaClientResponse structure as a key-value pair table
+function M.ModifyLunaClientResponse(args)
+	assert(args, "You must provdide an argument table when creating ModifyLunaClientResponse")
 	local t = { 
-		["ClientArn"] = _ClientArn,
+		["ClientArn"] = args["ClientArn"],
 	}
 	asserts.AssertModifyLunaClientResponse(t)
 	return t
@@ -778,12 +862,15 @@ end
 
 --- Create a structure of type AddTagsToResourceResponse
 --  
--- @param _Status [String] <p>The status of the operation.</p>
--- Required parameter: Status
-function M.AddTagsToResourceResponse(_Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The status of the operation.</p>
+-- Required key: Status
+-- @return AddTagsToResourceResponse structure as a key-value pair table
+function M.AddTagsToResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToResourceResponse")
 	local t = { 
-		["Status"] = _Status,
+		["Status"] = args["Status"],
 	}
 	asserts.AssertAddTagsToResourceResponse(t)
 	return t
@@ -804,15 +891,18 @@ end
 
 --- Create a structure of type GetConfigResponse
 --  
--- @param _ConfigType [String] <p>The type of credentials.</p>
--- @param _ConfigCred [String] <p>The certificate file containing the server.pem files of the HSMs.</p>
--- @param _ConfigFile [String] <p>The chrystoki.conf configuration file.</p>
-function M.GetConfigResponse(_ConfigType, _ConfigCred, _ConfigFile, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetConfigResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigType [String] <p>The type of credentials.</p>
+-- * ConfigCred [String] <p>The certificate file containing the server.pem files of the HSMs.</p>
+-- * ConfigFile [String] <p>The chrystoki.conf configuration file.</p>
+-- @return GetConfigResponse structure as a key-value pair table
+function M.GetConfigResponse(args)
+	assert(args, "You must provdide an argument table when creating GetConfigResponse")
 	local t = { 
-		["ConfigType"] = _ConfigType,
-		["ConfigCred"] = _ConfigCred,
-		["ConfigFile"] = _ConfigFile,
+		["ConfigType"] = args["ConfigType"],
+		["ConfigCred"] = args["ConfigCred"],
+		["ConfigFile"] = args["ConfigFile"],
 	}
 	asserts.AssertGetConfigResponse(t)
 	return t
@@ -832,12 +922,15 @@ end
 
 --- Create a structure of type DeleteHapgRequest
 -- <p>Contains the inputs for the <a>DeleteHapg</a> action.</p>
--- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group to delete.</p>
--- Required parameter: HapgArn
-function M.DeleteHapgRequest(_HapgArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHapgRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HapgArn [HapgArn] <p>The ARN of the high-availability partition group to delete.</p>
+-- Required key: HapgArn
+-- @return DeleteHapgRequest structure as a key-value pair table
+function M.DeleteHapgRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteHapgRequest")
 	local t = { 
-		["HapgArn"] = _HapgArn,
+		["HapgArn"] = args["HapgArn"],
 	}
 	asserts.AssertDeleteHapgRequest(t)
 	return t
@@ -857,12 +950,15 @@ end
 
 --- Create a structure of type DeleteHapgResponse
 -- <p>Contains the output of the <a>DeleteHapg</a> action.</p>
--- @param _Status [String] <p>The status of the action.</p>
--- Required parameter: Status
-function M.DeleteHapgResponse(_Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHapgResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The status of the action.</p>
+-- Required key: Status
+-- @return DeleteHapgResponse structure as a key-value pair table
+function M.DeleteHapgResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteHapgResponse")
 	local t = { 
-		["Status"] = _Status,
+		["Status"] = args["Status"],
 	}
 	asserts.AssertDeleteHapgResponse(t)
 	return t
@@ -881,11 +977,14 @@ end
 
 --- Create a structure of type ListHsmsRequest
 --  
--- @param _NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHsms</a>. Pass null if this is the first call.</p>
-function M.ListHsmsRequest(_NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListHsmsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHsms</a>. Pass null if this is the first call.</p>
+-- @return ListHsmsRequest structure as a key-value pair table
+function M.ListHsmsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListHsmsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListHsmsRequest(t)
 	return t
@@ -907,15 +1006,18 @@ end
 
 --- Create a structure of type ModifyLunaClientRequest
 --  
--- @param _Certificate [Certificate] <p>The new certificate for the client.</p>
--- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
--- Required parameter: ClientArn
--- Required parameter: Certificate
-function M.ModifyLunaClientRequest(_Certificate, _ClientArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyLunaClientRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Certificate [Certificate] <p>The new certificate for the client.</p>
+-- * ClientArn [ClientArn] <p>The ARN of the client.</p>
+-- Required key: ClientArn
+-- Required key: Certificate
+-- @return ModifyLunaClientRequest structure as a key-value pair table
+function M.ModifyLunaClientRequest(args)
+	assert(args, "You must provdide an argument table when creating ModifyLunaClientRequest")
 	local t = { 
-		["Certificate"] = _Certificate,
-		["ClientArn"] = _ClientArn,
+		["Certificate"] = args["Certificate"],
+		["ClientArn"] = args["ClientArn"],
 	}
 	asserts.AssertModifyLunaClientRequest(t)
 	return t
@@ -935,13 +1037,16 @@ end
 
 --- Create a structure of type DescribeLunaClientRequest
 --  
--- @param _CertificateFingerprint [CertificateFingerprint] <p>The certificate fingerprint.</p>
--- @param _ClientArn [ClientArn] <p>The ARN of the client.</p>
-function M.DescribeLunaClientRequest(_CertificateFingerprint, _ClientArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLunaClientRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateFingerprint [CertificateFingerprint] <p>The certificate fingerprint.</p>
+-- * ClientArn [ClientArn] <p>The ARN of the client.</p>
+-- @return DescribeLunaClientRequest structure as a key-value pair table
+function M.DescribeLunaClientRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeLunaClientRequest")
 	local t = { 
-		["CertificateFingerprint"] = _CertificateFingerprint,
-		["ClientArn"] = _ClientArn,
+		["CertificateFingerprint"] = args["CertificateFingerprint"],
+		["ClientArn"] = args["ClientArn"],
 	}
 	asserts.AssertDescribeLunaClientRequest(t)
 	return t
@@ -960,11 +1065,14 @@ end
 
 --- Create a structure of type CreateHapgResponse
 -- <p>Contains the output of the <a>CreateHAPartitionGroup</a> action.</p>
--- @param _HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
-function M.CreateHapgResponse(_HapgArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateHapgResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
+-- @return CreateHapgResponse structure as a key-value pair table
+function M.CreateHapgResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateHapgResponse")
 	local t = { 
-		["HapgArn"] = _HapgArn,
+		["HapgArn"] = args["HapgArn"],
 	}
 	asserts.AssertCreateHapgResponse(t)
 	return t
@@ -989,22 +1097,25 @@ end
 
 --- Create a structure of type ModifyHsmRequest
 -- <p>Contains the inputs for the <a>ModifyHsm</a> operation.</p>
--- @param _IamRoleArn [IamRoleArn] <p>The new IAM role ARN.</p>
--- @param _EniIp [IpAddress] <p>The new IP address for the elastic network interface (ENI) attached to the HSM.</p> <p>If the HSM is moved to a different subnet, and an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the new subnet.</p>
--- @param _ExternalId [ExternalId] <p>The new external ID.</p>
--- @param _SubnetId [SubnetId] <p>The new identifier of the subnet that the HSM is in. The new subnet must be in the same Availability Zone as the current subnet.</p>
--- @param _SyslogIp [IpAddress] <p>The new IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
--- @param _HsmArn [HsmArn] <p>The ARN of the HSM to modify.</p>
--- Required parameter: HsmArn
-function M.ModifyHsmRequest(_IamRoleArn, _EniIp, _ExternalId, _SubnetId, _SyslogIp, _HsmArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyHsmRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IamRoleArn [IamRoleArn] <p>The new IAM role ARN.</p>
+-- * EniIp [IpAddress] <p>The new IP address for the elastic network interface (ENI) attached to the HSM.</p> <p>If the HSM is moved to a different subnet, and an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the new subnet.</p>
+-- * ExternalId [ExternalId] <p>The new external ID.</p>
+-- * SubnetId [SubnetId] <p>The new identifier of the subnet that the HSM is in. The new subnet must be in the same Availability Zone as the current subnet.</p>
+-- * SyslogIp [IpAddress] <p>The new IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
+-- * HsmArn [HsmArn] <p>The ARN of the HSM to modify.</p>
+-- Required key: HsmArn
+-- @return ModifyHsmRequest structure as a key-value pair table
+function M.ModifyHsmRequest(args)
+	assert(args, "You must provdide an argument table when creating ModifyHsmRequest")
 	local t = { 
-		["IamRoleArn"] = _IamRoleArn,
-		["EniIp"] = _EniIp,
-		["ExternalId"] = _ExternalId,
-		["SubnetId"] = _SubnetId,
-		["SyslogIp"] = _SyslogIp,
-		["HsmArn"] = _HsmArn,
+		["IamRoleArn"] = args["IamRoleArn"],
+		["EniIp"] = args["EniIp"],
+		["ExternalId"] = args["ExternalId"],
+		["SubnetId"] = args["SubnetId"],
+		["SyslogIp"] = args["SyslogIp"],
+		["HsmArn"] = args["HsmArn"],
 	}
 	asserts.AssertModifyHsmRequest(t)
 	return t
@@ -1023,11 +1134,14 @@ end
 
 --- Create a structure of type ListAvailableZonesResponse
 --  
--- @param _AZList [AZList] <p>The list of Availability Zones that have available AWS CloudHSM capacity.</p>
-function M.ListAvailableZonesResponse(_AZList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAvailableZonesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AZList [AZList] <p>The list of Availability Zones that have available AWS CloudHSM capacity.</p>
+-- @return ListAvailableZonesResponse structure as a key-value pair table
+function M.ListAvailableZonesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAvailableZonesResponse")
 	local t = { 
-		["AZList"] = _AZList,
+		["AZList"] = args["AZList"],
 	}
 	asserts.AssertListAvailableZonesResponse(t)
 	return t
@@ -1057,29 +1171,32 @@ end
 
 --- Create a structure of type CreateHsmRequest
 -- <p>Contains the inputs for the <a>CreateHsm</a> operation.</p>
--- @param _SshKey [SshKey] <p>The SSH public key to install on the HSM.</p>
--- @param _SubscriptionType [SubscriptionType] 
--- @param _IamRoleArn [IamRoleArn] <p>The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.</p>
--- @param _EniIp [IpAddress] <p>The IP address to assign to the HSM's ENI.</p> <p>If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.</p>
--- @param _ExternalId [ExternalId] <p>The external ID from <b>IamRoleArn</b>, if present.</p>
--- @param _ClientToken [ClientToken] <p>A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be ignored.</p>
--- @param _SubnetId [SubnetId] <p>The identifier of the subnet in your VPC in which to place the HSM.</p>
--- @param _SyslogIp [IpAddress] <p>The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
--- Required parameter: SubnetId
--- Required parameter: SshKey
--- Required parameter: IamRoleArn
--- Required parameter: SubscriptionType
-function M.CreateHsmRequest(_SshKey, _SubscriptionType, _IamRoleArn, _EniIp, _ExternalId, _ClientToken, _SubnetId, _SyslogIp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateHsmRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SshKey [SshKey] <p>The SSH public key to install on the HSM.</p>
+-- * SubscriptionType [SubscriptionType] 
+-- * IamRoleArn [IamRoleArn] <p>The ARN of an IAM role to enable the AWS CloudHSM service to allocate an ENI on your behalf.</p>
+-- * EniIp [IpAddress] <p>The IP address to assign to the HSM's ENI.</p> <p>If an IP address is not specified, an IP address will be randomly chosen from the CIDR range of the subnet.</p>
+-- * ExternalId [ExternalId] <p>The external ID from <b>IamRoleArn</b>, if present.</p>
+-- * ClientToken [ClientToken] <p>A user-defined token to ensure idempotence. Subsequent calls to this operation with the same token will be ignored.</p>
+-- * SubnetId [SubnetId] <p>The identifier of the subnet in your VPC in which to place the HSM.</p>
+-- * SyslogIp [IpAddress] <p>The IP address for the syslog monitoring server. The AWS CloudHSM service only supports one syslog monitoring server.</p>
+-- Required key: SubnetId
+-- Required key: SshKey
+-- Required key: IamRoleArn
+-- Required key: SubscriptionType
+-- @return CreateHsmRequest structure as a key-value pair table
+function M.CreateHsmRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateHsmRequest")
 	local t = { 
-		["SshKey"] = _SshKey,
-		["SubscriptionType"] = _SubscriptionType,
-		["IamRoleArn"] = _IamRoleArn,
-		["EniIp"] = _EniIp,
-		["ExternalId"] = _ExternalId,
-		["ClientToken"] = _ClientToken,
-		["SubnetId"] = _SubnetId,
-		["SyslogIp"] = _SyslogIp,
+		["SshKey"] = args["SshKey"],
+		["SubscriptionType"] = args["SubscriptionType"],
+		["IamRoleArn"] = args["IamRoleArn"],
+		["EniIp"] = args["EniIp"],
+		["ExternalId"] = args["ExternalId"],
+		["ClientToken"] = args["ClientToken"],
+		["SubnetId"] = args["SubnetId"],
+		["SyslogIp"] = args["SyslogIp"],
 	}
 	asserts.AssertCreateHsmRequest(t)
 	return t
@@ -1099,12 +1216,15 @@ end
 
 --- Create a structure of type DeleteHsmResponse
 -- <p>Contains the output of the <a>DeleteHsm</a> operation.</p>
--- @param _Status [String] <p>The status of the operation.</p>
--- Required parameter: Status
-function M.DeleteHsmResponse(_Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHsmResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The status of the operation.</p>
+-- Required key: Status
+-- @return DeleteHsmResponse structure as a key-value pair table
+function M.DeleteHsmResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteHsmResponse")
 	local t = { 
-		["Status"] = _Status,
+		["Status"] = args["Status"],
 	}
 	asserts.AssertDeleteHsmResponse(t)
 	return t
@@ -1125,14 +1245,17 @@ end
 
 --- Create a structure of type CreateLunaClientRequest
 -- <p>Contains the inputs for the <a>CreateLunaClient</a> action.</p>
--- @param _Certificate [Certificate] <p>The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.</p>
--- @param _Label [ClientLabel] <p>The label for the client.</p>
--- Required parameter: Certificate
-function M.CreateLunaClientRequest(_Certificate, _Label, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLunaClientRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Certificate [Certificate] <p>The contents of a Base64-Encoded X.509 v3 certificate to be installed on the HSMs used by this client.</p>
+-- * Label [ClientLabel] <p>The label for the client.</p>
+-- Required key: Certificate
+-- @return CreateLunaClientRequest structure as a key-value pair table
+function M.CreateLunaClientRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateLunaClientRequest")
 	local t = { 
-		["Certificate"] = _Certificate,
-		["Label"] = _Label,
+		["Certificate"] = args["Certificate"],
+		["Label"] = args["Label"],
 	}
 	asserts.AssertCreateLunaClientRequest(t)
 	return t
@@ -1171,51 +1294,54 @@ end
 
 --- Create a structure of type DescribeHsmResponse
 -- <p>Contains the output of the <a>DescribeHsm</a> operation.</p>
--- @param _Status [HsmStatus] <p>The status of the HSM.</p>
--- @param _SubscriptionStartDate [Timestamp] <p>The subscription start date.</p>
--- @param _AvailabilityZone [AZ] <p>The Availability Zone that the HSM is in.</p>
--- @param _EniId [EniId] <p>The identifier of the elastic network interface (ENI) attached to the HSM.</p>
--- @param _HsmType [String] <p>The HSM model type.</p>
--- @param _SshPublicKey [SshKey] <p>The public SSH key.</p>
--- @param _SubscriptionType [SubscriptionType] 
--- @param _SerialNumber [HsmSerialNumber] <p>The serial number of the HSM.</p>
--- @param _IamRoleArn [IamRoleArn] <p>The ARN of the IAM role assigned to the HSM.</p>
--- @param _SubscriptionEndDate [Timestamp] <p>The subscription end date.</p>
--- @param _EniIp [IpAddress] <p>The IP address assigned to the HSM's ENI.</p>
--- @param _SoftwareVersion [String] <p>The HSM software version.</p>
--- @param _VpcId [VpcId] <p>The identifier of the VPC that the HSM is in.</p>
--- @param _ServerCertUri [String] <p>The URI of the certificate server.</p>
--- @param _SubnetId [SubnetId] <p>The identifier of the subnet that the HSM is in.</p>
--- @param _SshKeyLastUpdated [Timestamp] <p>The date and time that the SSH key was last updated.</p>
--- @param _Partitions [PartitionList] <p>The list of partitions on the HSM.</p>
--- @param _ServerCertLastUpdated [Timestamp] <p>The date and time that the server certificate was last updated.</p>
--- @param _StatusDetails [String] <p>Contains additional information about the status of the HSM.</p>
--- @param _VendorName [String] <p>The name of the HSM vendor.</p>
--- @param _HsmArn [HsmArn] <p>The ARN of the HSM.</p>
-function M.DescribeHsmResponse(_Status, _SubscriptionStartDate, _AvailabilityZone, _EniId, _HsmType, _SshPublicKey, _SubscriptionType, _SerialNumber, _IamRoleArn, _SubscriptionEndDate, _EniIp, _SoftwareVersion, _VpcId, _ServerCertUri, _SubnetId, _SshKeyLastUpdated, _Partitions, _ServerCertLastUpdated, _StatusDetails, _VendorName, _HsmArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeHsmResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [HsmStatus] <p>The status of the HSM.</p>
+-- * SubscriptionStartDate [Timestamp] <p>The subscription start date.</p>
+-- * AvailabilityZone [AZ] <p>The Availability Zone that the HSM is in.</p>
+-- * EniId [EniId] <p>The identifier of the elastic network interface (ENI) attached to the HSM.</p>
+-- * HsmType [String] <p>The HSM model type.</p>
+-- * SshPublicKey [SshKey] <p>The public SSH key.</p>
+-- * SubscriptionType [SubscriptionType] 
+-- * SerialNumber [HsmSerialNumber] <p>The serial number of the HSM.</p>
+-- * IamRoleArn [IamRoleArn] <p>The ARN of the IAM role assigned to the HSM.</p>
+-- * SubscriptionEndDate [Timestamp] <p>The subscription end date.</p>
+-- * EniIp [IpAddress] <p>The IP address assigned to the HSM's ENI.</p>
+-- * SoftwareVersion [String] <p>The HSM software version.</p>
+-- * VpcId [VpcId] <p>The identifier of the VPC that the HSM is in.</p>
+-- * ServerCertUri [String] <p>The URI of the certificate server.</p>
+-- * SubnetId [SubnetId] <p>The identifier of the subnet that the HSM is in.</p>
+-- * SshKeyLastUpdated [Timestamp] <p>The date and time that the SSH key was last updated.</p>
+-- * Partitions [PartitionList] <p>The list of partitions on the HSM.</p>
+-- * ServerCertLastUpdated [Timestamp] <p>The date and time that the server certificate was last updated.</p>
+-- * StatusDetails [String] <p>Contains additional information about the status of the HSM.</p>
+-- * VendorName [String] <p>The name of the HSM vendor.</p>
+-- * HsmArn [HsmArn] <p>The ARN of the HSM.</p>
+-- @return DescribeHsmResponse structure as a key-value pair table
+function M.DescribeHsmResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeHsmResponse")
 	local t = { 
-		["Status"] = _Status,
-		["SubscriptionStartDate"] = _SubscriptionStartDate,
-		["AvailabilityZone"] = _AvailabilityZone,
-		["EniId"] = _EniId,
-		["HsmType"] = _HsmType,
-		["SshPublicKey"] = _SshPublicKey,
-		["SubscriptionType"] = _SubscriptionType,
-		["SerialNumber"] = _SerialNumber,
-		["IamRoleArn"] = _IamRoleArn,
-		["SubscriptionEndDate"] = _SubscriptionEndDate,
-		["EniIp"] = _EniIp,
-		["SoftwareVersion"] = _SoftwareVersion,
-		["VpcId"] = _VpcId,
-		["ServerCertUri"] = _ServerCertUri,
-		["SubnetId"] = _SubnetId,
-		["SshKeyLastUpdated"] = _SshKeyLastUpdated,
-		["Partitions"] = _Partitions,
-		["ServerCertLastUpdated"] = _ServerCertLastUpdated,
-		["StatusDetails"] = _StatusDetails,
-		["VendorName"] = _VendorName,
-		["HsmArn"] = _HsmArn,
+		["Status"] = args["Status"],
+		["SubscriptionStartDate"] = args["SubscriptionStartDate"],
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["EniId"] = args["EniId"],
+		["HsmType"] = args["HsmType"],
+		["SshPublicKey"] = args["SshPublicKey"],
+		["SubscriptionType"] = args["SubscriptionType"],
+		["SerialNumber"] = args["SerialNumber"],
+		["IamRoleArn"] = args["IamRoleArn"],
+		["SubscriptionEndDate"] = args["SubscriptionEndDate"],
+		["EniIp"] = args["EniIp"],
+		["SoftwareVersion"] = args["SoftwareVersion"],
+		["VpcId"] = args["VpcId"],
+		["ServerCertUri"] = args["ServerCertUri"],
+		["SubnetId"] = args["SubnetId"],
+		["SshKeyLastUpdated"] = args["SshKeyLastUpdated"],
+		["Partitions"] = args["Partitions"],
+		["ServerCertLastUpdated"] = args["ServerCertLastUpdated"],
+		["StatusDetails"] = args["StatusDetails"],
+		["VendorName"] = args["VendorName"],
+		["HsmArn"] = args["HsmArn"],
 	}
 	asserts.AssertDescribeHsmResponse(t)
 	return t
@@ -1233,8 +1359,11 @@ end
 
 --- Create a structure of type CloudHsmInternalException
 -- <p>Indicates that an internal error occurred.</p>
-function M.CloudHsmInternalException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudHsmInternalException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CloudHsmInternalException structure as a key-value pair table
+function M.CloudHsmInternalException(args)
+	assert(args, "You must provdide an argument table when creating CloudHsmInternalException")
 	local t = { 
 	}
 	asserts.AssertCloudHsmInternalException(t)
@@ -1257,15 +1386,18 @@ end
 
 --- Create a structure of type Tag
 -- <p>A key-value pair that identifies or specifies metadata about an AWS CloudHSM resource.</p>
--- @param _Value [TagValue] <p>The value of the tag.</p>
--- @param _Key [TagKey] <p>The key of the tag.</p>
--- Required parameter: Key
--- Required parameter: Value
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The value of the tag.</p>
+-- * Key [TagKey] <p>The key of the tag.</p>
+-- Required key: Key
+-- Required key: Value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t

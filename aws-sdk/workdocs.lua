@@ -40,23 +40,26 @@ end
 
 --- Create a structure of type ResourceMetadata
 -- <p>Describes the metadata of a resource.</p>
--- @param _Name [ResourceNameType] <p>The name of the resource.</p>
--- @param _Owner [UserMetadata] <p>The owner of the resource.</p>
--- @param _VersionId [DocumentVersionIdType] <p>The version ID of the resource. This is an optional field and is filled for action on document version.</p>
--- @param _ParentId [ResourceIdType] <p>The parent ID of the resource before a rename operation.</p>
--- @param _OriginalName [ResourceNameType] <p>The original name of the resource prior to a rename operation.</p>
--- @param _Type [ResourceType] <p>The type of resource.</p>
--- @param _Id [ResourceIdType] <p>The ID of the resource.</p>
-function M.ResourceMetadata(_Name, _Owner, _VersionId, _ParentId, _OriginalName, _Type, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ResourceNameType] <p>The name of the resource.</p>
+-- * Owner [UserMetadata] <p>The owner of the resource.</p>
+-- * VersionId [DocumentVersionIdType] <p>The version ID of the resource. This is an optional field and is filled for action on document version.</p>
+-- * ParentId [ResourceIdType] <p>The parent ID of the resource before a rename operation.</p>
+-- * OriginalName [ResourceNameType] <p>The original name of the resource prior to a rename operation.</p>
+-- * Type [ResourceType] <p>The type of resource.</p>
+-- * Id [ResourceIdType] <p>The ID of the resource.</p>
+-- @return ResourceMetadata structure as a key-value pair table
+function M.ResourceMetadata(args)
+	assert(args, "You must provdide an argument table when creating ResourceMetadata")
 	local t = { 
-		["Name"] = _Name,
-		["Owner"] = _Owner,
-		["VersionId"] = _VersionId,
-		["ParentId"] = _ParentId,
-		["OriginalName"] = _OriginalName,
-		["Type"] = _Type,
-		["Id"] = _Id,
+		["Name"] = args["Name"],
+		["Owner"] = args["Owner"],
+		["VersionId"] = args["VersionId"],
+		["ParentId"] = args["ParentId"],
+		["OriginalName"] = args["OriginalName"],
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertResourceMetadata(t)
 	return t
@@ -75,11 +78,14 @@ end
 
 --- Create a structure of type ServiceUnavailableException
 -- <p>One or more of the dependencies is unavailable.</p>
--- @param _Message [ErrorMessageType] 
-function M.ServiceUnavailableException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return ServiceUnavailableException structure as a key-value pair table
+function M.ServiceUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertServiceUnavailableException(t)
 	return t
@@ -99,12 +105,15 @@ end
 
 --- Create a structure of type GetCurrentUserRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token.</p>
--- Required parameter: AuthenticationToken
-function M.GetCurrentUserRequest(_AuthenticationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCurrentUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token.</p>
+-- Required key: AuthenticationToken
+-- @return GetCurrentUserRequest structure as a key-value pair table
+function M.GetCurrentUserRequest(args)
+	assert(args, "You must provdide an argument table when creating GetCurrentUserRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
+		["AuthenticationToken"] = args["AuthenticationToken"],
 	}
 	asserts.AssertGetCurrentUserRequest(t)
 	return t
@@ -125,14 +134,17 @@ end
 
 --- Create a structure of type RemoveAllResourcePermissionsRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- Required parameter: ResourceId
-function M.RemoveAllResourcePermissionsRequest(_AuthenticationToken, _ResourceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAllResourcePermissionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- Required key: ResourceId
+-- @return RemoveAllResourcePermissionsRequest structure as a key-value pair table
+function M.RemoveAllResourcePermissionsRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveAllResourcePermissionsRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["ResourceId"] = _ResourceId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["ResourceId"] = args["ResourceId"],
 	}
 	asserts.AssertRemoveAllResourcePermissionsRequest(t)
 	return t
@@ -155,18 +167,21 @@ end
 
 --- Create a structure of type DescribeResourcePermissionsRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param _Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call)</p>
--- @param _Limit [LimitType] <p>The maximum number of items to return with this call.</p>
--- Required parameter: ResourceId
-function M.DescribeResourcePermissionsRequest(_AuthenticationToken, _ResourceId, _Marker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourcePermissionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- * Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call)</p>
+-- * Limit [LimitType] <p>The maximum number of items to return with this call.</p>
+-- Required key: ResourceId
+-- @return DescribeResourcePermissionsRequest structure as a key-value pair table
+function M.DescribeResourcePermissionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeResourcePermissionsRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["ResourceId"] = _ResourceId,
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["ResourceId"] = args["ResourceId"],
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeResourcePermissionsRequest(t)
 	return t
@@ -184,8 +199,11 @@ end
 
 --- Create a structure of type CreateLabelsResponse
 --  
-function M.CreateLabelsResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLabelsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateLabelsResponse structure as a key-value pair table
+function M.CreateLabelsResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateLabelsResponse")
 	local t = { 
 	}
 	asserts.AssertCreateLabelsResponse(t)
@@ -206,13 +224,16 @@ end
 
 --- Create a structure of type DescribeRootFoldersResponse
 --  
--- @param _Folders [FolderMetadataList] <p>The user's special folders.</p>
--- @param _Marker [PageMarkerType] <p>The marker for the next set of results.</p>
-function M.DescribeRootFoldersResponse(_Folders, _Marker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRootFoldersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Folders [FolderMetadataList] <p>The user's special folders.</p>
+-- * Marker [PageMarkerType] <p>The marker for the next set of results.</p>
+-- @return DescribeRootFoldersResponse structure as a key-value pair table
+function M.DescribeRootFoldersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeRootFoldersResponse")
 	local t = { 
-		["Folders"] = _Folders,
-		["Marker"] = _Marker,
+		["Folders"] = args["Folders"],
+		["Marker"] = args["Marker"],
 	}
 	asserts.AssertDescribeRootFoldersResponse(t)
 	return t
@@ -232,13 +253,16 @@ end
 
 --- Create a structure of type GetDocumentVersionResponse
 --  
--- @param _CustomMetadata [CustomMetadataMap] <p>The custom metadata on the document version.</p>
--- @param _Metadata [DocumentVersionMetadata] <p>The version metadata.</p>
-function M.GetDocumentVersionResponse(_CustomMetadata, _Metadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CustomMetadata [CustomMetadataMap] <p>The custom metadata on the document version.</p>
+-- * Metadata [DocumentVersionMetadata] <p>The version metadata.</p>
+-- @return GetDocumentVersionResponse structure as a key-value pair table
+function M.GetDocumentVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDocumentVersionResponse")
 	local t = { 
-		["CustomMetadata"] = _CustomMetadata,
-		["Metadata"] = _Metadata,
+		["CustomMetadata"] = args["CustomMetadata"],
+		["Metadata"] = args["Metadata"],
 	}
 	asserts.AssertGetDocumentVersionResponse(t)
 	return t
@@ -257,11 +281,14 @@ end
 
 --- Create a structure of type ProhibitedStateException
 -- <p>The specified document version is not in the INITIALIZED state.</p>
--- @param _Message [ErrorMessageType] 
-function M.ProhibitedStateException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProhibitedStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return ProhibitedStateException structure as a key-value pair table
+function M.ProhibitedStateException(args)
+	assert(args, "You must provdide an argument table when creating ProhibitedStateException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertProhibitedStateException(t)
 	return t
@@ -288,26 +315,29 @@ end
 
 --- Create a structure of type InitiateDocumentVersionUploadRequest
 --  
--- @param _ContentType [DocumentContentType] <p>The content type of the document.</p>
--- @param _Name [ResourceNameType] <p>The name of the document.</p>
--- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- @param _ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
--- @param _DocumentSizeInBytes [SizeType] <p>The size of the document, in bytes.</p>
--- @param _ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _Id [ResourceIdType] <p>The ID of the document.</p>
--- Required parameter: ParentFolderId
-function M.InitiateDocumentVersionUploadRequest(_ContentType, _Name, _ParentFolderId, _ContentCreatedTimestamp, _DocumentSizeInBytes, _ContentModifiedTimestamp, _AuthenticationToken, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InitiateDocumentVersionUploadRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContentType [DocumentContentType] <p>The content type of the document.</p>
+-- * Name [ResourceNameType] <p>The name of the document.</p>
+-- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- * ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
+-- * DocumentSizeInBytes [SizeType] <p>The size of the document, in bytes.</p>
+-- * ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * Id [ResourceIdType] <p>The ID of the document.</p>
+-- Required key: ParentFolderId
+-- @return InitiateDocumentVersionUploadRequest structure as a key-value pair table
+function M.InitiateDocumentVersionUploadRequest(args)
+	assert(args, "You must provdide an argument table when creating InitiateDocumentVersionUploadRequest")
 	local t = { 
-		["ContentType"] = _ContentType,
-		["Name"] = _Name,
-		["ParentFolderId"] = _ParentFolderId,
-		["ContentCreatedTimestamp"] = _ContentCreatedTimestamp,
-		["DocumentSizeInBytes"] = _DocumentSizeInBytes,
-		["ContentModifiedTimestamp"] = _ContentModifiedTimestamp,
-		["AuthenticationToken"] = _AuthenticationToken,
-		["Id"] = _Id,
+		["ContentType"] = args["ContentType"],
+		["Name"] = args["Name"],
+		["ParentFolderId"] = args["ParentFolderId"],
+		["ContentCreatedTimestamp"] = args["ContentCreatedTimestamp"],
+		["DocumentSizeInBytes"] = args["DocumentSizeInBytes"],
+		["ContentModifiedTimestamp"] = args["ContentModifiedTimestamp"],
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertInitiateDocumentVersionUploadRequest(t)
 	return t
@@ -328,15 +358,18 @@ end
 
 --- Create a structure of type DescribeFolderContentsResponse
 --  
--- @param _Folders [FolderMetadataList] <p>The subfolders in the specified folder.</p>
--- @param _Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param _Documents [DocumentMetadataList] <p>The documents in the specified folder.</p>
-function M.DescribeFolderContentsResponse(_Folders, _Marker, _Documents, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFolderContentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Folders [FolderMetadataList] <p>The subfolders in the specified folder.</p>
+-- * Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- * Documents [DocumentMetadataList] <p>The documents in the specified folder.</p>
+-- @return DescribeFolderContentsResponse structure as a key-value pair table
+function M.DescribeFolderContentsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeFolderContentsResponse")
 	local t = { 
-		["Folders"] = _Folders,
-		["Marker"] = _Marker,
-		["Documents"] = _Documents,
+		["Folders"] = args["Folders"],
+		["Marker"] = args["Marker"],
+		["Documents"] = args["Documents"],
 	}
 	asserts.AssertDescribeFolderContentsResponse(t)
 	return t
@@ -359,19 +392,22 @@ end
 
 --- Create a structure of type UserMetadata
 -- <p>Describes the metadata of the user.</p>
--- @param _Username [UsernameType] <p>The username of the user.</p>
--- @param _EmailAddress [EmailAddressType] <p>The email address of the user.</p>
--- @param _GivenName [UserAttributeValueType] <p>The given name of the user before a rename operation.</p>
--- @param _Surname [UserAttributeValueType] <p>The surname of the user.</p>
--- @param _Id [IdType] <p>The ID of the user.</p>
-function M.UserMetadata(_Username, _EmailAddress, _GivenName, _Surname, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UserMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [UsernameType] <p>The username of the user.</p>
+-- * EmailAddress [EmailAddressType] <p>The email address of the user.</p>
+-- * GivenName [UserAttributeValueType] <p>The given name of the user before a rename operation.</p>
+-- * Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- * Id [IdType] <p>The ID of the user.</p>
+-- @return UserMetadata structure as a key-value pair table
+function M.UserMetadata(args)
+	assert(args, "You must provdide an argument table when creating UserMetadata")
 	local t = { 
-		["Username"] = _Username,
-		["EmailAddress"] = _EmailAddress,
-		["GivenName"] = _GivenName,
-		["Surname"] = _Surname,
-		["Id"] = _Id,
+		["Username"] = args["Username"],
+		["EmailAddress"] = args["EmailAddress"],
+		["GivenName"] = args["GivenName"],
+		["Surname"] = args["Surname"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertUserMetadata(t)
 	return t
@@ -392,14 +428,17 @@ end
 
 --- Create a structure of type DeleteFolderContentsRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _FolderId [ResourceIdType] <p>The ID of the folder.</p>
--- Required parameter: FolderId
-function M.DeleteFolderContentsRequest(_AuthenticationToken, _FolderId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFolderContentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- Required key: FolderId
+-- @return DeleteFolderContentsRequest structure as a key-value pair table
+function M.DeleteFolderContentsRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteFolderContentsRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["FolderId"] = _FolderId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["FolderId"] = args["FolderId"],
 	}
 	asserts.AssertDeleteFolderContentsRequest(t)
 	return t
@@ -418,11 +457,14 @@ end
 
 --- Create a structure of type ActivateUserResponse
 --  
--- @param _User [User] <p>The user information.</p>
-function M.ActivateUserResponse(_User, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivateUserResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * User [User] <p>The user information.</p>
+-- @return ActivateUserResponse structure as a key-value pair table
+function M.ActivateUserResponse(args)
+	assert(args, "You must provdide an argument table when creating ActivateUserResponse")
 	local t = { 
-		["User"] = _User,
+		["User"] = args["User"],
 	}
 	asserts.AssertActivateUserResponse(t)
 	return t
@@ -441,11 +483,14 @@ end
 
 --- Create a structure of type TooManyLabelsException
 -- <p>The limit has been reached on the number of labels for the specified resource.</p>
--- @param _Message [ErrorMessageType] 
-function M.TooManyLabelsException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyLabelsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return TooManyLabelsException structure as a key-value pair table
+function M.TooManyLabelsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyLabelsException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertTooManyLabelsException(t)
 	return t
@@ -469,18 +514,21 @@ end
 
 --- Create a structure of type SharePrincipal
 -- <p>Describes the recipient type and ID, if available.</p>
--- @param _Role [RoleType] <p>The role of the recipient.</p>
--- @param _Type [PrincipalType] <p>The type of the recipient.</p>
--- @param _Id [IdType] <p>The ID of the recipient.</p>
--- Required parameter: Id
--- Required parameter: Type
--- Required parameter: Role
-function M.SharePrincipal(_Role, _Type, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SharePrincipal")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Role [RoleType] <p>The role of the recipient.</p>
+-- * Type [PrincipalType] <p>The type of the recipient.</p>
+-- * Id [IdType] <p>The ID of the recipient.</p>
+-- Required key: Id
+-- Required key: Type
+-- Required key: Role
+-- @return SharePrincipal structure as a key-value pair table
+function M.SharePrincipal(args)
+	assert(args, "You must provdide an argument table when creating SharePrincipal")
 	local t = { 
-		["Role"] = _Role,
-		["Type"] = _Type,
-		["Id"] = _Id,
+		["Role"] = args["Role"],
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertSharePrincipal(t)
 	return t
@@ -504,20 +552,23 @@ end
 
 --- Create a structure of type DeleteCustomMetadataRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _ResourceId [ResourceIdType] <p>The ID of the resource, either a document or folder.</p>
--- @param _VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being deleted from a document version.</p>
--- @param _DeleteAll [BooleanType] <p>Flag to indicate removal of all custom metadata properties from the specified resource.</p>
--- @param _Keys [CustomMetadataKeyList] <p>List of properties to remove.</p>
--- Required parameter: ResourceId
-function M.DeleteCustomMetadataRequest(_AuthenticationToken, _ResourceId, _VersionId, _DeleteAll, _Keys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCustomMetadataRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ResourceId [ResourceIdType] <p>The ID of the resource, either a document or folder.</p>
+-- * VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being deleted from a document version.</p>
+-- * DeleteAll [BooleanType] <p>Flag to indicate removal of all custom metadata properties from the specified resource.</p>
+-- * Keys [CustomMetadataKeyList] <p>List of properties to remove.</p>
+-- Required key: ResourceId
+-- @return DeleteCustomMetadataRequest structure as a key-value pair table
+function M.DeleteCustomMetadataRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteCustomMetadataRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["ResourceId"] = _ResourceId,
-		["VersionId"] = _VersionId,
-		["DeleteAll"] = _DeleteAll,
-		["Keys"] = _Keys,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["ResourceId"] = args["ResourceId"],
+		["VersionId"] = args["VersionId"],
+		["DeleteAll"] = args["DeleteAll"],
+		["Keys"] = args["Keys"],
 	}
 	asserts.AssertDeleteCustomMetadataRequest(t)
 	return t
@@ -540,17 +591,20 @@ end
 
 --- Create a structure of type CreateLabelsRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param _Labels [Labels] <p>List of labels to add to the resource.</p>
--- Required parameter: ResourceId
--- Required parameter: Labels
-function M.CreateLabelsRequest(_AuthenticationToken, _ResourceId, _Labels, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLabelsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- * Labels [Labels] <p>List of labels to add to the resource.</p>
+-- Required key: ResourceId
+-- Required key: Labels
+-- @return CreateLabelsRequest structure as a key-value pair table
+function M.CreateLabelsRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateLabelsRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["ResourceId"] = _ResourceId,
-		["Labels"] = _Labels,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["ResourceId"] = args["ResourceId"],
+		["Labels"] = args["Labels"],
 	}
 	asserts.AssertCreateLabelsRequest(t)
 	return t
@@ -572,15 +626,18 @@ end
 
 --- Create a structure of type DeleteNotificationSubscriptionRequest
 --  
--- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param _SubscriptionId [IdType] <p>The ID of the subscription.</p>
--- Required parameter: SubscriptionId
--- Required parameter: OrganizationId
-function M.DeleteNotificationSubscriptionRequest(_OrganizationId, _SubscriptionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteNotificationSubscriptionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OrganizationId [IdType] <p>The ID of the organization.</p>
+-- * SubscriptionId [IdType] <p>The ID of the subscription.</p>
+-- Required key: SubscriptionId
+-- Required key: OrganizationId
+-- @return DeleteNotificationSubscriptionRequest structure as a key-value pair table
+function M.DeleteNotificationSubscriptionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteNotificationSubscriptionRequest")
 	local t = { 
-		["OrganizationId"] = _OrganizationId,
-		["SubscriptionId"] = _SubscriptionId,
+		["OrganizationId"] = args["OrganizationId"],
+		["SubscriptionId"] = args["SubscriptionId"],
 	}
 	asserts.AssertDeleteNotificationSubscriptionRequest(t)
 	return t
@@ -606,21 +663,24 @@ end
 
 --- Create a structure of type CreateNotificationSubscriptionRequest
 --  
--- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param _SubscriptionType [SubscriptionType] <p>The notification type.</p>
--- @param _Endpoint [SubscriptionEndPointType] <p>The endpoint to receive the notifications. If the protocol is HTTPS, the endpoint is a URL that begins with "https://".</p>
--- @param _Protocol [SubscriptionProtocolType] <p>The protocol to use. The supported value is https, which delivers JSON-encoded messasges using HTTPS POST.</p>
--- Required parameter: OrganizationId
--- Required parameter: Endpoint
--- Required parameter: Protocol
--- Required parameter: SubscriptionType
-function M.CreateNotificationSubscriptionRequest(_OrganizationId, _SubscriptionType, _Endpoint, _Protocol, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateNotificationSubscriptionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OrganizationId [IdType] <p>The ID of the organization.</p>
+-- * SubscriptionType [SubscriptionType] <p>The notification type.</p>
+-- * Endpoint [SubscriptionEndPointType] <p>The endpoint to receive the notifications. If the protocol is HTTPS, the endpoint is a URL that begins with "https://".</p>
+-- * Protocol [SubscriptionProtocolType] <p>The protocol to use. The supported value is https, which delivers JSON-encoded messasges using HTTPS POST.</p>
+-- Required key: OrganizationId
+-- Required key: Endpoint
+-- Required key: Protocol
+-- Required key: SubscriptionType
+-- @return CreateNotificationSubscriptionRequest structure as a key-value pair table
+function M.CreateNotificationSubscriptionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateNotificationSubscriptionRequest")
 	local t = { 
-		["OrganizationId"] = _OrganizationId,
-		["SubscriptionType"] = _SubscriptionType,
-		["Endpoint"] = _Endpoint,
-		["Protocol"] = _Protocol,
+		["OrganizationId"] = args["OrganizationId"],
+		["SubscriptionType"] = args["SubscriptionType"],
+		["Endpoint"] = args["Endpoint"],
+		["Protocol"] = args["Protocol"],
 	}
 	asserts.AssertCreateNotificationSubscriptionRequest(t)
 	return t
@@ -651,35 +711,38 @@ end
 
 --- Create a structure of type DocumentVersionMetadata
 -- <p>Describes a version of a document.</p>
--- @param _Status [DocumentStatusType] <p>The status of the document.</p>
--- @param _ContentType [DocumentContentType] <p>The content type of the document.</p>
--- @param _Name [ResourceNameType] <p>The name of the version.</p>
--- @param _ModifiedTimestamp [TimestampType] <p>The time stamp when the document was last uploaded.</p>
--- @param _Thumbnail [DocumentThumbnailUrlMap] <p>The thumbnail of the document.</p>
--- @param _CreatedTimestamp [TimestampType] <p>The time stamp when the document was first uploaded.</p>
--- @param _Source [DocumentSourceUrlMap] <p>The source of the document.</p>
--- @param _CreatorId [IdType] <p>The ID of the creator.</p>
--- @param _ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
--- @param _ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
--- @param _Signature [HashType] <p>The signature of the document.</p>
--- @param _Id [DocumentVersionIdType] <p>The ID of the version.</p>
--- @param _Size [SizeType] <p>The size of the document, in bytes.</p>
-function M.DocumentVersionMetadata(_Status, _ContentType, _Name, _ModifiedTimestamp, _Thumbnail, _CreatedTimestamp, _Source, _CreatorId, _ContentCreatedTimestamp, _ContentModifiedTimestamp, _Signature, _Id, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentVersionMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [DocumentStatusType] <p>The status of the document.</p>
+-- * ContentType [DocumentContentType] <p>The content type of the document.</p>
+-- * Name [ResourceNameType] <p>The name of the version.</p>
+-- * ModifiedTimestamp [TimestampType] <p>The time stamp when the document was last uploaded.</p>
+-- * Thumbnail [DocumentThumbnailUrlMap] <p>The thumbnail of the document.</p>
+-- * CreatedTimestamp [TimestampType] <p>The time stamp when the document was first uploaded.</p>
+-- * Source [DocumentSourceUrlMap] <p>The source of the document.</p>
+-- * CreatorId [IdType] <p>The ID of the creator.</p>
+-- * ContentCreatedTimestamp [TimestampType] <p>The time stamp when the content of the document was originally created.</p>
+-- * ContentModifiedTimestamp [TimestampType] <p>The time stamp when the content of the document was modified.</p>
+-- * Signature [HashType] <p>The signature of the document.</p>
+-- * Id [DocumentVersionIdType] <p>The ID of the version.</p>
+-- * Size [SizeType] <p>The size of the document, in bytes.</p>
+-- @return DocumentVersionMetadata structure as a key-value pair table
+function M.DocumentVersionMetadata(args)
+	assert(args, "You must provdide an argument table when creating DocumentVersionMetadata")
 	local t = { 
-		["Status"] = _Status,
-		["ContentType"] = _ContentType,
-		["Name"] = _Name,
-		["ModifiedTimestamp"] = _ModifiedTimestamp,
-		["Thumbnail"] = _Thumbnail,
-		["CreatedTimestamp"] = _CreatedTimestamp,
-		["Source"] = _Source,
-		["CreatorId"] = _CreatorId,
-		["ContentCreatedTimestamp"] = _ContentCreatedTimestamp,
-		["ContentModifiedTimestamp"] = _ContentModifiedTimestamp,
-		["Signature"] = _Signature,
-		["Id"] = _Id,
-		["Size"] = _Size,
+		["Status"] = args["Status"],
+		["ContentType"] = args["ContentType"],
+		["Name"] = args["Name"],
+		["ModifiedTimestamp"] = args["ModifiedTimestamp"],
+		["Thumbnail"] = args["Thumbnail"],
+		["CreatedTimestamp"] = args["CreatedTimestamp"],
+		["Source"] = args["Source"],
+		["CreatorId"] = args["CreatorId"],
+		["ContentCreatedTimestamp"] = args["ContentCreatedTimestamp"],
+		["ContentModifiedTimestamp"] = args["ContentModifiedTimestamp"],
+		["Signature"] = args["Signature"],
+		["Id"] = args["Id"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertDocumentVersionMetadata(t)
 	return t
@@ -699,13 +762,16 @@ end
 
 --- Create a structure of type InitiateDocumentVersionUploadResponse
 --  
--- @param _UploadMetadata [UploadMetadata] <p>The upload metadata.</p>
--- @param _Metadata [DocumentMetadata] <p>The document metadata.</p>
-function M.InitiateDocumentVersionUploadResponse(_UploadMetadata, _Metadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InitiateDocumentVersionUploadResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UploadMetadata [UploadMetadata] <p>The upload metadata.</p>
+-- * Metadata [DocumentMetadata] <p>The document metadata.</p>
+-- @return InitiateDocumentVersionUploadResponse structure as a key-value pair table
+function M.InitiateDocumentVersionUploadResponse(args)
+	assert(args, "You must provdide an argument table when creating InitiateDocumentVersionUploadResponse")
 	local t = { 
-		["UploadMetadata"] = _UploadMetadata,
-		["Metadata"] = _Metadata,
+		["UploadMetadata"] = args["UploadMetadata"],
+		["Metadata"] = args["Metadata"],
 	}
 	asserts.AssertInitiateDocumentVersionUploadResponse(t)
 	return t
@@ -726,14 +792,17 @@ end
 
 --- Create a structure of type DeleteUserRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _UserId [IdType] <p>The ID of the user.</p>
--- Required parameter: UserId
-function M.DeleteUserRequest(_AuthenticationToken, _UserId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * UserId [IdType] <p>The ID of the user.</p>
+-- Required key: UserId
+-- @return DeleteUserRequest structure as a key-value pair table
+function M.DeleteUserRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteUserRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["UserId"] = _UserId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["UserId"] = args["UserId"],
 	}
 	asserts.AssertDeleteUserRequest(t)
 	return t
@@ -756,18 +825,21 @@ end
 
 --- Create a structure of type DeleteLabelsRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param _Labels [Labels] <p>List of labels to delete from the resource.</p>
--- @param _DeleteAll [BooleanType] <p>Flag to request removal of all labels from the specified resource.</p>
--- Required parameter: ResourceId
-function M.DeleteLabelsRequest(_AuthenticationToken, _ResourceId, _Labels, _DeleteAll, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLabelsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- * Labels [Labels] <p>List of labels to delete from the resource.</p>
+-- * DeleteAll [BooleanType] <p>Flag to request removal of all labels from the specified resource.</p>
+-- Required key: ResourceId
+-- @return DeleteLabelsRequest structure as a key-value pair table
+function M.DeleteLabelsRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteLabelsRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["ResourceId"] = _ResourceId,
-		["Labels"] = _Labels,
-		["DeleteAll"] = _DeleteAll,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["ResourceId"] = args["ResourceId"],
+		["Labels"] = args["Labels"],
+		["DeleteAll"] = args["DeleteAll"],
 	}
 	asserts.AssertDeleteLabelsRequest(t)
 	return t
@@ -786,11 +858,14 @@ end
 
 --- Create a structure of type UpdateUserResponse
 --  
--- @param _User [User] <p>The user information.</p>
-function M.UpdateUserResponse(_User, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * User [User] <p>The user information.</p>
+-- @return UpdateUserResponse structure as a key-value pair table
+function M.UpdateUserResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateUserResponse")
 	local t = { 
-		["User"] = _User,
+		["User"] = args["User"],
 	}
 	asserts.AssertUpdateUserResponse(t)
 	return t
@@ -814,20 +889,23 @@ end
 
 --- Create a structure of type GetDocumentPathRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _Fields [FieldNamesType] <p>A comma-separated list of values. Specify <code>NAME</code> to include the names of the parent folders.</p>
--- @param _Marker [PageMarkerType] <p>This value is not supported.</p>
--- @param _Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
--- @param _DocumentId [IdType] <p>The ID of the document.</p>
--- Required parameter: DocumentId
-function M.GetDocumentPathRequest(_AuthenticationToken, _Fields, _Marker, _Limit, _DocumentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentPathRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * Fields [FieldNamesType] <p>A comma-separated list of values. Specify <code>NAME</code> to include the names of the parent folders.</p>
+-- * Marker [PageMarkerType] <p>This value is not supported.</p>
+-- * Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
+-- * DocumentId [IdType] <p>The ID of the document.</p>
+-- Required key: DocumentId
+-- @return GetDocumentPathRequest structure as a key-value pair table
+function M.GetDocumentPathRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDocumentPathRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["Fields"] = _Fields,
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
-		["DocumentId"] = _DocumentId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["Fields"] = args["Fields"],
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
+		["DocumentId"] = args["DocumentId"],
 	}
 	asserts.AssertGetDocumentPathRequest(t)
 	return t
@@ -846,11 +924,14 @@ end
 
 --- Create a structure of type UnauthorizedResourceAccessException
 -- <p>The caller does not have access to perform the action on the resource.</p>
--- @param _Message [ErrorMessageType] 
-function M.UnauthorizedResourceAccessException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedResourceAccessException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return UnauthorizedResourceAccessException structure as a key-value pair table
+function M.UnauthorizedResourceAccessException(args)
+	assert(args, "You must provdide an argument table when creating UnauthorizedResourceAccessException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertUnauthorizedResourceAccessException(t)
 	return t
@@ -869,11 +950,14 @@ end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>The resource hierarchy is changing.</p>
--- @param _Message [ErrorMessageType] 
-function M.ConcurrentModificationException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return ConcurrentModificationException structure as a key-value pair table
+function M.ConcurrentModificationException(args)
+	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertConcurrentModificationException(t)
 	return t
@@ -894,14 +978,17 @@ end
 
 --- Create a structure of type ActivateUserRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _UserId [IdType] <p>The ID of the user.</p>
--- Required parameter: UserId
-function M.ActivateUserRequest(_AuthenticationToken, _UserId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivateUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * UserId [IdType] <p>The ID of the user.</p>
+-- Required key: UserId
+-- @return ActivateUserRequest structure as a key-value pair table
+function M.ActivateUserRequest(args)
+	assert(args, "You must provdide an argument table when creating ActivateUserRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["UserId"] = _UserId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["UserId"] = args["UserId"],
 	}
 	asserts.AssertActivateUserRequest(t)
 	return t
@@ -926,23 +1013,26 @@ end
 
 --- Create a structure of type DescribeActivitiesRequest
 --  
--- @param _OrganizationId [IdType] <p>The ID of the organization. This is a mandatory parameter when using administrative API (SigV4) requests.</p>
--- @param _UserId [IdType] <p>The ID of the user who performed the action. The response includes activities pertaining to this user. This is an optional parameter and is only applicable for administrative API (SigV4) requests.</p>
--- @param _Marker [MarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _Limit [LimitType] <p>The maximum number of items to return.</p>
--- @param _StartTime [TimestampType] <p>The timestamp that determines the starting time of the activities; the response includes the activities performed after the specified timestamp.</p>
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _EndTime [TimestampType] <p>The timestamp that determines the end time of the activities; the response includes the activities performed before the specified timestamp.</p>
-function M.DescribeActivitiesRequest(_OrganizationId, _UserId, _Marker, _Limit, _StartTime, _AuthenticationToken, _EndTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivitiesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OrganizationId [IdType] <p>The ID of the organization. This is a mandatory parameter when using administrative API (SigV4) requests.</p>
+-- * UserId [IdType] <p>The ID of the user who performed the action. The response includes activities pertaining to this user. This is an optional parameter and is only applicable for administrative API (SigV4) requests.</p>
+-- * Marker [MarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * Limit [LimitType] <p>The maximum number of items to return.</p>
+-- * StartTime [TimestampType] <p>The timestamp that determines the starting time of the activities; the response includes the activities performed after the specified timestamp.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * EndTime [TimestampType] <p>The timestamp that determines the end time of the activities; the response includes the activities performed before the specified timestamp.</p>
+-- @return DescribeActivitiesRequest structure as a key-value pair table
+function M.DescribeActivitiesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeActivitiesRequest")
 	local t = { 
-		["OrganizationId"] = _OrganizationId,
-		["UserId"] = _UserId,
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
-		["StartTime"] = _StartTime,
-		["AuthenticationToken"] = _AuthenticationToken,
-		["EndTime"] = _EndTime,
+		["OrganizationId"] = args["OrganizationId"],
+		["UserId"] = args["UserId"],
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
+		["StartTime"] = args["StartTime"],
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["EndTime"] = args["EndTime"],
 	}
 	asserts.AssertDescribeActivitiesRequest(t)
 	return t
@@ -962,13 +1052,16 @@ end
 
 --- Create a structure of type DescribeNotificationSubscriptionsResponse
 --  
--- @param _Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param _Subscriptions [SubscriptionList] <p>The subscriptions.</p>
-function M.DescribeNotificationSubscriptionsResponse(_Marker, _Subscriptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationSubscriptionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- * Subscriptions [SubscriptionList] <p>The subscriptions.</p>
+-- @return DescribeNotificationSubscriptionsResponse structure as a key-value pair table
+function M.DescribeNotificationSubscriptionsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeNotificationSubscriptionsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["Subscriptions"] = _Subscriptions,
+		["Marker"] = args["Marker"],
+		["Subscriptions"] = args["Subscriptions"],
 	}
 	asserts.AssertDescribeNotificationSubscriptionsResponse(t)
 	return t
@@ -997,28 +1090,31 @@ end
 
 --- Create a structure of type CreateCommentRequest
 --  
--- @param _Text [CommentTextType] <p>The text of the comment.</p>
--- @param _ParentId [CommentIdType] <p>The ID of the parent comment.</p>
--- @param _Visibility [CommentVisibilityType] <p>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.</p>
--- @param _NotifyCollaborators [BooleanType] <p>Set this parameter to TRUE to send an email out to the document collaborators after the comment is created.</p>
--- @param _VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
--- @param _ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- Required parameter: DocumentId
--- Required parameter: VersionId
--- Required parameter: Text
-function M.CreateCommentRequest(_Text, _ParentId, _Visibility, _NotifyCollaborators, _VersionId, _ThreadId, _AuthenticationToken, _DocumentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCommentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Text [CommentTextType] <p>The text of the comment.</p>
+-- * ParentId [CommentIdType] <p>The ID of the parent comment.</p>
+-- * Visibility [CommentVisibilityType] <p>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.</p>
+-- * NotifyCollaborators [BooleanType] <p>Set this parameter to TRUE to send an email out to the document collaborators after the comment is created.</p>
+-- * VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
+-- * ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- Required key: DocumentId
+-- Required key: VersionId
+-- Required key: Text
+-- @return CreateCommentRequest structure as a key-value pair table
+function M.CreateCommentRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateCommentRequest")
 	local t = { 
-		["Text"] = _Text,
-		["ParentId"] = _ParentId,
-		["Visibility"] = _Visibility,
-		["NotifyCollaborators"] = _NotifyCollaborators,
-		["VersionId"] = _VersionId,
-		["ThreadId"] = _ThreadId,
-		["AuthenticationToken"] = _AuthenticationToken,
-		["DocumentId"] = _DocumentId,
+		["Text"] = args["Text"],
+		["ParentId"] = args["ParentId"],
+		["Visibility"] = args["Visibility"],
+		["NotifyCollaborators"] = args["NotifyCollaborators"],
+		["VersionId"] = args["VersionId"],
+		["ThreadId"] = args["ThreadId"],
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["DocumentId"] = args["DocumentId"],
 	}
 	asserts.AssertCreateCommentRequest(t)
 	return t
@@ -1040,16 +1136,19 @@ end
 
 --- Create a structure of type CreateFolderRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _Name [ResourceNameType] <p>The name of the new folder.</p>
--- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- Required parameter: ParentFolderId
-function M.CreateFolderRequest(_AuthenticationToken, _Name, _ParentFolderId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFolderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * Name [ResourceNameType] <p>The name of the new folder.</p>
+-- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- Required key: ParentFolderId
+-- @return CreateFolderRequest structure as a key-value pair table
+function M.CreateFolderRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateFolderRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["Name"] = _Name,
-		["ParentFolderId"] = _ParentFolderId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["Name"] = args["Name"],
+		["ParentFolderId"] = args["ParentFolderId"],
 	}
 	asserts.AssertCreateFolderRequest(t)
 	return t
@@ -1068,11 +1167,14 @@ end
 
 --- Create a structure of type CreateUserResponse
 --  
--- @param _User [User] <p>The user information.</p>
-function M.CreateUserResponse(_User, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * User [User] <p>The user information.</p>
+-- @return CreateUserResponse structure as a key-value pair table
+function M.CreateUserResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateUserResponse")
 	local t = { 
-		["User"] = _User,
+		["User"] = args["User"],
 	}
 	asserts.AssertCreateUserResponse(t)
 	return t
@@ -1092,13 +1194,16 @@ end
 
 --- Create a structure of type DescribeCommentsResponse
 --  
--- @param _Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
--- @param _Comments [CommentList] <p>The list of comments for the specified document version.</p>
-function M.DescribeCommentsResponse(_Marker, _Comments, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
+-- * Comments [CommentList] <p>The list of comments for the specified document version.</p>
+-- @return DescribeCommentsResponse structure as a key-value pair table
+function M.DescribeCommentsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeCommentsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["Comments"] = _Comments,
+		["Marker"] = args["Marker"],
+		["Comments"] = args["Comments"],
 	}
 	asserts.AssertDescribeCommentsResponse(t)
 	return t
@@ -1117,11 +1222,14 @@ end
 
 --- Create a structure of type GetFolderPathResponse
 --  
--- @param _Path [ResourcePath] <p>The path information.</p>
-function M.GetFolderPathResponse(_Path, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderPathResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [ResourcePath] <p>The path information.</p>
+-- @return GetFolderPathResponse structure as a key-value pair table
+function M.GetFolderPathResponse(args)
+	assert(args, "You must provdide an argument table when creating GetFolderPathResponse")
 	local t = { 
-		["Path"] = _Path,
+		["Path"] = args["Path"],
 	}
 	asserts.AssertGetFolderPathResponse(t)
 	return t
@@ -1142,14 +1250,17 @@ end
 
 --- Create a structure of type DeleteFolderRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _FolderId [ResourceIdType] <p>The ID of the folder.</p>
--- Required parameter: FolderId
-function M.DeleteFolderRequest(_AuthenticationToken, _FolderId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFolderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- Required key: FolderId
+-- @return DeleteFolderRequest structure as a key-value pair table
+function M.DeleteFolderRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteFolderRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["FolderId"] = _FolderId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["FolderId"] = args["FolderId"],
 	}
 	asserts.AssertDeleteFolderRequest(t)
 	return t
@@ -1175,25 +1286,28 @@ end
 
 --- Create a structure of type DocumentMetadata
 -- <p>Describes the document.</p>
--- @param _ResourceState [ResourceStateType] <p>The resource state.</p>
--- @param _Labels [Labels] <p>List of labels on the document.</p>
--- @param _ModifiedTimestamp [TimestampType] <p>The time when the document was updated.</p>
--- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- @param _CreatedTimestamp [TimestampType] <p>The time when the document was created.</p>
--- @param _LatestVersionMetadata [DocumentVersionMetadata] <p>The latest version of the document.</p>
--- @param _CreatorId [IdType] <p>The ID of the creator.</p>
--- @param _Id [ResourceIdType] <p>The ID of the document.</p>
-function M.DocumentMetadata(_ResourceState, _Labels, _ModifiedTimestamp, _ParentFolderId, _CreatedTimestamp, _LatestVersionMetadata, _CreatorId, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceState [ResourceStateType] <p>The resource state.</p>
+-- * Labels [Labels] <p>List of labels on the document.</p>
+-- * ModifiedTimestamp [TimestampType] <p>The time when the document was updated.</p>
+-- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- * CreatedTimestamp [TimestampType] <p>The time when the document was created.</p>
+-- * LatestVersionMetadata [DocumentVersionMetadata] <p>The latest version of the document.</p>
+-- * CreatorId [IdType] <p>The ID of the creator.</p>
+-- * Id [ResourceIdType] <p>The ID of the document.</p>
+-- @return DocumentMetadata structure as a key-value pair table
+function M.DocumentMetadata(args)
+	assert(args, "You must provdide an argument table when creating DocumentMetadata")
 	local t = { 
-		["ResourceState"] = _ResourceState,
-		["Labels"] = _Labels,
-		["ModifiedTimestamp"] = _ModifiedTimestamp,
-		["ParentFolderId"] = _ParentFolderId,
-		["CreatedTimestamp"] = _CreatedTimestamp,
-		["LatestVersionMetadata"] = _LatestVersionMetadata,
-		["CreatorId"] = _CreatorId,
-		["Id"] = _Id,
+		["ResourceState"] = args["ResourceState"],
+		["Labels"] = args["Labels"],
+		["ModifiedTimestamp"] = args["ModifiedTimestamp"],
+		["ParentFolderId"] = args["ParentFolderId"],
+		["CreatedTimestamp"] = args["CreatedTimestamp"],
+		["LatestVersionMetadata"] = args["LatestVersionMetadata"],
+		["CreatorId"] = args["CreatorId"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDocumentMetadata(t)
 	return t
@@ -1212,11 +1326,14 @@ end
 
 --- Create a structure of type DocumentLockedForCommentsException
 -- <p>This exception is thrown when the document is locked for comments and user tries to create or delete a comment on that document.</p>
--- @param _Message [ErrorMessageType] 
-function M.DocumentLockedForCommentsException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentLockedForCommentsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return DocumentLockedForCommentsException structure as a key-value pair table
+function M.DocumentLockedForCommentsException(args)
+	assert(args, "You must provdide an argument table when creating DocumentLockedForCommentsException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDocumentLockedForCommentsException(t)
 	return t
@@ -1240,20 +1357,23 @@ end
 
 --- Create a structure of type UpdateDocumentRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _ResourceState [ResourceStateType] <p>The resource state of the document. Note that only ACTIVE and RECYCLED are supported.</p>
--- @param _Name [ResourceNameType] <p>The name of the document.</p>
--- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- Required parameter: DocumentId
-function M.UpdateDocumentRequest(_AuthenticationToken, _ResourceState, _Name, _DocumentId, _ParentFolderId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ResourceState [ResourceStateType] <p>The resource state of the document. Note that only ACTIVE and RECYCLED are supported.</p>
+-- * Name [ResourceNameType] <p>The name of the document.</p>
+-- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- Required key: DocumentId
+-- @return UpdateDocumentRequest structure as a key-value pair table
+function M.UpdateDocumentRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateDocumentRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["ResourceState"] = _ResourceState,
-		["Name"] = _Name,
-		["DocumentId"] = _DocumentId,
-		["ParentFolderId"] = _ParentFolderId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["ResourceState"] = args["ResourceState"],
+		["Name"] = args["Name"],
+		["DocumentId"] = args["DocumentId"],
+		["ParentFolderId"] = args["ParentFolderId"],
 	}
 	asserts.AssertUpdateDocumentRequest(t)
 	return t
@@ -1273,13 +1393,16 @@ end
 
 --- Create a structure of type DescribeResourcePermissionsResponse
 --  
--- @param _Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param _Principals [PrincipalList] <p>The principals.</p>
-function M.DescribeResourcePermissionsResponse(_Marker, _Principals, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourcePermissionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- * Principals [PrincipalList] <p>The principals.</p>
+-- @return DescribeResourcePermissionsResponse structure as a key-value pair table
+function M.DescribeResourcePermissionsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeResourcePermissionsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["Principals"] = _Principals,
+		["Marker"] = args["Marker"],
+		["Principals"] = args["Principals"],
 	}
 	asserts.AssertDescribeResourcePermissionsResponse(t)
 	return t
@@ -1304,21 +1427,24 @@ end
 
 --- Create a structure of type GetDocumentVersionRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _Fields [FieldNamesType] <p>A comma-separated list of values. Specify "SOURCE" to include a URL for the source document.</p>
--- @param _VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
--- @param _IncludeCustomMetadata [BooleanType] <p>Set this to TRUE to include custom metadata in the response.</p>
--- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- Required parameter: DocumentId
--- Required parameter: VersionId
-function M.GetDocumentVersionRequest(_AuthenticationToken, _Fields, _VersionId, _IncludeCustomMetadata, _DocumentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * Fields [FieldNamesType] <p>A comma-separated list of values. Specify "SOURCE" to include a URL for the source document.</p>
+-- * VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
+-- * IncludeCustomMetadata [BooleanType] <p>Set this to TRUE to include custom metadata in the response.</p>
+-- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- Required key: DocumentId
+-- Required key: VersionId
+-- @return GetDocumentVersionRequest structure as a key-value pair table
+function M.GetDocumentVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDocumentVersionRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["Fields"] = _Fields,
-		["VersionId"] = _VersionId,
-		["IncludeCustomMetadata"] = _IncludeCustomMetadata,
-		["DocumentId"] = _DocumentId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["Fields"] = args["Fields"],
+		["VersionId"] = args["VersionId"],
+		["IncludeCustomMetadata"] = args["IncludeCustomMetadata"],
+		["DocumentId"] = args["DocumentId"],
 	}
 	asserts.AssertGetDocumentVersionRequest(t)
 	return t
@@ -1336,8 +1462,11 @@ end
 
 --- Create a structure of type DeactivatingLastSystemUserException
 -- <p>The last user in the organization is being deactivated.</p>
-function M.DeactivatingLastSystemUserException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeactivatingLastSystemUserException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeactivatingLastSystemUserException structure as a key-value pair table
+function M.DeactivatingLastSystemUserException(args)
+	assert(args, "You must provdide an argument table when creating DeactivatingLastSystemUserException")
 	local t = { 
 	}
 	asserts.AssertDeactivatingLastSystemUserException(t)
@@ -1361,19 +1490,22 @@ end
 
 --- Create a structure of type ShareResult
 -- <p>Describes the share results of a resource.</p>
--- @param _Status [ShareStatusType] <p>The status.</p>
--- @param _StatusMessage [MessageType] <p>The status message.</p>
--- @param _Role [RoleType] <p>The role.</p>
--- @param _ShareId [ResourceIdType] <p>The ID of the resource that was shared.</p>
--- @param _PrincipalId [IdType] <p>The ID of the principal.</p>
-function M.ShareResult(_Status, _StatusMessage, _Role, _ShareId, _PrincipalId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ShareResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ShareStatusType] <p>The status.</p>
+-- * StatusMessage [MessageType] <p>The status message.</p>
+-- * Role [RoleType] <p>The role.</p>
+-- * ShareId [ResourceIdType] <p>The ID of the resource that was shared.</p>
+-- * PrincipalId [IdType] <p>The ID of the principal.</p>
+-- @return ShareResult structure as a key-value pair table
+function M.ShareResult(args)
+	assert(args, "You must provdide an argument table when creating ShareResult")
 	local t = { 
-		["Status"] = _Status,
-		["StatusMessage"] = _StatusMessage,
-		["Role"] = _Role,
-		["ShareId"] = _ShareId,
-		["PrincipalId"] = _PrincipalId,
+		["Status"] = args["Status"],
+		["StatusMessage"] = args["StatusMessage"],
+		["Role"] = args["Role"],
+		["ShareId"] = args["ShareId"],
+		["PrincipalId"] = args["PrincipalId"],
 	}
 	asserts.AssertShareResult(t)
 	return t
@@ -1393,13 +1525,16 @@ end
 
 --- Create a structure of type GetDocumentResponse
 --  
--- @param _CustomMetadata [CustomMetadataMap] <p>The custom metadata on the document.</p>
--- @param _Metadata [DocumentMetadata] <p>The metadata details of the document.</p>
-function M.GetDocumentResponse(_CustomMetadata, _Metadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CustomMetadata [CustomMetadataMap] <p>The custom metadata on the document.</p>
+-- * Metadata [DocumentMetadata] <p>The metadata details of the document.</p>
+-- @return GetDocumentResponse structure as a key-value pair table
+function M.GetDocumentResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDocumentResponse")
 	local t = { 
-		["CustomMetadata"] = _CustomMetadata,
-		["Metadata"] = _Metadata,
+		["CustomMetadata"] = args["CustomMetadata"],
+		["Metadata"] = args["Metadata"],
 	}
 	asserts.AssertGetDocumentResponse(t)
 	return t
@@ -1423,20 +1558,23 @@ end
 
 --- Create a structure of type GetFolderPathRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _Fields [FieldNamesType] <p>A comma-separated list of values. Specify "NAME" to include the names of the parent folders.</p>
--- @param _FolderId [IdType] <p>The ID of the folder.</p>
--- @param _Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
--- @param _Marker [PageMarkerType] <p>This value is not supported.</p>
--- Required parameter: FolderId
-function M.GetFolderPathRequest(_AuthenticationToken, _Fields, _FolderId, _Limit, _Marker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderPathRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * Fields [FieldNamesType] <p>A comma-separated list of values. Specify "NAME" to include the names of the parent folders.</p>
+-- * FolderId [IdType] <p>The ID of the folder.</p>
+-- * Limit [LimitType] <p>The maximum number of levels in the hierarchy to return.</p>
+-- * Marker [PageMarkerType] <p>This value is not supported.</p>
+-- Required key: FolderId
+-- @return GetFolderPathRequest structure as a key-value pair table
+function M.GetFolderPathRequest(args)
+	assert(args, "You must provdide an argument table when creating GetFolderPathRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["Fields"] = _Fields,
-		["FolderId"] = _FolderId,
-		["Limit"] = _Limit,
-		["Marker"] = _Marker,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["Fields"] = args["Fields"],
+		["FolderId"] = args["FolderId"],
+		["Limit"] = args["Limit"],
+		["Marker"] = args["Marker"],
 	}
 	asserts.AssertGetFolderPathRequest(t)
 	return t
@@ -1455,11 +1593,14 @@ end
 
 --- Create a structure of type AddResourcePermissionsResponse
 --  
--- @param _ShareResults [ShareResultsList] <p>The share results.</p>
-function M.AddResourcePermissionsResponse(_ShareResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddResourcePermissionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShareResults [ShareResultsList] <p>The share results.</p>
+-- @return AddResourcePermissionsResponse structure as a key-value pair table
+function M.AddResourcePermissionsResponse(args)
+	assert(args, "You must provdide an argument table when creating AddResourcePermissionsResponse")
 	local t = { 
-		["ShareResults"] = _ShareResults,
+		["ShareResults"] = args["ShareResults"],
 	}
 	asserts.AssertAddResourcePermissionsResponse(t)
 	return t
@@ -1479,13 +1620,16 @@ end
 
 --- Create a structure of type GetFolderResponse
 --  
--- @param _CustomMetadata [CustomMetadataMap] <p>The custom metadata on the folder.</p>
--- @param _Metadata [FolderMetadata] <p>The metadata of the folder.</p>
-function M.GetFolderResponse(_CustomMetadata, _Metadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CustomMetadata [CustomMetadataMap] <p>The custom metadata on the folder.</p>
+-- * Metadata [FolderMetadata] <p>The metadata of the folder.</p>
+-- @return GetFolderResponse structure as a key-value pair table
+function M.GetFolderResponse(args)
+	assert(args, "You must provdide an argument table when creating GetFolderResponse")
 	local t = { 
-		["CustomMetadata"] = _CustomMetadata,
-		["Metadata"] = _Metadata,
+		["CustomMetadata"] = args["CustomMetadata"],
+		["Metadata"] = args["Metadata"],
 	}
 	asserts.AssertGetFolderResponse(t)
 	return t
@@ -1506,15 +1650,18 @@ end
 
 --- Create a structure of type Subscription
 -- <p>Describes a subscription.</p>
--- @param _SubscriptionId [IdType] <p>The ID of the subscription.</p>
--- @param _EndPoint [SubscriptionEndPointType] <p>The endpoint of the subscription.</p>
--- @param _Protocol [SubscriptionProtocolType] <p>The protocol of the subscription.</p>
-function M.Subscription(_SubscriptionId, _EndPoint, _Protocol, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubscriptionId [IdType] <p>The ID of the subscription.</p>
+-- * EndPoint [SubscriptionEndPointType] <p>The endpoint of the subscription.</p>
+-- * Protocol [SubscriptionProtocolType] <p>The protocol of the subscription.</p>
+-- @return Subscription structure as a key-value pair table
+function M.Subscription(args)
+	assert(args, "You must provdide an argument table when creating Subscription")
 	local t = { 
-		["SubscriptionId"] = _SubscriptionId,
-		["EndPoint"] = _EndPoint,
-		["Protocol"] = _Protocol,
+		["SubscriptionId"] = args["SubscriptionId"],
+		["EndPoint"] = args["EndPoint"],
+		["Protocol"] = args["Protocol"],
 	}
 	asserts.AssertSubscription(t)
 	return t
@@ -1533,11 +1680,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The maximum of 100,000 folders under the parent folder has been exceeded.</p>
--- @param _Message [ErrorMessageType] 
-function M.LimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -1557,13 +1707,16 @@ end
 
 --- Create a structure of type ResourcePathComponent
 -- <p>Describes the resource path.</p>
--- @param _Id [IdType] <p>The ID of the resource path.</p>
--- @param _Name [ResourceNameType] <p>The name of the resource path.</p>
-function M.ResourcePathComponent(_Id, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourcePathComponent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [IdType] <p>The ID of the resource path.</p>
+-- * Name [ResourceNameType] <p>The name of the resource path.</p>
+-- @return ResourcePathComponent structure as a key-value pair table
+function M.ResourcePathComponent(args)
+	assert(args, "You must provdide an argument table when creating ResourcePathComponent")
 	local t = { 
-		["Id"] = _Id,
-		["Name"] = _Name,
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertResourcePathComponent(t)
 	return t
@@ -1584,14 +1737,17 @@ end
 
 --- Create a structure of type DeactivateUserRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _UserId [IdType] <p>The ID of the user.</p>
--- Required parameter: UserId
-function M.DeactivateUserRequest(_AuthenticationToken, _UserId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeactivateUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * UserId [IdType] <p>The ID of the user.</p>
+-- Required key: UserId
+-- @return DeactivateUserRequest structure as a key-value pair table
+function M.DeactivateUserRequest(args)
+	assert(args, "You must provdide an argument table when creating DeactivateUserRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["UserId"] = _UserId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["UserId"] = args["UserId"],
 	}
 	asserts.AssertDeactivateUserRequest(t)
 	return t
@@ -1610,11 +1766,14 @@ end
 
 --- Create a structure of type CreateFolderResponse
 --  
--- @param _Metadata [FolderMetadata] <p>The metadata of the folder.</p>
-function M.CreateFolderResponse(_Metadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFolderResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Metadata [FolderMetadata] <p>The metadata of the folder.</p>
+-- @return CreateFolderResponse structure as a key-value pair table
+function M.CreateFolderResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateFolderResponse")
 	local t = { 
-		["Metadata"] = _Metadata,
+		["Metadata"] = args["Metadata"],
 	}
 	asserts.AssertCreateFolderResponse(t)
 	return t
@@ -1632,8 +1791,11 @@ end
 
 --- Create a structure of type UnauthorizedOperationException
 -- <p>The operation is not permitted.</p>
-function M.UnauthorizedOperationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedOperationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UnauthorizedOperationException structure as a key-value pair table
+function M.UnauthorizedOperationException(args)
+	assert(args, "You must provdide an argument table when creating UnauthorizedOperationException")
 	local t = { 
 	}
 	asserts.AssertUnauthorizedOperationException(t)
@@ -1662,29 +1824,32 @@ end
 
 --- Create a structure of type DescribeUsersRequest
 --  
--- @param _Sort [UserSortType] <p>The sorting criteria.</p>
--- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param _Fields [FieldNamesType] <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the user storage quota and utilization information.</p>
--- @param _UserIds [UserIdsType] <p>The IDs of the users.</p>
--- @param _Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _Limit [LimitType] <p>The maximum number of items to return.</p>
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _Query [SearchQueryType] <p>A query to filter users by user name.</p>
--- @param _Include [UserFilterType] <p>The state of the users. Specify "ALL" to include inactive users.</p>
--- @param _Order [OrderType] <p>The order for the results.</p>
-function M.DescribeUsersRequest(_Sort, _OrganizationId, _Fields, _UserIds, _Marker, _Limit, _AuthenticationToken, _Query, _Include, _Order, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUsersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Sort [UserSortType] <p>The sorting criteria.</p>
+-- * OrganizationId [IdType] <p>The ID of the organization.</p>
+-- * Fields [FieldNamesType] <p>A comma-separated list of values. Specify "STORAGE_METADATA" to include the user storage quota and utilization information.</p>
+-- * UserIds [UserIdsType] <p>The IDs of the users.</p>
+-- * Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * Limit [LimitType] <p>The maximum number of items to return.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * Query [SearchQueryType] <p>A query to filter users by user name.</p>
+-- * Include [UserFilterType] <p>The state of the users. Specify "ALL" to include inactive users.</p>
+-- * Order [OrderType] <p>The order for the results.</p>
+-- @return DescribeUsersRequest structure as a key-value pair table
+function M.DescribeUsersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeUsersRequest")
 	local t = { 
-		["Sort"] = _Sort,
-		["OrganizationId"] = _OrganizationId,
-		["Fields"] = _Fields,
-		["UserIds"] = _UserIds,
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
-		["AuthenticationToken"] = _AuthenticationToken,
-		["Query"] = _Query,
-		["Include"] = _Include,
-		["Order"] = _Order,
+		["Sort"] = args["Sort"],
+		["OrganizationId"] = args["OrganizationId"],
+		["Fields"] = args["Fields"],
+		["UserIds"] = args["UserIds"],
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["Query"] = args["Query"],
+		["Include"] = args["Include"],
+		["Order"] = args["Order"],
 	}
 	asserts.AssertDescribeUsersRequest(t)
 	return t
@@ -1708,19 +1873,22 @@ end
 
 --- Create a structure of type RemoveResourcePermissionRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param _PrincipalType [PrincipalType] <p>The principal type of the resource.</p>
--- @param _PrincipalId [IdType] <p>The principal ID of the resource.</p>
--- Required parameter: ResourceId
--- Required parameter: PrincipalId
-function M.RemoveResourcePermissionRequest(_AuthenticationToken, _ResourceId, _PrincipalType, _PrincipalId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveResourcePermissionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- * PrincipalType [PrincipalType] <p>The principal type of the resource.</p>
+-- * PrincipalId [IdType] <p>The principal ID of the resource.</p>
+-- Required key: ResourceId
+-- Required key: PrincipalId
+-- @return RemoveResourcePermissionRequest structure as a key-value pair table
+function M.RemoveResourcePermissionRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveResourcePermissionRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["ResourceId"] = _ResourceId,
-		["PrincipalType"] = _PrincipalType,
-		["PrincipalId"] = _PrincipalId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["ResourceId"] = args["ResourceId"],
+		["PrincipalType"] = args["PrincipalType"],
+		["PrincipalId"] = args["PrincipalId"],
 	}
 	asserts.AssertRemoveResourcePermissionRequest(t)
 	return t
@@ -1739,11 +1907,14 @@ end
 
 --- Create a structure of type ResourcePath
 -- <p>Describes the path information of a resource.</p>
--- @param _Components [ResourcePathComponentList] <p>The components of the resource path.</p>
-function M.ResourcePath(_Components, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourcePath")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Components [ResourcePathComponentList] <p>The components of the resource path.</p>
+-- @return ResourcePath structure as a key-value pair table
+function M.ResourcePath(args)
+	assert(args, "You must provdide an argument table when creating ResourcePath")
 	local t = { 
-		["Components"] = _Components,
+		["Components"] = args["Components"],
 	}
 	asserts.AssertResourcePath(t)
 	return t
@@ -1762,11 +1933,14 @@ end
 
 --- Create a structure of type IllegalUserStateException
 -- <p>The user is undergoing transfer of ownership.</p>
--- @param _Message [ErrorMessageType] 
-function M.IllegalUserStateException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IllegalUserStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return IllegalUserStateException structure as a key-value pair table
+function M.IllegalUserStateException(args)
+	assert(args, "You must provdide an argument table when creating IllegalUserStateException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertIllegalUserStateException(t)
 	return t
@@ -1793,26 +1967,29 @@ end
 
 --- Create a structure of type DescribeFolderContentsRequest
 --  
--- @param _Sort [ResourceSortType] <p>The sorting criteria.</p>
--- @param _Include [FieldNamesType] <p>The contents to include. Specify "INITIALIZED" to include initialized documents.</p>
--- @param _Marker [PageMarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
--- @param _Limit [LimitType] <p>The maximum number of items to return with this call.</p>
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _FolderId [ResourceIdType] <p>The ID of the folder.</p>
--- @param _Type [FolderContentType] <p>The type of items.</p>
--- @param _Order [OrderType] <p>The order for the contents of the folder.</p>
--- Required parameter: FolderId
-function M.DescribeFolderContentsRequest(_Sort, _Include, _Marker, _Limit, _AuthenticationToken, _FolderId, _Type, _Order, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFolderContentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Sort [ResourceSortType] <p>The sorting criteria.</p>
+-- * Include [FieldNamesType] <p>The contents to include. Specify "INITIALIZED" to include initialized documents.</p>
+-- * Marker [PageMarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
+-- * Limit [LimitType] <p>The maximum number of items to return with this call.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- * Type [FolderContentType] <p>The type of items.</p>
+-- * Order [OrderType] <p>The order for the contents of the folder.</p>
+-- Required key: FolderId
+-- @return DescribeFolderContentsRequest structure as a key-value pair table
+function M.DescribeFolderContentsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeFolderContentsRequest")
 	local t = { 
-		["Sort"] = _Sort,
-		["Include"] = _Include,
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
-		["AuthenticationToken"] = _AuthenticationToken,
-		["FolderId"] = _FolderId,
-		["Type"] = _Type,
-		["Order"] = _Order,
+		["Sort"] = args["Sort"],
+		["Include"] = args["Include"],
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["FolderId"] = args["FolderId"],
+		["Type"] = args["Type"],
+		["Order"] = args["Order"],
 	}
 	asserts.AssertDescribeFolderContentsRequest(t)
 	return t
@@ -1831,11 +2008,14 @@ end
 
 --- Create a structure of type ResourceAlreadyCheckedOutException
 -- <p>The resource is already checked out.</p>
--- @param _Message [ErrorMessageType] 
-function M.ResourceAlreadyCheckedOutException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyCheckedOutException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return ResourceAlreadyCheckedOutException structure as a key-value pair table
+function M.ResourceAlreadyCheckedOutException(args)
+	assert(args, "You must provdide an argument table when creating ResourceAlreadyCheckedOutException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertResourceAlreadyCheckedOutException(t)
 	return t
@@ -1854,11 +2034,14 @@ end
 
 --- Create a structure of type GetDocumentPathResponse
 --  
--- @param _Path [ResourcePath] <p>The path information.</p>
-function M.GetDocumentPathResponse(_Path, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentPathResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [ResourcePath] <p>The path information.</p>
+-- @return GetDocumentPathResponse structure as a key-value pair table
+function M.GetDocumentPathResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDocumentPathResponse")
 	local t = { 
-		["Path"] = _Path,
+		["Path"] = args["Path"],
 	}
 	asserts.AssertGetDocumentPathResponse(t)
 	return t
@@ -1885,26 +2068,29 @@ end
 
 --- Create a structure of type UpdateUserRequest
 --  
--- @param _TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
--- @param _Surname [UserAttributeValueType] <p>The surname of the user.</p>
--- @param _Locale [LocaleType] <p>The locale of the user.</p>
--- @param _UserId [IdType] <p>The ID of the user.</p>
--- @param _StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _GivenName [UserAttributeValueType] <p>The given name of the user.</p>
--- @param _Type [UserType] <p>The type of the user.</p>
--- Required parameter: UserId
-function M.UpdateUserRequest(_TimeZoneId, _Surname, _Locale, _UserId, _StorageRule, _AuthenticationToken, _GivenName, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
+-- * Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- * Locale [LocaleType] <p>The locale of the user.</p>
+-- * UserId [IdType] <p>The ID of the user.</p>
+-- * StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * GivenName [UserAttributeValueType] <p>The given name of the user.</p>
+-- * Type [UserType] <p>The type of the user.</p>
+-- Required key: UserId
+-- @return UpdateUserRequest structure as a key-value pair table
+function M.UpdateUserRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateUserRequest")
 	local t = { 
-		["TimeZoneId"] = _TimeZoneId,
-		["Surname"] = _Surname,
-		["Locale"] = _Locale,
-		["UserId"] = _UserId,
-		["StorageRule"] = _StorageRule,
-		["AuthenticationToken"] = _AuthenticationToken,
-		["GivenName"] = _GivenName,
-		["Type"] = _Type,
+		["TimeZoneId"] = args["TimeZoneId"],
+		["Surname"] = args["Surname"],
+		["Locale"] = args["Locale"],
+		["UserId"] = args["UserId"],
+		["StorageRule"] = args["StorageRule"],
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["GivenName"] = args["GivenName"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertUpdateUserRequest(t)
 	return t
@@ -1927,17 +2113,20 @@ end
 
 --- Create a structure of type AddResourcePermissionsRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param _Principals [SharePrincipalList] <p>The users, groups, or organization being granted permission.</p>
--- Required parameter: ResourceId
--- Required parameter: Principals
-function M.AddResourcePermissionsRequest(_AuthenticationToken, _ResourceId, _Principals, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddResourcePermissionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- * Principals [SharePrincipalList] <p>The users, groups, or organization being granted permission.</p>
+-- Required key: ResourceId
+-- Required key: Principals
+-- @return AddResourcePermissionsRequest structure as a key-value pair table
+function M.AddResourcePermissionsRequest(args)
+	assert(args, "You must provdide an argument table when creating AddResourcePermissionsRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["ResourceId"] = _ResourceId,
-		["Principals"] = _Principals,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["ResourceId"] = args["ResourceId"],
+		["Principals"] = args["Principals"],
 	}
 	asserts.AssertAddResourcePermissionsRequest(t)
 	return t
@@ -1957,13 +2146,16 @@ end
 
 --- Create a structure of type Participants
 -- <p>Describes the users and/or user groups.</p>
--- @param _Users [UserMetadataList] <p>The list of users.</p>
--- @param _Groups [GroupMetadataList] <p>The list of user groups.</p>
-function M.Participants(_Users, _Groups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Participants")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Users [UserMetadataList] <p>The list of users.</p>
+-- * Groups [GroupMetadataList] <p>The list of user groups.</p>
+-- @return Participants structure as a key-value pair table
+function M.Participants(args)
+	assert(args, "You must provdide an argument table when creating Participants")
 	local t = { 
-		["Users"] = _Users,
-		["Groups"] = _Groups,
+		["Users"] = args["Users"],
+		["Groups"] = args["Groups"],
 	}
 	asserts.AssertParticipants(t)
 	return t
@@ -1983,13 +2175,16 @@ end
 
 --- Create a structure of type DescribeActivitiesResponse
 --  
--- @param _UserActivities [UserActivities] <p>The list of activities for the specified user and time period.</p>
--- @param _Marker [MarkerType] <p>The marker for the next set of results.</p>
-function M.DescribeActivitiesResponse(_UserActivities, _Marker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivitiesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserActivities [UserActivities] <p>The list of activities for the specified user and time period.</p>
+-- * Marker [MarkerType] <p>The marker for the next set of results.</p>
+-- @return DescribeActivitiesResponse structure as a key-value pair table
+function M.DescribeActivitiesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeActivitiesResponse")
 	local t = { 
-		["UserActivities"] = _UserActivities,
-		["Marker"] = _Marker,
+		["UserActivities"] = args["UserActivities"],
+		["Marker"] = args["Marker"],
 	}
 	asserts.AssertDescribeActivitiesResponse(t)
 	return t
@@ -2009,13 +2204,16 @@ end
 
 --- Create a structure of type UserStorageMetadata
 -- <p>Describes the storage for a user.</p>
--- @param _StorageRule [StorageRuleType] <p>The storage for a user.</p>
--- @param _StorageUtilizedInBytes [SizeType] <p>The amount of storage utilized, in bytes.</p>
-function M.UserStorageMetadata(_StorageRule, _StorageUtilizedInBytes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UserStorageMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StorageRule [StorageRuleType] <p>The storage for a user.</p>
+-- * StorageUtilizedInBytes [SizeType] <p>The amount of storage utilized, in bytes.</p>
+-- @return UserStorageMetadata structure as a key-value pair table
+function M.UserStorageMetadata(args)
+	assert(args, "You must provdide an argument table when creating UserStorageMetadata")
 	local t = { 
-		["StorageRule"] = _StorageRule,
-		["StorageUtilizedInBytes"] = _StorageUtilizedInBytes,
+		["StorageRule"] = args["StorageRule"],
+		["StorageUtilizedInBytes"] = args["StorageUtilizedInBytes"],
 	}
 	asserts.AssertUserStorageMetadata(t)
 	return t
@@ -2044,31 +2242,34 @@ end
 
 --- Create a structure of type FolderMetadata
 -- <p>Describes a folder.</p>
--- @param _Name [ResourceNameType] <p>The name of the folder.</p>
--- @param _LatestVersionSize [SizeType] <p>The size of the latest version of the folder metadata.</p>
--- @param _Labels [Labels] <p>List of labels on the folder.</p>
--- @param _ModifiedTimestamp [TimestampType] <p>The time when the folder was updated.</p>
--- @param _Id [ResourceIdType] <p>The ID of the folder.</p>
--- @param _CreatedTimestamp [TimestampType] <p>The time when the folder was created.</p>
--- @param _ResourceState [ResourceStateType] <p>The resource state of the folder.</p>
--- @param _CreatorId [IdType] <p>The ID of the creator.</p>
--- @param _Signature [HashType] <p>The unique identifier created from the subfolders and documents of the folder.</p>
--- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- @param _Size [SizeType] <p>The size of the folder metadata.</p>
-function M.FolderMetadata(_Name, _LatestVersionSize, _Labels, _ModifiedTimestamp, _Id, _CreatedTimestamp, _ResourceState, _CreatorId, _Signature, _ParentFolderId, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FolderMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ResourceNameType] <p>The name of the folder.</p>
+-- * LatestVersionSize [SizeType] <p>The size of the latest version of the folder metadata.</p>
+-- * Labels [Labels] <p>List of labels on the folder.</p>
+-- * ModifiedTimestamp [TimestampType] <p>The time when the folder was updated.</p>
+-- * Id [ResourceIdType] <p>The ID of the folder.</p>
+-- * CreatedTimestamp [TimestampType] <p>The time when the folder was created.</p>
+-- * ResourceState [ResourceStateType] <p>The resource state of the folder.</p>
+-- * CreatorId [IdType] <p>The ID of the creator.</p>
+-- * Signature [HashType] <p>The unique identifier created from the subfolders and documents of the folder.</p>
+-- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- * Size [SizeType] <p>The size of the folder metadata.</p>
+-- @return FolderMetadata structure as a key-value pair table
+function M.FolderMetadata(args)
+	assert(args, "You must provdide an argument table when creating FolderMetadata")
 	local t = { 
-		["Name"] = _Name,
-		["LatestVersionSize"] = _LatestVersionSize,
-		["Labels"] = _Labels,
-		["ModifiedTimestamp"] = _ModifiedTimestamp,
-		["Id"] = _Id,
-		["CreatedTimestamp"] = _CreatedTimestamp,
-		["ResourceState"] = _ResourceState,
-		["CreatorId"] = _CreatorId,
-		["Signature"] = _Signature,
-		["ParentFolderId"] = _ParentFolderId,
-		["Size"] = _Size,
+		["Name"] = args["Name"],
+		["LatestVersionSize"] = args["LatestVersionSize"],
+		["Labels"] = args["Labels"],
+		["ModifiedTimestamp"] = args["ModifiedTimestamp"],
+		["Id"] = args["Id"],
+		["CreatedTimestamp"] = args["CreatedTimestamp"],
+		["ResourceState"] = args["ResourceState"],
+		["CreatorId"] = args["CreatorId"],
+		["Signature"] = args["Signature"],
+		["ParentFolderId"] = args["ParentFolderId"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertFolderMetadata(t)
 	return t
@@ -2088,13 +2289,16 @@ end
 
 --- Create a structure of type GroupMetadata
 -- <p>Describes the metadata of a user group.</p>
--- @param _Id [IdType] <p>The ID of the user group.</p>
--- @param _Name [GroupNameType] <p>The name of the group.</p>
-function M.GroupMetadata(_Id, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GroupMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [IdType] <p>The ID of the user group.</p>
+-- * Name [GroupNameType] <p>The name of the group.</p>
+-- @return GroupMetadata structure as a key-value pair table
+function M.GroupMetadata(args)
+	assert(args, "You must provdide an argument table when creating GroupMetadata")
 	local t = { 
-		["Id"] = _Id,
-		["Name"] = _Name,
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertGroupMetadata(t)
 	return t
@@ -2114,13 +2318,16 @@ end
 
 --- Create a structure of type UploadMetadata
 -- <p>Describes the upload.</p>
--- @param _SignedHeaders [SignedHeaderMap] <p>The signed headers.</p>
--- @param _UploadUrl [UrlType] <p>The URL of the upload.</p>
-function M.UploadMetadata(_SignedHeaders, _UploadUrl, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SignedHeaders [SignedHeaderMap] <p>The signed headers.</p>
+-- * UploadUrl [UrlType] <p>The URL of the upload.</p>
+-- @return UploadMetadata structure as a key-value pair table
+function M.UploadMetadata(args)
+	assert(args, "You must provdide an argument table when creating UploadMetadata")
 	local t = { 
-		["SignedHeaders"] = _SignedHeaders,
-		["UploadUrl"] = _UploadUrl,
+		["SignedHeaders"] = args["SignedHeaders"],
+		["UploadUrl"] = args["UploadUrl"],
 	}
 	asserts.AssertUploadMetadata(t)
 	return t
@@ -2139,11 +2346,14 @@ end
 
 --- Create a structure of type CustomMetadataLimitExceededException
 -- <p>The limit has been reached on the number of custom properties for the specified resource.</p>
--- @param _Message [ErrorMessageType] 
-function M.CustomMetadataLimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CustomMetadataLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return CustomMetadataLimitExceededException structure as a key-value pair table
+function M.CustomMetadataLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating CustomMetadataLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertCustomMetadataLimitExceededException(t)
 	return t
@@ -2176,39 +2386,42 @@ end
 
 --- Create a structure of type User
 -- <p>Describes a user.</p>
--- @param _Username [UsernameType] <p>The login name of the user.</p>
--- @param _Status [UserStatusType] <p>The status of the user.</p>
--- @param _Surname [UserAttributeValueType] <p>The surname of the user.</p>
--- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param _Storage [UserStorageMetadata] <p>The storage for the user.</p>
--- @param _RecycleBinFolderId [ResourceIdType] <p>The ID of the recycle bin folder.</p>
--- @param _TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
--- @param _ModifiedTimestamp [TimestampType] <p>The time when the user was modified.</p>
--- @param _CreatedTimestamp [TimestampType] <p>The time when the user was created.</p>
--- @param _Locale [LocaleType] <p>The locale of the user.</p>
--- @param _EmailAddress [EmailAddressType] <p>The email address of the user.</p>
--- @param _RootFolderId [ResourceIdType] <p>The ID of the root folder.</p>
--- @param _GivenName [UserAttributeValueType] <p>The given name of the user.</p>
--- @param _Type [UserType] <p>The type of user.</p>
--- @param _Id [IdType] <p>The ID of the user.</p>
-function M.User(_Username, _Status, _Surname, _OrganizationId, _Storage, _RecycleBinFolderId, _TimeZoneId, _ModifiedTimestamp, _CreatedTimestamp, _Locale, _EmailAddress, _RootFolderId, _GivenName, _Type, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating User")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [UsernameType] <p>The login name of the user.</p>
+-- * Status [UserStatusType] <p>The status of the user.</p>
+-- * Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- * OrganizationId [IdType] <p>The ID of the organization.</p>
+-- * Storage [UserStorageMetadata] <p>The storage for the user.</p>
+-- * RecycleBinFolderId [ResourceIdType] <p>The ID of the recycle bin folder.</p>
+-- * TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
+-- * ModifiedTimestamp [TimestampType] <p>The time when the user was modified.</p>
+-- * CreatedTimestamp [TimestampType] <p>The time when the user was created.</p>
+-- * Locale [LocaleType] <p>The locale of the user.</p>
+-- * EmailAddress [EmailAddressType] <p>The email address of the user.</p>
+-- * RootFolderId [ResourceIdType] <p>The ID of the root folder.</p>
+-- * GivenName [UserAttributeValueType] <p>The given name of the user.</p>
+-- * Type [UserType] <p>The type of user.</p>
+-- * Id [IdType] <p>The ID of the user.</p>
+-- @return User structure as a key-value pair table
+function M.User(args)
+	assert(args, "You must provdide an argument table when creating User")
 	local t = { 
-		["Username"] = _Username,
-		["Status"] = _Status,
-		["Surname"] = _Surname,
-		["OrganizationId"] = _OrganizationId,
-		["Storage"] = _Storage,
-		["RecycleBinFolderId"] = _RecycleBinFolderId,
-		["TimeZoneId"] = _TimeZoneId,
-		["ModifiedTimestamp"] = _ModifiedTimestamp,
-		["CreatedTimestamp"] = _CreatedTimestamp,
-		["Locale"] = _Locale,
-		["EmailAddress"] = _EmailAddress,
-		["RootFolderId"] = _RootFolderId,
-		["GivenName"] = _GivenName,
-		["Type"] = _Type,
-		["Id"] = _Id,
+		["Username"] = args["Username"],
+		["Status"] = args["Status"],
+		["Surname"] = args["Surname"],
+		["OrganizationId"] = args["OrganizationId"],
+		["Storage"] = args["Storage"],
+		["RecycleBinFolderId"] = args["RecycleBinFolderId"],
+		["TimeZoneId"] = args["TimeZoneId"],
+		["ModifiedTimestamp"] = args["ModifiedTimestamp"],
+		["CreatedTimestamp"] = args["CreatedTimestamp"],
+		["Locale"] = args["Locale"],
+		["EmailAddress"] = args["EmailAddress"],
+		["RootFolderId"] = args["RootFolderId"],
+		["GivenName"] = args["GivenName"],
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertUser(t)
 	return t
@@ -2227,11 +2440,14 @@ end
 
 --- Create a structure of type InvalidOperationException
 -- <p>The operation is invalid.</p>
--- @param _Message [ErrorMessageType] 
-function M.InvalidOperationException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOperationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return InvalidOperationException structure as a key-value pair table
+function M.InvalidOperationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidOperationException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidOperationException(t)
 	return t
@@ -2249,8 +2465,11 @@ end
 
 --- Create a structure of type CreateCustomMetadataResponse
 --  
-function M.CreateCustomMetadataResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCustomMetadataResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateCustomMetadataResponse structure as a key-value pair table
+function M.CreateCustomMetadataResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateCustomMetadataResponse")
 	local t = { 
 	}
 	asserts.AssertCreateCustomMetadataResponse(t)
@@ -2274,19 +2493,22 @@ end
 
 --- Create a structure of type CommentMetadata
 -- <p>Describes the metadata of a comment.</p>
--- @param _Contributor [User] <p>The user who made the comment.</p>
--- @param _CommentId [CommentIdType] <p>The ID of the comment.</p>
--- @param _CreatedTimestamp [TimestampType] 
--- @param _RecipientId [IdType] <p>The ID of the user being replied to.</p>
--- @param _CommentStatus [CommentStatusType] 
-function M.CommentMetadata(_Contributor, _CommentId, _CreatedTimestamp, _RecipientId, _CommentStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CommentMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Contributor [User] <p>The user who made the comment.</p>
+-- * CommentId [CommentIdType] <p>The ID of the comment.</p>
+-- * CreatedTimestamp [TimestampType] 
+-- * RecipientId [IdType] <p>The ID of the user being replied to.</p>
+-- * CommentStatus [CommentStatusType] 
+-- @return CommentMetadata structure as a key-value pair table
+function M.CommentMetadata(args)
+	assert(args, "You must provdide an argument table when creating CommentMetadata")
 	local t = { 
-		["Contributor"] = _Contributor,
-		["CommentId"] = _CommentId,
-		["CreatedTimestamp"] = _CreatedTimestamp,
-		["RecipientId"] = _RecipientId,
-		["CommentStatus"] = _CommentStatus,
+		["Contributor"] = args["Contributor"],
+		["CommentId"] = args["CommentId"],
+		["CreatedTimestamp"] = args["CreatedTimestamp"],
+		["RecipientId"] = args["RecipientId"],
+		["CommentStatus"] = args["CommentStatus"],
 	}
 	asserts.AssertCommentMetadata(t)
 	return t
@@ -2304,8 +2526,11 @@ end
 
 --- Create a structure of type DeleteLabelsResponse
 --  
-function M.DeleteLabelsResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLabelsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteLabelsResponse structure as a key-value pair table
+function M.DeleteLabelsResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteLabelsResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteLabelsResponse(t)
@@ -2331,20 +2556,23 @@ end
 
 --- Create a structure of type DeleteCommentRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _CommentId [CommentIdType] <p>The ID of the comment.</p>
--- @param _VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
--- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- Required parameter: DocumentId
--- Required parameter: VersionId
--- Required parameter: CommentId
-function M.DeleteCommentRequest(_AuthenticationToken, _CommentId, _VersionId, _DocumentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCommentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * CommentId [CommentIdType] <p>The ID of the comment.</p>
+-- * VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
+-- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- Required key: DocumentId
+-- Required key: VersionId
+-- Required key: CommentId
+-- @return DeleteCommentRequest structure as a key-value pair table
+function M.DeleteCommentRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteCommentRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["CommentId"] = _CommentId,
-		["VersionId"] = _VersionId,
-		["DocumentId"] = _DocumentId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["CommentId"] = args["CommentId"],
+		["VersionId"] = args["VersionId"],
+		["DocumentId"] = args["DocumentId"],
 	}
 	asserts.AssertDeleteCommentRequest(t)
 	return t
@@ -2365,14 +2593,17 @@ end
 
 --- Create a structure of type DeleteDocumentRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- Required parameter: DocumentId
-function M.DeleteDocumentRequest(_AuthenticationToken, _DocumentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDocumentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- Required key: DocumentId
+-- @return DeleteDocumentRequest structure as a key-value pair table
+function M.DeleteDocumentRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDocumentRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["DocumentId"] = _DocumentId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["DocumentId"] = args["DocumentId"],
 	}
 	asserts.AssertDeleteDocumentRequest(t)
 	return t
@@ -2397,21 +2628,24 @@ end
 
 --- Create a structure of type DescribeCommentsRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
--- @param _VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
--- @param _Limit [LimitType] <p>The maximum number of items to return.</p>
--- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- Required parameter: DocumentId
--- Required parameter: VersionId
-function M.DescribeCommentsRequest(_AuthenticationToken, _Marker, _VersionId, _Limit, _DocumentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * Marker [MarkerType] <p>The marker for the next set of results. This marker was received from a previous call.</p>
+-- * VersionId [DocumentVersionIdType] <p>The ID of the document version.</p>
+-- * Limit [LimitType] <p>The maximum number of items to return.</p>
+-- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- Required key: DocumentId
+-- Required key: VersionId
+-- @return DescribeCommentsRequest structure as a key-value pair table
+function M.DescribeCommentsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeCommentsRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["Marker"] = _Marker,
-		["VersionId"] = _VersionId,
-		["Limit"] = _Limit,
-		["DocumentId"] = _DocumentId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["Marker"] = args["Marker"],
+		["VersionId"] = args["VersionId"],
+		["Limit"] = args["Limit"],
+		["DocumentId"] = args["DocumentId"],
 	}
 	asserts.AssertDescribeCommentsRequest(t)
 	return t
@@ -2432,15 +2666,18 @@ end
 
 --- Create a structure of type DescribeUsersResponse
 --  
--- @param _Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param _TotalNumberOfUsers [SizeType] <p>The total number of users included in the results.</p>
--- @param _Users [OrganizationUserList] <p>The users.</p>
-function M.DescribeUsersResponse(_Marker, _TotalNumberOfUsers, _Users, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUsersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- * TotalNumberOfUsers [SizeType] <p>The total number of users included in the results.</p>
+-- * Users [OrganizationUserList] <p>The users.</p>
+-- @return DescribeUsersResponse structure as a key-value pair table
+function M.DescribeUsersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeUsersResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["TotalNumberOfUsers"] = _TotalNumberOfUsers,
-		["Users"] = _Users,
+		["Marker"] = args["Marker"],
+		["TotalNumberOfUsers"] = args["TotalNumberOfUsers"],
+		["Users"] = args["Users"],
 	}
 	asserts.AssertDescribeUsersResponse(t)
 	return t
@@ -2471,31 +2708,34 @@ end
 
 --- Create a structure of type CreateUserRequest
 --  
--- @param _Username [UsernameType] <p>The login name of the user.</p>
--- @param _TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
--- @param _Password [PasswordType] <p>The password of the user.</p>
--- @param _Surname [UserAttributeValueType] <p>The surname of the user.</p>
--- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param _EmailAddress [EmailAddressType] <p>The email address of the user.</p>
--- @param _StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _GivenName [UserAttributeValueType] <p>The given name of the user.</p>
--- Required parameter: Username
--- Required parameter: GivenName
--- Required parameter: Surname
--- Required parameter: Password
-function M.CreateUserRequest(_Username, _TimeZoneId, _Password, _Surname, _OrganizationId, _EmailAddress, _StorageRule, _AuthenticationToken, _GivenName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [UsernameType] <p>The login name of the user.</p>
+-- * TimeZoneId [TimeZoneIdType] <p>The time zone ID of the user.</p>
+-- * Password [PasswordType] <p>The password of the user.</p>
+-- * Surname [UserAttributeValueType] <p>The surname of the user.</p>
+-- * OrganizationId [IdType] <p>The ID of the organization.</p>
+-- * EmailAddress [EmailAddressType] <p>The email address of the user.</p>
+-- * StorageRule [StorageRuleType] <p>The amount of storage for the user.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * GivenName [UserAttributeValueType] <p>The given name of the user.</p>
+-- Required key: Username
+-- Required key: GivenName
+-- Required key: Surname
+-- Required key: Password
+-- @return CreateUserRequest structure as a key-value pair table
+function M.CreateUserRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateUserRequest")
 	local t = { 
-		["Username"] = _Username,
-		["TimeZoneId"] = _TimeZoneId,
-		["Password"] = _Password,
-		["Surname"] = _Surname,
-		["OrganizationId"] = _OrganizationId,
-		["EmailAddress"] = _EmailAddress,
-		["StorageRule"] = _StorageRule,
-		["AuthenticationToken"] = _AuthenticationToken,
-		["GivenName"] = _GivenName,
+		["Username"] = args["Username"],
+		["TimeZoneId"] = args["TimeZoneId"],
+		["Password"] = args["Password"],
+		["Surname"] = args["Surname"],
+		["OrganizationId"] = args["OrganizationId"],
+		["EmailAddress"] = args["EmailAddress"],
+		["StorageRule"] = args["StorageRule"],
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["GivenName"] = args["GivenName"],
 	}
 	asserts.AssertCreateUserRequest(t)
 	return t
@@ -2514,11 +2754,14 @@ end
 
 --- Create a structure of type CreateCommentResponse
 --  
--- @param _Comment [Comment] <p>The comment that has been created.</p>
-function M.CreateCommentResponse(_Comment, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCommentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [Comment] <p>The comment that has been created.</p>
+-- @return CreateCommentResponse structure as a key-value pair table
+function M.CreateCommentResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateCommentResponse")
 	local t = { 
-		["Comment"] = _Comment,
+		["Comment"] = args["Comment"],
 	}
 	asserts.AssertCreateCommentResponse(t)
 	return t
@@ -2542,19 +2785,22 @@ end
 
 --- Create a structure of type CreateCustomMetadataRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _ResourceId [ResourceIdType] <p>The ID of the resource.</p>
--- @param _VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being added to a document version.</p>
--- @param _CustomMetadata [CustomMetadataMap] <p>Custom metadata in the form of name-value pairs.</p>
--- Required parameter: ResourceId
--- Required parameter: CustomMetadata
-function M.CreateCustomMetadataRequest(_AuthenticationToken, _ResourceId, _VersionId, _CustomMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCustomMetadataRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * ResourceId [ResourceIdType] <p>The ID of the resource.</p>
+-- * VersionId [DocumentVersionIdType] <p>The ID of the version, if the custom metadata is being added to a document version.</p>
+-- * CustomMetadata [CustomMetadataMap] <p>Custom metadata in the form of name-value pairs.</p>
+-- Required key: ResourceId
+-- Required key: CustomMetadata
+-- @return CreateCustomMetadataRequest structure as a key-value pair table
+function M.CreateCustomMetadataRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateCustomMetadataRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["ResourceId"] = _ResourceId,
-		["VersionId"] = _VersionId,
-		["CustomMetadata"] = _CustomMetadata,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["ResourceId"] = args["ResourceId"],
+		["VersionId"] = args["VersionId"],
+		["CustomMetadata"] = args["CustomMetadata"],
 	}
 	asserts.AssertCreateCustomMetadataRequest(t)
 	return t
@@ -2576,16 +2822,19 @@ end
 
 --- Create a structure of type GetFolderRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _IncludeCustomMetadata [BooleanType] <p>Set to TRUE to include custom metadata in the response.</p>
--- @param _FolderId [ResourceIdType] <p>The ID of the folder.</p>
--- Required parameter: FolderId
-function M.GetFolderRequest(_AuthenticationToken, _IncludeCustomMetadata, _FolderId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFolderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * IncludeCustomMetadata [BooleanType] <p>Set to TRUE to include custom metadata in the response.</p>
+-- * FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- Required key: FolderId
+-- @return GetFolderRequest structure as a key-value pair table
+function M.GetFolderRequest(args)
+	assert(args, "You must provdide an argument table when creating GetFolderRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["IncludeCustomMetadata"] = _IncludeCustomMetadata,
-		["FolderId"] = _FolderId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["IncludeCustomMetadata"] = args["IncludeCustomMetadata"],
+		["FolderId"] = args["FolderId"],
 	}
 	asserts.AssertGetFolderRequest(t)
 	return t
@@ -2604,11 +2853,14 @@ end
 
 --- Create a structure of type CreateNotificationSubscriptionResponse
 --  
--- @param _Subscription [Subscription] <p>The subscription.</p>
-function M.CreateNotificationSubscriptionResponse(_Subscription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateNotificationSubscriptionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subscription [Subscription] <p>The subscription.</p>
+-- @return CreateNotificationSubscriptionResponse structure as a key-value pair table
+function M.CreateNotificationSubscriptionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateNotificationSubscriptionResponse")
 	local t = { 
-		["Subscription"] = _Subscription,
+		["Subscription"] = args["Subscription"],
 	}
 	asserts.AssertCreateNotificationSubscriptionResponse(t)
 	return t
@@ -2630,16 +2882,19 @@ end
 
 --- Create a structure of type DescribeNotificationSubscriptionsRequest
 --  
--- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param _Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _Limit [LimitType] <p>The maximum number of items to return with this call.</p>
--- Required parameter: OrganizationId
-function M.DescribeNotificationSubscriptionsRequest(_OrganizationId, _Marker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationSubscriptionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OrganizationId [IdType] <p>The ID of the organization.</p>
+-- * Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * Limit [LimitType] <p>The maximum number of items to return with this call.</p>
+-- Required key: OrganizationId
+-- @return DescribeNotificationSubscriptionsRequest structure as a key-value pair table
+function M.DescribeNotificationSubscriptionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeNotificationSubscriptionsRequest")
 	local t = { 
-		["OrganizationId"] = _OrganizationId,
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
+		["OrganizationId"] = args["OrganizationId"],
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeNotificationSubscriptionsRequest(t)
 	return t
@@ -2658,11 +2913,14 @@ end
 
 --- Create a structure of type StorageLimitExceededException
 -- <p>The storage limit has been exceeded.</p>
--- @param _Message [ErrorMessageType] 
-function M.StorageLimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StorageLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return StorageLimitExceededException structure as a key-value pair table
+function M.StorageLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating StorageLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertStorageLimitExceededException(t)
 	return t
@@ -2681,11 +2939,14 @@ end
 
 --- Create a structure of type TooManySubscriptionsException
 -- <p>You've reached the limit on the number of subscriptions for the WorkDocs instance.</p>
--- @param _Message [ErrorMessageType] 
-function M.TooManySubscriptionsException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManySubscriptionsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return TooManySubscriptionsException structure as a key-value pair table
+function M.TooManySubscriptionsException(args)
+	assert(args, "You must provdide an argument table when creating TooManySubscriptionsException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertTooManySubscriptionsException(t)
 	return t
@@ -2709,19 +2970,22 @@ end
 
 --- Create a structure of type UpdateDocumentVersionRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
--- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- @param _VersionStatus [DocumentVersionStatus] <p>The status of the version.</p>
--- Required parameter: DocumentId
--- Required parameter: VersionId
-function M.UpdateDocumentVersionRequest(_AuthenticationToken, _VersionId, _DocumentId, _VersionStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * VersionId [DocumentVersionIdType] <p>The version ID of the document.</p>
+-- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- * VersionStatus [DocumentVersionStatus] <p>The status of the version.</p>
+-- Required key: DocumentId
+-- Required key: VersionId
+-- @return UpdateDocumentVersionRequest structure as a key-value pair table
+function M.UpdateDocumentVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateDocumentVersionRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["VersionId"] = _VersionId,
-		["DocumentId"] = _DocumentId,
-		["VersionStatus"] = _VersionStatus,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["VersionId"] = args["VersionId"],
+		["DocumentId"] = args["DocumentId"],
+		["VersionStatus"] = args["VersionStatus"],
 	}
 	asserts.AssertUpdateDocumentVersionRequest(t)
 	return t
@@ -2741,13 +3005,16 @@ end
 
 --- Create a structure of type EntityNotExistsException
 -- <p>The resource does not exist.</p>
--- @param _Message [ErrorMessageType] 
--- @param _EntityIds [EntityIdList] 
-function M.EntityNotExistsException(_Message, _EntityIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EntityNotExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- * EntityIds [EntityIdList] 
+-- @return EntityNotExistsException structure as a key-value pair table
+function M.EntityNotExistsException(args)
+	assert(args, "You must provdide an argument table when creating EntityNotExistsException")
 	local t = { 
-		["Message"] = _Message,
-		["EntityIds"] = _EntityIds,
+		["Message"] = args["Message"],
+		["EntityIds"] = args["EntityIds"],
 	}
 	asserts.AssertEntityNotExistsException(t)
 	return t
@@ -2770,17 +3037,20 @@ end
 
 --- Create a structure of type AbortDocumentVersionUploadRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _VersionId [DocumentVersionIdType] <p>The ID of the version.</p>
--- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- Required parameter: DocumentId
--- Required parameter: VersionId
-function M.AbortDocumentVersionUploadRequest(_AuthenticationToken, _VersionId, _DocumentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AbortDocumentVersionUploadRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * VersionId [DocumentVersionIdType] <p>The ID of the version.</p>
+-- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- Required key: DocumentId
+-- Required key: VersionId
+-- @return AbortDocumentVersionUploadRequest structure as a key-value pair table
+function M.AbortDocumentVersionUploadRequest(args)
+	assert(args, "You must provdide an argument table when creating AbortDocumentVersionUploadRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["VersionId"] = _VersionId,
-		["DocumentId"] = _DocumentId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["VersionId"] = args["VersionId"],
+		["DocumentId"] = args["DocumentId"],
 	}
 	asserts.AssertAbortDocumentVersionUploadRequest(t)
 	return t
@@ -2800,13 +3070,16 @@ end
 
 --- Create a structure of type PermissionInfo
 -- <p>Describes the permissions.</p>
--- @param _Type [RolePermissionType] <p>The type of permissions.</p>
--- @param _Role [RoleType] <p>The role of the user.</p>
-function M.PermissionInfo(_Type, _Role, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PermissionInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [RolePermissionType] <p>The type of permissions.</p>
+-- * Role [RoleType] <p>The role of the user.</p>
+-- @return PermissionInfo structure as a key-value pair table
+function M.PermissionInfo(args)
+	assert(args, "You must provdide an argument table when creating PermissionInfo")
 	local t = { 
-		["Type"] = _Type,
-		["Role"] = _Role,
+		["Type"] = args["Type"],
+		["Role"] = args["Role"],
 	}
 	asserts.AssertPermissionInfo(t)
 	return t
@@ -2830,20 +3103,23 @@ end
 
 --- Create a structure of type UpdateFolderRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _FolderId [ResourceIdType] <p>The ID of the folder.</p>
--- @param _Name [ResourceNameType] <p>The name of the folder.</p>
--- @param _ResourceState [ResourceStateType] <p>The resource state of the folder. Note that only ACTIVE and RECYCLED are accepted values from the API.</p>
--- @param _ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
--- Required parameter: FolderId
-function M.UpdateFolderRequest(_AuthenticationToken, _FolderId, _Name, _ResourceState, _ParentFolderId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFolderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * FolderId [ResourceIdType] <p>The ID of the folder.</p>
+-- * Name [ResourceNameType] <p>The name of the folder.</p>
+-- * ResourceState [ResourceStateType] <p>The resource state of the folder. Note that only ACTIVE and RECYCLED are accepted values from the API.</p>
+-- * ParentFolderId [ResourceIdType] <p>The ID of the parent folder.</p>
+-- Required key: FolderId
+-- @return UpdateFolderRequest structure as a key-value pair table
+function M.UpdateFolderRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateFolderRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["FolderId"] = _FolderId,
-		["Name"] = _Name,
-		["ResourceState"] = _ResourceState,
-		["ParentFolderId"] = _ParentFolderId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["FolderId"] = args["FolderId"],
+		["Name"] = args["Name"],
+		["ResourceState"] = args["ResourceState"],
+		["ParentFolderId"] = args["ParentFolderId"],
 	}
 	asserts.AssertUpdateFolderRequest(t)
 	return t
@@ -2865,16 +3141,19 @@ end
 
 --- Create a structure of type DescribeRootFoldersRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _Limit [LimitType] <p>The maximum number of items to return.</p>
--- Required parameter: AuthenticationToken
-function M.DescribeRootFoldersRequest(_AuthenticationToken, _Marker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRootFoldersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * Limit [LimitType] <p>The maximum number of items to return.</p>
+-- Required key: AuthenticationToken
+-- @return DescribeRootFoldersRequest structure as a key-value pair table
+function M.DescribeRootFoldersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeRootFoldersRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeRootFoldersRequest(t)
 	return t
@@ -2896,16 +3175,19 @@ end
 
 --- Create a structure of type GetDocumentRequest
 --  
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _IncludeCustomMetadata [BooleanType] <p>Set this to <code>TRUE</code> to include custom metadata in the response.</p>
--- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- Required parameter: DocumentId
-function M.GetDocumentRequest(_AuthenticationToken, _IncludeCustomMetadata, _DocumentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * IncludeCustomMetadata [BooleanType] <p>Set this to <code>TRUE</code> to include custom metadata in the response.</p>
+-- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- Required key: DocumentId
+-- @return GetDocumentRequest structure as a key-value pair table
+function M.GetDocumentRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDocumentRequest")
 	local t = { 
-		["AuthenticationToken"] = _AuthenticationToken,
-		["IncludeCustomMetadata"] = _IncludeCustomMetadata,
-		["DocumentId"] = _DocumentId,
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["IncludeCustomMetadata"] = args["IncludeCustomMetadata"],
+		["DocumentId"] = args["DocumentId"],
 	}
 	asserts.AssertGetDocumentRequest(t)
 	return t
@@ -2924,11 +3206,14 @@ end
 
 --- Create a structure of type DraftUploadOutOfSyncException
 -- <p>This exception is thrown when a valid checkout ID is not presented on document version upload calls for a document that has been checked out from Web client.</p>
--- @param _Message [ErrorMessageType] 
-function M.DraftUploadOutOfSyncException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DraftUploadOutOfSyncException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return DraftUploadOutOfSyncException structure as a key-value pair table
+function M.DraftUploadOutOfSyncException(args)
+	assert(args, "You must provdide an argument table when creating DraftUploadOutOfSyncException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDraftUploadOutOfSyncException(t)
 	return t
@@ -2947,11 +3232,14 @@ end
 
 --- Create a structure of type StorageLimitWillExceedException
 -- <p>The storage limit will be exceeded.</p>
--- @param _Message [ErrorMessageType] 
-function M.StorageLimitWillExceedException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StorageLimitWillExceedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return StorageLimitWillExceedException structure as a key-value pair table
+function M.StorageLimitWillExceedException(args)
+	assert(args, "You must provdide an argument table when creating StorageLimitWillExceedException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertStorageLimitWillExceedException(t)
 	return t
@@ -2971,13 +3259,16 @@ end
 
 --- Create a structure of type DescribeDocumentVersionsResponse
 --  
--- @param _DocumentVersions [DocumentVersionMetadataList] <p>The document versions.</p>
--- @param _Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
-function M.DescribeDocumentVersionsResponse(_DocumentVersions, _Marker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DocumentVersions [DocumentVersionMetadataList] <p>The document versions.</p>
+-- * Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @return DescribeDocumentVersionsResponse structure as a key-value pair table
+function M.DescribeDocumentVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeDocumentVersionsResponse")
 	local t = { 
-		["DocumentVersions"] = _DocumentVersions,
-		["Marker"] = _Marker,
+		["DocumentVersions"] = args["DocumentVersions"],
+		["Marker"] = args["Marker"],
 	}
 	asserts.AssertDescribeDocumentVersionsResponse(t)
 	return t
@@ -2997,13 +3288,16 @@ end
 
 --- Create a structure of type StorageRuleType
 -- <p>Describes the storage for a user.</p>
--- @param _StorageType [StorageType] <p>The type of storage.</p>
--- @param _StorageAllocatedInBytes [PositiveSizeType] <p>The amount of storage allocated, in bytes.</p>
-function M.StorageRuleType(_StorageType, _StorageAllocatedInBytes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StorageRuleType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StorageType [StorageType] <p>The type of storage.</p>
+-- * StorageAllocatedInBytes [PositiveSizeType] <p>The amount of storage allocated, in bytes.</p>
+-- @return StorageRuleType structure as a key-value pair table
+function M.StorageRuleType(args)
+	assert(args, "You must provdide an argument table when creating StorageRuleType")
 	local t = { 
-		["StorageType"] = _StorageType,
-		["StorageAllocatedInBytes"] = _StorageAllocatedInBytes,
+		["StorageType"] = args["StorageType"],
+		["StorageAllocatedInBytes"] = args["StorageAllocatedInBytes"],
 	}
 	asserts.AssertStorageRuleType(t)
 	return t
@@ -3029,25 +3323,28 @@ end
 
 --- Create a structure of type Activity
 -- <p>Describes the activity information.</p>
--- @param _Initiator [UserMetadata] <p>The user who performed the action.</p>
--- @param _OriginalParent [ResourceMetadata] <p>The original parent of the resource. This is an optional field and is filled for move activities.</p>
--- @param _OrganizationId [IdType] <p>The ID of the organization.</p>
--- @param _TimeStamp [TimestampType] <p>The timestamp when the action was performed.</p>
--- @param _ResourceMetadata [ResourceMetadata] <p>The metadata of the resource involved in the user action.</p>
--- @param _Participants [Participants] <p>The list of users or groups impacted by this action. This is an optional field and is filled for the following sharing activities: DOCUMENT_SHARED, DOCUMENT_SHARED, DOCUMENT_UNSHARED, FOLDER_SHARED, FOLDER_UNSHARED.</p>
--- @param _Type [ActivityType] <p>The activity type.</p>
--- @param _CommentMetadata [CommentMetadata] <p>Metadata of the commenting activity. This is an optional field and is filled for commenting activities.</p>
-function M.Activity(_Initiator, _OriginalParent, _OrganizationId, _TimeStamp, _ResourceMetadata, _Participants, _Type, _CommentMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Activity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Initiator [UserMetadata] <p>The user who performed the action.</p>
+-- * OriginalParent [ResourceMetadata] <p>The original parent of the resource. This is an optional field and is filled for move activities.</p>
+-- * OrganizationId [IdType] <p>The ID of the organization.</p>
+-- * TimeStamp [TimestampType] <p>The timestamp when the action was performed.</p>
+-- * ResourceMetadata [ResourceMetadata] <p>The metadata of the resource involved in the user action.</p>
+-- * Participants [Participants] <p>The list of users or groups impacted by this action. This is an optional field and is filled for the following sharing activities: DOCUMENT_SHARED, DOCUMENT_SHARED, DOCUMENT_UNSHARED, FOLDER_SHARED, FOLDER_UNSHARED.</p>
+-- * Type [ActivityType] <p>The activity type.</p>
+-- * CommentMetadata [CommentMetadata] <p>Metadata of the commenting activity. This is an optional field and is filled for commenting activities.</p>
+-- @return Activity structure as a key-value pair table
+function M.Activity(args)
+	assert(args, "You must provdide an argument table when creating Activity")
 	local t = { 
-		["Initiator"] = _Initiator,
-		["OriginalParent"] = _OriginalParent,
-		["OrganizationId"] = _OrganizationId,
-		["TimeStamp"] = _TimeStamp,
-		["ResourceMetadata"] = _ResourceMetadata,
-		["Participants"] = _Participants,
-		["Type"] = _Type,
-		["CommentMetadata"] = _CommentMetadata,
+		["Initiator"] = args["Initiator"],
+		["OriginalParent"] = args["OriginalParent"],
+		["OrganizationId"] = args["OrganizationId"],
+		["TimeStamp"] = args["TimeStamp"],
+		["ResourceMetadata"] = args["ResourceMetadata"],
+		["Participants"] = args["Participants"],
+		["Type"] = args["Type"],
+		["CommentMetadata"] = args["CommentMetadata"],
 	}
 	asserts.AssertActivity(t)
 	return t
@@ -3066,11 +3363,14 @@ end
 
 --- Create a structure of type InvalidArgumentException
 -- <p>The pagination marker and/or limit fields are not valid.</p>
--- @param _Message [ErrorMessageType] 
-function M.InvalidArgumentException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArgumentException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return InvalidArgumentException structure as a key-value pair table
+function M.InvalidArgumentException(args)
+	assert(args, "You must provdide an argument table when creating InvalidArgumentException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidArgumentException(t)
 	return t
@@ -3088,8 +3388,11 @@ end
 
 --- Create a structure of type DeleteCustomMetadataResponse
 --  
-function M.DeleteCustomMetadataResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCustomMetadataResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteCustomMetadataResponse structure as a key-value pair table
+function M.DeleteCustomMetadataResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteCustomMetadataResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteCustomMetadataResponse(t)
@@ -3115,22 +3418,25 @@ end
 
 --- Create a structure of type DescribeDocumentVersionsRequest
 --  
--- @param _Fields [FieldNamesType] <p>Specify "SOURCE" to include initialized versions and a URL for the source document.</p>
--- @param _Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _Limit [LimitType] <p>The maximum number of versions to return with this call.</p>
--- @param _AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
--- @param _Include [FieldNamesType] <p>A comma-separated list of values. Specify "INITIALIZED" to include incomplete versions.</p>
--- @param _DocumentId [ResourceIdType] <p>The ID of the document.</p>
--- Required parameter: DocumentId
-function M.DescribeDocumentVersionsRequest(_Fields, _Marker, _Limit, _AuthenticationToken, _Include, _DocumentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Fields [FieldNamesType] <p>Specify "SOURCE" to include initialized versions and a URL for the source document.</p>
+-- * Marker [PageMarkerType] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * Limit [LimitType] <p>The maximum number of versions to return with this call.</p>
+-- * AuthenticationToken [AuthenticationHeaderType] <p>Amazon WorkDocs authentication token. This field should not be set when using administrative API actions, as in accessing the API using AWS credentials.</p>
+-- * Include [FieldNamesType] <p>A comma-separated list of values. Specify "INITIALIZED" to include incomplete versions.</p>
+-- * DocumentId [ResourceIdType] <p>The ID of the document.</p>
+-- Required key: DocumentId
+-- @return DescribeDocumentVersionsRequest structure as a key-value pair table
+function M.DescribeDocumentVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDocumentVersionsRequest")
 	local t = { 
-		["Fields"] = _Fields,
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
-		["AuthenticationToken"] = _AuthenticationToken,
-		["Include"] = _Include,
-		["DocumentId"] = _DocumentId,
+		["Fields"] = args["Fields"],
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
+		["AuthenticationToken"] = args["AuthenticationToken"],
+		["Include"] = args["Include"],
+		["DocumentId"] = args["DocumentId"],
 	}
 	asserts.AssertDescribeDocumentVersionsRequest(t)
 	return t
@@ -3149,11 +3455,14 @@ end
 
 --- Create a structure of type GetCurrentUserResponse
 --  
--- @param _User [User] <p>Metadata of the user.</p>
-function M.GetCurrentUserResponse(_User, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCurrentUserResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * User [User] <p>Metadata of the user.</p>
+-- @return GetCurrentUserResponse structure as a key-value pair table
+function M.GetCurrentUserResponse(args)
+	assert(args, "You must provdide an argument table when creating GetCurrentUserResponse")
 	local t = { 
-		["User"] = _User,
+		["User"] = args["User"],
 	}
 	asserts.AssertGetCurrentUserResponse(t)
 	return t
@@ -3172,11 +3481,14 @@ end
 
 --- Create a structure of type EntityAlreadyExistsException
 -- <p>The resource already exists.</p>
--- @param _Message [ErrorMessageType] 
-function M.EntityAlreadyExistsException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EntityAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return EntityAlreadyExistsException structure as a key-value pair table
+function M.EntityAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating EntityAlreadyExistsException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertEntityAlreadyExistsException(t)
 	return t
@@ -3204,28 +3516,31 @@ end
 
 --- Create a structure of type Comment
 -- <p>Describes a comment.</p>
--- @param _Status [CommentStatusType] <p>The status of the comment.</p>
--- @param _Text [CommentTextType] <p>The text of the comment.</p>
--- @param _ParentId [CommentIdType] <p>The ID of the parent comment.</p>
--- @param _RecipientId [IdType] <p>If the comment is a reply to another user's comment, this field contains the user ID of the user being replied to.</p>
--- @param _Visibility [CommentVisibilityType] <p>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.</p>
--- @param _CreatedTimestamp [TimestampType] <p>The time that the comment was created.</p>
--- @param _ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
--- @param _Contributor [User] <p>The details of the user who made the comment.</p>
--- @param _CommentId [CommentIdType] <p>The ID of the comment.</p>
--- Required parameter: CommentId
-function M.Comment(_Status, _Text, _ParentId, _RecipientId, _Visibility, _CreatedTimestamp, _ThreadId, _Contributor, _CommentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Comment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [CommentStatusType] <p>The status of the comment.</p>
+-- * Text [CommentTextType] <p>The text of the comment.</p>
+-- * ParentId [CommentIdType] <p>The ID of the parent comment.</p>
+-- * RecipientId [IdType] <p>If the comment is a reply to another user's comment, this field contains the user ID of the user being replied to.</p>
+-- * Visibility [CommentVisibilityType] <p>The visibility of the comment. Options are either PRIVATE, where the comment is visible only to the comment author and document owner and co-owners, or PUBLIC, where the comment is visible to document owners, co-owners, and contributors.</p>
+-- * CreatedTimestamp [TimestampType] <p>The time that the comment was created.</p>
+-- * ThreadId [CommentIdType] <p>The ID of the root comment in the thread.</p>
+-- * Contributor [User] <p>The details of the user who made the comment.</p>
+-- * CommentId [CommentIdType] <p>The ID of the comment.</p>
+-- Required key: CommentId
+-- @return Comment structure as a key-value pair table
+function M.Comment(args)
+	assert(args, "You must provdide an argument table when creating Comment")
 	local t = { 
-		["Status"] = _Status,
-		["Text"] = _Text,
-		["ParentId"] = _ParentId,
-		["RecipientId"] = _RecipientId,
-		["Visibility"] = _Visibility,
-		["CreatedTimestamp"] = _CreatedTimestamp,
-		["ThreadId"] = _ThreadId,
-		["Contributor"] = _Contributor,
-		["CommentId"] = _CommentId,
+		["Status"] = args["Status"],
+		["Text"] = args["Text"],
+		["ParentId"] = args["ParentId"],
+		["RecipientId"] = args["RecipientId"],
+		["Visibility"] = args["Visibility"],
+		["CreatedTimestamp"] = args["CreatedTimestamp"],
+		["ThreadId"] = args["ThreadId"],
+		["Contributor"] = args["Contributor"],
+		["CommentId"] = args["CommentId"],
 	}
 	asserts.AssertComment(t)
 	return t
@@ -3244,11 +3559,14 @@ end
 
 --- Create a structure of type FailedDependencyException
 -- <p>The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected active directory.</p>
--- @param _Message [ErrorMessageType] 
-function M.FailedDependencyException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FailedDependencyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessageType] 
+-- @return FailedDependencyException structure as a key-value pair table
+function M.FailedDependencyException(args)
+	assert(args, "You must provdide an argument table when creating FailedDependencyException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertFailedDependencyException(t)
 	return t
@@ -3269,15 +3587,18 @@ end
 
 --- Create a structure of type Principal
 -- <p>Describes a resource.</p>
--- @param _Type [PrincipalType] <p>The type of resource.</p>
--- @param _Id [IdType] <p>The ID of the resource.</p>
--- @param _Roles [PermissionInfoList] <p>The permission information for the resource.</p>
-function M.Principal(_Type, _Id, _Roles, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Principal")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [PrincipalType] <p>The type of resource.</p>
+-- * Id [IdType] <p>The ID of the resource.</p>
+-- * Roles [PermissionInfoList] <p>The permission information for the resource.</p>
+-- @return Principal structure as a key-value pair table
+function M.Principal(args)
+	assert(args, "You must provdide an argument table when creating Principal")
 	local t = { 
-		["Type"] = _Type,
-		["Id"] = _Id,
-		["Roles"] = _Roles,
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
+		["Roles"] = args["Roles"],
 	}
 	asserts.AssertPrincipal(t)
 	return t

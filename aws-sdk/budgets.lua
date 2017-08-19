@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type DuplicateRecordException
 -- The exception is thrown when customer tries to create a record (e.g. budget) that already exists.
--- @param _Message [errorMessage] 
-function M.DuplicateRecordException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateRecordException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [errorMessage] 
+-- @return DuplicateRecordException structure as a key-value pair table
+function M.DuplicateRecordException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateRecordException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDuplicateRecordException(t)
 	return t
@@ -59,14 +62,17 @@ end
 
 --- Create a structure of type CalculatedSpend
 -- A structure holds the actual and forecasted spend for a budget.
--- @param _ForecastedSpend [Spend] 
--- @param _ActualSpend [Spend] 
--- Required parameter: ActualSpend
-function M.CalculatedSpend(_ForecastedSpend, _ActualSpend, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CalculatedSpend")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ForecastedSpend [Spend] 
+-- * ActualSpend [Spend] 
+-- Required key: ActualSpend
+-- @return CalculatedSpend structure as a key-value pair table
+function M.CalculatedSpend(args)
+	assert(args, "You must provdide an argument table when creating CalculatedSpend")
 	local t = { 
-		["ForecastedSpend"] = _ForecastedSpend,
-		["ActualSpend"] = _ActualSpend,
+		["ForecastedSpend"] = args["ForecastedSpend"],
+		["ActualSpend"] = args["ActualSpend"],
 	}
 	asserts.AssertCalculatedSpend(t)
 	return t
@@ -88,15 +94,18 @@ end
 
 --- Create a structure of type Subscriber
 -- Subscriber model. Each notification may contain multiple subscribers with different addresses.
--- @param _SubscriptionType [SubscriptionType] 
--- @param _Address [GenericString] 
--- Required parameter: SubscriptionType
--- Required parameter: Address
-function M.Subscriber(_SubscriptionType, _Address, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Subscriber")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubscriptionType [SubscriptionType] 
+-- * Address [GenericString] 
+-- Required key: SubscriptionType
+-- Required key: Address
+-- @return Subscriber structure as a key-value pair table
+function M.Subscriber(args)
+	assert(args, "You must provdide an argument table when creating Subscriber")
 	local t = { 
-		["SubscriptionType"] = _SubscriptionType,
-		["Address"] = _Address,
+		["SubscriptionType"] = args["SubscriptionType"],
+		["Address"] = args["Address"],
 	}
 	asserts.AssertSubscriber(t)
 	return t
@@ -114,8 +123,11 @@ end
 
 --- Create a structure of type CreateNotificationResponse
 -- Response of CreateNotification
-function M.CreateNotificationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateNotificationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateNotificationResponse structure as a key-value pair table
+function M.CreateNotificationResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateNotificationResponse")
 	local t = { 
 	}
 	asserts.AssertCreateNotificationResponse(t)
@@ -135,11 +147,14 @@ end
 
 --- Create a structure of type InternalErrorException
 -- This exception is thrown on an unknown internal failure.
--- @param _Message [errorMessage] 
-function M.InternalErrorException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [errorMessage] 
+-- @return InternalErrorException structure as a key-value pair table
+function M.InternalErrorException(args)
+	assert(args, "You must provdide an argument table when creating InternalErrorException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInternalErrorException(t)
 	return t
@@ -163,19 +178,22 @@ end
 
 --- Create a structure of type DescribeNotificationsForBudgetRequest
 -- Request of DescribeNotificationsForBudget
--- @param _NextToken [GenericString] 
--- @param _BudgetName [BudgetName] 
--- @param _MaxResults [MaxResults] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: BudgetName
-function M.DescribeNotificationsForBudgetRequest(_NextToken, _BudgetName, _MaxResults, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationsForBudgetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [GenericString] 
+-- * BudgetName [BudgetName] 
+-- * MaxResults [MaxResults] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: BudgetName
+-- @return DescribeNotificationsForBudgetRequest structure as a key-value pair table
+function M.DescribeNotificationsForBudgetRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeNotificationsForBudgetRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["BudgetName"] = _BudgetName,
-		["MaxResults"] = _MaxResults,
-		["AccountId"] = _AccountId,
+		["NextToken"] = args["NextToken"],
+		["BudgetName"] = args["BudgetName"],
+		["MaxResults"] = args["MaxResults"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertDescribeNotificationsForBudgetRequest(t)
 	return t
@@ -199,18 +217,21 @@ end
 
 --- Create a structure of type CostTypes
 -- This includes the options for getting the cost of a budget.
--- @param _IncludeTax [GenericBoolean] 
--- @param _UseBlended [GenericBoolean] 
--- @param _IncludeSubscription [GenericBoolean] 
--- Required parameter: IncludeTax
--- Required parameter: IncludeSubscription
--- Required parameter: UseBlended
-function M.CostTypes(_IncludeTax, _UseBlended, _IncludeSubscription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CostTypes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IncludeTax [GenericBoolean] 
+-- * UseBlended [GenericBoolean] 
+-- * IncludeSubscription [GenericBoolean] 
+-- Required key: IncludeTax
+-- Required key: IncludeSubscription
+-- Required key: UseBlended
+-- @return CostTypes structure as a key-value pair table
+function M.CostTypes(args)
+	assert(args, "You must provdide an argument table when creating CostTypes")
 	local t = { 
-		["IncludeTax"] = _IncludeTax,
-		["UseBlended"] = _UseBlended,
-		["IncludeSubscription"] = _IncludeSubscription,
+		["IncludeTax"] = args["IncludeTax"],
+		["UseBlended"] = args["UseBlended"],
+		["IncludeSubscription"] = args["IncludeSubscription"],
 	}
 	asserts.AssertCostTypes(t)
 	return t
@@ -229,11 +250,14 @@ end
 
 --- Create a structure of type InvalidNextTokenException
 -- This exception is thrown if paging token signature didn't match the token, or the paging token isn't for this request
--- @param _Message [errorMessage] 
-function M.InvalidNextTokenException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [errorMessage] 
+-- @return InvalidNextTokenException structure as a key-value pair table
+function M.InvalidNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidNextTokenException(t)
 	return t
@@ -255,15 +279,18 @@ end
 
 --- Create a structure of type DeleteBudgetRequest
 -- Request of DeleteBudget
--- @param _BudgetName [BudgetName] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: BudgetName
-function M.DeleteBudgetRequest(_BudgetName, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBudgetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BudgetName [BudgetName] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: BudgetName
+-- @return DeleteBudgetRequest structure as a key-value pair table
+function M.DeleteBudgetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBudgetRequest")
 	local t = { 
-		["BudgetName"] = _BudgetName,
-		["AccountId"] = _AccountId,
+		["BudgetName"] = args["BudgetName"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertDeleteBudgetRequest(t)
 	return t
@@ -283,13 +310,16 @@ end
 
 --- Create a structure of type DescribeNotificationsForBudgetResponse
 -- Response of GetNotificationsForBudget
--- @param _Notifications [Notifications] 
--- @param _NextToken [GenericString] 
-function M.DescribeNotificationsForBudgetResponse(_Notifications, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNotificationsForBudgetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Notifications [Notifications] 
+-- * NextToken [GenericString] 
+-- @return DescribeNotificationsForBudgetResponse structure as a key-value pair table
+function M.DescribeNotificationsForBudgetResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeNotificationsForBudgetResponse")
 	local t = { 
-		["Notifications"] = _Notifications,
-		["NextToken"] = _NextToken,
+		["Notifications"] = args["Notifications"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeNotificationsForBudgetResponse(t)
 	return t
@@ -317,24 +347,27 @@ end
 
 --- Create a structure of type UpdateSubscriberRequest
 -- Request of UpdateSubscriber
--- @param _Notification [Notification] 
--- @param _OldSubscriber [Subscriber] 
--- @param _BudgetName [BudgetName] 
--- @param _NewSubscriber [Subscriber] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: BudgetName
--- Required parameter: Notification
--- Required parameter: OldSubscriber
--- Required parameter: NewSubscriber
-function M.UpdateSubscriberRequest(_Notification, _OldSubscriber, _BudgetName, _NewSubscriber, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSubscriberRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Notification [Notification] 
+-- * OldSubscriber [Subscriber] 
+-- * BudgetName [BudgetName] 
+-- * NewSubscriber [Subscriber] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: BudgetName
+-- Required key: Notification
+-- Required key: OldSubscriber
+-- Required key: NewSubscriber
+-- @return UpdateSubscriberRequest structure as a key-value pair table
+function M.UpdateSubscriberRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateSubscriberRequest")
 	local t = { 
-		["Notification"] = _Notification,
-		["OldSubscriber"] = _OldSubscriber,
-		["BudgetName"] = _BudgetName,
-		["NewSubscriber"] = _NewSubscriber,
-		["AccountId"] = _AccountId,
+		["Notification"] = args["Notification"],
+		["OldSubscriber"] = args["OldSubscriber"],
+		["BudgetName"] = args["BudgetName"],
+		["NewSubscriber"] = args["NewSubscriber"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertUpdateSubscriberRequest(t)
 	return t
@@ -353,11 +386,14 @@ end
 
 --- Create a structure of type ExpiredNextTokenException
 -- This exception is thrown if the paging token is expired - past its TTL
--- @param _Message [errorMessage] 
-function M.ExpiredNextTokenException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [errorMessage] 
+-- @return ExpiredNextTokenException structure as a key-value pair table
+function M.ExpiredNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating ExpiredNextTokenException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertExpiredNextTokenException(t)
 	return t
@@ -379,15 +415,18 @@ end
 
 --- Create a structure of type DescribeBudgetRequest
 -- Request of DescribeBudget
--- @param _BudgetName [BudgetName] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: BudgetName
-function M.DescribeBudgetRequest(_BudgetName, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBudgetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BudgetName [BudgetName] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: BudgetName
+-- @return DescribeBudgetRequest structure as a key-value pair table
+function M.DescribeBudgetRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeBudgetRequest")
 	local t = { 
-		["BudgetName"] = _BudgetName,
-		["AccountId"] = _AccountId,
+		["BudgetName"] = args["BudgetName"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertDescribeBudgetRequest(t)
 	return t
@@ -406,11 +445,14 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- This exception is thrown if any request is given an invalid parameter. E.g., if a required Date field is null.
--- @param _Message [errorMessage] 
-function M.InvalidParameterException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [errorMessage] 
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidParameterException(t)
 	return t
@@ -436,21 +478,24 @@ end
 
 --- Create a structure of type CreateNotificationRequest
 -- Request of CreateNotification
--- @param _Notification [Notification] 
--- @param _BudgetName [BudgetName] 
--- @param _Subscribers [Subscribers] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: BudgetName
--- Required parameter: Notification
--- Required parameter: Subscribers
-function M.CreateNotificationRequest(_Notification, _BudgetName, _Subscribers, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateNotificationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Notification [Notification] 
+-- * BudgetName [BudgetName] 
+-- * Subscribers [Subscribers] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: BudgetName
+-- Required key: Notification
+-- Required key: Subscribers
+-- @return CreateNotificationRequest structure as a key-value pair table
+function M.CreateNotificationRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateNotificationRequest")
 	local t = { 
-		["Notification"] = _Notification,
-		["BudgetName"] = _BudgetName,
-		["Subscribers"] = _Subscribers,
-		["AccountId"] = _AccountId,
+		["Notification"] = args["Notification"],
+		["BudgetName"] = args["BudgetName"],
+		["Subscribers"] = args["Subscribers"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertCreateNotificationRequest(t)
 	return t
@@ -474,18 +519,21 @@ end
 
 --- Create a structure of type Notification
 -- Notification model. Each budget may contain multiple notifications with different settings.
--- @param _Threshold [NotificationThreshold] 
--- @param _ComparisonOperator [ComparisonOperator] 
--- @param _NotificationType [NotificationType] 
--- Required parameter: NotificationType
--- Required parameter: ComparisonOperator
--- Required parameter: Threshold
-function M.Notification(_Threshold, _ComparisonOperator, _NotificationType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Notification")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Threshold [NotificationThreshold] 
+-- * ComparisonOperator [ComparisonOperator] 
+-- * NotificationType [NotificationType] 
+-- Required key: NotificationType
+-- Required key: ComparisonOperator
+-- Required key: Threshold
+-- @return Notification structure as a key-value pair table
+function M.Notification(args)
+	assert(args, "You must provdide an argument table when creating Notification")
 	local t = { 
-		["Threshold"] = _Threshold,
-		["ComparisonOperator"] = _ComparisonOperator,
-		["NotificationType"] = _NotificationType,
+		["Threshold"] = args["Threshold"],
+		["ComparisonOperator"] = args["ComparisonOperator"],
+		["NotificationType"] = args["NotificationType"],
 	}
 	asserts.AssertNotification(t)
 	return t
@@ -507,15 +555,18 @@ end
 
 --- Create a structure of type TimePeriod
 -- A time period indicated the start date and end date of a budget.
--- @param _Start [GenericTimestamp] 
--- @param _End [GenericTimestamp] 
--- Required parameter: Start
--- Required parameter: End
-function M.TimePeriod(_Start, _End, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TimePeriod")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Start [GenericTimestamp] 
+-- * End [GenericTimestamp] 
+-- Required key: Start
+-- Required key: End
+-- @return TimePeriod structure as a key-value pair table
+function M.TimePeriod(args)
+	assert(args, "You must provdide an argument table when creating TimePeriod")
 	local t = { 
-		["Start"] = _Start,
-		["End"] = _End,
+		["Start"] = args["Start"],
+		["End"] = args["End"],
 	}
 	asserts.AssertTimePeriod(t)
 	return t
@@ -533,8 +584,11 @@ end
 
 --- Create a structure of type DeleteNotificationResponse
 -- Response of DeleteNotification
-function M.DeleteNotificationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteNotificationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteNotificationResponse structure as a key-value pair table
+function M.DeleteNotificationResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteNotificationResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteNotificationResponse(t)
@@ -553,8 +607,11 @@ end
 
 --- Create a structure of type UpdateBudgetResponse
 -- Response of UpdateBudget
-function M.UpdateBudgetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBudgetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateBudgetResponse structure as a key-value pair table
+function M.UpdateBudgetResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateBudgetResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateBudgetResponse(t)
@@ -578,17 +635,20 @@ end
 
 --- Create a structure of type CreateBudgetRequest
 -- Request of CreateBudget
--- @param _NotificationsWithSubscribers [NotificationWithSubscribersList] 
--- @param _Budget [Budget] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: Budget
-function M.CreateBudgetRequest(_NotificationsWithSubscribers, _Budget, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBudgetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NotificationsWithSubscribers [NotificationWithSubscribersList] 
+-- * Budget [Budget] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: Budget
+-- @return CreateBudgetRequest structure as a key-value pair table
+function M.CreateBudgetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateBudgetRequest")
 	local t = { 
-		["NotificationsWithSubscribers"] = _NotificationsWithSubscribers,
-		["Budget"] = _Budget,
-		["AccountId"] = _AccountId,
+		["NotificationsWithSubscribers"] = args["NotificationsWithSubscribers"],
+		["Budget"] = args["Budget"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertCreateBudgetRequest(t)
 	return t
@@ -606,8 +666,11 @@ end
 
 --- Create a structure of type CreateSubscriberResponse
 -- Response of CreateSubscriber
-function M.CreateSubscriberResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriberResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateSubscriberResponse structure as a key-value pair table
+function M.CreateSubscriberResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateSubscriberResponse")
 	local t = { 
 	}
 	asserts.AssertCreateSubscriberResponse(t)
@@ -630,16 +693,19 @@ end
 
 --- Create a structure of type DescribeBudgetsRequest
 -- Request of DescribeBudgets
--- @param _NextToken [GenericString] 
--- @param _MaxResults [MaxResults] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
-function M.DescribeBudgetsRequest(_NextToken, _MaxResults, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBudgetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [GenericString] 
+-- * MaxResults [MaxResults] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- @return DescribeBudgetsRequest structure as a key-value pair table
+function M.DescribeBudgetsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeBudgetsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["AccountId"] = _AccountId,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertDescribeBudgetsRequest(t)
 	return t
@@ -657,8 +723,11 @@ end
 
 --- Create a structure of type DeleteSubscriberResponse
 -- Response of DeleteSubscriber
-function M.DeleteSubscriberResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubscriberResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteSubscriberResponse structure as a key-value pair table
+function M.DeleteSubscriberResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteSubscriberResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteSubscriberResponse(t)
@@ -679,13 +748,16 @@ end
 
 --- Create a structure of type DescribeSubscribersForNotificationResponse
 -- Response of DescribeSubscribersForNotification
--- @param _NextToken [GenericString] 
--- @param _Subscribers [Subscribers] 
-function M.DescribeSubscribersForNotificationResponse(_NextToken, _Subscribers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubscribersForNotificationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [GenericString] 
+-- * Subscribers [Subscribers] 
+-- @return DescribeSubscribersForNotificationResponse structure as a key-value pair table
+function M.DescribeSubscribersForNotificationResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeSubscribersForNotificationResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Subscribers"] = _Subscribers,
+		["NextToken"] = args["NextToken"],
+		["Subscribers"] = args["Subscribers"],
 	}
 	asserts.AssertDescribeSubscribersForNotificationResponse(t)
 	return t
@@ -711,21 +783,24 @@ end
 
 --- Create a structure of type UpdateNotificationRequest
 -- Request of UpdateNotification
--- @param _NewNotification [Notification] 
--- @param _BudgetName [BudgetName] 
--- @param _OldNotification [Notification] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: BudgetName
--- Required parameter: OldNotification
--- Required parameter: NewNotification
-function M.UpdateNotificationRequest(_NewNotification, _BudgetName, _OldNotification, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateNotificationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NewNotification [Notification] 
+-- * BudgetName [BudgetName] 
+-- * OldNotification [Notification] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: BudgetName
+-- Required key: OldNotification
+-- Required key: NewNotification
+-- @return UpdateNotificationRequest structure as a key-value pair table
+function M.UpdateNotificationRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateNotificationRequest")
 	local t = { 
-		["NewNotification"] = _NewNotification,
-		["BudgetName"] = _BudgetName,
-		["OldNotification"] = _OldNotification,
-		["AccountId"] = _AccountId,
+		["NewNotification"] = args["NewNotification"],
+		["BudgetName"] = args["BudgetName"],
+		["OldNotification"] = args["OldNotification"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertUpdateNotificationRequest(t)
 	return t
@@ -743,8 +818,11 @@ end
 
 --- Create a structure of type CreateBudgetResponse
 -- Response of CreateBudget
-function M.CreateBudgetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBudgetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateBudgetResponse structure as a key-value pair table
+function M.CreateBudgetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateBudgetResponse")
 	local t = { 
 	}
 	asserts.AssertCreateBudgetResponse(t)
@@ -763,8 +841,11 @@ end
 
 --- Create a structure of type DeleteBudgetResponse
 -- Response of DeleteBudget
-function M.DeleteBudgetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBudgetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteBudgetResponse structure as a key-value pair table
+function M.DeleteBudgetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteBudgetResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteBudgetResponse(t)
@@ -783,8 +864,11 @@ end
 
 --- Create a structure of type UpdateSubscriberResponse
 -- Response of UpdateSubscriber
-function M.UpdateSubscriberResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSubscriberResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateSubscriberResponse structure as a key-value pair table
+function M.UpdateSubscriberResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateSubscriberResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateSubscriberResponse(t)
@@ -817,31 +901,34 @@ end
 
 --- Create a structure of type Budget
 -- AWS Budget model
--- @param _CalculatedSpend [CalculatedSpend] 
--- @param _BudgetType [BudgetType] 
--- @param _BudgetLimit [Spend] 
--- @param _BudgetName [BudgetName] 
--- @param _CostTypes [CostTypes] 
--- @param _TimeUnit [TimeUnit] 
--- @param _TimePeriod [TimePeriod] 
--- @param _CostFilters [CostFilters] 
--- Required parameter: BudgetName
--- Required parameter: BudgetLimit
--- Required parameter: CostTypes
--- Required parameter: TimeUnit
--- Required parameter: TimePeriod
--- Required parameter: BudgetType
-function M.Budget(_CalculatedSpend, _BudgetType, _BudgetLimit, _BudgetName, _CostTypes, _TimeUnit, _TimePeriod, _CostFilters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Budget")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CalculatedSpend [CalculatedSpend] 
+-- * BudgetType [BudgetType] 
+-- * BudgetLimit [Spend] 
+-- * BudgetName [BudgetName] 
+-- * CostTypes [CostTypes] 
+-- * TimeUnit [TimeUnit] 
+-- * TimePeriod [TimePeriod] 
+-- * CostFilters [CostFilters] 
+-- Required key: BudgetName
+-- Required key: BudgetLimit
+-- Required key: CostTypes
+-- Required key: TimeUnit
+-- Required key: TimePeriod
+-- Required key: BudgetType
+-- @return Budget structure as a key-value pair table
+function M.Budget(args)
+	assert(args, "You must provdide an argument table when creating Budget")
 	local t = { 
-		["CalculatedSpend"] = _CalculatedSpend,
-		["BudgetType"] = _BudgetType,
-		["BudgetLimit"] = _BudgetLimit,
-		["BudgetName"] = _BudgetName,
-		["CostTypes"] = _CostTypes,
-		["TimeUnit"] = _TimeUnit,
-		["TimePeriod"] = _TimePeriod,
-		["CostFilters"] = _CostFilters,
+		["CalculatedSpend"] = args["CalculatedSpend"],
+		["BudgetType"] = args["BudgetType"],
+		["BudgetLimit"] = args["BudgetLimit"],
+		["BudgetName"] = args["BudgetName"],
+		["CostTypes"] = args["CostTypes"],
+		["TimeUnit"] = args["TimeUnit"],
+		["TimePeriod"] = args["TimePeriod"],
+		["CostFilters"] = args["CostFilters"],
 	}
 	asserts.AssertBudget(t)
 	return t
@@ -867,21 +954,24 @@ end
 
 --- Create a structure of type DeleteSubscriberRequest
 -- Request of DeleteSubscriber
--- @param _Subscriber [Subscriber] 
--- @param _Notification [Notification] 
--- @param _BudgetName [BudgetName] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: BudgetName
--- Required parameter: Notification
--- Required parameter: Subscriber
-function M.DeleteSubscriberRequest(_Subscriber, _Notification, _BudgetName, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubscriberRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subscriber [Subscriber] 
+-- * Notification [Notification] 
+-- * BudgetName [BudgetName] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: BudgetName
+-- Required key: Notification
+-- Required key: Subscriber
+-- @return DeleteSubscriberRequest structure as a key-value pair table
+function M.DeleteSubscriberRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSubscriberRequest")
 	local t = { 
-		["Subscriber"] = _Subscriber,
-		["Notification"] = _Notification,
-		["BudgetName"] = _BudgetName,
-		["AccountId"] = _AccountId,
+		["Subscriber"] = args["Subscriber"],
+		["Notification"] = args["Notification"],
+		["BudgetName"] = args["BudgetName"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertDeleteSubscriberRequest(t)
 	return t
@@ -907,21 +997,24 @@ end
 
 --- Create a structure of type CreateSubscriberRequest
 -- Request of CreateSubscriber
--- @param _Subscriber [Subscriber] 
--- @param _Notification [Notification] 
--- @param _BudgetName [BudgetName] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: BudgetName
--- Required parameter: Notification
--- Required parameter: Subscriber
-function M.CreateSubscriberRequest(_Subscriber, _Notification, _BudgetName, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriberRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subscriber [Subscriber] 
+-- * Notification [Notification] 
+-- * BudgetName [BudgetName] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: BudgetName
+-- Required key: Notification
+-- Required key: Subscriber
+-- @return CreateSubscriberRequest structure as a key-value pair table
+function M.CreateSubscriberRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSubscriberRequest")
 	local t = { 
-		["Subscriber"] = _Subscriber,
-		["Notification"] = _Notification,
-		["BudgetName"] = _BudgetName,
-		["AccountId"] = _AccountId,
+		["Subscriber"] = args["Subscriber"],
+		["Notification"] = args["Notification"],
+		["BudgetName"] = args["BudgetName"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertCreateSubscriberRequest(t)
 	return t
@@ -943,15 +1036,18 @@ end
 
 --- Create a structure of type UpdateBudgetRequest
 -- Request of UpdateBudget
--- @param _NewBudget [Budget] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: NewBudget
-function M.UpdateBudgetRequest(_NewBudget, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBudgetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NewBudget [Budget] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: NewBudget
+-- @return UpdateBudgetRequest structure as a key-value pair table
+function M.UpdateBudgetRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateBudgetRequest")
 	local t = { 
-		["NewBudget"] = _NewBudget,
-		["AccountId"] = _AccountId,
+		["NewBudget"] = args["NewBudget"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertUpdateBudgetRequest(t)
 	return t
@@ -973,15 +1069,18 @@ end
 
 --- Create a structure of type Spend
 -- A structure represent either a cost spend or usage spend. Contains an amount and a unit.
--- @param _Amount [NumericValue] 
--- @param _Unit [GenericString] 
--- Required parameter: Amount
--- Required parameter: Unit
-function M.Spend(_Amount, _Unit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Spend")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Amount [NumericValue] 
+-- * Unit [GenericString] 
+-- Required key: Amount
+-- Required key: Unit
+-- @return Spend structure as a key-value pair table
+function M.Spend(args)
+	assert(args, "You must provdide an argument table when creating Spend")
 	local t = { 
-		["Amount"] = _Amount,
-		["Unit"] = _Unit,
+		["Amount"] = args["Amount"],
+		["Unit"] = args["Unit"],
 	}
 	asserts.AssertSpend(t)
 	return t
@@ -1007,22 +1106,25 @@ end
 
 --- Create a structure of type DescribeSubscribersForNotificationRequest
 -- Request of DescribeSubscribersForNotification
--- @param _Notification [Notification] 
--- @param _NextToken [GenericString] 
--- @param _BudgetName [BudgetName] 
--- @param _MaxResults [MaxResults] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: BudgetName
--- Required parameter: Notification
-function M.DescribeSubscribersForNotificationRequest(_Notification, _NextToken, _BudgetName, _MaxResults, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubscribersForNotificationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Notification [Notification] 
+-- * NextToken [GenericString] 
+-- * BudgetName [BudgetName] 
+-- * MaxResults [MaxResults] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: BudgetName
+-- Required key: Notification
+-- @return DescribeSubscribersForNotificationRequest structure as a key-value pair table
+function M.DescribeSubscribersForNotificationRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeSubscribersForNotificationRequest")
 	local t = { 
-		["Notification"] = _Notification,
-		["NextToken"] = _NextToken,
-		["BudgetName"] = _BudgetName,
-		["MaxResults"] = _MaxResults,
-		["AccountId"] = _AccountId,
+		["Notification"] = args["Notification"],
+		["NextToken"] = args["NextToken"],
+		["BudgetName"] = args["BudgetName"],
+		["MaxResults"] = args["MaxResults"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertDescribeSubscribersForNotificationRequest(t)
 	return t
@@ -1041,11 +1143,14 @@ end
 
 --- Create a structure of type NotFoundException
 -- This exception is thrown if a requested entity is not found. E.g., if a budget id doesn't exist for an account ID.
--- @param _Message [errorMessage] 
-function M.NotFoundException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [errorMessage] 
+-- @return NotFoundException structure as a key-value pair table
+function M.NotFoundException(args)
+	assert(args, "You must provdide an argument table when creating NotFoundException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertNotFoundException(t)
 	return t
@@ -1069,18 +1174,21 @@ end
 
 --- Create a structure of type DeleteNotificationRequest
 -- Request of DeleteNotification
--- @param _Notification [Notification] 
--- @param _BudgetName [BudgetName] 
--- @param _AccountId [AccountId] 
--- Required parameter: AccountId
--- Required parameter: BudgetName
--- Required parameter: Notification
-function M.DeleteNotificationRequest(_Notification, _BudgetName, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteNotificationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Notification [Notification] 
+-- * BudgetName [BudgetName] 
+-- * AccountId [AccountId] 
+-- Required key: AccountId
+-- Required key: BudgetName
+-- Required key: Notification
+-- @return DeleteNotificationRequest structure as a key-value pair table
+function M.DeleteNotificationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteNotificationRequest")
 	local t = { 
-		["Notification"] = _Notification,
-		["BudgetName"] = _BudgetName,
-		["AccountId"] = _AccountId,
+		["Notification"] = args["Notification"],
+		["BudgetName"] = args["BudgetName"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertDeleteNotificationRequest(t)
 	return t
@@ -1102,15 +1210,18 @@ end
 
 --- Create a structure of type NotificationWithSubscribers
 -- A structure to relate notification and a list of subscribers who belong to the notification.
--- @param _Notification [Notification] 
--- @param _Subscribers [Subscribers] 
--- Required parameter: Notification
--- Required parameter: Subscribers
-function M.NotificationWithSubscribers(_Notification, _Subscribers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotificationWithSubscribers")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Notification [Notification] 
+-- * Subscribers [Subscribers] 
+-- Required key: Notification
+-- Required key: Subscribers
+-- @return NotificationWithSubscribers structure as a key-value pair table
+function M.NotificationWithSubscribers(args)
+	assert(args, "You must provdide an argument table when creating NotificationWithSubscribers")
 	local t = { 
-		["Notification"] = _Notification,
-		["Subscribers"] = _Subscribers,
+		["Notification"] = args["Notification"],
+		["Subscribers"] = args["Subscribers"],
 	}
 	asserts.AssertNotificationWithSubscribers(t)
 	return t
@@ -1129,11 +1240,14 @@ end
 
 --- Create a structure of type CreationLimitExceededException
 -- The exception is thrown when customer tries to create a record (e.g. budget), but the number this record already exceeds the limitation.
--- @param _Message [errorMessage] 
-function M.CreationLimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreationLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [errorMessage] 
+-- @return CreationLimitExceededException structure as a key-value pair table
+function M.CreationLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating CreationLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertCreationLimitExceededException(t)
 	return t
@@ -1153,13 +1267,16 @@ end
 
 --- Create a structure of type DescribeBudgetsResponse
 -- Response of DescribeBudgets
--- @param _NextToken [GenericString] 
--- @param _Budgets [Budgets] 
-function M.DescribeBudgetsResponse(_NextToken, _Budgets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBudgetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [GenericString] 
+-- * Budgets [Budgets] 
+-- @return DescribeBudgetsResponse structure as a key-value pair table
+function M.DescribeBudgetsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeBudgetsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Budgets"] = _Budgets,
+		["NextToken"] = args["NextToken"],
+		["Budgets"] = args["Budgets"],
 	}
 	asserts.AssertDescribeBudgetsResponse(t)
 	return t
@@ -1177,8 +1294,11 @@ end
 
 --- Create a structure of type UpdateNotificationResponse
 -- Response of UpdateNotification
-function M.UpdateNotificationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateNotificationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateNotificationResponse structure as a key-value pair table
+function M.UpdateNotificationResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateNotificationResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateNotificationResponse(t)
@@ -1198,11 +1318,14 @@ end
 
 --- Create a structure of type DescribeBudgetResponse
 -- Response of DescribeBudget
--- @param _Budget [Budget] 
-function M.DescribeBudgetResponse(_Budget, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBudgetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Budget [Budget] 
+-- @return DescribeBudgetResponse structure as a key-value pair table
+function M.DescribeBudgetResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeBudgetResponse")
 	local t = { 
-		["Budget"] = _Budget,
+		["Budget"] = args["Budget"],
 	}
 	asserts.AssertDescribeBudgetResponse(t)
 	return t

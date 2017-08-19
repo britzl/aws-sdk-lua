@@ -35,13 +35,16 @@ end
 
 --- Create a structure of type ListAssociatedStacksResult
 -- <p>The response from a successful operation.</p>
--- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _Names [StringList] <p>The names of associated stacks.</p>
-function M.ListAssociatedStacksResult(_NextToken, _Names, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedStacksResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * Names [StringList] <p>The names of associated stacks.</p>
+-- @return ListAssociatedStacksResult structure as a key-value pair table
+function M.ListAssociatedStacksResult(args)
+	assert(args, "You must provdide an argument table when creating ListAssociatedStacksResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Names"] = _Names,
+		["NextToken"] = args["NextToken"],
+		["Names"] = args["Names"],
 	}
 	asserts.AssertListAssociatedStacksResult(t)
 	return t
@@ -59,8 +62,11 @@ end
 
 --- Create a structure of type StopFleetResult
 --  
-function M.StopFleetResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopFleetResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StopFleetResult structure as a key-value pair table
+function M.StopFleetResult(args)
+	assert(args, "You must provdide an argument table when creating StopFleetResult")
 	local t = { 
 	}
 	asserts.AssertStopFleetResult(t)
@@ -80,11 +86,14 @@ end
 
 --- Create a structure of type DescribeImagesResult
 --  
--- @param _Images [ImageList] <p>The list of images.</p>
-function M.DescribeImagesResult(_Images, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Images [ImageList] <p>The list of images.</p>
+-- @return DescribeImagesResult structure as a key-value pair table
+function M.DescribeImagesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeImagesResult")
 	local t = { 
-		["Images"] = _Images,
+		["Images"] = args["Images"],
 	}
 	asserts.AssertDescribeImagesResult(t)
 	return t
@@ -103,11 +112,14 @@ end
 
 --- Create a structure of type OperationNotPermittedException
 -- <p>The attempted operation is not permitted.</p>
--- @param _Message [ErrorMessage] 
-function M.OperationNotPermittedException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return OperationNotPermittedException structure as a key-value pair table
+function M.OperationNotPermittedException(args)
+	assert(args, "You must provdide an argument table when creating OperationNotPermittedException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertOperationNotPermittedException(t)
 	return t
@@ -127,12 +139,15 @@ end
 
 --- Create a structure of type DeleteFleetRequest
 --  
--- @param _Name [String] <p>The name of the fleet to be deleted.</p>
--- Required parameter: Name
-function M.DeleteFleetRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFleetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>The name of the fleet to be deleted.</p>
+-- Required key: Name
+-- @return DeleteFleetRequest structure as a key-value pair table
+function M.DeleteFleetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteFleetRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteFleetRequest(t)
 	return t
@@ -155,18 +170,21 @@ end
 
 --- Create a structure of type CreateStackRequest
 --  
--- @param _DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
--- @param _Name [String] <p>The unique identifier for this stack.</p>
--- @param _StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
--- @param _Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
--- Required parameter: Name
-function M.CreateStackRequest(_DisplayName, _Name, _StorageConnectors, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- * Name [String] <p>The unique identifier for this stack.</p>
+-- * StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
+-- * Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
+-- Required key: Name
+-- @return CreateStackRequest structure as a key-value pair table
+function M.CreateStackRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateStackRequest")
 	local t = { 
-		["DisplayName"] = _DisplayName,
-		["Name"] = _Name,
-		["StorageConnectors"] = _StorageConnectors,
-		["Description"] = _Description,
+		["DisplayName"] = args["DisplayName"],
+		["Name"] = args["Name"],
+		["StorageConnectors"] = args["StorageConnectors"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateStackRequest(t)
 	return t
@@ -186,13 +204,16 @@ end
 
 --- Create a structure of type DescribeSessionsResult
 --  
--- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _Sessions [SessionList] <p>The list of streaming sessions.</p>
-function M.DescribeSessionsResult(_NextToken, _Sessions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSessionsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * Sessions [SessionList] <p>The list of streaming sessions.</p>
+-- @return DescribeSessionsResult structure as a key-value pair table
+function M.DescribeSessionsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeSessionsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Sessions"] = _Sessions,
+		["NextToken"] = args["NextToken"],
+		["Sessions"] = args["Sessions"],
 	}
 	asserts.AssertDescribeSessionsResult(t)
 	return t
@@ -218,24 +239,27 @@ end
 
 --- Create a structure of type Stack
 -- <p>Details about a stack.</p>
--- @param _DisplayName [String] <p>A display name for the stack.</p>
--- @param _Name [String] <p>The unique identifier of the stack.</p>
--- @param _StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
--- @param _StackErrors [StackErrors] <p>The list of errors associated with the stack.</p>
--- @param _CreatedTime [Timestamp] <p>The timestamp when the stack was created.</p>
--- @param _Arn [Arn] <p>The ARN of the stack.</p>
--- @param _Description [String] <p>A meaningful description for the stack.</p>
--- Required parameter: Name
-function M.Stack(_DisplayName, _Name, _StorageConnectors, _StackErrors, _CreatedTime, _Arn, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Stack")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisplayName [String] <p>A display name for the stack.</p>
+-- * Name [String] <p>The unique identifier of the stack.</p>
+-- * StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
+-- * StackErrors [StackErrors] <p>The list of errors associated with the stack.</p>
+-- * CreatedTime [Timestamp] <p>The timestamp when the stack was created.</p>
+-- * Arn [Arn] <p>The ARN of the stack.</p>
+-- * Description [String] <p>A meaningful description for the stack.</p>
+-- Required key: Name
+-- @return Stack structure as a key-value pair table
+function M.Stack(args)
+	assert(args, "You must provdide an argument table when creating Stack")
 	local t = { 
-		["DisplayName"] = _DisplayName,
-		["Name"] = _Name,
-		["StorageConnectors"] = _StorageConnectors,
-		["StackErrors"] = _StackErrors,
-		["CreatedTime"] = _CreatedTime,
-		["Arn"] = _Arn,
-		["Description"] = _Description,
+		["DisplayName"] = args["DisplayName"],
+		["Name"] = args["Name"],
+		["StorageConnectors"] = args["StorageConnectors"],
+		["StackErrors"] = args["StackErrors"],
+		["CreatedTime"] = args["CreatedTime"],
+		["Arn"] = args["Arn"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertStack(t)
 	return t
@@ -253,8 +277,11 @@ end
 
 --- Create a structure of type StartFleetResult
 --  
-function M.StartFleetResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartFleetResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StartFleetResult structure as a key-value pair table
+function M.StartFleetResult(args)
+	assert(args, "You must provdide an argument table when creating StartFleetResult")
 	local t = { 
 	}
 	asserts.AssertStartFleetResult(t)
@@ -278,18 +305,21 @@ end
 
 --- Create a structure of type ComputeCapacityStatus
 -- <p>The capacity information for the fleet.</p>
--- @param _Available [Integer] <p>The number of currently available instances that can be used to stream sessions.</p>
--- @param _Desired [Integer] <p>The desired number of streaming instances.</p>
--- @param _Running [Integer] <p>The total number of simultaneous streaming instances that are running.</p>
--- @param _InUse [Integer] <p>The number of instances that are being used for streaming.</p>
--- Required parameter: Desired
-function M.ComputeCapacityStatus(_Available, _Desired, _Running, _InUse, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComputeCapacityStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Available [Integer] <p>The number of currently available instances that can be used to stream sessions.</p>
+-- * Desired [Integer] <p>The desired number of streaming instances.</p>
+-- * Running [Integer] <p>The total number of simultaneous streaming instances that are running.</p>
+-- * InUse [Integer] <p>The number of instances that are being used for streaming.</p>
+-- Required key: Desired
+-- @return ComputeCapacityStatus structure as a key-value pair table
+function M.ComputeCapacityStatus(args)
+	assert(args, "You must provdide an argument table when creating ComputeCapacityStatus")
 	local t = { 
-		["Available"] = _Available,
-		["Desired"] = _Desired,
-		["Running"] = _Running,
-		["InUse"] = _InUse,
+		["Available"] = args["Available"],
+		["Desired"] = args["Desired"],
+		["Running"] = args["Running"],
+		["InUse"] = args["InUse"],
 	}
 	asserts.AssertComputeCapacityStatus(t)
 	return t
@@ -308,11 +338,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The requested limit exceeds the permitted limit for an account.</p>
--- @param _Message [ErrorMessage] 
-function M.LimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -331,11 +364,14 @@ end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>An API error occurred. Wait a few minutes and try again.</p>
--- @param _Message [ErrorMessage] 
-function M.ConcurrentModificationException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return ConcurrentModificationException structure as a key-value pair table
+function M.ConcurrentModificationException(args)
+	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertConcurrentModificationException(t)
 	return t
@@ -355,12 +391,15 @@ end
 
 --- Create a structure of type StartFleetRequest
 --  
--- @param _Name [String] <p>The name of the fleet to start.</p>
--- Required parameter: Name
-function M.StartFleetRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartFleetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>The name of the fleet to start.</p>
+-- Required key: Name
+-- @return StartFleetRequest structure as a key-value pair table
+function M.StartFleetRequest(args)
+	assert(args, "You must provdide an argument table when creating StartFleetRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertStartFleetRequest(t)
 	return t
@@ -380,13 +419,16 @@ end
 
 --- Create a structure of type DescribeStacksRequest
 --  
--- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
--- @param _Names [StringList] <p>The stack names to describe. Use null to describe all the stacks for the AWS account.</p>
-function M.DescribeStacksRequest(_NextToken, _Names, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- * Names [StringList] <p>The stack names to describe. Use null to describe all the stacks for the AWS account.</p>
+-- @return DescribeStacksRequest structure as a key-value pair table
+function M.DescribeStacksRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeStacksRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Names"] = _Names,
+		["NextToken"] = args["NextToken"],
+		["Names"] = args["Names"],
 	}
 	asserts.AssertDescribeStacksRequest(t)
 	return t
@@ -413,24 +455,27 @@ end
 
 --- Create a structure of type CreateStreamingURLRequest
 --  
--- @param _FleetName [String] <p>The fleet for which the URL is generated.</p>
--- @param _UserId [UserId] <p>A unique user ID for whom the URL is generated.</p>
--- @param _Validity [Long] <p>The duration up to which the URL returned by this action is valid. The input can be any numeric value in seconds between 1 and 604800 seconds.</p>
--- @param _StackName [String] <p>The stack for which the URL is generated.</p>
--- @param _SessionContext [String] <p>The sessionContext of the streaming URL.</p>
--- @param _ApplicationId [String] <p>The ID of the application that must be launched after the session starts.</p>
--- Required parameter: StackName
--- Required parameter: FleetName
--- Required parameter: UserId
-function M.CreateStreamingURLRequest(_FleetName, _UserId, _Validity, _StackName, _SessionContext, _ApplicationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamingURLRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetName [String] <p>The fleet for which the URL is generated.</p>
+-- * UserId [UserId] <p>A unique user ID for whom the URL is generated.</p>
+-- * Validity [Long] <p>The duration up to which the URL returned by this action is valid. The input can be any numeric value in seconds between 1 and 604800 seconds.</p>
+-- * StackName [String] <p>The stack for which the URL is generated.</p>
+-- * SessionContext [String] <p>The sessionContext of the streaming URL.</p>
+-- * ApplicationId [String] <p>The ID of the application that must be launched after the session starts.</p>
+-- Required key: StackName
+-- Required key: FleetName
+-- Required key: UserId
+-- @return CreateStreamingURLRequest structure as a key-value pair table
+function M.CreateStreamingURLRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateStreamingURLRequest")
 	local t = { 
-		["FleetName"] = _FleetName,
-		["UserId"] = _UserId,
-		["Validity"] = _Validity,
-		["StackName"] = _StackName,
-		["SessionContext"] = _SessionContext,
-		["ApplicationId"] = _ApplicationId,
+		["FleetName"] = args["FleetName"],
+		["UserId"] = args["UserId"],
+		["Validity"] = args["Validity"],
+		["StackName"] = args["StackName"],
+		["SessionContext"] = args["SessionContext"],
+		["ApplicationId"] = args["ApplicationId"],
 	}
 	asserts.AssertCreateStreamingURLRequest(t)
 	return t
@@ -455,23 +500,26 @@ end
 
 --- Create a structure of type Application
 -- <p>An entry for a single application in the application catalog.</p>
--- @param _DisplayName [String] <p>The name of the application shown to the end users.</p>
--- @param _Name [String] <p>The unique identifier for the application.</p>
--- @param _LaunchParameters [String] <p>A list of arguments that are passed to the application at launch.</p>
--- @param _Enabled [Boolean] <p>An application can be disabled after image creation if there is a problem.</p>
--- @param _IconURL [String] <p>The URL for the application icon. This URL may be time-limited.</p>
--- @param _LaunchPath [String] <p>The path to the application executable in the instance.</p>
--- @param _Metadata [Metadata] <p>Additional attributes that describe the application.</p>
-function M.Application(_DisplayName, _Name, _LaunchParameters, _Enabled, _IconURL, _LaunchPath, _Metadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Application")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisplayName [String] <p>The name of the application shown to the end users.</p>
+-- * Name [String] <p>The unique identifier for the application.</p>
+-- * LaunchParameters [String] <p>A list of arguments that are passed to the application at launch.</p>
+-- * Enabled [Boolean] <p>An application can be disabled after image creation if there is a problem.</p>
+-- * IconURL [String] <p>The URL for the application icon. This URL may be time-limited.</p>
+-- * LaunchPath [String] <p>The path to the application executable in the instance.</p>
+-- * Metadata [Metadata] <p>Additional attributes that describe the application.</p>
+-- @return Application structure as a key-value pair table
+function M.Application(args)
+	assert(args, "You must provdide an argument table when creating Application")
 	local t = { 
-		["DisplayName"] = _DisplayName,
-		["Name"] = _Name,
-		["LaunchParameters"] = _LaunchParameters,
-		["Enabled"] = _Enabled,
-		["IconURL"] = _IconURL,
-		["LaunchPath"] = _LaunchPath,
-		["Metadata"] = _Metadata,
+		["DisplayName"] = args["DisplayName"],
+		["Name"] = args["Name"],
+		["LaunchParameters"] = args["LaunchParameters"],
+		["Enabled"] = args["Enabled"],
+		["IconURL"] = args["IconURL"],
+		["LaunchPath"] = args["LaunchPath"],
+		["Metadata"] = args["Metadata"],
 	}
 	asserts.AssertApplication(t)
 	return t
@@ -489,8 +537,11 @@ end
 
 --- Create a structure of type DisassociateFleetResult
 --  
-function M.DisassociateFleetResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateFleetResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisassociateFleetResult structure as a key-value pair table
+function M.DisassociateFleetResult(args)
+	assert(args, "You must provdide an argument table when creating DisassociateFleetResult")
 	local t = { 
 	}
 	asserts.AssertDisassociateFleetResult(t)
@@ -515,20 +566,23 @@ end
 
 --- Create a structure of type UpdateStackRequest
 --  
--- @param _DeleteStorageConnectors [Boolean] <p>Remove all the storage connectors currently enabled for the stack.</p>
--- @param _DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
--- @param _Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
--- @param _StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
--- @param _Name [String] <p>The name of the stack to update.</p>
--- Required parameter: Name
-function M.UpdateStackRequest(_DeleteStorageConnectors, _DisplayName, _Description, _StorageConnectors, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStackRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeleteStorageConnectors [Boolean] <p>Remove all the storage connectors currently enabled for the stack.</p>
+-- * DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- * Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
+-- * StorageConnectors [StorageConnectorList] <p>The storage connectors to be enabled for the stack.</p>
+-- * Name [String] <p>The name of the stack to update.</p>
+-- Required key: Name
+-- @return UpdateStackRequest structure as a key-value pair table
+function M.UpdateStackRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateStackRequest")
 	local t = { 
-		["DeleteStorageConnectors"] = _DeleteStorageConnectors,
-		["DisplayName"] = _DisplayName,
-		["Description"] = _Description,
-		["StorageConnectors"] = _StorageConnectors,
-		["Name"] = _Name,
+		["DeleteStorageConnectors"] = args["DeleteStorageConnectors"],
+		["DisplayName"] = args["DisplayName"],
+		["Description"] = args["Description"],
+		["StorageConnectors"] = args["StorageConnectors"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateStackRequest(t)
 	return t
@@ -548,13 +602,16 @@ end
 
 --- Create a structure of type ListAssociatedFleetsResult
 -- <p>The response from a successful operation.</p>
--- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _Names [StringList] <p>The names of associated fleets.</p>
-function M.ListAssociatedFleetsResult(_NextToken, _Names, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedFleetsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * Names [StringList] <p>The names of associated fleets.</p>
+-- @return ListAssociatedFleetsResult structure as a key-value pair table
+function M.ListAssociatedFleetsResult(args)
+	assert(args, "You must provdide an argument table when creating ListAssociatedFleetsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Names"] = _Names,
+		["NextToken"] = args["NextToken"],
+		["Names"] = args["Names"],
 	}
 	asserts.AssertListAssociatedFleetsResult(t)
 	return t
@@ -573,11 +630,14 @@ end
 
 --- Create a structure of type InvalidParameterCombinationException
 -- <p>Indicates an incorrect combination of parameters, or a missing parameter.</p>
--- @param _Message [ErrorMessage] 
-function M.InvalidParameterCombinationException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterCombinationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return InvalidParameterCombinationException structure as a key-value pair table
+function M.InvalidParameterCombinationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterCombinationException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidParameterCombinationException(t)
 	return t
@@ -596,11 +656,14 @@ end
 
 --- Create a structure of type UpdateStackResult
 --  
--- @param _Stack [Stack] <p>A list of stack details.</p>
-function M.UpdateStackResult(_Stack, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStackResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Stack [Stack] <p>A list of stack details.</p>
+-- @return UpdateStackResult structure as a key-value pair table
+function M.UpdateStackResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateStackResult")
 	local t = { 
-		["Stack"] = _Stack,
+		["Stack"] = args["Stack"],
 	}
 	asserts.AssertUpdateStackResult(t)
 	return t
@@ -620,12 +683,15 @@ end
 
 --- Create a structure of type ComputeCapacity
 -- <p>The capacity configuration for the fleet.</p>
--- @param _DesiredInstances [Integer] <p>The desired number of streaming instances.</p>
--- Required parameter: DesiredInstances
-function M.ComputeCapacity(_DesiredInstances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComputeCapacity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DesiredInstances [Integer] <p>The desired number of streaming instances.</p>
+-- Required key: DesiredInstances
+-- @return ComputeCapacity structure as a key-value pair table
+function M.ComputeCapacity(args)
+	assert(args, "You must provdide an argument table when creating ComputeCapacity")
 	local t = { 
-		["DesiredInstances"] = _DesiredInstances,
+		["DesiredInstances"] = args["DesiredInstances"],
 	}
 	asserts.AssertComputeCapacity(t)
 	return t
@@ -645,12 +711,15 @@ end
 
 --- Create a structure of type ExpireSessionRequest
 --  
--- @param _SessionId [String] <p>The unique identifier of the streaming session to be stopped.</p>
--- Required parameter: SessionId
-function M.ExpireSessionRequest(_SessionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExpireSessionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SessionId [String] <p>The unique identifier of the streaming session to be stopped.</p>
+-- Required key: SessionId
+-- @return ExpireSessionRequest structure as a key-value pair table
+function M.ExpireSessionRequest(args)
+	assert(args, "You must provdide an argument table when creating ExpireSessionRequest")
 	local t = { 
-		["SessionId"] = _SessionId,
+		["SessionId"] = args["SessionId"],
 	}
 	asserts.AssertExpireSessionRequest(t)
 	return t
@@ -669,11 +738,14 @@ end
 
 --- Create a structure of type IncompatibleImageException
 -- <p>The image does not support storage connectors.</p>
--- @param _Message [ErrorMessage] 
-function M.IncompatibleImageException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IncompatibleImageException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return IncompatibleImageException structure as a key-value pair table
+function M.IncompatibleImageException(args)
+	assert(args, "You must provdide an argument table when creating IncompatibleImageException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertIncompatibleImageException(t)
 	return t
@@ -692,11 +764,14 @@ end
 
 --- Create a structure of type ResourceAlreadyExistsException
 -- <p>The specified resource already exists.</p>
--- @param _Message [ErrorMessage] 
-function M.ResourceAlreadyExistsException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return ResourceAlreadyExistsException structure as a key-value pair table
+function M.ResourceAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertResourceAlreadyExistsException(t)
 	return t
@@ -716,12 +791,15 @@ end
 
 --- Create a structure of type DeleteStackRequest
 --  
--- @param _Name [String] <p>The name of the stack to delete.</p>
--- Required parameter: Name
-function M.DeleteStackRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStackRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>The name of the stack to delete.</p>
+-- Required key: Name
+-- @return DeleteStackRequest structure as a key-value pair table
+function M.DeleteStackRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteStackRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteStackRequest(t)
 	return t
@@ -740,11 +818,14 @@ end
 
 --- Create a structure of type CreateStackResult
 --  
--- @param _Stack [Stack] <p>The details for the created stack.</p>
-function M.CreateStackResult(_Stack, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Stack [Stack] <p>The details for the created stack.</p>
+-- @return CreateStackResult structure as a key-value pair table
+function M.CreateStackResult(args)
+	assert(args, "You must provdide an argument table when creating CreateStackResult")
 	local t = { 
-		["Stack"] = _Stack,
+		["Stack"] = args["Stack"],
 	}
 	asserts.AssertCreateStackResult(t)
 	return t
@@ -776,36 +857,39 @@ end
 
 --- Create a structure of type Image
 -- <p>New streaming instances are booted from images. The image stores the application catalog and is connected to fleets.</p>
--- @param _PublicBaseImageReleasedDate [Timestamp] <p>The AWS release date of the public base image. For private images, this date is the release date of the base image from which the image was created.</p>
--- @param _DisplayName [String] <p>The display name for the image.</p>
--- @param _Name [String] <p>The unique identifier for the image.</p>
--- @param _Applications [Applications] <p>The applications associated with an image.</p>
--- @param _BaseImageArn [Arn] <p>The source image ARN from which this image was created.</p>
--- @param _Visibility [VisibilityType] <p>The visibility of an image to the user; images can be public or private.</p>
--- @param _Platform [PlatformType] <p>The operating system platform of the image.</p>
--- @param _State [ImageState] <p>The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and <b>FAILED</b> if image creation has failed.</p>
--- @param _CreatedTime [Timestamp] <p>The timestamp when the image was created.</p>
--- @param _Description [String] <p>A meaningful description for the image.</p>
--- @param _StateChangeReason [ImageStateChangeReason] <p>The reason why the last state change occurred.</p>
--- @param _Arn [Arn] <p>The ARN for the image.</p>
--- @param _ImageBuilderSupported [Boolean] <p>Whether an image builder can be launched from this image.</p>
--- Required parameter: Name
-function M.Image(_PublicBaseImageReleasedDate, _DisplayName, _Name, _Applications, _BaseImageArn, _Visibility, _Platform, _State, _CreatedTime, _Description, _StateChangeReason, _Arn, _ImageBuilderSupported, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Image")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PublicBaseImageReleasedDate [Timestamp] <p>The AWS release date of the public base image. For private images, this date is the release date of the base image from which the image was created.</p>
+-- * DisplayName [String] <p>The display name for the image.</p>
+-- * Name [String] <p>The unique identifier for the image.</p>
+-- * Applications [Applications] <p>The applications associated with an image.</p>
+-- * BaseImageArn [Arn] <p>The source image ARN from which this image was created.</p>
+-- * Visibility [VisibilityType] <p>The visibility of an image to the user; images can be public or private.</p>
+-- * Platform [PlatformType] <p>The operating system platform of the image.</p>
+-- * State [ImageState] <p>The image starts in the <b>PENDING</b> state, and then moves to <b>AVAILABLE</b> if image creation succeeds and <b>FAILED</b> if image creation has failed.</p>
+-- * CreatedTime [Timestamp] <p>The timestamp when the image was created.</p>
+-- * Description [String] <p>A meaningful description for the image.</p>
+-- * StateChangeReason [ImageStateChangeReason] <p>The reason why the last state change occurred.</p>
+-- * Arn [Arn] <p>The ARN for the image.</p>
+-- * ImageBuilderSupported [Boolean] <p>Whether an image builder can be launched from this image.</p>
+-- Required key: Name
+-- @return Image structure as a key-value pair table
+function M.Image(args)
+	assert(args, "You must provdide an argument table when creating Image")
 	local t = { 
-		["PublicBaseImageReleasedDate"] = _PublicBaseImageReleasedDate,
-		["DisplayName"] = _DisplayName,
-		["Name"] = _Name,
-		["Applications"] = _Applications,
-		["BaseImageArn"] = _BaseImageArn,
-		["Visibility"] = _Visibility,
-		["Platform"] = _Platform,
-		["State"] = _State,
-		["CreatedTime"] = _CreatedTime,
-		["Description"] = _Description,
-		["StateChangeReason"] = _StateChangeReason,
-		["Arn"] = _Arn,
-		["ImageBuilderSupported"] = _ImageBuilderSupported,
+		["PublicBaseImageReleasedDate"] = args["PublicBaseImageReleasedDate"],
+		["DisplayName"] = args["DisplayName"],
+		["Name"] = args["Name"],
+		["Applications"] = args["Applications"],
+		["BaseImageArn"] = args["BaseImageArn"],
+		["Visibility"] = args["Visibility"],
+		["Platform"] = args["Platform"],
+		["State"] = args["State"],
+		["CreatedTime"] = args["CreatedTime"],
+		["Description"] = args["Description"],
+		["StateChangeReason"] = args["StateChangeReason"],
+		["Arn"] = args["Arn"],
+		["ImageBuilderSupported"] = args["ImageBuilderSupported"],
 	}
 	asserts.AssertImage(t)
 	return t
@@ -834,26 +918,29 @@ end
 
 --- Create a structure of type Session
 -- <p>Contains the parameters for a streaming session.</p>
--- @param _AuthenticationType [AuthenticationType] <p>The authentication method of the user for whom the session was created. It can be <code>API</code> for a user authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.</p>
--- @param _UserId [UserId] <p>The identifier of the user for whom the session was created.</p>
--- @param _FleetName [String] <p>The name of the fleet for which the streaming session was created.</p>
--- @param _StackName [String] <p>The name of the stack for which the streaming session was created.</p>
--- @param _State [SessionState] <p>The current state of the streaming session.</p>
--- @param _Id [String] <p>The unique ID for a streaming session.</p>
--- Required parameter: Id
--- Required parameter: UserId
--- Required parameter: StackName
--- Required parameter: FleetName
--- Required parameter: State
-function M.Session(_AuthenticationType, _UserId, _FleetName, _StackName, _State, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Session")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationType [AuthenticationType] <p>The authentication method of the user for whom the session was created. It can be <code>API</code> for a user authenticated using a streaming URL or <code>SAML</code> for a SAML federated user.</p>
+-- * UserId [UserId] <p>The identifier of the user for whom the session was created.</p>
+-- * FleetName [String] <p>The name of the fleet for which the streaming session was created.</p>
+-- * StackName [String] <p>The name of the stack for which the streaming session was created.</p>
+-- * State [SessionState] <p>The current state of the streaming session.</p>
+-- * Id [String] <p>The unique ID for a streaming session.</p>
+-- Required key: Id
+-- Required key: UserId
+-- Required key: StackName
+-- Required key: FleetName
+-- Required key: State
+-- @return Session structure as a key-value pair table
+function M.Session(args)
+	assert(args, "You must provdide an argument table when creating Session")
 	local t = { 
-		["AuthenticationType"] = _AuthenticationType,
-		["UserId"] = _UserId,
-		["FleetName"] = _FleetName,
-		["StackName"] = _StackName,
-		["State"] = _State,
-		["Id"] = _Id,
+		["AuthenticationType"] = args["AuthenticationType"],
+		["UserId"] = args["UserId"],
+		["FleetName"] = args["FleetName"],
+		["StackName"] = args["StackName"],
+		["State"] = args["State"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertSession(t)
 	return t
@@ -873,12 +960,15 @@ end
 
 --- Create a structure of type StopFleetRequest
 --  
--- @param _Name [String] <p>The name of the fleet to stop.</p>
--- Required parameter: Name
-function M.StopFleetRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopFleetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>The name of the fleet to stop.</p>
+-- Required key: Name
+-- @return StopFleetRequest structure as a key-value pair table
+function M.StopFleetRequest(args)
+	assert(args, "You must provdide an argument table when creating StopFleetRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertStopFleetRequest(t)
 	return t
@@ -898,13 +988,16 @@ end
 
 --- Create a structure of type ImageStateChangeReason
 -- <p>The reason why the last state change occurred.</p>
--- @param _Message [String] <p>The state change reason message to the end user.</p>
--- @param _Code [ImageStateChangeReasonCode] <p>The state change reason code of the image.</p>
-function M.ImageStateChangeReason(_Message, _Code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImageStateChangeReason")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>The state change reason message to the end user.</p>
+-- * Code [ImageStateChangeReasonCode] <p>The state change reason code of the image.</p>
+-- @return ImageStateChangeReason structure as a key-value pair table
+function M.ImageStateChangeReason(args)
+	assert(args, "You must provdide an argument table when creating ImageStateChangeReason")
 	local t = { 
-		["Message"] = _Message,
-		["Code"] = _Code,
+		["Message"] = args["Message"],
+		["Code"] = args["Code"],
 	}
 	asserts.AssertImageStateChangeReason(t)
 	return t
@@ -922,8 +1015,11 @@ end
 
 --- Create a structure of type ExpireSessionResult
 --  
-function M.ExpireSessionResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExpireSessionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ExpireSessionResult structure as a key-value pair table
+function M.ExpireSessionResult(args)
+	assert(args, "You must provdide an argument table when creating ExpireSessionResult")
 	local t = { 
 	}
 	asserts.AssertExpireSessionResult(t)
@@ -945,14 +1041,17 @@ end
 
 --- Create a structure of type ListAssociatedFleetsRequest
 --  
--- @param _StackName [String] <p>The name of the stack whose associated fleets are listed.</p>
--- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
--- Required parameter: StackName
-function M.ListAssociatedFleetsRequest(_StackName, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedFleetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackName [String] <p>The name of the stack whose associated fleets are listed.</p>
+-- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- Required key: StackName
+-- @return ListAssociatedFleetsRequest structure as a key-value pair table
+function M.ListAssociatedFleetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAssociatedFleetsRequest")
 	local t = { 
-		["StackName"] = _StackName,
-		["NextToken"] = _NextToken,
+		["StackName"] = args["StackName"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListAssociatedFleetsRequest(t)
 	return t
@@ -972,13 +1071,16 @@ end
 
 --- Create a structure of type DescribeStacksResult
 --  
--- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _Stacks [StackList] <p>The list of stack details.</p>
-function M.DescribeStacksResult(_NextToken, _Stacks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * Stacks [StackList] <p>The list of stack details.</p>
+-- @return DescribeStacksResult structure as a key-value pair table
+function M.DescribeStacksResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeStacksResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Stacks"] = _Stacks,
+		["NextToken"] = args["NextToken"],
+		["Stacks"] = args["Stacks"],
 	}
 	asserts.AssertDescribeStacksResult(t)
 	return t
@@ -1010,33 +1112,36 @@ end
 
 --- Create a structure of type CreateFleetRequest
 -- <p>Contains the parameters for the new fleet to create.</p>
--- @param _DisplayName [DisplayName] <p>The display name of the fleet.</p>
--- @param _MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.</p>
--- @param _VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
--- @param _DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600. </p>
--- @param _EnableDefaultInternetAccess [BooleanObject] <p>Enables or disables default Internet access for the fleet.</p>
--- @param _ImageName [String] <p>Unique name of the image used by the fleet.</p>
--- @param _ComputeCapacity [ComputeCapacity] <p>The parameters for the capacity allocated to the fleet.</p>
--- @param _Description [Description] <p>The description of the fleet.</p>
--- @param _InstanceType [String] <p>The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.</p>
--- @param _Name [Name] <p>A unique identifier for the fleet.</p>
--- Required parameter: Name
--- Required parameter: ImageName
--- Required parameter: InstanceType
--- Required parameter: ComputeCapacity
-function M.CreateFleetRequest(_DisplayName, _MaxUserDurationInSeconds, _VpcConfig, _DisconnectTimeoutInSeconds, _EnableDefaultInternetAccess, _ImageName, _ComputeCapacity, _Description, _InstanceType, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFleetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisplayName [DisplayName] <p>The display name of the fleet.</p>
+-- * MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.</p>
+-- * VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
+-- * DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600. </p>
+-- * EnableDefaultInternetAccess [BooleanObject] <p>Enables or disables default Internet access for the fleet.</p>
+-- * ImageName [String] <p>Unique name of the image used by the fleet.</p>
+-- * ComputeCapacity [ComputeCapacity] <p>The parameters for the capacity allocated to the fleet.</p>
+-- * Description [Description] <p>The description of the fleet.</p>
+-- * InstanceType [String] <p>The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.</p>
+-- * Name [Name] <p>A unique identifier for the fleet.</p>
+-- Required key: Name
+-- Required key: ImageName
+-- Required key: InstanceType
+-- Required key: ComputeCapacity
+-- @return CreateFleetRequest structure as a key-value pair table
+function M.CreateFleetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateFleetRequest")
 	local t = { 
-		["DisplayName"] = _DisplayName,
-		["MaxUserDurationInSeconds"] = _MaxUserDurationInSeconds,
-		["VpcConfig"] = _VpcConfig,
-		["DisconnectTimeoutInSeconds"] = _DisconnectTimeoutInSeconds,
-		["EnableDefaultInternetAccess"] = _EnableDefaultInternetAccess,
-		["ImageName"] = _ImageName,
-		["ComputeCapacity"] = _ComputeCapacity,
-		["Description"] = _Description,
-		["InstanceType"] = _InstanceType,
-		["Name"] = _Name,
+		["DisplayName"] = args["DisplayName"],
+		["MaxUserDurationInSeconds"] = args["MaxUserDurationInSeconds"],
+		["VpcConfig"] = args["VpcConfig"],
+		["DisconnectTimeoutInSeconds"] = args["DisconnectTimeoutInSeconds"],
+		["EnableDefaultInternetAccess"] = args["EnableDefaultInternetAccess"],
+		["ImageName"] = args["ImageName"],
+		["ComputeCapacity"] = args["ComputeCapacity"],
+		["Description"] = args["Description"],
+		["InstanceType"] = args["InstanceType"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateFleetRequest(t)
 	return t
@@ -1055,11 +1160,14 @@ end
 
 --- Create a structure of type UpdateFleetResult
 --  
--- @param _Fleet [Fleet] <p>A list of fleet details.</p>
-function M.UpdateFleetResult(_Fleet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Fleet [Fleet] <p>A list of fleet details.</p>
+-- @return UpdateFleetResult structure as a key-value pair table
+function M.UpdateFleetResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateFleetResult")
 	local t = { 
-		["Fleet"] = _Fleet,
+		["Fleet"] = args["Fleet"],
 	}
 	asserts.AssertUpdateFleetResult(t)
 	return t
@@ -1078,11 +1186,14 @@ end
 
 --- Create a structure of type InvalidRoleException
 -- <p>The specified role is invalid.</p>
--- @param _Message [ErrorMessage] 
-function M.InvalidRoleException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRoleException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return InvalidRoleException structure as a key-value pair table
+function M.InvalidRoleException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRoleException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidRoleException(t)
 	return t
@@ -1103,14 +1214,17 @@ end
 
 --- Create a structure of type ListAssociatedStacksRequest
 --  
--- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
--- @param _FleetName [String] <p>The name of the fleet whose associated stacks are listed.</p>
--- Required parameter: FleetName
-function M.ListAssociatedStacksRequest(_NextToken, _FleetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociatedStacksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- * FleetName [String] <p>The name of the fleet whose associated stacks are listed.</p>
+-- Required key: FleetName
+-- @return ListAssociatedStacksRequest structure as a key-value pair table
+function M.ListAssociatedStacksRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAssociatedStacksRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["FleetName"] = _FleetName,
+		["NextToken"] = args["NextToken"],
+		["FleetName"] = args["FleetName"],
 	}
 	asserts.AssertListAssociatedStacksRequest(t)
 	return t
@@ -1128,8 +1242,11 @@ end
 
 --- Create a structure of type DeleteStackResult
 --  
-function M.DeleteStackResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStackResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteStackResult structure as a key-value pair table
+function M.DeleteStackResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteStackResult")
 	local t = { 
 	}
 	asserts.AssertDeleteStackResult(t)
@@ -1168,43 +1285,46 @@ end
 
 --- Create a structure of type Fleet
 -- <p>Contains the parameters for a fleet.</p>
--- @param _ComputeCapacityStatus [ComputeCapacityStatus] <p>The capacity information for the fleet.</p>
--- @param _DisplayName [String] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
--- @param _Name [String] <p>The name of the fleet.</p>
--- @param _VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
--- @param _FleetErrors [FleetErrors] <p>The list of fleet errors is appended to this list.</p>
--- @param _DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.</p>
--- @param _EnableDefaultInternetAccess [BooleanObject] <p>Whether default Internet access is enabled for the fleet. </p>
--- @param _State [FleetState] <p>The current state for the fleet.</p>
--- @param _ImageName [String] <p>The image used by the fleet.</p>
--- @param _CreatedTime [Timestamp] <p>The time at which the fleet was created.</p>
--- @param _MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The value can be any numeric value in seconds between 600 and 57600.</p>
--- @param _InstanceType [String] <p>The instance type of compute resources for the fleet. The fleet instances are launched from this instance type. </p>
--- @param _Arn [Arn] <p>The ARN for the fleet.</p>
--- @param _Description [String] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
--- Required parameter: Arn
--- Required parameter: Name
--- Required parameter: ImageName
--- Required parameter: InstanceType
--- Required parameter: ComputeCapacityStatus
--- Required parameter: State
-function M.Fleet(_ComputeCapacityStatus, _DisplayName, _Name, _VpcConfig, _FleetErrors, _DisconnectTimeoutInSeconds, _EnableDefaultInternetAccess, _State, _ImageName, _CreatedTime, _MaxUserDurationInSeconds, _InstanceType, _Arn, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Fleet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComputeCapacityStatus [ComputeCapacityStatus] <p>The capacity information for the fleet.</p>
+-- * DisplayName [String] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- * Name [String] <p>The name of the fleet.</p>
+-- * VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
+-- * FleetErrors [FleetErrors] <p>The list of fleet errors is appended to this list.</p>
+-- * DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.</p>
+-- * EnableDefaultInternetAccess [BooleanObject] <p>Whether default Internet access is enabled for the fleet. </p>
+-- * State [FleetState] <p>The current state for the fleet.</p>
+-- * ImageName [String] <p>The image used by the fleet.</p>
+-- * CreatedTime [Timestamp] <p>The time at which the fleet was created.</p>
+-- * MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The value can be any numeric value in seconds between 600 and 57600.</p>
+-- * InstanceType [String] <p>The instance type of compute resources for the fleet. The fleet instances are launched from this instance type. </p>
+-- * Arn [Arn] <p>The ARN for the fleet.</p>
+-- * Description [String] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
+-- Required key: Arn
+-- Required key: Name
+-- Required key: ImageName
+-- Required key: InstanceType
+-- Required key: ComputeCapacityStatus
+-- Required key: State
+-- @return Fleet structure as a key-value pair table
+function M.Fleet(args)
+	assert(args, "You must provdide an argument table when creating Fleet")
 	local t = { 
-		["ComputeCapacityStatus"] = _ComputeCapacityStatus,
-		["DisplayName"] = _DisplayName,
-		["Name"] = _Name,
-		["VpcConfig"] = _VpcConfig,
-		["FleetErrors"] = _FleetErrors,
-		["DisconnectTimeoutInSeconds"] = _DisconnectTimeoutInSeconds,
-		["EnableDefaultInternetAccess"] = _EnableDefaultInternetAccess,
-		["State"] = _State,
-		["ImageName"] = _ImageName,
-		["CreatedTime"] = _CreatedTime,
-		["MaxUserDurationInSeconds"] = _MaxUserDurationInSeconds,
-		["InstanceType"] = _InstanceType,
-		["Arn"] = _Arn,
-		["Description"] = _Description,
+		["ComputeCapacityStatus"] = args["ComputeCapacityStatus"],
+		["DisplayName"] = args["DisplayName"],
+		["Name"] = args["Name"],
+		["VpcConfig"] = args["VpcConfig"],
+		["FleetErrors"] = args["FleetErrors"],
+		["DisconnectTimeoutInSeconds"] = args["DisconnectTimeoutInSeconds"],
+		["EnableDefaultInternetAccess"] = args["EnableDefaultInternetAccess"],
+		["State"] = args["State"],
+		["ImageName"] = args["ImageName"],
+		["CreatedTime"] = args["CreatedTime"],
+		["MaxUserDurationInSeconds"] = args["MaxUserDurationInSeconds"],
+		["InstanceType"] = args["InstanceType"],
+		["Arn"] = args["Arn"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertFleet(t)
 	return t
@@ -1224,13 +1344,16 @@ end
 
 --- Create a structure of type DescribeFleetsRequest
 --  
--- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
--- @param _Names [StringList] <p>The fleet names to describe. Use null to describe all the fleets for the AWS account.</p>
-function M.DescribeFleetsRequest(_NextToken, _Names, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- * Names [StringList] <p>The fleet names to describe. Use null to describe all the fleets for the AWS account.</p>
+-- @return DescribeFleetsRequest structure as a key-value pair table
+function M.DescribeFleetsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Names"] = _Names,
+		["NextToken"] = args["NextToken"],
+		["Names"] = args["Names"],
 	}
 	asserts.AssertDescribeFleetsRequest(t)
 	return t
@@ -1250,13 +1373,16 @@ end
 
 --- Create a structure of type DescribeFleetsResult
 --  
--- @param _Fleets [FleetList] <p>The list of fleet details.</p>
--- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
-function M.DescribeFleetsResult(_Fleets, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Fleets [FleetList] <p>The list of fleet details.</p>
+-- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- @return DescribeFleetsResult structure as a key-value pair table
+function M.DescribeFleetsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetsResult")
 	local t = { 
-		["Fleets"] = _Fleets,
-		["NextToken"] = _NextToken,
+		["Fleets"] = args["Fleets"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeFleetsResult(t)
 	return t
@@ -1275,11 +1401,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified resource was not found.</p>
--- @param _Message [ErrorMessage] 
-function M.ResourceNotFoundException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -1310,34 +1439,37 @@ end
 
 --- Create a structure of type UpdateFleetRequest
 --  
--- @param _AttributesToDelete [FleetAttributes] <p>Fleet attributes to be deleted.</p>
--- @param _DeleteVpcConfig [Boolean] <p>Delete the VPC association for the specified fleet.</p>
--- @param _DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
--- @param _MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.</p>
--- @param _VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
--- @param _DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.</p>
--- @param _EnableDefaultInternetAccess [BooleanObject] <p>Enables or disables default Internet access for the fleet.</p>
--- @param _ImageName [String] <p>The image name from which a fleet is created.</p>
--- @param _ComputeCapacity [ComputeCapacity] <p>The parameters for the capacity allocated to the fleet. </p>
--- @param _Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
--- @param _InstanceType [String] <p>The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.</p>
--- @param _Name [String] <p>The name of the fleet.</p>
--- Required parameter: Name
-function M.UpdateFleetRequest(_AttributesToDelete, _DeleteVpcConfig, _DisplayName, _MaxUserDurationInSeconds, _VpcConfig, _DisconnectTimeoutInSeconds, _EnableDefaultInternetAccess, _ImageName, _ComputeCapacity, _Description, _InstanceType, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributesToDelete [FleetAttributes] <p>Fleet attributes to be deleted.</p>
+-- * DeleteVpcConfig [Boolean] <p>Delete the VPC association for the specified fleet.</p>
+-- * DisplayName [DisplayName] <p>The name displayed to end users on the AppStream 2.0 portal.</p>
+-- * MaxUserDurationInSeconds [Integer] <p>The maximum time for which a streaming session can run. The input can be any numeric value in seconds between 600 and 57600.</p>
+-- * VpcConfig [VpcConfig] <p>The VPC configuration for the fleet.</p>
+-- * DisconnectTimeoutInSeconds [Integer] <p>The time after disconnection when a session is considered to have ended. If a user who got disconnected reconnects within this timeout interval, the user is connected back to their previous session. The input can be any numeric value in seconds between 60 and 57600.</p>
+-- * EnableDefaultInternetAccess [BooleanObject] <p>Enables or disables default Internet access for the fleet.</p>
+-- * ImageName [String] <p>The image name from which a fleet is created.</p>
+-- * ComputeCapacity [ComputeCapacity] <p>The parameters for the capacity allocated to the fleet. </p>
+-- * Description [Description] <p>The description displayed to end users on the AppStream 2.0 portal.</p>
+-- * InstanceType [String] <p>The instance type of compute resources for the fleet. Fleet instances are launched from this instance type.</p>
+-- * Name [String] <p>The name of the fleet.</p>
+-- Required key: Name
+-- @return UpdateFleetRequest structure as a key-value pair table
+function M.UpdateFleetRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateFleetRequest")
 	local t = { 
-		["AttributesToDelete"] = _AttributesToDelete,
-		["DeleteVpcConfig"] = _DeleteVpcConfig,
-		["DisplayName"] = _DisplayName,
-		["MaxUserDurationInSeconds"] = _MaxUserDurationInSeconds,
-		["VpcConfig"] = _VpcConfig,
-		["DisconnectTimeoutInSeconds"] = _DisconnectTimeoutInSeconds,
-		["EnableDefaultInternetAccess"] = _EnableDefaultInternetAccess,
-		["ImageName"] = _ImageName,
-		["ComputeCapacity"] = _ComputeCapacity,
-		["Description"] = _Description,
-		["InstanceType"] = _InstanceType,
-		["Name"] = _Name,
+		["AttributesToDelete"] = args["AttributesToDelete"],
+		["DeleteVpcConfig"] = args["DeleteVpcConfig"],
+		["DisplayName"] = args["DisplayName"],
+		["MaxUserDurationInSeconds"] = args["MaxUserDurationInSeconds"],
+		["VpcConfig"] = args["VpcConfig"],
+		["DisconnectTimeoutInSeconds"] = args["DisconnectTimeoutInSeconds"],
+		["EnableDefaultInternetAccess"] = args["EnableDefaultInternetAccess"],
+		["ImageName"] = args["ImageName"],
+		["ComputeCapacity"] = args["ComputeCapacity"],
+		["Description"] = args["Description"],
+		["InstanceType"] = args["InstanceType"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateFleetRequest(t)
 	return t
@@ -1357,13 +1489,16 @@ end
 
 --- Create a structure of type FleetError
 -- <p>The details of the fleet error.</p>
--- @param _ErrorCode [FleetErrorCode] <p>The error code for the fleet error.</p>
--- @param _ErrorMessage [String] <p>The error message generated when the fleet has errors.</p>
-function M.FleetError(_ErrorCode, _ErrorMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FleetError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [FleetErrorCode] <p>The error code for the fleet error.</p>
+-- * ErrorMessage [String] <p>The error message generated when the fleet has errors.</p>
+-- @return FleetError structure as a key-value pair table
+function M.FleetError(args)
+	assert(args, "You must provdide an argument table when creating FleetError")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["ErrorMessage"] = _ErrorMessage,
+		["ErrorCode"] = args["ErrorCode"],
+		["ErrorMessage"] = args["ErrorMessage"],
 	}
 	asserts.AssertFleetError(t)
 	return t
@@ -1389,23 +1524,26 @@ end
 
 --- Create a structure of type DescribeSessionsRequest
 --  
--- @param _AuthenticationType [AuthenticationType] <p>The authentication method of the user. It can be <code>API</code> for a user authenticated using a streaming URL, or <code>SAML</code> for a SAML federated user. If an authentication type is not provided, the operation defaults to users authenticated using a streaming URL.</p>
--- @param _FleetName [String] <p>The name of the fleet for which to list sessions.</p>
--- @param _UserId [UserId] <p>The user for whom to list sessions. Use null to describe all the sessions for the stack and fleet.</p>
--- @param _StackName [String] <p>The name of the stack for which to list sessions.</p>
--- @param _Limit [Integer] <p>The size of each page of results. The default value is 20 and the maximum supported value is 50.</p>
--- @param _NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
--- Required parameter: StackName
--- Required parameter: FleetName
-function M.DescribeSessionsRequest(_AuthenticationType, _FleetName, _UserId, _StackName, _Limit, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSessionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthenticationType [AuthenticationType] <p>The authentication method of the user. It can be <code>API</code> for a user authenticated using a streaming URL, or <code>SAML</code> for a SAML federated user. If an authentication type is not provided, the operation defaults to users authenticated using a streaming URL.</p>
+-- * FleetName [String] <p>The name of the fleet for which to list sessions.</p>
+-- * UserId [UserId] <p>The user for whom to list sessions. Use null to describe all the sessions for the stack and fleet.</p>
+-- * StackName [String] <p>The name of the stack for which to list sessions.</p>
+-- * Limit [Integer] <p>The size of each page of results. The default value is 20 and the maximum supported value is 50.</p>
+-- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.</p>
+-- Required key: StackName
+-- Required key: FleetName
+-- @return DescribeSessionsRequest structure as a key-value pair table
+function M.DescribeSessionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeSessionsRequest")
 	local t = { 
-		["AuthenticationType"] = _AuthenticationType,
-		["FleetName"] = _FleetName,
-		["UserId"] = _UserId,
-		["StackName"] = _StackName,
-		["Limit"] = _Limit,
-		["NextToken"] = _NextToken,
+		["AuthenticationType"] = args["AuthenticationType"],
+		["FleetName"] = args["FleetName"],
+		["UserId"] = args["UserId"],
+		["StackName"] = args["StackName"],
+		["Limit"] = args["Limit"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeSessionsRequest(t)
 	return t
@@ -1427,15 +1565,18 @@ end
 
 --- Create a structure of type AssociateFleetRequest
 --  
--- @param _StackName [String] <p>The name of the stack to which the fleet is associated.</p>
--- @param _FleetName [String] <p>The name of the fleet to associate.</p>
--- Required parameter: FleetName
--- Required parameter: StackName
-function M.AssociateFleetRequest(_StackName, _FleetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateFleetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackName [String] <p>The name of the stack to which the fleet is associated.</p>
+-- * FleetName [String] <p>The name of the fleet to associate.</p>
+-- Required key: FleetName
+-- Required key: StackName
+-- @return AssociateFleetRequest structure as a key-value pair table
+function M.AssociateFleetRequest(args)
+	assert(args, "You must provdide an argument table when creating AssociateFleetRequest")
 	local t = { 
-		["StackName"] = _StackName,
-		["FleetName"] = _FleetName,
+		["StackName"] = args["StackName"],
+		["FleetName"] = args["FleetName"],
 	}
 	asserts.AssertAssociateFleetRequest(t)
 	return t
@@ -1454,11 +1595,14 @@ end
 
 --- Create a structure of type ResourceNotAvailableException
 -- <p>The specified resource exists and is not in use, but isn't available.</p>
--- @param _Message [ErrorMessage] 
-function M.ResourceNotAvailableException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotAvailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return ResourceNotAvailableException structure as a key-value pair table
+function M.ResourceNotAvailableException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotAvailableException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertResourceNotAvailableException(t)
 	return t
@@ -1477,11 +1621,14 @@ end
 
 --- Create a structure of type CreateFleetResult
 --  
--- @param _Fleet [Fleet] <p>The details for the created fleet.</p>
-function M.CreateFleetResult(_Fleet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFleetResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Fleet [Fleet] <p>The details for the created fleet.</p>
+-- @return CreateFleetResult structure as a key-value pair table
+function M.CreateFleetResult(args)
+	assert(args, "You must provdide an argument table when creating CreateFleetResult")
 	local t = { 
-		["Fleet"] = _Fleet,
+		["Fleet"] = args["Fleet"],
 	}
 	asserts.AssertCreateFleetResult(t)
 	return t
@@ -1502,14 +1649,17 @@ end
 
 --- Create a structure of type StorageConnector
 -- <p>Contains the parameters for a storage connector.</p>
--- @param _ConnectorType [StorageConnectorType] <p>The type of storage connector. The possible values include: HOMEFOLDERS.</p>
--- @param _ResourceIdentifier [ResourceIdentifier] <p>The ARN associated with the storage connector.</p>
--- Required parameter: ConnectorType
-function M.StorageConnector(_ConnectorType, _ResourceIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StorageConnector")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConnectorType [StorageConnectorType] <p>The type of storage connector. The possible values include: HOMEFOLDERS.</p>
+-- * ResourceIdentifier [ResourceIdentifier] <p>The ARN associated with the storage connector.</p>
+-- Required key: ConnectorType
+-- @return StorageConnector structure as a key-value pair table
+function M.StorageConnector(args)
+	assert(args, "You must provdide an argument table when creating StorageConnector")
 	local t = { 
-		["ConnectorType"] = _ConnectorType,
-		["ResourceIdentifier"] = _ResourceIdentifier,
+		["ConnectorType"] = args["ConnectorType"],
+		["ResourceIdentifier"] = args["ResourceIdentifier"],
 	}
 	asserts.AssertStorageConnector(t)
 	return t
@@ -1528,11 +1678,14 @@ end
 
 --- Create a structure of type DescribeImagesRequest
 --  
--- @param _Names [StringList] <p>A specific list of images to describe.</p>
-function M.DescribeImagesRequest(_Names, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Names [StringList] <p>A specific list of images to describe.</p>
+-- @return DescribeImagesRequest structure as a key-value pair table
+function M.DescribeImagesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeImagesRequest")
 	local t = { 
-		["Names"] = _Names,
+		["Names"] = args["Names"],
 	}
 	asserts.AssertDescribeImagesRequest(t)
 	return t
@@ -1552,13 +1705,16 @@ end
 
 --- Create a structure of type StackError
 -- <p>Contains the parameters for a stack error.</p>
--- @param _ErrorCode [StackErrorCode] <p>The error code of a stack error.</p>
--- @param _ErrorMessage [String] <p>The error message of a stack error.</p>
-function M.StackError(_ErrorCode, _ErrorMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StackError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [StackErrorCode] <p>The error code of a stack error.</p>
+-- * ErrorMessage [String] <p>The error message of a stack error.</p>
+-- @return StackError structure as a key-value pair table
+function M.StackError(args)
+	assert(args, "You must provdide an argument table when creating StackError")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["ErrorMessage"] = _ErrorMessage,
+		["ErrorCode"] = args["ErrorCode"],
+		["ErrorMessage"] = args["ErrorMessage"],
 	}
 	asserts.AssertStackError(t)
 	return t
@@ -1576,8 +1732,11 @@ end
 
 --- Create a structure of type DeleteFleetResult
 --  
-function M.DeleteFleetResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFleetResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteFleetResult structure as a key-value pair table
+function M.DeleteFleetResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteFleetResult")
 	local t = { 
 	}
 	asserts.AssertDeleteFleetResult(t)
@@ -1596,8 +1755,11 @@ end
 
 --- Create a structure of type AssociateFleetResult
 --  
-function M.AssociateFleetResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateFleetResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AssociateFleetResult structure as a key-value pair table
+function M.AssociateFleetResult(args)
+	assert(args, "You must provdide an argument table when creating AssociateFleetResult")
 	local t = { 
 	}
 	asserts.AssertAssociateFleetResult(t)
@@ -1618,13 +1780,16 @@ end
 
 --- Create a structure of type CreateStreamingURLResult
 --  
--- @param _Expires [Timestamp] <p>Elapsed seconds after the Unix epoch, at which time this URL expires.</p>
--- @param _StreamingURL [String] <p>The URL to start the AppStream 2.0 streaming session.</p>
-function M.CreateStreamingURLResult(_Expires, _StreamingURL, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamingURLResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Expires [Timestamp] <p>Elapsed seconds after the Unix epoch, at which time this URL expires.</p>
+-- * StreamingURL [String] <p>The URL to start the AppStream 2.0 streaming session.</p>
+-- @return CreateStreamingURLResult structure as a key-value pair table
+function M.CreateStreamingURLResult(args)
+	assert(args, "You must provdide an argument table when creating CreateStreamingURLResult")
 	local t = { 
-		["Expires"] = _Expires,
-		["StreamingURL"] = _StreamingURL,
+		["Expires"] = args["Expires"],
+		["StreamingURL"] = args["StreamingURL"],
 	}
 	asserts.AssertCreateStreamingURLResult(t)
 	return t
@@ -1646,15 +1811,18 @@ end
 
 --- Create a structure of type DisassociateFleetRequest
 --  
--- @param _StackName [String] <p>The name of the stack with which the fleet is associated.</p>
--- @param _FleetName [String] <p>The name of the fleet to disassociate.</p>
--- Required parameter: FleetName
--- Required parameter: StackName
-function M.DisassociateFleetRequest(_StackName, _FleetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateFleetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackName [String] <p>The name of the stack with which the fleet is associated.</p>
+-- * FleetName [String] <p>The name of the fleet to disassociate.</p>
+-- Required key: FleetName
+-- Required key: StackName
+-- @return DisassociateFleetRequest structure as a key-value pair table
+function M.DisassociateFleetRequest(args)
+	assert(args, "You must provdide an argument table when creating DisassociateFleetRequest")
 	local t = { 
-		["StackName"] = _StackName,
-		["FleetName"] = _FleetName,
+		["StackName"] = args["StackName"],
+		["FleetName"] = args["FleetName"],
 	}
 	asserts.AssertDisassociateFleetRequest(t)
 	return t
@@ -1674,13 +1842,16 @@ end
 
 --- Create a structure of type VpcConfig
 -- <p>VPC configuration information.</p>
--- @param _SubnetIds [SubnetIdList] <p>The list of subnets to which a network interface is established from the fleet instance.</p>
--- @param _SecurityGroupIds [SecurityGroupIdList] <p>Security groups associated with the fleet.</p>
-function M.VpcConfig(_SubnetIds, _SecurityGroupIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VpcConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetIds [SubnetIdList] <p>The list of subnets to which a network interface is established from the fleet instance.</p>
+-- * SecurityGroupIds [SecurityGroupIdList] <p>Security groups associated with the fleet.</p>
+-- @return VpcConfig structure as a key-value pair table
+function M.VpcConfig(args)
+	assert(args, "You must provdide an argument table when creating VpcConfig")
 	local t = { 
-		["SubnetIds"] = _SubnetIds,
-		["SecurityGroupIds"] = _SecurityGroupIds,
+		["SubnetIds"] = args["SubnetIds"],
+		["SecurityGroupIds"] = args["SecurityGroupIds"],
 	}
 	asserts.AssertVpcConfig(t)
 	return t
@@ -1699,11 +1870,14 @@ end
 
 --- Create a structure of type ResourceInUseException
 -- <p>The specified resource is in use.</p>
--- @param _Message [ErrorMessage] 
-function M.ResourceInUseException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return ResourceInUseException structure as a key-value pair table
+function M.ResourceInUseException(args)
+	assert(args, "You must provdide an argument table when creating ResourceInUseException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertResourceInUseException(t)
 	return t

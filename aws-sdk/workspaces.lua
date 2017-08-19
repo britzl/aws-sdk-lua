@@ -38,19 +38,22 @@ end
 
 --- Create a structure of type DefaultWorkspaceCreationProperties
 -- <p>Contains default WorkSpace creation information.</p>
--- @param _EnableInternetAccess [BooleanObject] <p>A public IP address will be attached to all WorkSpaces that are created or rebuilt.</p>
--- @param _EnableWorkDocs [BooleanObject] <p>Specifies if the directory is enabled for Amazon WorkDocs.</p>
--- @param _DefaultOu [DefaultOu] <p>The organizational unit (OU) in the directory that the WorkSpace machine accounts are placed in.</p>
--- @param _CustomSecurityGroupId [SecurityGroupId] <p>The identifier of any custom security groups that are applied to the WorkSpaces when they are created.</p>
--- @param _UserEnabledAsLocalAdministrator [BooleanObject] <p>The WorkSpace user is an administrator on the WorkSpace.</p>
-function M.DefaultWorkspaceCreationProperties(_EnableInternetAccess, _EnableWorkDocs, _DefaultOu, _CustomSecurityGroupId, _UserEnabledAsLocalAdministrator, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefaultWorkspaceCreationProperties")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnableInternetAccess [BooleanObject] <p>A public IP address will be attached to all WorkSpaces that are created or rebuilt.</p>
+-- * EnableWorkDocs [BooleanObject] <p>Specifies if the directory is enabled for Amazon WorkDocs.</p>
+-- * DefaultOu [DefaultOu] <p>The organizational unit (OU) in the directory that the WorkSpace machine accounts are placed in.</p>
+-- * CustomSecurityGroupId [SecurityGroupId] <p>The identifier of any custom security groups that are applied to the WorkSpaces when they are created.</p>
+-- * UserEnabledAsLocalAdministrator [BooleanObject] <p>The WorkSpace user is an administrator on the WorkSpace.</p>
+-- @return DefaultWorkspaceCreationProperties structure as a key-value pair table
+function M.DefaultWorkspaceCreationProperties(args)
+	assert(args, "You must provdide an argument table when creating DefaultWorkspaceCreationProperties")
 	local t = { 
-		["EnableInternetAccess"] = _EnableInternetAccess,
-		["EnableWorkDocs"] = _EnableWorkDocs,
-		["DefaultOu"] = _DefaultOu,
-		["CustomSecurityGroupId"] = _CustomSecurityGroupId,
-		["UserEnabledAsLocalAdministrator"] = _UserEnabledAsLocalAdministrator,
+		["EnableInternetAccess"] = args["EnableInternetAccess"],
+		["EnableWorkDocs"] = args["EnableWorkDocs"],
+		["DefaultOu"] = args["DefaultOu"],
+		["CustomSecurityGroupId"] = args["CustomSecurityGroupId"],
+		["UserEnabledAsLocalAdministrator"] = args["UserEnabledAsLocalAdministrator"],
 	}
 	asserts.AssertDefaultWorkspaceCreationProperties(t)
 	return t
@@ -68,8 +71,11 @@ end
 
 --- Create a structure of type DeleteTagsResult
 -- <p>The result of the <a>DeleteTags</a> operation.</p>
-function M.DeleteTagsResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteTagsResult structure as a key-value pair table
+function M.DeleteTagsResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteTagsResult")
 	local t = { 
 	}
 	asserts.AssertDeleteTagsResult(t)
@@ -89,11 +95,14 @@ end
 
 --- Create a structure of type TerminateWorkspacesResult
 -- <p>Contains the results of the <a>TerminateWorkspaces</a> operation.</p>
--- @param _FailedRequests [FailedTerminateWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be terminated.</p>
-function M.TerminateWorkspacesResult(_FailedRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminateWorkspacesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedRequests [FailedTerminateWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be terminated.</p>
+-- @return TerminateWorkspacesResult structure as a key-value pair table
+function M.TerminateWorkspacesResult(args)
+	assert(args, "You must provdide an argument table when creating TerminateWorkspacesResult")
 	local t = { 
-		["FailedRequests"] = _FailedRequests,
+		["FailedRequests"] = args["FailedRequests"],
 	}
 	asserts.AssertTerminateWorkspacesResult(t)
 	return t
@@ -112,11 +121,14 @@ end
 
 --- Create a structure of type RebootWorkspacesResult
 -- <p>Contains the results of the <a>RebootWorkspaces</a> operation.</p>
--- @param _FailedRequests [FailedRebootWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebooted.</p>
-function M.RebootWorkspacesResult(_FailedRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebootWorkspacesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedRequests [FailedRebootWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebooted.</p>
+-- @return RebootWorkspacesResult structure as a key-value pair table
+function M.RebootWorkspacesResult(args)
+	assert(args, "You must provdide an argument table when creating RebootWorkspacesResult")
 	local t = { 
-		["FailedRequests"] = _FailedRequests,
+		["FailedRequests"] = args["FailedRequests"],
 	}
 	asserts.AssertRebootWorkspacesResult(t)
 	return t
@@ -136,12 +148,15 @@ end
 
 --- Create a structure of type DescribeTagsRequest
 -- <p>The request of the <a>DescribeTags</a> operation.</p>
--- @param _ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
--- Required parameter: ResourceId
-function M.DescribeTagsRequest(_ResourceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
+-- Required key: ResourceId
+-- @return DescribeTagsRequest structure as a key-value pair table
+function M.DescribeTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagsRequest")
 	local t = { 
-		["ResourceId"] = _ResourceId,
+		["ResourceId"] = args["ResourceId"],
 	}
 	asserts.AssertDescribeTagsRequest(t)
 	return t
@@ -161,12 +176,15 @@ end
 
 --- Create a structure of type StopWorkspacesRequest
 --  
--- @param _StopWorkspaceRequests [StopWorkspaceRequests] <p>The requests.</p>
--- Required parameter: StopWorkspaceRequests
-function M.StopWorkspacesRequest(_StopWorkspaceRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopWorkspacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StopWorkspaceRequests [StopWorkspaceRequests] <p>The requests.</p>
+-- Required key: StopWorkspaceRequests
+-- @return StopWorkspacesRequest structure as a key-value pair table
+function M.StopWorkspacesRequest(args)
+	assert(args, "You must provdide an argument table when creating StopWorkspacesRequest")
 	local t = { 
-		["StopWorkspaceRequests"] = _StopWorkspaceRequests,
+		["StopWorkspaceRequests"] = args["StopWorkspaceRequests"],
 	}
 	asserts.AssertStopWorkspacesRequest(t)
 	return t
@@ -186,12 +204,15 @@ end
 
 --- Create a structure of type RebootWorkspacesRequest
 -- <p>Contains the inputs for the <a>RebootWorkspaces</a> operation.</p>
--- @param _RebootWorkspaceRequests [RebootWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to reboot.</p>
--- Required parameter: RebootWorkspaceRequests
-function M.RebootWorkspacesRequest(_RebootWorkspaceRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebootWorkspacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RebootWorkspaceRequests [RebootWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to reboot.</p>
+-- Required key: RebootWorkspaceRequests
+-- @return RebootWorkspacesRequest structure as a key-value pair table
+function M.RebootWorkspacesRequest(args)
+	assert(args, "You must provdide an argument table when creating RebootWorkspacesRequest")
 	local t = { 
-		["RebootWorkspaceRequests"] = _RebootWorkspaceRequests,
+		["RebootWorkspaceRequests"] = args["RebootWorkspaceRequests"],
 	}
 	asserts.AssertRebootWorkspacesRequest(t)
 	return t
@@ -211,13 +232,16 @@ end
 
 --- Create a structure of type ResourceUnavailableException
 -- <p>The specified resource is not available.</p>
--- @param _ResourceId [NonEmptyString] <p>The identifier of the resource that is not available.</p>
--- @param _message [ExceptionMessage] <p>The exception error message.</p>
-function M.ResourceUnavailableException(_ResourceId, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [NonEmptyString] <p>The identifier of the resource that is not available.</p>
+-- * message [ExceptionMessage] <p>The exception error message.</p>
+-- @return ResourceUnavailableException structure as a key-value pair table
+function M.ResourceUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating ResourceUnavailableException")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["message"] = _message,
+		["ResourceId"] = args["ResourceId"],
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceUnavailableException(t)
 	return t
@@ -239,15 +263,18 @@ end
 
 --- Create a structure of type CreateTagsRequest
 -- <p>The request of the <a>CreateTags</a> operation.</p>
--- @param _ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
--- @param _Tags [TagList] <p>The tags of the request.</p>
--- Required parameter: ResourceId
--- Required parameter: Tags
-function M.CreateTagsRequest(_ResourceId, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
+-- * Tags [TagList] <p>The tags of the request.</p>
+-- Required key: ResourceId
+-- Required key: Tags
+-- @return CreateTagsRequest structure as a key-value pair table
+function M.CreateTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateTagsRequest")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["Tags"] = _Tags,
+		["ResourceId"] = args["ResourceId"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertCreateTagsRequest(t)
 	return t
@@ -268,14 +295,17 @@ end
 
 --- Create a structure of type Tag
 -- <p>Describes the tag of the WorkSpace.</p>
--- @param _Value [TagValue] <p>The value of the tag.</p>
--- @param _Key [TagKey] <p>The key of the tag.</p>
--- Required parameter: Key
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The value of the tag.</p>
+-- * Key [TagKey] <p>The key of the tag.</p>
+-- Required key: Key
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -294,11 +324,14 @@ end
 
 --- Create a structure of type OperationInProgressException
 -- <p>The properties of this WorkSpace are currently being modified. Try again in a moment.</p>
--- @param _message [ExceptionMessage] 
-function M.OperationInProgressException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationInProgressException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] 
+-- @return OperationInProgressException structure as a key-value pair table
+function M.OperationInProgressException(args)
+	assert(args, "You must provdide an argument table when creating OperationInProgressException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertOperationInProgressException(t)
 	return t
@@ -317,11 +350,14 @@ end
 
 --- Create a structure of type ResourceLimitExceededException
 -- <p>Your resource limits have been exceeded.</p>
--- @param _message [ExceptionMessage] <p>The exception error message.</p>
-function M.ResourceLimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The exception error message.</p>
+-- @return ResourceLimitExceededException structure as a key-value pair table
+function M.ResourceLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating ResourceLimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceLimitExceededException(t)
 	return t
@@ -340,11 +376,14 @@ end
 
 --- Create a structure of type InvalidResourceStateException
 -- <p>The state of the WorkSpace is not valid for this operation.</p>
--- @param _message [ExceptionMessage] 
-function M.InvalidResourceStateException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] 
+-- @return InvalidResourceStateException structure as a key-value pair table
+function M.InvalidResourceStateException(args)
+	assert(args, "You must provdide an argument table when creating InvalidResourceStateException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidResourceStateException(t)
 	return t
@@ -374,33 +413,36 @@ end
 
 --- Create a structure of type WorkspaceDirectory
 -- <p>Contains information about an AWS Directory Service directory for use with Amazon WorkSpaces.</p>
--- @param _CustomerUserName [UserName] <p>The user name for the service account.</p>
--- @param _DirectoryId [DirectoryId] <p>The directory identifier.</p>
--- @param _DirectoryName [DirectoryName] <p>The name of the directory.</p>
--- @param _SubnetIds [SubnetIds] <p>An array of strings that contains the identifiers of the subnets used with the directory.</p>
--- @param _WorkspaceCreationProperties [DefaultWorkspaceCreationProperties] <p>A structure that specifies the default creation properties for all WorkSpaces in the directory.</p>
--- @param _Alias [Alias] <p>The directory alias.</p>
--- @param _State [WorkspaceDirectoryState] <p>The state of the directory's registration with Amazon WorkSpaces</p>
--- @param _DirectoryType [WorkspaceDirectoryType] <p>The directory type.</p>
--- @param _RegistrationCode [RegistrationCode] <p>The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.</p>
--- @param _IamRoleId [ARN] <p>The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.</p>
--- @param _DnsIpAddresses [DnsIpAddresses] <p>An array of strings that contains the IP addresses of the DNS servers for the directory.</p>
--- @param _WorkspaceSecurityGroupId [SecurityGroupId] <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
-function M.WorkspaceDirectory(_CustomerUserName, _DirectoryId, _DirectoryName, _SubnetIds, _WorkspaceCreationProperties, _Alias, _State, _DirectoryType, _RegistrationCode, _IamRoleId, _DnsIpAddresses, _WorkspaceSecurityGroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceDirectory")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CustomerUserName [UserName] <p>The user name for the service account.</p>
+-- * DirectoryId [DirectoryId] <p>The directory identifier.</p>
+-- * DirectoryName [DirectoryName] <p>The name of the directory.</p>
+-- * SubnetIds [SubnetIds] <p>An array of strings that contains the identifiers of the subnets used with the directory.</p>
+-- * WorkspaceCreationProperties [DefaultWorkspaceCreationProperties] <p>A structure that specifies the default creation properties for all WorkSpaces in the directory.</p>
+-- * Alias [Alias] <p>The directory alias.</p>
+-- * State [WorkspaceDirectoryState] <p>The state of the directory's registration with Amazon WorkSpaces</p>
+-- * DirectoryType [WorkspaceDirectoryType] <p>The directory type.</p>
+-- * RegistrationCode [RegistrationCode] <p>The registration code for the directory. This is the code that users enter in their Amazon WorkSpaces client application to connect to the directory.</p>
+-- * IamRoleId [ARN] <p>The identifier of the IAM role. This is the role that allows Amazon WorkSpaces to make calls to other services, such as Amazon EC2, on your behalf.</p>
+-- * DnsIpAddresses [DnsIpAddresses] <p>An array of strings that contains the IP addresses of the DNS servers for the directory.</p>
+-- * WorkspaceSecurityGroupId [SecurityGroupId] <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
+-- @return WorkspaceDirectory structure as a key-value pair table
+function M.WorkspaceDirectory(args)
+	assert(args, "You must provdide an argument table when creating WorkspaceDirectory")
 	local t = { 
-		["CustomerUserName"] = _CustomerUserName,
-		["DirectoryId"] = _DirectoryId,
-		["DirectoryName"] = _DirectoryName,
-		["SubnetIds"] = _SubnetIds,
-		["WorkspaceCreationProperties"] = _WorkspaceCreationProperties,
-		["Alias"] = _Alias,
-		["State"] = _State,
-		["DirectoryType"] = _DirectoryType,
-		["RegistrationCode"] = _RegistrationCode,
-		["IamRoleId"] = _IamRoleId,
-		["DnsIpAddresses"] = _DnsIpAddresses,
-		["WorkspaceSecurityGroupId"] = _WorkspaceSecurityGroupId,
+		["CustomerUserName"] = args["CustomerUserName"],
+		["DirectoryId"] = args["DirectoryId"],
+		["DirectoryName"] = args["DirectoryName"],
+		["SubnetIds"] = args["SubnetIds"],
+		["WorkspaceCreationProperties"] = args["WorkspaceCreationProperties"],
+		["Alias"] = args["Alias"],
+		["State"] = args["State"],
+		["DirectoryType"] = args["DirectoryType"],
+		["RegistrationCode"] = args["RegistrationCode"],
+		["IamRoleId"] = args["IamRoleId"],
+		["DnsIpAddresses"] = args["DnsIpAddresses"],
+		["WorkspaceSecurityGroupId"] = args["WorkspaceSecurityGroupId"],
 	}
 	asserts.AssertWorkspaceDirectory(t)
 	return t
@@ -424,21 +466,24 @@ end
 
 --- Create a structure of type DescribeWorkspacesRequest
 -- <p>Contains the inputs for the <a>DescribeWorkspaces</a> operation.</p>
--- @param _UserName [UserName] <p>Used with the <code>DirectoryId</code> parameter to specify the directory user for whom to obtain the WorkSpace.</p>
--- @param _DirectoryId [DirectoryId] <p>Specifies the directory identifier to which to limit the WorkSpaces. Optionally, you can specify a specific directory user with the <code>UserName</code> parameter. This parameter cannot be combined with any other filter parameter.</p>
--- @param _Limit [Limit] <p>The maximum number of items to return.</p>
--- @param _WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces for which to retrieve information. This parameter cannot be combined with any other filter parameter.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, the identifier it returns is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information is returned.</p>
--- @param _NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
--- @param _BundleId [BundleId] <p>The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces that are created from this bundle will be retrieved. This parameter cannot be combined with any other filter parameter.</p>
-function M.DescribeWorkspacesRequest(_UserName, _DirectoryId, _Limit, _WorkspaceIds, _NextToken, _BundleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [UserName] <p>Used with the <code>DirectoryId</code> parameter to specify the directory user for whom to obtain the WorkSpace.</p>
+-- * DirectoryId [DirectoryId] <p>Specifies the directory identifier to which to limit the WorkSpaces. Optionally, you can specify a specific directory user with the <code>UserName</code> parameter. This parameter cannot be combined with any other filter parameter.</p>
+-- * Limit [Limit] <p>The maximum number of items to return.</p>
+-- * WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces for which to retrieve information. This parameter cannot be combined with any other filter parameter.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, the identifier it returns is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information is returned.</p>
+-- * NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+-- * BundleId [BundleId] <p>The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces that are created from this bundle will be retrieved. This parameter cannot be combined with any other filter parameter.</p>
+-- @return DescribeWorkspacesRequest structure as a key-value pair table
+function M.DescribeWorkspacesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkspacesRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["DirectoryId"] = _DirectoryId,
-		["Limit"] = _Limit,
-		["WorkspaceIds"] = _WorkspaceIds,
-		["NextToken"] = _NextToken,
-		["BundleId"] = _BundleId,
+		["UserName"] = args["UserName"],
+		["DirectoryId"] = args["DirectoryId"],
+		["Limit"] = args["Limit"],
+		["WorkspaceIds"] = args["WorkspaceIds"],
+		["NextToken"] = args["NextToken"],
+		["BundleId"] = args["BundleId"],
 	}
 	asserts.AssertDescribeWorkspacesRequest(t)
 	return t
@@ -460,15 +505,18 @@ end
 
 --- Create a structure of type ModifyWorkspacePropertiesRequest
 --  
--- @param _WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
--- @param _WorkspaceProperties [WorkspaceProperties] <p>The WorkSpace properties of the request.</p>
--- Required parameter: WorkspaceId
--- Required parameter: WorkspaceProperties
-function M.ModifyWorkspacePropertiesRequest(_WorkspaceId, _WorkspaceProperties, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyWorkspacePropertiesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
+-- * WorkspaceProperties [WorkspaceProperties] <p>The WorkSpace properties of the request.</p>
+-- Required key: WorkspaceId
+-- Required key: WorkspaceProperties
+-- @return ModifyWorkspacePropertiesRequest structure as a key-value pair table
+function M.ModifyWorkspacePropertiesRequest(args)
+	assert(args, "You must provdide an argument table when creating ModifyWorkspacePropertiesRequest")
 	local t = { 
-		["WorkspaceId"] = _WorkspaceId,
-		["WorkspaceProperties"] = _WorkspaceProperties,
+		["WorkspaceId"] = args["WorkspaceId"],
+		["WorkspaceProperties"] = args["WorkspaceProperties"],
 	}
 	asserts.AssertModifyWorkspacePropertiesRequest(t)
 	return t
@@ -490,17 +538,20 @@ end
 
 --- Create a structure of type WorkspaceConnectionStatus
 -- <p>Describes the connection status of a WorkSpace.</p>
--- @param _ConnectionState [ConnectionState] <p>The connection state of the WorkSpace. Returns UNKOWN if the WorkSpace is in a Stopped state.</p>
--- @param _ConnectionStateCheckTimestamp [Timestamp] <p>The timestamp of the connection state check.</p>
--- @param _WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
--- @param _LastKnownUserConnectionTimestamp [Timestamp] <p>The timestamp of the last known user connection.</p>
-function M.WorkspaceConnectionStatus(_ConnectionState, _ConnectionStateCheckTimestamp, _WorkspaceId, _LastKnownUserConnectionTimestamp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceConnectionStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConnectionState [ConnectionState] <p>The connection state of the WorkSpace. Returns UNKOWN if the WorkSpace is in a Stopped state.</p>
+-- * ConnectionStateCheckTimestamp [Timestamp] <p>The timestamp of the connection state check.</p>
+-- * WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
+-- * LastKnownUserConnectionTimestamp [Timestamp] <p>The timestamp of the last known user connection.</p>
+-- @return WorkspaceConnectionStatus structure as a key-value pair table
+function M.WorkspaceConnectionStatus(args)
+	assert(args, "You must provdide an argument table when creating WorkspaceConnectionStatus")
 	local t = { 
-		["ConnectionState"] = _ConnectionState,
-		["ConnectionStateCheckTimestamp"] = _ConnectionStateCheckTimestamp,
-		["WorkspaceId"] = _WorkspaceId,
-		["LastKnownUserConnectionTimestamp"] = _LastKnownUserConnectionTimestamp,
+		["ConnectionState"] = args["ConnectionState"],
+		["ConnectionStateCheckTimestamp"] = args["ConnectionStateCheckTimestamp"],
+		["WorkspaceId"] = args["WorkspaceId"],
+		["LastKnownUserConnectionTimestamp"] = args["LastKnownUserConnectionTimestamp"],
 	}
 	asserts.AssertWorkspaceConnectionStatus(t)
 	return t
@@ -520,13 +571,16 @@ end
 
 --- Create a structure of type DescribeWorkspaceBundlesResult
 -- <p>Contains the results of the <a>DescribeWorkspaceBundles</a> operation.</p>
--- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
--- @param _Bundles [BundleList] <p>An array of structures that contain information about the bundles.</p>
-function M.DescribeWorkspaceBundlesResult(_NextToken, _Bundles, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceBundlesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+-- * Bundles [BundleList] <p>An array of structures that contain information about the bundles.</p>
+-- @return DescribeWorkspaceBundlesResult structure as a key-value pair table
+function M.DescribeWorkspaceBundlesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkspaceBundlesResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Bundles"] = _Bundles,
+		["NextToken"] = args["NextToken"],
+		["Bundles"] = args["Bundles"],
 	}
 	asserts.AssertDescribeWorkspaceBundlesResult(t)
 	return t
@@ -558,37 +612,40 @@ end
 
 --- Create a structure of type Workspace
 -- <p>Contains information about a WorkSpace.</p>
--- @param _UserName [UserName] <p>The user that the WorkSpace is assigned to.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the AWS Directory Service directory that the WorkSpace belongs to.</p>
--- @param _ComputerName [ComputerName] <p>The name of the WorkSpace as seen by the operating system.</p>
--- @param _VolumeEncryptionKey [VolumeEncryptionKey] <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
--- @param _UserVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the user volume, or D: drive, is encrypted.</p>
--- @param _ErrorMessage [Description] <p>If the WorkSpace could not be created, this contains a textual error message that describes the failure.</p>
--- @param _WorkspaceProperties [WorkspaceProperties] 
--- @param _ErrorCode [WorkspaceErrorCode] <p>If the WorkSpace could not be created, this contains the error code.</p>
--- @param _State [WorkspaceState] <p>The operational state of the WorkSpace.</p>
--- @param _WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace.</p>
--- @param _SubnetId [SubnetId] <p>The identifier of the subnet that the WorkSpace is in.</p>
--- @param _RootVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the root volume, or C: drive, is encrypted.</p>
--- @param _IpAddress [IpAddress] <p>The IP address of the WorkSpace.</p>
--- @param _BundleId [BundleId] <p>The identifier of the bundle that the WorkSpace was created from.</p>
-function M.Workspace(_UserName, _DirectoryId, _ComputerName, _VolumeEncryptionKey, _UserVolumeEncryptionEnabled, _ErrorMessage, _WorkspaceProperties, _ErrorCode, _State, _WorkspaceId, _SubnetId, _RootVolumeEncryptionEnabled, _IpAddress, _BundleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Workspace")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [UserName] <p>The user that the WorkSpace is assigned to.</p>
+-- * DirectoryId [DirectoryId] <p>The identifier of the AWS Directory Service directory that the WorkSpace belongs to.</p>
+-- * ComputerName [ComputerName] <p>The name of the WorkSpace as seen by the operating system.</p>
+-- * VolumeEncryptionKey [VolumeEncryptionKey] <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
+-- * UserVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the user volume, or D: drive, is encrypted.</p>
+-- * ErrorMessage [Description] <p>If the WorkSpace could not be created, this contains a textual error message that describes the failure.</p>
+-- * WorkspaceProperties [WorkspaceProperties] 
+-- * ErrorCode [WorkspaceErrorCode] <p>If the WorkSpace could not be created, this contains the error code.</p>
+-- * State [WorkspaceState] <p>The operational state of the WorkSpace.</p>
+-- * WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace.</p>
+-- * SubnetId [SubnetId] <p>The identifier of the subnet that the WorkSpace is in.</p>
+-- * RootVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the root volume, or C: drive, is encrypted.</p>
+-- * IpAddress [IpAddress] <p>The IP address of the WorkSpace.</p>
+-- * BundleId [BundleId] <p>The identifier of the bundle that the WorkSpace was created from.</p>
+-- @return Workspace structure as a key-value pair table
+function M.Workspace(args)
+	assert(args, "You must provdide an argument table when creating Workspace")
 	local t = { 
-		["UserName"] = _UserName,
-		["DirectoryId"] = _DirectoryId,
-		["ComputerName"] = _ComputerName,
-		["VolumeEncryptionKey"] = _VolumeEncryptionKey,
-		["UserVolumeEncryptionEnabled"] = _UserVolumeEncryptionEnabled,
-		["ErrorMessage"] = _ErrorMessage,
-		["WorkspaceProperties"] = _WorkspaceProperties,
-		["ErrorCode"] = _ErrorCode,
-		["State"] = _State,
-		["WorkspaceId"] = _WorkspaceId,
-		["SubnetId"] = _SubnetId,
-		["RootVolumeEncryptionEnabled"] = _RootVolumeEncryptionEnabled,
-		["IpAddress"] = _IpAddress,
-		["BundleId"] = _BundleId,
+		["UserName"] = args["UserName"],
+		["DirectoryId"] = args["DirectoryId"],
+		["ComputerName"] = args["ComputerName"],
+		["VolumeEncryptionKey"] = args["VolumeEncryptionKey"],
+		["UserVolumeEncryptionEnabled"] = args["UserVolumeEncryptionEnabled"],
+		["ErrorMessage"] = args["ErrorMessage"],
+		["WorkspaceProperties"] = args["WorkspaceProperties"],
+		["ErrorCode"] = args["ErrorCode"],
+		["State"] = args["State"],
+		["WorkspaceId"] = args["WorkspaceId"],
+		["SubnetId"] = args["SubnetId"],
+		["RootVolumeEncryptionEnabled"] = args["RootVolumeEncryptionEnabled"],
+		["IpAddress"] = args["IpAddress"],
+		["BundleId"] = args["BundleId"],
 	}
 	asserts.AssertWorkspace(t)
 	return t
@@ -609,15 +666,18 @@ end
 
 --- Create a structure of type FailedWorkspaceChangeRequest
 -- <p>Contains information about a WorkSpace that could not be rebooted (<a>RebootWorkspaces</a>), rebuilt (<a>RebuildWorkspaces</a>), terminated (<a>TerminateWorkspaces</a>), started (<a>StartWorkspaces</a>), or stopped (<a>StopWorkspaces</a>).</p>
--- @param _ErrorCode [ErrorType] <p>The error code.</p>
--- @param _WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace.</p>
--- @param _ErrorMessage [Description] <p>The textual error message.</p>
-function M.FailedWorkspaceChangeRequest(_ErrorCode, _WorkspaceId, _ErrorMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FailedWorkspaceChangeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorType] <p>The error code.</p>
+-- * WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace.</p>
+-- * ErrorMessage [Description] <p>The textual error message.</p>
+-- @return FailedWorkspaceChangeRequest structure as a key-value pair table
+function M.FailedWorkspaceChangeRequest(args)
+	assert(args, "You must provdide an argument table when creating FailedWorkspaceChangeRequest")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["WorkspaceId"] = _WorkspaceId,
-		["ErrorMessage"] = _ErrorMessage,
+		["ErrorCode"] = args["ErrorCode"],
+		["WorkspaceId"] = args["WorkspaceId"],
+		["ErrorMessage"] = args["ErrorMessage"],
 	}
 	asserts.AssertFailedWorkspaceChangeRequest(t)
 	return t
@@ -635,8 +695,11 @@ end
 
 --- Create a structure of type ModifyWorkspacePropertiesResult
 --  
-function M.ModifyWorkspacePropertiesResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyWorkspacePropertiesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ModifyWorkspacePropertiesResult structure as a key-value pair table
+function M.ModifyWorkspacePropertiesResult(args)
+	assert(args, "You must provdide an argument table when creating ModifyWorkspacePropertiesResult")
 	local t = { 
 	}
 	asserts.AssertModifyWorkspacePropertiesResult(t)
@@ -657,12 +720,15 @@ end
 
 --- Create a structure of type StartWorkspacesRequest
 --  
--- @param _StartWorkspaceRequests [StartWorkspaceRequests] <p>The requests.</p>
--- Required parameter: StartWorkspaceRequests
-function M.StartWorkspacesRequest(_StartWorkspaceRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartWorkspacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StartWorkspaceRequests [StartWorkspaceRequests] <p>The requests.</p>
+-- Required key: StartWorkspaceRequests
+-- @return StartWorkspacesRequest structure as a key-value pair table
+function M.StartWorkspacesRequest(args)
+	assert(args, "You must provdide an argument table when creating StartWorkspacesRequest")
 	local t = { 
-		["StartWorkspaceRequests"] = _StartWorkspaceRequests,
+		["StartWorkspaceRequests"] = args["StartWorkspaceRequests"],
 	}
 	asserts.AssertStartWorkspacesRequest(t)
 	return t
@@ -681,11 +747,14 @@ end
 
 --- Create a structure of type StartWorkspacesResult
 --  
--- @param _FailedRequests [FailedStartWorkspaceRequests] <p>The failed requests.</p>
-function M.StartWorkspacesResult(_FailedRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartWorkspacesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedRequests [FailedStartWorkspaceRequests] <p>The failed requests.</p>
+-- @return StartWorkspacesResult structure as a key-value pair table
+function M.StartWorkspacesResult(args)
+	assert(args, "You must provdide an argument table when creating StartWorkspacesResult")
 	local t = { 
-		["FailedRequests"] = _FailedRequests,
+		["FailedRequests"] = args["FailedRequests"],
 	}
 	asserts.AssertStartWorkspacesResult(t)
 	return t
@@ -705,13 +774,16 @@ end
 
 --- Create a structure of type DescribeWorkspacesResult
 -- <p>Contains the results for the <a>DescribeWorkspaces</a> operation.</p>
--- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
--- @param _Workspaces [WorkspaceList] <p>An array of structures that contain the information about the WorkSpaces.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, some of this information may be incomplete for a newly-created WorkSpace.</p>
-function M.DescribeWorkspacesResult(_NextToken, _Workspaces, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+-- * Workspaces [WorkspaceList] <p>An array of structures that contain the information about the WorkSpaces.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, some of this information may be incomplete for a newly-created WorkSpace.</p>
+-- @return DescribeWorkspacesResult structure as a key-value pair table
+function M.DescribeWorkspacesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkspacesResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Workspaces"] = _Workspaces,
+		["NextToken"] = args["NextToken"],
+		["Workspaces"] = args["Workspaces"],
 	}
 	asserts.AssertDescribeWorkspacesResult(t)
 	return t
@@ -740,28 +812,31 @@ end
 
 --- Create a structure of type WorkspaceRequest
 -- <p>Contains information about a WorkSpace creation request.</p>
--- @param _UserName [UserName] <p>The username that the WorkSpace is assigned to. This username must exist in the AWS Directory Service directory specified by the <code>DirectoryId</code> member.</p>
--- @param _DirectoryId [DirectoryId] <p>The identifier of the AWS Directory Service directory to create the WorkSpace in. You can use the <a>DescribeWorkspaceDirectories</a> operation to obtain a list of the directories that are available.</p>
--- @param _VolumeEncryptionKey [VolumeEncryptionKey] <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
--- @param _Tags [TagList] <p>The tags of the WorkSpace request.</p>
--- @param _WorkspaceProperties [WorkspaceProperties] 
--- @param _BundleId [BundleId] <p>The identifier of the bundle to create the WorkSpace from. You can use the <a>DescribeWorkspaceBundles</a> operation to obtain a list of the bundles that are available.</p>
--- @param _UserVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the user volume, or D: drive, is encrypted.</p>
--- @param _RootVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the root volume, or C: drive, is encrypted.</p>
--- Required parameter: DirectoryId
--- Required parameter: UserName
--- Required parameter: BundleId
-function M.WorkspaceRequest(_UserName, _DirectoryId, _VolumeEncryptionKey, _Tags, _WorkspaceProperties, _BundleId, _UserVolumeEncryptionEnabled, _RootVolumeEncryptionEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [UserName] <p>The username that the WorkSpace is assigned to. This username must exist in the AWS Directory Service directory specified by the <code>DirectoryId</code> member.</p>
+-- * DirectoryId [DirectoryId] <p>The identifier of the AWS Directory Service directory to create the WorkSpace in. You can use the <a>DescribeWorkspaceDirectories</a> operation to obtain a list of the directories that are available.</p>
+-- * VolumeEncryptionKey [VolumeEncryptionKey] <p>The KMS key used to encrypt data stored on your WorkSpace.</p>
+-- * Tags [TagList] <p>The tags of the WorkSpace request.</p>
+-- * WorkspaceProperties [WorkspaceProperties] 
+-- * BundleId [BundleId] <p>The identifier of the bundle to create the WorkSpace from. You can use the <a>DescribeWorkspaceBundles</a> operation to obtain a list of the bundles that are available.</p>
+-- * UserVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the user volume, or D: drive, is encrypted.</p>
+-- * RootVolumeEncryptionEnabled [BooleanObject] <p>Specifies whether the data stored on the root volume, or C: drive, is encrypted.</p>
+-- Required key: DirectoryId
+-- Required key: UserName
+-- Required key: BundleId
+-- @return WorkspaceRequest structure as a key-value pair table
+function M.WorkspaceRequest(args)
+	assert(args, "You must provdide an argument table when creating WorkspaceRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["DirectoryId"] = _DirectoryId,
-		["VolumeEncryptionKey"] = _VolumeEncryptionKey,
-		["Tags"] = _Tags,
-		["WorkspaceProperties"] = _WorkspaceProperties,
-		["BundleId"] = _BundleId,
-		["UserVolumeEncryptionEnabled"] = _UserVolumeEncryptionEnabled,
-		["RootVolumeEncryptionEnabled"] = _RootVolumeEncryptionEnabled,
+		["UserName"] = args["UserName"],
+		["DirectoryId"] = args["DirectoryId"],
+		["VolumeEncryptionKey"] = args["VolumeEncryptionKey"],
+		["Tags"] = args["Tags"],
+		["WorkspaceProperties"] = args["WorkspaceProperties"],
+		["BundleId"] = args["BundleId"],
+		["UserVolumeEncryptionEnabled"] = args["UserVolumeEncryptionEnabled"],
+		["RootVolumeEncryptionEnabled"] = args["RootVolumeEncryptionEnabled"],
 	}
 	asserts.AssertWorkspaceRequest(t)
 	return t
@@ -780,11 +855,14 @@ end
 
 --- Create a structure of type ComputeType
 -- <p>Contains information about the compute type of a WorkSpace bundle.</p>
--- @param _Name [Compute] <p>The name of the compute type for the bundle.</p>
-function M.ComputeType(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComputeType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [Compute] <p>The name of the compute type for the bundle.</p>
+-- @return ComputeType structure as a key-value pair table
+function M.ComputeType(args)
+	assert(args, "You must provdide an argument table when creating ComputeType")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertComputeType(t)
 	return t
@@ -804,12 +882,15 @@ end
 
 --- Create a structure of type TerminateRequest
 -- <p>Contains information used with the <a>TerminateWorkspaces</a> operation to terminate a WorkSpace.</p>
--- @param _WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to terminate.</p>
--- Required parameter: WorkspaceId
-function M.TerminateRequest(_WorkspaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to terminate.</p>
+-- Required key: WorkspaceId
+-- @return TerminateRequest structure as a key-value pair table
+function M.TerminateRequest(args)
+	assert(args, "You must provdide an argument table when creating TerminateRequest")
 	local t = { 
-		["WorkspaceId"] = _WorkspaceId,
+		["WorkspaceId"] = args["WorkspaceId"],
 	}
 	asserts.AssertTerminateRequest(t)
 	return t
@@ -831,15 +912,18 @@ end
 
 --- Create a structure of type DeleteTagsRequest
 -- <p>The request of the <a>DeleteTags</a> operation.</p>
--- @param _ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
--- @param _TagKeys [TagKeyList] <p>The tag keys of the request.</p>
--- Required parameter: ResourceId
--- Required parameter: TagKeys
-function M.DeleteTagsRequest(_ResourceId, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [NonEmptyString] <p>The resource ID of the request.</p>
+-- * TagKeys [TagKeyList] <p>The tag keys of the request.</p>
+-- Required key: ResourceId
+-- Required key: TagKeys
+-- @return DeleteTagsRequest structure as a key-value pair table
+function M.DeleteTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteTagsRequest")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["TagKeys"] = _TagKeys,
+		["ResourceId"] = args["ResourceId"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertDeleteTagsRequest(t)
 	return t
@@ -859,13 +943,16 @@ end
 
 --- Create a structure of type DescribeWorkspaceDirectoriesRequest
 -- <p>Contains the inputs for the <a>DescribeWorkspaceDirectories</a> operation.</p>
--- @param _DirectoryIds [DirectoryIdList] <p>An array of strings that contains the directory identifiers to retrieve information for. If this member is null, all directories are retrieved.</p>
--- @param _NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
-function M.DescribeWorkspaceDirectoriesRequest(_DirectoryIds, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceDirectoriesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryIds [DirectoryIdList] <p>An array of strings that contains the directory identifiers to retrieve information for. If this member is null, all directories are retrieved.</p>
+-- * NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+-- @return DescribeWorkspaceDirectoriesRequest structure as a key-value pair table
+function M.DescribeWorkspaceDirectoriesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkspaceDirectoriesRequest")
 	local t = { 
-		["DirectoryIds"] = _DirectoryIds,
-		["NextToken"] = _NextToken,
+		["DirectoryIds"] = args["DirectoryIds"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeWorkspaceDirectoriesRequest(t)
 	return t
@@ -885,13 +972,16 @@ end
 
 --- Create a structure of type DescribeWorkspacesConnectionStatusRequest
 --  
--- @param _NextToken [PaginationToken] <p>The next token of the request.</p>
--- @param _WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces.</p>
-function M.DescribeWorkspacesConnectionStatusRequest(_NextToken, _WorkspaceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesConnectionStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationToken] <p>The next token of the request.</p>
+-- * WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces.</p>
+-- @return DescribeWorkspacesConnectionStatusRequest structure as a key-value pair table
+function M.DescribeWorkspacesConnectionStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkspacesConnectionStatusRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["WorkspaceIds"] = _WorkspaceIds,
+		["NextToken"] = args["NextToken"],
+		["WorkspaceIds"] = args["WorkspaceIds"],
 	}
 	asserts.AssertDescribeWorkspacesConnectionStatusRequest(t)
 	return t
@@ -910,11 +1000,14 @@ end
 
 --- Create a structure of type UserStorage
 -- <p>Contains information about the user storage for a WorkSpace bundle.</p>
--- @param _Capacity [NonEmptyString] <p>The amount of user storage for the bundle.</p>
-function M.UserStorage(_Capacity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UserStorage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Capacity [NonEmptyString] <p>The amount of user storage for the bundle.</p>
+-- @return UserStorage structure as a key-value pair table
+function M.UserStorage(args)
+	assert(args, "You must provdide an argument table when creating UserStorage")
 	local t = { 
-		["Capacity"] = _Capacity,
+		["Capacity"] = args["Capacity"],
 	}
 	asserts.AssertUserStorage(t)
 	return t
@@ -933,11 +1026,14 @@ end
 
 --- Create a structure of type DescribeTagsResult
 -- <p>The result of the <a>DescribeTags</a> operation.</p>
--- @param _TagList [TagList] <p>The list of tags.</p>
-function M.DescribeTagsResult(_TagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagList [TagList] <p>The list of tags.</p>
+-- @return DescribeTagsResult structure as a key-value pair table
+function M.DescribeTagsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagsResult")
 	local t = { 
-		["TagList"] = _TagList,
+		["TagList"] = args["TagList"],
 	}
 	asserts.AssertDescribeTagsResult(t)
 	return t
@@ -956,11 +1052,14 @@ end
 
 --- Create a structure of type StopRequest
 -- <p>Describes the stop request.</p>
--- @param _WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
-function M.StopRequest(_WorkspaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
+-- @return StopRequest structure as a key-value pair table
+function M.StopRequest(args)
+	assert(args, "You must provdide an argument table when creating StopRequest")
 	local t = { 
-		["WorkspaceId"] = _WorkspaceId,
+		["WorkspaceId"] = args["WorkspaceId"],
 	}
 	asserts.AssertStopRequest(t)
 	return t
@@ -981,15 +1080,18 @@ end
 
 --- Create a structure of type DescribeWorkspaceBundlesRequest
 -- <p>Contains the inputs for the <a>DescribeWorkspaceBundles</a> operation.</p>
--- @param _Owner [BundleOwner] <p>The owner of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p> <p>This contains one of the following values:</p> <ul> <li> <p>null- Retrieves the bundles that belong to the account making the call.</p> </li> <li> <p> <code>AMAZON</code>- Retrieves the bundles that are provided by AWS.</p> </li> </ul>
--- @param _NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
--- @param _BundleIds [BundleIdList] <p>An array of strings that contains the identifiers of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p>
-function M.DescribeWorkspaceBundlesRequest(_Owner, _NextToken, _BundleIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceBundlesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Owner [BundleOwner] <p>The owner of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p> <p>This contains one of the following values:</p> <ul> <li> <p>null- Retrieves the bundles that belong to the account making the call.</p> </li> <li> <p> <code>AMAZON</code>- Retrieves the bundles that are provided by AWS.</p> </li> </ul>
+-- * NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
+-- * BundleIds [BundleIdList] <p>An array of strings that contains the identifiers of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p>
+-- @return DescribeWorkspaceBundlesRequest structure as a key-value pair table
+function M.DescribeWorkspaceBundlesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkspaceBundlesRequest")
 	local t = { 
-		["Owner"] = _Owner,
-		["NextToken"] = _NextToken,
-		["BundleIds"] = _BundleIds,
+		["Owner"] = args["Owner"],
+		["NextToken"] = args["NextToken"],
+		["BundleIds"] = args["BundleIds"],
 	}
 	asserts.AssertDescribeWorkspaceBundlesRequest(t)
 	return t
@@ -1009,13 +1111,16 @@ end
 
 --- Create a structure of type WorkspaceProperties
 -- <p>Describes the properties of a WorkSpace.</p>
--- @param _RunningModeAutoStopTimeoutInMinutes [RunningModeAutoStopTimeoutInMinutes] <p>The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60 minute intervals.</p>
--- @param _RunningMode [RunningMode] <p>The running mode of the WorkSpace. AlwaysOn WorkSpaces are billed monthly. AutoStop WorkSpaces are billed by the hour and stopped when no longer being used in order to save on costs.</p>
-function M.WorkspaceProperties(_RunningModeAutoStopTimeoutInMinutes, _RunningMode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceProperties")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RunningModeAutoStopTimeoutInMinutes [RunningModeAutoStopTimeoutInMinutes] <p>The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60 minute intervals.</p>
+-- * RunningMode [RunningMode] <p>The running mode of the WorkSpace. AlwaysOn WorkSpaces are billed monthly. AutoStop WorkSpaces are billed by the hour and stopped when no longer being used in order to save on costs.</p>
+-- @return WorkspaceProperties structure as a key-value pair table
+function M.WorkspaceProperties(args)
+	assert(args, "You must provdide an argument table when creating WorkspaceProperties")
 	local t = { 
-		["RunningModeAutoStopTimeoutInMinutes"] = _RunningModeAutoStopTimeoutInMinutes,
-		["RunningMode"] = _RunningMode,
+		["RunningModeAutoStopTimeoutInMinutes"] = args["RunningModeAutoStopTimeoutInMinutes"],
+		["RunningMode"] = args["RunningMode"],
 	}
 	asserts.AssertWorkspaceProperties(t)
 	return t
@@ -1034,11 +1139,14 @@ end
 
 --- Create a structure of type StopWorkspacesResult
 --  
--- @param _FailedRequests [FailedStopWorkspaceRequests] <p>The failed requests.</p>
-function M.StopWorkspacesResult(_FailedRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopWorkspacesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedRequests [FailedStopWorkspaceRequests] <p>The failed requests.</p>
+-- @return StopWorkspacesResult structure as a key-value pair table
+function M.StopWorkspacesResult(args)
+	assert(args, "You must provdide an argument table when creating StopWorkspacesResult")
 	local t = { 
-		["FailedRequests"] = _FailedRequests,
+		["FailedRequests"] = args["FailedRequests"],
 	}
 	asserts.AssertStopWorkspacesResult(t)
 	return t
@@ -1056,8 +1164,11 @@ end
 
 --- Create a structure of type CreateTagsResult
 -- <p>The result of the <a>CreateTags</a> operation.</p>
-function M.CreateTagsResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateTagsResult structure as a key-value pair table
+function M.CreateTagsResult(args)
+	assert(args, "You must provdide an argument table when creating CreateTagsResult")
 	local t = { 
 	}
 	asserts.AssertCreateTagsResult(t)
@@ -1077,11 +1188,14 @@ end
 
 --- Create a structure of type UnsupportedWorkspaceConfigurationException
 -- <p>The configuration of this WorkSpace is not supported for this operation. For more information, see the <a href="http://docs.aws.amazon.com/workspaces/latest/adminguide/">Amazon WorkSpaces Administration Guide</a>. </p>
--- @param _message [ExceptionMessage] 
-function M.UnsupportedWorkspaceConfigurationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedWorkspaceConfigurationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] 
+-- @return UnsupportedWorkspaceConfigurationException structure as a key-value pair table
+function M.UnsupportedWorkspaceConfigurationException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedWorkspaceConfigurationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnsupportedWorkspaceConfigurationException(t)
 	return t
@@ -1101,12 +1215,15 @@ end
 
 --- Create a structure of type TerminateWorkspacesRequest
 -- <p>Contains the inputs for the <a>TerminateWorkspaces</a> operation.</p>
--- @param _TerminateWorkspaceRequests [TerminateWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to terminate.</p>
--- Required parameter: TerminateWorkspaceRequests
-function M.TerminateWorkspacesRequest(_TerminateWorkspaceRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminateWorkspacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TerminateWorkspaceRequests [TerminateWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to terminate.</p>
+-- Required key: TerminateWorkspaceRequests
+-- @return TerminateWorkspacesRequest structure as a key-value pair table
+function M.TerminateWorkspacesRequest(args)
+	assert(args, "You must provdide an argument table when creating TerminateWorkspacesRequest")
 	local t = { 
-		["TerminateWorkspaceRequests"] = _TerminateWorkspaceRequests,
+		["TerminateWorkspaceRequests"] = args["TerminateWorkspaceRequests"],
 	}
 	asserts.AssertTerminateWorkspacesRequest(t)
 	return t
@@ -1126,13 +1243,16 @@ end
 
 --- Create a structure of type DescribeWorkspaceDirectoriesResult
 -- <p>Contains the results of the <a>DescribeWorkspaceDirectories</a> operation.</p>
--- @param _Directories [DirectoryList] <p>An array of structures that contain information about the directories.</p>
--- @param _NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
-function M.DescribeWorkspaceDirectoriesResult(_Directories, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspaceDirectoriesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Directories [DirectoryList] <p>An array of structures that contain information about the directories.</p>
+-- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
+-- @return DescribeWorkspaceDirectoriesResult structure as a key-value pair table
+function M.DescribeWorkspaceDirectoriesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkspaceDirectoriesResult")
 	local t = { 
-		["Directories"] = _Directories,
-		["NextToken"] = _NextToken,
+		["Directories"] = args["Directories"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeWorkspaceDirectoriesResult(t)
 	return t
@@ -1152,13 +1272,16 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The resource could not be found.</p>
--- @param _ResourceId [NonEmptyString] <p>The resource could not be found.</p>
--- @param _message [ExceptionMessage] <p>The resource could not be found.</p>
-function M.ResourceNotFoundException(_ResourceId, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [NonEmptyString] <p>The resource could not be found.</p>
+-- * message [ExceptionMessage] <p>The resource could not be found.</p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["message"] = _message,
+		["ResourceId"] = args["ResourceId"],
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -1178,12 +1301,15 @@ end
 
 --- Create a structure of type CreateWorkspacesRequest
 -- <p>Contains the inputs for the <a>CreateWorkspaces</a> operation.</p>
--- @param _Workspaces [WorkspaceRequestList] <p>An array of structures that specify the WorkSpaces to create.</p>
--- Required parameter: Workspaces
-function M.CreateWorkspacesRequest(_Workspaces, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateWorkspacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Workspaces [WorkspaceRequestList] <p>An array of structures that specify the WorkSpaces to create.</p>
+-- Required key: Workspaces
+-- @return CreateWorkspacesRequest structure as a key-value pair table
+function M.CreateWorkspacesRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateWorkspacesRequest")
 	local t = { 
-		["Workspaces"] = _Workspaces,
+		["Workspaces"] = args["Workspaces"],
 	}
 	asserts.AssertCreateWorkspacesRequest(t)
 	return t
@@ -1203,13 +1329,16 @@ end
 
 --- Create a structure of type DescribeWorkspacesConnectionStatusResult
 --  
--- @param _WorkspacesConnectionStatus [WorkspaceConnectionStatusList] <p>The connection status of the WorkSpace.</p>
--- @param _NextToken [PaginationToken] <p>The next token of the result.</p>
-function M.DescribeWorkspacesConnectionStatusResult(_WorkspacesConnectionStatus, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkspacesConnectionStatusResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WorkspacesConnectionStatus [WorkspaceConnectionStatusList] <p>The connection status of the WorkSpace.</p>
+-- * NextToken [PaginationToken] <p>The next token of the result.</p>
+-- @return DescribeWorkspacesConnectionStatusResult structure as a key-value pair table
+function M.DescribeWorkspacesConnectionStatusResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkspacesConnectionStatusResult")
 	local t = { 
-		["WorkspacesConnectionStatus"] = _WorkspacesConnectionStatus,
-		["NextToken"] = _NextToken,
+		["WorkspacesConnectionStatus"] = args["WorkspacesConnectionStatus"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeWorkspacesConnectionStatusResult(t)
 	return t
@@ -1228,11 +1357,14 @@ end
 
 --- Create a structure of type AccessDeniedException
 -- <p>The user is not authorized to access a resource.</p>
--- @param _message [ExceptionMessage] 
-function M.AccessDeniedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] 
+-- @return AccessDeniedException structure as a key-value pair table
+function M.AccessDeniedException(args)
+	assert(args, "You must provdide an argument table when creating AccessDeniedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertAccessDeniedException(t)
 	return t
@@ -1252,12 +1384,15 @@ end
 
 --- Create a structure of type RebootRequest
 -- <p>Contains information used with the <a>RebootWorkspaces</a> operation to reboot a WorkSpace.</p>
--- @param _WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to reboot.</p>
--- Required parameter: WorkspaceId
-function M.RebootRequest(_WorkspaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebootRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to reboot.</p>
+-- Required key: WorkspaceId
+-- @return RebootRequest structure as a key-value pair table
+function M.RebootRequest(args)
+	assert(args, "You must provdide an argument table when creating RebootRequest")
 	local t = { 
-		["WorkspaceId"] = _WorkspaceId,
+		["WorkspaceId"] = args["WorkspaceId"],
 	}
 	asserts.AssertRebootRequest(t)
 	return t
@@ -1277,13 +1412,16 @@ end
 
 --- Create a structure of type CreateWorkspacesResult
 -- <p>Contains the result of the <a>CreateWorkspaces</a> operation.</p>
--- @param _PendingRequests [WorkspaceList] <p>An array of structures that represent the WorkSpaces that were created.</p> <p>Because this operation is asynchronous, the identifier in <code>WorkspaceId</code> is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information will be returned.</p>
--- @param _FailedRequests [FailedCreateWorkspaceRequests] <p>An array of structures that represent the WorkSpaces that could not be created.</p>
-function M.CreateWorkspacesResult(_PendingRequests, _FailedRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateWorkspacesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PendingRequests [WorkspaceList] <p>An array of structures that represent the WorkSpaces that were created.</p> <p>Because this operation is asynchronous, the identifier in <code>WorkspaceId</code> is not immediately available. If you immediately call <a>DescribeWorkspaces</a> with this identifier, no information will be returned.</p>
+-- * FailedRequests [FailedCreateWorkspaceRequests] <p>An array of structures that represent the WorkSpaces that could not be created.</p>
+-- @return CreateWorkspacesResult structure as a key-value pair table
+function M.CreateWorkspacesResult(args)
+	assert(args, "You must provdide an argument table when creating CreateWorkspacesResult")
 	local t = { 
-		["PendingRequests"] = _PendingRequests,
-		["FailedRequests"] = _FailedRequests,
+		["PendingRequests"] = args["PendingRequests"],
+		["FailedRequests"] = args["FailedRequests"],
 	}
 	asserts.AssertCreateWorkspacesResult(t)
 	return t
@@ -1303,12 +1441,15 @@ end
 
 --- Create a structure of type RebuildRequest
 -- <p>Contains information used with the <a>RebuildWorkspaces</a> operation to rebuild a WorkSpace.</p>
--- @param _WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to rebuild.</p>
--- Required parameter: WorkspaceId
-function M.RebuildRequest(_WorkspaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebuildRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WorkspaceId [WorkspaceId] <p>The identifier of the WorkSpace to rebuild.</p>
+-- Required key: WorkspaceId
+-- @return RebuildRequest structure as a key-value pair table
+function M.RebuildRequest(args)
+	assert(args, "You must provdide an argument table when creating RebuildRequest")
 	local t = { 
-		["WorkspaceId"] = _WorkspaceId,
+		["WorkspaceId"] = args["WorkspaceId"],
 	}
 	asserts.AssertRebuildRequest(t)
 	return t
@@ -1332,21 +1473,24 @@ end
 
 --- Create a structure of type WorkspaceBundle
 -- <p>Contains information about a WorkSpace bundle.</p>
--- @param _ComputeType [ComputeType] <p>A <a>ComputeType</a> object that specifies the compute type for the bundle.</p>
--- @param _Description [Description] <p>The bundle description.</p>
--- @param _BundleId [BundleId] <p>The bundle identifier.</p>
--- @param _Owner [BundleOwner] <p>The owner of the bundle. This contains the owner's account identifier, or <code>AMAZON</code> if the bundle is provided by AWS.</p>
--- @param _UserStorage [UserStorage] <p>A <a>UserStorage</a> object that specifies the amount of user storage that the bundle contains.</p>
--- @param _Name [NonEmptyString] <p>The name of the bundle.</p>
-function M.WorkspaceBundle(_ComputeType, _Description, _BundleId, _Owner, _UserStorage, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkspaceBundle")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComputeType [ComputeType] <p>A <a>ComputeType</a> object that specifies the compute type for the bundle.</p>
+-- * Description [Description] <p>The bundle description.</p>
+-- * BundleId [BundleId] <p>The bundle identifier.</p>
+-- * Owner [BundleOwner] <p>The owner of the bundle. This contains the owner's account identifier, or <code>AMAZON</code> if the bundle is provided by AWS.</p>
+-- * UserStorage [UserStorage] <p>A <a>UserStorage</a> object that specifies the amount of user storage that the bundle contains.</p>
+-- * Name [NonEmptyString] <p>The name of the bundle.</p>
+-- @return WorkspaceBundle structure as a key-value pair table
+function M.WorkspaceBundle(args)
+	assert(args, "You must provdide an argument table when creating WorkspaceBundle")
 	local t = { 
-		["ComputeType"] = _ComputeType,
-		["Description"] = _Description,
-		["BundleId"] = _BundleId,
-		["Owner"] = _Owner,
-		["UserStorage"] = _UserStorage,
-		["Name"] = _Name,
+		["ComputeType"] = args["ComputeType"],
+		["Description"] = args["Description"],
+		["BundleId"] = args["BundleId"],
+		["Owner"] = args["Owner"],
+		["UserStorage"] = args["UserStorage"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertWorkspaceBundle(t)
 	return t
@@ -1365,11 +1509,14 @@ end
 
 --- Create a structure of type RebuildWorkspacesResult
 -- <p>Contains the results of the <a>RebuildWorkspaces</a> operation.</p>
--- @param _FailedRequests [FailedRebuildWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebuilt.</p>
-function M.RebuildWorkspacesResult(_FailedRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebuildWorkspacesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedRequests [FailedRebuildWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebuilt.</p>
+-- @return RebuildWorkspacesResult structure as a key-value pair table
+function M.RebuildWorkspacesResult(args)
+	assert(args, "You must provdide an argument table when creating RebuildWorkspacesResult")
 	local t = { 
-		["FailedRequests"] = _FailedRequests,
+		["FailedRequests"] = args["FailedRequests"],
 	}
 	asserts.AssertRebuildWorkspacesResult(t)
 	return t
@@ -1389,12 +1536,15 @@ end
 
 --- Create a structure of type RebuildWorkspacesRequest
 -- <p>Contains the inputs for the <a>RebuildWorkspaces</a> operation.</p>
--- @param _RebuildWorkspaceRequests [RebuildWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to rebuild.</p>
--- Required parameter: RebuildWorkspaceRequests
-function M.RebuildWorkspacesRequest(_RebuildWorkspaceRequests, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebuildWorkspacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RebuildWorkspaceRequests [RebuildWorkspaceRequests] <p>An array of structures that specify the WorkSpaces to rebuild.</p>
+-- Required key: RebuildWorkspaceRequests
+-- @return RebuildWorkspacesRequest structure as a key-value pair table
+function M.RebuildWorkspacesRequest(args)
+	assert(args, "You must provdide an argument table when creating RebuildWorkspacesRequest")
 	local t = { 
-		["RebuildWorkspaceRequests"] = _RebuildWorkspaceRequests,
+		["RebuildWorkspaceRequests"] = args["RebuildWorkspaceRequests"],
 	}
 	asserts.AssertRebuildWorkspacesRequest(t)
 	return t
@@ -1413,11 +1563,14 @@ end
 
 --- Create a structure of type StartRequest
 -- <p>Describes the start request.</p>
--- @param _WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
-function M.StartRequest(_WorkspaceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
+-- @return StartRequest structure as a key-value pair table
+function M.StartRequest(args)
+	assert(args, "You must provdide an argument table when creating StartRequest")
 	local t = { 
-		["WorkspaceId"] = _WorkspaceId,
+		["WorkspaceId"] = args["WorkspaceId"],
 	}
 	asserts.AssertStartRequest(t)
 	return t
@@ -1436,11 +1589,14 @@ end
 
 --- Create a structure of type InvalidParameterValuesException
 -- <p>One or more parameter values are not valid.</p>
--- @param _message [ExceptionMessage] <p>The exception error message.</p>
-function M.InvalidParameterValuesException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValuesException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The exception error message.</p>
+-- @return InvalidParameterValuesException structure as a key-value pair table
+function M.InvalidParameterValuesException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterValuesException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterValuesException(t)
 	return t
@@ -1461,15 +1617,18 @@ end
 
 --- Create a structure of type FailedCreateWorkspaceRequest
 -- <p>Contains information about a WorkSpace that could not be created.</p>
--- @param _ErrorCode [ErrorType] <p>The error code.</p>
--- @param _ErrorMessage [Description] <p>The textual error message.</p>
--- @param _WorkspaceRequest [WorkspaceRequest] <p>A <a>FailedCreateWorkspaceRequest$WorkspaceRequest</a> object that contains the information about the WorkSpace that could not be created.</p>
-function M.FailedCreateWorkspaceRequest(_ErrorCode, _ErrorMessage, _WorkspaceRequest, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FailedCreateWorkspaceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorType] <p>The error code.</p>
+-- * ErrorMessage [Description] <p>The textual error message.</p>
+-- * WorkspaceRequest [WorkspaceRequest] <p>A <a>FailedCreateWorkspaceRequest$WorkspaceRequest</a> object that contains the information about the WorkSpace that could not be created.</p>
+-- @return FailedCreateWorkspaceRequest structure as a key-value pair table
+function M.FailedCreateWorkspaceRequest(args)
+	assert(args, "You must provdide an argument table when creating FailedCreateWorkspaceRequest")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["ErrorMessage"] = _ErrorMessage,
-		["WorkspaceRequest"] = _WorkspaceRequest,
+		["ErrorCode"] = args["ErrorCode"],
+		["ErrorMessage"] = args["ErrorMessage"],
+		["WorkspaceRequest"] = args["WorkspaceRequest"],
 	}
 	asserts.AssertFailedCreateWorkspaceRequest(t)
 	return t

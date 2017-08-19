@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type UnsupportedLocale
 -- <p>The specified locale is not supported.</p>
--- @param _message [string] 
-function M.UnsupportedLocale(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedLocale")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] 
+-- @return UnsupportedLocale structure as a key-value pair table
+function M.UnsupportedLocale(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedLocale")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnsupportedLocale(t)
 	return t
@@ -58,13 +61,16 @@ end
 
 --- Create a structure of type DescribeEventAggregatesResponse
 --  
--- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param _eventAggregates [EventAggregateList] <p>The number of events in each category that meet the optional filter criteria.</p>
-function M.DescribeEventAggregatesResponse(_nextToken, _eventAggregates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventAggregatesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- * eventAggregates [EventAggregateList] <p>The number of events in each category that meet the optional filter criteria.</p>
+-- @return DescribeEventAggregatesResponse structure as a key-value pair table
+function M.DescribeEventAggregatesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventAggregatesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["eventAggregates"] = _eventAggregates,
+		["nextToken"] = args["nextToken"],
+		["eventAggregates"] = args["eventAggregates"],
 	}
 	asserts.AssertDescribeEventAggregatesResponse(t)
 	return t
@@ -89,22 +95,25 @@ end
 
 --- Create a structure of type EntityFilter
 -- <p>The values to use to filter results from the <a>DescribeAffectedEntities</a> operation.</p>
--- @param _eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
--- @param _statusCodes [entityStatusCodeList] <p>A list of entity status codes (<code>IMPAIRED</code>, <code>UNIMPAIRED</code>, or <code>UNKNOWN</code>).</p>
--- @param _entityValues [entityValueList] <p>A list of IDs for affected entities.</p>
--- @param _entityArns [entityArnList] <p>A list of entity ARNs (unique identifiers).</p>
--- @param _lastUpdatedTimes [dateTimeRangeList] <p>A list of the most recent dates and times that the entity was updated.</p>
--- @param _tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
--- Required parameter: eventArns
-function M.EntityFilter(_eventArns, _statusCodes, _entityValues, _entityArns, _lastUpdatedTimes, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EntityFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
+-- * statusCodes [entityStatusCodeList] <p>A list of entity status codes (<code>IMPAIRED</code>, <code>UNIMPAIRED</code>, or <code>UNKNOWN</code>).</p>
+-- * entityValues [entityValueList] <p>A list of IDs for affected entities.</p>
+-- * entityArns [entityArnList] <p>A list of entity ARNs (unique identifiers).</p>
+-- * lastUpdatedTimes [dateTimeRangeList] <p>A list of the most recent dates and times that the entity was updated.</p>
+-- * tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
+-- Required key: eventArns
+-- @return EntityFilter structure as a key-value pair table
+function M.EntityFilter(args)
+	assert(args, "You must provdide an argument table when creating EntityFilter")
 	local t = { 
-		["eventArns"] = _eventArns,
-		["statusCodes"] = _statusCodes,
-		["entityValues"] = _entityValues,
-		["entityArns"] = _entityArns,
-		["lastUpdatedTimes"] = _lastUpdatedTimes,
-		["tags"] = _tags,
+		["eventArns"] = args["eventArns"],
+		["statusCodes"] = args["statusCodes"],
+		["entityValues"] = args["entityValues"],
+		["entityArns"] = args["entityArns"],
+		["lastUpdatedTimes"] = args["lastUpdatedTimes"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertEntityFilter(t)
 	return t
@@ -125,15 +134,18 @@ end
 
 --- Create a structure of type EventDetails
 -- <p>Detailed information about an event. A combination of an <a>Event</a> object, an <a>EventDescription</a> object, and additional metadata about the event. Returned by the <a>DescribeEventDetails</a> operation.</p>
--- @param _eventMetadata [eventMetadata] <p>Additional metadata about the event.</p>
--- @param _event [Event] <p>Summary information about the event.</p>
--- @param _eventDescription [EventDescription] <p>The most recent description of the event.</p>
-function M.EventDetails(_eventMetadata, _event, _eventDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * eventMetadata [eventMetadata] <p>Additional metadata about the event.</p>
+-- * event [Event] <p>Summary information about the event.</p>
+-- * eventDescription [EventDescription] <p>The most recent description of the event.</p>
+-- @return EventDetails structure as a key-value pair table
+function M.EventDetails(args)
+	assert(args, "You must provdide an argument table when creating EventDetails")
 	local t = { 
-		["eventMetadata"] = _eventMetadata,
-		["event"] = _event,
-		["eventDescription"] = _eventDescription,
+		["eventMetadata"] = args["eventMetadata"],
+		["event"] = args["event"],
+		["eventDescription"] = args["eventDescription"],
 	}
 	asserts.AssertEventDetails(t)
 	return t
@@ -153,13 +165,16 @@ end
 
 --- Create a structure of type DescribeEventTypesResponse
 --  
--- @param _eventTypes [EventTypeList] <p>A list of event types that match the filter criteria. Event types have a category (<code>issue</code>, <code>accountNotification</code>, or <code>scheduledChange</code>), a service (for example, <code>EC2</code>, <code>RDS</code>, <code>DATAPIPELINE</code>, <code>BILLING</code>), and a code (in the format <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>
--- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
-function M.DescribeEventTypesResponse(_eventTypes, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventTypesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * eventTypes [EventTypeList] <p>A list of event types that match the filter criteria. Event types have a category (<code>issue</code>, <code>accountNotification</code>, or <code>scheduledChange</code>), a service (for example, <code>EC2</code>, <code>RDS</code>, <code>DATAPIPELINE</code>, <code>BILLING</code>), and a code (in the format <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>
+-- * nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @return DescribeEventTypesResponse structure as a key-value pair table
+function M.DescribeEventTypesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventTypesResponse")
 	local t = { 
-		["eventTypes"] = _eventTypes,
-		["nextToken"] = _nextToken,
+		["eventTypes"] = args["eventTypes"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeEventTypesResponse(t)
 	return t
@@ -182,18 +197,21 @@ end
 
 --- Create a structure of type DescribeAffectedEntitiesRequest
 --  
--- @param _filter [EntityFilter] <p>Values to narrow the results returned. At least one event ARN is required. </p>
--- @param _locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
--- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param _maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
--- Required parameter: filter
-function M.DescribeAffectedEntitiesRequest(_filter, _locale, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAffectedEntitiesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filter [EntityFilter] <p>Values to narrow the results returned. At least one event ARN is required. </p>
+-- * locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- * nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- * maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
+-- Required key: filter
+-- @return DescribeAffectedEntitiesRequest structure as a key-value pair table
+function M.DescribeAffectedEntitiesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAffectedEntitiesRequest")
 	local t = { 
-		["filter"] = _filter,
-		["locale"] = _locale,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["filter"] = args["filter"],
+		["locale"] = args["locale"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertDescribeAffectedEntitiesRequest(t)
 	return t
@@ -218,23 +236,26 @@ end
 
 --- Create a structure of type AffectedEntity
 -- <p>Information about an entity that is affected by a Health event.</p>
--- @param _entityValue [entityValue] <p>The ID of the affected entity.</p>
--- @param _lastUpdatedTime [timestamp] <p>The most recent time that the entity was updated.</p>
--- @param _tags [tagSet] <p>A map of entity tags attached to the affected entity.</p>
--- @param _entityArn [entityArn] <p>The unique identifier for the entity. Format: <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i> </code>. Example: <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code> </p>
--- @param _awsAccountId [accountId] <p>The 12-digit AWS account number that contains the affected entity.</p>
--- @param _eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
--- @param _statusCode [entityStatusCode] <p>The most recent status of the entity affected by the event. The possible values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and <code>UNKNOWN</code>.</p>
-function M.AffectedEntity(_entityValue, _lastUpdatedTime, _tags, _entityArn, _awsAccountId, _eventArn, _statusCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AffectedEntity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * entityValue [entityValue] <p>The ID of the affected entity.</p>
+-- * lastUpdatedTime [timestamp] <p>The most recent time that the entity was updated.</p>
+-- * tags [tagSet] <p>A map of entity tags attached to the affected entity.</p>
+-- * entityArn [entityArn] <p>The unique identifier for the entity. Format: <code>arn:aws:health:<i>entity-region</i>:<i>aws-account</i>:entity/<i>entity-id</i> </code>. Example: <code>arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K</code> </p>
+-- * awsAccountId [accountId] <p>The 12-digit AWS account number that contains the affected entity.</p>
+-- * eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+-- * statusCode [entityStatusCode] <p>The most recent status of the entity affected by the event. The possible values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and <code>UNKNOWN</code>.</p>
+-- @return AffectedEntity structure as a key-value pair table
+function M.AffectedEntity(args)
+	assert(args, "You must provdide an argument table when creating AffectedEntity")
 	local t = { 
-		["entityValue"] = _entityValue,
-		["lastUpdatedTime"] = _lastUpdatedTime,
-		["tags"] = _tags,
-		["entityArn"] = _entityArn,
-		["awsAccountId"] = _awsAccountId,
-		["eventArn"] = _eventArn,
-		["statusCode"] = _statusCode,
+		["entityValue"] = args["entityValue"],
+		["lastUpdatedTime"] = args["lastUpdatedTime"],
+		["tags"] = args["tags"],
+		["entityArn"] = args["entityArn"],
+		["awsAccountId"] = args["awsAccountId"],
+		["eventArn"] = args["eventArn"],
+		["statusCode"] = args["statusCode"],
 	}
 	asserts.AssertAffectedEntity(t)
 	return t
@@ -257,18 +278,21 @@ end
 
 --- Create a structure of type DescribeEventAggregatesRequest
 --  
--- @param _filter [EventFilter] <p>Values to narrow the results returned.</p>
--- @param _aggregateField [eventAggregateField] <p>The only currently supported value is <code>eventTypeCategory</code>.</p>
--- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param _maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
--- Required parameter: aggregateField
-function M.DescribeEventAggregatesRequest(_filter, _aggregateField, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventAggregatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filter [EventFilter] <p>Values to narrow the results returned.</p>
+-- * aggregateField [eventAggregateField] <p>The only currently supported value is <code>eventTypeCategory</code>.</p>
+-- * nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- * maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
+-- Required key: aggregateField
+-- @return DescribeEventAggregatesRequest structure as a key-value pair table
+function M.DescribeEventAggregatesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventAggregatesRequest")
 	local t = { 
-		["filter"] = _filter,
-		["aggregateField"] = _aggregateField,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["filter"] = args["filter"],
+		["aggregateField"] = args["aggregateField"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertDescribeEventAggregatesRequest(t)
 	return t
@@ -288,13 +312,16 @@ end
 
 --- Create a structure of type DescribeEventsResponse
 --  
--- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param _events [EventList] <p>The events that match the specified filter criteria.</p>
-function M.DescribeEventsResponse(_nextToken, _events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- * events [EventList] <p>The events that match the specified filter criteria.</p>
+-- @return DescribeEventsResponse structure as a key-value pair table
+function M.DescribeEventsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["events"] = _events,
+		["nextToken"] = args["nextToken"],
+		["events"] = args["events"],
 	}
 	asserts.AssertDescribeEventsResponse(t)
 	return t
@@ -313,11 +340,14 @@ end
 
 --- Create a structure of type EventDescription
 -- <p>The detailed description of the event. Included in the information returned by the <a>DescribeEventDetails</a> operation.</p>
--- @param _latestDescription [eventDescription] <p>The most recent description of the event.</p>
-function M.EventDescription(_latestDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * latestDescription [eventDescription] <p>The most recent description of the event.</p>
+-- @return EventDescription structure as a key-value pair table
+function M.EventDescription(args)
+	assert(args, "You must provdide an argument table when creating EventDescription")
 	local t = { 
-		["latestDescription"] = _latestDescription,
+		["latestDescription"] = args["latestDescription"],
 	}
 	asserts.AssertEventDescription(t)
 	return t
@@ -338,15 +368,18 @@ end
 
 --- Create a structure of type EventType
 -- <p>Metadata about a type of event that is reported by AWS Health. Data consists of the category (for example, <code>issue</code>), the service (for example, <code>EC2</code>), and the event type code (for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>).</p>
--- @param _category [eventTypeCategory] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
--- @param _code [eventTypeCode] <p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>
--- @param _service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
-function M.EventType(_category, _code, _service, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * category [eventTypeCategory] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
+-- * code [eventTypeCode] <p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>
+-- * service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+-- @return EventType structure as a key-value pair table
+function M.EventType(args)
+	assert(args, "You must provdide an argument table when creating EventType")
 	local t = { 
-		["category"] = _category,
-		["code"] = _code,
-		["service"] = _service,
+		["category"] = args["category"],
+		["code"] = args["code"],
+		["service"] = args["service"],
 	}
 	asserts.AssertEventType(t)
 	return t
@@ -365,11 +398,14 @@ end
 
 --- Create a structure of type DescribeEntityAggregatesResponse
 --  
--- @param _entityAggregates [EntityAggregateList] <p>The number of entities that are affected by each of the specified events.</p>
-function M.DescribeEntityAggregatesResponse(_entityAggregates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEntityAggregatesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * entityAggregates [EntityAggregateList] <p>The number of entities that are affected by each of the specified events.</p>
+-- @return DescribeEntityAggregatesResponse structure as a key-value pair table
+function M.DescribeEntityAggregatesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEntityAggregatesResponse")
 	local t = { 
-		["entityAggregates"] = _entityAggregates,
+		["entityAggregates"] = args["entityAggregates"],
 	}
 	asserts.AssertDescribeEntityAggregatesResponse(t)
 	return t
@@ -390,15 +426,18 @@ end
 
 --- Create a structure of type EventDetailsErrorItem
 -- <p>Error information returned when a <a>DescribeEventDetails</a> operation cannot find a specified event.</p>
--- @param _errorMessage [string] <p>A message that describes the error.</p>
--- @param _eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
--- @param _errorName [string] <p>The name of the error.</p>
-function M.EventDetailsErrorItem(_errorMessage, _eventArn, _errorName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventDetailsErrorItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errorMessage [string] <p>A message that describes the error.</p>
+-- * eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+-- * errorName [string] <p>The name of the error.</p>
+-- @return EventDetailsErrorItem structure as a key-value pair table
+function M.EventDetailsErrorItem(args)
+	assert(args, "You must provdide an argument table when creating EventDetailsErrorItem")
 	local t = { 
-		["errorMessage"] = _errorMessage,
-		["eventArn"] = _eventArn,
-		["errorName"] = _errorName,
+		["errorMessage"] = args["errorMessage"],
+		["eventArn"] = args["eventArn"],
+		["errorName"] = args["errorName"],
 	}
 	asserts.AssertEventDetailsErrorItem(t)
 	return t
@@ -419,15 +458,18 @@ end
 
 --- Create a structure of type EventTypeFilter
 -- <p>The values to use to filter results from the <a>DescribeEventTypes</a> operation.</p>
--- @param _eventTypeCodes [EventTypeCodeList] <p>A list of event type codes.</p>
--- @param _services [serviceList] <p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
--- @param _eventTypeCategories [EventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
-function M.EventTypeFilter(_eventTypeCodes, _services, _eventTypeCategories, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventTypeFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * eventTypeCodes [EventTypeCodeList] <p>A list of event type codes.</p>
+-- * services [serviceList] <p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+-- * eventTypeCategories [EventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
+-- @return EventTypeFilter structure as a key-value pair table
+function M.EventTypeFilter(args)
+	assert(args, "You must provdide an argument table when creating EventTypeFilter")
 	local t = { 
-		["eventTypeCodes"] = _eventTypeCodes,
-		["services"] = _services,
-		["eventTypeCategories"] = _eventTypeCategories,
+		["eventTypeCodes"] = args["eventTypeCodes"],
+		["services"] = args["services"],
+		["eventTypeCategories"] = args["eventTypeCategories"],
 	}
 	asserts.AssertEventTypeFilter(t)
 	return t
@@ -447,13 +489,16 @@ end
 
 --- Create a structure of type DateTimeRange
 -- <p>A range of dates and times that is used by the <a>EventFilter</a> and <a>EntityFilter</a> objects. If <code>from</code> is set and <code>to</code> is set: match items where the timestamp (<code>startTime</code>, <code>endTime</code>, or <code>lastUpdatedTime</code>) is between <code>from</code> and <code>to</code> inclusive. If <code>from</code> is set and <code>to</code> is not set: match items where the timestamp value is equal to or after <code>from</code>. If <code>from</code> is not set and <code>to</code> is set: match items where the timestamp value is equal to or before <code>to</code>.</p>
--- @param _to [timestamp] <p>The ending date and time of a time range.</p>
--- @param _from [timestamp] <p>The starting date and time of a time range.</p>
-function M.DateTimeRange(_to, _from, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DateTimeRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * to [timestamp] <p>The ending date and time of a time range.</p>
+-- * from [timestamp] <p>The starting date and time of a time range.</p>
+-- @return DateTimeRange structure as a key-value pair table
+function M.DateTimeRange(args)
+	assert(args, "You must provdide an argument table when creating DateTimeRange")
 	local t = { 
-		["to"] = _to,
-		["from"] = _from,
+		["to"] = args["to"],
+		["from"] = args["from"],
 	}
 	asserts.AssertDateTimeRange(t)
 	return t
@@ -472,11 +517,14 @@ end
 
 --- Create a structure of type InvalidPaginationToken
 -- <p>The specified pagination token (<code>nextToken</code>) is not valid.</p>
--- @param _message [string] 
-function M.InvalidPaginationToken(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPaginationToken")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] 
+-- @return InvalidPaginationToken structure as a key-value pair table
+function M.InvalidPaginationToken(args)
+	assert(args, "You must provdide an argument table when creating InvalidPaginationToken")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidPaginationToken(t)
 	return t
@@ -507,35 +555,38 @@ end
 
 --- Create a structure of type EventFilter
 -- <p>The values to use to filter results from the <a>DescribeEvents</a> and <a>DescribeEventAggregates</a> operations.</p>
--- @param _startTimes [dateTimeRangeList] <p>A list of dates and times that the event began.</p>
--- @param _eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
--- @param _entityValues [entityValueList] <p>A list of entity identifiers, such as EC2 instance IDs (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
--- @param _eventTypeCodes [eventTypeList] <p>A list of unique identifiers for event types. For example, <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED"</code> </p>
--- @param _eventTypeCategories [eventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
--- @param _endTimes [dateTimeRangeList] <p>A list of dates and times that the event ended.</p>
--- @param _regions [regionList] <p>A list of AWS regions.</p>
--- @param _eventStatusCodes [eventStatusCodeList] <p>A list of event status codes.</p>
--- @param _entityArns [entityArnList] <p>A list of entity ARNs (unique identifiers).</p>
--- @param _services [serviceList] <p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
--- @param _availabilityZones [availabilityZones] <p>A list of AWS availability zones.</p>
--- @param _lastUpdatedTimes [dateTimeRangeList] <p>A list of dates and times that the event was last updated.</p>
--- @param _tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
-function M.EventFilter(_startTimes, _eventArns, _entityValues, _eventTypeCodes, _eventTypeCategories, _endTimes, _regions, _eventStatusCodes, _entityArns, _services, _availabilityZones, _lastUpdatedTimes, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startTimes [dateTimeRangeList] <p>A list of dates and times that the event began.</p>
+-- * eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
+-- * entityValues [entityValueList] <p>A list of entity identifiers, such as EC2 instance IDs (<code>i-34ab692e</code>) or EBS volumes (<code>vol-426ab23e</code>).</p>
+-- * eventTypeCodes [eventTypeList] <p>A list of unique identifiers for event types. For example, <code>"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED"</code> </p>
+-- * eventTypeCategories [eventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
+-- * endTimes [dateTimeRangeList] <p>A list of dates and times that the event ended.</p>
+-- * regions [regionList] <p>A list of AWS regions.</p>
+-- * eventStatusCodes [eventStatusCodeList] <p>A list of event status codes.</p>
+-- * entityArns [entityArnList] <p>A list of entity ARNs (unique identifiers).</p>
+-- * services [serviceList] <p>The AWS services associated with the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+-- * availabilityZones [availabilityZones] <p>A list of AWS availability zones.</p>
+-- * lastUpdatedTimes [dateTimeRangeList] <p>A list of dates and times that the event was last updated.</p>
+-- * tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
+-- @return EventFilter structure as a key-value pair table
+function M.EventFilter(args)
+	assert(args, "You must provdide an argument table when creating EventFilter")
 	local t = { 
-		["startTimes"] = _startTimes,
-		["eventArns"] = _eventArns,
-		["entityValues"] = _entityValues,
-		["eventTypeCodes"] = _eventTypeCodes,
-		["eventTypeCategories"] = _eventTypeCategories,
-		["endTimes"] = _endTimes,
-		["regions"] = _regions,
-		["eventStatusCodes"] = _eventStatusCodes,
-		["entityArns"] = _entityArns,
-		["services"] = _services,
-		["availabilityZones"] = _availabilityZones,
-		["lastUpdatedTimes"] = _lastUpdatedTimes,
-		["tags"] = _tags,
+		["startTimes"] = args["startTimes"],
+		["eventArns"] = args["eventArns"],
+		["entityValues"] = args["entityValues"],
+		["eventTypeCodes"] = args["eventTypeCodes"],
+		["eventTypeCategories"] = args["eventTypeCategories"],
+		["endTimes"] = args["endTimes"],
+		["regions"] = args["regions"],
+		["eventStatusCodes"] = args["eventStatusCodes"],
+		["entityArns"] = args["entityArns"],
+		["services"] = args["services"],
+		["availabilityZones"] = args["availabilityZones"],
+		["lastUpdatedTimes"] = args["lastUpdatedTimes"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertEventFilter(t)
 	return t
@@ -555,13 +606,16 @@ end
 
 --- Create a structure of type DescribeAffectedEntitiesResponse
 --  
--- @param _entities [EntityList] <p>The entities that match the filter criteria.</p>
--- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
-function M.DescribeAffectedEntitiesResponse(_entities, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAffectedEntitiesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * entities [EntityList] <p>The entities that match the filter criteria.</p>
+-- * nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- @return DescribeAffectedEntitiesResponse structure as a key-value pair table
+function M.DescribeAffectedEntitiesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAffectedEntitiesResponse")
 	local t = { 
-		["entities"] = _entities,
-		["nextToken"] = _nextToken,
+		["entities"] = args["entities"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeAffectedEntitiesResponse(t)
 	return t
@@ -583,17 +637,20 @@ end
 
 --- Create a structure of type DescribeEventTypesRequest
 --  
--- @param _filter [EventTypeFilter] <p>Values to narrow the results returned.</p>
--- @param _locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
--- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param _maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
-function M.DescribeEventTypesRequest(_filter, _locale, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventTypesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filter [EventTypeFilter] <p>Values to narrow the results returned.</p>
+-- * locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- * nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- * maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
+-- @return DescribeEventTypesRequest structure as a key-value pair table
+function M.DescribeEventTypesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventTypesRequest")
 	local t = { 
-		["filter"] = _filter,
-		["locale"] = _locale,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["filter"] = args["filter"],
+		["locale"] = args["locale"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertDescribeEventTypesRequest(t)
 	return t
@@ -614,14 +671,17 @@ end
 
 --- Create a structure of type DescribeEventDetailsRequest
 --  
--- @param _locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
--- @param _eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
--- Required parameter: eventArns
-function M.DescribeEventDetailsRequest(_locale, _eventArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventDetailsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- * eventArns [eventArnList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
+-- Required key: eventArns
+-- @return DescribeEventDetailsRequest structure as a key-value pair table
+function M.DescribeEventDetailsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventDetailsRequest")
 	local t = { 
-		["locale"] = _locale,
-		["eventArns"] = _eventArns,
+		["locale"] = args["locale"],
+		["eventArns"] = args["eventArns"],
 	}
 	asserts.AssertDescribeEventDetailsRequest(t)
 	return t
@@ -641,13 +701,16 @@ end
 
 --- Create a structure of type DescribeEventDetailsResponse
 --  
--- @param _failedSet [DescribeEventDetailsFailedSet] <p>Error messages for any events that could not be retrieved.</p>
--- @param _successfulSet [DescribeEventDetailsSuccessfulSet] <p>Information about the events that could be retrieved.</p>
-function M.DescribeEventDetailsResponse(_failedSet, _successfulSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventDetailsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failedSet [DescribeEventDetailsFailedSet] <p>Error messages for any events that could not be retrieved.</p>
+-- * successfulSet [DescribeEventDetailsSuccessfulSet] <p>Information about the events that could be retrieved.</p>
+-- @return DescribeEventDetailsResponse structure as a key-value pair table
+function M.DescribeEventDetailsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventDetailsResponse")
 	local t = { 
-		["failedSet"] = _failedSet,
-		["successfulSet"] = _successfulSet,
+		["failedSet"] = args["failedSet"],
+		["successfulSet"] = args["successfulSet"],
 	}
 	asserts.AssertDescribeEventDetailsResponse(t)
 	return t
@@ -669,17 +732,20 @@ end
 
 --- Create a structure of type DescribeEventsRequest
 --  
--- @param _filter [EventFilter] <p>Values to narrow the results returned.</p>
--- @param _locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
--- @param _nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
--- @param _maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
-function M.DescribeEventsRequest(_filter, _locale, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filter [EventFilter] <p>Values to narrow the results returned.</p>
+-- * locale [locale] <p>The locale (language) to return information in. English (en) is the default and the only supported value at this time.</p>
+-- * nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
+-- * maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
+-- @return DescribeEventsRequest structure as a key-value pair table
+function M.DescribeEventsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventsRequest")
 	local t = { 
-		["filter"] = _filter,
-		["locale"] = _locale,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["filter"] = args["filter"],
+		["locale"] = args["locale"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertDescribeEventsRequest(t)
 	return t
@@ -699,13 +765,16 @@ end
 
 --- Create a structure of type EntityAggregate
 -- <p>The number of entities that are affected by one or more events. Returned by the <a>DescribeEntityAggregates</a> operation.</p>
--- @param _count [count] <p>The number entities that match the criteria for the specified events.</p>
--- @param _eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
-function M.EntityAggregate(_count, _eventArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EntityAggregate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * count [count] <p>The number entities that match the criteria for the specified events.</p>
+-- * eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+-- @return EntityAggregate structure as a key-value pair table
+function M.EntityAggregate(args)
+	assert(args, "You must provdide an argument table when creating EntityAggregate")
 	local t = { 
-		["count"] = _count,
-		["eventArn"] = _eventArn,
+		["count"] = args["count"],
+		["eventArn"] = args["eventArn"],
 	}
 	asserts.AssertEntityAggregate(t)
 	return t
@@ -724,11 +793,14 @@ end
 
 --- Create a structure of type DescribeEntityAggregatesRequest
 --  
--- @param _eventArns [EventArnsList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
-function M.DescribeEntityAggregatesRequest(_eventArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEntityAggregatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * eventArns [EventArnsList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
+-- @return DescribeEntityAggregatesRequest structure as a key-value pair table
+function M.DescribeEntityAggregatesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEntityAggregatesRequest")
 	local t = { 
-		["eventArns"] = _eventArns,
+		["eventArns"] = args["eventArns"],
 	}
 	asserts.AssertDescribeEntityAggregatesRequest(t)
 	return t
@@ -748,13 +820,16 @@ end
 
 --- Create a structure of type EventAggregate
 -- <p>The number of events of each issue type. Returned by the <a>DescribeEventAggregates</a> operation.</p>
--- @param _count [count] <p>The number of events of the associated issue type.</p>
--- @param _aggregateValue [aggregateValue] <p>The issue type for the associated count.</p>
-function M.EventAggregate(_count, _aggregateValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventAggregate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * count [count] <p>The number of events of the associated issue type.</p>
+-- * aggregateValue [aggregateValue] <p>The issue type for the associated count.</p>
+-- @return EventAggregate structure as a key-value pair table
+function M.EventAggregate(args)
+	assert(args, "You must provdide an argument table when creating EventAggregate")
 	local t = { 
-		["count"] = _count,
-		["aggregateValue"] = _aggregateValue,
+		["count"] = args["count"],
+		["aggregateValue"] = args["aggregateValue"],
 	}
 	asserts.AssertEventAggregate(t)
 	return t
@@ -782,29 +857,32 @@ end
 
 --- Create a structure of type Event
 -- <p>Summary information about an event, returned by the <a>DescribeEvents</a> operation. The <a>DescribeEventDetails</a> operation also returns this information, as well as the <a>EventDescription</a> and additional event metadata.</p>
--- @param _availabilityZone [availabilityZone] <p>The AWS Availability Zone of the event. For example, us-east-1a.</p>
--- @param _lastUpdatedTime [timestamp] <p>The most recent date and time that the event was updated.</p>
--- @param _service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
--- @param _eventTypeCode [eventTypeCode] <p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>
--- @param _startTime [timestamp] <p>The date and time that the event began.</p>
--- @param _eventTypeCategory [eventTypeCategory] <p>The </p>
--- @param _endTime [timestamp] <p>The date and time that the event ended.</p>
--- @param _region [region] <p>The AWS region name of the event.</p>
--- @param _arn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
--- @param _statusCode [eventStatusCode] <p>The most recent status of the event. Possible values are <code>open</code>, <code>closed</code>, and <code>upcoming</code>.</p>
-function M.Event(_availabilityZone, _lastUpdatedTime, _service, _eventTypeCode, _startTime, _eventTypeCategory, _endTime, _region, _arn, _statusCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Event")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * availabilityZone [availabilityZone] <p>The AWS Availability Zone of the event. For example, us-east-1a.</p>
+-- * lastUpdatedTime [timestamp] <p>The most recent date and time that the event was updated.</p>
+-- * service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
+-- * eventTypeCode [eventTypeCode] <p>The unique identifier for the event type. The format is <code>AWS_<i>SERVICE</i>_<i>DESCRIPTION</i> </code>; for example, <code>AWS_EC2_SYSTEM_MAINTENANCE_EVENT</code>.</p>
+-- * startTime [timestamp] <p>The date and time that the event began.</p>
+-- * eventTypeCategory [eventTypeCategory] <p>The </p>
+-- * endTime [timestamp] <p>The date and time that the event ended.</p>
+-- * region [region] <p>The AWS region name of the event.</p>
+-- * arn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
+-- * statusCode [eventStatusCode] <p>The most recent status of the event. Possible values are <code>open</code>, <code>closed</code>, and <code>upcoming</code>.</p>
+-- @return Event structure as a key-value pair table
+function M.Event(args)
+	assert(args, "You must provdide an argument table when creating Event")
 	local t = { 
-		["availabilityZone"] = _availabilityZone,
-		["lastUpdatedTime"] = _lastUpdatedTime,
-		["service"] = _service,
-		["eventTypeCode"] = _eventTypeCode,
-		["startTime"] = _startTime,
-		["eventTypeCategory"] = _eventTypeCategory,
-		["endTime"] = _endTime,
-		["region"] = _region,
-		["arn"] = _arn,
-		["statusCode"] = _statusCode,
+		["availabilityZone"] = args["availabilityZone"],
+		["lastUpdatedTime"] = args["lastUpdatedTime"],
+		["service"] = args["service"],
+		["eventTypeCode"] = args["eventTypeCode"],
+		["startTime"] = args["startTime"],
+		["eventTypeCategory"] = args["eventTypeCategory"],
+		["endTime"] = args["endTime"],
+		["region"] = args["region"],
+		["arn"] = args["arn"],
+		["statusCode"] = args["statusCode"],
 	}
 	asserts.AssertEvent(t)
 	return t

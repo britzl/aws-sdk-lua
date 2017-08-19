@@ -49,41 +49,44 @@ end
 
 --- Create a structure of type Service
 -- <p>Details on a service within a cluster</p>
--- @param _status [String] <p>The status of the service. The valid values are <code>ACTIVE</code>, <code>DRAINING</code>, or <code>INACTIVE</code>.</p>
--- @param _taskDefinition [String] <p>The task definition to use for tasks in the service. This value is specified when the service is created with <a>CreateService</a>, and it can be modified with <a>UpdateService</a>.</p>
--- @param _pendingCount [Integer] <p>The number of tasks in the cluster that are in the <code>PENDING</code> state.</p>
--- @param _loadBalancers [LoadBalancers] <p>A list of Elastic Load Balancing load balancer objects, containing the load balancer name, the container name (as it appears in a container definition), and the container port to access from the load balancer.</p>
--- @param _roleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role associated with the service that allows the Amazon ECS container agent to register container instances with an Elastic Load Balancing load balancer.</p>
--- @param _placementConstraints [PlacementConstraints] <p>The placement constraints for the tasks in the service.</p>
--- @param _createdAt [Timestamp] <p>The Unix timestamp for when the service was created.</p>
--- @param _desiredCount [Integer] <p>The desired number of instantiations of the task definition to keep running on the service. This value is specified when the service is created with <a>CreateService</a>, and it can be modified with <a>UpdateService</a>.</p>
--- @param _serviceName [String] <p>The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple clusters within a region or across multiple regions.</p>
--- @param _clusterArn [String] <p>The Amazon Resource Name (ARN) of the cluster that hosts the service.</p>
--- @param _serviceArn [String] <p>The Amazon Resource Name (ARN) that identifies the service. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the service, the AWS account ID of the service owner, the <code>service</code> namespace, and then the service name. For example, <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i> </code>.</p>
--- @param _deploymentConfiguration [DeploymentConfiguration] <p>Optional deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.</p>
--- @param _deployments [Deployments] <p>The current state of deployments for the service.</p>
--- @param _events [ServiceEvents] <p>The event stream for your service. A maximum of 100 of the latest events are displayed.</p>
--- @param _runningCount [Integer] <p>The number of tasks in the cluster that are in the <code>RUNNING</code> state.</p>
--- @param _placementStrategy [PlacementStrategies] <p>The placement strategy that determines how tasks for the service are placed.</p>
-function M.Service(_status, _taskDefinition, _pendingCount, _loadBalancers, _roleArn, _placementConstraints, _createdAt, _desiredCount, _serviceName, _clusterArn, _serviceArn, _deploymentConfiguration, _deployments, _events, _runningCount, _placementStrategy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Service")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [String] <p>The status of the service. The valid values are <code>ACTIVE</code>, <code>DRAINING</code>, or <code>INACTIVE</code>.</p>
+-- * taskDefinition [String] <p>The task definition to use for tasks in the service. This value is specified when the service is created with <a>CreateService</a>, and it can be modified with <a>UpdateService</a>.</p>
+-- * pendingCount [Integer] <p>The number of tasks in the cluster that are in the <code>PENDING</code> state.</p>
+-- * loadBalancers [LoadBalancers] <p>A list of Elastic Load Balancing load balancer objects, containing the load balancer name, the container name (as it appears in a container definition), and the container port to access from the load balancer.</p>
+-- * roleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role associated with the service that allows the Amazon ECS container agent to register container instances with an Elastic Load Balancing load balancer.</p>
+-- * placementConstraints [PlacementConstraints] <p>The placement constraints for the tasks in the service.</p>
+-- * createdAt [Timestamp] <p>The Unix timestamp for when the service was created.</p>
+-- * desiredCount [Integer] <p>The desired number of instantiations of the task definition to keep running on the service. This value is specified when the service is created with <a>CreateService</a>, and it can be modified with <a>UpdateService</a>.</p>
+-- * serviceName [String] <p>The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple clusters within a region or across multiple regions.</p>
+-- * clusterArn [String] <p>The Amazon Resource Name (ARN) of the cluster that hosts the service.</p>
+-- * serviceArn [String] <p>The Amazon Resource Name (ARN) that identifies the service. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the service, the AWS account ID of the service owner, the <code>service</code> namespace, and then the service name. For example, <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:service/<i>my-service</i> </code>.</p>
+-- * deploymentConfiguration [DeploymentConfiguration] <p>Optional deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.</p>
+-- * deployments [Deployments] <p>The current state of deployments for the service.</p>
+-- * events [ServiceEvents] <p>The event stream for your service. A maximum of 100 of the latest events are displayed.</p>
+-- * runningCount [Integer] <p>The number of tasks in the cluster that are in the <code>RUNNING</code> state.</p>
+-- * placementStrategy [PlacementStrategies] <p>The placement strategy that determines how tasks for the service are placed.</p>
+-- @return Service structure as a key-value pair table
+function M.Service(args)
+	assert(args, "You must provdide an argument table when creating Service")
 	local t = { 
-		["status"] = _status,
-		["taskDefinition"] = _taskDefinition,
-		["pendingCount"] = _pendingCount,
-		["loadBalancers"] = _loadBalancers,
-		["roleArn"] = _roleArn,
-		["placementConstraints"] = _placementConstraints,
-		["createdAt"] = _createdAt,
-		["desiredCount"] = _desiredCount,
-		["serviceName"] = _serviceName,
-		["clusterArn"] = _clusterArn,
-		["serviceArn"] = _serviceArn,
-		["deploymentConfiguration"] = _deploymentConfiguration,
-		["deployments"] = _deployments,
-		["events"] = _events,
-		["runningCount"] = _runningCount,
-		["placementStrategy"] = _placementStrategy,
+		["status"] = args["status"],
+		["taskDefinition"] = args["taskDefinition"],
+		["pendingCount"] = args["pendingCount"],
+		["loadBalancers"] = args["loadBalancers"],
+		["roleArn"] = args["roleArn"],
+		["placementConstraints"] = args["placementConstraints"],
+		["createdAt"] = args["createdAt"],
+		["desiredCount"] = args["desiredCount"],
+		["serviceName"] = args["serviceName"],
+		["clusterArn"] = args["clusterArn"],
+		["serviceArn"] = args["serviceArn"],
+		["deploymentConfiguration"] = args["deploymentConfiguration"],
+		["deployments"] = args["deployments"],
+		["events"] = args["events"],
+		["runningCount"] = args["runningCount"],
+		["placementStrategy"] = args["placementStrategy"],
 	}
 	asserts.AssertService(t)
 	return t
@@ -102,11 +105,14 @@ end
 
 --- Create a structure of type DeleteAttributesResponse
 --  
--- @param _attributes [Attributes] <p>A list of attribute objects that were successfully deleted from your resource.</p>
-function M.DeleteAttributesResponse(_attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attributes [Attributes] <p>A list of attribute objects that were successfully deleted from your resource.</p>
+-- @return DeleteAttributesResponse structure as a key-value pair table
+function M.DeleteAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteAttributesResponse")
 	local t = { 
-		["attributes"] = _attributes,
+		["attributes"] = args["attributes"],
 	}
 	asserts.AssertDeleteAttributesResponse(t)
 	return t
@@ -125,11 +131,14 @@ end
 
 --- Create a structure of type DeleteClusterResponse
 --  
--- @param _cluster [Cluster] <p>The full description of the deleted cluster.</p>
-function M.DeleteClusterResponse(_cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [Cluster] <p>The full description of the deleted cluster.</p>
+-- @return DeleteClusterResponse structure as a key-value pair table
+function M.DeleteClusterResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteClusterResponse")
 	local t = { 
-		["cluster"] = _cluster,
+		["cluster"] = args["cluster"],
 	}
 	asserts.AssertDeleteClusterResponse(t)
 	return t
@@ -150,15 +159,18 @@ end
 
 --- Create a structure of type MountPoint
 -- <p>Details on a volume mount point that is used in a container definition.</p>
--- @param _sourceVolume [String] <p>The name of the volume to mount.</p>
--- @param _readOnly [BoxedBoolean] <p>If this value is <code>true</code>, the container has read-only access to the volume. If this value is <code>false</code>, then the container can write to the volume. The default value is <code>false</code>.</p>
--- @param _containerPath [String] <p>The path on the container to mount the host volume at.</p>
-function M.MountPoint(_sourceVolume, _readOnly, _containerPath, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MountPoint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * sourceVolume [String] <p>The name of the volume to mount.</p>
+-- * readOnly [BoxedBoolean] <p>If this value is <code>true</code>, the container has read-only access to the volume. If this value is <code>false</code>, then the container can write to the volume. The default value is <code>false</code>.</p>
+-- * containerPath [String] <p>The path on the container to mount the host volume at.</p>
+-- @return MountPoint structure as a key-value pair table
+function M.MountPoint(args)
+	assert(args, "You must provdide an argument table when creating MountPoint")
 	local t = { 
-		["sourceVolume"] = _sourceVolume,
-		["readOnly"] = _readOnly,
-		["containerPath"] = _containerPath,
+		["sourceVolume"] = args["sourceVolume"],
+		["readOnly"] = args["readOnly"],
+		["containerPath"] = args["containerPath"],
 	}
 	asserts.AssertMountPoint(t)
 	return t
@@ -178,13 +190,16 @@ end
 
 --- Create a structure of type Volume
 -- <p>A data volume used in a task definition.</p>
--- @param _host [HostVolumeProperties] <p>The contents of the <code>host</code> parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.</p>
--- @param _name [String] <p>The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition <code>mountPoints</code>.</p>
-function M.Volume(_host, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Volume")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * host [HostVolumeProperties] <p>The contents of the <code>host</code> parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.</p>
+-- * name [String] <p>The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition <code>mountPoints</code>.</p>
+-- @return Volume structure as a key-value pair table
+function M.Volume(args)
+	assert(args, "You must provdide an argument table when creating Volume")
 	local t = { 
-		["host"] = _host,
-		["name"] = _name,
+		["host"] = args["host"],
+		["name"] = args["name"],
 	}
 	asserts.AssertVolume(t)
 	return t
@@ -205,14 +220,17 @@ end
 
 --- Create a structure of type UpdateContainerAgentRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that your container instance is running on. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _containerInstance [String] <p>The container instance ID or full Amazon Resource Name (ARN) entries for the container instance on which you would like to update the Amazon ECS container agent.</p>
--- Required parameter: containerInstance
-function M.UpdateContainerAgentRequest(_cluster, _containerInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateContainerAgentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that your container instance is running on. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * containerInstance [String] <p>The container instance ID or full Amazon Resource Name (ARN) entries for the container instance on which you would like to update the Amazon ECS container agent.</p>
+-- Required key: containerInstance
+-- @return UpdateContainerAgentRequest structure as a key-value pair table
+function M.UpdateContainerAgentRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateContainerAgentRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["containerInstance"] = _containerInstance,
+		["cluster"] = args["cluster"],
+		["containerInstance"] = args["containerInstance"],
 	}
 	asserts.AssertUpdateContainerAgentRequest(t)
 	return t
@@ -230,8 +248,11 @@ end
 
 --- Create a structure of type ServiceNotActiveException
 -- <p>The specified service is not active. You cannot update a service that is not active. If you have previously deleted a service, you can re-create it with <a>CreateService</a>.</p>
-function M.ServiceNotActiveException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceNotActiveException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ServiceNotActiveException structure as a key-value pair table
+function M.ServiceNotActiveException(args)
+	assert(args, "You must provdide an argument table when creating ServiceNotActiveException")
 	local t = { 
 	}
 	asserts.AssertServiceNotActiveException(t)
@@ -250,8 +271,11 @@ end
 
 --- Create a structure of type AttributeLimitExceededException
 -- <p>You can apply up to 10 custom attributes per resource. You can view the attributes of a resource with <a>ListAttributes</a>. You can remove existing attributes on a resource with <a>DeleteAttributes</a>.</p>
-function M.AttributeLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttributeLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AttributeLimitExceededException structure as a key-value pair table
+function M.AttributeLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating AttributeLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertAttributeLimitExceededException(t)
@@ -272,13 +296,16 @@ end
 
 --- Create a structure of type Failure
 -- <p>A failed resource.</p>
--- @param _reason [String] <p>The reason for the failure.</p>
--- @param _arn [String] <p>The Amazon Resource Name (ARN) of the failed resource.</p>
-function M.Failure(_reason, _arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Failure")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * reason [String] <p>The reason for the failure.</p>
+-- * arn [String] <p>The Amazon Resource Name (ARN) of the failed resource.</p>
+-- @return Failure structure as a key-value pair table
+function M.Failure(args)
+	assert(args, "You must provdide an argument table when creating Failure")
 	local t = { 
-		["reason"] = _reason,
-		["arn"] = _arn,
+		["reason"] = args["reason"],
+		["arn"] = args["arn"],
 	}
 	asserts.AssertFailure(t)
 	return t
@@ -299,14 +326,17 @@ end
 
 --- Create a structure of type PutAttributesRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that contains the resource to apply attributes. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _attributes [Attributes] <p>The attributes to apply to your resource. You can specify up to 10 custom attributes per resource. You can specify up to 10 attributes in a single call.</p>
--- Required parameter: attributes
-function M.PutAttributesRequest(_cluster, _attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that contains the resource to apply attributes. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * attributes [Attributes] <p>The attributes to apply to your resource. You can specify up to 10 custom attributes per resource. You can specify up to 10 attributes in a single call.</p>
+-- Required key: attributes
+-- @return PutAttributesRequest structure as a key-value pair table
+function M.PutAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating PutAttributesRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["attributes"] = _attributes,
+		["cluster"] = args["cluster"],
+		["attributes"] = args["attributes"],
 	}
 	asserts.AssertPutAttributesRequest(t)
 	return t
@@ -331,23 +361,26 @@ end
 
 --- Create a structure of type RegisterContainerInstanceRequest
 --  
--- @param _instanceIdentityDocument [String] <p>The instance identity document for the EC2 instance to register. This document can be found by running the following command from the instance: <code>curl http://169.254.169.254/latest/dynamic/instance-identity/document/</code> </p>
--- @param _instanceIdentityDocumentSignature [String] <p>The instance identity document signature for the EC2 instance to register. This signature can be found by running the following command from the instance: <code>curl http://169.254.169.254/latest/dynamic/instance-identity/signature/</code> </p>
--- @param _containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the container instance (if it was previously registered).</p>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster with which to register your container instance. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _attributes [Attributes] <p>The container instance attributes that this container instance supports.</p>
--- @param _versionInfo [VersionInfo] <p>The version information for the Amazon ECS container agent and Docker daemon running on the container instance.</p>
--- @param _totalResources [Resources] <p>The resources available on the instance.</p>
-function M.RegisterContainerInstanceRequest(_instanceIdentityDocument, _instanceIdentityDocumentSignature, _containerInstanceArn, _cluster, _attributes, _versionInfo, _totalResources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterContainerInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceIdentityDocument [String] <p>The instance identity document for the EC2 instance to register. This document can be found by running the following command from the instance: <code>curl http://169.254.169.254/latest/dynamic/instance-identity/document/</code> </p>
+-- * instanceIdentityDocumentSignature [String] <p>The instance identity document signature for the EC2 instance to register. This signature can be found by running the following command from the instance: <code>curl http://169.254.169.254/latest/dynamic/instance-identity/signature/</code> </p>
+-- * containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the container instance (if it was previously registered).</p>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster with which to register your container instance. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * attributes [Attributes] <p>The container instance attributes that this container instance supports.</p>
+-- * versionInfo [VersionInfo] <p>The version information for the Amazon ECS container agent and Docker daemon running on the container instance.</p>
+-- * totalResources [Resources] <p>The resources available on the instance.</p>
+-- @return RegisterContainerInstanceRequest structure as a key-value pair table
+function M.RegisterContainerInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterContainerInstanceRequest")
 	local t = { 
-		["instanceIdentityDocument"] = _instanceIdentityDocument,
-		["instanceIdentityDocumentSignature"] = _instanceIdentityDocumentSignature,
-		["containerInstanceArn"] = _containerInstanceArn,
-		["cluster"] = _cluster,
-		["attributes"] = _attributes,
-		["versionInfo"] = _versionInfo,
-		["totalResources"] = _totalResources,
+		["instanceIdentityDocument"] = args["instanceIdentityDocument"],
+		["instanceIdentityDocumentSignature"] = args["instanceIdentityDocumentSignature"],
+		["containerInstanceArn"] = args["containerInstanceArn"],
+		["cluster"] = args["cluster"],
+		["attributes"] = args["attributes"],
+		["versionInfo"] = args["versionInfo"],
+		["totalResources"] = args["totalResources"],
 	}
 	asserts.AssertRegisterContainerInstanceRequest(t)
 	return t
@@ -365,8 +398,11 @@ end
 
 --- Create a structure of type ServiceNotFoundException
 -- <p>The specified service could not be found. You can view your available services with <a>ListServices</a>. Amazon ECS services are cluster-specific and region-specific.</p>
-function M.ServiceNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ServiceNotFoundException structure as a key-value pair table
+function M.ServiceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ServiceNotFoundException")
 	local t = { 
 	}
 	asserts.AssertServiceNotFoundException(t)
@@ -386,11 +422,14 @@ end
 
 --- Create a structure of type RegisterContainerInstanceResponse
 --  
--- @param _containerInstance [ContainerInstance] <p>The container instance that was registered.</p>
-function M.RegisterContainerInstanceResponse(_containerInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterContainerInstanceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * containerInstance [ContainerInstance] <p>The container instance that was registered.</p>
+-- @return RegisterContainerInstanceResponse structure as a key-value pair table
+function M.RegisterContainerInstanceResponse(args)
+	assert(args, "You must provdide an argument table when creating RegisterContainerInstanceResponse")
 	local t = { 
-		["containerInstance"] = _containerInstance,
+		["containerInstance"] = args["containerInstance"],
 	}
 	asserts.AssertRegisterContainerInstanceResponse(t)
 	return t
@@ -409,11 +448,14 @@ end
 
 --- Create a structure of type UpdateContainerAgentResponse
 --  
--- @param _containerInstance [ContainerInstance] <p>The container instance for which the container agent was updated.</p>
-function M.UpdateContainerAgentResponse(_containerInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateContainerAgentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * containerInstance [ContainerInstance] <p>The container instance for which the container agent was updated.</p>
+-- @return UpdateContainerAgentResponse structure as a key-value pair table
+function M.UpdateContainerAgentResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateContainerAgentResponse")
 	local t = { 
-		["containerInstance"] = _containerInstance,
+		["containerInstance"] = args["containerInstance"],
 	}
 	asserts.AssertUpdateContainerAgentResponse(t)
 	return t
@@ -433,12 +475,15 @@ end
 
 --- Create a structure of type DeleteClusterRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster to delete.</p>
--- Required parameter: cluster
-function M.DeleteClusterRequest(_cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster to delete.</p>
+-- Required key: cluster
+-- @return DeleteClusterRequest structure as a key-value pair table
+function M.DeleteClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteClusterRequest")
 	local t = { 
-		["cluster"] = _cluster,
+		["cluster"] = args["cluster"],
 	}
 	asserts.AssertDeleteClusterRequest(t)
 	return t
@@ -471,39 +516,42 @@ end
 
 --- Create a structure of type Task
 -- <p>Details on a task in a cluster.</p>
--- @param _taskArn [String] <p>The Amazon Resource Name (ARN) of the task.</p>
--- @param _group [String] <p>The name of the task group associated with the task.</p>
--- @param _overrides [TaskOverride] <p>One or more container overrides.</p>
--- @param _lastStatus [String] <p>The last known status of the task.</p>
--- @param _containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the container instances that host the task.</p>
--- @param _createdAt [Timestamp] <p>The Unix timestamp for when the task was created (the task entered the <code>PENDING</code> state).</p>
--- @param _version [Long] <p>The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch events, you can compare the version of a task reported by the Amazon ECS APIs with the version reported in CloudWatch events for the task (inside the <code>detail</code> object) to verify that the version in your event stream is current.</p>
--- @param _clusterArn [String] <p>The Amazon Resource Name (ARN) of the cluster that hosts the task.</p>
--- @param _startedAt [Timestamp] <p>The Unix timestamp for when the task was started (the task transitioned from the <code>PENDING</code> state to the <code>RUNNING</code> state).</p>
--- @param _desiredStatus [String] <p>The desired status of the task.</p>
--- @param _stoppedReason [String] <p>The reason the task was stopped.</p>
--- @param _taskDefinitionArn [String] <p>The Amazon Resource Name (ARN) of the task definition that creates the task.</p>
--- @param _startedBy [String] <p>The tag specified when a task is started. If the task is started by an Amazon ECS service, then the <code>startedBy</code> parameter contains the deployment ID of the service that starts it.</p>
--- @param _containers [Containers] <p>The containers associated with the task.</p>
--- @param _stoppedAt [Timestamp] <p>The Unix timestamp for when the task was stopped (the task transitioned from the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
-function M.Task(_taskArn, _group, _overrides, _lastStatus, _containerInstanceArn, _createdAt, _version, _clusterArn, _startedAt, _desiredStatus, _stoppedReason, _taskDefinitionArn, _startedBy, _containers, _stoppedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Task")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskArn [String] <p>The Amazon Resource Name (ARN) of the task.</p>
+-- * group [String] <p>The name of the task group associated with the task.</p>
+-- * overrides [TaskOverride] <p>One or more container overrides.</p>
+-- * lastStatus [String] <p>The last known status of the task.</p>
+-- * containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the container instances that host the task.</p>
+-- * createdAt [Timestamp] <p>The Unix timestamp for when the task was created (the task entered the <code>PENDING</code> state).</p>
+-- * version [Long] <p>The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch events, you can compare the version of a task reported by the Amazon ECS APIs with the version reported in CloudWatch events for the task (inside the <code>detail</code> object) to verify that the version in your event stream is current.</p>
+-- * clusterArn [String] <p>The Amazon Resource Name (ARN) of the cluster that hosts the task.</p>
+-- * startedAt [Timestamp] <p>The Unix timestamp for when the task was started (the task transitioned from the <code>PENDING</code> state to the <code>RUNNING</code> state).</p>
+-- * desiredStatus [String] <p>The desired status of the task.</p>
+-- * stoppedReason [String] <p>The reason the task was stopped.</p>
+-- * taskDefinitionArn [String] <p>The Amazon Resource Name (ARN) of the task definition that creates the task.</p>
+-- * startedBy [String] <p>The tag specified when a task is started. If the task is started by an Amazon ECS service, then the <code>startedBy</code> parameter contains the deployment ID of the service that starts it.</p>
+-- * containers [Containers] <p>The containers associated with the task.</p>
+-- * stoppedAt [Timestamp] <p>The Unix timestamp for when the task was stopped (the task transitioned from the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
+-- @return Task structure as a key-value pair table
+function M.Task(args)
+	assert(args, "You must provdide an argument table when creating Task")
 	local t = { 
-		["taskArn"] = _taskArn,
-		["group"] = _group,
-		["overrides"] = _overrides,
-		["lastStatus"] = _lastStatus,
-		["containerInstanceArn"] = _containerInstanceArn,
-		["createdAt"] = _createdAt,
-		["version"] = _version,
-		["clusterArn"] = _clusterArn,
-		["startedAt"] = _startedAt,
-		["desiredStatus"] = _desiredStatus,
-		["stoppedReason"] = _stoppedReason,
-		["taskDefinitionArn"] = _taskDefinitionArn,
-		["startedBy"] = _startedBy,
-		["containers"] = _containers,
-		["stoppedAt"] = _stoppedAt,
+		["taskArn"] = args["taskArn"],
+		["group"] = args["group"],
+		["overrides"] = args["overrides"],
+		["lastStatus"] = args["lastStatus"],
+		["containerInstanceArn"] = args["containerInstanceArn"],
+		["createdAt"] = args["createdAt"],
+		["version"] = args["version"],
+		["clusterArn"] = args["clusterArn"],
+		["startedAt"] = args["startedAt"],
+		["desiredStatus"] = args["desiredStatus"],
+		["stoppedReason"] = args["stoppedReason"],
+		["taskDefinitionArn"] = args["taskDefinitionArn"],
+		["startedBy"] = args["startedBy"],
+		["containers"] = args["containers"],
+		["stoppedAt"] = args["stoppedAt"],
 	}
 	asserts.AssertTask(t)
 	return t
@@ -523,13 +571,16 @@ end
 
 --- Create a structure of type DescribeTasksResponse
 --  
--- @param _failures [Failures] <p>Any failures associated with the call.</p>
--- @param _tasks [Tasks] <p>The list of tasks.</p>
-function M.DescribeTasksResponse(_failures, _tasks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTasksResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failures [Failures] <p>Any failures associated with the call.</p>
+-- * tasks [Tasks] <p>The list of tasks.</p>
+-- @return DescribeTasksResponse structure as a key-value pair table
+function M.DescribeTasksResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTasksResponse")
 	local t = { 
-		["failures"] = _failures,
-		["tasks"] = _tasks,
+		["failures"] = args["failures"],
+		["tasks"] = args["tasks"],
 	}
 	asserts.AssertDescribeTasksResponse(t)
 	return t
@@ -548,11 +599,14 @@ end
 
 --- Create a structure of type DeregisterContainerInstanceResponse
 --  
--- @param _containerInstance [ContainerInstance] <p>The container instance that was deregistered.</p>
-function M.DeregisterContainerInstanceResponse(_containerInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterContainerInstanceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * containerInstance [ContainerInstance] <p>The container instance that was deregistered.</p>
+-- @return DeregisterContainerInstanceResponse structure as a key-value pair table
+function M.DeregisterContainerInstanceResponse(args)
+	assert(args, "You must provdide an argument table when creating DeregisterContainerInstanceResponse")
 	local t = { 
-		["containerInstance"] = _containerInstance,
+		["containerInstance"] = args["containerInstance"],
 	}
 	asserts.AssertDeregisterContainerInstanceResponse(t)
 	return t
@@ -571,11 +625,14 @@ end
 
 --- Create a structure of type DeleteServiceResponse
 --  
--- @param _service [Service] <p>The full description of the deleted service.</p>
-function M.DeleteServiceResponse(_service, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteServiceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * service [Service] <p>The full description of the deleted service.</p>
+-- @return DeleteServiceResponse structure as a key-value pair table
+function M.DeleteServiceResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteServiceResponse")
 	local t = { 
-		["service"] = _service,
+		["service"] = args["service"],
 	}
 	asserts.AssertDeleteServiceResponse(t)
 	return t
@@ -597,17 +654,20 @@ end
 
 --- Create a structure of type ListTaskDefinitionFamiliesRequest
 --  
--- @param _familyPrefix [String] <p>The <code>familyPrefix</code> is a string that is used to filter the results of <code>ListTaskDefinitionFamilies</code>. If you specify a <code>familyPrefix</code>, only task definition family names that begin with the <code>familyPrefix</code> string are returned.</p>
--- @param _status [TaskDefinitionFamilyStatus] <p>The task definition family status with which to filter the <code>ListTaskDefinitionFamilies</code> results. By default, both <code>ACTIVE</code> and <code>INACTIVE</code> task definition families are listed. If this parameter is set to <code>ACTIVE</code>, only task definition families that have an <code>ACTIVE</code> task definition revision are returned. If this parameter is set to <code>INACTIVE</code>, only task definition families that do not have any <code>ACTIVE</code> task definition revisions are returned. If you paginate the resulting output, be sure to keep the <code>status</code> value constant in each subsequent request.</p>
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListTaskDefinitionFamilies</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _maxResults [BoxedInteger] <p>The maximum number of task definition family results returned by <code>ListTaskDefinitionFamilies</code> in paginated output. When this parameter is used, <code>ListTaskDefinitions</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListTaskDefinitionFamilies</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListTaskDefinitionFamilies</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
-function M.ListTaskDefinitionFamiliesRequest(_familyPrefix, _status, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTaskDefinitionFamiliesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * familyPrefix [String] <p>The <code>familyPrefix</code> is a string that is used to filter the results of <code>ListTaskDefinitionFamilies</code>. If you specify a <code>familyPrefix</code>, only task definition family names that begin with the <code>familyPrefix</code> string are returned.</p>
+-- * status [TaskDefinitionFamilyStatus] <p>The task definition family status with which to filter the <code>ListTaskDefinitionFamilies</code> results. By default, both <code>ACTIVE</code> and <code>INACTIVE</code> task definition families are listed. If this parameter is set to <code>ACTIVE</code>, only task definition families that have an <code>ACTIVE</code> task definition revision are returned. If this parameter is set to <code>INACTIVE</code>, only task definition families that do not have any <code>ACTIVE</code> task definition revisions are returned. If you paginate the resulting output, be sure to keep the <code>status</code> value constant in each subsequent request.</p>
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListTaskDefinitionFamilies</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * maxResults [BoxedInteger] <p>The maximum number of task definition family results returned by <code>ListTaskDefinitionFamilies</code> in paginated output. When this parameter is used, <code>ListTaskDefinitions</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListTaskDefinitionFamilies</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListTaskDefinitionFamilies</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- @return ListTaskDefinitionFamiliesRequest structure as a key-value pair table
+function M.ListTaskDefinitionFamiliesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTaskDefinitionFamiliesRequest")
 	local t = { 
-		["familyPrefix"] = _familyPrefix,
-		["status"] = _status,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["familyPrefix"] = args["familyPrefix"],
+		["status"] = args["status"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListTaskDefinitionFamiliesRequest(t)
 	return t
@@ -627,13 +687,16 @@ end
 
 --- Create a structure of type ListContainerInstancesResponse
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListContainerInstances</code> request. When the results of a <code>ListContainerInstances</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _containerInstanceArns [StringList] <p>The list of container instances with full Amazon Resource Name (ARN) entries for each container instance associated with the specified cluster.</p>
-function M.ListContainerInstancesResponse(_nextToken, _containerInstanceArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListContainerInstancesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListContainerInstances</code> request. When the results of a <code>ListContainerInstances</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * containerInstanceArns [StringList] <p>The list of container instances with full Amazon Resource Name (ARN) entries for each container instance associated with the specified cluster.</p>
+-- @return ListContainerInstancesResponse structure as a key-value pair table
+function M.ListContainerInstancesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListContainerInstancesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["containerInstanceArns"] = _containerInstanceArns,
+		["nextToken"] = args["nextToken"],
+		["containerInstanceArns"] = args["containerInstanceArns"],
 	}
 	asserts.AssertListContainerInstancesResponse(t)
 	return t
@@ -655,15 +718,18 @@ end
 
 --- Create a structure of type HostEntry
 -- <p>Hostnames and IP address entries that are added to the <code>/etc/hosts</code> file of a container via the <code>extraHosts</code> parameter of its <a>ContainerDefinition</a>. </p>
--- @param _hostname [String] <p>The hostname to use in the <code>/etc/hosts</code> entry.</p>
--- @param _ipAddress [String] <p>The IP address to use in the <code>/etc/hosts</code> entry.</p>
--- Required parameter: hostname
--- Required parameter: ipAddress
-function M.HostEntry(_hostname, _ipAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HostEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * hostname [String] <p>The hostname to use in the <code>/etc/hosts</code> entry.</p>
+-- * ipAddress [String] <p>The IP address to use in the <code>/etc/hosts</code> entry.</p>
+-- Required key: hostname
+-- Required key: ipAddress
+-- @return HostEntry structure as a key-value pair table
+function M.HostEntry(args)
+	assert(args, "You must provdide an argument table when creating HostEntry")
 	local t = { 
-		["hostname"] = _hostname,
-		["ipAddress"] = _ipAddress,
+		["hostname"] = args["hostname"],
+		["ipAddress"] = args["ipAddress"],
 	}
 	asserts.AssertHostEntry(t)
 	return t
@@ -684,15 +750,18 @@ end
 
 --- Create a structure of type ServiceEvent
 -- <p>Details on an event associated with a service.</p>
--- @param _message [String] <p>The event message.</p>
--- @param _id [String] <p>The ID string of the event.</p>
--- @param _createdAt [Timestamp] <p>The Unix timestamp for when the event was triggered.</p>
-function M.ServiceEvent(_message, _id, _createdAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceEvent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The event message.</p>
+-- * id [String] <p>The ID string of the event.</p>
+-- * createdAt [Timestamp] <p>The Unix timestamp for when the event was triggered.</p>
+-- @return ServiceEvent structure as a key-value pair table
+function M.ServiceEvent(args)
+	assert(args, "You must provdide an argument table when creating ServiceEvent")
 	local t = { 
-		["message"] = _message,
-		["id"] = _id,
-		["createdAt"] = _createdAt,
+		["message"] = args["message"],
+		["id"] = args["id"],
+		["createdAt"] = args["createdAt"],
 	}
 	asserts.AssertServiceEvent(t)
 	return t
@@ -716,21 +785,24 @@ end
 
 --- Create a structure of type ContainerOverride
 -- <p>The overrides that should be sent to a container.</p>
--- @param _memoryReservation [BoxedInteger] <p>The soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition. You must also specify a container name.</p>
--- @param _name [String] <p>The name of the container that receives the override. This parameter is required if any override is specified.</p>
--- @param _environment [EnvironmentVariables] <p>The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. You must also specify a container name.</p>
--- @param _command [StringList] <p>The command to send to the container that overrides the default command from the Docker image or the task definition. You must also specify a container name.</p>
--- @param _memory [BoxedInteger] <p>The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed. You must also specify a container name.</p>
--- @param _cpu [BoxedInteger] <p>The number of <code>cpu</code> units reserved for the container, instead of the default value from the task definition. You must also specify a container name.</p>
-function M.ContainerOverride(_memoryReservation, _name, _environment, _command, _memory, _cpu, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContainerOverride")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * memoryReservation [BoxedInteger] <p>The soft limit (in MiB) of memory to reserve for the container, instead of the default value from the task definition. You must also specify a container name.</p>
+-- * name [String] <p>The name of the container that receives the override. This parameter is required if any override is specified.</p>
+-- * environment [EnvironmentVariables] <p>The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the task definition. You must also specify a container name.</p>
+-- * command [StringList] <p>The command to send to the container that overrides the default command from the Docker image or the task definition. You must also specify a container name.</p>
+-- * memory [BoxedInteger] <p>The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed. You must also specify a container name.</p>
+-- * cpu [BoxedInteger] <p>The number of <code>cpu</code> units reserved for the container, instead of the default value from the task definition. You must also specify a container name.</p>
+-- @return ContainerOverride structure as a key-value pair table
+function M.ContainerOverride(args)
+	assert(args, "You must provdide an argument table when creating ContainerOverride")
 	local t = { 
-		["memoryReservation"] = _memoryReservation,
-		["name"] = _name,
-		["environment"] = _environment,
-		["command"] = _command,
-		["memory"] = _memory,
-		["cpu"] = _cpu,
+		["memoryReservation"] = args["memoryReservation"],
+		["name"] = args["name"],
+		["environment"] = args["environment"],
+		["command"] = args["command"],
+		["memory"] = args["memory"],
+		["cpu"] = args["cpu"],
 	}
 	asserts.AssertContainerOverride(t)
 	return t
@@ -774,61 +846,64 @@ end
 
 --- Create a structure of type ContainerDefinition
 -- <p>Container definitions are used in task definitions to describe the different containers that are launched as part of a task.</p>
--- @param _hostname [String] <p>The hostname to use for your container. This parameter maps to <code>Hostname</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--hostname</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _links [StringList] <p>The <code>link</code> parameter allows containers to communicate with each other without the need for port mappings, using the <code>name</code> parameter and optionally, an <code>alias</code> for the link. This construct is analogous to <code>name:alias</code> in Docker links. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed for each <code>name</code> and <code>alias</code>. For more information on linking Docker containers, see <a href="https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/">https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/</a>. This parameter maps to <code>Links</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--link</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <important> <p>Containers that are collocated on a single container instance may be able to communicate with each other without requiring links or host port mappings. Network isolation is achieved on the container instance using security groups and VPC settings.</p> </important>
--- @param _image [String] <p>The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with <code> <i>repository-url</i>/<i>image</i>:<i>tag</i> </code>. Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to <code>Image</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <ul> <li> <p>Images in Amazon ECR repositories use the full registry and repository URI (for example, <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>). </p> </li> <li> <p>Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or <code>mongo</code>).</p> </li> <li> <p>Images in other repositories on Docker Hub are qualified with an organization name (for example, <code>amazon/amazon-ecs-agent</code>).</p> </li> <li> <p>Images in other online repositories are qualified further by a domain name (for example, <code>quay.io/assemblyline/ubuntu</code>).</p> </li> </ul>
--- @param _memoryReservation [BoxedInteger] <p>The soft limit (in MiB) of memory to reserve for the container. When system memory is under heavy contention, Docker attempts to keep the container memory to this soft limit; however, your container can consume more memory when it needs to, up to either the hard limit specified with the <code>memory</code> parameter (if applicable), or all of the available memory on the container instance, whichever comes first. This parameter maps to <code>MemoryReservation</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--memory-reservation</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <p>You must specify a non-zero integer for one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.</p> <p>For example, if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of memory for short periods of time, you can set a <code>memoryReservation</code> of 128 MiB, and a <code>memory</code> hard limit of 300 MiB. This configuration would allow the container to only reserve 128 MiB of memory from the remaining resources on the container instance, but also allow the container to consume more memory resources when needed.</p>
--- @param _workingDirectory [String] <p>The working directory in which to run commands inside the container. This parameter maps to <code>WorkingDir</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--workdir</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _disableNetworking [BoxedBoolean] <p>When this parameter is true, networking is disabled within the container. This parameter maps to <code>NetworkDisabled</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a>.</p>
--- @param _environment [EnvironmentVariables] <p>The environment variables to pass to a container. This parameter maps to <code>Env</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--env</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <important> <p>We do not recommend using plain text environment variables for sensitive information, such as credential data.</p> </important>
--- @param _memory [BoxedInteger] <p>The hard limit (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. This parameter maps to <code>Memory</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <p>You must specify a non-zero integer for one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.</p> <p>The Docker daemon reserves a minimum of 4 MiB of memory for a container, so you should not specify fewer than 4 MiB of memory for your containers. </p>
--- @param _extraHosts [HostEntryList] <p>A list of hostnames and IP address mappings to append to the <code>/etc/hosts</code> file on the container. This parameter maps to <code>ExtraHosts</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--add-host</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _privileged [BoxedBoolean] <p>When this parameter is true, the container is given elevated privileges on the host container instance (similar to the <code>root</code> user). This parameter maps to <code>Privileged</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--privileged</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _volumesFrom [VolumeFromList] <p>Data volumes to mount from another container. This parameter maps to <code>VolumesFrom</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--volumes-from</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _dnsSearchDomains [StringList] <p>A list of DNS search domains that are presented to the container. This parameter maps to <code>DnsSearch</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--dns-search</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _readonlyRootFilesystem [BoxedBoolean] <p>When this parameter is true, the container is given read-only access to its root file system. This parameter maps to <code>ReadonlyRootfs</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--read-only</code> option to <code>docker run</code>.</p>
--- @param _logConfiguration [LogConfiguration] <p>The log configuration specification for the container. This parameter maps to <code>LogConfig</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--log-driver</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. By default, containers use the same logging driver that the Docker daemon uses; however the container may use a different logging driver than the Docker daemon by specifying a log driver with this parameter in the container definition. To use a different logging driver for a container, the log system must be configured properly on the container instance (or on a different log server for remote logging options). For more information on the options for different supported log drivers, see <a href="https://docs.docker.com/engine/admin/logging/overview/">Configure logging drivers</a> in the Docker documentation.</p> <note> <p>Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon (shown in the <a>LogConfiguration</a> data type). Additional log drivers may be available in future releases of the Amazon ECS container agent.</p> </note> <p>This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p> <note> <p>The Amazon ECS container agent running on a container instance must register the logging drivers available on that instance with the <code>ECS_AVAILABLE_LOGGING_DRIVERS</code> environment variable before containers placed on that instance can use these log configuration options. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container Agent Configuration</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p> </note>
--- @param _dockerSecurityOptions [StringList] <p>A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems. This parameter maps to <code>SecurityOpt</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--security-opt</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <note> <p>The Amazon ECS container agent running on a container instance must register with the <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables before containers placed on that instance can use these security options. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container Agent Configuration</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p> </note>
--- @param _entryPoint [StringList] <important> <p>Early versions of the Amazon ECS container agent do not properly handle <code>entryPoint</code> parameters. If you have problems using <code>entryPoint</code>, update your container agent or enter your commands and arguments as <code>command</code> array items instead.</p> </important> <p>The entry point that is passed to the container. This parameter maps to <code>Entrypoint</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--entrypoint</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a href="https://docs.docker.com/engine/reference/builder/#entrypoint">https://docs.docker.com/engine/reference/builder/#entrypoint</a>.</p>
--- @param _user [String] <p>The user name to use inside the container. This parameter maps to <code>User</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--user</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _mountPoints [MountPointList] <p>The mount points for data volumes in your container. This parameter maps to <code>Volumes</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--volume</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _name [String] <p>The name of a container. If you are linking multiple containers together in a task definition, the <code>name</code> of one container can be entered in the <code>links</code> of another container to connect the containers. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This parameter maps to <code>name</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--name</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. </p>
--- @param _dockerLabels [DockerLabelsMap] <p>A key/value map of labels to add to the container. This parameter maps to <code>Labels</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--label</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p>
--- @param _dnsServers [StringList] <p>A list of DNS servers that are presented to the container. This parameter maps to <code>Dns</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--dns</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _portMappings [PortMappingList] <p>The list of port mappings for the container. Port mappings allow containers to access ports on the host container instance to send or receive traffic. This parameter maps to <code>PortBindings</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--publish</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. If the network mode of a task definition is set to <code>none</code>, then you cannot specify port mappings. If the network mode of a task definition is set to <code>host</code>, then host ports must either be undefined or they must match the container port in the port mapping.</p> <note> <p>After a task reaches the <code>RUNNING</code> status, manual and automatic host and container port assignments are visible in the <b>Network Bindings</b> section of a container description of a selected task in the Amazon ECS console, or the <code>networkBindings</code> section <a>DescribeTasks</a> responses.</p> </note>
--- @param _command [StringList] <p>The command that is passed to the container. This parameter maps to <code>Cmd</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>COMMAND</code> parameter to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a href="https://docs.docker.com/engine/reference/builder/#cmd">https://docs.docker.com/engine/reference/builder/#cmd</a>.</p>
--- @param _cpu [Integer] <p>The number of <code>cpu</code> units reserved for the container. A container instance has 1,024 <code>cpu</code> units for every CPU core. This parameter specifies the minimum amount of CPU to reserve for a container, and containers share unallocated CPU units with other containers on the instance with the same ratio as their allocated amount. This parameter maps to <code>CpuShares</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--cpu-shares</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <note> <p>You can determine the number of CPU units that are available per EC2 instance type by multiplying the vCPUs listed for that instance type on the <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instances</a> detail page by 1,024.</p> </note> <p>For example, if you run a single-container task on a single-core instance type with 512 CPU units specified for that container, and that is the only task running on the container instance, that container could use the full 1,024 CPU unit share at any given time. However, if you launched another copy of the same task on that container instance, each task would be guaranteed a minimum of 512 CPU units when needed, and each container could float to higher CPU usage if the other container was not using it, but if both tasks were 100% active all of the time, they would be limited to 512 CPU units.</p> <p>The Docker daemon on the container instance uses the CPU value to calculate the relative CPU share ratios for running containers. For more information, see <a href="https://docs.docker.com/engine/reference/run/#cpu-share-constraint">CPU share constraint</a> in the Docker documentation. The minimum valid CPU share value that the Linux kernel allows is 2; however, the CPU parameter is not required, and you can use CPU values below 2 in your container definitions. For CPU values below 2 (including null), the behavior varies based on your Amazon ECS container agent version:</p> <ul> <li> <p> <b>Agent versions less than or equal to 1.1.0:</b> Null and zero CPU values are passed to Docker as 0, which Docker then converts to 1,024 CPU shares. CPU values of 1 are passed to Docker as 1, which the Linux kernel converts to 2 CPU shares.</p> </li> <li> <p> <b>Agent versions greater than or equal to 1.2.0:</b> Null, zero, and CPU values of 1 are passed to Docker as 2.</p> </li> </ul>
--- @param _essential [BoxedBoolean] <p>If the <code>essential</code> parameter of a container is marked as <code>true</code>, and that container fails or stops for any reason, all other containers that are part of the task are stopped. If the <code>essential</code> parameter of a container is marked as <code>false</code>, then its failure does not affect the rest of the containers in a task. If this parameter is omitted, a container is assumed to be essential.</p> <p>All tasks must have at least one essential container. If you have an application that is composed of multiple containers, you should group containers that are used for a common purpose into components, and separate the different components into multiple task definitions. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application Architecture</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _ulimits [UlimitList] <p>A list of <code>ulimits</code> to set in the container. This parameter maps to <code>Ulimits</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--ulimit</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. Valid naming values are displayed in the <a>Ulimit</a> data type. This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p>
-function M.ContainerDefinition(_hostname, _links, _image, _memoryReservation, _workingDirectory, _disableNetworking, _environment, _memory, _extraHosts, _privileged, _volumesFrom, _dnsSearchDomains, _readonlyRootFilesystem, _logConfiguration, _dockerSecurityOptions, _entryPoint, _user, _mountPoints, _name, _dockerLabels, _dnsServers, _portMappings, _command, _cpu, _essential, _ulimits, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContainerDefinition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * hostname [String] <p>The hostname to use for your container. This parameter maps to <code>Hostname</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--hostname</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * links [StringList] <p>The <code>link</code> parameter allows containers to communicate with each other without the need for port mappings, using the <code>name</code> parameter and optionally, an <code>alias</code> for the link. This construct is analogous to <code>name:alias</code> in Docker links. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed for each <code>name</code> and <code>alias</code>. For more information on linking Docker containers, see <a href="https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/">https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/</a>. This parameter maps to <code>Links</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--link</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <important> <p>Containers that are collocated on a single container instance may be able to communicate with each other without requiring links or host port mappings. Network isolation is achieved on the container instance using security groups and VPC settings.</p> </important>
+-- * image [String] <p>The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with <code> <i>repository-url</i>/<i>image</i>:<i>tag</i> </code>. Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to <code>Image</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <ul> <li> <p>Images in Amazon ECR repositories use the full registry and repository URI (for example, <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>). </p> </li> <li> <p>Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or <code>mongo</code>).</p> </li> <li> <p>Images in other repositories on Docker Hub are qualified with an organization name (for example, <code>amazon/amazon-ecs-agent</code>).</p> </li> <li> <p>Images in other online repositories are qualified further by a domain name (for example, <code>quay.io/assemblyline/ubuntu</code>).</p> </li> </ul>
+-- * memoryReservation [BoxedInteger] <p>The soft limit (in MiB) of memory to reserve for the container. When system memory is under heavy contention, Docker attempts to keep the container memory to this soft limit; however, your container can consume more memory when it needs to, up to either the hard limit specified with the <code>memory</code> parameter (if applicable), or all of the available memory on the container instance, whichever comes first. This parameter maps to <code>MemoryReservation</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--memory-reservation</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <p>You must specify a non-zero integer for one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.</p> <p>For example, if your container normally uses 128 MiB of memory, but occasionally bursts to 256 MiB of memory for short periods of time, you can set a <code>memoryReservation</code> of 128 MiB, and a <code>memory</code> hard limit of 300 MiB. This configuration would allow the container to only reserve 128 MiB of memory from the remaining resources on the container instance, but also allow the container to consume more memory resources when needed.</p>
+-- * workingDirectory [String] <p>The working directory in which to run commands inside the container. This parameter maps to <code>WorkingDir</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--workdir</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * disableNetworking [BoxedBoolean] <p>When this parameter is true, networking is disabled within the container. This parameter maps to <code>NetworkDisabled</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a>.</p>
+-- * environment [EnvironmentVariables] <p>The environment variables to pass to a container. This parameter maps to <code>Env</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--env</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <important> <p>We do not recommend using plain text environment variables for sensitive information, such as credential data.</p> </important>
+-- * memory [BoxedInteger] <p>The hard limit (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. This parameter maps to <code>Memory</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <p>You must specify a non-zero integer for one or both of <code>memory</code> or <code>memoryReservation</code> in container definitions. If you specify both, <code>memory</code> must be greater than <code>memoryReservation</code>. If you specify <code>memoryReservation</code>, then that value is subtracted from the available memory resources for the container instance on which the container is placed; otherwise, the value of <code>memory</code> is used.</p> <p>The Docker daemon reserves a minimum of 4 MiB of memory for a container, so you should not specify fewer than 4 MiB of memory for your containers. </p>
+-- * extraHosts [HostEntryList] <p>A list of hostnames and IP address mappings to append to the <code>/etc/hosts</code> file on the container. This parameter maps to <code>ExtraHosts</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--add-host</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * privileged [BoxedBoolean] <p>When this parameter is true, the container is given elevated privileges on the host container instance (similar to the <code>root</code> user). This parameter maps to <code>Privileged</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--privileged</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * volumesFrom [VolumeFromList] <p>Data volumes to mount from another container. This parameter maps to <code>VolumesFrom</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--volumes-from</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * dnsSearchDomains [StringList] <p>A list of DNS search domains that are presented to the container. This parameter maps to <code>DnsSearch</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--dns-search</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * readonlyRootFilesystem [BoxedBoolean] <p>When this parameter is true, the container is given read-only access to its root file system. This parameter maps to <code>ReadonlyRootfs</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--read-only</code> option to <code>docker run</code>.</p>
+-- * logConfiguration [LogConfiguration] <p>The log configuration specification for the container. This parameter maps to <code>LogConfig</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--log-driver</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. By default, containers use the same logging driver that the Docker daemon uses; however the container may use a different logging driver than the Docker daemon by specifying a log driver with this parameter in the container definition. To use a different logging driver for a container, the log system must be configured properly on the container instance (or on a different log server for remote logging options). For more information on the options for different supported log drivers, see <a href="https://docs.docker.com/engine/admin/logging/overview/">Configure logging drivers</a> in the Docker documentation.</p> <note> <p>Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon (shown in the <a>LogConfiguration</a> data type). Additional log drivers may be available in future releases of the Amazon ECS container agent.</p> </note> <p>This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p> <note> <p>The Amazon ECS container agent running on a container instance must register the logging drivers available on that instance with the <code>ECS_AVAILABLE_LOGGING_DRIVERS</code> environment variable before containers placed on that instance can use these log configuration options. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container Agent Configuration</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p> </note>
+-- * dockerSecurityOptions [StringList] <p>A list of strings to provide custom labels for SELinux and AppArmor multi-level security systems. This parameter maps to <code>SecurityOpt</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--security-opt</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <note> <p>The Amazon ECS container agent running on a container instance must register with the <code>ECS_SELINUX_CAPABLE=true</code> or <code>ECS_APPARMOR_CAPABLE=true</code> environment variables before containers placed on that instance can use these security options. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container Agent Configuration</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p> </note>
+-- * entryPoint [StringList] <important> <p>Early versions of the Amazon ECS container agent do not properly handle <code>entryPoint</code> parameters. If you have problems using <code>entryPoint</code>, update your container agent or enter your commands and arguments as <code>command</code> array items instead.</p> </important> <p>The entry point that is passed to the container. This parameter maps to <code>Entrypoint</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--entrypoint</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a href="https://docs.docker.com/engine/reference/builder/#entrypoint">https://docs.docker.com/engine/reference/builder/#entrypoint</a>.</p>
+-- * user [String] <p>The user name to use inside the container. This parameter maps to <code>User</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--user</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * mountPoints [MountPointList] <p>The mount points for data volumes in your container. This parameter maps to <code>Volumes</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--volume</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * name [String] <p>The name of a container. If you are linking multiple containers together in a task definition, the <code>name</code> of one container can be entered in the <code>links</code> of another container to connect the containers. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This parameter maps to <code>name</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--name</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. </p>
+-- * dockerLabels [DockerLabelsMap] <p>A key/value map of labels to add to the container. This parameter maps to <code>Labels</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--label</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p>
+-- * dnsServers [StringList] <p>A list of DNS servers that are presented to the container. This parameter maps to <code>Dns</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--dns</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * portMappings [PortMappingList] <p>The list of port mappings for the container. Port mappings allow containers to access ports on the host container instance to send or receive traffic. This parameter maps to <code>PortBindings</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--publish</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. If the network mode of a task definition is set to <code>none</code>, then you cannot specify port mappings. If the network mode of a task definition is set to <code>host</code>, then host ports must either be undefined or they must match the container port in the port mapping.</p> <note> <p>After a task reaches the <code>RUNNING</code> status, manual and automatic host and container port assignments are visible in the <b>Network Bindings</b> section of a container description of a selected task in the Amazon ECS console, or the <code>networkBindings</code> section <a>DescribeTasks</a> responses.</p> </note>
+-- * command [StringList] <p>The command that is passed to the container. This parameter maps to <code>Cmd</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>COMMAND</code> parameter to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a href="https://docs.docker.com/engine/reference/builder/#cmd">https://docs.docker.com/engine/reference/builder/#cmd</a>.</p>
+-- * cpu [Integer] <p>The number of <code>cpu</code> units reserved for the container. A container instance has 1,024 <code>cpu</code> units for every CPU core. This parameter specifies the minimum amount of CPU to reserve for a container, and containers share unallocated CPU units with other containers on the instance with the same ratio as their allocated amount. This parameter maps to <code>CpuShares</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--cpu-shares</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <note> <p>You can determine the number of CPU units that are available per EC2 instance type by multiplying the vCPUs listed for that instance type on the <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instances</a> detail page by 1,024.</p> </note> <p>For example, if you run a single-container task on a single-core instance type with 512 CPU units specified for that container, and that is the only task running on the container instance, that container could use the full 1,024 CPU unit share at any given time. However, if you launched another copy of the same task on that container instance, each task would be guaranteed a minimum of 512 CPU units when needed, and each container could float to higher CPU usage if the other container was not using it, but if both tasks were 100% active all of the time, they would be limited to 512 CPU units.</p> <p>The Docker daemon on the container instance uses the CPU value to calculate the relative CPU share ratios for running containers. For more information, see <a href="https://docs.docker.com/engine/reference/run/#cpu-share-constraint">CPU share constraint</a> in the Docker documentation. The minimum valid CPU share value that the Linux kernel allows is 2; however, the CPU parameter is not required, and you can use CPU values below 2 in your container definitions. For CPU values below 2 (including null), the behavior varies based on your Amazon ECS container agent version:</p> <ul> <li> <p> <b>Agent versions less than or equal to 1.1.0:</b> Null and zero CPU values are passed to Docker as 0, which Docker then converts to 1,024 CPU shares. CPU values of 1 are passed to Docker as 1, which the Linux kernel converts to 2 CPU shares.</p> </li> <li> <p> <b>Agent versions greater than or equal to 1.2.0:</b> Null, zero, and CPU values of 1 are passed to Docker as 2.</p> </li> </ul>
+-- * essential [BoxedBoolean] <p>If the <code>essential</code> parameter of a container is marked as <code>true</code>, and that container fails or stops for any reason, all other containers that are part of the task are stopped. If the <code>essential</code> parameter of a container is marked as <code>false</code>, then its failure does not affect the rest of the containers in a task. If this parameter is omitted, a container is assumed to be essential.</p> <p>All tasks must have at least one essential container. If you have an application that is composed of multiple containers, you should group containers that are used for a common purpose into components, and separate the different components into multiple task definitions. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/application_architecture.html">Application Architecture</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
+-- * ulimits [UlimitList] <p>A list of <code>ulimits</code> to set in the container. This parameter maps to <code>Ulimits</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--ulimit</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. Valid naming values are displayed in the <a>Ulimit</a> data type. This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p>
+-- @return ContainerDefinition structure as a key-value pair table
+function M.ContainerDefinition(args)
+	assert(args, "You must provdide an argument table when creating ContainerDefinition")
 	local t = { 
-		["hostname"] = _hostname,
-		["links"] = _links,
-		["image"] = _image,
-		["memoryReservation"] = _memoryReservation,
-		["workingDirectory"] = _workingDirectory,
-		["disableNetworking"] = _disableNetworking,
-		["environment"] = _environment,
-		["memory"] = _memory,
-		["extraHosts"] = _extraHosts,
-		["privileged"] = _privileged,
-		["volumesFrom"] = _volumesFrom,
-		["dnsSearchDomains"] = _dnsSearchDomains,
-		["readonlyRootFilesystem"] = _readonlyRootFilesystem,
-		["logConfiguration"] = _logConfiguration,
-		["dockerSecurityOptions"] = _dockerSecurityOptions,
-		["entryPoint"] = _entryPoint,
-		["user"] = _user,
-		["mountPoints"] = _mountPoints,
-		["name"] = _name,
-		["dockerLabels"] = _dockerLabels,
-		["dnsServers"] = _dnsServers,
-		["portMappings"] = _portMappings,
-		["command"] = _command,
-		["cpu"] = _cpu,
-		["essential"] = _essential,
-		["ulimits"] = _ulimits,
+		["hostname"] = args["hostname"],
+		["links"] = args["links"],
+		["image"] = args["image"],
+		["memoryReservation"] = args["memoryReservation"],
+		["workingDirectory"] = args["workingDirectory"],
+		["disableNetworking"] = args["disableNetworking"],
+		["environment"] = args["environment"],
+		["memory"] = args["memory"],
+		["extraHosts"] = args["extraHosts"],
+		["privileged"] = args["privileged"],
+		["volumesFrom"] = args["volumesFrom"],
+		["dnsSearchDomains"] = args["dnsSearchDomains"],
+		["readonlyRootFilesystem"] = args["readonlyRootFilesystem"],
+		["logConfiguration"] = args["logConfiguration"],
+		["dockerSecurityOptions"] = args["dockerSecurityOptions"],
+		["entryPoint"] = args["entryPoint"],
+		["user"] = args["user"],
+		["mountPoints"] = args["mountPoints"],
+		["name"] = args["name"],
+		["dockerLabels"] = args["dockerLabels"],
+		["dnsServers"] = args["dnsServers"],
+		["portMappings"] = args["portMappings"],
+		["command"] = args["command"],
+		["cpu"] = args["cpu"],
+		["essential"] = args["essential"],
+		["ulimits"] = args["ulimits"],
 	}
 	asserts.AssertContainerDefinition(t)
 	return t
@@ -848,13 +923,16 @@ end
 
 --- Create a structure of type PlacementConstraint
 -- <p>An object representing a constraint on task placement. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html">Task Placement Constraints</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _expression [String] <p>A cluster query language expression to apply to the constraint. Note you cannot specify an expression if the constraint type is <code>distinctInstance</code>. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _type [PlacementConstraintType] <p>The type of constraint. Use <code>distinctInstance</code> to ensure that each task in a particular group is running on a different container instance. Use <code>memberOf</code> to restrict selection to a group of valid candidates. Note that <code>distinctInstance</code> is not supported in task definitions.</p>
-function M.PlacementConstraint(_expression, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlacementConstraint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * expression [String] <p>A cluster query language expression to apply to the constraint. Note you cannot specify an expression if the constraint type is <code>distinctInstance</code>. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
+-- * type [PlacementConstraintType] <p>The type of constraint. Use <code>distinctInstance</code> to ensure that each task in a particular group is running on a different container instance. Use <code>memberOf</code> to restrict selection to a group of valid candidates. Note that <code>distinctInstance</code> is not supported in task definitions.</p>
+-- @return PlacementConstraint structure as a key-value pair table
+function M.PlacementConstraint(args)
+	assert(args, "You must provdide an argument table when creating PlacementConstraint")
 	local t = { 
-		["expression"] = _expression,
-		["type"] = _type,
+		["expression"] = args["expression"],
+		["type"] = args["type"],
 	}
 	asserts.AssertPlacementConstraint(t)
 	return t
@@ -873,11 +951,14 @@ end
 
 --- Create a structure of type DescribeTaskDefinitionResponse
 --  
--- @param _taskDefinition [TaskDefinition] <p>The full task definition description.</p>
-function M.DescribeTaskDefinitionResponse(_taskDefinition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTaskDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskDefinition [TaskDefinition] <p>The full task definition description.</p>
+-- @return DescribeTaskDefinitionResponse structure as a key-value pair table
+function M.DescribeTaskDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTaskDefinitionResponse")
 	local t = { 
-		["taskDefinition"] = _taskDefinition,
+		["taskDefinition"] = args["taskDefinition"],
 	}
 	asserts.AssertDescribeTaskDefinitionResponse(t)
 	return t
@@ -897,13 +978,16 @@ end
 
 --- Create a structure of type PlacementStrategy
 -- <p>The task placement strategy for a task or service. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html">Task Placement Strategies</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _field [String] <p>The field to apply the placement strategy against. For the <code>spread</code> placement strategy, valid values are <code>instanceId</code> (or <code>host</code>, which has the same effect), or any platform or custom attribute that is applied to a container instance, such as <code>attribute:ecs.availability-zone</code>. For the <code>binpack</code> placement strategy, valid values are <code>cpu</code> and <code>memory</code>. For the <code>random</code> placement strategy, this field is not used.</p>
--- @param _type [PlacementStrategyType] <p>The type of placement strategy. The <code>random</code> placement strategy randomly places tasks on available candidates. The <code>spread</code> placement strategy spreads placement across available candidates evenly based on the <code>field</code> parameter. The <code>binpack</code> strategy places tasks on available candidates that have the least available amount of the resource that is specified with the <code>field</code> parameter. For example, if you binpack on memory, a task is placed on the instance with the least amount of remaining memory (but still enough to run the task).</p>
-function M.PlacementStrategy(_field, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlacementStrategy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * field [String] <p>The field to apply the placement strategy against. For the <code>spread</code> placement strategy, valid values are <code>instanceId</code> (or <code>host</code>, which has the same effect), or any platform or custom attribute that is applied to a container instance, such as <code>attribute:ecs.availability-zone</code>. For the <code>binpack</code> placement strategy, valid values are <code>cpu</code> and <code>memory</code>. For the <code>random</code> placement strategy, this field is not used.</p>
+-- * type [PlacementStrategyType] <p>The type of placement strategy. The <code>random</code> placement strategy randomly places tasks on available candidates. The <code>spread</code> placement strategy spreads placement across available candidates evenly based on the <code>field</code> parameter. The <code>binpack</code> strategy places tasks on available candidates that have the least available amount of the resource that is specified with the <code>field</code> parameter. For example, if you binpack on memory, a task is placed on the instance with the least amount of remaining memory (but still enough to run the task).</p>
+-- @return PlacementStrategy structure as a key-value pair table
+function M.PlacementStrategy(args)
+	assert(args, "You must provdide an argument table when creating PlacementStrategy")
 	local t = { 
-		["field"] = _field,
-		["type"] = _type,
+		["field"] = args["field"],
+		["type"] = args["type"],
 	}
 	asserts.AssertPlacementStrategy(t)
 	return t
@@ -922,11 +1006,14 @@ end
 
 --- Create a structure of type DescribeClustersRequest
 --  
--- @param _clusters [StringList] <p>A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a cluster, the default cluster is assumed.</p>
-function M.DescribeClustersRequest(_clusters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClustersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * clusters [StringList] <p>A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a cluster, the default cluster is assumed.</p>
+-- @return DescribeClustersRequest structure as a key-value pair table
+function M.DescribeClustersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeClustersRequest")
 	local t = { 
-		["clusters"] = _clusters,
+		["clusters"] = args["clusters"],
 	}
 	asserts.AssertDescribeClustersRequest(t)
 	return t
@@ -950,18 +1037,21 @@ end
 
 --- Create a structure of type Ulimit
 -- <p>The <code>ulimit</code> settings to pass to the container.</p>
--- @param _softLimit [Integer] <p>The soft limit for the ulimit type.</p>
--- @param _name [UlimitName] <p>The <code>type</code> of the <code>ulimit</code>.</p>
--- @param _hardLimit [Integer] <p>The hard limit for the ulimit type.</p>
--- Required parameter: name
--- Required parameter: softLimit
--- Required parameter: hardLimit
-function M.Ulimit(_softLimit, _name, _hardLimit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Ulimit")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * softLimit [Integer] <p>The soft limit for the ulimit type.</p>
+-- * name [UlimitName] <p>The <code>type</code> of the <code>ulimit</code>.</p>
+-- * hardLimit [Integer] <p>The hard limit for the ulimit type.</p>
+-- Required key: name
+-- Required key: softLimit
+-- Required key: hardLimit
+-- @return Ulimit structure as a key-value pair table
+function M.Ulimit(args)
+	assert(args, "You must provdide an argument table when creating Ulimit")
 	local t = { 
-		["softLimit"] = _softLimit,
-		["name"] = _name,
-		["hardLimit"] = _hardLimit,
+		["softLimit"] = args["softLimit"],
+		["name"] = args["name"],
+		["hardLimit"] = args["hardLimit"],
 	}
 	asserts.AssertUlimit(t)
 	return t
@@ -980,11 +1070,14 @@ end
 
 --- Create a structure of type ServerException
 -- <p>These errors are usually caused by a server issue.</p>
--- @param _message [String] 
-function M.ServerException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServerException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return ServerException structure as a key-value pair table
+function M.ServerException(args)
+	assert(args, "You must provdide an argument table when creating ServerException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServerException(t)
 	return t
@@ -1004,13 +1097,16 @@ end
 
 --- Create a structure of type KeyValuePair
 -- <p>A key and value pair object.</p>
--- @param _name [String] <p>The name of the key value pair. For environment variables, this is the name of the environment variable.</p>
--- @param _value [String] <p>The value of the key value pair. For environment variables, this is the value of the environment variable.</p>
-function M.KeyValuePair(_name, _value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KeyValuePair")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [String] <p>The name of the key value pair. For environment variables, this is the name of the environment variable.</p>
+-- * value [String] <p>The value of the key value pair. For environment variables, this is the value of the environment variable.</p>
+-- @return KeyValuePair structure as a key-value pair table
+function M.KeyValuePair(args)
+	assert(args, "You must provdide an argument table when creating KeyValuePair")
 	local t = { 
-		["name"] = _name,
-		["value"] = _value,
+		["name"] = args["name"],
+		["value"] = args["value"],
 	}
 	asserts.AssertKeyValuePair(t)
 	return t
@@ -1030,12 +1126,15 @@ end
 
 --- Create a structure of type DescribeTaskDefinitionRequest
 --  
--- @param _taskDefinition [String] <p>The <code>family</code> for the latest <code>ACTIVE</code> revision, <code>family</code> and <code>revision</code> (<code>family:revision</code>) for a specific revision in the family, or full Amazon Resource Name (ARN) of the task definition to describe.</p>
--- Required parameter: taskDefinition
-function M.DescribeTaskDefinitionRequest(_taskDefinition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTaskDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskDefinition [String] <p>The <code>family</code> for the latest <code>ACTIVE</code> revision, <code>family</code> and <code>revision</code> (<code>family:revision</code>) for a specific revision in the family, or full Amazon Resource Name (ARN) of the task definition to describe.</p>
+-- Required key: taskDefinition
+-- @return DescribeTaskDefinitionRequest structure as a key-value pair table
+function M.DescribeTaskDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTaskDefinitionRequest")
 	local t = { 
-		["taskDefinition"] = _taskDefinition,
+		["taskDefinition"] = args["taskDefinition"],
 	}
 	asserts.AssertDescribeTaskDefinitionRequest(t)
 	return t
@@ -1057,17 +1156,20 @@ end
 
 --- Create a structure of type SubmitTaskStateChangeRequest
 --  
--- @param _status [String] <p>The status of the state change request.</p>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task.</p>
--- @param _reason [String] <p>The reason for the state change request.</p>
--- @param _task [String] <p>The task ID or full Amazon Resource Name (ARN) of the task in the state change request.</p>
-function M.SubmitTaskStateChangeRequest(_status, _cluster, _reason, _task, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubmitTaskStateChangeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [String] <p>The status of the state change request.</p>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task.</p>
+-- * reason [String] <p>The reason for the state change request.</p>
+-- * task [String] <p>The task ID or full Amazon Resource Name (ARN) of the task in the state change request.</p>
+-- @return SubmitTaskStateChangeRequest structure as a key-value pair table
+function M.SubmitTaskStateChangeRequest(args)
+	assert(args, "You must provdide an argument table when creating SubmitTaskStateChangeRequest")
 	local t = { 
-		["status"] = _status,
-		["cluster"] = _cluster,
-		["reason"] = _reason,
-		["task"] = _task,
+		["status"] = args["status"],
+		["cluster"] = args["cluster"],
+		["reason"] = args["reason"],
+		["task"] = args["task"],
 	}
 	asserts.AssertSubmitTaskStateChangeRequest(t)
 	return t
@@ -1086,11 +1188,14 @@ end
 
 --- Create a structure of type StopTaskResponse
 --  
--- @param _task [Task] <p>The task that was stopped.</p>
-function M.StopTaskResponse(_task, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopTaskResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * task [Task] <p>The task that was stopped.</p>
+-- @return StopTaskResponse structure as a key-value pair table
+function M.StopTaskResponse(args)
+	assert(args, "You must provdide an argument table when creating StopTaskResponse")
 	local t = { 
-		["task"] = _task,
+		["task"] = args["task"],
 	}
 	asserts.AssertStopTaskResponse(t)
 	return t
@@ -1110,13 +1215,16 @@ end
 
 --- Create a structure of type DescribeContainerInstancesResponse
 --  
--- @param _failures [Failures] <p>Any failures associated with the call.</p>
--- @param _containerInstances [ContainerInstances] <p>The list of container instances.</p>
-function M.DescribeContainerInstancesResponse(_failures, _containerInstances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeContainerInstancesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failures [Failures] <p>Any failures associated with the call.</p>
+-- * containerInstances [ContainerInstances] <p>The list of container instances.</p>
+-- @return DescribeContainerInstancesResponse structure as a key-value pair table
+function M.DescribeContainerInstancesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeContainerInstancesResponse")
 	local t = { 
-		["failures"] = _failures,
-		["containerInstances"] = _containerInstances,
+		["failures"] = args["failures"],
+		["containerInstances"] = args["containerInstances"],
 	}
 	asserts.AssertDescribeContainerInstancesResponse(t)
 	return t
@@ -1135,11 +1243,14 @@ end
 
 --- Create a structure of type CreateClusterResponse
 --  
--- @param _cluster [Cluster] <p>The full description of your new cluster.</p>
-function M.CreateClusterResponse(_cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateClusterResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [Cluster] <p>The full description of your new cluster.</p>
+-- @return CreateClusterResponse structure as a key-value pair table
+function M.CreateClusterResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateClusterResponse")
 	local t = { 
-		["cluster"] = _cluster,
+		["cluster"] = args["cluster"],
 	}
 	asserts.AssertCreateClusterResponse(t)
 	return t
@@ -1157,8 +1268,11 @@ end
 
 --- Create a structure of type TargetNotFoundException
 -- <p>The specified target could not be found. You can view your available container instances with <a>ListContainerInstances</a>. Amazon ECS container instances are cluster-specific and region-specific.</p>
-function M.TargetNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TargetNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TargetNotFoundException structure as a key-value pair table
+function M.TargetNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating TargetNotFoundException")
 	local t = { 
 	}
 	asserts.AssertTargetNotFoundException(t)
@@ -1178,11 +1292,14 @@ end
 
 --- Create a structure of type CreateServiceResponse
 --  
--- @param _service [Service] <p>The full description of your service following the create call.</p>
-function M.CreateServiceResponse(_service, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateServiceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * service [Service] <p>The full description of your service following the create call.</p>
+-- @return CreateServiceResponse structure as a key-value pair table
+function M.CreateServiceResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateServiceResponse")
 	local t = { 
-		["service"] = _service,
+		["service"] = args["service"],
 	}
 	asserts.AssertCreateServiceResponse(t)
 	return t
@@ -1205,19 +1322,22 @@ end
 
 --- Create a structure of type ListTaskDefinitionsRequest
 --  
--- @param _familyPrefix [String] <p>The full family name with which to filter the <code>ListTaskDefinitions</code> results. Specifying a <code>familyPrefix</code> limits the listed task definitions to task definition revisions that belong to that family.</p>
--- @param _status [TaskDefinitionStatus] <p>The task definition status with which to filter the <code>ListTaskDefinitions</code> results. By default, only <code>ACTIVE</code> task definitions are listed. By setting this parameter to <code>INACTIVE</code>, you can view task definitions that are <code>INACTIVE</code> as long as an active task or service still references them. If you paginate the resulting output, be sure to keep the <code>status</code> value constant in each subsequent request.</p>
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListTaskDefinitions</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _maxResults [BoxedInteger] <p>The maximum number of task definition results returned by <code>ListTaskDefinitions</code> in paginated output. When this parameter is used, <code>ListTaskDefinitions</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListTaskDefinitions</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListTaskDefinitions</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
--- @param _sort [SortOrder] <p>The order in which to sort the results. Valid values are <code>ASC</code> and <code>DESC</code>. By default (<code>ASC</code>), task definitions are listed lexicographically by family name and in ascending numerical order by revision so that the newest task definitions in a family are listed last. Setting this parameter to <code>DESC</code> reverses the sort order on family name and revision so that the newest task definitions in a family are listed first.</p>
-function M.ListTaskDefinitionsRequest(_familyPrefix, _status, _nextToken, _maxResults, _sort, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTaskDefinitionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * familyPrefix [String] <p>The full family name with which to filter the <code>ListTaskDefinitions</code> results. Specifying a <code>familyPrefix</code> limits the listed task definitions to task definition revisions that belong to that family.</p>
+-- * status [TaskDefinitionStatus] <p>The task definition status with which to filter the <code>ListTaskDefinitions</code> results. By default, only <code>ACTIVE</code> task definitions are listed. By setting this parameter to <code>INACTIVE</code>, you can view task definitions that are <code>INACTIVE</code> as long as an active task or service still references them. If you paginate the resulting output, be sure to keep the <code>status</code> value constant in each subsequent request.</p>
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListTaskDefinitions</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * maxResults [BoxedInteger] <p>The maximum number of task definition results returned by <code>ListTaskDefinitions</code> in paginated output. When this parameter is used, <code>ListTaskDefinitions</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListTaskDefinitions</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListTaskDefinitions</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- * sort [SortOrder] <p>The order in which to sort the results. Valid values are <code>ASC</code> and <code>DESC</code>. By default (<code>ASC</code>), task definitions are listed lexicographically by family name and in ascending numerical order by revision so that the newest task definitions in a family are listed last. Setting this parameter to <code>DESC</code> reverses the sort order on family name and revision so that the newest task definitions in a family are listed first.</p>
+-- @return ListTaskDefinitionsRequest structure as a key-value pair table
+function M.ListTaskDefinitionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTaskDefinitionsRequest")
 	local t = { 
-		["familyPrefix"] = _familyPrefix,
-		["status"] = _status,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
-		["sort"] = _sort,
+		["familyPrefix"] = args["familyPrefix"],
+		["status"] = args["status"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+		["sort"] = args["sort"],
 	}
 	asserts.AssertListTaskDefinitionsRequest(t)
 	return t
@@ -1237,13 +1357,16 @@ end
 
 --- Create a structure of type DeploymentConfiguration
 -- <p>Optional deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.</p>
--- @param _maximumPercent [BoxedInteger] <p>The upper limit (as a percentage of the service's <code>desiredCount</code>) of the number of tasks that are allowed in the <code>RUNNING</code> or <code>PENDING</code> state in a service during a deployment. The maximum number of tasks during a deployment is the <code>desiredCount</code> multiplied by <code>maximumPercent</code>/100, rounded down to the nearest integer value.</p>
--- @param _minimumHealthyPercent [BoxedInteger] <p>The lower limit (as a percentage of the service's <code>desiredCount</code>) of the number of running tasks that must remain in the <code>RUNNING</code> state in a service during a deployment. The minimum healthy tasks during a deployment is the <code>desiredCount</code> multiplied by <code>minimumHealthyPercent</code>/100, rounded up to the nearest integer value.</p>
-function M.DeploymentConfiguration(_maximumPercent, _minimumHealthyPercent, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * maximumPercent [BoxedInteger] <p>The upper limit (as a percentage of the service's <code>desiredCount</code>) of the number of tasks that are allowed in the <code>RUNNING</code> or <code>PENDING</code> state in a service during a deployment. The maximum number of tasks during a deployment is the <code>desiredCount</code> multiplied by <code>maximumPercent</code>/100, rounded down to the nearest integer value.</p>
+-- * minimumHealthyPercent [BoxedInteger] <p>The lower limit (as a percentage of the service's <code>desiredCount</code>) of the number of running tasks that must remain in the <code>RUNNING</code> state in a service during a deployment. The minimum healthy tasks during a deployment is the <code>desiredCount</code> multiplied by <code>minimumHealthyPercent</code>/100, rounded up to the nearest integer value.</p>
+-- @return DeploymentConfiguration structure as a key-value pair table
+function M.DeploymentConfiguration(args)
+	assert(args, "You must provdide an argument table when creating DeploymentConfiguration")
 	local t = { 
-		["maximumPercent"] = _maximumPercent,
-		["minimumHealthyPercent"] = _minimumHealthyPercent,
+		["maximumPercent"] = args["maximumPercent"],
+		["minimumHealthyPercent"] = args["minimumHealthyPercent"],
 	}
 	asserts.AssertDeploymentConfiguration(t)
 	return t
@@ -1274,32 +1397,35 @@ end
 
 --- Create a structure of type CreateServiceRequest
 --  
--- @param _loadBalancers [LoadBalancers] <p>A load balancer object representing the load balancer to use with your service. Currently, you are limited to one load balancer or target group per service. After you create a service, the load balancer name or target group ARN, container name, and container port specified in the service definition are immutable.</p> <p>For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the container name (as it appears in a container definition), and the container port to access from the load balancer. When a task from this service is placed on a container instance, the container instance is registered with the load balancer specified here.</p> <p>For Elastic Load Balancing Application load balancers, this object must contain the load balancer target group ARN, the container name (as it appears in a container definition), and the container port to access from the load balancer. When a task from this service is placed on a container instance, the container instance and port combination is registered as a target in the target group specified here.</p>
--- @param _placementConstraints [PlacementConstraints] <p>An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10 constraints per task (this limit includes constraints in the task definition and those specified at run time). </p>
--- @param _desiredCount [BoxedInteger] <p>The number of instantiations of the specified task definition to place and keep running on your cluster.</p>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster on which to run your service. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _serviceName [String] <p>The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple clusters within a region or across multiple regions.</p>
--- @param _role [String] <p>The name or full Amazon Resource Name (ARN) of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. This parameter is required if you are using a load balancer with your service. If you specify the <code>role</code> parameter, you must also specify a load balancer object with the <code>loadBalancers</code> parameter.</p> <p>If your specified role has a path other than <code>/</code>, then you must either specify the full role ARN (this is recommended) or prefix the role name with the path. For example, if a role with the name <code>bar</code> has a path of <code>/foo/</code> then you would specify <code>/foo/bar</code> as the role name. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names">Friendly Names and Paths</a> in the <i>IAM User Guide</i>.</p>
--- @param _clientToken [String] <p>Unique, case-sensitive identifier you provide to ensure the idempotency of the request. Up to 32 ASCII characters are allowed.</p>
--- @param _deploymentConfiguration [DeploymentConfiguration] <p>Optional deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.</p>
--- @param _taskDefinition [String] <p>The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name (ARN) of the task definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is used.</p>
--- @param _placementStrategy [PlacementStrategies] <p>The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy rules per service.</p>
--- Required parameter: serviceName
--- Required parameter: taskDefinition
--- Required parameter: desiredCount
-function M.CreateServiceRequest(_loadBalancers, _placementConstraints, _desiredCount, _cluster, _serviceName, _role, _clientToken, _deploymentConfiguration, _taskDefinition, _placementStrategy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateServiceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * loadBalancers [LoadBalancers] <p>A load balancer object representing the load balancer to use with your service. Currently, you are limited to one load balancer or target group per service. After you create a service, the load balancer name or target group ARN, container name, and container port specified in the service definition are immutable.</p> <p>For Elastic Load Balancing Classic load balancers, this object must contain the load balancer name, the container name (as it appears in a container definition), and the container port to access from the load balancer. When a task from this service is placed on a container instance, the container instance is registered with the load balancer specified here.</p> <p>For Elastic Load Balancing Application load balancers, this object must contain the load balancer target group ARN, the container name (as it appears in a container definition), and the container port to access from the load balancer. When a task from this service is placed on a container instance, the container instance and port combination is registered as a target in the target group specified here.</p>
+-- * placementConstraints [PlacementConstraints] <p>An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10 constraints per task (this limit includes constraints in the task definition and those specified at run time). </p>
+-- * desiredCount [BoxedInteger] <p>The number of instantiations of the specified task definition to place and keep running on your cluster.</p>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster on which to run your service. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * serviceName [String] <p>The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple clusters within a region or across multiple regions.</p>
+-- * role [String] <p>The name or full Amazon Resource Name (ARN) of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. This parameter is required if you are using a load balancer with your service. If you specify the <code>role</code> parameter, you must also specify a load balancer object with the <code>loadBalancers</code> parameter.</p> <p>If your specified role has a path other than <code>/</code>, then you must either specify the full role ARN (this is recommended) or prefix the role name with the path. For example, if a role with the name <code>bar</code> has a path of <code>/foo/</code> then you would specify <code>/foo/bar</code> as the role name. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names">Friendly Names and Paths</a> in the <i>IAM User Guide</i>.</p>
+-- * clientToken [String] <p>Unique, case-sensitive identifier you provide to ensure the idempotency of the request. Up to 32 ASCII characters are allowed.</p>
+-- * deploymentConfiguration [DeploymentConfiguration] <p>Optional deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.</p>
+-- * taskDefinition [String] <p>The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name (ARN) of the task definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is used.</p>
+-- * placementStrategy [PlacementStrategies] <p>The placement strategy objects to use for tasks in your service. You can specify a maximum of 5 strategy rules per service.</p>
+-- Required key: serviceName
+-- Required key: taskDefinition
+-- Required key: desiredCount
+-- @return CreateServiceRequest structure as a key-value pair table
+function M.CreateServiceRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateServiceRequest")
 	local t = { 
-		["loadBalancers"] = _loadBalancers,
-		["placementConstraints"] = _placementConstraints,
-		["desiredCount"] = _desiredCount,
-		["cluster"] = _cluster,
-		["serviceName"] = _serviceName,
-		["role"] = _role,
-		["clientToken"] = _clientToken,
-		["deploymentConfiguration"] = _deploymentConfiguration,
-		["taskDefinition"] = _taskDefinition,
-		["placementStrategy"] = _placementStrategy,
+		["loadBalancers"] = args["loadBalancers"],
+		["placementConstraints"] = args["placementConstraints"],
+		["desiredCount"] = args["desiredCount"],
+		["cluster"] = args["cluster"],
+		["serviceName"] = args["serviceName"],
+		["role"] = args["role"],
+		["clientToken"] = args["clientToken"],
+		["deploymentConfiguration"] = args["deploymentConfiguration"],
+		["taskDefinition"] = args["taskDefinition"],
+		["placementStrategy"] = args["placementStrategy"],
 	}
 	asserts.AssertCreateServiceRequest(t)
 	return t
@@ -1319,13 +1445,16 @@ end
 
 --- Create a structure of type StartTaskResponse
 --  
--- @param _failures [Failures] <p>Any failures associated with the call.</p>
--- @param _tasks [Tasks] <p>A full description of the tasks that were started. Each task that was successfully placed on your container instances are described here.</p>
-function M.StartTaskResponse(_failures, _tasks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartTaskResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failures [Failures] <p>Any failures associated with the call.</p>
+-- * tasks [Tasks] <p>A full description of the tasks that were started. Each task that was successfully placed on your container instances are described here.</p>
+-- @return StartTaskResponse structure as a key-value pair table
+function M.StartTaskResponse(args)
+	assert(args, "You must provdide an argument table when creating StartTaskResponse")
 	local t = { 
-		["failures"] = _failures,
-		["tasks"] = _tasks,
+		["failures"] = args["failures"],
+		["tasks"] = args["tasks"],
 	}
 	asserts.AssertStartTaskResponse(t)
 	return t
@@ -1345,13 +1474,16 @@ end
 
 --- Create a structure of type ListClustersResponse
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListClusters</code> request. When the results of a <code>ListClusters</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _clusterArns [StringList] <p>The list of full Amazon Resource Name (ARN) entries for each cluster associated with your account.</p>
-function M.ListClustersResponse(_nextToken, _clusterArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListClustersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListClusters</code> request. When the results of a <code>ListClusters</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * clusterArns [StringList] <p>The list of full Amazon Resource Name (ARN) entries for each cluster associated with your account.</p>
+-- @return ListClustersResponse structure as a key-value pair table
+function M.ListClustersResponse(args)
+	assert(args, "You must provdide an argument table when creating ListClustersResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["clusterArns"] = _clusterArns,
+		["nextToken"] = args["nextToken"],
+		["clusterArns"] = args["clusterArns"],
 	}
 	asserts.AssertListClustersResponse(t)
 	return t
@@ -1371,13 +1503,16 @@ end
 
 --- Create a structure of type ListTasksResponse
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListTasks</code> request. When the results of a <code>ListTasks</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _taskArns [StringList] <p>The list of task Amazon Resource Name (ARN) entries for the <code>ListTasks</code> request.</p>
-function M.ListTasksResponse(_nextToken, _taskArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTasksResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListTasks</code> request. When the results of a <code>ListTasks</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * taskArns [StringList] <p>The list of task Amazon Resource Name (ARN) entries for the <code>ListTasks</code> request.</p>
+-- @return ListTasksResponse structure as a key-value pair table
+function M.ListTasksResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTasksResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["taskArns"] = _taskArns,
+		["nextToken"] = args["nextToken"],
+		["taskArns"] = args["taskArns"],
 	}
 	asserts.AssertListTasksResponse(t)
 	return t
@@ -1401,20 +1536,23 @@ end
 
 --- Create a structure of type UpdateServiceRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that your service is running on. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _deploymentConfiguration [DeploymentConfiguration] <p>Optional deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.</p>
--- @param _taskDefinition [String] <p>The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name (ARN) of the task definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is used. If you modify the task definition with <code>UpdateService</code>, Amazon ECS spawns a task with the new version of the task definition and then stops an old task after the new version is running.</p>
--- @param _service [String] <p>The name of the service to update.</p>
--- @param _desiredCount [BoxedInteger] <p>The number of instantiations of the task to place and keep running in your service.</p>
--- Required parameter: service
-function M.UpdateServiceRequest(_cluster, _deploymentConfiguration, _taskDefinition, _service, _desiredCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServiceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that your service is running on. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * deploymentConfiguration [DeploymentConfiguration] <p>Optional deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.</p>
+-- * taskDefinition [String] <p>The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name (ARN) of the task definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is used. If you modify the task definition with <code>UpdateService</code>, Amazon ECS spawns a task with the new version of the task definition and then stops an old task after the new version is running.</p>
+-- * service [String] <p>The name of the service to update.</p>
+-- * desiredCount [BoxedInteger] <p>The number of instantiations of the task to place and keep running in your service.</p>
+-- Required key: service
+-- @return UpdateServiceRequest structure as a key-value pair table
+function M.UpdateServiceRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateServiceRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["deploymentConfiguration"] = _deploymentConfiguration,
-		["taskDefinition"] = _taskDefinition,
-		["service"] = _service,
-		["desiredCount"] = _desiredCount,
+		["cluster"] = args["cluster"],
+		["deploymentConfiguration"] = args["deploymentConfiguration"],
+		["taskDefinition"] = args["taskDefinition"],
+		["service"] = args["service"],
+		["desiredCount"] = args["desiredCount"],
 	}
 	asserts.AssertUpdateServiceRequest(t)
 	return t
@@ -1439,23 +1577,26 @@ end
 
 --- Create a structure of type SubmitContainerStateChangeRequest
 --  
--- @param _status [String] <p>The status of the state change request.</p>
--- @param _containerName [String] <p>The name of the container.</p>
--- @param _task [String] <p>The task ID or full Amazon Resource Name (ARN) of the task that hosts the container.</p>
--- @param _networkBindings [NetworkBindings] <p>The network bindings of the container.</p>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container.</p>
--- @param _reason [String] <p>The reason for the state change request.</p>
--- @param _exitCode [BoxedInteger] <p>The exit code returned for the state change request.</p>
-function M.SubmitContainerStateChangeRequest(_status, _containerName, _task, _networkBindings, _cluster, _reason, _exitCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubmitContainerStateChangeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [String] <p>The status of the state change request.</p>
+-- * containerName [String] <p>The name of the container.</p>
+-- * task [String] <p>The task ID or full Amazon Resource Name (ARN) of the task that hosts the container.</p>
+-- * networkBindings [NetworkBindings] <p>The network bindings of the container.</p>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container.</p>
+-- * reason [String] <p>The reason for the state change request.</p>
+-- * exitCode [BoxedInteger] <p>The exit code returned for the state change request.</p>
+-- @return SubmitContainerStateChangeRequest structure as a key-value pair table
+function M.SubmitContainerStateChangeRequest(args)
+	assert(args, "You must provdide an argument table when creating SubmitContainerStateChangeRequest")
 	local t = { 
-		["status"] = _status,
-		["containerName"] = _containerName,
-		["task"] = _task,
-		["networkBindings"] = _networkBindings,
-		["cluster"] = _cluster,
-		["reason"] = _reason,
-		["exitCode"] = _exitCode,
+		["status"] = args["status"],
+		["containerName"] = args["containerName"],
+		["task"] = args["task"],
+		["networkBindings"] = args["networkBindings"],
+		["cluster"] = args["cluster"],
+		["reason"] = args["reason"],
+		["exitCode"] = args["exitCode"],
 	}
 	asserts.AssertSubmitContainerStateChangeRequest(t)
 	return t
@@ -1473,8 +1614,11 @@ end
 
 --- Create a structure of type ClusterContainsContainerInstancesException
 -- <p>You cannot delete a cluster that has registered container instances. You must first deregister the container instances before you can delete the cluster. For more information, see <a>DeregisterContainerInstance</a>.</p>
-function M.ClusterContainsContainerInstancesException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterContainsContainerInstancesException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ClusterContainsContainerInstancesException structure as a key-value pair table
+function M.ClusterContainsContainerInstancesException(args)
+	assert(args, "You must provdide an argument table when creating ClusterContainsContainerInstancesException")
 	local t = { 
 	}
 	asserts.AssertClusterContainsContainerInstancesException(t)
@@ -1493,8 +1637,11 @@ end
 
 --- Create a structure of type ClusterContainsServicesException
 -- <p>You cannot delete a cluster that contains services. You must first update the service to reduce its desired task count to 0 and then delete the service. For more information, see <a>UpdateService</a> and <a>DeleteService</a>.</p>
-function M.ClusterContainsServicesException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterContainsServicesException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ClusterContainsServicesException structure as a key-value pair table
+function M.ClusterContainsServicesException(args)
+	assert(args, "You must provdide an argument table when creating ClusterContainsServicesException")
 	local t = { 
 	}
 	asserts.AssertClusterContainsServicesException(t)
@@ -1516,14 +1663,17 @@ end
 
 --- Create a structure of type DescribeServicesRequest
 --  
--- @param _services [StringList] <p>A list of services to describe. You may specify up to 10 services to describe in a single operation.</p>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN)the cluster that hosts the service to describe. If you do not specify a cluster, the default cluster is assumed.</p>
--- Required parameter: services
-function M.DescribeServicesRequest(_services, _cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServicesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * services [StringList] <p>A list of services to describe. You may specify up to 10 services to describe in a single operation.</p>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN)the cluster that hosts the service to describe. If you do not specify a cluster, the default cluster is assumed.</p>
+-- Required key: services
+-- @return DescribeServicesRequest structure as a key-value pair table
+function M.DescribeServicesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeServicesRequest")
 	local t = { 
-		["services"] = _services,
-		["cluster"] = _cluster,
+		["services"] = args["services"],
+		["cluster"] = args["cluster"],
 	}
 	asserts.AssertDescribeServicesRequest(t)
 	return t
@@ -1544,14 +1694,17 @@ end
 
 --- Create a structure of type DeleteAttributesRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that contains the resource to delete attributes. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _attributes [Attributes] <p>The attributes to delete from your resource. You can specify up to 10 attributes per request. For custom attributes, specify the attribute name and target ID, but do not specify the value. If you specify the target ID using the short form, you must also specify the target type.</p>
--- Required parameter: attributes
-function M.DeleteAttributesRequest(_cluster, _attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that contains the resource to delete attributes. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * attributes [Attributes] <p>The attributes to delete from your resource. You can specify up to 10 attributes per request. For custom attributes, specify the attribute name and target ID, but do not specify the value. If you specify the target ID using the short form, you must also specify the target type.</p>
+-- Required key: attributes
+-- @return DeleteAttributesRequest structure as a key-value pair table
+function M.DeleteAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAttributesRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["attributes"] = _attributes,
+		["cluster"] = args["cluster"],
+		["attributes"] = args["attributes"],
 	}
 	asserts.AssertDeleteAttributesRequest(t)
 	return t
@@ -1569,8 +1722,11 @@ end
 
 --- Create a structure of type NoUpdateAvailableException
 -- <p>There is no update available for this Amazon ECS container agent. This could be because the agent is already running the latest version, or it is so old that there is no update path to the current version.</p>
-function M.NoUpdateAvailableException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoUpdateAvailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoUpdateAvailableException structure as a key-value pair table
+function M.NoUpdateAvailableException(args)
+	assert(args, "You must provdide an argument table when creating NoUpdateAvailableException")
 	local t = { 
 	}
 	asserts.AssertNoUpdateAvailableException(t)
@@ -1590,11 +1746,14 @@ end
 
 --- Create a structure of type SubmitTaskStateChangeResponse
 --  
--- @param _acknowledgment [String] <p>Acknowledgement of the state change.</p>
-function M.SubmitTaskStateChangeResponse(_acknowledgment, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubmitTaskStateChangeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * acknowledgment [String] <p>Acknowledgement of the state change.</p>
+-- @return SubmitTaskStateChangeResponse structure as a key-value pair table
+function M.SubmitTaskStateChangeResponse(args)
+	assert(args, "You must provdide an argument table when creating SubmitTaskStateChangeResponse")
 	local t = { 
-		["acknowledgment"] = _acknowledgment,
+		["acknowledgment"] = args["acknowledgment"],
 	}
 	asserts.AssertSubmitTaskStateChangeResponse(t)
 	return t
@@ -1614,13 +1773,16 @@ end
 
 --- Create a structure of type ListClustersRequest
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListClusters</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _maxResults [BoxedInteger] <p>The maximum number of cluster results returned by <code>ListClusters</code> in paginated output. When this parameter is used, <code>ListClusters</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListClusters</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListClusters</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
-function M.ListClustersRequest(_nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListClustersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListClusters</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * maxResults [BoxedInteger] <p>The maximum number of cluster results returned by <code>ListClusters</code> in paginated output. When this parameter is used, <code>ListClusters</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListClusters</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListClusters</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- @return ListClustersRequest structure as a key-value pair table
+function M.ListClustersRequest(args)
+	assert(args, "You must provdide an argument table when creating ListClustersRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListClustersRequest(t)
 	return t
@@ -1640,13 +1802,16 @@ end
 
 --- Create a structure of type DescribeClustersResponse
 --  
--- @param _clusters [Clusters] <p>The list of clusters.</p>
--- @param _failures [Failures] <p>Any failures associated with the call.</p>
-function M.DescribeClustersResponse(_clusters, _failures, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClustersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * clusters [Clusters] <p>The list of clusters.</p>
+-- * failures [Failures] <p>Any failures associated with the call.</p>
+-- @return DescribeClustersResponse structure as a key-value pair table
+function M.DescribeClustersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeClustersResponse")
 	local t = { 
-		["clusters"] = _clusters,
-		["failures"] = _failures,
+		["clusters"] = args["clusters"],
+		["failures"] = args["failures"],
 	}
 	asserts.AssertDescribeClustersResponse(t)
 	return t
@@ -1666,13 +1831,16 @@ end
 
 --- Create a structure of type ListTaskDefinitionsResponse
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListTaskDefinitions</code> request. When the results of a <code>ListTaskDefinitions</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _taskDefinitionArns [StringList] <p>The list of task definition Amazon Resource Name (ARN) entries for the <code>ListTaskDefinitions</code> request.</p>
-function M.ListTaskDefinitionsResponse(_nextToken, _taskDefinitionArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTaskDefinitionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListTaskDefinitions</code> request. When the results of a <code>ListTaskDefinitions</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * taskDefinitionArns [StringList] <p>The list of task definition Amazon Resource Name (ARN) entries for the <code>ListTaskDefinitions</code> request.</p>
+-- @return ListTaskDefinitionsResponse structure as a key-value pair table
+function M.ListTaskDefinitionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTaskDefinitionsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["taskDefinitionArns"] = _taskDefinitionArns,
+		["nextToken"] = args["nextToken"],
+		["taskDefinitionArns"] = args["taskDefinitionArns"],
 	}
 	asserts.AssertListTaskDefinitionsResponse(t)
 	return t
@@ -1703,35 +1871,38 @@ end
 
 --- Create a structure of type ContainerInstance
 -- <p>An EC2 instance that is running the Amazon ECS agent and has been registered with a cluster.</p>
--- @param _status [String] <p>The status of the container instance. The valid values are <code>ACTIVE</code>, <code>INACTIVE</code>, or <code>DRAINING</code>. <code>ACTIVE</code> indicates that the container instance can accept tasks. <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service tasks running on the container instance are removed if possible. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html">Container Instance Draining</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _registeredAt [Timestamp] <p>The Unix timestamp for when the container instance was registered.</p>
--- @param _registeredResources [Resources] <p>For most resource types, this parameter describes the registered resources on the container instance that are in use by current tasks. For port resource types, this parameter describes the ports that were reserved by the Amazon ECS container agent when it registered the container instance with Amazon ECS.</p>
--- @param _ec2InstanceId [String] <p>The EC2 instance ID of the container instance.</p>
--- @param _agentConnected [Boolean] <p>This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered instances with an agent that may be unhealthy or stopped return <code>false</code>, and instances without a connected agent cannot accept placement requests.</p>
--- @param _containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the <code>container-instance</code> namespace, and then the container instance ID. For example, <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.</p>
--- @param _pendingTasksCount [Integer] <p>The number of tasks on the container instance that are in the <code>PENDING</code> status.</p>
--- @param _remainingResources [Resources] <p>For most resource types, this parameter describes the remaining resources of the container instance that are available for new tasks. For port resource types, this parameter describes the ports that are reserved by the Amazon ECS container agent and any containers that have reserved port mappings; any port that is not specified here is available for new tasks.</p>
--- @param _version [Long] <p>The version counter for the container instance. Every time a container instance experiences a change that triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS container instance state with CloudWatch events, you can compare the version of a container instance reported by the Amazon ECS APIs with the version reported in CloudWatch events for the container instance (inside the <code>detail</code> object) to verify that the version in your event stream is current.</p>
--- @param _agentUpdateStatus [AgentUpdateStatus] <p>The status of the most recent agent update. If an update has never been requested, this value is <code>NULL</code>.</p>
--- @param _attributes [Attributes] <p>The attributes set for the container instance, either by the Amazon ECS container agent at instance registration or manually with the <a>PutAttributes</a> operation.</p>
--- @param _versionInfo [VersionInfo] <p>The version information for the Amazon ECS container agent and Docker daemon running on the container instance.</p>
--- @param _runningTasksCount [Integer] <p>The number of tasks on the container instance that are in the <code>RUNNING</code> status.</p>
-function M.ContainerInstance(_status, _registeredAt, _registeredResources, _ec2InstanceId, _agentConnected, _containerInstanceArn, _pendingTasksCount, _remainingResources, _version, _agentUpdateStatus, _attributes, _versionInfo, _runningTasksCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContainerInstance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [String] <p>The status of the container instance. The valid values are <code>ACTIVE</code>, <code>INACTIVE</code>, or <code>DRAINING</code>. <code>ACTIVE</code> indicates that the container instance can accept tasks. <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service tasks running on the container instance are removed if possible. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html">Container Instance Draining</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
+-- * registeredAt [Timestamp] <p>The Unix timestamp for when the container instance was registered.</p>
+-- * registeredResources [Resources] <p>For most resource types, this parameter describes the registered resources on the container instance that are in use by current tasks. For port resource types, this parameter describes the ports that were reserved by the Amazon ECS container agent when it registered the container instance with Amazon ECS.</p>
+-- * ec2InstanceId [String] <p>The EC2 instance ID of the container instance.</p>
+-- * agentConnected [Boolean] <p>This parameter returns <code>true</code> if the agent is actually connected to Amazon ECS. Registered instances with an agent that may be unhealthy or stopped return <code>false</code>, and instances without a connected agent cannot accept placement requests.</p>
+-- * containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the <code>container-instance</code> namespace, and then the container instance ID. For example, <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.</p>
+-- * pendingTasksCount [Integer] <p>The number of tasks on the container instance that are in the <code>PENDING</code> status.</p>
+-- * remainingResources [Resources] <p>For most resource types, this parameter describes the remaining resources of the container instance that are available for new tasks. For port resource types, this parameter describes the ports that are reserved by the Amazon ECS container agent and any containers that have reserved port mappings; any port that is not specified here is available for new tasks.</p>
+-- * version [Long] <p>The version counter for the container instance. Every time a container instance experiences a change that triggers a CloudWatch event, the version counter is incremented. If you are replicating your Amazon ECS container instance state with CloudWatch events, you can compare the version of a container instance reported by the Amazon ECS APIs with the version reported in CloudWatch events for the container instance (inside the <code>detail</code> object) to verify that the version in your event stream is current.</p>
+-- * agentUpdateStatus [AgentUpdateStatus] <p>The status of the most recent agent update. If an update has never been requested, this value is <code>NULL</code>.</p>
+-- * attributes [Attributes] <p>The attributes set for the container instance, either by the Amazon ECS container agent at instance registration or manually with the <a>PutAttributes</a> operation.</p>
+-- * versionInfo [VersionInfo] <p>The version information for the Amazon ECS container agent and Docker daemon running on the container instance.</p>
+-- * runningTasksCount [Integer] <p>The number of tasks on the container instance that are in the <code>RUNNING</code> status.</p>
+-- @return ContainerInstance structure as a key-value pair table
+function M.ContainerInstance(args)
+	assert(args, "You must provdide an argument table when creating ContainerInstance")
 	local t = { 
-		["status"] = _status,
-		["registeredAt"] = _registeredAt,
-		["registeredResources"] = _registeredResources,
-		["ec2InstanceId"] = _ec2InstanceId,
-		["agentConnected"] = _agentConnected,
-		["containerInstanceArn"] = _containerInstanceArn,
-		["pendingTasksCount"] = _pendingTasksCount,
-		["remainingResources"] = _remainingResources,
-		["version"] = _version,
-		["agentUpdateStatus"] = _agentUpdateStatus,
-		["attributes"] = _attributes,
-		["versionInfo"] = _versionInfo,
-		["runningTasksCount"] = _runningTasksCount,
+		["status"] = args["status"],
+		["registeredAt"] = args["registeredAt"],
+		["registeredResources"] = args["registeredResources"],
+		["ec2InstanceId"] = args["ec2InstanceId"],
+		["agentConnected"] = args["agentConnected"],
+		["containerInstanceArn"] = args["containerInstanceArn"],
+		["pendingTasksCount"] = args["pendingTasksCount"],
+		["remainingResources"] = args["remainingResources"],
+		["version"] = args["version"],
+		["agentUpdateStatus"] = args["agentUpdateStatus"],
+		["attributes"] = args["attributes"],
+		["versionInfo"] = args["versionInfo"],
+		["runningTasksCount"] = args["runningTasksCount"],
 	}
 	asserts.AssertContainerInstance(t)
 	return t
@@ -1751,13 +1922,16 @@ end
 
 --- Create a structure of type DiscoverPollEndpointResponse
 --  
--- @param _endpoint [String] <p>The endpoint for the Amazon ECS agent to poll.</p>
--- @param _telemetryEndpoint [String] <p>The telemetry endpoint for the Amazon ECS agent.</p>
-function M.DiscoverPollEndpointResponse(_endpoint, _telemetryEndpoint, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DiscoverPollEndpointResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * endpoint [String] <p>The endpoint for the Amazon ECS agent to poll.</p>
+-- * telemetryEndpoint [String] <p>The telemetry endpoint for the Amazon ECS agent.</p>
+-- @return DiscoverPollEndpointResponse structure as a key-value pair table
+function M.DiscoverPollEndpointResponse(args)
+	assert(args, "You must provdide an argument table when creating DiscoverPollEndpointResponse")
 	local t = { 
-		["endpoint"] = _endpoint,
-		["telemetryEndpoint"] = _telemetryEndpoint,
+		["endpoint"] = args["endpoint"],
+		["telemetryEndpoint"] = args["telemetryEndpoint"],
 	}
 	asserts.AssertDiscoverPollEndpointResponse(t)
 	return t
@@ -1777,12 +1951,15 @@ end
 
 --- Create a structure of type DeregisterTaskDefinitionRequest
 --  
--- @param _taskDefinition [String] <p>The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name (ARN) of the task definition to deregister. You must specify a <code>revision</code>.</p>
--- Required parameter: taskDefinition
-function M.DeregisterTaskDefinitionRequest(_taskDefinition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTaskDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskDefinition [String] <p>The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name (ARN) of the task definition to deregister. You must specify a <code>revision</code>.</p>
+-- Required key: taskDefinition
+-- @return DeregisterTaskDefinitionRequest structure as a key-value pair table
+function M.DeregisterTaskDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterTaskDefinitionRequest")
 	local t = { 
-		["taskDefinition"] = _taskDefinition,
+		["taskDefinition"] = args["taskDefinition"],
 	}
 	asserts.AssertDeregisterTaskDefinitionRequest(t)
 	return t
@@ -1801,11 +1978,14 @@ end
 
 --- Create a structure of type SubmitContainerStateChangeResponse
 --  
--- @param _acknowledgment [String] <p>Acknowledgement of the state change.</p>
-function M.SubmitContainerStateChangeResponse(_acknowledgment, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubmitContainerStateChangeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * acknowledgment [String] <p>Acknowledgement of the state change.</p>
+-- @return SubmitContainerStateChangeResponse structure as a key-value pair table
+function M.SubmitContainerStateChangeResponse(args)
+	assert(args, "You must provdide an argument table when creating SubmitContainerStateChangeResponse")
 	local t = { 
-		["acknowledgment"] = _acknowledgment,
+		["acknowledgment"] = args["acknowledgment"],
 	}
 	asserts.AssertSubmitContainerStateChangeResponse(t)
 	return t
@@ -1824,11 +2004,14 @@ end
 
 --- Create a structure of type UpdateServiceResponse
 --  
--- @param _service [Service] <p>The full description of your service following the update call.</p>
-function M.UpdateServiceResponse(_service, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServiceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * service [Service] <p>The full description of your service following the update call.</p>
+-- @return UpdateServiceResponse structure as a key-value pair table
+function M.UpdateServiceResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateServiceResponse")
 	local t = { 
-		["service"] = _service,
+		["service"] = args["service"],
 	}
 	asserts.AssertUpdateServiceResponse(t)
 	return t
@@ -1846,8 +2029,11 @@ end
 
 --- Create a structure of type UpdateInProgressException
 -- <p>There is already a current Amazon ECS container agent update in progress on the specified container instance. If the container agent becomes disconnected while it is in a transitional stage, such as <code>PENDING</code> or <code>STAGING</code>, the update process can get stuck in that state. However, when the agent reconnects, it resumes where it stopped previously.</p>
-function M.UpdateInProgressException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateInProgressException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateInProgressException structure as a key-value pair table
+function M.UpdateInProgressException(args)
+	assert(args, "You must provdide an argument table when creating UpdateInProgressException")
 	local t = { 
 	}
 	asserts.AssertUpdateInProgressException(t)
@@ -1868,13 +2054,16 @@ end
 
 --- Create a structure of type ListAttributesResponse
 --  
--- @param _attributes [Attributes] <p>A list of attribute objects that meet the criteria of the request.</p>
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListAttributes</code> request. When the results of a <code>ListAttributes</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
-function M.ListAttributesResponse(_attributes, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attributes [Attributes] <p>A list of attribute objects that meet the criteria of the request.</p>
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListAttributes</code> request. When the results of a <code>ListAttributes</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- @return ListAttributesResponse structure as a key-value pair table
+function M.ListAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAttributesResponse")
 	local t = { 
-		["attributes"] = _attributes,
-		["nextToken"] = _nextToken,
+		["attributes"] = args["attributes"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListAttributesResponse(t)
 	return t
@@ -1900,25 +2089,28 @@ end
 
 --- Create a structure of type ListTasksRequest
 --  
--- @param _family [String] <p>The name of the family with which to filter the <code>ListTasks</code> results. Specifying a <code>family</code> limits the results to tasks that belong to that family.</p>
--- @param _maxResults [BoxedInteger] <p>The maximum number of task results returned by <code>ListTasks</code> in paginated output. When this parameter is used, <code>ListTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListTasks</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListTasks</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
--- @param _startedBy [String] <p>The <code>startedBy</code> value with which to filter the task results. Specifying a <code>startedBy</code> value limits the results to tasks that were started with that value.</p>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the tasks to list. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _serviceName [String] <p>The name of the service with which to filter the <code>ListTasks</code> results. Specifying a <code>serviceName</code> limits the results to tasks that belong to that service.</p>
--- @param _desiredStatus [DesiredStatus] <p>The task desired status with which to filter the <code>ListTasks</code> results. Specifying a <code>desiredStatus</code> of <code>STOPPED</code> limits the results to tasks that ECS has set the desired status to <code>STOPPED</code>, which can be useful for debugging tasks that are not starting properly or have died or finished. The default status filter is <code>RUNNING</code>, which shows tasks that ECS has set the desired status to <code>RUNNING</code>.</p> <note> <p>Although you can filter results based on a desired status of <code>PENDING</code>, this will not return any results because ECS never sets the desired status of a task to that value (only a task's <code>lastStatus</code> may have a value of <code>PENDING</code>).</p> </note>
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _containerInstance [String] <p>The container instance ID or full Amazon Resource Name (ARN) of the container instance with which to filter the <code>ListTasks</code> results. Specifying a <code>containerInstance</code> limits the results to tasks that belong to that container instance.</p>
-function M.ListTasksRequest(_family, _maxResults, _startedBy, _cluster, _serviceName, _desiredStatus, _nextToken, _containerInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTasksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * family [String] <p>The name of the family with which to filter the <code>ListTasks</code> results. Specifying a <code>family</code> limits the results to tasks that belong to that family.</p>
+-- * maxResults [BoxedInteger] <p>The maximum number of task results returned by <code>ListTasks</code> in paginated output. When this parameter is used, <code>ListTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListTasks</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListTasks</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- * startedBy [String] <p>The <code>startedBy</code> value with which to filter the task results. Specifying a <code>startedBy</code> value limits the results to tasks that were started with that value.</p>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the tasks to list. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * serviceName [String] <p>The name of the service with which to filter the <code>ListTasks</code> results. Specifying a <code>serviceName</code> limits the results to tasks that belong to that service.</p>
+-- * desiredStatus [DesiredStatus] <p>The task desired status with which to filter the <code>ListTasks</code> results. Specifying a <code>desiredStatus</code> of <code>STOPPED</code> limits the results to tasks that ECS has set the desired status to <code>STOPPED</code>, which can be useful for debugging tasks that are not starting properly or have died or finished. The default status filter is <code>RUNNING</code>, which shows tasks that ECS has set the desired status to <code>RUNNING</code>.</p> <note> <p>Although you can filter results based on a desired status of <code>PENDING</code>, this will not return any results because ECS never sets the desired status of a task to that value (only a task's <code>lastStatus</code> may have a value of <code>PENDING</code>).</p> </note>
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * containerInstance [String] <p>The container instance ID or full Amazon Resource Name (ARN) of the container instance with which to filter the <code>ListTasks</code> results. Specifying a <code>containerInstance</code> limits the results to tasks that belong to that container instance.</p>
+-- @return ListTasksRequest structure as a key-value pair table
+function M.ListTasksRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTasksRequest")
 	local t = { 
-		["family"] = _family,
-		["maxResults"] = _maxResults,
-		["startedBy"] = _startedBy,
-		["cluster"] = _cluster,
-		["serviceName"] = _serviceName,
-		["desiredStatus"] = _desiredStatus,
-		["nextToken"] = _nextToken,
-		["containerInstance"] = _containerInstance,
+		["family"] = args["family"],
+		["maxResults"] = args["maxResults"],
+		["startedBy"] = args["startedBy"],
+		["cluster"] = args["cluster"],
+		["serviceName"] = args["serviceName"],
+		["desiredStatus"] = args["desiredStatus"],
+		["nextToken"] = args["nextToken"],
+		["containerInstance"] = args["containerInstance"],
 	}
 	asserts.AssertListTasksRequest(t)
 	return t
@@ -1936,8 +2128,11 @@ end
 
 --- Create a structure of type ClusterNotFoundException
 -- <p>The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>. Amazon ECS clusters are region-specific.</p>
-function M.ClusterNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ClusterNotFoundException structure as a key-value pair table
+function M.ClusterNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ClusterNotFoundException")
 	local t = { 
 	}
 	asserts.AssertClusterNotFoundException(t)
@@ -1958,13 +2153,16 @@ end
 
 --- Create a structure of type TaskDefinitionPlacementConstraint
 -- <p>An object representing a constraint on task placement in the task definition. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html">Task Placement Constraints</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _expression [String] <p>A cluster query language expression to apply to the constraint. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _type [TaskDefinitionPlacementConstraintType] <p>The type of constraint. The <code>DistinctInstance</code> constraint ensures that each task in a particular group is running on a different container instance. The <code>MemberOf</code> constraint restricts selection to be from a group of valid candidates.</p>
-function M.TaskDefinitionPlacementConstraint(_expression, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TaskDefinitionPlacementConstraint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * expression [String] <p>A cluster query language expression to apply to the constraint. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
+-- * type [TaskDefinitionPlacementConstraintType] <p>The type of constraint. The <code>DistinctInstance</code> constraint ensures that each task in a particular group is running on a different container instance. The <code>MemberOf</code> constraint restricts selection to be from a group of valid candidates.</p>
+-- @return TaskDefinitionPlacementConstraint structure as a key-value pair table
+function M.TaskDefinitionPlacementConstraint(args)
+	assert(args, "You must provdide an argument table when creating TaskDefinitionPlacementConstraint")
 	local t = { 
-		["expression"] = _expression,
-		["type"] = _type,
+		["expression"] = args["expression"],
+		["type"] = args["type"],
 	}
 	asserts.AssertTaskDefinitionPlacementConstraint(t)
 	return t
@@ -1983,11 +2181,14 @@ end
 
 --- Create a structure of type CreateClusterRequest
 --  
--- @param _clusterName [String] <p>The name of your cluster. If you do not specify a name for your cluster, you create a cluster named <code>default</code>. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.</p>
-function M.CreateClusterRequest(_clusterName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * clusterName [String] <p>The name of your cluster. If you do not specify a name for your cluster, you create a cluster named <code>default</code>. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.</p>
+-- @return CreateClusterRequest structure as a key-value pair table
+function M.CreateClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateClusterRequest")
 	local t = { 
-		["clusterName"] = _clusterName,
+		["clusterName"] = args["clusterName"],
 	}
 	asserts.AssertCreateClusterRequest(t)
 	return t
@@ -2007,13 +2208,16 @@ end
 
 --- Create a structure of type DiscoverPollEndpointRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that the container instance belongs to.</p>
--- @param _containerInstance [String] <p>The container instance ID or full Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the <code>container-instance</code> namespace, and then the container instance ID. For example, <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.</p>
-function M.DiscoverPollEndpointRequest(_cluster, _containerInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DiscoverPollEndpointRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that the container instance belongs to.</p>
+-- * containerInstance [String] <p>The container instance ID or full Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the <code>container-instance</code> namespace, and then the container instance ID. For example, <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.</p>
+-- @return DiscoverPollEndpointRequest structure as a key-value pair table
+function M.DiscoverPollEndpointRequest(args)
+	assert(args, "You must provdide an argument table when creating DiscoverPollEndpointRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["containerInstance"] = _containerInstance,
+		["cluster"] = args["cluster"],
+		["containerInstance"] = args["containerInstance"],
 	}
 	asserts.AssertDiscoverPollEndpointRequest(t)
 	return t
@@ -2034,15 +2238,18 @@ end
 
 --- Create a structure of type ListServicesRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the services to list. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListServices</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _maxResults [BoxedInteger] <p>The maximum number of container instance results returned by <code>ListServices</code> in paginated output. When this parameter is used, <code>ListServices</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListServices</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 10. If this parameter is not used, then <code>ListServices</code> returns up to 10 results and a <code>nextToken</code> value if applicable.</p>
-function M.ListServicesRequest(_cluster, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListServicesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the services to list. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListServices</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * maxResults [BoxedInteger] <p>The maximum number of container instance results returned by <code>ListServices</code> in paginated output. When this parameter is used, <code>ListServices</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListServices</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 10. If this parameter is not used, then <code>ListServices</code> returns up to 10 results and a <code>nextToken</code> value if applicable.</p>
+-- @return ListServicesRequest structure as a key-value pair table
+function M.ListServicesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListServicesRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["cluster"] = args["cluster"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListServicesRequest(t)
 	return t
@@ -2063,14 +2270,17 @@ end
 
 --- Create a structure of type DescribeContainerInstancesRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to describe. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _containerInstances [StringList] <p>A list of container instance IDs or full Amazon Resource Name (ARN) entries.</p>
--- Required parameter: containerInstances
-function M.DescribeContainerInstancesRequest(_cluster, _containerInstances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeContainerInstancesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to describe. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * containerInstances [StringList] <p>A list of container instance IDs or full Amazon Resource Name (ARN) entries.</p>
+-- Required key: containerInstances
+-- @return DescribeContainerInstancesRequest structure as a key-value pair table
+function M.DescribeContainerInstancesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeContainerInstancesRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["containerInstances"] = _containerInstances,
+		["cluster"] = args["cluster"],
+		["containerInstances"] = args["containerInstances"],
 	}
 	asserts.AssertDescribeContainerInstancesRequest(t)
 	return t
@@ -2098,29 +2308,32 @@ end
 
 --- Create a structure of type TaskDefinition
 -- <p>Details of a task definition.</p>
--- @param _status [TaskDefinitionStatus] <p>The status of the task definition.</p>
--- @param _networkMode [NetworkMode] <p>The Docker networking mode to use for the containers in the task. The valid values are <code>none</code>, <code>bridge</code>, and <code>host</code>. </p> <p>If the network mode is <code>none</code>, the containers do not have external connectivity. The default Docker network mode is <code>bridge</code>. The <code>host</code> network mode offers the highest networking performance for containers because it uses the host network stack instead of the virtualized network stack provided by the <code>bridge</code> mode.</p> <p>For more information, see <a href="https://docs.docker.com/engine/reference/run/#network-settings">Network settings</a> in the <i>Docker run reference</i>.</p>
--- @param _family [String] <p>The family of your task definition, used as the definition name.</p>
--- @param _placementConstraints [TaskDefinitionPlacementConstraints] <p>An array of placement constraint objects to use for tasks. </p>
--- @param _requiresAttributes [RequiresAttributes] <p>The container instance attributes required by your task.</p>
--- @param _volumes [VolumeList] <p>The list of volumes in a task. For more information about volume definition parameters and defaults, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _taskRoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.</p>
--- @param _taskDefinitionArn [String] <p>The full Amazon Resource Name (ARN) of the task definition.</p>
--- @param _containerDefinitions [ContainerDefinitions] <p>A list of container definitions in JSON format that describe the different containers that make up your task. For more information about container definition parameters and defaults, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _revision [Integer] <p>The revision of the task in a particular family. The revision is a version number of a task definition in a family. When you register a task definition for the first time, the revision is <code>1</code>; each time you register a new revision of a task definition in the same family, the revision value always increases by one (even if you have deregistered previous revisions in this family).</p>
-function M.TaskDefinition(_status, _networkMode, _family, _placementConstraints, _requiresAttributes, _volumes, _taskRoleArn, _taskDefinitionArn, _containerDefinitions, _revision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TaskDefinition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [TaskDefinitionStatus] <p>The status of the task definition.</p>
+-- * networkMode [NetworkMode] <p>The Docker networking mode to use for the containers in the task. The valid values are <code>none</code>, <code>bridge</code>, and <code>host</code>. </p> <p>If the network mode is <code>none</code>, the containers do not have external connectivity. The default Docker network mode is <code>bridge</code>. The <code>host</code> network mode offers the highest networking performance for containers because it uses the host network stack instead of the virtualized network stack provided by the <code>bridge</code> mode.</p> <p>For more information, see <a href="https://docs.docker.com/engine/reference/run/#network-settings">Network settings</a> in the <i>Docker run reference</i>.</p>
+-- * family [String] <p>The family of your task definition, used as the definition name.</p>
+-- * placementConstraints [TaskDefinitionPlacementConstraints] <p>An array of placement constraint objects to use for tasks. </p>
+-- * requiresAttributes [RequiresAttributes] <p>The container instance attributes required by your task.</p>
+-- * volumes [VolumeList] <p>The list of volumes in a task. For more information about volume definition parameters and defaults, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
+-- * taskRoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.</p>
+-- * taskDefinitionArn [String] <p>The full Amazon Resource Name (ARN) of the task definition.</p>
+-- * containerDefinitions [ContainerDefinitions] <p>A list of container definitions in JSON format that describe the different containers that make up your task. For more information about container definition parameters and defaults, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Amazon ECS Task Definitions</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
+-- * revision [Integer] <p>The revision of the task in a particular family. The revision is a version number of a task definition in a family. When you register a task definition for the first time, the revision is <code>1</code>; each time you register a new revision of a task definition in the same family, the revision value always increases by one (even if you have deregistered previous revisions in this family).</p>
+-- @return TaskDefinition structure as a key-value pair table
+function M.TaskDefinition(args)
+	assert(args, "You must provdide an argument table when creating TaskDefinition")
 	local t = { 
-		["status"] = _status,
-		["networkMode"] = _networkMode,
-		["family"] = _family,
-		["placementConstraints"] = _placementConstraints,
-		["requiresAttributes"] = _requiresAttributes,
-		["volumes"] = _volumes,
-		["taskRoleArn"] = _taskRoleArn,
-		["taskDefinitionArn"] = _taskDefinitionArn,
-		["containerDefinitions"] = _containerDefinitions,
-		["revision"] = _revision,
+		["status"] = args["status"],
+		["networkMode"] = args["networkMode"],
+		["family"] = args["family"],
+		["placementConstraints"] = args["placementConstraints"],
+		["requiresAttributes"] = args["requiresAttributes"],
+		["volumes"] = args["volumes"],
+		["taskRoleArn"] = args["taskRoleArn"],
+		["taskDefinitionArn"] = args["taskDefinitionArn"],
+		["containerDefinitions"] = args["containerDefinitions"],
+		["revision"] = args["revision"],
 	}
 	asserts.AssertTaskDefinition(t)
 	return t
@@ -2140,13 +2353,16 @@ end
 
 --- Create a structure of type UpdateContainerInstancesStateResponse
 --  
--- @param _failures [Failures] <p>Any failures associated with the call.</p>
--- @param _containerInstances [ContainerInstances] <p>The list of container instances.</p>
-function M.UpdateContainerInstancesStateResponse(_failures, _containerInstances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateContainerInstancesStateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failures [Failures] <p>Any failures associated with the call.</p>
+-- * containerInstances [ContainerInstances] <p>The list of container instances.</p>
+-- @return UpdateContainerInstancesStateResponse structure as a key-value pair table
+function M.UpdateContainerInstancesStateResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateContainerInstancesStateResponse")
 	local t = { 
-		["failures"] = _failures,
-		["containerInstances"] = _containerInstances,
+		["failures"] = args["failures"],
+		["containerInstances"] = args["containerInstances"],
 	}
 	asserts.AssertUpdateContainerInstancesStateResponse(t)
 	return t
@@ -2165,11 +2381,14 @@ end
 
 --- Create a structure of type PutAttributesResponse
 --  
--- @param _attributes [Attributes] <p>The attributes applied to your resource.</p>
-function M.PutAttributesResponse(_attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attributes [Attributes] <p>The attributes applied to your resource.</p>
+-- @return PutAttributesResponse structure as a key-value pair table
+function M.PutAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating PutAttributesResponse")
 	local t = { 
-		["attributes"] = _attributes,
+		["attributes"] = args["attributes"],
 	}
 	asserts.AssertPutAttributesResponse(t)
 	return t
@@ -2189,13 +2408,16 @@ end
 
 --- Create a structure of type ListTaskDefinitionFamiliesResponse
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListTaskDefinitionFamilies</code> request. When the results of a <code>ListTaskDefinitionFamilies</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _families [StringList] <p>The list of task definition family names that match the <code>ListTaskDefinitionFamilies</code> request.</p>
-function M.ListTaskDefinitionFamiliesResponse(_nextToken, _families, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTaskDefinitionFamiliesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListTaskDefinitionFamilies</code> request. When the results of a <code>ListTaskDefinitionFamilies</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * families [StringList] <p>The list of task definition family names that match the <code>ListTaskDefinitionFamilies</code> request.</p>
+-- @return ListTaskDefinitionFamiliesResponse structure as a key-value pair table
+function M.ListTaskDefinitionFamiliesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTaskDefinitionFamiliesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["families"] = _families,
+		["nextToken"] = args["nextToken"],
+		["families"] = args["families"],
 	}
 	asserts.AssertListTaskDefinitionFamiliesResponse(t)
 	return t
@@ -2220,22 +2442,25 @@ end
 
 --- Create a structure of type ListAttributesRequest
 --  
--- @param _targetType [TargetType] <p>The type of the target with which to list attributes.</p>
--- @param _attributeValue [String] <p>The value of the attribute with which to filter results. You must also specify an attribute name to use this parameter.</p>
--- @param _attributeName [String] <p>The name of the attribute with which to filter the results. </p>
--- @param _maxResults [BoxedInteger] <p>The maximum number of cluster results returned by <code>ListAttributes</code> in paginated output. When this parameter is used, <code>ListAttributes</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListAttributes</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListAttributes</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster to list attributes. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListAttributes</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- Required parameter: targetType
-function M.ListAttributesRequest(_targetType, _attributeValue, _attributeName, _maxResults, _cluster, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * targetType [TargetType] <p>The type of the target with which to list attributes.</p>
+-- * attributeValue [String] <p>The value of the attribute with which to filter results. You must also specify an attribute name to use this parameter.</p>
+-- * attributeName [String] <p>The name of the attribute with which to filter the results. </p>
+-- * maxResults [BoxedInteger] <p>The maximum number of cluster results returned by <code>ListAttributes</code> in paginated output. When this parameter is used, <code>ListAttributes</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListAttributes</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListAttributes</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster to list attributes. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListAttributes</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- Required key: targetType
+-- @return ListAttributesRequest structure as a key-value pair table
+function M.ListAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAttributesRequest")
 	local t = { 
-		["targetType"] = _targetType,
-		["attributeValue"] = _attributeValue,
-		["attributeName"] = _attributeName,
-		["maxResults"] = _maxResults,
-		["cluster"] = _cluster,
-		["nextToken"] = _nextToken,
+		["targetType"] = args["targetType"],
+		["attributeValue"] = args["attributeValue"],
+		["attributeName"] = args["attributeName"],
+		["maxResults"] = args["maxResults"],
+		["cluster"] = args["cluster"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListAttributesRequest(t)
 	return t
@@ -2262,26 +2487,29 @@ end
 
 --- Create a structure of type RunTaskRequest
 --  
--- @param _count [BoxedInteger] <p>The number of instantiations of the specified task to place on your cluster. You can specify up to 10 tasks per call.</p>
--- @param _group [String] <p>The name of the task group to associate with the task. The default value is the family name of the task definition (for example, family:my-family-name).</p>
--- @param _overrides [TaskOverride] <p>A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive. You can override the default command for a container (that is specified in the task definition or Docker image) with a <code>command</code> override. You can also override existing environment variables (that are specified in the task definition or Docker image) on a container or add new environment variables to it with an <code>environment</code> override.</p> <note> <p>A total of 8192 characters are allowed for overrides. This limit includes the JSON formatting characters of the override structure.</p> </note>
--- @param _placementConstraints [PlacementConstraints] <p>An array of placement constraint objects to use for the task. You can specify up to 10 constraints per task (including constraints in the task definition and those specified at run time).</p>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster on which to run your task. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _startedBy [String] <p>An optional tag specified when a task is started. For example if you automatically trigger a task to run a batch process job, you could apply a unique identifier for that job to your task with the <code>startedBy</code> parameter. You can then identify which tasks belong to that job by filtering the results of a <a>ListTasks</a> call with the <code>startedBy</code> value. Up to 36 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.</p> <p>If a task is started by an Amazon ECS service, then the <code>startedBy</code> parameter contains the deployment ID of the service that starts it.</p>
--- @param _taskDefinition [String] <p>The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name (ARN) of the task definition to run. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is used.</p>
--- @param _placementStrategy [PlacementStrategies] <p>The placement strategy objects to use for the task. You can specify a maximum of 5 strategy rules per task.</p>
--- Required parameter: taskDefinition
-function M.RunTaskRequest(_count, _group, _overrides, _placementConstraints, _cluster, _startedBy, _taskDefinition, _placementStrategy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RunTaskRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * count [BoxedInteger] <p>The number of instantiations of the specified task to place on your cluster. You can specify up to 10 tasks per call.</p>
+-- * group [String] <p>The name of the task group to associate with the task. The default value is the family name of the task definition (for example, family:my-family-name).</p>
+-- * overrides [TaskOverride] <p>A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive. You can override the default command for a container (that is specified in the task definition or Docker image) with a <code>command</code> override. You can also override existing environment variables (that are specified in the task definition or Docker image) on a container or add new environment variables to it with an <code>environment</code> override.</p> <note> <p>A total of 8192 characters are allowed for overrides. This limit includes the JSON formatting characters of the override structure.</p> </note>
+-- * placementConstraints [PlacementConstraints] <p>An array of placement constraint objects to use for the task. You can specify up to 10 constraints per task (including constraints in the task definition and those specified at run time).</p>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster on which to run your task. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * startedBy [String] <p>An optional tag specified when a task is started. For example if you automatically trigger a task to run a batch process job, you could apply a unique identifier for that job to your task with the <code>startedBy</code> parameter. You can then identify which tasks belong to that job by filtering the results of a <a>ListTasks</a> call with the <code>startedBy</code> value. Up to 36 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.</p> <p>If a task is started by an Amazon ECS service, then the <code>startedBy</code> parameter contains the deployment ID of the service that starts it.</p>
+-- * taskDefinition [String] <p>The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name (ARN) of the task definition to run. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is used.</p>
+-- * placementStrategy [PlacementStrategies] <p>The placement strategy objects to use for the task. You can specify a maximum of 5 strategy rules per task.</p>
+-- Required key: taskDefinition
+-- @return RunTaskRequest structure as a key-value pair table
+function M.RunTaskRequest(args)
+	assert(args, "You must provdide an argument table when creating RunTaskRequest")
 	local t = { 
-		["count"] = _count,
-		["group"] = _group,
-		["overrides"] = _overrides,
-		["placementConstraints"] = _placementConstraints,
-		["cluster"] = _cluster,
-		["startedBy"] = _startedBy,
-		["taskDefinition"] = _taskDefinition,
-		["placementStrategy"] = _placementStrategy,
+		["count"] = args["count"],
+		["group"] = args["group"],
+		["overrides"] = args["overrides"],
+		["placementConstraints"] = args["placementConstraints"],
+		["cluster"] = args["cluster"],
+		["startedBy"] = args["startedBy"],
+		["taskDefinition"] = args["taskDefinition"],
+		["placementStrategy"] = args["placementStrategy"],
 	}
 	asserts.AssertRunTaskRequest(t)
 	return t
@@ -2300,11 +2528,14 @@ end
 
 --- Create a structure of type HostVolumeProperties
 -- <p>Details on a container instance host volume.</p>
--- @param _sourcePath [String] <p>The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the <code>host</code> parameter contains a <code>sourcePath</code> file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the <code>sourcePath</code> value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.</p>
-function M.HostVolumeProperties(_sourcePath, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HostVolumeProperties")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * sourcePath [String] <p>The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the <code>host</code> parameter contains a <code>sourcePath</code> file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the <code>sourcePath</code> value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.</p>
+-- @return HostVolumeProperties structure as a key-value pair table
+function M.HostVolumeProperties(args)
+	assert(args, "You must provdide an argument table when creating HostVolumeProperties")
 	local t = { 
-		["sourcePath"] = _sourcePath,
+		["sourcePath"] = args["sourcePath"],
 	}
 	asserts.AssertHostVolumeProperties(t)
 	return t
@@ -2327,18 +2558,21 @@ end
 
 --- Create a structure of type Attribute
 -- <p>An attribute is a name-value pair associated with an Amazon ECS object. Attributes enable you to extend the Amazon ECS data model by adding custom metadata to your resources. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes">Attributes</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _targetType [TargetType] <p>The type of the target with which to attach the attribute. This parameter is required if you use the short form ID for a resource instead of the full Amazon Resource Name (ARN).</p>
--- @param _targetId [String] <p>The ID of the target. You can specify the short form ID for a resource or the full Amazon Resource Name (ARN).</p>
--- @param _name [String] <p>The name of the attribute. Up to 128 letters (uppercase and lowercase), numbers, hyphens, underscores, and periods are allowed.</p>
--- @param _value [String] <p>The value of the attribute. Up to 128 letters (uppercase and lowercase), numbers, hyphens, underscores, periods, at signs (@), forward slashes, colons, and spaces are allowed.</p>
--- Required parameter: name
-function M.Attribute(_targetType, _targetId, _name, _value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Attribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * targetType [TargetType] <p>The type of the target with which to attach the attribute. This parameter is required if you use the short form ID for a resource instead of the full Amazon Resource Name (ARN).</p>
+-- * targetId [String] <p>The ID of the target. You can specify the short form ID for a resource or the full Amazon Resource Name (ARN).</p>
+-- * name [String] <p>The name of the attribute. Up to 128 letters (uppercase and lowercase), numbers, hyphens, underscores, and periods are allowed.</p>
+-- * value [String] <p>The value of the attribute. Up to 128 letters (uppercase and lowercase), numbers, hyphens, underscores, periods, at signs (@), forward slashes, colons, and spaces are allowed.</p>
+-- Required key: name
+-- @return Attribute structure as a key-value pair table
+function M.Attribute(args)
+	assert(args, "You must provdide an argument table when creating Attribute")
 	local t = { 
-		["targetType"] = _targetType,
-		["targetId"] = _targetId,
-		["name"] = _name,
-		["value"] = _value,
+		["targetType"] = args["targetType"],
+		["targetId"] = args["targetId"],
+		["name"] = args["name"],
+		["value"] = args["value"],
 	}
 	asserts.AssertAttribute(t)
 	return t
@@ -2359,14 +2593,17 @@ end
 
 --- Create a structure of type DescribeTasksRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task to describe. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _tasks [StringList] <p>A list of up to 100 task IDs or full Amazon Resource Name (ARN) entries.</p>
--- Required parameter: tasks
-function M.DescribeTasksRequest(_cluster, _tasks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTasksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task to describe. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * tasks [StringList] <p>A list of up to 100 task IDs or full Amazon Resource Name (ARN) entries.</p>
+-- Required key: tasks
+-- @return DescribeTasksRequest structure as a key-value pair table
+function M.DescribeTasksRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTasksRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["tasks"] = _tasks,
+		["cluster"] = args["cluster"],
+		["tasks"] = args["tasks"],
 	}
 	asserts.AssertDescribeTasksRequest(t)
 	return t
@@ -2391,23 +2628,26 @@ end
 
 --- Create a structure of type Cluster
 -- <p>A regional grouping of one or more container instances on which you can run task requests. Each account receives a default cluster the first time you use the Amazon ECS service, but you may also create other clusters. Clusters may contain more than one instance type simultaneously.</p>
--- @param _status [String] <p>The status of the cluster. The valid values are <code>ACTIVE</code> or <code>INACTIVE</code>. <code>ACTIVE</code> indicates that you can register container instances with the cluster and the associated instances can accept tasks.</p>
--- @param _clusterName [String] <p>A user-generated string that you use to identify your cluster.</p>
--- @param _registeredContainerInstancesCount [Integer] <p>The number of container instances registered into the cluster.</p>
--- @param _pendingTasksCount [Integer] <p>The number of tasks in the cluster that are in the <code>PENDING</code> state.</p>
--- @param _runningTasksCount [Integer] <p>The number of tasks in the cluster that are in the <code>RUNNING</code> state.</p>
--- @param _activeServicesCount [Integer] <p>The number of services that are running on the cluster in an <code>ACTIVE</code> state. You can view these services with <a>ListServices</a>.</p>
--- @param _clusterArn [String] <p>The Amazon Resource Name (ARN) that identifies the cluster. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the cluster, the AWS account ID of the cluster owner, the <code>cluster</code> namespace, and then the cluster name. For example, <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:cluster/<i>test</i> </code>..</p>
-function M.Cluster(_status, _clusterName, _registeredContainerInstancesCount, _pendingTasksCount, _runningTasksCount, _activeServicesCount, _clusterArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Cluster")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [String] <p>The status of the cluster. The valid values are <code>ACTIVE</code> or <code>INACTIVE</code>. <code>ACTIVE</code> indicates that you can register container instances with the cluster and the associated instances can accept tasks.</p>
+-- * clusterName [String] <p>A user-generated string that you use to identify your cluster.</p>
+-- * registeredContainerInstancesCount [Integer] <p>The number of container instances registered into the cluster.</p>
+-- * pendingTasksCount [Integer] <p>The number of tasks in the cluster that are in the <code>PENDING</code> state.</p>
+-- * runningTasksCount [Integer] <p>The number of tasks in the cluster that are in the <code>RUNNING</code> state.</p>
+-- * activeServicesCount [Integer] <p>The number of services that are running on the cluster in an <code>ACTIVE</code> state. You can view these services with <a>ListServices</a>.</p>
+-- * clusterArn [String] <p>The Amazon Resource Name (ARN) that identifies the cluster. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the cluster, the AWS account ID of the cluster owner, the <code>cluster</code> namespace, and then the cluster name. For example, <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:cluster/<i>test</i> </code>..</p>
+-- @return Cluster structure as a key-value pair table
+function M.Cluster(args)
+	assert(args, "You must provdide an argument table when creating Cluster")
 	local t = { 
-		["status"] = _status,
-		["clusterName"] = _clusterName,
-		["registeredContainerInstancesCount"] = _registeredContainerInstancesCount,
-		["pendingTasksCount"] = _pendingTasksCount,
-		["runningTasksCount"] = _runningTasksCount,
-		["activeServicesCount"] = _activeServicesCount,
-		["clusterArn"] = _clusterArn,
+		["status"] = args["status"],
+		["clusterName"] = args["clusterName"],
+		["registeredContainerInstancesCount"] = args["registeredContainerInstancesCount"],
+		["pendingTasksCount"] = args["pendingTasksCount"],
+		["runningTasksCount"] = args["runningTasksCount"],
+		["activeServicesCount"] = args["activeServicesCount"],
+		["clusterArn"] = args["clusterArn"],
 	}
 	asserts.AssertCluster(t)
 	return t
@@ -2427,13 +2667,16 @@ end
 
 --- Create a structure of type ListServicesResponse
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListServices</code> request. When the results of a <code>ListServices</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _serviceArns [StringList] <p>The list of full Amazon Resource Name (ARN) entries for each service associated with the specified cluster.</p>
-function M.ListServicesResponse(_nextToken, _serviceArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListServicesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListServices</code> request. When the results of a <code>ListServices</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * serviceArns [StringList] <p>The list of full Amazon Resource Name (ARN) entries for each service associated with the specified cluster.</p>
+-- @return ListServicesResponse structure as a key-value pair table
+function M.ListServicesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListServicesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["serviceArns"] = _serviceArns,
+		["nextToken"] = args["nextToken"],
+		["serviceArns"] = args["serviceArns"],
 	}
 	asserts.AssertListServicesResponse(t)
 	return t
@@ -2452,11 +2695,14 @@ end
 
 --- Create a structure of type ClientException
 -- <p>These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permission to use the action or resource, or specifying an identifier that is not valid.</p>
--- @param _message [String] 
-function M.ClientException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClientException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return ClientException structure as a key-value pair table
+function M.ClientException(args)
+	assert(args, "You must provdide an argument table when creating ClientException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertClientException(t)
 	return t
@@ -2477,15 +2723,18 @@ end
 
 --- Create a structure of type VersionInfo
 -- <p>The Docker and Amazon ECS container agent version information about a container instance.</p>
--- @param _agentVersion [String] <p>The version number of the Amazon ECS container agent.</p>
--- @param _agentHash [String] <p>The Git commit hash for the Amazon ECS container agent build on the <a href="https://github.com/aws/amazon-ecs-agent/commits/master">amazon-ecs-agent </a> GitHub repository.</p>
--- @param _dockerVersion [String] <p>The Docker version running on the container instance.</p>
-function M.VersionInfo(_agentVersion, _agentHash, _dockerVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VersionInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * agentVersion [String] <p>The version number of the Amazon ECS container agent.</p>
+-- * agentHash [String] <p>The Git commit hash for the Amazon ECS container agent build on the <a href="https://github.com/aws/amazon-ecs-agent/commits/master">amazon-ecs-agent </a> GitHub repository.</p>
+-- * dockerVersion [String] <p>The Docker version running on the container instance.</p>
+-- @return VersionInfo structure as a key-value pair table
+function M.VersionInfo(args)
+	assert(args, "You must provdide an argument table when creating VersionInfo")
 	local t = { 
-		["agentVersion"] = _agentVersion,
-		["agentHash"] = _agentHash,
-		["dockerVersion"] = _dockerVersion,
+		["agentVersion"] = args["agentVersion"],
+		["agentHash"] = args["agentHash"],
+		["dockerVersion"] = args["dockerVersion"],
 	}
 	asserts.AssertVersionInfo(t)
 	return t
@@ -2507,16 +2756,19 @@ end
 
 --- Create a structure of type StopTaskRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task to stop. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _reason [String] <p>An optional message specified when a task is stopped. For example, if you are using a custom scheduler, you can use this parameter to specify the reason for stopping the task here, and the message will appear in subsequent <a>DescribeTasks</a> API operations on this task. Up to 255 characters are allowed in this message.</p>
--- @param _task [String] <p>The task ID or full Amazon Resource Name (ARN) entry of the task to stop.</p>
--- Required parameter: task
-function M.StopTaskRequest(_cluster, _reason, _task, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopTaskRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task to stop. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * reason [String] <p>An optional message specified when a task is stopped. For example, if you are using a custom scheduler, you can use this parameter to specify the reason for stopping the task here, and the message will appear in subsequent <a>DescribeTasks</a> API operations on this task. Up to 255 characters are allowed in this message.</p>
+-- * task [String] <p>The task ID or full Amazon Resource Name (ARN) entry of the task to stop.</p>
+-- Required key: task
+-- @return StopTaskRequest structure as a key-value pair table
+function M.StopTaskRequest(args)
+	assert(args, "You must provdide an argument table when creating StopTaskRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["reason"] = _reason,
-		["task"] = _task,
+		["cluster"] = args["cluster"],
+		["reason"] = args["reason"],
+		["task"] = args["task"],
 	}
 	asserts.AssertStopTaskRequest(t)
 	return t
@@ -2536,13 +2788,16 @@ end
 
 --- Create a structure of type TaskOverride
 -- <p>The overrides associated with a task.</p>
--- @param _taskRoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.</p>
--- @param _containerOverrides [ContainerOverrides] <p>One or more container overrides sent to a task.</p>
-function M.TaskOverride(_taskRoleArn, _containerOverrides, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TaskOverride")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskRoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.</p>
+-- * containerOverrides [ContainerOverrides] <p>One or more container overrides sent to a task.</p>
+-- @return TaskOverride structure as a key-value pair table
+function M.TaskOverride(args)
+	assert(args, "You must provdide an argument table when creating TaskOverride")
 	local t = { 
-		["taskRoleArn"] = _taskRoleArn,
-		["containerOverrides"] = _containerOverrides,
+		["taskRoleArn"] = args["taskRoleArn"],
+		["containerOverrides"] = args["containerOverrides"],
 	}
 	asserts.AssertTaskOverride(t)
 	return t
@@ -2567,23 +2822,26 @@ end
 
 --- Create a structure of type Container
 -- <p>A Docker container that is part of a task.</p>
--- @param _containerArn [String] <p>The Amazon Resource Name (ARN) of the container.</p>
--- @param _taskArn [String] <p>The Amazon Resource Name (ARN) of the task.</p>
--- @param _name [String] <p>The name of the container.</p>
--- @param _networkBindings [NetworkBindings] <p>The network bindings associated with the container.</p>
--- @param _lastStatus [String] <p>The last known status of the container.</p>
--- @param _reason [String] <p>A short (255 max characters) human-readable string to provide additional details about a running or stopped container.</p>
--- @param _exitCode [BoxedInteger] <p>The exit code returned from the container.</p>
-function M.Container(_containerArn, _taskArn, _name, _networkBindings, _lastStatus, _reason, _exitCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Container")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * containerArn [String] <p>The Amazon Resource Name (ARN) of the container.</p>
+-- * taskArn [String] <p>The Amazon Resource Name (ARN) of the task.</p>
+-- * name [String] <p>The name of the container.</p>
+-- * networkBindings [NetworkBindings] <p>The network bindings associated with the container.</p>
+-- * lastStatus [String] <p>The last known status of the container.</p>
+-- * reason [String] <p>A short (255 max characters) human-readable string to provide additional details about a running or stopped container.</p>
+-- * exitCode [BoxedInteger] <p>The exit code returned from the container.</p>
+-- @return Container structure as a key-value pair table
+function M.Container(args)
+	assert(args, "You must provdide an argument table when creating Container")
 	local t = { 
-		["containerArn"] = _containerArn,
-		["taskArn"] = _taskArn,
-		["name"] = _name,
-		["networkBindings"] = _networkBindings,
-		["lastStatus"] = _lastStatus,
-		["reason"] = _reason,
-		["exitCode"] = _exitCode,
+		["containerArn"] = args["containerArn"],
+		["taskArn"] = args["taskArn"],
+		["name"] = args["name"],
+		["networkBindings"] = args["networkBindings"],
+		["lastStatus"] = args["lastStatus"],
+		["reason"] = args["reason"],
+		["exitCode"] = args["exitCode"],
 	}
 	asserts.AssertContainer(t)
 	return t
@@ -2603,13 +2861,16 @@ end
 
 --- Create a structure of type RunTaskResponse
 --  
--- @param _failures [Failures] <p>Any failures associated with the call.</p>
--- @param _tasks [Tasks] <p>A full description of the tasks that were run. Each task that was successfully placed on your cluster are described here.</p>
-function M.RunTaskResponse(_failures, _tasks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RunTaskResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failures [Failures] <p>Any failures associated with the call.</p>
+-- * tasks [Tasks] <p>A full description of the tasks that were run. Each task that was successfully placed on your cluster are described here.</p>
+-- @return RunTaskResponse structure as a key-value pair table
+function M.RunTaskResponse(args)
+	assert(args, "You must provdide an argument table when creating RunTaskResponse")
 	local t = { 
-		["failures"] = _failures,
-		["tasks"] = _tasks,
+		["failures"] = args["failures"],
+		["tasks"] = args["tasks"],
 	}
 	asserts.AssertRunTaskResponse(t)
 	return t
@@ -2628,11 +2889,14 @@ end
 
 --- Create a structure of type DeregisterTaskDefinitionResponse
 --  
--- @param _taskDefinition [TaskDefinition] <p>The full description of the deregistered task.</p>
-function M.DeregisterTaskDefinitionResponse(_taskDefinition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTaskDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskDefinition [TaskDefinition] <p>The full description of the deregistered task.</p>
+-- @return DeregisterTaskDefinitionResponse structure as a key-value pair table
+function M.DeregisterTaskDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeregisterTaskDefinitionResponse")
 	local t = { 
-		["taskDefinition"] = _taskDefinition,
+		["taskDefinition"] = args["taskDefinition"],
 	}
 	asserts.AssertDeregisterTaskDefinitionResponse(t)
 	return t
@@ -2652,13 +2916,16 @@ end
 
 --- Create a structure of type DescribeServicesResponse
 --  
--- @param _services [Services] <p>The list of services described.</p>
--- @param _failures [Failures] <p>Any failures associated with the call.</p>
-function M.DescribeServicesResponse(_services, _failures, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServicesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * services [Services] <p>The list of services described.</p>
+-- * failures [Failures] <p>Any failures associated with the call.</p>
+-- @return DescribeServicesResponse structure as a key-value pair table
+function M.DescribeServicesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeServicesResponse")
 	local t = { 
-		["services"] = _services,
-		["failures"] = _failures,
+		["services"] = args["services"],
+		["failures"] = args["failures"],
 	}
 	asserts.AssertDescribeServicesResponse(t)
 	return t
@@ -2677,11 +2944,14 @@ end
 
 --- Create a structure of type RegisterTaskDefinitionResponse
 --  
--- @param _taskDefinition [TaskDefinition] <p>The full description of the registered task definition.</p>
-function M.RegisterTaskDefinitionResponse(_taskDefinition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTaskDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskDefinition [TaskDefinition] <p>The full description of the registered task definition.</p>
+-- @return RegisterTaskDefinitionResponse structure as a key-value pair table
+function M.RegisterTaskDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating RegisterTaskDefinitionResponse")
 	local t = { 
-		["taskDefinition"] = _taskDefinition,
+		["taskDefinition"] = args["taskDefinition"],
 	}
 	asserts.AssertRegisterTaskDefinitionResponse(t)
 	return t
@@ -2707,23 +2977,26 @@ end
 
 --- Create a structure of type StartTaskRequest
 --  
--- @param _group [String] <p>The name of the task group to associate with the task. The default value is the family name of the task definition (for example, family:my-family-name).</p>
--- @param _containerInstances [StringList] <p>The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which you would like to place your task. You can specify up to 10 container instances.</p>
--- @param _overrides [TaskOverride] <p>A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive. You can override the default command for a container (that is specified in the task definition or Docker image) with a <code>command</code> override. You can also override existing environment variables (that are specified in the task definition or Docker image) on a container or add new environment variables to it with an <code>environment</code> override.</p> <note> <p>A total of 8192 characters are allowed for overrides. This limit includes the JSON formatting characters of the override structure.</p> </note>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster on which to start your task. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _startedBy [String] <p>An optional tag specified when a task is started. For example if you automatically trigger a task to run a batch process job, you could apply a unique identifier for that job to your task with the <code>startedBy</code> parameter. You can then identify which tasks belong to that job by filtering the results of a <a>ListTasks</a> call with the <code>startedBy</code> value. Up to 36 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.</p> <p>If a task is started by an Amazon ECS service, then the <code>startedBy</code> parameter contains the deployment ID of the service that starts it.</p>
--- @param _taskDefinition [String] <p>The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name (ARN) of the task definition to start. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is used.</p>
--- Required parameter: taskDefinition
--- Required parameter: containerInstances
-function M.StartTaskRequest(_group, _containerInstances, _overrides, _cluster, _startedBy, _taskDefinition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartTaskRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * group [String] <p>The name of the task group to associate with the task. The default value is the family name of the task definition (for example, family:my-family-name).</p>
+-- * containerInstances [StringList] <p>The container instance IDs or full Amazon Resource Name (ARN) entries for the container instances on which you would like to place your task. You can specify up to 10 container instances.</p>
+-- * overrides [TaskOverride] <p>A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive. You can override the default command for a container (that is specified in the task definition or Docker image) with a <code>command</code> override. You can also override existing environment variables (that are specified in the task definition or Docker image) on a container or add new environment variables to it with an <code>environment</code> override.</p> <note> <p>A total of 8192 characters are allowed for overrides. This limit includes the JSON formatting characters of the override structure.</p> </note>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster on which to start your task. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * startedBy [String] <p>An optional tag specified when a task is started. For example if you automatically trigger a task to run a batch process job, you could apply a unique identifier for that job to your task with the <code>startedBy</code> parameter. You can then identify which tasks belong to that job by filtering the results of a <a>ListTasks</a> call with the <code>startedBy</code> value. Up to 36 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.</p> <p>If a task is started by an Amazon ECS service, then the <code>startedBy</code> parameter contains the deployment ID of the service that starts it.</p>
+-- * taskDefinition [String] <p>The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full Amazon Resource Name (ARN) of the task definition to start. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code> revision is used.</p>
+-- Required key: taskDefinition
+-- Required key: containerInstances
+-- @return StartTaskRequest structure as a key-value pair table
+function M.StartTaskRequest(args)
+	assert(args, "You must provdide an argument table when creating StartTaskRequest")
 	local t = { 
-		["group"] = _group,
-		["containerInstances"] = _containerInstances,
-		["overrides"] = _overrides,
-		["cluster"] = _cluster,
-		["startedBy"] = _startedBy,
-		["taskDefinition"] = _taskDefinition,
+		["group"] = args["group"],
+		["containerInstances"] = args["containerInstances"],
+		["overrides"] = args["overrides"],
+		["cluster"] = args["cluster"],
+		["startedBy"] = args["startedBy"],
+		["taskDefinition"] = args["taskDefinition"],
 	}
 	asserts.AssertStartTaskRequest(t)
 	return t
@@ -2741,8 +3014,11 @@ end
 
 --- Create a structure of type MissingVersionException
 -- <p>Amazon ECS is unable to determine the current version of the Amazon ECS container agent on the container instance and does not have enough information to proceed with an update. This could be because the agent running on the container instance is an older or custom version that does not use our version information.</p>
-function M.MissingVersionException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MissingVersionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MissingVersionException structure as a key-value pair table
+function M.MissingVersionException(args)
+	assert(args, "You must provdide an argument table when creating MissingVersionException")
 	local t = { 
 	}
 	asserts.AssertMissingVersionException(t)
@@ -2769,23 +3045,26 @@ end
 
 --- Create a structure of type RegisterTaskDefinitionRequest
 --  
--- @param _networkMode [NetworkMode] <p>The Docker networking mode to use for the containers in the task. The valid values are <code>none</code>, <code>bridge</code>, and <code>host</code>. </p> <p>The default Docker network mode is <code>bridge</code>. If the network mode is set to <code>none</code>, you cannot specify port mappings in your container definitions, and the task's containers do not have external connectivity. The <code>host</code> network mode offers the highest networking performance for containers because they use the host network stack instead of the virtualized network stack provided by the <code>bridge</code> mode; however, exposed container ports are mapped directly to the corresponding host port, so you cannot take advantage of dynamic host port mappings or run multiple instantiations of the same task on a single container instance if port mappings are used.</p> <p>For more information, see <a href="https://docs.docker.com/engine/reference/run/#network-settings">Network settings</a> in the <i>Docker run reference</i>.</p>
--- @param _family [String] <p>You must specify a <code>family</code> for a task definition, which allows you to track multiple versions of the same task definition. The <code>family</code> is used as a name for your task definition. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.</p>
--- @param _placementConstraints [TaskDefinitionPlacementConstraints] <p>An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints per task (this limit includes constraints in the task definition and those specified at run time).</p>
--- @param _volumes [VolumeList] <p>A list of volume definitions in JSON format that containers in your task may use.</p>
--- @param _taskRoleArn [String] <p>The short name or full Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">IAM Roles for Tasks</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _containerDefinitions [ContainerDefinitions] <p>A list of container definitions in JSON format that describe the different containers that make up your task.</p>
--- Required parameter: family
--- Required parameter: containerDefinitions
-function M.RegisterTaskDefinitionRequest(_networkMode, _family, _placementConstraints, _volumes, _taskRoleArn, _containerDefinitions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTaskDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * networkMode [NetworkMode] <p>The Docker networking mode to use for the containers in the task. The valid values are <code>none</code>, <code>bridge</code>, and <code>host</code>. </p> <p>The default Docker network mode is <code>bridge</code>. If the network mode is set to <code>none</code>, you cannot specify port mappings in your container definitions, and the task's containers do not have external connectivity. The <code>host</code> network mode offers the highest networking performance for containers because they use the host network stack instead of the virtualized network stack provided by the <code>bridge</code> mode; however, exposed container ports are mapped directly to the corresponding host port, so you cannot take advantage of dynamic host port mappings or run multiple instantiations of the same task on a single container instance if port mappings are used.</p> <p>For more information, see <a href="https://docs.docker.com/engine/reference/run/#network-settings">Network settings</a> in the <i>Docker run reference</i>.</p>
+-- * family [String] <p>You must specify a <code>family</code> for a task definition, which allows you to track multiple versions of the same task definition. The <code>family</code> is used as a name for your task definition. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.</p>
+-- * placementConstraints [TaskDefinitionPlacementConstraints] <p>An array of placement constraint objects to use for the task. You can specify a maximum of 10 constraints per task (this limit includes constraints in the task definition and those specified at run time).</p>
+-- * volumes [VolumeList] <p>A list of volume definitions in JSON format that containers in your task may use.</p>
+-- * taskRoleArn [String] <p>The short name or full Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html">IAM Roles for Tasks</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
+-- * containerDefinitions [ContainerDefinitions] <p>A list of container definitions in JSON format that describe the different containers that make up your task.</p>
+-- Required key: family
+-- Required key: containerDefinitions
+-- @return RegisterTaskDefinitionRequest structure as a key-value pair table
+function M.RegisterTaskDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterTaskDefinitionRequest")
 	local t = { 
-		["networkMode"] = _networkMode,
-		["family"] = _family,
-		["placementConstraints"] = _placementConstraints,
-		["volumes"] = _volumes,
-		["taskRoleArn"] = _taskRoleArn,
-		["containerDefinitions"] = _containerDefinitions,
+		["networkMode"] = args["networkMode"],
+		["family"] = args["family"],
+		["placementConstraints"] = args["placementConstraints"],
+		["volumes"] = args["volumes"],
+		["taskRoleArn"] = args["taskRoleArn"],
+		["containerDefinitions"] = args["containerDefinitions"],
 	}
 	asserts.AssertRegisterTaskDefinitionRequest(t)
 	return t
@@ -2808,17 +3087,20 @@ end
 
 --- Create a structure of type UpdateContainerInstancesStateRequest
 --  
--- @param _status [ContainerInstanceStatus] <p>The container instance state with which to update the container instance.</p>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to update. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _containerInstances [StringList] <p>A list of container instance IDs or full Amazon Resource Name (ARN) entries.</p>
--- Required parameter: containerInstances
--- Required parameter: status
-function M.UpdateContainerInstancesStateRequest(_status, _cluster, _containerInstances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateContainerInstancesStateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [ContainerInstanceStatus] <p>The container instance state with which to update the container instance.</p>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to update. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * containerInstances [StringList] <p>A list of container instance IDs or full Amazon Resource Name (ARN) entries.</p>
+-- Required key: containerInstances
+-- Required key: status
+-- @return UpdateContainerInstancesStateRequest structure as a key-value pair table
+function M.UpdateContainerInstancesStateRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateContainerInstancesStateRequest")
 	local t = { 
-		["status"] = _status,
-		["cluster"] = _cluster,
-		["containerInstances"] = _containerInstances,
+		["status"] = args["status"],
+		["cluster"] = args["cluster"],
+		["containerInstances"] = args["containerInstances"],
 	}
 	asserts.AssertUpdateContainerInstancesStateRequest(t)
 	return t
@@ -2836,8 +3118,11 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- <p>The specified parameter is invalid. Review the available parameters for the API request.</p>
-function M.InvalidParameterException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
 	}
 	asserts.AssertInvalidParameterException(t)
@@ -2864,25 +3149,28 @@ end
 
 --- Create a structure of type Deployment
 -- <p>The details of an Amazon ECS service deployment.</p>
--- @param _status [String] <p>The status of the deployment. Valid values are <code>PRIMARY</code> (for the most recent deployment), <code>ACTIVE</code> (for previous deployments that still have tasks running, but are being replaced with the <code>PRIMARY</code> deployment), and <code>INACTIVE</code> (for deployments that have been completely replaced).</p>
--- @param _pendingCount [Integer] <p>The number of tasks in the deployment that are in the <code>PENDING</code> status.</p>
--- @param _createdAt [Timestamp] <p>The Unix timestamp for when the service was created.</p>
--- @param _desiredCount [Integer] <p>The most recent desired count of tasks that was specified for the service to deploy or maintain.</p>
--- @param _taskDefinition [String] <p>The most recent task definition that was specified for the service to use.</p>
--- @param _updatedAt [Timestamp] <p>The Unix timestamp for when the service was last updated.</p>
--- @param _id [String] <p>The ID of the deployment.</p>
--- @param _runningCount [Integer] <p>The number of tasks in the deployment that are in the <code>RUNNING</code> status.</p>
-function M.Deployment(_status, _pendingCount, _createdAt, _desiredCount, _taskDefinition, _updatedAt, _id, _runningCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Deployment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [String] <p>The status of the deployment. Valid values are <code>PRIMARY</code> (for the most recent deployment), <code>ACTIVE</code> (for previous deployments that still have tasks running, but are being replaced with the <code>PRIMARY</code> deployment), and <code>INACTIVE</code> (for deployments that have been completely replaced).</p>
+-- * pendingCount [Integer] <p>The number of tasks in the deployment that are in the <code>PENDING</code> status.</p>
+-- * createdAt [Timestamp] <p>The Unix timestamp for when the service was created.</p>
+-- * desiredCount [Integer] <p>The most recent desired count of tasks that was specified for the service to deploy or maintain.</p>
+-- * taskDefinition [String] <p>The most recent task definition that was specified for the service to use.</p>
+-- * updatedAt [Timestamp] <p>The Unix timestamp for when the service was last updated.</p>
+-- * id [String] <p>The ID of the deployment.</p>
+-- * runningCount [Integer] <p>The number of tasks in the deployment that are in the <code>RUNNING</code> status.</p>
+-- @return Deployment structure as a key-value pair table
+function M.Deployment(args)
+	assert(args, "You must provdide an argument table when creating Deployment")
 	local t = { 
-		["status"] = _status,
-		["pendingCount"] = _pendingCount,
-		["createdAt"] = _createdAt,
-		["desiredCount"] = _desiredCount,
-		["taskDefinition"] = _taskDefinition,
-		["updatedAt"] = _updatedAt,
-		["id"] = _id,
-		["runningCount"] = _runningCount,
+		["status"] = args["status"],
+		["pendingCount"] = args["pendingCount"],
+		["createdAt"] = args["createdAt"],
+		["desiredCount"] = args["desiredCount"],
+		["taskDefinition"] = args["taskDefinition"],
+		["updatedAt"] = args["updatedAt"],
+		["id"] = args["id"],
+		["runningCount"] = args["runningCount"],
 	}
 	asserts.AssertDeployment(t)
 	return t
@@ -2905,19 +3193,22 @@ end
 
 --- Create a structure of type ListContainerInstancesRequest
 --  
--- @param _filter [String] <p>You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language statements. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to list. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListContainerInstances</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _status [ContainerInstanceStatus] <p>Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status, the results include only container instances that have been set to <code>DRAINING</code> using <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include container instances set to <code>ACTIVE</code> and <code>DRAINING</code>.</p>
--- @param _maxResults [BoxedInteger] <p>The maximum number of container instance results returned by <code>ListContainerInstances</code> in paginated output. When this parameter is used, <code>ListContainerInstances</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListContainerInstances</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListContainerInstances</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
-function M.ListContainerInstancesRequest(_filter, _cluster, _nextToken, _status, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListContainerInstancesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filter [String] <p>You can filter the results of a <code>ListContainerInstances</code> operation with cluster query language statements. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html">Cluster Query Language</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to list. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListContainerInstances</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * status [ContainerInstanceStatus] <p>Filters the container instances by status. For example, if you specify the <code>DRAINING</code> status, the results include only container instances that have been set to <code>DRAINING</code> using <a>UpdateContainerInstancesState</a>. If you do not specify this parameter, the default is to include container instances set to <code>ACTIVE</code> and <code>DRAINING</code>.</p>
+-- * maxResults [BoxedInteger] <p>The maximum number of container instance results returned by <code>ListContainerInstances</code> in paginated output. When this parameter is used, <code>ListContainerInstances</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListContainerInstances</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListContainerInstances</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- @return ListContainerInstancesRequest structure as a key-value pair table
+function M.ListContainerInstancesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListContainerInstancesRequest")
 	local t = { 
-		["filter"] = _filter,
-		["cluster"] = _cluster,
-		["nextToken"] = _nextToken,
-		["status"] = _status,
-		["maxResults"] = _maxResults,
+		["filter"] = args["filter"],
+		["cluster"] = args["cluster"],
+		["nextToken"] = args["nextToken"],
+		["status"] = args["status"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListContainerInstancesRequest(t)
 	return t
@@ -2941,21 +3232,24 @@ end
 
 --- Create a structure of type Resource
 -- <p>Describes the resources available for a container instance.</p>
--- @param _name [String] <p>The name of the resource, such as <code>cpu</code>, <code>memory</code>, <code>ports</code>, or a user-defined resource.</p>
--- @param _longValue [Long] <p>When the <code>longValue</code> type is set, the value of the resource must be an extended precision floating-point type.</p>
--- @param _doubleValue [Double] <p>When the <code>doubleValue</code> type is set, the value of the resource must be a double precision floating-point type.</p>
--- @param _stringSetValue [StringList] <p>When the <code>stringSetValue</code> type is set, the value of the resource must be a string type.</p>
--- @param _type [String] <p>The type of the resource, such as <code>INTEGER</code>, <code>DOUBLE</code>, <code>LONG</code>, or <code>STRINGSET</code>.</p>
--- @param _integerValue [Integer] <p>When the <code>integerValue</code> type is set, the value of the resource must be an integer.</p>
-function M.Resource(_name, _longValue, _doubleValue, _stringSetValue, _type, _integerValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Resource")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [String] <p>The name of the resource, such as <code>cpu</code>, <code>memory</code>, <code>ports</code>, or a user-defined resource.</p>
+-- * longValue [Long] <p>When the <code>longValue</code> type is set, the value of the resource must be an extended precision floating-point type.</p>
+-- * doubleValue [Double] <p>When the <code>doubleValue</code> type is set, the value of the resource must be a double precision floating-point type.</p>
+-- * stringSetValue [StringList] <p>When the <code>stringSetValue</code> type is set, the value of the resource must be a string type.</p>
+-- * type [String] <p>The type of the resource, such as <code>INTEGER</code>, <code>DOUBLE</code>, <code>LONG</code>, or <code>STRINGSET</code>.</p>
+-- * integerValue [Integer] <p>When the <code>integerValue</code> type is set, the value of the resource must be an integer.</p>
+-- @return Resource structure as a key-value pair table
+function M.Resource(args)
+	assert(args, "You must provdide an argument table when creating Resource")
 	local t = { 
-		["name"] = _name,
-		["longValue"] = _longValue,
-		["doubleValue"] = _doubleValue,
-		["stringSetValue"] = _stringSetValue,
-		["type"] = _type,
-		["integerValue"] = _integerValue,
+		["name"] = args["name"],
+		["longValue"] = args["longValue"],
+		["doubleValue"] = args["doubleValue"],
+		["stringSetValue"] = args["stringSetValue"],
+		["type"] = args["type"],
+		["integerValue"] = args["integerValue"],
 	}
 	asserts.AssertResource(t)
 	return t
@@ -2977,17 +3271,20 @@ end
 
 --- Create a structure of type NetworkBinding
 -- <p>Details on the network bindings between a container and its host container instance. After a task reaches the <code>RUNNING</code> status, manual and automatic host and container port assignments are visible in the <code>networkBindings</code> section of <a>DescribeTasks</a> API responses.</p>
--- @param _protocol [TransportProtocol] <p>The protocol used for the network binding.</p>
--- @param _bindIP [String] <p>The IP address that the container is bound to on the container instance.</p>
--- @param _containerPort [BoxedInteger] <p>The port number on the container that is be used with the network binding.</p>
--- @param _hostPort [BoxedInteger] <p>The port number on the host that is used with the network binding.</p>
-function M.NetworkBinding(_protocol, _bindIP, _containerPort, _hostPort, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NetworkBinding")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * protocol [TransportProtocol] <p>The protocol used for the network binding.</p>
+-- * bindIP [String] <p>The IP address that the container is bound to on the container instance.</p>
+-- * containerPort [BoxedInteger] <p>The port number on the container that is be used with the network binding.</p>
+-- * hostPort [BoxedInteger] <p>The port number on the host that is used with the network binding.</p>
+-- @return NetworkBinding structure as a key-value pair table
+function M.NetworkBinding(args)
+	assert(args, "You must provdide an argument table when creating NetworkBinding")
 	local t = { 
-		["protocol"] = _protocol,
-		["bindIP"] = _bindIP,
-		["containerPort"] = _containerPort,
-		["hostPort"] = _hostPort,
+		["protocol"] = args["protocol"],
+		["bindIP"] = args["bindIP"],
+		["containerPort"] = args["containerPort"],
+		["hostPort"] = args["hostPort"],
 	}
 	asserts.AssertNetworkBinding(t)
 	return t
@@ -3008,15 +3305,18 @@ end
 
 --- Create a structure of type PortMapping
 -- <p>Port mappings allow containers to access ports on the host container instance to send or receive traffic. Port mappings are specified as part of the container definition. After a task reaches the <code>RUNNING</code> status, manual and automatic host and container port assignments are visible in the <code>networkBindings</code> section of <a>DescribeTasks</a> API responses.</p>
--- @param _protocol [TransportProtocol] <p>The protocol used for the port mapping. Valid values are <code>tcp</code> and <code>udp</code>. The default is <code>tcp</code>.</p>
--- @param _containerPort [BoxedInteger] <p>The port number on the container that is bound to the user-specified or automatically assigned host port. If you specify a container port and not a host port, your container automatically receives a host port in the ephemeral port range (for more information, see <code>hostPort</code>). Port mappings that are automatically assigned in this way do not count toward the 100 reserved ports limit of a container instance.</p>
--- @param _hostPort [BoxedInteger] <p>The port number on the container instance to reserve for your container. You can specify a non-reserved host port for your container port mapping, or you can omit the <code>hostPort</code> (or set it to <code>0</code>) while specifying a <code>containerPort</code> and your container automatically receives a port in the ephemeral port range for your container instance operating system and Docker version.</p> <p>The default ephemeral port range for Docker version 1.6.0 and later is listed on the instance under <code>/proc/sys/net/ipv4/ip_local_port_range</code>; if this kernel parameter is unavailable, the default ephemeral port range of 49153 to 65535 is used. You should not attempt to specify a host port in the ephemeral port range as these are reserved for automatic assignment. In general, ports below 32768 are outside of the ephemeral port range.</p> <note> <p>The default ephemeral port range of 49153 to 65535 will always be used for Docker versions prior to 1.6.0.</p> </note> <p>The default reserved ports are 22 for SSH, the Docker ports 2375 and 2376, and the Amazon ECS container agent ports 51678 and 51679. Any host port that was previously specified in a running task is also reserved while the task is running (after a task stops, the host port is released).The current reserved ports are displayed in the <code>remainingResources</code> of <a>DescribeContainerInstances</a> output, and a container instance may have up to 100 reserved ports at a time, including the default reserved ports (automatically assigned ports do not count toward the 100 reserved ports limit).</p>
-function M.PortMapping(_protocol, _containerPort, _hostPort, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PortMapping")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * protocol [TransportProtocol] <p>The protocol used for the port mapping. Valid values are <code>tcp</code> and <code>udp</code>. The default is <code>tcp</code>.</p>
+-- * containerPort [BoxedInteger] <p>The port number on the container that is bound to the user-specified or automatically assigned host port. If you specify a container port and not a host port, your container automatically receives a host port in the ephemeral port range (for more information, see <code>hostPort</code>). Port mappings that are automatically assigned in this way do not count toward the 100 reserved ports limit of a container instance.</p>
+-- * hostPort [BoxedInteger] <p>The port number on the container instance to reserve for your container. You can specify a non-reserved host port for your container port mapping, or you can omit the <code>hostPort</code> (or set it to <code>0</code>) while specifying a <code>containerPort</code> and your container automatically receives a port in the ephemeral port range for your container instance operating system and Docker version.</p> <p>The default ephemeral port range for Docker version 1.6.0 and later is listed on the instance under <code>/proc/sys/net/ipv4/ip_local_port_range</code>; if this kernel parameter is unavailable, the default ephemeral port range of 49153 to 65535 is used. You should not attempt to specify a host port in the ephemeral port range as these are reserved for automatic assignment. In general, ports below 32768 are outside of the ephemeral port range.</p> <note> <p>The default ephemeral port range of 49153 to 65535 will always be used for Docker versions prior to 1.6.0.</p> </note> <p>The default reserved ports are 22 for SSH, the Docker ports 2375 and 2376, and the Amazon ECS container agent ports 51678 and 51679. Any host port that was previously specified in a running task is also reserved while the task is running (after a task stops, the host port is released).The current reserved ports are displayed in the <code>remainingResources</code> of <a>DescribeContainerInstances</a> output, and a container instance may have up to 100 reserved ports at a time, including the default reserved ports (automatically assigned ports do not count toward the 100 reserved ports limit).</p>
+-- @return PortMapping structure as a key-value pair table
+function M.PortMapping(args)
+	assert(args, "You must provdide an argument table when creating PortMapping")
 	local t = { 
-		["protocol"] = _protocol,
-		["containerPort"] = _containerPort,
-		["hostPort"] = _hostPort,
+		["protocol"] = args["protocol"],
+		["containerPort"] = args["containerPort"],
+		["hostPort"] = args["hostPort"],
 	}
 	asserts.AssertPortMapping(t)
 	return t
@@ -3037,14 +3337,17 @@ end
 
 --- Create a structure of type LogConfiguration
 -- <p>Log configuration options to send to a custom log driver for the container.</p>
--- @param _logDriver [LogDriver] <p>The log driver to use for the container. The valid values listed for this parameter are log drivers that the Amazon ECS container agent can communicate with by default. </p> <note> <p>If you have a custom driver that is not listed above that you would like to work with the Amazon ECS container agent, you can fork the Amazon ECS container agent project that is <a href="https://github.com/aws/amazon-ecs-agent">available on GitHub</a> and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, Amazon Web Services does not currently provide support for running modified copies of this software.</p> </note> <p>This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p>
--- @param _options [LogConfigurationOptionsMap] <p>The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p>
--- Required parameter: logDriver
-function M.LogConfiguration(_logDriver, _options, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LogConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logDriver [LogDriver] <p>The log driver to use for the container. The valid values listed for this parameter are log drivers that the Amazon ECS container agent can communicate with by default. </p> <note> <p>If you have a custom driver that is not listed above that you would like to work with the Amazon ECS container agent, you can fork the Amazon ECS container agent project that is <a href="https://github.com/aws/amazon-ecs-agent">available on GitHub</a> and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, Amazon Web Services does not currently provide support for running modified copies of this software.</p> </note> <p>This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p>
+-- * options [LogConfigurationOptionsMap] <p>The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p>
+-- Required key: logDriver
+-- @return LogConfiguration structure as a key-value pair table
+function M.LogConfiguration(args)
+	assert(args, "You must provdide an argument table when creating LogConfiguration")
 	local t = { 
-		["logDriver"] = _logDriver,
-		["options"] = _options,
+		["logDriver"] = args["logDriver"],
+		["options"] = args["options"],
 	}
 	asserts.AssertLogConfiguration(t)
 	return t
@@ -3064,13 +3367,16 @@ end
 
 --- Create a structure of type VolumeFrom
 -- <p>Details on a data volume from another container in the same task definition.</p>
--- @param _readOnly [BoxedBoolean] <p>If this value is <code>true</code>, the container has read-only access to the volume. If this value is <code>false</code>, then the container can write to the volume. The default value is <code>false</code>.</p>
--- @param _sourceContainer [String] <p>The name of another container within the same task definition to mount volumes from.</p>
-function M.VolumeFrom(_readOnly, _sourceContainer, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VolumeFrom")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * readOnly [BoxedBoolean] <p>If this value is <code>true</code>, the container has read-only access to the volume. If this value is <code>false</code>, then the container can write to the volume. The default value is <code>false</code>.</p>
+-- * sourceContainer [String] <p>The name of another container within the same task definition to mount volumes from.</p>
+-- @return VolumeFrom structure as a key-value pair table
+function M.VolumeFrom(args)
+	assert(args, "You must provdide an argument table when creating VolumeFrom")
 	local t = { 
-		["readOnly"] = _readOnly,
-		["sourceContainer"] = _sourceContainer,
+		["readOnly"] = args["readOnly"],
+		["sourceContainer"] = args["sourceContainer"],
 	}
 	asserts.AssertVolumeFrom(t)
 	return t
@@ -3092,16 +3398,19 @@ end
 
 --- Create a structure of type DeregisterContainerInstanceRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to deregister. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _force [BoxedBoolean] <p>Forces the deregistration of the container instance. If you have tasks running on the container instance when you deregister it with the <code>force</code> option, these tasks remain running until you terminate the instance or the tasks stop through some other means, but they are orphaned (no longer monitored or accounted for by Amazon ECS). If an orphaned task on your container instance is part of an Amazon ECS service, then the service scheduler starts another copy of that task, on a different container instance if possible. </p> <p>Any containers in orphaned service tasks that are registered with a Classic load balancer or an Application load balancer target group are deregistered, and they will begin connection draining according to the settings on the load balancer or target group.</p>
--- @param _containerInstance [String] <p>The container instance ID or full Amazon Resource Name (ARN) of the container instance to deregister. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the <code>container-instance</code> namespace, and then the container instance ID. For example, <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.</p>
--- Required parameter: containerInstance
-function M.DeregisterContainerInstanceRequest(_cluster, _force, _containerInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterContainerInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to deregister. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * force [BoxedBoolean] <p>Forces the deregistration of the container instance. If you have tasks running on the container instance when you deregister it with the <code>force</code> option, these tasks remain running until you terminate the instance or the tasks stop through some other means, but they are orphaned (no longer monitored or accounted for by Amazon ECS). If an orphaned task on your container instance is part of an Amazon ECS service, then the service scheduler starts another copy of that task, on a different container instance if possible. </p> <p>Any containers in orphaned service tasks that are registered with a Classic load balancer or an Application load balancer target group are deregistered, and they will begin connection draining according to the settings on the load balancer or target group.</p>
+-- * containerInstance [String] <p>The container instance ID or full Amazon Resource Name (ARN) of the container instance to deregister. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the <code>container-instance</code> namespace, and then the container instance ID. For example, <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.</p>
+-- Required key: containerInstance
+-- @return DeregisterContainerInstanceRequest structure as a key-value pair table
+function M.DeregisterContainerInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterContainerInstanceRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["force"] = _force,
-		["containerInstance"] = _containerInstance,
+		["cluster"] = args["cluster"],
+		["force"] = args["force"],
+		["containerInstance"] = args["containerInstance"],
 	}
 	asserts.AssertDeregisterContainerInstanceRequest(t)
 	return t
@@ -3123,17 +3432,20 @@ end
 
 --- Create a structure of type LoadBalancer
 -- <p>Details on a load balancer that is used with a service.</p>
--- @param _containerName [String] <p>The name of the container (as it appears in a container definition) to associate with the load balancer.</p>
--- @param _targetGroupArn [String] <p>The full Amazon Resource Name (ARN) of the Elastic Load Balancing target group associated with a service.</p>
--- @param _containerPort [BoxedInteger] <p>The port on the container to associate with the load balancer. This port must correspond to a <code>containerPort</code> in the service's task definition. Your container instances must allow ingress traffic on the <code>hostPort</code> of the port mapping.</p>
--- @param _loadBalancerName [String] <p>The name of a Classic load balancer.</p>
-function M.LoadBalancer(_containerName, _targetGroupArn, _containerPort, _loadBalancerName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * containerName [String] <p>The name of the container (as it appears in a container definition) to associate with the load balancer.</p>
+-- * targetGroupArn [String] <p>The full Amazon Resource Name (ARN) of the Elastic Load Balancing target group associated with a service.</p>
+-- * containerPort [BoxedInteger] <p>The port on the container to associate with the load balancer. This port must correspond to a <code>containerPort</code> in the service's task definition. Your container instances must allow ingress traffic on the <code>hostPort</code> of the port mapping.</p>
+-- * loadBalancerName [String] <p>The name of a Classic load balancer.</p>
+-- @return LoadBalancer structure as a key-value pair table
+function M.LoadBalancer(args)
+	assert(args, "You must provdide an argument table when creating LoadBalancer")
 	local t = { 
-		["containerName"] = _containerName,
-		["targetGroupArn"] = _targetGroupArn,
-		["containerPort"] = _containerPort,
-		["loadBalancerName"] = _loadBalancerName,
+		["containerName"] = args["containerName"],
+		["targetGroupArn"] = args["targetGroupArn"],
+		["containerPort"] = args["containerPort"],
+		["loadBalancerName"] = args["loadBalancerName"],
 	}
 	asserts.AssertLoadBalancer(t)
 	return t
@@ -3154,14 +3466,17 @@ end
 
 --- Create a structure of type DeleteServiceRequest
 --  
--- @param _cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to delete. If you do not specify a cluster, the default cluster is assumed.</p>
--- @param _service [String] <p>The name of the service to delete.</p>
--- Required parameter: service
-function M.DeleteServiceRequest(_cluster, _service, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteServiceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cluster [String] <p>The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to delete. If you do not specify a cluster, the default cluster is assumed.</p>
+-- * service [String] <p>The name of the service to delete.</p>
+-- Required key: service
+-- @return DeleteServiceRequest structure as a key-value pair table
+function M.DeleteServiceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteServiceRequest")
 	local t = { 
-		["cluster"] = _cluster,
-		["service"] = _service,
+		["cluster"] = args["cluster"],
+		["service"] = args["service"],
 	}
 	asserts.AssertDeleteServiceRequest(t)
 	return t

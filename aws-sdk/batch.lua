@@ -33,8 +33,11 @@ end
 
 --- Create a structure of type CancelJobResponse
 --  
-function M.CancelJobResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelJobResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CancelJobResponse structure as a key-value pair table
+function M.CancelJobResponse(args)
+	assert(args, "You must provdide an argument table when creating CancelJobResponse")
 	local t = { 
 	}
 	asserts.AssertCancelJobResponse(t)
@@ -58,19 +61,22 @@ end
 
 --- Create a structure of type DescribeJobDefinitionsRequest
 --  
--- @param _status [String] <p>The status with which to filter job definitions.</p>
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeJobDefinitions</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _jobDefinitions [StringList] <p>A space-separated list of up to 100 job definition names or full Amazon Resource Name (ARN) entries.</p>
--- @param _jobDefinitionName [String] <p>The name of the job definition to describe.</p>
--- @param _maxResults [Integer] <p>The maximum number of results returned by <code>DescribeJobDefinitions</code> in paginated output. When this parameter is used, <code>DescribeJobDefinitions</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeJobDefinitions</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeJobDefinitions</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
-function M.DescribeJobDefinitionsRequest(_status, _nextToken, _jobDefinitions, _jobDefinitionName, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobDefinitionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [String] <p>The status with which to filter job definitions.</p>
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeJobDefinitions</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * jobDefinitions [StringList] <p>A space-separated list of up to 100 job definition names or full Amazon Resource Name (ARN) entries.</p>
+-- * jobDefinitionName [String] <p>The name of the job definition to describe.</p>
+-- * maxResults [Integer] <p>The maximum number of results returned by <code>DescribeJobDefinitions</code> in paginated output. When this parameter is used, <code>DescribeJobDefinitions</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeJobDefinitions</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeJobDefinitions</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- @return DescribeJobDefinitionsRequest structure as a key-value pair table
+function M.DescribeJobDefinitionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobDefinitionsRequest")
 	local t = { 
-		["status"] = _status,
-		["nextToken"] = _nextToken,
-		["jobDefinitions"] = _jobDefinitions,
-		["jobDefinitionName"] = _jobDefinitionName,
-		["maxResults"] = _maxResults,
+		["status"] = args["status"],
+		["nextToken"] = args["nextToken"],
+		["jobDefinitions"] = args["jobDefinitions"],
+		["jobDefinitionName"] = args["jobDefinitionName"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertDescribeJobDefinitionsRequest(t)
 	return t
@@ -92,17 +98,20 @@ end
 
 --- Create a structure of type AttemptDetail
 -- <p>An object representing a job attempt.</p>
--- @param _startedAt [Long] <p>The Unix timestamp for when the attempt was started (when the task transitioned from the <code>PENDING</code> state to the <code>RUNNING</code> state).</p>
--- @param _container [AttemptContainerDetail] <p>Details about the container in this job attempt.</p>
--- @param _stoppedAt [Long] <p>The Unix timestamp for when the attempt was stopped (when the task transitioned from the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
--- @param _statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the job attempt.</p>
-function M.AttemptDetail(_startedAt, _container, _stoppedAt, _statusReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttemptDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedAt [Long] <p>The Unix timestamp for when the attempt was started (when the task transitioned from the <code>PENDING</code> state to the <code>RUNNING</code> state).</p>
+-- * container [AttemptContainerDetail] <p>Details about the container in this job attempt.</p>
+-- * stoppedAt [Long] <p>The Unix timestamp for when the attempt was stopped (when the task transitioned from the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
+-- * statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the job attempt.</p>
+-- @return AttemptDetail structure as a key-value pair table
+function M.AttemptDetail(args)
+	assert(args, "You must provdide an argument table when creating AttemptDetail")
 	local t = { 
-		["startedAt"] = _startedAt,
-		["container"] = _container,
-		["stoppedAt"] = _stoppedAt,
-		["statusReason"] = _statusReason,
+		["startedAt"] = args["startedAt"],
+		["container"] = args["container"],
+		["stoppedAt"] = args["stoppedAt"],
+		["statusReason"] = args["statusReason"],
 	}
 	asserts.AssertAttemptDetail(t)
 	return t
@@ -126,18 +135,21 @@ end
 
 --- Create a structure of type Ulimit
 -- <p>The <code>ulimit</code> settings to pass to the container.</p>
--- @param _softLimit [Integer] <p>The soft limit for the <code>ulimit</code> type.</p>
--- @param _hardLimit [Integer] <p>The hard limit for the <code>ulimit</code> type.</p>
--- @param _name [String] <p>The <code>type</code> of the <code>ulimit</code>.</p>
--- Required parameter: hardLimit
--- Required parameter: name
--- Required parameter: softLimit
-function M.Ulimit(_softLimit, _hardLimit, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Ulimit")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * softLimit [Integer] <p>The soft limit for the <code>ulimit</code> type.</p>
+-- * hardLimit [Integer] <p>The hard limit for the <code>ulimit</code> type.</p>
+-- * name [String] <p>The <code>type</code> of the <code>ulimit</code>.</p>
+-- Required key: hardLimit
+-- Required key: name
+-- Required key: softLimit
+-- @return Ulimit structure as a key-value pair table
+function M.Ulimit(args)
+	assert(args, "You must provdide an argument table when creating Ulimit")
 	local t = { 
-		["softLimit"] = _softLimit,
-		["hardLimit"] = _hardLimit,
-		["name"] = _name,
+		["softLimit"] = args["softLimit"],
+		["hardLimit"] = args["hardLimit"],
+		["name"] = args["name"],
 	}
 	asserts.AssertUlimit(t)
 	return t
@@ -160,18 +172,21 @@ end
 
 --- Create a structure of type ListJobsRequest
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListJobs</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _maxResults [Integer] <p>The maximum number of results returned by <code>ListJobs</code> in paginated output. When this parameter is used, <code>ListJobs</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListJobs</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListJobs</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
--- @param _jobStatus [JobStatus] <p>The job status with which to filter jobs in the specified queue.</p>
--- @param _jobQueue [String] <p>The name or full Amazon Resource Name (ARN) of the job queue with which to list jobs.</p>
--- Required parameter: jobQueue
-function M.ListJobsRequest(_nextToken, _maxResults, _jobStatus, _jobQueue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListJobs</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * maxResults [Integer] <p>The maximum number of results returned by <code>ListJobs</code> in paginated output. When this parameter is used, <code>ListJobs</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListJobs</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListJobs</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- * jobStatus [JobStatus] <p>The job status with which to filter jobs in the specified queue.</p>
+-- * jobQueue [String] <p>The name or full Amazon Resource Name (ARN) of the job queue with which to list jobs.</p>
+-- Required key: jobQueue
+-- @return ListJobsRequest structure as a key-value pair table
+function M.ListJobsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListJobsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
-		["jobStatus"] = _jobStatus,
-		["jobQueue"] = _jobQueue,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+		["jobStatus"] = args["jobStatus"],
+		["jobQueue"] = args["jobQueue"],
 	}
 	asserts.AssertListJobsRequest(t)
 	return t
@@ -193,15 +208,18 @@ end
 
 --- Create a structure of type TerminateJobRequest
 --  
--- @param _reason [String] <p>A message to attach to the job that explains the reason for cancelling it. This message is returned by future <a>DescribeJobs</a> operations on the job. This message is also recorded in the AWS Batch activity logs. </p>
--- @param _jobId [String] <p>Job IDs to be terminated. Up to 100 jobs can be specified.</p>
--- Required parameter: jobId
--- Required parameter: reason
-function M.TerminateJobRequest(_reason, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminateJobRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * reason [String] <p>A message to attach to the job that explains the reason for cancelling it. This message is returned by future <a>DescribeJobs</a> operations on the job. This message is also recorded in the AWS Batch activity logs. </p>
+-- * jobId [String] <p>Job IDs to be terminated. Up to 100 jobs can be specified.</p>
+-- Required key: jobId
+-- Required key: reason
+-- @return TerminateJobRequest structure as a key-value pair table
+function M.TerminateJobRequest(args)
+	assert(args, "You must provdide an argument table when creating TerminateJobRequest")
 	local t = { 
-		["reason"] = _reason,
-		["jobId"] = _jobId,
+		["reason"] = args["reason"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertTerminateJobRequest(t)
 	return t
@@ -224,18 +242,21 @@ end
 
 --- Create a structure of type UpdateComputeEnvironmentRequest
 --  
--- @param _computeEnvironment [String] <p>The name or full Amazon Resource Name (ARN) of the compute environment to update.</p>
--- @param _state [CEState] <p>The state of the compute environment. Compute environments in the <code>ENABLED</code> state can accept jobs from a queue and scale in or out automatically based on the workload demand of its associated queues.</p>
--- @param _computeResources [ComputeResourceUpdate] <p>Details of the compute resources managed by the compute environment. Required for a managed compute environment.</p>
--- @param _serviceRole [String] <p>The name or full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to ECS, Auto Scaling, and EC2 on your behalf.</p>
--- Required parameter: computeEnvironment
-function M.UpdateComputeEnvironmentRequest(_computeEnvironment, _state, _computeResources, _serviceRole, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateComputeEnvironmentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * computeEnvironment [String] <p>The name or full Amazon Resource Name (ARN) of the compute environment to update.</p>
+-- * state [CEState] <p>The state of the compute environment. Compute environments in the <code>ENABLED</code> state can accept jobs from a queue and scale in or out automatically based on the workload demand of its associated queues.</p>
+-- * computeResources [ComputeResourceUpdate] <p>Details of the compute resources managed by the compute environment. Required for a managed compute environment.</p>
+-- * serviceRole [String] <p>The name or full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to ECS, Auto Scaling, and EC2 on your behalf.</p>
+-- Required key: computeEnvironment
+-- @return UpdateComputeEnvironmentRequest structure as a key-value pair table
+function M.UpdateComputeEnvironmentRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateComputeEnvironmentRequest")
 	local t = { 
-		["computeEnvironment"] = _computeEnvironment,
-		["state"] = _state,
-		["computeResources"] = _computeResources,
-		["serviceRole"] = _serviceRole,
+		["computeEnvironment"] = args["computeEnvironment"],
+		["state"] = args["state"],
+		["computeResources"] = args["computeResources"],
+		["serviceRole"] = args["serviceRole"],
 	}
 	asserts.AssertUpdateComputeEnvironmentRequest(t)
 	return t
@@ -256,15 +277,18 @@ end
 
 --- Create a structure of type ComputeResourceUpdate
 -- <p>An object representing the attributes of a compute environment that can be updated.</p>
--- @param _maxvCpus [Integer] <p>The maximum number of EC2 vCPUs that an environment can reach.</p>
--- @param _minvCpus [Integer] <p>The minimum number of EC2 vCPUs that an environment should maintain.</p>
--- @param _desiredvCpus [Integer] <p>The desired number of EC2 vCPUS in the compute environment.</p>
-function M.ComputeResourceUpdate(_maxvCpus, _minvCpus, _desiredvCpus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComputeResourceUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * maxvCpus [Integer] <p>The maximum number of EC2 vCPUs that an environment can reach.</p>
+-- * minvCpus [Integer] <p>The minimum number of EC2 vCPUs that an environment should maintain.</p>
+-- * desiredvCpus [Integer] <p>The desired number of EC2 vCPUS in the compute environment.</p>
+-- @return ComputeResourceUpdate structure as a key-value pair table
+function M.ComputeResourceUpdate(args)
+	assert(args, "You must provdide an argument table when creating ComputeResourceUpdate")
 	local t = { 
-		["maxvCpus"] = _maxvCpus,
-		["minvCpus"] = _minvCpus,
-		["desiredvCpus"] = _desiredvCpus,
+		["maxvCpus"] = args["maxvCpus"],
+		["minvCpus"] = args["minvCpus"],
+		["desiredvCpus"] = args["desiredvCpus"],
 	}
 	asserts.AssertComputeResourceUpdate(t)
 	return t
@@ -284,13 +308,16 @@ end
 
 --- Create a structure of type KeyValuePair
 -- <p>A key-value pair object.</p>
--- @param _name [String] <p>The name of the key value pair. For environment variables, this is the name of the environment variable.</p>
--- @param _value [String] <p>The value of the key value pair. For environment variables, this is the value of the environment variable.</p>
-function M.KeyValuePair(_name, _value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KeyValuePair")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [String] <p>The name of the key value pair. For environment variables, this is the name of the environment variable.</p>
+-- * value [String] <p>The value of the key value pair. For environment variables, this is the value of the environment variable.</p>
+-- @return KeyValuePair structure as a key-value pair table
+function M.KeyValuePair(args)
+	assert(args, "You must provdide an argument table when creating KeyValuePair")
 	local t = { 
-		["name"] = _name,
-		["value"] = _value,
+		["name"] = args["name"],
+		["value"] = args["value"],
 	}
 	asserts.AssertKeyValuePair(t)
 	return t
@@ -315,20 +342,23 @@ end
 
 --- Create a structure of type CreateJobQueueRequest
 --  
--- @param _priority [Integer] <p>The priority of the job queue. Job queues with a higher priority (or a lower integer value for the <code>priority</code> parameter) are evaluated first when associated with same compute environment. Priority is determined in ascending order, for example, a job queue with a priority value of <code>1</code> is given scheduling preference over a job queue with a priority value of <code>10</code>.</p>
--- @param _state [JQState] <p>The state of the job queue. If the job queue state is <code>ENABLED</code>, it is able to accept jobs.</p>
--- @param _computeEnvironmentOrder [ComputeEnvironmentOrders] <p>The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should execute a given job. Compute environments must be in the <code>VALID</code> state before you can associate them with a job queue. You can associate up to 3 compute environments with a job queue.</p>
--- @param _jobQueueName [String] <p>The name of the job queue.</p>
--- Required parameter: jobQueueName
--- Required parameter: priority
--- Required parameter: computeEnvironmentOrder
-function M.CreateJobQueueRequest(_priority, _state, _computeEnvironmentOrder, _jobQueueName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobQueueRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * priority [Integer] <p>The priority of the job queue. Job queues with a higher priority (or a lower integer value for the <code>priority</code> parameter) are evaluated first when associated with same compute environment. Priority is determined in ascending order, for example, a job queue with a priority value of <code>1</code> is given scheduling preference over a job queue with a priority value of <code>10</code>.</p>
+-- * state [JQState] <p>The state of the job queue. If the job queue state is <code>ENABLED</code>, it is able to accept jobs.</p>
+-- * computeEnvironmentOrder [ComputeEnvironmentOrders] <p>The set of compute environments mapped to a job queue and their order relative to each other. The job scheduler uses this parameter to determine which compute environment should execute a given job. Compute environments must be in the <code>VALID</code> state before you can associate them with a job queue. You can associate up to 3 compute environments with a job queue.</p>
+-- * jobQueueName [String] <p>The name of the job queue.</p>
+-- Required key: jobQueueName
+-- Required key: priority
+-- Required key: computeEnvironmentOrder
+-- @return CreateJobQueueRequest structure as a key-value pair table
+function M.CreateJobQueueRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateJobQueueRequest")
 	local t = { 
-		["priority"] = _priority,
-		["state"] = _state,
-		["computeEnvironmentOrder"] = _computeEnvironmentOrder,
-		["jobQueueName"] = _jobQueueName,
+		["priority"] = args["priority"],
+		["state"] = args["state"],
+		["computeEnvironmentOrder"] = args["computeEnvironmentOrder"],
+		["jobQueueName"] = args["jobQueueName"],
 	}
 	asserts.AssertCreateJobQueueRequest(t)
 	return t
@@ -347,11 +377,14 @@ end
 
 --- Create a structure of type RetryStrategy
 -- <p>The retry strategy associated with a job.</p>
--- @param _attempts [Integer] <p>The number of times to move a job to the <code>RUNNABLE</code> status. You may specify between 1 and 10 attempts. If <code>attempts</code> is greater than one, the job is retried if it fails until it has moved to <code>RUNNABLE</code> that many times.</p>
-function M.RetryStrategy(_attempts, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetryStrategy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attempts [Integer] <p>The number of times to move a job to the <code>RUNNABLE</code> status. You may specify between 1 and 10 attempts. If <code>attempts</code> is greater than one, the job is retried if it fails until it has moved to <code>RUNNABLE</code> that many times.</p>
+-- @return RetryStrategy structure as a key-value pair table
+function M.RetryStrategy(args)
+	assert(args, "You must provdide an argument table when creating RetryStrategy")
 	local t = { 
-		["attempts"] = _attempts,
+		["attempts"] = args["attempts"],
 	}
 	asserts.AssertRetryStrategy(t)
 	return t
@@ -372,15 +405,18 @@ end
 
 --- Create a structure of type MountPoint
 -- <p>Details on a Docker volume mount point that is used in a job's container properties.</p>
--- @param _sourceVolume [String] <p>The name of the volume to mount.</p>
--- @param _readOnly [Boolean] <p>If this value is <code>true</code>, the container has read-only access to the volume; otherwise, the container can write to the volume. The default value is <code>false</code>.</p>
--- @param _containerPath [String] <p>The path on the container at which to mount the host volume.</p>
-function M.MountPoint(_sourceVolume, _readOnly, _containerPath, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MountPoint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * sourceVolume [String] <p>The name of the volume to mount.</p>
+-- * readOnly [Boolean] <p>If this value is <code>true</code>, the container has read-only access to the volume; otherwise, the container can write to the volume. The default value is <code>false</code>.</p>
+-- * containerPath [String] <p>The path on the container at which to mount the host volume.</p>
+-- @return MountPoint structure as a key-value pair table
+function M.MountPoint(args)
+	assert(args, "You must provdide an argument table when creating MountPoint")
 	local t = { 
-		["sourceVolume"] = _sourceVolume,
-		["readOnly"] = _readOnly,
-		["containerPath"] = _containerPath,
+		["sourceVolume"] = args["sourceVolume"],
+		["readOnly"] = args["readOnly"],
+		["containerPath"] = args["containerPath"],
 	}
 	asserts.AssertMountPoint(t)
 	return t
@@ -406,22 +442,25 @@ end
 
 --- Create a structure of type CreateComputeEnvironmentRequest
 --  
--- @param _computeEnvironmentName [String] <p>The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed.</p>
--- @param _state [CEState] <p>The state of the compute environment. If the state is <code>ENABLED</code>, then the compute environment accepts jobs from a queue and can scale out automatically based on queues.</p>
--- @param _type [CEType] <p>The type of the compute environment. </p>
--- @param _computeResources [ComputeResource] <p>Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments.</p>
--- @param _serviceRole [String] <p>The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf. </p>
--- Required parameter: computeEnvironmentName
--- Required parameter: type
--- Required parameter: serviceRole
-function M.CreateComputeEnvironmentRequest(_computeEnvironmentName, _state, _type, _computeResources, _serviceRole, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateComputeEnvironmentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * computeEnvironmentName [String] <p>The name for your compute environment. Up to 128 letters (uppercase and lowercase), numbers, and underscores are allowed.</p>
+-- * state [CEState] <p>The state of the compute environment. If the state is <code>ENABLED</code>, then the compute environment accepts jobs from a queue and can scale out automatically based on queues.</p>
+-- * type [CEType] <p>The type of the compute environment. </p>
+-- * computeResources [ComputeResource] <p>Details of the compute resources managed by the compute environment. This parameter is required for managed compute environments.</p>
+-- * serviceRole [String] <p>The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch to make calls to other AWS services on your behalf. </p>
+-- Required key: computeEnvironmentName
+-- Required key: type
+-- Required key: serviceRole
+-- @return CreateComputeEnvironmentRequest structure as a key-value pair table
+function M.CreateComputeEnvironmentRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateComputeEnvironmentRequest")
 	local t = { 
-		["computeEnvironmentName"] = _computeEnvironmentName,
-		["state"] = _state,
-		["type"] = _type,
-		["computeResources"] = _computeResources,
-		["serviceRole"] = _serviceRole,
+		["computeEnvironmentName"] = args["computeEnvironmentName"],
+		["state"] = args["state"],
+		["type"] = args["type"],
+		["computeResources"] = args["computeResources"],
+		["serviceRole"] = args["serviceRole"],
 	}
 	asserts.AssertCreateComputeEnvironmentRequest(t)
 	return t
@@ -440,11 +479,14 @@ end
 
 --- Create a structure of type JobDependency
 -- <p>An object representing an AWS Batch job dependency.</p>
--- @param _jobId [String] <p>The job ID of the AWS Batch job associated with this dependency.</p>
-function M.JobDependency(_jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobDependency")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobId [String] <p>The job ID of the AWS Batch job associated with this dependency.</p>
+-- @return JobDependency structure as a key-value pair table
+function M.JobDependency(args)
+	assert(args, "You must provdide an argument table when creating JobDependency")
 	local t = { 
-		["jobId"] = _jobId,
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertJobDependency(t)
 	return t
@@ -474,30 +516,33 @@ end
 
 --- Create a structure of type ComputeEnvironmentDetail
 -- <p>An object representing an AWS Batch compute environment.</p>
--- @param _status [CEStatus] <p>The current status of the compute environment (for example, <code>CREATING</code> or <code>VALID</code>).</p>
--- @param _serviceRole [String] <p>The service role associated with the compute environment that allows AWS Batch to make calls to AWS API operations on your behalf.</p>
--- @param _computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
--- @param _computeResources [ComputeResource] <p>The compute resources defined for the compute environment. </p>
--- @param _statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the compute environment.</p>
--- @param _ecsClusterArn [String] <p>The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster used by the compute environment. </p>
--- @param _state [CEState] <p>The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>. An <code>ENABLED</code> state indicates that you can register instances with the compute environment and that the associated instances can accept jobs. </p>
--- @param _computeEnvironmentName [String] <p>The name of the compute environment. </p>
--- @param _type [CEType] <p>The type of the compute environment.</p>
--- Required parameter: computeEnvironmentName
--- Required parameter: computeEnvironmentArn
--- Required parameter: ecsClusterArn
-function M.ComputeEnvironmentDetail(_status, _serviceRole, _computeEnvironmentArn, _computeResources, _statusReason, _ecsClusterArn, _state, _computeEnvironmentName, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComputeEnvironmentDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [CEStatus] <p>The current status of the compute environment (for example, <code>CREATING</code> or <code>VALID</code>).</p>
+-- * serviceRole [String] <p>The service role associated with the compute environment that allows AWS Batch to make calls to AWS API operations on your behalf.</p>
+-- * computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
+-- * computeResources [ComputeResource] <p>The compute resources defined for the compute environment. </p>
+-- * statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the compute environment.</p>
+-- * ecsClusterArn [String] <p>The Amazon Resource Name (ARN) of the underlying Amazon ECS cluster used by the compute environment. </p>
+-- * state [CEState] <p>The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>. An <code>ENABLED</code> state indicates that you can register instances with the compute environment and that the associated instances can accept jobs. </p>
+-- * computeEnvironmentName [String] <p>The name of the compute environment. </p>
+-- * type [CEType] <p>The type of the compute environment.</p>
+-- Required key: computeEnvironmentName
+-- Required key: computeEnvironmentArn
+-- Required key: ecsClusterArn
+-- @return ComputeEnvironmentDetail structure as a key-value pair table
+function M.ComputeEnvironmentDetail(args)
+	assert(args, "You must provdide an argument table when creating ComputeEnvironmentDetail")
 	local t = { 
-		["status"] = _status,
-		["serviceRole"] = _serviceRole,
-		["computeEnvironmentArn"] = _computeEnvironmentArn,
-		["computeResources"] = _computeResources,
-		["statusReason"] = _statusReason,
-		["ecsClusterArn"] = _ecsClusterArn,
-		["state"] = _state,
-		["computeEnvironmentName"] = _computeEnvironmentName,
-		["type"] = _type,
+		["status"] = args["status"],
+		["serviceRole"] = args["serviceRole"],
+		["computeEnvironmentArn"] = args["computeEnvironmentArn"],
+		["computeResources"] = args["computeResources"],
+		["statusReason"] = args["statusReason"],
+		["ecsClusterArn"] = args["ecsClusterArn"],
+		["state"] = args["state"],
+		["computeEnvironmentName"] = args["computeEnvironmentName"],
+		["type"] = args["type"],
 	}
 	asserts.AssertComputeEnvironmentDetail(t)
 	return t
@@ -535,43 +580,46 @@ end
 
 --- Create a structure of type JobDetail
 -- <p>An object representing an AWS Batch job.</p>
--- @param _status [JobStatus] <p>The current status for the job.</p>
--- @param _container [ContainerDetail] <p>An object representing the details of the container that is associated with the job.</p>
--- @param _parameters [ParametersMap] <p>Additional parameters passed to the job that replace parameter substitution placeholders or override any corresponding parameter defaults from the job definition. </p>
--- @param _jobDefinition [String] <p>The job definition that is used by this job.</p>
--- @param _statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the job. </p>
--- @param _jobId [String] <p>The ID for the job.</p>
--- @param _attempts [AttemptDetails] <p>A list of job attempts associated with this job.</p>
--- @param _retryStrategy [RetryStrategy] <p>The retry strategy to use for this job if an attempt fails.</p>
--- @param _jobQueue [String] <p>The Amazon Resource Name (ARN) of the job queue with which the job is associated.</p>
--- @param _dependsOn [JobDependencyList] <p>A list of job names or IDs on which this job depends.</p>
--- @param _startedAt [Long] <p>The Unix timestamp for when the job was started (when the task transitioned from the <code>PENDING</code> state to the <code>RUNNING</code> state). </p>
--- @param _jobName [String] <p>The name of the job.</p>
--- @param _createdAt [Long] <p>The Unix timestamp for when the job was created (when the task entered the <code>PENDING</code> state). </p>
--- @param _stoppedAt [Long] <p>The Unix timestamp for when the job was stopped (when the task transitioned from the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
--- Required parameter: jobName
--- Required parameter: jobId
--- Required parameter: jobQueue
--- Required parameter: status
--- Required parameter: startedAt
--- Required parameter: jobDefinition
-function M.JobDetail(_status, _container, _parameters, _jobDefinition, _statusReason, _jobId, _attempts, _retryStrategy, _jobQueue, _dependsOn, _startedAt, _jobName, _createdAt, _stoppedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [JobStatus] <p>The current status for the job.</p>
+-- * container [ContainerDetail] <p>An object representing the details of the container that is associated with the job.</p>
+-- * parameters [ParametersMap] <p>Additional parameters passed to the job that replace parameter substitution placeholders or override any corresponding parameter defaults from the job definition. </p>
+-- * jobDefinition [String] <p>The job definition that is used by this job.</p>
+-- * statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the job. </p>
+-- * jobId [String] <p>The ID for the job.</p>
+-- * attempts [AttemptDetails] <p>A list of job attempts associated with this job.</p>
+-- * retryStrategy [RetryStrategy] <p>The retry strategy to use for this job if an attempt fails.</p>
+-- * jobQueue [String] <p>The Amazon Resource Name (ARN) of the job queue with which the job is associated.</p>
+-- * dependsOn [JobDependencyList] <p>A list of job names or IDs on which this job depends.</p>
+-- * startedAt [Long] <p>The Unix timestamp for when the job was started (when the task transitioned from the <code>PENDING</code> state to the <code>RUNNING</code> state). </p>
+-- * jobName [String] <p>The name of the job.</p>
+-- * createdAt [Long] <p>The Unix timestamp for when the job was created (when the task entered the <code>PENDING</code> state). </p>
+-- * stoppedAt [Long] <p>The Unix timestamp for when the job was stopped (when the task transitioned from the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
+-- Required key: jobName
+-- Required key: jobId
+-- Required key: jobQueue
+-- Required key: status
+-- Required key: startedAt
+-- Required key: jobDefinition
+-- @return JobDetail structure as a key-value pair table
+function M.JobDetail(args)
+	assert(args, "You must provdide an argument table when creating JobDetail")
 	local t = { 
-		["status"] = _status,
-		["container"] = _container,
-		["parameters"] = _parameters,
-		["jobDefinition"] = _jobDefinition,
-		["statusReason"] = _statusReason,
-		["jobId"] = _jobId,
-		["attempts"] = _attempts,
-		["retryStrategy"] = _retryStrategy,
-		["jobQueue"] = _jobQueue,
-		["dependsOn"] = _dependsOn,
-		["startedAt"] = _startedAt,
-		["jobName"] = _jobName,
-		["createdAt"] = _createdAt,
-		["stoppedAt"] = _stoppedAt,
+		["status"] = args["status"],
+		["container"] = args["container"],
+		["parameters"] = args["parameters"],
+		["jobDefinition"] = args["jobDefinition"],
+		["statusReason"] = args["statusReason"],
+		["jobId"] = args["jobId"],
+		["attempts"] = args["attempts"],
+		["retryStrategy"] = args["retryStrategy"],
+		["jobQueue"] = args["jobQueue"],
+		["dependsOn"] = args["dependsOn"],
+		["startedAt"] = args["startedAt"],
+		["jobName"] = args["jobName"],
+		["createdAt"] = args["createdAt"],
+		["stoppedAt"] = args["stoppedAt"],
 	}
 	asserts.AssertJobDetail(t)
 	return t
@@ -593,15 +641,18 @@ end
 
 --- Create a structure of type SubmitJobResponse
 --  
--- @param _jobId [String] <p>The unique identifier for the job.</p>
--- @param _jobName [String] <p>The name of the job. </p>
--- Required parameter: jobName
--- Required parameter: jobId
-function M.SubmitJobResponse(_jobId, _jobName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubmitJobResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobId [String] <p>The unique identifier for the job.</p>
+-- * jobName [String] <p>The name of the job. </p>
+-- Required key: jobName
+-- Required key: jobId
+-- @return SubmitJobResponse structure as a key-value pair table
+function M.SubmitJobResponse(args)
+	assert(args, "You must provdide an argument table when creating SubmitJobResponse")
 	local t = { 
-		["jobId"] = _jobId,
-		["jobName"] = _jobName,
+		["jobId"] = args["jobId"],
+		["jobName"] = args["jobName"],
 	}
 	asserts.AssertSubmitJobResponse(t)
 	return t
@@ -623,15 +674,18 @@ end
 
 --- Create a structure of type ComputeEnvironmentOrder
 -- <p>The order in which compute environments are tried for job placement within a queue. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.</p>
--- @param _computeEnvironment [String] <p>The Amazon Resource Name (ARN) of the compute environment.</p>
--- @param _order [Integer] <p>The order of the compute environment.</p>
--- Required parameter: order
--- Required parameter: computeEnvironment
-function M.ComputeEnvironmentOrder(_computeEnvironment, _order, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComputeEnvironmentOrder")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * computeEnvironment [String] <p>The Amazon Resource Name (ARN) of the compute environment.</p>
+-- * order [Integer] <p>The order of the compute environment.</p>
+-- Required key: order
+-- Required key: computeEnvironment
+-- @return ComputeEnvironmentOrder structure as a key-value pair table
+function M.ComputeEnvironmentOrder(args)
+	assert(args, "You must provdide an argument table when creating ComputeEnvironmentOrder")
 	local t = { 
-		["computeEnvironment"] = _computeEnvironment,
-		["order"] = _order,
+		["computeEnvironment"] = args["computeEnvironment"],
+		["order"] = args["order"],
 	}
 	asserts.AssertComputeEnvironmentOrder(t)
 	return t
@@ -651,13 +705,16 @@ end
 
 --- Create a structure of type DescribeJobQueuesResponse
 --  
--- @param _jobQueues [JobQueueDetailList] <p>The list of job queues. </p>
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>DescribeJobQueues</code> request. When the results of a <code>DescribeJobQueues</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
-function M.DescribeJobQueuesResponse(_jobQueues, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobQueuesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobQueues [JobQueueDetailList] <p>The list of job queues. </p>
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>DescribeJobQueues</code> request. When the results of a <code>DescribeJobQueues</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- @return DescribeJobQueuesResponse structure as a key-value pair table
+function M.DescribeJobQueuesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobQueuesResponse")
 	local t = { 
-		["jobQueues"] = _jobQueues,
-		["nextToken"] = _nextToken,
+		["jobQueues"] = args["jobQueues"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeJobQueuesResponse(t)
 	return t
@@ -677,12 +734,15 @@ end
 
 --- Create a structure of type DeleteComputeEnvironmentRequest
 --  
--- @param _computeEnvironment [String] <p>The name or Amazon Resource Name (ARN) of the compute environment to delete. </p>
--- Required parameter: computeEnvironment
-function M.DeleteComputeEnvironmentRequest(_computeEnvironment, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteComputeEnvironmentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * computeEnvironment [String] <p>The name or Amazon Resource Name (ARN) of the compute environment to delete. </p>
+-- Required key: computeEnvironment
+-- @return DeleteComputeEnvironmentRequest structure as a key-value pair table
+function M.DeleteComputeEnvironmentRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteComputeEnvironmentRequest")
 	local t = { 
-		["computeEnvironment"] = _computeEnvironment,
+		["computeEnvironment"] = args["computeEnvironment"],
 	}
 	asserts.AssertDeleteComputeEnvironmentRequest(t)
 	return t
@@ -700,8 +760,11 @@ end
 
 --- Create a structure of type DeleteComputeEnvironmentResponse
 --  
-function M.DeleteComputeEnvironmentResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteComputeEnvironmentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteComputeEnvironmentResponse structure as a key-value pair table
+function M.DeleteComputeEnvironmentResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteComputeEnvironmentResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteComputeEnvironmentResponse(t)
@@ -740,42 +803,45 @@ end
 
 --- Create a structure of type ComputeResource
 -- <p>An object representing an AWS Batch compute resource.</p>
--- @param _subnets [StringList] <p>The VPC subnets into which the compute resources are launched. </p>
--- @param _spotIamFleetRole [String] <p>The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a <code>SPOT</code> compute environment.</p>
--- @param _tags [TagsMap] <p>Key-value pair tags to be applied to resources that are launched in the compute environment. </p>
--- @param _desiredvCpus [Integer] <p>The desired number of EC2 vCPUS in the compute environment. </p>
--- @param _minvCpus [Integer] <p>The minimum number of EC2 vCPUs that an environment should maintain. </p>
--- @param _instanceTypes [StringList] <p>The instances types that may launched.</p>
--- @param _imageId [String] <p>The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.</p>
--- @param _bidPercentage [Integer] <p>The minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20%, then the Spot price must be below 20% of the current On-Demand price for that EC2 instance.</p>
--- @param _instanceRole [String] <p>The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.</p>
--- @param _maxvCpus [Integer] <p>The maximum number of EC2 vCPUs that an environment can reach. </p>
--- @param _securityGroupIds [StringList] <p>The EC2 security group that is associated with instances launched in the compute environment. </p>
--- @param _type [CRType] <p>The type of compute environment.</p>
--- @param _ec2KeyPair [String] <p>The EC2 key pair that is used for instances launched in the compute environment.</p>
--- Required parameter: type
--- Required parameter: minvCpus
--- Required parameter: maxvCpus
--- Required parameter: instanceTypes
--- Required parameter: subnets
--- Required parameter: securityGroupIds
--- Required parameter: instanceRole
-function M.ComputeResource(_subnets, _spotIamFleetRole, _tags, _desiredvCpus, _minvCpus, _instanceTypes, _imageId, _bidPercentage, _instanceRole, _maxvCpus, _securityGroupIds, _type, _ec2KeyPair, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComputeResource")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * subnets [StringList] <p>The VPC subnets into which the compute resources are launched. </p>
+-- * spotIamFleetRole [String] <p>The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied to a <code>SPOT</code> compute environment.</p>
+-- * tags [TagsMap] <p>Key-value pair tags to be applied to resources that are launched in the compute environment. </p>
+-- * desiredvCpus [Integer] <p>The desired number of EC2 vCPUS in the compute environment. </p>
+-- * minvCpus [Integer] <p>The minimum number of EC2 vCPUs that an environment should maintain. </p>
+-- * instanceTypes [StringList] <p>The instances types that may launched.</p>
+-- * imageId [String] <p>The Amazon Machine Image (AMI) ID used for instances launched in the compute environment.</p>
+-- * bidPercentage [Integer] <p>The minimum percentage that a Spot Instance price must be when compared with the On-Demand price for that instance type before instances are launched. For example, if your bid percentage is 20%, then the Spot price must be below 20% of the current On-Demand price for that EC2 instance.</p>
+-- * instanceRole [String] <p>The Amazon ECS instance role applied to Amazon EC2 instances in a compute environment.</p>
+-- * maxvCpus [Integer] <p>The maximum number of EC2 vCPUs that an environment can reach. </p>
+-- * securityGroupIds [StringList] <p>The EC2 security group that is associated with instances launched in the compute environment. </p>
+-- * type [CRType] <p>The type of compute environment.</p>
+-- * ec2KeyPair [String] <p>The EC2 key pair that is used for instances launched in the compute environment.</p>
+-- Required key: type
+-- Required key: minvCpus
+-- Required key: maxvCpus
+-- Required key: instanceTypes
+-- Required key: subnets
+-- Required key: securityGroupIds
+-- Required key: instanceRole
+-- @return ComputeResource structure as a key-value pair table
+function M.ComputeResource(args)
+	assert(args, "You must provdide an argument table when creating ComputeResource")
 	local t = { 
-		["subnets"] = _subnets,
-		["spotIamFleetRole"] = _spotIamFleetRole,
-		["tags"] = _tags,
-		["desiredvCpus"] = _desiredvCpus,
-		["minvCpus"] = _minvCpus,
-		["instanceTypes"] = _instanceTypes,
-		["imageId"] = _imageId,
-		["bidPercentage"] = _bidPercentage,
-		["instanceRole"] = _instanceRole,
-		["maxvCpus"] = _maxvCpus,
-		["securityGroupIds"] = _securityGroupIds,
-		["type"] = _type,
-		["ec2KeyPair"] = _ec2KeyPair,
+		["subnets"] = args["subnets"],
+		["spotIamFleetRole"] = args["spotIamFleetRole"],
+		["tags"] = args["tags"],
+		["desiredvCpus"] = args["desiredvCpus"],
+		["minvCpus"] = args["minvCpus"],
+		["instanceTypes"] = args["instanceTypes"],
+		["imageId"] = args["imageId"],
+		["bidPercentage"] = args["bidPercentage"],
+		["instanceRole"] = args["instanceRole"],
+		["maxvCpus"] = args["maxvCpus"],
+		["securityGroupIds"] = args["securityGroupIds"],
+		["type"] = args["type"],
+		["ec2KeyPair"] = args["ec2KeyPair"],
 	}
 	asserts.AssertComputeResource(t)
 	return t
@@ -800,21 +866,24 @@ end
 
 --- Create a structure of type RegisterJobDefinitionRequest
 --  
--- @param _retryStrategy [RetryStrategy] <p>The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that is specified during a <a>SubmitJob</a> operation overrides the retry strategy defined here.</p>
--- @param _containerProperties [ContainerProperties] <p>An object with various properties specific for container-based jobs. This parameter is required if the <code>type</code> parameter is <code>container</code>.</p>
--- @param _type [JobDefinitionType] <p>The type of job definition.</p>
--- @param _parameters [ParametersMap] <p>Default parameter substitution placeholders to set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a <code>SubmitJob</code> request override any corresponding parameter defaults from the job definition.</p>
--- @param _jobDefinitionName [String] <p>The name of the job definition to register. </p>
--- Required parameter: jobDefinitionName
--- Required parameter: type
-function M.RegisterJobDefinitionRequest(_retryStrategy, _containerProperties, _type, _parameters, _jobDefinitionName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterJobDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * retryStrategy [RetryStrategy] <p>The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that is specified during a <a>SubmitJob</a> operation overrides the retry strategy defined here.</p>
+-- * containerProperties [ContainerProperties] <p>An object with various properties specific for container-based jobs. This parameter is required if the <code>type</code> parameter is <code>container</code>.</p>
+-- * type [JobDefinitionType] <p>The type of job definition.</p>
+-- * parameters [ParametersMap] <p>Default parameter substitution placeholders to set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a <code>SubmitJob</code> request override any corresponding parameter defaults from the job definition.</p>
+-- * jobDefinitionName [String] <p>The name of the job definition to register. </p>
+-- Required key: jobDefinitionName
+-- Required key: type
+-- @return RegisterJobDefinitionRequest structure as a key-value pair table
+function M.RegisterJobDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterJobDefinitionRequest")
 	local t = { 
-		["retryStrategy"] = _retryStrategy,
-		["containerProperties"] = _containerProperties,
-		["type"] = _type,
-		["parameters"] = _parameters,
-		["jobDefinitionName"] = _jobDefinitionName,
+		["retryStrategy"] = args["retryStrategy"],
+		["containerProperties"] = args["containerProperties"],
+		["type"] = args["type"],
+		["parameters"] = args["parameters"],
+		["jobDefinitionName"] = args["jobDefinitionName"],
 	}
 	asserts.AssertRegisterJobDefinitionRequest(t)
 	return t
@@ -834,13 +903,16 @@ end
 
 --- Create a structure of type Volume
 -- <p>A data volume used in a job's container properties.</p>
--- @param _host [Host] <p>The contents of the <code>host</code> parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.</p>
--- @param _name [String] <p>The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition <code>mountPoints</code>.</p>
-function M.Volume(_host, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Volume")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * host [Host] <p>The contents of the <code>host</code> parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.</p>
+-- * name [String] <p>The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition <code>mountPoints</code>.</p>
+-- @return Volume structure as a key-value pair table
+function M.Volume(args)
+	assert(args, "You must provdide an argument table when creating Volume")
 	local t = { 
-		["host"] = _host,
-		["name"] = _name,
+		["host"] = args["host"],
+		["name"] = args["name"],
 	}
 	asserts.AssertVolume(t)
 	return t
@@ -859,11 +931,14 @@ end
 
 --- Create a structure of type Host
 -- <p>The contents of the <code>host</code> parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.</p>
--- @param _sourcePath [String] <p>The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the <code>host</code> parameter contains a <code>sourcePath</code> file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the <code>sourcePath</code> value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.</p>
-function M.Host(_sourcePath, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Host")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * sourcePath [String] <p>The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the <code>host</code> parameter contains a <code>sourcePath</code> file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the <code>sourcePath</code> value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.</p>
+-- @return Host structure as a key-value pair table
+function M.Host(args)
+	assert(args, "You must provdide an argument table when creating Host")
 	local t = { 
-		["sourcePath"] = _sourcePath,
+		["sourcePath"] = args["sourcePath"],
 	}
 	asserts.AssertHost(t)
 	return t
@@ -893,28 +968,31 @@ end
 
 --- Create a structure of type JobQueueDetail
 -- <p>An object representing the details of an AWS Batch job queue.</p>
--- @param _status [JQStatus] <p>The status of the job queue (for example, <code>CREATING</code> or <code>VALID</code>).</p>
--- @param _jobQueueArn [String] <p>The Amazon Resource Name (ARN) of the job queue.</p>
--- @param _computeEnvironmentOrder [ComputeEnvironmentOrders] <p>The compute environments that are attached to the job queue and the order in which job placement is preferred. Compute environments are selected for job placement in ascending order.</p>
--- @param _statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the job queue.</p>
--- @param _priority [Integer] <p>The priority of the job queue. </p>
--- @param _state [JQState] <p>Describes the ability of the queue to accept new jobs.</p>
--- @param _jobQueueName [String] <p>The name of the job queue.</p>
--- Required parameter: jobQueueName
--- Required parameter: jobQueueArn
--- Required parameter: state
--- Required parameter: priority
--- Required parameter: computeEnvironmentOrder
-function M.JobQueueDetail(_status, _jobQueueArn, _computeEnvironmentOrder, _statusReason, _priority, _state, _jobQueueName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobQueueDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [JQStatus] <p>The status of the job queue (for example, <code>CREATING</code> or <code>VALID</code>).</p>
+-- * jobQueueArn [String] <p>The Amazon Resource Name (ARN) of the job queue.</p>
+-- * computeEnvironmentOrder [ComputeEnvironmentOrders] <p>The compute environments that are attached to the job queue and the order in which job placement is preferred. Compute environments are selected for job placement in ascending order.</p>
+-- * statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the job queue.</p>
+-- * priority [Integer] <p>The priority of the job queue. </p>
+-- * state [JQState] <p>Describes the ability of the queue to accept new jobs.</p>
+-- * jobQueueName [String] <p>The name of the job queue.</p>
+-- Required key: jobQueueName
+-- Required key: jobQueueArn
+-- Required key: state
+-- Required key: priority
+-- Required key: computeEnvironmentOrder
+-- @return JobQueueDetail structure as a key-value pair table
+function M.JobQueueDetail(args)
+	assert(args, "You must provdide an argument table when creating JobQueueDetail")
 	local t = { 
-		["status"] = _status,
-		["jobQueueArn"] = _jobQueueArn,
-		["computeEnvironmentOrder"] = _computeEnvironmentOrder,
-		["statusReason"] = _statusReason,
-		["priority"] = _priority,
-		["state"] = _state,
-		["jobQueueName"] = _jobQueueName,
+		["status"] = args["status"],
+		["jobQueueArn"] = args["jobQueueArn"],
+		["computeEnvironmentOrder"] = args["computeEnvironmentOrder"],
+		["statusReason"] = args["statusReason"],
+		["priority"] = args["priority"],
+		["state"] = args["state"],
+		["jobQueueName"] = args["jobQueueName"],
 	}
 	asserts.AssertJobQueueDetail(t)
 	return t
@@ -936,15 +1014,18 @@ end
 
 --- Create a structure of type JobSummary
 -- <p>An object representing summary details of a job.</p>
--- @param _jobName [String] <p>The name of the job.</p>
--- @param _jobId [String] <p>The ID of the job.</p>
--- Required parameter: jobId
--- Required parameter: jobName
-function M.JobSummary(_jobName, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobName [String] <p>The name of the job.</p>
+-- * jobId [String] <p>The ID of the job.</p>
+-- Required key: jobId
+-- Required key: jobName
+-- @return JobSummary structure as a key-value pair table
+function M.JobSummary(args)
+	assert(args, "You must provdide an argument table when creating JobSummary")
 	local t = { 
-		["jobName"] = _jobName,
-		["jobId"] = _jobId,
+		["jobName"] = args["jobName"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertJobSummary(t)
 	return t
@@ -974,29 +1055,32 @@ end
 
 --- Create a structure of type JobDefinition
 -- <p>An object representing an AWS Batch job definition.</p>
--- @param _status [String] <p>The status of the job definition.</p>
--- @param _jobDefinitionArn [String] <p>The Amazon Resource Name (ARN) for the job definition. </p>
--- @param _parameters [ParametersMap] <p>Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a <code>SubmitJob</code> request override any corresponding parameter defaults from the job definition.</p>
--- @param _retryStrategy [RetryStrategy] <p>The retry strategy to use for failed jobs that are submitted with this job definition.</p>
--- @param _containerProperties [ContainerProperties] <p>An object with various properties specific to container-based jobs. </p>
--- @param _type [String] <p>The type of job definition.</p>
--- @param _jobDefinitionName [String] <p>The name of the job definition. </p>
--- @param _revision [Integer] <p>The revision of the job definition.</p>
--- Required parameter: jobDefinitionName
--- Required parameter: jobDefinitionArn
--- Required parameter: revision
--- Required parameter: type
-function M.JobDefinition(_status, _jobDefinitionArn, _parameters, _retryStrategy, _containerProperties, _type, _jobDefinitionName, _revision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobDefinition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [String] <p>The status of the job definition.</p>
+-- * jobDefinitionArn [String] <p>The Amazon Resource Name (ARN) for the job definition. </p>
+-- * parameters [ParametersMap] <p>Default parameters or parameter substitution placeholders that are set in the job definition. Parameters are specified as a key-value pair mapping. Parameters in a <code>SubmitJob</code> request override any corresponding parameter defaults from the job definition.</p>
+-- * retryStrategy [RetryStrategy] <p>The retry strategy to use for failed jobs that are submitted with this job definition.</p>
+-- * containerProperties [ContainerProperties] <p>An object with various properties specific to container-based jobs. </p>
+-- * type [String] <p>The type of job definition.</p>
+-- * jobDefinitionName [String] <p>The name of the job definition. </p>
+-- * revision [Integer] <p>The revision of the job definition.</p>
+-- Required key: jobDefinitionName
+-- Required key: jobDefinitionArn
+-- Required key: revision
+-- Required key: type
+-- @return JobDefinition structure as a key-value pair table
+function M.JobDefinition(args)
+	assert(args, "You must provdide an argument table when creating JobDefinition")
 	local t = { 
-		["status"] = _status,
-		["jobDefinitionArn"] = _jobDefinitionArn,
-		["parameters"] = _parameters,
-		["retryStrategy"] = _retryStrategy,
-		["containerProperties"] = _containerProperties,
-		["type"] = _type,
-		["jobDefinitionName"] = _jobDefinitionName,
-		["revision"] = _revision,
+		["status"] = args["status"],
+		["jobDefinitionArn"] = args["jobDefinitionArn"],
+		["parameters"] = args["parameters"],
+		["retryStrategy"] = args["retryStrategy"],
+		["containerProperties"] = args["containerProperties"],
+		["type"] = args["type"],
+		["jobDefinitionName"] = args["jobDefinitionName"],
+		["revision"] = args["revision"],
 	}
 	asserts.AssertJobDefinition(t)
 	return t
@@ -1016,13 +1100,16 @@ end
 
 --- Create a structure of type UpdateJobQueueResponse
 --  
--- @param _jobQueueArn [String] <p>The Amazon Resource Name (ARN) of the job queue.</p>
--- @param _jobQueueName [String] <p>The name of the job queue.</p>
-function M.UpdateJobQueueResponse(_jobQueueArn, _jobQueueName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobQueueResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobQueueArn [String] <p>The Amazon Resource Name (ARN) of the job queue.</p>
+-- * jobQueueName [String] <p>The name of the job queue.</p>
+-- @return UpdateJobQueueResponse structure as a key-value pair table
+function M.UpdateJobQueueResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateJobQueueResponse")
 	local t = { 
-		["jobQueueArn"] = _jobQueueArn,
-		["jobQueueName"] = _jobQueueName,
+		["jobQueueArn"] = args["jobQueueArn"],
+		["jobQueueName"] = args["jobQueueName"],
 	}
 	asserts.AssertUpdateJobQueueResponse(t)
 	return t
@@ -1042,13 +1129,16 @@ end
 
 --- Create a structure of type DescribeComputeEnvironmentsResponse
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>DescribeComputeEnvironments</code> request. When the results of a <code>DescribeJobDefinitions</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _computeEnvironments [ComputeEnvironmentDetailList] <p>The list of compute environments.</p>
-function M.DescribeComputeEnvironmentsResponse(_nextToken, _computeEnvironments, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComputeEnvironmentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>DescribeComputeEnvironments</code> request. When the results of a <code>DescribeJobDefinitions</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * computeEnvironments [ComputeEnvironmentDetailList] <p>The list of compute environments.</p>
+-- @return DescribeComputeEnvironmentsResponse structure as a key-value pair table
+function M.DescribeComputeEnvironmentsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeComputeEnvironmentsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["computeEnvironments"] = _computeEnvironments,
+		["nextToken"] = args["nextToken"],
+		["computeEnvironments"] = args["computeEnvironments"],
 	}
 	asserts.AssertDescribeComputeEnvironmentsResponse(t)
 	return t
@@ -1069,15 +1159,18 @@ end
 
 --- Create a structure of type DescribeComputeEnvironmentsRequest
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeComputeEnvironments</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _maxResults [Integer] <p>The maximum number of cluster results returned by <code>DescribeComputeEnvironments</code> in paginated output. When this parameter is used, <code>DescribeComputeEnvironments</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeComputeEnvironments</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeComputeEnvironments</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
--- @param _computeEnvironments [StringList] <p>A list of up to 100 compute environment names or full Amazon Resource Name (ARN) entries. </p>
-function M.DescribeComputeEnvironmentsRequest(_nextToken, _maxResults, _computeEnvironments, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComputeEnvironmentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeComputeEnvironments</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * maxResults [Integer] <p>The maximum number of cluster results returned by <code>DescribeComputeEnvironments</code> in paginated output. When this parameter is used, <code>DescribeComputeEnvironments</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeComputeEnvironments</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeComputeEnvironments</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- * computeEnvironments [StringList] <p>A list of up to 100 compute environment names or full Amazon Resource Name (ARN) entries. </p>
+-- @return DescribeComputeEnvironmentsRequest structure as a key-value pair table
+function M.DescribeComputeEnvironmentsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeComputeEnvironmentsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
-		["computeEnvironments"] = _computeEnvironments,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+		["computeEnvironments"] = args["computeEnvironments"],
 	}
 	asserts.AssertDescribeComputeEnvironmentsRequest(t)
 	return t
@@ -1096,11 +1189,14 @@ end
 
 --- Create a structure of type ServerException
 -- <p>These errors are usually caused by a server issue.</p>
--- @param _message [String] 
-function M.ServerException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServerException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return ServerException structure as a key-value pair table
+function M.ServerException(args)
+	assert(args, "You must provdide an argument table when creating ServerException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServerException(t)
 	return t
@@ -1120,13 +1216,16 @@ end
 
 --- Create a structure of type CreateComputeEnvironmentResponse
 --  
--- @param _computeEnvironmentName [String] <p>The name of the compute environment.</p>
--- @param _computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
-function M.CreateComputeEnvironmentResponse(_computeEnvironmentName, _computeEnvironmentArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateComputeEnvironmentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * computeEnvironmentName [String] <p>The name of the compute environment.</p>
+-- * computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
+-- @return CreateComputeEnvironmentResponse structure as a key-value pair table
+function M.CreateComputeEnvironmentResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateComputeEnvironmentResponse")
 	local t = { 
-		["computeEnvironmentName"] = _computeEnvironmentName,
-		["computeEnvironmentArn"] = _computeEnvironmentArn,
+		["computeEnvironmentName"] = args["computeEnvironmentName"],
+		["computeEnvironmentArn"] = args["computeEnvironmentArn"],
 	}
 	asserts.AssertCreateComputeEnvironmentResponse(t)
 	return t
@@ -1149,18 +1248,21 @@ end
 
 --- Create a structure of type UpdateJobQueueRequest
 --  
--- @param _priority [Integer] <p>The priority of the job queue. Job queues with a higher priority (or a lower integer value for the <code>priority</code> parameter) are evaluated first when associated with same compute environment. Priority is determined in ascending order, for example, a job queue with a priority value of <code>1</code> is given scheduling preference over a job queue with a priority value of <code>10</code>.</p>
--- @param _state [JQState] <p>Describes the queue's ability to accept new jobs.</p>
--- @param _computeEnvironmentOrder [ComputeEnvironmentOrders] <p>Details the set of compute environments mapped to a job queue and their order relative to each other. This is one of the parameters used by the job scheduler to determine which compute environment should execute a given job. </p>
--- @param _jobQueue [String] <p>The name or the Amazon Resource Name (ARN) of the job queue.</p>
--- Required parameter: jobQueue
-function M.UpdateJobQueueRequest(_priority, _state, _computeEnvironmentOrder, _jobQueue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobQueueRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * priority [Integer] <p>The priority of the job queue. Job queues with a higher priority (or a lower integer value for the <code>priority</code> parameter) are evaluated first when associated with same compute environment. Priority is determined in ascending order, for example, a job queue with a priority value of <code>1</code> is given scheduling preference over a job queue with a priority value of <code>10</code>.</p>
+-- * state [JQState] <p>Describes the queue's ability to accept new jobs.</p>
+-- * computeEnvironmentOrder [ComputeEnvironmentOrders] <p>Details the set of compute environments mapped to a job queue and their order relative to each other. This is one of the parameters used by the job scheduler to determine which compute environment should execute a given job. </p>
+-- * jobQueue [String] <p>The name or the Amazon Resource Name (ARN) of the job queue.</p>
+-- Required key: jobQueue
+-- @return UpdateJobQueueRequest structure as a key-value pair table
+function M.UpdateJobQueueRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateJobQueueRequest")
 	local t = { 
-		["priority"] = _priority,
-		["state"] = _state,
-		["computeEnvironmentOrder"] = _computeEnvironmentOrder,
-		["jobQueue"] = _jobQueue,
+		["priority"] = args["priority"],
+		["state"] = args["state"],
+		["computeEnvironmentOrder"] = args["computeEnvironmentOrder"],
+		["jobQueue"] = args["jobQueue"],
 	}
 	asserts.AssertUpdateJobQueueRequest(t)
 	return t
@@ -1178,8 +1280,11 @@ end
 
 --- Create a structure of type TerminateJobResponse
 --  
-function M.TerminateJobResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminateJobResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TerminateJobResponse structure as a key-value pair table
+function M.TerminateJobResponse(args)
+	assert(args, "You must provdide an argument table when creating TerminateJobResponse")
 	local t = { 
 	}
 	asserts.AssertTerminateJobResponse(t)
@@ -1202,15 +1307,18 @@ end
 
 --- Create a structure of type CreateJobQueueResponse
 --  
--- @param _jobQueueArn [String] <p>The Amazon Resource Name (ARN) of the job queue.</p>
--- @param _jobQueueName [String] <p>The name of the job queue.</p>
--- Required parameter: jobQueueName
--- Required parameter: jobQueueArn
-function M.CreateJobQueueResponse(_jobQueueArn, _jobQueueName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobQueueResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobQueueArn [String] <p>The Amazon Resource Name (ARN) of the job queue.</p>
+-- * jobQueueName [String] <p>The name of the job queue.</p>
+-- Required key: jobQueueName
+-- Required key: jobQueueArn
+-- @return CreateJobQueueResponse structure as a key-value pair table
+function M.CreateJobQueueResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateJobQueueResponse")
 	local t = { 
-		["jobQueueArn"] = _jobQueueArn,
-		["jobQueueName"] = _jobQueueName,
+		["jobQueueArn"] = args["jobQueueArn"],
+		["jobQueueName"] = args["jobQueueName"],
 	}
 	asserts.AssertCreateJobQueueResponse(t)
 	return t
@@ -1228,8 +1336,11 @@ end
 
 --- Create a structure of type DeregisterJobDefinitionResponse
 --  
-function M.DeregisterJobDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterJobDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeregisterJobDefinitionResponse structure as a key-value pair table
+function M.DeregisterJobDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeregisterJobDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertDeregisterJobDefinitionResponse(t)
@@ -1251,14 +1362,17 @@ end
 
 --- Create a structure of type ListJobsResponse
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListJobs</code> request. When the results of a <code>ListJobs</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _jobSummaryList [JobSummaryList] <p>A list of job summaries that match the request.</p>
--- Required parameter: jobSummaryList
-function M.ListJobsResponse(_nextToken, _jobSummaryList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListJobs</code> request. When the results of a <code>ListJobs</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * jobSummaryList [JobSummaryList] <p>A list of job summaries that match the request.</p>
+-- Required key: jobSummaryList
+-- @return ListJobsResponse structure as a key-value pair table
+function M.ListJobsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListJobsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["jobSummaryList"] = _jobSummaryList,
+		["nextToken"] = args["nextToken"],
+		["jobSummaryList"] = args["jobSummaryList"],
 	}
 	asserts.AssertListJobsResponse(t)
 	return t
@@ -1277,11 +1391,14 @@ end
 
 --- Create a structure of type DescribeJobsResponse
 --  
--- @param _jobs [JobDetailList] <p>The list of jobs. </p>
-function M.DescribeJobsResponse(_jobs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobs [JobDetailList] <p>The list of jobs. </p>
+-- @return DescribeJobsResponse structure as a key-value pair table
+function M.DescribeJobsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobsResponse")
 	local t = { 
-		["jobs"] = _jobs,
+		["jobs"] = args["jobs"],
 	}
 	asserts.AssertDescribeJobsResponse(t)
 	return t
@@ -1305,18 +1422,21 @@ end
 
 --- Create a structure of type RegisterJobDefinitionResponse
 --  
--- @param _jobDefinitionArn [String] <p>The Amazon Resource Name (ARN) of the job definition. </p>
--- @param _jobDefinitionName [String] <p>The name of the job definition. </p>
--- @param _revision [Integer] <p>The revision of the job definition.</p>
--- Required parameter: jobDefinitionName
--- Required parameter: jobDefinitionArn
--- Required parameter: revision
-function M.RegisterJobDefinitionResponse(_jobDefinitionArn, _jobDefinitionName, _revision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterJobDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobDefinitionArn [String] <p>The Amazon Resource Name (ARN) of the job definition. </p>
+-- * jobDefinitionName [String] <p>The name of the job definition. </p>
+-- * revision [Integer] <p>The revision of the job definition.</p>
+-- Required key: jobDefinitionName
+-- Required key: jobDefinitionArn
+-- Required key: revision
+-- @return RegisterJobDefinitionResponse structure as a key-value pair table
+function M.RegisterJobDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating RegisterJobDefinitionResponse")
 	local t = { 
-		["jobDefinitionArn"] = _jobDefinitionArn,
-		["jobDefinitionName"] = _jobDefinitionName,
-		["revision"] = _revision,
+		["jobDefinitionArn"] = args["jobDefinitionArn"],
+		["jobDefinitionName"] = args["jobDefinitionName"],
+		["revision"] = args["revision"],
 	}
 	asserts.AssertRegisterJobDefinitionResponse(t)
 	return t
@@ -1338,17 +1458,20 @@ end
 
 --- Create a structure of type ContainerOverrides
 -- <p>The overrides that should be sent to a container.</p>
--- @param _environment [EnvironmentVariables] <p>The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the job definition.</p>
--- @param _vcpus [Integer] <p>The number of vCPUs to reserve for the container. This value overrides the value set in the job definition.</p>
--- @param _command [StringList] <p>The command to send to the container that overrides the default command from the Docker image or the job definition.</p>
--- @param _memory [Integer] <p>The number of MiB of memory reserved for the job. This value overrides the value set in the job definition.</p>
-function M.ContainerOverrides(_environment, _vcpus, _command, _memory, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContainerOverrides")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * environment [EnvironmentVariables] <p>The environment variables to send to the container. You can add new environment variables, which are added to the container at launch, or you can override the existing environment variables from the Docker image or the job definition.</p>
+-- * vcpus [Integer] <p>The number of vCPUs to reserve for the container. This value overrides the value set in the job definition.</p>
+-- * command [StringList] <p>The command to send to the container that overrides the default command from the Docker image or the job definition.</p>
+-- * memory [Integer] <p>The number of MiB of memory reserved for the job. This value overrides the value set in the job definition.</p>
+-- @return ContainerOverrides structure as a key-value pair table
+function M.ContainerOverrides(args)
+	assert(args, "You must provdide an argument table when creating ContainerOverrides")
 	local t = { 
-		["environment"] = _environment,
-		["vcpus"] = _vcpus,
-		["command"] = _command,
-		["memory"] = _memory,
+		["environment"] = args["environment"],
+		["vcpus"] = args["vcpus"],
+		["command"] = args["command"],
+		["memory"] = args["memory"],
 	}
 	asserts.AssertContainerOverrides(t)
 	return t
@@ -1369,15 +1492,18 @@ end
 
 --- Create a structure of type DescribeJobQueuesRequest
 --  
--- @param _jobQueues [StringList] <p>A list of up to 100 queue names or full queue Amazon Resource Name (ARN) entries.</p>
--- @param _nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeJobQueues</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _maxResults [Integer] <p>The maximum number of results returned by <code>DescribeJobQueues</code> in paginated output. When this parameter is used, <code>DescribeJobQueues</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeJobQueues</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeJobQueues</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
-function M.DescribeJobQueuesRequest(_jobQueues, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobQueuesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobQueues [StringList] <p>A list of up to 100 queue names or full queue Amazon Resource Name (ARN) entries.</p>
+-- * nextToken [String] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeJobQueues</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * maxResults [Integer] <p>The maximum number of results returned by <code>DescribeJobQueues</code> in paginated output. When this parameter is used, <code>DescribeJobQueues</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeJobQueues</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeJobQueues</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
+-- @return DescribeJobQueuesRequest structure as a key-value pair table
+function M.DescribeJobQueuesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobQueuesRequest")
 	local t = { 
-		["jobQueues"] = _jobQueues,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["jobQueues"] = args["jobQueues"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertDescribeJobQueuesRequest(t)
 	return t
@@ -1410,36 +1536,39 @@ end
 
 --- Create a structure of type ContainerProperties
 -- <p>Container properties are used in job definitions to describe the container that is launched as part of a job.</p>
--- @param _mountPoints [MountPoints] <p>The mount points for data volumes in your container. This parameter maps to <code>Volumes</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--volume</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _readonlyRootFilesystem [Boolean] <p>When this parameter is true, the container is given read-only access to its root file system. This parameter maps to <code>ReadonlyRootfs</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--read-only</code> option to <code>docker run</code>.</p>
--- @param _image [String] <p>The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with <code> <i>repository-url</i>/<i>image</i>:<i>tag</i> </code>. Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to <code>Image</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <ul> <li> <p>Images in Amazon ECR repositories use the full registry and repository URI (for example, <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>). </p> </li> <li> <p>Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or <code>mongo</code>).</p> </li> <li> <p>Images in other repositories on Docker Hub are qualified with an organization name (for example, <code>amazon/amazon-ecs-agent</code>).</p> </li> <li> <p>Images in other online repositories are qualified further by a domain name (for example, <code>quay.io/assemblyline/ubuntu</code>).</p> </li> </ul>
--- @param _environment [EnvironmentVariables] <p>The environment variables to pass to a container. This parameter maps to <code>Env</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--env</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <important> <p>We do not recommend using plain text environment variables for sensitive information, such as credential data.</p> </important>
--- @param _vcpus [Integer] <p>The number of vCPUs reserved for the container. This parameter maps to <code>CpuShares</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--cpu-shares</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. Each vCPU is equivalent to 1,024 CPU shares.</p>
--- @param _jobRoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role that the container can assume for AWS permissions.</p>
--- @param _user [String] <p>The user name to use inside the container. This parameter maps to <code>User</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--user</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _volumes [Volumes] <p>A list of data volumes used in a job.</p>
--- @param _memory [Integer] <p>The hard limit (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. This parameter maps to <code>Memory</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _command [StringList] <p>The command that is passed to the container. This parameter maps to <code>Cmd</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>COMMAND</code> parameter to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a href="https://docs.docker.com/engine/reference/builder/#cmd">https://docs.docker.com/engine/reference/builder/#cmd</a>.</p>
--- @param _privileged [Boolean] <p>When this parameter is true, the container is given elevated privileges on the host container instance (similar to the <code>root</code> user). This parameter maps to <code>Privileged</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--privileged</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- @param _ulimits [Ulimits] <p>A list of <code>ulimits</code> to set in the container. This parameter maps to <code>Ulimits</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--ulimit</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
--- Required parameter: image
--- Required parameter: vcpus
--- Required parameter: memory
-function M.ContainerProperties(_mountPoints, _readonlyRootFilesystem, _image, _environment, _vcpus, _jobRoleArn, _user, _volumes, _memory, _command, _privileged, _ulimits, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContainerProperties")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * mountPoints [MountPoints] <p>The mount points for data volumes in your container. This parameter maps to <code>Volumes</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--volume</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * readonlyRootFilesystem [Boolean] <p>When this parameter is true, the container is given read-only access to its root file system. This parameter maps to <code>ReadonlyRootfs</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--read-only</code> option to <code>docker run</code>.</p>
+-- * image [String] <p>The image used to start a container. This string is passed directly to the Docker daemon. Images in the Docker Hub registry are available by default. Other repositories are specified with <code> <i>repository-url</i>/<i>image</i>:<i>tag</i> </code>. Up to 255 letters (uppercase and lowercase), numbers, hyphens, underscores, colons, periods, forward slashes, and number signs are allowed. This parameter maps to <code>Image</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>IMAGE</code> parameter of <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <ul> <li> <p>Images in Amazon ECR repositories use the full registry and repository URI (for example, <code>012345678910.dkr.ecr.&lt;region-name&gt;.amazonaws.com/&lt;repository-name&gt;</code>). </p> </li> <li> <p>Images in official repositories on Docker Hub use a single name (for example, <code>ubuntu</code> or <code>mongo</code>).</p> </li> <li> <p>Images in other repositories on Docker Hub are qualified with an organization name (for example, <code>amazon/amazon-ecs-agent</code>).</p> </li> <li> <p>Images in other online repositories are qualified further by a domain name (for example, <code>quay.io/assemblyline/ubuntu</code>).</p> </li> </ul>
+-- * environment [EnvironmentVariables] <p>The environment variables to pass to a container. This parameter maps to <code>Env</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--env</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p> <important> <p>We do not recommend using plain text environment variables for sensitive information, such as credential data.</p> </important>
+-- * vcpus [Integer] <p>The number of vCPUs reserved for the container. This parameter maps to <code>CpuShares</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--cpu-shares</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. Each vCPU is equivalent to 1,024 CPU shares.</p>
+-- * jobRoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role that the container can assume for AWS permissions.</p>
+-- * user [String] <p>The user name to use inside the container. This parameter maps to <code>User</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--user</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * volumes [Volumes] <p>A list of data volumes used in a job.</p>
+-- * memory [Integer] <p>The hard limit (in MiB) of memory to present to the container. If your container attempts to exceed the memory specified here, the container is killed. This parameter maps to <code>Memory</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--memory</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * command [StringList] <p>The command that is passed to the container. This parameter maps to <code>Cmd</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>COMMAND</code> parameter to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. For more information, see <a href="https://docs.docker.com/engine/reference/builder/#cmd">https://docs.docker.com/engine/reference/builder/#cmd</a>.</p>
+-- * privileged [Boolean] <p>When this parameter is true, the container is given elevated privileges on the host container instance (similar to the <code>root</code> user). This parameter maps to <code>Privileged</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--privileged</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- * ulimits [Ulimits] <p>A list of <code>ulimits</code> to set in the container. This parameter maps to <code>Ulimits</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--ulimit</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>.</p>
+-- Required key: image
+-- Required key: vcpus
+-- Required key: memory
+-- @return ContainerProperties structure as a key-value pair table
+function M.ContainerProperties(args)
+	assert(args, "You must provdide an argument table when creating ContainerProperties")
 	local t = { 
-		["mountPoints"] = _mountPoints,
-		["readonlyRootFilesystem"] = _readonlyRootFilesystem,
-		["image"] = _image,
-		["environment"] = _environment,
-		["vcpus"] = _vcpus,
-		["jobRoleArn"] = _jobRoleArn,
-		["user"] = _user,
-		["volumes"] = _volumes,
-		["memory"] = _memory,
-		["command"] = _command,
-		["privileged"] = _privileged,
-		["ulimits"] = _ulimits,
+		["mountPoints"] = args["mountPoints"],
+		["readonlyRootFilesystem"] = args["readonlyRootFilesystem"],
+		["image"] = args["image"],
+		["environment"] = args["environment"],
+		["vcpus"] = args["vcpus"],
+		["jobRoleArn"] = args["jobRoleArn"],
+		["user"] = args["user"],
+		["volumes"] = args["volumes"],
+		["memory"] = args["memory"],
+		["command"] = args["command"],
+		["privileged"] = args["privileged"],
+		["ulimits"] = args["ulimits"],
 	}
 	asserts.AssertContainerProperties(t)
 	return t
@@ -1457,8 +1586,11 @@ end
 
 --- Create a structure of type DeleteJobQueueResponse
 --  
-function M.DeleteJobQueueResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteJobQueueResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteJobQueueResponse structure as a key-value pair table
+function M.DeleteJobQueueResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteJobQueueResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteJobQueueResponse(t)
@@ -1479,13 +1611,16 @@ end
 
 --- Create a structure of type UpdateComputeEnvironmentResponse
 --  
--- @param _computeEnvironmentName [String] <p>The name of compute environment.</p>
--- @param _computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
-function M.UpdateComputeEnvironmentResponse(_computeEnvironmentName, _computeEnvironmentArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateComputeEnvironmentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * computeEnvironmentName [String] <p>The name of compute environment.</p>
+-- * computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
+-- @return UpdateComputeEnvironmentResponse structure as a key-value pair table
+function M.UpdateComputeEnvironmentResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateComputeEnvironmentResponse")
 	local t = { 
-		["computeEnvironmentName"] = _computeEnvironmentName,
-		["computeEnvironmentArn"] = _computeEnvironmentArn,
+		["computeEnvironmentName"] = args["computeEnvironmentName"],
+		["computeEnvironmentArn"] = args["computeEnvironmentArn"],
 	}
 	asserts.AssertUpdateComputeEnvironmentResponse(t)
 	return t
@@ -1505,12 +1640,15 @@ end
 
 --- Create a structure of type DeleteJobQueueRequest
 --  
--- @param _jobQueue [String] <p>The short name or full Amazon Resource Name (ARN) of the queue to delete. </p>
--- Required parameter: jobQueue
-function M.DeleteJobQueueRequest(_jobQueue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteJobQueueRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobQueue [String] <p>The short name or full Amazon Resource Name (ARN) of the queue to delete. </p>
+-- Required key: jobQueue
+-- @return DeleteJobQueueRequest structure as a key-value pair table
+function M.DeleteJobQueueRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteJobQueueRequest")
 	local t = { 
-		["jobQueue"] = _jobQueue,
+		["jobQueue"] = args["jobQueue"],
 	}
 	asserts.AssertDeleteJobQueueRequest(t)
 	return t
@@ -1532,17 +1670,20 @@ end
 
 --- Create a structure of type AttemptContainerDetail
 -- <p>An object representing the details of a container that is part of a job attempt.</p>
--- @param _reason [String] <p>A short (255 max characters) human-readable string to provide additional details about a running or stopped container.</p>
--- @param _taskArn [String] <p>The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.</p>
--- @param _containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that hosts the job attempt.</p>
--- @param _exitCode [Integer] <p>The exit code for the job attempt. A non-zero exit code is considered a failure.</p>
-function M.AttemptContainerDetail(_reason, _taskArn, _containerInstanceArn, _exitCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttemptContainerDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * reason [String] <p>A short (255 max characters) human-readable string to provide additional details about a running or stopped container.</p>
+-- * taskArn [String] <p>The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the job attempt.</p>
+-- * containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the Amazon ECS container instance that hosts the job attempt.</p>
+-- * exitCode [Integer] <p>The exit code for the job attempt. A non-zero exit code is considered a failure.</p>
+-- @return AttemptContainerDetail structure as a key-value pair table
+function M.AttemptContainerDetail(args)
+	assert(args, "You must provdide an argument table when creating AttemptContainerDetail")
 	local t = { 
-		["reason"] = _reason,
-		["taskArn"] = _taskArn,
-		["containerInstanceArn"] = _containerInstanceArn,
-		["exitCode"] = _exitCode,
+		["reason"] = args["reason"],
+		["taskArn"] = args["taskArn"],
+		["containerInstanceArn"] = args["containerInstanceArn"],
+		["exitCode"] = args["exitCode"],
 	}
 	asserts.AssertAttemptContainerDetail(t)
 	return t
@@ -1570,26 +1711,29 @@ end
 
 --- Create a structure of type SubmitJobRequest
 --  
--- @param _parameters [ParametersMap] <p>Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and value pair mapping. Parameters in a <code>SubmitJob</code> request override any corresponding parameter defaults from the job definition.</p>
--- @param _jobDefinition [String] <p>The job definition used by this job. This value can be either a <code>name:revision</code> or the Amazon Resource Name (ARN) for the job definition.</p>
--- @param _jobQueue [String] <p>The job queue into which the job will be submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue. </p>
--- @param _jobName [String] <p>The name of the job. A name must be 1 to 128 characters in length.</p> <p>Pattern: ^[a-zA-Z0-9_]+$</p>
--- @param _retryStrategy [RetryStrategy] <p>The retry strategy to use for failed jobs from this <a>SubmitJob</a> operation. When a retry strategy is specified here, it overrides the retry strategy defined in the job definition.</p>
--- @param _containerOverrides [ContainerOverrides] <p>A list of container overrides in JSON format that specify the name of a container in the specified job definition and the overrides it should receive. You can override the default command for a container (that is specified in the job definition or the Docker image) with a <code>command</code> override. You can also override existing environment variables (that are specified in the job definition or Docker image) on a container or add new environment variables to it with an <code>environment</code> override.</p>
--- @param _dependsOn [JobDependencyList] <p>A list of job IDs on which this job depends. A job can depend upon a maximum of 100 jobs. </p>
--- Required parameter: jobName
--- Required parameter: jobQueue
--- Required parameter: jobDefinition
-function M.SubmitJobRequest(_parameters, _jobDefinition, _jobQueue, _jobName, _retryStrategy, _containerOverrides, _dependsOn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubmitJobRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * parameters [ParametersMap] <p>Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and value pair mapping. Parameters in a <code>SubmitJob</code> request override any corresponding parameter defaults from the job definition.</p>
+-- * jobDefinition [String] <p>The job definition used by this job. This value can be either a <code>name:revision</code> or the Amazon Resource Name (ARN) for the job definition.</p>
+-- * jobQueue [String] <p>The job queue into which the job will be submitted. You can specify either the name or the Amazon Resource Name (ARN) of the queue. </p>
+-- * jobName [String] <p>The name of the job. A name must be 1 to 128 characters in length.</p> <p>Pattern: ^[a-zA-Z0-9_]+$</p>
+-- * retryStrategy [RetryStrategy] <p>The retry strategy to use for failed jobs from this <a>SubmitJob</a> operation. When a retry strategy is specified here, it overrides the retry strategy defined in the job definition.</p>
+-- * containerOverrides [ContainerOverrides] <p>A list of container overrides in JSON format that specify the name of a container in the specified job definition and the overrides it should receive. You can override the default command for a container (that is specified in the job definition or the Docker image) with a <code>command</code> override. You can also override existing environment variables (that are specified in the job definition or Docker image) on a container or add new environment variables to it with an <code>environment</code> override.</p>
+-- * dependsOn [JobDependencyList] <p>A list of job IDs on which this job depends. A job can depend upon a maximum of 100 jobs. </p>
+-- Required key: jobName
+-- Required key: jobQueue
+-- Required key: jobDefinition
+-- @return SubmitJobRequest structure as a key-value pair table
+function M.SubmitJobRequest(args)
+	assert(args, "You must provdide an argument table when creating SubmitJobRequest")
 	local t = { 
-		["parameters"] = _parameters,
-		["jobDefinition"] = _jobDefinition,
-		["jobQueue"] = _jobQueue,
-		["jobName"] = _jobName,
-		["retryStrategy"] = _retryStrategy,
-		["containerOverrides"] = _containerOverrides,
-		["dependsOn"] = _dependsOn,
+		["parameters"] = args["parameters"],
+		["jobDefinition"] = args["jobDefinition"],
+		["jobQueue"] = args["jobQueue"],
+		["jobName"] = args["jobName"],
+		["retryStrategy"] = args["retryStrategy"],
+		["containerOverrides"] = args["containerOverrides"],
+		["dependsOn"] = args["dependsOn"],
 	}
 	asserts.AssertSubmitJobRequest(t)
 	return t
@@ -1623,41 +1767,44 @@ end
 
 --- Create a structure of type ContainerDetail
 -- <p>An object representing the details of a container that is part of a job.</p>
--- @param _mountPoints [MountPoints] <p>The mount points for data volumes in your container.</p>
--- @param _taskArn [String] <p>The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the container job.</p>
--- @param _readonlyRootFilesystem [Boolean] <p>When this parameter is true, the container is given read-only access to its root file system.</p>
--- @param _image [String] <p>The image used to start the container.</p>
--- @param _reason [String] <p>A short (255 max characters) human-readable string to provide additional details about a running or stopped container.</p>
--- @param _containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the container instance on which the container is running.</p>
--- @param _environment [EnvironmentVariables] <p>The environment variables to pass to a container.</p>
--- @param _vcpus [Integer] <p>The number of VCPUs allocated for the job. </p>
--- @param _jobRoleArn [String] <p>The Amazon Resource Name (ARN) associated with the job upon execution. </p>
--- @param _user [String] <p>The user name to use inside the container.</p>
--- @param _volumes [Volumes] <p>A list of volumes associated with the job.</p>
--- @param _memory [Integer] <p>The number of MiB of memory reserved for the job.</p>
--- @param _command [StringList] <p>The command that is passed to the container. </p>
--- @param _privileged [Boolean] <p>When this parameter is true, the container is given elevated privileges on the host container instance (similar to the <code>root</code> user).</p>
--- @param _ulimits [Ulimits] <p>A list of <code>ulimit</code> values to set in the container.</p>
--- @param _exitCode [Integer] <p>The exit code to return upon completion.</p>
-function M.ContainerDetail(_mountPoints, _taskArn, _readonlyRootFilesystem, _image, _reason, _containerInstanceArn, _environment, _vcpus, _jobRoleArn, _user, _volumes, _memory, _command, _privileged, _ulimits, _exitCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContainerDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * mountPoints [MountPoints] <p>The mount points for data volumes in your container.</p>
+-- * taskArn [String] <p>The Amazon Resource Name (ARN) of the Amazon ECS task that is associated with the container job.</p>
+-- * readonlyRootFilesystem [Boolean] <p>When this parameter is true, the container is given read-only access to its root file system.</p>
+-- * image [String] <p>The image used to start the container.</p>
+-- * reason [String] <p>A short (255 max characters) human-readable string to provide additional details about a running or stopped container.</p>
+-- * containerInstanceArn [String] <p>The Amazon Resource Name (ARN) of the container instance on which the container is running.</p>
+-- * environment [EnvironmentVariables] <p>The environment variables to pass to a container.</p>
+-- * vcpus [Integer] <p>The number of VCPUs allocated for the job. </p>
+-- * jobRoleArn [String] <p>The Amazon Resource Name (ARN) associated with the job upon execution. </p>
+-- * user [String] <p>The user name to use inside the container.</p>
+-- * volumes [Volumes] <p>A list of volumes associated with the job.</p>
+-- * memory [Integer] <p>The number of MiB of memory reserved for the job.</p>
+-- * command [StringList] <p>The command that is passed to the container. </p>
+-- * privileged [Boolean] <p>When this parameter is true, the container is given elevated privileges on the host container instance (similar to the <code>root</code> user).</p>
+-- * ulimits [Ulimits] <p>A list of <code>ulimit</code> values to set in the container.</p>
+-- * exitCode [Integer] <p>The exit code to return upon completion.</p>
+-- @return ContainerDetail structure as a key-value pair table
+function M.ContainerDetail(args)
+	assert(args, "You must provdide an argument table when creating ContainerDetail")
 	local t = { 
-		["mountPoints"] = _mountPoints,
-		["taskArn"] = _taskArn,
-		["readonlyRootFilesystem"] = _readonlyRootFilesystem,
-		["image"] = _image,
-		["reason"] = _reason,
-		["containerInstanceArn"] = _containerInstanceArn,
-		["environment"] = _environment,
-		["vcpus"] = _vcpus,
-		["jobRoleArn"] = _jobRoleArn,
-		["user"] = _user,
-		["volumes"] = _volumes,
-		["memory"] = _memory,
-		["command"] = _command,
-		["privileged"] = _privileged,
-		["ulimits"] = _ulimits,
-		["exitCode"] = _exitCode,
+		["mountPoints"] = args["mountPoints"],
+		["taskArn"] = args["taskArn"],
+		["readonlyRootFilesystem"] = args["readonlyRootFilesystem"],
+		["image"] = args["image"],
+		["reason"] = args["reason"],
+		["containerInstanceArn"] = args["containerInstanceArn"],
+		["environment"] = args["environment"],
+		["vcpus"] = args["vcpus"],
+		["jobRoleArn"] = args["jobRoleArn"],
+		["user"] = args["user"],
+		["volumes"] = args["volumes"],
+		["memory"] = args["memory"],
+		["command"] = args["command"],
+		["privileged"] = args["privileged"],
+		["ulimits"] = args["ulimits"],
+		["exitCode"] = args["exitCode"],
 	}
 	asserts.AssertContainerDetail(t)
 	return t
@@ -1677,13 +1824,16 @@ end
 
 --- Create a structure of type DescribeJobDefinitionsResponse
 --  
--- @param _nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>DescribeJobDefinitions</code> request. When the results of a <code>DescribeJobDefinitions</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _jobDefinitions [JobDefinitionList] <p>The list of job definitions. </p>
-function M.DescribeJobDefinitionsResponse(_nextToken, _jobDefinitions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobDefinitionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>DescribeJobDefinitions</code> request. When the results of a <code>DescribeJobDefinitions</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * jobDefinitions [JobDefinitionList] <p>The list of job definitions. </p>
+-- @return DescribeJobDefinitionsResponse structure as a key-value pair table
+function M.DescribeJobDefinitionsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobDefinitionsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["jobDefinitions"] = _jobDefinitions,
+		["nextToken"] = args["nextToken"],
+		["jobDefinitions"] = args["jobDefinitions"],
 	}
 	asserts.AssertDescribeJobDefinitionsResponse(t)
 	return t
@@ -1703,12 +1853,15 @@ end
 
 --- Create a structure of type DeregisterJobDefinitionRequest
 --  
--- @param _jobDefinition [String] <p>The name and revision (<code>name:revision</code>) or full Amazon Resource Name (ARN) of the job definition to deregister. </p>
--- Required parameter: jobDefinition
-function M.DeregisterJobDefinitionRequest(_jobDefinition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterJobDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobDefinition [String] <p>The name and revision (<code>name:revision</code>) or full Amazon Resource Name (ARN) of the job definition to deregister. </p>
+-- Required key: jobDefinition
+-- @return DeregisterJobDefinitionRequest structure as a key-value pair table
+function M.DeregisterJobDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterJobDefinitionRequest")
 	local t = { 
-		["jobDefinition"] = _jobDefinition,
+		["jobDefinition"] = args["jobDefinition"],
 	}
 	asserts.AssertDeregisterJobDefinitionRequest(t)
 	return t
@@ -1727,11 +1880,14 @@ end
 
 --- Create a structure of type ClientException
 -- <p>These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permission to use the action or resource, or specifying an identifier that is not valid. </p>
--- @param _message [String] 
-function M.ClientException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClientException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return ClientException structure as a key-value pair table
+function M.ClientException(args)
+	assert(args, "You must provdide an argument table when creating ClientException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertClientException(t)
 	return t
@@ -1751,12 +1907,15 @@ end
 
 --- Create a structure of type DescribeJobsRequest
 --  
--- @param _jobs [StringList] <p>A space-separated list of up to 100 job IDs.</p>
--- Required parameter: jobs
-function M.DescribeJobsRequest(_jobs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobs [StringList] <p>A space-separated list of up to 100 job IDs.</p>
+-- Required key: jobs
+-- @return DescribeJobsRequest structure as a key-value pair table
+function M.DescribeJobsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobsRequest")
 	local t = { 
-		["jobs"] = _jobs,
+		["jobs"] = args["jobs"],
 	}
 	asserts.AssertDescribeJobsRequest(t)
 	return t
@@ -1778,15 +1937,18 @@ end
 
 --- Create a structure of type CancelJobRequest
 --  
--- @param _reason [String] <p>A message to attach to the job that explains the reason for cancelling it. This message is returned by future <a>DescribeJobs</a> operations on the job. This message is also recorded in the AWS Batch activity logs. </p>
--- @param _jobId [String] <p>A list of up to 100 job IDs to cancel.</p>
--- Required parameter: jobId
--- Required parameter: reason
-function M.CancelJobRequest(_reason, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelJobRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * reason [String] <p>A message to attach to the job that explains the reason for cancelling it. This message is returned by future <a>DescribeJobs</a> operations on the job. This message is also recorded in the AWS Batch activity logs. </p>
+-- * jobId [String] <p>A list of up to 100 job IDs to cancel.</p>
+-- Required key: jobId
+-- Required key: reason
+-- @return CancelJobRequest structure as a key-value pair table
+function M.CancelJobRequest(args)
+	assert(args, "You must provdide an argument table when creating CancelJobRequest")
 	local t = { 
-		["reason"] = _reason,
-		["jobId"] = _jobId,
+		["reason"] = args["reason"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertCancelJobRequest(t)
 	return t

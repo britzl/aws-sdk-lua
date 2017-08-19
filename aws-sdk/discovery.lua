@@ -33,8 +33,11 @@ end
 
 --- Create a structure of type DisassociateConfigurationItemsFromApplicationResponse
 --  
-function M.DisassociateConfigurationItemsFromApplicationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateConfigurationItemsFromApplicationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisassociateConfigurationItemsFromApplicationResponse structure as a key-value pair table
+function M.DisassociateConfigurationItemsFromApplicationResponse(args)
+	assert(args, "You must provdide an argument table when creating DisassociateConfigurationItemsFromApplicationResponse")
 	local t = { 
 	}
 	asserts.AssertDisassociateConfigurationItemsFromApplicationResponse(t)
@@ -54,11 +57,14 @@ end
 
 --- Create a structure of type DescribeConfigurationsResponse
 --  
--- @param _configurations [DescribeConfigurationsAttributes] <p>A key in the response map. The value is an array of data.</p>
-function M.DescribeConfigurationsResponse(_configurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurations [DescribeConfigurationsAttributes] <p>A key in the response map. The value is an array of data.</p>
+-- @return DescribeConfigurationsResponse structure as a key-value pair table
+function M.DescribeConfigurationsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigurationsResponse")
 	local t = { 
-		["configurations"] = _configurations,
+		["configurations"] = args["configurations"],
 	}
 	asserts.AssertDescribeConfigurationsResponse(t)
 	return t
@@ -86,29 +92,32 @@ end
 
 --- Create a structure of type AgentInfo
 -- <p>Information about agents or connectors associated with the user’s AWS account. Information includes agent or connector IDs, IP addresses, media access control (MAC) addresses, agent or connector health, hostname where the agent or connector resides, and agent version for each agent.</p>
--- @param _version [String] <p>The agent or connector version.</p>
--- @param _connectorId [String] <p>The ID of the connector.</p>
--- @param _agentType [String] <p>Type of agent.</p>
--- @param _hostName [String] <p>The name of the host where the agent or connector resides. The host can be a server or virtual machine.</p>
--- @param _collectionStatus [String] <p>Status of the collection process for an agent or connector.</p>
--- @param _agentNetworkInfoList [AgentNetworkInfoList] <p>Network details about the host where the agent or connector resides.</p>
--- @param _health [AgentStatus] <p>The health of the agent or connector.</p>
--- @param _agentId [AgentId] <p>The agent or connector ID.</p>
--- @param _registeredTime [String] <p>Agent's first registration timestamp in UTC.</p>
--- @param _lastHealthPingTime [String] <p>Time since agent or connector health was reported.</p>
-function M.AgentInfo(_version, _connectorId, _agentType, _hostName, _collectionStatus, _agentNetworkInfoList, _health, _agentId, _registeredTime, _lastHealthPingTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AgentInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [String] <p>The agent or connector version.</p>
+-- * connectorId [String] <p>The ID of the connector.</p>
+-- * agentType [String] <p>Type of agent.</p>
+-- * hostName [String] <p>The name of the host where the agent or connector resides. The host can be a server or virtual machine.</p>
+-- * collectionStatus [String] <p>Status of the collection process for an agent or connector.</p>
+-- * agentNetworkInfoList [AgentNetworkInfoList] <p>Network details about the host where the agent or connector resides.</p>
+-- * health [AgentStatus] <p>The health of the agent or connector.</p>
+-- * agentId [AgentId] <p>The agent or connector ID.</p>
+-- * registeredTime [String] <p>Agent's first registration timestamp in UTC.</p>
+-- * lastHealthPingTime [String] <p>Time since agent or connector health was reported.</p>
+-- @return AgentInfo structure as a key-value pair table
+function M.AgentInfo(args)
+	assert(args, "You must provdide an argument table when creating AgentInfo")
 	local t = { 
-		["version"] = _version,
-		["connectorId"] = _connectorId,
-		["agentType"] = _agentType,
-		["hostName"] = _hostName,
-		["collectionStatus"] = _collectionStatus,
-		["agentNetworkInfoList"] = _agentNetworkInfoList,
-		["health"] = _health,
-		["agentId"] = _agentId,
-		["registeredTime"] = _registeredTime,
-		["lastHealthPingTime"] = _lastHealthPingTime,
+		["version"] = args["version"],
+		["connectorId"] = args["connectorId"],
+		["agentType"] = args["agentType"],
+		["hostName"] = args["hostName"],
+		["collectionStatus"] = args["collectionStatus"],
+		["agentNetworkInfoList"] = args["agentNetworkInfoList"],
+		["health"] = args["health"],
+		["agentId"] = args["agentId"],
+		["registeredTime"] = args["registeredTime"],
+		["lastHealthPingTime"] = args["lastHealthPingTime"],
 	}
 	asserts.AssertAgentInfo(t)
 	return t
@@ -129,15 +138,18 @@ end
 
 --- Create a structure of type DescribeTagsRequest
 --  
--- @param _nextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results.</p>
--- @param _maxResults [Integer] <p>The total number of items to return in a single page of output. The maximum value is 100.</p>
--- @param _filters [TagFilters] <p>You can filter the list using a <i>key</i>-<i>value</i> format. You can separate these items by using logical operators. Allowed filters include <code>tagKey</code>, <code>tagValue</code>, and <code>configurationId</code>. </p>
-function M.DescribeTagsRequest(_nextToken, _maxResults, _filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results.</p>
+-- * maxResults [Integer] <p>The total number of items to return in a single page of output. The maximum value is 100.</p>
+-- * filters [TagFilters] <p>You can filter the list using a <i>key</i>-<i>value</i> format. You can separate these items by using logical operators. Allowed filters include <code>tagKey</code>, <code>tagValue</code>, and <code>configurationId</code>. </p>
+-- @return DescribeTagsRequest structure as a key-value pair table
+function M.DescribeTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
-		["filters"] = _filters,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+		["filters"] = args["filters"],
 	}
 	asserts.AssertDescribeTagsRequest(t)
 	return t
@@ -156,11 +168,14 @@ end
 
 --- Create a structure of type OperationNotPermittedException
 -- <p>This operation is not permitted.</p>
--- @param _message [Message] 
-function M.OperationNotPermittedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [Message] 
+-- @return OperationNotPermittedException structure as a key-value pair table
+function M.OperationNotPermittedException(args)
+	assert(args, "You must provdide an argument table when creating OperationNotPermittedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertOperationNotPermittedException(t)
 	return t
@@ -182,16 +197,19 @@ end
 
 --- Create a structure of type UpdateApplicationRequest
 --  
--- @param _configurationId [ApplicationId] <p>Configuration ID of the application to be updated.</p>
--- @param _name [String] <p>New name of the application to be updated.</p>
--- @param _description [String] <p>New description of the application to be updated.</p>
--- Required parameter: configurationId
-function M.UpdateApplicationRequest(_configurationId, _name, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApplicationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurationId [ApplicationId] <p>Configuration ID of the application to be updated.</p>
+-- * name [String] <p>New name of the application to be updated.</p>
+-- * description [String] <p>New description of the application to be updated.</p>
+-- Required key: configurationId
+-- @return UpdateApplicationRequest structure as a key-value pair table
+function M.UpdateApplicationRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateApplicationRequest")
 	local t = { 
-		["configurationId"] = _configurationId,
-		["name"] = _name,
-		["description"] = _description,
+		["configurationId"] = args["configurationId"],
+		["name"] = args["name"],
+		["description"] = args["description"],
 	}
 	asserts.AssertUpdateApplicationRequest(t)
 	return t
@@ -211,13 +229,16 @@ end
 
 --- Create a structure of type AgentNetworkInfo
 -- <p>Network details about the host where the agent/connector resides.</p>
--- @param _macAddress [String] <p>The MAC address for the host where the agent/connector resides.</p>
--- @param _ipAddress [String] <p>The IP address for the host where the agent/connector resides.</p>
-function M.AgentNetworkInfo(_macAddress, _ipAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AgentNetworkInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * macAddress [String] <p>The MAC address for the host where the agent/connector resides.</p>
+-- * ipAddress [String] <p>The IP address for the host where the agent/connector resides.</p>
+-- @return AgentNetworkInfo structure as a key-value pair table
+function M.AgentNetworkInfo(args)
+	assert(args, "You must provdide an argument table when creating AgentNetworkInfo")
 	local t = { 
-		["macAddress"] = _macAddress,
-		["ipAddress"] = _ipAddress,
+		["macAddress"] = args["macAddress"],
+		["ipAddress"] = args["ipAddress"],
 	}
 	asserts.AssertAgentNetworkInfo(t)
 	return t
@@ -237,12 +258,15 @@ end
 
 --- Create a structure of type DeleteApplicationsRequest
 --  
--- @param _configurationIds [ApplicationIdsList] <p>Configuration ID of an application to be deleted.</p>
--- Required parameter: configurationIds
-function M.DeleteApplicationsRequest(_configurationIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApplicationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurationIds [ApplicationIdsList] <p>Configuration ID of an application to be deleted.</p>
+-- Required key: configurationIds
+-- @return DeleteApplicationsRequest structure as a key-value pair table
+function M.DeleteApplicationsRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteApplicationsRequest")
 	local t = { 
-		["configurationIds"] = _configurationIds,
+		["configurationIds"] = args["configurationIds"],
 	}
 	asserts.AssertDeleteApplicationsRequest(t)
 	return t
@@ -264,15 +288,18 @@ end
 
 --- Create a structure of type CreateTagsRequest
 --  
--- @param _configurationIds [ConfigurationIdList] <p>A list of configuration items that you want to tag.</p>
--- @param _tags [TagSet] <p>Tags that you want to associate with one or more configuration items. Specify the tags that you want to create in a <i>key</i>-<i>value</i> format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p>
--- Required parameter: configurationIds
--- Required parameter: tags
-function M.CreateTagsRequest(_configurationIds, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurationIds [ConfigurationIdList] <p>A list of configuration items that you want to tag.</p>
+-- * tags [TagSet] <p>Tags that you want to associate with one or more configuration items. Specify the tags that you want to create in a <i>key</i>-<i>value</i> format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p>
+-- Required key: configurationIds
+-- Required key: tags
+-- @return CreateTagsRequest structure as a key-value pair table
+function M.CreateTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateTagsRequest")
 	local t = { 
-		["configurationIds"] = _configurationIds,
-		["tags"] = _tags,
+		["configurationIds"] = args["configurationIds"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertCreateTagsRequest(t)
 	return t
@@ -292,13 +319,16 @@ end
 
 --- Create a structure of type ListConfigurationsResponse
 --  
--- @param _nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
--- @param _configurations [Configurations] <p>Returns configuration details, including the configuration ID, attribute names, and attribute values.</p>
-function M.ListConfigurationsResponse(_nextToken, _configurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListConfigurationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
+-- * configurations [Configurations] <p>Returns configuration details, including the configuration ID, attribute names, and attribute values.</p>
+-- @return ListConfigurationsResponse structure as a key-value pair table
+function M.ListConfigurationsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListConfigurationsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["configurations"] = _configurations,
+		["nextToken"] = args["nextToken"],
+		["configurations"] = args["configurations"],
 	}
 	asserts.AssertListConfigurationsResponse(t)
 	return t
@@ -320,15 +350,18 @@ end
 
 --- Create a structure of type Tag
 -- <p>Metadata that help you categorize IT assets.</p>
--- @param _value [TagValue] <p>A value for a tag key on which to filter.</p>
--- @param _key [TagKey] <p>The type of tag on which to filter.</p>
--- Required parameter: key
--- Required parameter: value
-function M.Tag(_value, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [TagValue] <p>A value for a tag key on which to filter.</p>
+-- * key [TagKey] <p>The type of tag on which to filter.</p>
+-- Required key: key
+-- Required key: value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["value"] = _value,
-		["key"] = _key,
+		["value"] = args["value"],
+		["key"] = args["key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -350,17 +383,20 @@ end
 
 --- Create a structure of type DescribeAgentsRequest
 --  
--- @param _nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you previously specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
--- @param _maxResults [Integer] <p>The total number of agents/Connectors to return in a single page of output. The maximum value is 100.</p>
--- @param _filters [Filters] <p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "collectionStatus", "value": "STARTED"}</code> </p>
--- @param _agentIds [AgentIds] <p>The agent or the Connector IDs for which you want information. If you specify no IDs, the system returns information about all agents/Connectors associated with your AWS user account.</p>
-function M.DescribeAgentsRequest(_nextToken, _maxResults, _filters, _agentIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAgentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you previously specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
+-- * maxResults [Integer] <p>The total number of agents/Connectors to return in a single page of output. The maximum value is 100.</p>
+-- * filters [Filters] <p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "collectionStatus", "value": "STARTED"}</code> </p>
+-- * agentIds [AgentIds] <p>The agent or the Connector IDs for which you want information. If you specify no IDs, the system returns information about all agents/Connectors associated with your AWS user account.</p>
+-- @return DescribeAgentsRequest structure as a key-value pair table
+function M.DescribeAgentsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAgentsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
-		["filters"] = _filters,
-		["agentIds"] = _agentIds,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+		["filters"] = args["filters"],
+		["agentIds"] = args["agentIds"],
 	}
 	asserts.AssertDescribeAgentsRequest(t)
 	return t
@@ -384,20 +420,23 @@ end
 
 --- Create a structure of type ListConfigurationsRequest
 --  
--- @param _orderBy [OrderByList] <p>Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Using the ListConfigurations Action</a>.</p>
--- @param _nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if a previous call to ListConfigurations returned 100 items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
--- @param _maxResults [Integer] <p>The total number of items to return. The maximum value is 100.</p>
--- @param _filters [Filters] <p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p> <p>For a complete list of filter options and guidance about using them with this action, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Querying Discovered Configuration Items</a>. </p>
--- @param _configurationType [ConfigurationItemType] <p>A valid configuration identified by Application Discovery Service. </p>
--- Required parameter: configurationType
-function M.ListConfigurationsRequest(_orderBy, _nextToken, _maxResults, _filters, _configurationType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListConfigurationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * orderBy [OrderByList] <p>Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Using the ListConfigurations Action</a>.</p>
+-- * nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if a previous call to ListConfigurations returned 100 items, but you set <code>ListConfigurationsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
+-- * maxResults [Integer] <p>The total number of items to return. The maximum value is 100.</p>
+-- * filters [Filters] <p>You can filter the request using various logical operators and a <i>key</i>-<i>value</i> format. For example: </p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p> <p>For a complete list of filter options and guidance about using them with this action, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations">Querying Discovered Configuration Items</a>. </p>
+-- * configurationType [ConfigurationItemType] <p>A valid configuration identified by Application Discovery Service. </p>
+-- Required key: configurationType
+-- @return ListConfigurationsRequest structure as a key-value pair table
+function M.ListConfigurationsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListConfigurationsRequest")
 	local t = { 
-		["orderBy"] = _orderBy,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
-		["filters"] = _filters,
-		["configurationType"] = _configurationType,
+		["orderBy"] = args["orderBy"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+		["filters"] = args["filters"],
+		["configurationType"] = args["configurationType"],
 	}
 	asserts.AssertListConfigurationsRequest(t)
 	return t
@@ -417,13 +456,16 @@ end
 
 --- Create a structure of type DescribeAgentsResponse
 --  
--- @param _agentsInfo [AgentsInfo] <p>Lists agents or the Connector by ID or lists all agents/Connectors associated with your user account if you did not specify an agent/Connector ID. The output includes agent/Connector IDs, IP addresses, media access control (MAC) addresses, agent/Connector health, host name where the agent/Connector resides, and the version number of each agent/Connector.</p>
--- @param _nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
-function M.DescribeAgentsResponse(_agentsInfo, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAgentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * agentsInfo [AgentsInfo] <p>Lists agents or the Connector by ID or lists all agents/Connectors associated with your user account if you did not specify an agent/Connector ID. The output includes agent/Connector IDs, IP addresses, media access control (MAC) addresses, agent/Connector health, host name where the agent/Connector resides, and the version number of each agent/Connector.</p>
+-- * nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
+-- @return DescribeAgentsResponse structure as a key-value pair table
+function M.DescribeAgentsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAgentsResponse")
 	local t = { 
-		["agentsInfo"] = _agentsInfo,
-		["nextToken"] = _nextToken,
+		["agentsInfo"] = args["agentsInfo"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeAgentsResponse(t)
 	return t
@@ -442,11 +484,14 @@ end
 
 --- Create a structure of type ExportConfigurationsResponse
 --  
--- @param _exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export status.</p>
-function M.ExportConfigurationsResponse(_exportId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExportConfigurationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export status.</p>
+-- @return ExportConfigurationsResponse structure as a key-value pair table
+function M.ExportConfigurationsResponse(args)
+	assert(args, "You must provdide an argument table when creating ExportConfigurationsResponse")
 	local t = { 
-		["exportId"] = _exportId,
+		["exportId"] = args["exportId"],
 	}
 	asserts.AssertExportConfigurationsResponse(t)
 	return t
@@ -465,11 +510,14 @@ end
 
 --- Create a structure of type ServerInternalErrorException
 -- <p>The server experienced an internal error. Try again.</p>
--- @param _message [Message] 
-function M.ServerInternalErrorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServerInternalErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [Message] 
+-- @return ServerInternalErrorException structure as a key-value pair table
+function M.ServerInternalErrorException(args)
+	assert(args, "You must provdide an argument table when creating ServerInternalErrorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServerInternalErrorException(t)
 	return t
@@ -489,12 +537,15 @@ end
 
 --- Create a structure of type StartDataCollectionByAgentIdsRequest
 --  
--- @param _agentIds [AgentIds] <p>The IDs of the agents or connectors from which to start collecting data. If you send a request to an agent/connector ID that you do not have permission to contact, according to your AWS account, the service does not throw an exception. Instead, it returns the error in the <i>Description</i> field. If you send a request to multiple agents/connectors and you do not have permission to contact some of those agents/connectors, the system does not throw an exception. Instead, the system shows <code>Failed</code> in the <i>Description</i> field.</p>
--- Required parameter: agentIds
-function M.StartDataCollectionByAgentIdsRequest(_agentIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartDataCollectionByAgentIdsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * agentIds [AgentIds] <p>The IDs of the agents or connectors from which to start collecting data. If you send a request to an agent/connector ID that you do not have permission to contact, according to your AWS account, the service does not throw an exception. Instead, it returns the error in the <i>Description</i> field. If you send a request to multiple agents/connectors and you do not have permission to contact some of those agents/connectors, the system does not throw an exception. Instead, the system shows <code>Failed</code> in the <i>Description</i> field.</p>
+-- Required key: agentIds
+-- @return StartDataCollectionByAgentIdsRequest structure as a key-value pair table
+function M.StartDataCollectionByAgentIdsRequest(args)
+	assert(args, "You must provdide an argument table when creating StartDataCollectionByAgentIdsRequest")
 	local t = { 
-		["agentIds"] = _agentIds,
+		["agentIds"] = args["agentIds"],
 	}
 	asserts.AssertStartDataCollectionByAgentIdsRequest(t)
 	return t
@@ -512,8 +563,11 @@ end
 
 --- Create a structure of type DeleteApplicationsResponse
 --  
-function M.DeleteApplicationsResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApplicationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteApplicationsResponse structure as a key-value pair table
+function M.DeleteApplicationsResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteApplicationsResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteApplicationsResponse(t)
@@ -536,15 +590,18 @@ end
 
 --- Create a structure of type AssociateConfigurationItemsToApplicationRequest
 --  
--- @param _applicationConfigurationId [ApplicationId] <p>The configuration ID of an application with which items are to be associated.</p>
--- @param _configurationIds [ConfigurationIdList] <p>The ID of each configuration item to be associated with an application.</p>
--- Required parameter: applicationConfigurationId
--- Required parameter: configurationIds
-function M.AssociateConfigurationItemsToApplicationRequest(_applicationConfigurationId, _configurationIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateConfigurationItemsToApplicationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationConfigurationId [ApplicationId] <p>The configuration ID of an application with which items are to be associated.</p>
+-- * configurationIds [ConfigurationIdList] <p>The ID of each configuration item to be associated with an application.</p>
+-- Required key: applicationConfigurationId
+-- Required key: configurationIds
+-- @return AssociateConfigurationItemsToApplicationRequest structure as a key-value pair table
+function M.AssociateConfigurationItemsToApplicationRequest(args)
+	assert(args, "You must provdide an argument table when creating AssociateConfigurationItemsToApplicationRequest")
 	local t = { 
-		["applicationConfigurationId"] = _applicationConfigurationId,
-		["configurationIds"] = _configurationIds,
+		["applicationConfigurationId"] = args["applicationConfigurationId"],
+		["configurationIds"] = args["configurationIds"],
 	}
 	asserts.AssertAssociateConfigurationItemsToApplicationRequest(t)
 	return t
@@ -566,16 +623,19 @@ end
 
 --- Create a structure of type ListServerNeighborsResponse
 --  
--- @param _neighbors [NeighborDetailsList] <p>List of distinct servers that are one hop away from the given server.</p>
--- @param _nextToken [String] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>ListServerNeighborsRequest$neighborConfigurationIds</code> but set <code>ListServerNeighborsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
--- @param _knownDependencyCount [Long] <p>Count of distinct servers that are one hop away from the given server.</p>
--- Required parameter: neighbors
-function M.ListServerNeighborsResponse(_neighbors, _nextToken, _knownDependencyCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListServerNeighborsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * neighbors [NeighborDetailsList] <p>List of distinct servers that are one hop away from the given server.</p>
+-- * nextToken [String] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>ListServerNeighborsRequest$neighborConfigurationIds</code> but set <code>ListServerNeighborsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
+-- * knownDependencyCount [Long] <p>Count of distinct servers that are one hop away from the given server.</p>
+-- Required key: neighbors
+-- @return ListServerNeighborsResponse structure as a key-value pair table
+function M.ListServerNeighborsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListServerNeighborsResponse")
 	local t = { 
-		["neighbors"] = _neighbors,
-		["nextToken"] = _nextToken,
-		["knownDependencyCount"] = _knownDependencyCount,
+		["neighbors"] = args["neighbors"],
+		["nextToken"] = args["nextToken"],
+		["knownDependencyCount"] = args["knownDependencyCount"],
 	}
 	asserts.AssertListServerNeighborsResponse(t)
 	return t
@@ -594,11 +654,14 @@ end
 
 --- Create a structure of type StopDataCollectionByAgentIdsResponse
 --  
--- @param _agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about the agents or connector that were instructed to stop collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
-function M.StopDataCollectionByAgentIdsResponse(_agentsConfigurationStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopDataCollectionByAgentIdsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about the agents or connector that were instructed to stop collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
+-- @return StopDataCollectionByAgentIdsResponse structure as a key-value pair table
+function M.StopDataCollectionByAgentIdsResponse(args)
+	assert(args, "You must provdide an argument table when creating StopDataCollectionByAgentIdsResponse")
 	local t = { 
-		["agentsConfigurationStatus"] = _agentsConfigurationStatus,
+		["agentsConfigurationStatus"] = args["agentsConfigurationStatus"],
 	}
 	asserts.AssertStopDataCollectionByAgentIdsResponse(t)
 	return t
@@ -624,22 +687,25 @@ end
 
 --- Create a structure of type NeighborConnectionDetail
 -- <p>Details about neighboring servers.</p>
--- @param _connectionsCount [Long] <p>The number of open network connections with the neighboring server.</p>
--- @param _destinationServerId [ConfigurationId] <p>The ID of the server that accepted the network connection.</p>
--- @param _sourceServerId [ConfigurationId] <p>The ID of the server that opened the network connection.</p>
--- @param _transportProtocol [String] <p>The network protocol used for the connection.</p>
--- @param _destinationPort [BoxedInteger] <p>The destination network port for the connection.</p>
--- Required parameter: sourceServerId
--- Required parameter: destinationServerId
--- Required parameter: connectionsCount
-function M.NeighborConnectionDetail(_connectionsCount, _destinationServerId, _sourceServerId, _transportProtocol, _destinationPort, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NeighborConnectionDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectionsCount [Long] <p>The number of open network connections with the neighboring server.</p>
+-- * destinationServerId [ConfigurationId] <p>The ID of the server that accepted the network connection.</p>
+-- * sourceServerId [ConfigurationId] <p>The ID of the server that opened the network connection.</p>
+-- * transportProtocol [String] <p>The network protocol used for the connection.</p>
+-- * destinationPort [BoxedInteger] <p>The destination network port for the connection.</p>
+-- Required key: sourceServerId
+-- Required key: destinationServerId
+-- Required key: connectionsCount
+-- @return NeighborConnectionDetail structure as a key-value pair table
+function M.NeighborConnectionDetail(args)
+	assert(args, "You must provdide an argument table when creating NeighborConnectionDetail")
 	local t = { 
-		["connectionsCount"] = _connectionsCount,
-		["destinationServerId"] = _destinationServerId,
-		["sourceServerId"] = _sourceServerId,
-		["transportProtocol"] = _transportProtocol,
-		["destinationPort"] = _destinationPort,
+		["connectionsCount"] = args["connectionsCount"],
+		["destinationServerId"] = args["destinationServerId"],
+		["sourceServerId"] = args["sourceServerId"],
+		["transportProtocol"] = args["transportProtocol"],
+		["destinationPort"] = args["destinationPort"],
 	}
 	asserts.AssertNeighborConnectionDetail(t)
 	return t
@@ -658,11 +724,14 @@ end
 
 --- Create a structure of type StartDataCollectionByAgentIdsResponse
 --  
--- @param _agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about agents or the connector that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
-function M.StartDataCollectionByAgentIdsResponse(_agentsConfigurationStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartDataCollectionByAgentIdsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about agents or the connector that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
+-- @return StartDataCollectionByAgentIdsResponse structure as a key-value pair table
+function M.StartDataCollectionByAgentIdsResponse(args)
+	assert(args, "You must provdide an argument table when creating StartDataCollectionByAgentIdsResponse")
 	local t = { 
-		["agentsConfigurationStatus"] = _agentsConfigurationStatus,
+		["agentsConfigurationStatus"] = args["agentsConfigurationStatus"],
 	}
 	asserts.AssertStartDataCollectionByAgentIdsResponse(t)
 	return t
@@ -680,8 +749,11 @@ end
 
 --- Create a structure of type DeleteTagsResponse
 --  
-function M.DeleteTagsResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteTagsResponse structure as a key-value pair table
+function M.DeleteTagsResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteTagsResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteTagsResponse(t)
@@ -701,11 +773,14 @@ end
 
 --- Create a structure of type StartExportTaskRequest
 --  
--- @param _exportDataFormat [ExportDataFormats] <p>The file format for the returned export data. Default value is <code>CSV</code>.</p>
-function M.StartExportTaskRequest(_exportDataFormat, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartExportTaskRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * exportDataFormat [ExportDataFormats] <p>The file format for the returned export data. Default value is <code>CSV</code>.</p>
+-- @return StartExportTaskRequest structure as a key-value pair table
+function M.StartExportTaskRequest(args)
+	assert(args, "You must provdide an argument table when creating StartExportTaskRequest")
 	local t = { 
-		["exportDataFormat"] = _exportDataFormat,
+		["exportDataFormat"] = args["exportDataFormat"],
 	}
 	asserts.AssertStartExportTaskRequest(t)
 	return t
@@ -725,13 +800,16 @@ end
 
 --- Create a structure of type DescribeExportTasksResponse
 --  
--- @param _exportsInfo [ExportsInfo] <p>Contains one or more sets of export request details. When the status of a request is <code>SUCCEEDED</code>, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
--- @param _nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeExportTasks</code> request. When the results of a <code>DescribeExportTasks</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.</p>
-function M.DescribeExportTasksResponse(_exportsInfo, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportTasksResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * exportsInfo [ExportsInfo] <p>Contains one or more sets of export request details. When the status of a request is <code>SUCCEEDED</code>, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeExportTasks</code> request. When the results of a <code>DescribeExportTasks</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.</p>
+-- @return DescribeExportTasksResponse structure as a key-value pair table
+function M.DescribeExportTasksResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeExportTasksResponse")
 	local t = { 
-		["exportsInfo"] = _exportsInfo,
-		["nextToken"] = _nextToken,
+		["exportsInfo"] = args["exportsInfo"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeExportTasksResponse(t)
 	return t
@@ -752,14 +830,17 @@ end
 
 --- Create a structure of type DeleteTagsRequest
 --  
--- @param _configurationIds [ConfigurationIdList] <p>A list of configuration items with tags that you want to delete.</p>
--- @param _tags [TagSet] <p>Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a <i>key</i>-<i>value</i> format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p>
--- Required parameter: configurationIds
-function M.DeleteTagsRequest(_configurationIds, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurationIds [ConfigurationIdList] <p>A list of configuration items with tags that you want to delete.</p>
+-- * tags [TagSet] <p>Tags that you want to delete from one or more configuration items. Specify the tags that you want to delete in a <i>key</i>-<i>value</i> format. For example:</p> <p> <code>{"key": "serverType", "value": "webServer"}</code> </p>
+-- Required key: configurationIds
+-- @return DeleteTagsRequest structure as a key-value pair table
+function M.DeleteTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteTagsRequest")
 	local t = { 
-		["configurationIds"] = _configurationIds,
-		["tags"] = _tags,
+		["configurationIds"] = args["configurationIds"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertDeleteTagsRequest(t)
 	return t
@@ -780,15 +861,18 @@ end
 
 --- Create a structure of type AgentConfigurationStatus
 -- <p>Information about agents or connectors that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation, and whether the agent/connector configuration was updated.</p>
--- @param _operationSucceeded [Boolean] <p>Information about the status of the <code>StartDataCollection</code> and <code>StopDataCollection</code> operations. The system has recorded the data collection operation. The agent/connector receives this command the next time it polls for a new command. </p>
--- @param _agentId [String] <p>The agent/connector ID.</p>
--- @param _description [String] <p>A description of the operation performed.</p>
-function M.AgentConfigurationStatus(_operationSucceeded, _agentId, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AgentConfigurationStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operationSucceeded [Boolean] <p>Information about the status of the <code>StartDataCollection</code> and <code>StopDataCollection</code> operations. The system has recorded the data collection operation. The agent/connector receives this command the next time it polls for a new command. </p>
+-- * agentId [String] <p>The agent/connector ID.</p>
+-- * description [String] <p>A description of the operation performed.</p>
+-- @return AgentConfigurationStatus structure as a key-value pair table
+function M.AgentConfigurationStatus(args)
+	assert(args, "You must provdide an argument table when creating AgentConfigurationStatus")
 	local t = { 
-		["operationSucceeded"] = _operationSucceeded,
-		["agentId"] = _agentId,
-		["description"] = _description,
+		["operationSucceeded"] = args["operationSucceeded"],
+		["agentId"] = args["agentId"],
+		["description"] = args["description"],
 	}
 	asserts.AssertAgentConfigurationStatus(t)
 	return t
@@ -806,8 +890,11 @@ end
 
 --- Create a structure of type UpdateApplicationResponse
 --  
-function M.UpdateApplicationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApplicationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateApplicationResponse structure as a key-value pair table
+function M.UpdateApplicationResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateApplicationResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateApplicationResponse(t)
@@ -827,11 +914,14 @@ end
 
 --- Create a structure of type AuthorizationErrorException
 -- <p>The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.</p>
--- @param _message [Message] 
-function M.AuthorizationErrorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [Message] 
+-- @return AuthorizationErrorException structure as a key-value pair table
+function M.AuthorizationErrorException(args)
+	assert(args, "You must provdide an argument table when creating AuthorizationErrorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertAuthorizationErrorException(t)
 	return t
@@ -852,14 +942,17 @@ end
 
 --- Create a structure of type OrderByElement
 -- <p>A field and direction for ordered output.</p>
--- @param _fieldName [String] <p>The field on which to order.</p>
--- @param _sortOrder [orderString] <p>Ordering direction.</p>
--- Required parameter: fieldName
-function M.OrderByElement(_fieldName, _sortOrder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OrderByElement")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * fieldName [String] <p>The field on which to order.</p>
+-- * sortOrder [orderString] <p>Ordering direction.</p>
+-- Required key: fieldName
+-- @return OrderByElement structure as a key-value pair table
+function M.OrderByElement(args)
+	assert(args, "You must provdide an argument table when creating OrderByElement")
 	local t = { 
-		["fieldName"] = _fieldName,
-		["sortOrder"] = _sortOrder,
+		["fieldName"] = args["fieldName"],
+		["sortOrder"] = args["sortOrder"],
 	}
 	asserts.AssertOrderByElement(t)
 	return t
@@ -883,20 +976,23 @@ end
 
 --- Create a structure of type ListServerNeighborsRequest
 --  
--- @param _nextToken [String] <p>Token to retrieve the next set of results. For example, if you previously specified 100 IDs for <code>ListServerNeighborsRequest$neighborConfigurationIds</code> but set <code>ListServerNeighborsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
--- @param _configurationId [ConfigurationId] <p>Configuration ID of the server for which neighbors are being listed.</p>
--- @param _portInformationNeeded [Boolean] <p>Flag to indicate if port and protocol information is needed as part of the response.</p>
--- @param _maxResults [Integer] <p>Maximum number of results to return in a single page of output.</p>
--- @param _neighborConfigurationIds [ConfigurationIdList] <p>List of configuration IDs to test for one-hop-away.</p>
--- Required parameter: configurationId
-function M.ListServerNeighborsRequest(_nextToken, _configurationId, _portInformationNeeded, _maxResults, _neighborConfigurationIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListServerNeighborsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>Token to retrieve the next set of results. For example, if you previously specified 100 IDs for <code>ListServerNeighborsRequest$neighborConfigurationIds</code> but set <code>ListServerNeighborsRequest$maxResults</code> to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.</p>
+-- * configurationId [ConfigurationId] <p>Configuration ID of the server for which neighbors are being listed.</p>
+-- * portInformationNeeded [Boolean] <p>Flag to indicate if port and protocol information is needed as part of the response.</p>
+-- * maxResults [Integer] <p>Maximum number of results to return in a single page of output.</p>
+-- * neighborConfigurationIds [ConfigurationIdList] <p>List of configuration IDs to test for one-hop-away.</p>
+-- Required key: configurationId
+-- @return ListServerNeighborsRequest structure as a key-value pair table
+function M.ListServerNeighborsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListServerNeighborsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["configurationId"] = _configurationId,
-		["portInformationNeeded"] = _portInformationNeeded,
-		["maxResults"] = _maxResults,
-		["neighborConfigurationIds"] = _neighborConfigurationIds,
+		["nextToken"] = args["nextToken"],
+		["configurationId"] = args["configurationId"],
+		["portInformationNeeded"] = args["portInformationNeeded"],
+		["maxResults"] = args["maxResults"],
+		["neighborConfigurationIds"] = args["neighborConfigurationIds"],
 	}
 	asserts.AssertListServerNeighborsRequest(t)
 	return t
@@ -916,12 +1012,15 @@ end
 
 --- Create a structure of type StopDataCollectionByAgentIdsRequest
 --  
--- @param _agentIds [AgentIds] <p>The IDs of the agents or connectors from which to stop collecting data.</p>
--- Required parameter: agentIds
-function M.StopDataCollectionByAgentIdsRequest(_agentIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopDataCollectionByAgentIdsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * agentIds [AgentIds] <p>The IDs of the agents or connectors from which to stop collecting data.</p>
+-- Required key: agentIds
+-- @return StopDataCollectionByAgentIdsRequest structure as a key-value pair table
+function M.StopDataCollectionByAgentIdsRequest(args)
+	assert(args, "You must provdide an argument table when creating StopDataCollectionByAgentIdsRequest")
 	local t = { 
-		["agentIds"] = _agentIds,
+		["agentIds"] = args["agentIds"],
 	}
 	asserts.AssertStopDataCollectionByAgentIdsRequest(t)
 	return t
@@ -945,18 +1044,21 @@ end
 
 --- Create a structure of type Filter
 -- <p>A filter that can use conditional operators.</p> <p>For more information about filters, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html">Querying Discovered Configuration Items</a>. </p>
--- @param _values [FilterValues] <p>A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.</p>
--- @param _name [String] <p>The name of the filter.</p>
--- @param _condition [Condition] <p>A conditional operator. The following operators are valid: EQUALS, NOT_EQUALS, CONTAINS, NOT_CONTAINS. If you specify multiple filters, the system utilizes all filters as though concatenated by <i>AND</i>. If you specify multiple values for a particular filter, the system differentiates the values using <i>OR</i>. Calling either <i>DescribeConfigurations</i> or <i>ListConfigurations</i> returns attributes of matching configuration items.</p>
--- Required parameter: name
--- Required parameter: values
--- Required parameter: condition
-function M.Filter(_values, _name, _condition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Filter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * values [FilterValues] <p>A string value on which to filter. For example, if you choose the <code>destinationServer.osVersion</code> filter name, you could specify <code>Ubuntu</code> for the value.</p>
+-- * name [String] <p>The name of the filter.</p>
+-- * condition [Condition] <p>A conditional operator. The following operators are valid: EQUALS, NOT_EQUALS, CONTAINS, NOT_CONTAINS. If you specify multiple filters, the system utilizes all filters as though concatenated by <i>AND</i>. If you specify multiple values for a particular filter, the system differentiates the values using <i>OR</i>. Calling either <i>DescribeConfigurations</i> or <i>ListConfigurations</i> returns attributes of matching configuration items.</p>
+-- Required key: name
+-- Required key: values
+-- Required key: condition
+-- @return Filter structure as a key-value pair table
+function M.Filter(args)
+	assert(args, "You must provdide an argument table when creating Filter")
 	local t = { 
-		["values"] = _values,
-		["name"] = _name,
-		["condition"] = _condition,
+		["values"] = args["values"],
+		["name"] = args["name"],
+		["condition"] = args["condition"],
 	}
 	asserts.AssertFilter(t)
 	return t
@@ -975,11 +1077,14 @@ end
 
 --- Create a structure of type InvalidParameterValueException
 -- <p>The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.</p>
--- @param _message [Message] 
-function M.InvalidParameterValueException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [Message] 
+-- @return InvalidParameterValueException structure as a key-value pair table
+function M.InvalidParameterValueException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterValueException(t)
 	return t
@@ -1006,23 +1111,26 @@ end
 
 --- Create a structure of type ExportInfo
 -- <p>Information regarding the export status of the discovered data. The value is an array of objects.</p>
--- @param _exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export.</p>
--- @param _exportRequestTime [ExportRequestTime] <p>The time that the configuration data export was initiated.</p>
--- @param _exportStatus [ExportStatus] <p>The status of the configuration data export. The status can succeed, fail, or be in-progress.</p>
--- @param _statusMessage [ExportStatusMessage] <p>Helpful status messages for API callers. For example: Too many exports in the last 6 hours. Export in progress. Export was successful.</p>
--- @param _configurationsDownloadUrl [ConfigurationsDownloadUrl] <p>A URL for an Amazon S3 bucket where you can review the configuration data. The URL is displayed only if the export succeeded.</p>
--- Required parameter: exportId
--- Required parameter: exportStatus
--- Required parameter: statusMessage
--- Required parameter: exportRequestTime
-function M.ExportInfo(_exportId, _exportRequestTime, _exportStatus, _statusMessage, _configurationsDownloadUrl, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExportInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export.</p>
+-- * exportRequestTime [ExportRequestTime] <p>The time that the configuration data export was initiated.</p>
+-- * exportStatus [ExportStatus] <p>The status of the configuration data export. The status can succeed, fail, or be in-progress.</p>
+-- * statusMessage [ExportStatusMessage] <p>Helpful status messages for API callers. For example: Too many exports in the last 6 hours. Export in progress. Export was successful.</p>
+-- * configurationsDownloadUrl [ConfigurationsDownloadUrl] <p>A URL for an Amazon S3 bucket where you can review the configuration data. The URL is displayed only if the export succeeded.</p>
+-- Required key: exportId
+-- Required key: exportStatus
+-- Required key: statusMessage
+-- Required key: exportRequestTime
+-- @return ExportInfo structure as a key-value pair table
+function M.ExportInfo(args)
+	assert(args, "You must provdide an argument table when creating ExportInfo")
 	local t = { 
-		["exportId"] = _exportId,
-		["exportRequestTime"] = _exportRequestTime,
-		["exportStatus"] = _exportStatus,
-		["statusMessage"] = _statusMessage,
-		["configurationsDownloadUrl"] = _configurationsDownloadUrl,
+		["exportId"] = args["exportId"],
+		["exportRequestTime"] = args["exportRequestTime"],
+		["exportStatus"] = args["exportStatus"],
+		["statusMessage"] = args["statusMessage"],
+		["configurationsDownloadUrl"] = args["configurationsDownloadUrl"],
 	}
 	asserts.AssertExportInfo(t)
 	return t
@@ -1041,11 +1149,14 @@ end
 
 --- Create a structure of type StartExportTaskResponse
 --  
--- @param _exportId [ConfigurationsExportId] <p> A unique identifier used to query the status of an export request.</p>
-function M.StartExportTaskResponse(_exportId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartExportTaskResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * exportId [ConfigurationsExportId] <p> A unique identifier used to query the status of an export request.</p>
+-- @return StartExportTaskResponse structure as a key-value pair table
+function M.StartExportTaskResponse(args)
+	assert(args, "You must provdide an argument table when creating StartExportTaskResponse")
 	local t = { 
-		["exportId"] = _exportId,
+		["exportId"] = args["exportId"],
 	}
 	asserts.AssertStartExportTaskResponse(t)
 	return t
@@ -1063,8 +1174,11 @@ end
 
 --- Create a structure of type AssociateConfigurationItemsToApplicationResponse
 --  
-function M.AssociateConfigurationItemsToApplicationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateConfigurationItemsToApplicationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AssociateConfigurationItemsToApplicationResponse structure as a key-value pair table
+function M.AssociateConfigurationItemsToApplicationResponse(args)
+	assert(args, "You must provdide an argument table when creating AssociateConfigurationItemsToApplicationResponse")
 	local t = { 
 	}
 	asserts.AssertAssociateConfigurationItemsToApplicationResponse(t)
@@ -1083,8 +1197,11 @@ end
 
 --- Create a structure of type CreateTagsResponse
 --  
-function M.CreateTagsResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateTagsResponse structure as a key-value pair table
+function M.CreateTagsResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateTagsResponse")
 	local t = { 
 	}
 	asserts.AssertCreateTagsResponse(t)
@@ -1104,11 +1221,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified configuration ID was not located. Verify the configuration ID and try again.</p>
--- @param _message [Message] 
-function M.ResourceNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [Message] 
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -1132,21 +1252,24 @@ end
 
 --- Create a structure of type GetDiscoverySummaryResponse
 --  
--- @param _serversMappedtoTags [Long] <p>The number of servers mapped to tags.</p>
--- @param _agentSummary [CustomerAgentInfo] <p>Details about discovered agents, including agent status and health.</p>
--- @param _servers [Long] <p>The number of servers discovered.</p>
--- @param _applications [Long] <p>The number of applications discovered.</p>
--- @param _serversMappedToApplications [Long] <p>The number of servers mapped to applications.</p>
--- @param _connectorSummary [CustomerConnectorInfo] <p>Details about discovered connectors, including connector status and health.</p>
-function M.GetDiscoverySummaryResponse(_serversMappedtoTags, _agentSummary, _servers, _applications, _serversMappedToApplications, _connectorSummary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDiscoverySummaryResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * serversMappedtoTags [Long] <p>The number of servers mapped to tags.</p>
+-- * agentSummary [CustomerAgentInfo] <p>Details about discovered agents, including agent status and health.</p>
+-- * servers [Long] <p>The number of servers discovered.</p>
+-- * applications [Long] <p>The number of applications discovered.</p>
+-- * serversMappedToApplications [Long] <p>The number of servers mapped to applications.</p>
+-- * connectorSummary [CustomerConnectorInfo] <p>Details about discovered connectors, including connector status and health.</p>
+-- @return GetDiscoverySummaryResponse structure as a key-value pair table
+function M.GetDiscoverySummaryResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDiscoverySummaryResponse")
 	local t = { 
-		["serversMappedtoTags"] = _serversMappedtoTags,
-		["agentSummary"] = _agentSummary,
-		["servers"] = _servers,
-		["applications"] = _applications,
-		["serversMappedToApplications"] = _serversMappedToApplications,
-		["connectorSummary"] = _connectorSummary,
+		["serversMappedtoTags"] = args["serversMappedtoTags"],
+		["agentSummary"] = args["agentSummary"],
+		["servers"] = args["servers"],
+		["applications"] = args["applications"],
+		["serversMappedToApplications"] = args["serversMappedToApplications"],
+		["connectorSummary"] = args["connectorSummary"],
 	}
 	asserts.AssertGetDiscoverySummaryResponse(t)
 	return t
@@ -1166,13 +1289,16 @@ end
 
 --- Create a structure of type DescribeExportConfigurationsResponse
 --  
--- @param _exportsInfo [ExportsInfo] <p>Returns export details. When the status is complete, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
--- @param _nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
-function M.DescribeExportConfigurationsResponse(_exportsInfo, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportConfigurationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * exportsInfo [ExportsInfo] <p>Returns export details. When the status is complete, the response includes a URL for an Amazon S3 bucket where you can view the data in a CSV file.</p>
+-- * nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
+-- @return DescribeExportConfigurationsResponse structure as a key-value pair table
+function M.DescribeExportConfigurationsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeExportConfigurationsResponse")
 	local t = { 
-		["exportsInfo"] = _exportsInfo,
-		["nextToken"] = _nextToken,
+		["exportsInfo"] = args["exportsInfo"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeExportConfigurationsResponse(t)
 	return t
@@ -1192,13 +1318,16 @@ end
 
 --- Create a structure of type DescribeTagsResponse
 --  
--- @param _nextToken [NextToken] <p>The call returns a token. Use this token to get the next set of results.</p>
--- @param _tags [ConfigurationTagSet] <p>Depending on the input, this is a list of configuration items tagged with a specific tag, or a list of tags for a specific configuration item.</p>
-function M.DescribeTagsResponse(_nextToken, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The call returns a token. Use this token to get the next set of results.</p>
+-- * tags [ConfigurationTagSet] <p>Depending on the input, this is a list of configuration items tagged with a specific tag, or a list of tags for a specific configuration item.</p>
+-- @return DescribeTagsResponse structure as a key-value pair table
+function M.DescribeTagsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["tags"] = _tags,
+		["nextToken"] = args["nextToken"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertDescribeTagsResponse(t)
 	return t
@@ -1218,12 +1347,15 @@ end
 
 --- Create a structure of type DescribeConfigurationsRequest
 --  
--- @param _configurationIds [ConfigurationIdList] <p>One or more configuration IDs.</p>
--- Required parameter: configurationIds
-function M.DescribeConfigurationsRequest(_configurationIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurationIds [ConfigurationIdList] <p>One or more configuration IDs.</p>
+-- Required key: configurationIds
+-- @return DescribeConfigurationsRequest structure as a key-value pair table
+function M.DescribeConfigurationsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigurationsRequest")
 	local t = { 
-		["configurationIds"] = _configurationIds,
+		["configurationIds"] = args["configurationIds"],
 	}
 	asserts.AssertDescribeConfigurationsRequest(t)
 	return t
@@ -1241,8 +1373,11 @@ end
 
 --- Create a structure of type GetDiscoverySummaryRequest
 --  
-function M.GetDiscoverySummaryRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDiscoverySummaryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetDiscoverySummaryRequest structure as a key-value pair table
+function M.GetDiscoverySummaryRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDiscoverySummaryRequest")
 	local t = { 
 	}
 	asserts.AssertGetDiscoverySummaryRequest(t)
@@ -1275,30 +1410,33 @@ end
 
 --- Create a structure of type CustomerConnectorInfo
 -- <p>Inventory data for installed discovery connectors.</p>
--- @param _shutdownConnectors [Integer] <p>Number of discovery connectors with status SHUTDOWN,</p>
--- @param _activeConnectors [Integer] <p>Number of active discovery connectors.</p>
--- @param _unhealthyConnectors [Integer] <p>Number of unhealthy discovery connectors.</p>
--- @param _blackListedConnectors [Integer] <p>Number of blacklisted discovery connectors.</p>
--- @param _unknownConnectors [Integer] <p>Number of unknown discovery connectors.</p>
--- @param _totalConnectors [Integer] <p>Total number of discovery connectors.</p>
--- @param _healthyConnectors [Integer] <p>Number of healthy discovery connectors.</p>
--- Required parameter: activeConnectors
--- Required parameter: healthyConnectors
--- Required parameter: blackListedConnectors
--- Required parameter: shutdownConnectors
--- Required parameter: unhealthyConnectors
--- Required parameter: totalConnectors
--- Required parameter: unknownConnectors
-function M.CustomerConnectorInfo(_shutdownConnectors, _activeConnectors, _unhealthyConnectors, _blackListedConnectors, _unknownConnectors, _totalConnectors, _healthyConnectors, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CustomerConnectorInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * shutdownConnectors [Integer] <p>Number of discovery connectors with status SHUTDOWN,</p>
+-- * activeConnectors [Integer] <p>Number of active discovery connectors.</p>
+-- * unhealthyConnectors [Integer] <p>Number of unhealthy discovery connectors.</p>
+-- * blackListedConnectors [Integer] <p>Number of blacklisted discovery connectors.</p>
+-- * unknownConnectors [Integer] <p>Number of unknown discovery connectors.</p>
+-- * totalConnectors [Integer] <p>Total number of discovery connectors.</p>
+-- * healthyConnectors [Integer] <p>Number of healthy discovery connectors.</p>
+-- Required key: activeConnectors
+-- Required key: healthyConnectors
+-- Required key: blackListedConnectors
+-- Required key: shutdownConnectors
+-- Required key: unhealthyConnectors
+-- Required key: totalConnectors
+-- Required key: unknownConnectors
+-- @return CustomerConnectorInfo structure as a key-value pair table
+function M.CustomerConnectorInfo(args)
+	assert(args, "You must provdide an argument table when creating CustomerConnectorInfo")
 	local t = { 
-		["shutdownConnectors"] = _shutdownConnectors,
-		["activeConnectors"] = _activeConnectors,
-		["unhealthyConnectors"] = _unhealthyConnectors,
-		["blackListedConnectors"] = _blackListedConnectors,
-		["unknownConnectors"] = _unknownConnectors,
-		["totalConnectors"] = _totalConnectors,
-		["healthyConnectors"] = _healthyConnectors,
+		["shutdownConnectors"] = args["shutdownConnectors"],
+		["activeConnectors"] = args["activeConnectors"],
+		["unhealthyConnectors"] = args["unhealthyConnectors"],
+		["blackListedConnectors"] = args["blackListedConnectors"],
+		["unknownConnectors"] = args["unknownConnectors"],
+		["totalConnectors"] = args["totalConnectors"],
+		["healthyConnectors"] = args["healthyConnectors"],
 	}
 	asserts.AssertCustomerConnectorInfo(t)
 	return t
@@ -1319,15 +1457,18 @@ end
 
 --- Create a structure of type DescribeExportTasksRequest
 --  
--- @param _exportIds [ExportIds] <p>One or more unique identifiers used to query the status of an export request.</p>
--- @param _nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeExportTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is null when there are no more results to return.</p>
--- @param _maxResults [Integer] <p>The maximum number of volume results returned by <code>DescribeExportTasks</code> in paginated output. When this parameter is used, <code>DescribeExportTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element.</p>
-function M.DescribeExportTasksRequest(_exportIds, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportTasksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * exportIds [ExportIds] <p>One or more unique identifiers used to query the status of an export request.</p>
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeExportTasks</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is null when there are no more results to return.</p>
+-- * maxResults [Integer] <p>The maximum number of volume results returned by <code>DescribeExportTasks</code> in paginated output. When this parameter is used, <code>DescribeExportTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element.</p>
+-- @return DescribeExportTasksRequest structure as a key-value pair table
+function M.DescribeExportTasksRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeExportTasksRequest")
 	local t = { 
-		["exportIds"] = _exportIds,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["exportIds"] = args["exportIds"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertDescribeExportTasksRequest(t)
 	return t
@@ -1346,11 +1487,14 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- <p>One or more parameters are not valid. Verify the parameters and try again.</p>
--- @param _message [Message] 
-function M.InvalidParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [Message] 
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterException(t)
 	return t
@@ -1371,14 +1515,17 @@ end
 
 --- Create a structure of type CreateApplicationRequest
 --  
--- @param _name [String] <p>Name of the application to be created.</p>
--- @param _description [String] <p>Description of the application to be created.</p>
--- Required parameter: name
-function M.CreateApplicationRequest(_name, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [String] <p>Name of the application to be created.</p>
+-- * description [String] <p>Description of the application to be created.</p>
+-- Required key: name
+-- @return CreateApplicationRequest structure as a key-value pair table
+function M.CreateApplicationRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateApplicationRequest")
 	local t = { 
-		["name"] = _name,
-		["description"] = _description,
+		["name"] = args["name"],
+		["description"] = args["description"],
 	}
 	asserts.AssertCreateApplicationRequest(t)
 	return t
@@ -1401,19 +1548,22 @@ end
 
 --- Create a structure of type ConfigurationTag
 -- <p>Tags for a configuration item. Tags are metadata that help you categorize IT assets.</p>
--- @param _timeOfCreation [TimeStamp] <p>The time the configuration tag was created in Coordinated Universal Time (UTC).</p>
--- @param _configurationId [ConfigurationId] <p>The configuration ID for the item to tag. You can specify a list of keys and values.</p>
--- @param _value [TagValue] <p>A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.</p>
--- @param _key [TagKey] <p>A type of tag on which to filter. For example, <i>serverType</i>.</p>
--- @param _configurationType [ConfigurationItemType] <p>A type of IT asset to tag.</p>
-function M.ConfigurationTag(_timeOfCreation, _configurationId, _value, _key, _configurationType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationTag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * timeOfCreation [TimeStamp] <p>The time the configuration tag was created in Coordinated Universal Time (UTC).</p>
+-- * configurationId [ConfigurationId] <p>The configuration ID for the item to tag. You can specify a list of keys and values.</p>
+-- * value [TagValue] <p>A value on which to filter. For example <i>key = serverType</i> and <i>value = web server</i>.</p>
+-- * key [TagKey] <p>A type of tag on which to filter. For example, <i>serverType</i>.</p>
+-- * configurationType [ConfigurationItemType] <p>A type of IT asset to tag.</p>
+-- @return ConfigurationTag structure as a key-value pair table
+function M.ConfigurationTag(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationTag")
 	local t = { 
-		["timeOfCreation"] = _timeOfCreation,
-		["configurationId"] = _configurationId,
-		["value"] = _value,
-		["key"] = _key,
-		["configurationType"] = _configurationType,
+		["timeOfCreation"] = args["timeOfCreation"],
+		["configurationId"] = args["configurationId"],
+		["value"] = args["value"],
+		["key"] = args["key"],
+		["configurationType"] = args["configurationType"],
 	}
 	asserts.AssertConfigurationTag(t)
 	return t
@@ -1435,15 +1585,18 @@ end
 
 --- Create a structure of type TagFilter
 -- <p>The tag filter. Valid names are: <code>tagKey</code>, <code>tagValue</code>, <code>configurationId</code>.</p>
--- @param _values [FilterValues] <p>Values for the tag filter.</p>
--- @param _name [FilterName] <p>A name of the tag filter.</p>
--- Required parameter: name
--- Required parameter: values
-function M.TagFilter(_values, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * values [FilterValues] <p>Values for the tag filter.</p>
+-- * name [FilterName] <p>A name of the tag filter.</p>
+-- Required key: name
+-- Required key: values
+-- @return TagFilter structure as a key-value pair table
+function M.TagFilter(args)
+	assert(args, "You must provdide an argument table when creating TagFilter")
 	local t = { 
-		["values"] = _values,
-		["name"] = _name,
+		["values"] = args["values"],
+		["name"] = args["name"],
 	}
 	asserts.AssertTagFilter(t)
 	return t
@@ -1462,11 +1615,14 @@ end
 
 --- Create a structure of type CreateApplicationResponse
 --  
--- @param _configurationId [String] <p>Configuration ID of an application to be created.</p>
-function M.CreateApplicationResponse(_configurationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurationId [String] <p>Configuration ID of an application to be created.</p>
+-- @return CreateApplicationResponse structure as a key-value pair table
+function M.CreateApplicationResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateApplicationResponse")
 	local t = { 
-		["configurationId"] = _configurationId,
+		["configurationId"] = args["configurationId"],
 	}
 	asserts.AssertCreateApplicationResponse(t)
 	return t
@@ -1498,30 +1654,33 @@ end
 
 --- Create a structure of type CustomerAgentInfo
 -- <p>Inventory data for installed discovery agents.</p>
--- @param _healthyAgents [Integer] <p>Number of healthy discovery agents</p>
--- @param _unhealthyAgents [Integer] <p>Number of unhealthy discovery agents.</p>
--- @param _unknownAgents [Integer] <p>Number of unknown discovery agents.</p>
--- @param _activeAgents [Integer] <p>Number of active discovery agents.</p>
--- @param _shutdownAgents [Integer] <p>Number of discovery agents with status SHUTDOWN.</p>
--- @param _totalAgents [Integer] <p>Total number of discovery agents.</p>
--- @param _blackListedAgents [Integer] <p>Number of blacklisted discovery agents.</p>
--- Required parameter: activeAgents
--- Required parameter: healthyAgents
--- Required parameter: blackListedAgents
--- Required parameter: shutdownAgents
--- Required parameter: unhealthyAgents
--- Required parameter: totalAgents
--- Required parameter: unknownAgents
-function M.CustomerAgentInfo(_healthyAgents, _unhealthyAgents, _unknownAgents, _activeAgents, _shutdownAgents, _totalAgents, _blackListedAgents, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CustomerAgentInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * healthyAgents [Integer] <p>Number of healthy discovery agents</p>
+-- * unhealthyAgents [Integer] <p>Number of unhealthy discovery agents.</p>
+-- * unknownAgents [Integer] <p>Number of unknown discovery agents.</p>
+-- * activeAgents [Integer] <p>Number of active discovery agents.</p>
+-- * shutdownAgents [Integer] <p>Number of discovery agents with status SHUTDOWN.</p>
+-- * totalAgents [Integer] <p>Total number of discovery agents.</p>
+-- * blackListedAgents [Integer] <p>Number of blacklisted discovery agents.</p>
+-- Required key: activeAgents
+-- Required key: healthyAgents
+-- Required key: blackListedAgents
+-- Required key: shutdownAgents
+-- Required key: unhealthyAgents
+-- Required key: totalAgents
+-- Required key: unknownAgents
+-- @return CustomerAgentInfo structure as a key-value pair table
+function M.CustomerAgentInfo(args)
+	assert(args, "You must provdide an argument table when creating CustomerAgentInfo")
 	local t = { 
-		["healthyAgents"] = _healthyAgents,
-		["unhealthyAgents"] = _unhealthyAgents,
-		["unknownAgents"] = _unknownAgents,
-		["activeAgents"] = _activeAgents,
-		["shutdownAgents"] = _shutdownAgents,
-		["totalAgents"] = _totalAgents,
-		["blackListedAgents"] = _blackListedAgents,
+		["healthyAgents"] = args["healthyAgents"],
+		["unhealthyAgents"] = args["unhealthyAgents"],
+		["unknownAgents"] = args["unknownAgents"],
+		["activeAgents"] = args["activeAgents"],
+		["shutdownAgents"] = args["shutdownAgents"],
+		["totalAgents"] = args["totalAgents"],
+		["blackListedAgents"] = args["blackListedAgents"],
 	}
 	asserts.AssertCustomerAgentInfo(t)
 	return t
@@ -1542,15 +1701,18 @@ end
 
 --- Create a structure of type DescribeExportConfigurationsRequest
 --  
--- @param _exportIds [ExportIds] <p>A unique identifier that you can use to query the export status.</p>
--- @param _nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
--- @param _maxResults [Integer] <p>The maximum number of results that you want to display as a part of the query.</p>
-function M.DescribeExportConfigurationsRequest(_exportIds, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportConfigurationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * exportIds [ExportIds] <p>A unique identifier that you can use to query the export status.</p>
+-- * nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
+-- * maxResults [Integer] <p>The maximum number of results that you want to display as a part of the query.</p>
+-- @return DescribeExportConfigurationsRequest structure as a key-value pair table
+function M.DescribeExportConfigurationsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeExportConfigurationsRequest")
 	local t = { 
-		["exportIds"] = _exportIds,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["exportIds"] = args["exportIds"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertDescribeExportConfigurationsRequest(t)
 	return t
@@ -1572,15 +1734,18 @@ end
 
 --- Create a structure of type DisassociateConfigurationItemsFromApplicationRequest
 --  
--- @param _applicationConfigurationId [ApplicationId] <p>Configuration ID of an application from which each item is disassociated.</p>
--- @param _configurationIds [ConfigurationIdList] <p>Configuration ID of each item to be disassociated from an application.</p>
--- Required parameter: applicationConfigurationId
--- Required parameter: configurationIds
-function M.DisassociateConfigurationItemsFromApplicationRequest(_applicationConfigurationId, _configurationIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateConfigurationItemsFromApplicationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * applicationConfigurationId [ApplicationId] <p>Configuration ID of an application from which each item is disassociated.</p>
+-- * configurationIds [ConfigurationIdList] <p>Configuration ID of each item to be disassociated from an application.</p>
+-- Required key: applicationConfigurationId
+-- Required key: configurationIds
+-- @return DisassociateConfigurationItemsFromApplicationRequest structure as a key-value pair table
+function M.DisassociateConfigurationItemsFromApplicationRequest(args)
+	assert(args, "You must provdide an argument table when creating DisassociateConfigurationItemsFromApplicationRequest")
 	local t = { 
-		["applicationConfigurationId"] = _applicationConfigurationId,
-		["configurationIds"] = _configurationIds,
+		["applicationConfigurationId"] = args["applicationConfigurationId"],
+		["configurationIds"] = args["configurationIds"],
 	}
 	asserts.AssertDisassociateConfigurationItemsFromApplicationRequest(t)
 	return t

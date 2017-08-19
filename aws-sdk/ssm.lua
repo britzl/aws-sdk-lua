@@ -33,8 +33,11 @@ end
 
 --- Create a structure of type InvocationDoesNotExist
 -- <p>The command ID and instance ID you specified did not match any invocations. Verify the command ID adn the instance ID and try again. </p>
-function M.InvocationDoesNotExist(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvocationDoesNotExist")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvocationDoesNotExist structure as a key-value pair table
+function M.InvocationDoesNotExist(args)
+	assert(args, "You must provdide an argument table when creating InvocationDoesNotExist")
 	local t = { 
 	}
 	asserts.AssertInvocationDoesNotExist(t)
@@ -57,15 +60,18 @@ end
 
 --- Create a structure of type UpdateManagedInstanceRoleRequest
 --  
--- @param _InstanceId [ManagedInstanceId] <p>The ID of the managed instance where you want to update the role.</p>
--- @param _IamRole [IamRole] <p>The IAM role you want to assign or change.</p>
--- Required parameter: InstanceId
--- Required parameter: IamRole
-function M.UpdateManagedInstanceRoleRequest(_InstanceId, _IamRole, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateManagedInstanceRoleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [ManagedInstanceId] <p>The ID of the managed instance where you want to update the role.</p>
+-- * IamRole [IamRole] <p>The IAM role you want to assign or change.</p>
+-- Required key: InstanceId
+-- Required key: IamRole
+-- @return UpdateManagedInstanceRoleRequest structure as a key-value pair table
+function M.UpdateManagedInstanceRoleRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateManagedInstanceRoleRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["IamRole"] = _IamRole,
+		["InstanceId"] = args["InstanceId"],
+		["IamRole"] = args["IamRole"],
 	}
 	asserts.AssertUpdateManagedInstanceRoleRequest(t)
 	return t
@@ -84,11 +90,14 @@ end
 
 --- Create a structure of type ListTagsForResourceResult
 --  
--- @param _TagList [TagList] <p>A list of tags.</p>
-function M.ListTagsForResourceResult(_TagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagList [TagList] <p>A list of tags.</p>
+-- @return ListTagsForResourceResult structure as a key-value pair table
+function M.ListTagsForResourceResult(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceResult")
 	local t = { 
-		["TagList"] = _TagList,
+		["TagList"] = args["TagList"],
 	}
 	asserts.AssertListTagsForResourceResult(t)
 	return t
@@ -107,11 +116,14 @@ end
 
 --- Create a structure of type CreateDocumentResult
 --  
--- @param _DocumentDescription [DocumentDescription] <p>Information about the Systems Manager document.</p>
-function M.CreateDocumentResult(_DocumentDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDocumentResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DocumentDescription [DocumentDescription] <p>Information about the Systems Manager document.</p>
+-- @return CreateDocumentResult structure as a key-value pair table
+function M.CreateDocumentResult(args)
+	assert(args, "You must provdide an argument table when creating CreateDocumentResult")
 	local t = { 
-		["DocumentDescription"] = _DocumentDescription,
+		["DocumentDescription"] = args["DocumentDescription"],
 	}
 	asserts.AssertCreateDocumentResult(t)
 	return t
@@ -131,13 +143,16 @@ end
 
 --- Create a structure of type MaintenanceWindowFilter
 -- <p>Filter used in the request.</p>
--- @param _Values [MaintenanceWindowFilterValues] <p>The filter values.</p>
--- @param _Key [MaintenanceWindowFilterKey] <p>The name of the filter.</p>
-function M.MaintenanceWindowFilter(_Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [MaintenanceWindowFilterValues] <p>The filter values.</p>
+-- * Key [MaintenanceWindowFilterKey] <p>The name of the filter.</p>
+-- @return MaintenanceWindowFilter structure as a key-value pair table
+function M.MaintenanceWindowFilter(args)
+	assert(args, "You must provdide an argument table when creating MaintenanceWindowFilter")
 	local t = { 
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertMaintenanceWindowFilter(t)
 	return t
@@ -157,12 +172,15 @@ end
 
 --- Create a structure of type StopAutomationExecutionRequest
 --  
--- @param _AutomationExecutionId [AutomationExecutionId] <p>The execution ID of the Automation to stop.</p>
--- Required parameter: AutomationExecutionId
-function M.StopAutomationExecutionRequest(_AutomationExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopAutomationExecutionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AutomationExecutionId [AutomationExecutionId] <p>The execution ID of the Automation to stop.</p>
+-- Required key: AutomationExecutionId
+-- @return StopAutomationExecutionRequest structure as a key-value pair table
+function M.StopAutomationExecutionRequest(args)
+	assert(args, "You must provdide an argument table when creating StopAutomationExecutionRequest")
 	local t = { 
-		["AutomationExecutionId"] = _AutomationExecutionId,
+		["AutomationExecutionId"] = args["AutomationExecutionId"],
 	}
 	asserts.AssertStopAutomationExecutionRequest(t)
 	return t
@@ -181,11 +199,14 @@ end
 
 --- Create a structure of type InvalidNotificationConfig
 -- <p>One or more configuration items is not valid. Verify that a valid Amazon Resource Name (ARN) was provided for an Amazon SNS topic.</p>
--- @param _Message [String] 
-function M.InvalidNotificationConfig(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNotificationConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidNotificationConfig structure as a key-value pair table
+function M.InvalidNotificationConfig(args)
+	assert(args, "You must provdide an argument table when creating InvalidNotificationConfig")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidNotificationConfig(t)
 	return t
@@ -209,21 +230,24 @@ end
 
 --- Create a structure of type DocumentIdentifier
 -- <p>Describes the name of an SSM document.</p>
--- @param _Name [DocumentARN] <p>The name of the SSM document.</p>
--- @param _PlatformTypes [PlatformTypeList] <p>The operating system platform. </p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version.</p>
--- @param _DocumentType [DocumentType] <p>The document type.</p>
--- @param _Owner [DocumentOwner] <p>The AWS user account of the person who created the document.</p>
--- @param _SchemaVersion [DocumentSchemaVersion] <p>The schema version.</p>
-function M.DocumentIdentifier(_Name, _PlatformTypes, _DocumentVersion, _DocumentType, _Owner, _SchemaVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentIdentifier")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DocumentARN] <p>The name of the SSM document.</p>
+-- * PlatformTypes [PlatformTypeList] <p>The operating system platform. </p>
+-- * DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- * DocumentType [DocumentType] <p>The document type.</p>
+-- * Owner [DocumentOwner] <p>The AWS user account of the person who created the document.</p>
+-- * SchemaVersion [DocumentSchemaVersion] <p>The schema version.</p>
+-- @return DocumentIdentifier structure as a key-value pair table
+function M.DocumentIdentifier(args)
+	assert(args, "You must provdide an argument table when creating DocumentIdentifier")
 	local t = { 
-		["Name"] = _Name,
-		["PlatformTypes"] = _PlatformTypes,
-		["DocumentVersion"] = _DocumentVersion,
-		["DocumentType"] = _DocumentType,
-		["Owner"] = _Owner,
-		["SchemaVersion"] = _SchemaVersion,
+		["Name"] = args["Name"],
+		["PlatformTypes"] = args["PlatformTypes"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["DocumentType"] = args["DocumentType"],
+		["Owner"] = args["Owner"],
+		["SchemaVersion"] = args["SchemaVersion"],
 	}
 	asserts.AssertDocumentIdentifier(t)
 	return t
@@ -242,11 +266,14 @@ end
 
 --- Create a structure of type RegisterDefaultPatchBaselineResult
 --  
--- @param _BaselineId [BaselineId] <p>The ID of the default patch baseline.</p>
-function M.RegisterDefaultPatchBaselineResult(_BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDefaultPatchBaselineResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineId [BaselineId] <p>The ID of the default patch baseline.</p>
+-- @return RegisterDefaultPatchBaselineResult structure as a key-value pair table
+function M.RegisterDefaultPatchBaselineResult(args)
+	assert(args, "You must provdide an argument table when creating RegisterDefaultPatchBaselineResult")
 	local t = { 
-		["BaselineId"] = _BaselineId,
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertRegisterDefaultPatchBaselineResult(t)
 	return t
@@ -277,35 +304,38 @@ end
 
 --- Create a structure of type Patch
 -- <p>Represents metadata about a patch.</p>
--- @param _ContentUrl [PatchContentUrl] <p>The URL where more information can be obtained about the patch.</p>
--- @param _ProductFamily [PatchProductFamily] <p>The product family the patch is applicable for (for example, Windows).</p>
--- @param _Product [PatchProduct] <p>The specific product the patch is applicable for (for example, WindowsServer2016).</p>
--- @param _Vendor [PatchVendor] <p>The name of the vendor providing the patch.</p>
--- @param _Description [PatchDescription] <p>The description of the patch.</p>
--- @param _Classification [PatchClassification] <p>The classification of the patch (for example, SecurityUpdates, Updates, CriticalUpdates).</p>
--- @param _Title [PatchTitle] <p>The title of the patch.</p>
--- @param _ReleaseDate [DateTime] <p>The date the patch was released.</p>
--- @param _Language [PatchLanguage] <p>The language of the patch if it's language-specific.</p>
--- @param _MsrcSeverity [PatchMsrcSeverity] <p>The severity of the patch (for example Critical, Important, Moderate).</p>
--- @param _KbNumber [PatchKbNumber] <p>The Microsoft Knowledge Base ID of the patch.</p>
--- @param _MsrcNumber [PatchMsrcNumber] <p>The ID of the MSRC bulletin the patch is related to.</p>
--- @param _Id [PatchId] <p>The ID of the patch (this is different than the Microsoft Knowledge Base ID).</p>
-function M.Patch(_ContentUrl, _ProductFamily, _Product, _Vendor, _Description, _Classification, _Title, _ReleaseDate, _Language, _MsrcSeverity, _KbNumber, _MsrcNumber, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Patch")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContentUrl [PatchContentUrl] <p>The URL where more information can be obtained about the patch.</p>
+-- * ProductFamily [PatchProductFamily] <p>The product family the patch is applicable for (for example, Windows).</p>
+-- * Product [PatchProduct] <p>The specific product the patch is applicable for (for example, WindowsServer2016).</p>
+-- * Vendor [PatchVendor] <p>The name of the vendor providing the patch.</p>
+-- * Description [PatchDescription] <p>The description of the patch.</p>
+-- * Classification [PatchClassification] <p>The classification of the patch (for example, SecurityUpdates, Updates, CriticalUpdates).</p>
+-- * Title [PatchTitle] <p>The title of the patch.</p>
+-- * ReleaseDate [DateTime] <p>The date the patch was released.</p>
+-- * Language [PatchLanguage] <p>The language of the patch if it's language-specific.</p>
+-- * MsrcSeverity [PatchMsrcSeverity] <p>The severity of the patch (for example Critical, Important, Moderate).</p>
+-- * KbNumber [PatchKbNumber] <p>The Microsoft Knowledge Base ID of the patch.</p>
+-- * MsrcNumber [PatchMsrcNumber] <p>The ID of the MSRC bulletin the patch is related to.</p>
+-- * Id [PatchId] <p>The ID of the patch (this is different than the Microsoft Knowledge Base ID).</p>
+-- @return Patch structure as a key-value pair table
+function M.Patch(args)
+	assert(args, "You must provdide an argument table when creating Patch")
 	local t = { 
-		["ContentUrl"] = _ContentUrl,
-		["ProductFamily"] = _ProductFamily,
-		["Product"] = _Product,
-		["Vendor"] = _Vendor,
-		["Description"] = _Description,
-		["Classification"] = _Classification,
-		["Title"] = _Title,
-		["ReleaseDate"] = _ReleaseDate,
-		["Language"] = _Language,
-		["MsrcSeverity"] = _MsrcSeverity,
-		["KbNumber"] = _KbNumber,
-		["MsrcNumber"] = _MsrcNumber,
-		["Id"] = _Id,
+		["ContentUrl"] = args["ContentUrl"],
+		["ProductFamily"] = args["ProductFamily"],
+		["Product"] = args["Product"],
+		["Vendor"] = args["Vendor"],
+		["Description"] = args["Description"],
+		["Classification"] = args["Classification"],
+		["Title"] = args["Title"],
+		["ReleaseDate"] = args["ReleaseDate"],
+		["Language"] = args["Language"],
+		["MsrcSeverity"] = args["MsrcSeverity"],
+		["KbNumber"] = args["KbNumber"],
+		["MsrcNumber"] = args["MsrcNumber"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertPatch(t)
 	return t
@@ -325,13 +355,16 @@ end
 
 --- Create a structure of type DeregisterTaskFromMaintenanceWindowResult
 --  
--- @param _WindowTaskId [MaintenanceWindowTaskId] <p>The ID of the task removed from the Maintenance Window.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the task was removed from.</p>
-function M.DeregisterTaskFromMaintenanceWindowResult(_WindowTaskId, _WindowId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTaskFromMaintenanceWindowResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowTaskId [MaintenanceWindowTaskId] <p>The ID of the task removed from the Maintenance Window.</p>
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the task was removed from.</p>
+-- @return DeregisterTaskFromMaintenanceWindowResult structure as a key-value pair table
+function M.DeregisterTaskFromMaintenanceWindowResult(args)
+	assert(args, "You must provdide an argument table when creating DeregisterTaskFromMaintenanceWindowResult")
 	local t = { 
-		["WindowTaskId"] = _WindowTaskId,
-		["WindowId"] = _WindowId,
+		["WindowTaskId"] = args["WindowTaskId"],
+		["WindowId"] = args["WindowId"],
 	}
 	asserts.AssertDeregisterTaskFromMaintenanceWindowResult(t)
 	return t
@@ -356,23 +389,26 @@ end
 
 --- Create a structure of type ParameterMetadata
 -- <p>Metada includes information like the ARN of the last user and the date/time the parameter was last used.</p>
--- @param _KeyId [ParameterKeyId] <p>The ID of the query key used for this parameter.</p>
--- @param _Name [PSParameterName] <p>The parameter name.</p>
--- @param _LastModifiedDate [DateTime] <p>Date the parameter was last changed or updated.</p>
--- @param _AllowedPattern [AllowedPattern] <p>A parameter name can include only the following letters and symbols.</p> <p>a-zA-Z0-9_.-</p>
--- @param _LastModifiedUser [String] <p>Amazon Resource Name (ARN) of the AWS user who last changed the parameter.</p>
--- @param _Type [ParameterType] <p>The type of parameter. Valid parameter types include the following: String, String list, Secure string.</p>
--- @param _Description [ParameterDescription] <p>Description of the parameter actions.</p>
-function M.ParameterMetadata(_KeyId, _Name, _LastModifiedDate, _AllowedPattern, _LastModifiedUser, _Type, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KeyId [ParameterKeyId] <p>The ID of the query key used for this parameter.</p>
+-- * Name [PSParameterName] <p>The parameter name.</p>
+-- * LastModifiedDate [DateTime] <p>Date the parameter was last changed or updated.</p>
+-- * AllowedPattern [AllowedPattern] <p>A parameter name can include only the following letters and symbols.</p> <p>a-zA-Z0-9_.-</p>
+-- * LastModifiedUser [String] <p>Amazon Resource Name (ARN) of the AWS user who last changed the parameter.</p>
+-- * Type [ParameterType] <p>The type of parameter. Valid parameter types include the following: String, String list, Secure string.</p>
+-- * Description [ParameterDescription] <p>Description of the parameter actions.</p>
+-- @return ParameterMetadata structure as a key-value pair table
+function M.ParameterMetadata(args)
+	assert(args, "You must provdide an argument table when creating ParameterMetadata")
 	local t = { 
-		["KeyId"] = _KeyId,
-		["Name"] = _Name,
-		["LastModifiedDate"] = _LastModifiedDate,
-		["AllowedPattern"] = _AllowedPattern,
-		["LastModifiedUser"] = _LastModifiedUser,
-		["Type"] = _Type,
-		["Description"] = _Description,
+		["KeyId"] = args["KeyId"],
+		["Name"] = args["Name"],
+		["LastModifiedDate"] = args["LastModifiedDate"],
+		["AllowedPattern"] = args["AllowedPattern"],
+		["LastModifiedUser"] = args["LastModifiedUser"],
+		["Type"] = args["Type"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertParameterMetadata(t)
 	return t
@@ -393,14 +429,17 @@ end
 
 --- Create a structure of type GetParametersRequest
 --  
--- @param _Names [ParameterNameList] <p>Names of the parameters for which you want to query information.</p>
--- @param _WithDecryption [Boolean] <p>Return decrypted secure string value. Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.</p>
--- Required parameter: Names
-function M.GetParametersRequest(_Names, _WithDecryption, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetParametersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Names [ParameterNameList] <p>Names of the parameters for which you want to query information.</p>
+-- * WithDecryption [Boolean] <p>Return decrypted secure string value. Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.</p>
+-- Required key: Names
+-- @return GetParametersRequest structure as a key-value pair table
+function M.GetParametersRequest(args)
+	assert(args, "You must provdide an argument table when creating GetParametersRequest")
 	local t = { 
-		["Names"] = _Names,
-		["WithDecryption"] = _WithDecryption,
+		["Names"] = args["Names"],
+		["WithDecryption"] = args["WithDecryption"],
 	}
 	asserts.AssertGetParametersRequest(t)
 	return t
@@ -420,13 +459,16 @@ end
 
 --- Create a structure of type GetParametersResult
 --  
--- @param _InvalidParameters [ParameterNameList] <p>A list of parameters that are not formatted correctly or do not run when executed.</p>
--- @param _Parameters [ParameterList] <p>A list of details for a parameter.</p>
-function M.GetParametersResult(_InvalidParameters, _Parameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetParametersResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InvalidParameters [ParameterNameList] <p>A list of parameters that are not formatted correctly or do not run when executed.</p>
+-- * Parameters [ParameterList] <p>A list of details for a parameter.</p>
+-- @return GetParametersResult structure as a key-value pair table
+function M.GetParametersResult(args)
+	assert(args, "You must provdide an argument table when creating GetParametersResult")
 	local t = { 
-		["InvalidParameters"] = _InvalidParameters,
-		["Parameters"] = _Parameters,
+		["InvalidParameters"] = args["InvalidParameters"],
+		["Parameters"] = args["Parameters"],
 	}
 	asserts.AssertGetParametersResult(t)
 	return t
@@ -448,15 +490,18 @@ end
 
 --- Create a structure of type PatchFilter
 -- <p>Defines a patch filter.</p>
--- @param _Values [PatchFilterValueList] <p>The value for the filter key.</p>
--- @param _Key [PatchFilterKey] <p>The key for the filter (PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID)</p>
--- Required parameter: Key
--- Required parameter: Values
-function M.PatchFilter(_Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PatchFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [PatchFilterValueList] <p>The value for the filter key.</p>
+-- * Key [PatchFilterKey] <p>The key for the filter (PRODUCT, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID)</p>
+-- Required key: Key
+-- Required key: Values
+-- @return PatchFilter structure as a key-value pair table
+function M.PatchFilter(args)
+	assert(args, "You must provdide an argument table when creating PatchFilter")
 	local t = { 
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertPatchFilter(t)
 	return t
@@ -476,13 +521,16 @@ end
 
 --- Create a structure of type ItemSizeLimitExceededException
 -- <p>The inventory item size has exceeded the size limit.</p>
--- @param _TypeName [InventoryItemTypeName] 
--- @param _Message [String] 
-function M.ItemSizeLimitExceededException(_TypeName, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ItemSizeLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypeName [InventoryItemTypeName] 
+-- * Message [String] 
+-- @return ItemSizeLimitExceededException structure as a key-value pair table
+function M.ItemSizeLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating ItemSizeLimitExceededException")
 	local t = { 
-		["TypeName"] = _TypeName,
-		["Message"] = _Message,
+		["TypeName"] = args["TypeName"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertItemSizeLimitExceededException(t)
 	return t
@@ -502,13 +550,16 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionTaskInvocationsResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _WindowExecutionTaskInvocationIdentities [MaintenanceWindowExecutionTaskInvocationIdentityList] <p>Information about the task invocation results per invocation.</p>
-function M.DescribeMaintenanceWindowExecutionTaskInvocationsResult(_NextToken, _WindowExecutionTaskInvocationIdentities, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionTaskInvocationsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * WindowExecutionTaskInvocationIdentities [MaintenanceWindowExecutionTaskInvocationIdentityList] <p>Information about the task invocation results per invocation.</p>
+-- @return DescribeMaintenanceWindowExecutionTaskInvocationsResult structure as a key-value pair table
+function M.DescribeMaintenanceWindowExecutionTaskInvocationsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionTaskInvocationsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["WindowExecutionTaskInvocationIdentities"] = _WindowExecutionTaskInvocationIdentities,
+		["NextToken"] = args["NextToken"],
+		["WindowExecutionTaskInvocationIdentities"] = args["WindowExecutionTaskInvocationIdentities"],
 	}
 	asserts.AssertDescribeMaintenanceWindowExecutionTaskInvocationsResult(t)
 	return t
@@ -527,11 +578,14 @@ end
 
 --- Create a structure of type ResourceLimitExceededException
 -- <p>Error returned when the caller has exceeded the default resource limits (e.g. too many Maintenance Windows have been created).</p>
--- @param _Message [String] 
-function M.ResourceLimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return ResourceLimitExceededException structure as a key-value pair table
+function M.ResourceLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating ResourceLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertResourceLimitExceededException(t)
 	return t
@@ -555,18 +609,21 @@ end
 
 --- Create a structure of type AddTagsToResourceRequest
 --  
--- @param _ResourceType [ResourceTypeForTagging] <p>Specifies the type of resource you are tagging.</p>
--- @param _ResourceId [ResourceId] <p>The resource ID you want to tag.</p>
--- @param _Tags [TagList] <p> One or more tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string. </p>
--- Required parameter: ResourceType
--- Required parameter: ResourceId
--- Required parameter: Tags
-function M.AddTagsToResourceRequest(_ResourceType, _ResourceId, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [ResourceTypeForTagging] <p>Specifies the type of resource you are tagging.</p>
+-- * ResourceId [ResourceId] <p>The resource ID you want to tag.</p>
+-- * Tags [TagList] <p> One or more tags. The value parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string. </p>
+-- Required key: ResourceType
+-- Required key: ResourceId
+-- Required key: Tags
+-- @return AddTagsToResourceRequest structure as a key-value pair table
+function M.AddTagsToResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToResourceRequest")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceId"] = _ResourceId,
-		["Tags"] = _Tags,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceId"] = args["ResourceId"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertAddTagsToResourceRequest(t)
 	return t
@@ -588,17 +645,20 @@ end
 
 --- Create a structure of type DocumentVersionInfo
 -- <p>Version information about the document.</p>
--- @param _IsDefaultVersion [Boolean] <p>An identifier for the default version of the document.</p>
--- @param _Name [DocumentName] <p>The document name.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version.</p>
--- @param _CreatedDate [DateTime] <p>The date the document was created.</p>
-function M.DocumentVersionInfo(_IsDefaultVersion, _Name, _DocumentVersion, _CreatedDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentVersionInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IsDefaultVersion [Boolean] <p>An identifier for the default version of the document.</p>
+-- * Name [DocumentName] <p>The document name.</p>
+-- * DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- * CreatedDate [DateTime] <p>The date the document was created.</p>
+-- @return DocumentVersionInfo structure as a key-value pair table
+function M.DocumentVersionInfo(args)
+	assert(args, "You must provdide an argument table when creating DocumentVersionInfo")
 	local t = { 
-		["IsDefaultVersion"] = _IsDefaultVersion,
-		["Name"] = _Name,
-		["DocumentVersion"] = _DocumentVersion,
-		["CreatedDate"] = _CreatedDate,
+		["IsDefaultVersion"] = args["IsDefaultVersion"],
+		["Name"] = args["Name"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["CreatedDate"] = args["CreatedDate"],
 	}
 	asserts.AssertDocumentVersionInfo(t)
 	return t
@@ -620,16 +680,19 @@ end
 
 --- Create a structure of type DescribeInstancePatchStatesRequest
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [PatchComplianceMaxResults] <p>The maximum number of instances to return (per page).</p>
--- @param _InstanceIds [InstanceIdList] <p>The ID of the instance whose patch state information should be retrieved.</p>
--- Required parameter: InstanceIds
-function M.DescribeInstancePatchStatesRequest(_NextToken, _MaxResults, _InstanceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchStatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [PatchComplianceMaxResults] <p>The maximum number of instances to return (per page).</p>
+-- * InstanceIds [InstanceIdList] <p>The ID of the instance whose patch state information should be retrieved.</p>
+-- Required key: InstanceIds
+-- @return DescribeInstancePatchStatesRequest structure as a key-value pair table
+function M.DescribeInstancePatchStatesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancePatchStatesRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["InstanceIds"] = _InstanceIds,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["InstanceIds"] = args["InstanceIds"],
 	}
 	asserts.AssertDescribeInstancePatchStatesRequest(t)
 	return t
@@ -651,17 +714,20 @@ end
 
 --- Create a structure of type GetDocumentResult
 --  
--- @param _Content [DocumentContent] <p>The contents of the SSM document.</p>
--- @param _Name [DocumentARN] <p>The name of the SSM document.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version.</p>
--- @param _DocumentType [DocumentType] <p>The document type.</p>
-function M.GetDocumentResult(_Content, _Name, _DocumentVersion, _DocumentType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Content [DocumentContent] <p>The contents of the SSM document.</p>
+-- * Name [DocumentARN] <p>The name of the SSM document.</p>
+-- * DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- * DocumentType [DocumentType] <p>The document type.</p>
+-- @return GetDocumentResult structure as a key-value pair table
+function M.GetDocumentResult(args)
+	assert(args, "You must provdide an argument table when creating GetDocumentResult")
 	local t = { 
-		["Content"] = _Content,
-		["Name"] = _Name,
-		["DocumentVersion"] = _DocumentVersion,
-		["DocumentType"] = _DocumentType,
+		["Content"] = args["Content"],
+		["Name"] = args["Name"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["DocumentType"] = args["DocumentType"],
 	}
 	asserts.AssertGetDocumentResult(t)
 	return t
@@ -680,11 +746,14 @@ end
 
 --- Create a structure of type GetAutomationExecutionResult
 --  
--- @param _AutomationExecution [AutomationExecution] <p>Detailed information about the current state of an automation execution.</p>
-function M.GetAutomationExecutionResult(_AutomationExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAutomationExecutionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AutomationExecution [AutomationExecution] <p>Detailed information about the current state of an automation execution.</p>
+-- @return GetAutomationExecutionResult structure as a key-value pair table
+function M.GetAutomationExecutionResult(args)
+	assert(args, "You must provdide an argument table when creating GetAutomationExecutionResult")
 	local t = { 
-		["AutomationExecution"] = _AutomationExecution,
+		["AutomationExecution"] = args["AutomationExecution"],
 	}
 	asserts.AssertGetAutomationExecutionResult(t)
 	return t
@@ -702,8 +771,11 @@ end
 
 --- Create a structure of type InvalidFilterKey
 -- <p>The specified key is not valid.</p>
-function M.InvalidFilterKey(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFilterKey")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidFilterKey structure as a key-value pair table
+function M.InvalidFilterKey(args)
+	assert(args, "You must provdide an argument table when creating InvalidFilterKey")
 	local t = { 
 	}
 	asserts.AssertInvalidFilterKey(t)
@@ -730,22 +802,25 @@ end
 
 --- Create a structure of type InventoryItem
 -- <p>Information collected from managed instances based on your inventory policy document</p>
--- @param _ContentHash [InventoryItemContentHash] <p>MD5 hash of the inventory item type contents. The content hash is used to determine whether to update inventory information. The PutInventory API does not update the inventory item type contents if the MD5 hash has not changed since last update. </p>
--- @param _TypeName [InventoryItemTypeName] <p>The name of the inventory type. Default inventory item type names start with AWS. Custom inventory type names will start with Custom. Default inventory item types include the following: AWS:AWSComponent, AWS:Application, AWS:InstanceInformation, AWS:Network, and AWS:WindowsUpdate.</p>
--- @param _SchemaVersion [InventoryItemSchemaVersion] <p>The schema version for the inventory item.</p>
--- @param _CaptureTime [InventoryItemCaptureTime] <p>The time the inventory information was collected.</p>
--- @param _Content [InventoryItemEntryList] <p>The inventory data of the inventory type.</p>
--- Required parameter: TypeName
--- Required parameter: SchemaVersion
--- Required parameter: CaptureTime
-function M.InventoryItem(_ContentHash, _TypeName, _SchemaVersion, _CaptureTime, _Content, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContentHash [InventoryItemContentHash] <p>MD5 hash of the inventory item type contents. The content hash is used to determine whether to update inventory information. The PutInventory API does not update the inventory item type contents if the MD5 hash has not changed since last update. </p>
+-- * TypeName [InventoryItemTypeName] <p>The name of the inventory type. Default inventory item type names start with AWS. Custom inventory type names will start with Custom. Default inventory item types include the following: AWS:AWSComponent, AWS:Application, AWS:InstanceInformation, AWS:Network, and AWS:WindowsUpdate.</p>
+-- * SchemaVersion [InventoryItemSchemaVersion] <p>The schema version for the inventory item.</p>
+-- * CaptureTime [InventoryItemCaptureTime] <p>The time the inventory information was collected.</p>
+-- * Content [InventoryItemEntryList] <p>The inventory data of the inventory type.</p>
+-- Required key: TypeName
+-- Required key: SchemaVersion
+-- Required key: CaptureTime
+-- @return InventoryItem structure as a key-value pair table
+function M.InventoryItem(args)
+	assert(args, "You must provdide an argument table when creating InventoryItem")
 	local t = { 
-		["ContentHash"] = _ContentHash,
-		["TypeName"] = _TypeName,
-		["SchemaVersion"] = _SchemaVersion,
-		["CaptureTime"] = _CaptureTime,
-		["Content"] = _Content,
+		["ContentHash"] = args["ContentHash"],
+		["TypeName"] = args["TypeName"],
+		["SchemaVersion"] = args["SchemaVersion"],
+		["CaptureTime"] = args["CaptureTime"],
+		["Content"] = args["Content"],
 	}
 	asserts.AssertInventoryItem(t)
 	return t
@@ -764,11 +839,14 @@ end
 
 --- Create a structure of type MaintenanceWindowTaskParameterValueExpression
 -- <p>Defines the values for a task parameter.</p>
--- @param _Values [MaintenanceWindowTaskParameterValueList] <p>This field contains an array of 0 or more strings, each 1 to 255 characters in length.</p>
-function M.MaintenanceWindowTaskParameterValueExpression(_Values, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowTaskParameterValueExpression")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [MaintenanceWindowTaskParameterValueList] <p>This field contains an array of 0 or more strings, each 1 to 255 characters in length.</p>
+-- @return MaintenanceWindowTaskParameterValueExpression structure as a key-value pair table
+function M.MaintenanceWindowTaskParameterValueExpression(args)
+	assert(args, "You must provdide an argument table when creating MaintenanceWindowTaskParameterValueExpression")
 	local t = { 
-		["Values"] = _Values,
+		["Values"] = args["Values"],
 	}
 	asserts.AssertMaintenanceWindowTaskParameterValueExpression(t)
 	return t
@@ -791,19 +869,22 @@ end
 
 --- Create a structure of type MaintenanceWindowIdentity
 -- <p>Information about the Maintenance Window.</p>
--- @param _Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
--- @param _Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window.</p>
--- @param _Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Window is enabled.</p>
--- @param _Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
-function M.MaintenanceWindowIdentity(_Duration, _Cutoff, _WindowId, _Enabled, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowIdentity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
+-- * Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window.</p>
+-- * Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Window is enabled.</p>
+-- * Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
+-- @return MaintenanceWindowIdentity structure as a key-value pair table
+function M.MaintenanceWindowIdentity(args)
+	assert(args, "You must provdide an argument table when creating MaintenanceWindowIdentity")
 	local t = { 
-		["Duration"] = _Duration,
-		["Cutoff"] = _Cutoff,
-		["WindowId"] = _WindowId,
-		["Enabled"] = _Enabled,
-		["Name"] = _Name,
+		["Duration"] = args["Duration"],
+		["Cutoff"] = args["Cutoff"],
+		["WindowId"] = args["WindowId"],
+		["Enabled"] = args["Enabled"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertMaintenanceWindowIdentity(t)
 	return t
@@ -823,13 +904,16 @@ end
 
 --- Create a structure of type PatchStatus
 -- <p>Information about the approval status of a patch.</p>
--- @param _ApprovalDate [DateTime] <p>The date the patch was approved (or will be approved if the status is PENDING_APPROVAL).</p>
--- @param _DeploymentStatus [PatchDeploymentStatus] <p>The approval status of a patch (APPROVED, PENDING_APPROVAL, EXPLICIT_APPROVED, EXPLICIT_REJECTED).</p>
-function M.PatchStatus(_ApprovalDate, _DeploymentStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PatchStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApprovalDate [DateTime] <p>The date the patch was approved (or will be approved if the status is PENDING_APPROVAL).</p>
+-- * DeploymentStatus [PatchDeploymentStatus] <p>The approval status of a patch (APPROVED, PENDING_APPROVAL, EXPLICIT_APPROVED, EXPLICIT_REJECTED).</p>
+-- @return PatchStatus structure as a key-value pair table
+function M.PatchStatus(args)
+	assert(args, "You must provdide an argument table when creating PatchStatus")
 	local t = { 
-		["ApprovalDate"] = _ApprovalDate,
-		["DeploymentStatus"] = _DeploymentStatus,
+		["ApprovalDate"] = args["ApprovalDate"],
+		["DeploymentStatus"] = args["DeploymentStatus"],
 	}
 	asserts.AssertPatchStatus(t)
 	return t
@@ -849,13 +933,16 @@ end
 
 --- Create a structure of type ListDocumentsResult
 --  
--- @param _DocumentIdentifiers [DocumentIdentifierList] <p>The names of the SSM documents.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.ListDocumentsResult(_DocumentIdentifiers, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDocumentsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DocumentIdentifiers [DocumentIdentifierList] <p>The names of the SSM documents.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return ListDocumentsResult structure as a key-value pair table
+function M.ListDocumentsResult(args)
+	assert(args, "You must provdide an argument table when creating ListDocumentsResult")
 	local t = { 
-		["DocumentIdentifiers"] = _DocumentIdentifiers,
-		["NextToken"] = _NextToken,
+		["DocumentIdentifiers"] = args["DocumentIdentifiers"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListDocumentsResult(t)
 	return t
@@ -874,11 +961,14 @@ end
 
 --- Create a structure of type InvalidAutomationExecutionParametersException
 -- <p>The supplied parameters for invoking the specified Automation document are incorrect. For example, they may not match the set of parameters permitted for the specified Automation document.</p>
--- @param _Message [String] 
-function M.InvalidAutomationExecutionParametersException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAutomationExecutionParametersException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidAutomationExecutionParametersException structure as a key-value pair table
+function M.InvalidAutomationExecutionParametersException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAutomationExecutionParametersException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidAutomationExecutionParametersException(t)
 	return t
@@ -897,11 +987,14 @@ end
 
 --- Create a structure of type ParameterAlreadyExists
 -- <p>The parameter already exists. You can't create duplicate parameters.</p>
--- @param _message [String] 
-function M.ParameterAlreadyExists(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return ParameterAlreadyExists structure as a key-value pair table
+function M.ParameterAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating ParameterAlreadyExists")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertParameterAlreadyExists(t)
 	return t
@@ -922,14 +1015,17 @@ end
 
 --- Create a structure of type CancelCommandRequest
 -- <p/>
--- @param _CommandId [CommandId] <p>The ID of the command you want to cancel.</p>
--- @param _InstanceIds [InstanceIdList] <p>(Optional) A list of instance IDs on which you want to cancel the command. If not provided, the command is canceled on every instance on which it was requested.</p>
--- Required parameter: CommandId
-function M.CancelCommandRequest(_CommandId, _InstanceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelCommandRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CommandId [CommandId] <p>The ID of the command you want to cancel.</p>
+-- * InstanceIds [InstanceIdList] <p>(Optional) A list of instance IDs on which you want to cancel the command. If not provided, the command is canceled on every instance on which it was requested.</p>
+-- Required key: CommandId
+-- @return CancelCommandRequest structure as a key-value pair table
+function M.CancelCommandRequest(args)
+	assert(args, "You must provdide an argument table when creating CancelCommandRequest")
 	local t = { 
-		["CommandId"] = _CommandId,
-		["InstanceIds"] = _InstanceIds,
+		["CommandId"] = args["CommandId"],
+		["InstanceIds"] = args["InstanceIds"],
 	}
 	asserts.AssertCancelCommandRequest(t)
 	return t
@@ -949,12 +1045,15 @@ end
 
 --- Create a structure of type DeregisterManagedInstanceRequest
 --  
--- @param _InstanceId [ManagedInstanceId] <p>The ID assigned to the managed instance when you registered it using the activation process. </p>
--- Required parameter: InstanceId
-function M.DeregisterManagedInstanceRequest(_InstanceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterManagedInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [ManagedInstanceId] <p>The ID assigned to the managed instance when you registered it using the activation process. </p>
+-- Required key: InstanceId
+-- @return DeregisterManagedInstanceRequest structure as a key-value pair table
+function M.DeregisterManagedInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterManagedInstanceRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
+		["InstanceId"] = args["InstanceId"],
 	}
 	asserts.AssertDeregisterManagedInstanceRequest(t)
 	return t
@@ -992,49 +1091,52 @@ end
 
 --- Create a structure of type Command
 -- <p>Describes a command request.</p>
--- @param _Comment [Comment] <p>User-specified information about the command, such as a brief description of what the command should do.</p>
--- @param _Status [CommandStatus] <p>The status of the command.</p>
--- @param _MaxErrors [MaxErrors] <p>The maximum number of errors allowed before the system stops sending the command to additional targets. You can specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 50. For more information about how to use MaxErrors, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using Systems Manager Run Command</a>.</p>
--- @param _Parameters [Parameters] <p>The parameter values to be inserted in the document when executing the command.</p>
--- @param _ExpiresAfter [DateTime] <p>If this time is reached and the command has not already started executing, it will not execute. Calculated based on the ExpiresAfter user input provided as part of the SendCommand API.</p>
--- @param _ServiceRole [ServiceRole] <p>The IAM service role that Run Command uses to act on your behalf when sending notifications about command status changes. </p>
--- @param _DocumentName [DocumentName] <p>The name of the document requested for execution.</p>
--- @param _TargetCount [TargetCount] <p>The number of targets for the command.</p>
--- @param _OutputS3BucketName [S3BucketName] <p>The S3 bucket where the responses to the command executions should be stored. This was requested when issuing the command.</p>
--- @param _NotificationConfig [NotificationConfig] <p>Configurations for sending notifications about command status changes. </p>
--- @param _CompletedCount [CompletedCount] <p>The number of targets for which the command invocation reached a terminal state. Terminal states include the following: Success, Failed, Execution Timed Out, Delivery Timed Out, Canceled, Terminated, or Undeliverable.</p>
--- @param _Targets [Targets] <p>An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call.</p>
--- @param _StatusDetails [StatusDetails] <p>A detailed status of the command execution. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to any instances.</p> </li> <li> <p>In Progress: The command has been sent to at least one instance but has not reached a final state on all instances.</p> </li> <li> <p>Success: The command successfully executed on all invocations. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The value of MaxErrors or more command invocations shows a status of Delivery Timed Out. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: The value of MaxErrors or more command invocations shows a status of Execution Timed Out. This is a terminal state.</p> </li> <li> <p>Failed: The value of MaxErrors or more command invocations shows a status of Failed. This is a terminal state.</p> </li> <li> <p>Incomplete: The command was attempted on all instances and one or more invocations does not have a value of Success but not enough invocations failed for the status to be Failed. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Rate Exceeded: The number of instances targeted by the command exceeded the account limit for pending invocations. The system has canceled the command before executing it on any instance. This is a terminal state.</p> </li> </ul>
--- @param _ErrorCount [ErrorCount] <p>The number of targets for which the status is Failed or Execution Timed Out.</p>
--- @param _OutputS3KeyPrefix [S3KeyPrefix] <p>The S3 directory path inside the bucket where the responses to the command executions should be stored. This was requested when issuing the command.</p>
--- @param _RequestedDateTime [DateTime] <p>The date and time the command was requested.</p>
--- @param _OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
--- @param _CommandId [CommandId] <p>A unique identifier for this command.</p>
--- @param _InstanceIds [InstanceIdList] <p>The instance IDs against which this command was requested.</p>
--- @param _MaxConcurrency [MaxConcurrency] <p>The maximum number of instances that are allowed to execute the command at the same time. You can specify a number of instances, such as 10, or a percentage of instances, such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using Systems Manager Run Command</a>.</p>
-function M.Command(_Comment, _Status, _MaxErrors, _Parameters, _ExpiresAfter, _ServiceRole, _DocumentName, _TargetCount, _OutputS3BucketName, _NotificationConfig, _CompletedCount, _Targets, _StatusDetails, _ErrorCount, _OutputS3KeyPrefix, _RequestedDateTime, _OutputS3Region, _CommandId, _InstanceIds, _MaxConcurrency, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Command")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [Comment] <p>User-specified information about the command, such as a brief description of what the command should do.</p>
+-- * Status [CommandStatus] <p>The status of the command.</p>
+-- * MaxErrors [MaxErrors] <p>The maximum number of errors allowed before the system stops sending the command to additional targets. You can specify a number of errors, such as 10, or a percentage or errors, such as 10%. The default value is 50. For more information about how to use MaxErrors, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using Systems Manager Run Command</a>.</p>
+-- * Parameters [Parameters] <p>The parameter values to be inserted in the document when executing the command.</p>
+-- * ExpiresAfter [DateTime] <p>If this time is reached and the command has not already started executing, it will not execute. Calculated based on the ExpiresAfter user input provided as part of the SendCommand API.</p>
+-- * ServiceRole [ServiceRole] <p>The IAM service role that Run Command uses to act on your behalf when sending notifications about command status changes. </p>
+-- * DocumentName [DocumentName] <p>The name of the document requested for execution.</p>
+-- * TargetCount [TargetCount] <p>The number of targets for the command.</p>
+-- * OutputS3BucketName [S3BucketName] <p>The S3 bucket where the responses to the command executions should be stored. This was requested when issuing the command.</p>
+-- * NotificationConfig [NotificationConfig] <p>Configurations for sending notifications about command status changes. </p>
+-- * CompletedCount [CompletedCount] <p>The number of targets for which the command invocation reached a terminal state. Terminal states include the following: Success, Failed, Execution Timed Out, Delivery Timed Out, Canceled, Terminated, or Undeliverable.</p>
+-- * Targets [Targets] <p>An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call.</p>
+-- * StatusDetails [StatusDetails] <p>A detailed status of the command execution. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to any instances.</p> </li> <li> <p>In Progress: The command has been sent to at least one instance but has not reached a final state on all instances.</p> </li> <li> <p>Success: The command successfully executed on all invocations. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The value of MaxErrors or more command invocations shows a status of Delivery Timed Out. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: The value of MaxErrors or more command invocations shows a status of Execution Timed Out. This is a terminal state.</p> </li> <li> <p>Failed: The value of MaxErrors or more command invocations shows a status of Failed. This is a terminal state.</p> </li> <li> <p>Incomplete: The command was attempted on all instances and one or more invocations does not have a value of Success but not enough invocations failed for the status to be Failed. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Rate Exceeded: The number of instances targeted by the command exceeded the account limit for pending invocations. The system has canceled the command before executing it on any instance. This is a terminal state.</p> </li> </ul>
+-- * ErrorCount [ErrorCount] <p>The number of targets for which the status is Failed or Execution Timed Out.</p>
+-- * OutputS3KeyPrefix [S3KeyPrefix] <p>The S3 directory path inside the bucket where the responses to the command executions should be stored. This was requested when issuing the command.</p>
+-- * RequestedDateTime [DateTime] <p>The date and time the command was requested.</p>
+-- * OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
+-- * CommandId [CommandId] <p>A unique identifier for this command.</p>
+-- * InstanceIds [InstanceIdList] <p>The instance IDs against which this command was requested.</p>
+-- * MaxConcurrency [MaxConcurrency] <p>The maximum number of instances that are allowed to execute the command at the same time. You can specify a number of instances, such as 10, or a percentage of instances, such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using Systems Manager Run Command</a>.</p>
+-- @return Command structure as a key-value pair table
+function M.Command(args)
+	assert(args, "You must provdide an argument table when creating Command")
 	local t = { 
-		["Comment"] = _Comment,
-		["Status"] = _Status,
-		["MaxErrors"] = _MaxErrors,
-		["Parameters"] = _Parameters,
-		["ExpiresAfter"] = _ExpiresAfter,
-		["ServiceRole"] = _ServiceRole,
-		["DocumentName"] = _DocumentName,
-		["TargetCount"] = _TargetCount,
-		["OutputS3BucketName"] = _OutputS3BucketName,
-		["NotificationConfig"] = _NotificationConfig,
-		["CompletedCount"] = _CompletedCount,
-		["Targets"] = _Targets,
-		["StatusDetails"] = _StatusDetails,
-		["ErrorCount"] = _ErrorCount,
-		["OutputS3KeyPrefix"] = _OutputS3KeyPrefix,
-		["RequestedDateTime"] = _RequestedDateTime,
-		["OutputS3Region"] = _OutputS3Region,
-		["CommandId"] = _CommandId,
-		["InstanceIds"] = _InstanceIds,
-		["MaxConcurrency"] = _MaxConcurrency,
+		["Comment"] = args["Comment"],
+		["Status"] = args["Status"],
+		["MaxErrors"] = args["MaxErrors"],
+		["Parameters"] = args["Parameters"],
+		["ExpiresAfter"] = args["ExpiresAfter"],
+		["ServiceRole"] = args["ServiceRole"],
+		["DocumentName"] = args["DocumentName"],
+		["TargetCount"] = args["TargetCount"],
+		["OutputS3BucketName"] = args["OutputS3BucketName"],
+		["NotificationConfig"] = args["NotificationConfig"],
+		["CompletedCount"] = args["CompletedCount"],
+		["Targets"] = args["Targets"],
+		["StatusDetails"] = args["StatusDetails"],
+		["ErrorCount"] = args["ErrorCount"],
+		["OutputS3KeyPrefix"] = args["OutputS3KeyPrefix"],
+		["RequestedDateTime"] = args["RequestedDateTime"],
+		["OutputS3Region"] = args["OutputS3Region"],
+		["CommandId"] = args["CommandId"],
+		["InstanceIds"] = args["InstanceIds"],
+		["MaxConcurrency"] = args["MaxConcurrency"],
 	}
 	asserts.AssertCommand(t)
 	return t
@@ -1062,26 +1164,29 @@ end
 
 --- Create a structure of type PutParameterRequest
 --  
--- @param _KeyId [ParameterKeyId] <p>The KMS Key ID that you want to use to encrypt a parameter when you choose the SecureString data type. If you don't specify a key ID, the system uses the default key associated with your AWS account.</p>
--- @param _Name [PSParameterName] <p>The name of the parameter that you want to add to the system.</p>
--- @param _Value [PSParameterValue] <p>The parameter value that you want to add to the system.</p>
--- @param _AllowedPattern [AllowedPattern] <p>A regular expression used to validate the parameter value. For example, for String types with values restricted to numbers, you can specify the following: AllowedPattern=^\d+$ </p>
--- @param _Type [ParameterType] <p>The type of parameter that you want to add to the system.</p>
--- @param _Overwrite [Boolean] <p>Overwrite an existing parameter. If not specified, will default to "false".</p>
--- @param _Description [ParameterDescription] <p>Information about the parameter that you want to add to the system</p>
--- Required parameter: Name
--- Required parameter: Value
--- Required parameter: Type
-function M.PutParameterRequest(_KeyId, _Name, _Value, _AllowedPattern, _Type, _Overwrite, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutParameterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KeyId [ParameterKeyId] <p>The KMS Key ID that you want to use to encrypt a parameter when you choose the SecureString data type. If you don't specify a key ID, the system uses the default key associated with your AWS account.</p>
+-- * Name [PSParameterName] <p>The name of the parameter that you want to add to the system.</p>
+-- * Value [PSParameterValue] <p>The parameter value that you want to add to the system.</p>
+-- * AllowedPattern [AllowedPattern] <p>A regular expression used to validate the parameter value. For example, for String types with values restricted to numbers, you can specify the following: AllowedPattern=^\d+$ </p>
+-- * Type [ParameterType] <p>The type of parameter that you want to add to the system.</p>
+-- * Overwrite [Boolean] <p>Overwrite an existing parameter. If not specified, will default to "false".</p>
+-- * Description [ParameterDescription] <p>Information about the parameter that you want to add to the system</p>
+-- Required key: Name
+-- Required key: Value
+-- Required key: Type
+-- @return PutParameterRequest structure as a key-value pair table
+function M.PutParameterRequest(args)
+	assert(args, "You must provdide an argument table when creating PutParameterRequest")
 	local t = { 
-		["KeyId"] = _KeyId,
-		["Name"] = _Name,
-		["Value"] = _Value,
-		["AllowedPattern"] = _AllowedPattern,
-		["Type"] = _Type,
-		["Overwrite"] = _Overwrite,
-		["Description"] = _Description,
+		["KeyId"] = args["KeyId"],
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
+		["AllowedPattern"] = args["AllowedPattern"],
+		["Type"] = args["Type"],
+		["Overwrite"] = args["Overwrite"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertPutParameterRequest(t)
 	return t
@@ -1105,18 +1210,21 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceRequest
 --  
--- @param _ResourceType [ResourceTypeForTagging] <p>The type of resource of which you want to remove a tag.</p>
--- @param _ResourceId [ResourceId] <p>The resource ID for which you want to remove tags.</p>
--- @param _TagKeys [KeyList] <p>Tag keys that you want to remove from the specified resource.</p>
--- Required parameter: ResourceType
--- Required parameter: ResourceId
--- Required parameter: TagKeys
-function M.RemoveTagsFromResourceRequest(_ResourceType, _ResourceId, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [ResourceTypeForTagging] <p>The type of resource of which you want to remove a tag.</p>
+-- * ResourceId [ResourceId] <p>The resource ID for which you want to remove tags.</p>
+-- * TagKeys [KeyList] <p>Tag keys that you want to remove from the specified resource.</p>
+-- Required key: ResourceType
+-- Required key: ResourceId
+-- Required key: TagKeys
+-- @return RemoveTagsFromResourceRequest structure as a key-value pair table
+function M.RemoveTagsFromResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceRequest")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceId"] = _ResourceId,
-		["TagKeys"] = _TagKeys,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceId"] = args["ResourceId"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertRemoveTagsFromResourceRequest(t)
 	return t
@@ -1138,15 +1246,18 @@ end
 
 --- Create a structure of type DocumentFilter
 -- <p>Describes a filter.</p>
--- @param _value [DocumentFilterValue] <p>The value of the filter.</p>
--- @param _key [DocumentFilterKey] <p>The name of the filter.</p>
--- Required parameter: key
--- Required parameter: value
-function M.DocumentFilter(_value, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [DocumentFilterValue] <p>The value of the filter.</p>
+-- * key [DocumentFilterKey] <p>The name of the filter.</p>
+-- Required key: key
+-- Required key: value
+-- @return DocumentFilter structure as a key-value pair table
+function M.DocumentFilter(args)
+	assert(args, "You must provdide an argument table when creating DocumentFilter")
 	local t = { 
-		["value"] = _value,
-		["key"] = _key,
+		["value"] = args["value"],
+		["key"] = args["key"],
 	}
 	asserts.AssertDocumentFilter(t)
 	return t
@@ -1168,15 +1279,18 @@ end
 
 --- Create a structure of type GetDeployablePatchSnapshotForInstanceRequest
 --  
--- @param _InstanceId [InstanceId] <p>The ID of the instance for which the appropriate patch snapshot should be retrieved.</p>
--- @param _SnapshotId [SnapshotId] <p>The user-defined snapshot ID.</p>
--- Required parameter: InstanceId
--- Required parameter: SnapshotId
-function M.GetDeployablePatchSnapshotForInstanceRequest(_InstanceId, _SnapshotId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeployablePatchSnapshotForInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The ID of the instance for which the appropriate patch snapshot should be retrieved.</p>
+-- * SnapshotId [SnapshotId] <p>The user-defined snapshot ID.</p>
+-- Required key: InstanceId
+-- Required key: SnapshotId
+-- @return GetDeployablePatchSnapshotForInstanceRequest structure as a key-value pair table
+function M.GetDeployablePatchSnapshotForInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDeployablePatchSnapshotForInstanceRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["SnapshotId"] = _SnapshotId,
+		["InstanceId"] = args["InstanceId"],
+		["SnapshotId"] = args["SnapshotId"],
 	}
 	asserts.AssertGetDeployablePatchSnapshotForInstanceRequest(t)
 	return t
@@ -1200,21 +1314,24 @@ end
 
 --- Create a structure of type GetMaintenanceWindowExecutionResult
 --  
--- @param _Status [MaintenanceWindowExecutionStatus] <p>The status of the Maintenance Window execution.</p>
--- @param _TaskIds [MaintenanceWindowExecutionTaskIdList] <p>The ID of the task executions from the Maintenance Window execution.</p>
--- @param _StartTime [DateTime] <p>The time the Maintenance Window started executing.</p>
--- @param _EndTime [DateTime] <p>The time the Maintenance Window finished executing.</p>
--- @param _WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution.</p>
--- @param _StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
-function M.GetMaintenanceWindowExecutionResult(_Status, _TaskIds, _StartTime, _EndTime, _WindowExecutionId, _StatusDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowExecutionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [MaintenanceWindowExecutionStatus] <p>The status of the Maintenance Window execution.</p>
+-- * TaskIds [MaintenanceWindowExecutionTaskIdList] <p>The ID of the task executions from the Maintenance Window execution.</p>
+-- * StartTime [DateTime] <p>The time the Maintenance Window started executing.</p>
+-- * EndTime [DateTime] <p>The time the Maintenance Window finished executing.</p>
+-- * WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution.</p>
+-- * StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
+-- @return GetMaintenanceWindowExecutionResult structure as a key-value pair table
+function M.GetMaintenanceWindowExecutionResult(args)
+	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowExecutionResult")
 	local t = { 
-		["Status"] = _Status,
-		["TaskIds"] = _TaskIds,
-		["StartTime"] = _StartTime,
-		["EndTime"] = _EndTime,
-		["WindowExecutionId"] = _WindowExecutionId,
-		["StatusDetails"] = _StatusDetails,
+		["Status"] = args["Status"],
+		["TaskIds"] = args["TaskIds"],
+		["StartTime"] = args["StartTime"],
+		["EndTime"] = args["EndTime"],
+		["WindowExecutionId"] = args["WindowExecutionId"],
+		["StatusDetails"] = args["StatusDetails"],
 	}
 	asserts.AssertGetMaintenanceWindowExecutionResult(t)
 	return t
@@ -1237,19 +1354,22 @@ end
 
 --- Create a structure of type ListCommandsRequest
 --  
--- @param _InstanceId [InstanceId] <p>(Optional) Lists commands issued against this instance ID.</p>
--- @param _Filters [CommandFilterList] <p>(Optional) One or more filters. Use a filter to return a more specific list of results. </p>
--- @param _NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _CommandId [CommandId] <p>(Optional) If provided, lists only the specified command.</p>
--- @param _MaxResults [CommandMaxResults] <p>(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
-function M.ListCommandsRequest(_InstanceId, _Filters, _NextToken, _CommandId, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCommandsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>(Optional) Lists commands issued against this instance ID.</p>
+-- * Filters [CommandFilterList] <p>(Optional) One or more filters. Use a filter to return a more specific list of results. </p>
+-- * NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * CommandId [CommandId] <p>(Optional) If provided, lists only the specified command.</p>
+-- * MaxResults [CommandMaxResults] <p>(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @return ListCommandsRequest structure as a key-value pair table
+function M.ListCommandsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListCommandsRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["Filters"] = _Filters,
-		["NextToken"] = _NextToken,
-		["CommandId"] = _CommandId,
-		["MaxResults"] = _MaxResults,
+		["InstanceId"] = args["InstanceId"],
+		["Filters"] = args["Filters"],
+		["NextToken"] = args["NextToken"],
+		["CommandId"] = args["CommandId"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListCommandsRequest(t)
 	return t
@@ -1270,15 +1390,18 @@ end
 
 --- Create a structure of type GetDeployablePatchSnapshotForInstanceResult
 --  
--- @param _InstanceId [InstanceId] <p>The ID of the instance.</p>
--- @param _SnapshotId [SnapshotId] <p>The user-defined snapshot ID.</p>
--- @param _SnapshotDownloadUrl [SnapshotDownloadUrl] <p>A pre-signed Amazon S3 URL that can be used to download the patch snapshot.</p>
-function M.GetDeployablePatchSnapshotForInstanceResult(_InstanceId, _SnapshotId, _SnapshotDownloadUrl, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeployablePatchSnapshotForInstanceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- * SnapshotId [SnapshotId] <p>The user-defined snapshot ID.</p>
+-- * SnapshotDownloadUrl [SnapshotDownloadUrl] <p>A pre-signed Amazon S3 URL that can be used to download the patch snapshot.</p>
+-- @return GetDeployablePatchSnapshotForInstanceResult structure as a key-value pair table
+function M.GetDeployablePatchSnapshotForInstanceResult(args)
+	assert(args, "You must provdide an argument table when creating GetDeployablePatchSnapshotForInstanceResult")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["SnapshotId"] = _SnapshotId,
-		["SnapshotDownloadUrl"] = _SnapshotDownloadUrl,
+		["InstanceId"] = args["InstanceId"],
+		["SnapshotId"] = args["SnapshotId"],
+		["SnapshotDownloadUrl"] = args["SnapshotDownloadUrl"],
 	}
 	asserts.AssertGetDeployablePatchSnapshotForInstanceResult(t)
 	return t
@@ -1303,21 +1426,24 @@ end
 
 --- Create a structure of type ListInventoryEntriesRequest
 --  
--- @param _InstanceId [InstanceId] <p>The instance ID for which you want inventory information.</p>
--- @param _TypeName [InventoryItemTypeName] <p>The type of inventory item for which you want information.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Filters [InventoryFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
--- Required parameter: InstanceId
--- Required parameter: TypeName
-function M.ListInventoryEntriesRequest(_InstanceId, _TypeName, _NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInventoryEntriesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The instance ID for which you want inventory information.</p>
+-- * TypeName [InventoryItemTypeName] <p>The type of inventory item for which you want information.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Filters [InventoryFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
+-- Required key: InstanceId
+-- Required key: TypeName
+-- @return ListInventoryEntriesRequest structure as a key-value pair table
+function M.ListInventoryEntriesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListInventoryEntriesRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["TypeName"] = _TypeName,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["InstanceId"] = args["InstanceId"],
+		["TypeName"] = args["TypeName"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertListInventoryEntriesRequest(t)
 	return t
@@ -1336,11 +1462,14 @@ end
 
 --- Create a structure of type DocumentVersionLimitExceeded
 -- <p>The document has too many versions. Delete one or more document versions and try again.</p>
--- @param _Message [String] 
-function M.DocumentVersionLimitExceeded(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentVersionLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return DocumentVersionLimitExceeded structure as a key-value pair table
+function M.DocumentVersionLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating DocumentVersionLimitExceeded")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDocumentVersionLimitExceeded(t)
 	return t
@@ -1359,11 +1488,14 @@ end
 
 --- Create a structure of type DeletePatchBaselineResult
 --  
--- @param _BaselineId [BaselineId] <p>The ID of the deleted patch baseline.</p>
-function M.DeletePatchBaselineResult(_BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePatchBaselineResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineId [BaselineId] <p>The ID of the deleted patch baseline.</p>
+-- @return DeletePatchBaselineResult structure as a key-value pair table
+function M.DeletePatchBaselineResult(args)
+	assert(args, "You must provdide an argument table when creating DeletePatchBaselineResult")
 	local t = { 
-		["BaselineId"] = _BaselineId,
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertDeletePatchBaselineResult(t)
 	return t
@@ -1382,11 +1514,14 @@ end
 
 --- Create a structure of type DescribeDocumentPermissionResponse
 --  
--- @param _AccountIds [AccountIdList] <p>The account IDs that have permission to use this document. The ID can be either an AWS account or <i>All</i>.</p>
-function M.DescribeDocumentPermissionResponse(_AccountIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentPermissionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccountIds [AccountIdList] <p>The account IDs that have permission to use this document. The ID can be either an AWS account or <i>All</i>.</p>
+-- @return DescribeDocumentPermissionResponse structure as a key-value pair table
+function M.DescribeDocumentPermissionResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeDocumentPermissionResponse")
 	local t = { 
-		["AccountIds"] = _AccountIds,
+		["AccountIds"] = args["AccountIds"],
 	}
 	asserts.AssertDescribeDocumentPermissionResponse(t)
 	return t
@@ -1422,38 +1557,41 @@ end
 
 --- Create a structure of type RegisterTaskWithMaintenanceWindowRequest
 --  
--- @param _ServiceRoleArn [ServiceRole] <p>The role that should be assumed when executing the task.</p>
--- @param _LoggingInfo [LoggingInfo] <p>A structure containing information about an Amazon S3 bucket to write instance-level logs to. </p>
--- @param _MaxErrors [MaxErrors] <p>The maximum number of errors allowed before this task stops being scheduled.</p>
--- @param _TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the task to execute </p>
--- @param _MaxConcurrency [MaxConcurrency] <p>The maximum number of targets this task can be run for in parallel.</p>
--- @param _ClientToken [ClientToken] <p>User-provided idempotency token.</p>
--- @param _Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
--- @param _Priority [MaintenanceWindowTaskPriority] <p>The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The id of the Maintenance Window the task should be added to.</p>
--- @param _TaskType [MaintenanceWindowTaskType] <p>The type of task being registered.</p>
--- @param _TaskParameters [MaintenanceWindowTaskParameters] <p>The parameters that should be passed to the task when it is executed.</p>
--- Required parameter: WindowId
--- Required parameter: Targets
--- Required parameter: TaskArn
--- Required parameter: ServiceRoleArn
--- Required parameter: TaskType
--- Required parameter: MaxConcurrency
--- Required parameter: MaxErrors
-function M.RegisterTaskWithMaintenanceWindowRequest(_ServiceRoleArn, _LoggingInfo, _MaxErrors, _TaskArn, _MaxConcurrency, _ClientToken, _Targets, _Priority, _WindowId, _TaskType, _TaskParameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTaskWithMaintenanceWindowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServiceRoleArn [ServiceRole] <p>The role that should be assumed when executing the task.</p>
+-- * LoggingInfo [LoggingInfo] <p>A structure containing information about an Amazon S3 bucket to write instance-level logs to. </p>
+-- * MaxErrors [MaxErrors] <p>The maximum number of errors allowed before this task stops being scheduled.</p>
+-- * TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the task to execute </p>
+-- * MaxConcurrency [MaxConcurrency] <p>The maximum number of targets this task can be run for in parallel.</p>
+-- * ClientToken [ClientToken] <p>User-provided idempotency token.</p>
+-- * Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
+-- * Priority [MaintenanceWindowTaskPriority] <p>The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.</p>
+-- * WindowId [MaintenanceWindowId] <p>The id of the Maintenance Window the task should be added to.</p>
+-- * TaskType [MaintenanceWindowTaskType] <p>The type of task being registered.</p>
+-- * TaskParameters [MaintenanceWindowTaskParameters] <p>The parameters that should be passed to the task when it is executed.</p>
+-- Required key: WindowId
+-- Required key: Targets
+-- Required key: TaskArn
+-- Required key: ServiceRoleArn
+-- Required key: TaskType
+-- Required key: MaxConcurrency
+-- Required key: MaxErrors
+-- @return RegisterTaskWithMaintenanceWindowRequest structure as a key-value pair table
+function M.RegisterTaskWithMaintenanceWindowRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterTaskWithMaintenanceWindowRequest")
 	local t = { 
-		["ServiceRoleArn"] = _ServiceRoleArn,
-		["LoggingInfo"] = _LoggingInfo,
-		["MaxErrors"] = _MaxErrors,
-		["TaskArn"] = _TaskArn,
-		["MaxConcurrency"] = _MaxConcurrency,
-		["ClientToken"] = _ClientToken,
-		["Targets"] = _Targets,
-		["Priority"] = _Priority,
-		["WindowId"] = _WindowId,
-		["TaskType"] = _TaskType,
-		["TaskParameters"] = _TaskParameters,
+		["ServiceRoleArn"] = args["ServiceRoleArn"],
+		["LoggingInfo"] = args["LoggingInfo"],
+		["MaxErrors"] = args["MaxErrors"],
+		["TaskArn"] = args["TaskArn"],
+		["MaxConcurrency"] = args["MaxConcurrency"],
+		["ClientToken"] = args["ClientToken"],
+		["Targets"] = args["Targets"],
+		["Priority"] = args["Priority"],
+		["WindowId"] = args["WindowId"],
+		["TaskType"] = args["TaskType"],
+		["TaskParameters"] = args["TaskParameters"],
 	}
 	asserts.AssertRegisterTaskWithMaintenanceWindowRequest(t)
 	return t
@@ -1479,24 +1617,27 @@ end
 
 --- Create a structure of type CreateAssociationRequest
 --  
--- @param _ScheduleExpression [ScheduleExpression] <p>A cron expression when the association will be applied to the target(s).</p>
--- @param _OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the output details of the request.</p>
--- @param _Name [DocumentName] <p>The name of the Systems Manager document.</p>
--- @param _Parameters [Parameters] <p>The parameters for the documents runtime configuration. </p>
--- @param _InstanceId [InstanceId] <p>The instance ID.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version you want to associate with the target(s). Can be a specific version or the default version.</p>
--- @param _Targets [Targets] <p>The targets (either instances or tags) for the association.</p>
--- Required parameter: Name
-function M.CreateAssociationRequest(_ScheduleExpression, _OutputLocation, _Name, _Parameters, _InstanceId, _DocumentVersion, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssociationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScheduleExpression [ScheduleExpression] <p>A cron expression when the association will be applied to the target(s).</p>
+-- * OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the output details of the request.</p>
+-- * Name [DocumentName] <p>The name of the Systems Manager document.</p>
+-- * Parameters [Parameters] <p>The parameters for the documents runtime configuration. </p>
+-- * InstanceId [InstanceId] <p>The instance ID.</p>
+-- * DocumentVersion [DocumentVersion] <p>The document version you want to associate with the target(s). Can be a specific version or the default version.</p>
+-- * Targets [Targets] <p>The targets (either instances or tags) for the association.</p>
+-- Required key: Name
+-- @return CreateAssociationRequest structure as a key-value pair table
+function M.CreateAssociationRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateAssociationRequest")
 	local t = { 
-		["ScheduleExpression"] = _ScheduleExpression,
-		["OutputLocation"] = _OutputLocation,
-		["Name"] = _Name,
-		["Parameters"] = _Parameters,
-		["InstanceId"] = _InstanceId,
-		["DocumentVersion"] = _DocumentVersion,
-		["Targets"] = _Targets,
+		["ScheduleExpression"] = args["ScheduleExpression"],
+		["OutputLocation"] = args["OutputLocation"],
+		["Name"] = args["Name"],
+		["Parameters"] = args["Parameters"],
+		["InstanceId"] = args["InstanceId"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertCreateAssociationRequest(t)
 	return t
@@ -1516,13 +1657,16 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowTargetsResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _Targets [MaintenanceWindowTargetList] <p>Information about the targets in the Maintenance Window.</p>
-function M.DescribeMaintenanceWindowTargetsResult(_NextToken, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowTargetsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * Targets [MaintenanceWindowTargetList] <p>Information about the targets in the Maintenance Window.</p>
+-- @return DescribeMaintenanceWindowTargetsResult structure as a key-value pair table
+function M.DescribeMaintenanceWindowTargetsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowTargetsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Targets"] = _Targets,
+		["NextToken"] = args["NextToken"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertDescribeMaintenanceWindowTargetsResult(t)
 	return t
@@ -1546,21 +1690,24 @@ end
 
 --- Create a structure of type DescribePatchGroupStateResult
 --  
--- @param _InstancesWithNotApplicablePatches [Integer] <p>The number of instances with patches that aren't applicable.</p>
--- @param _InstancesWithMissingPatches [Integer] <p>The number of instances with missing patches from the patch baseline.</p>
--- @param _InstancesWithFailedPatches [Integer] <p>The number of instances with patches from the patch baseline that failed to install.</p>
--- @param _InstancesWithInstalledOtherPatches [Integer] <p>The number of instances with patches installed that aren't defined in the patch baseline.</p>
--- @param _Instances [Integer] <p>The number of instances in the patch group.</p>
--- @param _InstancesWithInstalledPatches [Integer] <p>The number of instances with installed patches.</p>
-function M.DescribePatchGroupStateResult(_InstancesWithNotApplicablePatches, _InstancesWithMissingPatches, _InstancesWithFailedPatches, _InstancesWithInstalledOtherPatches, _Instances, _InstancesWithInstalledPatches, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchGroupStateResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstancesWithNotApplicablePatches [Integer] <p>The number of instances with patches that aren't applicable.</p>
+-- * InstancesWithMissingPatches [Integer] <p>The number of instances with missing patches from the patch baseline.</p>
+-- * InstancesWithFailedPatches [Integer] <p>The number of instances with patches from the patch baseline that failed to install.</p>
+-- * InstancesWithInstalledOtherPatches [Integer] <p>The number of instances with patches installed that aren't defined in the patch baseline.</p>
+-- * Instances [Integer] <p>The number of instances in the patch group.</p>
+-- * InstancesWithInstalledPatches [Integer] <p>The number of instances with installed patches.</p>
+-- @return DescribePatchGroupStateResult structure as a key-value pair table
+function M.DescribePatchGroupStateResult(args)
+	assert(args, "You must provdide an argument table when creating DescribePatchGroupStateResult")
 	local t = { 
-		["InstancesWithNotApplicablePatches"] = _InstancesWithNotApplicablePatches,
-		["InstancesWithMissingPatches"] = _InstancesWithMissingPatches,
-		["InstancesWithFailedPatches"] = _InstancesWithFailedPatches,
-		["InstancesWithInstalledOtherPatches"] = _InstancesWithInstalledOtherPatches,
-		["Instances"] = _Instances,
-		["InstancesWithInstalledPatches"] = _InstancesWithInstalledPatches,
+		["InstancesWithNotApplicablePatches"] = args["InstancesWithNotApplicablePatches"],
+		["InstancesWithMissingPatches"] = args["InstancesWithMissingPatches"],
+		["InstancesWithFailedPatches"] = args["InstancesWithFailedPatches"],
+		["InstancesWithInstalledOtherPatches"] = args["InstancesWithInstalledOtherPatches"],
+		["Instances"] = args["Instances"],
+		["InstancesWithInstalledPatches"] = args["InstancesWithInstalledPatches"],
 	}
 	asserts.AssertDescribePatchGroupStateResult(t)
 	return t
@@ -1580,13 +1727,16 @@ end
 
 --- Create a structure of type ItemContentMismatchException
 -- <p>The inventory item has invalid content. </p>
--- @param _TypeName [InventoryItemTypeName] 
--- @param _Message [String] 
-function M.ItemContentMismatchException(_TypeName, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ItemContentMismatchException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypeName [InventoryItemTypeName] 
+-- * Message [String] 
+-- @return ItemContentMismatchException structure as a key-value pair table
+function M.ItemContentMismatchException(args)
+	assert(args, "You must provdide an argument table when creating ItemContentMismatchException")
 	local t = { 
-		["TypeName"] = _TypeName,
-		["Message"] = _Message,
+		["TypeName"] = args["TypeName"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertItemContentMismatchException(t)
 	return t
@@ -1606,12 +1756,15 @@ end
 
 --- Create a structure of type DeleteParameterRequest
 --  
--- @param _Name [PSParameterName] <p>The name of the parameter to delete.</p>
--- Required parameter: Name
-function M.DeleteParameterRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParameterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [PSParameterName] <p>The name of the parameter to delete.</p>
+-- Required key: Name
+-- @return DeleteParameterRequest structure as a key-value pair table
+function M.DeleteParameterRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteParameterRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteParameterRequest(t)
 	return t
@@ -1630,11 +1783,14 @@ end
 
 --- Create a structure of type InvalidTarget
 -- <p>The target is not valid or does not exist. It might not be configured for EC2 Systems Manager or you might not have permission to perform the operation.</p>
--- @param _Message [String] 
-function M.InvalidTarget(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTarget")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidTarget structure as a key-value pair table
+function M.InvalidTarget(args)
+	assert(args, "You must provdide an argument table when creating InvalidTarget")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidTarget(t)
 	return t
@@ -1655,15 +1811,18 @@ end
 
 --- Create a structure of type InstanceAssociation
 -- <p>One or more association documents on the instance. </p>
--- @param _InstanceId [InstanceId] <p>The instance ID.</p>
--- @param _Content [DocumentContent] <p>The content of the association document for the instance(s).</p>
--- @param _AssociationId [AssociationId] <p>The association ID.</p>
-function M.InstanceAssociation(_InstanceId, _Content, _AssociationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAssociation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The instance ID.</p>
+-- * Content [DocumentContent] <p>The content of the association document for the instance(s).</p>
+-- * AssociationId [AssociationId] <p>The association ID.</p>
+-- @return InstanceAssociation structure as a key-value pair table
+function M.InstanceAssociation(args)
+	assert(args, "You must provdide an argument table when creating InstanceAssociation")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["Content"] = _Content,
-		["AssociationId"] = _AssociationId,
+		["InstanceId"] = args["InstanceId"],
+		["Content"] = args["Content"],
+		["AssociationId"] = args["AssociationId"],
 	}
 	asserts.AssertInstanceAssociation(t)
 	return t
@@ -1683,13 +1842,16 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionTasksResult
 --  
--- @param _WindowExecutionTaskIdentities [MaintenanceWindowExecutionTaskIdentityList] <p>Information about the task executions.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.DescribeMaintenanceWindowExecutionTasksResult(_WindowExecutionTaskIdentities, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionTasksResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowExecutionTaskIdentities [MaintenanceWindowExecutionTaskIdentityList] <p>Information about the task executions.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return DescribeMaintenanceWindowExecutionTasksResult structure as a key-value pair table
+function M.DescribeMaintenanceWindowExecutionTasksResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionTasksResult")
 	local t = { 
-		["WindowExecutionTaskIdentities"] = _WindowExecutionTaskIdentities,
-		["NextToken"] = _NextToken,
+		["WindowExecutionTaskIdentities"] = args["WindowExecutionTaskIdentities"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeMaintenanceWindowExecutionTasksResult(t)
 	return t
@@ -1709,13 +1871,16 @@ end
 
 --- Create a structure of type DescribeAvailablePatchesResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _Patches [PatchList] <p>An array of patches. Each entry in the array is a patch structure.</p>
-function M.DescribeAvailablePatchesResult(_NextToken, _Patches, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAvailablePatchesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * Patches [PatchList] <p>An array of patches. Each entry in the array is a patch structure.</p>
+-- @return DescribeAvailablePatchesResult structure as a key-value pair table
+function M.DescribeAvailablePatchesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeAvailablePatchesResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Patches"] = _Patches,
+		["NextToken"] = args["NextToken"],
+		["Patches"] = args["Patches"],
 	}
 	asserts.AssertDescribeAvailablePatchesResult(t)
 	return t
@@ -1737,15 +1902,18 @@ end
 
 --- Create a structure of type RegisterPatchBaselineForPatchGroupRequest
 --  
--- @param _PatchGroup [PatchGroup] <p>The name of the patch group that should be registered with the patch baseline.</p>
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline to register the patch group with.</p>
--- Required parameter: BaselineId
--- Required parameter: PatchGroup
-function M.RegisterPatchBaselineForPatchGroupRequest(_PatchGroup, _BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterPatchBaselineForPatchGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchGroup [PatchGroup] <p>The name of the patch group that should be registered with the patch baseline.</p>
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline to register the patch group with.</p>
+-- Required key: BaselineId
+-- Required key: PatchGroup
+-- @return RegisterPatchBaselineForPatchGroupRequest structure as a key-value pair table
+function M.RegisterPatchBaselineForPatchGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterPatchBaselineForPatchGroupRequest")
 	local t = { 
-		["PatchGroup"] = _PatchGroup,
-		["BaselineId"] = _BaselineId,
+		["PatchGroup"] = args["PatchGroup"],
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertRegisterPatchBaselineForPatchGroupRequest(t)
 	return t
@@ -1774,31 +1942,34 @@ end
 
 --- Create a structure of type StepExecution
 -- <p>Detailed information about an the execution state of an Automation step.</p>
--- @param _Inputs [NormalStringMap] <p>Fully-resolved values passed into the step before execution.</p>
--- @param _Outputs [AutomationParameterMap] <p>Returned values from the execution of the step.</p>
--- @param _StepName [String] <p>The name of this execution step.</p>
--- @param _FailureMessage [String] <p>If a step failed, this message explains why the execution failed.</p>
--- @param _ExecutionEndTime [DateTime] <p>If a step has finished execution, this contains the time the execution ended. If the step has not yet concluded, this field is not populated.</p>
--- @param _FailureDetails [FailureDetails] <p>Information about the Automation failure.</p>
--- @param _ResponseCode [String] <p>The response code returned by the execution of the step.</p>
--- @param _ExecutionStartTime [DateTime] <p>If a step has begun execution, this contains the time the step started. If the step is in Pending status, this field is not populated.</p>
--- @param _Action [AutomationActionName] <p>The action this step performs. The action determines the behavior of the step.</p>
--- @param _Response [String] <p>A message associated with the response code for an execution.</p>
--- @param _StepStatus [AutomationExecutionStatus] <p>The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and TimedOut.</p>
-function M.StepExecution(_Inputs, _Outputs, _StepName, _FailureMessage, _ExecutionEndTime, _FailureDetails, _ResponseCode, _ExecutionStartTime, _Action, _Response, _StepStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StepExecution")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Inputs [NormalStringMap] <p>Fully-resolved values passed into the step before execution.</p>
+-- * Outputs [AutomationParameterMap] <p>Returned values from the execution of the step.</p>
+-- * StepName [String] <p>The name of this execution step.</p>
+-- * FailureMessage [String] <p>If a step failed, this message explains why the execution failed.</p>
+-- * ExecutionEndTime [DateTime] <p>If a step has finished execution, this contains the time the execution ended. If the step has not yet concluded, this field is not populated.</p>
+-- * FailureDetails [FailureDetails] <p>Information about the Automation failure.</p>
+-- * ResponseCode [String] <p>The response code returned by the execution of the step.</p>
+-- * ExecutionStartTime [DateTime] <p>If a step has begun execution, this contains the time the step started. If the step is in Pending status, this field is not populated.</p>
+-- * Action [AutomationActionName] <p>The action this step performs. The action determines the behavior of the step.</p>
+-- * Response [String] <p>A message associated with the response code for an execution.</p>
+-- * StepStatus [AutomationExecutionStatus] <p>The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and TimedOut.</p>
+-- @return StepExecution structure as a key-value pair table
+function M.StepExecution(args)
+	assert(args, "You must provdide an argument table when creating StepExecution")
 	local t = { 
-		["Inputs"] = _Inputs,
-		["Outputs"] = _Outputs,
-		["StepName"] = _StepName,
-		["FailureMessage"] = _FailureMessage,
-		["ExecutionEndTime"] = _ExecutionEndTime,
-		["FailureDetails"] = _FailureDetails,
-		["ResponseCode"] = _ResponseCode,
-		["ExecutionStartTime"] = _ExecutionStartTime,
-		["Action"] = _Action,
-		["Response"] = _Response,
-		["StepStatus"] = _StepStatus,
+		["Inputs"] = args["Inputs"],
+		["Outputs"] = args["Outputs"],
+		["StepName"] = args["StepName"],
+		["FailureMessage"] = args["FailureMessage"],
+		["ExecutionEndTime"] = args["ExecutionEndTime"],
+		["FailureDetails"] = args["FailureDetails"],
+		["ResponseCode"] = args["ResponseCode"],
+		["ExecutionStartTime"] = args["ExecutionStartTime"],
+		["Action"] = args["Action"],
+		["Response"] = args["Response"],
+		["StepStatus"] = args["StepStatus"],
 	}
 	asserts.AssertStepExecution(t)
 	return t
@@ -1822,18 +1993,21 @@ end
 
 --- Create a structure of type InstancePatchStateFilter
 -- <p>Defines a filter used in DescribeInstancePatchStatesForPatchGroup used to scope down the information returned by the API.</p>
--- @param _Type [InstancePatchStateOperatorType] <p>The type of comparison that should be performed for the value: Equal, NotEqual, LessThan or GreaterThan.</p>
--- @param _Values [InstancePatchStateFilterValues] <p>The value for the filter, must be an integer greater than or equal to 0.</p>
--- @param _Key [InstancePatchStateFilterKey] <p>The key for the filter. Supported values are FailedCount, InstalledCount, InstalledOtherCount, MissingCount and NotApplicableCount.</p>
--- Required parameter: Key
--- Required parameter: Values
--- Required parameter: Type
-function M.InstancePatchStateFilter(_Type, _Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstancePatchStateFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [InstancePatchStateOperatorType] <p>The type of comparison that should be performed for the value: Equal, NotEqual, LessThan or GreaterThan.</p>
+-- * Values [InstancePatchStateFilterValues] <p>The value for the filter, must be an integer greater than or equal to 0.</p>
+-- * Key [InstancePatchStateFilterKey] <p>The key for the filter. Supported values are FailedCount, InstalledCount, InstalledOtherCount, MissingCount and NotApplicableCount.</p>
+-- Required key: Key
+-- Required key: Values
+-- Required key: Type
+-- @return InstancePatchStateFilter structure as a key-value pair table
+function M.InstancePatchStateFilter(args)
+	assert(args, "You must provdide an argument table when creating InstancePatchStateFilter")
 	local t = { 
-		["Type"] = _Type,
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Type"] = args["Type"],
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertInstancePatchStateFilter(t)
 	return t
@@ -1854,15 +2028,18 @@ end
 
 --- Create a structure of type DescribePatchBaselinesRequest
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [PatchBaselineMaxResults] <p>The maximum number of patch baselines to return (per page).</p>
--- @param _Filters [PatchOrchestratorFilterList] <p>Each element in the array is a structure containing: </p> <p>Key: (string, "NAME_PREFIX" or "OWNER")</p> <p>Value: (array of strings, exactly 1 entry, between 1 and 255 characters)</p>
-function M.DescribePatchBaselinesRequest(_NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchBaselinesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [PatchBaselineMaxResults] <p>The maximum number of patch baselines to return (per page).</p>
+-- * Filters [PatchOrchestratorFilterList] <p>Each element in the array is a structure containing: </p> <p>Key: (string, "NAME_PREFIX" or "OWNER")</p> <p>Value: (array of strings, exactly 1 entry, between 1 and 255 characters)</p>
+-- @return DescribePatchBaselinesRequest structure as a key-value pair table
+function M.DescribePatchBaselinesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribePatchBaselinesRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribePatchBaselinesRequest(t)
 	return t
@@ -1881,11 +2058,14 @@ end
 
 --- Create a structure of type AutomationDefinitionVersionNotFoundException
 -- <p>An Automation document with the specified name and version could not be found.</p>
--- @param _Message [String] 
-function M.AutomationDefinitionVersionNotFoundException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutomationDefinitionVersionNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return AutomationDefinitionVersionNotFoundException structure as a key-value pair table
+function M.AutomationDefinitionVersionNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating AutomationDefinitionVersionNotFoundException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertAutomationDefinitionVersionNotFoundException(t)
 	return t
@@ -1905,13 +2085,16 @@ end
 
 --- Create a structure of type DescribeActivationsResult
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. Use this token to get the next set of results. </p>
--- @param _ActivationList [ActivationList] <p>A list of activations for your AWS account.</p>
-function M.DescribeActivationsResult(_NextToken, _ActivationList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivationsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. Use this token to get the next set of results. </p>
+-- * ActivationList [ActivationList] <p>A list of activations for your AWS account.</p>
+-- @return DescribeActivationsResult structure as a key-value pair table
+function M.DescribeActivationsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeActivationsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ActivationList"] = _ActivationList,
+		["NextToken"] = args["NextToken"],
+		["ActivationList"] = args["ActivationList"],
 	}
 	asserts.AssertDescribeActivationsResult(t)
 	return t
@@ -1930,11 +2113,14 @@ end
 
 --- Create a structure of type StartAutomationExecutionResult
 --  
--- @param _AutomationExecutionId [AutomationExecutionId] <p>The unique ID of a newly scheduled automation execution.</p>
-function M.StartAutomationExecutionResult(_AutomationExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartAutomationExecutionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AutomationExecutionId [AutomationExecutionId] <p>The unique ID of a newly scheduled automation execution.</p>
+-- @return StartAutomationExecutionResult structure as a key-value pair table
+function M.StartAutomationExecutionResult(args)
+	assert(args, "You must provdide an argument table when creating StartAutomationExecutionResult")
 	local t = { 
-		["AutomationExecutionId"] = _AutomationExecutionId,
+		["AutomationExecutionId"] = args["AutomationExecutionId"],
 	}
 	asserts.AssertStartAutomationExecutionResult(t)
 	return t
@@ -1954,13 +2140,16 @@ end
 
 --- Create a structure of type ListDocumentVersionsResult
 --  
--- @param _DocumentVersions [DocumentVersionList] <p>The document versions.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.ListDocumentVersionsResult(_DocumentVersions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDocumentVersionsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DocumentVersions [DocumentVersionList] <p>The document versions.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return ListDocumentVersionsResult structure as a key-value pair table
+function M.ListDocumentVersionsResult(args)
+	assert(args, "You must provdide an argument table when creating ListDocumentVersionsResult")
 	local t = { 
-		["DocumentVersions"] = _DocumentVersions,
-		["NextToken"] = _NextToken,
+		["DocumentVersions"] = args["DocumentVersions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListDocumentVersionsResult(t)
 	return t
@@ -1982,16 +2171,19 @@ end
 
 --- Create a structure of type DescribeEffectivePatchesForPatchBaselineRequest
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline to retrieve the effective patches for.</p>
--- @param _MaxResults [PatchBaselineMaxResults] <p>The maximum number of patches to return (per page).</p>
--- Required parameter: BaselineId
-function M.DescribeEffectivePatchesForPatchBaselineRequest(_NextToken, _BaselineId, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEffectivePatchesForPatchBaselineRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline to retrieve the effective patches for.</p>
+-- * MaxResults [PatchBaselineMaxResults] <p>The maximum number of patches to return (per page).</p>
+-- Required key: BaselineId
+-- @return DescribeEffectivePatchesForPatchBaselineRequest structure as a key-value pair table
+function M.DescribeEffectivePatchesForPatchBaselineRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEffectivePatchesForPatchBaselineRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["BaselineId"] = _BaselineId,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["BaselineId"] = args["BaselineId"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeEffectivePatchesForPatchBaselineRequest(t)
 	return t
@@ -2018,27 +2210,30 @@ end
 
 --- Create a structure of type Activation
 -- <p>An activation registers one or more on-premises servers or virtual machines (VMs) with AWS so that you can configure those servers or VMs using Run Command. A server or VM that has been registered with AWS is called a managed instance.</p>
--- @param _IamRole [IamRole] <p>The Amazon Identity and Access Management (IAM) role to assign to the managed instance.</p>
--- @param _RegistrationLimit [RegistrationLimit] <p>The maximum number of managed instances that can be registered using this activation.</p>
--- @param _Description [ActivationDescription] <p>A user defined description of the activation.</p>
--- @param _ActivationId [ActivationId] <p>The ID created by Systems Manager when you submitted the activation.</p>
--- @param _RegistrationsCount [RegistrationsCount] <p>The number of managed instances already registered with this activation.</p>
--- @param _CreatedDate [CreatedDate] <p>The date the activation was created.</p>
--- @param _DefaultInstanceName [DefaultInstanceName] <p>A name for the managed instance when it is created.</p>
--- @param _Expired [Boolean] <p>Whether or not the activation is expired.</p>
--- @param _ExpirationDate [ExpirationDate] <p>The date when this activation can no longer be used to register managed instances.</p>
-function M.Activation(_IamRole, _RegistrationLimit, _Description, _ActivationId, _RegistrationsCount, _CreatedDate, _DefaultInstanceName, _Expired, _ExpirationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Activation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IamRole [IamRole] <p>The Amazon Identity and Access Management (IAM) role to assign to the managed instance.</p>
+-- * RegistrationLimit [RegistrationLimit] <p>The maximum number of managed instances that can be registered using this activation.</p>
+-- * Description [ActivationDescription] <p>A user defined description of the activation.</p>
+-- * ActivationId [ActivationId] <p>The ID created by Systems Manager when you submitted the activation.</p>
+-- * RegistrationsCount [RegistrationsCount] <p>The number of managed instances already registered with this activation.</p>
+-- * CreatedDate [CreatedDate] <p>The date the activation was created.</p>
+-- * DefaultInstanceName [DefaultInstanceName] <p>A name for the managed instance when it is created.</p>
+-- * Expired [Boolean] <p>Whether or not the activation is expired.</p>
+-- * ExpirationDate [ExpirationDate] <p>The date when this activation can no longer be used to register managed instances.</p>
+-- @return Activation structure as a key-value pair table
+function M.Activation(args)
+	assert(args, "You must provdide an argument table when creating Activation")
 	local t = { 
-		["IamRole"] = _IamRole,
-		["RegistrationLimit"] = _RegistrationLimit,
-		["Description"] = _Description,
-		["ActivationId"] = _ActivationId,
-		["RegistrationsCount"] = _RegistrationsCount,
-		["CreatedDate"] = _CreatedDate,
-		["DefaultInstanceName"] = _DefaultInstanceName,
-		["Expired"] = _Expired,
-		["ExpirationDate"] = _ExpirationDate,
+		["IamRole"] = args["IamRole"],
+		["RegistrationLimit"] = args["RegistrationLimit"],
+		["Description"] = args["Description"],
+		["ActivationId"] = args["ActivationId"],
+		["RegistrationsCount"] = args["RegistrationsCount"],
+		["CreatedDate"] = args["CreatedDate"],
+		["DefaultInstanceName"] = args["DefaultInstanceName"],
+		["Expired"] = args["Expired"],
+		["ExpirationDate"] = args["ExpirationDate"],
 	}
 	asserts.AssertActivation(t)
 	return t
@@ -2057,11 +2252,14 @@ end
 
 --- Create a structure of type SendCommandResult
 --  
--- @param _Command [Command] <p>The request as it was received by Systems Manager. Also provides the command ID which can be used future references to this request.</p>
-function M.SendCommandResult(_Command, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendCommandResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Command [Command] <p>The request as it was received by Systems Manager. Also provides the command ID which can be used future references to this request.</p>
+-- @return SendCommandResult structure as a key-value pair table
+function M.SendCommandResult(args)
+	assert(args, "You must provdide an argument table when creating SendCommandResult")
 	local t = { 
-		["Command"] = _Command,
+		["Command"] = args["Command"],
 	}
 	asserts.AssertSendCommandResult(t)
 	return t
@@ -2083,17 +2281,20 @@ end
 
 --- Create a structure of type GetInventoryRequest
 --  
--- @param _ResultAttributes [ResultAttributeList] <p>The list of inventory item types to return.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Filters [InventoryFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
-function M.GetInventoryRequest(_ResultAttributes, _NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInventoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResultAttributes [ResultAttributeList] <p>The list of inventory item types to return.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Filters [InventoryFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
+-- @return GetInventoryRequest structure as a key-value pair table
+function M.GetInventoryRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInventoryRequest")
 	local t = { 
-		["ResultAttributes"] = _ResultAttributes,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["ResultAttributes"] = args["ResultAttributes"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertGetInventoryRequest(t)
 	return t
@@ -2112,11 +2313,14 @@ end
 
 --- Create a structure of type CreateAssociationResult
 --  
--- @param _AssociationDescription [AssociationDescription] <p>Information about the association.</p>
-function M.CreateAssociationResult(_AssociationDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssociationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssociationDescription [AssociationDescription] <p>Information about the association.</p>
+-- @return CreateAssociationResult structure as a key-value pair table
+function M.CreateAssociationResult(args)
+	assert(args, "You must provdide an argument table when creating CreateAssociationResult")
 	local t = { 
-		["AssociationDescription"] = _AssociationDescription,
+		["AssociationDescription"] = args["AssociationDescription"],
 	}
 	asserts.AssertCreateAssociationResult(t)
 	return t
@@ -2135,11 +2339,14 @@ end
 
 --- Create a structure of type InvalidDocument
 -- <p>The specified document does not exist.</p>
--- @param _Message [String] <p>The document does not exist or the document is not available to the user. This exception can be issued by CreateAssociation, CreateAssociationBatch, DeleteAssociation, DeleteDocument, DescribeAssociation, DescribeDocument, GetDocument, SendCommand, or UpdateAssociationStatus. </p>
-function M.InvalidDocument(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDocument")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>The document does not exist or the document is not available to the user. This exception can be issued by CreateAssociation, CreateAssociationBatch, DeleteAssociation, DeleteDocument, DescribeAssociation, DescribeDocument, GetDocument, SendCommand, or UpdateAssociationStatus. </p>
+-- @return InvalidDocument structure as a key-value pair table
+function M.InvalidDocument(args)
+	assert(args, "You must provdide an argument table when creating InvalidDocument")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidDocument(t)
 	return t
@@ -2157,8 +2364,11 @@ end
 
 --- Create a structure of type DeleteAssociationResult
 --  
-function M.DeleteAssociationResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssociationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteAssociationResult structure as a key-value pair table
+function M.DeleteAssociationResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteAssociationResult")
 	local t = { 
 	}
 	asserts.AssertDeleteAssociationResult(t)
@@ -2178,11 +2388,14 @@ end
 
 --- Create a structure of type MaxDocumentSizeExceeded
 -- <p>The size limit of a document is 64 KB.</p>
--- @param _Message [String] 
-function M.MaxDocumentSizeExceeded(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaxDocumentSizeExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return MaxDocumentSizeExceeded structure as a key-value pair table
+function M.MaxDocumentSizeExceeded(args)
+	assert(args, "You must provdide an argument table when creating MaxDocumentSizeExceeded")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertMaxDocumentSizeExceeded(t)
 	return t
@@ -2202,13 +2415,16 @@ end
 
 --- Create a structure of type DescribePatchBaselinesResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _BaselineIdentities [PatchBaselineIdentityList] <p>An array of PatchBaselineIdentity elements.</p>
-function M.DescribePatchBaselinesResult(_NextToken, _BaselineIdentities, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchBaselinesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * BaselineIdentities [PatchBaselineIdentityList] <p>An array of PatchBaselineIdentity elements.</p>
+-- @return DescribePatchBaselinesResult structure as a key-value pair table
+function M.DescribePatchBaselinesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribePatchBaselinesResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["BaselineIdentities"] = _BaselineIdentities,
+		["NextToken"] = args["NextToken"],
+		["BaselineIdentities"] = args["BaselineIdentities"],
 	}
 	asserts.AssertDescribePatchBaselinesResult(t)
 	return t
@@ -2228,13 +2444,16 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionsResult
 --  
--- @param _WindowExecutions [MaintenanceWindowExecutionList] <p>Information about the Maintenance Windows execution.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.DescribeMaintenanceWindowExecutionsResult(_WindowExecutions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowExecutions [MaintenanceWindowExecutionList] <p>Information about the Maintenance Windows execution.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return DescribeMaintenanceWindowExecutionsResult structure as a key-value pair table
+function M.DescribeMaintenanceWindowExecutionsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionsResult")
 	local t = { 
-		["WindowExecutions"] = _WindowExecutions,
-		["NextToken"] = _NextToken,
+		["WindowExecutions"] = args["WindowExecutions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeMaintenanceWindowExecutionsResult(t)
 	return t
@@ -2253,11 +2472,14 @@ end
 
 --- Create a structure of type CreatePatchBaselineResult
 --  
--- @param _BaselineId [BaselineId] <p>The ID of the created patch baseline.</p>
-function M.CreatePatchBaselineResult(_BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePatchBaselineResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineId [BaselineId] <p>The ID of the created patch baseline.</p>
+-- @return CreatePatchBaselineResult structure as a key-value pair table
+function M.CreatePatchBaselineResult(args)
+	assert(args, "You must provdide an argument table when creating CreatePatchBaselineResult")
 	local t = { 
-		["BaselineId"] = _BaselineId,
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertCreatePatchBaselineResult(t)
 	return t
@@ -2277,13 +2499,16 @@ end
 
 --- Create a structure of type PatchGroupPatchBaselineMapping
 -- <p>The mapping between a patch group and the patch baseline the patch group is registered with.</p>
--- @param _PatchGroup [PatchGroup] <p>The name of the patch group registered with the patch baseline.</p>
--- @param _BaselineIdentity [PatchBaselineIdentity] <p>The patch baseline the patch group is registered with.</p>
-function M.PatchGroupPatchBaselineMapping(_PatchGroup, _BaselineIdentity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PatchGroupPatchBaselineMapping")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchGroup [PatchGroup] <p>The name of the patch group registered with the patch baseline.</p>
+-- * BaselineIdentity [PatchBaselineIdentity] <p>The patch baseline the patch group is registered with.</p>
+-- @return PatchGroupPatchBaselineMapping structure as a key-value pair table
+function M.PatchGroupPatchBaselineMapping(args)
+	assert(args, "You must provdide an argument table when creating PatchGroupPatchBaselineMapping")
 	local t = { 
-		["PatchGroup"] = _PatchGroup,
-		["BaselineIdentity"] = _BaselineIdentity,
+		["PatchGroup"] = args["PatchGroup"],
+		["BaselineIdentity"] = args["BaselineIdentity"],
 	}
 	asserts.AssertPatchGroupPatchBaselineMapping(t)
 	return t
@@ -2302,11 +2527,14 @@ end
 
 --- Create a structure of type InvalidInstanceInformationFilterValue
 -- <p>The specified filter value is not valid.</p>
--- @param _message [String] 
-function M.InvalidInstanceInformationFilterValue(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInstanceInformationFilterValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return InvalidInstanceInformationFilterValue structure as a key-value pair table
+function M.InvalidInstanceInformationFilterValue(args)
+	assert(args, "You must provdide an argument table when creating InvalidInstanceInformationFilterValue")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidInstanceInformationFilterValue(t)
 	return t
@@ -2324,8 +2552,11 @@ end
 
 --- Create a structure of type StopAutomationExecutionResult
 --  
-function M.StopAutomationExecutionResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopAutomationExecutionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StopAutomationExecutionResult structure as a key-value pair table
+function M.StopAutomationExecutionResult(args)
+	assert(args, "You must provdide an argument table when creating StopAutomationExecutionResult")
 	local t = { 
 	}
 	asserts.AssertStopAutomationExecutionResult(t)
@@ -2346,13 +2577,16 @@ end
 
 --- Create a structure of type GetPatchBaselineForPatchGroupResult
 --  
--- @param _PatchGroup [PatchGroup] <p>The name of the patch group.</p>
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline that should be used for the patch group.</p>
-function M.GetPatchBaselineForPatchGroupResult(_PatchGroup, _BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPatchBaselineForPatchGroupResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchGroup [PatchGroup] <p>The name of the patch group.</p>
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline that should be used for the patch group.</p>
+-- @return GetPatchBaselineForPatchGroupResult structure as a key-value pair table
+function M.GetPatchBaselineForPatchGroupResult(args)
+	assert(args, "You must provdide an argument table when creating GetPatchBaselineForPatchGroupResult")
 	local t = { 
-		["PatchGroup"] = _PatchGroup,
-		["BaselineId"] = _BaselineId,
+		["PatchGroup"] = args["PatchGroup"],
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertGetPatchBaselineForPatchGroupResult(t)
 	return t
@@ -2378,25 +2612,28 @@ end
 
 --- Create a structure of type ParameterHistory
 -- <p>Information about parameter usage.</p>
--- @param _KeyId [ParameterKeyId] <p>The ID of the query key used for this parameter.</p>
--- @param _Name [PSParameterName] <p>The name of the parameter.</p>
--- @param _LastModifiedDate [DateTime] <p>Date the parameter was last changed or updated.</p>
--- @param _Value [PSParameterValue] <p>The parameter value.</p>
--- @param _AllowedPattern [AllowedPattern] <p>Parameter names can include the following letters and symbols.</p> <p>a-zA-Z0-9_.-</p>
--- @param _LastModifiedUser [String] <p>Amazon Resource Name (ARN) of the AWS user who last changed the parameter.</p>
--- @param _Type [ParameterType] <p>The type of parameter used.</p>
--- @param _Description [ParameterDescription] <p>Information about the parameter.</p>
-function M.ParameterHistory(_KeyId, _Name, _LastModifiedDate, _Value, _AllowedPattern, _LastModifiedUser, _Type, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterHistory")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KeyId [ParameterKeyId] <p>The ID of the query key used for this parameter.</p>
+-- * Name [PSParameterName] <p>The name of the parameter.</p>
+-- * LastModifiedDate [DateTime] <p>Date the parameter was last changed or updated.</p>
+-- * Value [PSParameterValue] <p>The parameter value.</p>
+-- * AllowedPattern [AllowedPattern] <p>Parameter names can include the following letters and symbols.</p> <p>a-zA-Z0-9_.-</p>
+-- * LastModifiedUser [String] <p>Amazon Resource Name (ARN) of the AWS user who last changed the parameter.</p>
+-- * Type [ParameterType] <p>The type of parameter used.</p>
+-- * Description [ParameterDescription] <p>Information about the parameter.</p>
+-- @return ParameterHistory structure as a key-value pair table
+function M.ParameterHistory(args)
+	assert(args, "You must provdide an argument table when creating ParameterHistory")
 	local t = { 
-		["KeyId"] = _KeyId,
-		["Name"] = _Name,
-		["LastModifiedDate"] = _LastModifiedDate,
-		["Value"] = _Value,
-		["AllowedPattern"] = _AllowedPattern,
-		["LastModifiedUser"] = _LastModifiedUser,
-		["Type"] = _Type,
-		["Description"] = _Description,
+		["KeyId"] = args["KeyId"],
+		["Name"] = args["Name"],
+		["LastModifiedDate"] = args["LastModifiedDate"],
+		["Value"] = args["Value"],
+		["AllowedPattern"] = args["AllowedPattern"],
+		["LastModifiedUser"] = args["LastModifiedUser"],
+		["Type"] = args["Type"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertParameterHistory(t)
 	return t
@@ -2415,11 +2652,14 @@ end
 
 --- Create a structure of type AutomationDefinitionNotFoundException
 -- <p>An Automation document with the specified name could not be found.</p>
--- @param _Message [String] 
-function M.AutomationDefinitionNotFoundException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutomationDefinitionNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return AutomationDefinitionNotFoundException structure as a key-value pair table
+function M.AutomationDefinitionNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating AutomationDefinitionNotFoundException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertAutomationDefinitionNotFoundException(t)
 	return t
@@ -2449,33 +2689,36 @@ end
 
 --- Create a structure of type CommandPlugin
 -- <p>Describes plugin details.</p>
--- @param _Status [CommandPluginStatus] <p>The status of this plugin. You can execute a document with multiple plugins.</p>
--- @param _ResponseStartDateTime [DateTime] <p>The time the plugin started executing. </p>
--- @param _StandardErrorUrl [Url] <p>The URL for the complete text written by the plugin to stderr. If execution is not yet complete, then this string is empty.</p>
--- @param _OutputS3BucketName [S3BucketName] <p>The S3 bucket where the responses to the command executions should be stored. This was requested when issuing the command. For example, in the following response:</p> <p> test_folder/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-1234567876543/awsrunShellScript </p> <p>test_folder is the name of the Amazon S3 bucket;</p> <p> ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix is the name of the S3 prefix;</p> <p>i-1234567876543 is the instance ID;</p> <p>awsrunShellScript is the name of the plugin.</p>
--- @param _OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
--- @param _OutputS3KeyPrefix [S3KeyPrefix] <p>The S3 directory path inside the bucket where the responses to the command executions should be stored. This was requested when issuing the command. For example, in the following response:</p> <p> test_folder/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-1234567876543/awsrunShellScript </p> <p>test_folder is the name of the Amazon S3 bucket;</p> <p> ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix is the name of the S3 prefix;</p> <p>i-1234567876543 is the instance ID;</p> <p>awsrunShellScript is the name of the plugin.</p>
--- @param _ResponseCode [ResponseCode] <p>A numeric response code generated after executing the plugin. </p>
--- @param _Output [CommandPluginOutput] <p>Output of the plugin execution.</p>
--- @param _ResponseFinishDateTime [DateTime] <p>The time the plugin stopped executing. Could stop prematurely if, for example, a cancel command was sent. </p>
--- @param _StatusDetails [StatusDetails] <p>A detailed status of the plugin execution. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to the instance.</p> </li> <li> <p>In Progress: The command has been sent to the instance but has not reached a terminal state.</p> </li> <li> <p>Success: The execution of the command or plugin was successfully completed. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: Command execution started on the instance, but the execution was not complete before the execution timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Failed: The command was not successful on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Undeliverable: The command can't be delivered to the instance. The instance might not exist, or it might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit, and they don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.</p> </li> </ul>
--- @param _StandardOutputUrl [Url] <p>The URL for the complete text written by the plugin to stdout in Amazon S3. If the Amazon S3 bucket for the command was not specified, then this string is empty.</p>
--- @param _Name [CommandPluginName] <p>The name of the plugin. Must be one of the following: aws:updateAgent, aws:domainjoin, aws:applications, aws:runPowerShellScript, aws:psmodule, aws:cloudWatch, aws:runShellScript, or aws:updateSSMAgent. </p>
-function M.CommandPlugin(_Status, _ResponseStartDateTime, _StandardErrorUrl, _OutputS3BucketName, _OutputS3Region, _OutputS3KeyPrefix, _ResponseCode, _Output, _ResponseFinishDateTime, _StatusDetails, _StandardOutputUrl, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CommandPlugin")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [CommandPluginStatus] <p>The status of this plugin. You can execute a document with multiple plugins.</p>
+-- * ResponseStartDateTime [DateTime] <p>The time the plugin started executing. </p>
+-- * StandardErrorUrl [Url] <p>The URL for the complete text written by the plugin to stderr. If execution is not yet complete, then this string is empty.</p>
+-- * OutputS3BucketName [S3BucketName] <p>The S3 bucket where the responses to the command executions should be stored. This was requested when issuing the command. For example, in the following response:</p> <p> test_folder/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-1234567876543/awsrunShellScript </p> <p>test_folder is the name of the Amazon S3 bucket;</p> <p> ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix is the name of the S3 prefix;</p> <p>i-1234567876543 is the instance ID;</p> <p>awsrunShellScript is the name of the plugin.</p>
+-- * OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
+-- * OutputS3KeyPrefix [S3KeyPrefix] <p>The S3 directory path inside the bucket where the responses to the command executions should be stored. This was requested when issuing the command. For example, in the following response:</p> <p> test_folder/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-1234567876543/awsrunShellScript </p> <p>test_folder is the name of the Amazon S3 bucket;</p> <p> ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix is the name of the S3 prefix;</p> <p>i-1234567876543 is the instance ID;</p> <p>awsrunShellScript is the name of the plugin.</p>
+-- * ResponseCode [ResponseCode] <p>A numeric response code generated after executing the plugin. </p>
+-- * Output [CommandPluginOutput] <p>Output of the plugin execution.</p>
+-- * ResponseFinishDateTime [DateTime] <p>The time the plugin stopped executing. Could stop prematurely if, for example, a cancel command was sent. </p>
+-- * StatusDetails [StatusDetails] <p>A detailed status of the plugin execution. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to the instance.</p> </li> <li> <p>In Progress: The command has been sent to the instance but has not reached a terminal state.</p> </li> <li> <p>Success: The execution of the command or plugin was successfully completed. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: Command execution started on the instance, but the execution was not complete before the execution timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Failed: The command was not successful on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Undeliverable: The command can't be delivered to the instance. The instance might not exist, or it might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit, and they don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.</p> </li> </ul>
+-- * StandardOutputUrl [Url] <p>The URL for the complete text written by the plugin to stdout in Amazon S3. If the Amazon S3 bucket for the command was not specified, then this string is empty.</p>
+-- * Name [CommandPluginName] <p>The name of the plugin. Must be one of the following: aws:updateAgent, aws:domainjoin, aws:applications, aws:runPowerShellScript, aws:psmodule, aws:cloudWatch, aws:runShellScript, or aws:updateSSMAgent. </p>
+-- @return CommandPlugin structure as a key-value pair table
+function M.CommandPlugin(args)
+	assert(args, "You must provdide an argument table when creating CommandPlugin")
 	local t = { 
-		["Status"] = _Status,
-		["ResponseStartDateTime"] = _ResponseStartDateTime,
-		["StandardErrorUrl"] = _StandardErrorUrl,
-		["OutputS3BucketName"] = _OutputS3BucketName,
-		["OutputS3Region"] = _OutputS3Region,
-		["OutputS3KeyPrefix"] = _OutputS3KeyPrefix,
-		["ResponseCode"] = _ResponseCode,
-		["Output"] = _Output,
-		["ResponseFinishDateTime"] = _ResponseFinishDateTime,
-		["StatusDetails"] = _StatusDetails,
-		["StandardOutputUrl"] = _StandardOutputUrl,
-		["Name"] = _Name,
+		["Status"] = args["Status"],
+		["ResponseStartDateTime"] = args["ResponseStartDateTime"],
+		["StandardErrorUrl"] = args["StandardErrorUrl"],
+		["OutputS3BucketName"] = args["OutputS3BucketName"],
+		["OutputS3Region"] = args["OutputS3Region"],
+		["OutputS3KeyPrefix"] = args["OutputS3KeyPrefix"],
+		["ResponseCode"] = args["ResponseCode"],
+		["Output"] = args["Output"],
+		["ResponseFinishDateTime"] = args["ResponseFinishDateTime"],
+		["StatusDetails"] = args["StatusDetails"],
+		["StandardOutputUrl"] = args["StandardOutputUrl"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCommandPlugin(t)
 	return t
@@ -2494,11 +2737,14 @@ end
 
 --- Create a structure of type DocumentLimitExceeded
 -- <p>You can have at most 200 active SSM documents.</p>
--- @param _Message [String] 
-function M.DocumentLimitExceeded(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return DocumentLimitExceeded structure as a key-value pair table
+function M.DocumentLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating DocumentLimitExceeded")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDocumentLimitExceeded(t)
 	return t
@@ -2518,13 +2764,16 @@ end
 
 --- Create a structure of type DescribeEffectiveInstanceAssociationsResult
 --  
--- @param _Associations [InstanceAssociationList] <p>The associations for the requested instance.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.DescribeEffectiveInstanceAssociationsResult(_Associations, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEffectiveInstanceAssociationsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Associations [InstanceAssociationList] <p>The associations for the requested instance.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return DescribeEffectiveInstanceAssociationsResult structure as a key-value pair table
+function M.DescribeEffectiveInstanceAssociationsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeEffectiveInstanceAssociationsResult")
 	local t = { 
-		["Associations"] = _Associations,
-		["NextToken"] = _NextToken,
+		["Associations"] = args["Associations"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeEffectiveInstanceAssociationsResult(t)
 	return t
@@ -2553,31 +2802,34 @@ end
 
 --- Create a structure of type MaintenanceWindowExecutionTaskInvocationIdentity
 -- <p>Describes the information about a task invocation for a particular target as part of a task execution performed as part of a Maintenance Window execution.</p>
--- @param _Status [MaintenanceWindowExecutionStatus] <p>The status of the task invocation.</p>
--- @param _Parameters [MaintenanceWindowExecutionTaskInvocationParameters] <p>The parameters that were provided for the invocation when it was executed.</p>
--- @param _OwnerInformation [OwnerInformation] <p>User-provided value that was specified when the target was registered with the Maintenance Window. This was also included in any CloudWatch events raised during the task invocation.</p>
--- @param _WindowTargetId [MaintenanceWindowTaskTargetId] <p>The ID of the target definition in this Maintenance Window the invocation was performed for.</p>
--- @param _ExecutionId [MaintenanceWindowExecutionTaskExecutionId] <p>The ID of the action performed in the service that actually handled the task invocation. If the task type is RUN_COMMAND, this value is the command ID.</p>
--- @param _InvocationId [MaintenanceWindowExecutionTaskInvocationId] <p>The ID of the task invocation.</p>
--- @param _StartTime [DateTime] <p>The time the invocation started.</p>
--- @param _EndTime [DateTime] <p>The time the invocation finished.</p>
--- @param _WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that ran the task.</p>
--- @param _StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the status of the task invocation. Only available for certain Status values. </p>
--- @param _TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window execution.</p>
-function M.MaintenanceWindowExecutionTaskInvocationIdentity(_Status, _Parameters, _OwnerInformation, _WindowTargetId, _ExecutionId, _InvocationId, _StartTime, _EndTime, _WindowExecutionId, _StatusDetails, _TaskExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowExecutionTaskInvocationIdentity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [MaintenanceWindowExecutionStatus] <p>The status of the task invocation.</p>
+-- * Parameters [MaintenanceWindowExecutionTaskInvocationParameters] <p>The parameters that were provided for the invocation when it was executed.</p>
+-- * OwnerInformation [OwnerInformation] <p>User-provided value that was specified when the target was registered with the Maintenance Window. This was also included in any CloudWatch events raised during the task invocation.</p>
+-- * WindowTargetId [MaintenanceWindowTaskTargetId] <p>The ID of the target definition in this Maintenance Window the invocation was performed for.</p>
+-- * ExecutionId [MaintenanceWindowExecutionTaskExecutionId] <p>The ID of the action performed in the service that actually handled the task invocation. If the task type is RUN_COMMAND, this value is the command ID.</p>
+-- * InvocationId [MaintenanceWindowExecutionTaskInvocationId] <p>The ID of the task invocation.</p>
+-- * StartTime [DateTime] <p>The time the invocation started.</p>
+-- * EndTime [DateTime] <p>The time the invocation finished.</p>
+-- * WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that ran the task.</p>
+-- * StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the status of the task invocation. Only available for certain Status values. </p>
+-- * TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window execution.</p>
+-- @return MaintenanceWindowExecutionTaskInvocationIdentity structure as a key-value pair table
+function M.MaintenanceWindowExecutionTaskInvocationIdentity(args)
+	assert(args, "You must provdide an argument table when creating MaintenanceWindowExecutionTaskInvocationIdentity")
 	local t = { 
-		["Status"] = _Status,
-		["Parameters"] = _Parameters,
-		["OwnerInformation"] = _OwnerInformation,
-		["WindowTargetId"] = _WindowTargetId,
-		["ExecutionId"] = _ExecutionId,
-		["InvocationId"] = _InvocationId,
-		["StartTime"] = _StartTime,
-		["EndTime"] = _EndTime,
-		["WindowExecutionId"] = _WindowExecutionId,
-		["StatusDetails"] = _StatusDetails,
-		["TaskExecutionId"] = _TaskExecutionId,
+		["Status"] = args["Status"],
+		["Parameters"] = args["Parameters"],
+		["OwnerInformation"] = args["OwnerInformation"],
+		["WindowTargetId"] = args["WindowTargetId"],
+		["ExecutionId"] = args["ExecutionId"],
+		["InvocationId"] = args["InvocationId"],
+		["StartTime"] = args["StartTime"],
+		["EndTime"] = args["EndTime"],
+		["WindowExecutionId"] = args["WindowExecutionId"],
+		["StatusDetails"] = args["StatusDetails"],
+		["TaskExecutionId"] = args["TaskExecutionId"],
 	}
 	asserts.AssertMaintenanceWindowExecutionTaskInvocationIdentity(t)
 	return t
@@ -2601,18 +2853,21 @@ end
 
 --- Create a structure of type UpdateAssociationStatusRequest
 --  
--- @param _InstanceId [InstanceId] <p>The ID of the instance.</p>
--- @param _AssociationStatus [AssociationStatus] <p>The association status.</p>
--- @param _Name [DocumentName] <p>The name of the SSM document.</p>
--- Required parameter: Name
--- Required parameter: InstanceId
--- Required parameter: AssociationStatus
-function M.UpdateAssociationStatusRequest(_InstanceId, _AssociationStatus, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAssociationStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- * AssociationStatus [AssociationStatus] <p>The association status.</p>
+-- * Name [DocumentName] <p>The name of the SSM document.</p>
+-- Required key: Name
+-- Required key: InstanceId
+-- Required key: AssociationStatus
+-- @return UpdateAssociationStatusRequest structure as a key-value pair table
+function M.UpdateAssociationStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateAssociationStatusRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["AssociationStatus"] = _AssociationStatus,
-		["Name"] = _Name,
+		["InstanceId"] = args["InstanceId"],
+		["AssociationStatus"] = args["AssociationStatus"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateAssociationStatusRequest(t)
 	return t
@@ -2639,27 +2894,30 @@ end
 
 --- Create a structure of type UpdatePatchBaselineResult
 --  
--- @param _BaselineId [BaselineId] <p>The ID of the deleted patch baseline.</p>
--- @param _Name [BaselineName] <p>The name of the patch baseline.</p>
--- @param _RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
--- @param _GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
--- @param _ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
--- @param _ModifiedDate [DateTime] <p>The date when the patch baseline was last modified.</p>
--- @param _CreatedDate [DateTime] <p>The date when the patch baseline was created.</p>
--- @param _ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
--- @param _Description [BaselineDescription] <p>A description of the Patch Baseline.</p>
-function M.UpdatePatchBaselineResult(_BaselineId, _Name, _RejectedPatches, _GlobalFilters, _ApprovalRules, _ModifiedDate, _CreatedDate, _ApprovedPatches, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePatchBaselineResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineId [BaselineId] <p>The ID of the deleted patch baseline.</p>
+-- * Name [BaselineName] <p>The name of the patch baseline.</p>
+-- * RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
+-- * GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
+-- * ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
+-- * ModifiedDate [DateTime] <p>The date when the patch baseline was last modified.</p>
+-- * CreatedDate [DateTime] <p>The date when the patch baseline was created.</p>
+-- * ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
+-- * Description [BaselineDescription] <p>A description of the Patch Baseline.</p>
+-- @return UpdatePatchBaselineResult structure as a key-value pair table
+function M.UpdatePatchBaselineResult(args)
+	assert(args, "You must provdide an argument table when creating UpdatePatchBaselineResult")
 	local t = { 
-		["BaselineId"] = _BaselineId,
-		["Name"] = _Name,
-		["RejectedPatches"] = _RejectedPatches,
-		["GlobalFilters"] = _GlobalFilters,
-		["ApprovalRules"] = _ApprovalRules,
-		["ModifiedDate"] = _ModifiedDate,
-		["CreatedDate"] = _CreatedDate,
-		["ApprovedPatches"] = _ApprovedPatches,
-		["Description"] = _Description,
+		["BaselineId"] = args["BaselineId"],
+		["Name"] = args["Name"],
+		["RejectedPatches"] = args["RejectedPatches"],
+		["GlobalFilters"] = args["GlobalFilters"],
+		["ApprovalRules"] = args["ApprovalRules"],
+		["ModifiedDate"] = args["ModifiedDate"],
+		["CreatedDate"] = args["CreatedDate"],
+		["ApprovedPatches"] = args["ApprovedPatches"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdatePatchBaselineResult(t)
 	return t
@@ -2679,13 +2937,16 @@ end
 
 --- Create a structure of type DescribeEffectivePatchesForPatchBaselineResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _EffectivePatches [EffectivePatchList] <p>An array of patches and patch status.</p>
-function M.DescribeEffectivePatchesForPatchBaselineResult(_NextToken, _EffectivePatches, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEffectivePatchesForPatchBaselineResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * EffectivePatches [EffectivePatchList] <p>An array of patches and patch status.</p>
+-- @return DescribeEffectivePatchesForPatchBaselineResult structure as a key-value pair table
+function M.DescribeEffectivePatchesForPatchBaselineResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeEffectivePatchesForPatchBaselineResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["EffectivePatches"] = _EffectivePatches,
+		["NextToken"] = args["NextToken"],
+		["EffectivePatches"] = args["EffectivePatches"],
 	}
 	asserts.AssertDescribeEffectivePatchesForPatchBaselineResult(t)
 	return t
@@ -2704,11 +2965,14 @@ end
 
 --- Create a structure of type DocumentAlreadyExists
 -- <p>The specified document already exists.</p>
--- @param _Message [String] 
-function M.DocumentAlreadyExists(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return DocumentAlreadyExists structure as a key-value pair table
+function M.DocumentAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating DocumentAlreadyExists")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDocumentAlreadyExists(t)
 	return t
@@ -2728,12 +2992,15 @@ end
 
 --- Create a structure of type DeleteMaintenanceWindowRequest
 --  
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window to delete.</p>
--- Required parameter: WindowId
-function M.DeleteMaintenanceWindowRequest(_WindowId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMaintenanceWindowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window to delete.</p>
+-- Required key: WindowId
+-- @return DeleteMaintenanceWindowRequest structure as a key-value pair table
+function M.DeleteMaintenanceWindowRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteMaintenanceWindowRequest")
 	local t = { 
-		["WindowId"] = _WindowId,
+		["WindowId"] = args["WindowId"],
 	}
 	asserts.AssertDeleteMaintenanceWindowRequest(t)
 	return t
@@ -2754,15 +3021,18 @@ end
 
 --- Create a structure of type ListAssociationsRequest
 --  
--- @param _AssociationFilterList [AssociationFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
-function M.ListAssociationsRequest(_AssociationFilterList, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssociationFilterList [AssociationFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @return ListAssociationsRequest structure as a key-value pair table
+function M.ListAssociationsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAssociationsRequest")
 	local t = { 
-		["AssociationFilterList"] = _AssociationFilterList,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["AssociationFilterList"] = args["AssociationFilterList"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListAssociationsRequest(t)
 	return t
@@ -2784,17 +3054,20 @@ end
 
 --- Create a structure of type DescribeParametersRequest
 --  
--- @param _ParameterFilters [ParameterStringFilterList] <p>Filters to limit the request results.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Filters [ParametersFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
-function M.DescribeParametersRequest(_ParameterFilters, _NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParametersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterFilters [ParameterStringFilterList] <p>Filters to limit the request results.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Filters [ParametersFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
+-- @return DescribeParametersRequest structure as a key-value pair table
+function M.DescribeParametersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeParametersRequest")
 	local t = { 
-		["ParameterFilters"] = _ParameterFilters,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["ParameterFilters"] = args["ParameterFilters"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeParametersRequest(t)
 	return t
@@ -2814,13 +3087,16 @@ end
 
 --- Create a structure of type DeleteParametersResult
 --  
--- @param _InvalidParameters [ParameterNameList] <p>The names of parameters that weren't deleted because the parameters are not valid.</p>
--- @param _DeletedParameters [ParameterNameList] <p>The names of the deleted parameters.</p>
-function M.DeleteParametersResult(_InvalidParameters, _DeletedParameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParametersResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InvalidParameters [ParameterNameList] <p>The names of parameters that weren't deleted because the parameters are not valid.</p>
+-- * DeletedParameters [ParameterNameList] <p>The names of the deleted parameters.</p>
+-- @return DeleteParametersResult structure as a key-value pair table
+function M.DeleteParametersResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteParametersResult")
 	local t = { 
-		["InvalidParameters"] = _InvalidParameters,
-		["DeletedParameters"] = _DeletedParameters,
+		["InvalidParameters"] = args["InvalidParameters"],
+		["DeletedParameters"] = args["DeletedParameters"],
 	}
 	asserts.AssertDeleteParametersResult(t)
 	return t
@@ -2845,20 +3121,23 @@ end
 
 --- Create a structure of type AssociationStatus
 -- <p>Describes an association status.</p>
--- @param _Date [DateTime] <p>The date when the status changed.</p>
--- @param _AdditionalInfo [StatusAdditionalInfo] <p>A user-defined string.</p>
--- @param _Message [StatusMessage] <p>The reason for the status.</p>
--- @param _Name [AssociationStatusName] <p>The status.</p>
--- Required parameter: Date
--- Required parameter: Name
--- Required parameter: Message
-function M.AssociationStatus(_Date, _AdditionalInfo, _Message, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociationStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Date [DateTime] <p>The date when the status changed.</p>
+-- * AdditionalInfo [StatusAdditionalInfo] <p>A user-defined string.</p>
+-- * Message [StatusMessage] <p>The reason for the status.</p>
+-- * Name [AssociationStatusName] <p>The status.</p>
+-- Required key: Date
+-- Required key: Name
+-- Required key: Message
+-- @return AssociationStatus structure as a key-value pair table
+function M.AssociationStatus(args)
+	assert(args, "You must provdide an argument table when creating AssociationStatus")
 	local t = { 
-		["Date"] = _Date,
-		["AdditionalInfo"] = _AdditionalInfo,
-		["Message"] = _Message,
-		["Name"] = _Name,
+		["Date"] = args["Date"],
+		["AdditionalInfo"] = args["AdditionalInfo"],
+		["Message"] = args["Message"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertAssociationStatus(t)
 	return t
@@ -2880,15 +3159,18 @@ end
 
 --- Create a structure of type InstanceInformationFilter
 -- <p>Describes a filter for a specific list of instances. </p>
--- @param _valueSet [InstanceInformationFilterValueSet] <p>The filter values.</p>
--- @param _key [InstanceInformationFilterKey] <p>The name of the filter. </p>
--- Required parameter: key
--- Required parameter: valueSet
-function M.InstanceInformationFilter(_valueSet, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceInformationFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * valueSet [InstanceInformationFilterValueSet] <p>The filter values.</p>
+-- * key [InstanceInformationFilterKey] <p>The name of the filter. </p>
+-- Required key: key
+-- Required key: valueSet
+-- @return InstanceInformationFilter structure as a key-value pair table
+function M.InstanceInformationFilter(args)
+	assert(args, "You must provdide an argument table when creating InstanceInformationFilter")
 	local t = { 
-		["valueSet"] = _valueSet,
-		["key"] = _key,
+		["valueSet"] = args["valueSet"],
+		["key"] = args["key"],
 	}
 	asserts.AssertInstanceInformationFilter(t)
 	return t
@@ -2911,18 +3193,21 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowTargetsRequest
 --  
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window whose targets should be retrieved.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Filters [MaintenanceWindowFilterList] <p>Optional filters that can be used to narrow down the scope of the returned window targets. The supported filter keys are Type, WindowTargetId and OwnerInformation.</p>
--- Required parameter: WindowId
-function M.DescribeMaintenanceWindowTargetsRequest(_WindowId, _NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowTargetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window whose targets should be retrieved.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Filters [MaintenanceWindowFilterList] <p>Optional filters that can be used to narrow down the scope of the returned window targets. The supported filter keys are Type, WindowTargetId and OwnerInformation.</p>
+-- Required key: WindowId
+-- @return DescribeMaintenanceWindowTargetsRequest structure as a key-value pair table
+function M.DescribeMaintenanceWindowTargetsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowTargetsRequest")
 	local t = { 
-		["WindowId"] = _WindowId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["WindowId"] = args["WindowId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeMaintenanceWindowTargetsRequest(t)
 	return t
@@ -2948,24 +3233,27 @@ end
 
 --- Create a structure of type CreateAssociationBatchRequestEntry
 -- <p>Describes the association of a Systems Manager document and an instance.</p>
--- @param _ScheduleExpression [ScheduleExpression] <p>A cron expression that specifies a schedule when the association runs.</p>
--- @param _OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the results of this request.</p>
--- @param _Name [DocumentName] <p>The name of the configuration document. </p>
--- @param _Parameters [Parameters] <p>A description of the parameters for a document. </p>
--- @param _InstanceId [InstanceId] <p>The ID of the instance. </p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version.</p>
--- @param _Targets [Targets] <p>The instances targeted by the request.</p>
--- Required parameter: Name
-function M.CreateAssociationBatchRequestEntry(_ScheduleExpression, _OutputLocation, _Name, _Parameters, _InstanceId, _DocumentVersion, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssociationBatchRequestEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScheduleExpression [ScheduleExpression] <p>A cron expression that specifies a schedule when the association runs.</p>
+-- * OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the results of this request.</p>
+-- * Name [DocumentName] <p>The name of the configuration document. </p>
+-- * Parameters [Parameters] <p>A description of the parameters for a document. </p>
+-- * InstanceId [InstanceId] <p>The ID of the instance. </p>
+-- * DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- * Targets [Targets] <p>The instances targeted by the request.</p>
+-- Required key: Name
+-- @return CreateAssociationBatchRequestEntry structure as a key-value pair table
+function M.CreateAssociationBatchRequestEntry(args)
+	assert(args, "You must provdide an argument table when creating CreateAssociationBatchRequestEntry")
 	local t = { 
-		["ScheduleExpression"] = _ScheduleExpression,
-		["OutputLocation"] = _OutputLocation,
-		["Name"] = _Name,
-		["Parameters"] = _Parameters,
-		["InstanceId"] = _InstanceId,
-		["DocumentVersion"] = _DocumentVersion,
-		["Targets"] = _Targets,
+		["ScheduleExpression"] = args["ScheduleExpression"],
+		["OutputLocation"] = args["OutputLocation"],
+		["Name"] = args["Name"],
+		["Parameters"] = args["Parameters"],
+		["InstanceId"] = args["InstanceId"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertCreateAssociationBatchRequestEntry(t)
 	return t
@@ -2987,15 +3275,18 @@ end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param _ResourceType [ResourceTypeForTagging] <p>Returns a list of tags for a specific resource type.</p>
--- @param _ResourceId [ResourceId] <p>The resource ID for which you want to see a list of tags.</p>
--- Required parameter: ResourceType
--- Required parameter: ResourceId
-function M.ListTagsForResourceRequest(_ResourceType, _ResourceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [ResourceTypeForTagging] <p>Returns a list of tags for a specific resource type.</p>
+-- * ResourceId [ResourceId] <p>The resource ID for which you want to see a list of tags.</p>
+-- Required key: ResourceType
+-- Required key: ResourceId
+-- @return ListTagsForResourceRequest structure as a key-value pair table
+function M.ListTagsForResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceId"] = _ResourceId,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceId"] = args["ResourceId"],
 	}
 	asserts.AssertListTagsForResourceRequest(t)
 	return t
@@ -3016,15 +3307,18 @@ end
 
 --- Create a structure of type Parameter
 -- <p>An Amazon EC2 Systems Manager parameter in Parameter Store.</p>
--- @param _Type [ParameterType] <p>The type of parameter. Valid values include the following: String, String list, Secure string.</p>
--- @param _Name [PSParameterName] <p>The name of the parameter.</p>
--- @param _Value [PSParameterValue] <p>The parameter value.</p>
-function M.Parameter(_Type, _Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Parameter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [ParameterType] <p>The type of parameter. Valid values include the following: String, String list, Secure string.</p>
+-- * Name [PSParameterName] <p>The name of the parameter.</p>
+-- * Value [PSParameterValue] <p>The parameter value.</p>
+-- @return Parameter structure as a key-value pair table
+function M.Parameter(args)
+	assert(args, "You must provdide an argument table when creating Parameter")
 	local t = { 
-		["Type"] = _Type,
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Type"] = args["Type"],
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertParameter(t)
 	return t
@@ -3042,8 +3336,11 @@ end
 
 --- Create a structure of type InvalidPluginName
 -- <p>The plugin name is not valid.</p>
-function M.InvalidPluginName(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPluginName")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidPluginName structure as a key-value pair table
+function M.InvalidPluginName(args)
+	assert(args, "You must provdide an argument table when creating InvalidPluginName")
 	local t = { 
 	}
 	asserts.AssertInvalidPluginName(t)
@@ -3064,13 +3361,16 @@ end
 
 --- Create a structure of type GetParametersByPathResult
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. Use this token to get the next set of results.</p>
--- @param _Parameters [ParameterList] <p>A list of parameters found in the specified hierarchy.</p>
-function M.GetParametersByPathResult(_NextToken, _Parameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetParametersByPathResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. Use this token to get the next set of results.</p>
+-- * Parameters [ParameterList] <p>A list of parameters found in the specified hierarchy.</p>
+-- @return GetParametersByPathResult structure as a key-value pair table
+function M.GetParametersByPathResult(args)
+	assert(args, "You must provdide an argument table when creating GetParametersByPathResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Parameters"] = _Parameters,
+		["NextToken"] = args["NextToken"],
+		["Parameters"] = args["Parameters"],
 	}
 	asserts.AssertGetParametersByPathResult(t)
 	return t
@@ -3089,11 +3389,14 @@ end
 
 --- Create a structure of type UpdateDocumentDefaultVersionResult
 --  
--- @param _Description [DocumentDefaultVersionDescription] <p>The description of a custom document that you want to set as the default version.</p>
-function M.UpdateDocumentDefaultVersionResult(_Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentDefaultVersionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [DocumentDefaultVersionDescription] <p>The description of a custom document that you want to set as the default version.</p>
+-- @return UpdateDocumentDefaultVersionResult structure as a key-value pair table
+function M.UpdateDocumentDefaultVersionResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateDocumentDefaultVersionResult")
 	local t = { 
-		["Description"] = _Description,
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdateDocumentDefaultVersionResult(t)
 	return t
@@ -3118,22 +3421,25 @@ end
 
 --- Create a structure of type GetParametersByPathRequest
 --  
--- @param _Recursive [Boolean] <p>Retrieve all parameters within a hierarchy.</p>
--- @param _ParameterFilters [ParameterStringFilterList] <p>Filters to limit the request results.</p>
--- @param _WithDecryption [Boolean] <p>Retrieve all parameters in a hierarchy with their value decrypted.</p>
--- @param _MaxResults [GetParametersByPathMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Path [PSParameterName] <p>The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A hierarchy can have a maximum of five levels. Examples: /Environment/Test/DBString003</p> <p>/Finance/Prod/IAD/OS/WinServ2016/license15</p>
--- @param _NextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results. </p>
--- Required parameter: Path
-function M.GetParametersByPathRequest(_Recursive, _ParameterFilters, _WithDecryption, _MaxResults, _Path, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetParametersByPathRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Recursive [Boolean] <p>Retrieve all parameters within a hierarchy.</p>
+-- * ParameterFilters [ParameterStringFilterList] <p>Filters to limit the request results.</p>
+-- * WithDecryption [Boolean] <p>Retrieve all parameters in a hierarchy with their value decrypted.</p>
+-- * MaxResults [GetParametersByPathMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Path [PSParameterName] <p>The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A hierarchy can have a maximum of five levels. Examples: /Environment/Test/DBString003</p> <p>/Finance/Prod/IAD/OS/WinServ2016/license15</p>
+-- * NextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results. </p>
+-- Required key: Path
+-- @return GetParametersByPathRequest structure as a key-value pair table
+function M.GetParametersByPathRequest(args)
+	assert(args, "You must provdide an argument table when creating GetParametersByPathRequest")
 	local t = { 
-		["Recursive"] = _Recursive,
-		["ParameterFilters"] = _ParameterFilters,
-		["WithDecryption"] = _WithDecryption,
-		["MaxResults"] = _MaxResults,
-		["Path"] = _Path,
-		["NextToken"] = _NextToken,
+		["Recursive"] = args["Recursive"],
+		["ParameterFilters"] = args["ParameterFilters"],
+		["WithDecryption"] = args["WithDecryption"],
+		["MaxResults"] = args["MaxResults"],
+		["Path"] = args["Path"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertGetParametersByPathRequest(t)
 	return t
@@ -3159,24 +3465,27 @@ end
 
 --- Create a structure of type UpdatePatchBaselineRequest
 --  
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline to update.</p>
--- @param _Name [BaselineName] <p>The name of the patch baseline.</p>
--- @param _RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
--- @param _GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
--- @param _ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
--- @param _ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
--- @param _Description [BaselineDescription] <p>A description of the patch baseline.</p>
--- Required parameter: BaselineId
-function M.UpdatePatchBaselineRequest(_BaselineId, _Name, _RejectedPatches, _GlobalFilters, _ApprovalRules, _ApprovedPatches, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePatchBaselineRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline to update.</p>
+-- * Name [BaselineName] <p>The name of the patch baseline.</p>
+-- * RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
+-- * GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
+-- * ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
+-- * ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
+-- * Description [BaselineDescription] <p>A description of the patch baseline.</p>
+-- Required key: BaselineId
+-- @return UpdatePatchBaselineRequest structure as a key-value pair table
+function M.UpdatePatchBaselineRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdatePatchBaselineRequest")
 	local t = { 
-		["BaselineId"] = _BaselineId,
-		["Name"] = _Name,
-		["RejectedPatches"] = _RejectedPatches,
-		["GlobalFilters"] = _GlobalFilters,
-		["ApprovalRules"] = _ApprovalRules,
-		["ApprovedPatches"] = _ApprovedPatches,
-		["Description"] = _Description,
+		["BaselineId"] = args["BaselineId"],
+		["Name"] = args["Name"],
+		["RejectedPatches"] = args["RejectedPatches"],
+		["GlobalFilters"] = args["GlobalFilters"],
+		["ApprovalRules"] = args["ApprovalRules"],
+		["ApprovedPatches"] = args["ApprovedPatches"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdatePatchBaselineRequest(t)
 	return t
@@ -3198,15 +3507,18 @@ end
 
 --- Create a structure of type Tag
 -- <p>Metadata that you assign to your managed instances. Tags enable you to categorize your managed instances in different ways, for example, by purpose, owner, or environment.</p>
--- @param _Value [TagValue] <p>The value of the tag.</p>
--- @param _Key [TagKey] <p>The name of the tag.</p>
--- Required parameter: Key
--- Required parameter: Value
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The value of the tag.</p>
+-- * Key [TagKey] <p>The name of the tag.</p>
+-- Required key: Key
+-- Required key: Value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -3226,12 +3538,15 @@ end
 
 --- Create a structure of type PatchRuleGroup
 -- <p>A set of rules defining the approval rules for a patch baseline.</p>
--- @param _PatchRules [PatchRuleList] <p>The rules that make up the rule group.</p>
--- Required parameter: PatchRules
-function M.PatchRuleGroup(_PatchRules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PatchRuleGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchRules [PatchRuleList] <p>The rules that make up the rule group.</p>
+-- Required key: PatchRules
+-- @return PatchRuleGroup structure as a key-value pair table
+function M.PatchRuleGroup(args)
+	assert(args, "You must provdide an argument table when creating PatchRuleGroup")
 	local t = { 
-		["PatchRules"] = _PatchRules,
+		["PatchRules"] = args["PatchRules"],
 	}
 	asserts.AssertPatchRuleGroup(t)
 	return t
@@ -3252,15 +3567,18 @@ end
 
 --- Create a structure of type FailureDetails
 -- <p>Information about an Automation failure.</p>
--- @param _FailureStage [String] <p>The stage of the Automation execution when the failure occurred. The stages include the following: InputValidation, PreVerification, Invocation, PostVerification.</p>
--- @param _FailureType [String] <p>The type of Automation failure. Failure types include the following: Action, Permission, Throttling, Verification, Internal.</p>
--- @param _Details [AutomationParameterMap] <p>Detailed information about the Automation step failure.</p>
-function M.FailureDetails(_FailureStage, _FailureType, _Details, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FailureDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailureStage [String] <p>The stage of the Automation execution when the failure occurred. The stages include the following: InputValidation, PreVerification, Invocation, PostVerification.</p>
+-- * FailureType [String] <p>The type of Automation failure. Failure types include the following: Action, Permission, Throttling, Verification, Internal.</p>
+-- * Details [AutomationParameterMap] <p>Detailed information about the Automation step failure.</p>
+-- @return FailureDetails structure as a key-value pair table
+function M.FailureDetails(args)
+	assert(args, "You must provdide an argument table when creating FailureDetails")
 	local t = { 
-		["FailureStage"] = _FailureStage,
-		["FailureType"] = _FailureType,
-		["Details"] = _Details,
+		["FailureStage"] = args["FailureStage"],
+		["FailureType"] = args["FailureType"],
+		["Details"] = args["Details"],
 	}
 	asserts.AssertFailureDetails(t)
 	return t
@@ -3279,11 +3597,14 @@ end
 
 --- Create a structure of type UnsupportedParameterType
 -- <p>The parameter type is not supported.</p>
--- @param _message [String] 
-function M.UnsupportedParameterType(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedParameterType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return UnsupportedParameterType structure as a key-value pair table
+function M.UnsupportedParameterType(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedParameterType")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnsupportedParameterType(t)
 	return t
@@ -3303,13 +3624,16 @@ end
 
 --- Create a structure of type ListCommandInvocationsResult
 --  
--- @param _NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _CommandInvocations [CommandInvocationList] <p>(Optional) A list of all invocations. </p>
-function M.ListCommandInvocationsResult(_NextToken, _CommandInvocations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCommandInvocationsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * CommandInvocations [CommandInvocationList] <p>(Optional) A list of all invocations. </p>
+-- @return ListCommandInvocationsResult structure as a key-value pair table
+function M.ListCommandInvocationsResult(args)
+	assert(args, "You must provdide an argument table when creating ListCommandInvocationsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["CommandInvocations"] = _CommandInvocations,
+		["NextToken"] = args["NextToken"],
+		["CommandInvocations"] = args["CommandInvocations"],
 	}
 	asserts.AssertListCommandInvocationsResult(t)
 	return t
@@ -3329,13 +3653,16 @@ end
 
 --- Create a structure of type DescribeInstancePatchesResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _Patches [PatchComplianceDataList] <p>Each entry in the array is a structure containing:</p> <p>Title (string)</p> <p>KBId (string)</p> <p>Classification (string)</p> <p>Severity (string)</p> <p>State (string: "INSTALLED", "INSTALLED OTHER", "MISSING", "NOT APPLICABLE", "FAILED")</p> <p>InstalledTime (DateTime)</p> <p>InstalledBy (string)</p>
-function M.DescribeInstancePatchesResult(_NextToken, _Patches, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * Patches [PatchComplianceDataList] <p>Each entry in the array is a structure containing:</p> <p>Title (string)</p> <p>KBId (string)</p> <p>Classification (string)</p> <p>Severity (string)</p> <p>State (string: "INSTALLED", "INSTALLED OTHER", "MISSING", "NOT APPLICABLE", "FAILED")</p> <p>InstalledTime (DateTime)</p> <p>InstalledBy (string)</p>
+-- @return DescribeInstancePatchesResult structure as a key-value pair table
+function M.DescribeInstancePatchesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancePatchesResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Patches"] = _Patches,
+		["NextToken"] = args["NextToken"],
+		["Patches"] = args["Patches"],
 	}
 	asserts.AssertDescribeInstancePatchesResult(t)
 	return t
@@ -3355,12 +3682,15 @@ end
 
 --- Create a structure of type GetPatchBaselineForPatchGroupRequest
 --  
--- @param _PatchGroup [PatchGroup] <p>The name of the patch group whose patch baseline should be retrieved.</p>
--- Required parameter: PatchGroup
-function M.GetPatchBaselineForPatchGroupRequest(_PatchGroup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPatchBaselineForPatchGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchGroup [PatchGroup] <p>The name of the patch group whose patch baseline should be retrieved.</p>
+-- Required key: PatchGroup
+-- @return GetPatchBaselineForPatchGroupRequest structure as a key-value pair table
+function M.GetPatchBaselineForPatchGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating GetPatchBaselineForPatchGroupRequest")
 	local t = { 
-		["PatchGroup"] = _PatchGroup,
+		["PatchGroup"] = args["PatchGroup"],
 	}
 	asserts.AssertGetPatchBaselineForPatchGroupRequest(t)
 	return t
@@ -3379,11 +3709,14 @@ end
 
 --- Create a structure of type ResourceInUseException
 -- <p>Error returned if an attempt is made to delete a patch baseline that is registered for a patch group.</p>
--- @param _Message [String] 
-function M.ResourceInUseException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return ResourceInUseException structure as a key-value pair table
+function M.ResourceInUseException(args)
+	assert(args, "You must provdide an argument table when creating ResourceInUseException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertResourceInUseException(t)
 	return t
@@ -3403,13 +3736,16 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowsResult
 --  
--- @param _WindowIdentities [MaintenanceWindowIdentityList] <p>Information about the Maintenance Windows.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.DescribeMaintenanceWindowsResult(_WindowIdentities, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowIdentities [MaintenanceWindowIdentityList] <p>Information about the Maintenance Windows.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return DescribeMaintenanceWindowsResult structure as a key-value pair table
+function M.DescribeMaintenanceWindowsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowsResult")
 	local t = { 
-		["WindowIdentities"] = _WindowIdentities,
-		["NextToken"] = _NextToken,
+		["WindowIdentities"] = args["WindowIdentities"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeMaintenanceWindowsResult(t)
 	return t
@@ -3429,12 +3765,15 @@ end
 
 --- Create a structure of type DeletePatchBaselineRequest
 --  
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline to delete.</p>
--- Required parameter: BaselineId
-function M.DeletePatchBaselineRequest(_BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePatchBaselineRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline to delete.</p>
+-- Required key: BaselineId
+-- @return DeletePatchBaselineRequest structure as a key-value pair table
+function M.DeletePatchBaselineRequest(args)
+	assert(args, "You must provdide an argument table when creating DeletePatchBaselineRequest")
 	local t = { 
-		["BaselineId"] = _BaselineId,
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertDeletePatchBaselineRequest(t)
 	return t
@@ -3454,12 +3793,15 @@ end
 
 --- Create a structure of type CreateAssociationBatchRequest
 --  
--- @param _Entries [CreateAssociationBatchRequestEntries] <p>One or more associations.</p>
--- Required parameter: Entries
-function M.CreateAssociationBatchRequest(_Entries, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssociationBatchRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Entries [CreateAssociationBatchRequestEntries] <p>One or more associations.</p>
+-- Required key: Entries
+-- @return CreateAssociationBatchRequest structure as a key-value pair table
+function M.CreateAssociationBatchRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateAssociationBatchRequest")
 	local t = { 
-		["Entries"] = _Entries,
+		["Entries"] = args["Entries"],
 	}
 	asserts.AssertCreateAssociationBatchRequest(t)
 	return t
@@ -3482,18 +3824,21 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionTasksRequest
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution whose task executions should be retrieved.</p>
--- @param _MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Filters [MaintenanceWindowFilterList] <p>Optional filters used to scope down the returned tasks. The supported filter key is STATUS with the corresponding values PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED. </p>
--- Required parameter: WindowExecutionId
-function M.DescribeMaintenanceWindowExecutionTasksRequest(_NextToken, _WindowExecutionId, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionTasksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution whose task executions should be retrieved.</p>
+-- * MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Filters [MaintenanceWindowFilterList] <p>Optional filters used to scope down the returned tasks. The supported filter key is STATUS with the corresponding values PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED. </p>
+-- Required key: WindowExecutionId
+-- @return DescribeMaintenanceWindowExecutionTasksRequest structure as a key-value pair table
+function M.DescribeMaintenanceWindowExecutionTasksRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionTasksRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["WindowExecutionId"] = _WindowExecutionId,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["NextToken"] = args["NextToken"],
+		["WindowExecutionId"] = args["WindowExecutionId"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeMaintenanceWindowExecutionTasksRequest(t)
 	return t
@@ -3521,29 +3866,32 @@ end
 
 --- Create a structure of type AutomationExecution
 -- <p>Detailed information about the current state of an individual Automation execution.</p>
--- @param _AutomationExecutionStatus [AutomationExecutionStatus] <p>The execution status of the Automation.</p>
--- @param _Parameters [AutomationParameterMap] <p>The key-value map of execution parameters, which were supplied when calling StartAutomationExecution.</p>
--- @param _Outputs [AutomationParameterMap] <p>The list of execution outputs as defined in the automation document.</p>
--- @param _DocumentName [DocumentName] <p>The name of the Automation document used during the execution.</p>
--- @param _AutomationExecutionId [AutomationExecutionId] <p>The execution ID.</p>
--- @param _FailureMessage [String] <p>A message describing why an execution has failed, if the status is set to Failed.</p>
--- @param _ExecutionEndTime [DateTime] <p>The time the execution finished.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The version of the document to use during execution.</p>
--- @param _ExecutionStartTime [DateTime] <p>The time the execution started.</p>
--- @param _StepExecutions [StepExecutionList] <p>A list of details about the current state of all steps that comprise an execution. An Automation document contains a list of steps that are executed in order.</p>
-function M.AutomationExecution(_AutomationExecutionStatus, _Parameters, _Outputs, _DocumentName, _AutomationExecutionId, _FailureMessage, _ExecutionEndTime, _DocumentVersion, _ExecutionStartTime, _StepExecutions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutomationExecution")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AutomationExecutionStatus [AutomationExecutionStatus] <p>The execution status of the Automation.</p>
+-- * Parameters [AutomationParameterMap] <p>The key-value map of execution parameters, which were supplied when calling StartAutomationExecution.</p>
+-- * Outputs [AutomationParameterMap] <p>The list of execution outputs as defined in the automation document.</p>
+-- * DocumentName [DocumentName] <p>The name of the Automation document used during the execution.</p>
+-- * AutomationExecutionId [AutomationExecutionId] <p>The execution ID.</p>
+-- * FailureMessage [String] <p>A message describing why an execution has failed, if the status is set to Failed.</p>
+-- * ExecutionEndTime [DateTime] <p>The time the execution finished.</p>
+-- * DocumentVersion [DocumentVersion] <p>The version of the document to use during execution.</p>
+-- * ExecutionStartTime [DateTime] <p>The time the execution started.</p>
+-- * StepExecutions [StepExecutionList] <p>A list of details about the current state of all steps that comprise an execution. An Automation document contains a list of steps that are executed in order.</p>
+-- @return AutomationExecution structure as a key-value pair table
+function M.AutomationExecution(args)
+	assert(args, "You must provdide an argument table when creating AutomationExecution")
 	local t = { 
-		["AutomationExecutionStatus"] = _AutomationExecutionStatus,
-		["Parameters"] = _Parameters,
-		["Outputs"] = _Outputs,
-		["DocumentName"] = _DocumentName,
-		["AutomationExecutionId"] = _AutomationExecutionId,
-		["FailureMessage"] = _FailureMessage,
-		["ExecutionEndTime"] = _ExecutionEndTime,
-		["DocumentVersion"] = _DocumentVersion,
-		["ExecutionStartTime"] = _ExecutionStartTime,
-		["StepExecutions"] = _StepExecutions,
+		["AutomationExecutionStatus"] = args["AutomationExecutionStatus"],
+		["Parameters"] = args["Parameters"],
+		["Outputs"] = args["Outputs"],
+		["DocumentName"] = args["DocumentName"],
+		["AutomationExecutionId"] = args["AutomationExecutionId"],
+		["FailureMessage"] = args["FailureMessage"],
+		["ExecutionEndTime"] = args["ExecutionEndTime"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["ExecutionStartTime"] = args["ExecutionStartTime"],
+		["StepExecutions"] = args["StepExecutions"],
 	}
 	asserts.AssertAutomationExecution(t)
 	return t
@@ -3563,13 +3911,16 @@ end
 
 --- Create a structure of type DescribePatchGroupsRequest
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [PatchBaselineMaxResults] <p>The maximum number of patch groups to return (per page).</p>
-function M.DescribePatchGroupsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchGroupsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [PatchBaselineMaxResults] <p>The maximum number of patch groups to return (per page).</p>
+-- @return DescribePatchGroupsRequest structure as a key-value pair table
+function M.DescribePatchGroupsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribePatchGroupsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribePatchGroupsRequest(t)
 	return t
@@ -3588,11 +3939,14 @@ end
 
 --- Create a structure of type HierarchyLevelLimitExceededException
 -- <p>A hierarchy can have a maximum of five levels. For example:</p> <p>/Finance/Prod/IAD/OS/WinServ2016/license15</p> <p>For more information, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working-path.html">Develop a Parameter Hierarchy</a>. </p>
--- @param _message [String] <p>A hierarchy can have a maximum of five levels. For example:</p> <p>/Finance/Prod/IAD/OS/WinServ2016/license15</p> <p>For more information, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working-path.html">Develop a Parameter Hierarchy</a>. </p>
-function M.HierarchyLevelLimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HierarchyLevelLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>A hierarchy can have a maximum of five levels. For example:</p> <p>/Finance/Prod/IAD/OS/WinServ2016/license15</p> <p>For more information, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working-path.html">Develop a Parameter Hierarchy</a>. </p>
+-- @return HierarchyLevelLimitExceededException structure as a key-value pair table
+function M.HierarchyLevelLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating HierarchyLevelLimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertHierarchyLevelLimitExceededException(t)
 	return t
@@ -3611,11 +3965,14 @@ end
 
 --- Create a structure of type AlreadyExistsException
 -- <p>Error returned if an attempt is made to register a patch group with a patch baseline that is already registered with a different patch baseline.</p>
--- @param _Message [String] 
-function M.AlreadyExistsException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return AlreadyExistsException structure as a key-value pair table
+function M.AlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating AlreadyExistsException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertAlreadyExistsException(t)
 	return t
@@ -3634,11 +3991,14 @@ end
 
 --- Create a structure of type InvalidSchedule
 -- <p>The schedule is invalid. Verify your cron or rate expression and try again.</p>
--- @param _Message [String] 
-function M.InvalidSchedule(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSchedule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidSchedule structure as a key-value pair table
+function M.InvalidSchedule(args)
+	assert(args, "You must provdide an argument table when creating InvalidSchedule")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidSchedule(t)
 	return t
@@ -3657,11 +4017,14 @@ end
 
 --- Create a structure of type InvalidActivation
 -- <p>The activation is not valid. The activation might have been deleted, or the ActivationId and the ActivationCode do not match.</p>
--- @param _Message [String] 
-function M.InvalidActivation(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidActivation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidActivation structure as a key-value pair table
+function M.InvalidActivation(args)
+	assert(args, "You must provdide an argument table when creating InvalidActivation")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidActivation(t)
 	return t
@@ -3684,18 +4047,21 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionsRequest
 --  
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window whose executions should be retrieved.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Filters [MaintenanceWindowFilterList] <p>Each entry in the array is a structure containing:</p> <p>Key (string, between 1 and 128 characters)</p> <p>Values (array of strings, each string is between 1 and 256 characters)</p> <p>The supported Keys are ExecutedBefore and ExecutedAfter with the value being a date/time string such as 2016-11-04T05:00:00Z.</p>
--- Required parameter: WindowId
-function M.DescribeMaintenanceWindowExecutionsRequest(_WindowId, _NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window whose executions should be retrieved.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Filters [MaintenanceWindowFilterList] <p>Each entry in the array is a structure containing:</p> <p>Key (string, between 1 and 128 characters)</p> <p>Values (array of strings, each string is between 1 and 256 characters)</p> <p>The supported Keys are ExecutedBefore and ExecutedAfter with the value being a date/time string such as 2016-11-04T05:00:00Z.</p>
+-- Required key: WindowId
+-- @return DescribeMaintenanceWindowExecutionsRequest structure as a key-value pair table
+function M.DescribeMaintenanceWindowExecutionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionsRequest")
 	local t = { 
-		["WindowId"] = _WindowId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["WindowId"] = args["WindowId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeMaintenanceWindowExecutionsRequest(t)
 	return t
@@ -3722,27 +4088,30 @@ end
 
 --- Create a structure of type AutomationExecutionMetadata
 -- <p>Details about a specific Automation execution.</p>
--- @param _AutomationExecutionStatus [AutomationExecutionStatus] <p>The status of the execution. Valid values include: Running, Succeeded, Failed, Timed out, or Cancelled.</p>
--- @param _Outputs [AutomationParameterMap] <p>The list of execution outputs as defined in the Automation document.</p>
--- @param _DocumentName [DocumentName] <p>The name of the Automation document used during execution.</p>
--- @param _AutomationExecutionId [AutomationExecutionId] <p>The execution ID.</p>
--- @param _ExecutionEndTime [DateTime] <p>The time the execution finished. This is not populated if the execution is still in progress.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version used during the execution.</p>
--- @param _ExecutionStartTime [DateTime] <p>The time the execution started.&gt;</p>
--- @param _ExecutedBy [String] <p>The IAM role ARN of the user who executed the Automation.</p>
--- @param _LogFile [String] <p>An Amazon S3 bucket where execution information is stored.</p>
-function M.AutomationExecutionMetadata(_AutomationExecutionStatus, _Outputs, _DocumentName, _AutomationExecutionId, _ExecutionEndTime, _DocumentVersion, _ExecutionStartTime, _ExecutedBy, _LogFile, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutomationExecutionMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AutomationExecutionStatus [AutomationExecutionStatus] <p>The status of the execution. Valid values include: Running, Succeeded, Failed, Timed out, or Cancelled.</p>
+-- * Outputs [AutomationParameterMap] <p>The list of execution outputs as defined in the Automation document.</p>
+-- * DocumentName [DocumentName] <p>The name of the Automation document used during execution.</p>
+-- * AutomationExecutionId [AutomationExecutionId] <p>The execution ID.</p>
+-- * ExecutionEndTime [DateTime] <p>The time the execution finished. This is not populated if the execution is still in progress.</p>
+-- * DocumentVersion [DocumentVersion] <p>The document version used during the execution.</p>
+-- * ExecutionStartTime [DateTime] <p>The time the execution started.&gt;</p>
+-- * ExecutedBy [String] <p>The IAM role ARN of the user who executed the Automation.</p>
+-- * LogFile [String] <p>An Amazon S3 bucket where execution information is stored.</p>
+-- @return AutomationExecutionMetadata structure as a key-value pair table
+function M.AutomationExecutionMetadata(args)
+	assert(args, "You must provdide an argument table when creating AutomationExecutionMetadata")
 	local t = { 
-		["AutomationExecutionStatus"] = _AutomationExecutionStatus,
-		["Outputs"] = _Outputs,
-		["DocumentName"] = _DocumentName,
-		["AutomationExecutionId"] = _AutomationExecutionId,
-		["ExecutionEndTime"] = _ExecutionEndTime,
-		["DocumentVersion"] = _DocumentVersion,
-		["ExecutionStartTime"] = _ExecutionStartTime,
-		["ExecutedBy"] = _ExecutedBy,
-		["LogFile"] = _LogFile,
+		["AutomationExecutionStatus"] = args["AutomationExecutionStatus"],
+		["Outputs"] = args["Outputs"],
+		["DocumentName"] = args["DocumentName"],
+		["AutomationExecutionId"] = args["AutomationExecutionId"],
+		["ExecutionEndTime"] = args["ExecutionEndTime"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["ExecutionStartTime"] = args["ExecutionStartTime"],
+		["ExecutedBy"] = args["ExecutedBy"],
+		["LogFile"] = args["LogFile"],
 	}
 	asserts.AssertAutomationExecutionMetadata(t)
 	return t
@@ -3779,47 +4148,50 @@ end
 
 --- Create a structure of type InstanceInformation
 -- <p>Describes a filter for a specific list of instances. </p>
--- @param _IsLatestVersion [Boolean] <p>Indicates whether latest version of the SSM Agent is running on your instance. </p>
--- @param _IamRole [IamRole] <p>The Amazon Identity and Access Management (IAM) role assigned to EC2 instances or managed instances. </p>
--- @param _ComputerName [ComputerName] <p>The fully qualified host name of the managed instance.</p>
--- @param _AssociationOverview [InstanceAggregatedAssociationOverview] <p>Information about the association.</p>
--- @param _PingStatus [PingStatus] <p>Connection status of the SSM Agent. </p>
--- @param _Name [String] <p>The name of the managed instance.</p>
--- @param _LastSuccessfulAssociationExecutionDate [DateTime] <p>The last date the association was successfully run.</p>
--- @param _InstanceId [InstanceId] <p>The instance ID. </p>
--- @param _IPAddress [IPAddress] <p>The IP address of the managed instance.</p>
--- @param _AssociationStatus [StatusName] <p>The status of the association.</p>
--- @param _LastAssociationExecutionDate [DateTime] <p>The date the association was last executed.</p>
--- @param _ResourceType [ResourceType] <p>The type of instance. Instances are either EC2 instances or managed instances. </p>
--- @param _ActivationId [ActivationId] <p>The activation ID created by Systems Manager when the server or VM was registered.</p>
--- @param _AgentVersion [Version] <p>The version of the SSM Agent running on your Linux instance. </p>
--- @param _PlatformVersion [String] <p>The version of the OS platform running on your instance. </p>
--- @param _RegistrationDate [DateTime] <p>The date the server or VM was registered with AWS as a managed instance.</p>
--- @param _PlatformName [String] <p>The name of the operating system platform running on your instance. </p>
--- @param _PlatformType [PlatformType] <p>The operating system platform type. </p>
--- @param _LastPingDateTime [DateTime] <p>The date and time when agent last pinged Systems Manager service. </p>
-function M.InstanceInformation(_IsLatestVersion, _IamRole, _ComputerName, _AssociationOverview, _PingStatus, _Name, _LastSuccessfulAssociationExecutionDate, _InstanceId, _IPAddress, _AssociationStatus, _LastAssociationExecutionDate, _ResourceType, _ActivationId, _AgentVersion, _PlatformVersion, _RegistrationDate, _PlatformName, _PlatformType, _LastPingDateTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceInformation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IsLatestVersion [Boolean] <p>Indicates whether latest version of the SSM Agent is running on your instance. </p>
+-- * IamRole [IamRole] <p>The Amazon Identity and Access Management (IAM) role assigned to EC2 instances or managed instances. </p>
+-- * ComputerName [ComputerName] <p>The fully qualified host name of the managed instance.</p>
+-- * AssociationOverview [InstanceAggregatedAssociationOverview] <p>Information about the association.</p>
+-- * PingStatus [PingStatus] <p>Connection status of the SSM Agent. </p>
+-- * Name [String] <p>The name of the managed instance.</p>
+-- * LastSuccessfulAssociationExecutionDate [DateTime] <p>The last date the association was successfully run.</p>
+-- * InstanceId [InstanceId] <p>The instance ID. </p>
+-- * IPAddress [IPAddress] <p>The IP address of the managed instance.</p>
+-- * AssociationStatus [StatusName] <p>The status of the association.</p>
+-- * LastAssociationExecutionDate [DateTime] <p>The date the association was last executed.</p>
+-- * ResourceType [ResourceType] <p>The type of instance. Instances are either EC2 instances or managed instances. </p>
+-- * ActivationId [ActivationId] <p>The activation ID created by Systems Manager when the server or VM was registered.</p>
+-- * AgentVersion [Version] <p>The version of the SSM Agent running on your Linux instance. </p>
+-- * PlatformVersion [String] <p>The version of the OS platform running on your instance. </p>
+-- * RegistrationDate [DateTime] <p>The date the server or VM was registered with AWS as a managed instance.</p>
+-- * PlatformName [String] <p>The name of the operating system platform running on your instance. </p>
+-- * PlatformType [PlatformType] <p>The operating system platform type. </p>
+-- * LastPingDateTime [DateTime] <p>The date and time when agent last pinged Systems Manager service. </p>
+-- @return InstanceInformation structure as a key-value pair table
+function M.InstanceInformation(args)
+	assert(args, "You must provdide an argument table when creating InstanceInformation")
 	local t = { 
-		["IsLatestVersion"] = _IsLatestVersion,
-		["IamRole"] = _IamRole,
-		["ComputerName"] = _ComputerName,
-		["AssociationOverview"] = _AssociationOverview,
-		["PingStatus"] = _PingStatus,
-		["Name"] = _Name,
-		["LastSuccessfulAssociationExecutionDate"] = _LastSuccessfulAssociationExecutionDate,
-		["InstanceId"] = _InstanceId,
-		["IPAddress"] = _IPAddress,
-		["AssociationStatus"] = _AssociationStatus,
-		["LastAssociationExecutionDate"] = _LastAssociationExecutionDate,
-		["ResourceType"] = _ResourceType,
-		["ActivationId"] = _ActivationId,
-		["AgentVersion"] = _AgentVersion,
-		["PlatformVersion"] = _PlatformVersion,
-		["RegistrationDate"] = _RegistrationDate,
-		["PlatformName"] = _PlatformName,
-		["PlatformType"] = _PlatformType,
-		["LastPingDateTime"] = _LastPingDateTime,
+		["IsLatestVersion"] = args["IsLatestVersion"],
+		["IamRole"] = args["IamRole"],
+		["ComputerName"] = args["ComputerName"],
+		["AssociationOverview"] = args["AssociationOverview"],
+		["PingStatus"] = args["PingStatus"],
+		["Name"] = args["Name"],
+		["LastSuccessfulAssociationExecutionDate"] = args["LastSuccessfulAssociationExecutionDate"],
+		["InstanceId"] = args["InstanceId"],
+		["IPAddress"] = args["IPAddress"],
+		["AssociationStatus"] = args["AssociationStatus"],
+		["LastAssociationExecutionDate"] = args["LastAssociationExecutionDate"],
+		["ResourceType"] = args["ResourceType"],
+		["ActivationId"] = args["ActivationId"],
+		["AgentVersion"] = args["AgentVersion"],
+		["PlatformVersion"] = args["PlatformVersion"],
+		["RegistrationDate"] = args["RegistrationDate"],
+		["PlatformName"] = args["PlatformName"],
+		["PlatformType"] = args["PlatformType"],
+		["LastPingDateTime"] = args["LastPingDateTime"],
 	}
 	asserts.AssertInstanceInformation(t)
 	return t
@@ -3838,11 +4210,14 @@ end
 
 --- Create a structure of type InvalidRole
 -- <p>The role name can't contain invalid characters. Also verify that you specified an IAM role for notifications that includes the required trust policy. For information about configuring the IAM role for Run Command notifications, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/rc-sns-notifications.html">Configuring Amazon SNS Notifications for Run Command</a> in the <i>Amazon EC2 Systems Manager User Guide</i>.</p>
--- @param _Message [String] 
-function M.InvalidRole(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRole")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidRole structure as a key-value pair table
+function M.InvalidRole(args)
+	assert(args, "You must provdide an argument table when creating InvalidRole")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidRole(t)
 	return t
@@ -3862,12 +4237,15 @@ end
 
 --- Create a structure of type DeleteActivationRequest
 --  
--- @param _ActivationId [ActivationId] <p>The ID of the activation that you want to delete.</p>
--- Required parameter: ActivationId
-function M.DeleteActivationRequest(_ActivationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteActivationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ActivationId [ActivationId] <p>The ID of the activation that you want to delete.</p>
+-- Required key: ActivationId
+-- @return DeleteActivationRequest structure as a key-value pair table
+function M.DeleteActivationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteActivationRequest")
 	local t = { 
-		["ActivationId"] = _ActivationId,
+		["ActivationId"] = args["ActivationId"],
 	}
 	asserts.AssertDeleteActivationRequest(t)
 	return t
@@ -3886,11 +4264,14 @@ end
 
 --- Create a structure of type InvalidInstanceId
 -- <p>The following problems can cause this exception:</p> <p>You do not have permission to access the instance.</p> <p>The SSM Agent is not running. On managed instances and Linux instances, verify that the SSM Agent is running. On EC2 Windows instances, verify that the EC2Config service is running.</p> <p>The SSM Agent or EC2Config service is not registered to the SSM endpoint. Try reinstalling the SSM Agent or EC2Config service.</p> <p>The instance is not in valid state. Valid states are: Running, Pending, Stopped, Stopping. Invalid states are: Shutting-down and Terminated.</p>
--- @param _Message [String] 
-function M.InvalidInstanceId(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInstanceId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidInstanceId structure as a key-value pair table
+function M.InvalidInstanceId(args)
+	assert(args, "You must provdide an argument table when creating InvalidInstanceId")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidInstanceId(t)
 	return t
@@ -3913,17 +4294,20 @@ end
 
 --- Create a structure of type InventoryItemSchema
 -- <p>The inventory item schema definition. Users can use this to compose inventory query filters.</p>
--- @param _TypeName [InventoryItemTypeName] <p>The name of the inventory type. Default inventory item type names start with AWS. Custom inventory type names will start with Custom. Default inventory item types include the following: AWS:AWSComponent, AWS:Application, AWS:InstanceInformation, AWS:Network, and AWS:WindowsUpdate.</p>
--- @param _Version [InventoryItemSchemaVersion] <p>The schema version for the inventory item.</p>
--- @param _Attributes [InventoryItemAttributeList] <p>The schema attributes for inventory. This contains data type and attribute name.</p>
--- Required parameter: TypeName
--- Required parameter: Attributes
-function M.InventoryItemSchema(_TypeName, _Version, _Attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryItemSchema")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypeName [InventoryItemTypeName] <p>The name of the inventory type. Default inventory item type names start with AWS. Custom inventory type names will start with Custom. Default inventory item types include the following: AWS:AWSComponent, AWS:Application, AWS:InstanceInformation, AWS:Network, and AWS:WindowsUpdate.</p>
+-- * Version [InventoryItemSchemaVersion] <p>The schema version for the inventory item.</p>
+-- * Attributes [InventoryItemAttributeList] <p>The schema attributes for inventory. This contains data type and attribute name.</p>
+-- Required key: TypeName
+-- Required key: Attributes
+-- @return InventoryItemSchema structure as a key-value pair table
+function M.InventoryItemSchema(args)
+	assert(args, "You must provdide an argument table when creating InventoryItemSchema")
 	local t = { 
-		["TypeName"] = _TypeName,
-		["Version"] = _Version,
-		["Attributes"] = _Attributes,
+		["TypeName"] = args["TypeName"],
+		["Version"] = args["Version"],
+		["Attributes"] = args["Attributes"],
 	}
 	asserts.AssertInventoryItemSchema(t)
 	return t
@@ -3942,11 +4326,14 @@ end
 
 --- Create a structure of type DeleteMaintenanceWindowResult
 --  
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the deleted Maintenance Window.</p>
-function M.DeleteMaintenanceWindowResult(_WindowId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMaintenanceWindowResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowId [MaintenanceWindowId] <p>The ID of the deleted Maintenance Window.</p>
+-- @return DeleteMaintenanceWindowResult structure as a key-value pair table
+function M.DeleteMaintenanceWindowResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteMaintenanceWindowResult")
 	local t = { 
-		["WindowId"] = _WindowId,
+		["WindowId"] = args["WindowId"],
 	}
 	asserts.AssertDeleteMaintenanceWindowResult(t)
 	return t
@@ -3966,13 +4353,16 @@ end
 
 --- Create a structure of type DescribeInstancePatchStatesResult
 --  
--- @param _InstancePatchStates [InstancePatchStateList] <p>The high-level patch state for the requested instances.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.DescribeInstancePatchStatesResult(_InstancePatchStates, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchStatesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstancePatchStates [InstancePatchStateList] <p>The high-level patch state for the requested instances.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return DescribeInstancePatchStatesResult structure as a key-value pair table
+function M.DescribeInstancePatchStatesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancePatchStatesResult")
 	local t = { 
-		["InstancePatchStates"] = _InstancePatchStates,
-		["NextToken"] = _NextToken,
+		["InstancePatchStates"] = args["InstancePatchStates"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeInstancePatchStatesResult(t)
 	return t
@@ -3998,25 +4388,28 @@ end
 
 --- Create a structure of type Association
 -- <p>Describes an association of a Systems Manager document and an instance.</p>
--- @param _ScheduleExpression [ScheduleExpression] <p>A cron expression that specifies a schedule when the association runs.</p>
--- @param _Name [DocumentName] <p>The name of the SSM document.</p>
--- @param _LastExecutionDate [DateTime] <p>The date on which the association was last run.</p>
--- @param _InstanceId [InstanceId] <p>The ID of the instance.</p>
--- @param _Overview [AssociationOverview] <p>Information about the association.</p>
--- @param _AssociationId [AssociationId] <p>The ID created by the system when you create an association. An association is a binding between a document and a set of targets with a schedule.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The version of the document used in the association.</p>
--- @param _Targets [Targets] <p>The instances targeted by the request to create an association. </p>
-function M.Association(_ScheduleExpression, _Name, _LastExecutionDate, _InstanceId, _Overview, _AssociationId, _DocumentVersion, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Association")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScheduleExpression [ScheduleExpression] <p>A cron expression that specifies a schedule when the association runs.</p>
+-- * Name [DocumentName] <p>The name of the SSM document.</p>
+-- * LastExecutionDate [DateTime] <p>The date on which the association was last run.</p>
+-- * InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- * Overview [AssociationOverview] <p>Information about the association.</p>
+-- * AssociationId [AssociationId] <p>The ID created by the system when you create an association. An association is a binding between a document and a set of targets with a schedule.</p>
+-- * DocumentVersion [DocumentVersion] <p>The version of the document used in the association.</p>
+-- * Targets [Targets] <p>The instances targeted by the request to create an association. </p>
+-- @return Association structure as a key-value pair table
+function M.Association(args)
+	assert(args, "You must provdide an argument table when creating Association")
 	local t = { 
-		["ScheduleExpression"] = _ScheduleExpression,
-		["Name"] = _Name,
-		["LastExecutionDate"] = _LastExecutionDate,
-		["InstanceId"] = _InstanceId,
-		["Overview"] = _Overview,
-		["AssociationId"] = _AssociationId,
-		["DocumentVersion"] = _DocumentVersion,
-		["Targets"] = _Targets,
+		["ScheduleExpression"] = args["ScheduleExpression"],
+		["Name"] = args["Name"],
+		["LastExecutionDate"] = args["LastExecutionDate"],
+		["InstanceId"] = args["InstanceId"],
+		["Overview"] = args["Overview"],
+		["AssociationId"] = args["AssociationId"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertAssociation(t)
 	return t
@@ -4038,16 +4431,19 @@ end
 
 --- Create a structure of type DescribeEffectiveInstanceAssociationsRequest
 --  
--- @param _InstanceId [InstanceId] <p>The instance ID for which you want to view all associations.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [EffectiveInstanceAssociationMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- Required parameter: InstanceId
-function M.DescribeEffectiveInstanceAssociationsRequest(_InstanceId, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEffectiveInstanceAssociationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The instance ID for which you want to view all associations.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [EffectiveInstanceAssociationMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- Required key: InstanceId
+-- @return DescribeEffectiveInstanceAssociationsRequest structure as a key-value pair table
+function M.DescribeEffectiveInstanceAssociationsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEffectiveInstanceAssociationsRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["InstanceId"] = args["InstanceId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeEffectiveInstanceAssociationsRequest(t)
 	return t
@@ -4067,13 +4463,16 @@ end
 
 --- Create a structure of type GetParameterHistoryResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _Parameters [ParameterHistoryList] <p>A list of parameters returned by the request.</p>
-function M.GetParameterHistoryResult(_NextToken, _Parameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetParameterHistoryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * Parameters [ParameterHistoryList] <p>A list of parameters returned by the request.</p>
+-- @return GetParameterHistoryResult structure as a key-value pair table
+function M.GetParameterHistoryResult(args)
+	assert(args, "You must provdide an argument table when creating GetParameterHistoryResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Parameters"] = _Parameters,
+		["NextToken"] = args["NextToken"],
+		["Parameters"] = args["Parameters"],
 	}
 	asserts.AssertGetParameterHistoryResult(t)
 	return t
@@ -4096,17 +4495,20 @@ end
 
 --- Create a structure of type LoggingInfo
 -- <p>Information about an Amazon S3 bucket to write instance-level logs to.</p>
--- @param _S3KeyPrefix [S3KeyPrefix] <p>(Optional) The Amazon S3 bucket subfolder. </p>
--- @param _S3BucketName [S3BucketName] <p>The name of an Amazon S3 bucket where execution logs are stored .</p>
--- @param _S3Region [S3Region] <p>The region where the Amazon S3 bucket is located.</p>
--- Required parameter: S3BucketName
--- Required parameter: S3Region
-function M.LoggingInfo(_S3KeyPrefix, _S3BucketName, _S3Region, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoggingInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * S3KeyPrefix [S3KeyPrefix] <p>(Optional) The Amazon S3 bucket subfolder. </p>
+-- * S3BucketName [S3BucketName] <p>The name of an Amazon S3 bucket where execution logs are stored .</p>
+-- * S3Region [S3Region] <p>The region where the Amazon S3 bucket is located.</p>
+-- Required key: S3BucketName
+-- Required key: S3Region
+-- @return LoggingInfo structure as a key-value pair table
+function M.LoggingInfo(args)
+	assert(args, "You must provdide an argument table when creating LoggingInfo")
 	local t = { 
-		["S3KeyPrefix"] = _S3KeyPrefix,
-		["S3BucketName"] = _S3BucketName,
-		["S3Region"] = _S3Region,
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["S3BucketName"] = args["S3BucketName"],
+		["S3Region"] = args["S3Region"],
 	}
 	asserts.AssertLoggingInfo(t)
 	return t
@@ -4130,21 +4532,24 @@ end
 
 --- Create a structure of type ListInventoryEntriesResult
 --  
--- @param _InstanceId [InstanceId] <p>The instance ID targeted by the request to query inventory information.</p>
--- @param _TypeName [InventoryItemTypeName] <p>The type of inventory item returned by the request.</p>
--- @param _Entries [InventoryItemEntryList] <p>A list of inventory items on the instance(s).</p>
--- @param _SchemaVersion [InventoryItemSchemaVersion] <p>The inventory schema version used by the instance(s).</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _CaptureTime [InventoryItemCaptureTime] <p>The time that inventory information was collected for the instance(s).</p>
-function M.ListInventoryEntriesResult(_InstanceId, _TypeName, _Entries, _SchemaVersion, _NextToken, _CaptureTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInventoryEntriesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The instance ID targeted by the request to query inventory information.</p>
+-- * TypeName [InventoryItemTypeName] <p>The type of inventory item returned by the request.</p>
+-- * Entries [InventoryItemEntryList] <p>A list of inventory items on the instance(s).</p>
+-- * SchemaVersion [InventoryItemSchemaVersion] <p>The inventory schema version used by the instance(s).</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * CaptureTime [InventoryItemCaptureTime] <p>The time that inventory information was collected for the instance(s).</p>
+-- @return ListInventoryEntriesResult structure as a key-value pair table
+function M.ListInventoryEntriesResult(args)
+	assert(args, "You must provdide an argument table when creating ListInventoryEntriesResult")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["TypeName"] = _TypeName,
-		["Entries"] = _Entries,
-		["SchemaVersion"] = _SchemaVersion,
-		["NextToken"] = _NextToken,
-		["CaptureTime"] = _CaptureTime,
+		["InstanceId"] = args["InstanceId"],
+		["TypeName"] = args["TypeName"],
+		["Entries"] = args["Entries"],
+		["SchemaVersion"] = args["SchemaVersion"],
+		["NextToken"] = args["NextToken"],
+		["CaptureTime"] = args["CaptureTime"],
 	}
 	asserts.AssertListInventoryEntriesResult(t)
 	return t
@@ -4162,8 +4567,11 @@ end
 
 --- Create a structure of type DeregisterManagedInstanceResult
 --  
-function M.DeregisterManagedInstanceResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterManagedInstanceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeregisterManagedInstanceResult structure as a key-value pair table
+function M.DeregisterManagedInstanceResult(args)
+	assert(args, "You must provdide an argument table when creating DeregisterManagedInstanceResult")
 	local t = { 
 	}
 	asserts.AssertDeregisterManagedInstanceResult(t)
@@ -4184,13 +4592,16 @@ end
 
 --- Create a structure of type DescribeAutomationExecutionsResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _AutomationExecutionMetadataList [AutomationExecutionMetadataList] <p>The list of details about each automation execution which has occurred which matches the filter specification, if any.</p>
-function M.DescribeAutomationExecutionsResult(_NextToken, _AutomationExecutionMetadataList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAutomationExecutionsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * AutomationExecutionMetadataList [AutomationExecutionMetadataList] <p>The list of details about each automation execution which has occurred which matches the filter specification, if any.</p>
+-- @return DescribeAutomationExecutionsResult structure as a key-value pair table
+function M.DescribeAutomationExecutionsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeAutomationExecutionsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["AutomationExecutionMetadataList"] = _AutomationExecutionMetadataList,
+		["NextToken"] = args["NextToken"],
+		["AutomationExecutionMetadataList"] = args["AutomationExecutionMetadataList"],
 	}
 	asserts.AssertDescribeAutomationExecutionsResult(t)
 	return t
@@ -4212,15 +4623,18 @@ end
 
 --- Create a structure of type DeregisterTaskFromMaintenanceWindowRequest
 --  
--- @param _WindowTaskId [MaintenanceWindowTaskId] <p>The ID of the task to remove from the Maintenance Window.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the task should be removed from.</p>
--- Required parameter: WindowId
--- Required parameter: WindowTaskId
-function M.DeregisterTaskFromMaintenanceWindowRequest(_WindowTaskId, _WindowId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTaskFromMaintenanceWindowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowTaskId [MaintenanceWindowTaskId] <p>The ID of the task to remove from the Maintenance Window.</p>
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the task should be removed from.</p>
+-- Required key: WindowId
+-- Required key: WindowTaskId
+-- @return DeregisterTaskFromMaintenanceWindowRequest structure as a key-value pair table
+function M.DeregisterTaskFromMaintenanceWindowRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterTaskFromMaintenanceWindowRequest")
 	local t = { 
-		["WindowTaskId"] = _WindowTaskId,
-		["WindowId"] = _WindowId,
+		["WindowTaskId"] = args["WindowTaskId"],
+		["WindowId"] = args["WindowId"],
 	}
 	asserts.AssertDeregisterTaskFromMaintenanceWindowRequest(t)
 	return t
@@ -4239,11 +4653,14 @@ end
 
 --- Create a structure of type InvalidPermissionType
 -- <p>The permission type is not supported. <i>Share</i> is the only supported permission type.</p>
--- @param _Message [String] 
-function M.InvalidPermissionType(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPermissionType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidPermissionType structure as a key-value pair table
+function M.InvalidPermissionType(args)
+	assert(args, "You must provdide an argument table when creating InvalidPermissionType")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidPermissionType(t)
 	return t
@@ -4261,8 +4678,11 @@ end
 
 --- Create a structure of type CancelCommandResult
 -- <p>Whether or not the command was successfully canceled. There is no guarantee that a request can be canceled.</p>
-function M.CancelCommandResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelCommandResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CancelCommandResult structure as a key-value pair table
+function M.CancelCommandResult(args)
+	assert(args, "You must provdide an argument table when creating CancelCommandResult")
 	local t = { 
 	}
 	asserts.AssertCancelCommandResult(t)
@@ -4283,12 +4703,15 @@ end
 
 --- Create a structure of type GetAutomationExecutionRequest
 --  
--- @param _AutomationExecutionId [AutomationExecutionId] <p>The unique identifier for an existing automation execution to examine. The execution ID is returned by StartAutomationExecution when the execution of an Automation document is initiated.</p>
--- Required parameter: AutomationExecutionId
-function M.GetAutomationExecutionRequest(_AutomationExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAutomationExecutionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AutomationExecutionId [AutomationExecutionId] <p>The unique identifier for an existing automation execution to examine. The execution ID is returned by StartAutomationExecution when the execution of an Automation document is initiated.</p>
+-- Required key: AutomationExecutionId
+-- @return GetAutomationExecutionRequest structure as a key-value pair table
+function M.GetAutomationExecutionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetAutomationExecutionRequest")
 	local t = { 
-		["AutomationExecutionId"] = _AutomationExecutionId,
+		["AutomationExecutionId"] = args["AutomationExecutionId"],
 	}
 	asserts.AssertGetAutomationExecutionRequest(t)
 	return t
@@ -4307,11 +4730,14 @@ end
 
 --- Create a structure of type RegisterTaskWithMaintenanceWindowResult
 --  
--- @param _WindowTaskId [MaintenanceWindowTaskId] <p>The id of the task in the Maintenance Window.</p>
-function M.RegisterTaskWithMaintenanceWindowResult(_WindowTaskId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTaskWithMaintenanceWindowResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowTaskId [MaintenanceWindowTaskId] <p>The id of the task in the Maintenance Window.</p>
+-- @return RegisterTaskWithMaintenanceWindowResult structure as a key-value pair table
+function M.RegisterTaskWithMaintenanceWindowResult(args)
+	assert(args, "You must provdide an argument table when creating RegisterTaskWithMaintenanceWindowResult")
 	local t = { 
-		["WindowTaskId"] = _WindowTaskId,
+		["WindowTaskId"] = args["WindowTaskId"],
 	}
 	asserts.AssertRegisterTaskWithMaintenanceWindowResult(t)
 	return t
@@ -4329,8 +4755,11 @@ end
 
 --- Create a structure of type AssociatedInstances
 -- <p>You must disassociate a document from all instances before you can delete it.</p>
-function M.AssociatedInstances(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociatedInstances")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AssociatedInstances structure as a key-value pair table
+function M.AssociatedInstances(args)
+	assert(args, "You must provdide an argument table when creating AssociatedInstances")
 	local t = { 
 	}
 	asserts.AssertAssociatedInstances(t)
@@ -4351,12 +4780,15 @@ end
 
 --- Create a structure of type GetMaintenanceWindowExecutionRequest
 --  
--- @param _WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that includes the task.</p>
--- Required parameter: WindowExecutionId
-function M.GetMaintenanceWindowExecutionRequest(_WindowExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowExecutionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that includes the task.</p>
+-- Required key: WindowExecutionId
+-- @return GetMaintenanceWindowExecutionRequest structure as a key-value pair table
+function M.GetMaintenanceWindowExecutionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowExecutionRequest")
 	local t = { 
-		["WindowExecutionId"] = _WindowExecutionId,
+		["WindowExecutionId"] = args["WindowExecutionId"],
 	}
 	asserts.AssertGetMaintenanceWindowExecutionRequest(t)
 	return t
@@ -4381,21 +4813,24 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowExecutionTaskInvocationsRequest
 --  
--- @param _MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution the task is part of.</p>
--- @param _Filters [MaintenanceWindowFilterList] <p>Optional filters used to scope down the returned task invocations. The supported filter key is STATUS with the corresponding values PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.</p>
--- @param _TaskId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task in the Maintenance Window task that should be retrieved.</p>
--- Required parameter: WindowExecutionId
--- Required parameter: TaskId
-function M.DescribeMaintenanceWindowExecutionTaskInvocationsRequest(_MaxResults, _NextToken, _WindowExecutionId, _Filters, _TaskId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowExecutionTaskInvocationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution the task is part of.</p>
+-- * Filters [MaintenanceWindowFilterList] <p>Optional filters used to scope down the returned task invocations. The supported filter key is STATUS with the corresponding values PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.</p>
+-- * TaskId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task in the Maintenance Window task that should be retrieved.</p>
+-- Required key: WindowExecutionId
+-- Required key: TaskId
+-- @return DescribeMaintenanceWindowExecutionTaskInvocationsRequest structure as a key-value pair table
+function M.DescribeMaintenanceWindowExecutionTaskInvocationsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionTaskInvocationsRequest")
 	local t = { 
-		["MaxResults"] = _MaxResults,
-		["NextToken"] = _NextToken,
-		["WindowExecutionId"] = _WindowExecutionId,
-		["Filters"] = _Filters,
-		["TaskId"] = _TaskId,
+		["MaxResults"] = args["MaxResults"],
+		["NextToken"] = args["NextToken"],
+		["WindowExecutionId"] = args["WindowExecutionId"],
+		["Filters"] = args["Filters"],
+		["TaskId"] = args["TaskId"],
 	}
 	asserts.AssertDescribeMaintenanceWindowExecutionTaskInvocationsRequest(t)
 	return t
@@ -4416,15 +4851,18 @@ end
 
 --- Create a structure of type GetInventorySchemaRequest
 --  
--- @param _TypeName [InventoryItemTypeNameFilter] <p>The type of inventory item to return.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [GetInventorySchemaMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
-function M.GetInventorySchemaRequest(_TypeName, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInventorySchemaRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypeName [InventoryItemTypeNameFilter] <p>The type of inventory item to return.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [GetInventorySchemaMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @return GetInventorySchemaRequest structure as a key-value pair table
+function M.GetInventorySchemaRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInventorySchemaRequest")
 	local t = { 
-		["TypeName"] = _TypeName,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["TypeName"] = args["TypeName"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertGetInventorySchemaRequest(t)
 	return t
@@ -4442,8 +4880,11 @@ end
 
 --- Create a structure of type DuplicateInstanceId
 -- <p>You cannot specify an instance ID in more than one association.</p>
-function M.DuplicateInstanceId(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateInstanceId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DuplicateInstanceId structure as a key-value pair table
+function M.DuplicateInstanceId(args)
+	assert(args, "You must provdide an argument table when creating DuplicateInstanceId")
 	local t = { 
 	}
 	asserts.AssertDuplicateInstanceId(t)
@@ -4462,8 +4903,11 @@ end
 
 --- Create a structure of type InvalidCommandId
 --  
-function M.InvalidCommandId(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCommandId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidCommandId structure as a key-value pair table
+function M.InvalidCommandId(args)
+	assert(args, "You must provdide an argument table when creating InvalidCommandId")
 	local t = { 
 	}
 	asserts.AssertInvalidCommandId(t)
@@ -4486,16 +4930,19 @@ end
 
 --- Create a structure of type ParameterStringFilter
 -- <p>One or more filters. Use a filter to return a more specific list of results.</p>
--- @param _Values [ParameterStringFilterValueList] <p>The value you want to search for.</p>
--- @param _Option [ParameterStringQueryOption] <p>Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.</p>
--- @param _Key [ParameterStringFilterKey] <p>The name of the filter.</p>
--- Required parameter: Key
-function M.ParameterStringFilter(_Values, _Option, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterStringFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [ParameterStringFilterValueList] <p>The value you want to search for.</p>
+-- * Option [ParameterStringQueryOption] <p>Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.</p>
+-- * Key [ParameterStringFilterKey] <p>The name of the filter.</p>
+-- Required key: Key
+-- @return ParameterStringFilter structure as a key-value pair table
+function M.ParameterStringFilter(args)
+	assert(args, "You must provdide an argument table when creating ParameterStringFilter")
 	local t = { 
-		["Values"] = _Values,
-		["Option"] = _Option,
-		["Key"] = _Key,
+		["Values"] = args["Values"],
+		["Option"] = args["Option"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertParameterStringFilter(t)
 	return t
@@ -4516,15 +4963,18 @@ end
 
 --- Create a structure of type DescribeAutomationExecutionsRequest
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Filters [AutomationExecutionFilterList] <p>Filters used to limit the scope of executions that are requested.</p>
-function M.DescribeAutomationExecutionsRequest(_NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAutomationExecutionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Filters [AutomationExecutionFilterList] <p>Filters used to limit the scope of executions that are requested.</p>
+-- @return DescribeAutomationExecutionsRequest structure as a key-value pair table
+function M.DescribeAutomationExecutionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAutomationExecutionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeAutomationExecutionsRequest(t)
 	return t
@@ -4544,13 +4994,16 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowTasksResult
 --  
--- @param _Tasks [MaintenanceWindowTaskList] <p>Information about the tasks in the Maintenance Window.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.DescribeMaintenanceWindowTasksResult(_Tasks, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowTasksResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Tasks [MaintenanceWindowTaskList] <p>Information about the tasks in the Maintenance Window.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return DescribeMaintenanceWindowTasksResult structure as a key-value pair table
+function M.DescribeMaintenanceWindowTasksResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowTasksResult")
 	local t = { 
-		["Tasks"] = _Tasks,
-		["NextToken"] = _NextToken,
+		["Tasks"] = args["Tasks"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeMaintenanceWindowTasksResult(t)
 	return t
@@ -4571,15 +5024,18 @@ end
 
 --- Create a structure of type DeleteAssociationRequest
 --  
--- @param _InstanceId [InstanceId] <p>The ID of the instance.</p>
--- @param _AssociationId [AssociationId] <p>The association ID that you want to delete.</p>
--- @param _Name [DocumentName] <p>The name of the Systems Manager document.</p>
-function M.DeleteAssociationRequest(_InstanceId, _AssociationId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssociationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- * AssociationId [AssociationId] <p>The association ID that you want to delete.</p>
+-- * Name [DocumentName] <p>The name of the Systems Manager document.</p>
+-- @return DeleteAssociationRequest structure as a key-value pair table
+function M.DeleteAssociationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAssociationRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["AssociationId"] = _AssociationId,
-		["Name"] = _Name,
+		["InstanceId"] = args["InstanceId"],
+		["AssociationId"] = args["AssociationId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteAssociationRequest(t)
 	return t
@@ -4599,13 +5055,16 @@ end
 
 --- Create a structure of type DescribeActivationsFilter
 -- <p>Filter for the DescribeActivation API.</p>
--- @param _FilterKey [DescribeActivationsFilterKeys] <p>The name of the filter.</p>
--- @param _FilterValues [StringList] <p>The filter values.</p>
-function M.DescribeActivationsFilter(_FilterKey, _FilterValues, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivationsFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FilterKey [DescribeActivationsFilterKeys] <p>The name of the filter.</p>
+-- * FilterValues [StringList] <p>The filter values.</p>
+-- @return DescribeActivationsFilter structure as a key-value pair table
+function M.DescribeActivationsFilter(args)
+	assert(args, "You must provdide an argument table when creating DescribeActivationsFilter")
 	local t = { 
-		["FilterKey"] = _FilterKey,
-		["FilterValues"] = _FilterValues,
+		["FilterKey"] = args["FilterKey"],
+		["FilterValues"] = args["FilterValues"],
 	}
 	asserts.AssertDescribeActivationsFilter(t)
 	return t
@@ -4627,15 +5086,18 @@ end
 
 --- Create a structure of type DeregisterPatchBaselineForPatchGroupRequest
 --  
--- @param _PatchGroup [PatchGroup] <p>The name of the patch group that should be deregistered from the patch baseline.</p>
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline to deregister the patch group from.</p>
--- Required parameter: BaselineId
--- Required parameter: PatchGroup
-function M.DeregisterPatchBaselineForPatchGroupRequest(_PatchGroup, _BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterPatchBaselineForPatchGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchGroup [PatchGroup] <p>The name of the patch group that should be deregistered from the patch baseline.</p>
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline to deregister the patch group from.</p>
+-- Required key: BaselineId
+-- Required key: PatchGroup
+-- @return DeregisterPatchBaselineForPatchGroupRequest structure as a key-value pair table
+function M.DeregisterPatchBaselineForPatchGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterPatchBaselineForPatchGroupRequest")
 	local t = { 
-		["PatchGroup"] = _PatchGroup,
-		["BaselineId"] = _BaselineId,
+		["PatchGroup"] = args["PatchGroup"],
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertDeregisterPatchBaselineForPatchGroupRequest(t)
 	return t
@@ -4654,11 +5116,14 @@ end
 
 --- Create a structure of type InternalServerError
 -- <p>An error occurred on the server side.</p>
--- @param _Message [String] 
-function M.InternalServerError(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InternalServerError structure as a key-value pair table
+function M.InternalServerError(args)
+	assert(args, "You must provdide an argument table when creating InternalServerError")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInternalServerError(t)
 	return t
@@ -4677,11 +5142,14 @@ end
 
 --- Create a structure of type DuplicateDocumentContent
 -- <p>The content of the association document matches another document. Change the content of the document and try again.</p>
--- @param _Message [String] 
-function M.DuplicateDocumentContent(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateDocumentContent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return DuplicateDocumentContent structure as a key-value pair table
+function M.DuplicateDocumentContent(args)
+	assert(args, "You must provdide an argument table when creating DuplicateDocumentContent")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDuplicateDocumentContent(t)
 	return t
@@ -4701,12 +5169,15 @@ end
 
 --- Create a structure of type PatchFilterGroup
 -- <p>A set of patch filters, typically used for approval rules.</p>
--- @param _PatchFilters [PatchFilterList] <p>The set of patch filters that make up the group.</p>
--- Required parameter: PatchFilters
-function M.PatchFilterGroup(_PatchFilters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PatchFilterGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchFilters [PatchFilterList] <p>The set of patch filters that make up the group.</p>
+-- Required key: PatchFilters
+-- @return PatchFilterGroup structure as a key-value pair table
+function M.PatchFilterGroup(args)
+	assert(args, "You must provdide an argument table when creating PatchFilterGroup")
 	local t = { 
-		["PatchFilters"] = _PatchFilters,
+		["PatchFilters"] = args["PatchFilters"],
 	}
 	asserts.AssertPatchFilterGroup(t)
 	return t
@@ -4724,8 +5195,11 @@ end
 
 --- Create a structure of type StatusUnchanged
 -- <p>The updated status is the same as the current status.</p>
-function M.StatusUnchanged(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StatusUnchanged")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StatusUnchanged structure as a key-value pair table
+function M.StatusUnchanged(args)
+	assert(args, "You must provdide an argument table when creating StatusUnchanged")
 	local t = { 
 	}
 	asserts.AssertStatusUnchanged(t)
@@ -4745,11 +5219,14 @@ end
 
 --- Create a structure of type S3OutputUrl
 -- <p>A URL for the Amazon S3 bucket where you want to store the results of this request.</p>
--- @param _OutputUrl [Url] <p>A URL for an Amazon S3 bucket where you want to store the results of this request.</p>
-function M.S3OutputUrl(_OutputUrl, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3OutputUrl")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OutputUrl [Url] <p>A URL for an Amazon S3 bucket where you want to store the results of this request.</p>
+-- @return S3OutputUrl structure as a key-value pair table
+function M.S3OutputUrl(args)
+	assert(args, "You must provdide an argument table when creating S3OutputUrl")
 	local t = { 
-		["OutputUrl"] = _OutputUrl,
+		["OutputUrl"] = args["OutputUrl"],
 	}
 	asserts.AssertS3OutputUrl(t)
 	return t
@@ -4767,8 +5244,11 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceResult
 --  
-function M.RemoveTagsFromResourceResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RemoveTagsFromResourceResult structure as a key-value pair table
+function M.RemoveTagsFromResourceResult(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceResult")
 	local t = { 
 	}
 	asserts.AssertRemoveTagsFromResourceResult(t)
@@ -4792,18 +5272,21 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowTasksRequest
 --  
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window whose tasks should be retrieved.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Filters [MaintenanceWindowFilterList] <p>Optional filters used to narrow down the scope of the returned tasks. The supported filter keys are WindowTaskId, TaskArn, Priority, and TaskType.</p>
--- Required parameter: WindowId
-function M.DescribeMaintenanceWindowTasksRequest(_WindowId, _NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowTasksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window whose tasks should be retrieved.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Filters [MaintenanceWindowFilterList] <p>Optional filters used to narrow down the scope of the returned tasks. The supported filter keys are WindowTaskId, TaskArn, Priority, and TaskType.</p>
+-- Required key: WindowId
+-- @return DescribeMaintenanceWindowTasksRequest structure as a key-value pair table
+function M.DescribeMaintenanceWindowTasksRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowTasksRequest")
 	local t = { 
-		["WindowId"] = _WindowId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["WindowId"] = args["WindowId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeMaintenanceWindowTasksRequest(t)
 	return t
@@ -4835,37 +5318,40 @@ end
 
 --- Create a structure of type CommandInvocation
 -- <p>An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A command invocation applies to one instance. For example, if a user executes SendCommand against three instances, then a command invocation is created for each requested instance ID. A command invocation returns status and detail information about a command you executed. </p>
--- @param _Comment [Comment] <p>User-specified information about the command, such as a brief description of what the command should do.</p>
--- @param _Status [CommandInvocationStatus] <p>Whether or not the invocation succeeded, failed, or is pending.</p>
--- @param _CommandPlugins [CommandPluginList] 
--- @param _ServiceRole [ServiceRole] <p>The IAM service role that Run Command uses to act on your behalf when sending notifications about command status changes on a per instance basis.</p>
--- @param _InstanceId [InstanceId] <p>The instance ID in which this invocation was requested.</p>
--- @param _DocumentName [DocumentName] <p>The document name that was requested for execution.</p>
--- @param _NotificationConfig [NotificationConfig] <p>Configurations for sending notifications about command status changes on a per instance basis.</p>
--- @param _StatusDetails [StatusDetails] <p>A detailed status of the command execution for each invocation (each instance targeted by the command). StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to the instance.</p> </li> <li> <p>In Progress: The command has been sent to the instance but has not reached a terminal state.</p> </li> <li> <p>Success: The execution of the command or plugin was successfully completed. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: Command execution started on the instance, but the execution was not complete before the execution timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Failed: The command was not successful on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Undeliverable: The command can't be delivered to the instance. The instance might not exist or might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit and don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.</p> </li> </ul>
--- @param _StandardOutputUrl [Url] <p>The URL to the plugin's StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For an invocation, StandardOutputUrl is populated if there is just one plugin defined for the command, and the Amazon S3 bucket was defined for the command.</p>
--- @param _StandardErrorUrl [Url] <p>The URL to the plugin's StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For an invocation, StandardErrorUrl is populated if there is just one plugin defined for the command, and the Amazon S3 bucket was defined for the command.</p>
--- @param _TraceOutput [InvocationTraceOutput] <p> Gets the trace output sent by the agent. </p>
--- @param _InstanceName [InstanceTagName] <p>The name of the invocation target. For Amazon EC2 instances this is the value for the aws:Name tag. For on-premises instances, this is the name of the instance.</p>
--- @param _CommandId [CommandId] <p>The command against which this invocation was requested.</p>
--- @param _RequestedDateTime [DateTime] <p>The time and date the request was sent to this instance.</p>
-function M.CommandInvocation(_Comment, _Status, _CommandPlugins, _ServiceRole, _InstanceId, _DocumentName, _NotificationConfig, _StatusDetails, _StandardOutputUrl, _StandardErrorUrl, _TraceOutput, _InstanceName, _CommandId, _RequestedDateTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CommandInvocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [Comment] <p>User-specified information about the command, such as a brief description of what the command should do.</p>
+-- * Status [CommandInvocationStatus] <p>Whether or not the invocation succeeded, failed, or is pending.</p>
+-- * CommandPlugins [CommandPluginList] 
+-- * ServiceRole [ServiceRole] <p>The IAM service role that Run Command uses to act on your behalf when sending notifications about command status changes on a per instance basis.</p>
+-- * InstanceId [InstanceId] <p>The instance ID in which this invocation was requested.</p>
+-- * DocumentName [DocumentName] <p>The document name that was requested for execution.</p>
+-- * NotificationConfig [NotificationConfig] <p>Configurations for sending notifications about command status changes on a per instance basis.</p>
+-- * StatusDetails [StatusDetails] <p>A detailed status of the command execution for each invocation (each instance targeted by the command). StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to the instance.</p> </li> <li> <p>In Progress: The command has been sent to the instance but has not reached a terminal state.</p> </li> <li> <p>Success: The execution of the command or plugin was successfully completed. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: Command execution started on the instance, but the execution was not complete before the execution timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Failed: The command was not successful on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Undeliverable: The command can't be delivered to the instance. The instance might not exist or might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit and don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.</p> </li> </ul>
+-- * StandardOutputUrl [Url] <p>The URL to the plugin's StdOut file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For an invocation, StandardOutputUrl is populated if there is just one plugin defined for the command, and the Amazon S3 bucket was defined for the command.</p>
+-- * StandardErrorUrl [Url] <p>The URL to the plugin's StdErr file in Amazon S3, if the Amazon S3 bucket was defined for the parent command. For an invocation, StandardErrorUrl is populated if there is just one plugin defined for the command, and the Amazon S3 bucket was defined for the command.</p>
+-- * TraceOutput [InvocationTraceOutput] <p> Gets the trace output sent by the agent. </p>
+-- * InstanceName [InstanceTagName] <p>The name of the invocation target. For Amazon EC2 instances this is the value for the aws:Name tag. For on-premises instances, this is the name of the instance.</p>
+-- * CommandId [CommandId] <p>The command against which this invocation was requested.</p>
+-- * RequestedDateTime [DateTime] <p>The time and date the request was sent to this instance.</p>
+-- @return CommandInvocation structure as a key-value pair table
+function M.CommandInvocation(args)
+	assert(args, "You must provdide an argument table when creating CommandInvocation")
 	local t = { 
-		["Comment"] = _Comment,
-		["Status"] = _Status,
-		["CommandPlugins"] = _CommandPlugins,
-		["ServiceRole"] = _ServiceRole,
-		["InstanceId"] = _InstanceId,
-		["DocumentName"] = _DocumentName,
-		["NotificationConfig"] = _NotificationConfig,
-		["StatusDetails"] = _StatusDetails,
-		["StandardOutputUrl"] = _StandardOutputUrl,
-		["StandardErrorUrl"] = _StandardErrorUrl,
-		["TraceOutput"] = _TraceOutput,
-		["InstanceName"] = _InstanceName,
-		["CommandId"] = _CommandId,
-		["RequestedDateTime"] = _RequestedDateTime,
+		["Comment"] = args["Comment"],
+		["Status"] = args["Status"],
+		["CommandPlugins"] = args["CommandPlugins"],
+		["ServiceRole"] = args["ServiceRole"],
+		["InstanceId"] = args["InstanceId"],
+		["DocumentName"] = args["DocumentName"],
+		["NotificationConfig"] = args["NotificationConfig"],
+		["StatusDetails"] = args["StatusDetails"],
+		["StandardOutputUrl"] = args["StandardOutputUrl"],
+		["StandardErrorUrl"] = args["StandardErrorUrl"],
+		["TraceOutput"] = args["TraceOutput"],
+		["InstanceName"] = args["InstanceName"],
+		["CommandId"] = args["CommandId"],
+		["RequestedDateTime"] = args["RequestedDateTime"],
 	}
 	asserts.AssertCommandInvocation(t)
 	return t
@@ -4888,17 +5374,20 @@ end
 
 --- Create a structure of type InventoryFilter
 -- <p>One or more filters. Use a filter to return a more specific list of results.</p>
--- @param _Type [InventoryQueryOperatorType] <p>The type of filter. Valid values include the following: "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"</p>
--- @param _Values [InventoryFilterValueList] <p>Inventory filter values. Example: inventory filter where instance IDs are specified as values Key=AWS:InstanceInformation.InstanceId,Values= i-a12b3c4d5e6g, i-1a2b3c4d5e6,Type=Equal </p>
--- @param _Key [InventoryFilterKey] <p>The name of the filter key.</p>
--- Required parameter: Key
--- Required parameter: Values
-function M.InventoryFilter(_Type, _Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [InventoryQueryOperatorType] <p>The type of filter. Valid values include the following: "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"</p>
+-- * Values [InventoryFilterValueList] <p>Inventory filter values. Example: inventory filter where instance IDs are specified as values Key=AWS:InstanceInformation.InstanceId,Values= i-a12b3c4d5e6g, i-1a2b3c4d5e6,Type=Equal </p>
+-- * Key [InventoryFilterKey] <p>The name of the filter key.</p>
+-- Required key: Key
+-- Required key: Values
+-- @return InventoryFilter structure as a key-value pair table
+function M.InventoryFilter(args)
+	assert(args, "You must provdide an argument table when creating InventoryFilter")
 	local t = { 
-		["Type"] = _Type,
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Type"] = args["Type"],
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertInventoryFilter(t)
 	return t
@@ -4918,12 +5407,15 @@ end
 
 --- Create a structure of type ResultAttribute
 -- <p>The inventory item result attribute.</p>
--- @param _TypeName [InventoryItemTypeName] <p>Name of the inventory item type. Valid value: AWS:InstanceInformation. Default Value: AWS:InstanceInformation.</p>
--- Required parameter: TypeName
-function M.ResultAttribute(_TypeName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResultAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypeName [InventoryItemTypeName] <p>Name of the inventory item type. Valid value: AWS:InstanceInformation. Default Value: AWS:InstanceInformation.</p>
+-- Required key: TypeName
+-- @return ResultAttribute structure as a key-value pair table
+function M.ResultAttribute(args)
+	assert(args, "You must provdide an argument table when creating ResultAttribute")
 	local t = { 
-		["TypeName"] = _TypeName,
+		["TypeName"] = args["TypeName"],
 	}
 	asserts.AssertResultAttribute(t)
 	return t
@@ -4943,13 +5435,16 @@ end
 
 --- Create a structure of type DescribeInstanceAssociationsStatusResult
 --  
--- @param _InstanceAssociationStatusInfos [InstanceAssociationStatusInfos] <p>Status information about the association.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.DescribeInstanceAssociationsStatusResult(_InstanceAssociationStatusInfos, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstanceAssociationsStatusResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceAssociationStatusInfos [InstanceAssociationStatusInfos] <p>Status information about the association.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return DescribeInstanceAssociationsStatusResult structure as a key-value pair table
+function M.DescribeInstanceAssociationsStatusResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstanceAssociationsStatusResult")
 	local t = { 
-		["InstanceAssociationStatusInfos"] = _InstanceAssociationStatusInfos,
-		["NextToken"] = _NextToken,
+		["InstanceAssociationStatusInfos"] = args["InstanceAssociationStatusInfos"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeInstanceAssociationsStatusResult(t)
 	return t
@@ -4971,15 +5466,18 @@ end
 
 --- Create a structure of type GetMaintenanceWindowExecutionTaskRequest
 --  
--- @param _WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that includes the task.</p>
--- @param _TaskId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window task that should be retrieved.</p>
--- Required parameter: WindowExecutionId
--- Required parameter: TaskId
-function M.GetMaintenanceWindowExecutionTaskRequest(_WindowExecutionId, _TaskId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowExecutionTaskRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that includes the task.</p>
+-- * TaskId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window task that should be retrieved.</p>
+-- Required key: WindowExecutionId
+-- Required key: TaskId
+-- @return GetMaintenanceWindowExecutionTaskRequest structure as a key-value pair table
+function M.GetMaintenanceWindowExecutionTaskRequest(args)
+	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowExecutionTaskRequest")
 	local t = { 
-		["WindowExecutionId"] = _WindowExecutionId,
-		["TaskId"] = _TaskId,
+		["WindowExecutionId"] = args["WindowExecutionId"],
+		["TaskId"] = args["TaskId"],
 	}
 	asserts.AssertGetMaintenanceWindowExecutionTaskRequest(t)
 	return t
@@ -4998,11 +5496,14 @@ end
 
 --- Create a structure of type UpdateDocumentResult
 --  
--- @param _DocumentDescription [DocumentDescription] <p>A description of the document that was updated.</p>
-function M.UpdateDocumentResult(_DocumentDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DocumentDescription [DocumentDescription] <p>A description of the document that was updated.</p>
+-- @return UpdateDocumentResult structure as a key-value pair table
+function M.UpdateDocumentResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateDocumentResult")
 	local t = { 
-		["DocumentDescription"] = _DocumentDescription,
+		["DocumentDescription"] = args["DocumentDescription"],
 	}
 	asserts.AssertUpdateDocumentResult(t)
 	return t
@@ -5021,11 +5522,14 @@ end
 
 --- Create a structure of type CreateMaintenanceWindowResult
 --  
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the created Maintenance Window.</p>
-function M.CreateMaintenanceWindowResult(_WindowId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateMaintenanceWindowResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowId [MaintenanceWindowId] <p>The ID of the created Maintenance Window.</p>
+-- @return CreateMaintenanceWindowResult structure as a key-value pair table
+function M.CreateMaintenanceWindowResult(args)
+	assert(args, "You must provdide an argument table when creating CreateMaintenanceWindowResult")
 	local t = { 
-		["WindowId"] = _WindowId,
+		["WindowId"] = args["WindowId"],
 	}
 	asserts.AssertCreateMaintenanceWindowResult(t)
 	return t
@@ -5045,13 +5549,16 @@ end
 
 --- Create a structure of type EffectivePatch
 -- <p>The EffectivePatch structure defines metadata about a patch along with the approval state of the patch in a particular patch baseline. The approval state includes information about whether the patch is currently approved, due to be approved by a rule, explicitly approved, or explicitly rejected and the date the patch was or will be approved.</p>
--- @param _PatchStatus [PatchStatus] <p>The status of the patch in a patch baseline. This includes information about whether the patch is currently approved, due to be approved by a rule, explicitly approved, or explicitly rejected and the date the patch was or will be approved.</p>
--- @param _Patch [Patch] <p>Provides metadata for a patch, including information such as the KB ID, severity, classification and a URL for where more information can be obtained about the patch.</p>
-function M.EffectivePatch(_PatchStatus, _Patch, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EffectivePatch")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchStatus [PatchStatus] <p>The status of the patch in a patch baseline. This includes information about whether the patch is currently approved, due to be approved by a rule, explicitly approved, or explicitly rejected and the date the patch was or will be approved.</p>
+-- * Patch [Patch] <p>Provides metadata for a patch, including information such as the KB ID, severity, classification and a URL for where more information can be obtained about the patch.</p>
+-- @return EffectivePatch structure as a key-value pair table
+function M.EffectivePatch(args)
+	assert(args, "You must provdide an argument table when creating EffectivePatch")
 	local t = { 
-		["PatchStatus"] = _PatchStatus,
-		["Patch"] = _Patch,
+		["PatchStatus"] = args["PatchStatus"],
+		["Patch"] = args["Patch"],
 	}
 	asserts.AssertEffectivePatch(t)
 	return t
@@ -5069,8 +5576,11 @@ end
 
 --- Create a structure of type ModifyDocumentPermissionResponse
 --  
-function M.ModifyDocumentPermissionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyDocumentPermissionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ModifyDocumentPermissionResponse structure as a key-value pair table
+function M.ModifyDocumentPermissionResponse(args)
+	assert(args, "You must provdide an argument table when creating ModifyDocumentPermissionResponse")
 	local t = { 
 	}
 	asserts.AssertModifyDocumentPermissionResponse(t)
@@ -5091,13 +5601,16 @@ end
 
 --- Create a structure of type Target
 -- <p>An array of search criteria that targets instances using a Key,Value combination that you specify. <code>Targets</code> is required if you don't provide one or more instance IDs in the call.</p> <p/>
--- @param _Values [TargetValues] <p>User-defined criteria that maps to Key. For example, if you specified tag:ServerRole, you could specify value:WebServer to execute a command on instances that include Amazon EC2 tags of ServerRole,WebServer. For more information about how to send commands that target instances using Key,Value parameters, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Executing a Command Using Systems Manager Run Command</a>.</p>
--- @param _Key [TargetKey] <p>User-defined criteria for sending commands that target instances that meet the criteria. Key can be tag:&lt;Amazon EC2 tag&gt; or InstanceIds. For more information about how to send commands that target instances using Key,Value parameters, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Executing a Command Using Systems Manager Run Command</a>.</p>
-function M.Target(_Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Target")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [TargetValues] <p>User-defined criteria that maps to Key. For example, if you specified tag:ServerRole, you could specify value:WebServer to execute a command on instances that include Amazon EC2 tags of ServerRole,WebServer. For more information about how to send commands that target instances using Key,Value parameters, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Executing a Command Using Systems Manager Run Command</a>.</p>
+-- * Key [TargetKey] <p>User-defined criteria for sending commands that target instances that meet the criteria. Key can be tag:&lt;Amazon EC2 tag&gt; or InstanceIds. For more information about how to send commands that target instances using Key,Value parameters, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Executing a Command Using Systems Manager Run Command</a>.</p>
+-- @return Target structure as a key-value pair table
+function M.Target(args)
+	assert(args, "You must provdide an argument table when creating Target")
 	local t = { 
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTarget(t)
 	return t
@@ -5119,15 +5632,18 @@ end
 
 --- Create a structure of type PutInventoryRequest
 --  
--- @param _InstanceId [InstanceId] <p>One or more instance IDs where you want to add or update inventory items.</p>
--- @param _Items [InventoryItemList] <p>The inventory items that you want to add or update on instances.</p>
--- Required parameter: InstanceId
--- Required parameter: Items
-function M.PutInventoryRequest(_InstanceId, _Items, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutInventoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>One or more instance IDs where you want to add or update inventory items.</p>
+-- * Items [InventoryItemList] <p>The inventory items that you want to add or update on instances.</p>
+-- Required key: InstanceId
+-- Required key: Items
+-- @return PutInventoryRequest structure as a key-value pair table
+function M.PutInventoryRequest(args)
+	assert(args, "You must provdide an argument table when creating PutInventoryRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["Items"] = _Items,
+		["InstanceId"] = args["InstanceId"],
+		["Items"] = args["Items"],
 	}
 	asserts.AssertPutInventoryRequest(t)
 	return t
@@ -5151,21 +5667,24 @@ end
 
 --- Create a structure of type MaintenanceWindowExecution
 -- <p>Describes the information about an execution of a Maintenance Window. </p>
--- @param _Status [MaintenanceWindowExecutionStatus] <p>The status of the execution.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window.</p>
--- @param _StartTime [DateTime] <p>The time the execution started.</p>
--- @param _EndTime [DateTime] <p>The time the execution finished.</p>
--- @param _WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution.</p>
--- @param _StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
-function M.MaintenanceWindowExecution(_Status, _WindowId, _StartTime, _EndTime, _WindowExecutionId, _StatusDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowExecution")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [MaintenanceWindowExecutionStatus] <p>The status of the execution.</p>
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window.</p>
+-- * StartTime [DateTime] <p>The time the execution started.</p>
+-- * EndTime [DateTime] <p>The time the execution finished.</p>
+-- * WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution.</p>
+-- * StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
+-- @return MaintenanceWindowExecution structure as a key-value pair table
+function M.MaintenanceWindowExecution(args)
+	assert(args, "You must provdide an argument table when creating MaintenanceWindowExecution")
 	local t = { 
-		["Status"] = _Status,
-		["WindowId"] = _WindowId,
-		["StartTime"] = _StartTime,
-		["EndTime"] = _EndTime,
-		["WindowExecutionId"] = _WindowExecutionId,
-		["StatusDetails"] = _StatusDetails,
+		["Status"] = args["Status"],
+		["WindowId"] = args["WindowId"],
+		["StartTime"] = args["StartTime"],
+		["EndTime"] = args["EndTime"],
+		["WindowExecutionId"] = args["WindowExecutionId"],
+		["StatusDetails"] = args["StatusDetails"],
 	}
 	asserts.AssertMaintenanceWindowExecution(t)
 	return t
@@ -5185,13 +5704,16 @@ end
 
 --- Create a structure of type DeregisterPatchBaselineForPatchGroupResult
 --  
--- @param _PatchGroup [PatchGroup] <p>The name of the patch group deregistered from the patch baseline.</p>
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline the patch group was deregistered from.</p>
-function M.DeregisterPatchBaselineForPatchGroupResult(_PatchGroup, _BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterPatchBaselineForPatchGroupResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchGroup [PatchGroup] <p>The name of the patch group deregistered from the patch baseline.</p>
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline the patch group was deregistered from.</p>
+-- @return DeregisterPatchBaselineForPatchGroupResult structure as a key-value pair table
+function M.DeregisterPatchBaselineForPatchGroupResult(args)
+	assert(args, "You must provdide an argument table when creating DeregisterPatchBaselineForPatchGroupResult")
 	local t = { 
-		["PatchGroup"] = _PatchGroup,
-		["BaselineId"] = _BaselineId,
+		["PatchGroup"] = args["PatchGroup"],
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertDeregisterPatchBaselineForPatchGroupResult(t)
 	return t
@@ -5217,22 +5739,25 @@ end
 
 --- Create a structure of type InventoryResultItem
 -- <p>The inventory result item.</p>
--- @param _ContentHash [InventoryItemContentHash] <p>MD5 hash of the inventory item type contents. The content hash is used to determine whether to update inventory information. The PutInventory API does not update the inventory item type contents if the MD5 hash has not changed since last update. </p>
--- @param _TypeName [InventoryItemTypeName] <p>The name of the inventory result item type.</p>
--- @param _SchemaVersion [InventoryItemSchemaVersion] <p>The schema version for the inventory result item/</p>
--- @param _CaptureTime [InventoryItemCaptureTime] <p>The time inventory item data was captured.</p>
--- @param _Content [InventoryItemEntryList] <p>Contains all the inventory data of the item type. Results include attribute names and values. </p>
--- Required parameter: TypeName
--- Required parameter: SchemaVersion
--- Required parameter: Content
-function M.InventoryResultItem(_ContentHash, _TypeName, _SchemaVersion, _CaptureTime, _Content, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryResultItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContentHash [InventoryItemContentHash] <p>MD5 hash of the inventory item type contents. The content hash is used to determine whether to update inventory information. The PutInventory API does not update the inventory item type contents if the MD5 hash has not changed since last update. </p>
+-- * TypeName [InventoryItemTypeName] <p>The name of the inventory result item type.</p>
+-- * SchemaVersion [InventoryItemSchemaVersion] <p>The schema version for the inventory result item/</p>
+-- * CaptureTime [InventoryItemCaptureTime] <p>The time inventory item data was captured.</p>
+-- * Content [InventoryItemEntryList] <p>Contains all the inventory data of the item type. Results include attribute names and values. </p>
+-- Required key: TypeName
+-- Required key: SchemaVersion
+-- Required key: Content
+-- @return InventoryResultItem structure as a key-value pair table
+function M.InventoryResultItem(args)
+	assert(args, "You must provdide an argument table when creating InventoryResultItem")
 	local t = { 
-		["ContentHash"] = _ContentHash,
-		["TypeName"] = _TypeName,
-		["SchemaVersion"] = _SchemaVersion,
-		["CaptureTime"] = _CaptureTime,
-		["Content"] = _Content,
+		["ContentHash"] = args["ContentHash"],
+		["TypeName"] = args["TypeName"],
+		["SchemaVersion"] = args["SchemaVersion"],
+		["CaptureTime"] = args["CaptureTime"],
+		["Content"] = args["Content"],
 	}
 	asserts.AssertInventoryResultItem(t)
 	return t
@@ -5261,31 +5786,34 @@ end
 
 --- Create a structure of type MaintenanceWindowTask
 -- <p>Information about a task defined for a Maintenance Window.</p>
--- @param _LoggingInfo [LoggingInfo] <p>Information about an Amazon S3 bucket to write task-level logs to.</p>
--- @param _ServiceRoleArn [ServiceRole] <p>The role that should be assumed when executing the task</p>
--- @param _MaxErrors [MaxErrors] <p>The maximum number of errors allowed before this task stops being scheduled.</p>
--- @param _TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the task to execute.</p>
--- @param _MaxConcurrency [MaxConcurrency] <p>The maximum number of targets this task can be run for in parallel.</p>
--- @param _WindowTaskId [MaintenanceWindowTaskId] <p>The task ID.</p>
--- @param _TaskParameters [MaintenanceWindowTaskParameters] <p>The parameters that should be passed to the task when it is executed.</p>
--- @param _Priority [MaintenanceWindowTaskPriority] <p>The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The Maintenance Window ID where the task is registered.</p>
--- @param _Type [MaintenanceWindowTaskType] <p>The type of task.</p>
--- @param _Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
-function M.MaintenanceWindowTask(_LoggingInfo, _ServiceRoleArn, _MaxErrors, _TaskArn, _MaxConcurrency, _WindowTaskId, _TaskParameters, _Priority, _WindowId, _Type, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowTask")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggingInfo [LoggingInfo] <p>Information about an Amazon S3 bucket to write task-level logs to.</p>
+-- * ServiceRoleArn [ServiceRole] <p>The role that should be assumed when executing the task</p>
+-- * MaxErrors [MaxErrors] <p>The maximum number of errors allowed before this task stops being scheduled.</p>
+-- * TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the task to execute.</p>
+-- * MaxConcurrency [MaxConcurrency] <p>The maximum number of targets this task can be run for in parallel.</p>
+-- * WindowTaskId [MaintenanceWindowTaskId] <p>The task ID.</p>
+-- * TaskParameters [MaintenanceWindowTaskParameters] <p>The parameters that should be passed to the task when it is executed.</p>
+-- * Priority [MaintenanceWindowTaskPriority] <p>The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.</p>
+-- * WindowId [MaintenanceWindowId] <p>The Maintenance Window ID where the task is registered.</p>
+-- * Type [MaintenanceWindowTaskType] <p>The type of task.</p>
+-- * Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
+-- @return MaintenanceWindowTask structure as a key-value pair table
+function M.MaintenanceWindowTask(args)
+	assert(args, "You must provdide an argument table when creating MaintenanceWindowTask")
 	local t = { 
-		["LoggingInfo"] = _LoggingInfo,
-		["ServiceRoleArn"] = _ServiceRoleArn,
-		["MaxErrors"] = _MaxErrors,
-		["TaskArn"] = _TaskArn,
-		["MaxConcurrency"] = _MaxConcurrency,
-		["WindowTaskId"] = _WindowTaskId,
-		["TaskParameters"] = _TaskParameters,
-		["Priority"] = _Priority,
-		["WindowId"] = _WindowId,
-		["Type"] = _Type,
-		["Targets"] = _Targets,
+		["LoggingInfo"] = args["LoggingInfo"],
+		["ServiceRoleArn"] = args["ServiceRoleArn"],
+		["MaxErrors"] = args["MaxErrors"],
+		["TaskArn"] = args["TaskArn"],
+		["MaxConcurrency"] = args["MaxConcurrency"],
+		["WindowTaskId"] = args["WindowTaskId"],
+		["TaskParameters"] = args["TaskParameters"],
+		["Priority"] = args["Priority"],
+		["WindowId"] = args["WindowId"],
+		["Type"] = args["Type"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertMaintenanceWindowTask(t)
 	return t
@@ -5305,13 +5833,16 @@ end
 
 --- Create a structure of type InvalidItemContentException
 -- <p>One or more content items is not valid.</p>
--- @param _TypeName [InventoryItemTypeName] 
--- @param _Message [String] 
-function M.InvalidItemContentException(_TypeName, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidItemContentException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypeName [InventoryItemTypeName] 
+-- * Message [String] 
+-- @return InvalidItemContentException structure as a key-value pair table
+function M.InvalidItemContentException(args)
+	assert(args, "You must provdide an argument table when creating InvalidItemContentException")
 	local t = { 
-		["TypeName"] = _TypeName,
-		["Message"] = _Message,
+		["TypeName"] = args["TypeName"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidItemContentException(t)
 	return t
@@ -5331,13 +5862,16 @@ end
 
 --- Create a structure of type GetInventorySchemaResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _Schemas [InventoryItemSchemaResultList] <p>Inventory schemas returned by the request.</p>
-function M.GetInventorySchemaResult(_NextToken, _Schemas, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInventorySchemaResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * Schemas [InventoryItemSchemaResultList] <p>Inventory schemas returned by the request.</p>
+-- @return GetInventorySchemaResult structure as a key-value pair table
+function M.GetInventorySchemaResult(args)
+	assert(args, "You must provdide an argument table when creating GetInventorySchemaResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Schemas"] = _Schemas,
+		["NextToken"] = args["NextToken"],
+		["Schemas"] = args["Schemas"],
 	}
 	asserts.AssertGetInventorySchemaResult(t)
 	return t
@@ -5359,16 +5893,19 @@ end
 
 --- Create a structure of type ListDocumentVersionsRequest
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _Name [DocumentName] <p>The name of the document about which you want version information.</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- Required parameter: Name
-function M.ListDocumentVersionsRequest(_NextToken, _Name, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDocumentVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * Name [DocumentName] <p>The name of the document about which you want version information.</p>
+-- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- Required key: Name
+-- @return ListDocumentVersionsRequest structure as a key-value pair table
+function M.ListDocumentVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDocumentVersionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Name"] = _Name,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["Name"] = args["Name"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListDocumentVersionsRequest(t)
 	return t
@@ -5387,11 +5924,14 @@ end
 
 --- Create a structure of type GetParameterResult
 --  
--- @param _Parameter [Parameter] <p>Information about a parameter.</p>
-function M.GetParameterResult(_Parameter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetParameterResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Parameter [Parameter] <p>Information about a parameter.</p>
+-- @return GetParameterResult structure as a key-value pair table
+function M.GetParameterResult(args)
+	assert(args, "You must provdide an argument table when creating GetParameterResult")
 	local t = { 
-		["Parameter"] = _Parameter,
+		["Parameter"] = args["Parameter"],
 	}
 	asserts.AssertGetParameterResult(t)
 	return t
@@ -5410,11 +5950,14 @@ end
 
 --- Create a structure of type InvalidFilter
 -- <p>The filter name is not valid. Verify the you entered the correct name and try again.</p>
--- @param _Message [String] 
-function M.InvalidFilter(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidFilter structure as a key-value pair table
+function M.InvalidFilter(args)
+	assert(args, "You must provdide an argument table when creating InvalidFilter")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidFilter(t)
 	return t
@@ -5433,11 +5976,14 @@ end
 
 --- Create a structure of type InstanceAssociationOutputLocation
 -- <p>An Amazon S3 bucket where you want to store the results of this request.</p>
--- @param _S3Location [S3OutputLocation] <p>An Amazon S3 bucket where you want to store the results of this request.</p>
-function M.InstanceAssociationOutputLocation(_S3Location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAssociationOutputLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * S3Location [S3OutputLocation] <p>An Amazon S3 bucket where you want to store the results of this request.</p>
+-- @return InstanceAssociationOutputLocation structure as a key-value pair table
+function M.InstanceAssociationOutputLocation(args)
+	assert(args, "You must provdide an argument table when creating InstanceAssociationOutputLocation")
 	local t = { 
-		["S3Location"] = _S3Location,
+		["S3Location"] = args["S3Location"],
 	}
 	asserts.AssertInstanceAssociationOutputLocation(t)
 	return t
@@ -5458,15 +6004,18 @@ end
 
 --- Create a structure of type ListDocumentsRequest
 --  
--- @param _DocumentFilterList [DocumentFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
-function M.ListDocumentsRequest(_DocumentFilterList, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDocumentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DocumentFilterList [DocumentFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- @return ListDocumentsRequest structure as a key-value pair table
+function M.ListDocumentsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDocumentsRequest")
 	local t = { 
-		["DocumentFilterList"] = _DocumentFilterList,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["DocumentFilterList"] = args["DocumentFilterList"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListDocumentsRequest(t)
 	return t
@@ -5486,13 +6035,16 @@ end
 
 --- Create a structure of type CreateAssociationBatchResult
 --  
--- @param _Successful [AssociationDescriptionList] <p>Information about the associations that succeeded.</p>
--- @param _Failed [FailedCreateAssociationList] <p>Information about the associations that failed.</p>
-function M.CreateAssociationBatchResult(_Successful, _Failed, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssociationBatchResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Successful [AssociationDescriptionList] <p>Information about the associations that succeeded.</p>
+-- * Failed [FailedCreateAssociationList] <p>Information about the associations that failed.</p>
+-- @return CreateAssociationBatchResult structure as a key-value pair table
+function M.CreateAssociationBatchResult(args)
+	assert(args, "You must provdide an argument table when creating CreateAssociationBatchResult")
 	local t = { 
-		["Successful"] = _Successful,
-		["Failed"] = _Failed,
+		["Successful"] = args["Successful"],
+		["Failed"] = args["Failed"],
 	}
 	asserts.AssertCreateAssociationBatchResult(t)
 	return t
@@ -5513,15 +6065,18 @@ end
 
 --- Create a structure of type DescribeAvailablePatchesRequest
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [PatchBaselineMaxResults] <p>The maximum number of patches to return (per page).</p>
--- @param _Filters [PatchOrchestratorFilterList] <p>Filters used to scope down the returned patches.</p>
-function M.DescribeAvailablePatchesRequest(_NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAvailablePatchesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [PatchBaselineMaxResults] <p>The maximum number of patches to return (per page).</p>
+-- * Filters [PatchOrchestratorFilterList] <p>Filters used to scope down the returned patches.</p>
+-- @return DescribeAvailablePatchesRequest structure as a key-value pair table
+function M.DescribeAvailablePatchesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAvailablePatchesRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeAvailablePatchesRequest(t)
 	return t
@@ -5542,14 +6097,17 @@ end
 
 --- Create a structure of type DescribeDocumentRequest
 --  
--- @param _Name [DocumentARN] <p>The name of the SSM document.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version for which you want information. Can be a specific version or the default version.</p>
--- Required parameter: Name
-function M.DescribeDocumentRequest(_Name, _DocumentVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DocumentARN] <p>The name of the SSM document.</p>
+-- * DocumentVersion [DocumentVersion] <p>The document version for which you want information. Can be a specific version or the default version.</p>
+-- Required key: Name
+-- @return DescribeDocumentRequest structure as a key-value pair table
+function M.DescribeDocumentRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDocumentRequest")
 	local t = { 
-		["Name"] = _Name,
-		["DocumentVersion"] = _DocumentVersion,
+		["Name"] = args["Name"],
+		["DocumentVersion"] = args["DocumentVersion"],
 	}
 	asserts.AssertDescribeDocumentRequest(t)
 	return t
@@ -5568,11 +6126,14 @@ end
 
 --- Create a structure of type InvalidDocumentVersion
 -- <p>The document version is not valid or does not exist.</p>
--- @param _Message [String] 
-function M.InvalidDocumentVersion(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDocumentVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidDocumentVersion structure as a key-value pair table
+function M.InvalidDocumentVersion(args)
+	assert(args, "You must provdide an argument table when creating InvalidDocumentVersion")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidDocumentVersion(t)
 	return t
@@ -5591,11 +6152,14 @@ end
 
 --- Create a structure of type AutomationExecutionNotFoundException
 -- <p>There is no automation execution information for the requested automation execution ID.</p>
--- @param _Message [String] 
-function M.AutomationExecutionNotFoundException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutomationExecutionNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return AutomationExecutionNotFoundException structure as a key-value pair table
+function M.AutomationExecutionNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating AutomationExecutionNotFoundException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertAutomationExecutionNotFoundException(t)
 	return t
@@ -5614,11 +6178,14 @@ end
 
 --- Create a structure of type AssociationDoesNotExist
 -- <p>The specified association does not exist.</p>
--- @param _Message [String] 
-function M.AssociationDoesNotExist(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociationDoesNotExist")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return AssociationDoesNotExist structure as a key-value pair table
+function M.AssociationDoesNotExist(args)
+	assert(args, "You must provdide an argument table when creating AssociationDoesNotExist")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertAssociationDoesNotExist(t)
 	return t
@@ -5650,37 +6217,40 @@ end
 
 --- Create a structure of type AssociationDescription
 -- <p>Describes the parameters for a document.</p>
--- @param _Status [AssociationStatus] <p>The association status.</p>
--- @param _ScheduleExpression [ScheduleExpression] <p>A cron expression that specifies a schedule when the association runs.</p>
--- @param _OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the output details of the request.</p>
--- @param _Name [DocumentName] <p>The name of the SSM document.</p>
--- @param _Parameters [Parameters] <p>A description of the parameters for a document. </p>
--- @param _LastExecutionDate [DateTime] <p>The date on which the association was last run.</p>
--- @param _InstanceId [InstanceId] <p>The ID of the instance.</p>
--- @param _Overview [AssociationOverview] <p>Information about the association.</p>
--- @param _AssociationId [AssociationId] <p>The association ID.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version.</p>
--- @param _LastSuccessfulExecutionDate [DateTime] <p>The last date on which the association was successfully run.</p>
--- @param _LastUpdateAssociationDate [DateTime] <p>The date when the association was last updated.</p>
--- @param _Date [DateTime] <p>The date when the association was made.</p>
--- @param _Targets [Targets] <p>The instances targeted by the request. </p>
-function M.AssociationDescription(_Status, _ScheduleExpression, _OutputLocation, _Name, _Parameters, _LastExecutionDate, _InstanceId, _Overview, _AssociationId, _DocumentVersion, _LastSuccessfulExecutionDate, _LastUpdateAssociationDate, _Date, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociationDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [AssociationStatus] <p>The association status.</p>
+-- * ScheduleExpression [ScheduleExpression] <p>A cron expression that specifies a schedule when the association runs.</p>
+-- * OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the output details of the request.</p>
+-- * Name [DocumentName] <p>The name of the SSM document.</p>
+-- * Parameters [Parameters] <p>A description of the parameters for a document. </p>
+-- * LastExecutionDate [DateTime] <p>The date on which the association was last run.</p>
+-- * InstanceId [InstanceId] <p>The ID of the instance.</p>
+-- * Overview [AssociationOverview] <p>Information about the association.</p>
+-- * AssociationId [AssociationId] <p>The association ID.</p>
+-- * DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- * LastSuccessfulExecutionDate [DateTime] <p>The last date on which the association was successfully run.</p>
+-- * LastUpdateAssociationDate [DateTime] <p>The date when the association was last updated.</p>
+-- * Date [DateTime] <p>The date when the association was made.</p>
+-- * Targets [Targets] <p>The instances targeted by the request. </p>
+-- @return AssociationDescription structure as a key-value pair table
+function M.AssociationDescription(args)
+	assert(args, "You must provdide an argument table when creating AssociationDescription")
 	local t = { 
-		["Status"] = _Status,
-		["ScheduleExpression"] = _ScheduleExpression,
-		["OutputLocation"] = _OutputLocation,
-		["Name"] = _Name,
-		["Parameters"] = _Parameters,
-		["LastExecutionDate"] = _LastExecutionDate,
-		["InstanceId"] = _InstanceId,
-		["Overview"] = _Overview,
-		["AssociationId"] = _AssociationId,
-		["DocumentVersion"] = _DocumentVersion,
-		["LastSuccessfulExecutionDate"] = _LastSuccessfulExecutionDate,
-		["LastUpdateAssociationDate"] = _LastUpdateAssociationDate,
-		["Date"] = _Date,
-		["Targets"] = _Targets,
+		["Status"] = args["Status"],
+		["ScheduleExpression"] = args["ScheduleExpression"],
+		["OutputLocation"] = args["OutputLocation"],
+		["Name"] = args["Name"],
+		["Parameters"] = args["Parameters"],
+		["LastExecutionDate"] = args["LastExecutionDate"],
+		["InstanceId"] = args["InstanceId"],
+		["Overview"] = args["Overview"],
+		["AssociationId"] = args["AssociationId"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["LastSuccessfulExecutionDate"] = args["LastSuccessfulExecutionDate"],
+		["LastUpdateAssociationDate"] = args["LastUpdateAssociationDate"],
+		["Date"] = args["Date"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertAssociationDescription(t)
 	return t
@@ -5706,25 +6276,28 @@ end
 
 --- Create a structure of type MaintenanceWindowExecutionTaskIdentity
 -- <p>Information about a task execution performed as part of a Maintenance Window execution.</p>
--- @param _Status [MaintenanceWindowExecutionStatus] <p>The status of the task execution.</p>
--- @param _TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the executed task.</p>
--- @param _StartTime [DateTime] <p>The time the task execution started.</p>
--- @param _TaskType [MaintenanceWindowTaskType] <p>The type of executed task.</p>
--- @param _EndTime [DateTime] <p>The time the task execution finished.</p>
--- @param _WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that ran the task.</p>
--- @param _StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the status of the task execution. Only available for certain status values.</p>
--- @param _TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window execution.</p>
-function M.MaintenanceWindowExecutionTaskIdentity(_Status, _TaskArn, _StartTime, _TaskType, _EndTime, _WindowExecutionId, _StatusDetails, _TaskExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowExecutionTaskIdentity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [MaintenanceWindowExecutionStatus] <p>The status of the task execution.</p>
+-- * TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the executed task.</p>
+-- * StartTime [DateTime] <p>The time the task execution started.</p>
+-- * TaskType [MaintenanceWindowTaskType] <p>The type of executed task.</p>
+-- * EndTime [DateTime] <p>The time the task execution finished.</p>
+-- * WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that ran the task.</p>
+-- * StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the status of the task execution. Only available for certain status values.</p>
+-- * TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window execution.</p>
+-- @return MaintenanceWindowExecutionTaskIdentity structure as a key-value pair table
+function M.MaintenanceWindowExecutionTaskIdentity(args)
+	assert(args, "You must provdide an argument table when creating MaintenanceWindowExecutionTaskIdentity")
 	local t = { 
-		["Status"] = _Status,
-		["TaskArn"] = _TaskArn,
-		["StartTime"] = _StartTime,
-		["TaskType"] = _TaskType,
-		["EndTime"] = _EndTime,
-		["WindowExecutionId"] = _WindowExecutionId,
-		["StatusDetails"] = _StatusDetails,
-		["TaskExecutionId"] = _TaskExecutionId,
+		["Status"] = args["Status"],
+		["TaskArn"] = args["TaskArn"],
+		["StartTime"] = args["StartTime"],
+		["TaskType"] = args["TaskType"],
+		["EndTime"] = args["EndTime"],
+		["WindowExecutionId"] = args["WindowExecutionId"],
+		["StatusDetails"] = args["StatusDetails"],
+		["TaskExecutionId"] = args["TaskExecutionId"],
 	}
 	asserts.AssertMaintenanceWindowExecutionTaskIdentity(t)
 	return t
@@ -5743,11 +6316,14 @@ end
 
 --- Create a structure of type AutomationExecutionLimitExceededException
 -- <p>The number of simultaneously running Automation executions exceeded the allowable limit.</p>
--- @param _Message [String] 
-function M.AutomationExecutionLimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutomationExecutionLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return AutomationExecutionLimitExceededException structure as a key-value pair table
+function M.AutomationExecutionLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating AutomationExecutionLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertAutomationExecutionLimitExceededException(t)
 	return t
@@ -5781,40 +6357,43 @@ end
 
 --- Create a structure of type SendCommandRequest
 --  
--- @param _Comment [Comment] <p>User-specified information about the command, such as a brief description of what the command should do.</p>
--- @param _ServiceRoleArn [ServiceRole] <p>The IAM role that Systems Manager uses to send notifications. </p>
--- @param _MaxErrors [MaxErrors] <p>The maximum number of errors allowed without the command failing. When the command fails one more time beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10 or a percentage like 10%. The default value is 50. For more information about how to use MaxErrors, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html">Using Error Controls</a>.</p>
--- @param _Parameters [Parameters] <p>The required and optional parameters specified in the document being executed.</p>
--- @param _TimeoutSeconds [TimeoutSeconds] <p>If this time is reached and the command has not already started executing, it will not execute.</p>
--- @param _DocumentName [DocumentARN] <p>Required. The name of the Systems Manager document to execute. This can be a public document or a custom document.</p>
--- @param _DocumentHash [DocumentHash] <p>The Sha256 or Sha1 hash created by the system when the document was created. </p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
--- @param _OutputS3BucketName [S3BucketName] <p>The name of the S3 bucket where command execution responses should be stored.</p>
--- @param _NotificationConfig [NotificationConfig] <p>Configurations for sending notifications.</p>
--- @param _DocumentHashType [DocumentHashType] <p>Sha256 or Sha1.</p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
--- @param _OutputS3KeyPrefix [S3KeyPrefix] <p>The directory structure within the S3 bucket where the responses should be stored.</p>
--- @param _OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
--- @param _Targets [Targets] <p>(Optional) An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call. For more information about how to use Targets, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Sending Commands to a Fleet</a>.</p>
--- @param _InstanceIds [InstanceIdList] <p>The instance IDs where the command should execute. You can specify a maximum of 50 IDs. If you prefer not to list individual instance IDs, you can instead send commands to a fleet of instances using the Targets parameter, which accepts EC2 tags. For more information about how to use Targets, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Sending Commands to a Fleet</a>.</p>
--- @param _MaxConcurrency [MaxConcurrency] <p>(Optional) The maximum number of instances that are allowed to execute the command at the same time. You can specify a number such as 10 or a percentage such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-velocity.html">Using Concurrency Controls</a>.</p>
--- Required parameter: DocumentName
-function M.SendCommandRequest(_Comment, _ServiceRoleArn, _MaxErrors, _Parameters, _TimeoutSeconds, _DocumentName, _DocumentHash, _OutputS3BucketName, _NotificationConfig, _DocumentHashType, _OutputS3KeyPrefix, _OutputS3Region, _Targets, _InstanceIds, _MaxConcurrency, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendCommandRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [Comment] <p>User-specified information about the command, such as a brief description of what the command should do.</p>
+-- * ServiceRoleArn [ServiceRole] <p>The IAM role that Systems Manager uses to send notifications. </p>
+-- * MaxErrors [MaxErrors] <p>The maximum number of errors allowed without the command failing. When the command fails one more time beyond the value of MaxErrors, the systems stops sending the command to additional targets. You can specify a number like 10 or a percentage like 10%. The default value is 50. For more information about how to use MaxErrors, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-maxerrors.html">Using Error Controls</a>.</p>
+-- * Parameters [Parameters] <p>The required and optional parameters specified in the document being executed.</p>
+-- * TimeoutSeconds [TimeoutSeconds] <p>If this time is reached and the command has not already started executing, it will not execute.</p>
+-- * DocumentName [DocumentARN] <p>Required. The name of the Systems Manager document to execute. This can be a public document or a custom document.</p>
+-- * DocumentHash [DocumentHash] <p>The Sha256 or Sha1 hash created by the system when the document was created. </p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
+-- * OutputS3BucketName [S3BucketName] <p>The name of the S3 bucket where command execution responses should be stored.</p>
+-- * NotificationConfig [NotificationConfig] <p>Configurations for sending notifications.</p>
+-- * DocumentHashType [DocumentHashType] <p>Sha256 or Sha1.</p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
+-- * OutputS3KeyPrefix [S3KeyPrefix] <p>The directory structure within the S3 bucket where the responses should be stored.</p>
+-- * OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
+-- * Targets [Targets] <p>(Optional) An array of search criteria that targets instances using a Key,Value combination that you specify. Targets is required if you don't provide one or more instance IDs in the call. For more information about how to use Targets, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Sending Commands to a Fleet</a>.</p>
+-- * InstanceIds [InstanceIdList] <p>The instance IDs where the command should execute. You can specify a maximum of 50 IDs. If you prefer not to list individual instance IDs, you can instead send commands to a fleet of instances using the Targets parameter, which accepts EC2 tags. For more information about how to use Targets, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Sending Commands to a Fleet</a>.</p>
+-- * MaxConcurrency [MaxConcurrency] <p>(Optional) The maximum number of instances that are allowed to execute the command at the same time. You can specify a number such as 10 or a percentage such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-velocity.html">Using Concurrency Controls</a>.</p>
+-- Required key: DocumentName
+-- @return SendCommandRequest structure as a key-value pair table
+function M.SendCommandRequest(args)
+	assert(args, "You must provdide an argument table when creating SendCommandRequest")
 	local t = { 
-		["Comment"] = _Comment,
-		["ServiceRoleArn"] = _ServiceRoleArn,
-		["MaxErrors"] = _MaxErrors,
-		["Parameters"] = _Parameters,
-		["TimeoutSeconds"] = _TimeoutSeconds,
-		["DocumentName"] = _DocumentName,
-		["DocumentHash"] = _DocumentHash,
-		["OutputS3BucketName"] = _OutputS3BucketName,
-		["NotificationConfig"] = _NotificationConfig,
-		["DocumentHashType"] = _DocumentHashType,
-		["OutputS3KeyPrefix"] = _OutputS3KeyPrefix,
-		["OutputS3Region"] = _OutputS3Region,
-		["Targets"] = _Targets,
-		["InstanceIds"] = _InstanceIds,
-		["MaxConcurrency"] = _MaxConcurrency,
+		["Comment"] = args["Comment"],
+		["ServiceRoleArn"] = args["ServiceRoleArn"],
+		["MaxErrors"] = args["MaxErrors"],
+		["Parameters"] = args["Parameters"],
+		["TimeoutSeconds"] = args["TimeoutSeconds"],
+		["DocumentName"] = args["DocumentName"],
+		["DocumentHash"] = args["DocumentHash"],
+		["OutputS3BucketName"] = args["OutputS3BucketName"],
+		["NotificationConfig"] = args["NotificationConfig"],
+		["DocumentHashType"] = args["DocumentHashType"],
+		["OutputS3KeyPrefix"] = args["OutputS3KeyPrefix"],
+		["OutputS3Region"] = args["OutputS3Region"],
+		["Targets"] = args["Targets"],
+		["InstanceIds"] = args["InstanceIds"],
+		["MaxConcurrency"] = args["MaxConcurrency"],
 	}
 	asserts.AssertSendCommandRequest(t)
 	return t
@@ -5836,15 +6415,18 @@ end
 
 --- Create a structure of type UpdateDocumentDefaultVersionRequest
 --  
--- @param _Name [DocumentName] <p>The name of a custom document that you want to set as the default version.</p>
--- @param _DocumentVersion [DocumentVersionNumber] <p>The version of a custom document that you want to set as the default version.</p>
--- Required parameter: Name
--- Required parameter: DocumentVersion
-function M.UpdateDocumentDefaultVersionRequest(_Name, _DocumentVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentDefaultVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DocumentName] <p>The name of a custom document that you want to set as the default version.</p>
+-- * DocumentVersion [DocumentVersionNumber] <p>The version of a custom document that you want to set as the default version.</p>
+-- Required key: Name
+-- Required key: DocumentVersion
+-- @return UpdateDocumentDefaultVersionRequest structure as a key-value pair table
+function M.UpdateDocumentDefaultVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateDocumentDefaultVersionRequest")
 	local t = { 
-		["Name"] = _Name,
-		["DocumentVersion"] = _DocumentVersion,
+		["Name"] = args["Name"],
+		["DocumentVersion"] = args["DocumentVersion"],
 	}
 	asserts.AssertUpdateDocumentDefaultVersionRequest(t)
 	return t
@@ -5872,29 +6454,32 @@ end
 
 --- Create a structure of type GetPatchBaselineResult
 --  
--- @param _BaselineId [BaselineId] <p>The ID of the retrieved patch baseline.</p>
--- @param _Name [BaselineName] <p>The name of the patch baseline.</p>
--- @param _PatchGroups [PatchGroupList] <p>Patch groups included in the patch baseline.</p>
--- @param _RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
--- @param _GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
--- @param _ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
--- @param _ModifiedDate [DateTime] <p>The date the patch baseline was last modified.</p>
--- @param _CreatedDate [DateTime] <p>The date the patch baseline was created.</p>
--- @param _ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
--- @param _Description [BaselineDescription] <p>A description of the patch baseline.</p>
-function M.GetPatchBaselineResult(_BaselineId, _Name, _PatchGroups, _RejectedPatches, _GlobalFilters, _ApprovalRules, _ModifiedDate, _CreatedDate, _ApprovedPatches, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPatchBaselineResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineId [BaselineId] <p>The ID of the retrieved patch baseline.</p>
+-- * Name [BaselineName] <p>The name of the patch baseline.</p>
+-- * PatchGroups [PatchGroupList] <p>Patch groups included in the patch baseline.</p>
+-- * RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
+-- * GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
+-- * ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
+-- * ModifiedDate [DateTime] <p>The date the patch baseline was last modified.</p>
+-- * CreatedDate [DateTime] <p>The date the patch baseline was created.</p>
+-- * ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
+-- * Description [BaselineDescription] <p>A description of the patch baseline.</p>
+-- @return GetPatchBaselineResult structure as a key-value pair table
+function M.GetPatchBaselineResult(args)
+	assert(args, "You must provdide an argument table when creating GetPatchBaselineResult")
 	local t = { 
-		["BaselineId"] = _BaselineId,
-		["Name"] = _Name,
-		["PatchGroups"] = _PatchGroups,
-		["RejectedPatches"] = _RejectedPatches,
-		["GlobalFilters"] = _GlobalFilters,
-		["ApprovalRules"] = _ApprovalRules,
-		["ModifiedDate"] = _ModifiedDate,
-		["CreatedDate"] = _CreatedDate,
-		["ApprovedPatches"] = _ApprovedPatches,
-		["Description"] = _Description,
+		["BaselineId"] = args["BaselineId"],
+		["Name"] = args["Name"],
+		["PatchGroups"] = args["PatchGroups"],
+		["RejectedPatches"] = args["RejectedPatches"],
+		["GlobalFilters"] = args["GlobalFilters"],
+		["ApprovalRules"] = args["ApprovalRules"],
+		["ModifiedDate"] = args["ModifiedDate"],
+		["CreatedDate"] = args["CreatedDate"],
+		["ApprovedPatches"] = args["ApprovedPatches"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertGetPatchBaselineResult(t)
 	return t
@@ -5915,15 +6500,18 @@ end
 
 --- Create a structure of type NotificationConfig
 -- <p>Configurations for sending notifications.</p>
--- @param _NotificationArn [NotificationArn] <p>An Amazon Resource Name (ARN) for a Simple Notification Service (SNS) topic. Run Command pushes notifications about command status changes to this topic.</p>
--- @param _NotificationEvents [NotificationEventList] <p>The different events for which you can receive notifications. These events include the following: All (events), InProgress, Success, TimedOut, Cancelled, Failed. To learn more about these events, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html">Setting Up Events and Notifications</a> in the <i>Amazon EC2 Systems Manager User Guide</i>.</p>
--- @param _NotificationType [NotificationType] <p>Command: Receive notification when the status of a command changes. Invocation: For commands sent to multiple instances, receive notification on a per-instance basis when the status of a command changes. </p>
-function M.NotificationConfig(_NotificationArn, _NotificationEvents, _NotificationType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotificationConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NotificationArn [NotificationArn] <p>An Amazon Resource Name (ARN) for a Simple Notification Service (SNS) topic. Run Command pushes notifications about command status changes to this topic.</p>
+-- * NotificationEvents [NotificationEventList] <p>The different events for which you can receive notifications. These events include the following: All (events), InProgress, Success, TimedOut, Cancelled, Failed. To learn more about these events, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html">Setting Up Events and Notifications</a> in the <i>Amazon EC2 Systems Manager User Guide</i>.</p>
+-- * NotificationType [NotificationType] <p>Command: Receive notification when the status of a command changes. Invocation: For commands sent to multiple instances, receive notification on a per-instance basis when the status of a command changes. </p>
+-- @return NotificationConfig structure as a key-value pair table
+function M.NotificationConfig(args)
+	assert(args, "You must provdide an argument table when creating NotificationConfig")
 	local t = { 
-		["NotificationArn"] = _NotificationArn,
-		["NotificationEvents"] = _NotificationEvents,
-		["NotificationType"] = _NotificationType,
+		["NotificationArn"] = args["NotificationArn"],
+		["NotificationEvents"] = args["NotificationEvents"],
+		["NotificationType"] = args["NotificationType"],
 	}
 	asserts.AssertNotificationConfig(t)
 	return t
@@ -5947,19 +6535,22 @@ end
 
 --- Create a structure of type ModifyDocumentPermissionRequest
 --  
--- @param _AccountIdsToAdd [AccountIdList] <p>The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or <i>All</i>.</p>
--- @param _PermissionType [DocumentPermissionType] <p>The permission type for the document. The permission type can be <i>Share</i>.</p>
--- @param _AccountIdsToRemove [AccountIdList] <p>The AWS user accounts that should no longer have access to the document. The AWS user account can either be a group of account IDs or <i>All</i>. This action has a higher priority than <i>AccountIdsToAdd</i>. If you specify an account ID to add and the same ID to remove, the system removes access to the document.</p>
--- @param _Name [DocumentName] <p>The name of the document that you want to share.</p>
--- Required parameter: Name
--- Required parameter: PermissionType
-function M.ModifyDocumentPermissionRequest(_AccountIdsToAdd, _PermissionType, _AccountIdsToRemove, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyDocumentPermissionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccountIdsToAdd [AccountIdList] <p>The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or <i>All</i>.</p>
+-- * PermissionType [DocumentPermissionType] <p>The permission type for the document. The permission type can be <i>Share</i>.</p>
+-- * AccountIdsToRemove [AccountIdList] <p>The AWS user accounts that should no longer have access to the document. The AWS user account can either be a group of account IDs or <i>All</i>. This action has a higher priority than <i>AccountIdsToAdd</i>. If you specify an account ID to add and the same ID to remove, the system removes access to the document.</p>
+-- * Name [DocumentName] <p>The name of the document that you want to share.</p>
+-- Required key: Name
+-- Required key: PermissionType
+-- @return ModifyDocumentPermissionRequest structure as a key-value pair table
+function M.ModifyDocumentPermissionRequest(args)
+	assert(args, "You must provdide an argument table when creating ModifyDocumentPermissionRequest")
 	local t = { 
-		["AccountIdsToAdd"] = _AccountIdsToAdd,
-		["PermissionType"] = _PermissionType,
-		["AccountIdsToRemove"] = _AccountIdsToRemove,
-		["Name"] = _Name,
+		["AccountIdsToAdd"] = args["AccountIdsToAdd"],
+		["PermissionType"] = args["PermissionType"],
+		["AccountIdsToRemove"] = args["AccountIdsToRemove"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertModifyDocumentPermissionRequest(t)
 	return t
@@ -5985,22 +6576,25 @@ end
 
 --- Create a structure of type RegisterTargetWithMaintenanceWindowRequest
 --  
--- @param _ResourceType [MaintenanceWindowResourceType] <p>The type of target being registered with the Maintenance Window.</p>
--- @param _OwnerInformation [OwnerInformation] <p>User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the target should be registered with.</p>
--- @param _Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
--- @param _ClientToken [ClientToken] <p>User-provided idempotency token.</p>
--- Required parameter: WindowId
--- Required parameter: ResourceType
--- Required parameter: Targets
-function M.RegisterTargetWithMaintenanceWindowRequest(_ResourceType, _OwnerInformation, _WindowId, _Targets, _ClientToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTargetWithMaintenanceWindowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [MaintenanceWindowResourceType] <p>The type of target being registered with the Maintenance Window.</p>
+-- * OwnerInformation [OwnerInformation] <p>User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.</p>
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the target should be registered with.</p>
+-- * Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
+-- * ClientToken [ClientToken] <p>User-provided idempotency token.</p>
+-- Required key: WindowId
+-- Required key: ResourceType
+-- Required key: Targets
+-- @return RegisterTargetWithMaintenanceWindowRequest structure as a key-value pair table
+function M.RegisterTargetWithMaintenanceWindowRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterTargetWithMaintenanceWindowRequest")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["OwnerInformation"] = _OwnerInformation,
-		["WindowId"] = _WindowId,
-		["Targets"] = _Targets,
-		["ClientToken"] = _ClientToken,
+		["ResourceType"] = args["ResourceType"],
+		["OwnerInformation"] = args["OwnerInformation"],
+		["WindowId"] = args["WindowId"],
+		["Targets"] = args["Targets"],
+		["ClientToken"] = args["ClientToken"],
 	}
 	asserts.AssertRegisterTargetWithMaintenanceWindowRequest(t)
 	return t
@@ -6019,11 +6613,14 @@ end
 
 --- Create a structure of type TotalSizeLimitExceededException
 -- <p>The size of inventory data has exceeded the total size limit for the resource.</p>
--- @param _Message [String] 
-function M.TotalSizeLimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TotalSizeLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return TotalSizeLimitExceededException structure as a key-value pair table
+function M.TotalSizeLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating TotalSizeLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertTotalSizeLimitExceededException(t)
 	return t
@@ -6041,8 +6638,11 @@ end
 
 --- Create a structure of type InvalidResourceType
 -- <p>The resource type is not valid. If you are attempting to tag an instance, the instance must be a registered, managed instance.</p>
-function M.InvalidResourceType(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidResourceType structure as a key-value pair table
+function M.InvalidResourceType(args)
+	assert(args, "You must provdide an argument table when creating InvalidResourceType")
 	local t = { 
 	}
 	asserts.AssertInvalidResourceType(t)
@@ -6070,27 +6670,30 @@ end
 
 --- Create a structure of type GetMaintenanceWindowResult
 --  
--- @param _Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
--- @param _Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
--- @param _Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
--- @param _Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Windows is enabled.</p>
--- @param _AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the created Maintenance Window.</p>
--- @param _ModifiedDate [DateTime] <p>The date the Maintenance Window was last modified.</p>
--- @param _CreatedDate [DateTime] <p>The date the Maintenance Window was created.</p>
--- @param _Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
-function M.GetMaintenanceWindowResult(_Cutoff, _Name, _Schedule, _Enabled, _AllowUnassociatedTargets, _WindowId, _ModifiedDate, _CreatedDate, _Duration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
+-- * Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
+-- * Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
+-- * Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Windows is enabled.</p>
+-- * AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
+-- * WindowId [MaintenanceWindowId] <p>The ID of the created Maintenance Window.</p>
+-- * ModifiedDate [DateTime] <p>The date the Maintenance Window was last modified.</p>
+-- * CreatedDate [DateTime] <p>The date the Maintenance Window was created.</p>
+-- * Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
+-- @return GetMaintenanceWindowResult structure as a key-value pair table
+function M.GetMaintenanceWindowResult(args)
+	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowResult")
 	local t = { 
-		["Cutoff"] = _Cutoff,
-		["Name"] = _Name,
-		["Schedule"] = _Schedule,
-		["Enabled"] = _Enabled,
-		["AllowUnassociatedTargets"] = _AllowUnassociatedTargets,
-		["WindowId"] = _WindowId,
-		["ModifiedDate"] = _ModifiedDate,
-		["CreatedDate"] = _CreatedDate,
-		["Duration"] = _Duration,
+		["Cutoff"] = args["Cutoff"],
+		["Name"] = args["Name"],
+		["Schedule"] = args["Schedule"],
+		["Enabled"] = args["Enabled"],
+		["AllowUnassociatedTargets"] = args["AllowUnassociatedTargets"],
+		["WindowId"] = args["WindowId"],
+		["ModifiedDate"] = args["ModifiedDate"],
+		["CreatedDate"] = args["CreatedDate"],
+		["Duration"] = args["Duration"],
 	}
 	asserts.AssertGetMaintenanceWindowResult(t)
 	return t
@@ -6116,24 +6719,27 @@ end
 
 --- Create a structure of type UpdateAssociationRequest
 --  
--- @param _ScheduleExpression [ScheduleExpression] <p>The cron expression used to schedule the association that you want to update.</p>
--- @param _OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the results of this request.</p>
--- @param _Name [DocumentName] <p>The name of the association document.</p>
--- @param _Parameters [Parameters] <p>The parameters you want to update for the association. If you create a parameter using Parameter Store, you can reference the parameter using {{ssm:parameter-name}}</p>
--- @param _AssociationId [AssociationId] <p>The ID of the association you want to update. </p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version you want update for the association. </p>
--- @param _Targets [Targets] <p>The targets of the association.</p>
--- Required parameter: AssociationId
-function M.UpdateAssociationRequest(_ScheduleExpression, _OutputLocation, _Name, _Parameters, _AssociationId, _DocumentVersion, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAssociationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScheduleExpression [ScheduleExpression] <p>The cron expression used to schedule the association that you want to update.</p>
+-- * OutputLocation [InstanceAssociationOutputLocation] <p>An Amazon S3 bucket where you want to store the results of this request.</p>
+-- * Name [DocumentName] <p>The name of the association document.</p>
+-- * Parameters [Parameters] <p>The parameters you want to update for the association. If you create a parameter using Parameter Store, you can reference the parameter using {{ssm:parameter-name}}</p>
+-- * AssociationId [AssociationId] <p>The ID of the association you want to update. </p>
+-- * DocumentVersion [DocumentVersion] <p>The document version you want update for the association. </p>
+-- * Targets [Targets] <p>The targets of the association.</p>
+-- Required key: AssociationId
+-- @return UpdateAssociationRequest structure as a key-value pair table
+function M.UpdateAssociationRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateAssociationRequest")
 	local t = { 
-		["ScheduleExpression"] = _ScheduleExpression,
-		["OutputLocation"] = _OutputLocation,
-		["Name"] = _Name,
-		["Parameters"] = _Parameters,
-		["AssociationId"] = _AssociationId,
-		["DocumentVersion"] = _DocumentVersion,
-		["Targets"] = _Targets,
+		["ScheduleExpression"] = args["ScheduleExpression"],
+		["OutputLocation"] = args["OutputLocation"],
+		["Name"] = args["Name"],
+		["Parameters"] = args["Parameters"],
+		["AssociationId"] = args["AssociationId"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertUpdateAssociationRequest(t)
 	return t
@@ -6152,11 +6758,14 @@ end
 
 --- Create a structure of type UpdateAssociationStatusResult
 --  
--- @param _AssociationDescription [AssociationDescription] <p>Information about the association.</p>
-function M.UpdateAssociationStatusResult(_AssociationDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAssociationStatusResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssociationDescription [AssociationDescription] <p>Information about the association.</p>
+-- @return UpdateAssociationStatusResult structure as a key-value pair table
+function M.UpdateAssociationStatusResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateAssociationStatusResult")
 	local t = { 
-		["AssociationDescription"] = _AssociationDescription,
+		["AssociationDescription"] = args["AssociationDescription"],
 	}
 	asserts.AssertUpdateAssociationStatusResult(t)
 	return t
@@ -6175,11 +6784,14 @@ end
 
 --- Create a structure of type InvalidNextToken
 -- <p>The specified token is not valid.</p>
--- @param _Message [String] 
-function M.InvalidNextToken(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextToken")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidNextToken structure as a key-value pair table
+function M.InvalidNextToken(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextToken")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidNextToken(t)
 	return t
@@ -6199,13 +6811,16 @@ end
 
 --- Create a structure of type InstanceAggregatedAssociationOverview
 -- <p>Status information about the aggregated associations.</p>
--- @param _DetailedStatus [StatusName] <p>Detailed status information about the aggregated associations.</p>
--- @param _InstanceAssociationStatusAggregatedCount [InstanceAssociationStatusAggregatedCount] <p>The number of associations for the instance(s).</p>
-function M.InstanceAggregatedAssociationOverview(_DetailedStatus, _InstanceAssociationStatusAggregatedCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAggregatedAssociationOverview")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DetailedStatus [StatusName] <p>Detailed status information about the aggregated associations.</p>
+-- * InstanceAssociationStatusAggregatedCount [InstanceAssociationStatusAggregatedCount] <p>The number of associations for the instance(s).</p>
+-- @return InstanceAggregatedAssociationOverview structure as a key-value pair table
+function M.InstanceAggregatedAssociationOverview(args)
+	assert(args, "You must provdide an argument table when creating InstanceAggregatedAssociationOverview")
 	local t = { 
-		["DetailedStatus"] = _DetailedStatus,
-		["InstanceAssociationStatusAggregatedCount"] = _InstanceAssociationStatusAggregatedCount,
+		["DetailedStatus"] = args["DetailedStatus"],
+		["InstanceAssociationStatusAggregatedCount"] = args["InstanceAssociationStatusAggregatedCount"],
 	}
 	asserts.AssertInstanceAggregatedAssociationOverview(t)
 	return t
@@ -6228,18 +6843,21 @@ end
 
 --- Create a structure of type DescribeInstancePatchesRequest
 --  
--- @param _InstanceId [InstanceId] <p>The ID of the instance whose patch state information should be retrieved.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [PatchComplianceMaxResults] <p>The maximum number of patches to return (per page).</p>
--- @param _Filters [PatchOrchestratorFilterList] <p>Each entry in the array is a structure containing:</p> <p>Key (string, between 1 and 128 characters)</p> <p>Values (array of strings, each string between 1 and 256 characters)</p>
--- Required parameter: InstanceId
-function M.DescribeInstancePatchesRequest(_InstanceId, _NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The ID of the instance whose patch state information should be retrieved.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [PatchComplianceMaxResults] <p>The maximum number of patches to return (per page).</p>
+-- * Filters [PatchOrchestratorFilterList] <p>Each entry in the array is a structure containing:</p> <p>Key (string, between 1 and 128 characters)</p> <p>Values (array of strings, each string between 1 and 256 characters)</p>
+-- Required key: InstanceId
+-- @return DescribeInstancePatchesRequest structure as a key-value pair table
+function M.DescribeInstancePatchesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancePatchesRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["InstanceId"] = args["InstanceId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeInstancePatchesRequest(t)
 	return t
@@ -6261,15 +6879,18 @@ end
 
 --- Create a structure of type InstanceInformationStringFilter
 -- <p>The filters to describe or get information about your managed instances.</p>
--- @param _Values [InstanceInformationFilterValueSet] <p>The filter values.</p>
--- @param _Key [InstanceInformationStringFilterKey] <p>The filter key name to describe your instances. For example:</p> <p>"InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus"|"Tag Key"</p>
--- Required parameter: Key
--- Required parameter: Values
-function M.InstanceInformationStringFilter(_Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceInformationStringFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [InstanceInformationFilterValueSet] <p>The filter values.</p>
+-- * Key [InstanceInformationStringFilterKey] <p>The filter key name to describe your instances. For example:</p> <p>"InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus"|"Tag Key"</p>
+-- Required key: Key
+-- Required key: Values
+-- @return InstanceInformationStringFilter structure as a key-value pair table
+function M.InstanceInformationStringFilter(args)
+	assert(args, "You must provdide an argument table when creating InstanceInformationStringFilter")
 	local t = { 
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertInstanceInformationStringFilter(t)
 	return t
@@ -6289,12 +6910,15 @@ end
 
 --- Create a structure of type GetMaintenanceWindowRequest
 --  
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the desired Maintenance Window.</p>
--- Required parameter: WindowId
-function M.GetMaintenanceWindowRequest(_WindowId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowId [MaintenanceWindowId] <p>The ID of the desired Maintenance Window.</p>
+-- Required key: WindowId
+-- @return GetMaintenanceWindowRequest structure as a key-value pair table
+function M.GetMaintenanceWindowRequest(args)
+	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowRequest")
 	local t = { 
-		["WindowId"] = _WindowId,
+		["WindowId"] = args["WindowId"],
 	}
 	asserts.AssertGetMaintenanceWindowRequest(t)
 	return t
@@ -6314,13 +6938,16 @@ end
 
 --- Create a structure of type DeregisterTargetFromMaintenanceWindowResult
 --  
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the target was removed from.</p>
--- @param _WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the removed target definition.</p>
-function M.DeregisterTargetFromMaintenanceWindowResult(_WindowId, _WindowTargetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTargetFromMaintenanceWindowResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the target was removed from.</p>
+-- * WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the removed target definition.</p>
+-- @return DeregisterTargetFromMaintenanceWindowResult structure as a key-value pair table
+function M.DeregisterTargetFromMaintenanceWindowResult(args)
+	assert(args, "You must provdide an argument table when creating DeregisterTargetFromMaintenanceWindowResult")
 	local t = { 
-		["WindowId"] = _WindowId,
-		["WindowTargetId"] = _WindowTargetId,
+		["WindowId"] = args["WindowId"],
+		["WindowTargetId"] = args["WindowTargetId"],
 	}
 	asserts.AssertDeregisterTargetFromMaintenanceWindowResult(t)
 	return t
@@ -6338,8 +6965,11 @@ end
 
 --- Create a structure of type AddTagsToResourceResult
 --  
-function M.AddTagsToResourceResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AddTagsToResourceResult structure as a key-value pair table
+function M.AddTagsToResourceResult(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToResourceResult")
 	local t = { 
 	}
 	asserts.AssertAddTagsToResourceResult(t)
@@ -6359,11 +6989,14 @@ end
 
 --- Create a structure of type HierarchyTypeMismatchException
 -- <p>Parameter Store does not support changing a parameter type in a hierarchy. For example, you can't change a parameter from a String type to a SecureString type. You must create a new, unique parameter.</p>
--- @param _message [String] <p>Parameter Store does not support changing a parameter type in a hierarchy. For example, you can't change a parameter from a String type to a SecureString type. You must create a new, unique parameter.</p>
-function M.HierarchyTypeMismatchException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HierarchyTypeMismatchException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>Parameter Store does not support changing a parameter type in a hierarchy. For example, you can't change a parameter from a String type to a SecureString type. You must create a new, unique parameter.</p>
+-- @return HierarchyTypeMismatchException structure as a key-value pair table
+function M.HierarchyTypeMismatchException(args)
+	assert(args, "You must provdide an argument table when creating HierarchyTypeMismatchException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertHierarchyTypeMismatchException(t)
 	return t
@@ -6381,8 +7014,11 @@ end
 
 --- Create a structure of type UpdateManagedInstanceRoleResult
 --  
-function M.UpdateManagedInstanceRoleResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateManagedInstanceRoleResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateManagedInstanceRoleResult structure as a key-value pair table
+function M.UpdateManagedInstanceRoleResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateManagedInstanceRoleResult")
 	local t = { 
 	}
 	asserts.AssertUpdateManagedInstanceRoleResult(t)
@@ -6401,8 +7037,11 @@ end
 
 --- Create a structure of type InvalidOutputFolder
 -- <p>The S3 bucket does not exist.</p>
-function M.InvalidOutputFolder(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOutputFolder")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidOutputFolder structure as a key-value pair table
+function M.InvalidOutputFolder(args)
+	assert(args, "You must provdide an argument table when creating InvalidOutputFolder")
 	local t = { 
 	}
 	asserts.AssertInvalidOutputFolder(t)
@@ -6424,15 +7063,18 @@ end
 
 --- Create a structure of type DescribeMaintenanceWindowsRequest
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Filters [MaintenanceWindowFilterList] <p>Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are Name and Enabled.</p>
-function M.DescribeMaintenanceWindowsRequest(_NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceWindowsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaintenanceWindowMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Filters [MaintenanceWindowFilterList] <p>Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are Name and Enabled.</p>
+-- @return DescribeMaintenanceWindowsRequest structure as a key-value pair table
+function M.DescribeMaintenanceWindowsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeMaintenanceWindowsRequest(t)
 	return t
@@ -6452,13 +7094,16 @@ end
 
 --- Create a structure of type CreateActivationResult
 --  
--- @param _ActivationCode [ActivationCode] <p>The code the system generates when it processes the activation. The activation code functions like a password to validate the activation ID. </p>
--- @param _ActivationId [ActivationId] <p>The ID number generated by the system when it processed the activation. The activation ID functions like a user name.</p>
-function M.CreateActivationResult(_ActivationCode, _ActivationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateActivationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ActivationCode [ActivationCode] <p>The code the system generates when it processes the activation. The activation code functions like a password to validate the activation ID. </p>
+-- * ActivationId [ActivationId] <p>The ID number generated by the system when it processed the activation. The activation ID functions like a user name.</p>
+-- @return CreateActivationResult structure as a key-value pair table
+function M.CreateActivationResult(args)
+	assert(args, "You must provdide an argument table when creating CreateActivationResult")
 	local t = { 
-		["ActivationCode"] = _ActivationCode,
-		["ActivationId"] = _ActivationId,
+		["ActivationCode"] = args["ActivationCode"],
+		["ActivationId"] = args["ActivationId"],
 	}
 	asserts.AssertCreateActivationResult(t)
 	return t
@@ -6477,11 +7122,14 @@ end
 
 --- Create a structure of type InvalidActivationId
 -- <p>The activation ID is not valid. Verify the you entered the correct ActivationId or ActivationCode and try again.</p>
--- @param _Message [String] 
-function M.InvalidActivationId(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidActivationId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidActivationId structure as a key-value pair table
+function M.InvalidActivationId(args)
+	assert(args, "You must provdide an argument table when creating InvalidActivationId")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidActivationId(t)
 	return t
@@ -6499,8 +7147,11 @@ end
 
 --- Create a structure of type AssociationLimitExceeded
 -- <p>You can have at most 2,000 active associations.</p>
-function M.AssociationLimitExceeded(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociationLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AssociationLimitExceeded structure as a key-value pair table
+function M.AssociationLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating AssociationLimitExceeded")
 	local t = { 
 	}
 	asserts.AssertAssociationLimitExceeded(t)
@@ -6523,15 +7174,18 @@ end
 
 --- Create a structure of type CommandFilter
 -- <p>Describes a command filter.</p>
--- @param _value [CommandFilterValue] <p>The filter value. </p>
--- @param _key [CommandFilterKey] <p>The name of the filter.</p>
--- Required parameter: key
--- Required parameter: value
-function M.CommandFilter(_value, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CommandFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [CommandFilterValue] <p>The filter value. </p>
+-- * key [CommandFilterKey] <p>The name of the filter.</p>
+-- Required key: key
+-- Required key: value
+-- @return CommandFilter structure as a key-value pair table
+function M.CommandFilter(args)
+	assert(args, "You must provdide an argument table when creating CommandFilter")
 	local t = { 
-		["value"] = _value,
-		["key"] = _key,
+		["value"] = args["value"],
+		["key"] = args["key"],
 	}
 	asserts.AssertCommandFilter(t)
 	return t
@@ -6553,16 +7207,19 @@ end
 
 --- Create a structure of type StartAutomationExecutionRequest
 --  
--- @param _DocumentName [DocumentARN] <p>The name of the Automation document to use for this execution.</p>
--- @param _Parameters [AutomationParameterMap] <p>A key-value map of execution parameters, which match the declared parameters in the Automation document.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The version of the Automation document to use for this execution.</p>
--- Required parameter: DocumentName
-function M.StartAutomationExecutionRequest(_DocumentName, _Parameters, _DocumentVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartAutomationExecutionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DocumentName [DocumentARN] <p>The name of the Automation document to use for this execution.</p>
+-- * Parameters [AutomationParameterMap] <p>A key-value map of execution parameters, which match the declared parameters in the Automation document.</p>
+-- * DocumentVersion [DocumentVersion] <p>The version of the Automation document to use for this execution.</p>
+-- Required key: DocumentName
+-- @return StartAutomationExecutionRequest structure as a key-value pair table
+function M.StartAutomationExecutionRequest(args)
+	assert(args, "You must provdide an argument table when creating StartAutomationExecutionRequest")
 	local t = { 
-		["DocumentName"] = _DocumentName,
-		["Parameters"] = _Parameters,
-		["DocumentVersion"] = _DocumentVersion,
+		["DocumentName"] = args["DocumentName"],
+		["Parameters"] = args["Parameters"],
+		["DocumentVersion"] = args["DocumentVersion"],
 	}
 	asserts.AssertStartAutomationExecutionRequest(t)
 	return t
@@ -6581,11 +7238,14 @@ end
 
 --- Create a structure of type InvalidResultAttributeException
 -- <p>The specified inventory item result attribute is not valid.</p>
--- @param _Message [String] 
-function M.InvalidResultAttributeException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResultAttributeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidResultAttributeException structure as a key-value pair table
+function M.InvalidResultAttributeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidResultAttributeException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidResultAttributeException(t)
 	return t
@@ -6607,16 +7267,19 @@ end
 
 --- Create a structure of type DescribeInstanceAssociationsStatusRequest
 --  
--- @param _InstanceId [InstanceId] <p>The instance IDs for which you want association status information.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- Required parameter: InstanceId
-function M.DescribeInstanceAssociationsStatusRequest(_InstanceId, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstanceAssociationsStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The instance IDs for which you want association status information.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- Required key: InstanceId
+-- @return DescribeInstanceAssociationsStatusRequest structure as a key-value pair table
+function M.DescribeInstanceAssociationsStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstanceAssociationsStatusRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["InstanceId"] = args["InstanceId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeInstanceAssociationsStatusRequest(t)
 	return t
@@ -6635,11 +7298,14 @@ end
 
 --- Create a structure of type ParameterPatternMismatchException
 -- <p>The parameter name is not valid.</p>
--- @param _message [String] <p>The parameter name is not valid.</p>
-function M.ParameterPatternMismatchException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterPatternMismatchException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The parameter name is not valid.</p>
+-- @return ParameterPatternMismatchException structure as a key-value pair table
+function M.ParameterPatternMismatchException(args)
+	assert(args, "You must provdide an argument table when creating ParameterPatternMismatchException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertParameterPatternMismatchException(t)
 	return t
@@ -6672,39 +7338,42 @@ end
 
 --- Create a structure of type GetCommandInvocationResult
 --  
--- @param _Comment [Comment] <p>The comment text for the command.</p>
--- @param _ExecutionElapsedTime [StringDateTime] <p>Duration since ExecutionStartDateTime.</p>
--- @param _ExecutionEndDateTime [StringDateTime] <p>The date and time the plugin was finished executing. Date and time are written in ISO 8601 format. For example, June 7, 2017 is represented as 2017-06-7. The following sample AWS CLI command uses the <code>InvokedAfter</code> filter.</p> <p> <code>aws ssm list-commands --filters key=InvokedAfter,value=2017-06-07T00:00:00Z</code> </p> <p>If the plugin has not started to execute, the string is empty.</p>
--- @param _StandardErrorContent [StandardErrorContent] <p>The first 8,000 characters written by the plugin to stderr. If the command has not finished executing, then this string is empty.</p>
--- @param _InstanceId [InstanceId] <p>The ID of the managed instance targeted by the command. A managed instance can be an Amazon EC2 instance or an instance in your hybrid environment that is configured for Systems Manager.</p>
--- @param _StandardErrorUrl [Url] <p>The URL for the complete text written by the plugin to stderr. If the command has not finished executing, then this string is empty.</p>
--- @param _DocumentName [DocumentName] <p>The name of the document that was executed. For example, AWS-RunShellScript.</p>
--- @param _StandardOutputContent [StandardOutputContent] <p>The first 24,000 characters written by the plugin to stdout. If the command has not finished executing, if ExecutionStatus is neither Succeeded nor Failed, then this string is empty.</p>
--- @param _Status [CommandInvocationStatus] <p>The status of the parent command for this invocation. This status can be different than StatusDetails.</p>
--- @param _StatusDetails [StatusDetails] <p>A detailed status of the command execution for an invocation. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to the instance.</p> </li> <li> <p>In Progress: The command has been sent to the instance but has not reached a terminal state.</p> </li> <li> <p>Delayed: The system attempted to send the command to the target, but the target was not available. The instance might not be available because of network issues, the instance was stopped, etc. The system will try to deliver the command again.</p> </li> <li> <p>Success: The command or plugin was executed successfully. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: The command started to execute on the instance, but the execution was not complete before the timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Failed: The command wasn't executed successfully on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Undeliverable: The command can't be delivered to the instance. The instance might not exist or might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit and don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.</p> </li> </ul>
--- @param _PluginName [CommandPluginName] <p>The name of the plugin for which you want detailed results. For example, aws:RunShellScript is a plugin.</p>
--- @param _ResponseCode [ResponseCode] <p>The error level response code for the plugin script. If the response code is -1, then the command has not started executing on the instance, or it was not received by the instance.</p>
--- @param _ExecutionStartDateTime [StringDateTime] <p>The date and time the plugin started executing. Date and time are written in ISO 8601 format. For example, June 7, 2017 is represented as 2017-06-7. The following sample AWS CLI command uses the <code>InvokedBefore</code> filter.</p> <p> <code>aws ssm list-commands --filters key=InvokedBefore,value=2017-06-07T00:00:00Z</code> </p> <p>If the plugin has not started to execute, the string is empty.</p>
--- @param _CommandId [CommandId] <p>The parent command ID of the invocation plugin.</p>
--- @param _StandardOutputUrl [Url] <p>The URL for the complete text written by the plugin to stdout in Amazon S3. If an Amazon S3 bucket was not specified, then this string is empty.</p>
-function M.GetCommandInvocationResult(_Comment, _ExecutionElapsedTime, _ExecutionEndDateTime, _StandardErrorContent, _InstanceId, _StandardErrorUrl, _DocumentName, _StandardOutputContent, _Status, _StatusDetails, _PluginName, _ResponseCode, _ExecutionStartDateTime, _CommandId, _StandardOutputUrl, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCommandInvocationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [Comment] <p>The comment text for the command.</p>
+-- * ExecutionElapsedTime [StringDateTime] <p>Duration since ExecutionStartDateTime.</p>
+-- * ExecutionEndDateTime [StringDateTime] <p>The date and time the plugin was finished executing. Date and time are written in ISO 8601 format. For example, June 7, 2017 is represented as 2017-06-7. The following sample AWS CLI command uses the <code>InvokedAfter</code> filter.</p> <p> <code>aws ssm list-commands --filters key=InvokedAfter,value=2017-06-07T00:00:00Z</code> </p> <p>If the plugin has not started to execute, the string is empty.</p>
+-- * StandardErrorContent [StandardErrorContent] <p>The first 8,000 characters written by the plugin to stderr. If the command has not finished executing, then this string is empty.</p>
+-- * InstanceId [InstanceId] <p>The ID of the managed instance targeted by the command. A managed instance can be an Amazon EC2 instance or an instance in your hybrid environment that is configured for Systems Manager.</p>
+-- * StandardErrorUrl [Url] <p>The URL for the complete text written by the plugin to stderr. If the command has not finished executing, then this string is empty.</p>
+-- * DocumentName [DocumentName] <p>The name of the document that was executed. For example, AWS-RunShellScript.</p>
+-- * StandardOutputContent [StandardOutputContent] <p>The first 24,000 characters written by the plugin to stdout. If the command has not finished executing, if ExecutionStatus is neither Succeeded nor Failed, then this string is empty.</p>
+-- * Status [CommandInvocationStatus] <p>The status of the parent command for this invocation. This status can be different than StatusDetails.</p>
+-- * StatusDetails [StatusDetails] <p>A detailed status of the command execution for an invocation. StatusDetails includes more information than Status because it includes states resulting from error and concurrency control parameters. StatusDetails can show different results than Status. For more information about these statuses, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-about-status.html">Run Command Status</a>. StatusDetails can be one of the following values:</p> <ul> <li> <p>Pending: The command has not been sent to the instance.</p> </li> <li> <p>In Progress: The command has been sent to the instance but has not reached a terminal state.</p> </li> <li> <p>Delayed: The system attempted to send the command to the target, but the target was not available. The instance might not be available because of network issues, the instance was stopped, etc. The system will try to deliver the command again.</p> </li> <li> <p>Success: The command or plugin was executed successfully. This is a terminal state.</p> </li> <li> <p>Delivery Timed Out: The command was not delivered to the instance before the delivery timeout expired. Delivery timeouts do not count against the parent command's MaxErrors limit, but they do contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Execution Timed Out: The command started to execute on the instance, but the execution was not complete before the timeout expired. Execution timeouts count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Failed: The command wasn't executed successfully on the instance. For a plugin, this indicates that the result code was not zero. For a command invocation, this indicates that the result code for one or more plugins was not zero. Invocation failures count against the MaxErrors limit of the parent command. This is a terminal state.</p> </li> <li> <p>Canceled: The command was terminated before it was completed. This is a terminal state.</p> </li> <li> <p>Undeliverable: The command can't be delivered to the instance. The instance might not exist or might not be responding. Undeliverable invocations don't count against the parent command's MaxErrors limit and don't contribute to whether the parent command status is Success or Incomplete. This is a terminal state.</p> </li> <li> <p>Terminated: The parent command exceeded its MaxErrors limit and subsequent command invocations were canceled by the system. This is a terminal state.</p> </li> </ul>
+-- * PluginName [CommandPluginName] <p>The name of the plugin for which you want detailed results. For example, aws:RunShellScript is a plugin.</p>
+-- * ResponseCode [ResponseCode] <p>The error level response code for the plugin script. If the response code is -1, then the command has not started executing on the instance, or it was not received by the instance.</p>
+-- * ExecutionStartDateTime [StringDateTime] <p>The date and time the plugin started executing. Date and time are written in ISO 8601 format. For example, June 7, 2017 is represented as 2017-06-7. The following sample AWS CLI command uses the <code>InvokedBefore</code> filter.</p> <p> <code>aws ssm list-commands --filters key=InvokedBefore,value=2017-06-07T00:00:00Z</code> </p> <p>If the plugin has not started to execute, the string is empty.</p>
+-- * CommandId [CommandId] <p>The parent command ID of the invocation plugin.</p>
+-- * StandardOutputUrl [Url] <p>The URL for the complete text written by the plugin to stdout in Amazon S3. If an Amazon S3 bucket was not specified, then this string is empty.</p>
+-- @return GetCommandInvocationResult structure as a key-value pair table
+function M.GetCommandInvocationResult(args)
+	assert(args, "You must provdide an argument table when creating GetCommandInvocationResult")
 	local t = { 
-		["Comment"] = _Comment,
-		["ExecutionElapsedTime"] = _ExecutionElapsedTime,
-		["ExecutionEndDateTime"] = _ExecutionEndDateTime,
-		["StandardErrorContent"] = _StandardErrorContent,
-		["InstanceId"] = _InstanceId,
-		["StandardErrorUrl"] = _StandardErrorUrl,
-		["DocumentName"] = _DocumentName,
-		["StandardOutputContent"] = _StandardOutputContent,
-		["Status"] = _Status,
-		["StatusDetails"] = _StatusDetails,
-		["PluginName"] = _PluginName,
-		["ResponseCode"] = _ResponseCode,
-		["ExecutionStartDateTime"] = _ExecutionStartDateTime,
-		["CommandId"] = _CommandId,
-		["StandardOutputUrl"] = _StandardOutputUrl,
+		["Comment"] = args["Comment"],
+		["ExecutionElapsedTime"] = args["ExecutionElapsedTime"],
+		["ExecutionEndDateTime"] = args["ExecutionEndDateTime"],
+		["StandardErrorContent"] = args["StandardErrorContent"],
+		["InstanceId"] = args["InstanceId"],
+		["StandardErrorUrl"] = args["StandardErrorUrl"],
+		["DocumentName"] = args["DocumentName"],
+		["StandardOutputContent"] = args["StandardOutputContent"],
+		["Status"] = args["Status"],
+		["StatusDetails"] = args["StatusDetails"],
+		["PluginName"] = args["PluginName"],
+		["ResponseCode"] = args["ResponseCode"],
+		["ExecutionStartDateTime"] = args["ExecutionStartDateTime"],
+		["CommandId"] = args["CommandId"],
+		["StandardOutputUrl"] = args["StandardOutputUrl"],
 	}
 	asserts.AssertGetCommandInvocationResult(t)
 	return t
@@ -6725,15 +7394,18 @@ end
 
 --- Create a structure of type FailedCreateAssociation
 -- <p>Describes a failed association.</p>
--- @param _Entry [CreateAssociationBatchRequestEntry] <p>The association.</p>
--- @param _Message [BatchErrorMessage] <p>A description of the failure.</p>
--- @param _Fault [Fault] <p>The source of the failure.</p>
-function M.FailedCreateAssociation(_Entry, _Message, _Fault, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FailedCreateAssociation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Entry [CreateAssociationBatchRequestEntry] <p>The association.</p>
+-- * Message [BatchErrorMessage] <p>A description of the failure.</p>
+-- * Fault [Fault] <p>The source of the failure.</p>
+-- @return FailedCreateAssociation structure as a key-value pair table
+function M.FailedCreateAssociation(args)
+	assert(args, "You must provdide an argument table when creating FailedCreateAssociation")
 	local t = { 
-		["Entry"] = _Entry,
-		["Message"] = _Message,
-		["Fault"] = _Fault,
+		["Entry"] = args["Entry"],
+		["Message"] = args["Message"],
+		["Fault"] = args["Fault"],
 	}
 	asserts.AssertFailedCreateAssociation(t)
 	return t
@@ -6766,39 +7438,42 @@ end
 
 --- Create a structure of type DocumentDescription
 -- <p>Describes an SSM document. </p>
--- @param _Status [DocumentStatus] <p>The status of the SSM document.</p>
--- @param _Sha1 [DocumentSha1] <p>The SHA1 hash of the document, which you can use for verification purposes.</p>
--- @param _Hash [DocumentHash] <p>The Sha256 or Sha1 hash created by the system when the document was created. </p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
--- @param _Name [DocumentARN] <p>The name of the SSM document.</p>
--- @param _Parameters [DocumentParameterList] <p>A description of the parameters for a document.</p>
--- @param _DocumentType [DocumentType] <p>The type of document. </p>
--- @param _PlatformTypes [PlatformTypeList] <p>The list of OS platforms compatible with this SSM document. </p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version.</p>
--- @param _HashType [DocumentHashType] <p>Sha256 or Sha1.</p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
--- @param _CreatedDate [DateTime] <p>The date when the document was created.</p>
--- @param _Owner [DocumentOwner] <p>The AWS user account of the person who created the document.</p>
--- @param _SchemaVersion [DocumentSchemaVersion] <p>The schema version.</p>
--- @param _DefaultVersion [DocumentVersion] <p>The default version.</p>
--- @param _LatestVersion [DocumentVersion] <p>The latest version of the document.</p>
--- @param _Description [DescriptionInDocument] <p>A description of the document. </p>
-function M.DocumentDescription(_Status, _Sha1, _Hash, _Name, _Parameters, _DocumentType, _PlatformTypes, _DocumentVersion, _HashType, _CreatedDate, _Owner, _SchemaVersion, _DefaultVersion, _LatestVersion, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [DocumentStatus] <p>The status of the SSM document.</p>
+-- * Sha1 [DocumentSha1] <p>The SHA1 hash of the document, which you can use for verification purposes.</p>
+-- * Hash [DocumentHash] <p>The Sha256 or Sha1 hash created by the system when the document was created. </p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
+-- * Name [DocumentARN] <p>The name of the SSM document.</p>
+-- * Parameters [DocumentParameterList] <p>A description of the parameters for a document.</p>
+-- * DocumentType [DocumentType] <p>The type of document. </p>
+-- * PlatformTypes [PlatformTypeList] <p>The list of OS platforms compatible with this SSM document. </p>
+-- * DocumentVersion [DocumentVersion] <p>The document version.</p>
+-- * HashType [DocumentHashType] <p>Sha256 or Sha1.</p> <note> <p>Sha1 hashes have been deprecated.</p> </note>
+-- * CreatedDate [DateTime] <p>The date when the document was created.</p>
+-- * Owner [DocumentOwner] <p>The AWS user account of the person who created the document.</p>
+-- * SchemaVersion [DocumentSchemaVersion] <p>The schema version.</p>
+-- * DefaultVersion [DocumentVersion] <p>The default version.</p>
+-- * LatestVersion [DocumentVersion] <p>The latest version of the document.</p>
+-- * Description [DescriptionInDocument] <p>A description of the document. </p>
+-- @return DocumentDescription structure as a key-value pair table
+function M.DocumentDescription(args)
+	assert(args, "You must provdide an argument table when creating DocumentDescription")
 	local t = { 
-		["Status"] = _Status,
-		["Sha1"] = _Sha1,
-		["Hash"] = _Hash,
-		["Name"] = _Name,
-		["Parameters"] = _Parameters,
-		["DocumentType"] = _DocumentType,
-		["PlatformTypes"] = _PlatformTypes,
-		["DocumentVersion"] = _DocumentVersion,
-		["HashType"] = _HashType,
-		["CreatedDate"] = _CreatedDate,
-		["Owner"] = _Owner,
-		["SchemaVersion"] = _SchemaVersion,
-		["DefaultVersion"] = _DefaultVersion,
-		["LatestVersion"] = _LatestVersion,
-		["Description"] = _Description,
+		["Status"] = args["Status"],
+		["Sha1"] = args["Sha1"],
+		["Hash"] = args["Hash"],
+		["Name"] = args["Name"],
+		["Parameters"] = args["Parameters"],
+		["DocumentType"] = args["DocumentType"],
+		["PlatformTypes"] = args["PlatformTypes"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["HashType"] = args["HashType"],
+		["CreatedDate"] = args["CreatedDate"],
+		["Owner"] = args["Owner"],
+		["SchemaVersion"] = args["SchemaVersion"],
+		["DefaultVersion"] = args["DefaultVersion"],
+		["LatestVersion"] = args["LatestVersion"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertDocumentDescription(t)
 	return t
@@ -6817,11 +7492,14 @@ end
 
 --- Create a structure of type UpdateAssociationResult
 --  
--- @param _AssociationDescription [AssociationDescription] <p>The description of the association that was updated.</p>
-function M.UpdateAssociationResult(_AssociationDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAssociationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssociationDescription [AssociationDescription] <p>The description of the association that was updated.</p>
+-- @return UpdateAssociationResult structure as a key-value pair table
+function M.UpdateAssociationResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateAssociationResult")
 	local t = { 
-		["AssociationDescription"] = _AssociationDescription,
+		["AssociationDescription"] = args["AssociationDescription"],
 	}
 	asserts.AssertUpdateAssociationResult(t)
 	return t
@@ -6844,19 +7522,22 @@ end
 
 --- Create a structure of type MaintenanceWindowTarget
 -- <p>The target registered with the Maintenance Window.</p>
--- @param _ResourceType [MaintenanceWindowResourceType] <p>The type of target.</p>
--- @param _OwnerInformation [OwnerInformation] <p>User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The Maintenance Window ID where the target is registered.</p>
--- @param _Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
--- @param _WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target.</p>
-function M.MaintenanceWindowTarget(_ResourceType, _OwnerInformation, _WindowId, _Targets, _WindowTargetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaintenanceWindowTarget")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [MaintenanceWindowResourceType] <p>The type of target.</p>
+-- * OwnerInformation [OwnerInformation] <p>User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.</p>
+-- * WindowId [MaintenanceWindowId] <p>The Maintenance Window ID where the target is registered.</p>
+-- * Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
+-- * WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target.</p>
+-- @return MaintenanceWindowTarget structure as a key-value pair table
+function M.MaintenanceWindowTarget(args)
+	assert(args, "You must provdide an argument table when creating MaintenanceWindowTarget")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["OwnerInformation"] = _OwnerInformation,
-		["WindowId"] = _WindowId,
-		["Targets"] = _Targets,
-		["WindowTargetId"] = _WindowTargetId,
+		["ResourceType"] = args["ResourceType"],
+		["OwnerInformation"] = args["OwnerInformation"],
+		["WindowId"] = args["WindowId"],
+		["Targets"] = args["Targets"],
+		["WindowTargetId"] = args["WindowTargetId"],
 	}
 	asserts.AssertMaintenanceWindowTarget(t)
 	return t
@@ -6887,35 +7568,38 @@ end
 
 --- Create a structure of type GetMaintenanceWindowExecutionTaskResult
 --  
--- @param _Status [MaintenanceWindowExecutionStatus] <p>The status of the task.</p>
--- @param _MaxErrors [MaxErrors] <p>The defined maximum number of task execution errors allowed before scheduling of the task execution would have been stopped.</p>
--- @param _TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the executed task.</p>
--- @param _MaxConcurrency [MaxConcurrency] <p>The defined maximum number of task executions that could be run in parallel.</p>
--- @param _ServiceRole [ServiceRole] <p>The role that was assumed when executing the task.</p>
--- @param _WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that includes the task.</p>
--- @param _StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
--- @param _Priority [MaintenanceWindowTaskPriority] <p>The priority of the task.</p>
--- @param _StartTime [DateTime] <p>The time the task execution started.</p>
--- @param _EndTime [DateTime] <p>The time the task execution completed.</p>
--- @param _Type [MaintenanceWindowTaskType] <p>The type of task executed.</p>
--- @param _TaskParameters [MaintenanceWindowTaskParametersList] <p>The parameters passed to the task when it was executed. The map has the following format:</p> <p>Key: string, between 1 and 255 characters</p> <p>Value: an array of strings, each string is between 1 and 255 characters</p>
--- @param _TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window task that was retrieved.</p>
-function M.GetMaintenanceWindowExecutionTaskResult(_Status, _MaxErrors, _TaskArn, _MaxConcurrency, _ServiceRole, _WindowExecutionId, _StatusDetails, _Priority, _StartTime, _EndTime, _Type, _TaskParameters, _TaskExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetMaintenanceWindowExecutionTaskResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [MaintenanceWindowExecutionStatus] <p>The status of the task.</p>
+-- * MaxErrors [MaxErrors] <p>The defined maximum number of task execution errors allowed before scheduling of the task execution would have been stopped.</p>
+-- * TaskArn [MaintenanceWindowTaskArn] <p>The ARN of the executed task.</p>
+-- * MaxConcurrency [MaxConcurrency] <p>The defined maximum number of task executions that could be run in parallel.</p>
+-- * ServiceRole [ServiceRole] <p>The role that was assumed when executing the task.</p>
+-- * WindowExecutionId [MaintenanceWindowExecutionId] <p>The ID of the Maintenance Window execution that includes the task.</p>
+-- * StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
+-- * Priority [MaintenanceWindowTaskPriority] <p>The priority of the task.</p>
+-- * StartTime [DateTime] <p>The time the task execution started.</p>
+-- * EndTime [DateTime] <p>The time the task execution completed.</p>
+-- * Type [MaintenanceWindowTaskType] <p>The type of task executed.</p>
+-- * TaskParameters [MaintenanceWindowTaskParametersList] <p>The parameters passed to the task when it was executed. The map has the following format:</p> <p>Key: string, between 1 and 255 characters</p> <p>Value: an array of strings, each string is between 1 and 255 characters</p>
+-- * TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window task that was retrieved.</p>
+-- @return GetMaintenanceWindowExecutionTaskResult structure as a key-value pair table
+function M.GetMaintenanceWindowExecutionTaskResult(args)
+	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowExecutionTaskResult")
 	local t = { 
-		["Status"] = _Status,
-		["MaxErrors"] = _MaxErrors,
-		["TaskArn"] = _TaskArn,
-		["MaxConcurrency"] = _MaxConcurrency,
-		["ServiceRole"] = _ServiceRole,
-		["WindowExecutionId"] = _WindowExecutionId,
-		["StatusDetails"] = _StatusDetails,
-		["Priority"] = _Priority,
-		["StartTime"] = _StartTime,
-		["EndTime"] = _EndTime,
-		["Type"] = _Type,
-		["TaskParameters"] = _TaskParameters,
-		["TaskExecutionId"] = _TaskExecutionId,
+		["Status"] = args["Status"],
+		["MaxErrors"] = args["MaxErrors"],
+		["TaskArn"] = args["TaskArn"],
+		["MaxConcurrency"] = args["MaxConcurrency"],
+		["ServiceRole"] = args["ServiceRole"],
+		["WindowExecutionId"] = args["WindowExecutionId"],
+		["StatusDetails"] = args["StatusDetails"],
+		["Priority"] = args["Priority"],
+		["StartTime"] = args["StartTime"],
+		["EndTime"] = args["EndTime"],
+		["Type"] = args["Type"],
+		["TaskParameters"] = args["TaskParameters"],
+		["TaskExecutionId"] = args["TaskExecutionId"],
 	}
 	asserts.AssertGetMaintenanceWindowExecutionTaskResult(t)
 	return t
@@ -6935,13 +7619,16 @@ end
 
 --- Create a structure of type GetInventoryResult
 --  
--- @param _Entities [InventoryResultEntityList] <p>Collection of inventory entities such as a collection of instance inventory. </p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.GetInventoryResult(_Entities, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInventoryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Entities [InventoryResultEntityList] <p>Collection of inventory entities such as a collection of instance inventory. </p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return GetInventoryResult structure as a key-value pair table
+function M.GetInventoryResult(args)
+	assert(args, "You must provdide an argument table when creating GetInventoryResult")
 	local t = { 
-		["Entities"] = _Entities,
-		["NextToken"] = _NextToken,
+		["Entities"] = args["Entities"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertGetInventoryResult(t)
 	return t
@@ -6961,12 +7648,15 @@ end
 
 --- Create a structure of type GetPatchBaselineRequest
 --  
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline to retrieve.</p>
--- Required parameter: BaselineId
-function M.GetPatchBaselineRequest(_BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPatchBaselineRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline to retrieve.</p>
+-- Required key: BaselineId
+-- @return GetPatchBaselineRequest structure as a key-value pair table
+function M.GetPatchBaselineRequest(args)
+	assert(args, "You must provdide an argument table when creating GetPatchBaselineRequest")
 	local t = { 
-		["BaselineId"] = _BaselineId,
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertGetPatchBaselineRequest(t)
 	return t
@@ -6986,13 +7676,16 @@ end
 
 --- Create a structure of type RegisterPatchBaselineForPatchGroupResult
 --  
--- @param _PatchGroup [PatchGroup] <p>The name of the patch group registered with the patch baseline.</p>
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline the patch group was registered with.</p>
-function M.RegisterPatchBaselineForPatchGroupResult(_PatchGroup, _BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterPatchBaselineForPatchGroupResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchGroup [PatchGroup] <p>The name of the patch group registered with the patch baseline.</p>
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline the patch group was registered with.</p>
+-- @return RegisterPatchBaselineForPatchGroupResult structure as a key-value pair table
+function M.RegisterPatchBaselineForPatchGroupResult(args)
+	assert(args, "You must provdide an argument table when creating RegisterPatchBaselineForPatchGroupResult")
 	local t = { 
-		["PatchGroup"] = _PatchGroup,
-		["BaselineId"] = _BaselineId,
+		["PatchGroup"] = args["PatchGroup"],
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertRegisterPatchBaselineForPatchGroupResult(t)
 	return t
@@ -7011,11 +7704,14 @@ end
 
 --- Create a structure of type TooManyUpdates
 -- <p>There are concurrent updates for a resource that supports one update at a time.</p>
--- @param _Message [String] 
-function M.TooManyUpdates(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyUpdates")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return TooManyUpdates structure as a key-value pair table
+function M.TooManyUpdates(args)
+	assert(args, "You must provdide an argument table when creating TooManyUpdates")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertTooManyUpdates(t)
 	return t
@@ -7035,13 +7731,16 @@ end
 
 --- Create a structure of type PatchOrchestratorFilter
 -- <p>Defines a filter used in Patch Manager APIs.</p>
--- @param _Values [PatchOrchestratorFilterValues] <p>The value for the filter.</p>
--- @param _Key [PatchOrchestratorFilterKey] <p>The key for the filter.</p>
-function M.PatchOrchestratorFilter(_Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PatchOrchestratorFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [PatchOrchestratorFilterValues] <p>The value for the filter.</p>
+-- * Key [PatchOrchestratorFilterKey] <p>The key for the filter.</p>
+-- @return PatchOrchestratorFilter structure as a key-value pair table
+function M.PatchOrchestratorFilter(args)
+	assert(args, "You must provdide an argument table when creating PatchOrchestratorFilter")
 	local t = { 
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertPatchOrchestratorFilter(t)
 	return t
@@ -7063,15 +7762,18 @@ end
 
 --- Create a structure of type DeregisterTargetFromMaintenanceWindowRequest
 --  
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the target should be removed from.</p>
--- @param _WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target definition to remove.</p>
--- Required parameter: WindowId
--- Required parameter: WindowTargetId
-function M.DeregisterTargetFromMaintenanceWindowRequest(_WindowId, _WindowTargetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTargetFromMaintenanceWindowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the target should be removed from.</p>
+-- * WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target definition to remove.</p>
+-- Required key: WindowId
+-- Required key: WindowTargetId
+-- @return DeregisterTargetFromMaintenanceWindowRequest structure as a key-value pair table
+function M.DeregisterTargetFromMaintenanceWindowRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterTargetFromMaintenanceWindowRequest")
 	local t = { 
-		["WindowId"] = _WindowId,
-		["WindowTargetId"] = _WindowTargetId,
+		["WindowId"] = args["WindowId"],
+		["WindowTargetId"] = args["WindowTargetId"],
 	}
 	asserts.AssertDeregisterTargetFromMaintenanceWindowRequest(t)
 	return t
@@ -7093,15 +7795,18 @@ end
 
 --- Create a structure of type PatchRule
 -- <p>Defines an approval rule for a patch baseline.</p>
--- @param _PatchFilterGroup [PatchFilterGroup] <p>The patch filter group that defines the criteria for the rule.</p>
--- @param _ApproveAfterDays [ApproveAfterDays] <p>The number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline.</p>
--- Required parameter: PatchFilterGroup
--- Required parameter: ApproveAfterDays
-function M.PatchRule(_PatchFilterGroup, _ApproveAfterDays, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PatchRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchFilterGroup [PatchFilterGroup] <p>The patch filter group that defines the criteria for the rule.</p>
+-- * ApproveAfterDays [ApproveAfterDays] <p>The number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline.</p>
+-- Required key: PatchFilterGroup
+-- Required key: ApproveAfterDays
+-- @return PatchRule structure as a key-value pair table
+function M.PatchRule(args)
+	assert(args, "You must provdide an argument table when creating PatchRule")
 	local t = { 
-		["PatchFilterGroup"] = _PatchFilterGroup,
-		["ApproveAfterDays"] = _ApproveAfterDays,
+		["PatchFilterGroup"] = args["PatchFilterGroup"],
+		["ApproveAfterDays"] = args["ApproveAfterDays"],
 	}
 	asserts.AssertPatchRule(t)
 	return t
@@ -7119,8 +7824,11 @@ end
 
 --- Create a structure of type DeleteActivationResult
 --  
-function M.DeleteActivationResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteActivationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteActivationResult structure as a key-value pair table
+function M.DeleteActivationResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteActivationResult")
 	local t = { 
 	}
 	asserts.AssertDeleteActivationResult(t)
@@ -7140,11 +7848,14 @@ end
 
 --- Create a structure of type CustomSchemaCountLimitExceededException
 -- <p>You have exceeded the limit for custom schemas. Delete one or more custom schemas and try again.</p>
--- @param _Message [String] 
-function M.CustomSchemaCountLimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CustomSchemaCountLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return CustomSchemaCountLimitExceededException structure as a key-value pair table
+function M.CustomSchemaCountLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating CustomSchemaCountLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertCustomSchemaCountLimitExceededException(t)
 	return t
@@ -7162,8 +7873,11 @@ end
 
 --- Create a structure of type DeleteParameterResult
 --  
-function M.DeleteParameterResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParameterResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteParameterResult structure as a key-value pair table
+function M.DeleteParameterResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteParameterResult")
 	local t = { 
 	}
 	asserts.AssertDeleteParameterResult(t)
@@ -7183,11 +7897,14 @@ end
 
 --- Create a structure of type InvalidFilterOption
 -- <p>The specified filter option is not valid. Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.</p>
--- @param _message [String] <p>The specified filter option is not valid. Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.</p>
-function M.InvalidFilterOption(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFilterOption")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The specified filter option is not valid. Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.</p>
+-- @return InvalidFilterOption structure as a key-value pair table
+function M.InvalidFilterOption(args)
+	assert(args, "You must provdide an argument table when creating InvalidFilterOption")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidFilterOption(t)
 	return t
@@ -7208,15 +7925,18 @@ end
 
 --- Create a structure of type S3OutputLocation
 -- <p>An Amazon S3 bucket where you want to store the results of this request.</p>
--- @param _OutputS3KeyPrefix [S3KeyPrefix] <p>The Amazon S3 bucket subfolder.</p>
--- @param _OutputS3BucketName [S3BucketName] <p>The name of the Amazon S3 bucket.</p>
--- @param _OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
-function M.S3OutputLocation(_OutputS3KeyPrefix, _OutputS3BucketName, _OutputS3Region, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3OutputLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OutputS3KeyPrefix [S3KeyPrefix] <p>The Amazon S3 bucket subfolder.</p>
+-- * OutputS3BucketName [S3BucketName] <p>The name of the Amazon S3 bucket.</p>
+-- * OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
+-- @return S3OutputLocation structure as a key-value pair table
+function M.S3OutputLocation(args)
+	assert(args, "You must provdide an argument table when creating S3OutputLocation")
 	local t = { 
-		["OutputS3KeyPrefix"] = _OutputS3KeyPrefix,
-		["OutputS3BucketName"] = _OutputS3BucketName,
-		["OutputS3Region"] = _OutputS3Region,
+		["OutputS3KeyPrefix"] = args["OutputS3KeyPrefix"],
+		["OutputS3BucketName"] = args["OutputS3BucketName"],
+		["OutputS3Region"] = args["OutputS3Region"],
 	}
 	asserts.AssertS3OutputLocation(t)
 	return t
@@ -7237,15 +7957,18 @@ end
 
 --- Create a structure of type AssociationOverview
 -- <p>Information about the association.</p>
--- @param _Status [StatusName] <p>The status of the association. Status can be: Pending, Success, or Failed.</p>
--- @param _DetailedStatus [StatusName] <p>A detailed status of the association.</p>
--- @param _AssociationStatusAggregatedCount [AssociationStatusAggregatedCount] <p>Returns the number of targets for the association status. For example, if you created an association with two instances, and one of them was successful, this would return the count of instances by status.</p>
-function M.AssociationOverview(_Status, _DetailedStatus, _AssociationStatusAggregatedCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociationOverview")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [StatusName] <p>The status of the association. Status can be: Pending, Success, or Failed.</p>
+-- * DetailedStatus [StatusName] <p>A detailed status of the association.</p>
+-- * AssociationStatusAggregatedCount [AssociationStatusAggregatedCount] <p>Returns the number of targets for the association status. For example, if you created an association with two instances, and one of them was successful, this would return the count of instances by status.</p>
+-- @return AssociationOverview structure as a key-value pair table
+function M.AssociationOverview(args)
+	assert(args, "You must provdide an argument table when creating AssociationOverview")
 	local t = { 
-		["Status"] = _Status,
-		["DetailedStatus"] = _DetailedStatus,
-		["AssociationStatusAggregatedCount"] = _AssociationStatusAggregatedCount,
+		["Status"] = args["Status"],
+		["DetailedStatus"] = args["DetailedStatus"],
+		["AssociationStatusAggregatedCount"] = args["AssociationStatusAggregatedCount"],
 	}
 	asserts.AssertAssociationOverview(t)
 	return t
@@ -7265,13 +7988,16 @@ end
 
 --- Create a structure of type DocumentDefaultVersionDescription
 -- <p>A default version of a document.</p>
--- @param _DefaultVersion [DocumentVersion] <p>The default version of the document.</p>
--- @param _Name [DocumentName] <p>The name of the document.</p>
-function M.DocumentDefaultVersionDescription(_DefaultVersion, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentDefaultVersionDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DefaultVersion [DocumentVersion] <p>The default version of the document.</p>
+-- * Name [DocumentName] <p>The name of the document.</p>
+-- @return DocumentDefaultVersionDescription structure as a key-value pair table
+function M.DocumentDefaultVersionDescription(args)
+	assert(args, "You must provdide an argument table when creating DocumentDefaultVersionDescription")
 	local t = { 
-		["DefaultVersion"] = _DefaultVersion,
-		["Name"] = _Name,
+		["DefaultVersion"] = args["DefaultVersion"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDocumentDefaultVersionDescription(t)
 	return t
@@ -7290,11 +8016,14 @@ end
 
 --- Create a structure of type InvalidTypeNameException
 -- <p>The parameter type name is not valid.</p>
--- @param _Message [String] 
-function M.InvalidTypeNameException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTypeNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidTypeNameException structure as a key-value pair table
+function M.InvalidTypeNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTypeNameException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidTypeNameException(t)
 	return t
@@ -7313,11 +8042,14 @@ end
 
 --- Create a structure of type ParameterNotFound
 -- <p>The parameter could not be found. Verify the name and try again.</p>
--- @param _message [String] 
-function M.ParameterNotFound(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return ParameterNotFound structure as a key-value pair table
+function M.ParameterNotFound(args)
+	assert(args, "You must provdide an argument table when creating ParameterNotFound")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertParameterNotFound(t)
 	return t
@@ -7354,41 +8086,44 @@ end
 
 --- Create a structure of type InstancePatchState
 -- <p>Defines the high-level patch compliance state for a managed instance, providing information about the number of installed, missing, not applicable, and failed patches along with metadata about the operation when this information was gathered for the instance.</p>
--- @param _OperationStartTime [PatchOperationStartTime] <p>The time the most recent patching operation was started on the instance.</p>
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline used to patch the instance.</p>
--- @param _FailedCount [PatchFailedCount] <p>The number of patches from the patch baseline that were attempted to be installed during the last patching operation, but failed to install.</p>
--- @param _InstanceId [InstanceId] <p>The ID of the managed instance the high-level patch compliance information was collected for.</p>
--- @param _OwnerInformation [OwnerInformation] <p>Placeholder information, this field will always be empty in the current release of the service.</p>
--- @param _NotApplicableCount [PatchNotApplicableCount] <p>The number of patches from the patch baseline that aren't applicable for the instance and hence aren't installed on the instance.</p>
--- @param _OperationEndTime [PatchOperationEndTime] <p>The time the most recent patching operation completed on the instance.</p>
--- @param _PatchGroup [PatchGroup] <p>The name of the patch group the managed instance belongs to.</p>
--- @param _InstalledOtherCount [PatchInstalledOtherCount] <p>The number of patches not specified in the patch baseline that are installed on the instance.</p>
--- @param _MissingCount [PatchMissingCount] <p>The number of patches from the patch baseline that are applicable for the instance but aren't currently installed.</p>
--- @param _SnapshotId [SnapshotId] <p>The ID of the patch baseline snapshot used during the patching operation when this compliance data was collected.</p>
--- @param _Operation [PatchOperationType] <p>The type of patching operation that was performed: SCAN (assess patch compliance state) or INSTALL (install missing patches).</p>
--- @param _InstalledCount [PatchInstalledCount] <p>The number of patches from the patch baseline that are installed on the instance.</p>
--- Required parameter: InstanceId
--- Required parameter: PatchGroup
--- Required parameter: BaselineId
--- Required parameter: OperationStartTime
--- Required parameter: OperationEndTime
--- Required parameter: Operation
-function M.InstancePatchState(_OperationStartTime, _BaselineId, _FailedCount, _InstanceId, _OwnerInformation, _NotApplicableCount, _OperationEndTime, _PatchGroup, _InstalledOtherCount, _MissingCount, _SnapshotId, _Operation, _InstalledCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstancePatchState")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OperationStartTime [PatchOperationStartTime] <p>The time the most recent patching operation was started on the instance.</p>
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline used to patch the instance.</p>
+-- * FailedCount [PatchFailedCount] <p>The number of patches from the patch baseline that were attempted to be installed during the last patching operation, but failed to install.</p>
+-- * InstanceId [InstanceId] <p>The ID of the managed instance the high-level patch compliance information was collected for.</p>
+-- * OwnerInformation [OwnerInformation] <p>Placeholder information, this field will always be empty in the current release of the service.</p>
+-- * NotApplicableCount [PatchNotApplicableCount] <p>The number of patches from the patch baseline that aren't applicable for the instance and hence aren't installed on the instance.</p>
+-- * OperationEndTime [PatchOperationEndTime] <p>The time the most recent patching operation completed on the instance.</p>
+-- * PatchGroup [PatchGroup] <p>The name of the patch group the managed instance belongs to.</p>
+-- * InstalledOtherCount [PatchInstalledOtherCount] <p>The number of patches not specified in the patch baseline that are installed on the instance.</p>
+-- * MissingCount [PatchMissingCount] <p>The number of patches from the patch baseline that are applicable for the instance but aren't currently installed.</p>
+-- * SnapshotId [SnapshotId] <p>The ID of the patch baseline snapshot used during the patching operation when this compliance data was collected.</p>
+-- * Operation [PatchOperationType] <p>The type of patching operation that was performed: SCAN (assess patch compliance state) or INSTALL (install missing patches).</p>
+-- * InstalledCount [PatchInstalledCount] <p>The number of patches from the patch baseline that are installed on the instance.</p>
+-- Required key: InstanceId
+-- Required key: PatchGroup
+-- Required key: BaselineId
+-- Required key: OperationStartTime
+-- Required key: OperationEndTime
+-- Required key: Operation
+-- @return InstancePatchState structure as a key-value pair table
+function M.InstancePatchState(args)
+	assert(args, "You must provdide an argument table when creating InstancePatchState")
 	local t = { 
-		["OperationStartTime"] = _OperationStartTime,
-		["BaselineId"] = _BaselineId,
-		["FailedCount"] = _FailedCount,
-		["InstanceId"] = _InstanceId,
-		["OwnerInformation"] = _OwnerInformation,
-		["NotApplicableCount"] = _NotApplicableCount,
-		["OperationEndTime"] = _OperationEndTime,
-		["PatchGroup"] = _PatchGroup,
-		["InstalledOtherCount"] = _InstalledOtherCount,
-		["MissingCount"] = _MissingCount,
-		["SnapshotId"] = _SnapshotId,
-		["Operation"] = _Operation,
-		["InstalledCount"] = _InstalledCount,
+		["OperationStartTime"] = args["OperationStartTime"],
+		["BaselineId"] = args["BaselineId"],
+		["FailedCount"] = args["FailedCount"],
+		["InstanceId"] = args["InstanceId"],
+		["OwnerInformation"] = args["OwnerInformation"],
+		["NotApplicableCount"] = args["NotApplicableCount"],
+		["OperationEndTime"] = args["OperationEndTime"],
+		["PatchGroup"] = args["PatchGroup"],
+		["InstalledOtherCount"] = args["InstalledOtherCount"],
+		["MissingCount"] = args["MissingCount"],
+		["SnapshotId"] = args["SnapshotId"],
+		["Operation"] = args["Operation"],
+		["InstalledCount"] = args["InstalledCount"],
 	}
 	asserts.AssertInstancePatchState(t)
 	return t
@@ -7407,11 +8142,14 @@ end
 
 --- Create a structure of type InvalidDocumentOperation
 -- <p>You attempted to delete a document while it is still shared. You must stop sharing the document before you can delete it.</p>
--- @param _Message [String] 
-function M.InvalidDocumentOperation(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDocumentOperation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidDocumentOperation structure as a key-value pair table
+function M.InvalidDocumentOperation(args)
+	assert(args, "You must provdide an argument table when creating InvalidDocumentOperation")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidDocumentOperation(t)
 	return t
@@ -7435,21 +8173,24 @@ end
 
 --- Create a structure of type ListCommandInvocationsRequest
 --  
--- @param _InstanceId [InstanceId] <p>(Optional) The command execution details for a specific instance ID.</p>
--- @param _MaxResults [CommandMaxResults] <p>(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Details [Boolean] <p>(Optional) If set this returns the response of the command executions and any command output. By default this is set to False. </p>
--- @param _Filters [CommandFilterList] <p>(Optional) One or more filters. Use a filter to return a more specific list of results.</p>
--- @param _NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _CommandId [CommandId] <p>(Optional) The invocations for a specific command ID.</p>
-function M.ListCommandInvocationsRequest(_InstanceId, _MaxResults, _Details, _Filters, _NextToken, _CommandId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCommandInvocationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>(Optional) The command execution details for a specific instance ID.</p>
+-- * MaxResults [CommandMaxResults] <p>(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Details [Boolean] <p>(Optional) If set this returns the response of the command executions and any command output. By default this is set to False. </p>
+-- * Filters [CommandFilterList] <p>(Optional) One or more filters. Use a filter to return a more specific list of results.</p>
+-- * NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * CommandId [CommandId] <p>(Optional) The invocations for a specific command ID.</p>
+-- @return ListCommandInvocationsRequest structure as a key-value pair table
+function M.ListCommandInvocationsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListCommandInvocationsRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["MaxResults"] = _MaxResults,
-		["Details"] = _Details,
-		["Filters"] = _Filters,
-		["NextToken"] = _NextToken,
-		["CommandId"] = _CommandId,
+		["InstanceId"] = args["InstanceId"],
+		["MaxResults"] = args["MaxResults"],
+		["Details"] = args["Details"],
+		["Filters"] = args["Filters"],
+		["NextToken"] = args["NextToken"],
+		["CommandId"] = args["CommandId"],
 	}
 	asserts.AssertListCommandInvocationsRequest(t)
 	return t
@@ -7468,11 +8209,14 @@ end
 
 --- Create a structure of type UnsupportedInventorySchemaVersionException
 -- <p>Inventory item type schema version has to match supported versions in the service. Check output of GetInventorySchema to see the available schema version for each type.</p>
--- @param _Message [String] 
-function M.UnsupportedInventorySchemaVersionException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedInventorySchemaVersionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return UnsupportedInventorySchemaVersionException structure as a key-value pair table
+function M.UnsupportedInventorySchemaVersionException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedInventorySchemaVersionException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertUnsupportedInventorySchemaVersionException(t)
 	return t
@@ -7494,15 +8238,18 @@ end
 
 --- Create a structure of type AssociationFilter
 -- <p>Describes a filter.</p>
--- @param _value [AssociationFilterValue] <p>The filter value.</p>
--- @param _key [AssociationFilterKey] <p>The name of the filter.</p>
--- Required parameter: key
--- Required parameter: value
-function M.AssociationFilter(_value, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociationFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [AssociationFilterValue] <p>The filter value.</p>
+-- * key [AssociationFilterKey] <p>The name of the filter.</p>
+-- Required key: key
+-- Required key: value
+-- @return AssociationFilter structure as a key-value pair table
+function M.AssociationFilter(args)
+	assert(args, "You must provdide an argument table when creating AssociationFilter")
 	local t = { 
-		["value"] = _value,
-		["key"] = _key,
+		["value"] = args["value"],
+		["key"] = args["key"],
 	}
 	asserts.AssertAssociationFilter(t)
 	return t
@@ -7525,18 +8272,21 @@ end
 
 --- Create a structure of type GetParameterHistoryRequest
 --  
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _Name [PSParameterName] <p>The name of a parameter you want to query.</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _WithDecryption [Boolean] <p>Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.</p>
--- Required parameter: Name
-function M.GetParameterHistoryRequest(_NextToken, _Name, _MaxResults, _WithDecryption, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetParameterHistoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * Name [PSParameterName] <p>The name of a parameter you want to query.</p>
+-- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * WithDecryption [Boolean] <p>Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.</p>
+-- Required key: Name
+-- @return GetParameterHistoryRequest structure as a key-value pair table
+function M.GetParameterHistoryRequest(args)
+	assert(args, "You must provdide an argument table when creating GetParameterHistoryRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Name"] = _Name,
-		["MaxResults"] = _MaxResults,
-		["WithDecryption"] = _WithDecryption,
+		["NextToken"] = args["NextToken"],
+		["Name"] = args["Name"],
+		["MaxResults"] = args["MaxResults"],
+		["WithDecryption"] = args["WithDecryption"],
 	}
 	asserts.AssertGetParameterHistoryRequest(t)
 	return t
@@ -7556,12 +8306,15 @@ end
 
 --- Create a structure of type RegisterDefaultPatchBaselineRequest
 --  
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline that should be the default patch baseline.</p>
--- Required parameter: BaselineId
-function M.RegisterDefaultPatchBaselineRequest(_BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDefaultPatchBaselineRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline that should be the default patch baseline.</p>
+-- Required key: BaselineId
+-- @return RegisterDefaultPatchBaselineRequest structure as a key-value pair table
+function M.RegisterDefaultPatchBaselineRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterDefaultPatchBaselineRequest")
 	local t = { 
-		["BaselineId"] = _BaselineId,
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertRegisterDefaultPatchBaselineRequest(t)
 	return t
@@ -7579,8 +8332,11 @@ end
 
 --- Create a structure of type InvalidResourceId
 -- <p>The resource ID is not valid. Verify that you entered the correct ID and try again.</p>
-function M.InvalidResourceId(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidResourceId structure as a key-value pair table
+function M.InvalidResourceId(args)
+	assert(args, "You must provdide an argument table when creating InvalidResourceId")
 	local t = { 
 	}
 	asserts.AssertInvalidResourceId(t)
@@ -7599,8 +8355,11 @@ end
 
 --- Create a structure of type AssociationAlreadyExists
 -- <p>The specified association already exists.</p>
-function M.AssociationAlreadyExists(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociationAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AssociationAlreadyExists structure as a key-value pair table
+function M.AssociationAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating AssociationAlreadyExists")
 	local t = { 
 	}
 	asserts.AssertAssociationAlreadyExists(t)
@@ -7621,13 +8380,16 @@ end
 
 --- Create a structure of type DescribePatchGroupsResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _Mappings [PatchGroupPatchBaselineMappingList] <p>Each entry in the array contains:</p> <p>PatchGroup: string (between 1 and 256 characters, Regex: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$)</p> <p>PatchBaselineIdentity: A PatchBaselineIdentity element. </p>
-function M.DescribePatchGroupsResult(_NextToken, _Mappings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchGroupsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * Mappings [PatchGroupPatchBaselineMappingList] <p>Each entry in the array contains:</p> <p>PatchGroup: string (between 1 and 256 characters, Regex: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$)</p> <p>PatchBaselineIdentity: A PatchBaselineIdentity element. </p>
+-- @return DescribePatchGroupsResult structure as a key-value pair table
+function M.DescribePatchGroupsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribePatchGroupsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Mappings"] = _Mappings,
+		["NextToken"] = args["NextToken"],
+		["Mappings"] = args["Mappings"],
 	}
 	asserts.AssertDescribePatchGroupsResult(t)
 	return t
@@ -7647,13 +8409,16 @@ end
 
 --- Create a structure of type DescribeInstanceInformationResult
 --  
--- @param _InstanceInformationList [InstanceInformationList] <p>The instance information list.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty. </p>
-function M.DescribeInstanceInformationResult(_InstanceInformationList, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstanceInformationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceInformationList [InstanceInformationList] <p>The instance information list.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty. </p>
+-- @return DescribeInstanceInformationResult structure as a key-value pair table
+function M.DescribeInstanceInformationResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstanceInformationResult")
 	local t = { 
-		["InstanceInformationList"] = _InstanceInformationList,
-		["NextToken"] = _NextToken,
+		["InstanceInformationList"] = args["InstanceInformationList"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeInstanceInformationResult(t)
 	return t
@@ -7675,15 +8440,18 @@ end
 
 --- Create a structure of type AutomationExecutionFilter
 -- <p>A filter used to match specific automation executions. This is used to limit the scope of Automation execution information returned.</p>
--- @param _Values [AutomationExecutionFilterValueList] <p>The values used to limit the execution information associated with the filter's key.</p>
--- @param _Key [AutomationExecutionFilterKey] <p>The aspect of the Automation execution information that should be limited.</p>
--- Required parameter: Key
--- Required parameter: Values
-function M.AutomationExecutionFilter(_Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutomationExecutionFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [AutomationExecutionFilterValueList] <p>The values used to limit the execution information associated with the filter's key.</p>
+-- * Key [AutomationExecutionFilterKey] <p>The aspect of the Automation execution information that should be limited.</p>
+-- Required key: Key
+-- Required key: Values
+-- @return AutomationExecutionFilter structure as a key-value pair table
+function M.AutomationExecutionFilter(args)
+	assert(args, "You must provdide an argument table when creating AutomationExecutionFilter")
 	local t = { 
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertAutomationExecutionFilter(t)
 	return t
@@ -7704,14 +8472,17 @@ end
 
 --- Create a structure of type GetParameterRequest
 --  
--- @param _Name [PSParameterName] <p>The name of the parameter you want to query.</p>
--- @param _WithDecryption [Boolean] <p>Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.</p>
--- Required parameter: Name
-function M.GetParameterRequest(_Name, _WithDecryption, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetParameterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [PSParameterName] <p>The name of the parameter you want to query.</p>
+-- * WithDecryption [Boolean] <p>Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.</p>
+-- Required key: Name
+-- @return GetParameterRequest structure as a key-value pair table
+function M.GetParameterRequest(args)
+	assert(args, "You must provdide an argument table when creating GetParameterRequest")
 	local t = { 
-		["Name"] = _Name,
-		["WithDecryption"] = _WithDecryption,
+		["Name"] = args["Name"],
+		["WithDecryption"] = args["WithDecryption"],
 	}
 	asserts.AssertGetParameterRequest(t)
 	return t
@@ -7741,27 +8512,30 @@ end
 
 --- Create a structure of type PatchComplianceData
 -- <p>Information about the state of a patch on a particular instance as it relates to the patch baseline used to patch the instance.</p>
--- @param _KBId [PatchKbNumber] <p>The Microsoft Knowledge Base ID of the patch.</p>
--- @param _Severity [PatchSeverity] <p>The severity of the patch (for example, Critical, Important, Moderate).</p>
--- @param _Classification [PatchClassification] <p>The classification of the patch (for example, SecurityUpdates, Updates, CriticalUpdates).</p>
--- @param _Title [PatchTitle] <p>The title of the patch.</p>
--- @param _State [PatchComplianceDataState] <p>The state of the patch on the instance (INSTALLED, INSTALLED_OTHER, MISSING, NOT_APPLICABLE or FAILED).</p>
--- @param _InstalledTime [PatchInstalledTime] <p>The date/time the patch was installed on the instance.</p>
--- Required parameter: Title
--- Required parameter: KBId
--- Required parameter: Classification
--- Required parameter: Severity
--- Required parameter: State
--- Required parameter: InstalledTime
-function M.PatchComplianceData(_KBId, _Severity, _Classification, _Title, _State, _InstalledTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PatchComplianceData")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KBId [PatchKbNumber] <p>The Microsoft Knowledge Base ID of the patch.</p>
+-- * Severity [PatchSeverity] <p>The severity of the patch (for example, Critical, Important, Moderate).</p>
+-- * Classification [PatchClassification] <p>The classification of the patch (for example, SecurityUpdates, Updates, CriticalUpdates).</p>
+-- * Title [PatchTitle] <p>The title of the patch.</p>
+-- * State [PatchComplianceDataState] <p>The state of the patch on the instance (INSTALLED, INSTALLED_OTHER, MISSING, NOT_APPLICABLE or FAILED).</p>
+-- * InstalledTime [PatchInstalledTime] <p>The date/time the patch was installed on the instance.</p>
+-- Required key: Title
+-- Required key: KBId
+-- Required key: Classification
+-- Required key: Severity
+-- Required key: State
+-- Required key: InstalledTime
+-- @return PatchComplianceData structure as a key-value pair table
+function M.PatchComplianceData(args)
+	assert(args, "You must provdide an argument table when creating PatchComplianceData")
 	local t = { 
-		["KBId"] = _KBId,
-		["Severity"] = _Severity,
-		["Classification"] = _Classification,
-		["Title"] = _Title,
-		["State"] = _State,
-		["InstalledTime"] = _InstalledTime,
+		["KBId"] = args["KBId"],
+		["Severity"] = args["Severity"],
+		["Classification"] = args["Classification"],
+		["Title"] = args["Title"],
+		["State"] = args["State"],
+		["InstalledTime"] = args["InstalledTime"],
 	}
 	asserts.AssertPatchComplianceData(t)
 	return t
@@ -7784,17 +8558,20 @@ end
 
 --- Create a structure of type UpdateDocumentRequest
 --  
--- @param _Content [DocumentContent] <p>The content in a document that you want to update.</p>
--- @param _Name [DocumentName] <p>The name of the document that you want to update.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The version of the document that you want to update.</p>
--- Required parameter: Content
--- Required parameter: Name
-function M.UpdateDocumentRequest(_Content, _Name, _DocumentVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDocumentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Content [DocumentContent] <p>The content in a document that you want to update.</p>
+-- * Name [DocumentName] <p>The name of the document that you want to update.</p>
+-- * DocumentVersion [DocumentVersion] <p>The version of the document that you want to update.</p>
+-- Required key: Content
+-- Required key: Name
+-- @return UpdateDocumentRequest structure as a key-value pair table
+function M.UpdateDocumentRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateDocumentRequest")
 	local t = { 
-		["Content"] = _Content,
-		["Name"] = _Name,
-		["DocumentVersion"] = _DocumentVersion,
+		["Content"] = args["Content"],
+		["Name"] = args["Name"],
+		["DocumentVersion"] = args["DocumentVersion"],
 	}
 	asserts.AssertUpdateDocumentRequest(t)
 	return t
@@ -7812,8 +8589,11 @@ end
 
 --- Create a structure of type PutInventoryResult
 --  
-function M.PutInventoryResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutInventoryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PutInventoryResult structure as a key-value pair table
+function M.PutInventoryResult(args)
+	assert(args, "You must provdide an argument table when creating PutInventoryResult")
 	local t = { 
 	}
 	asserts.AssertPutInventoryResult(t)
@@ -7834,13 +8614,16 @@ end
 
 --- Create a structure of type ListAssociationsResult
 --  
--- @param _Associations [AssociationList] <p>The associations.</p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.ListAssociationsResult(_Associations, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssociationsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Associations [AssociationList] <p>The associations.</p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return ListAssociationsResult structure as a key-value pair table
+function M.ListAssociationsResult(args)
+	assert(args, "You must provdide an argument table when creating ListAssociationsResult")
 	local t = { 
-		["Associations"] = _Associations,
-		["NextToken"] = _NextToken,
+		["Associations"] = args["Associations"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListAssociationsResult(t)
 	return t
@@ -7858,8 +8641,11 @@ end
 
 --- Create a structure of type InvalidOutputLocation
 -- <p>The output location is not valid or does not exist.</p>
-function M.InvalidOutputLocation(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOutputLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidOutputLocation structure as a key-value pair table
+function M.InvalidOutputLocation(args)
+	assert(args, "You must provdide an argument table when creating InvalidOutputLocation")
 	local t = { 
 	}
 	asserts.AssertInvalidOutputLocation(t)
@@ -7879,11 +8665,14 @@ end
 
 --- Create a structure of type InvalidParameters
 -- <p>You must specify values for all required parameters in the SSM document. You can only supply values to parameters defined in the SSM document.</p>
--- @param _Message [String] 
-function M.InvalidParameters(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameters")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidParameters structure as a key-value pair table
+function M.InvalidParameters(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameters")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidParameters(t)
 	return t
@@ -7901,8 +8690,11 @@ end
 
 --- Create a structure of type DeleteDocumentResult
 --  
-function M.DeleteDocumentResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDocumentResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteDocumentResult structure as a key-value pair table
+function M.DeleteDocumentResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteDocumentResult")
 	local t = { 
 	}
 	asserts.AssertDeleteDocumentResult(t)
@@ -7932,26 +8724,29 @@ end
 
 --- Create a structure of type CreateMaintenanceWindowRequest
 --  
--- @param _Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
--- @param _Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
--- @param _Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
--- @param _AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
--- @param _ClientToken [ClientToken] <p>User-provided idempotency token.</p>
--- @param _Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
--- Required parameter: Name
--- Required parameter: Schedule
--- Required parameter: Duration
--- Required parameter: Cutoff
--- Required parameter: AllowUnassociatedTargets
-function M.CreateMaintenanceWindowRequest(_Cutoff, _Name, _Schedule, _AllowUnassociatedTargets, _ClientToken, _Duration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateMaintenanceWindowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
+-- * Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
+-- * Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
+-- * AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
+-- * ClientToken [ClientToken] <p>User-provided idempotency token.</p>
+-- * Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
+-- Required key: Name
+-- Required key: Schedule
+-- Required key: Duration
+-- Required key: Cutoff
+-- Required key: AllowUnassociatedTargets
+-- @return CreateMaintenanceWindowRequest structure as a key-value pair table
+function M.CreateMaintenanceWindowRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateMaintenanceWindowRequest")
 	local t = { 
-		["Cutoff"] = _Cutoff,
-		["Name"] = _Name,
-		["Schedule"] = _Schedule,
-		["AllowUnassociatedTargets"] = _AllowUnassociatedTargets,
-		["ClientToken"] = _ClientToken,
-		["Duration"] = _Duration,
+		["Cutoff"] = args["Cutoff"],
+		["Name"] = args["Name"],
+		["Schedule"] = args["Schedule"],
+		["AllowUnassociatedTargets"] = args["AllowUnassociatedTargets"],
+		["ClientToken"] = args["ClientToken"],
+		["Duration"] = args["Duration"],
 	}
 	asserts.AssertCreateMaintenanceWindowRequest(t)
 	return t
@@ -7974,18 +8769,21 @@ end
 
 --- Create a structure of type DescribeInstancePatchStatesForPatchGroupRequest
 --  
--- @param _PatchGroup [PatchGroup] <p>The name of the patch group for which the patch state information should be retrieved.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [PatchComplianceMaxResults] <p>The maximum number of patches to return (per page).</p>
--- @param _Filters [InstancePatchStateFilterList] <p>Each entry in the array is a structure containing:</p> <p>Key (string between 1 and 200 characters)</p> <p> Values (array containing a single string)</p> <p> Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")</p>
--- Required parameter: PatchGroup
-function M.DescribeInstancePatchStatesForPatchGroupRequest(_PatchGroup, _NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchStatesForPatchGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchGroup [PatchGroup] <p>The name of the patch group for which the patch state information should be retrieved.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [PatchComplianceMaxResults] <p>The maximum number of patches to return (per page).</p>
+-- * Filters [InstancePatchStateFilterList] <p>Each entry in the array is a structure containing:</p> <p>Key (string between 1 and 200 characters)</p> <p> Values (array containing a single string)</p> <p> Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")</p>
+-- Required key: PatchGroup
+-- @return DescribeInstancePatchStatesForPatchGroupRequest structure as a key-value pair table
+function M.DescribeInstancePatchStatesForPatchGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancePatchStatesForPatchGroupRequest")
 	local t = { 
-		["PatchGroup"] = _PatchGroup,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["PatchGroup"] = args["PatchGroup"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeInstancePatchStatesForPatchGroupRequest(t)
 	return t
@@ -8004,11 +8802,14 @@ end
 
 --- Create a structure of type GetDefaultPatchBaselineResult
 --  
--- @param _BaselineId [BaselineId] <p>The ID of the default patch baseline.</p>
-function M.GetDefaultPatchBaselineResult(_BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDefaultPatchBaselineResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineId [BaselineId] <p>The ID of the default patch baseline.</p>
+-- @return GetDefaultPatchBaselineResult structure as a key-value pair table
+function M.GetDefaultPatchBaselineResult(args)
+	assert(args, "You must provdide an argument table when creating GetDefaultPatchBaselineResult")
 	local t = { 
-		["BaselineId"] = _BaselineId,
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertGetDefaultPatchBaselineResult(t)
 	return t
@@ -8026,8 +8827,11 @@ end
 
 --- Create a structure of type GetDefaultPatchBaselineRequest
 --  
-function M.GetDefaultPatchBaselineRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDefaultPatchBaselineRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetDefaultPatchBaselineRequest structure as a key-value pair table
+function M.GetDefaultPatchBaselineRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDefaultPatchBaselineRequest")
 	local t = { 
 	}
 	asserts.AssertGetDefaultPatchBaselineRequest(t)
@@ -8049,15 +8853,18 @@ end
 
 --- Create a structure of type DescribeAssociationRequest
 --  
--- @param _InstanceId [InstanceId] <p>The instance ID.</p>
--- @param _AssociationId [AssociationId] <p>The association ID for which you want information.</p>
--- @param _Name [DocumentName] <p>The name of the SSM document.</p>
-function M.DescribeAssociationRequest(_InstanceId, _AssociationId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssociationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>The instance ID.</p>
+-- * AssociationId [AssociationId] <p>The association ID for which you want information.</p>
+-- * Name [DocumentName] <p>The name of the SSM document.</p>
+-- @return DescribeAssociationRequest structure as a key-value pair table
+function M.DescribeAssociationRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAssociationRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["AssociationId"] = _AssociationId,
-		["Name"] = _Name,
+		["InstanceId"] = args["InstanceId"],
+		["AssociationId"] = args["AssociationId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDescribeAssociationRequest(t)
 	return t
@@ -8079,17 +8886,20 @@ end
 
 --- Create a structure of type DescribeInstanceInformationRequest
 --  
--- @param _InstanceInformationFilterList [InstanceInformationFilterList] <p>One or more filters. Use a filter to return a more specific list of instances.</p>
--- @param _NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _MaxResults [MaxResultsEC2Compatible] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results. </p>
--- @param _Filters [InstanceInformationStringFilterList] <p>One or more filters. Use a filter to return a more specific list of instances.</p>
-function M.DescribeInstanceInformationRequest(_InstanceInformationFilterList, _NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstanceInformationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceInformationFilterList [InstanceInformationFilterList] <p>One or more filters. Use a filter to return a more specific list of instances.</p>
+-- * NextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * MaxResults [MaxResultsEC2Compatible] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results. </p>
+-- * Filters [InstanceInformationStringFilterList] <p>One or more filters. Use a filter to return a more specific list of instances.</p>
+-- @return DescribeInstanceInformationRequest structure as a key-value pair table
+function M.DescribeInstanceInformationRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstanceInformationRequest")
 	local t = { 
-		["InstanceInformationFilterList"] = _InstanceInformationFilterList,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["InstanceInformationFilterList"] = args["InstanceInformationFilterList"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeInstanceInformationRequest(t)
 	return t
@@ -8109,13 +8919,16 @@ end
 
 --- Create a structure of type ListCommandsResult
 --  
--- @param _Commands [CommandList] <p>(Optional) The list of commands requested by the user. </p>
--- @param _NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
-function M.ListCommandsResult(_Commands, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCommandsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Commands [CommandList] <p>(Optional) The list of commands requested by the user. </p>
+-- * NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- @return ListCommandsResult structure as a key-value pair table
+function M.ListCommandsResult(args)
+	assert(args, "You must provdide an argument table when creating ListCommandsResult")
 	local t = { 
-		["Commands"] = _Commands,
-		["NextToken"] = _NextToken,
+		["Commands"] = args["Commands"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListCommandsResult(t)
 	return t
@@ -8134,11 +8947,14 @@ end
 
 --- Create a structure of type InvalidFilterValue
 -- <p>The filter value is not valid. Verify the value and try again.</p>
--- @param _Message [String] 
-function M.InvalidFilterValue(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFilterValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidFilterValue structure as a key-value pair table
+function M.InvalidFilterValue(args)
+	assert(args, "You must provdide an argument table when creating InvalidFilterValue")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidFilterValue(t)
 	return t
@@ -8161,17 +8977,20 @@ end
 
 --- Create a structure of type GetCommandInvocationRequest
 --  
--- @param _InstanceId [InstanceId] <p>(Required) The ID of the managed instance targeted by the command. A managed instance can be an Amazon EC2 instance or an instance in your hybrid environment that is configured for Systems Manager.</p>
--- @param _PluginName [CommandPluginName] <p>(Optional) The name of the plugin for which you want detailed results. If the document contains only one plugin, the name can be omitted and the details will be returned.</p>
--- @param _CommandId [CommandId] <p>(Required) The parent command ID of the invocation plugin.</p>
--- Required parameter: CommandId
--- Required parameter: InstanceId
-function M.GetCommandInvocationRequest(_InstanceId, _PluginName, _CommandId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCommandInvocationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>(Required) The ID of the managed instance targeted by the command. A managed instance can be an Amazon EC2 instance or an instance in your hybrid environment that is configured for Systems Manager.</p>
+-- * PluginName [CommandPluginName] <p>(Optional) The name of the plugin for which you want detailed results. If the document contains only one plugin, the name can be omitted and the details will be returned.</p>
+-- * CommandId [CommandId] <p>(Required) The parent command ID of the invocation plugin.</p>
+-- Required key: CommandId
+-- Required key: InstanceId
+-- @return GetCommandInvocationRequest structure as a key-value pair table
+function M.GetCommandInvocationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetCommandInvocationRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["PluginName"] = _PluginName,
-		["CommandId"] = _CommandId,
+		["InstanceId"] = args["InstanceId"],
+		["PluginName"] = args["PluginName"],
+		["CommandId"] = args["CommandId"],
 	}
 	asserts.AssertGetCommandInvocationRequest(t)
 	return t
@@ -8194,17 +9013,20 @@ end
 
 --- Create a structure of type CreateDocumentRequest
 --  
--- @param _Content [DocumentContent] <p>A valid JSON string.</p>
--- @param _Name [DocumentName] <p>A name for the Systems Manager document.</p>
--- @param _DocumentType [DocumentType] <p>The type of document to create. Valid document types include: Policy, Automation, and Command.</p>
--- Required parameter: Content
--- Required parameter: Name
-function M.CreateDocumentRequest(_Content, _Name, _DocumentType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDocumentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Content [DocumentContent] <p>A valid JSON string.</p>
+-- * Name [DocumentName] <p>A name for the Systems Manager document.</p>
+-- * DocumentType [DocumentType] <p>The type of document to create. Valid document types include: Policy, Automation, and Command.</p>
+-- Required key: Content
+-- Required key: Name
+-- @return CreateDocumentRequest structure as a key-value pair table
+function M.CreateDocumentRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDocumentRequest")
 	local t = { 
-		["Content"] = _Content,
-		["Name"] = _Name,
-		["DocumentType"] = _DocumentType,
+		["Content"] = args["Content"],
+		["Name"] = args["Name"],
+		["DocumentType"] = args["DocumentType"],
 	}
 	asserts.AssertCreateDocumentRequest(t)
 	return t
@@ -8232,29 +9054,32 @@ end
 
 --- Create a structure of type InstanceAssociationStatusInfo
 -- <p>Status information about the instance association.</p>
--- @param _Status [StatusName] <p>Status information about the instance association.</p>
--- @param _DetailedStatus [StatusName] <p>Detailed status information about the instance association.</p>
--- @param _OutputUrl [InstanceAssociationOutputUrl] <p>A URL for an Amazon S3 bucket where you want to store the results of this request.</p>
--- @param _Name [DocumentName] <p>The name of the association.</p>
--- @param _InstanceId [InstanceId] <p>The instance ID where the association was created.</p>
--- @param _AssociationId [AssociationId] <p>The association ID.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The association document verions.</p>
--- @param _ErrorCode [AgentErrorCode] <p>An error code returned by the request to create the association.</p>
--- @param _ExecutionSummary [InstanceAssociationExecutionSummary] <p>Summary information about association execution.</p>
--- @param _ExecutionDate [DateTime] <p>The date the instance association executed. </p>
-function M.InstanceAssociationStatusInfo(_Status, _DetailedStatus, _OutputUrl, _Name, _InstanceId, _AssociationId, _DocumentVersion, _ErrorCode, _ExecutionSummary, _ExecutionDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAssociationStatusInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [StatusName] <p>Status information about the instance association.</p>
+-- * DetailedStatus [StatusName] <p>Detailed status information about the instance association.</p>
+-- * OutputUrl [InstanceAssociationOutputUrl] <p>A URL for an Amazon S3 bucket where you want to store the results of this request.</p>
+-- * Name [DocumentName] <p>The name of the association.</p>
+-- * InstanceId [InstanceId] <p>The instance ID where the association was created.</p>
+-- * AssociationId [AssociationId] <p>The association ID.</p>
+-- * DocumentVersion [DocumentVersion] <p>The association document verions.</p>
+-- * ErrorCode [AgentErrorCode] <p>An error code returned by the request to create the association.</p>
+-- * ExecutionSummary [InstanceAssociationExecutionSummary] <p>Summary information about association execution.</p>
+-- * ExecutionDate [DateTime] <p>The date the instance association executed. </p>
+-- @return InstanceAssociationStatusInfo structure as a key-value pair table
+function M.InstanceAssociationStatusInfo(args)
+	assert(args, "You must provdide an argument table when creating InstanceAssociationStatusInfo")
 	local t = { 
-		["Status"] = _Status,
-		["DetailedStatus"] = _DetailedStatus,
-		["OutputUrl"] = _OutputUrl,
-		["Name"] = _Name,
-		["InstanceId"] = _InstanceId,
-		["AssociationId"] = _AssociationId,
-		["DocumentVersion"] = _DocumentVersion,
-		["ErrorCode"] = _ErrorCode,
-		["ExecutionSummary"] = _ExecutionSummary,
-		["ExecutionDate"] = _ExecutionDate,
+		["Status"] = args["Status"],
+		["DetailedStatus"] = args["DetailedStatus"],
+		["OutputUrl"] = args["OutputUrl"],
+		["Name"] = args["Name"],
+		["InstanceId"] = args["InstanceId"],
+		["AssociationId"] = args["AssociationId"],
+		["DocumentVersion"] = args["DocumentVersion"],
+		["ErrorCode"] = args["ErrorCode"],
+		["ExecutionSummary"] = args["ExecutionSummary"],
+		["ExecutionDate"] = args["ExecutionDate"],
 	}
 	asserts.AssertInstanceAssociationStatusInfo(t)
 	return t
@@ -8276,15 +9101,18 @@ end
 
 --- Create a structure of type ParametersFilter
 -- <p>One or more filters. Use a filter to return a more specific list of results.</p>
--- @param _Values [ParametersFilterValueList] <p>The filter values.</p>
--- @param _Key [ParametersFilterKey] <p>The name of the filter.</p>
--- Required parameter: Key
--- Required parameter: Values
-function M.ParametersFilter(_Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParametersFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [ParametersFilterValueList] <p>The filter values.</p>
+-- * Key [ParametersFilterKey] <p>The name of the filter.</p>
+-- Required key: Key
+-- Required key: Values
+-- @return ParametersFilter structure as a key-value pair table
+function M.ParametersFilter(args)
+	assert(args, "You must provdide an argument table when creating ParametersFilter")
 	local t = { 
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertParametersFilter(t)
 	return t
@@ -8302,8 +9130,11 @@ end
 
 --- Create a structure of type TooManyTagsError
 -- <p>The Targets parameter includes too many tags. Remove one or more tags and try the command again.</p>
-function M.TooManyTagsError(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTagsError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyTagsError structure as a key-value pair table
+function M.TooManyTagsError(args)
+	assert(args, "You must provdide an argument table when creating TooManyTagsError")
 	local t = { 
 	}
 	asserts.AssertTooManyTagsError(t)
@@ -8326,15 +9157,18 @@ end
 
 --- Create a structure of type DescribeDocumentPermissionRequest
 --  
--- @param _PermissionType [DocumentPermissionType] <p>The permission type for the document. The permission type can be <i>Share</i>.</p>
--- @param _Name [DocumentName] <p>The name of the document for which you are the owner.</p>
--- Required parameter: Name
--- Required parameter: PermissionType
-function M.DescribeDocumentPermissionRequest(_PermissionType, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentPermissionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PermissionType [DocumentPermissionType] <p>The permission type for the document. The permission type can be <i>Share</i>.</p>
+-- * Name [DocumentName] <p>The name of the document for which you are the owner.</p>
+-- Required key: Name
+-- Required key: PermissionType
+-- @return DescribeDocumentPermissionRequest structure as a key-value pair table
+function M.DescribeDocumentPermissionRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDocumentPermissionRequest")
 	local t = { 
-		["PermissionType"] = _PermissionType,
-		["Name"] = _Name,
+		["PermissionType"] = args["PermissionType"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDescribeDocumentPermissionRequest(t)
 	return t
@@ -8353,11 +9187,14 @@ end
 
 --- Create a structure of type DocumentPermissionLimit
 -- <p>The document cannot be shared with more AWS user accounts. You can share a document with a maximum of 20 accounts. You can publicly share up to five documents. If you need to increase this limit, contact AWS Support.</p>
--- @param _Message [String] 
-function M.DocumentPermissionLimit(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentPermissionLimit")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return DocumentPermissionLimit structure as a key-value pair table
+function M.DocumentPermissionLimit(args)
+	assert(args, "You must provdide an argument table when creating DocumentPermissionLimit")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDocumentPermissionLimit(t)
 	return t
@@ -8377,12 +9214,15 @@ end
 
 --- Create a structure of type DeleteDocumentRequest
 --  
--- @param _Name [DocumentName] <p>The name of the document.</p>
--- Required parameter: Name
-function M.DeleteDocumentRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDocumentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DocumentName] <p>The name of the document.</p>
+-- Required key: Name
+-- @return DeleteDocumentRequest structure as a key-value pair table
+function M.DeleteDocumentRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDocumentRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteDocumentRequest(t)
 	return t
@@ -8402,13 +9242,16 @@ end
 
 --- Create a structure of type DescribeInstancePatchStatesForPatchGroupResult
 --  
--- @param _InstancePatchStates [InstancePatchStatesList] <p>The high-level patch state for the requested instances. </p>
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
-function M.DescribeInstancePatchStatesForPatchGroupResult(_InstancePatchStates, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancePatchStatesForPatchGroupResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstancePatchStates [InstancePatchStatesList] <p>The high-level patch state for the requested instances. </p>
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- @return DescribeInstancePatchStatesForPatchGroupResult structure as a key-value pair table
+function M.DescribeInstancePatchStatesForPatchGroupResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancePatchStatesForPatchGroupResult")
 	local t = { 
-		["InstancePatchStates"] = _InstancePatchStates,
-		["NextToken"] = _NextToken,
+		["InstancePatchStates"] = args["InstancePatchStates"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeInstancePatchStatesForPatchGroupResult(t)
 	return t
@@ -8427,11 +9270,14 @@ end
 
 --- Create a structure of type InvalidUpdate
 -- <p>The update is not valid.</p>
--- @param _Message [String] 
-function M.InvalidUpdate(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidUpdate structure as a key-value pair table
+function M.InvalidUpdate(args)
+	assert(args, "You must provdide an argument table when creating InvalidUpdate")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidUpdate(t)
 	return t
@@ -8450,11 +9296,14 @@ end
 
 --- Create a structure of type InvalidAllowedPatternException
 -- <p>The request does not meet the regular expression requirement.</p>
--- @param _message [String] <p>The request does not meet the regular expression requirement.</p>
-function M.InvalidAllowedPatternException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAllowedPatternException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The request does not meet the regular expression requirement.</p>
+-- @return InvalidAllowedPatternException structure as a key-value pair table
+function M.InvalidAllowedPatternException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAllowedPatternException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidAllowedPatternException(t)
 	return t
@@ -8476,15 +9325,18 @@ end
 
 --- Create a structure of type InventoryItemAttribute
 -- <p>Attributes are the entries within the inventory item content. It contains name and value.</p>
--- @param _DataType [InventoryAttributeDataType] <p>The data type of the inventory item attribute. </p>
--- @param _Name [InventoryItemAttributeName] <p>Name of the inventory item attribute.</p>
--- Required parameter: Name
--- Required parameter: DataType
-function M.InventoryItemAttribute(_DataType, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryItemAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DataType [InventoryAttributeDataType] <p>The data type of the inventory item attribute. </p>
+-- * Name [InventoryItemAttributeName] <p>Name of the inventory item attribute.</p>
+-- Required key: Name
+-- Required key: DataType
+-- @return InventoryItemAttribute structure as a key-value pair table
+function M.InventoryItemAttribute(args)
+	assert(args, "You must provdide an argument table when creating InventoryItemAttribute")
 	local t = { 
-		["DataType"] = _DataType,
-		["Name"] = _Name,
+		["DataType"] = args["DataType"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertInventoryItemAttribute(t)
 	return t
@@ -8509,23 +9361,26 @@ end
 
 --- Create a structure of type UpdateMaintenanceWindowResult
 --  
--- @param _Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
--- @param _Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
--- @param _Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
--- @param _Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Window is enabled.</p>
--- @param _AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the created Maintenance Window.</p>
--- @param _Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
-function M.UpdateMaintenanceWindowResult(_Cutoff, _Name, _Schedule, _Enabled, _AllowUnassociatedTargets, _WindowId, _Duration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMaintenanceWindowResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
+-- * Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
+-- * Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
+-- * Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Window is enabled.</p>
+-- * AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
+-- * WindowId [MaintenanceWindowId] <p>The ID of the created Maintenance Window.</p>
+-- * Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
+-- @return UpdateMaintenanceWindowResult structure as a key-value pair table
+function M.UpdateMaintenanceWindowResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateMaintenanceWindowResult")
 	local t = { 
-		["Cutoff"] = _Cutoff,
-		["Name"] = _Name,
-		["Schedule"] = _Schedule,
-		["Enabled"] = _Enabled,
-		["AllowUnassociatedTargets"] = _AllowUnassociatedTargets,
-		["WindowId"] = _WindowId,
-		["Duration"] = _Duration,
+		["Cutoff"] = args["Cutoff"],
+		["Name"] = args["Name"],
+		["Schedule"] = args["Schedule"],
+		["Enabled"] = args["Enabled"],
+		["AllowUnassociatedTargets"] = args["AllowUnassociatedTargets"],
+		["WindowId"] = args["WindowId"],
+		["Duration"] = args["Duration"],
 	}
 	asserts.AssertUpdateMaintenanceWindowResult(t)
 	return t
@@ -8549,20 +9404,23 @@ end
 
 --- Create a structure of type CreateActivationRequest
 --  
--- @param _DefaultInstanceName [DefaultInstanceName] <p>The name of the registered, managed instance as it will appear in the Amazon EC2 console or when you use the AWS command line tools to list EC2 resources.</p>
--- @param _IamRole [IamRole] <p>The Amazon Identity and Access Management (IAM) role that you want to assign to the managed instance. </p>
--- @param _ExpirationDate [ExpirationDate] <p>The date by which this activation request should expire. The default value is 24 hours.</p>
--- @param _Description [ActivationDescription] <p>A userdefined description of the resource that you want to register with Amazon EC2. </p>
--- @param _RegistrationLimit [RegistrationLimit] <p>Specify the maximum number of managed instances you want to register. The default value is 1 instance.</p>
--- Required parameter: IamRole
-function M.CreateActivationRequest(_DefaultInstanceName, _IamRole, _ExpirationDate, _Description, _RegistrationLimit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateActivationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DefaultInstanceName [DefaultInstanceName] <p>The name of the registered, managed instance as it will appear in the Amazon EC2 console or when you use the AWS command line tools to list EC2 resources.</p>
+-- * IamRole [IamRole] <p>The Amazon Identity and Access Management (IAM) role that you want to assign to the managed instance. </p>
+-- * ExpirationDate [ExpirationDate] <p>The date by which this activation request should expire. The default value is 24 hours.</p>
+-- * Description [ActivationDescription] <p>A userdefined description of the resource that you want to register with Amazon EC2. </p>
+-- * RegistrationLimit [RegistrationLimit] <p>Specify the maximum number of managed instances you want to register. The default value is 1 instance.</p>
+-- Required key: IamRole
+-- @return CreateActivationRequest structure as a key-value pair table
+function M.CreateActivationRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateActivationRequest")
 	local t = { 
-		["DefaultInstanceName"] = _DefaultInstanceName,
-		["IamRole"] = _IamRole,
-		["ExpirationDate"] = _ExpirationDate,
-		["Description"] = _Description,
-		["RegistrationLimit"] = _RegistrationLimit,
+		["DefaultInstanceName"] = args["DefaultInstanceName"],
+		["IamRole"] = args["IamRole"],
+		["ExpirationDate"] = args["ExpirationDate"],
+		["Description"] = args["Description"],
+		["RegistrationLimit"] = args["RegistrationLimit"],
 	}
 	asserts.AssertCreateActivationRequest(t)
 	return t
@@ -8581,11 +9439,14 @@ end
 
 --- Create a structure of type DescribeAssociationResult
 --  
--- @param _AssociationDescription [AssociationDescription] <p>Information about the association.</p>
-function M.DescribeAssociationResult(_AssociationDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssociationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssociationDescription [AssociationDescription] <p>Information about the association.</p>
+-- @return DescribeAssociationResult structure as a key-value pair table
+function M.DescribeAssociationResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeAssociationResult")
 	local t = { 
-		["AssociationDescription"] = _AssociationDescription,
+		["AssociationDescription"] = args["AssociationDescription"],
 	}
 	asserts.AssertDescribeAssociationResult(t)
 	return t
@@ -8605,13 +9466,16 @@ end
 
 --- Create a structure of type InventoryResultEntity
 -- <p>Inventory query results.</p>
--- @param _Data [InventoryResultItemMap] <p>The data section in the inventory result entity json.</p>
--- @param _Id [InventoryResultEntityId] <p>ID of the inventory result entity. For example, for managed instance inventory the result will be the managed instance ID. For EC2 instance inventory, the result will be the instance ID. </p>
-function M.InventoryResultEntity(_Data, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryResultEntity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Data [InventoryResultItemMap] <p>The data section in the inventory result entity json.</p>
+-- * Id [InventoryResultEntityId] <p>ID of the inventory result entity. For example, for managed instance inventory the result will be the managed instance ID. For EC2 instance inventory, the result will be the instance ID. </p>
+-- @return InventoryResultEntity structure as a key-value pair table
+function M.InventoryResultEntity(args)
+	assert(args, "You must provdide an argument table when creating InventoryResultEntity")
 	local t = { 
-		["Data"] = _Data,
-		["Id"] = _Id,
+		["Data"] = args["Data"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertInventoryResultEntity(t)
 	return t
@@ -8631,13 +9495,16 @@ end
 
 --- Create a structure of type DescribeParametersResult
 --  
--- @param _NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
--- @param _Parameters [ParameterMetadataList] <p>Parameters returned by the request.</p>
-function M.DescribeParametersResult(_NextToken, _Parameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParametersResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
+-- * Parameters [ParameterMetadataList] <p>Parameters returned by the request.</p>
+-- @return DescribeParametersResult structure as a key-value pair table
+function M.DescribeParametersResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeParametersResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Parameters"] = _Parameters,
+		["NextToken"] = args["NextToken"],
+		["Parameters"] = args["Parameters"],
 	}
 	asserts.AssertDescribeParametersResult(t)
 	return t
@@ -8656,11 +9523,14 @@ end
 
 --- Create a structure of type UnsupportedPlatformType
 -- <p>The document does not support the platform type of the given instance ID(s). For example, you sent an document for a Windows instance to a Linux instance.</p>
--- @param _Message [String] 
-function M.UnsupportedPlatformType(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedPlatformType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return UnsupportedPlatformType structure as a key-value pair table
+function M.UnsupportedPlatformType(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedPlatformType")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertUnsupportedPlatformType(t)
 	return t
@@ -8679,11 +9549,14 @@ end
 
 --- Create a structure of type DescribeDocumentResult
 --  
--- @param _Document [DocumentDescription] <p>Information about the SSM document.</p>
-function M.DescribeDocumentResult(_Document, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDocumentResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Document [DocumentDescription] <p>Information about the SSM document.</p>
+-- @return DescribeDocumentResult structure as a key-value pair table
+function M.DescribeDocumentResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeDocumentResult")
 	local t = { 
-		["Document"] = _Document,
+		["Document"] = args["Document"],
 	}
 	asserts.AssertDescribeDocumentResult(t)
 	return t
@@ -8702,11 +9575,14 @@ end
 
 --- Create a structure of type DoesNotExistException
 -- <p>Error returned when the ID specified for a resource (e.g. a Maintenance Window) doesn't exist.</p>
--- @param _Message [String] 
-function M.DoesNotExistException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return DoesNotExistException structure as a key-value pair table
+function M.DoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating DoesNotExistException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDoesNotExistException(t)
 	return t
@@ -8725,11 +9601,14 @@ end
 
 --- Create a structure of type ParameterLimitExceeded
 -- <p>You have exceeded the number of parameters for this AWS account. Delete one or more parameters and try again.</p>
--- @param _message [String] 
-function M.ParameterLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return ParameterLimitExceeded structure as a key-value pair table
+function M.ParameterLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating ParameterLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertParameterLimitExceeded(t)
 	return t
@@ -8748,11 +9627,14 @@ end
 
 --- Create a structure of type InstanceAssociationOutputUrl
 -- <p>The URL of Amazon S3 bucket where you want to store the results of this request.</p>
--- @param _S3OutputUrl [S3OutputUrl] <p>The URL of Amazon S3 bucket where you want to store the results of this request.</p>
-function M.InstanceAssociationOutputUrl(_S3OutputUrl, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAssociationOutputUrl")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * S3OutputUrl [S3OutputUrl] <p>The URL of Amazon S3 bucket where you want to store the results of this request.</p>
+-- @return InstanceAssociationOutputUrl structure as a key-value pair table
+function M.InstanceAssociationOutputUrl(args)
+	assert(args, "You must provdide an argument table when creating InstanceAssociationOutputUrl")
 	local t = { 
-		["S3OutputUrl"] = _S3OutputUrl,
+		["S3OutputUrl"] = args["S3OutputUrl"],
 	}
 	asserts.AssertInstanceAssociationOutputUrl(t)
 	return t
@@ -8772,12 +9654,15 @@ end
 
 --- Create a structure of type DeleteParametersRequest
 --  
--- @param _Names [ParameterNameList] <p>The names of the parameters to delete.</p>
--- Required parameter: Names
-function M.DeleteParametersRequest(_Names, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParametersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Names [ParameterNameList] <p>The names of the parameters to delete.</p>
+-- Required key: Names
+-- @return DeleteParametersRequest structure as a key-value pair table
+function M.DeleteParametersRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteParametersRequest")
 	local t = { 
-		["Names"] = _Names,
+		["Names"] = args["Names"],
 	}
 	asserts.AssertDeleteParametersRequest(t)
 	return t
@@ -8803,24 +9688,27 @@ end
 
 --- Create a structure of type CreatePatchBaselineRequest
 --  
--- @param _Description [BaselineDescription] <p>A description of the patch baseline.</p>
--- @param _RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
--- @param _GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
--- @param _ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
--- @param _ClientToken [ClientToken] <p>User-provided idempotency token.</p>
--- @param _ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
--- @param _Name [BaselineName] <p>The name of the patch baseline.</p>
--- Required parameter: Name
-function M.CreatePatchBaselineRequest(_Description, _RejectedPatches, _GlobalFilters, _ApprovalRules, _ClientToken, _ApprovedPatches, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePatchBaselineRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [BaselineDescription] <p>A description of the patch baseline.</p>
+-- * RejectedPatches [PatchIdList] <p>A list of explicitly rejected patches for the baseline.</p>
+-- * GlobalFilters [PatchFilterGroup] <p>A set of global filters used to exclude patches from the baseline.</p>
+-- * ApprovalRules [PatchRuleGroup] <p>A set of rules used to include patches in the baseline.</p>
+-- * ClientToken [ClientToken] <p>User-provided idempotency token.</p>
+-- * ApprovedPatches [PatchIdList] <p>A list of explicitly approved patches for the baseline.</p>
+-- * Name [BaselineName] <p>The name of the patch baseline.</p>
+-- Required key: Name
+-- @return CreatePatchBaselineRequest structure as a key-value pair table
+function M.CreatePatchBaselineRequest(args)
+	assert(args, "You must provdide an argument table when creating CreatePatchBaselineRequest")
 	local t = { 
-		["Description"] = _Description,
-		["RejectedPatches"] = _RejectedPatches,
-		["GlobalFilters"] = _GlobalFilters,
-		["ApprovalRules"] = _ApprovalRules,
-		["ClientToken"] = _ClientToken,
-		["ApprovedPatches"] = _ApprovedPatches,
-		["Name"] = _Name,
+		["Description"] = args["Description"],
+		["RejectedPatches"] = args["RejectedPatches"],
+		["GlobalFilters"] = args["GlobalFilters"],
+		["ApprovalRules"] = args["ApprovalRules"],
+		["ClientToken"] = args["ClientToken"],
+		["ApprovedPatches"] = args["ApprovedPatches"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreatePatchBaselineRequest(t)
 	return t
@@ -8841,14 +9729,17 @@ end
 
 --- Create a structure of type GetDocumentRequest
 --  
--- @param _Name [DocumentARN] <p>The name of the SSM document.</p>
--- @param _DocumentVersion [DocumentVersion] <p>The document version for which you want information.</p>
--- Required parameter: Name
-function M.GetDocumentRequest(_Name, _DocumentVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDocumentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DocumentARN] <p>The name of the SSM document.</p>
+-- * DocumentVersion [DocumentVersion] <p>The document version for which you want information.</p>
+-- Required key: Name
+-- @return GetDocumentRequest structure as a key-value pair table
+function M.GetDocumentRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDocumentRequest")
 	local t = { 
-		["Name"] = _Name,
-		["DocumentVersion"] = _DocumentVersion,
+		["Name"] = args["Name"],
+		["DocumentVersion"] = args["DocumentVersion"],
 	}
 	asserts.AssertGetDocumentRequest(t)
 	return t
@@ -8867,11 +9758,14 @@ end
 
 --- Create a structure of type IdempotentParameterMismatch
 -- <p>Error returned when an idempotent operation is retried and the parameters don't match the original call to the API with the same idempotency token. </p>
--- @param _Message [String] 
-function M.IdempotentParameterMismatch(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdempotentParameterMismatch")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return IdempotentParameterMismatch structure as a key-value pair table
+function M.IdempotentParameterMismatch(args)
+	assert(args, "You must provdide an argument table when creating IdempotentParameterMismatch")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertIdempotentParameterMismatch(t)
 	return t
@@ -8891,12 +9785,15 @@ end
 
 --- Create a structure of type DescribePatchGroupStateRequest
 --  
--- @param _PatchGroup [PatchGroup] <p>The name of the patch group whose patch snapshot should be retrieved.</p>
--- Required parameter: PatchGroup
-function M.DescribePatchGroupStateRequest(_PatchGroup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePatchGroupStateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PatchGroup [PatchGroup] <p>The name of the patch group whose patch snapshot should be retrieved.</p>
+-- Required key: PatchGroup
+-- @return DescribePatchGroupStateRequest structure as a key-value pair table
+function M.DescribePatchGroupStateRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribePatchGroupStateRequest")
 	local t = { 
-		["PatchGroup"] = _PatchGroup,
+		["PatchGroup"] = args["PatchGroup"],
 	}
 	asserts.AssertDescribePatchGroupStateRequest(t)
 	return t
@@ -8918,17 +9815,20 @@ end
 
 --- Create a structure of type PatchBaselineIdentity
 -- <p>Defines the basic information about a patch baseline.</p>
--- @param _BaselineName [BaselineName] <p>The name of the patch baseline.</p>
--- @param _DefaultBaseline [DefaultBaseline] <p>Whether this is the default baseline.</p>
--- @param _BaselineDescription [BaselineDescription] <p>The description of the patch baseline.</p>
--- @param _BaselineId [BaselineId] <p>The ID of the patch baseline.</p>
-function M.PatchBaselineIdentity(_BaselineName, _DefaultBaseline, _BaselineDescription, _BaselineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PatchBaselineIdentity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BaselineName [BaselineName] <p>The name of the patch baseline.</p>
+-- * DefaultBaseline [DefaultBaseline] <p>Whether this is the default baseline.</p>
+-- * BaselineDescription [BaselineDescription] <p>The description of the patch baseline.</p>
+-- * BaselineId [BaselineId] <p>The ID of the patch baseline.</p>
+-- @return PatchBaselineIdentity structure as a key-value pair table
+function M.PatchBaselineIdentity(args)
+	assert(args, "You must provdide an argument table when creating PatchBaselineIdentity")
 	local t = { 
-		["BaselineName"] = _BaselineName,
-		["DefaultBaseline"] = _DefaultBaseline,
-		["BaselineDescription"] = _BaselineDescription,
-		["BaselineId"] = _BaselineId,
+		["BaselineName"] = args["BaselineName"],
+		["DefaultBaseline"] = args["DefaultBaseline"],
+		["BaselineDescription"] = args["BaselineDescription"],
+		["BaselineId"] = args["BaselineId"],
 	}
 	asserts.AssertPatchBaselineIdentity(t)
 	return t
@@ -8949,15 +9849,18 @@ end
 
 --- Create a structure of type DescribeActivationsRequest
 --  
--- @param _NextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results. </p>
--- @param _MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
--- @param _Filters [DescribeActivationsFilterList] <p>A filter to view information about your activations.</p>
-function M.DescribeActivationsRequest(_NextToken, _MaxResults, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>A token to start the list. Use this token to get the next set of results. </p>
+-- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
+-- * Filters [DescribeActivationsFilterList] <p>A filter to view information about your activations.</p>
+-- @return DescribeActivationsRequest structure as a key-value pair table
+function M.DescribeActivationsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeActivationsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["Filters"] = _Filters,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeActivationsRequest(t)
 	return t
@@ -8976,11 +9879,14 @@ end
 
 --- Create a structure of type RegisterTargetWithMaintenanceWindowResult
 --  
--- @param _WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target definition in this Maintenance Window.</p>
-function M.RegisterTargetWithMaintenanceWindowResult(_WindowTargetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTargetWithMaintenanceWindowResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target definition in this Maintenance Window.</p>
+-- @return RegisterTargetWithMaintenanceWindowResult structure as a key-value pair table
+function M.RegisterTargetWithMaintenanceWindowResult(args)
+	assert(args, "You must provdide an argument table when creating RegisterTargetWithMaintenanceWindowResult")
 	local t = { 
-		["WindowTargetId"] = _WindowTargetId,
+		["WindowTargetId"] = args["WindowTargetId"],
 	}
 	asserts.AssertRegisterTargetWithMaintenanceWindowResult(t)
 	return t
@@ -9002,17 +9908,20 @@ end
 
 --- Create a structure of type DocumentParameter
 -- <p>Parameters specified in a System Manager document that execute on the server when the command is run. </p>
--- @param _DefaultValue [DocumentParameterDefaultValue] <p>If specified, the default values for the parameters. Parameters without a default value are required. Parameters with a default value are optional.</p>
--- @param _Type [DocumentParameterType] <p>The type of parameter. The type can be either String or StringList.</p>
--- @param _Name [DocumentParameterName] <p>The name of the parameter.</p>
--- @param _Description [DocumentParameterDescrption] <p>A description of what the parameter does, how to use it, the default value, and whether or not the parameter is optional.</p>
-function M.DocumentParameter(_DefaultValue, _Type, _Name, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentParameter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DefaultValue [DocumentParameterDefaultValue] <p>If specified, the default values for the parameters. Parameters without a default value are required. Parameters with a default value are optional.</p>
+-- * Type [DocumentParameterType] <p>The type of parameter. The type can be either String or StringList.</p>
+-- * Name [DocumentParameterName] <p>The name of the parameter.</p>
+-- * Description [DocumentParameterDescrption] <p>A description of what the parameter does, how to use it, the default value, and whether or not the parameter is optional.</p>
+-- @return DocumentParameter structure as a key-value pair table
+function M.DocumentParameter(args)
+	assert(args, "You must provdide an argument table when creating DocumentParameter")
 	local t = { 
-		["DefaultValue"] = _DefaultValue,
-		["Type"] = _Type,
-		["Name"] = _Name,
-		["Description"] = _Description,
+		["DefaultValue"] = args["DefaultValue"],
+		["Type"] = args["Type"],
+		["Name"] = args["Name"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertDocumentParameter(t)
 	return t
@@ -9031,11 +9940,14 @@ end
 
 --- Create a structure of type InvalidDocumentSchemaVersion
 -- <p>The version of the document schema is not supported.</p>
--- @param _Message [String] 
-function M.InvalidDocumentSchemaVersion(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDocumentSchemaVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidDocumentSchemaVersion structure as a key-value pair table
+function M.InvalidDocumentSchemaVersion(args)
+	assert(args, "You must provdide an argument table when creating InvalidDocumentSchemaVersion")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidDocumentSchemaVersion(t)
 	return t
@@ -9054,11 +9966,14 @@ end
 
 --- Create a structure of type InvalidDocumentContent
 -- <p>The content for the document is not valid.</p>
--- @param _Message [String] <p>A description of the validation error.</p>
-function M.InvalidDocumentContent(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDocumentContent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>A description of the validation error.</p>
+-- @return InvalidDocumentContent structure as a key-value pair table
+function M.InvalidDocumentContent(args)
+	assert(args, "You must provdide an argument table when creating InvalidDocumentContent")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidDocumentContent(t)
 	return t
@@ -9077,11 +9992,14 @@ end
 
 --- Create a structure of type InvalidKeyId
 -- <p>The query key ID is not valid.</p>
--- @param _message [String] 
-function M.InvalidKeyId(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidKeyId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return InvalidKeyId structure as a key-value pair table
+function M.InvalidKeyId(args)
+	assert(args, "You must provdide an argument table when creating InvalidKeyId")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidKeyId(t)
 	return t
@@ -9099,8 +10017,11 @@ end
 
 --- Create a structure of type PutParameterResult
 --  
-function M.PutParameterResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutParameterResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PutParameterResult structure as a key-value pair table
+function M.PutParameterResult(args)
+	assert(args, "You must provdide an argument table when creating PutParameterResult")
 	local t = { 
 	}
 	asserts.AssertPutParameterResult(t)
@@ -9127,24 +10048,27 @@ end
 
 --- Create a structure of type UpdateMaintenanceWindowRequest
 --  
--- @param _Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
--- @param _Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
--- @param _Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
--- @param _Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Window is enabled.</p>
--- @param _AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
--- @param _WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window to update.</p>
--- @param _Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
--- Required parameter: WindowId
-function M.UpdateMaintenanceWindowRequest(_Cutoff, _Name, _Schedule, _Enabled, _AllowUnassociatedTargets, _WindowId, _Duration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMaintenanceWindowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cutoff [MaintenanceWindowCutoff] <p>The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.</p>
+-- * Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
+-- * Schedule [MaintenanceWindowSchedule] <p>The schedule of the Maintenance Window in the form of a cron or rate expression.</p>
+-- * Enabled [MaintenanceWindowEnabled] <p>Whether the Maintenance Window is enabled.</p>
+-- * AllowUnassociatedTargets [MaintenanceWindowAllowUnassociatedTargets] <p>Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.</p>
+-- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window to update.</p>
+-- * Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
+-- Required key: WindowId
+-- @return UpdateMaintenanceWindowRequest structure as a key-value pair table
+function M.UpdateMaintenanceWindowRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateMaintenanceWindowRequest")
 	local t = { 
-		["Cutoff"] = _Cutoff,
-		["Name"] = _Name,
-		["Schedule"] = _Schedule,
-		["Enabled"] = _Enabled,
-		["AllowUnassociatedTargets"] = _AllowUnassociatedTargets,
-		["WindowId"] = _WindowId,
-		["Duration"] = _Duration,
+		["Cutoff"] = args["Cutoff"],
+		["Name"] = args["Name"],
+		["Schedule"] = args["Schedule"],
+		["Enabled"] = args["Enabled"],
+		["AllowUnassociatedTargets"] = args["AllowUnassociatedTargets"],
+		["WindowId"] = args["WindowId"],
+		["Duration"] = args["Duration"],
 	}
 	asserts.AssertUpdateMaintenanceWindowRequest(t)
 	return t

@@ -33,8 +33,11 @@ end
 
 --- Create a structure of type InvalidRequestException
 -- <p>The request is missing required parameters or has invalid parameters.</p>
-function M.InvalidRequestException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRequestException structure as a key-value pair table
+function M.InvalidRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRequestException")
 	local t = { 
 	}
 	asserts.AssertInvalidRequestException(t)
@@ -56,15 +59,18 @@ end
 
 --- Create a structure of type AnnotationValue
 -- <p>Value of a segment annotation. Has one of three value types: Number, Boolean or String.</p>
--- @param _NumberValue [NullableDouble] <p>Value for a Number annotation.</p>
--- @param _BooleanValue [NullableBoolean] <p>Value for a Boolean annotation.</p>
--- @param _StringValue [String] <p>Value for a String annotation.</p>
-function M.AnnotationValue(_NumberValue, _BooleanValue, _StringValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AnnotationValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NumberValue [NullableDouble] <p>Value for a Number annotation.</p>
+-- * BooleanValue [NullableBoolean] <p>Value for a Boolean annotation.</p>
+-- * StringValue [String] <p>Value for a String annotation.</p>
+-- @return AnnotationValue structure as a key-value pair table
+function M.AnnotationValue(args)
+	assert(args, "You must provdide an argument table when creating AnnotationValue")
 	local t = { 
-		["NumberValue"] = _NumberValue,
-		["BooleanValue"] = _BooleanValue,
-		["StringValue"] = _StringValue,
+		["NumberValue"] = args["NumberValue"],
+		["BooleanValue"] = args["BooleanValue"],
+		["StringValue"] = args["StringValue"],
 	}
 	asserts.AssertAnnotationValue(t)
 	return t
@@ -84,13 +90,16 @@ end
 
 --- Create a structure of type FaultStatistics
 -- <p>Information about requests that failed with a 5xx Server Error status code.</p>
--- @param _OtherCount [NullableLong] <p>The number of requests that failed with untracked 5xx Server Error status codes.</p>
--- @param _TotalCount [NullableLong] <p>The total number of requests that failed with a 5xx Server Error status code.</p>
-function M.FaultStatistics(_OtherCount, _TotalCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FaultStatistics")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OtherCount [NullableLong] <p>The number of requests that failed with untracked 5xx Server Error status codes.</p>
+-- * TotalCount [NullableLong] <p>The total number of requests that failed with a 5xx Server Error status code.</p>
+-- @return FaultStatistics structure as a key-value pair table
+function M.FaultStatistics(args)
+	assert(args, "You must provdide an argument table when creating FaultStatistics")
 	local t = { 
-		["OtherCount"] = _OtherCount,
-		["TotalCount"] = _TotalCount,
+		["OtherCount"] = args["OtherCount"],
+		["TotalCount"] = args["TotalCount"],
 	}
 	asserts.AssertFaultStatistics(t)
 	return t
@@ -110,13 +119,16 @@ end
 
 --- Create a structure of type TraceUser
 -- <p>Information about a user recorded in segment documents.</p>
--- @param _UserName [String] <p>The user's name.</p>
--- @param _ServiceIds [ServiceIds] <p>Services that the user's request hit.</p>
-function M.TraceUser(_UserName, _ServiceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TraceUser")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [String] <p>The user's name.</p>
+-- * ServiceIds [ServiceIds] <p>Services that the user's request hit.</p>
+-- @return TraceUser structure as a key-value pair table
+function M.TraceUser(args)
+	assert(args, "You must provdide an argument table when creating TraceUser")
 	local t = { 
-		["UserName"] = _UserName,
-		["ServiceIds"] = _ServiceIds,
+		["UserName"] = args["UserName"],
+		["ServiceIds"] = args["ServiceIds"],
 	}
 	asserts.AssertTraceUser(t)
 	return t
@@ -141,21 +153,24 @@ end
 
 --- Create a structure of type GetTraceSummariesRequest
 --  
--- @param _FilterExpression [FilterExpression] <p>Specify a filter expression to retrieve trace summaries for services or requests that meet certain requirements.</p>
--- @param _EndTime [Timestamp] <p>The end of the time frame for which to retrieve traces.</p>
--- @param _NextToken [String] <p>Specify the pagination token returned by a previous request to retrieve the next page of results.</p>
--- @param _StartTime [Timestamp] <p>The start of the time frame for which to retrieve traces.</p>
--- @param _Sampling [NullableBoolean] <p>Set to <code>true</code> to get summaries for only a subset of available traces.</p>
--- Required parameter: StartTime
--- Required parameter: EndTime
-function M.GetTraceSummariesRequest(_FilterExpression, _EndTime, _NextToken, _StartTime, _Sampling, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTraceSummariesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FilterExpression [FilterExpression] <p>Specify a filter expression to retrieve trace summaries for services or requests that meet certain requirements.</p>
+-- * EndTime [Timestamp] <p>The end of the time frame for which to retrieve traces.</p>
+-- * NextToken [String] <p>Specify the pagination token returned by a previous request to retrieve the next page of results.</p>
+-- * StartTime [Timestamp] <p>The start of the time frame for which to retrieve traces.</p>
+-- * Sampling [NullableBoolean] <p>Set to <code>true</code> to get summaries for only a subset of available traces.</p>
+-- Required key: StartTime
+-- Required key: EndTime
+-- @return GetTraceSummariesRequest structure as a key-value pair table
+function M.GetTraceSummariesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetTraceSummariesRequest")
 	local t = { 
-		["FilterExpression"] = _FilterExpression,
-		["EndTime"] = _EndTime,
-		["NextToken"] = _NextToken,
-		["StartTime"] = _StartTime,
-		["Sampling"] = _Sampling,
+		["FilterExpression"] = args["FilterExpression"],
+		["EndTime"] = args["EndTime"],
+		["NextToken"] = args["NextToken"],
+		["StartTime"] = args["StartTime"],
+		["Sampling"] = args["Sampling"],
 	}
 	asserts.AssertGetTraceSummariesRequest(t)
 	return t
@@ -186,35 +201,38 @@ end
 
 --- Create a structure of type Service
 -- <p>Information about an application that processed requests, users that made requests, or downstream services, resources and applications that an application used.</p>
--- @param _SummaryStatistics [ServiceStatistics] <p>Aggregated statistics for the service.</p>
--- @param _ReferenceId [NullableInteger] <p>Identifier for the service. Unique within the service map.</p>
--- @param _Name [String] <p>The canonical name of the service.</p>
--- @param _DurationHistogram [Histogram] <p>A histogram that maps the spread of service durations.</p>
--- @param _Root [NullableBoolean] <p>Indicates that the service was the first service to process a request.</p>
--- @param _ResponseTimeHistogram [Histogram] <p>A histogram that maps the spread of service response times.</p>
--- @param _State [String] <p>The service's state.</p>
--- @param _Edges [EdgeList] <p>Connections to downstream services.</p>
--- @param _Names [ServiceNames] <p>A list of names for the service, including the canonical name.</p>
--- @param _StartTime [Timestamp] <p>The start time of the first segment that the service generated.</p>
--- @param _EndTime [Timestamp] <p>The end time of the last segment that the service generated.</p>
--- @param _Type [String] <p>The type of service.</p> <ul> <li> <p>AWS Resource - The type of an AWS resource. For example, <code>AWS::EC2::Instance</code> for a application running on Amazon EC2 or <code>AWS::DynamoDB::Table</code> for an Amazon DynamoDB table that the application used.</p> </li> <li> <p>AWS Service - The type of an AWS service. For example, <code>AWS::DynamoDB</code> for downstream calls to Amazon DynamoDB that didn't target a specific table.</p> </li> <li> <p> <code>client</code> - Represents the clients that sent requests to a root service.</p> </li> <li> <p> <code>remote</code> - A downstream service of indeterminate type.</p> </li> </ul>
--- @param _AccountId [String] <p>Identifier of the AWS account in which the service runs.</p>
-function M.Service(_SummaryStatistics, _ReferenceId, _Name, _DurationHistogram, _Root, _ResponseTimeHistogram, _State, _Edges, _Names, _StartTime, _EndTime, _Type, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Service")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SummaryStatistics [ServiceStatistics] <p>Aggregated statistics for the service.</p>
+-- * ReferenceId [NullableInteger] <p>Identifier for the service. Unique within the service map.</p>
+-- * Name [String] <p>The canonical name of the service.</p>
+-- * DurationHistogram [Histogram] <p>A histogram that maps the spread of service durations.</p>
+-- * Root [NullableBoolean] <p>Indicates that the service was the first service to process a request.</p>
+-- * ResponseTimeHistogram [Histogram] <p>A histogram that maps the spread of service response times.</p>
+-- * State [String] <p>The service's state.</p>
+-- * Edges [EdgeList] <p>Connections to downstream services.</p>
+-- * Names [ServiceNames] <p>A list of names for the service, including the canonical name.</p>
+-- * StartTime [Timestamp] <p>The start time of the first segment that the service generated.</p>
+-- * EndTime [Timestamp] <p>The end time of the last segment that the service generated.</p>
+-- * Type [String] <p>The type of service.</p> <ul> <li> <p>AWS Resource - The type of an AWS resource. For example, <code>AWS::EC2::Instance</code> for a application running on Amazon EC2 or <code>AWS::DynamoDB::Table</code> for an Amazon DynamoDB table that the application used.</p> </li> <li> <p>AWS Service - The type of an AWS service. For example, <code>AWS::DynamoDB</code> for downstream calls to Amazon DynamoDB that didn't target a specific table.</p> </li> <li> <p> <code>client</code> - Represents the clients that sent requests to a root service.</p> </li> <li> <p> <code>remote</code> - A downstream service of indeterminate type.</p> </li> </ul>
+-- * AccountId [String] <p>Identifier of the AWS account in which the service runs.</p>
+-- @return Service structure as a key-value pair table
+function M.Service(args)
+	assert(args, "You must provdide an argument table when creating Service")
 	local t = { 
-		["SummaryStatistics"] = _SummaryStatistics,
-		["ReferenceId"] = _ReferenceId,
-		["Name"] = _Name,
-		["DurationHistogram"] = _DurationHistogram,
-		["Root"] = _Root,
-		["ResponseTimeHistogram"] = _ResponseTimeHistogram,
-		["State"] = _State,
-		["Edges"] = _Edges,
-		["Names"] = _Names,
-		["StartTime"] = _StartTime,
-		["EndTime"] = _EndTime,
-		["Type"] = _Type,
-		["AccountId"] = _AccountId,
+		["SummaryStatistics"] = args["SummaryStatistics"],
+		["ReferenceId"] = args["ReferenceId"],
+		["Name"] = args["Name"],
+		["DurationHistogram"] = args["DurationHistogram"],
+		["Root"] = args["Root"],
+		["ResponseTimeHistogram"] = args["ResponseTimeHistogram"],
+		["State"] = args["State"],
+		["Edges"] = args["Edges"],
+		["Names"] = args["Names"],
+		["StartTime"] = args["StartTime"],
+		["EndTime"] = args["EndTime"],
+		["Type"] = args["Type"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertService(t)
 	return t
@@ -236,17 +254,20 @@ end
 
 --- Create a structure of type GetServiceGraphResult
 --  
--- @param _Services [ServiceList] <p>The services that have processed a traced request during the specified time frame.</p>
--- @param _EndTime [Timestamp] <p>The end of the time frame for which the graph was generated.</p>
--- @param _NextToken [String] <p>Pagination token. Not used.</p>
--- @param _StartTime [Timestamp] <p>The start of the time frame for which the graph was generated.</p>
-function M.GetServiceGraphResult(_Services, _EndTime, _NextToken, _StartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetServiceGraphResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Services [ServiceList] <p>The services that have processed a traced request during the specified time frame.</p>
+-- * EndTime [Timestamp] <p>The end of the time frame for which the graph was generated.</p>
+-- * NextToken [String] <p>Pagination token. Not used.</p>
+-- * StartTime [Timestamp] <p>The start of the time frame for which the graph was generated.</p>
+-- @return GetServiceGraphResult structure as a key-value pair table
+function M.GetServiceGraphResult(args)
+	assert(args, "You must provdide an argument table when creating GetServiceGraphResult")
 	local t = { 
-		["Services"] = _Services,
-		["EndTime"] = _EndTime,
-		["NextToken"] = _NextToken,
-		["StartTime"] = _StartTime,
+		["Services"] = args["Services"],
+		["EndTime"] = args["EndTime"],
+		["NextToken"] = args["NextToken"],
+		["StartTime"] = args["StartTime"],
 	}
 	asserts.AssertGetServiceGraphResult(t)
 	return t
@@ -269,17 +290,20 @@ end
 
 --- Create a structure of type GetServiceGraphRequest
 --  
--- @param _EndTime [Timestamp] <p>The end of the time frame for which to generate a graph.</p>
--- @param _NextToken [String] <p>Pagination token. Not used.</p>
--- @param _StartTime [Timestamp] <p>The start of the time frame for which to generate a graph.</p>
--- Required parameter: StartTime
--- Required parameter: EndTime
-function M.GetServiceGraphRequest(_EndTime, _NextToken, _StartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetServiceGraphRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndTime [Timestamp] <p>The end of the time frame for which to generate a graph.</p>
+-- * NextToken [String] <p>Pagination token. Not used.</p>
+-- * StartTime [Timestamp] <p>The start of the time frame for which to generate a graph.</p>
+-- Required key: StartTime
+-- Required key: EndTime
+-- @return GetServiceGraphRequest structure as a key-value pair table
+function M.GetServiceGraphRequest(args)
+	assert(args, "You must provdide an argument table when creating GetServiceGraphRequest")
 	local t = { 
-		["EndTime"] = _EndTime,
-		["NextToken"] = _NextToken,
-		["StartTime"] = _StartTime,
+		["EndTime"] = args["EndTime"],
+		["NextToken"] = args["NextToken"],
+		["StartTime"] = args["StartTime"],
 	}
 	asserts.AssertGetServiceGraphRequest(t)
 	return t
@@ -297,8 +321,11 @@ end
 
 --- Create a structure of type ThrottledException
 -- <p>The request exceeds the maximum number of requests per second.</p>
-function M.ThrottledException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThrottledException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ThrottledException structure as a key-value pair table
+function M.ThrottledException(args)
+	assert(args, "You must provdide an argument table when creating ThrottledException")
 	local t = { 
 	}
 	asserts.AssertThrottledException(t)
@@ -319,13 +346,16 @@ end
 
 --- Create a structure of type HistogramEntry
 -- <p>An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.</p>
--- @param _Count [Integer] <p>The prevalence of the entry.</p>
--- @param _Value [Double] <p>The value of the entry.</p>
-function M.HistogramEntry(_Count, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HistogramEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Count [Integer] <p>The prevalence of the entry.</p>
+-- * Value [Double] <p>The value of the entry.</p>
+-- @return HistogramEntry structure as a key-value pair table
+function M.HistogramEntry(args)
+	assert(args, "You must provdide an argument table when creating HistogramEntry")
 	local t = { 
-		["Count"] = _Count,
-		["Value"] = _Value,
+		["Count"] = args["Count"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertHistogramEntry(t)
 	return t
@@ -347,17 +377,20 @@ end
 
 --- Create a structure of type GetTraceSummariesResult
 --  
--- @param _TraceSummaries [TraceSummaryList] <p>Trace IDs and metadata for traces that were found in the specified time frame.</p>
--- @param _NextToken [String] <p>If the requested time frame contained more than one page of results, you can use this token to retrieve the next page. The first page contains the most most recent results, closest to the end of the time frame.</p>
--- @param _ApproximateTime [Timestamp] <p>The start time of this page of results.</p>
--- @param _TracesProcessedCount [NullableLong] <p>The number of traces that were processed to get this set of summaries.</p>
-function M.GetTraceSummariesResult(_TraceSummaries, _NextToken, _ApproximateTime, _TracesProcessedCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTraceSummariesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TraceSummaries [TraceSummaryList] <p>Trace IDs and metadata for traces that were found in the specified time frame.</p>
+-- * NextToken [String] <p>If the requested time frame contained more than one page of results, you can use this token to retrieve the next page. The first page contains the most most recent results, closest to the end of the time frame.</p>
+-- * ApproximateTime [Timestamp] <p>The start time of this page of results.</p>
+-- * TracesProcessedCount [NullableLong] <p>The number of traces that were processed to get this set of summaries.</p>
+-- @return GetTraceSummariesResult structure as a key-value pair table
+function M.GetTraceSummariesResult(args)
+	assert(args, "You must provdide an argument table when creating GetTraceSummariesResult")
 	local t = { 
-		["TraceSummaries"] = _TraceSummaries,
-		["NextToken"] = _NextToken,
-		["ApproximateTime"] = _ApproximateTime,
-		["TracesProcessedCount"] = _TracesProcessedCount,
+		["TraceSummaries"] = args["TraceSummaries"],
+		["NextToken"] = args["NextToken"],
+		["ApproximateTime"] = args["ApproximateTime"],
+		["TracesProcessedCount"] = args["TracesProcessedCount"],
 	}
 	asserts.AssertGetTraceSummariesResult(t)
 	return t
@@ -380,19 +413,22 @@ end
 
 --- Create a structure of type Http
 -- <p>Information about an HTTP request.</p>
--- @param _HttpStatus [NullableInteger] <p>The response status.</p>
--- @param _ClientIp [String] <p>The IP address of the requestor.</p>
--- @param _HttpURL [String] <p>The request URL.</p>
--- @param _UserAgent [String] <p>The request's user agent string.</p>
--- @param _HttpMethod [String] <p>The request method.</p>
-function M.Http(_HttpStatus, _ClientIp, _HttpURL, _UserAgent, _HttpMethod, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Http")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HttpStatus [NullableInteger] <p>The response status.</p>
+-- * ClientIp [String] <p>The IP address of the requestor.</p>
+-- * HttpURL [String] <p>The request URL.</p>
+-- * UserAgent [String] <p>The request's user agent string.</p>
+-- * HttpMethod [String] <p>The request method.</p>
+-- @return Http structure as a key-value pair table
+function M.Http(args)
+	assert(args, "You must provdide an argument table when creating Http")
 	local t = { 
-		["HttpStatus"] = _HttpStatus,
-		["ClientIp"] = _ClientIp,
-		["HttpURL"] = _HttpURL,
-		["UserAgent"] = _UserAgent,
-		["HttpMethod"] = _HttpMethod,
+		["HttpStatus"] = args["HttpStatus"],
+		["ClientIp"] = args["ClientIp"],
+		["HttpURL"] = args["HttpURL"],
+		["UserAgent"] = args["UserAgent"],
+		["HttpMethod"] = args["HttpMethod"],
 	}
 	asserts.AssertHttp(t)
 	return t
@@ -413,15 +449,18 @@ end
 
 --- Create a structure of type Trace
 -- <p>A collection of segment documents with matching trace IDs.</p>
--- @param _Duration [NullableDouble] <p>The length of time in seconds between the start time of the root segment and the end time of the last segment that completed.</p>
--- @param _Segments [SegmentList] <p>Segment documents for the segments and subsegments that comprise the trace.</p>
--- @param _Id [TraceId] <p>The unique identifier for the request that generated the trace's segments and subsegments.</p>
-function M.Trace(_Duration, _Segments, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Trace")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Duration [NullableDouble] <p>The length of time in seconds between the start time of the root segment and the end time of the last segment that completed.</p>
+-- * Segments [SegmentList] <p>Segment documents for the segments and subsegments that comprise the trace.</p>
+-- * Id [TraceId] <p>The unique identifier for the request that generated the trace's segments and subsegments.</p>
+-- @return Trace structure as a key-value pair table
+function M.Trace(args)
+	assert(args, "You must provdide an argument table when creating Trace")
 	local t = { 
-		["Duration"] = _Duration,
-		["Segments"] = _Segments,
-		["Id"] = _Id,
+		["Duration"] = args["Duration"],
+		["Segments"] = args["Segments"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertTrace(t)
 	return t
@@ -444,18 +483,21 @@ end
 
 --- Create a structure of type PutTelemetryRecordsRequest
 --  
--- @param _ResourceARN [String] <p/>
--- @param _Hostname [String] <p/>
--- @param _TelemetryRecords [TelemetryRecordList] <p/>
--- @param _EC2InstanceId [String] <p/>
--- Required parameter: TelemetryRecords
-function M.PutTelemetryRecordsRequest(_ResourceARN, _Hostname, _TelemetryRecords, _EC2InstanceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutTelemetryRecordsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceARN [String] <p/>
+-- * Hostname [String] <p/>
+-- * TelemetryRecords [TelemetryRecordList] <p/>
+-- * EC2InstanceId [String] <p/>
+-- Required key: TelemetryRecords
+-- @return PutTelemetryRecordsRequest structure as a key-value pair table
+function M.PutTelemetryRecordsRequest(args)
+	assert(args, "You must provdide an argument table when creating PutTelemetryRecordsRequest")
 	local t = { 
-		["ResourceARN"] = _ResourceARN,
-		["Hostname"] = _Hostname,
-		["TelemetryRecords"] = _TelemetryRecords,
-		["EC2InstanceId"] = _EC2InstanceId,
+		["ResourceARN"] = args["ResourceARN"],
+		["Hostname"] = args["Hostname"],
+		["TelemetryRecords"] = args["TelemetryRecords"],
+		["EC2InstanceId"] = args["EC2InstanceId"],
 	}
 	asserts.AssertPutTelemetryRecordsRequest(t)
 	return t
@@ -476,14 +518,17 @@ end
 
 --- Create a structure of type BatchGetTracesRequest
 --  
--- @param _NextToken [String] <p>Pagination token. Not used.</p>
--- @param _TraceIds [TraceIdList] <p>Specify the trace IDs of requests for which to retrieve segments.</p>
--- Required parameter: TraceIds
-function M.BatchGetTracesRequest(_NextToken, _TraceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetTracesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>Pagination token. Not used.</p>
+-- * TraceIds [TraceIdList] <p>Specify the trace IDs of requests for which to retrieve segments.</p>
+-- Required key: TraceIds
+-- @return BatchGetTracesRequest structure as a key-value pair table
+function M.BatchGetTracesRequest(args)
+	assert(args, "You must provdide an argument table when creating BatchGetTracesRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["TraceIds"] = _TraceIds,
+		["NextToken"] = args["NextToken"],
+		["TraceIds"] = args["TraceIds"],
 	}
 	asserts.AssertBatchGetTracesRequest(t)
 	return t
@@ -504,15 +549,18 @@ end
 
 --- Create a structure of type ErrorStatistics
 -- <p>Information about requests that failed with a 4xx Client Error status code.</p>
--- @param _OtherCount [NullableLong] <p>The number of requests that failed with untracked 4xx Client Error status codes.</p>
--- @param _ThrottleCount [NullableLong] <p>The number of requests that failed with a 419 throttling status code.</p>
--- @param _TotalCount [NullableLong] <p>The total number of requests that failed with a 4xx Client Error status code.</p>
-function M.ErrorStatistics(_OtherCount, _ThrottleCount, _TotalCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ErrorStatistics")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OtherCount [NullableLong] <p>The number of requests that failed with untracked 4xx Client Error status codes.</p>
+-- * ThrottleCount [NullableLong] <p>The number of requests that failed with a 419 throttling status code.</p>
+-- * TotalCount [NullableLong] <p>The total number of requests that failed with a 4xx Client Error status code.</p>
+-- @return ErrorStatistics structure as a key-value pair table
+function M.ErrorStatistics(args)
+	assert(args, "You must provdide an argument table when creating ErrorStatistics")
 	local t = { 
-		["OtherCount"] = _OtherCount,
-		["ThrottleCount"] = _ThrottleCount,
-		["TotalCount"] = _TotalCount,
+		["OtherCount"] = args["OtherCount"],
+		["ThrottleCount"] = args["ThrottleCount"],
+		["TotalCount"] = args["TotalCount"],
 	}
 	asserts.AssertErrorStatistics(t)
 	return t
@@ -532,13 +580,16 @@ end
 
 --- Create a structure of type ValueWithServiceIds
 -- <p>Information about a segment annotation.</p>
--- @param _AnnotationValue [AnnotationValue] <p>Values of the annotation.</p>
--- @param _ServiceIds [ServiceIds] <p>Services to which the annotation applies.</p>
-function M.ValueWithServiceIds(_AnnotationValue, _ServiceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValueWithServiceIds")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnnotationValue [AnnotationValue] <p>Values of the annotation.</p>
+-- * ServiceIds [ServiceIds] <p>Services to which the annotation applies.</p>
+-- @return ValueWithServiceIds structure as a key-value pair table
+function M.ValueWithServiceIds(args)
+	assert(args, "You must provdide an argument table when creating ValueWithServiceIds")
 	local t = { 
-		["AnnotationValue"] = _AnnotationValue,
-		["ServiceIds"] = _ServiceIds,
+		["AnnotationValue"] = args["AnnotationValue"],
+		["ServiceIds"] = args["ServiceIds"],
 	}
 	asserts.AssertValueWithServiceIds(t)
 	return t
@@ -558,13 +609,16 @@ end
 
 --- Create a structure of type Segment
 -- <p>A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with <a>PutTraceSegments</a>, or an <code>inferred</code> segment for a downstream service, generated from a subsegment sent by the service that called it.</p>
--- @param _Document [SegmentDocument] <p>The segment document</p>
--- @param _Id [SegmentId] <p>The segment's ID.</p>
-function M.Segment(_Document, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Segment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Document [SegmentDocument] <p>The segment document</p>
+-- * Id [SegmentId] <p>The segment's ID.</p>
+-- @return Segment structure as a key-value pair table
+function M.Segment(args)
+	assert(args, "You must provdide an argument table when creating Segment")
 	local t = { 
-		["Document"] = _Document,
-		["Id"] = _Id,
+		["Document"] = args["Document"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertSegment(t)
 	return t
@@ -585,15 +639,18 @@ end
 
 --- Create a structure of type BatchGetTracesResult
 --  
--- @param _NextToken [String] <p>Pagination token. Not used.</p>
--- @param _Traces [TraceList] <p>Full traces for the specified requests.</p>
--- @param _UnprocessedTraceIds [UnprocessedTraceIdList] <p>Trace IDs of requests that haven't been processed.</p>
-function M.BatchGetTracesResult(_NextToken, _Traces, _UnprocessedTraceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetTracesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>Pagination token. Not used.</p>
+-- * Traces [TraceList] <p>Full traces for the specified requests.</p>
+-- * UnprocessedTraceIds [UnprocessedTraceIdList] <p>Trace IDs of requests that haven't been processed.</p>
+-- @return BatchGetTracesResult structure as a key-value pair table
+function M.BatchGetTracesResult(args)
+	assert(args, "You must provdide an argument table when creating BatchGetTracesResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Traces"] = _Traces,
-		["UnprocessedTraceIds"] = _UnprocessedTraceIds,
+		["NextToken"] = args["NextToken"],
+		["Traces"] = args["Traces"],
+		["UnprocessedTraceIds"] = args["UnprocessedTraceIds"],
 	}
 	asserts.AssertBatchGetTracesResult(t)
 	return t
@@ -622,31 +679,34 @@ end
 
 --- Create a structure of type TraceSummary
 -- <p>Metadata generated from the segment documents in a trace.</p>
--- @param _HasError [NullableBoolean] <p>One or more of the segment documents has a 400 series error.</p>
--- @param _Http [Http] <p>Information about the HTTP request served by the trace.</p>
--- @param _Users [TraceUsers] <p>Users from the trace's segment documents.</p>
--- @param _HasFault [NullableBoolean] <p>One or more of the segment documents has a 500 series error.</p>
--- @param _Annotations [Annotations] <p>Annotations from the trace's segment documents.</p>
--- @param _IsPartial [NullableBoolean] <p>One or more of the segment documents is in progress.</p>
--- @param _ResponseTime [NullableDouble] <p>The length of time in seconds between the start and end times of the root segment. If the service performs work asynchronously, the response time measures the time before the response is sent to the user, while the duration measures the amount of time before the last traced activity completes.</p>
--- @param _ServiceIds [ServiceIds] <p>Service IDs from the trace's segment documents.</p>
--- @param _Duration [NullableDouble] <p>The length of time in seconds between the start time of the root segment and the end time of the last segment that completed.</p>
--- @param _Id [TraceId] <p>The unique identifier for the request that generated the trace's segments and subsegments.</p>
--- @param _HasThrottle [NullableBoolean] <p>One or more of the segment documents has a 429 throttling error.</p>
-function M.TraceSummary(_HasError, _Http, _Users, _HasFault, _Annotations, _IsPartial, _ResponseTime, _ServiceIds, _Duration, _Id, _HasThrottle, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TraceSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HasError [NullableBoolean] <p>One or more of the segment documents has a 400 series error.</p>
+-- * Http [Http] <p>Information about the HTTP request served by the trace.</p>
+-- * Users [TraceUsers] <p>Users from the trace's segment documents.</p>
+-- * HasFault [NullableBoolean] <p>One or more of the segment documents has a 500 series error.</p>
+-- * Annotations [Annotations] <p>Annotations from the trace's segment documents.</p>
+-- * IsPartial [NullableBoolean] <p>One or more of the segment documents is in progress.</p>
+-- * ResponseTime [NullableDouble] <p>The length of time in seconds between the start and end times of the root segment. If the service performs work asynchronously, the response time measures the time before the response is sent to the user, while the duration measures the amount of time before the last traced activity completes.</p>
+-- * ServiceIds [ServiceIds] <p>Service IDs from the trace's segment documents.</p>
+-- * Duration [NullableDouble] <p>The length of time in seconds between the start time of the root segment and the end time of the last segment that completed.</p>
+-- * Id [TraceId] <p>The unique identifier for the request that generated the trace's segments and subsegments.</p>
+-- * HasThrottle [NullableBoolean] <p>One or more of the segment documents has a 429 throttling error.</p>
+-- @return TraceSummary structure as a key-value pair table
+function M.TraceSummary(args)
+	assert(args, "You must provdide an argument table when creating TraceSummary")
 	local t = { 
-		["HasError"] = _HasError,
-		["Http"] = _Http,
-		["Users"] = _Users,
-		["HasFault"] = _HasFault,
-		["Annotations"] = _Annotations,
-		["IsPartial"] = _IsPartial,
-		["ResponseTime"] = _ResponseTime,
-		["ServiceIds"] = _ServiceIds,
-		["Duration"] = _Duration,
-		["Id"] = _Id,
-		["HasThrottle"] = _HasThrottle,
+		["HasError"] = args["HasError"],
+		["Http"] = args["Http"],
+		["Users"] = args["Users"],
+		["HasFault"] = args["HasFault"],
+		["Annotations"] = args["Annotations"],
+		["IsPartial"] = args["IsPartial"],
+		["ResponseTime"] = args["ResponseTime"],
+		["ServiceIds"] = args["ServiceIds"],
+		["Duration"] = args["Duration"],
+		["Id"] = args["Id"],
+		["HasThrottle"] = args["HasThrottle"],
 	}
 	asserts.AssertTraceSummary(t)
 	return t
@@ -670,21 +730,24 @@ end
 
 --- Create a structure of type BackendConnectionErrors
 -- <p/>
--- @param _ConnectionRefusedCount [NullableInteger] <p/>
--- @param _HTTPCode5XXCount [NullableInteger] <p/>
--- @param _OtherCount [NullableInteger] <p/>
--- @param _HTTPCode4XXCount [NullableInteger] <p/>
--- @param _UnknownHostCount [NullableInteger] <p/>
--- @param _TimeoutCount [NullableInteger] <p/>
-function M.BackendConnectionErrors(_ConnectionRefusedCount, _HTTPCode5XXCount, _OtherCount, _HTTPCode4XXCount, _UnknownHostCount, _TimeoutCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BackendConnectionErrors")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConnectionRefusedCount [NullableInteger] <p/>
+-- * HTTPCode5XXCount [NullableInteger] <p/>
+-- * OtherCount [NullableInteger] <p/>
+-- * HTTPCode4XXCount [NullableInteger] <p/>
+-- * UnknownHostCount [NullableInteger] <p/>
+-- * TimeoutCount [NullableInteger] <p/>
+-- @return BackendConnectionErrors structure as a key-value pair table
+function M.BackendConnectionErrors(args)
+	assert(args, "You must provdide an argument table when creating BackendConnectionErrors")
 	local t = { 
-		["ConnectionRefusedCount"] = _ConnectionRefusedCount,
-		["HTTPCode5XXCount"] = _HTTPCode5XXCount,
-		["OtherCount"] = _OtherCount,
-		["HTTPCode4XXCount"] = _HTTPCode4XXCount,
-		["UnknownHostCount"] = _UnknownHostCount,
-		["TimeoutCount"] = _TimeoutCount,
+		["ConnectionRefusedCount"] = args["ConnectionRefusedCount"],
+		["HTTPCode5XXCount"] = args["HTTPCode5XXCount"],
+		["OtherCount"] = args["OtherCount"],
+		["HTTPCode4XXCount"] = args["HTTPCode4XXCount"],
+		["UnknownHostCount"] = args["UnknownHostCount"],
+		["TimeoutCount"] = args["TimeoutCount"],
 	}
 	asserts.AssertBackendConnectionErrors(t)
 	return t
@@ -705,14 +768,17 @@ end
 
 --- Create a structure of type GetTraceGraphRequest
 --  
--- @param _NextToken [String] <p>Pagination token. Not used.</p>
--- @param _TraceIds [TraceIdList] <p>Trace IDs of requests for which to generate a service graph.</p>
--- Required parameter: TraceIds
-function M.GetTraceGraphRequest(_NextToken, _TraceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTraceGraphRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>Pagination token. Not used.</p>
+-- * TraceIds [TraceIdList] <p>Trace IDs of requests for which to generate a service graph.</p>
+-- Required key: TraceIds
+-- @return GetTraceGraphRequest structure as a key-value pair table
+function M.GetTraceGraphRequest(args)
+	assert(args, "You must provdide an argument table when creating GetTraceGraphRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["TraceIds"] = _TraceIds,
+		["NextToken"] = args["NextToken"],
+		["TraceIds"] = args["TraceIds"],
 	}
 	asserts.AssertGetTraceGraphRequest(t)
 	return t
@@ -736,21 +802,24 @@ end
 
 --- Create a structure of type TelemetryRecord
 -- <p/>
--- @param _SegmentsSpilloverCount [NullableInteger] <p/>
--- @param _BackendConnectionErrors [BackendConnectionErrors] <p/>
--- @param _Timestamp [Timestamp] <p/>
--- @param _SegmentsSentCount [NullableInteger] <p/>
--- @param _SegmentsRejectedCount [NullableInteger] <p/>
--- @param _SegmentsReceivedCount [NullableInteger] <p/>
-function M.TelemetryRecord(_SegmentsSpilloverCount, _BackendConnectionErrors, _Timestamp, _SegmentsSentCount, _SegmentsRejectedCount, _SegmentsReceivedCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TelemetryRecord")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SegmentsSpilloverCount [NullableInteger] <p/>
+-- * BackendConnectionErrors [BackendConnectionErrors] <p/>
+-- * Timestamp [Timestamp] <p/>
+-- * SegmentsSentCount [NullableInteger] <p/>
+-- * SegmentsRejectedCount [NullableInteger] <p/>
+-- * SegmentsReceivedCount [NullableInteger] <p/>
+-- @return TelemetryRecord structure as a key-value pair table
+function M.TelemetryRecord(args)
+	assert(args, "You must provdide an argument table when creating TelemetryRecord")
 	local t = { 
-		["SegmentsSpilloverCount"] = _SegmentsSpilloverCount,
-		["BackendConnectionErrors"] = _BackendConnectionErrors,
-		["Timestamp"] = _Timestamp,
-		["SegmentsSentCount"] = _SegmentsSentCount,
-		["SegmentsRejectedCount"] = _SegmentsRejectedCount,
-		["SegmentsReceivedCount"] = _SegmentsReceivedCount,
+		["SegmentsSpilloverCount"] = args["SegmentsSpilloverCount"],
+		["BackendConnectionErrors"] = args["BackendConnectionErrors"],
+		["Timestamp"] = args["Timestamp"],
+		["SegmentsSentCount"] = args["SegmentsSentCount"],
+		["SegmentsRejectedCount"] = args["SegmentsRejectedCount"],
+		["SegmentsReceivedCount"] = args["SegmentsReceivedCount"],
 	}
 	asserts.AssertTelemetryRecord(t)
 	return t
@@ -771,15 +840,18 @@ end
 
 --- Create a structure of type Alias
 -- <p>An alias for an edge.</p>
--- @param _Type [String] <p>The type of the alias.</p>
--- @param _Name [String] <p>The canonical name of the alias.</p>
--- @param _Names [AliasNames] <p>A list of names for the alias, including the canonical name.</p>
-function M.Alias(_Type, _Name, _Names, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Alias")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [String] <p>The type of the alias.</p>
+-- * Name [String] <p>The canonical name of the alias.</p>
+-- * Names [AliasNames] <p>A list of names for the alias, including the canonical name.</p>
+-- @return Alias structure as a key-value pair table
+function M.Alias(args)
+	assert(args, "You must provdide an argument table when creating Alias")
 	local t = { 
-		["Type"] = _Type,
-		["Name"] = _Name,
-		["Names"] = _Names,
+		["Type"] = args["Type"],
+		["Name"] = args["Name"],
+		["Names"] = args["Names"],
 	}
 	asserts.AssertAlias(t)
 	return t
@@ -803,21 +875,24 @@ end
 
 --- Create a structure of type Edge
 -- <p>Information about a connection between two services.</p>
--- @param _SummaryStatistics [EdgeStatistics] <p>Response statistics for segments on the edge.</p>
--- @param _ReferenceId [NullableInteger] <p>Identifier of the edge. Unique within a service map.</p>
--- @param _ResponseTimeHistogram [Histogram] <p>A histogram that maps the spread of client response times on an edge.</p>
--- @param _StartTime [Timestamp] <p>The start time of the first segment on the edge.</p>
--- @param _EndTime [Timestamp] <p>The end time of the last segment on the edge.</p>
--- @param _Aliases [AliasList] <p>Aliases for the edge.</p>
-function M.Edge(_SummaryStatistics, _ReferenceId, _ResponseTimeHistogram, _StartTime, _EndTime, _Aliases, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Edge")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SummaryStatistics [EdgeStatistics] <p>Response statistics for segments on the edge.</p>
+-- * ReferenceId [NullableInteger] <p>Identifier of the edge. Unique within a service map.</p>
+-- * ResponseTimeHistogram [Histogram] <p>A histogram that maps the spread of client response times on an edge.</p>
+-- * StartTime [Timestamp] <p>The start time of the first segment on the edge.</p>
+-- * EndTime [Timestamp] <p>The end time of the last segment on the edge.</p>
+-- * Aliases [AliasList] <p>Aliases for the edge.</p>
+-- @return Edge structure as a key-value pair table
+function M.Edge(args)
+	assert(args, "You must provdide an argument table when creating Edge")
 	local t = { 
-		["SummaryStatistics"] = _SummaryStatistics,
-		["ReferenceId"] = _ReferenceId,
-		["ResponseTimeHistogram"] = _ResponseTimeHistogram,
-		["StartTime"] = _StartTime,
-		["EndTime"] = _EndTime,
-		["Aliases"] = _Aliases,
+		["SummaryStatistics"] = args["SummaryStatistics"],
+		["ReferenceId"] = args["ReferenceId"],
+		["ResponseTimeHistogram"] = args["ResponseTimeHistogram"],
+		["StartTime"] = args["StartTime"],
+		["EndTime"] = args["EndTime"],
+		["Aliases"] = args["Aliases"],
 	}
 	asserts.AssertEdge(t)
 	return t
@@ -835,8 +910,11 @@ end
 
 --- Create a structure of type PutTelemetryRecordsResult
 --  
-function M.PutTelemetryRecordsResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutTelemetryRecordsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PutTelemetryRecordsResult structure as a key-value pair table
+function M.PutTelemetryRecordsResult(args)
+	assert(args, "You must provdide an argument table when creating PutTelemetryRecordsResult")
 	local t = { 
 	}
 	asserts.AssertPutTelemetryRecordsResult(t)
@@ -857,12 +935,15 @@ end
 
 --- Create a structure of type PutTraceSegmentsRequest
 --  
--- @param _TraceSegmentDocuments [TraceSegmentDocumentList] <p>A string containing a JSON document defining one or more segments or subsegments.</p>
--- Required parameter: TraceSegmentDocuments
-function M.PutTraceSegmentsRequest(_TraceSegmentDocuments, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutTraceSegmentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TraceSegmentDocuments [TraceSegmentDocumentList] <p>A string containing a JSON document defining one or more segments or subsegments.</p>
+-- Required key: TraceSegmentDocuments
+-- @return PutTraceSegmentsRequest structure as a key-value pair table
+function M.PutTraceSegmentsRequest(args)
+	assert(args, "You must provdide an argument table when creating PutTraceSegmentsRequest")
 	local t = { 
-		["TraceSegmentDocuments"] = _TraceSegmentDocuments,
+		["TraceSegmentDocuments"] = args["TraceSegmentDocuments"],
 	}
 	asserts.AssertPutTraceSegmentsRequest(t)
 	return t
@@ -881,11 +962,14 @@ end
 
 --- Create a structure of type PutTraceSegmentsResult
 --  
--- @param _UnprocessedTraceSegments [UnprocessedTraceSegmentList] <p>Segments that failed processing.</p>
-function M.PutTraceSegmentsResult(_UnprocessedTraceSegments, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutTraceSegmentsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UnprocessedTraceSegments [UnprocessedTraceSegmentList] <p>Segments that failed processing.</p>
+-- @return PutTraceSegmentsResult structure as a key-value pair table
+function M.PutTraceSegmentsResult(args)
+	assert(args, "You must provdide an argument table when creating PutTraceSegmentsResult")
 	local t = { 
-		["UnprocessedTraceSegments"] = _UnprocessedTraceSegments,
+		["UnprocessedTraceSegments"] = args["UnprocessedTraceSegments"],
 	}
 	asserts.AssertPutTraceSegmentsResult(t)
 	return t
@@ -905,13 +989,16 @@ end
 
 --- Create a structure of type GetTraceGraphResult
 --  
--- @param _Services [ServiceList] <p>The services that have processed one of the specified requests.</p>
--- @param _NextToken [String] <p>Pagination token. Not used.</p>
-function M.GetTraceGraphResult(_Services, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTraceGraphResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Services [ServiceList] <p>The services that have processed one of the specified requests.</p>
+-- * NextToken [String] <p>Pagination token. Not used.</p>
+-- @return GetTraceGraphResult structure as a key-value pair table
+function M.GetTraceGraphResult(args)
+	assert(args, "You must provdide an argument table when creating GetTraceGraphResult")
 	local t = { 
-		["Services"] = _Services,
-		["NextToken"] = _NextToken,
+		["Services"] = args["Services"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertGetTraceGraphResult(t)
 	return t
@@ -934,19 +1021,22 @@ end
 
 --- Create a structure of type ServiceStatistics
 -- <p>Response statistics for a service.</p>
--- @param _ErrorStatistics [ErrorStatistics] <p>Information about requests that failed with a 4xx Client Error status code.</p>
--- @param _FaultStatistics [FaultStatistics] <p>Information about requests that failed with a 5xx Server Error status code.</p>
--- @param _OkCount [NullableLong] <p>The number of requests that completed with a 2xx Success status code.</p>
--- @param _TotalResponseTime [NullableDouble] <p>The aggregate response time of completed requests.</p>
--- @param _TotalCount [NullableLong] <p>The total number of completed requests.</p>
-function M.ServiceStatistics(_ErrorStatistics, _FaultStatistics, _OkCount, _TotalResponseTime, _TotalCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceStatistics")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorStatistics [ErrorStatistics] <p>Information about requests that failed with a 4xx Client Error status code.</p>
+-- * FaultStatistics [FaultStatistics] <p>Information about requests that failed with a 5xx Server Error status code.</p>
+-- * OkCount [NullableLong] <p>The number of requests that completed with a 2xx Success status code.</p>
+-- * TotalResponseTime [NullableDouble] <p>The aggregate response time of completed requests.</p>
+-- * TotalCount [NullableLong] <p>The total number of completed requests.</p>
+-- @return ServiceStatistics structure as a key-value pair table
+function M.ServiceStatistics(args)
+	assert(args, "You must provdide an argument table when creating ServiceStatistics")
 	local t = { 
-		["ErrorStatistics"] = _ErrorStatistics,
-		["FaultStatistics"] = _FaultStatistics,
-		["OkCount"] = _OkCount,
-		["TotalResponseTime"] = _TotalResponseTime,
-		["TotalCount"] = _TotalCount,
+		["ErrorStatistics"] = args["ErrorStatistics"],
+		["FaultStatistics"] = args["FaultStatistics"],
+		["OkCount"] = args["OkCount"],
+		["TotalResponseTime"] = args["TotalResponseTime"],
+		["TotalCount"] = args["TotalCount"],
 	}
 	asserts.AssertServiceStatistics(t)
 	return t
@@ -967,15 +1057,18 @@ end
 
 --- Create a structure of type UnprocessedTraceSegment
 -- <p>Information about a segment that failed processing.</p>
--- @param _ErrorCode [String] <p>The error that caused processing to fail.</p>
--- @param _Message [String] <p>The error message.</p>
--- @param _Id [String] <p>The segment's ID.</p>
-function M.UnprocessedTraceSegment(_ErrorCode, _Message, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnprocessedTraceSegment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [String] <p>The error that caused processing to fail.</p>
+-- * Message [String] <p>The error message.</p>
+-- * Id [String] <p>The segment's ID.</p>
+-- @return UnprocessedTraceSegment structure as a key-value pair table
+function M.UnprocessedTraceSegment(args)
+	assert(args, "You must provdide an argument table when creating UnprocessedTraceSegment")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
-		["Id"] = _Id,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertUnprocessedTraceSegment(t)
 	return t
@@ -998,19 +1091,22 @@ end
 
 --- Create a structure of type EdgeStatistics
 -- <p>Response statistics for an edge.</p>
--- @param _ErrorStatistics [ErrorStatistics] <p>Information about requests that failed with a 4xx Client Error status code.</p>
--- @param _FaultStatistics [FaultStatistics] <p>Information about requests that failed with a 5xx Server Error status code.</p>
--- @param _OkCount [NullableLong] <p>The number of requests that completed with a 2xx Success status code.</p>
--- @param _TotalResponseTime [NullableDouble] <p>The aggregate response time of completed requests.</p>
--- @param _TotalCount [NullableLong] <p>The total number of completed requests.</p>
-function M.EdgeStatistics(_ErrorStatistics, _FaultStatistics, _OkCount, _TotalResponseTime, _TotalCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EdgeStatistics")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorStatistics [ErrorStatistics] <p>Information about requests that failed with a 4xx Client Error status code.</p>
+-- * FaultStatistics [FaultStatistics] <p>Information about requests that failed with a 5xx Server Error status code.</p>
+-- * OkCount [NullableLong] <p>The number of requests that completed with a 2xx Success status code.</p>
+-- * TotalResponseTime [NullableDouble] <p>The aggregate response time of completed requests.</p>
+-- * TotalCount [NullableLong] <p>The total number of completed requests.</p>
+-- @return EdgeStatistics structure as a key-value pair table
+function M.EdgeStatistics(args)
+	assert(args, "You must provdide an argument table when creating EdgeStatistics")
 	local t = { 
-		["ErrorStatistics"] = _ErrorStatistics,
-		["FaultStatistics"] = _FaultStatistics,
-		["OkCount"] = _OkCount,
-		["TotalResponseTime"] = _TotalResponseTime,
-		["TotalCount"] = _TotalCount,
+		["ErrorStatistics"] = args["ErrorStatistics"],
+		["FaultStatistics"] = args["FaultStatistics"],
+		["OkCount"] = args["OkCount"],
+		["TotalResponseTime"] = args["TotalResponseTime"],
+		["TotalCount"] = args["TotalCount"],
 	}
 	asserts.AssertEdgeStatistics(t)
 	return t
@@ -1032,17 +1128,20 @@ end
 
 --- Create a structure of type ServiceId
 -- <p/>
--- @param _AccountId [String] <p/>
--- @param _Type [String] <p/>
--- @param _Name [String] <p/>
--- @param _Names [ServiceNames] <p/>
-function M.ServiceId(_AccountId, _Type, _Name, _Names, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccountId [String] <p/>
+-- * Type [String] <p/>
+-- * Name [String] <p/>
+-- * Names [ServiceNames] <p/>
+-- @return ServiceId structure as a key-value pair table
+function M.ServiceId(args)
+	assert(args, "You must provdide an argument table when creating ServiceId")
 	local t = { 
-		["AccountId"] = _AccountId,
-		["Type"] = _Type,
-		["Name"] = _Name,
-		["Names"] = _Names,
+		["AccountId"] = args["AccountId"],
+		["Type"] = args["Type"],
+		["Name"] = args["Name"],
+		["Names"] = args["Names"],
 	}
 	asserts.AssertServiceId(t)
 	return t

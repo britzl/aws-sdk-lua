@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type LexiconSizeExceededException
 -- <p>The maximum size of the specified lexicon would be exceeded by this operation.</p>
--- @param _message [ErrorMessage] 
-function M.LexiconSizeExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LexiconSizeExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return LexiconSizeExceededException structure as a key-value pair table
+function M.LexiconSizeExceededException(args)
+	assert(args, "You must provdide an argument table when creating LexiconSizeExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLexiconSizeExceededException(t)
 	return t
@@ -58,12 +61,15 @@ end
 
 --- Create a structure of type DeleteLexiconInput
 --  
--- @param _Name [LexiconName] <p>The name of the lexicon to delete. Must be an existing lexicon in the region.</p>
--- Required parameter: Name
-function M.DeleteLexiconInput(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLexiconInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [LexiconName] <p>The name of the lexicon to delete. Must be an existing lexicon in the region.</p>
+-- Required key: Name
+-- @return DeleteLexiconInput structure as a key-value pair table
+function M.DeleteLexiconInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteLexiconInput")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteLexiconInput(t)
 	return t
@@ -84,15 +90,18 @@ end
 
 --- Create a structure of type SynthesizeSpeechOutput
 --  
--- @param _ContentType [ContentType] <p> Specifies the type audio stream. This should reflect the <code>OutputFormat</code> parameter in your request. </p> <ul> <li> <p> If you request <code>mp3</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/mpeg. </p> </li> <li> <p> If you request <code>ogg_vorbis</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/ogg. </p> </li> <li> <p> If you request <code>pcm</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/pcm in a signed 16-bit, 1 channel (mono), little-endian format. </p> </li> <li> <p>If you request <code>json</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/json.</p> </li> </ul> <p> </p>
--- @param _AudioStream [AudioStream] <p> Stream containing the synthesized speech. </p>
--- @param _RequestCharacters [RequestCharacters] <p>Number of characters synthesized.</p>
-function M.SynthesizeSpeechOutput(_ContentType, _AudioStream, _RequestCharacters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SynthesizeSpeechOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContentType [ContentType] <p> Specifies the type audio stream. This should reflect the <code>OutputFormat</code> parameter in your request. </p> <ul> <li> <p> If you request <code>mp3</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/mpeg. </p> </li> <li> <p> If you request <code>ogg_vorbis</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/ogg. </p> </li> <li> <p> If you request <code>pcm</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/pcm in a signed 16-bit, 1 channel (mono), little-endian format. </p> </li> <li> <p>If you request <code>json</code> as the <code>OutputFormat</code>, the <code>ContentType</code> returned is audio/json.</p> </li> </ul> <p> </p>
+-- * AudioStream [AudioStream] <p> Stream containing the synthesized speech. </p>
+-- * RequestCharacters [RequestCharacters] <p>Number of characters synthesized.</p>
+-- @return SynthesizeSpeechOutput structure as a key-value pair table
+function M.SynthesizeSpeechOutput(args)
+	assert(args, "You must provdide an argument table when creating SynthesizeSpeechOutput")
 	local t = { 
-		["ContentType"] = _ContentType,
-		["AudioStream"] = _AudioStream,
-		["RequestCharacters"] = _RequestCharacters,
+		["ContentType"] = args["ContentType"],
+		["AudioStream"] = args["AudioStream"],
+		["RequestCharacters"] = args["RequestCharacters"],
 	}
 	asserts.AssertSynthesizeSpeechOutput(t)
 	return t
@@ -111,11 +120,14 @@ end
 
 --- Create a structure of type InvalidSampleRateException
 -- <p>The specified sample rate is not valid.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidSampleRateException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSampleRateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidSampleRateException structure as a key-value pair table
+function M.InvalidSampleRateException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSampleRateException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidSampleRateException(t)
 	return t
@@ -133,8 +145,11 @@ end
 
 --- Create a structure of type DeleteLexiconOutput
 --  
-function M.DeleteLexiconOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLexiconOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteLexiconOutput structure as a key-value pair table
+function M.DeleteLexiconOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteLexiconOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteLexiconOutput(t)
@@ -154,11 +169,14 @@ end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>The NextToken is invalid. Verify that it's spelled correctly, and then try again.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidNextTokenException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidNextTokenException structure as a key-value pair table
+function M.InvalidNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidNextTokenException(t)
 	return t
@@ -177,11 +195,14 @@ end
 
 --- Create a structure of type LexiconNotFoundException
 -- <p>Amazon Polly can't find the specified lexicon. This could be caused by a lexicon that is missing, its name is misspelled or specifying a lexicon that is in a different region.</p> <p>Verify that the lexicon exists, is in the region (see <a>ListLexicons</a>) and that you spelled its name is spelled correctly. Then try again.</p>
--- @param _message [ErrorMessage] 
-function M.LexiconNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LexiconNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return LexiconNotFoundException structure as a key-value pair table
+function M.LexiconNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating LexiconNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLexiconNotFoundException(t)
 	return t
@@ -200,11 +221,14 @@ end
 
 --- Create a structure of type UnsupportedPlsAlphabetException
 -- <p>The alphabet specified by the lexicon is not a supported alphabet. Valid values are <code>x-sampa</code> and <code>ipa</code>.</p>
--- @param _message [ErrorMessage] 
-function M.UnsupportedPlsAlphabetException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedPlsAlphabetException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return UnsupportedPlsAlphabetException structure as a key-value pair table
+function M.UnsupportedPlsAlphabetException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedPlsAlphabetException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnsupportedPlsAlphabetException(t)
 	return t
@@ -223,11 +247,14 @@ end
 
 --- Create a structure of type ServiceFailureException
 -- <p>An unknown condition has caused a service failure.</p>
--- @param _message [ErrorMessage] 
-function M.ServiceFailureException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceFailureException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ServiceFailureException structure as a key-value pair table
+function M.ServiceFailureException(args)
+	assert(args, "You must provdide an argument table when creating ServiceFailureException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServiceFailureException(t)
 	return t
@@ -247,13 +274,16 @@ end
 
 --- Create a structure of type DescribeVoicesInput
 --  
--- @param _LanguageCode [LanguageCode] <p> The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned. </p>
--- @param _NextToken [NextToken] <p>An opaque pagination token returned from the previous <code>DescribeVoices</code> operation. If present, this indicates where to continue the listing.</p>
-function M.DescribeVoicesInput(_LanguageCode, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVoicesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LanguageCode [LanguageCode] <p> The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned. </p>
+-- * NextToken [NextToken] <p>An opaque pagination token returned from the previous <code>DescribeVoices</code> operation. If present, this indicates where to continue the listing.</p>
+-- @return DescribeVoicesInput structure as a key-value pair table
+function M.DescribeVoicesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeVoicesInput")
 	local t = { 
-		["LanguageCode"] = _LanguageCode,
-		["NextToken"] = _NextToken,
+		["LanguageCode"] = args["LanguageCode"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeVoicesInput(t)
 	return t
@@ -272,11 +302,14 @@ end
 
 --- Create a structure of type MarksNotSupportedForFormatException
 -- <p>Speech marks are not supported for the <code>OutputFormat</code> selected. Speech marks are only available for content in <code>json</code> format.</p>
--- @param _message [ErrorMessage] 
-function M.MarksNotSupportedForFormatException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MarksNotSupportedForFormatException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return MarksNotSupportedForFormatException structure as a key-value pair table
+function M.MarksNotSupportedForFormatException(args)
+	assert(args, "You must provdide an argument table when creating MarksNotSupportedForFormatException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMarksNotSupportedForFormatException(t)
 	return t
@@ -295,11 +328,14 @@ end
 
 --- Create a structure of type InvalidSsmlException
 -- <p>The SSML you provided is invalid. Verify the SSML syntax, spelling of tags and values, and then try again.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidSsmlException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSsmlException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidSsmlException structure as a key-value pair table
+function M.InvalidSsmlException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSsmlException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidSsmlException(t)
 	return t
@@ -319,13 +355,16 @@ end
 
 --- Create a structure of type DescribeVoicesOutput
 --  
--- @param _NextToken [NextToken] <p>The pagination token to use in the next request to continue the listing of voices. <code>NextToken</code> is returned only if the response is truncated.</p>
--- @param _Voices [VoiceList] <p>A list of voices with their properties.</p>
-function M.DescribeVoicesOutput(_NextToken, _Voices, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVoicesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token to use in the next request to continue the listing of voices. <code>NextToken</code> is returned only if the response is truncated.</p>
+-- * Voices [VoiceList] <p>A list of voices with their properties.</p>
+-- @return DescribeVoicesOutput structure as a key-value pair table
+function M.DescribeVoicesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeVoicesOutput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Voices"] = _Voices,
+		["NextToken"] = args["NextToken"],
+		["Voices"] = args["Voices"],
 	}
 	asserts.AssertDescribeVoicesOutput(t)
 	return t
@@ -349,21 +388,24 @@ end
 
 --- Create a structure of type LexiconAttributes
 -- <p>Contains metadata describing the lexicon such as the number of lexemes, language code, and so on. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing Lexicons</a>.</p>
--- @param _LanguageCode [LanguageCode] <p>Language code that the lexicon applies to. A lexicon with a language code such as "en" would be applied to all English languages (en-GB, en-US, en-AUS, en-WLS, and so on.</p>
--- @param _LastModified [LastModified] <p>Date lexicon was last modified (a timestamp value).</p>
--- @param _Alphabet [Alphabet] <p>Phonetic alphabet used in the lexicon. Valid values are <code>ipa</code> and <code>x-sampa</code>.</p>
--- @param _LexemesCount [LexemesCount] <p>Number of lexemes in the lexicon.</p>
--- @param _LexiconArn [LexiconArn] <p>Amazon Resource Name (ARN) of the lexicon.</p>
--- @param _Size [Size] <p>Total size of the lexicon, in characters.</p>
-function M.LexiconAttributes(_LanguageCode, _LastModified, _Alphabet, _LexemesCount, _LexiconArn, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LexiconAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LanguageCode [LanguageCode] <p>Language code that the lexicon applies to. A lexicon with a language code such as "en" would be applied to all English languages (en-GB, en-US, en-AUS, en-WLS, and so on.</p>
+-- * LastModified [LastModified] <p>Date lexicon was last modified (a timestamp value).</p>
+-- * Alphabet [Alphabet] <p>Phonetic alphabet used in the lexicon. Valid values are <code>ipa</code> and <code>x-sampa</code>.</p>
+-- * LexemesCount [LexemesCount] <p>Number of lexemes in the lexicon.</p>
+-- * LexiconArn [LexiconArn] <p>Amazon Resource Name (ARN) of the lexicon.</p>
+-- * Size [Size] <p>Total size of the lexicon, in characters.</p>
+-- @return LexiconAttributes structure as a key-value pair table
+function M.LexiconAttributes(args)
+	assert(args, "You must provdide an argument table when creating LexiconAttributes")
 	local t = { 
-		["LanguageCode"] = _LanguageCode,
-		["LastModified"] = _LastModified,
-		["Alphabet"] = _Alphabet,
-		["LexemesCount"] = _LexemesCount,
-		["LexiconArn"] = _LexiconArn,
-		["Size"] = _Size,
+		["LanguageCode"] = args["LanguageCode"],
+		["LastModified"] = args["LastModified"],
+		["Alphabet"] = args["Alphabet"],
+		["LexemesCount"] = args["LexemesCount"],
+		["LexiconArn"] = args["LexiconArn"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertLexiconAttributes(t)
 	return t
@@ -383,13 +425,16 @@ end
 
 --- Create a structure of type GetLexiconOutput
 --  
--- @param _Lexicon [Lexicon] <p>Lexicon object that provides name and the string content of the lexicon. </p>
--- @param _LexiconAttributes [LexiconAttributes] <p>Metadata of the lexicon, including phonetic alphabetic used, language code, lexicon ARN, number of lexemes defined in the lexicon, and size of lexicon in bytes.</p>
-function M.GetLexiconOutput(_Lexicon, _LexiconAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLexiconOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Lexicon [Lexicon] <p>Lexicon object that provides name and the string content of the lexicon. </p>
+-- * LexiconAttributes [LexiconAttributes] <p>Metadata of the lexicon, including phonetic alphabetic used, language code, lexicon ARN, number of lexemes defined in the lexicon, and size of lexicon in bytes.</p>
+-- @return GetLexiconOutput structure as a key-value pair table
+function M.GetLexiconOutput(args)
+	assert(args, "You must provdide an argument table when creating GetLexiconOutput")
 	local t = { 
-		["Lexicon"] = _Lexicon,
-		["LexiconAttributes"] = _LexiconAttributes,
+		["Lexicon"] = args["Lexicon"],
+		["LexiconAttributes"] = args["LexiconAttributes"],
 	}
 	asserts.AssertGetLexiconOutput(t)
 	return t
@@ -408,11 +453,14 @@ end
 
 --- Create a structure of type MaxLexiconsNumberExceededException
 -- <p>The maximum number of lexicons would be exceeded by this operation.</p>
--- @param _message [ErrorMessage] 
-function M.MaxLexiconsNumberExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaxLexiconsNumberExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return MaxLexiconsNumberExceededException structure as a key-value pair table
+function M.MaxLexiconsNumberExceededException(args)
+	assert(args, "You must provdide an argument table when creating MaxLexiconsNumberExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMaxLexiconsNumberExceededException(t)
 	return t
@@ -432,13 +480,16 @@ end
 
 --- Create a structure of type ListLexiconsOutput
 --  
--- @param _NextToken [NextToken] <p>The pagination token to use in the next request to continue the listing of lexicons. <code>NextToken</code> is returned only if the response is truncated.</p>
--- @param _Lexicons [LexiconDescriptionList] <p>A list of lexicon names and attributes.</p>
-function M.ListLexiconsOutput(_NextToken, _Lexicons, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLexiconsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token to use in the next request to continue the listing of lexicons. <code>NextToken</code> is returned only if the response is truncated.</p>
+-- * Lexicons [LexiconDescriptionList] <p>A list of lexicon names and attributes.</p>
+-- @return ListLexiconsOutput structure as a key-value pair table
+function M.ListLexiconsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListLexiconsOutput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Lexicons"] = _Lexicons,
+		["NextToken"] = args["NextToken"],
+		["Lexicons"] = args["Lexicons"],
 	}
 	asserts.AssertListLexiconsOutput(t)
 	return t
@@ -457,11 +508,14 @@ end
 
 --- Create a structure of type ListLexiconsInput
 --  
--- @param _NextToken [NextToken] <p>An opaque pagination token returned from previous <code>ListLexicons</code> operation. If present, indicates where to continue the list of lexicons.</p>
-function M.ListLexiconsInput(_NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLexiconsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>An opaque pagination token returned from previous <code>ListLexicons</code> operation. If present, indicates where to continue the list of lexicons.</p>
+-- @return ListLexiconsInput structure as a key-value pair table
+function M.ListLexiconsInput(args)
+	assert(args, "You must provdide an argument table when creating ListLexiconsInput")
 	local t = { 
-		["NextToken"] = _NextToken,
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListLexiconsInput(t)
 	return t
@@ -480,11 +534,14 @@ end
 
 --- Create a structure of type TextLengthExceededException
 -- <p>The value of the "Text" parameter is longer than the accepted limits. The limit for input text is a maximum of 3000 characters total, of which no more than 1500 can be billed characters. SSML tags are not counted as billed characters.</p>
--- @param _message [ErrorMessage] 
-function M.TextLengthExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TextLengthExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return TextLengthExceededException structure as a key-value pair table
+function M.TextLengthExceededException(args)
+	assert(args, "You must provdide an argument table when creating TextLengthExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTextLengthExceededException(t)
 	return t
@@ -507,19 +564,22 @@ end
 
 --- Create a structure of type Voice
 -- <p>Description of the voice.</p>
--- @param _Gender [Gender] <p>Gender of the voice.</p>
--- @param _Name [VoiceName] <p>Name of the voice (for example, Salli, Kendra, etc.). This provides a human readable voice name that you might display in your application.</p>
--- @param _LanguageName [LanguageName] <p>Human readable name of the language in English.</p>
--- @param _Id [VoiceId] <p>Amazon Polly assigned voice ID. This is the ID that you specify when calling the <code>SynthesizeSpeech</code> operation.</p>
--- @param _LanguageCode [LanguageCode] <p>Language code of the voice.</p>
-function M.Voice(_Gender, _Name, _LanguageName, _Id, _LanguageCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Voice")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Gender [Gender] <p>Gender of the voice.</p>
+-- * Name [VoiceName] <p>Name of the voice (for example, Salli, Kendra, etc.). This provides a human readable voice name that you might display in your application.</p>
+-- * LanguageName [LanguageName] <p>Human readable name of the language in English.</p>
+-- * Id [VoiceId] <p>Amazon Polly assigned voice ID. This is the ID that you specify when calling the <code>SynthesizeSpeech</code> operation.</p>
+-- * LanguageCode [LanguageCode] <p>Language code of the voice.</p>
+-- @return Voice structure as a key-value pair table
+function M.Voice(args)
+	assert(args, "You must provdide an argument table when creating Voice")
 	local t = { 
-		["Gender"] = _Gender,
-		["Name"] = _Name,
-		["LanguageName"] = _LanguageName,
-		["Id"] = _Id,
-		["LanguageCode"] = _LanguageCode,
+		["Gender"] = args["Gender"],
+		["Name"] = args["Name"],
+		["LanguageName"] = args["LanguageName"],
+		["Id"] = args["Id"],
+		["LanguageCode"] = args["LanguageCode"],
 	}
 	asserts.AssertVoice(t)
 	return t
@@ -538,11 +598,14 @@ end
 
 --- Create a structure of type SsmlMarksNotSupportedForTextTypeException
 -- <p>SSML speech marks are not supported for plain text-type input.</p>
--- @param _message [ErrorMessage] 
-function M.SsmlMarksNotSupportedForTextTypeException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SsmlMarksNotSupportedForTextTypeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return SsmlMarksNotSupportedForTextTypeException structure as a key-value pair table
+function M.SsmlMarksNotSupportedForTextTypeException(args)
+	assert(args, "You must provdide an argument table when creating SsmlMarksNotSupportedForTextTypeException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertSsmlMarksNotSupportedForTextTypeException(t)
 	return t
@@ -562,13 +625,16 @@ end
 
 --- Create a structure of type Lexicon
 -- <p>Provides lexicon name and lexicon content in string format. For more information, see <a href="https://www.w3.org/TR/pronunciation-lexicon/">Pronunciation Lexicon Specification (PLS) Version 1.0</a>.</p>
--- @param _Content [LexiconContent] <p>Lexicon content in string format. The content of a lexicon must be in PLS format.</p>
--- @param _Name [LexiconName] <p>Name of the lexicon.</p>
-function M.Lexicon(_Content, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Lexicon")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Content [LexiconContent] <p>Lexicon content in string format. The content of a lexicon must be in PLS format.</p>
+-- * Name [LexiconName] <p>Name of the lexicon.</p>
+-- @return Lexicon structure as a key-value pair table
+function M.Lexicon(args)
+	assert(args, "You must provdide an argument table when creating Lexicon")
 	local t = { 
-		["Content"] = _Content,
-		["Name"] = _Name,
+		["Content"] = args["Content"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertLexicon(t)
 	return t
@@ -587,11 +653,14 @@ end
 
 --- Create a structure of type MaxLexemeLengthExceededException
 -- <p>The maximum size of the lexeme would be exceeded by this operation.</p>
--- @param _message [ErrorMessage] 
-function M.MaxLexemeLengthExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaxLexemeLengthExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return MaxLexemeLengthExceededException structure as a key-value pair table
+function M.MaxLexemeLengthExceededException(args)
+	assert(args, "You must provdide an argument table when creating MaxLexemeLengthExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMaxLexemeLengthExceededException(t)
 	return t
@@ -613,15 +682,18 @@ end
 
 --- Create a structure of type PutLexiconInput
 --  
--- @param _Content [LexiconContent] <p>Content of the PLS lexicon as string data.</p>
--- @param _Name [LexiconName] <p>Name of the lexicon. The name must follow the regular express format [0-9A-Za-z]{1,20}. That is, the name is a case-sensitive alphanumeric string up to 20 characters long. </p>
--- Required parameter: Name
--- Required parameter: Content
-function M.PutLexiconInput(_Content, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutLexiconInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Content [LexiconContent] <p>Content of the PLS lexicon as string data.</p>
+-- * Name [LexiconName] <p>Name of the lexicon. The name must follow the regular express format [0-9A-Za-z]{1,20}. That is, the name is a case-sensitive alphanumeric string up to 20 characters long. </p>
+-- Required key: Name
+-- Required key: Content
+-- @return PutLexiconInput structure as a key-value pair table
+function M.PutLexiconInput(args)
+	assert(args, "You must provdide an argument table when creating PutLexiconInput")
 	local t = { 
-		["Content"] = _Content,
-		["Name"] = _Name,
+		["Content"] = args["Content"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertPutLexiconInput(t)
 	return t
@@ -640,11 +712,14 @@ end
 
 --- Create a structure of type UnsupportedPlsLanguageException
 -- <p>The language specified in the lexicon is unsupported. For a list of supported languages, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html">Lexicon Attributes</a>.</p>
--- @param _message [ErrorMessage] 
-function M.UnsupportedPlsLanguageException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedPlsLanguageException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return UnsupportedPlsLanguageException structure as a key-value pair table
+function M.UnsupportedPlsLanguageException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedPlsLanguageException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnsupportedPlsLanguageException(t)
 	return t
@@ -664,13 +739,16 @@ end
 
 --- Create a structure of type LexiconDescription
 -- <p>Describes the content of the lexicon.</p>
--- @param _Attributes [LexiconAttributes] <p>Provides lexicon metadata.</p>
--- @param _Name [LexiconName] <p>Name of the lexicon.</p>
-function M.LexiconDescription(_Attributes, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LexiconDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [LexiconAttributes] <p>Provides lexicon metadata.</p>
+-- * Name [LexiconName] <p>Name of the lexicon.</p>
+-- @return LexiconDescription structure as a key-value pair table
+function M.LexiconDescription(args)
+	assert(args, "You must provdide an argument table when creating LexiconDescription")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["Name"] = _Name,
+		["Attributes"] = args["Attributes"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertLexiconDescription(t)
 	return t
@@ -690,12 +768,15 @@ end
 
 --- Create a structure of type GetLexiconInput
 --  
--- @param _Name [LexiconName] <p>Name of the lexicon.</p>
--- Required parameter: Name
-function M.GetLexiconInput(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLexiconInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [LexiconName] <p>Name of the lexicon.</p>
+-- Required key: Name
+-- @return GetLexiconInput structure as a key-value pair table
+function M.GetLexiconInput(args)
+	assert(args, "You must provdide an argument table when creating GetLexiconInput")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertGetLexiconInput(t)
 	return t
@@ -723,26 +804,29 @@ end
 
 --- Create a structure of type SynthesizeSpeechInput
 --  
--- @param _OutputFormat [OutputFormat] <p> The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json. </p>
--- @param _SpeechMarkTypes [SpeechMarkTypeList] <p>The type of speech marks returned for the input text.</p>
--- @param _VoiceId [VoiceId] <p> Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <a href="http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html">DescribeVoices</a> operation. </p>
--- @param _Text [Text] <p> Input text to synthesize. If you specify <code>ssml</code> as the <code>TextType</code>, follow the SSML format for the input text. </p>
--- @param _LexiconNames [LexiconNameList] <p>List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html">PutLexicon</a>.</p>
--- @param _SampleRate [SampleRate] <p> The audio frequency specified in Hz. </p> <p>The valid values for <code>mp3</code> and <code>ogg_vorbis</code> are "8000", "16000", and "22050". The default value is "22050". </p> <p> Valid values for <code>pcm</code> are "8000" and "16000" The default value is "16000". </p>
--- @param _TextType [TextType] <p> Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/ssml.html">Using SSML</a>.</p>
--- Required parameter: OutputFormat
--- Required parameter: Text
--- Required parameter: VoiceId
-function M.SynthesizeSpeechInput(_OutputFormat, _SpeechMarkTypes, _VoiceId, _Text, _LexiconNames, _SampleRate, _TextType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SynthesizeSpeechInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OutputFormat [OutputFormat] <p> The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json. </p>
+-- * SpeechMarkTypes [SpeechMarkTypeList] <p>The type of speech marks returned for the input text.</p>
+-- * VoiceId [VoiceId] <p> Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <a href="http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html">DescribeVoices</a> operation. </p>
+-- * Text [Text] <p> Input text to synthesize. If you specify <code>ssml</code> as the <code>TextType</code>, follow the SSML format for the input text. </p>
+-- * LexiconNames [LexiconNameList] <p>List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html">PutLexicon</a>.</p>
+-- * SampleRate [SampleRate] <p> The audio frequency specified in Hz. </p> <p>The valid values for <code>mp3</code> and <code>ogg_vorbis</code> are "8000", "16000", and "22050". The default value is "22050". </p> <p> Valid values for <code>pcm</code> are "8000" and "16000" The default value is "16000". </p>
+-- * TextType [TextType] <p> Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/ssml.html">Using SSML</a>.</p>
+-- Required key: OutputFormat
+-- Required key: Text
+-- Required key: VoiceId
+-- @return SynthesizeSpeechInput structure as a key-value pair table
+function M.SynthesizeSpeechInput(args)
+	assert(args, "You must provdide an argument table when creating SynthesizeSpeechInput")
 	local t = { 
-		["OutputFormat"] = _OutputFormat,
-		["SpeechMarkTypes"] = _SpeechMarkTypes,
-		["VoiceId"] = _VoiceId,
-		["Text"] = _Text,
-		["LexiconNames"] = _LexiconNames,
-		["SampleRate"] = _SampleRate,
-		["TextType"] = _TextType,
+		["OutputFormat"] = args["OutputFormat"],
+		["SpeechMarkTypes"] = args["SpeechMarkTypes"],
+		["VoiceId"] = args["VoiceId"],
+		["Text"] = args["Text"],
+		["LexiconNames"] = args["LexiconNames"],
+		["SampleRate"] = args["SampleRate"],
+		["TextType"] = args["TextType"],
 	}
 	asserts.AssertSynthesizeSpeechInput(t)
 	return t
@@ -761,11 +845,14 @@ end
 
 --- Create a structure of type InvalidLexiconException
 -- <p>Amazon Polly can't find the specified lexicon. Verify that the lexicon's name is spelled correctly, and then try again.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidLexiconException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLexiconException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidLexiconException structure as a key-value pair table
+function M.InvalidLexiconException(args)
+	assert(args, "You must provdide an argument table when creating InvalidLexiconException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidLexiconException(t)
 	return t
@@ -783,8 +870,11 @@ end
 
 --- Create a structure of type PutLexiconOutput
 --  
-function M.PutLexiconOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutLexiconOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PutLexiconOutput structure as a key-value pair table
+function M.PutLexiconOutput(args)
+	assert(args, "You must provdide an argument table when creating PutLexiconOutput")
 	local t = { 
 	}
 	asserts.AssertPutLexiconOutput(t)

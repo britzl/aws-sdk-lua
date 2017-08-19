@@ -48,39 +48,42 @@ end
 
 --- Create a structure of type FleetAttributes
 -- <p>General properties describing a fleet.</p>
--- @param _Status [FleetStatus] <p>Current status of the fleet.</p> <p>Possible fleet statuses include the following:</p> <ul> <li> <p> <b>NEW</b> – A new fleet has been defined and desired instances is set to 1. </p> </li> <li> <p> <b>DOWNLOADING/VALIDATING/BUILDING/ACTIVATING</b> – Amazon GameLift is setting up the new fleet, creating new instances with the game build and starting server processes.</p> </li> <li> <p> <b>ACTIVE</b> – Hosts can now accept game sessions.</p> </li> <li> <p> <b>ERROR</b> – An error occurred when downloading, validating, building, or activating the fleet.</p> </li> <li> <p> <b>DELETING</b> – Hosts are responding to a delete fleet request.</p> </li> <li> <p> <b>TERMINATED</b> – The fleet no longer exists.</p> </li> </ul>
--- @param _FleetArn [ArnStringModel] <p>Identifier for a fleet that is unique across all regions.</p>
--- @param _Description [NonZeroAndMaxString] <p>Human-readable description of the fleet.</p>
--- @param _NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Type of game session protection to set for all new instances started in the fleet.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
--- @param _BuildId [BuildId] <p>Unique identifier for a build.</p>
--- @param _TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _MetricGroups [MetricGroupList] <p>Names of metric groups that this fleet is included in. In Amazon CloudWatch, you can view metrics for an individual fleet or aggregated metrics for a fleets that are in a fleet metric group. Currently, a fleet can be included in only one metric group at a time.</p>
--- @param _ServerLaunchPath [NonZeroAndMaxString] <p>Path to a game server executable in the fleet's build, specified for fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server launch paths for fleets created after this date are specified in the fleet's <a>RuntimeConfiguration</a>.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet.</p>
--- @param _ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Fleet policy to limit the number of game sessions an individual player can create over a span of time.</p>
--- @param _LogPaths [StringList] <p>Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any log files in this location. These logs are in addition to game session logs; see more on game session logs in the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code">Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, Amazon GameLift will automatically upload logs that are stored on each instance at <code>C:\game\logs</code> (for Windows) or <code>/local/game/logs</code> (for Linux). Use the Amazon GameLift console to access stored logs. </p>
--- @param _OperatingSystem [OperatingSystem] <p>Operating system of the fleet's computing resources. A fleet's operating system depends on the OS specified for the build that is deployed on this fleet.</p>
--- @param _ServerLaunchParameters [NonZeroAndMaxString] <p>Game server launch parameters specified for fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server launch parameters for fleets created after this date are specified in the fleet's <a>RuntimeConfiguration</a>.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
-function M.FleetAttributes(_Status, _FleetArn, _Description, _NewGameSessionProtectionPolicy, _BuildId, _TerminationTime, _CreationTime, _MetricGroups, _ServerLaunchPath, _FleetId, _ResourceCreationLimitPolicy, _LogPaths, _OperatingSystem, _ServerLaunchParameters, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FleetAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [FleetStatus] <p>Current status of the fleet.</p> <p>Possible fleet statuses include the following:</p> <ul> <li> <p> <b>NEW</b> – A new fleet has been defined and desired instances is set to 1. </p> </li> <li> <p> <b>DOWNLOADING/VALIDATING/BUILDING/ACTIVATING</b> – Amazon GameLift is setting up the new fleet, creating new instances with the game build and starting server processes.</p> </li> <li> <p> <b>ACTIVE</b> – Hosts can now accept game sessions.</p> </li> <li> <p> <b>ERROR</b> – An error occurred when downloading, validating, building, or activating the fleet.</p> </li> <li> <p> <b>DELETING</b> – Hosts are responding to a delete fleet request.</p> </li> <li> <p> <b>TERMINATED</b> – The fleet no longer exists.</p> </li> </ul>
+-- * FleetArn [ArnStringModel] <p>Identifier for a fleet that is unique across all regions.</p>
+-- * Description [NonZeroAndMaxString] <p>Human-readable description of the fleet.</p>
+-- * NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Type of game session protection to set for all new instances started in the fleet.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
+-- * BuildId [BuildId] <p>Unique identifier for a build.</p>
+-- * TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * MetricGroups [MetricGroupList] <p>Names of metric groups that this fleet is included in. In Amazon CloudWatch, you can view metrics for an individual fleet or aggregated metrics for a fleets that are in a fleet metric group. Currently, a fleet can be included in only one metric group at a time.</p>
+-- * ServerLaunchPath [NonZeroAndMaxString] <p>Path to a game server executable in the fleet's build, specified for fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server launch paths for fleets created after this date are specified in the fleet's <a>RuntimeConfiguration</a>.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet.</p>
+-- * ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Fleet policy to limit the number of game sessions an individual player can create over a span of time.</p>
+-- * LogPaths [StringList] <p>Location of default log files. When a server process is shut down, Amazon GameLift captures and stores any log files in this location. These logs are in addition to game session logs; see more on game session logs in the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code">Amazon GameLift Developer Guide</a>. If no default log path for a fleet is specified, Amazon GameLift will automatically upload logs that are stored on each instance at <code>C:\game\logs</code> (for Windows) or <code>/local/game/logs</code> (for Linux). Use the Amazon GameLift console to access stored logs. </p>
+-- * OperatingSystem [OperatingSystem] <p>Operating system of the fleet's computing resources. A fleet's operating system depends on the OS specified for the build that is deployed on this fleet.</p>
+-- * ServerLaunchParameters [NonZeroAndMaxString] <p>Game server launch parameters specified for fleets created prior to 2016-08-04 (or AWS SDK v. 0.12.16). Server launch parameters for fleets created after this date are specified in the fleet's <a>RuntimeConfiguration</a>.</p>
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
+-- @return FleetAttributes structure as a key-value pair table
+function M.FleetAttributes(args)
+	assert(args, "You must provdide an argument table when creating FleetAttributes")
 	local t = { 
-		["Status"] = _Status,
-		["FleetArn"] = _FleetArn,
-		["Description"] = _Description,
-		["NewGameSessionProtectionPolicy"] = _NewGameSessionProtectionPolicy,
-		["BuildId"] = _BuildId,
-		["TerminationTime"] = _TerminationTime,
-		["CreationTime"] = _CreationTime,
-		["MetricGroups"] = _MetricGroups,
-		["ServerLaunchPath"] = _ServerLaunchPath,
-		["FleetId"] = _FleetId,
-		["ResourceCreationLimitPolicy"] = _ResourceCreationLimitPolicy,
-		["LogPaths"] = _LogPaths,
-		["OperatingSystem"] = _OperatingSystem,
-		["ServerLaunchParameters"] = _ServerLaunchParameters,
-		["Name"] = _Name,
+		["Status"] = args["Status"],
+		["FleetArn"] = args["FleetArn"],
+		["Description"] = args["Description"],
+		["NewGameSessionProtectionPolicy"] = args["NewGameSessionProtectionPolicy"],
+		["BuildId"] = args["BuildId"],
+		["TerminationTime"] = args["TerminationTime"],
+		["CreationTime"] = args["CreationTime"],
+		["MetricGroups"] = args["MetricGroups"],
+		["ServerLaunchPath"] = args["ServerLaunchPath"],
+		["FleetId"] = args["FleetId"],
+		["ResourceCreationLimitPolicy"] = args["ResourceCreationLimitPolicy"],
+		["LogPaths"] = args["LogPaths"],
+		["OperatingSystem"] = args["OperatingSystem"],
+		["ServerLaunchParameters"] = args["ServerLaunchParameters"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertFleetAttributes(t)
 	return t
@@ -101,15 +104,18 @@ end
 
 --- Create a structure of type DescribeFleetUtilizationInput
 -- <p>Represents the input for a request action.</p>
--- @param _FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-function M.DescribeFleetUtilizationInput(_FleetIds, _NextToken, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetUtilizationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+-- @return DescribeFleetUtilizationInput structure as a key-value pair table
+function M.DescribeFleetUtilizationInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetUtilizationInput")
 	local t = { 
-		["FleetIds"] = _FleetIds,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
+		["FleetIds"] = args["FleetIds"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeFleetUtilizationInput(t)
 	return t
@@ -130,15 +136,18 @@ end
 
 --- Create a structure of type DescribeFleetCapacityInput
 -- <p>Represents the input for a request action.</p>
--- @param _FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all fleets, leave this parameter empty.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-function M.DescribeFleetCapacityInput(_FleetIds, _NextToken, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetCapacityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all fleets, leave this parameter empty.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+-- @return DescribeFleetCapacityInput structure as a key-value pair table
+function M.DescribeFleetCapacityInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetCapacityInput")
 	local t = { 
-		["FleetIds"] = _FleetIds,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
+		["FleetIds"] = args["FleetIds"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeFleetCapacityInput(t)
 	return t
@@ -158,13 +167,16 @@ end
 
 --- Create a structure of type ListBuildsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _NextToken [NonEmptyString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
--- @param _Builds [BuildList] <p>Collection of build records that match the request.</p>
-function M.ListBuildsOutput(_NextToken, _Builds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NonEmptyString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- * Builds [BuildList] <p>Collection of build records that match the request.</p>
+-- @return ListBuildsOutput structure as a key-value pair table
+function M.ListBuildsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListBuildsOutput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Builds"] = _Builds,
+		["NextToken"] = args["NextToken"],
+		["Builds"] = args["Builds"],
 	}
 	asserts.AssertListBuildsOutput(t)
 	return t
@@ -185,15 +197,18 @@ end
 
 --- Create a structure of type EC2InstanceLimit
 -- <p>Maximum number of instances allowed based on the Amazon Elastic Compute Cloud (Amazon EC2) instance type. Instance limits can be retrieved by calling <a>DescribeEC2InstanceLimits</a>.</p>
--- @param _EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
--- @param _CurrentInstances [WholeNumber] <p>Number of instances of the specified type that are currently in use by this AWS account.</p>
--- @param _InstanceLimit [WholeNumber] <p>Number of instances allowed.</p>
-function M.EC2InstanceLimit(_EC2InstanceType, _CurrentInstances, _InstanceLimit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EC2InstanceLimit")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
+-- * CurrentInstances [WholeNumber] <p>Number of instances of the specified type that are currently in use by this AWS account.</p>
+-- * InstanceLimit [WholeNumber] <p>Number of instances allowed.</p>
+-- @return EC2InstanceLimit structure as a key-value pair table
+function M.EC2InstanceLimit(args)
+	assert(args, "You must provdide an argument table when creating EC2InstanceLimit")
 	local t = { 
-		["EC2InstanceType"] = _EC2InstanceType,
-		["CurrentInstances"] = _CurrentInstances,
-		["InstanceLimit"] = _InstanceLimit,
+		["EC2InstanceType"] = args["EC2InstanceType"],
+		["CurrentInstances"] = args["CurrentInstances"],
+		["InstanceLimit"] = args["InstanceLimit"],
 	}
 	asserts.AssertEC2InstanceLimit(t)
 	return t
@@ -216,18 +231,21 @@ end
 
 --- Create a structure of type DescribeScalingPoliciesInput
 -- <p>Represents the input for a request action.</p>
--- @param _StatusFilter [ScalingStatusType] <p>Scaling policy status to filter results on. A scaling policy is only in force when in an <code>ACTIVE</code> status.</p> <ul> <li> <p> <b>ACTIVE</b> – The scaling policy is currently in force.</p> </li> <li> <p> <b>UPDATEREQUESTED</b> – A request to update the scaling policy has been received.</p> </li> <li> <p> <b>UPDATING</b> – A change is being made to the scaling policy.</p> </li> <li> <p> <b>DELETEREQUESTED</b> – A request to delete the scaling policy has been received.</p> </li> <li> <p> <b>DELETING</b> – The scaling policy is being deleted.</p> </li> <li> <p> <b>DELETED</b> – The scaling policy has been deleted.</p> </li> <li> <p> <b>ERROR</b> – An error occurred in creating the policy. It should be removed and recreated.</p> </li> </ul>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to retrieve scaling policies for.</p>
--- Required parameter: FleetId
-function M.DescribeScalingPoliciesInput(_StatusFilter, _Limit, _NextToken, _FleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScalingPoliciesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StatusFilter [ScalingStatusType] <p>Scaling policy status to filter results on. A scaling policy is only in force when in an <code>ACTIVE</code> status.</p> <ul> <li> <p> <b>ACTIVE</b> – The scaling policy is currently in force.</p> </li> <li> <p> <b>UPDATEREQUESTED</b> – A request to update the scaling policy has been received.</p> </li> <li> <p> <b>UPDATING</b> – A change is being made to the scaling policy.</p> </li> <li> <p> <b>DELETEREQUESTED</b> – A request to delete the scaling policy has been received.</p> </li> <li> <p> <b>DELETING</b> – The scaling policy is being deleted.</p> </li> <li> <p> <b>DELETED</b> – The scaling policy has been deleted.</p> </li> <li> <p> <b>ERROR</b> – An error occurred in creating the policy. It should be removed and recreated.</p> </li> </ul>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to retrieve scaling policies for.</p>
+-- Required key: FleetId
+-- @return DescribeScalingPoliciesInput structure as a key-value pair table
+function M.DescribeScalingPoliciesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeScalingPoliciesInput")
 	local t = { 
-		["StatusFilter"] = _StatusFilter,
-		["Limit"] = _Limit,
-		["NextToken"] = _NextToken,
-		["FleetId"] = _FleetId,
+		["StatusFilter"] = args["StatusFilter"],
+		["Limit"] = args["Limit"],
+		["NextToken"] = args["NextToken"],
+		["FleetId"] = args["FleetId"],
 	}
 	asserts.AssertDescribeScalingPoliciesInput(t)
 	return t
@@ -246,11 +264,14 @@ end
 
 --- Create a structure of type UpdateFleetCapacityOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
-function M.UpdateFleetCapacityOutput(_FleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetCapacityOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
+-- @return UpdateFleetCapacityOutput structure as a key-value pair table
+function M.UpdateFleetCapacityOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateFleetCapacityOutput")
 	local t = { 
-		["FleetId"] = _FleetId,
+		["FleetId"] = args["FleetId"],
 	}
 	asserts.AssertUpdateFleetCapacityOutput(t)
 	return t
@@ -269,11 +290,14 @@ end
 
 --- Create a structure of type FleetCapacityExceededException
 -- <p>The specified fleet has no available instances to fulfill a <code>CreateGameSession</code> request. Clients can retry such requests immediately or after a waiting period.</p>
--- @param _Message [NonEmptyString] 
-function M.FleetCapacityExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FleetCapacityExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return FleetCapacityExceededException structure as a key-value pair table
+function M.FleetCapacityExceededException(args)
+	assert(args, "You must provdide an argument table when creating FleetCapacityExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertFleetCapacityExceededException(t)
 	return t
@@ -292,11 +316,14 @@ end
 
 --- Create a structure of type UpdateBuildOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _Build [Build] <p>Object that contains the updated build record.</p>
-function M.UpdateBuildOutput(_Build, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBuildOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Build [Build] <p>Object that contains the updated build record.</p>
+-- @return UpdateBuildOutput structure as a key-value pair table
+function M.UpdateBuildOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateBuildOutput")
 	local t = { 
-		["Build"] = _Build,
+		["Build"] = args["Build"],
 	}
 	asserts.AssertUpdateBuildOutput(t)
 	return t
@@ -315,11 +342,14 @@ end
 
 --- Create a structure of type StartGameSessionPlacementOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _GameSessionPlacement [GameSessionPlacement] <p>Object that describes the newly created game session placement. This object includes all the information provided in the request, as well as start/end time stamps and placement status. </p>
-function M.StartGameSessionPlacementOutput(_GameSessionPlacement, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartGameSessionPlacementOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSessionPlacement [GameSessionPlacement] <p>Object that describes the newly created game session placement. This object includes all the information provided in the request, as well as start/end time stamps and placement status. </p>
+-- @return StartGameSessionPlacementOutput structure as a key-value pair table
+function M.StartGameSessionPlacementOutput(args)
+	assert(args, "You must provdide an argument table when creating StartGameSessionPlacementOutput")
 	local t = { 
-		["GameSessionPlacement"] = _GameSessionPlacement,
+		["GameSessionPlacement"] = args["GameSessionPlacement"],
 	}
 	asserts.AssertStartGameSessionPlacementOutput(t)
 	return t
@@ -340,15 +370,18 @@ end
 
 --- Create a structure of type ListBuildsInput
 -- <p>Represents the input for a request action.</p>
--- @param _Status [BuildStatus] <p>Build status to filter results by. To retrieve all builds, leave this parameter empty.</p> <p>Possible build statuses include the following:</p> <ul> <li> <p> <b>INITIALIZED</b> – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. </p> </li> <li> <p> <b>READY</b> – The game build has been successfully uploaded. You can now create new fleets for this build.</p> </li> <li> <p> <b>FAILED</b> – The game build upload failed. You cannot create new fleets for this build. </p> </li> </ul>
--- @param _NextToken [NonEmptyString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-function M.ListBuildsInput(_Status, _NextToken, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [BuildStatus] <p>Build status to filter results by. To retrieve all builds, leave this parameter empty.</p> <p>Possible build statuses include the following:</p> <ul> <li> <p> <b>INITIALIZED</b> – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. </p> </li> <li> <p> <b>READY</b> – The game build has been successfully uploaded. You can now create new fleets for this build.</p> </li> <li> <p> <b>FAILED</b> – The game build upload failed. You cannot create new fleets for this build. </p> </li> </ul>
+-- * NextToken [NonEmptyString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- @return ListBuildsInput structure as a key-value pair table
+function M.ListBuildsInput(args)
+	assert(args, "You must provdide an argument table when creating ListBuildsInput")
 	local t = { 
-		["Status"] = _Status,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
+		["Status"] = args["Status"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListBuildsInput(t)
 	return t
@@ -367,11 +400,14 @@ end
 
 --- Create a structure of type UpdateRuntimeConfigurationOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _RuntimeConfiguration [RuntimeConfiguration] <p>The runtime configuration currently in force. If the update was successful, this object matches the one in the request.</p>
-function M.UpdateRuntimeConfigurationOutput(_RuntimeConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRuntimeConfigurationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuntimeConfiguration [RuntimeConfiguration] <p>The runtime configuration currently in force. If the update was successful, this object matches the one in the request.</p>
+-- @return UpdateRuntimeConfigurationOutput structure as a key-value pair table
+function M.UpdateRuntimeConfigurationOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateRuntimeConfigurationOutput")
 	local t = { 
-		["RuntimeConfiguration"] = _RuntimeConfiguration,
+		["RuntimeConfiguration"] = args["RuntimeConfiguration"],
 	}
 	asserts.AssertUpdateRuntimeConfigurationOutput(t)
 	return t
@@ -391,12 +427,15 @@ end
 
 --- Create a structure of type DeleteGameSessionQueueInput
 -- <p>Represents the input for a request action.</p>
--- @param _Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
--- Required parameter: Name
-function M.DeleteGameSessionQueueInput(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGameSessionQueueInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
+-- Required key: Name
+-- @return DeleteGameSessionQueueInput structure as a key-value pair table
+function M.DeleteGameSessionQueueInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteGameSessionQueueInput")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteGameSessionQueueInput(t)
 	return t
@@ -418,17 +457,20 @@ end
 
 --- Create a structure of type CreateBuildInput
 -- <p>Represents the input for a request action.</p>
--- @param _StorageLocation [S3Location] <p>Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon GameLift to access your Amazon S3 bucket (see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build">Create a Build with Files in Amazon S3</a>).</p>
--- @param _Version [NonZeroAndMaxString] <p>Version that is associated with this build. Version strings do not need to be unique. You can use <a>UpdateBuild</a> to change this value later. </p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a build. Build names do not need to be unique. You can use <a>UpdateBuild</a> to change this value later. </p>
--- @param _OperatingSystem [OperatingSystem] <p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system.</p>
-function M.CreateBuildInput(_StorageLocation, _Version, _Name, _OperatingSystem, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBuildInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StorageLocation [S3Location] <p>Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build in. Before calling <code>CreateBuild</code> with this location, you must allow Amazon GameLift to access your Amazon S3 bucket (see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build">Create a Build with Files in Amazon S3</a>).</p>
+-- * Version [NonZeroAndMaxString] <p>Version that is associated with this build. Version strings do not need to be unique. You can use <a>UpdateBuild</a> to change this value later. </p>
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a build. Build names do not need to be unique. You can use <a>UpdateBuild</a> to change this value later. </p>
+-- * OperatingSystem [OperatingSystem] <p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system.</p>
+-- @return CreateBuildInput structure as a key-value pair table
+function M.CreateBuildInput(args)
+	assert(args, "You must provdide an argument table when creating CreateBuildInput")
 	local t = { 
-		["StorageLocation"] = _StorageLocation,
-		["Version"] = _Version,
-		["Name"] = _Name,
-		["OperatingSystem"] = _OperatingSystem,
+		["StorageLocation"] = args["StorageLocation"],
+		["Version"] = args["Version"],
+		["Name"] = args["Name"],
+		["OperatingSystem"] = args["OperatingSystem"],
 	}
 	asserts.AssertCreateBuildInput(t)
 	return t
@@ -448,13 +490,16 @@ end
 
 --- Create a structure of type SearchGameSessionsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _GameSessions [GameSessionList] <p>Collection of objects containing game session properties for each session matching the request.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.SearchGameSessionsOutput(_GameSessions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchGameSessionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSessions [GameSessionList] <p>Collection of objects containing game session properties for each session matching the request.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @return SearchGameSessionsOutput structure as a key-value pair table
+function M.SearchGameSessionsOutput(args)
+	assert(args, "You must provdide an argument table when creating SearchGameSessionsOutput")
 	local t = { 
-		["GameSessions"] = _GameSessions,
-		["NextToken"] = _NextToken,
+		["GameSessions"] = args["GameSessions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertSearchGameSessionsOutput(t)
 	return t
@@ -475,15 +520,18 @@ end
 
 --- Create a structure of type AwsCredentials
 -- <p>AWS access credentials sometimes used for uploading game build files to Amazon GameLift. They are valid for a limited time. If they expire before you upload your game build, get a new set by calling <a>RequestUploadCredentials</a>.</p>
--- @param _SecretAccessKey [NonEmptyString] <p>Secret key for an AWS account.</p>
--- @param _SessionToken [NonEmptyString] <p>Token specific to a build ID.</p>
--- @param _AccessKeyId [NonEmptyString] <p>Access key for an AWS account.</p>
-function M.AwsCredentials(_SecretAccessKey, _SessionToken, _AccessKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AwsCredentials")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SecretAccessKey [NonEmptyString] <p>Secret key for an AWS account.</p>
+-- * SessionToken [NonEmptyString] <p>Token specific to a build ID.</p>
+-- * AccessKeyId [NonEmptyString] <p>Access key for an AWS account.</p>
+-- @return AwsCredentials structure as a key-value pair table
+function M.AwsCredentials(args)
+	assert(args, "You must provdide an argument table when creating AwsCredentials")
 	local t = { 
-		["SecretAccessKey"] = _SecretAccessKey,
-		["SessionToken"] = _SessionToken,
-		["AccessKeyId"] = _AccessKeyId,
+		["SecretAccessKey"] = args["SecretAccessKey"],
+		["SessionToken"] = args["SessionToken"],
+		["AccessKeyId"] = args["AccessKeyId"],
 	}
 	asserts.AssertAwsCredentials(t)
 	return t
@@ -502,11 +550,14 @@ end
 
 --- Create a structure of type DescribeEC2InstanceLimitsInput
 -- <p>Represents the input for a request action.</p>
--- @param _EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.</p>
-function M.DescribeEC2InstanceLimitsInput(_EC2InstanceType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEC2InstanceLimitsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.</p>
+-- @return DescribeEC2InstanceLimitsInput structure as a key-value pair table
+function M.DescribeEC2InstanceLimitsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeEC2InstanceLimitsInput")
 	local t = { 
-		["EC2InstanceType"] = _EC2InstanceType,
+		["EC2InstanceType"] = args["EC2InstanceType"],
 	}
 	asserts.AssertDescribeEC2InstanceLimitsInput(t)
 	return t
@@ -527,15 +578,18 @@ end
 
 --- Create a structure of type CreateBuildOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _StorageLocation [S3Location] <p>Amazon S3 location specified in the request.</p>
--- @param _Build [Build] <p>The newly created build record, including a unique build ID and status. </p>
--- @param _UploadCredentials [AwsCredentials] <p>This element is not currently in use.</p>
-function M.CreateBuildOutput(_StorageLocation, _Build, _UploadCredentials, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBuildOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StorageLocation [S3Location] <p>Amazon S3 location specified in the request.</p>
+-- * Build [Build] <p>The newly created build record, including a unique build ID and status. </p>
+-- * UploadCredentials [AwsCredentials] <p>This element is not currently in use.</p>
+-- @return CreateBuildOutput structure as a key-value pair table
+function M.CreateBuildOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateBuildOutput")
 	local t = { 
-		["StorageLocation"] = _StorageLocation,
-		["Build"] = _Build,
-		["UploadCredentials"] = _UploadCredentials,
+		["StorageLocation"] = args["StorageLocation"],
+		["Build"] = args["Build"],
+		["UploadCredentials"] = args["UploadCredentials"],
 	}
 	asserts.AssertCreateBuildOutput(t)
 	return t
@@ -555,13 +609,16 @@ end
 
 --- Create a structure of type RequestUploadCredentialsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _StorageLocation [S3Location] <p>Amazon S3 path and key, identifying where the game build files are stored.</p>
--- @param _UploadCredentials [AwsCredentials] <p>AWS credentials required when uploading a game build to the storage location. These credentials have a limited lifespan and are valid only for the build they were issued for.</p>
-function M.RequestUploadCredentialsOutput(_StorageLocation, _UploadCredentials, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestUploadCredentialsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StorageLocation [S3Location] <p>Amazon S3 path and key, identifying where the game build files are stored.</p>
+-- * UploadCredentials [AwsCredentials] <p>AWS credentials required when uploading a game build to the storage location. These credentials have a limited lifespan and are valid only for the build they were issued for.</p>
+-- @return RequestUploadCredentialsOutput structure as a key-value pair table
+function M.RequestUploadCredentialsOutput(args)
+	assert(args, "You must provdide an argument table when creating RequestUploadCredentialsOutput")
 	local t = { 
-		["StorageLocation"] = _StorageLocation,
-		["UploadCredentials"] = _UploadCredentials,
+		["StorageLocation"] = args["StorageLocation"],
+		["UploadCredentials"] = args["UploadCredentials"],
 	}
 	asserts.AssertRequestUploadCredentialsOutput(t)
 	return t
@@ -582,15 +639,18 @@ end
 
 --- Create a structure of type ListFleetsInput
 -- <p>Represents the input for a request action.</p>
--- @param _BuildId [BuildId] <p>Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified build. To retrieve all fleets, leave this parameter empty.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
-function M.ListFleetsInput(_BuildId, _NextToken, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFleetsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BuildId [BuildId] <p>Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified build. To retrieve all fleets, leave this parameter empty.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- @return ListFleetsInput structure as a key-value pair table
+function M.ListFleetsInput(args)
+	assert(args, "You must provdide an argument table when creating ListFleetsInput")
 	local t = { 
-		["BuildId"] = _BuildId,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
+		["BuildId"] = args["BuildId"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListFleetsInput(t)
 	return t
@@ -610,13 +670,16 @@ end
 
 --- Create a structure of type DescribeGameSessionQueuesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _GameSessionQueues [GameSessionQueueList] <p>Collection of objects that describes the requested game session queues.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeGameSessionQueuesOutput(_GameSessionQueues, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionQueuesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSessionQueues [GameSessionQueueList] <p>Collection of objects that describes the requested game session queues.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @return DescribeGameSessionQueuesOutput structure as a key-value pair table
+function M.DescribeGameSessionQueuesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeGameSessionQueuesOutput")
 	local t = { 
-		["GameSessionQueues"] = _GameSessionQueues,
-		["NextToken"] = _NextToken,
+		["GameSessionQueues"] = args["GameSessionQueues"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeGameSessionQueuesOutput(t)
 	return t
@@ -635,11 +698,14 @@ end
 
 --- Create a structure of type IdempotentParameterMismatchException
 -- <p>A game session with this custom ID string already exists in this fleet. Resolve this conflict before retrying this request.</p>
--- @param _Message [NonEmptyString] 
-function M.IdempotentParameterMismatchException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdempotentParameterMismatchException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return IdempotentParameterMismatchException structure as a key-value pair table
+function M.IdempotentParameterMismatchException(args)
+	assert(args, "You must provdide an argument table when creating IdempotentParameterMismatchException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertIdempotentParameterMismatchException(t)
 	return t
@@ -663,21 +729,24 @@ end
 
 --- Create a structure of type DescribeGameSessionsInput
 -- <p>Represents the input for a request action.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve. You can use either a <code>GameSessionId</code> or <code>GameSessionArn</code> value. </p>
--- @param _StatusFilter [NonZeroAndMaxString] <p>Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>, <code>TERMINATED</code>, <code>ACTIVATING</code>, and <code>TERMINATING</code> (the last two are transitory). </p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to retrieve all game sessions for.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param _AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for. </p>
-function M.DescribeGameSessionsInput(_Limit, _GameSessionId, _StatusFilter, _FleetId, _NextToken, _AliasId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- * GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve. You can use either a <code>GameSessionId</code> or <code>GameSessionArn</code> value. </p>
+-- * StatusFilter [NonZeroAndMaxString] <p>Game session status to filter results on. Possible game session statuses include <code>ACTIVE</code>, <code>TERMINATED</code>, <code>ACTIVATING</code>, and <code>TERMINATING</code> (the last two are transitory). </p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to retrieve all game sessions for.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- * AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for. </p>
+-- @return DescribeGameSessionsInput structure as a key-value pair table
+function M.DescribeGameSessionsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeGameSessionsInput")
 	local t = { 
-		["Limit"] = _Limit,
-		["GameSessionId"] = _GameSessionId,
-		["StatusFilter"] = _StatusFilter,
-		["FleetId"] = _FleetId,
-		["NextToken"] = _NextToken,
-		["AliasId"] = _AliasId,
+		["Limit"] = args["Limit"],
+		["GameSessionId"] = args["GameSessionId"],
+		["StatusFilter"] = args["StatusFilter"],
+		["FleetId"] = args["FleetId"],
+		["NextToken"] = args["NextToken"],
+		["AliasId"] = args["AliasId"],
 	}
 	asserts.AssertDescribeGameSessionsInput(t)
 	return t
@@ -703,21 +772,24 @@ end
 
 --- Create a structure of type IpPermission
 -- <p>A range of IP addresses and port settings that allow inbound traffic to connect to server processes on Amazon GameLift. Each game session hosted on a fleet is assigned a unique combination of IP address and port number, which must fall into the fleet's allowed ranges. This combination is included in the <a>GameSession</a> object. </p>
--- @param _ToPort [PortNumber] <p>Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than <code>FromPort</code>.</p>
--- @param _FromPort [PortNumber] <p>Starting value for a range of allowed port numbers.</p>
--- @param _Protocol [IpProtocol] <p>Network communication protocol used by the fleet.</p>
--- @param _IpRange [NonBlankString] <p>Range of allowed IP addresses. This value must be expressed in CIDR notation. Example: "<code>000.000.000.000/[subnet mask]</code>" or optionally the shortened version "<code>0.0.0.0/[subnet mask]</code>".</p>
--- Required parameter: FromPort
--- Required parameter: ToPort
--- Required parameter: IpRange
--- Required parameter: Protocol
-function M.IpPermission(_ToPort, _FromPort, _Protocol, _IpRange, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IpPermission")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ToPort [PortNumber] <p>Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than <code>FromPort</code>.</p>
+-- * FromPort [PortNumber] <p>Starting value for a range of allowed port numbers.</p>
+-- * Protocol [IpProtocol] <p>Network communication protocol used by the fleet.</p>
+-- * IpRange [NonBlankString] <p>Range of allowed IP addresses. This value must be expressed in CIDR notation. Example: "<code>000.000.000.000/[subnet mask]</code>" or optionally the shortened version "<code>0.0.0.0/[subnet mask]</code>".</p>
+-- Required key: FromPort
+-- Required key: ToPort
+-- Required key: IpRange
+-- Required key: Protocol
+-- @return IpPermission structure as a key-value pair table
+function M.IpPermission(args)
+	assert(args, "You must provdide an argument table when creating IpPermission")
 	local t = { 
-		["ToPort"] = _ToPort,
-		["FromPort"] = _FromPort,
-		["Protocol"] = _Protocol,
-		["IpRange"] = _IpRange,
+		["ToPort"] = args["ToPort"],
+		["FromPort"] = args["FromPort"],
+		["Protocol"] = args["Protocol"],
+		["IpRange"] = args["IpRange"],
 	}
 	asserts.AssertIpPermission(t)
 	return t
@@ -742,23 +814,26 @@ end
 
 --- Create a structure of type Instance
 -- <p>Properties that describe an instance of a virtual computing resource that hosts one or more game servers. A fleet contains zero or more instances.</p>
--- @param _Status [InstanceStatus] <p>Current status of the instance. Possible statuses include the following:</p> <ul> <li> <p> <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined in the fleet's runtime configuration. </p> </li> <li> <p> <b>ACTIVE</b> – The instance has been successfully created and at least one server process has successfully launched and reported back to Amazon GameLift that it is ready to host a game session. The instance is now considered ready to host game sessions. </p> </li> <li> <p> <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity during a scaling down event or to recycle resources in the event of a problem.</p> </li> </ul>
--- @param _InstanceId [InstanceId] <p>Unique identifier for an instance.</p>
--- @param _Type [EC2InstanceType] <p>EC2 instance type that defines the computing resources of this instance. </p>
--- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet that the instance is in.</p>
--- @param _IpAddress [IpAddress] <p>IP address assigned to the instance.</p>
--- @param _OperatingSystem [OperatingSystem] <p>Operating system that is running on this instance. </p>
-function M.Instance(_Status, _InstanceId, _Type, _CreationTime, _FleetId, _IpAddress, _OperatingSystem, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [InstanceStatus] <p>Current status of the instance. Possible statuses include the following:</p> <ul> <li> <p> <b>PENDING</b> – The instance is in the process of being created and launching server processes as defined in the fleet's runtime configuration. </p> </li> <li> <p> <b>ACTIVE</b> – The instance has been successfully created and at least one server process has successfully launched and reported back to Amazon GameLift that it is ready to host a game session. The instance is now considered ready to host game sessions. </p> </li> <li> <p> <b>TERMINATING</b> – The instance is in the process of shutting down. This may happen to reduce capacity during a scaling down event or to recycle resources in the event of a problem.</p> </li> </ul>
+-- * InstanceId [InstanceId] <p>Unique identifier for an instance.</p>
+-- * Type [EC2InstanceType] <p>EC2 instance type that defines the computing resources of this instance. </p>
+-- * CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet that the instance is in.</p>
+-- * IpAddress [IpAddress] <p>IP address assigned to the instance.</p>
+-- * OperatingSystem [OperatingSystem] <p>Operating system that is running on this instance. </p>
+-- @return Instance structure as a key-value pair table
+function M.Instance(args)
+	assert(args, "You must provdide an argument table when creating Instance")
 	local t = { 
-		["Status"] = _Status,
-		["InstanceId"] = _InstanceId,
-		["Type"] = _Type,
-		["CreationTime"] = _CreationTime,
-		["FleetId"] = _FleetId,
-		["IpAddress"] = _IpAddress,
-		["OperatingSystem"] = _OperatingSystem,
+		["Status"] = args["Status"],
+		["InstanceId"] = args["InstanceId"],
+		["Type"] = args["Type"],
+		["CreationTime"] = args["CreationTime"],
+		["FleetId"] = args["FleetId"],
+		["IpAddress"] = args["IpAddress"],
+		["OperatingSystem"] = args["OperatingSystem"],
 	}
 	asserts.AssertInstance(t)
 	return t
@@ -778,12 +853,15 @@ end
 
 --- Create a structure of type StopGameSessionPlacementInput
 -- <p>Represents the input for a request action.</p>
--- @param _PlacementId [IdStringModel] <p>Unique identifier for a game session placement to cancel.</p>
--- Required parameter: PlacementId
-function M.StopGameSessionPlacementInput(_PlacementId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopGameSessionPlacementInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlacementId [IdStringModel] <p>Unique identifier for a game session placement to cancel.</p>
+-- Required key: PlacementId
+-- @return StopGameSessionPlacementInput structure as a key-value pair table
+function M.StopGameSessionPlacementInput(args)
+	assert(args, "You must provdide an argument table when creating StopGameSessionPlacementInput")
 	local t = { 
-		["PlacementId"] = _PlacementId,
+		["PlacementId"] = args["PlacementId"],
 	}
 	asserts.AssertStopGameSessionPlacementInput(t)
 	return t
@@ -806,19 +884,22 @@ end
 
 --- Create a structure of type Event
 -- <p>Log entry describing an event involving Amazon GameLift resources (such as a fleet). In addition to tracking activity, event codes and messages can provide additional information for troubleshooting and debugging problems.</p>
--- @param _EventId [NonZeroAndMaxString] <p>Unique identifier for a fleet event.</p>
--- @param _ResourceId [NonZeroAndMaxString] <p>Unique identifier for an event resource, such as a fleet ID.</p>
--- @param _Message [NonEmptyString] <p>Additional information related to the event.</p>
--- @param _EventTime [Timestamp] <p>Time stamp indicating when this event occurred. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _EventCode [EventCode] <p>Type of event being logged. </p>
-function M.Event(_EventId, _ResourceId, _Message, _EventTime, _EventCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Event")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventId [NonZeroAndMaxString] <p>Unique identifier for a fleet event.</p>
+-- * ResourceId [NonZeroAndMaxString] <p>Unique identifier for an event resource, such as a fleet ID.</p>
+-- * Message [NonEmptyString] <p>Additional information related to the event.</p>
+-- * EventTime [Timestamp] <p>Time stamp indicating when this event occurred. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * EventCode [EventCode] <p>Type of event being logged. </p>
+-- @return Event structure as a key-value pair table
+function M.Event(args)
+	assert(args, "You must provdide an argument table when creating Event")
 	local t = { 
-		["EventId"] = _EventId,
-		["ResourceId"] = _ResourceId,
-		["Message"] = _Message,
-		["EventTime"] = _EventTime,
-		["EventCode"] = _EventCode,
+		["EventId"] = args["EventId"],
+		["ResourceId"] = args["ResourceId"],
+		["Message"] = args["Message"],
+		["EventTime"] = args["EventTime"],
+		["EventCode"] = args["EventCode"],
 	}
 	asserts.AssertEvent(t)
 	return t
@@ -846,26 +927,29 @@ end
 
 --- Create a structure of type StartGameSessionPlacementInput
 -- <p>Represents the input for a request action.</p>
--- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
--- @param _PlacementId [IdStringModel] <p>Unique identifier to assign to the new game session placement. This value is developer-defined. The value must be unique across all regions and cannot be reused unless you are resubmitting a canceled or timed-out placement request.</p>
--- @param _GameSessionName [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
--- @param _GameSessionQueueName [GameSessionQueueName] <p>Name of the queue to use to place the new game session.</p>
--- @param _GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
--- @param _DesiredPlayerSessions [DesiredPlayerSessionList] <p>Set of information on each player to create a player session for.</p>
--- @param _PlayerLatencies [PlayerLatencyList] <p>Set of values, expressed in milliseconds, indicating the amount of latency that players are experiencing when connected to AWS regions. This information is used to try to place the new game session where it can offer the best possible gameplay experience for the players. </p>
--- Required parameter: PlacementId
--- Required parameter: GameSessionQueueName
--- Required parameter: MaximumPlayerSessionCount
-function M.StartGameSessionPlacementInput(_MaximumPlayerSessionCount, _PlacementId, _GameSessionName, _GameSessionQueueName, _GameProperties, _DesiredPlayerSessions, _PlayerLatencies, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartGameSessionPlacementInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
+-- * PlacementId [IdStringModel] <p>Unique identifier to assign to the new game session placement. This value is developer-defined. The value must be unique across all regions and cannot be reused unless you are resubmitting a canceled or timed-out placement request.</p>
+-- * GameSessionName [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
+-- * GameSessionQueueName [GameSessionQueueName] <p>Name of the queue to use to place the new game session.</p>
+-- * GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
+-- * DesiredPlayerSessions [DesiredPlayerSessionList] <p>Set of information on each player to create a player session for.</p>
+-- * PlayerLatencies [PlayerLatencyList] <p>Set of values, expressed in milliseconds, indicating the amount of latency that players are experiencing when connected to AWS regions. This information is used to try to place the new game session where it can offer the best possible gameplay experience for the players. </p>
+-- Required key: PlacementId
+-- Required key: GameSessionQueueName
+-- Required key: MaximumPlayerSessionCount
+-- @return StartGameSessionPlacementInput structure as a key-value pair table
+function M.StartGameSessionPlacementInput(args)
+	assert(args, "You must provdide an argument table when creating StartGameSessionPlacementInput")
 	local t = { 
-		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
-		["PlacementId"] = _PlacementId,
-		["GameSessionName"] = _GameSessionName,
-		["GameSessionQueueName"] = _GameSessionQueueName,
-		["GameProperties"] = _GameProperties,
-		["DesiredPlayerSessions"] = _DesiredPlayerSessions,
-		["PlayerLatencies"] = _PlayerLatencies,
+		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
+		["PlacementId"] = args["PlacementId"],
+		["GameSessionName"] = args["GameSessionName"],
+		["GameSessionQueueName"] = args["GameSessionQueueName"],
+		["GameProperties"] = args["GameProperties"],
+		["DesiredPlayerSessions"] = args["DesiredPlayerSessions"],
+		["PlayerLatencies"] = args["PlayerLatencies"],
 	}
 	asserts.AssertStartGameSessionPlacementInput(t)
 	return t
@@ -885,13 +969,16 @@ end
 
 --- Create a structure of type DescribeFleetAttributesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _FleetAttributes [FleetAttributesList] <p>Collection of objects containing attribute metadata for each requested fleet ID.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeFleetAttributesOutput(_FleetAttributes, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetAttributesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetAttributes [FleetAttributesList] <p>Collection of objects containing attribute metadata for each requested fleet ID.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @return DescribeFleetAttributesOutput structure as a key-value pair table
+function M.DescribeFleetAttributesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetAttributesOutput")
 	local t = { 
-		["FleetAttributes"] = _FleetAttributes,
-		["NextToken"] = _NextToken,
+		["FleetAttributes"] = args["FleetAttributes"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeFleetAttributesOutput(t)
 	return t
@@ -910,11 +997,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The requested operation would cause the resource to exceed the allowed service limit. Resolve the issue before retrying.</p>
--- @param _Message [NonEmptyString] 
-function M.LimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -933,11 +1023,14 @@ end
 
 --- Create a structure of type GetInstanceAccessOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _InstanceAccess [InstanceAccess] <p>Object that contains connection information for a fleet instance, including IP address and access credentials.</p>
-function M.GetInstanceAccessOutput(_InstanceAccess, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceAccessOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceAccess [InstanceAccess] <p>Object that contains connection information for a fleet instance, including IP address and access credentials.</p>
+-- @return GetInstanceAccessOutput structure as a key-value pair table
+function M.GetInstanceAccessOutput(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceAccessOutput")
 	local t = { 
-		["InstanceAccess"] = _InstanceAccess,
+		["InstanceAccess"] = args["InstanceAccess"],
 	}
 	asserts.AssertGetInstanceAccessOutput(t)
 	return t
@@ -960,19 +1053,22 @@ end
 
 --- Create a structure of type FleetUtilization
 -- <p>Current status of fleet utilization, including the number of game and player sessions being hosted.</p>
--- @param _CurrentPlayerSessionCount [WholeNumber] <p>Number of active player sessions currently being hosted on all instances in the fleet.</p>
--- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum players allowed across all game sessions currently being hosted on all instances in the fleet.</p>
--- @param _ActiveServerProcessCount [WholeNumber] <p>Number of server processes in an <code>ACTIVE</code> status currently running across all instances in the fleet</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet.</p>
--- @param _ActiveGameSessionCount [WholeNumber] <p>Number of active game sessions currently being hosted on all instances in the fleet.</p>
-function M.FleetUtilization(_CurrentPlayerSessionCount, _MaximumPlayerSessionCount, _ActiveServerProcessCount, _FleetId, _ActiveGameSessionCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FleetUtilization")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CurrentPlayerSessionCount [WholeNumber] <p>Number of active player sessions currently being hosted on all instances in the fleet.</p>
+-- * MaximumPlayerSessionCount [WholeNumber] <p>Maximum players allowed across all game sessions currently being hosted on all instances in the fleet.</p>
+-- * ActiveServerProcessCount [WholeNumber] <p>Number of server processes in an <code>ACTIVE</code> status currently running across all instances in the fleet</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet.</p>
+-- * ActiveGameSessionCount [WholeNumber] <p>Number of active game sessions currently being hosted on all instances in the fleet.</p>
+-- @return FleetUtilization structure as a key-value pair table
+function M.FleetUtilization(args)
+	assert(args, "You must provdide an argument table when creating FleetUtilization")
 	local t = { 
-		["CurrentPlayerSessionCount"] = _CurrentPlayerSessionCount,
-		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
-		["ActiveServerProcessCount"] = _ActiveServerProcessCount,
-		["FleetId"] = _FleetId,
-		["ActiveGameSessionCount"] = _ActiveGameSessionCount,
+		["CurrentPlayerSessionCount"] = args["CurrentPlayerSessionCount"],
+		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
+		["ActiveServerProcessCount"] = args["ActiveServerProcessCount"],
+		["FleetId"] = args["FleetId"],
+		["ActiveGameSessionCount"] = args["ActiveGameSessionCount"],
 	}
 	asserts.AssertFleetUtilization(t)
 	return t
@@ -992,13 +1088,16 @@ end
 
 --- Create a structure of type PlayerLatencyPolicy
 -- <p>Queue setting that determines the highest latency allowed for individual players when placing a game session. When a latency policy is in force, a game session cannot be placed at any destination in a region where a player is reporting latency higher than the cap. Latency policies are only enforced when the placement request contains player latency information.</p> <p>Latency policy-related operations include:</p> <ul> <li> <p> <a>CreateGameSessionQueue</a> </p> </li> <li> <p> <a>UpdateGameSessionQueue</a> </p> </li> <li> <p> <a>StartGameSessionPlacement</a> </p> </li> </ul>
--- @param _MaximumIndividualPlayerLatencyMilliseconds [WholeNumber] <p>The maximum latency value that is allowed for any player, in milliseconds. All policies must have a value set for this property.</p>
--- @param _PolicyDurationSeconds [WholeNumber] <p>The length of time, in seconds, that the policy is enforced while placing a new game session. A null value for this property means that the policy is enforced until the queue times out.</p>
-function M.PlayerLatencyPolicy(_MaximumIndividualPlayerLatencyMilliseconds, _PolicyDurationSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlayerLatencyPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaximumIndividualPlayerLatencyMilliseconds [WholeNumber] <p>The maximum latency value that is allowed for any player, in milliseconds. All policies must have a value set for this property.</p>
+-- * PolicyDurationSeconds [WholeNumber] <p>The length of time, in seconds, that the policy is enforced while placing a new game session. A null value for this property means that the policy is enforced until the queue times out.</p>
+-- @return PlayerLatencyPolicy structure as a key-value pair table
+function M.PlayerLatencyPolicy(args)
+	assert(args, "You must provdide an argument table when creating PlayerLatencyPolicy")
 	local t = { 
-		["MaximumIndividualPlayerLatencyMilliseconds"] = _MaximumIndividualPlayerLatencyMilliseconds,
-		["PolicyDurationSeconds"] = _PolicyDurationSeconds,
+		["MaximumIndividualPlayerLatencyMilliseconds"] = args["MaximumIndividualPlayerLatencyMilliseconds"],
+		["PolicyDurationSeconds"] = args["PolicyDurationSeconds"],
 	}
 	asserts.AssertPlayerLatencyPolicy(t)
 	return t
@@ -1017,11 +1116,14 @@ end
 
 --- Create a structure of type InternalServiceException
 -- <p>The service encountered an unrecoverable internal failure while processing the request. Clients can retry such requests immediately or after a waiting period.</p>
--- @param _Message [NonEmptyString] 
-function M.InternalServiceException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return InternalServiceException structure as a key-value pair table
+function M.InternalServiceException(args)
+	assert(args, "You must provdide an argument table when creating InternalServiceException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInternalServiceException(t)
 	return t
@@ -1040,11 +1142,14 @@ end
 
 --- Create a structure of type DescribeRuntimeConfigurationOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _RuntimeConfiguration [RuntimeConfiguration] <p>Instructions describing how server processes should be launched and maintained on each instance in the fleet.</p>
-function M.DescribeRuntimeConfigurationOutput(_RuntimeConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRuntimeConfigurationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuntimeConfiguration [RuntimeConfiguration] <p>Instructions describing how server processes should be launched and maintained on each instance in the fleet.</p>
+-- @return DescribeRuntimeConfigurationOutput structure as a key-value pair table
+function M.DescribeRuntimeConfigurationOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeRuntimeConfigurationOutput")
 	local t = { 
-		["RuntimeConfiguration"] = _RuntimeConfiguration,
+		["RuntimeConfiguration"] = args["RuntimeConfiguration"],
 	}
 	asserts.AssertDescribeRuntimeConfigurationOutput(t)
 	return t
@@ -1069,23 +1174,26 @@ end
 
 --- Create a structure of type Build
 -- <p>Properties describing a game build.</p> <p>Build-related operations include:</p> <ul> <li> <p> <a>CreateBuild</a> </p> </li> <li> <p> <a>ListBuilds</a> </p> </li> <li> <p> <a>DescribeBuild</a> </p> </li> <li> <p> <a>UpdateBuild</a> </p> </li> <li> <p> <a>DeleteBuild</a> </p> </li> </ul>
--- @param _Status [BuildStatus] <p>Current status of the build.</p> <p>Possible build statuses include the following:</p> <ul> <li> <p> <b>INITIALIZED</b> – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. </p> </li> <li> <p> <b>READY</b> – The game build has been successfully uploaded. You can now create new fleets for this build.</p> </li> <li> <p> <b>FAILED</b> – The game build upload failed. You cannot create new fleets for this build. </p> </li> </ul>
--- @param _Name [FreeText] <p>Descriptive label that is associated with a build. Build names do not need to be unique. It can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.</p>
--- @param _BuildId [BuildId] <p>Unique identifier for a build.</p>
--- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _SizeOnDisk [PositiveLong] <p>File size of the uploaded game build, expressed in bytes. When the build status is <code>INITIALIZED</code>, this value is 0.</p>
--- @param _Version [FreeText] <p>Version that is associated with this build. Version strings do not need to be unique. This value can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.</p>
--- @param _OperatingSystem [OperatingSystem] <p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build.</p>
-function M.Build(_Status, _Name, _BuildId, _CreationTime, _SizeOnDisk, _Version, _OperatingSystem, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Build")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [BuildStatus] <p>Current status of the build.</p> <p>Possible build statuses include the following:</p> <ul> <li> <p> <b>INITIALIZED</b> – A new build has been defined, but no files have been uploaded. You cannot create fleets for builds that are in this status. When a build is successfully created, the build status is set to this value. </p> </li> <li> <p> <b>READY</b> – The game build has been successfully uploaded. You can now create new fleets for this build.</p> </li> <li> <p> <b>FAILED</b> – The game build upload failed. You cannot create new fleets for this build. </p> </li> </ul>
+-- * Name [FreeText] <p>Descriptive label that is associated with a build. Build names do not need to be unique. It can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.</p>
+-- * BuildId [BuildId] <p>Unique identifier for a build.</p>
+-- * CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * SizeOnDisk [PositiveLong] <p>File size of the uploaded game build, expressed in bytes. When the build status is <code>INITIALIZED</code>, this value is 0.</p>
+-- * Version [FreeText] <p>Version that is associated with this build. Version strings do not need to be unique. This value can be set using <a>CreateBuild</a> or <a>UpdateBuild</a>.</p>
+-- * OperatingSystem [OperatingSystem] <p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build.</p>
+-- @return Build structure as a key-value pair table
+function M.Build(args)
+	assert(args, "You must provdide an argument table when creating Build")
 	local t = { 
-		["Status"] = _Status,
-		["Name"] = _Name,
-		["BuildId"] = _BuildId,
-		["CreationTime"] = _CreationTime,
-		["SizeOnDisk"] = _SizeOnDisk,
-		["Version"] = _Version,
-		["OperatingSystem"] = _OperatingSystem,
+		["Status"] = args["Status"],
+		["Name"] = args["Name"],
+		["BuildId"] = args["BuildId"],
+		["CreationTime"] = args["CreationTime"],
+		["SizeOnDisk"] = args["SizeOnDisk"],
+		["Version"] = args["Version"],
+		["OperatingSystem"] = args["OperatingSystem"],
 	}
 	asserts.AssertBuild(t)
 	return t
@@ -1104,11 +1212,14 @@ end
 
 --- Create a structure of type DescribeFleetPortSettingsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _InboundPermissions [IpPermissionsList] <p>Object that contains port settings for the requested fleet ID.</p>
-function M.DescribeFleetPortSettingsOutput(_InboundPermissions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetPortSettingsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InboundPermissions [IpPermissionsList] <p>Object that contains port settings for the requested fleet ID.</p>
+-- @return DescribeFleetPortSettingsOutput structure as a key-value pair table
+function M.DescribeFleetPortSettingsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetPortSettingsOutput")
 	local t = { 
-		["InboundPermissions"] = _InboundPermissions,
+		["InboundPermissions"] = args["InboundPermissions"],
 	}
 	asserts.AssertDescribeFleetPortSettingsOutput(t)
 	return t
@@ -1127,11 +1238,14 @@ end
 
 --- Create a structure of type CreatePlayerSessionOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _PlayerSession [PlayerSession] <p>Object that describes the newly created player session record.</p>
-function M.CreatePlayerSessionOutput(_PlayerSession, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlayerSessionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlayerSession [PlayerSession] <p>Object that describes the newly created player session record.</p>
+-- @return CreatePlayerSessionOutput structure as a key-value pair table
+function M.CreatePlayerSessionOutput(args)
+	assert(args, "You must provdide an argument table when creating CreatePlayerSessionOutput")
 	local t = { 
-		["PlayerSession"] = _PlayerSession,
+		["PlayerSession"] = args["PlayerSession"],
 	}
 	asserts.AssertCreatePlayerSessionOutput(t)
 	return t
@@ -1150,11 +1264,14 @@ end
 
 --- Create a structure of type DescribeBuildOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _Build [Build] <p>Set of properties describing the requested build.</p>
-function M.DescribeBuildOutput(_Build, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBuildOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Build [Build] <p>Set of properties describing the requested build.</p>
+-- @return DescribeBuildOutput structure as a key-value pair table
+function M.DescribeBuildOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeBuildOutput")
 	local t = { 
-		["Build"] = _Build,
+		["Build"] = args["Build"],
 	}
 	asserts.AssertDescribeBuildOutput(t)
 	return t
@@ -1181,27 +1298,30 @@ end
 
 --- Create a structure of type ScalingPolicy
 -- <p>Rule that controls how a fleet is scaled. Scaling policies are uniquely identified by the combination of name and fleet ID.</p>
--- @param _Status [ScalingStatusType] <p>Current status of the scaling policy. The scaling policy is only in force when in an <code>ACTIVE</code> status.</p> <ul> <li> <p> <b>ACTIVE</b> – The scaling policy is currently in force.</p> </li> <li> <p> <b>UPDATE_REQUESTED</b> – A request to update the scaling policy has been received.</p> </li> <li> <p> <b>UPDATING</b> – A change is being made to the scaling policy.</p> </li> <li> <p> <b>DELETE_REQUESTED</b> – A request to delete the scaling policy has been received.</p> </li> <li> <p> <b>DELETING</b> – The scaling policy is being deleted.</p> </li> <li> <p> <b>DELETED</b> – The scaling policy has been deleted.</p> </li> <li> <p> <b>ERROR</b> – An error occurred in creating the policy. It should be removed and recreated.</p> </li> </ul>
--- @param _EvaluationPeriods [PositiveInteger] <p>Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
--- @param _ComparisonOperator [ComparisonOperatorType] <p>Comparison operator to use when measuring a metric against the threshold value.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet that is associated with this scaling policy.</p>
--- @param _Threshold [Double] <p>Metric value used to trigger a scaling event.</p>
--- @param _ScalingAdjustment [Integer] <p>Amount of adjustment to make, based on the scaling adjustment type.</p>
--- @param _MetricName [MetricName] <p>Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p> <ul> <li> <p> <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status = <code>ACTIVATING</code>).</p> </li> <li> <p> <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>).</p> </li> <li> <p> <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status = <code>ACTIVE</code> or <code>RESERVED</code>). </p> </li> <li> <p> <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number does include game sessions that are not currently accepting players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</p> </li> <li> <p> <b>ActiveInstances</b> – number of instances currently running a game session.</p> </li> <li> <p> <b>IdleInstances</b> – number of instances not currently running a game session.</p> </li> </ul>
--- @param _ScalingAdjustmentType [ScalingAdjustmentType] <p>Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down.</p> </li> </ul>
-function M.ScalingPolicy(_Status, _EvaluationPeriods, _Name, _ComparisonOperator, _FleetId, _Threshold, _ScalingAdjustment, _MetricName, _ScalingAdjustmentType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScalingPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ScalingStatusType] <p>Current status of the scaling policy. The scaling policy is only in force when in an <code>ACTIVE</code> status.</p> <ul> <li> <p> <b>ACTIVE</b> – The scaling policy is currently in force.</p> </li> <li> <p> <b>UPDATE_REQUESTED</b> – A request to update the scaling policy has been received.</p> </li> <li> <p> <b>UPDATING</b> – A change is being made to the scaling policy.</p> </li> <li> <p> <b>DELETE_REQUESTED</b> – A request to delete the scaling policy has been received.</p> </li> <li> <p> <b>DELETING</b> – The scaling policy is being deleted.</p> </li> <li> <p> <b>DELETED</b> – The scaling policy has been deleted.</p> </li> <li> <p> <b>ERROR</b> – An error occurred in creating the policy. It should be removed and recreated.</p> </li> </ul>
+-- * EvaluationPeriods [PositiveInteger] <p>Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.</p>
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
+-- * ComparisonOperator [ComparisonOperatorType] <p>Comparison operator to use when measuring a metric against the threshold value.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet that is associated with this scaling policy.</p>
+-- * Threshold [Double] <p>Metric value used to trigger a scaling event.</p>
+-- * ScalingAdjustment [Integer] <p>Amount of adjustment to make, based on the scaling adjustment type.</p>
+-- * MetricName [MetricName] <p>Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p> <ul> <li> <p> <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status = <code>ACTIVATING</code>).</p> </li> <li> <p> <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>).</p> </li> <li> <p> <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status = <code>ACTIVE</code> or <code>RESERVED</code>). </p> </li> <li> <p> <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number does include game sessions that are not currently accepting players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</p> </li> <li> <p> <b>ActiveInstances</b> – number of instances currently running a game session.</p> </li> <li> <p> <b>IdleInstances</b> – number of instances not currently running a game session.</p> </li> </ul>
+-- * ScalingAdjustmentType [ScalingAdjustmentType] <p>Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down.</p> </li> </ul>
+-- @return ScalingPolicy structure as a key-value pair table
+function M.ScalingPolicy(args)
+	assert(args, "You must provdide an argument table when creating ScalingPolicy")
 	local t = { 
-		["Status"] = _Status,
-		["EvaluationPeriods"] = _EvaluationPeriods,
-		["Name"] = _Name,
-		["ComparisonOperator"] = _ComparisonOperator,
-		["FleetId"] = _FleetId,
-		["Threshold"] = _Threshold,
-		["ScalingAdjustment"] = _ScalingAdjustment,
-		["MetricName"] = _MetricName,
-		["ScalingAdjustmentType"] = _ScalingAdjustmentType,
+		["Status"] = args["Status"],
+		["EvaluationPeriods"] = args["EvaluationPeriods"],
+		["Name"] = args["Name"],
+		["ComparisonOperator"] = args["ComparisonOperator"],
+		["FleetId"] = args["FleetId"],
+		["Threshold"] = args["Threshold"],
+		["ScalingAdjustment"] = args["ScalingAdjustment"],
+		["MetricName"] = args["MetricName"],
+		["ScalingAdjustmentType"] = args["ScalingAdjustmentType"],
 	}
 	asserts.AssertScalingPolicy(t)
 	return t
@@ -1220,11 +1340,14 @@ end
 
 --- Create a structure of type InvalidFleetStatusException
 -- <p>The requested operation would cause a conflict with the current state of a resource associated with the request and/or the fleet. Resolve the conflict before retrying.</p>
--- @param _Message [NonEmptyString] 
-function M.InvalidFleetStatusException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFleetStatusException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return InvalidFleetStatusException structure as a key-value pair table
+function M.InvalidFleetStatusException(args)
+	assert(args, "You must provdide an argument table when creating InvalidFleetStatusException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidFleetStatusException(t)
 	return t
@@ -1248,21 +1371,24 @@ end
 
 --- Create a structure of type DescribeGameSessionDetailsInput
 -- <p>Represents the input for a request action.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve.</p>
--- @param _StatusFilter [NonZeroAndMaxString] <p>Game session status to filter results on. Possible game session statuses include ACTIVE, <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory). </p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to retrieve all game sessions active on the fleet.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param _AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for.</p>
-function M.DescribeGameSessionDetailsInput(_Limit, _GameSessionId, _StatusFilter, _FleetId, _NextToken, _AliasId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionDetailsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- * GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve.</p>
+-- * StatusFilter [NonZeroAndMaxString] <p>Game session status to filter results on. Possible game session statuses include ACTIVE, <code>TERMINATED</code>, <code>ACTIVATING</code> and <code>TERMINATING</code> (the last two are transitory). </p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to retrieve all game sessions active on the fleet.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- * AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for.</p>
+-- @return DescribeGameSessionDetailsInput structure as a key-value pair table
+function M.DescribeGameSessionDetailsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeGameSessionDetailsInput")
 	local t = { 
-		["Limit"] = _Limit,
-		["GameSessionId"] = _GameSessionId,
-		["StatusFilter"] = _StatusFilter,
-		["FleetId"] = _FleetId,
-		["NextToken"] = _NextToken,
-		["AliasId"] = _AliasId,
+		["Limit"] = args["Limit"],
+		["GameSessionId"] = args["GameSessionId"],
+		["StatusFilter"] = args["StatusFilter"],
+		["FleetId"] = args["FleetId"],
+		["NextToken"] = args["NextToken"],
+		["AliasId"] = args["AliasId"],
 	}
 	asserts.AssertDescribeGameSessionDetailsInput(t)
 	return t
@@ -1281,11 +1407,14 @@ end
 
 --- Create a structure of type TerminalRoutingStrategyException
 -- <p>The service is unable to resolve the routing for a particular alias because it has a terminal <a>RoutingStrategy</a> associated with it. The message returned in this exception is the message defined in the routing strategy itself. Such requests should only be retried if the routing strategy for the specified alias is modified. </p>
--- @param _Message [NonEmptyString] 
-function M.TerminalRoutingStrategyException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminalRoutingStrategyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return TerminalRoutingStrategyException structure as a key-value pair table
+function M.TerminalRoutingStrategyException(args)
+	assert(args, "You must provdide an argument table when creating TerminalRoutingStrategyException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertTerminalRoutingStrategyException(t)
 	return t
@@ -1305,13 +1434,16 @@ end
 
 --- Create a structure of type DescribeScalingPoliciesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _ScalingPolicies [ScalingPolicyList] <p>Collection of objects containing the scaling policies matching the request.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeScalingPoliciesOutput(_ScalingPolicies, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScalingPoliciesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScalingPolicies [ScalingPolicyList] <p>Collection of objects containing the scaling policies matching the request.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @return DescribeScalingPoliciesOutput structure as a key-value pair table
+function M.DescribeScalingPoliciesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeScalingPoliciesOutput")
 	local t = { 
-		["ScalingPolicies"] = _ScalingPolicies,
-		["NextToken"] = _NextToken,
+		["ScalingPolicies"] = args["ScalingPolicies"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeScalingPoliciesOutput(t)
 	return t
@@ -1331,12 +1463,15 @@ end
 
 --- Create a structure of type DeleteAliasInput
 -- <p>Represents the input for a request action.</p>
--- @param _AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to delete.</p>
--- Required parameter: AliasId
-function M.DeleteAliasInput(_AliasId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAliasInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to delete.</p>
+-- Required key: AliasId
+-- @return DeleteAliasInput structure as a key-value pair table
+function M.DeleteAliasInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteAliasInput")
 	local t = { 
-		["AliasId"] = _AliasId,
+		["AliasId"] = args["AliasId"],
 	}
 	asserts.AssertDeleteAliasInput(t)
 	return t
@@ -1355,11 +1490,14 @@ end
 
 --- Create a structure of type UpdateGameSessionQueueOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _GameSessionQueue [GameSessionQueue] <p>Object that describes the newly updated game session queue.</p>
-function M.UpdateGameSessionQueueOutput(_GameSessionQueue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGameSessionQueueOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSessionQueue [GameSessionQueue] <p>Object that describes the newly updated game session queue.</p>
+-- @return UpdateGameSessionQueueOutput structure as a key-value pair table
+function M.UpdateGameSessionQueueOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateGameSessionQueueOutput")
 	local t = { 
-		["GameSessionQueue"] = _GameSessionQueue,
+		["GameSessionQueue"] = args["GameSessionQueue"],
 	}
 	asserts.AssertUpdateGameSessionQueueOutput(t)
 	return t
@@ -1378,11 +1516,14 @@ end
 
 --- Create a structure of type NotFoundException
 -- <p>A service resource associated with the request could not be found. Clients should not retry such requests.</p>
--- @param _Message [NonEmptyString] 
-function M.NotFoundException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return NotFoundException structure as a key-value pair table
+function M.NotFoundException(args)
+	assert(args, "You must provdide an argument table when creating NotFoundException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertNotFoundException(t)
 	return t
@@ -1401,11 +1542,14 @@ end
 
 --- Create a structure of type CreateAliasOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _Alias [Alias] <p>Object that describes the newly created alias record.</p>
-function M.CreateAliasOutput(_Alias, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAliasOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Alias [Alias] <p>Object that describes the newly created alias record.</p>
+-- @return CreateAliasOutput structure as a key-value pair table
+function M.CreateAliasOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateAliasOutput")
 	local t = { 
-		["Alias"] = _Alias,
+		["Alias"] = args["Alias"],
 	}
 	asserts.AssertCreateAliasOutput(t)
 	return t
@@ -1424,11 +1568,14 @@ end
 
 --- Create a structure of type DescribeAliasOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _Alias [Alias] <p>Object that contains the requested alias.</p>
-function M.DescribeAliasOutput(_Alias, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAliasOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Alias [Alias] <p>Object that contains the requested alias.</p>
+-- @return DescribeAliasOutput structure as a key-value pair table
+function M.DescribeAliasOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeAliasOutput")
 	local t = { 
-		["Alias"] = _Alias,
+		["Alias"] = args["Alias"],
 	}
 	asserts.AssertDescribeAliasOutput(t)
 	return t
@@ -1451,17 +1598,20 @@ end
 
 --- Create a structure of type CreatePlayerSessionInput
 -- <p>Represents the input for a request action.</p>
--- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player. Player IDs are developer-defined.</p>
--- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to add a player to.</p>
--- @param _PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.</p>
--- Required parameter: GameSessionId
--- Required parameter: PlayerId
-function M.CreatePlayerSessionInput(_PlayerId, _GameSessionId, _PlayerData, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlayerSessionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player. Player IDs are developer-defined.</p>
+-- * GameSessionId [ArnStringModel] <p>Unique identifier for the game session to add a player to.</p>
+-- * PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.</p>
+-- Required key: GameSessionId
+-- Required key: PlayerId
+-- @return CreatePlayerSessionInput structure as a key-value pair table
+function M.CreatePlayerSessionInput(args)
+	assert(args, "You must provdide an argument table when creating CreatePlayerSessionInput")
 	local t = { 
-		["PlayerId"] = _PlayerId,
-		["GameSessionId"] = _GameSessionId,
-		["PlayerData"] = _PlayerData,
+		["PlayerId"] = args["PlayerId"],
+		["GameSessionId"] = args["GameSessionId"],
+		["PlayerData"] = args["PlayerData"],
 	}
 	asserts.AssertCreatePlayerSessionInput(t)
 	return t
@@ -1481,12 +1631,15 @@ end
 
 --- Create a structure of type GetGameSessionLogUrlInput
 -- <p>Represents the input for a request action.</p>
--- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to get logs for.</p>
--- Required parameter: GameSessionId
-function M.GetGameSessionLogUrlInput(_GameSessionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGameSessionLogUrlInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSessionId [ArnStringModel] <p>Unique identifier for the game session to get logs for.</p>
+-- Required key: GameSessionId
+-- @return GetGameSessionLogUrlInput structure as a key-value pair table
+function M.GetGameSessionLogUrlInput(args)
+	assert(args, "You must provdide an argument table when creating GetGameSessionLogUrlInput")
 	local t = { 
-		["GameSessionId"] = _GameSessionId,
+		["GameSessionId"] = args["GameSessionId"],
 	}
 	asserts.AssertGetGameSessionLogUrlInput(t)
 	return t
@@ -1509,19 +1662,22 @@ end
 
 --- Create a structure of type InstanceAccess
 -- <p>Information required to remotely connect to a fleet instance. Access is requested by calling <a>GetInstanceAccess</a>. </p>
--- @param _InstanceId [InstanceId] <p>Unique identifier for an instance being accessed.</p>
--- @param _IpAddress [IpAddress] <p>IP address assigned to the instance.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet containing the instance being accessed.</p>
--- @param _OperatingSystem [OperatingSystem] <p>Operating system that is running on the instance.</p>
--- @param _Credentials [InstanceCredentials] <p>Credentials required to access the instance.</p>
-function M.InstanceAccess(_InstanceId, _IpAddress, _FleetId, _OperatingSystem, _Credentials, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAccess")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>Unique identifier for an instance being accessed.</p>
+-- * IpAddress [IpAddress] <p>IP address assigned to the instance.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet containing the instance being accessed.</p>
+-- * OperatingSystem [OperatingSystem] <p>Operating system that is running on the instance.</p>
+-- * Credentials [InstanceCredentials] <p>Credentials required to access the instance.</p>
+-- @return InstanceAccess structure as a key-value pair table
+function M.InstanceAccess(args)
+	assert(args, "You must provdide an argument table when creating InstanceAccess")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["IpAddress"] = _IpAddress,
-		["FleetId"] = _FleetId,
-		["OperatingSystem"] = _OperatingSystem,
-		["Credentials"] = _Credentials,
+		["InstanceId"] = args["InstanceId"],
+		["IpAddress"] = args["IpAddress"],
+		["FleetId"] = args["FleetId"],
+		["OperatingSystem"] = args["OperatingSystem"],
+		["Credentials"] = args["Credentials"],
 	}
 	asserts.AssertInstanceAccess(t)
 	return t
@@ -1541,13 +1697,16 @@ end
 
 --- Create a structure of type PlacedPlayerSession
 -- <p>Information about a player session that was created as part of a <a>StartGameSessionPlacement</a> request. This object contains only the player ID and player session ID. To retrieve full details on a player session, call <a>DescribePlayerSessions</a> with the player session ID.</p>
--- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player that is associated with this player session.</p>
--- @param _PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session.</p>
-function M.PlacedPlayerSession(_PlayerId, _PlayerSessionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlacedPlayerSession")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player that is associated with this player session.</p>
+-- * PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session.</p>
+-- @return PlacedPlayerSession structure as a key-value pair table
+function M.PlacedPlayerSession(args)
+	assert(args, "You must provdide an argument table when creating PlacedPlayerSession")
 	local t = { 
-		["PlayerId"] = _PlayerId,
-		["PlayerSessionId"] = _PlayerSessionId,
+		["PlayerId"] = args["PlayerId"],
+		["PlayerSessionId"] = args["PlayerSessionId"],
 	}
 	asserts.AssertPlacedPlayerSession(t)
 	return t
@@ -1570,18 +1729,21 @@ end
 
 --- Create a structure of type DescribeInstancesInput
 -- <p>Represents the input for a request action.</p>
--- @param _InstanceId [InstanceId] <p>Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to retrieve instance information for.</p>
--- Required parameter: FleetId
-function M.DescribeInstancesInput(_InstanceId, _Limit, _NextToken, _FleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.</p>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to retrieve instance information for.</p>
+-- Required key: FleetId
+-- @return DescribeInstancesInput structure as a key-value pair table
+function M.DescribeInstancesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancesInput")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["Limit"] = _Limit,
-		["NextToken"] = _NextToken,
-		["FleetId"] = _FleetId,
+		["InstanceId"] = args["InstanceId"],
+		["Limit"] = args["Limit"],
+		["NextToken"] = args["NextToken"],
+		["FleetId"] = args["FleetId"],
 	}
 	asserts.AssertDescribeInstancesInput(t)
 	return t
@@ -1600,11 +1762,14 @@ end
 
 --- Create a structure of type DescribeEC2InstanceLimitsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _EC2InstanceLimits [EC2InstanceLimitList] <p>Object that contains the maximum number of instances for the specified instance type.</p>
-function M.DescribeEC2InstanceLimitsOutput(_EC2InstanceLimits, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEC2InstanceLimitsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EC2InstanceLimits [EC2InstanceLimitList] <p>Object that contains the maximum number of instances for the specified instance type.</p>
+-- @return DescribeEC2InstanceLimitsOutput structure as a key-value pair table
+function M.DescribeEC2InstanceLimitsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeEC2InstanceLimitsOutput")
 	local t = { 
-		["EC2InstanceLimits"] = _EC2InstanceLimits,
+		["EC2InstanceLimits"] = args["EC2InstanceLimits"],
 	}
 	asserts.AssertDescribeEC2InstanceLimitsOutput(t)
 	return t
@@ -1625,15 +1790,18 @@ end
 
 --- Create a structure of type FleetCapacity
 -- <p>Information about the fleet's capacity. Fleet capacity is measured in EC2 instances. By default, new fleets have a capacity of one instance, but can be updated as needed. The maximum number of instances for a fleet is determined by the fleet's instance type.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet.</p>
--- @param _InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
--- @param _InstanceCounts [EC2InstanceCounts] <p>Current status of fleet capacity.</p>
-function M.FleetCapacity(_FleetId, _InstanceType, _InstanceCounts, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FleetCapacity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Unique identifier for a fleet.</p>
+-- * InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
+-- * InstanceCounts [EC2InstanceCounts] <p>Current status of fleet capacity.</p>
+-- @return FleetCapacity structure as a key-value pair table
+function M.FleetCapacity(args)
+	assert(args, "You must provdide an argument table when creating FleetCapacity")
 	local t = { 
-		["FleetId"] = _FleetId,
-		["InstanceType"] = _InstanceType,
-		["InstanceCounts"] = _InstanceCounts,
+		["FleetId"] = args["FleetId"],
+		["InstanceType"] = args["InstanceType"],
+		["InstanceCounts"] = args["InstanceCounts"],
 	}
 	asserts.AssertFleetCapacity(t)
 	return t
@@ -1652,11 +1820,14 @@ end
 
 --- Create a structure of type CreateGameSessionQueueOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _GameSessionQueue [GameSessionQueue] <p>Object that describes the newly created game session queue.</p>
-function M.CreateGameSessionQueueOutput(_GameSessionQueue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGameSessionQueueOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSessionQueue [GameSessionQueue] <p>Object that describes the newly created game session queue.</p>
+-- @return CreateGameSessionQueueOutput structure as a key-value pair table
+function M.CreateGameSessionQueueOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateGameSessionQueueOutput")
 	local t = { 
-		["GameSessionQueue"] = _GameSessionQueue,
+		["GameSessionQueue"] = args["GameSessionQueue"],
 	}
 	asserts.AssertCreateGameSessionQueueOutput(t)
 	return t
@@ -1676,12 +1847,15 @@ end
 
 --- Create a structure of type DeleteFleetInput
 -- <p>Represents the input for a request action.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to be deleted.</p>
--- Required parameter: FleetId
-function M.DeleteFleetInput(_FleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFleetInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to be deleted.</p>
+-- Required key: FleetId
+-- @return DeleteFleetInput structure as a key-value pair table
+function M.DeleteFleetInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteFleetInput")
 	local t = { 
-		["FleetId"] = _FleetId,
+		["FleetId"] = args["FleetId"],
 	}
 	asserts.AssertDeleteFleetInput(t)
 	return t
@@ -1701,12 +1875,15 @@ end
 
 --- Create a structure of type DescribeFleetPortSettingsInput
 -- <p>Represents the input for a request action.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to retrieve port settings for.</p>
--- Required parameter: FleetId
-function M.DescribeFleetPortSettingsInput(_FleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetPortSettingsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to retrieve port settings for.</p>
+-- Required key: FleetId
+-- @return DescribeFleetPortSettingsInput structure as a key-value pair table
+function M.DescribeFleetPortSettingsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetPortSettingsInput")
 	local t = { 
-		["FleetId"] = _FleetId,
+		["FleetId"] = args["FleetId"],
 	}
 	asserts.AssertDescribeFleetPortSettingsInput(t)
 	return t
@@ -1726,13 +1903,16 @@ end
 
 --- Create a structure of type DescribeFleetCapacityOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
--- @param _FleetCapacity [FleetCapacityList] <p>Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to retrieve capacity information for all fleets.</p>
-function M.DescribeFleetCapacityOutput(_NextToken, _FleetCapacity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetCapacityOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- * FleetCapacity [FleetCapacityList] <p>Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to retrieve capacity information for all fleets.</p>
+-- @return DescribeFleetCapacityOutput structure as a key-value pair table
+function M.DescribeFleetCapacityOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetCapacityOutput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["FleetCapacity"] = _FleetCapacity,
+		["NextToken"] = args["NextToken"],
+		["FleetCapacity"] = args["FleetCapacity"],
 	}
 	asserts.AssertDescribeFleetCapacityOutput(t)
 	return t
@@ -1752,12 +1932,15 @@ end
 
 --- Create a structure of type DeleteBuildInput
 -- <p>Represents the input for a request action.</p>
--- @param _BuildId [BuildId] <p>Unique identifier for a build to delete.</p>
--- Required parameter: BuildId
-function M.DeleteBuildInput(_BuildId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBuildInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BuildId [BuildId] <p>Unique identifier for a build to delete.</p>
+-- Required key: BuildId
+-- @return DeleteBuildInput structure as a key-value pair table
+function M.DeleteBuildInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteBuildInput")
 	local t = { 
-		["BuildId"] = _BuildId,
+		["BuildId"] = args["BuildId"],
 	}
 	asserts.AssertDeleteBuildInput(t)
 	return t
@@ -1782,22 +1965,25 @@ end
 
 --- Create a structure of type UpdateFleetAttributesInput
 -- <p>Represents the input for a request action.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
--- @param _MetricGroups [MetricGroupList] <p>Names of metric groups to include this fleet with. A fleet metric group is used in Amazon CloudWatch to aggregate metrics from multiple fleets. Use an existing metric group name to add this fleet to the group, or use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a time.</p>
--- @param _NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to all new instances created in this fleet. Instances that already exist are not affected. You can set protection for individual instances using <a>UpdateGameSession</a>.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to update attribute metadata for.</p>
--- @param _ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Policy that limits the number of game sessions an individual player can create over a span of time. </p>
--- @param _Description [NonZeroAndMaxString] <p>Human-readable description of a fleet.</p>
--- Required parameter: FleetId
-function M.UpdateFleetAttributesInput(_Name, _MetricGroups, _NewGameSessionProtectionPolicy, _FleetId, _ResourceCreationLimitPolicy, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetAttributesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
+-- * MetricGroups [MetricGroupList] <p>Names of metric groups to include this fleet with. A fleet metric group is used in Amazon CloudWatch to aggregate metrics from multiple fleets. Use an existing metric group name to add this fleet to the group, or use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a time.</p>
+-- * NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to all new instances created in this fleet. Instances that already exist are not affected. You can set protection for individual instances using <a>UpdateGameSession</a>.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to update attribute metadata for.</p>
+-- * ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Policy that limits the number of game sessions an individual player can create over a span of time. </p>
+-- * Description [NonZeroAndMaxString] <p>Human-readable description of a fleet.</p>
+-- Required key: FleetId
+-- @return UpdateFleetAttributesInput structure as a key-value pair table
+function M.UpdateFleetAttributesInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateFleetAttributesInput")
 	local t = { 
-		["Name"] = _Name,
-		["MetricGroups"] = _MetricGroups,
-		["NewGameSessionProtectionPolicy"] = _NewGameSessionProtectionPolicy,
-		["FleetId"] = _FleetId,
-		["ResourceCreationLimitPolicy"] = _ResourceCreationLimitPolicy,
-		["Description"] = _Description,
+		["Name"] = args["Name"],
+		["MetricGroups"] = args["MetricGroups"],
+		["NewGameSessionProtectionPolicy"] = args["NewGameSessionProtectionPolicy"],
+		["FleetId"] = args["FleetId"],
+		["ResourceCreationLimitPolicy"] = args["ResourceCreationLimitPolicy"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdateFleetAttributesInput(t)
 	return t
@@ -1817,13 +2003,16 @@ end
 
 --- Create a structure of type DescribeGameSessionsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _GameSessions [GameSessionList] <p>Collection of objects containing game session properties for each session matching the request.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeGameSessionsOutput(_GameSessions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSessions [GameSessionList] <p>Collection of objects containing game session properties for each session matching the request.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @return DescribeGameSessionsOutput structure as a key-value pair table
+function M.DescribeGameSessionsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeGameSessionsOutput")
 	local t = { 
-		["GameSessions"] = _GameSessions,
-		["NextToken"] = _NextToken,
+		["GameSessions"] = args["GameSessions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeGameSessionsOutput(t)
 	return t
@@ -1843,13 +2032,16 @@ end
 
 --- Create a structure of type ResourceCreationLimitPolicy
 -- <p>Policy that limits the number of game sessions a player can create on the same fleet. This optional policy gives game owners control over how players can consume available game server resources. A resource creation policy makes the following statement: "An individual player can create a maximum number of new game sessions within a specified time period".</p> <p>The policy is evaluated when a player tries to create a new game session. For example, with a policy of 10 new game sessions and a time period of 60 minutes, on receiving a <code>CreateGameSession</code> request, Amazon GameLift checks that the player (identified by <code>CreatorId</code>) has created fewer than 10 game sessions in the past 60 minutes.</p>
--- @param _NewGameSessionsPerCreator [WholeNumber] <p>Maximum number of game sessions that an individual can create during the policy period. </p>
--- @param _PolicyPeriodInMinutes [WholeNumber] <p>Time span used in evaluating the resource creation limit policy. </p>
-function M.ResourceCreationLimitPolicy(_NewGameSessionsPerCreator, _PolicyPeriodInMinutes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceCreationLimitPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NewGameSessionsPerCreator [WholeNumber] <p>Maximum number of game sessions that an individual can create during the policy period. </p>
+-- * PolicyPeriodInMinutes [WholeNumber] <p>Time span used in evaluating the resource creation limit policy. </p>
+-- @return ResourceCreationLimitPolicy structure as a key-value pair table
+function M.ResourceCreationLimitPolicy(args)
+	assert(args, "You must provdide an argument table when creating ResourceCreationLimitPolicy")
 	local t = { 
-		["NewGameSessionsPerCreator"] = _NewGameSessionsPerCreator,
-		["PolicyPeriodInMinutes"] = _PolicyPeriodInMinutes,
+		["NewGameSessionsPerCreator"] = args["NewGameSessionsPerCreator"],
+		["PolicyPeriodInMinutes"] = args["PolicyPeriodInMinutes"],
 	}
 	asserts.AssertResourceCreationLimitPolicy(t)
 	return t
@@ -1874,23 +2066,26 @@ end
 
 --- Create a structure of type EC2InstanceCounts
 -- <p>Current status of fleet capacity. The number of active instances should match or be in the process of matching the number of desired instances. Pending and terminating counts are non-zero only if fleet capacity is adjusting to an <a>UpdateFleetCapacity</a> request, or if access to resources is temporarily affected.</p>
--- @param _TERMINATING [WholeNumber] <p>Number of instances in the fleet that are no longer active but haven't yet been terminated.</p>
--- @param _MAXIMUM [WholeNumber] <p>Maximum value allowed for the fleet's instance count.</p>
--- @param _DESIRED [WholeNumber] <p>Ideal number of active instances in the fleet.</p>
--- @param _IDLE [WholeNumber] <p>Number of active instances in the fleet that are not currently hosting a game session.</p>
--- @param _MINIMUM [WholeNumber] <p>Minimum value allowed for the fleet's instance count.</p>
--- @param _ACTIVE [WholeNumber] <p>Actual number of active instances in the fleet.</p>
--- @param _PENDING [WholeNumber] <p>Number of instances in the fleet that are starting but not yet active.</p>
-function M.EC2InstanceCounts(_TERMINATING, _MAXIMUM, _DESIRED, _IDLE, _MINIMUM, _ACTIVE, _PENDING, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EC2InstanceCounts")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TERMINATING [WholeNumber] <p>Number of instances in the fleet that are no longer active but haven't yet been terminated.</p>
+-- * MAXIMUM [WholeNumber] <p>Maximum value allowed for the fleet's instance count.</p>
+-- * DESIRED [WholeNumber] <p>Ideal number of active instances in the fleet.</p>
+-- * IDLE [WholeNumber] <p>Number of active instances in the fleet that are not currently hosting a game session.</p>
+-- * MINIMUM [WholeNumber] <p>Minimum value allowed for the fleet's instance count.</p>
+-- * ACTIVE [WholeNumber] <p>Actual number of active instances in the fleet.</p>
+-- * PENDING [WholeNumber] <p>Number of instances in the fleet that are starting but not yet active.</p>
+-- @return EC2InstanceCounts structure as a key-value pair table
+function M.EC2InstanceCounts(args)
+	assert(args, "You must provdide an argument table when creating EC2InstanceCounts")
 	local t = { 
-		["TERMINATING"] = _TERMINATING,
-		["MAXIMUM"] = _MAXIMUM,
-		["DESIRED"] = _DESIRED,
-		["IDLE"] = _IDLE,
-		["MINIMUM"] = _MINIMUM,
-		["ACTIVE"] = _ACTIVE,
-		["PENDING"] = _PENDING,
+		["TERMINATING"] = args["TERMINATING"],
+		["MAXIMUM"] = args["MAXIMUM"],
+		["DESIRED"] = args["DESIRED"],
+		["IDLE"] = args["IDLE"],
+		["MINIMUM"] = args["MINIMUM"],
+		["ACTIVE"] = args["ACTIVE"],
+		["PENDING"] = args["PENDING"],
 	}
 	asserts.AssertEC2InstanceCounts(t)
 	return t
@@ -1909,11 +2104,14 @@ end
 
 --- Create a structure of type ResolveAliasOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _FleetId [FleetId] <p>Fleet identifier that is associated with the requested alias.</p>
-function M.ResolveAliasOutput(_FleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResolveAliasOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Fleet identifier that is associated with the requested alias.</p>
+-- @return ResolveAliasOutput structure as a key-value pair table
+function M.ResolveAliasOutput(args)
+	assert(args, "You must provdide an argument table when creating ResolveAliasOutput")
 	local t = { 
-		["FleetId"] = _FleetId,
+		["FleetId"] = args["FleetId"],
 	}
 	asserts.AssertResolveAliasOutput(t)
 	return t
@@ -1932,11 +2130,14 @@ end
 
 --- Create a structure of type InvalidRequestException
 -- <p>One or more parameter values in the request are invalid. Correct the invalid parameter values before retrying.</p>
--- @param _Message [NonEmptyString] 
-function M.InvalidRequestException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return InvalidRequestException structure as a key-value pair table
+function M.InvalidRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRequestException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidRequestException(t)
 	return t
@@ -1955,11 +2156,14 @@ end
 
 --- Create a structure of type UpdateAliasOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _Alias [Alias] <p>Object that contains the updated alias configuration.</p>
-function M.UpdateAliasOutput(_Alias, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAliasOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Alias [Alias] <p>Object that contains the updated alias configuration.</p>
+-- @return UpdateAliasOutput structure as a key-value pair table
+function M.UpdateAliasOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateAliasOutput")
 	local t = { 
-		["Alias"] = _Alias,
+		["Alias"] = args["Alias"],
 	}
 	asserts.AssertUpdateAliasOutput(t)
 	return t
@@ -1982,18 +2186,21 @@ end
 
 --- Create a structure of type UpdateAliasInput
 -- <p>Represents the input for a request action.</p>
--- @param _RoutingStrategy [RoutingStrategy] <p>Object that specifies the fleet and routing type to use for the alias.</p>
--- @param _AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to update.</p>
--- @param _Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
--- @param _Description [NonZeroAndMaxString] <p>Human-readable description of an alias.</p>
--- Required parameter: AliasId
-function M.UpdateAliasInput(_RoutingStrategy, _AliasId, _Name, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAliasInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoutingStrategy [RoutingStrategy] <p>Object that specifies the fleet and routing type to use for the alias.</p>
+-- * AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to update.</p>
+-- * Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
+-- * Description [NonZeroAndMaxString] <p>Human-readable description of an alias.</p>
+-- Required key: AliasId
+-- @return UpdateAliasInput structure as a key-value pair table
+function M.UpdateAliasInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateAliasInput")
 	local t = { 
-		["RoutingStrategy"] = _RoutingStrategy,
-		["AliasId"] = _AliasId,
-		["Name"] = _Name,
-		["Description"] = _Description,
+		["RoutingStrategy"] = args["RoutingStrategy"],
+		["AliasId"] = args["AliasId"],
+		["Name"] = args["Name"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdateAliasInput(t)
 	return t
@@ -2015,15 +2222,18 @@ end
 
 --- Create a structure of type GameProperty
 -- <p>Set of key-value pairs containing information a server process requires to set up a game session. This object allows you to pass in any set of data needed for your game. For more information, see the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/">Amazon GameLift Developer Guide</a>.</p>
--- @param _Value [GamePropertyValue] <p>TBD</p>
--- @param _Key [GamePropertyKey] <p>TBD</p>
--- Required parameter: Key
--- Required parameter: Value
-function M.GameProperty(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GameProperty")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [GamePropertyValue] <p>TBD</p>
+-- * Key [GamePropertyKey] <p>TBD</p>
+-- Required key: Key
+-- Required key: Value
+-- @return GameProperty structure as a key-value pair table
+function M.GameProperty(args)
+	assert(args, "You must provdide an argument table when creating GameProperty")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertGameProperty(t)
 	return t
@@ -2043,13 +2253,16 @@ end
 
 --- Create a structure of type GameSessionDetail
 -- <p>A game session's properties plus the protection policy currently in force.</p>
--- @param _GameSession [GameSession] <p>Object that describes a game session.</p>
--- @param _ProtectionPolicy [ProtectionPolicy] <p>Current status of protection for the game session.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
-function M.GameSessionDetail(_GameSession, _ProtectionPolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GameSessionDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSession [GameSession] <p>Object that describes a game session.</p>
+-- * ProtectionPolicy [ProtectionPolicy] <p>Current status of protection for the game session.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
+-- @return GameSessionDetail structure as a key-value pair table
+function M.GameSessionDetail(args)
+	assert(args, "You must provdide an argument table when creating GameSessionDetail")
 	local t = { 
-		["GameSession"] = _GameSession,
-		["ProtectionPolicy"] = _ProtectionPolicy,
+		["GameSession"] = args["GameSession"],
+		["ProtectionPolicy"] = args["ProtectionPolicy"],
 	}
 	asserts.AssertGameSessionDetail(t)
 	return t
@@ -2070,15 +2283,18 @@ end
 
 --- Create a structure of type DescribeFleetAttributesInput
 -- <p>Represents the input for a request action.</p>
--- @param _FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve attributes for. To request attributes for all fleets, leave this parameter empty.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
-function M.DescribeFleetAttributesInput(_FleetIds, _NextToken, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetAttributesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetIds [FleetIdList] <p>Unique identifier for a fleet(s) to retrieve attributes for. To request attributes for all fleets, leave this parameter empty.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
+-- @return DescribeFleetAttributesInput structure as a key-value pair table
+function M.DescribeFleetAttributesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetAttributesInput")
 	local t = { 
-		["FleetIds"] = _FleetIds,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
+		["FleetIds"] = args["FleetIds"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeFleetAttributesInput(t)
 	return t
@@ -2097,11 +2313,14 @@ end
 
 --- Create a structure of type InvalidGameSessionStatusException
 -- <p>The requested operation would cause a conflict with the current state of a resource associated with the request and/or the game instance. Resolve the conflict before retrying.</p>
--- @param _Message [NonEmptyString] 
-function M.InvalidGameSessionStatusException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidGameSessionStatusException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return InvalidGameSessionStatusException structure as a key-value pair table
+function M.InvalidGameSessionStatusException(args)
+	assert(args, "You must provdide an argument table when creating InvalidGameSessionStatusException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidGameSessionStatusException(t)
 	return t
@@ -2121,12 +2340,15 @@ end
 
 --- Create a structure of type DescribeAliasInput
 -- <p>Represents the input for a request action.</p>
--- @param _AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to retrieve.</p>
--- Required parameter: AliasId
-function M.DescribeAliasInput(_AliasId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAliasInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AliasId [AliasId] <p>Unique identifier for a fleet alias. Specify the alias you want to retrieve.</p>
+-- Required key: AliasId
+-- @return DescribeAliasInput structure as a key-value pair table
+function M.DescribeAliasInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeAliasInput")
 	local t = { 
-		["AliasId"] = _AliasId,
+		["AliasId"] = args["AliasId"],
 	}
 	asserts.AssertDescribeAliasInput(t)
 	return t
@@ -2157,35 +2379,38 @@ end
 
 --- Create a structure of type GameSession
 -- <p>Properties describing a game session.</p>
--- @param _Status [GameSessionStatus] <p>Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player sessions.</p>
--- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
--- @param _CurrentPlayerSessionCount [WholeNumber] <p>Number of players currently in the game session.</p>
--- @param _TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
--- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _PlayerSessionCreationPolicy [PlayerSessionCreationPolicy] <p>Indicates whether or not the game session is accepting new players.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet the game session is running on.</p>
--- @param _CreatorId [NonZeroAndMaxString] <p>Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists), that limits the number of game sessions a player can create.</p>
--- @param _GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session. A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.</p>
--- @param _IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
--- @param _Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
-function M.GameSession(_Status, _MaximumPlayerSessionCount, _Name, _CurrentPlayerSessionCount, _TerminationTime, _GameProperties, _CreationTime, _PlayerSessionCreationPolicy, _FleetId, _CreatorId, _GameSessionId, _IpAddress, _Port, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GameSession")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [GameSessionStatus] <p>Current status of the game session. A game session must have an <code>ACTIVE</code> status to have player sessions.</p>
+-- * MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
+-- * CurrentPlayerSessionCount [WholeNumber] <p>Number of players currently in the game session.</p>
+-- * TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
+-- * CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * PlayerSessionCreationPolicy [PlayerSessionCreationPolicy] <p>Indicates whether or not the game session is accepting new players.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet the game session is running on.</p>
+-- * CreatorId [NonZeroAndMaxString] <p>Unique identifier for a player. This ID is used to enforce a resource protection policy (if one exists), that limits the number of game sessions a player can create.</p>
+-- * GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session. A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.</p>
+-- * IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
+-- * Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
+-- @return GameSession structure as a key-value pair table
+function M.GameSession(args)
+	assert(args, "You must provdide an argument table when creating GameSession")
 	local t = { 
-		["Status"] = _Status,
-		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
-		["Name"] = _Name,
-		["CurrentPlayerSessionCount"] = _CurrentPlayerSessionCount,
-		["TerminationTime"] = _TerminationTime,
-		["GameProperties"] = _GameProperties,
-		["CreationTime"] = _CreationTime,
-		["PlayerSessionCreationPolicy"] = _PlayerSessionCreationPolicy,
-		["FleetId"] = _FleetId,
-		["CreatorId"] = _CreatorId,
-		["GameSessionId"] = _GameSessionId,
-		["IpAddress"] = _IpAddress,
-		["Port"] = _Port,
+		["Status"] = args["Status"],
+		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
+		["Name"] = args["Name"],
+		["CurrentPlayerSessionCount"] = args["CurrentPlayerSessionCount"],
+		["TerminationTime"] = args["TerminationTime"],
+		["GameProperties"] = args["GameProperties"],
+		["CreationTime"] = args["CreationTime"],
+		["PlayerSessionCreationPolicy"] = args["PlayerSessionCreationPolicy"],
+		["FleetId"] = args["FleetId"],
+		["CreatorId"] = args["CreatorId"],
+		["GameSessionId"] = args["GameSessionId"],
+		["IpAddress"] = args["IpAddress"],
+		["Port"] = args["Port"],
 	}
 	asserts.AssertGameSession(t)
 	return t
@@ -2206,15 +2431,18 @@ end
 
 --- Create a structure of type DescribeGameSessionQueuesInput
 -- <p>Represents the input for a request action.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param _Names [GameSessionQueueNameList] <p>List of queue names to retrieve information for. To request settings for all queues, leave this parameter empty.</p>
-function M.DescribeGameSessionQueuesInput(_NextToken, _Limit, _Names, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionQueuesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- * Names [GameSessionQueueNameList] <p>List of queue names to retrieve information for. To request settings for all queues, leave this parameter empty.</p>
+-- @return DescribeGameSessionQueuesInput structure as a key-value pair table
+function M.DescribeGameSessionQueuesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeGameSessionQueuesInput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
-		["Names"] = _Names,
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
+		["Names"] = args["Names"],
 	}
 	asserts.AssertDescribeGameSessionQueuesInput(t)
 	return t
@@ -2233,11 +2461,14 @@ end
 
 --- Create a structure of type CreatePlayerSessionsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _PlayerSessions [PlayerSessionList] <p>Collection of player session objects created for the added players.</p>
-function M.CreatePlayerSessionsOutput(_PlayerSessions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlayerSessionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlayerSessions [PlayerSessionList] <p>Collection of player session objects created for the added players.</p>
+-- @return CreatePlayerSessionsOutput structure as a key-value pair table
+function M.CreatePlayerSessionsOutput(args)
+	assert(args, "You must provdide an argument table when creating CreatePlayerSessionsOutput")
 	local t = { 
-		["PlayerSessions"] = _PlayerSessions,
+		["PlayerSessions"] = args["PlayerSessions"],
 	}
 	asserts.AssertCreatePlayerSessionsOutput(t)
 	return t
@@ -2258,15 +2489,18 @@ end
 
 --- Create a structure of type PlayerLatency
 -- <p>Regional latency information for a player, used when requesting a new game session with <a>StartGameSessionPlacement</a>. This value indicates the amount of time lag that exists when the player is connected to a fleet in the specified region. The relative difference between a player's latency values for multiple regions are used to determine which fleets are best suited to place a new game session for the player. </p>
--- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player associated with the latency data.</p>
--- @param _LatencyInMilliseconds [Float] <p>Amount of time that represents the time lag experienced by the player when connected to the specified region.</p>
--- @param _RegionIdentifier [NonZeroAndMaxString] <p>Name of the region that is associated with the latency value.</p>
-function M.PlayerLatency(_PlayerId, _LatencyInMilliseconds, _RegionIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlayerLatency")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player associated with the latency data.</p>
+-- * LatencyInMilliseconds [Float] <p>Amount of time that represents the time lag experienced by the player when connected to the specified region.</p>
+-- * RegionIdentifier [NonZeroAndMaxString] <p>Name of the region that is associated with the latency value.</p>
+-- @return PlayerLatency structure as a key-value pair table
+function M.PlayerLatency(args)
+	assert(args, "You must provdide an argument table when creating PlayerLatency")
 	local t = { 
-		["PlayerId"] = _PlayerId,
-		["LatencyInMilliseconds"] = _LatencyInMilliseconds,
-		["RegionIdentifier"] = _RegionIdentifier,
+		["PlayerId"] = args["PlayerId"],
+		["LatencyInMilliseconds"] = args["LatencyInMilliseconds"],
+		["RegionIdentifier"] = args["RegionIdentifier"],
 	}
 	asserts.AssertPlayerLatency(t)
 	return t
@@ -2285,11 +2519,14 @@ end
 
 --- Create a structure of type GetGameSessionLogUrlOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _PreSignedUrl [NonZeroAndMaxString] <p>Location of the requested game session logs, available for download.</p>
-function M.GetGameSessionLogUrlOutput(_PreSignedUrl, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGameSessionLogUrlOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PreSignedUrl [NonZeroAndMaxString] <p>Location of the requested game session logs, available for download.</p>
+-- @return GetGameSessionLogUrlOutput structure as a key-value pair table
+function M.GetGameSessionLogUrlOutput(args)
+	assert(args, "You must provdide an argument table when creating GetGameSessionLogUrlOutput")
 	local t = { 
-		["PreSignedUrl"] = _PreSignedUrl,
+		["PreSignedUrl"] = args["PreSignedUrl"],
 	}
 	asserts.AssertGetGameSessionLogUrlOutput(t)
 	return t
@@ -2309,12 +2546,15 @@ end
 
 --- Create a structure of type DescribeGameSessionPlacementInput
 -- <p>Represents the input for a request action.</p>
--- @param _PlacementId [IdStringModel] <p>Unique identifier for a game session placement to retrieve.</p>
--- Required parameter: PlacementId
-function M.DescribeGameSessionPlacementInput(_PlacementId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionPlacementInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlacementId [IdStringModel] <p>Unique identifier for a game session placement to retrieve.</p>
+-- Required key: PlacementId
+-- @return DescribeGameSessionPlacementInput structure as a key-value pair table
+function M.DescribeGameSessionPlacementInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeGameSessionPlacementInput")
 	local t = { 
-		["PlacementId"] = _PlacementId,
+		["PlacementId"] = args["PlacementId"],
 	}
 	asserts.AssertDescribeGameSessionPlacementInput(t)
 	return t
@@ -2335,15 +2575,18 @@ end
 
 --- Create a structure of type S3Location
 -- <p>Location in Amazon Simple Storage Service (Amazon S3) where build files can be stored for access by Amazon GameLift. This location is specified in a <a>CreateBuild</a> request. For more details, see the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build">Create a Build with Files in Amazon S3</a>.</p>
--- @param _RoleArn [NonEmptyString] <p>Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) for the access role that allows Amazon GameLift to access your S3 bucket.</p>
--- @param _Bucket [NonEmptyString] <p>Amazon S3 bucket identifier. This is the name of your S3 bucket.</p>
--- @param _Key [NonEmptyString] <p>Name of the zip file containing your build files. </p>
-function M.S3Location(_RoleArn, _Bucket, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3Location")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleArn [NonEmptyString] <p>Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) for the access role that allows Amazon GameLift to access your S3 bucket.</p>
+-- * Bucket [NonEmptyString] <p>Amazon S3 bucket identifier. This is the name of your S3 bucket.</p>
+-- * Key [NonEmptyString] <p>Name of the zip file containing your build files. </p>
+-- @return S3Location structure as a key-value pair table
+function M.S3Location(args)
+	assert(args, "You must provdide an argument table when creating S3Location")
 	local t = { 
-		["RoleArn"] = _RoleArn,
-		["Bucket"] = _Bucket,
-		["Key"] = _Key,
+		["RoleArn"] = args["RoleArn"],
+		["Bucket"] = args["Bucket"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertS3Location(t)
 	return t
@@ -2365,17 +2608,20 @@ end
 
 --- Create a structure of type ListAliasesInput
 -- <p>Represents the input for a request action.</p>
--- @param _NextToken [NonEmptyString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param _Name [NonEmptyString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
--- @param _RoutingStrategyType [RoutingStrategyType] <p>Type of routing to filter results on. Use this parameter to retrieve only aliases of a certain type. To retrieve all aliases, leave this parameter empty.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul>
-function M.ListAliasesInput(_NextToken, _Limit, _Name, _RoutingStrategyType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAliasesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NonEmptyString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- * Name [NonEmptyString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
+-- * RoutingStrategyType [RoutingStrategyType] <p>Type of routing to filter results on. Use this parameter to retrieve only aliases of a certain type. To retrieve all aliases, leave this parameter empty.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul>
+-- @return ListAliasesInput structure as a key-value pair table
+function M.ListAliasesInput(args)
+	assert(args, "You must provdide an argument table when creating ListAliasesInput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
-		["Name"] = _Name,
-		["RoutingStrategyType"] = _RoutingStrategyType,
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
+		["Name"] = args["Name"],
+		["RoutingStrategyType"] = args["RoutingStrategyType"],
 	}
 	asserts.AssertListAliasesInput(t)
 	return t
@@ -2395,13 +2641,16 @@ end
 
 --- Create a structure of type DescribeGameSessionDetailsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
--- @param _GameSessionDetails [GameSessionDetailList] <p>Collection of objects containing game session properties and the protection policy currently in force for each session matching the request.</p>
-function M.DescribeGameSessionDetailsOutput(_NextToken, _GameSessionDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionDetailsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- * GameSessionDetails [GameSessionDetailList] <p>Collection of objects containing game session properties and the protection policy currently in force for each session matching the request.</p>
+-- @return DescribeGameSessionDetailsOutput structure as a key-value pair table
+function M.DescribeGameSessionDetailsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeGameSessionDetailsOutput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["GameSessionDetails"] = _GameSessionDetails,
+		["NextToken"] = args["NextToken"],
+		["GameSessionDetails"] = args["GameSessionDetails"],
 	}
 	asserts.AssertDescribeGameSessionDetailsOutput(t)
 	return t
@@ -2420,11 +2669,14 @@ end
 
 --- Create a structure of type CreateFleetOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _FleetAttributes [FleetAttributes] <p>Properties for the newly created fleet.</p>
-function M.CreateFleetOutput(_FleetAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFleetOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetAttributes [FleetAttributes] <p>Properties for the newly created fleet.</p>
+-- @return CreateFleetOutput structure as a key-value pair table
+function M.CreateFleetOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateFleetOutput")
 	local t = { 
-		["FleetAttributes"] = _FleetAttributes,
+		["FleetAttributes"] = args["FleetAttributes"],
 	}
 	asserts.AssertCreateFleetOutput(t)
 	return t
@@ -2444,13 +2696,16 @@ end
 
 --- Create a structure of type DescribeFleetEventsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
--- @param _Events [EventList] <p>Collection of objects containing event log entries for the specified fleet.</p>
-function M.DescribeFleetEventsOutput(_NextToken, _Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetEventsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- * Events [EventList] <p>Collection of objects containing event log entries for the specified fleet.</p>
+-- @return DescribeFleetEventsOutput structure as a key-value pair table
+function M.DescribeFleetEventsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetEventsOutput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Events"] = _Events,
+		["NextToken"] = args["NextToken"],
+		["Events"] = args["Events"],
 	}
 	asserts.AssertDescribeFleetEventsOutput(t)
 	return t
@@ -2470,12 +2725,15 @@ end
 
 --- Create a structure of type DescribeRuntimeConfigurationInput
 -- <p>Represents the input for a request action.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to get the runtime configuration for.</p>
--- Required parameter: FleetId
-function M.DescribeRuntimeConfigurationInput(_FleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRuntimeConfigurationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to get the runtime configuration for.</p>
+-- Required key: FleetId
+-- @return DescribeRuntimeConfigurationInput structure as a key-value pair table
+function M.DescribeRuntimeConfigurationInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeRuntimeConfigurationInput")
 	local t = { 
-		["FleetId"] = _FleetId,
+		["FleetId"] = args["FleetId"],
 	}
 	asserts.AssertDescribeRuntimeConfigurationInput(t)
 	return t
@@ -2494,11 +2752,14 @@ end
 
 --- Create a structure of type GameSessionFullException
 -- <p>The game instance is currently full and cannot allow the requested player(s) to join. Clients can retry such requests immediately or after a waiting period.</p>
--- @param _Message [NonEmptyString] 
-function M.GameSessionFullException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GameSessionFullException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return GameSessionFullException structure as a key-value pair table
+function M.GameSessionFullException(args)
+	assert(args, "You must provdide an argument table when creating GameSessionFullException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertGameSessionFullException(t)
 	return t
@@ -2525,26 +2786,29 @@ end
 
 --- Create a structure of type CreateGameSessionInput
 -- <p>Represents the input for a request action.</p>
--- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
--- @param _GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
--- @param _IdempotencyToken [IdStringModel] <p>Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.) </p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.</p>
--- @param _CreatorId [NonZeroAndMaxString] <p>Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.</p>
--- @param _GameSessionId [IdStringModel] <p> <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.) </p>
--- @param _AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.</p>
--- Required parameter: MaximumPlayerSessionCount
-function M.CreateGameSessionInput(_MaximumPlayerSessionCount, _Name, _GameProperties, _IdempotencyToken, _FleetId, _CreatorId, _GameSessionId, _AliasId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGameSessionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
+-- * GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
+-- * IdempotencyToken [IdStringModel] <p>Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.) </p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.</p>
+-- * CreatorId [NonZeroAndMaxString] <p>Unique identifier for a player or entity creating the game session. This ID is used to enforce a resource protection policy (if one exists) that limits the number of concurrent active game sessions one player can have.</p>
+-- * GameSessionId [IdStringModel] <p> <i>This parameter is no longer preferred. Please use <code>IdempotencyToken</code> instead.</i> Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ID has the following format: <code>arn:aws:gamelift:&lt;region&gt;::gamesession/&lt;fleet ID&gt;/&lt;custom ID string or idempotency token&gt;</code>.) </p>
+-- * AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.</p>
+-- Required key: MaximumPlayerSessionCount
+-- @return CreateGameSessionInput structure as a key-value pair table
+function M.CreateGameSessionInput(args)
+	assert(args, "You must provdide an argument table when creating CreateGameSessionInput")
 	local t = { 
-		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
-		["Name"] = _Name,
-		["GameProperties"] = _GameProperties,
-		["IdempotencyToken"] = _IdempotencyToken,
-		["FleetId"] = _FleetId,
-		["CreatorId"] = _CreatorId,
-		["GameSessionId"] = _GameSessionId,
-		["AliasId"] = _AliasId,
+		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
+		["Name"] = args["Name"],
+		["GameProperties"] = args["GameProperties"],
+		["IdempotencyToken"] = args["IdempotencyToken"],
+		["FleetId"] = args["FleetId"],
+		["CreatorId"] = args["CreatorId"],
+		["GameSessionId"] = args["GameSessionId"],
+		["AliasId"] = args["AliasId"],
 	}
 	asserts.AssertCreateGameSessionInput(t)
 	return t
@@ -2562,8 +2826,11 @@ end
 
 --- Create a structure of type DeleteGameSessionQueueOutput
 --  
-function M.DeleteGameSessionQueueOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGameSessionQueueOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteGameSessionQueueOutput structure as a key-value pair table
+function M.DeleteGameSessionQueueOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteGameSessionQueueOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteGameSessionQueueOutput(t)
@@ -2583,11 +2850,14 @@ end
 
 --- Create a structure of type CreateGameSessionOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _GameSession [GameSession] <p>Object that describes the newly created game session record.</p>
-function M.CreateGameSessionOutput(_GameSession, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGameSessionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSession [GameSession] <p>Object that describes the newly created game session record.</p>
+-- @return CreateGameSessionOutput structure as a key-value pair table
+function M.CreateGameSessionOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateGameSessionOutput")
 	local t = { 
-		["GameSession"] = _GameSession,
+		["GameSession"] = args["GameSession"],
 	}
 	asserts.AssertCreateGameSessionOutput(t)
 	return t
@@ -2609,16 +2879,19 @@ end
 
 --- Create a structure of type UpdateFleetPortSettingsInput
 -- <p>Represents the input for a request action.</p>
--- @param _InboundPermissionRevocations [IpPermissionsList] <p>Collection of port settings to be removed from the fleet record.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to update port settings for.</p>
--- @param _InboundPermissionAuthorizations [IpPermissionsList] <p>Collection of port settings to be added to the fleet record.</p>
--- Required parameter: FleetId
-function M.UpdateFleetPortSettingsInput(_InboundPermissionRevocations, _FleetId, _InboundPermissionAuthorizations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetPortSettingsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InboundPermissionRevocations [IpPermissionsList] <p>Collection of port settings to be removed from the fleet record.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to update port settings for.</p>
+-- * InboundPermissionAuthorizations [IpPermissionsList] <p>Collection of port settings to be added to the fleet record.</p>
+-- Required key: FleetId
+-- @return UpdateFleetPortSettingsInput structure as a key-value pair table
+function M.UpdateFleetPortSettingsInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateFleetPortSettingsInput")
 	local t = { 
-		["InboundPermissionRevocations"] = _InboundPermissionRevocations,
-		["FleetId"] = _FleetId,
-		["InboundPermissionAuthorizations"] = _InboundPermissionAuthorizations,
+		["InboundPermissionRevocations"] = args["InboundPermissionRevocations"],
+		["FleetId"] = args["FleetId"],
+		["InboundPermissionAuthorizations"] = args["InboundPermissionAuthorizations"],
 	}
 	asserts.AssertUpdateFleetPortSettingsInput(t)
 	return t
@@ -2637,11 +2910,14 @@ end
 
 --- Create a structure of type ConflictException
 -- <p>The requested operation would cause a conflict with the current state of a service resource associated with the request. Resolve the conflict before retrying this request.</p>
--- @param _Message [NonEmptyString] 
-function M.ConflictException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return ConflictException structure as a key-value pair table
+function M.ConflictException(args)
+	assert(args, "You must provdide an argument table when creating ConflictException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertConflictException(t)
 	return t
@@ -2665,21 +2941,24 @@ end
 
 --- Create a structure of type SearchGameSessionsInput
 -- <p>Represents the input for a request action.</p>
--- @param _FilterExpression [NonZeroAndMaxString] <p>String containing the search criteria for the session search. If no filter expression is included, the request returns results for all game sessions in the fleet that are in <code>ACTIVE</code> status.</p> <p>A filter expression can contain one or multiple conditions. Each condition consists of the following:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Comparator</b> -- Valid comparators are: <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>. </p> </li> <li> <p> <b>Value</b> -- Value to be searched for. Values can be numbers, boolean values (true/false) or strings. String values are case sensitive, enclosed in single quotes. Special characters must be escaped. Boolean and string values can only be used with the comparators <code>=</code> and <code>&lt;&gt;</code>. For example, the following filter expression searches on <code>gameSessionName</code>: "<code>FilterExpression": "gameSessionName = 'Matt\\'s Awesome Game 1'"</code>. </p> </li> </ul> <p>To chain multiple conditions in a single expression, use the logical keywords <code>AND</code>, <code>OR</code>, and <code>NOT</code> and parentheses as needed. For example: <code>x AND y AND NOT z</code>, <code>NOT (x OR y)</code>.</p> <p>Session search evaluates conditions from left to right using the following precedence rules:</p> <ol> <li> <p> <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> </p> </li> <li> <p>Parentheses</p> </li> <li> <p>NOT</p> </li> <li> <p>AND</p> </li> <li> <p>OR</p> </li> </ol> <p>For example, this filter expression retrieves game sessions hosting at least ten players that have an open player slot: <code>"maximumSessions&gt;=10 AND hasAvailablePlayerSessions=true"</code>. </p>
--- @param _SortExpression [NonZeroAndMaxString] <p>Instructions on how to sort the search results. If no sort expression is included, the request returns results in random order. A sort expression consists of the following elements:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Order</b> -- Valid sort orders are <code>ASC</code> (ascending) and <code>DESC</code> (descending).</p> </li> </ul> <p>For example, this sort expression returns the oldest active sessions first: <code>"SortExpression": "creationTimeMillis ASC"</code>. Results with a null value for the sort operand are returned at the end of the list.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. The maximum number of results returned is 20, even if this value is not set or is set higher than 20. </p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param _AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
-function M.SearchGameSessionsInput(_FilterExpression, _SortExpression, _FleetId, _Limit, _NextToken, _AliasId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchGameSessionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FilterExpression [NonZeroAndMaxString] <p>String containing the search criteria for the session search. If no filter expression is included, the request returns results for all game sessions in the fleet that are in <code>ACTIVE</code> status.</p> <p>A filter expression can contain one or multiple conditions. Each condition consists of the following:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Comparator</b> -- Valid comparators are: <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>. </p> </li> <li> <p> <b>Value</b> -- Value to be searched for. Values can be numbers, boolean values (true/false) or strings. String values are case sensitive, enclosed in single quotes. Special characters must be escaped. Boolean and string values can only be used with the comparators <code>=</code> and <code>&lt;&gt;</code>. For example, the following filter expression searches on <code>gameSessionName</code>: "<code>FilterExpression": "gameSessionName = 'Matt\\'s Awesome Game 1'"</code>. </p> </li> </ul> <p>To chain multiple conditions in a single expression, use the logical keywords <code>AND</code>, <code>OR</code>, and <code>NOT</code> and parentheses as needed. For example: <code>x AND y AND NOT z</code>, <code>NOT (x OR y)</code>.</p> <p>Session search evaluates conditions from left to right using the following precedence rules:</p> <ol> <li> <p> <code>=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> </p> </li> <li> <p>Parentheses</p> </li> <li> <p>NOT</p> </li> <li> <p>AND</p> </li> <li> <p>OR</p> </li> </ol> <p>For example, this filter expression retrieves game sessions hosting at least ten players that have an open player slot: <code>"maximumSessions&gt;=10 AND hasAvailablePlayerSessions=true"</code>. </p>
+-- * SortExpression [NonZeroAndMaxString] <p>Instructions on how to sort the search results. If no sort expression is included, the request returns results in random order. A sort expression consists of the following elements:</p> <ul> <li> <p> <b>Operand</b> -- Name of a game session attribute. Valid values are <code>gameSessionName</code>, <code>gameSessionId</code>, <code>creationTimeMillis</code>, <code>playerSessionCount</code>, <code>maximumSessions</code>, <code>hasAvailablePlayerSessions</code>.</p> </li> <li> <p> <b>Order</b> -- Valid sort orders are <code>ASC</code> (ascending) and <code>DESC</code> (descending).</p> </li> </ul> <p>For example, this sort expression returns the oldest active sessions first: <code>"SortExpression": "creationTimeMillis ASC"</code>. Results with a null value for the sort operand are returned at the end of the list.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. The maximum number of results returned is 20, even if this value is not set or is set higher than 20. </p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- * AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
+-- @return SearchGameSessionsInput structure as a key-value pair table
+function M.SearchGameSessionsInput(args)
+	assert(args, "You must provdide an argument table when creating SearchGameSessionsInput")
 	local t = { 
-		["FilterExpression"] = _FilterExpression,
-		["SortExpression"] = _SortExpression,
-		["FleetId"] = _FleetId,
-		["Limit"] = _Limit,
-		["NextToken"] = _NextToken,
-		["AliasId"] = _AliasId,
+		["FilterExpression"] = args["FilterExpression"],
+		["SortExpression"] = args["SortExpression"],
+		["FleetId"] = args["FleetId"],
+		["Limit"] = args["Limit"],
+		["NextToken"] = args["NextToken"],
+		["AliasId"] = args["AliasId"],
 	}
 	asserts.AssertSearchGameSessionsInput(t)
 	return t
@@ -2699,13 +2978,16 @@ end
 
 --- Create a structure of type DescribeFleetUtilizationOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _FleetUtilization [FleetUtilizationList] <p>Collection of objects containing utilization information for each requested fleet ID.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeFleetUtilizationOutput(_FleetUtilization, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetUtilizationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetUtilization [FleetUtilizationList] <p>Collection of objects containing utilization information for each requested fleet ID.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @return DescribeFleetUtilizationOutput structure as a key-value pair table
+function M.DescribeFleetUtilizationOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetUtilizationOutput")
 	local t = { 
-		["FleetUtilization"] = _FleetUtilization,
-		["NextToken"] = _NextToken,
+		["FleetUtilization"] = args["FleetUtilization"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeFleetUtilizationOutput(t)
 	return t
@@ -2729,20 +3011,23 @@ end
 
 --- Create a structure of type UpdateGameSessionInput
 -- <p>Represents the input for a request action.</p>
--- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
--- @param _PlayerSessionCreationPolicy [PlayerSessionCreationPolicy] <p>Policy determining whether or not the game session accepts new players.</p>
--- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to update.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
--- @param _ProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to this game session only.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
--- Required parameter: GameSessionId
-function M.UpdateGameSessionInput(_MaximumPlayerSessionCount, _PlayerSessionCreationPolicy, _GameSessionId, _Name, _ProtectionPolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGameSessionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
+-- * PlayerSessionCreationPolicy [PlayerSessionCreationPolicy] <p>Policy determining whether or not the game session accepts new players.</p>
+-- * GameSessionId [ArnStringModel] <p>Unique identifier for the game session to update.</p>
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
+-- * ProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to this game session only.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
+-- Required key: GameSessionId
+-- @return UpdateGameSessionInput structure as a key-value pair table
+function M.UpdateGameSessionInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateGameSessionInput")
 	local t = { 
-		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
-		["PlayerSessionCreationPolicy"] = _PlayerSessionCreationPolicy,
-		["GameSessionId"] = _GameSessionId,
-		["Name"] = _Name,
-		["ProtectionPolicy"] = _ProtectionPolicy,
+		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
+		["PlayerSessionCreationPolicy"] = args["PlayerSessionCreationPolicy"],
+		["GameSessionId"] = args["GameSessionId"],
+		["Name"] = args["Name"],
+		["ProtectionPolicy"] = args["ProtectionPolicy"],
 	}
 	asserts.AssertUpdateGameSessionInput(t)
 	return t
@@ -2761,11 +3046,14 @@ end
 
 --- Create a structure of type UpdateGameSessionOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _GameSession [GameSession] <p>Object that contains the updated game session metadata.</p>
-function M.UpdateGameSessionOutput(_GameSession, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGameSessionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSession [GameSession] <p>Object that contains the updated game session metadata.</p>
+-- @return UpdateGameSessionOutput structure as a key-value pair table
+function M.UpdateGameSessionOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateGameSessionOutput")
 	local t = { 
-		["GameSession"] = _GameSession,
+		["GameSession"] = args["GameSession"],
 	}
 	asserts.AssertUpdateGameSessionOutput(t)
 	return t
@@ -2784,11 +3072,14 @@ end
 
 --- Create a structure of type GameSessionQueueDestination
 -- <p>Fleet designated in a game session queue. Requests for new game sessions in the queue are fulfilled by starting a new game session on any destination configured for a queue. </p>
--- @param _DestinationArn [ArnStringModel] <p>Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a region name, provide a unique identifier across all regions. </p>
-function M.GameSessionQueueDestination(_DestinationArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GameSessionQueueDestination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DestinationArn [ArnStringModel] <p>Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a region name, provide a unique identifier across all regions. </p>
+-- @return GameSessionQueueDestination structure as a key-value pair table
+function M.GameSessionQueueDestination(args)
+	assert(args, "You must provdide an argument table when creating GameSessionQueueDestination")
 	local t = { 
-		["DestinationArn"] = _DestinationArn,
+		["DestinationArn"] = args["DestinationArn"],
 	}
 	asserts.AssertGameSessionQueueDestination(t)
 	return t
@@ -2807,11 +3098,14 @@ end
 
 --- Create a structure of type DescribeGameSessionPlacementOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _GameSessionPlacement [GameSessionPlacement] <p>Object that describes the requested game session placement.</p>
-function M.DescribeGameSessionPlacementOutput(_GameSessionPlacement, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGameSessionPlacementOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSessionPlacement [GameSessionPlacement] <p>Object that describes the requested game session placement.</p>
+-- @return DescribeGameSessionPlacementOutput structure as a key-value pair table
+function M.DescribeGameSessionPlacementOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeGameSessionPlacementOutput")
 	local t = { 
-		["GameSessionPlacement"] = _GameSessionPlacement,
+		["GameSessionPlacement"] = args["GameSessionPlacement"],
 	}
 	asserts.AssertDescribeGameSessionPlacementOutput(t)
 	return t
@@ -2834,18 +3128,21 @@ end
 
 --- Create a structure of type UpdateFleetCapacityInput
 -- <p>Represents the input for a request action.</p>
--- @param _MinSize [WholeNumber] <p>Minimum value allowed for the fleet's instance count. Default if not set is 0.</p>
--- @param _MaxSize [WholeNumber] <p>Maximum value allowed for the fleet's instance count. Default if not set is 1.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to update capacity for.</p>
--- @param _DesiredInstances [WholeNumber] <p>Number of EC2 instances you want this fleet to host.</p>
--- Required parameter: FleetId
-function M.UpdateFleetCapacityInput(_MinSize, _MaxSize, _FleetId, _DesiredInstances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetCapacityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MinSize [WholeNumber] <p>Minimum value allowed for the fleet's instance count. Default if not set is 0.</p>
+-- * MaxSize [WholeNumber] <p>Maximum value allowed for the fleet's instance count. Default if not set is 1.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to update capacity for.</p>
+-- * DesiredInstances [WholeNumber] <p>Number of EC2 instances you want this fleet to host.</p>
+-- Required key: FleetId
+-- @return UpdateFleetCapacityInput structure as a key-value pair table
+function M.UpdateFleetCapacityInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateFleetCapacityInput")
 	local t = { 
-		["MinSize"] = _MinSize,
-		["MaxSize"] = _MaxSize,
-		["FleetId"] = _FleetId,
-		["DesiredInstances"] = _DesiredInstances,
+		["MinSize"] = args["MinSize"],
+		["MaxSize"] = args["MaxSize"],
+		["FleetId"] = args["FleetId"],
+		["DesiredInstances"] = args["DesiredInstances"],
 	}
 	asserts.AssertUpdateFleetCapacityInput(t)
 	return t
@@ -2868,19 +3165,22 @@ end
 
 --- Create a structure of type GameSessionQueue
 -- <p>Configuration of a queue that is used to process game session placement requests. The queue configuration identifies several game features:</p> <ul> <li> <p>The destinations where a new game session can potentially be hosted. Amazon GameLift tries these destinations in an order based on either the queue's default order or player latency information, if provided in a placement request. With latency information, Amazon GameLift can place game sessions where the majority of players are reporting the lowest possible latency. </p> </li> <li> <p>The length of time that placement requests can wait in the queue before timing out. </p> </li> <li> <p>A set of optional latency policies that protect individual players from high latencies, preventing game sessions from being placed where any individual player is reporting latency higher than a policy's maximum.</p> </li> </ul> <p>Queue-related operations include the following:</p> <ul> <li> <p> <a>CreateGameSessionQueue</a> </p> </li> <li> <p> <a>DescribeGameSessionQueues</a> </p> </li> <li> <p> <a>UpdateGameSessionQueue</a> </p> </li> <li> <p> <a>DeleteGameSessionQueue</a> </p> </li> </ul>
--- @param _Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.</p>
--- @param _GameSessionQueueArn [ArnStringModel] <p>Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that is assigned to a game session queue and uniquely identifies it. Format is <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
--- @param _PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. </p>
--- @param _Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
--- @param _TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
-function M.GameSessionQueue(_Destinations, _GameSessionQueueArn, _PlayerLatencyPolicies, _Name, _TimeoutInSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GameSessionQueue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.</p>
+-- * GameSessionQueueArn [ArnStringModel] <p>Amazon Resource Name (<a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) that is assigned to a game session queue and uniquely identifies it. Format is <code>arn:aws:gamelift:&lt;region&gt;::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912</code>.</p>
+-- * PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. </p>
+-- * Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
+-- * TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
+-- @return GameSessionQueue structure as a key-value pair table
+function M.GameSessionQueue(args)
+	assert(args, "You must provdide an argument table when creating GameSessionQueue")
 	local t = { 
-		["Destinations"] = _Destinations,
-		["GameSessionQueueArn"] = _GameSessionQueueArn,
-		["PlayerLatencyPolicies"] = _PlayerLatencyPolicies,
-		["Name"] = _Name,
-		["TimeoutInSeconds"] = _TimeoutInSeconds,
+		["Destinations"] = args["Destinations"],
+		["GameSessionQueueArn"] = args["GameSessionQueueArn"],
+		["PlayerLatencyPolicies"] = args["PlayerLatencyPolicies"],
+		["Name"] = args["Name"],
+		["TimeoutInSeconds"] = args["TimeoutInSeconds"],
 	}
 	asserts.AssertGameSessionQueue(t)
 	return t
@@ -2900,12 +3200,15 @@ end
 
 --- Create a structure of type ResolveAliasInput
 -- <p>Represents the input for a request action.</p>
--- @param _AliasId [AliasId] <p>Unique identifier for the alias you want to resolve.</p>
--- Required parameter: AliasId
-function M.ResolveAliasInput(_AliasId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResolveAliasInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AliasId [AliasId] <p>Unique identifier for the alias you want to resolve.</p>
+-- Required key: AliasId
+-- @return ResolveAliasInput structure as a key-value pair table
+function M.ResolveAliasInput(args)
+	assert(args, "You must provdide an argument table when creating ResolveAliasInput")
 	local t = { 
-		["AliasId"] = _AliasId,
+		["AliasId"] = args["AliasId"],
 	}
 	asserts.AssertResolveAliasInput(t)
 	return t
@@ -2925,13 +3228,16 @@ end
 
 --- Create a structure of type DescribeInstancesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _Instances [InstanceList] <p>Collection of objects containing properties for each instance returned.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribeInstancesOutput(_Instances, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Instances [InstanceList] <p>Collection of objects containing properties for each instance returned.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @return DescribeInstancesOutput structure as a key-value pair table
+function M.DescribeInstancesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancesOutput")
 	local t = { 
-		["Instances"] = _Instances,
-		["NextToken"] = _NextToken,
+		["Instances"] = args["Instances"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeInstancesOutput(t)
 	return t
@@ -2951,13 +3257,16 @@ end
 
 --- Create a structure of type ListFleetsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _FleetIds [FleetIdList] <p>Set of fleet IDs matching the list request. You can retrieve additional information about all returned fleets by passing this result set to a call to <a>DescribeFleetAttributes</a>, <a>DescribeFleetCapacity</a>, or <a>DescribeFleetUtilization</a>.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.ListFleetsOutput(_FleetIds, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFleetsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetIds [FleetIdList] <p>Set of fleet IDs matching the list request. You can retrieve additional information about all returned fleets by passing this result set to a call to <a>DescribeFleetAttributes</a>, <a>DescribeFleetCapacity</a>, or <a>DescribeFleetUtilization</a>.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @return ListFleetsOutput structure as a key-value pair table
+function M.ListFleetsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListFleetsOutput")
 	local t = { 
-		["FleetIds"] = _FleetIds,
-		["NextToken"] = _NextToken,
+		["FleetIds"] = args["FleetIds"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListFleetsOutput(t)
 	return t
@@ -2979,15 +3288,18 @@ end
 
 --- Create a structure of type UpdateRuntimeConfigurationInput
 -- <p>Represents the input for a request action.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to update runtime configuration for.</p>
--- @param _RuntimeConfiguration [RuntimeConfiguration] <p>Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance.</p>
--- Required parameter: FleetId
--- Required parameter: RuntimeConfiguration
-function M.UpdateRuntimeConfigurationInput(_FleetId, _RuntimeConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRuntimeConfigurationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to update runtime configuration for.</p>
+-- * RuntimeConfiguration [RuntimeConfiguration] <p>Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance.</p>
+-- Required key: FleetId
+-- Required key: RuntimeConfiguration
+-- @return UpdateRuntimeConfigurationInput structure as a key-value pair table
+function M.UpdateRuntimeConfigurationInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateRuntimeConfigurationInput")
 	local t = { 
-		["FleetId"] = _FleetId,
-		["RuntimeConfiguration"] = _RuntimeConfiguration,
+		["FleetId"] = args["FleetId"],
+		["RuntimeConfiguration"] = args["RuntimeConfiguration"],
 	}
 	asserts.AssertUpdateRuntimeConfigurationInput(t)
 	return t
@@ -3020,39 +3332,42 @@ end
 
 --- Create a structure of type GameSessionPlacement
 -- <p>Object that describes a <a>StartGameSessionPlacement</a> request. This object includes the full details of the original request plus the current status and start/end time stamps.</p> <p>Game session placement-related operations include:</p> <ul> <li> <p> <a>StartGameSessionPlacement</a> </p> </li> <li> <p> <a>DescribeGameSessionPlacement</a> </p> </li> <li> <p> <a>StopGameSessionPlacement</a> </p> </li> </ul>
--- @param _Status [GameSessionPlacementState] <p>Current status of the game session placement request.</p> <ul> <li> <p> <b>PENDING</b> – The placement request is currently in the queue waiting to be processed.</p> </li> <li> <p> <b>FULFILLED</b> – A new game session and player sessions (if requested) have been successfully created. Values for <i>GameSessionArn</i> and <i>GameSessionRegion</i> are available. </p> </li> <li> <p> <b>CANCELLED</b> – The placement request was canceled with a call to <a>StopGameSessionPlacement</a>.</p> </li> <li> <p> <b>TIMED_OUT</b> – A new game session was not successfully created before the time limit expired. You can resubmit the placement request as needed.</p> </li> </ul>
--- @param _MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
--- @param _PlacedPlayerSessions [PlacedPlayerSessionList] <p>Collection of information on player sessions created in response to the game session placement request. These player sessions are created only once a new game session is successfully placed (placement status is Fulfilled). This information includes the player ID (as provided in the placement request) and the corresponding player session ID. Retrieve full player sessions by calling <a>DescribePlayerSessions</a> with the player session ID.</p>
--- @param _PlacementId [IdStringModel] <p>Unique identifier for a game session placement.</p>
--- @param _GameSessionName [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
--- @param _GameSessionQueueName [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
--- @param _GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
--- @param _GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session. This value is set once the new game session is placed (placement status is Fulfilled).</p>
--- @param _StartTime [Timestamp] <p>Time stamp indicating when this request was placed in the queue. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _GameSessionRegion [NonZeroAndMaxString] <p>Name of the region where the game session created by this placement request is running. This value is set once the new game session is placed (placement status is Fulfilled).</p>
--- @param _PlayerLatencies [PlayerLatencyList] <p>Set of values, expressed in milliseconds, indicating the amount of latency that players are experiencing when connected to AWS regions.</p>
--- @param _EndTime [Timestamp] <p>Time stamp indicating when this request was completed, canceled, or timed out.</p>
--- @param _IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number. This value is set once the new game session is placed (placement status is Fulfilled). </p>
--- @param _Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number. This value is set once the new game session is placed (placement status is Fulfilled).</p>
--- @param _GameSessionArn [NonZeroAndMaxString] <p>Identifier for the game session created by this placement request. This value is set once the new game session is placed (placement status is Fulfilled). This identifier is unique across all regions. You can use this value as a <code>GameSessionId</code> value as needed.</p>
-function M.GameSessionPlacement(_Status, _MaximumPlayerSessionCount, _PlacedPlayerSessions, _PlacementId, _GameSessionName, _GameSessionQueueName, _GameProperties, _GameSessionId, _StartTime, _GameSessionRegion, _PlayerLatencies, _EndTime, _IpAddress, _Port, _GameSessionArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GameSessionPlacement")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [GameSessionPlacementState] <p>Current status of the game session placement request.</p> <ul> <li> <p> <b>PENDING</b> – The placement request is currently in the queue waiting to be processed.</p> </li> <li> <p> <b>FULFILLED</b> – A new game session and player sessions (if requested) have been successfully created. Values for <i>GameSessionArn</i> and <i>GameSessionRegion</i> are available. </p> </li> <li> <p> <b>CANCELLED</b> – The placement request was canceled with a call to <a>StopGameSessionPlacement</a>.</p> </li> <li> <p> <b>TIMED_OUT</b> – A new game session was not successfully created before the time limit expired. You can resubmit the placement request as needed.</p> </li> </ul>
+-- * MaximumPlayerSessionCount [WholeNumber] <p>Maximum number of players that can be connected simultaneously to the game session.</p>
+-- * PlacedPlayerSessions [PlacedPlayerSessionList] <p>Collection of information on player sessions created in response to the game session placement request. These player sessions are created only once a new game session is successfully placed (placement status is Fulfilled). This information includes the player ID (as provided in the placement request) and the corresponding player session ID. Retrieve full player sessions by calling <a>DescribePlayerSessions</a> with the player session ID.</p>
+-- * PlacementId [IdStringModel] <p>Unique identifier for a game session placement.</p>
+-- * GameSessionName [NonZeroAndMaxString] <p>Descriptive label that is associated with a game session. Session names do not need to be unique.</p>
+-- * GameSessionQueueName [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
+-- * GameProperties [GamePropertyList] <p>Set of developer-defined properties for a game session. These properties are passed to the server process hosting the game session.</p>
+-- * GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session. This value is set once the new game session is placed (placement status is Fulfilled).</p>
+-- * StartTime [Timestamp] <p>Time stamp indicating when this request was placed in the queue. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * GameSessionRegion [NonZeroAndMaxString] <p>Name of the region where the game session created by this placement request is running. This value is set once the new game session is placed (placement status is Fulfilled).</p>
+-- * PlayerLatencies [PlayerLatencyList] <p>Set of values, expressed in milliseconds, indicating the amount of latency that players are experiencing when connected to AWS regions.</p>
+-- * EndTime [Timestamp] <p>Time stamp indicating when this request was completed, canceled, or timed out.</p>
+-- * IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number. This value is set once the new game session is placed (placement status is Fulfilled). </p>
+-- * Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number. This value is set once the new game session is placed (placement status is Fulfilled).</p>
+-- * GameSessionArn [NonZeroAndMaxString] <p>Identifier for the game session created by this placement request. This value is set once the new game session is placed (placement status is Fulfilled). This identifier is unique across all regions. You can use this value as a <code>GameSessionId</code> value as needed.</p>
+-- @return GameSessionPlacement structure as a key-value pair table
+function M.GameSessionPlacement(args)
+	assert(args, "You must provdide an argument table when creating GameSessionPlacement")
 	local t = { 
-		["Status"] = _Status,
-		["MaximumPlayerSessionCount"] = _MaximumPlayerSessionCount,
-		["PlacedPlayerSessions"] = _PlacedPlayerSessions,
-		["PlacementId"] = _PlacementId,
-		["GameSessionName"] = _GameSessionName,
-		["GameSessionQueueName"] = _GameSessionQueueName,
-		["GameProperties"] = _GameProperties,
-		["GameSessionId"] = _GameSessionId,
-		["StartTime"] = _StartTime,
-		["GameSessionRegion"] = _GameSessionRegion,
-		["PlayerLatencies"] = _PlayerLatencies,
-		["EndTime"] = _EndTime,
-		["IpAddress"] = _IpAddress,
-		["Port"] = _Port,
-		["GameSessionArn"] = _GameSessionArn,
+		["Status"] = args["Status"],
+		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
+		["PlacedPlayerSessions"] = args["PlacedPlayerSessions"],
+		["PlacementId"] = args["PlacementId"],
+		["GameSessionName"] = args["GameSessionName"],
+		["GameSessionQueueName"] = args["GameSessionQueueName"],
+		["GameProperties"] = args["GameProperties"],
+		["GameSessionId"] = args["GameSessionId"],
+		["StartTime"] = args["StartTime"],
+		["GameSessionRegion"] = args["GameSessionRegion"],
+		["PlayerLatencies"] = args["PlayerLatencies"],
+		["EndTime"] = args["EndTime"],
+		["IpAddress"] = args["IpAddress"],
+		["Port"] = args["Port"],
+		["GameSessionArn"] = args["GameSessionArn"],
 	}
 	asserts.AssertGameSessionPlacement(t)
 	return t
@@ -3072,12 +3387,15 @@ end
 
 --- Create a structure of type DescribeBuildInput
 -- <p>Represents the input for a request action.</p>
--- @param _BuildId [BuildId] <p>Unique identifier for a build to retrieve properties for.</p>
--- Required parameter: BuildId
-function M.DescribeBuildInput(_BuildId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBuildInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BuildId [BuildId] <p>Unique identifier for a build to retrieve properties for.</p>
+-- Required key: BuildId
+-- @return DescribeBuildInput structure as a key-value pair table
+function M.DescribeBuildInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeBuildInput")
 	local t = { 
-		["BuildId"] = _BuildId,
+		["BuildId"] = args["BuildId"],
 	}
 	asserts.AssertDescribeBuildInput(t)
 	return t
@@ -3101,20 +3419,23 @@ end
 
 --- Create a structure of type DescribeFleetEventsInput
 -- <p>Represents the input for a request action.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
--- @param _EndTime [Timestamp] <p>Most recent date to retrieve event logs for. If no end time is specified, this call returns entries from the specified start time up to the present. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to get event logs for.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
--- @param _StartTime [Timestamp] <p>Earliest date to retrieve event logs for. If no start time is specified, this call returns entries starting from when the fleet was created to the specified end time. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").</p>
--- Required parameter: FleetId
-function M.DescribeFleetEventsInput(_Limit, _EndTime, _FleetId, _NextToken, _StartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFleetEventsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
+-- * EndTime [Timestamp] <p>Most recent date to retrieve event logs for. If no end time is specified, this call returns entries from the specified start time up to the present. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to get event logs for.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value.</p>
+-- * StartTime [Timestamp] <p>Earliest date to retrieve event logs for. If no start time is specified, this call returns entries starting from when the fleet was created to the specified end time. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").</p>
+-- Required key: FleetId
+-- @return DescribeFleetEventsInput structure as a key-value pair table
+function M.DescribeFleetEventsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeFleetEventsInput")
 	local t = { 
-		["Limit"] = _Limit,
-		["EndTime"] = _EndTime,
-		["FleetId"] = _FleetId,
-		["NextToken"] = _NextToken,
-		["StartTime"] = _StartTime,
+		["Limit"] = args["Limit"],
+		["EndTime"] = args["EndTime"],
+		["FleetId"] = args["FleetId"],
+		["NextToken"] = args["NextToken"],
+		["StartTime"] = args["StartTime"],
 	}
 	asserts.AssertDescribeFleetEventsInput(t)
 	return t
@@ -3133,11 +3454,14 @@ end
 
 --- Create a structure of type UnauthorizedException
 -- <p>The client failed authentication. Clients should not retry such requests.</p>
--- @param _Message [NonEmptyString] 
-function M.UnauthorizedException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [NonEmptyString] 
+-- @return UnauthorizedException structure as a key-value pair table
+function M.UnauthorizedException(args)
+	assert(args, "You must provdide an argument table when creating UnauthorizedException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertUnauthorizedException(t)
 	return t
@@ -3160,17 +3484,20 @@ end
 
 --- Create a structure of type CreateAliasInput
 -- <p>Represents the input for a request action.</p>
--- @param _RoutingStrategy [RoutingStrategy] <p>Object that specifies the fleet and routing type to use for the alias.</p>
--- @param _Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
--- @param _Description [NonZeroAndMaxString] <p>Human-readable description of an alias.</p>
--- Required parameter: Name
--- Required parameter: RoutingStrategy
-function M.CreateAliasInput(_RoutingStrategy, _Name, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAliasInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoutingStrategy [RoutingStrategy] <p>Object that specifies the fleet and routing type to use for the alias.</p>
+-- * Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
+-- * Description [NonZeroAndMaxString] <p>Human-readable description of an alias.</p>
+-- Required key: Name
+-- Required key: RoutingStrategy
+-- @return CreateAliasInput structure as a key-value pair table
+function M.CreateAliasInput(args)
+	assert(args, "You must provdide an argument table when creating CreateAliasInput")
 	local t = { 
-		["RoutingStrategy"] = _RoutingStrategy,
-		["Name"] = _Name,
-		["Description"] = _Description,
+		["RoutingStrategy"] = args["RoutingStrategy"],
+		["Name"] = args["Name"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateAliasInput(t)
 	return t
@@ -3194,21 +3521,24 @@ end
 
 --- Create a structure of type DescribePlayerSessionsInput
 -- <p>Represents the input for a request action.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. If a player session ID is specified, this parameter is ignored.</p>
--- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player to retrieve player sessions for.</p>
--- @param _PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session to retrieve.</p>
--- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve player sessions for.</p>
--- @param _Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. If a player session ID is specified, this parameter is ignored.</p>
--- @param _PlayerSessionStatusFilter [NonZeroAndMaxString] <p>Player session status to filter results on.</p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul>
-function M.DescribePlayerSessionsInput(_NextToken, _PlayerId, _PlayerSessionId, _GameSessionId, _Limit, _PlayerSessionStatusFilter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePlayerSessionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To specify the start of the result set, do not specify a value. If a player session ID is specified, this parameter is ignored.</p>
+-- * PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player to retrieve player sessions for.</p>
+-- * PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session to retrieve.</p>
+-- * GameSessionId [ArnStringModel] <p>Unique identifier for the game session to retrieve player sessions for.</p>
+-- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. If a player session ID is specified, this parameter is ignored.</p>
+-- * PlayerSessionStatusFilter [NonZeroAndMaxString] <p>Player session status to filter results on.</p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul>
+-- @return DescribePlayerSessionsInput structure as a key-value pair table
+function M.DescribePlayerSessionsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribePlayerSessionsInput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["PlayerId"] = _PlayerId,
-		["PlayerSessionId"] = _PlayerSessionId,
-		["GameSessionId"] = _GameSessionId,
-		["Limit"] = _Limit,
-		["PlayerSessionStatusFilter"] = _PlayerSessionStatusFilter,
+		["NextToken"] = args["NextToken"],
+		["PlayerId"] = args["PlayerId"],
+		["PlayerSessionId"] = args["PlayerSessionId"],
+		["GameSessionId"] = args["GameSessionId"],
+		["Limit"] = args["Limit"],
+		["PlayerSessionStatusFilter"] = args["PlayerSessionStatusFilter"],
 	}
 	asserts.AssertDescribePlayerSessionsInput(t)
 	return t
@@ -3231,18 +3561,21 @@ end
 
 --- Create a structure of type CreateGameSessionQueueInput
 -- <p>Represents the input for a request action.</p>
--- @param _Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.</p>
--- @param _PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. A player latency policy must set a value for MaximumIndividualPlayerLatencyMilliseconds; if none is set, this API requests will fail.</p>
--- @param _Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
--- @param _TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
--- Required parameter: Name
-function M.CreateGameSessionQueueInput(_Destinations, _PlayerLatencyPolicies, _Name, _TimeoutInSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGameSessionQueueInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.</p>
+-- * PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. A player latency policy must set a value for MaximumIndividualPlayerLatencyMilliseconds; if none is set, this API requests will fail.</p>
+-- * Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
+-- * TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
+-- Required key: Name
+-- @return CreateGameSessionQueueInput structure as a key-value pair table
+function M.CreateGameSessionQueueInput(args)
+	assert(args, "You must provdide an argument table when creating CreateGameSessionQueueInput")
 	local t = { 
-		["Destinations"] = _Destinations,
-		["PlayerLatencyPolicies"] = _PlayerLatencyPolicies,
-		["Name"] = _Name,
-		["TimeoutInSeconds"] = _TimeoutInSeconds,
+		["Destinations"] = args["Destinations"],
+		["PlayerLatencyPolicies"] = args["PlayerLatencyPolicies"],
+		["Name"] = args["Name"],
+		["TimeoutInSeconds"] = args["TimeoutInSeconds"],
 	}
 	asserts.AssertCreateGameSessionQueueInput(t)
 	return t
@@ -3263,15 +3596,18 @@ end
 
 --- Create a structure of type RoutingStrategy
 -- <p>Routing configuration for a fleet alias.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet that the alias points to.</p>
--- @param _Message [FreeText] <p>Message text to be used with a terminal routing strategy.</p>
--- @param _Type [RoutingStrategyType] <p>Type of routing strategy.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul>
-function M.RoutingStrategy(_FleetId, _Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RoutingStrategy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Unique identifier for a fleet that the alias points to.</p>
+-- * Message [FreeText] <p>Message text to be used with a terminal routing strategy.</p>
+-- * Type [RoutingStrategyType] <p>Type of routing strategy.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul>
+-- @return RoutingStrategy structure as a key-value pair table
+function M.RoutingStrategy(args)
+	assert(args, "You must provdide an argument table when creating RoutingStrategy")
 	local t = { 
-		["FleetId"] = _FleetId,
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["FleetId"] = args["FleetId"],
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertRoutingStrategy(t)
 	return t
@@ -3299,29 +3635,32 @@ end
 
 --- Create a structure of type PlayerSession
 -- <p>Properties describing a player session. A player session represents either a player reservation for a game session or actual player activity in a game session. A player session object (including player data) is automatically passed to a game session when the player connects to the game session and is validated.</p> <p>Player session-related operations include:</p> <ul> <li> <p> <a>CreatePlayerSession</a> </p> </li> <li> <p> <a>CreatePlayerSessions</a> </p> </li> <li> <p> <a>DescribePlayerSessions</a> </p> </li> </ul>
--- @param _Status [PlayerSessionStatus] <p>Current status of the player session.</p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul>
--- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player that is associated with this player session.</p>
--- @param _TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. </p>
--- @param _PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session.</p>
--- @param _GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session that the player session is connected to.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet that the player's game session is running on.</p>
--- @param _IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
--- @param _Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift server process, an app needs both the IP address and port number.</p>
-function M.PlayerSession(_Status, _PlayerId, _TerminationTime, _CreationTime, _PlayerData, _PlayerSessionId, _GameSessionId, _FleetId, _IpAddress, _Port, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlayerSession")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [PlayerSessionStatus] <p>Current status of the player session.</p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul>
+-- * PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player that is associated with this player session.</p>
+-- * TerminationTime [Timestamp] <p>Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. </p>
+-- * PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session.</p>
+-- * GameSessionId [NonZeroAndMaxString] <p>Unique identifier for the game session that the player session is connected to.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet that the player's game session is running on.</p>
+-- * IpAddress [IpAddress] <p>IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
+-- * Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift server process, an app needs both the IP address and port number.</p>
+-- @return PlayerSession structure as a key-value pair table
+function M.PlayerSession(args)
+	assert(args, "You must provdide an argument table when creating PlayerSession")
 	local t = { 
-		["Status"] = _Status,
-		["PlayerId"] = _PlayerId,
-		["TerminationTime"] = _TerminationTime,
-		["CreationTime"] = _CreationTime,
-		["PlayerData"] = _PlayerData,
-		["PlayerSessionId"] = _PlayerSessionId,
-		["GameSessionId"] = _GameSessionId,
-		["FleetId"] = _FleetId,
-		["IpAddress"] = _IpAddress,
-		["Port"] = _Port,
+		["Status"] = args["Status"],
+		["PlayerId"] = args["PlayerId"],
+		["TerminationTime"] = args["TerminationTime"],
+		["CreationTime"] = args["CreationTime"],
+		["PlayerData"] = args["PlayerData"],
+		["PlayerSessionId"] = args["PlayerSessionId"],
+		["GameSessionId"] = args["GameSessionId"],
+		["FleetId"] = args["FleetId"],
+		["IpAddress"] = args["IpAddress"],
+		["Port"] = args["Port"],
 	}
 	asserts.AssertPlayerSession(t)
 	return t
@@ -3341,12 +3680,15 @@ end
 
 --- Create a structure of type RequestUploadCredentialsInput
 -- <p>Represents the input for a request action.</p>
--- @param _BuildId [BuildId] <p>Unique identifier for a build to get credentials for.</p>
--- Required parameter: BuildId
-function M.RequestUploadCredentialsInput(_BuildId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestUploadCredentialsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BuildId [BuildId] <p>Unique identifier for a build to get credentials for.</p>
+-- Required key: BuildId
+-- @return RequestUploadCredentialsInput structure as a key-value pair table
+function M.RequestUploadCredentialsInput(args)
+	assert(args, "You must provdide an argument table when creating RequestUploadCredentialsInput")
 	local t = { 
-		["BuildId"] = _BuildId,
+		["BuildId"] = args["BuildId"],
 	}
 	asserts.AssertRequestUploadCredentialsInput(t)
 	return t
@@ -3366,13 +3708,16 @@ end
 
 --- Create a structure of type DescribePlayerSessionsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _PlayerSessions [PlayerSessionList] <p>Collection of objects containing properties for each player session that matches the request.</p>
--- @param _NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
-function M.DescribePlayerSessionsOutput(_PlayerSessions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePlayerSessionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlayerSessions [PlayerSessionList] <p>Collection of objects containing properties for each player session that matches the request.</p>
+-- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- @return DescribePlayerSessionsOutput structure as a key-value pair table
+function M.DescribePlayerSessionsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribePlayerSessionsOutput")
 	local t = { 
-		["PlayerSessions"] = _PlayerSessions,
-		["NextToken"] = _NextToken,
+		["PlayerSessions"] = args["PlayerSessions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribePlayerSessionsOutput(t)
 	return t
@@ -3397,23 +3742,26 @@ end
 
 --- Create a structure of type Alias
 -- <p>Properties describing a fleet alias.</p> <p>Alias-related operations include:</p> <ul> <li> <p> <a>CreateAlias</a> </p> </li> <li> <p> <a>ListAliases</a> </p> </li> <li> <p> <a>DescribeAlias</a> </p> </li> <li> <p> <a>UpdateAlias</a> </p> </li> <li> <p> <a>DeleteAlias</a> </p> </li> </ul>
--- @param _Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
--- @param _AliasArn [ArnStringModel] <p>Unique identifier for an alias; alias ARNs are unique across all regions.</p>
--- @param _CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _LastUpdatedTime [Timestamp] <p>Time stamp indicating when this data object was last modified. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
--- @param _RoutingStrategy [RoutingStrategy] <p>Alias configuration for the alias, including routing type and settings.</p>
--- @param _AliasId [AliasId] <p>Unique identifier for an alias; alias IDs are unique within a region.</p>
--- @param _Description [FreeText] <p>Human-readable description of an alias.</p>
-function M.Alias(_Name, _AliasArn, _CreationTime, _LastUpdatedTime, _RoutingStrategy, _AliasId, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Alias")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [NonBlankAndLengthConstraintString] <p>Descriptive label that is associated with an alias. Alias names do not need to be unique.</p>
+-- * AliasArn [ArnStringModel] <p>Unique identifier for an alias; alias ARNs are unique across all regions.</p>
+-- * CreationTime [Timestamp] <p>Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * LastUpdatedTime [Timestamp] <p>Time stamp indicating when this data object was last modified. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").</p>
+-- * RoutingStrategy [RoutingStrategy] <p>Alias configuration for the alias, including routing type and settings.</p>
+-- * AliasId [AliasId] <p>Unique identifier for an alias; alias IDs are unique within a region.</p>
+-- * Description [FreeText] <p>Human-readable description of an alias.</p>
+-- @return Alias structure as a key-value pair table
+function M.Alias(args)
+	assert(args, "You must provdide an argument table when creating Alias")
 	local t = { 
-		["Name"] = _Name,
-		["AliasArn"] = _AliasArn,
-		["CreationTime"] = _CreationTime,
-		["LastUpdatedTime"] = _LastUpdatedTime,
-		["RoutingStrategy"] = _RoutingStrategy,
-		["AliasId"] = _AliasId,
-		["Description"] = _Description,
+		["Name"] = args["Name"],
+		["AliasArn"] = args["AliasArn"],
+		["CreationTime"] = args["CreationTime"],
+		["LastUpdatedTime"] = args["LastUpdatedTime"],
+		["RoutingStrategy"] = args["RoutingStrategy"],
+		["AliasId"] = args["AliasId"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertAlias(t)
 	return t
@@ -3434,15 +3782,18 @@ end
 
 --- Create a structure of type RuntimeConfiguration
 -- <p>Collection of server process configurations that describe what processes should be run on each instance in a fleet. An instance can launch and maintain multiple server processes based on the runtime configuration; it regularly checks for an updated runtime configuration and starts new server processes to match the latest version.</p> <p>The key purpose of a runtime configuration with multiple server process configurations is to be able to run more than one kind of game server in a single fleet. You can include configurations for more than one server executable in order to run two or more different programs to run on the same instance. This option might be useful, for example, to run more than one version of your game server on the same fleet. Another option is to specify configurations for the same server executable but with different launch parameters.</p> <p>A Amazon GameLift instance is limited to 50 processes running simultaneously. To calculate the total number of processes specified in a runtime configuration, add the values of the <code>ConcurrentExecutions</code> parameter for each <code> <a>ServerProcess</a> </code> object in the runtime configuration.</p>
--- @param _GameSessionActivationTimeoutSeconds [GameSessionActivationTimeoutSeconds] <p>Maximum amount of time (in seconds) that a game session can remain in status ACTIVATING. If the game session is not active before the timeout, activation is terminated and the game session status is changed to TERMINATED.</p>
--- @param _ServerProcesses [ServerProcessList] <p>Collection of server process configurations that describe which server processes to run on each instance in a fleet.</p>
--- @param _MaxConcurrentGameSessionActivations [MaxConcurrentGameSessionActivations] <p>Maximum number of game sessions with status ACTIVATING to allow on an instance simultaneously. This setting limits the amount of instance resources that can be used for new game activations at any one time.</p>
-function M.RuntimeConfiguration(_GameSessionActivationTimeoutSeconds, _ServerProcesses, _MaxConcurrentGameSessionActivations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RuntimeConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSessionActivationTimeoutSeconds [GameSessionActivationTimeoutSeconds] <p>Maximum amount of time (in seconds) that a game session can remain in status ACTIVATING. If the game session is not active before the timeout, activation is terminated and the game session status is changed to TERMINATED.</p>
+-- * ServerProcesses [ServerProcessList] <p>Collection of server process configurations that describe which server processes to run on each instance in a fleet.</p>
+-- * MaxConcurrentGameSessionActivations [MaxConcurrentGameSessionActivations] <p>Maximum number of game sessions with status ACTIVATING to allow on an instance simultaneously. This setting limits the amount of instance resources that can be used for new game activations at any one time.</p>
+-- @return RuntimeConfiguration structure as a key-value pair table
+function M.RuntimeConfiguration(args)
+	assert(args, "You must provdide an argument table when creating RuntimeConfiguration")
 	local t = { 
-		["GameSessionActivationTimeoutSeconds"] = _GameSessionActivationTimeoutSeconds,
-		["ServerProcesses"] = _ServerProcesses,
-		["MaxConcurrentGameSessionActivations"] = _MaxConcurrentGameSessionActivations,
+		["GameSessionActivationTimeoutSeconds"] = args["GameSessionActivationTimeoutSeconds"],
+		["ServerProcesses"] = args["ServerProcesses"],
+		["MaxConcurrentGameSessionActivations"] = args["MaxConcurrentGameSessionActivations"],
 	}
 	asserts.AssertRuntimeConfiguration(t)
 	return t
@@ -3461,11 +3812,14 @@ end
 
 --- Create a structure of type StopGameSessionPlacementOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _GameSessionPlacement [GameSessionPlacement] <p>Object that describes the canceled game session placement, with Cancelled status and an end time stamp. </p>
-function M.StopGameSessionPlacementOutput(_GameSessionPlacement, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopGameSessionPlacementOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GameSessionPlacement [GameSessionPlacement] <p>Object that describes the canceled game session placement, with Cancelled status and an end time stamp. </p>
+-- @return StopGameSessionPlacementOutput structure as a key-value pair table
+function M.StopGameSessionPlacementOutput(args)
+	assert(args, "You must provdide an argument table when creating StopGameSessionPlacementOutput")
 	local t = { 
-		["GameSessionPlacement"] = _GameSessionPlacement,
+		["GameSessionPlacement"] = args["GameSessionPlacement"],
 	}
 	asserts.AssertStopGameSessionPlacementOutput(t)
 	return t
@@ -3488,17 +3842,20 @@ end
 
 --- Create a structure of type CreatePlayerSessionsInput
 -- <p>Represents the input for a request action.</p>
--- @param _PlayerIds [PlayerIdList] <p>List of unique identifiers for the players to be added.</p>
--- @param _GameSessionId [ArnStringModel] <p>Unique identifier for the game session to add players to.</p>
--- @param _PlayerDataMap [PlayerDataMap] <p>Map of string pairs, each specifying a player ID and a set of developer-defined information related to the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored. </p>
--- Required parameter: GameSessionId
--- Required parameter: PlayerIds
-function M.CreatePlayerSessionsInput(_PlayerIds, _GameSessionId, _PlayerDataMap, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlayerSessionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlayerIds [PlayerIdList] <p>List of unique identifiers for the players to be added.</p>
+-- * GameSessionId [ArnStringModel] <p>Unique identifier for the game session to add players to.</p>
+-- * PlayerDataMap [PlayerDataMap] <p>Map of string pairs, each specifying a player ID and a set of developer-defined information related to the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data strings for player IDs not included in the <code>PlayerIds</code> parameter are ignored. </p>
+-- Required key: GameSessionId
+-- Required key: PlayerIds
+-- @return CreatePlayerSessionsInput structure as a key-value pair table
+function M.CreatePlayerSessionsInput(args)
+	assert(args, "You must provdide an argument table when creating CreatePlayerSessionsInput")
 	local t = { 
-		["PlayerIds"] = _PlayerIds,
-		["GameSessionId"] = _GameSessionId,
-		["PlayerDataMap"] = _PlayerDataMap,
+		["PlayerIds"] = args["PlayerIds"],
+		["GameSessionId"] = args["GameSessionId"],
+		["PlayerDataMap"] = args["PlayerDataMap"],
 	}
 	asserts.AssertCreatePlayerSessionsInput(t)
 	return t
@@ -3518,13 +3875,16 @@ end
 
 --- Create a structure of type ListAliasesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _NextToken [NonEmptyString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
--- @param _Aliases [AliasList] <p>Collection of alias records that match the list request.</p>
-function M.ListAliasesOutput(_NextToken, _Aliases, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAliasesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NonEmptyString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
+-- * Aliases [AliasList] <p>Collection of alias records that match the list request.</p>
+-- @return ListAliasesOutput structure as a key-value pair table
+function M.ListAliasesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListAliasesOutput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Aliases"] = _Aliases,
+		["NextToken"] = args["NextToken"],
+		["Aliases"] = args["Aliases"],
 	}
 	asserts.AssertListAliasesOutput(t)
 	return t
@@ -3546,15 +3906,18 @@ end
 
 --- Create a structure of type GetInstanceAccessInput
 -- <p>Represents the input for a request action.</p>
--- @param _InstanceId [InstanceId] <p>Unique identifier for an instance you want to get access to. You can access an instance in any status.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet that contains the instance you want access to. The fleet can be in any of the following statuses: <code>ACTIVATING</code>, <code>ACTIVE</code>, or <code>ERROR</code>. Fleets with an <code>ERROR</code> status may be accessible for a short time before they are deleted.</p>
--- Required parameter: FleetId
--- Required parameter: InstanceId
-function M.GetInstanceAccessInput(_InstanceId, _FleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceAccessInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [InstanceId] <p>Unique identifier for an instance you want to get access to. You can access an instance in any status.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet that contains the instance you want access to. The fleet can be in any of the following statuses: <code>ACTIVATING</code>, <code>ACTIVE</code>, or <code>ERROR</code>. Fleets with an <code>ERROR</code> status may be accessible for a short time before they are deleted.</p>
+-- Required key: FleetId
+-- Required key: InstanceId
+-- @return GetInstanceAccessInput structure as a key-value pair table
+function M.GetInstanceAccessInput(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceAccessInput")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["FleetId"] = _FleetId,
+		["InstanceId"] = args["InstanceId"],
+		["FleetId"] = args["FleetId"],
 	}
 	asserts.AssertGetInstanceAccessInput(t)
 	return t
@@ -3574,13 +3937,16 @@ end
 
 --- Create a structure of type InstanceCredentials
 -- <p>Set of credentials required to remotely access a fleet instance. Access credentials are requested by calling <a>GetInstanceAccess</a> and returned in an <a>InstanceAccess</a> object.</p>
--- @param _UserName [NonEmptyString] <p>User login string.</p>
--- @param _Secret [NonEmptyString] <p>Secret string. For Windows instances, the secret is a password for use with Windows Remote Desktop. For Linux instances, it is a private key (which must be saved as a <code>.pem</code> file) for use with SSH.</p>
-function M.InstanceCredentials(_UserName, _Secret, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceCredentials")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [NonEmptyString] <p>User login string.</p>
+-- * Secret [NonEmptyString] <p>Secret string. For Windows instances, the secret is a password for use with Windows Remote Desktop. For Linux instances, it is a private key (which must be saved as a <code>.pem</code> file) for use with SSH.</p>
+-- @return InstanceCredentials structure as a key-value pair table
+function M.InstanceCredentials(args)
+	assert(args, "You must provdide an argument table when creating InstanceCredentials")
 	local t = { 
-		["UserName"] = _UserName,
-		["Secret"] = _Secret,
+		["UserName"] = args["UserName"],
+		["Secret"] = args["Secret"],
 	}
 	asserts.AssertInstanceCredentials(t)
 	return t
@@ -3613,36 +3979,39 @@ end
 
 --- Create a structure of type CreateFleetInput
 -- <p>Represents the input for a request action.</p>
--- @param _EC2InboundPermissions [IpPermissionsList] <p>Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. If no inbound permissions are set, including both IP address range and port range, the server processes in the fleet cannot accept connections. You can specify one or more sets of permissions for a fleet.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
--- @param _NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to all instances in this fleet. If this parameter is not set, instances in this fleet default to no protection. You can change a fleet's protection policy using UpdateFleetAttributes, but this change will only affect sessions created after the policy change. You can also set protection for individual instances using <a>UpdateGameSession</a>.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
--- @param _BuildId [BuildId] <p>Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is created.</p>
--- @param _RuntimeConfiguration [RuntimeConfiguration] <p>Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include a runtime configuration with at least one server process configuration; otherwise the request will fail with an invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime configuration will continue to work.) </p>
--- @param _ServerLaunchPath [NonZeroAndMaxString] <p>This parameter is no longer used. Instead, specify a server launch path using the <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters instead of a runtime configuration will continue to work.)</p>
--- @param _EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
--- @param _ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Policy that limits the number of game sessions an individual player can create over a span of time for this fleet.</p>
--- @param _LogPaths [StringList] <p>This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one or more directory paths in <code>logParameters</code>. See more information in the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process">Server API Reference</a>. </p>
--- @param _MetricGroups [MetricGroupList] <p>Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group, or use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a time.</p>
--- @param _ServerLaunchParameters [NonZeroAndMaxString] <p>This parameter is no longer used. Instead, specify server launch parameters in the <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters instead of a runtime configuration will continue to work.)</p>
--- @param _Description [NonZeroAndMaxString] <p>Human-readable description of a fleet.</p>
--- Required parameter: Name
--- Required parameter: BuildId
--- Required parameter: EC2InstanceType
-function M.CreateFleetInput(_EC2InboundPermissions, _Name, _NewGameSessionProtectionPolicy, _BuildId, _RuntimeConfiguration, _ServerLaunchPath, _EC2InstanceType, _ResourceCreationLimitPolicy, _LogPaths, _MetricGroups, _ServerLaunchParameters, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFleetInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EC2InboundPermissions [IpPermissionsList] <p>Range of IP addresses and port settings that permit inbound traffic to access server processes running on the fleet. If no inbound permissions are set, including both IP address range and port range, the server processes in the fleet cannot accept connections. You can specify one or more sets of permissions for a fleet.</p>
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
+-- * NewGameSessionProtectionPolicy [ProtectionPolicy] <p>Game session protection policy to apply to all instances in this fleet. If this parameter is not set, instances in this fleet default to no protection. You can change a fleet's protection policy using UpdateFleetAttributes, but this change will only affect sessions created after the policy change. You can also set protection for individual instances using <a>UpdateGameSession</a>.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
+-- * BuildId [BuildId] <p>Unique identifier for a build to be deployed on the new fleet. The build must have been successfully uploaded to Amazon GameLift and be in a <code>READY</code> status. This fleet setting cannot be changed once the fleet is created.</p>
+-- * RuntimeConfiguration [RuntimeConfiguration] <p>Instructions for launching server processes on each instance in the fleet. The runtime configuration for a fleet has a collection of server process configurations, one for each type of server process to run on an instance. A server process configuration specifies the location of the server executable, launch parameters, and the number of concurrent processes with that configuration to maintain on each instance. A CreateFleet request must include a runtime configuration with at least one server process configuration; otherwise the request will fail with an invalid request exception. (This parameter replaces the parameters <code>ServerLaunchPath</code> and <code>ServerLaunchParameters</code>; requests that contain values for these parameters instead of a runtime configuration will continue to work.) </p>
+-- * ServerLaunchPath [NonZeroAndMaxString] <p>This parameter is no longer used. Instead, specify a server launch path using the <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters instead of a runtime configuration will continue to work.)</p>
+-- * EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions.</p>
+-- * ResourceCreationLimitPolicy [ResourceCreationLimitPolicy] <p>Policy that limits the number of game sessions an individual player can create over a span of time for this fleet.</p>
+-- * LogPaths [StringList] <p>This parameter is no longer used. Instead, to specify where Amazon GameLift should store log files once a server process shuts down, use the Amazon GameLift server API <code>ProcessReady()</code> and specify one or more directory paths in <code>logParameters</code>. See more information in the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process">Server API Reference</a>. </p>
+-- * MetricGroups [MetricGroupList] <p>Names of metric groups to add this fleet to. Use an existing metric group name to add this fleet to the group, or use a new name to create a new metric group. Currently, a fleet can only be included in one metric group at a time.</p>
+-- * ServerLaunchParameters [NonZeroAndMaxString] <p>This parameter is no longer used. Instead, specify server launch parameters in the <code>RuntimeConfiguration</code> parameter. (Requests that specify a server launch path and launch parameters instead of a runtime configuration will continue to work.)</p>
+-- * Description [NonZeroAndMaxString] <p>Human-readable description of a fleet.</p>
+-- Required key: Name
+-- Required key: BuildId
+-- Required key: EC2InstanceType
+-- @return CreateFleetInput structure as a key-value pair table
+function M.CreateFleetInput(args)
+	assert(args, "You must provdide an argument table when creating CreateFleetInput")
 	local t = { 
-		["EC2InboundPermissions"] = _EC2InboundPermissions,
-		["Name"] = _Name,
-		["NewGameSessionProtectionPolicy"] = _NewGameSessionProtectionPolicy,
-		["BuildId"] = _BuildId,
-		["RuntimeConfiguration"] = _RuntimeConfiguration,
-		["ServerLaunchPath"] = _ServerLaunchPath,
-		["EC2InstanceType"] = _EC2InstanceType,
-		["ResourceCreationLimitPolicy"] = _ResourceCreationLimitPolicy,
-		["LogPaths"] = _LogPaths,
-		["MetricGroups"] = _MetricGroups,
-		["ServerLaunchParameters"] = _ServerLaunchParameters,
-		["Description"] = _Description,
+		["EC2InboundPermissions"] = args["EC2InboundPermissions"],
+		["Name"] = args["Name"],
+		["NewGameSessionProtectionPolicy"] = args["NewGameSessionProtectionPolicy"],
+		["BuildId"] = args["BuildId"],
+		["RuntimeConfiguration"] = args["RuntimeConfiguration"],
+		["ServerLaunchPath"] = args["ServerLaunchPath"],
+		["EC2InstanceType"] = args["EC2InstanceType"],
+		["ResourceCreationLimitPolicy"] = args["ResourceCreationLimitPolicy"],
+		["LogPaths"] = args["LogPaths"],
+		["MetricGroups"] = args["MetricGroups"],
+		["ServerLaunchParameters"] = args["ServerLaunchParameters"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateFleetInput(t)
 	return t
@@ -3661,11 +4030,14 @@ end
 
 --- Create a structure of type PutScalingPolicyOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
-function M.PutScalingPolicyOutput(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutScalingPolicyOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
+-- @return PutScalingPolicyOutput structure as a key-value pair table
+function M.PutScalingPolicyOutput(args)
+	assert(args, "You must provdide an argument table when creating PutScalingPolicyOutput")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertPutScalingPolicyOutput(t)
 	return t
@@ -3684,11 +4056,14 @@ end
 
 --- Create a structure of type UpdateFleetPortSettingsOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
-function M.UpdateFleetPortSettingsOutput(_FleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetPortSettingsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
+-- @return UpdateFleetPortSettingsOutput structure as a key-value pair table
+function M.UpdateFleetPortSettingsOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateFleetPortSettingsOutput")
 	local t = { 
-		["FleetId"] = _FleetId,
+		["FleetId"] = args["FleetId"],
 	}
 	asserts.AssertUpdateFleetPortSettingsOutput(t)
 	return t
@@ -3711,17 +4086,20 @@ end
 
 --- Create a structure of type ServerProcess
 -- <p>A set of instructions for launching server processes on each instance in a fleet. Each instruction set identifies the location of the server executable, optional launch parameters, and the number of server processes with this configuration to maintain concurrently on the instance. Server process configurations make up a fleet's <code> <a>RuntimeConfiguration</a> </code>.</p>
--- @param _ConcurrentExecutions [PositiveInteger] <p>Number of server processes using this configuration to run concurrently on an instance.</p>
--- @param _Parameters [NonZeroAndMaxString] <p>Optional list of parameters to pass to the server executable on launch.</p>
--- @param _LaunchPath [NonZeroAndMaxString] <p>Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows game build with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch path of "<code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file located at <code>MyGame/latest/server.exe</code> must have a launch path of "<code>/local/game/MyGame/latest/server.exe</code>". </p>
--- Required parameter: LaunchPath
--- Required parameter: ConcurrentExecutions
-function M.ServerProcess(_ConcurrentExecutions, _Parameters, _LaunchPath, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServerProcess")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConcurrentExecutions [PositiveInteger] <p>Number of server processes using this configuration to run concurrently on an instance.</p>
+-- * Parameters [NonZeroAndMaxString] <p>Optional list of parameters to pass to the server executable on launch.</p>
+-- * LaunchPath [NonZeroAndMaxString] <p>Location of the server executable in a game build. All game builds are installed on instances at the root : for Windows instances <code>C:\game</code>, and for Linux instances <code>/local/game</code>. A Windows game build with an executable file located at <code>MyGame\latest\server.exe</code> must have a launch path of "<code>C:\game\MyGame\latest\server.exe</code>". A Linux game build with an executable file located at <code>MyGame/latest/server.exe</code> must have a launch path of "<code>/local/game/MyGame/latest/server.exe</code>". </p>
+-- Required key: LaunchPath
+-- Required key: ConcurrentExecutions
+-- @return ServerProcess structure as a key-value pair table
+function M.ServerProcess(args)
+	assert(args, "You must provdide an argument table when creating ServerProcess")
 	local t = { 
-		["ConcurrentExecutions"] = _ConcurrentExecutions,
-		["Parameters"] = _Parameters,
-		["LaunchPath"] = _LaunchPath,
+		["ConcurrentExecutions"] = args["ConcurrentExecutions"],
+		["Parameters"] = args["Parameters"],
+		["LaunchPath"] = args["LaunchPath"],
 	}
 	asserts.AssertServerProcess(t)
 	return t
@@ -3741,13 +4119,16 @@ end
 
 --- Create a structure of type DesiredPlayerSession
 -- <p>Player information for use when creating player sessions using a game session placement request with <a>StartGameSessionPlacement</a>.</p>
--- @param _PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player to associate with the player session.</p>
--- @param _PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.</p>
-function M.DesiredPlayerSession(_PlayerId, _PlayerData, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DesiredPlayerSession")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlayerId [NonZeroAndMaxString] <p>Unique identifier for a player to associate with the player session.</p>
+-- * PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.</p>
+-- @return DesiredPlayerSession structure as a key-value pair table
+function M.DesiredPlayerSession(args)
+	assert(args, "You must provdide an argument table when creating DesiredPlayerSession")
 	local t = { 
-		["PlayerId"] = _PlayerId,
-		["PlayerData"] = _PlayerData,
+		["PlayerId"] = args["PlayerId"],
+		["PlayerData"] = args["PlayerData"],
 	}
 	asserts.AssertDesiredPlayerSession(t)
 	return t
@@ -3769,15 +4150,18 @@ end
 
 --- Create a structure of type DeleteScalingPolicyInput
 -- <p>Represents the input for a request action.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to be deleted.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
--- Required parameter: Name
--- Required parameter: FleetId
-function M.DeleteScalingPolicyInput(_FleetId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteScalingPolicyInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to be deleted.</p>
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
+-- Required key: Name
+-- Required key: FleetId
+-- @return DeleteScalingPolicyInput structure as a key-value pair table
+function M.DeleteScalingPolicyInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteScalingPolicyInput")
 	local t = { 
-		["FleetId"] = _FleetId,
-		["Name"] = _Name,
+		["FleetId"] = args["FleetId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteScalingPolicyInput(t)
 	return t
@@ -3811,33 +4195,36 @@ end
 
 --- Create a structure of type PutScalingPolicyInput
 -- <p>Represents the input for a request action.</p>
--- @param _EvaluationPeriods [PositiveInteger] <p>Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can have only one scaling policy with the same name.</p>
--- @param _ComparisonOperator [ComparisonOperatorType] <p>Comparison operator to use when measuring the metric against the threshold value.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet to apply this policy to.</p>
--- @param _Threshold [Double] <p>Metric value used to trigger a scaling event.</p>
--- @param _ScalingAdjustment [Integer] <p>Amount of adjustment to make, based on the scaling adjustment type.</p>
--- @param _MetricName [MetricName] <p>Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p> <ul> <li> <p> <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status = <code>ACTIVATING</code>).</p> </li> <li> <p> <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>).</p> </li> <li> <p> <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status = <code>ACTIVE</code> or <code>RESERVED</code>). </p> </li> <li> <p> <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number includes game sessions that are not currently accepting players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</p> </li> <li> <p> <b>ActiveInstances</b> – number of instances currently running a game session.</p> </li> <li> <p> <b>IdleInstances</b> – number of instances not currently running a game session.</p> </li> </ul>
--- @param _ScalingAdjustmentType [ScalingAdjustmentType] <p>Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the fleet down by 10%.</p> </li> </ul>
--- Required parameter: Name
--- Required parameter: FleetId
--- Required parameter: ScalingAdjustment
--- Required parameter: ScalingAdjustmentType
--- Required parameter: Threshold
--- Required parameter: ComparisonOperator
--- Required parameter: EvaluationPeriods
--- Required parameter: MetricName
-function M.PutScalingPolicyInput(_EvaluationPeriods, _Name, _ComparisonOperator, _FleetId, _Threshold, _ScalingAdjustment, _MetricName, _ScalingAdjustmentType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutScalingPolicyInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EvaluationPeriods [PositiveInteger] <p>Length of time (in minutes) the metric must be at or beyond the threshold before a scaling event is triggered.</p>
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique. A fleet can have only one scaling policy with the same name.</p>
+-- * ComparisonOperator [ComparisonOperatorType] <p>Comparison operator to use when measuring the metric against the threshold value.</p>
+-- * FleetId [FleetId] <p>Unique identifier for a fleet to apply this policy to.</p>
+-- * Threshold [Double] <p>Metric value used to trigger a scaling event.</p>
+-- * ScalingAdjustment [Integer] <p>Amount of adjustment to make, based on the scaling adjustment type.</p>
+-- * MetricName [MetricName] <p>Name of the Amazon GameLift-defined metric that is used to trigger an adjustment.</p> <ul> <li> <p> <b>ActivatingGameSessions</b> – number of game sessions in the process of being created (game session status = <code>ACTIVATING</code>).</p> </li> <li> <p> <b>ActiveGameSessions</b> – number of game sessions currently running (game session status = <code>ACTIVE</code>).</p> </li> <li> <p> <b>CurrentPlayerSessions</b> – number of active or reserved player sessions (player session status = <code>ACTIVE</code> or <code>RESERVED</code>). </p> </li> <li> <p> <b>AvailablePlayerSessions</b> – number of player session slots currently available in active game sessions across the fleet, calculated by subtracting a game session's current player session count from its maximum player session count. This number includes game sessions that are not currently accepting players (game session <code>PlayerSessionCreationPolicy</code> = <code>DENY_ALL</code>).</p> </li> <li> <p> <b>ActiveInstances</b> – number of instances currently running a game session.</p> </li> <li> <p> <b>IdleInstances</b> – number of instances not currently running a game session.</p> </li> </ul>
+-- * ScalingAdjustmentType [ScalingAdjustmentType] <p>Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down; for example, a value of "-10" scales the fleet down by 10%.</p> </li> </ul>
+-- Required key: Name
+-- Required key: FleetId
+-- Required key: ScalingAdjustment
+-- Required key: ScalingAdjustmentType
+-- Required key: Threshold
+-- Required key: ComparisonOperator
+-- Required key: EvaluationPeriods
+-- Required key: MetricName
+-- @return PutScalingPolicyInput structure as a key-value pair table
+function M.PutScalingPolicyInput(args)
+	assert(args, "You must provdide an argument table when creating PutScalingPolicyInput")
 	local t = { 
-		["EvaluationPeriods"] = _EvaluationPeriods,
-		["Name"] = _Name,
-		["ComparisonOperator"] = _ComparisonOperator,
-		["FleetId"] = _FleetId,
-		["Threshold"] = _Threshold,
-		["ScalingAdjustment"] = _ScalingAdjustment,
-		["MetricName"] = _MetricName,
-		["ScalingAdjustmentType"] = _ScalingAdjustmentType,
+		["EvaluationPeriods"] = args["EvaluationPeriods"],
+		["Name"] = args["Name"],
+		["ComparisonOperator"] = args["ComparisonOperator"],
+		["FleetId"] = args["FleetId"],
+		["Threshold"] = args["Threshold"],
+		["ScalingAdjustment"] = args["ScalingAdjustment"],
+		["MetricName"] = args["MetricName"],
+		["ScalingAdjustmentType"] = args["ScalingAdjustmentType"],
 	}
 	asserts.AssertPutScalingPolicyInput(t)
 	return t
@@ -3860,18 +4247,21 @@ end
 
 --- Create a structure of type UpdateGameSessionQueueInput
 -- <p>Represents the input for a request action.</p>
--- @param _Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order. When updating this list, provide a complete list of destinations.</p>
--- @param _PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. When updating policies, provide a complete collection of policies.</p>
--- @param _Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
--- @param _TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
--- Required parameter: Name
-function M.UpdateGameSessionQueueInput(_Destinations, _PlayerLatencyPolicies, _Name, _TimeoutInSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGameSessionQueueInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Destinations [GameSessionQueueDestinationList] <p>List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order. When updating this list, provide a complete list of destinations.</p>
+-- * PlayerLatencyPolicies [PlayerLatencyPolicyList] <p>Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. When updating policies, provide a complete collection of policies.</p>
+-- * Name [GameSessionQueueName] <p>Descriptive label that is associated with queue. Queue names must be unique within each region.</p>
+-- * TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
+-- Required key: Name
+-- @return UpdateGameSessionQueueInput structure as a key-value pair table
+function M.UpdateGameSessionQueueInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateGameSessionQueueInput")
 	local t = { 
-		["Destinations"] = _Destinations,
-		["PlayerLatencyPolicies"] = _PlayerLatencyPolicies,
-		["Name"] = _Name,
-		["TimeoutInSeconds"] = _TimeoutInSeconds,
+		["Destinations"] = args["Destinations"],
+		["PlayerLatencyPolicies"] = args["PlayerLatencyPolicies"],
+		["Name"] = args["Name"],
+		["TimeoutInSeconds"] = args["TimeoutInSeconds"],
 	}
 	asserts.AssertUpdateGameSessionQueueInput(t)
 	return t
@@ -3890,11 +4280,14 @@ end
 
 --- Create a structure of type UpdateFleetAttributesOutput
 -- <p>Represents the returned data in response to a request action.</p>
--- @param _FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
-function M.UpdateFleetAttributesOutput(_FleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFleetAttributesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
+-- @return UpdateFleetAttributesOutput structure as a key-value pair table
+function M.UpdateFleetAttributesOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateFleetAttributesOutput")
 	local t = { 
-		["FleetId"] = _FleetId,
+		["FleetId"] = args["FleetId"],
 	}
 	asserts.AssertUpdateFleetAttributesOutput(t)
 	return t
@@ -3916,16 +4309,19 @@ end
 
 --- Create a structure of type UpdateBuildInput
 -- <p>Represents the input for a request action.</p>
--- @param _BuildId [BuildId] <p>Unique identifier for a build to update.</p>
--- @param _Version [NonZeroAndMaxString] <p>Version that is associated with this build. Version strings do not need to be unique.</p>
--- @param _Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a build. Build names do not need to be unique. </p>
--- Required parameter: BuildId
-function M.UpdateBuildInput(_BuildId, _Version, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBuildInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BuildId [BuildId] <p>Unique identifier for a build to update.</p>
+-- * Version [NonZeroAndMaxString] <p>Version that is associated with this build. Version strings do not need to be unique.</p>
+-- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a build. Build names do not need to be unique. </p>
+-- Required key: BuildId
+-- @return UpdateBuildInput structure as a key-value pair table
+function M.UpdateBuildInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateBuildInput")
 	local t = { 
-		["BuildId"] = _BuildId,
-		["Version"] = _Version,
-		["Name"] = _Name,
+		["BuildId"] = args["BuildId"],
+		["Version"] = args["Version"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateBuildInput(t)
 	return t

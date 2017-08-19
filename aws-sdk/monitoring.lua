@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type DisableAlarmActionsInput
 --  
--- @param _AlarmNames [AlarmNames] <p>The names of the alarms.</p>
--- Required parameter: AlarmNames
-function M.DisableAlarmActionsInput(_AlarmNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableAlarmActionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AlarmNames [AlarmNames] <p>The names of the alarms.</p>
+-- Required key: AlarmNames
+-- @return DisableAlarmActionsInput structure as a key-value pair table
+function M.DisableAlarmActionsInput(args)
+	assert(args, "You must provdide an argument table when creating DisableAlarmActionsInput")
 	local t = { 
-		["AlarmNames"] = _AlarmNames,
+		["AlarmNames"] = args["AlarmNames"],
 	}
 	asserts.AssertDisableAlarmActionsInput(t)
 	return t
@@ -60,13 +63,16 @@ end
 
 --- Create a structure of type DescribeAlarmsOutput
 --  
--- @param _NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
--- @param _MetricAlarms [MetricAlarms] <p>The information for the specified alarms.</p>
-function M.DescribeAlarmsOutput(_NextToken, _MetricAlarms, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
+-- * MetricAlarms [MetricAlarms] <p>The information for the specified alarms.</p>
+-- @return DescribeAlarmsOutput structure as a key-value pair table
+function M.DescribeAlarmsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeAlarmsOutput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MetricAlarms"] = _MetricAlarms,
+		["NextToken"] = args["NextToken"],
+		["MetricAlarms"] = args["MetricAlarms"],
 	}
 	asserts.AssertDescribeAlarmsOutput(t)
 	return t
@@ -85,11 +91,14 @@ end
 
 --- Create a structure of type InternalServiceFault
 -- <p>Request processing has failed due to some unknown error, exception, or failure.</p>
--- @param _Message [FaultDescription] <p/>
-function M.InternalServiceFault(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [FaultDescription] <p/>
+-- @return InternalServiceFault structure as a key-value pair table
+function M.InternalServiceFault(args)
+	assert(args, "You must provdide an argument table when creating InternalServiceFault")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInternalServiceFault(t)
 	return t
@@ -131,57 +140,60 @@ end
 
 --- Create a structure of type MetricAlarm
 -- <p>Represents an alarm.</p>
--- @param _ExtendedStatistic [ExtendedStatistic] <p>The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.</p>
--- @param _Dimensions [Dimensions] <p>The dimensions for the metric associated with the alarm.</p>
--- @param _Namespace [Namespace] <p>The namespace of the metric associated with the alarm.</p>
--- @param _ActionsEnabled [ActionsEnabled] <p>Indicates whether actions should be executed during any changes to the alarm state.</p>
--- @param _MetricName [MetricName] <p>The name of the metric associated with the alarm.</p>
--- @param _EvaluationPeriods [EvaluationPeriods] <p>The number of periods over which data is compared to the specified threshold.</p>
--- @param _StateValue [StateValue] <p>The state value for the alarm.</p>
--- @param _StateUpdatedTimestamp [Timestamp] <p>The time stamp of the last update to the alarm state.</p>
--- @param _AlarmConfigurationUpdatedTimestamp [Timestamp] <p>The time stamp of the last update to the alarm configuration.</p>
--- @param _AlarmActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
--- @param _InsufficientDataActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
--- @param _AlarmArn [AlarmArn] <p>The Amazon Resource Name (ARN) of the alarm.</p>
--- @param _StateReasonData [StateReasonData] <p>An explanation for the alarm state, in JSON format.</p>
--- @param _TreatMissingData [TreatMissingData] 
--- @param _StateReason [StateReason] <p>An explanation for the alarm state, in text format.</p>
--- @param _EvaluateLowSampleCountPercentile [EvaluateLowSampleCountPercentile] 
--- @param _OKActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
--- @param _AlarmDescription [AlarmDescription] <p>The description of the alarm.</p>
--- @param _Period [Period] <p>The period, in seconds, over which the statistic is applied.</p>
--- @param _ComparisonOperator [ComparisonOperator] <p>The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.</p>
--- @param _AlarmName [AlarmName] <p>The name of the alarm.</p>
--- @param _Statistic [Statistic] <p>The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
--- @param _Threshold [Threshold] <p>The value to compare with the specified statistic.</p>
--- @param _Unit [StandardUnit] <p>The unit of the metric associated with the alarm.</p>
-function M.MetricAlarm(_ExtendedStatistic, _Dimensions, _Namespace, _ActionsEnabled, _MetricName, _EvaluationPeriods, _StateValue, _StateUpdatedTimestamp, _AlarmConfigurationUpdatedTimestamp, _AlarmActions, _InsufficientDataActions, _AlarmArn, _StateReasonData, _TreatMissingData, _StateReason, _EvaluateLowSampleCountPercentile, _OKActions, _AlarmDescription, _Period, _ComparisonOperator, _AlarmName, _Statistic, _Threshold, _Unit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MetricAlarm")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ExtendedStatistic [ExtendedStatistic] <p>The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.</p>
+-- * Dimensions [Dimensions] <p>The dimensions for the metric associated with the alarm.</p>
+-- * Namespace [Namespace] <p>The namespace of the metric associated with the alarm.</p>
+-- * ActionsEnabled [ActionsEnabled] <p>Indicates whether actions should be executed during any changes to the alarm state.</p>
+-- * MetricName [MetricName] <p>The name of the metric associated with the alarm.</p>
+-- * EvaluationPeriods [EvaluationPeriods] <p>The number of periods over which data is compared to the specified threshold.</p>
+-- * StateValue [StateValue] <p>The state value for the alarm.</p>
+-- * StateUpdatedTimestamp [Timestamp] <p>The time stamp of the last update to the alarm state.</p>
+-- * AlarmConfigurationUpdatedTimestamp [Timestamp] <p>The time stamp of the last update to the alarm configuration.</p>
+-- * AlarmActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
+-- * InsufficientDataActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
+-- * AlarmArn [AlarmArn] <p>The Amazon Resource Name (ARN) of the alarm.</p>
+-- * StateReasonData [StateReasonData] <p>An explanation for the alarm state, in JSON format.</p>
+-- * TreatMissingData [TreatMissingData] 
+-- * StateReason [StateReason] <p>An explanation for the alarm state, in text format.</p>
+-- * EvaluateLowSampleCountPercentile [EvaluateLowSampleCountPercentile] 
+-- * OKActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>OK</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p>
+-- * AlarmDescription [AlarmDescription] <p>The description of the alarm.</p>
+-- * Period [Period] <p>The period, in seconds, over which the statistic is applied.</p>
+-- * ComparisonOperator [ComparisonOperator] <p>The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.</p>
+-- * AlarmName [AlarmName] <p>The name of the alarm.</p>
+-- * Statistic [Statistic] <p>The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
+-- * Threshold [Threshold] <p>The value to compare with the specified statistic.</p>
+-- * Unit [StandardUnit] <p>The unit of the metric associated with the alarm.</p>
+-- @return MetricAlarm structure as a key-value pair table
+function M.MetricAlarm(args)
+	assert(args, "You must provdide an argument table when creating MetricAlarm")
 	local t = { 
-		["ExtendedStatistic"] = _ExtendedStatistic,
-		["Dimensions"] = _Dimensions,
-		["Namespace"] = _Namespace,
-		["ActionsEnabled"] = _ActionsEnabled,
-		["MetricName"] = _MetricName,
-		["EvaluationPeriods"] = _EvaluationPeriods,
-		["StateValue"] = _StateValue,
-		["StateUpdatedTimestamp"] = _StateUpdatedTimestamp,
-		["AlarmConfigurationUpdatedTimestamp"] = _AlarmConfigurationUpdatedTimestamp,
-		["AlarmActions"] = _AlarmActions,
-		["InsufficientDataActions"] = _InsufficientDataActions,
-		["AlarmArn"] = _AlarmArn,
-		["StateReasonData"] = _StateReasonData,
-		["TreatMissingData"] = _TreatMissingData,
-		["StateReason"] = _StateReason,
-		["EvaluateLowSampleCountPercentile"] = _EvaluateLowSampleCountPercentile,
-		["OKActions"] = _OKActions,
-		["AlarmDescription"] = _AlarmDescription,
-		["Period"] = _Period,
-		["ComparisonOperator"] = _ComparisonOperator,
-		["AlarmName"] = _AlarmName,
-		["Statistic"] = _Statistic,
-		["Threshold"] = _Threshold,
-		["Unit"] = _Unit,
+		["ExtendedStatistic"] = args["ExtendedStatistic"],
+		["Dimensions"] = args["Dimensions"],
+		["Namespace"] = args["Namespace"],
+		["ActionsEnabled"] = args["ActionsEnabled"],
+		["MetricName"] = args["MetricName"],
+		["EvaluationPeriods"] = args["EvaluationPeriods"],
+		["StateValue"] = args["StateValue"],
+		["StateUpdatedTimestamp"] = args["StateUpdatedTimestamp"],
+		["AlarmConfigurationUpdatedTimestamp"] = args["AlarmConfigurationUpdatedTimestamp"],
+		["AlarmActions"] = args["AlarmActions"],
+		["InsufficientDataActions"] = args["InsufficientDataActions"],
+		["AlarmArn"] = args["AlarmArn"],
+		["StateReasonData"] = args["StateReasonData"],
+		["TreatMissingData"] = args["TreatMissingData"],
+		["StateReason"] = args["StateReason"],
+		["EvaluateLowSampleCountPercentile"] = args["EvaluateLowSampleCountPercentile"],
+		["OKActions"] = args["OKActions"],
+		["AlarmDescription"] = args["AlarmDescription"],
+		["Period"] = args["Period"],
+		["ComparisonOperator"] = args["ComparisonOperator"],
+		["AlarmName"] = args["AlarmName"],
+		["Statistic"] = args["Statistic"],
+		["Threshold"] = args["Threshold"],
+		["Unit"] = args["Unit"],
 	}
 	asserts.AssertMetricAlarm(t)
 	return t
@@ -200,11 +212,14 @@ end
 
 --- Create a structure of type LimitExceededFault
 -- <p>The quota for alarms for this customer has already been reached.</p>
--- @param _message [ErrorMessage] <p/>
-function M.LimitExceededFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p/>
+-- @return LimitExceededFault structure as a key-value pair table
+function M.LimitExceededFault(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededFault(t)
 	return t
@@ -223,11 +238,14 @@ end
 
 --- Create a structure of type InvalidNextToken
 -- <p>The next token specified is invalid.</p>
--- @param _message [ErrorMessage] <p/>
-function M.InvalidNextToken(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextToken")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p/>
+-- @return InvalidNextToken structure as a key-value pair table
+function M.InvalidNextToken(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextToken")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidNextToken(t)
 	return t
@@ -250,19 +268,22 @@ end
 
 --- Create a structure of type AlarmHistoryItem
 -- <p>Represents the history of a specific alarm.</p>
--- @param _Timestamp [Timestamp] <p>The time stamp for the alarm history item.</p>
--- @param _HistoryItemType [HistoryItemType] <p>The type of alarm history item.</p>
--- @param _AlarmName [AlarmName] <p>The descriptive name for the alarm.</p>
--- @param _HistoryData [HistoryData] <p>Data about the alarm, in JSON format.</p>
--- @param _HistorySummary [HistorySummary] <p>A summary of the alarm history, in text format.</p>
-function M.AlarmHistoryItem(_Timestamp, _HistoryItemType, _AlarmName, _HistoryData, _HistorySummary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AlarmHistoryItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Timestamp [Timestamp] <p>The time stamp for the alarm history item.</p>
+-- * HistoryItemType [HistoryItemType] <p>The type of alarm history item.</p>
+-- * AlarmName [AlarmName] <p>The descriptive name for the alarm.</p>
+-- * HistoryData [HistoryData] <p>Data about the alarm, in JSON format.</p>
+-- * HistorySummary [HistorySummary] <p>A summary of the alarm history, in text format.</p>
+-- @return AlarmHistoryItem structure as a key-value pair table
+function M.AlarmHistoryItem(args)
+	assert(args, "You must provdide an argument table when creating AlarmHistoryItem")
 	local t = { 
-		["Timestamp"] = _Timestamp,
-		["HistoryItemType"] = _HistoryItemType,
-		["AlarmName"] = _AlarmName,
-		["HistoryData"] = _HistoryData,
-		["HistorySummary"] = _HistorySummary,
+		["Timestamp"] = args["Timestamp"],
+		["HistoryItemType"] = args["HistoryItemType"],
+		["AlarmName"] = args["AlarmName"],
+		["HistoryData"] = args["HistoryData"],
+		["HistorySummary"] = args["HistorySummary"],
 	}
 	asserts.AssertAlarmHistoryItem(t)
 	return t
@@ -294,32 +315,35 @@ end
 
 --- Create a structure of type GetMetricStatisticsInput
 --  
--- @param _Statistics [Statistics] <p>The metric statistics, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
--- @param _Dimensions [Dimensions] <p>The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension. CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve statistics using combinations of dimensions that were not specially published. You must specify the same dimensions that were used when the metrics were created. For an example, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations">Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying dimensions, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.</p>
--- @param _Namespace [Namespace] <p>The namespace of the metric, with or without spaces.</p>
--- @param _Period [Period] <p>The granularity, in seconds, of the returned data points. A period can be as short as one minute (60 seconds) and must be a multiple of 60. The default value is 60.</p> <p>If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must specify the period as follows or no data points in that time range is returned:</p> <ul> <li> <p>Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).</p> </li> <li> <p>Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).</p> </li> </ul>
--- @param _StartTime [Timestamp] <p>The time stamp that determines the first data point to return. Note that start times are evaluated relative to the time that CloudWatch receives the request.</p> <p>The value specified is inclusive; results include data points with the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00.</p> </li> </ul>
--- @param _ExtendedStatistics [ExtendedStatistics] <p>The percentile statistics. Specify values between p0.0 and p100.</p>
--- @param _EndTime [Timestamp] <p>The time stamp that determines the last data point to return.</p> <p>The value specified is exclusive; results will include data points up to the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).</p>
--- @param _Unit [StandardUnit] <p>The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.</p>
--- @param _MetricName [MetricName] <p>The name of the metric, with or without spaces.</p>
--- Required parameter: Namespace
--- Required parameter: MetricName
--- Required parameter: StartTime
--- Required parameter: EndTime
--- Required parameter: Period
-function M.GetMetricStatisticsInput(_Statistics, _Dimensions, _Namespace, _Period, _StartTime, _ExtendedStatistics, _EndTime, _Unit, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetMetricStatisticsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Statistics [Statistics] <p>The metric statistics, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
+-- * Dimensions [Dimensions] <p>The dimensions. If the metric contains multiple dimensions, you must include a value for each dimension. CloudWatch treats each unique combination of dimensions as a separate metric. You can't retrieve statistics using combinations of dimensions that were not specially published. You must specify the same dimensions that were used when the metrics were created. For an example, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#dimension-combinations">Dimension Combinations</a> in the <i>Amazon CloudWatch User Guide</i>. For more information on specifying dimensions, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html">Publishing Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.</p>
+-- * Namespace [Namespace] <p>The namespace of the metric, with or without spaces.</p>
+-- * Period [Period] <p>The granularity, in seconds, of the returned data points. A period can be as short as one minute (60 seconds) and must be a multiple of 60. The default value is 60.</p> <p>If the <code>StartTime</code> parameter specifies a time stamp that is greater than 15 days ago, you must specify the period as follows or no data points in that time range is returned:</p> <ul> <li> <p>Start time between 15 and 63 days ago - Use a multiple of 300 seconds (5 minutes).</p> </li> <li> <p>Start time greater than 63 days ago - Use a multiple of 3600 seconds (1 hour).</p> </li> </ul>
+-- * StartTime [Timestamp] <p>The time stamp that determines the first data point to return. Note that start times are evaluated relative to the time that CloudWatch receives the request.</p> <p>The value specified is inclusive; results include data points with the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-03T23:00:00Z).</p> <p>CloudWatch rounds the specified time stamp as follows:</p> <ul> <li> <p>Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.</p> </li> <li> <p>Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.</p> </li> <li> <p>Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00.</p> </li> </ul>
+-- * ExtendedStatistics [ExtendedStatistics] <p>The percentile statistics. Specify values between p0.0 and p100.</p>
+-- * EndTime [Timestamp] <p>The time stamp that determines the last data point to return.</p> <p>The value specified is exclusive; results will include data points up to the specified time stamp. The time stamp must be in ISO 8601 UTC format (for example, 2016-10-10T23:00:00Z).</p>
+-- * Unit [StandardUnit] <p>The unit for a given metric. Metrics may be reported in multiple units. Not supplying a unit results in all units being returned. If the metric only ever reports one unit, specifying a unit has no effect.</p>
+-- * MetricName [MetricName] <p>The name of the metric, with or without spaces.</p>
+-- Required key: Namespace
+-- Required key: MetricName
+-- Required key: StartTime
+-- Required key: EndTime
+-- Required key: Period
+-- @return GetMetricStatisticsInput structure as a key-value pair table
+function M.GetMetricStatisticsInput(args)
+	assert(args, "You must provdide an argument table when creating GetMetricStatisticsInput")
 	local t = { 
-		["Statistics"] = _Statistics,
-		["Dimensions"] = _Dimensions,
-		["Namespace"] = _Namespace,
-		["Period"] = _Period,
-		["StartTime"] = _StartTime,
-		["ExtendedStatistics"] = _ExtendedStatistics,
-		["EndTime"] = _EndTime,
-		["Unit"] = _Unit,
-		["MetricName"] = _MetricName,
+		["Statistics"] = args["Statistics"],
+		["Dimensions"] = args["Dimensions"],
+		["Namespace"] = args["Namespace"],
+		["Period"] = args["Period"],
+		["StartTime"] = args["StartTime"],
+		["ExtendedStatistics"] = args["ExtendedStatistics"],
+		["EndTime"] = args["EndTime"],
+		["Unit"] = args["Unit"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertGetMetricStatisticsInput(t)
 	return t
@@ -339,13 +363,16 @@ end
 
 --- Create a structure of type ListMetricsOutput
 --  
--- @param _Metrics [Metrics] <p>The metrics.</p>
--- @param _NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
-function M.ListMetricsOutput(_Metrics, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListMetricsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Metrics [Metrics] <p>The metrics.</p>
+-- * NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
+-- @return ListMetricsOutput structure as a key-value pair table
+function M.ListMetricsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListMetricsOutput")
 	local t = { 
-		["Metrics"] = _Metrics,
-		["NextToken"] = _NextToken,
+		["Metrics"] = args["Metrics"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListMetricsOutput(t)
 	return t
@@ -364,11 +391,14 @@ end
 
 --- Create a structure of type InvalidParameterCombinationException
 -- <p>Parameters that cannot be used together were used together.</p>
--- @param _message [AwsQueryErrorMessage] <p/>
-function M.InvalidParameterCombinationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterCombinationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [AwsQueryErrorMessage] <p/>
+-- @return InvalidParameterCombinationException structure as a key-value pair table
+function M.InvalidParameterCombinationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterCombinationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterCombinationException(t)
 	return t
@@ -388,13 +418,16 @@ end
 
 --- Create a structure of type DescribeAlarmHistoryOutput
 --  
--- @param _AlarmHistoryItems [AlarmHistoryItems] <p>The alarm histories, in JSON format.</p>
--- @param _NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
-function M.DescribeAlarmHistoryOutput(_AlarmHistoryItems, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmHistoryOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AlarmHistoryItems [AlarmHistoryItems] <p>The alarm histories, in JSON format.</p>
+-- * NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
+-- @return DescribeAlarmHistoryOutput structure as a key-value pair table
+function M.DescribeAlarmHistoryOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeAlarmHistoryOutput")
 	local t = { 
-		["AlarmHistoryItems"] = _AlarmHistoryItems,
-		["NextToken"] = _NextToken,
+		["AlarmHistoryItems"] = args["AlarmHistoryItems"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeAlarmHistoryOutput(t)
 	return t
@@ -414,13 +447,16 @@ end
 
 --- Create a structure of type GetMetricStatisticsOutput
 --  
--- @param _Datapoints [Datapoints] <p>The data points for the specified metric.</p>
--- @param _Label [MetricLabel] <p>A label for the specified metric.</p>
-function M.GetMetricStatisticsOutput(_Datapoints, _Label, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetMetricStatisticsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Datapoints [Datapoints] <p>The data points for the specified metric.</p>
+-- * Label [MetricLabel] <p>A label for the specified metric.</p>
+-- @return GetMetricStatisticsOutput structure as a key-value pair table
+function M.GetMetricStatisticsOutput(args)
+	assert(args, "You must provdide an argument table when creating GetMetricStatisticsOutput")
 	local t = { 
-		["Datapoints"] = _Datapoints,
-		["Label"] = _Label,
+		["Datapoints"] = args["Datapoints"],
+		["Label"] = args["Label"],
 	}
 	asserts.AssertGetMetricStatisticsOutput(t)
 	return t
@@ -445,22 +481,25 @@ end
 
 --- Create a structure of type MetricDatum
 -- <p>Encapsulates the information sent to either create a metric or add new values to be aggregated into an existing metric.</p>
--- @param _Dimensions [Dimensions] <p>The dimensions associated with the metric.</p>
--- @param _Timestamp [Timestamp] <p>The time the metric data was received, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _Value [DatapointValue] <p>The value for the metric.</p> <p>Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.</p>
--- @param _StatisticValues [StatisticSet] <p>The statistical values for the metric.</p>
--- @param _Unit [StandardUnit] <p>The unit of the metric.</p>
--- @param _MetricName [MetricName] <p>The name of the metric.</p>
--- Required parameter: MetricName
-function M.MetricDatum(_Dimensions, _Timestamp, _Value, _StatisticValues, _Unit, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MetricDatum")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Dimensions [Dimensions] <p>The dimensions associated with the metric.</p>
+-- * Timestamp [Timestamp] <p>The time the metric data was received, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * Value [DatapointValue] <p>The value for the metric.</p> <p>Although the parameter accepts numbers of type Double, Amazon CloudWatch rejects values that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not supported.</p>
+-- * StatisticValues [StatisticSet] <p>The statistical values for the metric.</p>
+-- * Unit [StandardUnit] <p>The unit of the metric.</p>
+-- * MetricName [MetricName] <p>The name of the metric.</p>
+-- Required key: MetricName
+-- @return MetricDatum structure as a key-value pair table
+function M.MetricDatum(args)
+	assert(args, "You must provdide an argument table when creating MetricDatum")
 	local t = { 
-		["Dimensions"] = _Dimensions,
-		["Timestamp"] = _Timestamp,
-		["Value"] = _Value,
-		["StatisticValues"] = _StatisticValues,
-		["Unit"] = _Unit,
-		["MetricName"] = _MetricName,
+		["Dimensions"] = args["Dimensions"],
+		["Timestamp"] = args["Timestamp"],
+		["Value"] = args["Value"],
+		["StatisticValues"] = args["StatisticValues"],
+		["Unit"] = args["Unit"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertMetricDatum(t)
 	return t
@@ -503,52 +542,55 @@ end
 
 --- Create a structure of type PutMetricAlarmInput
 --  
--- @param _EvaluationPeriods [EvaluationPeriods] <p>The number of periods over which data is compared to the specified threshold.</p>
--- @param _ExtendedStatistic [ExtendedStatistic] <p>The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.</p>
--- @param _TreatMissingData [TreatMissingData] <p> Sets how this alarm is to handle missing data points. If <code>TreatMissingData</code> is omitted, the default behavior of <code>missing</code> is used. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data">Configuring How CloudWatch Alarms Treats Missing Data</a>.</p> <p>Valid Values: <code>breaching | notBreaching | ignore | missing</code> </p>
--- @param _Dimensions [Dimensions] <p>The dimensions for the metric associated with the alarm.</p>
--- @param _AlarmActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
--- @param _AlarmDescription [AlarmDescription] <p>The description for the alarm.</p>
--- @param _Namespace [Namespace] <p>The namespace for the metric associated with the alarm.</p>
--- @param _Period [Period] <p>The period, in seconds, over which the specified statistic is applied.</p>
--- @param _EvaluateLowSampleCountPercentile [EvaluateLowSampleCountPercentile] <p> Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state will not change during periods with too few data points to be statistically significant. If you specify <code>evaluate</code> or omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points are available. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples">Percentile-Based CloudWatch Alarms and Low Data Samples</a>.</p> <p>Valid Values: <code>evaluate | ignore</code> </p>
--- @param _ComparisonOperator [ComparisonOperator] <p> The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.</p>
--- @param _AlarmName [AlarmName] <p>The name for the alarm. This name must be unique within the AWS account.</p>
--- @param _Unit [StandardUnit] <p>The unit of measure for the statistic. For example, the units for the Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of bytes that an instance receives on all network interfaces. You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.</p> <p>If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch alarm can get stuck in the <code>INSUFFICIENT DATA</code> state. </p>
--- @param _Statistic [Statistic] <p>The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
--- @param _Threshold [Threshold] <p>The value against which the specified statistic is compared.</p>
--- @param _InsufficientDataActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
--- @param _OKActions [ResourceList] <p>The actions to execute when this alarm transitions to an <code>OK</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
--- @param _ActionsEnabled [ActionsEnabled] <p>Indicates whether actions should be executed during any changes to the alarm state.</p>
--- @param _MetricName [MetricName] <p>The name for the metric associated with the alarm.</p>
--- Required parameter: AlarmName
--- Required parameter: MetricName
--- Required parameter: Namespace
--- Required parameter: Period
--- Required parameter: EvaluationPeriods
--- Required parameter: Threshold
--- Required parameter: ComparisonOperator
-function M.PutMetricAlarmInput(_EvaluationPeriods, _ExtendedStatistic, _TreatMissingData, _Dimensions, _AlarmActions, _AlarmDescription, _Namespace, _Period, _EvaluateLowSampleCountPercentile, _ComparisonOperator, _AlarmName, _Unit, _Statistic, _Threshold, _InsufficientDataActions, _OKActions, _ActionsEnabled, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutMetricAlarmInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EvaluationPeriods [EvaluationPeriods] <p>The number of periods over which data is compared to the specified threshold.</p>
+-- * ExtendedStatistic [ExtendedStatistic] <p>The percentile statistic for the metric associated with the alarm. Specify a value between p0.0 and p100.</p>
+-- * TreatMissingData [TreatMissingData] <p> Sets how this alarm is to handle missing data points. If <code>TreatMissingData</code> is omitted, the default behavior of <code>missing</code> is used. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data">Configuring How CloudWatch Alarms Treats Missing Data</a>.</p> <p>Valid Values: <code>breaching | notBreaching | ignore | missing</code> </p>
+-- * Dimensions [Dimensions] <p>The dimensions for the metric associated with the alarm.</p>
+-- * AlarmActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>ALARM</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
+-- * AlarmDescription [AlarmDescription] <p>The description for the alarm.</p>
+-- * Namespace [Namespace] <p>The namespace for the metric associated with the alarm.</p>
+-- * Period [Period] <p>The period, in seconds, over which the specified statistic is applied.</p>
+-- * EvaluateLowSampleCountPercentile [EvaluateLowSampleCountPercentile] <p> Used only for alarms based on percentiles. If you specify <code>ignore</code>, the alarm state will not change during periods with too few data points to be statistically significant. If you specify <code>evaluate</code> or omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points are available. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#percentiles-with-low-samples">Percentile-Based CloudWatch Alarms and Low Data Samples</a>.</p> <p>Valid Values: <code>evaluate | ignore</code> </p>
+-- * ComparisonOperator [ComparisonOperator] <p> The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.</p>
+-- * AlarmName [AlarmName] <p>The name for the alarm. This name must be unique within the AWS account.</p>
+-- * Unit [StandardUnit] <p>The unit of measure for the statistic. For example, the units for the Amazon EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of bytes that an instance receives on all network interfaces. You can also specify a unit when you create a custom metric. Units help provide conceptual meaning to your data. Metric data points that specify a unit of measure, such as Percent, are aggregated separately.</p> <p>If you specify a unit, you must use a unit that is appropriate for the metric. Otherwise, the Amazon CloudWatch alarm can get stuck in the <code>INSUFFICIENT DATA</code> state. </p>
+-- * Statistic [Statistic] <p>The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use <code>ExtendedStatistic</code>.</p>
+-- * Threshold [Threshold] <p>The value against which the specified statistic is compared.</p>
+-- * InsufficientDataActions [ResourceList] <p>The actions to execute when this alarm transitions to the <code>INSUFFICIENT_DATA</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
+-- * OKActions [ResourceList] <p>The actions to execute when this alarm transitions to an <code>OK</code> state from any other state. Each action is specified as an Amazon Resource Name (ARN).</p> <p>Valid Values: arn:aws:automate:<i>region</i>:ec2:stop | arn:aws:automate:<i>region</i>:ec2:terminate | arn:aws:automate:<i>region</i>:ec2:recover</p> <p>Valid Values (for use with IAM roles): arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Stop/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0 | arn:aws:swf:us-east-1:{<i>customer-account</i>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0</p>
+-- * ActionsEnabled [ActionsEnabled] <p>Indicates whether actions should be executed during any changes to the alarm state.</p>
+-- * MetricName [MetricName] <p>The name for the metric associated with the alarm.</p>
+-- Required key: AlarmName
+-- Required key: MetricName
+-- Required key: Namespace
+-- Required key: Period
+-- Required key: EvaluationPeriods
+-- Required key: Threshold
+-- Required key: ComparisonOperator
+-- @return PutMetricAlarmInput structure as a key-value pair table
+function M.PutMetricAlarmInput(args)
+	assert(args, "You must provdide an argument table when creating PutMetricAlarmInput")
 	local t = { 
-		["EvaluationPeriods"] = _EvaluationPeriods,
-		["ExtendedStatistic"] = _ExtendedStatistic,
-		["TreatMissingData"] = _TreatMissingData,
-		["Dimensions"] = _Dimensions,
-		["AlarmActions"] = _AlarmActions,
-		["AlarmDescription"] = _AlarmDescription,
-		["Namespace"] = _Namespace,
-		["Period"] = _Period,
-		["EvaluateLowSampleCountPercentile"] = _EvaluateLowSampleCountPercentile,
-		["ComparisonOperator"] = _ComparisonOperator,
-		["AlarmName"] = _AlarmName,
-		["Unit"] = _Unit,
-		["Statistic"] = _Statistic,
-		["Threshold"] = _Threshold,
-		["InsufficientDataActions"] = _InsufficientDataActions,
-		["OKActions"] = _OKActions,
-		["ActionsEnabled"] = _ActionsEnabled,
-		["MetricName"] = _MetricName,
+		["EvaluationPeriods"] = args["EvaluationPeriods"],
+		["ExtendedStatistic"] = args["ExtendedStatistic"],
+		["TreatMissingData"] = args["TreatMissingData"],
+		["Dimensions"] = args["Dimensions"],
+		["AlarmActions"] = args["AlarmActions"],
+		["AlarmDescription"] = args["AlarmDescription"],
+		["Namespace"] = args["Namespace"],
+		["Period"] = args["Period"],
+		["EvaluateLowSampleCountPercentile"] = args["EvaluateLowSampleCountPercentile"],
+		["ComparisonOperator"] = args["ComparisonOperator"],
+		["AlarmName"] = args["AlarmName"],
+		["Unit"] = args["Unit"],
+		["Statistic"] = args["Statistic"],
+		["Threshold"] = args["Threshold"],
+		["InsufficientDataActions"] = args["InsufficientDataActions"],
+		["OKActions"] = args["OKActions"],
+		["ActionsEnabled"] = args["ActionsEnabled"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertPutMetricAlarmInput(t)
 	return t
@@ -568,12 +610,15 @@ end
 
 --- Create a structure of type DeleteAlarmsInput
 --  
--- @param _AlarmNames [AlarmNames] <p>The alarms to be deleted.</p>
--- Required parameter: AlarmNames
-function M.DeleteAlarmsInput(_AlarmNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAlarmsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AlarmNames [AlarmNames] <p>The alarms to be deleted.</p>
+-- Required key: AlarmNames
+-- @return DeleteAlarmsInput structure as a key-value pair table
+function M.DeleteAlarmsInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteAlarmsInput")
 	local t = { 
-		["AlarmNames"] = _AlarmNames,
+		["AlarmNames"] = args["AlarmNames"],
 	}
 	asserts.AssertDeleteAlarmsInput(t)
 	return t
@@ -599,21 +644,24 @@ end
 
 --- Create a structure of type StatisticSet
 -- <p>Represents a set of statistics that describes a specific metric. </p>
--- @param _SampleCount [DatapointValue] <p>The number of samples used for the statistic set.</p>
--- @param _Sum [DatapointValue] <p>The sum of values for the sample set.</p>
--- @param _Minimum [DatapointValue] <p>The minimum value of the sample set.</p>
--- @param _Maximum [DatapointValue] <p>The maximum value of the sample set.</p>
--- Required parameter: SampleCount
--- Required parameter: Sum
--- Required parameter: Minimum
--- Required parameter: Maximum
-function M.StatisticSet(_SampleCount, _Sum, _Minimum, _Maximum, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StatisticSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SampleCount [DatapointValue] <p>The number of samples used for the statistic set.</p>
+-- * Sum [DatapointValue] <p>The sum of values for the sample set.</p>
+-- * Minimum [DatapointValue] <p>The minimum value of the sample set.</p>
+-- * Maximum [DatapointValue] <p>The maximum value of the sample set.</p>
+-- Required key: SampleCount
+-- Required key: Sum
+-- Required key: Minimum
+-- Required key: Maximum
+-- @return StatisticSet structure as a key-value pair table
+function M.StatisticSet(args)
+	assert(args, "You must provdide an argument table when creating StatisticSet")
 	local t = { 
-		["SampleCount"] = _SampleCount,
-		["Sum"] = _Sum,
-		["Minimum"] = _Minimum,
-		["Maximum"] = _Maximum,
+		["SampleCount"] = args["SampleCount"],
+		["Sum"] = args["Sum"],
+		["Minimum"] = args["Minimum"],
+		["Maximum"] = args["Maximum"],
 	}
 	asserts.AssertStatisticSet(t)
 	return t
@@ -632,11 +680,14 @@ end
 
 --- Create a structure of type DescribeAlarmsForMetricOutput
 --  
--- @param _MetricAlarms [MetricAlarms] <p>The information for each alarm with the specified metric.</p>
-function M.DescribeAlarmsForMetricOutput(_MetricAlarms, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmsForMetricOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MetricAlarms [MetricAlarms] <p>The information for each alarm with the specified metric.</p>
+-- @return DescribeAlarmsForMetricOutput structure as a key-value pair table
+function M.DescribeAlarmsForMetricOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeAlarmsForMetricOutput")
 	local t = { 
-		["MetricAlarms"] = _MetricAlarms,
+		["MetricAlarms"] = args["MetricAlarms"],
 	}
 	asserts.AssertDescribeAlarmsForMetricOutput(t)
 	return t
@@ -655,11 +706,14 @@ end
 
 --- Create a structure of type InvalidParameterValueException
 -- <p>The value of an input parameter is bad or out-of-range.</p>
--- @param _message [AwsQueryErrorMessage] <p/>
-function M.InvalidParameterValueException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [AwsQueryErrorMessage] <p/>
+-- @return InvalidParameterValueException structure as a key-value pair table
+function M.InvalidParameterValueException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterValueException(t)
 	return t
@@ -685,25 +739,28 @@ end
 
 --- Create a structure of type Datapoint
 -- <p>Encapsulates the statistical data that Amazon CloudWatch computes from metric data.</p>
--- @param _SampleCount [DatapointValue] <p>The number of metric values that contributed to the aggregate value of this data point.</p>
--- @param _Timestamp [Timestamp] <p>The time stamp used for the data point.</p>
--- @param _Average [DatapointValue] <p>The average of the metric values that correspond to the data point.</p>
--- @param _Maximum [DatapointValue] <p>The maximum metric value for the data point.</p>
--- @param _Minimum [DatapointValue] <p>The minimum metric value for the data point.</p>
--- @param _ExtendedStatistics [DatapointValueMap] <p>The percentile statistic for the data point.</p>
--- @param _Sum [DatapointValue] <p>The sum of the metric values for the data point.</p>
--- @param _Unit [StandardUnit] <p>The standard unit for the data point.</p>
-function M.Datapoint(_SampleCount, _Timestamp, _Average, _Maximum, _Minimum, _ExtendedStatistics, _Sum, _Unit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Datapoint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SampleCount [DatapointValue] <p>The number of metric values that contributed to the aggregate value of this data point.</p>
+-- * Timestamp [Timestamp] <p>The time stamp used for the data point.</p>
+-- * Average [DatapointValue] <p>The average of the metric values that correspond to the data point.</p>
+-- * Maximum [DatapointValue] <p>The maximum metric value for the data point.</p>
+-- * Minimum [DatapointValue] <p>The minimum metric value for the data point.</p>
+-- * ExtendedStatistics [DatapointValueMap] <p>The percentile statistic for the data point.</p>
+-- * Sum [DatapointValue] <p>The sum of the metric values for the data point.</p>
+-- * Unit [StandardUnit] <p>The standard unit for the data point.</p>
+-- @return Datapoint structure as a key-value pair table
+function M.Datapoint(args)
+	assert(args, "You must provdide an argument table when creating Datapoint")
 	local t = { 
-		["SampleCount"] = _SampleCount,
-		["Timestamp"] = _Timestamp,
-		["Average"] = _Average,
-		["Maximum"] = _Maximum,
-		["Minimum"] = _Minimum,
-		["ExtendedStatistics"] = _ExtendedStatistics,
-		["Sum"] = _Sum,
-		["Unit"] = _Unit,
+		["SampleCount"] = args["SampleCount"],
+		["Timestamp"] = args["Timestamp"],
+		["Average"] = args["Average"],
+		["Maximum"] = args["Maximum"],
+		["Minimum"] = args["Minimum"],
+		["ExtendedStatistics"] = args["ExtendedStatistics"],
+		["Sum"] = args["Sum"],
+		["Unit"] = args["Unit"],
 	}
 	asserts.AssertDatapoint(t)
 	return t
@@ -722,11 +779,14 @@ end
 
 --- Create a structure of type MissingRequiredParameterException
 -- <p>An input parameter that is required is missing.</p>
--- @param _message [AwsQueryErrorMessage] <p/>
-function M.MissingRequiredParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MissingRequiredParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [AwsQueryErrorMessage] <p/>
+-- @return MissingRequiredParameterException structure as a key-value pair table
+function M.MissingRequiredParameterException(args)
+	assert(args, "You must provdide an argument table when creating MissingRequiredParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMissingRequiredParameterException(t)
 	return t
@@ -747,14 +807,17 @@ end
 
 --- Create a structure of type DimensionFilter
 -- <p>Represents filters for a dimension.</p>
--- @param _Name [DimensionName] <p>The dimension name to be matched.</p>
--- @param _Value [DimensionValue] <p>The value of the dimension to be matched.</p>
--- Required parameter: Name
-function M.DimensionFilter(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DimensionFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DimensionName] <p>The dimension name to be matched.</p>
+-- * Value [DimensionValue] <p>The value of the dimension to be matched.</p>
+-- Required key: Name
+-- @return DimensionFilter structure as a key-value pair table
+function M.DimensionFilter(args)
+	assert(args, "You must provdide an argument table when creating DimensionFilter")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertDimensionFilter(t)
 	return t
@@ -774,12 +837,15 @@ end
 
 --- Create a structure of type EnableAlarmActionsInput
 --  
--- @param _AlarmNames [AlarmNames] <p>The names of the alarms.</p>
--- Required parameter: AlarmNames
-function M.EnableAlarmActionsInput(_AlarmNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableAlarmActionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AlarmNames [AlarmNames] <p>The names of the alarms.</p>
+-- Required key: AlarmNames
+-- @return EnableAlarmActionsInput structure as a key-value pair table
+function M.EnableAlarmActionsInput(args)
+	assert(args, "You must provdide an argument table when creating EnableAlarmActionsInput")
 	local t = { 
-		["AlarmNames"] = _AlarmNames,
+		["AlarmNames"] = args["AlarmNames"],
 	}
 	asserts.AssertEnableAlarmActionsInput(t)
 	return t
@@ -803,21 +869,24 @@ end
 
 --- Create a structure of type DescribeAlarmsInput
 --  
--- @param _StateValue [StateValue] <p>The state value to be used in matching alarms.</p>
--- @param _ActionPrefix [ActionPrefix] <p>The action name prefix.</p>
--- @param _MaxRecords [MaxRecords] <p>The maximum number of alarm descriptions to retrieve.</p>
--- @param _AlarmNames [AlarmNames] <p>The names of the alarms.</p>
--- @param _AlarmNamePrefix [AlarmNamePrefix] <p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.</p>
--- @param _NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
-function M.DescribeAlarmsInput(_StateValue, _ActionPrefix, _MaxRecords, _AlarmNames, _AlarmNamePrefix, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StateValue [StateValue] <p>The state value to be used in matching alarms.</p>
+-- * ActionPrefix [ActionPrefix] <p>The action name prefix.</p>
+-- * MaxRecords [MaxRecords] <p>The maximum number of alarm descriptions to retrieve.</p>
+-- * AlarmNames [AlarmNames] <p>The names of the alarms.</p>
+-- * AlarmNamePrefix [AlarmNamePrefix] <p>The alarm name prefix. You cannot specify <code>AlarmNames</code> if this parameter is specified.</p>
+-- * NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
+-- @return DescribeAlarmsInput structure as a key-value pair table
+function M.DescribeAlarmsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeAlarmsInput")
 	local t = { 
-		["StateValue"] = _StateValue,
-		["ActionPrefix"] = _ActionPrefix,
-		["MaxRecords"] = _MaxRecords,
-		["AlarmNames"] = _AlarmNames,
-		["AlarmNamePrefix"] = _AlarmNamePrefix,
-		["NextToken"] = _NextToken,
+		["StateValue"] = args["StateValue"],
+		["ActionPrefix"] = args["ActionPrefix"],
+		["MaxRecords"] = args["MaxRecords"],
+		["AlarmNames"] = args["AlarmNames"],
+		["AlarmNamePrefix"] = args["AlarmNamePrefix"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeAlarmsInput(t)
 	return t
@@ -839,15 +908,18 @@ end
 
 --- Create a structure of type Dimension
 -- <p>Expands the identity of a metric.</p>
--- @param _Name [DimensionName] <p>The name of the dimension.</p>
--- @param _Value [DimensionValue] <p>The value representing the dimension measurement.</p>
--- Required parameter: Name
--- Required parameter: Value
-function M.Dimension(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Dimension")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DimensionName] <p>The name of the dimension.</p>
+-- * Value [DimensionValue] <p>The value representing the dimension measurement.</p>
+-- Required key: Name
+-- Required key: Value
+-- @return Dimension structure as a key-value pair table
+function M.Dimension(args)
+	assert(args, "You must provdide an argument table when creating Dimension")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertDimension(t)
 	return t
@@ -871,21 +943,24 @@ end
 
 --- Create a structure of type DescribeAlarmHistoryInput
 --  
--- @param _StartDate [Timestamp] <p>The starting date to retrieve alarm history.</p>
--- @param _EndDate [Timestamp] <p>The ending date to retrieve alarm history.</p>
--- @param _MaxRecords [MaxRecords] <p>The maximum number of alarm history records to retrieve.</p>
--- @param _AlarmName [AlarmName] <p>The name of the alarm.</p>
--- @param _HistoryItemType [HistoryItemType] <p>The type of alarm histories to retrieve.</p>
--- @param _NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
-function M.DescribeAlarmHistoryInput(_StartDate, _EndDate, _MaxRecords, _AlarmName, _HistoryItemType, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmHistoryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StartDate [Timestamp] <p>The starting date to retrieve alarm history.</p>
+-- * EndDate [Timestamp] <p>The ending date to retrieve alarm history.</p>
+-- * MaxRecords [MaxRecords] <p>The maximum number of alarm history records to retrieve.</p>
+-- * AlarmName [AlarmName] <p>The name of the alarm.</p>
+-- * HistoryItemType [HistoryItemType] <p>The type of alarm histories to retrieve.</p>
+-- * NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
+-- @return DescribeAlarmHistoryInput structure as a key-value pair table
+function M.DescribeAlarmHistoryInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeAlarmHistoryInput")
 	local t = { 
-		["StartDate"] = _StartDate,
-		["EndDate"] = _EndDate,
-		["MaxRecords"] = _MaxRecords,
-		["AlarmName"] = _AlarmName,
-		["HistoryItemType"] = _HistoryItemType,
-		["NextToken"] = _NextToken,
+		["StartDate"] = args["StartDate"],
+		["EndDate"] = args["EndDate"],
+		["MaxRecords"] = args["MaxRecords"],
+		["AlarmName"] = args["AlarmName"],
+		["HistoryItemType"] = args["HistoryItemType"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeAlarmHistoryInput(t)
 	return t
@@ -907,17 +982,20 @@ end
 
 --- Create a structure of type ListMetricsInput
 --  
--- @param _NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
--- @param _Namespace [Namespace] <p>The namespace to filter against.</p>
--- @param _Dimensions [DimensionFilters] <p>The dimensions to filter against.</p>
--- @param _MetricName [MetricName] <p>The name of the metric to filter against.</p>
-function M.ListMetricsInput(_NextToken, _Namespace, _Dimensions, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListMetricsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
+-- * Namespace [Namespace] <p>The namespace to filter against.</p>
+-- * Dimensions [DimensionFilters] <p>The dimensions to filter against.</p>
+-- * MetricName [MetricName] <p>The name of the metric to filter against.</p>
+-- @return ListMetricsInput structure as a key-value pair table
+function M.ListMetricsInput(args)
+	assert(args, "You must provdide an argument table when creating ListMetricsInput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Namespace"] = _Namespace,
-		["Dimensions"] = _Dimensions,
-		["MetricName"] = _MetricName,
+		["NextToken"] = args["NextToken"],
+		["Namespace"] = args["Namespace"],
+		["Dimensions"] = args["Dimensions"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertListMetricsInput(t)
 	return t
@@ -936,11 +1014,14 @@ end
 
 --- Create a structure of type InvalidFormatFault
 -- <p>Data was not syntactically valid JSON.</p>
--- @param _message [ErrorMessage] <p/>
-function M.InvalidFormatFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFormatFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p/>
+-- @return InvalidFormatFault structure as a key-value pair table
+function M.InvalidFormatFault(args)
+	assert(args, "You must provdide an argument table when creating InvalidFormatFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidFormatFault(t)
 	return t
@@ -962,15 +1043,18 @@ end
 
 --- Create a structure of type PutMetricDataInput
 --  
--- @param _Namespace [Namespace] <p>The namespace for the metric data.</p> <p>You cannot specify a namespace that begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by Amazon Web Services products.</p>
--- @param _MetricData [MetricData] <p>The data for the metric.</p>
--- Required parameter: Namespace
--- Required parameter: MetricData
-function M.PutMetricDataInput(_Namespace, _MetricData, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutMetricDataInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Namespace [Namespace] <p>The namespace for the metric data.</p> <p>You cannot specify a namespace that begins with "AWS/". Namespaces that begin with "AWS/" are reserved for use by Amazon Web Services products.</p>
+-- * MetricData [MetricData] <p>The data for the metric.</p>
+-- Required key: Namespace
+-- Required key: MetricData
+-- @return PutMetricDataInput structure as a key-value pair table
+function M.PutMetricDataInput(args)
+	assert(args, "You must provdide an argument table when creating PutMetricDataInput")
 	local t = { 
-		["Namespace"] = _Namespace,
-		["MetricData"] = _MetricData,
+		["Namespace"] = args["Namespace"],
+		["MetricData"] = args["MetricData"],
 	}
 	asserts.AssertPutMetricDataInput(t)
 	return t
@@ -991,15 +1075,18 @@ end
 
 --- Create a structure of type Metric
 -- <p>Represents a specific metric.</p>
--- @param _Namespace [Namespace] <p>The namespace of the metric.</p>
--- @param _Dimensions [Dimensions] <p>The dimensions for the metric.</p>
--- @param _MetricName [MetricName] <p>The name of the metric.</p>
-function M.Metric(_Namespace, _Dimensions, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Metric")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Namespace [Namespace] <p>The namespace of the metric.</p>
+-- * Dimensions [Dimensions] <p>The dimensions for the metric.</p>
+-- * MetricName [MetricName] <p>The name of the metric.</p>
+-- @return Metric structure as a key-value pair table
+function M.Metric(args)
+	assert(args, "You must provdide an argument table when creating Metric")
 	local t = { 
-		["Namespace"] = _Namespace,
-		["Dimensions"] = _Dimensions,
-		["MetricName"] = _MetricName,
+		["Namespace"] = args["Namespace"],
+		["Dimensions"] = args["Dimensions"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertMetric(t)
 	return t
@@ -1024,20 +1111,23 @@ end
 
 --- Create a structure of type SetAlarmStateInput
 --  
--- @param _StateReason [StateReason] <p>The reason that this alarm is set to this specific state, in text format.</p>
--- @param _StateReasonData [StateReasonData] <p>The reason that this alarm is set to this specific state, in JSON format.</p>
--- @param _AlarmName [AlarmName] <p>The name for the alarm. This name must be unique within the AWS account. The maximum length is 255 characters.</p>
--- @param _StateValue [StateValue] <p>The value of the state.</p>
--- Required parameter: AlarmName
--- Required parameter: StateValue
--- Required parameter: StateReason
-function M.SetAlarmStateInput(_StateReason, _StateReasonData, _AlarmName, _StateValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetAlarmStateInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StateReason [StateReason] <p>The reason that this alarm is set to this specific state, in text format.</p>
+-- * StateReasonData [StateReasonData] <p>The reason that this alarm is set to this specific state, in JSON format.</p>
+-- * AlarmName [AlarmName] <p>The name for the alarm. This name must be unique within the AWS account. The maximum length is 255 characters.</p>
+-- * StateValue [StateValue] <p>The value of the state.</p>
+-- Required key: AlarmName
+-- Required key: StateValue
+-- Required key: StateReason
+-- @return SetAlarmStateInput structure as a key-value pair table
+function M.SetAlarmStateInput(args)
+	assert(args, "You must provdide an argument table when creating SetAlarmStateInput")
 	local t = { 
-		["StateReason"] = _StateReason,
-		["StateReasonData"] = _StateReasonData,
-		["AlarmName"] = _AlarmName,
-		["StateValue"] = _StateValue,
+		["StateReason"] = args["StateReason"],
+		["StateReasonData"] = args["StateReasonData"],
+		["AlarmName"] = args["AlarmName"],
+		["StateValue"] = args["StateValue"],
 	}
 	asserts.AssertSetAlarmStateInput(t)
 	return t
@@ -1064,25 +1154,28 @@ end
 
 --- Create a structure of type DescribeAlarmsForMetricInput
 --  
--- @param _ExtendedStatistic [ExtendedStatistic] <p>The percentile statistic for the metric. Specify a value between p0.0 and p100.</p>
--- @param _Dimensions [Dimensions] <p>The dimensions associated with the metric. If the metric has any associated dimensions, you must specify them in order for the call to succeed.</p>
--- @param _Namespace [Namespace] <p>The namespace of the metric.</p>
--- @param _Period [Period] <p>The period, in seconds, over which the statistic is applied.</p>
--- @param _Statistic [Statistic] <p>The statistic for the metric, other than percentiles. For percentile statistics, use <code>ExtendedStatistics</code>.</p>
--- @param _Unit [StandardUnit] <p>The unit for the metric.</p>
--- @param _MetricName [MetricName] <p>The name of the metric.</p>
--- Required parameter: MetricName
--- Required parameter: Namespace
-function M.DescribeAlarmsForMetricInput(_ExtendedStatistic, _Dimensions, _Namespace, _Period, _Statistic, _Unit, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAlarmsForMetricInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ExtendedStatistic [ExtendedStatistic] <p>The percentile statistic for the metric. Specify a value between p0.0 and p100.</p>
+-- * Dimensions [Dimensions] <p>The dimensions associated with the metric. If the metric has any associated dimensions, you must specify them in order for the call to succeed.</p>
+-- * Namespace [Namespace] <p>The namespace of the metric.</p>
+-- * Period [Period] <p>The period, in seconds, over which the statistic is applied.</p>
+-- * Statistic [Statistic] <p>The statistic for the metric, other than percentiles. For percentile statistics, use <code>ExtendedStatistics</code>.</p>
+-- * Unit [StandardUnit] <p>The unit for the metric.</p>
+-- * MetricName [MetricName] <p>The name of the metric.</p>
+-- Required key: MetricName
+-- Required key: Namespace
+-- @return DescribeAlarmsForMetricInput structure as a key-value pair table
+function M.DescribeAlarmsForMetricInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeAlarmsForMetricInput")
 	local t = { 
-		["ExtendedStatistic"] = _ExtendedStatistic,
-		["Dimensions"] = _Dimensions,
-		["Namespace"] = _Namespace,
-		["Period"] = _Period,
-		["Statistic"] = _Statistic,
-		["Unit"] = _Unit,
-		["MetricName"] = _MetricName,
+		["ExtendedStatistic"] = args["ExtendedStatistic"],
+		["Dimensions"] = args["Dimensions"],
+		["Namespace"] = args["Namespace"],
+		["Period"] = args["Period"],
+		["Statistic"] = args["Statistic"],
+		["Unit"] = args["Unit"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertDescribeAlarmsForMetricInput(t)
 	return t
@@ -1101,11 +1194,14 @@ end
 
 --- Create a structure of type ResourceNotFound
 -- <p>The named resource does not exist.</p>
--- @param _message [ErrorMessage] <p/>
-function M.ResourceNotFound(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p/>
+-- @return ResourceNotFound structure as a key-value pair table
+function M.ResourceNotFound(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFound")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFound(t)
 	return t

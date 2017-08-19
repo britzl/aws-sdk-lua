@@ -36,13 +36,16 @@ end
 
 --- Create a structure of type {{name}}
 {{#documentation}}-- {{documentation}}{{/documentation}}
-{{#members}}-- @param _{{name}} [{{shape}}] {{documentation}}
-{{/members}}{{#required}}-- Required parameter: {{name}}
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+{{#members}}-- * {{name}} [{{shape}}] {{documentation}}
+{{/members}}{{#required}}-- Required key: {{name}}
 {{/required}}
-function M.{{name}}({{#members}}_{{name}}, {{/members}}...)
-	assert(select("#", ...) == 0, "Too many arguments when creating {{name}}")
+-- @return {{name}} structure as a key-value pair table
+function M.{{name}}(args)
+	assert(args, "You must provdide an argument table when creating {{name}}")
 	local t = { {{#members}}
-		["{{name}}"] = _{{name}},{{/members}}
+		["{{name}}"] = args["{{name}}"],{{/members}}
 	}
 	asserts.Assert{{name}}(t)
 	return t

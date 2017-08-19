@@ -33,8 +33,11 @@ end
 
 --- Create a structure of type ClusterNotFoundFault
 -- <p>The requested cluster ID does not refer to an existing DAX cluster.</p>
-function M.ClusterNotFoundFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterNotFoundFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ClusterNotFoundFault structure as a key-value pair table
+function M.ClusterNotFoundFault(args)
+	assert(args, "You must provdide an argument table when creating ClusterNotFoundFault")
 	local t = { 
 	}
 	asserts.AssertClusterNotFoundFault(t)
@@ -55,13 +58,16 @@ end
 
 --- Create a structure of type DescribeParametersResponse
 --  
--- @param _NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
--- @param _Parameters [ParameterList] <p>A list of parameters within a parameter group. Each element in the list represents one parameter.</p>
-function M.DescribeParametersResponse(_NextToken, _Parameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParametersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- * Parameters [ParameterList] <p>A list of parameters within a parameter group. Each element in the list represents one parameter.</p>
+-- @return DescribeParametersResponse structure as a key-value pair table
+function M.DescribeParametersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeParametersResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Parameters"] = _Parameters,
+		["NextToken"] = args["NextToken"],
+		["Parameters"] = args["Parameters"],
 	}
 	asserts.AssertDescribeParametersResponse(t)
 	return t
@@ -82,14 +88,17 @@ end
 
 --- Create a structure of type ListTagsRequest
 --  
--- @param _ResourceName [String] <p>The name of the DAX resource to which the tags belong.</p>
--- @param _NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token.</p>
--- Required parameter: ResourceName
-function M.ListTagsRequest(_ResourceName, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceName [String] <p>The name of the DAX resource to which the tags belong.</p>
+-- * NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token.</p>
+-- Required key: ResourceName
+-- @return ListTagsRequest structure as a key-value pair table
+function M.ListTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsRequest")
 	local t = { 
-		["ResourceName"] = _ResourceName,
-		["NextToken"] = _NextToken,
+		["ResourceName"] = args["ResourceName"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListTagsRequest(t)
 	return t
@@ -111,15 +120,18 @@ end
 
 --- Create a structure of type UpdateParameterGroupRequest
 --  
--- @param _ParameterGroupName [String] <p>The name of the parameter group.</p>
--- @param _ParameterNameValues [ParameterNameValueList] <p>An array of name-value pairs for the parameters in the group. Each element in the array represents a single parameter.</p>
--- Required parameter: ParameterGroupName
--- Required parameter: ParameterNameValues
-function M.UpdateParameterGroupRequest(_ParameterGroupName, _ParameterNameValues, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateParameterGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterGroupName [String] <p>The name of the parameter group.</p>
+-- * ParameterNameValues [ParameterNameValueList] <p>An array of name-value pairs for the parameters in the group. Each element in the array represents a single parameter.</p>
+-- Required key: ParameterGroupName
+-- Required key: ParameterNameValues
+-- @return UpdateParameterGroupRequest structure as a key-value pair table
+function M.UpdateParameterGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateParameterGroupRequest")
 	local t = { 
-		["ParameterGroupName"] = _ParameterGroupName,
-		["ParameterNameValues"] = _ParameterNameValues,
+		["ParameterGroupName"] = args["ParameterGroupName"],
+		["ParameterNameValues"] = args["ParameterNameValues"],
 	}
 	asserts.AssertUpdateParameterGroupRequest(t)
 	return t
@@ -138,11 +150,14 @@ end
 
 --- Create a structure of type DeleteClusterResponse
 --  
--- @param _Cluster [Cluster] <p>A description of the DAX cluster that is being deleted.</p>
-function M.DeleteClusterResponse(_Cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cluster [Cluster] <p>A description of the DAX cluster that is being deleted.</p>
+-- @return DeleteClusterResponse structure as a key-value pair table
+function M.DeleteClusterResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteClusterResponse")
 	local t = { 
-		["Cluster"] = _Cluster,
+		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertDeleteClusterResponse(t)
 	return t
@@ -161,11 +176,14 @@ end
 
 --- Create a structure of type DeleteParameterGroupResponse
 --  
--- @param _DeletionMessage [String] <p>A user-specified message for this action (i.e., a reason for deleting the parameter group).</p>
-function M.DeleteParameterGroupResponse(_DeletionMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParameterGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeletionMessage [String] <p>A user-specified message for this action (i.e., a reason for deleting the parameter group).</p>
+-- @return DeleteParameterGroupResponse structure as a key-value pair table
+function M.DeleteParameterGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteParameterGroupResponse")
 	local t = { 
-		["DeletionMessage"] = _DeletionMessage,
+		["DeletionMessage"] = args["DeletionMessage"],
 	}
 	asserts.AssertDeleteParameterGroupResponse(t)
 	return t
@@ -183,8 +201,11 @@ end
 
 --- Create a structure of type InvalidClusterStateFault
 -- <p>The requested DAX cluster is not in the <i>available</i> state.</p>
-function M.InvalidClusterStateFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidClusterStateFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidClusterStateFault structure as a key-value pair table
+function M.InvalidClusterStateFault(args)
+	assert(args, "You must provdide an argument table when creating InvalidClusterStateFault")
 	local t = { 
 	}
 	asserts.AssertInvalidClusterStateFault(t)
@@ -204,11 +225,14 @@ end
 
 --- Create a structure of type IncreaseReplicationFactorResponse
 --  
--- @param _Cluster [Cluster] <p>A description of the DAX cluster. with its new replication factor.</p>
-function M.IncreaseReplicationFactorResponse(_Cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IncreaseReplicationFactorResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cluster [Cluster] <p>A description of the DAX cluster. with its new replication factor.</p>
+-- @return IncreaseReplicationFactorResponse structure as a key-value pair table
+function M.IncreaseReplicationFactorResponse(args)
+	assert(args, "You must provdide an argument table when creating IncreaseReplicationFactorResponse")
 	local t = { 
-		["Cluster"] = _Cluster,
+		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertIncreaseReplicationFactorResponse(t)
 	return t
@@ -228,12 +252,15 @@ end
 
 --- Create a structure of type DeleteParameterGroupRequest
 --  
--- @param _ParameterGroupName [String] <p>The name of the parameter group to delete.</p>
--- Required parameter: ParameterGroupName
-function M.DeleteParameterGroupRequest(_ParameterGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteParameterGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterGroupName [String] <p>The name of the parameter group to delete.</p>
+-- Required key: ParameterGroupName
+-- @return DeleteParameterGroupRequest structure as a key-value pair table
+function M.DeleteParameterGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteParameterGroupRequest")
 	local t = { 
-		["ParameterGroupName"] = _ParameterGroupName,
+		["ParameterGroupName"] = args["ParameterGroupName"],
 	}
 	asserts.AssertDeleteParameterGroupRequest(t)
 	return t
@@ -253,13 +280,16 @@ end
 
 --- Create a structure of type ParameterGroup
 -- <p>A named set of parameters that are applied to all of the nodes in a DAX cluster.</p>
--- @param _ParameterGroupName [String] <p>The name of the parameter group.</p>
--- @param _Description [String] <p>A description of the parameter group.</p>
-function M.ParameterGroup(_ParameterGroupName, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterGroupName [String] <p>The name of the parameter group.</p>
+-- * Description [String] <p>A description of the parameter group.</p>
+-- @return ParameterGroup structure as a key-value pair table
+function M.ParameterGroup(args)
+	assert(args, "You must provdide an argument table when creating ParameterGroup")
 	local t = { 
-		["ParameterGroupName"] = _ParameterGroupName,
-		["Description"] = _Description,
+		["ParameterGroupName"] = args["ParameterGroupName"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertParameterGroup(t)
 	return t
@@ -277,8 +307,11 @@ end
 
 --- Create a structure of type InsufficientClusterCapacityFault
 -- <p>There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster). </p>
-function M.InsufficientClusterCapacityFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientClusterCapacityFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InsufficientClusterCapacityFault structure as a key-value pair table
+function M.InsufficientClusterCapacityFault(args)
+	assert(args, "You must provdide an argument table when creating InsufficientClusterCapacityFault")
 	local t = { 
 	}
 	asserts.AssertInsufficientClusterCapacityFault(t)
@@ -299,12 +332,15 @@ end
 
 --- Create a structure of type DeleteClusterRequest
 --  
--- @param _ClusterName [String] <p>The name of the cluster to be deleted.</p>
--- Required parameter: ClusterName
-function M.DeleteClusterRequest(_ClusterName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterName [String] <p>The name of the cluster to be deleted.</p>
+-- Required key: ClusterName
+-- @return DeleteClusterRequest structure as a key-value pair table
+function M.DeleteClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteClusterRequest")
 	local t = { 
-		["ClusterName"] = _ClusterName,
+		["ClusterName"] = args["ClusterName"],
 	}
 	asserts.AssertDeleteClusterRequest(t)
 	return t
@@ -322,8 +358,11 @@ end
 
 --- Create a structure of type InvalidParameterGroupStateFault
 -- <p>One or more parameters in a parameter group are in an invalid state.</p>
-function M.InvalidParameterGroupStateFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterGroupStateFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidParameterGroupStateFault structure as a key-value pair table
+function M.InvalidParameterGroupStateFault(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterGroupStateFault")
 	local t = { 
 	}
 	asserts.AssertInvalidParameterGroupStateFault(t)
@@ -343,11 +382,14 @@ end
 
 --- Create a structure of type DeleteSubnetGroupResponse
 --  
--- @param _DeletionMessage [String] <p>A user-specified message for this action (i.e., a reason for deleting the subnet group).</p>
-function M.DeleteSubnetGroupResponse(_DeletionMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubnetGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeletionMessage [String] <p>A user-specified message for this action (i.e., a reason for deleting the subnet group).</p>
+-- @return DeleteSubnetGroupResponse structure as a key-value pair table
+function M.DeleteSubnetGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteSubnetGroupResponse")
 	local t = { 
-		["DeletionMessage"] = _DeletionMessage,
+		["DeletionMessage"] = args["DeletionMessage"],
 	}
 	asserts.AssertDeleteSubnetGroupResponse(t)
 	return t
@@ -366,11 +408,14 @@ end
 
 --- Create a structure of type CreateSubnetGroupResponse
 --  
--- @param _SubnetGroup [SubnetGroup] <p>Represents the output of a <i>CreateSubnetGroup</i> operation.</p>
-function M.CreateSubnetGroupResponse(_SubnetGroup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubnetGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetGroup [SubnetGroup] <p>Represents the output of a <i>CreateSubnetGroup</i> operation.</p>
+-- @return CreateSubnetGroupResponse structure as a key-value pair table
+function M.CreateSubnetGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateSubnetGroupResponse")
 	local t = { 
-		["SubnetGroup"] = _SubnetGroup,
+		["SubnetGroup"] = args["SubnetGroup"],
 	}
 	asserts.AssertCreateSubnetGroupResponse(t)
 	return t
@@ -390,13 +435,16 @@ end
 
 --- Create a structure of type DescribeDefaultParametersRequest
 --  
--- @param _NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
--- @param _MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
-function M.DescribeDefaultParametersRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDefaultParametersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- * MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
+-- @return DescribeDefaultParametersRequest structure as a key-value pair table
+function M.DescribeDefaultParametersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDefaultParametersRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeDefaultParametersRequest(t)
 	return t
@@ -417,15 +465,18 @@ end
 
 --- Create a structure of type DescribeSubnetGroupsRequest
 --  
--- @param _NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
--- @param _SubnetGroupNames [SubnetGroupNameList] <p>The name of the subnet group.</p>
--- @param _MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
-function M.DescribeSubnetGroupsRequest(_NextToken, _SubnetGroupNames, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubnetGroupsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- * SubnetGroupNames [SubnetGroupNameList] <p>The name of the subnet group.</p>
+-- * MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
+-- @return DescribeSubnetGroupsRequest structure as a key-value pair table
+function M.DescribeSubnetGroupsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeSubnetGroupsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["SubnetGroupNames"] = _SubnetGroupNames,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["SubnetGroupNames"] = args["SubnetGroupNames"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeSubnetGroupsRequest(t)
 	return t
@@ -445,12 +496,15 @@ end
 
 --- Create a structure of type DeleteSubnetGroupRequest
 --  
--- @param _SubnetGroupName [String] <p>The name of the subnet group to delete.</p>
--- Required parameter: SubnetGroupName
-function M.DeleteSubnetGroupRequest(_SubnetGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubnetGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetGroupName [String] <p>The name of the subnet group to delete.</p>
+-- Required key: SubnetGroupName
+-- @return DeleteSubnetGroupRequest structure as a key-value pair table
+function M.DeleteSubnetGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSubnetGroupRequest")
 	local t = { 
-		["SubnetGroupName"] = _SubnetGroupName,
+		["SubnetGroupName"] = args["SubnetGroupName"],
 	}
 	asserts.AssertDeleteSubnetGroupRequest(t)
 	return t
@@ -468,8 +522,11 @@ end
 
 --- Create a structure of type SubnetGroupQuotaExceededFault
 -- <p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>
-function M.SubnetGroupQuotaExceededFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetGroupQuotaExceededFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SubnetGroupQuotaExceededFault structure as a key-value pair table
+function M.SubnetGroupQuotaExceededFault(args)
+	assert(args, "You must provdide an argument table when creating SubnetGroupQuotaExceededFault")
 	local t = { 
 	}
 	asserts.AssertSubnetGroupQuotaExceededFault(t)
@@ -489,11 +546,14 @@ end
 
 --- Create a structure of type DecreaseReplicationFactorResponse
 --  
--- @param _Cluster [Cluster] <p>A description of the DAX cluster, after you have decreased its replication factor.</p>
-function M.DecreaseReplicationFactorResponse(_Cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DecreaseReplicationFactorResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cluster [Cluster] <p>A description of the DAX cluster, after you have decreased its replication factor.</p>
+-- @return DecreaseReplicationFactorResponse structure as a key-value pair table
+function M.DecreaseReplicationFactorResponse(args)
+	assert(args, "You must provdide an argument table when creating DecreaseReplicationFactorResponse")
 	local t = { 
-		["Cluster"] = _Cluster,
+		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertDecreaseReplicationFactorResponse(t)
 	return t
@@ -513,13 +573,16 @@ end
 
 --- Create a structure of type Tag
 -- <p>A description of a tag. Every tag is a key-value pair. You can add up to 50 tags to a single DAX cluster.</p> <p>AWS-assigned tag names and values are automatically assigned the <code>aws:</code> prefix, which the user cannot assign. AWS-assigned tag names do not count towards the tag limit of 50. User-assigned tag names have the prefix <code>user:</code>.</p> <p>You cannot backdate the application of a tag.</p>
--- @param _Value [String] <p>The value of the tag. Tag values are case-sensitive and can be null. </p>
--- @param _Key [String] <p>The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.</p>
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [String] <p>The value of the tag. Tag values are case-sensitive and can be null. </p>
+-- * Key [String] <p>The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.</p>
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -542,18 +605,21 @@ end
 
 --- Create a structure of type DescribeParametersRequest
 --  
--- @param _Source [String] <p>How the parameter is defined. For example, <code>system</code> denotes a system-defined parameter.</p>
--- @param _NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
--- @param _ParameterGroupName [String] <p>The name of the parameter group.</p>
--- @param _MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
--- Required parameter: ParameterGroupName
-function M.DescribeParametersRequest(_Source, _NextToken, _ParameterGroupName, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParametersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Source [String] <p>How the parameter is defined. For example, <code>system</code> denotes a system-defined parameter.</p>
+-- * NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- * ParameterGroupName [String] <p>The name of the parameter group.</p>
+-- * MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
+-- Required key: ParameterGroupName
+-- @return DescribeParametersRequest structure as a key-value pair table
+function M.DescribeParametersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeParametersRequest")
 	local t = { 
-		["Source"] = _Source,
-		["NextToken"] = _NextToken,
-		["ParameterGroupName"] = _ParameterGroupName,
-		["MaxResults"] = _MaxResults,
+		["Source"] = args["Source"],
+		["NextToken"] = args["NextToken"],
+		["ParameterGroupName"] = args["ParameterGroupName"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeParametersRequest(t)
 	return t
@@ -575,15 +641,18 @@ end
 
 --- Create a structure of type RebootNodeRequest
 --  
--- @param _ClusterName [String] <p>The name of the DAX cluster containing the node to be rebooted.</p>
--- @param _NodeId [String] <p>The system-assigned ID of the node to be rebooted.</p>
--- Required parameter: ClusterName
--- Required parameter: NodeId
-function M.RebootNodeRequest(_ClusterName, _NodeId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebootNodeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterName [String] <p>The name of the DAX cluster containing the node to be rebooted.</p>
+-- * NodeId [String] <p>The system-assigned ID of the node to be rebooted.</p>
+-- Required key: ClusterName
+-- Required key: NodeId
+-- @return RebootNodeRequest structure as a key-value pair table
+function M.RebootNodeRequest(args)
+	assert(args, "You must provdide an argument table when creating RebootNodeRequest")
 	local t = { 
-		["ClusterName"] = _ClusterName,
-		["NodeId"] = _NodeId,
+		["ClusterName"] = args["ClusterName"],
+		["NodeId"] = args["NodeId"],
 	}
 	asserts.AssertRebootNodeRequest(t)
 	return t
@@ -603,13 +672,16 @@ end
 
 --- Create a structure of type NotificationConfiguration
 -- <p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>
--- @param _TopicStatus [String] <p>The current state of the topic.</p>
--- @param _TopicArn [String] <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
-function M.NotificationConfiguration(_TopicStatus, _TopicArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotificationConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TopicStatus [String] <p>The current state of the topic.</p>
+-- * TopicArn [String] <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
+-- @return NotificationConfiguration structure as a key-value pair table
+function M.NotificationConfiguration(args)
+	assert(args, "You must provdide an argument table when creating NotificationConfiguration")
 	local t = { 
-		["TopicStatus"] = _TopicStatus,
-		["TopicArn"] = _TopicArn,
+		["TopicStatus"] = args["TopicStatus"],
+		["TopicArn"] = args["TopicArn"],
 	}
 	asserts.AssertNotificationConfiguration(t)
 	return t
@@ -631,17 +703,20 @@ end
 
 --- Create a structure of type Event
 -- <p>Represents a single occurrence of something interesting within the system. Some examples of events are creating a DAX cluster, adding or removing a node, or rebooting a node.</p>
--- @param _SourceName [String] <p>The source of the event. For example, if the event occurred at the node level, the source would be the node ID.</p>
--- @param _Date [TStamp] <p>The date and time when the event occurred.</p>
--- @param _Message [String] <p>A user-defined message associated with the event.</p>
--- @param _SourceType [SourceType] <p>Specifies the origin of this event - a cluster, a parameter group, a node ID, etc.</p>
-function M.Event(_SourceName, _Date, _Message, _SourceType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Event")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceName [String] <p>The source of the event. For example, if the event occurred at the node level, the source would be the node ID.</p>
+-- * Date [TStamp] <p>The date and time when the event occurred.</p>
+-- * Message [String] <p>A user-defined message associated with the event.</p>
+-- * SourceType [SourceType] <p>Specifies the origin of this event - a cluster, a parameter group, a node ID, etc.</p>
+-- @return Event structure as a key-value pair table
+function M.Event(args)
+	assert(args, "You must provdide an argument table when creating Event")
 	local t = { 
-		["SourceName"] = _SourceName,
-		["Date"] = _Date,
-		["Message"] = _Message,
-		["SourceType"] = _SourceType,
+		["SourceName"] = args["SourceName"],
+		["Date"] = args["Date"],
+		["Message"] = args["Message"],
+		["SourceType"] = args["SourceType"],
 	}
 	asserts.AssertEvent(t)
 	return t
@@ -662,15 +737,18 @@ end
 
 --- Create a structure of type DescribeClustersRequest
 --  
--- @param _NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
--- @param _MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
--- @param _ClusterNames [ClusterNameList] <p>The names of the DAX clusters being described.</p>
-function M.DescribeClustersRequest(_NextToken, _MaxResults, _ClusterNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClustersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- * MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
+-- * ClusterNames [ClusterNameList] <p>The names of the DAX clusters being described.</p>
+-- @return DescribeClustersRequest structure as a key-value pair table
+function M.DescribeClustersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeClustersRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["ClusterNames"] = _ClusterNames,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["ClusterNames"] = args["ClusterNames"],
 	}
 	asserts.AssertDescribeClustersRequest(t)
 	return t
@@ -688,8 +766,11 @@ end
 
 --- Create a structure of type InvalidSubnet
 -- <p>An invalid subnet identifier was specified.</p>
-function M.InvalidSubnet(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidSubnet structure as a key-value pair table
+function M.InvalidSubnet(args)
+	assert(args, "You must provdide an argument table when creating InvalidSubnet")
 	local t = { 
 	}
 	asserts.AssertInvalidSubnet(t)
@@ -718,29 +799,32 @@ end
 
 --- Create a structure of type Parameter
 -- <p>Describes an individual setting that controls some aspect of DAX behavior.</p>
--- @param _ParameterType [ParameterType] <p>Determines whether the parameter can be applied to any nodes, or only nodes of a particular type.</p>
--- @param _Description [String] <p>A description of the parameter</p>
--- @param _DataType [String] <p>The data type of the parameter. For example, <code>integer</code>:</p>
--- @param _ChangeType [ChangeType] <p>The conditions under which changes to this parameter can be applied. For example, <code>requires-reboot</code> indicates that a new value for this parameter will only take effect if a node is rebooted.</p>
--- @param _IsModifiable [IsModifiable] <p>Whether the customer is allowed to modify the parameter.</p>
--- @param _AllowedValues [String] <p>A range of values within which the parameter can be set.</p>
--- @param _NodeTypeSpecificValues [NodeTypeSpecificValueList] <p>A list of node types, and specific parameter values for each node.</p>
--- @param _Source [String] <p>How the parameter is defined. For example, <code>system</code> denotes a system-defined parameter.</p>
--- @param _ParameterValue [String] <p>The value for the parameter.</p>
--- @param _ParameterName [String] <p>The name of the parameter.</p>
-function M.Parameter(_ParameterType, _Description, _DataType, _ChangeType, _IsModifiable, _AllowedValues, _NodeTypeSpecificValues, _Source, _ParameterValue, _ParameterName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Parameter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterType [ParameterType] <p>Determines whether the parameter can be applied to any nodes, or only nodes of a particular type.</p>
+-- * Description [String] <p>A description of the parameter</p>
+-- * DataType [String] <p>The data type of the parameter. For example, <code>integer</code>:</p>
+-- * ChangeType [ChangeType] <p>The conditions under which changes to this parameter can be applied. For example, <code>requires-reboot</code> indicates that a new value for this parameter will only take effect if a node is rebooted.</p>
+-- * IsModifiable [IsModifiable] <p>Whether the customer is allowed to modify the parameter.</p>
+-- * AllowedValues [String] <p>A range of values within which the parameter can be set.</p>
+-- * NodeTypeSpecificValues [NodeTypeSpecificValueList] <p>A list of node types, and specific parameter values for each node.</p>
+-- * Source [String] <p>How the parameter is defined. For example, <code>system</code> denotes a system-defined parameter.</p>
+-- * ParameterValue [String] <p>The value for the parameter.</p>
+-- * ParameterName [String] <p>The name of the parameter.</p>
+-- @return Parameter structure as a key-value pair table
+function M.Parameter(args)
+	assert(args, "You must provdide an argument table when creating Parameter")
 	local t = { 
-		["ParameterType"] = _ParameterType,
-		["Description"] = _Description,
-		["DataType"] = _DataType,
-		["ChangeType"] = _ChangeType,
-		["IsModifiable"] = _IsModifiable,
-		["AllowedValues"] = _AllowedValues,
-		["NodeTypeSpecificValues"] = _NodeTypeSpecificValues,
-		["Source"] = _Source,
-		["ParameterValue"] = _ParameterValue,
-		["ParameterName"] = _ParameterName,
+		["ParameterType"] = args["ParameterType"],
+		["Description"] = args["Description"],
+		["DataType"] = args["DataType"],
+		["ChangeType"] = args["ChangeType"],
+		["IsModifiable"] = args["IsModifiable"],
+		["AllowedValues"] = args["AllowedValues"],
+		["NodeTypeSpecificValues"] = args["NodeTypeSpecificValues"],
+		["Source"] = args["Source"],
+		["ParameterValue"] = args["ParameterValue"],
+		["ParameterName"] = args["ParameterName"],
 	}
 	asserts.AssertParameter(t)
 	return t
@@ -760,13 +844,16 @@ end
 
 --- Create a structure of type DescribeDefaultParametersResponse
 --  
--- @param _NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
--- @param _Parameters [ParameterList] <p>A list of parameters. Each element in the list represents one parameter.</p>
-function M.DescribeDefaultParametersResponse(_NextToken, _Parameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDefaultParametersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- * Parameters [ParameterList] <p>A list of parameters. Each element in the list represents one parameter.</p>
+-- @return DescribeDefaultParametersResponse structure as a key-value pair table
+function M.DescribeDefaultParametersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeDefaultParametersResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Parameters"] = _Parameters,
+		["NextToken"] = args["NextToken"],
+		["Parameters"] = args["Parameters"],
 	}
 	asserts.AssertDescribeDefaultParametersResponse(t)
 	return t
@@ -784,8 +871,11 @@ end
 
 --- Create a structure of type ParameterGroupQuotaExceededFault
 -- <p>You have attempted to exceed the maximum number of parameter groups.</p>
-function M.ParameterGroupQuotaExceededFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterGroupQuotaExceededFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ParameterGroupQuotaExceededFault structure as a key-value pair table
+function M.ParameterGroupQuotaExceededFault(args)
+	assert(args, "You must provdide an argument table when creating ParameterGroupQuotaExceededFault")
 	local t = { 
 	}
 	asserts.AssertParameterGroupQuotaExceededFault(t)
@@ -805,11 +895,14 @@ end
 
 --- Create a structure of type InvalidParameterCombinationException
 -- <p>Two or more incompatible parameters were specified.</p>
--- @param _message [AwsQueryErrorMessage] 
-function M.InvalidParameterCombinationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterCombinationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [AwsQueryErrorMessage] 
+-- @return InvalidParameterCombinationException structure as a key-value pair table
+function M.InvalidParameterCombinationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterCombinationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterCombinationException(t)
 	return t
@@ -827,8 +920,11 @@ end
 
 --- Create a structure of type ParameterGroupAlreadyExistsFault
 -- <p>The specified parameter group already exists.</p>
-function M.ParameterGroupAlreadyExistsFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterGroupAlreadyExistsFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ParameterGroupAlreadyExistsFault structure as a key-value pair table
+function M.ParameterGroupAlreadyExistsFault(args)
+	assert(args, "You must provdide an argument table when creating ParameterGroupAlreadyExistsFault")
 	local t = { 
 	}
 	asserts.AssertParameterGroupAlreadyExistsFault(t)
@@ -855,24 +951,27 @@ end
 
 --- Create a structure of type UpdateClusterRequest
 --  
--- @param _Description [String] <p>A description of the changes being made to the cluster.</p>
--- @param _ClusterName [String] <p>The name of the DAX cluster to be modified.</p>
--- @param _SecurityGroupIds [SecurityGroupIdentifierList] <p>A list of user-specified security group IDs to be assigned to each node in the DAX cluster. If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>
--- @param _NotificationTopicStatus [String] <p>The current state of the topic.</p>
--- @param _ParameterGroupName [String] <p>The name of a parameter group for this cluster.</p>
--- @param _NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) that identifies the topic.</p>
--- @param _PreferredMaintenanceWindow [String] <p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>
--- Required parameter: ClusterName
-function M.UpdateClusterRequest(_Description, _ClusterName, _SecurityGroupIds, _NotificationTopicStatus, _ParameterGroupName, _NotificationTopicArn, _PreferredMaintenanceWindow, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [String] <p>A description of the changes being made to the cluster.</p>
+-- * ClusterName [String] <p>The name of the DAX cluster to be modified.</p>
+-- * SecurityGroupIds [SecurityGroupIdentifierList] <p>A list of user-specified security group IDs to be assigned to each node in the DAX cluster. If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>
+-- * NotificationTopicStatus [String] <p>The current state of the topic.</p>
+-- * ParameterGroupName [String] <p>The name of a parameter group for this cluster.</p>
+-- * NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) that identifies the topic.</p>
+-- * PreferredMaintenanceWindow [String] <p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>
+-- Required key: ClusterName
+-- @return UpdateClusterRequest structure as a key-value pair table
+function M.UpdateClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateClusterRequest")
 	local t = { 
-		["Description"] = _Description,
-		["ClusterName"] = _ClusterName,
-		["SecurityGroupIds"] = _SecurityGroupIds,
-		["NotificationTopicStatus"] = _NotificationTopicStatus,
-		["ParameterGroupName"] = _ParameterGroupName,
-		["NotificationTopicArn"] = _NotificationTopicArn,
-		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
+		["Description"] = args["Description"],
+		["ClusterName"] = args["ClusterName"],
+		["SecurityGroupIds"] = args["SecurityGroupIds"],
+		["NotificationTopicStatus"] = args["NotificationTopicStatus"],
+		["ParameterGroupName"] = args["ParameterGroupName"],
+		["NotificationTopicArn"] = args["NotificationTopicArn"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
 	asserts.AssertUpdateClusterRequest(t)
 	return t
@@ -891,11 +990,14 @@ end
 
 --- Create a structure of type RebootNodeResponse
 --  
--- @param _Cluster [Cluster] <p>A description of the DAX cluster after a node has been rebooted.</p>
-function M.RebootNodeResponse(_Cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebootNodeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cluster [Cluster] <p>A description of the DAX cluster after a node has been rebooted.</p>
+-- @return RebootNodeResponse structure as a key-value pair table
+function M.RebootNodeResponse(args)
+	assert(args, "You must provdide an argument table when creating RebootNodeResponse")
 	local t = { 
-		["Cluster"] = _Cluster,
+		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertRebootNodeResponse(t)
 	return t
@@ -913,8 +1015,11 @@ end
 
 --- Create a structure of type ParameterGroupNotFoundFault
 -- <p>The specified parameter group does not exist.</p>
-function M.ParameterGroupNotFoundFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterGroupNotFoundFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ParameterGroupNotFoundFault structure as a key-value pair table
+function M.ParameterGroupNotFoundFault(args)
+	assert(args, "You must provdide an argument table when creating ParameterGroupNotFoundFault")
 	local t = { 
 	}
 	asserts.AssertParameterGroupNotFoundFault(t)
@@ -934,11 +1039,14 @@ end
 
 --- Create a structure of type CreateParameterGroupResponse
 --  
--- @param _ParameterGroup [ParameterGroup] <p>Represents the output of a <i>CreateParameterGroup</i> action.</p>
-function M.CreateParameterGroupResponse(_ParameterGroup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateParameterGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterGroup [ParameterGroup] <p>Represents the output of a <i>CreateParameterGroup</i> action.</p>
+-- @return CreateParameterGroupResponse structure as a key-value pair table
+function M.CreateParameterGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateParameterGroupResponse")
 	local t = { 
-		["ParameterGroup"] = _ParameterGroup,
+		["ParameterGroup"] = args["ParameterGroup"],
 	}
 	asserts.AssertCreateParameterGroupResponse(t)
 	return t
@@ -958,13 +1066,16 @@ end
 
 --- Create a structure of type SecurityGroupMembership
 -- <p>An individual VPC security group and its status.</p>
--- @param _Status [String] <p>The status of this security group.</p>
--- @param _SecurityGroupIdentifier [String] <p>The unique ID for this security group.</p>
-function M.SecurityGroupMembership(_Status, _SecurityGroupIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SecurityGroupMembership")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The status of this security group.</p>
+-- * SecurityGroupIdentifier [String] <p>The unique ID for this security group.</p>
+-- @return SecurityGroupMembership structure as a key-value pair table
+function M.SecurityGroupMembership(args)
+	assert(args, "You must provdide an argument table when creating SecurityGroupMembership")
 	local t = { 
-		["Status"] = _Status,
-		["SecurityGroupIdentifier"] = _SecurityGroupIdentifier,
+		["Status"] = args["Status"],
+		["SecurityGroupIdentifier"] = args["SecurityGroupIdentifier"],
 	}
 	asserts.AssertSecurityGroupMembership(t)
 	return t
@@ -987,17 +1098,20 @@ end
 
 --- Create a structure of type IncreaseReplicationFactorRequest
 --  
--- @param _ClusterName [String] <p>The name of the DAX cluster that will receive additional nodes.</p>
--- @param _AvailabilityZones [AvailabilityZoneList] <p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>
--- @param _NewReplicationFactor [Integer] <p>The new number of nodes for the DAX cluster.</p>
--- Required parameter: ClusterName
--- Required parameter: NewReplicationFactor
-function M.IncreaseReplicationFactorRequest(_ClusterName, _AvailabilityZones, _NewReplicationFactor, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IncreaseReplicationFactorRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterName [String] <p>The name of the DAX cluster that will receive additional nodes.</p>
+-- * AvailabilityZones [AvailabilityZoneList] <p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>
+-- * NewReplicationFactor [Integer] <p>The new number of nodes for the DAX cluster.</p>
+-- Required key: ClusterName
+-- Required key: NewReplicationFactor
+-- @return IncreaseReplicationFactorRequest structure as a key-value pair table
+function M.IncreaseReplicationFactorRequest(args)
+	assert(args, "You must provdide an argument table when creating IncreaseReplicationFactorRequest")
 	local t = { 
-		["ClusterName"] = _ClusterName,
-		["AvailabilityZones"] = _AvailabilityZones,
-		["NewReplicationFactor"] = _NewReplicationFactor,
+		["ClusterName"] = args["ClusterName"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
+		["NewReplicationFactor"] = args["NewReplicationFactor"],
 	}
 	asserts.AssertIncreaseReplicationFactorRequest(t)
 	return t
@@ -1019,17 +1133,20 @@ end
 
 --- Create a structure of type SubnetGroup
 -- <p>Represents the output of one of the following actions:</p> <ul> <li> <p> <i>CreateSubnetGroup</i> </p> </li> <li> <p> <i>ModifySubnetGroup</i> </p> </li> </ul>
--- @param _Subnets [SubnetList] <p>A list of subnets associated with the subnet group. </p>
--- @param _SubnetGroupName [String] <p>The name of the subnet group.</p>
--- @param _VpcId [String] <p>The Amazon Virtual Private Cloud identifier (VPC ID) of the subnet group.</p>
--- @param _Description [String] <p>The description of the subnet group.</p>
-function M.SubnetGroup(_Subnets, _SubnetGroupName, _VpcId, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subnets [SubnetList] <p>A list of subnets associated with the subnet group. </p>
+-- * SubnetGroupName [String] <p>The name of the subnet group.</p>
+-- * VpcId [String] <p>The Amazon Virtual Private Cloud identifier (VPC ID) of the subnet group.</p>
+-- * Description [String] <p>The description of the subnet group.</p>
+-- @return SubnetGroup structure as a key-value pair table
+function M.SubnetGroup(args)
+	assert(args, "You must provdide an argument table when creating SubnetGroup")
 	local t = { 
-		["Subnets"] = _Subnets,
-		["SubnetGroupName"] = _SubnetGroupName,
-		["VpcId"] = _VpcId,
-		["Description"] = _Description,
+		["Subnets"] = args["Subnets"],
+		["SubnetGroupName"] = args["SubnetGroupName"],
+		["VpcId"] = args["VpcId"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertSubnetGroup(t)
 	return t
@@ -1049,13 +1166,16 @@ end
 
 --- Create a structure of type DescribeClustersResponse
 --  
--- @param _Clusters [ClusterList] <p>The descriptions of your DAX clusters, in response to a <i>DescribeClusters</i> request.</p>
--- @param _NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
-function M.DescribeClustersResponse(_Clusters, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClustersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Clusters [ClusterList] <p>The descriptions of your DAX clusters, in response to a <i>DescribeClusters</i> request.</p>
+-- * NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- @return DescribeClustersResponse structure as a key-value pair table
+function M.DescribeClustersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeClustersResponse")
 	local t = { 
-		["Clusters"] = _Clusters,
-		["NextToken"] = _NextToken,
+		["Clusters"] = args["Clusters"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeClustersResponse(t)
 	return t
@@ -1077,15 +1197,18 @@ end
 
 --- Create a structure of type UntagResourceRequest
 --  
--- @param _ResourceName [String] <p>The name of the DAX resource from which the tags should be removed.</p>
--- @param _TagKeys [KeyList] <p>A list of tag keys. If the DAX cluster has any tags with these keys, then the tags are removed from the cluster.</p>
--- Required parameter: ResourceName
--- Required parameter: TagKeys
-function M.UntagResourceRequest(_ResourceName, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceName [String] <p>The name of the DAX resource from which the tags should be removed.</p>
+-- * TagKeys [KeyList] <p>A list of tag keys. If the DAX cluster has any tags with these keys, then the tags are removed from the cluster.</p>
+-- Required key: ResourceName
+-- Required key: TagKeys
+-- @return UntagResourceRequest structure as a key-value pair table
+function M.UntagResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
 	local t = { 
-		["ResourceName"] = _ResourceName,
-		["TagKeys"] = _TagKeys,
+		["ResourceName"] = args["ResourceName"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertUntagResourceRequest(t)
 	return t
@@ -1105,13 +1228,16 @@ end
 
 --- Create a structure of type DescribeParameterGroupsResponse
 --  
--- @param _ParameterGroups [ParameterGroupList] <p>An array of parameter groups. Each element in the array represents one parameter group.</p>
--- @param _NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
-function M.DescribeParameterGroupsResponse(_ParameterGroups, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParameterGroupsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterGroups [ParameterGroupList] <p>An array of parameter groups. Each element in the array represents one parameter group.</p>
+-- * NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- @return DescribeParameterGroupsResponse structure as a key-value pair table
+function M.DescribeParameterGroupsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeParameterGroupsResponse")
 	local t = { 
-		["ParameterGroups"] = _ParameterGroups,
-		["NextToken"] = _NextToken,
+		["ParameterGroups"] = args["ParameterGroups"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeParameterGroupsResponse(t)
 	return t
@@ -1131,13 +1257,16 @@ end
 
 --- Create a structure of type Subnet
 -- <p>Represents the subnet associated with a DAX cluster. This parameter refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used with DAX.</p>
--- @param _SubnetIdentifier [String] <p>The system-assigned identifier for the subnet.</p>
--- @param _SubnetAvailabilityZone [String] <p>The Availability Zone (AZ) for subnet subnet.</p>
-function M.Subnet(_SubnetIdentifier, _SubnetAvailabilityZone, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Subnet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetIdentifier [String] <p>The system-assigned identifier for the subnet.</p>
+-- * SubnetAvailabilityZone [String] <p>The Availability Zone (AZ) for subnet subnet.</p>
+-- @return Subnet structure as a key-value pair table
+function M.Subnet(args)
+	assert(args, "You must provdide an argument table when creating Subnet")
 	local t = { 
-		["SubnetIdentifier"] = _SubnetIdentifier,
-		["SubnetAvailabilityZone"] = _SubnetAvailabilityZone,
+		["SubnetIdentifier"] = args["SubnetIdentifier"],
+		["SubnetAvailabilityZone"] = args["SubnetAvailabilityZone"],
 	}
 	asserts.AssertSubnet(t)
 	return t
@@ -1155,8 +1284,11 @@ end
 
 --- Create a structure of type InvalidARNFault
 -- <p>The Amazon Resource Name (ARN) supplied in the request is not valid.</p>
-function M.InvalidARNFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidARNFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidARNFault structure as a key-value pair table
+function M.InvalidARNFault(args)
+	assert(args, "You must provdide an argument table when creating InvalidARNFault")
 	local t = { 
 	}
 	asserts.AssertInvalidARNFault(t)
@@ -1176,11 +1308,14 @@ end
 
 --- Create a structure of type CreateClusterResponse
 --  
--- @param _Cluster [Cluster] <p>A description of the DAX cluster that you have created.</p>
-function M.CreateClusterResponse(_Cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateClusterResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cluster [Cluster] <p>A description of the DAX cluster that you have created.</p>
+-- @return CreateClusterResponse structure as a key-value pair table
+function M.CreateClusterResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateClusterResponse")
 	local t = { 
-		["Cluster"] = _Cluster,
+		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertCreateClusterResponse(t)
 	return t
@@ -1204,21 +1339,24 @@ end
 
 --- Create a structure of type Node
 -- <p>Represents an individual node within a DAX cluster.</p>
--- @param _Endpoint [Endpoint] <p>The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>
--- @param _NodeStatus [String] <p>The current status of the node. For example: <code>available</code>.</p>
--- @param _ParameterGroupStatus [String] <p>The status of the parameter group associated with this node. For example, <code>in-sync</code>.</p>
--- @param _NodeId [String] <p>A system-generated identifier for the node.</p>
--- @param _AvailabilityZone [String] <p>The Availability Zone (AZ) in which the node has been deployed.</p>
--- @param _NodeCreateTime [TStamp] <p>The date and time (in UNIX epoch format) when the node was launched.</p>
-function M.Node(_Endpoint, _NodeStatus, _ParameterGroupStatus, _NodeId, _AvailabilityZone, _NodeCreateTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Node")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Endpoint [Endpoint] <p>The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>
+-- * NodeStatus [String] <p>The current status of the node. For example: <code>available</code>.</p>
+-- * ParameterGroupStatus [String] <p>The status of the parameter group associated with this node. For example, <code>in-sync</code>.</p>
+-- * NodeId [String] <p>A system-generated identifier for the node.</p>
+-- * AvailabilityZone [String] <p>The Availability Zone (AZ) in which the node has been deployed.</p>
+-- * NodeCreateTime [TStamp] <p>The date and time (in UNIX epoch format) when the node was launched.</p>
+-- @return Node structure as a key-value pair table
+function M.Node(args)
+	assert(args, "You must provdide an argument table when creating Node")
 	local t = { 
-		["Endpoint"] = _Endpoint,
-		["NodeStatus"] = _NodeStatus,
-		["ParameterGroupStatus"] = _ParameterGroupStatus,
-		["NodeId"] = _NodeId,
-		["AvailabilityZone"] = _AvailabilityZone,
-		["NodeCreateTime"] = _NodeCreateTime,
+		["Endpoint"] = args["Endpoint"],
+		["NodeStatus"] = args["NodeStatus"],
+		["ParameterGroupStatus"] = args["ParameterGroupStatus"],
+		["NodeId"] = args["NodeId"],
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["NodeCreateTime"] = args["NodeCreateTime"],
 	}
 	asserts.AssertNode(t)
 	return t
@@ -1238,13 +1376,16 @@ end
 
 --- Create a structure of type DescribeEventsResponse
 --  
--- @param _NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
--- @param _Events [EventList] <p>An array of events. Each element in the array represents one event.</p>
-function M.DescribeEventsResponse(_NextToken, _Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- * Events [EventList] <p>An array of events. Each element in the array represents one event.</p>
+-- @return DescribeEventsResponse structure as a key-value pair table
+function M.DescribeEventsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Events"] = _Events,
+		["NextToken"] = args["NextToken"],
+		["Events"] = args["Events"],
 	}
 	asserts.AssertDescribeEventsResponse(t)
 	return t
@@ -1278,37 +1419,40 @@ end
 
 --- Create a structure of type CreateClusterRequest
 --  
--- @param _ReplicationFactor [Integer] <p>The number of nodes in the DAX cluster. A replication factor of 1 will create a single-node cluster, without any read replicas. For additional fault tolerance, you can create a multiple node cluster with one or more read replicas. To do this, set <i>ReplicationFactor</i> to 2 or more.</p> <note> <p>AWS recommends that you have at least two read replicas per cluster.</p> </note>
--- @param _NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications will be sent.</p> <note> <p>The Amazon SNS topic owner must be same as the DAX cluster owner.</p> </note>
--- @param _NodeType [String] <p>The compute and memory capacity of the nodes in the cluster.</p>
--- @param _Description [String] <p>A description of the cluster.</p>
--- @param _Tags [TagList] <p>A set of tags to associate with the DAX cluster. </p>
--- @param _ClusterName [String] <p>The cluster identifier. This parameter is stored as a lowercase string.</p> <p> <b>Constraints:</b> </p> <ul> <li> <p>A name must contain from 1 to 20 alphanumeric characters or hyphens.</p> </li> <li> <p>The first character must be a letter.</p> </li> <li> <p>A name cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
--- @param _SubnetGroupName [String] <p>The name of the subnet group to be used for the replication group.</p> <important> <p>DAX clusters can only run in an Amazon VPC environment. All of the subnets that you specify in a subnet group must exist in the same VPC.</p> </important>
--- @param _IamRoleArn [String] <p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>
--- @param _SecurityGroupIds [SecurityGroupIdentifierList] <p>A list of security group IDs to be assigned to each node in the DAX cluster. (Each of the security group ID is system-generated.)</p> <p>If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>
--- @param _ParameterGroupName [String] <p>The parameter group to be associated with the DAX cluster.</p>
--- @param _AvailabilityZones [AvailabilityZoneList] <p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>
--- @param _PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:05:00-sun:09:00</code> </p> <note> <p>If you don't specify a preferred maintenance window when you create or modify a cache cluster, DAX assigns a 60-minute maintenance window on a randomly selected day of the week.</p> </note>
--- Required parameter: ClusterName
--- Required parameter: NodeType
--- Required parameter: ReplicationFactor
--- Required parameter: IamRoleArn
-function M.CreateClusterRequest(_ReplicationFactor, _NotificationTopicArn, _NodeType, _Description, _Tags, _ClusterName, _SubnetGroupName, _IamRoleArn, _SecurityGroupIds, _ParameterGroupName, _AvailabilityZones, _PreferredMaintenanceWindow, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationFactor [Integer] <p>The number of nodes in the DAX cluster. A replication factor of 1 will create a single-node cluster, without any read replicas. For additional fault tolerance, you can create a multiple node cluster with one or more read replicas. To do this, set <i>ReplicationFactor</i> to 2 or more.</p> <note> <p>AWS recommends that you have at least two read replicas per cluster.</p> </note>
+-- * NotificationTopicArn [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which notifications will be sent.</p> <note> <p>The Amazon SNS topic owner must be same as the DAX cluster owner.</p> </note>
+-- * NodeType [String] <p>The compute and memory capacity of the nodes in the cluster.</p>
+-- * Description [String] <p>A description of the cluster.</p>
+-- * Tags [TagList] <p>A set of tags to associate with the DAX cluster. </p>
+-- * ClusterName [String] <p>The cluster identifier. This parameter is stored as a lowercase string.</p> <p> <b>Constraints:</b> </p> <ul> <li> <p>A name must contain from 1 to 20 alphanumeric characters or hyphens.</p> </li> <li> <p>The first character must be a letter.</p> </li> <li> <p>A name cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- * SubnetGroupName [String] <p>The name of the subnet group to be used for the replication group.</p> <important> <p>DAX clusters can only run in an Amazon VPC environment. All of the subnets that you specify in a subnet group must exist in the same VPC.</p> </important>
+-- * IamRoleArn [String] <p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>
+-- * SecurityGroupIds [SecurityGroupIdentifierList] <p>A list of security group IDs to be assigned to each node in the DAX cluster. (Each of the security group ID is system-generated.)</p> <p>If this parameter is not specified, DAX assigns the default VPC security group to each node.</p>
+-- * ParameterGroupName [String] <p>The parameter group to be associated with the DAX cluster.</p>
+-- * AvailabilityZones [AvailabilityZoneList] <p>The Availability Zones (AZs) in which the cluster nodes will be created. All nodes belonging to the cluster are placed in these Availability Zones. Use this parameter if you want to distribute the nodes across multiple AZs.</p>
+-- * PreferredMaintenanceWindow [String] <p>Specifies the weekly time range during which maintenance on the DAX cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for <code>ddd</code> are:</p> <ul> <li> <p> <code>sun</code> </p> </li> <li> <p> <code>mon</code> </p> </li> <li> <p> <code>tue</code> </p> </li> <li> <p> <code>wed</code> </p> </li> <li> <p> <code>thu</code> </p> </li> <li> <p> <code>fri</code> </p> </li> <li> <p> <code>sat</code> </p> </li> </ul> <p>Example: <code>sun:05:00-sun:09:00</code> </p> <note> <p>If you don't specify a preferred maintenance window when you create or modify a cache cluster, DAX assigns a 60-minute maintenance window on a randomly selected day of the week.</p> </note>
+-- Required key: ClusterName
+-- Required key: NodeType
+-- Required key: ReplicationFactor
+-- Required key: IamRoleArn
+-- @return CreateClusterRequest structure as a key-value pair table
+function M.CreateClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateClusterRequest")
 	local t = { 
-		["ReplicationFactor"] = _ReplicationFactor,
-		["NotificationTopicArn"] = _NotificationTopicArn,
-		["NodeType"] = _NodeType,
-		["Description"] = _Description,
-		["Tags"] = _Tags,
-		["ClusterName"] = _ClusterName,
-		["SubnetGroupName"] = _SubnetGroupName,
-		["IamRoleArn"] = _IamRoleArn,
-		["SecurityGroupIds"] = _SecurityGroupIds,
-		["ParameterGroupName"] = _ParameterGroupName,
-		["AvailabilityZones"] = _AvailabilityZones,
-		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
+		["ReplicationFactor"] = args["ReplicationFactor"],
+		["NotificationTopicArn"] = args["NotificationTopicArn"],
+		["NodeType"] = args["NodeType"],
+		["Description"] = args["Description"],
+		["Tags"] = args["Tags"],
+		["ClusterName"] = args["ClusterName"],
+		["SubnetGroupName"] = args["SubnetGroupName"],
+		["IamRoleArn"] = args["IamRoleArn"],
+		["SecurityGroupIds"] = args["SecurityGroupIds"],
+		["ParameterGroupName"] = args["ParameterGroupName"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
 	asserts.AssertCreateClusterRequest(t)
 	return t
@@ -1328,13 +1472,16 @@ end
 
 --- Create a structure of type DescribeSubnetGroupsResponse
 --  
--- @param _NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
--- @param _SubnetGroups [SubnetGroupList] <p>An array of subnet groups. Each element in the array represents a single subnet group.</p>
-function M.DescribeSubnetGroupsResponse(_NextToken, _SubnetGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubnetGroupsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
+-- * SubnetGroups [SubnetGroupList] <p>An array of subnet groups. Each element in the array represents a single subnet group.</p>
+-- @return DescribeSubnetGroupsResponse structure as a key-value pair table
+function M.DescribeSubnetGroupsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeSubnetGroupsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["SubnetGroups"] = _SubnetGroups,
+		["NextToken"] = args["NextToken"],
+		["SubnetGroups"] = args["SubnetGroups"],
 	}
 	asserts.AssertDescribeSubnetGroupsResponse(t)
 	return t
@@ -1352,8 +1499,11 @@ end
 
 --- Create a structure of type SubnetGroupInUseFault
 -- <p>The specified subnet group is currently in use.</p>
-function M.SubnetGroupInUseFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetGroupInUseFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SubnetGroupInUseFault structure as a key-value pair table
+function M.SubnetGroupInUseFault(args)
+	assert(args, "You must provdide an argument table when creating SubnetGroupInUseFault")
 	local t = { 
 	}
 	asserts.AssertSubnetGroupInUseFault(t)
@@ -1374,13 +1524,16 @@ end
 
 --- Create a structure of type ListTagsResponse
 --  
--- @param _NextToken [String] <p>If this value is present, there are additional results to be displayed. To retrieve them, call <code>ListTags</code> again, with <code>NextToken</code> set to this value.</p>
--- @param _Tags [TagList] <p>A list of tags currently associated with the DAX cluster.</p>
-function M.ListTagsResponse(_NextToken, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>If this value is present, there are additional results to be displayed. To retrieve them, call <code>ListTags</code> again, with <code>NextToken</code> set to this value.</p>
+-- * Tags [TagList] <p>A list of tags currently associated with the DAX cluster.</p>
+-- @return ListTagsResponse structure as a key-value pair table
+function M.ListTagsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Tags"] = _Tags,
+		["NextToken"] = args["NextToken"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertListTagsResponse(t)
 	return t
@@ -1399,11 +1552,14 @@ end
 
 --- Create a structure of type UntagResourceResponse
 --  
--- @param _Tags [TagList] <p>The tag keys that have been removed from the cluster.</p>
-function M.UntagResourceResponse(_Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Tags [TagList] <p>The tag keys that have been removed from the cluster.</p>
+-- @return UntagResourceResponse structure as a key-value pair table
+function M.UntagResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating UntagResourceResponse")
 	local t = { 
-		["Tags"] = _Tags,
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertUntagResourceResponse(t)
 	return t
@@ -1422,11 +1578,14 @@ end
 
 --- Create a structure of type UpdateClusterResponse
 --  
--- @param _Cluster [Cluster] <p>A description of the DAX cluster, after it has been modified.</p>
-function M.UpdateClusterResponse(_Cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateClusterResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cluster [Cluster] <p>A description of the DAX cluster, after it has been modified.</p>
+-- @return UpdateClusterResponse structure as a key-value pair table
+function M.UpdateClusterResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateClusterResponse")
 	local t = { 
-		["Cluster"] = _Cluster,
+		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertUpdateClusterResponse(t)
 	return t
@@ -1446,13 +1605,16 @@ end
 
 --- Create a structure of type ParameterNameValue
 -- <p>An individual DAX parameter.</p>
--- @param _ParameterName [String] <p>The name of the parameter.</p>
--- @param _ParameterValue [String] <p>The value of the parameter.</p>
-function M.ParameterNameValue(_ParameterName, _ParameterValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterNameValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterName [String] <p>The name of the parameter.</p>
+-- * ParameterValue [String] <p>The value of the parameter.</p>
+-- @return ParameterNameValue structure as a key-value pair table
+function M.ParameterNameValue(args)
+	assert(args, "You must provdide an argument table when creating ParameterNameValue")
 	local t = { 
-		["ParameterName"] = _ParameterName,
-		["ParameterValue"] = _ParameterValue,
+		["ParameterName"] = args["ParameterName"],
+		["ParameterValue"] = args["ParameterValue"],
 	}
 	asserts.AssertParameterNameValue(t)
 	return t
@@ -1471,11 +1633,14 @@ end
 
 --- Create a structure of type InvalidParameterValueException
 -- <p>The value for a parameter is invalid.</p>
--- @param _message [AwsQueryErrorMessage] 
-function M.InvalidParameterValueException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [AwsQueryErrorMessage] 
+-- @return InvalidParameterValueException structure as a key-value pair table
+function M.InvalidParameterValueException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterValueException(t)
 	return t
@@ -1499,19 +1664,22 @@ end
 
 --- Create a structure of type DecreaseReplicationFactorRequest
 --  
--- @param _ClusterName [String] <p>The name of the DAX cluster from which you want to remove nodes.</p>
--- @param _NodeIdsToRemove [NodeIdentifierList] <p>The unique identifiers of the nodes to be removed from the cluster.</p>
--- @param _AvailabilityZones [AvailabilityZoneList] <p>The Availability Zone(s) from which to remove nodes.</p>
--- @param _NewReplicationFactor [Integer] <p>The new number of nodes for the DAX cluster.</p>
--- Required parameter: ClusterName
--- Required parameter: NewReplicationFactor
-function M.DecreaseReplicationFactorRequest(_ClusterName, _NodeIdsToRemove, _AvailabilityZones, _NewReplicationFactor, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DecreaseReplicationFactorRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterName [String] <p>The name of the DAX cluster from which you want to remove nodes.</p>
+-- * NodeIdsToRemove [NodeIdentifierList] <p>The unique identifiers of the nodes to be removed from the cluster.</p>
+-- * AvailabilityZones [AvailabilityZoneList] <p>The Availability Zone(s) from which to remove nodes.</p>
+-- * NewReplicationFactor [Integer] <p>The new number of nodes for the DAX cluster.</p>
+-- Required key: ClusterName
+-- Required key: NewReplicationFactor
+-- @return DecreaseReplicationFactorRequest structure as a key-value pair table
+function M.DecreaseReplicationFactorRequest(args)
+	assert(args, "You must provdide an argument table when creating DecreaseReplicationFactorRequest")
 	local t = { 
-		["ClusterName"] = _ClusterName,
-		["NodeIdsToRemove"] = _NodeIdsToRemove,
-		["AvailabilityZones"] = _AvailabilityZones,
-		["NewReplicationFactor"] = _NewReplicationFactor,
+		["ClusterName"] = args["ClusterName"],
+		["NodeIdsToRemove"] = args["NodeIdsToRemove"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
+		["NewReplicationFactor"] = args["NewReplicationFactor"],
 	}
 	asserts.AssertDecreaseReplicationFactorRequest(t)
 	return t
@@ -1529,8 +1697,11 @@ end
 
 --- Create a structure of type NodeQuotaForCustomerExceededFault
 -- <p>You have attempted to exceed the maximum number of nodes for your AWS account.</p>
-function M.NodeQuotaForCustomerExceededFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NodeQuotaForCustomerExceededFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NodeQuotaForCustomerExceededFault structure as a key-value pair table
+function M.NodeQuotaForCustomerExceededFault(args)
+	assert(args, "You must provdide an argument table when creating NodeQuotaForCustomerExceededFault")
 	local t = { 
 	}
 	asserts.AssertNodeQuotaForCustomerExceededFault(t)
@@ -1549,8 +1720,11 @@ end
 
 --- Create a structure of type InvalidVPCNetworkStateFault
 -- <p>The VPC network is in an invalid state.</p>
-function M.InvalidVPCNetworkStateFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidVPCNetworkStateFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidVPCNetworkStateFault structure as a key-value pair table
+function M.InvalidVPCNetworkStateFault(args)
+	assert(args, "You must provdide an argument table when creating InvalidVPCNetworkStateFault")
 	local t = { 
 	}
 	asserts.AssertInvalidVPCNetworkStateFault(t)
@@ -1569,8 +1743,11 @@ end
 
 --- Create a structure of type SubnetGroupNotFoundFault
 -- <p>The requested subnet group name does not refer to an existing subnet group.</p>
-function M.SubnetGroupNotFoundFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetGroupNotFoundFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SubnetGroupNotFoundFault structure as a key-value pair table
+function M.SubnetGroupNotFoundFault(args)
+	assert(args, "You must provdide an argument table when creating SubnetGroupNotFoundFault")
 	local t = { 
 	}
 	asserts.AssertSubnetGroupNotFoundFault(t)
@@ -1589,8 +1766,11 @@ end
 
 --- Create a structure of type SubnetGroupAlreadyExistsFault
 -- <p>The specified subnet group already exists.</p>
-function M.SubnetGroupAlreadyExistsFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetGroupAlreadyExistsFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SubnetGroupAlreadyExistsFault structure as a key-value pair table
+function M.SubnetGroupAlreadyExistsFault(args)
+	assert(args, "You must provdide an argument table when creating SubnetGroupAlreadyExistsFault")
 	local t = { 
 	}
 	asserts.AssertSubnetGroupAlreadyExistsFault(t)
@@ -1625,41 +1805,44 @@ end
 
 --- Create a structure of type Cluster
 -- <p>Contains all of the attributes of a specific DAX cluster.</p>
--- @param _Status [String] <p>The current status of the cluster.</p>
--- @param _SubnetGroup [String] <p>The subnet group where the DAX cluster is running.</p>
--- @param _NodeType [String] <p>The node type for the nodes in the cluster. (All nodes in a DAX cluster are of the same type.)</p>
--- @param _Description [String] <p>The description of the cluster.</p>
--- @param _ClusterName [String] <p>The name of the DAX cluster.</p>
--- @param _ParameterGroup [ParameterGroupStatus] <p>The parameter group being used by nodes in the cluster.</p>
--- @param _ActiveNodes [IntegerOptional] <p>The number of nodes in the cluster that are active (i.e., capable of serving requests).</p>
--- @param _TotalNodes [IntegerOptional] <p>The total number of nodes in the cluster.</p>
--- @param _IamRoleArn [String] <p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>
--- @param _NodeIdsToRemove [NodeIdentifierList] <p>A list of nodes to be removed from the cluster.</p>
--- @param _SecurityGroups [SecurityGroupMembershipList] <p>A list of security groups, and the status of each, for the nodes in the cluster.</p>
--- @param _ClusterArn [String] <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster. </p>
--- @param _Nodes [NodeList] <p>A list of nodes that are currently in the cluster.</p>
--- @param _ClusterDiscoveryEndpoint [Endpoint] <p>The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. Client applications can specify this endpoint, rather than an individual node endpoint, and allow the DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>
--- @param _NotificationConfiguration [NotificationConfiguration] <p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>
--- @param _PreferredMaintenanceWindow [String] <p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>
-function M.Cluster(_Status, _SubnetGroup, _NodeType, _Description, _ClusterName, _ParameterGroup, _ActiveNodes, _TotalNodes, _IamRoleArn, _NodeIdsToRemove, _SecurityGroups, _ClusterArn, _Nodes, _ClusterDiscoveryEndpoint, _NotificationConfiguration, _PreferredMaintenanceWindow, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Cluster")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The current status of the cluster.</p>
+-- * SubnetGroup [String] <p>The subnet group where the DAX cluster is running.</p>
+-- * NodeType [String] <p>The node type for the nodes in the cluster. (All nodes in a DAX cluster are of the same type.)</p>
+-- * Description [String] <p>The description of the cluster.</p>
+-- * ClusterName [String] <p>The name of the DAX cluster.</p>
+-- * ParameterGroup [ParameterGroupStatus] <p>The parameter group being used by nodes in the cluster.</p>
+-- * ActiveNodes [IntegerOptional] <p>The number of nodes in the cluster that are active (i.e., capable of serving requests).</p>
+-- * TotalNodes [IntegerOptional] <p>The total number of nodes in the cluster.</p>
+-- * IamRoleArn [String] <p>A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.</p>
+-- * NodeIdsToRemove [NodeIdentifierList] <p>A list of nodes to be removed from the cluster.</p>
+-- * SecurityGroups [SecurityGroupMembershipList] <p>A list of security groups, and the status of each, for the nodes in the cluster.</p>
+-- * ClusterArn [String] <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster. </p>
+-- * Nodes [NodeList] <p>A list of nodes that are currently in the cluster.</p>
+-- * ClusterDiscoveryEndpoint [Endpoint] <p>The configuration endpoint for this DAX cluster, consisting of a DNS name and a port number. Client applications can specify this endpoint, rather than an individual node endpoint, and allow the DAX client software to intelligently route requests and responses to nodes in the DAX cluster.</p>
+-- * NotificationConfiguration [NotificationConfiguration] <p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>
+-- * PreferredMaintenanceWindow [String] <p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>
+-- @return Cluster structure as a key-value pair table
+function M.Cluster(args)
+	assert(args, "You must provdide an argument table when creating Cluster")
 	local t = { 
-		["Status"] = _Status,
-		["SubnetGroup"] = _SubnetGroup,
-		["NodeType"] = _NodeType,
-		["Description"] = _Description,
-		["ClusterName"] = _ClusterName,
-		["ParameterGroup"] = _ParameterGroup,
-		["ActiveNodes"] = _ActiveNodes,
-		["TotalNodes"] = _TotalNodes,
-		["IamRoleArn"] = _IamRoleArn,
-		["NodeIdsToRemove"] = _NodeIdsToRemove,
-		["SecurityGroups"] = _SecurityGroups,
-		["ClusterArn"] = _ClusterArn,
-		["Nodes"] = _Nodes,
-		["ClusterDiscoveryEndpoint"] = _ClusterDiscoveryEndpoint,
-		["NotificationConfiguration"] = _NotificationConfiguration,
-		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
+		["Status"] = args["Status"],
+		["SubnetGroup"] = args["SubnetGroup"],
+		["NodeType"] = args["NodeType"],
+		["Description"] = args["Description"],
+		["ClusterName"] = args["ClusterName"],
+		["ParameterGroup"] = args["ParameterGroup"],
+		["ActiveNodes"] = args["ActiveNodes"],
+		["TotalNodes"] = args["TotalNodes"],
+		["IamRoleArn"] = args["IamRoleArn"],
+		["NodeIdsToRemove"] = args["NodeIdsToRemove"],
+		["SecurityGroups"] = args["SecurityGroups"],
+		["ClusterArn"] = args["ClusterArn"],
+		["Nodes"] = args["Nodes"],
+		["ClusterDiscoveryEndpoint"] = args["ClusterDiscoveryEndpoint"],
+		["NotificationConfiguration"] = args["NotificationConfiguration"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
 	asserts.AssertCluster(t)
 	return t
@@ -1682,17 +1865,20 @@ end
 
 --- Create a structure of type CreateSubnetGroupRequest
 --  
--- @param _SubnetIds [SubnetIdentifierList] <p>A list of VPC subnet IDs for the subnet group.</p>
--- @param _SubnetGroupName [String] <p>A name for the subnet group. This value is stored as a lowercase string. </p>
--- @param _Description [String] <p>A description for the subnet group</p>
--- Required parameter: SubnetGroupName
--- Required parameter: SubnetIds
-function M.CreateSubnetGroupRequest(_SubnetIds, _SubnetGroupName, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubnetGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetIds [SubnetIdentifierList] <p>A list of VPC subnet IDs for the subnet group.</p>
+-- * SubnetGroupName [String] <p>A name for the subnet group. This value is stored as a lowercase string. </p>
+-- * Description [String] <p>A description for the subnet group</p>
+-- Required key: SubnetGroupName
+-- Required key: SubnetIds
+-- @return CreateSubnetGroupRequest structure as a key-value pair table
+function M.CreateSubnetGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSubnetGroupRequest")
 	local t = { 
-		["SubnetIds"] = _SubnetIds,
-		["SubnetGroupName"] = _SubnetGroupName,
-		["Description"] = _Description,
+		["SubnetIds"] = args["SubnetIds"],
+		["SubnetGroupName"] = args["SubnetGroupName"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateSubnetGroupRequest(t)
 	return t
@@ -1713,14 +1899,17 @@ end
 
 --- Create a structure of type CreateParameterGroupRequest
 --  
--- @param _ParameterGroupName [String] <p>The name of the parameter group to apply to all of the clusters in this replication group.</p>
--- @param _Description [String] <p>A description of the parameter group.</p>
--- Required parameter: ParameterGroupName
-function M.CreateParameterGroupRequest(_ParameterGroupName, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateParameterGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterGroupName [String] <p>The name of the parameter group to apply to all of the clusters in this replication group.</p>
+-- * Description [String] <p>A description of the parameter group.</p>
+-- Required key: ParameterGroupName
+-- @return CreateParameterGroupRequest structure as a key-value pair table
+function M.CreateParameterGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateParameterGroupRequest")
 	local t = { 
-		["ParameterGroupName"] = _ParameterGroupName,
-		["Description"] = _Description,
+		["ParameterGroupName"] = args["ParameterGroupName"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateParameterGroupRequest(t)
 	return t
@@ -1741,15 +1930,18 @@ end
 
 --- Create a structure of type DescribeParameterGroupsRequest
 --  
--- @param _NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
--- @param _ParameterGroupNames [ParameterGroupNameList] <p>The names of the parameter groups.</p>
--- @param _MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
-function M.DescribeParameterGroupsRequest(_NextToken, _ParameterGroupNames, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeParameterGroupsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- * ParameterGroupNames [ParameterGroupNameList] <p>The names of the parameter groups.</p>
+-- * MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
+-- @return DescribeParameterGroupsRequest structure as a key-value pair table
+function M.DescribeParameterGroupsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeParameterGroupsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ParameterGroupNames"] = _ParameterGroupNames,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["ParameterGroupNames"] = args["ParameterGroupNames"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeParameterGroupsRequest(t)
 	return t
@@ -1768,11 +1960,14 @@ end
 
 --- Create a structure of type TagResourceResponse
 --  
--- @param _Tags [TagList] <p>The list of tags that are associated with the DAX resource.</p>
-function M.TagResourceResponse(_Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Tags [TagList] <p>The list of tags that are associated with the DAX resource.</p>
+-- @return TagResourceResponse structure as a key-value pair table
+function M.TagResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating TagResourceResponse")
 	local t = { 
-		["Tags"] = _Tags,
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertTagResourceResponse(t)
 	return t
@@ -1790,8 +1985,11 @@ end
 
 --- Create a structure of type SubnetInUse
 -- <p>The requested subnet is being used by another subnet group.</p>
-function M.SubnetInUse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetInUse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SubnetInUse structure as a key-value pair table
+function M.SubnetInUse(args)
+	assert(args, "You must provdide an argument table when creating SubnetInUse")
 	local t = { 
 	}
 	asserts.AssertSubnetInUse(t)
@@ -1810,8 +2008,11 @@ end
 
 --- Create a structure of type NodeNotFoundFault
 -- <p>None of the nodes in the cluster have the given node ID.</p>
-function M.NodeNotFoundFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NodeNotFoundFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NodeNotFoundFault structure as a key-value pair table
+function M.NodeNotFoundFault(args)
+	assert(args, "You must provdide an argument table when creating NodeNotFoundFault")
 	local t = { 
 	}
 	asserts.AssertNodeNotFoundFault(t)
@@ -1830,8 +2031,11 @@ end
 
 --- Create a structure of type TagNotFoundFault
 -- <p>The tag does not exist.</p>
-function M.TagNotFoundFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagNotFoundFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TagNotFoundFault structure as a key-value pair table
+function M.TagNotFoundFault(args)
+	assert(args, "You must provdide an argument table when creating TagNotFoundFault")
 	local t = { 
 	}
 	asserts.AssertTagNotFoundFault(t)
@@ -1851,11 +2055,14 @@ end
 
 --- Create a structure of type UpdateSubnetGroupResponse
 --  
--- @param _SubnetGroup [SubnetGroup] <p>The subnet group that has been modified.</p>
-function M.UpdateSubnetGroupResponse(_SubnetGroup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSubnetGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetGroup [SubnetGroup] <p>The subnet group that has been modified.</p>
+-- @return UpdateSubnetGroupResponse structure as a key-value pair table
+function M.UpdateSubnetGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateSubnetGroupResponse")
 	local t = { 
-		["SubnetGroup"] = _SubnetGroup,
+		["SubnetGroup"] = args["SubnetGroup"],
 	}
 	asserts.AssertUpdateSubnetGroupResponse(t)
 	return t
@@ -1873,8 +2080,11 @@ end
 
 --- Create a structure of type TagQuotaPerResourceExceeded
 -- <p>You have exceeded the maximum number of tags for this DAX cluster.</p>
-function M.TagQuotaPerResourceExceeded(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagQuotaPerResourceExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TagQuotaPerResourceExceeded structure as a key-value pair table
+function M.TagQuotaPerResourceExceeded(args)
+	assert(args, "You must provdide an argument table when creating TagQuotaPerResourceExceeded")
 	local t = { 
 	}
 	asserts.AssertTagQuotaPerResourceExceeded(t)
@@ -1895,13 +2105,16 @@ end
 
 --- Create a structure of type Endpoint
 -- <p>Represents the information required for client programs to connect to the configuration endpoint for a DAX cluster, or to an individual node within the cluster.</p>
--- @param _Port [Integer] <p>The port number that applications should use to connect to the endpoint.</p>
--- @param _Address [String] <p>The DNS hostname of the endpoint.</p>
-function M.Endpoint(_Port, _Address, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Endpoint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Port [Integer] <p>The port number that applications should use to connect to the endpoint.</p>
+-- * Address [String] <p>The DNS hostname of the endpoint.</p>
+-- @return Endpoint structure as a key-value pair table
+function M.Endpoint(args)
+	assert(args, "You must provdide an argument table when creating Endpoint")
 	local t = { 
-		["Port"] = _Port,
-		["Address"] = _Address,
+		["Port"] = args["Port"],
+		["Address"] = args["Address"],
 	}
 	asserts.AssertEndpoint(t)
 	return t
@@ -1922,15 +2135,18 @@ end
 
 --- Create a structure of type ParameterGroupStatus
 -- <p>The status of a parameter group.</p>
--- @param _NodeIdsToReboot [NodeIdentifierList] <p>The node IDs of one or more nodes to be rebooted.</p>
--- @param _ParameterGroupName [String] <p>The name of the parameter group.</p>
--- @param _ParameterApplyStatus [String] <p>The status of parameter updates. </p>
-function M.ParameterGroupStatus(_NodeIdsToReboot, _ParameterGroupName, _ParameterApplyStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterGroupStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NodeIdsToReboot [NodeIdentifierList] <p>The node IDs of one or more nodes to be rebooted.</p>
+-- * ParameterGroupName [String] <p>The name of the parameter group.</p>
+-- * ParameterApplyStatus [String] <p>The status of parameter updates. </p>
+-- @return ParameterGroupStatus structure as a key-value pair table
+function M.ParameterGroupStatus(args)
+	assert(args, "You must provdide an argument table when creating ParameterGroupStatus")
 	local t = { 
-		["NodeIdsToReboot"] = _NodeIdsToReboot,
-		["ParameterGroupName"] = _ParameterGroupName,
-		["ParameterApplyStatus"] = _ParameterApplyStatus,
+		["NodeIdsToReboot"] = args["NodeIdsToReboot"],
+		["ParameterGroupName"] = args["ParameterGroupName"],
+		["ParameterApplyStatus"] = args["ParameterApplyStatus"],
 	}
 	asserts.AssertParameterGroupStatus(t)
 	return t
@@ -1948,8 +2164,11 @@ end
 
 --- Create a structure of type NodeQuotaForClusterExceededFault
 -- <p>You have attempted to exceed the maximum number of nodes for a DAX cluster.</p>
-function M.NodeQuotaForClusterExceededFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NodeQuotaForClusterExceededFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NodeQuotaForClusterExceededFault structure as a key-value pair table
+function M.NodeQuotaForClusterExceededFault(args)
+	assert(args, "You must provdide an argument table when creating NodeQuotaForClusterExceededFault")
 	local t = { 
 	}
 	asserts.AssertNodeQuotaForClusterExceededFault(t)
@@ -1969,11 +2188,14 @@ end
 
 --- Create a structure of type UpdateParameterGroupResponse
 --  
--- @param _ParameterGroup [ParameterGroup] <p>The parameter group that has been modified.</p>
-function M.UpdateParameterGroupResponse(_ParameterGroup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateParameterGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterGroup [ParameterGroup] <p>The parameter group that has been modified.</p>
+-- @return UpdateParameterGroupResponse structure as a key-value pair table
+function M.UpdateParameterGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateParameterGroupResponse")
 	local t = { 
-		["ParameterGroup"] = _ParameterGroup,
+		["ParameterGroup"] = args["ParameterGroup"],
 	}
 	asserts.AssertUpdateParameterGroupResponse(t)
 	return t
@@ -1995,15 +2217,18 @@ end
 
 --- Create a structure of type TagResourceRequest
 --  
--- @param _ResourceName [String] <p>The name of the DAX resource to which tags should be added.</p>
--- @param _Tags [TagList] <p>The tags to be assigned to the DAX resource. </p>
--- Required parameter: ResourceName
--- Required parameter: Tags
-function M.TagResourceRequest(_ResourceName, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceName [String] <p>The name of the DAX resource to which tags should be added.</p>
+-- * Tags [TagList] <p>The tags to be assigned to the DAX resource. </p>
+-- Required key: ResourceName
+-- Required key: Tags
+-- @return TagResourceRequest structure as a key-value pair table
+function M.TagResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating TagResourceRequest")
 	local t = { 
-		["ResourceName"] = _ResourceName,
-		["Tags"] = _Tags,
+		["ResourceName"] = args["ResourceName"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertTagResourceRequest(t)
 	return t
@@ -2028,23 +2253,26 @@ end
 
 --- Create a structure of type DescribeEventsRequest
 --  
--- @param _NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
--- @param _SourceType [SourceType] <p>The event source to retrieve events for. If no value is specified, all events are returned.</p>
--- @param _SourceName [String] <p>The identifier of the event source for which events will be returned. If not specified, then all sources are included in the response.</p>
--- @param _MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
--- @param _StartTime [TStamp] <p>The beginning of the time interval to retrieve events for, specified in ISO 8601 format.</p>
--- @param _Duration [IntegerOptional] <p>The number of minutes' worth of events to retrieve.</p>
--- @param _EndTime [TStamp] <p>The end of the time interval for which to retrieve events, specified in ISO 8601 format.</p>
-function M.DescribeEventsRequest(_NextToken, _SourceType, _SourceName, _MaxResults, _StartTime, _Duration, _EndTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by <code>MaxResults</code>.</p>
+-- * SourceType [SourceType] <p>The event source to retrieve events for. If no value is specified, all events are returned.</p>
+-- * SourceName [String] <p>The identifier of the event source for which events will be returned. If not specified, then all sources are included in the response.</p>
+-- * MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
+-- * StartTime [TStamp] <p>The beginning of the time interval to retrieve events for, specified in ISO 8601 format.</p>
+-- * Duration [IntegerOptional] <p>The number of minutes' worth of events to retrieve.</p>
+-- * EndTime [TStamp] <p>The end of the time interval for which to retrieve events, specified in ISO 8601 format.</p>
+-- @return DescribeEventsRequest structure as a key-value pair table
+function M.DescribeEventsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["SourceType"] = _SourceType,
-		["SourceName"] = _SourceName,
-		["MaxResults"] = _MaxResults,
-		["StartTime"] = _StartTime,
-		["Duration"] = _Duration,
-		["EndTime"] = _EndTime,
+		["NextToken"] = args["NextToken"],
+		["SourceType"] = args["SourceType"],
+		["SourceName"] = args["SourceName"],
+		["MaxResults"] = args["MaxResults"],
+		["StartTime"] = args["StartTime"],
+		["Duration"] = args["Duration"],
+		["EndTime"] = args["EndTime"],
 	}
 	asserts.AssertDescribeEventsRequest(t)
 	return t
@@ -2062,8 +2290,11 @@ end
 
 --- Create a structure of type ClusterQuotaForCustomerExceededFault
 -- <p>You have attempted to exceed the maximum number of DAX clusters for your AWS account.</p>
-function M.ClusterQuotaForCustomerExceededFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterQuotaForCustomerExceededFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ClusterQuotaForCustomerExceededFault structure as a key-value pair table
+function M.ClusterQuotaForCustomerExceededFault(args)
+	assert(args, "You must provdide an argument table when creating ClusterQuotaForCustomerExceededFault")
 	local t = { 
 	}
 	asserts.AssertClusterQuotaForCustomerExceededFault(t)
@@ -2086,16 +2317,19 @@ end
 
 --- Create a structure of type UpdateSubnetGroupRequest
 --  
--- @param _SubnetIds [SubnetIdentifierList] <p>A list of subnet IDs in the subnet group.</p>
--- @param _SubnetGroupName [String] <p>The name of the subnet group.</p>
--- @param _Description [String] <p>A description of the subnet group.</p>
--- Required parameter: SubnetGroupName
-function M.UpdateSubnetGroupRequest(_SubnetIds, _SubnetGroupName, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSubnetGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetIds [SubnetIdentifierList] <p>A list of subnet IDs in the subnet group.</p>
+-- * SubnetGroupName [String] <p>The name of the subnet group.</p>
+-- * Description [String] <p>A description of the subnet group.</p>
+-- Required key: SubnetGroupName
+-- @return UpdateSubnetGroupRequest structure as a key-value pair table
+function M.UpdateSubnetGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateSubnetGroupRequest")
 	local t = { 
-		["SubnetIds"] = _SubnetIds,
-		["SubnetGroupName"] = _SubnetGroupName,
-		["Description"] = _Description,
+		["SubnetIds"] = args["SubnetIds"],
+		["SubnetGroupName"] = args["SubnetGroupName"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdateSubnetGroupRequest(t)
 	return t
@@ -2113,8 +2347,11 @@ end
 
 --- Create a structure of type ClusterAlreadyExistsFault
 -- <p>You already have a DAX cluster with the given identifier.</p>
-function M.ClusterAlreadyExistsFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterAlreadyExistsFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ClusterAlreadyExistsFault structure as a key-value pair table
+function M.ClusterAlreadyExistsFault(args)
+	assert(args, "You must provdide an argument table when creating ClusterAlreadyExistsFault")
 	local t = { 
 	}
 	asserts.AssertClusterAlreadyExistsFault(t)
@@ -2135,13 +2372,16 @@ end
 
 --- Create a structure of type NodeTypeSpecificValue
 -- <p>Represents a parameter value that is applicable to a particular node type.</p>
--- @param _NodeType [String] <p>A node type to which the parameter value applies.</p>
--- @param _Value [String] <p>The parameter value for this node type.</p>
-function M.NodeTypeSpecificValue(_NodeType, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NodeTypeSpecificValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NodeType [String] <p>A node type to which the parameter value applies.</p>
+-- * Value [String] <p>The parameter value for this node type.</p>
+-- @return NodeTypeSpecificValue structure as a key-value pair table
+function M.NodeTypeSpecificValue(args)
+	assert(args, "You must provdide an argument table when creating NodeTypeSpecificValue")
 	local t = { 
-		["NodeType"] = _NodeType,
-		["Value"] = _Value,
+		["NodeType"] = args["NodeType"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertNodeTypeSpecificValue(t)
 	return t
@@ -2159,8 +2399,11 @@ end
 
 --- Create a structure of type SubnetQuotaExceededFault
 -- <p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>
-function M.SubnetQuotaExceededFault(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetQuotaExceededFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SubnetQuotaExceededFault structure as a key-value pair table
+function M.SubnetQuotaExceededFault(args)
+	assert(args, "You must provdide an argument table when creating SubnetQuotaExceededFault")
 	local t = { 
 	}
 	asserts.AssertSubnetQuotaExceededFault(t)

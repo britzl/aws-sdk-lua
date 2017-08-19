@@ -33,8 +33,11 @@ end
 
 --- Create a structure of type InvalidRequestException
 -- <p>One or more input parameters is not valid. Please correct the input parameters and try the operation again.</p>
-function M.InvalidRequestException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRequestException structure as a key-value pair table
+function M.InvalidRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRequestException")
 	local t = { 
 	}
 	asserts.AssertInvalidRequestException(t)
@@ -57,16 +60,19 @@ end
 
 --- Create a structure of type ApplyEnvironmentManagedActionRequest
 -- <p>Request to execute a scheduled managed action immediately.</p>
--- @param _EnvironmentName [String] <p>The name of the target environment.</p>
--- @param _ActionId [String] <p>The action ID of the scheduled managed action to execute.</p>
--- @param _EnvironmentId [String] <p>The environment ID of the target environment.</p>
--- Required parameter: ActionId
-function M.ApplyEnvironmentManagedActionRequest(_EnvironmentName, _ActionId, _EnvironmentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplyEnvironmentManagedActionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentName [String] <p>The name of the target environment.</p>
+-- * ActionId [String] <p>The action ID of the scheduled managed action to execute.</p>
+-- * EnvironmentId [String] <p>The environment ID of the target environment.</p>
+-- Required key: ActionId
+-- @return ApplyEnvironmentManagedActionRequest structure as a key-value pair table
+function M.ApplyEnvironmentManagedActionRequest(args)
+	assert(args, "You must provdide an argument table when creating ApplyEnvironmentManagedActionRequest")
 	local t = { 
-		["EnvironmentName"] = _EnvironmentName,
-		["ActionId"] = _ActionId,
-		["EnvironmentId"] = _EnvironmentId,
+		["EnvironmentName"] = args["EnvironmentName"],
+		["ActionId"] = args["ActionId"],
+		["EnvironmentId"] = args["EnvironmentId"],
 	}
 	asserts.AssertApplyEnvironmentManagedActionRequest(t)
 	return t
@@ -84,8 +90,11 @@ end
 
 --- Create a structure of type TooManyApplicationVersionsException
 -- <p>The specified account has reached its limit of application versions.</p>
-function M.TooManyApplicationVersionsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyApplicationVersionsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyApplicationVersionsException structure as a key-value pair table
+function M.TooManyApplicationVersionsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyApplicationVersionsException")
 	local t = { 
 	}
 	asserts.AssertTooManyApplicationVersionsException(t)
@@ -104,8 +113,11 @@ end
 
 --- Create a structure of type InsufficientPrivilegesException
 -- <p>The specified account does not have sufficient privileges for one of more AWS services.</p>
-function M.InsufficientPrivilegesException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientPrivilegesException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InsufficientPrivilegesException structure as a key-value pair table
+function M.InsufficientPrivilegesException(args)
+	assert(args, "You must provdide an argument table when creating InsufficientPrivilegesException")
 	local t = { 
 	}
 	asserts.AssertInsufficientPrivilegesException(t)
@@ -124,8 +136,11 @@ end
 
 --- Create a structure of type TooManyBucketsException
 -- <p>The specified account has reached its limit of Amazon S3 buckets.</p>
-function M.TooManyBucketsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyBucketsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyBucketsException structure as a key-value pair table
+function M.TooManyBucketsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyBucketsException")
 	local t = { 
 	}
 	asserts.AssertTooManyBucketsException(t)
@@ -153,27 +168,30 @@ end
 
 --- Create a structure of type EventDescription
 -- <p>Describes an event.</p>
--- @param _ApplicationName [ApplicationName] <p>The application associated with the event.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment associated with this event.</p>
--- @param _VersionLabel [VersionLabel] <p>The release label for the application version associated with this event.</p>
--- @param _Severity [EventSeverity] <p>The severity level of this event.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p>The name of the configuration associated with this event.</p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
--- @param _RequestId [RequestId] <p>The web service request ID for the activity of this event.</p>
--- @param _Message [EventMessage] <p>The event message.</p>
--- @param _EventDate [EventDate] <p>The date when the event occurred.</p>
-function M.EventDescription(_ApplicationName, _EnvironmentName, _VersionLabel, _Severity, _TemplateName, _PlatformArn, _RequestId, _Message, _EventDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The application associated with the event.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment associated with this event.</p>
+-- * VersionLabel [VersionLabel] <p>The release label for the application version associated with this event.</p>
+-- * Severity [EventSeverity] <p>The severity level of this event.</p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration associated with this event.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * RequestId [RequestId] <p>The web service request ID for the activity of this event.</p>
+-- * Message [EventMessage] <p>The event message.</p>
+-- * EventDate [EventDate] <p>The date when the event occurred.</p>
+-- @return EventDescription structure as a key-value pair table
+function M.EventDescription(args)
+	assert(args, "You must provdide an argument table when creating EventDescription")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["EnvironmentName"] = _EnvironmentName,
-		["VersionLabel"] = _VersionLabel,
-		["Severity"] = _Severity,
-		["TemplateName"] = _TemplateName,
-		["PlatformArn"] = _PlatformArn,
-		["RequestId"] = _RequestId,
-		["Message"] = _Message,
-		["EventDate"] = _EventDate,
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["VersionLabel"] = args["VersionLabel"],
+		["Severity"] = args["Severity"],
+		["TemplateName"] = args["TemplateName"],
+		["PlatformArn"] = args["PlatformArn"],
+		["RequestId"] = args["RequestId"],
+		["Message"] = args["Message"],
+		["EventDate"] = args["EventDate"],
 	}
 	asserts.AssertEventDescription(t)
 	return t
@@ -192,11 +210,14 @@ end
 
 --- Create a structure of type Trigger
 -- <p>Describes a trigger.</p>
--- @param _Name [ResourceId] <p>The name of the trigger.</p>
-function M.Trigger(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Trigger")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ResourceId] <p>The name of the trigger.</p>
+-- @return Trigger structure as a key-value pair table
+function M.Trigger(args)
+	assert(args, "You must provdide an argument table when creating Trigger")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertTrigger(t)
 	return t
@@ -228,36 +249,39 @@ end
 
 --- Create a structure of type CreateEnvironmentMessage
 -- <p/>
--- @param _ApplicationName [ApplicationName] <p>The name of the application that contains the version to be deployed.</p> <p> If no application is found with this name, <code>CreateEnvironment</code> returns an <code>InvalidParameterValue</code> error. </p>
--- @param _EnvironmentName [EnvironmentName] <p>A unique name for the deployment environment. Used in the application URL.</p> <p>Constraint: Must be from 4 to 40 characters in length. The name can contain only letters, numbers, and hyphens. It cannot start or end with a hyphen. This name must be unique in your account. If the specified name already exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>Default: If the CNAME parameter is not specified, the environment name becomes part of the CNAME, and therefore part of the visible URL for your application.</p>
--- @param _VersionLabel [VersionLabel] <p>The name of the application version to deploy.</p> <p> If the specified application has no associated application versions, AWS Elastic Beanstalk <code>UpdateEnvironment</code> returns an <code>InvalidParameterValue</code> error. </p> <p>Default: If not specified, AWS Elastic Beanstalk attempts to launch the sample application in the container.</p>
--- @param _Description [Description] <p>Describes this environment.</p>
--- @param _Tags [Tags] <p>This specifies the tags applied to resources in the environment.</p>
--- @param _CNAMEPrefix [DNSCnamePrefix] <p>If specified, the environment attempts to use this value as the prefix for the CNAME. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p> The name of the configuration template to use in deployment. If no configuration template is found with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
--- @param _SolutionStackName [SolutionStackName] <p>This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration values to the default values associated with the specified solution stack.</p>
--- @param _GroupName [GroupName] <p>The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name parameter. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
--- @param _OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk sets the specified configuration options to the requested value in the configuration set for the new environment. These override the values obtained from the solution stack or the configuration template.</p>
--- @param _Tier [EnvironmentTier] <p>This specifies the tier to use for creating this environment.</p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
--- @param _OptionsToRemove [OptionsSpecifierList] <p>A list of custom user-defined configuration options to remove from the configuration set for this new environment.</p>
--- Required parameter: ApplicationName
-function M.CreateEnvironmentMessage(_ApplicationName, _EnvironmentName, _VersionLabel, _Description, _Tags, _CNAMEPrefix, _TemplateName, _SolutionStackName, _GroupName, _OptionSettings, _Tier, _PlatformArn, _OptionsToRemove, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateEnvironmentMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application that contains the version to be deployed.</p> <p> If no application is found with this name, <code>CreateEnvironment</code> returns an <code>InvalidParameterValue</code> error. </p>
+-- * EnvironmentName [EnvironmentName] <p>A unique name for the deployment environment. Used in the application URL.</p> <p>Constraint: Must be from 4 to 40 characters in length. The name can contain only letters, numbers, and hyphens. It cannot start or end with a hyphen. This name must be unique in your account. If the specified name already exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>Default: If the CNAME parameter is not specified, the environment name becomes part of the CNAME, and therefore part of the visible URL for your application.</p>
+-- * VersionLabel [VersionLabel] <p>The name of the application version to deploy.</p> <p> If the specified application has no associated application versions, AWS Elastic Beanstalk <code>UpdateEnvironment</code> returns an <code>InvalidParameterValue</code> error. </p> <p>Default: If not specified, AWS Elastic Beanstalk attempts to launch the sample application in the container.</p>
+-- * Description [Description] <p>Describes this environment.</p>
+-- * Tags [Tags] <p>This specifies the tags applied to resources in the environment.</p>
+-- * CNAMEPrefix [DNSCnamePrefix] <p>If specified, the environment attempts to use this value as the prefix for the CNAME. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.</p>
+-- * TemplateName [ConfigurationTemplateName] <p> The name of the configuration template to use in deployment. If no configuration template is found with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- * SolutionStackName [SolutionStackName] <p>This is an alternative to specifying a template name. If specified, AWS Elastic Beanstalk sets the configuration values to the default values associated with the specified solution stack.</p>
+-- * GroupName [GroupName] <p>The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name parameter. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
+-- * OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk sets the specified configuration options to the requested value in the configuration set for the new environment. These override the values obtained from the solution stack or the configuration template.</p>
+-- * Tier [EnvironmentTier] <p>This specifies the tier to use for creating this environment.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * OptionsToRemove [OptionsSpecifierList] <p>A list of custom user-defined configuration options to remove from the configuration set for this new environment.</p>
+-- Required key: ApplicationName
+-- @return CreateEnvironmentMessage structure as a key-value pair table
+function M.CreateEnvironmentMessage(args)
+	assert(args, "You must provdide an argument table when creating CreateEnvironmentMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["EnvironmentName"] = _EnvironmentName,
-		["VersionLabel"] = _VersionLabel,
-		["Description"] = _Description,
-		["Tags"] = _Tags,
-		["CNAMEPrefix"] = _CNAMEPrefix,
-		["TemplateName"] = _TemplateName,
-		["SolutionStackName"] = _SolutionStackName,
-		["GroupName"] = _GroupName,
-		["OptionSettings"] = _OptionSettings,
-		["Tier"] = _Tier,
-		["PlatformArn"] = _PlatformArn,
-		["OptionsToRemove"] = _OptionsToRemove,
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["VersionLabel"] = args["VersionLabel"],
+		["Description"] = args["Description"],
+		["Tags"] = args["Tags"],
+		["CNAMEPrefix"] = args["CNAMEPrefix"],
+		["TemplateName"] = args["TemplateName"],
+		["SolutionStackName"] = args["SolutionStackName"],
+		["GroupName"] = args["GroupName"],
+		["OptionSettings"] = args["OptionSettings"],
+		["Tier"] = args["Tier"],
+		["PlatformArn"] = args["PlatformArn"],
+		["OptionsToRemove"] = args["OptionsToRemove"],
 	}
 	asserts.AssertCreateEnvironmentMessage(t)
 	return t
@@ -282,23 +306,26 @@ end
 
 --- Create a structure of type EnvironmentResourceDescription
 -- <p>Describes the AWS resources in use by this environment. This data is live.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment.</p>
--- @param _AutoScalingGroups [AutoScalingGroupList] <p> The <code>AutoScalingGroups</code> used by this environment. </p>
--- @param _Triggers [TriggerList] <p>The <code>AutoScaling</code> triggers in use by this environment. </p>
--- @param _LoadBalancers [LoadBalancerList] <p>The LoadBalancers in use by this environment.</p>
--- @param _Queues [QueueList] <p>The queues used by this environment.</p>
--- @param _Instances [InstanceList] <p>The Amazon EC2 instances used by this environment.</p>
--- @param _LaunchConfigurations [LaunchConfigurationList] <p>The Auto Scaling launch configurations in use by this environment.</p>
-function M.EnvironmentResourceDescription(_EnvironmentName, _AutoScalingGroups, _Triggers, _LoadBalancers, _Queues, _Instances, _LaunchConfigurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentResourceDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment.</p>
+-- * AutoScalingGroups [AutoScalingGroupList] <p> The <code>AutoScalingGroups</code> used by this environment. </p>
+-- * Triggers [TriggerList] <p>The <code>AutoScaling</code> triggers in use by this environment. </p>
+-- * LoadBalancers [LoadBalancerList] <p>The LoadBalancers in use by this environment.</p>
+-- * Queues [QueueList] <p>The queues used by this environment.</p>
+-- * Instances [InstanceList] <p>The Amazon EC2 instances used by this environment.</p>
+-- * LaunchConfigurations [LaunchConfigurationList] <p>The Auto Scaling launch configurations in use by this environment.</p>
+-- @return EnvironmentResourceDescription structure as a key-value pair table
+function M.EnvironmentResourceDescription(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentResourceDescription")
 	local t = { 
-		["EnvironmentName"] = _EnvironmentName,
-		["AutoScalingGroups"] = _AutoScalingGroups,
-		["Triggers"] = _Triggers,
-		["LoadBalancers"] = _LoadBalancers,
-		["Queues"] = _Queues,
-		["Instances"] = _Instances,
-		["LaunchConfigurations"] = _LaunchConfigurations,
+		["EnvironmentName"] = args["EnvironmentName"],
+		["AutoScalingGroups"] = args["AutoScalingGroups"],
+		["Triggers"] = args["Triggers"],
+		["LoadBalancers"] = args["LoadBalancers"],
+		["Queues"] = args["Queues"],
+		["Instances"] = args["Instances"],
+		["LaunchConfigurations"] = args["LaunchConfigurations"],
 	}
 	asserts.AssertEnvironmentResourceDescription(t)
 	return t
@@ -318,13 +345,16 @@ end
 
 --- Create a structure of type CheckDNSAvailabilityResultMessage
 -- <p>Indicates if the specified CNAME is available.</p>
--- @param _Available [CnameAvailability] <p>Indicates if the specified CNAME is available:</p> <ul> <li> <p> <code>true</code> : The CNAME is available.</p> </li> <li> <p> <code>false</code> : The CNAME is not available.</p> </li> </ul>
--- @param _FullyQualifiedCNAME [DNSCname] <p>The fully qualified CNAME to reserve when <a>CreateEnvironment</a> is called with the provided prefix.</p>
-function M.CheckDNSAvailabilityResultMessage(_Available, _FullyQualifiedCNAME, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CheckDNSAvailabilityResultMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Available [CnameAvailability] <p>Indicates if the specified CNAME is available:</p> <ul> <li> <p> <code>true</code> : The CNAME is available.</p> </li> <li> <p> <code>false</code> : The CNAME is not available.</p> </li> </ul>
+-- * FullyQualifiedCNAME [DNSCname] <p>The fully qualified CNAME to reserve when <a>CreateEnvironment</a> is called with the provided prefix.</p>
+-- @return CheckDNSAvailabilityResultMessage structure as a key-value pair table
+function M.CheckDNSAvailabilityResultMessage(args)
+	assert(args, "You must provdide an argument table when creating CheckDNSAvailabilityResultMessage")
 	local t = { 
-		["Available"] = _Available,
-		["FullyQualifiedCNAME"] = _FullyQualifiedCNAME,
+		["Available"] = args["Available"],
+		["FullyQualifiedCNAME"] = args["FullyQualifiedCNAME"],
 	}
 	asserts.AssertCheckDNSAvailabilityResultMessage(t)
 	return t
@@ -346,17 +376,20 @@ end
 
 --- Create a structure of type DescribeEnvironmentManagedActionHistoryRequest
 -- <p>Request to list completed and failed managed actions.</p>
--- @param _EnvironmentId [EnvironmentId] <p>The environment ID of the target environment.</p>
--- @param _NextToken [String] <p>The pagination token returned by a previous request.</p>
--- @param _MaxItems [Integer] <p>The maximum number of items to return for a single request.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the target environment.</p>
-function M.DescribeEnvironmentManagedActionHistoryRequest(_EnvironmentId, _NextToken, _MaxItems, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentManagedActionHistoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentId [EnvironmentId] <p>The environment ID of the target environment.</p>
+-- * NextToken [String] <p>The pagination token returned by a previous request.</p>
+-- * MaxItems [Integer] <p>The maximum number of items to return for a single request.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the target environment.</p>
+-- @return DescribeEnvironmentManagedActionHistoryRequest structure as a key-value pair table
+function M.DescribeEnvironmentManagedActionHistoryRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEnvironmentManagedActionHistoryRequest")
 	local t = { 
-		["EnvironmentId"] = _EnvironmentId,
-		["NextToken"] = _NextToken,
-		["MaxItems"] = _MaxItems,
-		["EnvironmentName"] = _EnvironmentName,
+		["EnvironmentId"] = args["EnvironmentId"],
+		["NextToken"] = args["NextToken"],
+		["MaxItems"] = args["MaxItems"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertDescribeEnvironmentManagedActionHistoryRequest(t)
 	return t
@@ -375,11 +408,14 @@ end
 
 --- Create a structure of type DescribePlatformVersionResult
 --  
--- @param _PlatformDescription [PlatformDescription] <p>Detailed information about the version of the platform.</p>
-function M.DescribePlatformVersionResult(_PlatformDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePlatformVersionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlatformDescription [PlatformDescription] <p>Detailed information about the version of the platform.</p>
+-- @return DescribePlatformVersionResult structure as a key-value pair table
+function M.DescribePlatformVersionResult(args)
+	assert(args, "You must provdide an argument table when creating DescribePlatformVersionResult")
 	local t = { 
-		["PlatformDescription"] = _PlatformDescription,
+		["PlatformDescription"] = args["PlatformDescription"],
 	}
 	asserts.AssertDescribePlatformVersionResult(t)
 	return t
@@ -404,23 +440,26 @@ end
 
 --- Create a structure of type CPUUtilization
 -- <p>CPU utilization metrics for an instance.</p>
--- @param _SoftIRQ [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>SoftIRQ</code> state over the last 10 seconds.</p>
--- @param _IOWait [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>I/O Wait</code> state over the last 10 seconds.</p>
--- @param _System [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>System</code> state over the last 10 seconds.</p>
--- @param _Idle [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>Idle</code> state over the last 10 seconds.</p>
--- @param _User [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>User</code> state over the last 10 seconds.</p>
--- @param _IRQ [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>IRQ</code> state over the last 10 seconds.</p>
--- @param _Nice [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>Nice</code> state over the last 10 seconds.</p>
-function M.CPUUtilization(_SoftIRQ, _IOWait, _System, _Idle, _User, _IRQ, _Nice, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CPUUtilization")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SoftIRQ [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>SoftIRQ</code> state over the last 10 seconds.</p>
+-- * IOWait [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>I/O Wait</code> state over the last 10 seconds.</p>
+-- * System [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>System</code> state over the last 10 seconds.</p>
+-- * Idle [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>Idle</code> state over the last 10 seconds.</p>
+-- * User [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>User</code> state over the last 10 seconds.</p>
+-- * IRQ [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>IRQ</code> state over the last 10 seconds.</p>
+-- * Nice [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>Nice</code> state over the last 10 seconds.</p>
+-- @return CPUUtilization structure as a key-value pair table
+function M.CPUUtilization(args)
+	assert(args, "You must provdide an argument table when creating CPUUtilization")
 	local t = { 
-		["SoftIRQ"] = _SoftIRQ,
-		["IOWait"] = _IOWait,
-		["System"] = _System,
-		["Idle"] = _Idle,
-		["User"] = _User,
-		["IRQ"] = _IRQ,
-		["Nice"] = _Nice,
+		["SoftIRQ"] = args["SoftIRQ"],
+		["IOWait"] = args["IOWait"],
+		["System"] = args["System"],
+		["Idle"] = args["Idle"],
+		["User"] = args["User"],
+		["IRQ"] = args["IRQ"],
+		["Nice"] = args["Nice"],
 	}
 	asserts.AssertCPUUtilization(t)
 	return t
@@ -438,8 +477,11 @@ end
 
 --- Create a structure of type ManagedActionInvalidStateException
 -- <p>Cannot modify the managed action in its current state.</p>
-function M.ManagedActionInvalidStateException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ManagedActionInvalidStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ManagedActionInvalidStateException structure as a key-value pair table
+function M.ManagedActionInvalidStateException(args)
+	assert(args, "You must provdide an argument table when creating ManagedActionInvalidStateException")
 	local t = { 
 	}
 	asserts.AssertManagedActionInvalidStateException(t)
@@ -462,17 +504,20 @@ end
 
 --- Create a structure of type StatusCodes
 -- <p>Represents the percentage of requests over the last 10 seconds that resulted in each type of status code response. For more information, see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">Status Code Definitions</a>.</p>
--- @param _Status3xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 3xx (300, 301, etc.) status code.</p>
--- @param _Status2xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 2xx (200, 201, etc.) status code.</p>
--- @param _Status5xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 5xx (500, 501, etc.) status code.</p>
--- @param _Status4xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 4xx (400, 401, etc.) status code.</p>
-function M.StatusCodes(_Status3xx, _Status2xx, _Status5xx, _Status4xx, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StatusCodes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status3xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 3xx (300, 301, etc.) status code.</p>
+-- * Status2xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 2xx (200, 201, etc.) status code.</p>
+-- * Status5xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 5xx (500, 501, etc.) status code.</p>
+-- * Status4xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 4xx (400, 401, etc.) status code.</p>
+-- @return StatusCodes structure as a key-value pair table
+function M.StatusCodes(args)
+	assert(args, "You must provdide an argument table when creating StatusCodes")
 	local t = { 
-		["Status3xx"] = _Status3xx,
-		["Status2xx"] = _Status2xx,
-		["Status5xx"] = _Status5xx,
-		["Status4xx"] = _Status4xx,
+		["Status3xx"] = args["Status3xx"],
+		["Status2xx"] = args["Status2xx"],
+		["Status5xx"] = args["Status5xx"],
+		["Status4xx"] = args["Status4xx"],
 	}
 	asserts.AssertStatusCodes(t)
 	return t
@@ -491,11 +536,14 @@ end
 
 --- Create a structure of type EnvironmentResourceDescriptionsMessage
 -- <p>Result message containing a list of environment resource descriptions.</p>
--- @param _EnvironmentResources [EnvironmentResourceDescription] <p> A list of <a>EnvironmentResourceDescription</a>. </p>
-function M.EnvironmentResourceDescriptionsMessage(_EnvironmentResources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentResourceDescriptionsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentResources [EnvironmentResourceDescription] <p> A list of <a>EnvironmentResourceDescription</a>. </p>
+-- @return EnvironmentResourceDescriptionsMessage structure as a key-value pair table
+function M.EnvironmentResourceDescriptionsMessage(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentResourceDescriptionsMessage")
 	local t = { 
-		["EnvironmentResources"] = _EnvironmentResources,
+		["EnvironmentResources"] = args["EnvironmentResources"],
 	}
 	asserts.AssertEnvironmentResourceDescriptionsMessage(t)
 	return t
@@ -516,15 +564,18 @@ end
 
 --- Create a structure of type EnvironmentTier
 -- <p>Describes the properties of an environment tier</p>
--- @param _Version [String] <p>The version of this environment tier.</p>
--- @param _Type [String] <p>The type of this environment tier.</p>
--- @param _Name [String] <p>The name of this environment tier.</p>
-function M.EnvironmentTier(_Version, _Type, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentTier")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [String] <p>The version of this environment tier.</p>
+-- * Type [String] <p>The type of this environment tier.</p>
+-- * Name [String] <p>The name of this environment tier.</p>
+-- @return EnvironmentTier structure as a key-value pair table
+function M.EnvironmentTier(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentTier")
 	local t = { 
-		["Version"] = _Version,
-		["Type"] = _Type,
-		["Name"] = _Name,
+		["Version"] = args["Version"],
+		["Type"] = args["Type"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertEnvironmentTier(t)
 	return t
@@ -544,13 +595,16 @@ end
 
 --- Create a structure of type S3Location
 -- <p>The bucket and key of an item stored in Amazon S3.</p>
--- @param _S3Bucket [S3Bucket] <p>The Amazon S3 bucket where the data is located.</p>
--- @param _S3Key [S3Key] <p>The Amazon S3 key where the data is located.</p>
-function M.S3Location(_S3Bucket, _S3Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3Location")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * S3Bucket [S3Bucket] <p>The Amazon S3 bucket where the data is located.</p>
+-- * S3Key [S3Key] <p>The Amazon S3 key where the data is located.</p>
+-- @return S3Location structure as a key-value pair table
+function M.S3Location(args)
+	assert(args, "You must provdide an argument table when creating S3Location")
 	local t = { 
-		["S3Bucket"] = _S3Bucket,
-		["S3Key"] = _S3Key,
+		["S3Bucket"] = args["S3Bucket"],
+		["S3Key"] = args["S3Key"],
 	}
 	asserts.AssertS3Location(t)
 	return t
@@ -570,12 +624,15 @@ end
 
 --- Create a structure of type CheckDNSAvailabilityMessage
 -- <p>Results message indicating whether a CNAME is available.</p>
--- @param _CNAMEPrefix [DNSCnamePrefix] <p>The prefix used when this CNAME is reserved.</p>
--- Required parameter: CNAMEPrefix
-function M.CheckDNSAvailabilityMessage(_CNAMEPrefix, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CheckDNSAvailabilityMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CNAMEPrefix [DNSCnamePrefix] <p>The prefix used when this CNAME is reserved.</p>
+-- Required key: CNAMEPrefix
+-- @return CheckDNSAvailabilityMessage structure as a key-value pair table
+function M.CheckDNSAvailabilityMessage(args)
+	assert(args, "You must provdide an argument table when creating CheckDNSAvailabilityMessage")
 	local t = { 
-		["CNAMEPrefix"] = _CNAMEPrefix,
+		["CNAMEPrefix"] = args["CNAMEPrefix"],
 	}
 	asserts.AssertCheckDNSAvailabilityMessage(t)
 	return t
@@ -603,27 +660,30 @@ end
 
 --- Create a structure of type CreateConfigurationTemplateMessage
 -- <p>Request to create a configuration template.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application to associate with this configuration template. If no application is found with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the custome platform.</p>
--- @param _Description [Description] <p>Describes this configuration.</p>
--- @param _EnvironmentId [EnvironmentId] <p>The ID of the environment used with this configuration template.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p>The name of the configuration template.</p> <p>Constraint: This name must be unique per application.</p> <p>Default: If a configuration template already exists with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
--- @param _SolutionStackName [SolutionStackName] <p>The name of the solution stack used by this configuration. The solution stack specifies the operating system, architecture, and application server for a configuration template. It determines the set of configuration options as well as the possible and default values.</p> <p> Use <a>ListAvailableSolutionStacks</a> to obtain a list of available solution stacks. </p> <p> A solution stack name or a source configuration parameter must be specified, otherwise AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>If a solution stack name is not specified and the source configuration parameter is specified, AWS Elastic Beanstalk uses the same solution stack as the source configuration template.</p>
--- @param _OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk sets the specified configuration option to the requested value. The new value overrides the value obtained from the solution stack or the source configuration template.</p>
--- @param _SourceConfiguration [SourceConfiguration] <p>If specified, AWS Elastic Beanstalk uses the configuration values from the specified configuration template to create a new configuration.</p> <p> Values specified in the <code>OptionSettings</code> parameter of this call overrides any values obtained from the <code>SourceConfiguration</code>. </p> <p> If no configuration template is found, returns an <code>InvalidParameterValue</code> error. </p> <p> Constraint: If both the solution stack name parameter and the source configuration parameters are specified, the solution stack of the source configuration template must match the specified solution stack name or else AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. </p>
--- Required parameter: ApplicationName
--- Required parameter: TemplateName
-function M.CreateConfigurationTemplateMessage(_ApplicationName, _PlatformArn, _Description, _EnvironmentId, _TemplateName, _SolutionStackName, _OptionSettings, _SourceConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateConfigurationTemplateMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application to associate with this configuration template. If no application is found with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the custome platform.</p>
+-- * Description [Description] <p>Describes this configuration.</p>
+-- * EnvironmentId [EnvironmentId] <p>The ID of the environment used with this configuration template.</p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template.</p> <p>Constraint: This name must be unique per application.</p> <p>Default: If a configuration template already exists with this name, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- * SolutionStackName [SolutionStackName] <p>The name of the solution stack used by this configuration. The solution stack specifies the operating system, architecture, and application server for a configuration template. It determines the set of configuration options as well as the possible and default values.</p> <p> Use <a>ListAvailableSolutionStacks</a> to obtain a list of available solution stacks. </p> <p> A solution stack name or a source configuration parameter must be specified, otherwise AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>If a solution stack name is not specified and the source configuration parameter is specified, AWS Elastic Beanstalk uses the same solution stack as the source configuration template.</p>
+-- * OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk sets the specified configuration option to the requested value. The new value overrides the value obtained from the solution stack or the source configuration template.</p>
+-- * SourceConfiguration [SourceConfiguration] <p>If specified, AWS Elastic Beanstalk uses the configuration values from the specified configuration template to create a new configuration.</p> <p> Values specified in the <code>OptionSettings</code> parameter of this call overrides any values obtained from the <code>SourceConfiguration</code>. </p> <p> If no configuration template is found, returns an <code>InvalidParameterValue</code> error. </p> <p> Constraint: If both the solution stack name parameter and the source configuration parameters are specified, the solution stack of the source configuration template must match the specified solution stack name or else AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. </p>
+-- Required key: ApplicationName
+-- Required key: TemplateName
+-- @return CreateConfigurationTemplateMessage structure as a key-value pair table
+function M.CreateConfigurationTemplateMessage(args)
+	assert(args, "You must provdide an argument table when creating CreateConfigurationTemplateMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["PlatformArn"] = _PlatformArn,
-		["Description"] = _Description,
-		["EnvironmentId"] = _EnvironmentId,
-		["TemplateName"] = _TemplateName,
-		["SolutionStackName"] = _SolutionStackName,
-		["OptionSettings"] = _OptionSettings,
-		["SourceConfiguration"] = _SourceConfiguration,
+		["ApplicationName"] = args["ApplicationName"],
+		["PlatformArn"] = args["PlatformArn"],
+		["Description"] = args["Description"],
+		["EnvironmentId"] = args["EnvironmentId"],
+		["TemplateName"] = args["TemplateName"],
+		["SolutionStackName"] = args["SolutionStackName"],
+		["OptionSettings"] = args["OptionSettings"],
+		["SourceConfiguration"] = args["SourceConfiguration"],
 	}
 	asserts.AssertCreateConfigurationTemplateMessage(t)
 	return t
@@ -645,16 +705,19 @@ end
 
 --- Create a structure of type DescribeConfigurationSettingsMessage
 -- <p>Result message containing all of the configuration settings for a specified solution stack or configuration template.</p>
--- @param _ApplicationName [ApplicationName] <p>The application for the environment or configuration template.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment to describe.</p> <p> Condition: You must specify either this or a TemplateName, but not both. If you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- @param _TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to describe.</p> <p> Conditional: You must specify either this parameter or an EnvironmentName, but not both. If you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error. </p>
--- Required parameter: ApplicationName
-function M.DescribeConfigurationSettingsMessage(_ApplicationName, _EnvironmentName, _TemplateName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationSettingsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The application for the environment or configuration template.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment to describe.</p> <p> Condition: You must specify either this or a TemplateName, but not both. If you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to describe.</p> <p> Conditional: You must specify either this parameter or an EnvironmentName, but not both. If you specify both, AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. If you do not specify either, AWS Elastic Beanstalk returns a <code>MissingRequiredParameter</code> error. </p>
+-- Required key: ApplicationName
+-- @return DescribeConfigurationSettingsMessage structure as a key-value pair table
+function M.DescribeConfigurationSettingsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigurationSettingsMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["EnvironmentName"] = _EnvironmentName,
-		["TemplateName"] = _TemplateName,
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["TemplateName"] = args["TemplateName"],
 	}
 	asserts.AssertDescribeConfigurationSettingsMessage(t)
 	return t
@@ -672,8 +735,11 @@ end
 
 --- Create a structure of type S3LocationNotInServiceRegionException
 -- <p>The specified S3 bucket does not belong to the S3 region in which the service is running. The following regions are supported:</p> <ul> <li> <p>IAD/us-east-1</p> </li> <li> <p>PDX/us-west-2</p> </li> <li> <p>DUB/eu-west-1</p> </li> </ul>
-function M.S3LocationNotInServiceRegionException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3LocationNotInServiceRegionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return S3LocationNotInServiceRegionException structure as a key-value pair table
+function M.S3LocationNotInServiceRegionException(args)
+	assert(args, "You must provdide an argument table when creating S3LocationNotInServiceRegionException")
 	local t = { 
 	}
 	asserts.AssertS3LocationNotInServiceRegionException(t)
@@ -700,25 +766,28 @@ end
 
 --- Create a structure of type DescribeEnvironmentHealthResult
 -- <p>Health details for an AWS Elastic Beanstalk environment.</p>
--- @param _Status [EnvironmentHealth] <p>The environment's operational status. <code>Ready</code>, <code>Launching</code>, <code>Updating</code>, <code>Terminating</code>, or <code>Terminated</code>.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The environment's name.</p>
--- @param _Color [String] <p>The <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">health color</a> of the environment.</p>
--- @param _ApplicationMetrics [ApplicationMetrics] <p>Application request metrics for the environment.</p>
--- @param _RefreshedAt [RefreshedAt] <p>The date and time that the health information was retrieved.</p>
--- @param _HealthStatus [String] <p>The <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">health status</a> of the environment. For example, <code>Ok</code>.</p>
--- @param _InstancesHealth [InstanceHealthSummary] <p>Summary health information for the instances in the environment.</p>
--- @param _Causes [Causes] <p>Descriptions of the data that contributed to the environment's current health status.</p>
-function M.DescribeEnvironmentHealthResult(_Status, _EnvironmentName, _Color, _ApplicationMetrics, _RefreshedAt, _HealthStatus, _InstancesHealth, _Causes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentHealthResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [EnvironmentHealth] <p>The environment's operational status. <code>Ready</code>, <code>Launching</code>, <code>Updating</code>, <code>Terminating</code>, or <code>Terminated</code>.</p>
+-- * EnvironmentName [EnvironmentName] <p>The environment's name.</p>
+-- * Color [String] <p>The <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">health color</a> of the environment.</p>
+-- * ApplicationMetrics [ApplicationMetrics] <p>Application request metrics for the environment.</p>
+-- * RefreshedAt [RefreshedAt] <p>The date and time that the health information was retrieved.</p>
+-- * HealthStatus [String] <p>The <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">health status</a> of the environment. For example, <code>Ok</code>.</p>
+-- * InstancesHealth [InstanceHealthSummary] <p>Summary health information for the instances in the environment.</p>
+-- * Causes [Causes] <p>Descriptions of the data that contributed to the environment's current health status.</p>
+-- @return DescribeEnvironmentHealthResult structure as a key-value pair table
+function M.DescribeEnvironmentHealthResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeEnvironmentHealthResult")
 	local t = { 
-		["Status"] = _Status,
-		["EnvironmentName"] = _EnvironmentName,
-		["Color"] = _Color,
-		["ApplicationMetrics"] = _ApplicationMetrics,
-		["RefreshedAt"] = _RefreshedAt,
-		["HealthStatus"] = _HealthStatus,
-		["InstancesHealth"] = _InstancesHealth,
-		["Causes"] = _Causes,
+		["Status"] = args["Status"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["Color"] = args["Color"],
+		["ApplicationMetrics"] = args["ApplicationMetrics"],
+		["RefreshedAt"] = args["RefreshedAt"],
+		["HealthStatus"] = args["HealthStatus"],
+		["InstancesHealth"] = args["InstancesHealth"],
+		["Causes"] = args["Causes"],
 	}
 	asserts.AssertDescribeEnvironmentHealthResult(t)
 	return t
@@ -737,11 +806,14 @@ end
 
 --- Create a structure of type ConfigurationSettingsDescriptions
 -- <p>The results from a request to change the configuration settings of an environment.</p>
--- @param _ConfigurationSettings [ConfigurationSettingsDescriptionList] <p> A list of <a>ConfigurationSettingsDescription</a>. </p>
-function M.ConfigurationSettingsDescriptions(_ConfigurationSettings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSettingsDescriptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationSettings [ConfigurationSettingsDescriptionList] <p> A list of <a>ConfigurationSettingsDescription</a>. </p>
+-- @return ConfigurationSettingsDescriptions structure as a key-value pair table
+function M.ConfigurationSettingsDescriptions(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationSettingsDescriptions")
 	local t = { 
-		["ConfigurationSettings"] = _ConfigurationSettings,
+		["ConfigurationSettings"] = args["ConfigurationSettings"],
 	}
 	asserts.AssertConfigurationSettingsDescriptions(t)
 	return t
@@ -763,16 +835,19 @@ end
 
 --- Create a structure of type MaxAgeRule
 -- <p>A lifecycle rule that deletes application versions after the specified number of days.</p>
--- @param _DeleteSourceFromS3 [BoxedBoolean] <p>Set to <code>true</code> to delete a version's source bundle from Amazon S3 when Elastic Beanstalk deletes the application version.</p>
--- @param _Enabled [BoxedBoolean] <p>Specify <code>true</code> to apply the rule, or <code>false</code> to disable it.</p>
--- @param _MaxAgeInDays [BoxedInt] <p>Specify the number of days to retain an application versions.</p>
--- Required parameter: Enabled
-function M.MaxAgeRule(_DeleteSourceFromS3, _Enabled, _MaxAgeInDays, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaxAgeRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeleteSourceFromS3 [BoxedBoolean] <p>Set to <code>true</code> to delete a version's source bundle from Amazon S3 when Elastic Beanstalk deletes the application version.</p>
+-- * Enabled [BoxedBoolean] <p>Specify <code>true</code> to apply the rule, or <code>false</code> to disable it.</p>
+-- * MaxAgeInDays [BoxedInt] <p>Specify the number of days to retain an application versions.</p>
+-- Required key: Enabled
+-- @return MaxAgeRule structure as a key-value pair table
+function M.MaxAgeRule(args)
+	assert(args, "You must provdide an argument table when creating MaxAgeRule")
 	local t = { 
-		["DeleteSourceFromS3"] = _DeleteSourceFromS3,
-		["Enabled"] = _Enabled,
-		["MaxAgeInDays"] = _MaxAgeInDays,
+		["DeleteSourceFromS3"] = args["DeleteSourceFromS3"],
+		["Enabled"] = args["Enabled"],
+		["MaxAgeInDays"] = args["MaxAgeInDays"],
 	}
 	asserts.AssertMaxAgeRule(t)
 	return t
@@ -795,19 +870,22 @@ end
 
 --- Create a structure of type ManagedAction
 -- <p>The record of an upcoming or in-progress managed action.</p>
--- @param _Status [ActionStatus] <p>The status of the managed action. If the action is <code>Scheduled</code>, you can apply it immediately with <a>ApplyEnvironmentManagedAction</a>.</p>
--- @param _WindowStartTime [Timestamp] <p>The start time of the maintenance window in which the managed action will execute.</p>
--- @param _ActionType [ActionType] <p>The type of managed action.</p>
--- @param _ActionId [String] <p>A unique identifier for the managed action.</p>
--- @param _ActionDescription [String] <p>A description of the managed action.</p>
-function M.ManagedAction(_Status, _WindowStartTime, _ActionType, _ActionId, _ActionDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ManagedAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ActionStatus] <p>The status of the managed action. If the action is <code>Scheduled</code>, you can apply it immediately with <a>ApplyEnvironmentManagedAction</a>.</p>
+-- * WindowStartTime [Timestamp] <p>The start time of the maintenance window in which the managed action will execute.</p>
+-- * ActionType [ActionType] <p>The type of managed action.</p>
+-- * ActionId [String] <p>A unique identifier for the managed action.</p>
+-- * ActionDescription [String] <p>A description of the managed action.</p>
+-- @return ManagedAction structure as a key-value pair table
+function M.ManagedAction(args)
+	assert(args, "You must provdide an argument table when creating ManagedAction")
 	local t = { 
-		["Status"] = _Status,
-		["WindowStartTime"] = _WindowStartTime,
-		["ActionType"] = _ActionType,
-		["ActionId"] = _ActionId,
-		["ActionDescription"] = _ActionDescription,
+		["Status"] = args["Status"],
+		["WindowStartTime"] = args["WindowStartTime"],
+		["ActionType"] = args["ActionType"],
+		["ActionId"] = args["ActionId"],
+		["ActionDescription"] = args["ActionDescription"],
 	}
 	asserts.AssertManagedAction(t)
 	return t
@@ -827,13 +905,16 @@ end
 
 --- Create a structure of type EventDescriptionsMessage
 -- <p>Result message wrapping a list of event descriptions.</p>
--- @param _NextToken [Token] <p> If returned, this indicates that there are more results to obtain. Use this token in the next <a>DescribeEvents</a> call to get the next batch of events. </p>
--- @param _Events [EventDescriptionList] <p> A list of <a>EventDescription</a>. </p>
-function M.EventDescriptionsMessage(_NextToken, _Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventDescriptionsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [Token] <p> If returned, this indicates that there are more results to obtain. Use this token in the next <a>DescribeEvents</a> call to get the next batch of events. </p>
+-- * Events [EventDescriptionList] <p> A list of <a>EventDescription</a>. </p>
+-- @return EventDescriptionsMessage structure as a key-value pair table
+function M.EventDescriptionsMessage(args)
+	assert(args, "You must provdide an argument table when creating EventDescriptionsMessage")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Events"] = _Events,
+		["NextToken"] = args["NextToken"],
+		["Events"] = args["Events"],
 	}
 	asserts.AssertEventDescriptionsMessage(t)
 	return t
@@ -855,17 +936,20 @@ end
 
 --- Create a structure of type DescribeApplicationVersionsMessage
 -- <p>Request to describe application versions.</p>
--- @param _ApplicationName [ApplicationName] <p>Specify an application name to show only application versions for that application.</p>
--- @param _MaxRecords [MaxRecords] <p>Specify a maximum number of application versions to paginate in the request.</p>
--- @param _NextToken [Token] <p>Specify a next token to retrieve the next page in a paginated request.</p>
--- @param _VersionLabels [VersionLabelsList] <p>Specify a version label to show a specific application version.</p>
-function M.DescribeApplicationVersionsMessage(_ApplicationName, _MaxRecords, _NextToken, _VersionLabels, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeApplicationVersionsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>Specify an application name to show only application versions for that application.</p>
+-- * MaxRecords [MaxRecords] <p>Specify a maximum number of application versions to paginate in the request.</p>
+-- * NextToken [Token] <p>Specify a next token to retrieve the next page in a paginated request.</p>
+-- * VersionLabels [VersionLabelsList] <p>Specify a version label to show a specific application version.</p>
+-- @return DescribeApplicationVersionsMessage structure as a key-value pair table
+function M.DescribeApplicationVersionsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeApplicationVersionsMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["MaxRecords"] = _MaxRecords,
-		["NextToken"] = _NextToken,
-		["VersionLabels"] = _VersionLabels,
+		["ApplicationName"] = args["ApplicationName"],
+		["MaxRecords"] = args["MaxRecords"],
+		["NextToken"] = args["NextToken"],
+		["VersionLabels"] = args["VersionLabels"],
 	}
 	asserts.AssertDescribeApplicationVersionsMessage(t)
 	return t
@@ -889,21 +973,24 @@ end
 
 --- Create a structure of type DescribeEnvironmentsMessage
 -- <p>Request to describe one or more environments.</p>
--- @param _ApplicationName [ApplicationName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application.</p>
--- @param _IncludedDeletedBackTo [IncludeDeletedBackTo] <p> If specified when <code>IncludeDeleted</code> is set to <code>true</code>, then environments deleted after this date are displayed. </p>
--- @param _VersionLabel [VersionLabel] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application version.</p>
--- @param _IncludeDeleted [IncludeDeleted] <p>Indicates whether to include deleted environments:</p> <p> <code>true</code>: Environments that have been deleted after <code>IncludedDeletedBackTo</code> are displayed.</p> <p> <code>false</code>: Do not include deleted environments.</p>
--- @param _EnvironmentNames [EnvironmentNamesList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified names.</p>
--- @param _EnvironmentIds [EnvironmentIdList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified IDs.</p>
-function M.DescribeEnvironmentsMessage(_ApplicationName, _IncludedDeletedBackTo, _VersionLabel, _IncludeDeleted, _EnvironmentNames, _EnvironmentIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application.</p>
+-- * IncludedDeletedBackTo [IncludeDeletedBackTo] <p> If specified when <code>IncludeDeleted</code> is set to <code>true</code>, then environments deleted after this date are displayed. </p>
+-- * VersionLabel [VersionLabel] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that are associated with this application version.</p>
+-- * IncludeDeleted [IncludeDeleted] <p>Indicates whether to include deleted environments:</p> <p> <code>true</code>: Environments that have been deleted after <code>IncludedDeletedBackTo</code> are displayed.</p> <p> <code>false</code>: Do not include deleted environments.</p>
+-- * EnvironmentNames [EnvironmentNamesList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified names.</p>
+-- * EnvironmentIds [EnvironmentIdList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified IDs.</p>
+-- @return DescribeEnvironmentsMessage structure as a key-value pair table
+function M.DescribeEnvironmentsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeEnvironmentsMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["IncludedDeletedBackTo"] = _IncludedDeletedBackTo,
-		["VersionLabel"] = _VersionLabel,
-		["IncludeDeleted"] = _IncludeDeleted,
-		["EnvironmentNames"] = _EnvironmentNames,
-		["EnvironmentIds"] = _EnvironmentIds,
+		["ApplicationName"] = args["ApplicationName"],
+		["IncludedDeletedBackTo"] = args["IncludedDeletedBackTo"],
+		["VersionLabel"] = args["VersionLabel"],
+		["IncludeDeleted"] = args["IncludeDeleted"],
+		["EnvironmentNames"] = args["EnvironmentNames"],
+		["EnvironmentIds"] = args["EnvironmentIds"],
 	}
 	asserts.AssertDescribeEnvironmentsMessage(t)
 	return t
@@ -924,15 +1011,18 @@ end
 
 --- Create a structure of type DescribeInstancesHealthResult
 -- <p>Detailed health information about the Amazon EC2 instances in an AWS Elastic Beanstalk environment.</p>
--- @param _InstanceHealthList [InstanceHealthList] <p>Detailed health information about each instance.</p>
--- @param _NextToken [NextToken] <p>Pagination token for the next page of results, if available.</p>
--- @param _RefreshedAt [RefreshedAt] <p>The date and time that the health information was retrieved.</p>
-function M.DescribeInstancesHealthResult(_InstanceHealthList, _NextToken, _RefreshedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesHealthResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceHealthList [InstanceHealthList] <p>Detailed health information about each instance.</p>
+-- * NextToken [NextToken] <p>Pagination token for the next page of results, if available.</p>
+-- * RefreshedAt [RefreshedAt] <p>The date and time that the health information was retrieved.</p>
+-- @return DescribeInstancesHealthResult structure as a key-value pair table
+function M.DescribeInstancesHealthResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancesHealthResult")
 	local t = { 
-		["InstanceHealthList"] = _InstanceHealthList,
-		["NextToken"] = _NextToken,
-		["RefreshedAt"] = _RefreshedAt,
+		["InstanceHealthList"] = args["InstanceHealthList"],
+		["NextToken"] = args["NextToken"],
+		["RefreshedAt"] = args["RefreshedAt"],
 	}
 	asserts.AssertDescribeInstancesHealthResult(t)
 	return t
@@ -952,13 +1042,16 @@ end
 
 --- Create a structure of type SourceConfiguration
 -- <p>A specification for an environment configuration</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application associated with the configuration.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p>The name of the configuration template.</p>
-function M.SourceConfiguration(_ApplicationName, _TemplateName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SourceConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application associated with the configuration.</p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template.</p>
+-- @return SourceConfiguration structure as a key-value pair table
+function M.SourceConfiguration(args)
+	assert(args, "You must provdide an argument table when creating SourceConfiguration")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["TemplateName"] = _TemplateName,
+		["ApplicationName"] = args["ApplicationName"],
+		["TemplateName"] = args["TemplateName"],
 	}
 	asserts.AssertSourceConfiguration(t)
 	return t
@@ -995,47 +1088,50 @@ end
 
 --- Create a structure of type EnvironmentDescription
 -- <p>Describes the properties of an environment.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application associated with this environment.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of this environment.</p>
--- @param _VersionLabel [VersionLabel] <p>The application version deployed in this environment.</p>
--- @param _Status [EnvironmentStatus] <p>The current operational status of the environment:</p> <ul> <li> <p> <code>Launching</code>: Environment is in the process of initial deployment.</p> </li> <li> <p> <code>Updating</code>: Environment is in the process of updating its configuration settings or application version.</p> </li> <li> <p> <code>Ready</code>: Environment is available to have an action performed on it, such as update or terminate.</p> </li> <li> <p> <code>Terminating</code>: Environment is in the shut-down process.</p> </li> <li> <p> <code>Terminated</code>: Environment is not running.</p> </li> </ul>
--- @param _Description [Description] <p>Describes this environment.</p>
--- @param _EnvironmentLinks [EnvironmentLinks] <p>A list of links to other environments in the same group.</p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p>The name of the configuration template used to originally launch this environment.</p>
--- @param _EndpointURL [EndpointURL] <p>For load-balanced, autoscaling environments, the URL to the LoadBalancer. For single-instance environments, the IP address of the instance.</p>
--- @param _SolutionStackName [SolutionStackName] <p> The name of the <code>SolutionStack</code> deployed with this environment. </p>
--- @param _HealthStatus [EnvironmentHealthStatus] <p>Returns the health status of the application running in your environment. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
--- @param _EnvironmentId [EnvironmentId] <p>The ID of this environment.</p>
--- @param _CNAME [DNSCname] <p>The URL to the CNAME for this environment.</p>
--- @param _AbortableOperationInProgress [AbortableOperationInProgress] <p>Indicates if there is an in-progress environment configuration update or application version deployment that you can cancel.</p> <p> <code>true:</code> There is an update in progress. </p> <p> <code>false:</code> There are no updates currently in progress. </p>
--- @param _Tier [EnvironmentTier] <p>Describes the current tier of this environment.</p>
--- @param _Health [EnvironmentHealth] <p>Describes the health status of the environment. AWS Elastic Beanstalk indicates the failure levels for a running environment:</p> <ul> <li> <p> <code>Red</code>: Indicates the environment is not responsive. Occurs when three or more consecutive failures occur for an environment.</p> </li> <li> <p> <code>Yellow</code>: Indicates that something is wrong. Occurs when two consecutive failures occur for an environment.</p> </li> <li> <p> <code>Green</code>: Indicates the environment is healthy and fully functional.</p> </li> <li> <p> <code>Grey</code>: Default health for a new environment. The environment is not fully launched and health checks have not started or health checks are suspended during an <code>UpdateEnvironment</code> or <code>RestartEnvironement</code> request.</p> </li> </ul> <p> Default: <code>Grey</code> </p>
--- @param _DateUpdated [UpdateDate] <p>The last modified date for this environment.</p>
--- @param _DateCreated [CreationDate] <p>The creation date for this environment.</p>
--- @param _Resources [EnvironmentResourcesDescription] <p>The description of the AWS resources used by this environment.</p>
-function M.EnvironmentDescription(_ApplicationName, _EnvironmentName, _VersionLabel, _Status, _Description, _EnvironmentLinks, _PlatformArn, _TemplateName, _EndpointURL, _SolutionStackName, _HealthStatus, _EnvironmentId, _CNAME, _AbortableOperationInProgress, _Tier, _Health, _DateUpdated, _DateCreated, _Resources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application associated with this environment.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of this environment.</p>
+-- * VersionLabel [VersionLabel] <p>The application version deployed in this environment.</p>
+-- * Status [EnvironmentStatus] <p>The current operational status of the environment:</p> <ul> <li> <p> <code>Launching</code>: Environment is in the process of initial deployment.</p> </li> <li> <p> <code>Updating</code>: Environment is in the process of updating its configuration settings or application version.</p> </li> <li> <p> <code>Ready</code>: Environment is available to have an action performed on it, such as update or terminate.</p> </li> <li> <p> <code>Terminating</code>: Environment is in the shut-down process.</p> </li> <li> <p> <code>Terminated</code>: Environment is not running.</p> </li> </ul>
+-- * Description [Description] <p>Describes this environment.</p>
+-- * EnvironmentLinks [EnvironmentLinks] <p>A list of links to other environments in the same group.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template used to originally launch this environment.</p>
+-- * EndpointURL [EndpointURL] <p>For load-balanced, autoscaling environments, the URL to the LoadBalancer. For single-instance environments, the IP address of the instance.</p>
+-- * SolutionStackName [SolutionStackName] <p> The name of the <code>SolutionStack</code> deployed with this environment. </p>
+-- * HealthStatus [EnvironmentHealthStatus] <p>Returns the health status of the application running in your environment. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
+-- * EnvironmentId [EnvironmentId] <p>The ID of this environment.</p>
+-- * CNAME [DNSCname] <p>The URL to the CNAME for this environment.</p>
+-- * AbortableOperationInProgress [AbortableOperationInProgress] <p>Indicates if there is an in-progress environment configuration update or application version deployment that you can cancel.</p> <p> <code>true:</code> There is an update in progress. </p> <p> <code>false:</code> There are no updates currently in progress. </p>
+-- * Tier [EnvironmentTier] <p>Describes the current tier of this environment.</p>
+-- * Health [EnvironmentHealth] <p>Describes the health status of the environment. AWS Elastic Beanstalk indicates the failure levels for a running environment:</p> <ul> <li> <p> <code>Red</code>: Indicates the environment is not responsive. Occurs when three or more consecutive failures occur for an environment.</p> </li> <li> <p> <code>Yellow</code>: Indicates that something is wrong. Occurs when two consecutive failures occur for an environment.</p> </li> <li> <p> <code>Green</code>: Indicates the environment is healthy and fully functional.</p> </li> <li> <p> <code>Grey</code>: Default health for a new environment. The environment is not fully launched and health checks have not started or health checks are suspended during an <code>UpdateEnvironment</code> or <code>RestartEnvironement</code> request.</p> </li> </ul> <p> Default: <code>Grey</code> </p>
+-- * DateUpdated [UpdateDate] <p>The last modified date for this environment.</p>
+-- * DateCreated [CreationDate] <p>The creation date for this environment.</p>
+-- * Resources [EnvironmentResourcesDescription] <p>The description of the AWS resources used by this environment.</p>
+-- @return EnvironmentDescription structure as a key-value pair table
+function M.EnvironmentDescription(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentDescription")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["EnvironmentName"] = _EnvironmentName,
-		["VersionLabel"] = _VersionLabel,
-		["Status"] = _Status,
-		["Description"] = _Description,
-		["EnvironmentLinks"] = _EnvironmentLinks,
-		["PlatformArn"] = _PlatformArn,
-		["TemplateName"] = _TemplateName,
-		["EndpointURL"] = _EndpointURL,
-		["SolutionStackName"] = _SolutionStackName,
-		["HealthStatus"] = _HealthStatus,
-		["EnvironmentId"] = _EnvironmentId,
-		["CNAME"] = _CNAME,
-		["AbortableOperationInProgress"] = _AbortableOperationInProgress,
-		["Tier"] = _Tier,
-		["Health"] = _Health,
-		["DateUpdated"] = _DateUpdated,
-		["DateCreated"] = _DateCreated,
-		["Resources"] = _Resources,
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["VersionLabel"] = args["VersionLabel"],
+		["Status"] = args["Status"],
+		["Description"] = args["Description"],
+		["EnvironmentLinks"] = args["EnvironmentLinks"],
+		["PlatformArn"] = args["PlatformArn"],
+		["TemplateName"] = args["TemplateName"],
+		["EndpointURL"] = args["EndpointURL"],
+		["SolutionStackName"] = args["SolutionStackName"],
+		["HealthStatus"] = args["HealthStatus"],
+		["EnvironmentId"] = args["EnvironmentId"],
+		["CNAME"] = args["CNAME"],
+		["AbortableOperationInProgress"] = args["AbortableOperationInProgress"],
+		["Tier"] = args["Tier"],
+		["Health"] = args["Health"],
+		["DateUpdated"] = args["DateUpdated"],
+		["DateCreated"] = args["DateCreated"],
+		["Resources"] = args["Resources"],
 	}
 	asserts.AssertEnvironmentDescription(t)
 	return t
@@ -1065,33 +1161,36 @@ end
 
 --- Create a structure of type DescribeEventsMessage
 -- <p>Request to retrieve a list of events for an environment.</p>
--- @param _ApplicationName [ApplicationName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those associated with this application.</p>
--- @param _EnvironmentId [EnvironmentId] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.</p>
--- @param _VersionLabel [VersionLabel] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this application version.</p>
--- @param _NextToken [Token] <p>Pagination token. If specified, the events return the next batch of results.</p>
--- @param _EnvironmentName [EnvironmentName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.</p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the version of the custom platform.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that are associated with this environment configuration.</p>
--- @param _MaxRecords [MaxRecords] <p>Specifies the maximum number of events that can be returned, beginning with the most recent event.</p>
--- @param _RequestId [RequestId] <p>If specified, AWS Elastic Beanstalk restricts the described events to include only those associated with this request ID.</p>
--- @param _StartTime [TimeFilterStart] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that occur on or after this time.</p>
--- @param _EndTime [TimeFilterEnd] <p> If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that occur up to, but not including, the <code>EndTime</code>. </p>
--- @param _Severity [EventSeverity] <p>If specified, limits the events returned from this call to include only those with the specified severity or higher.</p>
-function M.DescribeEventsMessage(_ApplicationName, _EnvironmentId, _VersionLabel, _NextToken, _EnvironmentName, _PlatformArn, _TemplateName, _MaxRecords, _RequestId, _StartTime, _EndTime, _Severity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those associated with this application.</p>
+-- * EnvironmentId [EnvironmentId] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.</p>
+-- * VersionLabel [VersionLabel] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this application version.</p>
+-- * NextToken [Token] <p>Pagination token. If specified, the events return the next batch of results.</p>
+-- * EnvironmentName [EnvironmentName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the version of the custom platform.</p>
+-- * TemplateName [ConfigurationTemplateName] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that are associated with this environment configuration.</p>
+-- * MaxRecords [MaxRecords] <p>Specifies the maximum number of events that can be returned, beginning with the most recent event.</p>
+-- * RequestId [RequestId] <p>If specified, AWS Elastic Beanstalk restricts the described events to include only those associated with this request ID.</p>
+-- * StartTime [TimeFilterStart] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that occur on or after this time.</p>
+-- * EndTime [TimeFilterEnd] <p> If specified, AWS Elastic Beanstalk restricts the returned descriptions to those that occur up to, but not including, the <code>EndTime</code>. </p>
+-- * Severity [EventSeverity] <p>If specified, limits the events returned from this call to include only those with the specified severity or higher.</p>
+-- @return DescribeEventsMessage structure as a key-value pair table
+function M.DescribeEventsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventsMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["EnvironmentId"] = _EnvironmentId,
-		["VersionLabel"] = _VersionLabel,
-		["NextToken"] = _NextToken,
-		["EnvironmentName"] = _EnvironmentName,
-		["PlatformArn"] = _PlatformArn,
-		["TemplateName"] = _TemplateName,
-		["MaxRecords"] = _MaxRecords,
-		["RequestId"] = _RequestId,
-		["StartTime"] = _StartTime,
-		["EndTime"] = _EndTime,
-		["Severity"] = _Severity,
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentId"] = args["EnvironmentId"],
+		["VersionLabel"] = args["VersionLabel"],
+		["NextToken"] = args["NextToken"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["PlatformArn"] = args["PlatformArn"],
+		["TemplateName"] = args["TemplateName"],
+		["MaxRecords"] = args["MaxRecords"],
+		["RequestId"] = args["RequestId"],
+		["StartTime"] = args["StartTime"],
+		["EndTime"] = args["EndTime"],
+		["Severity"] = args["Severity"],
 	}
 	asserts.AssertDescribeEventsMessage(t)
 	return t
@@ -1115,21 +1214,24 @@ end
 
 --- Create a structure of type DescribeConfigurationOptionsMessage
 -- <p>Result message containing a list of application version descriptions.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application associated with the configuration template or environment. Only needed if you want to describe the configuration options associated with either the configuration template or environment.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment whose configuration options you want to describe.</p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p>The name of the configuration template whose configuration options you want to describe.</p>
--- @param _SolutionStackName [SolutionStackName] <p>The name of the solution stack whose configuration options you want to describe.</p>
--- @param _Options [OptionsSpecifierList] <p>If specified, restricts the descriptions to only the specified options.</p>
-function M.DescribeConfigurationOptionsMessage(_ApplicationName, _EnvironmentName, _PlatformArn, _TemplateName, _SolutionStackName, _Options, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationOptionsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application associated with the configuration template or environment. Only needed if you want to describe the configuration options associated with either the configuration template or environment.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment whose configuration options you want to describe.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template whose configuration options you want to describe.</p>
+-- * SolutionStackName [SolutionStackName] <p>The name of the solution stack whose configuration options you want to describe.</p>
+-- * Options [OptionsSpecifierList] <p>If specified, restricts the descriptions to only the specified options.</p>
+-- @return DescribeConfigurationOptionsMessage structure as a key-value pair table
+function M.DescribeConfigurationOptionsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigurationOptionsMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["EnvironmentName"] = _EnvironmentName,
-		["PlatformArn"] = _PlatformArn,
-		["TemplateName"] = _TemplateName,
-		["SolutionStackName"] = _SolutionStackName,
-		["Options"] = _Options,
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["PlatformArn"] = args["PlatformArn"],
+		["TemplateName"] = args["TemplateName"],
+		["SolutionStackName"] = args["SolutionStackName"],
+		["Options"] = args["Options"],
 	}
 	asserts.AssertDescribeConfigurationOptionsMessage(t)
 	return t
@@ -1149,13 +1251,16 @@ end
 
 --- Create a structure of type Tag
 -- <p>Describes a tag applied to a resource in an environment.</p>
--- @param _Value [TagValue] <p>The value of the tag.</p>
--- @param _Key [TagKey] <p>The key of the tag.</p>
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The value of the tag.</p>
+-- * Key [TagKey] <p>The key of the tag.</p>
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -1184,31 +1289,34 @@ end
 
 --- Create a structure of type ConfigurationOptionDescription
 -- <p>Describes the possible values for a configuration option.</p>
--- @param _Regex [OptionRestrictionRegex] <p>If specified, the configuration option must be a string value that satisfies this regular expression.</p>
--- @param _Name [ConfigurationOptionName] <p>The name of the configuration option.</p>
--- @param _UserDefined [UserDefinedOption] <p>An indication of whether the user defined this configuration option:</p> <ul> <li> <p> <code>true</code> : This configuration option was defined by the user. It is a valid choice for specifying if this as an <code>Option to Remove</code> when updating configuration settings. </p> </li> <li> <p> <code>false</code> : This configuration was not defined by the user.</p> </li> </ul> <p> Constraint: You can remove only <code>UserDefined</code> options from a configuration. </p> <p> Valid Values: <code>true</code> | <code>false</code> </p>
--- @param _DefaultValue [ConfigurationOptionDefaultValue] <p>The default value for this configuration option.</p>
--- @param _ChangeSeverity [ConfigurationOptionSeverity] <p>An indication of which action is required if the value for this configuration option changes:</p> <ul> <li> <p> <code>NoInterruption</code> : There is no interruption to the environment or application availability.</p> </li> <li> <p> <code>RestartEnvironment</code> : The environment is entirely restarted, all AWS resources are deleted and recreated, and the environment is unavailable during the process.</p> </li> <li> <p> <code>RestartApplicationServer</code> : The environment is available the entire time. However, a short application outage occurs when the application servers on the running Amazon EC2 instances are restarted.</p> </li> </ul>
--- @param _Namespace [OptionNamespace] <p>A unique namespace identifying the option's associated AWS resource.</p>
--- @param _MaxValue [OptionRestrictionMaxValue] <p>If specified, the configuration option must be a numeric value less than this value.</p>
--- @param _MinValue [OptionRestrictionMinValue] <p>If specified, the configuration option must be a numeric value greater than this value.</p>
--- @param _MaxLength [OptionRestrictionMaxLength] <p>If specified, the configuration option must be a string value no longer than this value.</p>
--- @param _ValueType [ConfigurationOptionValueType] <p>An indication of which type of values this option has and whether it is allowable to select one or more than one of the possible values:</p> <ul> <li> <p> <code>Scalar</code> : Values for this option are a single selection from the possible values, or an unformatted string, or numeric value governed by the <code>MIN/MAX/Regex</code> constraints.</p> </li> <li> <p> <code>List</code> : Values for this option are multiple selections from the possible values.</p> </li> <li> <p> <code>Boolean</code> : Values for this option are either <code>true</code> or <code>false</code> .</p> </li> <li> <p> <code>Json</code> : Values for this option are a JSON representation of a <code>ConfigDocument</code>.</p> </li> </ul>
--- @param _ValueOptions [ConfigurationOptionPossibleValues] <p>If specified, values for the configuration option are selected from this list.</p>
-function M.ConfigurationOptionDescription(_Regex, _Name, _UserDefined, _DefaultValue, _ChangeSeverity, _Namespace, _MaxValue, _MinValue, _MaxLength, _ValueType, _ValueOptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationOptionDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Regex [OptionRestrictionRegex] <p>If specified, the configuration option must be a string value that satisfies this regular expression.</p>
+-- * Name [ConfigurationOptionName] <p>The name of the configuration option.</p>
+-- * UserDefined [UserDefinedOption] <p>An indication of whether the user defined this configuration option:</p> <ul> <li> <p> <code>true</code> : This configuration option was defined by the user. It is a valid choice for specifying if this as an <code>Option to Remove</code> when updating configuration settings. </p> </li> <li> <p> <code>false</code> : This configuration was not defined by the user.</p> </li> </ul> <p> Constraint: You can remove only <code>UserDefined</code> options from a configuration. </p> <p> Valid Values: <code>true</code> | <code>false</code> </p>
+-- * DefaultValue [ConfigurationOptionDefaultValue] <p>The default value for this configuration option.</p>
+-- * ChangeSeverity [ConfigurationOptionSeverity] <p>An indication of which action is required if the value for this configuration option changes:</p> <ul> <li> <p> <code>NoInterruption</code> : There is no interruption to the environment or application availability.</p> </li> <li> <p> <code>RestartEnvironment</code> : The environment is entirely restarted, all AWS resources are deleted and recreated, and the environment is unavailable during the process.</p> </li> <li> <p> <code>RestartApplicationServer</code> : The environment is available the entire time. However, a short application outage occurs when the application servers on the running Amazon EC2 instances are restarted.</p> </li> </ul>
+-- * Namespace [OptionNamespace] <p>A unique namespace identifying the option's associated AWS resource.</p>
+-- * MaxValue [OptionRestrictionMaxValue] <p>If specified, the configuration option must be a numeric value less than this value.</p>
+-- * MinValue [OptionRestrictionMinValue] <p>If specified, the configuration option must be a numeric value greater than this value.</p>
+-- * MaxLength [OptionRestrictionMaxLength] <p>If specified, the configuration option must be a string value no longer than this value.</p>
+-- * ValueType [ConfigurationOptionValueType] <p>An indication of which type of values this option has and whether it is allowable to select one or more than one of the possible values:</p> <ul> <li> <p> <code>Scalar</code> : Values for this option are a single selection from the possible values, or an unformatted string, or numeric value governed by the <code>MIN/MAX/Regex</code> constraints.</p> </li> <li> <p> <code>List</code> : Values for this option are multiple selections from the possible values.</p> </li> <li> <p> <code>Boolean</code> : Values for this option are either <code>true</code> or <code>false</code> .</p> </li> <li> <p> <code>Json</code> : Values for this option are a JSON representation of a <code>ConfigDocument</code>.</p> </li> </ul>
+-- * ValueOptions [ConfigurationOptionPossibleValues] <p>If specified, values for the configuration option are selected from this list.</p>
+-- @return ConfigurationOptionDescription structure as a key-value pair table
+function M.ConfigurationOptionDescription(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationOptionDescription")
 	local t = { 
-		["Regex"] = _Regex,
-		["Name"] = _Name,
-		["UserDefined"] = _UserDefined,
-		["DefaultValue"] = _DefaultValue,
-		["ChangeSeverity"] = _ChangeSeverity,
-		["Namespace"] = _Namespace,
-		["MaxValue"] = _MaxValue,
-		["MinValue"] = _MinValue,
-		["MaxLength"] = _MaxLength,
-		["ValueType"] = _ValueType,
-		["ValueOptions"] = _ValueOptions,
+		["Regex"] = args["Regex"],
+		["Name"] = args["Name"],
+		["UserDefined"] = args["UserDefined"],
+		["DefaultValue"] = args["DefaultValue"],
+		["ChangeSeverity"] = args["ChangeSeverity"],
+		["Namespace"] = args["Namespace"],
+		["MaxValue"] = args["MaxValue"],
+		["MinValue"] = args["MinValue"],
+		["MaxLength"] = args["MaxLength"],
+		["ValueType"] = args["ValueType"],
+		["ValueOptions"] = args["ValueOptions"],
 	}
 	asserts.AssertConfigurationOptionDescription(t)
 	return t
@@ -1227,11 +1335,14 @@ end
 
 --- Create a structure of type DescribeEnvironmentManagedActionsResult
 -- <p>The result message containing a list of managed actions.</p>
--- @param _ManagedActions [ManagedActions] <p>A list of upcoming and in-progress managed actions.</p>
-function M.DescribeEnvironmentManagedActionsResult(_ManagedActions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentManagedActionsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ManagedActions [ManagedActions] <p>A list of upcoming and in-progress managed actions.</p>
+-- @return DescribeEnvironmentManagedActionsResult structure as a key-value pair table
+function M.DescribeEnvironmentManagedActionsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeEnvironmentManagedActionsResult")
 	local t = { 
-		["ManagedActions"] = _ManagedActions,
+		["ManagedActions"] = args["ManagedActions"],
 	}
 	asserts.AssertDescribeEnvironmentManagedActionsResult(t)
 	return t
@@ -1250,11 +1361,14 @@ end
 
 --- Create a structure of type CreateStorageLocationResultMessage
 -- <p>Results of a <a>CreateStorageLocationResult</a> call.</p>
--- @param _S3Bucket [S3Bucket] <p>The name of the Amazon S3 bucket created.</p>
-function M.CreateStorageLocationResultMessage(_S3Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStorageLocationResultMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * S3Bucket [S3Bucket] <p>The name of the Amazon S3 bucket created.</p>
+-- @return CreateStorageLocationResultMessage structure as a key-value pair table
+function M.CreateStorageLocationResultMessage(args)
+	assert(args, "You must provdide an argument table when creating CreateStorageLocationResultMessage")
 	local t = { 
-		["S3Bucket"] = _S3Bucket,
+		["S3Bucket"] = args["S3Bucket"],
 	}
 	asserts.AssertCreateStorageLocationResultMessage(t)
 	return t
@@ -1275,15 +1389,18 @@ end
 
 --- Create a structure of type OptionSpecification
 -- <p>A specification identifying an individual configuration option.</p>
--- @param _OptionName [ConfigurationOptionName] <p>The name of the configuration option.</p>
--- @param _ResourceName [ResourceName] <p>A unique resource name for a time-based scaling configuration option.</p>
--- @param _Namespace [OptionNamespace] <p>A unique namespace identifying the option's associated AWS resource.</p>
-function M.OptionSpecification(_OptionName, _ResourceName, _Namespace, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OptionSpecification")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OptionName [ConfigurationOptionName] <p>The name of the configuration option.</p>
+-- * ResourceName [ResourceName] <p>A unique resource name for a time-based scaling configuration option.</p>
+-- * Namespace [OptionNamespace] <p>A unique namespace identifying the option's associated AWS resource.</p>
+-- @return OptionSpecification structure as a key-value pair table
+function M.OptionSpecification(args)
+	assert(args, "You must provdide an argument table when creating OptionSpecification")
 	local t = { 
-		["OptionName"] = _OptionName,
-		["ResourceName"] = _ResourceName,
-		["Namespace"] = _Namespace,
+		["OptionName"] = args["OptionName"],
+		["ResourceName"] = args["ResourceName"],
+		["Namespace"] = args["Namespace"],
 	}
 	asserts.AssertOptionSpecification(t)
 	return t
@@ -1319,45 +1436,48 @@ end
 
 --- Create a structure of type PlatformDescription
 -- <p>Detailed information about a platform.</p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
--- @param _Maintainer [Maintainer] <p>Information about the maintainer of the platform.</p>
--- @param _Description [Description] <p>The description of the platform.</p>
--- @param _PlatformStatus [PlatformStatus] <p>The status of the platform.</p>
--- @param _Frameworks [PlatformFrameworks] <p>The frameworks supported by the platform.</p>
--- @param _ProgrammingLanguages [PlatformProgrammingLanguages] <p>The programming languages supported by the platform.</p>
--- @param _SolutionStackName [SolutionStackName] <p>The name of the solution stack used by the platform.</p>
--- @param _OperatingSystemVersion [OperatingSystemVersion] <p>The version of the operating system used by the platform.</p>
--- @param _SupportedTierList [SupportedTierList] <p>The tiers supported by the platform.</p>
--- @param _OperatingSystemName [OperatingSystemName] <p>The operating system used by the platform.</p>
--- @param _PlatformCategory [PlatformCategory] <p>The category of the platform.</p>
--- @param _PlatformOwner [PlatformOwner] <p>The AWS account ID of the person who created the platform.</p>
--- @param _PlatformVersion [PlatformVersion] <p>The version of the platform.</p>
--- @param _DateUpdated [UpdateDate] <p>The date when the platform was last updated.</p>
--- @param _DateCreated [CreationDate] <p>The date when the platform was created.</p>
--- @param _PlatformName [PlatformName] <p>The name of the platform.</p>
--- @param _SupportedAddonList [SupportedAddonList] <p>The additions supported by the platform.</p>
--- @param _CustomAmiList [CustomAmiList] <p>The custom AMIs supported by the platform.</p>
-function M.PlatformDescription(_PlatformArn, _Maintainer, _Description, _PlatformStatus, _Frameworks, _ProgrammingLanguages, _SolutionStackName, _OperatingSystemVersion, _SupportedTierList, _OperatingSystemName, _PlatformCategory, _PlatformOwner, _PlatformVersion, _DateUpdated, _DateCreated, _PlatformName, _SupportedAddonList, _CustomAmiList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlatformDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
+-- * Maintainer [Maintainer] <p>Information about the maintainer of the platform.</p>
+-- * Description [Description] <p>The description of the platform.</p>
+-- * PlatformStatus [PlatformStatus] <p>The status of the platform.</p>
+-- * Frameworks [PlatformFrameworks] <p>The frameworks supported by the platform.</p>
+-- * ProgrammingLanguages [PlatformProgrammingLanguages] <p>The programming languages supported by the platform.</p>
+-- * SolutionStackName [SolutionStackName] <p>The name of the solution stack used by the platform.</p>
+-- * OperatingSystemVersion [OperatingSystemVersion] <p>The version of the operating system used by the platform.</p>
+-- * SupportedTierList [SupportedTierList] <p>The tiers supported by the platform.</p>
+-- * OperatingSystemName [OperatingSystemName] <p>The operating system used by the platform.</p>
+-- * PlatformCategory [PlatformCategory] <p>The category of the platform.</p>
+-- * PlatformOwner [PlatformOwner] <p>The AWS account ID of the person who created the platform.</p>
+-- * PlatformVersion [PlatformVersion] <p>The version of the platform.</p>
+-- * DateUpdated [UpdateDate] <p>The date when the platform was last updated.</p>
+-- * DateCreated [CreationDate] <p>The date when the platform was created.</p>
+-- * PlatformName [PlatformName] <p>The name of the platform.</p>
+-- * SupportedAddonList [SupportedAddonList] <p>The additions supported by the platform.</p>
+-- * CustomAmiList [CustomAmiList] <p>The custom AMIs supported by the platform.</p>
+-- @return PlatformDescription structure as a key-value pair table
+function M.PlatformDescription(args)
+	assert(args, "You must provdide an argument table when creating PlatformDescription")
 	local t = { 
-		["PlatformArn"] = _PlatformArn,
-		["Maintainer"] = _Maintainer,
-		["Description"] = _Description,
-		["PlatformStatus"] = _PlatformStatus,
-		["Frameworks"] = _Frameworks,
-		["ProgrammingLanguages"] = _ProgrammingLanguages,
-		["SolutionStackName"] = _SolutionStackName,
-		["OperatingSystemVersion"] = _OperatingSystemVersion,
-		["SupportedTierList"] = _SupportedTierList,
-		["OperatingSystemName"] = _OperatingSystemName,
-		["PlatformCategory"] = _PlatformCategory,
-		["PlatformOwner"] = _PlatformOwner,
-		["PlatformVersion"] = _PlatformVersion,
-		["DateUpdated"] = _DateUpdated,
-		["DateCreated"] = _DateCreated,
-		["PlatformName"] = _PlatformName,
-		["SupportedAddonList"] = _SupportedAddonList,
-		["CustomAmiList"] = _CustomAmiList,
+		["PlatformArn"] = args["PlatformArn"],
+		["Maintainer"] = args["Maintainer"],
+		["Description"] = args["Description"],
+		["PlatformStatus"] = args["PlatformStatus"],
+		["Frameworks"] = args["Frameworks"],
+		["ProgrammingLanguages"] = args["ProgrammingLanguages"],
+		["SolutionStackName"] = args["SolutionStackName"],
+		["OperatingSystemVersion"] = args["OperatingSystemVersion"],
+		["SupportedTierList"] = args["SupportedTierList"],
+		["OperatingSystemName"] = args["OperatingSystemName"],
+		["PlatformCategory"] = args["PlatformCategory"],
+		["PlatformOwner"] = args["PlatformOwner"],
+		["PlatformVersion"] = args["PlatformVersion"],
+		["DateUpdated"] = args["DateUpdated"],
+		["DateCreated"] = args["DateCreated"],
+		["PlatformName"] = args["PlatformName"],
+		["SupportedAddonList"] = args["SupportedAddonList"],
+		["CustomAmiList"] = args["CustomAmiList"],
 	}
 	asserts.AssertPlatformDescription(t)
 	return t
@@ -1376,11 +1496,14 @@ end
 
 --- Create a structure of type AutoScalingGroup
 -- <p>Describes an Auto Scaling launch configuration.</p>
--- @param _Name [ResourceId] <p>The name of the <code>AutoScalingGroup</code> . </p>
-function M.AutoScalingGroup(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ResourceId] <p>The name of the <code>AutoScalingGroup</code> . </p>
+-- @return AutoScalingGroup structure as a key-value pair table
+function M.AutoScalingGroup(args)
+	assert(args, "You must provdide an argument table when creating AutoScalingGroup")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertAutoScalingGroup(t)
 	return t
@@ -1399,11 +1522,14 @@ end
 
 --- Create a structure of type ApplicationVersionDescriptionMessage
 -- <p>Result message wrapping a single description of an application version.</p>
--- @param _ApplicationVersion [ApplicationVersionDescription] <p> The <a>ApplicationVersionDescription</a> of the application version. </p>
-function M.ApplicationVersionDescriptionMessage(_ApplicationVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationVersionDescriptionMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationVersion [ApplicationVersionDescription] <p> The <a>ApplicationVersionDescription</a> of the application version. </p>
+-- @return ApplicationVersionDescriptionMessage structure as a key-value pair table
+function M.ApplicationVersionDescriptionMessage(args)
+	assert(args, "You must provdide an argument table when creating ApplicationVersionDescriptionMessage")
 	local t = { 
-		["ApplicationVersion"] = _ApplicationVersion,
+		["ApplicationVersion"] = args["ApplicationVersion"],
 	}
 	asserts.AssertApplicationVersionDescriptionMessage(t)
 	return t
@@ -1423,13 +1549,16 @@ end
 
 --- Create a structure of type DescribeEnvironmentResourcesMessage
 -- <p>Request to describe the resources in an environment.</p>
--- @param _EnvironmentId [EnvironmentId] <p>The ID of the environment to retrieve AWS resource usage data.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment to retrieve AWS resource usage data.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-function M.DescribeEnvironmentResourcesMessage(_EnvironmentId, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentResourcesMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentId [EnvironmentId] <p>The ID of the environment to retrieve AWS resource usage data.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment to retrieve AWS resource usage data.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @return DescribeEnvironmentResourcesMessage structure as a key-value pair table
+function M.DescribeEnvironmentResourcesMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeEnvironmentResourcesMessage")
 	local t = { 
-		["EnvironmentId"] = _EnvironmentId,
-		["EnvironmentName"] = _EnvironmentName,
+		["EnvironmentId"] = args["EnvironmentId"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertDescribeEnvironmentResourcesMessage(t)
 	return t
@@ -1451,16 +1580,19 @@ end
 
 --- Create a structure of type RetrieveEnvironmentInfoMessage
 -- <p>Request to download logs retrieved with <a>RequestEnvironmentInfo</a>.</p>
--- @param _EnvironmentId [EnvironmentId] <p>The ID of the data's environment.</p> <p>If no such environment is found, returns an <code>InvalidParameterValue</code> error.</p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error.</p>
--- @param _InfoType [EnvironmentInfoType] <p>The type of information to retrieve.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the data's environment.</p> <p> If no such environment is found, returns an <code>InvalidParameterValue</code> error. </p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- Required parameter: InfoType
-function M.RetrieveEnvironmentInfoMessage(_EnvironmentId, _InfoType, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveEnvironmentInfoMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentId [EnvironmentId] <p>The ID of the data's environment.</p> <p>If no such environment is found, returns an <code>InvalidParameterValue</code> error.</p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error.</p>
+-- * InfoType [EnvironmentInfoType] <p>The type of information to retrieve.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the data's environment.</p> <p> If no such environment is found, returns an <code>InvalidParameterValue</code> error. </p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- Required key: InfoType
+-- @return RetrieveEnvironmentInfoMessage structure as a key-value pair table
+function M.RetrieveEnvironmentInfoMessage(args)
+	assert(args, "You must provdide an argument table when creating RetrieveEnvironmentInfoMessage")
 	local t = { 
-		["EnvironmentId"] = _EnvironmentId,
-		["InfoType"] = _InfoType,
-		["EnvironmentName"] = _EnvironmentName,
+		["EnvironmentId"] = args["EnvironmentId"],
+		["InfoType"] = args["InfoType"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertRetrieveEnvironmentInfoMessage(t)
 	return t
@@ -1482,16 +1614,19 @@ end
 
 --- Create a structure of type CreateApplicationMessage
 -- <p>Request to create an application.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application.</p> <p>Constraint: This name must be unique within your account. If the specified name already exists, the action returns an <code>InvalidParameterValue</code> error.</p>
--- @param _Description [Description] <p>Describes the application.</p>
--- @param _ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>Specify an application resource lifecycle configuration to prevent your application from accumulating too many versions.</p>
--- Required parameter: ApplicationName
-function M.CreateApplicationMessage(_ApplicationName, _Description, _ResourceLifecycleConfig, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application.</p> <p>Constraint: This name must be unique within your account. If the specified name already exists, the action returns an <code>InvalidParameterValue</code> error.</p>
+-- * Description [Description] <p>Describes the application.</p>
+-- * ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>Specify an application resource lifecycle configuration to prevent your application from accumulating too many versions.</p>
+-- Required key: ApplicationName
+-- @return CreateApplicationMessage structure as a key-value pair table
+function M.CreateApplicationMessage(args)
+	assert(args, "You must provdide an argument table when creating CreateApplicationMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["Description"] = _Description,
-		["ResourceLifecycleConfig"] = _ResourceLifecycleConfig,
+		["ApplicationName"] = args["ApplicationName"],
+		["Description"] = args["Description"],
+		["ResourceLifecycleConfig"] = args["ResourceLifecycleConfig"],
 	}
 	asserts.AssertCreateApplicationMessage(t)
 	return t
@@ -1517,22 +1652,25 @@ end
 
 --- Create a structure of type CreatePlatformVersionRequest
 -- <p>Request to create a new platform version.</p>
--- @param _PlatformVersion [PlatformVersion] <p>The number, such as 1.0.2, for the new platform version.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the builder environment.</p>
--- @param _PlatformDefinitionBundle [S3Location] <p>The location of the platform definition archive in Amazon S3.</p>
--- @param _PlatformName [PlatformName] <p>The name of your custom platform.</p>
--- @param _OptionSettings [ConfigurationOptionSettingsList] <p>The configuration option settings to apply to the builder environment.</p>
--- Required parameter: PlatformName
--- Required parameter: PlatformVersion
--- Required parameter: PlatformDefinitionBundle
-function M.CreatePlatformVersionRequest(_PlatformVersion, _EnvironmentName, _PlatformDefinitionBundle, _PlatformName, _OptionSettings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlatformVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlatformVersion [PlatformVersion] <p>The number, such as 1.0.2, for the new platform version.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the builder environment.</p>
+-- * PlatformDefinitionBundle [S3Location] <p>The location of the platform definition archive in Amazon S3.</p>
+-- * PlatformName [PlatformName] <p>The name of your custom platform.</p>
+-- * OptionSettings [ConfigurationOptionSettingsList] <p>The configuration option settings to apply to the builder environment.</p>
+-- Required key: PlatformName
+-- Required key: PlatformVersion
+-- Required key: PlatformDefinitionBundle
+-- @return CreatePlatformVersionRequest structure as a key-value pair table
+function M.CreatePlatformVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreatePlatformVersionRequest")
 	local t = { 
-		["PlatformVersion"] = _PlatformVersion,
-		["EnvironmentName"] = _EnvironmentName,
-		["PlatformDefinitionBundle"] = _PlatformDefinitionBundle,
-		["PlatformName"] = _PlatformName,
-		["OptionSettings"] = _OptionSettings,
+		["PlatformVersion"] = args["PlatformVersion"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["PlatformDefinitionBundle"] = args["PlatformDefinitionBundle"],
+		["PlatformName"] = args["PlatformName"],
+		["OptionSettings"] = args["OptionSettings"],
 	}
 	asserts.AssertCreatePlatformVersionRequest(t)
 	return t
@@ -1552,13 +1690,16 @@ end
 
 --- Create a structure of type Listener
 -- <p>Describes the properties of a Listener for the LoadBalancer.</p>
--- @param _Protocol [String] <p>The protocol that is used by the Listener.</p>
--- @param _Port [Integer] <p>The port that is used by the Listener.</p>
-function M.Listener(_Protocol, _Port, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Listener")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Protocol [String] <p>The protocol that is used by the Listener.</p>
+-- * Port [Integer] <p>The port that is used by the Listener.</p>
+-- @return Listener structure as a key-value pair table
+function M.Listener(args)
+	assert(args, "You must provdide an argument table when creating Listener")
 	local t = { 
-		["Protocol"] = _Protocol,
-		["Port"] = _Port,
+		["Protocol"] = args["Protocol"],
+		["Port"] = args["Port"],
 	}
 	asserts.AssertListener(t)
 	return t
@@ -1578,13 +1719,16 @@ end
 
 --- Create a structure of type ApplicationResourceLifecycleDescriptionMessage
 --  
--- @param _ApplicationName [ApplicationName] <p>The name of the application.</p>
--- @param _ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle configuration.</p>
-function M.ApplicationResourceLifecycleDescriptionMessage(_ApplicationName, _ResourceLifecycleConfig, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationResourceLifecycleDescriptionMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application.</p>
+-- * ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle configuration.</p>
+-- @return ApplicationResourceLifecycleDescriptionMessage structure as a key-value pair table
+function M.ApplicationResourceLifecycleDescriptionMessage(args)
+	assert(args, "You must provdide an argument table when creating ApplicationResourceLifecycleDescriptionMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["ResourceLifecycleConfig"] = _ResourceLifecycleConfig,
+		["ApplicationName"] = args["ApplicationName"],
+		["ResourceLifecycleConfig"] = args["ResourceLifecycleConfig"],
 	}
 	asserts.AssertApplicationResourceLifecycleDescriptionMessage(t)
 	return t
@@ -1604,13 +1748,16 @@ end
 
 --- Create a structure of type SystemStatus
 -- <p>CPU utilization and load average metrics for an Amazon EC2 instance.</p>
--- @param _LoadAverage [LoadAverage] <p>Load average in the last 1-minute, 5-minute, and 15-minute periods. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-metrics.html#health-enhanced-metrics-os">Operating System Metrics</a>.</p>
--- @param _CPUUtilization [CPUUtilization] <p>CPU utilization metrics for the instance.</p>
-function M.SystemStatus(_LoadAverage, _CPUUtilization, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SystemStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoadAverage [LoadAverage] <p>Load average in the last 1-minute, 5-minute, and 15-minute periods. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-metrics.html#health-enhanced-metrics-os">Operating System Metrics</a>.</p>
+-- * CPUUtilization [CPUUtilization] <p>CPU utilization metrics for the instance.</p>
+-- @return SystemStatus structure as a key-value pair table
+function M.SystemStatus(args)
+	assert(args, "You must provdide an argument table when creating SystemStatus")
 	local t = { 
-		["LoadAverage"] = _LoadAverage,
-		["CPUUtilization"] = _CPUUtilization,
+		["LoadAverage"] = args["LoadAverage"],
+		["CPUUtilization"] = args["CPUUtilization"],
 	}
 	asserts.AssertSystemStatus(t)
 	return t
@@ -1629,11 +1776,14 @@ end
 
 --- Create a structure of type DeletePlatformVersionRequest
 --  
--- @param _PlatformArn [PlatformArn] <p>The ARN of the version of the custom platform.</p>
-function M.DeletePlatformVersionRequest(_PlatformArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePlatformVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlatformArn [PlatformArn] <p>The ARN of the version of the custom platform.</p>
+-- @return DeletePlatformVersionRequest structure as a key-value pair table
+function M.DeletePlatformVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeletePlatformVersionRequest")
 	local t = { 
-		["PlatformArn"] = _PlatformArn,
+		["PlatformArn"] = args["PlatformArn"],
 	}
 	asserts.AssertDeletePlatformVersionRequest(t)
 	return t
@@ -1651,8 +1801,11 @@ end
 
 --- Create a structure of type CodeBuildNotInServiceRegionException
 -- <p>AWS CodeBuild is not available in the specified region.</p>
-function M.CodeBuildNotInServiceRegionException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CodeBuildNotInServiceRegionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CodeBuildNotInServiceRegionException structure as a key-value pair table
+function M.CodeBuildNotInServiceRegionException(args)
+	assert(args, "You must provdide an argument table when creating CodeBuildNotInServiceRegionException")
 	local t = { 
 	}
 	asserts.AssertCodeBuildNotInServiceRegionException(t)
@@ -1681,27 +1834,30 @@ end
 
 --- Create a structure of type CreateApplicationVersionMessage
 -- <p/>
--- @param _ApplicationName [ApplicationName] <p> The name of the application. If no application is found with this name, and <code>AutoCreateApplication</code> is <code>false</code>, returns an <code>InvalidParameterValue</code> error. </p>
--- @param _VersionLabel [VersionLabel] <p>A label identifying this version.</p> <p>Constraint: Must be unique per application. If an application version already exists with this label for the specified application, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
--- @param _SourceBuildInformation [SourceBuildInformation] <p>Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version.</p>
--- @param _Description [Description] <p>Describes this version.</p>
--- @param _AutoCreateApplication [AutoCreateApplication] <p>Set to <code>true</code> to create an application with the specified name if it doesn't already exist.</p>
--- @param _Process [ApplicationVersionProccess] <p>Preprocesses and validates the environment manifest and configuration files in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.</p>
--- @param _BuildConfiguration [BuildConfiguration] <p>Settings for an AWS CodeBuild build.</p>
--- @param _SourceBundle [S3Location] <p>The Amazon S3 bucket and key that identify the location of the source bundle for this version.</p> <note> <p>The Amazon S3 bucket must be in the same region as the environment.</p> </note> <p>Specify a source bundle in S3 or a commit in an AWS CodeCommit repository (with <code>SourceBuildInformation</code>), but not both. If neither <code>SourceBundle</code> nor <code>SourceBuildInformation</code> are provided, Elastic Beanstalk uses a sample application.</p>
--- Required parameter: ApplicationName
--- Required parameter: VersionLabel
-function M.CreateApplicationVersionMessage(_ApplicationName, _VersionLabel, _SourceBuildInformation, _Description, _AutoCreateApplication, _Process, _BuildConfiguration, _SourceBundle, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateApplicationVersionMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p> The name of the application. If no application is found with this name, and <code>AutoCreateApplication</code> is <code>false</code>, returns an <code>InvalidParameterValue</code> error. </p>
+-- * VersionLabel [VersionLabel] <p>A label identifying this version.</p> <p>Constraint: Must be unique per application. If an application version already exists with this label for the specified application, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- * SourceBuildInformation [SourceBuildInformation] <p>Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version.</p>
+-- * Description [Description] <p>Describes this version.</p>
+-- * AutoCreateApplication [AutoCreateApplication] <p>Set to <code>true</code> to create an application with the specified name if it doesn't already exist.</p>
+-- * Process [ApplicationVersionProccess] <p>Preprocesses and validates the environment manifest and configuration files in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.</p>
+-- * BuildConfiguration [BuildConfiguration] <p>Settings for an AWS CodeBuild build.</p>
+-- * SourceBundle [S3Location] <p>The Amazon S3 bucket and key that identify the location of the source bundle for this version.</p> <note> <p>The Amazon S3 bucket must be in the same region as the environment.</p> </note> <p>Specify a source bundle in S3 or a commit in an AWS CodeCommit repository (with <code>SourceBuildInformation</code>), but not both. If neither <code>SourceBundle</code> nor <code>SourceBuildInformation</code> are provided, Elastic Beanstalk uses a sample application.</p>
+-- Required key: ApplicationName
+-- Required key: VersionLabel
+-- @return CreateApplicationVersionMessage structure as a key-value pair table
+function M.CreateApplicationVersionMessage(args)
+	assert(args, "You must provdide an argument table when creating CreateApplicationVersionMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["VersionLabel"] = _VersionLabel,
-		["SourceBuildInformation"] = _SourceBuildInformation,
-		["Description"] = _Description,
-		["AutoCreateApplication"] = _AutoCreateApplication,
-		["Process"] = _Process,
-		["BuildConfiguration"] = _BuildConfiguration,
-		["SourceBundle"] = _SourceBundle,
+		["ApplicationName"] = args["ApplicationName"],
+		["VersionLabel"] = args["VersionLabel"],
+		["SourceBuildInformation"] = args["SourceBuildInformation"],
+		["Description"] = args["Description"],
+		["AutoCreateApplication"] = args["AutoCreateApplication"],
+		["Process"] = args["Process"],
+		["BuildConfiguration"] = args["BuildConfiguration"],
+		["SourceBundle"] = args["SourceBundle"],
 	}
 	asserts.AssertCreateApplicationVersionMessage(t)
 	return t
@@ -1721,13 +1877,16 @@ end
 
 --- Create a structure of type ApplicationVersionDescriptionsMessage
 -- <p>Result message wrapping a list of application version descriptions.</p>
--- @param _ApplicationVersions [ApplicationVersionDescriptionList] <p>List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.</p>
--- @param _NextToken [Token] <p>For a paginated request, the token that you can pass in a subsequent request to get the next page.</p>
-function M.ApplicationVersionDescriptionsMessage(_ApplicationVersions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationVersionDescriptionsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationVersions [ApplicationVersionDescriptionList] <p>List of <code>ApplicationVersionDescription</code> objects sorted in order of creation.</p>
+-- * NextToken [Token] <p>For a paginated request, the token that you can pass in a subsequent request to get the next page.</p>
+-- @return ApplicationVersionDescriptionsMessage structure as a key-value pair table
+function M.ApplicationVersionDescriptionsMessage(args)
+	assert(args, "You must provdide an argument table when creating ApplicationVersionDescriptionsMessage")
 	local t = { 
-		["ApplicationVersions"] = _ApplicationVersions,
-		["NextToken"] = _NextToken,
+		["ApplicationVersions"] = args["ApplicationVersions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertApplicationVersionDescriptionsMessage(t)
 	return t
@@ -1746,11 +1905,14 @@ end
 
 --- Create a structure of type Builder
 -- <p>The builder used to build the custom platform.</p>
--- @param _ARN [ARN] <p>The ARN of the builder.</p>
-function M.Builder(_ARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Builder")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ARN [ARN] <p>The ARN of the builder.</p>
+-- @return Builder structure as a key-value pair table
+function M.Builder(args)
+	assert(args, "You must provdide an argument table when creating Builder")
 	local t = { 
-		["ARN"] = _ARN,
+		["ARN"] = args["ARN"],
 	}
 	asserts.AssertBuilder(t)
 	return t
@@ -1772,17 +1934,20 @@ end
 
 --- Create a structure of type ApplicationMetrics
 -- <p>Application request metrics for an AWS Elastic Beanstalk environment.</p>
--- @param _Duration [NullableInteger] <p>The amount of time that the metrics cover (usually 10 seconds). For example, you might have 5 requests (<code>request_count</code>) within the most recent time slice of 10 seconds (<code>duration</code>).</p>
--- @param _Latency [Latency] <p>Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies are in seconds with one millisecond resolution.</p>
--- @param _RequestCount [RequestCount] <p>Average number of requests handled by the web server per second over the last 10 seconds.</p>
--- @param _StatusCodes [StatusCodes] <p>Represents the percentage of requests over the last 10 seconds that resulted in each type of status code response.</p>
-function M.ApplicationMetrics(_Duration, _Latency, _RequestCount, _StatusCodes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationMetrics")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Duration [NullableInteger] <p>The amount of time that the metrics cover (usually 10 seconds). For example, you might have 5 requests (<code>request_count</code>) within the most recent time slice of 10 seconds (<code>duration</code>).</p>
+-- * Latency [Latency] <p>Represents the average latency for the slowest X percent of requests over the last 10 seconds. Latencies are in seconds with one millisecond resolution.</p>
+-- * RequestCount [RequestCount] <p>Average number of requests handled by the web server per second over the last 10 seconds.</p>
+-- * StatusCodes [StatusCodes] <p>Represents the percentage of requests over the last 10 seconds that resulted in each type of status code response.</p>
+-- @return ApplicationMetrics structure as a key-value pair table
+function M.ApplicationMetrics(args)
+	assert(args, "You must provdide an argument table when creating ApplicationMetrics")
 	local t = { 
-		["Duration"] = _Duration,
-		["Latency"] = _Latency,
-		["RequestCount"] = _RequestCount,
-		["StatusCodes"] = _StatusCodes,
+		["Duration"] = args["Duration"],
+		["Latency"] = args["Latency"],
+		["RequestCount"] = args["RequestCount"],
+		["StatusCodes"] = args["StatusCodes"],
 	}
 	asserts.AssertApplicationMetrics(t)
 	return t
@@ -1804,17 +1969,20 @@ end
 
 --- Create a structure of type TerminateEnvironmentMessage
 -- <p>Request to terminate an environment.</p>
--- @param _EnvironmentId [EnvironmentId] <p>The ID of the environment to terminate.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- @param _TerminateResources [TerminateEnvironmentResources] <p>Indicates whether the associated AWS resources should shut down when the environment is terminated:</p> <ul> <li> <p> <code>true</code>: The specified environment as well as the associated AWS resources, such as Auto Scaling group and LoadBalancer, are terminated.</p> </li> <li> <p> <code>false</code>: AWS Elastic Beanstalk resource management is removed from the environment, but the AWS resources continue to operate.</p> </li> </ul> <p> For more information, see the <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS Elastic Beanstalk User Guide. </a> </p> <p> Default: <code>true</code> </p> <p> Valid Values: <code>true</code> | <code>false</code> </p>
--- @param _ForceTerminate [ForceTerminate] <p>Terminates the target environment even if another environment in the same group is dependent on it.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment to terminate.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-function M.TerminateEnvironmentMessage(_EnvironmentId, _TerminateResources, _ForceTerminate, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminateEnvironmentMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentId [EnvironmentId] <p>The ID of the environment to terminate.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * TerminateResources [TerminateEnvironmentResources] <p>Indicates whether the associated AWS resources should shut down when the environment is terminated:</p> <ul> <li> <p> <code>true</code>: The specified environment as well as the associated AWS resources, such as Auto Scaling group and LoadBalancer, are terminated.</p> </li> <li> <p> <code>false</code>: AWS Elastic Beanstalk resource management is removed from the environment, but the AWS resources continue to operate.</p> </li> </ul> <p> For more information, see the <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/ug/"> AWS Elastic Beanstalk User Guide. </a> </p> <p> Default: <code>true</code> </p> <p> Valid Values: <code>true</code> | <code>false</code> </p>
+-- * ForceTerminate [ForceTerminate] <p>Terminates the target environment even if another environment in the same group is dependent on it.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment to terminate.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @return TerminateEnvironmentMessage structure as a key-value pair table
+function M.TerminateEnvironmentMessage(args)
+	assert(args, "You must provdide an argument table when creating TerminateEnvironmentMessage")
 	local t = { 
-		["EnvironmentId"] = _EnvironmentId,
-		["TerminateResources"] = _TerminateResources,
-		["ForceTerminate"] = _ForceTerminate,
-		["EnvironmentName"] = _EnvironmentName,
+		["EnvironmentId"] = args["EnvironmentId"],
+		["TerminateResources"] = args["TerminateResources"],
+		["ForceTerminate"] = args["ForceTerminate"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertTerminateEnvironmentMessage(t)
 	return t
@@ -1834,13 +2002,16 @@ end
 
 --- Create a structure of type Queue
 -- <p>Describes a queue.</p>
--- @param _URL [String] <p>The URL of the queue.</p>
--- @param _Name [String] <p>The name of the queue.</p>
-function M.Queue(_URL, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Queue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * URL [String] <p>The URL of the queue.</p>
+-- * Name [String] <p>The name of the queue.</p>
+-- @return Queue structure as a key-value pair table
+function M.Queue(args)
+	assert(args, "You must provdide an argument table when creating Queue")
 	local t = { 
-		["URL"] = _URL,
-		["Name"] = _Name,
+		["URL"] = args["URL"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertQueue(t)
 	return t
@@ -1865,21 +2036,24 @@ end
 
 --- Create a structure of type BuildConfiguration
 -- <p>Settings for an AWS CodeBuild build.</p>
--- @param _ComputeType [ComputeType] <p>Information about the compute resources the build project will use.</p> <ul> <li> <p> <code>BUILD_GENERAL1_SMALL: Use up to 3 GB memory and 2 vCPUs for builds</code> </p> </li> <li> <p> <code>BUILD_GENERAL1_MEDIUM: Use up to 7 GB memory and 4 vCPUs for builds</code> </p> </li> <li> <p> <code>BUILD_GENERAL1_LARGE: Use up to 15 GB memory and 8 vCPUs for builds</code> </p> </li> </ul>
--- @param _Image [NonEmptyString] <p>The ID of the Docker image to use for this build project.</p>
--- @param _TimeoutInMinutes [BoxedInt] <p>How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed. The default is 60 minutes.</p>
--- @param _CodeBuildServiceRole [NonEmptyString] <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
--- @param _ArtifactName [String] <p>The name of the artifact of the CodeBuild build. If provided, Elastic Beanstalk stores the build artifact in the S3 location <i>S3-bucket</i>/resources/<i>application-name</i>/codebuild/codebuild-<i>version-label</i>-<i>artifact-name</i>.zip. If not provided, Elastic Beanstalk stores the build artifact in the S3 location <i>S3-bucket</i>/resources/<i>application-name</i>/codebuild/codebuild-<i>version-label</i>.zip. </p>
--- Required parameter: CodeBuildServiceRole
--- Required parameter: Image
-function M.BuildConfiguration(_ComputeType, _Image, _TimeoutInMinutes, _CodeBuildServiceRole, _ArtifactName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BuildConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComputeType [ComputeType] <p>Information about the compute resources the build project will use.</p> <ul> <li> <p> <code>BUILD_GENERAL1_SMALL: Use up to 3 GB memory and 2 vCPUs for builds</code> </p> </li> <li> <p> <code>BUILD_GENERAL1_MEDIUM: Use up to 7 GB memory and 4 vCPUs for builds</code> </p> </li> <li> <p> <code>BUILD_GENERAL1_LARGE: Use up to 15 GB memory and 8 vCPUs for builds</code> </p> </li> </ul>
+-- * Image [NonEmptyString] <p>The ID of the Docker image to use for this build project.</p>
+-- * TimeoutInMinutes [BoxedInt] <p>How long in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any related build that does not get marked as completed. The default is 60 minutes.</p>
+-- * CodeBuildServiceRole [NonEmptyString] <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
+-- * ArtifactName [String] <p>The name of the artifact of the CodeBuild build. If provided, Elastic Beanstalk stores the build artifact in the S3 location <i>S3-bucket</i>/resources/<i>application-name</i>/codebuild/codebuild-<i>version-label</i>-<i>artifact-name</i>.zip. If not provided, Elastic Beanstalk stores the build artifact in the S3 location <i>S3-bucket</i>/resources/<i>application-name</i>/codebuild/codebuild-<i>version-label</i>.zip. </p>
+-- Required key: CodeBuildServiceRole
+-- Required key: Image
+-- @return BuildConfiguration structure as a key-value pair table
+function M.BuildConfiguration(args)
+	assert(args, "You must provdide an argument table when creating BuildConfiguration")
 	local t = { 
-		["ComputeType"] = _ComputeType,
-		["Image"] = _Image,
-		["TimeoutInMinutes"] = _TimeoutInMinutes,
-		["CodeBuildServiceRole"] = _CodeBuildServiceRole,
-		["ArtifactName"] = _ArtifactName,
+		["ComputeType"] = args["ComputeType"],
+		["Image"] = args["Image"],
+		["TimeoutInMinutes"] = args["TimeoutInMinutes"],
+		["CodeBuildServiceRole"] = args["CodeBuildServiceRole"],
+		["ArtifactName"] = args["ArtifactName"],
 	}
 	asserts.AssertBuildConfiguration(t)
 	return t
@@ -1899,13 +2073,16 @@ end
 
 --- Create a structure of type ListAvailableSolutionStacksResultMessage
 -- <p>A list of available AWS Elastic Beanstalk solution stacks.</p>
--- @param _SolutionStacks [AvailableSolutionStackNamesList] <p>A list of available solution stacks.</p>
--- @param _SolutionStackDetails [AvailableSolutionStackDetailsList] <p> A list of available solution stacks and their <a>SolutionStackDescription</a>. </p>
-function M.ListAvailableSolutionStacksResultMessage(_SolutionStacks, _SolutionStackDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAvailableSolutionStacksResultMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SolutionStacks [AvailableSolutionStackNamesList] <p>A list of available solution stacks.</p>
+-- * SolutionStackDetails [AvailableSolutionStackDetailsList] <p> A list of available solution stacks and their <a>SolutionStackDescription</a>. </p>
+-- @return ListAvailableSolutionStacksResultMessage structure as a key-value pair table
+function M.ListAvailableSolutionStacksResultMessage(args)
+	assert(args, "You must provdide an argument table when creating ListAvailableSolutionStacksResultMessage")
 	local t = { 
-		["SolutionStacks"] = _SolutionStacks,
-		["SolutionStackDetails"] = _SolutionStackDetails,
+		["SolutionStacks"] = args["SolutionStacks"],
+		["SolutionStackDetails"] = args["SolutionStackDetails"],
 	}
 	asserts.AssertListAvailableSolutionStacksResultMessage(t)
 	return t
@@ -1929,19 +2106,22 @@ end
 
 --- Create a structure of type ValidateConfigurationSettingsMessage
 -- <p>A list of validation messages for a specified configuration template.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application that the configuration template or environment belongs to.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment to validate the settings against.</p> <p>Condition: You cannot specify both this and a configuration template name.</p>
--- @param _OptionSettings [ConfigurationOptionSettingsList] <p>A list of the options and desired values to evaluate.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to validate the settings against.</p> <p>Condition: You cannot specify both this and an environment name.</p>
--- Required parameter: ApplicationName
--- Required parameter: OptionSettings
-function M.ValidateConfigurationSettingsMessage(_ApplicationName, _EnvironmentName, _OptionSettings, _TemplateName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidateConfigurationSettingsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application that the configuration template or environment belongs to.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment to validate the settings against.</p> <p>Condition: You cannot specify both this and a configuration template name.</p>
+-- * OptionSettings [ConfigurationOptionSettingsList] <p>A list of the options and desired values to evaluate.</p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to validate the settings against.</p> <p>Condition: You cannot specify both this and an environment name.</p>
+-- Required key: ApplicationName
+-- Required key: OptionSettings
+-- @return ValidateConfigurationSettingsMessage structure as a key-value pair table
+function M.ValidateConfigurationSettingsMessage(args)
+	assert(args, "You must provdide an argument table when creating ValidateConfigurationSettingsMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["EnvironmentName"] = _EnvironmentName,
-		["OptionSettings"] = _OptionSettings,
-		["TemplateName"] = _TemplateName,
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["OptionSettings"] = args["OptionSettings"],
+		["TemplateName"] = args["TemplateName"],
 	}
 	asserts.AssertValidateConfigurationSettingsMessage(t)
 	return t
@@ -1962,15 +2142,18 @@ end
 
 --- Create a structure of type DescribeEnvironmentHealthRequest
 -- <p>See the example below to learn how to create a request body.</p>
--- @param _EnvironmentName [EnvironmentName] <p>Specify the environment by name.</p> <p>You must specify either this or an EnvironmentName, or both.</p>
--- @param _AttributeNames [EnvironmentHealthAttributes] <p>Specify the response elements to return. To retrieve all attributes, set to <code>All</code>. If no attribute names are specified, returns the name of the environment.</p>
--- @param _EnvironmentId [EnvironmentId] <p>Specify the environment by ID.</p> <p>You must specify either this or an EnvironmentName, or both.</p>
-function M.DescribeEnvironmentHealthRequest(_EnvironmentName, _AttributeNames, _EnvironmentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentHealthRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentName [EnvironmentName] <p>Specify the environment by name.</p> <p>You must specify either this or an EnvironmentName, or both.</p>
+-- * AttributeNames [EnvironmentHealthAttributes] <p>Specify the response elements to return. To retrieve all attributes, set to <code>All</code>. If no attribute names are specified, returns the name of the environment.</p>
+-- * EnvironmentId [EnvironmentId] <p>Specify the environment by ID.</p> <p>You must specify either this or an EnvironmentName, or both.</p>
+-- @return DescribeEnvironmentHealthRequest structure as a key-value pair table
+function M.DescribeEnvironmentHealthRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEnvironmentHealthRequest")
 	local t = { 
-		["EnvironmentName"] = _EnvironmentName,
-		["AttributeNames"] = _AttributeNames,
-		["EnvironmentId"] = _EnvironmentId,
+		["EnvironmentName"] = args["EnvironmentName"],
+		["AttributeNames"] = args["AttributeNames"],
+		["EnvironmentId"] = args["EnvironmentId"],
 	}
 	asserts.AssertDescribeEnvironmentHealthRequest(t)
 	return t
@@ -1989,11 +2172,14 @@ end
 
 --- Create a structure of type ApplicationDescriptionsMessage
 -- <p>Result message containing a list of application descriptions.</p>
--- @param _Applications [ApplicationDescriptionList] <p>This parameter contains a list of <a>ApplicationDescription</a>.</p>
-function M.ApplicationDescriptionsMessage(_Applications, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationDescriptionsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Applications [ApplicationDescriptionList] <p>This parameter contains a list of <a>ApplicationDescription</a>.</p>
+-- @return ApplicationDescriptionsMessage structure as a key-value pair table
+function M.ApplicationDescriptionsMessage(args)
+	assert(args, "You must provdide an argument table when creating ApplicationDescriptionsMessage")
 	local t = { 
-		["Applications"] = _Applications,
+		["Applications"] = args["Applications"],
 	}
 	asserts.AssertApplicationDescriptionsMessage(t)
 	return t
@@ -2013,13 +2199,16 @@ end
 
 --- Create a structure of type ApplicationVersionLifecycleConfig
 -- <p>The application version lifecycle settings for an application. Defines the rules that Elastic Beanstalk applies to an application's versions in order to avoid hitting the per-region limit for application versions.</p> <p>When Elastic Beanstalk deletes an application version from its database, you can no longer deploy that version to an environment. The source bundle remains in S3 unless you configure the rule to delete it.</p>
--- @param _MaxCountRule [MaxCountRule] <p>Specify a max count rule to restrict the number of application versions that are retained for an application.</p>
--- @param _MaxAgeRule [MaxAgeRule] <p>Specify a max age rule to restrict the length of time that application versions are retained for an application.</p>
-function M.ApplicationVersionLifecycleConfig(_MaxCountRule, _MaxAgeRule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationVersionLifecycleConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaxCountRule [MaxCountRule] <p>Specify a max count rule to restrict the number of application versions that are retained for an application.</p>
+-- * MaxAgeRule [MaxAgeRule] <p>Specify a max age rule to restrict the length of time that application versions are retained for an application.</p>
+-- @return ApplicationVersionLifecycleConfig structure as a key-value pair table
+function M.ApplicationVersionLifecycleConfig(args)
+	assert(args, "You must provdide an argument table when creating ApplicationVersionLifecycleConfig")
 	local t = { 
-		["MaxCountRule"] = _MaxCountRule,
-		["MaxAgeRule"] = _MaxAgeRule,
+		["MaxCountRule"] = args["MaxCountRule"],
+		["MaxAgeRule"] = args["MaxAgeRule"],
 	}
 	asserts.AssertApplicationVersionLifecycleConfig(t)
 	return t
@@ -2037,8 +2226,11 @@ end
 
 --- Create a structure of type OperationInProgressException
 -- <p>Unable to perform the specified operation because another operation that effects an element in this activity is already in progress.</p>
-function M.OperationInProgressException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationInProgressException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return OperationInProgressException structure as a key-value pair table
+function M.OperationInProgressException(args)
+	assert(args, "You must provdide an argument table when creating OperationInProgressException")
 	local t = { 
 	}
 	asserts.AssertOperationInProgressException(t)
@@ -2061,15 +2253,18 @@ end
 
 --- Create a structure of type DeleteEnvironmentConfigurationMessage
 -- <p>Request to delete a draft environment configuration.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application the environment is associated with.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment to delete the draft configuration from.</p>
--- Required parameter: ApplicationName
--- Required parameter: EnvironmentName
-function M.DeleteEnvironmentConfigurationMessage(_ApplicationName, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEnvironmentConfigurationMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application the environment is associated with.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment to delete the draft configuration from.</p>
+-- Required key: ApplicationName
+-- Required key: EnvironmentName
+-- @return DeleteEnvironmentConfigurationMessage structure as a key-value pair table
+function M.DeleteEnvironmentConfigurationMessage(args)
+	assert(args, "You must provdide an argument table when creating DeleteEnvironmentConfigurationMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["EnvironmentName"] = _EnvironmentName,
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertDeleteEnvironmentConfigurationMessage(t)
 	return t
@@ -2093,18 +2288,21 @@ end
 
 --- Create a structure of type SourceBuildInformation
 -- <p>Location of the source code for an application version.</p>
--- @param _SourceLocation [SourceLocation] <p>The location of the source code, as a formatted string, depending on the value of <code>SourceRepository</code> </p> <ul> <li> <p>For <code>CodeCommit</code>, the format is the repository name and commit ID, separated by a forward slash. For example, <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.</p> </li> <li> <p>For <code>S3</code>, the format is the S3 bucket name and object key, separated by a forward slash. For example, <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
--- @param _SourceType [SourceType] <p>The type of repository.</p> <ul> <li> <p> <code>Git</code> </p> </li> <li> <p> <code>Zip</code> </p> </li> </ul>
--- @param _SourceRepository [SourceRepository] <p>Location where the repository is stored.</p> <ul> <li> <p> <code>CodeCommit</code> </p> </li> <li> <p> <code>S3</code> </p> </li> </ul>
--- Required parameter: SourceType
--- Required parameter: SourceRepository
--- Required parameter: SourceLocation
-function M.SourceBuildInformation(_SourceLocation, _SourceType, _SourceRepository, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SourceBuildInformation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceLocation [SourceLocation] <p>The location of the source code, as a formatted string, depending on the value of <code>SourceRepository</code> </p> <ul> <li> <p>For <code>CodeCommit</code>, the format is the repository name and commit ID, separated by a forward slash. For example, <code>my-git-repo/265cfa0cf6af46153527f55d6503ec030551f57a</code>.</p> </li> <li> <p>For <code>S3</code>, the format is the S3 bucket name and object key, separated by a forward slash. For example, <code>my-s3-bucket/Folders/my-source-file</code>.</p> </li> </ul>
+-- * SourceType [SourceType] <p>The type of repository.</p> <ul> <li> <p> <code>Git</code> </p> </li> <li> <p> <code>Zip</code> </p> </li> </ul>
+-- * SourceRepository [SourceRepository] <p>Location where the repository is stored.</p> <ul> <li> <p> <code>CodeCommit</code> </p> </li> <li> <p> <code>S3</code> </p> </li> </ul>
+-- Required key: SourceType
+-- Required key: SourceRepository
+-- Required key: SourceLocation
+-- @return SourceBuildInformation structure as a key-value pair table
+function M.SourceBuildInformation(args)
+	assert(args, "You must provdide an argument table when creating SourceBuildInformation")
 	local t = { 
-		["SourceLocation"] = _SourceLocation,
-		["SourceType"] = _SourceType,
-		["SourceRepository"] = _SourceRepository,
+		["SourceLocation"] = args["SourceLocation"],
+		["SourceType"] = args["SourceType"],
+		["SourceRepository"] = args["SourceRepository"],
 	}
 	asserts.AssertSourceBuildInformation(t)
 	return t
@@ -2122,8 +2320,11 @@ end
 
 --- Create a structure of type TooManyConfigurationTemplatesException
 -- <p>The specified account has reached its limit of configuration templates.</p>
-function M.TooManyConfigurationTemplatesException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyConfigurationTemplatesException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyConfigurationTemplatesException structure as a key-value pair table
+function M.TooManyConfigurationTemplatesException(args)
+	assert(args, "You must provdide an argument table when creating TooManyConfigurationTemplatesException")
 	local t = { 
 	}
 	asserts.AssertTooManyConfigurationTemplatesException(t)
@@ -2152,29 +2353,32 @@ end
 
 --- Create a structure of type SingleInstanceHealth
 -- <p>Detailed health information about an Amazon EC2 instance in your Elastic Beanstalk environment.</p>
--- @param _AvailabilityZone [String] <p>The availability zone in which the instance runs.</p>
--- @param _Deployment [Deployment] <p>Information about the most recent deployment to an instance.</p>
--- @param _InstanceId [InstanceId] <p>The ID of the Amazon EC2 instance.</p>
--- @param _ApplicationMetrics [ApplicationMetrics] <p>Request metrics from your application.</p>
--- @param _System [SystemStatus] <p>Operating system metrics from the instance.</p>
--- @param _Color [String] <p>Represents the color indicator that gives you information about the health of the EC2 instance. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
--- @param _HealthStatus [String] <p>Returns the health status of the specified instance. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
--- @param _LaunchedAt [LaunchedAt] <p>The time at which the EC2 instance was launched.</p>
--- @param _InstanceType [String] <p>The instance's type.</p>
--- @param _Causes [Causes] <p>Represents the causes, which provide more information about the current health status.</p>
-function M.SingleInstanceHealth(_AvailabilityZone, _Deployment, _InstanceId, _ApplicationMetrics, _System, _Color, _HealthStatus, _LaunchedAt, _InstanceType, _Causes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SingleInstanceHealth")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AvailabilityZone [String] <p>The availability zone in which the instance runs.</p>
+-- * Deployment [Deployment] <p>Information about the most recent deployment to an instance.</p>
+-- * InstanceId [InstanceId] <p>The ID of the Amazon EC2 instance.</p>
+-- * ApplicationMetrics [ApplicationMetrics] <p>Request metrics from your application.</p>
+-- * System [SystemStatus] <p>Operating system metrics from the instance.</p>
+-- * Color [String] <p>Represents the color indicator that gives you information about the health of the EC2 instance. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
+-- * HealthStatus [String] <p>Returns the health status of the specified instance. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
+-- * LaunchedAt [LaunchedAt] <p>The time at which the EC2 instance was launched.</p>
+-- * InstanceType [String] <p>The instance's type.</p>
+-- * Causes [Causes] <p>Represents the causes, which provide more information about the current health status.</p>
+-- @return SingleInstanceHealth structure as a key-value pair table
+function M.SingleInstanceHealth(args)
+	assert(args, "You must provdide an argument table when creating SingleInstanceHealth")
 	local t = { 
-		["AvailabilityZone"] = _AvailabilityZone,
-		["Deployment"] = _Deployment,
-		["InstanceId"] = _InstanceId,
-		["ApplicationMetrics"] = _ApplicationMetrics,
-		["System"] = _System,
-		["Color"] = _Color,
-		["HealthStatus"] = _HealthStatus,
-		["LaunchedAt"] = _LaunchedAt,
-		["InstanceType"] = _InstanceType,
-		["Causes"] = _Causes,
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["Deployment"] = args["Deployment"],
+		["InstanceId"] = args["InstanceId"],
+		["ApplicationMetrics"] = args["ApplicationMetrics"],
+		["System"] = args["System"],
+		["Color"] = args["Color"],
+		["HealthStatus"] = args["HealthStatus"],
+		["LaunchedAt"] = args["LaunchedAt"],
+		["InstanceType"] = args["InstanceType"],
+		["Causes"] = args["Causes"],
 	}
 	asserts.AssertSingleInstanceHealth(t)
 	return t
@@ -2194,13 +2398,16 @@ end
 
 --- Create a structure of type ApplicationResourceLifecycleConfig
 -- <p>The resource lifecycle configuration for an application. Defines lifecycle settings for resources that belong to the application, and the service role that Elastic Beanstalk assumes in order to apply lifecycle settings. The version lifecycle configuration defines lifecycle settings for application versions.</p>
--- @param _VersionLifecycleConfig [ApplicationVersionLifecycleConfig] <p>The application version lifecycle configuration.</p>
--- @param _ServiceRole [String] <p>The ARN of an IAM service role that Elastic Beanstalk has permission to assume.</p>
-function M.ApplicationResourceLifecycleConfig(_VersionLifecycleConfig, _ServiceRole, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationResourceLifecycleConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionLifecycleConfig [ApplicationVersionLifecycleConfig] <p>The application version lifecycle configuration.</p>
+-- * ServiceRole [String] <p>The ARN of an IAM service role that Elastic Beanstalk has permission to assume.</p>
+-- @return ApplicationResourceLifecycleConfig structure as a key-value pair table
+function M.ApplicationResourceLifecycleConfig(args)
+	assert(args, "You must provdide an argument table when creating ApplicationResourceLifecycleConfig")
 	local t = { 
-		["VersionLifecycleConfig"] = _VersionLifecycleConfig,
-		["ServiceRole"] = _ServiceRole,
+		["VersionLifecycleConfig"] = args["VersionLifecycleConfig"],
+		["ServiceRole"] = args["ServiceRole"],
 	}
 	asserts.AssertApplicationResourceLifecycleConfig(t)
 	return t
@@ -2219,11 +2426,14 @@ end
 
 --- Create a structure of type Instance
 -- <p>The description of an Amazon EC2 instance.</p>
--- @param _Id [ResourceId] <p>The ID of the Amazon EC2 instance.</p>
-function M.Instance(_Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [ResourceId] <p>The ID of the Amazon EC2 instance.</p>
+-- @return Instance structure as a key-value pair table
+function M.Instance(args)
+	assert(args, "You must provdide an argument table when creating Instance")
 	local t = { 
-		["Id"] = _Id,
+		["Id"] = args["Id"],
 	}
 	asserts.AssertInstance(t)
 	return t
@@ -2243,13 +2453,16 @@ end
 
 --- Create a structure of type AbortEnvironmentUpdateMessage
 -- <p/>
--- @param _EnvironmentId [EnvironmentId] <p>This specifies the ID of the environment with the in-progress update that you want to cancel.</p>
--- @param _EnvironmentName [EnvironmentName] <p>This specifies the name of the environment with the in-progress update that you want to cancel.</p>
-function M.AbortEnvironmentUpdateMessage(_EnvironmentId, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AbortEnvironmentUpdateMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentId [EnvironmentId] <p>This specifies the ID of the environment with the in-progress update that you want to cancel.</p>
+-- * EnvironmentName [EnvironmentName] <p>This specifies the name of the environment with the in-progress update that you want to cancel.</p>
+-- @return AbortEnvironmentUpdateMessage structure as a key-value pair table
+function M.AbortEnvironmentUpdateMessage(args)
+	assert(args, "You must provdide an argument table when creating AbortEnvironmentUpdateMessage")
 	local t = { 
-		["EnvironmentId"] = _EnvironmentId,
-		["EnvironmentName"] = _EnvironmentName,
+		["EnvironmentId"] = args["EnvironmentId"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertAbortEnvironmentUpdateMessage(t)
 	return t
@@ -2269,13 +2482,16 @@ end
 
 --- Create a structure of type RebuildEnvironmentMessage
 -- <p/>
--- @param _EnvironmentId [EnvironmentId] <p>The ID of the environment to rebuild.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment to rebuild.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-function M.RebuildEnvironmentMessage(_EnvironmentId, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebuildEnvironmentMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentId [EnvironmentId] <p>The ID of the environment to rebuild.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment to rebuild.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @return RebuildEnvironmentMessage structure as a key-value pair table
+function M.RebuildEnvironmentMessage(args)
+	assert(args, "You must provdide an argument table when creating RebuildEnvironmentMessage")
 	local t = { 
-		["EnvironmentId"] = _EnvironmentId,
-		["EnvironmentName"] = _EnvironmentName,
+		["EnvironmentId"] = args["EnvironmentId"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertRebuildEnvironmentMessage(t)
 	return t
@@ -2294,11 +2510,14 @@ end
 
 --- Create a structure of type ConfigurationSettingsValidationMessages
 -- <p>Provides a list of validation messages.</p>
--- @param _Messages [ValidationMessagesList] <p> A list of <a>ValidationMessage</a>. </p>
-function M.ConfigurationSettingsValidationMessages(_Messages, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSettingsValidationMessages")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Messages [ValidationMessagesList] <p> A list of <a>ValidationMessage</a>. </p>
+-- @return ConfigurationSettingsValidationMessages structure as a key-value pair table
+function M.ConfigurationSettingsValidationMessages(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationSettingsValidationMessages")
 	local t = { 
-		["Messages"] = _Messages,
+		["Messages"] = args["Messages"],
 	}
 	asserts.AssertConfigurationSettingsValidationMessages(t)
 	return t
@@ -2317,11 +2536,14 @@ end
 
 --- Create a structure of type DeletePlatformVersionResult
 --  
--- @param _PlatformSummary [PlatformSummary] <p>Detailed information about the version of the custom platform.</p>
-function M.DeletePlatformVersionResult(_PlatformSummary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePlatformVersionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlatformSummary [PlatformSummary] <p>Detailed information about the version of the custom platform.</p>
+-- @return DeletePlatformVersionResult structure as a key-value pair table
+function M.DeletePlatformVersionResult(args)
+	assert(args, "You must provdide an argument table when creating DeletePlatformVersionResult")
 	local t = { 
-		["PlatformSummary"] = _PlatformSummary,
+		["PlatformSummary"] = args["PlatformSummary"],
 	}
 	asserts.AssertDeletePlatformVersionResult(t)
 	return t
@@ -2339,8 +2561,11 @@ end
 
 --- Create a structure of type S3SubscriptionRequiredException
 -- <p>The specified account does not have a subscription to Amazon S3.</p>
-function M.S3SubscriptionRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3SubscriptionRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return S3SubscriptionRequiredException structure as a key-value pair table
+function M.S3SubscriptionRequiredException(args)
+	assert(args, "You must provdide an argument table when creating S3SubscriptionRequiredException")
 	local t = { 
 	}
 	asserts.AssertS3SubscriptionRequiredException(t)
@@ -2364,17 +2589,20 @@ end
 
 --- Create a structure of type DeleteApplicationVersionMessage
 -- <p>Request to delete an application version.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application to which the version belongs.</p>
--- @param _DeleteSourceBundle [DeleteSourceBundle] <p>Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application version is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.</p>
--- @param _VersionLabel [VersionLabel] <p>The label of the version to delete.</p>
--- Required parameter: ApplicationName
--- Required parameter: VersionLabel
-function M.DeleteApplicationVersionMessage(_ApplicationName, _DeleteSourceBundle, _VersionLabel, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApplicationVersionMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application to which the version belongs.</p>
+-- * DeleteSourceBundle [DeleteSourceBundle] <p>Set to <code>true</code> to delete the source bundle from your storage bucket. Otherwise, the application version is deleted only from Elastic Beanstalk and the source bundle remains in Amazon S3.</p>
+-- * VersionLabel [VersionLabel] <p>The label of the version to delete.</p>
+-- Required key: ApplicationName
+-- Required key: VersionLabel
+-- @return DeleteApplicationVersionMessage structure as a key-value pair table
+function M.DeleteApplicationVersionMessage(args)
+	assert(args, "You must provdide an argument table when creating DeleteApplicationVersionMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["DeleteSourceBundle"] = _DeleteSourceBundle,
-		["VersionLabel"] = _VersionLabel,
+		["ApplicationName"] = args["ApplicationName"],
+		["DeleteSourceBundle"] = args["DeleteSourceBundle"],
+		["VersionLabel"] = args["VersionLabel"],
 	}
 	asserts.AssertDeleteApplicationVersionMessage(t)
 	return t
@@ -2395,14 +2623,17 @@ end
 
 --- Create a structure of type UpdateApplicationMessage
 -- <p>Request to update an application.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application to update. If no such application is found, <code>UpdateApplication</code> returns an <code>InvalidParameterValue</code> error. </p>
--- @param _Description [Description] <p>A new description for the application.</p> <p>Default: If not specified, AWS Elastic Beanstalk does not update the description.</p>
--- Required parameter: ApplicationName
-function M.UpdateApplicationMessage(_ApplicationName, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApplicationMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application to update. If no such application is found, <code>UpdateApplication</code> returns an <code>InvalidParameterValue</code> error. </p>
+-- * Description [Description] <p>A new description for the application.</p> <p>Default: If not specified, AWS Elastic Beanstalk does not update the description.</p>
+-- Required key: ApplicationName
+-- @return UpdateApplicationMessage structure as a key-value pair table
+function M.UpdateApplicationMessage(args)
+	assert(args, "You must provdide an argument table when creating UpdateApplicationMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["Description"] = _Description,
+		["ApplicationName"] = args["ApplicationName"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdateApplicationMessage(t)
 	return t
@@ -2424,17 +2655,20 @@ end
 
 --- Create a structure of type ValidationMessage
 -- <p>An error or warning for a desired configuration option value.</p>
--- @param _OptionName [ConfigurationOptionName] <p>The name of the option.</p>
--- @param _Message [ValidationMessageString] <p>A message describing the error or warning.</p>
--- @param _Namespace [OptionNamespace] <p>The namespace to which the option belongs.</p>
--- @param _Severity [ValidationSeverity] <p>An indication of the severity of this message:</p> <ul> <li> <p> <code>error</code>: This message indicates that this is not a valid setting for an option.</p> </li> <li> <p> <code>warning</code>: This message is providing information you should take into account.</p> </li> </ul>
-function M.ValidationMessage(_OptionName, _Message, _Namespace, _Severity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidationMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OptionName [ConfigurationOptionName] <p>The name of the option.</p>
+-- * Message [ValidationMessageString] <p>A message describing the error or warning.</p>
+-- * Namespace [OptionNamespace] <p>The namespace to which the option belongs.</p>
+-- * Severity [ValidationSeverity] <p>An indication of the severity of this message:</p> <ul> <li> <p> <code>error</code>: This message indicates that this is not a valid setting for an option.</p> </li> <li> <p> <code>warning</code>: This message is providing information you should take into account.</p> </li> </ul>
+-- @return ValidationMessage structure as a key-value pair table
+function M.ValidationMessage(args)
+	assert(args, "You must provdide an argument table when creating ValidationMessage")
 	local t = { 
-		["OptionName"] = _OptionName,
-		["Message"] = _Message,
-		["Namespace"] = _Namespace,
-		["Severity"] = _Severity,
+		["OptionName"] = args["OptionName"],
+		["Message"] = args["Message"],
+		["Namespace"] = args["Namespace"],
+		["Severity"] = args["Severity"],
 	}
 	asserts.AssertValidationMessage(t)
 	return t
@@ -2456,17 +2690,20 @@ end
 
 --- Create a structure of type ApplyEnvironmentManagedActionResult
 -- <p>The result message containing information about the managed action.</p>
--- @param _Status [String] <p>The status of the managed action.</p>
--- @param _ActionType [ActionType] <p>The type of managed action.</p>
--- @param _ActionId [String] <p>The action ID of the managed action.</p>
--- @param _ActionDescription [String] <p>A description of the managed action.</p>
-function M.ApplyEnvironmentManagedActionResult(_Status, _ActionType, _ActionId, _ActionDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplyEnvironmentManagedActionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The status of the managed action.</p>
+-- * ActionType [ActionType] <p>The type of managed action.</p>
+-- * ActionId [String] <p>The action ID of the managed action.</p>
+-- * ActionDescription [String] <p>A description of the managed action.</p>
+-- @return ApplyEnvironmentManagedActionResult structure as a key-value pair table
+function M.ApplyEnvironmentManagedActionResult(args)
+	assert(args, "You must provdide an argument table when creating ApplyEnvironmentManagedActionResult")
 	local t = { 
-		["Status"] = _Status,
-		["ActionType"] = _ActionType,
-		["ActionId"] = _ActionId,
-		["ActionDescription"] = _ActionDescription,
+		["Status"] = args["Status"],
+		["ActionType"] = args["ActionType"],
+		["ActionId"] = args["ActionId"],
+		["ActionDescription"] = args["ActionDescription"],
 	}
 	asserts.AssertApplyEnvironmentManagedActionResult(t)
 	return t
@@ -2491,23 +2728,26 @@ end
 
 --- Create a structure of type ApplicationDescription
 -- <p>Describes the properties of an application.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application.</p>
--- @param _Description [Description] <p>User-defined description of the application.</p>
--- @param _Versions [VersionLabelsList] <p>The names of the versions for this application.</p>
--- @param _DateCreated [CreationDate] <p>The date when the application was created.</p>
--- @param _ConfigurationTemplates [ConfigurationTemplateNamesList] <p>The names of the configuration templates associated with this application.</p>
--- @param _DateUpdated [UpdateDate] <p>The date when the application was last modified.</p>
--- @param _ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle settings for the application.</p>
-function M.ApplicationDescription(_ApplicationName, _Description, _Versions, _DateCreated, _ConfigurationTemplates, _DateUpdated, _ResourceLifecycleConfig, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application.</p>
+-- * Description [Description] <p>User-defined description of the application.</p>
+-- * Versions [VersionLabelsList] <p>The names of the versions for this application.</p>
+-- * DateCreated [CreationDate] <p>The date when the application was created.</p>
+-- * ConfigurationTemplates [ConfigurationTemplateNamesList] <p>The names of the configuration templates associated with this application.</p>
+-- * DateUpdated [UpdateDate] <p>The date when the application was last modified.</p>
+-- * ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle settings for the application.</p>
+-- @return ApplicationDescription structure as a key-value pair table
+function M.ApplicationDescription(args)
+	assert(args, "You must provdide an argument table when creating ApplicationDescription")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["Description"] = _Description,
-		["Versions"] = _Versions,
-		["DateCreated"] = _DateCreated,
-		["ConfigurationTemplates"] = _ConfigurationTemplates,
-		["DateUpdated"] = _DateUpdated,
-		["ResourceLifecycleConfig"] = _ResourceLifecycleConfig,
+		["ApplicationName"] = args["ApplicationName"],
+		["Description"] = args["Description"],
+		["Versions"] = args["Versions"],
+		["DateCreated"] = args["DateCreated"],
+		["ConfigurationTemplates"] = args["ConfigurationTemplates"],
+		["DateUpdated"] = args["DateUpdated"],
+		["ResourceLifecycleConfig"] = args["ResourceLifecycleConfig"],
 	}
 	asserts.AssertApplicationDescription(t)
 	return t
@@ -2527,13 +2767,16 @@ end
 
 --- Create a structure of type CustomAmi
 -- <p>A custom AMI available to platforms.</p>
--- @param _VirtualizationType [VirtualizationType] <p>The type of virtualization used to create the custom AMI.</p>
--- @param _ImageId [ImageId] <p>THe ID of the image used to create the custom AMI.</p>
-function M.CustomAmi(_VirtualizationType, _ImageId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CustomAmi")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VirtualizationType [VirtualizationType] <p>The type of virtualization used to create the custom AMI.</p>
+-- * ImageId [ImageId] <p>THe ID of the image used to create the custom AMI.</p>
+-- @return CustomAmi structure as a key-value pair table
+function M.CustomAmi(args)
+	assert(args, "You must provdide an argument table when creating CustomAmi")
 	local t = { 
-		["VirtualizationType"] = _VirtualizationType,
-		["ImageId"] = _ImageId,
+		["VirtualizationType"] = args["VirtualizationType"],
+		["ImageId"] = args["ImageId"],
 	}
 	asserts.AssertCustomAmi(t)
 	return t
@@ -2552,11 +2795,14 @@ end
 
 --- Create a structure of type LaunchConfiguration
 -- <p>Describes an Auto Scaling launch configuration.</p>
--- @param _Name [ResourceId] <p>The name of the launch configuration.</p>
-function M.LaunchConfiguration(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LaunchConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ResourceId] <p>The name of the launch configuration.</p>
+-- @return LaunchConfiguration structure as a key-value pair table
+function M.LaunchConfiguration(args)
+	assert(args, "You must provdide an argument table when creating LaunchConfiguration")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertLaunchConfiguration(t)
 	return t
@@ -2576,13 +2822,16 @@ end
 
 --- Create a structure of type DescribeEnvironmentManagedActionHistoryResult
 -- <p>A result message containing a list of completed and failed managed actions.</p>
--- @param _NextToken [String] <p>A pagination token that you pass to <a>DescribeEnvironmentManagedActionHistory</a> to get the next page of results.</p>
--- @param _ManagedActionHistoryItems [ManagedActionHistoryItems] <p>A list of completed and failed managed actions.</p>
-function M.DescribeEnvironmentManagedActionHistoryResult(_NextToken, _ManagedActionHistoryItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentManagedActionHistoryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>A pagination token that you pass to <a>DescribeEnvironmentManagedActionHistory</a> to get the next page of results.</p>
+-- * ManagedActionHistoryItems [ManagedActionHistoryItems] <p>A list of completed and failed managed actions.</p>
+-- @return DescribeEnvironmentManagedActionHistoryResult structure as a key-value pair table
+function M.DescribeEnvironmentManagedActionHistoryResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeEnvironmentManagedActionHistoryResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ManagedActionHistoryItems"] = _ManagedActionHistoryItems,
+		["NextToken"] = args["NextToken"],
+		["ManagedActionHistoryItems"] = args["ManagedActionHistoryItems"],
 	}
 	asserts.AssertDescribeEnvironmentManagedActionHistoryResult(t)
 	return t
@@ -2601,11 +2850,14 @@ end
 
 --- Create a structure of type DescribeApplicationsMessage
 -- <p>Request to describe one or more applications.</p>
--- @param _ApplicationNames [ApplicationNamesList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.</p>
-function M.DescribeApplicationsMessage(_ApplicationNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeApplicationsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationNames [ApplicationNamesList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.</p>
+-- @return DescribeApplicationsMessage structure as a key-value pair table
+function M.DescribeApplicationsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeApplicationsMessage")
 	local t = { 
-		["ApplicationNames"] = _ApplicationNames,
+		["ApplicationNames"] = args["ApplicationNames"],
 	}
 	asserts.AssertDescribeApplicationsMessage(t)
 	return t
@@ -2626,14 +2878,17 @@ end
 
 --- Create a structure of type DeleteApplicationMessage
 -- <p>Request to delete an application.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application to delete.</p>
--- @param _TerminateEnvByForce [TerminateEnvForce] <p>When set to true, running environments will be terminated before deleting the application.</p>
--- Required parameter: ApplicationName
-function M.DeleteApplicationMessage(_ApplicationName, _TerminateEnvByForce, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteApplicationMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application to delete.</p>
+-- * TerminateEnvByForce [TerminateEnvForce] <p>When set to true, running environments will be terminated before deleting the application.</p>
+-- Required key: ApplicationName
+-- @return DeleteApplicationMessage structure as a key-value pair table
+function M.DeleteApplicationMessage(args)
+	assert(args, "You must provdide an argument table when creating DeleteApplicationMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["TerminateEnvByForce"] = _TerminateEnvByForce,
+		["ApplicationName"] = args["ApplicationName"],
+		["TerminateEnvByForce"] = args["TerminateEnvByForce"],
 	}
 	asserts.AssertDeleteApplicationMessage(t)
 	return t
@@ -2655,16 +2910,19 @@ end
 
 --- Create a structure of type MaxCountRule
 -- <p>A lifecycle rule that deletes the oldest application version when the maximum count is exceeded.</p>
--- @param _DeleteSourceFromS3 [BoxedBoolean] <p>Set to <code>true</code> to delete a version's source bundle from Amazon S3 when Elastic Beanstalk deletes the application version.</p>
--- @param _Enabled [BoxedBoolean] <p>Specify <code>true</code> to apply the rule, or <code>false</code> to disable it.</p>
--- @param _MaxCount [BoxedInt] <p>Specify the maximum number of application versions to retain.</p>
--- Required parameter: Enabled
-function M.MaxCountRule(_DeleteSourceFromS3, _Enabled, _MaxCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaxCountRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeleteSourceFromS3 [BoxedBoolean] <p>Set to <code>true</code> to delete a version's source bundle from Amazon S3 when Elastic Beanstalk deletes the application version.</p>
+-- * Enabled [BoxedBoolean] <p>Specify <code>true</code> to apply the rule, or <code>false</code> to disable it.</p>
+-- * MaxCount [BoxedInt] <p>Specify the maximum number of application versions to retain.</p>
+-- Required key: Enabled
+-- @return MaxCountRule structure as a key-value pair table
+function M.MaxCountRule(args)
+	assert(args, "You must provdide an argument table when creating MaxCountRule")
 	local t = { 
-		["DeleteSourceFromS3"] = _DeleteSourceFromS3,
-		["Enabled"] = _Enabled,
-		["MaxCount"] = _MaxCount,
+		["DeleteSourceFromS3"] = args["DeleteSourceFromS3"],
+		["Enabled"] = args["Enabled"],
+		["MaxCount"] = args["MaxCount"],
 	}
 	asserts.AssertMaxCountRule(t)
 	return t
@@ -2685,15 +2943,18 @@ end
 
 --- Create a structure of type ListPlatformVersionsRequest
 --  
--- @param _MaxRecords [PlatformMaxRecords] <p>The maximum number of platform values returned in one call.</p>
--- @param _NextToken [Token] <p>The starting index into the remaining list of platforms. Use the <code>NextToken</code> value from a previous <code>ListPlatformVersion</code> call.</p>
--- @param _Filters [PlatformFilters] <p>List only the platforms where the platform member value relates to one of the supplied values.</p>
-function M.ListPlatformVersionsRequest(_MaxRecords, _NextToken, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPlatformVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaxRecords [PlatformMaxRecords] <p>The maximum number of platform values returned in one call.</p>
+-- * NextToken [Token] <p>The starting index into the remaining list of platforms. Use the <code>NextToken</code> value from a previous <code>ListPlatformVersion</code> call.</p>
+-- * Filters [PlatformFilters] <p>List only the platforms where the platform member value relates to one of the supplied values.</p>
+-- @return ListPlatformVersionsRequest structure as a key-value pair table
+function M.ListPlatformVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPlatformVersionsRequest")
 	local t = { 
-		["MaxRecords"] = _MaxRecords,
-		["NextToken"] = _NextToken,
-		["Filters"] = _Filters,
+		["MaxRecords"] = args["MaxRecords"],
+		["NextToken"] = args["NextToken"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertListPlatformVersionsRequest(t)
 	return t
@@ -2714,15 +2975,18 @@ end
 
 --- Create a structure of type ComposeEnvironmentsMessage
 -- <p>Request to create or update a group of environments.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application to which the specified source bundles belong.</p>
--- @param _GroupName [GroupName] <p>The name of the group to which the target environments belong. Specify a group name only if the environment name defined in each target environment's manifest ends with a + (plus) character. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
--- @param _VersionLabels [VersionLabels] <p>A list of version labels, specifying one or more application source bundles that belong to the target application. Each source bundle must include an environment manifest that specifies the name of the environment and the name of the solution stack to use, and optionally can specify environment links to create.</p>
-function M.ComposeEnvironmentsMessage(_ApplicationName, _GroupName, _VersionLabels, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComposeEnvironmentsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application to which the specified source bundles belong.</p>
+-- * GroupName [GroupName] <p>The name of the group to which the target environments belong. Specify a group name only if the environment name defined in each target environment's manifest ends with a + (plus) character. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
+-- * VersionLabels [VersionLabels] <p>A list of version labels, specifying one or more application source bundles that belong to the target application. Each source bundle must include an environment manifest that specifies the name of the environment and the name of the solution stack to use, and optionally can specify environment links to create.</p>
+-- @return ComposeEnvironmentsMessage structure as a key-value pair table
+function M.ComposeEnvironmentsMessage(args)
+	assert(args, "You must provdide an argument table when creating ComposeEnvironmentsMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["GroupName"] = _GroupName,
-		["VersionLabels"] = _VersionLabels,
+		["ApplicationName"] = args["ApplicationName"],
+		["GroupName"] = args["GroupName"],
+		["VersionLabels"] = args["VersionLabels"],
 	}
 	asserts.AssertComposeEnvironmentsMessage(t)
 	return t
@@ -2741,11 +3005,14 @@ end
 
 --- Create a structure of type ElasticBeanstalkServiceException
 -- <p>A generic service exception has occurred.</p>
--- @param _message [ExceptionMessage] <p>The exception error message.</p>
-function M.ElasticBeanstalkServiceException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ElasticBeanstalkServiceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The exception error message.</p>
+-- @return ElasticBeanstalkServiceException structure as a key-value pair table
+function M.ElasticBeanstalkServiceException(args)
+	assert(args, "You must provdide an argument table when creating ElasticBeanstalkServiceException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertElasticBeanstalkServiceException(t)
 	return t
@@ -2773,29 +3040,32 @@ end
 
 --- Create a structure of type ConfigurationSettingsDescription
 -- <p>Describes the settings for a configuration set.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application associated with this configuration set.</p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
--- @param _Description [Description] <p>Describes this configuration set.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p> If not <code>null</code>, the name of the configuration template for this configuration set. </p>
--- @param _DeploymentStatus [ConfigurationDeploymentStatus] <p> If this configuration set is associated with an environment, the <code>DeploymentStatus</code> parameter indicates the deployment status of this configuration set: </p> <ul> <li> <p> <code>null</code>: This configuration is not associated with a running environment.</p> </li> <li> <p> <code>pending</code>: This is a draft configuration that is not deployed to the associated environment but is in the process of deploying.</p> </li> <li> <p> <code>deployed</code>: This is the configuration that is currently deployed to the associated running environment.</p> </li> <li> <p> <code>failed</code>: This is a draft configuration that failed to successfully deploy.</p> </li> </ul>
--- @param _SolutionStackName [SolutionStackName] <p>The name of the solution stack this configuration set uses.</p>
--- @param _OptionSettings [ConfigurationOptionSettingsList] <p>A list of the configuration options and their values in this configuration set.</p>
--- @param _DateUpdated [UpdateDate] <p>The date (in UTC time) when this configuration set was last modified.</p>
--- @param _DateCreated [CreationDate] <p>The date (in UTC time) when this configuration set was created.</p>
--- @param _EnvironmentName [EnvironmentName] <p> If not <code>null</code>, the name of the environment for this configuration set. </p>
-function M.ConfigurationSettingsDescription(_ApplicationName, _PlatformArn, _Description, _TemplateName, _DeploymentStatus, _SolutionStackName, _OptionSettings, _DateUpdated, _DateCreated, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationSettingsDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application associated with this configuration set.</p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * Description [Description] <p>Describes this configuration set.</p>
+-- * TemplateName [ConfigurationTemplateName] <p> If not <code>null</code>, the name of the configuration template for this configuration set. </p>
+-- * DeploymentStatus [ConfigurationDeploymentStatus] <p> If this configuration set is associated with an environment, the <code>DeploymentStatus</code> parameter indicates the deployment status of this configuration set: </p> <ul> <li> <p> <code>null</code>: This configuration is not associated with a running environment.</p> </li> <li> <p> <code>pending</code>: This is a draft configuration that is not deployed to the associated environment but is in the process of deploying.</p> </li> <li> <p> <code>deployed</code>: This is the configuration that is currently deployed to the associated running environment.</p> </li> <li> <p> <code>failed</code>: This is a draft configuration that failed to successfully deploy.</p> </li> </ul>
+-- * SolutionStackName [SolutionStackName] <p>The name of the solution stack this configuration set uses.</p>
+-- * OptionSettings [ConfigurationOptionSettingsList] <p>A list of the configuration options and their values in this configuration set.</p>
+-- * DateUpdated [UpdateDate] <p>The date (in UTC time) when this configuration set was last modified.</p>
+-- * DateCreated [CreationDate] <p>The date (in UTC time) when this configuration set was created.</p>
+-- * EnvironmentName [EnvironmentName] <p> If not <code>null</code>, the name of the environment for this configuration set. </p>
+-- @return ConfigurationSettingsDescription structure as a key-value pair table
+function M.ConfigurationSettingsDescription(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationSettingsDescription")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["PlatformArn"] = _PlatformArn,
-		["Description"] = _Description,
-		["TemplateName"] = _TemplateName,
-		["DeploymentStatus"] = _DeploymentStatus,
-		["SolutionStackName"] = _SolutionStackName,
-		["OptionSettings"] = _OptionSettings,
-		["DateUpdated"] = _DateUpdated,
-		["DateCreated"] = _DateCreated,
-		["EnvironmentName"] = _EnvironmentName,
+		["ApplicationName"] = args["ApplicationName"],
+		["PlatformArn"] = args["PlatformArn"],
+		["Description"] = args["Description"],
+		["TemplateName"] = args["TemplateName"],
+		["DeploymentStatus"] = args["DeploymentStatus"],
+		["SolutionStackName"] = args["SolutionStackName"],
+		["OptionSettings"] = args["OptionSettings"],
+		["DateUpdated"] = args["DateUpdated"],
+		["DateCreated"] = args["DateCreated"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertConfigurationSettingsDescription(t)
 	return t
@@ -2814,11 +3084,14 @@ end
 
 --- Create a structure of type DescribePlatformVersionRequest
 --  
--- @param _PlatformArn [PlatformArn] <p>The ARN of the version of the platform.</p>
-function M.DescribePlatformVersionRequest(_PlatformArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePlatformVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlatformArn [PlatformArn] <p>The ARN of the version of the platform.</p>
+-- @return DescribePlatformVersionRequest structure as a key-value pair table
+function M.DescribePlatformVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribePlatformVersionRequest")
 	local t = { 
-		["PlatformArn"] = _PlatformArn,
+		["PlatformArn"] = args["PlatformArn"],
 	}
 	asserts.AssertDescribePlatformVersionRequest(t)
 	return t
@@ -2836,8 +3109,11 @@ end
 
 --- Create a structure of type TooManyEnvironmentsException
 -- <p>The specified account has reached its limit of environments.</p>
-function M.TooManyEnvironmentsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyEnvironmentsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyEnvironmentsException structure as a key-value pair table
+function M.TooManyEnvironmentsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyEnvironmentsException")
 	local t = { 
 	}
 	asserts.AssertTooManyEnvironmentsException(t)
@@ -2864,25 +3140,28 @@ end
 
 --- Create a structure of type ManagedActionHistoryItem
 -- <p>The record of a completed or failed managed action.</p>
--- @param _Status [ActionHistoryStatus] <p>The status of the action.</p>
--- @param _FinishedTime [Timestamp] <p>The date and time that the action finished executing.</p>
--- @param _ExecutedTime [Timestamp] <p>The date and time that the action started executing.</p>
--- @param _ActionDescription [String] <p>A description of the managed action.</p>
--- @param _FailureType [FailureType] <p>If the action failed, the type of failure.</p>
--- @param _FailureDescription [String] <p>If the action failed, a description of the failure.</p>
--- @param _ActionType [ActionType] <p>The type of the managed action.</p>
--- @param _ActionId [String] <p>A unique identifier for the managed action.</p>
-function M.ManagedActionHistoryItem(_Status, _FinishedTime, _ExecutedTime, _ActionDescription, _FailureType, _FailureDescription, _ActionType, _ActionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ManagedActionHistoryItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ActionHistoryStatus] <p>The status of the action.</p>
+-- * FinishedTime [Timestamp] <p>The date and time that the action finished executing.</p>
+-- * ExecutedTime [Timestamp] <p>The date and time that the action started executing.</p>
+-- * ActionDescription [String] <p>A description of the managed action.</p>
+-- * FailureType [FailureType] <p>If the action failed, the type of failure.</p>
+-- * FailureDescription [String] <p>If the action failed, a description of the failure.</p>
+-- * ActionType [ActionType] <p>The type of the managed action.</p>
+-- * ActionId [String] <p>A unique identifier for the managed action.</p>
+-- @return ManagedActionHistoryItem structure as a key-value pair table
+function M.ManagedActionHistoryItem(args)
+	assert(args, "You must provdide an argument table when creating ManagedActionHistoryItem")
 	local t = { 
-		["Status"] = _Status,
-		["FinishedTime"] = _FinishedTime,
-		["ExecutedTime"] = _ExecutedTime,
-		["ActionDescription"] = _ActionDescription,
-		["FailureType"] = _FailureType,
-		["FailureDescription"] = _FailureDescription,
-		["ActionType"] = _ActionType,
-		["ActionId"] = _ActionId,
+		["Status"] = args["Status"],
+		["FinishedTime"] = args["FinishedTime"],
+		["ExecutedTime"] = args["ExecutedTime"],
+		["ActionDescription"] = args["ActionDescription"],
+		["FailureType"] = args["FailureType"],
+		["FailureDescription"] = args["FailureDescription"],
+		["ActionType"] = args["ActionType"],
+		["ActionId"] = args["ActionId"],
 	}
 	asserts.AssertManagedActionHistoryItem(t)
 	return t
@@ -2900,8 +3179,11 @@ end
 
 --- Create a structure of type SourceBundleDeletionException
 -- <p>Unable to delete the Amazon S3 source bundle associated with the application version. The application version was deleted successfully.</p>
-function M.SourceBundleDeletionException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SourceBundleDeletionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SourceBundleDeletionException structure as a key-value pair table
+function M.SourceBundleDeletionException(args)
+	assert(args, "You must provdide an argument table when creating SourceBundleDeletionException")
 	local t = { 
 	}
 	asserts.AssertSourceBundleDeletionException(t)
@@ -2928,25 +3210,28 @@ end
 
 --- Create a structure of type Latency
 -- <p>Represents the average latency for the slowest X percent of requests over the last 10 seconds.</p>
--- @param _P99 [NullableDouble] <p>The average latency for the slowest 1 percent of requests over the last 10 seconds.</p>
--- @param _P75 [NullableDouble] <p>The average latency for the slowest 25 percent of requests over the last 10 seconds.</p>
--- @param _P90 [NullableDouble] <p>The average latency for the slowest 10 percent of requests over the last 10 seconds.</p>
--- @param _P95 [NullableDouble] <p>The average latency for the slowest 5 percent of requests over the last 10 seconds.</p>
--- @param _P85 [NullableDouble] <p>The average latency for the slowest 15 percent of requests over the last 10 seconds.</p>
--- @param _P10 [NullableDouble] <p>The average latency for the slowest 90 percent of requests over the last 10 seconds.</p>
--- @param _P999 [NullableDouble] <p>The average latency for the slowest 0.1 percent of requests over the last 10 seconds.</p>
--- @param _P50 [NullableDouble] <p>The average latency for the slowest 50 percent of requests over the last 10 seconds.</p>
-function M.Latency(_P99, _P75, _P90, _P95, _P85, _P10, _P999, _P50, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Latency")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * P99 [NullableDouble] <p>The average latency for the slowest 1 percent of requests over the last 10 seconds.</p>
+-- * P75 [NullableDouble] <p>The average latency for the slowest 25 percent of requests over the last 10 seconds.</p>
+-- * P90 [NullableDouble] <p>The average latency for the slowest 10 percent of requests over the last 10 seconds.</p>
+-- * P95 [NullableDouble] <p>The average latency for the slowest 5 percent of requests over the last 10 seconds.</p>
+-- * P85 [NullableDouble] <p>The average latency for the slowest 15 percent of requests over the last 10 seconds.</p>
+-- * P10 [NullableDouble] <p>The average latency for the slowest 90 percent of requests over the last 10 seconds.</p>
+-- * P999 [NullableDouble] <p>The average latency for the slowest 0.1 percent of requests over the last 10 seconds.</p>
+-- * P50 [NullableDouble] <p>The average latency for the slowest 50 percent of requests over the last 10 seconds.</p>
+-- @return Latency structure as a key-value pair table
+function M.Latency(args)
+	assert(args, "You must provdide an argument table when creating Latency")
 	local t = { 
-		["P99"] = _P99,
-		["P75"] = _P75,
-		["P90"] = _P90,
-		["P95"] = _P95,
-		["P85"] = _P85,
-		["P10"] = _P10,
-		["P999"] = _P999,
-		["P50"] = _P50,
+		["P99"] = args["P99"],
+		["P75"] = args["P75"],
+		["P90"] = args["P90"],
+		["P95"] = args["P95"],
+		["P85"] = args["P85"],
+		["P10"] = args["P10"],
+		["P999"] = args["P999"],
+		["P50"] = args["P50"],
 	}
 	asserts.AssertLatency(t)
 	return t
@@ -2973,27 +3258,30 @@ end
 
 --- Create a structure of type ApplicationVersionDescription
 -- <p>Describes the properties of an application version.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application to which the application version belongs.</p>
--- @param _Status [ApplicationVersionStatus] <p>The processing status of the application version.</p>
--- @param _VersionLabel [VersionLabel] <p>A unique identifier for the application version.</p>
--- @param _SourceBuildInformation [SourceBuildInformation] <p>If the version's source code was retrieved from AWS CodeCommit, the location of the source code for the application version.</p>
--- @param _Description [Description] <p>The description of the application version.</p>
--- @param _DateCreated [CreationDate] <p>The creation date of the application version.</p>
--- @param _DateUpdated [UpdateDate] <p>The last modified date of the application version.</p>
--- @param _SourceBundle [S3Location] <p>The storage location of the application version's source bundle in Amazon S3.</p>
--- @param _BuildArn [String] <p>Reference to the artifact from the AWS CodeBuild build.</p>
-function M.ApplicationVersionDescription(_ApplicationName, _Status, _VersionLabel, _SourceBuildInformation, _Description, _DateCreated, _DateUpdated, _SourceBundle, _BuildArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationVersionDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application to which the application version belongs.</p>
+-- * Status [ApplicationVersionStatus] <p>The processing status of the application version.</p>
+-- * VersionLabel [VersionLabel] <p>A unique identifier for the application version.</p>
+-- * SourceBuildInformation [SourceBuildInformation] <p>If the version's source code was retrieved from AWS CodeCommit, the location of the source code for the application version.</p>
+-- * Description [Description] <p>The description of the application version.</p>
+-- * DateCreated [CreationDate] <p>The creation date of the application version.</p>
+-- * DateUpdated [UpdateDate] <p>The last modified date of the application version.</p>
+-- * SourceBundle [S3Location] <p>The storage location of the application version's source bundle in Amazon S3.</p>
+-- * BuildArn [String] <p>Reference to the artifact from the AWS CodeBuild build.</p>
+-- @return ApplicationVersionDescription structure as a key-value pair table
+function M.ApplicationVersionDescription(args)
+	assert(args, "You must provdide an argument table when creating ApplicationVersionDescription")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["Status"] = _Status,
-		["VersionLabel"] = _VersionLabel,
-		["SourceBuildInformation"] = _SourceBuildInformation,
-		["Description"] = _Description,
-		["DateCreated"] = _DateCreated,
-		["DateUpdated"] = _DateUpdated,
-		["SourceBundle"] = _SourceBundle,
-		["BuildArn"] = _BuildArn,
+		["ApplicationName"] = args["ApplicationName"],
+		["Status"] = args["Status"],
+		["VersionLabel"] = args["VersionLabel"],
+		["SourceBuildInformation"] = args["SourceBuildInformation"],
+		["Description"] = args["Description"],
+		["DateCreated"] = args["DateCreated"],
+		["DateUpdated"] = args["DateUpdated"],
+		["SourceBundle"] = args["SourceBundle"],
+		["BuildArn"] = args["BuildArn"],
 	}
 	asserts.AssertApplicationVersionDescription(t)
 	return t
@@ -3018,21 +3306,24 @@ end
 
 --- Create a structure of type UpdateConfigurationTemplateMessage
 -- <p>The result message containing the options for the specified solution stack.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application associated with the configuration template to update.</p> <p> If no application is found with this name, <code>UpdateConfigurationTemplate</code> returns an <code>InvalidParameterValue</code> error. </p>
--- @param _OptionSettings [ConfigurationOptionSettingsList] <p>A list of configuration option settings to update with the new specified option value.</p>
--- @param _OptionsToRemove [OptionsSpecifierList] <p>A list of configuration options to remove from the configuration set.</p> <p> Constraint: You can remove only <code>UserDefined</code> configuration options. </p>
--- @param _Description [Description] <p>A new description for the configuration.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to update.</p> <p> If no configuration template is found with this name, <code>UpdateConfigurationTemplate</code> returns an <code>InvalidParameterValue</code> error. </p>
--- Required parameter: ApplicationName
--- Required parameter: TemplateName
-function M.UpdateConfigurationTemplateMessage(_ApplicationName, _OptionSettings, _OptionsToRemove, _Description, _TemplateName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConfigurationTemplateMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application associated with the configuration template to update.</p> <p> If no application is found with this name, <code>UpdateConfigurationTemplate</code> returns an <code>InvalidParameterValue</code> error. </p>
+-- * OptionSettings [ConfigurationOptionSettingsList] <p>A list of configuration option settings to update with the new specified option value.</p>
+-- * OptionsToRemove [OptionsSpecifierList] <p>A list of configuration options to remove from the configuration set.</p> <p> Constraint: You can remove only <code>UserDefined</code> configuration options. </p>
+-- * Description [Description] <p>A new description for the configuration.</p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to update.</p> <p> If no configuration template is found with this name, <code>UpdateConfigurationTemplate</code> returns an <code>InvalidParameterValue</code> error. </p>
+-- Required key: ApplicationName
+-- Required key: TemplateName
+-- @return UpdateConfigurationTemplateMessage structure as a key-value pair table
+function M.UpdateConfigurationTemplateMessage(args)
+	assert(args, "You must provdide an argument table when creating UpdateConfigurationTemplateMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["OptionSettings"] = _OptionSettings,
-		["OptionsToRemove"] = _OptionsToRemove,
-		["Description"] = _Description,
-		["TemplateName"] = _TemplateName,
+		["ApplicationName"] = args["ApplicationName"],
+		["OptionSettings"] = args["OptionSettings"],
+		["OptionsToRemove"] = args["OptionsToRemove"],
+		["Description"] = args["Description"],
+		["TemplateName"] = args["TemplateName"],
 	}
 	asserts.AssertUpdateConfigurationTemplateMessage(t)
 	return t
@@ -3052,13 +3343,16 @@ end
 
 --- Create a structure of type RestartAppServerMessage
 -- <p/>
--- @param _EnvironmentId [EnvironmentId] <p>The ID of the environment to restart the server for.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment to restart the server for.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-function M.RestartAppServerMessage(_EnvironmentId, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RestartAppServerMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentId [EnvironmentId] <p>The ID of the environment to restart the server for.</p> <p> Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment to restart the server for.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- @return RestartAppServerMessage structure as a key-value pair table
+function M.RestartAppServerMessage(args)
+	assert(args, "You must provdide an argument table when creating RestartAppServerMessage")
 	local t = { 
-		["EnvironmentId"] = _EnvironmentId,
-		["EnvironmentName"] = _EnvironmentName,
+		["EnvironmentId"] = args["EnvironmentId"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertRestartAppServerMessage(t)
 	return t
@@ -3080,17 +3374,20 @@ end
 
 --- Create a structure of type SwapEnvironmentCNAMEsMessage
 -- <p>Swaps the CNAMEs of two environments.</p>
--- @param _DestinationEnvironmentName [EnvironmentName] <p>The name of the destination environment.</p> <p> Condition: You must specify at least the <code>DestinationEnvironmentID</code> or the <code>DestinationEnvironmentName</code>. You may also specify both. You must specify the <code>SourceEnvironmentName</code> with the <code>DestinationEnvironmentName</code>. </p>
--- @param _DestinationEnvironmentId [EnvironmentId] <p>The ID of the destination environment.</p> <p> Condition: You must specify at least the <code>DestinationEnvironmentID</code> or the <code>DestinationEnvironmentName</code>. You may also specify both. You must specify the <code>SourceEnvironmentId</code> with the <code>DestinationEnvironmentId</code>. </p>
--- @param _SourceEnvironmentName [EnvironmentName] <p>The name of the source environment.</p> <p> Condition: You must specify at least the <code>SourceEnvironmentID</code> or the <code>SourceEnvironmentName</code>. You may also specify both. If you specify the <code>SourceEnvironmentName</code>, you must specify the <code>DestinationEnvironmentName</code>. </p>
--- @param _SourceEnvironmentId [EnvironmentId] <p>The ID of the source environment.</p> <p> Condition: You must specify at least the <code>SourceEnvironmentID</code> or the <code>SourceEnvironmentName</code>. You may also specify both. If you specify the <code>SourceEnvironmentId</code>, you must specify the <code>DestinationEnvironmentId</code>. </p>
-function M.SwapEnvironmentCNAMEsMessage(_DestinationEnvironmentName, _DestinationEnvironmentId, _SourceEnvironmentName, _SourceEnvironmentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SwapEnvironmentCNAMEsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DestinationEnvironmentName [EnvironmentName] <p>The name of the destination environment.</p> <p> Condition: You must specify at least the <code>DestinationEnvironmentID</code> or the <code>DestinationEnvironmentName</code>. You may also specify both. You must specify the <code>SourceEnvironmentName</code> with the <code>DestinationEnvironmentName</code>. </p>
+-- * DestinationEnvironmentId [EnvironmentId] <p>The ID of the destination environment.</p> <p> Condition: You must specify at least the <code>DestinationEnvironmentID</code> or the <code>DestinationEnvironmentName</code>. You may also specify both. You must specify the <code>SourceEnvironmentId</code> with the <code>DestinationEnvironmentId</code>. </p>
+-- * SourceEnvironmentName [EnvironmentName] <p>The name of the source environment.</p> <p> Condition: You must specify at least the <code>SourceEnvironmentID</code> or the <code>SourceEnvironmentName</code>. You may also specify both. If you specify the <code>SourceEnvironmentName</code>, you must specify the <code>DestinationEnvironmentName</code>. </p>
+-- * SourceEnvironmentId [EnvironmentId] <p>The ID of the source environment.</p> <p> Condition: You must specify at least the <code>SourceEnvironmentID</code> or the <code>SourceEnvironmentName</code>. You may also specify both. If you specify the <code>SourceEnvironmentId</code>, you must specify the <code>DestinationEnvironmentId</code>. </p>
+-- @return SwapEnvironmentCNAMEsMessage structure as a key-value pair table
+function M.SwapEnvironmentCNAMEsMessage(args)
+	assert(args, "You must provdide an argument table when creating SwapEnvironmentCNAMEsMessage")
 	local t = { 
-		["DestinationEnvironmentName"] = _DestinationEnvironmentName,
-		["DestinationEnvironmentId"] = _DestinationEnvironmentId,
-		["SourceEnvironmentName"] = _SourceEnvironmentName,
-		["SourceEnvironmentId"] = _SourceEnvironmentId,
+		["DestinationEnvironmentName"] = args["DestinationEnvironmentName"],
+		["DestinationEnvironmentId"] = args["DestinationEnvironmentId"],
+		["SourceEnvironmentName"] = args["SourceEnvironmentName"],
+		["SourceEnvironmentId"] = args["SourceEnvironmentId"],
 	}
 	asserts.AssertSwapEnvironmentCNAMEsMessage(t)
 	return t
@@ -3112,17 +3409,20 @@ end
 
 --- Create a structure of type DescribeInstancesHealthRequest
 -- <p>Parameters for a call to <code>DescribeInstancesHealth</code>.</p>
--- @param _EnvironmentName [EnvironmentName] <p>Specify the AWS Elastic Beanstalk environment by name.</p>
--- @param _NextToken [NextToken] <p>Specify the pagination token returned by a previous call.</p>
--- @param _AttributeNames [InstancesHealthAttributes] <p>Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>. If no attribute names are specified, returns a list of instances.</p>
--- @param _EnvironmentId [EnvironmentId] <p>Specify the AWS Elastic Beanstalk environment by ID.</p>
-function M.DescribeInstancesHealthRequest(_EnvironmentName, _NextToken, _AttributeNames, _EnvironmentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesHealthRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentName [EnvironmentName] <p>Specify the AWS Elastic Beanstalk environment by name.</p>
+-- * NextToken [NextToken] <p>Specify the pagination token returned by a previous call.</p>
+-- * AttributeNames [InstancesHealthAttributes] <p>Specifies the response elements you wish to receive. To retrieve all attributes, set to <code>All</code>. If no attribute names are specified, returns a list of instances.</p>
+-- * EnvironmentId [EnvironmentId] <p>Specify the AWS Elastic Beanstalk environment by ID.</p>
+-- @return DescribeInstancesHealthRequest structure as a key-value pair table
+function M.DescribeInstancesHealthRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancesHealthRequest")
 	local t = { 
-		["EnvironmentName"] = _EnvironmentName,
-		["NextToken"] = _NextToken,
-		["AttributeNames"] = _AttributeNames,
-		["EnvironmentId"] = _EnvironmentId,
+		["EnvironmentName"] = args["EnvironmentName"],
+		["NextToken"] = args["NextToken"],
+		["AttributeNames"] = args["AttributeNames"],
+		["EnvironmentId"] = args["EnvironmentId"],
 	}
 	asserts.AssertDescribeInstancesHealthRequest(t)
 	return t
@@ -3142,13 +3442,16 @@ end
 
 --- Create a structure of type EnvironmentLink
 -- <p>A link to another environment, defined in the environment's manifest. Links provide connection information in system properties that can be used to connect to another environment in the same group. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
--- @param _LinkName [String] <p>The name of the link.</p>
--- @param _EnvironmentName [String] <p>The name of the linked environment (the dependency).</p>
-function M.EnvironmentLink(_LinkName, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentLink")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LinkName [String] <p>The name of the link.</p>
+-- * EnvironmentName [String] <p>The name of the linked environment (the dependency).</p>
+-- @return EnvironmentLink structure as a key-value pair table
+function M.EnvironmentLink(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentLink")
 	local t = { 
-		["LinkName"] = _LinkName,
-		["EnvironmentName"] = _EnvironmentName,
+		["LinkName"] = args["LinkName"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertEnvironmentLink(t)
 	return t
@@ -3166,8 +3469,11 @@ end
 
 --- Create a structure of type PlatformVersionStillReferencedException
 -- <p>You cannot delete the platform version because there are still environments running on it.</p>
-function M.PlatformVersionStillReferencedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlatformVersionStillReferencedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PlatformVersionStillReferencedException structure as a key-value pair table
+function M.PlatformVersionStillReferencedException(args)
+	assert(args, "You must provdide an argument table when creating PlatformVersionStillReferencedException")
 	local t = { 
 	}
 	asserts.AssertPlatformVersionStillReferencedException(t)
@@ -3187,11 +3493,14 @@ end
 
 --- Create a structure of type RetrieveEnvironmentInfoResultMessage
 -- <p>Result message containing a description of the requested environment info.</p>
--- @param _EnvironmentInfo [EnvironmentInfoDescriptionList] <p> The <a>EnvironmentInfoDescription</a> of the environment. </p>
-function M.RetrieveEnvironmentInfoResultMessage(_EnvironmentInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveEnvironmentInfoResultMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentInfo [EnvironmentInfoDescriptionList] <p> The <a>EnvironmentInfoDescription</a> of the environment. </p>
+-- @return RetrieveEnvironmentInfoResultMessage structure as a key-value pair table
+function M.RetrieveEnvironmentInfoResultMessage(args)
+	assert(args, "You must provdide an argument table when creating RetrieveEnvironmentInfoResultMessage")
 	local t = { 
-		["EnvironmentInfo"] = _EnvironmentInfo,
+		["EnvironmentInfo"] = args["EnvironmentInfo"],
 	}
 	asserts.AssertRetrieveEnvironmentInfoResultMessage(t)
 	return t
@@ -3214,17 +3523,20 @@ end
 
 --- Create a structure of type UpdateApplicationVersionMessage
 -- <p/>
--- @param _ApplicationName [ApplicationName] <p>The name of the application associated with this version.</p> <p> If no application is found with this name, <code>UpdateApplication</code> returns an <code>InvalidParameterValue</code> error.</p>
--- @param _VersionLabel [VersionLabel] <p>The name of the version to update.</p> <p>If no application version is found with this label, <code>UpdateApplication</code> returns an <code>InvalidParameterValue</code> error. </p>
--- @param _Description [Description] <p>A new description for this version.</p>
--- Required parameter: ApplicationName
--- Required parameter: VersionLabel
-function M.UpdateApplicationVersionMessage(_ApplicationName, _VersionLabel, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApplicationVersionMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application associated with this version.</p> <p> If no application is found with this name, <code>UpdateApplication</code> returns an <code>InvalidParameterValue</code> error.</p>
+-- * VersionLabel [VersionLabel] <p>The name of the version to update.</p> <p>If no application version is found with this label, <code>UpdateApplication</code> returns an <code>InvalidParameterValue</code> error. </p>
+-- * Description [Description] <p>A new description for this version.</p>
+-- Required key: ApplicationName
+-- Required key: VersionLabel
+-- @return UpdateApplicationVersionMessage structure as a key-value pair table
+function M.UpdateApplicationVersionMessage(args)
+	assert(args, "You must provdide an argument table when creating UpdateApplicationVersionMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["VersionLabel"] = _VersionLabel,
-		["Description"] = _Description,
+		["ApplicationName"] = args["ApplicationName"],
+		["VersionLabel"] = args["VersionLabel"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdateApplicationVersionMessage(t)
 	return t
@@ -3243,11 +3555,14 @@ end
 
 --- Create a structure of type EnvironmentResourcesDescription
 -- <p>Describes the AWS resources in use by this environment. This data is not live data.</p>
--- @param _LoadBalancer [LoadBalancerDescription] <p>Describes the LoadBalancer.</p>
-function M.EnvironmentResourcesDescription(_LoadBalancer, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentResourcesDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoadBalancer [LoadBalancerDescription] <p>Describes the LoadBalancer.</p>
+-- @return EnvironmentResourcesDescription structure as a key-value pair table
+function M.EnvironmentResourcesDescription(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentResourcesDescription")
 	local t = { 
-		["LoadBalancer"] = _LoadBalancer,
+		["LoadBalancer"] = args["LoadBalancer"],
 	}
 	asserts.AssertEnvironmentResourcesDescription(t)
 	return t
@@ -3267,13 +3582,16 @@ end
 
 --- Create a structure of type OptionRestrictionRegex
 -- <p>A regular expression representing a restriction on a string configuration option value.</p>
--- @param _Pattern [RegexPattern] <p>The regular expression pattern that a string configuration option value with this restriction must match.</p>
--- @param _Label [RegexLabel] <p>A unique name representing this regular expression.</p>
-function M.OptionRestrictionRegex(_Pattern, _Label, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OptionRestrictionRegex")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Pattern [RegexPattern] <p>The regular expression pattern that a string configuration option value with this restriction must match.</p>
+-- * Label [RegexLabel] <p>A unique name representing this regular expression.</p>
+-- @return OptionRestrictionRegex structure as a key-value pair table
+function M.OptionRestrictionRegex(args)
+	assert(args, "You must provdide an argument table when creating OptionRestrictionRegex")
 	local t = { 
-		["Pattern"] = _Pattern,
-		["Label"] = _Label,
+		["Pattern"] = args["Pattern"],
+		["Label"] = args["Label"],
 	}
 	asserts.AssertOptionRestrictionRegex(t)
 	return t
@@ -3293,13 +3611,16 @@ end
 
 --- Create a structure of type PlatformProgrammingLanguage
 -- <p>A programming language supported by the platform.</p>
--- @param _Version [String] <p>The version of the programming language.</p>
--- @param _Name [String] <p>The name of the programming language.</p>
-function M.PlatformProgrammingLanguage(_Version, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlatformProgrammingLanguage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [String] <p>The version of the programming language.</p>
+-- * Name [String] <p>The name of the programming language.</p>
+-- @return PlatformProgrammingLanguage structure as a key-value pair table
+function M.PlatformProgrammingLanguage(args)
+	assert(args, "You must provdide an argument table when creating PlatformProgrammingLanguage")
 	local t = { 
-		["Version"] = _Version,
-		["Name"] = _Name,
+		["Version"] = args["Version"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertPlatformProgrammingLanguage(t)
 	return t
@@ -3317,8 +3638,11 @@ end
 
 --- Create a structure of type TooManyPlatformsException
 -- <p>You have exceeded the maximum number of allowed platforms associated with the account.</p>
-function M.TooManyPlatformsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyPlatformsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyPlatformsException structure as a key-value pair table
+function M.TooManyPlatformsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyPlatformsException")
 	local t = { 
 	}
 	asserts.AssertTooManyPlatformsException(t)
@@ -3338,11 +3662,14 @@ end
 
 --- Create a structure of type ApplicationDescriptionMessage
 -- <p>Result message containing a single description of an application.</p>
--- @param _Application [ApplicationDescription] <p> The <a>ApplicationDescription</a> of the application. </p>
-function M.ApplicationDescriptionMessage(_Application, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplicationDescriptionMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Application [ApplicationDescription] <p> The <a>ApplicationDescription</a> of the application. </p>
+-- @return ApplicationDescriptionMessage structure as a key-value pair table
+function M.ApplicationDescriptionMessage(args)
+	assert(args, "You must provdide an argument table when creating ApplicationDescriptionMessage")
 	local t = { 
-		["Application"] = _Application,
+		["Application"] = args["Application"],
 	}
 	asserts.AssertApplicationDescriptionMessage(t)
 	return t
@@ -3368,25 +3695,28 @@ end
 
 --- Create a structure of type PlatformSummary
 -- <p>Detailed information about a platform.</p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
--- @param _PlatformStatus [PlatformStatus] <p>The status of the platform. You can create an environment from the platform once it is ready.</p>
--- @param _SupportedAddonList [SupportedAddonList] <p>The additions associated with the platform.</p>
--- @param _OperatingSystemName [OperatingSystemName] <p>The operating system used by the platform.</p>
--- @param _PlatformCategory [PlatformCategory] <p>The category of platform.</p>
--- @param _PlatformOwner [PlatformOwner] <p>The AWS account ID of the person who created the platform.</p>
--- @param _OperatingSystemVersion [OperatingSystemVersion] <p>The version of the operating system used by the platform.</p>
--- @param _SupportedTierList [SupportedTierList] <p>The tiers in which the platform runs.</p>
-function M.PlatformSummary(_PlatformArn, _PlatformStatus, _SupportedAddonList, _OperatingSystemName, _PlatformCategory, _PlatformOwner, _OperatingSystemVersion, _SupportedTierList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlatformSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlatformArn [PlatformArn] <p>The ARN of the platform.</p>
+-- * PlatformStatus [PlatformStatus] <p>The status of the platform. You can create an environment from the platform once it is ready.</p>
+-- * SupportedAddonList [SupportedAddonList] <p>The additions associated with the platform.</p>
+-- * OperatingSystemName [OperatingSystemName] <p>The operating system used by the platform.</p>
+-- * PlatformCategory [PlatformCategory] <p>The category of platform.</p>
+-- * PlatformOwner [PlatformOwner] <p>The AWS account ID of the person who created the platform.</p>
+-- * OperatingSystemVersion [OperatingSystemVersion] <p>The version of the operating system used by the platform.</p>
+-- * SupportedTierList [SupportedTierList] <p>The tiers in which the platform runs.</p>
+-- @return PlatformSummary structure as a key-value pair table
+function M.PlatformSummary(args)
+	assert(args, "You must provdide an argument table when creating PlatformSummary")
 	local t = { 
-		["PlatformArn"] = _PlatformArn,
-		["PlatformStatus"] = _PlatformStatus,
-		["SupportedAddonList"] = _SupportedAddonList,
-		["OperatingSystemName"] = _OperatingSystemName,
-		["PlatformCategory"] = _PlatformCategory,
-		["PlatformOwner"] = _PlatformOwner,
-		["OperatingSystemVersion"] = _OperatingSystemVersion,
-		["SupportedTierList"] = _SupportedTierList,
+		["PlatformArn"] = args["PlatformArn"],
+		["PlatformStatus"] = args["PlatformStatus"],
+		["SupportedAddonList"] = args["SupportedAddonList"],
+		["OperatingSystemName"] = args["OperatingSystemName"],
+		["PlatformCategory"] = args["PlatformCategory"],
+		["PlatformOwner"] = args["PlatformOwner"],
+		["OperatingSystemVersion"] = args["OperatingSystemVersion"],
+		["SupportedTierList"] = args["SupportedTierList"],
 	}
 	asserts.AssertPlatformSummary(t)
 	return t
@@ -3406,13 +3736,16 @@ end
 
 --- Create a structure of type CreatePlatformVersionResult
 --  
--- @param _PlatformSummary [PlatformSummary] <p>Detailed information about the new version of the custom platform.</p>
--- @param _Builder [Builder] <p>The builder used to create the custom platform.</p>
-function M.CreatePlatformVersionResult(_PlatformSummary, _Builder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePlatformVersionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlatformSummary [PlatformSummary] <p>Detailed information about the new version of the custom platform.</p>
+-- * Builder [Builder] <p>The builder used to create the custom platform.</p>
+-- @return CreatePlatformVersionResult structure as a key-value pair table
+function M.CreatePlatformVersionResult(args)
+	assert(args, "You must provdide an argument table when creating CreatePlatformVersionResult")
 	local t = { 
-		["PlatformSummary"] = _PlatformSummary,
-		["Builder"] = _Builder,
+		["PlatformSummary"] = args["PlatformSummary"],
+		["Builder"] = args["Builder"],
 	}
 	asserts.AssertCreatePlatformVersionResult(t)
 	return t
@@ -3434,17 +3767,20 @@ end
 
 --- Create a structure of type ConfigurationOptionSetting
 -- <p> A specification identifying an individual configuration option along with its current value. For a list of possible option values, go to <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html">Option Values</a> in the <i>AWS Elastic Beanstalk Developer Guide</i>. </p>
--- @param _OptionName [ConfigurationOptionName] <p>The name of the configuration option.</p>
--- @param _ResourceName [ResourceName] <p>A unique resource name for a time-based scaling configuration option.</p>
--- @param _Namespace [OptionNamespace] <p>A unique namespace identifying the option's associated AWS resource.</p>
--- @param _Value [ConfigurationOptionValue] <p>The current value for the configuration option.</p>
-function M.ConfigurationOptionSetting(_OptionName, _ResourceName, _Namespace, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationOptionSetting")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OptionName [ConfigurationOptionName] <p>The name of the configuration option.</p>
+-- * ResourceName [ResourceName] <p>A unique resource name for a time-based scaling configuration option.</p>
+-- * Namespace [OptionNamespace] <p>A unique namespace identifying the option's associated AWS resource.</p>
+-- * Value [ConfigurationOptionValue] <p>The current value for the configuration option.</p>
+-- @return ConfigurationOptionSetting structure as a key-value pair table
+function M.ConfigurationOptionSetting(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationOptionSetting")
 	local t = { 
-		["OptionName"] = _OptionName,
-		["ResourceName"] = _ResourceName,
-		["Namespace"] = _Namespace,
-		["Value"] = _Value,
+		["OptionName"] = args["OptionName"],
+		["ResourceName"] = args["ResourceName"],
+		["Namespace"] = args["Namespace"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertConfigurationOptionSetting(t)
 	return t
@@ -3466,17 +3802,20 @@ end
 
 --- Create a structure of type Deployment
 -- <p>Information about an application version deployment.</p>
--- @param _Status [String] <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> : The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment failed.</p> </li> </ul>
--- @param _VersionLabel [String] <p>The version label of the application version in the deployment.</p>
--- @param _DeploymentTime [DeploymentTimestamp] <p>For in-progress deployments, the time that the deloyment started.</p> <p>For completed deployments, the time that the deployment ended.</p>
--- @param _DeploymentId [NullableLong] <p>The ID of the deployment. This number increases by one each time that you deploy source code or change instance configuration settings.</p>
-function M.Deployment(_Status, _VersionLabel, _DeploymentTime, _DeploymentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Deployment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The status of the deployment:</p> <ul> <li> <p> <code>In Progress</code> : The deployment is in progress.</p> </li> <li> <p> <code>Deployed</code> : The deployment succeeded.</p> </li> <li> <p> <code>Failed</code> : The deployment failed.</p> </li> </ul>
+-- * VersionLabel [String] <p>The version label of the application version in the deployment.</p>
+-- * DeploymentTime [DeploymentTimestamp] <p>For in-progress deployments, the time that the deloyment started.</p> <p>For completed deployments, the time that the deployment ended.</p>
+-- * DeploymentId [NullableLong] <p>The ID of the deployment. This number increases by one each time that you deploy source code or change instance configuration settings.</p>
+-- @return Deployment structure as a key-value pair table
+function M.Deployment(args)
+	assert(args, "You must provdide an argument table when creating Deployment")
 	local t = { 
-		["Status"] = _Status,
-		["VersionLabel"] = _VersionLabel,
-		["DeploymentTime"] = _DeploymentTime,
-		["DeploymentId"] = _DeploymentId,
+		["Status"] = args["Status"],
+		["VersionLabel"] = args["VersionLabel"],
+		["DeploymentTime"] = args["DeploymentTime"],
+		["DeploymentId"] = args["DeploymentId"],
 	}
 	asserts.AssertDeployment(t)
 	return t
@@ -3497,15 +3836,18 @@ end
 
 --- Create a structure of type PlatformFilter
 -- <p>Specify criteria to restrict the results when listing custom platforms.</p> <p>The filter is evaluated as the expression:</p> <p> <code>Type</code> <code>Operator</code> <code>Values[i]</code> </p>
--- @param _Operator [PlatformFilterOperator] <p>The operator to apply to the <code>Type</code> with each of the <code>Values</code>.</p> <p> Valid Values: <code>=</code> (equal to) | <code>!=</code> (not equal to) | <code>&lt;</code> (less than) | <code>&lt;=</code> (less than or equal to) | <code>&gt;</code> (greater than) | <code>&gt;=</code> (greater than or equal to) | <code>contains</code> | <code>begins_with</code> | <code>ends_with</code> </p>
--- @param _Values [PlatformFilterValueList] <p>The list of values applied to the custom platform attribute.</p>
--- @param _Type [PlatformFilterType] <p>The custom platform attribute to which the filter values are applied.</p> <p>Valid Values: <code>PlatformName</code> | <code>PlatformVersion</code> | <code>PlatformStatus</code> | <code>PlatformOwner</code> </p>
-function M.PlatformFilter(_Operator, _Values, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlatformFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Operator [PlatformFilterOperator] <p>The operator to apply to the <code>Type</code> with each of the <code>Values</code>.</p> <p> Valid Values: <code>=</code> (equal to) | <code>!=</code> (not equal to) | <code>&lt;</code> (less than) | <code>&lt;=</code> (less than or equal to) | <code>&gt;</code> (greater than) | <code>&gt;=</code> (greater than or equal to) | <code>contains</code> | <code>begins_with</code> | <code>ends_with</code> </p>
+-- * Values [PlatformFilterValueList] <p>The list of values applied to the custom platform attribute.</p>
+-- * Type [PlatformFilterType] <p>The custom platform attribute to which the filter values are applied.</p> <p>Valid Values: <code>PlatformName</code> | <code>PlatformVersion</code> | <code>PlatformStatus</code> | <code>PlatformOwner</code> </p>
+-- @return PlatformFilter structure as a key-value pair table
+function M.PlatformFilter(args)
+	assert(args, "You must provdide an argument table when creating PlatformFilter")
 	local t = { 
-		["Operator"] = _Operator,
-		["Values"] = _Values,
-		["Type"] = _Type,
+		["Operator"] = args["Operator"],
+		["Values"] = args["Values"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertPlatformFilter(t)
 	return t
@@ -3527,16 +3869,19 @@ end
 
 --- Create a structure of type RequestEnvironmentInfoMessage
 -- <p>Request to retrieve logs from an environment and store them in your Elastic Beanstalk storage bucket.</p>
--- @param _EnvironmentId [EnvironmentId] <p>The ID of the environment of the requested data.</p> <p>If no such environment is found, <code>RequestEnvironmentInfo</code> returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- @param _InfoType [EnvironmentInfoType] <p>The type of information to request.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment of the requested data.</p> <p>If no such environment is found, <code>RequestEnvironmentInfo</code> returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- Required parameter: InfoType
-function M.RequestEnvironmentInfoMessage(_EnvironmentId, _InfoType, _EnvironmentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestEnvironmentInfoMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EnvironmentId [EnvironmentId] <p>The ID of the environment of the requested data.</p> <p>If no such environment is found, <code>RequestEnvironmentInfo</code> returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * InfoType [EnvironmentInfoType] <p>The type of information to request.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment of the requested data.</p> <p>If no such environment is found, <code>RequestEnvironmentInfo</code> returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- Required key: InfoType
+-- @return RequestEnvironmentInfoMessage structure as a key-value pair table
+function M.RequestEnvironmentInfoMessage(args)
+	assert(args, "You must provdide an argument table when creating RequestEnvironmentInfoMessage")
 	local t = { 
-		["EnvironmentId"] = _EnvironmentId,
-		["InfoType"] = _InfoType,
-		["EnvironmentName"] = _EnvironmentName,
+		["EnvironmentId"] = args["EnvironmentId"],
+		["InfoType"] = args["InfoType"],
+		["EnvironmentName"] = args["EnvironmentName"],
 	}
 	asserts.AssertRequestEnvironmentInfoMessage(t)
 	return t
@@ -3556,13 +3901,16 @@ end
 
 --- Create a structure of type SolutionStackDescription
 -- <p>Describes the solution stack.</p>
--- @param _PermittedFileTypes [SolutionStackFileTypeList] <p>The permitted file types allowed for a solution stack.</p>
--- @param _SolutionStackName [SolutionStackName] <p>The name of the solution stack.</p>
-function M.SolutionStackDescription(_PermittedFileTypes, _SolutionStackName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SolutionStackDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PermittedFileTypes [SolutionStackFileTypeList] <p>The permitted file types allowed for a solution stack.</p>
+-- * SolutionStackName [SolutionStackName] <p>The name of the solution stack.</p>
+-- @return SolutionStackDescription structure as a key-value pair table
+function M.SolutionStackDescription(args)
+	assert(args, "You must provdide an argument table when creating SolutionStackDescription")
 	local t = { 
-		["PermittedFileTypes"] = _PermittedFileTypes,
-		["SolutionStackName"] = _SolutionStackName,
+		["PermittedFileTypes"] = args["PermittedFileTypes"],
+		["SolutionStackName"] = args["SolutionStackName"],
 	}
 	asserts.AssertSolutionStackDescription(t)
 	return t
@@ -3588,25 +3936,28 @@ end
 
 --- Create a structure of type InstanceHealthSummary
 -- <p>Represents summary information about the health of an instance. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html">Health Colors and Statuses</a>.</p>
--- @param _Info [NullableInteger] <p> <b>Green.</b> An operation is in progress on an instance.</p>
--- @param _Ok [NullableInteger] <p> <b>Green.</b> An instance is passing health checks and the health agent is not reporting any problems.</p>
--- @param _Unknown [NullableInteger] <p> <b>Grey.</b> AWS Elastic Beanstalk and the health agent are reporting an insufficient amount of data on an instance.</p>
--- @param _Severe [NullableInteger] <p> <b>Red.</b> The health agent is reporting a very high number of request failures or other issues for an instance or environment.</p>
--- @param _Warning [NullableInteger] <p> <b>Yellow.</b> The health agent is reporting a moderate number of request failures or other issues for an instance or environment.</p>
--- @param _Degraded [NullableInteger] <p> <b>Red.</b> The health agent is reporting a high number of request failures or other issues for an instance or environment.</p>
--- @param _NoData [NullableInteger] <p> <b>Grey.</b> AWS Elastic Beanstalk and the health agent are reporting no data on an instance.</p>
--- @param _Pending [NullableInteger] <p> <b>Grey.</b> An operation is in progress on an instance within the command timeout.</p>
-function M.InstanceHealthSummary(_Info, _Ok, _Unknown, _Severe, _Warning, _Degraded, _NoData, _Pending, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceHealthSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Info [NullableInteger] <p> <b>Green.</b> An operation is in progress on an instance.</p>
+-- * Ok [NullableInteger] <p> <b>Green.</b> An instance is passing health checks and the health agent is not reporting any problems.</p>
+-- * Unknown [NullableInteger] <p> <b>Grey.</b> AWS Elastic Beanstalk and the health agent are reporting an insufficient amount of data on an instance.</p>
+-- * Severe [NullableInteger] <p> <b>Red.</b> The health agent is reporting a very high number of request failures or other issues for an instance or environment.</p>
+-- * Warning [NullableInteger] <p> <b>Yellow.</b> The health agent is reporting a moderate number of request failures or other issues for an instance or environment.</p>
+-- * Degraded [NullableInteger] <p> <b>Red.</b> The health agent is reporting a high number of request failures or other issues for an instance or environment.</p>
+-- * NoData [NullableInteger] <p> <b>Grey.</b> AWS Elastic Beanstalk and the health agent are reporting no data on an instance.</p>
+-- * Pending [NullableInteger] <p> <b>Grey.</b> An operation is in progress on an instance within the command timeout.</p>
+-- @return InstanceHealthSummary structure as a key-value pair table
+function M.InstanceHealthSummary(args)
+	assert(args, "You must provdide an argument table when creating InstanceHealthSummary")
 	local t = { 
-		["Info"] = _Info,
-		["Ok"] = _Ok,
-		["Unknown"] = _Unknown,
-		["Severe"] = _Severe,
-		["Warning"] = _Warning,
-		["Degraded"] = _Degraded,
-		["NoData"] = _NoData,
-		["Pending"] = _Pending,
+		["Info"] = args["Info"],
+		["Ok"] = args["Ok"],
+		["Unknown"] = args["Unknown"],
+		["Severe"] = args["Severe"],
+		["Warning"] = args["Warning"],
+		["Degraded"] = args["Degraded"],
+		["NoData"] = args["NoData"],
+		["Pending"] = args["Pending"],
 	}
 	asserts.AssertInstanceHealthSummary(t)
 	return t
@@ -3625,11 +3976,14 @@ end
 
 --- Create a structure of type EnvironmentDescriptionsMessage
 -- <p>Result message containing a list of environment descriptions.</p>
--- @param _Environments [EnvironmentDescriptionsList] <p> Returns an <a>EnvironmentDescription</a> list. </p>
-function M.EnvironmentDescriptionsMessage(_Environments, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentDescriptionsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Environments [EnvironmentDescriptionsList] <p> Returns an <a>EnvironmentDescription</a> list. </p>
+-- @return EnvironmentDescriptionsMessage structure as a key-value pair table
+function M.EnvironmentDescriptionsMessage(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentDescriptionsMessage")
 	local t = { 
-		["Environments"] = _Environments,
+		["Environments"] = args["Environments"],
 	}
 	asserts.AssertEnvironmentDescriptionsMessage(t)
 	return t
@@ -3649,13 +4003,16 @@ end
 
 --- Create a structure of type PlatformFramework
 -- <p>A framework supported by the custom platform.</p>
--- @param _Version [String] <p>The version of the framework.</p>
--- @param _Name [String] <p>The name of the framework.</p>
-function M.PlatformFramework(_Version, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlatformFramework")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [String] <p>The version of the framework.</p>
+-- * Name [String] <p>The name of the framework.</p>
+-- @return PlatformFramework structure as a key-value pair table
+function M.PlatformFramework(args)
+	assert(args, "You must provdide an argument table when creating PlatformFramework")
 	local t = { 
-		["Version"] = _Version,
-		["Name"] = _Name,
+		["Version"] = args["Version"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertPlatformFramework(t)
 	return t
@@ -3677,15 +4034,18 @@ end
 
 --- Create a structure of type UpdateApplicationResourceLifecycleMessage
 --  
--- @param _ApplicationName [ApplicationName] <p>The name of the application.</p>
--- @param _ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle configuration.</p>
--- Required parameter: ApplicationName
--- Required parameter: ResourceLifecycleConfig
-function M.UpdateApplicationResourceLifecycleMessage(_ApplicationName, _ResourceLifecycleConfig, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateApplicationResourceLifecycleMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application.</p>
+-- * ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle configuration.</p>
+-- Required key: ApplicationName
+-- Required key: ResourceLifecycleConfig
+-- @return UpdateApplicationResourceLifecycleMessage structure as a key-value pair table
+function M.UpdateApplicationResourceLifecycleMessage(args)
+	assert(args, "You must provdide an argument table when creating UpdateApplicationResourceLifecycleMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["ResourceLifecycleConfig"] = _ResourceLifecycleConfig,
+		["ApplicationName"] = args["ApplicationName"],
+		["ResourceLifecycleConfig"] = args["ResourceLifecycleConfig"],
 	}
 	asserts.AssertUpdateApplicationResourceLifecycleMessage(t)
 	return t
@@ -3706,15 +4066,18 @@ end
 
 --- Create a structure of type LoadBalancerDescription
 -- <p>Describes the details of a LoadBalancer.</p>
--- @param _Domain [String] <p>The domain name of the LoadBalancer.</p>
--- @param _Listeners [LoadBalancerListenersDescription] <p>A list of Listeners used by the LoadBalancer.</p>
--- @param _LoadBalancerName [String] <p>The name of the LoadBalancer.</p>
-function M.LoadBalancerDescription(_Domain, _Listeners, _LoadBalancerName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Domain [String] <p>The domain name of the LoadBalancer.</p>
+-- * Listeners [LoadBalancerListenersDescription] <p>A list of Listeners used by the LoadBalancer.</p>
+-- * LoadBalancerName [String] <p>The name of the LoadBalancer.</p>
+-- @return LoadBalancerDescription structure as a key-value pair table
+function M.LoadBalancerDescription(args)
+	assert(args, "You must provdide an argument table when creating LoadBalancerDescription")
 	local t = { 
-		["Domain"] = _Domain,
-		["Listeners"] = _Listeners,
-		["LoadBalancerName"] = _LoadBalancerName,
+		["Domain"] = args["Domain"],
+		["Listeners"] = args["Listeners"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
 	asserts.AssertLoadBalancerDescription(t)
 	return t
@@ -3732,8 +4095,11 @@ end
 
 --- Create a structure of type TooManyApplicationsException
 -- <p>The specified account has reached its limit of applications.</p>
-function M.TooManyApplicationsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyApplicationsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyApplicationsException structure as a key-value pair table
+function M.TooManyApplicationsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyApplicationsException")
 	local t = { 
 	}
 	asserts.AssertTooManyApplicationsException(t)
@@ -3754,13 +4120,16 @@ end
 
 --- Create a structure of type ListPlatformVersionsResult
 --  
--- @param _PlatformSummaryList [PlatformSummaryList] <p>Detailed information about the platforms.</p>
--- @param _NextToken [Token] <p>The starting index into the remaining list of platforms. if this value is not <code>null</code>, you can use it in a subsequent <code>ListPlatformVersion</code> call. </p>
-function M.ListPlatformVersionsResult(_PlatformSummaryList, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPlatformVersionsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlatformSummaryList [PlatformSummaryList] <p>Detailed information about the platforms.</p>
+-- * NextToken [Token] <p>The starting index into the remaining list of platforms. if this value is not <code>null</code>, you can use it in a subsequent <code>ListPlatformVersion</code> call. </p>
+-- @return ListPlatformVersionsResult structure as a key-value pair table
+function M.ListPlatformVersionsResult(args)
+	assert(args, "You must provdide an argument table when creating ListPlatformVersionsResult")
 	local t = { 
-		["PlatformSummaryList"] = _PlatformSummaryList,
-		["NextToken"] = _NextToken,
+		["PlatformSummaryList"] = args["PlatformSummaryList"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListPlatformVersionsResult(t)
 	return t
@@ -3782,17 +4151,20 @@ end
 
 --- Create a structure of type EnvironmentInfoDescription
 -- <p>The information retrieved from the Amazon EC2 instances.</p>
--- @param _SampleTimestamp [SampleTimestamp] <p>The time stamp when this information was retrieved.</p>
--- @param _Message [Message] <p>The retrieved information.</p>
--- @param _InfoType [EnvironmentInfoType] <p>The type of information retrieved.</p>
--- @param _Ec2InstanceId [Ec2InstanceId] <p>The Amazon EC2 Instance ID for this information.</p>
-function M.EnvironmentInfoDescription(_SampleTimestamp, _Message, _InfoType, _Ec2InstanceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentInfoDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SampleTimestamp [SampleTimestamp] <p>The time stamp when this information was retrieved.</p>
+-- * Message [Message] <p>The retrieved information.</p>
+-- * InfoType [EnvironmentInfoType] <p>The type of information retrieved.</p>
+-- * Ec2InstanceId [Ec2InstanceId] <p>The Amazon EC2 Instance ID for this information.</p>
+-- @return EnvironmentInfoDescription structure as a key-value pair table
+function M.EnvironmentInfoDescription(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentInfoDescription")
 	local t = { 
-		["SampleTimestamp"] = _SampleTimestamp,
-		["Message"] = _Message,
-		["InfoType"] = _InfoType,
-		["Ec2InstanceId"] = _Ec2InstanceId,
+		["SampleTimestamp"] = args["SampleTimestamp"],
+		["Message"] = args["Message"],
+		["InfoType"] = args["InfoType"],
+		["Ec2InstanceId"] = args["Ec2InstanceId"],
 	}
 	asserts.AssertEnvironmentInfoDescription(t)
 	return t
@@ -3814,15 +4186,18 @@ end
 
 --- Create a structure of type DeleteConfigurationTemplateMessage
 -- <p>Request to delete a configuration template.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application to delete the configuration template from.</p>
--- @param _TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to delete.</p>
--- Required parameter: ApplicationName
--- Required parameter: TemplateName
-function M.DeleteConfigurationTemplateMessage(_ApplicationName, _TemplateName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigurationTemplateMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application to delete the configuration template from.</p>
+-- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template to delete.</p>
+-- Required key: ApplicationName
+-- Required key: TemplateName
+-- @return DeleteConfigurationTemplateMessage structure as a key-value pair table
+function M.DeleteConfigurationTemplateMessage(args)
+	assert(args, "You must provdide an argument table when creating DeleteConfigurationTemplateMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["TemplateName"] = _TemplateName,
+		["ApplicationName"] = args["ApplicationName"],
+		["TemplateName"] = args["TemplateName"],
 	}
 	asserts.AssertDeleteConfigurationTemplateMessage(t)
 	return t
@@ -3843,15 +4218,18 @@ end
 
 --- Create a structure of type ConfigurationOptionsDescription
 -- <p>Describes the settings for a specified configuration set.</p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
--- @param _Options [ConfigurationOptionDescriptionsList] <p> A list of <a>ConfigurationOptionDescription</a>. </p>
--- @param _SolutionStackName [SolutionStackName] <p>The name of the solution stack these configuration options belong to.</p>
-function M.ConfigurationOptionsDescription(_PlatformArn, _Options, _SolutionStackName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationOptionsDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PlatformArn [PlatformArn] <p>The ARN of the custom platform.</p>
+-- * Options [ConfigurationOptionDescriptionsList] <p> A list of <a>ConfigurationOptionDescription</a>. </p>
+-- * SolutionStackName [SolutionStackName] <p>The name of the solution stack these configuration options belong to.</p>
+-- @return ConfigurationOptionsDescription structure as a key-value pair table
+function M.ConfigurationOptionsDescription(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationOptionsDescription")
 	local t = { 
-		["PlatformArn"] = _PlatformArn,
-		["Options"] = _Options,
-		["SolutionStackName"] = _SolutionStackName,
+		["PlatformArn"] = args["PlatformArn"],
+		["Options"] = args["Options"],
+		["SolutionStackName"] = args["SolutionStackName"],
 	}
 	asserts.AssertConfigurationOptionsDescription(t)
 	return t
@@ -3870,11 +4248,14 @@ end
 
 --- Create a structure of type LoadBalancer
 -- <p>Describes a LoadBalancer.</p>
--- @param _Name [ResourceId] <p>The name of the LoadBalancer.</p>
-function M.LoadBalancer(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ResourceId] <p>The name of the LoadBalancer.</p>
+-- @return LoadBalancer structure as a key-value pair table
+function M.LoadBalancer(args)
+	assert(args, "You must provdide an argument table when creating LoadBalancer")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertLoadBalancer(t)
 	return t
@@ -3895,15 +4276,18 @@ end
 
 --- Create a structure of type DescribeEnvironmentManagedActionsRequest
 -- <p>Request to list an environment's upcoming and in-progress managed actions.</p>
--- @param _Status [ActionStatus] <p>To show only actions with a particular status, specify a status.</p>
--- @param _EnvironmentName [String] <p>The name of the target environment.</p>
--- @param _EnvironmentId [String] <p>The environment ID of the target environment.</p>
-function M.DescribeEnvironmentManagedActionsRequest(_Status, _EnvironmentName, _EnvironmentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEnvironmentManagedActionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ActionStatus] <p>To show only actions with a particular status, specify a status.</p>
+-- * EnvironmentName [String] <p>The name of the target environment.</p>
+-- * EnvironmentId [String] <p>The environment ID of the target environment.</p>
+-- @return DescribeEnvironmentManagedActionsRequest structure as a key-value pair table
+function M.DescribeEnvironmentManagedActionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEnvironmentManagedActionsRequest")
 	local t = { 
-		["Status"] = _Status,
-		["EnvironmentName"] = _EnvironmentName,
-		["EnvironmentId"] = _EnvironmentId,
+		["Status"] = args["Status"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["EnvironmentId"] = args["EnvironmentId"],
 	}
 	asserts.AssertDescribeEnvironmentManagedActionsRequest(t)
 	return t
@@ -3933,33 +4317,36 @@ end
 
 --- Create a structure of type UpdateEnvironmentMessage
 -- <p>Request to update an environment.</p>
--- @param _ApplicationName [ApplicationName] <p>The name of the application with which the environment is associated.</p>
--- @param _EnvironmentId [EnvironmentId] <p>The ID of the environment to update.</p> <p>If no environment with this ID exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.</p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- @param _VersionLabel [VersionLabel] <p>If this parameter is specified, AWS Elastic Beanstalk deploys the named application version to the environment. If no such application version is found, returns an <code>InvalidParameterValue</code> error. </p>
--- @param _Description [Description] <p>If this parameter is specified, AWS Elastic Beanstalk updates the description of this environment.</p>
--- @param _EnvironmentName [EnvironmentName] <p>The name of the environment to update. If no environment with this name exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
--- @param _TemplateName [ConfigurationTemplateName] <p>If this parameter is specified, AWS Elastic Beanstalk deploys this configuration template to the environment. If no such configuration template is found, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
--- @param _SolutionStackName [SolutionStackName] <p>This specifies the platform version that the environment will run after the environment is updated.</p>
--- @param _GroupName [GroupName] <p>The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name or environment ID parameters. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
--- @param _OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk updates the configuration set associated with the running environment and sets the specified configuration options to the requested value.</p>
--- @param _Tier [EnvironmentTier] <p>This specifies the tier to use to update the environment.</p> <p>Condition: At this time, if you change the tier version, name, or type, AWS Elastic Beanstalk returns <code>InvalidParameterValue</code> error. </p>
--- @param _PlatformArn [PlatformArn] <p>The ARN of the platform, if used.</p>
--- @param _OptionsToRemove [OptionsSpecifierList] <p>A list of custom user-defined configuration options to remove from the configuration set for this environment.</p>
-function M.UpdateEnvironmentMessage(_ApplicationName, _EnvironmentId, _VersionLabel, _Description, _EnvironmentName, _TemplateName, _SolutionStackName, _GroupName, _OptionSettings, _Tier, _PlatformArn, _OptionsToRemove, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateEnvironmentMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApplicationName [ApplicationName] <p>The name of the application with which the environment is associated.</p>
+-- * EnvironmentId [EnvironmentId] <p>The ID of the environment to update.</p> <p>If no environment with this ID exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error.</p> <p>Condition: You must specify either this or an EnvironmentName, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * VersionLabel [VersionLabel] <p>If this parameter is specified, AWS Elastic Beanstalk deploys the named application version to the environment. If no such application version is found, returns an <code>InvalidParameterValue</code> error. </p>
+-- * Description [Description] <p>If this parameter is specified, AWS Elastic Beanstalk updates the description of this environment.</p>
+-- * EnvironmentName [EnvironmentName] <p>The name of the environment to update. If no environment with this name exists, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
+-- * TemplateName [ConfigurationTemplateName] <p>If this parameter is specified, AWS Elastic Beanstalk deploys this configuration template to the environment. If no such configuration template is found, AWS Elastic Beanstalk returns an <code>InvalidParameterValue</code> error. </p>
+-- * SolutionStackName [SolutionStackName] <p>This specifies the platform version that the environment will run after the environment is updated.</p>
+-- * GroupName [GroupName] <p>The name of the group to which the target environment belongs. Specify a group name only if the environment's name is specified in an environment manifest and not with the environment name or environment ID parameters. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html">Environment Manifest (env.yaml)</a> for details.</p>
+-- * OptionSettings [ConfigurationOptionSettingsList] <p>If specified, AWS Elastic Beanstalk updates the configuration set associated with the running environment and sets the specified configuration options to the requested value.</p>
+-- * Tier [EnvironmentTier] <p>This specifies the tier to use to update the environment.</p> <p>Condition: At this time, if you change the tier version, name, or type, AWS Elastic Beanstalk returns <code>InvalidParameterValue</code> error. </p>
+-- * PlatformArn [PlatformArn] <p>The ARN of the platform, if used.</p>
+-- * OptionsToRemove [OptionsSpecifierList] <p>A list of custom user-defined configuration options to remove from the configuration set for this environment.</p>
+-- @return UpdateEnvironmentMessage structure as a key-value pair table
+function M.UpdateEnvironmentMessage(args)
+	assert(args, "You must provdide an argument table when creating UpdateEnvironmentMessage")
 	local t = { 
-		["ApplicationName"] = _ApplicationName,
-		["EnvironmentId"] = _EnvironmentId,
-		["VersionLabel"] = _VersionLabel,
-		["Description"] = _Description,
-		["EnvironmentName"] = _EnvironmentName,
-		["TemplateName"] = _TemplateName,
-		["SolutionStackName"] = _SolutionStackName,
-		["GroupName"] = _GroupName,
-		["OptionSettings"] = _OptionSettings,
-		["Tier"] = _Tier,
-		["PlatformArn"] = _PlatformArn,
-		["OptionsToRemove"] = _OptionsToRemove,
+		["ApplicationName"] = args["ApplicationName"],
+		["EnvironmentId"] = args["EnvironmentId"],
+		["VersionLabel"] = args["VersionLabel"],
+		["Description"] = args["Description"],
+		["EnvironmentName"] = args["EnvironmentName"],
+		["TemplateName"] = args["TemplateName"],
+		["SolutionStackName"] = args["SolutionStackName"],
+		["GroupName"] = args["GroupName"],
+		["OptionSettings"] = args["OptionSettings"],
+		["Tier"] = args["Tier"],
+		["PlatformArn"] = args["PlatformArn"],
+		["OptionsToRemove"] = args["OptionsToRemove"],
 	}
 	asserts.AssertUpdateEnvironmentMessage(t)
 	return t

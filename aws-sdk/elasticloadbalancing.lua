@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type DescribeTargetGroupAttributesInput
 --  
--- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- Required parameter: TargetGroupArn
-function M.DescribeTargetGroupAttributesInput(_TargetGroupArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupAttributesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- Required key: TargetGroupArn
+-- @return DescribeTargetGroupAttributesInput structure as a key-value pair table
+function M.DescribeTargetGroupAttributesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTargetGroupAttributesInput")
 	local t = { 
-		["TargetGroupArn"] = _TargetGroupArn,
+		["TargetGroupArn"] = args["TargetGroupArn"],
 	}
 	asserts.AssertDescribeTargetGroupAttributesInput(t)
 	return t
@@ -58,8 +61,11 @@ end
 
 --- Create a structure of type TooManyCertificatesException
 -- <p>You've reached the limit on the number of certificates per listener.</p>
-function M.TooManyCertificatesException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyCertificatesException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyCertificatesException structure as a key-value pair table
+function M.TooManyCertificatesException(args)
+	assert(args, "You must provdide an argument table when creating TooManyCertificatesException")
 	local t = { 
 	}
 	asserts.AssertTooManyCertificatesException(t)
@@ -80,12 +86,15 @@ end
 
 --- Create a structure of type DeleteRuleInput
 --  
--- @param _RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- Required parameter: RuleArn
-function M.DeleteRuleInput(_RuleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRuleInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- Required key: RuleArn
+-- @return DeleteRuleInput structure as a key-value pair table
+function M.DeleteRuleInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteRuleInput")
 	local t = { 
-		["RuleArn"] = _RuleArn,
+		["RuleArn"] = args["RuleArn"],
 	}
 	asserts.AssertDeleteRuleInput(t)
 	return t
@@ -106,15 +115,18 @@ end
 
 --- Create a structure of type SslPolicy
 -- <p>Information about a policy used for SSL negotiation.</p>
--- @param _SslProtocols [SslProtocols] <p>The protocols.</p>
--- @param _Ciphers [Ciphers] <p>The ciphers.</p>
--- @param _Name [SslPolicyName] <p>The name of the policy.</p>
-function M.SslPolicy(_SslProtocols, _Ciphers, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SslPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SslProtocols [SslProtocols] <p>The protocols.</p>
+-- * Ciphers [Ciphers] <p>The ciphers.</p>
+-- * Name [SslPolicyName] <p>The name of the policy.</p>
+-- @return SslPolicy structure as a key-value pair table
+function M.SslPolicy(args)
+	assert(args, "You must provdide an argument table when creating SslPolicy")
 	local t = { 
-		["SslProtocols"] = _SslProtocols,
-		["Ciphers"] = _Ciphers,
-		["Name"] = _Name,
+		["SslProtocols"] = args["SslProtocols"],
+		["Ciphers"] = args["Ciphers"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertSslPolicy(t)
 	return t
@@ -132,8 +144,11 @@ end
 
 --- Create a structure of type DuplicateTagKeysException
 -- <p>A tag key was specified more than once.</p>
-function M.DuplicateTagKeysException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateTagKeysException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DuplicateTagKeysException structure as a key-value pair table
+function M.DuplicateTagKeysException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateTagKeysException")
 	local t = { 
 	}
 	asserts.AssertDuplicateTagKeysException(t)
@@ -152,8 +167,11 @@ end
 
 --- Create a structure of type ListenerNotFoundException
 -- <p>The specified listener does not exist.</p>
-function M.ListenerNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListenerNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ListenerNotFoundException structure as a key-value pair table
+function M.ListenerNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ListenerNotFoundException")
 	local t = { 
 	}
 	asserts.AssertListenerNotFoundException(t)
@@ -176,17 +194,20 @@ end
 
 --- Create a structure of type DescribeLoadBalancersInput
 --  
--- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to 20 load balancers in a single call.</p>
--- @param _Names [LoadBalancerNames] <p>The names of the load balancers.</p>
--- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
-function M.DescribeLoadBalancersInput(_Marker, _LoadBalancerArns, _Names, _PageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancersInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers. You can specify up to 20 load balancers in a single call.</p>
+-- * Names [LoadBalancerNames] <p>The names of the load balancers.</p>
+-- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+-- @return DescribeLoadBalancersInput structure as a key-value pair table
+function M.DescribeLoadBalancersInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeLoadBalancersInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["LoadBalancerArns"] = _LoadBalancerArns,
-		["Names"] = _Names,
-		["PageSize"] = _PageSize,
+		["Marker"] = args["Marker"],
+		["LoadBalancerArns"] = args["LoadBalancerArns"],
+		["Names"] = args["Names"],
+		["PageSize"] = args["PageSize"],
 	}
 	asserts.AssertDescribeLoadBalancersInput(t)
 	return t
@@ -204,8 +225,11 @@ end
 
 --- Create a structure of type AddTagsOutput
 --  
-function M.AddTagsOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AddTagsOutput structure as a key-value pair table
+function M.AddTagsOutput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsOutput")
 	local t = { 
 	}
 	asserts.AssertAddTagsOutput(t)
@@ -224,8 +248,11 @@ end
 
 --- Create a structure of type SubnetNotFoundException
 -- <p>The specified subnet does not exist.</p>
-function M.SubnetNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SubnetNotFoundException structure as a key-value pair table
+function M.SubnetNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating SubnetNotFoundException")
 	local t = { 
 	}
 	asserts.AssertSubnetNotFoundException(t)
@@ -246,13 +273,16 @@ end
 
 --- Create a structure of type RulePriorityPair
 -- <p>Information about the priorities for the rules for a listener.</p>
--- @param _Priority [RulePriority] <p>The rule priority.</p>
--- @param _RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
-function M.RulePriorityPair(_Priority, _RuleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RulePriorityPair")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Priority [RulePriority] <p>The rule priority.</p>
+-- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- @return RulePriorityPair structure as a key-value pair table
+function M.RulePriorityPair(args)
+	assert(args, "You must provdide an argument table when creating RulePriorityPair")
 	local t = { 
-		["Priority"] = _Priority,
-		["RuleArn"] = _RuleArn,
+		["Priority"] = args["Priority"],
+		["RuleArn"] = args["RuleArn"],
 	}
 	asserts.AssertRulePriorityPair(t)
 	return t
@@ -270,8 +300,11 @@ end
 
 --- Create a structure of type DeleteTargetGroupOutput
 --  
-function M.DeleteTargetGroupOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTargetGroupOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteTargetGroupOutput structure as a key-value pair table
+function M.DeleteTargetGroupOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteTargetGroupOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteTargetGroupOutput(t)
@@ -290,8 +323,11 @@ end
 
 --- Create a structure of type DuplicateLoadBalancerNameException
 -- <p>A load balancer with the specified name already exists.</p>
-function M.DuplicateLoadBalancerNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateLoadBalancerNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DuplicateLoadBalancerNameException structure as a key-value pair table
+function M.DuplicateLoadBalancerNameException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateLoadBalancerNameException")
 	local t = { 
 	}
 	asserts.AssertDuplicateLoadBalancerNameException(t)
@@ -310,8 +346,11 @@ end
 
 --- Create a structure of type InvalidConfigurationRequestException
 -- <p>The requested configuration is not valid.</p>
-function M.InvalidConfigurationRequestException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidConfigurationRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidConfigurationRequestException structure as a key-value pair table
+function M.InvalidConfigurationRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidConfigurationRequestException")
 	local t = { 
 	}
 	asserts.AssertInvalidConfigurationRequestException(t)
@@ -334,15 +373,18 @@ end
 
 --- Create a structure of type ModifyTargetGroupAttributesInput
 --  
--- @param _Attributes [TargetGroupAttributes] <p>The attributes.</p>
--- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- Required parameter: TargetGroupArn
--- Required parameter: Attributes
-function M.ModifyTargetGroupAttributesInput(_Attributes, _TargetGroupArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupAttributesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [TargetGroupAttributes] <p>The attributes.</p>
+-- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- Required key: TargetGroupArn
+-- Required key: Attributes
+-- @return ModifyTargetGroupAttributesInput structure as a key-value pair table
+function M.ModifyTargetGroupAttributesInput(args)
+	assert(args, "You must provdide an argument table when creating ModifyTargetGroupAttributesInput")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["TargetGroupArn"] = _TargetGroupArn,
+		["Attributes"] = args["Attributes"],
+		["TargetGroupArn"] = args["TargetGroupArn"],
 	}
 	asserts.AssertModifyTargetGroupAttributesInput(t)
 	return t
@@ -362,13 +404,16 @@ end
 
 --- Create a structure of type Cipher
 -- <p>Information about a cipher used in a policy.</p>
--- @param _Priority [CipherPriority] <p>The priority of the cipher.</p>
--- @param _Name [CipherName] <p>The name of the cipher.</p>
-function M.Cipher(_Priority, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Cipher")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Priority [CipherPriority] <p>The priority of the cipher.</p>
+-- * Name [CipherName] <p>The name of the cipher.</p>
+-- @return Cipher structure as a key-value pair table
+function M.Cipher(args)
+	assert(args, "You must provdide an argument table when creating Cipher")
 	local t = { 
-		["Priority"] = _Priority,
-		["Name"] = _Name,
+		["Priority"] = args["Priority"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCipher(t)
 	return t
@@ -388,13 +433,16 @@ end
 
 --- Create a structure of type DescribeSSLPoliciesOutput
 --  
--- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param _SslPolicies [SslPolicies] <p>Information about the policies.</p>
-function M.DescribeSSLPoliciesOutput(_NextMarker, _SslPolicies, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSSLPoliciesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- * SslPolicies [SslPolicies] <p>Information about the policies.</p>
+-- @return DescribeSSLPoliciesOutput structure as a key-value pair table
+function M.DescribeSSLPoliciesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeSSLPoliciesOutput")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["SslPolicies"] = _SslPolicies,
+		["NextMarker"] = args["NextMarker"],
+		["SslPolicies"] = args["SslPolicies"],
 	}
 	asserts.AssertDescribeSSLPoliciesOutput(t)
 	return t
@@ -412,8 +460,11 @@ end
 
 --- Create a structure of type OperationNotPermittedException
 -- <p>This operation is not allowed.</p>
-function M.OperationNotPermittedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return OperationNotPermittedException structure as a key-value pair table
+function M.OperationNotPermittedException(args)
+	assert(args, "You must provdide an argument table when creating OperationNotPermittedException")
 	local t = { 
 	}
 	asserts.AssertOperationNotPermittedException(t)
@@ -434,12 +485,15 @@ end
 
 --- Create a structure of type DescribeTagsInput
 --  
--- @param _ResourceArns [ResourceArns] <p>The Amazon Resource Names (ARN) of the resources.</p>
--- Required parameter: ResourceArns
-function M.DescribeTagsInput(_ResourceArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArns [ResourceArns] <p>The Amazon Resource Names (ARN) of the resources.</p>
+-- Required key: ResourceArns
+-- @return DescribeTagsInput structure as a key-value pair table
+function M.DescribeTagsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagsInput")
 	local t = { 
-		["ResourceArns"] = _ResourceArns,
+		["ResourceArns"] = args["ResourceArns"],
 	}
 	asserts.AssertDescribeTagsInput(t)
 	return t
@@ -458,11 +512,14 @@ end
 
 --- Create a structure of type SetSecurityGroupsOutput
 --  
--- @param _SecurityGroupIds [SecurityGroups] <p>The IDs of the security groups associated with the load balancer.</p>
-function M.SetSecurityGroupsOutput(_SecurityGroupIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetSecurityGroupsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SecurityGroupIds [SecurityGroups] <p>The IDs of the security groups associated with the load balancer.</p>
+-- @return SetSecurityGroupsOutput structure as a key-value pair table
+function M.SetSecurityGroupsOutput(args)
+	assert(args, "You must provdide an argument table when creating SetSecurityGroupsOutput")
 	local t = { 
-		["SecurityGroupIds"] = _SecurityGroupIds,
+		["SecurityGroupIds"] = args["SecurityGroupIds"],
 	}
 	asserts.AssertSetSecurityGroupsOutput(t)
 	return t
@@ -482,13 +539,16 @@ end
 
 --- Create a structure of type DescribeAccountLimitsInput
 --  
--- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
-function M.DescribeAccountLimitsInput(_Marker, _PageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountLimitsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+-- @return DescribeAccountLimitsInput structure as a key-value pair table
+function M.DescribeAccountLimitsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeAccountLimitsInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["PageSize"] = _PageSize,
+		["Marker"] = args["Marker"],
+		["PageSize"] = args["PageSize"],
 	}
 	asserts.AssertDescribeAccountLimitsInput(t)
 	return t
@@ -510,15 +570,18 @@ end
 
 --- Create a structure of type SetSubnetsInput
 --  
--- @param _Subnets [Subnets] <p>The IDs of the subnets. You must specify at least two subnets. You can add only one subnet per Availability Zone.</p>
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required parameter: LoadBalancerArn
--- Required parameter: Subnets
-function M.SetSubnetsInput(_Subnets, _LoadBalancerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetSubnetsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subnets [Subnets] <p>The IDs of the subnets. You must specify at least two subnets. You can add only one subnet per Availability Zone.</p>
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- Required key: LoadBalancerArn
+-- Required key: Subnets
+-- @return SetSubnetsInput structure as a key-value pair table
+function M.SetSubnetsInput(args)
+	assert(args, "You must provdide an argument table when creating SetSubnetsInput")
 	local t = { 
-		["Subnets"] = _Subnets,
-		["LoadBalancerArn"] = _LoadBalancerArn,
+		["Subnets"] = args["Subnets"],
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
 	asserts.AssertSetSubnetsInput(t)
 	return t
@@ -538,13 +601,16 @@ end
 
 --- Create a structure of type Limit
 -- <p>Information about an Elastic Load Balancing resource limit for your AWS account.</p>
--- @param _Max [Max] <p>The maximum value of the limit.</p>
--- @param _Name [Name] <p>The name of the limit. The possible values are:</p> <ul> <li> <p>application-load-balancers</p> </li> <li> <p>listeners-per-application-load-balancer</p> </li> <li> <p>rules-per-application-load-balancer</p> </li> <li> <p>target-groups</p> </li> <li> <p>targets-per-application-load-balancer</p> </li> </ul>
-function M.Limit(_Max, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Limit")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Max [Max] <p>The maximum value of the limit.</p>
+-- * Name [Name] <p>The name of the limit. The possible values are:</p> <ul> <li> <p>application-load-balancers</p> </li> <li> <p>listeners-per-application-load-balancer</p> </li> <li> <p>rules-per-application-load-balancer</p> </li> <li> <p>target-groups</p> </li> <li> <p>targets-per-application-load-balancer</p> </li> </ul>
+-- @return Limit structure as a key-value pair table
+function M.Limit(args)
+	assert(args, "You must provdide an argument table when creating Limit")
 	local t = { 
-		["Max"] = _Max,
-		["Name"] = _Name,
+		["Max"] = args["Max"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertLimit(t)
 	return t
@@ -562,8 +628,11 @@ end
 
 --- Create a structure of type DuplicateTargetGroupNameException
 -- <p>A target group with the specified name already exists.</p>
-function M.DuplicateTargetGroupNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateTargetGroupNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DuplicateTargetGroupNameException structure as a key-value pair table
+function M.DuplicateTargetGroupNameException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateTargetGroupNameException")
 	local t = { 
 	}
 	asserts.AssertDuplicateTargetGroupNameException(t)
@@ -596,37 +665,40 @@ end
 
 --- Create a structure of type TargetGroup
 -- <p>Information about a target group.</p>
--- @param _HealthCheckPath [Path] <p>The destination for the health check request.</p>
--- @param _HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
--- @param _VpcId [VpcId] <p>The ID of the VPC for the targets.</p>
--- @param _Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
--- @param _HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
--- @param _HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
--- @param _LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers that route traffic to this target group.</p>
--- @param _UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
--- @param _HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
--- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param _Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
--- @param _HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
--- @param _Port [Port] <p>The port on which the targets are listening.</p>
--- @param _TargetGroupName [TargetGroupName] <p>The name of the target group.</p>
-function M.TargetGroup(_HealthCheckPath, _HealthCheckIntervalSeconds, _VpcId, _Protocol, _HealthCheckTimeoutSeconds, _HealthCheckProtocol, _LoadBalancerArns, _UnhealthyThresholdCount, _HealthyThresholdCount, _TargetGroupArn, _Matcher, _HealthCheckPort, _Port, _TargetGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckPath [Path] <p>The destination for the health check request.</p>
+-- * HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
+-- * VpcId [VpcId] <p>The ID of the VPC for the targets.</p>
+-- * Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
+-- * HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
+-- * HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
+-- * LoadBalancerArns [LoadBalancerArns] <p>The Amazon Resource Names (ARN) of the load balancers that route traffic to this target group.</p>
+-- * UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
+-- * HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
+-- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- * Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
+-- * HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
+-- * Port [Port] <p>The port on which the targets are listening.</p>
+-- * TargetGroupName [TargetGroupName] <p>The name of the target group.</p>
+-- @return TargetGroup structure as a key-value pair table
+function M.TargetGroup(args)
+	assert(args, "You must provdide an argument table when creating TargetGroup")
 	local t = { 
-		["HealthCheckPath"] = _HealthCheckPath,
-		["HealthCheckIntervalSeconds"] = _HealthCheckIntervalSeconds,
-		["VpcId"] = _VpcId,
-		["Protocol"] = _Protocol,
-		["HealthCheckTimeoutSeconds"] = _HealthCheckTimeoutSeconds,
-		["HealthCheckProtocol"] = _HealthCheckProtocol,
-		["LoadBalancerArns"] = _LoadBalancerArns,
-		["UnhealthyThresholdCount"] = _UnhealthyThresholdCount,
-		["HealthyThresholdCount"] = _HealthyThresholdCount,
-		["TargetGroupArn"] = _TargetGroupArn,
-		["Matcher"] = _Matcher,
-		["HealthCheckPort"] = _HealthCheckPort,
-		["Port"] = _Port,
-		["TargetGroupName"] = _TargetGroupName,
+		["HealthCheckPath"] = args["HealthCheckPath"],
+		["HealthCheckIntervalSeconds"] = args["HealthCheckIntervalSeconds"],
+		["VpcId"] = args["VpcId"],
+		["Protocol"] = args["Protocol"],
+		["HealthCheckTimeoutSeconds"] = args["HealthCheckTimeoutSeconds"],
+		["HealthCheckProtocol"] = args["HealthCheckProtocol"],
+		["LoadBalancerArns"] = args["LoadBalancerArns"],
+		["UnhealthyThresholdCount"] = args["UnhealthyThresholdCount"],
+		["HealthyThresholdCount"] = args["HealthyThresholdCount"],
+		["TargetGroupArn"] = args["TargetGroupArn"],
+		["Matcher"] = args["Matcher"],
+		["HealthCheckPort"] = args["HealthCheckPort"],
+		["Port"] = args["Port"],
+		["TargetGroupName"] = args["TargetGroupName"],
 	}
 	asserts.AssertTargetGroup(t)
 	return t
@@ -645,11 +717,14 @@ end
 
 --- Create a structure of type DescribeLoadBalancerAttributesOutput
 --  
--- @param _Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
-function M.DescribeLoadBalancerAttributesOutput(_Attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancerAttributesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
+-- @return DescribeLoadBalancerAttributesOutput structure as a key-value pair table
+function M.DescribeLoadBalancerAttributesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeLoadBalancerAttributesOutput")
 	local t = { 
-		["Attributes"] = _Attributes,
+		["Attributes"] = args["Attributes"],
 	}
 	asserts.AssertDescribeLoadBalancerAttributesOutput(t)
 	return t
@@ -667,8 +742,11 @@ end
 
 --- Create a structure of type InvalidSubnetException
 -- <p>The specified subnet is out of available addresses.</p>
-function M.InvalidSubnetException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnetException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidSubnetException structure as a key-value pair table
+function M.InvalidSubnetException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSubnetException")
 	local t = { 
 	}
 	asserts.AssertInvalidSubnetException(t)
@@ -689,13 +767,16 @@ end
 
 --- Create a structure of type TagDescription
 -- <p>The tags associated with a resource.</p>
--- @param _ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resource.</p>
--- @param _Tags [TagList] <p>Information about the tags.</p>
-function M.TagDescription(_ResourceArn, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- * Tags [TagList] <p>Information about the tags.</p>
+-- @return TagDescription structure as a key-value pair table
+function M.TagDescription(args)
+	assert(args, "You must provdide an argument table when creating TagDescription")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["Tags"] = _Tags,
+		["ResourceArn"] = args["ResourceArn"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertTagDescription(t)
 	return t
@@ -716,14 +797,17 @@ end
 
 --- Create a structure of type Tag
 -- <p>Information about a tag.</p>
--- @param _Value [TagValue] <p>The value of the tag.</p>
--- @param _Key [TagKey] <p>The key of the tag.</p>
--- Required parameter: Key
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The value of the tag.</p>
+-- * Key [TagKey] <p>The key of the tag.</p>
+-- Required key: Key
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -742,11 +826,14 @@ end
 
 --- Create a structure of type DescribeTargetGroupAttributesOutput
 --  
--- @param _Attributes [TargetGroupAttributes] <p>Information about the target group attributes</p>
-function M.DescribeTargetGroupAttributesOutput(_Attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupAttributesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [TargetGroupAttributes] <p>Information about the target group attributes</p>
+-- @return DescribeTargetGroupAttributesOutput structure as a key-value pair table
+function M.DescribeTargetGroupAttributesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTargetGroupAttributesOutput")
 	local t = { 
-		["Attributes"] = _Attributes,
+		["Attributes"] = args["Attributes"],
 	}
 	asserts.AssertDescribeTargetGroupAttributesOutput(t)
 	return t
@@ -764,8 +851,11 @@ end
 
 --- Create a structure of type CertificateNotFoundException
 -- <p>The specified certificate does not exist.</p>
-function M.CertificateNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CertificateNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CertificateNotFoundException structure as a key-value pair table
+function M.CertificateNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating CertificateNotFoundException")
 	local t = { 
 	}
 	asserts.AssertCertificateNotFoundException(t)
@@ -792,23 +882,26 @@ end
 
 --- Create a structure of type CreateLoadBalancerInput
 --  
--- @param _IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
--- @param _Subnets [Subnets] <p>The IDs of the subnets to attach to the load balancer. You can specify only one subnet per Availability Zone. You must specify subnets from at least two Availability Zones.</p>
--- @param _Name [LoadBalancerName] <p>The name of the load balancer.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
--- @param _Tags [TagList] <p>One or more tags to assign to the load balancer.</p>
--- @param _SecurityGroups [SecurityGroups] <p>The IDs of the security groups to assign to the load balancer.</p>
--- @param _Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p> <p>The default is an Internet-facing load balancer.</p>
--- Required parameter: Name
--- Required parameter: Subnets
-function M.CreateLoadBalancerInput(_IpAddressType, _Subnets, _Name, _Tags, _SecurityGroups, _Scheme, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoadBalancerInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
+-- * Subnets [Subnets] <p>The IDs of the subnets to attach to the load balancer. You can specify only one subnet per Availability Zone. You must specify subnets from at least two Availability Zones.</p>
+-- * Name [LoadBalancerName] <p>The name of the load balancer.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
+-- * Tags [TagList] <p>One or more tags to assign to the load balancer.</p>
+-- * SecurityGroups [SecurityGroups] <p>The IDs of the security groups to assign to the load balancer.</p>
+-- * Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p> <p>The default is an Internet-facing load balancer.</p>
+-- Required key: Name
+-- Required key: Subnets
+-- @return CreateLoadBalancerInput structure as a key-value pair table
+function M.CreateLoadBalancerInput(args)
+	assert(args, "You must provdide an argument table when creating CreateLoadBalancerInput")
 	local t = { 
-		["IpAddressType"] = _IpAddressType,
-		["Subnets"] = _Subnets,
-		["Name"] = _Name,
-		["Tags"] = _Tags,
-		["SecurityGroups"] = _SecurityGroups,
-		["Scheme"] = _Scheme,
+		["IpAddressType"] = args["IpAddressType"],
+		["Subnets"] = args["Subnets"],
+		["Name"] = args["Name"],
+		["Tags"] = args["Tags"],
+		["SecurityGroups"] = args["SecurityGroups"],
+		["Scheme"] = args["Scheme"],
 	}
 	asserts.AssertCreateLoadBalancerInput(t)
 	return t
@@ -826,8 +919,11 @@ end
 
 --- Create a structure of type DeregisterTargetsOutput
 --  
-function M.DeregisterTargetsOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTargetsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeregisterTargetsOutput structure as a key-value pair table
+function M.DeregisterTargetsOutput(args)
+	assert(args, "You must provdide an argument table when creating DeregisterTargetsOutput")
 	local t = { 
 	}
 	asserts.AssertDeregisterTargetsOutput(t)
@@ -846,8 +942,11 @@ end
 
 --- Create a structure of type TargetGroupAssociationLimitException
 -- <p>You've reached the limit on the number of load balancers per target group.</p>
-function M.TargetGroupAssociationLimitException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroupAssociationLimitException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TargetGroupAssociationLimitException structure as a key-value pair table
+function M.TargetGroupAssociationLimitException(args)
+	assert(args, "You must provdide an argument table when creating TargetGroupAssociationLimitException")
 	local t = { 
 	}
 	asserts.AssertTargetGroupAssociationLimitException(t)
@@ -870,15 +969,18 @@ end
 
 --- Create a structure of type DeregisterTargetsInput
 --  
--- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param _Targets [TargetDescriptions] <p>The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.</p>
--- Required parameter: TargetGroupArn
--- Required parameter: Targets
-function M.DeregisterTargetsInput(_TargetGroupArn, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterTargetsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- * Targets [TargetDescriptions] <p>The targets. If you specified a port override when you registered a target, you must specify both the target ID and the port when you deregister it.</p>
+-- Required key: TargetGroupArn
+-- Required key: Targets
+-- @return DeregisterTargetsInput structure as a key-value pair table
+function M.DeregisterTargetsInput(args)
+	assert(args, "You must provdide an argument table when creating DeregisterTargetsInput")
 	local t = { 
-		["TargetGroupArn"] = _TargetGroupArn,
-		["Targets"] = _Targets,
+		["TargetGroupArn"] = args["TargetGroupArn"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertDeregisterTargetsInput(t)
 	return t
@@ -903,23 +1005,26 @@ end
 
 --- Create a structure of type Listener
 -- <p>Information about a listener.</p>
--- @param _Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
--- @param _DefaultActions [Actions] <p>The default actions for the listener.</p>
--- @param _SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
--- @param _Certificates [CertificateList] <p>The SSL server certificate. You must provide a certificate if the protocol is HTTPS.</p>
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- @param _Port [Port] <p>The port on which the load balancer is listening.</p>
--- @param _ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
-function M.Listener(_Protocol, _DefaultActions, _SslPolicy, _Certificates, _LoadBalancerArn, _Port, _ListenerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Listener")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
+-- * DefaultActions [Actions] <p>The default actions for the listener.</p>
+-- * SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
+-- * Certificates [CertificateList] <p>The SSL server certificate. You must provide a certificate if the protocol is HTTPS.</p>
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- * Port [Port] <p>The port on which the load balancer is listening.</p>
+-- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+-- @return Listener structure as a key-value pair table
+function M.Listener(args)
+	assert(args, "You must provdide an argument table when creating Listener")
 	local t = { 
-		["Protocol"] = _Protocol,
-		["DefaultActions"] = _DefaultActions,
-		["SslPolicy"] = _SslPolicy,
-		["Certificates"] = _Certificates,
-		["LoadBalancerArn"] = _LoadBalancerArn,
-		["Port"] = _Port,
-		["ListenerArn"] = _ListenerArn,
+		["Protocol"] = args["Protocol"],
+		["DefaultActions"] = args["DefaultActions"],
+		["SslPolicy"] = args["SslPolicy"],
+		["Certificates"] = args["Certificates"],
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
+		["Port"] = args["Port"],
+		["ListenerArn"] = args["ListenerArn"],
 	}
 	asserts.AssertListener(t)
 	return t
@@ -940,15 +1045,18 @@ end
 
 --- Create a structure of type TargetHealth
 -- <p>Information about the current health of a target.</p>
--- @param _State [TargetHealthStateEnum] <p>The state of the target.</p>
--- @param _Reason [TargetHealthReasonEnum] <p>The reason code. If the target state is <code>healthy</code>, a reason code is not provided.</p> <p>If the target state is <code>initial</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Elb.RegistrationInProgress</code> - The target is in the process of being registered with the load balancer.</p> </li> <li> <p> <code>Elb.InitialHealthChecking</code> - The load balancer is still sending the target the minimum number of health checks required to determine its health status.</p> </li> </ul> <p>If the target state is <code>unhealthy</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.</p> </li> <li> <p> <code>Target.Timeout</code> - The health check requests timed out.</p> </li> <li> <p> <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out, the target response was malformed, or the target failed the health check for an unknown reason.</p> </li> <li> <p> <code>Elb.InternalError</code> - The health checks failed due to an internal error.</p> </li> </ul> <p>If the target state is <code>unused</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.NotRegistered</code> - The target is not registered with the target group.</p> </li> <li> <p> <code>Target.NotInUse</code> - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.</p> </li> <li> <p> <code>Target.InvalidState</code> - The target is in the stopped or terminated state.</p> </li> </ul> <p>If the target state is <code>draining</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.DeregistrationInProgress</code> - The target is in the process of being deregistered and the deregistration delay period has not expired.</p> </li> </ul>
--- @param _Description [Description] <p>A description of the target health that provides additional details. If the state is <code>healthy</code>, a description is not provided.</p>
-function M.TargetHealth(_State, _Reason, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TargetHealth")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * State [TargetHealthStateEnum] <p>The state of the target.</p>
+-- * Reason [TargetHealthReasonEnum] <p>The reason code. If the target state is <code>healthy</code>, a reason code is not provided.</p> <p>If the target state is <code>initial</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Elb.RegistrationInProgress</code> - The target is in the process of being registered with the load balancer.</p> </li> <li> <p> <code>Elb.InitialHealthChecking</code> - The load balancer is still sending the target the minimum number of health checks required to determine its health status.</p> </li> </ul> <p>If the target state is <code>unhealthy</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.</p> </li> <li> <p> <code>Target.Timeout</code> - The health check requests timed out.</p> </li> <li> <p> <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out, the target response was malformed, or the target failed the health check for an unknown reason.</p> </li> <li> <p> <code>Elb.InternalError</code> - The health checks failed due to an internal error.</p> </li> </ul> <p>If the target state is <code>unused</code>, the reason code can be one of the following values:</p> <ul> <li> <p> <code>Target.NotRegistered</code> - The target is not registered with the target group.</p> </li> <li> <p> <code>Target.NotInUse</code> - The target group is not used by any load balancer or the target is in an Availability Zone that is not enabled for its load balancer.</p> </li> <li> <p> <code>Target.InvalidState</code> - The target is in the stopped or terminated state.</p> </li> </ul> <p>If the target state is <code>draining</code>, the reason code can be the following value:</p> <ul> <li> <p> <code>Target.DeregistrationInProgress</code> - The target is in the process of being deregistered and the deregistration delay period has not expired.</p> </li> </ul>
+-- * Description [Description] <p>A description of the target health that provides additional details. If the state is <code>healthy</code>, a description is not provided.</p>
+-- @return TargetHealth structure as a key-value pair table
+function M.TargetHealth(args)
+	assert(args, "You must provdide an argument table when creating TargetHealth")
 	local t = { 
-		["State"] = _State,
-		["Reason"] = _Reason,
-		["Description"] = _Description,
+		["State"] = args["State"],
+		["Reason"] = args["Reason"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertTargetHealth(t)
 	return t
@@ -968,12 +1076,15 @@ end
 
 --- Create a structure of type DescribeLoadBalancerAttributesInput
 --  
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required parameter: LoadBalancerArn
-function M.DescribeLoadBalancerAttributesInput(_LoadBalancerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancerAttributesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- Required key: LoadBalancerArn
+-- @return DescribeLoadBalancerAttributesInput structure as a key-value pair table
+function M.DescribeLoadBalancerAttributesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeLoadBalancerAttributesInput")
 	local t = { 
-		["LoadBalancerArn"] = _LoadBalancerArn,
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
 	asserts.AssertDescribeLoadBalancerAttributesInput(t)
 	return t
@@ -991,8 +1102,11 @@ end
 
 --- Create a structure of type UnsupportedProtocolException
 -- <p>The specified protocol is not supported.</p>
-function M.UnsupportedProtocolException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedProtocolException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UnsupportedProtocolException structure as a key-value pair table
+function M.UnsupportedProtocolException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedProtocolException")
 	local t = { 
 	}
 	asserts.AssertUnsupportedProtocolException(t)
@@ -1012,11 +1126,14 @@ end
 
 --- Create a structure of type ModifyRuleOutput
 --  
--- @param _Rules [Rules] <p>Information about the rule.</p>
-function M.ModifyRuleOutput(_Rules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyRuleOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [Rules] <p>Information about the rule.</p>
+-- @return ModifyRuleOutput structure as a key-value pair table
+function M.ModifyRuleOutput(args)
+	assert(args, "You must provdide an argument table when creating ModifyRuleOutput")
 	local t = { 
-		["Rules"] = _Rules,
+		["Rules"] = args["Rules"],
 	}
 	asserts.AssertModifyRuleOutput(t)
 	return t
@@ -1036,13 +1153,16 @@ end
 
 --- Create a structure of type RuleCondition
 -- <p>Information about a condition for a rule.</p>
--- @param _Field [ConditionFieldName] <p>The name of the field. The possible values are <code>host-header</code> and <code>path-pattern</code>.</p>
--- @param _Values [ListOfString] <p>The condition value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern (for example, /img/*). A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
-function M.RuleCondition(_Field, _Values, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RuleCondition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Field [ConditionFieldName] <p>The name of the field. The possible values are <code>host-header</code> and <code>path-pattern</code>.</p>
+-- * Values [ListOfString] <p>The condition value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern (for example, /img/*). A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
+-- @return RuleCondition structure as a key-value pair table
+function M.RuleCondition(args)
+	assert(args, "You must provdide an argument table when creating RuleCondition")
 	local t = { 
-		["Field"] = _Field,
-		["Values"] = _Values,
+		["Field"] = args["Field"],
+		["Values"] = args["Values"],
 	}
 	asserts.AssertRuleCondition(t)
 	return t
@@ -1060,8 +1180,11 @@ end
 
 --- Create a structure of type DeleteRuleOutput
 --  
-function M.DeleteRuleOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRuleOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteRuleOutput structure as a key-value pair table
+function M.DeleteRuleOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteRuleOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteRuleOutput(t)
@@ -1080,8 +1203,11 @@ end
 
 --- Create a structure of type DeleteLoadBalancerOutput
 --  
-function M.DeleteLoadBalancerOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLoadBalancerOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteLoadBalancerOutput structure as a key-value pair table
+function M.DeleteLoadBalancerOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteLoadBalancerOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteLoadBalancerOutput(t)
@@ -1102,13 +1228,16 @@ end
 
 --- Create a structure of type AvailabilityZone
 -- <p>Information about an Availability Zone.</p>
--- @param _SubnetId [SubnetId] <p>The ID of the subnet.</p>
--- @param _ZoneName [ZoneName] <p>The name of the Availability Zone.</p>
-function M.AvailabilityZone(_SubnetId, _ZoneName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityZone")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetId [SubnetId] <p>The ID of the subnet.</p>
+-- * ZoneName [ZoneName] <p>The name of the Availability Zone.</p>
+-- @return AvailabilityZone structure as a key-value pair table
+function M.AvailabilityZone(args)
+	assert(args, "You must provdide an argument table when creating AvailabilityZone")
 	local t = { 
-		["SubnetId"] = _SubnetId,
-		["ZoneName"] = _ZoneName,
+		["SubnetId"] = args["SubnetId"],
+		["ZoneName"] = args["ZoneName"],
 	}
 	asserts.AssertAvailabilityZone(t)
 	return t
@@ -1126,8 +1255,11 @@ end
 
 --- Create a structure of type TooManyRegistrationsForTargetIdException
 -- <p>You've reached the limit on the number of times a target can be registered with a load balancer.</p>
-function M.TooManyRegistrationsForTargetIdException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRegistrationsForTargetIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyRegistrationsForTargetIdException structure as a key-value pair table
+function M.TooManyRegistrationsForTargetIdException(args)
+	assert(args, "You must provdide an argument table when creating TooManyRegistrationsForTargetIdException")
 	local t = { 
 	}
 	asserts.AssertTooManyRegistrationsForTargetIdException(t)
@@ -1146,8 +1278,11 @@ end
 
 --- Create a structure of type ResourceInUseException
 -- <p>A specified resource is in use.</p>
-function M.ResourceInUseException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceInUseException structure as a key-value pair table
+function M.ResourceInUseException(args)
+	assert(args, "You must provdide an argument table when creating ResourceInUseException")
 	local t = { 
 	}
 	asserts.AssertResourceInUseException(t)
@@ -1168,13 +1303,16 @@ end
 
 --- Create a structure of type DescribeLoadBalancersOutput
 --  
--- @param _LoadBalancers [LoadBalancers] <p>Information about the load balancers.</p>
--- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
-function M.DescribeLoadBalancersOutput(_LoadBalancers, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBalancersOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoadBalancers [LoadBalancers] <p>Information about the load balancers.</p>
+-- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @return DescribeLoadBalancersOutput structure as a key-value pair table
+function M.DescribeLoadBalancersOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeLoadBalancersOutput")
 	local t = { 
-		["LoadBalancers"] = _LoadBalancers,
-		["NextMarker"] = _NextMarker,
+		["LoadBalancers"] = args["LoadBalancers"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertDescribeLoadBalancersOutput(t)
 	return t
@@ -1192,8 +1330,11 @@ end
 
 --- Create a structure of type IncompatibleProtocolsException
 -- <p>The specified configuration is not valid with this protocol.</p>
-function M.IncompatibleProtocolsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IncompatibleProtocolsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return IncompatibleProtocolsException structure as a key-value pair table
+function M.IncompatibleProtocolsException(args)
+	assert(args, "You must provdide an argument table when creating IncompatibleProtocolsException")
 	local t = { 
 	}
 	asserts.AssertIncompatibleProtocolsException(t)
@@ -1212,8 +1353,11 @@ end
 
 --- Create a structure of type RemoveTagsOutput
 --  
-function M.RemoveTagsOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RemoveTagsOutput structure as a key-value pair table
+function M.RemoveTagsOutput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsOutput")
 	local t = { 
 	}
 	asserts.AssertRemoveTagsOutput(t)
@@ -1232,8 +1376,11 @@ end
 
 --- Create a structure of type TooManyTargetGroupsException
 -- <p>You've reached the limit on the number of target groups for your AWS account.</p>
-function M.TooManyTargetGroupsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTargetGroupsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyTargetGroupsException structure as a key-value pair table
+function M.TooManyTargetGroupsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyTargetGroupsException")
 	local t = { 
 	}
 	asserts.AssertTooManyTargetGroupsException(t)
@@ -1252,8 +1399,11 @@ end
 
 --- Create a structure of type TargetGroupNotFoundException
 -- <p>The specified target group does not exist.</p>
-function M.TargetGroupNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroupNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TargetGroupNotFoundException structure as a key-value pair table
+function M.TargetGroupNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating TargetGroupNotFoundException")
 	local t = { 
 	}
 	asserts.AssertTargetGroupNotFoundException(t)
@@ -1273,11 +1423,14 @@ end
 
 --- Create a structure of type CreateLoadBalancerOutput
 --  
--- @param _LoadBalancers [LoadBalancers] <p>Information about the load balancer.</p>
-function M.CreateLoadBalancerOutput(_LoadBalancers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoadBalancerOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoadBalancers [LoadBalancers] <p>Information about the load balancer.</p>
+-- @return CreateLoadBalancerOutput structure as a key-value pair table
+function M.CreateLoadBalancerOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateLoadBalancerOutput")
 	local t = { 
-		["LoadBalancers"] = _LoadBalancers,
+		["LoadBalancers"] = args["LoadBalancers"],
 	}
 	asserts.AssertCreateLoadBalancerOutput(t)
 	return t
@@ -1299,15 +1452,18 @@ end
 
 --- Create a structure of type SetIpAddressTypeInput
 --  
--- @param _IpAddressType [IpAddressType] <p>The IP address type. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required parameter: LoadBalancerArn
--- Required parameter: IpAddressType
-function M.SetIpAddressTypeInput(_IpAddressType, _LoadBalancerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIpAddressTypeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IpAddressType [IpAddressType] <p>The IP address type. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses). Internal load balancers must use <code>ipv4</code>.</p>
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- Required key: LoadBalancerArn
+-- Required key: IpAddressType
+-- @return SetIpAddressTypeInput structure as a key-value pair table
+function M.SetIpAddressTypeInput(args)
+	assert(args, "You must provdide an argument table when creating SetIpAddressTypeInput")
 	local t = { 
-		["IpAddressType"] = _IpAddressType,
-		["LoadBalancerArn"] = _LoadBalancerArn,
+		["IpAddressType"] = args["IpAddressType"],
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
 	asserts.AssertSetIpAddressTypeInput(t)
 	return t
@@ -1328,14 +1484,17 @@ end
 
 --- Create a structure of type DescribeTargetHealthInput
 --  
--- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param _Targets [TargetDescriptions] <p>The targets.</p>
--- Required parameter: TargetGroupArn
-function M.DescribeTargetHealthInput(_TargetGroupArn, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetHealthInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- * Targets [TargetDescriptions] <p>The targets.</p>
+-- Required key: TargetGroupArn
+-- @return DescribeTargetHealthInput structure as a key-value pair table
+function M.DescribeTargetHealthInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTargetHealthInput")
 	local t = { 
-		["TargetGroupArn"] = _TargetGroupArn,
-		["Targets"] = _Targets,
+		["TargetGroupArn"] = args["TargetGroupArn"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertDescribeTargetHealthInput(t)
 	return t
@@ -1354,11 +1513,14 @@ end
 
 --- Create a structure of type Certificate
 -- <p>Information about an SSL server certificate deployed on a load balancer.</p>
--- @param _CertificateArn [CertificateArn] <p>The Amazon Resource Name (ARN) of the certificate.</p>
-function M.Certificate(_CertificateArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Certificate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateArn [CertificateArn] <p>The Amazon Resource Name (ARN) of the certificate.</p>
+-- @return Certificate structure as a key-value pair table
+function M.Certificate(args)
+	assert(args, "You must provdide an argument table when creating Certificate")
 	local t = { 
-		["CertificateArn"] = _CertificateArn,
+		["CertificateArn"] = args["CertificateArn"],
 	}
 	asserts.AssertCertificate(t)
 	return t
@@ -1376,8 +1538,11 @@ end
 
 --- Create a structure of type TooManyListenersException
 -- <p>You've reached the limit on the number of listeners per load balancer.</p>
-function M.TooManyListenersException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyListenersException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyListenersException structure as a key-value pair table
+function M.TooManyListenersException(args)
+	assert(args, "You must provdide an argument table when creating TooManyListenersException")
 	local t = { 
 	}
 	asserts.AssertTooManyListenersException(t)
@@ -1396,8 +1561,11 @@ end
 
 --- Create a structure of type InvalidSchemeException
 -- <p>The requested scheme is not valid.</p>
-function M.InvalidSchemeException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSchemeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidSchemeException structure as a key-value pair table
+function M.InvalidSchemeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSchemeException")
 	local t = { 
 	}
 	asserts.AssertInvalidSchemeException(t)
@@ -1417,11 +1585,14 @@ end
 
 --- Create a structure of type SetSubnetsOutput
 --  
--- @param _AvailabilityZones [AvailabilityZones] <p>Information about the subnet and Availability Zone.</p>
-function M.SetSubnetsOutput(_AvailabilityZones, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetSubnetsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AvailabilityZones [AvailabilityZones] <p>Information about the subnet and Availability Zone.</p>
+-- @return SetSubnetsOutput structure as a key-value pair table
+function M.SetSubnetsOutput(args)
+	assert(args, "You must provdide an argument table when creating SetSubnetsOutput")
 	local t = { 
-		["AvailabilityZones"] = _AvailabilityZones,
+		["AvailabilityZones"] = args["AvailabilityZones"],
 	}
 	asserts.AssertSetSubnetsOutput(t)
 	return t
@@ -1442,15 +1613,18 @@ end
 
 --- Create a structure of type TargetHealthDescription
 -- <p>Information about the health of a target.</p>
--- @param _HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
--- @param _Target [TargetDescription] <p>The description of the target.</p>
--- @param _TargetHealth [TargetHealth] <p>The health information for the target.</p>
-function M.TargetHealthDescription(_HealthCheckPort, _Target, _TargetHealth, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TargetHealthDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
+-- * Target [TargetDescription] <p>The description of the target.</p>
+-- * TargetHealth [TargetHealth] <p>The health information for the target.</p>
+-- @return TargetHealthDescription structure as a key-value pair table
+function M.TargetHealthDescription(args)
+	assert(args, "You must provdide an argument table when creating TargetHealthDescription")
 	local t = { 
-		["HealthCheckPort"] = _HealthCheckPort,
-		["Target"] = _Target,
-		["TargetHealth"] = _TargetHealth,
+		["HealthCheckPort"] = args["HealthCheckPort"],
+		["Target"] = args["Target"],
+		["TargetHealth"] = args["TargetHealth"],
 	}
 	asserts.AssertTargetHealthDescription(t)
 	return t
@@ -1469,11 +1643,14 @@ end
 
 --- Create a structure of type DescribeTargetHealthOutput
 --  
--- @param _TargetHealthDescriptions [TargetHealthDescriptions] <p>Information about the health of the targets.</p>
-function M.DescribeTargetHealthOutput(_TargetHealthDescriptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetHealthOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetHealthDescriptions [TargetHealthDescriptions] <p>Information about the health of the targets.</p>
+-- @return DescribeTargetHealthOutput structure as a key-value pair table
+function M.DescribeTargetHealthOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTargetHealthOutput")
 	local t = { 
-		["TargetHealthDescriptions"] = _TargetHealthDescriptions,
+		["TargetHealthDescriptions"] = args["TargetHealthDescriptions"],
 	}
 	asserts.AssertDescribeTargetHealthOutput(t)
 	return t
@@ -1493,12 +1670,15 @@ end
 
 --- Create a structure of type DeleteListenerInput
 --  
--- @param _ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
--- Required parameter: ListenerArn
-function M.DeleteListenerInput(_ListenerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteListenerInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+-- Required key: ListenerArn
+-- @return DeleteListenerInput structure as a key-value pair table
+function M.DeleteListenerInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteListenerInput")
 	local t = { 
-		["ListenerArn"] = _ListenerArn,
+		["ListenerArn"] = args["ListenerArn"],
 	}
 	asserts.AssertDeleteListenerInput(t)
 	return t
@@ -1526,25 +1706,28 @@ end
 
 --- Create a structure of type CreateListenerInput
 --  
--- @param _Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
--- @param _DefaultActions [Actions] <p>The default action for the listener.</p>
--- @param _SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
--- @param _Certificates [CertificateList] <p>The SSL server certificate. You must provide exactly one certificate if the protocol is HTTPS.</p>
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- @param _Port [Port] <p>The port on which the load balancer is listening.</p>
--- Required parameter: LoadBalancerArn
--- Required parameter: Protocol
--- Required parameter: Port
--- Required parameter: DefaultActions
-function M.CreateListenerInput(_Protocol, _DefaultActions, _SslPolicy, _Certificates, _LoadBalancerArn, _Port, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateListenerInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
+-- * DefaultActions [Actions] <p>The default action for the listener.</p>
+-- * SslPolicy [SslPolicyName] <p>The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.</p>
+-- * Certificates [CertificateList] <p>The SSL server certificate. You must provide exactly one certificate if the protocol is HTTPS.</p>
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- * Port [Port] <p>The port on which the load balancer is listening.</p>
+-- Required key: LoadBalancerArn
+-- Required key: Protocol
+-- Required key: Port
+-- Required key: DefaultActions
+-- @return CreateListenerInput structure as a key-value pair table
+function M.CreateListenerInput(args)
+	assert(args, "You must provdide an argument table when creating CreateListenerInput")
 	local t = { 
-		["Protocol"] = _Protocol,
-		["DefaultActions"] = _DefaultActions,
-		["SslPolicy"] = _SslPolicy,
-		["Certificates"] = _Certificates,
-		["LoadBalancerArn"] = _LoadBalancerArn,
-		["Port"] = _Port,
+		["Protocol"] = args["Protocol"],
+		["DefaultActions"] = args["DefaultActions"],
+		["SslPolicy"] = args["SslPolicy"],
+		["Certificates"] = args["Certificates"],
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
+		["Port"] = args["Port"],
 	}
 	asserts.AssertCreateListenerInput(t)
 	return t
@@ -1578,37 +1761,40 @@ end
 
 --- Create a structure of type CreateTargetGroupInput
 --  
--- @param _HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy. The default is 5.</p>
--- @param _HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target. The default is 30 seconds.</p>
--- @param _VpcId [VpcId] <p>The identifier of the virtual private cloud (VPC).</p>
--- @param _Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
--- @param _Name [TargetGroupName] <p>The name of the target group.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
--- @param _HealthCheckProtocol [ProtocolEnum] <p>The protocol the load balancer uses when performing health checks on targets. The default is the HTTP protocol.</p>
--- @param _UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering a target unhealthy. The default is 2.</p>
--- @param _HealthCheckPath [Path] <p>The ping path that is the destination on the targets for health checks. The default is /.</p>
--- @param _HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response from a target means a failed health check. The default is 5 seconds.</p>
--- @param _Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target. The default is 200.</p>
--- @param _HealthCheckPort [HealthCheckPort] <p>The port the load balancer uses when performing health checks on targets. The default is <code>traffic-port</code>, which indicates the port on which each target receives traffic from the load balancer.</p>
--- @param _Port [Port] <p>The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.</p>
--- Required parameter: Name
--- Required parameter: Protocol
--- Required parameter: Port
--- Required parameter: VpcId
-function M.CreateTargetGroupInput(_HealthyThresholdCount, _HealthCheckIntervalSeconds, _VpcId, _Protocol, _Name, _HealthCheckProtocol, _UnhealthyThresholdCount, _HealthCheckPath, _HealthCheckTimeoutSeconds, _Matcher, _HealthCheckPort, _Port, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTargetGroupInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy. The default is 5.</p>
+-- * HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target. The default is 30 seconds.</p>
+-- * VpcId [VpcId] <p>The identifier of the virtual private cloud (VPC).</p>
+-- * Protocol [ProtocolEnum] <p>The protocol to use for routing traffic to the targets.</p>
+-- * Name [TargetGroupName] <p>The name of the target group.</p> <p>This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.</p>
+-- * HealthCheckProtocol [ProtocolEnum] <p>The protocol the load balancer uses when performing health checks on targets. The default is the HTTP protocol.</p>
+-- * UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering a target unhealthy. The default is 2.</p>
+-- * HealthCheckPath [Path] <p>The ping path that is the destination on the targets for health checks. The default is /.</p>
+-- * HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response from a target means a failed health check. The default is 5 seconds.</p>
+-- * Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target. The default is 200.</p>
+-- * HealthCheckPort [HealthCheckPort] <p>The port the load balancer uses when performing health checks on targets. The default is <code>traffic-port</code>, which indicates the port on which each target receives traffic from the load balancer.</p>
+-- * Port [Port] <p>The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target.</p>
+-- Required key: Name
+-- Required key: Protocol
+-- Required key: Port
+-- Required key: VpcId
+-- @return CreateTargetGroupInput structure as a key-value pair table
+function M.CreateTargetGroupInput(args)
+	assert(args, "You must provdide an argument table when creating CreateTargetGroupInput")
 	local t = { 
-		["HealthyThresholdCount"] = _HealthyThresholdCount,
-		["HealthCheckIntervalSeconds"] = _HealthCheckIntervalSeconds,
-		["VpcId"] = _VpcId,
-		["Protocol"] = _Protocol,
-		["Name"] = _Name,
-		["HealthCheckProtocol"] = _HealthCheckProtocol,
-		["UnhealthyThresholdCount"] = _UnhealthyThresholdCount,
-		["HealthCheckPath"] = _HealthCheckPath,
-		["HealthCheckTimeoutSeconds"] = _HealthCheckTimeoutSeconds,
-		["Matcher"] = _Matcher,
-		["HealthCheckPort"] = _HealthCheckPort,
-		["Port"] = _Port,
+		["HealthyThresholdCount"] = args["HealthyThresholdCount"],
+		["HealthCheckIntervalSeconds"] = args["HealthCheckIntervalSeconds"],
+		["VpcId"] = args["VpcId"],
+		["Protocol"] = args["Protocol"],
+		["Name"] = args["Name"],
+		["HealthCheckProtocol"] = args["HealthCheckProtocol"],
+		["UnhealthyThresholdCount"] = args["UnhealthyThresholdCount"],
+		["HealthCheckPath"] = args["HealthCheckPath"],
+		["HealthCheckTimeoutSeconds"] = args["HealthCheckTimeoutSeconds"],
+		["Matcher"] = args["Matcher"],
+		["HealthCheckPort"] = args["HealthCheckPort"],
+		["Port"] = args["Port"],
 	}
 	asserts.AssertCreateTargetGroupInput(t)
 	return t
@@ -1627,11 +1813,14 @@ end
 
 --- Create a structure of type ModifyLoadBalancerAttributesOutput
 --  
--- @param _Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
-function M.ModifyLoadBalancerAttributesOutput(_Attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyLoadBalancerAttributesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
+-- @return ModifyLoadBalancerAttributesOutput structure as a key-value pair table
+function M.ModifyLoadBalancerAttributesOutput(args)
+	assert(args, "You must provdide an argument table when creating ModifyLoadBalancerAttributesOutput")
 	local t = { 
-		["Attributes"] = _Attributes,
+		["Attributes"] = args["Attributes"],
 	}
 	asserts.AssertModifyLoadBalancerAttributesOutput(t)
 	return t
@@ -1649,8 +1838,11 @@ end
 
 --- Create a structure of type RegisterTargetsOutput
 --  
-function M.RegisterTargetsOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTargetsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RegisterTargetsOutput structure as a key-value pair table
+function M.RegisterTargetsOutput(args)
+	assert(args, "You must provdide an argument table when creating RegisterTargetsOutput")
 	local t = { 
 	}
 	asserts.AssertRegisterTargetsOutput(t)
@@ -1671,12 +1863,15 @@ end
 
 --- Create a structure of type Matcher
 -- <p>Information to use when checking for a successful response from a target.</p>
--- @param _HttpCode [HttpCode] <p>The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").</p>
--- Required parameter: HttpCode
-function M.Matcher(_HttpCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Matcher")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HttpCode [HttpCode] <p>The HTTP codes. You can specify values between 200 and 499. The default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299").</p>
+-- Required key: HttpCode
+-- @return Matcher structure as a key-value pair table
+function M.Matcher(args)
+	assert(args, "You must provdide an argument table when creating Matcher")
 	local t = { 
-		["HttpCode"] = _HttpCode,
+		["HttpCode"] = args["HttpCode"],
 	}
 	asserts.AssertMatcher(t)
 	return t
@@ -1694,8 +1889,11 @@ end
 
 --- Create a structure of type InvalidSecurityGroupException
 -- <p>The specified security group does not exist.</p>
-function M.InvalidSecurityGroupException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSecurityGroupException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidSecurityGroupException structure as a key-value pair table
+function M.InvalidSecurityGroupException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSecurityGroupException")
 	local t = { 
 	}
 	asserts.AssertInvalidSecurityGroupException(t)
@@ -1716,13 +1914,16 @@ end
 
 --- Create a structure of type DescribeAccountLimitsOutput
 --  
--- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param _Limits [Limits] <p>Information about the limits.</p>
-function M.DescribeAccountLimitsOutput(_NextMarker, _Limits, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountLimitsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- * Limits [Limits] <p>Information about the limits.</p>
+-- @return DescribeAccountLimitsOutput structure as a key-value pair table
+function M.DescribeAccountLimitsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeAccountLimitsOutput")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Limits"] = _Limits,
+		["NextMarker"] = args["NextMarker"],
+		["Limits"] = args["Limits"],
 	}
 	asserts.AssertDescribeAccountLimitsOutput(t)
 	return t
@@ -1747,22 +1948,25 @@ end
 
 --- Create a structure of type ModifyListenerInput
 --  
--- @param _Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
--- @param _DefaultActions [Actions] <p>The default actions.</p>
--- @param _SslPolicy [SslPolicyName] <p>The security policy that defines which protocols and ciphers are supported. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security Policies</a> in the <i>Application Load Balancers Guide</i>.</p>
--- @param _Certificates [CertificateList] <p>The SSL server certificate.</p>
--- @param _Port [Port] <p>The port for connections from clients to the load balancer.</p>
--- @param _ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
--- Required parameter: ListenerArn
-function M.ModifyListenerInput(_Protocol, _DefaultActions, _SslPolicy, _Certificates, _Port, _ListenerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyListenerInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Protocol [ProtocolEnum] <p>The protocol for connections from clients to the load balancer.</p>
+-- * DefaultActions [Actions] <p>The default actions.</p>
+-- * SslPolicy [SslPolicyName] <p>The security policy that defines which protocols and ciphers are supported. For more information, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security Policies</a> in the <i>Application Load Balancers Guide</i>.</p>
+-- * Certificates [CertificateList] <p>The SSL server certificate.</p>
+-- * Port [Port] <p>The port for connections from clients to the load balancer.</p>
+-- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+-- Required key: ListenerArn
+-- @return ModifyListenerInput structure as a key-value pair table
+function M.ModifyListenerInput(args)
+	assert(args, "You must provdide an argument table when creating ModifyListenerInput")
 	local t = { 
-		["Protocol"] = _Protocol,
-		["DefaultActions"] = _DefaultActions,
-		["SslPolicy"] = _SslPolicy,
-		["Certificates"] = _Certificates,
-		["Port"] = _Port,
-		["ListenerArn"] = _ListenerArn,
+		["Protocol"] = args["Protocol"],
+		["DefaultActions"] = args["DefaultActions"],
+		["SslPolicy"] = args["SslPolicy"],
+		["Certificates"] = args["Certificates"],
+		["Port"] = args["Port"],
+		["ListenerArn"] = args["ListenerArn"],
 	}
 	asserts.AssertModifyListenerInput(t)
 	return t
@@ -1784,15 +1988,18 @@ end
 
 --- Create a structure of type ModifyLoadBalancerAttributesInput
 --  
--- @param _Attributes [LoadBalancerAttributes] <p>The load balancer attributes.</p>
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required parameter: LoadBalancerArn
--- Required parameter: Attributes
-function M.ModifyLoadBalancerAttributesInput(_Attributes, _LoadBalancerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyLoadBalancerAttributesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [LoadBalancerAttributes] <p>The load balancer attributes.</p>
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- Required key: LoadBalancerArn
+-- Required key: Attributes
+-- @return ModifyLoadBalancerAttributesInput structure as a key-value pair table
+function M.ModifyLoadBalancerAttributesInput(args)
+	assert(args, "You must provdide an argument table when creating ModifyLoadBalancerAttributesInput")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["LoadBalancerArn"] = _LoadBalancerArn,
+		["Attributes"] = args["Attributes"],
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
 	asserts.AssertModifyLoadBalancerAttributesInput(t)
 	return t
@@ -1820,28 +2027,31 @@ end
 
 --- Create a structure of type ModifyTargetGroupInput
 --  
--- @param _HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
--- @param _HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
--- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param _HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
--- @param _HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
--- @param _HealthCheckPath [Path] <p>The ping path that is the destination for the health check request.</p>
--- @param _HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
--- @param _Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
--- @param _UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
--- Required parameter: TargetGroupArn
-function M.ModifyTargetGroupInput(_HealthyThresholdCount, _HealthCheckIntervalSeconds, _TargetGroupArn, _HealthCheckPort, _HealthCheckProtocol, _HealthCheckPath, _HealthCheckTimeoutSeconds, _Matcher, _UnhealthyThresholdCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health checks successes required before considering an unhealthy target healthy.</p>
+-- * HealthCheckIntervalSeconds [HealthCheckIntervalSeconds] <p>The approximate amount of time, in seconds, between health checks of an individual target.</p>
+-- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- * HealthCheckPort [HealthCheckPort] <p>The port to use to connect with the target.</p>
+-- * HealthCheckProtocol [ProtocolEnum] <p>The protocol to use to connect with the target.</p>
+-- * HealthCheckPath [Path] <p>The ping path that is the destination for the health check request.</p>
+-- * HealthCheckTimeoutSeconds [HealthCheckTimeoutSeconds] <p>The amount of time, in seconds, during which no response means a failed health check.</p>
+-- * Matcher [Matcher] <p>The HTTP codes to use when checking for a successful response from a target.</p>
+-- * UnhealthyThresholdCount [HealthCheckThresholdCount] <p>The number of consecutive health check failures required before considering the target unhealthy.</p>
+-- Required key: TargetGroupArn
+-- @return ModifyTargetGroupInput structure as a key-value pair table
+function M.ModifyTargetGroupInput(args)
+	assert(args, "You must provdide an argument table when creating ModifyTargetGroupInput")
 	local t = { 
-		["HealthyThresholdCount"] = _HealthyThresholdCount,
-		["HealthCheckIntervalSeconds"] = _HealthCheckIntervalSeconds,
-		["TargetGroupArn"] = _TargetGroupArn,
-		["HealthCheckPort"] = _HealthCheckPort,
-		["HealthCheckProtocol"] = _HealthCheckProtocol,
-		["HealthCheckPath"] = _HealthCheckPath,
-		["HealthCheckTimeoutSeconds"] = _HealthCheckTimeoutSeconds,
-		["Matcher"] = _Matcher,
-		["UnhealthyThresholdCount"] = _UnhealthyThresholdCount,
+		["HealthyThresholdCount"] = args["HealthyThresholdCount"],
+		["HealthCheckIntervalSeconds"] = args["HealthCheckIntervalSeconds"],
+		["TargetGroupArn"] = args["TargetGroupArn"],
+		["HealthCheckPort"] = args["HealthCheckPort"],
+		["HealthCheckProtocol"] = args["HealthCheckProtocol"],
+		["HealthCheckPath"] = args["HealthCheckPath"],
+		["HealthCheckTimeoutSeconds"] = args["HealthCheckTimeoutSeconds"],
+		["Matcher"] = args["Matcher"],
+		["UnhealthyThresholdCount"] = args["UnhealthyThresholdCount"],
 	}
 	asserts.AssertModifyTargetGroupInput(t)
 	return t
@@ -1867,21 +2077,24 @@ end
 
 --- Create a structure of type CreateRuleInput
 --  
--- @param _Priority [RulePriority] <p>The priority for the rule. A listener can't have multiple rules with the same priority.</p>
--- @param _Conditions [RuleConditionList] <p>A condition. Each condition specifies a field name and a single value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
--- @param _Actions [Actions] <p>An action. Each action has the type <code>forward</code> and specifies a target group.</p>
--- @param _ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
--- Required parameter: ListenerArn
--- Required parameter: Conditions
--- Required parameter: Priority
--- Required parameter: Actions
-function M.CreateRuleInput(_Priority, _Conditions, _Actions, _ListenerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRuleInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Priority [RulePriority] <p>The priority for the rule. A listener can't have multiple rules with the same priority.</p>
+-- * Conditions [RuleConditionList] <p>A condition. Each condition specifies a field name and a single value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern. A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
+-- * Actions [Actions] <p>An action. Each action has the type <code>forward</code> and specifies a target group.</p>
+-- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+-- Required key: ListenerArn
+-- Required key: Conditions
+-- Required key: Priority
+-- Required key: Actions
+-- @return CreateRuleInput structure as a key-value pair table
+function M.CreateRuleInput(args)
+	assert(args, "You must provdide an argument table when creating CreateRuleInput")
 	local t = { 
-		["Priority"] = _Priority,
-		["Conditions"] = _Conditions,
-		["Actions"] = _Actions,
-		["ListenerArn"] = _ListenerArn,
+		["Priority"] = args["Priority"],
+		["Conditions"] = args["Conditions"],
+		["Actions"] = args["Actions"],
+		["ListenerArn"] = args["ListenerArn"],
 	}
 	asserts.AssertCreateRuleInput(t)
 	return t
@@ -1903,17 +2116,20 @@ end
 
 --- Create a structure of type DescribeListenersInput
 --  
--- @param _ListenerArns [ListenerArns] <p>The Amazon Resource Names (ARN) of the listeners.</p>
--- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
-function M.DescribeListenersInput(_ListenerArns, _Marker, _LoadBalancerArn, _PageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeListenersInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ListenerArns [ListenerArns] <p>The Amazon Resource Names (ARN) of the listeners.</p>
+-- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+-- @return DescribeListenersInput structure as a key-value pair table
+function M.DescribeListenersInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeListenersInput")
 	local t = { 
-		["ListenerArns"] = _ListenerArns,
-		["Marker"] = _Marker,
-		["LoadBalancerArn"] = _LoadBalancerArn,
-		["PageSize"] = _PageSize,
+		["ListenerArns"] = args["ListenerArns"],
+		["Marker"] = args["Marker"],
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
+		["PageSize"] = args["PageSize"],
 	}
 	asserts.AssertDescribeListenersInput(t)
 	return t
@@ -1936,19 +2152,22 @@ end
 
 --- Create a structure of type Rule
 -- <p>Information about a rule.</p>
--- @param _Priority [String] <p>The priority.</p>
--- @param _Conditions [RuleConditionList] <p>The conditions.</p>
--- @param _RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- @param _IsDefault [IsDefault] <p>Indicates whether this is the default rule.</p>
--- @param _Actions [Actions] <p>The actions.</p>
-function M.Rule(_Priority, _Conditions, _RuleArn, _IsDefault, _Actions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Rule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Priority [String] <p>The priority.</p>
+-- * Conditions [RuleConditionList] <p>The conditions.</p>
+-- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- * IsDefault [IsDefault] <p>Indicates whether this is the default rule.</p>
+-- * Actions [Actions] <p>The actions.</p>
+-- @return Rule structure as a key-value pair table
+function M.Rule(args)
+	assert(args, "You must provdide an argument table when creating Rule")
 	local t = { 
-		["Priority"] = _Priority,
-		["Conditions"] = _Conditions,
-		["RuleArn"] = _RuleArn,
-		["IsDefault"] = _IsDefault,
-		["Actions"] = _Actions,
+		["Priority"] = args["Priority"],
+		["Conditions"] = args["Conditions"],
+		["RuleArn"] = args["RuleArn"],
+		["IsDefault"] = args["IsDefault"],
+		["Actions"] = args["Actions"],
 	}
 	asserts.AssertRule(t)
 	return t
@@ -1968,12 +2187,15 @@ end
 
 --- Create a structure of type SetRulePrioritiesInput
 --  
--- @param _RulePriorities [RulePriorityList] <p>The rule priorities.</p>
--- Required parameter: RulePriorities
-function M.SetRulePrioritiesInput(_RulePriorities, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetRulePrioritiesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RulePriorities [RulePriorityList] <p>The rule priorities.</p>
+-- Required key: RulePriorities
+-- @return SetRulePrioritiesInput structure as a key-value pair table
+function M.SetRulePrioritiesInput(args)
+	assert(args, "You must provdide an argument table when creating SetRulePrioritiesInput")
 	local t = { 
-		["RulePriorities"] = _RulePriorities,
+		["RulePriorities"] = args["RulePriorities"],
 	}
 	asserts.AssertSetRulePrioritiesInput(t)
 	return t
@@ -1992,11 +2214,14 @@ end
 
 --- Create a structure of type SetRulePrioritiesOutput
 --  
--- @param _Rules [Rules] <p>Information about the rules.</p>
-function M.SetRulePrioritiesOutput(_Rules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetRulePrioritiesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [Rules] <p>Information about the rules.</p>
+-- @return SetRulePrioritiesOutput structure as a key-value pair table
+function M.SetRulePrioritiesOutput(args)
+	assert(args, "You must provdide an argument table when creating SetRulePrioritiesOutput")
 	local t = { 
-		["Rules"] = _Rules,
+		["Rules"] = args["Rules"],
 	}
 	asserts.AssertSetRulePrioritiesOutput(t)
 	return t
@@ -2018,15 +2243,18 @@ end
 
 --- Create a structure of type Action
 -- <p>Information about an action.</p>
--- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param _Type [ActionTypeEnum] <p>The type of action.</p>
--- Required parameter: Type
--- Required parameter: TargetGroupArn
-function M.Action(_TargetGroupArn, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Action")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- * Type [ActionTypeEnum] <p>The type of action.</p>
+-- Required key: Type
+-- Required key: TargetGroupArn
+-- @return Action structure as a key-value pair table
+function M.Action(args)
+	assert(args, "You must provdide an argument table when creating Action")
 	local t = { 
-		["TargetGroupArn"] = _TargetGroupArn,
-		["Type"] = _Type,
+		["TargetGroupArn"] = args["TargetGroupArn"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertAction(t)
 	return t
@@ -2044,8 +2272,11 @@ end
 
 --- Create a structure of type PriorityInUseException
 -- <p>The specified priority is in use.</p>
-function M.PriorityInUseException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PriorityInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PriorityInUseException structure as a key-value pair table
+function M.PriorityInUseException(args)
+	assert(args, "You must provdide an argument table when creating PriorityInUseException")
 	local t = { 
 	}
 	asserts.AssertPriorityInUseException(t)
@@ -2068,15 +2299,18 @@ end
 
 --- Create a structure of type RegisterTargetsInput
 --  
--- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- @param _Targets [TargetDescriptions] <p>The targets. The default port for a target is the port for the target group. You can specify a port override. If a target is already registered, you can register it again using a different port.</p>
--- Required parameter: TargetGroupArn
--- Required parameter: Targets
-function M.RegisterTargetsInput(_TargetGroupArn, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterTargetsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- * Targets [TargetDescriptions] <p>The targets. The default port for a target is the port for the target group. You can specify a port override. If a target is already registered, you can register it again using a different port.</p>
+-- Required key: TargetGroupArn
+-- Required key: Targets
+-- @return RegisterTargetsInput structure as a key-value pair table
+function M.RegisterTargetsInput(args)
+	assert(args, "You must provdide an argument table when creating RegisterTargetsInput")
 	local t = { 
-		["TargetGroupArn"] = _TargetGroupArn,
-		["Targets"] = _Targets,
+		["TargetGroupArn"] = args["TargetGroupArn"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertRegisterTargetsInput(t)
 	return t
@@ -2096,12 +2330,15 @@ end
 
 --- Create a structure of type DeleteTargetGroupInput
 --  
--- @param _TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
--- Required parameter: TargetGroupArn
-function M.DeleteTargetGroupInput(_TargetGroupArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTargetGroupInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetGroupArn [TargetGroupArn] <p>The Amazon Resource Name (ARN) of the target group.</p>
+-- Required key: TargetGroupArn
+-- @return DeleteTargetGroupInput structure as a key-value pair table
+function M.DeleteTargetGroupInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteTargetGroupInput")
 	local t = { 
-		["TargetGroupArn"] = _TargetGroupArn,
+		["TargetGroupArn"] = args["TargetGroupArn"],
 	}
 	asserts.AssertDeleteTargetGroupInput(t)
 	return t
@@ -2119,8 +2356,11 @@ end
 
 --- Create a structure of type RuleNotFoundException
 -- <p>The specified rule does not exist.</p>
-function M.RuleNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RuleNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RuleNotFoundException structure as a key-value pair table
+function M.RuleNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating RuleNotFoundException")
 	local t = { 
 	}
 	asserts.AssertRuleNotFoundException(t)
@@ -2139,8 +2379,11 @@ end
 
 --- Create a structure of type TooManyTargetsException
 -- <p>You've reached the limit on the number of targets.</p>
-function M.TooManyTargetsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTargetsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyTargetsException structure as a key-value pair table
+function M.TooManyTargetsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyTargetsException")
 	local t = { 
 	}
 	asserts.AssertTooManyTargetsException(t)
@@ -2159,8 +2402,11 @@ end
 
 --- Create a structure of type TooManyLoadBalancersException
 -- <p>You've reached the limit on the number of load balancers for your AWS account.</p>
-function M.TooManyLoadBalancersException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyLoadBalancersException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyLoadBalancersException structure as a key-value pair table
+function M.TooManyLoadBalancersException(args)
+	assert(args, "You must provdide an argument table when creating TooManyLoadBalancersException")
 	local t = { 
 	}
 	asserts.AssertTooManyLoadBalancersException(t)
@@ -2183,15 +2429,18 @@ end
 
 --- Create a structure of type AddTagsInput
 --  
--- @param _ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
--- @param _Tags [TagList] <p>The tags. Each resource can have a maximum of 10 tags.</p>
--- Required parameter: ResourceArns
--- Required parameter: Tags
-function M.AddTagsInput(_ResourceArns, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- * Tags [TagList] <p>The tags. Each resource can have a maximum of 10 tags.</p>
+-- Required key: ResourceArns
+-- Required key: Tags
+-- @return AddTagsInput structure as a key-value pair table
+function M.AddTagsInput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsInput")
 	local t = { 
-		["ResourceArns"] = _ResourceArns,
-		["Tags"] = _Tags,
+		["ResourceArns"] = args["ResourceArns"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertAddTagsInput(t)
 	return t
@@ -2211,13 +2460,16 @@ end
 
 --- Create a structure of type TargetGroupAttribute
 -- <p>Information about a target group attribute.</p>
--- @param _Value [TargetGroupAttributeValue] <p>The value of the attribute.</p>
--- @param _Key [TargetGroupAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>deregistration_delay.timeout_seconds</code> - The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from <code>draining</code> to <code>unused</code>. The range is 0-3600 seconds. The default value is 300 seconds.</p> </li> <li> <p> <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.</p> </li> <li> <p> <code>stickiness.lb_cookie.duration_seconds</code> - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).</p> </li> </ul>
-function M.TargetGroupAttribute(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TargetGroupAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TargetGroupAttributeValue] <p>The value of the attribute.</p>
+-- * Key [TargetGroupAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>deregistration_delay.timeout_seconds</code> - The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from <code>draining</code> to <code>unused</code>. The range is 0-3600 seconds. The default value is 300 seconds.</p> </li> <li> <p> <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.</p> </li> <li> <p> <code>stickiness.lb_cookie.duration_seconds</code> - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).</p> </li> </ul>
+-- @return TargetGroupAttribute structure as a key-value pair table
+function M.TargetGroupAttribute(args)
+	assert(args, "You must provdide an argument table when creating TargetGroupAttribute")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTargetGroupAttribute(t)
 	return t
@@ -2235,8 +2487,11 @@ end
 
 --- Create a structure of type HealthUnavailableException
 -- <p>The health of the specified targets could not be retrieved due to an internal error.</p>
-function M.HealthUnavailableException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HealthUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return HealthUnavailableException structure as a key-value pair table
+function M.HealthUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating HealthUnavailableException")
 	local t = { 
 	}
 	asserts.AssertHealthUnavailableException(t)
@@ -2259,16 +2514,19 @@ end
 
 --- Create a structure of type ModifyRuleInput
 --  
--- @param _Conditions [RuleConditionList] <p>The conditions.</p>
--- @param _RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- @param _Actions [Actions] <p>The actions.</p>
--- Required parameter: RuleArn
-function M.ModifyRuleInput(_Conditions, _RuleArn, _Actions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyRuleInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Conditions [RuleConditionList] <p>The conditions.</p>
+-- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- * Actions [Actions] <p>The actions.</p>
+-- Required key: RuleArn
+-- @return ModifyRuleInput structure as a key-value pair table
+function M.ModifyRuleInput(args)
+	assert(args, "You must provdide an argument table when creating ModifyRuleInput")
 	local t = { 
-		["Conditions"] = _Conditions,
-		["RuleArn"] = _RuleArn,
-		["Actions"] = _Actions,
+		["Conditions"] = args["Conditions"],
+		["RuleArn"] = args["RuleArn"],
+		["Actions"] = args["Actions"],
 	}
 	asserts.AssertModifyRuleInput(t)
 	return t
@@ -2286,8 +2544,11 @@ end
 
 --- Create a structure of type TooManyTagsException
 -- <p>You've reached the limit on the number of tags per load balancer.</p>
-function M.TooManyTagsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTagsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyTagsException structure as a key-value pair table
+function M.TooManyTagsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyTagsException")
 	local t = { 
 	}
 	asserts.AssertTooManyTagsException(t)
@@ -2308,13 +2569,16 @@ end
 
 --- Create a structure of type DescribeRulesOutput
 --  
--- @param _Rules [Rules] <p>Information about the rules.</p>
--- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
-function M.DescribeRulesOutput(_Rules, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [Rules] <p>Information about the rules.</p>
+-- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @return DescribeRulesOutput structure as a key-value pair table
+function M.DescribeRulesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeRulesOutput")
 	local t = { 
-		["Rules"] = _Rules,
-		["NextMarker"] = _NextMarker,
+		["Rules"] = args["Rules"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertDescribeRulesOutput(t)
 	return t
@@ -2332,8 +2596,11 @@ end
 
 --- Create a structure of type SSLPolicyNotFoundException
 -- <p>The specified SSL policy does not exist.</p>
-function M.SSLPolicyNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SSLPolicyNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SSLPolicyNotFoundException structure as a key-value pair table
+function M.SSLPolicyNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating SSLPolicyNotFoundException")
 	local t = { 
 	}
 	asserts.AssertSSLPolicyNotFoundException(t)
@@ -2352,8 +2619,11 @@ end
 
 --- Create a structure of type DuplicateListenerException
 -- <p>A listener with the specified port already exists.</p>
-function M.DuplicateListenerException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateListenerException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DuplicateListenerException structure as a key-value pair table
+function M.DuplicateListenerException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateListenerException")
 	local t = { 
 	}
 	asserts.AssertDuplicateListenerException(t)
@@ -2374,13 +2644,16 @@ end
 
 --- Create a structure of type DescribeTargetGroupsOutput
 --  
--- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
--- @param _TargetGroups [TargetGroups] <p>Information about the target groups.</p>
-function M.DescribeTargetGroupsOutput(_NextMarker, _TargetGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- * TargetGroups [TargetGroups] <p>Information about the target groups.</p>
+-- @return DescribeTargetGroupsOutput structure as a key-value pair table
+function M.DescribeTargetGroupsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTargetGroupsOutput")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["TargetGroups"] = _TargetGroups,
+		["NextMarker"] = args["NextMarker"],
+		["TargetGroups"] = args["TargetGroups"],
 	}
 	asserts.AssertDescribeTargetGroupsOutput(t)
 	return t
@@ -2400,12 +2673,15 @@ end
 
 --- Create a structure of type DeleteLoadBalancerInput
 --  
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required parameter: LoadBalancerArn
-function M.DeleteLoadBalancerInput(_LoadBalancerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLoadBalancerInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- Required key: LoadBalancerArn
+-- @return DeleteLoadBalancerInput structure as a key-value pair table
+function M.DeleteLoadBalancerInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteLoadBalancerInput")
 	local t = { 
-		["LoadBalancerArn"] = _LoadBalancerArn,
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
 	asserts.AssertDeleteLoadBalancerInput(t)
 	return t
@@ -2428,19 +2704,22 @@ end
 
 --- Create a structure of type DescribeTargetGroupsInput
 --  
--- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _TargetGroupArns [TargetGroupArns] <p>The Amazon Resource Names (ARN) of the target groups.</p>
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- @param _Names [TargetGroupNames] <p>The names of the target groups.</p>
--- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
-function M.DescribeTargetGroupsInput(_Marker, _TargetGroupArns, _LoadBalancerArn, _Names, _PageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTargetGroupsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * TargetGroupArns [TargetGroupArns] <p>The Amazon Resource Names (ARN) of the target groups.</p>
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- * Names [TargetGroupNames] <p>The names of the target groups.</p>
+-- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+-- @return DescribeTargetGroupsInput structure as a key-value pair table
+function M.DescribeTargetGroupsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTargetGroupsInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["TargetGroupArns"] = _TargetGroupArns,
-		["LoadBalancerArn"] = _LoadBalancerArn,
-		["Names"] = _Names,
-		["PageSize"] = _PageSize,
+		["Marker"] = args["Marker"],
+		["TargetGroupArns"] = args["TargetGroupArns"],
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
+		["Names"] = args["Names"],
+		["PageSize"] = args["PageSize"],
 	}
 	asserts.AssertDescribeTargetGroupsInput(t)
 	return t
@@ -2459,11 +2738,14 @@ end
 
 --- Create a structure of type ModifyTargetGroupOutput
 --  
--- @param _TargetGroups [TargetGroups] <p>Information about the target group.</p>
-function M.ModifyTargetGroupOutput(_TargetGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetGroups [TargetGroups] <p>Information about the target group.</p>
+-- @return ModifyTargetGroupOutput structure as a key-value pair table
+function M.ModifyTargetGroupOutput(args)
+	assert(args, "You must provdide an argument table when creating ModifyTargetGroupOutput")
 	local t = { 
-		["TargetGroups"] = _TargetGroups,
+		["TargetGroups"] = args["TargetGroups"],
 	}
 	asserts.AssertModifyTargetGroupOutput(t)
 	return t
@@ -2482,11 +2764,14 @@ end
 
 --- Create a structure of type ModifyTargetGroupAttributesOutput
 --  
--- @param _Attributes [TargetGroupAttributes] <p>Information about the attributes.</p>
-function M.ModifyTargetGroupAttributesOutput(_Attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyTargetGroupAttributesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [TargetGroupAttributes] <p>Information about the attributes.</p>
+-- @return ModifyTargetGroupAttributesOutput structure as a key-value pair table
+function M.ModifyTargetGroupAttributesOutput(args)
+	assert(args, "You must provdide an argument table when creating ModifyTargetGroupAttributesOutput")
 	local t = { 
-		["Attributes"] = _Attributes,
+		["Attributes"] = args["Attributes"],
 	}
 	asserts.AssertModifyTargetGroupAttributesOutput(t)
 	return t
@@ -2505,11 +2790,14 @@ end
 
 --- Create a structure of type CreateTargetGroupOutput
 --  
--- @param _TargetGroups [TargetGroups] <p>Information about the target group.</p>
-function M.CreateTargetGroupOutput(_TargetGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTargetGroupOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetGroups [TargetGroups] <p>Information about the target group.</p>
+-- @return CreateTargetGroupOutput structure as a key-value pair table
+function M.CreateTargetGroupOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateTargetGroupOutput")
 	local t = { 
-		["TargetGroups"] = _TargetGroups,
+		["TargetGroups"] = args["TargetGroups"],
 	}
 	asserts.AssertCreateTargetGroupOutput(t)
 	return t
@@ -2528,11 +2816,14 @@ end
 
 --- Create a structure of type CreateListenerOutput
 --  
--- @param _Listeners [Listeners] <p>Information about the listener.</p>
-function M.CreateListenerOutput(_Listeners, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateListenerOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Listeners [Listeners] <p>Information about the listener.</p>
+-- @return CreateListenerOutput structure as a key-value pair table
+function M.CreateListenerOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateListenerOutput")
 	local t = { 
-		["Listeners"] = _Listeners,
+		["Listeners"] = args["Listeners"],
 	}
 	asserts.AssertCreateListenerOutput(t)
 	return t
@@ -2554,17 +2845,20 @@ end
 
 --- Create a structure of type DescribeRulesInput
 --  
--- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _RuleArns [RuleArns] <p>The Amazon Resource Names (ARN) of the rules.</p>
--- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
--- @param _ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
-function M.DescribeRulesInput(_Marker, _RuleArns, _PageSize, _ListenerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * RuleArns [RuleArns] <p>The Amazon Resource Names (ARN) of the rules.</p>
+-- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+-- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
+-- @return DescribeRulesInput structure as a key-value pair table
+function M.DescribeRulesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeRulesInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["RuleArns"] = _RuleArns,
-		["PageSize"] = _PageSize,
-		["ListenerArn"] = _ListenerArn,
+		["Marker"] = args["Marker"],
+		["RuleArns"] = args["RuleArns"],
+		["PageSize"] = args["PageSize"],
+		["ListenerArn"] = args["ListenerArn"],
 	}
 	asserts.AssertDescribeRulesInput(t)
 	return t
@@ -2582,8 +2876,11 @@ end
 
 --- Create a structure of type DeleteListenerOutput
 --  
-function M.DeleteListenerOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteListenerOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteListenerOutput structure as a key-value pair table
+function M.DeleteListenerOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteListenerOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteListenerOutput(t)
@@ -2603,11 +2900,14 @@ end
 
 --- Create a structure of type DescribeTagsOutput
 --  
--- @param _TagDescriptions [TagDescriptions] <p>Information about the tags.</p>
-function M.DescribeTagsOutput(_TagDescriptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagDescriptions [TagDescriptions] <p>Information about the tags.</p>
+-- @return DescribeTagsOutput structure as a key-value pair table
+function M.DescribeTagsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagsOutput")
 	local t = { 
-		["TagDescriptions"] = _TagDescriptions,
+		["TagDescriptions"] = args["TagDescriptions"],
 	}
 	asserts.AssertDescribeTagsOutput(t)
 	return t
@@ -2626,11 +2926,14 @@ end
 
 --- Create a structure of type ModifyListenerOutput
 --  
--- @param _Listeners [Listeners] <p>Information about the modified listeners.</p>
-function M.ModifyListenerOutput(_Listeners, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyListenerOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Listeners [Listeners] <p>Information about the modified listeners.</p>
+-- @return ModifyListenerOutput structure as a key-value pair table
+function M.ModifyListenerOutput(args)
+	assert(args, "You must provdide an argument table when creating ModifyListenerOutput")
 	local t = { 
-		["Listeners"] = _Listeners,
+		["Listeners"] = args["Listeners"],
 	}
 	asserts.AssertModifyListenerOutput(t)
 	return t
@@ -2650,13 +2953,16 @@ end
 
 --- Create a structure of type LoadBalancerState
 -- <p>Information about the state of the load balancer.</p>
--- @param _Reason [StateReason] <p>A description of the state.</p>
--- @param _Code [LoadBalancerStateEnum] <p>The state code. The initial state of the load balancer is <code>provisioning</code>. After the load balancer is fully set up and ready to route traffic, its state is <code>active</code>. If the load balancer could not be set up, its state is <code>failed</code>.</p>
-function M.LoadBalancerState(_Reason, _Code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerState")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Reason [StateReason] <p>A description of the state.</p>
+-- * Code [LoadBalancerStateEnum] <p>The state code. The initial state of the load balancer is <code>provisioning</code>. After the load balancer is fully set up and ready to route traffic, its state is <code>active</code>. If the load balancer could not be set up, its state is <code>failed</code>.</p>
+-- @return LoadBalancerState structure as a key-value pair table
+function M.LoadBalancerState(args)
+	assert(args, "You must provdide an argument table when creating LoadBalancerState")
 	local t = { 
-		["Reason"] = _Reason,
-		["Code"] = _Code,
+		["Reason"] = args["Reason"],
+		["Code"] = args["Code"],
 	}
 	asserts.AssertLoadBalancerState(t)
 	return t
@@ -2674,8 +2980,11 @@ end
 
 --- Create a structure of type InvalidTargetException
 -- <p>The specified target does not exist or is not in the same VPC as the target group.</p>
-function M.InvalidTargetException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTargetException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTargetException structure as a key-value pair table
+function M.InvalidTargetException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTargetException")
 	local t = { 
 	}
 	asserts.AssertInvalidTargetException(t)
@@ -2698,15 +3007,18 @@ end
 
 --- Create a structure of type SetSecurityGroupsInput
 --  
--- @param _SecurityGroups [SecurityGroups] <p>The IDs of the security groups.</p>
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- Required parameter: LoadBalancerArn
--- Required parameter: SecurityGroups
-function M.SetSecurityGroupsInput(_SecurityGroups, _LoadBalancerArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetSecurityGroupsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SecurityGroups [SecurityGroups] <p>The IDs of the security groups.</p>
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- Required key: LoadBalancerArn
+-- Required key: SecurityGroups
+-- @return SetSecurityGroupsInput structure as a key-value pair table
+function M.SetSecurityGroupsInput(args)
+	assert(args, "You must provdide an argument table when creating SetSecurityGroupsInput")
 	local t = { 
-		["SecurityGroups"] = _SecurityGroups,
-		["LoadBalancerArn"] = _LoadBalancerArn,
+		["SecurityGroups"] = args["SecurityGroups"],
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
 	asserts.AssertSetSecurityGroupsInput(t)
 	return t
@@ -2726,13 +3038,16 @@ end
 
 --- Create a structure of type LoadBalancerAttribute
 -- <p>Information about a load balancer attribute.</p>
--- @param _Value [LoadBalancerAttributeValue] <p>The value of the attribute.</p>
--- @param _Key [LoadBalancerAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.</p> </li> <li> <p> <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix, the access logs are stored in the root of the bucket.</p> </li> <li> <p> <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The default is 60 seconds.</p> </li> </ul>
-function M.LoadBalancerAttribute(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [LoadBalancerAttributeValue] <p>The value of the attribute.</p>
+-- * Key [LoadBalancerAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.</p> </li> <li> <p> <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix, the access logs are stored in the root of the bucket.</p> </li> <li> <p> <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The default is 60 seconds.</p> </li> </ul>
+-- @return LoadBalancerAttribute structure as a key-value pair table
+function M.LoadBalancerAttribute(args)
+	assert(args, "You must provdide an argument table when creating LoadBalancerAttribute")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertLoadBalancerAttribute(t)
 	return t
@@ -2752,13 +3067,16 @@ end
 
 --- Create a structure of type DescribeListenersOutput
 --  
--- @param _Listeners [Listeners] <p>Information about the listeners.</p>
--- @param _NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
-function M.DescribeListenersOutput(_Listeners, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeListenersOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Listeners [Listeners] <p>Information about the listeners.</p>
+-- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
+-- @return DescribeListenersOutput structure as a key-value pair table
+function M.DescribeListenersOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeListenersOutput")
 	local t = { 
-		["Listeners"] = _Listeners,
-		["NextMarker"] = _NextMarker,
+		["Listeners"] = args["Listeners"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertDescribeListenersOutput(t)
 	return t
@@ -2780,15 +3098,18 @@ end
 
 --- Create a structure of type RemoveTagsInput
 --  
--- @param _TagKeys [TagKeys] <p>The tag keys for the tags to remove.</p>
--- @param _ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
--- Required parameter: ResourceArns
--- Required parameter: TagKeys
-function M.RemoveTagsInput(_TagKeys, _ResourceArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagKeys [TagKeys] <p>The tag keys for the tags to remove.</p>
+-- * ResourceArns [ResourceArns] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- Required key: ResourceArns
+-- Required key: TagKeys
+-- @return RemoveTagsInput structure as a key-value pair table
+function M.RemoveTagsInput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsInput")
 	local t = { 
-		["TagKeys"] = _TagKeys,
-		["ResourceArns"] = _ResourceArns,
+		["TagKeys"] = args["TagKeys"],
+		["ResourceArns"] = args["ResourceArns"],
 	}
 	asserts.AssertRemoveTagsInput(t)
 	return t
@@ -2806,8 +3127,11 @@ end
 
 --- Create a structure of type TooManyRulesException
 -- <p>You've reached the limit on the number of rules per load balancer.</p>
-function M.TooManyRulesException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRulesException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TooManyRulesException structure as a key-value pair table
+function M.TooManyRulesException(args)
+	assert(args, "You must provdide an argument table when creating TooManyRulesException")
 	local t = { 
 	}
 	asserts.AssertTooManyRulesException(t)
@@ -2826,8 +3150,11 @@ end
 
 --- Create a structure of type LoadBalancerNotFoundException
 -- <p>The specified load balancer does not exist.</p>
-function M.LoadBalancerNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancerNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LoadBalancerNotFoundException structure as a key-value pair table
+function M.LoadBalancerNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating LoadBalancerNotFoundException")
 	local t = { 
 	}
 	asserts.AssertLoadBalancerNotFoundException(t)
@@ -2849,14 +3176,17 @@ end
 
 --- Create a structure of type TargetDescription
 -- <p>Information about a target.</p>
--- @param _Id [TargetId] <p>The ID of the target.</p>
--- @param _Port [Port] <p>The port on which the target is listening.</p>
--- Required parameter: Id
-function M.TargetDescription(_Id, _Port, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TargetDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [TargetId] <p>The ID of the target.</p>
+-- * Port [Port] <p>The port on which the target is listening.</p>
+-- Required key: Id
+-- @return TargetDescription structure as a key-value pair table
+function M.TargetDescription(args)
+	assert(args, "You must provdide an argument table when creating TargetDescription")
 	local t = { 
-		["Id"] = _Id,
-		["Port"] = _Port,
+		["Id"] = args["Id"],
+		["Port"] = args["Port"],
 	}
 	asserts.AssertTargetDescription(t)
 	return t
@@ -2875,11 +3205,14 @@ end
 
 --- Create a structure of type SetIpAddressTypeOutput
 --  
--- @param _IpAddressType [IpAddressType] <p>The IP address type.</p>
-function M.SetIpAddressTypeOutput(_IpAddressType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIpAddressTypeOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IpAddressType [IpAddressType] <p>The IP address type.</p>
+-- @return SetIpAddressTypeOutput structure as a key-value pair table
+function M.SetIpAddressTypeOutput(args)
+	assert(args, "You must provdide an argument table when creating SetIpAddressTypeOutput")
 	local t = { 
-		["IpAddressType"] = _IpAddressType,
+		["IpAddressType"] = args["IpAddressType"],
 	}
 	asserts.AssertSetIpAddressTypeOutput(t)
 	return t
@@ -2900,15 +3233,18 @@ end
 
 --- Create a structure of type DescribeSSLPoliciesInput
 --  
--- @param _Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
--- @param _Names [SslPolicyNames] <p>The names of the policies.</p>
--- @param _PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
-function M.DescribeSSLPoliciesInput(_Marker, _Names, _PageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSSLPoliciesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The marker for the next set of results. (You received this marker from a previous call.)</p>
+-- * Names [SslPolicyNames] <p>The names of the policies.</p>
+-- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
+-- @return DescribeSSLPoliciesInput structure as a key-value pair table
+function M.DescribeSSLPoliciesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeSSLPoliciesInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["Names"] = _Names,
-		["PageSize"] = _PageSize,
+		["Marker"] = args["Marker"],
+		["Names"] = args["Names"],
+		["PageSize"] = args["PageSize"],
 	}
 	asserts.AssertDescribeSSLPoliciesInput(t)
 	return t
@@ -2927,11 +3263,14 @@ end
 
 --- Create a structure of type CreateRuleOutput
 --  
--- @param _Rules [Rules] <p>Information about the rule.</p>
-function M.CreateRuleOutput(_Rules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRuleOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [Rules] <p>Information about the rule.</p>
+-- @return CreateRuleOutput structure as a key-value pair table
+function M.CreateRuleOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateRuleOutput")
 	local t = { 
-		["Rules"] = _Rules,
+		["Rules"] = args["Rules"],
 	}
 	asserts.AssertCreateRuleOutput(t)
 	return t
@@ -2961,33 +3300,36 @@ end
 
 --- Create a structure of type LoadBalancer
 -- <p>Information about a load balancer.</p>
--- @param _IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses).</p>
--- @param _VpcId [VpcId] <p>The ID of the VPC for the load balancer.</p>
--- @param _LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
--- @param _State [LoadBalancerState] <p>The state of the load balancer.</p>
--- @param _DNSName [DNSName] <p>The public DNS name of the load balancer.</p>
--- @param _SecurityGroups [SecurityGroups] <p>The IDs of the security groups for the load balancer.</p>
--- @param _LoadBalancerName [LoadBalancerName] <p>The name of the load balancer.</p>
--- @param _CreatedTime [CreatedTime] <p>The date and time the load balancer was created.</p>
--- @param _Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p>
--- @param _Type [LoadBalancerTypeEnum] <p>The type of load balancer.</p>
--- @param _CanonicalHostedZoneId [CanonicalHostedZoneId] <p>The ID of the Amazon Route 53 hosted zone associated with the load balancer.</p>
--- @param _AvailabilityZones [AvailabilityZones] <p>The Availability Zones for the load balancer.</p>
-function M.LoadBalancer(_IpAddressType, _VpcId, _LoadBalancerArn, _State, _DNSName, _SecurityGroups, _LoadBalancerName, _CreatedTime, _Scheme, _Type, _CanonicalHostedZoneId, _AvailabilityZones, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoadBalancer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IpAddressType [IpAddressType] <p>The type of IP addresses used by the subnets for your load balancer. The possible values are <code>ipv4</code> (for IPv4 addresses) and <code>dualstack</code> (for IPv4 and IPv6 addresses).</p>
+-- * VpcId [VpcId] <p>The ID of the VPC for the load balancer.</p>
+-- * LoadBalancerArn [LoadBalancerArn] <p>The Amazon Resource Name (ARN) of the load balancer.</p>
+-- * State [LoadBalancerState] <p>The state of the load balancer.</p>
+-- * DNSName [DNSName] <p>The public DNS name of the load balancer.</p>
+-- * SecurityGroups [SecurityGroups] <p>The IDs of the security groups for the load balancer.</p>
+-- * LoadBalancerName [LoadBalancerName] <p>The name of the load balancer.</p>
+-- * CreatedTime [CreatedTime] <p>The date and time the load balancer was created.</p>
+-- * Scheme [LoadBalancerSchemeEnum] <p>The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the Internet.</p> <p>The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only route requests from clients with access to the VPC for the load balancer.</p>
+-- * Type [LoadBalancerTypeEnum] <p>The type of load balancer.</p>
+-- * CanonicalHostedZoneId [CanonicalHostedZoneId] <p>The ID of the Amazon Route 53 hosted zone associated with the load balancer.</p>
+-- * AvailabilityZones [AvailabilityZones] <p>The Availability Zones for the load balancer.</p>
+-- @return LoadBalancer structure as a key-value pair table
+function M.LoadBalancer(args)
+	assert(args, "You must provdide an argument table when creating LoadBalancer")
 	local t = { 
-		["IpAddressType"] = _IpAddressType,
-		["VpcId"] = _VpcId,
-		["LoadBalancerArn"] = _LoadBalancerArn,
-		["State"] = _State,
-		["DNSName"] = _DNSName,
-		["SecurityGroups"] = _SecurityGroups,
-		["LoadBalancerName"] = _LoadBalancerName,
-		["CreatedTime"] = _CreatedTime,
-		["Scheme"] = _Scheme,
-		["Type"] = _Type,
-		["CanonicalHostedZoneId"] = _CanonicalHostedZoneId,
-		["AvailabilityZones"] = _AvailabilityZones,
+		["IpAddressType"] = args["IpAddressType"],
+		["VpcId"] = args["VpcId"],
+		["LoadBalancerArn"] = args["LoadBalancerArn"],
+		["State"] = args["State"],
+		["DNSName"] = args["DNSName"],
+		["SecurityGroups"] = args["SecurityGroups"],
+		["LoadBalancerName"] = args["LoadBalancerName"],
+		["CreatedTime"] = args["CreatedTime"],
+		["Scheme"] = args["Scheme"],
+		["Type"] = args["Type"],
+		["CanonicalHostedZoneId"] = args["CanonicalHostedZoneId"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
 	}
 	asserts.AssertLoadBalancer(t)
 	return t

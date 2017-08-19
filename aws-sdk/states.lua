@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type ExecutionDoesNotExist
 -- <p>The specified execution does not exist.</p>
--- @param _message [ErrorMessage] 
-function M.ExecutionDoesNotExist(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionDoesNotExist")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ExecutionDoesNotExist structure as a key-value pair table
+function M.ExecutionDoesNotExist(args)
+	assert(args, "You must provdide an argument table when creating ExecutionDoesNotExist")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertExecutionDoesNotExist(t)
 	return t
@@ -60,16 +63,19 @@ end
 
 --- Create a structure of type StartExecutionInput
 --  
--- @param _input [Data] <p>The JSON input data for the execution.</p>
--- @param _stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine to execute.</p>
--- @param _name [Name] <p>The name of the execution. This name must be unique for your AWS account and region.</p>
--- Required parameter: stateMachineArn
-function M.StartExecutionInput(_input, _stateMachineArn, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * input [Data] <p>The JSON input data for the execution.</p>
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine to execute.</p>
+-- * name [Name] <p>The name of the execution. This name must be unique for your AWS account and region.</p>
+-- Required key: stateMachineArn
+-- @return StartExecutionInput structure as a key-value pair table
+function M.StartExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating StartExecutionInput")
 	local t = { 
-		["input"] = _input,
-		["stateMachineArn"] = _stateMachineArn,
-		["name"] = _name,
+		["input"] = args["input"],
+		["stateMachineArn"] = args["stateMachineArn"],
+		["name"] = args["name"],
 	}
 	asserts.AssertStartExecutionInput(t)
 	return t
@@ -90,14 +96,17 @@ end
 
 --- Create a structure of type StateExitedEventDetails
 --  
--- @param _output [Data] <p>The JSON output data of the state.</p>
--- @param _name [Name] <p>The name of the state.</p>
--- Required parameter: name
-function M.StateExitedEventDetails(_output, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StateExitedEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * output [Data] <p>The JSON output data of the state.</p>
+-- * name [Name] <p>The name of the state.</p>
+-- Required key: name
+-- @return StateExitedEventDetails structure as a key-value pair table
+function M.StateExitedEventDetails(args)
+	assert(args, "You must provdide an argument table when creating StateExitedEventDetails")
 	local t = { 
-		["output"] = _output,
-		["name"] = _name,
+		["output"] = args["output"],
+		["name"] = args["name"],
 	}
 	asserts.AssertStateExitedEventDetails(t)
 	return t
@@ -121,18 +130,21 @@ end
 
 --- Create a structure of type ActivityListItem
 --  
--- @param _creationDate [Timestamp] <p>The date the activity was created.</p>
--- @param _name [Name] <p>The name of the activity.</p>
--- @param _activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the activity.</p>
--- Required parameter: activityArn
--- Required parameter: name
--- Required parameter: creationDate
-function M.ActivityListItem(_creationDate, _name, _activityArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityListItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * creationDate [Timestamp] <p>The date the activity was created.</p>
+-- * name [Name] <p>The name of the activity.</p>
+-- * activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the activity.</p>
+-- Required key: activityArn
+-- Required key: name
+-- Required key: creationDate
+-- @return ActivityListItem structure as a key-value pair table
+function M.ActivityListItem(args)
+	assert(args, "You must provdide an argument table when creating ActivityListItem")
 	local t = { 
-		["creationDate"] = _creationDate,
-		["name"] = _name,
-		["activityArn"] = _activityArn,
+		["creationDate"] = args["creationDate"],
+		["name"] = args["name"],
+		["activityArn"] = args["activityArn"],
 	}
 	asserts.AssertActivityListItem(t)
 	return t
@@ -151,11 +163,14 @@ end
 
 --- Create a structure of type ActivityStartedEventDetails
 --  
--- @param _workerName [Identity] <p>The name of the worker that the task was assigned to. These names are provided by the workers when calling <a>GetActivityTask</a>.</p>
-function M.ActivityStartedEventDetails(_workerName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityStartedEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * workerName [Identity] <p>The name of the worker that the task was assigned to. These names are provided by the workers when calling <a>GetActivityTask</a>.</p>
+-- @return ActivityStartedEventDetails structure as a key-value pair table
+function M.ActivityStartedEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ActivityStartedEventDetails")
 	local t = { 
-		["workerName"] = _workerName,
+		["workerName"] = args["workerName"],
 	}
 	asserts.AssertActivityStartedEventDetails(t)
 	return t
@@ -178,18 +193,21 @@ end
 
 --- Create a structure of type ListExecutionsInput
 --  
--- @param _statusFilter [ExecutionStatus] <p>If specified, only list the executions whose current execution status matches the given filter.</p>
--- @param _nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- @param _stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine whose executions will be listed.</p>
--- @param _maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
--- Required parameter: stateMachineArn
-function M.ListExecutionsInput(_statusFilter, _nextToken, _stateMachineArn, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListExecutionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * statusFilter [ExecutionStatus] <p>If specified, only list the executions whose current execution status matches the given filter.</p>
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine whose executions will be listed.</p>
+-- * maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- Required key: stateMachineArn
+-- @return ListExecutionsInput structure as a key-value pair table
+function M.ListExecutionsInput(args)
+	assert(args, "You must provdide an argument table when creating ListExecutionsInput")
 	local t = { 
-		["statusFilter"] = _statusFilter,
-		["nextToken"] = _nextToken,
-		["stateMachineArn"] = _stateMachineArn,
-		["maxResults"] = _maxResults,
+		["statusFilter"] = args["statusFilter"],
+		["nextToken"] = args["nextToken"],
+		["stateMachineArn"] = args["stateMachineArn"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListExecutionsInput(t)
 	return t
@@ -208,11 +226,14 @@ end
 
 --- Create a structure of type StateMachineLimitExceeded
 -- <p>The maximum number of state machines has been reached. Existing state machines must be deleted before a new state machine can be created.</p>
--- @param _message [ErrorMessage] 
-function M.StateMachineLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StateMachineLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return StateMachineLimitExceeded structure as a key-value pair table
+function M.StateMachineLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating StateMachineLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertStateMachineLimitExceeded(t)
 	return t
@@ -232,12 +253,15 @@ end
 
 --- Create a structure of type DescribeStateMachineInput
 --  
--- @param _stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine to describe.</p>
--- Required parameter: stateMachineArn
-function M.DescribeStateMachineInput(_stateMachineArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStateMachineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine to describe.</p>
+-- Required key: stateMachineArn
+-- @return DescribeStateMachineInput structure as a key-value pair table
+function M.DescribeStateMachineInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeStateMachineInput")
 	local t = { 
-		["stateMachineArn"] = _stateMachineArn,
+		["stateMachineArn"] = args["stateMachineArn"],
 	}
 	asserts.AssertDescribeStateMachineInput(t)
 	return t
@@ -261,18 +285,21 @@ end
 
 --- Create a structure of type CreateStateMachineInput
 --  
--- @param _definition [Definition] <p>The Amazon States Language definition of the state machine.</p>
--- @param _roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role to use for this state machine.</p>
--- @param _name [Name] <p>The name of the state machine. This name must be unique for your AWS account and region.</p>
--- Required parameter: name
--- Required parameter: definition
--- Required parameter: roleArn
-function M.CreateStateMachineInput(_definition, _roleArn, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStateMachineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * definition [Definition] <p>The Amazon States Language definition of the state machine.</p>
+-- * roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role to use for this state machine.</p>
+-- * name [Name] <p>The name of the state machine. This name must be unique for your AWS account and region.</p>
+-- Required key: name
+-- Required key: definition
+-- Required key: roleArn
+-- @return CreateStateMachineInput structure as a key-value pair table
+function M.CreateStateMachineInput(args)
+	assert(args, "You must provdide an argument table when creating CreateStateMachineInput")
 	local t = { 
-		["definition"] = _definition,
-		["roleArn"] = _roleArn,
-		["name"] = _name,
+		["definition"] = args["definition"],
+		["roleArn"] = args["roleArn"],
+		["name"] = args["name"],
 	}
 	asserts.AssertCreateStateMachineInput(t)
 	return t
@@ -294,15 +321,18 @@ end
 
 --- Create a structure of type CreateStateMachineOutput
 --  
--- @param _creationDate [Timestamp] <p>The date the state machine was created.</p>
--- @param _stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the created state machine.</p>
--- Required parameter: stateMachineArn
--- Required parameter: creationDate
-function M.CreateStateMachineOutput(_creationDate, _stateMachineArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStateMachineOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * creationDate [Timestamp] <p>The date the state machine was created.</p>
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the created state machine.</p>
+-- Required key: stateMachineArn
+-- Required key: creationDate
+-- @return CreateStateMachineOutput structure as a key-value pair table
+function M.CreateStateMachineOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateStateMachineOutput")
 	local t = { 
-		["creationDate"] = _creationDate,
-		["stateMachineArn"] = _stateMachineArn,
+		["creationDate"] = args["creationDate"],
+		["stateMachineArn"] = args["stateMachineArn"],
 	}
 	asserts.AssertCreateStateMachineOutput(t)
 	return t
@@ -322,12 +352,15 @@ end
 
 --- Create a structure of type DescribeActivityInput
 --  
--- @param _activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to describe.</p>
--- Required parameter: activityArn
-function M.DescribeActivityInput(_activityArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to describe.</p>
+-- Required key: activityArn
+-- @return DescribeActivityInput structure as a key-value pair table
+function M.DescribeActivityInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeActivityInput")
 	local t = { 
-		["activityArn"] = _activityArn,
+		["activityArn"] = args["activityArn"],
 	}
 	asserts.AssertDescribeActivityInput(t)
 	return t
@@ -346,11 +379,14 @@ end
 
 --- Create a structure of type ActivityLimitExceeded
 -- <p>The maximum number of activities has been reached. Existing activities must be deleted before a new activity can be created.</p>
--- @param _message [ErrorMessage] 
-function M.ActivityLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ActivityLimitExceeded structure as a key-value pair table
+function M.ActivityLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating ActivityLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertActivityLimitExceeded(t)
 	return t
@@ -373,18 +409,21 @@ end
 
 --- Create a structure of type GetExecutionHistoryInput
 --  
--- @param _nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- @param _reverseOrder [ReverseOrder] <p>Lists events in descending order of their <code>timeStamp</code>.</p>
--- @param _maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
--- @param _executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution.</p>
--- Required parameter: executionArn
-function M.GetExecutionHistoryInput(_nextToken, _reverseOrder, _maxResults, _executionArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetExecutionHistoryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * reverseOrder [ReverseOrder] <p>Lists events in descending order of their <code>timeStamp</code>.</p>
+-- * maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- * executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution.</p>
+-- Required key: executionArn
+-- @return GetExecutionHistoryInput structure as a key-value pair table
+function M.GetExecutionHistoryInput(args)
+	assert(args, "You must provdide an argument table when creating GetExecutionHistoryInput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["reverseOrder"] = _reverseOrder,
-		["maxResults"] = _maxResults,
-		["executionArn"] = _executionArn,
+		["nextToken"] = args["nextToken"],
+		["reverseOrder"] = args["reverseOrder"],
+		["maxResults"] = args["maxResults"],
+		["executionArn"] = args["executionArn"],
 	}
 	asserts.AssertGetExecutionHistoryInput(t)
 	return t
@@ -406,16 +445,19 @@ end
 
 --- Create a structure of type StopExecutionInput
 --  
--- @param _error [Error] <p>An arbitrary error code that identifies the cause of the termination.</p>
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the termination.</p>
--- @param _executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
--- Required parameter: executionArn
-function M.StopExecutionInput(_error, _cause, _executionArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * error [Error] <p>An arbitrary error code that identifies the cause of the termination.</p>
+-- * cause [Cause] <p>A more detailed explanation of the cause of the termination.</p>
+-- * executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution to stop.</p>
+-- Required key: executionArn
+-- @return StopExecutionInput structure as a key-value pair table
+function M.StopExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating StopExecutionInput")
 	local t = { 
-		["error"] = _error,
-		["cause"] = _cause,
-		["executionArn"] = _executionArn,
+		["error"] = args["error"],
+		["cause"] = args["cause"],
+		["executionArn"] = args["executionArn"],
 	}
 	asserts.AssertStopExecutionInput(t)
 	return t
@@ -436,14 +478,17 @@ end
 
 --- Create a structure of type StateEnteredEventDetails
 --  
--- @param _input [Data] <p>The JSON input data to the state.</p>
--- @param _name [Name] <p>The name of the state.</p>
--- Required parameter: name
-function M.StateEnteredEventDetails(_input, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StateEnteredEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * input [Data] <p>The JSON input data to the state.</p>
+-- * name [Name] <p>The name of the state.</p>
+-- Required key: name
+-- @return StateEnteredEventDetails structure as a key-value pair table
+function M.StateEnteredEventDetails(args)
+	assert(args, "You must provdide an argument table when creating StateEnteredEventDetails")
 	local t = { 
-		["input"] = _input,
-		["name"] = _name,
+		["input"] = args["input"],
+		["name"] = args["name"],
 	}
 	asserts.AssertStateEnteredEventDetails(t)
 	return t
@@ -464,14 +509,17 @@ end
 
 --- Create a structure of type GetActivityTaskInput
 --  
--- @param _workerName [Name] <p>An arbitrary name may be provided in order to identify the worker that the task is assigned to. This name will be used when it is logged in the execution history.</p>
--- @param _activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to retrieve tasks from.</p>
--- Required parameter: activityArn
-function M.GetActivityTaskInput(_workerName, _activityArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetActivityTaskInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * workerName [Name] <p>An arbitrary name may be provided in order to identify the worker that the task is assigned to. This name will be used when it is logged in the execution history.</p>
+-- * activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to retrieve tasks from.</p>
+-- Required key: activityArn
+-- @return GetActivityTaskInput structure as a key-value pair table
+function M.GetActivityTaskInput(args)
+	assert(args, "You must provdide an argument table when creating GetActivityTaskInput")
 	local t = { 
-		["workerName"] = _workerName,
-		["activityArn"] = _activityArn,
+		["workerName"] = args["workerName"],
+		["activityArn"] = args["activityArn"],
 	}
 	asserts.AssertGetActivityTaskInput(t)
 	return t
@@ -492,14 +540,17 @@ end
 
 --- Create a structure of type ListExecutionsOutput
 --  
--- @param _nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- @param _executions [ExecutionList] <p>The list of matching executions.</p>
--- Required parameter: executions
-function M.ListExecutionsOutput(_nextToken, _executions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListExecutionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * executions [ExecutionList] <p>The list of matching executions.</p>
+-- Required key: executions
+-- @return ListExecutionsOutput structure as a key-value pair table
+function M.ListExecutionsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListExecutionsOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["executions"] = _executions,
+		["nextToken"] = args["nextToken"],
+		["executions"] = args["executions"],
 	}
 	asserts.AssertListExecutionsOutput(t)
 	return t
@@ -519,13 +570,16 @@ end
 
 --- Create a structure of type ActivityFailedEventDetails
 --  
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
--- @param _error [Error] <p>The error code of the failure.</p>
-function M.ActivityFailedEventDetails(_cause, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityFailedEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- * error [Error] <p>The error code of the failure.</p>
+-- @return ActivityFailedEventDetails structure as a key-value pair table
+function M.ActivityFailedEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ActivityFailedEventDetails")
 	local t = { 
-		["cause"] = _cause,
-		["error"] = _error,
+		["cause"] = args["cause"],
+		["error"] = args["error"],
 	}
 	asserts.AssertActivityFailedEventDetails(t)
 	return t
@@ -545,13 +599,16 @@ end
 
 --- Create a structure of type ListActivitiesInput
 --  
--- @param _nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- @param _maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
-function M.ListActivitiesInput(_nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListActivitiesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- @return ListActivitiesInput structure as a key-value pair table
+function M.ListActivitiesInput(args)
+	assert(args, "You must provdide an argument table when creating ListActivitiesInput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListActivitiesInput(t)
 	return t
@@ -570,11 +627,14 @@ end
 
 --- Create a structure of type InvalidToken
 -- <p>The provided token is invalid.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidToken(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidToken")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidToken structure as a key-value pair table
+function M.InvalidToken(args)
+	assert(args, "You must provdide an argument table when creating InvalidToken")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidToken(t)
 	return t
@@ -594,12 +654,15 @@ end
 
 --- Create a structure of type SendTaskHeartbeatInput
 --  
--- @param _taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
--- Required parameter: taskToken
-function M.SendTaskHeartbeatInput(_taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendTaskHeartbeatInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
+-- Required key: taskToken
+-- @return SendTaskHeartbeatInput structure as a key-value pair table
+function M.SendTaskHeartbeatInput(args)
+	assert(args, "You must provdide an argument table when creating SendTaskHeartbeatInput")
 	local t = { 
-		["taskToken"] = _taskToken,
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertSendTaskHeartbeatInput(t)
 	return t
@@ -619,13 +682,16 @@ end
 
 --- Create a structure of type ListStateMachinesInput
 --  
--- @param _nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- @param _maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
-function M.ListStateMachinesInput(_nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListStateMachinesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- @return ListStateMachinesInput structure as a key-value pair table
+function M.ListStateMachinesInput(args)
+	assert(args, "You must provdide an argument table when creating ListStateMachinesInput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListStateMachinesInput(t)
 	return t
@@ -643,8 +709,11 @@ end
 
 --- Create a structure of type DeleteStateMachineOutput
 --  
-function M.DeleteStateMachineOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStateMachineOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteStateMachineOutput structure as a key-value pair table
+function M.DeleteStateMachineOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteStateMachineOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteStateMachineOutput(t)
@@ -665,12 +734,15 @@ end
 
 --- Create a structure of type DescribeExecutionInput
 --  
--- @param _executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution to describe.</p>
--- Required parameter: executionArn
-function M.DescribeExecutionInput(_executionArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * executionArn [Arn] <p>The Amazon Resource Name (ARN) of the execution to describe.</p>
+-- Required key: executionArn
+-- @return DescribeExecutionInput structure as a key-value pair table
+function M.DescribeExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeExecutionInput")
 	local t = { 
-		["executionArn"] = _executionArn,
+		["executionArn"] = args["executionArn"],
 	}
 	asserts.AssertDescribeExecutionInput(t)
 	return t
@@ -714,58 +786,61 @@ end
 
 --- Create a structure of type HistoryEvent
 --  
--- @param _lambdaFunctionSucceededEventDetails [LambdaFunctionSucceededEventDetails] 
--- @param _lambdaFunctionTimedOutEventDetails [LambdaFunctionTimedOutEventDetails] 
--- @param _activityScheduleFailedEventDetails [ActivityScheduleFailedEventDetails] 
--- @param _lambdaFunctionStartFailedEventDetails [LambdaFunctionStartFailedEventDetails] 
--- @param _id [EventId] <p>The id of the event. Events are numbered sequentially, starting at one.</p>
--- @param _activityScheduledEventDetails [ActivityScheduledEventDetails] 
--- @param _executionSucceededEventDetails [ExecutionSucceededEventDetails] 
--- @param _activitySucceededEventDetails [ActivitySucceededEventDetails] 
--- @param _type [HistoryEventType] <p>The type of the event.</p>
--- @param _executionTimedOutEventDetails [ExecutionTimedOutEventDetails] 
--- @param _timestamp [Timestamp] <p>The date the event occured.</p>
--- @param _activityTimedOutEventDetails [ActivityTimedOutEventDetails] 
--- @param _executionFailedEventDetails [ExecutionFailedEventDetails] 
--- @param _lambdaFunctionFailedEventDetails [LambdaFunctionFailedEventDetails] 
--- @param _executionAbortedEventDetails [ExecutionAbortedEventDetails] 
--- @param _stateEnteredEventDetails [StateEnteredEventDetails] 
--- @param _previousEventId [EventId] <p>The id of the previous event.</p>
--- @param _activityStartedEventDetails [ActivityStartedEventDetails] 
--- @param _lambdaFunctionScheduleFailedEventDetails [LambdaFunctionScheduleFailedEventDetails] 
--- @param _activityFailedEventDetails [ActivityFailedEventDetails] 
--- @param _stateExitedEventDetails [StateExitedEventDetails] 
--- @param _executionStartedEventDetails [ExecutionStartedEventDetails] 
--- @param _lambdaFunctionScheduledEventDetails [LambdaFunctionScheduledEventDetails] 
--- Required parameter: timestamp
--- Required parameter: type
--- Required parameter: id
-function M.HistoryEvent(_lambdaFunctionSucceededEventDetails, _lambdaFunctionTimedOutEventDetails, _activityScheduleFailedEventDetails, _lambdaFunctionStartFailedEventDetails, _id, _activityScheduledEventDetails, _executionSucceededEventDetails, _activitySucceededEventDetails, _type, _executionTimedOutEventDetails, _timestamp, _activityTimedOutEventDetails, _executionFailedEventDetails, _lambdaFunctionFailedEventDetails, _executionAbortedEventDetails, _stateEnteredEventDetails, _previousEventId, _activityStartedEventDetails, _lambdaFunctionScheduleFailedEventDetails, _activityFailedEventDetails, _stateExitedEventDetails, _executionStartedEventDetails, _lambdaFunctionScheduledEventDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HistoryEvent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lambdaFunctionSucceededEventDetails [LambdaFunctionSucceededEventDetails] 
+-- * lambdaFunctionTimedOutEventDetails [LambdaFunctionTimedOutEventDetails] 
+-- * activityScheduleFailedEventDetails [ActivityScheduleFailedEventDetails] 
+-- * lambdaFunctionStartFailedEventDetails [LambdaFunctionStartFailedEventDetails] 
+-- * id [EventId] <p>The id of the event. Events are numbered sequentially, starting at one.</p>
+-- * activityScheduledEventDetails [ActivityScheduledEventDetails] 
+-- * executionSucceededEventDetails [ExecutionSucceededEventDetails] 
+-- * activitySucceededEventDetails [ActivitySucceededEventDetails] 
+-- * type [HistoryEventType] <p>The type of the event.</p>
+-- * executionTimedOutEventDetails [ExecutionTimedOutEventDetails] 
+-- * timestamp [Timestamp] <p>The date the event occured.</p>
+-- * activityTimedOutEventDetails [ActivityTimedOutEventDetails] 
+-- * executionFailedEventDetails [ExecutionFailedEventDetails] 
+-- * lambdaFunctionFailedEventDetails [LambdaFunctionFailedEventDetails] 
+-- * executionAbortedEventDetails [ExecutionAbortedEventDetails] 
+-- * stateEnteredEventDetails [StateEnteredEventDetails] 
+-- * previousEventId [EventId] <p>The id of the previous event.</p>
+-- * activityStartedEventDetails [ActivityStartedEventDetails] 
+-- * lambdaFunctionScheduleFailedEventDetails [LambdaFunctionScheduleFailedEventDetails] 
+-- * activityFailedEventDetails [ActivityFailedEventDetails] 
+-- * stateExitedEventDetails [StateExitedEventDetails] 
+-- * executionStartedEventDetails [ExecutionStartedEventDetails] 
+-- * lambdaFunctionScheduledEventDetails [LambdaFunctionScheduledEventDetails] 
+-- Required key: timestamp
+-- Required key: type
+-- Required key: id
+-- @return HistoryEvent structure as a key-value pair table
+function M.HistoryEvent(args)
+	assert(args, "You must provdide an argument table when creating HistoryEvent")
 	local t = { 
-		["lambdaFunctionSucceededEventDetails"] = _lambdaFunctionSucceededEventDetails,
-		["lambdaFunctionTimedOutEventDetails"] = _lambdaFunctionTimedOutEventDetails,
-		["activityScheduleFailedEventDetails"] = _activityScheduleFailedEventDetails,
-		["lambdaFunctionStartFailedEventDetails"] = _lambdaFunctionStartFailedEventDetails,
-		["id"] = _id,
-		["activityScheduledEventDetails"] = _activityScheduledEventDetails,
-		["executionSucceededEventDetails"] = _executionSucceededEventDetails,
-		["activitySucceededEventDetails"] = _activitySucceededEventDetails,
-		["type"] = _type,
-		["executionTimedOutEventDetails"] = _executionTimedOutEventDetails,
-		["timestamp"] = _timestamp,
-		["activityTimedOutEventDetails"] = _activityTimedOutEventDetails,
-		["executionFailedEventDetails"] = _executionFailedEventDetails,
-		["lambdaFunctionFailedEventDetails"] = _lambdaFunctionFailedEventDetails,
-		["executionAbortedEventDetails"] = _executionAbortedEventDetails,
-		["stateEnteredEventDetails"] = _stateEnteredEventDetails,
-		["previousEventId"] = _previousEventId,
-		["activityStartedEventDetails"] = _activityStartedEventDetails,
-		["lambdaFunctionScheduleFailedEventDetails"] = _lambdaFunctionScheduleFailedEventDetails,
-		["activityFailedEventDetails"] = _activityFailedEventDetails,
-		["stateExitedEventDetails"] = _stateExitedEventDetails,
-		["executionStartedEventDetails"] = _executionStartedEventDetails,
-		["lambdaFunctionScheduledEventDetails"] = _lambdaFunctionScheduledEventDetails,
+		["lambdaFunctionSucceededEventDetails"] = args["lambdaFunctionSucceededEventDetails"],
+		["lambdaFunctionTimedOutEventDetails"] = args["lambdaFunctionTimedOutEventDetails"],
+		["activityScheduleFailedEventDetails"] = args["activityScheduleFailedEventDetails"],
+		["lambdaFunctionStartFailedEventDetails"] = args["lambdaFunctionStartFailedEventDetails"],
+		["id"] = args["id"],
+		["activityScheduledEventDetails"] = args["activityScheduledEventDetails"],
+		["executionSucceededEventDetails"] = args["executionSucceededEventDetails"],
+		["activitySucceededEventDetails"] = args["activitySucceededEventDetails"],
+		["type"] = args["type"],
+		["executionTimedOutEventDetails"] = args["executionTimedOutEventDetails"],
+		["timestamp"] = args["timestamp"],
+		["activityTimedOutEventDetails"] = args["activityTimedOutEventDetails"],
+		["executionFailedEventDetails"] = args["executionFailedEventDetails"],
+		["lambdaFunctionFailedEventDetails"] = args["lambdaFunctionFailedEventDetails"],
+		["executionAbortedEventDetails"] = args["executionAbortedEventDetails"],
+		["stateEnteredEventDetails"] = args["stateEnteredEventDetails"],
+		["previousEventId"] = args["previousEventId"],
+		["activityStartedEventDetails"] = args["activityStartedEventDetails"],
+		["lambdaFunctionScheduleFailedEventDetails"] = args["lambdaFunctionScheduleFailedEventDetails"],
+		["activityFailedEventDetails"] = args["activityFailedEventDetails"],
+		["stateExitedEventDetails"] = args["stateExitedEventDetails"],
+		["executionStartedEventDetails"] = args["executionStartedEventDetails"],
+		["lambdaFunctionScheduledEventDetails"] = args["lambdaFunctionScheduledEventDetails"],
 	}
 	asserts.AssertHistoryEvent(t)
 	return t
@@ -784,11 +859,14 @@ end
 
 --- Create a structure of type TaskTimedOut
 --  
--- @param _message [ErrorMessage] 
-function M.TaskTimedOut(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TaskTimedOut")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return TaskTimedOut structure as a key-value pair table
+function M.TaskTimedOut(args)
+	assert(args, "You must provdide an argument table when creating TaskTimedOut")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTaskTimedOut(t)
 	return t
@@ -812,18 +890,21 @@ end
 
 --- Create a structure of type DescribeActivityOutput
 --  
--- @param _creationDate [Timestamp] <p>The date the activity was created.</p>
--- @param _name [Name] <p>The name of the activity.</p>
--- @param _activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the activity.</p>
--- Required parameter: activityArn
--- Required parameter: name
--- Required parameter: creationDate
-function M.DescribeActivityOutput(_creationDate, _name, _activityArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivityOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * creationDate [Timestamp] <p>The date the activity was created.</p>
+-- * name [Name] <p>The name of the activity.</p>
+-- * activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the activity.</p>
+-- Required key: activityArn
+-- Required key: name
+-- Required key: creationDate
+-- @return DescribeActivityOutput structure as a key-value pair table
+function M.DescribeActivityOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeActivityOutput")
 	local t = { 
-		["creationDate"] = _creationDate,
-		["name"] = _name,
-		["activityArn"] = _activityArn,
+		["creationDate"] = args["creationDate"],
+		["name"] = args["name"],
+		["activityArn"] = args["activityArn"],
 	}
 	asserts.AssertDescribeActivityOutput(t)
 	return t
@@ -844,14 +925,17 @@ end
 
 --- Create a structure of type ListActivitiesOutput
 --  
--- @param _activities [ActivityList] <p>The list of activities.</p>
--- @param _nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- Required parameter: activities
-function M.ListActivitiesOutput(_activities, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListActivitiesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * activities [ActivityList] <p>The list of activities.</p>
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- Required key: activities
+-- @return ListActivitiesOutput structure as a key-value pair table
+function M.ListActivitiesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListActivitiesOutput")
 	local t = { 
-		["activities"] = _activities,
-		["nextToken"] = _nextToken,
+		["activities"] = args["activities"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListActivitiesOutput(t)
 	return t
@@ -871,12 +955,15 @@ end
 
 --- Create a structure of type CreateActivityInput
 --  
--- @param _name [Name] <p>The name of the activity to create. This name must be unique for your AWS account and region.</p>
--- Required parameter: name
-function M.CreateActivityInput(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateActivityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [Name] <p>The name of the activity to create. This name must be unique for your AWS account and region.</p>
+-- Required key: name
+-- @return CreateActivityInput structure as a key-value pair table
+function M.CreateActivityInput(args)
+	assert(args, "You must provdide an argument table when creating CreateActivityInput")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertCreateActivityInput(t)
 	return t
@@ -895,11 +982,14 @@ end
 
 --- Create a structure of type StateMachineDeleting
 -- <p>The specified state machine is being deleted.</p>
--- @param _message [ErrorMessage] 
-function M.StateMachineDeleting(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StateMachineDeleting")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return StateMachineDeleting structure as a key-value pair table
+function M.StateMachineDeleting(args)
+	assert(args, "You must provdide an argument table when creating StateMachineDeleting")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertStateMachineDeleting(t)
 	return t
@@ -921,15 +1011,18 @@ end
 
 --- Create a structure of type CreateActivityOutput
 --  
--- @param _creationDate [Timestamp] <p>The date the activity was created.</p>
--- @param _activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the created activity.</p>
--- Required parameter: activityArn
--- Required parameter: creationDate
-function M.CreateActivityOutput(_creationDate, _activityArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateActivityOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * creationDate [Timestamp] <p>The date the activity was created.</p>
+-- * activityArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the created activity.</p>
+-- Required key: activityArn
+-- Required key: creationDate
+-- @return CreateActivityOutput structure as a key-value pair table
+function M.CreateActivityOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateActivityOutput")
 	local t = { 
-		["creationDate"] = _creationDate,
-		["activityArn"] = _activityArn,
+		["creationDate"] = args["creationDate"],
+		["activityArn"] = args["activityArn"],
 	}
 	asserts.AssertCreateActivityOutput(t)
 	return t
@@ -948,11 +1041,14 @@ end
 
 --- Create a structure of type ExecutionSucceededEventDetails
 --  
--- @param _output [Data] <p>The JSON data output by the execution.</p>
-function M.ExecutionSucceededEventDetails(_output, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionSucceededEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * output [Data] <p>The JSON data output by the execution.</p>
+-- @return ExecutionSucceededEventDetails structure as a key-value pair table
+function M.ExecutionSucceededEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ExecutionSucceededEventDetails")
 	local t = { 
-		["output"] = _output,
+		["output"] = args["output"],
 	}
 	asserts.AssertExecutionSucceededEventDetails(t)
 	return t
@@ -971,11 +1067,14 @@ end
 
 --- Create a structure of type ActivitySucceededEventDetails
 --  
--- @param _output [Data] <p>The JSON data output by the activity task.</p>
-function M.ActivitySucceededEventDetails(_output, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivitySucceededEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * output [Data] <p>The JSON data output by the activity task.</p>
+-- @return ActivitySucceededEventDetails structure as a key-value pair table
+function M.ActivitySucceededEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ActivitySucceededEventDetails")
 	local t = { 
-		["output"] = _output,
+		["output"] = args["output"],
 	}
 	asserts.AssertActivitySucceededEventDetails(t)
 	return t
@@ -995,12 +1094,15 @@ end
 
 --- Create a structure of type StopExecutionOutput
 --  
--- @param _stopDate [Timestamp] <p>The date the execution was stopped.</p>
--- Required parameter: stopDate
-function M.StopExecutionOutput(_stopDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopExecutionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * stopDate [Timestamp] <p>The date the execution was stopped.</p>
+-- Required key: stopDate
+-- @return StopExecutionOutput structure as a key-value pair table
+function M.StopExecutionOutput(args)
+	assert(args, "You must provdide an argument table when creating StopExecutionOutput")
 	local t = { 
-		["stopDate"] = _stopDate,
+		["stopDate"] = args["stopDate"],
 	}
 	asserts.AssertStopExecutionOutput(t)
 	return t
@@ -1022,16 +1124,19 @@ end
 
 --- Create a structure of type SendTaskFailureInput
 --  
--- @param _error [Error] <p>An arbitrary error code that identifies the cause of the failure.</p>
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
--- @param _taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
--- Required parameter: taskToken
-function M.SendTaskFailureInput(_error, _cause, _taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendTaskFailureInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * error [Error] <p>An arbitrary error code that identifies the cause of the failure.</p>
+-- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- * taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
+-- Required key: taskToken
+-- @return SendTaskFailureInput structure as a key-value pair table
+function M.SendTaskFailureInput(args)
+	assert(args, "You must provdide an argument table when creating SendTaskFailureInput")
 	local t = { 
-		["error"] = _error,
-		["cause"] = _cause,
-		["taskToken"] = _taskToken,
+		["error"] = args["error"],
+		["cause"] = args["cause"],
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertSendTaskFailureInput(t)
 	return t
@@ -1050,11 +1155,14 @@ end
 
 --- Create a structure of type TaskDoesNotExist
 --  
--- @param _message [ErrorMessage] 
-function M.TaskDoesNotExist(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TaskDoesNotExist")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return TaskDoesNotExist structure as a key-value pair table
+function M.TaskDoesNotExist(args)
+	assert(args, "You must provdide an argument table when creating TaskDoesNotExist")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTaskDoesNotExist(t)
 	return t
@@ -1074,13 +1182,16 @@ end
 
 --- Create a structure of type LambdaFunctionTimedOutEventDetails
 --  
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
--- @param _error [Error] <p>The error code of the failure.</p>
-function M.LambdaFunctionTimedOutEventDetails(_cause, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionTimedOutEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
+-- * error [Error] <p>The error code of the failure.</p>
+-- @return LambdaFunctionTimedOutEventDetails structure as a key-value pair table
+function M.LambdaFunctionTimedOutEventDetails(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionTimedOutEventDetails")
 	local t = { 
-		["cause"] = _cause,
-		["error"] = _error,
+		["cause"] = args["cause"],
+		["error"] = args["error"],
 	}
 	asserts.AssertLambdaFunctionTimedOutEventDetails(t)
 	return t
@@ -1100,13 +1211,16 @@ end
 
 --- Create a structure of type ExecutionAbortedEventDetails
 --  
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
--- @param _error [Error] <p>The error code of the failure.</p>
-function M.ExecutionAbortedEventDetails(_cause, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionAbortedEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- * error [Error] <p>The error code of the failure.</p>
+-- @return ExecutionAbortedEventDetails structure as a key-value pair table
+function M.ExecutionAbortedEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ExecutionAbortedEventDetails")
 	local t = { 
-		["cause"] = _cause,
-		["error"] = _error,
+		["cause"] = args["cause"],
+		["error"] = args["error"],
 	}
 	asserts.AssertExecutionAbortedEventDetails(t)
 	return t
@@ -1125,11 +1239,14 @@ end
 
 --- Create a structure of type ActivityWorkerLimitExceeded
 -- <p>The maximum number of workers concurrently polling for activity tasks has been reached.</p>
--- @param _message [ErrorMessage] 
-function M.ActivityWorkerLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityWorkerLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ActivityWorkerLimitExceeded structure as a key-value pair table
+function M.ActivityWorkerLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating ActivityWorkerLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertActivityWorkerLimitExceeded(t)
 	return t
@@ -1148,11 +1265,14 @@ end
 
 --- Create a structure of type InvalidName
 -- <p>The provided name is invalid.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidName(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidName")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidName structure as a key-value pair table
+function M.InvalidName(args)
+	assert(args, "You must provdide an argument table when creating InvalidName")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidName(t)
 	return t
@@ -1172,13 +1292,16 @@ end
 
 --- Create a structure of type ExecutionStartedEventDetails
 --  
--- @param _input [Data] <p>The JSON data input to the execution.</p>
--- @param _roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role used for executing AWS Lambda tasks.</p>
-function M.ExecutionStartedEventDetails(_input, _roleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionStartedEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * input [Data] <p>The JSON data input to the execution.</p>
+-- * roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role used for executing AWS Lambda tasks.</p>
+-- @return ExecutionStartedEventDetails structure as a key-value pair table
+function M.ExecutionStartedEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ExecutionStartedEventDetails")
 	local t = { 
-		["input"] = _input,
-		["roleArn"] = _roleArn,
+		["input"] = args["input"],
+		["roleArn"] = args["roleArn"],
 	}
 	asserts.AssertExecutionStartedEventDetails(t)
 	return t
@@ -1196,8 +1319,11 @@ end
 
 --- Create a structure of type SendTaskFailureOutput
 --  
-function M.SendTaskFailureOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendTaskFailureOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SendTaskFailureOutput structure as a key-value pair table
+function M.SendTaskFailureOutput(args)
+	assert(args, "You must provdide an argument table when creating SendTaskFailureOutput")
 	local t = { 
 	}
 	asserts.AssertSendTaskFailureOutput(t)
@@ -1217,11 +1343,14 @@ end
 
 --- Create a structure of type LambdaFunctionSucceededEventDetails
 --  
--- @param _output [Data] <p>The JSON data output by the lambda function.</p>
-function M.LambdaFunctionSucceededEventDetails(_output, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionSucceededEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * output [Data] <p>The JSON data output by the lambda function.</p>
+-- @return LambdaFunctionSucceededEventDetails structure as a key-value pair table
+function M.LambdaFunctionSucceededEventDetails(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionSucceededEventDetails")
 	local t = { 
-		["output"] = _output,
+		["output"] = args["output"],
 	}
 	asserts.AssertLambdaFunctionSucceededEventDetails(t)
 	return t
@@ -1241,13 +1370,16 @@ end
 
 --- Create a structure of type ActivityScheduleFailedEventDetails
 --  
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
--- @param _error [Error] <p>The error code of the failure.</p>
-function M.ActivityScheduleFailedEventDetails(_cause, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityScheduleFailedEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- * error [Error] <p>The error code of the failure.</p>
+-- @return ActivityScheduleFailedEventDetails structure as a key-value pair table
+function M.ActivityScheduleFailedEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ActivityScheduleFailedEventDetails")
 	local t = { 
-		["cause"] = _cause,
-		["error"] = _error,
+		["cause"] = args["cause"],
+		["error"] = args["error"],
 	}
 	asserts.AssertActivityScheduleFailedEventDetails(t)
 	return t
@@ -1266,11 +1398,14 @@ end
 
 --- Create a structure of type InvalidOutput
 -- <p>The provided JSON output data is invalid.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidOutput(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidOutput structure as a key-value pair table
+function M.InvalidOutput(args)
+	assert(args, "You must provdide an argument table when creating InvalidOutput")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidOutput(t)
 	return t
@@ -1290,13 +1425,16 @@ end
 
 --- Create a structure of type GetActivityTaskOutput
 --  
--- @param _input [Data] <p>The JSON input data for the task.</p>
--- @param _taskToken [TaskToken] <p>A token that identifies the scheduled task. This token must be copied and included in subsequent calls to <a>SendTaskHeartbeat</a>, <a>SendTaskSuccess</a> or <a>SendTaskFailure</a> in order to report the progress or completion of the task.</p>
-function M.GetActivityTaskOutput(_input, _taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetActivityTaskOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * input [Data] <p>The JSON input data for the task.</p>
+-- * taskToken [TaskToken] <p>A token that identifies the scheduled task. This token must be copied and included in subsequent calls to <a>SendTaskHeartbeat</a>, <a>SendTaskSuccess</a> or <a>SendTaskFailure</a> in order to report the progress or completion of the task.</p>
+-- @return GetActivityTaskOutput structure as a key-value pair table
+function M.GetActivityTaskOutput(args)
+	assert(args, "You must provdide an argument table when creating GetActivityTaskOutput")
 	local t = { 
-		["input"] = _input,
-		["taskToken"] = _taskToken,
+		["input"] = args["input"],
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertGetActivityTaskOutput(t)
 	return t
@@ -1315,11 +1453,14 @@ end
 
 --- Create a structure of type InvalidExecutionInput
 -- <p>The provided JSON input data is invalid.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidExecutionInput(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidExecutionInput structure as a key-value pair table
+function M.InvalidExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating InvalidExecutionInput")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidExecutionInput(t)
 	return t
@@ -1338,11 +1479,14 @@ end
 
 --- Create a structure of type StateMachineDoesNotExist
 -- <p>The specified state machine does not exist.</p>
--- @param _message [ErrorMessage] 
-function M.StateMachineDoesNotExist(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StateMachineDoesNotExist")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return StateMachineDoesNotExist structure as a key-value pair table
+function M.StateMachineDoesNotExist(args)
+	assert(args, "You must provdide an argument table when creating StateMachineDoesNotExist")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertStateMachineDoesNotExist(t)
 	return t
@@ -1361,11 +1505,14 @@ end
 
 --- Create a structure of type StateMachineAlreadyExists
 -- <p>A state machine with the same name but a different definition or role ARN already exists.</p>
--- @param _message [ErrorMessage] 
-function M.StateMachineAlreadyExists(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StateMachineAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return StateMachineAlreadyExists structure as a key-value pair table
+function M.StateMachineAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating StateMachineAlreadyExists")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertStateMachineAlreadyExists(t)
 	return t
@@ -1384,11 +1531,14 @@ end
 
 --- Create a structure of type ExecutionAlreadyExists
 -- <p>An execution with the same name already exists.</p>
--- @param _message [ErrorMessage] 
-function M.ExecutionAlreadyExists(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ExecutionAlreadyExists structure as a key-value pair table
+function M.ExecutionAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating ExecutionAlreadyExists")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertExecutionAlreadyExists(t)
 	return t
@@ -1406,8 +1556,11 @@ end
 
 --- Create a structure of type DeleteActivityOutput
 --  
-function M.DeleteActivityOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteActivityOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteActivityOutput structure as a key-value pair table
+function M.DeleteActivityOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteActivityOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteActivityOutput(t)
@@ -1428,13 +1581,16 @@ end
 
 --- Create a structure of type LambdaFunctionStartFailedEventDetails
 --  
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
--- @param _error [Error] <p>The error code of the failure.</p>
-function M.LambdaFunctionStartFailedEventDetails(_cause, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionStartFailedEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- * error [Error] <p>The error code of the failure.</p>
+-- @return LambdaFunctionStartFailedEventDetails structure as a key-value pair table
+function M.LambdaFunctionStartFailedEventDetails(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionStartFailedEventDetails")
 	local t = { 
-		["cause"] = _cause,
-		["error"] = _error,
+		["cause"] = args["cause"],
+		["error"] = args["error"],
 	}
 	asserts.AssertLambdaFunctionStartFailedEventDetails(t)
 	return t
@@ -1458,18 +1614,21 @@ end
 
 --- Create a structure of type StateMachineListItem
 --  
--- @param _creationDate [Timestamp] <p>The date the state machine was created.</p>
--- @param _stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
--- @param _name [Name] <p>The name of the state machine.</p>
--- Required parameter: stateMachineArn
--- Required parameter: name
--- Required parameter: creationDate
-function M.StateMachineListItem(_creationDate, _stateMachineArn, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StateMachineListItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * creationDate [Timestamp] <p>The date the state machine was created.</p>
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
+-- * name [Name] <p>The name of the state machine.</p>
+-- Required key: stateMachineArn
+-- Required key: name
+-- Required key: creationDate
+-- @return StateMachineListItem structure as a key-value pair table
+function M.StateMachineListItem(args)
+	assert(args, "You must provdide an argument table when creating StateMachineListItem")
 	local t = { 
-		["creationDate"] = _creationDate,
-		["stateMachineArn"] = _stateMachineArn,
-		["name"] = _name,
+		["creationDate"] = args["creationDate"],
+		["stateMachineArn"] = args["stateMachineArn"],
+		["name"] = args["name"],
 	}
 	asserts.AssertStateMachineListItem(t)
 	return t
@@ -1489,12 +1648,15 @@ end
 
 --- Create a structure of type DeleteStateMachineInput
 --  
--- @param _stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine to delete.</p>
--- Required parameter: stateMachineArn
-function M.DeleteStateMachineInput(_stateMachineArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStateMachineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the state machine to delete.</p>
+-- Required key: stateMachineArn
+-- @return DeleteStateMachineInput structure as a key-value pair table
+function M.DeleteStateMachineInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteStateMachineInput")
 	local t = { 
-		["stateMachineArn"] = _stateMachineArn,
+		["stateMachineArn"] = args["stateMachineArn"],
 	}
 	asserts.AssertDeleteStateMachineInput(t)
 	return t
@@ -1516,15 +1678,18 @@ end
 
 --- Create a structure of type StartExecutionOutput
 --  
--- @param _startDate [Timestamp] <p>The date the execution was started.</p>
--- @param _executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
--- Required parameter: executionArn
--- Required parameter: startDate
-function M.StartExecutionOutput(_startDate, _executionArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartExecutionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startDate [Timestamp] <p>The date the execution was started.</p>
+-- * executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
+-- Required key: executionArn
+-- Required key: startDate
+-- @return StartExecutionOutput structure as a key-value pair table
+function M.StartExecutionOutput(args)
+	assert(args, "You must provdide an argument table when creating StartExecutionOutput")
 	local t = { 
-		["startDate"] = _startDate,
-		["executionArn"] = _executionArn,
+		["startDate"] = args["startDate"],
+		["executionArn"] = args["executionArn"],
 	}
 	asserts.AssertStartExecutionOutput(t)
 	return t
@@ -1555,30 +1720,33 @@ end
 
 --- Create a structure of type DescribeExecutionOutput
 --  
--- @param _status [ExecutionStatus] <p>The current status of the execution.</p>
--- @param _startDate [Timestamp] <p>The date the execution was started.</p>
--- @param _name [Name] <p>The name of the execution.</p>
--- @param _executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
--- @param _stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the executed stated machine.</p>
--- @param _stopDate [Timestamp] <p>If the execution has already ended, the date the execution stopped.</p>
--- @param _output [Data] <p>The JSON output data of the execution.</p>
--- @param _input [Data] <p>The JSON input data of the execution.</p>
--- Required parameter: executionArn
--- Required parameter: stateMachineArn
--- Required parameter: status
--- Required parameter: startDate
--- Required parameter: input
-function M.DescribeExecutionOutput(_status, _startDate, _name, _executionArn, _stateMachineArn, _stopDate, _output, _input, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExecutionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [ExecutionStatus] <p>The current status of the execution.</p>
+-- * startDate [Timestamp] <p>The date the execution was started.</p>
+-- * name [Name] <p>The name of the execution.</p>
+-- * executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the executed stated machine.</p>
+-- * stopDate [Timestamp] <p>If the execution has already ended, the date the execution stopped.</p>
+-- * output [Data] <p>The JSON output data of the execution.</p>
+-- * input [Data] <p>The JSON input data of the execution.</p>
+-- Required key: executionArn
+-- Required key: stateMachineArn
+-- Required key: status
+-- Required key: startDate
+-- Required key: input
+-- @return DescribeExecutionOutput structure as a key-value pair table
+function M.DescribeExecutionOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeExecutionOutput")
 	local t = { 
-		["status"] = _status,
-		["startDate"] = _startDate,
-		["name"] = _name,
-		["executionArn"] = _executionArn,
-		["stateMachineArn"] = _stateMachineArn,
-		["stopDate"] = _stopDate,
-		["output"] = _output,
-		["input"] = _input,
+		["status"] = args["status"],
+		["startDate"] = args["startDate"],
+		["name"] = args["name"],
+		["executionArn"] = args["executionArn"],
+		["stateMachineArn"] = args["stateMachineArn"],
+		["stopDate"] = args["stopDate"],
+		["output"] = args["output"],
+		["input"] = args["input"],
 	}
 	asserts.AssertDescribeExecutionOutput(t)
 	return t
@@ -1599,14 +1767,17 @@ end
 
 --- Create a structure of type GetExecutionHistoryOutput
 --  
--- @param _nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- @param _events [HistoryEventList] <p>The list of events that occurred in the execution.</p>
--- Required parameter: events
-function M.GetExecutionHistoryOutput(_nextToken, _events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetExecutionHistoryOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- * events [HistoryEventList] <p>The list of events that occurred in the execution.</p>
+-- Required key: events
+-- @return GetExecutionHistoryOutput structure as a key-value pair table
+function M.GetExecutionHistoryOutput(args)
+	assert(args, "You must provdide an argument table when creating GetExecutionHistoryOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["events"] = _events,
+		["nextToken"] = args["nextToken"],
+		["events"] = args["events"],
 	}
 	asserts.AssertGetExecutionHistoryOutput(t)
 	return t
@@ -1625,11 +1796,14 @@ end
 
 --- Create a structure of type ExecutionLimitExceeded
 -- <p>The maximum number of running executions has been reached. Running executions must end or be stopped before a new execution can be started.</p>
--- @param _message [ErrorMessage] 
-function M.ExecutionLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ExecutionLimitExceeded structure as a key-value pair table
+function M.ExecutionLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating ExecutionLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertExecutionLimitExceeded(t)
 	return t
@@ -1651,16 +1825,19 @@ end
 
 --- Create a structure of type LambdaFunctionScheduledEventDetails
 --  
--- @param _input [Data] <p>The JSON data input to the lambda function.</p>
--- @param _resource [Arn] <p>The Amazon Resource Name (ARN) of the scheduled lambda function.</p>
--- @param _timeoutInSeconds [TimeoutInSeconds] <p>The maximum allowed duration of the lambda function.</p>
--- Required parameter: resource
-function M.LambdaFunctionScheduledEventDetails(_input, _resource, _timeoutInSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionScheduledEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * input [Data] <p>The JSON data input to the lambda function.</p>
+-- * resource [Arn] <p>The Amazon Resource Name (ARN) of the scheduled lambda function.</p>
+-- * timeoutInSeconds [TimeoutInSeconds] <p>The maximum allowed duration of the lambda function.</p>
+-- Required key: resource
+-- @return LambdaFunctionScheduledEventDetails structure as a key-value pair table
+function M.LambdaFunctionScheduledEventDetails(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionScheduledEventDetails")
 	local t = { 
-		["input"] = _input,
-		["resource"] = _resource,
-		["timeoutInSeconds"] = _timeoutInSeconds,
+		["input"] = args["input"],
+		["resource"] = args["resource"],
+		["timeoutInSeconds"] = args["timeoutInSeconds"],
 	}
 	asserts.AssertLambdaFunctionScheduledEventDetails(t)
 	return t
@@ -1680,13 +1857,16 @@ end
 
 --- Create a structure of type ExecutionTimedOutEventDetails
 --  
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
--- @param _error [Error] <p>The error code of the failure.</p>
-function M.ExecutionTimedOutEventDetails(_cause, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionTimedOutEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
+-- * error [Error] <p>The error code of the failure.</p>
+-- @return ExecutionTimedOutEventDetails structure as a key-value pair table
+function M.ExecutionTimedOutEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ExecutionTimedOutEventDetails")
 	local t = { 
-		["cause"] = _cause,
-		["error"] = _error,
+		["cause"] = args["cause"],
+		["error"] = args["error"],
 	}
 	asserts.AssertExecutionTimedOutEventDetails(t)
 	return t
@@ -1706,13 +1886,16 @@ end
 
 --- Create a structure of type ActivityTimedOutEventDetails
 --  
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
--- @param _error [Error] <p>The error code of the failure.</p>
-function M.ActivityTimedOutEventDetails(_cause, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTimedOutEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [Cause] <p>A more detailed explanation of the cause of the timeout.</p>
+-- * error [Error] <p>The error code of the failure.</p>
+-- @return ActivityTimedOutEventDetails structure as a key-value pair table
+function M.ActivityTimedOutEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ActivityTimedOutEventDetails")
 	local t = { 
-		["cause"] = _cause,
-		["error"] = _error,
+		["cause"] = args["cause"],
+		["error"] = args["error"],
 	}
 	asserts.AssertActivityTimedOutEventDetails(t)
 	return t
@@ -1733,14 +1916,17 @@ end
 
 --- Create a structure of type ListStateMachinesOutput
 --  
--- @param _stateMachines [StateMachineList] 
--- @param _nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
--- Required parameter: stateMachines
-function M.ListStateMachinesOutput(_stateMachines, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListStateMachinesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * stateMachines [StateMachineList] 
+-- * nextToken [PageToken] <p>If a <code>nextToken</code> is returned, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maxResults</code> determines how many results can be returned in a single call.</p>
+-- Required key: stateMachines
+-- @return ListStateMachinesOutput structure as a key-value pair table
+function M.ListStateMachinesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListStateMachinesOutput")
 	local t = { 
-		["stateMachines"] = _stateMachines,
-		["nextToken"] = _nextToken,
+		["stateMachines"] = args["stateMachines"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListStateMachinesOutput(t)
 	return t
@@ -1769,26 +1955,29 @@ end
 
 --- Create a structure of type ExecutionListItem
 --  
--- @param _status [ExecutionStatus] <p>The current status of the execution.</p>
--- @param _startDate [Timestamp] <p>The date the execution started.</p>
--- @param _name [Name] <p>The name of the execution.</p>
--- @param _executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
--- @param _stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the executed state machine.</p>
--- @param _stopDate [Timestamp] <p>If the execution already ended, the date the execution stopped.</p>
--- Required parameter: executionArn
--- Required parameter: stateMachineArn
--- Required parameter: name
--- Required parameter: status
--- Required parameter: startDate
-function M.ExecutionListItem(_status, _startDate, _name, _executionArn, _stateMachineArn, _stopDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionListItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [ExecutionStatus] <p>The current status of the execution.</p>
+-- * startDate [Timestamp] <p>The date the execution started.</p>
+-- * name [Name] <p>The name of the execution.</p>
+-- * executionArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the execution.</p>
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) of the executed state machine.</p>
+-- * stopDate [Timestamp] <p>If the execution already ended, the date the execution stopped.</p>
+-- Required key: executionArn
+-- Required key: stateMachineArn
+-- Required key: name
+-- Required key: status
+-- Required key: startDate
+-- @return ExecutionListItem structure as a key-value pair table
+function M.ExecutionListItem(args)
+	assert(args, "You must provdide an argument table when creating ExecutionListItem")
 	local t = { 
-		["status"] = _status,
-		["startDate"] = _startDate,
-		["name"] = _name,
-		["executionArn"] = _executionArn,
-		["stateMachineArn"] = _stateMachineArn,
-		["stopDate"] = _stopDate,
+		["status"] = args["status"],
+		["startDate"] = args["startDate"],
+		["name"] = args["name"],
+		["executionArn"] = args["executionArn"],
+		["stateMachineArn"] = args["stateMachineArn"],
+		["stopDate"] = args["stopDate"],
 	}
 	asserts.AssertExecutionListItem(t)
 	return t
@@ -1811,18 +2000,21 @@ end
 
 --- Create a structure of type ActivityScheduledEventDetails
 --  
--- @param _input [Data] <p>The JSON data input to the activity task.</p>
--- @param _resource [Arn] <p>The Amazon Resource Name (ARN) of the scheduled activity.</p>
--- @param _heartbeatInSeconds [TimeoutInSeconds] <p>The maximum allowed duration between two heartbeats for the activity task.</p>
--- @param _timeoutInSeconds [TimeoutInSeconds] <p>The maximum allowed duration of the activity task.</p>
--- Required parameter: resource
-function M.ActivityScheduledEventDetails(_input, _resource, _heartbeatInSeconds, _timeoutInSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityScheduledEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * input [Data] <p>The JSON data input to the activity task.</p>
+-- * resource [Arn] <p>The Amazon Resource Name (ARN) of the scheduled activity.</p>
+-- * heartbeatInSeconds [TimeoutInSeconds] <p>The maximum allowed duration between two heartbeats for the activity task.</p>
+-- * timeoutInSeconds [TimeoutInSeconds] <p>The maximum allowed duration of the activity task.</p>
+-- Required key: resource
+-- @return ActivityScheduledEventDetails structure as a key-value pair table
+function M.ActivityScheduledEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ActivityScheduledEventDetails")
 	local t = { 
-		["input"] = _input,
-		["resource"] = _resource,
-		["heartbeatInSeconds"] = _heartbeatInSeconds,
-		["timeoutInSeconds"] = _timeoutInSeconds,
+		["input"] = args["input"],
+		["resource"] = args["resource"],
+		["heartbeatInSeconds"] = args["heartbeatInSeconds"],
+		["timeoutInSeconds"] = args["timeoutInSeconds"],
 	}
 	asserts.AssertActivityScheduledEventDetails(t)
 	return t
@@ -1842,13 +2034,16 @@ end
 
 --- Create a structure of type LambdaFunctionScheduleFailedEventDetails
 --  
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
--- @param _error [Error] <p>The error code of the failure.</p>
-function M.LambdaFunctionScheduleFailedEventDetails(_cause, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionScheduleFailedEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- * error [Error] <p>The error code of the failure.</p>
+-- @return LambdaFunctionScheduleFailedEventDetails structure as a key-value pair table
+function M.LambdaFunctionScheduleFailedEventDetails(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionScheduleFailedEventDetails")
 	local t = { 
-		["cause"] = _cause,
-		["error"] = _error,
+		["cause"] = args["cause"],
+		["error"] = args["error"],
 	}
 	asserts.AssertLambdaFunctionScheduleFailedEventDetails(t)
 	return t
@@ -1867,11 +2062,14 @@ end
 
 --- Create a structure of type InvalidArn
 -- <p>The provided Amazon Resource Name (ARN) is invalid.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidArn(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArn")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidArn structure as a key-value pair table
+function M.InvalidArn(args)
+	assert(args, "You must provdide an argument table when creating InvalidArn")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidArn(t)
 	return t
@@ -1890,11 +2088,14 @@ end
 
 --- Create a structure of type ActivityDoesNotExist
 -- <p>The specified activity does not exist.</p>
--- @param _message [ErrorMessage] 
-function M.ActivityDoesNotExist(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityDoesNotExist")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ActivityDoesNotExist structure as a key-value pair table
+function M.ActivityDoesNotExist(args)
+	assert(args, "You must provdide an argument table when creating ActivityDoesNotExist")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertActivityDoesNotExist(t)
 	return t
@@ -1923,26 +2124,29 @@ end
 
 --- Create a structure of type DescribeStateMachineOutput
 --  
--- @param _status [StateMachineStatus] <p>The current status of the state machine.</p>
--- @param _definition [Definition] <p>The Amazon States Language definition of the state machine.</p>
--- @param _name [Name] <p>The name of the state machine.</p>
--- @param _roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.</p>
--- @param _stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
--- @param _creationDate [Timestamp] <p>The date the state machine was created.</p>
--- Required parameter: stateMachineArn
--- Required parameter: name
--- Required parameter: definition
--- Required parameter: roleArn
--- Required parameter: creationDate
-function M.DescribeStateMachineOutput(_status, _definition, _name, _roleArn, _stateMachineArn, _creationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStateMachineOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [StateMachineStatus] <p>The current status of the state machine.</p>
+-- * definition [Definition] <p>The Amazon States Language definition of the state machine.</p>
+-- * name [Name] <p>The name of the state machine.</p>
+-- * roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role used for executing this state machine.</p>
+-- * stateMachineArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the state machine.</p>
+-- * creationDate [Timestamp] <p>The date the state machine was created.</p>
+-- Required key: stateMachineArn
+-- Required key: name
+-- Required key: definition
+-- Required key: roleArn
+-- Required key: creationDate
+-- @return DescribeStateMachineOutput structure as a key-value pair table
+function M.DescribeStateMachineOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeStateMachineOutput")
 	local t = { 
-		["status"] = _status,
-		["definition"] = _definition,
-		["name"] = _name,
-		["roleArn"] = _roleArn,
-		["stateMachineArn"] = _stateMachineArn,
-		["creationDate"] = _creationDate,
+		["status"] = args["status"],
+		["definition"] = args["definition"],
+		["name"] = args["name"],
+		["roleArn"] = args["roleArn"],
+		["stateMachineArn"] = args["stateMachineArn"],
+		["creationDate"] = args["creationDate"],
 	}
 	asserts.AssertDescribeStateMachineOutput(t)
 	return t
@@ -1964,15 +2168,18 @@ end
 
 --- Create a structure of type SendTaskSuccessInput
 --  
--- @param _output [Data] <p>The JSON output of the task.</p>
--- @param _taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
--- Required parameter: taskToken
--- Required parameter: output
-function M.SendTaskSuccessInput(_output, _taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendTaskSuccessInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * output [Data] <p>The JSON output of the task.</p>
+-- * taskToken [TaskToken] <p>The token that represents this task. Task tokens are generated by the service when the tasks are assigned to a worker (see GetActivityTask::taskToken).</p>
+-- Required key: taskToken
+-- Required key: output
+-- @return SendTaskSuccessInput structure as a key-value pair table
+function M.SendTaskSuccessInput(args)
+	assert(args, "You must provdide an argument table when creating SendTaskSuccessInput")
 	local t = { 
-		["output"] = _output,
-		["taskToken"] = _taskToken,
+		["output"] = args["output"],
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertSendTaskSuccessInput(t)
 	return t
@@ -1991,11 +2198,14 @@ end
 
 --- Create a structure of type InvalidDefinition
 -- <p>The provided Amazon States Language definition is invalid.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidDefinition(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDefinition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidDefinition structure as a key-value pair table
+function M.InvalidDefinition(args)
+	assert(args, "You must provdide an argument table when creating InvalidDefinition")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidDefinition(t)
 	return t
@@ -2013,8 +2223,11 @@ end
 
 --- Create a structure of type SendTaskSuccessOutput
 --  
-function M.SendTaskSuccessOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendTaskSuccessOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SendTaskSuccessOutput structure as a key-value pair table
+function M.SendTaskSuccessOutput(args)
+	assert(args, "You must provdide an argument table when creating SendTaskSuccessOutput")
 	local t = { 
 	}
 	asserts.AssertSendTaskSuccessOutput(t)
@@ -2035,13 +2248,16 @@ end
 
 --- Create a structure of type ExecutionFailedEventDetails
 --  
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
--- @param _error [Error] <p>The error code of the failure.</p>
-function M.ExecutionFailedEventDetails(_cause, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionFailedEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- * error [Error] <p>The error code of the failure.</p>
+-- @return ExecutionFailedEventDetails structure as a key-value pair table
+function M.ExecutionFailedEventDetails(args)
+	assert(args, "You must provdide an argument table when creating ExecutionFailedEventDetails")
 	local t = { 
-		["cause"] = _cause,
-		["error"] = _error,
+		["cause"] = args["cause"],
+		["error"] = args["error"],
 	}
 	asserts.AssertExecutionFailedEventDetails(t)
 	return t
@@ -2059,8 +2275,11 @@ end
 
 --- Create a structure of type SendTaskHeartbeatOutput
 --  
-function M.SendTaskHeartbeatOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SendTaskHeartbeatOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SendTaskHeartbeatOutput structure as a key-value pair table
+function M.SendTaskHeartbeatOutput(args)
+	assert(args, "You must provdide an argument table when creating SendTaskHeartbeatOutput")
 	local t = { 
 	}
 	asserts.AssertSendTaskHeartbeatOutput(t)
@@ -2081,13 +2300,16 @@ end
 
 --- Create a structure of type LambdaFunctionFailedEventDetails
 --  
--- @param _cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
--- @param _error [Error] <p>The error code of the failure.</p>
-function M.LambdaFunctionFailedEventDetails(_cause, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionFailedEventDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [Cause] <p>A more detailed explanation of the cause of the failure.</p>
+-- * error [Error] <p>The error code of the failure.</p>
+-- @return LambdaFunctionFailedEventDetails structure as a key-value pair table
+function M.LambdaFunctionFailedEventDetails(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionFailedEventDetails")
 	local t = { 
-		["cause"] = _cause,
-		["error"] = _error,
+		["cause"] = args["cause"],
+		["error"] = args["error"],
 	}
 	asserts.AssertLambdaFunctionFailedEventDetails(t)
 	return t
@@ -2107,12 +2329,15 @@ end
 
 --- Create a structure of type DeleteActivityInput
 --  
--- @param _activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to delete.</p>
--- Required parameter: activityArn
-function M.DeleteActivityInput(_activityArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteActivityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * activityArn [Arn] <p>The Amazon Resource Name (ARN) of the activity to delete.</p>
+-- Required key: activityArn
+-- @return DeleteActivityInput structure as a key-value pair table
+function M.DeleteActivityInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteActivityInput")
 	local t = { 
-		["activityArn"] = _activityArn,
+		["activityArn"] = args["activityArn"],
 	}
 	asserts.AssertDeleteActivityInput(t)
 	return t

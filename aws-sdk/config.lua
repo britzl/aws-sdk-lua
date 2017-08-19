@@ -33,8 +33,11 @@ end
 
 --- Create a structure of type NoSuchBucketException
 -- <p>The specified Amazon S3 bucket does not exist.</p>
-function M.NoSuchBucketException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchBucketException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoSuchBucketException structure as a key-value pair table
+function M.NoSuchBucketException(args)
+	assert(args, "You must provdide an argument table when creating NoSuchBucketException")
 	local t = { 
 	}
 	asserts.AssertNoSuchBucketException(t)
@@ -55,12 +58,15 @@ end
 
 --- Create a structure of type PutConfigurationRecorderRequest
 -- <p>The input for the <a>PutConfigurationRecorder</a> action.</p>
--- @param _ConfigurationRecorder [ConfigurationRecorder] <p>The configuration recorder object that records each configuration change made to the resources.</p>
--- Required parameter: ConfigurationRecorder
-function M.PutConfigurationRecorderRequest(_ConfigurationRecorder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutConfigurationRecorderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationRecorder [ConfigurationRecorder] <p>The configuration recorder object that records each configuration change made to the resources.</p>
+-- Required key: ConfigurationRecorder
+-- @return PutConfigurationRecorderRequest structure as a key-value pair table
+function M.PutConfigurationRecorderRequest(args)
+	assert(args, "You must provdide an argument table when creating PutConfigurationRecorderRequest")
 	local t = { 
-		["ConfigurationRecorder"] = _ConfigurationRecorder,
+		["ConfigurationRecorder"] = args["ConfigurationRecorder"],
 	}
 	asserts.AssertPutConfigurationRecorderRequest(t)
 	return t
@@ -80,12 +86,15 @@ end
 
 --- Create a structure of type StartConfigurationRecorderRequest
 -- <p>The input for the <a>StartConfigurationRecorder</a> action.</p>
--- @param _ConfigurationRecorderName [RecorderName] <p>The name of the recorder object that records each configuration change made to the resources.</p>
--- Required parameter: ConfigurationRecorderName
-function M.StartConfigurationRecorderRequest(_ConfigurationRecorderName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartConfigurationRecorderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationRecorderName [RecorderName] <p>The name of the recorder object that records each configuration change made to the resources.</p>
+-- Required key: ConfigurationRecorderName
+-- @return StartConfigurationRecorderRequest structure as a key-value pair table
+function M.StartConfigurationRecorderRequest(args)
+	assert(args, "You must provdide an argument table when creating StartConfigurationRecorderRequest")
 	local t = { 
-		["ConfigurationRecorderName"] = _ConfigurationRecorderName,
+		["ConfigurationRecorderName"] = args["ConfigurationRecorderName"],
 	}
 	asserts.AssertStartConfigurationRecorderRequest(t)
 	return t
@@ -105,13 +114,16 @@ end
 
 --- Create a structure of type DescribeComplianceByConfigRuleResponse
 -- <p/>
--- @param _ComplianceByConfigRules [ComplianceByConfigRules] <p>Indicates whether each of the specified AWS Config rules is compliant.</p>
--- @param _NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
-function M.DescribeComplianceByConfigRuleResponse(_ComplianceByConfigRules, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComplianceByConfigRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComplianceByConfigRules [ComplianceByConfigRules] <p>Indicates whether each of the specified AWS Config rules is compliant.</p>
+-- * NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
+-- @return DescribeComplianceByConfigRuleResponse structure as a key-value pair table
+function M.DescribeComplianceByConfigRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeComplianceByConfigRuleResponse")
 	local t = { 
-		["ComplianceByConfigRules"] = _ComplianceByConfigRules,
-		["NextToken"] = _NextToken,
+		["ComplianceByConfigRules"] = args["ComplianceByConfigRules"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeComplianceByConfigRuleResponse(t)
 	return t
@@ -130,11 +142,14 @@ end
 
 --- Create a structure of type PutEvaluationsResponse
 -- <p/>
--- @param _FailedEvaluations [Evaluations] <p>Requests that failed because of a client or server error.</p>
-function M.PutEvaluationsResponse(_FailedEvaluations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutEvaluationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedEvaluations [Evaluations] <p>Requests that failed because of a client or server error.</p>
+-- @return PutEvaluationsResponse structure as a key-value pair table
+function M.PutEvaluationsResponse(args)
+	assert(args, "You must provdide an argument table when creating PutEvaluationsResponse")
 	local t = { 
-		["FailedEvaluations"] = _FailedEvaluations,
+		["FailedEvaluations"] = args["FailedEvaluations"],
 	}
 	asserts.AssertPutEvaluationsResponse(t)
 	return t
@@ -152,8 +167,11 @@ end
 
 --- Create a structure of type StartConfigRulesEvaluationResponse
 -- <p>The output when you start the evaluation for the specified Config rule.</p>
-function M.StartConfigRulesEvaluationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartConfigRulesEvaluationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StartConfigRulesEvaluationResponse structure as a key-value pair table
+function M.StartConfigRulesEvaluationResponse(args)
+	assert(args, "You must provdide an argument table when creating StartConfigRulesEvaluationResponse")
 	local t = { 
 	}
 	asserts.AssertStartConfigRulesEvaluationResponse(t)
@@ -175,15 +193,18 @@ end
 
 --- Create a structure of type ConfigurationRecorder
 -- <p>An object that represents the recording of configuration changes of an AWS resource.</p>
--- @param _recordingGroup [RecordingGroup] <p>Specifies the types of AWS resource for which AWS Config records configuration changes.</p>
--- @param _roleARN [String] <p>Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.</p>
--- @param _name [RecorderName] <p>The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the configuration recorder. You cannot change the assigned name.</p>
-function M.ConfigurationRecorder(_recordingGroup, _roleARN, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationRecorder")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * recordingGroup [RecordingGroup] <p>Specifies the types of AWS resource for which AWS Config records configuration changes.</p>
+-- * roleARN [String] <p>Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with the account.</p>
+-- * name [RecorderName] <p>The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the configuration recorder. You cannot change the assigned name.</p>
+-- @return ConfigurationRecorder structure as a key-value pair table
+function M.ConfigurationRecorder(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationRecorder")
 	local t = { 
-		["recordingGroup"] = _recordingGroup,
-		["roleARN"] = _roleARN,
-		["name"] = _name,
+		["recordingGroup"] = args["recordingGroup"],
+		["roleARN"] = args["roleARN"],
+		["name"] = args["name"],
 	}
 	asserts.AssertConfigurationRecorder(t)
 	return t
@@ -202,11 +223,14 @@ end
 
 --- Create a structure of type GetComplianceSummaryByResourceTypeResponse
 -- <p/>
--- @param _ComplianceSummariesByResourceType [ComplianceSummariesByResourceType] <p>The number of resources that are compliant and the number that are noncompliant. If one or more resource types were provided with the request, the numbers are returned for each resource type. The maximum number returned is 100.</p>
-function M.GetComplianceSummaryByResourceTypeResponse(_ComplianceSummariesByResourceType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceSummaryByResourceTypeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComplianceSummariesByResourceType [ComplianceSummariesByResourceType] <p>The number of resources that are compliant and the number that are noncompliant. If one or more resource types were provided with the request, the numbers are returned for each resource type. The maximum number returned is 100.</p>
+-- @return GetComplianceSummaryByResourceTypeResponse structure as a key-value pair table
+function M.GetComplianceSummaryByResourceTypeResponse(args)
+	assert(args, "You must provdide an argument table when creating GetComplianceSummaryByResourceTypeResponse")
 	local t = { 
-		["ComplianceSummariesByResourceType"] = _ComplianceSummariesByResourceType,
+		["ComplianceSummariesByResourceType"] = args["ComplianceSummariesByResourceType"],
 	}
 	asserts.AssertGetComplianceSummaryByResourceTypeResponse(t)
 	return t
@@ -226,12 +250,15 @@ end
 
 --- Create a structure of type DeleteEvaluationResultsRequest
 -- <p/>
--- @param _ConfigRuleName [StringWithCharLimit64] <p>The name of the Config rule for which you want to delete the evaluation results.</p>
--- Required parameter: ConfigRuleName
-function M.DeleteEvaluationResultsRequest(_ConfigRuleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEvaluationResultsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigRuleName [StringWithCharLimit64] <p>The name of the Config rule for which you want to delete the evaluation results.</p>
+-- Required key: ConfigRuleName
+-- @return DeleteEvaluationResultsRequest structure as a key-value pair table
+function M.DeleteEvaluationResultsRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteEvaluationResultsRequest")
 	local t = { 
-		["ConfigRuleName"] = _ConfigRuleName,
+		["ConfigRuleName"] = args["ConfigRuleName"],
 	}
 	asserts.AssertDeleteEvaluationResultsRequest(t)
 	return t
@@ -249,8 +276,11 @@ end
 
 --- Create a structure of type InvalidConfigurationRecorderNameException
 -- <p>You have provided a configuration recorder name that is not valid.</p>
-function M.InvalidConfigurationRecorderNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidConfigurationRecorderNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidConfigurationRecorderNameException structure as a key-value pair table
+function M.InvalidConfigurationRecorderNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidConfigurationRecorderNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidConfigurationRecorderNameException(t)
@@ -271,12 +301,15 @@ end
 
 --- Create a structure of type DeliverConfigSnapshotRequest
 -- <p>The input for the <a>DeliverConfigSnapshot</a> action.</p>
--- @param _deliveryChannelName [ChannelName] <p>The name of the delivery channel through which the snapshot is delivered.</p>
--- Required parameter: deliveryChannelName
-function M.DeliverConfigSnapshotRequest(_deliveryChannelName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeliverConfigSnapshotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deliveryChannelName [ChannelName] <p>The name of the delivery channel through which the snapshot is delivered.</p>
+-- Required key: deliveryChannelName
+-- @return DeliverConfigSnapshotRequest structure as a key-value pair table
+function M.DeliverConfigSnapshotRequest(args)
+	assert(args, "You must provdide an argument table when creating DeliverConfigSnapshotRequest")
 	local t = { 
-		["deliveryChannelName"] = _deliveryChannelName,
+		["deliveryChannelName"] = args["deliveryChannelName"],
 	}
 	asserts.AssertDeliverConfigSnapshotRequest(t)
 	return t
@@ -295,11 +328,14 @@ end
 
 --- Create a structure of type DescribeDeliveryChannelStatusResponse
 -- <p>The output for the <a>DescribeDeliveryChannelStatus</a> action.</p>
--- @param _DeliveryChannelsStatus [DeliveryChannelStatusList] <p>A list that contains the status of a specified delivery channel.</p>
-function M.DescribeDeliveryChannelStatusResponse(_DeliveryChannelsStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeliveryChannelStatusResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryChannelsStatus [DeliveryChannelStatusList] <p>A list that contains the status of a specified delivery channel.</p>
+-- @return DescribeDeliveryChannelStatusResponse structure as a key-value pair table
+function M.DescribeDeliveryChannelStatusResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeDeliveryChannelStatusResponse")
 	local t = { 
-		["DeliveryChannelsStatus"] = _DeliveryChannelsStatus,
+		["DeliveryChannelsStatus"] = args["DeliveryChannelsStatus"],
 	}
 	asserts.AssertDescribeDeliveryChannelStatusResponse(t)
 	return t
@@ -319,13 +355,16 @@ end
 
 --- Create a structure of type Compliance
 -- <p>Indicates whether an AWS resource or AWS Config rule is compliant and provides the number of contributors that affect the compliance.</p>
--- @param _ComplianceContributorCount [ComplianceContributorCount] <p>The number of AWS resources or AWS Config rules that cause a result of <code>NON_COMPLIANT</code>, up to a maximum number.</p>
--- @param _ComplianceType [ComplianceType] <p>Indicates whether an AWS resource or AWS Config rule is compliant.</p> <p>A resource is compliant if it complies with all of the AWS Config rules that evaluate it, and it is noncompliant if it does not comply with one or more of these rules.</p> <p>A rule is compliant if all of the resources that the rule evaluates comply with it, and it is noncompliant if any of these resources do not comply.</p> <p>AWS Config returns the <code>INSUFFICIENT_DATA</code> value when no evaluation results are available for the AWS resource or Config rule.</p> <p>For the <code>Compliance</code> data type, AWS Config supports only <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code> values. AWS Config does not support the <code>NOT_APPLICABLE</code> value for the <code>Compliance</code> data type.</p>
-function M.Compliance(_ComplianceContributorCount, _ComplianceType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Compliance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComplianceContributorCount [ComplianceContributorCount] <p>The number of AWS resources or AWS Config rules that cause a result of <code>NON_COMPLIANT</code>, up to a maximum number.</p>
+-- * ComplianceType [ComplianceType] <p>Indicates whether an AWS resource or AWS Config rule is compliant.</p> <p>A resource is compliant if it complies with all of the AWS Config rules that evaluate it, and it is noncompliant if it does not comply with one or more of these rules.</p> <p>A rule is compliant if all of the resources that the rule evaluates comply with it, and it is noncompliant if any of these resources do not comply.</p> <p>AWS Config returns the <code>INSUFFICIENT_DATA</code> value when no evaluation results are available for the AWS resource or Config rule.</p> <p>For the <code>Compliance</code> data type, AWS Config supports only <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code> values. AWS Config does not support the <code>NOT_APPLICABLE</code> value for the <code>Compliance</code> data type.</p>
+-- @return Compliance structure as a key-value pair table
+function M.Compliance(args)
+	assert(args, "You must provdide an argument table when creating Compliance")
 	local t = { 
-		["ComplianceContributorCount"] = _ComplianceContributorCount,
-		["ComplianceType"] = _ComplianceType,
+		["ComplianceContributorCount"] = args["ComplianceContributorCount"],
+		["ComplianceType"] = args["ComplianceType"],
 	}
 	asserts.AssertCompliance(t)
 	return t
@@ -343,8 +382,11 @@ end
 
 --- Create a structure of type MaxNumberOfConfigRulesExceededException
 -- <p>Failed to add the AWS Config rule because the account already contains the maximum number of 50 rules. Consider deleting any deactivated rules before adding new rules.</p>
-function M.MaxNumberOfConfigRulesExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaxNumberOfConfigRulesExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MaxNumberOfConfigRulesExceededException structure as a key-value pair table
+function M.MaxNumberOfConfigRulesExceededException(args)
+	assert(args, "You must provdide an argument table when creating MaxNumberOfConfigRulesExceededException")
 	local t = { 
 	}
 	asserts.AssertMaxNumberOfConfigRulesExceededException(t)
@@ -363,8 +405,11 @@ end
 
 --- Create a structure of type NoSuchDeliveryChannelException
 -- <p>You have specified a delivery channel that does not exist.</p>
-function M.NoSuchDeliveryChannelException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchDeliveryChannelException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoSuchDeliveryChannelException structure as a key-value pair table
+function M.NoSuchDeliveryChannelException(args)
+	assert(args, "You must provdide an argument table when creating NoSuchDeliveryChannelException")
 	local t = { 
 	}
 	asserts.AssertNoSuchDeliveryChannelException(t)
@@ -385,13 +430,16 @@ end
 
 --- Create a structure of type GetComplianceDetailsByResourceResponse
 -- <p/>
--- @param _EvaluationResults [EvaluationResults] <p>Indicates whether the specified AWS resource complies each AWS Config rule.</p>
--- @param _NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
-function M.GetComplianceDetailsByResourceResponse(_EvaluationResults, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceDetailsByResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EvaluationResults [EvaluationResults] <p>Indicates whether the specified AWS resource complies each AWS Config rule.</p>
+-- * NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
+-- @return GetComplianceDetailsByResourceResponse structure as a key-value pair table
+function M.GetComplianceDetailsByResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating GetComplianceDetailsByResourceResponse")
 	local t = { 
-		["EvaluationResults"] = _EvaluationResults,
-		["NextToken"] = _NextToken,
+		["EvaluationResults"] = args["EvaluationResults"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertGetComplianceDetailsByResourceResponse(t)
 	return t
@@ -411,12 +459,15 @@ end
 
 --- Create a structure of type DeleteConfigurationRecorderRequest
 -- <p>The request object for the <code>DeleteConfigurationRecorder</code> action.</p>
--- @param _ConfigurationRecorderName [RecorderName] <p>The name of the configuration recorder to be deleted. You can retrieve the name of your configuration recorder by using the <code>DescribeConfigurationRecorders</code> action.</p>
--- Required parameter: ConfigurationRecorderName
-function M.DeleteConfigurationRecorderRequest(_ConfigurationRecorderName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigurationRecorderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationRecorderName [RecorderName] <p>The name of the configuration recorder to be deleted. You can retrieve the name of your configuration recorder by using the <code>DescribeConfigurationRecorders</code> action.</p>
+-- Required key: ConfigurationRecorderName
+-- @return DeleteConfigurationRecorderRequest structure as a key-value pair table
+function M.DeleteConfigurationRecorderRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteConfigurationRecorderRequest")
 	local t = { 
-		["ConfigurationRecorderName"] = _ConfigurationRecorderName,
+		["ConfigurationRecorderName"] = args["ConfigurationRecorderName"],
 	}
 	asserts.AssertDeleteConfigurationRecorderRequest(t)
 	return t
@@ -435,11 +486,14 @@ end
 
 --- Create a structure of type DescribeConfigurationRecorderStatusResponse
 -- <p>The output for the <a>DescribeConfigurationRecorderStatus</a> action in JSON format.</p>
--- @param _ConfigurationRecordersStatus [ConfigurationRecorderStatusList] <p>A list that contains status of the specified recorders.</p>
-function M.DescribeConfigurationRecorderStatusResponse(_ConfigurationRecordersStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationRecorderStatusResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationRecordersStatus [ConfigurationRecorderStatusList] <p>A list that contains status of the specified recorders.</p>
+-- @return DescribeConfigurationRecorderStatusResponse structure as a key-value pair table
+function M.DescribeConfigurationRecorderStatusResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigurationRecorderStatusResponse")
 	local t = { 
-		["ConfigurationRecordersStatus"] = _ConfigurationRecordersStatus,
+		["ConfigurationRecordersStatus"] = args["ConfigurationRecordersStatus"],
 	}
 	asserts.AssertDescribeConfigurationRecorderStatusResponse(t)
 	return t
@@ -457,8 +511,11 @@ end
 
 --- Create a structure of type LastDeliveryChannelDeleteFailedException
 -- <p>You cannot delete the delivery channel you specified because the configuration recorder is running.</p>
-function M.LastDeliveryChannelDeleteFailedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LastDeliveryChannelDeleteFailedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LastDeliveryChannelDeleteFailedException structure as a key-value pair table
+function M.LastDeliveryChannelDeleteFailedException(args)
+	assert(args, "You must provdide an argument table when creating LastDeliveryChannelDeleteFailedException")
 	local t = { 
 	}
 	asserts.AssertLastDeliveryChannelDeleteFailedException(t)
@@ -477,8 +534,11 @@ end
 
 --- Create a structure of type InvalidResultTokenException
 -- <p>The specified <code>ResultToken</code> is invalid.</p>
-function M.InvalidResultTokenException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResultTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidResultTokenException structure as a key-value pair table
+function M.InvalidResultTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidResultTokenException")
 	local t = { 
 	}
 	asserts.AssertInvalidResultTokenException(t)
@@ -499,13 +559,16 @@ end
 
 --- Create a structure of type DescribeComplianceByResourceResponse
 -- <p/>
--- @param _ComplianceByResources [ComplianceByResources] <p>Indicates whether the specified AWS resource complies with all of the AWS Config rules that evaluate it.</p>
--- @param _NextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
-function M.DescribeComplianceByResourceResponse(_ComplianceByResources, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComplianceByResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComplianceByResources [ComplianceByResources] <p>Indicates whether the specified AWS resource complies with all of the AWS Config rules that evaluate it.</p>
+-- * NextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
+-- @return DescribeComplianceByResourceResponse structure as a key-value pair table
+function M.DescribeComplianceByResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeComplianceByResourceResponse")
 	local t = { 
-		["ComplianceByResources"] = _ComplianceByResources,
-		["NextToken"] = _NextToken,
+		["ComplianceByResources"] = args["ComplianceByResources"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeComplianceByResourceResponse(t)
 	return t
@@ -524,11 +587,14 @@ end
 
 --- Create a structure of type DescribeDeliveryChannelsResponse
 -- <p>The output for the <a>DescribeDeliveryChannels</a> action.</p>
--- @param _DeliveryChannels [DeliveryChannelList] <p>A list that contains the descriptions of the specified delivery channel.</p>
-function M.DescribeDeliveryChannelsResponse(_DeliveryChannels, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeliveryChannelsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryChannels [DeliveryChannelList] <p>A list that contains the descriptions of the specified delivery channel.</p>
+-- @return DescribeDeliveryChannelsResponse structure as a key-value pair table
+function M.DescribeDeliveryChannelsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeDeliveryChannelsResponse")
 	local t = { 
-		["DeliveryChannels"] = _DeliveryChannels,
+		["DeliveryChannels"] = args["DeliveryChannels"],
 	}
 	asserts.AssertDescribeDeliveryChannelsResponse(t)
 	return t
@@ -548,13 +614,16 @@ end
 
 --- Create a structure of type ListDiscoveredResourcesResponse
 -- <p/>
--- @param _nextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
--- @param _resourceIdentifiers [ResourceIdentifierList] <p>The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.</p>
-function M.ListDiscoveredResourcesResponse(_nextToken, _resourceIdentifiers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDiscoveredResourcesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
+-- * resourceIdentifiers [ResourceIdentifierList] <p>The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.</p>
+-- @return ListDiscoveredResourcesResponse structure as a key-value pair table
+function M.ListDiscoveredResourcesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListDiscoveredResourcesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["resourceIdentifiers"] = _resourceIdentifiers,
+		["nextToken"] = args["nextToken"],
+		["resourceIdentifiers"] = args["resourceIdentifiers"],
 	}
 	asserts.AssertListDiscoveredResourcesResponse(t)
 	return t
@@ -573,11 +642,14 @@ end
 
 --- Create a structure of type DescribeConfigurationRecordersRequest
 -- <p>The input for the <a>DescribeConfigurationRecorders</a> action.</p>
--- @param _ConfigurationRecorderNames [ConfigurationRecorderNameList] <p>A list of configuration recorder names.</p>
-function M.DescribeConfigurationRecordersRequest(_ConfigurationRecorderNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationRecordersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationRecorderNames [ConfigurationRecorderNameList] <p>A list of configuration recorder names.</p>
+-- @return DescribeConfigurationRecordersRequest structure as a key-value pair table
+function M.DescribeConfigurationRecordersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigurationRecordersRequest")
 	local t = { 
-		["ConfigurationRecorderNames"] = _ConfigurationRecorderNames,
+		["ConfigurationRecorderNames"] = args["ConfigurationRecorderNames"],
 	}
 	asserts.AssertDescribeConfigurationRecordersRequest(t)
 	return t
@@ -596,11 +668,14 @@ end
 
 --- Create a structure of type DescribeDeliveryChannelStatusRequest
 -- <p>The input for the <a>DeliveryChannelStatus</a> action.</p>
--- @param _DeliveryChannelNames [DeliveryChannelNameList] <p>A list of delivery channel names.</p>
-function M.DescribeDeliveryChannelStatusRequest(_DeliveryChannelNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeliveryChannelStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryChannelNames [DeliveryChannelNameList] <p>A list of delivery channel names.</p>
+-- @return DescribeDeliveryChannelStatusRequest structure as a key-value pair table
+function M.DescribeDeliveryChannelStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDeliveryChannelStatusRequest")
 	local t = { 
-		["DeliveryChannelNames"] = _DeliveryChannelNames,
+		["DeliveryChannelNames"] = args["DeliveryChannelNames"],
 	}
 	asserts.AssertDescribeDeliveryChannelStatusRequest(t)
 	return t
@@ -618,8 +693,11 @@ end
 
 --- Create a structure of type NoAvailableDeliveryChannelException
 -- <p>There is no delivery channel available to record configurations.</p>
-function M.NoAvailableDeliveryChannelException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoAvailableDeliveryChannelException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoAvailableDeliveryChannelException structure as a key-value pair table
+function M.NoAvailableDeliveryChannelException(args)
+	assert(args, "You must provdide an argument table when creating NoAvailableDeliveryChannelException")
 	local t = { 
 	}
 	asserts.AssertNoAvailableDeliveryChannelException(t)
@@ -638,8 +716,11 @@ end
 
 --- Create a structure of type MaxNumberOfConfigurationRecordersExceededException
 -- <p>You have reached the limit on the number of recorders you can create.</p>
-function M.MaxNumberOfConfigurationRecordersExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaxNumberOfConfigurationRecordersExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MaxNumberOfConfigurationRecordersExceededException structure as a key-value pair table
+function M.MaxNumberOfConfigurationRecordersExceededException(args)
+	assert(args, "You must provdide an argument table when creating MaxNumberOfConfigurationRecordersExceededException")
 	local t = { 
 	}
 	asserts.AssertMaxNumberOfConfigurationRecordersExceededException(t)
@@ -658,8 +739,11 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>This exception is thrown if an evaluation is in progress or if you call the <a>StartConfigRulesEvaluation</a> API more than once per minute.</p>
-function M.LimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
 	}
 	asserts.AssertLimitExceededException(t)
@@ -678,8 +762,11 @@ end
 
 --- Create a structure of type DeleteEvaluationResultsResponse
 -- <p>The output when you delete the evaluation results for the specified Config rule.</p>
-function M.DeleteEvaluationResultsResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEvaluationResultsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteEvaluationResultsResponse structure as a key-value pair table
+function M.DeleteEvaluationResultsResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteEvaluationResultsResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteEvaluationResultsResponse(t)
@@ -703,17 +790,20 @@ end
 
 --- Create a structure of type Source
 -- <p>Provides the AWS Config rule owner (AWS or customer), the rule identifier, and the events that trigger the evaluation of your AWS resources.</p>
--- @param _Owner [Owner] <p>Indicates whether AWS or the customer owns and manages the AWS Config rule.</p>
--- @param _SourceIdentifier [StringWithCharLimit256] <p>For AWS Config managed rules, a predefined identifier from a list. For example, <code>IAM_PASSWORD_POLICY</code> is a managed rule. To reference a managed rule, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using AWS Managed Config Rules</a>.</p> <p>For custom rules, the identifier is the Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as <code>arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name</code>.</p>
--- @param _SourceDetails [SourceDetails] <p>Provides the source and type of the event that causes AWS Config to evaluate your AWS resources.</p>
--- Required parameter: Owner
--- Required parameter: SourceIdentifier
-function M.Source(_Owner, _SourceIdentifier, _SourceDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Source")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Owner [Owner] <p>Indicates whether AWS or the customer owns and manages the AWS Config rule.</p>
+-- * SourceIdentifier [StringWithCharLimit256] <p>For AWS Config managed rules, a predefined identifier from a list. For example, <code>IAM_PASSWORD_POLICY</code> is a managed rule. To reference a managed rule, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">Using AWS Managed Config Rules</a>.</p> <p>For custom rules, the identifier is the Amazon Resource Name (ARN) of the rule's AWS Lambda function, such as <code>arn:aws:lambda:us-east-1:123456789012:function:custom_rule_name</code>.</p>
+-- * SourceDetails [SourceDetails] <p>Provides the source and type of the event that causes AWS Config to evaluate your AWS resources.</p>
+-- Required key: Owner
+-- Required key: SourceIdentifier
+-- @return Source structure as a key-value pair table
+function M.Source(args)
+	assert(args, "You must provdide an argument table when creating Source")
 	local t = { 
-		["Owner"] = _Owner,
-		["SourceIdentifier"] = _SourceIdentifier,
-		["SourceDetails"] = _SourceDetails,
+		["Owner"] = args["Owner"],
+		["SourceIdentifier"] = args["SourceIdentifier"],
+		["SourceDetails"] = args["SourceDetails"],
 	}
 	asserts.AssertSource(t)
 	return t
@@ -733,13 +823,16 @@ end
 
 --- Create a structure of type ComplianceByConfigRule
 -- <p>Indicates whether an AWS Config rule is compliant. A rule is compliant if all of the resources that the rule evaluated comply with it, and it is noncompliant if any of these resources do not comply.</p>
--- @param _Compliance [Compliance] <p>Indicates whether the AWS Config rule is compliant.</p>
--- @param _ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule.</p>
-function M.ComplianceByConfigRule(_Compliance, _ConfigRuleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComplianceByConfigRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Compliance [Compliance] <p>Indicates whether the AWS Config rule is compliant.</p>
+-- * ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule.</p>
+-- @return ComplianceByConfigRule structure as a key-value pair table
+function M.ComplianceByConfigRule(args)
+	assert(args, "You must provdide an argument table when creating ComplianceByConfigRule")
 	local t = { 
-		["Compliance"] = _Compliance,
-		["ConfigRuleName"] = _ConfigRuleName,
+		["Compliance"] = args["Compliance"],
+		["ConfigRuleName"] = args["ConfigRuleName"],
 	}
 	asserts.AssertComplianceByConfigRule(t)
 	return t
@@ -757,8 +850,11 @@ end
 
 --- Create a structure of type InvalidDeliveryChannelNameException
 -- <p>The specified delivery channel name is not valid.</p>
-function M.InvalidDeliveryChannelNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDeliveryChannelNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidDeliveryChannelNameException structure as a key-value pair table
+function M.InvalidDeliveryChannelNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidDeliveryChannelNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidDeliveryChannelNameException(t)
@@ -777,8 +873,11 @@ end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>The specified next token is invalid. Specify the <code>NextToken</code> string that was returned in the previous response to get the next page of results.</p>
-function M.InvalidNextTokenException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidNextTokenException structure as a key-value pair table
+function M.InvalidNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
 	local t = { 
 	}
 	asserts.AssertInvalidNextTokenException(t)
@@ -798,11 +897,14 @@ end
 
 --- Create a structure of type StartConfigRulesEvaluationRequest
 -- <p/>
--- @param _ConfigRuleNames [ReevaluateConfigRuleNames] <p>The list of names of Config rules that you want to run evaluations for.</p>
-function M.StartConfigRulesEvaluationRequest(_ConfigRuleNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartConfigRulesEvaluationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigRuleNames [ReevaluateConfigRuleNames] <p>The list of names of Config rules that you want to run evaluations for.</p>
+-- @return StartConfigRulesEvaluationRequest structure as a key-value pair table
+function M.StartConfigRulesEvaluationRequest(args)
+	assert(args, "You must provdide an argument table when creating StartConfigRulesEvaluationRequest")
 	local t = { 
-		["ConfigRuleNames"] = _ConfigRuleNames,
+		["ConfigRuleNames"] = args["ConfigRuleNames"],
 	}
 	asserts.AssertStartConfigRulesEvaluationRequest(t)
 	return t
@@ -831,31 +933,34 @@ end
 
 --- Create a structure of type ConfigRuleEvaluationStatus
 -- <p>Status information for your AWS managed Config rules. The status includes information such as the last time the rule ran, the last time it failed, and the related error for the last failure.</p> <p>This action does not return status information about custom Config rules.</p>
--- @param _LastFailedEvaluationTime [Date] <p>The time that AWS Config last failed to evaluate your AWS resources against the rule.</p>
--- @param _LastSuccessfulInvocationTime [Date] <p>The time that AWS Config last successfully invoked the AWS Config rule to evaluate your AWS resources.</p>
--- @param _FirstEvaluationStarted [Boolean] <p>Indicates whether AWS Config has evaluated your resources against the rule at least once.</p> <ul> <li> <p> <code>true</code> - AWS Config has evaluated your AWS resources against the rule at least once.</p> </li> <li> <p> <code>false</code> - AWS Config has not once finished evaluating your AWS resources against the rule.</p> </li> </ul>
--- @param _LastFailedInvocationTime [Date] <p>The time that AWS Config last failed to invoke the AWS Config rule to evaluate your AWS resources.</p>
--- @param _ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule.</p>
--- @param _ConfigRuleArn [String] <p>The Amazon Resource Name (ARN) of the AWS Config rule.</p>
--- @param _FirstActivatedTime [Date] <p>The time that you first activated the AWS Config rule.</p>
--- @param _LastSuccessfulEvaluationTime [Date] <p>The time that AWS Config last successfully evaluated your AWS resources against the rule.</p>
--- @param _LastErrorCode [String] <p>The error code that AWS Config returned when the rule last failed.</p>
--- @param _LastErrorMessage [String] <p>The error message that AWS Config returned when the rule last failed.</p>
--- @param _ConfigRuleId [String] <p>The ID of the AWS Config rule.</p>
-function M.ConfigRuleEvaluationStatus(_LastFailedEvaluationTime, _LastSuccessfulInvocationTime, _FirstEvaluationStarted, _LastFailedInvocationTime, _ConfigRuleName, _ConfigRuleArn, _FirstActivatedTime, _LastSuccessfulEvaluationTime, _LastErrorCode, _LastErrorMessage, _ConfigRuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigRuleEvaluationStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastFailedEvaluationTime [Date] <p>The time that AWS Config last failed to evaluate your AWS resources against the rule.</p>
+-- * LastSuccessfulInvocationTime [Date] <p>The time that AWS Config last successfully invoked the AWS Config rule to evaluate your AWS resources.</p>
+-- * FirstEvaluationStarted [Boolean] <p>Indicates whether AWS Config has evaluated your resources against the rule at least once.</p> <ul> <li> <p> <code>true</code> - AWS Config has evaluated your AWS resources against the rule at least once.</p> </li> <li> <p> <code>false</code> - AWS Config has not once finished evaluating your AWS resources against the rule.</p> </li> </ul>
+-- * LastFailedInvocationTime [Date] <p>The time that AWS Config last failed to invoke the AWS Config rule to evaluate your AWS resources.</p>
+-- * ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule.</p>
+-- * ConfigRuleArn [String] <p>The Amazon Resource Name (ARN) of the AWS Config rule.</p>
+-- * FirstActivatedTime [Date] <p>The time that you first activated the AWS Config rule.</p>
+-- * LastSuccessfulEvaluationTime [Date] <p>The time that AWS Config last successfully evaluated your AWS resources against the rule.</p>
+-- * LastErrorCode [String] <p>The error code that AWS Config returned when the rule last failed.</p>
+-- * LastErrorMessage [String] <p>The error message that AWS Config returned when the rule last failed.</p>
+-- * ConfigRuleId [String] <p>The ID of the AWS Config rule.</p>
+-- @return ConfigRuleEvaluationStatus structure as a key-value pair table
+function M.ConfigRuleEvaluationStatus(args)
+	assert(args, "You must provdide an argument table when creating ConfigRuleEvaluationStatus")
 	local t = { 
-		["LastFailedEvaluationTime"] = _LastFailedEvaluationTime,
-		["LastSuccessfulInvocationTime"] = _LastSuccessfulInvocationTime,
-		["FirstEvaluationStarted"] = _FirstEvaluationStarted,
-		["LastFailedInvocationTime"] = _LastFailedInvocationTime,
-		["ConfigRuleName"] = _ConfigRuleName,
-		["ConfigRuleArn"] = _ConfigRuleArn,
-		["FirstActivatedTime"] = _FirstActivatedTime,
-		["LastSuccessfulEvaluationTime"] = _LastSuccessfulEvaluationTime,
-		["LastErrorCode"] = _LastErrorCode,
-		["LastErrorMessage"] = _LastErrorMessage,
-		["ConfigRuleId"] = _ConfigRuleId,
+		["LastFailedEvaluationTime"] = args["LastFailedEvaluationTime"],
+		["LastSuccessfulInvocationTime"] = args["LastSuccessfulInvocationTime"],
+		["FirstEvaluationStarted"] = args["FirstEvaluationStarted"],
+		["LastFailedInvocationTime"] = args["LastFailedInvocationTime"],
+		["ConfigRuleName"] = args["ConfigRuleName"],
+		["ConfigRuleArn"] = args["ConfigRuleArn"],
+		["FirstActivatedTime"] = args["FirstActivatedTime"],
+		["LastSuccessfulEvaluationTime"] = args["LastSuccessfulEvaluationTime"],
+		["LastErrorCode"] = args["LastErrorCode"],
+		["LastErrorMessage"] = args["LastErrorMessage"],
+		["ConfigRuleId"] = args["ConfigRuleId"],
 	}
 	asserts.AssertConfigRuleEvaluationStatus(t)
 	return t
@@ -873,8 +978,11 @@ end
 
 --- Create a structure of type NoSuchConfigurationRecorderException
 -- <p>You have specified a configuration recorder that does not exist.</p>
-function M.NoSuchConfigurationRecorderException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchConfigurationRecorderException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoSuchConfigurationRecorderException structure as a key-value pair table
+function M.NoSuchConfigurationRecorderException(args)
+	assert(args, "You must provdide an argument table when creating NoSuchConfigurationRecorderException")
 	local t = { 
 	}
 	asserts.AssertNoSuchConfigurationRecorderException(t)
@@ -893,8 +1001,11 @@ end
 
 --- Create a structure of type NoRunningConfigurationRecorderException
 -- <p>There is no configuration recorder running.</p>
-function M.NoRunningConfigurationRecorderException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoRunningConfigurationRecorderException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoRunningConfigurationRecorderException structure as a key-value pair table
+function M.NoRunningConfigurationRecorderException(args)
+	assert(args, "You must provdide an argument table when creating NoRunningConfigurationRecorderException")
 	local t = { 
 	}
 	asserts.AssertNoRunningConfigurationRecorderException(t)
@@ -913,8 +1024,11 @@ end
 
 --- Create a structure of type InsufficientPermissionsException
 -- <p>Indicates one of the following errors:</p> <ul> <li> <p>The rule cannot be created because the IAM role assigned to AWS Config lacks permissions to perform the config:Put* action.</p> </li> <li> <p>The AWS Lambda function cannot be invoked. Check the function ARN, and check the function's permissions.</p> </li> </ul>
-function M.InsufficientPermissionsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientPermissionsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InsufficientPermissionsException structure as a key-value pair table
+function M.InsufficientPermissionsException(args)
+	assert(args, "You must provdide an argument table when creating InsufficientPermissionsException")
 	local t = { 
 	}
 	asserts.AssertInsufficientPermissionsException(t)
@@ -933,8 +1047,11 @@ end
 
 --- Create a structure of type ResourceNotDiscoveredException
 -- <p>You have specified a resource that is either unknown or has not been discovered.</p>
-function M.ResourceNotDiscoveredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotDiscoveredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceNotDiscoveredException structure as a key-value pair table
+function M.ResourceNotDiscoveredException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotDiscoveredException")
 	local t = { 
 	}
 	asserts.AssertResourceNotDiscoveredException(t)
@@ -953,8 +1070,11 @@ end
 
 --- Create a structure of type InvalidS3KeyPrefixException
 -- <p>The specified Amazon S3 key prefix is not valid.</p>
-function M.InvalidS3KeyPrefixException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3KeyPrefixException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidS3KeyPrefixException structure as a key-value pair table
+function M.InvalidS3KeyPrefixException(args)
+	assert(args, "You must provdide an argument table when creating InvalidS3KeyPrefixException")
 	local t = { 
 	}
 	asserts.AssertInvalidS3KeyPrefixException(t)
@@ -974,11 +1094,14 @@ end
 
 --- Create a structure of type DeliverConfigSnapshotResponse
 -- <p>The output for the <a>DeliverConfigSnapshot</a> action in JSON format.</p>
--- @param _configSnapshotId [String] <p>The ID of the snapshot that is being created.</p>
-function M.DeliverConfigSnapshotResponse(_configSnapshotId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeliverConfigSnapshotResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configSnapshotId [String] <p>The ID of the snapshot that is being created.</p>
+-- @return DeliverConfigSnapshotResponse structure as a key-value pair table
+function M.DeliverConfigSnapshotResponse(args)
+	assert(args, "You must provdide an argument table when creating DeliverConfigSnapshotResponse")
 	local t = { 
-		["configSnapshotId"] = _configSnapshotId,
+		["configSnapshotId"] = args["configSnapshotId"],
 	}
 	asserts.AssertDeliverConfigSnapshotResponse(t)
 	return t
@@ -1001,19 +1124,22 @@ end
 
 --- Create a structure of type DeliveryChannel
 -- <p>The channel through which AWS Config delivers notifications and updated configuration states.</p>
--- @param _s3KeyPrefix [String] <p>The prefix for the specified Amazon S3 bucket.</p>
--- @param _configSnapshotDeliveryProperties [ConfigSnapshotDeliveryProperties] <p>The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.</p>
--- @param _snsTopicARN [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which AWS Config sends notifications about configuration changes.</p> <p>If you choose a topic from another account, the topic must have policies that grant access permissions to AWS Config. For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html">Permissions for the Amazon SNS Topic</a> in the AWS Config Developer Guide.</p>
--- @param _name [ChannelName] <p>The name of the delivery channel. By default, AWS Config assigns the name "default" when creating the delivery channel. To change the delivery channel name, you must use the DeleteDeliveryChannel action to delete your current delivery channel, and then you must use the PutDeliveryChannel command to create a delivery channel that has the desired name.</p>
--- @param _s3BucketName [String] <p>The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files.</p> <p>If you specify a bucket that belongs to another AWS account, that bucket must have policies that grant access permissions to AWS Config. For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html">Permissions for the Amazon S3 Bucket</a> in the AWS Config Developer Guide.</p>
-function M.DeliveryChannel(_s3KeyPrefix, _configSnapshotDeliveryProperties, _snsTopicARN, _name, _s3BucketName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeliveryChannel")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * s3KeyPrefix [String] <p>The prefix for the specified Amazon S3 bucket.</p>
+-- * configSnapshotDeliveryProperties [ConfigSnapshotDeliveryProperties] <p>The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.</p>
+-- * snsTopicARN [String] <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which AWS Config sends notifications about configuration changes.</p> <p>If you choose a topic from another account, the topic must have policies that grant access permissions to AWS Config. For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html">Permissions for the Amazon SNS Topic</a> in the AWS Config Developer Guide.</p>
+-- * name [ChannelName] <p>The name of the delivery channel. By default, AWS Config assigns the name "default" when creating the delivery channel. To change the delivery channel name, you must use the DeleteDeliveryChannel action to delete your current delivery channel, and then you must use the PutDeliveryChannel command to create a delivery channel that has the desired name.</p>
+-- * s3BucketName [String] <p>The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files.</p> <p>If you specify a bucket that belongs to another AWS account, that bucket must have policies that grant access permissions to AWS Config. For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html">Permissions for the Amazon S3 Bucket</a> in the AWS Config Developer Guide.</p>
+-- @return DeliveryChannel structure as a key-value pair table
+function M.DeliveryChannel(args)
+	assert(args, "You must provdide an argument table when creating DeliveryChannel")
 	local t = { 
-		["s3KeyPrefix"] = _s3KeyPrefix,
-		["configSnapshotDeliveryProperties"] = _configSnapshotDeliveryProperties,
-		["snsTopicARN"] = _snsTopicARN,
-		["name"] = _name,
-		["s3BucketName"] = _s3BucketName,
+		["s3KeyPrefix"] = args["s3KeyPrefix"],
+		["configSnapshotDeliveryProperties"] = args["configSnapshotDeliveryProperties"],
+		["snsTopicARN"] = args["snsTopicARN"],
+		["name"] = args["name"],
+		["s3BucketName"] = args["s3BucketName"],
 	}
 	asserts.AssertDeliveryChannel(t)
 	return t
@@ -1036,19 +1162,22 @@ end
 
 --- Create a structure of type DescribeComplianceByResourceRequest
 -- <p/>
--- @param _ResourceType [StringWithCharLimit256] <p>The types of AWS resources for which you want compliance information; for example, <code>AWS::EC2::Instance</code>. For this action, you can specify that the resource type is an AWS account by specifying <code>AWS::::Account</code>.</p>
--- @param _ResourceId [StringWithCharLimit256] <p>The ID of the AWS resource for which you want compliance information. You can specify only one resource ID. If you specify a resource ID, you must also specify a type for <code>ResourceType</code>.</p>
--- @param _NextToken [NextToken] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
--- @param _Limit [Limit] <p>The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
--- @param _ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code>.</p>
-function M.DescribeComplianceByResourceRequest(_ResourceType, _ResourceId, _NextToken, _Limit, _ComplianceTypes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComplianceByResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [StringWithCharLimit256] <p>The types of AWS resources for which you want compliance information; for example, <code>AWS::EC2::Instance</code>. For this action, you can specify that the resource type is an AWS account by specifying <code>AWS::::Account</code>.</p>
+-- * ResourceId [StringWithCharLimit256] <p>The ID of the AWS resource for which you want compliance information. You can specify only one resource ID. If you specify a resource ID, you must also specify a type for <code>ResourceType</code>.</p>
+-- * NextToken [NextToken] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- * Limit [Limit] <p>The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
+-- * ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code>.</p>
+-- @return DescribeComplianceByResourceRequest structure as a key-value pair table
+function M.DescribeComplianceByResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeComplianceByResourceRequest")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceId"] = _ResourceId,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
-		["ComplianceTypes"] = _ComplianceTypes,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceId"] = args["ResourceId"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
+		["ComplianceTypes"] = args["ComplianceTypes"],
 	}
 	asserts.AssertDescribeComplianceByResourceRequest(t)
 	return t
@@ -1066,8 +1195,11 @@ end
 
 --- Create a structure of type InvalidTimeRangeException
 -- <p>The specified time range is not valid. The earlier time is not chronologically before the later time.</p>
-function M.InvalidTimeRangeException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTimeRangeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTimeRangeException structure as a key-value pair table
+function M.InvalidTimeRangeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTimeRangeException")
 	local t = { 
 	}
 	asserts.AssertInvalidTimeRangeException(t)
@@ -1088,13 +1220,16 @@ end
 
 --- Create a structure of type ComplianceSummaryByResourceType
 -- <p>The number of AWS resources of a specific type that are compliant or noncompliant, up to a maximum of 100 for each compliance.</p>
--- @param _ResourceType [StringWithCharLimit256] <p>The type of AWS resource.</p>
--- @param _ComplianceSummary [ComplianceSummary] <p>The number of AWS resources that are compliant or noncompliant, up to a maximum of 100 for each compliance.</p>
-function M.ComplianceSummaryByResourceType(_ResourceType, _ComplianceSummary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComplianceSummaryByResourceType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [StringWithCharLimit256] <p>The type of AWS resource.</p>
+-- * ComplianceSummary [ComplianceSummary] <p>The number of AWS resources that are compliant or noncompliant, up to a maximum of 100 for each compliance.</p>
+-- @return ComplianceSummaryByResourceType structure as a key-value pair table
+function M.ComplianceSummaryByResourceType(args)
+	assert(args, "You must provdide an argument table when creating ComplianceSummaryByResourceType")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ComplianceSummary"] = _ComplianceSummary,
+		["ResourceType"] = args["ResourceType"],
+		["ComplianceSummary"] = args["ComplianceSummary"],
 	}
 	asserts.AssertComplianceSummaryByResourceType(t)
 	return t
@@ -1116,17 +1251,20 @@ end
 
 --- Create a structure of type ResourceIdentifier
 -- <p>The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.</p>
--- @param _resourceType [ResourceType] <p>The type of resource.</p>
--- @param _resourceId [ResourceId] <p>The ID of the resource (for example., <code>sg-xxxxxx</code>).</p>
--- @param _resourceDeletionTime [ResourceDeletionTime] <p>The time that the resource was deleted.</p>
--- @param _resourceName [ResourceName] <p>The custom name of the resource (if available).</p>
-function M.ResourceIdentifier(_resourceType, _resourceId, _resourceDeletionTime, _resourceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceIdentifier")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceType [ResourceType] <p>The type of resource.</p>
+-- * resourceId [ResourceId] <p>The ID of the resource (for example., <code>sg-xxxxxx</code>).</p>
+-- * resourceDeletionTime [ResourceDeletionTime] <p>The time that the resource was deleted.</p>
+-- * resourceName [ResourceName] <p>The custom name of the resource (if available).</p>
+-- @return ResourceIdentifier structure as a key-value pair table
+function M.ResourceIdentifier(args)
+	assert(args, "You must provdide an argument table when creating ResourceIdentifier")
 	local t = { 
-		["resourceType"] = _resourceType,
-		["resourceId"] = _resourceId,
-		["resourceDeletionTime"] = _resourceDeletionTime,
-		["resourceName"] = _resourceName,
+		["resourceType"] = args["resourceType"],
+		["resourceId"] = args["resourceId"],
+		["resourceDeletionTime"] = args["resourceDeletionTime"],
+		["resourceName"] = args["resourceName"],
 	}
 	asserts.AssertResourceIdentifier(t)
 	return t
@@ -1146,13 +1284,16 @@ end
 
 --- Create a structure of type DescribeConfigRulesRequest
 -- <p/>
--- @param _NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
--- @param _ConfigRuleNames [ConfigRuleNames] <p>The names of the AWS Config rules for which you want details. If you do not specify any names, AWS Config returns details for all your rules.</p>
-function M.DescribeConfigRulesRequest(_NextToken, _ConfigRuleNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigRulesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- * ConfigRuleNames [ConfigRuleNames] <p>The names of the AWS Config rules for which you want details. If you do not specify any names, AWS Config returns details for all your rules.</p>
+-- @return DescribeConfigRulesRequest structure as a key-value pair table
+function M.DescribeConfigRulesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigRulesRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ConfigRuleNames"] = _ConfigRuleNames,
+		["NextToken"] = args["NextToken"],
+		["ConfigRuleNames"] = args["ConfigRuleNames"],
 	}
 	asserts.AssertDescribeConfigRulesRequest(t)
 	return t
@@ -1170,8 +1311,11 @@ end
 
 --- Create a structure of type NoSuchConfigRuleException
 -- <p>One or more AWS Config rules in the request are invalid. Verify that the rule names are correct and try again.</p>
-function M.NoSuchConfigRuleException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchConfigRuleException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoSuchConfigRuleException structure as a key-value pair table
+function M.NoSuchConfigRuleException(args)
+	assert(args, "You must provdide an argument table when creating NoSuchConfigRuleException")
 	local t = { 
 	}
 	asserts.AssertNoSuchConfigRuleException(t)
@@ -1192,13 +1336,16 @@ end
 
 --- Create a structure of type ComplianceContributorCount
 -- <p>The number of AWS resources or AWS Config rules responsible for the current compliance of the item, up to a maximum number.</p>
--- @param _CappedCount [Integer] <p>The number of AWS resources or AWS Config rules responsible for the current compliance of the item.</p>
--- @param _CapExceeded [Boolean] <p>Indicates whether the maximum count is reached.</p>
-function M.ComplianceContributorCount(_CappedCount, _CapExceeded, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComplianceContributorCount")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CappedCount [Integer] <p>The number of AWS resources or AWS Config rules responsible for the current compliance of the item.</p>
+-- * CapExceeded [Boolean] <p>Indicates whether the maximum count is reached.</p>
+-- @return ComplianceContributorCount structure as a key-value pair table
+function M.ComplianceContributorCount(args)
+	assert(args, "You must provdide an argument table when creating ComplianceContributorCount")
 	local t = { 
-		["CappedCount"] = _CappedCount,
-		["CapExceeded"] = _CapExceeded,
+		["CappedCount"] = args["CappedCount"],
+		["CapExceeded"] = args["CapExceeded"],
 	}
 	asserts.AssertComplianceContributorCount(t)
 	return t
@@ -1218,12 +1365,15 @@ end
 
 --- Create a structure of type PutConfigRuleRequest
 --  
--- @param _ConfigRule [ConfigRule] <p>The rule that you want to add to your account.</p>
--- Required parameter: ConfigRule
-function M.PutConfigRuleRequest(_ConfigRule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutConfigRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigRule [ConfigRule] <p>The rule that you want to add to your account.</p>
+-- Required key: ConfigRule
+-- @return PutConfigRuleRequest structure as a key-value pair table
+function M.PutConfigRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating PutConfigRuleRequest")
 	local t = { 
-		["ConfigRule"] = _ConfigRule,
+		["ConfigRule"] = args["ConfigRule"],
 	}
 	asserts.AssertPutConfigRuleRequest(t)
 	return t
@@ -1244,15 +1394,18 @@ end
 
 --- Create a structure of type SourceDetail
 -- <p>Provides the source and the message types that trigger AWS Config to evaluate your AWS resources against a rule. It also provides the frequency with which you want AWS Config to run evaluations for the rule if the trigger type is periodic. You can specify the parameter values for <code>SourceDetail</code> only for custom rules. </p>
--- @param _EventSource [EventSource] <p>The source of the event, such as an AWS service, that triggers AWS Config to evaluate your AWS resources.</p>
--- @param _MessageType [MessageType] <p>The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:</p> <ul> <li> <p> <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a configuration item as a result of a resource change.</p> </li> <li> <p> <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers an oversized configuration item. AWS Config may generate this notification type when a resource changes and the notification exceeds the maximum size allowed by Amazon SNS.</p> </li> <li> <p> <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for <code>MaximumExecutionFrequency</code>.</p> </li> <li> <p> <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config delivers a configuration snapshot.</p> </li> </ul> <p>If you want your custom rule to be triggered by configuration changes, specify both <code>ConfigurationItemChangeNotification</code> and <code>OversizedConfigurationItemChangeNotification</code>. </p>
--- @param _MaximumExecutionFrequency [MaximumExecutionFrequency] <p>The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the <code>ScheduledNotification</code> value.</p> <note> <p>By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the <code>MaximumExecutionFrequency</code> parameter.</p> </note>
-function M.SourceDetail(_EventSource, _MessageType, _MaximumExecutionFrequency, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SourceDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventSource [EventSource] <p>The source of the event, such as an AWS service, that triggers AWS Config to evaluate your AWS resources.</p>
+-- * MessageType [MessageType] <p>The type of notification that triggers AWS Config to run an evaluation for a rule. You can specify the following notification types:</p> <ul> <li> <p> <code>ConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers a configuration item as a result of a resource change.</p> </li> <li> <p> <code>OversizedConfigurationItemChangeNotification</code> - Triggers an evaluation when AWS Config delivers an oversized configuration item. AWS Config may generate this notification type when a resource changes and the notification exceeds the maximum size allowed by Amazon SNS.</p> </li> <li> <p> <code>ScheduledNotification</code> - Triggers a periodic evaluation at the frequency specified for <code>MaximumExecutionFrequency</code>.</p> </li> <li> <p> <code>ConfigurationSnapshotDeliveryCompleted</code> - Triggers a periodic evaluation when AWS Config delivers a configuration snapshot.</p> </li> </ul> <p>If you want your custom rule to be triggered by configuration changes, specify both <code>ConfigurationItemChangeNotification</code> and <code>OversizedConfigurationItemChangeNotification</code>. </p>
+-- * MaximumExecutionFrequency [MaximumExecutionFrequency] <p>The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the <code>ScheduledNotification</code> value.</p> <note> <p>By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the <code>MaximumExecutionFrequency</code> parameter.</p> </note>
+-- @return SourceDetail structure as a key-value pair table
+function M.SourceDetail(args)
+	assert(args, "You must provdide an argument table when creating SourceDetail")
 	local t = { 
-		["EventSource"] = _EventSource,
-		["MessageType"] = _MessageType,
-		["MaximumExecutionFrequency"] = _MaximumExecutionFrequency,
+		["EventSource"] = args["EventSource"],
+		["MessageType"] = args["MessageType"],
+		["MaximumExecutionFrequency"] = args["MaximumExecutionFrequency"],
 	}
 	asserts.AssertSourceDetail(t)
 	return t
@@ -1270,8 +1423,11 @@ end
 
 --- Create a structure of type NoAvailableConfigurationRecorderException
 -- <p>There are no configuration recorders available to provide the role needed to describe your resources. Create a configuration recorder.</p>
-function M.NoAvailableConfigurationRecorderException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoAvailableConfigurationRecorderException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoAvailableConfigurationRecorderException structure as a key-value pair table
+function M.NoAvailableConfigurationRecorderException(args)
+	assert(args, "You must provdide an argument table when creating NoAvailableConfigurationRecorderException")
 	local t = { 
 	}
 	asserts.AssertNoAvailableConfigurationRecorderException(t)
@@ -1290,8 +1446,11 @@ end
 
 --- Create a structure of type InvalidLimitException
 -- <p>The specified limit is outside the allowable range.</p>
-function M.InvalidLimitException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLimitException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidLimitException structure as a key-value pair table
+function M.InvalidLimitException(args)
+	assert(args, "You must provdide an argument table when creating InvalidLimitException")
 	local t = { 
 	}
 	asserts.AssertInvalidLimitException(t)
@@ -1311,11 +1470,14 @@ end
 
 --- Create a structure of type ConfigSnapshotDeliveryProperties
 -- <p>Provides options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket in your delivery channel.</p> <note> <p>If you want to create a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot, see the following:</p> </note> <p>The frequency for a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot is set by one of two values, depending on which is less frequent:</p> <ul> <li> <p>The value for the <code>deliveryFrequency</code> parameter within the delivery channel configuration, which sets how often AWS Config delivers configuration snapshots. This value also sets how often AWS Config invokes evaluations for Config rules.</p> </li> <li> <p>The value for the <code>MaximumExecutionFrequency</code> parameter, which sets the maximum frequency with which AWS Config invokes evaluations for the rule. For more information, see <a>ConfigRule</a>.</p> </li> </ul> <p>If the <code>deliveryFrequency</code> value is less frequent than the <code>MaximumExecutionFrequency</code> value for a rule, AWS Config invokes the rule only as often as the <code>deliveryFrequency</code> value.</p> <ol> <li> <p>For example, you want your rule to run evaluations when AWS Config delivers the configuration snapshot.</p> </li> <li> <p>You specify the <code>MaximumExecutionFrequency</code> value for <code>Six_Hours</code>. </p> </li> <li> <p>You then specify the delivery channel <code>deliveryFrequency</code> value for <code>TwentyFour_Hours</code>.</p> </li> <li> <p>Because the value for <code>deliveryFrequency</code> is less frequent than <code>MaximumExecutionFrequency</code>, AWS Config invokes evaluations for the rule every 24 hours. </p> </li> </ol> <p>You should set the <code>MaximumExecutionFrequency</code> value to be at least as frequent as the <code>deliveryFrequency</code> value. You can view the <code>deliveryFrequency</code> value by using the <code>DescribeDeliveryChannnels</code> action.</p> <p>To update the <code>deliveryFrequency</code> with which AWS Config delivers your configuration snapshots, use the <code>PutDeliveryChannel</code> action.</p>
--- @param _deliveryFrequency [MaximumExecutionFrequency] <p>The frequency with which AWS Config delivers configuration snapshots.</p>
-function M.ConfigSnapshotDeliveryProperties(_deliveryFrequency, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigSnapshotDeliveryProperties")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deliveryFrequency [MaximumExecutionFrequency] <p>The frequency with which AWS Config delivers configuration snapshots.</p>
+-- @return ConfigSnapshotDeliveryProperties structure as a key-value pair table
+function M.ConfigSnapshotDeliveryProperties(args)
+	assert(args, "You must provdide an argument table when creating ConfigSnapshotDeliveryProperties")
 	local t = { 
-		["deliveryFrequency"] = _deliveryFrequency,
+		["deliveryFrequency"] = args["deliveryFrequency"],
 	}
 	asserts.AssertConfigSnapshotDeliveryProperties(t)
 	return t
@@ -1333,8 +1495,11 @@ end
 
 --- Create a structure of type ValidationException
 -- <p>The requested action is not valid.</p>
-function M.ValidationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ValidationException structure as a key-value pair table
+function M.ValidationException(args)
+	assert(args, "You must provdide an argument table when creating ValidationException")
 	local t = { 
 	}
 	asserts.AssertValidationException(t)
@@ -1356,15 +1521,18 @@ end
 
 --- Create a structure of type EvaluationResultQualifier
 -- <p>Identifies an AWS Config rule that evaluated an AWS resource, and provides the type and ID of the resource that the rule evaluated.</p>
--- @param _ResourceType [StringWithCharLimit256] <p>The type of AWS resource that was evaluated.</p>
--- @param _ResourceId [StringWithCharLimit256] <p>The ID of the evaluated AWS resource.</p>
--- @param _ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule that was used in the evaluation.</p>
-function M.EvaluationResultQualifier(_ResourceType, _ResourceId, _ConfigRuleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EvaluationResultQualifier")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [StringWithCharLimit256] <p>The type of AWS resource that was evaluated.</p>
+-- * ResourceId [StringWithCharLimit256] <p>The ID of the evaluated AWS resource.</p>
+-- * ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule that was used in the evaluation.</p>
+-- @return EvaluationResultQualifier structure as a key-value pair table
+function M.EvaluationResultQualifier(args)
+	assert(args, "You must provdide an argument table when creating EvaluationResultQualifier")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceId"] = _ResourceId,
-		["ConfigRuleName"] = _ConfigRuleName,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceId"] = args["ResourceId"],
+		["ConfigRuleName"] = args["ConfigRuleName"],
 	}
 	asserts.AssertEvaluationResultQualifier(t)
 	return t
@@ -1385,15 +1553,18 @@ end
 
 --- Create a structure of type DescribeComplianceByConfigRuleRequest
 -- <p/>
--- @param _ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code>.</p>
--- @param _NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
--- @param _ConfigRuleNames [ConfigRuleNames] <p>Specify one or more AWS Config rule names to filter the results by rule.</p>
-function M.DescribeComplianceByConfigRuleRequest(_ComplianceTypes, _NextToken, _ConfigRuleNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeComplianceByConfigRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code>.</p>
+-- * NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- * ConfigRuleNames [ConfigRuleNames] <p>Specify one or more AWS Config rule names to filter the results by rule.</p>
+-- @return DescribeComplianceByConfigRuleRequest structure as a key-value pair table
+function M.DescribeComplianceByConfigRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeComplianceByConfigRuleRequest")
 	local t = { 
-		["ComplianceTypes"] = _ComplianceTypes,
-		["NextToken"] = _NextToken,
-		["ConfigRuleNames"] = _ConfigRuleNames,
+		["ComplianceTypes"] = args["ComplianceTypes"],
+		["NextToken"] = args["NextToken"],
+		["ConfigRuleNames"] = args["ConfigRuleNames"],
 	}
 	asserts.AssertDescribeComplianceByConfigRuleRequest(t)
 	return t
@@ -1420,23 +1591,26 @@ end
 
 --- Create a structure of type Evaluation
 -- <p>Identifies an AWS resource and indicates whether it complies with the AWS Config rule that it was evaluated against.</p>
--- @param _OrderingTimestamp [OrderingTimestamp] <p>The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time indicates when AWS Config created the configuration item that triggered the evaluation. For periodic evaluations, the time indicates when AWS Config triggered the evaluation at the frequency that you specified (for example, every 24 hours).</p>
--- @param _ComplianceResourceId [StringWithCharLimit256] <p>The ID of the AWS resource that was evaluated.</p>
--- @param _ComplianceResourceType [StringWithCharLimit256] <p>The type of AWS resource that was evaluated.</p>
--- @param _Annotation [StringWithCharLimit256] <p>Supplementary information about how the evaluation determined the compliance.</p>
--- @param _ComplianceType [ComplianceType] <p>Indicates whether the AWS resource complies with the AWS Config rule that it was evaluated against.</p> <p>For the <code>Evaluation</code> data type, AWS Config supports only the <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code> values. AWS Config does not support the <code>INSUFFICIENT_DATA</code> value for this data type.</p> <p>Similarly, AWS Config does not accept <code>INSUFFICIENT_DATA</code> as the value for <code>ComplianceType</code> from a <code>PutEvaluations</code> request. For example, an AWS Lambda function for a custom Config rule cannot pass an <code>INSUFFICIENT_DATA</code> value to AWS Config.</p>
--- Required parameter: ComplianceResourceType
--- Required parameter: ComplianceResourceId
--- Required parameter: ComplianceType
--- Required parameter: OrderingTimestamp
-function M.Evaluation(_OrderingTimestamp, _ComplianceResourceId, _ComplianceResourceType, _Annotation, _ComplianceType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Evaluation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OrderingTimestamp [OrderingTimestamp] <p>The time of the event in AWS Config that triggered the evaluation. For event-based evaluations, the time indicates when AWS Config created the configuration item that triggered the evaluation. For periodic evaluations, the time indicates when AWS Config triggered the evaluation at the frequency that you specified (for example, every 24 hours).</p>
+-- * ComplianceResourceId [StringWithCharLimit256] <p>The ID of the AWS resource that was evaluated.</p>
+-- * ComplianceResourceType [StringWithCharLimit256] <p>The type of AWS resource that was evaluated.</p>
+-- * Annotation [StringWithCharLimit256] <p>Supplementary information about how the evaluation determined the compliance.</p>
+-- * ComplianceType [ComplianceType] <p>Indicates whether the AWS resource complies with the AWS Config rule that it was evaluated against.</p> <p>For the <code>Evaluation</code> data type, AWS Config supports only the <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code> values. AWS Config does not support the <code>INSUFFICIENT_DATA</code> value for this data type.</p> <p>Similarly, AWS Config does not accept <code>INSUFFICIENT_DATA</code> as the value for <code>ComplianceType</code> from a <code>PutEvaluations</code> request. For example, an AWS Lambda function for a custom Config rule cannot pass an <code>INSUFFICIENT_DATA</code> value to AWS Config.</p>
+-- Required key: ComplianceResourceType
+-- Required key: ComplianceResourceId
+-- Required key: ComplianceType
+-- Required key: OrderingTimestamp
+-- @return Evaluation structure as a key-value pair table
+function M.Evaluation(args)
+	assert(args, "You must provdide an argument table when creating Evaluation")
 	local t = { 
-		["OrderingTimestamp"] = _OrderingTimestamp,
-		["ComplianceResourceId"] = _ComplianceResourceId,
-		["ComplianceResourceType"] = _ComplianceResourceType,
-		["Annotation"] = _Annotation,
-		["ComplianceType"] = _ComplianceType,
+		["OrderingTimestamp"] = args["OrderingTimestamp"],
+		["ComplianceResourceId"] = args["ComplianceResourceId"],
+		["ComplianceResourceType"] = args["ComplianceResourceType"],
+		["Annotation"] = args["Annotation"],
+		["ComplianceType"] = args["ComplianceType"],
 	}
 	asserts.AssertEvaluation(t)
 	return t
@@ -1456,12 +1630,15 @@ end
 
 --- Create a structure of type DeleteDeliveryChannelRequest
 -- <p>The input for the <a>DeleteDeliveryChannel</a> action. The action accepts the following data in JSON format. </p>
--- @param _DeliveryChannelName [ChannelName] <p>The name of the delivery channel to delete.</p>
--- Required parameter: DeliveryChannelName
-function M.DeleteDeliveryChannelRequest(_DeliveryChannelName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeliveryChannelRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryChannelName [ChannelName] <p>The name of the delivery channel to delete.</p>
+-- Required key: DeliveryChannelName
+-- @return DeleteDeliveryChannelRequest structure as a key-value pair table
+function M.DeleteDeliveryChannelRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDeliveryChannelRequest")
 	local t = { 
-		["DeliveryChannelName"] = _DeliveryChannelName,
+		["DeliveryChannelName"] = args["DeliveryChannelName"],
 	}
 	asserts.AssertDeleteDeliveryChannelRequest(t)
 	return t
@@ -1479,8 +1656,11 @@ end
 
 --- Create a structure of type InsufficientDeliveryPolicyException
 -- <p>Your Amazon S3 bucket policy does not permit AWS Config to write to it.</p>
-function M.InsufficientDeliveryPolicyException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientDeliveryPolicyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InsufficientDeliveryPolicyException structure as a key-value pair table
+function M.InsufficientDeliveryPolicyException(args)
+	assert(args, "You must provdide an argument table when creating InsufficientDeliveryPolicyException")
 	local t = { 
 	}
 	asserts.AssertInsufficientDeliveryPolicyException(t)
@@ -1499,8 +1679,11 @@ end
 
 --- Create a structure of type ResourceInUseException
 -- <p>The rule is currently being deleted or the rule is deleting your evaluation results. Try your request again later.</p>
-function M.ResourceInUseException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceInUseException structure as a key-value pair table
+function M.ResourceInUseException(args)
+	assert(args, "You must provdide an argument table when creating ResourceInUseException")
 	local t = { 
 	}
 	asserts.AssertResourceInUseException(t)
@@ -1520,11 +1703,14 @@ end
 
 --- Create a structure of type DescribeConfigurationRecordersResponse
 -- <p>The output for the <a>DescribeConfigurationRecorders</a> action.</p>
--- @param _ConfigurationRecorders [ConfigurationRecorderList] <p>A list that contains the descriptions of the specified configuration recorders.</p>
-function M.DescribeConfigurationRecordersResponse(_ConfigurationRecorders, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationRecordersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationRecorders [ConfigurationRecorderList] <p>A list that contains the descriptions of the specified configuration recorders.</p>
+-- @return DescribeConfigurationRecordersResponse structure as a key-value pair table
+function M.DescribeConfigurationRecordersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigurationRecordersResponse")
 	local t = { 
-		["ConfigurationRecorders"] = _ConfigurationRecorders,
+		["ConfigurationRecorders"] = args["ConfigurationRecorders"],
 	}
 	asserts.AssertDescribeConfigurationRecordersResponse(t)
 	return t
@@ -1544,13 +1730,16 @@ end
 
 --- Create a structure of type DescribeConfigRuleEvaluationStatusResponse
 -- <p/>
--- @param _NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
--- @param _ConfigRulesEvaluationStatus [ConfigRuleEvaluationStatusList] <p>Status information about your AWS managed Config rules.</p>
-function M.DescribeConfigRuleEvaluationStatusResponse(_NextToken, _ConfigRulesEvaluationStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigRuleEvaluationStatusResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
+-- * ConfigRulesEvaluationStatus [ConfigRuleEvaluationStatusList] <p>Status information about your AWS managed Config rules.</p>
+-- @return DescribeConfigRuleEvaluationStatusResponse structure as a key-value pair table
+function M.DescribeConfigRuleEvaluationStatusResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigRuleEvaluationStatusResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ConfigRulesEvaluationStatus"] = _ConfigRulesEvaluationStatus,
+		["NextToken"] = args["NextToken"],
+		["ConfigRulesEvaluationStatus"] = args["ConfigRulesEvaluationStatus"],
 	}
 	asserts.AssertDescribeConfigRuleEvaluationStatusResponse(t)
 	return t
@@ -1571,15 +1760,18 @@ end
 
 --- Create a structure of type ComplianceSummary
 -- <p>The number of AWS Config rules or AWS resources that are compliant and noncompliant.</p>
--- @param _NonCompliantResourceCount [ComplianceContributorCount] <p>The number of AWS Config rules or AWS resources that are noncompliant, up to a maximum of 25 for rules and 100 for resources.</p>
--- @param _ComplianceSummaryTimestamp [Date] <p>The time that AWS Config created the compliance summary.</p>
--- @param _CompliantResourceCount [ComplianceContributorCount] <p>The number of AWS Config rules or AWS resources that are compliant, up to a maximum of 25 for rules and 100 for resources.</p>
-function M.ComplianceSummary(_NonCompliantResourceCount, _ComplianceSummaryTimestamp, _CompliantResourceCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComplianceSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NonCompliantResourceCount [ComplianceContributorCount] <p>The number of AWS Config rules or AWS resources that are noncompliant, up to a maximum of 25 for rules and 100 for resources.</p>
+-- * ComplianceSummaryTimestamp [Date] <p>The time that AWS Config created the compliance summary.</p>
+-- * CompliantResourceCount [ComplianceContributorCount] <p>The number of AWS Config rules or AWS resources that are compliant, up to a maximum of 25 for rules and 100 for resources.</p>
+-- @return ComplianceSummary structure as a key-value pair table
+function M.ComplianceSummary(args)
+	assert(args, "You must provdide an argument table when creating ComplianceSummary")
 	local t = { 
-		["NonCompliantResourceCount"] = _NonCompliantResourceCount,
-		["ComplianceSummaryTimestamp"] = _ComplianceSummaryTimestamp,
-		["CompliantResourceCount"] = _CompliantResourceCount,
+		["NonCompliantResourceCount"] = args["NonCompliantResourceCount"],
+		["ComplianceSummaryTimestamp"] = args["ComplianceSummaryTimestamp"],
+		["CompliantResourceCount"] = args["CompliantResourceCount"],
 	}
 	asserts.AssertComplianceSummary(t)
 	return t
@@ -1597,8 +1789,11 @@ end
 
 --- Create a structure of type InvalidRecordingGroupException
 -- <p>AWS Config throws an exception if the recording group does not contain a valid list of resource types. Invalid values could also be incorrectly formatted.</p>
-function M.InvalidRecordingGroupException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRecordingGroupException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRecordingGroupException structure as a key-value pair table
+function M.InvalidRecordingGroupException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRecordingGroupException")
 	local t = { 
 	}
 	asserts.AssertInvalidRecordingGroupException(t)
@@ -1619,12 +1814,15 @@ end
 
 --- Create a structure of type DeleteConfigRuleRequest
 -- <p/>
--- @param _ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule that you want to delete.</p>
--- Required parameter: ConfigRuleName
-function M.DeleteConfigRuleRequest(_ConfigRuleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConfigRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule that you want to delete.</p>
+-- Required key: ConfigRuleName
+-- @return DeleteConfigRuleRequest structure as a key-value pair table
+function M.DeleteConfigRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteConfigRuleRequest")
 	local t = { 
-		["ConfigRuleName"] = _ConfigRuleName,
+		["ConfigRuleName"] = args["ConfigRuleName"],
 	}
 	asserts.AssertDeleteConfigRuleRequest(t)
 	return t
@@ -1647,18 +1845,21 @@ end
 
 --- Create a structure of type GetComplianceDetailsByConfigRuleRequest
 -- <p/>
--- @param _NextToken [NextToken] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
--- @param _ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code>.</p>
--- @param _Limit [Limit] <p>The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
--- @param _ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule for which you want compliance information.</p>
--- Required parameter: ConfigRuleName
-function M.GetComplianceDetailsByConfigRuleRequest(_NextToken, _ComplianceTypes, _Limit, _ConfigRuleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceDetailsByConfigRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- * ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code>.</p>
+-- * Limit [Limit] <p>The maximum number of evaluation results returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
+-- * ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule for which you want compliance information.</p>
+-- Required key: ConfigRuleName
+-- @return GetComplianceDetailsByConfigRuleRequest structure as a key-value pair table
+function M.GetComplianceDetailsByConfigRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating GetComplianceDetailsByConfigRuleRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ComplianceTypes"] = _ComplianceTypes,
-		["Limit"] = _Limit,
-		["ConfigRuleName"] = _ConfigRuleName,
+		["NextToken"] = args["NextToken"],
+		["ComplianceTypes"] = args["ComplianceTypes"],
+		["Limit"] = args["Limit"],
+		["ConfigRuleName"] = args["ConfigRuleName"],
 	}
 	asserts.AssertGetComplianceDetailsByConfigRuleRequest(t)
 	return t
@@ -1678,12 +1879,15 @@ end
 
 --- Create a structure of type StopConfigurationRecorderRequest
 -- <p>The input for the <a>StopConfigurationRecorder</a> action.</p>
--- @param _ConfigurationRecorderName [RecorderName] <p>The name of the recorder object that records each configuration change made to the resources.</p>
--- Required parameter: ConfigurationRecorderName
-function M.StopConfigurationRecorderRequest(_ConfigurationRecorderName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopConfigurationRecorderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationRecorderName [RecorderName] <p>The name of the recorder object that records each configuration change made to the resources.</p>
+-- Required key: ConfigurationRecorderName
+-- @return StopConfigurationRecorderRequest structure as a key-value pair table
+function M.StopConfigurationRecorderRequest(args)
+	assert(args, "You must provdide an argument table when creating StopConfigurationRecorderRequest")
 	local t = { 
-		["ConfigurationRecorderName"] = _ConfigurationRecorderName,
+		["ConfigurationRecorderName"] = args["ConfigurationRecorderName"],
 	}
 	asserts.AssertStopConfigurationRecorderRequest(t)
 	return t
@@ -1701,8 +1905,11 @@ end
 
 --- Create a structure of type InvalidParameterValueException
 -- <p>One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.</p>
-function M.InvalidParameterValueException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidParameterValueException structure as a key-value pair table
+function M.InvalidParameterValueException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
 	local t = { 
 	}
 	asserts.AssertInvalidParameterValueException(t)
@@ -1730,25 +1937,28 @@ end
 
 --- Create a structure of type GetResourceConfigHistoryRequest
 -- <p>The input for the <a>GetResourceConfigHistory</a> action.</p>
--- @param _resourceType [ResourceType] <p>The resource type.</p>
--- @param _resourceId [ResourceId] <p>The ID of the resource (for example., <code>sg-xxxxxx</code>).</p>
--- @param _laterTime [LaterTime] <p>The time stamp that indicates a later time. If not specified, current time is taken.</p>
--- @param _chronologicalOrder [ChronologicalOrder] <p>The chronological order for configuration items listed. By default the results are listed in reverse chronological order.</p>
--- @param _limit [Limit] <p>The maximum number of configuration items returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
--- @param _nextToken [NextToken] <p>The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
--- @param _earlierTime [EarlierTime] <p>The time stamp that indicates an earlier time. If not specified, the action returns paginated results that contain configuration items that start from when the first configuration item was recorded.</p>
--- Required parameter: resourceType
--- Required parameter: resourceId
-function M.GetResourceConfigHistoryRequest(_resourceType, _resourceId, _laterTime, _chronologicalOrder, _limit, _nextToken, _earlierTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetResourceConfigHistoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceType [ResourceType] <p>The resource type.</p>
+-- * resourceId [ResourceId] <p>The ID of the resource (for example., <code>sg-xxxxxx</code>).</p>
+-- * laterTime [LaterTime] <p>The time stamp that indicates a later time. If not specified, current time is taken.</p>
+-- * chronologicalOrder [ChronologicalOrder] <p>The chronological order for configuration items listed. By default the results are listed in reverse chronological order.</p>
+-- * limit [Limit] <p>The maximum number of configuration items returned on each page. The default is 10. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
+-- * nextToken [NextToken] <p>The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- * earlierTime [EarlierTime] <p>The time stamp that indicates an earlier time. If not specified, the action returns paginated results that contain configuration items that start from when the first configuration item was recorded.</p>
+-- Required key: resourceType
+-- Required key: resourceId
+-- @return GetResourceConfigHistoryRequest structure as a key-value pair table
+function M.GetResourceConfigHistoryRequest(args)
+	assert(args, "You must provdide an argument table when creating GetResourceConfigHistoryRequest")
 	local t = { 
-		["resourceType"] = _resourceType,
-		["resourceId"] = _resourceId,
-		["laterTime"] = _laterTime,
-		["chronologicalOrder"] = _chronologicalOrder,
-		["limit"] = _limit,
-		["nextToken"] = _nextToken,
-		["earlierTime"] = _earlierTime,
+		["resourceType"] = args["resourceType"],
+		["resourceId"] = args["resourceId"],
+		["laterTime"] = args["laterTime"],
+		["chronologicalOrder"] = args["chronologicalOrder"],
+		["limit"] = args["limit"],
+		["nextToken"] = args["nextToken"],
+		["earlierTime"] = args["earlierTime"],
 	}
 	asserts.AssertGetResourceConfigHistoryRequest(t)
 	return t
@@ -1774,25 +1984,28 @@ end
 
 --- Create a structure of type ConfigurationRecorderStatus
 -- <p>The current status of the configuration recorder.</p>
--- @param _name [String] <p>The name of the configuration recorder.</p>
--- @param _lastErrorMessage [String] <p>The message indicating that the recording failed due to an error.</p>
--- @param _lastStatus [RecorderStatus] <p>The last (previous) status of the recorder.</p>
--- @param _recording [Boolean] <p>Specifies whether the recorder is currently recording or not.</p>
--- @param _lastStatusChangeTime [Date] <p>The time when the status was last changed.</p>
--- @param _lastStartTime [Date] <p>The time the recorder was last started.</p>
--- @param _lastErrorCode [String] <p>The error code indicating that the recording failed.</p>
--- @param _lastStopTime [Date] <p>The time the recorder was last stopped.</p>
-function M.ConfigurationRecorderStatus(_name, _lastErrorMessage, _lastStatus, _recording, _lastStatusChangeTime, _lastStartTime, _lastErrorCode, _lastStopTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationRecorderStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [String] <p>The name of the configuration recorder.</p>
+-- * lastErrorMessage [String] <p>The message indicating that the recording failed due to an error.</p>
+-- * lastStatus [RecorderStatus] <p>The last (previous) status of the recorder.</p>
+-- * recording [Boolean] <p>Specifies whether the recorder is currently recording or not.</p>
+-- * lastStatusChangeTime [Date] <p>The time when the status was last changed.</p>
+-- * lastStartTime [Date] <p>The time the recorder was last started.</p>
+-- * lastErrorCode [String] <p>The error code indicating that the recording failed.</p>
+-- * lastStopTime [Date] <p>The time the recorder was last stopped.</p>
+-- @return ConfigurationRecorderStatus structure as a key-value pair table
+function M.ConfigurationRecorderStatus(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationRecorderStatus")
 	local t = { 
-		["name"] = _name,
-		["lastErrorMessage"] = _lastErrorMessage,
-		["lastStatus"] = _lastStatus,
-		["recording"] = _recording,
-		["lastStatusChangeTime"] = _lastStatusChangeTime,
-		["lastStartTime"] = _lastStartTime,
-		["lastErrorCode"] = _lastErrorCode,
-		["lastStopTime"] = _lastStopTime,
+		["name"] = args["name"],
+		["lastErrorMessage"] = args["lastErrorMessage"],
+		["lastStatus"] = args["lastStatus"],
+		["recording"] = args["recording"],
+		["lastStatusChangeTime"] = args["lastStatusChangeTime"],
+		["lastStartTime"] = args["lastStartTime"],
+		["lastErrorCode"] = args["lastErrorCode"],
+		["lastStopTime"] = args["lastStopTime"],
 	}
 	asserts.AssertConfigurationRecorderStatus(t)
 	return t
@@ -1816,21 +2029,24 @@ end
 
 --- Create a structure of type ConfigExportDeliveryInfo
 -- <p>A list that contains the status of the delivery of either the snapshot or the configuration history to the specified Amazon S3 bucket.</p>
--- @param _lastSuccessfulTime [Date] <p>The time of the last successful delivery.</p>
--- @param _lastStatus [DeliveryStatus] <p>Status of the last attempted delivery.</p>
--- @param _lastAttemptTime [Date] <p>The time of the last attempted delivery.</p>
--- @param _nextDeliveryTime [Date] <p>The time that the next delivery occurs.</p>
--- @param _lastErrorCode [String] <p>The error code from the last attempted delivery.</p>
--- @param _lastErrorMessage [String] <p>The error message from the last attempted delivery.</p>
-function M.ConfigExportDeliveryInfo(_lastSuccessfulTime, _lastStatus, _lastAttemptTime, _nextDeliveryTime, _lastErrorCode, _lastErrorMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigExportDeliveryInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lastSuccessfulTime [Date] <p>The time of the last successful delivery.</p>
+-- * lastStatus [DeliveryStatus] <p>Status of the last attempted delivery.</p>
+-- * lastAttemptTime [Date] <p>The time of the last attempted delivery.</p>
+-- * nextDeliveryTime [Date] <p>The time that the next delivery occurs.</p>
+-- * lastErrorCode [String] <p>The error code from the last attempted delivery.</p>
+-- * lastErrorMessage [String] <p>The error message from the last attempted delivery.</p>
+-- @return ConfigExportDeliveryInfo structure as a key-value pair table
+function M.ConfigExportDeliveryInfo(args)
+	assert(args, "You must provdide an argument table when creating ConfigExportDeliveryInfo")
 	local t = { 
-		["lastSuccessfulTime"] = _lastSuccessfulTime,
-		["lastStatus"] = _lastStatus,
-		["lastAttemptTime"] = _lastAttemptTime,
-		["nextDeliveryTime"] = _nextDeliveryTime,
-		["lastErrorCode"] = _lastErrorCode,
-		["lastErrorMessage"] = _lastErrorMessage,
+		["lastSuccessfulTime"] = args["lastSuccessfulTime"],
+		["lastStatus"] = args["lastStatus"],
+		["lastAttemptTime"] = args["lastAttemptTime"],
+		["nextDeliveryTime"] = args["nextDeliveryTime"],
+		["lastErrorCode"] = args["lastErrorCode"],
+		["lastErrorMessage"] = args["lastErrorMessage"],
 	}
 	asserts.AssertConfigExportDeliveryInfo(t)
 	return t
@@ -1852,17 +2068,20 @@ end
 
 --- Create a structure of type Scope
 -- <p>Defines which resources trigger an evaluation for an AWS Config rule. The scope can include one or more resource types, a combination of a tag key and value, or a combination of one resource type and one resource ID. Specify a scope to constrain which resources trigger an evaluation for a rule. Otherwise, evaluations for the rule are triggered when any resource in your recording group changes in configuration.</p>
--- @param _TagKey [StringWithCharLimit128] <p>The tag key that is applied to only those AWS resources that you want you want to trigger an evaluation for the rule.</p>
--- @param _ComplianceResourceId [StringWithCharLimit256] <p>The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for <code>ComplianceResourceTypes</code>.</p>
--- @param _ComplianceResourceTypes [ComplianceResourceTypes] <p>The resource types of only those AWS resources that you want to trigger an evaluation for the rule. You can only specify one type if you also specify a resource ID for <code>ComplianceResourceId</code>.</p>
--- @param _TagValue [StringWithCharLimit256] <p>The tag value applied to only those AWS resources that you want to trigger an evaluation for the rule. If you specify a value for <code>TagValue</code>, you must also specify a value for <code>TagKey</code>.</p>
-function M.Scope(_TagKey, _ComplianceResourceId, _ComplianceResourceTypes, _TagValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Scope")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagKey [StringWithCharLimit128] <p>The tag key that is applied to only those AWS resources that you want you want to trigger an evaluation for the rule.</p>
+-- * ComplianceResourceId [StringWithCharLimit256] <p>The IDs of the only AWS resource that you want to trigger an evaluation for the rule. If you specify a resource ID, you must specify one resource type for <code>ComplianceResourceTypes</code>.</p>
+-- * ComplianceResourceTypes [ComplianceResourceTypes] <p>The resource types of only those AWS resources that you want to trigger an evaluation for the rule. You can only specify one type if you also specify a resource ID for <code>ComplianceResourceId</code>.</p>
+-- * TagValue [StringWithCharLimit256] <p>The tag value applied to only those AWS resources that you want to trigger an evaluation for the rule. If you specify a value for <code>TagValue</code>, you must also specify a value for <code>TagKey</code>.</p>
+-- @return Scope structure as a key-value pair table
+function M.Scope(args)
+	assert(args, "You must provdide an argument table when creating Scope")
 	local t = { 
-		["TagKey"] = _TagKey,
-		["ComplianceResourceId"] = _ComplianceResourceId,
-		["ComplianceResourceTypes"] = _ComplianceResourceTypes,
-		["TagValue"] = _TagValue,
+		["TagKey"] = args["TagKey"],
+		["ComplianceResourceId"] = args["ComplianceResourceId"],
+		["ComplianceResourceTypes"] = args["ComplianceResourceTypes"],
+		["TagValue"] = args["TagValue"],
 	}
 	asserts.AssertScope(t)
 	return t
@@ -1880,8 +2099,11 @@ end
 
 --- Create a structure of type InvalidSNSTopicARNException
 -- <p>The specified Amazon SNS topic does not exist.</p>
-function M.InvalidSNSTopicARNException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSNSTopicARNException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidSNSTopicARNException structure as a key-value pair table
+function M.InvalidSNSTopicARNException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSNSTopicARNException")
 	local t = { 
 	}
 	asserts.AssertInvalidSNSTopicARNException(t)
@@ -1900,8 +2122,11 @@ end
 
 --- Create a structure of type MaxNumberOfDeliveryChannelsExceededException
 -- <p>You have reached the limit on the number of delivery channels you can create.</p>
-function M.MaxNumberOfDeliveryChannelsExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaxNumberOfDeliveryChannelsExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MaxNumberOfDeliveryChannelsExceededException structure as a key-value pair table
+function M.MaxNumberOfDeliveryChannelsExceededException(args)
+	assert(args, "You must provdide an argument table when creating MaxNumberOfDeliveryChannelsExceededException")
 	local t = { 
 	}
 	asserts.AssertMaxNumberOfDeliveryChannelsExceededException(t)
@@ -1923,15 +2148,18 @@ end
 
 --- Create a structure of type ComplianceByResource
 -- <p>Indicates whether an AWS resource that is evaluated according to one or more AWS Config rules is compliant. A resource is compliant if it complies with all of the rules that evaluate it, and it is noncompliant if it does not comply with one or more of these rules.</p>
--- @param _ResourceType [StringWithCharLimit256] <p>The type of the AWS resource that was evaluated.</p>
--- @param _ResourceId [StringWithCharLimit256] <p>The ID of the AWS resource that was evaluated.</p>
--- @param _Compliance [Compliance] <p>Indicates whether the AWS resource complies with all of the AWS Config rules that evaluated it.</p>
-function M.ComplianceByResource(_ResourceType, _ResourceId, _Compliance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComplianceByResource")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [StringWithCharLimit256] <p>The type of the AWS resource that was evaluated.</p>
+-- * ResourceId [StringWithCharLimit256] <p>The ID of the AWS resource that was evaluated.</p>
+-- * Compliance [Compliance] <p>Indicates whether the AWS resource complies with all of the AWS Config rules that evaluated it.</p>
+-- @return ComplianceByResource structure as a key-value pair table
+function M.ComplianceByResource(args)
+	assert(args, "You must provdide an argument table when creating ComplianceByResource")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceId"] = _ResourceId,
-		["Compliance"] = _Compliance,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceId"] = args["ResourceId"],
+		["Compliance"] = args["Compliance"],
 	}
 	asserts.AssertComplianceByResource(t)
 	return t
@@ -1955,21 +2183,24 @@ end
 
 --- Create a structure of type EvaluationResult
 -- <p>The details of an AWS Config evaluation. Provides the AWS resource that was evaluated, the compliance of the resource, related timestamps, and supplementary information.</p>
--- @param _ComplianceType [ComplianceType] <p>Indicates whether the AWS resource complies with the AWS Config rule that evaluated it.</p> <p>For the <code>EvaluationResult</code> data type, AWS Config supports only the <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code> values. AWS Config does not support the <code>INSUFFICIENT_DATA</code> value for the <code>EvaluationResult</code> data type.</p>
--- @param _EvaluationResultIdentifier [EvaluationResultIdentifier] <p>Uniquely identifies the evaluation result.</p>
--- @param _ConfigRuleInvokedTime [Date] <p>The time when the AWS Config rule evaluated the AWS resource.</p>
--- @param _ResultToken [String] <p>An encrypted token that associates an evaluation with an AWS Config rule. The token identifies the rule, the AWS resource being evaluated, and the event that triggered the evaluation.</p>
--- @param _ResultRecordedTime [Date] <p>The time when AWS Config recorded the evaluation result.</p>
--- @param _Annotation [StringWithCharLimit256] <p>Supplementary information about how the evaluation determined the compliance.</p>
-function M.EvaluationResult(_ComplianceType, _EvaluationResultIdentifier, _ConfigRuleInvokedTime, _ResultToken, _ResultRecordedTime, _Annotation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EvaluationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComplianceType [ComplianceType] <p>Indicates whether the AWS resource complies with the AWS Config rule that evaluated it.</p> <p>For the <code>EvaluationResult</code> data type, AWS Config supports only the <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code> values. AWS Config does not support the <code>INSUFFICIENT_DATA</code> value for the <code>EvaluationResult</code> data type.</p>
+-- * EvaluationResultIdentifier [EvaluationResultIdentifier] <p>Uniquely identifies the evaluation result.</p>
+-- * ConfigRuleInvokedTime [Date] <p>The time when the AWS Config rule evaluated the AWS resource.</p>
+-- * ResultToken [String] <p>An encrypted token that associates an evaluation with an AWS Config rule. The token identifies the rule, the AWS resource being evaluated, and the event that triggered the evaluation.</p>
+-- * ResultRecordedTime [Date] <p>The time when AWS Config recorded the evaluation result.</p>
+-- * Annotation [StringWithCharLimit256] <p>Supplementary information about how the evaluation determined the compliance.</p>
+-- @return EvaluationResult structure as a key-value pair table
+function M.EvaluationResult(args)
+	assert(args, "You must provdide an argument table when creating EvaluationResult")
 	local t = { 
-		["ComplianceType"] = _ComplianceType,
-		["EvaluationResultIdentifier"] = _EvaluationResultIdentifier,
-		["ConfigRuleInvokedTime"] = _ConfigRuleInvokedTime,
-		["ResultToken"] = _ResultToken,
-		["ResultRecordedTime"] = _ResultRecordedTime,
-		["Annotation"] = _Annotation,
+		["ComplianceType"] = args["ComplianceType"],
+		["EvaluationResultIdentifier"] = args["EvaluationResultIdentifier"],
+		["ConfigRuleInvokedTime"] = args["ConfigRuleInvokedTime"],
+		["ResultToken"] = args["ResultToken"],
+		["ResultRecordedTime"] = args["ResultRecordedTime"],
+		["Annotation"] = args["Annotation"],
 	}
 	asserts.AssertEvaluationResult(t)
 	return t
@@ -1988,11 +2219,14 @@ end
 
 --- Create a structure of type GetComplianceSummaryByConfigRuleResponse
 -- <p/>
--- @param _ComplianceSummary [ComplianceSummary] <p>The number of AWS Config rules that are compliant and the number that are noncompliant, up to a maximum of 25 for each.</p>
-function M.GetComplianceSummaryByConfigRuleResponse(_ComplianceSummary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceSummaryByConfigRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComplianceSummary [ComplianceSummary] <p>The number of AWS Config rules that are compliant and the number that are noncompliant, up to a maximum of 25 for each.</p>
+-- @return GetComplianceSummaryByConfigRuleResponse structure as a key-value pair table
+function M.GetComplianceSummaryByConfigRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating GetComplianceSummaryByConfigRuleResponse")
 	local t = { 
-		["ComplianceSummary"] = _ComplianceSummary,
+		["ComplianceSummary"] = args["ComplianceSummary"],
 	}
 	asserts.AssertGetComplianceSummaryByConfigRuleResponse(t)
 	return t
@@ -2010,8 +2244,11 @@ end
 
 --- Create a structure of type InvalidRoleException
 -- <p>You have provided a null or empty role ARN.</p>
-function M.InvalidRoleException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRoleException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRoleException structure as a key-value pair table
+function M.InvalidRoleException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRoleException")
 	local t = { 
 	}
 	asserts.AssertInvalidRoleException(t)
@@ -2048,45 +2285,48 @@ end
 
 --- Create a structure of type ConfigurationItem
 -- <p>A list that contains detailed configurations of a specified resource.</p>
--- @param _configurationItemCaptureTime [ConfigurationItemCaptureTime] <p>The time when the configuration recording was initiated.</p>
--- @param _resourceCreationTime [ResourceCreationTime] <p>The time stamp when the resource was created.</p>
--- @param _availabilityZone [AvailabilityZone] <p>The Availability Zone associated with the resource.</p>
--- @param _awsRegion [AwsRegion] <p>The region where the resource resides.</p>
--- @param _tags [Tags] <p>A mapping of key value tags associated with the resource.</p>
--- @param _resourceType [ResourceType] <p>The type of AWS resource.</p>
--- @param _resourceId [ResourceId] <p>The ID of the resource (for example., <code>sg-xxxxxx</code>).</p>
--- @param _configurationStateId [ConfigurationStateId] <p>An identifier that indicates the ordering of the configuration items of a resource.</p>
--- @param _relatedEvents [RelatedEventList] <p>A list of CloudTrail event IDs.</p> <p>A populated field indicates that the current configuration was initiated by the events recorded in the CloudTrail log. For more information about CloudTrail, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html">What is AWS CloudTrail?</a>.</p> <p>An empty field indicates that the current configuration was not initiated by any event.</p>
--- @param _relationships [RelationshipList] <p>A list of related AWS resources.</p>
--- @param _arn [ARN] <p>The Amazon Resource Name (ARN) of the resource.</p>
--- @param _version [Version] <p>The version number of the resource configuration.</p>
--- @param _configurationItemMD5Hash [ConfigurationItemMD5Hash] <p>Unique MD5 hash that represents the configuration item's state.</p> <p>You can use MD5 hash to compare the states of two or more configuration items that are associated with the same resource.</p>
--- @param _supplementaryConfiguration [SupplementaryConfiguration] <p>Configuration attributes that AWS Config returns for certain resource types to supplement the information returned for the <code>configuration</code> parameter.</p>
--- @param _resourceName [ResourceName] <p>The custom name of the resource, if available.</p>
--- @param _configuration [Configuration] <p>The description of the resource configuration.</p>
--- @param _configurationItemStatus [ConfigurationItemStatus] <p>The configuration item status.</p>
--- @param _accountId [AccountId] <p>The 12 digit AWS account ID associated with the resource.</p>
-function M.ConfigurationItem(_configurationItemCaptureTime, _resourceCreationTime, _availabilityZone, _awsRegion, _tags, _resourceType, _resourceId, _configurationStateId, _relatedEvents, _relationships, _arn, _version, _configurationItemMD5Hash, _supplementaryConfiguration, _resourceName, _configuration, _configurationItemStatus, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigurationItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurationItemCaptureTime [ConfigurationItemCaptureTime] <p>The time when the configuration recording was initiated.</p>
+-- * resourceCreationTime [ResourceCreationTime] <p>The time stamp when the resource was created.</p>
+-- * availabilityZone [AvailabilityZone] <p>The Availability Zone associated with the resource.</p>
+-- * awsRegion [AwsRegion] <p>The region where the resource resides.</p>
+-- * tags [Tags] <p>A mapping of key value tags associated with the resource.</p>
+-- * resourceType [ResourceType] <p>The type of AWS resource.</p>
+-- * resourceId [ResourceId] <p>The ID of the resource (for example., <code>sg-xxxxxx</code>).</p>
+-- * configurationStateId [ConfigurationStateId] <p>An identifier that indicates the ordering of the configuration items of a resource.</p>
+-- * relatedEvents [RelatedEventList] <p>A list of CloudTrail event IDs.</p> <p>A populated field indicates that the current configuration was initiated by the events recorded in the CloudTrail log. For more information about CloudTrail, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html">What is AWS CloudTrail?</a>.</p> <p>An empty field indicates that the current configuration was not initiated by any event.</p>
+-- * relationships [RelationshipList] <p>A list of related AWS resources.</p>
+-- * arn [ARN] <p>The Amazon Resource Name (ARN) of the resource.</p>
+-- * version [Version] <p>The version number of the resource configuration.</p>
+-- * configurationItemMD5Hash [ConfigurationItemMD5Hash] <p>Unique MD5 hash that represents the configuration item's state.</p> <p>You can use MD5 hash to compare the states of two or more configuration items that are associated with the same resource.</p>
+-- * supplementaryConfiguration [SupplementaryConfiguration] <p>Configuration attributes that AWS Config returns for certain resource types to supplement the information returned for the <code>configuration</code> parameter.</p>
+-- * resourceName [ResourceName] <p>The custom name of the resource, if available.</p>
+-- * configuration [Configuration] <p>The description of the resource configuration.</p>
+-- * configurationItemStatus [ConfigurationItemStatus] <p>The configuration item status.</p>
+-- * accountId [AccountId] <p>The 12 digit AWS account ID associated with the resource.</p>
+-- @return ConfigurationItem structure as a key-value pair table
+function M.ConfigurationItem(args)
+	assert(args, "You must provdide an argument table when creating ConfigurationItem")
 	local t = { 
-		["configurationItemCaptureTime"] = _configurationItemCaptureTime,
-		["resourceCreationTime"] = _resourceCreationTime,
-		["availabilityZone"] = _availabilityZone,
-		["awsRegion"] = _awsRegion,
-		["tags"] = _tags,
-		["resourceType"] = _resourceType,
-		["resourceId"] = _resourceId,
-		["configurationStateId"] = _configurationStateId,
-		["relatedEvents"] = _relatedEvents,
-		["relationships"] = _relationships,
-		["arn"] = _arn,
-		["version"] = _version,
-		["configurationItemMD5Hash"] = _configurationItemMD5Hash,
-		["supplementaryConfiguration"] = _supplementaryConfiguration,
-		["resourceName"] = _resourceName,
-		["configuration"] = _configuration,
-		["configurationItemStatus"] = _configurationItemStatus,
-		["accountId"] = _accountId,
+		["configurationItemCaptureTime"] = args["configurationItemCaptureTime"],
+		["resourceCreationTime"] = args["resourceCreationTime"],
+		["availabilityZone"] = args["availabilityZone"],
+		["awsRegion"] = args["awsRegion"],
+		["tags"] = args["tags"],
+		["resourceType"] = args["resourceType"],
+		["resourceId"] = args["resourceId"],
+		["configurationStateId"] = args["configurationStateId"],
+		["relatedEvents"] = args["relatedEvents"],
+		["relationships"] = args["relationships"],
+		["arn"] = args["arn"],
+		["version"] = args["version"],
+		["configurationItemMD5Hash"] = args["configurationItemMD5Hash"],
+		["supplementaryConfiguration"] = args["supplementaryConfiguration"],
+		["resourceName"] = args["resourceName"],
+		["configuration"] = args["configuration"],
+		["configurationItemStatus"] = args["configurationItemStatus"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertConfigurationItem(t)
 	return t
@@ -2107,15 +2347,18 @@ end
 
 --- Create a structure of type DescribeConfigRuleEvaluationStatusRequest
 -- <p/>
--- @param _NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
--- @param _Limit [RuleLimit] <p>The number of rule evaluation results that you want returned.</p> <p>This parameter is required if the rule limit for your account is more than the default of 50 rules.</p> <p>For more information about requesting a rule limit increase, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">AWS Config Limits</a> in the <i>AWS General Reference Guide</i>.</p>
--- @param _ConfigRuleNames [ConfigRuleNames] <p>The name of the AWS managed Config rules for which you want status information. If you do not specify any names, AWS Config returns status information for all AWS managed Config rules that you use.</p>
-function M.DescribeConfigRuleEvaluationStatusRequest(_NextToken, _Limit, _ConfigRuleNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigRuleEvaluationStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- * Limit [RuleLimit] <p>The number of rule evaluation results that you want returned.</p> <p>This parameter is required if the rule limit for your account is more than the default of 50 rules.</p> <p>For more information about requesting a rule limit increase, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config">AWS Config Limits</a> in the <i>AWS General Reference Guide</i>.</p>
+-- * ConfigRuleNames [ConfigRuleNames] <p>The name of the AWS managed Config rules for which you want status information. If you do not specify any names, AWS Config returns status information for all AWS managed Config rules that you use.</p>
+-- @return DescribeConfigRuleEvaluationStatusRequest structure as a key-value pair table
+function M.DescribeConfigRuleEvaluationStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigRuleEvaluationStatusRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
-		["ConfigRuleNames"] = _ConfigRuleNames,
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
+		["ConfigRuleNames"] = args["ConfigRuleNames"],
 	}
 	asserts.AssertDescribeConfigRuleEvaluationStatusRequest(t)
 	return t
@@ -2135,13 +2378,16 @@ end
 
 --- Create a structure of type GetComplianceDetailsByConfigRuleResponse
 -- <p/>
--- @param _EvaluationResults [EvaluationResults] <p>Indicates whether the AWS resource complies with the specified AWS Config rule.</p>
--- @param _NextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
-function M.GetComplianceDetailsByConfigRuleResponse(_EvaluationResults, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceDetailsByConfigRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EvaluationResults [EvaluationResults] <p>Indicates whether the AWS resource complies with the specified AWS Config rule.</p>
+-- * NextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
+-- @return GetComplianceDetailsByConfigRuleResponse structure as a key-value pair table
+function M.GetComplianceDetailsByConfigRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating GetComplianceDetailsByConfigRuleResponse")
 	local t = { 
-		["EvaluationResults"] = _EvaluationResults,
-		["NextToken"] = _NextToken,
+		["EvaluationResults"] = args["EvaluationResults"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertGetComplianceDetailsByConfigRuleResponse(t)
 	return t
@@ -2160,11 +2406,14 @@ end
 
 --- Create a structure of type DescribeDeliveryChannelsRequest
 -- <p>The input for the <a>DescribeDeliveryChannels</a> action.</p>
--- @param _DeliveryChannelNames [DeliveryChannelNameList] <p>A list of delivery channel names.</p>
-function M.DescribeDeliveryChannelsRequest(_DeliveryChannelNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeliveryChannelsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryChannelNames [DeliveryChannelNameList] <p>A list of delivery channel names.</p>
+-- @return DescribeDeliveryChannelsRequest structure as a key-value pair table
+function M.DescribeDeliveryChannelsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDeliveryChannelsRequest")
 	local t = { 
-		["DeliveryChannelNames"] = _DeliveryChannelNames,
+		["DeliveryChannelNames"] = args["DeliveryChannelNames"],
 	}
 	asserts.AssertDescribeDeliveryChannelsRequest(t)
 	return t
@@ -2186,17 +2435,20 @@ end
 
 --- Create a structure of type ConfigStreamDeliveryInfo
 -- <p>A list that contains the status of the delivery of the configuration stream notification to the Amazon SNS topic.</p>
--- @param _lastStatusChangeTime [Date] <p>The time from the last status change.</p>
--- @param _lastErrorCode [String] <p>The error code from the last attempted delivery.</p>
--- @param _lastStatus [DeliveryStatus] <p>Status of the last attempted delivery.</p> <p> <b>Note</b> Providing an SNS topic on a <a href="http://docs.aws.amazon.com/config/latest/APIReference/API_DeliveryChannel.html">DeliveryChannel</a> for AWS Config is optional. If the SNS delivery is turned off, the last status will be <b>Not_Applicable</b>.</p>
--- @param _lastErrorMessage [String] <p>The error message from the last attempted delivery.</p>
-function M.ConfigStreamDeliveryInfo(_lastStatusChangeTime, _lastErrorCode, _lastStatus, _lastErrorMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigStreamDeliveryInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lastStatusChangeTime [Date] <p>The time from the last status change.</p>
+-- * lastErrorCode [String] <p>The error code from the last attempted delivery.</p>
+-- * lastStatus [DeliveryStatus] <p>Status of the last attempted delivery.</p> <p> <b>Note</b> Providing an SNS topic on a <a href="http://docs.aws.amazon.com/config/latest/APIReference/API_DeliveryChannel.html">DeliveryChannel</a> for AWS Config is optional. If the SNS delivery is turned off, the last status will be <b>Not_Applicable</b>.</p>
+-- * lastErrorMessage [String] <p>The error message from the last attempted delivery.</p>
+-- @return ConfigStreamDeliveryInfo structure as a key-value pair table
+function M.ConfigStreamDeliveryInfo(args)
+	assert(args, "You must provdide an argument table when creating ConfigStreamDeliveryInfo")
 	local t = { 
-		["lastStatusChangeTime"] = _lastStatusChangeTime,
-		["lastErrorCode"] = _lastErrorCode,
-		["lastStatus"] = _lastStatus,
-		["lastErrorMessage"] = _lastErrorMessage,
+		["lastStatusChangeTime"] = args["lastStatusChangeTime"],
+		["lastErrorCode"] = args["lastErrorCode"],
+		["lastStatus"] = args["lastStatus"],
+		["lastErrorMessage"] = args["lastErrorMessage"],
 	}
 	asserts.AssertConfigStreamDeliveryInfo(t)
 	return t
@@ -2217,15 +2469,18 @@ end
 
 --- Create a structure of type RecordingGroup
 -- <p>Specifies the types of AWS resource for which AWS Config records configuration changes.</p> <p>In the recording group, you specify whether all supported types or specific types of resources are recorded.</p> <p>By default, AWS Config records configuration changes for all supported types of regional resources that AWS Config discovers in the region in which it is running. Regional resources are tied to a region and can be used only in that region. Examples of regional resources are EC2 instances and EBS volumes.</p> <p>You can also have AWS Config record configuration changes for supported types of global resources (for example, IAM resources). Global resources are not tied to an individual region and can be used in all regions.</p> <important> <p>The configuration details for any global resource are the same in all regions. If you customize AWS Config in multiple regions to record global resources, it will create multiple configuration items each time a global resource changes: one configuration item for each region. These configuration items will contain identical data. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources, unless you want the configuration items to be available in multiple regions.</p> </important> <p>If you don't want AWS Config to record all resources, you can specify which types of resources it will record with the <code>resourceTypes</code> parameter.</p> <p>For a list of supported resource types, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources">Supported resource types</a>.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/select-resources.html">Selecting Which Resources AWS Config Records</a>.</p>
--- @param _allSupported [AllSupported] <p>Specifies whether AWS Config records configuration changes for every supported type of regional resource.</p> <p>If you set this option to <code>true</code>, when AWS Config adds support for a new type of regional resource, it automatically starts recording resources of that type.</p> <p>If you set this option to <code>true</code>, you cannot enumerate a list of <code>resourceTypes</code>.</p>
--- @param _resourceTypes [ResourceTypeList] <p>A comma-separated list that specifies the types of AWS resources for which AWS Config records configuration changes (for example, <code>AWS::EC2::Instance</code> or <code>AWS::CloudTrail::Trail</code>).</p> <p>Before you can set this option to <code>true</code>, you must set the <code>allSupported</code> option to <code>false</code>.</p> <p>If you set this option to <code>true</code>, when AWS Config adds support for a new type of resource, it will not record resources of that type unless you manually add that type to your recording group.</p> <p>For a list of valid <code>resourceTypes</code> values, see the <b>resourceType Value</b> column in <a href="http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources">Supported AWS Resource Types</a>.</p>
--- @param _includeGlobalResourceTypes [IncludeGlobalResourceTypes] <p>Specifies whether AWS Config includes all supported types of global resources (for example, IAM resources) with the resources that it records.</p> <p>Before you can set this option to <code>true</code>, you must set the <code>allSupported</code> option to <code>true</code>.</p> <p>If you set this option to <code>true</code>, when AWS Config adds support for a new type of global resource, it automatically starts recording resources of that type.</p> <p>The configuration details for any global resource are the same in all regions. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources.</p>
-function M.RecordingGroup(_allSupported, _resourceTypes, _includeGlobalResourceTypes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecordingGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * allSupported [AllSupported] <p>Specifies whether AWS Config records configuration changes for every supported type of regional resource.</p> <p>If you set this option to <code>true</code>, when AWS Config adds support for a new type of regional resource, it automatically starts recording resources of that type.</p> <p>If you set this option to <code>true</code>, you cannot enumerate a list of <code>resourceTypes</code>.</p>
+-- * resourceTypes [ResourceTypeList] <p>A comma-separated list that specifies the types of AWS resources for which AWS Config records configuration changes (for example, <code>AWS::EC2::Instance</code> or <code>AWS::CloudTrail::Trail</code>).</p> <p>Before you can set this option to <code>true</code>, you must set the <code>allSupported</code> option to <code>false</code>.</p> <p>If you set this option to <code>true</code>, when AWS Config adds support for a new type of resource, it will not record resources of that type unless you manually add that type to your recording group.</p> <p>For a list of valid <code>resourceTypes</code> values, see the <b>resourceType Value</b> column in <a href="http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources">Supported AWS Resource Types</a>.</p>
+-- * includeGlobalResourceTypes [IncludeGlobalResourceTypes] <p>Specifies whether AWS Config includes all supported types of global resources (for example, IAM resources) with the resources that it records.</p> <p>Before you can set this option to <code>true</code>, you must set the <code>allSupported</code> option to <code>true</code>.</p> <p>If you set this option to <code>true</code>, when AWS Config adds support for a new type of global resource, it automatically starts recording resources of that type.</p> <p>The configuration details for any global resource are the same in all regions. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources.</p>
+-- @return RecordingGroup structure as a key-value pair table
+function M.RecordingGroup(args)
+	assert(args, "You must provdide an argument table when creating RecordingGroup")
 	local t = { 
-		["allSupported"] = _allSupported,
-		["resourceTypes"] = _resourceTypes,
-		["includeGlobalResourceTypes"] = _includeGlobalResourceTypes,
+		["allSupported"] = args["allSupported"],
+		["resourceTypes"] = args["resourceTypes"],
+		["includeGlobalResourceTypes"] = args["includeGlobalResourceTypes"],
 	}
 	asserts.AssertRecordingGroup(t)
 	return t
@@ -2245,13 +2500,16 @@ end
 
 --- Create a structure of type EvaluationResultIdentifier
 -- <p>Uniquely identifies an evaluation result.</p>
--- @param _OrderingTimestamp [Date] <p>The time of the event that triggered the evaluation of your AWS resources. The time can indicate when AWS Config delivered a configuration item change notification, or it can indicate when AWS Config delivered the configuration snapshot, depending on which event triggered the evaluation.</p>
--- @param _EvaluationResultQualifier [EvaluationResultQualifier] <p>Identifies an AWS Config rule used to evaluate an AWS resource, and provides the type and ID of the evaluated resource.</p>
-function M.EvaluationResultIdentifier(_OrderingTimestamp, _EvaluationResultQualifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EvaluationResultIdentifier")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OrderingTimestamp [Date] <p>The time of the event that triggered the evaluation of your AWS resources. The time can indicate when AWS Config delivered a configuration item change notification, or it can indicate when AWS Config delivered the configuration snapshot, depending on which event triggered the evaluation.</p>
+-- * EvaluationResultQualifier [EvaluationResultQualifier] <p>Identifies an AWS Config rule used to evaluate an AWS resource, and provides the type and ID of the evaluated resource.</p>
+-- @return EvaluationResultIdentifier structure as a key-value pair table
+function M.EvaluationResultIdentifier(args)
+	assert(args, "You must provdide an argument table when creating EvaluationResultIdentifier")
 	local t = { 
-		["OrderingTimestamp"] = _OrderingTimestamp,
-		["EvaluationResultQualifier"] = _EvaluationResultQualifier,
+		["OrderingTimestamp"] = args["OrderingTimestamp"],
+		["EvaluationResultQualifier"] = args["EvaluationResultQualifier"],
 	}
 	asserts.AssertEvaluationResultIdentifier(t)
 	return t
@@ -2271,13 +2529,16 @@ end
 
 --- Create a structure of type GetResourceConfigHistoryResponse
 -- <p>The output for the <a>GetResourceConfigHistory</a> action.</p>
--- @param _configurationItems [ConfigurationItemList] <p>A list that contains the configuration history of one or more resources.</p>
--- @param _nextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
-function M.GetResourceConfigHistoryResponse(_configurationItems, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetResourceConfigHistoryResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurationItems [ConfigurationItemList] <p>A list that contains the configuration history of one or more resources.</p>
+-- * nextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
+-- @return GetResourceConfigHistoryResponse structure as a key-value pair table
+function M.GetResourceConfigHistoryResponse(args)
+	assert(args, "You must provdide an argument table when creating GetResourceConfigHistoryResponse")
 	local t = { 
-		["configurationItems"] = _configurationItems,
-		["nextToken"] = _nextToken,
+		["configurationItems"] = args["configurationItems"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertGetResourceConfigHistoryResponse(t)
 	return t
@@ -2302,22 +2563,25 @@ end
 
 --- Create a structure of type ListDiscoveredResourcesRequest
 -- <p/>
--- @param _resourceType [ResourceType] <p>The type of resources that you want AWS Config to list in the response.</p>
--- @param _resourceIds [ResourceIdList] <p>The IDs of only those resources that you want AWS Config to list in the response. If you do not specify this parameter, AWS Config lists all resources of the specified type that it has discovered.</p>
--- @param _limit [Limit] <p>The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
--- @param _includeDeletedResources [Boolean] <p>Specifies whether AWS Config includes deleted resources in the results. By default, deleted resources are not included.</p>
--- @param _resourceName [ResourceName] <p>The custom name of only those resources that you want AWS Config to list in the response. If you do not specify this parameter, AWS Config lists all resources of the specified type that it has discovered.</p>
--- @param _nextToken [NextToken] <p>The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
--- Required parameter: resourceType
-function M.ListDiscoveredResourcesRequest(_resourceType, _resourceIds, _limit, _includeDeletedResources, _resourceName, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDiscoveredResourcesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceType [ResourceType] <p>The type of resources that you want AWS Config to list in the response.</p>
+-- * resourceIds [ResourceIdList] <p>The IDs of only those resources that you want AWS Config to list in the response. If you do not specify this parameter, AWS Config lists all resources of the specified type that it has discovered.</p>
+-- * limit [Limit] <p>The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a limit greater than 100. If you specify 0, AWS Config uses the default.</p>
+-- * includeDeletedResources [Boolean] <p>Specifies whether AWS Config includes deleted resources in the results. By default, deleted resources are not included.</p>
+-- * resourceName [ResourceName] <p>The custom name of only those resources that you want AWS Config to list in the response. If you do not specify this parameter, AWS Config lists all resources of the specified type that it has discovered.</p>
+-- * nextToken [NextToken] <p>The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- Required key: resourceType
+-- @return ListDiscoveredResourcesRequest structure as a key-value pair table
+function M.ListDiscoveredResourcesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDiscoveredResourcesRequest")
 	local t = { 
-		["resourceType"] = _resourceType,
-		["resourceIds"] = _resourceIds,
-		["limit"] = _limit,
-		["includeDeletedResources"] = _includeDeletedResources,
-		["resourceName"] = _resourceName,
-		["nextToken"] = _nextToken,
+		["resourceType"] = args["resourceType"],
+		["resourceIds"] = args["resourceIds"],
+		["limit"] = args["limit"],
+		["includeDeletedResources"] = args["includeDeletedResources"],
+		["resourceName"] = args["resourceName"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListDiscoveredResourcesRequest(t)
 	return t
@@ -2337,13 +2601,16 @@ end
 
 --- Create a structure of type DescribeConfigRulesResponse
 -- <p/>
--- @param _ConfigRules [ConfigRules] <p>The details about your AWS Config rules.</p>
--- @param _NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
-function M.DescribeConfigRulesResponse(_ConfigRules, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigRulesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigRules [ConfigRules] <p>The details about your AWS Config rules.</p>
+-- * NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
+-- @return DescribeConfigRulesResponse structure as a key-value pair table
+function M.DescribeConfigRulesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigRulesResponse")
 	local t = { 
-		["ConfigRules"] = _ConfigRules,
-		["NextToken"] = _NextToken,
+		["ConfigRules"] = args["ConfigRules"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeConfigRulesResponse(t)
 	return t
@@ -2362,11 +2629,14 @@ end
 
 --- Create a structure of type GetComplianceSummaryByResourceTypeRequest
 -- <p/>
--- @param _ResourceTypes [ResourceTypes] <p>Specify one or more resource types to get the number of resources that are compliant and the number that are noncompliant for each resource type.</p> <p>For this request, you can specify an AWS resource type such as <code>AWS::EC2::Instance</code>, and you can specify that the resource type is an AWS account by specifying <code>AWS::::Account</code>.</p>
-function M.GetComplianceSummaryByResourceTypeRequest(_ResourceTypes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceSummaryByResourceTypeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceTypes [ResourceTypes] <p>Specify one or more resource types to get the number of resources that are compliant and the number that are noncompliant for each resource type.</p> <p>For this request, you can specify an AWS resource type such as <code>AWS::EC2::Instance</code>, and you can specify that the resource type is an AWS account by specifying <code>AWS::::Account</code>.</p>
+-- @return GetComplianceSummaryByResourceTypeRequest structure as a key-value pair table
+function M.GetComplianceSummaryByResourceTypeRequest(args)
+	assert(args, "You must provdide an argument table when creating GetComplianceSummaryByResourceTypeRequest")
 	local t = { 
-		["ResourceTypes"] = _ResourceTypes,
+		["ResourceTypes"] = args["ResourceTypes"],
 	}
 	asserts.AssertGetComplianceSummaryByResourceTypeRequest(t)
 	return t
@@ -2390,19 +2660,22 @@ end
 
 --- Create a structure of type GetComplianceDetailsByResourceRequest
 -- <p/>
--- @param _ResourceType [StringWithCharLimit256] <p>The type of the AWS resource for which you want compliance information.</p>
--- @param _ResourceId [StringWithCharLimit256] <p>The ID of the AWS resource for which you want compliance information.</p>
--- @param _NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
--- @param _ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code>.</p>
--- Required parameter: ResourceType
--- Required parameter: ResourceId
-function M.GetComplianceDetailsByResourceRequest(_ResourceType, _ResourceId, _NextToken, _ComplianceTypes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetComplianceDetailsByResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [StringWithCharLimit256] <p>The type of the AWS resource for which you want compliance information.</p>
+-- * ResourceId [StringWithCharLimit256] <p>The ID of the AWS resource for which you want compliance information.</p>
+-- * NextToken [String] <p>The <code>NextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+-- * ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>NOT_APPLICABLE</code>.</p>
+-- Required key: ResourceType
+-- Required key: ResourceId
+-- @return GetComplianceDetailsByResourceRequest structure as a key-value pair table
+function M.GetComplianceDetailsByResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating GetComplianceDetailsByResourceRequest")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceId"] = _ResourceId,
-		["NextToken"] = _NextToken,
-		["ComplianceTypes"] = _ComplianceTypes,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceId"] = args["ResourceId"],
+		["NextToken"] = args["NextToken"],
+		["ComplianceTypes"] = args["ComplianceTypes"],
 	}
 	asserts.AssertGetComplianceDetailsByResourceRequest(t)
 	return t
@@ -2430,28 +2703,31 @@ end
 
 --- Create a structure of type ConfigRule
 -- <p>An AWS Config rule represents an AWS Lambda function that you create for a custom rule or a predefined function for an AWS managed rule. The function evaluates configuration items to assess whether your AWS resources comply with your desired configurations. This function can run when AWS Config detects a configuration change to an AWS resource and at a periodic frequency that you choose (for example, every 24 hours).</p> <note> <p>You can use the AWS CLI and AWS SDKs if you want to create a rule that triggers evaluations for your resources when AWS Config delivers the configuration snapshot. For more information, see <a>ConfigSnapshotDeliveryProperties</a>.</p> </note> <p>For more information about developing and using AWS Config rules, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html">Evaluating AWS Resource Configurations with AWS Config</a> in the <i>AWS Config Developer Guide</i>.</p>
--- @param _ConfigRuleState [ConfigRuleState] <p>Indicates whether the AWS Config rule is active or is currently being deleted by AWS Config. It can also indicate the evaluation status for the Config rule.</p> <p>AWS Config sets the state of the rule to <code>EVALUATING</code> temporarily after you use the <code>StartConfigRulesEvaluation</code> request to evaluate your resources against the Config rule.</p> <p>AWS Config sets the state of the rule to <code>DELETING_RESULTS</code> temporarily after you use the <code>DeleteEvaluationResults</code> request to delete the current evaluation results for the Config rule.</p> <p>AWS Config sets the state of a rule to <code>DELETING</code> temporarily after you use the <code>DeleteConfigRule</code> request to delete the rule. After AWS Config deletes the rule, the rule and all of its evaluations are erased and are no longer available.</p>
--- @param _Description [EmptiableStringWithCharLimit256] <p>The description that you provide for the AWS Config rule.</p>
--- @param _ConfigRuleName [StringWithCharLimit64] <p>The name that you assign to the AWS Config rule. The name is required if you are adding a new rule.</p>
--- @param _ConfigRuleArn [String] <p>The Amazon Resource Name (ARN) of the AWS Config rule.</p>
--- @param _MaximumExecutionFrequency [MaximumExecutionFrequency] <p>The maximum frequency with which AWS Config runs evaluations for a rule. You can specify a value for <code>MaximumExecutionFrequency</code> when:</p> <ul> <li> <p>You are using an AWS managed rule that is triggered at a periodic frequency.</p> </li> <li> <p>Your custom rule is triggered when AWS Config delivers the configuration snapshot. For more information, see <a>ConfigSnapshotDeliveryProperties</a>.</p> </li> </ul> <note> <p>By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the <code>MaximumExecutionFrequency</code> parameter.</p> </note>
--- @param _Source [Source] <p>Provides the rule owner (AWS or customer), the rule identifier, and the notifications that cause the function to evaluate your AWS resources.</p>
--- @param _InputParameters [StringWithCharLimit1024] <p>A string in JSON format that is passed to the AWS Config rule Lambda function.</p>
--- @param _Scope [Scope] <p>Defines which resources can trigger an evaluation for the rule. The scope can include one or more resource types, a combination of one resource type and one resource ID, or a combination of a tag key and value. Specify a scope to constrain the resources that can trigger an evaluation for the rule. If you do not specify a scope, evaluations are triggered when any resource in the recording group changes.</p>
--- @param _ConfigRuleId [String] <p>The ID of the AWS Config rule.</p>
--- Required parameter: Source
-function M.ConfigRule(_ConfigRuleState, _Description, _ConfigRuleName, _ConfigRuleArn, _MaximumExecutionFrequency, _Source, _InputParameters, _Scope, _ConfigRuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConfigRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigRuleState [ConfigRuleState] <p>Indicates whether the AWS Config rule is active or is currently being deleted by AWS Config. It can also indicate the evaluation status for the Config rule.</p> <p>AWS Config sets the state of the rule to <code>EVALUATING</code> temporarily after you use the <code>StartConfigRulesEvaluation</code> request to evaluate your resources against the Config rule.</p> <p>AWS Config sets the state of the rule to <code>DELETING_RESULTS</code> temporarily after you use the <code>DeleteEvaluationResults</code> request to delete the current evaluation results for the Config rule.</p> <p>AWS Config sets the state of a rule to <code>DELETING</code> temporarily after you use the <code>DeleteConfigRule</code> request to delete the rule. After AWS Config deletes the rule, the rule and all of its evaluations are erased and are no longer available.</p>
+-- * Description [EmptiableStringWithCharLimit256] <p>The description that you provide for the AWS Config rule.</p>
+-- * ConfigRuleName [StringWithCharLimit64] <p>The name that you assign to the AWS Config rule. The name is required if you are adding a new rule.</p>
+-- * ConfigRuleArn [String] <p>The Amazon Resource Name (ARN) of the AWS Config rule.</p>
+-- * MaximumExecutionFrequency [MaximumExecutionFrequency] <p>The maximum frequency with which AWS Config runs evaluations for a rule. You can specify a value for <code>MaximumExecutionFrequency</code> when:</p> <ul> <li> <p>You are using an AWS managed rule that is triggered at a periodic frequency.</p> </li> <li> <p>Your custom rule is triggered when AWS Config delivers the configuration snapshot. For more information, see <a>ConfigSnapshotDeliveryProperties</a>.</p> </li> </ul> <note> <p>By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the <code>MaximumExecutionFrequency</code> parameter.</p> </note>
+-- * Source [Source] <p>Provides the rule owner (AWS or customer), the rule identifier, and the notifications that cause the function to evaluate your AWS resources.</p>
+-- * InputParameters [StringWithCharLimit1024] <p>A string in JSON format that is passed to the AWS Config rule Lambda function.</p>
+-- * Scope [Scope] <p>Defines which resources can trigger an evaluation for the rule. The scope can include one or more resource types, a combination of one resource type and one resource ID, or a combination of a tag key and value. Specify a scope to constrain the resources that can trigger an evaluation for the rule. If you do not specify a scope, evaluations are triggered when any resource in the recording group changes.</p>
+-- * ConfigRuleId [String] <p>The ID of the AWS Config rule.</p>
+-- Required key: Source
+-- @return ConfigRule structure as a key-value pair table
+function M.ConfigRule(args)
+	assert(args, "You must provdide an argument table when creating ConfigRule")
 	local t = { 
-		["ConfigRuleState"] = _ConfigRuleState,
-		["Description"] = _Description,
-		["ConfigRuleName"] = _ConfigRuleName,
-		["ConfigRuleArn"] = _ConfigRuleArn,
-		["MaximumExecutionFrequency"] = _MaximumExecutionFrequency,
-		["Source"] = _Source,
-		["InputParameters"] = _InputParameters,
-		["Scope"] = _Scope,
-		["ConfigRuleId"] = _ConfigRuleId,
+		["ConfigRuleState"] = args["ConfigRuleState"],
+		["Description"] = args["Description"],
+		["ConfigRuleName"] = args["ConfigRuleName"],
+		["ConfigRuleArn"] = args["ConfigRuleArn"],
+		["MaximumExecutionFrequency"] = args["MaximumExecutionFrequency"],
+		["Source"] = args["Source"],
+		["InputParameters"] = args["InputParameters"],
+		["Scope"] = args["Scope"],
+		["ConfigRuleId"] = args["ConfigRuleId"],
 	}
 	asserts.AssertConfigRule(t)
 	return t
@@ -2473,17 +2749,20 @@ end
 
 --- Create a structure of type DeliveryChannelStatus
 -- <p>The status of a specified delivery channel.</p> <p>Valid values: <code>Success</code> | <code>Failure</code> </p>
--- @param _configStreamDeliveryInfo [ConfigStreamDeliveryInfo] <p>A list containing the status of the delivery of the configuration stream notification to the specified Amazon SNS topic.</p>
--- @param _configHistoryDeliveryInfo [ConfigExportDeliveryInfo] <p>A list that contains the status of the delivery of the configuration history to the specified Amazon S3 bucket.</p>
--- @param _configSnapshotDeliveryInfo [ConfigExportDeliveryInfo] <p>A list containing the status of the delivery of the snapshot to the specified Amazon S3 bucket.</p>
--- @param _name [String] <p>The name of the delivery channel.</p>
-function M.DeliveryChannelStatus(_configStreamDeliveryInfo, _configHistoryDeliveryInfo, _configSnapshotDeliveryInfo, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeliveryChannelStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configStreamDeliveryInfo [ConfigStreamDeliveryInfo] <p>A list containing the status of the delivery of the configuration stream notification to the specified Amazon SNS topic.</p>
+-- * configHistoryDeliveryInfo [ConfigExportDeliveryInfo] <p>A list that contains the status of the delivery of the configuration history to the specified Amazon S3 bucket.</p>
+-- * configSnapshotDeliveryInfo [ConfigExportDeliveryInfo] <p>A list containing the status of the delivery of the snapshot to the specified Amazon S3 bucket.</p>
+-- * name [String] <p>The name of the delivery channel.</p>
+-- @return DeliveryChannelStatus structure as a key-value pair table
+function M.DeliveryChannelStatus(args)
+	assert(args, "You must provdide an argument table when creating DeliveryChannelStatus")
 	local t = { 
-		["configStreamDeliveryInfo"] = _configStreamDeliveryInfo,
-		["configHistoryDeliveryInfo"] = _configHistoryDeliveryInfo,
-		["configSnapshotDeliveryInfo"] = _configSnapshotDeliveryInfo,
-		["name"] = _name,
+		["configStreamDeliveryInfo"] = args["configStreamDeliveryInfo"],
+		["configHistoryDeliveryInfo"] = args["configHistoryDeliveryInfo"],
+		["configSnapshotDeliveryInfo"] = args["configSnapshotDeliveryInfo"],
+		["name"] = args["name"],
 	}
 	asserts.AssertDeliveryChannelStatus(t)
 	return t
@@ -2505,16 +2784,19 @@ end
 
 --- Create a structure of type PutEvaluationsRequest
 -- <p/>
--- @param _ResultToken [String] <p>An encrypted token that associates an evaluation with an AWS Config rule. Identifies the rule and the event that triggered the evaluation</p>
--- @param _Evaluations [Evaluations] <p>The assessments that the AWS Lambda function performs. Each evaluation identifies an AWS resource and indicates whether it complies with the AWS Config rule that invokes the AWS Lambda function.</p>
--- @param _TestMode [Boolean] <p>Use this parameter to specify a test run for <code>PutEvaluations</code>. You can verify whether your AWS Lambda function will deliver evaluation results to AWS Config. No updates occur to your existing evaluations, and evaluation results are not sent to AWS Config.</p> <note> <p>When <code>TestMode</code> is <code>true</code>, <code>PutEvaluations</code> doesn't require a valid value for the <code>ResultToken</code> parameter, but the value cannot be null.</p> </note>
--- Required parameter: ResultToken
-function M.PutEvaluationsRequest(_ResultToken, _Evaluations, _TestMode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutEvaluationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResultToken [String] <p>An encrypted token that associates an evaluation with an AWS Config rule. Identifies the rule and the event that triggered the evaluation</p>
+-- * Evaluations [Evaluations] <p>The assessments that the AWS Lambda function performs. Each evaluation identifies an AWS resource and indicates whether it complies with the AWS Config rule that invokes the AWS Lambda function.</p>
+-- * TestMode [Boolean] <p>Use this parameter to specify a test run for <code>PutEvaluations</code>. You can verify whether your AWS Lambda function will deliver evaluation results to AWS Config. No updates occur to your existing evaluations, and evaluation results are not sent to AWS Config.</p> <note> <p>When <code>TestMode</code> is <code>true</code>, <code>PutEvaluations</code> doesn't require a valid value for the <code>ResultToken</code> parameter, but the value cannot be null.</p> </note>
+-- Required key: ResultToken
+-- @return PutEvaluationsRequest structure as a key-value pair table
+function M.PutEvaluationsRequest(args)
+	assert(args, "You must provdide an argument table when creating PutEvaluationsRequest")
 	local t = { 
-		["ResultToken"] = _ResultToken,
-		["Evaluations"] = _Evaluations,
-		["TestMode"] = _TestMode,
+		["ResultToken"] = args["ResultToken"],
+		["Evaluations"] = args["Evaluations"],
+		["TestMode"] = args["TestMode"],
 	}
 	asserts.AssertPutEvaluationsRequest(t)
 	return t
@@ -2536,17 +2818,20 @@ end
 
 --- Create a structure of type Relationship
 -- <p>The relationship of the related resource to the main resource.</p>
--- @param _resourceType [ResourceType] <p>The resource type of the related resource.</p>
--- @param _resourceId [ResourceId] <p>The ID of the related resource (for example, <code>sg-xxxxxx</code>).</p>
--- @param _relationshipName [RelationshipName] <p>The type of relationship with the related resource.</p>
--- @param _resourceName [ResourceName] <p>The custom name of the related resource, if available.</p>
-function M.Relationship(_resourceType, _resourceId, _relationshipName, _resourceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Relationship")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceType [ResourceType] <p>The resource type of the related resource.</p>
+-- * resourceId [ResourceId] <p>The ID of the related resource (for example, <code>sg-xxxxxx</code>).</p>
+-- * relationshipName [RelationshipName] <p>The type of relationship with the related resource.</p>
+-- * resourceName [ResourceName] <p>The custom name of the related resource, if available.</p>
+-- @return Relationship structure as a key-value pair table
+function M.Relationship(args)
+	assert(args, "You must provdide an argument table when creating Relationship")
 	local t = { 
-		["resourceType"] = _resourceType,
-		["resourceId"] = _resourceId,
-		["relationshipName"] = _relationshipName,
-		["resourceName"] = _resourceName,
+		["resourceType"] = args["resourceType"],
+		["resourceId"] = args["resourceId"],
+		["relationshipName"] = args["relationshipName"],
+		["resourceName"] = args["resourceName"],
 	}
 	asserts.AssertRelationship(t)
 	return t
@@ -2566,12 +2851,15 @@ end
 
 --- Create a structure of type PutDeliveryChannelRequest
 -- <p>The input for the <a>PutDeliveryChannel</a> action.</p>
--- @param _DeliveryChannel [DeliveryChannel] <p>The configuration delivery channel object that delivers the configuration information to an Amazon S3 bucket, and to an Amazon SNS topic.</p>
--- Required parameter: DeliveryChannel
-function M.PutDeliveryChannelRequest(_DeliveryChannel, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutDeliveryChannelRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryChannel [DeliveryChannel] <p>The configuration delivery channel object that delivers the configuration information to an Amazon S3 bucket, and to an Amazon SNS topic.</p>
+-- Required key: DeliveryChannel
+-- @return PutDeliveryChannelRequest structure as a key-value pair table
+function M.PutDeliveryChannelRequest(args)
+	assert(args, "You must provdide an argument table when creating PutDeliveryChannelRequest")
 	local t = { 
-		["DeliveryChannel"] = _DeliveryChannel,
+		["DeliveryChannel"] = args["DeliveryChannel"],
 	}
 	asserts.AssertPutDeliveryChannelRequest(t)
 	return t
@@ -2590,11 +2878,14 @@ end
 
 --- Create a structure of type DescribeConfigurationRecorderStatusRequest
 -- <p>The input for the <a>DescribeConfigurationRecorderStatus</a> action.</p>
--- @param _ConfigurationRecorderNames [ConfigurationRecorderNameList] <p>The name(s) of the configuration recorder. If the name is not specified, the action returns the current status of all the configuration recorders associated with the account.</p>
-function M.DescribeConfigurationRecorderStatusRequest(_ConfigurationRecorderNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConfigurationRecorderStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConfigurationRecorderNames [ConfigurationRecorderNameList] <p>The name(s) of the configuration recorder. If the name is not specified, the action returns the current status of all the configuration recorders associated with the account.</p>
+-- @return DescribeConfigurationRecorderStatusRequest structure as a key-value pair table
+function M.DescribeConfigurationRecorderStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeConfigurationRecorderStatusRequest")
 	local t = { 
-		["ConfigurationRecorderNames"] = _ConfigurationRecorderNames,
+		["ConfigurationRecorderNames"] = args["ConfigurationRecorderNames"],
 	}
 	asserts.AssertDescribeConfigurationRecorderStatusRequest(t)
 	return t

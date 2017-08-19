@@ -42,24 +42,27 @@ end
 
 --- Create a structure of type SignalExternalWorkflowExecutionInitiatedEventAttributes
 -- <p>Provides details of the <code>SignalExternalWorkflowExecutionInitiated</code> event.</p>
--- @param _control [Data] <p><i>Optional.</i> data attached to the event that can be used by the decider in subsequent decision tasks.</p>
--- @param _workflowId [WorkflowId] <p>The <code>workflowId</code> of the external workflow execution.</p>
--- @param _runId [RunIdOptional] <p>The <code>runId</code> of the external workflow execution to send the signal to.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>SignalExternalWorkflowExecution</code> decision for this signal. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _input [Data] <p>Input provided to the signal (if any).</p>
--- @param _signalName [SignalName] <p>The name of the signal.</p>
--- Required parameter: workflowId
--- Required parameter: signalName
--- Required parameter: decisionTaskCompletedEventId
-function M.SignalExternalWorkflowExecutionInitiatedEventAttributes(_control, _workflowId, _runId, _decisionTaskCompletedEventId, _input, _signalName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SignalExternalWorkflowExecutionInitiatedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] <p><i>Optional.</i> data attached to the event that can be used by the decider in subsequent decision tasks.</p>
+-- * workflowId [WorkflowId] <p>The <code>workflowId</code> of the external workflow execution.</p>
+-- * runId [RunIdOptional] <p>The <code>runId</code> of the external workflow execution to send the signal to.</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>SignalExternalWorkflowExecution</code> decision for this signal. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * input [Data] <p>Input provided to the signal (if any).</p>
+-- * signalName [SignalName] <p>The name of the signal.</p>
+-- Required key: workflowId
+-- Required key: signalName
+-- Required key: decisionTaskCompletedEventId
+-- @return SignalExternalWorkflowExecutionInitiatedEventAttributes structure as a key-value pair table
+function M.SignalExternalWorkflowExecutionInitiatedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating SignalExternalWorkflowExecutionInitiatedEventAttributes")
 	local t = { 
-		["control"] = _control,
-		["workflowId"] = _workflowId,
-		["runId"] = _runId,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
-		["input"] = _input,
-		["signalName"] = _signalName,
+		["control"] = args["control"],
+		["workflowId"] = args["workflowId"],
+		["runId"] = args["runId"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
+		["input"] = args["input"],
+		["signalName"] = args["signalName"],
 	}
 	asserts.AssertSignalExternalWorkflowExecutionInitiatedEventAttributes(t)
 	return t
@@ -89,28 +92,31 @@ end
 
 --- Create a structure of type DecisionTask
 -- <p>A structure that represents a decision task. Decision tasks are sent to deciders in order for them to make decisions.</p>
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _previousStartedEventId [EventId] <p>The ID of the DecisionTaskStarted event of the previous decision task of this workflow execution that was processed by the decider. This can be used to determine the events in the history new since the last decision task received by the decider.</p>
--- @param _workflowExecution [WorkflowExecution] <p>The workflow execution for which this decision task was created.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>DecisionTaskStarted</code> event recorded in the history.</p>
--- @param _workflowType [WorkflowType] <p>The type of the workflow execution for which this decision task was created.</p>
--- @param _events [HistoryEventList] <p>A paginated list of history events of the workflow execution. The decider uses this during the processing of the decision task.</p>
--- @param _taskToken [TaskToken] <p>The opaque string used as a handle on the task. This token is used by workers to communicate progress and response information back to the system about the task.</p>
--- Required parameter: taskToken
--- Required parameter: startedEventId
--- Required parameter: workflowExecution
--- Required parameter: workflowType
--- Required parameter: events
-function M.DecisionTask(_nextPageToken, _previousStartedEventId, _workflowExecution, _startedEventId, _workflowType, _events, _taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DecisionTask")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * previousStartedEventId [EventId] <p>The ID of the DecisionTaskStarted event of the previous decision task of this workflow execution that was processed by the decider. This can be used to determine the events in the history new since the last decision task received by the decider.</p>
+-- * workflowExecution [WorkflowExecution] <p>The workflow execution for which this decision task was created.</p>
+-- * startedEventId [EventId] <p>The ID of the <code>DecisionTaskStarted</code> event recorded in the history.</p>
+-- * workflowType [WorkflowType] <p>The type of the workflow execution for which this decision task was created.</p>
+-- * events [HistoryEventList] <p>A paginated list of history events of the workflow execution. The decider uses this during the processing of the decision task.</p>
+-- * taskToken [TaskToken] <p>The opaque string used as a handle on the task. This token is used by workers to communicate progress and response information back to the system about the task.</p>
+-- Required key: taskToken
+-- Required key: startedEventId
+-- Required key: workflowExecution
+-- Required key: workflowType
+-- Required key: events
+-- @return DecisionTask structure as a key-value pair table
+function M.DecisionTask(args)
+	assert(args, "You must provdide an argument table when creating DecisionTask")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["previousStartedEventId"] = _previousStartedEventId,
-		["workflowExecution"] = _workflowExecution,
-		["startedEventId"] = _startedEventId,
-		["workflowType"] = _workflowType,
-		["events"] = _events,
-		["taskToken"] = _taskToken,
+		["nextPageToken"] = args["nextPageToken"],
+		["previousStartedEventId"] = args["previousStartedEventId"],
+		["workflowExecution"] = args["workflowExecution"],
+		["startedEventId"] = args["startedEventId"],
+		["workflowType"] = args["workflowType"],
+		["events"] = args["events"],
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertDecisionTask(t)
 	return t
@@ -130,12 +136,15 @@ end
 
 --- Create a structure of type RequestCancelActivityTaskDecisionAttributes
 -- <p>Provides details of the <code>RequestCancelActivityTask</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>You cannot use an IAM policy to constrain this action's parameters.</li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _activityId [ActivityId] <p>The <code>activityId</code> of the activity task to be canceled.</p>
--- Required parameter: activityId
-function M.RequestCancelActivityTaskDecisionAttributes(_activityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestCancelActivityTaskDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * activityId [ActivityId] <p>The <code>activityId</code> of the activity task to be canceled.</p>
+-- Required key: activityId
+-- @return RequestCancelActivityTaskDecisionAttributes structure as a key-value pair table
+function M.RequestCancelActivityTaskDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating RequestCancelActivityTaskDecisionAttributes")
 	local t = { 
-		["activityId"] = _activityId,
+		["activityId"] = args["activityId"],
 	}
 	asserts.AssertRequestCancelActivityTaskDecisionAttributes(t)
 	return t
@@ -155,12 +164,15 @@ end
 
 --- Create a structure of type WorkflowExecutionFilter
 -- <p>Used to filter the workflow executions in visibility APIs by their <code>workflowId</code>.</p>
--- @param _workflowId [WorkflowId] <p>The workflowId to pass of match the criteria of this filter.</p>
--- Required parameter: workflowId
-function M.WorkflowExecutionFilter(_workflowId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * workflowId [WorkflowId] <p>The workflowId to pass of match the criteria of this filter.</p>
+-- Required key: workflowId
+-- @return WorkflowExecutionFilter structure as a key-value pair table
+function M.WorkflowExecutionFilter(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionFilter")
 	local t = { 
-		["workflowId"] = _workflowId,
+		["workflowId"] = args["workflowId"],
 	}
 	asserts.AssertWorkflowExecutionFilter(t)
 	return t
@@ -195,38 +207,41 @@ end
 
 --- Create a structure of type StartChildWorkflowExecutionInitiatedEventAttributes
 -- <p>Provides details of the <code>StartChildWorkflowExecutionInitiated</code> event.</p>
--- @param _control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent decision tasks. This data is not sent to the activity.</p>
--- @param _workflowId [WorkflowId] <p>The <code>workflowId</code> of the child workflow execution.</p>
--- @param _taskList [TaskList] <p>The name of the task list used for the decision tasks of the child workflow execution.</p>
--- @param _taskStartToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration allowed for the decision tasks for this workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _taskPriority [TaskPriority] <p><i>Optional.</i> The priority assigned for the decision tasks for this workflow execution. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- @param _lambdaRole [Arn] <p>The IAM role attached to this workflow execution to use when invoking AWS Lambda functions.</p>
--- @param _childPolicy [ChildPolicy] <p>The policy to use for the child workflow executions if this execution gets terminated by explicitly calling the <a>TerminateWorkflowExecution</a> action or due to an expired timeout.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>StartChildWorkflowExecution</code> decision to request this child workflow execution. This information can be useful for diagnosing problems by tracing back the cause of events.</p>
--- @param _executionStartToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration for the child workflow execution. If the workflow execution is not closed within this duration, it will be timed out and force terminated.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _input [Data] <p>The inputs provided to the child workflow execution (if any).</p>
--- @param _workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
--- @param _tagList [TagList] <p>The list of tags to associated with the child workflow execution.</p>
--- Required parameter: workflowId
--- Required parameter: workflowType
--- Required parameter: taskList
--- Required parameter: decisionTaskCompletedEventId
--- Required parameter: childPolicy
-function M.StartChildWorkflowExecutionInitiatedEventAttributes(_control, _workflowId, _taskList, _taskStartToCloseTimeout, _taskPriority, _lambdaRole, _childPolicy, _decisionTaskCompletedEventId, _executionStartToCloseTimeout, _input, _workflowType, _tagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartChildWorkflowExecutionInitiatedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent decision tasks. This data is not sent to the activity.</p>
+-- * workflowId [WorkflowId] <p>The <code>workflowId</code> of the child workflow execution.</p>
+-- * taskList [TaskList] <p>The name of the task list used for the decision tasks of the child workflow execution.</p>
+-- * taskStartToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration allowed for the decision tasks for this workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * taskPriority [TaskPriority] <p><i>Optional.</i> The priority assigned for the decision tasks for this workflow execution. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- * lambdaRole [Arn] <p>The IAM role attached to this workflow execution to use when invoking AWS Lambda functions.</p>
+-- * childPolicy [ChildPolicy] <p>The policy to use for the child workflow executions if this execution gets terminated by explicitly calling the <a>TerminateWorkflowExecution</a> action or due to an expired timeout.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>StartChildWorkflowExecution</code> decision to request this child workflow execution. This information can be useful for diagnosing problems by tracing back the cause of events.</p>
+-- * executionStartToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration for the child workflow execution. If the workflow execution is not closed within this duration, it will be timed out and force terminated.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * input [Data] <p>The inputs provided to the child workflow execution (if any).</p>
+-- * workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
+-- * tagList [TagList] <p>The list of tags to associated with the child workflow execution.</p>
+-- Required key: workflowId
+-- Required key: workflowType
+-- Required key: taskList
+-- Required key: decisionTaskCompletedEventId
+-- Required key: childPolicy
+-- @return StartChildWorkflowExecutionInitiatedEventAttributes structure as a key-value pair table
+function M.StartChildWorkflowExecutionInitiatedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating StartChildWorkflowExecutionInitiatedEventAttributes")
 	local t = { 
-		["control"] = _control,
-		["workflowId"] = _workflowId,
-		["taskList"] = _taskList,
-		["taskStartToCloseTimeout"] = _taskStartToCloseTimeout,
-		["taskPriority"] = _taskPriority,
-		["lambdaRole"] = _lambdaRole,
-		["childPolicy"] = _childPolicy,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
-		["executionStartToCloseTimeout"] = _executionStartToCloseTimeout,
-		["input"] = _input,
-		["workflowType"] = _workflowType,
-		["tagList"] = _tagList,
+		["control"] = args["control"],
+		["workflowId"] = args["workflowId"],
+		["taskList"] = args["taskList"],
+		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
+		["taskPriority"] = args["taskPriority"],
+		["lambdaRole"] = args["lambdaRole"],
+		["childPolicy"] = args["childPolicy"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
+		["executionStartToCloseTimeout"] = args["executionStartToCloseTimeout"],
+		["input"] = args["input"],
+		["workflowType"] = args["workflowType"],
+		["tagList"] = args["tagList"],
 	}
 	asserts.AssertStartChildWorkflowExecutionInitiatedEventAttributes(t)
 	return t
@@ -248,15 +263,18 @@ end
 
 --- Create a structure of type ExternalWorkflowExecutionSignaledEventAttributes
 -- <p> Provides details of the <code>ExternalWorkflowExecutionSignaled</code> event.</p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>SignalExternalWorkflowExecutionInitiated</code> event corresponding to the <code>SignalExternalWorkflowExecution</code> decision to request this signal. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _workflowExecution [WorkflowExecution] <p> The external workflow execution that the signal was delivered to.</p>
--- Required parameter: workflowExecution
--- Required parameter: initiatedEventId
-function M.ExternalWorkflowExecutionSignaledEventAttributes(_initiatedEventId, _workflowExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExternalWorkflowExecutionSignaledEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * initiatedEventId [EventId] <p>The ID of the <code>SignalExternalWorkflowExecutionInitiated</code> event corresponding to the <code>SignalExternalWorkflowExecution</code> decision to request this signal. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * workflowExecution [WorkflowExecution] <p> The external workflow execution that the signal was delivered to.</p>
+-- Required key: workflowExecution
+-- Required key: initiatedEventId
+-- @return ExternalWorkflowExecutionSignaledEventAttributes structure as a key-value pair table
+function M.ExternalWorkflowExecutionSignaledEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ExternalWorkflowExecutionSignaledEventAttributes")
 	local t = { 
-		["initiatedEventId"] = _initiatedEventId,
-		["workflowExecution"] = _workflowExecution,
+		["initiatedEventId"] = args["initiatedEventId"],
+		["workflowExecution"] = args["workflowExecution"],
 	}
 	asserts.AssertExternalWorkflowExecutionSignaledEventAttributes(t)
 	return t
@@ -278,15 +296,18 @@ end
 
 --- Create a structure of type DeprecateActivityTypeInput
 --  
--- @param _domain [DomainName] <p>The name of the domain in which the activity type is registered.</p>
--- @param _activityType [ActivityType] <p>The activity type to deprecate.</p>
--- Required parameter: domain
--- Required parameter: activityType
-function M.DeprecateActivityTypeInput(_domain, _activityType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeprecateActivityTypeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain in which the activity type is registered.</p>
+-- * activityType [ActivityType] <p>The activity type to deprecate.</p>
+-- Required key: domain
+-- Required key: activityType
+-- @return DeprecateActivityTypeInput structure as a key-value pair table
+function M.DeprecateActivityTypeInput(args)
+	assert(args, "You must provdide an argument table when creating DeprecateActivityTypeInput")
 	local t = { 
-		["domain"] = _domain,
-		["activityType"] = _activityType,
+		["domain"] = args["domain"],
+		["activityType"] = args["activityType"],
 	}
 	asserts.AssertDeprecateActivityTypeInput(t)
 	return t
@@ -317,32 +338,35 @@ end
 
 --- Create a structure of type RegisterActivityTypeInput
 --  
--- @param _domain [DomainName] <p>The name of the domain in which this activity is to be registered.</p>
--- @param _defaultTaskScheduleToStartTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum duration that a task of this activity type can wait before being assigned to a worker. This default can be overridden when scheduling an activity task using the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _name [Name] <p>The name of the activity type within the domain.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _defaultTaskHeartbeatTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum time before which a worker processing a task of this type must report progress by calling <a>RecordActivityTaskHeartbeat</a>. If the timeout is exceeded, the activity task is automatically timed out. This default can be overridden when scheduling an activity task using the <code>ScheduleActivityTask</code> decision. If the activity worker subsequently attempts to record a heartbeat or returns a result, the activity worker receives an <code>UnknownResource</code> fault. In this case, Amazon SWF no longer considers the activity task to be valid; the activity worker should clean up the activity task.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _defaultTaskPriority [TaskPriority] <p>The default task priority to assign to the activity type. If not assigned, then "0" will be used. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- @param _defaultTaskStartToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum duration that a worker can take to process tasks of this activity type. This default can be overridden when scheduling an activity task using the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _defaultTaskScheduleToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum duration for a task of this activity type. This default can be overridden when scheduling an activity task using the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _version [Version] <p>The version of the activity type.</p> <note>The activity type consists of the name and version, the combination of which must be unique within the domain.</note> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _defaultTaskList [TaskList] <p>If set, specifies the default task list to use for scheduling tasks of this activity type. This default task list is used if a task list is not provided when a task is scheduled through the <code>ScheduleActivityTask</code> decision.</p>
--- @param _description [Description] <p>A textual description of the activity type.</p>
--- Required parameter: domain
--- Required parameter: name
--- Required parameter: version
-function M.RegisterActivityTypeInput(_domain, _defaultTaskScheduleToStartTimeout, _name, _defaultTaskHeartbeatTimeout, _defaultTaskPriority, _defaultTaskStartToCloseTimeout, _defaultTaskScheduleToCloseTimeout, _version, _defaultTaskList, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterActivityTypeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain in which this activity is to be registered.</p>
+-- * defaultTaskScheduleToStartTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum duration that a task of this activity type can wait before being assigned to a worker. This default can be overridden when scheduling an activity task using the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * name [Name] <p>The name of the activity type within the domain.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * defaultTaskHeartbeatTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum time before which a worker processing a task of this type must report progress by calling <a>RecordActivityTaskHeartbeat</a>. If the timeout is exceeded, the activity task is automatically timed out. This default can be overridden when scheduling an activity task using the <code>ScheduleActivityTask</code> decision. If the activity worker subsequently attempts to record a heartbeat or returns a result, the activity worker receives an <code>UnknownResource</code> fault. In this case, Amazon SWF no longer considers the activity task to be valid; the activity worker should clean up the activity task.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * defaultTaskPriority [TaskPriority] <p>The default task priority to assign to the activity type. If not assigned, then "0" will be used. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- * defaultTaskStartToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum duration that a worker can take to process tasks of this activity type. This default can be overridden when scheduling an activity task using the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * defaultTaskScheduleToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum duration for a task of this activity type. This default can be overridden when scheduling an activity task using the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * version [Version] <p>The version of the activity type.</p> <note>The activity type consists of the name and version, the combination of which must be unique within the domain.</note> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * defaultTaskList [TaskList] <p>If set, specifies the default task list to use for scheduling tasks of this activity type. This default task list is used if a task list is not provided when a task is scheduled through the <code>ScheduleActivityTask</code> decision.</p>
+-- * description [Description] <p>A textual description of the activity type.</p>
+-- Required key: domain
+-- Required key: name
+-- Required key: version
+-- @return RegisterActivityTypeInput structure as a key-value pair table
+function M.RegisterActivityTypeInput(args)
+	assert(args, "You must provdide an argument table when creating RegisterActivityTypeInput")
 	local t = { 
-		["domain"] = _domain,
-		["defaultTaskScheduleToStartTimeout"] = _defaultTaskScheduleToStartTimeout,
-		["name"] = _name,
-		["defaultTaskHeartbeatTimeout"] = _defaultTaskHeartbeatTimeout,
-		["defaultTaskPriority"] = _defaultTaskPriority,
-		["defaultTaskStartToCloseTimeout"] = _defaultTaskStartToCloseTimeout,
-		["defaultTaskScheduleToCloseTimeout"] = _defaultTaskScheduleToCloseTimeout,
-		["version"] = _version,
-		["defaultTaskList"] = _defaultTaskList,
-		["description"] = _description,
+		["domain"] = args["domain"],
+		["defaultTaskScheduleToStartTimeout"] = args["defaultTaskScheduleToStartTimeout"],
+		["name"] = args["name"],
+		["defaultTaskHeartbeatTimeout"] = args["defaultTaskHeartbeatTimeout"],
+		["defaultTaskPriority"] = args["defaultTaskPriority"],
+		["defaultTaskStartToCloseTimeout"] = args["defaultTaskStartToCloseTimeout"],
+		["defaultTaskScheduleToCloseTimeout"] = args["defaultTaskScheduleToCloseTimeout"],
+		["version"] = args["version"],
+		["defaultTaskList"] = args["defaultTaskList"],
+		["description"] = args["description"],
 	}
 	asserts.AssertRegisterActivityTypeInput(t)
 	return t
@@ -369,27 +393,30 @@ end
 
 --- Create a structure of type ContinueAsNewWorkflowExecutionDecisionAttributes
 -- <p>Provides details of the <code>ContinueAsNewWorkflowExecution</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys. <ul> <li> <code>tag</code>: <i>Optional.</i>. A tag used to identify the workflow execution</li> <li><code>taskList</code>: String constraint. The key is <code>swf:taskList.name</code>.</li> <li><code>workflowType.version</code>: String constraint. The key is <code>swf:workflowType.version</code>.</li> </ul> </li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _taskList [TaskList] 
--- @param _taskStartToCloseTimeout [DurationInSecondsOptional] <p>Specifies the maximum duration of decision tasks for the new workflow execution. This parameter overrides the <code>defaultTaskStartToCloseTimout</code> specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A task start-to-close timeout for the new workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default task start-to-close timeout was specified at registration time then a fault will be returned.</note>
--- @param _workflowTypeVersion [Version] 
--- @param _taskPriority [TaskPriority] <p><i>Optional.</i> The task priority that, if set, specifies the priority for the decision tasks for this workflow execution. This overrides the defaultTaskPriority specified when registering the workflow type. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- @param _childPolicy [ChildPolicy] <p>If set, specifies the policy to use for the child workflow executions of the new execution if it is terminated by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This policy overrides the default child policy specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul> <note>A child policy for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default child policy was specified at registration time then a fault will be returned.</note>
--- @param _executionStartToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the total duration for this workflow execution. This overrides the <code>defaultExecutionStartToCloseTimeout</code> specified when registering the workflow type.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>An execution start-to-close timeout for this workflow execution must be specified either as a default for the workflow type or through this field. If neither this field is set nor a default execution start-to-close timeout was specified at registration time then a fault will be returned.</note>
--- @param _input [Data] <p>The input provided to the new workflow execution.</p>
--- @param _lambdaRole [Arn] <p>The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda functions.</p> <note>In order for this workflow execution to invoke AWS Lambda functions, an appropriate IAM role must be specified either as a default for the workflow type or through this field.</note>
--- @param _tagList [TagList] <p>The list of tags to associate with the new workflow execution. A maximum of 5 tags can be specified. You can list workflow executions with a specific tag by calling <a>ListOpenWorkflowExecutions</a> or <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.</p>
-function M.ContinueAsNewWorkflowExecutionDecisionAttributes(_taskList, _taskStartToCloseTimeout, _workflowTypeVersion, _taskPriority, _childPolicy, _executionStartToCloseTimeout, _input, _lambdaRole, _tagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContinueAsNewWorkflowExecutionDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskList [TaskList] 
+-- * taskStartToCloseTimeout [DurationInSecondsOptional] <p>Specifies the maximum duration of decision tasks for the new workflow execution. This parameter overrides the <code>defaultTaskStartToCloseTimout</code> specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A task start-to-close timeout for the new workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default task start-to-close timeout was specified at registration time then a fault will be returned.</note>
+-- * workflowTypeVersion [Version] 
+-- * taskPriority [TaskPriority] <p><i>Optional.</i> The task priority that, if set, specifies the priority for the decision tasks for this workflow execution. This overrides the defaultTaskPriority specified when registering the workflow type. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- * childPolicy [ChildPolicy] <p>If set, specifies the policy to use for the child workflow executions of the new execution if it is terminated by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This policy overrides the default child policy specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul> <note>A child policy for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default child policy was specified at registration time then a fault will be returned.</note>
+-- * executionStartToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the total duration for this workflow execution. This overrides the <code>defaultExecutionStartToCloseTimeout</code> specified when registering the workflow type.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>An execution start-to-close timeout for this workflow execution must be specified either as a default for the workflow type or through this field. If neither this field is set nor a default execution start-to-close timeout was specified at registration time then a fault will be returned.</note>
+-- * input [Data] <p>The input provided to the new workflow execution.</p>
+-- * lambdaRole [Arn] <p>The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda functions.</p> <note>In order for this workflow execution to invoke AWS Lambda functions, an appropriate IAM role must be specified either as a default for the workflow type or through this field.</note>
+-- * tagList [TagList] <p>The list of tags to associate with the new workflow execution. A maximum of 5 tags can be specified. You can list workflow executions with a specific tag by calling <a>ListOpenWorkflowExecutions</a> or <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.</p>
+-- @return ContinueAsNewWorkflowExecutionDecisionAttributes structure as a key-value pair table
+function M.ContinueAsNewWorkflowExecutionDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating ContinueAsNewWorkflowExecutionDecisionAttributes")
 	local t = { 
-		["taskList"] = _taskList,
-		["taskStartToCloseTimeout"] = _taskStartToCloseTimeout,
-		["workflowTypeVersion"] = _workflowTypeVersion,
-		["taskPriority"] = _taskPriority,
-		["childPolicy"] = _childPolicy,
-		["executionStartToCloseTimeout"] = _executionStartToCloseTimeout,
-		["input"] = _input,
-		["lambdaRole"] = _lambdaRole,
-		["tagList"] = _tagList,
+		["taskList"] = args["taskList"],
+		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
+		["workflowTypeVersion"] = args["workflowTypeVersion"],
+		["taskPriority"] = args["taskPriority"],
+		["childPolicy"] = args["childPolicy"],
+		["executionStartToCloseTimeout"] = args["executionStartToCloseTimeout"],
+		["input"] = args["input"],
+		["lambdaRole"] = args["lambdaRole"],
+		["tagList"] = args["tagList"],
 	}
 	asserts.AssertContinueAsNewWorkflowExecutionDecisionAttributes(t)
 	return t
@@ -413,21 +440,24 @@ end
 
 --- Create a structure of type ActivityTypeConfiguration
 -- <p>Configuration settings registered with the activity type.</p>
--- @param _defaultTaskScheduleToStartTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum duration, specified when registering the activity type, that a task of an activity type can wait before being assigned to a worker. You can override this default when scheduling a task through the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _defaultTaskHeartbeatTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum time, in seconds, before which a worker processing a task must report progress by calling <a>RecordActivityTaskHeartbeat</a>.</p> <p>You can specify this value only when <i>registering</i> an activity type. The registered default value can be overridden when you schedule a task through the <code>ScheduleActivityTask</code> decision. If the activity worker subsequently attempts to record a heartbeat or returns a result, the activity worker receives an <code>UnknownResource</code> fault. In this case, Amazon SWF no longer considers the activity task to be valid; the activity worker should clean up the activity task.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _defaultTaskPriority [TaskPriority] <p><i>Optional.</i> The default task priority for tasks of this activity type, specified at registration. If not set, then "0" will be used as the default priority. This default can be overridden when scheduling an activity task.</p> <p>Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- @param _defaultTaskStartToCloseTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum duration for tasks of an activity type specified when registering the activity type. You can override this default when scheduling a task through the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _defaultTaskScheduleToCloseTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum duration, specified when registering the activity type, for tasks of this activity type. You can override this default when scheduling a task through the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _defaultTaskList [TaskList] <p><i>Optional.</i> The default task list specified for this activity type at registration. This default is used if a task list is not provided when a task is scheduled through the <code>ScheduleActivityTask</code> decision. You can override the default registered task list when scheduling a task through the <code>ScheduleActivityTask</code> decision.</p>
-function M.ActivityTypeConfiguration(_defaultTaskScheduleToStartTimeout, _defaultTaskHeartbeatTimeout, _defaultTaskPriority, _defaultTaskStartToCloseTimeout, _defaultTaskScheduleToCloseTimeout, _defaultTaskList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTypeConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * defaultTaskScheduleToStartTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum duration, specified when registering the activity type, that a task of an activity type can wait before being assigned to a worker. You can override this default when scheduling a task through the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * defaultTaskHeartbeatTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum time, in seconds, before which a worker processing a task must report progress by calling <a>RecordActivityTaskHeartbeat</a>.</p> <p>You can specify this value only when <i>registering</i> an activity type. The registered default value can be overridden when you schedule a task through the <code>ScheduleActivityTask</code> decision. If the activity worker subsequently attempts to record a heartbeat or returns a result, the activity worker receives an <code>UnknownResource</code> fault. In this case, Amazon SWF no longer considers the activity task to be valid; the activity worker should clean up the activity task.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * defaultTaskPriority [TaskPriority] <p><i>Optional.</i> The default task priority for tasks of this activity type, specified at registration. If not set, then "0" will be used as the default priority. This default can be overridden when scheduling an activity task.</p> <p>Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- * defaultTaskStartToCloseTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum duration for tasks of an activity type specified when registering the activity type. You can override this default when scheduling a task through the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * defaultTaskScheduleToCloseTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum duration, specified when registering the activity type, for tasks of this activity type. You can override this default when scheduling a task through the <code>ScheduleActivityTask</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * defaultTaskList [TaskList] <p><i>Optional.</i> The default task list specified for this activity type at registration. This default is used if a task list is not provided when a task is scheduled through the <code>ScheduleActivityTask</code> decision. You can override the default registered task list when scheduling a task through the <code>ScheduleActivityTask</code> decision.</p>
+-- @return ActivityTypeConfiguration structure as a key-value pair table
+function M.ActivityTypeConfiguration(args)
+	assert(args, "You must provdide an argument table when creating ActivityTypeConfiguration")
 	local t = { 
-		["defaultTaskScheduleToStartTimeout"] = _defaultTaskScheduleToStartTimeout,
-		["defaultTaskHeartbeatTimeout"] = _defaultTaskHeartbeatTimeout,
-		["defaultTaskPriority"] = _defaultTaskPriority,
-		["defaultTaskStartToCloseTimeout"] = _defaultTaskStartToCloseTimeout,
-		["defaultTaskScheduleToCloseTimeout"] = _defaultTaskScheduleToCloseTimeout,
-		["defaultTaskList"] = _defaultTaskList,
+		["defaultTaskScheduleToStartTimeout"] = args["defaultTaskScheduleToStartTimeout"],
+		["defaultTaskHeartbeatTimeout"] = args["defaultTaskHeartbeatTimeout"],
+		["defaultTaskPriority"] = args["defaultTaskPriority"],
+		["defaultTaskStartToCloseTimeout"] = args["defaultTaskStartToCloseTimeout"],
+		["defaultTaskScheduleToCloseTimeout"] = args["defaultTaskScheduleToCloseTimeout"],
+		["defaultTaskList"] = args["defaultTaskList"],
 	}
 	asserts.AssertActivityTypeConfiguration(t)
 	return t
@@ -450,17 +480,20 @@ end
 
 --- Create a structure of type StartTimerDecisionAttributes
 -- <p>Provides details of the <code>StartTimer</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>You cannot use an IAM policy to constrain this action's parameters.</li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks.</p>
--- @param _timerId [TimerId] <p><b>Required.</b> The unique ID of the timer.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _startToFireTimeout [DurationInSeconds] <p><b>Required.</b> The duration to wait before firing the timer.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0.</p>
--- Required parameter: timerId
--- Required parameter: startToFireTimeout
-function M.StartTimerDecisionAttributes(_control, _timerId, _startToFireTimeout, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartTimerDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks.</p>
+-- * timerId [TimerId] <p><b>Required.</b> The unique ID of the timer.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * startToFireTimeout [DurationInSeconds] <p><b>Required.</b> The duration to wait before firing the timer.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0.</p>
+-- Required key: timerId
+-- Required key: startToFireTimeout
+-- @return StartTimerDecisionAttributes structure as a key-value pair table
+function M.StartTimerDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating StartTimerDecisionAttributes")
 	local t = { 
-		["control"] = _control,
-		["timerId"] = _timerId,
-		["startToFireTimeout"] = _startToFireTimeout,
+		["control"] = args["control"],
+		["timerId"] = args["timerId"],
+		["startToFireTimeout"] = args["startToFireTimeout"],
 	}
 	asserts.AssertStartTimerDecisionAttributes(t)
 	return t
@@ -482,15 +515,18 @@ end
 
 --- Create a structure of type CountPendingActivityTasksInput
 --  
--- @param _domain [DomainName] <p>The name of the domain that contains the task list.</p>
--- @param _taskList [TaskList] <p>The name of the task list.</p>
--- Required parameter: domain
--- Required parameter: taskList
-function M.CountPendingActivityTasksInput(_domain, _taskList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CountPendingActivityTasksInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain that contains the task list.</p>
+-- * taskList [TaskList] <p>The name of the task list.</p>
+-- Required key: domain
+-- Required key: taskList
+-- @return CountPendingActivityTasksInput structure as a key-value pair table
+function M.CountPendingActivityTasksInput(args)
+	assert(args, "You must provdide an argument table when creating CountPendingActivityTasksInput")
 	local t = { 
-		["domain"] = _domain,
-		["taskList"] = _taskList,
+		["domain"] = args["domain"],
+		["taskList"] = args["taskList"],
 	}
 	asserts.AssertCountPendingActivityTasksInput(t)
 	return t
@@ -510,12 +546,15 @@ end
 
 --- Create a structure of type DeprecateDomainInput
 --  
--- @param _name [DomainName] <p>The name of the domain to deprecate.</p>
--- Required parameter: name
-function M.DeprecateDomainInput(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeprecateDomainInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [DomainName] <p>The name of the domain to deprecate.</p>
+-- Required key: name
+-- @return DeprecateDomainInput structure as a key-value pair table
+function M.DeprecateDomainInput(args)
+	assert(args, "You must provdide an argument table when creating DeprecateDomainInput")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertDeprecateDomainInput(t)
 	return t
@@ -543,25 +582,28 @@ end
 
 --- Create a structure of type RequestCancelExternalWorkflowExecutionFailedEventAttributes
 -- <p>Provides details of the <code>RequestCancelExternalWorkflowExecutionFailed</code> event.</p>
--- @param _control [Data] 
--- @param _workflowId [WorkflowId] <p>The <code>workflowId</code> of the external workflow to which the cancel request was to be delivered.</p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>RequestCancelExternalWorkflowExecutionInitiated</code> event corresponding to the <code>RequestCancelExternalWorkflowExecution</code> decision to cancel this external workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _runId [RunIdOptional] <p>The <code>runId</code> of the external workflow execution.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RequestCancelExternalWorkflowExecution</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _cause [RequestCancelExternalWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- Required parameter: workflowId
--- Required parameter: cause
--- Required parameter: initiatedEventId
--- Required parameter: decisionTaskCompletedEventId
-function M.RequestCancelExternalWorkflowExecutionFailedEventAttributes(_control, _workflowId, _initiatedEventId, _runId, _decisionTaskCompletedEventId, _cause, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestCancelExternalWorkflowExecutionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] 
+-- * workflowId [WorkflowId] <p>The <code>workflowId</code> of the external workflow to which the cancel request was to be delivered.</p>
+-- * initiatedEventId [EventId] <p>The ID of the <code>RequestCancelExternalWorkflowExecutionInitiated</code> event corresponding to the <code>RequestCancelExternalWorkflowExecution</code> decision to cancel this external workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * runId [RunIdOptional] <p>The <code>runId</code> of the external workflow execution.</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RequestCancelExternalWorkflowExecution</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * cause [RequestCancelExternalWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- Required key: workflowId
+-- Required key: cause
+-- Required key: initiatedEventId
+-- Required key: decisionTaskCompletedEventId
+-- @return RequestCancelExternalWorkflowExecutionFailedEventAttributes structure as a key-value pair table
+function M.RequestCancelExternalWorkflowExecutionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating RequestCancelExternalWorkflowExecutionFailedEventAttributes")
 	local t = { 
-		["control"] = _control,
-		["workflowId"] = _workflowId,
-		["initiatedEventId"] = _initiatedEventId,
-		["runId"] = _runId,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
-		["cause"] = _cause,
+		["control"] = args["control"],
+		["workflowId"] = args["workflowId"],
+		["initiatedEventId"] = args["initiatedEventId"],
+		["runId"] = args["runId"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
+		["cause"] = args["cause"],
 	}
 	asserts.AssertRequestCancelExternalWorkflowExecutionFailedEventAttributes(t)
 	return t
@@ -592,32 +634,35 @@ end
 
 --- Create a structure of type RegisterWorkflowTypeInput
 --  
--- @param _defaultExecutionStartToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum duration for executions of this workflow type. You can override this default when starting an execution through the <a>StartWorkflowExecution</a> action or <code>StartChildWorkflowExecution</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. Unlike some of the other timeout parameters in Amazon SWF, you cannot specify a value of "NONE" for <code>defaultExecutionStartToCloseTimeout</code>; there is a one-year max limit on the time that a workflow execution can run. Exceeding this limit will always cause the workflow execution to time out.</p>
--- @param _domain [DomainName] <p>The name of the domain in which to register the workflow type.</p>
--- @param _name [Name] <p>The name of the workflow type.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _defaultTaskPriority [TaskPriority] <p>The default task priority to assign to the workflow type. If not assigned, then "0" will be used. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- @param _defaultTaskStartToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum duration of decision tasks for this workflow type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _defaultChildPolicy [ChildPolicy] <p>If set, specifies the default policy to use for the child workflow executions when a workflow execution of this type is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
--- @param _version [Version] <p>The version of the workflow type.</p> <note>The workflow type consists of the name and version, the combination of which must be unique within the domain. To get a list of all currently registered workflow types, use the <a>ListWorkflowTypes</a> action.</note> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _defaultLambdaRole [Arn] <p>The ARN of the default IAM role to use when a workflow execution of this type invokes AWS Lambda functions.</p> <p>This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> and <code>ContinueAsNewWorkflowExecution</code> decision.</p>
--- @param _defaultTaskList [TaskList] <p>If set, specifies the default task list to use for scheduling decision tasks for executions of this workflow type. This default is used only if a task list is not provided when starting the execution through the <a>StartWorkflowExecution</a> action or <code>StartChildWorkflowExecution</code> decision.</p>
--- @param _description [Description] <p>Textual description of the workflow type.</p>
--- Required parameter: domain
--- Required parameter: name
--- Required parameter: version
-function M.RegisterWorkflowTypeInput(_defaultExecutionStartToCloseTimeout, _domain, _name, _defaultTaskPriority, _defaultTaskStartToCloseTimeout, _defaultChildPolicy, _version, _defaultLambdaRole, _defaultTaskList, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterWorkflowTypeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * defaultExecutionStartToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum duration for executions of this workflow type. You can override this default when starting an execution through the <a>StartWorkflowExecution</a> action or <code>StartChildWorkflowExecution</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. Unlike some of the other timeout parameters in Amazon SWF, you cannot specify a value of "NONE" for <code>defaultExecutionStartToCloseTimeout</code>; there is a one-year max limit on the time that a workflow execution can run. Exceeding this limit will always cause the workflow execution to time out.</p>
+-- * domain [DomainName] <p>The name of the domain in which to register the workflow type.</p>
+-- * name [Name] <p>The name of the workflow type.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * defaultTaskPriority [TaskPriority] <p>The default task priority to assign to the workflow type. If not assigned, then "0" will be used. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- * defaultTaskStartToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the default maximum duration of decision tasks for this workflow type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * defaultChildPolicy [ChildPolicy] <p>If set, specifies the default policy to use for the child workflow executions when a workflow execution of this type is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
+-- * version [Version] <p>The version of the workflow type.</p> <note>The workflow type consists of the name and version, the combination of which must be unique within the domain. To get a list of all currently registered workflow types, use the <a>ListWorkflowTypes</a> action.</note> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * defaultLambdaRole [Arn] <p>The ARN of the default IAM role to use when a workflow execution of this type invokes AWS Lambda functions.</p> <p>This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> and <code>ContinueAsNewWorkflowExecution</code> decision.</p>
+-- * defaultTaskList [TaskList] <p>If set, specifies the default task list to use for scheduling decision tasks for executions of this workflow type. This default is used only if a task list is not provided when starting the execution through the <a>StartWorkflowExecution</a> action or <code>StartChildWorkflowExecution</code> decision.</p>
+-- * description [Description] <p>Textual description of the workflow type.</p>
+-- Required key: domain
+-- Required key: name
+-- Required key: version
+-- @return RegisterWorkflowTypeInput structure as a key-value pair table
+function M.RegisterWorkflowTypeInput(args)
+	assert(args, "You must provdide an argument table when creating RegisterWorkflowTypeInput")
 	local t = { 
-		["defaultExecutionStartToCloseTimeout"] = _defaultExecutionStartToCloseTimeout,
-		["domain"] = _domain,
-		["name"] = _name,
-		["defaultTaskPriority"] = _defaultTaskPriority,
-		["defaultTaskStartToCloseTimeout"] = _defaultTaskStartToCloseTimeout,
-		["defaultChildPolicy"] = _defaultChildPolicy,
-		["version"] = _version,
-		["defaultLambdaRole"] = _defaultLambdaRole,
-		["defaultTaskList"] = _defaultTaskList,
-		["description"] = _description,
+		["defaultExecutionStartToCloseTimeout"] = args["defaultExecutionStartToCloseTimeout"],
+		["domain"] = args["domain"],
+		["name"] = args["name"],
+		["defaultTaskPriority"] = args["defaultTaskPriority"],
+		["defaultTaskStartToCloseTimeout"] = args["defaultTaskStartToCloseTimeout"],
+		["defaultChildPolicy"] = args["defaultChildPolicy"],
+		["version"] = args["version"],
+		["defaultLambdaRole"] = args["defaultLambdaRole"],
+		["defaultTaskList"] = args["defaultTaskList"],
+		["description"] = args["description"],
 	}
 	asserts.AssertRegisterWorkflowTypeInput(t)
 	return t
@@ -639,16 +684,19 @@ end
 
 --- Create a structure of type RespondActivityTaskFailedInput
 --  
--- @param _reason [FailureReason] <p>Description of the error that may assist in diagnostics.</p>
--- @param _details [Data] <p><i>Optional.</i> Detailed information about the failure.</p>
--- @param _taskToken [TaskToken] <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important> <code>taskToken</code> is generated by the service and should be treated as an opaque value. If the task is passed to another process, its <code>taskToken</code> must also be passed. This enables it to provide its progress and respond with results.</important>
--- Required parameter: taskToken
-function M.RespondActivityTaskFailedInput(_reason, _details, _taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RespondActivityTaskFailedInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * reason [FailureReason] <p>Description of the error that may assist in diagnostics.</p>
+-- * details [Data] <p><i>Optional.</i> Detailed information about the failure.</p>
+-- * taskToken [TaskToken] <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important> <code>taskToken</code> is generated by the service and should be treated as an opaque value. If the task is passed to another process, its <code>taskToken</code> must also be passed. This enables it to provide its progress and respond with results.</important>
+-- Required key: taskToken
+-- @return RespondActivityTaskFailedInput structure as a key-value pair table
+function M.RespondActivityTaskFailedInput(args)
+	assert(args, "You must provdide an argument table when creating RespondActivityTaskFailedInput")
 	local t = { 
-		["reason"] = _reason,
-		["details"] = _details,
-		["taskToken"] = _taskToken,
+		["reason"] = args["reason"],
+		["details"] = args["details"],
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertRespondActivityTaskFailedInput(t)
 	return t
@@ -670,15 +718,18 @@ end
 
 --- Create a structure of type ActivityType
 -- <p>Represents an activity type.</p>
--- @param _version [Version] <p>The version of this activity.</p> <note>The combination of activity type name and version must be unique with in a domain.</note>
--- @param _name [Name] <p>The name of this activity.</p> <note>The combination of activity type name and version must be unique within a domain.</note>
--- Required parameter: name
--- Required parameter: version
-function M.ActivityType(_version, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [Version] <p>The version of this activity.</p> <note>The combination of activity type name and version must be unique with in a domain.</note>
+-- * name [Name] <p>The name of this activity.</p> <note>The combination of activity type name and version must be unique within a domain.</note>
+-- Required key: name
+-- Required key: version
+-- @return ActivityType structure as a key-value pair table
+function M.ActivityType(args)
+	assert(args, "You must provdide an argument table when creating ActivityType")
 	local t = { 
-		["version"] = _version,
-		["name"] = _name,
+		["version"] = args["version"],
+		["name"] = args["name"],
 	}
 	asserts.AssertActivityType(t)
 	return t
@@ -704,23 +755,26 @@ end
 
 --- Create a structure of type TerminateWorkflowExecutionInput
 --  
--- @param _domain [DomainName] <p>The domain of the workflow execution to terminate.</p>
--- @param _workflowId [WorkflowId] <p>The workflowId of the workflow execution to terminate.</p>
--- @param _reason [TerminateReason] <p><i>Optional.</i> A descriptive reason for terminating the workflow execution.</p>
--- @param _childPolicy [ChildPolicy] <p>If set, specifies the policy to use for the child workflow executions of the workflow execution being terminated. This policy overrides the child policy specified for the workflow execution at registration time or when starting the execution.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul> <note>A child policy for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default child policy was specified at registration time then a fault will be returned.</note>
--- @param _details [Data] <p><i>Optional.</i> Details for terminating the workflow execution.</p>
--- @param _runId [RunIdOptional] <p>The runId of the workflow execution to terminate.</p>
--- Required parameter: domain
--- Required parameter: workflowId
-function M.TerminateWorkflowExecutionInput(_domain, _workflowId, _reason, _childPolicy, _details, _runId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminateWorkflowExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The domain of the workflow execution to terminate.</p>
+-- * workflowId [WorkflowId] <p>The workflowId of the workflow execution to terminate.</p>
+-- * reason [TerminateReason] <p><i>Optional.</i> A descriptive reason for terminating the workflow execution.</p>
+-- * childPolicy [ChildPolicy] <p>If set, specifies the policy to use for the child workflow executions of the workflow execution being terminated. This policy overrides the child policy specified for the workflow execution at registration time or when starting the execution.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul> <note>A child policy for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default child policy was specified at registration time then a fault will be returned.</note>
+-- * details [Data] <p><i>Optional.</i> Details for terminating the workflow execution.</p>
+-- * runId [RunIdOptional] <p>The runId of the workflow execution to terminate.</p>
+-- Required key: domain
+-- Required key: workflowId
+-- @return TerminateWorkflowExecutionInput structure as a key-value pair table
+function M.TerminateWorkflowExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating TerminateWorkflowExecutionInput")
 	local t = { 
-		["domain"] = _domain,
-		["workflowId"] = _workflowId,
-		["reason"] = _reason,
-		["childPolicy"] = _childPolicy,
-		["details"] = _details,
-		["runId"] = _runId,
+		["domain"] = args["domain"],
+		["workflowId"] = args["workflowId"],
+		["reason"] = args["reason"],
+		["childPolicy"] = args["childPolicy"],
+		["details"] = args["details"],
+		["runId"] = args["runId"],
 	}
 	asserts.AssertTerminateWorkflowExecutionInput(t)
 	return t
@@ -749,26 +803,29 @@ end
 
 --- Create a structure of type ActivityTask
 -- <p>Unit of work sent to an activity worker.</p>
--- @param _activityType [ActivityType] <p>The type of this activity task.</p>
--- @param _workflowExecution [WorkflowExecution] <p>The workflow execution that started this activity task.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>ActivityTaskStarted</code> event recorded in the history.</p>
--- @param _activityId [ActivityId] <p>The unique ID of the task.</p>
--- @param _input [Data] <p>The inputs provided when the activity task was scheduled. The form of the input is user defined and should be meaningful to the activity implementation.</p>
--- @param _taskToken [TaskToken] <p>The opaque string used as a handle on the task. This token is used by workers to communicate progress and response information back to the system about the task.</p>
--- Required parameter: taskToken
--- Required parameter: activityId
--- Required parameter: startedEventId
--- Required parameter: workflowExecution
--- Required parameter: activityType
-function M.ActivityTask(_activityType, _workflowExecution, _startedEventId, _activityId, _input, _taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTask")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * activityType [ActivityType] <p>The type of this activity task.</p>
+-- * workflowExecution [WorkflowExecution] <p>The workflow execution that started this activity task.</p>
+-- * startedEventId [EventId] <p>The ID of the <code>ActivityTaskStarted</code> event recorded in the history.</p>
+-- * activityId [ActivityId] <p>The unique ID of the task.</p>
+-- * input [Data] <p>The inputs provided when the activity task was scheduled. The form of the input is user defined and should be meaningful to the activity implementation.</p>
+-- * taskToken [TaskToken] <p>The opaque string used as a handle on the task. This token is used by workers to communicate progress and response information back to the system about the task.</p>
+-- Required key: taskToken
+-- Required key: activityId
+-- Required key: startedEventId
+-- Required key: workflowExecution
+-- Required key: activityType
+-- @return ActivityTask structure as a key-value pair table
+function M.ActivityTask(args)
+	assert(args, "You must provdide an argument table when creating ActivityTask")
 	local t = { 
-		["activityType"] = _activityType,
-		["workflowExecution"] = _workflowExecution,
-		["startedEventId"] = _startedEventId,
-		["activityId"] = _activityId,
-		["input"] = _input,
-		["taskToken"] = _taskToken,
+		["activityType"] = args["activityType"],
+		["workflowExecution"] = args["workflowExecution"],
+		["startedEventId"] = args["startedEventId"],
+		["activityId"] = args["activityId"],
+		["input"] = args["input"],
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertActivityTask(t)
 	return t
@@ -792,18 +849,21 @@ end
 
 --- Create a structure of type ChildWorkflowExecutionStartedEventAttributes
 -- <p>Provides details of the <code>ChildWorkflowExecutionStarted</code> event.</p>
--- @param _workflowType [WorkflowType] <p>The type of the child workflow execution. </p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _workflowExecution [WorkflowExecution] <p>The child workflow execution that was started.</p>
--- Required parameter: workflowExecution
--- Required parameter: workflowType
--- Required parameter: initiatedEventId
-function M.ChildWorkflowExecutionStartedEventAttributes(_workflowType, _initiatedEventId, _workflowExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChildWorkflowExecutionStartedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * workflowType [WorkflowType] <p>The type of the child workflow execution. </p>
+-- * initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * workflowExecution [WorkflowExecution] <p>The child workflow execution that was started.</p>
+-- Required key: workflowExecution
+-- Required key: workflowType
+-- Required key: initiatedEventId
+-- @return ChildWorkflowExecutionStartedEventAttributes structure as a key-value pair table
+function M.ChildWorkflowExecutionStartedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionStartedEventAttributes")
 	local t = { 
-		["workflowType"] = _workflowType,
-		["initiatedEventId"] = _initiatedEventId,
-		["workflowExecution"] = _workflowExecution,
+		["workflowType"] = args["workflowType"],
+		["initiatedEventId"] = args["initiatedEventId"],
+		["workflowExecution"] = args["workflowExecution"],
 	}
 	asserts.AssertChildWorkflowExecutionStartedEventAttributes(t)
 	return t
@@ -836,38 +896,41 @@ end
 
 --- Create a structure of type Decision
 -- <p>Specifies a decision made by the decider. A decision can be one of these types:</p> <ul> <li> <b>CancelTimer</b>: cancels a previously started timer and records a <code>TimerCanceled</code> event in the history.</li> <li> <b>CancelWorkflowExecution</b>: closes the workflow execution and records a <code>WorkflowExecutionCanceled</code> event in the history.</li> <li> <b>CompleteWorkflowExecution</b>: closes the workflow execution and records a <code>WorkflowExecutionCompleted</code> event in the history .</li> <li> <b>ContinueAsNewWorkflowExecution</b>: closes the workflow execution and starts a new workflow execution of the same type using the same workflow ID and a unique run ID. A <code>WorkflowExecutionContinuedAsNew</code> event is recorded in the history.</li> <li> <b>FailWorkflowExecution</b>: closes the workflow execution and records a <code>WorkflowExecutionFailed</code> event in the history.</li> <li> <b>RecordMarker</b>: records a <code>MarkerRecorded</code> event in the history. Markers can be used for adding custom information in the history for instance to let deciders know that they do not need to look at the history beyond the marker event.</li> <li> <b>RequestCancelActivityTask</b>: attempts to cancel a previously scheduled activity task. If the activity task was scheduled but has not been assigned to a worker, then it will be canceled. If the activity task was already assigned to a worker, then the worker will be informed that cancellation has been requested in the response to <a>RecordActivityTaskHeartbeat</a>.</li> <li> <b>RequestCancelExternalWorkflowExecution</b>: requests that a request be made to cancel the specified external workflow execution and records a <code>RequestCancelExternalWorkflowExecutionInitiated</code> event in the history.</li> <li> <b>ScheduleActivityTask</b>: schedules an activity task.</li> <li> <b>ScheduleLambdaFunction</b>: schedules a AWS Lambda function.</li> <li> <b>SignalExternalWorkflowExecution</b>: requests a signal to be delivered to the specified external workflow execution and records a <code>SignalExternalWorkflowExecutionInitiated</code> event in the history.</li> <li> <b>StartChildWorkflowExecution</b>: requests that a child workflow execution be started and records a <code>StartChildWorkflowExecutionInitiated</code> event in the history. The child workflow execution is a separate workflow execution with its own history.</li> <li> <b>StartTimer</b>: starts a timer for this workflow execution and records a <code>TimerStarted</code> event in the history. This timer will fire after the specified delay and record a <code>TimerFired</code> event.</li> </ul> <p><b>Access Control</b></p> <p>If you grant permission to use <code>RespondDecisionTaskCompleted</code>, you can use IAM policies to express permissions for the list of decisions returned by this action as if they were members of the API. Treating decisions as a pseudo API maintains a uniform conceptual model and helps keep policies readable. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p> <p><b>Decision Failure</b></p> <p>Decisions can fail for several reasons</p> <ul> <li>The ordering of decisions should follow a logical flow. Some decisions might not make sense in the current context of the workflow execution and will therefore fail.</li> <li>A limit on your account was reached.</li> <li>The decision lacks sufficient permissions.</li> </ul> <p>One of the following events might be added to the history to indicate an error. The event attribute's <b>cause</b> parameter indicates the cause. If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p> <ul> <li> <b>ScheduleActivityTaskFailed</b>: a ScheduleActivityTask decision failed. This could happen if the activity type specified in the decision is not registered, is in a deprecated state, or the decision is not properly configured.</li> <li> <b>ScheduleLambdaFunctionFailed</b>: a ScheduleLambdaFunctionFailed decision failed. This could happen if the AWS Lambda function specified in the decision does not exist, or the AWS Lambda service's limits are exceeded.</li> <li> <b>RequestCancelActivityTaskFailed</b>: a RequestCancelActivityTask decision failed. This could happen if there is no open activity task with the specified activityId.</li> <li> <b>StartTimerFailed</b>: a StartTimer decision failed. This could happen if there is another open timer with the same timerId.</li> <li> <b>CancelTimerFailed</b>: a CancelTimer decision failed. This could happen if there is no open timer with the specified timerId.</li> <li> <b>StartChildWorkflowExecutionFailed</b>: a StartChildWorkflowExecution decision failed. This could happen if the workflow type specified is not registered, is deprecated, or the decision is not properly configured.</li> <li> <b>SignalExternalWorkflowExecutionFailed</b>: a SignalExternalWorkflowExecution decision failed. This could happen if the <code>workflowID</code> specified in the decision was incorrect.</li> <li> <b>RequestCancelExternalWorkflowExecutionFailed</b>: a RequestCancelExternalWorkflowExecution decision failed. This could happen if the <code>workflowID</code> specified in the decision was incorrect.</li> <li> <b>CancelWorkflowExecutionFailed</b>: a CancelWorkflowExecution decision failed. This could happen if there is an unhandled decision task pending in the workflow execution.</li> <li> <b>CompleteWorkflowExecutionFailed</b>: a CompleteWorkflowExecution decision failed. This could happen if there is an unhandled decision task pending in the workflow execution.</li> <li> <b>ContinueAsNewWorkflowExecutionFailed</b>: a ContinueAsNewWorkflowExecution decision failed. This could happen if there is an unhandled decision task pending in the workflow execution or the ContinueAsNewWorkflowExecution decision was not configured correctly.</li> <li> <b>FailWorkflowExecutionFailed</b>: a FailWorkflowExecution decision failed. This could happen if there is an unhandled decision task pending in the workflow execution.</li> </ul> <p>The preceding error events might occur due to an error in the decider logic, which might put the workflow execution in an unstable state The cause field in the event structure for the error event indicates the cause of the error.</p> <note>A workflow execution may be closed by the decider by returning one of the following decisions when completing a decision task: <code>CompleteWorkflowExecution</code>, <code>FailWorkflowExecution</code>, <code>CancelWorkflowExecution</code> and <code>ContinueAsNewWorkflowExecution</code>. An UnhandledDecision fault will be returned if a workflow closing decision is specified and a signal or activity event had been added to the history while the decision task was being performed by the decider. Unlike the above situations which are logic issues, this fault is always possible because of race conditions in a distributed system. The right action here is to call <a>RespondDecisionTaskCompleted</a> without any decisions. This would result in another decision task with these new events included in the history. The decider should handle the new events and may decide to close the workflow execution.</note> <p><b>How to code a decision</b></p> <p>You code a decision by first setting the decision type field to one of the above decision values, and then set the corresponding attributes field shown below:</p> <ul> <li> <a>ScheduleActivityTaskDecisionAttributes</a> </li> <li> <a>ScheduleLambdaFunctionDecisionAttributes</a> </li> <li> <a>RequestCancelActivityTaskDecisionAttributes</a> </li> <li> <a>CompleteWorkflowExecutionDecisionAttributes</a> </li> <li> <a>FailWorkflowExecutionDecisionAttributes</a> </li> <li> <a>CancelWorkflowExecutionDecisionAttributes</a> </li> <li> <a>ContinueAsNewWorkflowExecutionDecisionAttributes</a> </li> <li> <a>RecordMarkerDecisionAttributes</a> </li> <li> <a>StartTimerDecisionAttributes</a> </li> <li> <a>CancelTimerDecisionAttributes</a> </li> <li> <a>SignalExternalWorkflowExecutionDecisionAttributes</a> </li> <li> <a>RequestCancelExternalWorkflowExecutionDecisionAttributes</a> </li> <li> <a>StartChildWorkflowExecutionDecisionAttributes</a> </li> </ul>
--- @param _scheduleActivityTaskDecisionAttributes [ScheduleActivityTaskDecisionAttributes] <p>Provides details of the <code>ScheduleActivityTask</code> decision. It is not set for other decision types.</p>
--- @param _cancelWorkflowExecutionDecisionAttributes [CancelWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>CancelWorkflowExecution</code> decision. It is not set for other decision types.</p>
--- @param _cancelTimerDecisionAttributes [CancelTimerDecisionAttributes] <p>Provides details of the <code>CancelTimer</code> decision. It is not set for other decision types.</p>
--- @param _scheduleLambdaFunctionDecisionAttributes [ScheduleLambdaFunctionDecisionAttributes] 
--- @param _signalExternalWorkflowExecutionDecisionAttributes [SignalExternalWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>SignalExternalWorkflowExecution</code> decision. It is not set for other decision types.</p>
--- @param _failWorkflowExecutionDecisionAttributes [FailWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>FailWorkflowExecution</code> decision. It is not set for other decision types.</p>
--- @param _recordMarkerDecisionAttributes [RecordMarkerDecisionAttributes] <p>Provides details of the <code>RecordMarker</code> decision. It is not set for other decision types.</p>
--- @param _requestCancelActivityTaskDecisionAttributes [RequestCancelActivityTaskDecisionAttributes] <p>Provides details of the <code>RequestCancelActivityTask</code> decision. It is not set for other decision types.</p>
--- @param _completeWorkflowExecutionDecisionAttributes [CompleteWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>CompleteWorkflowExecution</code> decision. It is not set for other decision types.</p>
--- @param _startTimerDecisionAttributes [StartTimerDecisionAttributes] <p>Provides details of the <code>StartTimer</code> decision. It is not set for other decision types.</p>
--- @param _requestCancelExternalWorkflowExecutionDecisionAttributes [RequestCancelExternalWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>RequestCancelExternalWorkflowExecution</code> decision. It is not set for other decision types.</p>
--- @param _continueAsNewWorkflowExecutionDecisionAttributes [ContinueAsNewWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>ContinueAsNewWorkflowExecution</code> decision. It is not set for other decision types.</p>
--- @param _decisionType [DecisionType] <p>Specifies the type of the decision.</p>
--- @param _startChildWorkflowExecutionDecisionAttributes [StartChildWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>StartChildWorkflowExecution</code> decision. It is not set for other decision types.</p>
--- Required parameter: decisionType
-function M.Decision(_scheduleActivityTaskDecisionAttributes, _cancelWorkflowExecutionDecisionAttributes, _cancelTimerDecisionAttributes, _scheduleLambdaFunctionDecisionAttributes, _signalExternalWorkflowExecutionDecisionAttributes, _failWorkflowExecutionDecisionAttributes, _recordMarkerDecisionAttributes, _requestCancelActivityTaskDecisionAttributes, _completeWorkflowExecutionDecisionAttributes, _startTimerDecisionAttributes, _requestCancelExternalWorkflowExecutionDecisionAttributes, _continueAsNewWorkflowExecutionDecisionAttributes, _decisionType, _startChildWorkflowExecutionDecisionAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Decision")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * scheduleActivityTaskDecisionAttributes [ScheduleActivityTaskDecisionAttributes] <p>Provides details of the <code>ScheduleActivityTask</code> decision. It is not set for other decision types.</p>
+-- * cancelWorkflowExecutionDecisionAttributes [CancelWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>CancelWorkflowExecution</code> decision. It is not set for other decision types.</p>
+-- * cancelTimerDecisionAttributes [CancelTimerDecisionAttributes] <p>Provides details of the <code>CancelTimer</code> decision. It is not set for other decision types.</p>
+-- * scheduleLambdaFunctionDecisionAttributes [ScheduleLambdaFunctionDecisionAttributes] 
+-- * signalExternalWorkflowExecutionDecisionAttributes [SignalExternalWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>SignalExternalWorkflowExecution</code> decision. It is not set for other decision types.</p>
+-- * failWorkflowExecutionDecisionAttributes [FailWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>FailWorkflowExecution</code> decision. It is not set for other decision types.</p>
+-- * recordMarkerDecisionAttributes [RecordMarkerDecisionAttributes] <p>Provides details of the <code>RecordMarker</code> decision. It is not set for other decision types.</p>
+-- * requestCancelActivityTaskDecisionAttributes [RequestCancelActivityTaskDecisionAttributes] <p>Provides details of the <code>RequestCancelActivityTask</code> decision. It is not set for other decision types.</p>
+-- * completeWorkflowExecutionDecisionAttributes [CompleteWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>CompleteWorkflowExecution</code> decision. It is not set for other decision types.</p>
+-- * startTimerDecisionAttributes [StartTimerDecisionAttributes] <p>Provides details of the <code>StartTimer</code> decision. It is not set for other decision types.</p>
+-- * requestCancelExternalWorkflowExecutionDecisionAttributes [RequestCancelExternalWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>RequestCancelExternalWorkflowExecution</code> decision. It is not set for other decision types.</p>
+-- * continueAsNewWorkflowExecutionDecisionAttributes [ContinueAsNewWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>ContinueAsNewWorkflowExecution</code> decision. It is not set for other decision types.</p>
+-- * decisionType [DecisionType] <p>Specifies the type of the decision.</p>
+-- * startChildWorkflowExecutionDecisionAttributes [StartChildWorkflowExecutionDecisionAttributes] <p>Provides details of the <code>StartChildWorkflowExecution</code> decision. It is not set for other decision types.</p>
+-- Required key: decisionType
+-- @return Decision structure as a key-value pair table
+function M.Decision(args)
+	assert(args, "You must provdide an argument table when creating Decision")
 	local t = { 
-		["scheduleActivityTaskDecisionAttributes"] = _scheduleActivityTaskDecisionAttributes,
-		["cancelWorkflowExecutionDecisionAttributes"] = _cancelWorkflowExecutionDecisionAttributes,
-		["cancelTimerDecisionAttributes"] = _cancelTimerDecisionAttributes,
-		["scheduleLambdaFunctionDecisionAttributes"] = _scheduleLambdaFunctionDecisionAttributes,
-		["signalExternalWorkflowExecutionDecisionAttributes"] = _signalExternalWorkflowExecutionDecisionAttributes,
-		["failWorkflowExecutionDecisionAttributes"] = _failWorkflowExecutionDecisionAttributes,
-		["recordMarkerDecisionAttributes"] = _recordMarkerDecisionAttributes,
-		["requestCancelActivityTaskDecisionAttributes"] = _requestCancelActivityTaskDecisionAttributes,
-		["completeWorkflowExecutionDecisionAttributes"] = _completeWorkflowExecutionDecisionAttributes,
-		["startTimerDecisionAttributes"] = _startTimerDecisionAttributes,
-		["requestCancelExternalWorkflowExecutionDecisionAttributes"] = _requestCancelExternalWorkflowExecutionDecisionAttributes,
-		["continueAsNewWorkflowExecutionDecisionAttributes"] = _continueAsNewWorkflowExecutionDecisionAttributes,
-		["decisionType"] = _decisionType,
-		["startChildWorkflowExecutionDecisionAttributes"] = _startChildWorkflowExecutionDecisionAttributes,
+		["scheduleActivityTaskDecisionAttributes"] = args["scheduleActivityTaskDecisionAttributes"],
+		["cancelWorkflowExecutionDecisionAttributes"] = args["cancelWorkflowExecutionDecisionAttributes"],
+		["cancelTimerDecisionAttributes"] = args["cancelTimerDecisionAttributes"],
+		["scheduleLambdaFunctionDecisionAttributes"] = args["scheduleLambdaFunctionDecisionAttributes"],
+		["signalExternalWorkflowExecutionDecisionAttributes"] = args["signalExternalWorkflowExecutionDecisionAttributes"],
+		["failWorkflowExecutionDecisionAttributes"] = args["failWorkflowExecutionDecisionAttributes"],
+		["recordMarkerDecisionAttributes"] = args["recordMarkerDecisionAttributes"],
+		["requestCancelActivityTaskDecisionAttributes"] = args["requestCancelActivityTaskDecisionAttributes"],
+		["completeWorkflowExecutionDecisionAttributes"] = args["completeWorkflowExecutionDecisionAttributes"],
+		["startTimerDecisionAttributes"] = args["startTimerDecisionAttributes"],
+		["requestCancelExternalWorkflowExecutionDecisionAttributes"] = args["requestCancelExternalWorkflowExecutionDecisionAttributes"],
+		["continueAsNewWorkflowExecutionDecisionAttributes"] = args["continueAsNewWorkflowExecutionDecisionAttributes"],
+		["decisionType"] = args["decisionType"],
+		["startChildWorkflowExecutionDecisionAttributes"] = args["startChildWorkflowExecutionDecisionAttributes"],
 	}
 	asserts.AssertDecision(t)
 	return t
@@ -889,15 +952,18 @@ end
 
 --- Create a structure of type ActivityTypeDetail
 -- <p>Detailed information about an activity type.</p>
--- @param _configuration [ActivityTypeConfiguration] <p>The configuration settings registered with the activity type.</p>
--- @param _typeInfo [ActivityTypeInfo] <p>General information about the activity type.</p> <p>The status of activity type (returned in the ActivityTypeInfo structure) can be one of the following.</p> <ul> <li> <b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be running. </li> <li> <b>DEPRECATED</b>: The type was deprecated using <a>DeprecateActivityType</a>, but is still in use. You should keep workers supporting this type running. You cannot create new tasks of this type. </li> </ul>
--- Required parameter: typeInfo
--- Required parameter: configuration
-function M.ActivityTypeDetail(_configuration, _typeInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTypeDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configuration [ActivityTypeConfiguration] <p>The configuration settings registered with the activity type.</p>
+-- * typeInfo [ActivityTypeInfo] <p>General information about the activity type.</p> <p>The status of activity type (returned in the ActivityTypeInfo structure) can be one of the following.</p> <ul> <li> <b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be running. </li> <li> <b>DEPRECATED</b>: The type was deprecated using <a>DeprecateActivityType</a>, but is still in use. You should keep workers supporting this type running. You cannot create new tasks of this type. </li> </ul>
+-- Required key: typeInfo
+-- Required key: configuration
+-- @return ActivityTypeDetail structure as a key-value pair table
+function M.ActivityTypeDetail(args)
+	assert(args, "You must provdide an argument table when creating ActivityTypeDetail")
 	local t = { 
-		["configuration"] = _configuration,
-		["typeInfo"] = _typeInfo,
+		["configuration"] = args["configuration"],
+		["typeInfo"] = args["typeInfo"],
 	}
 	asserts.AssertActivityTypeDetail(t)
 	return t
@@ -925,24 +991,27 @@ end
 
 --- Create a structure of type ChildWorkflowExecutionTimedOutEventAttributes
 -- <p>Provides details of the <code>ChildWorkflowExecutionTimedOut</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when this child workflow execution was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _timeoutType [WorkflowExecutionTimeoutType] <p>The type of the timeout that caused the child workflow execution to time out.</p>
--- @param _workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _workflowExecution [WorkflowExecution] <p>The child workflow execution that timed out.</p>
--- Required parameter: workflowExecution
--- Required parameter: workflowType
--- Required parameter: timeoutType
--- Required parameter: initiatedEventId
--- Required parameter: startedEventId
-function M.ChildWorkflowExecutionTimedOutEventAttributes(_startedEventId, _timeoutType, _workflowType, _initiatedEventId, _workflowExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChildWorkflowExecutionTimedOutEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when this child workflow execution was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * timeoutType [WorkflowExecutionTimeoutType] <p>The type of the timeout that caused the child workflow execution to time out.</p>
+-- * workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
+-- * initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * workflowExecution [WorkflowExecution] <p>The child workflow execution that timed out.</p>
+-- Required key: workflowExecution
+-- Required key: workflowType
+-- Required key: timeoutType
+-- Required key: initiatedEventId
+-- Required key: startedEventId
+-- @return ChildWorkflowExecutionTimedOutEventAttributes structure as a key-value pair table
+function M.ChildWorkflowExecutionTimedOutEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionTimedOutEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["timeoutType"] = _timeoutType,
-		["workflowType"] = _workflowType,
-		["initiatedEventId"] = _initiatedEventId,
-		["workflowExecution"] = _workflowExecution,
+		["startedEventId"] = args["startedEventId"],
+		["timeoutType"] = args["timeoutType"],
+		["workflowType"] = args["workflowType"],
+		["initiatedEventId"] = args["initiatedEventId"],
+		["workflowExecution"] = args["workflowExecution"],
 	}
 	asserts.AssertChildWorkflowExecutionTimedOutEventAttributes(t)
 	return t
@@ -965,17 +1034,20 @@ end
 
 --- Create a structure of type PollForActivityTaskInput
 --  
--- @param _domain [DomainName] <p>The name of the domain that contains the task lists being polled.</p>
--- @param _taskList [TaskList] <p>Specifies the task list to poll for activity tasks.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _identity [Identity] <p>Identity of the worker making the request, recorded in the <code>ActivityTaskStarted</code> event in the workflow history. This enables diagnostic tracing when problems arise. The form of this identity is user defined.</p>
--- Required parameter: domain
--- Required parameter: taskList
-function M.PollForActivityTaskInput(_domain, _taskList, _identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PollForActivityTaskInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain that contains the task lists being polled.</p>
+-- * taskList [TaskList] <p>Specifies the task list to poll for activity tasks.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * identity [Identity] <p>Identity of the worker making the request, recorded in the <code>ActivityTaskStarted</code> event in the workflow history. This enables diagnostic tracing when problems arise. The form of this identity is user defined.</p>
+-- Required key: domain
+-- Required key: taskList
+-- @return PollForActivityTaskInput structure as a key-value pair table
+function M.PollForActivityTaskInput(args)
+	assert(args, "You must provdide an argument table when creating PollForActivityTaskInput")
 	local t = { 
-		["domain"] = _domain,
-		["taskList"] = _taskList,
-		["identity"] = _identity,
+		["domain"] = args["domain"],
+		["taskList"] = args["taskList"],
+		["identity"] = args["identity"],
 	}
 	asserts.AssertPollForActivityTaskInput(t)
 	return t
@@ -995,13 +1067,16 @@ end
 
 --- Create a structure of type FailWorkflowExecutionDecisionAttributes
 -- <p>Provides details of the <code>FailWorkflowExecution</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>You cannot use an IAM policy to constrain this action's parameters.</li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _reason [FailureReason] <p>A descriptive reason for the failure that may help in diagnostics.</p>
--- @param _details [Data] <p><i>Optional.</i> Details of the failure.</p>
-function M.FailWorkflowExecutionDecisionAttributes(_reason, _details, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FailWorkflowExecutionDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * reason [FailureReason] <p>A descriptive reason for the failure that may help in diagnostics.</p>
+-- * details [Data] <p><i>Optional.</i> Details of the failure.</p>
+-- @return FailWorkflowExecutionDecisionAttributes structure as a key-value pair table
+function M.FailWorkflowExecutionDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating FailWorkflowExecutionDecisionAttributes")
 	local t = { 
-		["reason"] = _reason,
-		["details"] = _details,
+		["reason"] = args["reason"],
+		["details"] = args["details"],
 	}
 	asserts.AssertFailWorkflowExecutionDecisionAttributes(t)
 	return t
@@ -1024,17 +1099,20 @@ end
 
 --- Create a structure of type DomainInfo
 -- <p>Contains general information about a domain.</p>
--- @param _status [RegistrationStatus] <p>The status of the domain:</p> <ul> <li> <b>REGISTERED</b>: The domain is properly registered and available. You can use this domain for registering types and creating new workflow executions. </li> <li> <b>DEPRECATED</b>: The domain was deprecated using <a>DeprecateDomain</a>, but is still in use. You should not create new workflow executions in this domain. </li> </ul>
--- @param _name [DomainName] <p>The name of the domain. This name is unique within the account.</p>
--- @param _description [Description] <p>The description of the domain provided through <a>RegisterDomain</a>.</p>
--- Required parameter: name
--- Required parameter: status
-function M.DomainInfo(_status, _name, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [RegistrationStatus] <p>The status of the domain:</p> <ul> <li> <b>REGISTERED</b>: The domain is properly registered and available. You can use this domain for registering types and creating new workflow executions. </li> <li> <b>DEPRECATED</b>: The domain was deprecated using <a>DeprecateDomain</a>, but is still in use. You should not create new workflow executions in this domain. </li> </ul>
+-- * name [DomainName] <p>The name of the domain. This name is unique within the account.</p>
+-- * description [Description] <p>The description of the domain provided through <a>RegisterDomain</a>.</p>
+-- Required key: name
+-- Required key: status
+-- @return DomainInfo structure as a key-value pair table
+function M.DomainInfo(args)
+	assert(args, "You must provdide an argument table when creating DomainInfo")
 	local t = { 
-		["status"] = _status,
-		["name"] = _name,
-		["description"] = _description,
+		["status"] = args["status"],
+		["name"] = args["name"],
+		["description"] = args["description"],
 	}
 	asserts.AssertDomainInfo(t)
 	return t
@@ -1058,19 +1136,22 @@ end
 
 --- Create a structure of type ActivityTaskFailedEventAttributes
 -- <p>Provides details of the <code>ActivityTaskFailed</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this activity task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _reason [FailureReason] <p>The reason provided for the failure (if any).</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when this activity task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _details [Data] <p>The details of the failure (if any).</p>
--- Required parameter: scheduledEventId
--- Required parameter: startedEventId
-function M.ActivityTaskFailedEventAttributes(_startedEventId, _reason, _scheduledEventId, _details, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTaskFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this activity task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * reason [FailureReason] <p>The reason provided for the failure (if any).</p>
+-- * scheduledEventId [EventId] <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when this activity task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * details [Data] <p>The details of the failure (if any).</p>
+-- Required key: scheduledEventId
+-- Required key: startedEventId
+-- @return ActivityTaskFailedEventAttributes structure as a key-value pair table
+function M.ActivityTaskFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ActivityTaskFailedEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["reason"] = _reason,
-		["scheduledEventId"] = _scheduledEventId,
-		["details"] = _details,
+		["startedEventId"] = args["startedEventId"],
+		["reason"] = args["reason"],
+		["scheduledEventId"] = args["scheduledEventId"],
+		["details"] = args["details"],
 	}
 	asserts.AssertActivityTaskFailedEventAttributes(t)
 	return t
@@ -1092,15 +1173,18 @@ end
 
 --- Create a structure of type ExternalWorkflowExecutionCancelRequestedEventAttributes
 -- <p>Provides details of the <code>ExternalWorkflowExecutionCancelRequested</code> event.</p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>RequestCancelExternalWorkflowExecutionInitiated</code> event corresponding to the <code>RequestCancelExternalWorkflowExecution</code> decision to cancel this external workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _workflowExecution [WorkflowExecution] <p>The external workflow execution to which the cancellation request was delivered.</p>
--- Required parameter: workflowExecution
--- Required parameter: initiatedEventId
-function M.ExternalWorkflowExecutionCancelRequestedEventAttributes(_initiatedEventId, _workflowExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExternalWorkflowExecutionCancelRequestedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * initiatedEventId [EventId] <p>The ID of the <code>RequestCancelExternalWorkflowExecutionInitiated</code> event corresponding to the <code>RequestCancelExternalWorkflowExecution</code> decision to cancel this external workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * workflowExecution [WorkflowExecution] <p>The external workflow execution to which the cancellation request was delivered.</p>
+-- Required key: workflowExecution
+-- Required key: initiatedEventId
+-- @return ExternalWorkflowExecutionCancelRequestedEventAttributes structure as a key-value pair table
+function M.ExternalWorkflowExecutionCancelRequestedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ExternalWorkflowExecutionCancelRequestedEventAttributes")
 	local t = { 
-		["initiatedEventId"] = _initiatedEventId,
-		["workflowExecution"] = _workflowExecution,
+		["initiatedEventId"] = args["initiatedEventId"],
+		["workflowExecution"] = args["workflowExecution"],
 	}
 	asserts.AssertExternalWorkflowExecutionCancelRequestedEventAttributes(t)
 	return t
@@ -1128,25 +1212,28 @@ end
 
 --- Create a structure of type ChildWorkflowExecutionFailedEventAttributes
 -- <p>Provides details of the <code>ChildWorkflowExecutionFailed</code> event.</p>
--- @param _workflowExecution [WorkflowExecution] <p>The child workflow execution that failed.</p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when this child workflow execution was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _reason [FailureReason] <p>The reason for the failure (if provided).</p>
--- @param _details [Data] <p>The details of the failure (if provided).</p>
--- @param _workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
--- Required parameter: workflowExecution
--- Required parameter: workflowType
--- Required parameter: initiatedEventId
--- Required parameter: startedEventId
-function M.ChildWorkflowExecutionFailedEventAttributes(_workflowExecution, _initiatedEventId, _startedEventId, _reason, _details, _workflowType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChildWorkflowExecutionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * workflowExecution [WorkflowExecution] <p>The child workflow execution that failed.</p>
+-- * initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * startedEventId [EventId] <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when this child workflow execution was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * reason [FailureReason] <p>The reason for the failure (if provided).</p>
+-- * details [Data] <p>The details of the failure (if provided).</p>
+-- * workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
+-- Required key: workflowExecution
+-- Required key: workflowType
+-- Required key: initiatedEventId
+-- Required key: startedEventId
+-- @return ChildWorkflowExecutionFailedEventAttributes structure as a key-value pair table
+function M.ChildWorkflowExecutionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionFailedEventAttributes")
 	local t = { 
-		["workflowExecution"] = _workflowExecution,
-		["initiatedEventId"] = _initiatedEventId,
-		["startedEventId"] = _startedEventId,
-		["reason"] = _reason,
-		["details"] = _details,
-		["workflowType"] = _workflowType,
+		["workflowExecution"] = args["workflowExecution"],
+		["initiatedEventId"] = args["initiatedEventId"],
+		["startedEventId"] = args["startedEventId"],
+		["reason"] = args["reason"],
+		["details"] = args["details"],
+		["workflowType"] = args["workflowType"],
 	}
 	asserts.AssertChildWorkflowExecutionFailedEventAttributes(t)
 	return t
@@ -1168,15 +1255,18 @@ end
 
 --- Create a structure of type ActivityTaskCancelRequestedEventAttributes
 -- <p>Provides details of the <code>ActivityTaskCancelRequested</code> event.</p>
--- @param _activityId [ActivityId] <p>The unique ID of the task.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RequestCancelActivityTask</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: decisionTaskCompletedEventId
--- Required parameter: activityId
-function M.ActivityTaskCancelRequestedEventAttributes(_activityId, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTaskCancelRequestedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * activityId [ActivityId] <p>The unique ID of the task.</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RequestCancelActivityTask</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: decisionTaskCompletedEventId
+-- Required key: activityId
+-- @return ActivityTaskCancelRequestedEventAttributes structure as a key-value pair table
+function M.ActivityTaskCancelRequestedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ActivityTaskCancelRequestedEventAttributes")
 	local t = { 
-		["activityId"] = _activityId,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["activityId"] = args["activityId"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertActivityTaskCancelRequestedEventAttributes(t)
 	return t
@@ -1195,11 +1285,14 @@ end
 
 --- Create a structure of type DomainDeprecatedFault
 -- <p>Returned when the specified domain has been deprecated.</p>
--- @param _message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
-function M.DomainDeprecatedFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainDeprecatedFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
+-- @return DomainDeprecatedFault structure as a key-value pair table
+function M.DomainDeprecatedFault(args)
+	assert(args, "You must provdide an argument table when creating DomainDeprecatedFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDomainDeprecatedFault(t)
 	return t
@@ -1221,15 +1314,18 @@ end
 
 --- Create a structure of type CompleteWorkflowExecutionFailedEventAttributes
 -- <p>Provides details of the <code>CompleteWorkflowExecutionFailed</code> event.</p>
--- @param _cause [CompleteWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CompleteWorkflowExecution</code> decision to complete this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: cause
--- Required parameter: decisionTaskCompletedEventId
-function M.CompleteWorkflowExecutionFailedEventAttributes(_cause, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompleteWorkflowExecutionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [CompleteWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CompleteWorkflowExecution</code> decision to complete this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: cause
+-- Required key: decisionTaskCompletedEventId
+-- @return CompleteWorkflowExecutionFailedEventAttributes structure as a key-value pair table
+function M.CompleteWorkflowExecutionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating CompleteWorkflowExecutionFailedEventAttributes")
 	local t = { 
-		["cause"] = _cause,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["cause"] = args["cause"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertCompleteWorkflowExecutionFailedEventAttributes(t)
 	return t
@@ -1256,23 +1352,26 @@ end
 
 --- Create a structure of type ChildWorkflowExecutionCanceledEventAttributes
 -- <p>Provide details of the <code>ChildWorkflowExecutionCanceled</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when this child workflow execution was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _details [Data] <p>Details of the cancellation (if provided).</p>
--- @param _workflowExecution [WorkflowExecution] <p>The child workflow execution that was canceled.</p>
--- Required parameter: workflowExecution
--- Required parameter: workflowType
--- Required parameter: initiatedEventId
--- Required parameter: startedEventId
-function M.ChildWorkflowExecutionCanceledEventAttributes(_startedEventId, _workflowType, _initiatedEventId, _details, _workflowExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChildWorkflowExecutionCanceledEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when this child workflow execution was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
+-- * initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * details [Data] <p>Details of the cancellation (if provided).</p>
+-- * workflowExecution [WorkflowExecution] <p>The child workflow execution that was canceled.</p>
+-- Required key: workflowExecution
+-- Required key: workflowType
+-- Required key: initiatedEventId
+-- Required key: startedEventId
+-- @return ChildWorkflowExecutionCanceledEventAttributes structure as a key-value pair table
+function M.ChildWorkflowExecutionCanceledEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionCanceledEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["workflowType"] = _workflowType,
-		["initiatedEventId"] = _initiatedEventId,
-		["details"] = _details,
-		["workflowExecution"] = _workflowExecution,
+		["startedEventId"] = args["startedEventId"],
+		["workflowType"] = args["workflowType"],
+		["initiatedEventId"] = args["initiatedEventId"],
+		["details"] = args["details"],
+		["workflowExecution"] = args["workflowExecution"],
 	}
 	asserts.AssertChildWorkflowExecutionCanceledEventAttributes(t)
 	return t
@@ -1295,17 +1394,20 @@ end
 
 --- Create a structure of type LambdaFunctionTimedOutEventAttributes
 -- <p>Provides details for the <code>LambdaFunctionTimedOut</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.</p>
--- @param _timeoutType [LambdaFunctionTimeoutType] <p>The type of the timeout that caused this event.</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: scheduledEventId
--- Required parameter: startedEventId
-function M.LambdaFunctionTimedOutEventAttributes(_startedEventId, _timeoutType, _scheduledEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionTimedOutEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.</p>
+-- * timeoutType [LambdaFunctionTimeoutType] <p>The type of the timeout that caused this event.</p>
+-- * scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: scheduledEventId
+-- Required key: startedEventId
+-- @return LambdaFunctionTimedOutEventAttributes structure as a key-value pair table
+function M.LambdaFunctionTimedOutEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionTimedOutEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["timeoutType"] = _timeoutType,
-		["scheduledEventId"] = _scheduledEventId,
+		["startedEventId"] = args["startedEventId"],
+		["timeoutType"] = args["timeoutType"],
+		["scheduledEventId"] = args["scheduledEventId"],
 	}
 	asserts.AssertLambdaFunctionTimedOutEventAttributes(t)
 	return t
@@ -1328,18 +1430,21 @@ end
 
 --- Create a structure of type WorkflowExecutionTerminatedEventAttributes
 -- <p>Provides details of the <code>WorkflowExecutionTerminated</code> event.</p>
--- @param _reason [TerminateReason] <p>The reason provided for the termination (if any).</p>
--- @param _childPolicy [ChildPolicy] <p>The policy used for the child workflow executions of this workflow execution.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
--- @param _cause [WorkflowExecutionTerminatedCause] <p>If set, indicates that the workflow execution was automatically terminated, and specifies the cause. This happens if the parent workflow execution times out or is terminated and the child policy is set to terminate child executions.</p>
--- @param _details [Data] <p>The details provided for the termination (if any).</p>
--- Required parameter: childPolicy
-function M.WorkflowExecutionTerminatedEventAttributes(_reason, _childPolicy, _cause, _details, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionTerminatedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * reason [TerminateReason] <p>The reason provided for the termination (if any).</p>
+-- * childPolicy [ChildPolicy] <p>The policy used for the child workflow executions of this workflow execution.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
+-- * cause [WorkflowExecutionTerminatedCause] <p>If set, indicates that the workflow execution was automatically terminated, and specifies the cause. This happens if the parent workflow execution times out or is terminated and the child policy is set to terminate child executions.</p>
+-- * details [Data] <p>The details provided for the termination (if any).</p>
+-- Required key: childPolicy
+-- @return WorkflowExecutionTerminatedEventAttributes structure as a key-value pair table
+function M.WorkflowExecutionTerminatedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionTerminatedEventAttributes")
 	local t = { 
-		["reason"] = _reason,
-		["childPolicy"] = _childPolicy,
-		["cause"] = _cause,
-		["details"] = _details,
+		["reason"] = args["reason"],
+		["childPolicy"] = args["childPolicy"],
+		["cause"] = args["cause"],
+		["details"] = args["details"],
 	}
 	asserts.AssertWorkflowExecutionTerminatedEventAttributes(t)
 	return t
@@ -1363,21 +1468,24 @@ end
 
 --- Create a structure of type WorkflowTypeConfiguration
 -- <p>The configuration settings of a workflow type.</p>
--- @param _defaultExecutionStartToCloseTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum duration, specified when registering the workflow type, for executions of this workflow type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _defaultChildPolicy [ChildPolicy] <p><i>Optional.</i> The default policy to use for the child workflow executions when a workflow execution of this type is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
--- @param _defaultTaskStartToCloseTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum duration, specified when registering the workflow type, that a decision task for executions of this workflow type might take before returning completion or failure. If the task does not close in the specified time then the task is automatically timed out and rescheduled. If the decider eventually reports a completion or failure, it is ignored. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _defaultTaskPriority [TaskPriority] <p><i>Optional.</i> The default task priority, specified when registering the workflow type, for all decision tasks of this workflow type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- @param _defaultLambdaRole [Arn] <p>The default IAM role to use when a workflow execution invokes a AWS Lambda function.</p>
--- @param _defaultTaskList [TaskList] <p><i>Optional.</i> The default task list, specified when registering the workflow type, for decisions tasks scheduled for workflow executions of this type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p>
-function M.WorkflowTypeConfiguration(_defaultExecutionStartToCloseTimeout, _defaultChildPolicy, _defaultTaskStartToCloseTimeout, _defaultTaskPriority, _defaultLambdaRole, _defaultTaskList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowTypeConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * defaultExecutionStartToCloseTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum duration, specified when registering the workflow type, for executions of this workflow type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * defaultChildPolicy [ChildPolicy] <p><i>Optional.</i> The default policy to use for the child workflow executions when a workflow execution of this type is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
+-- * defaultTaskStartToCloseTimeout [DurationInSecondsOptional] <p><i>Optional.</i> The default maximum duration, specified when registering the workflow type, that a decision task for executions of this workflow type might take before returning completion or failure. If the task does not close in the specified time then the task is automatically timed out and rescheduled. If the decider eventually reports a completion or failure, it is ignored. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * defaultTaskPriority [TaskPriority] <p><i>Optional.</i> The default task priority, specified when registering the workflow type, for all decision tasks of this workflow type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p> <p>Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- * defaultLambdaRole [Arn] <p>The default IAM role to use when a workflow execution invokes a AWS Lambda function.</p>
+-- * defaultTaskList [TaskList] <p><i>Optional.</i> The default task list, specified when registering the workflow type, for decisions tasks scheduled for workflow executions of this type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p>
+-- @return WorkflowTypeConfiguration structure as a key-value pair table
+function M.WorkflowTypeConfiguration(args)
+	assert(args, "You must provdide an argument table when creating WorkflowTypeConfiguration")
 	local t = { 
-		["defaultExecutionStartToCloseTimeout"] = _defaultExecutionStartToCloseTimeout,
-		["defaultChildPolicy"] = _defaultChildPolicy,
-		["defaultTaskStartToCloseTimeout"] = _defaultTaskStartToCloseTimeout,
-		["defaultTaskPriority"] = _defaultTaskPriority,
-		["defaultLambdaRole"] = _defaultLambdaRole,
-		["defaultTaskList"] = _defaultTaskList,
+		["defaultExecutionStartToCloseTimeout"] = args["defaultExecutionStartToCloseTimeout"],
+		["defaultChildPolicy"] = args["defaultChildPolicy"],
+		["defaultTaskStartToCloseTimeout"] = args["defaultTaskStartToCloseTimeout"],
+		["defaultTaskPriority"] = args["defaultTaskPriority"],
+		["defaultLambdaRole"] = args["defaultLambdaRole"],
+		["defaultTaskList"] = args["defaultTaskList"],
 	}
 	asserts.AssertWorkflowTypeConfiguration(t)
 	return t
@@ -1398,14 +1506,17 @@ end
 
 --- Create a structure of type RespondActivityTaskCanceledInput
 --  
--- @param _details [Data] <p><i>Optional.</i> Information about the cancellation.</p>
--- @param _taskToken [TaskToken] <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important><code>taskToken</code> is generated by the service and should be treated as an opaque value. If the task is passed to another process, its <code>taskToken</code> must also be passed. This enables it to provide its progress and respond with results.</important>
--- Required parameter: taskToken
-function M.RespondActivityTaskCanceledInput(_details, _taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RespondActivityTaskCanceledInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * details [Data] <p><i>Optional.</i> Information about the cancellation.</p>
+-- * taskToken [TaskToken] <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important><code>taskToken</code> is generated by the service and should be treated as an opaque value. If the task is passed to another process, its <code>taskToken</code> must also be passed. This enables it to provide its progress and respond with results.</important>
+-- Required key: taskToken
+-- @return RespondActivityTaskCanceledInput structure as a key-value pair table
+function M.RespondActivityTaskCanceledInput(args)
+	assert(args, "You must provdide an argument table when creating RespondActivityTaskCanceledInput")
 	local t = { 
-		["details"] = _details,
-		["taskToken"] = _taskToken,
+		["details"] = args["details"],
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertRespondActivityTaskCanceledInput(t)
 	return t
@@ -1427,15 +1538,18 @@ end
 
 --- Create a structure of type WorkflowExecutionTimedOutEventAttributes
 -- <p>Provides details of the <code>WorkflowExecutionTimedOut</code> event.</p>
--- @param _timeoutType [WorkflowExecutionTimeoutType] <p>The type of timeout that caused this event.</p>
--- @param _childPolicy [ChildPolicy] <p>The policy used for the child workflow executions of this workflow execution.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
--- Required parameter: timeoutType
--- Required parameter: childPolicy
-function M.WorkflowExecutionTimedOutEventAttributes(_timeoutType, _childPolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionTimedOutEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * timeoutType [WorkflowExecutionTimeoutType] <p>The type of timeout that caused this event.</p>
+-- * childPolicy [ChildPolicy] <p>The policy used for the child workflow executions of this workflow execution.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
+-- Required key: timeoutType
+-- Required key: childPolicy
+-- @return WorkflowExecutionTimedOutEventAttributes structure as a key-value pair table
+function M.WorkflowExecutionTimedOutEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionTimedOutEventAttributes")
 	local t = { 
-		["timeoutType"] = _timeoutType,
-		["childPolicy"] = _childPolicy,
+		["timeoutType"] = args["timeoutType"],
+		["childPolicy"] = args["childPolicy"],
 	}
 	asserts.AssertWorkflowExecutionTimedOutEventAttributes(t)
 	return t
@@ -1457,15 +1571,18 @@ end
 
 --- Create a structure of type CancelWorkflowExecutionFailedEventAttributes
 -- <p>Provides details of the <code>CancelWorkflowExecutionFailed</code> event.</p>
--- @param _cause [CancelWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CancelWorkflowExecution</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: cause
--- Required parameter: decisionTaskCompletedEventId
-function M.CancelWorkflowExecutionFailedEventAttributes(_cause, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelWorkflowExecutionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [CancelWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CancelWorkflowExecution</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: cause
+-- Required key: decisionTaskCompletedEventId
+-- @return CancelWorkflowExecutionFailedEventAttributes structure as a key-value pair table
+function M.CancelWorkflowExecutionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating CancelWorkflowExecutionFailedEventAttributes")
 	local t = { 
-		["cause"] = _cause,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["cause"] = args["cause"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertCancelWorkflowExecutionFailedEventAttributes(t)
 	return t
@@ -1493,25 +1610,28 @@ end
 
 --- Create a structure of type WorkflowExecutionConfiguration
 -- <p>The configuration settings for a workflow execution including timeout values, tasklist etc. These configuration settings are determined from the defaults specified when registering the workflow type and those specified when starting the workflow execution.</p>
--- @param _taskList [TaskList] <p>The task list used for the decision tasks generated for this workflow execution.</p>
--- @param _taskStartToCloseTimeout [DurationInSeconds] <p>The maximum duration allowed for decision tasks for this workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _lambdaRole [Arn] <p>The IAM role used by this workflow execution when invoking AWS Lambda functions.</p>
--- @param _childPolicy [ChildPolicy] <p>The policy to use for the child workflow executions if this workflow execution is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
--- @param _executionStartToCloseTimeout [DurationInSeconds] <p>The total duration for this workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _taskPriority [TaskPriority] <p>The priority assigned to decision tasks for this workflow execution. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- Required parameter: taskStartToCloseTimeout
--- Required parameter: executionStartToCloseTimeout
--- Required parameter: taskList
--- Required parameter: childPolicy
-function M.WorkflowExecutionConfiguration(_taskList, _taskStartToCloseTimeout, _lambdaRole, _childPolicy, _executionStartToCloseTimeout, _taskPriority, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskList [TaskList] <p>The task list used for the decision tasks generated for this workflow execution.</p>
+-- * taskStartToCloseTimeout [DurationInSeconds] <p>The maximum duration allowed for decision tasks for this workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * lambdaRole [Arn] <p>The IAM role used by this workflow execution when invoking AWS Lambda functions.</p>
+-- * childPolicy [ChildPolicy] <p>The policy to use for the child workflow executions if this workflow execution is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
+-- * executionStartToCloseTimeout [DurationInSeconds] <p>The total duration for this workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * taskPriority [TaskPriority] <p>The priority assigned to decision tasks for this workflow execution. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- Required key: taskStartToCloseTimeout
+-- Required key: executionStartToCloseTimeout
+-- Required key: taskList
+-- Required key: childPolicy
+-- @return WorkflowExecutionConfiguration structure as a key-value pair table
+function M.WorkflowExecutionConfiguration(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionConfiguration")
 	local t = { 
-		["taskList"] = _taskList,
-		["taskStartToCloseTimeout"] = _taskStartToCloseTimeout,
-		["lambdaRole"] = _lambdaRole,
-		["childPolicy"] = _childPolicy,
-		["executionStartToCloseTimeout"] = _executionStartToCloseTimeout,
-		["taskPriority"] = _taskPriority,
+		["taskList"] = args["taskList"],
+		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
+		["lambdaRole"] = args["lambdaRole"],
+		["childPolicy"] = args["childPolicy"],
+		["executionStartToCloseTimeout"] = args["executionStartToCloseTimeout"],
+		["taskPriority"] = args["taskPriority"],
 	}
 	asserts.AssertWorkflowExecutionConfiguration(t)
 	return t
@@ -1534,17 +1654,20 @@ end
 
 --- Create a structure of type LambdaFunctionCompletedEventAttributes
 -- <p>Provides details for the <code>LambdaFunctionCompleted</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _result [Data] <p>The result of the function execution (if any).</p>
--- Required parameter: scheduledEventId
--- Required parameter: startedEventId
-function M.LambdaFunctionCompletedEventAttributes(_startedEventId, _scheduledEventId, _result, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionCompletedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.</p>
+-- * scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * result [Data] <p>The result of the function execution (if any).</p>
+-- Required key: scheduledEventId
+-- Required key: startedEventId
+-- @return LambdaFunctionCompletedEventAttributes structure as a key-value pair table
+function M.LambdaFunctionCompletedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionCompletedEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["scheduledEventId"] = _scheduledEventId,
-		["result"] = _result,
+		["startedEventId"] = args["startedEventId"],
+		["scheduledEventId"] = args["scheduledEventId"],
+		["result"] = args["result"],
 	}
 	asserts.AssertLambdaFunctionCompletedEventAttributes(t)
 	return t
@@ -1564,12 +1687,15 @@ end
 
 --- Create a structure of type DescribeDomainInput
 --  
--- @param _name [DomainName] <p>The name of the domain to describe.</p>
--- Required parameter: name
-function M.DescribeDomainInput(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDomainInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [DomainName] <p>The name of the domain to describe.</p>
+-- Required key: name
+-- @return DescribeDomainInput structure as a key-value pair table
+function M.DescribeDomainInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeDomainInput")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertDescribeDomainInput(t)
 	return t
@@ -1591,15 +1717,18 @@ end
 
 --- Create a structure of type DeprecateWorkflowTypeInput
 --  
--- @param _domain [DomainName] <p>The name of the domain in which the workflow type is registered.</p>
--- @param _workflowType [WorkflowType] <p>The workflow type to deprecate.</p>
--- Required parameter: domain
--- Required parameter: workflowType
-function M.DeprecateWorkflowTypeInput(_domain, _workflowType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeprecateWorkflowTypeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain in which the workflow type is registered.</p>
+-- * workflowType [WorkflowType] <p>The workflow type to deprecate.</p>
+-- Required key: domain
+-- Required key: workflowType
+-- @return DeprecateWorkflowTypeInput structure as a key-value pair table
+function M.DeprecateWorkflowTypeInput(args)
+	assert(args, "You must provdide an argument table when creating DeprecateWorkflowTypeInput")
 	local t = { 
-		["domain"] = _domain,
-		["workflowType"] = _workflowType,
+		["domain"] = args["domain"],
+		["workflowType"] = args["workflowType"],
 	}
 	asserts.AssertDeprecateWorkflowTypeInput(t)
 	return t
@@ -1629,31 +1758,34 @@ end
 
 --- Create a structure of type ScheduleActivityTaskDecisionAttributes
 -- <p>Provides details of the <code>ScheduleActivityTask</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys. <ul> <li><code>activityType.name</code>: String constraint. The key is <code>swf:activityType.name</code>.</li> <li><code>activityType.version</code>: String constraint. The key is <code>swf:activityType.version</code>.</li> <li><code>taskList</code>: String constraint. The key is <code>swf:taskList.name</code>.</li> </ul> </li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks. This data is not sent to the activity.</p>
--- @param _taskList [TaskList] <p>If set, specifies the name of the task list in which to schedule the activity task. If not specified, the <code>defaultTaskList</code> registered with the activity type will be used.</p> <note>A task list for this activity task must be specified either as a default for the activity type or through this field. If neither this field is set nor a default task list was specified at registration time then a fault will be returned.</note> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _scheduleToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration for this activity task.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A schedule-to-close timeout for this activity task must be specified either as a default for the activity type or through this field. If neither this field is set nor a default schedule-to-close timeout was specified at registration time then a fault will be returned.</note>
--- @param _activityType [ActivityType] <p><b>Required.</b> The type of the activity task to schedule.</p>
--- @param _taskPriority [TaskPriority] <p><i>Optional.</i> If set, specifies the priority with which the activity task is to be assigned to a worker. This overrides the defaultTaskPriority specified when registering the activity type using <a>RegisterActivityType</a>. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- @param _heartbeatTimeout [DurationInSecondsOptional] <p>If set, specifies the maximum time before which a worker processing a task of this type must report progress by calling <a>RecordActivityTaskHeartbeat</a>. If the timeout is exceeded, the activity task is automatically timed out. If the worker subsequently attempts to record a heartbeat or returns a result, it will be ignored. This overrides the default heartbeat timeout specified when registering the activity type using <a>RegisterActivityType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _activityId [ActivityId] <p><b>Required.</b> The <code>activityId</code> of the activity task.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _scheduleToStartTimeout [DurationInSecondsOptional] <p><i>Optional.</i> If set, specifies the maximum duration the activity task can wait to be assigned to a worker. This overrides the default schedule-to-start timeout specified when registering the activity type using <a>RegisterActivityType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A schedule-to-start timeout for this activity task must be specified either as a default for the activity type or through this field. If neither this field is set nor a default schedule-to-start timeout was specified at registration time then a fault will be returned.</note>
--- @param _startToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the maximum duration a worker may take to process this activity task. This overrides the default start-to-close timeout specified when registering the activity type using <a>RegisterActivityType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A start-to-close timeout for this activity task must be specified either as a default for the activity type or through this field. If neither this field is set nor a default start-to-close timeout was specified at registration time then a fault will be returned.</note>
--- @param _input [Data] <p>The input provided to the activity task.</p>
--- Required parameter: activityType
--- Required parameter: activityId
-function M.ScheduleActivityTaskDecisionAttributes(_control, _taskList, _scheduleToCloseTimeout, _activityType, _taskPriority, _heartbeatTimeout, _activityId, _scheduleToStartTimeout, _startToCloseTimeout, _input, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScheduleActivityTaskDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks. This data is not sent to the activity.</p>
+-- * taskList [TaskList] <p>If set, specifies the name of the task list in which to schedule the activity task. If not specified, the <code>defaultTaskList</code> registered with the activity type will be used.</p> <note>A task list for this activity task must be specified either as a default for the activity type or through this field. If neither this field is set nor a default task list was specified at registration time then a fault will be returned.</note> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * scheduleToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration for this activity task.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A schedule-to-close timeout for this activity task must be specified either as a default for the activity type or through this field. If neither this field is set nor a default schedule-to-close timeout was specified at registration time then a fault will be returned.</note>
+-- * activityType [ActivityType] <p><b>Required.</b> The type of the activity task to schedule.</p>
+-- * taskPriority [TaskPriority] <p><i>Optional.</i> If set, specifies the priority with which the activity task is to be assigned to a worker. This overrides the defaultTaskPriority specified when registering the activity type using <a>RegisterActivityType</a>. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- * heartbeatTimeout [DurationInSecondsOptional] <p>If set, specifies the maximum time before which a worker processing a task of this type must report progress by calling <a>RecordActivityTaskHeartbeat</a>. If the timeout is exceeded, the activity task is automatically timed out. If the worker subsequently attempts to record a heartbeat or returns a result, it will be ignored. This overrides the default heartbeat timeout specified when registering the activity type using <a>RegisterActivityType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * activityId [ActivityId] <p><b>Required.</b> The <code>activityId</code> of the activity task.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * scheduleToStartTimeout [DurationInSecondsOptional] <p><i>Optional.</i> If set, specifies the maximum duration the activity task can wait to be assigned to a worker. This overrides the default schedule-to-start timeout specified when registering the activity type using <a>RegisterActivityType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A schedule-to-start timeout for this activity task must be specified either as a default for the activity type or through this field. If neither this field is set nor a default schedule-to-start timeout was specified at registration time then a fault will be returned.</note>
+-- * startToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the maximum duration a worker may take to process this activity task. This overrides the default start-to-close timeout specified when registering the activity type using <a>RegisterActivityType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A start-to-close timeout for this activity task must be specified either as a default for the activity type or through this field. If neither this field is set nor a default start-to-close timeout was specified at registration time then a fault will be returned.</note>
+-- * input [Data] <p>The input provided to the activity task.</p>
+-- Required key: activityType
+-- Required key: activityId
+-- @return ScheduleActivityTaskDecisionAttributes structure as a key-value pair table
+function M.ScheduleActivityTaskDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating ScheduleActivityTaskDecisionAttributes")
 	local t = { 
-		["control"] = _control,
-		["taskList"] = _taskList,
-		["scheduleToCloseTimeout"] = _scheduleToCloseTimeout,
-		["activityType"] = _activityType,
-		["taskPriority"] = _taskPriority,
-		["heartbeatTimeout"] = _heartbeatTimeout,
-		["activityId"] = _activityId,
-		["scheduleToStartTimeout"] = _scheduleToStartTimeout,
-		["startToCloseTimeout"] = _startToCloseTimeout,
-		["input"] = _input,
+		["control"] = args["control"],
+		["taskList"] = args["taskList"],
+		["scheduleToCloseTimeout"] = args["scheduleToCloseTimeout"],
+		["activityType"] = args["activityType"],
+		["taskPriority"] = args["taskPriority"],
+		["heartbeatTimeout"] = args["heartbeatTimeout"],
+		["activityId"] = args["activityId"],
+		["scheduleToStartTimeout"] = args["scheduleToStartTimeout"],
+		["startToCloseTimeout"] = args["startToCloseTimeout"],
+		["input"] = args["input"],
 	}
 	asserts.AssertScheduleActivityTaskDecisionAttributes(t)
 	return t
@@ -1674,14 +1806,17 @@ end
 
 --- Create a structure of type WorkflowExecutionCanceledEventAttributes
 -- <p>Provides details of the <code>WorkflowExecutionCanceled</code> event.</p>
--- @param _details [Data] <p>Details for the cancellation (if any).</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CancelWorkflowExecution</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: decisionTaskCompletedEventId
-function M.WorkflowExecutionCanceledEventAttributes(_details, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionCanceledEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * details [Data] <p>Details for the cancellation (if any).</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CancelWorkflowExecution</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: decisionTaskCompletedEventId
+-- @return WorkflowExecutionCanceledEventAttributes structure as a key-value pair table
+function M.WorkflowExecutionCanceledEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionCanceledEventAttributes")
 	local t = { 
-		["details"] = _details,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["details"] = args["details"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertWorkflowExecutionCanceledEventAttributes(t)
 	return t
@@ -1713,34 +1848,37 @@ end
 
 --- Create a structure of type StartWorkflowExecutionInput
 --  
--- @param _domain [DomainName] <p>The name of the domain in which the workflow execution is created.</p>
--- @param _taskList [TaskList] <p>The task list to use for the decision tasks generated for this workflow execution. This overrides the <code>defaultTaskList</code> specified when registering the workflow type.</p> <note>A task list for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default task list was specified at registration time then a fault will be returned.</note> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _taskStartToCloseTimeout [DurationInSecondsOptional] <p>Specifies the maximum duration of decision tasks for this workflow execution. This parameter overrides the <code>defaultTaskStartToCloseTimout</code> specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A task start-to-close timeout for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default task start-to-close timeout was specified at registration time then a fault will be returned.</note>
--- @param _workflowId [WorkflowId] <p>The user defined identifier associated with the workflow execution. You can use this to associate a custom identifier with the workflow execution. You may specify the same identifier if a workflow execution is logically a <i>restart</i> of a previous execution. You cannot have two open workflow executions with the same <code>workflowId</code> at the same time.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _taskPriority [TaskPriority] <p>The task priority to use for this workflow execution. This will override any default priority that was assigned when the workflow type was registered. If not set, then the default task priority for the workflow type will be used. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- @param _lambdaRole [Arn] <p>The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda functions.</p> <note>In order for this workflow execution to invoke AWS Lambda functions, an appropriate IAM role must be specified either as a default for the workflow type or through this field.</note>
--- @param _childPolicy [ChildPolicy] <p>If set, specifies the policy to use for the child workflow executions of this workflow execution if it is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This policy overrides the default child policy specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul> <note>A child policy for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default child policy was specified at registration time then a fault will be returned.</note>
--- @param _executionStartToCloseTimeout [DurationInSecondsOptional] <p>The total duration for this workflow execution. This overrides the defaultExecutionStartToCloseTimeout specified when registering the workflow type.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. Exceeding this limit will cause the workflow execution to time out. Unlike some of the other timeout parameters in Amazon SWF, you cannot specify a value of "NONE" for this timeout; there is a one-year max limit on the time that a workflow execution can run.</p> <note> An execution start-to-close timeout must be specified either through this parameter or as a default when the workflow type is registered. If neither this parameter nor a default execution start-to-close timeout is specified, a fault is returned.</note>
--- @param _input [Data] <p>The input for the workflow execution. This is a free form string which should be meaningful to the workflow you are starting. This <code>input</code> is made available to the new workflow execution in the <code>WorkflowExecutionStarted</code> history event.</p>
--- @param _workflowType [WorkflowType] <p>The type of the workflow to start.</p>
--- @param _tagList [TagList] <p>The list of tags to associate with the workflow execution. You can specify a maximum of 5 tags. You can list workflow executions with a specific tag by calling <a>ListOpenWorkflowExecutions</a> or <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.</p>
--- Required parameter: domain
--- Required parameter: workflowId
--- Required parameter: workflowType
-function M.StartWorkflowExecutionInput(_domain, _taskList, _taskStartToCloseTimeout, _workflowId, _taskPriority, _lambdaRole, _childPolicy, _executionStartToCloseTimeout, _input, _workflowType, _tagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartWorkflowExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain in which the workflow execution is created.</p>
+-- * taskList [TaskList] <p>The task list to use for the decision tasks generated for this workflow execution. This overrides the <code>defaultTaskList</code> specified when registering the workflow type.</p> <note>A task list for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default task list was specified at registration time then a fault will be returned.</note> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * taskStartToCloseTimeout [DurationInSecondsOptional] <p>Specifies the maximum duration of decision tasks for this workflow execution. This parameter overrides the <code>defaultTaskStartToCloseTimout</code> specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A task start-to-close timeout for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default task start-to-close timeout was specified at registration time then a fault will be returned.</note>
+-- * workflowId [WorkflowId] <p>The user defined identifier associated with the workflow execution. You can use this to associate a custom identifier with the workflow execution. You may specify the same identifier if a workflow execution is logically a <i>restart</i> of a previous execution. You cannot have two open workflow executions with the same <code>workflowId</code> at the same time.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * taskPriority [TaskPriority] <p>The task priority to use for this workflow execution. This will override any default priority that was assigned when the workflow type was registered. If not set, then the default task priority for the workflow type will be used. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- * lambdaRole [Arn] <p>The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda functions.</p> <note>In order for this workflow execution to invoke AWS Lambda functions, an appropriate IAM role must be specified either as a default for the workflow type or through this field.</note>
+-- * childPolicy [ChildPolicy] <p>If set, specifies the policy to use for the child workflow executions of this workflow execution if it is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This policy overrides the default child policy specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul> <note>A child policy for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default child policy was specified at registration time then a fault will be returned.</note>
+-- * executionStartToCloseTimeout [DurationInSecondsOptional] <p>The total duration for this workflow execution. This overrides the defaultExecutionStartToCloseTimeout specified when registering the workflow type.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. Exceeding this limit will cause the workflow execution to time out. Unlike some of the other timeout parameters in Amazon SWF, you cannot specify a value of "NONE" for this timeout; there is a one-year max limit on the time that a workflow execution can run.</p> <note> An execution start-to-close timeout must be specified either through this parameter or as a default when the workflow type is registered. If neither this parameter nor a default execution start-to-close timeout is specified, a fault is returned.</note>
+-- * input [Data] <p>The input for the workflow execution. This is a free form string which should be meaningful to the workflow you are starting. This <code>input</code> is made available to the new workflow execution in the <code>WorkflowExecutionStarted</code> history event.</p>
+-- * workflowType [WorkflowType] <p>The type of the workflow to start.</p>
+-- * tagList [TagList] <p>The list of tags to associate with the workflow execution. You can specify a maximum of 5 tags. You can list workflow executions with a specific tag by calling <a>ListOpenWorkflowExecutions</a> or <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.</p>
+-- Required key: domain
+-- Required key: workflowId
+-- Required key: workflowType
+-- @return StartWorkflowExecutionInput structure as a key-value pair table
+function M.StartWorkflowExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating StartWorkflowExecutionInput")
 	local t = { 
-		["domain"] = _domain,
-		["taskList"] = _taskList,
-		["taskStartToCloseTimeout"] = _taskStartToCloseTimeout,
-		["workflowId"] = _workflowId,
-		["taskPriority"] = _taskPriority,
-		["lambdaRole"] = _lambdaRole,
-		["childPolicy"] = _childPolicy,
-		["executionStartToCloseTimeout"] = _executionStartToCloseTimeout,
-		["input"] = _input,
-		["workflowType"] = _workflowType,
-		["tagList"] = _tagList,
+		["domain"] = args["domain"],
+		["taskList"] = args["taskList"],
+		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
+		["workflowId"] = args["workflowId"],
+		["taskPriority"] = args["taskPriority"],
+		["lambdaRole"] = args["lambdaRole"],
+		["childPolicy"] = args["childPolicy"],
+		["executionStartToCloseTimeout"] = args["executionStartToCloseTimeout"],
+		["input"] = args["input"],
+		["workflowType"] = args["workflowType"],
+		["tagList"] = args["tagList"],
 	}
 	asserts.AssertStartWorkflowExecutionInput(t)
 	return t
@@ -1761,14 +1899,17 @@ end
 
 --- Create a structure of type RecordMarkerDecisionAttributes
 -- <p>Provides details of the <code>RecordMarker</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>You cannot use an IAM policy to constrain this action's parameters.</li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _markerName [MarkerName] <p><b>Required.</b> The name of the marker.</p>
--- @param _details [Data] <p><i>Optional.</i> details of the marker.</p>
--- Required parameter: markerName
-function M.RecordMarkerDecisionAttributes(_markerName, _details, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecordMarkerDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * markerName [MarkerName] <p><b>Required.</b> The name of the marker.</p>
+-- * details [Data] <p><i>Optional.</i> details of the marker.</p>
+-- Required key: markerName
+-- @return RecordMarkerDecisionAttributes structure as a key-value pair table
+function M.RecordMarkerDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating RecordMarkerDecisionAttributes")
 	local t = { 
-		["markerName"] = _markerName,
-		["details"] = _details,
+		["markerName"] = args["markerName"],
+		["details"] = args["details"],
 	}
 	asserts.AssertRecordMarkerDecisionAttributes(t)
 	return t
@@ -1792,19 +1933,22 @@ end
 
 --- Create a structure of type RequestCancelExternalWorkflowExecutionInitiatedEventAttributes
 -- <p>Provides details of the <code>RequestCancelExternalWorkflowExecutionInitiated</code> event.</p>
--- @param _control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks.</p>
--- @param _workflowId [WorkflowId] <p>The <code>workflowId</code> of the external workflow execution to be canceled.</p>
--- @param _runId [RunIdOptional] <p>The <code>runId</code> of the external workflow execution to be canceled.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RequestCancelExternalWorkflowExecution</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: workflowId
--- Required parameter: decisionTaskCompletedEventId
-function M.RequestCancelExternalWorkflowExecutionInitiatedEventAttributes(_control, _workflowId, _runId, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestCancelExternalWorkflowExecutionInitiatedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks.</p>
+-- * workflowId [WorkflowId] <p>The <code>workflowId</code> of the external workflow execution to be canceled.</p>
+-- * runId [RunIdOptional] <p>The <code>runId</code> of the external workflow execution to be canceled.</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RequestCancelExternalWorkflowExecution</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: workflowId
+-- Required key: decisionTaskCompletedEventId
+-- @return RequestCancelExternalWorkflowExecutionInitiatedEventAttributes structure as a key-value pair table
+function M.RequestCancelExternalWorkflowExecutionInitiatedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating RequestCancelExternalWorkflowExecutionInitiatedEventAttributes")
 	local t = { 
-		["control"] = _control,
-		["workflowId"] = _workflowId,
-		["runId"] = _runId,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["control"] = args["control"],
+		["workflowId"] = args["workflowId"],
+		["runId"] = args["runId"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertRequestCancelExternalWorkflowExecutionInitiatedEventAttributes(t)
 	return t
@@ -1825,14 +1969,17 @@ end
 
 --- Create a structure of type PendingTaskCount
 -- <p>Contains the count of tasks in a task list.</p>
--- @param _count [Count] <p>The number of tasks in the task list.</p>
--- @param _truncated [Truncated] <p>If set to true, indicates that the actual count was more than the maximum supported by this API and the count returned is the truncated value.</p>
--- Required parameter: count
-function M.PendingTaskCount(_count, _truncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PendingTaskCount")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * count [Count] <p>The number of tasks in the task list.</p>
+-- * truncated [Truncated] <p>If set to true, indicates that the actual count was more than the maximum supported by this API and the count returned is the truncated value.</p>
+-- Required key: count
+-- @return PendingTaskCount structure as a key-value pair table
+function M.PendingTaskCount(args)
+	assert(args, "You must provdide an argument table when creating PendingTaskCount")
 	local t = { 
-		["count"] = _count,
-		["truncated"] = _truncated,
+		["count"] = args["count"],
+		["truncated"] = args["truncated"],
 	}
 	asserts.AssertPendingTaskCount(t)
 	return t
@@ -1858,22 +2005,25 @@ end
 
 --- Create a structure of type WorkflowTypeInfo
 -- <p>Contains information about a workflow type.</p>
--- @param _status [RegistrationStatus] <p>The current status of the workflow type.</p>
--- @param _deprecationDate [Timestamp] <p>If the type is in deprecated state, then it is set to the date when the type was deprecated.</p>
--- @param _creationDate [Timestamp] <p>The date when this type was registered.</p>
--- @param _workflowType [WorkflowType] <p>The workflow type this information is about.</p>
--- @param _description [Description] <p>The description of the type registered through <a>RegisterWorkflowType</a>.</p>
--- Required parameter: workflowType
--- Required parameter: status
--- Required parameter: creationDate
-function M.WorkflowTypeInfo(_status, _deprecationDate, _creationDate, _workflowType, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowTypeInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [RegistrationStatus] <p>The current status of the workflow type.</p>
+-- * deprecationDate [Timestamp] <p>If the type is in deprecated state, then it is set to the date when the type was deprecated.</p>
+-- * creationDate [Timestamp] <p>The date when this type was registered.</p>
+-- * workflowType [WorkflowType] <p>The workflow type this information is about.</p>
+-- * description [Description] <p>The description of the type registered through <a>RegisterWorkflowType</a>.</p>
+-- Required key: workflowType
+-- Required key: status
+-- Required key: creationDate
+-- @return WorkflowTypeInfo structure as a key-value pair table
+function M.WorkflowTypeInfo(args)
+	assert(args, "You must provdide an argument table when creating WorkflowTypeInfo")
 	local t = { 
-		["status"] = _status,
-		["deprecationDate"] = _deprecationDate,
-		["creationDate"] = _creationDate,
-		["workflowType"] = _workflowType,
-		["description"] = _description,
+		["status"] = args["status"],
+		["deprecationDate"] = args["deprecationDate"],
+		["creationDate"] = args["creationDate"],
+		["workflowType"] = args["workflowType"],
+		["description"] = args["description"],
 	}
 	asserts.AssertWorkflowTypeInfo(t)
 	return t
@@ -1894,14 +2044,17 @@ end
 
 --- Create a structure of type DecisionTaskStartedEventAttributes
 -- <p>Provides details of the <code>DecisionTaskStarted</code> event.</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>DecisionTaskScheduled</code> event that was recorded when this decision task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _identity [Identity] <p>Identity of the decider making the request. This enables diagnostic tracing when problems arise. The form of this identity is user defined.</p>
--- Required parameter: scheduledEventId
-function M.DecisionTaskStartedEventAttributes(_scheduledEventId, _identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DecisionTaskStartedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * scheduledEventId [EventId] <p>The ID of the <code>DecisionTaskScheduled</code> event that was recorded when this decision task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * identity [Identity] <p>Identity of the decider making the request. This enables diagnostic tracing when problems arise. The form of this identity is user defined.</p>
+-- Required key: scheduledEventId
+-- @return DecisionTaskStartedEventAttributes structure as a key-value pair table
+function M.DecisionTaskStartedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating DecisionTaskStartedEventAttributes")
 	local t = { 
-		["scheduledEventId"] = _scheduledEventId,
-		["identity"] = _identity,
+		["scheduledEventId"] = args["scheduledEventId"],
+		["identity"] = args["identity"],
 	}
 	asserts.AssertDecisionTaskStartedEventAttributes(t)
 	return t
@@ -1923,15 +2076,18 @@ end
 
 --- Create a structure of type WorkflowType
 -- <p>Represents a workflow type.</p>
--- @param _version [Version] <p><b>Required.</b> The version of the workflow type.</p> <note>The combination of workflow type name and version must be unique with in a domain.</note>
--- @param _name [Name] <p><b>Required.</b> The name of the workflow type.</p> <note>The combination of workflow type name and version must be unique with in a domain.</note>
--- Required parameter: name
--- Required parameter: version
-function M.WorkflowType(_version, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [Version] <p><b>Required.</b> The version of the workflow type.</p> <note>The combination of workflow type name and version must be unique with in a domain.</note>
+-- * name [Name] <p><b>Required.</b> The name of the workflow type.</p> <note>The combination of workflow type name and version must be unique with in a domain.</note>
+-- Required key: name
+-- Required key: version
+-- @return WorkflowType structure as a key-value pair table
+function M.WorkflowType(args)
+	assert(args, "You must provdide an argument table when creating WorkflowType")
 	local t = { 
-		["version"] = _version,
-		["name"] = _name,
+		["version"] = args["version"],
+		["name"] = args["name"],
 	}
 	asserts.AssertWorkflowType(t)
 	return t
@@ -1957,21 +2113,24 @@ end
 
 --- Create a structure of type ChildWorkflowExecutionTerminatedEventAttributes
 -- <p>Provides details of the <code>ChildWorkflowExecutionTerminated</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when this child workflow execution was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _workflowExecution [WorkflowExecution] <p>The child workflow execution that was terminated.</p>
--- Required parameter: workflowExecution
--- Required parameter: workflowType
--- Required parameter: initiatedEventId
--- Required parameter: startedEventId
-function M.ChildWorkflowExecutionTerminatedEventAttributes(_startedEventId, _workflowType, _initiatedEventId, _workflowExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChildWorkflowExecutionTerminatedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when this child workflow execution was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
+-- * initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * workflowExecution [WorkflowExecution] <p>The child workflow execution that was terminated.</p>
+-- Required key: workflowExecution
+-- Required key: workflowType
+-- Required key: initiatedEventId
+-- Required key: startedEventId
+-- @return ChildWorkflowExecutionTerminatedEventAttributes structure as a key-value pair table
+function M.ChildWorkflowExecutionTerminatedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionTerminatedEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["workflowType"] = _workflowType,
-		["initiatedEventId"] = _initiatedEventId,
-		["workflowExecution"] = _workflowExecution,
+		["startedEventId"] = args["startedEventId"],
+		["workflowType"] = args["workflowType"],
+		["initiatedEventId"] = args["initiatedEventId"],
+		["workflowExecution"] = args["workflowExecution"],
 	}
 	asserts.AssertChildWorkflowExecutionTerminatedEventAttributes(t)
 	return t
@@ -1991,12 +2150,15 @@ end
 
 --- Create a structure of type DomainConfiguration
 -- <p>Contains the configuration settings of a domain.</p>
--- @param _workflowExecutionRetentionPeriodInDays [DurationInDays] <p>The retention period for workflow executions in this domain.</p>
--- Required parameter: workflowExecutionRetentionPeriodInDays
-function M.DomainConfiguration(_workflowExecutionRetentionPeriodInDays, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * workflowExecutionRetentionPeriodInDays [DurationInDays] <p>The retention period for workflow executions in this domain.</p>
+-- Required key: workflowExecutionRetentionPeriodInDays
+-- @return DomainConfiguration structure as a key-value pair table
+function M.DomainConfiguration(args)
+	assert(args, "You must provdide an argument table when creating DomainConfiguration")
 	local t = { 
-		["workflowExecutionRetentionPeriodInDays"] = _workflowExecutionRetentionPeriodInDays,
+		["workflowExecutionRetentionPeriodInDays"] = args["workflowExecutionRetentionPeriodInDays"],
 	}
 	asserts.AssertDomainConfiguration(t)
 	return t
@@ -2019,17 +2181,20 @@ end
 
 --- Create a structure of type RequestCancelWorkflowExecutionInput
 --  
--- @param _domain [DomainName] <p>The name of the domain containing the workflow execution to cancel.</p>
--- @param _workflowId [WorkflowId] <p>The workflowId of the workflow execution to cancel.</p>
--- @param _runId [RunIdOptional] <p>The runId of the workflow execution to cancel.</p>
--- Required parameter: domain
--- Required parameter: workflowId
-function M.RequestCancelWorkflowExecutionInput(_domain, _workflowId, _runId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestCancelWorkflowExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain containing the workflow execution to cancel.</p>
+-- * workflowId [WorkflowId] <p>The workflowId of the workflow execution to cancel.</p>
+-- * runId [RunIdOptional] <p>The runId of the workflow execution to cancel.</p>
+-- Required key: domain
+-- Required key: workflowId
+-- @return RequestCancelWorkflowExecutionInput structure as a key-value pair table
+function M.RequestCancelWorkflowExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating RequestCancelWorkflowExecutionInput")
 	local t = { 
-		["domain"] = _domain,
-		["workflowId"] = _workflowId,
-		["runId"] = _runId,
+		["domain"] = args["domain"],
+		["workflowId"] = args["workflowId"],
+		["runId"] = args["runId"],
 	}
 	asserts.AssertRequestCancelWorkflowExecutionInput(t)
 	return t
@@ -2048,11 +2213,14 @@ end
 
 --- Create a structure of type Run
 -- <p>Specifies the <code>runId</code> of a workflow execution.</p>
--- @param _runId [RunId] <p>The <code>runId</code> of a workflow execution. This ID is generated by the service and can be used to uniquely identify the workflow execution within a domain.</p>
-function M.Run(_runId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Run")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * runId [RunId] <p>The <code>runId</code> of a workflow execution. This ID is generated by the service and can be used to uniquely identify the workflow execution within a domain.</p>
+-- @return Run structure as a key-value pair table
+function M.Run(args)
+	assert(args, "You must provdide an argument table when creating Run")
 	local t = { 
-		["runId"] = _runId,
+		["runId"] = args["runId"],
 	}
 	asserts.AssertRun(t)
 	return t
@@ -2076,18 +2244,21 @@ end
 
 --- Create a structure of type RecordMarkerFailedEventAttributes
 -- <p>Provides details of the <code>RecordMarkerFailed</code> event.</p>
--- @param _markerName [MarkerName] <p>The marker's name.</p>
--- @param _cause [RecordMarkerFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RecordMarkerFailed</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: markerName
--- Required parameter: cause
--- Required parameter: decisionTaskCompletedEventId
-function M.RecordMarkerFailedEventAttributes(_markerName, _cause, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecordMarkerFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * markerName [MarkerName] <p>The marker's name.</p>
+-- * cause [RecordMarkerFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RecordMarkerFailed</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: markerName
+-- Required key: cause
+-- Required key: decisionTaskCompletedEventId
+-- @return RecordMarkerFailedEventAttributes structure as a key-value pair table
+function M.RecordMarkerFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating RecordMarkerFailedEventAttributes")
 	local t = { 
-		["markerName"] = _markerName,
-		["cause"] = _cause,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["markerName"] = args["markerName"],
+		["cause"] = args["cause"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertRecordMarkerFailedEventAttributes(t)
 	return t
@@ -2121,36 +2292,39 @@ end
 
 --- Create a structure of type WorkflowExecutionContinuedAsNewEventAttributes
 -- <p>Provides details of the <code>WorkflowExecutionContinuedAsNew</code> event.</p>
--- @param _taskList [TaskList] 
--- @param _taskStartToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration of decision tasks for the new workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _newExecutionRunId [RunId] <p>The <code>runId</code> of the new workflow execution.</p>
--- @param _taskPriority [TaskPriority] 
--- @param _lambdaRole [Arn] <p>The IAM role attached to this workflow execution to use when invoking AWS Lambda functions.</p>
--- @param _childPolicy [ChildPolicy] <p>The policy to use for the child workflow executions of the new execution if it is terminated by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>ContinueAsNewWorkflowExecution</code> decision that started this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _executionStartToCloseTimeout [DurationInSecondsOptional] <p>The total duration allowed for the new workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _input [Data] <p>The input provided to the new workflow execution.</p>
--- @param _workflowType [WorkflowType] 
--- @param _tagList [TagList] <p>The list of tags associated with the new workflow execution.</p>
--- Required parameter: decisionTaskCompletedEventId
--- Required parameter: newExecutionRunId
--- Required parameter: taskList
--- Required parameter: childPolicy
--- Required parameter: workflowType
-function M.WorkflowExecutionContinuedAsNewEventAttributes(_taskList, _taskStartToCloseTimeout, _newExecutionRunId, _taskPriority, _lambdaRole, _childPolicy, _decisionTaskCompletedEventId, _executionStartToCloseTimeout, _input, _workflowType, _tagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionContinuedAsNewEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskList [TaskList] 
+-- * taskStartToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration of decision tasks for the new workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * newExecutionRunId [RunId] <p>The <code>runId</code> of the new workflow execution.</p>
+-- * taskPriority [TaskPriority] 
+-- * lambdaRole [Arn] <p>The IAM role attached to this workflow execution to use when invoking AWS Lambda functions.</p>
+-- * childPolicy [ChildPolicy] <p>The policy to use for the child workflow executions of the new execution if it is terminated by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>ContinueAsNewWorkflowExecution</code> decision that started this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * executionStartToCloseTimeout [DurationInSecondsOptional] <p>The total duration allowed for the new workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * input [Data] <p>The input provided to the new workflow execution.</p>
+-- * workflowType [WorkflowType] 
+-- * tagList [TagList] <p>The list of tags associated with the new workflow execution.</p>
+-- Required key: decisionTaskCompletedEventId
+-- Required key: newExecutionRunId
+-- Required key: taskList
+-- Required key: childPolicy
+-- Required key: workflowType
+-- @return WorkflowExecutionContinuedAsNewEventAttributes structure as a key-value pair table
+function M.WorkflowExecutionContinuedAsNewEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionContinuedAsNewEventAttributes")
 	local t = { 
-		["taskList"] = _taskList,
-		["taskStartToCloseTimeout"] = _taskStartToCloseTimeout,
-		["newExecutionRunId"] = _newExecutionRunId,
-		["taskPriority"] = _taskPriority,
-		["lambdaRole"] = _lambdaRole,
-		["childPolicy"] = _childPolicy,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
-		["executionStartToCloseTimeout"] = _executionStartToCloseTimeout,
-		["input"] = _input,
-		["workflowType"] = _workflowType,
-		["tagList"] = _tagList,
+		["taskList"] = args["taskList"],
+		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
+		["newExecutionRunId"] = args["newExecutionRunId"],
+		["taskPriority"] = args["taskPriority"],
+		["lambdaRole"] = args["lambdaRole"],
+		["childPolicy"] = args["childPolicy"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
+		["executionStartToCloseTimeout"] = args["executionStartToCloseTimeout"],
+		["input"] = args["input"],
+		["workflowType"] = args["workflowType"],
+		["tagList"] = args["tagList"],
 	}
 	asserts.AssertWorkflowExecutionContinuedAsNewEventAttributes(t)
 	return t
@@ -2173,17 +2347,20 @@ end
 
 --- Create a structure of type MarkerRecordedEventAttributes
 -- <p>Provides details of the <code>MarkerRecorded</code> event.</p>
--- @param _markerName [MarkerName] <p>The name of the marker.</p>
--- @param _details [Data] <p>Details of the marker (if any).</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RecordMarker</code> decision that requested this marker. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: markerName
--- Required parameter: decisionTaskCompletedEventId
-function M.MarkerRecordedEventAttributes(_markerName, _details, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MarkerRecordedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * markerName [MarkerName] <p>The name of the marker.</p>
+-- * details [Data] <p>Details of the marker (if any).</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RecordMarker</code> decision that requested this marker. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: markerName
+-- Required key: decisionTaskCompletedEventId
+-- @return MarkerRecordedEventAttributes structure as a key-value pair table
+function M.MarkerRecordedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating MarkerRecordedEventAttributes")
 	local t = { 
-		["markerName"] = _markerName,
-		["details"] = _details,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["markerName"] = args["markerName"],
+		["details"] = args["details"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertMarkerRecordedEventAttributes(t)
 	return t
@@ -2205,15 +2382,18 @@ end
 
 --- Create a structure of type DomainDetail
 -- <p>Contains details of a domain.</p>
--- @param _domainInfo [DomainInfo] 
--- @param _configuration [DomainConfiguration] 
--- Required parameter: domainInfo
--- Required parameter: configuration
-function M.DomainDetail(_domainInfo, _configuration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainInfo [DomainInfo] 
+-- * configuration [DomainConfiguration] 
+-- Required key: domainInfo
+-- Required key: configuration
+-- @return DomainDetail structure as a key-value pair table
+function M.DomainDetail(args)
+	assert(args, "You must provdide an argument table when creating DomainDetail")
 	local t = { 
-		["domainInfo"] = _domainInfo,
-		["configuration"] = _configuration,
+		["domainInfo"] = args["domainInfo"],
+		["configuration"] = args["configuration"],
 	}
 	asserts.AssertDomainDetail(t)
 	return t
@@ -2234,14 +2414,17 @@ end
 
 --- Create a structure of type DomainInfos
 -- <p>Contains a paginated collection of DomainInfo structures.</p>
--- @param _domainInfos [DomainInfoList] <p>A list of DomainInfo structures.</p>
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- Required parameter: domainInfos
-function M.DomainInfos(_domainInfos, _nextPageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainInfos")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainInfos [DomainInfoList] <p>A list of DomainInfo structures.</p>
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- Required key: domainInfos
+-- @return DomainInfos structure as a key-value pair table
+function M.DomainInfos(args)
+	assert(args, "You must provdide an argument table when creating DomainInfos")
 	local t = { 
-		["domainInfos"] = _domainInfos,
-		["nextPageToken"] = _nextPageToken,
+		["domainInfos"] = args["domainInfos"],
+		["nextPageToken"] = args["nextPageToken"],
 	}
 	asserts.AssertDomainInfos(t)
 	return t
@@ -2263,15 +2446,18 @@ end
 
 --- Create a structure of type FailWorkflowExecutionFailedEventAttributes
 -- <p>Provides details of the <code>FailWorkflowExecutionFailed</code> event.</p>
--- @param _cause [FailWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>FailWorkflowExecution</code> decision to fail this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: cause
--- Required parameter: decisionTaskCompletedEventId
-function M.FailWorkflowExecutionFailedEventAttributes(_cause, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FailWorkflowExecutionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [FailWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>FailWorkflowExecution</code> decision to fail this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: cause
+-- Required key: decisionTaskCompletedEventId
+-- @return FailWorkflowExecutionFailedEventAttributes structure as a key-value pair table
+function M.FailWorkflowExecutionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating FailWorkflowExecutionFailedEventAttributes")
 	local t = { 
-		["cause"] = _cause,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["cause"] = args["cause"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertFailWorkflowExecutionFailedEventAttributes(t)
 	return t
@@ -2299,25 +2485,28 @@ end
 
 --- Create a structure of type SignalExternalWorkflowExecutionFailedEventAttributes
 -- <p>Provides details of the <code>SignalExternalWorkflowExecutionFailed</code> event.</p>
--- @param _control [Data] 
--- @param _workflowId [WorkflowId] <p>The <code>workflowId</code> of the external workflow execution that the signal was being delivered to.</p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>SignalExternalWorkflowExecutionInitiated</code> event corresponding to the <code>SignalExternalWorkflowExecution</code> decision to request this signal. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _runId [RunIdOptional] <p>The <code>runId</code> of the external workflow execution that the signal was being delivered to.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>SignalExternalWorkflowExecution</code> decision for this signal. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _cause [SignalExternalWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- Required parameter: workflowId
--- Required parameter: cause
--- Required parameter: initiatedEventId
--- Required parameter: decisionTaskCompletedEventId
-function M.SignalExternalWorkflowExecutionFailedEventAttributes(_control, _workflowId, _initiatedEventId, _runId, _decisionTaskCompletedEventId, _cause, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SignalExternalWorkflowExecutionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] 
+-- * workflowId [WorkflowId] <p>The <code>workflowId</code> of the external workflow execution that the signal was being delivered to.</p>
+-- * initiatedEventId [EventId] <p>The ID of the <code>SignalExternalWorkflowExecutionInitiated</code> event corresponding to the <code>SignalExternalWorkflowExecution</code> decision to request this signal. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * runId [RunIdOptional] <p>The <code>runId</code> of the external workflow execution that the signal was being delivered to.</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>SignalExternalWorkflowExecution</code> decision for this signal. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * cause [SignalExternalWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- Required key: workflowId
+-- Required key: cause
+-- Required key: initiatedEventId
+-- Required key: decisionTaskCompletedEventId
+-- @return SignalExternalWorkflowExecutionFailedEventAttributes structure as a key-value pair table
+function M.SignalExternalWorkflowExecutionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating SignalExternalWorkflowExecutionFailedEventAttributes")
 	local t = { 
-		["control"] = _control,
-		["workflowId"] = _workflowId,
-		["initiatedEventId"] = _initiatedEventId,
-		["runId"] = _runId,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
-		["cause"] = _cause,
+		["control"] = args["control"],
+		["workflowId"] = args["workflowId"],
+		["initiatedEventId"] = args["initiatedEventId"],
+		["runId"] = args["runId"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
+		["cause"] = args["cause"],
 	}
 	asserts.AssertSignalExternalWorkflowExecutionFailedEventAttributes(t)
 	return t
@@ -2342,21 +2531,24 @@ end
 
 --- Create a structure of type GetWorkflowExecutionHistoryInput
 --  
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _domain [DomainName] <p>The name of the domain containing the workflow execution.</p>
--- @param _execution [WorkflowExecution] <p>Specifies the workflow execution for which to return the history.</p>
--- @param _reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the events in reverse order. By default the results are returned in ascending order of the <code>eventTimeStamp</code> of the events.</p>
--- @param _maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
--- Required parameter: domain
--- Required parameter: execution
-function M.GetWorkflowExecutionHistoryInput(_nextPageToken, _domain, _execution, _reverseOrder, _maximumPageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetWorkflowExecutionHistoryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * domain [DomainName] <p>The name of the domain containing the workflow execution.</p>
+-- * execution [WorkflowExecution] <p>Specifies the workflow execution for which to return the history.</p>
+-- * reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the events in reverse order. By default the results are returned in ascending order of the <code>eventTimeStamp</code> of the events.</p>
+-- * maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- Required key: domain
+-- Required key: execution
+-- @return GetWorkflowExecutionHistoryInput structure as a key-value pair table
+function M.GetWorkflowExecutionHistoryInput(args)
+	assert(args, "You must provdide an argument table when creating GetWorkflowExecutionHistoryInput")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["domain"] = _domain,
-		["execution"] = _execution,
-		["reverseOrder"] = _reverseOrder,
-		["maximumPageSize"] = _maximumPageSize,
+		["nextPageToken"] = args["nextPageToken"],
+		["domain"] = args["domain"],
+		["execution"] = args["execution"],
+		["reverseOrder"] = args["reverseOrder"],
+		["maximumPageSize"] = args["maximumPageSize"],
 	}
 	asserts.AssertGetWorkflowExecutionHistoryInput(t)
 	return t
@@ -2434,126 +2626,129 @@ end
 
 --- Create a structure of type HistoryEvent
 -- <p>Event within a workflow execution. A history event can be one of these types:</p> <ul> <li> <b>WorkflowExecutionStarted</b>: The workflow execution was started.</li> <li> <b>WorkflowExecutionCompleted</b>: The workflow execution was closed due to successful completion.</li> <li> <b>WorkflowExecutionFailed</b>: The workflow execution closed due to a failure.</li> <li> <b>WorkflowExecutionTimedOut</b>: The workflow execution was closed because a time out was exceeded.</li> <li> <b>WorkflowExecutionCanceled</b>: The workflow execution was successfully canceled and closed.</li> <li> <b>WorkflowExecutionTerminated</b>: The workflow execution was terminated.</li> <li> <b>WorkflowExecutionContinuedAsNew</b>: The workflow execution was closed and a new execution of the same type was created with the same workflowId.</li> <li> <b>WorkflowExecutionCancelRequested</b>: A request to cancel this workflow execution was made.</li> <li> <b>DecisionTaskScheduled</b>: A decision task was scheduled for the workflow execution.</li> <li> <b>DecisionTaskStarted</b>: The decision task was dispatched to a decider.</li> <li> <b>DecisionTaskCompleted</b>: The decider successfully completed a decision task by calling <a>RespondDecisionTaskCompleted</a>.</li> <li> <b>DecisionTaskTimedOut</b>: The decision task timed out.</li> <li> <b>ActivityTaskScheduled</b>: An activity task was scheduled for execution.</li> <li> <b>ScheduleActivityTaskFailed</b>: Failed to process ScheduleActivityTask decision. This happens when the decision is not configured properly, for example the activity type specified is not registered.</li> <li> <b>ActivityTaskStarted</b>: The scheduled activity task was dispatched to a worker.</li> <li> <b>ActivityTaskCompleted</b>: An activity worker successfully completed an activity task by calling <a>RespondActivityTaskCompleted</a>.</li> <li> <b>ActivityTaskFailed</b>: An activity worker failed an activity task by calling <a>RespondActivityTaskFailed</a>.</li> <li> <b>ActivityTaskTimedOut</b>: The activity task timed out.</li> <li> <b>ActivityTaskCanceled</b>: The activity task was successfully canceled.</li> <li> <b>ActivityTaskCancelRequested</b>: A <code>RequestCancelActivityTask</code> decision was received by the system.</li> <li> <b>RequestCancelActivityTaskFailed</b>: Failed to process RequestCancelActivityTask decision. This happens when the decision is not configured properly.</li> <li> <b>WorkflowExecutionSignaled</b>: An external signal was received for the workflow execution.</li> <li> <b>MarkerRecorded</b>: A marker was recorded in the workflow history as the result of a <code>RecordMarker</code> decision.</li> <li> <b>TimerStarted</b>: A timer was started for the workflow execution due to a <code>StartTimer</code> decision.</li> <li> <b>StartTimerFailed</b>: Failed to process StartTimer decision. This happens when the decision is not configured properly, for example a timer already exists with the specified timer ID.</li> <li> <b>TimerFired</b>: A timer, previously started for this workflow execution, fired.</li> <li> <b>TimerCanceled</b>: A timer, previously started for this workflow execution, was successfully canceled.</li> <li> <b>CancelTimerFailed</b>: Failed to process CancelTimer decision. This happens when the decision is not configured properly, for example no timer exists with the specified timer ID.</li> <li> <b>StartChildWorkflowExecutionInitiated</b>: A request was made to start a child workflow execution.</li> <li> <b>StartChildWorkflowExecutionFailed</b>: Failed to process StartChildWorkflowExecution decision. This happens when the decision is not configured properly, for example the workflow type specified is not registered.</li> <li> <b>ChildWorkflowExecutionStarted</b>: A child workflow execution was successfully started.</li> <li> <b>ChildWorkflowExecutionCompleted</b>: A child workflow execution, started by this workflow execution, completed successfully and was closed.</li> <li> <b>ChildWorkflowExecutionFailed</b>: A child workflow execution, started by this workflow execution, failed to complete successfully and was closed.</li> <li> <b>ChildWorkflowExecutionTimedOut</b>: A child workflow execution, started by this workflow execution, timed out and was closed.</li> <li> <b>ChildWorkflowExecutionCanceled</b>: A child workflow execution, started by this workflow execution, was canceled and closed.</li> <li> <b>ChildWorkflowExecutionTerminated</b>: A child workflow execution, started by this workflow execution, was terminated.</li> <li> <b>SignalExternalWorkflowExecutionInitiated</b>: A request to signal an external workflow was made.</li> <li> <b>ExternalWorkflowExecutionSignaled</b>: A signal, requested by this workflow execution, was successfully delivered to the target external workflow execution.</li> <li> <b>SignalExternalWorkflowExecutionFailed</b>: The request to signal an external workflow execution failed.</li> <li> <b>RequestCancelExternalWorkflowExecutionInitiated</b>: A request was made to request the cancellation of an external workflow execution.</li> <li> <b>ExternalWorkflowExecutionCancelRequested</b>: Request to cancel an external workflow execution was successfully delivered to the target execution.</li> <li> <b>RequestCancelExternalWorkflowExecutionFailed</b>: Request to cancel an external workflow execution failed.</li> <li> <b>LambdaFunctionScheduled</b>: An AWS Lambda function was scheduled for execution.</li> <li> <b>LambdaFunctionStarted</b>: The scheduled function was invoked in the AWS Lambda service.</li> <li> <b>LambdaFunctionCompleted</b>: The AWS Lambda function successfully completed.</li> <li> <b>LambdaFunctionFailed</b>: The AWS Lambda function execution failed.</li> <li> <b>LambdaFunctionTimedOut</b>: The AWS Lambda function execution timed out.</li> <li> <b>ScheduleLambdaFunctionFailed</b>: Failed to process ScheduleLambdaFunction decision. This happens when the workflow execution does not have the proper IAM role attached to invoke AWS Lambda functions.</li> <li> <b>StartLambdaFunctionFailed</b>: Failed to invoke the scheduled function in the AWS Lambda service. This happens when the AWS Lambda service is not available in the current region, or received too many requests.</li> </ul>
--- @param _workflowExecutionCancelRequestedEventAttributes [WorkflowExecutionCancelRequestedEventAttributes] <p>If the event is of type <code>WorkflowExecutionCancelRequested</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _requestCancelExternalWorkflowExecutionInitiatedEventAttributes [RequestCancelExternalWorkflowExecutionInitiatedEventAttributes] <p>If the event is of type <code>RequestCancelExternalWorkflowExecutionInitiated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _completeWorkflowExecutionFailedEventAttributes [CompleteWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>CompleteWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _childWorkflowExecutionStartedEventAttributes [ChildWorkflowExecutionStartedEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _activityTaskScheduledEventAttributes [ActivityTaskScheduledEventAttributes] <p>If the event is of type <code>ActivityTaskScheduled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _eventType [EventType] <p>The type of the history event.</p>
--- @param _decisionTaskTimedOutEventAttributes [DecisionTaskTimedOutEventAttributes] <p>If the event is of type <code>DecisionTaskTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _workflowExecutionTimedOutEventAttributes [WorkflowExecutionTimedOutEventAttributes] <p>If the event is of type <code>WorkflowExecutionTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _cancelWorkflowExecutionFailedEventAttributes [CancelWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>CancelWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _eventTimestamp [Timestamp] <p>The date and time when the event occurred.</p>
--- @param _lambdaFunctionCompletedEventAttributes [LambdaFunctionCompletedEventAttributes] 
--- @param _timerCanceledEventAttributes [TimerCanceledEventAttributes] <p>If the event is of type <code>TimerCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _startChildWorkflowExecutionFailedEventAttributes [StartChildWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>StartChildWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _eventId [EventId] <p>The system generated ID of the event. This ID uniquely identifies the event with in the workflow execution history.</p>
--- @param _workflowExecutionContinuedAsNewEventAttributes [WorkflowExecutionContinuedAsNewEventAttributes] <p>If the event is of type <code>WorkflowExecutionContinuedAsNew</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _childWorkflowExecutionTimedOutEventAttributes [ChildWorkflowExecutionTimedOutEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _childWorkflowExecutionCanceledEventAttributes [ChildWorkflowExecutionCanceledEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _activityTaskStartedEventAttributes [ActivityTaskStartedEventAttributes] <p>If the event is of type <code>ActivityTaskStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _activityTaskCompletedEventAttributes [ActivityTaskCompletedEventAttributes] <p>If the event is of type <code>ActivityTaskCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _activityTaskFailedEventAttributes [ActivityTaskFailedEventAttributes] <p>If the event is of type <code>ActivityTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _signalExternalWorkflowExecutionInitiatedEventAttributes [SignalExternalWorkflowExecutionInitiatedEventAttributes] <p>If the event is of type <code>SignalExternalWorkflowExecutionInitiated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _recordMarkerFailedEventAttributes [RecordMarkerFailedEventAttributes] <p>If the event is of type <code>DecisionTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _externalWorkflowExecutionSignaledEventAttributes [ExternalWorkflowExecutionSignaledEventAttributes] <p>If the event is of type <code>ExternalWorkflowExecutionSignaled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _lambdaFunctionTimedOutEventAttributes [LambdaFunctionTimedOutEventAttributes] 
--- @param _childWorkflowExecutionCompletedEventAttributes [ChildWorkflowExecutionCompletedEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _startLambdaFunctionFailedEventAttributes [StartLambdaFunctionFailedEventAttributes] 
--- @param _workflowExecutionSignaledEventAttributes [WorkflowExecutionSignaledEventAttributes] <p>If the event is of type <code>WorkflowExecutionSignaled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _scheduleActivityTaskFailedEventAttributes [ScheduleActivityTaskFailedEventAttributes] <p>If the event is of type <code>ScheduleActivityTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _childWorkflowExecutionTerminatedEventAttributes [ChildWorkflowExecutionTerminatedEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionTerminated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _externalWorkflowExecutionCancelRequestedEventAttributes [ExternalWorkflowExecutionCancelRequestedEventAttributes] <p>If the event is of type <code>ExternalWorkflowExecutionCancelRequested</code> then this member is set and provides detailed information about the event. It is not set for other event types. </p>
--- @param _workflowExecutionCanceledEventAttributes [WorkflowExecutionCanceledEventAttributes] <p>If the event is of type <code>WorkflowExecutionCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _requestCancelExternalWorkflowExecutionFailedEventAttributes [RequestCancelExternalWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>RequestCancelExternalWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _workflowExecutionTerminatedEventAttributes [WorkflowExecutionTerminatedEventAttributes] <p>If the event is of type <code>WorkflowExecutionTerminated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _decisionTaskScheduledEventAttributes [DecisionTaskScheduledEventAttributes] <p>If the event is of type <code>DecisionTaskScheduled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _lambdaFunctionFailedEventAttributes [LambdaFunctionFailedEventAttributes] 
--- @param _activityTaskCanceledEventAttributes [ActivityTaskCanceledEventAttributes] <p>If the event is of type <code>ActivityTaskCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _cancelTimerFailedEventAttributes [CancelTimerFailedEventAttributes] <p>If the event is of type <code>CancelTimerFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _startTimerFailedEventAttributes [StartTimerFailedEventAttributes] <p>If the event is of type <code>StartTimerFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _timerFiredEventAttributes [TimerFiredEventAttributes] <p>If the event is of type <code>TimerFired</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _failWorkflowExecutionFailedEventAttributes [FailWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>FailWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _workflowExecutionStartedEventAttributes [WorkflowExecutionStartedEventAttributes] <p>If the event is of type <code>WorkflowExecutionStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _decisionTaskCompletedEventAttributes [DecisionTaskCompletedEventAttributes] <p>If the event is of type <code>DecisionTaskCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _workflowExecutionFailedEventAttributes [WorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>WorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _timerStartedEventAttributes [TimerStartedEventAttributes] <p>If the event is of type <code>TimerStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _requestCancelActivityTaskFailedEventAttributes [RequestCancelActivityTaskFailedEventAttributes] <p>If the event is of type <code>RequestCancelActivityTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _activityTaskTimedOutEventAttributes [ActivityTaskTimedOutEventAttributes] <p>If the event is of type <code>ActivityTaskTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _continueAsNewWorkflowExecutionFailedEventAttributes [ContinueAsNewWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>ContinueAsNewWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _signalExternalWorkflowExecutionFailedEventAttributes [SignalExternalWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>SignalExternalWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _startChildWorkflowExecutionInitiatedEventAttributes [StartChildWorkflowExecutionInitiatedEventAttributes] <p>If the event is of type <code>StartChildWorkflowExecutionInitiated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _markerRecordedEventAttributes [MarkerRecordedEventAttributes] <p>If the event is of type <code>MarkerRecorded</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _lambdaFunctionScheduledEventAttributes [LambdaFunctionScheduledEventAttributes] 
--- @param _scheduleLambdaFunctionFailedEventAttributes [ScheduleLambdaFunctionFailedEventAttributes] 
--- @param _workflowExecutionCompletedEventAttributes [WorkflowExecutionCompletedEventAttributes] <p>If the event is of type <code>WorkflowExecutionCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _decisionTaskStartedEventAttributes [DecisionTaskStartedEventAttributes] <p>If the event is of type <code>DecisionTaskStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _childWorkflowExecutionFailedEventAttributes [ChildWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _activityTaskCancelRequestedEventAttributes [ActivityTaskCancelRequestedEventAttributes] <p>If the event is of type <code>ActivityTaskcancelRequested</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
--- @param _lambdaFunctionStartedEventAttributes [LambdaFunctionStartedEventAttributes] 
--- Required parameter: eventTimestamp
--- Required parameter: eventType
--- Required parameter: eventId
-function M.HistoryEvent(_workflowExecutionCancelRequestedEventAttributes, _requestCancelExternalWorkflowExecutionInitiatedEventAttributes, _completeWorkflowExecutionFailedEventAttributes, _childWorkflowExecutionStartedEventAttributes, _activityTaskScheduledEventAttributes, _eventType, _decisionTaskTimedOutEventAttributes, _workflowExecutionTimedOutEventAttributes, _cancelWorkflowExecutionFailedEventAttributes, _eventTimestamp, _lambdaFunctionCompletedEventAttributes, _timerCanceledEventAttributes, _startChildWorkflowExecutionFailedEventAttributes, _eventId, _workflowExecutionContinuedAsNewEventAttributes, _childWorkflowExecutionTimedOutEventAttributes, _childWorkflowExecutionCanceledEventAttributes, _activityTaskStartedEventAttributes, _activityTaskCompletedEventAttributes, _activityTaskFailedEventAttributes, _signalExternalWorkflowExecutionInitiatedEventAttributes, _recordMarkerFailedEventAttributes, _externalWorkflowExecutionSignaledEventAttributes, _lambdaFunctionTimedOutEventAttributes, _childWorkflowExecutionCompletedEventAttributes, _startLambdaFunctionFailedEventAttributes, _workflowExecutionSignaledEventAttributes, _scheduleActivityTaskFailedEventAttributes, _childWorkflowExecutionTerminatedEventAttributes, _externalWorkflowExecutionCancelRequestedEventAttributes, _workflowExecutionCanceledEventAttributes, _requestCancelExternalWorkflowExecutionFailedEventAttributes, _workflowExecutionTerminatedEventAttributes, _decisionTaskScheduledEventAttributes, _lambdaFunctionFailedEventAttributes, _activityTaskCanceledEventAttributes, _cancelTimerFailedEventAttributes, _startTimerFailedEventAttributes, _timerFiredEventAttributes, _failWorkflowExecutionFailedEventAttributes, _workflowExecutionStartedEventAttributes, _decisionTaskCompletedEventAttributes, _workflowExecutionFailedEventAttributes, _timerStartedEventAttributes, _requestCancelActivityTaskFailedEventAttributes, _activityTaskTimedOutEventAttributes, _continueAsNewWorkflowExecutionFailedEventAttributes, _signalExternalWorkflowExecutionFailedEventAttributes, _startChildWorkflowExecutionInitiatedEventAttributes, _markerRecordedEventAttributes, _lambdaFunctionScheduledEventAttributes, _scheduleLambdaFunctionFailedEventAttributes, _workflowExecutionCompletedEventAttributes, _decisionTaskStartedEventAttributes, _childWorkflowExecutionFailedEventAttributes, _activityTaskCancelRequestedEventAttributes, _lambdaFunctionStartedEventAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HistoryEvent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * workflowExecutionCancelRequestedEventAttributes [WorkflowExecutionCancelRequestedEventAttributes] <p>If the event is of type <code>WorkflowExecutionCancelRequested</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * requestCancelExternalWorkflowExecutionInitiatedEventAttributes [RequestCancelExternalWorkflowExecutionInitiatedEventAttributes] <p>If the event is of type <code>RequestCancelExternalWorkflowExecutionInitiated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * completeWorkflowExecutionFailedEventAttributes [CompleteWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>CompleteWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * childWorkflowExecutionStartedEventAttributes [ChildWorkflowExecutionStartedEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * activityTaskScheduledEventAttributes [ActivityTaskScheduledEventAttributes] <p>If the event is of type <code>ActivityTaskScheduled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * eventType [EventType] <p>The type of the history event.</p>
+-- * decisionTaskTimedOutEventAttributes [DecisionTaskTimedOutEventAttributes] <p>If the event is of type <code>DecisionTaskTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * workflowExecutionTimedOutEventAttributes [WorkflowExecutionTimedOutEventAttributes] <p>If the event is of type <code>WorkflowExecutionTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * cancelWorkflowExecutionFailedEventAttributes [CancelWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>CancelWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * eventTimestamp [Timestamp] <p>The date and time when the event occurred.</p>
+-- * lambdaFunctionCompletedEventAttributes [LambdaFunctionCompletedEventAttributes] 
+-- * timerCanceledEventAttributes [TimerCanceledEventAttributes] <p>If the event is of type <code>TimerCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * startChildWorkflowExecutionFailedEventAttributes [StartChildWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>StartChildWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * eventId [EventId] <p>The system generated ID of the event. This ID uniquely identifies the event with in the workflow execution history.</p>
+-- * workflowExecutionContinuedAsNewEventAttributes [WorkflowExecutionContinuedAsNewEventAttributes] <p>If the event is of type <code>WorkflowExecutionContinuedAsNew</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * childWorkflowExecutionTimedOutEventAttributes [ChildWorkflowExecutionTimedOutEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * childWorkflowExecutionCanceledEventAttributes [ChildWorkflowExecutionCanceledEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * activityTaskStartedEventAttributes [ActivityTaskStartedEventAttributes] <p>If the event is of type <code>ActivityTaskStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * activityTaskCompletedEventAttributes [ActivityTaskCompletedEventAttributes] <p>If the event is of type <code>ActivityTaskCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * activityTaskFailedEventAttributes [ActivityTaskFailedEventAttributes] <p>If the event is of type <code>ActivityTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * signalExternalWorkflowExecutionInitiatedEventAttributes [SignalExternalWorkflowExecutionInitiatedEventAttributes] <p>If the event is of type <code>SignalExternalWorkflowExecutionInitiated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * recordMarkerFailedEventAttributes [RecordMarkerFailedEventAttributes] <p>If the event is of type <code>DecisionTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * externalWorkflowExecutionSignaledEventAttributes [ExternalWorkflowExecutionSignaledEventAttributes] <p>If the event is of type <code>ExternalWorkflowExecutionSignaled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * lambdaFunctionTimedOutEventAttributes [LambdaFunctionTimedOutEventAttributes] 
+-- * childWorkflowExecutionCompletedEventAttributes [ChildWorkflowExecutionCompletedEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * startLambdaFunctionFailedEventAttributes [StartLambdaFunctionFailedEventAttributes] 
+-- * workflowExecutionSignaledEventAttributes [WorkflowExecutionSignaledEventAttributes] <p>If the event is of type <code>WorkflowExecutionSignaled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * scheduleActivityTaskFailedEventAttributes [ScheduleActivityTaskFailedEventAttributes] <p>If the event is of type <code>ScheduleActivityTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * childWorkflowExecutionTerminatedEventAttributes [ChildWorkflowExecutionTerminatedEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionTerminated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * externalWorkflowExecutionCancelRequestedEventAttributes [ExternalWorkflowExecutionCancelRequestedEventAttributes] <p>If the event is of type <code>ExternalWorkflowExecutionCancelRequested</code> then this member is set and provides detailed information about the event. It is not set for other event types. </p>
+-- * workflowExecutionCanceledEventAttributes [WorkflowExecutionCanceledEventAttributes] <p>If the event is of type <code>WorkflowExecutionCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * requestCancelExternalWorkflowExecutionFailedEventAttributes [RequestCancelExternalWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>RequestCancelExternalWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * workflowExecutionTerminatedEventAttributes [WorkflowExecutionTerminatedEventAttributes] <p>If the event is of type <code>WorkflowExecutionTerminated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * decisionTaskScheduledEventAttributes [DecisionTaskScheduledEventAttributes] <p>If the event is of type <code>DecisionTaskScheduled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * lambdaFunctionFailedEventAttributes [LambdaFunctionFailedEventAttributes] 
+-- * activityTaskCanceledEventAttributes [ActivityTaskCanceledEventAttributes] <p>If the event is of type <code>ActivityTaskCanceled</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * cancelTimerFailedEventAttributes [CancelTimerFailedEventAttributes] <p>If the event is of type <code>CancelTimerFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * startTimerFailedEventAttributes [StartTimerFailedEventAttributes] <p>If the event is of type <code>StartTimerFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * timerFiredEventAttributes [TimerFiredEventAttributes] <p>If the event is of type <code>TimerFired</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * failWorkflowExecutionFailedEventAttributes [FailWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>FailWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * workflowExecutionStartedEventAttributes [WorkflowExecutionStartedEventAttributes] <p>If the event is of type <code>WorkflowExecutionStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * decisionTaskCompletedEventAttributes [DecisionTaskCompletedEventAttributes] <p>If the event is of type <code>DecisionTaskCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * workflowExecutionFailedEventAttributes [WorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>WorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * timerStartedEventAttributes [TimerStartedEventAttributes] <p>If the event is of type <code>TimerStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * requestCancelActivityTaskFailedEventAttributes [RequestCancelActivityTaskFailedEventAttributes] <p>If the event is of type <code>RequestCancelActivityTaskFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * activityTaskTimedOutEventAttributes [ActivityTaskTimedOutEventAttributes] <p>If the event is of type <code>ActivityTaskTimedOut</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * continueAsNewWorkflowExecutionFailedEventAttributes [ContinueAsNewWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>ContinueAsNewWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * signalExternalWorkflowExecutionFailedEventAttributes [SignalExternalWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>SignalExternalWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * startChildWorkflowExecutionInitiatedEventAttributes [StartChildWorkflowExecutionInitiatedEventAttributes] <p>If the event is of type <code>StartChildWorkflowExecutionInitiated</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * markerRecordedEventAttributes [MarkerRecordedEventAttributes] <p>If the event is of type <code>MarkerRecorded</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * lambdaFunctionScheduledEventAttributes [LambdaFunctionScheduledEventAttributes] 
+-- * scheduleLambdaFunctionFailedEventAttributes [ScheduleLambdaFunctionFailedEventAttributes] 
+-- * workflowExecutionCompletedEventAttributes [WorkflowExecutionCompletedEventAttributes] <p>If the event is of type <code>WorkflowExecutionCompleted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * decisionTaskStartedEventAttributes [DecisionTaskStartedEventAttributes] <p>If the event is of type <code>DecisionTaskStarted</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * childWorkflowExecutionFailedEventAttributes [ChildWorkflowExecutionFailedEventAttributes] <p>If the event is of type <code>ChildWorkflowExecutionFailed</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * activityTaskCancelRequestedEventAttributes [ActivityTaskCancelRequestedEventAttributes] <p>If the event is of type <code>ActivityTaskcancelRequested</code> then this member is set and provides detailed information about the event. It is not set for other event types.</p>
+-- * lambdaFunctionStartedEventAttributes [LambdaFunctionStartedEventAttributes] 
+-- Required key: eventTimestamp
+-- Required key: eventType
+-- Required key: eventId
+-- @return HistoryEvent structure as a key-value pair table
+function M.HistoryEvent(args)
+	assert(args, "You must provdide an argument table when creating HistoryEvent")
 	local t = { 
-		["workflowExecutionCancelRequestedEventAttributes"] = _workflowExecutionCancelRequestedEventAttributes,
-		["requestCancelExternalWorkflowExecutionInitiatedEventAttributes"] = _requestCancelExternalWorkflowExecutionInitiatedEventAttributes,
-		["completeWorkflowExecutionFailedEventAttributes"] = _completeWorkflowExecutionFailedEventAttributes,
-		["childWorkflowExecutionStartedEventAttributes"] = _childWorkflowExecutionStartedEventAttributes,
-		["activityTaskScheduledEventAttributes"] = _activityTaskScheduledEventAttributes,
-		["eventType"] = _eventType,
-		["decisionTaskTimedOutEventAttributes"] = _decisionTaskTimedOutEventAttributes,
-		["workflowExecutionTimedOutEventAttributes"] = _workflowExecutionTimedOutEventAttributes,
-		["cancelWorkflowExecutionFailedEventAttributes"] = _cancelWorkflowExecutionFailedEventAttributes,
-		["eventTimestamp"] = _eventTimestamp,
-		["lambdaFunctionCompletedEventAttributes"] = _lambdaFunctionCompletedEventAttributes,
-		["timerCanceledEventAttributes"] = _timerCanceledEventAttributes,
-		["startChildWorkflowExecutionFailedEventAttributes"] = _startChildWorkflowExecutionFailedEventAttributes,
-		["eventId"] = _eventId,
-		["workflowExecutionContinuedAsNewEventAttributes"] = _workflowExecutionContinuedAsNewEventAttributes,
-		["childWorkflowExecutionTimedOutEventAttributes"] = _childWorkflowExecutionTimedOutEventAttributes,
-		["childWorkflowExecutionCanceledEventAttributes"] = _childWorkflowExecutionCanceledEventAttributes,
-		["activityTaskStartedEventAttributes"] = _activityTaskStartedEventAttributes,
-		["activityTaskCompletedEventAttributes"] = _activityTaskCompletedEventAttributes,
-		["activityTaskFailedEventAttributes"] = _activityTaskFailedEventAttributes,
-		["signalExternalWorkflowExecutionInitiatedEventAttributes"] = _signalExternalWorkflowExecutionInitiatedEventAttributes,
-		["recordMarkerFailedEventAttributes"] = _recordMarkerFailedEventAttributes,
-		["externalWorkflowExecutionSignaledEventAttributes"] = _externalWorkflowExecutionSignaledEventAttributes,
-		["lambdaFunctionTimedOutEventAttributes"] = _lambdaFunctionTimedOutEventAttributes,
-		["childWorkflowExecutionCompletedEventAttributes"] = _childWorkflowExecutionCompletedEventAttributes,
-		["startLambdaFunctionFailedEventAttributes"] = _startLambdaFunctionFailedEventAttributes,
-		["workflowExecutionSignaledEventAttributes"] = _workflowExecutionSignaledEventAttributes,
-		["scheduleActivityTaskFailedEventAttributes"] = _scheduleActivityTaskFailedEventAttributes,
-		["childWorkflowExecutionTerminatedEventAttributes"] = _childWorkflowExecutionTerminatedEventAttributes,
-		["externalWorkflowExecutionCancelRequestedEventAttributes"] = _externalWorkflowExecutionCancelRequestedEventAttributes,
-		["workflowExecutionCanceledEventAttributes"] = _workflowExecutionCanceledEventAttributes,
-		["requestCancelExternalWorkflowExecutionFailedEventAttributes"] = _requestCancelExternalWorkflowExecutionFailedEventAttributes,
-		["workflowExecutionTerminatedEventAttributes"] = _workflowExecutionTerminatedEventAttributes,
-		["decisionTaskScheduledEventAttributes"] = _decisionTaskScheduledEventAttributes,
-		["lambdaFunctionFailedEventAttributes"] = _lambdaFunctionFailedEventAttributes,
-		["activityTaskCanceledEventAttributes"] = _activityTaskCanceledEventAttributes,
-		["cancelTimerFailedEventAttributes"] = _cancelTimerFailedEventAttributes,
-		["startTimerFailedEventAttributes"] = _startTimerFailedEventAttributes,
-		["timerFiredEventAttributes"] = _timerFiredEventAttributes,
-		["failWorkflowExecutionFailedEventAttributes"] = _failWorkflowExecutionFailedEventAttributes,
-		["workflowExecutionStartedEventAttributes"] = _workflowExecutionStartedEventAttributes,
-		["decisionTaskCompletedEventAttributes"] = _decisionTaskCompletedEventAttributes,
-		["workflowExecutionFailedEventAttributes"] = _workflowExecutionFailedEventAttributes,
-		["timerStartedEventAttributes"] = _timerStartedEventAttributes,
-		["requestCancelActivityTaskFailedEventAttributes"] = _requestCancelActivityTaskFailedEventAttributes,
-		["activityTaskTimedOutEventAttributes"] = _activityTaskTimedOutEventAttributes,
-		["continueAsNewWorkflowExecutionFailedEventAttributes"] = _continueAsNewWorkflowExecutionFailedEventAttributes,
-		["signalExternalWorkflowExecutionFailedEventAttributes"] = _signalExternalWorkflowExecutionFailedEventAttributes,
-		["startChildWorkflowExecutionInitiatedEventAttributes"] = _startChildWorkflowExecutionInitiatedEventAttributes,
-		["markerRecordedEventAttributes"] = _markerRecordedEventAttributes,
-		["lambdaFunctionScheduledEventAttributes"] = _lambdaFunctionScheduledEventAttributes,
-		["scheduleLambdaFunctionFailedEventAttributes"] = _scheduleLambdaFunctionFailedEventAttributes,
-		["workflowExecutionCompletedEventAttributes"] = _workflowExecutionCompletedEventAttributes,
-		["decisionTaskStartedEventAttributes"] = _decisionTaskStartedEventAttributes,
-		["childWorkflowExecutionFailedEventAttributes"] = _childWorkflowExecutionFailedEventAttributes,
-		["activityTaskCancelRequestedEventAttributes"] = _activityTaskCancelRequestedEventAttributes,
-		["lambdaFunctionStartedEventAttributes"] = _lambdaFunctionStartedEventAttributes,
+		["workflowExecutionCancelRequestedEventAttributes"] = args["workflowExecutionCancelRequestedEventAttributes"],
+		["requestCancelExternalWorkflowExecutionInitiatedEventAttributes"] = args["requestCancelExternalWorkflowExecutionInitiatedEventAttributes"],
+		["completeWorkflowExecutionFailedEventAttributes"] = args["completeWorkflowExecutionFailedEventAttributes"],
+		["childWorkflowExecutionStartedEventAttributes"] = args["childWorkflowExecutionStartedEventAttributes"],
+		["activityTaskScheduledEventAttributes"] = args["activityTaskScheduledEventAttributes"],
+		["eventType"] = args["eventType"],
+		["decisionTaskTimedOutEventAttributes"] = args["decisionTaskTimedOutEventAttributes"],
+		["workflowExecutionTimedOutEventAttributes"] = args["workflowExecutionTimedOutEventAttributes"],
+		["cancelWorkflowExecutionFailedEventAttributes"] = args["cancelWorkflowExecutionFailedEventAttributes"],
+		["eventTimestamp"] = args["eventTimestamp"],
+		["lambdaFunctionCompletedEventAttributes"] = args["lambdaFunctionCompletedEventAttributes"],
+		["timerCanceledEventAttributes"] = args["timerCanceledEventAttributes"],
+		["startChildWorkflowExecutionFailedEventAttributes"] = args["startChildWorkflowExecutionFailedEventAttributes"],
+		["eventId"] = args["eventId"],
+		["workflowExecutionContinuedAsNewEventAttributes"] = args["workflowExecutionContinuedAsNewEventAttributes"],
+		["childWorkflowExecutionTimedOutEventAttributes"] = args["childWorkflowExecutionTimedOutEventAttributes"],
+		["childWorkflowExecutionCanceledEventAttributes"] = args["childWorkflowExecutionCanceledEventAttributes"],
+		["activityTaskStartedEventAttributes"] = args["activityTaskStartedEventAttributes"],
+		["activityTaskCompletedEventAttributes"] = args["activityTaskCompletedEventAttributes"],
+		["activityTaskFailedEventAttributes"] = args["activityTaskFailedEventAttributes"],
+		["signalExternalWorkflowExecutionInitiatedEventAttributes"] = args["signalExternalWorkflowExecutionInitiatedEventAttributes"],
+		["recordMarkerFailedEventAttributes"] = args["recordMarkerFailedEventAttributes"],
+		["externalWorkflowExecutionSignaledEventAttributes"] = args["externalWorkflowExecutionSignaledEventAttributes"],
+		["lambdaFunctionTimedOutEventAttributes"] = args["lambdaFunctionTimedOutEventAttributes"],
+		["childWorkflowExecutionCompletedEventAttributes"] = args["childWorkflowExecutionCompletedEventAttributes"],
+		["startLambdaFunctionFailedEventAttributes"] = args["startLambdaFunctionFailedEventAttributes"],
+		["workflowExecutionSignaledEventAttributes"] = args["workflowExecutionSignaledEventAttributes"],
+		["scheduleActivityTaskFailedEventAttributes"] = args["scheduleActivityTaskFailedEventAttributes"],
+		["childWorkflowExecutionTerminatedEventAttributes"] = args["childWorkflowExecutionTerminatedEventAttributes"],
+		["externalWorkflowExecutionCancelRequestedEventAttributes"] = args["externalWorkflowExecutionCancelRequestedEventAttributes"],
+		["workflowExecutionCanceledEventAttributes"] = args["workflowExecutionCanceledEventAttributes"],
+		["requestCancelExternalWorkflowExecutionFailedEventAttributes"] = args["requestCancelExternalWorkflowExecutionFailedEventAttributes"],
+		["workflowExecutionTerminatedEventAttributes"] = args["workflowExecutionTerminatedEventAttributes"],
+		["decisionTaskScheduledEventAttributes"] = args["decisionTaskScheduledEventAttributes"],
+		["lambdaFunctionFailedEventAttributes"] = args["lambdaFunctionFailedEventAttributes"],
+		["activityTaskCanceledEventAttributes"] = args["activityTaskCanceledEventAttributes"],
+		["cancelTimerFailedEventAttributes"] = args["cancelTimerFailedEventAttributes"],
+		["startTimerFailedEventAttributes"] = args["startTimerFailedEventAttributes"],
+		["timerFiredEventAttributes"] = args["timerFiredEventAttributes"],
+		["failWorkflowExecutionFailedEventAttributes"] = args["failWorkflowExecutionFailedEventAttributes"],
+		["workflowExecutionStartedEventAttributes"] = args["workflowExecutionStartedEventAttributes"],
+		["decisionTaskCompletedEventAttributes"] = args["decisionTaskCompletedEventAttributes"],
+		["workflowExecutionFailedEventAttributes"] = args["workflowExecutionFailedEventAttributes"],
+		["timerStartedEventAttributes"] = args["timerStartedEventAttributes"],
+		["requestCancelActivityTaskFailedEventAttributes"] = args["requestCancelActivityTaskFailedEventAttributes"],
+		["activityTaskTimedOutEventAttributes"] = args["activityTaskTimedOutEventAttributes"],
+		["continueAsNewWorkflowExecutionFailedEventAttributes"] = args["continueAsNewWorkflowExecutionFailedEventAttributes"],
+		["signalExternalWorkflowExecutionFailedEventAttributes"] = args["signalExternalWorkflowExecutionFailedEventAttributes"],
+		["startChildWorkflowExecutionInitiatedEventAttributes"] = args["startChildWorkflowExecutionInitiatedEventAttributes"],
+		["markerRecordedEventAttributes"] = args["markerRecordedEventAttributes"],
+		["lambdaFunctionScheduledEventAttributes"] = args["lambdaFunctionScheduledEventAttributes"],
+		["scheduleLambdaFunctionFailedEventAttributes"] = args["scheduleLambdaFunctionFailedEventAttributes"],
+		["workflowExecutionCompletedEventAttributes"] = args["workflowExecutionCompletedEventAttributes"],
+		["decisionTaskStartedEventAttributes"] = args["decisionTaskStartedEventAttributes"],
+		["childWorkflowExecutionFailedEventAttributes"] = args["childWorkflowExecutionFailedEventAttributes"],
+		["activityTaskCancelRequestedEventAttributes"] = args["activityTaskCancelRequestedEventAttributes"],
+		["lambdaFunctionStartedEventAttributes"] = args["lambdaFunctionStartedEventAttributes"],
 	}
 	asserts.AssertHistoryEvent(t)
 	return t
@@ -2578,21 +2773,24 @@ end
 
 --- Create a structure of type CountOpenWorkflowExecutionsInput
 --  
--- @param _domain [DomainName] <p>The name of the domain containing the workflow executions to count.</p>
--- @param _executionFilter [WorkflowExecutionFilter] <p>If specified, only workflow executions matching the <code>WorkflowId</code> in the filter are counted.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _typeFilter [WorkflowTypeFilter] <p>Specifies the type of the workflow executions to be counted.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _startTimeFilter [ExecutionTimeFilter] <p>Specifies the start time criteria that workflow executions must meet in order to be counted.</p>
--- @param _tagFilter [TagFilter] <p>If specified, only executions that have a tag that matches the filter are counted.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- Required parameter: domain
--- Required parameter: startTimeFilter
-function M.CountOpenWorkflowExecutionsInput(_domain, _executionFilter, _typeFilter, _startTimeFilter, _tagFilter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CountOpenWorkflowExecutionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain containing the workflow executions to count.</p>
+-- * executionFilter [WorkflowExecutionFilter] <p>If specified, only workflow executions matching the <code>WorkflowId</code> in the filter are counted.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * typeFilter [WorkflowTypeFilter] <p>Specifies the type of the workflow executions to be counted.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * startTimeFilter [ExecutionTimeFilter] <p>Specifies the start time criteria that workflow executions must meet in order to be counted.</p>
+-- * tagFilter [TagFilter] <p>If specified, only executions that have a tag that matches the filter are counted.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- Required key: domain
+-- Required key: startTimeFilter
+-- @return CountOpenWorkflowExecutionsInput structure as a key-value pair table
+function M.CountOpenWorkflowExecutionsInput(args)
+	assert(args, "You must provdide an argument table when creating CountOpenWorkflowExecutionsInput")
 	local t = { 
-		["domain"] = _domain,
-		["executionFilter"] = _executionFilter,
-		["typeFilter"] = _typeFilter,
-		["startTimeFilter"] = _startTimeFilter,
-		["tagFilter"] = _tagFilter,
+		["domain"] = args["domain"],
+		["executionFilter"] = args["executionFilter"],
+		["typeFilter"] = args["typeFilter"],
+		["startTimeFilter"] = args["startTimeFilter"],
+		["tagFilter"] = args["tagFilter"],
 	}
 	asserts.AssertCountOpenWorkflowExecutionsInput(t)
 	return t
@@ -2621,26 +2819,29 @@ end
 
 --- Create a structure of type StartChildWorkflowExecutionFailedEventAttributes
 -- <p>Provides details of the <code>StartChildWorkflowExecutionFailed</code> event.</p>
--- @param _control [Data] 
--- @param _workflowId [WorkflowId] <p>The <code>workflowId</code> of the child workflow execution.</p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>StartChildWorkflowExecution</code> decision to request this child workflow execution. This information can be useful for diagnosing problems by tracing back the cause of events.</p>
--- @param _workflowType [WorkflowType] <p>The workflow type provided in the <code>StartChildWorkflowExecution</code> decision that failed.</p>
--- @param _cause [StartChildWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- Required parameter: workflowType
--- Required parameter: cause
--- Required parameter: workflowId
--- Required parameter: initiatedEventId
--- Required parameter: decisionTaskCompletedEventId
-function M.StartChildWorkflowExecutionFailedEventAttributes(_control, _workflowId, _initiatedEventId, _decisionTaskCompletedEventId, _workflowType, _cause, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartChildWorkflowExecutionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] 
+-- * workflowId [WorkflowId] <p>The <code>workflowId</code> of the child workflow execution.</p>
+-- * initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>StartChildWorkflowExecution</code> decision to request this child workflow execution. This information can be useful for diagnosing problems by tracing back the cause of events.</p>
+-- * workflowType [WorkflowType] <p>The workflow type provided in the <code>StartChildWorkflowExecution</code> decision that failed.</p>
+-- * cause [StartChildWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- Required key: workflowType
+-- Required key: cause
+-- Required key: workflowId
+-- Required key: initiatedEventId
+-- Required key: decisionTaskCompletedEventId
+-- @return StartChildWorkflowExecutionFailedEventAttributes structure as a key-value pair table
+function M.StartChildWorkflowExecutionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating StartChildWorkflowExecutionFailedEventAttributes")
 	local t = { 
-		["control"] = _control,
-		["workflowId"] = _workflowId,
-		["initiatedEventId"] = _initiatedEventId,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
-		["workflowType"] = _workflowType,
-		["cause"] = _cause,
+		["control"] = args["control"],
+		["workflowId"] = args["workflowId"],
+		["initiatedEventId"] = args["initiatedEventId"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
+		["workflowType"] = args["workflowType"],
+		["cause"] = args["cause"],
 	}
 	asserts.AssertStartChildWorkflowExecutionFailedEventAttributes(t)
 	return t
@@ -2668,27 +2869,30 @@ end
 
 --- Create a structure of type ListOpenWorkflowExecutionsInput
 --  
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _domain [DomainName] <p>The name of the domain that contains the workflow executions to list.</p>
--- @param _typeFilter [WorkflowTypeFilter] <p>If specified, only executions of the type specified in the filter are returned.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _tagFilter [TagFilter] <p>If specified, only executions that have the matching tag are listed.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _executionFilter [WorkflowExecutionFilter] <p>If specified, only workflow executions matching the workflow ID specified in the filter are returned.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the results in reverse order. By default the results are returned in descending order of the start time of the executions.</p>
--- @param _startTimeFilter [ExecutionTimeFilter] <p>Workflow executions are included in the returned results based on whether their start times are within the range specified by this filter.</p>
--- @param _maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
--- Required parameter: domain
--- Required parameter: startTimeFilter
-function M.ListOpenWorkflowExecutionsInput(_nextPageToken, _domain, _typeFilter, _tagFilter, _executionFilter, _reverseOrder, _startTimeFilter, _maximumPageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOpenWorkflowExecutionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * domain [DomainName] <p>The name of the domain that contains the workflow executions to list.</p>
+-- * typeFilter [WorkflowTypeFilter] <p>If specified, only executions of the type specified in the filter are returned.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * tagFilter [TagFilter] <p>If specified, only executions that have the matching tag are listed.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * executionFilter [WorkflowExecutionFilter] <p>If specified, only workflow executions matching the workflow ID specified in the filter are returned.</p> <note><code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the results in reverse order. By default the results are returned in descending order of the start time of the executions.</p>
+-- * startTimeFilter [ExecutionTimeFilter] <p>Workflow executions are included in the returned results based on whether their start times are within the range specified by this filter.</p>
+-- * maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- Required key: domain
+-- Required key: startTimeFilter
+-- @return ListOpenWorkflowExecutionsInput structure as a key-value pair table
+function M.ListOpenWorkflowExecutionsInput(args)
+	assert(args, "You must provdide an argument table when creating ListOpenWorkflowExecutionsInput")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["domain"] = _domain,
-		["typeFilter"] = _typeFilter,
-		["tagFilter"] = _tagFilter,
-		["executionFilter"] = _executionFilter,
-		["reverseOrder"] = _reverseOrder,
-		["startTimeFilter"] = _startTimeFilter,
-		["maximumPageSize"] = _maximumPageSize,
+		["nextPageToken"] = args["nextPageToken"],
+		["domain"] = args["domain"],
+		["typeFilter"] = args["typeFilter"],
+		["tagFilter"] = args["tagFilter"],
+		["executionFilter"] = args["executionFilter"],
+		["reverseOrder"] = args["reverseOrder"],
+		["startTimeFilter"] = args["startTimeFilter"],
+		["maximumPageSize"] = args["maximumPageSize"],
 	}
 	asserts.AssertListOpenWorkflowExecutionsInput(t)
 	return t
@@ -2707,11 +2911,14 @@ end
 
 --- Create a structure of type DefaultUndefinedFault
 --  
--- @param _message [ErrorMessage] 
-function M.DefaultUndefinedFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefaultUndefinedFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return DefaultUndefinedFault structure as a key-value pair table
+function M.DefaultUndefinedFault(args)
+	assert(args, "You must provdide an argument table when creating DefaultUndefinedFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDefaultUndefinedFault(t)
 	return t
@@ -2733,15 +2940,18 @@ end
 
 --- Create a structure of type WorkflowExecution
 -- <p>Represents a workflow execution.</p>
--- @param _workflowId [WorkflowId] <p>The user defined identifier associated with the workflow execution.</p>
--- @param _runId [RunId] <p>A system-generated unique identifier for the workflow execution.</p>
--- Required parameter: workflowId
--- Required parameter: runId
-function M.WorkflowExecution(_workflowId, _runId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecution")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * workflowId [WorkflowId] <p>The user defined identifier associated with the workflow execution.</p>
+-- * runId [RunId] <p>A system-generated unique identifier for the workflow execution.</p>
+-- Required key: workflowId
+-- Required key: runId
+-- @return WorkflowExecution structure as a key-value pair table
+function M.WorkflowExecution(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecution")
 	local t = { 
-		["workflowId"] = _workflowId,
-		["runId"] = _runId,
+		["workflowId"] = args["workflowId"],
+		["runId"] = args["runId"],
 	}
 	asserts.AssertWorkflowExecution(t)
 	return t
@@ -2762,14 +2972,17 @@ end
 
 --- Create a structure of type WorkflowExecutionInfos
 -- <p>Contains a paginated list of information about workflow executions.</p>
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _executionInfos [WorkflowExecutionInfoList] <p>The list of workflow information structures.</p>
--- Required parameter: executionInfos
-function M.WorkflowExecutionInfos(_nextPageToken, _executionInfos, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionInfos")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * executionInfos [WorkflowExecutionInfoList] <p>The list of workflow information structures.</p>
+-- Required key: executionInfos
+-- @return WorkflowExecutionInfos structure as a key-value pair table
+function M.WorkflowExecutionInfos(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionInfos")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["executionInfos"] = _executionInfos,
+		["nextPageToken"] = args["nextPageToken"],
+		["executionInfos"] = args["executionInfos"],
 	}
 	asserts.AssertWorkflowExecutionInfos(t)
 	return t
@@ -2791,15 +3004,18 @@ end
 
 --- Create a structure of type DescribeWorkflowExecutionInput
 --  
--- @param _domain [DomainName] <p>The name of the domain containing the workflow execution.</p>
--- @param _execution [WorkflowExecution] <p>The workflow execution to describe.</p>
--- Required parameter: domain
--- Required parameter: execution
-function M.DescribeWorkflowExecutionInput(_domain, _execution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkflowExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain containing the workflow execution.</p>
+-- * execution [WorkflowExecution] <p>The workflow execution to describe.</p>
+-- Required key: domain
+-- Required key: execution
+-- @return DescribeWorkflowExecutionInput structure as a key-value pair table
+function M.DescribeWorkflowExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkflowExecutionInput")
 	local t = { 
-		["domain"] = _domain,
-		["execution"] = _execution,
+		["domain"] = args["domain"],
+		["execution"] = args["execution"],
 	}
 	asserts.AssertDescribeWorkflowExecutionInput(t)
 	return t
@@ -2821,16 +3037,19 @@ end
 
 --- Create a structure of type RequestCancelExternalWorkflowExecutionDecisionAttributes
 -- <p>Provides details of the <code>RequestCancelExternalWorkflowExecution</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>You cannot use an IAM policy to constrain this action's parameters.</li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks.</p>
--- @param _workflowId [WorkflowId] <p><b>Required.</b> The <code>workflowId</code> of the external workflow execution to cancel.</p>
--- @param _runId [RunIdOptional] <p>The <code>runId</code> of the external workflow execution to cancel.</p>
--- Required parameter: workflowId
-function M.RequestCancelExternalWorkflowExecutionDecisionAttributes(_control, _workflowId, _runId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestCancelExternalWorkflowExecutionDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks.</p>
+-- * workflowId [WorkflowId] <p><b>Required.</b> The <code>workflowId</code> of the external workflow execution to cancel.</p>
+-- * runId [RunIdOptional] <p>The <code>runId</code> of the external workflow execution to cancel.</p>
+-- Required key: workflowId
+-- @return RequestCancelExternalWorkflowExecutionDecisionAttributes structure as a key-value pair table
+function M.RequestCancelExternalWorkflowExecutionDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating RequestCancelExternalWorkflowExecutionDecisionAttributes")
 	local t = { 
-		["control"] = _control,
-		["workflowId"] = _workflowId,
-		["runId"] = _runId,
+		["control"] = args["control"],
+		["workflowId"] = args["workflowId"],
+		["runId"] = args["runId"],
 	}
 	asserts.AssertRequestCancelExternalWorkflowExecutionDecisionAttributes(t)
 	return t
@@ -2851,14 +3070,17 @@ end
 
 --- Create a structure of type WorkflowTypeInfos
 -- <p>Contains a paginated list of information structures about workflow types.</p>
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _typeInfos [WorkflowTypeInfoList] <p>The list of workflow type information.</p>
--- Required parameter: typeInfos
-function M.WorkflowTypeInfos(_nextPageToken, _typeInfos, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowTypeInfos")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * typeInfos [WorkflowTypeInfoList] <p>The list of workflow type information.</p>
+-- Required key: typeInfos
+-- @return WorkflowTypeInfos structure as a key-value pair table
+function M.WorkflowTypeInfos(args)
+	assert(args, "You must provdide an argument table when creating WorkflowTypeInfos")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["typeInfos"] = _typeInfos,
+		["nextPageToken"] = args["nextPageToken"],
+		["typeInfos"] = args["typeInfos"],
 	}
 	asserts.AssertWorkflowTypeInfos(t)
 	return t
@@ -2881,17 +3103,20 @@ end
 
 --- Create a structure of type RegisterDomainInput
 --  
--- @param _name [DomainName] <p>Name of the domain to register. The name must be unique in the region that the domain is registered in.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _workflowExecutionRetentionPeriodInDays [DurationInDays] <p>The duration (in days) that records and histories of workflow executions on the domain should be kept by the service. After the retention period, the workflow execution is not available in the results of visibility calls.</p> <p>If you pass the value <code>NONE</code> or <code>0</code> (zero), then the workflow execution history will not be retained. As soon as the workflow execution completes, the execution record and its history are deleted.</p> <p>The maximum workflow execution retention period is 90 days. For more information about Amazon SWF service limits, see: <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html">Amazon SWF Service Limits</a> in the <i>Amazon SWF Developer Guide</i>.</p>
--- @param _description [Description] <p>A text description of the domain.</p>
--- Required parameter: name
--- Required parameter: workflowExecutionRetentionPeriodInDays
-function M.RegisterDomainInput(_name, _workflowExecutionRetentionPeriodInDays, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDomainInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [DomainName] <p>Name of the domain to register. The name must be unique in the region that the domain is registered in.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * workflowExecutionRetentionPeriodInDays [DurationInDays] <p>The duration (in days) that records and histories of workflow executions on the domain should be kept by the service. After the retention period, the workflow execution is not available in the results of visibility calls.</p> <p>If you pass the value <code>NONE</code> or <code>0</code> (zero), then the workflow execution history will not be retained. As soon as the workflow execution completes, the execution record and its history are deleted.</p> <p>The maximum workflow execution retention period is 90 days. For more information about Amazon SWF service limits, see: <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-limits.html">Amazon SWF Service Limits</a> in the <i>Amazon SWF Developer Guide</i>.</p>
+-- * description [Description] <p>A text description of the domain.</p>
+-- Required key: name
+-- Required key: workflowExecutionRetentionPeriodInDays
+-- @return RegisterDomainInput structure as a key-value pair table
+function M.RegisterDomainInput(args)
+	assert(args, "You must provdide an argument table when creating RegisterDomainInput")
 	local t = { 
-		["name"] = _name,
-		["workflowExecutionRetentionPeriodInDays"] = _workflowExecutionRetentionPeriodInDays,
-		["description"] = _description,
+		["name"] = args["name"],
+		["workflowExecutionRetentionPeriodInDays"] = args["workflowExecutionRetentionPeriodInDays"],
+		["description"] = args["description"],
 	}
 	asserts.AssertRegisterDomainInput(t)
 	return t
@@ -2915,18 +3140,21 @@ end
 
 --- Create a structure of type RequestCancelActivityTaskFailedEventAttributes
 -- <p>Provides details of the <code>RequestCancelActivityTaskFailed</code> event.</p>
--- @param _activityId [ActivityId] <p>The activityId provided in the <code>RequestCancelActivityTask</code> decision that failed.</p>
--- @param _cause [RequestCancelActivityTaskFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RequestCancelActivityTask</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: activityId
--- Required parameter: cause
--- Required parameter: decisionTaskCompletedEventId
-function M.RequestCancelActivityTaskFailedEventAttributes(_activityId, _cause, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestCancelActivityTaskFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * activityId [ActivityId] <p>The activityId provided in the <code>RequestCancelActivityTask</code> decision that failed.</p>
+-- * cause [RequestCancelActivityTaskFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>RequestCancelActivityTask</code> decision for this cancellation request. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: activityId
+-- Required key: cause
+-- Required key: decisionTaskCompletedEventId
+-- @return RequestCancelActivityTaskFailedEventAttributes structure as a key-value pair table
+function M.RequestCancelActivityTaskFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating RequestCancelActivityTaskFailedEventAttributes")
 	local t = { 
-		["activityId"] = _activityId,
-		["cause"] = _cause,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["activityId"] = args["activityId"],
+		["cause"] = args["cause"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertRequestCancelActivityTaskFailedEventAttributes(t)
 	return t
@@ -2959,36 +3187,39 @@ end
 
 --- Create a structure of type WorkflowExecutionStartedEventAttributes
 -- <p>Provides details of <code>WorkflowExecutionStarted</code> event.</p>
--- @param _taskList [TaskList] <p>The name of the task list for scheduling the decision tasks for this workflow execution.</p>
--- @param _parentWorkflowExecution [WorkflowExecution] <p>The source workflow execution that started this workflow execution. The member is not set if the workflow execution was not started by a workflow.</p>
--- @param _parentInitiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this workflow execution. The source event with this ID can be found in the history of the source workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _taskStartToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration of decision tasks for this workflow type.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _taskPriority [TaskPriority] 
--- @param _lambdaRole [Arn] <p>The IAM role attached to this workflow execution to use when invoking AWS Lambda functions.</p>
--- @param _continuedExecutionRunId [RunIdOptional] <p>If this workflow execution was started due to a <code>ContinueAsNewWorkflowExecution</code> decision, then it contains the <code>runId</code> of the previous workflow execution that was closed and continued as this execution.</p>
--- @param _childPolicy [ChildPolicy] <p>The policy to use for the child workflow executions if this workflow execution is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
--- @param _executionStartToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration for this workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _input [Data] <p>The input provided to the workflow execution (if any).</p>
--- @param _workflowType [WorkflowType] <p>The workflow type of this execution.</p>
--- @param _tagList [TagList] <p>The list of tags associated with this workflow execution. An execution can have up to 5 tags.</p>
--- Required parameter: childPolicy
--- Required parameter: taskList
--- Required parameter: workflowType
-function M.WorkflowExecutionStartedEventAttributes(_taskList, _parentWorkflowExecution, _parentInitiatedEventId, _taskStartToCloseTimeout, _taskPriority, _lambdaRole, _continuedExecutionRunId, _childPolicy, _executionStartToCloseTimeout, _input, _workflowType, _tagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionStartedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskList [TaskList] <p>The name of the task list for scheduling the decision tasks for this workflow execution.</p>
+-- * parentWorkflowExecution [WorkflowExecution] <p>The source workflow execution that started this workflow execution. The member is not set if the workflow execution was not started by a workflow.</p>
+-- * parentInitiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this workflow execution. The source event with this ID can be found in the history of the source workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * taskStartToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration of decision tasks for this workflow type.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * taskPriority [TaskPriority] 
+-- * lambdaRole [Arn] <p>The IAM role attached to this workflow execution to use when invoking AWS Lambda functions.</p>
+-- * continuedExecutionRunId [RunIdOptional] <p>If this workflow execution was started due to a <code>ContinueAsNewWorkflowExecution</code> decision, then it contains the <code>runId</code> of the previous workflow execution that was closed and continued as this execution.</p>
+-- * childPolicy [ChildPolicy] <p>The policy to use for the child workflow executions if this workflow execution is terminated, by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul>
+-- * executionStartToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration for this workflow execution.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * input [Data] <p>The input provided to the workflow execution (if any).</p>
+-- * workflowType [WorkflowType] <p>The workflow type of this execution.</p>
+-- * tagList [TagList] <p>The list of tags associated with this workflow execution. An execution can have up to 5 tags.</p>
+-- Required key: childPolicy
+-- Required key: taskList
+-- Required key: workflowType
+-- @return WorkflowExecutionStartedEventAttributes structure as a key-value pair table
+function M.WorkflowExecutionStartedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionStartedEventAttributes")
 	local t = { 
-		["taskList"] = _taskList,
-		["parentWorkflowExecution"] = _parentWorkflowExecution,
-		["parentInitiatedEventId"] = _parentInitiatedEventId,
-		["taskStartToCloseTimeout"] = _taskStartToCloseTimeout,
-		["taskPriority"] = _taskPriority,
-		["lambdaRole"] = _lambdaRole,
-		["continuedExecutionRunId"] = _continuedExecutionRunId,
-		["childPolicy"] = _childPolicy,
-		["executionStartToCloseTimeout"] = _executionStartToCloseTimeout,
-		["input"] = _input,
-		["workflowType"] = _workflowType,
-		["tagList"] = _tagList,
+		["taskList"] = args["taskList"],
+		["parentWorkflowExecution"] = args["parentWorkflowExecution"],
+		["parentInitiatedEventId"] = args["parentInitiatedEventId"],
+		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
+		["taskPriority"] = args["taskPriority"],
+		["lambdaRole"] = args["lambdaRole"],
+		["continuedExecutionRunId"] = args["continuedExecutionRunId"],
+		["childPolicy"] = args["childPolicy"],
+		["executionStartToCloseTimeout"] = args["executionStartToCloseTimeout"],
+		["input"] = args["input"],
+		["workflowType"] = args["workflowType"],
+		["tagList"] = args["tagList"],
 	}
 	asserts.AssertWorkflowExecutionStartedEventAttributes(t)
 	return t
@@ -3009,14 +3240,17 @@ end
 
 --- Create a structure of type WorkflowTypeFilter
 -- <p>Used to filter workflow execution query results by type. Each parameter, if specified, defines a rule that must be satisfied by each returned result.</p>
--- @param _version [VersionOptional] <p>Version of the workflow type.</p>
--- @param _name [Name] <p><b>Required.</b> Name of the workflow type.</p>
--- Required parameter: name
-function M.WorkflowTypeFilter(_version, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowTypeFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [VersionOptional] <p>Version of the workflow type.</p>
+-- * name [Name] <p><b>Required.</b> Name of the workflow type.</p>
+-- Required key: name
+-- @return WorkflowTypeFilter structure as a key-value pair table
+function M.WorkflowTypeFilter(args)
+	assert(args, "You must provdide an argument table when creating WorkflowTypeFilter")
 	local t = { 
-		["version"] = _version,
-		["name"] = _name,
+		["version"] = args["version"],
+		["name"] = args["name"],
 	}
 	asserts.AssertWorkflowTypeFilter(t)
 	return t
@@ -3038,15 +3272,18 @@ end
 
 --- Create a structure of type CountPendingDecisionTasksInput
 --  
--- @param _domain [DomainName] <p>The name of the domain that contains the task list.</p>
--- @param _taskList [TaskList] <p>The name of the task list.</p>
--- Required parameter: domain
--- Required parameter: taskList
-function M.CountPendingDecisionTasksInput(_domain, _taskList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CountPendingDecisionTasksInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain that contains the task list.</p>
+-- * taskList [TaskList] <p>The name of the task list.</p>
+-- Required key: domain
+-- Required key: taskList
+-- @return CountPendingDecisionTasksInput structure as a key-value pair table
+function M.CountPendingDecisionTasksInput(args)
+	assert(args, "You must provdide an argument table when creating CountPendingDecisionTasksInput")
 	local t = { 
-		["domain"] = _domain,
-		["taskList"] = _taskList,
+		["domain"] = args["domain"],
+		["taskList"] = args["taskList"],
 	}
 	asserts.AssertCountPendingDecisionTasksInput(t)
 	return t
@@ -3065,11 +3302,14 @@ end
 
 --- Create a structure of type CancelWorkflowExecutionDecisionAttributes
 -- <p>Provides details of the <code>CancelWorkflowExecution</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>You cannot use an IAM policy to constrain this action's parameters.</li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _details [Data] <p><i>Optional.</i> details of the cancellation.</p>
-function M.CancelWorkflowExecutionDecisionAttributes(_details, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelWorkflowExecutionDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * details [Data] <p><i>Optional.</i> details of the cancellation.</p>
+-- @return CancelWorkflowExecutionDecisionAttributes structure as a key-value pair table
+function M.CancelWorkflowExecutionDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating CancelWorkflowExecutionDecisionAttributes")
 	local t = { 
-		["details"] = _details,
+		["details"] = args["details"],
 	}
 	asserts.AssertCancelWorkflowExecutionDecisionAttributes(t)
 	return t
@@ -3090,14 +3330,17 @@ end
 
 --- Create a structure of type ActivityTypeInfos
 -- <p>Contains a paginated list of activity type information structures.</p>
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _typeInfos [ActivityTypeInfoList] <p>List of activity type information.</p>
--- Required parameter: typeInfos
-function M.ActivityTypeInfos(_nextPageToken, _typeInfos, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTypeInfos")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * typeInfos [ActivityTypeInfoList] <p>List of activity type information.</p>
+-- Required key: typeInfos
+-- @return ActivityTypeInfos structure as a key-value pair table
+function M.ActivityTypeInfos(args)
+	assert(args, "You must provdide an argument table when creating ActivityTypeInfos")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["typeInfos"] = _typeInfos,
+		["nextPageToken"] = args["nextPageToken"],
+		["typeInfos"] = args["typeInfos"],
 	}
 	asserts.AssertActivityTypeInfos(t)
 	return t
@@ -3117,12 +3360,15 @@ end
 
 --- Create a structure of type ActivityTaskStatus
 -- <p>Status information about an activity task.</p>
--- @param _cancelRequested [Canceled] <p>Set to <code>true</code> if cancellation of the task is requested.</p>
--- Required parameter: cancelRequested
-function M.ActivityTaskStatus(_cancelRequested, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTaskStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cancelRequested [Canceled] <p>Set to <code>true</code> if cancellation of the task is requested.</p>
+-- Required key: cancelRequested
+-- @return ActivityTaskStatus structure as a key-value pair table
+function M.ActivityTaskStatus(args)
+	assert(args, "You must provdide an argument table when creating ActivityTaskStatus")
 	local t = { 
-		["cancelRequested"] = _cancelRequested,
+		["cancelRequested"] = args["cancelRequested"],
 	}
 	asserts.AssertActivityTaskStatus(t)
 	return t
@@ -3146,18 +3392,21 @@ end
 
 --- Create a structure of type CancelTimerFailedEventAttributes
 -- <p>Provides details of the <code>CancelTimerFailed</code> event.</p>
--- @param _timerId [TimerId] <p>The timerId provided in the <code>CancelTimer</code> decision that failed.</p>
--- @param _cause [CancelTimerFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CancelTimer</code> decision to cancel this timer. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: timerId
--- Required parameter: cause
--- Required parameter: decisionTaskCompletedEventId
-function M.CancelTimerFailedEventAttributes(_timerId, _cause, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelTimerFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * timerId [TimerId] <p>The timerId provided in the <code>CancelTimer</code> decision that failed.</p>
+-- * cause [CancelTimerFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CancelTimer</code> decision to cancel this timer. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: timerId
+-- Required key: cause
+-- Required key: decisionTaskCompletedEventId
+-- @return CancelTimerFailedEventAttributes structure as a key-value pair table
+function M.CancelTimerFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating CancelTimerFailedEventAttributes")
 	local t = { 
-		["timerId"] = _timerId,
-		["cause"] = _cause,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["timerId"] = args["timerId"],
+		["cause"] = args["cause"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertCancelTimerFailedEventAttributes(t)
 	return t
@@ -3181,18 +3430,21 @@ end
 
 --- Create a structure of type DecisionTaskTimedOutEventAttributes
 -- <p>Provides details of the <code>DecisionTaskTimedOut</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>DecisionTaskStarted</code> event recorded when this decision task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _timeoutType [DecisionTaskTimeoutType] <p>The type of timeout that expired before the decision task could be completed.</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>DecisionTaskScheduled</code> event that was recorded when this decision task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: timeoutType
--- Required parameter: scheduledEventId
--- Required parameter: startedEventId
-function M.DecisionTaskTimedOutEventAttributes(_startedEventId, _timeoutType, _scheduledEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DecisionTaskTimedOutEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>DecisionTaskStarted</code> event recorded when this decision task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * timeoutType [DecisionTaskTimeoutType] <p>The type of timeout that expired before the decision task could be completed.</p>
+-- * scheduledEventId [EventId] <p>The ID of the <code>DecisionTaskScheduled</code> event that was recorded when this decision task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: timeoutType
+-- Required key: scheduledEventId
+-- Required key: startedEventId
+-- @return DecisionTaskTimedOutEventAttributes structure as a key-value pair table
+function M.DecisionTaskTimedOutEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating DecisionTaskTimedOutEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["timeoutType"] = _timeoutType,
-		["scheduledEventId"] = _scheduledEventId,
+		["startedEventId"] = args["startedEventId"],
+		["timeoutType"] = args["timeoutType"],
+		["scheduledEventId"] = args["scheduledEventId"],
 	}
 	asserts.AssertDecisionTaskTimedOutEventAttributes(t)
 	return t
@@ -3218,23 +3470,26 @@ end
 
 --- Create a structure of type PollForDecisionTaskInput
 --  
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p> <note>The <code>nextPageToken</code> returned by this action cannot be used with <a>GetWorkflowExecutionHistory</a> to get the next page. You must call <a>PollForDecisionTask</a> again (with the <code>nextPageToken</code>) to retrieve the next page of history records. Calling <a>PollForDecisionTask</a> with a <code>nextPageToken</code> will not return a new decision task.</note>.
--- @param _domain [DomainName] <p>The name of the domain containing the task lists to poll.</p>
--- @param _taskList [TaskList] <p>Specifies the task list to poll for decision tasks.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the events in reverse order. By default the results are returned in ascending order of the <code>eventTimestamp</code> of the events.</p>
--- @param _maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
--- @param _identity [Identity] <p>Identity of the decider making the request, which is recorded in the DecisionTaskStarted event in the workflow history. This enables diagnostic tracing when problems arise. The form of this identity is user defined.</p>
--- Required parameter: domain
--- Required parameter: taskList
-function M.PollForDecisionTaskInput(_nextPageToken, _domain, _taskList, _reverseOrder, _maximumPageSize, _identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PollForDecisionTaskInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p> <note>The <code>nextPageToken</code> returned by this action cannot be used with <a>GetWorkflowExecutionHistory</a> to get the next page. You must call <a>PollForDecisionTask</a> again (with the <code>nextPageToken</code>) to retrieve the next page of history records. Calling <a>PollForDecisionTask</a> with a <code>nextPageToken</code> will not return a new decision task.</note>.
+-- * domain [DomainName] <p>The name of the domain containing the task lists to poll.</p>
+-- * taskList [TaskList] <p>Specifies the task list to poll for decision tasks.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the events in reverse order. By default the results are returned in ascending order of the <code>eventTimestamp</code> of the events.</p>
+-- * maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- * identity [Identity] <p>Identity of the decider making the request, which is recorded in the DecisionTaskStarted event in the workflow history. This enables diagnostic tracing when problems arise. The form of this identity is user defined.</p>
+-- Required key: domain
+-- Required key: taskList
+-- @return PollForDecisionTaskInput structure as a key-value pair table
+function M.PollForDecisionTaskInput(args)
+	assert(args, "You must provdide an argument table when creating PollForDecisionTaskInput")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["domain"] = _domain,
-		["taskList"] = _taskList,
-		["reverseOrder"] = _reverseOrder,
-		["maximumPageSize"] = _maximumPageSize,
-		["identity"] = _identity,
+		["nextPageToken"] = args["nextPageToken"],
+		["domain"] = args["domain"],
+		["taskList"] = args["taskList"],
+		["reverseOrder"] = args["reverseOrder"],
+		["maximumPageSize"] = args["maximumPageSize"],
+		["identity"] = args["identity"],
 	}
 	asserts.AssertPollForDecisionTaskInput(t)
 	return t
@@ -3254,12 +3509,15 @@ end
 
 --- Create a structure of type CloseStatusFilter
 -- <p>Used to filter the closed workflow executions in visibility APIs by their close status.</p>
--- @param _status [CloseStatus] <p><b>Required.</b> The close status that must match the close status of an execution for it to meet the criteria of this filter.</p>
--- Required parameter: status
-function M.CloseStatusFilter(_status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloseStatusFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [CloseStatus] <p><b>Required.</b> The close status that must match the close status of an execution for it to meet the criteria of this filter.</p>
+-- Required key: status
+-- @return CloseStatusFilter structure as a key-value pair table
+function M.CloseStatusFilter(args)
+	assert(args, "You must provdide an argument table when creating CloseStatusFilter")
 	local t = { 
-		["status"] = _status,
+		["status"] = args["status"],
 	}
 	asserts.AssertCloseStatusFilter(t)
 	return t
@@ -3278,11 +3536,14 @@ end
 
 --- Create a structure of type UnknownResourceFault
 -- <p>Returned when the named resource cannot be found with in the scope of this operation (region or domain). This could happen if the named resource was never created or is no longer available for this operation.</p>
--- @param _message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
-function M.UnknownResourceFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnknownResourceFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
+-- @return UnknownResourceFault structure as a key-value pair table
+function M.UnknownResourceFault(args)
+	assert(args, "You must provdide an argument table when creating UnknownResourceFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnknownResourceFault(t)
 	return t
@@ -3304,15 +3565,18 @@ end
 
 --- Create a structure of type TimerFiredEventAttributes
 -- <p>Provides details of the <code>TimerFired</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>TimerStarted</code> event that was recorded when this timer was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _timerId [TimerId] <p>The unique ID of the timer that fired.</p>
--- Required parameter: timerId
--- Required parameter: startedEventId
-function M.TimerFiredEventAttributes(_startedEventId, _timerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TimerFiredEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>TimerStarted</code> event that was recorded when this timer was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * timerId [TimerId] <p>The unique ID of the timer that fired.</p>
+-- Required key: timerId
+-- Required key: startedEventId
+-- @return TimerFiredEventAttributes structure as a key-value pair table
+function M.TimerFiredEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating TimerFiredEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["timerId"] = _timerId,
+		["startedEventId"] = args["startedEventId"],
+		["timerId"] = args["timerId"],
 	}
 	asserts.AssertTimerFiredEventAttributes(t)
 	return t
@@ -3337,20 +3601,23 @@ end
 
 --- Create a structure of type TimerStartedEventAttributes
 -- <p>Provides details of the <code>TimerStarted</code> event.</p>
--- @param _control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks.</p>
--- @param _timerId [TimerId] <p>The unique ID of the timer that was started.</p>
--- @param _startToFireTimeout [DurationInSeconds] <p>The duration of time after which the timer will fire.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>StartTimer</code> decision for this activity task. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: timerId
--- Required parameter: startToFireTimeout
--- Required parameter: decisionTaskCompletedEventId
-function M.TimerStartedEventAttributes(_control, _timerId, _startToFireTimeout, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TimerStartedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks.</p>
+-- * timerId [TimerId] <p>The unique ID of the timer that was started.</p>
+-- * startToFireTimeout [DurationInSeconds] <p>The duration of time after which the timer will fire.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0.</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>StartTimer</code> decision for this activity task. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: timerId
+-- Required key: startToFireTimeout
+-- Required key: decisionTaskCompletedEventId
+-- @return TimerStartedEventAttributes structure as a key-value pair table
+function M.TimerStartedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating TimerStartedEventAttributes")
 	local t = { 
-		["control"] = _control,
-		["timerId"] = _timerId,
-		["startToFireTimeout"] = _startToFireTimeout,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["control"] = args["control"],
+		["timerId"] = args["timerId"],
+		["startToFireTimeout"] = args["startToFireTimeout"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertTimerStartedEventAttributes(t)
 	return t
@@ -3370,12 +3637,15 @@ end
 
 --- Create a structure of type TaskList
 -- <p>Represents a task list.</p>
--- @param _name [Name] <p>The name of the task list.</p>
--- Required parameter: name
-function M.TaskList(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TaskList")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [Name] <p>The name of the task list.</p>
+-- Required key: name
+-- @return TaskList structure as a key-value pair table
+function M.TaskList(args)
+	assert(args, "You must provdide an argument table when creating TaskList")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertTaskList(t)
 	return t
@@ -3397,16 +3667,19 @@ end
 
 --- Create a structure of type WorkflowExecutionFailedEventAttributes
 -- <p>Provides details of the <code>WorkflowExecutionFailed</code> event.</p>
--- @param _reason [FailureReason] <p>The descriptive reason provided for the failure (if any).</p>
--- @param _details [Data] <p>The details of the failure (if any).</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>FailWorkflowExecution</code> decision to fail this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: decisionTaskCompletedEventId
-function M.WorkflowExecutionFailedEventAttributes(_reason, _details, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * reason [FailureReason] <p>The descriptive reason provided for the failure (if any).</p>
+-- * details [Data] <p>The details of the failure (if any).</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>FailWorkflowExecution</code> decision to fail this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: decisionTaskCompletedEventId
+-- @return WorkflowExecutionFailedEventAttributes structure as a key-value pair table
+function M.WorkflowExecutionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionFailedEventAttributes")
 	local t = { 
-		["reason"] = _reason,
-		["details"] = _details,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["reason"] = args["reason"],
+		["details"] = args["details"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertWorkflowExecutionFailedEventAttributes(t)
 	return t
@@ -3432,21 +3705,24 @@ end
 
 --- Create a structure of type ScheduleLambdaFunctionFailedEventAttributes
 -- <p>Provides details for the <code>ScheduleLambdaFunctionFailed</code> event.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision that resulted in the scheduling of this AWS Lambda function. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _cause [ScheduleLambdaFunctionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _id [FunctionId] <p>The unique Amazon SWF ID of the AWS Lambda task.</p>
--- @param _name [FunctionName] <p>The name of the scheduled AWS Lambda function.</p>
--- Required parameter: id
--- Required parameter: name
--- Required parameter: cause
--- Required parameter: decisionTaskCompletedEventId
-function M.ScheduleLambdaFunctionFailedEventAttributes(_decisionTaskCompletedEventId, _cause, _id, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScheduleLambdaFunctionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision that resulted in the scheduling of this AWS Lambda function. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * cause [ScheduleLambdaFunctionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * id [FunctionId] <p>The unique Amazon SWF ID of the AWS Lambda task.</p>
+-- * name [FunctionName] <p>The name of the scheduled AWS Lambda function.</p>
+-- Required key: id
+-- Required key: name
+-- Required key: cause
+-- Required key: decisionTaskCompletedEventId
+-- @return ScheduleLambdaFunctionFailedEventAttributes structure as a key-value pair table
+function M.ScheduleLambdaFunctionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ScheduleLambdaFunctionFailedEventAttributes")
 	local t = { 
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
-		["cause"] = _cause,
-		["id"] = _id,
-		["name"] = _name,
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
+		["cause"] = args["cause"],
+		["id"] = args["id"],
+		["name"] = args["name"],
 	}
 	asserts.AssertScheduleLambdaFunctionFailedEventAttributes(t)
 	return t
@@ -3468,15 +3744,18 @@ end
 
 --- Create a structure of type DescribeWorkflowTypeInput
 --  
--- @param _domain [DomainName] <p>The name of the domain in which this workflow type is registered.</p>
--- @param _workflowType [WorkflowType] <p>The workflow type to describe.</p>
--- Required parameter: domain
--- Required parameter: workflowType
-function M.DescribeWorkflowTypeInput(_domain, _workflowType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkflowTypeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain in which this workflow type is registered.</p>
+-- * workflowType [WorkflowType] <p>The workflow type to describe.</p>
+-- Required key: domain
+-- Required key: workflowType
+-- @return DescribeWorkflowTypeInput structure as a key-value pair table
+function M.DescribeWorkflowTypeInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkflowTypeInput")
 	local t = { 
-		["domain"] = _domain,
-		["workflowType"] = _workflowType,
+		["domain"] = args["domain"],
+		["workflowType"] = args["workflowType"],
 	}
 	asserts.AssertDescribeWorkflowTypeInput(t)
 	return t
@@ -3502,23 +3781,26 @@ end
 
 --- Create a structure of type ListWorkflowTypesInput
 --  
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _domain [DomainName] <p>The name of the domain in which the workflow types have been registered.</p>
--- @param _name [Name] <p>If specified, lists the workflow type with this name.</p>
--- @param _registrationStatus [RegistrationStatus] <p>Specifies the registration status of the workflow types to list.</p>
--- @param _reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the results in reverse order. By default the results are returned in ascending alphabetical order of the <code>name</code> of the workflow types.</p>
--- @param _maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
--- Required parameter: domain
--- Required parameter: registrationStatus
-function M.ListWorkflowTypesInput(_nextPageToken, _domain, _name, _registrationStatus, _reverseOrder, _maximumPageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListWorkflowTypesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * domain [DomainName] <p>The name of the domain in which the workflow types have been registered.</p>
+-- * name [Name] <p>If specified, lists the workflow type with this name.</p>
+-- * registrationStatus [RegistrationStatus] <p>Specifies the registration status of the workflow types to list.</p>
+-- * reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the results in reverse order. By default the results are returned in ascending alphabetical order of the <code>name</code> of the workflow types.</p>
+-- * maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- Required key: domain
+-- Required key: registrationStatus
+-- @return ListWorkflowTypesInput structure as a key-value pair table
+function M.ListWorkflowTypesInput(args)
+	assert(args, "You must provdide an argument table when creating ListWorkflowTypesInput")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["domain"] = _domain,
-		["name"] = _name,
-		["registrationStatus"] = _registrationStatus,
-		["reverseOrder"] = _reverseOrder,
-		["maximumPageSize"] = _maximumPageSize,
+		["nextPageToken"] = args["nextPageToken"],
+		["domain"] = args["domain"],
+		["name"] = args["name"],
+		["registrationStatus"] = args["registrationStatus"],
+		["reverseOrder"] = args["reverseOrder"],
+		["maximumPageSize"] = args["maximumPageSize"],
 	}
 	asserts.AssertListWorkflowTypesInput(t)
 	return t
@@ -3538,12 +3820,15 @@ end
 
 --- Create a structure of type LambdaFunctionStartedEventAttributes
 -- <p>Provides details for the <code>LambdaFunctionStarted</code> event.</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: scheduledEventId
-function M.LambdaFunctionStartedEventAttributes(_scheduledEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionStartedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: scheduledEventId
+-- @return LambdaFunctionStartedEventAttributes structure as a key-value pair table
+function M.LambdaFunctionStartedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionStartedEventAttributes")
 	local t = { 
-		["scheduledEventId"] = _scheduledEventId,
+		["scheduledEventId"] = args["scheduledEventId"],
 	}
 	asserts.AssertLambdaFunctionStartedEventAttributes(t)
 	return t
@@ -3564,14 +3849,17 @@ end
 
 --- Create a structure of type ExecutionTimeFilter
 -- <p>Used to filter the workflow executions in visibility APIs by various time-based rules. Each parameter, if specified, defines a rule that must be satisfied by each returned query result. The parameter values are in the <a href="https://en.wikipedia.org/wiki/Unix_time">Unix Time format</a>. For example: <code>"oldestDate": 1325376070.</code></p>
--- @param _oldestDate [Timestamp] <p>Specifies the oldest start or close date and time to return.</p>
--- @param _latestDate [Timestamp] <p>Specifies the latest start or close date and time to return.</p>
--- Required parameter: oldestDate
-function M.ExecutionTimeFilter(_oldestDate, _latestDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionTimeFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * oldestDate [Timestamp] <p>Specifies the oldest start or close date and time to return.</p>
+-- * latestDate [Timestamp] <p>Specifies the latest start or close date and time to return.</p>
+-- Required key: oldestDate
+-- @return ExecutionTimeFilter structure as a key-value pair table
+function M.ExecutionTimeFilter(args)
+	assert(args, "You must provdide an argument table when creating ExecutionTimeFilter")
 	local t = { 
-		["oldestDate"] = _oldestDate,
-		["latestDate"] = _latestDate,
+		["oldestDate"] = args["oldestDate"],
+		["latestDate"] = args["latestDate"],
 	}
 	asserts.AssertExecutionTimeFilter(t)
 	return t
@@ -3590,11 +3878,14 @@ end
 
 --- Create a structure of type LimitExceededFault
 -- <p>Returned by any operation if a system imposed limitation has been reached. To address this fault you should either clean up unused resources or increase the limit by contacting AWS.</p>
--- @param _message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
-function M.LimitExceededFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
+-- @return LimitExceededFault structure as a key-value pair table
+function M.LimitExceededFault(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededFault(t)
 	return t
@@ -3619,21 +3910,24 @@ end
 
 --- Create a structure of type SignalExternalWorkflowExecutionDecisionAttributes
 -- <p>Provides details of the <code>SignalExternalWorkflowExecution</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>You cannot use an IAM policy to constrain this action's parameters.</li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent decision tasks.</p>
--- @param _input [Data] <p><i>Optional.</i> Input data to be provided with the signal. The target workflow execution will use the signal name and input data to process the signal.</p>
--- @param _workflowId [WorkflowId] <p><b>Required.</b> The <code>workflowId</code> of the workflow execution to be signaled.</p>
--- @param _runId [RunIdOptional] <p>The <code>runId</code> of the workflow execution to be signaled.</p>
--- @param _signalName [SignalName] <p><b>Required.</b> The name of the signal.The target workflow execution will use the signal name and input to process the signal.</p>
--- Required parameter: workflowId
--- Required parameter: signalName
-function M.SignalExternalWorkflowExecutionDecisionAttributes(_control, _input, _workflowId, _runId, _signalName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SignalExternalWorkflowExecutionDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent decision tasks.</p>
+-- * input [Data] <p><i>Optional.</i> Input data to be provided with the signal. The target workflow execution will use the signal name and input data to process the signal.</p>
+-- * workflowId [WorkflowId] <p><b>Required.</b> The <code>workflowId</code> of the workflow execution to be signaled.</p>
+-- * runId [RunIdOptional] <p>The <code>runId</code> of the workflow execution to be signaled.</p>
+-- * signalName [SignalName] <p><b>Required.</b> The name of the signal.The target workflow execution will use the signal name and input to process the signal.</p>
+-- Required key: workflowId
+-- Required key: signalName
+-- @return SignalExternalWorkflowExecutionDecisionAttributes structure as a key-value pair table
+function M.SignalExternalWorkflowExecutionDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating SignalExternalWorkflowExecutionDecisionAttributes")
 	local t = { 
-		["control"] = _control,
-		["input"] = _input,
-		["workflowId"] = _workflowId,
-		["runId"] = _runId,
-		["signalName"] = _signalName,
+		["control"] = args["control"],
+		["input"] = args["input"],
+		["workflowId"] = args["workflowId"],
+		["runId"] = args["runId"],
+		["signalName"] = args["signalName"],
 	}
 	asserts.AssertSignalExternalWorkflowExecutionDecisionAttributes(t)
 	return t
@@ -3652,11 +3946,14 @@ end
 
 --- Create a structure of type OperationNotPermittedFault
 -- <p>Returned when the caller does not have sufficient permissions to invoke the action.</p>
--- @param _message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
-function M.OperationNotPermittedFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
+-- @return OperationNotPermittedFault structure as a key-value pair table
+function M.OperationNotPermittedFault(args)
+	assert(args, "You must provdide an argument table when creating OperationNotPermittedFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertOperationNotPermittedFault(t)
 	return t
@@ -3682,21 +3979,24 @@ end
 
 --- Create a structure of type ScheduleActivityTaskFailedEventAttributes
 -- <p>Provides details of the <code>ScheduleActivityTaskFailed</code> event.</p>
--- @param _activityId [ActivityId] <p>The activityId provided in the <code>ScheduleActivityTask</code> decision that failed.</p>
--- @param _activityType [ActivityType] <p>The activity type provided in the <code>ScheduleActivityTask</code> decision that failed.</p>
--- @param _cause [ScheduleActivityTaskFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision that resulted in the scheduling of this activity task. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: activityType
--- Required parameter: activityId
--- Required parameter: cause
--- Required parameter: decisionTaskCompletedEventId
-function M.ScheduleActivityTaskFailedEventAttributes(_activityId, _activityType, _cause, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScheduleActivityTaskFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * activityId [ActivityId] <p>The activityId provided in the <code>ScheduleActivityTask</code> decision that failed.</p>
+-- * activityType [ActivityType] <p>The activity type provided in the <code>ScheduleActivityTask</code> decision that failed.</p>
+-- * cause [ScheduleActivityTaskFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision that resulted in the scheduling of this activity task. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: activityType
+-- Required key: activityId
+-- Required key: cause
+-- Required key: decisionTaskCompletedEventId
+-- @return ScheduleActivityTaskFailedEventAttributes structure as a key-value pair table
+function M.ScheduleActivityTaskFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ScheduleActivityTaskFailedEventAttributes")
 	local t = { 
-		["activityId"] = _activityId,
-		["activityType"] = _activityType,
-		["cause"] = _cause,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["activityId"] = args["activityId"],
+		["activityType"] = args["activityType"],
+		["cause"] = args["cause"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertScheduleActivityTaskFailedEventAttributes(t)
 	return t
@@ -3721,20 +4021,23 @@ end
 
 --- Create a structure of type ActivityTaskTimedOutEventAttributes
 -- <p>Provides details of the <code>ActivityTaskTimedOut</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this activity task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _timeoutType [ActivityTaskTimeoutType] <p>The type of the timeout that caused this event.</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when this activity task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _details [LimitedData] <p>Contains the content of the <code>details</code> parameter for the last call made by the activity to <code>RecordActivityTaskHeartbeat</code>.</p>
--- Required parameter: timeoutType
--- Required parameter: scheduledEventId
--- Required parameter: startedEventId
-function M.ActivityTaskTimedOutEventAttributes(_startedEventId, _timeoutType, _scheduledEventId, _details, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTaskTimedOutEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this activity task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * timeoutType [ActivityTaskTimeoutType] <p>The type of the timeout that caused this event.</p>
+-- * scheduledEventId [EventId] <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when this activity task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * details [LimitedData] <p>Contains the content of the <code>details</code> parameter for the last call made by the activity to <code>RecordActivityTaskHeartbeat</code>.</p>
+-- Required key: timeoutType
+-- Required key: scheduledEventId
+-- Required key: startedEventId
+-- @return ActivityTaskTimedOutEventAttributes structure as a key-value pair table
+function M.ActivityTaskTimedOutEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ActivityTaskTimedOutEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["timeoutType"] = _timeoutType,
-		["scheduledEventId"] = _scheduledEventId,
-		["details"] = _details,
+		["startedEventId"] = args["startedEventId"],
+		["timeoutType"] = args["timeoutType"],
+		["scheduledEventId"] = args["scheduledEventId"],
+		["details"] = args["details"],
 	}
 	asserts.AssertActivityTaskTimedOutEventAttributes(t)
 	return t
@@ -3756,15 +4059,18 @@ end
 
 --- Create a structure of type ContinueAsNewWorkflowExecutionFailedEventAttributes
 -- <p>Provides details of the <code>ContinueAsNewWorkflowExecutionFailed</code> event.</p>
--- @param _cause [ContinueAsNewWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>ContinueAsNewWorkflowExecution</code> decision that started this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: cause
--- Required parameter: decisionTaskCompletedEventId
-function M.ContinueAsNewWorkflowExecutionFailedEventAttributes(_cause, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContinueAsNewWorkflowExecutionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [ContinueAsNewWorkflowExecutionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>ContinueAsNewWorkflowExecution</code> decision that started this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: cause
+-- Required key: decisionTaskCompletedEventId
+-- @return ContinueAsNewWorkflowExecutionFailedEventAttributes structure as a key-value pair table
+function M.ContinueAsNewWorkflowExecutionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ContinueAsNewWorkflowExecutionFailedEventAttributes")
 	local t = { 
-		["cause"] = _cause,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["cause"] = args["cause"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertContinueAsNewWorkflowExecutionFailedEventAttributes(t)
 	return t
@@ -3785,14 +4091,17 @@ end
 
 --- Create a structure of type RecordActivityTaskHeartbeatInput
 --  
--- @param _details [LimitedData] <p>If specified, contains details about the progress of the task.</p>
--- @param _taskToken [TaskToken] <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important> <code>taskToken</code> is generated by the service and should be treated as an opaque value. If the task is passed to another process, its <code>taskToken</code> must also be passed. This enables it to provide its progress and respond with results. </important>
--- Required parameter: taskToken
-function M.RecordActivityTaskHeartbeatInput(_details, _taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecordActivityTaskHeartbeatInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * details [LimitedData] <p>If specified, contains details about the progress of the task.</p>
+-- * taskToken [TaskToken] <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important> <code>taskToken</code> is generated by the service and should be treated as an opaque value. If the task is passed to another process, its <code>taskToken</code> must also be passed. This enables it to provide its progress and respond with results. </important>
+-- Required key: taskToken
+-- @return RecordActivityTaskHeartbeatInput structure as a key-value pair table
+function M.RecordActivityTaskHeartbeatInput(args)
+	assert(args, "You must provdide an argument table when creating RecordActivityTaskHeartbeatInput")
 	local t = { 
-		["details"] = _details,
-		["taskToken"] = _taskToken,
+		["details"] = args["details"],
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertRecordActivityTaskHeartbeatInput(t)
 	return t
@@ -3811,11 +4120,14 @@ end
 
 --- Create a structure of type TypeDeprecatedFault
 -- <p>Returned when the specified activity or workflow type was already deprecated.</p>
--- @param _message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
-function M.TypeDeprecatedFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TypeDeprecatedFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
+-- @return TypeDeprecatedFault structure as a key-value pair table
+function M.TypeDeprecatedFault(args)
+	assert(args, "You must provdide an argument table when creating TypeDeprecatedFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTypeDeprecatedFault(t)
 	return t
@@ -3841,22 +4153,25 @@ end
 
 --- Create a structure of type WorkflowExecutionDetail
 -- <p>Contains details about a workflow execution.</p>
--- @param _latestExecutionContext [Data] <p>The latest executionContext provided by the decider for this workflow execution. A decider can provide an executionContext (a free-form string) when closing a decision task using <a>RespondDecisionTaskCompleted</a>.</p>
--- @param _executionConfiguration [WorkflowExecutionConfiguration] <p>The configuration settings for this workflow execution including timeout values, tasklist etc.</p>
--- @param _latestActivityTaskTimestamp [Timestamp] <p>The time when the last activity task was scheduled for this workflow execution. You can use this information to determine if the workflow has not made progress for an unusually long period of time and might require a corrective action.</p>
--- @param _openCounts [WorkflowExecutionOpenCounts] <p>The number of tasks for this workflow execution. This includes open and closed tasks of all types.</p>
--- @param _executionInfo [WorkflowExecutionInfo] <p>Information about the workflow execution.</p>
--- Required parameter: executionInfo
--- Required parameter: executionConfiguration
--- Required parameter: openCounts
-function M.WorkflowExecutionDetail(_latestExecutionContext, _executionConfiguration, _latestActivityTaskTimestamp, _openCounts, _executionInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * latestExecutionContext [Data] <p>The latest executionContext provided by the decider for this workflow execution. A decider can provide an executionContext (a free-form string) when closing a decision task using <a>RespondDecisionTaskCompleted</a>.</p>
+-- * executionConfiguration [WorkflowExecutionConfiguration] <p>The configuration settings for this workflow execution including timeout values, tasklist etc.</p>
+-- * latestActivityTaskTimestamp [Timestamp] <p>The time when the last activity task was scheduled for this workflow execution. You can use this information to determine if the workflow has not made progress for an unusually long period of time and might require a corrective action.</p>
+-- * openCounts [WorkflowExecutionOpenCounts] <p>The number of tasks for this workflow execution. This includes open and closed tasks of all types.</p>
+-- * executionInfo [WorkflowExecutionInfo] <p>Information about the workflow execution.</p>
+-- Required key: executionInfo
+-- Required key: executionConfiguration
+-- Required key: openCounts
+-- @return WorkflowExecutionDetail structure as a key-value pair table
+function M.WorkflowExecutionDetail(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionDetail")
 	local t = { 
-		["latestExecutionContext"] = _latestExecutionContext,
-		["executionConfiguration"] = _executionConfiguration,
-		["latestActivityTaskTimestamp"] = _latestActivityTaskTimestamp,
-		["openCounts"] = _openCounts,
-		["executionInfo"] = _executionInfo,
+		["latestExecutionContext"] = args["latestExecutionContext"],
+		["executionConfiguration"] = args["executionConfiguration"],
+		["latestActivityTaskTimestamp"] = args["latestActivityTaskTimestamp"],
+		["openCounts"] = args["openCounts"],
+		["executionInfo"] = args["executionInfo"],
 	}
 	asserts.AssertWorkflowExecutionDetail(t)
 	return t
@@ -3879,18 +4194,21 @@ end
 
 --- Create a structure of type WorkflowExecutionSignaledEventAttributes
 -- <p>Provides details of the <code>WorkflowExecutionSignaled</code> event.</p>
--- @param _input [Data] <p>Inputs provided with the signal (if any). The decider can use the signal name and inputs to determine how to process the signal.</p>
--- @param _externalInitiatedEventId [EventId] <p>The ID of the <code>SignalExternalWorkflowExecutionInitiated</code> event corresponding to the <code>SignalExternalWorkflow</code> decision to signal this workflow execution.The source event with this ID can be found in the history of the source workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event. This field is set only if the signal was initiated by another workflow execution.</p>
--- @param _externalWorkflowExecution [WorkflowExecution] <p>The workflow execution that sent the signal. This is set only of the signal was sent by another workflow execution.</p>
--- @param _signalName [SignalName] <p>The name of the signal received. The decider can use the signal name and inputs to determine how to the process the signal.</p>
--- Required parameter: signalName
-function M.WorkflowExecutionSignaledEventAttributes(_input, _externalInitiatedEventId, _externalWorkflowExecution, _signalName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionSignaledEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * input [Data] <p>Inputs provided with the signal (if any). The decider can use the signal name and inputs to determine how to process the signal.</p>
+-- * externalInitiatedEventId [EventId] <p>The ID of the <code>SignalExternalWorkflowExecutionInitiated</code> event corresponding to the <code>SignalExternalWorkflow</code> decision to signal this workflow execution.The source event with this ID can be found in the history of the source workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event. This field is set only if the signal was initiated by another workflow execution.</p>
+-- * externalWorkflowExecution [WorkflowExecution] <p>The workflow execution that sent the signal. This is set only of the signal was sent by another workflow execution.</p>
+-- * signalName [SignalName] <p>The name of the signal received. The decider can use the signal name and inputs to determine how to the process the signal.</p>
+-- Required key: signalName
+-- @return WorkflowExecutionSignaledEventAttributes structure as a key-value pair table
+function M.WorkflowExecutionSignaledEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionSignaledEventAttributes")
 	local t = { 
-		["input"] = _input,
-		["externalInitiatedEventId"] = _externalInitiatedEventId,
-		["externalWorkflowExecution"] = _externalWorkflowExecution,
-		["signalName"] = _signalName,
+		["input"] = args["input"],
+		["externalInitiatedEventId"] = args["externalInitiatedEventId"],
+		["externalWorkflowExecution"] = args["externalWorkflowExecution"],
+		["signalName"] = args["signalName"],
 	}
 	asserts.AssertWorkflowExecutionSignaledEventAttributes(t)
 	return t
@@ -3911,14 +4229,17 @@ end
 
 --- Create a structure of type History
 -- <p>Paginated representation of a workflow history for a workflow execution. This is the up to date, complete and authoritative record of the events related to all tasks and events in the life of the workflow execution.</p>
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _events [HistoryEventList] <p>The list of history events.</p>
--- Required parameter: events
-function M.History(_nextPageToken, _events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating History")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * events [HistoryEventList] <p>The list of history events.</p>
+-- Required key: events
+-- @return History structure as a key-value pair table
+function M.History(args)
+	assert(args, "You must provdide an argument table when creating History")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["events"] = _events,
+		["nextPageToken"] = args["nextPageToken"],
+		["events"] = args["events"],
 	}
 	asserts.AssertHistory(t)
 	return t
@@ -3938,12 +4259,15 @@ end
 
 --- Create a structure of type CancelTimerDecisionAttributes
 -- <p>Provides details of the <code>CancelTimer</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>You cannot use an IAM policy to constrain this action's parameters.</li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _timerId [TimerId] <p><b>Required.</b> The unique ID of the timer to cancel.</p>
--- Required parameter: timerId
-function M.CancelTimerDecisionAttributes(_timerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelTimerDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * timerId [TimerId] <p><b>Required.</b> The unique ID of the timer to cancel.</p>
+-- Required key: timerId
+-- @return CancelTimerDecisionAttributes structure as a key-value pair table
+function M.CancelTimerDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating CancelTimerDecisionAttributes")
 	local t = { 
-		["timerId"] = _timerId,
+		["timerId"] = args["timerId"],
 	}
 	asserts.AssertCancelTimerDecisionAttributes(t)
 	return t
@@ -3965,16 +4289,19 @@ end
 
 --- Create a structure of type RespondDecisionTaskCompletedInput
 --  
--- @param _executionContext [Data] <p>User defined context to add to workflow execution.</p>
--- @param _decisions [DecisionList] <p>The list of decisions (possibly empty) made by the decider while processing this decision task. See the docs for the decision structure for details.</p>
--- @param _taskToken [TaskToken] <p>The <code>taskToken</code> from the <a>DecisionTask</a>.</p> <important><code>taskToken</code> is generated by the service and should be treated as an opaque value. If the task is passed to another process, its <code>taskToken</code> must also be passed. This enables it to provide its progress and respond with results.</important>
--- Required parameter: taskToken
-function M.RespondDecisionTaskCompletedInput(_executionContext, _decisions, _taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RespondDecisionTaskCompletedInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * executionContext [Data] <p>User defined context to add to workflow execution.</p>
+-- * decisions [DecisionList] <p>The list of decisions (possibly empty) made by the decider while processing this decision task. See the docs for the decision structure for details.</p>
+-- * taskToken [TaskToken] <p>The <code>taskToken</code> from the <a>DecisionTask</a>.</p> <important><code>taskToken</code> is generated by the service and should be treated as an opaque value. If the task is passed to another process, its <code>taskToken</code> must also be passed. This enables it to provide its progress and respond with results.</important>
+-- Required key: taskToken
+-- @return RespondDecisionTaskCompletedInput structure as a key-value pair table
+function M.RespondDecisionTaskCompletedInput(args)
+	assert(args, "You must provdide an argument table when creating RespondDecisionTaskCompletedInput")
 	local t = { 
-		["executionContext"] = _executionContext,
-		["decisions"] = _decisions,
-		["taskToken"] = _taskToken,
+		["executionContext"] = args["executionContext"],
+		["decisions"] = args["decisions"],
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertRespondDecisionTaskCompletedInput(t)
 	return t
@@ -4000,23 +4327,26 @@ end
 
 --- Create a structure of type ListActivityTypesInput
 --  
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _domain [DomainName] <p>The name of the domain in which the activity types have been registered.</p>
--- @param _name [Name] <p>If specified, only lists the activity types that have this name.</p>
--- @param _registrationStatus [RegistrationStatus] <p>Specifies the registration status of the activity types to list.</p>
--- @param _reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the results in reverse order. By default, the results are returned in ascending alphabetical order by <code>name</code> of the activity types.</p>
--- @param _maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
--- Required parameter: domain
--- Required parameter: registrationStatus
-function M.ListActivityTypesInput(_nextPageToken, _domain, _name, _registrationStatus, _reverseOrder, _maximumPageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListActivityTypesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * domain [DomainName] <p>The name of the domain in which the activity types have been registered.</p>
+-- * name [Name] <p>If specified, only lists the activity types that have this name.</p>
+-- * registrationStatus [RegistrationStatus] <p>Specifies the registration status of the activity types to list.</p>
+-- * reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the results in reverse order. By default, the results are returned in ascending alphabetical order by <code>name</code> of the activity types.</p>
+-- * maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- Required key: domain
+-- Required key: registrationStatus
+-- @return ListActivityTypesInput structure as a key-value pair table
+function M.ListActivityTypesInput(args)
+	assert(args, "You must provdide an argument table when creating ListActivityTypesInput")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["domain"] = _domain,
-		["name"] = _name,
-		["registrationStatus"] = _registrationStatus,
-		["reverseOrder"] = _reverseOrder,
-		["maximumPageSize"] = _maximumPageSize,
+		["nextPageToken"] = args["nextPageToken"],
+		["domain"] = args["domain"],
+		["name"] = args["name"],
+		["registrationStatus"] = args["registrationStatus"],
+		["reverseOrder"] = args["reverseOrder"],
+		["maximumPageSize"] = args["maximumPageSize"],
 	}
 	asserts.AssertListActivityTypesInput(t)
 	return t
@@ -4035,11 +4365,14 @@ end
 
 --- Create a structure of type DomainAlreadyExistsFault
 -- <p>Returned if the specified domain already exists. You will get this fault even if the existing domain is in deprecated status.</p>
--- @param _message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
-function M.DomainAlreadyExistsFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainAlreadyExistsFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
+-- @return DomainAlreadyExistsFault structure as a key-value pair table
+function M.DomainAlreadyExistsFault(args)
+	assert(args, "You must provdide an argument table when creating DomainAlreadyExistsFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDomainAlreadyExistsFault(t)
 	return t
@@ -4061,16 +4394,19 @@ end
 
 --- Create a structure of type DecisionTaskScheduledEventAttributes
 -- <p>Provides details about the <code>DecisionTaskScheduled</code> event.</p>
--- @param _startToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration for this decision task. The task is considered timed out if it does not completed within this duration.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
--- @param _taskList [TaskList] <p>The name of the task list in which the decision task was scheduled.</p>
--- @param _taskPriority [TaskPriority] <p><i>Optional.</i> A task priority that, if set, specifies the priority for this decision task. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- Required parameter: taskList
-function M.DecisionTaskScheduledEventAttributes(_startToCloseTimeout, _taskList, _taskPriority, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DecisionTaskScheduledEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startToCloseTimeout [DurationInSecondsOptional] <p>The maximum duration for this decision task. The task is considered timed out if it does not completed within this duration.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p>
+-- * taskList [TaskList] <p>The name of the task list in which the decision task was scheduled.</p>
+-- * taskPriority [TaskPriority] <p><i>Optional.</i> A task priority that, if set, specifies the priority for this decision task. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- Required key: taskList
+-- @return DecisionTaskScheduledEventAttributes structure as a key-value pair table
+function M.DecisionTaskScheduledEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating DecisionTaskScheduledEventAttributes")
 	local t = { 
-		["startToCloseTimeout"] = _startToCloseTimeout,
-		["taskList"] = _taskList,
-		["taskPriority"] = _taskPriority,
+		["startToCloseTimeout"] = args["startToCloseTimeout"],
+		["taskList"] = args["taskList"],
+		["taskPriority"] = args["taskPriority"],
 	}
 	asserts.AssertDecisionTaskScheduledEventAttributes(t)
 	return t
@@ -4094,19 +4430,22 @@ end
 
 --- Create a structure of type LambdaFunctionFailedEventAttributes
 -- <p>Provides details for the <code>LambdaFunctionFailed</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.</p>
--- @param _reason [FailureReason] <p>The reason provided for the failure (if any).</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _details [Data] <p>The details of the failure (if any).</p>
--- Required parameter: scheduledEventId
--- Required parameter: startedEventId
-function M.LambdaFunctionFailedEventAttributes(_startedEventId, _reason, _scheduledEventId, _details, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>LambdaFunctionStarted</code> event recorded in the history.</p>
+-- * reason [FailureReason] <p>The reason provided for the failure (if any).</p>
+-- * scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * details [Data] <p>The details of the failure (if any).</p>
+-- Required key: scheduledEventId
+-- Required key: startedEventId
+-- @return LambdaFunctionFailedEventAttributes structure as a key-value pair table
+function M.LambdaFunctionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionFailedEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["reason"] = _reason,
-		["scheduledEventId"] = _scheduledEventId,
-		["details"] = _details,
+		["startedEventId"] = args["startedEventId"],
+		["reason"] = args["reason"],
+		["scheduledEventId"] = args["scheduledEventId"],
+		["details"] = args["details"],
 	}
 	asserts.AssertLambdaFunctionFailedEventAttributes(t)
 	return t
@@ -4130,19 +4469,22 @@ end
 
 --- Create a structure of type ActivityTaskCanceledEventAttributes
 -- <p>Provides details of the <code>ActivityTaskCanceled</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this activity task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _latestCancelRequestedEventId [EventId] <p>If set, contains the ID of the last <code>ActivityTaskCancelRequested</code> event recorded for this activity task. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when this activity task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _details [Data] <p>Details of the cancellation (if any).</p>
--- Required parameter: scheduledEventId
--- Required parameter: startedEventId
-function M.ActivityTaskCanceledEventAttributes(_startedEventId, _latestCancelRequestedEventId, _scheduledEventId, _details, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTaskCanceledEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this activity task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * latestCancelRequestedEventId [EventId] <p>If set, contains the ID of the last <code>ActivityTaskCancelRequested</code> event recorded for this activity task. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * scheduledEventId [EventId] <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when this activity task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * details [Data] <p>Details of the cancellation (if any).</p>
+-- Required key: scheduledEventId
+-- Required key: startedEventId
+-- @return ActivityTaskCanceledEventAttributes structure as a key-value pair table
+function M.ActivityTaskCanceledEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ActivityTaskCanceledEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["latestCancelRequestedEventId"] = _latestCancelRequestedEventId,
-		["scheduledEventId"] = _scheduledEventId,
-		["details"] = _details,
+		["startedEventId"] = args["startedEventId"],
+		["latestCancelRequestedEventId"] = args["latestCancelRequestedEventId"],
+		["scheduledEventId"] = args["scheduledEventId"],
+		["details"] = args["details"],
 	}
 	asserts.AssertActivityTaskCanceledEventAttributes(t)
 	return t
@@ -4164,15 +4506,18 @@ end
 
 --- Create a structure of type DescribeActivityTypeInput
 --  
--- @param _domain [DomainName] <p>The name of the domain in which the activity type is registered.</p>
--- @param _activityType [ActivityType] <p>The activity type to get information about. Activity types are identified by the <code>name</code> and <code>version</code> that were supplied when the activity was registered.</p>
--- Required parameter: domain
--- Required parameter: activityType
-function M.DescribeActivityTypeInput(_domain, _activityType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeActivityTypeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain in which the activity type is registered.</p>
+-- * activityType [ActivityType] <p>The activity type to get information about. Activity types are identified by the <code>name</code> and <code>version</code> that were supplied when the activity was registered.</p>
+-- Required key: domain
+-- Required key: activityType
+-- @return DescribeActivityTypeInput structure as a key-value pair table
+function M.DescribeActivityTypeInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeActivityTypeInput")
 	local t = { 
-		["domain"] = _domain,
-		["activityType"] = _activityType,
+		["domain"] = args["domain"],
+		["activityType"] = args["activityType"],
 	}
 	asserts.AssertDescribeActivityTypeInput(t)
 	return t
@@ -4198,22 +4543,25 @@ end
 
 --- Create a structure of type SignalWorkflowExecutionInput
 --  
--- @param _input [Data] <p>Data to attach to the <code>WorkflowExecutionSignaled</code> event in the target workflow execution's history.</p>
--- @param _domain [DomainName] <p>The name of the domain containing the workflow execution to signal.</p>
--- @param _signalName [SignalName] <p>The name of the signal. This name must be meaningful to the target workflow.</p>
--- @param _workflowId [WorkflowId] <p>The workflowId of the workflow execution to signal.</p>
--- @param _runId [RunIdOptional] <p>The runId of the workflow execution to signal.</p>
--- Required parameter: domain
--- Required parameter: workflowId
--- Required parameter: signalName
-function M.SignalWorkflowExecutionInput(_input, _domain, _signalName, _workflowId, _runId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SignalWorkflowExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * input [Data] <p>Data to attach to the <code>WorkflowExecutionSignaled</code> event in the target workflow execution's history.</p>
+-- * domain [DomainName] <p>The name of the domain containing the workflow execution to signal.</p>
+-- * signalName [SignalName] <p>The name of the signal. This name must be meaningful to the target workflow.</p>
+-- * workflowId [WorkflowId] <p>The workflowId of the workflow execution to signal.</p>
+-- * runId [RunIdOptional] <p>The runId of the workflow execution to signal.</p>
+-- Required key: domain
+-- Required key: workflowId
+-- Required key: signalName
+-- @return SignalWorkflowExecutionInput structure as a key-value pair table
+function M.SignalWorkflowExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating SignalWorkflowExecutionInput")
 	local t = { 
-		["input"] = _input,
-		["domain"] = _domain,
-		["signalName"] = _signalName,
-		["workflowId"] = _workflowId,
-		["runId"] = _runId,
+		["input"] = args["input"],
+		["domain"] = args["domain"],
+		["signalName"] = args["signalName"],
+		["workflowId"] = args["workflowId"],
+		["runId"] = args["runId"],
 	}
 	asserts.AssertSignalWorkflowExecutionInput(t)
 	return t
@@ -4244,33 +4592,36 @@ end
 
 --- Create a structure of type StartChildWorkflowExecutionDecisionAttributes
 -- <p>Provides details of the <code>StartChildWorkflowExecution</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys. <ul> <li> <code>tagList.member.N</code>: The key is "swf:tagList.N" where N is the tag number from 0 to 4, inclusive.</li> <li><code>taskList</code>: String constraint. The key is <code>swf:taskList.name</code>.</li> <li><code>workflowType.name</code>: String constraint. The key is <code>swf:workflowType.name</code>.</li> <li><code>workflowType.version</code>: String constraint. The key is <code>swf:workflowType.version</code>.</li> </ul> </li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks. This data is not sent to the child workflow execution.</p>
--- @param _workflowId [WorkflowId] <p><b>Required.</b> The <code>workflowId</code> of the workflow execution.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _taskList [TaskList] <p>The name of the task list to be used for decision tasks of the child workflow execution.</p> <note>A task list for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default task list was specified at registration time then a fault will be returned.</note> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _taskStartToCloseTimeout [DurationInSecondsOptional] <p>Specifies the maximum duration of decision tasks for this workflow execution. This parameter overrides the <code>defaultTaskStartToCloseTimout</code> specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A task start-to-close timeout for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default task start-to-close timeout was specified at registration time then a fault will be returned.</note>
--- @param _taskPriority [TaskPriority] <p><i>Optional.</i> A task priority that, if set, specifies the priority for a decision task of this workflow execution. This overrides the defaultTaskPriority specified when registering the workflow type. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- @param _lambdaRole [Arn] <p>The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda functions.</p> <note>In order for this workflow execution to invoke AWS Lambda functions, an appropriate IAM role must be specified either as a default for the workflow type or through this field.</note>
--- @param _childPolicy [ChildPolicy] <p><i>Optional.</i> If set, specifies the policy to use for the child workflow executions if the workflow execution being started is terminated by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This policy overrides the default child policy specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul> <note>A child policy for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default child policy was specified at registration time then a fault will be returned.</note>
--- @param _executionStartToCloseTimeout [DurationInSecondsOptional] <p>The total duration for this workflow execution. This overrides the defaultExecutionStartToCloseTimeout specified when registering the workflow type.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>An execution start-to-close timeout for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default execution start-to-close timeout was specified at registration time then a fault will be returned.</note>
--- @param _input [Data] <p>The input to be provided to the workflow execution.</p>
--- @param _workflowType [WorkflowType] <p><b>Required.</b> The type of the workflow execution to be started.</p>
--- @param _tagList [TagList] <p>The list of tags to associate with the child workflow execution. A maximum of 5 tags can be specified. You can list workflow executions with a specific tag by calling <a>ListOpenWorkflowExecutions</a> or <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.</p>
--- Required parameter: workflowType
--- Required parameter: workflowId
-function M.StartChildWorkflowExecutionDecisionAttributes(_control, _workflowId, _taskList, _taskStartToCloseTimeout, _taskPriority, _lambdaRole, _childPolicy, _executionStartToCloseTimeout, _input, _workflowType, _tagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartChildWorkflowExecutionDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks. This data is not sent to the child workflow execution.</p>
+-- * workflowId [WorkflowId] <p><b>Required.</b> The <code>workflowId</code> of the workflow execution.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * taskList [TaskList] <p>The name of the task list to be used for decision tasks of the child workflow execution.</p> <note>A task list for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default task list was specified at registration time then a fault will be returned.</note> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * taskStartToCloseTimeout [DurationInSecondsOptional] <p>Specifies the maximum duration of decision tasks for this workflow execution. This parameter overrides the <code>defaultTaskStartToCloseTimout</code> specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>A task start-to-close timeout for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default task start-to-close timeout was specified at registration time then a fault will be returned.</note>
+-- * taskPriority [TaskPriority] <p><i>Optional.</i> A task priority that, if set, specifies the priority for a decision task of this workflow execution. This overrides the defaultTaskPriority specified when registering the workflow type. Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- * lambdaRole [Arn] <p>The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda functions.</p> <note>In order for this workflow execution to invoke AWS Lambda functions, an appropriate IAM role must be specified either as a default for the workflow type or through this field.</note>
+-- * childPolicy [ChildPolicy] <p><i>Optional.</i> If set, specifies the policy to use for the child workflow executions if the workflow execution being started is terminated by calling the <a>TerminateWorkflowExecution</a> action explicitly or due to an expired timeout. This policy overrides the default child policy specified when registering the workflow type using <a>RegisterWorkflowType</a>.</p> <p>The supported child policies are:</p> <ul> <li><b>TERMINATE:</b> the child executions will be terminated.</li> <li><b>REQUEST_CANCEL:</b> a request to cancel will be attempted for each child execution by recording a <code>WorkflowExecutionCancelRequested</code> event in its history. It is up to the decider to take appropriate actions when it receives an execution history with this event.</li> <li><b>ABANDON:</b> no action will be taken. The child executions will continue to run.</li> </ul> <note>A child policy for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default child policy was specified at registration time then a fault will be returned.</note>
+-- * executionStartToCloseTimeout [DurationInSecondsOptional] <p>The total duration for this workflow execution. This overrides the defaultExecutionStartToCloseTimeout specified when registering the workflow type.</p> <p>The duration is specified in seconds; an integer greater than or equal to 0. The value "NONE" can be used to specify unlimited duration.</p> <note>An execution start-to-close timeout for this workflow execution must be specified either as a default for the workflow type or through this parameter. If neither this parameter is set nor a default execution start-to-close timeout was specified at registration time then a fault will be returned.</note>
+-- * input [Data] <p>The input to be provided to the workflow execution.</p>
+-- * workflowType [WorkflowType] <p><b>Required.</b> The type of the workflow execution to be started.</p>
+-- * tagList [TagList] <p>The list of tags to associate with the child workflow execution. A maximum of 5 tags can be specified. You can list workflow executions with a specific tag by calling <a>ListOpenWorkflowExecutions</a> or <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.</p>
+-- Required key: workflowType
+-- Required key: workflowId
+-- @return StartChildWorkflowExecutionDecisionAttributes structure as a key-value pair table
+function M.StartChildWorkflowExecutionDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating StartChildWorkflowExecutionDecisionAttributes")
 	local t = { 
-		["control"] = _control,
-		["workflowId"] = _workflowId,
-		["taskList"] = _taskList,
-		["taskStartToCloseTimeout"] = _taskStartToCloseTimeout,
-		["taskPriority"] = _taskPriority,
-		["lambdaRole"] = _lambdaRole,
-		["childPolicy"] = _childPolicy,
-		["executionStartToCloseTimeout"] = _executionStartToCloseTimeout,
-		["input"] = _input,
-		["workflowType"] = _workflowType,
-		["tagList"] = _tagList,
+		["control"] = args["control"],
+		["workflowId"] = args["workflowId"],
+		["taskList"] = args["taskList"],
+		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
+		["taskPriority"] = args["taskPriority"],
+		["lambdaRole"] = args["lambdaRole"],
+		["childPolicy"] = args["childPolicy"],
+		["executionStartToCloseTimeout"] = args["executionStartToCloseTimeout"],
+		["input"] = args["input"],
+		["workflowType"] = args["workflowType"],
+		["tagList"] = args["tagList"],
 	}
 	asserts.AssertStartChildWorkflowExecutionDecisionAttributes(t)
 	return t
@@ -4292,15 +4643,18 @@ end
 
 --- Create a structure of type WorkflowTypeDetail
 -- <p>Contains details about a workflow type.</p>
--- @param _configuration [WorkflowTypeConfiguration] <p>Configuration settings of the workflow type registered through <a>RegisterWorkflowType</a></p>
--- @param _typeInfo [WorkflowTypeInfo] <p>General information about the workflow type.</p> <p>The status of the workflow type (returned in the WorkflowTypeInfo structure) can be one of the following.</p> <ul> <li> <b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be running.</li> <li> <b>DEPRECATED</b>: The type was deprecated using <a>DeprecateWorkflowType</a>, but is still in use. You should keep workers supporting this type running. You cannot create new workflow executions of this type.</li> </ul>
--- Required parameter: typeInfo
--- Required parameter: configuration
-function M.WorkflowTypeDetail(_configuration, _typeInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowTypeDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configuration [WorkflowTypeConfiguration] <p>Configuration settings of the workflow type registered through <a>RegisterWorkflowType</a></p>
+-- * typeInfo [WorkflowTypeInfo] <p>General information about the workflow type.</p> <p>The status of the workflow type (returned in the WorkflowTypeInfo structure) can be one of the following.</p> <ul> <li> <b>REGISTERED</b>: The type is registered and available. Workers supporting this type should be running.</li> <li> <b>DEPRECATED</b>: The type was deprecated using <a>DeprecateWorkflowType</a>, but is still in use. You should keep workers supporting this type running. You cannot create new workflow executions of this type.</li> </ul>
+-- Required key: typeInfo
+-- Required key: configuration
+-- @return WorkflowTypeDetail structure as a key-value pair table
+function M.WorkflowTypeDetail(args)
+	assert(args, "You must provdide an argument table when creating WorkflowTypeDetail")
 	local t = { 
-		["configuration"] = _configuration,
-		["typeInfo"] = _typeInfo,
+		["configuration"] = args["configuration"],
+		["typeInfo"] = args["typeInfo"],
 	}
 	asserts.AssertWorkflowTypeDetail(t)
 	return t
@@ -4329,30 +4683,33 @@ end
 
 --- Create a structure of type ListClosedWorkflowExecutionsInput
 --  
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _domain [DomainName] <p>The name of the domain that contains the workflow executions to list.</p>
--- @param _maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
--- @param _typeFilter [WorkflowTypeFilter] <p>If specified, only executions of the type specified in the filter are returned.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _executionFilter [WorkflowExecutionFilter] <p>If specified, only workflow executions matching the workflow ID specified in the filter are returned.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _closeTimeFilter [ExecutionTimeFilter] <p>If specified, the workflow executions are included in the returned results based on whether their close times are within the range specified by this filter. Also, if this parameter is specified, the returned results are ordered by their close times.</p> <note><code>startTimeFilter</code> and <code>closeTimeFilter</code> are mutually exclusive. You must specify one of these in a request but not both.</note>
--- @param _reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the results in reverse order. By default the results are returned in descending order of the start or the close time of the executions.</p>
--- @param _closeStatusFilter [CloseStatusFilter] <p>If specified, only workflow executions that match this <i>close status</i> are listed. For example, if TERMINATED is specified, then only TERMINATED workflow executions are listed.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _startTimeFilter [ExecutionTimeFilter] <p>If specified, the workflow executions are included in the returned results based on whether their start times are within the range specified by this filter. Also, if this parameter is specified, the returned results are ordered by their start times.</p> <note><code>startTimeFilter</code> and <code>closeTimeFilter</code> are mutually exclusive. You must specify one of these in a request but not both.</note>
--- @param _tagFilter [TagFilter] <p>If specified, only executions that have the matching tag are listed.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- Required parameter: domain
-function M.ListClosedWorkflowExecutionsInput(_nextPageToken, _domain, _maximumPageSize, _typeFilter, _executionFilter, _closeTimeFilter, _reverseOrder, _closeStatusFilter, _startTimeFilter, _tagFilter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListClosedWorkflowExecutionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * domain [DomainName] <p>The name of the domain that contains the workflow executions to list.</p>
+-- * maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- * typeFilter [WorkflowTypeFilter] <p>If specified, only executions of the type specified in the filter are returned.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * executionFilter [WorkflowExecutionFilter] <p>If specified, only workflow executions matching the workflow ID specified in the filter are returned.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * closeTimeFilter [ExecutionTimeFilter] <p>If specified, the workflow executions are included in the returned results based on whether their close times are within the range specified by this filter. Also, if this parameter is specified, the returned results are ordered by their close times.</p> <note><code>startTimeFilter</code> and <code>closeTimeFilter</code> are mutually exclusive. You must specify one of these in a request but not both.</note>
+-- * reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the results in reverse order. By default the results are returned in descending order of the start or the close time of the executions.</p>
+-- * closeStatusFilter [CloseStatusFilter] <p>If specified, only workflow executions that match this <i>close status</i> are listed. For example, if TERMINATED is specified, then only TERMINATED workflow executions are listed.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * startTimeFilter [ExecutionTimeFilter] <p>If specified, the workflow executions are included in the returned results based on whether their start times are within the range specified by this filter. Also, if this parameter is specified, the returned results are ordered by their start times.</p> <note><code>startTimeFilter</code> and <code>closeTimeFilter</code> are mutually exclusive. You must specify one of these in a request but not both.</note>
+-- * tagFilter [TagFilter] <p>If specified, only executions that have the matching tag are listed.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- Required key: domain
+-- @return ListClosedWorkflowExecutionsInput structure as a key-value pair table
+function M.ListClosedWorkflowExecutionsInput(args)
+	assert(args, "You must provdide an argument table when creating ListClosedWorkflowExecutionsInput")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["domain"] = _domain,
-		["maximumPageSize"] = _maximumPageSize,
-		["typeFilter"] = _typeFilter,
-		["executionFilter"] = _executionFilter,
-		["closeTimeFilter"] = _closeTimeFilter,
-		["reverseOrder"] = _reverseOrder,
-		["closeStatusFilter"] = _closeStatusFilter,
-		["startTimeFilter"] = _startTimeFilter,
-		["tagFilter"] = _tagFilter,
+		["nextPageToken"] = args["nextPageToken"],
+		["domain"] = args["domain"],
+		["maximumPageSize"] = args["maximumPageSize"],
+		["typeFilter"] = args["typeFilter"],
+		["executionFilter"] = args["executionFilter"],
+		["closeTimeFilter"] = args["closeTimeFilter"],
+		["reverseOrder"] = args["reverseOrder"],
+		["closeStatusFilter"] = args["closeStatusFilter"],
+		["startTimeFilter"] = args["startTimeFilter"],
+		["tagFilter"] = args["tagFilter"],
 	}
 	asserts.AssertListClosedWorkflowExecutionsInput(t)
 	return t
@@ -4383,31 +4740,34 @@ end
 
 --- Create a structure of type WorkflowExecutionInfo
 -- <p>Contains information about a workflow execution. </p>
--- @param _closeTimestamp [Timestamp] <p>The time when the workflow execution was closed. Set only if the execution status is CLOSED.</p>
--- @param _workflowType [WorkflowType] <p>The type of the workflow execution.</p>
--- @param _parent [WorkflowExecution] <p>If this workflow execution is a child of another execution then contains the workflow execution that started this execution.</p>
--- @param _startTimestamp [Timestamp] <p>The time when the execution was started.</p>
--- @param _closeStatus [CloseStatus] <p>If the execution status is closed then this specifies how the execution was closed:</p> <ul> <li> <code>COMPLETED</code>: the execution was successfully completed.</li> <li> <code>CANCELED</code>: the execution was canceled.Cancellation allows the implementation to gracefully clean up before the execution is closed.</li> <li> <code>TERMINATED</code>: the execution was force terminated.</li> <li> <code>FAILED</code>: the execution failed to complete.</li> <li> <code>TIMED_OUT</code>: the execution did not complete in the alloted time and was automatically timed out.</li> <li> <code>CONTINUED_AS_NEW</code>: the execution is logically continued. This means the current execution was completed and a new execution was started to carry on the workflow.</li> </ul>
--- @param _executionStatus [ExecutionStatus] <p>The current status of the execution.</p>
--- @param _execution [WorkflowExecution] <p>The workflow execution this information is about.</p>
--- @param _cancelRequested [Canceled] <p>Set to true if a cancellation is requested for this workflow execution.</p>
--- @param _tagList [TagList] <p>The list of tags associated with the workflow execution. Tags can be used to identify and list workflow executions of interest through the visibility APIs. A workflow execution can have a maximum of 5 tags.</p>
--- Required parameter: execution
--- Required parameter: workflowType
--- Required parameter: startTimestamp
--- Required parameter: executionStatus
-function M.WorkflowExecutionInfo(_closeTimestamp, _workflowType, _parent, _startTimestamp, _closeStatus, _executionStatus, _execution, _cancelRequested, _tagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * closeTimestamp [Timestamp] <p>The time when the workflow execution was closed. Set only if the execution status is CLOSED.</p>
+-- * workflowType [WorkflowType] <p>The type of the workflow execution.</p>
+-- * parent [WorkflowExecution] <p>If this workflow execution is a child of another execution then contains the workflow execution that started this execution.</p>
+-- * startTimestamp [Timestamp] <p>The time when the execution was started.</p>
+-- * closeStatus [CloseStatus] <p>If the execution status is closed then this specifies how the execution was closed:</p> <ul> <li> <code>COMPLETED</code>: the execution was successfully completed.</li> <li> <code>CANCELED</code>: the execution was canceled.Cancellation allows the implementation to gracefully clean up before the execution is closed.</li> <li> <code>TERMINATED</code>: the execution was force terminated.</li> <li> <code>FAILED</code>: the execution failed to complete.</li> <li> <code>TIMED_OUT</code>: the execution did not complete in the alloted time and was automatically timed out.</li> <li> <code>CONTINUED_AS_NEW</code>: the execution is logically continued. This means the current execution was completed and a new execution was started to carry on the workflow.</li> </ul>
+-- * executionStatus [ExecutionStatus] <p>The current status of the execution.</p>
+-- * execution [WorkflowExecution] <p>The workflow execution this information is about.</p>
+-- * cancelRequested [Canceled] <p>Set to true if a cancellation is requested for this workflow execution.</p>
+-- * tagList [TagList] <p>The list of tags associated with the workflow execution. Tags can be used to identify and list workflow executions of interest through the visibility APIs. A workflow execution can have a maximum of 5 tags.</p>
+-- Required key: execution
+-- Required key: workflowType
+-- Required key: startTimestamp
+-- Required key: executionStatus
+-- @return WorkflowExecutionInfo structure as a key-value pair table
+function M.WorkflowExecutionInfo(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionInfo")
 	local t = { 
-		["closeTimestamp"] = _closeTimestamp,
-		["workflowType"] = _workflowType,
-		["parent"] = _parent,
-		["startTimestamp"] = _startTimestamp,
-		["closeStatus"] = _closeStatus,
-		["executionStatus"] = _executionStatus,
-		["execution"] = _execution,
-		["cancelRequested"] = _cancelRequested,
-		["tagList"] = _tagList,
+		["closeTimestamp"] = args["closeTimestamp"],
+		["workflowType"] = args["workflowType"],
+		["parent"] = args["parent"],
+		["startTimestamp"] = args["startTimestamp"],
+		["closeStatus"] = args["closeStatus"],
+		["executionStatus"] = args["executionStatus"],
+		["execution"] = args["execution"],
+		["cancelRequested"] = args["cancelRequested"],
+		["tagList"] = args["tagList"],
 	}
 	asserts.AssertWorkflowExecutionInfo(t)
 	return t
@@ -4433,22 +4793,25 @@ end
 
 --- Create a structure of type ActivityTypeInfo
 -- <p>Detailed information about an activity type.</p>
--- @param _status [RegistrationStatus] <p>The current status of the activity type.</p>
--- @param _deprecationDate [Timestamp] <p>If DEPRECATED, the date and time <a>DeprecateActivityType</a> was called.</p>
--- @param _creationDate [Timestamp] <p>The date and time this activity type was created through <a>RegisterActivityType</a>.</p>
--- @param _activityType [ActivityType] <p>The <a>ActivityType</a> type structure representing the activity type.</p>
--- @param _description [Description] <p>The description of the activity type provided in <a>RegisterActivityType</a>.</p>
--- Required parameter: activityType
--- Required parameter: status
--- Required parameter: creationDate
-function M.ActivityTypeInfo(_status, _deprecationDate, _creationDate, _activityType, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTypeInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [RegistrationStatus] <p>The current status of the activity type.</p>
+-- * deprecationDate [Timestamp] <p>If DEPRECATED, the date and time <a>DeprecateActivityType</a> was called.</p>
+-- * creationDate [Timestamp] <p>The date and time this activity type was created through <a>RegisterActivityType</a>.</p>
+-- * activityType [ActivityType] <p>The <a>ActivityType</a> type structure representing the activity type.</p>
+-- * description [Description] <p>The description of the activity type provided in <a>RegisterActivityType</a>.</p>
+-- Required key: activityType
+-- Required key: status
+-- Required key: creationDate
+-- @return ActivityTypeInfo structure as a key-value pair table
+function M.ActivityTypeInfo(args)
+	assert(args, "You must provdide an argument table when creating ActivityTypeInfo")
 	local t = { 
-		["status"] = _status,
-		["deprecationDate"] = _deprecationDate,
-		["creationDate"] = _creationDate,
-		["activityType"] = _activityType,
-		["description"] = _description,
+		["status"] = args["status"],
+		["deprecationDate"] = args["deprecationDate"],
+		["creationDate"] = args["creationDate"],
+		["activityType"] = args["activityType"],
+		["description"] = args["description"],
 	}
 	asserts.AssertActivityTypeInfo(t)
 	return t
@@ -4467,11 +4830,14 @@ end
 
 --- Create a structure of type TypeAlreadyExistsFault
 -- <p>Returned if the type already exists in the specified domain. You will get this fault even if the existing type is in deprecated status. You can specify another version if the intent is to create a new distinct version of the type.</p>
--- @param _message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
-function M.TypeAlreadyExistsFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TypeAlreadyExistsFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
+-- @return TypeAlreadyExistsFault structure as a key-value pair table
+function M.TypeAlreadyExistsFault(args)
+	assert(args, "You must provdide an argument table when creating TypeAlreadyExistsFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTypeAlreadyExistsFault(t)
 	return t
@@ -4492,15 +4858,18 @@ end
 
 --- Create a structure of type StartLambdaFunctionFailedEventAttributes
 -- <p>Provides details for the <code>StartLambdaFunctionFailed</code> event.</p>
--- @param _cause [StartLambdaFunctionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _message [CauseMessage] <p>The error message (if any).</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
-function M.StartLambdaFunctionFailedEventAttributes(_cause, _message, _scheduledEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartLambdaFunctionFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cause [StartLambdaFunctionFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * message [CauseMessage] <p>The error message (if any).</p>
+-- * scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- @return StartLambdaFunctionFailedEventAttributes structure as a key-value pair table
+function M.StartLambdaFunctionFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating StartLambdaFunctionFailedEventAttributes")
 	local t = { 
-		["cause"] = _cause,
-		["message"] = _message,
-		["scheduledEventId"] = _scheduledEventId,
+		["cause"] = args["cause"],
+		["message"] = args["message"],
+		["scheduledEventId"] = args["scheduledEventId"],
 	}
 	asserts.AssertStartLambdaFunctionFailedEventAttributes(t)
 	return t
@@ -4521,14 +4890,17 @@ end
 
 --- Create a structure of type WorkflowExecutionCompletedEventAttributes
 -- <p>Provides details of the <code>WorkflowExecutionCompleted</code> event.</p>
--- @param _result [Data] <p>The result produced by the workflow execution upon successful completion.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CompleteWorkflowExecution</code> decision to complete this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: decisionTaskCompletedEventId
-function M.WorkflowExecutionCompletedEventAttributes(_result, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionCompletedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * result [Data] <p>The result produced by the workflow execution upon successful completion.</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CompleteWorkflowExecution</code> decision to complete this execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: decisionTaskCompletedEventId
+-- @return WorkflowExecutionCompletedEventAttributes structure as a key-value pair table
+function M.WorkflowExecutionCompletedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionCompletedEventAttributes")
 	local t = { 
-		["result"] = _result,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["result"] = args["result"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertWorkflowExecutionCompletedEventAttributes(t)
 	return t
@@ -4551,18 +4923,21 @@ end
 
 --- Create a structure of type ListDomainsInput
 --  
--- @param _nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
--- @param _maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
--- @param _registrationStatus [RegistrationStatus] <p>Specifies the registration status of the domains to list.</p>
--- @param _reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the results in reverse order. By default, the results are returned in ascending alphabetical order by <code>name</code> of the domains.</p>
--- Required parameter: registrationStatus
-function M.ListDomainsInput(_nextPageToken, _maximumPageSize, _registrationStatus, _reverseOrder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [PageToken] <p>If a <code>NextPageToken</code> was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextPageToken</code>. Keep all other arguments unchanged.</p> <p>The configured <code>maximumPageSize</code> determines how many results can be returned in a single call.</p>
+-- * maximumPageSize [PageSize] <p>The maximum number of results that will be returned per call. <code>nextPageToken</code> can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size <i>smaller</i> than the maximum.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
+-- * registrationStatus [RegistrationStatus] <p>Specifies the registration status of the domains to list.</p>
+-- * reverseOrder [ReverseOrder] <p>When set to <code>true</code>, returns the results in reverse order. By default, the results are returned in ascending alphabetical order by <code>name</code> of the domains.</p>
+-- Required key: registrationStatus
+-- @return ListDomainsInput structure as a key-value pair table
+function M.ListDomainsInput(args)
+	assert(args, "You must provdide an argument table when creating ListDomainsInput")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["maximumPageSize"] = _maximumPageSize,
-		["registrationStatus"] = _registrationStatus,
-		["reverseOrder"] = _reverseOrder,
+		["nextPageToken"] = args["nextPageToken"],
+		["maximumPageSize"] = args["maximumPageSize"],
+		["registrationStatus"] = args["registrationStatus"],
+		["reverseOrder"] = args["reverseOrder"],
 	}
 	asserts.AssertListDomainsInput(t)
 	return t
@@ -4595,35 +4970,38 @@ end
 
 --- Create a structure of type ActivityTaskScheduledEventAttributes
 -- <p>Provides details of the <code>ActivityTaskScheduled</code> event.</p>
--- @param _control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks. This data is not sent to the activity.</p>
--- @param _taskList [TaskList] <p>The task list in which the activity task has been scheduled.</p>
--- @param _scheduleToCloseTimeout [DurationInSecondsOptional] <p>The maximum amount of time for this activity task.</p>
--- @param _activityType [ActivityType] <p>The type of the activity task.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision that resulted in the scheduling of this activity task. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _taskPriority [TaskPriority] <p><i>Optional.</i> The priority to assign to the scheduled activity task. If set, this will override any default priority value that was assigned when the activity type was registered.</p> <p>Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
--- @param _heartbeatTimeout [DurationInSecondsOptional] <p>The maximum time before which the worker processing this task must report progress by calling <a>RecordActivityTaskHeartbeat</a>. If the timeout is exceeded, the activity task is automatically timed out. If the worker subsequently attempts to record a heartbeat or return a result, it will be ignored.</p>
--- @param _activityId [ActivityId] <p>The unique ID of the activity task.</p>
--- @param _scheduleToStartTimeout [DurationInSecondsOptional] <p>The maximum amount of time the activity task can wait to be assigned to a worker.</p>
--- @param _startToCloseTimeout [DurationInSecondsOptional] <p>The maximum amount of time a worker may take to process the activity task.</p>
--- @param _input [Data] <p>The input provided to the activity task.</p>
--- Required parameter: activityType
--- Required parameter: activityId
--- Required parameter: taskList
--- Required parameter: decisionTaskCompletedEventId
-function M.ActivityTaskScheduledEventAttributes(_control, _taskList, _scheduleToCloseTimeout, _activityType, _decisionTaskCompletedEventId, _taskPriority, _heartbeatTimeout, _activityId, _scheduleToStartTimeout, _startToCloseTimeout, _input, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTaskScheduledEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * control [Data] <p><i>Optional.</i> Data attached to the event that can be used by the decider in subsequent workflow tasks. This data is not sent to the activity.</p>
+-- * taskList [TaskList] <p>The task list in which the activity task has been scheduled.</p>
+-- * scheduleToCloseTimeout [DurationInSecondsOptional] <p>The maximum amount of time for this activity task.</p>
+-- * activityType [ActivityType] <p>The type of the activity task.</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision that resulted in the scheduling of this activity task. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * taskPriority [TaskPriority] <p><i>Optional.</i> The priority to assign to the scheduled activity task. If set, this will override any default priority value that was assigned when the activity type was registered.</p> <p>Valid values are integers that range from Java's <code>Integer.MIN_VALUE</code> (-2147483648) to <code>Integer.MAX_VALUE</code> (2147483647). Higher numbers indicate higher priority.</p> <p>For more information about setting task priority, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html">Setting Task Priority</a> in the <i>Amazon Simple Workflow Developer Guide</i>.</p>
+-- * heartbeatTimeout [DurationInSecondsOptional] <p>The maximum time before which the worker processing this task must report progress by calling <a>RecordActivityTaskHeartbeat</a>. If the timeout is exceeded, the activity task is automatically timed out. If the worker subsequently attempts to record a heartbeat or return a result, it will be ignored.</p>
+-- * activityId [ActivityId] <p>The unique ID of the activity task.</p>
+-- * scheduleToStartTimeout [DurationInSecondsOptional] <p>The maximum amount of time the activity task can wait to be assigned to a worker.</p>
+-- * startToCloseTimeout [DurationInSecondsOptional] <p>The maximum amount of time a worker may take to process the activity task.</p>
+-- * input [Data] <p>The input provided to the activity task.</p>
+-- Required key: activityType
+-- Required key: activityId
+-- Required key: taskList
+-- Required key: decisionTaskCompletedEventId
+-- @return ActivityTaskScheduledEventAttributes structure as a key-value pair table
+function M.ActivityTaskScheduledEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ActivityTaskScheduledEventAttributes")
 	local t = { 
-		["control"] = _control,
-		["taskList"] = _taskList,
-		["scheduleToCloseTimeout"] = _scheduleToCloseTimeout,
-		["activityType"] = _activityType,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
-		["taskPriority"] = _taskPriority,
-		["heartbeatTimeout"] = _heartbeatTimeout,
-		["activityId"] = _activityId,
-		["scheduleToStartTimeout"] = _scheduleToStartTimeout,
-		["startToCloseTimeout"] = _startToCloseTimeout,
-		["input"] = _input,
+		["control"] = args["control"],
+		["taskList"] = args["taskList"],
+		["scheduleToCloseTimeout"] = args["scheduleToCloseTimeout"],
+		["activityType"] = args["activityType"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
+		["taskPriority"] = args["taskPriority"],
+		["heartbeatTimeout"] = args["heartbeatTimeout"],
+		["activityId"] = args["activityId"],
+		["scheduleToStartTimeout"] = args["scheduleToStartTimeout"],
+		["startToCloseTimeout"] = args["startToCloseTimeout"],
+		["input"] = args["input"],
 	}
 	asserts.AssertActivityTaskScheduledEventAttributes(t)
 	return t
@@ -4650,23 +5028,26 @@ end
 
 --- Create a structure of type ChildWorkflowExecutionCompletedEventAttributes
 -- <p>Provides details of the <code>ChildWorkflowExecutionCompleted</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when this child workflow execution was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
--- @param _initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _result [Data] <p>The result of the child workflow execution (if any).</p>
--- @param _workflowExecution [WorkflowExecution] <p>The child workflow execution that was completed.</p>
--- Required parameter: workflowExecution
--- Required parameter: workflowType
--- Required parameter: initiatedEventId
--- Required parameter: startedEventId
-function M.ChildWorkflowExecutionCompletedEventAttributes(_startedEventId, _workflowType, _initiatedEventId, _result, _workflowExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChildWorkflowExecutionCompletedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>ChildWorkflowExecutionStarted</code> event recorded when this child workflow execution was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * workflowType [WorkflowType] <p>The type of the child workflow execution.</p>
+-- * initiatedEventId [EventId] <p>The ID of the <code>StartChildWorkflowExecutionInitiated</code> event corresponding to the <code>StartChildWorkflowExecution</code> decision to start this child workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * result [Data] <p>The result of the child workflow execution (if any).</p>
+-- * workflowExecution [WorkflowExecution] <p>The child workflow execution that was completed.</p>
+-- Required key: workflowExecution
+-- Required key: workflowType
+-- Required key: initiatedEventId
+-- Required key: startedEventId
+-- @return ChildWorkflowExecutionCompletedEventAttributes structure as a key-value pair table
+function M.ChildWorkflowExecutionCompletedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionCompletedEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["workflowType"] = _workflowType,
-		["initiatedEventId"] = _initiatedEventId,
-		["result"] = _result,
-		["workflowExecution"] = _workflowExecution,
+		["startedEventId"] = args["startedEventId"],
+		["workflowType"] = args["workflowType"],
+		["initiatedEventId"] = args["initiatedEventId"],
+		["result"] = args["result"],
+		["workflowExecution"] = args["workflowExecution"],
 	}
 	asserts.AssertChildWorkflowExecutionCompletedEventAttributes(t)
 	return t
@@ -4687,14 +5068,17 @@ end
 
 --- Create a structure of type RespondActivityTaskCompletedInput
 --  
--- @param _result [Data] <p>The result of the activity task. It is a free form string that is implementation specific.</p>
--- @param _taskToken [TaskToken] <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important> <code>taskToken</code> is generated by the service and should be treated as an opaque value. If the task is passed to another process, its <code>taskToken</code> must also be passed. This enables it to provide its progress and respond with results.</important>
--- Required parameter: taskToken
-function M.RespondActivityTaskCompletedInput(_result, _taskToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RespondActivityTaskCompletedInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * result [Data] <p>The result of the activity task. It is a free form string that is implementation specific.</p>
+-- * taskToken [TaskToken] <p>The <code>taskToken</code> of the <a>ActivityTask</a>.</p> <important> <code>taskToken</code> is generated by the service and should be treated as an opaque value. If the task is passed to another process, its <code>taskToken</code> must also be passed. This enables it to provide its progress and respond with results.</important>
+-- Required key: taskToken
+-- @return RespondActivityTaskCompletedInput structure as a key-value pair table
+function M.RespondActivityTaskCompletedInput(args)
+	assert(args, "You must provdide an argument table when creating RespondActivityTaskCompletedInput")
 	local t = { 
-		["result"] = _result,
-		["taskToken"] = _taskToken,
+		["result"] = args["result"],
+		["taskToken"] = args["taskToken"],
 	}
 	asserts.AssertRespondActivityTaskCompletedInput(t)
 	return t
@@ -4718,18 +5102,21 @@ end
 
 --- Create a structure of type TimerCanceledEventAttributes
 -- <p> Provides details of the <code>TimerCanceled</code> event. </p>
--- @param _startedEventId [EventId] <p>The ID of the <code>TimerStarted</code> event that was recorded when this timer was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _timerId [TimerId] <p> The unique ID of the timer that was canceled. </p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CancelTimer</code> decision to cancel this timer. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: timerId
--- Required parameter: startedEventId
--- Required parameter: decisionTaskCompletedEventId
-function M.TimerCanceledEventAttributes(_startedEventId, _timerId, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TimerCanceledEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>TimerStarted</code> event that was recorded when this timer was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * timerId [TimerId] <p> The unique ID of the timer that was canceled. </p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>CancelTimer</code> decision to cancel this timer. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: timerId
+-- Required key: startedEventId
+-- Required key: decisionTaskCompletedEventId
+-- @return TimerCanceledEventAttributes structure as a key-value pair table
+function M.TimerCanceledEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating TimerCanceledEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["timerId"] = _timerId,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["startedEventId"] = args["startedEventId"],
+		["timerId"] = args["timerId"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertTimerCanceledEventAttributes(t)
 	return t
@@ -4752,17 +5139,20 @@ end
 
 --- Create a structure of type ActivityTaskCompletedEventAttributes
 -- <p>Provides details of the <code>ActivityTaskCompleted</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this activity task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when this activity task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _result [Data] <p>The results of the activity task (if any).</p>
--- Required parameter: scheduledEventId
--- Required parameter: startedEventId
-function M.ActivityTaskCompletedEventAttributes(_startedEventId, _scheduledEventId, _result, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTaskCompletedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>ActivityTaskStarted</code> event recorded when this activity task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * scheduledEventId [EventId] <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when this activity task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * result [Data] <p>The results of the activity task (if any).</p>
+-- Required key: scheduledEventId
+-- Required key: startedEventId
+-- @return ActivityTaskCompletedEventAttributes structure as a key-value pair table
+function M.ActivityTaskCompletedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ActivityTaskCompletedEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["scheduledEventId"] = _scheduledEventId,
-		["result"] = _result,
+		["startedEventId"] = args["startedEventId"],
+		["scheduledEventId"] = args["scheduledEventId"],
+		["result"] = args["result"],
 	}
 	asserts.AssertActivityTaskCompletedEventAttributes(t)
 	return t
@@ -4786,19 +5176,22 @@ end
 
 --- Create a structure of type ScheduleLambdaFunctionDecisionAttributes
 -- <p>Provides details of the <code>ScheduleLambdaFunction</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>Constrain the following parameters by using a <code>Condition</code> element with the appropriate keys. <ul> <li><code>activityType.name</code>: String constraint. The key is <code>swf:activityType.name</code>.</li> <li><code>activityType.version</code>: String constraint. The key is <code>swf:activityType.version</code>.</li> <li><code>taskList</code>: String constraint. The key is <code>swf:taskList.name</code>.</li> </ul> </li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _input [FunctionInput] <p>The input provided to the AWS Lambda function.</p>
--- @param _startToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the maximum duration the function may take to execute.</p>
--- @param _id [FunctionId] <p><b>Required.</b> The SWF <code>id</code> of the AWS Lambda task.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
--- @param _name [FunctionName] <p><b>Required.</b> The name of the AWS Lambda function to invoke.</p>
--- Required parameter: id
--- Required parameter: name
-function M.ScheduleLambdaFunctionDecisionAttributes(_input, _startToCloseTimeout, _id, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScheduleLambdaFunctionDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * input [FunctionInput] <p>The input provided to the AWS Lambda function.</p>
+-- * startToCloseTimeout [DurationInSecondsOptional] <p>If set, specifies the maximum duration the function may take to execute.</p>
+-- * id [FunctionId] <p><b>Required.</b> The SWF <code>id</code> of the AWS Lambda task.</p> <p>The specified string must not start or end with whitespace. It must not contain a <code>:</code> (colon), <code>/</code> (slash), <code>|</code> (vertical bar), or any control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not contain the literal string quotarnquot.</p>
+-- * name [FunctionName] <p><b>Required.</b> The name of the AWS Lambda function to invoke.</p>
+-- Required key: id
+-- Required key: name
+-- @return ScheduleLambdaFunctionDecisionAttributes structure as a key-value pair table
+function M.ScheduleLambdaFunctionDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating ScheduleLambdaFunctionDecisionAttributes")
 	local t = { 
-		["input"] = _input,
-		["startToCloseTimeout"] = _startToCloseTimeout,
-		["id"] = _id,
-		["name"] = _name,
+		["input"] = args["input"],
+		["startToCloseTimeout"] = args["startToCloseTimeout"],
+		["id"] = args["id"],
+		["name"] = args["name"],
 	}
 	asserts.AssertScheduleLambdaFunctionDecisionAttributes(t)
 	return t
@@ -4819,14 +5212,17 @@ end
 
 --- Create a structure of type ActivityTaskStartedEventAttributes
 -- <p>Provides details of the <code>ActivityTaskStarted</code> event.</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when this activity task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _identity [Identity] <p>Identity of the worker that was assigned this task. This aids diagnostics when problems arise. The form of this identity is user defined.</p>
--- Required parameter: scheduledEventId
-function M.ActivityTaskStartedEventAttributes(_scheduledEventId, _identity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivityTaskStartedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * scheduledEventId [EventId] <p>The ID of the <code>ActivityTaskScheduled</code> event that was recorded when this activity task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * identity [Identity] <p>Identity of the worker that was assigned this task. This aids diagnostics when problems arise. The form of this identity is user defined.</p>
+-- Required key: scheduledEventId
+-- @return ActivityTaskStartedEventAttributes structure as a key-value pair table
+function M.ActivityTaskStartedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating ActivityTaskStartedEventAttributes")
 	local t = { 
-		["scheduledEventId"] = _scheduledEventId,
-		["identity"] = _identity,
+		["scheduledEventId"] = args["scheduledEventId"],
+		["identity"] = args["identity"],
 	}
 	asserts.AssertActivityTaskStartedEventAttributes(t)
 	return t
@@ -4846,12 +5242,15 @@ end
 
 --- Create a structure of type TagFilter
 -- <p>Used to filter the workflow executions in visibility APIs based on a tag.</p>
--- @param _tag [Tag] <p><b>Required.</b> Specifies the tag that must be associated with the execution for it to meet the filter criteria.</p>
--- Required parameter: tag
-function M.TagFilter(_tag, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tag [Tag] <p><b>Required.</b> Specifies the tag that must be associated with the execution for it to meet the filter criteria.</p>
+-- Required key: tag
+-- @return TagFilter structure as a key-value pair table
+function M.TagFilter(args)
+	assert(args, "You must provdide an argument table when creating TagFilter")
 	local t = { 
-		["tag"] = _tag,
+		["tag"] = args["tag"],
 	}
 	asserts.AssertTagFilter(t)
 	return t
@@ -4872,14 +5271,17 @@ end
 
 --- Create a structure of type WorkflowExecutionCount
 -- <p>Contains the count of workflow executions returned from <a>CountOpenWorkflowExecutions</a> or <a>CountClosedWorkflowExecutions</a></p>
--- @param _count [Count] <p>The number of workflow executions.</p>
--- @param _truncated [Truncated] <p>If set to true, indicates that the actual count was more than the maximum supported by this API and the count returned is the truncated value.</p>
--- Required parameter: count
-function M.WorkflowExecutionCount(_count, _truncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionCount")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * count [Count] <p>The number of workflow executions.</p>
+-- * truncated [Truncated] <p>If set to true, indicates that the actual count was more than the maximum supported by this API and the count returned is the truncated value.</p>
+-- Required key: count
+-- @return WorkflowExecutionCount structure as a key-value pair table
+function M.WorkflowExecutionCount(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionCount")
 	local t = { 
-		["count"] = _count,
-		["truncated"] = _truncated,
+		["count"] = args["count"],
+		["truncated"] = args["truncated"],
 	}
 	asserts.AssertWorkflowExecutionCount(t)
 	return t
@@ -4905,24 +5307,27 @@ end
 
 --- Create a structure of type CountClosedWorkflowExecutionsInput
 --  
--- @param _domain [DomainName] <p>The name of the domain containing the workflow executions to count.</p>
--- @param _typeFilter [WorkflowTypeFilter] <p>If specified, indicates the type of the workflow executions to be counted.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _tagFilter [TagFilter] <p>If specified, only executions that have a tag that matches the filter are counted.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _closeTimeFilter [ExecutionTimeFilter] <p>If specified, only workflow executions that meet the close time criteria of the filter are counted.</p> <note><code>startTimeFilter</code> and <code>closeTimeFilter</code> are mutually exclusive. You must specify one of these in a request but not both.</note>
--- @param _closeStatusFilter [CloseStatusFilter] <p>If specified, only workflow executions that match this close status are counted. This filter has an affect only if <code>executionStatus</code> is specified as <code>CLOSED</code>.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- @param _startTimeFilter [ExecutionTimeFilter] <p>If specified, only workflow executions that meet the start time criteria of the filter are counted.</p> <note><code>startTimeFilter</code> and <code>closeTimeFilter</code> are mutually exclusive. You must specify one of these in a request but not both.</note>
--- @param _executionFilter [WorkflowExecutionFilter] <p>If specified, only workflow executions matching the <code>WorkflowId</code> in the filter are counted.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
--- Required parameter: domain
-function M.CountClosedWorkflowExecutionsInput(_domain, _typeFilter, _tagFilter, _closeTimeFilter, _closeStatusFilter, _startTimeFilter, _executionFilter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CountClosedWorkflowExecutionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [DomainName] <p>The name of the domain containing the workflow executions to count.</p>
+-- * typeFilter [WorkflowTypeFilter] <p>If specified, indicates the type of the workflow executions to be counted.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * tagFilter [TagFilter] <p>If specified, only executions that have a tag that matches the filter are counted.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * closeTimeFilter [ExecutionTimeFilter] <p>If specified, only workflow executions that meet the close time criteria of the filter are counted.</p> <note><code>startTimeFilter</code> and <code>closeTimeFilter</code> are mutually exclusive. You must specify one of these in a request but not both.</note>
+-- * closeStatusFilter [CloseStatusFilter] <p>If specified, only workflow executions that match this close status are counted. This filter has an affect only if <code>executionStatus</code> is specified as <code>CLOSED</code>.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- * startTimeFilter [ExecutionTimeFilter] <p>If specified, only workflow executions that meet the start time criteria of the filter are counted.</p> <note><code>startTimeFilter</code> and <code>closeTimeFilter</code> are mutually exclusive. You must specify one of these in a request but not both.</note>
+-- * executionFilter [WorkflowExecutionFilter] <p>If specified, only workflow executions matching the <code>WorkflowId</code> in the filter are counted.</p> <note><code>closeStatusFilter</code>, <code>executionFilter</code>, <code>typeFilter</code> and <code>tagFilter</code> are mutually exclusive. You can specify at most one of these in a request.</note>
+-- Required key: domain
+-- @return CountClosedWorkflowExecutionsInput structure as a key-value pair table
+function M.CountClosedWorkflowExecutionsInput(args)
+	assert(args, "You must provdide an argument table when creating CountClosedWorkflowExecutionsInput")
 	local t = { 
-		["domain"] = _domain,
-		["typeFilter"] = _typeFilter,
-		["tagFilter"] = _tagFilter,
-		["closeTimeFilter"] = _closeTimeFilter,
-		["closeStatusFilter"] = _closeStatusFilter,
-		["startTimeFilter"] = _startTimeFilter,
-		["executionFilter"] = _executionFilter,
+		["domain"] = args["domain"],
+		["typeFilter"] = args["typeFilter"],
+		["tagFilter"] = args["tagFilter"],
+		["closeTimeFilter"] = args["closeTimeFilter"],
+		["closeStatusFilter"] = args["closeStatusFilter"],
+		["startTimeFilter"] = args["startTimeFilter"],
+		["executionFilter"] = args["executionFilter"],
 	}
 	asserts.AssertCountClosedWorkflowExecutionsInput(t)
 	return t
@@ -4949,23 +5354,26 @@ end
 
 --- Create a structure of type WorkflowExecutionOpenCounts
 -- <p>Contains the counts of open tasks, child workflow executions and timers for a workflow execution.</p>
--- @param _openTimers [Count] <p>The count of timers started by this workflow execution that have not fired yet.</p>
--- @param _openDecisionTasks [OpenDecisionTasksCount] <p>The count of decision tasks whose status is OPEN. A workflow execution can have at most one open decision task.</p>
--- @param _openLambdaFunctions [Count] <p>The count of AWS Lambda functions that are currently executing.</p>
--- @param _openActivityTasks [Count] <p>The count of activity tasks whose status is OPEN.</p>
--- @param _openChildWorkflowExecutions [Count] <p>The count of child workflow executions whose status is OPEN.</p>
--- Required parameter: openActivityTasks
--- Required parameter: openDecisionTasks
--- Required parameter: openTimers
--- Required parameter: openChildWorkflowExecutions
-function M.WorkflowExecutionOpenCounts(_openTimers, _openDecisionTasks, _openLambdaFunctions, _openActivityTasks, _openChildWorkflowExecutions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionOpenCounts")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * openTimers [Count] <p>The count of timers started by this workflow execution that have not fired yet.</p>
+-- * openDecisionTasks [OpenDecisionTasksCount] <p>The count of decision tasks whose status is OPEN. A workflow execution can have at most one open decision task.</p>
+-- * openLambdaFunctions [Count] <p>The count of AWS Lambda functions that are currently executing.</p>
+-- * openActivityTasks [Count] <p>The count of activity tasks whose status is OPEN.</p>
+-- * openChildWorkflowExecutions [Count] <p>The count of child workflow executions whose status is OPEN.</p>
+-- Required key: openActivityTasks
+-- Required key: openDecisionTasks
+-- Required key: openTimers
+-- Required key: openChildWorkflowExecutions
+-- @return WorkflowExecutionOpenCounts structure as a key-value pair table
+function M.WorkflowExecutionOpenCounts(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionOpenCounts")
 	local t = { 
-		["openTimers"] = _openTimers,
-		["openDecisionTasks"] = _openDecisionTasks,
-		["openLambdaFunctions"] = _openLambdaFunctions,
-		["openActivityTasks"] = _openActivityTasks,
-		["openChildWorkflowExecutions"] = _openChildWorkflowExecutions,
+		["openTimers"] = args["openTimers"],
+		["openDecisionTasks"] = args["openDecisionTasks"],
+		["openLambdaFunctions"] = args["openLambdaFunctions"],
+		["openActivityTasks"] = args["openActivityTasks"],
+		["openChildWorkflowExecutions"] = args["openChildWorkflowExecutions"],
 	}
 	asserts.AssertWorkflowExecutionOpenCounts(t)
 	return t
@@ -4986,15 +5394,18 @@ end
 
 --- Create a structure of type WorkflowExecutionCancelRequestedEventAttributes
 -- <p>Provides details of the <code>WorkflowExecutionCancelRequested</code> event.</p>
--- @param _externalInitiatedEventId [EventId] <p>The ID of the <code>RequestCancelExternalWorkflowExecutionInitiated</code> event corresponding to the <code>RequestCancelExternalWorkflowExecution</code> decision to cancel this workflow execution.The source event with this ID can be found in the history of the source workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _cause [WorkflowExecutionCancelRequestedCause] <p>If set, indicates that the request to cancel the workflow execution was automatically generated, and specifies the cause. This happens if the parent workflow execution times out or is terminated, and the child policy is set to cancel child executions.</p>
--- @param _externalWorkflowExecution [WorkflowExecution] <p>The external workflow execution for which the cancellation was requested.</p>
-function M.WorkflowExecutionCancelRequestedEventAttributes(_externalInitiatedEventId, _cause, _externalWorkflowExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionCancelRequestedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * externalInitiatedEventId [EventId] <p>The ID of the <code>RequestCancelExternalWorkflowExecutionInitiated</code> event corresponding to the <code>RequestCancelExternalWorkflowExecution</code> decision to cancel this workflow execution.The source event with this ID can be found in the history of the source workflow execution. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * cause [WorkflowExecutionCancelRequestedCause] <p>If set, indicates that the request to cancel the workflow execution was automatically generated, and specifies the cause. This happens if the parent workflow execution times out or is terminated, and the child policy is set to cancel child executions.</p>
+-- * externalWorkflowExecution [WorkflowExecution] <p>The external workflow execution for which the cancellation was requested.</p>
+-- @return WorkflowExecutionCancelRequestedEventAttributes structure as a key-value pair table
+function M.WorkflowExecutionCancelRequestedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionCancelRequestedEventAttributes")
 	local t = { 
-		["externalInitiatedEventId"] = _externalInitiatedEventId,
-		["cause"] = _cause,
-		["externalWorkflowExecution"] = _externalWorkflowExecution,
+		["externalInitiatedEventId"] = args["externalInitiatedEventId"],
+		["cause"] = args["cause"],
+		["externalWorkflowExecution"] = args["externalWorkflowExecution"],
 	}
 	asserts.AssertWorkflowExecutionCancelRequestedEventAttributes(t)
 	return t
@@ -5018,18 +5429,21 @@ end
 
 --- Create a structure of type StartTimerFailedEventAttributes
 -- <p>Provides details of the <code>StartTimerFailed</code> event.</p>
--- @param _timerId [TimerId] <p>The timerId provided in the <code>StartTimer</code> decision that failed.</p>
--- @param _cause [StartTimerFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>StartTimer</code> decision for this activity task. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: timerId
--- Required parameter: cause
--- Required parameter: decisionTaskCompletedEventId
-function M.StartTimerFailedEventAttributes(_timerId, _cause, _decisionTaskCompletedEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartTimerFailedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * timerId [TimerId] <p>The timerId provided in the <code>StartTimer</code> decision that failed.</p>
+-- * cause [StartTimerFailedCause] <p>The cause of the failure. This information is generated by the system and can be useful for diagnostic purposes.</p> <note>If <b>cause</b> is set to OPERATION_NOT_PERMITTED, the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</note>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event corresponding to the decision task that resulted in the <code>StartTimer</code> decision for this activity task. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: timerId
+-- Required key: cause
+-- Required key: decisionTaskCompletedEventId
+-- @return StartTimerFailedEventAttributes structure as a key-value pair table
+function M.StartTimerFailedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating StartTimerFailedEventAttributes")
 	local t = { 
-		["timerId"] = _timerId,
-		["cause"] = _cause,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
+		["timerId"] = args["timerId"],
+		["cause"] = args["cause"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
 	asserts.AssertStartTimerFailedEventAttributes(t)
 	return t
@@ -5048,11 +5462,14 @@ end
 
 --- Create a structure of type WorkflowExecutionAlreadyStartedFault
 -- <p>Returned by <a>StartWorkflowExecution</a> when an open execution with the same workflowId is already running in the specified domain.</p>
--- @param _message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
-function M.WorkflowExecutionAlreadyStartedFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WorkflowExecutionAlreadyStartedFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
+-- @return WorkflowExecutionAlreadyStartedFault structure as a key-value pair table
+function M.WorkflowExecutionAlreadyStartedFault(args)
+	assert(args, "You must provdide an argument table when creating WorkflowExecutionAlreadyStartedFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertWorkflowExecutionAlreadyStartedFault(t)
 	return t
@@ -5071,11 +5488,14 @@ end
 
 --- Create a structure of type CompleteWorkflowExecutionDecisionAttributes
 -- <p>Provides details of the <code>CompleteWorkflowExecution</code> decision.</p> <p><b>Access Control</b></p> <p>You can use IAM policies to control this decision's access to Amazon SWF resources as follows:</p> <ul> <li>Use a <code>Resource</code> element with the domain name to limit the action to only specified domains.</li> <li>Use an <code>Action</code> element to allow or deny permission to call this action.</li> <li>You cannot use an IAM policy to constrain this action's parameters.</li> </ul> <p>If the caller does not have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's <b>cause</b> parameter will be set to OPERATION_NOT_PERMITTED. For details and example IAM policies, see <a href="http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF Workflows</a>.</p>
--- @param _result [Data] <p>The result of the workflow execution. The form of the result is implementation defined.</p>
-function M.CompleteWorkflowExecutionDecisionAttributes(_result, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompleteWorkflowExecutionDecisionAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * result [Data] <p>The result of the workflow execution. The form of the result is implementation defined.</p>
+-- @return CompleteWorkflowExecutionDecisionAttributes structure as a key-value pair table
+function M.CompleteWorkflowExecutionDecisionAttributes(args)
+	assert(args, "You must provdide an argument table when creating CompleteWorkflowExecutionDecisionAttributes")
 	local t = { 
-		["result"] = _result,
+		["result"] = args["result"],
 	}
 	asserts.AssertCompleteWorkflowExecutionDecisionAttributes(t)
 	return t
@@ -5101,22 +5521,25 @@ end
 
 --- Create a structure of type LambdaFunctionScheduledEventAttributes
 -- <p>Provides details for the <code>LambdaFunctionScheduled</code> event.</p>
--- @param _input [FunctionInput] <p>Input provided to the AWS Lambda function.</p>
--- @param _startToCloseTimeout [DurationInSecondsOptional] <p>The maximum time, in seconds, that the AWS Lambda function can take to execute from start to close before it is marked as failed.</p>
--- @param _decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event for the decision that resulted in the scheduling of this AWS Lambda function. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _id [FunctionId] <p>The unique Amazon SWF ID for the AWS Lambda task.</p>
--- @param _name [FunctionName] <p>The name of the scheduled AWS Lambda function.</p>
--- Required parameter: id
--- Required parameter: name
--- Required parameter: decisionTaskCompletedEventId
-function M.LambdaFunctionScheduledEventAttributes(_input, _startToCloseTimeout, _decisionTaskCompletedEventId, _id, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionScheduledEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * input [FunctionInput] <p>Input provided to the AWS Lambda function.</p>
+-- * startToCloseTimeout [DurationInSecondsOptional] <p>The maximum time, in seconds, that the AWS Lambda function can take to execute from start to close before it is marked as failed.</p>
+-- * decisionTaskCompletedEventId [EventId] <p>The ID of the <code>DecisionTaskCompleted</code> event for the decision that resulted in the scheduling of this AWS Lambda function. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * id [FunctionId] <p>The unique Amazon SWF ID for the AWS Lambda task.</p>
+-- * name [FunctionName] <p>The name of the scheduled AWS Lambda function.</p>
+-- Required key: id
+-- Required key: name
+-- Required key: decisionTaskCompletedEventId
+-- @return LambdaFunctionScheduledEventAttributes structure as a key-value pair table
+function M.LambdaFunctionScheduledEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionScheduledEventAttributes")
 	local t = { 
-		["input"] = _input,
-		["startToCloseTimeout"] = _startToCloseTimeout,
-		["decisionTaskCompletedEventId"] = _decisionTaskCompletedEventId,
-		["id"] = _id,
-		["name"] = _name,
+		["input"] = args["input"],
+		["startToCloseTimeout"] = args["startToCloseTimeout"],
+		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
+		["id"] = args["id"],
+		["name"] = args["name"],
 	}
 	asserts.AssertLambdaFunctionScheduledEventAttributes(t)
 	return t
@@ -5139,17 +5562,20 @@ end
 
 --- Create a structure of type DecisionTaskCompletedEventAttributes
 -- <p>Provides details of the <code>DecisionTaskCompleted</code> event.</p>
--- @param _startedEventId [EventId] <p>The ID of the <code>DecisionTaskStarted</code> event recorded when this decision task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- @param _executionContext [Data] <p>User defined context for the workflow execution.</p>
--- @param _scheduledEventId [EventId] <p>The ID of the <code>DecisionTaskScheduled</code> event that was recorded when this decision task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
--- Required parameter: scheduledEventId
--- Required parameter: startedEventId
-function M.DecisionTaskCompletedEventAttributes(_startedEventId, _executionContext, _scheduledEventId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DecisionTaskCompletedEventAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startedEventId [EventId] <p>The ID of the <code>DecisionTaskStarted</code> event recorded when this decision task was started. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- * executionContext [Data] <p>User defined context for the workflow execution.</p>
+-- * scheduledEventId [EventId] <p>The ID of the <code>DecisionTaskScheduled</code> event that was recorded when this decision task was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
+-- Required key: scheduledEventId
+-- Required key: startedEventId
+-- @return DecisionTaskCompletedEventAttributes structure as a key-value pair table
+function M.DecisionTaskCompletedEventAttributes(args)
+	assert(args, "You must provdide an argument table when creating DecisionTaskCompletedEventAttributes")
 	local t = { 
-		["startedEventId"] = _startedEventId,
-		["executionContext"] = _executionContext,
-		["scheduledEventId"] = _scheduledEventId,
+		["startedEventId"] = args["startedEventId"],
+		["executionContext"] = args["executionContext"],
+		["scheduledEventId"] = args["scheduledEventId"],
 	}
 	asserts.AssertDecisionTaskCompletedEventAttributes(t)
 	return t

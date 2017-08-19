@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type GetDataRetrievalPolicyInput
 -- <p>Input for GetDataRetrievalPolicy.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
-function M.GetDataRetrievalPolicyInput(_accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDataRetrievalPolicyInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- @return GetDataRetrievalPolicyInput structure as a key-value pair table
+function M.GetDataRetrievalPolicyInput(args)
+	assert(args, "You must provdide an argument table when creating GetDataRetrievalPolicyInput")
 	local t = { 
-		["accountId"] = _accountId,
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertGetDataRetrievalPolicyInput(t)
 	return t
@@ -61,15 +64,18 @@ end
 
 --- Create a structure of type ProvisionedCapacityDescription
 -- <p>The definition for a provisioned capacity unit.</p>
--- @param _CapacityId [string] <p>The ID that identifies the provisioned capacity unit.</p>
--- @param _ExpirationDate [string] <p>The date that the provisioned capacity unit expires, in Universal Coordinated Time (UTC).</p>
--- @param _StartDate [string] <p>The date that the provisioned capacity unit was purchased, in Universal Coordinated Time (UTC).</p>
-function M.ProvisionedCapacityDescription(_CapacityId, _ExpirationDate, _StartDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionedCapacityDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CapacityId [string] <p>The ID that identifies the provisioned capacity unit.</p>
+-- * ExpirationDate [string] <p>The date that the provisioned capacity unit expires, in Universal Coordinated Time (UTC).</p>
+-- * StartDate [string] <p>The date that the provisioned capacity unit was purchased, in Universal Coordinated Time (UTC).</p>
+-- @return ProvisionedCapacityDescription structure as a key-value pair table
+function M.ProvisionedCapacityDescription(args)
+	assert(args, "You must provdide an argument table when creating ProvisionedCapacityDescription")
 	local t = { 
-		["CapacityId"] = _CapacityId,
-		["ExpirationDate"] = _ExpirationDate,
-		["StartDate"] = _StartDate,
+		["CapacityId"] = args["CapacityId"],
+		["ExpirationDate"] = args["ExpirationDate"],
+		["StartDate"] = args["StartDate"],
 	}
 	asserts.AssertProvisionedCapacityDescription(t)
 	return t
@@ -94,20 +100,23 @@ end
 
 --- Create a structure of type GetJobOutputInput
 -- <p>Provides options for downloading output of an Amazon Glacier job.</p>
--- @param _range [string] <p>The range of bytes to retrieve from the output. For example, if you want to download the first 1,048,576 bytes, specify the range as <code>bytes=0-1048575</code>. By default, this operation downloads the entire output.</p> <p>If the job output is large, then you can use a range to retrieve a portion of the output. This allows you to download the entire output in smaller chunks of bytes. For example, suppose you have 1 GB of job output you want to download and you decide to download 128 MB chunks of data at a time, which is a total of eight Get Job Output requests. You use the following process to download the job output:</p> <ol> <li> <p>Download a 128 MB chunk of output by specifying the appropriate byte range. Verify that all 128 MB of data was received.</p> </li> <li> <p>Along with the data, the response includes a SHA256 tree hash of the payload. You compute the checksum of the payload on the client and compare it with the checksum you received in the response to ensure you received all the expected data.</p> </li> <li> <p>Repeat steps 1 and 2 for all the eight 128 MB chunks of output data, each time specifying the appropriate byte range.</p> </li> <li> <p>After downloading all the parts of the job output, you have a list of eight checksum values. Compute the tree hash of these values to find the checksum of the entire output. Using the <a>DescribeJob</a> API, obtain job information of the job that provided you the output. The response includes the checksum of the entire archive stored in Amazon Glacier. You compare this value with the checksum you computed to ensure you have downloaded the entire archive content with no errors.</p> <p/> </li> </ol>
--- @param _jobId [string] <p>The job ID whose data is downloaded.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
--- Required parameter: jobId
-function M.GetJobOutputInput(_range, _jobId, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetJobOutputInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * range [string] <p>The range of bytes to retrieve from the output. For example, if you want to download the first 1,048,576 bytes, specify the range as <code>bytes=0-1048575</code>. By default, this operation downloads the entire output.</p> <p>If the job output is large, then you can use a range to retrieve a portion of the output. This allows you to download the entire output in smaller chunks of bytes. For example, suppose you have 1 GB of job output you want to download and you decide to download 128 MB chunks of data at a time, which is a total of eight Get Job Output requests. You use the following process to download the job output:</p> <ol> <li> <p>Download a 128 MB chunk of output by specifying the appropriate byte range. Verify that all 128 MB of data was received.</p> </li> <li> <p>Along with the data, the response includes a SHA256 tree hash of the payload. You compute the checksum of the payload on the client and compare it with the checksum you received in the response to ensure you received all the expected data.</p> </li> <li> <p>Repeat steps 1 and 2 for all the eight 128 MB chunks of output data, each time specifying the appropriate byte range.</p> </li> <li> <p>After downloading all the parts of the job output, you have a list of eight checksum values. Compute the tree hash of these values to find the checksum of the entire output. Using the <a>DescribeJob</a> API, obtain job information of the job that provided you the output. The response includes the checksum of the entire archive stored in Amazon Glacier. You compare this value with the checksum you computed to ensure you have downloaded the entire archive content with no errors.</p> <p/> </li> </ol>
+-- * jobId [string] <p>The job ID whose data is downloaded.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- Required key: jobId
+-- @return GetJobOutputInput structure as a key-value pair table
+function M.GetJobOutputInput(args)
+	assert(args, "You must provdide an argument table when creating GetJobOutputInput")
 	local t = { 
-		["range"] = _range,
-		["jobId"] = _jobId,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["range"] = args["range"],
+		["jobId"] = args["jobId"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertGetJobOutputInput(t)
 	return t
@@ -132,21 +141,24 @@ end
 
 --- Create a structure of type UploadArchiveInput
 -- <p>Provides options to add an archive to a vault.</p>
--- @param _body [Stream] <p>The data to upload.</p>
--- @param _checksum [string] <p>The SHA256 tree hash of the data being uploaded.</p>
--- @param _archiveDescription [string] <p>The optional description of the archive you are uploading.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
--- Required parameter: vaultName
--- Required parameter: accountId
-function M.UploadArchiveInput(_body, _checksum, _archiveDescription, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadArchiveInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * body [Stream] <p>The data to upload.</p>
+-- * checksum [string] <p>The SHA256 tree hash of the data being uploaded.</p>
+-- * archiveDescription [string] <p>The optional description of the archive you are uploading.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
+-- Required key: vaultName
+-- Required key: accountId
+-- @return UploadArchiveInput structure as a key-value pair table
+function M.UploadArchiveInput(args)
+	assert(args, "You must provdide an argument table when creating UploadArchiveInput")
 	local t = { 
-		["body"] = _body,
-		["checksum"] = _checksum,
-		["archiveDescription"] = _archiveDescription,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["body"] = args["body"],
+		["checksum"] = args["checksum"],
+		["archiveDescription"] = args["archiveDescription"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertUploadArchiveInput(t)
 	return t
@@ -173,24 +185,27 @@ end
 
 --- Create a structure of type UploadMultipartPartInput
 -- <p>Provides options to upload a part of an archive in a multipart upload operation.</p>
--- @param _body [Stream] <p>The data to upload.</p>
--- @param _checksum [string] <p>The SHA256 tree hash of the data being uploaded.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _range [string] <p>Identifies the range of bytes in the assembled archive that will be uploaded in this part. Amazon Glacier uses this information to assemble the archive in the proper sequence. The format of this header follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.</p>
--- @param _uploadId [string] <p>The upload ID of the multipart upload.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
--- Required parameter: vaultName
--- Required parameter: uploadId
-function M.UploadMultipartPartInput(_body, _checksum, _vaultName, _range, _uploadId, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadMultipartPartInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * body [Stream] <p>The data to upload.</p>
+-- * checksum [string] <p>The SHA256 tree hash of the data being uploaded.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * range [string] <p>Identifies the range of bytes in the assembled archive that will be uploaded in this part. Amazon Glacier uses this information to assemble the archive in the proper sequence. The format of this header follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.</p>
+-- * uploadId [string] <p>The upload ID of the multipart upload.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- Required key: vaultName
+-- Required key: uploadId
+-- @return UploadMultipartPartInput structure as a key-value pair table
+function M.UploadMultipartPartInput(args)
+	assert(args, "You must provdide an argument table when creating UploadMultipartPartInput")
 	local t = { 
-		["body"] = _body,
-		["checksum"] = _checksum,
-		["vaultName"] = _vaultName,
-		["range"] = _range,
-		["uploadId"] = _uploadId,
-		["accountId"] = _accountId,
+		["body"] = args["body"],
+		["checksum"] = args["checksum"],
+		["vaultName"] = args["vaultName"],
+		["range"] = args["range"],
+		["uploadId"] = args["uploadId"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertUploadMultipartPartInput(t)
 	return t
@@ -211,15 +226,18 @@ end
 
 --- Create a structure of type ServiceUnavailableException
 -- <p>Returned if the service cannot complete the request.</p>
--- @param _message [string] <p>Returned if the service cannot complete the request.</p>
--- @param _code [string] <p>500 Internal Server Error</p>
--- @param _type [string] <p>Server</p>
-function M.ServiceUnavailableException(_message, _code, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>Returned if the service cannot complete the request.</p>
+-- * code [string] <p>500 Internal Server Error</p>
+-- * type [string] <p>Server</p>
+-- @return ServiceUnavailableException structure as a key-value pair table
+function M.ServiceUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
-		["type"] = _type,
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["type"] = args["type"],
 	}
 	asserts.AssertServiceUnavailableException(t)
 	return t
@@ -240,15 +258,18 @@ end
 
 --- Create a structure of type RequestTimeoutException
 -- <p>Returned if, when uploading an archive, Amazon Glacier times out while receiving the upload.</p>
--- @param _message [string] <p>Returned if, when uploading an archive, Amazon Glacier times out while receiving the upload.</p>
--- @param _code [string] <p>408 Request Timeout</p>
--- @param _type [string] <p>Client</p>
-function M.RequestTimeoutException(_message, _code, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestTimeoutException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>Returned if, when uploading an archive, Amazon Glacier times out while receiving the upload.</p>
+-- * code [string] <p>408 Request Timeout</p>
+-- * type [string] <p>Client</p>
+-- @return RequestTimeoutException structure as a key-value pair table
+function M.RequestTimeoutException(args)
+	assert(args, "You must provdide an argument table when creating RequestTimeoutException")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
-		["type"] = _type,
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["type"] = args["type"],
 	}
 	asserts.AssertRequestTimeoutException(t)
 	return t
@@ -272,18 +293,21 @@ end
 
 --- Create a structure of type DeleteArchiveInput
 -- <p>Provides options for deleting an archive from an Amazon Glacier vault.</p>
--- @param _archiveId [string] <p>The ID of the archive to delete.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
--- Required parameter: archiveId
-function M.DeleteArchiveInput(_archiveId, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteArchiveInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * archiveId [string] <p>The ID of the archive to delete.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- Required key: archiveId
+-- @return DeleteArchiveInput structure as a key-value pair table
+function M.DeleteArchiveInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteArchiveInput")
 	local t = { 
-		["archiveId"] = _archiveId,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["archiveId"] = args["archiveId"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertDeleteArchiveInput(t)
 	return t
@@ -307,18 +331,21 @@ end
 
 --- Create a structure of type AbortMultipartUploadInput
 -- <p>Provides options to abort a multipart upload identified by the upload ID.</p> <p>For information about the underlying REST API, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html">Abort Multipart Upload</a>. For conceptual information, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with Archives in Amazon Glacier</a>.</p>
--- @param _uploadId [string] <p>The upload ID of the multipart upload to delete.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
--- Required parameter: uploadId
-function M.AbortMultipartUploadInput(_uploadId, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AbortMultipartUploadInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * uploadId [string] <p>The upload ID of the multipart upload to delete.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- Required key: uploadId
+-- @return AbortMultipartUploadInput structure as a key-value pair table
+function M.AbortMultipartUploadInput(args)
+	assert(args, "You must provdide an argument table when creating AbortMultipartUploadInput")
 	local t = { 
-		["uploadId"] = _uploadId,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["uploadId"] = args["uploadId"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertAbortMultipartUploadInput(t)
 	return t
@@ -340,16 +367,19 @@ end
 
 --- Create a structure of type ListVaultsInput
 -- <p>Provides options to retrieve the vault list owned by the calling user's account. The list provides metadata information for each vault.</p>
--- @param _marker [string] <p>A string used for pagination. The marker specifies the vault ARN after which the listing of vaults should begin.</p>
--- @param _limit [string] <p>The maximum number of vaults to be returned. The default limit is 1000. The number of vaults returned might be fewer than the specified limit, but the number of returned vaults never exceeds the limit.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
-function M.ListVaultsInput(_marker, _limit, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVaultsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [string] <p>A string used for pagination. The marker specifies the vault ARN after which the listing of vaults should begin.</p>
+-- * limit [string] <p>The maximum number of vaults to be returned. The default limit is 1000. The number of vaults returned might be fewer than the specified limit, but the number of returned vaults never exceeds the limit.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- @return ListVaultsInput structure as a key-value pair table
+function M.ListVaultsInput(args)
+	assert(args, "You must provdide an argument table when creating ListVaultsInput")
 	local t = { 
-		["marker"] = _marker,
-		["limit"] = _limit,
-		["accountId"] = _accountId,
+		["marker"] = args["marker"],
+		["limit"] = args["limit"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertListVaultsInput(t)
 	return t
@@ -368,11 +398,14 @@ end
 
 --- Create a structure of type GetVaultNotificationsOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _vaultNotificationConfig [VaultNotificationConfig] <p>Returns the notification configuration set on the vault.</p>
-function M.GetVaultNotificationsOutput(_vaultNotificationConfig, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetVaultNotificationsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultNotificationConfig [VaultNotificationConfig] <p>Returns the notification configuration set on the vault.</p>
+-- @return GetVaultNotificationsOutput structure as a key-value pair table
+function M.GetVaultNotificationsOutput(args)
+	assert(args, "You must provdide an argument table when creating GetVaultNotificationsOutput")
 	local t = { 
-		["vaultNotificationConfig"] = _vaultNotificationConfig,
+		["vaultNotificationConfig"] = args["vaultNotificationConfig"],
 	}
 	asserts.AssertGetVaultNotificationsOutput(t)
 	return t
@@ -394,15 +427,18 @@ end
 
 --- Create a structure of type GetVaultLockInput
 -- <p>The input values for <code>GetVaultLock</code>.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.GetVaultLockInput(_vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetVaultLockInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return GetVaultLockInput structure as a key-value pair table
+function M.GetVaultLockInput(args)
+	assert(args, "You must provdide an argument table when creating GetVaultLockInput")
 	local t = { 
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertGetVaultLockInput(t)
 	return t
@@ -425,17 +461,20 @@ end
 
 --- Create a structure of type InitiateVaultLockInput
 -- <p>The input values for <code>InitiateVaultLock</code>.</p>
--- @param _policy [VaultLockPolicy] <p>The vault lock policy as a JSON string, which uses "\" as an escape character.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.InitiateVaultLockInput(_policy, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InitiateVaultLockInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policy [VaultLockPolicy] <p>The vault lock policy as a JSON string, which uses "\" as an escape character.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return InitiateVaultLockInput structure as a key-value pair table
+function M.InitiateVaultLockInput(args)
+	assert(args, "You must provdide an argument table when creating InitiateVaultLockInput")
 	local t = { 
-		["policy"] = _policy,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["policy"] = args["policy"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertInitiateVaultLockInput(t)
 	return t
@@ -455,12 +494,15 @@ end
 
 --- Create a structure of type ListProvisionedCapacityInput
 --  
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
-function M.ListProvisionedCapacityInput(_accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListProvisionedCapacityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- @return ListProvisionedCapacityInput structure as a key-value pair table
+function M.ListProvisionedCapacityInput(args)
+	assert(args, "You must provdide an argument table when creating ListProvisionedCapacityInput")
 	local t = { 
-		["accountId"] = _accountId,
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertListProvisionedCapacityInput(t)
 	return t
@@ -480,13 +522,16 @@ end
 
 --- Create a structure of type ListJobsOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _Marker [string] <p> An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You get the <code>marker</code> value from a previous List Jobs response. You only need to include the marker if you are continuing the pagination of the results started in a previous List Jobs request. </p>
--- @param _JobList [JobList] <p>A list of job objects. Each job object contains metadata describing the job.</p>
-function M.ListJobsOutput(_Marker, _JobList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [string] <p> An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You get the <code>marker</code> value from a previous List Jobs response. You only need to include the marker if you are continuing the pagination of the results started in a previous List Jobs request. </p>
+-- * JobList [JobList] <p>A list of job objects. Each job object contains metadata describing the job.</p>
+-- @return ListJobsOutput structure as a key-value pair table
+function M.ListJobsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListJobsOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["JobList"] = _JobList,
+		["Marker"] = args["Marker"],
+		["JobList"] = args["JobList"],
 	}
 	asserts.AssertListJobsOutput(t)
 	return t
@@ -506,13 +551,16 @@ end
 
 --- Create a structure of type PartListElement
 -- <p>A list of the part sizes of the multipart upload.</p>
--- @param _RangeInBytes [string] <p>The byte range of a part, inclusive of the upper value of the range.</p>
--- @param _SHA256TreeHash [string] <p>The SHA256 tree hash value that Amazon Glacier calculated for the part. This field is never <code>null</code>.</p>
-function M.PartListElement(_RangeInBytes, _SHA256TreeHash, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PartListElement")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RangeInBytes [string] <p>The byte range of a part, inclusive of the upper value of the range.</p>
+-- * SHA256TreeHash [string] <p>The SHA256 tree hash value that Amazon Glacier calculated for the part. This field is never <code>null</code>.</p>
+-- @return PartListElement structure as a key-value pair table
+function M.PartListElement(args)
+	assert(args, "You must provdide an argument table when creating PartListElement")
 	local t = { 
-		["RangeInBytes"] = _RangeInBytes,
-		["SHA256TreeHash"] = _SHA256TreeHash,
+		["RangeInBytes"] = args["RangeInBytes"],
+		["SHA256TreeHash"] = args["SHA256TreeHash"],
 	}
 	asserts.AssertPartListElement(t)
 	return t
@@ -534,15 +582,18 @@ end
 
 --- Create a structure of type DeleteVaultInput
 -- <p>Provides options for deleting a vault from Amazon Glacier.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.DeleteVaultInput(_vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVaultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return DeleteVaultInput structure as a key-value pair table
+function M.DeleteVaultInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteVaultInput")
 	local t = { 
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertDeleteVaultInput(t)
 	return t
@@ -565,17 +616,20 @@ end
 
 --- Create a structure of type InitiateJobInput
 -- <p>Provides options for initiating an Amazon Glacier job.</p>
--- @param _jobParameters [JobParameters] <p>Provides options for specifying job information.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.InitiateJobInput(_jobParameters, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InitiateJobInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobParameters [JobParameters] <p>Provides options for specifying job information.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return InitiateJobInput structure as a key-value pair table
+function M.InitiateJobInput(args)
+	assert(args, "You must provdide an argument table when creating InitiateJobInput")
 	local t = { 
-		["jobParameters"] = _jobParameters,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["jobParameters"] = args["jobParameters"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertInitiateJobInput(t)
 	return t
@@ -601,22 +655,25 @@ end
 
 --- Create a structure of type ListPartsInput
 -- <p>Provides options for retrieving a list of parts of an archive that have been uploaded in a specific multipart upload.</p>
--- @param _marker [string] <p>An opaque string used for pagination. This value specifies the part at which the listing of parts should begin. Get the marker value from the response of a previous List Parts response. You need only include the marker if you are continuing the pagination of results started in a previous List Parts request.</p>
--- @param _uploadId [string] <p>The upload ID of the multipart upload.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _limit [string] <p>The maximum number of parts to be returned. The default limit is 1000. The number of parts returned might be fewer than the specified limit, but the number of returned parts never exceeds the limit.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
--- Required parameter: vaultName
--- Required parameter: uploadId
-function M.ListPartsInput(_marker, _uploadId, _vaultName, _limit, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPartsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [string] <p>An opaque string used for pagination. This value specifies the part at which the listing of parts should begin. Get the marker value from the response of a previous List Parts response. You need only include the marker if you are continuing the pagination of results started in a previous List Parts request.</p>
+-- * uploadId [string] <p>The upload ID of the multipart upload.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * limit [string] <p>The maximum number of parts to be returned. The default limit is 1000. The number of parts returned might be fewer than the specified limit, but the number of returned parts never exceeds the limit.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- Required key: vaultName
+-- Required key: uploadId
+-- @return ListPartsInput structure as a key-value pair table
+function M.ListPartsInput(args)
+	assert(args, "You must provdide an argument table when creating ListPartsInput")
 	local t = { 
-		["marker"] = _marker,
-		["uploadId"] = _uploadId,
-		["vaultName"] = _vaultName,
-		["limit"] = _limit,
-		["accountId"] = _accountId,
+		["marker"] = args["marker"],
+		["uploadId"] = args["uploadId"],
+		["vaultName"] = args["vaultName"],
+		["limit"] = args["limit"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertListPartsInput(t)
 	return t
@@ -638,15 +695,18 @@ end
 
 --- Create a structure of type GetVaultAccessPolicyInput
 -- <p>Input for GetVaultAccessPolicy.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.GetVaultAccessPolicyInput(_vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetVaultAccessPolicyInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return GetVaultAccessPolicyInput structure as a key-value pair table
+function M.GetVaultAccessPolicyInput(args)
+	assert(args, "You must provdide an argument table when creating GetVaultAccessPolicyInput")
 	local t = { 
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertGetVaultAccessPolicyInput(t)
 	return t
@@ -667,15 +727,18 @@ end
 
 --- Create a structure of type ArchiveCreationOutput
 -- <p>Contains the Amazon Glacier response to your request.</p> <p>For information about the underlying REST API, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html">Upload Archive</a>. For conceptual information, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with Archives in Amazon Glacier</a>.</p>
--- @param _archiveId [string] <p>The ID of the archive. This value is also included as part of the location.</p>
--- @param _checksum [string] <p>The checksum of the archive computed by Amazon Glacier.</p>
--- @param _location [string] <p>The relative URI path of the newly added archive resource.</p>
-function M.ArchiveCreationOutput(_archiveId, _checksum, _location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ArchiveCreationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * archiveId [string] <p>The ID of the archive. This value is also included as part of the location.</p>
+-- * checksum [string] <p>The checksum of the archive computed by Amazon Glacier.</p>
+-- * location [string] <p>The relative URI path of the newly added archive resource.</p>
+-- @return ArchiveCreationOutput structure as a key-value pair table
+function M.ArchiveCreationOutput(args)
+	assert(args, "You must provdide an argument table when creating ArchiveCreationOutput")
 	local t = { 
-		["archiveId"] = _archiveId,
-		["checksum"] = _checksum,
-		["location"] = _location,
+		["archiveId"] = args["archiveId"],
+		["checksum"] = args["checksum"],
+		["location"] = args["location"],
 	}
 	asserts.AssertArchiveCreationOutput(t)
 	return t
@@ -698,17 +761,20 @@ end
 
 --- Create a structure of type RemoveTagsFromVaultInput
 -- <p>The input value for <code>RemoveTagsFromVaultInput</code>.</p>
--- @param _TagKeys [TagKeyList] <p>A list of tag keys. Each corresponding tag is removed from the vault.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.RemoveTagsFromVaultInput(_TagKeys, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromVaultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagKeys [TagKeyList] <p>A list of tag keys. Each corresponding tag is removed from the vault.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return RemoveTagsFromVaultInput structure as a key-value pair table
+function M.RemoveTagsFromVaultInput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromVaultInput")
 	local t = { 
-		["TagKeys"] = _TagKeys,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["TagKeys"] = args["TagKeys"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertRemoveTagsFromVaultInput(t)
 	return t
@@ -731,19 +797,22 @@ end
 
 --- Create a structure of type InventoryRetrievalJobDescription
 -- <p>Describes the options for a range inventory retrieval job.</p>
--- @param _Limit [string] <p>The maximum number of inventory items returned per vault inventory retrieval request. This limit is set when initiating the job with the a <b>InitiateJob</b> request. </p>
--- @param _StartDate [DateTime] <p>The start of the date range in Universal Coordinated Time (UTC) for vault inventory retrieval that includes archives created on or after this date. This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
--- @param _Marker [string] <p>An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are no more inventory items, this value is <code>null</code>. For more information, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"> Range Inventory Retrieval</a>.</p>
--- @param _EndDate [DateTime] <p>The end of the date range in UTC for vault inventory retrieval that includes archives created before this date. This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
--- @param _Format [string] <p>The output format for the vault inventory list, which is set by the <b>InitiateJob</b> request when initiating a job to retrieve a vault inventory. Valid values are <code>CSV</code> and <code>JSON</code>.</p>
-function M.InventoryRetrievalJobDescription(_Limit, _StartDate, _Marker, _EndDate, _Format, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryRetrievalJobDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [string] <p>The maximum number of inventory items returned per vault inventory retrieval request. This limit is set when initiating the job with the a <b>InitiateJob</b> request. </p>
+-- * StartDate [DateTime] <p>The start of the date range in Universal Coordinated Time (UTC) for vault inventory retrieval that includes archives created on or after this date. This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
+-- * Marker [string] <p>An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are no more inventory items, this value is <code>null</code>. For more information, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering"> Range Inventory Retrieval</a>.</p>
+-- * EndDate [DateTime] <p>The end of the date range in UTC for vault inventory retrieval that includes archives created before this date. This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
+-- * Format [string] <p>The output format for the vault inventory list, which is set by the <b>InitiateJob</b> request when initiating a job to retrieve a vault inventory. Valid values are <code>CSV</code> and <code>JSON</code>.</p>
+-- @return InventoryRetrievalJobDescription structure as a key-value pair table
+function M.InventoryRetrievalJobDescription(args)
+	assert(args, "You must provdide an argument table when creating InventoryRetrievalJobDescription")
 	local t = { 
-		["Limit"] = _Limit,
-		["StartDate"] = _StartDate,
-		["Marker"] = _Marker,
-		["EndDate"] = _EndDate,
-		["Format"] = _Format,
+		["Limit"] = args["Limit"],
+		["StartDate"] = args["StartDate"],
+		["Marker"] = args["Marker"],
+		["EndDate"] = args["EndDate"],
+		["Format"] = args["Format"],
 	}
 	asserts.AssertInventoryRetrievalJobDescription(t)
 	return t
@@ -766,19 +835,22 @@ end
 
 --- Create a structure of type UploadListElement
 -- <p>A list of in-progress multipart uploads for a vault.</p>
--- @param _MultipartUploadId [string] <p>The ID of a multipart upload.</p>
--- @param _ArchiveDescription [string] <p>The description of the archive that was specified in the Initiate Multipart Upload request.</p>
--- @param _CreationDate [string] <p>The UTC time at which the multipart upload was initiated.</p>
--- @param _PartSizeInBytes [long] <p>The part size, in bytes, specified in the Initiate Multipart Upload request. This is the size of all the parts in the upload except the last part, which may be smaller than this size.</p>
--- @param _VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault that contains the archive.</p>
-function M.UploadListElement(_MultipartUploadId, _ArchiveDescription, _CreationDate, _PartSizeInBytes, _VaultARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadListElement")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MultipartUploadId [string] <p>The ID of a multipart upload.</p>
+-- * ArchiveDescription [string] <p>The description of the archive that was specified in the Initiate Multipart Upload request.</p>
+-- * CreationDate [string] <p>The UTC time at which the multipart upload was initiated.</p>
+-- * PartSizeInBytes [long] <p>The part size, in bytes, specified in the Initiate Multipart Upload request. This is the size of all the parts in the upload except the last part, which may be smaller than this size.</p>
+-- * VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault that contains the archive.</p>
+-- @return UploadListElement structure as a key-value pair table
+function M.UploadListElement(args)
+	assert(args, "You must provdide an argument table when creating UploadListElement")
 	local t = { 
-		["MultipartUploadId"] = _MultipartUploadId,
-		["ArchiveDescription"] = _ArchiveDescription,
-		["CreationDate"] = _CreationDate,
-		["PartSizeInBytes"] = _PartSizeInBytes,
-		["VaultARN"] = _VaultARN,
+		["MultipartUploadId"] = args["MultipartUploadId"],
+		["ArchiveDescription"] = args["ArchiveDescription"],
+		["CreationDate"] = args["CreationDate"],
+		["PartSizeInBytes"] = args["PartSizeInBytes"],
+		["VaultARN"] = args["VaultARN"],
 	}
 	asserts.AssertUploadListElement(t)
 	return t
@@ -800,15 +872,18 @@ end
 
 --- Create a structure of type GetVaultNotificationsInput
 -- <p>Provides options for retrieving the notification configuration set on an Amazon Glacier vault.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.GetVaultNotificationsInput(_vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetVaultNotificationsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return GetVaultNotificationsInput structure as a key-value pair table
+function M.GetVaultNotificationsInput(args)
+	assert(args, "You must provdide an argument table when creating GetVaultNotificationsInput")
 	local t = { 
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertGetVaultNotificationsInput(t)
 	return t
@@ -832,19 +907,22 @@ end
 
 --- Create a structure of type InitiateMultipartUploadInput
 -- <p>Provides options for initiating a multipart upload to an Amazon Glacier vault.</p>
--- @param _partSize [string] <p>The size of each part except the last, in bytes. The last part can be smaller than this part size.</p>
--- @param _archiveDescription [string] <p>The archive description that you are uploading in parts.</p> <p>The part size must be a megabyte (1024 KB) multiplied by a power of 2, for example 1048576 (1 MB), 2097152 (2 MB), 4194304 (4 MB), 8388608 (8 MB), and so on. The minimum allowable part size is 1 MB, and the maximum is 4 GB (4096 MB).</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.InitiateMultipartUploadInput(_partSize, _archiveDescription, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InitiateMultipartUploadInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * partSize [string] <p>The size of each part except the last, in bytes. The last part can be smaller than this part size.</p>
+-- * archiveDescription [string] <p>The archive description that you are uploading in parts.</p> <p>The part size must be a megabyte (1024 KB) multiplied by a power of 2, for example 1048576 (1 MB), 2097152 (2 MB), 4194304 (4 MB), 8388608 (8 MB), and so on. The minimum allowable part size is 1 MB, and the maximum is 4 GB (4096 MB).</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return InitiateMultipartUploadInput structure as a key-value pair table
+function M.InitiateMultipartUploadInput(args)
+	assert(args, "You must provdide an argument table when creating InitiateMultipartUploadInput")
 	local t = { 
-		["partSize"] = _partSize,
-		["archiveDescription"] = _archiveDescription,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["partSize"] = args["partSize"],
+		["archiveDescription"] = args["archiveDescription"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertInitiateMultipartUploadInput(t)
 	return t
@@ -864,13 +942,16 @@ end
 
 --- Create a structure of type ListMultipartUploadsOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _Marker [string] <p>An opaque string that represents where to continue pagination of the results. You use the marker in a new List Multipart Uploads request to obtain more uploads in the list. If there are no more uploads, this value is <code>null</code>.</p>
--- @param _UploadsList [UploadsList] <p>A list of in-progress multipart uploads.</p>
-function M.ListMultipartUploadsOutput(_Marker, _UploadsList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListMultipartUploadsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [string] <p>An opaque string that represents where to continue pagination of the results. You use the marker in a new List Multipart Uploads request to obtain more uploads in the list. If there are no more uploads, this value is <code>null</code>.</p>
+-- * UploadsList [UploadsList] <p>A list of in-progress multipart uploads.</p>
+-- @return ListMultipartUploadsOutput structure as a key-value pair table
+function M.ListMultipartUploadsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListMultipartUploadsOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["UploadsList"] = _UploadsList,
+		["Marker"] = args["Marker"],
+		["UploadsList"] = args["UploadsList"],
 	}
 	asserts.AssertListMultipartUploadsOutput(t)
 	return t
@@ -892,15 +973,18 @@ end
 
 --- Create a structure of type DeleteVaultAccessPolicyInput
 -- <p>DeleteVaultAccessPolicy input.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.DeleteVaultAccessPolicyInput(_vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVaultAccessPolicyInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return DeleteVaultAccessPolicyInput structure as a key-value pair table
+function M.DeleteVaultAccessPolicyInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteVaultAccessPolicyInput")
 	local t = { 
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertDeleteVaultAccessPolicyInput(t)
 	return t
@@ -921,15 +1005,18 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>Returned if the specified resource (such as a vault, upload ID, or job ID) doesn't exist.</p>
--- @param _message [string] <p>Returned if the specified resource (such as a vault, upload ID, or job ID) doesn't exist.</p>
--- @param _code [string] <p>404 Not Found</p>
--- @param _type [string] <p>Client</p>
-function M.ResourceNotFoundException(_message, _code, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>Returned if the specified resource (such as a vault, upload ID, or job ID) doesn't exist.</p>
+-- * code [string] <p>404 Not Found</p>
+-- * type [string] <p>Client</p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
-		["type"] = _type,
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["type"] = args["type"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -951,15 +1038,18 @@ end
 
 --- Create a structure of type CreateVaultInput
 -- <p>Provides options to create a vault.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.CreateVaultInput(_vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateVaultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return CreateVaultInput structure as a key-value pair table
+function M.CreateVaultInput(args)
+	assert(args, "You must provdide an argument table when creating CreateVaultInput")
 	local t = { 
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertCreateVaultInput(t)
 	return t
@@ -980,14 +1070,17 @@ end
 
 --- Create a structure of type SetDataRetrievalPolicyInput
 -- <p>SetDataRetrievalPolicy input.</p>
--- @param _Policy [DataRetrievalPolicy] <p>The data retrieval policy in JSON format.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
-function M.SetDataRetrievalPolicyInput(_Policy, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetDataRetrievalPolicyInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [DataRetrievalPolicy] <p>The data retrieval policy in JSON format.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- @return SetDataRetrievalPolicyInput structure as a key-value pair table
+function M.SetDataRetrievalPolicyInput(args)
+	assert(args, "You must provdide an argument table when creating SetDataRetrievalPolicyInput")
 	local t = { 
-		["Policy"] = _Policy,
-		["accountId"] = _accountId,
+		["Policy"] = args["Policy"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertSetDataRetrievalPolicyInput(t)
 	return t
@@ -1007,13 +1100,16 @@ end
 
 --- Create a structure of type InitiateMultipartUploadOutput
 -- <p>The Amazon Glacier response to your request.</p>
--- @param _uploadId [string] <p>The ID of the multipart upload. This value is also included as part of the location.</p>
--- @param _location [string] <p>The relative URI path of the multipart upload ID Amazon Glacier created.</p>
-function M.InitiateMultipartUploadOutput(_uploadId, _location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InitiateMultipartUploadOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * uploadId [string] <p>The ID of the multipart upload. This value is also included as part of the location.</p>
+-- * location [string] <p>The relative URI path of the multipart upload ID Amazon Glacier created.</p>
+-- @return InitiateMultipartUploadOutput structure as a key-value pair table
+function M.InitiateMultipartUploadOutput(args)
+	assert(args, "You must provdide an argument table when creating InitiateMultipartUploadOutput")
 	local t = { 
-		["uploadId"] = _uploadId,
-		["location"] = _location,
+		["uploadId"] = args["uploadId"],
+		["location"] = args["location"],
 	}
 	asserts.AssertInitiateMultipartUploadOutput(t)
 	return t
@@ -1038,23 +1134,26 @@ end
 
 --- Create a structure of type GetJobOutputOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _body [Stream] <p>The job data, either archive data or inventory data.</p>
--- @param _status [httpstatus] <p>The HTTP response code for a job output request. The value depends on whether a range was specified in the request.</p>
--- @param _acceptRanges [string] <p>Indicates the range units accepted. For more information, see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">RFC2616</a>. </p>
--- @param _contentType [string] <p>The Content-Type depends on whether the job output is an archive or a vault inventory. For archive data, the Content-Type is application/octet-stream. For vault inventory, if you requested CSV format when you initiated the job, the Content-Type is text/csv. Otherwise, by default, vault inventory is returned as JSON, and the Content-Type is application/json.</p>
--- @param _checksum [string] <p>The checksum of the data in the response. This header is returned only when retrieving the output for an archive retrieval job. Furthermore, this header appears only under the following conditions:</p> <ul> <li> <p>You get the entire range of the archive.</p> </li> <li> <p>You request a range to return of the archive that starts and ends on a multiple of 1 MB. For example, if you have an 3.1 MB archive and you specify a range to return that starts at 1 MB and ends at 2 MB, then the x-amz-sha256-tree-hash is returned as a response header.</p> </li> <li> <p>You request a range of the archive to return that starts on a multiple of 1 MB and goes to the end of the archive. For example, if you have a 3.1 MB archive and you specify a range that starts at 2 MB and ends at 3.1 MB (the end of the archive), then the x-amz-sha256-tree-hash is returned as a response header.</p> </li> </ul>
--- @param _contentRange [string] <p>The range of bytes returned by Amazon Glacier. If only partial output is downloaded, the response provides the range of bytes Amazon Glacier returned. For example, bytes 0-1048575/8388608 returns the first 1 MB from 8 MB.</p>
--- @param _archiveDescription [string] <p>The description of an archive.</p>
-function M.GetJobOutputOutput(_body, _status, _acceptRanges, _contentType, _checksum, _contentRange, _archiveDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetJobOutputOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * body [Stream] <p>The job data, either archive data or inventory data.</p>
+-- * status [httpstatus] <p>The HTTP response code for a job output request. The value depends on whether a range was specified in the request.</p>
+-- * acceptRanges [string] <p>Indicates the range units accepted. For more information, see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">RFC2616</a>. </p>
+-- * contentType [string] <p>The Content-Type depends on whether the job output is an archive or a vault inventory. For archive data, the Content-Type is application/octet-stream. For vault inventory, if you requested CSV format when you initiated the job, the Content-Type is text/csv. Otherwise, by default, vault inventory is returned as JSON, and the Content-Type is application/json.</p>
+-- * checksum [string] <p>The checksum of the data in the response. This header is returned only when retrieving the output for an archive retrieval job. Furthermore, this header appears only under the following conditions:</p> <ul> <li> <p>You get the entire range of the archive.</p> </li> <li> <p>You request a range to return of the archive that starts and ends on a multiple of 1 MB. For example, if you have an 3.1 MB archive and you specify a range to return that starts at 1 MB and ends at 2 MB, then the x-amz-sha256-tree-hash is returned as a response header.</p> </li> <li> <p>You request a range of the archive to return that starts on a multiple of 1 MB and goes to the end of the archive. For example, if you have a 3.1 MB archive and you specify a range that starts at 2 MB and ends at 3.1 MB (the end of the archive), then the x-amz-sha256-tree-hash is returned as a response header.</p> </li> </ul>
+-- * contentRange [string] <p>The range of bytes returned by Amazon Glacier. If only partial output is downloaded, the response provides the range of bytes Amazon Glacier returned. For example, bytes 0-1048575/8388608 returns the first 1 MB from 8 MB.</p>
+-- * archiveDescription [string] <p>The description of an archive.</p>
+-- @return GetJobOutputOutput structure as a key-value pair table
+function M.GetJobOutputOutput(args)
+	assert(args, "You must provdide an argument table when creating GetJobOutputOutput")
 	local t = { 
-		["body"] = _body,
-		["status"] = _status,
-		["acceptRanges"] = _acceptRanges,
-		["contentType"] = _contentType,
-		["checksum"] = _checksum,
-		["contentRange"] = _contentRange,
-		["archiveDescription"] = _archiveDescription,
+		["body"] = args["body"],
+		["status"] = args["status"],
+		["acceptRanges"] = args["acceptRanges"],
+		["contentType"] = args["contentType"],
+		["checksum"] = args["checksum"],
+		["contentRange"] = args["contentRange"],
+		["archiveDescription"] = args["archiveDescription"],
 	}
 	asserts.AssertGetJobOutputOutput(t)
 	return t
@@ -1074,13 +1173,16 @@ end
 
 --- Create a structure of type ListVaultsOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _Marker [string] <p>The vault ARN at which to continue pagination of the results. You use the marker in another List Vaults request to obtain more vaults in the list.</p>
--- @param _VaultList [VaultList] <p>List of vaults.</p>
-function M.ListVaultsOutput(_Marker, _VaultList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVaultsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [string] <p>The vault ARN at which to continue pagination of the results. You use the marker in another List Vaults request to obtain more vaults in the list.</p>
+-- * VaultList [VaultList] <p>List of vaults.</p>
+-- @return ListVaultsOutput structure as a key-value pair table
+function M.ListVaultsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListVaultsOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["VaultList"] = _VaultList,
+		["Marker"] = args["Marker"],
+		["VaultList"] = args["VaultList"],
 	}
 	asserts.AssertListVaultsOutput(t)
 	return t
@@ -1099,11 +1201,14 @@ end
 
 --- Create a structure of type UploadMultipartPartOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _checksum [string] <p>The SHA256 tree hash that Amazon Glacier computed for the uploaded part.</p>
-function M.UploadMultipartPartOutput(_checksum, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadMultipartPartOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checksum [string] <p>The SHA256 tree hash that Amazon Glacier computed for the uploaded part.</p>
+-- @return UploadMultipartPartOutput structure as a key-value pair table
+function M.UploadMultipartPartOutput(args)
+	assert(args, "You must provdide an argument table when creating UploadMultipartPartOutput")
 	local t = { 
-		["checksum"] = _checksum,
+		["checksum"] = args["checksum"],
 	}
 	asserts.AssertUploadMultipartPartOutput(t)
 	return t
@@ -1122,11 +1227,14 @@ end
 
 --- Create a structure of type CreateVaultOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _location [string] <p>The URI of the vault that was created.</p>
-function M.CreateVaultOutput(_location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateVaultOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * location [string] <p>The URI of the vault that was created.</p>
+-- @return CreateVaultOutput structure as a key-value pair table
+function M.CreateVaultOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateVaultOutput")
 	local t = { 
-		["location"] = _location,
+		["location"] = args["location"],
 	}
 	asserts.AssertCreateVaultOutput(t)
 	return t
@@ -1146,13 +1254,16 @@ end
 
 --- Create a structure of type InitiateJobOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _location [string] <p>The relative URI path of the job.</p>
--- @param _jobId [string] <p>The ID of the job.</p>
-function M.InitiateJobOutput(_location, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InitiateJobOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * location [string] <p>The relative URI path of the job.</p>
+-- * jobId [string] <p>The ID of the job.</p>
+-- @return InitiateJobOutput structure as a key-value pair table
+function M.InitiateJobOutput(args)
+	assert(args, "You must provdide an argument table when creating InitiateJobOutput")
 	local t = { 
-		["location"] = _location,
-		["jobId"] = _jobId,
+		["location"] = args["location"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertInitiateJobOutput(t)
 	return t
@@ -1171,11 +1282,14 @@ end
 
 --- Create a structure of type ListProvisionedCapacityOutput
 --  
--- @param _ProvisionedCapacityList [ProvisionedCapacityList] <p>The response body contains the following JSON fields.</p>
-function M.ListProvisionedCapacityOutput(_ProvisionedCapacityList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListProvisionedCapacityOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProvisionedCapacityList [ProvisionedCapacityList] <p>The response body contains the following JSON fields.</p>
+-- @return ListProvisionedCapacityOutput structure as a key-value pair table
+function M.ListProvisionedCapacityOutput(args)
+	assert(args, "You must provdide an argument table when creating ListProvisionedCapacityOutput")
 	local t = { 
-		["ProvisionedCapacityList"] = _ProvisionedCapacityList,
+		["ProvisionedCapacityList"] = args["ProvisionedCapacityList"],
 	}
 	asserts.AssertListProvisionedCapacityOutput(t)
 	return t
@@ -1198,17 +1312,20 @@ end
 
 --- Create a structure of type SetVaultAccessPolicyInput
 -- <p>SetVaultAccessPolicy input.</p>
--- @param _policy [VaultAccessPolicy] <p>The vault access policy as a JSON string.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.SetVaultAccessPolicyInput(_policy, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetVaultAccessPolicyInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policy [VaultAccessPolicy] <p>The vault access policy as a JSON string.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return SetVaultAccessPolicyInput structure as a key-value pair table
+function M.SetVaultAccessPolicyInput(args)
+	assert(args, "You must provdide an argument table when creating SetVaultAccessPolicyInput")
 	local t = { 
-		["policy"] = _policy,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["policy"] = args["policy"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertSetVaultAccessPolicyInput(t)
 	return t
@@ -1234,23 +1351,26 @@ end
 
 --- Create a structure of type ListJobsInput
 -- <p>Provides options for retrieving a job list for an Amazon Glacier vault.</p>
--- @param _completed [string] <p>The state of the jobs to return. You can specify <code>true</code> or <code>false</code>.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _limit [string] <p>The maximum number of jobs to be returned. The default limit is 1000. The number of jobs returned might be fewer than the specified limit, but the number of returned jobs never exceeds the limit.</p>
--- @param _marker [string] <p>An opaque string used for pagination. This value specifies the job at which the listing of jobs should begin. Get the marker value from a previous List Jobs response. You only need to include the marker if you are continuing the pagination of results started in a previous List Jobs request.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
--- @param _statuscode [string] <p>The type of job status to return. You can specify the following values: <code>InProgress</code>, <code>Succeeded</code>, or <code>Failed</code>.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.ListJobsInput(_completed, _vaultName, _limit, _marker, _accountId, _statuscode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * completed [string] <p>The state of the jobs to return. You can specify <code>true</code> or <code>false</code>.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * limit [string] <p>The maximum number of jobs to be returned. The default limit is 1000. The number of jobs returned might be fewer than the specified limit, but the number of returned jobs never exceeds the limit.</p>
+-- * marker [string] <p>An opaque string used for pagination. This value specifies the job at which the listing of jobs should begin. Get the marker value from a previous List Jobs response. You only need to include the marker if you are continuing the pagination of results started in a previous List Jobs request.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
+-- * statuscode [string] <p>The type of job status to return. You can specify the following values: <code>InProgress</code>, <code>Succeeded</code>, or <code>Failed</code>.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return ListJobsInput structure as a key-value pair table
+function M.ListJobsInput(args)
+	assert(args, "You must provdide an argument table when creating ListJobsInput")
 	local t = { 
-		["completed"] = _completed,
-		["vaultName"] = _vaultName,
-		["limit"] = _limit,
-		["marker"] = _marker,
-		["accountId"] = _accountId,
-		["statuscode"] = _statuscode,
+		["completed"] = args["completed"],
+		["vaultName"] = args["vaultName"],
+		["limit"] = args["limit"],
+		["marker"] = args["marker"],
+		["accountId"] = args["accountId"],
+		["statuscode"] = args["statuscode"],
 	}
 	asserts.AssertListJobsInput(t)
 	return t
@@ -1276,22 +1396,25 @@ end
 
 --- Create a structure of type CompleteMultipartUploadInput
 -- <p>Provides options to complete a multipart upload operation. This informs Amazon Glacier that all the archive parts have been uploaded and Amazon Glacier can now assemble the archive from the uploaded parts. After assembling and saving the archive to the vault, Amazon Glacier returns the URI path of the newly created archive resource.</p>
--- @param _uploadId [string] <p>The upload ID of the multipart upload.</p>
--- @param _checksum [string] <p>The SHA256 tree hash of the entire archive. It is the tree hash of SHA256 tree hash of the individual parts. If the value you specify in the request does not match the SHA256 tree hash of the final assembled archive as computed by Amazon Glacier, Amazon Glacier returns an error and the request fails.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _archiveSize [string] <p>The total size, in bytes, of the entire archive. This value should be the sum of all the sizes of the individual parts that you uploaded.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
--- Required parameter: uploadId
-function M.CompleteMultipartUploadInput(_uploadId, _checksum, _vaultName, _archiveSize, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompleteMultipartUploadInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * uploadId [string] <p>The upload ID of the multipart upload.</p>
+-- * checksum [string] <p>The SHA256 tree hash of the entire archive. It is the tree hash of SHA256 tree hash of the individual parts. If the value you specify in the request does not match the SHA256 tree hash of the final assembled archive as computed by Amazon Glacier, Amazon Glacier returns an error and the request fails.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * archiveSize [string] <p>The total size, in bytes, of the entire archive. This value should be the sum of all the sizes of the individual parts that you uploaded.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- Required key: uploadId
+-- @return CompleteMultipartUploadInput structure as a key-value pair table
+function M.CompleteMultipartUploadInput(args)
+	assert(args, "You must provdide an argument table when creating CompleteMultipartUploadInput")
 	local t = { 
-		["uploadId"] = _uploadId,
-		["checksum"] = _checksum,
-		["vaultName"] = _vaultName,
-		["archiveSize"] = _archiveSize,
-		["accountId"] = _accountId,
+		["uploadId"] = args["uploadId"],
+		["checksum"] = args["checksum"],
+		["vaultName"] = args["vaultName"],
+		["archiveSize"] = args["archiveSize"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertCompleteMultipartUploadInput(t)
 	return t
@@ -1313,17 +1436,20 @@ end
 
 --- Create a structure of type GetVaultLockOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _Policy [string] <p>The vault lock policy as a JSON string, which uses "\" as an escape character.</p>
--- @param _State [string] <p>The state of the vault lock. <code>InProgress</code> or <code>Locked</code>.</p>
--- @param _CreationDate [string] <p>The UTC date and time at which the vault lock was put into the <code>InProgress</code> state.</p>
--- @param _ExpirationDate [string] <p>The UTC date and time at which the lock ID expires. This value can be <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
-function M.GetVaultLockOutput(_Policy, _State, _CreationDate, _ExpirationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetVaultLockOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [string] <p>The vault lock policy as a JSON string, which uses "\" as an escape character.</p>
+-- * State [string] <p>The state of the vault lock. <code>InProgress</code> or <code>Locked</code>.</p>
+-- * CreationDate [string] <p>The UTC date and time at which the vault lock was put into the <code>InProgress</code> state.</p>
+-- * ExpirationDate [string] <p>The UTC date and time at which the lock ID expires. This value can be <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
+-- @return GetVaultLockOutput structure as a key-value pair table
+function M.GetVaultLockOutput(args)
+	assert(args, "You must provdide an argument table when creating GetVaultLockOutput")
 	local t = { 
-		["Policy"] = _Policy,
-		["State"] = _State,
-		["CreationDate"] = _CreationDate,
-		["ExpirationDate"] = _ExpirationDate,
+		["Policy"] = args["Policy"],
+		["State"] = args["State"],
+		["CreationDate"] = args["CreationDate"],
+		["ExpirationDate"] = args["ExpirationDate"],
 	}
 	asserts.AssertGetVaultLockOutput(t)
 	return t
@@ -1344,15 +1470,18 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>Returned if the request results in a vault or account limit being exceeded.</p>
--- @param _message [string] <p>Returned if the request results in a vault limit or tags limit being exceeded.</p>
--- @param _code [string] <p>400 Bad Request</p>
--- @param _type [string] <p>Client</p>
-function M.LimitExceededException(_message, _code, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>Returned if the request results in a vault limit or tags limit being exceeded.</p>
+-- * code [string] <p>400 Bad Request</p>
+-- * type [string] <p>Client</p>
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
-		["type"] = _type,
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["type"] = args["type"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -1372,13 +1501,16 @@ end
 
 --- Create a structure of type DataRetrievalRule
 -- <p>Data retrieval policy rule.</p>
--- @param _BytesPerHour [NullableLong] <p>The maximum number of bytes that can be retrieved in an hour.</p> <p>This field is required only if the value of the Strategy field is <code>BytesPerHour</code>. Your PUT operation will be rejected if the Strategy field is not set to <code>BytesPerHour</code> and you set this field.</p>
--- @param _Strategy [string] <p>The type of data retrieval policy to set.</p> <p>Valid values: BytesPerHour|FreeTier|None</p>
-function M.DataRetrievalRule(_BytesPerHour, _Strategy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DataRetrievalRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BytesPerHour [NullableLong] <p>The maximum number of bytes that can be retrieved in an hour.</p> <p>This field is required only if the value of the Strategy field is <code>BytesPerHour</code>. Your PUT operation will be rejected if the Strategy field is not set to <code>BytesPerHour</code> and you set this field.</p>
+-- * Strategy [string] <p>The type of data retrieval policy to set.</p> <p>Valid values: BytesPerHour|FreeTier|None</p>
+-- @return DataRetrievalRule structure as a key-value pair table
+function M.DataRetrievalRule(args)
+	assert(args, "You must provdide an argument table when creating DataRetrievalRule")
 	local t = { 
-		["BytesPerHour"] = _BytesPerHour,
-		["Strategy"] = _Strategy,
+		["BytesPerHour"] = args["BytesPerHour"],
+		["Strategy"] = args["Strategy"],
 	}
 	asserts.AssertDataRetrievalRule(t)
 	return t
@@ -1399,15 +1531,18 @@ end
 
 --- Create a structure of type MissingParameterValueException
 -- <p>Returned if a required header or parameter is missing from the request.</p>
--- @param _message [string] <p>Returned if no authentication data is found for the request.</p>
--- @param _code [string] <p>400 Bad Request</p>
--- @param _type [string] <p>Client.</p>
-function M.MissingParameterValueException(_message, _code, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MissingParameterValueException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>Returned if no authentication data is found for the request.</p>
+-- * code [string] <p>400 Bad Request</p>
+-- * type [string] <p>Client.</p>
+-- @return MissingParameterValueException structure as a key-value pair table
+function M.MissingParameterValueException(args)
+	assert(args, "You must provdide an argument table when creating MissingParameterValueException")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
-		["type"] = _type,
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["type"] = args["type"],
 	}
 	asserts.AssertMissingParameterValueException(t)
 	return t
@@ -1426,11 +1561,14 @@ end
 
 --- Create a structure of type DataRetrievalPolicy
 -- <p>Data retrieval policy.</p>
--- @param _Rules [DataRetrievalRulesList] <p>The policy rule. Although this is a list type, currently there must be only one rule, which contains a Strategy field and optionally a BytesPerHour field.</p>
-function M.DataRetrievalPolicy(_Rules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DataRetrievalPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [DataRetrievalRulesList] <p>The policy rule. Although this is a list type, currently there must be only one rule, which contains a Strategy field and optionally a BytesPerHour field.</p>
+-- @return DataRetrievalPolicy structure as a key-value pair table
+function M.DataRetrievalPolicy(args)
+	assert(args, "You must provdide an argument table when creating DataRetrievalPolicy")
 	local t = { 
-		["Rules"] = _Rules,
+		["Rules"] = args["Rules"],
 	}
 	asserts.AssertDataRetrievalPolicy(t)
 	return t
@@ -1451,15 +1589,18 @@ end
 
 --- Create a structure of type PolicyEnforcedException
 -- <p>Returned if a retrieval job would exceed the current data policy's retrieval rate limit. For more information about data retrieval policies,</p>
--- @param _message [string] <p>InitiateJob request denied by current data retrieval policy.</p>
--- @param _code [string] <p>PolicyEnforcedException</p>
--- @param _type [string] <p>Client</p>
-function M.PolicyEnforcedException(_message, _code, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyEnforcedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>InitiateJob request denied by current data retrieval policy.</p>
+-- * code [string] <p>PolicyEnforcedException</p>
+-- * type [string] <p>Client</p>
+-- @return PolicyEnforcedException structure as a key-value pair table
+function M.PolicyEnforcedException(args)
+	assert(args, "You must provdide an argument table when creating PolicyEnforcedException")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
-		["type"] = _type,
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["type"] = args["type"],
 	}
 	asserts.AssertPolicyEnforcedException(t)
 	return t
@@ -1482,17 +1623,20 @@ end
 
 --- Create a structure of type AddTagsToVaultInput
 -- <p>The input values for <code>AddTagsToVault</code>.</p>
--- @param _Tags [TagMap] <p>The tags to add to the vault. Each tag is composed of a key and a value. The value can be an empty string.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.AddTagsToVaultInput(_Tags, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToVaultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Tags [TagMap] <p>The tags to add to the vault. Each tag is composed of a key and a value. The value can be an empty string.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return AddTagsToVaultInput structure as a key-value pair table
+function M.AddTagsToVaultInput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToVaultInput")
 	local t = { 
-		["Tags"] = _Tags,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["Tags"] = args["Tags"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertAddTagsToVaultInput(t)
 	return t
@@ -1515,17 +1659,20 @@ end
 
 --- Create a structure of type SetVaultNotificationsInput
 -- <p>Provides options to configure notifications that will be sent when specific events happen to a vault.</p>
--- @param _vaultNotificationConfig [VaultNotificationConfig] <p>Provides options for specifying notification configuration.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.SetVaultNotificationsInput(_vaultNotificationConfig, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetVaultNotificationsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultNotificationConfig [VaultNotificationConfig] <p>Provides options for specifying notification configuration.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return SetVaultNotificationsInput structure as a key-value pair table
+function M.SetVaultNotificationsInput(args)
+	assert(args, "You must provdide an argument table when creating SetVaultNotificationsInput")
 	local t = { 
-		["vaultNotificationConfig"] = _vaultNotificationConfig,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultNotificationConfig"] = args["vaultNotificationConfig"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertSetVaultNotificationsInput(t)
 	return t
@@ -1549,18 +1696,21 @@ end
 
 --- Create a structure of type CompleteVaultLockInput
 -- <p>The input values for <code>CompleteVaultLock</code>.</p>
--- @param _lockId [string] <p>The <code>lockId</code> value is the lock ID obtained from a <a>InitiateVaultLock</a> request.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
--- Required parameter: lockId
-function M.CompleteVaultLockInput(_lockId, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompleteVaultLockInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lockId [string] <p>The <code>lockId</code> value is the lock ID obtained from a <a>InitiateVaultLock</a> request.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- Required key: lockId
+-- @return CompleteVaultLockInput structure as a key-value pair table
+function M.CompleteVaultLockInput(args)
+	assert(args, "You must provdide an argument table when creating CompleteVaultLockInput")
 	local t = { 
-		["lockId"] = _lockId,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["lockId"] = args["lockId"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertCompleteVaultLockInput(t)
 	return t
@@ -1581,15 +1731,18 @@ end
 
 --- Create a structure of type InvalidParameterValueException
 -- <p>Returned if a parameter of the request is incorrectly specified.</p>
--- @param _message [string] <p>Returned if a parameter of the request is incorrectly specified.</p>
--- @param _code [string] <p>400 Bad Request</p>
--- @param _type [string] <p>Client</p>
-function M.InvalidParameterValueException(_message, _code, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>Returned if a parameter of the request is incorrectly specified.</p>
+-- * code [string] <p>400 Bad Request</p>
+-- * type [string] <p>Client</p>
+-- @return InvalidParameterValueException structure as a key-value pair table
+function M.InvalidParameterValueException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
-		["type"] = _type,
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["type"] = args["type"],
 	}
 	asserts.AssertInvalidParameterValueException(t)
 	return t
@@ -1608,11 +1761,14 @@ end
 
 --- Create a structure of type ListTagsForVaultOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _Tags [TagMap] <p>The tags attached to the vault. Each tag is composed of a key and a value.</p>
-function M.ListTagsForVaultOutput(_Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForVaultOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Tags [TagMap] <p>The tags attached to the vault. Each tag is composed of a key and a value.</p>
+-- @return ListTagsForVaultOutput structure as a key-value pair table
+function M.ListTagsForVaultOutput(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForVaultOutput")
 	local t = { 
-		["Tags"] = _Tags,
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertListTagsForVaultOutput(t)
 	return t
@@ -1631,11 +1787,14 @@ end
 
 --- Create a structure of type InitiateVaultLockOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _lockId [string] <p>The lock ID, which is used to complete the vault locking process.</p>
-function M.InitiateVaultLockOutput(_lockId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InitiateVaultLockOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lockId [string] <p>The lock ID, which is used to complete the vault locking process.</p>
+-- @return InitiateVaultLockOutput structure as a key-value pair table
+function M.InitiateVaultLockOutput(args)
+	assert(args, "You must provdide an argument table when creating InitiateVaultLockOutput")
 	local t = { 
-		["lockId"] = _lockId,
+		["lockId"] = args["lockId"],
 	}
 	asserts.AssertInitiateVaultLockOutput(t)
 	return t
@@ -1654,11 +1813,14 @@ end
 
 --- Create a structure of type PurchaseProvisionedCapacityOutput
 --  
--- @param _capacityId [string] <p>The ID that identifies the provisioned capacity unit.</p>
-function M.PurchaseProvisionedCapacityOutput(_capacityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PurchaseProvisionedCapacityOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * capacityId [string] <p>The ID that identifies the provisioned capacity unit.</p>
+-- @return PurchaseProvisionedCapacityOutput structure as a key-value pair table
+function M.PurchaseProvisionedCapacityOutput(args)
+	assert(args, "You must provdide an argument table when creating PurchaseProvisionedCapacityOutput")
 	local t = { 
-		["capacityId"] = _capacityId,
+		["capacityId"] = args["capacityId"],
 	}
 	asserts.AssertPurchaseProvisionedCapacityOutput(t)
 	return t
@@ -1694,45 +1856,48 @@ end
 
 --- Create a structure of type GlacierJobDescription
 -- <p>Describes an Amazon Glacier job.</p>
--- @param _CompletionDate [string] <p>The UTC time that the archive retrieval request completed. While the job is in progress, the value will be null.</p>
--- @param _VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault from which the archive retrieval was requested.</p>
--- @param _RetrievalByteRange [string] <p>The retrieved byte range for archive retrieval jobs in the form "<i>StartByteValue</i>-<i>EndByteValue</i>" If no range was specified in the archive retrieval, then the whole archive is retrieved and <i>StartByteValue</i> equals 0 and <i>EndByteValue</i> equals the size of the archive minus 1. For inventory retrieval jobs this field is null. </p>
--- @param _Tier [string] <p>The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>
--- @param _SHA256TreeHash [string] <p>For an ArchiveRetrieval job, it is the checksum of the archive. Otherwise, the value is null.</p> <p>The SHA256 tree hash value for the requested range of an archive. If the Initiate a Job request for an archive specified a tree-hash aligned range, then this field returns a value.</p> <p>For the specific case when the whole archive is retrieved, this value is the same as the ArchiveSHA256TreeHash value.</p> <p>This field is null in the following situations:</p> <ul> <li> <p>Archive retrieval jobs that specify a range that is not tree-hash aligned.</p> </li> </ul> <ul> <li> <p>Archival jobs that specify a range that is equal to the whole archive and the job status is InProgress.</p> </li> </ul> <ul> <li> <p>Inventory jobs.</p> </li> </ul>
--- @param _SNSTopic [string] <p>An Amazon Simple Notification Service (Amazon SNS) topic that receives notification.</p>
--- @param _Completed [boolean] <p>The job status. When a job is completed, you get the job's output.</p>
--- @param _InventorySizeInBytes [Size] <p>For an InventoryRetrieval job, this is the size in bytes of the inventory requested for download. For the ArchiveRetrieval job, the value is null.</p>
--- @param _InventoryRetrievalParameters [InventoryRetrievalJobDescription] <p>Parameters used for range inventory retrieval.</p>
--- @param _JobId [string] <p>An opaque string that identifies an Amazon Glacier job.</p>
--- @param _ArchiveId [string] <p>For an ArchiveRetrieval job, this is the archive ID requested for download. Otherwise, this field is null.</p>
--- @param _JobDescription [string] <p>The job description you provided when you initiated the job.</p>
--- @param _ArchiveSizeInBytes [Size] <p>For an ArchiveRetrieval job, this is the size in bytes of the archive being requested for download. For the InventoryRetrieval job, the value is null.</p>
--- @param _Action [ActionCode] <p>The job type. It is either ArchiveRetrieval or InventoryRetrieval.</p>
--- @param _ArchiveSHA256TreeHash [string] <p>The SHA256 tree hash of the entire archive for an archive retrieval. For inventory retrieval jobs, this field is null.</p>
--- @param _CreationDate [string] <p>The UTC date when the job was created. A string representation of ISO 8601 date format, for example, "2012-03-20T17:03:43.221Z".</p>
--- @param _StatusMessage [string] <p>A friendly message that describes the job status.</p>
--- @param _StatusCode [StatusCode] <p>The status code can be InProgress, Succeeded, or Failed, and indicates the status of the job.</p>
-function M.GlacierJobDescription(_CompletionDate, _VaultARN, _RetrievalByteRange, _Tier, _SHA256TreeHash, _SNSTopic, _Completed, _InventorySizeInBytes, _InventoryRetrievalParameters, _JobId, _ArchiveId, _JobDescription, _ArchiveSizeInBytes, _Action, _ArchiveSHA256TreeHash, _CreationDate, _StatusMessage, _StatusCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GlacierJobDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CompletionDate [string] <p>The UTC time that the archive retrieval request completed. While the job is in progress, the value will be null.</p>
+-- * VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault from which the archive retrieval was requested.</p>
+-- * RetrievalByteRange [string] <p>The retrieved byte range for archive retrieval jobs in the form "<i>StartByteValue</i>-<i>EndByteValue</i>" If no range was specified in the archive retrieval, then the whole archive is retrieved and <i>StartByteValue</i> equals 0 and <i>EndByteValue</i> equals the size of the archive minus 1. For inventory retrieval jobs this field is null. </p>
+-- * Tier [string] <p>The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>
+-- * SHA256TreeHash [string] <p>For an ArchiveRetrieval job, it is the checksum of the archive. Otherwise, the value is null.</p> <p>The SHA256 tree hash value for the requested range of an archive. If the Initiate a Job request for an archive specified a tree-hash aligned range, then this field returns a value.</p> <p>For the specific case when the whole archive is retrieved, this value is the same as the ArchiveSHA256TreeHash value.</p> <p>This field is null in the following situations:</p> <ul> <li> <p>Archive retrieval jobs that specify a range that is not tree-hash aligned.</p> </li> </ul> <ul> <li> <p>Archival jobs that specify a range that is equal to the whole archive and the job status is InProgress.</p> </li> </ul> <ul> <li> <p>Inventory jobs.</p> </li> </ul>
+-- * SNSTopic [string] <p>An Amazon Simple Notification Service (Amazon SNS) topic that receives notification.</p>
+-- * Completed [boolean] <p>The job status. When a job is completed, you get the job's output.</p>
+-- * InventorySizeInBytes [Size] <p>For an InventoryRetrieval job, this is the size in bytes of the inventory requested for download. For the ArchiveRetrieval job, the value is null.</p>
+-- * InventoryRetrievalParameters [InventoryRetrievalJobDescription] <p>Parameters used for range inventory retrieval.</p>
+-- * JobId [string] <p>An opaque string that identifies an Amazon Glacier job.</p>
+-- * ArchiveId [string] <p>For an ArchiveRetrieval job, this is the archive ID requested for download. Otherwise, this field is null.</p>
+-- * JobDescription [string] <p>The job description you provided when you initiated the job.</p>
+-- * ArchiveSizeInBytes [Size] <p>For an ArchiveRetrieval job, this is the size in bytes of the archive being requested for download. For the InventoryRetrieval job, the value is null.</p>
+-- * Action [ActionCode] <p>The job type. It is either ArchiveRetrieval or InventoryRetrieval.</p>
+-- * ArchiveSHA256TreeHash [string] <p>The SHA256 tree hash of the entire archive for an archive retrieval. For inventory retrieval jobs, this field is null.</p>
+-- * CreationDate [string] <p>The UTC date when the job was created. A string representation of ISO 8601 date format, for example, "2012-03-20T17:03:43.221Z".</p>
+-- * StatusMessage [string] <p>A friendly message that describes the job status.</p>
+-- * StatusCode [StatusCode] <p>The status code can be InProgress, Succeeded, or Failed, and indicates the status of the job.</p>
+-- @return GlacierJobDescription structure as a key-value pair table
+function M.GlacierJobDescription(args)
+	assert(args, "You must provdide an argument table when creating GlacierJobDescription")
 	local t = { 
-		["CompletionDate"] = _CompletionDate,
-		["VaultARN"] = _VaultARN,
-		["RetrievalByteRange"] = _RetrievalByteRange,
-		["Tier"] = _Tier,
-		["SHA256TreeHash"] = _SHA256TreeHash,
-		["SNSTopic"] = _SNSTopic,
-		["Completed"] = _Completed,
-		["InventorySizeInBytes"] = _InventorySizeInBytes,
-		["InventoryRetrievalParameters"] = _InventoryRetrievalParameters,
-		["JobId"] = _JobId,
-		["ArchiveId"] = _ArchiveId,
-		["JobDescription"] = _JobDescription,
-		["ArchiveSizeInBytes"] = _ArchiveSizeInBytes,
-		["Action"] = _Action,
-		["ArchiveSHA256TreeHash"] = _ArchiveSHA256TreeHash,
-		["CreationDate"] = _CreationDate,
-		["StatusMessage"] = _StatusMessage,
-		["StatusCode"] = _StatusCode,
+		["CompletionDate"] = args["CompletionDate"],
+		["VaultARN"] = args["VaultARN"],
+		["RetrievalByteRange"] = args["RetrievalByteRange"],
+		["Tier"] = args["Tier"],
+		["SHA256TreeHash"] = args["SHA256TreeHash"],
+		["SNSTopic"] = args["SNSTopic"],
+		["Completed"] = args["Completed"],
+		["InventorySizeInBytes"] = args["InventorySizeInBytes"],
+		["InventoryRetrievalParameters"] = args["InventoryRetrievalParameters"],
+		["JobId"] = args["JobId"],
+		["ArchiveId"] = args["ArchiveId"],
+		["JobDescription"] = args["JobDescription"],
+		["ArchiveSizeInBytes"] = args["ArchiveSizeInBytes"],
+		["Action"] = args["Action"],
+		["ArchiveSHA256TreeHash"] = args["ArchiveSHA256TreeHash"],
+		["CreationDate"] = args["CreationDate"],
+		["StatusMessage"] = args["StatusMessage"],
+		["StatusCode"] = args["StatusCode"],
 	}
 	asserts.AssertGlacierJobDescription(t)
 	return t
@@ -1754,17 +1919,20 @@ end
 
 --- Create a structure of type InventoryRetrievalJobInput
 -- <p>Provides options for specifying a range inventory retrieval job.</p>
--- @param _Limit [string] <p>Specifies the maximum number of inventory items returned per vault inventory retrieval request. Valid values are greater than or equal to 1.</p>
--- @param _StartDate [string] <p>The start of the date range in UTC for vault inventory retrieval that includes archives created on or after this date. This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
--- @param _Marker [string] <p>An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are no more inventory items, this value is <code>null</code>.</p>
--- @param _EndDate [string] <p>The end of the date range in UTC for vault inventory retrieval that includes archives created before this date. This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
-function M.InventoryRetrievalJobInput(_Limit, _StartDate, _Marker, _EndDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryRetrievalJobInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [string] <p>Specifies the maximum number of inventory items returned per vault inventory retrieval request. Valid values are greater than or equal to 1.</p>
+-- * StartDate [string] <p>The start of the date range in UTC for vault inventory retrieval that includes archives created on or after this date. This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
+-- * Marker [string] <p>An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use the marker in a new <b>InitiateJob</b> request to obtain additional inventory items. If there are no more inventory items, this value is <code>null</code>.</p>
+-- * EndDate [string] <p>The end of the date range in UTC for vault inventory retrieval that includes archives created before this date. This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
+-- @return InventoryRetrievalJobInput structure as a key-value pair table
+function M.InventoryRetrievalJobInput(args)
+	assert(args, "You must provdide an argument table when creating InventoryRetrievalJobInput")
 	local t = { 
-		["Limit"] = _Limit,
-		["StartDate"] = _StartDate,
-		["Marker"] = _Marker,
-		["EndDate"] = _EndDate,
+		["Limit"] = args["Limit"],
+		["StartDate"] = args["StartDate"],
+		["Marker"] = args["Marker"],
+		["EndDate"] = args["EndDate"],
 	}
 	asserts.AssertInventoryRetrievalJobInput(t)
 	return t
@@ -1784,13 +1952,16 @@ end
 
 --- Create a structure of type VaultNotificationConfig
 -- <p>Represents a vault's notification configuration.</p>
--- @param _Events [NotificationEventList] <p>A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS topic.</p>
--- @param _SNSTopic [string] <p>The Amazon Simple Notification Service (Amazon SNS) topic Amazon Resource Name (ARN).</p>
-function M.VaultNotificationConfig(_Events, _SNSTopic, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VaultNotificationConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Events [NotificationEventList] <p>A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS topic.</p>
+-- * SNSTopic [string] <p>The Amazon Simple Notification Service (Amazon SNS) topic Amazon Resource Name (ARN).</p>
+-- @return VaultNotificationConfig structure as a key-value pair table
+function M.VaultNotificationConfig(args)
+	assert(args, "You must provdide an argument table when creating VaultNotificationConfig")
 	local t = { 
-		["Events"] = _Events,
-		["SNSTopic"] = _SNSTopic,
+		["Events"] = args["Events"],
+		["SNSTopic"] = args["SNSTopic"],
 	}
 	asserts.AssertVaultNotificationConfig(t)
 	return t
@@ -1815,23 +1986,26 @@ end
 
 --- Create a structure of type ListPartsOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault to which the multipart upload was initiated.</p>
--- @param _ArchiveDescription [string] <p>The description of the archive that was specified in the Initiate Multipart Upload request.</p>
--- @param _PartSizeInBytes [long] <p>The part size in bytes. This is the same value that you specified in the Initiate Multipart Upload request.</p>
--- @param _MultipartUploadId [string] <p>The ID of the upload to which the parts are associated.</p>
--- @param _Parts [PartList] <p>A list of the part sizes of the multipart upload. Each object in the array contains a <code>RangeBytes</code> and <code>sha256-tree-hash</code> name/value pair.</p>
--- @param _Marker [string] <p>An opaque string that represents where to continue pagination of the results. You use the marker in a new List Parts request to obtain more jobs in the list. If there are no more parts, this value is <code>null</code>.</p>
--- @param _CreationDate [string] <p>The UTC time at which the multipart upload was initiated.</p>
-function M.ListPartsOutput(_VaultARN, _ArchiveDescription, _PartSizeInBytes, _MultipartUploadId, _Parts, _Marker, _CreationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPartsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault to which the multipart upload was initiated.</p>
+-- * ArchiveDescription [string] <p>The description of the archive that was specified in the Initiate Multipart Upload request.</p>
+-- * PartSizeInBytes [long] <p>The part size in bytes. This is the same value that you specified in the Initiate Multipart Upload request.</p>
+-- * MultipartUploadId [string] <p>The ID of the upload to which the parts are associated.</p>
+-- * Parts [PartList] <p>A list of the part sizes of the multipart upload. Each object in the array contains a <code>RangeBytes</code> and <code>sha256-tree-hash</code> name/value pair.</p>
+-- * Marker [string] <p>An opaque string that represents where to continue pagination of the results. You use the marker in a new List Parts request to obtain more jobs in the list. If there are no more parts, this value is <code>null</code>.</p>
+-- * CreationDate [string] <p>The UTC time at which the multipart upload was initiated.</p>
+-- @return ListPartsOutput structure as a key-value pair table
+function M.ListPartsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListPartsOutput")
 	local t = { 
-		["VaultARN"] = _VaultARN,
-		["ArchiveDescription"] = _ArchiveDescription,
-		["PartSizeInBytes"] = _PartSizeInBytes,
-		["MultipartUploadId"] = _MultipartUploadId,
-		["Parts"] = _Parts,
-		["Marker"] = _Marker,
-		["CreationDate"] = _CreationDate,
+		["VaultARN"] = args["VaultARN"],
+		["ArchiveDescription"] = args["ArchiveDescription"],
+		["PartSizeInBytes"] = args["PartSizeInBytes"],
+		["MultipartUploadId"] = args["MultipartUploadId"],
+		["Parts"] = args["Parts"],
+		["Marker"] = args["Marker"],
+		["CreationDate"] = args["CreationDate"],
 	}
 	asserts.AssertListPartsOutput(t)
 	return t
@@ -1857,25 +2031,28 @@ end
 
 --- Create a structure of type JobParameters
 -- <p>Provides options for defining a job.</p>
--- @param _InventoryRetrievalParameters [InventoryRetrievalJobInput] <p>Input parameters used for range inventory retrieval.</p>
--- @param _RetrievalByteRange [string] <p>The byte range to retrieve for an archive retrieval. in the form "<i>StartByteValue</i>-<i>EndByteValue</i>" If not specified, the whole archive is retrieved. If specified, the byte range must be megabyte (1024*1024) aligned which means that <i>StartByteValue</i> must be divisible by 1 MB and <i>EndByteValue</i> plus 1 must be divisible by 1 MB or be the end of the archive specified as the archive byte size value minus 1. If RetrievalByteRange is not megabyte aligned, this operation returns a 400 response. </p> <p>An error occurs if you specify this field for an inventory retrieval job request.</p>
--- @param _Description [string] <p>The optional description for the job. The description must be less than or equal to 1,024 bytes. The allowable characters are 7-bit ASCII without control codes-specifically, ASCII values 32-126 decimal or 0x20-0x7E hexadecimal.</p>
--- @param _Format [string] <p>When initiating a job to retrieve a vault inventory, you can optionally add this parameter to your request to specify the output format. If you are initiating an inventory job and do not specify a Format field, JSON is the default format. Valid values are "CSV" and "JSON".</p>
--- @param _SNSTopic [string] <p>The Amazon SNS topic ARN to which Amazon Glacier sends a notification when the job is completed and the output is ready for you to download. The specified topic publishes the notification to its subscribers. The SNS topic must exist.</p>
--- @param _Tier [string] <p>The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>
--- @param _ArchiveId [string] <p>The ID of the archive that you want to retrieve. This field is required only if <code>Type</code> is set to archive-retrieval. An error occurs if you specify this request parameter for an inventory retrieval job request. </p>
--- @param _Type [string] <p>The job type. You can initiate a job to retrieve an archive or get an inventory of a vault. Valid values are "archive-retrieval" and "inventory-retrieval".</p>
-function M.JobParameters(_InventoryRetrievalParameters, _RetrievalByteRange, _Description, _Format, _SNSTopic, _Tier, _ArchiveId, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobParameters")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InventoryRetrievalParameters [InventoryRetrievalJobInput] <p>Input parameters used for range inventory retrieval.</p>
+-- * RetrievalByteRange [string] <p>The byte range to retrieve for an archive retrieval. in the form "<i>StartByteValue</i>-<i>EndByteValue</i>" If not specified, the whole archive is retrieved. If specified, the byte range must be megabyte (1024*1024) aligned which means that <i>StartByteValue</i> must be divisible by 1 MB and <i>EndByteValue</i> plus 1 must be divisible by 1 MB or be the end of the archive specified as the archive byte size value minus 1. If RetrievalByteRange is not megabyte aligned, this operation returns a 400 response. </p> <p>An error occurs if you specify this field for an inventory retrieval job request.</p>
+-- * Description [string] <p>The optional description for the job. The description must be less than or equal to 1,024 bytes. The allowable characters are 7-bit ASCII without control codes-specifically, ASCII values 32-126 decimal or 0x20-0x7E hexadecimal.</p>
+-- * Format [string] <p>When initiating a job to retrieve a vault inventory, you can optionally add this parameter to your request to specify the output format. If you are initiating an inventory job and do not specify a Format field, JSON is the default format. Valid values are "CSV" and "JSON".</p>
+-- * SNSTopic [string] <p>The Amazon SNS topic ARN to which Amazon Glacier sends a notification when the job is completed and the output is ready for you to download. The specified topic publishes the notification to its subscribers. The SNS topic must exist.</p>
+-- * Tier [string] <p>The retrieval option to use for the archive retrieval. Valid values are <code>Expedited</code>, <code>Standard</code>, or <code>Bulk</code>. <code>Standard</code> is the default.</p>
+-- * ArchiveId [string] <p>The ID of the archive that you want to retrieve. This field is required only if <code>Type</code> is set to archive-retrieval. An error occurs if you specify this request parameter for an inventory retrieval job request. </p>
+-- * Type [string] <p>The job type. You can initiate a job to retrieve an archive or get an inventory of a vault. Valid values are "archive-retrieval" and "inventory-retrieval".</p>
+-- @return JobParameters structure as a key-value pair table
+function M.JobParameters(args)
+	assert(args, "You must provdide an argument table when creating JobParameters")
 	local t = { 
-		["InventoryRetrievalParameters"] = _InventoryRetrievalParameters,
-		["RetrievalByteRange"] = _RetrievalByteRange,
-		["Description"] = _Description,
-		["Format"] = _Format,
-		["SNSTopic"] = _SNSTopic,
-		["Tier"] = _Tier,
-		["ArchiveId"] = _ArchiveId,
-		["Type"] = _Type,
+		["InventoryRetrievalParameters"] = args["InventoryRetrievalParameters"],
+		["RetrievalByteRange"] = args["RetrievalByteRange"],
+		["Description"] = args["Description"],
+		["Format"] = args["Format"],
+		["SNSTopic"] = args["SNSTopic"],
+		["Tier"] = args["Tier"],
+		["ArchiveId"] = args["ArchiveId"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertJobParameters(t)
 	return t
@@ -1894,11 +2071,14 @@ end
 
 --- Create a structure of type GetDataRetrievalPolicyOutput
 -- <p>Contains the Amazon Glacier response to the <code>GetDataRetrievalPolicy</code> request.</p>
--- @param _Policy [DataRetrievalPolicy] <p>Contains the returned data retrieval policy in JSON format.</p>
-function M.GetDataRetrievalPolicyOutput(_Policy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDataRetrievalPolicyOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [DataRetrievalPolicy] <p>Contains the returned data retrieval policy in JSON format.</p>
+-- @return GetDataRetrievalPolicyOutput structure as a key-value pair table
+function M.GetDataRetrievalPolicyOutput(args)
+	assert(args, "You must provdide an argument table when creating GetDataRetrievalPolicyOutput")
 	local t = { 
-		["Policy"] = _Policy,
+		["Policy"] = args["Policy"],
 	}
 	asserts.AssertGetDataRetrievalPolicyOutput(t)
 	return t
@@ -1917,11 +2097,14 @@ end
 
 --- Create a structure of type GetVaultAccessPolicyOutput
 -- <p>Output for GetVaultAccessPolicy.</p>
--- @param _policy [VaultAccessPolicy] <p>Contains the returned vault access policy as a JSON string.</p>
-function M.GetVaultAccessPolicyOutput(_policy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetVaultAccessPolicyOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policy [VaultAccessPolicy] <p>Contains the returned vault access policy as a JSON string.</p>
+-- @return GetVaultAccessPolicyOutput structure as a key-value pair table
+function M.GetVaultAccessPolicyOutput(args)
+	assert(args, "You must provdide an argument table when creating GetVaultAccessPolicyOutput")
 	local t = { 
-		["policy"] = _policy,
+		["policy"] = args["policy"],
 	}
 	asserts.AssertGetVaultAccessPolicyOutput(t)
 	return t
@@ -1945,18 +2128,21 @@ end
 
 --- Create a structure of type DescribeJobInput
 -- <p>Provides options for retrieving a job description.</p>
--- @param _jobId [string] <p>The ID of the job to describe.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
--- Required parameter: vaultName
--- Required parameter: jobId
-function M.DescribeJobInput(_jobId, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobId [string] <p>The ID of the job to describe.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- Required key: vaultName
+-- Required key: jobId
+-- @return DescribeJobInput structure as a key-value pair table
+function M.DescribeJobInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobInput")
 	local t = { 
-		["jobId"] = _jobId,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["jobId"] = args["jobId"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertDescribeJobInput(t)
 	return t
@@ -1978,15 +2164,18 @@ end
 
 --- Create a structure of type DescribeVaultInput
 -- <p>Provides options for retrieving metadata for a specific vault in Amazon Glacier.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.DescribeVaultInput(_vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVaultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return DescribeVaultInput structure as a key-value pair table
+function M.DescribeVaultInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeVaultInput")
 	local t = { 
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertDescribeVaultInput(t)
 	return t
@@ -2010,19 +2199,22 @@ end
 
 --- Create a structure of type ListMultipartUploadsInput
 -- <p>Provides options for retrieving list of in-progress multipart uploads for an Amazon Glacier vault.</p>
--- @param _marker [string] <p>An opaque string used for pagination. This value specifies the upload at which the listing of uploads should begin. Get the marker value from a previous List Uploads response. You need only include the marker if you are continuing the pagination of results started in a previous List Uploads request.</p>
--- @param _limit [string] <p>Specifies the maximum number of uploads returned in the response body. If this value is not specified, the List Uploads operation returns up to 1,000 uploads.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.ListMultipartUploadsInput(_marker, _limit, _vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListMultipartUploadsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [string] <p>An opaque string used for pagination. This value specifies the upload at which the listing of uploads should begin. Get the marker value from a previous List Uploads response. You need only include the marker if you are continuing the pagination of results started in a previous List Uploads request.</p>
+-- * limit [string] <p>Specifies the maximum number of uploads returned in the response body. If this value is not specified, the List Uploads operation returns up to 1,000 uploads.</p>
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return ListMultipartUploadsInput structure as a key-value pair table
+function M.ListMultipartUploadsInput(args)
+	assert(args, "You must provdide an argument table when creating ListMultipartUploadsInput")
 	local t = { 
-		["marker"] = _marker,
-		["limit"] = _limit,
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["marker"] = args["marker"],
+		["limit"] = args["limit"],
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertListMultipartUploadsInput(t)
 	return t
@@ -2044,15 +2236,18 @@ end
 
 --- Create a structure of type AbortVaultLockInput
 -- <p>The input values for <code>AbortVaultLock</code>.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.AbortVaultLockInput(_vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AbortVaultLockInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return AbortVaultLockInput structure as a key-value pair table
+function M.AbortVaultLockInput(args)
+	assert(args, "You must provdide an argument table when creating AbortVaultLockInput")
 	local t = { 
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertAbortVaultLockInput(t)
 	return t
@@ -2072,12 +2267,15 @@ end
 
 --- Create a structure of type PurchaseProvisionedCapacityInput
 --  
--- @param _accountId [string] <p>The AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
-function M.PurchaseProvisionedCapacityInput(_accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PurchaseProvisionedCapacityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * accountId [string] <p>The AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '-' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, don't include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- @return PurchaseProvisionedCapacityInput structure as a key-value pair table
+function M.PurchaseProvisionedCapacityInput(args)
+	assert(args, "You must provdide an argument table when creating PurchaseProvisionedCapacityInput")
 	local t = { 
-		["accountId"] = _accountId,
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertPurchaseProvisionedCapacityInput(t)
 	return t
@@ -2099,15 +2297,18 @@ end
 
 --- Create a structure of type ListTagsForVaultInput
 -- <p>The input value for <code>ListTagsForVaultInput</code>.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.ListTagsForVaultInput(_vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForVaultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.</p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return ListTagsForVaultInput structure as a key-value pair table
+function M.ListTagsForVaultInput(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForVaultInput")
 	local t = { 
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertListTagsForVaultInput(t)
 	return t
@@ -2126,11 +2327,14 @@ end
 
 --- Create a structure of type VaultLockPolicy
 -- <p>Contains the vault lock policy.</p>
--- @param _Policy [string] <p>The vault lock policy.</p>
-function M.VaultLockPolicy(_Policy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VaultLockPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [string] <p>The vault lock policy.</p>
+-- @return VaultLockPolicy structure as a key-value pair table
+function M.VaultLockPolicy(args)
+	assert(args, "You must provdide an argument table when creating VaultLockPolicy")
 	local t = { 
-		["Policy"] = _Policy,
+		["Policy"] = args["Policy"],
 	}
 	asserts.AssertVaultLockPolicy(t)
 	return t
@@ -2149,11 +2353,14 @@ end
 
 --- Create a structure of type VaultAccessPolicy
 -- <p>Contains the vault access policy.</p>
--- @param _Policy [string] <p>The vault access policy.</p>
-function M.VaultAccessPolicy(_Policy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VaultAccessPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [string] <p>The vault access policy.</p>
+-- @return VaultAccessPolicy structure as a key-value pair table
+function M.VaultAccessPolicy(args)
+	assert(args, "You must provdide an argument table when creating VaultAccessPolicy")
 	local t = { 
-		["Policy"] = _Policy,
+		["Policy"] = args["Policy"],
 	}
 	asserts.AssertVaultAccessPolicy(t)
 	return t
@@ -2174,15 +2381,18 @@ end
 
 --- Create a structure of type InsufficientCapacityException
 -- <p>Returned if there is insufficient capacity to process this expedited request. This error only applies to expedited retrievals and not to standard or bulk retrievals.</p>
--- @param _message [string] 
--- @param _code [string] 
--- @param _type [string] 
-function M.InsufficientCapacityException(_message, _code, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientCapacityException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] 
+-- * code [string] 
+-- * type [string] 
+-- @return InsufficientCapacityException structure as a key-value pair table
+function M.InsufficientCapacityException(args)
+	assert(args, "You must provdide an argument table when creating InsufficientCapacityException")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
-		["type"] = _type,
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["type"] = args["type"],
 	}
 	asserts.AssertInsufficientCapacityException(t)
 	return t
@@ -2206,21 +2416,24 @@ end
 
 --- Create a structure of type DescribeVaultOutput
 -- <p>Contains the Amazon Glacier response to your request.</p>
--- @param _SizeInBytes [long] <p>Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return null if an inventory has not yet run on the vault, for example if you just created the vault.</p>
--- @param _VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault.</p>
--- @param _LastInventoryDate [string] <p>The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This value should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.</p>
--- @param _VaultName [string] <p>The name of the vault.</p>
--- @param _NumberOfArchives [long] <p>The number of archives in the vault as of the last inventory date. This field will return <code>null</code> if an inventory has not yet run on the vault, for example if you just created the vault.</p>
--- @param _CreationDate [string] <p>The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.</p>
-function M.DescribeVaultOutput(_SizeInBytes, _VaultARN, _LastInventoryDate, _VaultName, _NumberOfArchives, _CreationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVaultOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeInBytes [long] <p>Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return null if an inventory has not yet run on the vault, for example if you just created the vault.</p>
+-- * VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault.</p>
+-- * LastInventoryDate [string] <p>The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This value should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.</p>
+-- * VaultName [string] <p>The name of the vault.</p>
+-- * NumberOfArchives [long] <p>The number of archives in the vault as of the last inventory date. This field will return <code>null</code> if an inventory has not yet run on the vault, for example if you just created the vault.</p>
+-- * CreationDate [string] <p>The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.</p>
+-- @return DescribeVaultOutput structure as a key-value pair table
+function M.DescribeVaultOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeVaultOutput")
 	local t = { 
-		["SizeInBytes"] = _SizeInBytes,
-		["VaultARN"] = _VaultARN,
-		["LastInventoryDate"] = _LastInventoryDate,
-		["VaultName"] = _VaultName,
-		["NumberOfArchives"] = _NumberOfArchives,
-		["CreationDate"] = _CreationDate,
+		["SizeInBytes"] = args["SizeInBytes"],
+		["VaultARN"] = args["VaultARN"],
+		["LastInventoryDate"] = args["LastInventoryDate"],
+		["VaultName"] = args["VaultName"],
+		["NumberOfArchives"] = args["NumberOfArchives"],
+		["CreationDate"] = args["CreationDate"],
 	}
 	asserts.AssertDescribeVaultOutput(t)
 	return t
@@ -2242,15 +2455,18 @@ end
 
 --- Create a structure of type DeleteVaultNotificationsInput
 -- <p>Provides options for deleting a vault notification configuration from an Amazon Glacier vault.</p>
--- @param _vaultName [string] <p>The name of the vault.</p>
--- @param _accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
--- Required parameter: accountId
--- Required parameter: vaultName
-function M.DeleteVaultNotificationsInput(_vaultName, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVaultNotificationsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vaultName [string] <p>The name of the vault.</p>
+-- * accountId [string] <p>The <code>AccountId</code> value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '<code>-</code>' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. </p>
+-- Required key: accountId
+-- Required key: vaultName
+-- @return DeleteVaultNotificationsInput structure as a key-value pair table
+function M.DeleteVaultNotificationsInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteVaultNotificationsInput")
 	local t = { 
-		["vaultName"] = _vaultName,
-		["accountId"] = _accountId,
+		["vaultName"] = args["vaultName"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertDeleteVaultNotificationsInput(t)
 	return t

@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type BadRequestException
 -- <p>An exception object returned when a request fails.</p>
--- @param _message [String] <p>A text description associated with the BadRequestException object.</p>
-function M.BadRequestException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BadRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>A text description associated with the BadRequestException object.</p>
+-- @return BadRequestException structure as a key-value pair table
+function M.BadRequestException(args)
+	assert(args, "You must provdide an argument table when creating BadRequestException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertBadRequestException(t)
 	return t
@@ -60,17 +63,20 @@ end
 
 --- Create a structure of type Session
 -- <p>Describes the session. Session information is required on ALL events.</p>
--- @param _duration [Long] <p>The duration of the session.</p>
--- @param _startTimestamp [ISO8601Timestamp] <p>The time the event started in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
--- @param _id [String50Chars] <p>A unique identifier for the session</p>
--- @param _stopTimestamp [ISO8601Timestamp] <p>The time the event terminated in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
-function M.Session(_duration, _startTimestamp, _id, _stopTimestamp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Session")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * duration [Long] <p>The duration of the session.</p>
+-- * startTimestamp [ISO8601Timestamp] <p>The time the event started in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
+-- * id [String50Chars] <p>A unique identifier for the session</p>
+-- * stopTimestamp [ISO8601Timestamp] <p>The time the event terminated in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
+-- @return Session structure as a key-value pair table
+function M.Session(args)
+	assert(args, "You must provdide an argument table when creating Session")
 	local t = { 
-		["duration"] = _duration,
-		["startTimestamp"] = _startTimestamp,
-		["id"] = _id,
-		["stopTimestamp"] = _stopTimestamp,
+		["duration"] = args["duration"],
+		["startTimestamp"] = args["startTimestamp"],
+		["id"] = args["id"],
+		["stopTimestamp"] = args["stopTimestamp"],
 	}
 	asserts.AssertSession(t)
 	return t
@@ -93,17 +99,20 @@ end
 
 --- Create a structure of type PutEventsInput
 -- <p>A container for the data needed for a PutEvent operation</p>
--- @param _clientContextEncoding [String] <p>The encoding used for the client context.</p>
--- @param _events [EventListDefinition] <p>An array of Event JSON objects</p>
--- @param _clientContext [String] <p>The client context including the client ID, app title, app version and package name.</p>
--- Required parameter: events
--- Required parameter: clientContext
-function M.PutEventsInput(_clientContextEncoding, _events, _clientContext, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutEventsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * clientContextEncoding [String] <p>The encoding used for the client context.</p>
+-- * events [EventListDefinition] <p>An array of Event JSON objects</p>
+-- * clientContext [String] <p>The client context including the client ID, app title, app version and package name.</p>
+-- Required key: events
+-- Required key: clientContext
+-- @return PutEventsInput structure as a key-value pair table
+function M.PutEventsInput(args)
+	assert(args, "You must provdide an argument table when creating PutEventsInput")
 	local t = { 
-		["clientContextEncoding"] = _clientContextEncoding,
-		["events"] = _events,
-		["clientContext"] = _clientContext,
+		["clientContextEncoding"] = args["clientContextEncoding"],
+		["events"] = args["events"],
+		["clientContext"] = args["clientContext"],
 	}
 	asserts.AssertPutEventsInput(t)
 	return t
@@ -129,23 +138,26 @@ end
 
 --- Create a structure of type Event
 -- <p>A JSON object representing a batch of unique event occurrences in your app.</p>
--- @param _version [String10Chars] <p>The version of the event.</p>
--- @param _eventType [String50Chars] <p>A name signifying an event that occurred in your app. This is used for grouping and aggregating like events together for reporting purposes.</p>
--- @param _metrics [MapOfStringToNumber] <p>A collection of key-value pairs that gives additional, measurable context to the event. The key-value pairs are specified by the developer.</p> <p>This collection can be empty or the attribute object can be omitted.</p>
--- @param _session [Session] <p>The session the event occured within. </p>
--- @param _timestamp [ISO8601Timestamp] <p>The time the event occurred in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
--- @param _attributes [MapOfStringToString] <p>A collection of key-value pairs that give additional context to the event. The key-value pairs are specified by the developer.</p> <p>This collection can be empty or the attribute object can be omitted.</p>
--- Required parameter: eventType
--- Required parameter: timestamp
-function M.Event(_version, _eventType, _metrics, _session, _timestamp, _attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Event")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [String10Chars] <p>The version of the event.</p>
+-- * eventType [String50Chars] <p>A name signifying an event that occurred in your app. This is used for grouping and aggregating like events together for reporting purposes.</p>
+-- * metrics [MapOfStringToNumber] <p>A collection of key-value pairs that gives additional, measurable context to the event. The key-value pairs are specified by the developer.</p> <p>This collection can be empty or the attribute object can be omitted.</p>
+-- * session [Session] <p>The session the event occured within. </p>
+-- * timestamp [ISO8601Timestamp] <p>The time the event occurred in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
+-- * attributes [MapOfStringToString] <p>A collection of key-value pairs that give additional context to the event. The key-value pairs are specified by the developer.</p> <p>This collection can be empty or the attribute object can be omitted.</p>
+-- Required key: eventType
+-- Required key: timestamp
+-- @return Event structure as a key-value pair table
+function M.Event(args)
+	assert(args, "You must provdide an argument table when creating Event")
 	local t = { 
-		["version"] = _version,
-		["eventType"] = _eventType,
-		["metrics"] = _metrics,
-		["session"] = _session,
-		["timestamp"] = _timestamp,
-		["attributes"] = _attributes,
+		["version"] = args["version"],
+		["eventType"] = args["eventType"],
+		["metrics"] = args["metrics"],
+		["session"] = args["session"],
+		["timestamp"] = args["timestamp"],
+		["attributes"] = args["attributes"],
 	}
 	asserts.AssertEvent(t)
 	return t

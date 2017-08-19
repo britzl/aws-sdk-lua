@@ -36,14 +36,17 @@ end
 
 --- Create a structure of type StartOnDemandReplicationRunRequest
 --  
--- @param _replicationJobId [ReplicationJobId] 
--- @param _description [Description] 
--- Required parameter: replicationJobId
-function M.StartOnDemandReplicationRunRequest(_replicationJobId, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartOnDemandReplicationRunRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * replicationJobId [ReplicationJobId] 
+-- * description [Description] 
+-- Required key: replicationJobId
+-- @return StartOnDemandReplicationRunRequest structure as a key-value pair table
+function M.StartOnDemandReplicationRunRequest(args)
+	assert(args, "You must provdide an argument table when creating StartOnDemandReplicationRunRequest")
 	local t = { 
-		["replicationJobId"] = _replicationJobId,
-		["description"] = _description,
+		["replicationJobId"] = args["replicationJobId"],
+		["description"] = args["description"],
 	}
 	asserts.AssertStartOnDemandReplicationRunRequest(t)
 	return t
@@ -62,11 +65,14 @@ end
 
 --- Create a structure of type ReplicationJobNotFoundException
 -- The specified Replication Job cannot be found.
--- @param _message [ErrorMessage] 
-function M.ReplicationJobNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationJobNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ReplicationJobNotFoundException structure as a key-value pair table
+function M.ReplicationJobNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ReplicationJobNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertReplicationJobNotFoundException(t)
 	return t
@@ -85,11 +91,14 @@ end
 
 --- Create a structure of type InternalError
 -- An internal error has occured.
--- @param _message [ErrorMessage] 
-function M.InternalError(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InternalError structure as a key-value pair table
+function M.InternalError(args)
+	assert(args, "You must provdide an argument table when creating InternalError")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalError(t)
 	return t
@@ -107,8 +116,11 @@ end
 
 --- Create a structure of type ImportServerCatalogResponse
 --  
-function M.ImportServerCatalogResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImportServerCatalogResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ImportServerCatalogResponse structure as a key-value pair table
+function M.ImportServerCatalogResponse(args)
+	assert(args, "You must provdide an argument table when creating ImportServerCatalogResponse")
 	local t = { 
 	}
 	asserts.AssertImportServerCatalogResponse(t)
@@ -128,11 +140,14 @@ end
 
 --- Create a structure of type NoConnectorsAvailableException
 -- No connectors are available to handle this request. Please associate connector(s) and verify any existing connectors are healthy and can respond to requests.
--- @param _message [ErrorMessage] 
-function M.NoConnectorsAvailableException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoConnectorsAvailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return NoConnectorsAvailableException structure as a key-value pair table
+function M.NoConnectorsAvailableException(args)
+	assert(args, "You must provdide an argument table when creating NoConnectorsAvailableException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNoConnectorsAvailableException(t)
 	return t
@@ -160,29 +175,32 @@ end
 
 --- Create a structure of type Connector
 -- Object representing a Connector
--- @param _status [ConnectorStatus] 
--- @param _capabilityList [ConnectorCapabilityList] 
--- @param _macAddress [MacAddress] 
--- @param _vmManagerName [VmManagerName] 
--- @param _connectorId [ConnectorId] 
--- @param _associatedOn [Timestamp] 
--- @param _version [ConnectorVersion] 
--- @param _vmManagerId [VmManagerId] 
--- @param _vmManagerType [VmManagerType] 
--- @param _ipAddress [IpAddress] 
-function M.Connector(_status, _capabilityList, _macAddress, _vmManagerName, _connectorId, _associatedOn, _version, _vmManagerId, _vmManagerType, _ipAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Connector")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [ConnectorStatus] 
+-- * capabilityList [ConnectorCapabilityList] 
+-- * macAddress [MacAddress] 
+-- * vmManagerName [VmManagerName] 
+-- * connectorId [ConnectorId] 
+-- * associatedOn [Timestamp] 
+-- * version [ConnectorVersion] 
+-- * vmManagerId [VmManagerId] 
+-- * vmManagerType [VmManagerType] 
+-- * ipAddress [IpAddress] 
+-- @return Connector structure as a key-value pair table
+function M.Connector(args)
+	assert(args, "You must provdide an argument table when creating Connector")
 	local t = { 
-		["status"] = _status,
-		["capabilityList"] = _capabilityList,
-		["macAddress"] = _macAddress,
-		["vmManagerName"] = _vmManagerName,
-		["connectorId"] = _connectorId,
-		["associatedOn"] = _associatedOn,
-		["version"] = _version,
-		["vmManagerId"] = _vmManagerId,
-		["vmManagerType"] = _vmManagerType,
-		["ipAddress"] = _ipAddress,
+		["status"] = args["status"],
+		["capabilityList"] = args["capabilityList"],
+		["macAddress"] = args["macAddress"],
+		["vmManagerName"] = args["vmManagerName"],
+		["connectorId"] = args["connectorId"],
+		["associatedOn"] = args["associatedOn"],
+		["version"] = args["version"],
+		["vmManagerId"] = args["vmManagerId"],
+		["vmManagerType"] = args["vmManagerType"],
+		["ipAddress"] = args["ipAddress"],
 	}
 	asserts.AssertConnector(t)
 	return t
@@ -202,13 +220,16 @@ end
 
 --- Create a structure of type GetReplicationJobsResponse
 --  
--- @param _nextToken [NextToken] 
--- @param _replicationJobList [ReplicationJobList] 
-function M.GetReplicationJobsResponse(_nextToken, _replicationJobList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetReplicationJobsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * replicationJobList [ReplicationJobList] 
+-- @return GetReplicationJobsResponse structure as a key-value pair table
+function M.GetReplicationJobsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetReplicationJobsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["replicationJobList"] = _replicationJobList,
+		["nextToken"] = args["nextToken"],
+		["replicationJobList"] = args["replicationJobList"],
 	}
 	asserts.AssertGetReplicationJobsResponse(t)
 	return t
@@ -227,11 +248,14 @@ end
 
 --- Create a structure of type ServerCannotBeReplicatedException
 -- The provided server cannot be replicated.
--- @param _message [ErrorMessage] 
-function M.ServerCannotBeReplicatedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServerCannotBeReplicatedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ServerCannotBeReplicatedException structure as a key-value pair table
+function M.ServerCannotBeReplicatedException(args)
+	assert(args, "You must provdide an argument table when creating ServerCannotBeReplicatedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServerCannotBeReplicatedException(t)
 	return t
@@ -249,8 +273,11 @@ end
 
 --- Create a structure of type ImportServerCatalogRequest
 --  
-function M.ImportServerCatalogRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImportServerCatalogRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ImportServerCatalogRequest structure as a key-value pair table
+function M.ImportServerCatalogRequest(args)
+	assert(args, "You must provdide an argument table when creating ImportServerCatalogRequest")
 	local t = { 
 	}
 	asserts.AssertImportServerCatalogRequest(t)
@@ -269,8 +296,11 @@ end
 
 --- Create a structure of type DeleteServerCatalogRequest
 --  
-function M.DeleteServerCatalogRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteServerCatalogRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteServerCatalogRequest structure as a key-value pair table
+function M.DeleteServerCatalogRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteServerCatalogRequest")
 	local t = { 
 	}
 	asserts.AssertDeleteServerCatalogRequest(t)
@@ -297,25 +327,28 @@ end
 
 --- Create a structure of type ReplicationRun
 -- Object representing a Replication Run
--- @param _amiId [AmiId] 
--- @param _description [Description] 
--- @param _state [ReplicationRunState] 
--- @param _completedTime [Timestamp] 
--- @param _scheduledStartTime [Timestamp] 
--- @param _replicationRunId [ReplicationRunId] 
--- @param _type [ReplicationRunType] 
--- @param _statusMessage [ReplicationRunStatusMessage] 
-function M.ReplicationRun(_amiId, _description, _state, _completedTime, _scheduledStartTime, _replicationRunId, _type, _statusMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationRun")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * amiId [AmiId] 
+-- * description [Description] 
+-- * state [ReplicationRunState] 
+-- * completedTime [Timestamp] 
+-- * scheduledStartTime [Timestamp] 
+-- * replicationRunId [ReplicationRunId] 
+-- * type [ReplicationRunType] 
+-- * statusMessage [ReplicationRunStatusMessage] 
+-- @return ReplicationRun structure as a key-value pair table
+function M.ReplicationRun(args)
+	assert(args, "You must provdide an argument table when creating ReplicationRun")
 	local t = { 
-		["amiId"] = _amiId,
-		["description"] = _description,
-		["state"] = _state,
-		["completedTime"] = _completedTime,
-		["scheduledStartTime"] = _scheduledStartTime,
-		["replicationRunId"] = _replicationRunId,
-		["type"] = _type,
-		["statusMessage"] = _statusMessage,
+		["amiId"] = args["amiId"],
+		["description"] = args["description"],
+		["state"] = args["state"],
+		["completedTime"] = args["completedTime"],
+		["scheduledStartTime"] = args["scheduledStartTime"],
+		["replicationRunId"] = args["replicationRunId"],
+		["type"] = args["type"],
+		["statusMessage"] = args["statusMessage"],
 	}
 	asserts.AssertReplicationRun(t)
 	return t
@@ -333,8 +366,11 @@ end
 
 --- Create a structure of type DeleteServerCatalogResponse
 --  
-function M.DeleteServerCatalogResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteServerCatalogResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteServerCatalogResponse structure as a key-value pair table
+function M.DeleteServerCatalogResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteServerCatalogResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteServerCatalogResponse(t)
@@ -357,16 +393,19 @@ end
 
 --- Create a structure of type GetReplicationRunsRequest
 --  
--- @param _nextToken [NextToken] 
--- @param _replicationJobId [ReplicationJobId] 
--- @param _maxResults [MaxResults] 
--- Required parameter: replicationJobId
-function M.GetReplicationRunsRequest(_nextToken, _replicationJobId, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetReplicationRunsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * replicationJobId [ReplicationJobId] 
+-- * maxResults [MaxResults] 
+-- Required key: replicationJobId
+-- @return GetReplicationRunsRequest structure as a key-value pair table
+function M.GetReplicationRunsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetReplicationRunsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["replicationJobId"] = _replicationJobId,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["replicationJobId"] = args["replicationJobId"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetReplicationRunsRequest(t)
 	return t
@@ -386,13 +425,16 @@ end
 
 --- Create a structure of type GetConnectorsRequest
 --  
--- @param _nextToken [NextToken] 
--- @param _maxResults [MaxResults] 
-function M.GetConnectorsRequest(_nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetConnectorsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * maxResults [MaxResults] 
+-- @return GetConnectorsRequest structure as a key-value pair table
+function M.GetConnectorsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetConnectorsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetConnectorsRequest(t)
 	return t
@@ -412,12 +454,15 @@ end
 
 --- Create a structure of type DisassociateConnectorRequest
 --  
--- @param _connectorId [ConnectorId] 
--- Required parameter: connectorId
-function M.DisassociateConnectorRequest(_connectorId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateConnectorRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * connectorId [ConnectorId] 
+-- Required key: connectorId
+-- @return DisassociateConnectorRequest structure as a key-value pair table
+function M.DisassociateConnectorRequest(args)
+	assert(args, "You must provdide an argument table when creating DisassociateConnectorRequest")
 	local t = { 
-		["connectorId"] = _connectorId,
+		["connectorId"] = args["connectorId"],
 	}
 	asserts.AssertDisassociateConnectorRequest(t)
 	return t
@@ -436,11 +481,14 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- A parameter specified in the request is not valid, is unsupported, or cannot be used.
--- @param _message [ErrorMessage] 
-function M.InvalidParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterException(t)
 	return t
@@ -462,17 +510,20 @@ end
 
 --- Create a structure of type GetServersResponse
 --  
--- @param _lastModifiedOn [Timestamp] 
--- @param _nextToken [NextToken] 
--- @param _serverCatalogStatus [ServerCatalogStatus] 
--- @param _serverList [ServerList] 
-function M.GetServersResponse(_lastModifiedOn, _nextToken, _serverCatalogStatus, _serverList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetServersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lastModifiedOn [Timestamp] 
+-- * nextToken [NextToken] 
+-- * serverCatalogStatus [ServerCatalogStatus] 
+-- * serverList [ServerList] 
+-- @return GetServersResponse structure as a key-value pair table
+function M.GetServersResponse(args)
+	assert(args, "You must provdide an argument table when creating GetServersResponse")
 	local t = { 
-		["lastModifiedOn"] = _lastModifiedOn,
-		["nextToken"] = _nextToken,
-		["serverCatalogStatus"] = _serverCatalogStatus,
-		["serverList"] = _serverList,
+		["lastModifiedOn"] = args["lastModifiedOn"],
+		["nextToken"] = args["nextToken"],
+		["serverCatalogStatus"] = args["serverCatalogStatus"],
+		["serverList"] = args["serverList"],
 	}
 	asserts.AssertGetServersResponse(t)
 	return t
@@ -491,11 +542,14 @@ end
 
 --- Create a structure of type ReplicationRunLimitExceededException
 -- This user has exceeded the maximum allowed Replication Run limit.
--- @param _message [ErrorMessage] 
-function M.ReplicationRunLimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationRunLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ReplicationRunLimitExceededException structure as a key-value pair table
+function M.ReplicationRunLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating ReplicationRunLimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertReplicationRunLimitExceededException(t)
 	return t
@@ -514,11 +568,14 @@ end
 
 --- Create a structure of type UnauthorizedOperationException
 -- This user does not have permissions to perform this operation.
--- @param _message [ErrorMessage] 
-function M.UnauthorizedOperationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedOperationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return UnauthorizedOperationException structure as a key-value pair table
+function M.UnauthorizedOperationException(args)
+	assert(args, "You must provdide an argument table when creating UnauthorizedOperationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnauthorizedOperationException(t)
 	return t
@@ -536,8 +593,11 @@ end
 
 --- Create a structure of type DeleteReplicationJobResponse
 --  
-function M.DeleteReplicationJobResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationJobResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteReplicationJobResponse structure as a key-value pair table
+function M.DeleteReplicationJobResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteReplicationJobResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteReplicationJobResponse(t)
@@ -557,11 +617,14 @@ end
 
 --- Create a structure of type OperationNotPermittedException
 -- The specified operation is not allowed. This error can occur for a number of reasons; for example, you might be trying to start a Replication Run before seed Replication Run.
--- @param _message [ErrorMessage] 
-function M.OperationNotPermittedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return OperationNotPermittedException structure as a key-value pair table
+function M.OperationNotPermittedException(args)
+	assert(args, "You must provdide an argument table when creating OperationNotPermittedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertOperationNotPermittedException(t)
 	return t
@@ -580,11 +643,14 @@ end
 
 --- Create a structure of type CreateReplicationJobResponse
 --  
--- @param _replicationJobId [ReplicationJobId] 
-function M.CreateReplicationJobResponse(_replicationJobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationJobResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * replicationJobId [ReplicationJobId] 
+-- @return CreateReplicationJobResponse structure as a key-value pair table
+function M.CreateReplicationJobResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateReplicationJobResponse")
 	local t = { 
-		["replicationJobId"] = _replicationJobId,
+		["replicationJobId"] = args["replicationJobId"],
 	}
 	asserts.AssertCreateReplicationJobResponse(t)
 	return t
@@ -609,22 +675,25 @@ end
 
 --- Create a structure of type UpdateReplicationJobRequest
 --  
--- @param _licenseType [LicenseType] 
--- @param _description [Description] 
--- @param _nextReplicationRunStartTime [Timestamp] 
--- @param _replicationJobId [ReplicationJobId] 
--- @param _frequency [Frequency] 
--- @param _roleName [RoleName] 
--- Required parameter: replicationJobId
-function M.UpdateReplicationJobRequest(_licenseType, _description, _nextReplicationRunStartTime, _replicationJobId, _frequency, _roleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateReplicationJobRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * licenseType [LicenseType] 
+-- * description [Description] 
+-- * nextReplicationRunStartTime [Timestamp] 
+-- * replicationJobId [ReplicationJobId] 
+-- * frequency [Frequency] 
+-- * roleName [RoleName] 
+-- Required key: replicationJobId
+-- @return UpdateReplicationJobRequest structure as a key-value pair table
+function M.UpdateReplicationJobRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateReplicationJobRequest")
 	local t = { 
-		["licenseType"] = _licenseType,
-		["description"] = _description,
-		["nextReplicationRunStartTime"] = _nextReplicationRunStartTime,
-		["replicationJobId"] = _replicationJobId,
-		["frequency"] = _frequency,
-		["roleName"] = _roleName,
+		["licenseType"] = args["licenseType"],
+		["description"] = args["description"],
+		["nextReplicationRunStartTime"] = args["nextReplicationRunStartTime"],
+		["replicationJobId"] = args["replicationJobId"],
+		["frequency"] = args["frequency"],
+		["roleName"] = args["roleName"],
 	}
 	asserts.AssertUpdateReplicationJobRequest(t)
 	return t
@@ -643,11 +712,14 @@ end
 
 --- Create a structure of type MissingRequiredParameterException
 -- The request is missing a required parameter. Ensure that you have supplied all the required parameters for the request.
--- @param _message [ErrorMessage] 
-function M.MissingRequiredParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MissingRequiredParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return MissingRequiredParameterException structure as a key-value pair table
+function M.MissingRequiredParameterException(args)
+	assert(args, "You must provdide an argument table when creating MissingRequiredParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMissingRequiredParameterException(t)
 	return t
@@ -670,19 +742,22 @@ end
 
 --- Create a structure of type Server
 -- Object representing a server
--- @param _replicationJobTerminated [ReplicationJobTerminated] 
--- @param _serverId [ServerId] 
--- @param _serverType [ServerType] 
--- @param _replicationJobId [ReplicationJobId] 
--- @param _vmServer [VmServer] 
-function M.Server(_replicationJobTerminated, _serverId, _serverType, _replicationJobId, _vmServer, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Server")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * replicationJobTerminated [ReplicationJobTerminated] 
+-- * serverId [ServerId] 
+-- * serverType [ServerType] 
+-- * replicationJobId [ReplicationJobId] 
+-- * vmServer [VmServer] 
+-- @return Server structure as a key-value pair table
+function M.Server(args)
+	assert(args, "You must provdide an argument table when creating Server")
 	local t = { 
-		["replicationJobTerminated"] = _replicationJobTerminated,
-		["serverId"] = _serverId,
-		["serverType"] = _serverType,
-		["replicationJobId"] = _replicationJobId,
-		["vmServer"] = _vmServer,
+		["replicationJobTerminated"] = args["replicationJobTerminated"],
+		["serverId"] = args["serverId"],
+		["serverType"] = args["serverType"],
+		["replicationJobId"] = args["replicationJobId"],
+		["vmServer"] = args["vmServer"],
 	}
 	asserts.AssertServer(t)
 	return t
@@ -701,11 +776,14 @@ end
 
 --- Create a structure of type ReplicationJobAlreadyExistsException
 -- An active Replication Job already exists for the specified server.
--- @param _message [ErrorMessage] 
-function M.ReplicationJobAlreadyExistsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationJobAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ReplicationJobAlreadyExistsException structure as a key-value pair table
+function M.ReplicationJobAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ReplicationJobAlreadyExistsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertReplicationJobAlreadyExistsException(t)
 	return t
@@ -724,11 +802,14 @@ end
 
 --- Create a structure of type StartOnDemandReplicationRunResponse
 --  
--- @param _replicationRunId [ReplicationRunId] 
-function M.StartOnDemandReplicationRunResponse(_replicationRunId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartOnDemandReplicationRunResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * replicationRunId [ReplicationRunId] 
+-- @return StartOnDemandReplicationRunResponse structure as a key-value pair table
+function M.StartOnDemandReplicationRunResponse(args)
+	assert(args, "You must provdide an argument table when creating StartOnDemandReplicationRunResponse")
 	local t = { 
-		["replicationRunId"] = _replicationRunId,
+		["replicationRunId"] = args["replicationRunId"],
 	}
 	asserts.AssertStartOnDemandReplicationRunResponse(t)
 	return t
@@ -755,24 +836,27 @@ end
 
 --- Create a structure of type CreateReplicationJobRequest
 --  
--- @param _licenseType [LicenseType] 
--- @param _description [Description] 
--- @param _seedReplicationTime [Timestamp] 
--- @param _frequency [Frequency] 
--- @param _roleName [RoleName] 
--- @param _serverId [ServerId] 
--- Required parameter: serverId
--- Required parameter: seedReplicationTime
--- Required parameter: frequency
-function M.CreateReplicationJobRequest(_licenseType, _description, _seedReplicationTime, _frequency, _roleName, _serverId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationJobRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * licenseType [LicenseType] 
+-- * description [Description] 
+-- * seedReplicationTime [Timestamp] 
+-- * frequency [Frequency] 
+-- * roleName [RoleName] 
+-- * serverId [ServerId] 
+-- Required key: serverId
+-- Required key: seedReplicationTime
+-- Required key: frequency
+-- @return CreateReplicationJobRequest structure as a key-value pair table
+function M.CreateReplicationJobRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateReplicationJobRequest")
 	local t = { 
-		["licenseType"] = _licenseType,
-		["description"] = _description,
-		["seedReplicationTime"] = _seedReplicationTime,
-		["frequency"] = _frequency,
-		["roleName"] = _roleName,
-		["serverId"] = _serverId,
+		["licenseType"] = args["licenseType"],
+		["description"] = args["description"],
+		["seedReplicationTime"] = args["seedReplicationTime"],
+		["frequency"] = args["frequency"],
+		["roleName"] = args["roleName"],
+		["serverId"] = args["serverId"],
 	}
 	asserts.AssertCreateReplicationJobRequest(t)
 	return t
@@ -792,12 +876,15 @@ end
 
 --- Create a structure of type DeleteReplicationJobRequest
 --  
--- @param _replicationJobId [ReplicationJobId] 
--- Required parameter: replicationJobId
-function M.DeleteReplicationJobRequest(_replicationJobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationJobRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * replicationJobId [ReplicationJobId] 
+-- Required key: replicationJobId
+-- @return DeleteReplicationJobRequest structure as a key-value pair table
+function M.DeleteReplicationJobRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteReplicationJobRequest")
 	local t = { 
-		["replicationJobId"] = _replicationJobId,
+		["replicationJobId"] = args["replicationJobId"],
 	}
 	asserts.AssertDeleteReplicationJobRequest(t)
 	return t
@@ -815,8 +902,11 @@ end
 
 --- Create a structure of type DisassociateConnectorResponse
 --  
-function M.DisassociateConnectorResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateConnectorResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisassociateConnectorResponse structure as a key-value pair table
+function M.DisassociateConnectorResponse(args)
+	assert(args, "You must provdide an argument table when creating DisassociateConnectorResponse")
 	local t = { 
 	}
 	asserts.AssertDisassociateConnectorResponse(t)
@@ -838,15 +928,18 @@ end
 
 --- Create a structure of type GetReplicationJobsRequest
 --  
--- @param _nextToken [NextToken] 
--- @param _replicationJobId [ReplicationJobId] 
--- @param _maxResults [MaxResults] 
-function M.GetReplicationJobsRequest(_nextToken, _replicationJobId, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetReplicationJobsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * replicationJobId [ReplicationJobId] 
+-- * maxResults [MaxResults] 
+-- @return GetReplicationJobsRequest structure as a key-value pair table
+function M.GetReplicationJobsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetReplicationJobsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["replicationJobId"] = _replicationJobId,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["replicationJobId"] = args["replicationJobId"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetReplicationJobsRequest(t)
 	return t
@@ -878,37 +971,40 @@ end
 
 --- Create a structure of type ReplicationJob
 -- Object representing a Replication Job
--- @param _licenseType [LicenseType] 
--- @param _latestAmiId [AmiId] 
--- @param _description [Description] 
--- @param _vmServer [VmServer] 
--- @param _replicationRunList [ReplicationRunList] 
--- @param _nextReplicationRunStartTime [Timestamp] 
--- @param _serverType [ServerType] 
--- @param _replicationJobId [ReplicationJobId] 
--- @param _state [ReplicationJobState] 
--- @param _seedReplicationTime [Timestamp] 
--- @param _frequency [Frequency] 
--- @param _roleName [RoleName] 
--- @param _serverId [ServerId] 
--- @param _statusMessage [ReplicationJobStatusMessage] 
-function M.ReplicationJob(_licenseType, _latestAmiId, _description, _vmServer, _replicationRunList, _nextReplicationRunStartTime, _serverType, _replicationJobId, _state, _seedReplicationTime, _frequency, _roleName, _serverId, _statusMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationJob")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * licenseType [LicenseType] 
+-- * latestAmiId [AmiId] 
+-- * description [Description] 
+-- * vmServer [VmServer] 
+-- * replicationRunList [ReplicationRunList] 
+-- * nextReplicationRunStartTime [Timestamp] 
+-- * serverType [ServerType] 
+-- * replicationJobId [ReplicationJobId] 
+-- * state [ReplicationJobState] 
+-- * seedReplicationTime [Timestamp] 
+-- * frequency [Frequency] 
+-- * roleName [RoleName] 
+-- * serverId [ServerId] 
+-- * statusMessage [ReplicationJobStatusMessage] 
+-- @return ReplicationJob structure as a key-value pair table
+function M.ReplicationJob(args)
+	assert(args, "You must provdide an argument table when creating ReplicationJob")
 	local t = { 
-		["licenseType"] = _licenseType,
-		["latestAmiId"] = _latestAmiId,
-		["description"] = _description,
-		["vmServer"] = _vmServer,
-		["replicationRunList"] = _replicationRunList,
-		["nextReplicationRunStartTime"] = _nextReplicationRunStartTime,
-		["serverType"] = _serverType,
-		["replicationJobId"] = _replicationJobId,
-		["state"] = _state,
-		["seedReplicationTime"] = _seedReplicationTime,
-		["frequency"] = _frequency,
-		["roleName"] = _roleName,
-		["serverId"] = _serverId,
-		["statusMessage"] = _statusMessage,
+		["licenseType"] = args["licenseType"],
+		["latestAmiId"] = args["latestAmiId"],
+		["description"] = args["description"],
+		["vmServer"] = args["vmServer"],
+		["replicationRunList"] = args["replicationRunList"],
+		["nextReplicationRunStartTime"] = args["nextReplicationRunStartTime"],
+		["serverType"] = args["serverType"],
+		["replicationJobId"] = args["replicationJobId"],
+		["state"] = args["state"],
+		["seedReplicationTime"] = args["seedReplicationTime"],
+		["frequency"] = args["frequency"],
+		["roleName"] = args["roleName"],
+		["serverId"] = args["serverId"],
+		["statusMessage"] = args["statusMessage"],
 	}
 	asserts.AssertReplicationJob(t)
 	return t
@@ -931,19 +1027,22 @@ end
 
 --- Create a structure of type VmServer
 -- Object representing a VM server
--- @param _vmManagerName [VmManagerName] 
--- @param _vmServerAddress [VmServerAddress] 
--- @param _vmName [VmName] 
--- @param _vmPath [VmPath] 
--- @param _vmManagerType [VmManagerType] 
-function M.VmServer(_vmManagerName, _vmServerAddress, _vmName, _vmPath, _vmManagerType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VmServer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vmManagerName [VmManagerName] 
+-- * vmServerAddress [VmServerAddress] 
+-- * vmName [VmName] 
+-- * vmPath [VmPath] 
+-- * vmManagerType [VmManagerType] 
+-- @return VmServer structure as a key-value pair table
+function M.VmServer(args)
+	assert(args, "You must provdide an argument table when creating VmServer")
 	local t = { 
-		["vmManagerName"] = _vmManagerName,
-		["vmServerAddress"] = _vmServerAddress,
-		["vmName"] = _vmName,
-		["vmPath"] = _vmPath,
-		["vmManagerType"] = _vmManagerType,
+		["vmManagerName"] = args["vmManagerName"],
+		["vmServerAddress"] = args["vmServerAddress"],
+		["vmName"] = args["vmName"],
+		["vmPath"] = args["vmPath"],
+		["vmManagerType"] = args["vmManagerType"],
 	}
 	asserts.AssertVmServer(t)
 	return t
@@ -963,13 +1062,16 @@ end
 
 --- Create a structure of type VmServerAddress
 -- Object representing a server's location
--- @param _vmManagerId [VmManagerId] 
--- @param _vmId [VmId] 
-function M.VmServerAddress(_vmManagerId, _vmId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VmServerAddress")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * vmManagerId [VmManagerId] 
+-- * vmId [VmId] 
+-- @return VmServerAddress structure as a key-value pair table
+function M.VmServerAddress(args)
+	assert(args, "You must provdide an argument table when creating VmServerAddress")
 	local t = { 
-		["vmManagerId"] = _vmManagerId,
-		["vmId"] = _vmId,
+		["vmManagerId"] = args["vmManagerId"],
+		["vmId"] = args["vmId"],
 	}
 	asserts.AssertVmServerAddress(t)
 	return t
@@ -989,13 +1091,16 @@ end
 
 --- Create a structure of type GetServersRequest
 --  
--- @param _nextToken [NextToken] 
--- @param _maxResults [MaxResults] 
-function M.GetServersRequest(_nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetServersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * maxResults [MaxResults] 
+-- @return GetServersRequest structure as a key-value pair table
+function M.GetServersRequest(args)
+	assert(args, "You must provdide an argument table when creating GetServersRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetServersRequest(t)
 	return t
@@ -1015,13 +1120,16 @@ end
 
 --- Create a structure of type GetConnectorsResponse
 --  
--- @param _nextToken [NextToken] 
--- @param _connectorList [ConnectorList] 
-function M.GetConnectorsResponse(_nextToken, _connectorList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetConnectorsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * connectorList [ConnectorList] 
+-- @return GetConnectorsResponse structure as a key-value pair table
+function M.GetConnectorsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetConnectorsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["connectorList"] = _connectorList,
+		["nextToken"] = args["nextToken"],
+		["connectorList"] = args["connectorList"],
 	}
 	asserts.AssertGetConnectorsResponse(t)
 	return t
@@ -1042,15 +1150,18 @@ end
 
 --- Create a structure of type GetReplicationRunsResponse
 --  
--- @param _nextToken [NextToken] 
--- @param _replicationJob [ReplicationJob] 
--- @param _replicationRunList [ReplicationRunList] 
-function M.GetReplicationRunsResponse(_nextToken, _replicationJob, _replicationRunList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetReplicationRunsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * replicationJob [ReplicationJob] 
+-- * replicationRunList [ReplicationRunList] 
+-- @return GetReplicationRunsResponse structure as a key-value pair table
+function M.GetReplicationRunsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetReplicationRunsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["replicationJob"] = _replicationJob,
-		["replicationRunList"] = _replicationRunList,
+		["nextToken"] = args["nextToken"],
+		["replicationJob"] = args["replicationJob"],
+		["replicationRunList"] = args["replicationRunList"],
 	}
 	asserts.AssertGetReplicationRunsResponse(t)
 	return t
@@ -1068,8 +1179,11 @@ end
 
 --- Create a structure of type UpdateReplicationJobResponse
 --  
-function M.UpdateReplicationJobResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateReplicationJobResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateReplicationJobResponse structure as a key-value pair table
+function M.UpdateReplicationJobResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateReplicationJobResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateReplicationJobResponse(t)

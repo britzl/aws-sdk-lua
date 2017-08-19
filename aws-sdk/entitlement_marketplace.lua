@@ -37,17 +37,20 @@ end
 
 --- Create a structure of type EntitlementValue
 -- <p>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</p>
--- @param _StringValue [String] <p>The StringValue field will be populated with a string value when the entitlement is a string type. Otherwise, the field will not be set.</p>
--- @param _BooleanValue [Boolean] <p>The BooleanValue field will be populated with a boolean value when the entitlement is a boolean type. Otherwise, the field will not be set.</p>
--- @param _IntegerValue [Integer] <p>The IntegerValue field will be populated with an integer value when the entitlement is an integer type. Otherwise, the field will not be set.</p>
--- @param _DoubleValue [Double] <p>The DoubleValue field will be populated with a double value when the entitlement is a double type. Otherwise, the field will not be set.</p>
-function M.EntitlementValue(_StringValue, _BooleanValue, _IntegerValue, _DoubleValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EntitlementValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StringValue [String] <p>The StringValue field will be populated with a string value when the entitlement is a string type. Otherwise, the field will not be set.</p>
+-- * BooleanValue [Boolean] <p>The BooleanValue field will be populated with a boolean value when the entitlement is a boolean type. Otherwise, the field will not be set.</p>
+-- * IntegerValue [Integer] <p>The IntegerValue field will be populated with an integer value when the entitlement is an integer type. Otherwise, the field will not be set.</p>
+-- * DoubleValue [Double] <p>The DoubleValue field will be populated with a double value when the entitlement is a double type. Otherwise, the field will not be set.</p>
+-- @return EntitlementValue structure as a key-value pair table
+function M.EntitlementValue(args)
+	assert(args, "You must provdide an argument table when creating EntitlementValue")
 	local t = { 
-		["StringValue"] = _StringValue,
-		["BooleanValue"] = _BooleanValue,
-		["IntegerValue"] = _IntegerValue,
-		["DoubleValue"] = _DoubleValue,
+		["StringValue"] = args["StringValue"],
+		["BooleanValue"] = args["BooleanValue"],
+		["IntegerValue"] = args["IntegerValue"],
+		["DoubleValue"] = args["DoubleValue"],
 	}
 	asserts.AssertEntitlementValue(t)
 	return t
@@ -70,18 +73,21 @@ end
 
 --- Create a structure of type GetEntitlementsRequest
 -- <p>The GetEntitlementsRequest contains parameters for the GetEntitlements operation.</p>
--- @param _Filter [GetEntitlementFilters] <p>Filter is used to return entitlements for a specific customer or for a specific dimension. Filters are described as keys mapped to a lists of values. Filtered requests are <i>unioned</i> for each value in the value list, and then <i>intersected</i> for each filter key.</p>
--- @param _ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code will be provided by AWS Marketplace when the product listing is created.</p>
--- @param _NextToken [NonEmptyString] <p>For paginated calls to GetEntitlements, pass the NextToken from the previous GetEntitlementsResult.</p>
--- @param _MaxResults [Integer] <p>The maximum number of items to retrieve from the GetEntitlements operation. For pagination, use the NextToken field in subsequent calls to GetEntitlements.</p>
--- Required parameter: ProductCode
-function M.GetEntitlementsRequest(_Filter, _ProductCode, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetEntitlementsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Filter [GetEntitlementFilters] <p>Filter is used to return entitlements for a specific customer or for a specific dimension. Filters are described as keys mapped to a lists of values. Filtered requests are <i>unioned</i> for each value in the value list, and then <i>intersected</i> for each filter key.</p>
+-- * ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code will be provided by AWS Marketplace when the product listing is created.</p>
+-- * NextToken [NonEmptyString] <p>For paginated calls to GetEntitlements, pass the NextToken from the previous GetEntitlementsResult.</p>
+-- * MaxResults [Integer] <p>The maximum number of items to retrieve from the GetEntitlements operation. For pagination, use the NextToken field in subsequent calls to GetEntitlements.</p>
+-- Required key: ProductCode
+-- @return GetEntitlementsRequest structure as a key-value pair table
+function M.GetEntitlementsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetEntitlementsRequest")
 	local t = { 
-		["Filter"] = _Filter,
-		["ProductCode"] = _ProductCode,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["Filter"] = args["Filter"],
+		["ProductCode"] = args["ProductCode"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertGetEntitlementsRequest(t)
 	return t
@@ -104,19 +110,22 @@ end
 
 --- Create a structure of type Entitlement
 -- <p>An entitlement represents capacity in a product owned by the customer. For example, a customer might own some number of users or seats in an SaaS application or some amount of data capacity in a multi-tenant database.</p>
--- @param _ProductCode [ProductCode] <p>The product code for which the given entitlement applies. Product codes are provided by AWS Marketplace when the product listing is created.</p>
--- @param _CustomerIdentifier [NonEmptyString] <p>The customer identifier is a handle to each unique customer in an application. Customer identifiers are obtained through the ResolveCustomer operation in AWS Marketplace Metering Service.</p>
--- @param _Dimension [NonEmptyString] <p>The dimension for which the given entitlement applies. Dimensions represent categories of capacity in a product and are specified when the product is listed in AWS Marketplace.</p>
--- @param _Value [EntitlementValue] <p>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</p>
--- @param _ExpirationDate [Timestamp] <p>The expiration date represents the minimum date through which this entitlement is expected to remain valid. For contractual products listed on AWS Marketplace, the expiration date is the date at which the customer will renew or cancel their contract. Customers who are opting to renew their contract will still have entitlements with an expiration date.</p>
-function M.Entitlement(_ProductCode, _CustomerIdentifier, _Dimension, _Value, _ExpirationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Entitlement")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProductCode [ProductCode] <p>The product code for which the given entitlement applies. Product codes are provided by AWS Marketplace when the product listing is created.</p>
+-- * CustomerIdentifier [NonEmptyString] <p>The customer identifier is a handle to each unique customer in an application. Customer identifiers are obtained through the ResolveCustomer operation in AWS Marketplace Metering Service.</p>
+-- * Dimension [NonEmptyString] <p>The dimension for which the given entitlement applies. Dimensions represent categories of capacity in a product and are specified when the product is listed in AWS Marketplace.</p>
+-- * Value [EntitlementValue] <p>The EntitlementValue represents the amount of capacity that the customer is entitled to for the product.</p>
+-- * ExpirationDate [Timestamp] <p>The expiration date represents the minimum date through which this entitlement is expected to remain valid. For contractual products listed on AWS Marketplace, the expiration date is the date at which the customer will renew or cancel their contract. Customers who are opting to renew their contract will still have entitlements with an expiration date.</p>
+-- @return Entitlement structure as a key-value pair table
+function M.Entitlement(args)
+	assert(args, "You must provdide an argument table when creating Entitlement")
 	local t = { 
-		["ProductCode"] = _ProductCode,
-		["CustomerIdentifier"] = _CustomerIdentifier,
-		["Dimension"] = _Dimension,
-		["Value"] = _Value,
-		["ExpirationDate"] = _ExpirationDate,
+		["ProductCode"] = args["ProductCode"],
+		["CustomerIdentifier"] = args["CustomerIdentifier"],
+		["Dimension"] = args["Dimension"],
+		["Value"] = args["Value"],
+		["ExpirationDate"] = args["ExpirationDate"],
 	}
 	asserts.AssertEntitlement(t)
 	return t
@@ -136,13 +145,16 @@ end
 
 --- Create a structure of type GetEntitlementsResult
 -- <p>The GetEntitlementsRequest contains results from the GetEntitlements operation.</p>
--- @param _Entitlements [EntitlementList] <p>The set of entitlements found through the GetEntitlements operation. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
--- @param _NextToken [NonEmptyString] <p>For paginated results, use NextToken in subsequent calls to GetEntitlements. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
-function M.GetEntitlementsResult(_Entitlements, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetEntitlementsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Entitlements [EntitlementList] <p>The set of entitlements found through the GetEntitlements operation. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
+-- * NextToken [NonEmptyString] <p>For paginated results, use NextToken in subsequent calls to GetEntitlements. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
+-- @return GetEntitlementsResult structure as a key-value pair table
+function M.GetEntitlementsResult(args)
+	assert(args, "You must provdide an argument table when creating GetEntitlementsResult")
 	local t = { 
-		["Entitlements"] = _Entitlements,
-		["NextToken"] = _NextToken,
+		["Entitlements"] = args["Entitlements"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertGetEntitlementsResult(t)
 	return t
@@ -161,11 +173,14 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- <p>One or more parameters in your request was invalid.</p>
--- @param _message [ErrorMessage] 
-function M.InvalidParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterException(t)
 	return t
@@ -184,11 +199,14 @@ end
 
 --- Create a structure of type InternalServiceErrorException
 -- <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
--- @param _message [ErrorMessage] 
-function M.InternalServiceErrorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InternalServiceErrorException structure as a key-value pair table
+function M.InternalServiceErrorException(args)
+	assert(args, "You must provdide an argument table when creating InternalServiceErrorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalServiceErrorException(t)
 	return t
@@ -207,11 +225,14 @@ end
 
 --- Create a structure of type ThrottlingException
 -- <p>The calls to the GetEntitlements API are throttled.</p>
--- @param _message [ErrorMessage] 
-function M.ThrottlingException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ThrottlingException structure as a key-value pair table
+function M.ThrottlingException(args)
+	assert(args, "You must provdide an argument table when creating ThrottlingException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertThrottlingException(t)
 	return t

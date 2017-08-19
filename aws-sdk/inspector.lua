@@ -40,23 +40,26 @@ end
 
 --- Create a structure of type AssessmentRunFilter
 -- <p>Used as the request parameter in the <a>ListAssessmentRuns</a> action.</p>
--- @param _startTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>startTime</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param _durationRange [DurationRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param _rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>rulesPackages</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param _states [AssessmentRunStateList] <p>For a record to match a filter, one of the values specified for this data type property must be the exact match of the value of the <b>assessmentRunState</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param _namePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string containing a wildcard that is specified for this data type property must match the value of the <b>assessmentRunName</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param _completionTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>completedAt</b> property of the <a>AssessmentRun</a> data type.</p>
--- @param _stateChangeTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must match the <b>stateChangedAt</b> property of the <a>AssessmentRun</a> data type.</p>
-function M.AssessmentRunFilter(_startTimeRange, _durationRange, _rulesPackageArns, _states, _namePattern, _completionTimeRange, _stateChangeTimeRange, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * startTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>startTime</b> property of the <a>AssessmentRun</a> data type.</p>
+-- * durationRange [DurationRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentRun</a> data type.</p>
+-- * rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>rulesPackages</b> property of the <a>AssessmentRun</a> data type.</p>
+-- * states [AssessmentRunStateList] <p>For a record to match a filter, one of the values specified for this data type property must be the exact match of the value of the <b>assessmentRunState</b> property of the <a>AssessmentRun</a> data type.</p>
+-- * namePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string containing a wildcard that is specified for this data type property must match the value of the <b>assessmentRunName</b> property of the <a>AssessmentRun</a> data type.</p>
+-- * completionTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>completedAt</b> property of the <a>AssessmentRun</a> data type.</p>
+-- * stateChangeTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must match the <b>stateChangedAt</b> property of the <a>AssessmentRun</a> data type.</p>
+-- @return AssessmentRunFilter structure as a key-value pair table
+function M.AssessmentRunFilter(args)
+	assert(args, "You must provdide an argument table when creating AssessmentRunFilter")
 	local t = { 
-		["startTimeRange"] = _startTimeRange,
-		["durationRange"] = _durationRange,
-		["rulesPackageArns"] = _rulesPackageArns,
-		["states"] = _states,
-		["namePattern"] = _namePattern,
-		["completionTimeRange"] = _completionTimeRange,
-		["stateChangeTimeRange"] = _stateChangeTimeRange,
+		["startTimeRange"] = args["startTimeRange"],
+		["durationRange"] = args["durationRange"],
+		["rulesPackageArns"] = args["rulesPackageArns"],
+		["states"] = args["states"],
+		["namePattern"] = args["namePattern"],
+		["completionTimeRange"] = args["completionTimeRange"],
+		["stateChangeTimeRange"] = args["stateChangeTimeRange"],
 	}
 	asserts.AssertAssessmentRunFilter(t)
 	return t
@@ -79,17 +82,20 @@ end
 
 --- Create a structure of type TelemetryMetadata
 -- <p>The metadata about the Amazon Inspector application data metrics collected by the agent. This data type is used as the response element in the <a>GetTelemetryMetadata</a> action.</p>
--- @param _count [Long] <p>The count of messages that the agent sends to the Amazon Inspector service.</p>
--- @param _dataSize [Long] <p>The data size of messages that the agent sends to the Amazon Inspector service.</p>
--- @param _messageType [MessageType] <p>A specific type of behavioral data that is collected by the agent.</p>
--- Required parameter: messageType
--- Required parameter: count
-function M.TelemetryMetadata(_count, _dataSize, _messageType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TelemetryMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * count [Long] <p>The count of messages that the agent sends to the Amazon Inspector service.</p>
+-- * dataSize [Long] <p>The data size of messages that the agent sends to the Amazon Inspector service.</p>
+-- * messageType [MessageType] <p>A specific type of behavioral data that is collected by the agent.</p>
+-- Required key: messageType
+-- Required key: count
+-- @return TelemetryMetadata structure as a key-value pair table
+function M.TelemetryMetadata(args)
+	assert(args, "You must provdide an argument table when creating TelemetryMetadata")
 	local t = { 
-		["count"] = _count,
-		["dataSize"] = _dataSize,
-		["messageType"] = _messageType,
+		["count"] = args["count"],
+		["dataSize"] = args["dataSize"],
+		["messageType"] = args["messageType"],
 	}
 	asserts.AssertTelemetryMetadata(t)
 	return t
@@ -115,21 +121,24 @@ end
 
 --- Create a structure of type AgentsAlreadyRunningAssessmentException
 -- <p>You started an assessment run, but one of the instances is already participating in another assessment run.</p>
--- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param _message [ErrorMessage] <p>Details of the exception error.</p>
--- @param _agents [AgentAlreadyRunningAssessmentList] <p/>
--- @param _agentsTruncated [Bool] <p/>
--- Required parameter: message
--- Required parameter: agents
--- Required parameter: agentsTruncated
--- Required parameter: canRetry
-function M.AgentsAlreadyRunningAssessmentException(_canRetry, _message, _agents, _agentsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AgentsAlreadyRunningAssessmentException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * canRetry [Bool] <p>You can immediately retry your request.</p>
+-- * message [ErrorMessage] <p>Details of the exception error.</p>
+-- * agents [AgentAlreadyRunningAssessmentList] <p/>
+-- * agentsTruncated [Bool] <p/>
+-- Required key: message
+-- Required key: agents
+-- Required key: agentsTruncated
+-- Required key: canRetry
+-- @return AgentsAlreadyRunningAssessmentException structure as a key-value pair table
+function M.AgentsAlreadyRunningAssessmentException(args)
+	assert(args, "You must provdide an argument table when creating AgentsAlreadyRunningAssessmentException")
 	local t = { 
-		["canRetry"] = _canRetry,
-		["message"] = _message,
-		["agents"] = _agents,
-		["agentsTruncated"] = _agentsTruncated,
+		["canRetry"] = args["canRetry"],
+		["message"] = args["message"],
+		["agents"] = args["agents"],
+		["agentsTruncated"] = args["agentsTruncated"],
 	}
 	asserts.AssertAgentsAlreadyRunningAssessmentException(t)
 	return t
@@ -151,15 +160,18 @@ end
 
 --- Create a structure of type FailedItemDetails
 -- <p>Includes details about the failed items.</p>
--- @param _retryable [Bool] <p>Indicates whether you can immediately retry a request for this item for a specified resource.</p>
--- @param _failureCode [FailedItemErrorCode] <p>The status code of a failed item.</p>
--- Required parameter: failureCode
--- Required parameter: retryable
-function M.FailedItemDetails(_retryable, _failureCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FailedItemDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * retryable [Bool] <p>Indicates whether you can immediately retry a request for this item for a specified resource.</p>
+-- * failureCode [FailedItemErrorCode] <p>The status code of a failed item.</p>
+-- Required key: failureCode
+-- Required key: retryable
+-- @return FailedItemDetails structure as a key-value pair table
+function M.FailedItemDetails(args)
+	assert(args, "You must provdide an argument table when creating FailedItemDetails")
 	local t = { 
-		["retryable"] = _retryable,
-		["failureCode"] = _failureCode,
+		["retryable"] = args["retryable"],
+		["failureCode"] = args["failureCode"],
 	}
 	asserts.AssertFailedItemDetails(t)
 	return t
@@ -180,14 +192,17 @@ end
 
 --- Create a structure of type PreviewAgentsResponse
 --  
--- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param _agentPreviews [AgentPreviewList] <p>The resulting list of agents.</p>
--- Required parameter: agentPreviews
-function M.PreviewAgentsResponse(_nextToken, _agentPreviews, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PreviewAgentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- * agentPreviews [AgentPreviewList] <p>The resulting list of agents.</p>
+-- Required key: agentPreviews
+-- @return PreviewAgentsResponse structure as a key-value pair table
+function M.PreviewAgentsResponse(args)
+	assert(args, "You must provdide an argument table when creating PreviewAgentsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["agentPreviews"] = _agentPreviews,
+		["nextToken"] = args["nextToken"],
+		["agentPreviews"] = args["agentPreviews"],
 	}
 	asserts.AssertPreviewAgentsResponse(t)
 	return t
@@ -211,18 +226,21 @@ end
 
 --- Create a structure of type GetAssessmentReportRequest
 --  
--- @param _assessmentRunArn [Arn] <p>The ARN that specifies the assessment run for which you want to generate a report.</p>
--- @param _reportType [ReportType] <p>Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see <a href="http://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html">Assessment Reports</a>. </p>
--- @param _reportFileFormat [ReportFileFormat] <p>Specifies the file format (html or pdf) of the assessment report that you want to generate.</p>
--- Required parameter: assessmentRunArn
--- Required parameter: reportFileFormat
--- Required parameter: reportType
-function M.GetAssessmentReportRequest(_assessmentRunArn, _reportType, _reportFileFormat, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAssessmentReportRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentRunArn [Arn] <p>The ARN that specifies the assessment run for which you want to generate a report.</p>
+-- * reportType [ReportType] <p>Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see <a href="http://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html">Assessment Reports</a>. </p>
+-- * reportFileFormat [ReportFileFormat] <p>Specifies the file format (html or pdf) of the assessment report that you want to generate.</p>
+-- Required key: assessmentRunArn
+-- Required key: reportFileFormat
+-- Required key: reportType
+-- @return GetAssessmentReportRequest structure as a key-value pair table
+function M.GetAssessmentReportRequest(args)
+	assert(args, "You must provdide an argument table when creating GetAssessmentReportRequest")
 	local t = { 
-		["assessmentRunArn"] = _assessmentRunArn,
-		["reportType"] = _reportType,
-		["reportFileFormat"] = _reportFileFormat,
+		["assessmentRunArn"] = args["assessmentRunArn"],
+		["reportType"] = args["reportType"],
+		["reportFileFormat"] = args["reportFileFormat"],
 	}
 	asserts.AssertGetAssessmentReportRequest(t)
 	return t
@@ -246,18 +264,21 @@ end
 
 --- Create a structure of type SubscribeToEventRequest
 --  
--- @param _resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.</p>
--- @param _event [InspectorEvent] <p>The event for which you want to receive SNS notifications.</p>
--- @param _topicArn [Arn] <p>The ARN of the SNS topic to which the SNS notifications are sent.</p>
--- Required parameter: resourceArn
--- Required parameter: event
--- Required parameter: topicArn
-function M.SubscribeToEventRequest(_resourceArn, _event, _topicArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubscribeToEventRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which you want to receive SNS notifications.</p>
+-- * event [InspectorEvent] <p>The event for which you want to receive SNS notifications.</p>
+-- * topicArn [Arn] <p>The ARN of the SNS topic to which the SNS notifications are sent.</p>
+-- Required key: resourceArn
+-- Required key: event
+-- Required key: topicArn
+-- @return SubscribeToEventRequest structure as a key-value pair table
+function M.SubscribeToEventRequest(args)
+	assert(args, "You must provdide an argument table when creating SubscribeToEventRequest")
 	local t = { 
-		["resourceArn"] = _resourceArn,
-		["event"] = _event,
-		["topicArn"] = _topicArn,
+		["resourceArn"] = args["resourceArn"],
+		["event"] = args["event"],
+		["topicArn"] = args["topicArn"],
 	}
 	asserts.AssertSubscribeToEventRequest(t)
 	return t
@@ -277,12 +298,15 @@ end
 
 --- Create a structure of type RemoveAttributesFromFindingsResponse
 --  
--- @param _failedItems [FailedItems] <p>Attributes details that cannot be described. An error code is provided for each failed item.</p>
--- Required parameter: failedItems
-function M.RemoveAttributesFromFindingsResponse(_failedItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAttributesFromFindingsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failedItems [FailedItems] <p>Attributes details that cannot be described. An error code is provided for each failed item.</p>
+-- Required key: failedItems
+-- @return RemoveAttributesFromFindingsResponse structure as a key-value pair table
+function M.RemoveAttributesFromFindingsResponse(args)
+	assert(args, "You must provdide an argument table when creating RemoveAttributesFromFindingsResponse")
 	local t = { 
-		["failedItems"] = _failedItems,
+		["failedItems"] = args["failedItems"],
 	}
 	asserts.AssertRemoveAttributesFromFindingsResponse(t)
 	return t
@@ -312,28 +336,31 @@ end
 
 --- Create a structure of type AssessmentRunAgent
 -- <p>Contains information about an Amazon Inspector agent. This data type is used as a response element in the <a>ListAssessmentRunAgents</a> action.</p>
--- @param _assessmentRunArn [Arn] <p>The ARN of the assessment run that is associated with the agent.</p>
--- @param _agentHealthCode [AgentHealthCode] <p>The detailed health state of the agent.</p>
--- @param _agentHealth [AgentHealth] <p>The current health state of the agent.</p>
--- @param _autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group of the EC2 instance that is specified by the agent ID.</p>
--- @param _agentHealthDetails [Message] <p>The description for the agent health code.</p>
--- @param _telemetryMetadata [TelemetryMetadataList] <p>The Amazon Inspector application data metrics that are collected by the agent.</p>
--- @param _agentId [AgentId] <p>The AWS account of the EC2 instance where the agent is installed.</p>
--- Required parameter: agentId
--- Required parameter: assessmentRunArn
--- Required parameter: agentHealth
--- Required parameter: agentHealthCode
--- Required parameter: telemetryMetadata
-function M.AssessmentRunAgent(_assessmentRunArn, _agentHealthCode, _agentHealth, _autoScalingGroup, _agentHealthDetails, _telemetryMetadata, _agentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunAgent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentRunArn [Arn] <p>The ARN of the assessment run that is associated with the agent.</p>
+-- * agentHealthCode [AgentHealthCode] <p>The detailed health state of the agent.</p>
+-- * agentHealth [AgentHealth] <p>The current health state of the agent.</p>
+-- * autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group of the EC2 instance that is specified by the agent ID.</p>
+-- * agentHealthDetails [Message] <p>The description for the agent health code.</p>
+-- * telemetryMetadata [TelemetryMetadataList] <p>The Amazon Inspector application data metrics that are collected by the agent.</p>
+-- * agentId [AgentId] <p>The AWS account of the EC2 instance where the agent is installed.</p>
+-- Required key: agentId
+-- Required key: assessmentRunArn
+-- Required key: agentHealth
+-- Required key: agentHealthCode
+-- Required key: telemetryMetadata
+-- @return AssessmentRunAgent structure as a key-value pair table
+function M.AssessmentRunAgent(args)
+	assert(args, "You must provdide an argument table when creating AssessmentRunAgent")
 	local t = { 
-		["assessmentRunArn"] = _assessmentRunArn,
-		["agentHealthCode"] = _agentHealthCode,
-		["agentHealth"] = _agentHealth,
-		["autoScalingGroup"] = _autoScalingGroup,
-		["agentHealthDetails"] = _agentHealthDetails,
-		["telemetryMetadata"] = _telemetryMetadata,
-		["agentId"] = _agentId,
+		["assessmentRunArn"] = args["assessmentRunArn"],
+		["agentHealthCode"] = args["agentHealthCode"],
+		["agentHealth"] = args["agentHealth"],
+		["autoScalingGroup"] = args["autoScalingGroup"],
+		["agentHealthDetails"] = args["agentHealthDetails"],
+		["telemetryMetadata"] = args["telemetryMetadata"],
+		["agentId"] = args["agentId"],
 	}
 	asserts.AssertAssessmentRunAgent(t)
 	return t
@@ -353,12 +380,15 @@ end
 
 --- Create a structure of type DescribeResourceGroupsRequest
 --  
--- @param _resourceGroupArns [BatchDescribeArnList] <p>The ARN that specifies the resource group that you want to describe.</p>
--- Required parameter: resourceGroupArns
-function M.DescribeResourceGroupsRequest(_resourceGroupArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourceGroupsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceGroupArns [BatchDescribeArnList] <p>The ARN that specifies the resource group that you want to describe.</p>
+-- Required key: resourceGroupArns
+-- @return DescribeResourceGroupsRequest structure as a key-value pair table
+function M.DescribeResourceGroupsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeResourceGroupsRequest")
 	local t = { 
-		["resourceGroupArns"] = _resourceGroupArns,
+		["resourceGroupArns"] = args["resourceGroupArns"],
 	}
 	asserts.AssertDescribeResourceGroupsRequest(t)
 	return t
@@ -379,15 +409,18 @@ end
 
 --- Create a structure of type ListAssessmentTargetsRequest
 --  
--- @param _filter [AssessmentTargetFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
--- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTargets</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
-function M.ListAssessmentTargetsRequest(_filter, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTargetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filter [AssessmentTargetFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- * nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTargets</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- * maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+-- @return ListAssessmentTargetsRequest structure as a key-value pair table
+function M.ListAssessmentTargetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAssessmentTargetsRequest")
 	local t = { 
-		["filter"] = _filter,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["filter"] = args["filter"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListAssessmentTargetsRequest(t)
 	return t
@@ -414,24 +447,27 @@ end
 
 --- Create a structure of type AssessmentRunNotification
 -- <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
--- @param _snsPublishStatusCode [AssessmentRunNotificationSnsStatusCode] <p>The status code of the SNS notification.</p>
--- @param _snsTopicArn [Arn] <p>The SNS topic to which the SNS notification is sent.</p>
--- @param _error [Bool] <p>The Boolean value that specifies whether the notification represents an error.</p>
--- @param _date [Timestamp] <p>The date of the notification.</p>
--- @param _message [Message] <p>The message included in the notification.</p>
--- @param _event [InspectorEvent] <p>The event for which a notification is sent.</p>
--- Required parameter: date
--- Required parameter: event
--- Required parameter: error
-function M.AssessmentRunNotification(_snsPublishStatusCode, _snsTopicArn, _error, _date, _message, _event, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunNotification")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * snsPublishStatusCode [AssessmentRunNotificationSnsStatusCode] <p>The status code of the SNS notification.</p>
+-- * snsTopicArn [Arn] <p>The SNS topic to which the SNS notification is sent.</p>
+-- * error [Bool] <p>The Boolean value that specifies whether the notification represents an error.</p>
+-- * date [Timestamp] <p>The date of the notification.</p>
+-- * message [Message] <p>The message included in the notification.</p>
+-- * event [InspectorEvent] <p>The event for which a notification is sent.</p>
+-- Required key: date
+-- Required key: event
+-- Required key: error
+-- @return AssessmentRunNotification structure as a key-value pair table
+function M.AssessmentRunNotification(args)
+	assert(args, "You must provdide an argument table when creating AssessmentRunNotification")
 	local t = { 
-		["snsPublishStatusCode"] = _snsPublishStatusCode,
-		["snsTopicArn"] = _snsTopicArn,
-		["error"] = _error,
-		["date"] = _date,
-		["message"] = _message,
-		["event"] = _event,
+		["snsPublishStatusCode"] = args["snsPublishStatusCode"],
+		["snsTopicArn"] = args["snsTopicArn"],
+		["error"] = args["error"],
+		["date"] = args["date"],
+		["message"] = args["message"],
+		["event"] = args["event"],
 	}
 	asserts.AssertAssessmentRunNotification(t)
 	return t
@@ -452,15 +488,18 @@ end
 
 --- Create a structure of type ListEventSubscriptionsRequest
 --  
--- @param _resourceArn [Arn] <p>The ARN of the assessment template for which you want to list the existing event subscriptions.</p>
--- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListEventSubscriptions</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param _maxResults [ListEventSubscriptionsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
-function M.ListEventSubscriptionsRequest(_resourceArn, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListEventSubscriptionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceArn [Arn] <p>The ARN of the assessment template for which you want to list the existing event subscriptions.</p>
+-- * nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListEventSubscriptions</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- * maxResults [ListEventSubscriptionsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+-- @return ListEventSubscriptionsRequest structure as a key-value pair table
+function M.ListEventSubscriptionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListEventSubscriptionsRequest")
 	local t = { 
-		["resourceArn"] = _resourceArn,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["resourceArn"] = args["resourceArn"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListEventSubscriptionsRequest(t)
 	return t
@@ -482,15 +521,18 @@ end
 
 --- Create a structure of type AgentFilter
 -- <p>Contains information about an Amazon Inspector agent. This data type is used as a request parameter in the <a>ListAssessmentRunAgents</a> action.</p>
--- @param _agentHealthCodes [AgentHealthCodeList] <p>The detailed health state of the agent. Values can be set to <b>IDLE</b>, <b>RUNNING</b>, <b>SHUTDOWN</b>, <b>UNHEALTHY</b>, <b>THROTTLED</b>, and <b>UNKNOWN</b>. </p>
--- @param _agentHealths [AgentHealthList] <p>The current health state of the agent. Values can be set to <b>HEALTHY</b> or <b>UNHEALTHY</b>.</p>
--- Required parameter: agentHealths
--- Required parameter: agentHealthCodes
-function M.AgentFilter(_agentHealthCodes, _agentHealths, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AgentFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * agentHealthCodes [AgentHealthCodeList] <p>The detailed health state of the agent. Values can be set to <b>IDLE</b>, <b>RUNNING</b>, <b>SHUTDOWN</b>, <b>UNHEALTHY</b>, <b>THROTTLED</b>, and <b>UNKNOWN</b>. </p>
+-- * agentHealths [AgentHealthList] <p>The current health state of the agent. Values can be set to <b>HEALTHY</b> or <b>UNHEALTHY</b>.</p>
+-- Required key: agentHealths
+-- Required key: agentHealthCodes
+-- @return AgentFilter structure as a key-value pair table
+function M.AgentFilter(args)
+	assert(args, "You must provdide an argument table when creating AgentFilter")
 	local t = { 
-		["agentHealthCodes"] = _agentHealthCodes,
-		["agentHealths"] = _agentHealths,
+		["agentHealthCodes"] = args["agentHealthCodes"],
+		["agentHealths"] = args["agentHealths"],
 	}
 	asserts.AssertAgentFilter(t)
 	return t
@@ -512,15 +554,18 @@ end
 
 --- Create a structure of type DescribeAssessmentRunsResponse
 --  
--- @param _failedItems [FailedItems] <p>Assessment run details that cannot be described. An error code is provided for each failed item.</p>
--- @param _assessmentRuns [AssessmentRunList] <p>Information about the assessment run.</p>
--- Required parameter: assessmentRuns
--- Required parameter: failedItems
-function M.DescribeAssessmentRunsResponse(_failedItems, _assessmentRuns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentRunsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failedItems [FailedItems] <p>Assessment run details that cannot be described. An error code is provided for each failed item.</p>
+-- * assessmentRuns [AssessmentRunList] <p>Information about the assessment run.</p>
+-- Required key: assessmentRuns
+-- Required key: failedItems
+-- @return DescribeAssessmentRunsResponse structure as a key-value pair table
+function M.DescribeAssessmentRunsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAssessmentRunsResponse")
 	local t = { 
-		["failedItems"] = _failedItems,
-		["assessmentRuns"] = _assessmentRuns,
+		["failedItems"] = args["failedItems"],
+		["assessmentRuns"] = args["assessmentRuns"],
 	}
 	asserts.AssertDescribeAssessmentRunsResponse(t)
 	return t
@@ -544,18 +589,21 @@ end
 
 --- Create a structure of type Subscription
 -- <p>This data type is used as a response element in the <a>ListEventSubscriptions</a> action.</p>
--- @param _eventSubscriptions [EventSubscriptionList] <p>The list of existing event subscriptions.</p>
--- @param _resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which the SNS notification is sent.</p>
--- @param _topicArn [Arn] <p>The ARN of the Amazon Simple Notification Service (SNS) topic to which the SNS notifications are sent.</p>
--- Required parameter: resourceArn
--- Required parameter: topicArn
--- Required parameter: eventSubscriptions
-function M.Subscription(_eventSubscriptions, _resourceArn, _topicArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * eventSubscriptions [EventSubscriptionList] <p>The list of existing event subscriptions.</p>
+-- * resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which the SNS notification is sent.</p>
+-- * topicArn [Arn] <p>The ARN of the Amazon Simple Notification Service (SNS) topic to which the SNS notifications are sent.</p>
+-- Required key: resourceArn
+-- Required key: topicArn
+-- Required key: eventSubscriptions
+-- @return Subscription structure as a key-value pair table
+function M.Subscription(args)
+	assert(args, "You must provdide an argument table when creating Subscription")
 	local t = { 
-		["eventSubscriptions"] = _eventSubscriptions,
-		["resourceArn"] = _resourceArn,
-		["topicArn"] = _topicArn,
+		["eventSubscriptions"] = args["eventSubscriptions"],
+		["resourceArn"] = args["resourceArn"],
+		["topicArn"] = args["topicArn"],
 	}
 	asserts.AssertSubscription(t)
 	return t
@@ -575,12 +623,15 @@ end
 
 --- Create a structure of type GetTelemetryMetadataResponse
 --  
--- @param _telemetryMetadata [TelemetryMetadataList] <p>Telemetry details.</p>
--- Required parameter: telemetryMetadata
-function M.GetTelemetryMetadataResponse(_telemetryMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTelemetryMetadataResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * telemetryMetadata [TelemetryMetadataList] <p>Telemetry details.</p>
+-- Required key: telemetryMetadata
+-- @return GetTelemetryMetadataResponse structure as a key-value pair table
+function M.GetTelemetryMetadataResponse(args)
+	assert(args, "You must provdide an argument table when creating GetTelemetryMetadataResponse")
 	local t = { 
-		["telemetryMetadata"] = _telemetryMetadata,
+		["telemetryMetadata"] = args["telemetryMetadata"],
 	}
 	asserts.AssertGetTelemetryMetadataResponse(t)
 	return t
@@ -607,23 +658,26 @@ end
 
 --- Create a structure of type RulesPackage
 -- <p>Contains information about an Amazon Inspector rules package. This data type is used as the response element in the <a>DescribeRulesPackages</a> action.</p>
--- @param _description [Text] <p>The description of the rules package.</p>
--- @param _version [Version] <p>The version ID of the rules package.</p>
--- @param _name [RulesPackageName] <p>The name of the rules package.</p>
--- @param _arn [Arn] <p>The ARN of the rules package.</p>
--- @param _provider [ProviderName] <p>The provider of the rules package.</p>
--- Required parameter: arn
--- Required parameter: name
--- Required parameter: version
--- Required parameter: provider
-function M.RulesPackage(_description, _version, _name, _arn, _provider, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RulesPackage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * description [Text] <p>The description of the rules package.</p>
+-- * version [Version] <p>The version ID of the rules package.</p>
+-- * name [RulesPackageName] <p>The name of the rules package.</p>
+-- * arn [Arn] <p>The ARN of the rules package.</p>
+-- * provider [ProviderName] <p>The provider of the rules package.</p>
+-- Required key: arn
+-- Required key: name
+-- Required key: version
+-- Required key: provider
+-- @return RulesPackage structure as a key-value pair table
+function M.RulesPackage(args)
+	assert(args, "You must provdide an argument table when creating RulesPackage")
 	local t = { 
-		["description"] = _description,
-		["version"] = _version,
-		["name"] = _name,
-		["arn"] = _arn,
-		["provider"] = _provider,
+		["description"] = args["description"],
+		["version"] = args["version"],
+		["name"] = args["name"],
+		["arn"] = args["arn"],
+		["provider"] = args["provider"],
 	}
 	asserts.AssertRulesPackage(t)
 	return t
@@ -649,21 +703,24 @@ end
 
 --- Create a structure of type AssessmentRunInProgressException
 -- <p>You cannot perform a specified action if an assessment run is currently in progress.</p>
--- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param _message [ErrorMessage] <p>Details of the exception error.</p>
--- @param _assessmentRunArnsTruncated [Bool] <p>Boolean value that indicates whether the ARN list of the assessment runs is truncated.</p>
--- @param _assessmentRunArns [AssessmentRunInProgressArnList] <p>The ARNs of the assessment runs that are currently in progress.</p>
--- Required parameter: message
--- Required parameter: assessmentRunArns
--- Required parameter: assessmentRunArnsTruncated
--- Required parameter: canRetry
-function M.AssessmentRunInProgressException(_canRetry, _message, _assessmentRunArnsTruncated, _assessmentRunArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunInProgressException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * canRetry [Bool] <p>You can immediately retry your request.</p>
+-- * message [ErrorMessage] <p>Details of the exception error.</p>
+-- * assessmentRunArnsTruncated [Bool] <p>Boolean value that indicates whether the ARN list of the assessment runs is truncated.</p>
+-- * assessmentRunArns [AssessmentRunInProgressArnList] <p>The ARNs of the assessment runs that are currently in progress.</p>
+-- Required key: message
+-- Required key: assessmentRunArns
+-- Required key: assessmentRunArnsTruncated
+-- Required key: canRetry
+-- @return AssessmentRunInProgressException structure as a key-value pair table
+function M.AssessmentRunInProgressException(args)
+	assert(args, "You must provdide an argument table when creating AssessmentRunInProgressException")
 	local t = { 
-		["canRetry"] = _canRetry,
-		["message"] = _message,
-		["assessmentRunArnsTruncated"] = _assessmentRunArnsTruncated,
-		["assessmentRunArns"] = _assessmentRunArns,
+		["canRetry"] = args["canRetry"],
+		["message"] = args["message"],
+		["assessmentRunArnsTruncated"] = args["assessmentRunArnsTruncated"],
+		["assessmentRunArns"] = args["assessmentRunArns"],
 	}
 	asserts.AssertAssessmentRunInProgressException(t)
 	return t
@@ -683,12 +740,15 @@ end
 
 --- Create a structure of type CreateResourceGroupResponse
 --  
--- @param _resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is created.</p>
--- Required parameter: resourceGroupArn
-function M.CreateResourceGroupResponse(_resourceGroupArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateResourceGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is created.</p>
+-- Required key: resourceGroupArn
+-- @return CreateResourceGroupResponse structure as a key-value pair table
+function M.CreateResourceGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateResourceGroupResponse")
 	local t = { 
-		["resourceGroupArn"] = _resourceGroupArn,
+		["resourceGroupArn"] = args["resourceGroupArn"],
 	}
 	asserts.AssertCreateResourceGroupResponse(t)
 	return t
@@ -710,17 +770,20 @@ end
 
 --- Create a structure of type ListFindingsRequest
 --  
--- @param _filter [FindingFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
--- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListFindings</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param _assessmentRunArns [ListParentArnList] <p>The ARNs of the assessment runs that generate the findings that you want to list.</p>
--- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
-function M.ListFindingsRequest(_filter, _nextToken, _assessmentRunArns, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFindingsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filter [FindingFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- * nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListFindings</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- * assessmentRunArns [ListParentArnList] <p>The ARNs of the assessment runs that generate the findings that you want to list.</p>
+-- * maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+-- @return ListFindingsRequest structure as a key-value pair table
+function M.ListFindingsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListFindingsRequest")
 	local t = { 
-		["filter"] = _filter,
-		["nextToken"] = _nextToken,
-		["assessmentRunArns"] = _assessmentRunArns,
-		["maxResults"] = _maxResults,
+		["filter"] = args["filter"],
+		["nextToken"] = args["nextToken"],
+		["assessmentRunArns"] = args["assessmentRunArns"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListFindingsRequest(t)
 	return t
@@ -766,52 +829,55 @@ end
 
 --- Create a structure of type AssessmentRun
 -- <p>A snapshot of an Amazon Inspector assessment run that contains the findings of the assessment run .</p> <p>Used as the response element in the <a>DescribeAssessmentRuns</a> action.</p>
--- @param _dataCollected [Bool] <p>A Boolean value (true or false) that specifies whether the process of collecting data from the agents is completed.</p>
--- @param _name [AssessmentRunName] <p>The auto-generated name for the assessment run.</p>
--- @param _completedAt [Timestamp] <p>The assessment run completion time that corresponds to the rules packages evaluation completion time or failure.</p>
--- @param _userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every generated finding.</p>
--- @param _stateChanges [AssessmentRunStateChangeList] <p>A list of the assessment run state changes.</p>
--- @param _createdAt [Timestamp] <p>The time when <a>StartAssessmentRun</a> was called.</p>
--- @param _findingCounts [AssessmentRunFindingCounts] <p>Provides a total count of generated findings per severity.</p>
--- @param _notifications [AssessmentRunNotificationList] <p>A list of notifications for the event subscriptions. A notification about a particular generated finding is added to this list only once.</p>
--- @param _state [AssessmentRunState] <p>The state of the assessment run.</p>
--- @param _stateChangedAt [Timestamp] <p>The last time when the assessment run's state changed.</p>
--- @param _durationInSeconds [AssessmentRunDuration] <p>The duration of the assessment run.</p>
--- @param _rulesPackageArns [AssessmentRulesPackageArnList] <p>The rules packages selected for the assessment run.</p>
--- @param _startedAt [Timestamp] <p>The time when <a>StartAssessmentRun</a> was called.</p>
--- @param _assessmentTemplateArn [Arn] <p>The ARN of the assessment template that is associated with the assessment run.</p>
--- @param _arn [Arn] <p>The ARN of the assessment run.</p>
--- Required parameter: arn
--- Required parameter: name
--- Required parameter: assessmentTemplateArn
--- Required parameter: state
--- Required parameter: durationInSeconds
--- Required parameter: rulesPackageArns
--- Required parameter: userAttributesForFindings
--- Required parameter: createdAt
--- Required parameter: stateChangedAt
--- Required parameter: dataCollected
--- Required parameter: stateChanges
--- Required parameter: notifications
--- Required parameter: findingCounts
-function M.AssessmentRun(_dataCollected, _name, _completedAt, _userAttributesForFindings, _stateChanges, _createdAt, _findingCounts, _notifications, _state, _stateChangedAt, _durationInSeconds, _rulesPackageArns, _startedAt, _assessmentTemplateArn, _arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRun")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * dataCollected [Bool] <p>A Boolean value (true or false) that specifies whether the process of collecting data from the agents is completed.</p>
+-- * name [AssessmentRunName] <p>The auto-generated name for the assessment run.</p>
+-- * completedAt [Timestamp] <p>The assessment run completion time that corresponds to the rules packages evaluation completion time or failure.</p>
+-- * userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every generated finding.</p>
+-- * stateChanges [AssessmentRunStateChangeList] <p>A list of the assessment run state changes.</p>
+-- * createdAt [Timestamp] <p>The time when <a>StartAssessmentRun</a> was called.</p>
+-- * findingCounts [AssessmentRunFindingCounts] <p>Provides a total count of generated findings per severity.</p>
+-- * notifications [AssessmentRunNotificationList] <p>A list of notifications for the event subscriptions. A notification about a particular generated finding is added to this list only once.</p>
+-- * state [AssessmentRunState] <p>The state of the assessment run.</p>
+-- * stateChangedAt [Timestamp] <p>The last time when the assessment run's state changed.</p>
+-- * durationInSeconds [AssessmentRunDuration] <p>The duration of the assessment run.</p>
+-- * rulesPackageArns [AssessmentRulesPackageArnList] <p>The rules packages selected for the assessment run.</p>
+-- * startedAt [Timestamp] <p>The time when <a>StartAssessmentRun</a> was called.</p>
+-- * assessmentTemplateArn [Arn] <p>The ARN of the assessment template that is associated with the assessment run.</p>
+-- * arn [Arn] <p>The ARN of the assessment run.</p>
+-- Required key: arn
+-- Required key: name
+-- Required key: assessmentTemplateArn
+-- Required key: state
+-- Required key: durationInSeconds
+-- Required key: rulesPackageArns
+-- Required key: userAttributesForFindings
+-- Required key: createdAt
+-- Required key: stateChangedAt
+-- Required key: dataCollected
+-- Required key: stateChanges
+-- Required key: notifications
+-- Required key: findingCounts
+-- @return AssessmentRun structure as a key-value pair table
+function M.AssessmentRun(args)
+	assert(args, "You must provdide an argument table when creating AssessmentRun")
 	local t = { 
-		["dataCollected"] = _dataCollected,
-		["name"] = _name,
-		["completedAt"] = _completedAt,
-		["userAttributesForFindings"] = _userAttributesForFindings,
-		["stateChanges"] = _stateChanges,
-		["createdAt"] = _createdAt,
-		["findingCounts"] = _findingCounts,
-		["notifications"] = _notifications,
-		["state"] = _state,
-		["stateChangedAt"] = _stateChangedAt,
-		["durationInSeconds"] = _durationInSeconds,
-		["rulesPackageArns"] = _rulesPackageArns,
-		["startedAt"] = _startedAt,
-		["assessmentTemplateArn"] = _assessmentTemplateArn,
-		["arn"] = _arn,
+		["dataCollected"] = args["dataCollected"],
+		["name"] = args["name"],
+		["completedAt"] = args["completedAt"],
+		["userAttributesForFindings"] = args["userAttributesForFindings"],
+		["stateChanges"] = args["stateChanges"],
+		["createdAt"] = args["createdAt"],
+		["findingCounts"] = args["findingCounts"],
+		["notifications"] = args["notifications"],
+		["state"] = args["state"],
+		["stateChangedAt"] = args["stateChangedAt"],
+		["durationInSeconds"] = args["durationInSeconds"],
+		["rulesPackageArns"] = args["rulesPackageArns"],
+		["startedAt"] = args["startedAt"],
+		["assessmentTemplateArn"] = args["assessmentTemplateArn"],
+		["arn"] = args["arn"],
 	}
 	asserts.AssertAssessmentRun(t)
 	return t
@@ -843,30 +909,33 @@ end
 
 --- Create a structure of type AssessmentTemplate
 -- <p>Contains information about an Amazon Inspector assessment template. This data type is used as the response element in the <a>DescribeAssessmentTemplates</a> action.</p>
--- @param _assessmentTargetArn [Arn] <p>The ARN of the assessment target that corresponds to this assessment template.</p>
--- @param _name [AssessmentTemplateName] <p>The name of the assessment template.</p>
--- @param _createdAt [Timestamp] <p>The time at which the assessment template is created.</p>
--- @param _durationInSeconds [AssessmentRunDuration] <p>The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).</p>
--- @param _rulesPackageArns [AssessmentTemplateRulesPackageArnList] <p>The rules packages that are specified for this assessment template.</p>
--- @param _userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every generated finding from the assessment run that uses this assessment template.</p>
--- @param _arn [Arn] <p>The ARN of the assessment template.</p>
--- Required parameter: arn
--- Required parameter: name
--- Required parameter: assessmentTargetArn
--- Required parameter: durationInSeconds
--- Required parameter: rulesPackageArns
--- Required parameter: userAttributesForFindings
--- Required parameter: createdAt
-function M.AssessmentTemplate(_assessmentTargetArn, _name, _createdAt, _durationInSeconds, _rulesPackageArns, _userAttributesForFindings, _arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentTemplate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTargetArn [Arn] <p>The ARN of the assessment target that corresponds to this assessment template.</p>
+-- * name [AssessmentTemplateName] <p>The name of the assessment template.</p>
+-- * createdAt [Timestamp] <p>The time at which the assessment template is created.</p>
+-- * durationInSeconds [AssessmentRunDuration] <p>The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).</p>
+-- * rulesPackageArns [AssessmentTemplateRulesPackageArnList] <p>The rules packages that are specified for this assessment template.</p>
+-- * userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every generated finding from the assessment run that uses this assessment template.</p>
+-- * arn [Arn] <p>The ARN of the assessment template.</p>
+-- Required key: arn
+-- Required key: name
+-- Required key: assessmentTargetArn
+-- Required key: durationInSeconds
+-- Required key: rulesPackageArns
+-- Required key: userAttributesForFindings
+-- Required key: createdAt
+-- @return AssessmentTemplate structure as a key-value pair table
+function M.AssessmentTemplate(args)
+	assert(args, "You must provdide an argument table when creating AssessmentTemplate")
 	local t = { 
-		["assessmentTargetArn"] = _assessmentTargetArn,
-		["name"] = _name,
-		["createdAt"] = _createdAt,
-		["durationInSeconds"] = _durationInSeconds,
-		["rulesPackageArns"] = _rulesPackageArns,
-		["userAttributesForFindings"] = _userAttributesForFindings,
-		["arn"] = _arn,
+		["assessmentTargetArn"] = args["assessmentTargetArn"],
+		["name"] = args["name"],
+		["createdAt"] = args["createdAt"],
+		["durationInSeconds"] = args["durationInSeconds"],
+		["rulesPackageArns"] = args["rulesPackageArns"],
+		["userAttributesForFindings"] = args["userAttributesForFindings"],
+		["arn"] = args["arn"],
 	}
 	asserts.AssertAssessmentTemplate(t)
 	return t
@@ -887,14 +956,17 @@ end
 
 --- Create a structure of type Tag
 -- <p>A key and value pair. This data type is used as a request parameter in the <a>SetTagsForResource</a> action and a response element in the <a>ListTagsForResource</a> action.</p>
--- @param _value [TagValue] <p>A value assigned to a tag key.</p>
--- @param _key [TagKey] <p>A tag key.</p>
--- Required parameter: key
-function M.Tag(_value, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [TagValue] <p>A value assigned to a tag key.</p>
+-- * key [TagKey] <p>A tag key.</p>
+-- Required key: key
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["value"] = _value,
-		["key"] = _key,
+		["value"] = args["value"],
+		["key"] = args["key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -915,14 +987,17 @@ end
 
 --- Create a structure of type Attribute
 -- <p>This data type is used as a request parameter in the <a>AddAttributesToFindings</a> and <a>CreateAssessmentTemplate</a> actions.</p>
--- @param _value [AttributeValue] <p>The value assigned to the attribute key.</p>
--- @param _key [AttributeKey] <p>The attribute key.</p>
--- Required parameter: key
-function M.Attribute(_value, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Attribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [AttributeValue] <p>The value assigned to the attribute key.</p>
+-- * key [AttributeKey] <p>The attribute key.</p>
+-- Required key: key
+-- @return Attribute structure as a key-value pair table
+function M.Attribute(args)
+	assert(args, "You must provdide an argument table when creating Attribute")
 	local t = { 
-		["value"] = _value,
-		["key"] = _key,
+		["value"] = args["value"],
+		["key"] = args["key"],
 	}
 	asserts.AssertAttribute(t)
 	return t
@@ -946,18 +1021,21 @@ end
 
 --- Create a structure of type UpdateAssessmentTargetRequest
 --  
--- @param _assessmentTargetArn [Arn] <p>The ARN of the assessment target that you want to update.</p>
--- @param _assessmentTargetName [AssessmentTargetName] <p>The name of the assessment target that you want to update.</p>
--- @param _resourceGroupArn [Arn] <p>The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.</p>
--- Required parameter: assessmentTargetArn
--- Required parameter: assessmentTargetName
--- Required parameter: resourceGroupArn
-function M.UpdateAssessmentTargetRequest(_assessmentTargetArn, _assessmentTargetName, _resourceGroupArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAssessmentTargetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTargetArn [Arn] <p>The ARN of the assessment target that you want to update.</p>
+-- * assessmentTargetName [AssessmentTargetName] <p>The name of the assessment target that you want to update.</p>
+-- * resourceGroupArn [Arn] <p>The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.</p>
+-- Required key: assessmentTargetArn
+-- Required key: assessmentTargetName
+-- Required key: resourceGroupArn
+-- @return UpdateAssessmentTargetRequest structure as a key-value pair table
+function M.UpdateAssessmentTargetRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateAssessmentTargetRequest")
 	local t = { 
-		["assessmentTargetArn"] = _assessmentTargetArn,
-		["assessmentTargetName"] = _assessmentTargetName,
-		["resourceGroupArn"] = _resourceGroupArn,
+		["assessmentTargetArn"] = args["assessmentTargetArn"],
+		["assessmentTargetName"] = args["assessmentTargetName"],
+		["resourceGroupArn"] = args["resourceGroupArn"],
 	}
 	asserts.AssertUpdateAssessmentTargetRequest(t)
 	return t
@@ -978,14 +1056,17 @@ end
 
 --- Create a structure of type GetAssessmentReportResponse
 --  
--- @param _status [ReportStatus] <p>Specifies the status of the request to generate an assessment report. </p>
--- @param _url [Url] <p>Specifies the URL where you can find the generated assessment report. This parameter is only returned if the report is successfully generated.</p>
--- Required parameter: status
-function M.GetAssessmentReportResponse(_status, _url, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAssessmentReportResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [ReportStatus] <p>Specifies the status of the request to generate an assessment report. </p>
+-- * url [Url] <p>Specifies the URL where you can find the generated assessment report. This parameter is only returned if the report is successfully generated.</p>
+-- Required key: status
+-- @return GetAssessmentReportResponse structure as a key-value pair table
+function M.GetAssessmentReportResponse(args)
+	assert(args, "You must provdide an argument table when creating GetAssessmentReportResponse")
 	local t = { 
-		["status"] = _status,
-		["url"] = _url,
+		["status"] = args["status"],
+		["url"] = args["url"],
 	}
 	asserts.AssertGetAssessmentReportResponse(t)
 	return t
@@ -1009,18 +1090,21 @@ end
 
 --- Create a structure of type InvalidInputException
 -- <p>The request was rejected because an invalid or out-of-range value was supplied for an input parameter.</p>
--- @param _errorCode [InvalidInputErrorCode] <p>Code that indicates the type of error that is generated.</p>
--- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param _message [ErrorMessage] <p>Details of the exception error.</p>
--- Required parameter: message
--- Required parameter: errorCode
--- Required parameter: canRetry
-function M.InvalidInputException(_errorCode, _canRetry, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errorCode [InvalidInputErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- * canRetry [Bool] <p>You can immediately retry your request.</p>
+-- * message [ErrorMessage] <p>Details of the exception error.</p>
+-- Required key: message
+-- Required key: errorCode
+-- Required key: canRetry
+-- @return InvalidInputException structure as a key-value pair table
+function M.InvalidInputException(args)
+	assert(args, "You must provdide an argument table when creating InvalidInputException")
 	local t = { 
-		["errorCode"] = _errorCode,
-		["canRetry"] = _canRetry,
-		["message"] = _message,
+		["errorCode"] = args["errorCode"],
+		["canRetry"] = args["canRetry"],
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidInputException(t)
 	return t
@@ -1042,15 +1126,18 @@ end
 
 --- Create a structure of type DescribeRulesPackagesResponse
 --  
--- @param _rulesPackages [RulesPackageList] <p>Information about the rules package.</p>
--- @param _failedItems [FailedItems] <p>Rules package details that cannot be described. An error code is provided for each failed item.</p>
--- Required parameter: rulesPackages
--- Required parameter: failedItems
-function M.DescribeRulesPackagesResponse(_rulesPackages, _failedItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesPackagesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * rulesPackages [RulesPackageList] <p>Information about the rules package.</p>
+-- * failedItems [FailedItems] <p>Rules package details that cannot be described. An error code is provided for each failed item.</p>
+-- Required key: rulesPackages
+-- Required key: failedItems
+-- @return DescribeRulesPackagesResponse structure as a key-value pair table
+function M.DescribeRulesPackagesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeRulesPackagesResponse")
 	local t = { 
-		["rulesPackages"] = _rulesPackages,
-		["failedItems"] = _failedItems,
+		["rulesPackages"] = args["rulesPackages"],
+		["failedItems"] = args["failedItems"],
 	}
 	asserts.AssertDescribeRulesPackagesResponse(t)
 	return t
@@ -1074,18 +1161,21 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The request was rejected because it attempted to create resources beyond the current AWS account limits. The error code describes the limit exceeded.</p>
--- @param _errorCode [LimitExceededErrorCode] <p>Code that indicates the type of error that is generated.</p>
--- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param _message [ErrorMessage] <p>Details of the exception error.</p>
--- Required parameter: message
--- Required parameter: errorCode
--- Required parameter: canRetry
-function M.LimitExceededException(_errorCode, _canRetry, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errorCode [LimitExceededErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- * canRetry [Bool] <p>You can immediately retry your request.</p>
+-- * message [ErrorMessage] <p>Details of the exception error.</p>
+-- Required key: message
+-- Required key: errorCode
+-- Required key: canRetry
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["errorCode"] = _errorCode,
-		["canRetry"] = _canRetry,
-		["message"] = _message,
+		["errorCode"] = args["errorCode"],
+		["canRetry"] = args["canRetry"],
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -1109,18 +1199,21 @@ end
 
 --- Create a structure of type NoSuchEntityException
 -- <p>The request was rejected because it referenced an entity that does not exist. The error code describes the entity.</p>
--- @param _errorCode [NoSuchEntityErrorCode] <p>Code that indicates the type of error that is generated.</p>
--- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param _message [ErrorMessage] <p>Details of the exception error.</p>
--- Required parameter: message
--- Required parameter: errorCode
--- Required parameter: canRetry
-function M.NoSuchEntityException(_errorCode, _canRetry, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchEntityException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errorCode [NoSuchEntityErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- * canRetry [Bool] <p>You can immediately retry your request.</p>
+-- * message [ErrorMessage] <p>Details of the exception error.</p>
+-- Required key: message
+-- Required key: errorCode
+-- Required key: canRetry
+-- @return NoSuchEntityException structure as a key-value pair table
+function M.NoSuchEntityException(args)
+	assert(args, "You must provdide an argument table when creating NoSuchEntityException")
 	local t = { 
-		["errorCode"] = _errorCode,
-		["canRetry"] = _canRetry,
-		["message"] = _message,
+		["errorCode"] = args["errorCode"],
+		["canRetry"] = args["canRetry"],
+		["message"] = args["message"],
 	}
 	asserts.AssertNoSuchEntityException(t)
 	return t
@@ -1139,11 +1232,14 @@ end
 
 --- Create a structure of type AssessmentTargetFilter
 -- <p>Used as the request parameter in the <a>ListAssessmentTargets</a> action.</p>
--- @param _assessmentTargetNamePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTargetName</b> property of the <a>AssessmentTarget</a> data type.</p>
-function M.AssessmentTargetFilter(_assessmentTargetNamePattern, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentTargetFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTargetNamePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTargetName</b> property of the <a>AssessmentTarget</a> data type.</p>
+-- @return AssessmentTargetFilter structure as a key-value pair table
+function M.AssessmentTargetFilter(args)
+	assert(args, "You must provdide an argument table when creating AssessmentTargetFilter")
 	local t = { 
-		["assessmentTargetNamePattern"] = _assessmentTargetNamePattern,
+		["assessmentTargetNamePattern"] = args["assessmentTargetNamePattern"],
 	}
 	asserts.AssertAssessmentTargetFilter(t)
 	return t
@@ -1164,14 +1260,17 @@ end
 
 --- Create a structure of type ListRulesPackagesResponse
 --  
--- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param _rulesPackageArns [ListReturnedArnList] <p>The list of ARNs that specifies the rules packages returned by the action.</p>
--- Required parameter: rulesPackageArns
-function M.ListRulesPackagesResponse(_nextToken, _rulesPackageArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesPackagesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- * rulesPackageArns [ListReturnedArnList] <p>The list of ARNs that specifies the rules packages returned by the action.</p>
+-- Required key: rulesPackageArns
+-- @return ListRulesPackagesResponse structure as a key-value pair table
+function M.ListRulesPackagesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListRulesPackagesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["rulesPackageArns"] = _rulesPackageArns,
+		["nextToken"] = args["nextToken"],
+		["rulesPackageArns"] = args["rulesPackageArns"],
 	}
 	asserts.AssertListRulesPackagesResponse(t)
 	return t
@@ -1212,50 +1311,53 @@ end
 
 --- Create a structure of type Finding
 -- <p>Contains information about an Amazon Inspector finding. This data type is used as the response element in the <a>DescribeFindings</a> action.</p>
--- @param _assetType [AssetType] <p>The type of the host from which the finding is generated.</p>
--- @param _confidence [IocConfidence] <p>This data element is currently not used.</p>
--- @param _numericSeverity [NumericSeverity] <p>The numeric value of the finding severity.</p>
--- @param _description [Text] <p>The description of the finding.</p>
--- @param _service [ServiceName] <p>The data element is set to "Inspector".</p>
--- @param _title [Text] <p>The name of the finding.</p>
--- @param _indicatorOfCompromise [Bool] <p>This data element is currently not used.</p>
--- @param _assetAttributes [AssetAttributes] <p>A collection of attributes of the host from which the finding is generated.</p>
--- @param _userAttributes [UserAttributeList] <p>The user-defined attributes that are assigned to the finding.</p>
--- @param _createdAt [Timestamp] <p>The time when the finding was generated.</p>
--- @param _recommendation [Text] <p>The recommendation for the finding.</p>
--- @param _updatedAt [Timestamp] <p>The time when <a>AddAttributesToFindings</a> is called.</p>
--- @param _attributes [AttributeList] <p>The system-defined attributes for the finding.</p>
--- @param _schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
--- @param _serviceAttributes [InspectorServiceAttributes] <p>This data type is used in the <a>Finding</a> data type.</p>
--- @param _id [FindingId] <p>The ID of the finding.</p>
--- @param _arn [Arn] <p>The ARN that specifies the finding.</p>
--- @param _severity [Severity] <p>The finding severity. Values can be set to High, Medium, Low, and Informational.</p>
--- Required parameter: arn
--- Required parameter: attributes
--- Required parameter: userAttributes
--- Required parameter: createdAt
--- Required parameter: updatedAt
-function M.Finding(_assetType, _confidence, _numericSeverity, _description, _service, _title, _indicatorOfCompromise, _assetAttributes, _userAttributes, _createdAt, _recommendation, _updatedAt, _attributes, _schemaVersion, _serviceAttributes, _id, _arn, _severity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Finding")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assetType [AssetType] <p>The type of the host from which the finding is generated.</p>
+-- * confidence [IocConfidence] <p>This data element is currently not used.</p>
+-- * numericSeverity [NumericSeverity] <p>The numeric value of the finding severity.</p>
+-- * description [Text] <p>The description of the finding.</p>
+-- * service [ServiceName] <p>The data element is set to "Inspector".</p>
+-- * title [Text] <p>The name of the finding.</p>
+-- * indicatorOfCompromise [Bool] <p>This data element is currently not used.</p>
+-- * assetAttributes [AssetAttributes] <p>A collection of attributes of the host from which the finding is generated.</p>
+-- * userAttributes [UserAttributeList] <p>The user-defined attributes that are assigned to the finding.</p>
+-- * createdAt [Timestamp] <p>The time when the finding was generated.</p>
+-- * recommendation [Text] <p>The recommendation for the finding.</p>
+-- * updatedAt [Timestamp] <p>The time when <a>AddAttributesToFindings</a> is called.</p>
+-- * attributes [AttributeList] <p>The system-defined attributes for the finding.</p>
+-- * schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
+-- * serviceAttributes [InspectorServiceAttributes] <p>This data type is used in the <a>Finding</a> data type.</p>
+-- * id [FindingId] <p>The ID of the finding.</p>
+-- * arn [Arn] <p>The ARN that specifies the finding.</p>
+-- * severity [Severity] <p>The finding severity. Values can be set to High, Medium, Low, and Informational.</p>
+-- Required key: arn
+-- Required key: attributes
+-- Required key: userAttributes
+-- Required key: createdAt
+-- Required key: updatedAt
+-- @return Finding structure as a key-value pair table
+function M.Finding(args)
+	assert(args, "You must provdide an argument table when creating Finding")
 	local t = { 
-		["assetType"] = _assetType,
-		["confidence"] = _confidence,
-		["numericSeverity"] = _numericSeverity,
-		["description"] = _description,
-		["service"] = _service,
-		["title"] = _title,
-		["indicatorOfCompromise"] = _indicatorOfCompromise,
-		["assetAttributes"] = _assetAttributes,
-		["userAttributes"] = _userAttributes,
-		["createdAt"] = _createdAt,
-		["recommendation"] = _recommendation,
-		["updatedAt"] = _updatedAt,
-		["attributes"] = _attributes,
-		["schemaVersion"] = _schemaVersion,
-		["serviceAttributes"] = _serviceAttributes,
-		["id"] = _id,
-		["arn"] = _arn,
-		["severity"] = _severity,
+		["assetType"] = args["assetType"],
+		["confidence"] = args["confidence"],
+		["numericSeverity"] = args["numericSeverity"],
+		["description"] = args["description"],
+		["service"] = args["service"],
+		["title"] = args["title"],
+		["indicatorOfCompromise"] = args["indicatorOfCompromise"],
+		["assetAttributes"] = args["assetAttributes"],
+		["userAttributes"] = args["userAttributes"],
+		["createdAt"] = args["createdAt"],
+		["recommendation"] = args["recommendation"],
+		["updatedAt"] = args["updatedAt"],
+		["attributes"] = args["attributes"],
+		["schemaVersion"] = args["schemaVersion"],
+		["serviceAttributes"] = args["serviceAttributes"],
+		["id"] = args["id"],
+		["arn"] = args["arn"],
+		["severity"] = args["severity"],
 	}
 	asserts.AssertFinding(t)
 	return t
@@ -1276,14 +1378,17 @@ end
 
 --- Create a structure of type ListFindingsResponse
 --  
--- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param _findingArns [ListReturnedArnList] <p>A list of ARNs that specifies the findings returned by the action.</p>
--- Required parameter: findingArns
-function M.ListFindingsResponse(_nextToken, _findingArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFindingsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- * findingArns [ListReturnedArnList] <p>A list of ARNs that specifies the findings returned by the action.</p>
+-- Required key: findingArns
+-- @return ListFindingsResponse structure as a key-value pair table
+function M.ListFindingsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListFindingsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["findingArns"] = _findingArns,
+		["nextToken"] = args["nextToken"],
+		["findingArns"] = args["findingArns"],
 	}
 	asserts.AssertListFindingsResponse(t)
 	return t
@@ -1304,14 +1409,17 @@ end
 
 --- Create a structure of type AgentPreview
 -- <p>Used as a response element in the <a>PreviewAgents</a> action.</p>
--- @param _autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group for the EC2 instance where the agent is installed.</p>
--- @param _agentId [AgentId] <p>The ID of the EC2 instance where the agent is installed.</p>
--- Required parameter: agentId
-function M.AgentPreview(_autoScalingGroup, _agentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AgentPreview")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group for the EC2 instance where the agent is installed.</p>
+-- * agentId [AgentId] <p>The ID of the EC2 instance where the agent is installed.</p>
+-- Required key: agentId
+-- @return AgentPreview structure as a key-value pair table
+function M.AgentPreview(args)
+	assert(args, "You must provdide an argument table when creating AgentPreview")
 	local t = { 
-		["autoScalingGroup"] = _autoScalingGroup,
-		["agentId"] = _agentId,
+		["autoScalingGroup"] = args["autoScalingGroup"],
+		["agentId"] = args["agentId"],
 	}
 	asserts.AssertAgentPreview(t)
 	return t
@@ -1331,12 +1439,15 @@ end
 
 --- Create a structure of type CreateAssessmentTargetResponse
 --  
--- @param _assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target that is created.</p>
--- Required parameter: assessmentTargetArn
-function M.CreateAssessmentTargetResponse(_assessmentTargetArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssessmentTargetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target that is created.</p>
+-- Required key: assessmentTargetArn
+-- @return CreateAssessmentTargetResponse structure as a key-value pair table
+function M.CreateAssessmentTargetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateAssessmentTargetResponse")
 	local t = { 
-		["assessmentTargetArn"] = _assessmentTargetArn,
+		["assessmentTargetArn"] = args["assessmentTargetArn"],
 	}
 	asserts.AssertCreateAssessmentTargetResponse(t)
 	return t
@@ -1357,14 +1468,17 @@ end
 
 --- Create a structure of type ListAssessmentTemplatesResponse
 --  
--- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param _assessmentTemplateArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment templates returned by the action.</p>
--- Required parameter: assessmentTemplateArns
-function M.ListAssessmentTemplatesResponse(_nextToken, _assessmentTemplateArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTemplatesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- * assessmentTemplateArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment templates returned by the action.</p>
+-- Required key: assessmentTemplateArns
+-- @return ListAssessmentTemplatesResponse structure as a key-value pair table
+function M.ListAssessmentTemplatesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAssessmentTemplatesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["assessmentTemplateArns"] = _assessmentTemplateArns,
+		["nextToken"] = args["nextToken"],
+		["assessmentTemplateArns"] = args["assessmentTemplateArns"],
 	}
 	asserts.AssertListAssessmentTemplatesResponse(t)
 	return t
@@ -1384,12 +1498,15 @@ end
 
 --- Create a structure of type AddAttributesToFindingsResponse
 --  
--- @param _failedItems [FailedItems] <p>Attribute details that cannot be described. An error code is provided for each failed item.</p>
--- Required parameter: failedItems
-function M.AddAttributesToFindingsResponse(_failedItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddAttributesToFindingsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failedItems [FailedItems] <p>Attribute details that cannot be described. An error code is provided for each failed item.</p>
+-- Required key: failedItems
+-- @return AddAttributesToFindingsResponse structure as a key-value pair table
+function M.AddAttributesToFindingsResponse(args)
+	assert(args, "You must provdide an argument table when creating AddAttributesToFindingsResponse")
 	local t = { 
-		["failedItems"] = _failedItems,
+		["failedItems"] = args["failedItems"],
 	}
 	asserts.AssertAddAttributesToFindingsResponse(t)
 	return t
@@ -1409,12 +1526,15 @@ end
 
 --- Create a structure of type DescribeAssessmentRunsRequest
 --  
--- @param _assessmentRunArns [BatchDescribeArnList] <p>The ARN that specifies the assessment run that you want to describe.</p>
--- Required parameter: assessmentRunArns
-function M.DescribeAssessmentRunsRequest(_assessmentRunArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentRunsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentRunArns [BatchDescribeArnList] <p>The ARN that specifies the assessment run that you want to describe.</p>
+-- Required key: assessmentRunArns
+-- @return DescribeAssessmentRunsRequest structure as a key-value pair table
+function M.DescribeAssessmentRunsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAssessmentRunsRequest")
 	local t = { 
-		["assessmentRunArns"] = _assessmentRunArns,
+		["assessmentRunArns"] = args["assessmentRunArns"],
 	}
 	asserts.AssertDescribeAssessmentRunsRequest(t)
 	return t
@@ -1436,15 +1556,18 @@ end
 
 --- Create a structure of type CreateAssessmentTargetRequest
 --  
--- @param _assessmentTargetName [AssessmentTargetName] <p>The user-defined name that identifies the assessment target that you want to create. The name must be unique within the AWS account.</p>
--- @param _resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is used to create the assessment target.</p>
--- Required parameter: assessmentTargetName
--- Required parameter: resourceGroupArn
-function M.CreateAssessmentTargetRequest(_assessmentTargetName, _resourceGroupArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssessmentTargetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTargetName [AssessmentTargetName] <p>The user-defined name that identifies the assessment target that you want to create. The name must be unique within the AWS account.</p>
+-- * resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is used to create the assessment target.</p>
+-- Required key: assessmentTargetName
+-- Required key: resourceGroupArn
+-- @return CreateAssessmentTargetRequest structure as a key-value pair table
+function M.CreateAssessmentTargetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateAssessmentTargetRequest")
 	local t = { 
-		["assessmentTargetName"] = _assessmentTargetName,
-		["resourceGroupArn"] = _resourceGroupArn,
+		["assessmentTargetName"] = args["assessmentTargetName"],
+		["resourceGroupArn"] = args["resourceGroupArn"],
 	}
 	asserts.AssertCreateAssessmentTargetRequest(t)
 	return t
@@ -1468,18 +1591,21 @@ end
 
 --- Create a structure of type AccessDeniedException
 -- <p>You do not have required permissions to access the requested resource.</p>
--- @param _errorCode [AccessDeniedErrorCode] <p>Code that indicates the type of error that is generated.</p>
--- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param _message [ErrorMessage] <p>Details of the exception error.</p>
--- Required parameter: message
--- Required parameter: errorCode
--- Required parameter: canRetry
-function M.AccessDeniedException(_errorCode, _canRetry, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errorCode [AccessDeniedErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- * canRetry [Bool] <p>You can immediately retry your request.</p>
+-- * message [ErrorMessage] <p>Details of the exception error.</p>
+-- Required key: message
+-- Required key: errorCode
+-- Required key: canRetry
+-- @return AccessDeniedException structure as a key-value pair table
+function M.AccessDeniedException(args)
+	assert(args, "You must provdide an argument table when creating AccessDeniedException")
 	local t = { 
-		["errorCode"] = _errorCode,
-		["canRetry"] = _canRetry,
-		["message"] = _message,
+		["errorCode"] = args["errorCode"],
+		["canRetry"] = args["canRetry"],
+		["message"] = args["message"],
 	}
 	asserts.AssertAccessDeniedException(t)
 	return t
@@ -1499,12 +1625,15 @@ end
 
 --- Create a structure of type DeleteAssessmentTemplateRequest
 --  
--- @param _assessmentTemplateArn [Arn] <p>The ARN that specifies the assessment template that you want to delete.</p>
--- Required parameter: assessmentTemplateArn
-function M.DeleteAssessmentTemplateRequest(_assessmentTemplateArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssessmentTemplateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTemplateArn [Arn] <p>The ARN that specifies the assessment template that you want to delete.</p>
+-- Required key: assessmentTemplateArn
+-- @return DeleteAssessmentTemplateRequest structure as a key-value pair table
+function M.DeleteAssessmentTemplateRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAssessmentTemplateRequest")
 	local t = { 
-		["assessmentTemplateArn"] = _assessmentTemplateArn,
+		["assessmentTemplateArn"] = args["assessmentTemplateArn"],
 	}
 	asserts.AssertDeleteAssessmentTemplateRequest(t)
 	return t
@@ -1530,25 +1659,28 @@ end
 
 --- Create a structure of type FindingFilter
 -- <p>This data type is used as a request parameter in the <a>ListFindings</a> action.</p>
--- @param _autoScalingGroups [AutoScalingGroupList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>autoScalingGroup</b> property of the <a>Finding</a> data type.</p>
--- @param _creationTimeRange [TimestampRange] <p>The time range during which the finding is generated.</p>
--- @param _ruleNames [RuleNameList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>ruleName</b> property of the <a>Finding</a> data type.</p>
--- @param _severities [SeverityList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>severity</b> property of the <a>Finding</a> data type.</p>
--- @param _userAttributes [AttributeList] <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>userAttributes</b> property of the <a>Finding</a> data type.</p>
--- @param _rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>rulesPackageArn</b> property of the <a>Finding</a> data type.</p>
--- @param _attributes [AttributeList] <p>For a record to match a filter, the list of values that are specified for this data type property must be contained in the list of values of the <b>attributes</b> property of the <a>Finding</a> data type.</p>
--- @param _agentIds [AgentIdList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>agentId</b> property of the <a>Finding</a> data type.</p>
-function M.FindingFilter(_autoScalingGroups, _creationTimeRange, _ruleNames, _severities, _userAttributes, _rulesPackageArns, _attributes, _agentIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FindingFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * autoScalingGroups [AutoScalingGroupList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>autoScalingGroup</b> property of the <a>Finding</a> data type.</p>
+-- * creationTimeRange [TimestampRange] <p>The time range during which the finding is generated.</p>
+-- * ruleNames [RuleNameList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>ruleName</b> property of the <a>Finding</a> data type.</p>
+-- * severities [SeverityList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>severity</b> property of the <a>Finding</a> data type.</p>
+-- * userAttributes [AttributeList] <p>For a record to match a filter, the value that is specified for this data type property must be contained in the list of values of the <b>userAttributes</b> property of the <a>Finding</a> data type.</p>
+-- * rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>rulesPackageArn</b> property of the <a>Finding</a> data type.</p>
+-- * attributes [AttributeList] <p>For a record to match a filter, the list of values that are specified for this data type property must be contained in the list of values of the <b>attributes</b> property of the <a>Finding</a> data type.</p>
+-- * agentIds [AgentIdList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>agentId</b> property of the <a>Finding</a> data type.</p>
+-- @return FindingFilter structure as a key-value pair table
+function M.FindingFilter(args)
+	assert(args, "You must provdide an argument table when creating FindingFilter")
 	local t = { 
-		["autoScalingGroups"] = _autoScalingGroups,
-		["creationTimeRange"] = _creationTimeRange,
-		["ruleNames"] = _ruleNames,
-		["severities"] = _severities,
-		["userAttributes"] = _userAttributes,
-		["rulesPackageArns"] = _rulesPackageArns,
-		["attributes"] = _attributes,
-		["agentIds"] = _agentIds,
+		["autoScalingGroups"] = args["autoScalingGroups"],
+		["creationTimeRange"] = args["creationTimeRange"],
+		["ruleNames"] = args["ruleNames"],
+		["severities"] = args["severities"],
+		["userAttributes"] = args["userAttributes"],
+		["rulesPackageArns"] = args["rulesPackageArns"],
+		["attributes"] = args["attributes"],
+		["agentIds"] = args["agentIds"],
 	}
 	asserts.AssertFindingFilter(t)
 	return t
@@ -1569,14 +1701,17 @@ end
 
 --- Create a structure of type ListAssessmentTargetsResponse
 --  
--- @param _assessmentTargetArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment targets that are returned by the action.</p>
--- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- Required parameter: assessmentTargetArns
-function M.ListAssessmentTargetsResponse(_assessmentTargetArns, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTargetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTargetArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment targets that are returned by the action.</p>
+-- * nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- Required key: assessmentTargetArns
+-- @return ListAssessmentTargetsResponse structure as a key-value pair table
+function M.ListAssessmentTargetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAssessmentTargetsResponse")
 	local t = { 
-		["assessmentTargetArns"] = _assessmentTargetArns,
-		["nextToken"] = _nextToken,
+		["assessmentTargetArns"] = args["assessmentTargetArns"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListAssessmentTargetsResponse(t)
 	return t
@@ -1597,14 +1732,17 @@ end
 
 --- Create a structure of type SetTagsForResourceRequest
 --  
--- @param _resourceArn [Arn] <p>The ARN of the assessment template that you want to set tags to.</p>
--- @param _tags [TagList] <p>A collection of key and value pairs that you want to set to the assessment template.</p>
--- Required parameter: resourceArn
-function M.SetTagsForResourceRequest(_resourceArn, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetTagsForResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceArn [Arn] <p>The ARN of the assessment template that you want to set tags to.</p>
+-- * tags [TagList] <p>A collection of key and value pairs that you want to set to the assessment template.</p>
+-- Required key: resourceArn
+-- @return SetTagsForResourceRequest structure as a key-value pair table
+function M.SetTagsForResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating SetTagsForResourceRequest")
 	local t = { 
-		["resourceArn"] = _resourceArn,
-		["tags"] = _tags,
+		["resourceArn"] = args["resourceArn"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertSetTagsForResourceRequest(t)
 	return t
@@ -1624,12 +1762,15 @@ end
 
 --- Create a structure of type DeleteAssessmentTargetRequest
 --  
--- @param _assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target that you want to delete.</p>
--- Required parameter: assessmentTargetArn
-function M.DeleteAssessmentTargetRequest(_assessmentTargetArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssessmentTargetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target that you want to delete.</p>
+-- Required key: assessmentTargetArn
+-- @return DeleteAssessmentTargetRequest structure as a key-value pair table
+function M.DeleteAssessmentTargetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAssessmentTargetRequest")
 	local t = { 
-		["assessmentTargetArn"] = _assessmentTargetArn,
+		["assessmentTargetArn"] = args["assessmentTargetArn"],
 	}
 	asserts.AssertDeleteAssessmentTargetRequest(t)
 	return t
@@ -1649,12 +1790,15 @@ end
 
 --- Create a structure of type StartAssessmentRunResponse
 --  
--- @param _assessmentRunArn [Arn] <p>The ARN of the assessment run that has been started.</p>
--- Required parameter: assessmentRunArn
-function M.StartAssessmentRunResponse(_assessmentRunArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartAssessmentRunResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentRunArn [Arn] <p>The ARN of the assessment run that has been started.</p>
+-- Required key: assessmentRunArn
+-- @return StartAssessmentRunResponse structure as a key-value pair table
+function M.StartAssessmentRunResponse(args)
+	assert(args, "You must provdide an argument table when creating StartAssessmentRunResponse")
 	local t = { 
-		["assessmentRunArn"] = _assessmentRunArn,
+		["assessmentRunArn"] = args["assessmentRunArn"],
 	}
 	asserts.AssertStartAssessmentRunResponse(t)
 	return t
@@ -1682,24 +1826,27 @@ end
 
 --- Create a structure of type AssessmentTarget
 -- <p>Contains information about an Amazon Inspector application. This data type is used as the response element in the <a>DescribeAssessmentTargets</a> action.</p>
--- @param _resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is associated with the assessment target.</p>
--- @param _createdAt [Timestamp] <p>The time at which the assessment target is created.</p>
--- @param _name [AssessmentTargetName] <p>The name of the Amazon Inspector assessment target.</p>
--- @param _arn [Arn] <p>The ARN that specifies the Amazon Inspector assessment target.</p>
--- @param _updatedAt [Timestamp] <p>The time at which <a>UpdateAssessmentTarget</a> is called.</p>
--- Required parameter: arn
--- Required parameter: name
--- Required parameter: resourceGroupArn
--- Required parameter: createdAt
--- Required parameter: updatedAt
-function M.AssessmentTarget(_resourceGroupArn, _createdAt, _name, _arn, _updatedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentTarget")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceGroupArn [Arn] <p>The ARN that specifies the resource group that is associated with the assessment target.</p>
+-- * createdAt [Timestamp] <p>The time at which the assessment target is created.</p>
+-- * name [AssessmentTargetName] <p>The name of the Amazon Inspector assessment target.</p>
+-- * arn [Arn] <p>The ARN that specifies the Amazon Inspector assessment target.</p>
+-- * updatedAt [Timestamp] <p>The time at which <a>UpdateAssessmentTarget</a> is called.</p>
+-- Required key: arn
+-- Required key: name
+-- Required key: resourceGroupArn
+-- Required key: createdAt
+-- Required key: updatedAt
+-- @return AssessmentTarget structure as a key-value pair table
+function M.AssessmentTarget(args)
+	assert(args, "You must provdide an argument table when creating AssessmentTarget")
 	local t = { 
-		["resourceGroupArn"] = _resourceGroupArn,
-		["createdAt"] = _createdAt,
-		["name"] = _name,
-		["arn"] = _arn,
-		["updatedAt"] = _updatedAt,
+		["resourceGroupArn"] = args["resourceGroupArn"],
+		["createdAt"] = args["createdAt"],
+		["name"] = args["name"],
+		["arn"] = args["arn"],
+		["updatedAt"] = args["updatedAt"],
 	}
 	asserts.AssertAssessmentTarget(t)
 	return t
@@ -1719,12 +1866,15 @@ end
 
 --- Create a structure of type DescribeAssessmentTemplatesRequest
 --  
--- @param _assessmentTemplateArns [BatchDescribeArnList] 
--- Required parameter: assessmentTemplateArns
-function M.DescribeAssessmentTemplatesRequest(_assessmentTemplateArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentTemplatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTemplateArns [BatchDescribeArnList] 
+-- Required key: assessmentTemplateArns
+-- @return DescribeAssessmentTemplatesRequest structure as a key-value pair table
+function M.DescribeAssessmentTemplatesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAssessmentTemplatesRequest")
 	local t = { 
-		["assessmentTemplateArns"] = _assessmentTemplateArns,
+		["assessmentTemplateArns"] = args["assessmentTemplateArns"],
 	}
 	asserts.AssertDescribeAssessmentTemplatesRequest(t)
 	return t
@@ -1745,14 +1895,17 @@ end
 
 --- Create a structure of type StartAssessmentRunRequest
 --  
--- @param _assessmentRunName [AssessmentRunName] <p>You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.</p>
--- @param _assessmentTemplateArn [Arn] <p>The ARN of the assessment template of the assessment run that you want to start.</p>
--- Required parameter: assessmentTemplateArn
-function M.StartAssessmentRunRequest(_assessmentRunName, _assessmentTemplateArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartAssessmentRunRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentRunName [AssessmentRunName] <p>You can specify the name for the assessment run. The name must be unique for the assessment template whose ARN is used to start the assessment run.</p>
+-- * assessmentTemplateArn [Arn] <p>The ARN of the assessment template of the assessment run that you want to start.</p>
+-- Required key: assessmentTemplateArn
+-- @return StartAssessmentRunRequest structure as a key-value pair table
+function M.StartAssessmentRunRequest(args)
+	assert(args, "You must provdide an argument table when creating StartAssessmentRunRequest")
 	local t = { 
-		["assessmentRunName"] = _assessmentRunName,
-		["assessmentTemplateArn"] = _assessmentTemplateArn,
+		["assessmentRunName"] = args["assessmentRunName"],
+		["assessmentTemplateArn"] = args["assessmentTemplateArn"],
 	}
 	asserts.AssertStartAssessmentRunRequest(t)
 	return t
@@ -1774,15 +1927,18 @@ end
 
 --- Create a structure of type DescribeAssessmentTargetsResponse
 --  
--- @param _assessmentTargets [AssessmentTargetList] <p>Information about the assessment targets.</p>
--- @param _failedItems [FailedItems] <p>Assessment target details that cannot be described. An error code is provided for each failed item.</p>
--- Required parameter: assessmentTargets
--- Required parameter: failedItems
-function M.DescribeAssessmentTargetsResponse(_assessmentTargets, _failedItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentTargetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTargets [AssessmentTargetList] <p>Information about the assessment targets.</p>
+-- * failedItems [FailedItems] <p>Assessment target details that cannot be described. An error code is provided for each failed item.</p>
+-- Required key: assessmentTargets
+-- Required key: failedItems
+-- @return DescribeAssessmentTargetsResponse structure as a key-value pair table
+function M.DescribeAssessmentTargetsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAssessmentTargetsResponse")
 	local t = { 
-		["assessmentTargets"] = _assessmentTargets,
-		["failedItems"] = _failedItems,
+		["assessmentTargets"] = args["assessmentTargets"],
+		["failedItems"] = args["failedItems"],
 	}
 	asserts.AssertDescribeAssessmentTargetsResponse(t)
 	return t
@@ -1803,14 +1959,17 @@ end
 
 --- Create a structure of type ListEventSubscriptionsResponse
 --  
--- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param _subscriptions [SubscriptionList] <p>Details of the returned event subscriptions.</p>
--- Required parameter: subscriptions
-function M.ListEventSubscriptionsResponse(_nextToken, _subscriptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListEventSubscriptionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- * subscriptions [SubscriptionList] <p>Details of the returned event subscriptions.</p>
+-- Required key: subscriptions
+-- @return ListEventSubscriptionsResponse structure as a key-value pair table
+function M.ListEventSubscriptionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListEventSubscriptionsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["subscriptions"] = _subscriptions,
+		["nextToken"] = args["nextToken"],
+		["subscriptions"] = args["subscriptions"],
 	}
 	asserts.AssertListEventSubscriptionsResponse(t)
 	return t
@@ -1832,15 +1991,18 @@ end
 
 --- Create a structure of type DescribeAssessmentTemplatesResponse
 --  
--- @param _assessmentTemplates [AssessmentTemplateList] <p>Information about the assessment templates.</p>
--- @param _failedItems [FailedItems] <p>Assessment template details that cannot be described. An error code is provided for each failed item.</p>
--- Required parameter: assessmentTemplates
--- Required parameter: failedItems
-function M.DescribeAssessmentTemplatesResponse(_assessmentTemplates, _failedItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentTemplatesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTemplates [AssessmentTemplateList] <p>Information about the assessment templates.</p>
+-- * failedItems [FailedItems] <p>Assessment template details that cannot be described. An error code is provided for each failed item.</p>
+-- Required key: assessmentTemplates
+-- Required key: failedItems
+-- @return DescribeAssessmentTemplatesResponse structure as a key-value pair table
+function M.DescribeAssessmentTemplatesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAssessmentTemplatesResponse")
 	local t = { 
-		["assessmentTemplates"] = _assessmentTemplates,
-		["failedItems"] = _failedItems,
+		["assessmentTemplates"] = args["assessmentTemplates"],
+		["failedItems"] = args["failedItems"],
 	}
 	asserts.AssertDescribeAssessmentTemplatesResponse(t)
 	return t
@@ -1860,13 +2022,16 @@ end
 
 --- Create a structure of type DurationRange
 -- <p>This data type is used in the <a>AssessmentTemplateFilter</a> data type.</p>
--- @param _minSeconds [AssessmentRunDuration] <p>The minimum value of the duration range. Must be greater than zero.</p>
--- @param _maxSeconds [AssessmentRunDuration] <p>The maximum value of the duration range. Must be less than or equal to 604800 seconds (1 week).</p>
-function M.DurationRange(_minSeconds, _maxSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DurationRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * minSeconds [AssessmentRunDuration] <p>The minimum value of the duration range. Must be greater than zero.</p>
+-- * maxSeconds [AssessmentRunDuration] <p>The maximum value of the duration range. Must be less than or equal to 604800 seconds (1 week).</p>
+-- @return DurationRange structure as a key-value pair table
+function M.DurationRange(args)
+	assert(args, "You must provdide an argument table when creating DurationRange")
 	local t = { 
-		["minSeconds"] = _minSeconds,
-		["maxSeconds"] = _maxSeconds,
+		["minSeconds"] = args["minSeconds"],
+		["maxSeconds"] = args["maxSeconds"],
 	}
 	asserts.AssertDurationRange(t)
 	return t
@@ -1886,12 +2051,15 @@ end
 
 --- Create a structure of type GetTelemetryMetadataRequest
 --  
--- @param _assessmentRunArn [Arn] <p>The ARN that specifies the assessment run that has the telemetry data that you want to obtain.</p>
--- Required parameter: assessmentRunArn
-function M.GetTelemetryMetadataRequest(_assessmentRunArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTelemetryMetadataRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentRunArn [Arn] <p>The ARN that specifies the assessment run that has the telemetry data that you want to obtain.</p>
+-- Required key: assessmentRunArn
+-- @return GetTelemetryMetadataRequest structure as a key-value pair table
+function M.GetTelemetryMetadataRequest(args)
+	assert(args, "You must provdide an argument table when creating GetTelemetryMetadataRequest")
 	local t = { 
-		["assessmentRunArn"] = _assessmentRunArn,
+		["assessmentRunArn"] = args["assessmentRunArn"],
 	}
 	asserts.AssertGetTelemetryMetadataRequest(t)
 	return t
@@ -1911,12 +2079,15 @@ end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param _resourceArn [Arn] <p>The ARN that specifies the assessment template whose tags you want to list.</p>
--- Required parameter: resourceArn
-function M.ListTagsForResourceRequest(_resourceArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceArn [Arn] <p>The ARN that specifies the assessment template whose tags you want to list.</p>
+-- Required key: resourceArn
+-- @return ListTagsForResourceRequest structure as a key-value pair table
+function M.ListTagsForResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
 	local t = { 
-		["resourceArn"] = _resourceArn,
+		["resourceArn"] = args["resourceArn"],
 	}
 	asserts.AssertListTagsForResourceRequest(t)
 	return t
@@ -1937,14 +2108,17 @@ end
 
 --- Create a structure of type ListAssessmentRunAgentsResponse
 --  
--- @param _assessmentRunAgents [AssessmentRunAgentList] <p>A list of ARNs that specifies the agents returned by the action.</p>
--- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- Required parameter: assessmentRunAgents
-function M.ListAssessmentRunAgentsResponse(_assessmentRunAgents, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunAgentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentRunAgents [AssessmentRunAgentList] <p>A list of ARNs that specifies the agents returned by the action.</p>
+-- * nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- Required key: assessmentRunAgents
+-- @return ListAssessmentRunAgentsResponse structure as a key-value pair table
+function M.ListAssessmentRunAgentsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAssessmentRunAgentsResponse")
 	local t = { 
-		["assessmentRunAgents"] = _assessmentRunAgents,
-		["nextToken"] = _nextToken,
+		["assessmentRunAgents"] = args["assessmentRunAgents"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListAssessmentRunAgentsResponse(t)
 	return t
@@ -1966,15 +2140,18 @@ end
 
 --- Create a structure of type UnsupportedFeatureException
 -- <p>Used by the <a>GetAssessmentReport</a> API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.</p>
--- @param _canRetry [Bool] 
--- @param _message [ErrorMessage] 
--- Required parameter: message
--- Required parameter: canRetry
-function M.UnsupportedFeatureException(_canRetry, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedFeatureException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * canRetry [Bool] 
+-- * message [ErrorMessage] 
+-- Required key: message
+-- Required key: canRetry
+-- @return UnsupportedFeatureException structure as a key-value pair table
+function M.UnsupportedFeatureException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedFeatureException")
 	local t = { 
-		["canRetry"] = _canRetry,
-		["message"] = _message,
+		["canRetry"] = args["canRetry"],
+		["message"] = args["message"],
 	}
 	asserts.AssertUnsupportedFeatureException(t)
 	return t
@@ -1996,16 +2173,19 @@ end
 
 --- Create a structure of type InspectorServiceAttributes
 -- <p>This data type is used in the <a>Finding</a> data type.</p>
--- @param _schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
--- @param _rulesPackageArn [Arn] <p>The ARN of the rules package that is used to generate the finding.</p>
--- @param _assessmentRunArn [Arn] <p>The ARN of the assessment run during which the finding is generated.</p>
--- Required parameter: schemaVersion
-function M.InspectorServiceAttributes(_schemaVersion, _rulesPackageArn, _assessmentRunArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InspectorServiceAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
+-- * rulesPackageArn [Arn] <p>The ARN of the rules package that is used to generate the finding.</p>
+-- * assessmentRunArn [Arn] <p>The ARN of the assessment run during which the finding is generated.</p>
+-- Required key: schemaVersion
+-- @return InspectorServiceAttributes structure as a key-value pair table
+function M.InspectorServiceAttributes(args)
+	assert(args, "You must provdide an argument table when creating InspectorServiceAttributes")
 	local t = { 
-		["schemaVersion"] = _schemaVersion,
-		["rulesPackageArn"] = _rulesPackageArn,
-		["assessmentRunArn"] = _assessmentRunArn,
+		["schemaVersion"] = args["schemaVersion"],
+		["rulesPackageArn"] = args["rulesPackageArn"],
+		["assessmentRunArn"] = args["assessmentRunArn"],
 	}
 	asserts.AssertInspectorServiceAttributes(t)
 	return t
@@ -2029,18 +2209,21 @@ end
 
 --- Create a structure of type ResourceGroup
 -- <p>Contains information about a resource group. The resource group defines a set of tags that, when queried, identify the AWS resources that make up the assessment target. This data type is used as the response element in the <a>DescribeResourceGroups</a> action.</p>
--- @param _createdAt [Timestamp] <p>The time at which resource group is created.</p>
--- @param _arn [Arn] <p>The ARN of the resource group.</p>
--- @param _tags [ResourceGroupTags] <p>The tags (key and value pairs) of the resource group. This data type property is used in the <a>CreateResourceGroup</a> action.</p>
--- Required parameter: arn
--- Required parameter: tags
--- Required parameter: createdAt
-function M.ResourceGroup(_createdAt, _arn, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * createdAt [Timestamp] <p>The time at which resource group is created.</p>
+-- * arn [Arn] <p>The ARN of the resource group.</p>
+-- * tags [ResourceGroupTags] <p>The tags (key and value pairs) of the resource group. This data type property is used in the <a>CreateResourceGroup</a> action.</p>
+-- Required key: arn
+-- Required key: tags
+-- Required key: createdAt
+-- @return ResourceGroup structure as a key-value pair table
+function M.ResourceGroup(args)
+	assert(args, "You must provdide an argument table when creating ResourceGroup")
 	local t = { 
-		["createdAt"] = _createdAt,
-		["arn"] = _arn,
-		["tags"] = _tags,
+		["createdAt"] = args["createdAt"],
+		["arn"] = args["arn"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertResourceGroup(t)
 	return t
@@ -2064,18 +2247,21 @@ end
 
 --- Create a structure of type UnsubscribeFromEventRequest
 --  
--- @param _resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which you want to stop receiving SNS notifications.</p>
--- @param _event [InspectorEvent] <p>The event for which you want to stop receiving SNS notifications.</p>
--- @param _topicArn [Arn] <p>The ARN of the SNS topic to which SNS notifications are sent.</p>
--- Required parameter: resourceArn
--- Required parameter: event
--- Required parameter: topicArn
-function M.UnsubscribeFromEventRequest(_resourceArn, _event, _topicArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsubscribeFromEventRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceArn [Arn] <p>The ARN of the assessment template that is used during the event for which you want to stop receiving SNS notifications.</p>
+-- * event [InspectorEvent] <p>The event for which you want to stop receiving SNS notifications.</p>
+-- * topicArn [Arn] <p>The ARN of the SNS topic to which SNS notifications are sent.</p>
+-- Required key: resourceArn
+-- Required key: event
+-- Required key: topicArn
+-- @return UnsubscribeFromEventRequest structure as a key-value pair table
+function M.UnsubscribeFromEventRequest(args)
+	assert(args, "You must provdide an argument table when creating UnsubscribeFromEventRequest")
 	local t = { 
-		["resourceArn"] = _resourceArn,
-		["event"] = _event,
-		["topicArn"] = _topicArn,
+		["resourceArn"] = args["resourceArn"],
+		["event"] = args["event"],
+		["topicArn"] = args["topicArn"],
 	}
 	asserts.AssertUnsubscribeFromEventRequest(t)
 	return t
@@ -2096,14 +2282,17 @@ end
 
 --- Create a structure of type ResourceGroupTag
 -- <p>This data type is used as one of the elements of the <a>ResourceGroup</a> data type.</p>
--- @param _value [TagValue] <p>The value assigned to a tag key.</p>
--- @param _key [TagKey] <p>A tag key.</p>
--- Required parameter: key
-function M.ResourceGroupTag(_value, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceGroupTag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [TagValue] <p>The value assigned to a tag key.</p>
+-- * key [TagKey] <p>A tag key.</p>
+-- Required key: key
+-- @return ResourceGroupTag structure as a key-value pair table
+function M.ResourceGroupTag(args)
+	assert(args, "You must provdide an argument table when creating ResourceGroupTag")
 	local t = { 
-		["value"] = _value,
-		["key"] = _key,
+		["value"] = args["value"],
+		["key"] = args["key"],
 	}
 	asserts.AssertResourceGroupTag(t)
 	return t
@@ -2124,14 +2313,17 @@ end
 
 --- Create a structure of type DescribeRulesPackagesRequest
 --  
--- @param _locale [Locale] <p>The locale that you want to translate a rules package description into.</p>
--- @param _rulesPackageArns [BatchDescribeArnList] <p>The ARN that specifies the rules package that you want to describe.</p>
--- Required parameter: rulesPackageArns
-function M.DescribeRulesPackagesRequest(_locale, _rulesPackageArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRulesPackagesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * locale [Locale] <p>The locale that you want to translate a rules package description into.</p>
+-- * rulesPackageArns [BatchDescribeArnList] <p>The ARN that specifies the rules package that you want to describe.</p>
+-- Required key: rulesPackageArns
+-- @return DescribeRulesPackagesRequest structure as a key-value pair table
+function M.DescribeRulesPackagesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeRulesPackagesRequest")
 	local t = { 
-		["locale"] = _locale,
-		["rulesPackageArns"] = _rulesPackageArns,
+		["locale"] = args["locale"],
+		["rulesPackageArns"] = args["rulesPackageArns"],
 	}
 	asserts.AssertDescribeRulesPackagesRequest(t)
 	return t
@@ -2156,22 +2348,25 @@ end
 
 --- Create a structure of type AssetAttributes
 -- <p>A collection of attributes of the host from which the finding is generated.</p>
--- @param _amiId [AmiId] <p>The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.</p>
--- @param _hostname [Hostname] <p>The hostname of the EC2 instance where the finding is generated.</p>
--- @param _autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group of the EC2 instance where the finding is generated.</p>
--- @param _ipv4Addresses [Ipv4AddressList] <p>The list of IP v4 addresses of the EC2 instance where the finding is generated.</p>
--- @param _schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
--- @param _agentId [AgentId] <p>The ID of the agent that is installed on the EC2 instance where the finding is generated.</p>
--- Required parameter: schemaVersion
-function M.AssetAttributes(_amiId, _hostname, _autoScalingGroup, _ipv4Addresses, _schemaVersion, _agentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssetAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * amiId [AmiId] <p>The ID of the Amazon Machine Image (AMI) that is installed on the EC2 instance where the finding is generated.</p>
+-- * hostname [Hostname] <p>The hostname of the EC2 instance where the finding is generated.</p>
+-- * autoScalingGroup [AutoScalingGroup] <p>The Auto Scaling group of the EC2 instance where the finding is generated.</p>
+-- * ipv4Addresses [Ipv4AddressList] <p>The list of IP v4 addresses of the EC2 instance where the finding is generated.</p>
+-- * schemaVersion [NumericVersion] <p>The schema version of this data type.</p>
+-- * agentId [AgentId] <p>The ID of the agent that is installed on the EC2 instance where the finding is generated.</p>
+-- Required key: schemaVersion
+-- @return AssetAttributes structure as a key-value pair table
+function M.AssetAttributes(args)
+	assert(args, "You must provdide an argument table when creating AssetAttributes")
 	local t = { 
-		["amiId"] = _amiId,
-		["hostname"] = _hostname,
-		["autoScalingGroup"] = _autoScalingGroup,
-		["ipv4Addresses"] = _ipv4Addresses,
-		["schemaVersion"] = _schemaVersion,
-		["agentId"] = _agentId,
+		["amiId"] = args["amiId"],
+		["hostname"] = args["hostname"],
+		["autoScalingGroup"] = args["autoScalingGroup"],
+		["ipv4Addresses"] = args["ipv4Addresses"],
+		["schemaVersion"] = args["schemaVersion"],
+		["agentId"] = args["agentId"],
 	}
 	asserts.AssertAssetAttributes(t)
 	return t
@@ -2193,15 +2388,18 @@ end
 
 --- Create a structure of type DescribeFindingsResponse
 --  
--- @param _failedItems [FailedItems] <p>Finding details that cannot be described. An error code is provided for each failed item.</p>
--- @param _findings [FindingList] <p>Information about the finding.</p>
--- Required parameter: findings
--- Required parameter: failedItems
-function M.DescribeFindingsResponse(_failedItems, _findings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFindingsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failedItems [FailedItems] <p>Finding details that cannot be described. An error code is provided for each failed item.</p>
+-- * findings [FindingList] <p>Information about the finding.</p>
+-- Required key: findings
+-- Required key: failedItems
+-- @return DescribeFindingsResponse structure as a key-value pair table
+function M.DescribeFindingsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeFindingsResponse")
 	local t = { 
-		["failedItems"] = _failedItems,
-		["findings"] = _findings,
+		["failedItems"] = args["failedItems"],
+		["findings"] = args["findings"],
 	}
 	asserts.AssertDescribeFindingsResponse(t)
 	return t
@@ -2223,15 +2421,18 @@ end
 
 --- Create a structure of type AgentAlreadyRunningAssessment
 -- <p>Used in the exception error that is thrown if you start an assessment run for an assessment target that includes an EC2 instance that is already participating in another started assessment run.</p>
--- @param _assessmentRunArn [Arn] <p>The ARN of the assessment run that has already been started.</p>
--- @param _agentId [AgentId] <p>ID of the agent that is running on an EC2 instance that is already participating in another started assessment run.</p>
--- Required parameter: agentId
--- Required parameter: assessmentRunArn
-function M.AgentAlreadyRunningAssessment(_assessmentRunArn, _agentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AgentAlreadyRunningAssessment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentRunArn [Arn] <p>The ARN of the assessment run that has already been started.</p>
+-- * agentId [AgentId] <p>ID of the agent that is running on an EC2 instance that is already participating in another started assessment run.</p>
+-- Required key: agentId
+-- Required key: assessmentRunArn
+-- @return AgentAlreadyRunningAssessment structure as a key-value pair table
+function M.AgentAlreadyRunningAssessment(args)
+	assert(args, "You must provdide an argument table when creating AgentAlreadyRunningAssessment")
 	local t = { 
-		["assessmentRunArn"] = _assessmentRunArn,
-		["agentId"] = _agentId,
+		["assessmentRunArn"] = args["assessmentRunArn"],
+		["agentId"] = args["agentId"],
 	}
 	asserts.AssertAgentAlreadyRunningAssessment(t)
 	return t
@@ -2253,15 +2454,18 @@ end
 
 --- Create a structure of type AddAttributesToFindingsRequest
 --  
--- @param _attributes [UserAttributeList] <p>The array of attributes that you want to assign to specified findings.</p>
--- @param _findingArns [AddRemoveAttributesFindingArnList] <p>The ARNs that specify the findings that you want to assign attributes to.</p>
--- Required parameter: findingArns
--- Required parameter: attributes
-function M.AddAttributesToFindingsRequest(_attributes, _findingArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddAttributesToFindingsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attributes [UserAttributeList] <p>The array of attributes that you want to assign to specified findings.</p>
+-- * findingArns [AddRemoveAttributesFindingArnList] <p>The ARNs that specify the findings that you want to assign attributes to.</p>
+-- Required key: findingArns
+-- Required key: attributes
+-- @return AddAttributesToFindingsRequest structure as a key-value pair table
+function M.AddAttributesToFindingsRequest(args)
+	assert(args, "You must provdide an argument table when creating AddAttributesToFindingsRequest")
 	local t = { 
-		["attributes"] = _attributes,
-		["findingArns"] = _findingArns,
+		["attributes"] = args["attributes"],
+		["findingArns"] = args["findingArns"],
 	}
 	asserts.AssertAddAttributesToFindingsRequest(t)
 	return t
@@ -2281,12 +2485,15 @@ end
 
 --- Create a structure of type StopAssessmentRunRequest
 --  
--- @param _assessmentRunArn [Arn] <p>The ARN of the assessment run that you want to stop.</p>
--- Required parameter: assessmentRunArn
-function M.StopAssessmentRunRequest(_assessmentRunArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopAssessmentRunRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentRunArn [Arn] <p>The ARN of the assessment run that you want to stop.</p>
+-- Required key: assessmentRunArn
+-- @return StopAssessmentRunRequest structure as a key-value pair table
+function M.StopAssessmentRunRequest(args)
+	assert(args, "You must provdide an argument table when creating StopAssessmentRunRequest")
 	local t = { 
-		["assessmentRunArn"] = _assessmentRunArn,
+		["assessmentRunArn"] = args["assessmentRunArn"],
 	}
 	asserts.AssertStopAssessmentRunRequest(t)
 	return t
@@ -2308,15 +2515,18 @@ end
 
 --- Create a structure of type RemoveAttributesFromFindingsRequest
 --  
--- @param _attributeKeys [UserAttributeKeyList] <p>The array of attribute keys that you want to remove from specified findings.</p>
--- @param _findingArns [AddRemoveAttributesFindingArnList] <p>The ARNs that specify the findings that you want to remove attributes from.</p>
--- Required parameter: findingArns
--- Required parameter: attributeKeys
-function M.RemoveAttributesFromFindingsRequest(_attributeKeys, _findingArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAttributesFromFindingsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attributeKeys [UserAttributeKeyList] <p>The array of attribute keys that you want to remove from specified findings.</p>
+-- * findingArns [AddRemoveAttributesFindingArnList] <p>The ARNs that specify the findings that you want to remove attributes from.</p>
+-- Required key: findingArns
+-- Required key: attributeKeys
+-- @return RemoveAttributesFromFindingsRequest structure as a key-value pair table
+function M.RemoveAttributesFromFindingsRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveAttributesFromFindingsRequest")
 	local t = { 
-		["attributeKeys"] = _attributeKeys,
-		["findingArns"] = _findingArns,
+		["attributeKeys"] = args["attributeKeys"],
+		["findingArns"] = args["findingArns"],
 	}
 	asserts.AssertRemoveAttributesFromFindingsRequest(t)
 	return t
@@ -2338,17 +2548,20 @@ end
 
 --- Create a structure of type ListAssessmentTemplatesRequest
 --  
--- @param _filter [AssessmentTemplateFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
--- @param _assessmentTargetArns [ListParentArnList] <p>A list of ARNs that specifies the assessment targets whose assessment templates you want to list.</p>
--- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTemplates</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
-function M.ListAssessmentTemplatesRequest(_filter, _assessmentTargetArns, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentTemplatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filter [AssessmentTemplateFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- * assessmentTargetArns [ListParentArnList] <p>A list of ARNs that specifies the assessment targets whose assessment templates you want to list.</p>
+-- * nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentTemplates</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- * maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+-- @return ListAssessmentTemplatesRequest structure as a key-value pair table
+function M.ListAssessmentTemplatesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAssessmentTemplatesRequest")
 	local t = { 
-		["filter"] = _filter,
-		["assessmentTargetArns"] = _assessmentTargetArns,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["filter"] = args["filter"],
+		["assessmentTargetArns"] = args["assessmentTargetArns"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListAssessmentTemplatesRequest(t)
 	return t
@@ -2372,18 +2585,21 @@ end
 
 --- Create a structure of type InvalidCrossAccountRoleException
 -- <p>Amazon Inspector cannot assume the cross-account role that it needs to list your EC2 instances during the assessment run.</p>
--- @param _errorCode [InvalidCrossAccountRoleErrorCode] <p>Code that indicates the type of error that is generated.</p>
--- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param _message [ErrorMessage] <p>Details of the exception error.</p>
--- Required parameter: message
--- Required parameter: errorCode
--- Required parameter: canRetry
-function M.InvalidCrossAccountRoleException(_errorCode, _canRetry, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCrossAccountRoleException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errorCode [InvalidCrossAccountRoleErrorCode] <p>Code that indicates the type of error that is generated.</p>
+-- * canRetry [Bool] <p>You can immediately retry your request.</p>
+-- * message [ErrorMessage] <p>Details of the exception error.</p>
+-- Required key: message
+-- Required key: errorCode
+-- Required key: canRetry
+-- @return InvalidCrossAccountRoleException structure as a key-value pair table
+function M.InvalidCrossAccountRoleException(args)
+	assert(args, "You must provdide an argument table when creating InvalidCrossAccountRoleException")
 	local t = { 
-		["errorCode"] = _errorCode,
-		["canRetry"] = _canRetry,
-		["message"] = _message,
+		["errorCode"] = args["errorCode"],
+		["canRetry"] = args["canRetry"],
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidCrossAccountRoleException(t)
 	return t
@@ -2405,15 +2621,18 @@ end
 
 --- Create a structure of type DescribeResourceGroupsResponse
 --  
--- @param _resourceGroups [ResourceGroupList] <p>Information about a resource group.</p>
--- @param _failedItems [FailedItems] <p>Resource group details that cannot be described. An error code is provided for each failed item.</p>
--- Required parameter: resourceGroups
--- Required parameter: failedItems
-function M.DescribeResourceGroupsResponse(_resourceGroups, _failedItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeResourceGroupsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceGroups [ResourceGroupList] <p>Information about a resource group.</p>
+-- * failedItems [FailedItems] <p>Resource group details that cannot be described. An error code is provided for each failed item.</p>
+-- Required key: resourceGroups
+-- Required key: failedItems
+-- @return DescribeResourceGroupsResponse structure as a key-value pair table
+function M.DescribeResourceGroupsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeResourceGroupsResponse")
 	local t = { 
-		["resourceGroups"] = _resourceGroups,
-		["failedItems"] = _failedItems,
+		["resourceGroups"] = args["resourceGroups"],
+		["failedItems"] = args["failedItems"],
 	}
 	asserts.AssertDescribeResourceGroupsResponse(t)
 	return t
@@ -2434,14 +2653,17 @@ end
 
 --- Create a structure of type DescribeFindingsRequest
 --  
--- @param _locale [Locale] <p>The locale into which you want to translate a finding description, recommendation, and the short description that identifies the finding.</p>
--- @param _findingArns [BatchDescribeArnList] <p>The ARN that specifies the finding that you want to describe.</p>
--- Required parameter: findingArns
-function M.DescribeFindingsRequest(_locale, _findingArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFindingsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * locale [Locale] <p>The locale into which you want to translate a finding description, recommendation, and the short description that identifies the finding.</p>
+-- * findingArns [BatchDescribeArnList] <p>The ARN that specifies the finding that you want to describe.</p>
+-- Required key: findingArns
+-- @return DescribeFindingsRequest structure as a key-value pair table
+function M.DescribeFindingsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeFindingsRequest")
 	local t = { 
-		["locale"] = _locale,
-		["findingArns"] = _findingArns,
+		["locale"] = args["locale"],
+		["findingArns"] = args["findingArns"],
 	}
 	asserts.AssertDescribeFindingsRequest(t)
 	return t
@@ -2461,12 +2683,15 @@ end
 
 --- Create a structure of type ListTagsForResourceResponse
 --  
--- @param _tags [TagList] <p>A collection of key and value pairs.</p>
--- Required parameter: tags
-function M.ListTagsForResourceResponse(_tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tags [TagList] <p>A collection of key and value pairs.</p>
+-- Required key: tags
+-- @return ListTagsForResourceResponse structure as a key-value pair table
+function M.ListTagsForResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceResponse")
 	local t = { 
-		["tags"] = _tags,
+		["tags"] = args["tags"],
 	}
 	asserts.AssertListTagsForResourceResponse(t)
 	return t
@@ -2486,12 +2711,15 @@ end
 
 --- Create a structure of type RegisterCrossAccountAccessRoleRequest
 --  
--- @param _roleArn [Arn] <p>The ARN of the IAM role that Amazon Inspector uses to list your EC2 instances during the assessment run or when you call the <a>PreviewAgents</a> action. </p>
--- Required parameter: roleArn
-function M.RegisterCrossAccountAccessRoleRequest(_roleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterCrossAccountAccessRoleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * roleArn [Arn] <p>The ARN of the IAM role that Amazon Inspector uses to list your EC2 instances during the assessment run or when you call the <a>PreviewAgents</a> action. </p>
+-- Required key: roleArn
+-- @return RegisterCrossAccountAccessRoleRequest structure as a key-value pair table
+function M.RegisterCrossAccountAccessRoleRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterCrossAccountAccessRoleRequest")
 	local t = { 
-		["roleArn"] = _roleArn,
+		["roleArn"] = args["roleArn"],
 	}
 	asserts.AssertRegisterCrossAccountAccessRoleRequest(t)
 	return t
@@ -2513,15 +2741,18 @@ end
 
 --- Create a structure of type InternalException
 -- <p>Internal server error.</p>
--- @param _canRetry [Bool] <p>You can immediately retry your request.</p>
--- @param _message [ErrorMessage] <p>Details of the exception error.</p>
--- Required parameter: message
--- Required parameter: canRetry
-function M.InternalException(_canRetry, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * canRetry [Bool] <p>You can immediately retry your request.</p>
+-- * message [ErrorMessage] <p>Details of the exception error.</p>
+-- Required key: message
+-- Required key: canRetry
+-- @return InternalException structure as a key-value pair table
+function M.InternalException(args)
+	assert(args, "You must provdide an argument table when creating InternalException")
 	local t = { 
-		["canRetry"] = _canRetry,
-		["message"] = _message,
+		["canRetry"] = args["canRetry"],
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalException(t)
 	return t
@@ -2541,13 +2772,16 @@ end
 
 --- Create a structure of type TimestampRange
 -- <p>This data type is used in the <a>AssessmentRunFilter</a> data type.</p>
--- @param _beginDate [Timestamp] <p>The minimum value of the timestamp range.</p>
--- @param _endDate [Timestamp] <p>The maximum value of the timestamp range.</p>
-function M.TimestampRange(_beginDate, _endDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TimestampRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * beginDate [Timestamp] <p>The minimum value of the timestamp range.</p>
+-- * endDate [Timestamp] <p>The maximum value of the timestamp range.</p>
+-- @return TimestampRange structure as a key-value pair table
+function M.TimestampRange(args)
+	assert(args, "You must provdide an argument table when creating TimestampRange")
 	local t = { 
-		["beginDate"] = _beginDate,
-		["endDate"] = _endDate,
+		["beginDate"] = args["beginDate"],
+		["endDate"] = args["endDate"],
 	}
 	asserts.AssertTimestampRange(t)
 	return t
@@ -2568,15 +2802,18 @@ end
 
 --- Create a structure of type AssessmentTemplateFilter
 -- <p>Used as the request parameter in the <a>ListAssessmentTemplates</a> action.</p>
--- @param _namePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data type.</p>
--- @param _durationRange [DurationRange] <p>For a record to match a filter, the value specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentTemplate</a> data type.</p>
--- @param _rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the values that are specified for this data type property must be contained in the list of values of the <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
-function M.AssessmentTemplateFilter(_namePattern, _durationRange, _rulesPackageArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentTemplateFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * namePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTemplateName</b> property of the <a>AssessmentTemplate</a> data type.</p>
+-- * durationRange [DurationRange] <p>For a record to match a filter, the value specified for this data type property must inclusively match any value between the specified minimum and maximum values of the <b>durationInSeconds</b> property of the <a>AssessmentTemplate</a> data type.</p>
+-- * rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the values that are specified for this data type property must be contained in the list of values of the <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
+-- @return AssessmentTemplateFilter structure as a key-value pair table
+function M.AssessmentTemplateFilter(args)
+	assert(args, "You must provdide an argument table when creating AssessmentTemplateFilter")
 	local t = { 
-		["namePattern"] = _namePattern,
-		["durationRange"] = _durationRange,
-		["rulesPackageArns"] = _rulesPackageArns,
+		["namePattern"] = args["namePattern"],
+		["durationRange"] = args["durationRange"],
+		["rulesPackageArns"] = args["rulesPackageArns"],
 	}
 	asserts.AssertAssessmentTemplateFilter(t)
 	return t
@@ -2597,14 +2834,17 @@ end
 
 --- Create a structure of type ListAssessmentRunsResponse
 --  
--- @param _nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
--- @param _assessmentRunArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment runs that are returned by the action.</p>
--- Required parameter: assessmentRunArns
-function M.ListAssessmentRunsResponse(_nextToken, _assessmentRunArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p> When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the <b>nextToken</b> parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.</p>
+-- * assessmentRunArns [ListReturnedArnList] <p>A list of ARNs that specifies the assessment runs that are returned by the action.</p>
+-- Required key: assessmentRunArns
+-- @return ListAssessmentRunsResponse structure as a key-value pair table
+function M.ListAssessmentRunsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAssessmentRunsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["assessmentRunArns"] = _assessmentRunArns,
+		["nextToken"] = args["nextToken"],
+		["assessmentRunArns"] = args["assessmentRunArns"],
 	}
 	asserts.AssertListAssessmentRunsResponse(t)
 	return t
@@ -2628,18 +2868,21 @@ end
 
 --- Create a structure of type DescribeCrossAccountAccessRoleResponse
 --  
--- @param _roleArn [Arn] <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your AWS account.</p>
--- @param _valid [Bool] <p>A Boolean value that specifies whether the IAM role has the necessary policies attached to enable Amazon Inspector to access your AWS account.</p>
--- @param _registeredAt [Timestamp] <p>The date when the cross-account access role was registered.</p>
--- Required parameter: roleArn
--- Required parameter: valid
--- Required parameter: registeredAt
-function M.DescribeCrossAccountAccessRoleResponse(_roleArn, _valid, _registeredAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCrossAccountAccessRoleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * roleArn [Arn] <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your AWS account.</p>
+-- * valid [Bool] <p>A Boolean value that specifies whether the IAM role has the necessary policies attached to enable Amazon Inspector to access your AWS account.</p>
+-- * registeredAt [Timestamp] <p>The date when the cross-account access role was registered.</p>
+-- Required key: roleArn
+-- Required key: valid
+-- Required key: registeredAt
+-- @return DescribeCrossAccountAccessRoleResponse structure as a key-value pair table
+function M.DescribeCrossAccountAccessRoleResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeCrossAccountAccessRoleResponse")
 	local t = { 
-		["roleArn"] = _roleArn,
-		["valid"] = _valid,
-		["registeredAt"] = _registeredAt,
+		["roleArn"] = args["roleArn"],
+		["valid"] = args["valid"],
+		["registeredAt"] = args["registeredAt"],
 	}
 	asserts.AssertDescribeCrossAccountAccessRoleResponse(t)
 	return t
@@ -2659,13 +2902,16 @@ end
 
 --- Create a structure of type ListRulesPackagesRequest
 --  
--- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListRulesPackages</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
-function M.ListRulesPackagesRequest(_nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesPackagesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListRulesPackages</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- * maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+-- @return ListRulesPackagesRequest structure as a key-value pair table
+function M.ListRulesPackagesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListRulesPackagesRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListRulesPackagesRequest(t)
 	return t
@@ -2685,12 +2931,15 @@ end
 
 --- Create a structure of type CreateResourceGroupRequest
 --  
--- @param _resourceGroupTags [ResourceGroupTags] <p>A collection of keys and an array of possible values, '[{"key":"key1","values":["Value1","Value2"]},{"key":"Key2","values":["Value3"]}]'.</p> <p>For example,'[{"key":"Name","values":["TestEC2Instance"]}]'.</p>
--- Required parameter: resourceGroupTags
-function M.CreateResourceGroupRequest(_resourceGroupTags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateResourceGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceGroupTags [ResourceGroupTags] <p>A collection of keys and an array of possible values, '[{"key":"key1","values":["Value1","Value2"]},{"key":"Key2","values":["Value3"]}]'.</p> <p>For example,'[{"key":"Name","values":["TestEC2Instance"]}]'.</p>
+-- Required key: resourceGroupTags
+-- @return CreateResourceGroupRequest structure as a key-value pair table
+function M.CreateResourceGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateResourceGroupRequest")
 	local t = { 
-		["resourceGroupTags"] = _resourceGroupTags,
+		["resourceGroupTags"] = args["resourceGroupTags"],
 	}
 	asserts.AssertCreateResourceGroupRequest(t)
 	return t
@@ -2712,15 +2961,18 @@ end
 
 --- Create a structure of type AssessmentRunStateChange
 -- <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
--- @param _state [AssessmentRunState] <p>The assessment run state.</p>
--- @param _stateChangedAt [Timestamp] <p>The last time the assessment run state changed.</p>
--- Required parameter: stateChangedAt
--- Required parameter: state
-function M.AssessmentRunStateChange(_state, _stateChangedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssessmentRunStateChange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * state [AssessmentRunState] <p>The assessment run state.</p>
+-- * stateChangedAt [Timestamp] <p>The last time the assessment run state changed.</p>
+-- Required key: stateChangedAt
+-- Required key: state
+-- @return AssessmentRunStateChange structure as a key-value pair table
+function M.AssessmentRunStateChange(args)
+	assert(args, "You must provdide an argument table when creating AssessmentRunStateChange")
 	local t = { 
-		["state"] = _state,
-		["stateChangedAt"] = _stateChangedAt,
+		["state"] = args["state"],
+		["stateChangedAt"] = args["stateChangedAt"],
 	}
 	asserts.AssertAssessmentRunStateChange(t)
 	return t
@@ -2740,12 +2992,15 @@ end
 
 --- Create a structure of type DeleteAssessmentRunRequest
 --  
--- @param _assessmentRunArn [Arn] <p>The ARN that specifies the assessment run that you want to delete.</p>
--- Required parameter: assessmentRunArn
-function M.DeleteAssessmentRunRequest(_assessmentRunArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAssessmentRunRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentRunArn [Arn] <p>The ARN that specifies the assessment run that you want to delete.</p>
+-- Required key: assessmentRunArn
+-- @return DeleteAssessmentRunRequest structure as a key-value pair table
+function M.DeleteAssessmentRunRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAssessmentRunRequest")
 	local t = { 
-		["assessmentRunArn"] = _assessmentRunArn,
+		["assessmentRunArn"] = args["assessmentRunArn"],
 	}
 	asserts.AssertDeleteAssessmentRunRequest(t)
 	return t
@@ -2767,16 +3022,19 @@ end
 
 --- Create a structure of type PreviewAgentsRequest
 --  
--- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>PreviewAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param _maxResults [PreviewAgentsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
--- @param _previewAgentsArn [Arn] <p>The ARN of the assessment target whose agents you want to preview.</p>
--- Required parameter: previewAgentsArn
-function M.PreviewAgentsRequest(_nextToken, _maxResults, _previewAgentsArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PreviewAgentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>PreviewAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- * maxResults [PreviewAgentsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
+-- * previewAgentsArn [Arn] <p>The ARN of the assessment target whose agents you want to preview.</p>
+-- Required key: previewAgentsArn
+-- @return PreviewAgentsRequest structure as a key-value pair table
+function M.PreviewAgentsRequest(args)
+	assert(args, "You must provdide an argument table when creating PreviewAgentsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
-		["previewAgentsArn"] = _previewAgentsArn,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+		["previewAgentsArn"] = args["previewAgentsArn"],
 	}
 	asserts.AssertPreviewAgentsRequest(t)
 	return t
@@ -2803,23 +3061,26 @@ end
 
 --- Create a structure of type CreateAssessmentTemplateRequest
 --  
--- @param _assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target for which you want to create the assessment template.</p>
--- @param _assessmentTemplateName [AssessmentTemplateName] <p>The user-defined name that identifies the assessment template that you want to create. You can create several assessment templates for an assessment target. The names of the assessment templates that correspond to a particular assessment target must be unique.</p>
--- @param _userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every finding that is generated by the assessment run that uses this assessment template.</p>
--- @param _durationInSeconds [AssessmentRunDuration] <p>The duration of the assessment run in seconds. The default value is 3600 seconds (one hour).</p>
--- @param _rulesPackageArns [AssessmentTemplateRulesPackageArnList] <p>The ARNs that specify the rules packages that you want to attach to the assessment template.</p>
--- Required parameter: assessmentTargetArn
--- Required parameter: assessmentTemplateName
--- Required parameter: durationInSeconds
--- Required parameter: rulesPackageArns
-function M.CreateAssessmentTemplateRequest(_assessmentTargetArn, _assessmentTemplateName, _userAttributesForFindings, _durationInSeconds, _rulesPackageArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssessmentTemplateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTargetArn [Arn] <p>The ARN that specifies the assessment target for which you want to create the assessment template.</p>
+-- * assessmentTemplateName [AssessmentTemplateName] <p>The user-defined name that identifies the assessment template that you want to create. You can create several assessment templates for an assessment target. The names of the assessment templates that correspond to a particular assessment target must be unique.</p>
+-- * userAttributesForFindings [UserAttributeList] <p>The user-defined attributes that are assigned to every finding that is generated by the assessment run that uses this assessment template.</p>
+-- * durationInSeconds [AssessmentRunDuration] <p>The duration of the assessment run in seconds. The default value is 3600 seconds (one hour).</p>
+-- * rulesPackageArns [AssessmentTemplateRulesPackageArnList] <p>The ARNs that specify the rules packages that you want to attach to the assessment template.</p>
+-- Required key: assessmentTargetArn
+-- Required key: assessmentTemplateName
+-- Required key: durationInSeconds
+-- Required key: rulesPackageArns
+-- @return CreateAssessmentTemplateRequest structure as a key-value pair table
+function M.CreateAssessmentTemplateRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateAssessmentTemplateRequest")
 	local t = { 
-		["assessmentTargetArn"] = _assessmentTargetArn,
-		["assessmentTemplateName"] = _assessmentTemplateName,
-		["userAttributesForFindings"] = _userAttributesForFindings,
-		["durationInSeconds"] = _durationInSeconds,
-		["rulesPackageArns"] = _rulesPackageArns,
+		["assessmentTargetArn"] = args["assessmentTargetArn"],
+		["assessmentTemplateName"] = args["assessmentTemplateName"],
+		["userAttributesForFindings"] = args["userAttributesForFindings"],
+		["durationInSeconds"] = args["durationInSeconds"],
+		["rulesPackageArns"] = args["rulesPackageArns"],
 	}
 	asserts.AssertCreateAssessmentTemplateRequest(t)
 	return t
@@ -2839,12 +3100,15 @@ end
 
 --- Create a structure of type CreateAssessmentTemplateResponse
 --  
--- @param _assessmentTemplateArn [Arn] <p>The ARN that specifies the assessment template that is created.</p>
--- Required parameter: assessmentTemplateArn
-function M.CreateAssessmentTemplateResponse(_assessmentTemplateArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAssessmentTemplateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTemplateArn [Arn] <p>The ARN that specifies the assessment template that is created.</p>
+-- Required key: assessmentTemplateArn
+-- @return CreateAssessmentTemplateResponse structure as a key-value pair table
+function M.CreateAssessmentTemplateResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateAssessmentTemplateResponse")
 	local t = { 
-		["assessmentTemplateArn"] = _assessmentTemplateArn,
+		["assessmentTemplateArn"] = args["assessmentTemplateArn"],
 	}
 	asserts.AssertCreateAssessmentTemplateResponse(t)
 	return t
@@ -2864,12 +3128,15 @@ end
 
 --- Create a structure of type DescribeAssessmentTargetsRequest
 --  
--- @param _assessmentTargetArns [BatchDescribeArnList] <p>The ARNs that specifies the assessment targets that you want to describe.</p>
--- Required parameter: assessmentTargetArns
-function M.DescribeAssessmentTargetsRequest(_assessmentTargetArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAssessmentTargetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * assessmentTargetArns [BatchDescribeArnList] <p>The ARNs that specifies the assessment targets that you want to describe.</p>
+-- Required key: assessmentTargetArns
+-- @return DescribeAssessmentTargetsRequest structure as a key-value pair table
+function M.DescribeAssessmentTargetsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAssessmentTargetsRequest")
 	local t = { 
-		["assessmentTargetArns"] = _assessmentTargetArns,
+		["assessmentTargetArns"] = args["assessmentTargetArns"],
 	}
 	asserts.AssertDescribeAssessmentTargetsRequest(t)
 	return t
@@ -2891,15 +3158,18 @@ end
 
 --- Create a structure of type EventSubscription
 -- <p>This data type is used in the <a>Subscription</a> data type.</p>
--- @param _event [InspectorEvent] <p>The event for which Amazon Simple Notification Service (SNS) notifications are sent.</p>
--- @param _subscribedAt [Timestamp] <p>The time at which <a>SubscribeToEvent</a> is called.</p>
--- Required parameter: event
--- Required parameter: subscribedAt
-function M.EventSubscription(_event, _subscribedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * event [InspectorEvent] <p>The event for which Amazon Simple Notification Service (SNS) notifications are sent.</p>
+-- * subscribedAt [Timestamp] <p>The time at which <a>SubscribeToEvent</a> is called.</p>
+-- Required key: event
+-- Required key: subscribedAt
+-- @return EventSubscription structure as a key-value pair table
+function M.EventSubscription(args)
+	assert(args, "You must provdide an argument table when creating EventSubscription")
 	local t = { 
-		["event"] = _event,
-		["subscribedAt"] = _subscribedAt,
+		["event"] = args["event"],
+		["subscribedAt"] = args["subscribedAt"],
 	}
 	asserts.AssertEventSubscription(t)
 	return t
@@ -2922,18 +3192,21 @@ end
 
 --- Create a structure of type ListAssessmentRunAgentsRequest
 --  
--- @param _filter [AgentFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
--- @param _assessmentRunArn [Arn] <p>The ARN that specifies the assessment run whose agents you want to list.</p>
--- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRunAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
--- Required parameter: assessmentRunArn
-function M.ListAssessmentRunAgentsRequest(_filter, _assessmentRunArn, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunAgentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filter [AgentFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- * assessmentRunArn [Arn] <p>The ARN that specifies the assessment run whose agents you want to list.</p>
+-- * nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRunAgents</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- * maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
+-- Required key: assessmentRunArn
+-- @return ListAssessmentRunAgentsRequest structure as a key-value pair table
+function M.ListAssessmentRunAgentsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAssessmentRunAgentsRequest")
 	local t = { 
-		["filter"] = _filter,
-		["assessmentRunArn"] = _assessmentRunArn,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["filter"] = args["filter"],
+		["assessmentRunArn"] = args["assessmentRunArn"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListAssessmentRunAgentsRequest(t)
 	return t
@@ -2955,17 +3228,20 @@ end
 
 --- Create a structure of type ListAssessmentRunsRequest
 --  
--- @param _filter [AssessmentRunFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
--- @param _nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRuns</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
--- @param _maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
--- @param _assessmentTemplateArns [ListParentArnList] <p>The ARNs that specify the assessment templates whose assessment runs you want to list.</p>
-function M.ListAssessmentRunsRequest(_filter, _nextToken, _maxResults, _assessmentTemplateArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAssessmentRunsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filter [AssessmentRunFilter] <p>You can use this parameter to specify a subset of data to be included in the action's response.</p> <p>For a record to match a filter, all specified filter attributes must match. When multiple values are specified for a filter attribute, any of the values can match.</p>
+-- * nextToken [PaginationToken] <p>You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the <b>ListAssessmentRuns</b> action. Subsequent calls to the action fill <b>nextToken</b> in the request with the value of <b>NextToken</b> from the previous response to continue listing data.</p>
+-- * maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 10. The maximum value is 500.</p>
+-- * assessmentTemplateArns [ListParentArnList] <p>The ARNs that specify the assessment templates whose assessment runs you want to list.</p>
+-- @return ListAssessmentRunsRequest structure as a key-value pair table
+function M.ListAssessmentRunsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAssessmentRunsRequest")
 	local t = { 
-		["filter"] = _filter,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
-		["assessmentTemplateArns"] = _assessmentTemplateArns,
+		["filter"] = args["filter"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+		["assessmentTemplateArns"] = args["assessmentTemplateArns"],
 	}
 	asserts.AssertListAssessmentRunsRequest(t)
 	return t

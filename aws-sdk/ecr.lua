@@ -38,17 +38,20 @@ end
 
 --- Create a structure of type BatchDeleteImageRequest
 -- <p>Deletes specified images within a specified repository. Images are specified with either the <code>imageTag</code> or <code>imageDigest</code>.</p>
--- @param _repositoryName [RepositoryName] <p>The repository that contains the image to delete.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the image to delete. If you do not specify a registry, the default registry is assumed.</p>
--- @param _imageIds [ImageIdentifierList] <p>A list of image ID references that correspond to images to delete. The format of the <code>imageIds</code> reference is <code>imageTag=tag</code> or <code>imageDigest=digest</code>.</p>
--- Required parameter: repositoryName
--- Required parameter: imageIds
-function M.BatchDeleteImageRequest(_repositoryName, _registryId, _imageIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchDeleteImageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The repository that contains the image to delete.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the image to delete. If you do not specify a registry, the default registry is assumed.</p>
+-- * imageIds [ImageIdentifierList] <p>A list of image ID references that correspond to images to delete. The format of the <code>imageIds</code> reference is <code>imageTag=tag</code> or <code>imageDigest=digest</code>.</p>
+-- Required key: repositoryName
+-- Required key: imageIds
+-- @return BatchDeleteImageRequest structure as a key-value pair table
+function M.BatchDeleteImageRequest(args)
+	assert(args, "You must provdide an argument table when creating BatchDeleteImageRequest")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
-		["imageIds"] = _imageIds,
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+		["imageIds"] = args["imageIds"],
 	}
 	asserts.AssertBatchDeleteImageRequest(t)
 	return t
@@ -67,11 +70,14 @@ end
 
 --- Create a structure of type RepositoryNotEmptyException
 -- <p>The specified repository contains images. To delete a repository that contains images, you must force the deletion with the <code>force</code> parameter.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.RepositoryNotEmptyException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNotEmptyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return RepositoryNotEmptyException structure as a key-value pair table
+function M.RepositoryNotEmptyException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryNotEmptyException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertRepositoryNotEmptyException(t)
 	return t
@@ -95,19 +101,22 @@ end
 
 --- Create a structure of type PutImageRequest
 --  
--- @param _imageManifest [ImageManifest] <p>The image manifest corresponding to the image to be uploaded.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository in which to put the image.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository in which to put the image. If you do not specify a registry, the default registry is assumed.</p>
--- @param _imageTag [ImageTag] <p>The tag to associate with the image. This parameter is required for images that use the Docker Image Manifest V2 Schema 2 or OCI formats.</p>
--- Required parameter: repositoryName
--- Required parameter: imageManifest
-function M.PutImageRequest(_imageManifest, _repositoryName, _registryId, _imageTag, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutImageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * imageManifest [ImageManifest] <p>The image manifest corresponding to the image to be uploaded.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository in which to put the image.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository in which to put the image. If you do not specify a registry, the default registry is assumed.</p>
+-- * imageTag [ImageTag] <p>The tag to associate with the image. This parameter is required for images that use the Docker Image Manifest V2 Schema 2 or OCI formats.</p>
+-- Required key: repositoryName
+-- Required key: imageManifest
+-- @return PutImageRequest structure as a key-value pair table
+function M.PutImageRequest(args)
+	assert(args, "You must provdide an argument table when creating PutImageRequest")
 	local t = { 
-		["imageManifest"] = _imageManifest,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
-		["imageTag"] = _imageTag,
+		["imageManifest"] = args["imageManifest"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+		["imageTag"] = args["imageTag"],
 	}
 	asserts.AssertPutImageRequest(t)
 	return t
@@ -131,20 +140,23 @@ end
 
 --- Create a structure of type ListImagesRequest
 --  
--- @param _nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListImages</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _filter [ListImagesFilter] <p>The filter key and value with which to filter your <code>ListImages</code> results.</p>
--- @param _repositoryName [RepositoryName] <p>The repository whose image IDs are to be listed.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository to list images in. If you do not specify a registry, the default registry is assumed.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of image results returned by <code>ListImages</code> in paginated output. When this parameter is used, <code>ListImages</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListImages</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListImages</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
--- Required parameter: repositoryName
-function M.ListImagesRequest(_nextToken, _filter, _repositoryName, _registryId, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListImagesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>ListImages</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * filter [ListImagesFilter] <p>The filter key and value with which to filter your <code>ListImages</code> results.</p>
+-- * repositoryName [RepositoryName] <p>The repository whose image IDs are to be listed.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository to list images in. If you do not specify a registry, the default registry is assumed.</p>
+-- * maxResults [MaxResults] <p>The maximum number of image results returned by <code>ListImages</code> in paginated output. When this parameter is used, <code>ListImages</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListImages</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListImages</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
+-- Required key: repositoryName
+-- @return ListImagesRequest structure as a key-value pair table
+function M.ListImagesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListImagesRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["filter"] = _filter,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["filter"] = args["filter"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListImagesRequest(t)
 	return t
@@ -163,11 +175,14 @@ end
 
 --- Create a structure of type LayerAlreadyExistsException
 -- <p>The image layer already exists in the associated repository.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.LayerAlreadyExistsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LayerAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return LayerAlreadyExistsException structure as a key-value pair table
+function M.LayerAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating LayerAlreadyExistsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLayerAlreadyExistsException(t)
 	return t
@@ -190,19 +205,22 @@ end
 
 --- Create a structure of type InvalidLayerPartException
 -- <p>The layer part size is not valid, or the first byte specified is not consecutive to the last byte of a previous layer part upload.</p>
--- @param _lastValidByteReceived [PartSize] <p>The last valid byte received from the layer part upload that is associated with the exception.</p>
--- @param _uploadId [UploadId] <p>The upload ID associated with the exception.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
--- @param _repositoryName [RepositoryName] <p>The repository name associated with the exception.</p>
--- @param _registryId [RegistryId] <p>The registry ID associated with the exception.</p>
-function M.InvalidLayerPartException(_lastValidByteReceived, _uploadId, _message, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLayerPartException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * lastValidByteReceived [PartSize] <p>The last valid byte received from the layer part upload that is associated with the exception.</p>
+-- * uploadId [UploadId] <p>The upload ID associated with the exception.</p>
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the exception.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the exception.</p>
+-- @return InvalidLayerPartException structure as a key-value pair table
+function M.InvalidLayerPartException(args)
+	assert(args, "You must provdide an argument table when creating InvalidLayerPartException")
 	local t = { 
-		["lastValidByteReceived"] = _lastValidByteReceived,
-		["uploadId"] = _uploadId,
-		["message"] = _message,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["lastValidByteReceived"] = args["lastValidByteReceived"],
+		["uploadId"] = args["uploadId"],
+		["message"] = args["message"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertInvalidLayerPartException(t)
 	return t
@@ -222,13 +240,16 @@ end
 
 --- Create a structure of type BatchGetImageResponse
 --  
--- @param _images [ImageList] <p>A list of image objects corresponding to the image references in the request.</p>
--- @param _failures [ImageFailureList] <p>Any failures associated with the call.</p>
-function M.BatchGetImageResponse(_images, _failures, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetImageResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * images [ImageList] <p>A list of image objects corresponding to the image references in the request.</p>
+-- * failures [ImageFailureList] <p>Any failures associated with the call.</p>
+-- @return BatchGetImageResponse structure as a key-value pair table
+function M.BatchGetImageResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchGetImageResponse")
 	local t = { 
-		["images"] = _images,
-		["failures"] = _failures,
+		["images"] = args["images"],
+		["failures"] = args["failures"],
 	}
 	asserts.AssertBatchGetImageResponse(t)
 	return t
@@ -248,13 +269,16 @@ end
 
 --- Create a structure of type DescribeRepositoriesResponse
 --  
--- @param _nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeRepositories</code> request. When the results of a <code>DescribeRepositories</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _repositories [RepositoryList] <p>A list of repository objects corresponding to valid repositories.</p>
-function M.DescribeRepositoriesResponse(_nextToken, _repositories, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRepositoriesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeRepositories</code> request. When the results of a <code>DescribeRepositories</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * repositories [RepositoryList] <p>A list of repository objects corresponding to valid repositories.</p>
+-- @return DescribeRepositoriesResponse structure as a key-value pair table
+function M.DescribeRepositoriesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeRepositoriesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["repositories"] = _repositories,
+		["nextToken"] = args["nextToken"],
+		["repositories"] = args["repositories"],
 	}
 	asserts.AssertDescribeRepositoriesResponse(t)
 	return t
@@ -273,11 +297,14 @@ end
 
 --- Create a structure of type LayerInaccessibleException
 -- <p>The specified layer is not available because it is not associated with an image. Unassociated image layers may be cleaned up at any time.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.LayerInaccessibleException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LayerInaccessibleException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return LayerInaccessibleException structure as a key-value pair table
+function M.LayerInaccessibleException(args)
+	assert(args, "You must provdide an argument table when creating LayerInaccessibleException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLayerInaccessibleException(t)
 	return t
@@ -299,17 +326,20 @@ end
 
 --- Create a structure of type Layer
 -- <p>An object representing an Amazon ECR image layer.</p>
--- @param _layerAvailability [LayerAvailability] <p>The availability status of the image layer.</p>
--- @param _layerDigest [LayerDigest] <p>The <code>sha256</code> digest of the image layer.</p>
--- @param _layerSize [LayerSizeInBytes] <p>The size, in bytes, of the image layer.</p>
--- @param _mediaType [MediaType] <p>The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.</p>
-function M.Layer(_layerAvailability, _layerDigest, _layerSize, _mediaType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Layer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * layerAvailability [LayerAvailability] <p>The availability status of the image layer.</p>
+-- * layerDigest [LayerDigest] <p>The <code>sha256</code> digest of the image layer.</p>
+-- * layerSize [LayerSizeInBytes] <p>The size, in bytes, of the image layer.</p>
+-- * mediaType [MediaType] <p>The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.</p>
+-- @return Layer structure as a key-value pair table
+function M.Layer(args)
+	assert(args, "You must provdide an argument table when creating Layer")
 	local t = { 
-		["layerAvailability"] = _layerAvailability,
-		["layerDigest"] = _layerDigest,
-		["layerSize"] = _layerSize,
-		["mediaType"] = _mediaType,
+		["layerAvailability"] = args["layerAvailability"],
+		["layerDigest"] = args["layerDigest"],
+		["layerSize"] = args["layerSize"],
+		["mediaType"] = args["mediaType"],
 	}
 	asserts.AssertLayer(t)
 	return t
@@ -332,17 +362,20 @@ end
 
 --- Create a structure of type GetDownloadUrlForLayerRequest
 --  
--- @param _layerDigest [LayerDigest] <p>The digest of the image layer to download.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository that is associated with the image layer to download.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the image layer to download. If you do not specify a registry, the default registry is assumed.</p>
--- Required parameter: repositoryName
--- Required parameter: layerDigest
-function M.GetDownloadUrlForLayerRequest(_layerDigest, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDownloadUrlForLayerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * layerDigest [LayerDigest] <p>The digest of the image layer to download.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository that is associated with the image layer to download.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the image layer to download. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- Required key: layerDigest
+-- @return GetDownloadUrlForLayerRequest structure as a key-value pair table
+function M.GetDownloadUrlForLayerRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDownloadUrlForLayerRequest")
 	local t = { 
-		["layerDigest"] = _layerDigest,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["layerDigest"] = args["layerDigest"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertGetDownloadUrlForLayerRequest(t)
 	return t
@@ -361,11 +394,14 @@ end
 
 --- Create a structure of type DeleteRepositoryResponse
 --  
--- @param _repository [Repository] <p>The repository that was deleted.</p>
-function M.DeleteRepositoryResponse(_repository, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repository [Repository] <p>The repository that was deleted.</p>
+-- @return DeleteRepositoryResponse structure as a key-value pair table
+function M.DeleteRepositoryResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteRepositoryResponse")
 	local t = { 
-		["repository"] = _repository,
+		["repository"] = args["repository"],
 	}
 	asserts.AssertDeleteRepositoryResponse(t)
 	return t
@@ -385,13 +421,16 @@ end
 
 --- Create a structure of type BatchCheckLayerAvailabilityResponse
 --  
--- @param _layers [LayerList] <p>A list of image layer objects corresponding to the image layer references in the request.</p>
--- @param _failures [LayerFailureList] <p>Any failures associated with the call.</p>
-function M.BatchCheckLayerAvailabilityResponse(_layers, _failures, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchCheckLayerAvailabilityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * layers [LayerList] <p>A list of image layer objects corresponding to the image layer references in the request.</p>
+-- * failures [LayerFailureList] <p>Any failures associated with the call.</p>
+-- @return BatchCheckLayerAvailabilityResponse structure as a key-value pair table
+function M.BatchCheckLayerAvailabilityResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchCheckLayerAvailabilityResponse")
 	local t = { 
-		["layers"] = _layers,
-		["failures"] = _failures,
+		["layers"] = args["layers"],
+		["failures"] = args["failures"],
 	}
 	asserts.AssertBatchCheckLayerAvailabilityResponse(t)
 	return t
@@ -411,13 +450,16 @@ end
 
 --- Create a structure of type GetDownloadUrlForLayerResponse
 --  
--- @param _downloadUrl [Url] <p>The pre-signed Amazon S3 download URL for the requested layer.</p>
--- @param _layerDigest [LayerDigest] <p>The digest of the image layer to download.</p>
-function M.GetDownloadUrlForLayerResponse(_downloadUrl, _layerDigest, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDownloadUrlForLayerResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * downloadUrl [Url] <p>The pre-signed Amazon S3 download URL for the requested layer.</p>
+-- * layerDigest [LayerDigest] <p>The digest of the image layer to download.</p>
+-- @return GetDownloadUrlForLayerResponse structure as a key-value pair table
+function M.GetDownloadUrlForLayerResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDownloadUrlForLayerResponse")
 	local t = { 
-		["downloadUrl"] = _downloadUrl,
-		["layerDigest"] = _layerDigest,
+		["downloadUrl"] = args["downloadUrl"],
+		["layerDigest"] = args["layerDigest"],
 	}
 	asserts.AssertGetDownloadUrlForLayerResponse(t)
 	return t
@@ -437,13 +479,16 @@ end
 
 --- Create a structure of type DescribeImagesResponse
 --  
--- @param _nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeImages</code> request. When the results of a <code>DescribeImages</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _imageDetails [ImageDetailList] <p>A list of <a>ImageDetail</a> objects that contain data about the image.</p>
-function M.DescribeImagesResponse(_nextToken, _imageDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeImages</code> request. When the results of a <code>DescribeImages</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * imageDetails [ImageDetailList] <p>A list of <a>ImageDetail</a> objects that contain data about the image.</p>
+-- @return DescribeImagesResponse structure as a key-value pair table
+function M.DescribeImagesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeImagesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["imageDetails"] = _imageDetails,
+		["nextToken"] = args["nextToken"],
+		["imageDetails"] = args["imageDetails"],
 	}
 	asserts.AssertDescribeImagesResponse(t)
 	return t
@@ -462,11 +507,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The operation did not succeed because it would have exceeded a service limit for your account. For more information, see <a href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default Service Limits</a> in the Amazon EC2 Container Registry User Guide.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.LimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -491,20 +539,23 @@ end
 
 --- Create a structure of type CompleteLayerUploadRequest
 --  
--- @param _uploadId [UploadId] <p>The upload ID from a previous <a>InitiateLayerUpload</a> operation to associate with the image layer.</p>
--- @param _layerDigests [LayerDigestList] <p>The <code>sha256</code> digest of the image layer.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository to associate with the image layer.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry to which to upload layers. If you do not specify a registry, the default registry is assumed.</p>
--- Required parameter: repositoryName
--- Required parameter: uploadId
--- Required parameter: layerDigests
-function M.CompleteLayerUploadRequest(_uploadId, _layerDigests, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompleteLayerUploadRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * uploadId [UploadId] <p>The upload ID from a previous <a>InitiateLayerUpload</a> operation to associate with the image layer.</p>
+-- * layerDigests [LayerDigestList] <p>The <code>sha256</code> digest of the image layer.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository to associate with the image layer.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry to which to upload layers. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- Required key: uploadId
+-- Required key: layerDigests
+-- @return CompleteLayerUploadRequest structure as a key-value pair table
+function M.CompleteLayerUploadRequest(args)
+	assert(args, "You must provdide an argument table when creating CompleteLayerUploadRequest")
 	local t = { 
-		["uploadId"] = _uploadId,
-		["layerDigests"] = _layerDigests,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["uploadId"] = args["uploadId"],
+		["layerDigests"] = args["layerDigests"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertCompleteLayerUploadRequest(t)
 	return t
@@ -523,11 +574,14 @@ end
 
 --- Create a structure of type RepositoryNotFoundException
 -- <p>The specified repository could not be found. Check the spelling of the specified repository and ensure that you are performing operations on the correct registry.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.RepositoryNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return RepositoryNotFoundException structure as a key-value pair table
+function M.RepositoryNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertRepositoryNotFoundException(t)
 	return t
@@ -546,11 +600,14 @@ end
 
 --- Create a structure of type GetAuthorizationTokenResponse
 --  
--- @param _authorizationData [AuthorizationDataList] <p>A list of authorization token data objects that correspond to the <code>registryIds</code> values in the request.</p>
-function M.GetAuthorizationTokenResponse(_authorizationData, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAuthorizationTokenResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * authorizationData [AuthorizationDataList] <p>A list of authorization token data objects that correspond to the <code>registryIds</code> values in the request.</p>
+-- @return GetAuthorizationTokenResponse structure as a key-value pair table
+function M.GetAuthorizationTokenResponse(args)
+	assert(args, "You must provdide an argument table when creating GetAuthorizationTokenResponse")
 	local t = { 
-		["authorizationData"] = _authorizationData,
+		["authorizationData"] = args["authorizationData"],
 	}
 	asserts.AssertGetAuthorizationTokenResponse(t)
 	return t
@@ -569,11 +626,14 @@ end
 
 --- Create a structure of type DescribeImagesFilter
 -- <p>An object representing a filter on a <a>DescribeImages</a> operation.</p>
--- @param _tagStatus [TagStatus] <p>The tag status with which to filter your <a>DescribeImages</a> results. You can filter results based on whether they are <code>TAGGED</code> or <code>UNTAGGED</code>.</p>
-function M.DescribeImagesFilter(_tagStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tagStatus [TagStatus] <p>The tag status with which to filter your <a>DescribeImages</a> results. You can filter results based on whether they are <code>TAGGED</code> or <code>UNTAGGED</code>.</p>
+-- @return DescribeImagesFilter structure as a key-value pair table
+function M.DescribeImagesFilter(args)
+	assert(args, "You must provdide an argument table when creating DescribeImagesFilter")
 	local t = { 
-		["tagStatus"] = _tagStatus,
+		["tagStatus"] = args["tagStatus"],
 	}
 	asserts.AssertDescribeImagesFilter(t)
 	return t
@@ -592,11 +652,14 @@ end
 
 --- Create a structure of type GetAuthorizationTokenRequest
 --  
--- @param _registryIds [GetAuthorizationTokenRegistryIdList] <p>A list of AWS account IDs that are associated with the registries for which to get authorization tokens. If you do not specify a registry, the default registry is assumed.</p>
-function M.GetAuthorizationTokenRequest(_registryIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAuthorizationTokenRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * registryIds [GetAuthorizationTokenRegistryIdList] <p>A list of AWS account IDs that are associated with the registries for which to get authorization tokens. If you do not specify a registry, the default registry is assumed.</p>
+-- @return GetAuthorizationTokenRequest structure as a key-value pair table
+function M.GetAuthorizationTokenRequest(args)
+	assert(args, "You must provdide an argument table when creating GetAuthorizationTokenRequest")
 	local t = { 
-		["registryIds"] = _registryIds,
+		["registryIds"] = args["registryIds"],
 	}
 	asserts.AssertGetAuthorizationTokenRequest(t)
 	return t
@@ -615,11 +678,14 @@ end
 
 --- Create a structure of type ListImagesFilter
 -- <p>An object representing a filter on a <a>ListImages</a> operation.</p>
--- @param _tagStatus [TagStatus] <p>The tag status with which to filter your <a>ListImages</a> results. You can filter results based on whether they are <code>TAGGED</code> or <code>UNTAGGED</code>.</p>
-function M.ListImagesFilter(_tagStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListImagesFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tagStatus [TagStatus] <p>The tag status with which to filter your <a>ListImages</a> results. You can filter results based on whether they are <code>TAGGED</code> or <code>UNTAGGED</code>.</p>
+-- @return ListImagesFilter structure as a key-value pair table
+function M.ListImagesFilter(args)
+	assert(args, "You must provdide an argument table when creating ListImagesFilter")
 	local t = { 
-		["tagStatus"] = _tagStatus,
+		["tagStatus"] = args["tagStatus"],
 	}
 	asserts.AssertListImagesFilter(t)
 	return t
@@ -643,19 +709,22 @@ end
 
 --- Create a structure of type SetRepositoryPolicyRequest
 --  
--- @param _policyText [RepositoryPolicyText] <p>The JSON repository policy text to apply to the repository.</p>
--- @param _force [ForceFlag] <p>If the policy you are attempting to set on a repository policy would prevent you from setting another policy in the future, you must force the <a>SetRepositoryPolicy</a> operation. This is intended to prevent accidental repository lock outs.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository to receive the policy.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
--- Required parameter: repositoryName
--- Required parameter: policyText
-function M.SetRepositoryPolicyRequest(_policyText, _force, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetRepositoryPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyText [RepositoryPolicyText] <p>The JSON repository policy text to apply to the repository.</p>
+-- * force [ForceFlag] <p>If the policy you are attempting to set on a repository policy would prevent you from setting another policy in the future, you must force the <a>SetRepositoryPolicy</a> operation. This is intended to prevent accidental repository lock outs.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository to receive the policy.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- Required key: policyText
+-- @return SetRepositoryPolicyRequest structure as a key-value pair table
+function M.SetRepositoryPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating SetRepositoryPolicyRequest")
 	local t = { 
-		["policyText"] = _policyText,
-		["force"] = _force,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["policyText"] = args["policyText"],
+		["force"] = args["force"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertSetRepositoryPolicyRequest(t)
 	return t
@@ -679,21 +748,24 @@ end
 
 --- Create a structure of type ImageDetail
 -- <p>An object that describes an image returned by a <a>DescribeImages</a> operation.</p>
--- @param _imageSizeInBytes [ImageSizeInBytes] <p>The size, in bytes, of the image in the repository.</p> <note> <p>Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the <code>docker images</code> command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by <a>DescribeImages</a>.</p> </note>
--- @param _imageDigest [ImageDigest] <p>The <code>sha256</code> digest of the image manifest.</p>
--- @param _imageTags [ImageTagList] <p>The list of tags associated with this image.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry to which this image belongs.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository to which this image belongs.</p>
--- @param _imagePushedAt [PushTimestamp] <p>The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository. </p>
-function M.ImageDetail(_imageSizeInBytes, _imageDigest, _imageTags, _registryId, _repositoryName, _imagePushedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImageDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * imageSizeInBytes [ImageSizeInBytes] <p>The size, in bytes, of the image in the repository.</p> <note> <p>Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the <code>docker images</code> command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by <a>DescribeImages</a>.</p> </note>
+-- * imageDigest [ImageDigest] <p>The <code>sha256</code> digest of the image manifest.</p>
+-- * imageTags [ImageTagList] <p>The list of tags associated with this image.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry to which this image belongs.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository to which this image belongs.</p>
+-- * imagePushedAt [PushTimestamp] <p>The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository. </p>
+-- @return ImageDetail structure as a key-value pair table
+function M.ImageDetail(args)
+	assert(args, "You must provdide an argument table when creating ImageDetail")
 	local t = { 
-		["imageSizeInBytes"] = _imageSizeInBytes,
-		["imageDigest"] = _imageDigest,
-		["imageTags"] = _imageTags,
-		["registryId"] = _registryId,
-		["repositoryName"] = _repositoryName,
-		["imagePushedAt"] = _imagePushedAt,
+		["imageSizeInBytes"] = args["imageSizeInBytes"],
+		["imageDigest"] = args["imageDigest"],
+		["imageTags"] = args["imageTags"],
+		["registryId"] = args["registryId"],
+		["repositoryName"] = args["repositoryName"],
+		["imagePushedAt"] = args["imagePushedAt"],
 	}
 	asserts.AssertImageDetail(t)
 	return t
@@ -712,11 +784,14 @@ end
 
 --- Create a structure of type EmptyUploadException
 -- <p>The specified layer upload does not contain any layer parts.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.EmptyUploadException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EmptyUploadException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return EmptyUploadException structure as a key-value pair table
+function M.EmptyUploadException(args)
+	assert(args, "You must provdide an argument table when creating EmptyUploadException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertEmptyUploadException(t)
 	return t
@@ -735,11 +810,14 @@ end
 
 --- Create a structure of type RepositoryAlreadyExistsException
 -- <p>The specified repository already exists in the specified registry.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.RepositoryAlreadyExistsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return RepositoryAlreadyExistsException structure as a key-value pair table
+function M.RepositoryAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryAlreadyExistsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertRepositoryAlreadyExistsException(t)
 	return t
@@ -761,17 +839,20 @@ end
 
 --- Create a structure of type DescribeRepositoriesRequest
 --  
--- @param _nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeRepositories</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
--- @param _repositoryNames [RepositoryNameList] <p>A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default registry is assumed.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeRepositories</code> in paginated output. When this parameter is used, <code>DescribeRepositories</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeRepositories</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeRepositories</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
-function M.DescribeRepositoriesRequest(_nextToken, _repositoryNames, _registryId, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRepositoriesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeRepositories</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p> <note> <p>This token should be treated as an opaque identifier that is only used to retrieve the next items in a list and not for other programmatic purposes.</p> </note>
+-- * repositoryNames [RepositoryNameList] <p>A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default registry is assumed.</p>
+-- * maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeRepositories</code> in paginated output. When this parameter is used, <code>DescribeRepositories</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeRepositories</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeRepositories</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
+-- @return DescribeRepositoriesRequest structure as a key-value pair table
+function M.DescribeRepositoriesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeRepositoriesRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["repositoryNames"] = _repositoryNames,
-		["registryId"] = _registryId,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["repositoryNames"] = args["repositoryNames"],
+		["registryId"] = args["registryId"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertDescribeRepositoriesRequest(t)
 	return t
@@ -792,15 +873,18 @@ end
 
 --- Create a structure of type ImageFailure
 -- <p>An object representing an Amazon ECR image failure.</p>
--- @param _failureReason [ImageFailureReason] <p>The reason for the failure.</p>
--- @param _failureCode [ImageFailureCode] <p>The code associated with the failure.</p>
--- @param _imageId [ImageIdentifier] <p>The image ID associated with the failure.</p>
-function M.ImageFailure(_failureReason, _failureCode, _imageId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImageFailure")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failureReason [ImageFailureReason] <p>The reason for the failure.</p>
+-- * failureCode [ImageFailureCode] <p>The code associated with the failure.</p>
+-- * imageId [ImageIdentifier] <p>The image ID associated with the failure.</p>
+-- @return ImageFailure structure as a key-value pair table
+function M.ImageFailure(args)
+	assert(args, "You must provdide an argument table when creating ImageFailure")
 	local t = { 
-		["failureReason"] = _failureReason,
-		["failureCode"] = _failureCode,
-		["imageId"] = _imageId,
+		["failureReason"] = args["failureReason"],
+		["failureCode"] = args["failureCode"],
+		["imageId"] = args["imageId"],
 	}
 	asserts.AssertImageFailure(t)
 	return t
@@ -821,15 +905,18 @@ end
 
 --- Create a structure of type AuthorizationData
 -- <p>An object representing authorization data for an Amazon ECR registry.</p>
--- @param _authorizationToken [Base64] <p>A base64-encoded string that contains authorization data for the specified Amazon ECR registry. When the string is decoded, it is presented in the format <code>user:password</code> for private registry authentication using <code>docker login</code>.</p>
--- @param _expiresAt [ExpirationTimestamp] <p>The Unix time in seconds and milliseconds when the authorization token expires. Authorization tokens are valid for 12 hours.</p>
--- @param _proxyEndpoint [ProxyEndpoint] <p>The registry URL to use for this authorization token in a <code>docker login</code> command. The Amazon ECR registry URL format is <code>https://aws_account_id.dkr.ecr.region.amazonaws.com</code>. For example, <code>https://012345678910.dkr.ecr.us-east-1.amazonaws.com</code>.. </p>
-function M.AuthorizationData(_authorizationToken, _expiresAt, _proxyEndpoint, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AuthorizationData")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * authorizationToken [Base64] <p>A base64-encoded string that contains authorization data for the specified Amazon ECR registry. When the string is decoded, it is presented in the format <code>user:password</code> for private registry authentication using <code>docker login</code>.</p>
+-- * expiresAt [ExpirationTimestamp] <p>The Unix time in seconds and milliseconds when the authorization token expires. Authorization tokens are valid for 12 hours.</p>
+-- * proxyEndpoint [ProxyEndpoint] <p>The registry URL to use for this authorization token in a <code>docker login</code> command. The Amazon ECR registry URL format is <code>https://aws_account_id.dkr.ecr.region.amazonaws.com</code>. For example, <code>https://012345678910.dkr.ecr.us-east-1.amazonaws.com</code>.. </p>
+-- @return AuthorizationData structure as a key-value pair table
+function M.AuthorizationData(args)
+	assert(args, "You must provdide an argument table when creating AuthorizationData")
 	local t = { 
-		["authorizationToken"] = _authorizationToken,
-		["expiresAt"] = _expiresAt,
-		["proxyEndpoint"] = _proxyEndpoint,
+		["authorizationToken"] = args["authorizationToken"],
+		["expiresAt"] = args["expiresAt"],
+		["proxyEndpoint"] = args["proxyEndpoint"],
 	}
 	asserts.AssertAuthorizationData(t)
 	return t
@@ -849,13 +936,16 @@ end
 
 --- Create a structure of type BatchDeleteImageResponse
 --  
--- @param _failures [ImageFailureList] <p>Any failures associated with the call.</p>
--- @param _imageIds [ImageIdentifierList] <p>The image IDs of the deleted images.</p>
-function M.BatchDeleteImageResponse(_failures, _imageIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchDeleteImageResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failures [ImageFailureList] <p>Any failures associated with the call.</p>
+-- * imageIds [ImageIdentifierList] <p>The image IDs of the deleted images.</p>
+-- @return BatchDeleteImageResponse structure as a key-value pair table
+function M.BatchDeleteImageResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchDeleteImageResponse")
 	local t = { 
-		["failures"] = _failures,
-		["imageIds"] = _imageIds,
+		["failures"] = args["failures"],
+		["imageIds"] = args["imageIds"],
 	}
 	asserts.AssertBatchDeleteImageResponse(t)
 	return t
@@ -878,17 +968,20 @@ end
 
 --- Create a structure of type BatchCheckLayerAvailabilityRequest
 --  
--- @param _layerDigests [BatchedOperationLayerDigestList] <p>The digests of the image layers to check.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository that is associated with the image layers to check.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the image layers to check. If you do not specify a registry, the default registry is assumed.</p>
--- Required parameter: repositoryName
--- Required parameter: layerDigests
-function M.BatchCheckLayerAvailabilityRequest(_layerDigests, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchCheckLayerAvailabilityRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * layerDigests [BatchedOperationLayerDigestList] <p>The digests of the image layers to check.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository that is associated with the image layers to check.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the image layers to check. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- Required key: layerDigests
+-- @return BatchCheckLayerAvailabilityRequest structure as a key-value pair table
+function M.BatchCheckLayerAvailabilityRequest(args)
+	assert(args, "You must provdide an argument table when creating BatchCheckLayerAvailabilityRequest")
 	local t = { 
-		["layerDigests"] = _layerDigests,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["layerDigests"] = args["layerDigests"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertBatchCheckLayerAvailabilityRequest(t)
 	return t
@@ -908,13 +1001,16 @@ end
 
 --- Create a structure of type InitiateLayerUploadResponse
 --  
--- @param _partSize [PartSize] <p>The size, in bytes, that Amazon ECR expects future layer part uploads to be.</p>
--- @param _uploadId [UploadId] <p>The upload ID for the layer upload. This parameter is passed to further <a>UploadLayerPart</a> and <a>CompleteLayerUpload</a> operations.</p>
-function M.InitiateLayerUploadResponse(_partSize, _uploadId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InitiateLayerUploadResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * partSize [PartSize] <p>The size, in bytes, that Amazon ECR expects future layer part uploads to be.</p>
+-- * uploadId [UploadId] <p>The upload ID for the layer upload. This parameter is passed to further <a>UploadLayerPart</a> and <a>CompleteLayerUpload</a> operations.</p>
+-- @return InitiateLayerUploadResponse structure as a key-value pair table
+function M.InitiateLayerUploadResponse(args)
+	assert(args, "You must provdide an argument table when creating InitiateLayerUploadResponse")
 	local t = { 
-		["partSize"] = _partSize,
-		["uploadId"] = _uploadId,
+		["partSize"] = args["partSize"],
+		["uploadId"] = args["uploadId"],
 	}
 	asserts.AssertInitiateLayerUploadResponse(t)
 	return t
@@ -936,17 +1032,20 @@ end
 
 --- Create a structure of type Image
 -- <p>An object representing an Amazon ECR image.</p>
--- @param _imageManifest [ImageManifest] <p>The image manifest associated with the image.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository associated with the image.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry containing the image.</p>
--- @param _imageId [ImageIdentifier] <p>An object containing the image tag and image digest associated with an image.</p>
-function M.Image(_imageManifest, _repositoryName, _registryId, _imageId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Image")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * imageManifest [ImageManifest] <p>The image manifest associated with the image.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository associated with the image.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry containing the image.</p>
+-- * imageId [ImageIdentifier] <p>An object containing the image tag and image digest associated with an image.</p>
+-- @return Image structure as a key-value pair table
+function M.Image(args)
+	assert(args, "You must provdide an argument table when creating Image")
 	local t = { 
-		["imageManifest"] = _imageManifest,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
-		["imageId"] = _imageId,
+		["imageManifest"] = args["imageManifest"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+		["imageId"] = args["imageId"],
 	}
 	asserts.AssertImage(t)
 	return t
@@ -966,13 +1065,16 @@ end
 
 --- Create a structure of type ImageIdentifier
 -- <p>An object with identifying information for an Amazon ECR image.</p>
--- @param _imageTag [ImageTag] <p>The tag used for the image.</p>
--- @param _imageDigest [ImageDigest] <p>The <code>sha256</code> digest of the image manifest.</p>
-function M.ImageIdentifier(_imageTag, _imageDigest, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImageIdentifier")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * imageTag [ImageTag] <p>The tag used for the image.</p>
+-- * imageDigest [ImageDigest] <p>The <code>sha256</code> digest of the image manifest.</p>
+-- @return ImageIdentifier structure as a key-value pair table
+function M.ImageIdentifier(args)
+	assert(args, "You must provdide an argument table when creating ImageIdentifier")
 	local t = { 
-		["imageTag"] = _imageTag,
-		["imageDigest"] = _imageDigest,
+		["imageTag"] = args["imageTag"],
+		["imageDigest"] = args["imageDigest"],
 	}
 	asserts.AssertImageIdentifier(t)
 	return t
@@ -994,17 +1096,20 @@ end
 
 --- Create a structure of type CompleteLayerUploadResponse
 --  
--- @param _uploadId [UploadId] <p>The upload ID associated with the layer.</p>
--- @param _layerDigest [LayerDigest] <p>The <code>sha256</code> digest of the image layer.</p>
--- @param _repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
--- @param _registryId [RegistryId] <p>The registry ID associated with the request.</p>
-function M.CompleteLayerUploadResponse(_uploadId, _layerDigest, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompleteLayerUploadResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * uploadId [UploadId] <p>The upload ID associated with the layer.</p>
+-- * layerDigest [LayerDigest] <p>The <code>sha256</code> digest of the image layer.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
+-- @return CompleteLayerUploadResponse structure as a key-value pair table
+function M.CompleteLayerUploadResponse(args)
+	assert(args, "You must provdide an argument table when creating CompleteLayerUploadResponse")
 	local t = { 
-		["uploadId"] = _uploadId,
-		["layerDigest"] = _layerDigest,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["uploadId"] = args["uploadId"],
+		["layerDigest"] = args["layerDigest"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertCompleteLayerUploadResponse(t)
 	return t
@@ -1025,15 +1130,18 @@ end
 
 --- Create a structure of type GetRepositoryPolicyResponse
 --  
--- @param _policyText [RepositoryPolicyText] <p>The JSON repository policy text associated with the repository.</p>
--- @param _repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
--- @param _registryId [RegistryId] <p>The registry ID associated with the request.</p>
-function M.GetRepositoryPolicyResponse(_policyText, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyText [RepositoryPolicyText] <p>The JSON repository policy text associated with the repository.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
+-- @return GetRepositoryPolicyResponse structure as a key-value pair table
+function M.GetRepositoryPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetRepositoryPolicyResponse")
 	local t = { 
-		["policyText"] = _policyText,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["policyText"] = args["policyText"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertGetRepositoryPolicyResponse(t)
 	return t
@@ -1052,11 +1160,14 @@ end
 
 --- Create a structure of type LayersNotFoundException
 -- <p>The specified layers could not be found, or the specified layer is not valid for this repository.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.LayersNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LayersNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return LayersNotFoundException structure as a key-value pair table
+function M.LayersNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating LayersNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLayersNotFoundException(t)
 	return t
@@ -1085,26 +1196,29 @@ end
 
 --- Create a structure of type UploadLayerPartRequest
 --  
--- @param _layerPartBlob [LayerPartBlob] <p>The base64-encoded layer part payload.</p>
--- @param _partFirstByte [PartSize] <p>The integer value of the first byte of the layer part.</p>
--- @param _uploadId [UploadId] <p>The upload ID from a previous <a>InitiateLayerUpload</a> operation to associate with the layer part upload.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that you are uploading layer parts to. If you do not specify a registry, the default registry is assumed.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository that you are uploading layer parts to.</p>
--- @param _partLastByte [PartSize] <p>The integer value of the last byte of the layer part.</p>
--- Required parameter: repositoryName
--- Required parameter: uploadId
--- Required parameter: partFirstByte
--- Required parameter: partLastByte
--- Required parameter: layerPartBlob
-function M.UploadLayerPartRequest(_layerPartBlob, _partFirstByte, _uploadId, _registryId, _repositoryName, _partLastByte, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadLayerPartRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * layerPartBlob [LayerPartBlob] <p>The base64-encoded layer part payload.</p>
+-- * partFirstByte [PartSize] <p>The integer value of the first byte of the layer part.</p>
+-- * uploadId [UploadId] <p>The upload ID from a previous <a>InitiateLayerUpload</a> operation to associate with the layer part upload.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that you are uploading layer parts to. If you do not specify a registry, the default registry is assumed.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository that you are uploading layer parts to.</p>
+-- * partLastByte [PartSize] <p>The integer value of the last byte of the layer part.</p>
+-- Required key: repositoryName
+-- Required key: uploadId
+-- Required key: partFirstByte
+-- Required key: partLastByte
+-- Required key: layerPartBlob
+-- @return UploadLayerPartRequest structure as a key-value pair table
+function M.UploadLayerPartRequest(args)
+	assert(args, "You must provdide an argument table when creating UploadLayerPartRequest")
 	local t = { 
-		["layerPartBlob"] = _layerPartBlob,
-		["partFirstByte"] = _partFirstByte,
-		["uploadId"] = _uploadId,
-		["registryId"] = _registryId,
-		["repositoryName"] = _repositoryName,
-		["partLastByte"] = _partLastByte,
+		["layerPartBlob"] = args["layerPartBlob"],
+		["partFirstByte"] = args["partFirstByte"],
+		["uploadId"] = args["uploadId"],
+		["registryId"] = args["registryId"],
+		["repositoryName"] = args["repositoryName"],
+		["partLastByte"] = args["partLastByte"],
 	}
 	asserts.AssertUploadLayerPartRequest(t)
 	return t
@@ -1123,11 +1237,14 @@ end
 
 --- Create a structure of type InvalidLayerException
 -- <p>The layer digest calculation performed by Amazon ECR upon receipt of the image layer does not match the digest specified.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.InvalidLayerException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLayerException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return InvalidLayerException structure as a key-value pair table
+function M.InvalidLayerException(args)
+	assert(args, "You must provdide an argument table when creating InvalidLayerException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidLayerException(t)
 	return t
@@ -1150,19 +1267,22 @@ end
 
 --- Create a structure of type Repository
 -- <p>An object representing a repository.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository.</p>
--- @param _repositoryArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the repository. The ARN contains the <code>arn:aws:ecr</code> namespace, followed by the region of the repository, the AWS account ID of the repository owner, the repository namespace, and then the repository name. For example, <code>arn:aws:ecr:region:012345678910:repository/test</code>.</p>
--- @param _createdAt [CreationTimestamp] <p>The date and time, in JavaScript date/time format, when the repository was created.</p>
--- @param _repositoryUri [Url] <p>The URI for the repository. You can use this URI for Docker <code>push</code> and <code>pull</code> operations.</p>
-function M.Repository(_registryId, _repositoryName, _repositoryArn, _createdAt, _repositoryUri, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Repository")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository.</p>
+-- * repositoryArn [Arn] <p>The Amazon Resource Name (ARN) that identifies the repository. The ARN contains the <code>arn:aws:ecr</code> namespace, followed by the region of the repository, the AWS account ID of the repository owner, the repository namespace, and then the repository name. For example, <code>arn:aws:ecr:region:012345678910:repository/test</code>.</p>
+-- * createdAt [CreationTimestamp] <p>The date and time, in JavaScript date/time format, when the repository was created.</p>
+-- * repositoryUri [Url] <p>The URI for the repository. You can use this URI for Docker <code>push</code> and <code>pull</code> operations.</p>
+-- @return Repository structure as a key-value pair table
+function M.Repository(args)
+	assert(args, "You must provdide an argument table when creating Repository")
 	local t = { 
-		["registryId"] = _registryId,
-		["repositoryName"] = _repositoryName,
-		["repositoryArn"] = _repositoryArn,
-		["createdAt"] = _createdAt,
-		["repositoryUri"] = _repositoryUri,
+		["registryId"] = args["registryId"],
+		["repositoryName"] = args["repositoryName"],
+		["repositoryArn"] = args["repositoryArn"],
+		["createdAt"] = args["createdAt"],
+		["repositoryUri"] = args["repositoryUri"],
 	}
 	asserts.AssertRepository(t)
 	return t
@@ -1181,11 +1301,14 @@ end
 
 --- Create a structure of type RepositoryPolicyNotFoundException
 -- <p>The specified repository and registry combination does not have an associated repository policy.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.RepositoryPolicyNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryPolicyNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return RepositoryPolicyNotFoundException structure as a key-value pair table
+function M.RepositoryPolicyNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryPolicyNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertRepositoryPolicyNotFoundException(t)
 	return t
@@ -1206,14 +1329,17 @@ end
 
 --- Create a structure of type GetRepositoryPolicyRequest
 --  
--- @param _repositoryName [RepositoryName] <p>The name of the repository whose policy you want to retrieve.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
--- Required parameter: repositoryName
-function M.GetRepositoryPolicyRequest(_repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository whose policy you want to retrieve.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- @return GetRepositoryPolicyRequest structure as a key-value pair table
+function M.GetRepositoryPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetRepositoryPolicyRequest")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertGetRepositoryPolicyRequest(t)
 	return t
@@ -1232,11 +1358,14 @@ end
 
 --- Create a structure of type ImageAlreadyExistsException
 -- <p>The specified image has already been pushed, and there are no changes to the manifest or image tag since the last push.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.ImageAlreadyExistsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImageAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return ImageAlreadyExistsException structure as a key-value pair table
+function M.ImageAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ImageAlreadyExistsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertImageAlreadyExistsException(t)
 	return t
@@ -1255,11 +1384,14 @@ end
 
 --- Create a structure of type ImageNotFoundException
 -- <p>The image requested does not exist in the specified repository.</p>
--- @param _message [ExceptionMessage] 
-function M.ImageNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImageNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] 
+-- @return ImageNotFoundException structure as a key-value pair table
+function M.ImageNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ImageNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertImageNotFoundException(t)
 	return t
@@ -1279,13 +1411,16 @@ end
 
 --- Create a structure of type ListImagesResponse
 --  
--- @param _nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>ListImages</code> request. When the results of a <code>ListImages</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
--- @param _imageIds [ImageIdentifierList] <p>The list of image IDs for the requested repository.</p>
-function M.ListImagesResponse(_nextToken, _imageIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListImagesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>ListImages</code> request. When the results of a <code>ListImages</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
+-- * imageIds [ImageIdentifierList] <p>The list of image IDs for the requested repository.</p>
+-- @return ListImagesResponse structure as a key-value pair table
+function M.ListImagesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListImagesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["imageIds"] = _imageIds,
+		["nextToken"] = args["nextToken"],
+		["imageIds"] = args["imageIds"],
 	}
 	asserts.AssertListImagesResponse(t)
 	return t
@@ -1306,15 +1441,18 @@ end
 
 --- Create a structure of type LayerFailure
 -- <p>An object representing an Amazon ECR image layer failure.</p>
--- @param _layerDigest [BatchedOperationLayerDigest] <p>The layer digest associated with the failure.</p>
--- @param _failureCode [LayerFailureCode] <p>The failure code associated with the failure.</p>
--- @param _failureReason [LayerFailureReason] <p>The reason for the failure.</p>
-function M.LayerFailure(_layerDigest, _failureCode, _failureReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LayerFailure")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * layerDigest [BatchedOperationLayerDigest] <p>The layer digest associated with the failure.</p>
+-- * failureCode [LayerFailureCode] <p>The failure code associated with the failure.</p>
+-- * failureReason [LayerFailureReason] <p>The reason for the failure.</p>
+-- @return LayerFailure structure as a key-value pair table
+function M.LayerFailure(args)
+	assert(args, "You must provdide an argument table when creating LayerFailure")
 	local t = { 
-		["layerDigest"] = _layerDigest,
-		["failureCode"] = _failureCode,
-		["failureReason"] = _failureReason,
+		["layerDigest"] = args["layerDigest"],
+		["failureCode"] = args["failureCode"],
+		["failureReason"] = args["failureReason"],
 	}
 	asserts.AssertLayerFailure(t)
 	return t
@@ -1333,11 +1471,14 @@ end
 
 --- Create a structure of type UploadNotFoundException
 -- <p>The upload could not be found, or the specified upload id is not valid for this repository.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.UploadNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return UploadNotFoundException structure as a key-value pair table
+function M.UploadNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating UploadNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUploadNotFoundException(t)
 	return t
@@ -1356,11 +1497,14 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- <p>The specified parameter is invalid. Review the available parameters for the API request.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.InvalidParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterException(t)
 	return t
@@ -1380,12 +1524,15 @@ end
 
 --- Create a structure of type CreateRepositoryRequest
 --  
--- @param _repositoryName [RepositoryName] <p>The name to use for the repository. The repository name may be specified on its own (such as <code>nginx-web-app</code>) or it can be prepended with a namespace to group the repository into a category (such as <code>project-a/nginx-web-app</code>).</p>
--- Required parameter: repositoryName
-function M.CreateRepositoryRequest(_repositoryName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRepositoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name to use for the repository. The repository name may be specified on its own (such as <code>nginx-web-app</code>) or it can be prepended with a namespace to group the repository into a category (such as <code>project-a/nginx-web-app</code>).</p>
+-- Required key: repositoryName
+-- @return CreateRepositoryRequest structure as a key-value pair table
+function M.CreateRepositoryRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateRepositoryRequest")
 	local t = { 
-		["repositoryName"] = _repositoryName,
+		["repositoryName"] = args["repositoryName"],
 	}
 	asserts.AssertCreateRepositoryRequest(t)
 	return t
@@ -1410,22 +1557,25 @@ end
 
 --- Create a structure of type DescribeImagesRequest
 --  
--- @param _repositoryName [RepositoryName] <p>A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeImages</code> in paginated output. When this parameter is used, <code>DescribeImages</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeImages</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeImages</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
--- @param _filter [DescribeImagesFilter] <p>The filter key and value with which to filter your <code>DescribeImages</code> results.</p>
--- @param _imageIds [ImageIdentifierList] <p>The list of image IDs for the requested repository.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository in which to describe images. If you do not specify a registry, the default registry is assumed.</p>
--- @param _nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeImages</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p>
--- Required parameter: repositoryName
-function M.DescribeImagesRequest(_repositoryName, _maxResults, _filter, _imageIds, _registryId, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeImagesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.</p>
+-- * maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeImages</code> in paginated output. When this parameter is used, <code>DescribeImages</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeImages</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeImages</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
+-- * filter [DescribeImagesFilter] <p>The filter key and value with which to filter your <code>DescribeImages</code> results.</p>
+-- * imageIds [ImageIdentifierList] <p>The list of image IDs for the requested repository.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository in which to describe images. If you do not specify a registry, the default registry is assumed.</p>
+-- * nextToken [NextToken] <p>The <code>nextToken</code> value returned from a previous paginated <code>DescribeImages</code> request where <code>maxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>nextToken</code> value. This value is <code>null</code> when there are no more results to return.</p>
+-- Required key: repositoryName
+-- @return DescribeImagesRequest structure as a key-value pair table
+function M.DescribeImagesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeImagesRequest")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["maxResults"] = _maxResults,
-		["filter"] = _filter,
-		["imageIds"] = _imageIds,
-		["registryId"] = _registryId,
-		["nextToken"] = _nextToken,
+		["repositoryName"] = args["repositoryName"],
+		["maxResults"] = args["maxResults"],
+		["filter"] = args["filter"],
+		["imageIds"] = args["imageIds"],
+		["registryId"] = args["registryId"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeImagesRequest(t)
 	return t
@@ -1446,14 +1596,17 @@ end
 
 --- Create a structure of type DeleteRepositoryPolicyRequest
 --  
--- @param _repositoryName [RepositoryName] <p>The name of the repository that is associated with the repository policy to delete.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository policy to delete. If you do not specify a registry, the default registry is assumed.</p>
--- Required parameter: repositoryName
-function M.DeleteRepositoryPolicyRequest(_repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository that is associated with the repository policy to delete.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository policy to delete. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- @return DeleteRepositoryPolicyRequest structure as a key-value pair table
+function M.DeleteRepositoryPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteRepositoryPolicyRequest")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertDeleteRepositoryPolicyRequest(t)
 	return t
@@ -1472,11 +1625,14 @@ end
 
 --- Create a structure of type ServerException
 -- <p>These errors are usually caused by a server-side issue.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.ServerException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServerException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return ServerException structure as a key-value pair table
+function M.ServerException(args)
+	assert(args, "You must provdide an argument table when creating ServerException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServerException(t)
 	return t
@@ -1495,11 +1651,14 @@ end
 
 --- Create a structure of type CreateRepositoryResponse
 --  
--- @param _repository [Repository] <p>The repository that was created.</p>
-function M.CreateRepositoryResponse(_repository, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRepositoryResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repository [Repository] <p>The repository that was created.</p>
+-- @return CreateRepositoryResponse structure as a key-value pair table
+function M.CreateRepositoryResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateRepositoryResponse")
 	local t = { 
-		["repository"] = _repository,
+		["repository"] = args["repository"],
 	}
 	asserts.AssertCreateRepositoryResponse(t)
 	return t
@@ -1518,11 +1677,14 @@ end
 
 --- Create a structure of type LayerPartTooSmallException
 -- <p>Layer parts must be at least 5 MiB in size.</p>
--- @param _message [ExceptionMessage] <p>The error message associated with the exception.</p>
-function M.LayerPartTooSmallException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LayerPartTooSmallException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
+-- @return LayerPartTooSmallException structure as a key-value pair table
+function M.LayerPartTooSmallException(args)
+	assert(args, "You must provdide an argument table when creating LayerPartTooSmallException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLayerPartTooSmallException(t)
 	return t
@@ -1543,15 +1705,18 @@ end
 
 --- Create a structure of type SetRepositoryPolicyResponse
 --  
--- @param _policyText [RepositoryPolicyText] <p>The JSON repository policy text applied to the repository.</p>
--- @param _repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
--- @param _registryId [RegistryId] <p>The registry ID associated with the request.</p>
-function M.SetRepositoryPolicyResponse(_policyText, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetRepositoryPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyText [RepositoryPolicyText] <p>The JSON repository policy text applied to the repository.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
+-- @return SetRepositoryPolicyResponse structure as a key-value pair table
+function M.SetRepositoryPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating SetRepositoryPolicyResponse")
 	local t = { 
-		["policyText"] = _policyText,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["policyText"] = args["policyText"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertSetRepositoryPolicyResponse(t)
 	return t
@@ -1575,19 +1740,22 @@ end
 
 --- Create a structure of type BatchGetImageRequest
 --  
--- @param _repositoryName [RepositoryName] <p>The repository that contains the images to describe.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the images to describe. If you do not specify a registry, the default registry is assumed.</p>
--- @param _acceptedMediaTypes [MediaTypeList] <p>The accepted media types for the request.</p> <p>Valid values: <code>application/vnd.docker.distribution.manifest.v1+json</code> | <code>application/vnd.docker.distribution.manifest.v2+json</code> | <code>application/vnd.oci.image.manifest.v1+json</code> </p>
--- @param _imageIds [ImageIdentifierList] <p>A list of image ID references that correspond to images to describe. The format of the <code>imageIds</code> reference is <code>imageTag=tag</code> or <code>imageDigest=digest</code>.</p>
--- Required parameter: repositoryName
--- Required parameter: imageIds
-function M.BatchGetImageRequest(_repositoryName, _registryId, _acceptedMediaTypes, _imageIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetImageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The repository that contains the images to describe.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the images to describe. If you do not specify a registry, the default registry is assumed.</p>
+-- * acceptedMediaTypes [MediaTypeList] <p>The accepted media types for the request.</p> <p>Valid values: <code>application/vnd.docker.distribution.manifest.v1+json</code> | <code>application/vnd.docker.distribution.manifest.v2+json</code> | <code>application/vnd.oci.image.manifest.v1+json</code> </p>
+-- * imageIds [ImageIdentifierList] <p>A list of image ID references that correspond to images to describe. The format of the <code>imageIds</code> reference is <code>imageTag=tag</code> or <code>imageDigest=digest</code>.</p>
+-- Required key: repositoryName
+-- Required key: imageIds
+-- @return BatchGetImageRequest structure as a key-value pair table
+function M.BatchGetImageRequest(args)
+	assert(args, "You must provdide an argument table when creating BatchGetImageRequest")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
-		["acceptedMediaTypes"] = _acceptedMediaTypes,
-		["imageIds"] = _imageIds,
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
+		["acceptedMediaTypes"] = args["acceptedMediaTypes"],
+		["imageIds"] = args["imageIds"],
 	}
 	asserts.AssertBatchGetImageRequest(t)
 	return t
@@ -1609,16 +1777,19 @@ end
 
 --- Create a structure of type DeleteRepositoryRequest
 --  
--- @param _force [ForceFlag] <p>Force the deletion of the repository if it contains images.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository to delete.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository to delete. If you do not specify a registry, the default registry is assumed.</p>
--- Required parameter: repositoryName
-function M.DeleteRepositoryRequest(_force, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * force [ForceFlag] <p>Force the deletion of the repository if it contains images.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository to delete.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that contains the repository to delete. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- @return DeleteRepositoryRequest structure as a key-value pair table
+function M.DeleteRepositoryRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteRepositoryRequest")
 	local t = { 
-		["force"] = _force,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["force"] = args["force"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertDeleteRepositoryRequest(t)
 	return t
@@ -1639,15 +1810,18 @@ end
 
 --- Create a structure of type DeleteRepositoryPolicyResponse
 --  
--- @param _policyText [RepositoryPolicyText] <p>The JSON repository policy that was deleted from the repository.</p>
--- @param _repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
--- @param _registryId [RegistryId] <p>The registry ID associated with the request.</p>
-function M.DeleteRepositoryPolicyResponse(_policyText, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyText [RepositoryPolicyText] <p>The JSON repository policy that was deleted from the repository.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
+-- @return DeleteRepositoryPolicyResponse structure as a key-value pair table
+function M.DeleteRepositoryPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteRepositoryPolicyResponse")
 	local t = { 
-		["policyText"] = _policyText,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["policyText"] = args["policyText"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertDeleteRepositoryPolicyResponse(t)
 	return t
@@ -1666,11 +1840,14 @@ end
 
 --- Create a structure of type PutImageResponse
 --  
--- @param _image [Image] <p>Details of the image uploaded.</p>
-function M.PutImageResponse(_image, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutImageResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * image [Image] <p>Details of the image uploaded.</p>
+-- @return PutImageResponse structure as a key-value pair table
+function M.PutImageResponse(args)
+	assert(args, "You must provdide an argument table when creating PutImageResponse")
 	local t = { 
-		["image"] = _image,
+		["image"] = args["image"],
 	}
 	asserts.AssertPutImageResponse(t)
 	return t
@@ -1691,14 +1868,17 @@ end
 
 --- Create a structure of type InitiateLayerUploadRequest
 --  
--- @param _repositoryName [RepositoryName] <p>The name of the repository that you intend to upload layers to.</p>
--- @param _registryId [RegistryId] <p>The AWS account ID associated with the registry that you intend to upload layers to. If you do not specify a registry, the default registry is assumed.</p>
--- Required parameter: repositoryName
-function M.InitiateLayerUploadRequest(_repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InitiateLayerUploadRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository that you intend to upload layers to.</p>
+-- * registryId [RegistryId] <p>The AWS account ID associated with the registry that you intend to upload layers to. If you do not specify a registry, the default registry is assumed.</p>
+-- Required key: repositoryName
+-- @return InitiateLayerUploadRequest structure as a key-value pair table
+function M.InitiateLayerUploadRequest(args)
+	assert(args, "You must provdide an argument table when creating InitiateLayerUploadRequest")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertInitiateLayerUploadRequest(t)
 	return t
@@ -1720,17 +1900,20 @@ end
 
 --- Create a structure of type UploadLayerPartResponse
 --  
--- @param _uploadId [UploadId] <p>The upload ID associated with the request.</p>
--- @param _lastByteReceived [PartSize] <p>The integer value of the last byte received in the request.</p>
--- @param _repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
--- @param _registryId [RegistryId] <p>The registry ID associated with the request.</p>
-function M.UploadLayerPartResponse(_uploadId, _lastByteReceived, _repositoryName, _registryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadLayerPartResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * uploadId [UploadId] <p>The upload ID associated with the request.</p>
+-- * lastByteReceived [PartSize] <p>The integer value of the last byte received in the request.</p>
+-- * repositoryName [RepositoryName] <p>The repository name associated with the request.</p>
+-- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
+-- @return UploadLayerPartResponse structure as a key-value pair table
+function M.UploadLayerPartResponse(args)
+	assert(args, "You must provdide an argument table when creating UploadLayerPartResponse")
 	local t = { 
-		["uploadId"] = _uploadId,
-		["lastByteReceived"] = _lastByteReceived,
-		["repositoryName"] = _repositoryName,
-		["registryId"] = _registryId,
+		["uploadId"] = args["uploadId"],
+		["lastByteReceived"] = args["lastByteReceived"],
+		["repositoryName"] = args["repositoryName"],
+		["registryId"] = args["registryId"],
 	}
 	asserts.AssertUploadLayerPartResponse(t)
 	return t

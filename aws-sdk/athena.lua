@@ -35,13 +35,16 @@ end
 
 --- Create a structure of type InvalidRequestException
 -- <p>Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.</p>
--- @param _AthenaErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
-function M.InvalidRequestException(_AthenaErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AthenaErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- @return InvalidRequestException structure as a key-value pair table
+function M.InvalidRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRequestException")
 	local t = { 
-		["AthenaErrorCode"] = _AthenaErrorCode,
-		["Message"] = _Message,
+		["AthenaErrorCode"] = args["AthenaErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidRequestException(t)
 	return t
@@ -67,22 +70,25 @@ end
 
 --- Create a structure of type CreateNamedQueryInput
 --  
--- @param _ClientRequestToken [IdempotencyToken] <p>A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another <code>CreateNamedQuery</code> request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the <code>QueryString</code>, an error is returned.</p> <important> <p>This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.</p> </important>
--- @param _Database [DatabaseString] <p>The database to which the query belongs.</p>
--- @param _QueryString [QueryString] <p>The text of the query itself. In other words, all query statements.</p>
--- @param _Name [NameString] <p>The plain language name for the query.</p>
--- @param _Description [DescriptionString] <p>A brief explanation of the query.</p>
--- Required parameter: Name
--- Required parameter: Database
--- Required parameter: QueryString
-function M.CreateNamedQueryInput(_ClientRequestToken, _Database, _QueryString, _Name, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateNamedQueryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClientRequestToken [IdempotencyToken] <p>A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another <code>CreateNamedQuery</code> request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the <code>QueryString</code>, an error is returned.</p> <important> <p>This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.</p> </important>
+-- * Database [DatabaseString] <p>The database to which the query belongs.</p>
+-- * QueryString [QueryString] <p>The text of the query itself. In other words, all query statements.</p>
+-- * Name [NameString] <p>The plain language name for the query.</p>
+-- * Description [DescriptionString] <p>A brief explanation of the query.</p>
+-- Required key: Name
+-- Required key: Database
+-- Required key: QueryString
+-- @return CreateNamedQueryInput structure as a key-value pair table
+function M.CreateNamedQueryInput(args)
+	assert(args, "You must provdide an argument table when creating CreateNamedQueryInput")
 	local t = { 
-		["ClientRequestToken"] = _ClientRequestToken,
-		["Database"] = _Database,
-		["QueryString"] = _QueryString,
-		["Name"] = _Name,
-		["Description"] = _Description,
+		["ClientRequestToken"] = args["ClientRequestToken"],
+		["Database"] = args["Database"],
+		["QueryString"] = args["QueryString"],
+		["Name"] = args["Name"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateNamedQueryInput(t)
 	return t
@@ -102,13 +108,16 @@ end
 
 --- Create a structure of type ListQueryExecutionsOutput
 --  
--- @param _NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
--- @param _QueryExecutionIds [QueryExecutionIdList] <p>The unique IDs of each query execution as an array of strings.</p>
-function M.ListQueryExecutionsOutput(_NextToken, _QueryExecutionIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListQueryExecutionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
+-- * QueryExecutionIds [QueryExecutionIdList] <p>The unique IDs of each query execution as an array of strings.</p>
+-- @return ListQueryExecutionsOutput structure as a key-value pair table
+function M.ListQueryExecutionsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListQueryExecutionsOutput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["QueryExecutionIds"] = _QueryExecutionIds,
+		["NextToken"] = args["NextToken"],
+		["QueryExecutionIds"] = args["QueryExecutionIds"],
 	}
 	asserts.AssertListQueryExecutionsOutput(t)
 	return t
@@ -128,13 +137,16 @@ end
 
 --- Create a structure of type ResultSet
 -- <p>The metadata and rows that comprise a query result set. The metadata describes the column structure and data types.</p>
--- @param _Rows [RowList] <p>The rows in the table.</p>
--- @param _ResultSetMetadata [ResultSetMetadata] <p>The metadata that describes the column structure and data types of a table of query results.</p>
-function M.ResultSet(_Rows, _ResultSetMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResultSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rows [RowList] <p>The rows in the table.</p>
+-- * ResultSetMetadata [ResultSetMetadata] <p>The metadata that describes the column structure and data types of a table of query results.</p>
+-- @return ResultSet structure as a key-value pair table
+function M.ResultSet(args)
+	assert(args, "You must provdide an argument table when creating ResultSet")
 	local t = { 
-		["Rows"] = _Rows,
-		["ResultSetMetadata"] = _ResultSetMetadata,
+		["Rows"] = args["Rows"],
+		["ResultSetMetadata"] = args["ResultSetMetadata"],
 	}
 	asserts.AssertResultSet(t)
 	return t
@@ -153,11 +165,14 @@ end
 
 --- Create a structure of type InternalServerException
 -- <p>Indicates a platform issue, which may be due to a transient condition or outage.</p>
--- @param _Message [ErrorMessage] 
-function M.InternalServerException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return InternalServerException structure as a key-value pair table
+function M.InternalServerException(args)
+	assert(args, "You must provdide an argument table when creating InternalServerException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInternalServerException(t)
 	return t
@@ -178,14 +193,17 @@ end
 
 --- Create a structure of type EncryptionConfiguration
 -- <p>If query results are encrypted in Amazon S3, indicates the Amazon S3 encryption option used.</p>
--- @param _EncryptionOption [EncryptionOption] <p>Indicates whether Amazon S3 server-side encryption with Amazon S3-managed keys (<code>SSE-S3</code>), server-side encryption with KMS-managed keys (<code>SSE-KMS</code>), or client-side encryption with KMS-managed keys (CSE-KMS) is used.</p>
--- @param _KmsKey [String] <p>For <code>SSE-KMS</code> and <code>CSE-KMS</code>, this is the KMS key ARN or ID.</p>
--- Required parameter: EncryptionOption
-function M.EncryptionConfiguration(_EncryptionOption, _KmsKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EncryptionOption [EncryptionOption] <p>Indicates whether Amazon S3 server-side encryption with Amazon S3-managed keys (<code>SSE-S3</code>), server-side encryption with KMS-managed keys (<code>SSE-KMS</code>), or client-side encryption with KMS-managed keys (CSE-KMS) is used.</p>
+-- * KmsKey [String] <p>For <code>SSE-KMS</code> and <code>CSE-KMS</code>, this is the KMS key ARN or ID.</p>
+-- Required key: EncryptionOption
+-- @return EncryptionConfiguration structure as a key-value pair table
+function M.EncryptionConfiguration(args)
+	assert(args, "You must provdide an argument table when creating EncryptionConfiguration")
 	local t = { 
-		["EncryptionOption"] = _EncryptionOption,
-		["KmsKey"] = _KmsKey,
+		["EncryptionOption"] = args["EncryptionOption"],
+		["KmsKey"] = args["KmsKey"],
 	}
 	asserts.AssertEncryptionConfiguration(t)
 	return t
@@ -209,19 +227,22 @@ end
 
 --- Create a structure of type StartQueryExecutionInput
 --  
--- @param _ResultConfiguration [ResultConfiguration] <p>Specifies information about where and how to save the results of the query execution.</p>
--- @param _QueryExecutionContext [QueryExecutionContext] <p>The database within which the query executes.</p>
--- @param _QueryString [QueryString] <p>The SQL query statements to be executed.</p>
--- @param _ClientRequestToken [IdempotencyToken] <p>A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another <code>StartQueryExecution</code> request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the <code>QueryString</code>, an error is returned.</p> <important> <p>This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.</p> </important>
--- Required parameter: QueryString
--- Required parameter: ResultConfiguration
-function M.StartQueryExecutionInput(_ResultConfiguration, _QueryExecutionContext, _QueryString, _ClientRequestToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartQueryExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResultConfiguration [ResultConfiguration] <p>Specifies information about where and how to save the results of the query execution.</p>
+-- * QueryExecutionContext [QueryExecutionContext] <p>The database within which the query executes.</p>
+-- * QueryString [QueryString] <p>The SQL query statements to be executed.</p>
+-- * ClientRequestToken [IdempotencyToken] <p>A unique case-sensitive string used to ensure the request to create the query is idempotent (executes only once). If another <code>StartQueryExecution</code> request is received, the same response is returned and another query is not created. If a parameter has changed, for example, the <code>QueryString</code>, an error is returned.</p> <important> <p>This token is listed as not required because AWS SDKs (for example the AWS SDK for Java) auto-generate the token for users. If you are not using the AWS SDK or the AWS CLI, you must provide this token or the action will fail.</p> </important>
+-- Required key: QueryString
+-- Required key: ResultConfiguration
+-- @return StartQueryExecutionInput structure as a key-value pair table
+function M.StartQueryExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating StartQueryExecutionInput")
 	local t = { 
-		["ResultConfiguration"] = _ResultConfiguration,
-		["QueryExecutionContext"] = _QueryExecutionContext,
-		["QueryString"] = _QueryString,
-		["ClientRequestToken"] = _ClientRequestToken,
+		["ResultConfiguration"] = args["ResultConfiguration"],
+		["QueryExecutionContext"] = args["QueryExecutionContext"],
+		["QueryString"] = args["QueryString"],
+		["ClientRequestToken"] = args["ClientRequestToken"],
 	}
 	asserts.AssertStartQueryExecutionInput(t)
 	return t
@@ -240,11 +261,14 @@ end
 
 --- Create a structure of type GetQueryExecutionOutput
 --  
--- @param _QueryExecution [QueryExecution] <p>Information about the query execution.</p>
-function M.GetQueryExecutionOutput(_QueryExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetQueryExecutionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * QueryExecution [QueryExecution] <p>Information about the query execution.</p>
+-- @return GetQueryExecutionOutput structure as a key-value pair table
+function M.GetQueryExecutionOutput(args)
+	assert(args, "You must provdide an argument table when creating GetQueryExecutionOutput")
 	local t = { 
-		["QueryExecution"] = _QueryExecution,
+		["QueryExecution"] = args["QueryExecution"],
 	}
 	asserts.AssertGetQueryExecutionOutput(t)
 	return t
@@ -264,12 +288,15 @@ end
 
 --- Create a structure of type GetNamedQueryInput
 --  
--- @param _NamedQueryId [NamedQueryId] <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
--- Required parameter: NamedQueryId
-function M.GetNamedQueryInput(_NamedQueryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetNamedQueryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NamedQueryId [NamedQueryId] <p>The unique ID of the query. Use <a>ListNamedQueries</a> to get query IDs.</p>
+-- Required key: NamedQueryId
+-- @return GetNamedQueryInput structure as a key-value pair table
+function M.GetNamedQueryInput(args)
+	assert(args, "You must provdide an argument table when creating GetNamedQueryInput")
 	local t = { 
-		["NamedQueryId"] = _NamedQueryId,
+		["NamedQueryId"] = args["NamedQueryId"],
 	}
 	asserts.AssertGetNamedQueryInput(t)
 	return t
@@ -288,11 +315,14 @@ end
 
 --- Create a structure of type GetNamedQueryOutput
 --  
--- @param _NamedQuery [NamedQuery] <p>Information about the query.</p>
-function M.GetNamedQueryOutput(_NamedQuery, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetNamedQueryOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NamedQuery [NamedQuery] <p>Information about the query.</p>
+-- @return GetNamedQueryOutput structure as a key-value pair table
+function M.GetNamedQueryOutput(args)
+	assert(args, "You must provdide an argument table when creating GetNamedQueryOutput")
 	local t = { 
-		["NamedQuery"] = _NamedQuery,
+		["NamedQuery"] = args["NamedQuery"],
 	}
 	asserts.AssertGetNamedQueryOutput(t)
 	return t
@@ -312,12 +342,15 @@ end
 
 --- Create a structure of type GetQueryExecutionInput
 --  
--- @param _QueryExecutionId [QueryExecutionId] <p>The unique ID of the query execution.</p>
--- Required parameter: QueryExecutionId
-function M.GetQueryExecutionInput(_QueryExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetQueryExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * QueryExecutionId [QueryExecutionId] <p>The unique ID of the query execution.</p>
+-- Required key: QueryExecutionId
+-- @return GetQueryExecutionInput structure as a key-value pair table
+function M.GetQueryExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating GetQueryExecutionInput")
 	local t = { 
-		["QueryExecutionId"] = _QueryExecutionId,
+		["QueryExecutionId"] = args["QueryExecutionId"],
 	}
 	asserts.AssertGetQueryExecutionInput(t)
 	return t
@@ -343,22 +376,25 @@ end
 
 --- Create a structure of type NamedQuery
 -- <p>A query, where <code>QueryString</code> is the SQL query statements that comprise the query.</p>
--- @param _Database [DatabaseString] <p>The database to which the query belongs.</p>
--- @param _QueryString [QueryString] <p>The SQL query statements that comprise the query.</p>
--- @param _Name [NameString] <p>The plain-language name of the query.</p>
--- @param _NamedQueryId [NamedQueryId] <p>The unique identifier of the query.</p>
--- @param _Description [DescriptionString] <p>A brief description of the query.</p>
--- Required parameter: Name
--- Required parameter: Database
--- Required parameter: QueryString
-function M.NamedQuery(_Database, _QueryString, _Name, _NamedQueryId, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NamedQuery")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Database [DatabaseString] <p>The database to which the query belongs.</p>
+-- * QueryString [QueryString] <p>The SQL query statements that comprise the query.</p>
+-- * Name [NameString] <p>The plain-language name of the query.</p>
+-- * NamedQueryId [NamedQueryId] <p>The unique identifier of the query.</p>
+-- * Description [DescriptionString] <p>A brief description of the query.</p>
+-- Required key: Name
+-- Required key: Database
+-- Required key: QueryString
+-- @return NamedQuery structure as a key-value pair table
+function M.NamedQuery(args)
+	assert(args, "You must provdide an argument table when creating NamedQuery")
 	local t = { 
-		["Database"] = _Database,
-		["QueryString"] = _QueryString,
-		["Name"] = _Name,
-		["NamedQueryId"] = _NamedQueryId,
-		["Description"] = _Description,
+		["Database"] = args["Database"],
+		["QueryString"] = args["QueryString"],
+		["Name"] = args["Name"],
+		["NamedQueryId"] = args["NamedQueryId"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertNamedQuery(t)
 	return t
@@ -377,11 +413,14 @@ end
 
 --- Create a structure of type StartQueryExecutionOutput
 --  
--- @param _QueryExecutionId [QueryExecutionId] <p>The unique ID of the query that ran as a result of this request.</p>
-function M.StartQueryExecutionOutput(_QueryExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartQueryExecutionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * QueryExecutionId [QueryExecutionId] <p>The unique ID of the query that ran as a result of this request.</p>
+-- @return StartQueryExecutionOutput structure as a key-value pair table
+function M.StartQueryExecutionOutput(args)
+	assert(args, "You must provdide an argument table when creating StartQueryExecutionOutput")
 	local t = { 
-		["QueryExecutionId"] = _QueryExecutionId,
+		["QueryExecutionId"] = args["QueryExecutionId"],
 	}
 	asserts.AssertStartQueryExecutionOutput(t)
 	return t
@@ -401,13 +440,16 @@ end
 
 --- Create a structure of type ListNamedQueriesInput
 --  
--- @param _NextToken [Token] <p>The token that specifies where to start pagination if a previous request was truncated.</p>
--- @param _MaxResults [MaxNamedQueriesCount] <p>The maximum number of queries to return in this request.</p>
-function M.ListNamedQueriesInput(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListNamedQueriesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [Token] <p>The token that specifies where to start pagination if a previous request was truncated.</p>
+-- * MaxResults [MaxNamedQueriesCount] <p>The maximum number of queries to return in this request.</p>
+-- @return ListNamedQueriesInput structure as a key-value pair table
+function M.ListNamedQueriesInput(args)
+	assert(args, "You must provdide an argument table when creating ListNamedQueriesInput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListNamedQueriesInput(t)
 	return t
@@ -429,16 +471,19 @@ end
 
 --- Create a structure of type GetQueryResultsInput
 --  
--- @param _NextToken [Token] <p>The token that specifies where to start pagination if a previous request was truncated.</p>
--- @param _QueryExecutionId [QueryExecutionId] <p>The unique ID of the query execution.</p>
--- @param _MaxResults [MaxQueryResults] <p>The maximum number of results (rows) to return in this request.</p>
--- Required parameter: QueryExecutionId
-function M.GetQueryResultsInput(_NextToken, _QueryExecutionId, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetQueryResultsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [Token] <p>The token that specifies where to start pagination if a previous request was truncated.</p>
+-- * QueryExecutionId [QueryExecutionId] <p>The unique ID of the query execution.</p>
+-- * MaxResults [MaxQueryResults] <p>The maximum number of results (rows) to return in this request.</p>
+-- Required key: QueryExecutionId
+-- @return GetQueryResultsInput structure as a key-value pair table
+function M.GetQueryResultsInput(args)
+	assert(args, "You must provdide an argument table when creating GetQueryResultsInput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["QueryExecutionId"] = _QueryExecutionId,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["QueryExecutionId"] = args["QueryExecutionId"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertGetQueryResultsInput(t)
 	return t
@@ -458,13 +503,16 @@ end
 
 --- Create a structure of type QueryExecutionStatistics
 -- <p>The amount of data scanned during the query execution and the amount of time that it took to execute.</p>
--- @param _DataScannedInBytes [Long] <p>The number of bytes in the data that was queried.</p>
--- @param _EngineExecutionTimeInMillis [Long] <p>The number of milliseconds that the query took to execute.</p>
-function M.QueryExecutionStatistics(_DataScannedInBytes, _EngineExecutionTimeInMillis, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating QueryExecutionStatistics")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DataScannedInBytes [Long] <p>The number of bytes in the data that was queried.</p>
+-- * EngineExecutionTimeInMillis [Long] <p>The number of milliseconds that the query took to execute.</p>
+-- @return QueryExecutionStatistics structure as a key-value pair table
+function M.QueryExecutionStatistics(args)
+	assert(args, "You must provdide an argument table when creating QueryExecutionStatistics")
 	local t = { 
-		["DataScannedInBytes"] = _DataScannedInBytes,
-		["EngineExecutionTimeInMillis"] = _EngineExecutionTimeInMillis,
+		["DataScannedInBytes"] = args["DataScannedInBytes"],
+		["EngineExecutionTimeInMillis"] = args["EngineExecutionTimeInMillis"],
 	}
 	asserts.AssertQueryExecutionStatistics(t)
 	return t
@@ -482,8 +530,11 @@ end
 
 --- Create a structure of type DeleteNamedQueryOutput
 --  
-function M.DeleteNamedQueryOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteNamedQueryOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteNamedQueryOutput structure as a key-value pair table
+function M.DeleteNamedQueryOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteNamedQueryOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteNamedQueryOutput(t)
@@ -505,15 +556,18 @@ end
 
 --- Create a structure of type UnprocessedQueryExecutionId
 -- <p>Describes a query execution that failed to process.</p>
--- @param _ErrorCode [ErrorCode] <p>The error code returned when the query execution failed to process, if applicable.</p>
--- @param _ErrorMessage [ErrorMessage] <p>The error message returned when the query execution failed to process, if applicable.</p>
--- @param _QueryExecutionId [QueryExecutionId] <p>The unique identifier of the query execution.</p>
-function M.UnprocessedQueryExecutionId(_ErrorCode, _ErrorMessage, _QueryExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnprocessedQueryExecutionId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] <p>The error code returned when the query execution failed to process, if applicable.</p>
+-- * ErrorMessage [ErrorMessage] <p>The error message returned when the query execution failed to process, if applicable.</p>
+-- * QueryExecutionId [QueryExecutionId] <p>The unique identifier of the query execution.</p>
+-- @return UnprocessedQueryExecutionId structure as a key-value pair table
+function M.UnprocessedQueryExecutionId(args)
+	assert(args, "You must provdide an argument table when creating UnprocessedQueryExecutionId")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["ErrorMessage"] = _ErrorMessage,
-		["QueryExecutionId"] = _QueryExecutionId,
+		["ErrorCode"] = args["ErrorCode"],
+		["ErrorMessage"] = args["ErrorMessage"],
+		["QueryExecutionId"] = args["QueryExecutionId"],
 	}
 	asserts.AssertUnprocessedQueryExecutionId(t)
 	return t
@@ -533,12 +587,15 @@ end
 
 --- Create a structure of type BatchGetQueryExecutionInput
 --  
--- @param _QueryExecutionIds [QueryExecutionIdList] <p>An array of query execution IDs.</p>
--- Required parameter: QueryExecutionIds
-function M.BatchGetQueryExecutionInput(_QueryExecutionIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetQueryExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * QueryExecutionIds [QueryExecutionIdList] <p>An array of query execution IDs.</p>
+-- Required key: QueryExecutionIds
+-- @return BatchGetQueryExecutionInput structure as a key-value pair table
+function M.BatchGetQueryExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetQueryExecutionInput")
 	local t = { 
-		["QueryExecutionIds"] = _QueryExecutionIds,
+		["QueryExecutionIds"] = args["QueryExecutionIds"],
 	}
 	asserts.AssertBatchGetQueryExecutionInput(t)
 	return t
@@ -562,21 +619,24 @@ end
 
 --- Create a structure of type QueryExecution
 -- <p>Information about a single instance of a query execution.</p>
--- @param _Status [QueryExecutionStatus] <p>The completion date, current state, submission time, and state change reason (if applicable) for the query execution.</p>
--- @param _Statistics [QueryExecutionStatistics] <p>The amount of data scanned during the query execution and the amount of time that it took to execute.</p>
--- @param _ResultConfiguration [ResultConfiguration] <p>The location in Amazon S3 where query results were stored and the encryption option, if any, used for query results.</p>
--- @param _QueryExecutionId [QueryExecutionId] <p>The unique identifier for each query execution.</p>
--- @param _QueryExecutionContext [QueryExecutionContext] <p>The database in which the query execution occurred.</p>
--- @param _Query [QueryString] <p>The SQL query statements which the query execution ran.</p>
-function M.QueryExecution(_Status, _Statistics, _ResultConfiguration, _QueryExecutionId, _QueryExecutionContext, _Query, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating QueryExecution")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [QueryExecutionStatus] <p>The completion date, current state, submission time, and state change reason (if applicable) for the query execution.</p>
+-- * Statistics [QueryExecutionStatistics] <p>The amount of data scanned during the query execution and the amount of time that it took to execute.</p>
+-- * ResultConfiguration [ResultConfiguration] <p>The location in Amazon S3 where query results were stored and the encryption option, if any, used for query results.</p>
+-- * QueryExecutionId [QueryExecutionId] <p>The unique identifier for each query execution.</p>
+-- * QueryExecutionContext [QueryExecutionContext] <p>The database in which the query execution occurred.</p>
+-- * Query [QueryString] <p>The SQL query statements which the query execution ran.</p>
+-- @return QueryExecution structure as a key-value pair table
+function M.QueryExecution(args)
+	assert(args, "You must provdide an argument table when creating QueryExecution")
 	local t = { 
-		["Status"] = _Status,
-		["Statistics"] = _Statistics,
-		["ResultConfiguration"] = _ResultConfiguration,
-		["QueryExecutionId"] = _QueryExecutionId,
-		["QueryExecutionContext"] = _QueryExecutionContext,
-		["Query"] = _Query,
+		["Status"] = args["Status"],
+		["Statistics"] = args["Statistics"],
+		["ResultConfiguration"] = args["ResultConfiguration"],
+		["QueryExecutionId"] = args["QueryExecutionId"],
+		["QueryExecutionContext"] = args["QueryExecutionContext"],
+		["Query"] = args["Query"],
 	}
 	asserts.AssertQueryExecution(t)
 	return t
@@ -595,11 +655,14 @@ end
 
 --- Create a structure of type QueryExecutionContext
 -- <p>The database in which the query execution occurs.</p>
--- @param _Database [DatabaseString] <p>The name of the database.</p>
-function M.QueryExecutionContext(_Database, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating QueryExecutionContext")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Database [DatabaseString] <p>The name of the database.</p>
+-- @return QueryExecutionContext structure as a key-value pair table
+function M.QueryExecutionContext(args)
+	assert(args, "You must provdide an argument table when creating QueryExecutionContext")
 	local t = { 
-		["Database"] = _Database,
+		["Database"] = args["Database"],
 	}
 	asserts.AssertQueryExecutionContext(t)
 	return t
@@ -619,13 +682,16 @@ end
 
 --- Create a structure of type TooManyRequestsException
 -- <p>Indicates that the request was throttled.</p>
--- @param _Message [ErrorMessage] 
--- @param _Reason [ThrottleReason] 
-function M.TooManyRequestsException(_Message, _Reason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- * Reason [ThrottleReason] 
+-- @return TooManyRequestsException structure as a key-value pair table
+function M.TooManyRequestsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
 	local t = { 
-		["Message"] = _Message,
-		["Reason"] = _Reason,
+		["Message"] = args["Message"],
+		["Reason"] = args["Reason"],
 	}
 	asserts.AssertTooManyRequestsException(t)
 	return t
@@ -645,13 +711,16 @@ end
 
 --- Create a structure of type GetQueryResultsOutput
 --  
--- @param _NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
--- @param _ResultSet [ResultSet] <p>The results of the query execution.</p>
-function M.GetQueryResultsOutput(_NextToken, _ResultSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetQueryResultsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
+-- * ResultSet [ResultSet] <p>The results of the query execution.</p>
+-- @return GetQueryResultsOutput structure as a key-value pair table
+function M.GetQueryResultsOutput(args)
+	assert(args, "You must provdide an argument table when creating GetQueryResultsOutput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ResultSet"] = _ResultSet,
+		["NextToken"] = args["NextToken"],
+		["ResultSet"] = args["ResultSet"],
 	}
 	asserts.AssertGetQueryResultsOutput(t)
 	return t
@@ -671,13 +740,16 @@ end
 
 --- Create a structure of type BatchGetQueryExecutionOutput
 --  
--- @param _UnprocessedQueryExecutionIds [UnprocessedQueryExecutionIdList] <p>Information about the query executions that failed to run.</p>
--- @param _QueryExecutions [QueryExecutionList] <p>Information about a query execution.</p>
-function M.BatchGetQueryExecutionOutput(_UnprocessedQueryExecutionIds, _QueryExecutions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetQueryExecutionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UnprocessedQueryExecutionIds [UnprocessedQueryExecutionIdList] <p>Information about the query executions that failed to run.</p>
+-- * QueryExecutions [QueryExecutionList] <p>Information about a query execution.</p>
+-- @return BatchGetQueryExecutionOutput structure as a key-value pair table
+function M.BatchGetQueryExecutionOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetQueryExecutionOutput")
 	local t = { 
-		["UnprocessedQueryExecutionIds"] = _UnprocessedQueryExecutionIds,
-		["QueryExecutions"] = _QueryExecutions,
+		["UnprocessedQueryExecutionIds"] = args["UnprocessedQueryExecutionIds"],
+		["QueryExecutions"] = args["QueryExecutions"],
 	}
 	asserts.AssertBatchGetQueryExecutionOutput(t)
 	return t
@@ -697,13 +769,16 @@ end
 
 --- Create a structure of type ListQueryExecutionsInput
 --  
--- @param _NextToken [Token] <p>The token that specifies where to start pagination if a previous request was truncated.</p>
--- @param _MaxResults [MaxQueryExecutionsCount] <p>The maximum number of query executions to return in this request.</p>
-function M.ListQueryExecutionsInput(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListQueryExecutionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [Token] <p>The token that specifies where to start pagination if a previous request was truncated.</p>
+-- * MaxResults [MaxQueryExecutionsCount] <p>The maximum number of query executions to return in this request.</p>
+-- @return ListQueryExecutionsInput structure as a key-value pair table
+function M.ListQueryExecutionsInput(args)
+	assert(args, "You must provdide an argument table when creating ListQueryExecutionsInput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListQueryExecutionsInput(t)
 	return t
@@ -724,15 +799,18 @@ end
 
 --- Create a structure of type UnprocessedNamedQueryId
 -- <p>Information about a named query ID that could not be processed.</p>
--- @param _ErrorCode [ErrorCode] <p>The error code returned when the processing request for the named query failed, if applicable.</p>
--- @param _ErrorMessage [ErrorMessage] <p>The error message returned when the processing request for the named query failed, if applicable.</p>
--- @param _NamedQueryId [NamedQueryId] <p>The unique identifier of the named query.</p>
-function M.UnprocessedNamedQueryId(_ErrorCode, _ErrorMessage, _NamedQueryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnprocessedNamedQueryId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] <p>The error code returned when the processing request for the named query failed, if applicable.</p>
+-- * ErrorMessage [ErrorMessage] <p>The error message returned when the processing request for the named query failed, if applicable.</p>
+-- * NamedQueryId [NamedQueryId] <p>The unique identifier of the named query.</p>
+-- @return UnprocessedNamedQueryId structure as a key-value pair table
+function M.UnprocessedNamedQueryId(args)
+	assert(args, "You must provdide an argument table when creating UnprocessedNamedQueryId")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["ErrorMessage"] = _ErrorMessage,
-		["NamedQueryId"] = _NamedQueryId,
+		["ErrorCode"] = args["ErrorCode"],
+		["ErrorMessage"] = args["ErrorMessage"],
+		["NamedQueryId"] = args["NamedQueryId"],
 	}
 	asserts.AssertUnprocessedNamedQueryId(t)
 	return t
@@ -754,17 +832,20 @@ end
 
 --- Create a structure of type QueryExecutionStatus
 -- <p>The completion date, current state, submission time, and state change reason (if applicable) for the query execution.</p>
--- @param _SubmissionDateTime [Date] <p>The date and time that the query was submitted.</p>
--- @param _State [QueryExecutionState] <p>The state of query execution. <code>SUBMITTED</code> indicates that the query is queued for execution. <code>RUNNING</code> indicates that the query is scanning data and returning results. <code>SUCCEEDED</code> indicates that the query completed without error. <code>FAILED</code> indicates that the query experienced an error and did not complete processing. <code>CANCELLED</code> indicates that user input interrupted query execution.</p>
--- @param _CompletionDateTime [Date] <p>The date and time that the query completed.</p>
--- @param _StateChangeReason [String] <p>Further detail about the status of the query.</p>
-function M.QueryExecutionStatus(_SubmissionDateTime, _State, _CompletionDateTime, _StateChangeReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating QueryExecutionStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubmissionDateTime [Date] <p>The date and time that the query was submitted.</p>
+-- * State [QueryExecutionState] <p>The state of query execution. <code>SUBMITTED</code> indicates that the query is queued for execution. <code>RUNNING</code> indicates that the query is scanning data and returning results. <code>SUCCEEDED</code> indicates that the query completed without error. <code>FAILED</code> indicates that the query experienced an error and did not complete processing. <code>CANCELLED</code> indicates that user input interrupted query execution.</p>
+-- * CompletionDateTime [Date] <p>The date and time that the query completed.</p>
+-- * StateChangeReason [String] <p>Further detail about the status of the query.</p>
+-- @return QueryExecutionStatus structure as a key-value pair table
+function M.QueryExecutionStatus(args)
+	assert(args, "You must provdide an argument table when creating QueryExecutionStatus")
 	local t = { 
-		["SubmissionDateTime"] = _SubmissionDateTime,
-		["State"] = _State,
-		["CompletionDateTime"] = _CompletionDateTime,
-		["StateChangeReason"] = _StateChangeReason,
+		["SubmissionDateTime"] = args["SubmissionDateTime"],
+		["State"] = args["State"],
+		["CompletionDateTime"] = args["CompletionDateTime"],
+		["StateChangeReason"] = args["StateChangeReason"],
 	}
 	asserts.AssertQueryExecutionStatus(t)
 	return t
@@ -785,14 +866,17 @@ end
 
 --- Create a structure of type ResultConfiguration
 -- <p>The location in Amazon S3 where query results are stored and the encryption option, if any, used for query results.</p>
--- @param _EncryptionConfiguration [EncryptionConfiguration] <p>If query results are encrypted in S3, indicates the S3 encryption option used (for example, <code>SSE-KMS</code> or <code>CSE-KMS</code> and key information.</p>
--- @param _OutputLocation [String] <p>The location in S3 where query results are stored.</p>
--- Required parameter: OutputLocation
-function M.ResultConfiguration(_EncryptionConfiguration, _OutputLocation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResultConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EncryptionConfiguration [EncryptionConfiguration] <p>If query results are encrypted in S3, indicates the S3 encryption option used (for example, <code>SSE-KMS</code> or <code>CSE-KMS</code> and key information.</p>
+-- * OutputLocation [String] <p>The location in S3 where query results are stored.</p>
+-- Required key: OutputLocation
+-- @return ResultConfiguration structure as a key-value pair table
+function M.ResultConfiguration(args)
+	assert(args, "You must provdide an argument table when creating ResultConfiguration")
 	local t = { 
-		["EncryptionConfiguration"] = _EncryptionConfiguration,
-		["OutputLocation"] = _OutputLocation,
+		["EncryptionConfiguration"] = args["EncryptionConfiguration"],
+		["OutputLocation"] = args["OutputLocation"],
 	}
 	asserts.AssertResultConfiguration(t)
 	return t
@@ -810,8 +894,11 @@ end
 
 --- Create a structure of type StopQueryExecutionOutput
 --  
-function M.StopQueryExecutionOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopQueryExecutionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StopQueryExecutionOutput structure as a key-value pair table
+function M.StopQueryExecutionOutput(args)
+	assert(args, "You must provdide an argument table when creating StopQueryExecutionOutput")
 	local t = { 
 	}
 	asserts.AssertStopQueryExecutionOutput(t)
@@ -831,11 +918,14 @@ end
 
 --- Create a structure of type CreateNamedQueryOutput
 --  
--- @param _NamedQueryId [NamedQueryId] <p>The unique ID of the query.</p>
-function M.CreateNamedQueryOutput(_NamedQueryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateNamedQueryOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NamedQueryId [NamedQueryId] <p>The unique ID of the query.</p>
+-- @return CreateNamedQueryOutput structure as a key-value pair table
+function M.CreateNamedQueryOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateNamedQueryOutput")
 	local t = { 
-		["NamedQueryId"] = _NamedQueryId,
+		["NamedQueryId"] = args["NamedQueryId"],
 	}
 	asserts.AssertCreateNamedQueryOutput(t)
 	return t
@@ -854,11 +944,14 @@ end
 
 --- Create a structure of type Datum
 -- <p>A piece of data (a field in the table).</p>
--- @param _VarCharValue [datumString] <p>The value of the datum.</p>
-function M.Datum(_VarCharValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Datum")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VarCharValue [datumString] <p>The value of the datum.</p>
+-- @return Datum structure as a key-value pair table
+function M.Datum(args)
+	assert(args, "You must provdide an argument table when creating Datum")
 	local t = { 
-		["VarCharValue"] = _VarCharValue,
+		["VarCharValue"] = args["VarCharValue"],
 	}
 	asserts.AssertDatum(t)
 	return t
@@ -878,12 +971,15 @@ end
 
 --- Create a structure of type BatchGetNamedQueryInput
 --  
--- @param _NamedQueryIds [NamedQueryIdList] <p>An array of query IDs.</p>
--- Required parameter: NamedQueryIds
-function M.BatchGetNamedQueryInput(_NamedQueryIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetNamedQueryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NamedQueryIds [NamedQueryIdList] <p>An array of query IDs.</p>
+-- Required key: NamedQueryIds
+-- @return BatchGetNamedQueryInput structure as a key-value pair table
+function M.BatchGetNamedQueryInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetNamedQueryInput")
 	local t = { 
-		["NamedQueryIds"] = _NamedQueryIds,
+		["NamedQueryIds"] = args["NamedQueryIds"],
 	}
 	asserts.AssertBatchGetNamedQueryInput(t)
 	return t
@@ -903,12 +999,15 @@ end
 
 --- Create a structure of type DeleteNamedQueryInput
 --  
--- @param _NamedQueryId [NamedQueryId] <p>The unique ID of the query to delete.</p>
--- Required parameter: NamedQueryId
-function M.DeleteNamedQueryInput(_NamedQueryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteNamedQueryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NamedQueryId [NamedQueryId] <p>The unique ID of the query to delete.</p>
+-- Required key: NamedQueryId
+-- @return DeleteNamedQueryInput structure as a key-value pair table
+function M.DeleteNamedQueryInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteNamedQueryInput")
 	local t = { 
-		["NamedQueryId"] = _NamedQueryId,
+		["NamedQueryId"] = args["NamedQueryId"],
 	}
 	asserts.AssertDeleteNamedQueryInput(t)
 	return t
@@ -928,13 +1027,16 @@ end
 
 --- Create a structure of type ListNamedQueriesOutput
 --  
--- @param _NamedQueryIds [NamedQueryIdList] <p>The list of unique query IDs.</p>
--- @param _NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
-function M.ListNamedQueriesOutput(_NamedQueryIds, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListNamedQueriesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NamedQueryIds [NamedQueryIdList] <p>The list of unique query IDs.</p>
+-- * NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
+-- @return ListNamedQueriesOutput structure as a key-value pair table
+function M.ListNamedQueriesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListNamedQueriesOutput")
 	local t = { 
-		["NamedQueryIds"] = _NamedQueryIds,
-		["NextToken"] = _NextToken,
+		["NamedQueryIds"] = args["NamedQueryIds"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListNamedQueriesOutput(t)
 	return t
@@ -954,13 +1056,16 @@ end
 
 --- Create a structure of type BatchGetNamedQueryOutput
 --  
--- @param _UnprocessedNamedQueryIds [UnprocessedNamedQueryIdList] <p>Information about provided query IDs.</p>
--- @param _NamedQueries [NamedQueryList] <p>Information about the named query IDs submitted.</p>
-function M.BatchGetNamedQueryOutput(_UnprocessedNamedQueryIds, _NamedQueries, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetNamedQueryOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UnprocessedNamedQueryIds [UnprocessedNamedQueryIdList] <p>Information about provided query IDs.</p>
+-- * NamedQueries [NamedQueryList] <p>Information about the named query IDs submitted.</p>
+-- @return BatchGetNamedQueryOutput structure as a key-value pair table
+function M.BatchGetNamedQueryOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetNamedQueryOutput")
 	local t = { 
-		["UnprocessedNamedQueryIds"] = _UnprocessedNamedQueryIds,
-		["NamedQueries"] = _NamedQueries,
+		["UnprocessedNamedQueryIds"] = args["UnprocessedNamedQueryIds"],
+		["NamedQueries"] = args["NamedQueries"],
 	}
 	asserts.AssertBatchGetNamedQueryOutput(t)
 	return t
@@ -979,11 +1084,14 @@ end
 
 --- Create a structure of type ResultSetMetadata
 -- <p>The metadata that describes the column structure and data types of a table of query results.</p>
--- @param _ColumnInfo [ColumnInfoList] <p>Information about the columns in a query execution result.</p>
-function M.ResultSetMetadata(_ColumnInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResultSetMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ColumnInfo [ColumnInfoList] <p>Information about the columns in a query execution result.</p>
+-- @return ResultSetMetadata structure as a key-value pair table
+function M.ResultSetMetadata(args)
+	assert(args, "You must provdide an argument table when creating ResultSetMetadata")
 	local t = { 
-		["ColumnInfo"] = _ColumnInfo,
+		["ColumnInfo"] = args["ColumnInfo"],
 	}
 	asserts.AssertResultSetMetadata(t)
 	return t
@@ -1013,31 +1121,34 @@ end
 
 --- Create a structure of type ColumnInfo
 -- <p>Information about the columns in a query execution result.</p>
--- @param _Scale [Integer] <p>For <code>DECIMAL</code> data types, specifies the total number of digits in the fractional part of the value. Defaults to 0.</p>
--- @param _Name [String] <p>The name of the column.</p>
--- @param _Nullable [ColumnNullable] <p>Indicates the column's nullable status.</p>
--- @param _TableName [String] <p>The table name for the query results.</p>
--- @param _Precision [Integer] <p>For <code>DECIMAL</code> data types, specifies the total number of digits, up to 38. For performance reasons, we recommend up to 18 digits.</p>
--- @param _Label [String] <p>A column label.</p>
--- @param _CaseSensitive [Boolean] <p>Indicates whether values in the column are case-sensitive.</p>
--- @param _SchemaName [String] <p>The schema name (database name) to which the query results belong.</p>
--- @param _Type [String] <p>The data type of the column.</p>
--- @param _CatalogName [String] <p>The catalog to which the query results belong.</p>
--- Required parameter: Name
--- Required parameter: Type
-function M.ColumnInfo(_Scale, _Name, _Nullable, _TableName, _Precision, _Label, _CaseSensitive, _SchemaName, _Type, _CatalogName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ColumnInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Scale [Integer] <p>For <code>DECIMAL</code> data types, specifies the total number of digits in the fractional part of the value. Defaults to 0.</p>
+-- * Name [String] <p>The name of the column.</p>
+-- * Nullable [ColumnNullable] <p>Indicates the column's nullable status.</p>
+-- * TableName [String] <p>The table name for the query results.</p>
+-- * Precision [Integer] <p>For <code>DECIMAL</code> data types, specifies the total number of digits, up to 38. For performance reasons, we recommend up to 18 digits.</p>
+-- * Label [String] <p>A column label.</p>
+-- * CaseSensitive [Boolean] <p>Indicates whether values in the column are case-sensitive.</p>
+-- * SchemaName [String] <p>The schema name (database name) to which the query results belong.</p>
+-- * Type [String] <p>The data type of the column.</p>
+-- * CatalogName [String] <p>The catalog to which the query results belong.</p>
+-- Required key: Name
+-- Required key: Type
+-- @return ColumnInfo structure as a key-value pair table
+function M.ColumnInfo(args)
+	assert(args, "You must provdide an argument table when creating ColumnInfo")
 	local t = { 
-		["Scale"] = _Scale,
-		["Name"] = _Name,
-		["Nullable"] = _Nullable,
-		["TableName"] = _TableName,
-		["Precision"] = _Precision,
-		["Label"] = _Label,
-		["CaseSensitive"] = _CaseSensitive,
-		["SchemaName"] = _SchemaName,
-		["Type"] = _Type,
-		["CatalogName"] = _CatalogName,
+		["Scale"] = args["Scale"],
+		["Name"] = args["Name"],
+		["Nullable"] = args["Nullable"],
+		["TableName"] = args["TableName"],
+		["Precision"] = args["Precision"],
+		["Label"] = args["Label"],
+		["CaseSensitive"] = args["CaseSensitive"],
+		["SchemaName"] = args["SchemaName"],
+		["Type"] = args["Type"],
+		["CatalogName"] = args["CatalogName"],
 	}
 	asserts.AssertColumnInfo(t)
 	return t
@@ -1057,12 +1168,15 @@ end
 
 --- Create a structure of type StopQueryExecutionInput
 --  
--- @param _QueryExecutionId [QueryExecutionId] <p>The unique ID of the query execution to stop.</p>
--- Required parameter: QueryExecutionId
-function M.StopQueryExecutionInput(_QueryExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopQueryExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * QueryExecutionId [QueryExecutionId] <p>The unique ID of the query execution to stop.</p>
+-- Required key: QueryExecutionId
+-- @return StopQueryExecutionInput structure as a key-value pair table
+function M.StopQueryExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating StopQueryExecutionInput")
 	local t = { 
-		["QueryExecutionId"] = _QueryExecutionId,
+		["QueryExecutionId"] = args["QueryExecutionId"],
 	}
 	asserts.AssertStopQueryExecutionInput(t)
 	return t
@@ -1081,11 +1195,14 @@ end
 
 --- Create a structure of type Row
 -- <p>The rows that comprise a query result table.</p>
--- @param _Data [datumList] <p>The data that populates a row in a query result table.</p>
-function M.Row(_Data, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Row")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Data [datumList] <p>The data that populates a row in a query result table.</p>
+-- @return Row structure as a key-value pair table
+function M.Row(args)
+	assert(args, "You must provdide an argument table when creating Row")
 	local t = { 
-		["Data"] = _Data,
+		["Data"] = args["Data"],
 	}
 	asserts.AssertRow(t)
 	return t

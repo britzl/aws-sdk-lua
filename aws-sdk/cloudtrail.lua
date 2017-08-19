@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type StopLoggingRequest
 -- <p>Passes the request to CloudTrail to stop logging AWS API calls for the specified account.</p>
--- @param _Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging AWS API calls. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- Required parameter: Name
-function M.StopLoggingRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopLoggingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail will stop logging AWS API calls. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- Required key: Name
+-- @return StopLoggingRequest structure as a key-value pair table
+function M.StopLoggingRequest(args)
+	assert(args, "You must provdide an argument table when creating StopLoggingRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertStopLoggingRequest(t)
 	return t
@@ -58,8 +61,11 @@ end
 
 --- Create a structure of type UnsupportedOperationException
 -- <p>This exception is thrown when the requested operation is not supported.</p>
-function M.UnsupportedOperationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedOperationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UnsupportedOperationException structure as a key-value pair table
+function M.UnsupportedOperationException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedOperationException")
 	local t = { 
 	}
 	asserts.AssertUnsupportedOperationException(t)
@@ -78,8 +84,11 @@ end
 
 --- Create a structure of type AddTagsResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
-function M.AddTagsResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AddTagsResponse structure as a key-value pair table
+function M.AddTagsResponse(args)
+	assert(args, "You must provdide an argument table when creating AddTagsResponse")
 	local t = { 
 	}
 	asserts.AssertAddTagsResponse(t)
@@ -101,14 +110,17 @@ end
 
 --- Create a structure of type ListTagsRequest
 -- <p>Specifies a list of trail tags to return.</p>
--- @param _ResourceIdList [ResourceIdList] <p>Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- @param _NextToken [String] <p>Reserved for future use.</p>
--- Required parameter: ResourceIdList
-function M.ListTagsRequest(_ResourceIdList, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceIdList [ResourceIdList] <p>Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * NextToken [String] <p>Reserved for future use.</p>
+-- Required key: ResourceIdList
+-- @return ListTagsRequest structure as a key-value pair table
+function M.ListTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsRequest")
 	local t = { 
-		["ResourceIdList"] = _ResourceIdList,
-		["NextToken"] = _NextToken,
+		["ResourceIdList"] = args["ResourceIdList"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListTagsRequest(t)
 	return t
@@ -129,14 +141,17 @@ end
 
 --- Create a structure of type RemoveTagsRequest
 -- <p>Specifies the tags to remove from a trail.</p>
--- @param _ResourceId [String] <p>Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- @param _TagsList [TagsList] <p>Specifies a list of tags to be removed.</p>
--- Required parameter: ResourceId
-function M.RemoveTagsRequest(_ResourceId, _TagsList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [String] <p>Specifies the ARN of the trail from which tags should be removed. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * TagsList [TagsList] <p>Specifies a list of tags to be removed.</p>
+-- Required key: ResourceId
+-- @return RemoveTagsRequest structure as a key-value pair table
+function M.RemoveTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsRequest")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["TagsList"] = _TagsList,
+		["ResourceId"] = args["ResourceId"],
+		["TagsList"] = args["TagsList"],
 	}
 	asserts.AssertRemoveTagsRequest(t)
 	return t
@@ -154,8 +169,11 @@ end
 
 --- Create a structure of type TrailNotProvidedException
 -- <p>This exception is deprecated.</p>
-function M.TrailNotProvidedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrailNotProvidedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TrailNotProvidedException structure as a key-value pair table
+function M.TrailNotProvidedException(args)
+	assert(args, "You must provdide an argument table when creating TrailNotProvidedException")
 	local t = { 
 	}
 	asserts.AssertTrailNotProvidedException(t)
@@ -176,12 +194,15 @@ end
 
 --- Create a structure of type DeleteTrailRequest
 -- <p>The request that specifies the name of a trail to delete.</p>
--- @param _Name [String] <p>Specifies the name or the CloudTrail ARN of the trail to be deleted. The format of a trail ARN is: <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- Required parameter: Name
-function M.DeleteTrailRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTrailRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail to be deleted. The format of a trail ARN is: <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- Required key: Name
+-- @return DeleteTrailRequest structure as a key-value pair table
+function M.DeleteTrailRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteTrailRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteTrailRequest(t)
 	return t
@@ -199,8 +220,11 @@ end
 
 --- Create a structure of type InsufficientEncryptionPolicyException
 -- <p>This exception is thrown when the policy on the S3 bucket or KMS key is not sufficient.</p>
-function M.InsufficientEncryptionPolicyException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientEncryptionPolicyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InsufficientEncryptionPolicyException structure as a key-value pair table
+function M.InsufficientEncryptionPolicyException(args)
+	assert(args, "You must provdide an argument table when creating InsufficientEncryptionPolicyException")
 	local t = { 
 	}
 	asserts.AssertInsufficientEncryptionPolicyException(t)
@@ -219,8 +243,11 @@ end
 
 --- Create a structure of type OperationNotPermittedException
 -- <p>This exception is thrown when the requested operation is not permitted.</p>
-function M.OperationNotPermittedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationNotPermittedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return OperationNotPermittedException structure as a key-value pair table
+function M.OperationNotPermittedException(args)
+	assert(args, "You must provdide an argument table when creating OperationNotPermittedException")
 	local t = { 
 	}
 	asserts.AssertOperationNotPermittedException(t)
@@ -239,8 +266,11 @@ end
 
 --- Create a structure of type StartLoggingResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
-function M.StartLoggingResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartLoggingResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StartLoggingResponse structure as a key-value pair table
+function M.StartLoggingResponse(args)
+	assert(args, "You must provdide an argument table when creating StartLoggingResponse")
 	local t = { 
 	}
 	asserts.AssertStartLoggingResponse(t)
@@ -261,13 +291,16 @@ end
 
 --- Create a structure of type DescribeTrailsRequest
 -- <p>Returns information about the trail.</p>
--- @param _trailNameList [TrailNameList] <p>Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p> <p>If an empty list is specified, information for the trail in the current region is returned.</p> <ul> <li> <p>If an empty list is specified and <code>IncludeShadowTrails</code> is false, then information for all trails in the current region is returned.</p> </li> <li> <p>If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.</p> </li> </ul> <note> <p>If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current region. To return information about a trail in another region, you must specify its trail ARN.</p> </note>
--- @param _includeShadowTrails [Boolean] <p>Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region. The default is true.</p>
-function M.DescribeTrailsRequest(_trailNameList, _includeShadowTrails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrailsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * trailNameList [TrailNameList] <p>Specifies a list of trail names, trail ARNs, or both, of the trails to describe. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p> <p>If an empty list is specified, information for the trail in the current region is returned.</p> <ul> <li> <p>If an empty list is specified and <code>IncludeShadowTrails</code> is false, then information for all trails in the current region is returned.</p> </li> <li> <p>If an empty list is specified and IncludeShadowTrails is null or true, then information for all trails in the current region and any associated shadow trails in other regions is returned.</p> </li> </ul> <note> <p>If one or more trail names are specified, information is returned only if the names match the names of trails belonging only to the current region. To return information about a trail in another region, you must specify its trail ARN.</p> </note>
+-- * includeShadowTrails [Boolean] <p>Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region. The default is true.</p>
+-- @return DescribeTrailsRequest structure as a key-value pair table
+function M.DescribeTrailsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrailsRequest")
 	local t = { 
-		["trailNameList"] = _trailNameList,
-		["includeShadowTrails"] = _includeShadowTrails,
+		["trailNameList"] = args["trailNameList"],
+		["includeShadowTrails"] = args["includeShadowTrails"],
 	}
 	asserts.AssertDescribeTrailsRequest(t)
 	return t
@@ -287,12 +320,15 @@ end
 
 --- Create a structure of type GetTrailStatusRequest
 -- <p>The name of a trail about which you want the current status.</p>
--- @param _Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which you are requesting status. To get the status of a shadow trail (a replication of the trail in another region), you must specify its ARN. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- Required parameter: Name
-function M.GetTrailStatusRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTrailStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which you are requesting status. To get the status of a shadow trail (a replication of the trail in another region), you must specify its ARN. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- Required key: Name
+-- @return GetTrailStatusRequest structure as a key-value pair table
+function M.GetTrailStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating GetTrailStatusRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertGetTrailStatusRequest(t)
 	return t
@@ -310,8 +346,11 @@ end
 
 --- Create a structure of type MaximumNumberOfTrailsExceededException
 -- <p>This exception is thrown when the maximum number of trails is reached.</p>
-function M.MaximumNumberOfTrailsExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaximumNumberOfTrailsExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MaximumNumberOfTrailsExceededException structure as a key-value pair table
+function M.MaximumNumberOfTrailsExceededException(args)
+	assert(args, "You must provdide an argument table when creating MaximumNumberOfTrailsExceededException")
 	local t = { 
 	}
 	asserts.AssertMaximumNumberOfTrailsExceededException(t)
@@ -330,8 +369,11 @@ end
 
 --- Create a structure of type ResourceTypeNotSupportedException
 -- <p>This exception is thrown when the specified resource type is not supported by CloudTrail.</p>
-function M.ResourceTypeNotSupportedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceTypeNotSupportedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceTypeNotSupportedException structure as a key-value pair table
+function M.ResourceTypeNotSupportedException(args)
+	assert(args, "You must provdide an argument table when creating ResourceTypeNotSupportedException")
 	local t = { 
 	}
 	asserts.AssertResourceTypeNotSupportedException(t)
@@ -364,37 +406,40 @@ end
 
 --- Create a structure of type Trail
 -- <p>The settings for a trail.</p>
--- @param _IncludeGlobalServiceEvents [Boolean] <p>Set to <b>True</b> to include AWS API calls from AWS global services such as IAM. Otherwise, <b>False</b>.</p>
--- @param _Name [String] <p>Name of the trail set by calling <a>CreateTrail</a>. The maximum length is 128 characters.</p>
--- @param _S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.The maximum length is 200 characters.</p>
--- @param _TrailARN [String] <p>Specifies the ARN of the trail. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- @param _LogFileValidationEnabled [Boolean] <p>Specifies whether log file validation is enabled.</p>
--- @param _SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code> </p>
--- @param _IsMultiRegionTrail [Boolean] <p>Specifies whether the trail belongs only to one region or exists in all regions.</p>
--- @param _HasCustomEventSelectors [Boolean] <p>Specifies if the trail has custom event selectors.</p>
--- @param _S3BucketName [String] <p>Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
--- @param _CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
--- @param _KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
--- @param _CloudWatchLogsLogGroupArn [String] <p>Specifies an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered.</p>
--- @param _SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
--- @param _HomeRegion [String] <p>The region in which the trail was created.</p>
-function M.Trail(_IncludeGlobalServiceEvents, _Name, _S3KeyPrefix, _TrailARN, _LogFileValidationEnabled, _SnsTopicARN, _IsMultiRegionTrail, _HasCustomEventSelectors, _S3BucketName, _CloudWatchLogsRoleArn, _KmsKeyId, _CloudWatchLogsLogGroupArn, _SnsTopicName, _HomeRegion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Trail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IncludeGlobalServiceEvents [Boolean] <p>Set to <b>True</b> to include AWS API calls from AWS global services such as IAM. Otherwise, <b>False</b>.</p>
+-- * Name [String] <p>Name of the trail set by calling <a>CreateTrail</a>. The maximum length is 128 characters.</p>
+-- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.The maximum length is 200 characters.</p>
+-- * TrailARN [String] <p>Specifies the ARN of the trail. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * LogFileValidationEnabled [Boolean] <p>Specifies whether log file validation is enabled.</p>
+-- * SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code> </p>
+-- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail belongs only to one region or exists in all regions.</p>
+-- * HasCustomEventSelectors [Boolean] <p>Specifies if the trail has custom event selectors.</p>
+-- * S3BucketName [String] <p>Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
+-- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
+-- * KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
+-- * CloudWatchLogsLogGroupArn [String] <p>Specifies an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered.</p>
+-- * SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
+-- * HomeRegion [String] <p>The region in which the trail was created.</p>
+-- @return Trail structure as a key-value pair table
+function M.Trail(args)
+	assert(args, "You must provdide an argument table when creating Trail")
 	local t = { 
-		["IncludeGlobalServiceEvents"] = _IncludeGlobalServiceEvents,
-		["Name"] = _Name,
-		["S3KeyPrefix"] = _S3KeyPrefix,
-		["TrailARN"] = _TrailARN,
-		["LogFileValidationEnabled"] = _LogFileValidationEnabled,
-		["SnsTopicARN"] = _SnsTopicARN,
-		["IsMultiRegionTrail"] = _IsMultiRegionTrail,
-		["HasCustomEventSelectors"] = _HasCustomEventSelectors,
-		["S3BucketName"] = _S3BucketName,
-		["CloudWatchLogsRoleArn"] = _CloudWatchLogsRoleArn,
-		["KmsKeyId"] = _KmsKeyId,
-		["CloudWatchLogsLogGroupArn"] = _CloudWatchLogsLogGroupArn,
-		["SnsTopicName"] = _SnsTopicName,
-		["HomeRegion"] = _HomeRegion,
+		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
+		["Name"] = args["Name"],
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["TrailARN"] = args["TrailARN"],
+		["LogFileValidationEnabled"] = args["LogFileValidationEnabled"],
+		["SnsTopicARN"] = args["SnsTopicARN"],
+		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
+		["HasCustomEventSelectors"] = args["HasCustomEventSelectors"],
+		["S3BucketName"] = args["S3BucketName"],
+		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
+		["SnsTopicName"] = args["SnsTopicName"],
+		["HomeRegion"] = args["HomeRegion"],
 	}
 	asserts.AssertTrail(t)
 	return t
@@ -412,8 +457,11 @@ end
 
 --- Create a structure of type KmsKeyDisabledException
 -- <p>This exception is deprecated.</p>
-function M.KmsKeyDisabledException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KmsKeyDisabledException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return KmsKeyDisabledException structure as a key-value pair table
+function M.KmsKeyDisabledException(args)
+	assert(args, "You must provdide an argument table when creating KmsKeyDisabledException")
 	local t = { 
 	}
 	asserts.AssertKmsKeyDisabledException(t)
@@ -432,8 +480,11 @@ end
 
 --- Create a structure of type InvalidEventSelectorsException
 -- <p>This exception is thrown when the <code>PutEventSelectors</code> operation is called with an invalid number of event selectors, data resources, or an invalid value for a parameter:</p> <ul> <li> <p>Specify a valid number of event selectors (1 to 5) for a trail.</p> </li> <li> <p>Specify a valid number of data resources (1 to 250) for an event selector.</p> </li> <li> <p>Specify a valid value for a parameter. For example, specifying the <code>ReadWriteType</code> parameter with a value of <code>read-only</code> is invalid.</p> </li> </ul>
-function M.InvalidEventSelectorsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidEventSelectorsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidEventSelectorsException structure as a key-value pair table
+function M.InvalidEventSelectorsException(args)
+	assert(args, "You must provdide an argument table when creating InvalidEventSelectorsException")
 	local t = { 
 	}
 	asserts.AssertInvalidEventSelectorsException(t)
@@ -455,14 +506,17 @@ end
 
 --- Create a structure of type Tag
 -- <p>A custom key-value pair associated with a resource such as a CloudTrail trail.</p>
--- @param _Value [String] <p>The value in a key-value pair of a tag. The value must be no longer than 256 Unicode characters.</p>
--- @param _Key [String] <p>The key in a key-value pair. The key must be must be no longer than 128 Unicode characters. The key must be unique for the resource to which it applies.</p>
--- Required parameter: Key
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [String] <p>The value in a key-value pair of a tag. The value must be no longer than 256 Unicode characters.</p>
+-- * Key [String] <p>The key in a key-value pair. The key must be must be no longer than 128 Unicode characters. The key must be unique for the resource to which it applies.</p>
+-- Required key: Key
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -487,23 +541,26 @@ end
 
 --- Create a structure of type Event
 -- <p>Contains information about an event that was returned by a lookup request. The result includes a representation of a CloudTrail event.</p>
--- @param _EventId [String] <p>The CloudTrail ID of the event returned.</p>
--- @param _Username [String] <p>A user name or role name of the requester that called the API in the event returned.</p>
--- @param _EventTime [Date] <p>The date and time of the event returned.</p>
--- @param _CloudTrailEvent [String] <p>A JSON string that contains a representation of the event returned.</p>
--- @param _EventName [String] <p>The name of the event returned.</p>
--- @param _EventSource [String] <p>The AWS service that the request was made to.</p>
--- @param _Resources [ResourceList] <p>A list of resources referenced by the event returned.</p>
-function M.Event(_EventId, _Username, _EventTime, _CloudTrailEvent, _EventName, _EventSource, _Resources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Event")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventId [String] <p>The CloudTrail ID of the event returned.</p>
+-- * Username [String] <p>A user name or role name of the requester that called the API in the event returned.</p>
+-- * EventTime [Date] <p>The date and time of the event returned.</p>
+-- * CloudTrailEvent [String] <p>A JSON string that contains a representation of the event returned.</p>
+-- * EventName [String] <p>The name of the event returned.</p>
+-- * EventSource [String] <p>The AWS service that the request was made to.</p>
+-- * Resources [ResourceList] <p>A list of resources referenced by the event returned.</p>
+-- @return Event structure as a key-value pair table
+function M.Event(args)
+	assert(args, "You must provdide an argument table when creating Event")
 	local t = { 
-		["EventId"] = _EventId,
-		["Username"] = _Username,
-		["EventTime"] = _EventTime,
-		["CloudTrailEvent"] = _CloudTrailEvent,
-		["EventName"] = _EventName,
-		["EventSource"] = _EventSource,
-		["Resources"] = _Resources,
+		["EventId"] = args["EventId"],
+		["Username"] = args["Username"],
+		["EventTime"] = args["EventTime"],
+		["CloudTrailEvent"] = args["CloudTrailEvent"],
+		["EventName"] = args["EventName"],
+		["EventSource"] = args["EventSource"],
+		["Resources"] = args["Resources"],
 	}
 	asserts.AssertEvent(t)
 	return t
@@ -521,8 +578,11 @@ end
 
 --- Create a structure of type TrailAlreadyExistsException
 -- <p>This exception is thrown when the specified trail already exists.</p>
-function M.TrailAlreadyExistsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrailAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TrailAlreadyExistsException structure as a key-value pair table
+function M.TrailAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating TrailAlreadyExistsException")
 	local t = { 
 	}
 	asserts.AssertTrailAlreadyExistsException(t)
@@ -541,8 +601,11 @@ end
 
 --- Create a structure of type CloudTrailARNInvalidException
 -- <p>This exception is thrown when an operation is called with an invalid trail ARN. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
-function M.CloudTrailARNInvalidException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudTrailARNInvalidException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CloudTrailARNInvalidException structure as a key-value pair table
+function M.CloudTrailARNInvalidException(args)
+	assert(args, "You must provdide an argument table when creating CloudTrailARNInvalidException")
 	local t = { 
 	}
 	asserts.AssertCloudTrailARNInvalidException(t)
@@ -561,8 +624,11 @@ end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>Invalid token or token that was previously used in a request with different parameters. This exception is thrown if the token is invalid.</p>
-function M.InvalidNextTokenException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidNextTokenException structure as a key-value pair table
+function M.InvalidNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
 	local t = { 
 	}
 	asserts.AssertInvalidNextTokenException(t)
@@ -593,31 +659,34 @@ end
 
 --- Create a structure of type CreateTrailRequest
 -- <p>Specifies the settings for each trail.</p>
--- @param _IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
--- @param _Name [String] <p>Specifies the name of the trail. The name must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul>
--- @param _S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>. The maximum length is 200 characters.</p>
--- @param _KmsKeyId [String] <p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- @param _IsMultiRegionTrail [Boolean] <p>Specifies whether the trail is created in the current region or in all regions. The default is false.</p>
--- @param _S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
--- @param _CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
--- @param _CloudWatchLogsLogGroupArn [String] <p>Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.</p>
--- @param _SnsTopicName [String] <p>Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.</p>
--- @param _EnableLogFileValidation [Boolean] <p>Specifies whether log file integrity validation is enabled. The default is false.</p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note>
--- Required parameter: Name
--- Required parameter: S3BucketName
-function M.CreateTrailRequest(_IncludeGlobalServiceEvents, _Name, _S3KeyPrefix, _KmsKeyId, _IsMultiRegionTrail, _S3BucketName, _CloudWatchLogsRoleArn, _CloudWatchLogsLogGroupArn, _SnsTopicName, _EnableLogFileValidation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrailRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
+-- * Name [String] <p>Specifies the name of the trail. The name must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul>
+-- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>. The maximum length is 200 characters.</p>
+-- * KmsKeyId [String] <p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail is created in the current region or in all regions. The default is false.</p>
+-- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
+-- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
+-- * CloudWatchLogsLogGroupArn [String] <p>Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.</p>
+-- * SnsTopicName [String] <p>Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.</p>
+-- * EnableLogFileValidation [Boolean] <p>Specifies whether log file integrity validation is enabled. The default is false.</p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note>
+-- Required key: Name
+-- Required key: S3BucketName
+-- @return CreateTrailRequest structure as a key-value pair table
+function M.CreateTrailRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateTrailRequest")
 	local t = { 
-		["IncludeGlobalServiceEvents"] = _IncludeGlobalServiceEvents,
-		["Name"] = _Name,
-		["S3KeyPrefix"] = _S3KeyPrefix,
-		["KmsKeyId"] = _KmsKeyId,
-		["IsMultiRegionTrail"] = _IsMultiRegionTrail,
-		["S3BucketName"] = _S3BucketName,
-		["CloudWatchLogsRoleArn"] = _CloudWatchLogsRoleArn,
-		["CloudWatchLogsLogGroupArn"] = _CloudWatchLogsLogGroupArn,
-		["SnsTopicName"] = _SnsTopicName,
-		["EnableLogFileValidation"] = _EnableLogFileValidation,
+		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
+		["Name"] = args["Name"],
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
+		["S3BucketName"] = args["S3BucketName"],
+		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
+		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
+		["SnsTopicName"] = args["SnsTopicName"],
+		["EnableLogFileValidation"] = args["EnableLogFileValidation"],
 	}
 	asserts.AssertCreateTrailRequest(t)
 	return t
@@ -635,8 +704,11 @@ end
 
 --- Create a structure of type InvalidCloudWatchLogsLogGroupArnException
 -- <p>This exception is thrown when the provided CloudWatch log group is not valid.</p>
-function M.InvalidCloudWatchLogsLogGroupArnException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCloudWatchLogsLogGroupArnException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidCloudWatchLogsLogGroupArnException structure as a key-value pair table
+function M.InvalidCloudWatchLogsLogGroupArnException(args)
+	assert(args, "You must provdide an argument table when creating InvalidCloudWatchLogsLogGroupArnException")
 	local t = { 
 	}
 	asserts.AssertInvalidCloudWatchLogsLogGroupArnException(t)
@@ -657,13 +729,16 @@ end
 
 --- Create a structure of type PutEventSelectorsResponse
 --  
--- @param _EventSelectors [EventSelectors] <p>Specifies the event selectors configured for your trail.</p>
--- @param _TrailARN [String] <p>Specifies the ARN of the trail that was updated with event selectors. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
-function M.PutEventSelectorsResponse(_EventSelectors, _TrailARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutEventSelectorsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventSelectors [EventSelectors] <p>Specifies the event selectors configured for your trail.</p>
+-- * TrailARN [String] <p>Specifies the ARN of the trail that was updated with event selectors. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- @return PutEventSelectorsResponse structure as a key-value pair table
+function M.PutEventSelectorsResponse(args)
+	assert(args, "You must provdide an argument table when creating PutEventSelectorsResponse")
 	local t = { 
-		["EventSelectors"] = _EventSelectors,
-		["TrailARN"] = _TrailARN,
+		["EventSelectors"] = args["EventSelectors"],
+		["TrailARN"] = args["TrailARN"],
 	}
 	asserts.AssertPutEventSelectorsResponse(t)
 	return t
@@ -681,8 +756,11 @@ end
 
 --- Create a structure of type InvalidParameterCombinationException
 -- <p>This exception is thrown when the combination of parameters provided is not valid.</p>
-function M.InvalidParameterCombinationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterCombinationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidParameterCombinationException structure as a key-value pair table
+function M.InvalidParameterCombinationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterCombinationException")
 	local t = { 
 	}
 	asserts.AssertInvalidParameterCombinationException(t)
@@ -701,8 +779,11 @@ end
 
 --- Create a structure of type InvalidLookupAttributesException
 -- <p>Occurs when an invalid lookup attribute is specified.</p>
-function M.InvalidLookupAttributesException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLookupAttributesException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidLookupAttributesException structure as a key-value pair table
+function M.InvalidLookupAttributesException(args)
+	assert(args, "You must provdide an argument table when creating InvalidLookupAttributesException")
 	local t = { 
 	}
 	asserts.AssertInvalidLookupAttributesException(t)
@@ -733,33 +814,36 @@ end
 
 --- Create a structure of type UpdateTrailResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param _IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
--- @param _Name [String] <p>Specifies the name of the trail.</p>
--- @param _S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.</p>
--- @param _TrailARN [String] <p>Specifies the ARN of the trail that was updated. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- @param _LogFileValidationEnabled [Boolean] <p>Specifies whether log file integrity validation is enabled.</p>
--- @param _SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code> </p>
--- @param _IsMultiRegionTrail [Boolean] <p>Specifies whether the trail exists in one region or in all regions.</p>
--- @param _S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files.</p>
--- @param _CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
--- @param _KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
--- @param _CloudWatchLogsLogGroupArn [String] <p>Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.</p>
--- @param _SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
-function M.UpdateTrailResponse(_IncludeGlobalServiceEvents, _Name, _S3KeyPrefix, _TrailARN, _LogFileValidationEnabled, _SnsTopicARN, _IsMultiRegionTrail, _S3BucketName, _CloudWatchLogsRoleArn, _KmsKeyId, _CloudWatchLogsLogGroupArn, _SnsTopicName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTrailResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
+-- * Name [String] <p>Specifies the name of the trail.</p>
+-- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.</p>
+-- * TrailARN [String] <p>Specifies the ARN of the trail that was updated. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * LogFileValidationEnabled [Boolean] <p>Specifies whether log file integrity validation is enabled.</p>
+-- * SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code> </p>
+-- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail exists in one region or in all regions.</p>
+-- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files.</p>
+-- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
+-- * KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
+-- * CloudWatchLogsLogGroupArn [String] <p>Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.</p>
+-- * SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
+-- @return UpdateTrailResponse structure as a key-value pair table
+function M.UpdateTrailResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateTrailResponse")
 	local t = { 
-		["IncludeGlobalServiceEvents"] = _IncludeGlobalServiceEvents,
-		["Name"] = _Name,
-		["S3KeyPrefix"] = _S3KeyPrefix,
-		["TrailARN"] = _TrailARN,
-		["LogFileValidationEnabled"] = _LogFileValidationEnabled,
-		["SnsTopicARN"] = _SnsTopicARN,
-		["IsMultiRegionTrail"] = _IsMultiRegionTrail,
-		["S3BucketName"] = _S3BucketName,
-		["CloudWatchLogsRoleArn"] = _CloudWatchLogsRoleArn,
-		["KmsKeyId"] = _KmsKeyId,
-		["CloudWatchLogsLogGroupArn"] = _CloudWatchLogsLogGroupArn,
-		["SnsTopicName"] = _SnsTopicName,
+		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
+		["Name"] = args["Name"],
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["TrailARN"] = args["TrailARN"],
+		["LogFileValidationEnabled"] = args["LogFileValidationEnabled"],
+		["SnsTopicARN"] = args["SnsTopicARN"],
+		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
+		["S3BucketName"] = args["S3BucketName"],
+		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
+		["SnsTopicName"] = args["SnsTopicName"],
 	}
 	asserts.AssertUpdateTrailResponse(t)
 	return t
@@ -777,8 +861,11 @@ end
 
 --- Create a structure of type InvalidSnsTopicNameException
 -- <p>This exception is thrown when the provided SNS topic name is not valid.</p>
-function M.InvalidSnsTopicNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSnsTopicNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidSnsTopicNameException structure as a key-value pair table
+function M.InvalidSnsTopicNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSnsTopicNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidSnsTopicNameException(t)
@@ -802,19 +889,22 @@ end
 
 --- Create a structure of type LookupEventsRequest
 -- <p>Contains a request for LookupEvents.</p>
--- @param _LookupAttributes [LookupAttributesList] <p>Contains a list of lookup attributes. Currently the list can contain only one item.</p>
--- @param _EndTime [Date] <p>Specifies that only events that occur before or at the specified time are returned. If the specified end time is before the specified start time, an error is returned.</p>
--- @param _NextToken [NextToken] <p>The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.</p>
--- @param _MaxResults [MaxResults] <p>The number of events to return. Possible values are 1 through 50. The default is 10.</p>
--- @param _StartTime [Date] <p>Specifies that only events that occur after or at the specified time are returned. If the specified start time is after the specified end time, an error is returned.</p>
-function M.LookupEventsRequest(_LookupAttributes, _EndTime, _NextToken, _MaxResults, _StartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LookupEventsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LookupAttributes [LookupAttributesList] <p>Contains a list of lookup attributes. Currently the list can contain only one item.</p>
+-- * EndTime [Date] <p>Specifies that only events that occur before or at the specified time are returned. If the specified end time is before the specified start time, an error is returned.</p>
+-- * NextToken [NextToken] <p>The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.</p>
+-- * MaxResults [MaxResults] <p>The number of events to return. Possible values are 1 through 50. The default is 10.</p>
+-- * StartTime [Date] <p>Specifies that only events that occur after or at the specified time are returned. If the specified start time is after the specified end time, an error is returned.</p>
+-- @return LookupEventsRequest structure as a key-value pair table
+function M.LookupEventsRequest(args)
+	assert(args, "You must provdide an argument table when creating LookupEventsRequest")
 	local t = { 
-		["LookupAttributes"] = _LookupAttributes,
-		["EndTime"] = _EndTime,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["StartTime"] = _StartTime,
+		["LookupAttributes"] = args["LookupAttributes"],
+		["EndTime"] = args["EndTime"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["StartTime"] = args["StartTime"],
 	}
 	asserts.AssertLookupEventsRequest(t)
 	return t
@@ -832,8 +922,11 @@ end
 
 --- Create a structure of type StopLoggingResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
-function M.StopLoggingResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopLoggingResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StopLoggingResponse structure as a key-value pair table
+function M.StopLoggingResponse(args)
+	assert(args, "You must provdide an argument table when creating StopLoggingResponse")
 	local t = { 
 	}
 	asserts.AssertStopLoggingResponse(t)
@@ -852,8 +945,11 @@ end
 
 --- Create a structure of type InvalidTimeRangeException
 -- <p>Occurs if the timestamp values are invalid. Either the start time occurs after the end time or the time range is outside the range of possible values.</p>
-function M.InvalidTimeRangeException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTimeRangeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTimeRangeException structure as a key-value pair table
+function M.InvalidTimeRangeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTimeRangeException")
 	local t = { 
 	}
 	asserts.AssertInvalidTimeRangeException(t)
@@ -872,8 +968,11 @@ end
 
 --- Create a structure of type TrailNotFoundException
 -- <p>This exception is thrown when the trail with the given name is not found.</p>
-function M.TrailNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrailNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TrailNotFoundException structure as a key-value pair table
+function M.TrailNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating TrailNotFoundException")
 	local t = { 
 	}
 	asserts.AssertTrailNotFoundException(t)
@@ -892,8 +991,11 @@ end
 
 --- Create a structure of type InvalidS3BucketNameException
 -- <p>This exception is thrown when the provided S3 bucket name is not valid.</p>
-function M.InvalidS3BucketNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3BucketNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidS3BucketNameException structure as a key-value pair table
+function M.InvalidS3BucketNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidS3BucketNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidS3BucketNameException(t)
@@ -912,8 +1014,11 @@ end
 
 --- Create a structure of type S3BucketDoesNotExistException
 -- <p>This exception is thrown when the specified S3 bucket does not exist.</p>
-function M.S3BucketDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3BucketDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return S3BucketDoesNotExistException structure as a key-value pair table
+function M.S3BucketDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating S3BucketDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertS3BucketDoesNotExistException(t)
@@ -943,30 +1048,33 @@ end
 
 --- Create a structure of type UpdateTrailRequest
 -- <p>Specifies settings to update for the trail.</p>
--- @param _IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
--- @param _Name [String] <p>Specifies the name of the trail or trail ARN. If <code>Name</code> is a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If <code>Name</code> is a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- @param _S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>. The maximum length is 200 characters.</p>
--- @param _KmsKeyId [String] <p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul>
--- @param _IsMultiRegionTrail [Boolean] <p>Specifies whether the trail applies only to the current region or to all regions. The default is false. If the trail exists only in the current region and this value is set to true, shadow trails (replications of the trail) will be created in the other regions. If the trail exists in all regions and this value is set to false, the trail will remain in the region where it was created, and its shadow trails in other regions will be deleted.</p>
--- @param _S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
--- @param _CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
--- @param _CloudWatchLogsLogGroupArn [String] <p>Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.</p>
--- @param _SnsTopicName [String] <p>Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.</p>
--- @param _EnableLogFileValidation [Boolean] <p>Specifies whether log file validation is enabled. The default is false.</p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note>
--- Required parameter: Name
-function M.UpdateTrailRequest(_IncludeGlobalServiceEvents, _Name, _S3KeyPrefix, _KmsKeyId, _IsMultiRegionTrail, _S3BucketName, _CloudWatchLogsRoleArn, _CloudWatchLogsLogGroupArn, _SnsTopicName, _EnableLogFileValidation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTrailRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
+-- * Name [String] <p>Specifies the name of the trail or trail ARN. If <code>Name</code> is a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If <code>Name</code> is a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>. The maximum length is 200 characters.</p>
+-- * KmsKeyId [String] <p>Specifies the KMS key ID to use to encrypt the logs delivered by CloudTrail. The value can be an alias name prefixed by "alias/", a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.</p> <p>Examples:</p> <ul> <li> <p>alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:alias/MyAliasName</p> </li> <li> <p>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</p> </li> <li> <p>12345678-1234-1234-1234-123456789012</p> </li> </ul>
+-- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail applies only to the current region or to all regions. The default is false. If the trail exists only in the current region and this value is set to true, shadow trails (replications of the trail) will be created in the other regions. If the trail exists in all regions and this value is set to false, the trail will remain in the region where it was created, and its shadow trails in other regions will be deleted.</p>
+-- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files. See <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket Naming Requirements</a>.</p>
+-- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
+-- * CloudWatchLogsLogGroupArn [String] <p>Specifies a log group name using an Amazon Resource Name (ARN), a unique identifier that represents the log group to which CloudTrail logs will be delivered. Not required unless you specify CloudWatchLogsRoleArn.</p>
+-- * SnsTopicName [String] <p>Specifies the name of the Amazon SNS topic defined for notification of log file delivery. The maximum length is 256 characters.</p>
+-- * EnableLogFileValidation [Boolean] <p>Specifies whether log file validation is enabled. The default is false.</p> <note> <p>When you disable log file integrity validation, the chain of digest files is broken after one hour. CloudTrail will not create digest files for log files that were delivered during a period in which log file integrity validation was disabled. For example, if you enable log file integrity validation at noon on January 1, disable it at noon on January 2, and re-enable it at noon on January 10, digest files will not be created for the log files delivered from noon on January 2 to noon on January 10. The same applies whenever you stop CloudTrail logging or delete a trail.</p> </note>
+-- Required key: Name
+-- @return UpdateTrailRequest structure as a key-value pair table
+function M.UpdateTrailRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateTrailRequest")
 	local t = { 
-		["IncludeGlobalServiceEvents"] = _IncludeGlobalServiceEvents,
-		["Name"] = _Name,
-		["S3KeyPrefix"] = _S3KeyPrefix,
-		["KmsKeyId"] = _KmsKeyId,
-		["IsMultiRegionTrail"] = _IsMultiRegionTrail,
-		["S3BucketName"] = _S3BucketName,
-		["CloudWatchLogsRoleArn"] = _CloudWatchLogsRoleArn,
-		["CloudWatchLogsLogGroupArn"] = _CloudWatchLogsLogGroupArn,
-		["SnsTopicName"] = _SnsTopicName,
-		["EnableLogFileValidation"] = _EnableLogFileValidation,
+		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
+		["Name"] = args["Name"],
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
+		["S3BucketName"] = args["S3BucketName"],
+		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
+		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
+		["SnsTopicName"] = args["SnsTopicName"],
+		["EnableLogFileValidation"] = args["EnableLogFileValidation"],
 	}
 	asserts.AssertUpdateTrailRequest(t)
 	return t
@@ -987,15 +1095,18 @@ end
 
 --- Create a structure of type EventSelector
 -- <p>Use event selectors to specify whether you want your trail to log management and/or data events. When an event occurs in your account, CloudTrail evaluates the event selector for all trails. For each trail, if the event matches any event selector, the trail processes and logs the event. If the event doesn't match any event selector, the trail doesn't log the event.</p> <p>You can configure up to five event selectors for a trail.</p>
--- @param _IncludeManagementEvents [Boolean] <p>Specify if you want your event selector to include management events for your trail.</p> <p> For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events">Management Events</a> in the <i>AWS CloudTrail User Guide</i>.</p> <p>By default, the value is <code>true</code>.</p>
--- @param _DataResources [DataResources] <p>CloudTrail supports logging only data events for S3 objects. You can specify up to 250 S3 buckets and object prefixes for a trail.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events">Data Events</a> in the <i>AWS CloudTrail User Guide</i>.</p>
--- @param _ReadWriteType [ReadWriteType] <p>Specify if you want your trail to log read-only events, write-only events, or all. For example, the EC2 <code>GetConsoleOutput</code> is a read-only API operation and <code>RunInstances</code> is a write-only API operation.</p> <p> By default, the value is <code>All</code>.</p>
-function M.EventSelector(_IncludeManagementEvents, _DataResources, _ReadWriteType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventSelector")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IncludeManagementEvents [Boolean] <p>Specify if you want your event selector to include management events for your trail.</p> <p> For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events">Management Events</a> in the <i>AWS CloudTrail User Guide</i>.</p> <p>By default, the value is <code>true</code>.</p>
+-- * DataResources [DataResources] <p>CloudTrail supports logging only data events for S3 objects. You can specify up to 250 S3 buckets and object prefixes for a trail.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events">Data Events</a> in the <i>AWS CloudTrail User Guide</i>.</p>
+-- * ReadWriteType [ReadWriteType] <p>Specify if you want your trail to log read-only events, write-only events, or all. For example, the EC2 <code>GetConsoleOutput</code> is a read-only API operation and <code>RunInstances</code> is a write-only API operation.</p> <p> By default, the value is <code>All</code>.</p>
+-- @return EventSelector structure as a key-value pair table
+function M.EventSelector(args)
+	assert(args, "You must provdide an argument table when creating EventSelector")
 	local t = { 
-		["IncludeManagementEvents"] = _IncludeManagementEvents,
-		["DataResources"] = _DataResources,
-		["ReadWriteType"] = _ReadWriteType,
+		["IncludeManagementEvents"] = args["IncludeManagementEvents"],
+		["DataResources"] = args["DataResources"],
+		["ReadWriteType"] = args["ReadWriteType"],
 	}
 	asserts.AssertEventSelector(t)
 	return t
@@ -1013,8 +1124,11 @@ end
 
 --- Create a structure of type InsufficientS3BucketPolicyException
 -- <p>This exception is thrown when the policy on the S3 bucket is not sufficient.</p>
-function M.InsufficientS3BucketPolicyException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientS3BucketPolicyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InsufficientS3BucketPolicyException structure as a key-value pair table
+function M.InsufficientS3BucketPolicyException(args)
+	assert(args, "You must provdide an argument table when creating InsufficientS3BucketPolicyException")
 	local t = { 
 	}
 	asserts.AssertInsufficientS3BucketPolicyException(t)
@@ -1034,11 +1148,14 @@ end
 
 --- Create a structure of type DescribeTrailsResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param _trailList [TrailList] <p>The list of trail objects.</p>
-function M.DescribeTrailsResponse(_trailList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrailsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * trailList [TrailList] <p>The list of trail objects.</p>
+-- @return DescribeTrailsResponse structure as a key-value pair table
+function M.DescribeTrailsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrailsResponse")
 	local t = { 
-		["trailList"] = _trailList,
+		["trailList"] = args["trailList"],
 	}
 	asserts.AssertDescribeTrailsResponse(t)
 	return t
@@ -1056,8 +1173,11 @@ end
 
 --- Create a structure of type InvalidCloudWatchLogsRoleArnException
 -- <p>This exception is thrown when the provided role is not valid.</p>
-function M.InvalidCloudWatchLogsRoleArnException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCloudWatchLogsRoleArnException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidCloudWatchLogsRoleArnException structure as a key-value pair table
+function M.InvalidCloudWatchLogsRoleArnException(args)
+	assert(args, "You must provdide an argument table when creating InvalidCloudWatchLogsRoleArnException")
 	local t = { 
 	}
 	asserts.AssertInvalidCloudWatchLogsRoleArnException(t)
@@ -1076,8 +1196,11 @@ end
 
 --- Create a structure of type CloudWatchLogsDeliveryUnavailableException
 -- <p>Cannot set a CloudWatch Logs delivery for this region.</p>
-function M.CloudWatchLogsDeliveryUnavailableException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchLogsDeliveryUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CloudWatchLogsDeliveryUnavailableException structure as a key-value pair table
+function M.CloudWatchLogsDeliveryUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating CloudWatchLogsDeliveryUnavailableException")
 	local t = { 
 	}
 	asserts.AssertCloudWatchLogsDeliveryUnavailableException(t)
@@ -1096,8 +1219,11 @@ end
 
 --- Create a structure of type InvalidTrailNameException
 -- <p>This exception is thrown when the provided trail name is not valid. Trail names must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul>
-function M.InvalidTrailNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTrailNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTrailNameException structure as a key-value pair table
+function M.InvalidTrailNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTrailNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidTrailNameException(t)
@@ -1118,13 +1244,16 @@ end
 
 --- Create a structure of type ListPublicKeysResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param _NextToken [String] <p>Reserved for future use.</p>
--- @param _PublicKeyList [PublicKeyList] <p>Contains an array of PublicKey objects.</p> <note> <p>The returned public keys may have validity time ranges that overlap.</p> </note>
-function M.ListPublicKeysResponse(_NextToken, _PublicKeyList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPublicKeysResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>Reserved for future use.</p>
+-- * PublicKeyList [PublicKeyList] <p>Contains an array of PublicKey objects.</p> <note> <p>The returned public keys may have validity time ranges that overlap.</p> </note>
+-- @return ListPublicKeysResponse structure as a key-value pair table
+function M.ListPublicKeysResponse(args)
+	assert(args, "You must provdide an argument table when creating ListPublicKeysResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["PublicKeyList"] = _PublicKeyList,
+		["NextToken"] = args["NextToken"],
+		["PublicKeyList"] = args["PublicKeyList"],
 	}
 	asserts.AssertListPublicKeysResponse(t)
 	return t
@@ -1142,8 +1271,11 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>This exception is thrown when the specified resource is not found.</p>
-function M.ResourceNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
 	}
 	asserts.AssertResourceNotFoundException(t)
@@ -1162,8 +1294,11 @@ end
 
 --- Create a structure of type DeleteTrailResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
-function M.DeleteTrailResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTrailResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteTrailResponse structure as a key-value pair table
+function M.DeleteTrailResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteTrailResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteTrailResponse(t)
@@ -1184,13 +1319,16 @@ end
 
 --- Create a structure of type ResourceTag
 -- <p>A resource tag.</p>
--- @param _ResourceId [String] <p>Specifies the ARN of the resource.</p>
--- @param _TagsList [TagsList] <p>A list of tags.</p>
-function M.ResourceTag(_ResourceId, _TagsList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceTag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [String] <p>Specifies the ARN of the resource.</p>
+-- * TagsList [TagsList] <p>A list of tags.</p>
+-- @return ResourceTag structure as a key-value pair table
+function M.ResourceTag(args)
+	assert(args, "You must provdide an argument table when creating ResourceTag")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["TagsList"] = _TagsList,
+		["ResourceId"] = args["ResourceId"],
+		["TagsList"] = args["TagsList"],
 	}
 	asserts.AssertResourceTag(t)
 	return t
@@ -1225,43 +1363,46 @@ end
 
 --- Create a structure of type GetTrailStatusResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param _LatestNotificationError [String] <p>Displays any Amazon SNS error that CloudTrail encountered when attempting to send a notification. For more information about Amazon SNS errors, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/welcome.html">Amazon SNS Developer Guide</a>. </p>
--- @param _LatestCloudWatchLogsDeliveryTime [Date] <p>Displays the most recent date and time when CloudTrail delivered logs to CloudWatch Logs.</p>
--- @param _LatestNotificationTime [Date] <p>Specifies the date and time of the most recent Amazon SNS notification that CloudTrail has written a new log file to an account's Amazon S3 bucket.</p>
--- @param _LatestNotificationAttemptSucceeded [String] <p>This field is deprecated.</p>
--- @param _LatestDeliveryError [String] <p>Displays any Amazon S3 error that CloudTrail encountered when attempting to deliver log files to the designated bucket. For more information see the topic <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html">Error Responses</a> in the Amazon S3 API Reference. </p> <note> <p>This error occurs only when there is a problem with the destination S3 bucket and will not occur for timeouts. To resolve the issue, create a new bucket and call <code>UpdateTrail</code> to specify the new bucket, or fix the existing objects so that CloudTrail can again write to the bucket.</p> </note>
--- @param _LatestDeliveryTime [Date] <p>Specifies the date and time that CloudTrail last delivered log files to an account's Amazon S3 bucket.</p>
--- @param _TimeLoggingStarted [String] <p>This field is deprecated.</p>
--- @param _LatestDigestDeliveryError [String] <p>Displays any Amazon S3 error that CloudTrail encountered when attempting to deliver a digest file to the designated bucket. For more information see the topic <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html">Error Responses</a> in the Amazon S3 API Reference. </p> <note> <p>This error occurs only when there is a problem with the destination S3 bucket and will not occur for timeouts. To resolve the issue, create a new bucket and call <code>UpdateTrail</code> to specify the new bucket, or fix the existing objects so that CloudTrail can again write to the bucket.</p> </note>
--- @param _LatestDeliveryAttemptSucceeded [String] <p>This field is deprecated.</p>
--- @param _IsLogging [Boolean] <p>Whether the CloudTrail is currently logging AWS API calls.</p>
--- @param _LatestCloudWatchLogsDeliveryError [String] <p>Displays any CloudWatch Logs error that CloudTrail encountered when attempting to deliver logs to CloudWatch Logs.</p>
--- @param _StartLoggingTime [Date] <p>Specifies the most recent date and time when CloudTrail started recording API calls for an AWS account.</p>
--- @param _LatestDigestDeliveryTime [Date] <p>Specifies the date and time that CloudTrail last delivered a digest file to an account's Amazon S3 bucket.</p>
--- @param _StopLoggingTime [Date] <p>Specifies the most recent date and time when CloudTrail stopped recording API calls for an AWS account.</p>
--- @param _LatestNotificationAttemptTime [String] <p>This field is deprecated.</p>
--- @param _LatestDeliveryAttemptTime [String] <p>This field is deprecated.</p>
--- @param _TimeLoggingStopped [String] <p>This field is deprecated.</p>
-function M.GetTrailStatusResponse(_LatestNotificationError, _LatestCloudWatchLogsDeliveryTime, _LatestNotificationTime, _LatestNotificationAttemptSucceeded, _LatestDeliveryError, _LatestDeliveryTime, _TimeLoggingStarted, _LatestDigestDeliveryError, _LatestDeliveryAttemptSucceeded, _IsLogging, _LatestCloudWatchLogsDeliveryError, _StartLoggingTime, _LatestDigestDeliveryTime, _StopLoggingTime, _LatestNotificationAttemptTime, _LatestDeliveryAttemptTime, _TimeLoggingStopped, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTrailStatusResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestNotificationError [String] <p>Displays any Amazon SNS error that CloudTrail encountered when attempting to send a notification. For more information about Amazon SNS errors, see the <a href="http://docs.aws.amazon.com/sns/latest/dg/welcome.html">Amazon SNS Developer Guide</a>. </p>
+-- * LatestCloudWatchLogsDeliveryTime [Date] <p>Displays the most recent date and time when CloudTrail delivered logs to CloudWatch Logs.</p>
+-- * LatestNotificationTime [Date] <p>Specifies the date and time of the most recent Amazon SNS notification that CloudTrail has written a new log file to an account's Amazon S3 bucket.</p>
+-- * LatestNotificationAttemptSucceeded [String] <p>This field is deprecated.</p>
+-- * LatestDeliveryError [String] <p>Displays any Amazon S3 error that CloudTrail encountered when attempting to deliver log files to the designated bucket. For more information see the topic <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html">Error Responses</a> in the Amazon S3 API Reference. </p> <note> <p>This error occurs only when there is a problem with the destination S3 bucket and will not occur for timeouts. To resolve the issue, create a new bucket and call <code>UpdateTrail</code> to specify the new bucket, or fix the existing objects so that CloudTrail can again write to the bucket.</p> </note>
+-- * LatestDeliveryTime [Date] <p>Specifies the date and time that CloudTrail last delivered log files to an account's Amazon S3 bucket.</p>
+-- * TimeLoggingStarted [String] <p>This field is deprecated.</p>
+-- * LatestDigestDeliveryError [String] <p>Displays any Amazon S3 error that CloudTrail encountered when attempting to deliver a digest file to the designated bucket. For more information see the topic <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html">Error Responses</a> in the Amazon S3 API Reference. </p> <note> <p>This error occurs only when there is a problem with the destination S3 bucket and will not occur for timeouts. To resolve the issue, create a new bucket and call <code>UpdateTrail</code> to specify the new bucket, or fix the existing objects so that CloudTrail can again write to the bucket.</p> </note>
+-- * LatestDeliveryAttemptSucceeded [String] <p>This field is deprecated.</p>
+-- * IsLogging [Boolean] <p>Whether the CloudTrail is currently logging AWS API calls.</p>
+-- * LatestCloudWatchLogsDeliveryError [String] <p>Displays any CloudWatch Logs error that CloudTrail encountered when attempting to deliver logs to CloudWatch Logs.</p>
+-- * StartLoggingTime [Date] <p>Specifies the most recent date and time when CloudTrail started recording API calls for an AWS account.</p>
+-- * LatestDigestDeliveryTime [Date] <p>Specifies the date and time that CloudTrail last delivered a digest file to an account's Amazon S3 bucket.</p>
+-- * StopLoggingTime [Date] <p>Specifies the most recent date and time when CloudTrail stopped recording API calls for an AWS account.</p>
+-- * LatestNotificationAttemptTime [String] <p>This field is deprecated.</p>
+-- * LatestDeliveryAttemptTime [String] <p>This field is deprecated.</p>
+-- * TimeLoggingStopped [String] <p>This field is deprecated.</p>
+-- @return GetTrailStatusResponse structure as a key-value pair table
+function M.GetTrailStatusResponse(args)
+	assert(args, "You must provdide an argument table when creating GetTrailStatusResponse")
 	local t = { 
-		["LatestNotificationError"] = _LatestNotificationError,
-		["LatestCloudWatchLogsDeliveryTime"] = _LatestCloudWatchLogsDeliveryTime,
-		["LatestNotificationTime"] = _LatestNotificationTime,
-		["LatestNotificationAttemptSucceeded"] = _LatestNotificationAttemptSucceeded,
-		["LatestDeliveryError"] = _LatestDeliveryError,
-		["LatestDeliveryTime"] = _LatestDeliveryTime,
-		["TimeLoggingStarted"] = _TimeLoggingStarted,
-		["LatestDigestDeliveryError"] = _LatestDigestDeliveryError,
-		["LatestDeliveryAttemptSucceeded"] = _LatestDeliveryAttemptSucceeded,
-		["IsLogging"] = _IsLogging,
-		["LatestCloudWatchLogsDeliveryError"] = _LatestCloudWatchLogsDeliveryError,
-		["StartLoggingTime"] = _StartLoggingTime,
-		["LatestDigestDeliveryTime"] = _LatestDigestDeliveryTime,
-		["StopLoggingTime"] = _StopLoggingTime,
-		["LatestNotificationAttemptTime"] = _LatestNotificationAttemptTime,
-		["LatestDeliveryAttemptTime"] = _LatestDeliveryAttemptTime,
-		["TimeLoggingStopped"] = _TimeLoggingStopped,
+		["LatestNotificationError"] = args["LatestNotificationError"],
+		["LatestCloudWatchLogsDeliveryTime"] = args["LatestCloudWatchLogsDeliveryTime"],
+		["LatestNotificationTime"] = args["LatestNotificationTime"],
+		["LatestNotificationAttemptSucceeded"] = args["LatestNotificationAttemptSucceeded"],
+		["LatestDeliveryError"] = args["LatestDeliveryError"],
+		["LatestDeliveryTime"] = args["LatestDeliveryTime"],
+		["TimeLoggingStarted"] = args["TimeLoggingStarted"],
+		["LatestDigestDeliveryError"] = args["LatestDigestDeliveryError"],
+		["LatestDeliveryAttemptSucceeded"] = args["LatestDeliveryAttemptSucceeded"],
+		["IsLogging"] = args["IsLogging"],
+		["LatestCloudWatchLogsDeliveryError"] = args["LatestCloudWatchLogsDeliveryError"],
+		["StartLoggingTime"] = args["StartLoggingTime"],
+		["LatestDigestDeliveryTime"] = args["LatestDigestDeliveryTime"],
+		["StopLoggingTime"] = args["StopLoggingTime"],
+		["LatestNotificationAttemptTime"] = args["LatestNotificationAttemptTime"],
+		["LatestDeliveryAttemptTime"] = args["LatestDeliveryAttemptTime"],
+		["TimeLoggingStopped"] = args["TimeLoggingStopped"],
 	}
 	asserts.AssertGetTrailStatusResponse(t)
 	return t
@@ -1279,8 +1420,11 @@ end
 
 --- Create a structure of type InvalidTokenException
 -- <p>Reserved for future use.</p>
-function M.InvalidTokenException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTokenException structure as a key-value pair table
+function M.InvalidTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTokenException")
 	local t = { 
 	}
 	asserts.AssertInvalidTokenException(t)
@@ -1299,8 +1443,11 @@ end
 
 --- Create a structure of type InvalidTagParameterException
 -- <p>This exception is thrown when the key or value specified for the tag does not match the regular expression <code>^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$</code>.</p>
-function M.InvalidTagParameterException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTagParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTagParameterException structure as a key-value pair table
+function M.InvalidTagParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTagParameterException")
 	local t = { 
 	}
 	asserts.AssertInvalidTagParameterException(t)
@@ -1321,13 +1468,16 @@ end
 
 --- Create a structure of type LookupEventsResponse
 -- <p>Contains a response to a LookupEvents action.</p>
--- @param _NextToken [NextToken] <p>The token to use to get the next page of results after a previous API call. If the token does not appear, there are no more results to return. The token must be passed in with the same parameters as the previous call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.</p>
--- @param _Events [EventsList] <p>A list of events returned based on the lookup attributes specified and the CloudTrail event. The events list is sorted by time. The most recent event is listed first.</p>
-function M.LookupEventsResponse(_NextToken, _Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LookupEventsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use to get the next page of results after a previous API call. If the token does not appear, there are no more results to return. The token must be passed in with the same parameters as the previous call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.</p>
+-- * Events [EventsList] <p>A list of events returned based on the lookup attributes specified and the CloudTrail event. The events list is sorted by time. The most recent event is listed first.</p>
+-- @return LookupEventsResponse structure as a key-value pair table
+function M.LookupEventsResponse(args)
+	assert(args, "You must provdide an argument table when creating LookupEventsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Events"] = _Events,
+		["NextToken"] = args["NextToken"],
+		["Events"] = args["Events"],
 	}
 	asserts.AssertLookupEventsResponse(t)
 	return t
@@ -1345,8 +1495,11 @@ end
 
 --- Create a structure of type InvalidMaxResultsException
 -- <p>This exception is thrown if the limit specified is invalid.</p>
-function M.InvalidMaxResultsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidMaxResultsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidMaxResultsException structure as a key-value pair table
+function M.InvalidMaxResultsException(args)
+	assert(args, "You must provdide an argument table when creating InvalidMaxResultsException")
 	local t = { 
 	}
 	asserts.AssertInvalidMaxResultsException(t)
@@ -1367,13 +1520,16 @@ end
 
 --- Create a structure of type DataResource
 -- <p>The Amazon S3 objects that you specify in your event selectors for your trail to log data events. Data events are object-level API operations that access S3 objects, such as <code>GetObject</code>, <code>DeleteObject</code>, and <code>PutObject</code>. You can specify up to 250 S3 buckets and object prefixes for a trail. </p> <p>Example</p> <ol> <li> <p>You create an event selector for a trail and specify an S3 bucket and an empty prefix, such as <code>arn:aws:s3:::bucket-1/</code>.</p> </li> <li> <p>You upload an image file to <code>bucket-1</code>.</p> </li> <li> <p>The <code>PutObject</code> API operation occurs on an object in the S3 bucket that you specified in the event selector. The trail processes and logs the event.</p> </li> <li> <p>You upload another image file to a different S3 bucket named <code>arn:aws:s3:::bucket-2</code>.</p> </li> <li> <p>The event occurs on an object in an S3 bucket that you didn't specify in the event selector. The trail doesn’t log the event.</p> </li> </ol>
--- @param _Values [DataResourceValues] <p>A list of ARN-like strings for the specified S3 objects.</p> <p>To log data events for all objects in an S3 bucket, specify the bucket and an empty object prefix such as <code>arn:aws:s3:::bucket-1/</code>. The trail logs data events for all objects in this S3 bucket.</p> <p>To log data events for specific objects, specify the S3 bucket and object prefix such as <code>arn:aws:s3:::bucket-1/example-images</code>. The trail logs data events for objects in this S3 bucket that match the prefix.</p>
--- @param _Type [String] <p>The resource type in which you want to log data events. You can specify only the following value: <code>AWS::S3::Object</code>.</p>
-function M.DataResource(_Values, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DataResource")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [DataResourceValues] <p>A list of ARN-like strings for the specified S3 objects.</p> <p>To log data events for all objects in an S3 bucket, specify the bucket and an empty object prefix such as <code>arn:aws:s3:::bucket-1/</code>. The trail logs data events for all objects in this S3 bucket.</p> <p>To log data events for specific objects, specify the S3 bucket and object prefix such as <code>arn:aws:s3:::bucket-1/example-images</code>. The trail logs data events for objects in this S3 bucket that match the prefix.</p>
+-- * Type [String] <p>The resource type in which you want to log data events. You can specify only the following value: <code>AWS::S3::Object</code>.</p>
+-- @return DataResource structure as a key-value pair table
+function M.DataResource(args)
+	assert(args, "You must provdide an argument table when creating DataResource")
 	local t = { 
-		["Values"] = _Values,
-		["Type"] = _Type,
+		["Values"] = args["Values"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertDataResource(t)
 	return t
@@ -1391,8 +1547,11 @@ end
 
 --- Create a structure of type KmsException
 -- <p>This exception is thrown when there is an issue with the specified KMS key and the trail can’t be updated.</p>
-function M.KmsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KmsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return KmsException structure as a key-value pair table
+function M.KmsException(args)
+	assert(args, "You must provdide an argument table when creating KmsException")
 	local t = { 
 	}
 	asserts.AssertKmsException(t)
@@ -1414,15 +1573,18 @@ end
 
 --- Create a structure of type ListPublicKeysRequest
 -- <p>Requests the public keys for a specified time range.</p>
--- @param _EndTime [Date] <p>Optionally specifies, in UTC, the end of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used.</p>
--- @param _NextToken [String] <p>Reserved for future use.</p>
--- @param _StartTime [Date] <p>Optionally specifies, in UTC, the start of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used, and the current public key is returned.</p>
-function M.ListPublicKeysRequest(_EndTime, _NextToken, _StartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPublicKeysRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndTime [Date] <p>Optionally specifies, in UTC, the end of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used.</p>
+-- * NextToken [String] <p>Reserved for future use.</p>
+-- * StartTime [Date] <p>Optionally specifies, in UTC, the start of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used, and the current public key is returned.</p>
+-- @return ListPublicKeysRequest structure as a key-value pair table
+function M.ListPublicKeysRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPublicKeysRequest")
 	local t = { 
-		["EndTime"] = _EndTime,
-		["NextToken"] = _NextToken,
-		["StartTime"] = _StartTime,
+		["EndTime"] = args["EndTime"],
+		["NextToken"] = args["NextToken"],
+		["StartTime"] = args["StartTime"],
 	}
 	asserts.AssertListPublicKeysRequest(t)
 	return t
@@ -1442,12 +1604,15 @@ end
 
 --- Create a structure of type GetEventSelectorsRequest
 --  
--- @param _TrailName [String] <p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- Required parameter: TrailName
-function M.GetEventSelectorsRequest(_TrailName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetEventSelectorsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrailName [String] <p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- Required key: TrailName
+-- @return GetEventSelectorsRequest structure as a key-value pair table
+function M.GetEventSelectorsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetEventSelectorsRequest")
 	local t = { 
-		["TrailName"] = _TrailName,
+		["TrailName"] = args["TrailName"],
 	}
 	asserts.AssertGetEventSelectorsRequest(t)
 	return t
@@ -1465,8 +1630,11 @@ end
 
 --- Create a structure of type TagsLimitExceededException
 -- <p>The number of tags per trail has exceeded the permitted amount. Currently, the limit is 50.</p>
-function M.TagsLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagsLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TagsLimitExceededException structure as a key-value pair table
+function M.TagsLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating TagsLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertTagsLimitExceededException(t)
@@ -1487,13 +1655,16 @@ end
 
 --- Create a structure of type GetEventSelectorsResponse
 --  
--- @param _EventSelectors [EventSelectors] <p>The event selectors that are configured for the trail.</p>
--- @param _TrailARN [String] <p>The specified trail ARN that has the event selectors.</p>
-function M.GetEventSelectorsResponse(_EventSelectors, _TrailARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetEventSelectorsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventSelectors [EventSelectors] <p>The event selectors that are configured for the trail.</p>
+-- * TrailARN [String] <p>The specified trail ARN that has the event selectors.</p>
+-- @return GetEventSelectorsResponse structure as a key-value pair table
+function M.GetEventSelectorsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetEventSelectorsResponse")
 	local t = { 
-		["EventSelectors"] = _EventSelectors,
-		["TrailARN"] = _TrailARN,
+		["EventSelectors"] = args["EventSelectors"],
+		["TrailARN"] = args["TrailARN"],
 	}
 	asserts.AssertGetEventSelectorsResponse(t)
 	return t
@@ -1511,8 +1682,11 @@ end
 
 --- Create a structure of type InsufficientSnsTopicPolicyException
 -- <p>This exception is thrown when the policy on the SNS topic is not sufficient.</p>
-function M.InsufficientSnsTopicPolicyException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientSnsTopicPolicyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InsufficientSnsTopicPolicyException structure as a key-value pair table
+function M.InsufficientSnsTopicPolicyException(args)
+	assert(args, "You must provdide an argument table when creating InsufficientSnsTopicPolicyException")
 	local t = { 
 	}
 	asserts.AssertInsufficientSnsTopicPolicyException(t)
@@ -1533,12 +1707,15 @@ end
 
 --- Create a structure of type StartLoggingRequest
 -- <p>The request to CloudTrail to start logging AWS API calls for an account.</p>
--- @param _Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs AWS API calls. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- Required parameter: Name
-function M.StartLoggingRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartLoggingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>Specifies the name or the CloudTrail ARN of the trail for which CloudTrail logs AWS API calls. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- Required key: Name
+-- @return StartLoggingRequest structure as a key-value pair table
+function M.StartLoggingRequest(args)
+	assert(args, "You must provdide an argument table when creating StartLoggingRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertStartLoggingRequest(t)
 	return t
@@ -1560,15 +1737,18 @@ end
 
 --- Create a structure of type LookupAttribute
 -- <p>Specifies an attribute and value that filter the events returned.</p>
--- @param _AttributeKey [LookupAttributeKey] <p>Specifies an attribute on which to filter the events returned.</p>
--- @param _AttributeValue [String] <p>Specifies a value for the specified AttributeKey.</p>
--- Required parameter: AttributeKey
--- Required parameter: AttributeValue
-function M.LookupAttribute(_AttributeKey, _AttributeValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LookupAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeKey [LookupAttributeKey] <p>Specifies an attribute on which to filter the events returned.</p>
+-- * AttributeValue [String] <p>Specifies a value for the specified AttributeKey.</p>
+-- Required key: AttributeKey
+-- Required key: AttributeValue
+-- @return LookupAttribute structure as a key-value pair table
+function M.LookupAttribute(args)
+	assert(args, "You must provdide an argument table when creating LookupAttribute")
 	local t = { 
-		["AttributeKey"] = _AttributeKey,
-		["AttributeValue"] = _AttributeValue,
+		["AttributeKey"] = args["AttributeKey"],
+		["AttributeValue"] = args["AttributeValue"],
 	}
 	asserts.AssertLookupAttribute(t)
 	return t
@@ -1588,13 +1768,16 @@ end
 
 --- Create a structure of type Resource
 -- <p>Specifies the type and name of a resource referenced by an event.</p>
--- @param _ResourceType [String] <p>The type of a resource referenced by the event returned. When the resource type cannot be determined, null is returned. Some examples of resource types are: <b>Instance</b> for EC2, <b>Trail</b> for CloudTrail, <b>DBInstance</b> for RDS, and <b>AccessKey</b> for IAM. For a list of resource types supported for event lookup, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/lookup_supported_resourcetypes.html">Resource Types Supported for Event Lookup</a>.</p>
--- @param _ResourceName [String] <p>The name of the resource referenced by the event returned. These are user-created names whose values will depend on the environment. For example, the resource name might be "auto-scaling-test-group" for an Auto Scaling Group or "i-1234567" for an EC2 Instance.</p>
-function M.Resource(_ResourceType, _ResourceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Resource")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [String] <p>The type of a resource referenced by the event returned. When the resource type cannot be determined, null is returned. Some examples of resource types are: <b>Instance</b> for EC2, <b>Trail</b> for CloudTrail, <b>DBInstance</b> for RDS, and <b>AccessKey</b> for IAM. For a list of resource types supported for event lookup, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/lookup_supported_resourcetypes.html">Resource Types Supported for Event Lookup</a>.</p>
+-- * ResourceName [String] <p>The name of the resource referenced by the event returned. These are user-created names whose values will depend on the environment. For example, the resource name might be "auto-scaling-test-group" for an Auto Scaling Group or "i-1234567" for an EC2 Instance.</p>
+-- @return Resource structure as a key-value pair table
+function M.Resource(args)
+	assert(args, "You must provdide an argument table when creating Resource")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceName"] = _ResourceName,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceName"] = args["ResourceName"],
 	}
 	asserts.AssertResource(t)
 	return t
@@ -1612,8 +1795,11 @@ end
 
 --- Create a structure of type KmsKeyNotFoundException
 -- <p>This exception is thrown when the KMS key does not exist, or when the S3 bucket and the KMS key are not in the same region.</p>
-function M.KmsKeyNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KmsKeyNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return KmsKeyNotFoundException structure as a key-value pair table
+function M.KmsKeyNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating KmsKeyNotFoundException")
 	local t = { 
 	}
 	asserts.AssertKmsKeyNotFoundException(t)
@@ -1636,15 +1822,18 @@ end
 
 --- Create a structure of type PutEventSelectorsRequest
 --  
--- @param _EventSelectors [EventSelectors] <p>Specifies the settings for your event selectors. You can configure up to five event selectors for a trail.</p>
--- @param _TrailName [String] <p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- Required parameter: TrailName
--- Required parameter: EventSelectors
-function M.PutEventSelectorsRequest(_EventSelectors, _TrailName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutEventSelectorsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventSelectors [EventSelectors] <p>Specifies the settings for your event selectors. You can configure up to five event selectors for a trail.</p>
+-- * TrailName [String] <p>Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)</p> </li> <li> <p>Start with a letter or number, and end with a letter or number</p> </li> <li> <p>Be between 3 and 128 characters</p> </li> <li> <p>Have no adjacent periods, underscores or dashes. Names like <code>my-_namespace</code> and <code>my--namespace</code> are invalid.</p> </li> <li> <p>Not be in IP address format (for example, 192.168.5.4)</p> </li> </ul> <p>If you specify a trail ARN, it must be in the format:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- Required key: TrailName
+-- Required key: EventSelectors
+-- @return PutEventSelectorsRequest structure as a key-value pair table
+function M.PutEventSelectorsRequest(args)
+	assert(args, "You must provdide an argument table when creating PutEventSelectorsRequest")
 	local t = { 
-		["EventSelectors"] = _EventSelectors,
-		["TrailName"] = _TrailName,
+		["EventSelectors"] = args["EventSelectors"],
+		["TrailName"] = args["TrailName"],
 	}
 	asserts.AssertPutEventSelectorsRequest(t)
 	return t
@@ -1662,8 +1851,11 @@ end
 
 --- Create a structure of type InvalidHomeRegionException
 -- <p>This exception is thrown when an operation is called on a trail from a region other than the region in which the trail was created.</p>
-function M.InvalidHomeRegionException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidHomeRegionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidHomeRegionException structure as a key-value pair table
+function M.InvalidHomeRegionException(args)
+	assert(args, "You must provdide an argument table when creating InvalidHomeRegionException")
 	local t = { 
 	}
 	asserts.AssertInvalidHomeRegionException(t)
@@ -1685,14 +1877,17 @@ end
 
 --- Create a structure of type AddTagsRequest
 -- <p>Specifies the tags to add to a trail.</p>
--- @param _ResourceId [String] <p>Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- @param _TagsList [TagsList] <p>Contains a list of CloudTrail tags, up to a limit of 50</p>
--- Required parameter: ResourceId
-function M.AddTagsRequest(_ResourceId, _TagsList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [String] <p>Specifies the ARN of the trail to which one or more tags will be added. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * TagsList [TagsList] <p>Contains a list of CloudTrail tags, up to a limit of 50</p>
+-- Required key: ResourceId
+-- @return AddTagsRequest structure as a key-value pair table
+function M.AddTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating AddTagsRequest")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["TagsList"] = _TagsList,
+		["ResourceId"] = args["ResourceId"],
+		["TagsList"] = args["TagsList"],
 	}
 	asserts.AssertAddTagsRequest(t)
 	return t
@@ -1710,8 +1905,11 @@ end
 
 --- Create a structure of type InvalidS3PrefixException
 -- <p>This exception is thrown when the provided S3 prefix is not valid.</p>
-function M.InvalidS3PrefixException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3PrefixException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidS3PrefixException structure as a key-value pair table
+function M.InvalidS3PrefixException(args)
+	assert(args, "You must provdide an argument table when creating InvalidS3PrefixException")
 	local t = { 
 	}
 	asserts.AssertInvalidS3PrefixException(t)
@@ -1730,8 +1928,11 @@ end
 
 --- Create a structure of type RemoveTagsResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
-function M.RemoveTagsResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RemoveTagsResponse structure as a key-value pair table
+function M.RemoveTagsResponse(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsResponse")
 	local t = { 
 	}
 	asserts.AssertRemoveTagsResponse(t)
@@ -1752,13 +1953,16 @@ end
 
 --- Create a structure of type ListTagsResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param _ResourceTagList [ResourceTagList] <p>A list of resource tags.</p>
--- @param _NextToken [String] <p>Reserved for future use.</p>
-function M.ListTagsResponse(_ResourceTagList, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceTagList [ResourceTagList] <p>A list of resource tags.</p>
+-- * NextToken [String] <p>Reserved for future use.</p>
+-- @return ListTagsResponse structure as a key-value pair table
+function M.ListTagsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsResponse")
 	local t = { 
-		["ResourceTagList"] = _ResourceTagList,
-		["NextToken"] = _NextToken,
+		["ResourceTagList"] = args["ResourceTagList"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListTagsResponse(t)
 	return t
@@ -1780,17 +1984,20 @@ end
 
 --- Create a structure of type PublicKey
 -- <p>Contains information about a returned public key.</p>
--- @param _ValidityStartTime [Date] <p>The starting time of validity of the public key.</p>
--- @param _ValidityEndTime [Date] <p>The ending time of validity of the public key.</p>
--- @param _Value [ByteBuffer] <p>The DER encoded public key value in PKCS#1 format.</p>
--- @param _Fingerprint [String] <p>The fingerprint of the public key.</p>
-function M.PublicKey(_ValidityStartTime, _ValidityEndTime, _Value, _Fingerprint, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PublicKey")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ValidityStartTime [Date] <p>The starting time of validity of the public key.</p>
+-- * ValidityEndTime [Date] <p>The ending time of validity of the public key.</p>
+-- * Value [ByteBuffer] <p>The DER encoded public key value in PKCS#1 format.</p>
+-- * Fingerprint [String] <p>The fingerprint of the public key.</p>
+-- @return PublicKey structure as a key-value pair table
+function M.PublicKey(args)
+	assert(args, "You must provdide an argument table when creating PublicKey")
 	local t = { 
-		["ValidityStartTime"] = _ValidityStartTime,
-		["ValidityEndTime"] = _ValidityEndTime,
-		["Value"] = _Value,
-		["Fingerprint"] = _Fingerprint,
+		["ValidityStartTime"] = args["ValidityStartTime"],
+		["ValidityEndTime"] = args["ValidityEndTime"],
+		["Value"] = args["Value"],
+		["Fingerprint"] = args["Fingerprint"],
 	}
 	asserts.AssertPublicKey(t)
 	return t
@@ -1808,8 +2015,11 @@ end
 
 --- Create a structure of type InvalidKmsKeyIdException
 -- <p>This exception is thrown when the KMS key ARN is invalid.</p>
-function M.InvalidKmsKeyIdException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidKmsKeyIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidKmsKeyIdException structure as a key-value pair table
+function M.InvalidKmsKeyIdException(args)
+	assert(args, "You must provdide an argument table when creating InvalidKmsKeyIdException")
 	local t = { 
 	}
 	asserts.AssertInvalidKmsKeyIdException(t)
@@ -1840,33 +2050,36 @@ end
 
 --- Create a structure of type CreateTrailResponse
 -- <p>Returns the objects or data listed below if successful. Otherwise, returns an error.</p>
--- @param _IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
--- @param _Name [String] <p>Specifies the name of the trail.</p>
--- @param _S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.</p>
--- @param _TrailARN [String] <p>Specifies the ARN of the trail that was created. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
--- @param _LogFileValidationEnabled [Boolean] <p>Specifies whether log file integrity validation is enabled.</p>
--- @param _SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code> </p>
--- @param _IsMultiRegionTrail [Boolean] <p>Specifies whether the trail exists in one region or in all regions.</p>
--- @param _S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files.</p>
--- @param _CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
--- @param _KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
--- @param _CloudWatchLogsLogGroupArn [String] <p>Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.</p>
--- @param _SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
-function M.CreateTrailResponse(_IncludeGlobalServiceEvents, _Name, _S3KeyPrefix, _TrailARN, _LogFileValidationEnabled, _SnsTopicARN, _IsMultiRegionTrail, _S3BucketName, _CloudWatchLogsRoleArn, _KmsKeyId, _CloudWatchLogsLogGroupArn, _SnsTopicName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrailResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IncludeGlobalServiceEvents [Boolean] <p>Specifies whether the trail is publishing events from global services such as IAM to the log files.</p>
+-- * Name [String] <p>Specifies the name of the trail.</p>
+-- * S3KeyPrefix [String] <p>Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file delivery. For more information, see <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your CloudTrail Log Files</a>.</p>
+-- * TrailARN [String] <p>Specifies the ARN of the trail that was created. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
+-- * LogFileValidationEnabled [Boolean] <p>Specifies whether log file integrity validation is enabled.</p>
+-- * SnsTopicARN [String] <p>Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send notifications when log files are delivered. The format of a topic ARN is:</p> <p> <code>arn:aws:sns:us-east-1:123456789012:MyTopic</code> </p>
+-- * IsMultiRegionTrail [Boolean] <p>Specifies whether the trail exists in one region or in all regions.</p>
+-- * S3BucketName [String] <p>Specifies the name of the Amazon S3 bucket designated for publishing log files.</p>
+-- * CloudWatchLogsRoleArn [String] <p>Specifies the role for the CloudWatch Logs endpoint to assume to write to a user's log group.</p>
+-- * KmsKeyId [String] <p>Specifies the KMS key ID that encrypts the logs delivered by CloudTrail. The value is a fully specified ARN to a KMS key in the format:</p> <p> <code>arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012</code> </p>
+-- * CloudWatchLogsLogGroupArn [String] <p>Specifies the Amazon Resource Name (ARN) of the log group to which CloudTrail logs will be delivered.</p>
+-- * SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
+-- @return CreateTrailResponse structure as a key-value pair table
+function M.CreateTrailResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateTrailResponse")
 	local t = { 
-		["IncludeGlobalServiceEvents"] = _IncludeGlobalServiceEvents,
-		["Name"] = _Name,
-		["S3KeyPrefix"] = _S3KeyPrefix,
-		["TrailARN"] = _TrailARN,
-		["LogFileValidationEnabled"] = _LogFileValidationEnabled,
-		["SnsTopicARN"] = _SnsTopicARN,
-		["IsMultiRegionTrail"] = _IsMultiRegionTrail,
-		["S3BucketName"] = _S3BucketName,
-		["CloudWatchLogsRoleArn"] = _CloudWatchLogsRoleArn,
-		["KmsKeyId"] = _KmsKeyId,
-		["CloudWatchLogsLogGroupArn"] = _CloudWatchLogsLogGroupArn,
-		["SnsTopicName"] = _SnsTopicName,
+		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
+		["Name"] = args["Name"],
+		["S3KeyPrefix"] = args["S3KeyPrefix"],
+		["TrailARN"] = args["TrailARN"],
+		["LogFileValidationEnabled"] = args["LogFileValidationEnabled"],
+		["SnsTopicARN"] = args["SnsTopicARN"],
+		["IsMultiRegionTrail"] = args["IsMultiRegionTrail"],
+		["S3BucketName"] = args["S3BucketName"],
+		["CloudWatchLogsRoleArn"] = args["CloudWatchLogsRoleArn"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
+		["SnsTopicName"] = args["SnsTopicName"],
 	}
 	asserts.AssertCreateTrailResponse(t)
 	return t

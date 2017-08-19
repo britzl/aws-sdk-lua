@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type LimitExceededException
 -- Thrown when the limit on the number of objects or operations has been exceeded.
--- @param _message [ExceptionMessage] Message returned by LimitExceededException.
--- Required parameter: message
-function M.LimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] Message returned by LimitExceededException.
+-- Required key: message
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -61,15 +64,18 @@ end
 
 --- Create a structure of type GetIdentityPoolConfigurationResponse
 -- <p>The output for the GetIdentityPoolConfiguration operation.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
--- @param _PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
--- @param _CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
-function M.GetIdentityPoolConfigurationResponse(_IdentityPoolId, _PushSync, _CognitoStreams, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolConfigurationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
+-- * PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
+-- * CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
+-- @return GetIdentityPoolConfigurationResponse structure as a key-value pair table
+function M.GetIdentityPoolConfigurationResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityPoolConfigurationResponse")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["PushSync"] = _PushSync,
-		["CognitoStreams"] = _CognitoStreams,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["PushSync"] = args["PushSync"],
+		["CognitoStreams"] = args["CognitoStreams"],
 	}
 	asserts.AssertGetIdentityPoolConfigurationResponse(t)
 	return t
@@ -89,12 +95,15 @@ end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>Thrown if there are parallel requests to modify a resource.</p>
--- @param _message [String] <p>The message returned by a ConcurrentModicationException.</p>
--- Required parameter: message
-function M.ConcurrentModificationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The message returned by a ConcurrentModicationException.</p>
+-- Required key: message
+-- @return ConcurrentModificationException structure as a key-value pair table
+function M.ConcurrentModificationException(args)
+	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertConcurrentModificationException(t)
 	return t
@@ -113,11 +122,14 @@ end
 
 --- Create a structure of type DeleteDatasetResponse
 -- Response to a successful DeleteDataset request.
--- @param _Dataset [Dataset] A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
-function M.DeleteDatasetResponse(_Dataset, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDatasetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Dataset [Dataset] A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
+-- @return DeleteDatasetResponse structure as a key-value pair table
+function M.DeleteDatasetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteDatasetResponse")
 	local t = { 
-		["Dataset"] = _Dataset,
+		["Dataset"] = args["Dataset"],
 	}
 	asserts.AssertDeleteDatasetResponse(t)
 	return t
@@ -137,12 +149,15 @@ end
 
 --- Create a structure of type InternalErrorException
 -- Indicates an internal service error.
--- @param _message [ExceptionMessage] Message returned by InternalErrorException.
--- Required parameter: message
-function M.InternalErrorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] Message returned by InternalErrorException.
+-- Required key: message
+-- @return InternalErrorException structure as a key-value pair table
+function M.InternalErrorException(args)
+	assert(args, "You must provdide an argument table when creating InternalErrorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalErrorException(t)
 	return t
@@ -164,15 +179,18 @@ end
 
 --- Create a structure of type DescribeIdentityUsageRequest
 -- A request for information about the usage of an identity pool.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- Required parameter: IdentityPoolId
--- Required parameter: IdentityId
-function M.DescribeIdentityUsageRequest(_IdentityPoolId, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityUsageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- Required key: IdentityPoolId
+-- Required key: IdentityId
+-- @return DescribeIdentityUsageRequest structure as a key-value pair table
+function M.DescribeIdentityUsageRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeIdentityUsageRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["IdentityId"] = _IdentityId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertDescribeIdentityUsageRequest(t)
 	return t
@@ -192,12 +210,15 @@ end
 
 --- Create a structure of type GetBulkPublishDetailsRequest
 -- The input for the GetBulkPublishDetails operation.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- Required parameter: IdentityPoolId
-function M.GetBulkPublishDetailsRequest(_IdentityPoolId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBulkPublishDetailsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- Required key: IdentityPoolId
+-- @return GetBulkPublishDetailsRequest structure as a key-value pair table
+function M.GetBulkPublishDetailsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBulkPublishDetailsRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
 	asserts.AssertGetBulkPublishDetailsRequest(t)
 	return t
@@ -224,27 +245,30 @@ end
 
 --- Create a structure of type ListRecordsResponse
 -- Returned for a successful ListRecordsRequest.
--- @param _Count [Integer] Total number of records.
--- @param _DatasetExists [Boolean] Indicates whether the dataset exists.
--- @param _DatasetSyncCount [Long] Server sync count for this dataset.
--- @param _LastModifiedBy [String] The user/device that made the last change to this record.
--- @param _Records [RecordList] A list of all records.
--- @param _MergedDatasetNames [MergedDatasetNameList] Names of merged datasets.
--- @param _SyncSessionToken [String] A token containing a session ID, identity ID, and expiration.
--- @param _DatasetDeletedAfterRequestedSyncCount [Boolean] A boolean value specifying whether to delete the dataset locally.
--- @param _NextToken [String] A pagination token for obtaining the next page of results.
-function M.ListRecordsResponse(_Count, _DatasetExists, _DatasetSyncCount, _LastModifiedBy, _Records, _MergedDatasetNames, _SyncSessionToken, _DatasetDeletedAfterRequestedSyncCount, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRecordsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Count [Integer] Total number of records.
+-- * DatasetExists [Boolean] Indicates whether the dataset exists.
+-- * DatasetSyncCount [Long] Server sync count for this dataset.
+-- * LastModifiedBy [String] The user/device that made the last change to this record.
+-- * Records [RecordList] A list of all records.
+-- * MergedDatasetNames [MergedDatasetNameList] Names of merged datasets.
+-- * SyncSessionToken [String] A token containing a session ID, identity ID, and expiration.
+-- * DatasetDeletedAfterRequestedSyncCount [Boolean] A boolean value specifying whether to delete the dataset locally.
+-- * NextToken [String] A pagination token for obtaining the next page of results.
+-- @return ListRecordsResponse structure as a key-value pair table
+function M.ListRecordsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListRecordsResponse")
 	local t = { 
-		["Count"] = _Count,
-		["DatasetExists"] = _DatasetExists,
-		["DatasetSyncCount"] = _DatasetSyncCount,
-		["LastModifiedBy"] = _LastModifiedBy,
-		["Records"] = _Records,
-		["MergedDatasetNames"] = _MergedDatasetNames,
-		["SyncSessionToken"] = _SyncSessionToken,
-		["DatasetDeletedAfterRequestedSyncCount"] = _DatasetDeletedAfterRequestedSyncCount,
-		["NextToken"] = _NextToken,
+		["Count"] = args["Count"],
+		["DatasetExists"] = args["DatasetExists"],
+		["DatasetSyncCount"] = args["DatasetSyncCount"],
+		["LastModifiedBy"] = args["LastModifiedBy"],
+		["Records"] = args["Records"],
+		["MergedDatasetNames"] = args["MergedDatasetNames"],
+		["SyncSessionToken"] = args["SyncSessionToken"],
+		["DatasetDeletedAfterRequestedSyncCount"] = args["DatasetDeletedAfterRequestedSyncCount"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListRecordsResponse(t)
 	return t
@@ -265,15 +289,18 @@ end
 
 --- Create a structure of type SetIdentityPoolConfigurationResponse
 -- <p>The output for the SetIdentityPoolConfiguration operation</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
--- @param _PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
--- @param _CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
-function M.SetIdentityPoolConfigurationResponse(_IdentityPoolId, _PushSync, _CognitoStreams, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityPoolConfigurationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito.</p>
+-- * PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
+-- * CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
+-- @return SetIdentityPoolConfigurationResponse structure as a key-value pair table
+function M.SetIdentityPoolConfigurationResponse(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityPoolConfigurationResponse")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["PushSync"] = _PushSync,
-		["CognitoStreams"] = _CognitoStreams,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["PushSync"] = args["PushSync"],
+		["CognitoStreams"] = args["CognitoStreams"],
 	}
 	asserts.AssertSetIdentityPoolConfigurationResponse(t)
 	return t
@@ -299,21 +326,24 @@ end
 
 --- Create a structure of type SubscribeToDatasetRequest
 -- <p>A request to SubscribeToDatasetRequest.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which the identity belongs.</p>
--- @param _DatasetName [DatasetName] <p>The name of the dataset to subcribe to.</p>
--- @param _DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
--- @param _IdentityId [IdentityId] <p>Unique ID for this identity.</p>
--- Required parameter: IdentityPoolId
--- Required parameter: IdentityId
--- Required parameter: DatasetName
--- Required parameter: DeviceId
-function M.SubscribeToDatasetRequest(_IdentityPoolId, _DatasetName, _DeviceId, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubscribeToDatasetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which the identity belongs.</p>
+-- * DatasetName [DatasetName] <p>The name of the dataset to subcribe to.</p>
+-- * DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
+-- * IdentityId [IdentityId] <p>Unique ID for this identity.</p>
+-- Required key: IdentityPoolId
+-- Required key: IdentityId
+-- Required key: DatasetName
+-- Required key: DeviceId
+-- @return SubscribeToDatasetRequest structure as a key-value pair table
+function M.SubscribeToDatasetRequest(args)
+	assert(args, "You must provdide an argument table when creating SubscribeToDatasetRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["DatasetName"] = _DatasetName,
-		["DeviceId"] = _DeviceId,
-		["IdentityId"] = _IdentityId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["DatasetName"] = args["DatasetName"],
+		["DeviceId"] = args["DeviceId"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertSubscribeToDatasetRequest(t)
 	return t
@@ -331,8 +361,11 @@ end
 
 --- Create a structure of type UnsubscribeFromDatasetResponse
 -- <p>Response to an UnsubscribeFromDataset request.</p>
-function M.UnsubscribeFromDatasetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsubscribeFromDatasetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UnsubscribeFromDatasetResponse structure as a key-value pair table
+function M.UnsubscribeFromDatasetResponse(args)
+	assert(args, "You must provdide an argument table when creating UnsubscribeFromDatasetResponse")
 	local t = { 
 	}
 	asserts.AssertUnsubscribeFromDatasetResponse(t)
@@ -355,16 +388,19 @@ end
 
 --- Create a structure of type SetIdentityPoolConfigurationRequest
 -- <p>The input for the SetIdentityPoolConfiguration operation.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool to modify.</p>
--- @param _PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
--- @param _CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
--- Required parameter: IdentityPoolId
-function M.SetIdentityPoolConfigurationRequest(_IdentityPoolId, _PushSync, _CognitoStreams, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityPoolConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool to modify.</p>
+-- * PushSync [PushSync] <p>Options to apply to this identity pool for push synchronization.</p>
+-- * CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
+-- Required key: IdentityPoolId
+-- @return SetIdentityPoolConfigurationRequest structure as a key-value pair table
+function M.SetIdentityPoolConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityPoolConfigurationRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["PushSync"] = _PushSync,
-		["CognitoStreams"] = _CognitoStreams,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["PushSync"] = args["PushSync"],
+		["CognitoStreams"] = args["CognitoStreams"],
 	}
 	asserts.AssertSetIdentityPoolConfigurationRequest(t)
 	return t
@@ -386,17 +422,20 @@ end
 
 --- Create a structure of type ListIdentityPoolUsageResponse
 -- Returned for a successful ListIdentityPoolUsage request.
--- @param _Count [Integer] Total number of identities for the identity pool.
--- @param _NextToken [String] A pagination token for obtaining the next page of results.
--- @param _MaxResults [Integer] The maximum number of results to be returned.
--- @param _IdentityPoolUsages [IdentityPoolUsageList] Usage information for the identity pools.
-function M.ListIdentityPoolUsageResponse(_Count, _NextToken, _MaxResults, _IdentityPoolUsages, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoolUsageResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Count [Integer] Total number of identities for the identity pool.
+-- * NextToken [String] A pagination token for obtaining the next page of results.
+-- * MaxResults [Integer] The maximum number of results to be returned.
+-- * IdentityPoolUsages [IdentityPoolUsageList] Usage information for the identity pools.
+-- @return ListIdentityPoolUsageResponse structure as a key-value pair table
+function M.ListIdentityPoolUsageResponse(args)
+	assert(args, "You must provdide an argument table when creating ListIdentityPoolUsageResponse")
 	local t = { 
-		["Count"] = _Count,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["IdentityPoolUsages"] = _IdentityPoolUsages,
+		["Count"] = args["Count"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["IdentityPoolUsages"] = args["IdentityPoolUsages"],
 	}
 	asserts.AssertListIdentityPoolUsageResponse(t)
 	return t
@@ -416,12 +455,15 @@ end
 
 --- Create a structure of type GetCognitoEventsRequest
 -- <p>A request for a list of the configured Cognito Events</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>The Cognito Identity Pool ID for the request</p>
--- Required parameter: IdentityPoolId
-function M.GetCognitoEventsRequest(_IdentityPoolId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCognitoEventsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>The Cognito Identity Pool ID for the request</p>
+-- Required key: IdentityPoolId
+-- @return GetCognitoEventsRequest structure as a key-value pair table
+function M.GetCognitoEventsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetCognitoEventsRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
 	asserts.AssertGetCognitoEventsRequest(t)
 	return t
@@ -441,12 +483,15 @@ end
 
 --- Create a structure of type DescribeIdentityPoolUsageRequest
 -- A request for usage information about the identity pool.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- Required parameter: IdentityPoolId
-function M.DescribeIdentityPoolUsageRequest(_IdentityPoolId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityPoolUsageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- Required key: IdentityPoolId
+-- @return DescribeIdentityPoolUsageRequest structure as a key-value pair table
+function M.DescribeIdentityPoolUsageRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeIdentityPoolUsageRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
 	asserts.AssertDescribeIdentityPoolUsageRequest(t)
 	return t
@@ -468,17 +513,20 @@ end
 
 --- Create a structure of type IdentityPoolUsage
 -- Usage information for the identity pool.
--- @param _DataStorage [Long] Data storage information for the identity pool.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _SyncSessionsCount [Long] Number of sync sessions for the identity pool.
--- @param _LastModifiedDate [Date] Date on which the identity pool was last modified.
-function M.IdentityPoolUsage(_DataStorage, _IdentityPoolId, _SyncSessionsCount, _LastModifiedDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdentityPoolUsage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DataStorage [Long] Data storage information for the identity pool.
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * SyncSessionsCount [Long] Number of sync sessions for the identity pool.
+-- * LastModifiedDate [Date] Date on which the identity pool was last modified.
+-- @return IdentityPoolUsage structure as a key-value pair table
+function M.IdentityPoolUsage(args)
+	assert(args, "You must provdide an argument table when creating IdentityPoolUsage")
 	local t = { 
-		["DataStorage"] = _DataStorage,
-		["IdentityPoolId"] = _IdentityPoolId,
-		["SyncSessionsCount"] = _SyncSessionsCount,
-		["LastModifiedDate"] = _LastModifiedDate,
+		["DataStorage"] = args["DataStorage"],
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["SyncSessionsCount"] = args["SyncSessionsCount"],
+		["LastModifiedDate"] = args["LastModifiedDate"],
 	}
 	asserts.AssertIdentityPoolUsage(t)
 	return t
@@ -501,19 +549,22 @@ end
 
 --- Create a structure of type GetBulkPublishDetailsResponse
 -- The output for the GetBulkPublishDetails operation.
--- @param _BulkPublishStartTime [Date] The date/time at which the last bulk publish was initiated.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _BulkPublishStatus [BulkPublishStatus] Status of the last bulk publish operation, valid values are: <p>NOT_STARTED - No bulk publish has been requested for this identity pool</p> <p>IN_PROGRESS - Data is being published to the configured stream</p> <p>SUCCEEDED - All data for the identity pool has been published to the configured stream</p> <p>FAILED - Some portion of the data has failed to publish, check FailureMessage for the cause.</p>
--- @param _BulkPublishCompleteTime [Date] If BulkPublishStatus is SUCCEEDED, the time the last bulk publish operation completed.
--- @param _FailureMessage [String] If BulkPublishStatus is FAILED this field will contain the error message that caused the bulk publish to fail.
-function M.GetBulkPublishDetailsResponse(_BulkPublishStartTime, _IdentityPoolId, _BulkPublishStatus, _BulkPublishCompleteTime, _FailureMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBulkPublishDetailsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BulkPublishStartTime [Date] The date/time at which the last bulk publish was initiated.
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * BulkPublishStatus [BulkPublishStatus] Status of the last bulk publish operation, valid values are: <p>NOT_STARTED - No bulk publish has been requested for this identity pool</p> <p>IN_PROGRESS - Data is being published to the configured stream</p> <p>SUCCEEDED - All data for the identity pool has been published to the configured stream</p> <p>FAILED - Some portion of the data has failed to publish, check FailureMessage for the cause.</p>
+-- * BulkPublishCompleteTime [Date] If BulkPublishStatus is SUCCEEDED, the time the last bulk publish operation completed.
+-- * FailureMessage [String] If BulkPublishStatus is FAILED this field will contain the error message that caused the bulk publish to fail.
+-- @return GetBulkPublishDetailsResponse structure as a key-value pair table
+function M.GetBulkPublishDetailsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBulkPublishDetailsResponse")
 	local t = { 
-		["BulkPublishStartTime"] = _BulkPublishStartTime,
-		["IdentityPoolId"] = _IdentityPoolId,
-		["BulkPublishStatus"] = _BulkPublishStatus,
-		["BulkPublishCompleteTime"] = _BulkPublishCompleteTime,
-		["FailureMessage"] = _FailureMessage,
+		["BulkPublishStartTime"] = args["BulkPublishStartTime"],
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["BulkPublishStatus"] = args["BulkPublishStatus"],
+		["BulkPublishCompleteTime"] = args["BulkPublishCompleteTime"],
+		["FailureMessage"] = args["FailureMessage"],
 	}
 	asserts.AssertGetBulkPublishDetailsResponse(t)
 	return t
@@ -533,12 +584,15 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- Thrown when a request parameter does not comply with the associated constraints.
--- @param _message [ExceptionMessage] Message returned by InvalidParameterException.
--- Required parameter: message
-function M.InvalidParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] Message returned by InvalidParameterException.
+-- Required key: message
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterException(t)
 	return t
@@ -564,21 +618,24 @@ end
 
 --- Create a structure of type UnsubscribeFromDatasetRequest
 -- <p>A request to UnsubscribeFromDataset.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which this identity belongs.</p>
--- @param _DatasetName [DatasetName] <p>The name of the dataset from which to unsubcribe.</p>
--- @param _DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
--- @param _IdentityId [IdentityId] <p>Unique ID for this identity.</p>
--- Required parameter: IdentityPoolId
--- Required parameter: IdentityId
--- Required parameter: DatasetName
--- Required parameter: DeviceId
-function M.UnsubscribeFromDatasetRequest(_IdentityPoolId, _DatasetName, _DeviceId, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsubscribeFromDatasetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. The ID of the pool to which this identity belongs.</p>
+-- * DatasetName [DatasetName] <p>The name of the dataset from which to unsubcribe.</p>
+-- * DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
+-- * IdentityId [IdentityId] <p>Unique ID for this identity.</p>
+-- Required key: IdentityPoolId
+-- Required key: IdentityId
+-- Required key: DatasetName
+-- Required key: DeviceId
+-- @return UnsubscribeFromDatasetRequest structure as a key-value pair table
+function M.UnsubscribeFromDatasetRequest(args)
+	assert(args, "You must provdide an argument table when creating UnsubscribeFromDatasetRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["DatasetName"] = _DatasetName,
-		["DeviceId"] = _DeviceId,
-		["IdentityId"] = _IdentityId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["DatasetName"] = args["DatasetName"],
+		["DeviceId"] = args["DeviceId"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertUnsubscribeFromDatasetRequest(t)
 	return t
@@ -599,15 +656,18 @@ end
 
 --- Create a structure of type CognitoStreams
 -- Configuration options for configure Cognito streams.
--- @param _StreamingStatus [StreamingStatus] Status of the Cognito streams. Valid values are: <p>ENABLED - Streaming of updates to identity pool is enabled.</p> <p>DISABLED - Streaming of updates to identity pool is disabled. Bulk publish will also fail if StreamingStatus is DISABLED.</p>
--- @param _RoleArn [AssumeRoleArn] The ARN of the role Amazon Cognito can assume in order to publish to the stream. This role must grant access to Amazon Cognito (cognito-sync) to invoke PutRecord on your Cognito stream.
--- @param _StreamName [StreamName] The name of the Cognito stream to receive updates. This stream must be in the developers account and in the same region as the identity pool.
-function M.CognitoStreams(_StreamingStatus, _RoleArn, _StreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CognitoStreams")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamingStatus [StreamingStatus] Status of the Cognito streams. Valid values are: <p>ENABLED - Streaming of updates to identity pool is enabled.</p> <p>DISABLED - Streaming of updates to identity pool is disabled. Bulk publish will also fail if StreamingStatus is DISABLED.</p>
+-- * RoleArn [AssumeRoleArn] The ARN of the role Amazon Cognito can assume in order to publish to the stream. This role must grant access to Amazon Cognito (cognito-sync) to invoke PutRecord on your Cognito stream.
+-- * StreamName [StreamName] The name of the Cognito stream to receive updates. This stream must be in the developers account and in the same region as the identity pool.
+-- @return CognitoStreams structure as a key-value pair table
+function M.CognitoStreams(args)
+	assert(args, "You must provdide an argument table when creating CognitoStreams")
 	local t = { 
-		["StreamingStatus"] = _StreamingStatus,
-		["RoleArn"] = _RoleArn,
-		["StreamName"] = _StreamName,
+		["StreamingStatus"] = args["StreamingStatus"],
+		["RoleArn"] = args["RoleArn"],
+		["StreamName"] = args["StreamName"],
 	}
 	asserts.AssertCognitoStreams(t)
 	return t
@@ -631,19 +691,22 @@ end
 
 --- Create a structure of type ListDatasetsRequest
 -- Request for a list of datasets for an identity.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _NextToken [String] A pagination token for obtaining the next page of results.
--- @param _MaxResults [IntegerString] The maximum number of results to be returned.
--- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- Required parameter: IdentityId
--- Required parameter: IdentityPoolId
-function M.ListDatasetsRequest(_IdentityPoolId, _NextToken, _MaxResults, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDatasetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * NextToken [String] A pagination token for obtaining the next page of results.
+-- * MaxResults [IntegerString] The maximum number of results to be returned.
+-- * IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- Required key: IdentityId
+-- Required key: IdentityPoolId
+-- @return ListDatasetsRequest structure as a key-value pair table
+function M.ListDatasetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDatasetsRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["IdentityId"] = _IdentityId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertListDatasetsRequest(t)
 	return t
@@ -663,13 +726,16 @@ end
 
 --- Create a structure of type ListIdentityPoolUsageRequest
 -- A request for usage information on an identity pool.
--- @param _NextToken [String] A pagination token for obtaining the next page of results.
--- @param _MaxResults [IntegerString] The maximum number of results to be returned.
-function M.ListIdentityPoolUsageRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoolUsageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] A pagination token for obtaining the next page of results.
+-- * MaxResults [IntegerString] The maximum number of results to be returned.
+-- @return ListIdentityPoolUsageRequest structure as a key-value pair table
+function M.ListIdentityPoolUsageRequest(args)
+	assert(args, "You must provdide an argument table when creating ListIdentityPoolUsageRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListIdentityPoolUsageRequest(t)
 	return t
@@ -689,12 +755,15 @@ end
 
 --- Create a structure of type NotAuthorizedException
 -- Thrown when a user is not authorized to access the requested resource.
--- @param _message [ExceptionMessage] The message returned by a NotAuthorizedException.
--- Required parameter: message
-function M.NotAuthorizedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotAuthorizedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] The message returned by a NotAuthorizedException.
+-- Required key: message
+-- @return NotAuthorizedException structure as a key-value pair table
+function M.NotAuthorizedException(args)
+	assert(args, "You must provdide an argument table when creating NotAuthorizedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNotAuthorizedException(t)
 	return t
@@ -722,26 +791,29 @@ end
 
 --- Create a structure of type ListRecordsRequest
 -- A request for a list of records.
--- @param _DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
--- @param _MaxResults [IntegerString] The maximum number of results to be returned.
--- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _LastSyncCount [Long] The last server sync count for this record.
--- @param _SyncSessionToken [SyncSessionToken] A token containing a session ID, identity ID, and expiration.
--- @param _NextToken [String] A pagination token for obtaining the next page of results.
--- Required parameter: IdentityPoolId
--- Required parameter: IdentityId
--- Required parameter: DatasetName
-function M.ListRecordsRequest(_DatasetName, _MaxResults, _IdentityId, _IdentityPoolId, _LastSyncCount, _SyncSessionToken, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRecordsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+-- * MaxResults [IntegerString] The maximum number of results to be returned.
+-- * IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * LastSyncCount [Long] The last server sync count for this record.
+-- * SyncSessionToken [SyncSessionToken] A token containing a session ID, identity ID, and expiration.
+-- * NextToken [String] A pagination token for obtaining the next page of results.
+-- Required key: IdentityPoolId
+-- Required key: IdentityId
+-- Required key: DatasetName
+-- @return ListRecordsRequest structure as a key-value pair table
+function M.ListRecordsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListRecordsRequest")
 	local t = { 
-		["DatasetName"] = _DatasetName,
-		["MaxResults"] = _MaxResults,
-		["IdentityId"] = _IdentityId,
-		["IdentityPoolId"] = _IdentityPoolId,
-		["LastSyncCount"] = _LastSyncCount,
-		["SyncSessionToken"] = _SyncSessionToken,
-		["NextToken"] = _NextToken,
+		["DatasetName"] = args["DatasetName"],
+		["MaxResults"] = args["MaxResults"],
+		["IdentityId"] = args["IdentityId"],
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["LastSyncCount"] = args["LastSyncCount"],
+		["SyncSessionToken"] = args["SyncSessionToken"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListRecordsRequest(t)
 	return t
@@ -764,19 +836,22 @@ end
 
 --- Create a structure of type IdentityUsage
 -- Usage information for the identity.
--- @param _DatasetCount [Integer] Number of datasets for the identity.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _DataStorage [Long] Total data storage for this identity.
--- @param _LastModifiedDate [Date] Date on which the identity was last modified.
--- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-function M.IdentityUsage(_DatasetCount, _IdentityPoolId, _DataStorage, _LastModifiedDate, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdentityUsage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DatasetCount [Integer] Number of datasets for the identity.
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * DataStorage [Long] Total data storage for this identity.
+-- * LastModifiedDate [Date] Date on which the identity was last modified.
+-- * IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @return IdentityUsage structure as a key-value pair table
+function M.IdentityUsage(args)
+	assert(args, "You must provdide an argument table when creating IdentityUsage")
 	local t = { 
-		["DatasetCount"] = _DatasetCount,
-		["IdentityPoolId"] = _IdentityPoolId,
-		["DataStorage"] = _DataStorage,
-		["LastModifiedDate"] = _LastModifiedDate,
-		["IdentityId"] = _IdentityId,
+		["DatasetCount"] = args["DatasetCount"],
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["DataStorage"] = args["DataStorage"],
+		["LastModifiedDate"] = args["LastModifiedDate"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertIdentityUsage(t)
 	return t
@@ -795,11 +870,14 @@ end
 
 --- Create a structure of type DescribeDatasetResponse
 -- Response to a successful DescribeDataset request.
--- @param _Dataset [Dataset] Meta data for a collection of data for an identity. An identity can have multiple datasets. A dataset can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
-function M.DescribeDatasetResponse(_Dataset, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDatasetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Dataset [Dataset] Meta data for a collection of data for an identity. An identity can have multiple datasets. A dataset can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
+-- @return DescribeDatasetResponse structure as a key-value pair table
+function M.DescribeDatasetResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeDatasetResponse")
 	local t = { 
-		["Dataset"] = _Dataset,
+		["Dataset"] = args["Dataset"],
 	}
 	asserts.AssertDescribeDatasetResponse(t)
 	return t
@@ -823,18 +901,21 @@ end
 
 --- Create a structure of type DeleteDatasetRequest
 -- A request to delete the specific dataset.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
--- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- Required parameter: IdentityPoolId
--- Required parameter: IdentityId
--- Required parameter: DatasetName
-function M.DeleteDatasetRequest(_IdentityPoolId, _DatasetName, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDatasetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+-- * IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- Required key: IdentityPoolId
+-- Required key: IdentityId
+-- Required key: DatasetName
+-- @return DeleteDatasetRequest structure as a key-value pair table
+function M.DeleteDatasetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDatasetRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["DatasetName"] = _DatasetName,
-		["IdentityId"] = _IdentityId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["DatasetName"] = args["DatasetName"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertDeleteDatasetRequest(t)
 	return t
@@ -853,11 +934,14 @@ end
 
 --- Create a structure of type BulkPublishResponse
 -- The output for the BulkPublish operation.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
-function M.BulkPublishResponse(_IdentityPoolId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BulkPublishResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- @return BulkPublishResponse structure as a key-value pair table
+function M.BulkPublishResponse(args)
+	assert(args, "You must provdide an argument table when creating BulkPublishResponse")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
 	asserts.AssertBulkPublishResponse(t)
 	return t
@@ -875,8 +959,11 @@ end
 
 --- Create a structure of type SubscribeToDatasetResponse
 -- <p>Response to a SubscribeToDataset request.</p>
-function M.SubscribeToDatasetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubscribeToDatasetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SubscribeToDatasetResponse structure as a key-value pair table
+function M.SubscribeToDatasetResponse(args)
+	assert(args, "You must provdide an argument table when creating SubscribeToDatasetResponse")
 	local t = { 
 	}
 	asserts.AssertSubscribeToDatasetResponse(t)
@@ -897,12 +984,15 @@ end
 
 --- Create a structure of type InvalidLambdaFunctionOutputException
 -- <p>The AWS Lambda function returned invalid output or an exception.</p>
--- @param _message [ExceptionMessage] <p>A message returned when an InvalidLambdaFunctionOutputException occurs</p>
--- Required parameter: message
-function M.InvalidLambdaFunctionOutputException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidLambdaFunctionOutputException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>A message returned when an InvalidLambdaFunctionOutputException occurs</p>
+-- Required key: message
+-- @return InvalidLambdaFunctionOutputException structure as a key-value pair table
+function M.InvalidLambdaFunctionOutputException(args)
+	assert(args, "You must provdide an argument table when creating InvalidLambdaFunctionOutputException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidLambdaFunctionOutputException(t)
 	return t
@@ -922,12 +1012,15 @@ end
 
 --- Create a structure of type TooManyRequestsException
 -- Thrown if the request is throttled.
--- @param _message [ExceptionMessage] Message returned by a TooManyRequestsException.
--- Required parameter: message
-function M.TooManyRequestsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] Message returned by a TooManyRequestsException.
+-- Required key: message
+-- @return TooManyRequestsException structure as a key-value pair table
+function M.TooManyRequestsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTooManyRequestsException(t)
 	return t
@@ -946,11 +1039,14 @@ end
 
 --- Create a structure of type DescribeIdentityUsageResponse
 -- The response to a successful DescribeIdentityUsage request.
--- @param _IdentityUsage [IdentityUsage] Usage information for the identity.
-function M.DescribeIdentityUsageResponse(_IdentityUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityUsageResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityUsage [IdentityUsage] Usage information for the identity.
+-- @return DescribeIdentityUsageResponse structure as a key-value pair table
+function M.DescribeIdentityUsageResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeIdentityUsageResponse")
 	local t = { 
-		["IdentityUsage"] = _IdentityUsage,
+		["IdentityUsage"] = args["IdentityUsage"],
 	}
 	asserts.AssertDescribeIdentityUsageResponse(t)
 	return t
@@ -970,13 +1066,16 @@ end
 
 --- Create a structure of type PushSync
 -- <p>Configuration options to be applied to the identity pool.</p>
--- @param _RoleArn [AssumeRoleArn] <p>A role configured to allow Cognito to call SNS on behalf of the developer.</p>
--- @param _ApplicationArns [ApplicationArnList] <p>List of SNS platform application ARNs that could be used by clients.</p>
-function M.PushSync(_RoleArn, _ApplicationArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PushSync")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleArn [AssumeRoleArn] <p>A role configured to allow Cognito to call SNS on behalf of the developer.</p>
+-- * ApplicationArns [ApplicationArnList] <p>List of SNS platform application ARNs that could be used by clients.</p>
+-- @return PushSync structure as a key-value pair table
+function M.PushSync(args)
+	assert(args, "You must provdide an argument table when creating PushSync")
 	local t = { 
-		["RoleArn"] = _RoleArn,
-		["ApplicationArns"] = _ApplicationArns,
+		["RoleArn"] = args["RoleArn"],
+		["ApplicationArns"] = args["ApplicationArns"],
 	}
 	asserts.AssertPushSync(t)
 	return t
@@ -1000,21 +1099,24 @@ end
 
 --- Create a structure of type Record
 -- The basic data structure of a dataset.
--- @param _DeviceLastModifiedDate [Date] The last modified date of the client device.
--- @param _LastModifiedDate [Date] The date on which the record was last modified.
--- @param _Value [RecordValue] The value for the record.
--- @param _LastModifiedBy [String] The user/device that made the last change to this record.
--- @param _Key [RecordKey] The key for the record.
--- @param _SyncCount [Long] The server sync count for this record.
-function M.Record(_DeviceLastModifiedDate, _LastModifiedDate, _Value, _LastModifiedBy, _Key, _SyncCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Record")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeviceLastModifiedDate [Date] The last modified date of the client device.
+-- * LastModifiedDate [Date] The date on which the record was last modified.
+-- * Value [RecordValue] The value for the record.
+-- * LastModifiedBy [String] The user/device that made the last change to this record.
+-- * Key [RecordKey] The key for the record.
+-- * SyncCount [Long] The server sync count for this record.
+-- @return Record structure as a key-value pair table
+function M.Record(args)
+	assert(args, "You must provdide an argument table when creating Record")
 	local t = { 
-		["DeviceLastModifiedDate"] = _DeviceLastModifiedDate,
-		["LastModifiedDate"] = _LastModifiedDate,
-		["Value"] = _Value,
-		["LastModifiedBy"] = _LastModifiedBy,
-		["Key"] = _Key,
-		["SyncCount"] = _SyncCount,
+		["DeviceLastModifiedDate"] = args["DeviceLastModifiedDate"],
+		["LastModifiedDate"] = args["LastModifiedDate"],
+		["Value"] = args["Value"],
+		["LastModifiedBy"] = args["LastModifiedBy"],
+		["Key"] = args["Key"],
+		["SyncCount"] = args["SyncCount"],
 	}
 	asserts.AssertRecord(t)
 	return t
@@ -1034,12 +1136,15 @@ end
 
 --- Create a structure of type BulkPublishRequest
 -- The input for the BulkPublish operation.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- Required parameter: IdentityPoolId
-function M.BulkPublishRequest(_IdentityPoolId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BulkPublishRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- Required key: IdentityPoolId
+-- @return BulkPublishRequest structure as a key-value pair table
+function M.BulkPublishRequest(args)
+	assert(args, "You must provdide an argument table when creating BulkPublishRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
 	asserts.AssertBulkPublishRequest(t)
 	return t
@@ -1058,11 +1163,14 @@ end
 
 --- Create a structure of type UpdateRecordsResponse
 -- Returned for a successful UpdateRecordsRequest.
--- @param _Records [RecordList] A list of records that have been updated.
-function M.UpdateRecordsResponse(_Records, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRecordsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Records [RecordList] A list of records that have been updated.
+-- @return UpdateRecordsResponse structure as a key-value pair table
+function M.UpdateRecordsResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateRecordsResponse")
 	local t = { 
-		["Records"] = _Records,
+		["Records"] = args["Records"],
 	}
 	asserts.AssertUpdateRecordsResponse(t)
 	return t
@@ -1081,11 +1189,14 @@ end
 
 --- Create a structure of type DescribeIdentityPoolUsageResponse
 -- Response to a successful DescribeIdentityPoolUsage request.
--- @param _IdentityPoolUsage [IdentityPoolUsage] Information about the usage of the identity pool.
-function M.DescribeIdentityPoolUsageResponse(_IdentityPoolUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityPoolUsageResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolUsage [IdentityPoolUsage] Information about the usage of the identity pool.
+-- @return DescribeIdentityPoolUsageResponse structure as a key-value pair table
+function M.DescribeIdentityPoolUsageResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeIdentityPoolUsageResponse")
 	local t = { 
-		["IdentityPoolUsage"] = _IdentityPoolUsage,
+		["IdentityPoolUsage"] = args["IdentityPoolUsage"],
 	}
 	asserts.AssertDescribeIdentityPoolUsageResponse(t)
 	return t
@@ -1114,27 +1225,30 @@ end
 
 --- Create a structure of type UpdateRecordsRequest
 -- A request to post updates to records or add and delete records for a dataset and user.
--- @param _DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
--- @param _RecordPatches [RecordPatchList] A list of patch operations.
--- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
--- @param _SyncSessionToken [SyncSessionToken] The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.
--- @param _ClientContext [ClientContext] Intended to supply a device ID that will populate the lastModifiedBy field referenced in other methods. The ClientContext field is not yet implemented.
--- Required parameter: IdentityPoolId
--- Required parameter: IdentityId
--- Required parameter: DatasetName
--- Required parameter: SyncSessionToken
-function M.UpdateRecordsRequest(_DatasetName, _RecordPatches, _IdentityId, _IdentityPoolId, _DeviceId, _SyncSessionToken, _ClientContext, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRecordsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+-- * RecordPatches [RecordPatchList] A list of patch operations.
+-- * IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
+-- * SyncSessionToken [SyncSessionToken] The SyncSessionToken returned by a previous call to ListRecords for this dataset and identity.
+-- * ClientContext [ClientContext] Intended to supply a device ID that will populate the lastModifiedBy field referenced in other methods. The ClientContext field is not yet implemented.
+-- Required key: IdentityPoolId
+-- Required key: IdentityId
+-- Required key: DatasetName
+-- Required key: SyncSessionToken
+-- @return UpdateRecordsRequest structure as a key-value pair table
+function M.UpdateRecordsRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateRecordsRequest")
 	local t = { 
-		["DatasetName"] = _DatasetName,
-		["RecordPatches"] = _RecordPatches,
-		["IdentityId"] = _IdentityId,
-		["IdentityPoolId"] = _IdentityPoolId,
-		["DeviceId"] = _DeviceId,
-		["SyncSessionToken"] = _SyncSessionToken,
-		["ClientContext"] = _ClientContext,
+		["DatasetName"] = args["DatasetName"],
+		["RecordPatches"] = args["RecordPatches"],
+		["IdentityId"] = args["IdentityId"],
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["DeviceId"] = args["DeviceId"],
+		["SyncSessionToken"] = args["SyncSessionToken"],
+		["ClientContext"] = args["ClientContext"],
 	}
 	asserts.AssertUpdateRecordsRequest(t)
 	return t
@@ -1158,18 +1272,21 @@ end
 
 --- Create a structure of type DescribeDatasetRequest
 -- A request for meta data about a dataset (creation date, number of records, size) by owner and dataset name.
--- @param _IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
--- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- Required parameter: IdentityPoolId
--- Required parameter: IdentityId
--- Required parameter: DatasetName
-function M.DescribeDatasetRequest(_IdentityPoolId, _DatasetName, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDatasetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+-- * IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- Required key: IdentityPoolId
+-- Required key: IdentityId
+-- Required key: DatasetName
+-- @return DescribeDatasetRequest structure as a key-value pair table
+function M.DescribeDatasetRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDatasetRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["DatasetName"] = _DatasetName,
-		["IdentityId"] = _IdentityId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["DatasetName"] = args["DatasetName"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertDescribeDatasetRequest(t)
 	return t
@@ -1188,11 +1305,14 @@ end
 
 --- Create a structure of type GetCognitoEventsResponse
 -- <p>The response from the GetCognitoEvents request</p>
--- @param _Events [Events] <p>The Cognito Events returned from the GetCognitoEvents request</p>
-function M.GetCognitoEventsResponse(_Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCognitoEventsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Events [Events] <p>The Cognito Events returned from the GetCognitoEvents request</p>
+-- @return GetCognitoEventsResponse structure as a key-value pair table
+function M.GetCognitoEventsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetCognitoEventsResponse")
 	local t = { 
-		["Events"] = _Events,
+		["Events"] = args["Events"],
 	}
 	asserts.AssertGetCognitoEventsResponse(t)
 	return t
@@ -1214,15 +1334,18 @@ end
 
 --- Create a structure of type SetCognitoEventsRequest
 -- <p>A request to configure Cognito Events"</p>"
--- @param _IdentityPoolId [IdentityPoolId] <p>The Cognito Identity Pool to use when configuring Cognito Events</p>
--- @param _Events [Events] <p>The events to configure</p>
--- Required parameter: IdentityPoolId
--- Required parameter: Events
-function M.SetCognitoEventsRequest(_IdentityPoolId, _Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetCognitoEventsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>The Cognito Identity Pool to use when configuring Cognito Events</p>
+-- * Events [Events] <p>The events to configure</p>
+-- Required key: IdentityPoolId
+-- Required key: Events
+-- @return SetCognitoEventsRequest structure as a key-value pair table
+function M.SetCognitoEventsRequest(args)
+	assert(args, "You must provdide an argument table when creating SetCognitoEventsRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["Events"] = _Events,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["Events"] = args["Events"],
 	}
 	asserts.AssertSetCognitoEventsRequest(t)
 	return t
@@ -1243,15 +1366,18 @@ end
 
 --- Create a structure of type ListDatasetsResponse
 -- Returned for a successful ListDatasets request.
--- @param _Count [Integer] Number of datasets returned.
--- @param _Datasets [DatasetList] A set of datasets.
--- @param _NextToken [String] A pagination token for obtaining the next page of results.
-function M.ListDatasetsResponse(_Count, _Datasets, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDatasetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Count [Integer] Number of datasets returned.
+-- * Datasets [DatasetList] A set of datasets.
+-- * NextToken [String] A pagination token for obtaining the next page of results.
+-- @return ListDatasetsResponse structure as a key-value pair table
+function M.ListDatasetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListDatasetsResponse")
 	local t = { 
-		["Count"] = _Count,
-		["Datasets"] = _Datasets,
-		["NextToken"] = _NextToken,
+		["Count"] = args["Count"],
+		["Datasets"] = args["Datasets"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListDatasetsResponse(t)
 	return t
@@ -1271,12 +1397,15 @@ end
 
 --- Create a structure of type LambdaThrottledException
 -- <p>AWS Lambda throttled your account, please contact AWS Support</p>
--- @param _message [ExceptionMessage] <p>A message returned when an LambdaThrottledException is thrown</p>
--- Required parameter: message
-function M.LambdaThrottledException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaThrottledException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p>A message returned when an LambdaThrottledException is thrown</p>
+-- Required key: message
+-- @return LambdaThrottledException structure as a key-value pair table
+function M.LambdaThrottledException(args)
+	assert(args, "You must provdide an argument table when creating LambdaThrottledException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLambdaThrottledException(t)
 	return t
@@ -1296,12 +1425,15 @@ end
 
 --- Create a structure of type ResourceConflictException
 -- Thrown if an update can't be applied because the resource was changed by another call and this would result in a conflict.
--- @param _message [ExceptionMessage] The message returned by a ResourceConflictException.
--- Required parameter: message
-function M.ResourceConflictException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] The message returned by a ResourceConflictException.
+-- Required key: message
+-- @return ResourceConflictException structure as a key-value pair table
+function M.ResourceConflictException(args)
+	assert(args, "You must provdide an argument table when creating ResourceConflictException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceConflictException(t)
 	return t
@@ -1321,12 +1453,15 @@ end
 
 --- Create a structure of type AlreadyStreamedException
 -- An exception thrown when a bulk publish operation is requested less than 24 hours after a previous bulk publish operation completed successfully.
--- @param _message [ExceptionMessage] The message associated with the AlreadyStreamedException exception.
--- Required parameter: message
-function M.AlreadyStreamedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AlreadyStreamedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] The message associated with the AlreadyStreamedException exception.
+-- Required key: message
+-- @return AlreadyStreamedException structure as a key-value pair table
+function M.AlreadyStreamedException(args)
+	assert(args, "You must provdide an argument table when creating AlreadyStreamedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertAlreadyStreamedException(t)
 	return t
@@ -1351,23 +1486,26 @@ end
 
 --- Create a structure of type Dataset
 -- A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
--- @param _DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
--- @param _DataStorage [Long] Total size in bytes of the records in this dataset.
--- @param _LastModifiedDate [Date] Date when the dataset was last modified.
--- @param _NumRecords [Long] Number of records in this dataset.
--- @param _IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
--- @param _LastModifiedBy [String] The device that made the last change to this dataset.
--- @param _CreationDate [Date] Date on which the dataset was created.
-function M.Dataset(_DatasetName, _DataStorage, _LastModifiedDate, _NumRecords, _IdentityId, _LastModifiedBy, _CreationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Dataset")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DatasetName [DatasetName] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (dash), and '.' (dot).
+-- * DataStorage [Long] Total size in bytes of the records in this dataset.
+-- * LastModifiedDate [Date] Date when the dataset was last modified.
+-- * NumRecords [Long] Number of records in this dataset.
+-- * IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
+-- * LastModifiedBy [String] The device that made the last change to this dataset.
+-- * CreationDate [Date] Date on which the dataset was created.
+-- @return Dataset structure as a key-value pair table
+function M.Dataset(args)
+	assert(args, "You must provdide an argument table when creating Dataset")
 	local t = { 
-		["DatasetName"] = _DatasetName,
-		["DataStorage"] = _DataStorage,
-		["LastModifiedDate"] = _LastModifiedDate,
-		["NumRecords"] = _NumRecords,
-		["IdentityId"] = _IdentityId,
-		["LastModifiedBy"] = _LastModifiedBy,
-		["CreationDate"] = _CreationDate,
+		["DatasetName"] = args["DatasetName"],
+		["DataStorage"] = args["DataStorage"],
+		["LastModifiedDate"] = args["LastModifiedDate"],
+		["NumRecords"] = args["NumRecords"],
+		["IdentityId"] = args["IdentityId"],
+		["LastModifiedBy"] = args["LastModifiedBy"],
+		["CreationDate"] = args["CreationDate"],
 	}
 	asserts.AssertDataset(t)
 	return t
@@ -1387,12 +1525,15 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- Thrown if the resource doesn't exist.
--- @param _message [ExceptionMessage] Message returned by a ResourceNotFoundException.
--- Required parameter: message
-function M.ResourceNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] Message returned by a ResourceNotFoundException.
+-- Required key: message
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -1418,22 +1559,25 @@ end
 
 --- Create a structure of type RecordPatch
 -- An update operation for a record.
--- @param _SyncCount [Long] Last known server sync count for this record. Set to 0 if unknown.
--- @param _DeviceLastModifiedDate [Date] The last modified date of the client device.
--- @param _Value [RecordValue] The value associated with the record patch.
--- @param _Key [RecordKey] The key associated with the record patch.
--- @param _Op [Operation] An operation, either replace or remove.
--- Required parameter: Op
--- Required parameter: Key
--- Required parameter: SyncCount
-function M.RecordPatch(_SyncCount, _DeviceLastModifiedDate, _Value, _Key, _Op, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecordPatch")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SyncCount [Long] Last known server sync count for this record. Set to 0 if unknown.
+-- * DeviceLastModifiedDate [Date] The last modified date of the client device.
+-- * Value [RecordValue] The value associated with the record patch.
+-- * Key [RecordKey] The key associated with the record patch.
+-- * Op [Operation] An operation, either replace or remove.
+-- Required key: Op
+-- Required key: Key
+-- Required key: SyncCount
+-- @return RecordPatch structure as a key-value pair table
+function M.RecordPatch(args)
+	assert(args, "You must provdide an argument table when creating RecordPatch")
 	local t = { 
-		["SyncCount"] = _SyncCount,
-		["DeviceLastModifiedDate"] = _DeviceLastModifiedDate,
-		["Value"] = _Value,
-		["Key"] = _Key,
-		["Op"] = _Op,
+		["SyncCount"] = args["SyncCount"],
+		["DeviceLastModifiedDate"] = args["DeviceLastModifiedDate"],
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
+		["Op"] = args["Op"],
 	}
 	asserts.AssertRecordPatch(t)
 	return t
@@ -1452,11 +1596,14 @@ end
 
 --- Create a structure of type RegisterDeviceResponse
 -- <p>Response to a RegisterDevice request.</p>
--- @param _DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
-function M.RegisterDeviceResponse(_DeviceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDeviceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
+-- @return RegisterDeviceResponse structure as a key-value pair table
+function M.RegisterDeviceResponse(args)
+	assert(args, "You must provdide an argument table when creating RegisterDeviceResponse")
 	local t = { 
-		["DeviceId"] = _DeviceId,
+		["DeviceId"] = args["DeviceId"],
 	}
 	asserts.AssertRegisterDeviceResponse(t)
 	return t
@@ -1482,21 +1629,24 @@ end
 
 --- Create a structure of type RegisterDeviceRequest
 -- <p>A request to RegisterDevice.</p>
--- @param _Platform [Platform] <p>The SNS platform type (e.g. GCM, SDM, APNS, APNS_SANDBOX).</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. Here, the ID of the pool that the identity belongs to.</p>
--- @param _Token [PushToken] <p>The push token.</p>
--- @param _IdentityId [IdentityId] <p>The unique ID for this identity.</p>
--- Required parameter: IdentityPoolId
--- Required parameter: IdentityId
--- Required parameter: Platform
--- Required parameter: Token
-function M.RegisterDeviceRequest(_Platform, _IdentityPoolId, _Token, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDeviceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Platform [Platform] <p>The SNS platform type (e.g. GCM, SDM, APNS, APNS_SANDBOX).</p>
+-- * IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. Here, the ID of the pool that the identity belongs to.</p>
+-- * Token [PushToken] <p>The push token.</p>
+-- * IdentityId [IdentityId] <p>The unique ID for this identity.</p>
+-- Required key: IdentityPoolId
+-- Required key: IdentityId
+-- Required key: Platform
+-- Required key: Token
+-- @return RegisterDeviceRequest structure as a key-value pair table
+function M.RegisterDeviceRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterDeviceRequest")
 	local t = { 
-		["Platform"] = _Platform,
-		["IdentityPoolId"] = _IdentityPoolId,
-		["Token"] = _Token,
-		["IdentityId"] = _IdentityId,
+		["Platform"] = args["Platform"],
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["Token"] = args["Token"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertRegisterDeviceRequest(t)
 	return t
@@ -1516,12 +1666,15 @@ end
 
 --- Create a structure of type InvalidConfigurationException
 --  
--- @param _message [ExceptionMessage] Message returned by InvalidConfigurationException.
--- Required parameter: message
-function M.InvalidConfigurationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidConfigurationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] Message returned by InvalidConfigurationException.
+-- Required key: message
+-- @return InvalidConfigurationException structure as a key-value pair table
+function M.InvalidConfigurationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidConfigurationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidConfigurationException(t)
 	return t
@@ -1541,12 +1694,15 @@ end
 
 --- Create a structure of type GetIdentityPoolConfigurationRequest
 -- <p>The input for the GetIdentityPoolConfiguration operation.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool for which to return a configuration.</p>
--- Required parameter: IdentityPoolId
-function M.GetIdentityPoolConfigurationRequest(_IdentityPoolId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. This is the ID of the pool for which to return a configuration.</p>
+-- Required key: IdentityPoolId
+-- @return GetIdentityPoolConfigurationRequest structure as a key-value pair table
+function M.GetIdentityPoolConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityPoolConfigurationRequest")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
 	asserts.AssertGetIdentityPoolConfigurationRequest(t)
 	return t
@@ -1566,12 +1722,15 @@ end
 
 --- Create a structure of type DuplicateRequestException
 -- An exception thrown when there is an IN_PROGRESS bulk publish operation for the given identity pool.
--- @param _message [ExceptionMessage] The message associated with the DuplicateRequestException exception.
--- Required parameter: message
-function M.DuplicateRequestException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] The message associated with the DuplicateRequestException exception.
+-- Required key: message
+-- @return DuplicateRequestException structure as a key-value pair table
+function M.DuplicateRequestException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateRequestException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDuplicateRequestException(t)
 	return t

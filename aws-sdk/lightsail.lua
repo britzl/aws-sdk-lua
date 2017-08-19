@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type GetInstanceAccessDetailsResult
 --  
--- @param _accessDetails [InstanceAccessDetails] <p>An array of key-value pairs containing information about a get instance access request.</p>
-function M.GetInstanceAccessDetailsResult(_accessDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceAccessDetailsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * accessDetails [InstanceAccessDetails] <p>An array of key-value pairs containing information about a get instance access request.</p>
+-- @return GetInstanceAccessDetailsResult structure as a key-value pair table
+function M.GetInstanceAccessDetailsResult(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceAccessDetailsResult")
 	local t = { 
-		["accessDetails"] = _accessDetails,
+		["accessDetails"] = args["accessDetails"],
 	}
 	asserts.AssertGetInstanceAccessDetailsResult(t)
 	return t
@@ -57,11 +60,14 @@ end
 
 --- Create a structure of type MonthlyTransfer
 -- <p>Describes the monthly data transfer in and out of your virtual private server (or <i>instance</i>).</p>
--- @param _gbPerMonthAllocated [integer] <p>The amount allocated per month (in GB).</p>
-function M.MonthlyTransfer(_gbPerMonthAllocated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MonthlyTransfer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * gbPerMonthAllocated [integer] <p>The amount allocated per month (in GB).</p>
+-- @return MonthlyTransfer structure as a key-value pair table
+function M.MonthlyTransfer(args)
+	assert(args, "You must provdide an argument table when creating MonthlyTransfer")
 	local t = { 
-		["gbPerMonthAllocated"] = _gbPerMonthAllocated,
+		["gbPerMonthAllocated"] = args["gbPerMonthAllocated"],
 	}
 	asserts.AssertMonthlyTransfer(t)
 	return t
@@ -81,12 +87,15 @@ end
 
 --- Create a structure of type StopInstanceRequest
 --  
--- @param _instanceName [ResourceName] <p>The name of the instance (a virtual private server) to stop.</p>
--- Required parameter: instanceName
-function M.StopInstanceRequest(_instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The name of the instance (a virtual private server) to stop.</p>
+-- Required key: instanceName
+-- @return StopInstanceRequest structure as a key-value pair table
+function M.StopInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating StopInstanceRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertStopInstanceRequest(t)
 	return t
@@ -106,13 +115,16 @@ end
 
 --- Create a structure of type InstanceState
 -- <p>Describes the virtual private server (or <i>instance</i>) status.</p>
--- @param _code [integer] <p>The status code for the instance.</p>
--- @param _name [string] <p>The state of the instance (e.g., <code>running</code> or <code>pending</code>).</p>
-function M.InstanceState(_code, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceState")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * code [integer] <p>The status code for the instance.</p>
+-- * name [string] <p>The state of the instance (e.g., <code>running</code> or <code>pending</code>).</p>
+-- @return InstanceState structure as a key-value pair table
+function M.InstanceState(args)
+	assert(args, "You must provdide an argument table when creating InstanceState")
 	local t = { 
-		["code"] = _code,
-		["name"] = _name,
+		["code"] = args["code"],
+		["name"] = args["name"],
 	}
 	asserts.AssertInstanceState(t)
 	return t
@@ -131,11 +143,14 @@ end
 
 --- Create a structure of type PeerVpcResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
-function M.PeerVpcResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PeerVpcResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
+-- @return PeerVpcResult structure as a key-value pair table
+function M.PeerVpcResult(args)
+	assert(args, "You must provdide an argument table when creating PeerVpcResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertPeerVpcResult(t)
 	return t
@@ -157,17 +172,20 @@ end
 
 --- Create a structure of type UnauthenticatedException
 -- <p>Lightsail throws this exception when the user has not been authenticated.</p>
--- @param _docs [string] 
--- @param _message [string] 
--- @param _code [string] 
--- @param _tip [string] 
-function M.UnauthenticatedException(_docs, _message, _code, _tip, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnauthenticatedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * docs [string] 
+-- * message [string] 
+-- * code [string] 
+-- * tip [string] 
+-- @return UnauthenticatedException structure as a key-value pair table
+function M.UnauthenticatedException(args)
+	assert(args, "You must provdide an argument table when creating UnauthenticatedException")
 	local t = { 
-		["docs"] = _docs,
-		["message"] = _message,
-		["code"] = _code,
-		["tip"] = _tip,
+		["docs"] = args["docs"],
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["tip"] = args["tip"],
 	}
 	asserts.AssertUnauthenticatedException(t)
 	return t
@@ -186,11 +204,14 @@ end
 
 --- Create a structure of type GetKeyPairResult
 --  
--- @param _keyPair [KeyPair] <p>An array of key-value pairs containing information about the key pair.</p>
-function M.GetKeyPairResult(_keyPair, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyPairResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * keyPair [KeyPair] <p>An array of key-value pairs containing information about the key pair.</p>
+-- @return GetKeyPairResult structure as a key-value pair table
+function M.GetKeyPairResult(args)
+	assert(args, "You must provdide an argument table when creating GetKeyPairResult")
 	local t = { 
-		["keyPair"] = _keyPair,
+		["keyPair"] = args["keyPair"],
 	}
 	asserts.AssertGetKeyPairResult(t)
 	return t
@@ -219,27 +240,30 @@ end
 
 --- Create a structure of type CreateInstancesRequest
 --  
--- @param _userData [string] <p>A launch script you can create that configures a server with additional user data. For example, you might want to run <code>apt-get –y update</code>.</p> <note> <p>Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses <code>pkg</code>. For a complete list, see the <a href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.</p> </note>
--- @param _availabilityZone [string] <p>The Availability Zone in which to create your instance. Use the following format: <code>us-east-1a</code> (case sensitive). You can get a list of availability zones by using the <a href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a> operation. Be sure to add the <code>include availability zones</code> parameter to your request.</p>
--- @param _customImageName [ResourceName] <p>(Deprecated) The name for your custom image.</p> <note> <p>In releases prior to June 12, 2017, this parameter was ignored by the API. It is now deprecated.</p> </note>
--- @param _instanceNames [StringList] <p>The names to use for your new Lightsail instances. Separate multiple values using quotation marks and commas, for example: <code>["MyFirstInstance","MySecondInstance"]</code> </p>
--- @param _blueprintId [NonEmptyString] <p>The ID for a virtual private server image (e.g., <code>app_wordpress_4_4</code> or <code>app_lamp_7_0</code>). Use the get blueprints operation to return a list of available images (or <i>blueprints</i>).</p>
--- @param _keyPairName [ResourceName] <p>The name of your key pair.</p>
--- @param _bundleId [NonEmptyString] <p>The bundle of specification information for your virtual private server (or <i>instance</i>), including the pricing plan (e.g., <code>micro_1_0</code>).</p>
--- Required parameter: instanceNames
--- Required parameter: availabilityZone
--- Required parameter: blueprintId
--- Required parameter: bundleId
-function M.CreateInstancesRequest(_userData, _availabilityZone, _customImageName, _instanceNames, _blueprintId, _keyPairName, _bundleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstancesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * userData [string] <p>A launch script you can create that configures a server with additional user data. For example, you might want to run <code>apt-get –y update</code>.</p> <note> <p>Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses <code>pkg</code>. For a complete list, see the <a href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.</p> </note>
+-- * availabilityZone [string] <p>The Availability Zone in which to create your instance. Use the following format: <code>us-east-1a</code> (case sensitive). You can get a list of availability zones by using the <a href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a> operation. Be sure to add the <code>include availability zones</code> parameter to your request.</p>
+-- * customImageName [ResourceName] <p>(Deprecated) The name for your custom image.</p> <note> <p>In releases prior to June 12, 2017, this parameter was ignored by the API. It is now deprecated.</p> </note>
+-- * instanceNames [StringList] <p>The names to use for your new Lightsail instances. Separate multiple values using quotation marks and commas, for example: <code>["MyFirstInstance","MySecondInstance"]</code> </p>
+-- * blueprintId [NonEmptyString] <p>The ID for a virtual private server image (e.g., <code>app_wordpress_4_4</code> or <code>app_lamp_7_0</code>). Use the get blueprints operation to return a list of available images (or <i>blueprints</i>).</p>
+-- * keyPairName [ResourceName] <p>The name of your key pair.</p>
+-- * bundleId [NonEmptyString] <p>The bundle of specification information for your virtual private server (or <i>instance</i>), including the pricing plan (e.g., <code>micro_1_0</code>).</p>
+-- Required key: instanceNames
+-- Required key: availabilityZone
+-- Required key: blueprintId
+-- Required key: bundleId
+-- @return CreateInstancesRequest structure as a key-value pair table
+function M.CreateInstancesRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateInstancesRequest")
 	local t = { 
-		["userData"] = _userData,
-		["availabilityZone"] = _availabilityZone,
-		["customImageName"] = _customImageName,
-		["instanceNames"] = _instanceNames,
-		["blueprintId"] = _blueprintId,
-		["keyPairName"] = _keyPairName,
-		["bundleId"] = _bundleId,
+		["userData"] = args["userData"],
+		["availabilityZone"] = args["availabilityZone"],
+		["customImageName"] = args["customImageName"],
+		["instanceNames"] = args["instanceNames"],
+		["blueprintId"] = args["blueprintId"],
+		["keyPairName"] = args["keyPairName"],
+		["bundleId"] = args["bundleId"],
 	}
 	asserts.AssertCreateInstancesRequest(t)
 	return t
@@ -259,12 +283,15 @@ end
 
 --- Create a structure of type DetachStaticIpRequest
 --  
--- @param _staticIpName [ResourceName] <p>The name of the static IP to detach from the instance.</p>
--- Required parameter: staticIpName
-function M.DetachStaticIpRequest(_staticIpName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachStaticIpRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * staticIpName [ResourceName] <p>The name of the static IP to detach from the instance.</p>
+-- Required key: staticIpName
+-- @return DetachStaticIpRequest structure as a key-value pair table
+function M.DetachStaticIpRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachStaticIpRequest")
 	local t = { 
-		["staticIpName"] = _staticIpName,
+		["staticIpName"] = args["staticIpName"],
 	}
 	asserts.AssertDetachStaticIpRequest(t)
 	return t
@@ -284,12 +311,15 @@ end
 
 --- Create a structure of type StartInstanceRequest
 --  
--- @param _instanceName [ResourceName] <p>The name of the instance (a virtual private server) to start.</p>
--- Required parameter: instanceName
-function M.StartInstanceRequest(_instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The name of the instance (a virtual private server) to start.</p>
+-- Required key: instanceName
+-- @return StartInstanceRequest structure as a key-value pair table
+function M.StartInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating StartInstanceRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertStartInstanceRequest(t)
 	return t
@@ -308,11 +338,14 @@ end
 
 --- Create a structure of type GetInstancePortStatesResult
 --  
--- @param _portStates [InstancePortStateList] <p>Information about the port states resulting from your request.</p>
-function M.GetInstancePortStatesResult(_portStates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstancePortStatesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * portStates [InstancePortStateList] <p>Information about the port states resulting from your request.</p>
+-- @return GetInstancePortStatesResult structure as a key-value pair table
+function M.GetInstancePortStatesResult(args)
+	assert(args, "You must provdide an argument table when creating GetInstancePortStatesResult")
 	local t = { 
-		["portStates"] = _portStates,
+		["portStates"] = args["portStates"],
 	}
 	asserts.AssertGetInstancePortStatesResult(t)
 	return t
@@ -332,12 +365,15 @@ end
 
 --- Create a structure of type GetInstanceStateRequest
 --  
--- @param _instanceName [ResourceName] <p>The name of the instance to get state information about.</p>
--- Required parameter: instanceName
-function M.GetInstanceStateRequest(_instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceStateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The name of the instance to get state information about.</p>
+-- Required key: instanceName
+-- @return GetInstanceStateRequest structure as a key-value pair table
+function M.GetInstanceStateRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceStateRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertGetInstanceStateRequest(t)
 	return t
@@ -359,17 +395,20 @@ end
 
 --- Create a structure of type CreateKeyPairResult
 --  
--- @param _keyPair [KeyPair] <p>An array of key-value pairs containing information about the new key pair you just created.</p>
--- @param _publicKeyBase64 [Base64] <p>A base64-encoded public key of the <code>ssh-rsa</code> type.</p>
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the results of your create key pair request.</p>
--- @param _privateKeyBase64 [Base64] <p>A base64-encoded RSA private key.</p>
-function M.CreateKeyPairResult(_keyPair, _publicKeyBase64, _operation, _privateKeyBase64, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateKeyPairResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * keyPair [KeyPair] <p>An array of key-value pairs containing information about the new key pair you just created.</p>
+-- * publicKeyBase64 [Base64] <p>A base64-encoded public key of the <code>ssh-rsa</code> type.</p>
+-- * operation [Operation] <p>An array of key-value pairs containing information about the results of your create key pair request.</p>
+-- * privateKeyBase64 [Base64] <p>A base64-encoded RSA private key.</p>
+-- @return CreateKeyPairResult structure as a key-value pair table
+function M.CreateKeyPairResult(args)
+	assert(args, "You must provdide an argument table when creating CreateKeyPairResult")
 	local t = { 
-		["keyPair"] = _keyPair,
-		["publicKeyBase64"] = _publicKeyBase64,
-		["operation"] = _operation,
-		["privateKeyBase64"] = _privateKeyBase64,
+		["keyPair"] = args["keyPair"],
+		["publicKeyBase64"] = args["publicKeyBase64"],
+		["operation"] = args["operation"],
+		["privateKeyBase64"] = args["privateKeyBase64"],
 	}
 	asserts.AssertCreateKeyPairResult(t)
 	return t
@@ -388,11 +427,14 @@ end
 
 --- Create a structure of type GetStaticIpResult
 --  
--- @param _staticIp [StaticIp] <p>An array of key-value pairs containing information about the requested static IP.</p>
-function M.GetStaticIpResult(_staticIp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetStaticIpResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * staticIp [StaticIp] <p>An array of key-value pairs containing information about the requested static IP.</p>
+-- @return GetStaticIpResult structure as a key-value pair table
+function M.GetStaticIpResult(args)
+	assert(args, "You must provdide an argument table when creating GetStaticIpResult")
 	local t = { 
-		["staticIp"] = _staticIp,
+		["staticIp"] = args["staticIp"],
 	}
 	asserts.AssertGetStaticIpResult(t)
 	return t
@@ -411,11 +453,14 @@ end
 
 --- Create a structure of type CreateDomainResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the domain resource you created.</p>
-function M.CreateDomainResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs containing information about the domain resource you created.</p>
+-- @return CreateDomainResult structure as a key-value pair table
+function M.CreateDomainResult(args)
+	assert(args, "You must provdide an argument table when creating CreateDomainResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertCreateDomainResult(t)
 	return t
@@ -434,11 +479,14 @@ end
 
 --- Create a structure of type ReleaseStaticIpResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
-function M.ReleaseStaticIpResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReleaseStaticIpResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
+-- @return ReleaseStaticIpResult structure as a key-value pair table
+function M.ReleaseStaticIpResult(args)
+	assert(args, "You must provdide an argument table when creating ReleaseStaticIpResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertReleaseStaticIpResult(t)
 	return t
@@ -457,11 +505,14 @@ end
 
 --- Create a structure of type StartInstanceResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
-function M.StartInstanceResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartInstanceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
+-- @return StartInstanceResult structure as a key-value pair table
+function M.StartInstanceResult(args)
+	assert(args, "You must provdide an argument table when creating StartInstanceResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertStartInstanceResult(t)
 	return t
@@ -480,11 +531,14 @@ end
 
 --- Create a structure of type GetInstanceResult
 --  
--- @param _instance [Instance] <p>An array of key-value pairs containing information about the specified instance.</p>
-function M.GetInstanceResult(_instance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instance [Instance] <p>An array of key-value pairs containing information about the specified instance.</p>
+-- @return GetInstanceResult structure as a key-value pair table
+function M.GetInstanceResult(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceResult")
 	local t = { 
-		["instance"] = _instance,
+		["instance"] = args["instance"],
 	}
 	asserts.AssertGetInstanceResult(t)
 	return t
@@ -509,23 +563,26 @@ end
 
 --- Create a structure of type MetricDatapoint
 -- <p>Describes the metric data point.</p>
--- @param _sampleCount [double] <p>The sample count.</p>
--- @param _timestamp [timestamp] <p>The timestamp (e.g., <code>1479816991.349</code>).</p>
--- @param _average [double] <p>The average.</p>
--- @param _maximum [double] <p>The maximum.</p>
--- @param _minimum [double] <p>The minimum.</p>
--- @param _sum [double] <p>The sum.</p>
--- @param _unit [MetricUnit] <p>The unit. </p>
-function M.MetricDatapoint(_sampleCount, _timestamp, _average, _maximum, _minimum, _sum, _unit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MetricDatapoint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * sampleCount [double] <p>The sample count.</p>
+-- * timestamp [timestamp] <p>The timestamp (e.g., <code>1479816991.349</code>).</p>
+-- * average [double] <p>The average.</p>
+-- * maximum [double] <p>The maximum.</p>
+-- * minimum [double] <p>The minimum.</p>
+-- * sum [double] <p>The sum.</p>
+-- * unit [MetricUnit] <p>The unit. </p>
+-- @return MetricDatapoint structure as a key-value pair table
+function M.MetricDatapoint(args)
+	assert(args, "You must provdide an argument table when creating MetricDatapoint")
 	local t = { 
-		["sampleCount"] = _sampleCount,
-		["timestamp"] = _timestamp,
-		["average"] = _average,
-		["maximum"] = _maximum,
-		["minimum"] = _minimum,
-		["sum"] = _sum,
-		["unit"] = _unit,
+		["sampleCount"] = args["sampleCount"],
+		["timestamp"] = args["timestamp"],
+		["average"] = args["average"],
+		["maximum"] = args["maximum"],
+		["minimum"] = args["minimum"],
+		["sum"] = args["sum"],
+		["unit"] = args["unit"],
 	}
 	asserts.AssertMetricDatapoint(t)
 	return t
@@ -548,19 +605,22 @@ end
 
 --- Create a structure of type Region
 -- <p>Describes the AWS Region.</p>
--- @param _availabilityZones [AvailabilityZoneList] <p>The Availability Zones. Follows the format <code>us-east-1a</code> (case-sensitive).</p>
--- @param _displayName [string] <p>The display name (e.g., <code>Virginia</code>).</p>
--- @param _description [string] <p>The description of the AWS Region (e.g., <code>This region is recommended to serve users in the eastern United States and eastern Canada</code>).</p>
--- @param _continentCode [string] <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
--- @param _name [RegionName] <p>The region name (e.g., <code>us-east-1</code>).</p>
-function M.Region(_availabilityZones, _displayName, _description, _continentCode, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Region")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * availabilityZones [AvailabilityZoneList] <p>The Availability Zones. Follows the format <code>us-east-1a</code> (case-sensitive).</p>
+-- * displayName [string] <p>The display name (e.g., <code>Virginia</code>).</p>
+-- * description [string] <p>The description of the AWS Region (e.g., <code>This region is recommended to serve users in the eastern United States and eastern Canada</code>).</p>
+-- * continentCode [string] <p>The continent code (e.g., <code>NA</code>, meaning North America).</p>
+-- * name [RegionName] <p>The region name (e.g., <code>us-east-1</code>).</p>
+-- @return Region structure as a key-value pair table
+function M.Region(args)
+	assert(args, "You must provdide an argument table when creating Region")
 	local t = { 
-		["availabilityZones"] = _availabilityZones,
-		["displayName"] = _displayName,
-		["description"] = _description,
-		["continentCode"] = _continentCode,
-		["name"] = _name,
+		["availabilityZones"] = args["availabilityZones"],
+		["displayName"] = args["displayName"],
+		["description"] = args["description"],
+		["continentCode"] = args["continentCode"],
+		["name"] = args["name"],
 	}
 	asserts.AssertRegion(t)
 	return t
@@ -582,15 +642,18 @@ end
 
 --- Create a structure of type PutInstancePublicPortsRequest
 --  
--- @param _instanceName [ResourceName] <p>The Lightsail instance name of the public port(s) you are setting.</p>
--- @param _portInfos [PortInfoList] <p>Specifies information about the public port(s).</p>
--- Required parameter: portInfos
--- Required parameter: instanceName
-function M.PutInstancePublicPortsRequest(_instanceName, _portInfos, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutInstancePublicPortsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The Lightsail instance name of the public port(s) you are setting.</p>
+-- * portInfos [PortInfoList] <p>Specifies information about the public port(s).</p>
+-- Required key: portInfos
+-- Required key: instanceName
+-- @return PutInstancePublicPortsRequest structure as a key-value pair table
+function M.PutInstancePublicPortsRequest(args)
+	assert(args, "You must provdide an argument table when creating PutInstancePublicPortsRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
-		["portInfos"] = _portInfos,
+		["instanceName"] = args["instanceName"],
+		["portInfos"] = args["portInfos"],
 	}
 	asserts.AssertPutInstancePublicPortsRequest(t)
 	return t
@@ -609,11 +672,14 @@ end
 
 --- Create a structure of type RebootInstanceResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
-function M.RebootInstanceResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebootInstanceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
+-- @return RebootInstanceResult structure as a key-value pair table
+function M.RebootInstanceResult(args)
+	assert(args, "You must provdide an argument table when creating RebootInstanceResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertRebootInstanceResult(t)
 	return t
@@ -632,11 +698,14 @@ end
 
 --- Create a structure of type CreateInstanceSnapshotResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances snapshot request.</p>
-function M.CreateInstanceSnapshotResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstanceSnapshotResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances snapshot request.</p>
+-- @return CreateInstanceSnapshotResult structure as a key-value pair table
+function M.CreateInstanceSnapshotResult(args)
+	assert(args, "You must provdide an argument table when creating CreateInstanceSnapshotResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertCreateInstanceSnapshotResult(t)
 	return t
@@ -672,45 +741,48 @@ end
 
 --- Create a structure of type Instance
 -- <p>Describes an instance (a virtual private server).</p>
--- @param _username [NonEmptyString] <p>The user name for connecting to the instance (e.g., <code>ec2-user</code>).</p>
--- @param _isStaticIp [boolean] <p>A Boolean value indicating whether this instance has a static IP assigned to it.</p>
--- @param _networking [InstanceNetworking] <p>Information about the public ports and monthly data transfer rates for the instance.</p>
--- @param _name [ResourceName] <p>The name the user gave the instance (e.g., <code>Amazon_Linux-1GB-Virginia-1</code>).</p>
--- @param _ipv6Address [IpV6Address] <p>The IPv6 address of the instance.</p>
--- @param _resourceType [ResourceType] <p>The type of resource (usually <code>Instance</code>).</p>
--- @param _supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
--- @param _blueprintName [NonEmptyString] <p>The friendly name of the blueprint (e.g., <code>Amazon Linux</code>).</p>
--- @param _hardware [InstanceHardware] <p>The size of the vCPU and the amount of RAM for the instance.</p>
--- @param _privateIpAddress [IpAddress] <p>The private IP address of the instance.</p>
--- @param _state [InstanceState] <p>The status code and the state (e.g., <code>running</code>) for the instance.</p>
--- @param _arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the instance (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE</code>).</p>
--- @param _publicIpAddress [IpAddress] <p>The public IP address of the instance.</p>
--- @param _blueprintId [NonEmptyString] <p>The blueprint ID (e.g., <code>os_amlinux_2016_03</code>).</p>
--- @param _bundleId [NonEmptyString] <p>The bundle for the instance (e.g., <code>micro_1_0</code>).</p>
--- @param _sshKeyName [ResourceName] <p>The name of the SSH key being used to connect to the instance (e.g., <code>LightsailDefaultKeyPair</code>).</p>
--- @param _createdAt [IsoDate] <p>The timestamp when the instance was created (e.g., <code>1479734909.17</code>).</p>
--- @param _location [ResourceLocation] <p>The region name and availability zone where the instance is located.</p>
-function M.Instance(_username, _isStaticIp, _networking, _name, _ipv6Address, _resourceType, _supportCode, _blueprintName, _hardware, _privateIpAddress, _state, _arn, _publicIpAddress, _blueprintId, _bundleId, _sshKeyName, _createdAt, _location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * username [NonEmptyString] <p>The user name for connecting to the instance (e.g., <code>ec2-user</code>).</p>
+-- * isStaticIp [boolean] <p>A Boolean value indicating whether this instance has a static IP assigned to it.</p>
+-- * networking [InstanceNetworking] <p>Information about the public ports and monthly data transfer rates for the instance.</p>
+-- * name [ResourceName] <p>The name the user gave the instance (e.g., <code>Amazon_Linux-1GB-Virginia-1</code>).</p>
+-- * ipv6Address [IpV6Address] <p>The IPv6 address of the instance.</p>
+-- * resourceType [ResourceType] <p>The type of resource (usually <code>Instance</code>).</p>
+-- * supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- * blueprintName [NonEmptyString] <p>The friendly name of the blueprint (e.g., <code>Amazon Linux</code>).</p>
+-- * hardware [InstanceHardware] <p>The size of the vCPU and the amount of RAM for the instance.</p>
+-- * privateIpAddress [IpAddress] <p>The private IP address of the instance.</p>
+-- * state [InstanceState] <p>The status code and the state (e.g., <code>running</code>) for the instance.</p>
+-- * arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the instance (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:Instance/244ad76f-8aad-4741-809f-12345EXAMPLE</code>).</p>
+-- * publicIpAddress [IpAddress] <p>The public IP address of the instance.</p>
+-- * blueprintId [NonEmptyString] <p>The blueprint ID (e.g., <code>os_amlinux_2016_03</code>).</p>
+-- * bundleId [NonEmptyString] <p>The bundle for the instance (e.g., <code>micro_1_0</code>).</p>
+-- * sshKeyName [ResourceName] <p>The name of the SSH key being used to connect to the instance (e.g., <code>LightsailDefaultKeyPair</code>).</p>
+-- * createdAt [IsoDate] <p>The timestamp when the instance was created (e.g., <code>1479734909.17</code>).</p>
+-- * location [ResourceLocation] <p>The region name and availability zone where the instance is located.</p>
+-- @return Instance structure as a key-value pair table
+function M.Instance(args)
+	assert(args, "You must provdide an argument table when creating Instance")
 	local t = { 
-		["username"] = _username,
-		["isStaticIp"] = _isStaticIp,
-		["networking"] = _networking,
-		["name"] = _name,
-		["ipv6Address"] = _ipv6Address,
-		["resourceType"] = _resourceType,
-		["supportCode"] = _supportCode,
-		["blueprintName"] = _blueprintName,
-		["hardware"] = _hardware,
-		["privateIpAddress"] = _privateIpAddress,
-		["state"] = _state,
-		["arn"] = _arn,
-		["publicIpAddress"] = _publicIpAddress,
-		["blueprintId"] = _blueprintId,
-		["bundleId"] = _bundleId,
-		["sshKeyName"] = _sshKeyName,
-		["createdAt"] = _createdAt,
-		["location"] = _location,
+		["username"] = args["username"],
+		["isStaticIp"] = args["isStaticIp"],
+		["networking"] = args["networking"],
+		["name"] = args["name"],
+		["ipv6Address"] = args["ipv6Address"],
+		["resourceType"] = args["resourceType"],
+		["supportCode"] = args["supportCode"],
+		["blueprintName"] = args["blueprintName"],
+		["hardware"] = args["hardware"],
+		["privateIpAddress"] = args["privateIpAddress"],
+		["state"] = args["state"],
+		["arn"] = args["arn"],
+		["publicIpAddress"] = args["publicIpAddress"],
+		["blueprintId"] = args["blueprintId"],
+		["bundleId"] = args["bundleId"],
+		["sshKeyName"] = args["sshKeyName"],
+		["createdAt"] = args["createdAt"],
+		["location"] = args["location"],
 	}
 	asserts.AssertInstance(t)
 	return t
@@ -730,12 +802,15 @@ end
 
 --- Create a structure of type GetDomainRequest
 --  
--- @param _domainName [DomainName] <p>The domain name for which your want to return information about.</p>
--- Required parameter: domainName
-function M.GetDomainRequest(_domainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainName [DomainName] <p>The domain name for which your want to return information about.</p>
+-- Required key: domainName
+-- @return GetDomainRequest structure as a key-value pair table
+function M.GetDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDomainRequest")
 	local t = { 
-		["domainName"] = _domainName,
+		["domainName"] = args["domainName"],
 	}
 	asserts.AssertGetDomainRequest(t)
 	return t
@@ -757,15 +832,18 @@ end
 
 --- Create a structure of type UpdateDomainEntryRequest
 --  
--- @param _domainEntry [DomainEntry] <p>An array of key-value pairs containing information about the domain entry.</p>
--- @param _domainName [DomainName] <p>The name of the domain recordset to update.</p>
--- Required parameter: domainName
--- Required parameter: domainEntry
-function M.UpdateDomainEntryRequest(_domainEntry, _domainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainEntryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainEntry [DomainEntry] <p>An array of key-value pairs containing information about the domain entry.</p>
+-- * domainName [DomainName] <p>The name of the domain recordset to update.</p>
+-- Required key: domainName
+-- Required key: domainEntry
+-- @return UpdateDomainEntryRequest structure as a key-value pair table
+function M.UpdateDomainEntryRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateDomainEntryRequest")
 	local t = { 
-		["domainEntry"] = _domainEntry,
-		["domainName"] = _domainName,
+		["domainEntry"] = args["domainEntry"],
+		["domainName"] = args["domainName"],
 	}
 	asserts.AssertUpdateDomainEntryRequest(t)
 	return t
@@ -796,35 +874,38 @@ end
 
 --- Create a structure of type InstanceSnapshot
 -- <p>Describes the snapshot of the virtual private server, or <i>instance</i>.</p>
--- @param _fromInstanceName [ResourceName] <p>The instance from which the snapshot was created.</p>
--- @param _name [ResourceName] <p>The name of the snapshot.</p>
--- @param _sizeInGb [integer] <p>The size in GB of the SSD.</p>
--- @param _resourceType [ResourceType] <p>The type of resource (usually <code>InstanceSnapshot</code>).</p>
--- @param _supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
--- @param _fromInstanceArn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the instance from which the snapshot was created (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:Instance/64b8404c-ccb1-430b-8daf-12345EXAMPLE</code>).</p>
--- @param _state [InstanceSnapshotState] <p>The state the snapshot is in.</p>
--- @param _arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the snapshot (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:InstanceSnapshot/d23b5706-3322-4d83-81e5-12345EXAMPLE</code>).</p>
--- @param _progress [string] <p>The progress of the snapshot.</p>
--- @param _fromBundleId [string] <p>The bundle ID from which you created the snapshot (e.g., <code>micro_1_0</code>).</p>
--- @param _fromBlueprintId [string] <p>The blueprint ID from which you created the snapshot (e.g., <code>os_debian_8_3</code>). A blueprint is a virtual private server (or <i>instance</i>) image used to create instances quickly.</p>
--- @param _createdAt [IsoDate] <p>The timestamp when the snapshot was created (e.g., <code>1479907467.024</code>).</p>
--- @param _location [ResourceLocation] <p>The region name and availability zone where you created the snapshot.</p>
-function M.InstanceSnapshot(_fromInstanceName, _name, _sizeInGb, _resourceType, _supportCode, _fromInstanceArn, _state, _arn, _progress, _fromBundleId, _fromBlueprintId, _createdAt, _location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceSnapshot")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * fromInstanceName [ResourceName] <p>The instance from which the snapshot was created.</p>
+-- * name [ResourceName] <p>The name of the snapshot.</p>
+-- * sizeInGb [integer] <p>The size in GB of the SSD.</p>
+-- * resourceType [ResourceType] <p>The type of resource (usually <code>InstanceSnapshot</code>).</p>
+-- * supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- * fromInstanceArn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the instance from which the snapshot was created (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:Instance/64b8404c-ccb1-430b-8daf-12345EXAMPLE</code>).</p>
+-- * state [InstanceSnapshotState] <p>The state the snapshot is in.</p>
+-- * arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the snapshot (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:InstanceSnapshot/d23b5706-3322-4d83-81e5-12345EXAMPLE</code>).</p>
+-- * progress [string] <p>The progress of the snapshot.</p>
+-- * fromBundleId [string] <p>The bundle ID from which you created the snapshot (e.g., <code>micro_1_0</code>).</p>
+-- * fromBlueprintId [string] <p>The blueprint ID from which you created the snapshot (e.g., <code>os_debian_8_3</code>). A blueprint is a virtual private server (or <i>instance</i>) image used to create instances quickly.</p>
+-- * createdAt [IsoDate] <p>The timestamp when the snapshot was created (e.g., <code>1479907467.024</code>).</p>
+-- * location [ResourceLocation] <p>The region name and availability zone where you created the snapshot.</p>
+-- @return InstanceSnapshot structure as a key-value pair table
+function M.InstanceSnapshot(args)
+	assert(args, "You must provdide an argument table when creating InstanceSnapshot")
 	local t = { 
-		["fromInstanceName"] = _fromInstanceName,
-		["name"] = _name,
-		["sizeInGb"] = _sizeInGb,
-		["resourceType"] = _resourceType,
-		["supportCode"] = _supportCode,
-		["fromInstanceArn"] = _fromInstanceArn,
-		["state"] = _state,
-		["arn"] = _arn,
-		["progress"] = _progress,
-		["fromBundleId"] = _fromBundleId,
-		["fromBlueprintId"] = _fromBlueprintId,
-		["createdAt"] = _createdAt,
-		["location"] = _location,
+		["fromInstanceName"] = args["fromInstanceName"],
+		["name"] = args["name"],
+		["sizeInGb"] = args["sizeInGb"],
+		["resourceType"] = args["resourceType"],
+		["supportCode"] = args["supportCode"],
+		["fromInstanceArn"] = args["fromInstanceArn"],
+		["state"] = args["state"],
+		["arn"] = args["arn"],
+		["progress"] = args["progress"],
+		["fromBundleId"] = args["fromBundleId"],
+		["fromBlueprintId"] = args["fromBlueprintId"],
+		["createdAt"] = args["createdAt"],
+		["location"] = args["location"],
 	}
 	asserts.AssertInstanceSnapshot(t)
 	return t
@@ -854,33 +935,36 @@ end
 
 --- Create a structure of type Operation
 -- <p>Describes the API operation.</p>
--- @param _status [OperationStatus] <p>The status of the operation. </p>
--- @param _resourceType [ResourceType] <p>The resource type. </p>
--- @param _isTerminal [boolean] <p>A Boolean value indicating whether the operation is terminal.</p>
--- @param _operationDetails [string] <p>Details about the operation (e.g., <code>Debian-1GB-Virginia-1</code>).</p>
--- @param _statusChangedAt [IsoDate] <p>The timestamp when the status was changed (e.g., <code>1479816991.349</code>).</p>
--- @param _errorCode [string] <p>The error code.</p>
--- @param _errorDetails [string] <p>The error details.</p>
--- @param _location [ResourceLocation] <p>The region and Availability Zone.</p>
--- @param _operationType [OperationType] <p>The type of operation. </p>
--- @param _resourceName [ResourceName] <p>The resource name.</p>
--- @param _id [NonEmptyString] <p>The ID of the operation.</p>
--- @param _createdAt [IsoDate] <p>The timestamp when the operation was initialized (e.g., <code>1479816991.349</code>).</p>
-function M.Operation(_status, _resourceType, _isTerminal, _operationDetails, _statusChangedAt, _errorCode, _errorDetails, _location, _operationType, _resourceName, _id, _createdAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Operation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [OperationStatus] <p>The status of the operation. </p>
+-- * resourceType [ResourceType] <p>The resource type. </p>
+-- * isTerminal [boolean] <p>A Boolean value indicating whether the operation is terminal.</p>
+-- * operationDetails [string] <p>Details about the operation (e.g., <code>Debian-1GB-Virginia-1</code>).</p>
+-- * statusChangedAt [IsoDate] <p>The timestamp when the status was changed (e.g., <code>1479816991.349</code>).</p>
+-- * errorCode [string] <p>The error code.</p>
+-- * errorDetails [string] <p>The error details.</p>
+-- * location [ResourceLocation] <p>The region and Availability Zone.</p>
+-- * operationType [OperationType] <p>The type of operation. </p>
+-- * resourceName [ResourceName] <p>The resource name.</p>
+-- * id [NonEmptyString] <p>The ID of the operation.</p>
+-- * createdAt [IsoDate] <p>The timestamp when the operation was initialized (e.g., <code>1479816991.349</code>).</p>
+-- @return Operation structure as a key-value pair table
+function M.Operation(args)
+	assert(args, "You must provdide an argument table when creating Operation")
 	local t = { 
-		["status"] = _status,
-		["resourceType"] = _resourceType,
-		["isTerminal"] = _isTerminal,
-		["operationDetails"] = _operationDetails,
-		["statusChangedAt"] = _statusChangedAt,
-		["errorCode"] = _errorCode,
-		["errorDetails"] = _errorDetails,
-		["location"] = _location,
-		["operationType"] = _operationType,
-		["resourceName"] = _resourceName,
-		["id"] = _id,
-		["createdAt"] = _createdAt,
+		["status"] = args["status"],
+		["resourceType"] = args["resourceType"],
+		["isTerminal"] = args["isTerminal"],
+		["operationDetails"] = args["operationDetails"],
+		["statusChangedAt"] = args["statusChangedAt"],
+		["errorCode"] = args["errorCode"],
+		["errorDetails"] = args["errorDetails"],
+		["location"] = args["location"],
+		["operationType"] = args["operationType"],
+		["resourceName"] = args["resourceName"],
+		["id"] = args["id"],
+		["createdAt"] = args["createdAt"],
 	}
 	asserts.AssertOperation(t)
 	return t
@@ -912,37 +996,40 @@ end
 
 --- Create a structure of type Disk
 -- <p>Describes the hard disk (an SSD).</p>
--- @param _name [ResourceName] <p>The name of the disk.</p>
--- @param _sizeInGb [integer] <p>The size of the disk in GB.</p>
--- @param _resourceType [ResourceType] <p>The resource type of the disk. </p>
--- @param _supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
--- @param _attachmentState [string] <p>The attachment state of the disk.</p>
--- @param _attachedTo [string] <p>The resources to which the disk is attached.</p>
--- @param _iops [integer] <p>The input/output operations per second (IOPS) of the disk.</p>
--- @param _gbInUse [integer] <p>The number of GB in use by the disk.</p>
--- @param _arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the disk.</p>
--- @param _isAttached [boolean] <p>A Boolean value indicating whether the disk is attached.</p>
--- @param _path [string] <p>The disk path.</p>
--- @param _isSystemDisk [boolean] <p>A Boolean value indicating whether this disk is a system disk (has an operating system loaded on it).</p>
--- @param _createdAt [IsoDate] <p>The date when the disk was created.</p>
--- @param _location [ResourceLocation] <p>The region and Availability Zone where the disk is located.</p>
-function M.Disk(_name, _sizeInGb, _resourceType, _supportCode, _attachmentState, _attachedTo, _iops, _gbInUse, _arn, _isAttached, _path, _isSystemDisk, _createdAt, _location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Disk")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [ResourceName] <p>The name of the disk.</p>
+-- * sizeInGb [integer] <p>The size of the disk in GB.</p>
+-- * resourceType [ResourceType] <p>The resource type of the disk. </p>
+-- * supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- * attachmentState [string] <p>The attachment state of the disk.</p>
+-- * attachedTo [string] <p>The resources to which the disk is attached.</p>
+-- * iops [integer] <p>The input/output operations per second (IOPS) of the disk.</p>
+-- * gbInUse [integer] <p>The number of GB in use by the disk.</p>
+-- * arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the disk.</p>
+-- * isAttached [boolean] <p>A Boolean value indicating whether the disk is attached.</p>
+-- * path [string] <p>The disk path.</p>
+-- * isSystemDisk [boolean] <p>A Boolean value indicating whether this disk is a system disk (has an operating system loaded on it).</p>
+-- * createdAt [IsoDate] <p>The date when the disk was created.</p>
+-- * location [ResourceLocation] <p>The region and Availability Zone where the disk is located.</p>
+-- @return Disk structure as a key-value pair table
+function M.Disk(args)
+	assert(args, "You must provdide an argument table when creating Disk")
 	local t = { 
-		["name"] = _name,
-		["sizeInGb"] = _sizeInGb,
-		["resourceType"] = _resourceType,
-		["supportCode"] = _supportCode,
-		["attachmentState"] = _attachmentState,
-		["attachedTo"] = _attachedTo,
-		["iops"] = _iops,
-		["gbInUse"] = _gbInUse,
-		["arn"] = _arn,
-		["isAttached"] = _isAttached,
-		["path"] = _path,
-		["isSystemDisk"] = _isSystemDisk,
-		["createdAt"] = _createdAt,
-		["location"] = _location,
+		["name"] = args["name"],
+		["sizeInGb"] = args["sizeInGb"],
+		["resourceType"] = args["resourceType"],
+		["supportCode"] = args["supportCode"],
+		["attachmentState"] = args["attachmentState"],
+		["attachedTo"] = args["attachedTo"],
+		["iops"] = args["iops"],
+		["gbInUse"] = args["gbInUse"],
+		["arn"] = args["arn"],
+		["isAttached"] = args["isAttached"],
+		["path"] = args["path"],
+		["isSystemDisk"] = args["isSystemDisk"],
+		["createdAt"] = args["createdAt"],
+		["location"] = args["location"],
 	}
 	asserts.AssertDisk(t)
 	return t
@@ -961,11 +1048,14 @@ end
 
 --- Create a structure of type AttachStaticIpResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about your API operations.</p>
-function M.AttachStaticIpResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachStaticIpResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about your API operations.</p>
+-- @return AttachStaticIpResult structure as a key-value pair table
+function M.AttachStaticIpResult(args)
+	assert(args, "You must provdide an argument table when creating AttachStaticIpResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertAttachStaticIpResult(t)
 	return t
@@ -985,12 +1075,15 @@ end
 
 --- Create a structure of type DeleteDomainRequest
 --  
--- @param _domainName [DomainName] <p>The specific domain name to delete.</p>
--- Required parameter: domainName
-function M.DeleteDomainRequest(_domainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainName [DomainName] <p>The specific domain name to delete.</p>
+-- Required key: domainName
+-- @return DeleteDomainRequest structure as a key-value pair table
+function M.DeleteDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDomainRequest")
 	local t = { 
-		["domainName"] = _domainName,
+		["domainName"] = args["domainName"],
 	}
 	asserts.AssertDeleteDomainRequest(t)
 	return t
@@ -1016,25 +1109,28 @@ end
 
 --- Create a structure of type InstanceAccessDetails
 -- <p>The parameters for gaining temporary access to one of your Amazon Lightsail instances.</p>
--- @param _username [string] <p>The user name to use when logging in to the Amazon Lightsail instance.</p>
--- @param _certKey [string] <p>For SSH access, the public key to use when accessing your instance For OpenSSH clients (e.g., command line SSH), you should save this value to <code>tempkey-cert.pub</code>.</p>
--- @param _instanceName [ResourceName] <p>The name of this Amazon Lightsail instance.</p>
--- @param _privateKey [string] <p>For SSH access, the temporary private key. For OpenSSH clients (e.g., command line SSH), you should save this value to <code>tempkey</code>).</p>
--- @param _expiresAt [IsoDate] <p>For SSH access, the date on which the temporary keys expire.</p>
--- @param _protocol [InstanceAccessProtocol] <p>The protocol for these Amazon Lightsail instance access details.</p>
--- @param _password [string] <p>For RDP access, the temporary password of the Amazon EC2 instance.</p>
--- @param _ipAddress [IpAddress] <p>The public IP address of the Amazon Lightsail instance.</p>
-function M.InstanceAccessDetails(_username, _certKey, _instanceName, _privateKey, _expiresAt, _protocol, _password, _ipAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceAccessDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * username [string] <p>The user name to use when logging in to the Amazon Lightsail instance.</p>
+-- * certKey [string] <p>For SSH access, the public key to use when accessing your instance For OpenSSH clients (e.g., command line SSH), you should save this value to <code>tempkey-cert.pub</code>.</p>
+-- * instanceName [ResourceName] <p>The name of this Amazon Lightsail instance.</p>
+-- * privateKey [string] <p>For SSH access, the temporary private key. For OpenSSH clients (e.g., command line SSH), you should save this value to <code>tempkey</code>).</p>
+-- * expiresAt [IsoDate] <p>For SSH access, the date on which the temporary keys expire.</p>
+-- * protocol [InstanceAccessProtocol] <p>The protocol for these Amazon Lightsail instance access details.</p>
+-- * password [string] <p>For RDP access, the temporary password of the Amazon EC2 instance.</p>
+-- * ipAddress [IpAddress] <p>The public IP address of the Amazon Lightsail instance.</p>
+-- @return InstanceAccessDetails structure as a key-value pair table
+function M.InstanceAccessDetails(args)
+	assert(args, "You must provdide an argument table when creating InstanceAccessDetails")
 	local t = { 
-		["username"] = _username,
-		["certKey"] = _certKey,
-		["instanceName"] = _instanceName,
-		["privateKey"] = _privateKey,
-		["expiresAt"] = _expiresAt,
-		["protocol"] = _protocol,
-		["password"] = _password,
-		["ipAddress"] = _ipAddress,
+		["username"] = args["username"],
+		["certKey"] = args["certKey"],
+		["instanceName"] = args["instanceName"],
+		["privateKey"] = args["privateKey"],
+		["expiresAt"] = args["expiresAt"],
+		["protocol"] = args["protocol"],
+		["password"] = args["password"],
+		["ipAddress"] = args["ipAddress"],
 	}
 	asserts.AssertInstanceAccessDetails(t)
 	return t
@@ -1054,12 +1150,15 @@ end
 
 --- Create a structure of type GetKeyPairRequest
 --  
--- @param _keyPairName [ResourceName] <p>The name of the key pair for which you are requesting information.</p>
--- Required parameter: keyPairName
-function M.GetKeyPairRequest(_keyPairName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyPairRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * keyPairName [ResourceName] <p>The name of the key pair for which you are requesting information.</p>
+-- Required key: keyPairName
+-- @return GetKeyPairRequest structure as a key-value pair table
+function M.GetKeyPairRequest(args)
+	assert(args, "You must provdide an argument table when creating GetKeyPairRequest")
 	local t = { 
-		["keyPairName"] = _keyPairName,
+		["keyPairName"] = args["keyPairName"],
 	}
 	asserts.AssertGetKeyPairRequest(t)
 	return t
@@ -1079,12 +1178,15 @@ end
 
 --- Create a structure of type DeleteKeyPairRequest
 --  
--- @param _keyPairName [ResourceName] <p>The name of the key pair to delete.</p>
--- Required parameter: keyPairName
-function M.DeleteKeyPairRequest(_keyPairName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteKeyPairRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * keyPairName [ResourceName] <p>The name of the key pair to delete.</p>
+-- Required key: keyPairName
+-- @return DeleteKeyPairRequest structure as a key-value pair table
+function M.DeleteKeyPairRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteKeyPairRequest")
 	local t = { 
-		["keyPairName"] = _keyPairName,
+		["keyPairName"] = args["keyPairName"],
 	}
 	asserts.AssertDeleteKeyPairRequest(t)
 	return t
@@ -1104,12 +1206,15 @@ end
 
 --- Create a structure of type GetOperationRequest
 --  
--- @param _operationId [NonEmptyString] <p>A GUID used to identify the operation.</p>
--- Required parameter: operationId
-function M.GetOperationRequest(_operationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operationId [NonEmptyString] <p>A GUID used to identify the operation.</p>
+-- Required key: operationId
+-- @return GetOperationRequest structure as a key-value pair table
+function M.GetOperationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetOperationRequest")
 	local t = { 
-		["operationId"] = _operationId,
+		["operationId"] = args["operationId"],
 	}
 	asserts.AssertGetOperationRequest(t)
 	return t
@@ -1129,13 +1234,16 @@ end
 
 --- Create a structure of type GetBlueprintsResult
 --  
--- @param _nextPageToken [string] <p>A token used for advancing to the next page of results from your get blueprints request.</p>
--- @param _blueprints [BlueprintList] <p>An array of key-value pairs that contains information about the available blueprints.</p>
-function M.GetBlueprintsResult(_nextPageToken, _blueprints, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBlueprintsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get blueprints request.</p>
+-- * blueprints [BlueprintList] <p>An array of key-value pairs that contains information about the available blueprints.</p>
+-- @return GetBlueprintsResult structure as a key-value pair table
+function M.GetBlueprintsResult(args)
+	assert(args, "You must provdide an argument table when creating GetBlueprintsResult")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["blueprints"] = _blueprints,
+		["nextPageToken"] = args["nextPageToken"],
+		["blueprints"] = args["blueprints"],
 	}
 	asserts.AssertGetBlueprintsResult(t)
 	return t
@@ -1154,11 +1262,14 @@ end
 
 --- Create a structure of type CreateInstancesResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances request.</p>
-function M.CreateInstancesResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstancesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances request.</p>
+-- @return CreateInstancesResult structure as a key-value pair table
+function M.CreateInstancesResult(args)
+	assert(args, "You must provdide an argument table when creating CreateInstancesResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertCreateInstancesResult(t)
 	return t
@@ -1177,11 +1288,14 @@ end
 
 --- Create a structure of type DetachStaticIpResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the results of your detach static IP request.</p>
-function M.DetachStaticIpResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachStaticIpResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your detach static IP request.</p>
+-- @return DetachStaticIpResult structure as a key-value pair table
+function M.DetachStaticIpResult(args)
+	assert(args, "You must provdide an argument table when creating DetachStaticIpResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertDetachStaticIpResult(t)
 	return t
@@ -1206,23 +1320,26 @@ end
 
 --- Create a structure of type InstancePortInfo
 -- <p>Describes information about the instance ports.</p>
--- @param _protocol [NetworkProtocol] <p>The protocol being used. Can be one of the following.</p> <ul> <li> <p> <code>tcp</code> - Transmission Control Protocol (TCP) provides reliable, ordered, and error-checked delivery of streamed data between applications running on hosts communicating by an IP network. If you have an application that doesn't require reliable data stream service, use UDP instead.</p> </li> <li> <p> <code>all</code> - All transport layer protocol types. For more general information, see <a href="https://en.wikipedia.org/wiki/Transport_layer">Transport layer</a> on Wikipedia.</p> </li> <li> <p> <code>udp</code> - With User Datagram Protocol (UDP), computer applications can send messages (or datagrams) to other hosts on an Internet Protocol (IP) network. Prior communications are not required to set up transmission channels or data paths. Applications that don't require reliable data stream service can use UDP, which provides a connectionless datagram service that emphasizes reduced latency over reliability. If you do require reliable data stream service, use TCP instead.</p> </li> </ul>
--- @param _accessType [PortAccessType] <p>The type of access (<code>Public</code> or <code>Private</code>).</p>
--- @param _commonName [string] <p>The common name.</p>
--- @param _accessFrom [string] <p>The location from which access is allowed (e.g., <code>Anywhere (0.0.0.0/0)</code>).</p>
--- @param _fromPort [Port] <p>The first port in the range.</p>
--- @param _accessDirection [AccessDirection] <p>The access direction (<code>inbound</code> or <code>outbound</code>).</p>
--- @param _toPort [Port] <p>The last port in the range.</p>
-function M.InstancePortInfo(_protocol, _accessType, _commonName, _accessFrom, _fromPort, _accessDirection, _toPort, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstancePortInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * protocol [NetworkProtocol] <p>The protocol being used. Can be one of the following.</p> <ul> <li> <p> <code>tcp</code> - Transmission Control Protocol (TCP) provides reliable, ordered, and error-checked delivery of streamed data between applications running on hosts communicating by an IP network. If you have an application that doesn't require reliable data stream service, use UDP instead.</p> </li> <li> <p> <code>all</code> - All transport layer protocol types. For more general information, see <a href="https://en.wikipedia.org/wiki/Transport_layer">Transport layer</a> on Wikipedia.</p> </li> <li> <p> <code>udp</code> - With User Datagram Protocol (UDP), computer applications can send messages (or datagrams) to other hosts on an Internet Protocol (IP) network. Prior communications are not required to set up transmission channels or data paths. Applications that don't require reliable data stream service can use UDP, which provides a connectionless datagram service that emphasizes reduced latency over reliability. If you do require reliable data stream service, use TCP instead.</p> </li> </ul>
+-- * accessType [PortAccessType] <p>The type of access (<code>Public</code> or <code>Private</code>).</p>
+-- * commonName [string] <p>The common name.</p>
+-- * accessFrom [string] <p>The location from which access is allowed (e.g., <code>Anywhere (0.0.0.0/0)</code>).</p>
+-- * fromPort [Port] <p>The first port in the range.</p>
+-- * accessDirection [AccessDirection] <p>The access direction (<code>inbound</code> or <code>outbound</code>).</p>
+-- * toPort [Port] <p>The last port in the range.</p>
+-- @return InstancePortInfo structure as a key-value pair table
+function M.InstancePortInfo(args)
+	assert(args, "You must provdide an argument table when creating InstancePortInfo")
 	local t = { 
-		["protocol"] = _protocol,
-		["accessType"] = _accessType,
-		["commonName"] = _commonName,
-		["accessFrom"] = _accessFrom,
-		["fromPort"] = _fromPort,
-		["accessDirection"] = _accessDirection,
-		["toPort"] = _toPort,
+		["protocol"] = args["protocol"],
+		["accessType"] = args["accessType"],
+		["commonName"] = args["commonName"],
+		["accessFrom"] = args["accessFrom"],
+		["fromPort"] = args["fromPort"],
+		["accessDirection"] = args["accessDirection"],
+		["toPort"] = args["toPort"],
 	}
 	asserts.AssertInstancePortInfo(t)
 	return t
@@ -1242,13 +1359,16 @@ end
 
 --- Create a structure of type GetInstancesResult
 --  
--- @param _nextPageToken [string] <p>A token used for advancing to the next page of results from your get instances request.</p>
--- @param _instances [InstanceList] <p>An array of key-value pairs containing information about your instances.</p>
-function M.GetInstancesResult(_nextPageToken, _instances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstancesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get instances request.</p>
+-- * instances [InstanceList] <p>An array of key-value pairs containing information about your instances.</p>
+-- @return GetInstancesResult structure as a key-value pair table
+function M.GetInstancesResult(args)
+	assert(args, "You must provdide an argument table when creating GetInstancesResult")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["instances"] = _instances,
+		["nextPageToken"] = args["nextPageToken"],
+		["instances"] = args["instances"],
 	}
 	asserts.AssertGetInstancesResult(t)
 	return t
@@ -1268,12 +1388,15 @@ end
 
 --- Create a structure of type GetInstanceSnapshotRequest
 --  
--- @param _instanceSnapshotName [ResourceName] <p>The name of the snapshot for which you are requesting information.</p>
--- Required parameter: instanceSnapshotName
-function M.GetInstanceSnapshotRequest(_instanceSnapshotName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceSnapshotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceSnapshotName [ResourceName] <p>The name of the snapshot for which you are requesting information.</p>
+-- Required key: instanceSnapshotName
+-- @return GetInstanceSnapshotRequest structure as a key-value pair table
+function M.GetInstanceSnapshotRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceSnapshotRequest")
 	local t = { 
-		["instanceSnapshotName"] = _instanceSnapshotName,
+		["instanceSnapshotName"] = args["instanceSnapshotName"],
 	}
 	asserts.AssertGetInstanceSnapshotRequest(t)
 	return t
@@ -1293,12 +1416,15 @@ end
 
 --- Create a structure of type ReleaseStaticIpRequest
 --  
--- @param _staticIpName [ResourceName] <p>The name of the static IP to delete.</p>
--- Required parameter: staticIpName
-function M.ReleaseStaticIpRequest(_staticIpName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReleaseStaticIpRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * staticIpName [ResourceName] <p>The name of the static IP to delete.</p>
+-- Required key: staticIpName
+-- @return ReleaseStaticIpRequest structure as a key-value pair table
+function M.ReleaseStaticIpRequest(args)
+	assert(args, "You must provdide an argument table when creating ReleaseStaticIpRequest")
 	local t = { 
-		["staticIpName"] = _staticIpName,
+		["staticIpName"] = args["staticIpName"],
 	}
 	asserts.AssertReleaseStaticIpRequest(t)
 	return t
@@ -1319,14 +1445,17 @@ end
 
 --- Create a structure of type GetOperationsForResourceRequest
 --  
--- @param _resourceName [ResourceName] <p>The name of the resource for which you are requesting information.</p>
--- @param _pageToken [string] <p>A token used for advancing to the next page of results from your get operations for resource request.</p>
--- Required parameter: resourceName
-function M.GetOperationsForResourceRequest(_resourceName, _pageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationsForResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceName [ResourceName] <p>The name of the resource for which you are requesting information.</p>
+-- * pageToken [string] <p>A token used for advancing to the next page of results from your get operations for resource request.</p>
+-- Required key: resourceName
+-- @return GetOperationsForResourceRequest structure as a key-value pair table
+function M.GetOperationsForResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating GetOperationsForResourceRequest")
 	local t = { 
-		["resourceName"] = _resourceName,
-		["pageToken"] = _pageToken,
+		["resourceName"] = args["resourceName"],
+		["pageToken"] = args["pageToken"],
 	}
 	asserts.AssertGetOperationsForResourceRequest(t)
 	return t
@@ -1345,11 +1474,14 @@ end
 
 --- Create a structure of type GetOperationResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the results of your get operation request.</p>
-function M.GetOperationResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs containing information about the results of your get operation request.</p>
+-- @return GetOperationResult structure as a key-value pair table
+function M.GetOperationResult(args)
+	assert(args, "You must provdide an argument table when creating GetOperationResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertGetOperationResult(t)
 	return t
@@ -1381,30 +1513,33 @@ end
 
 --- Create a structure of type GetInstanceMetricDataRequest
 --  
--- @param _statistics [MetricStatisticList] <p>The instance statistics. </p>
--- @param _period [MetricPeriod] <p>The time period for which you are requesting data.</p>
--- @param _startTime [timestamp] <p>The start time of the time period.</p>
--- @param _endTime [timestamp] <p>The end time of the time period.</p>
--- @param _instanceName [ResourceName] <p>The name of the instance for which you want to get metrics data.</p>
--- @param _unit [MetricUnit] <p>The unit. The list of valid values is below.</p>
--- @param _metricName [InstanceMetricName] <p>The metric name to get data about. </p>
--- Required parameter: instanceName
--- Required parameter: metricName
--- Required parameter: period
--- Required parameter: startTime
--- Required parameter: endTime
--- Required parameter: unit
--- Required parameter: statistics
-function M.GetInstanceMetricDataRequest(_statistics, _period, _startTime, _endTime, _instanceName, _unit, _metricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceMetricDataRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * statistics [MetricStatisticList] <p>The instance statistics. </p>
+-- * period [MetricPeriod] <p>The time period for which you are requesting data.</p>
+-- * startTime [timestamp] <p>The start time of the time period.</p>
+-- * endTime [timestamp] <p>The end time of the time period.</p>
+-- * instanceName [ResourceName] <p>The name of the instance for which you want to get metrics data.</p>
+-- * unit [MetricUnit] <p>The unit. The list of valid values is below.</p>
+-- * metricName [InstanceMetricName] <p>The metric name to get data about. </p>
+-- Required key: instanceName
+-- Required key: metricName
+-- Required key: period
+-- Required key: startTime
+-- Required key: endTime
+-- Required key: unit
+-- Required key: statistics
+-- @return GetInstanceMetricDataRequest structure as a key-value pair table
+function M.GetInstanceMetricDataRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceMetricDataRequest")
 	local t = { 
-		["statistics"] = _statistics,
-		["period"] = _period,
-		["startTime"] = _startTime,
-		["endTime"] = _endTime,
-		["instanceName"] = _instanceName,
-		["unit"] = _unit,
-		["metricName"] = _metricName,
+		["statistics"] = args["statistics"],
+		["period"] = args["period"],
+		["startTime"] = args["startTime"],
+		["endTime"] = args["endTime"],
+		["instanceName"] = args["instanceName"],
+		["unit"] = args["unit"],
+		["metricName"] = args["metricName"],
 	}
 	asserts.AssertGetInstanceMetricDataRequest(t)
 	return t
@@ -1423,11 +1558,14 @@ end
 
 --- Create a structure of type GetRegionsResult
 --  
--- @param _regions [RegionList] <p>An array of key-value pairs containing information about your get regions request.</p>
-function M.GetRegionsResult(_regions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRegionsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * regions [RegionList] <p>An array of key-value pairs containing information about your get regions request.</p>
+-- @return GetRegionsResult structure as a key-value pair table
+function M.GetRegionsResult(args)
+	assert(args, "You must provdide an argument table when creating GetRegionsResult")
 	local t = { 
-		["regions"] = _regions,
+		["regions"] = args["regions"],
 	}
 	asserts.AssertGetRegionsResult(t)
 	return t
@@ -1445,8 +1583,11 @@ end
 
 --- Create a structure of type IsVpcPeeredRequest
 --  
-function M.IsVpcPeeredRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IsVpcPeeredRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return IsVpcPeeredRequest structure as a key-value pair table
+function M.IsVpcPeeredRequest(args)
+	assert(args, "You must provdide an argument table when creating IsVpcPeeredRequest")
 	local t = { 
 	}
 	asserts.AssertIsVpcPeeredRequest(t)
@@ -1469,17 +1610,20 @@ end
 
 --- Create a structure of type NotFoundException
 -- <p>Lightsail throws this exception when it cannot find a resource.</p>
--- @param _docs [string] 
--- @param _message [string] 
--- @param _code [string] 
--- @param _tip [string] 
-function M.NotFoundException(_docs, _message, _code, _tip, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * docs [string] 
+-- * message [string] 
+-- * code [string] 
+-- * tip [string] 
+-- @return NotFoundException structure as a key-value pair table
+function M.NotFoundException(args)
+	assert(args, "You must provdide an argument table when creating NotFoundException")
 	local t = { 
-		["docs"] = _docs,
-		["message"] = _message,
-		["code"] = _code,
-		["tip"] = _tip,
+		["docs"] = args["docs"],
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["tip"] = args["tip"],
 	}
 	asserts.AssertNotFoundException(t)
 	return t
@@ -1498,11 +1642,14 @@ end
 
 --- Create a structure of type OpenInstancePublicPortsResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
-function M.OpenInstancePublicPortsResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OpenInstancePublicPortsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
+-- @return OpenInstancePublicPortsResult structure as a key-value pair table
+function M.OpenInstancePublicPortsResult(args)
+	assert(args, "You must provdide an argument table when creating OpenInstancePublicPortsResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertOpenInstancePublicPortsResult(t)
 	return t
@@ -1521,11 +1668,14 @@ end
 
 --- Create a structure of type GetInstanceSnapshotsRequest
 --  
--- @param _pageToken [string] <p>A token used for advancing to the next page of results from your get instance snapshots request.</p>
-function M.GetInstanceSnapshotsRequest(_pageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceSnapshotsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pageToken [string] <p>A token used for advancing to the next page of results from your get instance snapshots request.</p>
+-- @return GetInstanceSnapshotsRequest structure as a key-value pair table
+function M.GetInstanceSnapshotsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceSnapshotsRequest")
 	local t = { 
-		["pageToken"] = _pageToken,
+		["pageToken"] = args["pageToken"],
 	}
 	asserts.AssertGetInstanceSnapshotsRequest(t)
 	return t
@@ -1545,13 +1695,16 @@ end
 
 --- Create a structure of type GetOperationsResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the results of your get operations request.</p>
--- @param _nextPageToken [string] <p>A token used for advancing to the next page of results from your get operations request.</p>
-function M.GetOperationsResult(_operations, _nextPageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your get operations request.</p>
+-- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get operations request.</p>
+-- @return GetOperationsResult structure as a key-value pair table
+function M.GetOperationsResult(args)
+	assert(args, "You must provdide an argument table when creating GetOperationsResult")
 	local t = { 
-		["operations"] = _operations,
-		["nextPageToken"] = _nextPageToken,
+		["operations"] = args["operations"],
+		["nextPageToken"] = args["nextPageToken"],
 	}
 	asserts.AssertGetOperationsResult(t)
 	return t
@@ -1569,8 +1722,11 @@ end
 
 --- Create a structure of type UnpeerVpcRequest
 --  
-function M.UnpeerVpcRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnpeerVpcRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UnpeerVpcRequest structure as a key-value pair table
+function M.UnpeerVpcRequest(args)
+	assert(args, "You must provdide an argument table when creating UnpeerVpcRequest")
 	local t = { 
 	}
 	asserts.AssertUnpeerVpcRequest(t)
@@ -1590,11 +1746,14 @@ end
 
 --- Create a structure of type UnpeerVpcResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
-function M.UnpeerVpcResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnpeerVpcResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
+-- @return UnpeerVpcResult structure as a key-value pair table
+function M.UnpeerVpcResult(args)
+	assert(args, "You must provdide an argument table when creating UnpeerVpcResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertUnpeerVpcResult(t)
 	return t
@@ -1613,11 +1772,14 @@ end
 
 --- Create a structure of type DeleteDomainResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the results of your delete domain request.</p>
-function M.DeleteDomainResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs containing information about the results of your delete domain request.</p>
+-- @return DeleteDomainResult structure as a key-value pair table
+function M.DeleteDomainResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteDomainResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertDeleteDomainResult(t)
 	return t
@@ -1636,11 +1798,14 @@ end
 
 --- Create a structure of type GetKeyPairsRequest
 --  
--- @param _pageToken [string] <p>A token used for advancing to the next page of results from your get key pairs request.</p>
-function M.GetKeyPairsRequest(_pageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyPairsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pageToken [string] <p>A token used for advancing to the next page of results from your get key pairs request.</p>
+-- @return GetKeyPairsRequest structure as a key-value pair table
+function M.GetKeyPairsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetKeyPairsRequest")
 	local t = { 
-		["pageToken"] = _pageToken,
+		["pageToken"] = args["pageToken"],
 	}
 	asserts.AssertGetKeyPairsRequest(t)
 	return t
@@ -1662,15 +1827,18 @@ end
 
 --- Create a structure of type ImportKeyPairRequest
 --  
--- @param _publicKeyBase64 [Base64] <p>A base64-encoded public key of the <code>ssh-rsa</code> type.</p>
--- @param _keyPairName [ResourceName] <p>The name of the key pair for which you want to import the public key.</p>
--- Required parameter: keyPairName
--- Required parameter: publicKeyBase64
-function M.ImportKeyPairRequest(_publicKeyBase64, _keyPairName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImportKeyPairRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * publicKeyBase64 [Base64] <p>A base64-encoded public key of the <code>ssh-rsa</code> type.</p>
+-- * keyPairName [ResourceName] <p>The name of the key pair for which you want to import the public key.</p>
+-- Required key: keyPairName
+-- Required key: publicKeyBase64
+-- @return ImportKeyPairRequest structure as a key-value pair table
+function M.ImportKeyPairRequest(args)
+	assert(args, "You must provdide an argument table when creating ImportKeyPairRequest")
 	local t = { 
-		["publicKeyBase64"] = _publicKeyBase64,
-		["keyPairName"] = _keyPairName,
+		["publicKeyBase64"] = args["publicKeyBase64"],
+		["keyPairName"] = args["keyPairName"],
 	}
 	asserts.AssertImportKeyPairRequest(t)
 	return t
@@ -1689,11 +1857,14 @@ end
 
 --- Create a structure of type PutInstancePublicPortsResult
 --  
--- @param _operation [Operation] <p>Describes metadata about the operation you just executed.</p>
-function M.PutInstancePublicPortsResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutInstancePublicPortsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>Describes metadata about the operation you just executed.</p>
+-- @return PutInstancePublicPortsResult structure as a key-value pair table
+function M.PutInstancePublicPortsResult(args)
+	assert(args, "You must provdide an argument table when creating PutInstancePublicPortsResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertPutInstancePublicPortsResult(t)
 	return t
@@ -1713,12 +1884,15 @@ end
 
 --- Create a structure of type DeleteInstanceSnapshotRequest
 --  
--- @param _instanceSnapshotName [ResourceName] <p>The name of the snapshot to delete.</p>
--- Required parameter: instanceSnapshotName
-function M.DeleteInstanceSnapshotRequest(_instanceSnapshotName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceSnapshotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceSnapshotName [ResourceName] <p>The name of the snapshot to delete.</p>
+-- Required key: instanceSnapshotName
+-- @return DeleteInstanceSnapshotRequest structure as a key-value pair table
+function M.DeleteInstanceSnapshotRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteInstanceSnapshotRequest")
 	local t = { 
-		["instanceSnapshotName"] = _instanceSnapshotName,
+		["instanceSnapshotName"] = args["instanceSnapshotName"],
 	}
 	asserts.AssertDeleteInstanceSnapshotRequest(t)
 	return t
@@ -1739,15 +1913,18 @@ end
 
 --- Create a structure of type GetOperationsForResourceResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the results of your get operations for resource request.</p>
--- @param _nextPageToken [string] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
--- @param _nextPageCount [string] <p>(Deprecated) Returns the number of pages of results that remain.</p> <note> <p>In releases prior to June 12, 2017, this parameter returned <code>null</code> by the API. It is now deprecated, and the API returns the <code>nextPageToken</code> parameter instead.</p> </note>
-function M.GetOperationsForResourceResult(_operations, _nextPageToken, _nextPageCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationsForResourceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your get operations for resource request.</p>
+-- * nextPageToken [string] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
+-- * nextPageCount [string] <p>(Deprecated) Returns the number of pages of results that remain.</p> <note> <p>In releases prior to June 12, 2017, this parameter returned <code>null</code> by the API. It is now deprecated, and the API returns the <code>nextPageToken</code> parameter instead.</p> </note>
+-- @return GetOperationsForResourceResult structure as a key-value pair table
+function M.GetOperationsForResourceResult(args)
+	assert(args, "You must provdide an argument table when creating GetOperationsForResourceResult")
 	local t = { 
-		["operations"] = _operations,
-		["nextPageToken"] = _nextPageToken,
-		["nextPageCount"] = _nextPageCount,
+		["operations"] = args["operations"],
+		["nextPageToken"] = args["nextPageToken"],
+		["nextPageCount"] = args["nextPageCount"],
 	}
 	asserts.AssertGetOperationsForResourceResult(t)
 	return t
@@ -1767,13 +1944,16 @@ end
 
 --- Create a structure of type GetStaticIpsResult
 --  
--- @param _nextPageToken [string] <p>A token used for advancing to the next page of results from your get static IPs request.</p>
--- @param _staticIps [StaticIpList] <p>An array of key-value pairs containing information about your get static IPs request.</p>
-function M.GetStaticIpsResult(_nextPageToken, _staticIps, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetStaticIpsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get static IPs request.</p>
+-- * staticIps [StaticIpList] <p>An array of key-value pairs containing information about your get static IPs request.</p>
+-- @return GetStaticIpsResult structure as a key-value pair table
+function M.GetStaticIpsResult(args)
+	assert(args, "You must provdide an argument table when creating GetStaticIpsResult")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["staticIps"] = _staticIps,
+		["nextPageToken"] = args["nextPageToken"],
+		["staticIps"] = args["staticIps"],
 	}
 	asserts.AssertGetStaticIpsResult(t)
 	return t
@@ -1798,23 +1978,26 @@ end
 
 --- Create a structure of type Domain
 -- <p>Describes a domain where you are storing recordsets in Lightsail.</p>
--- @param _domainEntries [DomainEntryList] <p>An array of key-value pairs containing information about the domain entries.</p>
--- @param _name [ResourceName] <p>The name of the domain.</p>
--- @param _resourceType [ResourceType] <p>The resource type. </p>
--- @param _supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
--- @param _arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the domain recordset (e.g., <code>arn:aws:lightsail:global:123456789101:Domain/824cede0-abc7-4f84-8dbc-12345EXAMPLE</code>).</p>
--- @param _createdAt [IsoDate] <p>The date when the domain recordset was created.</p>
--- @param _location [ResourceLocation] <p>The AWS Region and Availability Zones where the domain recordset was created.</p>
-function M.Domain(_domainEntries, _name, _resourceType, _supportCode, _arn, _createdAt, _location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Domain")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainEntries [DomainEntryList] <p>An array of key-value pairs containing information about the domain entries.</p>
+-- * name [ResourceName] <p>The name of the domain.</p>
+-- * resourceType [ResourceType] <p>The resource type. </p>
+-- * supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- * arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the domain recordset (e.g., <code>arn:aws:lightsail:global:123456789101:Domain/824cede0-abc7-4f84-8dbc-12345EXAMPLE</code>).</p>
+-- * createdAt [IsoDate] <p>The date when the domain recordset was created.</p>
+-- * location [ResourceLocation] <p>The AWS Region and Availability Zones where the domain recordset was created.</p>
+-- @return Domain structure as a key-value pair table
+function M.Domain(args)
+	assert(args, "You must provdide an argument table when creating Domain")
 	local t = { 
-		["domainEntries"] = _domainEntries,
-		["name"] = _name,
-		["resourceType"] = _resourceType,
-		["supportCode"] = _supportCode,
-		["arn"] = _arn,
-		["createdAt"] = _createdAt,
-		["location"] = _location,
+		["domainEntries"] = args["domainEntries"],
+		["name"] = args["name"],
+		["resourceType"] = args["resourceType"],
+		["supportCode"] = args["supportCode"],
+		["arn"] = args["arn"],
+		["createdAt"] = args["createdAt"],
+		["location"] = args["location"],
 	}
 	asserts.AssertDomain(t)
 	return t
@@ -1834,13 +2017,16 @@ end
 
 --- Create a structure of type AvailabilityZone
 -- <p>Describes an Availability Zone.</p>
--- @param _state [NonEmptyString] <p>The state of the Availability Zone.</p>
--- @param _zoneName [NonEmptyString] <p>The name of the Availability Zone. The format is <code>us-east-1a</code> (case-sensitive).</p>
-function M.AvailabilityZone(_state, _zoneName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityZone")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * state [NonEmptyString] <p>The state of the Availability Zone.</p>
+-- * zoneName [NonEmptyString] <p>The name of the Availability Zone. The format is <code>us-east-1a</code> (case-sensitive).</p>
+-- @return AvailabilityZone structure as a key-value pair table
+function M.AvailabilityZone(args)
+	assert(args, "You must provdide an argument table when creating AvailabilityZone")
 	local t = { 
-		["state"] = _state,
-		["zoneName"] = _zoneName,
+		["state"] = args["state"],
+		["zoneName"] = args["zoneName"],
 	}
 	asserts.AssertAvailabilityZone(t)
 	return t
@@ -1861,15 +2047,18 @@ end
 
 --- Create a structure of type InstanceHardware
 -- <p>Describes the hardware for the instance.</p>
--- @param _cpuCount [integer] <p>The number of vCPUs the instance has.</p>
--- @param _disks [DiskList] <p>The disks attached to the instance.</p>
--- @param _ramSizeInGb [float] <p>The amount of RAM in GB on the instance (e.g., <code>1.0</code>).</p>
-function M.InstanceHardware(_cpuCount, _disks, _ramSizeInGb, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceHardware")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cpuCount [integer] <p>The number of vCPUs the instance has.</p>
+-- * disks [DiskList] <p>The disks attached to the instance.</p>
+-- * ramSizeInGb [float] <p>The amount of RAM in GB on the instance (e.g., <code>1.0</code>).</p>
+-- @return InstanceHardware structure as a key-value pair table
+function M.InstanceHardware(args)
+	assert(args, "You must provdide an argument table when creating InstanceHardware")
 	local t = { 
-		["cpuCount"] = _cpuCount,
-		["disks"] = _disks,
-		["ramSizeInGb"] = _ramSizeInGb,
+		["cpuCount"] = args["cpuCount"],
+		["disks"] = args["disks"],
+		["ramSizeInGb"] = args["ramSizeInGb"],
 	}
 	asserts.AssertInstanceHardware(t)
 	return t
@@ -1887,8 +2076,11 @@ end
 
 --- Create a structure of type PeerVpcRequest
 --  
-function M.PeerVpcRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PeerVpcRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PeerVpcRequest structure as a key-value pair table
+function M.PeerVpcRequest(args)
+	assert(args, "You must provdide an argument table when creating PeerVpcRequest")
 	local t = { 
 	}
 	asserts.AssertPeerVpcRequest(t)
@@ -1908,11 +2100,14 @@ end
 
 --- Create a structure of type StopInstanceResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
-function M.StopInstanceResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopInstanceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
+-- @return StopInstanceResult structure as a key-value pair table
+function M.StopInstanceResult(args)
+	assert(args, "You must provdide an argument table when creating StopInstanceResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertStopInstanceResult(t)
 	return t
@@ -1937,23 +2132,26 @@ end
 
 --- Create a structure of type KeyPair
 -- <p>Describes the SSH key pair.</p>
--- @param _name [ResourceName] <p>The friendly name of the SSH key pair.</p>
--- @param _resourceType [ResourceType] <p>The resource type (usually <code>KeyPair</code>).</p>
--- @param _supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
--- @param _arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the key pair (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:KeyPair/05859e3d-331d-48ba-9034-12345EXAMPLE</code>).</p>
--- @param _fingerprint [Base64] <p>The RSA fingerprint of the key pair.</p>
--- @param _createdAt [IsoDate] <p>The timestamp when the key pair was created (e.g., <code>1479816991.349</code>).</p>
--- @param _location [ResourceLocation] <p>The region name and Availability Zone where the key pair was created.</p>
-function M.KeyPair(_name, _resourceType, _supportCode, _arn, _fingerprint, _createdAt, _location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KeyPair")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [ResourceName] <p>The friendly name of the SSH key pair.</p>
+-- * resourceType [ResourceType] <p>The resource type (usually <code>KeyPair</code>).</p>
+-- * supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- * arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the key pair (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:KeyPair/05859e3d-331d-48ba-9034-12345EXAMPLE</code>).</p>
+-- * fingerprint [Base64] <p>The RSA fingerprint of the key pair.</p>
+-- * createdAt [IsoDate] <p>The timestamp when the key pair was created (e.g., <code>1479816991.349</code>).</p>
+-- * location [ResourceLocation] <p>The region name and Availability Zone where the key pair was created.</p>
+-- @return KeyPair structure as a key-value pair table
+function M.KeyPair(args)
+	assert(args, "You must provdide an argument table when creating KeyPair")
 	local t = { 
-		["name"] = _name,
-		["resourceType"] = _resourceType,
-		["supportCode"] = _supportCode,
-		["arn"] = _arn,
-		["fingerprint"] = _fingerprint,
-		["createdAt"] = _createdAt,
-		["location"] = _location,
+		["name"] = args["name"],
+		["resourceType"] = args["resourceType"],
+		["supportCode"] = args["supportCode"],
+		["arn"] = args["arn"],
+		["fingerprint"] = args["fingerprint"],
+		["createdAt"] = args["createdAt"],
+		["location"] = args["location"],
 	}
 	asserts.AssertKeyPair(t)
 	return t
@@ -1972,11 +2170,14 @@ end
 
 --- Create a structure of type GetActiveNamesRequest
 --  
--- @param _pageToken [string] <p>A token used for paginating results from your get active names request.</p>
-function M.GetActiveNamesRequest(_pageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetActiveNamesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pageToken [string] <p>A token used for paginating results from your get active names request.</p>
+-- @return GetActiveNamesRequest structure as a key-value pair table
+function M.GetActiveNamesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetActiveNamesRequest")
 	local t = { 
-		["pageToken"] = _pageToken,
+		["pageToken"] = args["pageToken"],
 	}
 	asserts.AssertGetActiveNamesRequest(t)
 	return t
@@ -1998,15 +2199,18 @@ end
 
 --- Create a structure of type CloseInstancePublicPortsRequest
 --  
--- @param _instanceName [ResourceName] <p>The name of the instance on which you're attempting to close the public ports.</p>
--- @param _portInfo [PortInfo] <p>Information about the public port you are trying to close.</p>
--- Required parameter: portInfo
--- Required parameter: instanceName
-function M.CloseInstancePublicPortsRequest(_instanceName, _portInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloseInstancePublicPortsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The name of the instance on which you're attempting to close the public ports.</p>
+-- * portInfo [PortInfo] <p>Information about the public port you are trying to close.</p>
+-- Required key: portInfo
+-- Required key: instanceName
+-- @return CloseInstancePublicPortsRequest structure as a key-value pair table
+function M.CloseInstancePublicPortsRequest(args)
+	assert(args, "You must provdide an argument table when creating CloseInstancePublicPortsRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
-		["portInfo"] = _portInfo,
+		["instanceName"] = args["instanceName"],
+		["portInfo"] = args["portInfo"],
 	}
 	asserts.AssertCloseInstancePublicPortsRequest(t)
 	return t
@@ -2027,15 +2231,18 @@ end
 
 --- Create a structure of type PortInfo
 -- <p>Describes information about the ports on your virtual private server (or <i>instance</i>).</p>
--- @param _toPort [Port] <p>The last port in the range.</p>
--- @param _fromPort [Port] <p>The first port in the range.</p>
--- @param _protocol [NetworkProtocol] <p>The protocol. </p>
-function M.PortInfo(_toPort, _fromPort, _protocol, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PortInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * toPort [Port] <p>The last port in the range.</p>
+-- * fromPort [Port] <p>The first port in the range.</p>
+-- * protocol [NetworkProtocol] <p>The protocol. </p>
+-- @return PortInfo structure as a key-value pair table
+function M.PortInfo(args)
+	assert(args, "You must provdide an argument table when creating PortInfo")
 	local t = { 
-		["toPort"] = _toPort,
-		["fromPort"] = _fromPort,
-		["protocol"] = _protocol,
+		["toPort"] = args["toPort"],
+		["fromPort"] = args["fromPort"],
+		["protocol"] = args["protocol"],
 	}
 	asserts.AssertPortInfo(t)
 	return t
@@ -2057,15 +2264,18 @@ end
 
 --- Create a structure of type CreateDomainEntryRequest
 --  
--- @param _domainEntry [DomainEntry] <p>An array of key-value pairs containing information about the domain entry request.</p>
--- @param _domainName [DomainName] <p>The domain name (e.g., <code>example.com</code>) for which you want to create the domain entry.</p>
--- Required parameter: domainName
--- Required parameter: domainEntry
-function M.CreateDomainEntryRequest(_domainEntry, _domainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainEntryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainEntry [DomainEntry] <p>An array of key-value pairs containing information about the domain entry request.</p>
+-- * domainName [DomainName] <p>The domain name (e.g., <code>example.com</code>) for which you want to create the domain entry.</p>
+-- Required key: domainName
+-- Required key: domainEntry
+-- @return CreateDomainEntryRequest structure as a key-value pair table
+function M.CreateDomainEntryRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDomainEntryRequest")
 	local t = { 
-		["domainEntry"] = _domainEntry,
-		["domainName"] = _domainName,
+		["domainEntry"] = args["domainEntry"],
+		["domainName"] = args["domainName"],
 	}
 	asserts.AssertCreateDomainEntryRequest(t)
 	return t
@@ -2084,11 +2294,14 @@ end
 
 --- Create a structure of type CreateDomainEntryResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the operation.</p>
-function M.CreateDomainEntryResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainEntryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs containing information about the operation.</p>
+-- @return CreateDomainEntryResult structure as a key-value pair table
+function M.CreateDomainEntryResult(args)
+	assert(args, "You must provdide an argument table when creating CreateDomainEntryResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertCreateDomainEntryResult(t)
 	return t
@@ -2108,12 +2321,15 @@ end
 
 --- Create a structure of type GetInstanceRequest
 --  
--- @param _instanceName [ResourceName] <p>The name of the instance.</p>
--- Required parameter: instanceName
-function M.GetInstanceRequest(_instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The name of the instance.</p>
+-- Required key: instanceName
+-- @return GetInstanceRequest structure as a key-value pair table
+function M.GetInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertGetInstanceRequest(t)
 	return t
@@ -2133,13 +2349,16 @@ end
 
 --- Create a structure of type GetBundlesRequest
 --  
--- @param _includeInactive [boolean] <p>A Boolean value that indicates whether to include inactive bundle results in your request.</p>
--- @param _pageToken [string] <p>A token used for advancing to the next page of results from your get bundles request.</p>
-function M.GetBundlesRequest(_includeInactive, _pageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBundlesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * includeInactive [boolean] <p>A Boolean value that indicates whether to include inactive bundle results in your request.</p>
+-- * pageToken [string] <p>A token used for advancing to the next page of results from your get bundles request.</p>
+-- @return GetBundlesRequest structure as a key-value pair table
+function M.GetBundlesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBundlesRequest")
 	local t = { 
-		["includeInactive"] = _includeInactive,
-		["pageToken"] = _pageToken,
+		["includeInactive"] = args["includeInactive"],
+		["pageToken"] = args["pageToken"],
 	}
 	asserts.AssertGetBundlesRequest(t)
 	return t
@@ -2158,11 +2377,14 @@ end
 
 --- Create a structure of type ImportKeyPairResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
-function M.ImportKeyPairResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImportKeyPairResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
+-- @return ImportKeyPairResult structure as a key-value pair table
+function M.ImportKeyPairResult(args)
+	assert(args, "You must provdide an argument table when creating ImportKeyPairResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertImportKeyPairResult(t)
 	return t
@@ -2182,12 +2404,15 @@ end
 
 --- Create a structure of type RebootInstanceRequest
 --  
--- @param _instanceName [ResourceName] <p>The name of the instance to reboot.</p>
--- Required parameter: instanceName
-function M.RebootInstanceRequest(_instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebootInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The name of the instance to reboot.</p>
+-- Required key: instanceName
+-- @return RebootInstanceRequest structure as a key-value pair table
+function M.RebootInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating RebootInstanceRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertRebootInstanceRequest(t)
 	return t
@@ -2209,15 +2434,18 @@ end
 
 --- Create a structure of type OpenInstancePublicPortsRequest
 --  
--- @param _instanceName [ResourceName] <p>The name of the instance for which you want to open the public ports.</p>
--- @param _portInfo [PortInfo] <p>An array of key-value pairs containing information about the port mappings.</p>
--- Required parameter: portInfo
--- Required parameter: instanceName
-function M.OpenInstancePublicPortsRequest(_instanceName, _portInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OpenInstancePublicPortsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The name of the instance for which you want to open the public ports.</p>
+-- * portInfo [PortInfo] <p>An array of key-value pairs containing information about the port mappings.</p>
+-- Required key: portInfo
+-- Required key: instanceName
+-- @return OpenInstancePublicPortsRequest structure as a key-value pair table
+function M.OpenInstancePublicPortsRequest(args)
+	assert(args, "You must provdide an argument table when creating OpenInstancePublicPortsRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
-		["portInfo"] = _portInfo,
+		["instanceName"] = args["instanceName"],
+		["portInfo"] = args["portInfo"],
 	}
 	asserts.AssertOpenInstancePublicPortsRequest(t)
 	return t
@@ -2246,31 +2474,34 @@ end
 
 --- Create a structure of type Blueprint
 -- <p>Describes a blueprint (a virtual private server image).</p>
--- @param _group [NonEmptyString] <p>The group name of the blueprint (e.g., <code>amazon-linux</code>).</p>
--- @param _description [string] <p>The description of the blueprint.</p>
--- @param _productUrl [string] <p>The product URL to learn more about the image or blueprint.</p>
--- @param _version [string] <p>The version number of the operating system, application, or stack (e.g., <code>2016.03.0</code>).</p>
--- @param _licenseUrl [string] <p>The end-user license agreement URL for the image or blueprint.</p>
--- @param _versionCode [string] <p>The version code.</p>
--- @param _blueprintId [NonEmptyString] <p>The ID for the virtual private server image (e.g., <code>app_wordpress_4_4</code> or <code>app_lamp_7_0</code>).</p>
--- @param _minPower [integer] <p>The minimum machine size required to run this blueprint. <code>0</code> indicates that the blueprint runs on all instances.</p>
--- @param _type [BlueprintType] <p>The type of the blueprint (e.g., <code>os</code> or <code>app</code>).</p>
--- @param _isActive [boolean] <p>A Boolean value indicating whether the blueprint is active. When you update your blueprints, you will inactivate old blueprints and keep the most recent versions active.</p>
--- @param _name [ResourceName] <p>The friendly name of the blueprint (e.g., <code>Amazon Linux</code>).</p>
-function M.Blueprint(_group, _description, _productUrl, _version, _licenseUrl, _versionCode, _blueprintId, _minPower, _type, _isActive, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Blueprint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * group [NonEmptyString] <p>The group name of the blueprint (e.g., <code>amazon-linux</code>).</p>
+-- * description [string] <p>The description of the blueprint.</p>
+-- * productUrl [string] <p>The product URL to learn more about the image or blueprint.</p>
+-- * version [string] <p>The version number of the operating system, application, or stack (e.g., <code>2016.03.0</code>).</p>
+-- * licenseUrl [string] <p>The end-user license agreement URL for the image or blueprint.</p>
+-- * versionCode [string] <p>The version code.</p>
+-- * blueprintId [NonEmptyString] <p>The ID for the virtual private server image (e.g., <code>app_wordpress_4_4</code> or <code>app_lamp_7_0</code>).</p>
+-- * minPower [integer] <p>The minimum machine size required to run this blueprint. <code>0</code> indicates that the blueprint runs on all instances.</p>
+-- * type [BlueprintType] <p>The type of the blueprint (e.g., <code>os</code> or <code>app</code>).</p>
+-- * isActive [boolean] <p>A Boolean value indicating whether the blueprint is active. When you update your blueprints, you will inactivate old blueprints and keep the most recent versions active.</p>
+-- * name [ResourceName] <p>The friendly name of the blueprint (e.g., <code>Amazon Linux</code>).</p>
+-- @return Blueprint structure as a key-value pair table
+function M.Blueprint(args)
+	assert(args, "You must provdide an argument table when creating Blueprint")
 	local t = { 
-		["group"] = _group,
-		["description"] = _description,
-		["productUrl"] = _productUrl,
-		["version"] = _version,
-		["licenseUrl"] = _licenseUrl,
-		["versionCode"] = _versionCode,
-		["blueprintId"] = _blueprintId,
-		["minPower"] = _minPower,
-		["type"] = _type,
-		["isActive"] = _isActive,
-		["name"] = _name,
+		["group"] = args["group"],
+		["description"] = args["description"],
+		["productUrl"] = args["productUrl"],
+		["version"] = args["version"],
+		["licenseUrl"] = args["licenseUrl"],
+		["versionCode"] = args["versionCode"],
+		["blueprintId"] = args["blueprintId"],
+		["minPower"] = args["minPower"],
+		["type"] = args["type"],
+		["isActive"] = args["isActive"],
+		["name"] = args["name"],
 	}
 	asserts.AssertBlueprint(t)
 	return t
@@ -2289,11 +2520,14 @@ end
 
 --- Create a structure of type GetInstancesRequest
 --  
--- @param _pageToken [string] <p>A token used for advancing to the next page of results from your get instances request.</p>
-function M.GetInstancesRequest(_pageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstancesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pageToken [string] <p>A token used for advancing to the next page of results from your get instances request.</p>
+-- @return GetInstancesRequest structure as a key-value pair table
+function M.GetInstancesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInstancesRequest")
 	local t = { 
-		["pageToken"] = _pageToken,
+		["pageToken"] = args["pageToken"],
 	}
 	asserts.AssertGetInstancesRequest(t)
 	return t
@@ -2313,13 +2547,16 @@ end
 
 --- Create a structure of type ResourceLocation
 -- <p>Describes the resource location.</p>
--- @param _availabilityZone [string] <p>The Availability Zone. Follows the format <code>us-east-1a</code> (case-sensitive).</p>
--- @param _regionName [RegionName] <p>The AWS Region name.</p>
-function M.ResourceLocation(_availabilityZone, _regionName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * availabilityZone [string] <p>The Availability Zone. Follows the format <code>us-east-1a</code> (case-sensitive).</p>
+-- * regionName [RegionName] <p>The AWS Region name.</p>
+-- @return ResourceLocation structure as a key-value pair table
+function M.ResourceLocation(args)
+	assert(args, "You must provdide an argument table when creating ResourceLocation")
 	local t = { 
-		["availabilityZone"] = _availabilityZone,
-		["regionName"] = _regionName,
+		["availabilityZone"] = args["availabilityZone"],
+		["regionName"] = args["regionName"],
 	}
 	asserts.AssertResourceLocation(t)
 	return t
@@ -2339,12 +2576,15 @@ end
 
 --- Create a structure of type CreateDomainRequest
 --  
--- @param _domainName [DomainName] <p>The domain name to manage (e.g., <code>example.com</code>).</p> <note> <p>You cannot register a new domain name using Lightsail. You must register a domain name using Amazon Route 53 or another domain name registrar. If you have already registered your domain, you can enter its name in this parameter to manage the DNS records for that domain.</p> </note>
--- Required parameter: domainName
-function M.CreateDomainRequest(_domainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainName [DomainName] <p>The domain name to manage (e.g., <code>example.com</code>).</p> <note> <p>You cannot register a new domain name using Lightsail. You must register a domain name using Amazon Route 53 or another domain name registrar. If you have already registered your domain, you can enter its name in this parameter to manage the DNS records for that domain.</p> </note>
+-- Required key: domainName
+-- @return CreateDomainRequest structure as a key-value pair table
+function M.CreateDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDomainRequest")
 	local t = { 
-		["domainName"] = _domainName,
+		["domainName"] = args["domainName"],
 	}
 	asserts.AssertCreateDomainRequest(t)
 	return t
@@ -2372,29 +2612,32 @@ end
 
 --- Create a structure of type Bundle
 -- <p>Describes a bundle, which is a set of specs describing your virtual private server (or <i>instance</i>).</p>
--- @param _name [string] <p>A friendly name for the bundle (e.g., <code>Micro</code>).</p>
--- @param _power [integer] <p>The power of the bundle (e.g., <code>500</code>).</p>
--- @param _price [float] <p>The price in US dollars (e.g., <code>5.0</code>).</p>
--- @param _ramSizeInGb [float] <p>The amount of RAM in GB (e.g., <code>2.0</code>).</p>
--- @param _diskSizeInGb [integer] <p>The size of the SSD (e.g., <code>30</code>).</p>
--- @param _transferPerMonthInGb [integer] <p>The data transfer rate per month in GB (e.g., <code>2000</code>).</p>
--- @param _cpuCount [integer] <p>The number of vCPUs included in the bundle (e.g., <code>2</code>).</p>
--- @param _instanceType [string] <p>The Amazon EC2 instance type (e.g., <code>t2.micro</code>).</p>
--- @param _isActive [boolean] <p>A Boolean value indicating whether the bundle is active.</p>
--- @param _bundleId [NonEmptyString] <p>The bundle ID (e.g., <code>micro_1_0</code>).</p>
-function M.Bundle(_name, _power, _price, _ramSizeInGb, _diskSizeInGb, _transferPerMonthInGb, _cpuCount, _instanceType, _isActive, _bundleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Bundle")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [string] <p>A friendly name for the bundle (e.g., <code>Micro</code>).</p>
+-- * power [integer] <p>The power of the bundle (e.g., <code>500</code>).</p>
+-- * price [float] <p>The price in US dollars (e.g., <code>5.0</code>).</p>
+-- * ramSizeInGb [float] <p>The amount of RAM in GB (e.g., <code>2.0</code>).</p>
+-- * diskSizeInGb [integer] <p>The size of the SSD (e.g., <code>30</code>).</p>
+-- * transferPerMonthInGb [integer] <p>The data transfer rate per month in GB (e.g., <code>2000</code>).</p>
+-- * cpuCount [integer] <p>The number of vCPUs included in the bundle (e.g., <code>2</code>).</p>
+-- * instanceType [string] <p>The Amazon EC2 instance type (e.g., <code>t2.micro</code>).</p>
+-- * isActive [boolean] <p>A Boolean value indicating whether the bundle is active.</p>
+-- * bundleId [NonEmptyString] <p>The bundle ID (e.g., <code>micro_1_0</code>).</p>
+-- @return Bundle structure as a key-value pair table
+function M.Bundle(args)
+	assert(args, "You must provdide an argument table when creating Bundle")
 	local t = { 
-		["name"] = _name,
-		["power"] = _power,
-		["price"] = _price,
-		["ramSizeInGb"] = _ramSizeInGb,
-		["diskSizeInGb"] = _diskSizeInGb,
-		["transferPerMonthInGb"] = _transferPerMonthInGb,
-		["cpuCount"] = _cpuCount,
-		["instanceType"] = _instanceType,
-		["isActive"] = _isActive,
-		["bundleId"] = _bundleId,
+		["name"] = args["name"],
+		["power"] = args["power"],
+		["price"] = args["price"],
+		["ramSizeInGb"] = args["ramSizeInGb"],
+		["diskSizeInGb"] = args["diskSizeInGb"],
+		["transferPerMonthInGb"] = args["transferPerMonthInGb"],
+		["cpuCount"] = args["cpuCount"],
+		["instanceType"] = args["instanceType"],
+		["isActive"] = args["isActive"],
+		["bundleId"] = args["bundleId"],
 	}
 	asserts.AssertBundle(t)
 	return t
@@ -2413,11 +2656,14 @@ end
 
 --- Create a structure of type DeleteInstanceResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the results of your delete instance request.</p>
-function M.DeleteInstanceResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your delete instance request.</p>
+-- @return DeleteInstanceResult structure as a key-value pair table
+function M.DeleteInstanceResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteInstanceResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertDeleteInstanceResult(t)
 	return t
@@ -2439,17 +2685,20 @@ end
 
 --- Create a structure of type InvalidInputException
 -- <p>Lightsail throws this exception when user input does not conform to the validation rules of an input field.</p> <note> <p>Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.</p> </note>
--- @param _docs [string] 
--- @param _message [string] 
--- @param _code [string] 
--- @param _tip [string] 
-function M.InvalidInputException(_docs, _message, _code, _tip, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * docs [string] 
+-- * message [string] 
+-- * code [string] 
+-- * tip [string] 
+-- @return InvalidInputException structure as a key-value pair table
+function M.InvalidInputException(args)
+	assert(args, "You must provdide an argument table when creating InvalidInputException")
 	local t = { 
-		["docs"] = _docs,
-		["message"] = _message,
-		["code"] = _code,
-		["tip"] = _tip,
+		["docs"] = args["docs"],
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["tip"] = args["tip"],
 	}
 	asserts.AssertInvalidInputException(t)
 	return t
@@ -2471,17 +2720,20 @@ end
 
 --- Create a structure of type AccountSetupInProgressException
 -- <p>Lightsail throws this exception when an account is still in the setup in progress state.</p>
--- @param _docs [string] 
--- @param _message [string] 
--- @param _code [string] 
--- @param _tip [string] 
-function M.AccountSetupInProgressException(_docs, _message, _code, _tip, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccountSetupInProgressException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * docs [string] 
+-- * message [string] 
+-- * code [string] 
+-- * tip [string] 
+-- @return AccountSetupInProgressException structure as a key-value pair table
+function M.AccountSetupInProgressException(args)
+	assert(args, "You must provdide an argument table when creating AccountSetupInProgressException")
 	local t = { 
-		["docs"] = _docs,
-		["message"] = _message,
-		["code"] = _code,
-		["tip"] = _tip,
+		["docs"] = args["docs"],
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["tip"] = args["tip"],
 	}
 	asserts.AssertAccountSetupInProgressException(t)
 	return t
@@ -2500,11 +2752,14 @@ end
 
 --- Create a structure of type DeleteDomainEntryResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the results of your delete domain entry request.</p>
-function M.DeleteDomainEntryResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainEntryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs containing information about the results of your delete domain entry request.</p>
+-- @return DeleteDomainEntryResult structure as a key-value pair table
+function M.DeleteDomainEntryResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteDomainEntryResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertDeleteDomainEntryResult(t)
 	return t
@@ -2524,12 +2779,15 @@ end
 
 --- Create a structure of type CreateKeyPairRequest
 --  
--- @param _keyPairName [ResourceName] <p>The name for your new key pair.</p>
--- Required parameter: keyPairName
-function M.CreateKeyPairRequest(_keyPairName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateKeyPairRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * keyPairName [ResourceName] <p>The name for your new key pair.</p>
+-- Required key: keyPairName
+-- @return CreateKeyPairRequest structure as a key-value pair table
+function M.CreateKeyPairRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateKeyPairRequest")
 	local t = { 
-		["keyPairName"] = _keyPairName,
+		["keyPairName"] = args["keyPairName"],
 	}
 	asserts.AssertCreateKeyPairRequest(t)
 	return t
@@ -2551,15 +2809,18 @@ end
 
 --- Create a structure of type DeleteDomainEntryRequest
 --  
--- @param _domainEntry [DomainEntry] <p>An array of key-value pairs containing information about your domain entries.</p>
--- @param _domainName [DomainName] <p>The name of the domain entry to delete.</p>
--- Required parameter: domainName
--- Required parameter: domainEntry
-function M.DeleteDomainEntryRequest(_domainEntry, _domainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainEntryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainEntry [DomainEntry] <p>An array of key-value pairs containing information about your domain entries.</p>
+-- * domainName [DomainName] <p>The name of the domain entry to delete.</p>
+-- Required key: domainName
+-- Required key: domainEntry
+-- @return DeleteDomainEntryRequest structure as a key-value pair table
+function M.DeleteDomainEntryRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDomainEntryRequest")
 	local t = { 
-		["domainEntry"] = _domainEntry,
-		["domainName"] = _domainName,
+		["domainEntry"] = args["domainEntry"],
+		["domainName"] = args["domainName"],
 	}
 	asserts.AssertDeleteDomainEntryRequest(t)
 	return t
@@ -2582,19 +2843,22 @@ end
 
 --- Create a structure of type DomainEntry
 -- <p>Describes a domain recordset entry.</p>
--- @param _type [DomainEntryType] <p>The type of domain entry (e.g., <code>SOA</code> or <code>NS</code>).</p>
--- @param _options [DomainEntryOptions] <p>The options for the domain entry.</p>
--- @param _target [string] <p>The target AWS name server (e.g., <code>ns-111.awsdns-22.com.</code>).</p>
--- @param _id [NonEmptyString] <p>The ID of the domain recordset entry.</p>
--- @param _name [DomainName] <p>The name of the domain.</p>
-function M.DomainEntry(_type, _options, _target, _id, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * type [DomainEntryType] <p>The type of domain entry (e.g., <code>SOA</code> or <code>NS</code>).</p>
+-- * options [DomainEntryOptions] <p>The options for the domain entry.</p>
+-- * target [string] <p>The target AWS name server (e.g., <code>ns-111.awsdns-22.com.</code>).</p>
+-- * id [NonEmptyString] <p>The ID of the domain recordset entry.</p>
+-- * name [DomainName] <p>The name of the domain.</p>
+-- @return DomainEntry structure as a key-value pair table
+function M.DomainEntry(args)
+	assert(args, "You must provdide an argument table when creating DomainEntry")
 	local t = { 
-		["type"] = _type,
-		["options"] = _options,
-		["target"] = _target,
-		["id"] = _id,
-		["name"] = _name,
+		["type"] = args["type"],
+		["options"] = args["options"],
+		["target"] = args["target"],
+		["id"] = args["id"],
+		["name"] = args["name"],
 	}
 	asserts.AssertDomainEntry(t)
 	return t
@@ -2614,12 +2878,15 @@ end
 
 --- Create a structure of type GetStaticIpRequest
 --  
--- @param _staticIpName [ResourceName] <p>The name of the static IP in Lightsail.</p>
--- Required parameter: staticIpName
-function M.GetStaticIpRequest(_staticIpName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetStaticIpRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * staticIpName [ResourceName] <p>The name of the static IP in Lightsail.</p>
+-- Required key: staticIpName
+-- @return GetStaticIpRequest structure as a key-value pair table
+function M.GetStaticIpRequest(args)
+	assert(args, "You must provdide an argument table when creating GetStaticIpRequest")
 	local t = { 
-		["staticIpName"] = _staticIpName,
+		["staticIpName"] = args["staticIpName"],
 	}
 	asserts.AssertGetStaticIpRequest(t)
 	return t
@@ -2639,13 +2906,16 @@ end
 
 --- Create a structure of type DownloadDefaultKeyPairResult
 --  
--- @param _publicKeyBase64 [Base64] <p>A base64-encoded public key of the <code>ssh-rsa</code> type.</p>
--- @param _privateKeyBase64 [Base64] <p>A base64-encoded RSA private key.</p>
-function M.DownloadDefaultKeyPairResult(_publicKeyBase64, _privateKeyBase64, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DownloadDefaultKeyPairResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * publicKeyBase64 [Base64] <p>A base64-encoded public key of the <code>ssh-rsa</code> type.</p>
+-- * privateKeyBase64 [Base64] <p>A base64-encoded RSA private key.</p>
+-- @return DownloadDefaultKeyPairResult structure as a key-value pair table
+function M.DownloadDefaultKeyPairResult(args)
+	assert(args, "You must provdide an argument table when creating DownloadDefaultKeyPairResult")
 	local t = { 
-		["publicKeyBase64"] = _publicKeyBase64,
-		["privateKeyBase64"] = _privateKeyBase64,
+		["publicKeyBase64"] = args["publicKeyBase64"],
+		["privateKeyBase64"] = args["privateKeyBase64"],
 	}
 	asserts.AssertDownloadDefaultKeyPairResult(t)
 	return t
@@ -2664,11 +2934,14 @@ end
 
 --- Create a structure of type CreateInstancesFromSnapshotResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances from snapshot request.</p>
-function M.CreateInstancesFromSnapshotResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstancesFromSnapshotResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances from snapshot request.</p>
+-- @return CreateInstancesFromSnapshotResult structure as a key-value pair table
+function M.CreateInstancesFromSnapshotResult(args)
+	assert(args, "You must provdide an argument table when creating CreateInstancesFromSnapshotResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertCreateInstancesFromSnapshotResult(t)
 	return t
@@ -2686,8 +2959,11 @@ end
 
 --- Create a structure of type DownloadDefaultKeyPairRequest
 --  
-function M.DownloadDefaultKeyPairRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DownloadDefaultKeyPairRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DownloadDefaultKeyPairRequest structure as a key-value pair table
+function M.DownloadDefaultKeyPairRequest(args)
+	assert(args, "You must provdide an argument table when creating DownloadDefaultKeyPairRequest")
 	local t = { 
 	}
 	asserts.AssertDownloadDefaultKeyPairRequest(t)
@@ -2707,11 +2983,14 @@ end
 
 --- Create a structure of type IsVpcPeeredResult
 --  
--- @param _isPeered [boolean] <p>Returns <code>true</code> if the Lightsail VPC is peered; otherwise, <code>false</code>.</p>
-function M.IsVpcPeeredResult(_isPeered, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IsVpcPeeredResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * isPeered [boolean] <p>Returns <code>true</code> if the Lightsail VPC is peered; otherwise, <code>false</code>.</p>
+-- @return IsVpcPeeredResult structure as a key-value pair table
+function M.IsVpcPeeredResult(args)
+	assert(args, "You must provdide an argument table when creating IsVpcPeeredResult")
 	local t = { 
-		["isPeered"] = _isPeered,
+		["isPeered"] = args["isPeered"],
 	}
 	asserts.AssertIsVpcPeeredResult(t)
 	return t
@@ -2738,27 +3017,30 @@ end
 
 --- Create a structure of type StaticIp
 -- <p>Describes the static IP.</p>
--- @param _name [ResourceName] <p>The name of the static IP (e.g., <code>StaticIP-Virginia-EXAMPLE</code>).</p>
--- @param _resourceType [ResourceType] <p>The resource type (usually <code>StaticIp</code>).</p>
--- @param _supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
--- @param _attachedTo [ResourceName] <p>The instance where the static IP is attached (e.g., <code>Amazon_Linux-1GB-Virginia-1</code>).</p>
--- @param _arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the static IP (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
--- @param _isAttached [boolean] <p>A Boolean value indicating whether the static IP is attached.</p>
--- @param _ipAddress [IpAddress] <p>The static IP address.</p>
--- @param _createdAt [IsoDate] <p>The timestamp when the static IP was created (e.g., <code>1479735304.222</code>).</p>
--- @param _location [ResourceLocation] <p>The region and Availability Zone where the static IP was created.</p>
-function M.StaticIp(_name, _resourceType, _supportCode, _attachedTo, _arn, _isAttached, _ipAddress, _createdAt, _location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StaticIp")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [ResourceName] <p>The name of the static IP (e.g., <code>StaticIP-Virginia-EXAMPLE</code>).</p>
+-- * resourceType [ResourceType] <p>The resource type (usually <code>StaticIp</code>).</p>
+-- * supportCode [string] <p>The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.</p>
+-- * attachedTo [ResourceName] <p>The instance where the static IP is attached (e.g., <code>Amazon_Linux-1GB-Virginia-1</code>).</p>
+-- * arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the static IP (e.g., <code>arn:aws:lightsail:us-east-1:123456789101:StaticIp/9cbb4a9e-f8e3-4dfe-b57e-12345EXAMPLE</code>).</p>
+-- * isAttached [boolean] <p>A Boolean value indicating whether the static IP is attached.</p>
+-- * ipAddress [IpAddress] <p>The static IP address.</p>
+-- * createdAt [IsoDate] <p>The timestamp when the static IP was created (e.g., <code>1479735304.222</code>).</p>
+-- * location [ResourceLocation] <p>The region and Availability Zone where the static IP was created.</p>
+-- @return StaticIp structure as a key-value pair table
+function M.StaticIp(args)
+	assert(args, "You must provdide an argument table when creating StaticIp")
 	local t = { 
-		["name"] = _name,
-		["resourceType"] = _resourceType,
-		["supportCode"] = _supportCode,
-		["attachedTo"] = _attachedTo,
-		["arn"] = _arn,
-		["isAttached"] = _isAttached,
-		["ipAddress"] = _ipAddress,
-		["createdAt"] = _createdAt,
-		["location"] = _location,
+		["name"] = args["name"],
+		["resourceType"] = args["resourceType"],
+		["supportCode"] = args["supportCode"],
+		["attachedTo"] = args["attachedTo"],
+		["arn"] = args["arn"],
+		["isAttached"] = args["isAttached"],
+		["ipAddress"] = args["ipAddress"],
+		["createdAt"] = args["createdAt"],
+		["location"] = args["location"],
 	}
 	asserts.AssertStaticIp(t)
 	return t
@@ -2778,12 +3060,15 @@ end
 
 --- Create a structure of type DeleteInstanceRequest
 --  
--- @param _instanceName [ResourceName] <p>The name of the instance to delete.</p>
--- Required parameter: instanceName
-function M.DeleteInstanceRequest(_instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The name of the instance to delete.</p>
+-- Required key: instanceName
+-- @return DeleteInstanceRequest structure as a key-value pair table
+function M.DeleteInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteInstanceRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertDeleteInstanceRequest(t)
 	return t
@@ -2803,12 +3088,15 @@ end
 
 --- Create a structure of type GetInstancePortStatesRequest
 --  
--- @param _instanceName [ResourceName] <p>The name of the instance.</p>
--- Required parameter: instanceName
-function M.GetInstancePortStatesRequest(_instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstancePortStatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The name of the instance.</p>
+-- Required key: instanceName
+-- @return GetInstancePortStatesRequest structure as a key-value pair table
+function M.GetInstancePortStatesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInstancePortStatesRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertGetInstancePortStatesRequest(t)
 	return t
@@ -2827,11 +3115,14 @@ end
 
 --- Create a structure of type CloseInstancePublicPortsResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs that contains information about the operation.</p>
-function M.CloseInstancePublicPortsResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloseInstancePublicPortsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs that contains information about the operation.</p>
+-- @return CloseInstancePublicPortsResult structure as a key-value pair table
+function M.CloseInstancePublicPortsResult(args)
+	assert(args, "You must provdide an argument table when creating CloseInstancePublicPortsResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertCloseInstancePublicPortsResult(t)
 	return t
@@ -2852,14 +3143,17 @@ end
 
 --- Create a structure of type GetInstanceAccessDetailsRequest
 --  
--- @param _protocol [InstanceAccessProtocol] <p>The protocol to use to connect to your instance. Defaults to <code>ssh</code>.</p>
--- @param _instanceName [ResourceName] <p>The name of the instance to access.</p>
--- Required parameter: instanceName
-function M.GetInstanceAccessDetailsRequest(_protocol, _instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceAccessDetailsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * protocol [InstanceAccessProtocol] <p>The protocol to use to connect to your instance. Defaults to <code>ssh</code>.</p>
+-- * instanceName [ResourceName] <p>The name of the instance to access.</p>
+-- Required key: instanceName
+-- @return GetInstanceAccessDetailsRequest structure as a key-value pair table
+function M.GetInstanceAccessDetailsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceAccessDetailsRequest")
 	local t = { 
-		["protocol"] = _protocol,
-		["instanceName"] = _instanceName,
+		["protocol"] = args["protocol"],
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertGetInstanceAccessDetailsRequest(t)
 	return t
@@ -2878,11 +3172,14 @@ end
 
 --- Create a structure of type GetInstanceSnapshotResult
 --  
--- @param _instanceSnapshot [InstanceSnapshot] <p>An array of key-value pairs containing information about the results of your get instance snapshot request.</p>
-function M.GetInstanceSnapshotResult(_instanceSnapshot, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceSnapshotResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceSnapshot [InstanceSnapshot] <p>An array of key-value pairs containing information about the results of your get instance snapshot request.</p>
+-- @return GetInstanceSnapshotResult structure as a key-value pair table
+function M.GetInstanceSnapshotResult(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceSnapshotResult")
 	local t = { 
-		["instanceSnapshot"] = _instanceSnapshot,
+		["instanceSnapshot"] = args["instanceSnapshot"],
 	}
 	asserts.AssertGetInstanceSnapshotResult(t)
 	return t
@@ -2901,11 +3198,14 @@ end
 
 --- Create a structure of type GetOperationsRequest
 --  
--- @param _pageToken [string] <p>A token used for advancing to the next page of results from your get operations request.</p>
-function M.GetOperationsRequest(_pageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pageToken [string] <p>A token used for advancing to the next page of results from your get operations request.</p>
+-- @return GetOperationsRequest structure as a key-value pair table
+function M.GetOperationsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetOperationsRequest")
 	local t = { 
-		["pageToken"] = _pageToken,
+		["pageToken"] = args["pageToken"],
 	}
 	asserts.AssertGetOperationsRequest(t)
 	return t
@@ -2925,13 +3225,16 @@ end
 
 --- Create a structure of type GetBundlesResult
 --  
--- @param _nextPageToken [string] <p>A token used for advancing to the next page of results from your get active names request.</p>
--- @param _bundles [BundleList] <p>An array of key-value pairs that contains information about the available bundles.</p>
-function M.GetBundlesResult(_nextPageToken, _bundles, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBundlesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get active names request.</p>
+-- * bundles [BundleList] <p>An array of key-value pairs that contains information about the available bundles.</p>
+-- @return GetBundlesResult structure as a key-value pair table
+function M.GetBundlesResult(args)
+	assert(args, "You must provdide an argument table when creating GetBundlesResult")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["bundles"] = _bundles,
+		["nextPageToken"] = args["nextPageToken"],
+		["bundles"] = args["bundles"],
 	}
 	asserts.AssertGetBundlesResult(t)
 	return t
@@ -2951,13 +3254,16 @@ end
 
 --- Create a structure of type InstanceNetworking
 -- <p>Describes monthly data transfer rates and port information for an instance.</p>
--- @param _monthlyTransfer [MonthlyTransfer] <p>The amount of data in GB allocated for monthly data transfers.</p>
--- @param _ports [InstancePortInfoList] <p>An array of key-value pairs containing information about the ports on the instance.</p>
-function M.InstanceNetworking(_monthlyTransfer, _ports, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceNetworking")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * monthlyTransfer [MonthlyTransfer] <p>The amount of data in GB allocated for monthly data transfers.</p>
+-- * ports [InstancePortInfoList] <p>An array of key-value pairs containing information about the ports on the instance.</p>
+-- @return InstanceNetworking structure as a key-value pair table
+function M.InstanceNetworking(args)
+	assert(args, "You must provdide an argument table when creating InstanceNetworking")
 	local t = { 
-		["monthlyTransfer"] = _monthlyTransfer,
-		["ports"] = _ports,
+		["monthlyTransfer"] = args["monthlyTransfer"],
+		["ports"] = args["ports"],
 	}
 	asserts.AssertInstanceNetworking(t)
 	return t
@@ -2976,11 +3282,14 @@ end
 
 --- Create a structure of type UpdateDomainEntryResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
-function M.UpdateDomainEntryResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainEntryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
+-- @return UpdateDomainEntryResult structure as a key-value pair table
+function M.UpdateDomainEntryResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateDomainEntryResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertUpdateDomainEntryResult(t)
 	return t
@@ -3002,17 +3311,20 @@ end
 
 --- Create a structure of type ServiceException
 -- <p>A general service exception.</p>
--- @param _docs [string] 
--- @param _message [string] 
--- @param _code [string] 
--- @param _tip [string] 
-function M.ServiceException(_docs, _message, _code, _tip, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * docs [string] 
+-- * message [string] 
+-- * code [string] 
+-- * tip [string] 
+-- @return ServiceException structure as a key-value pair table
+function M.ServiceException(args)
+	assert(args, "You must provdide an argument table when creating ServiceException")
 	local t = { 
-		["docs"] = _docs,
-		["message"] = _message,
-		["code"] = _code,
-		["tip"] = _tip,
+		["docs"] = args["docs"],
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["tip"] = args["tip"],
 	}
 	asserts.AssertServiceException(t)
 	return t
@@ -3031,11 +3343,14 @@ end
 
 --- Create a structure of type DeleteKeyPairResult
 --  
--- @param _operation [Operation] <p>An array of key-value pairs containing information about the results of your delete key pair request.</p>
-function M.DeleteKeyPairResult(_operation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteKeyPairResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operation [Operation] <p>An array of key-value pairs containing information about the results of your delete key pair request.</p>
+-- @return DeleteKeyPairResult structure as a key-value pair table
+function M.DeleteKeyPairResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteKeyPairResult")
 	local t = { 
-		["operation"] = _operation,
+		["operation"] = args["operation"],
 	}
 	asserts.AssertDeleteKeyPairResult(t)
 	return t
@@ -3054,11 +3369,14 @@ end
 
 --- Create a structure of type DeleteInstanceSnapshotResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the results of your delete instance snapshot request.</p>
-function M.DeleteInstanceSnapshotResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceSnapshotResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your delete instance snapshot request.</p>
+-- @return DeleteInstanceSnapshotResult structure as a key-value pair table
+function M.DeleteInstanceSnapshotResult(args)
+	assert(args, "You must provdide an argument table when creating DeleteInstanceSnapshotResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertDeleteInstanceSnapshotResult(t)
 	return t
@@ -3078,13 +3396,16 @@ end
 
 --- Create a structure of type GetDomainsResult
 --  
--- @param _domains [DomainList] <p>An array of key-value pairs containing information about each of the domain entries in the user's account.</p>
--- @param _nextPageToken [string] <p>A token used for advancing to the next page of results from your get active names request.</p>
-function M.GetDomainsResult(_domains, _nextPageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domains [DomainList] <p>An array of key-value pairs containing information about each of the domain entries in the user's account.</p>
+-- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get active names request.</p>
+-- @return GetDomainsResult structure as a key-value pair table
+function M.GetDomainsResult(args)
+	assert(args, "You must provdide an argument table when creating GetDomainsResult")
 	local t = { 
-		["domains"] = _domains,
-		["nextPageToken"] = _nextPageToken,
+		["domains"] = args["domains"],
+		["nextPageToken"] = args["nextPageToken"],
 	}
 	asserts.AssertGetDomainsResult(t)
 	return t
@@ -3103,11 +3424,14 @@ end
 
 --- Create a structure of type GetRegionsRequest
 --  
--- @param _includeAvailabilityZones [boolean] <p>A Boolean value indicating whether to also include Availability Zones in your get regions request. Availability Zones are indicated with a letter: e.g., <code>us-east-1a</code>.</p>
-function M.GetRegionsRequest(_includeAvailabilityZones, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRegionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * includeAvailabilityZones [boolean] <p>A Boolean value indicating whether to also include Availability Zones in your get regions request. Availability Zones are indicated with a letter: e.g., <code>us-east-1a</code>.</p>
+-- @return GetRegionsRequest structure as a key-value pair table
+function M.GetRegionsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetRegionsRequest")
 	local t = { 
-		["includeAvailabilityZones"] = _includeAvailabilityZones,
+		["includeAvailabilityZones"] = args["includeAvailabilityZones"],
 	}
 	asserts.AssertGetRegionsRequest(t)
 	return t
@@ -3127,13 +3451,16 @@ end
 
 --- Create a structure of type GetActiveNamesResult
 --  
--- @param _nextPageToken [string] <p>A token used for advancing to the next page of results from your get active names request.</p>
--- @param _activeNames [StringList] <p>The list of active names returned by the get active names request.</p>
-function M.GetActiveNamesResult(_nextPageToken, _activeNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetActiveNamesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get active names request.</p>
+-- * activeNames [StringList] <p>The list of active names returned by the get active names request.</p>
+-- @return GetActiveNamesResult structure as a key-value pair table
+function M.GetActiveNamesResult(args)
+	assert(args, "You must provdide an argument table when creating GetActiveNamesResult")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["activeNames"] = _activeNames,
+		["nextPageToken"] = args["nextPageToken"],
+		["activeNames"] = args["activeNames"],
 	}
 	asserts.AssertGetActiveNamesResult(t)
 	return t
@@ -3153,12 +3480,15 @@ end
 
 --- Create a structure of type AllocateStaticIpRequest
 --  
--- @param _staticIpName [ResourceName] <p>The name of the static IP address.</p>
--- Required parameter: staticIpName
-function M.AllocateStaticIpRequest(_staticIpName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AllocateStaticIpRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * staticIpName [ResourceName] <p>The name of the static IP address.</p>
+-- Required key: staticIpName
+-- @return AllocateStaticIpRequest structure as a key-value pair table
+function M.AllocateStaticIpRequest(args)
+	assert(args, "You must provdide an argument table when creating AllocateStaticIpRequest")
 	local t = { 
-		["staticIpName"] = _staticIpName,
+		["staticIpName"] = args["staticIpName"],
 	}
 	asserts.AssertAllocateStaticIpRequest(t)
 	return t
@@ -3177,11 +3507,14 @@ end
 
 --- Create a structure of type AllocateStaticIpResult
 --  
--- @param _operations [OperationList] <p>An array of key-value pairs containing information about the static IP address you allocated.</p>
-function M.AllocateStaticIpResult(_operations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AllocateStaticIpResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operations [OperationList] <p>An array of key-value pairs containing information about the static IP address you allocated.</p>
+-- @return AllocateStaticIpResult structure as a key-value pair table
+function M.AllocateStaticIpResult(args)
+	assert(args, "You must provdide an argument table when creating AllocateStaticIpResult")
 	local t = { 
-		["operations"] = _operations,
+		["operations"] = args["operations"],
 	}
 	asserts.AssertAllocateStaticIpResult(t)
 	return t
@@ -3201,13 +3534,16 @@ end
 
 --- Create a structure of type GetBlueprintsRequest
 --  
--- @param _includeInactive [boolean] <p>A Boolean value indicating whether to include inactive results in your request.</p>
--- @param _pageToken [string] <p>A token used for advancing to the next page of results from your get blueprints request.</p>
-function M.GetBlueprintsRequest(_includeInactive, _pageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBlueprintsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * includeInactive [boolean] <p>A Boolean value indicating whether to include inactive results in your request.</p>
+-- * pageToken [string] <p>A token used for advancing to the next page of results from your get blueprints request.</p>
+-- @return GetBlueprintsRequest structure as a key-value pair table
+function M.GetBlueprintsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBlueprintsRequest")
 	local t = { 
-		["includeInactive"] = _includeInactive,
-		["pageToken"] = _pageToken,
+		["includeInactive"] = args["includeInactive"],
+		["pageToken"] = args["pageToken"],
 	}
 	asserts.AssertGetBlueprintsRequest(t)
 	return t
@@ -3227,13 +3563,16 @@ end
 
 --- Create a structure of type GetInstanceSnapshotsResult
 --  
--- @param _nextPageToken [string] <p>A token used for advancing to the next page of results from your get instance snapshots request.</p>
--- @param _instanceSnapshots [InstanceSnapshotList] <p>An array of key-value pairs containing information about the results of your get instance snapshots request.</p>
-function M.GetInstanceSnapshotsResult(_nextPageToken, _instanceSnapshots, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceSnapshotsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get instance snapshots request.</p>
+-- * instanceSnapshots [InstanceSnapshotList] <p>An array of key-value pairs containing information about the results of your get instance snapshots request.</p>
+-- @return GetInstanceSnapshotsResult structure as a key-value pair table
+function M.GetInstanceSnapshotsResult(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceSnapshotsResult")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["instanceSnapshots"] = _instanceSnapshots,
+		["nextPageToken"] = args["nextPageToken"],
+		["instanceSnapshots"] = args["instanceSnapshots"],
 	}
 	asserts.AssertGetInstanceSnapshotsResult(t)
 	return t
@@ -3255,17 +3594,20 @@ end
 
 --- Create a structure of type AccessDeniedException
 -- <p>Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.</p>
--- @param _docs [string] 
--- @param _message [string] 
--- @param _code [string] 
--- @param _tip [string] 
-function M.AccessDeniedException(_docs, _message, _code, _tip, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * docs [string] 
+-- * message [string] 
+-- * code [string] 
+-- * tip [string] 
+-- @return AccessDeniedException structure as a key-value pair table
+function M.AccessDeniedException(args)
+	assert(args, "You must provdide an argument table when creating AccessDeniedException")
 	local t = { 
-		["docs"] = _docs,
-		["message"] = _message,
-		["code"] = _code,
-		["tip"] = _tip,
+		["docs"] = args["docs"],
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["tip"] = args["tip"],
 	}
 	asserts.AssertAccessDeniedException(t)
 	return t
@@ -3287,17 +3629,20 @@ end
 
 --- Create a structure of type InstancePortState
 -- <p>Describes the port state.</p>
--- @param _toPort [Port] <p>The last port in the range.</p>
--- @param _fromPort [Port] <p>The first port in the range.</p>
--- @param _state [PortState] <p>Specifies whether the instance port is <code>open</code> or <code>closed</code>.</p>
--- @param _protocol [NetworkProtocol] <p>The protocol being used. Can be one of the following.</p> <ul> <li> <p> <code>tcp</code> - Transmission Control Protocol (TCP) provides reliable, ordered, and error-checked delivery of streamed data between applications running on hosts communicating by an IP network. If you have an application that doesn't require reliable data stream service, use UDP instead.</p> </li> <li> <p> <code>all</code> - All transport layer protocol types. For more general information, see <a href="https://en.wikipedia.org/wiki/Transport_layer">Transport layer</a> on Wikipedia.</p> </li> <li> <p> <code>udp</code> - With User Datagram Protocol (UDP), computer applications can send messages (or datagrams) to other hosts on an Internet Protocol (IP) network. Prior communications are not required to set up transmission channels or data paths. Applications that don't require reliable data stream service can use UDP, which provides a connectionless datagram service that emphasizes reduced latency over reliability. If you do require reliable data stream service, use TCP instead.</p> </li> </ul>
-function M.InstancePortState(_toPort, _fromPort, _state, _protocol, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstancePortState")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * toPort [Port] <p>The last port in the range.</p>
+-- * fromPort [Port] <p>The first port in the range.</p>
+-- * state [PortState] <p>Specifies whether the instance port is <code>open</code> or <code>closed</code>.</p>
+-- * protocol [NetworkProtocol] <p>The protocol being used. Can be one of the following.</p> <ul> <li> <p> <code>tcp</code> - Transmission Control Protocol (TCP) provides reliable, ordered, and error-checked delivery of streamed data between applications running on hosts communicating by an IP network. If you have an application that doesn't require reliable data stream service, use UDP instead.</p> </li> <li> <p> <code>all</code> - All transport layer protocol types. For more general information, see <a href="https://en.wikipedia.org/wiki/Transport_layer">Transport layer</a> on Wikipedia.</p> </li> <li> <p> <code>udp</code> - With User Datagram Protocol (UDP), computer applications can send messages (or datagrams) to other hosts on an Internet Protocol (IP) network. Prior communications are not required to set up transmission channels or data paths. Applications that don't require reliable data stream service can use UDP, which provides a connectionless datagram service that emphasizes reduced latency over reliability. If you do require reliable data stream service, use TCP instead.</p> </li> </ul>
+-- @return InstancePortState structure as a key-value pair table
+function M.InstancePortState(args)
+	assert(args, "You must provdide an argument table when creating InstancePortState")
 	local t = { 
-		["toPort"] = _toPort,
-		["fromPort"] = _fromPort,
-		["state"] = _state,
-		["protocol"] = _protocol,
+		["toPort"] = args["toPort"],
+		["fromPort"] = args["fromPort"],
+		["state"] = args["state"],
+		["protocol"] = args["protocol"],
 	}
 	asserts.AssertInstancePortState(t)
 	return t
@@ -3316,11 +3661,14 @@ end
 
 --- Create a structure of type GetStaticIpsRequest
 --  
--- @param _pageToken [string] <p>A token used for advancing to the next page of results from your get static IPs request.</p>
-function M.GetStaticIpsRequest(_pageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetStaticIpsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pageToken [string] <p>A token used for advancing to the next page of results from your get static IPs request.</p>
+-- @return GetStaticIpsRequest structure as a key-value pair table
+function M.GetStaticIpsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetStaticIpsRequest")
 	local t = { 
-		["pageToken"] = _pageToken,
+		["pageToken"] = args["pageToken"],
 	}
 	asserts.AssertGetStaticIpsRequest(t)
 	return t
@@ -3342,17 +3690,20 @@ end
 
 --- Create a structure of type OperationFailureException
 -- <p>Lightsail throws this exception when an operation fails to execute.</p>
--- @param _docs [string] 
--- @param _message [string] 
--- @param _code [string] 
--- @param _tip [string] 
-function M.OperationFailureException(_docs, _message, _code, _tip, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationFailureException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * docs [string] 
+-- * message [string] 
+-- * code [string] 
+-- * tip [string] 
+-- @return OperationFailureException structure as a key-value pair table
+function M.OperationFailureException(args)
+	assert(args, "You must provdide an argument table when creating OperationFailureException")
 	local t = { 
-		["docs"] = _docs,
-		["message"] = _message,
-		["code"] = _code,
-		["tip"] = _tip,
+		["docs"] = args["docs"],
+		["message"] = args["message"],
+		["code"] = args["code"],
+		["tip"] = args["tip"],
 	}
 	asserts.AssertOperationFailureException(t)
 	return t
@@ -3372,13 +3723,16 @@ end
 
 --- Create a structure of type GetKeyPairsResult
 --  
--- @param _nextPageToken [string] <p>A token used for advancing to the next page of results from your get key pairs request.</p>
--- @param _keyPairs [KeyPairList] <p>An array of key-value pairs containing information about the key pairs.</p>
-function M.GetKeyPairsResult(_nextPageToken, _keyPairs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetKeyPairsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get key pairs request.</p>
+-- * keyPairs [KeyPairList] <p>An array of key-value pairs containing information about the key pairs.</p>
+-- @return GetKeyPairsResult structure as a key-value pair table
+function M.GetKeyPairsResult(args)
+	assert(args, "You must provdide an argument table when creating GetKeyPairsResult")
 	local t = { 
-		["nextPageToken"] = _nextPageToken,
-		["keyPairs"] = _keyPairs,
+		["nextPageToken"] = args["nextPageToken"],
+		["keyPairs"] = args["keyPairs"],
 	}
 	asserts.AssertGetKeyPairsResult(t)
 	return t
@@ -3398,13 +3752,16 @@ end
 
 --- Create a structure of type GetInstanceMetricDataResult
 --  
--- @param _metricData [MetricDatapointList] <p>An array of key-value pairs containing information about the results of your get instance metric data request.</p>
--- @param _metricName [InstanceMetricName] <p>The metric name to return data for. </p>
-function M.GetInstanceMetricDataResult(_metricData, _metricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceMetricDataResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * metricData [MetricDatapointList] <p>An array of key-value pairs containing information about the results of your get instance metric data request.</p>
+-- * metricName [InstanceMetricName] <p>The metric name to return data for. </p>
+-- @return GetInstanceMetricDataResult structure as a key-value pair table
+function M.GetInstanceMetricDataResult(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceMetricDataResult")
 	local t = { 
-		["metricData"] = _metricData,
-		["metricName"] = _metricName,
+		["metricData"] = args["metricData"],
+		["metricName"] = args["metricName"],
 	}
 	asserts.AssertGetInstanceMetricDataResult(t)
 	return t
@@ -3423,11 +3780,14 @@ end
 
 --- Create a structure of type GetDomainResult
 --  
--- @param _domain [Domain] <p>An array of key-value pairs containing information about your get domain request.</p>
-function M.GetDomainResult(_domain, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domain [Domain] <p>An array of key-value pairs containing information about your get domain request.</p>
+-- @return GetDomainResult structure as a key-value pair table
+function M.GetDomainResult(args)
+	assert(args, "You must provdide an argument table when creating GetDomainResult")
 	local t = { 
-		["domain"] = _domain,
+		["domain"] = args["domain"],
 	}
 	asserts.AssertGetDomainResult(t)
 	return t
@@ -3446,11 +3806,14 @@ end
 
 --- Create a structure of type GetInstanceStateResult
 --  
--- @param _state [InstanceState] <p>The state of the instance.</p>
-function M.GetInstanceStateResult(_state, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceStateResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * state [InstanceState] <p>The state of the instance.</p>
+-- @return GetInstanceStateResult structure as a key-value pair table
+function M.GetInstanceStateResult(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceStateResult")
 	local t = { 
-		["state"] = _state,
+		["state"] = args["state"],
 	}
 	asserts.AssertGetInstanceStateResult(t)
 	return t
@@ -3472,15 +3835,18 @@ end
 
 --- Create a structure of type AttachStaticIpRequest
 --  
--- @param _staticIpName [ResourceName] <p>The name of the static IP.</p>
--- @param _instanceName [ResourceName] <p>The instance name to which you want to attach the static IP address.</p>
--- Required parameter: staticIpName
--- Required parameter: instanceName
-function M.AttachStaticIpRequest(_staticIpName, _instanceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachStaticIpRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * staticIpName [ResourceName] <p>The name of the static IP.</p>
+-- * instanceName [ResourceName] <p>The instance name to which you want to attach the static IP address.</p>
+-- Required key: staticIpName
+-- Required key: instanceName
+-- @return AttachStaticIpRequest structure as a key-value pair table
+function M.AttachStaticIpRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachStaticIpRequest")
 	local t = { 
-		["staticIpName"] = _staticIpName,
-		["instanceName"] = _instanceName,
+		["staticIpName"] = args["staticIpName"],
+		["instanceName"] = args["instanceName"],
 	}
 	asserts.AssertAttachStaticIpRequest(t)
 	return t
@@ -3508,25 +3874,28 @@ end
 
 --- Create a structure of type CreateInstancesFromSnapshotRequest
 --  
--- @param _userData [string] <p>You can create a launch script that configures a server with additional user data. For example, <code>apt-get –y update</code>.</p> <note> <p>Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses <code>pkg</code>. For a complete list, see the <a href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.</p> </note>
--- @param _availabilityZone [string] <p>The Availability Zone where you want to create your instances. Use the following formatting: <code>us-east-1a</code> (case sensitive). You can get a list of availability zones by using the <a href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a> operation. Be sure to add the <code>include availability zones</code> parameter to your request.</p>
--- @param _instanceNames [StringList] <p>The names for your new instances.</p>
--- @param _instanceSnapshotName [ResourceName] <p>The name of the instance snapshot on which you are basing your new instances. Use the get instance snapshots operation to return information about your existing snapshots.</p>
--- @param _bundleId [NonEmptyString] <p>The bundle of specification information for your virtual private server (or <i>instance</i>), including the pricing plan (e.g., <code>micro_1_0</code>).</p>
--- @param _keyPairName [ResourceName] <p>The name for your key pair.</p>
--- Required parameter: instanceNames
--- Required parameter: availabilityZone
--- Required parameter: instanceSnapshotName
--- Required parameter: bundleId
-function M.CreateInstancesFromSnapshotRequest(_userData, _availabilityZone, _instanceNames, _instanceSnapshotName, _bundleId, _keyPairName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstancesFromSnapshotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * userData [string] <p>You can create a launch script that configures a server with additional user data. For example, <code>apt-get –y update</code>.</p> <note> <p>Depending on the machine image you choose, the command to get software on your instance varies. Amazon Linux and CentOS use <code>yum</code>, Debian and Ubuntu use <code>apt-get</code>, and FreeBSD uses <code>pkg</code>. For a complete list, see the <a href="http://lightsail.aws.amazon.com/ls/docs/getting-started/articles/pre-installed-apps">Dev Guide</a>.</p> </note>
+-- * availabilityZone [string] <p>The Availability Zone where you want to create your instances. Use the following formatting: <code>us-east-1a</code> (case sensitive). You can get a list of availability zones by using the <a href="http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html">get regions</a> operation. Be sure to add the <code>include availability zones</code> parameter to your request.</p>
+-- * instanceNames [StringList] <p>The names for your new instances.</p>
+-- * instanceSnapshotName [ResourceName] <p>The name of the instance snapshot on which you are basing your new instances. Use the get instance snapshots operation to return information about your existing snapshots.</p>
+-- * bundleId [NonEmptyString] <p>The bundle of specification information for your virtual private server (or <i>instance</i>), including the pricing plan (e.g., <code>micro_1_0</code>).</p>
+-- * keyPairName [ResourceName] <p>The name for your key pair.</p>
+-- Required key: instanceNames
+-- Required key: availabilityZone
+-- Required key: instanceSnapshotName
+-- Required key: bundleId
+-- @return CreateInstancesFromSnapshotRequest structure as a key-value pair table
+function M.CreateInstancesFromSnapshotRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateInstancesFromSnapshotRequest")
 	local t = { 
-		["userData"] = _userData,
-		["availabilityZone"] = _availabilityZone,
-		["instanceNames"] = _instanceNames,
-		["instanceSnapshotName"] = _instanceSnapshotName,
-		["bundleId"] = _bundleId,
-		["keyPairName"] = _keyPairName,
+		["userData"] = args["userData"],
+		["availabilityZone"] = args["availabilityZone"],
+		["instanceNames"] = args["instanceNames"],
+		["instanceSnapshotName"] = args["instanceSnapshotName"],
+		["bundleId"] = args["bundleId"],
+		["keyPairName"] = args["keyPairName"],
 	}
 	asserts.AssertCreateInstancesFromSnapshotRequest(t)
 	return t
@@ -3545,11 +3914,14 @@ end
 
 --- Create a structure of type GetDomainsRequest
 --  
--- @param _pageToken [string] <p>A token used for advancing to the next page of results from your get domains request.</p>
-function M.GetDomainsRequest(_pageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pageToken [string] <p>A token used for advancing to the next page of results from your get domains request.</p>
+-- @return GetDomainsRequest structure as a key-value pair table
+function M.GetDomainsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDomainsRequest")
 	local t = { 
-		["pageToken"] = _pageToken,
+		["pageToken"] = args["pageToken"],
 	}
 	asserts.AssertGetDomainsRequest(t)
 	return t
@@ -3571,15 +3943,18 @@ end
 
 --- Create a structure of type CreateInstanceSnapshotRequest
 --  
--- @param _instanceName [ResourceName] <p>The Lightsail instance on which to base your snapshot.</p>
--- @param _instanceSnapshotName [ResourceName] <p>The name for your new snapshot.</p>
--- Required parameter: instanceSnapshotName
--- Required parameter: instanceName
-function M.CreateInstanceSnapshotRequest(_instanceName, _instanceSnapshotName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstanceSnapshotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * instanceName [ResourceName] <p>The Lightsail instance on which to base your snapshot.</p>
+-- * instanceSnapshotName [ResourceName] <p>The name for your new snapshot.</p>
+-- Required key: instanceSnapshotName
+-- Required key: instanceName
+-- @return CreateInstanceSnapshotRequest structure as a key-value pair table
+function M.CreateInstanceSnapshotRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateInstanceSnapshotRequest")
 	local t = { 
-		["instanceName"] = _instanceName,
-		["instanceSnapshotName"] = _instanceSnapshotName,
+		["instanceName"] = args["instanceName"],
+		["instanceSnapshotName"] = args["instanceSnapshotName"],
 	}
 	asserts.AssertCreateInstanceSnapshotRequest(t)
 	return t

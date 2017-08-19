@@ -44,27 +44,30 @@ end
 
 --- Create a structure of type ActionConfigurationProperty
 -- <p>Represents information about an action configuration property.</p>
--- @param _description [Description] <p>The description of the action configuration property that will be displayed to users.</p>
--- @param _required [Boolean] <p>Whether the configuration property is a required value.</p>
--- @param _secret [Boolean] <p>Whether the configuration property is secret. Secrets are hidden from all calls except for GetJobDetails, GetThirdPartyJobDetails, PollForJobs, and PollForThirdPartyJobs.</p> <p>When updating a pipeline, passing * * * * * without changing any other values of the action will preserve the prior value of the secret.</p>
--- @param _key [Boolean] <p>Whether the configuration property is a key.</p>
--- @param _type [ActionConfigurationPropertyType] <p>The type of the configuration property.</p>
--- @param _queryable [Boolean] <p>Indicates that the proprety will be used in conjunction with PollForJobs. When creating a custom action, an action can have up to one queryable property. If it has one, that property must be both required and not secret.</p> <p>If you create a pipeline with a custom action type, and that custom action contains a queryable property, the value for that configuration property is subject to additional restrictions. The value must be less than or equal to twenty (20) characters. The value can contain only alphanumeric characters, underscores, and hyphens.</p>
--- @param _name [ActionConfigurationKey] <p>The name of the action configuration property.</p>
--- Required parameter: name
--- Required parameter: required
--- Required parameter: key
--- Required parameter: secret
-function M.ActionConfigurationProperty(_description, _required, _secret, _key, _type, _queryable, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionConfigurationProperty")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * description [Description] <p>The description of the action configuration property that will be displayed to users.</p>
+-- * required [Boolean] <p>Whether the configuration property is a required value.</p>
+-- * secret [Boolean] <p>Whether the configuration property is secret. Secrets are hidden from all calls except for GetJobDetails, GetThirdPartyJobDetails, PollForJobs, and PollForThirdPartyJobs.</p> <p>When updating a pipeline, passing * * * * * without changing any other values of the action will preserve the prior value of the secret.</p>
+-- * key [Boolean] <p>Whether the configuration property is a key.</p>
+-- * type [ActionConfigurationPropertyType] <p>The type of the configuration property.</p>
+-- * queryable [Boolean] <p>Indicates that the proprety will be used in conjunction with PollForJobs. When creating a custom action, an action can have up to one queryable property. If it has one, that property must be both required and not secret.</p> <p>If you create a pipeline with a custom action type, and that custom action contains a queryable property, the value for that configuration property is subject to additional restrictions. The value must be less than or equal to twenty (20) characters. The value can contain only alphanumeric characters, underscores, and hyphens.</p>
+-- * name [ActionConfigurationKey] <p>The name of the action configuration property.</p>
+-- Required key: name
+-- Required key: required
+-- Required key: key
+-- Required key: secret
+-- @return ActionConfigurationProperty structure as a key-value pair table
+function M.ActionConfigurationProperty(args)
+	assert(args, "You must provdide an argument table when creating ActionConfigurationProperty")
 	local t = { 
-		["description"] = _description,
-		["required"] = _required,
-		["secret"] = _secret,
-		["key"] = _key,
-		["type"] = _type,
-		["queryable"] = _queryable,
-		["name"] = _name,
+		["description"] = args["description"],
+		["required"] = args["required"],
+		["secret"] = args["secret"],
+		["key"] = args["key"],
+		["type"] = args["type"],
+		["queryable"] = args["queryable"],
+		["name"] = args["name"],
 	}
 	asserts.AssertActionConfigurationProperty(t)
 	return t
@@ -86,16 +89,19 @@ end
 
 --- Create a structure of type PollForJobsInput
 -- <p>Represents the input of a poll for jobs action.</p>
--- @param _actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
--- @param _maxBatchSize [MaxBatchSize] <p>The maximum number of jobs to return in a poll for jobs call.</p>
--- @param _queryParam [QueryParamMap] <p>A map of property names and values. For an action type with no queryable properties, this value must be null or an empty map. For an action type with a queryable property, you must supply that property as a key in the map. Only jobs whose action configuration matches the mapped value will be returned.</p>
--- Required parameter: actionTypeId
-function M.PollForJobsInput(_actionTypeId, _maxBatchSize, _queryParam, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PollForJobsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
+-- * maxBatchSize [MaxBatchSize] <p>The maximum number of jobs to return in a poll for jobs call.</p>
+-- * queryParam [QueryParamMap] <p>A map of property names and values. For an action type with no queryable properties, this value must be null or an empty map. For an action type with a queryable property, you must supply that property as a key in the map. Only jobs whose action configuration matches the mapped value will be returned.</p>
+-- Required key: actionTypeId
+-- @return PollForJobsInput structure as a key-value pair table
+function M.PollForJobsInput(args)
+	assert(args, "You must provdide an argument table when creating PollForJobsInput")
 	local t = { 
-		["actionTypeId"] = _actionTypeId,
-		["maxBatchSize"] = _maxBatchSize,
-		["queryParam"] = _queryParam,
+		["actionTypeId"] = args["actionTypeId"],
+		["maxBatchSize"] = args["maxBatchSize"],
+		["queryParam"] = args["queryParam"],
 	}
 	asserts.AssertPollForJobsInput(t)
 	return t
@@ -125,28 +131,31 @@ end
 
 --- Create a structure of type CreateCustomActionTypeInput
 -- <p>Represents the input of a create custom action operation.</p>
--- @param _category [ActionCategory] <p>The category of the custom action, such as a build action or a test action.</p> <note> <p>Although Source and Approval are listed as valid values, they are not currently functional. These values are reserved for future use.</p> </note>
--- @param _settings [ActionTypeSettings] <p>Returns information about the settings for an action type.</p>
--- @param _configurationProperties [ActionConfigurationPropertyList] <p>The configuration properties for the custom action.</p> <note> <p>You can refer to a name in the configuration properties of the custom action within the URL templates by following the format of {Config:name}, as long as the configuration property is both required and not secret. For more information, see <a href="http://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html">Create a Custom Action for a Pipeline</a>.</p> </note>
--- @param _version [Version] <p>The version identifier of the custom action.</p>
--- @param _provider [ActionProvider] <p>The provider of the service used in the custom action, such as AWS CodeDeploy.</p>
--- @param _inputArtifactDetails [ArtifactDetails] <p>The details of the input artifact for the action, such as its commit ID.</p>
--- @param _outputArtifactDetails [ArtifactDetails] <p>The details of the output artifact of the action, such as its commit ID.</p>
--- Required parameter: category
--- Required parameter: provider
--- Required parameter: version
--- Required parameter: inputArtifactDetails
--- Required parameter: outputArtifactDetails
-function M.CreateCustomActionTypeInput(_category, _settings, _configurationProperties, _version, _provider, _inputArtifactDetails, _outputArtifactDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCustomActionTypeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * category [ActionCategory] <p>The category of the custom action, such as a build action or a test action.</p> <note> <p>Although Source and Approval are listed as valid values, they are not currently functional. These values are reserved for future use.</p> </note>
+-- * settings [ActionTypeSettings] <p>Returns information about the settings for an action type.</p>
+-- * configurationProperties [ActionConfigurationPropertyList] <p>The configuration properties for the custom action.</p> <note> <p>You can refer to a name in the configuration properties of the custom action within the URL templates by following the format of {Config:name}, as long as the configuration property is both required and not secret. For more information, see <a href="http://docs.aws.amazon.com/codepipeline/latest/userguide/how-to-create-custom-action.html">Create a Custom Action for a Pipeline</a>.</p> </note>
+-- * version [Version] <p>The version identifier of the custom action.</p>
+-- * provider [ActionProvider] <p>The provider of the service used in the custom action, such as AWS CodeDeploy.</p>
+-- * inputArtifactDetails [ArtifactDetails] <p>The details of the input artifact for the action, such as its commit ID.</p>
+-- * outputArtifactDetails [ArtifactDetails] <p>The details of the output artifact of the action, such as its commit ID.</p>
+-- Required key: category
+-- Required key: provider
+-- Required key: version
+-- Required key: inputArtifactDetails
+-- Required key: outputArtifactDetails
+-- @return CreateCustomActionTypeInput structure as a key-value pair table
+function M.CreateCustomActionTypeInput(args)
+	assert(args, "You must provdide an argument table when creating CreateCustomActionTypeInput")
 	local t = { 
-		["category"] = _category,
-		["settings"] = _settings,
-		["configurationProperties"] = _configurationProperties,
-		["version"] = _version,
-		["provider"] = _provider,
-		["inputArtifactDetails"] = _inputArtifactDetails,
-		["outputArtifactDetails"] = _outputArtifactDetails,
+		["category"] = args["category"],
+		["settings"] = args["settings"],
+		["configurationProperties"] = args["configurationProperties"],
+		["version"] = args["version"],
+		["provider"] = args["provider"],
+		["inputArtifactDetails"] = args["inputArtifactDetails"],
+		["outputArtifactDetails"] = args["outputArtifactDetails"],
 	}
 	asserts.AssertCreateCustomActionTypeInput(t)
 	return t
@@ -168,17 +177,20 @@ end
 
 --- Create a structure of type StageState
 -- <p>Represents information about the state of the stage.</p>
--- @param _actionStates [ActionStateList] <p>The state of the stage.</p>
--- @param _inboundTransitionState [TransitionState] <p>The state of the inbound transition, which is either enabled or disabled.</p>
--- @param _latestExecution [StageExecution] <p>Information about the latest execution in the stage, including its ID and status.</p>
--- @param _stageName [StageName] <p>The name of the stage.</p>
-function M.StageState(_actionStates, _inboundTransitionState, _latestExecution, _stageName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StageState")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionStates [ActionStateList] <p>The state of the stage.</p>
+-- * inboundTransitionState [TransitionState] <p>The state of the inbound transition, which is either enabled or disabled.</p>
+-- * latestExecution [StageExecution] <p>Information about the latest execution in the stage, including its ID and status.</p>
+-- * stageName [StageName] <p>The name of the stage.</p>
+-- @return StageState structure as a key-value pair table
+function M.StageState(args)
+	assert(args, "You must provdide an argument table when creating StageState")
 	local t = { 
-		["actionStates"] = _actionStates,
-		["inboundTransitionState"] = _inboundTransitionState,
-		["latestExecution"] = _latestExecution,
-		["stageName"] = _stageName,
+		["actionStates"] = args["actionStates"],
+		["inboundTransitionState"] = args["inboundTransitionState"],
+		["latestExecution"] = args["latestExecution"],
+		["stageName"] = args["stageName"],
 	}
 	asserts.AssertStageState(t)
 	return t
@@ -201,19 +213,22 @@ end
 
 --- Create a structure of type GetPipelineStateOutput
 -- <p>Represents the output of a get pipeline state action.</p>
--- @param _stageStates [StageStateList] <p>A list of the pipeline stage output information, including stage name, state, most recent run details, whether the stage is disabled, and other data.</p>
--- @param _pipelineVersion [PipelineVersion] <p>The version number of the pipeline.</p> <note> <p>A newly-created pipeline is always assigned a version number of <code>1</code>.</p> </note>
--- @param _updated [Timestamp] <p>The date and time the pipeline was last updated, in timestamp format.</p>
--- @param _pipelineName [PipelineName] <p>The name of the pipeline for which you want to get the state.</p>
--- @param _created [Timestamp] <p>The date and time the pipeline was created, in timestamp format.</p>
-function M.GetPipelineStateOutput(_stageStates, _pipelineVersion, _updated, _pipelineName, _created, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineStateOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * stageStates [StageStateList] <p>A list of the pipeline stage output information, including stage name, state, most recent run details, whether the stage is disabled, and other data.</p>
+-- * pipelineVersion [PipelineVersion] <p>The version number of the pipeline.</p> <note> <p>A newly-created pipeline is always assigned a version number of <code>1</code>.</p> </note>
+-- * updated [Timestamp] <p>The date and time the pipeline was last updated, in timestamp format.</p>
+-- * pipelineName [PipelineName] <p>The name of the pipeline for which you want to get the state.</p>
+-- * created [Timestamp] <p>The date and time the pipeline was created, in timestamp format.</p>
+-- @return GetPipelineStateOutput structure as a key-value pair table
+function M.GetPipelineStateOutput(args)
+	assert(args, "You must provdide an argument table when creating GetPipelineStateOutput")
 	local t = { 
-		["stageStates"] = _stageStates,
-		["pipelineVersion"] = _pipelineVersion,
-		["updated"] = _updated,
-		["pipelineName"] = _pipelineName,
-		["created"] = _created,
+		["stageStates"] = args["stageStates"],
+		["pipelineVersion"] = args["pipelineVersion"],
+		["updated"] = args["updated"],
+		["pipelineName"] = args["pipelineName"],
+		["created"] = args["created"],
 	}
 	asserts.AssertGetPipelineStateOutput(t)
 	return t
@@ -233,13 +248,16 @@ end
 
 --- Create a structure of type ListPipelinesOutput
 -- <p>Represents the output of a list pipelines action.</p>
--- @param _nextToken [NextToken] <p>If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list pipelines call to return the next set of pipelines in the list.</p>
--- @param _pipelines [PipelineList] <p>The list of pipelines.</p>
-function M.ListPipelinesOutput(_nextToken, _pipelines, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelinesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list pipelines call to return the next set of pipelines in the list.</p>
+-- * pipelines [PipelineList] <p>The list of pipelines.</p>
+-- @return ListPipelinesOutput structure as a key-value pair table
+function M.ListPipelinesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListPipelinesOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["pipelines"] = _pipelines,
+		["nextToken"] = args["nextToken"],
+		["pipelines"] = args["pipelines"],
 	}
 	asserts.AssertListPipelinesOutput(t)
 	return t
@@ -263,21 +281,24 @@ end
 
 --- Create a structure of type ArtifactRevision
 -- <p>Represents revision details of an artifact. </p>
--- @param _revisionUrl [Url] <p>The commit ID for the artifact revision. For artifacts stored in GitHub or AWS CodeCommit repositories, the commit ID is linked to a commit details page.</p>
--- @param _name [ArtifactName] <p>The name of an artifact. This name might be system-generated, such as "MyApp", or might be defined by the user when an action is created.</p>
--- @param _created [Timestamp] <p>The date and time when the most recent revision of the artifact was created, in timestamp format.</p>
--- @param _revisionId [Revision] <p>The revision ID of the artifact.</p>
--- @param _revisionSummary [RevisionSummary] <p>Summary information about the most recent revision of the artifact. For GitHub and AWS CodeCommit repositories, the commit message. For Amazon S3 buckets or actions, the user-provided content of a <code>codepipeline-artifact-revision-summary</code> key specified in the object metadata.</p>
--- @param _revisionChangeIdentifier [RevisionChangeIdentifier] <p>An additional identifier for a revision, such as a commit date or, for artifacts stored in Amazon S3 buckets, the ETag value.</p>
-function M.ArtifactRevision(_revisionUrl, _name, _created, _revisionId, _revisionSummary, _revisionChangeIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ArtifactRevision")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * revisionUrl [Url] <p>The commit ID for the artifact revision. For artifacts stored in GitHub or AWS CodeCommit repositories, the commit ID is linked to a commit details page.</p>
+-- * name [ArtifactName] <p>The name of an artifact. This name might be system-generated, such as "MyApp", or might be defined by the user when an action is created.</p>
+-- * created [Timestamp] <p>The date and time when the most recent revision of the artifact was created, in timestamp format.</p>
+-- * revisionId [Revision] <p>The revision ID of the artifact.</p>
+-- * revisionSummary [RevisionSummary] <p>Summary information about the most recent revision of the artifact. For GitHub and AWS CodeCommit repositories, the commit message. For Amazon S3 buckets or actions, the user-provided content of a <code>codepipeline-artifact-revision-summary</code> key specified in the object metadata.</p>
+-- * revisionChangeIdentifier [RevisionChangeIdentifier] <p>An additional identifier for a revision, such as a commit date or, for artifacts stored in Amazon S3 buckets, the ETag value.</p>
+-- @return ArtifactRevision structure as a key-value pair table
+function M.ArtifactRevision(args)
+	assert(args, "You must provdide an argument table when creating ArtifactRevision")
 	local t = { 
-		["revisionUrl"] = _revisionUrl,
-		["name"] = _name,
-		["created"] = _created,
-		["revisionId"] = _revisionId,
-		["revisionSummary"] = _revisionSummary,
-		["revisionChangeIdentifier"] = _revisionChangeIdentifier,
+		["revisionUrl"] = args["revisionUrl"],
+		["name"] = args["name"],
+		["created"] = args["created"],
+		["revisionId"] = args["revisionId"],
+		["revisionSummary"] = args["revisionSummary"],
+		["revisionChangeIdentifier"] = args["revisionChangeIdentifier"],
 	}
 	asserts.AssertArtifactRevision(t)
 	return t
@@ -299,15 +320,18 @@ end
 
 --- Create a structure of type ArtifactDetails
 -- <p>Returns information about the details of an artifact.</p>
--- @param _maximumCount [MaximumArtifactCount] <p>The maximum number of artifacts allowed for the action type.</p>
--- @param _minimumCount [MinimumArtifactCount] <p>The minimum number of artifacts allowed for the action type.</p>
--- Required parameter: minimumCount
--- Required parameter: maximumCount
-function M.ArtifactDetails(_maximumCount, _minimumCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ArtifactDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * maximumCount [MaximumArtifactCount] <p>The maximum number of artifacts allowed for the action type.</p>
+-- * minimumCount [MinimumArtifactCount] <p>The minimum number of artifacts allowed for the action type.</p>
+-- Required key: minimumCount
+-- Required key: maximumCount
+-- @return ArtifactDetails structure as a key-value pair table
+function M.ArtifactDetails(args)
+	assert(args, "You must provdide an argument table when creating ArtifactDetails")
 	local t = { 
-		["maximumCount"] = _maximumCount,
-		["minimumCount"] = _minimumCount,
+		["maximumCount"] = args["maximumCount"],
+		["minimumCount"] = args["minimumCount"],
 	}
 	asserts.AssertArtifactDetails(t)
 	return t
@@ -332,21 +356,24 @@ end
 
 --- Create a structure of type PutThirdPartyJobSuccessResultInput
 -- <p>Represents the input of a put third party job success result action.</p>
--- @param _currentRevision [CurrentRevision] <p>Represents information about a current revision.</p>
--- @param _clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
--- @param _executionDetails [ExecutionDetails] <p>The details of the actions taken and results produced on an artifact as it passes through stages in the pipeline. </p>
--- @param _continuationToken [ContinuationToken] <p>A token generated by a job worker, such as an AWS CodeDeploy deployment ID, that a successful job provides to identify a partner action in progress. Future jobs will use this token in order to identify the running instance of the action. It can be reused to return additional information about the progress of the partner action. When the action is complete, no continuation token should be supplied.</p>
--- @param _jobId [ThirdPartyJobId] <p>The ID of the job that successfully completed. This is the same ID returned from PollForThirdPartyJobs.</p>
--- Required parameter: jobId
--- Required parameter: clientToken
-function M.PutThirdPartyJobSuccessResultInput(_currentRevision, _clientToken, _executionDetails, _continuationToken, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutThirdPartyJobSuccessResultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * currentRevision [CurrentRevision] <p>Represents information about a current revision.</p>
+-- * clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
+-- * executionDetails [ExecutionDetails] <p>The details of the actions taken and results produced on an artifact as it passes through stages in the pipeline. </p>
+-- * continuationToken [ContinuationToken] <p>A token generated by a job worker, such as an AWS CodeDeploy deployment ID, that a successful job provides to identify a partner action in progress. Future jobs will use this token in order to identify the running instance of the action. It can be reused to return additional information about the progress of the partner action. When the action is complete, no continuation token should be supplied.</p>
+-- * jobId [ThirdPartyJobId] <p>The ID of the job that successfully completed. This is the same ID returned from PollForThirdPartyJobs.</p>
+-- Required key: jobId
+-- Required key: clientToken
+-- @return PutThirdPartyJobSuccessResultInput structure as a key-value pair table
+function M.PutThirdPartyJobSuccessResultInput(args)
+	assert(args, "You must provdide an argument table when creating PutThirdPartyJobSuccessResultInput")
 	local t = { 
-		["currentRevision"] = _currentRevision,
-		["clientToken"] = _clientToken,
-		["executionDetails"] = _executionDetails,
-		["continuationToken"] = _continuationToken,
-		["jobId"] = _jobId,
+		["currentRevision"] = args["currentRevision"],
+		["clientToken"] = args["clientToken"],
+		["executionDetails"] = args["executionDetails"],
+		["continuationToken"] = args["continuationToken"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertPutThirdPartyJobSuccessResultInput(t)
 	return t
@@ -365,11 +392,14 @@ end
 
 --- Create a structure of type AcknowledgeJobOutput
 -- <p>Represents the output of an acknowledge job action.</p>
--- @param _status [JobStatus] <p>Whether the job worker has received the specified job.</p>
-function M.AcknowledgeJobOutput(_status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AcknowledgeJobOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [JobStatus] <p>Whether the job worker has received the specified job.</p>
+-- @return AcknowledgeJobOutput structure as a key-value pair table
+function M.AcknowledgeJobOutput(args)
+	assert(args, "You must provdide an argument table when creating AcknowledgeJobOutput")
 	local t = { 
-		["status"] = _status,
+		["status"] = args["status"],
 	}
 	asserts.AssertAcknowledgeJobOutput(t)
 	return t
@@ -389,12 +419,15 @@ end
 
 --- Create a structure of type UpdatePipelineInput
 -- <p>Represents the input of an update pipeline action.</p>
--- @param _pipeline [PipelineDeclaration] <p>The name of the pipeline to be updated.</p>
--- Required parameter: pipeline
-function M.UpdatePipelineInput(_pipeline, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePipelineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipeline [PipelineDeclaration] <p>The name of the pipeline to be updated.</p>
+-- Required key: pipeline
+-- @return UpdatePipelineInput structure as a key-value pair table
+function M.UpdatePipelineInput(args)
+	assert(args, "You must provdide an argument table when creating UpdatePipelineInput")
 	local t = { 
-		["pipeline"] = _pipeline,
+		["pipeline"] = args["pipeline"],
 	}
 	asserts.AssertUpdatePipelineInput(t)
 	return t
@@ -416,17 +449,20 @@ end
 
 --- Create a structure of type Job
 -- <p>Represents information about a job.</p>
--- @param _nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Use this number in an <a>AcknowledgeJob</a> request.</p>
--- @param _data [JobData] <p>Additional data about a job.</p>
--- @param _id [JobId] <p>The unique system-generated ID of the job.</p>
--- @param _accountId [AccountId] <p>The ID of the AWS account to use when performing the job.</p>
-function M.Job(_nonce, _data, _id, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Job")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Use this number in an <a>AcknowledgeJob</a> request.</p>
+-- * data [JobData] <p>Additional data about a job.</p>
+-- * id [JobId] <p>The unique system-generated ID of the job.</p>
+-- * accountId [AccountId] <p>The ID of the AWS account to use when performing the job.</p>
+-- @return Job structure as a key-value pair table
+function M.Job(args)
+	assert(args, "You must provdide an argument table when creating Job")
 	local t = { 
-		["nonce"] = _nonce,
-		["data"] = _data,
-		["id"] = _id,
-		["accountId"] = _accountId,
+		["nonce"] = args["nonce"],
+		["data"] = args["data"],
+		["id"] = args["id"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertJob(t)
 	return t
@@ -446,13 +482,16 @@ end
 
 --- Create a structure of type ErrorDetails
 -- <p>Represents information about an error in AWS CodePipeline.</p>
--- @param _message [Message] <p>The text of the error message.</p>
--- @param _code [Code] <p>The system ID or error number code of the error.</p>
-function M.ErrorDetails(_message, _code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ErrorDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [Message] <p>The text of the error message.</p>
+-- * code [Code] <p>The system ID or error number code of the error.</p>
+-- @return ErrorDetails structure as a key-value pair table
+function M.ErrorDetails(args)
+	assert(args, "You must provdide an argument table when creating ErrorDetails")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
+		["message"] = args["message"],
+		["code"] = args["code"],
 	}
 	asserts.AssertErrorDetails(t)
 	return t
@@ -471,11 +510,14 @@ end
 
 --- Create a structure of type UpdatePipelineOutput
 -- <p>Represents the output of an update pipeline action.</p>
--- @param _pipeline [PipelineDeclaration] <p>The structure of the updated pipeline.</p>
-function M.UpdatePipelineOutput(_pipeline, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePipelineOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipeline [PipelineDeclaration] <p>The structure of the updated pipeline.</p>
+-- @return UpdatePipelineOutput structure as a key-value pair table
+function M.UpdatePipelineOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdatePipelineOutput")
 	local t = { 
-		["pipeline"] = _pipeline,
+		["pipeline"] = args["pipeline"],
 	}
 	asserts.AssertUpdatePipelineOutput(t)
 	return t
@@ -501,22 +543,25 @@ end
 
 --- Create a structure of type ActionType
 -- <p>Returns information about the details of an action type.</p>
--- @param _inputArtifactDetails [ArtifactDetails] <p>The details of the input artifact for the action, such as its commit ID.</p>
--- @param _actionConfigurationProperties [ActionConfigurationPropertyList] <p>The configuration properties for the action type.</p>
--- @param _outputArtifactDetails [ArtifactDetails] <p>The details of the output artifact of the action, such as its commit ID.</p>
--- @param _id [ActionTypeId] <p>Represents information about an action type.</p>
--- @param _settings [ActionTypeSettings] <p>The settings for the action type.</p>
--- Required parameter: id
--- Required parameter: inputArtifactDetails
--- Required parameter: outputArtifactDetails
-function M.ActionType(_inputArtifactDetails, _actionConfigurationProperties, _outputArtifactDetails, _id, _settings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * inputArtifactDetails [ArtifactDetails] <p>The details of the input artifact for the action, such as its commit ID.</p>
+-- * actionConfigurationProperties [ActionConfigurationPropertyList] <p>The configuration properties for the action type.</p>
+-- * outputArtifactDetails [ArtifactDetails] <p>The details of the output artifact of the action, such as its commit ID.</p>
+-- * id [ActionTypeId] <p>Represents information about an action type.</p>
+-- * settings [ActionTypeSettings] <p>The settings for the action type.</p>
+-- Required key: id
+-- Required key: inputArtifactDetails
+-- Required key: outputArtifactDetails
+-- @return ActionType structure as a key-value pair table
+function M.ActionType(args)
+	assert(args, "You must provdide an argument table when creating ActionType")
 	local t = { 
-		["inputArtifactDetails"] = _inputArtifactDetails,
-		["actionConfigurationProperties"] = _actionConfigurationProperties,
-		["outputArtifactDetails"] = _outputArtifactDetails,
-		["id"] = _id,
-		["settings"] = _settings,
+		["inputArtifactDetails"] = args["inputArtifactDetails"],
+		["actionConfigurationProperties"] = args["actionConfigurationProperties"],
+		["outputArtifactDetails"] = args["outputArtifactDetails"],
+		["id"] = args["id"],
+		["settings"] = args["settings"],
 	}
 	asserts.AssertActionType(t)
 	return t
@@ -534,8 +579,11 @@ end
 
 --- Create a structure of type InvalidActionDeclarationException
 -- <p>The specified action declaration was specified in an invalid format.</p>
-function M.InvalidActionDeclarationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidActionDeclarationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidActionDeclarationException structure as a key-value pair table
+function M.InvalidActionDeclarationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidActionDeclarationException")
 	local t = { 
 	}
 	asserts.AssertInvalidActionDeclarationException(t)
@@ -557,15 +605,18 @@ end
 
 --- Create a structure of type JobDetails
 -- <p>Represents information about the details of a job.</p>
--- @param _data [JobData] <p>Represents additional information about a job required for a job worker to complete the job. </p>
--- @param _id [JobId] <p>The unique system-generated ID of the job.</p>
--- @param _accountId [AccountId] <p>The AWS account ID associated with the job.</p>
-function M.JobDetails(_data, _id, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * data [JobData] <p>Represents additional information about a job required for a job worker to complete the job. </p>
+-- * id [JobId] <p>The unique system-generated ID of the job.</p>
+-- * accountId [AccountId] <p>The AWS account ID associated with the job.</p>
+-- @return JobDetails structure as a key-value pair table
+function M.JobDetails(args)
+	assert(args, "You must provdide an argument table when creating JobDetails")
 	local t = { 
-		["data"] = _data,
-		["id"] = _id,
-		["accountId"] = _accountId,
+		["data"] = args["data"],
+		["id"] = args["id"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertJobDetails(t)
 	return t
@@ -583,8 +634,11 @@ end
 
 --- Create a structure of type StageNotFoundException
 -- <p>The specified stage was specified in an invalid format or cannot be found.</p>
-function M.StageNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StageNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StageNotFoundException structure as a key-value pair table
+function M.StageNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating StageNotFoundException")
 	local t = { 
 	}
 	asserts.AssertStageNotFoundException(t)
@@ -611,21 +665,24 @@ end
 
 --- Create a structure of type DisableStageTransitionInput
 -- <p>Represents the input of a disable stage transition input action.</p>
--- @param _reason [DisabledReason] <p>The reason given to the user why a stage is disabled, such as waiting for manual approval or manual tests. This message is displayed in the pipeline console UI.</p>
--- @param _pipelineName [PipelineName] <p>The name of the pipeline in which you want to disable the flow of artifacts from one stage to another.</p>
--- @param _stageName [StageName] <p>The name of the stage where you want to disable the inbound or outbound transition of artifacts.</p>
--- @param _transitionType [StageTransitionType] <p>Specifies whether artifacts will be prevented from transitioning into the stage and being processed by the actions in that stage (inbound), or prevented from transitioning from the stage after they have been processed by the actions in that stage (outbound).</p>
--- Required parameter: pipelineName
--- Required parameter: stageName
--- Required parameter: transitionType
--- Required parameter: reason
-function M.DisableStageTransitionInput(_reason, _pipelineName, _stageName, _transitionType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableStageTransitionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * reason [DisabledReason] <p>The reason given to the user why a stage is disabled, such as waiting for manual approval or manual tests. This message is displayed in the pipeline console UI.</p>
+-- * pipelineName [PipelineName] <p>The name of the pipeline in which you want to disable the flow of artifacts from one stage to another.</p>
+-- * stageName [StageName] <p>The name of the stage where you want to disable the inbound or outbound transition of artifacts.</p>
+-- * transitionType [StageTransitionType] <p>Specifies whether artifacts will be prevented from transitioning into the stage and being processed by the actions in that stage (inbound), or prevented from transitioning from the stage after they have been processed by the actions in that stage (outbound).</p>
+-- Required key: pipelineName
+-- Required key: stageName
+-- Required key: transitionType
+-- Required key: reason
+-- @return DisableStageTransitionInput structure as a key-value pair table
+function M.DisableStageTransitionInput(args)
+	assert(args, "You must provdide an argument table when creating DisableStageTransitionInput")
 	local t = { 
-		["reason"] = _reason,
-		["pipelineName"] = _pipelineName,
-		["stageName"] = _stageName,
-		["transitionType"] = _transitionType,
+		["reason"] = args["reason"],
+		["pipelineName"] = args["pipelineName"],
+		["stageName"] = args["stageName"],
+		["transitionType"] = args["transitionType"],
 	}
 	asserts.AssertDisableStageTransitionInput(t)
 	return t
@@ -647,15 +704,18 @@ end
 
 --- Create a structure of type AcknowledgeJobInput
 -- <p>Represents the input of an acknowledge job action.</p>
--- @param _nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response of the <a>PollForJobs</a> request that returned this job.</p>
--- @param _jobId [JobId] <p>The unique system-generated ID of the job for which you want to confirm receipt.</p>
--- Required parameter: jobId
--- Required parameter: nonce
-function M.AcknowledgeJobInput(_nonce, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AcknowledgeJobInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response of the <a>PollForJobs</a> request that returned this job.</p>
+-- * jobId [JobId] <p>The unique system-generated ID of the job for which you want to confirm receipt.</p>
+-- Required key: jobId
+-- Required key: nonce
+-- @return AcknowledgeJobInput structure as a key-value pair table
+function M.AcknowledgeJobInput(args)
+	assert(args, "You must provdide an argument table when creating AcknowledgeJobInput")
 	local t = { 
-		["nonce"] = _nonce,
-		["jobId"] = _jobId,
+		["nonce"] = args["nonce"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertAcknowledgeJobInput(t)
 	return t
@@ -674,11 +734,14 @@ end
 
 --- Create a structure of type AcknowledgeThirdPartyJobOutput
 -- <p>Represents the output of an acknowledge third party job action.</p>
--- @param _status [JobStatus] <p>The status information for the third party job, if any.</p>
-function M.AcknowledgeThirdPartyJobOutput(_status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AcknowledgeThirdPartyJobOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [JobStatus] <p>The status information for the third party job, if any.</p>
+-- @return AcknowledgeThirdPartyJobOutput structure as a key-value pair table
+function M.AcknowledgeThirdPartyJobOutput(args)
+	assert(args, "You must provdide an argument table when creating AcknowledgeThirdPartyJobOutput")
 	local t = { 
-		["status"] = _status,
+		["status"] = args["status"],
 	}
 	asserts.AssertAcknowledgeThirdPartyJobOutput(t)
 	return t
@@ -698,12 +761,15 @@ end
 
 --- Create a structure of type CreatePipelineInput
 -- <p>Represents the input of a create pipeline action.</p>
--- @param _pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
--- Required parameter: pipeline
-function M.CreatePipelineInput(_pipeline, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePipelineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
+-- Required key: pipeline
+-- @return CreatePipelineInput structure as a key-value pair table
+function M.CreatePipelineInput(args)
+	assert(args, "You must provdide an argument table when creating CreatePipelineInput")
 	local t = { 
-		["pipeline"] = _pipeline,
+		["pipeline"] = args["pipeline"],
 	}
 	asserts.AssertCreatePipelineInput(t)
 	return t
@@ -723,13 +789,16 @@ end
 
 --- Create a structure of type ListPipelineExecutionsOutput
 -- <p>Represents the output of a list pipeline executions action. </p>
--- @param _pipelineExecutionSummaries [PipelineExecutionSummaryList] <p>A list of executions in the history of a pipeline.</p>
--- @param _nextToken [NextToken] <p>A token that can be used in the next list pipeline executions call to return the next set of pipeline executions. To view all items in the list, continue to call this operation with each subsequent token until no more nextToken values are returned.</p>
-function M.ListPipelineExecutionsOutput(_pipelineExecutionSummaries, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelineExecutionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineExecutionSummaries [PipelineExecutionSummaryList] <p>A list of executions in the history of a pipeline.</p>
+-- * nextToken [NextToken] <p>A token that can be used in the next list pipeline executions call to return the next set of pipeline executions. To view all items in the list, continue to call this operation with each subsequent token until no more nextToken values are returned.</p>
+-- @return ListPipelineExecutionsOutput structure as a key-value pair table
+function M.ListPipelineExecutionsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListPipelineExecutionsOutput")
 	local t = { 
-		["pipelineExecutionSummaries"] = _pipelineExecutionSummaries,
-		["nextToken"] = _nextToken,
+		["pipelineExecutionSummaries"] = args["pipelineExecutionSummaries"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListPipelineExecutionsOutput(t)
 	return t
@@ -748,11 +817,14 @@ end
 
 --- Create a structure of type ActionContext
 -- <p>Represents the context of an action within the stage of a pipeline to a job worker.</p>
--- @param _name [ActionName] <p>The name of the action within the context of a job.</p>
-function M.ActionContext(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionContext")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [ActionName] <p>The name of the action within the context of a job.</p>
+-- @return ActionContext structure as a key-value pair table
+function M.ActionContext(args)
+	assert(args, "You must provdide an argument table when creating ActionContext")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertActionContext(t)
 	return t
@@ -780,24 +852,27 @@ end
 
 --- Create a structure of type PutApprovalResultInput
 -- <p>Represents the input of a put approval result action.</p>
--- @param _actionName [ActionName] <p>The name of the action for which approval is requested.</p>
--- @param _token [ApprovalToken] <p>The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the <a>GetPipelineState</a> action and is used to validate that the approval request corresponding to this token is still valid.</p>
--- @param _pipelineName [PipelineName] <p>The name of the pipeline that contains the action. </p>
--- @param _result [ApprovalResult] <p>Represents information about the result of the approval request.</p>
--- @param _stageName [StageName] <p>The name of the stage that contains the action.</p>
--- Required parameter: pipelineName
--- Required parameter: stageName
--- Required parameter: actionName
--- Required parameter: result
--- Required parameter: token
-function M.PutApprovalResultInput(_actionName, _token, _pipelineName, _result, _stageName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutApprovalResultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionName [ActionName] <p>The name of the action for which approval is requested.</p>
+-- * token [ApprovalToken] <p>The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the <a>GetPipelineState</a> action and is used to validate that the approval request corresponding to this token is still valid.</p>
+-- * pipelineName [PipelineName] <p>The name of the pipeline that contains the action. </p>
+-- * result [ApprovalResult] <p>Represents information about the result of the approval request.</p>
+-- * stageName [StageName] <p>The name of the stage that contains the action.</p>
+-- Required key: pipelineName
+-- Required key: stageName
+-- Required key: actionName
+-- Required key: result
+-- Required key: token
+-- @return PutApprovalResultInput structure as a key-value pair table
+function M.PutApprovalResultInput(args)
+	assert(args, "You must provdide an argument table when creating PutApprovalResultInput")
 	local t = { 
-		["actionName"] = _actionName,
-		["token"] = _token,
-		["pipelineName"] = _pipelineName,
-		["result"] = _result,
-		["stageName"] = _stageName,
+		["actionName"] = args["actionName"],
+		["token"] = args["token"],
+		["pipelineName"] = args["pipelineName"],
+		["result"] = args["result"],
+		["stageName"] = args["stageName"],
 	}
 	asserts.AssertPutApprovalResultInput(t)
 	return t
@@ -815,8 +890,11 @@ end
 
 --- Create a structure of type InvalidStructureException
 -- <p>The specified structure was specified in an invalid format.</p>
-function M.InvalidStructureException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidStructureException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidStructureException structure as a key-value pair table
+function M.InvalidStructureException(args)
+	assert(args, "You must provdide an argument table when creating InvalidStructureException")
 	local t = { 
 	}
 	asserts.AssertInvalidStructureException(t)
@@ -837,13 +915,16 @@ end
 
 --- Create a structure of type PutActionRevisionOutput
 -- <p>Represents the output of a put action revision action.</p>
--- @param _pipelineExecutionId [PipelineExecutionId] <p>The ID of the current workflow state of the pipeline.</p>
--- @param _newRevision [Boolean] <p>Indicates whether the artifact revision was previously used in an execution of the specified pipeline.</p>
-function M.PutActionRevisionOutput(_pipelineExecutionId, _newRevision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutActionRevisionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the current workflow state of the pipeline.</p>
+-- * newRevision [Boolean] <p>Indicates whether the artifact revision was previously used in an execution of the specified pipeline.</p>
+-- @return PutActionRevisionOutput structure as a key-value pair table
+function M.PutActionRevisionOutput(args)
+	assert(args, "You must provdide an argument table when creating PutActionRevisionOutput")
 	local t = { 
-		["pipelineExecutionId"] = _pipelineExecutionId,
-		["newRevision"] = _newRevision,
+		["pipelineExecutionId"] = args["pipelineExecutionId"],
+		["newRevision"] = args["newRevision"],
 	}
 	asserts.AssertPutActionRevisionOutput(t)
 	return t
@@ -863,12 +944,15 @@ end
 
 --- Create a structure of type InputArtifact
 -- <p>Represents information about an artifact to be worked on, such as a test or build artifact.</p>
--- @param _name [ArtifactName] <p>The name of the artifact to be worked on, for example, "My App".</p> <p>The input artifact of an action must exactly match the output artifact declared in a preceding action, but the input artifact does not have to be the next action in strict sequence from the action that provided the output artifact. Actions in parallel can declare different output artifacts, which are in turn consumed by different following actions.</p>
--- Required parameter: name
-function M.InputArtifact(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InputArtifact")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [ArtifactName] <p>The name of the artifact to be worked on, for example, "My App".</p> <p>The input artifact of an action must exactly match the output artifact declared in a preceding action, but the input artifact does not have to be the next action in strict sequence from the action that provided the output artifact. Actions in parallel can declare different output artifacts, which are in turn consumed by different following actions.</p>
+-- Required key: name
+-- @return InputArtifact structure as a key-value pair table
+function M.InputArtifact(args)
+	assert(args, "You must provdide an argument table when creating InputArtifact")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertInputArtifact(t)
 	return t
@@ -887,11 +971,14 @@ end
 
 --- Create a structure of type GetPipelineExecutionOutput
 -- <p>Represents the output of a get pipeline execution action.</p>
--- @param _pipelineExecution [PipelineExecution] <p>Represents information about the execution of a pipeline.</p>
-function M.GetPipelineExecutionOutput(_pipelineExecution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineExecutionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineExecution [PipelineExecution] <p>Represents information about the execution of a pipeline.</p>
+-- @return GetPipelineExecutionOutput structure as a key-value pair table
+function M.GetPipelineExecutionOutput(args)
+	assert(args, "You must provdide an argument table when creating GetPipelineExecutionOutput")
 	local t = { 
-		["pipelineExecution"] = _pipelineExecution,
+		["pipelineExecution"] = args["pipelineExecution"],
 	}
 	asserts.AssertGetPipelineExecutionOutput(t)
 	return t
@@ -909,8 +996,11 @@ end
 
 --- Create a structure of type ApprovalAlreadyCompletedException
 -- <p>The approval action has already been approved or rejected.</p>
-function M.ApprovalAlreadyCompletedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApprovalAlreadyCompletedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ApprovalAlreadyCompletedException structure as a key-value pair table
+function M.ApprovalAlreadyCompletedException(args)
+	assert(args, "You must provdide an argument table when creating ApprovalAlreadyCompletedException")
 	local t = { 
 	}
 	asserts.AssertApprovalAlreadyCompletedException(t)
@@ -937,21 +1027,24 @@ end
 
 --- Create a structure of type ActionTypeId
 -- <p>Represents information about an action type.</p>
--- @param _category [ActionCategory] <p>A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Valid categories are limited to one of the values below.</p>
--- @param _owner [ActionOwner] <p>The creator of the action being called.</p>
--- @param _version [Version] <p>A string that identifies the action type.</p>
--- @param _provider [ActionProvider] <p>The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.</p>
--- Required parameter: category
--- Required parameter: owner
--- Required parameter: provider
--- Required parameter: version
-function M.ActionTypeId(_category, _owner, _version, _provider, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionTypeId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * category [ActionCategory] <p>A category defines what kind of action can be taken in the stage, and constrains the provider type for the action. Valid categories are limited to one of the values below.</p>
+-- * owner [ActionOwner] <p>The creator of the action being called.</p>
+-- * version [Version] <p>A string that identifies the action type.</p>
+-- * provider [ActionProvider] <p>The provider of the service being called by the action. Valid providers are determined by the action category. For example, an action in the Deploy category type might have a provider of AWS CodeDeploy, which would be specified as CodeDeploy.</p>
+-- Required key: category
+-- Required key: owner
+-- Required key: provider
+-- Required key: version
+-- @return ActionTypeId structure as a key-value pair table
+function M.ActionTypeId(args)
+	assert(args, "You must provdide an argument table when creating ActionTypeId")
 	local t = { 
-		["category"] = _category,
-		["owner"] = _owner,
-		["version"] = _version,
-		["provider"] = _provider,
+		["category"] = args["category"],
+		["owner"] = args["owner"],
+		["version"] = args["version"],
+		["provider"] = args["provider"],
 	}
 	asserts.AssertActionTypeId(t)
 	return t
@@ -973,17 +1066,20 @@ end
 
 --- Create a structure of type TransitionState
 -- <p>Represents information about the state of transitions between one stage and another stage.</p>
--- @param _disabledReason [DisabledReason] <p>The user-specified reason why the transition between two stages of a pipeline was disabled.</p>
--- @param _enabled [Enabled] <p>Whether the transition between stages is enabled (true) or disabled (false).</p>
--- @param _lastChangedAt [LastChangedAt] <p>The timestamp when the transition state was last changed.</p>
--- @param _lastChangedBy [LastChangedBy] <p>The ID of the user who last changed the transition state.</p>
-function M.TransitionState(_disabledReason, _enabled, _lastChangedAt, _lastChangedBy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TransitionState")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * disabledReason [DisabledReason] <p>The user-specified reason why the transition between two stages of a pipeline was disabled.</p>
+-- * enabled [Enabled] <p>Whether the transition between stages is enabled (true) or disabled (false).</p>
+-- * lastChangedAt [LastChangedAt] <p>The timestamp when the transition state was last changed.</p>
+-- * lastChangedBy [LastChangedBy] <p>The ID of the user who last changed the transition state.</p>
+-- @return TransitionState structure as a key-value pair table
+function M.TransitionState(args)
+	assert(args, "You must provdide an argument table when creating TransitionState")
 	local t = { 
-		["disabledReason"] = _disabledReason,
-		["enabled"] = _enabled,
-		["lastChangedAt"] = _lastChangedAt,
-		["lastChangedBy"] = _lastChangedBy,
+		["disabledReason"] = args["disabledReason"],
+		["enabled"] = args["enabled"],
+		["lastChangedAt"] = args["lastChangedAt"],
+		["lastChangedBy"] = args["lastChangedBy"],
 	}
 	asserts.AssertTransitionState(t)
 	return t
@@ -1006,19 +1102,22 @@ end
 
 --- Create a structure of type ActionState
 -- <p>Represents information about the state of an action.</p>
--- @param _actionName [ActionName] <p>The name of the action.</p>
--- @param _revisionUrl [Url] <p>A URL link for more information about the revision, such as a commit details page.</p>
--- @param _entityUrl [Url] <p>A URL link for more information about the state of the action, such as a deployment group details page.</p>
--- @param _latestExecution [ActionExecution] <p>Represents information about the run of an action.</p>
--- @param _currentRevision [ActionRevision] <p>Represents information about the version (or revision) of an action.</p>
-function M.ActionState(_actionName, _revisionUrl, _entityUrl, _latestExecution, _currentRevision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionState")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionName [ActionName] <p>The name of the action.</p>
+-- * revisionUrl [Url] <p>A URL link for more information about the revision, such as a commit details page.</p>
+-- * entityUrl [Url] <p>A URL link for more information about the state of the action, such as a deployment group details page.</p>
+-- * latestExecution [ActionExecution] <p>Represents information about the run of an action.</p>
+-- * currentRevision [ActionRevision] <p>Represents information about the version (or revision) of an action.</p>
+-- @return ActionState structure as a key-value pair table
+function M.ActionState(args)
+	assert(args, "You must provdide an argument table when creating ActionState")
 	local t = { 
-		["actionName"] = _actionName,
-		["revisionUrl"] = _revisionUrl,
-		["entityUrl"] = _entityUrl,
-		["latestExecution"] = _latestExecution,
-		["currentRevision"] = _currentRevision,
+		["actionName"] = args["actionName"],
+		["revisionUrl"] = args["revisionUrl"],
+		["entityUrl"] = args["entityUrl"],
+		["latestExecution"] = args["latestExecution"],
+		["currentRevision"] = args["currentRevision"],
 	}
 	asserts.AssertActionState(t)
 	return t
@@ -1036,8 +1135,11 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The number of pipelines associated with the AWS account has exceeded the limit allowed for the account.</p>
-function M.LimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
 	}
 	asserts.AssertLimitExceededException(t)
@@ -1064,21 +1166,24 @@ end
 
 --- Create a structure of type PutActionRevisionInput
 -- <p>Represents the input of a put action revision action.</p>
--- @param _actionName [ActionName] <p>The name of the action that will process the revision.</p>
--- @param _pipelineName [PipelineName] <p>The name of the pipeline that will start processing the revision to the source.</p>
--- @param _stageName [StageName] <p>The name of the stage that contains the action that will act upon the revision.</p>
--- @param _actionRevision [ActionRevision] <p>Represents information about the version (or revision) of an action.</p>
--- Required parameter: pipelineName
--- Required parameter: stageName
--- Required parameter: actionName
--- Required parameter: actionRevision
-function M.PutActionRevisionInput(_actionName, _pipelineName, _stageName, _actionRevision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutActionRevisionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionName [ActionName] <p>The name of the action that will process the revision.</p>
+-- * pipelineName [PipelineName] <p>The name of the pipeline that will start processing the revision to the source.</p>
+-- * stageName [StageName] <p>The name of the stage that contains the action that will act upon the revision.</p>
+-- * actionRevision [ActionRevision] <p>Represents information about the version (or revision) of an action.</p>
+-- Required key: pipelineName
+-- Required key: stageName
+-- Required key: actionName
+-- Required key: actionRevision
+-- @return PutActionRevisionInput structure as a key-value pair table
+function M.PutActionRevisionInput(args)
+	assert(args, "You must provdide an argument table when creating PutActionRevisionInput")
 	local t = { 
-		["actionName"] = _actionName,
-		["pipelineName"] = _pipelineName,
-		["stageName"] = _stageName,
-		["actionRevision"] = _actionRevision,
+		["actionName"] = args["actionName"],
+		["pipelineName"] = args["pipelineName"],
+		["stageName"] = args["stageName"],
+		["actionRevision"] = args["actionRevision"],
 	}
 	asserts.AssertPutActionRevisionInput(t)
 	return t
@@ -1099,14 +1204,17 @@ end
 
 --- Create a structure of type GetPipelineInput
 -- <p>Represents the input of a get pipeline action.</p>
--- @param _version [PipelineVersion] <p>The version number of the pipeline. If you do not specify a version, defaults to the most current version.</p>
--- @param _name [PipelineName] <p>The name of the pipeline for which you want to get information. Pipeline names must be unique under an Amazon Web Services (AWS) user account.</p>
--- Required parameter: name
-function M.GetPipelineInput(_version, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [PipelineVersion] <p>The version number of the pipeline. If you do not specify a version, defaults to the most current version.</p>
+-- * name [PipelineName] <p>The name of the pipeline for which you want to get information. Pipeline names must be unique under an Amazon Web Services (AWS) user account.</p>
+-- Required key: name
+-- @return GetPipelineInput structure as a key-value pair table
+function M.GetPipelineInput(args)
+	assert(args, "You must provdide an argument table when creating GetPipelineInput")
 	local t = { 
-		["version"] = _version,
-		["name"] = _name,
+		["version"] = args["version"],
+		["name"] = args["name"],
 	}
 	asserts.AssertGetPipelineInput(t)
 	return t
@@ -1133,23 +1241,26 @@ end
 
 --- Create a structure of type PipelineDeclaration
 -- <p>Represents the structure of actions and stages to be performed in the pipeline.</p>
--- @param _roleArn [RoleArn] <p>The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no actionRoleArn, or to use to assume roles for actions with an actionRoleArn.</p>
--- @param _stages [PipelineStageDeclarationList] <p>The stage in which to perform the action.</p>
--- @param _artifactStore [ArtifactStore] <p>Represents the context of an action within the stage of a pipeline to a job worker. </p>
--- @param _name [PipelineName] <p>The name of the action to be performed.</p>
--- @param _version [PipelineVersion] <p>The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically incremented when a pipeline is updated.</p>
--- Required parameter: name
--- Required parameter: roleArn
--- Required parameter: artifactStore
--- Required parameter: stages
-function M.PipelineDeclaration(_roleArn, _stages, _artifactStore, _name, _version, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineDeclaration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * roleArn [RoleArn] <p>The Amazon Resource Name (ARN) for AWS CodePipeline to use to either perform actions with no actionRoleArn, or to use to assume roles for actions with an actionRoleArn.</p>
+-- * stages [PipelineStageDeclarationList] <p>The stage in which to perform the action.</p>
+-- * artifactStore [ArtifactStore] <p>Represents the context of an action within the stage of a pipeline to a job worker. </p>
+-- * name [PipelineName] <p>The name of the action to be performed.</p>
+-- * version [PipelineVersion] <p>The version number of the pipeline. A new pipeline always has a version number of 1. This number is automatically incremented when a pipeline is updated.</p>
+-- Required key: name
+-- Required key: roleArn
+-- Required key: artifactStore
+-- Required key: stages
+-- @return PipelineDeclaration structure as a key-value pair table
+function M.PipelineDeclaration(args)
+	assert(args, "You must provdide an argument table when creating PipelineDeclaration")
 	local t = { 
-		["roleArn"] = _roleArn,
-		["stages"] = _stages,
-		["artifactStore"] = _artifactStore,
-		["name"] = _name,
-		["version"] = _version,
+		["roleArn"] = args["roleArn"],
+		["stages"] = args["stages"],
+		["artifactStore"] = args["artifactStore"],
+		["name"] = args["name"],
+		["version"] = args["version"],
 	}
 	asserts.AssertPipelineDeclaration(t)
 	return t
@@ -1167,8 +1278,11 @@ end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>The next token was specified in an invalid format. Make sure that the next token you provided is the token returned by a previous call.</p>
-function M.InvalidNextTokenException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidNextTokenException structure as a key-value pair table
+function M.InvalidNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
 	local t = { 
 	}
 	asserts.AssertInvalidNextTokenException(t)
@@ -1187,8 +1301,11 @@ end
 
 --- Create a structure of type PipelineNameInUseException
 -- <p>The specified pipeline name is already in use.</p>
-function M.PipelineNameInUseException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineNameInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PipelineNameInUseException structure as a key-value pair table
+function M.PipelineNameInUseException(args)
+	assert(args, "You must provdide an argument table when creating PipelineNameInUseException")
 	local t = { 
 	}
 	asserts.AssertPipelineNameInUseException(t)
@@ -1209,12 +1326,15 @@ end
 
 --- Create a structure of type StartPipelineExecutionInput
 -- <p>Represents the input of a start pipeline execution action.</p>
--- @param _name [PipelineName] <p>The name of the pipeline to start.</p>
--- Required parameter: name
-function M.StartPipelineExecutionInput(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartPipelineExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [PipelineName] <p>The name of the pipeline to start.</p>
+-- Required key: name
+-- @return StartPipelineExecutionInput structure as a key-value pair table
+function M.StartPipelineExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating StartPipelineExecutionInput")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertStartPipelineExecutionInput(t)
 	return t
@@ -1233,11 +1353,14 @@ end
 
 --- Create a structure of type ActionConfiguration
 -- <p>Represents information about an action configuration.</p>
--- @param _configuration [ActionConfigurationMap] <p>The configuration data for the action.</p>
-function M.ActionConfiguration(_configuration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configuration [ActionConfigurationMap] <p>The configuration data for the action.</p>
+-- @return ActionConfiguration structure as a key-value pair table
+function M.ActionConfiguration(args)
+	assert(args, "You must provdide an argument table when creating ActionConfiguration")
 	local t = { 
-		["configuration"] = _configuration,
+		["configuration"] = args["configuration"],
 	}
 	asserts.AssertActionConfiguration(t)
 	return t
@@ -1260,17 +1383,20 @@ end
 
 --- Create a structure of type ArtifactStore
 -- <p>The Amazon S3 bucket where artifacts are stored for the pipeline.</p>
--- @param _type [ArtifactStoreType] <p>The type of the artifact store, such as S3.</p>
--- @param _location [ArtifactStoreLocation] <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can specify the name of an S3 bucket but not a folder within the bucket. A folder to contain the pipeline artifacts is created for you based on the name of the pipeline. You can use any Amazon S3 bucket in the same AWS Region as the pipeline to store your pipeline artifacts.</p>
--- @param _encryptionKey [EncryptionKey] <p>The encryption key used to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If this is undefined, the default key for Amazon S3 is used.</p>
--- Required parameter: type
--- Required parameter: location
-function M.ArtifactStore(_type, _location, _encryptionKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ArtifactStore")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * type [ArtifactStoreType] <p>The type of the artifact store, such as S3.</p>
+-- * location [ArtifactStoreLocation] <p>The Amazon S3 bucket used for storing the artifacts for a pipeline. You can specify the name of an S3 bucket but not a folder within the bucket. A folder to contain the pipeline artifacts is created for you based on the name of the pipeline. You can use any Amazon S3 bucket in the same AWS Region as the pipeline to store your pipeline artifacts.</p>
+-- * encryptionKey [EncryptionKey] <p>The encryption key used to encrypt the data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. If this is undefined, the default key for Amazon S3 is used.</p>
+-- Required key: type
+-- Required key: location
+-- @return ArtifactStore structure as a key-value pair table
+function M.ArtifactStore(args)
+	assert(args, "You must provdide an argument table when creating ArtifactStore")
 	local t = { 
-		["type"] = _type,
-		["location"] = _location,
-		["encryptionKey"] = _encryptionKey,
+		["type"] = args["type"],
+		["location"] = args["location"],
+		["encryptionKey"] = args["encryptionKey"],
 	}
 	asserts.AssertArtifactStore(t)
 	return t
@@ -1290,12 +1416,15 @@ end
 
 --- Create a structure of type DeletePipelineInput
 -- <p>Represents the input of a delete pipeline action.</p>
--- @param _name [PipelineName] <p>The name of the pipeline to be deleted.</p>
--- Required parameter: name
-function M.DeletePipelineInput(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePipelineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [PipelineName] <p>The name of the pipeline to be deleted.</p>
+-- Required key: name
+-- @return DeletePipelineInput structure as a key-value pair table
+function M.DeletePipelineInput(args)
+	assert(args, "You must provdide an argument table when creating DeletePipelineInput")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertDeletePipelineInput(t)
 	return t
@@ -1316,15 +1445,18 @@ end
 
 --- Create a structure of type ThirdPartyJobDetails
 -- <p>The details of a job sent in response to a GetThirdPartyJobDetails request.</p>
--- @param _nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Use this number in an <a>AcknowledgeThirdPartyJob</a> request.</p>
--- @param _data [ThirdPartyJobData] <p>The data to be returned by the third party job worker.</p>
--- @param _id [ThirdPartyJobId] <p>The identifier used to identify the job details in AWS CodePipeline.</p>
-function M.ThirdPartyJobDetails(_nonce, _data, _id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThirdPartyJobDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Use this number in an <a>AcknowledgeThirdPartyJob</a> request.</p>
+-- * data [ThirdPartyJobData] <p>The data to be returned by the third party job worker.</p>
+-- * id [ThirdPartyJobId] <p>The identifier used to identify the job details in AWS CodePipeline.</p>
+-- @return ThirdPartyJobDetails structure as a key-value pair table
+function M.ThirdPartyJobDetails(args)
+	assert(args, "You must provdide an argument table when creating ThirdPartyJobDetails")
 	local t = { 
-		["nonce"] = _nonce,
-		["data"] = _data,
-		["id"] = _id,
+		["nonce"] = args["nonce"],
+		["data"] = args["data"],
+		["id"] = args["id"],
 	}
 	asserts.AssertThirdPartyJobDetails(t)
 	return t
@@ -1347,17 +1479,20 @@ end
 
 --- Create a structure of type FailureDetails
 -- <p>Represents information about failure details.</p>
--- @param _message [Message] <p>The message about the failure.</p>
--- @param _type [FailureType] <p>The type of the failure.</p>
--- @param _externalExecutionId [ExecutionId] <p>The external ID of the run of the action that failed.</p>
--- Required parameter: type
--- Required parameter: message
-function M.FailureDetails(_message, _type, _externalExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FailureDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [Message] <p>The message about the failure.</p>
+-- * type [FailureType] <p>The type of the failure.</p>
+-- * externalExecutionId [ExecutionId] <p>The external ID of the run of the action that failed.</p>
+-- Required key: type
+-- Required key: message
+-- @return FailureDetails structure as a key-value pair table
+function M.FailureDetails(args)
+	assert(args, "You must provdide an argument table when creating FailureDetails")
 	local t = { 
-		["message"] = _message,
-		["type"] = _type,
-		["externalExecutionId"] = _externalExecutionId,
+		["message"] = args["message"],
+		["type"] = args["type"],
+		["externalExecutionId"] = args["externalExecutionId"],
 	}
 	asserts.AssertFailureDetails(t)
 	return t
@@ -1384,27 +1519,30 @@ end
 
 --- Create a structure of type ActionExecution
 -- <p>Represents information about the run of an action.</p>
--- @param _status [ActionExecutionStatus] <p>The status of the action, or for a completed action, the last status of the action.</p>
--- @param _lastStatusChange [Timestamp] <p>The last status change of the action.</p>
--- @param _externalExecutionId [ExecutionId] <p>The external ID of the run of the action.</p>
--- @param _errorDetails [ErrorDetails] <p>The details of an error returned by a URL external to AWS.</p>
--- @param _externalExecutionUrl [Url] <p>The URL of a resource external to AWS that will be used when running the action, for example an external repository URL.</p>
--- @param _summary [ExecutionSummary] <p>A summary of the run of the action.</p>
--- @param _token [ActionExecutionToken] <p>The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the GetPipelineState command and is used to validate that the approval request corresponding to this token is still valid.</p>
--- @param _lastUpdatedBy [LastUpdatedBy] <p>The ARN of the user who last changed the pipeline.</p>
--- @param _percentComplete [Percentage] <p>A percentage of completeness of the action as it runs.</p>
-function M.ActionExecution(_status, _lastStatusChange, _externalExecutionId, _errorDetails, _externalExecutionUrl, _summary, _token, _lastUpdatedBy, _percentComplete, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionExecution")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [ActionExecutionStatus] <p>The status of the action, or for a completed action, the last status of the action.</p>
+-- * lastStatusChange [Timestamp] <p>The last status change of the action.</p>
+-- * externalExecutionId [ExecutionId] <p>The external ID of the run of the action.</p>
+-- * errorDetails [ErrorDetails] <p>The details of an error returned by a URL external to AWS.</p>
+-- * externalExecutionUrl [Url] <p>The URL of a resource external to AWS that will be used when running the action, for example an external repository URL.</p>
+-- * summary [ExecutionSummary] <p>A summary of the run of the action.</p>
+-- * token [ActionExecutionToken] <p>The system-generated token used to identify a unique approval request. The token for each open approval request can be obtained using the GetPipelineState command and is used to validate that the approval request corresponding to this token is still valid.</p>
+-- * lastUpdatedBy [LastUpdatedBy] <p>The ARN of the user who last changed the pipeline.</p>
+-- * percentComplete [Percentage] <p>A percentage of completeness of the action as it runs.</p>
+-- @return ActionExecution structure as a key-value pair table
+function M.ActionExecution(args)
+	assert(args, "You must provdide an argument table when creating ActionExecution")
 	local t = { 
-		["status"] = _status,
-		["lastStatusChange"] = _lastStatusChange,
-		["externalExecutionId"] = _externalExecutionId,
-		["errorDetails"] = _errorDetails,
-		["externalExecutionUrl"] = _externalExecutionUrl,
-		["summary"] = _summary,
-		["token"] = _token,
-		["lastUpdatedBy"] = _lastUpdatedBy,
-		["percentComplete"] = _percentComplete,
+		["status"] = args["status"],
+		["lastStatusChange"] = args["lastStatusChange"],
+		["externalExecutionId"] = args["externalExecutionId"],
+		["errorDetails"] = args["errorDetails"],
+		["externalExecutionUrl"] = args["externalExecutionUrl"],
+		["summary"] = args["summary"],
+		["token"] = args["token"],
+		["lastUpdatedBy"] = args["lastUpdatedBy"],
+		["percentComplete"] = args["percentComplete"],
 	}
 	asserts.AssertActionExecution(t)
 	return t
@@ -1423,11 +1561,14 @@ end
 
 --- Create a structure of type StartPipelineExecutionOutput
 -- <p>Represents the output of a start pipeline execution action.</p>
--- @param _pipelineExecutionId [PipelineExecutionId] <p>The unique system-generated ID of the pipeline execution that was started.</p>
-function M.StartPipelineExecutionOutput(_pipelineExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartPipelineExecutionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineExecutionId [PipelineExecutionId] <p>The unique system-generated ID of the pipeline execution that was started.</p>
+-- @return StartPipelineExecutionOutput structure as a key-value pair table
+function M.StartPipelineExecutionOutput(args)
+	assert(args, "You must provdide an argument table when creating StartPipelineExecutionOutput")
 	local t = { 
-		["pipelineExecutionId"] = _pipelineExecutionId,
+		["pipelineExecutionId"] = args["pipelineExecutionId"],
 	}
 	asserts.AssertStartPipelineExecutionOutput(t)
 	return t
@@ -1446,11 +1587,14 @@ end
 
 --- Create a structure of type CreatePipelineOutput
 -- <p>Represents the output of a create pipeline action.</p>
--- @param _pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
-function M.CreatePipelineOutput(_pipeline, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePipelineOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
+-- @return CreatePipelineOutput structure as a key-value pair table
+function M.CreatePipelineOutput(args)
+	assert(args, "You must provdide an argument table when creating CreatePipelineOutput")
 	local t = { 
-		["pipeline"] = _pipeline,
+		["pipeline"] = args["pipeline"],
 	}
 	asserts.AssertCreatePipelineOutput(t)
 	return t
@@ -1468,8 +1612,11 @@ end
 
 --- Create a structure of type InvalidStageDeclarationException
 -- <p>The specified stage declaration was specified in an invalid format.</p>
-function M.InvalidStageDeclarationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidStageDeclarationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidStageDeclarationException structure as a key-value pair table
+function M.InvalidStageDeclarationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidStageDeclarationException")
 	local t = { 
 	}
 	asserts.AssertInvalidStageDeclarationException(t)
@@ -1488,8 +1635,11 @@ end
 
 --- Create a structure of type ActionNotFoundException
 -- <p>The specified action cannot be found.</p>
-function M.ActionNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ActionNotFoundException structure as a key-value pair table
+function M.ActionNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ActionNotFoundException")
 	local t = { 
 	}
 	asserts.AssertActionNotFoundException(t)
@@ -1514,18 +1664,21 @@ end
 
 --- Create a structure of type ActionRevision
 -- <p>Represents information about the version (or revision) of an action.</p>
--- @param _revisionChangeId [RevisionChangeIdentifier] <p>The unique identifier of the change that set the state to this revision, for example a deployment ID or timestamp.</p>
--- @param _revisionId [Revision] <p>The system-generated unique ID that identifies the revision number of the action.</p>
--- @param _created [Timestamp] <p>The date and time when the most recent version of the action was created, in timestamp format.</p>
--- Required parameter: revisionId
--- Required parameter: revisionChangeId
--- Required parameter: created
-function M.ActionRevision(_revisionChangeId, _revisionId, _created, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionRevision")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * revisionChangeId [RevisionChangeIdentifier] <p>The unique identifier of the change that set the state to this revision, for example a deployment ID or timestamp.</p>
+-- * revisionId [Revision] <p>The system-generated unique ID that identifies the revision number of the action.</p>
+-- * created [Timestamp] <p>The date and time when the most recent version of the action was created, in timestamp format.</p>
+-- Required key: revisionId
+-- Required key: revisionChangeId
+-- Required key: created
+-- @return ActionRevision structure as a key-value pair table
+function M.ActionRevision(args)
+	assert(args, "You must provdide an argument table when creating ActionRevision")
 	local t = { 
-		["revisionChangeId"] = _revisionChangeId,
-		["revisionId"] = _revisionId,
-		["created"] = _created,
+		["revisionChangeId"] = args["revisionChangeId"],
+		["revisionId"] = args["revisionId"],
+		["created"] = args["created"],
 	}
 	asserts.AssertActionRevision(t)
 	return t
@@ -1547,15 +1700,18 @@ end
 
 --- Create a structure of type PutJobFailureResultInput
 -- <p>Represents the input of a put job failure result action.</p>
--- @param _failureDetails [FailureDetails] <p>The details about the failure of a job.</p>
--- @param _jobId [JobId] <p>The unique system-generated ID of the job that failed. This is the same ID returned from PollForJobs.</p>
--- Required parameter: jobId
--- Required parameter: failureDetails
-function M.PutJobFailureResultInput(_failureDetails, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutJobFailureResultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * failureDetails [FailureDetails] <p>The details about the failure of a job.</p>
+-- * jobId [JobId] <p>The unique system-generated ID of the job that failed. This is the same ID returned from PollForJobs.</p>
+-- Required key: jobId
+-- Required key: failureDetails
+-- @return PutJobFailureResultInput structure as a key-value pair table
+function M.PutJobFailureResultInput(args)
+	assert(args, "You must provdide an argument table when creating PutJobFailureResultInput")
 	local t = { 
-		["failureDetails"] = _failureDetails,
-		["jobId"] = _jobId,
+		["failureDetails"] = args["failureDetails"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertPutJobFailureResultInput(t)
 	return t
@@ -1574,11 +1730,14 @@ end
 
 --- Create a structure of type ListPipelinesInput
 -- <p>Represents the input of a list pipelines action.</p>
--- @param _nextToken [NextToken] <p>An identifier that was returned from the previous list pipelines call, which can be used to return the next set of pipelines in the list.</p>
-function M.ListPipelinesInput(_nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelinesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>An identifier that was returned from the previous list pipelines call, which can be used to return the next set of pipelines in the list.</p>
+-- @return ListPipelinesInput structure as a key-value pair table
+function M.ListPipelinesInput(args)
+	assert(args, "You must provdide an argument table when creating ListPipelinesInput")
 	local t = { 
-		["nextToken"] = _nextToken,
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListPipelinesInput(t)
 	return t
@@ -1602,18 +1761,21 @@ end
 
 --- Create a structure of type DeleteCustomActionTypeInput
 -- <p>Represents the input of a delete custom action operation. The custom action will be marked as deleted.</p>
--- @param _category [ActionCategory] <p>The category of the custom action that you want to delete, such as source or deploy.</p>
--- @param _version [Version] <p>The version of the custom action to delete.</p>
--- @param _provider [ActionProvider] <p>The provider of the service used in the custom action, such as AWS CodeDeploy.</p>
--- Required parameter: category
--- Required parameter: provider
--- Required parameter: version
-function M.DeleteCustomActionTypeInput(_category, _version, _provider, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCustomActionTypeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * category [ActionCategory] <p>The category of the custom action that you want to delete, such as source or deploy.</p>
+-- * version [Version] <p>The version of the custom action to delete.</p>
+-- * provider [ActionProvider] <p>The provider of the service used in the custom action, such as AWS CodeDeploy.</p>
+-- Required key: category
+-- Required key: provider
+-- Required key: version
+-- @return DeleteCustomActionTypeInput structure as a key-value pair table
+function M.DeleteCustomActionTypeInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteCustomActionTypeInput")
 	local t = { 
-		["category"] = _category,
-		["version"] = _version,
-		["provider"] = _provider,
+		["category"] = args["category"],
+		["version"] = args["version"],
+		["provider"] = args["provider"],
 	}
 	asserts.AssertDeleteCustomActionTypeInput(t)
 	return t
@@ -1637,18 +1799,21 @@ end
 
 --- Create a structure of type AcknowledgeThirdPartyJobInput
 -- <p>Represents the input of an acknowledge third party job action.</p>
--- @param _nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.</p>
--- @param _clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
--- @param _jobId [ThirdPartyJobId] <p>The unique system-generated ID of the job.</p>
--- Required parameter: jobId
--- Required parameter: nonce
--- Required parameter: clientToken
-function M.AcknowledgeThirdPartyJobInput(_nonce, _clientToken, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AcknowledgeThirdPartyJobInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nonce [Nonce] <p>A system-generated random number that AWS CodePipeline uses to ensure that the job is being worked on by only one job worker. Get this number from the response to a <a>GetThirdPartyJobDetails</a> request.</p>
+-- * clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
+-- * jobId [ThirdPartyJobId] <p>The unique system-generated ID of the job.</p>
+-- Required key: jobId
+-- Required key: nonce
+-- Required key: clientToken
+-- @return AcknowledgeThirdPartyJobInput structure as a key-value pair table
+function M.AcknowledgeThirdPartyJobInput(args)
+	assert(args, "You must provdide an argument table when creating AcknowledgeThirdPartyJobInput")
 	local t = { 
-		["nonce"] = _nonce,
-		["clientToken"] = _clientToken,
-		["jobId"] = _jobId,
+		["nonce"] = args["nonce"],
+		["clientToken"] = args["clientToken"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertAcknowledgeThirdPartyJobInput(t)
 	return t
@@ -1672,18 +1837,21 @@ end
 
 --- Create a structure of type PutThirdPartyJobFailureResultInput
 -- <p>Represents the input of a third party job failure result action.</p>
--- @param _clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
--- @param _failureDetails [FailureDetails] <p>Represents information about failure details.</p>
--- @param _jobId [ThirdPartyJobId] <p>The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.</p>
--- Required parameter: jobId
--- Required parameter: clientToken
--- Required parameter: failureDetails
-function M.PutThirdPartyJobFailureResultInput(_clientToken, _failureDetails, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutThirdPartyJobFailureResultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
+-- * failureDetails [FailureDetails] <p>Represents information about failure details.</p>
+-- * jobId [ThirdPartyJobId] <p>The ID of the job that failed. This is the same ID returned from PollForThirdPartyJobs.</p>
+-- Required key: jobId
+-- Required key: clientToken
+-- Required key: failureDetails
+-- @return PutThirdPartyJobFailureResultInput structure as a key-value pair table
+function M.PutThirdPartyJobFailureResultInput(args)
+	assert(args, "You must provdide an argument table when creating PutThirdPartyJobFailureResultInput")
 	local t = { 
-		["clientToken"] = _clientToken,
-		["failureDetails"] = _failureDetails,
-		["jobId"] = _jobId,
+		["clientToken"] = args["clientToken"],
+		["failureDetails"] = args["failureDetails"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertPutThirdPartyJobFailureResultInput(t)
 	return t
@@ -1707,18 +1875,21 @@ end
 
 --- Create a structure of type AWSSessionCredentials
 -- <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.</p>
--- @param _secretAccessKey [SecretAccessKey] <p>The secret access key for the session.</p>
--- @param _sessionToken [SessionToken] <p>The token for the session.</p>
--- @param _accessKeyId [AccessKeyId] <p>The access key for the session.</p>
--- Required parameter: accessKeyId
--- Required parameter: secretAccessKey
--- Required parameter: sessionToken
-function M.AWSSessionCredentials(_secretAccessKey, _sessionToken, _accessKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AWSSessionCredentials")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * secretAccessKey [SecretAccessKey] <p>The secret access key for the session.</p>
+-- * sessionToken [SessionToken] <p>The token for the session.</p>
+-- * accessKeyId [AccessKeyId] <p>The access key for the session.</p>
+-- Required key: accessKeyId
+-- Required key: secretAccessKey
+-- Required key: sessionToken
+-- @return AWSSessionCredentials structure as a key-value pair table
+function M.AWSSessionCredentials(args)
+	assert(args, "You must provdide an argument table when creating AWSSessionCredentials")
 	local t = { 
-		["secretAccessKey"] = _secretAccessKey,
-		["sessionToken"] = _sessionToken,
-		["accessKeyId"] = _accessKeyId,
+		["secretAccessKey"] = args["secretAccessKey"],
+		["sessionToken"] = args["sessionToken"],
+		["accessKeyId"] = args["accessKeyId"],
 	}
 	asserts.AssertAWSSessionCredentials(t)
 	return t
@@ -1740,15 +1911,18 @@ end
 
 --- Create a structure of type S3ArtifactLocation
 -- <p>The location of the Amazon S3 bucket that contains a revision.</p>
--- @param _objectKey [S3ObjectKey] <p>The key of the object in the Amazon S3 bucket, which uniquely identifies the object in the bucket.</p>
--- @param _bucketName [S3BucketName] <p>The name of the Amazon S3 bucket.</p>
--- Required parameter: bucketName
--- Required parameter: objectKey
-function M.S3ArtifactLocation(_objectKey, _bucketName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3ArtifactLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * objectKey [S3ObjectKey] <p>The key of the object in the Amazon S3 bucket, which uniquely identifies the object in the bucket.</p>
+-- * bucketName [S3BucketName] <p>The name of the Amazon S3 bucket.</p>
+-- Required key: bucketName
+-- Required key: objectKey
+-- @return S3ArtifactLocation structure as a key-value pair table
+function M.S3ArtifactLocation(args)
+	assert(args, "You must provdide an argument table when creating S3ArtifactLocation")
 	local t = { 
-		["objectKey"] = _objectKey,
-		["bucketName"] = _bucketName,
+		["objectKey"] = args["objectKey"],
+		["bucketName"] = args["bucketName"],
 	}
 	asserts.AssertS3ArtifactLocation(t)
 	return t
@@ -1766,8 +1940,11 @@ end
 
 --- Create a structure of type InvalidJobStateException
 -- <p>The specified job state was specified in an invalid format.</p>
-function M.InvalidJobStateException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidJobStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidJobStateException structure as a key-value pair table
+function M.InvalidJobStateException(args)
+	assert(args, "You must provdide an argument table when creating InvalidJobStateException")
 	local t = { 
 	}
 	asserts.AssertInvalidJobStateException(t)
@@ -1787,11 +1964,14 @@ end
 
 --- Create a structure of type GetPipelineOutput
 -- <p>Represents the output of a get pipeline action.</p>
--- @param _pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
-function M.GetPipelineOutput(_pipeline, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
+-- @return GetPipelineOutput structure as a key-value pair table
+function M.GetPipelineOutput(args)
+	assert(args, "You must provdide an argument table when creating GetPipelineOutput")
 	local t = { 
-		["pipeline"] = _pipeline,
+		["pipeline"] = args["pipeline"],
 	}
 	asserts.AssertGetPipelineOutput(t)
 	return t
@@ -1813,16 +1993,19 @@ end
 
 --- Create a structure of type ListPipelineExecutionsInput
 -- <p>Represents the input of a list pipeline executions action.</p>
--- @param _nextToken [NextToken] <p>The token that was returned from the previous list pipeline executions call, which can be used to return the next set of pipeline executions in the list.</p>
--- @param _pipelineName [PipelineName] <p>The name of the pipeline for which you want to get execution summary information.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value. The available pipeline execution history is limited to the most recent 12 months, based on pipeline execution start times. Default value is 100.</p>
--- Required parameter: pipelineName
-function M.ListPipelineExecutionsInput(_nextToken, _pipelineName, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelineExecutionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The token that was returned from the previous list pipeline executions call, which can be used to return the next set of pipeline executions in the list.</p>
+-- * pipelineName [PipelineName] <p>The name of the pipeline for which you want to get execution summary information.</p>
+-- * maxResults [MaxResults] <p>The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value. The available pipeline execution history is limited to the most recent 12 months, based on pipeline execution start times. Default value is 100.</p>
+-- Required key: pipelineName
+-- @return ListPipelineExecutionsInput structure as a key-value pair table
+function M.ListPipelineExecutionsInput(args)
+	assert(args, "You must provdide an argument table when creating ListPipelineExecutionsInput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["pipelineName"] = _pipelineName,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["pipelineName"] = args["pipelineName"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListPipelineExecutionsInput(t)
 	return t
@@ -1843,14 +2026,17 @@ end
 
 --- Create a structure of type ListActionTypesOutput
 -- <p>Represents the output of a list action types action.</p>
--- @param _actionTypes [ActionTypeList] <p>Provides details of the action types.</p>
--- @param _nextToken [NextToken] <p>If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list action types call to return the next set of action types in the list.</p>
--- Required parameter: actionTypes
-function M.ListActionTypesOutput(_actionTypes, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListActionTypesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionTypes [ActionTypeList] <p>Provides details of the action types.</p>
+-- * nextToken [NextToken] <p>If the amount of returned information is significantly large, an identifier is also returned which can be used in a subsequent list action types call to return the next set of action types in the list.</p>
+-- Required key: actionTypes
+-- @return ListActionTypesOutput structure as a key-value pair table
+function M.ListActionTypesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListActionTypesOutput")
 	local t = { 
-		["actionTypes"] = _actionTypes,
-		["nextToken"] = _nextToken,
+		["actionTypes"] = args["actionTypes"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListActionTypesOutput(t)
 	return t
@@ -1872,15 +2058,18 @@ end
 
 --- Create a structure of type ApprovalResult
 -- <p>Represents information about the result of an approval request.</p>
--- @param _status [ApprovalStatus] <p>The response submitted by a reviewer assigned to an approval action request.</p>
--- @param _summary [ApprovalSummary] <p>The summary of the current status of the approval request.</p>
--- Required parameter: summary
--- Required parameter: status
-function M.ApprovalResult(_status, _summary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApprovalResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [ApprovalStatus] <p>The response submitted by a reviewer assigned to an approval action request.</p>
+-- * summary [ApprovalSummary] <p>The summary of the current status of the approval request.</p>
+-- Required key: summary
+-- Required key: status
+-- @return ApprovalResult structure as a key-value pair table
+function M.ApprovalResult(args)
+	assert(args, "You must provdide an argument table when creating ApprovalResult")
 	local t = { 
-		["status"] = _status,
-		["summary"] = _summary,
+		["status"] = args["status"],
+		["summary"] = args["summary"],
 	}
 	asserts.AssertApprovalResult(t)
 	return t
@@ -1900,12 +2089,15 @@ end
 
 --- Create a structure of type OutputArtifact
 -- <p>Represents information about the output of an action.</p>
--- @param _name [ArtifactName] <p>The name of the output of an artifact, such as "My App".</p> <p>The input artifact of an action must exactly match the output artifact declared in a preceding action, but the input artifact does not have to be the next action in strict sequence from the action that provided the output artifact. Actions in parallel can declare different output artifacts, which are in turn consumed by different following actions.</p> <p>Output artifact names must be unique within a pipeline.</p>
--- Required parameter: name
-function M.OutputArtifact(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OutputArtifact")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [ArtifactName] <p>The name of the output of an artifact, such as "My App".</p> <p>The input artifact of an action must exactly match the output artifact declared in a preceding action, but the input artifact does not have to be the next action in strict sequence from the action that provided the output artifact. Actions in parallel can declare different output artifacts, which are in turn consumed by different following actions.</p> <p>Output artifact names must be unique within a pipeline.</p>
+-- Required key: name
+-- @return OutputArtifact structure as a key-value pair table
+function M.OutputArtifact(args)
+	assert(args, "You must provdide an argument table when creating OutputArtifact")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertOutputArtifact(t)
 	return t
@@ -1927,15 +2119,18 @@ end
 
 --- Create a structure of type EncryptionKey
 -- <p>Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key.</p>
--- @param _type [EncryptionKeyType] <p>The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating a pipeline, the value must be set to 'KMS'.</p>
--- @param _id [EncryptionKeyId] <p>The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.</p>
--- Required parameter: id
--- Required parameter: type
-function M.EncryptionKey(_type, _id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionKey")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * type [EncryptionKeyType] <p>The type of encryption key, such as an AWS Key Management Service (AWS KMS) key. When creating or updating a pipeline, the value must be set to 'KMS'.</p>
+-- * id [EncryptionKeyId] <p>The ID used to identify the key. For an AWS KMS key, this is the key ID or key ARN.</p>
+-- Required key: id
+-- Required key: type
+-- @return EncryptionKey structure as a key-value pair table
+function M.EncryptionKey(args)
+	assert(args, "You must provdide an argument table when creating EncryptionKey")
 	local t = { 
-		["type"] = _type,
-		["id"] = _id,
+		["type"] = args["type"],
+		["id"] = args["id"],
 	}
 	asserts.AssertEncryptionKey(t)
 	return t
@@ -1953,8 +2148,11 @@ end
 
 --- Create a structure of type InvalidClientTokenException
 -- <p>The client token was specified in an invalid format</p>
-function M.InvalidClientTokenException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidClientTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidClientTokenException structure as a key-value pair table
+function M.InvalidClientTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidClientTokenException")
 	local t = { 
 	}
 	asserts.AssertInvalidClientTokenException(t)
@@ -1973,8 +2171,11 @@ end
 
 --- Create a structure of type ValidationException
 -- <p>The validation was specified in an invalid format.</p>
-function M.ValidationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ValidationException structure as a key-value pair table
+function M.ValidationException(args)
+	assert(args, "You must provdide an argument table when creating ValidationException")
 	local t = { 
 	}
 	asserts.AssertValidationException(t)
@@ -1995,12 +2196,15 @@ end
 
 --- Create a structure of type GetJobDetailsInput
 -- <p>Represents the input of a get job details action.</p>
--- @param _jobId [JobId] <p>The unique system-generated ID for the job.</p>
--- Required parameter: jobId
-function M.GetJobDetailsInput(_jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetJobDetailsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobId [JobId] <p>The unique system-generated ID for the job.</p>
+-- Required key: jobId
+-- @return GetJobDetailsInput structure as a key-value pair table
+function M.GetJobDetailsInput(args)
+	assert(args, "You must provdide an argument table when creating GetJobDetailsInput")
 	local t = { 
-		["jobId"] = _jobId,
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertGetJobDetailsInput(t)
 	return t
@@ -2019,11 +2223,14 @@ end
 
 --- Create a structure of type PollForThirdPartyJobsOutput
 -- <p>Represents the output of a poll for third party jobs action.</p>
--- @param _jobs [ThirdPartyJobList] <p>Information about the jobs to take action on.</p>
-function M.PollForThirdPartyJobsOutput(_jobs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PollForThirdPartyJobsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobs [ThirdPartyJobList] <p>Information about the jobs to take action on.</p>
+-- @return PollForThirdPartyJobsOutput structure as a key-value pair table
+function M.PollForThirdPartyJobsOutput(args)
+	assert(args, "You must provdide an argument table when creating PollForThirdPartyJobsOutput")
 	local t = { 
-		["jobs"] = _jobs,
+		["jobs"] = args["jobs"],
 	}
 	asserts.AssertPollForThirdPartyJobsOutput(t)
 	return t
@@ -2049,21 +2256,24 @@ end
 
 --- Create a structure of type RetryStageExecutionInput
 -- <p>Represents the input of a retry stage execution action.</p>
--- @param _pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution in the failed stage to be retried. Use the <a>GetPipelineState</a> action to retrieve the current pipelineExecutionId of the failed stage</p>
--- @param _retryMode [StageRetryMode] <p>The scope of the retry attempt. Currently, the only supported value is FAILED_ACTIONS.</p>
--- @param _pipelineName [PipelineName] <p>The name of the pipeline that contains the failed stage.</p>
--- @param _stageName [StageName] <p>The name of the failed stage to be retried.</p>
--- Required parameter: pipelineName
--- Required parameter: stageName
--- Required parameter: pipelineExecutionId
--- Required parameter: retryMode
-function M.RetryStageExecutionInput(_pipelineExecutionId, _retryMode, _pipelineName, _stageName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetryStageExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution in the failed stage to be retried. Use the <a>GetPipelineState</a> action to retrieve the current pipelineExecutionId of the failed stage</p>
+-- * retryMode [StageRetryMode] <p>The scope of the retry attempt. Currently, the only supported value is FAILED_ACTIONS.</p>
+-- * pipelineName [PipelineName] <p>The name of the pipeline that contains the failed stage.</p>
+-- * stageName [StageName] <p>The name of the failed stage to be retried.</p>
+-- Required key: pipelineName
+-- Required key: stageName
+-- Required key: pipelineExecutionId
+-- Required key: retryMode
+-- @return RetryStageExecutionInput structure as a key-value pair table
+function M.RetryStageExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating RetryStageExecutionInput")
 	local t = { 
-		["pipelineExecutionId"] = _pipelineExecutionId,
-		["retryMode"] = _retryMode,
-		["pipelineName"] = _pipelineName,
-		["stageName"] = _stageName,
+		["pipelineExecutionId"] = args["pipelineExecutionId"],
+		["retryMode"] = args["retryMode"],
+		["pipelineName"] = args["pipelineName"],
+		["stageName"] = args["stageName"],
 	}
 	asserts.AssertRetryStageExecutionInput(t)
 	return t
@@ -2082,11 +2292,14 @@ end
 
 --- Create a structure of type GetThirdPartyJobDetailsOutput
 -- <p>Represents the output of a get third party job details action.</p>
--- @param _jobDetails [ThirdPartyJobDetails] <p>The details of the job, including any protected values defined for the job.</p>
-function M.GetThirdPartyJobDetailsOutput(_jobDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetThirdPartyJobDetailsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobDetails [ThirdPartyJobDetails] <p>The details of the job, including any protected values defined for the job.</p>
+-- @return GetThirdPartyJobDetailsOutput structure as a key-value pair table
+function M.GetThirdPartyJobDetailsOutput(args)
+	assert(args, "You must provdide an argument table when creating GetThirdPartyJobDetailsOutput")
 	local t = { 
-		["jobDetails"] = _jobDetails,
+		["jobDetails"] = args["jobDetails"],
 	}
 	asserts.AssertGetThirdPartyJobDetailsOutput(t)
 	return t
@@ -2107,15 +2320,18 @@ end
 
 --- Create a structure of type ExecutionDetails
 -- <p>The details of the actions taken and results produced on an artifact as it passes through stages in the pipeline.</p>
--- @param _percentComplete [Percentage] <p>The percentage of work completed on the action, represented on a scale of zero to one hundred percent.</p>
--- @param _externalExecutionId [ExecutionId] <p>The system-generated unique ID of this action used to identify this job worker in any external systems, such as AWS CodeDeploy.</p>
--- @param _summary [ExecutionSummary] <p>The summary of the current status of the actions.</p>
-function M.ExecutionDetails(_percentComplete, _externalExecutionId, _summary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExecutionDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * percentComplete [Percentage] <p>The percentage of work completed on the action, represented on a scale of zero to one hundred percent.</p>
+-- * externalExecutionId [ExecutionId] <p>The system-generated unique ID of this action used to identify this job worker in any external systems, such as AWS CodeDeploy.</p>
+-- * summary [ExecutionSummary] <p>The summary of the current status of the actions.</p>
+-- @return ExecutionDetails structure as a key-value pair table
+function M.ExecutionDetails(args)
+	assert(args, "You must provdide an argument table when creating ExecutionDetails")
 	local t = { 
-		["percentComplete"] = _percentComplete,
-		["externalExecutionId"] = _externalExecutionId,
-		["summary"] = _summary,
+		["percentComplete"] = args["percentComplete"],
+		["externalExecutionId"] = args["externalExecutionId"],
+		["summary"] = args["summary"],
 	}
 	asserts.AssertExecutionDetails(t)
 	return t
@@ -2135,13 +2351,16 @@ end
 
 --- Create a structure of type ArtifactLocation
 -- <p>Represents information about the location of an artifact.</p>
--- @param _type [ArtifactLocationType] <p>The type of artifact in the location.</p>
--- @param _s3Location [S3ArtifactLocation] <p>The Amazon S3 bucket that contains the artifact.</p>
-function M.ArtifactLocation(_type, _s3Location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ArtifactLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * type [ArtifactLocationType] <p>The type of artifact in the location.</p>
+-- * s3Location [S3ArtifactLocation] <p>The Amazon S3 bucket that contains the artifact.</p>
+-- @return ArtifactLocation structure as a key-value pair table
+function M.ArtifactLocation(args)
+	assert(args, "You must provdide an argument table when creating ArtifactLocation")
 	local t = { 
-		["type"] = _type,
-		["s3Location"] = _s3Location,
+		["type"] = args["type"],
+		["s3Location"] = args["s3Location"],
 	}
 	asserts.AssertArtifactLocation(t)
 	return t
@@ -2168,25 +2387,28 @@ end
 
 --- Create a structure of type ActionDeclaration
 -- <p>Represents information about an action declaration.</p>
--- @param _inputArtifacts [InputArtifactList] <p>The name or ID of the artifact consumed by the action, such as a test or build artifact.</p>
--- @param _name [ActionName] <p>The action declaration's name.</p>
--- @param _roleArn [RoleArn] <p>The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.</p>
--- @param _actionTypeId [ActionTypeId] <p>The configuration information for the action type.</p>
--- @param _outputArtifacts [OutputArtifactList] <p>The name or ID of the result of the action declaration, such as a test or build artifact.</p>
--- @param _configuration [ActionConfigurationMap] <p>The action declaration's configuration.</p>
--- @param _runOrder [ActionRunOrder] <p>The order in which actions are run.</p>
--- Required parameter: name
--- Required parameter: actionTypeId
-function M.ActionDeclaration(_inputArtifacts, _name, _roleArn, _actionTypeId, _outputArtifacts, _configuration, _runOrder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionDeclaration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * inputArtifacts [InputArtifactList] <p>The name or ID of the artifact consumed by the action, such as a test or build artifact.</p>
+-- * name [ActionName] <p>The action declaration's name.</p>
+-- * roleArn [RoleArn] <p>The ARN of the IAM service role that will perform the declared action. This is assumed through the roleArn for the pipeline.</p>
+-- * actionTypeId [ActionTypeId] <p>The configuration information for the action type.</p>
+-- * outputArtifacts [OutputArtifactList] <p>The name or ID of the result of the action declaration, such as a test or build artifact.</p>
+-- * configuration [ActionConfigurationMap] <p>The action declaration's configuration.</p>
+-- * runOrder [ActionRunOrder] <p>The order in which actions are run.</p>
+-- Required key: name
+-- Required key: actionTypeId
+-- @return ActionDeclaration structure as a key-value pair table
+function M.ActionDeclaration(args)
+	assert(args, "You must provdide an argument table when creating ActionDeclaration")
 	local t = { 
-		["inputArtifacts"] = _inputArtifacts,
-		["name"] = _name,
-		["roleArn"] = _roleArn,
-		["actionTypeId"] = _actionTypeId,
-		["outputArtifacts"] = _outputArtifacts,
-		["configuration"] = _configuration,
-		["runOrder"] = _runOrder,
+		["inputArtifacts"] = args["inputArtifacts"],
+		["name"] = args["name"],
+		["roleArn"] = args["roleArn"],
+		["actionTypeId"] = args["actionTypeId"],
+		["outputArtifacts"] = args["outputArtifacts"],
+		["configuration"] = args["configuration"],
+		["runOrder"] = args["runOrder"],
 	}
 	asserts.AssertActionDeclaration(t)
 	return t
@@ -2204,8 +2426,11 @@ end
 
 --- Create a structure of type InvalidBlockerDeclarationException
 -- <p>Reserved for future use.</p>
-function M.InvalidBlockerDeclarationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidBlockerDeclarationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidBlockerDeclarationException structure as a key-value pair table
+function M.InvalidBlockerDeclarationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidBlockerDeclarationException")
 	local t = { 
 	}
 	asserts.AssertInvalidBlockerDeclarationException(t)
@@ -2225,11 +2450,14 @@ end
 
 --- Create a structure of type StageContext
 -- <p>Represents information about a stage to a job worker.</p>
--- @param _name [StageName] <p>The name of the stage.</p>
-function M.StageContext(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StageContext")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [StageName] <p>The name of the stage.</p>
+-- @return StageContext structure as a key-value pair table
+function M.StageContext(args)
+	assert(args, "You must provdide an argument table when creating StageContext")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertStageContext(t)
 	return t
@@ -2251,17 +2479,20 @@ end
 
 --- Create a structure of type ActionTypeSettings
 -- <p>Returns information about the settings for an action type.</p>
--- @param _entityUrlTemplate [UrlTemplate] <p>The URL returned to the AWS CodePipeline console that provides a deep link to the resources of the external system, such as the configuration page for an AWS CodeDeploy deployment group. This link is provided as part of the action display within the pipeline.</p>
--- @param _revisionUrlTemplate [UrlTemplate] <p>The URL returned to the AWS CodePipeline console that contains a link to the page where customers can update or change the configuration of the external action.</p>
--- @param _thirdPartyConfigurationUrl [Url] <p>The URL of a sign-up page where users can sign up for an external service and perform initial configuration of the action provided by that service.</p>
--- @param _executionUrlTemplate [UrlTemplate] <p>The URL returned to the AWS CodePipeline console that contains a link to the top-level landing page for the external system, such as console page for AWS CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline console and provides a link to the execution entity of the external action.</p>
-function M.ActionTypeSettings(_entityUrlTemplate, _revisionUrlTemplate, _thirdPartyConfigurationUrl, _executionUrlTemplate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionTypeSettings")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * entityUrlTemplate [UrlTemplate] <p>The URL returned to the AWS CodePipeline console that provides a deep link to the resources of the external system, such as the configuration page for an AWS CodeDeploy deployment group. This link is provided as part of the action display within the pipeline.</p>
+-- * revisionUrlTemplate [UrlTemplate] <p>The URL returned to the AWS CodePipeline console that contains a link to the page where customers can update or change the configuration of the external action.</p>
+-- * thirdPartyConfigurationUrl [Url] <p>The URL of a sign-up page where users can sign up for an external service and perform initial configuration of the action provided by that service.</p>
+-- * executionUrlTemplate [UrlTemplate] <p>The URL returned to the AWS CodePipeline console that contains a link to the top-level landing page for the external system, such as console page for AWS CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline console and provides a link to the execution entity of the external action.</p>
+-- @return ActionTypeSettings structure as a key-value pair table
+function M.ActionTypeSettings(args)
+	assert(args, "You must provdide an argument table when creating ActionTypeSettings")
 	local t = { 
-		["entityUrlTemplate"] = _entityUrlTemplate,
-		["revisionUrlTemplate"] = _revisionUrlTemplate,
-		["thirdPartyConfigurationUrl"] = _thirdPartyConfigurationUrl,
-		["executionUrlTemplate"] = _executionUrlTemplate,
+		["entityUrlTemplate"] = args["entityUrlTemplate"],
+		["revisionUrlTemplate"] = args["revisionUrlTemplate"],
+		["thirdPartyConfigurationUrl"] = args["thirdPartyConfigurationUrl"],
+		["executionUrlTemplate"] = args["executionUrlTemplate"],
 	}
 	asserts.AssertActionTypeSettings(t)
 	return t
@@ -2283,15 +2514,18 @@ end
 
 --- Create a structure of type GetPipelineExecutionInput
 -- <p>Represents the input of a get pipeline execution action.</p>
--- @param _pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution about which you want to get execution details.</p>
--- @param _pipelineName [PipelineName] <p>The name of the pipeline about which you want to get execution details.</p>
--- Required parameter: pipelineName
--- Required parameter: pipelineExecutionId
-function M.GetPipelineExecutionInput(_pipelineExecutionId, _pipelineName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineExecutionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution about which you want to get execution details.</p>
+-- * pipelineName [PipelineName] <p>The name of the pipeline about which you want to get execution details.</p>
+-- Required key: pipelineName
+-- Required key: pipelineExecutionId
+-- @return GetPipelineExecutionInput structure as a key-value pair table
+function M.GetPipelineExecutionInput(args)
+	assert(args, "You must provdide an argument table when creating GetPipelineExecutionInput")
 	local t = { 
-		["pipelineExecutionId"] = _pipelineExecutionId,
-		["pipelineName"] = _pipelineName,
+		["pipelineExecutionId"] = args["pipelineExecutionId"],
+		["pipelineName"] = args["pipelineName"],
 	}
 	asserts.AssertGetPipelineExecutionInput(t)
 	return t
@@ -2309,8 +2543,11 @@ end
 
 --- Create a structure of type NotLatestPipelineExecutionException
 -- <p>The stage has failed in a later run of the pipeline and the pipelineExecutionId associated with the request is out of date.</p>
-function M.NotLatestPipelineExecutionException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotLatestPipelineExecutionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NotLatestPipelineExecutionException structure as a key-value pair table
+function M.NotLatestPipelineExecutionException(args)
+	assert(args, "You must provdide an argument table when creating NotLatestPipelineExecutionException")
 	local t = { 
 	}
 	asserts.AssertNotLatestPipelineExecutionException(t)
@@ -2331,12 +2568,15 @@ end
 
 --- Create a structure of type CreateCustomActionTypeOutput
 -- <p>Represents the output of a create custom action operation.</p>
--- @param _actionType [ActionType] <p>Returns information about the details of an action type.</p>
--- Required parameter: actionType
-function M.CreateCustomActionTypeOutput(_actionType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCustomActionTypeOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionType [ActionType] <p>Returns information about the details of an action type.</p>
+-- Required key: actionType
+-- @return CreateCustomActionTypeOutput structure as a key-value pair table
+function M.CreateCustomActionTypeOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateCustomActionTypeOutput")
 	local t = { 
-		["actionType"] = _actionType,
+		["actionType"] = args["actionType"],
 	}
 	asserts.AssertCreateCustomActionTypeOutput(t)
 	return t
@@ -2359,18 +2599,21 @@ end
 
 --- Create a structure of type PutJobSuccessResultInput
 -- <p>Represents the input of a put job success result action.</p>
--- @param _currentRevision [CurrentRevision] <p>The ID of the current revision of the artifact successfully worked upon by the job.</p>
--- @param _executionDetails [ExecutionDetails] <p>The execution details of the successful job, such as the actions taken by the job worker.</p>
--- @param _continuationToken [ContinuationToken] <p>A token generated by a job worker, such as an AWS CodeDeploy deployment ID, that a successful job provides to identify a custom action in progress. Future jobs will use this token in order to identify the running instance of the action. It can be reused to return additional information about the progress of the custom action. When the action is complete, no continuation token should be supplied.</p>
--- @param _jobId [JobId] <p>The unique system-generated ID of the job that succeeded. This is the same ID returned from PollForJobs.</p>
--- Required parameter: jobId
-function M.PutJobSuccessResultInput(_currentRevision, _executionDetails, _continuationToken, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutJobSuccessResultInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * currentRevision [CurrentRevision] <p>The ID of the current revision of the artifact successfully worked upon by the job.</p>
+-- * executionDetails [ExecutionDetails] <p>The execution details of the successful job, such as the actions taken by the job worker.</p>
+-- * continuationToken [ContinuationToken] <p>A token generated by a job worker, such as an AWS CodeDeploy deployment ID, that a successful job provides to identify a custom action in progress. Future jobs will use this token in order to identify the running instance of the action. It can be reused to return additional information about the progress of the custom action. When the action is complete, no continuation token should be supplied.</p>
+-- * jobId [JobId] <p>The unique system-generated ID of the job that succeeded. This is the same ID returned from PollForJobs.</p>
+-- Required key: jobId
+-- @return PutJobSuccessResultInput structure as a key-value pair table
+function M.PutJobSuccessResultInput(args)
+	assert(args, "You must provdide an argument table when creating PutJobSuccessResultInput")
 	local t = { 
-		["currentRevision"] = _currentRevision,
-		["executionDetails"] = _executionDetails,
-		["continuationToken"] = _continuationToken,
-		["jobId"] = _jobId,
+		["currentRevision"] = args["currentRevision"],
+		["executionDetails"] = args["executionDetails"],
+		["continuationToken"] = args["continuationToken"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertPutJobSuccessResultInput(t)
 	return t
@@ -2389,11 +2632,14 @@ end
 
 --- Create a structure of type PollForJobsOutput
 -- <p>Represents the output of a poll for jobs action.</p>
--- @param _jobs [JobList] <p>Information about the jobs to take action on.</p>
-function M.PollForJobsOutput(_jobs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PollForJobsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobs [JobList] <p>Information about the jobs to take action on.</p>
+-- @return PollForJobsOutput structure as a key-value pair table
+function M.PollForJobsOutput(args)
+	assert(args, "You must provdide an argument table when creating PollForJobsOutput")
 	local t = { 
-		["jobs"] = _jobs,
+		["jobs"] = args["jobs"],
 	}
 	asserts.AssertPollForJobsOutput(t)
 	return t
@@ -2415,17 +2661,20 @@ end
 
 --- Create a structure of type PipelineExecutionSummary
 -- <p>Summary information about a pipeline execution.</p>
--- @param _pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution.</p>
--- @param _status [PipelineExecutionStatus] <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The pipeline execution is currently running.</p> </li> <li> <p>Succeeded: The pipeline execution completed successfully. </p> </li> <li> <p>Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution caught up and continued through the pipeline instead. </p> </li> <li> <p>Failed: The pipeline execution did not complete successfully.</p> </li> </ul>
--- @param _lastUpdateTime [Timestamp] <p>The date and time of the last change to the pipeline execution, in timestamp format.</p>
--- @param _startTime [Timestamp] <p>The date and time when the pipeline execution began, in timestamp format.</p>
-function M.PipelineExecutionSummary(_pipelineExecutionId, _status, _lastUpdateTime, _startTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineExecutionSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution.</p>
+-- * status [PipelineExecutionStatus] <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The pipeline execution is currently running.</p> </li> <li> <p>Succeeded: The pipeline execution completed successfully. </p> </li> <li> <p>Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution caught up and continued through the pipeline instead. </p> </li> <li> <p>Failed: The pipeline execution did not complete successfully.</p> </li> </ul>
+-- * lastUpdateTime [Timestamp] <p>The date and time of the last change to the pipeline execution, in timestamp format.</p>
+-- * startTime [Timestamp] <p>The date and time when the pipeline execution began, in timestamp format.</p>
+-- @return PipelineExecutionSummary structure as a key-value pair table
+function M.PipelineExecutionSummary(args)
+	assert(args, "You must provdide an argument table when creating PipelineExecutionSummary")
 	local t = { 
-		["pipelineExecutionId"] = _pipelineExecutionId,
-		["status"] = _status,
-		["lastUpdateTime"] = _lastUpdateTime,
-		["startTime"] = _startTime,
+		["pipelineExecutionId"] = args["pipelineExecutionId"],
+		["status"] = args["status"],
+		["lastUpdateTime"] = args["lastUpdateTime"],
+		["startTime"] = args["startTime"],
 	}
 	asserts.AssertPipelineExecutionSummary(t)
 	return t
@@ -2451,25 +2700,28 @@ end
 
 --- Create a structure of type JobData
 -- <p>Represents additional information about a job required for a job worker to complete the job.</p>
--- @param _inputArtifacts [ArtifactList] <p>The artifact supplied to the job.</p>
--- @param _pipelineContext [PipelineContext] <p>Represents information about a pipeline to a job worker.</p>
--- @param _encryptionKey [EncryptionKey] <p>Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. </p>
--- @param _actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
--- @param _outputArtifacts [ArtifactList] <p>The output of the job.</p>
--- @param _actionConfiguration [ActionConfiguration] <p>Represents information about an action configuration.</p>
--- @param _continuationToken [ContinuationToken] <p>A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the job asynchronously.</p>
--- @param _artifactCredentials [AWSSessionCredentials] <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.</p>
-function M.JobData(_inputArtifacts, _pipelineContext, _encryptionKey, _actionTypeId, _outputArtifacts, _actionConfiguration, _continuationToken, _artifactCredentials, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobData")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * inputArtifacts [ArtifactList] <p>The artifact supplied to the job.</p>
+-- * pipelineContext [PipelineContext] <p>Represents information about a pipeline to a job worker.</p>
+-- * encryptionKey [EncryptionKey] <p>Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS KMS) key. </p>
+-- * actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
+-- * outputArtifacts [ArtifactList] <p>The output of the job.</p>
+-- * actionConfiguration [ActionConfiguration] <p>Represents information about an action configuration.</p>
+-- * continuationToken [ContinuationToken] <p>A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the job asynchronously.</p>
+-- * artifactCredentials [AWSSessionCredentials] <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.</p>
+-- @return JobData structure as a key-value pair table
+function M.JobData(args)
+	assert(args, "You must provdide an argument table when creating JobData")
 	local t = { 
-		["inputArtifacts"] = _inputArtifacts,
-		["pipelineContext"] = _pipelineContext,
-		["encryptionKey"] = _encryptionKey,
-		["actionTypeId"] = _actionTypeId,
-		["outputArtifacts"] = _outputArtifacts,
-		["actionConfiguration"] = _actionConfiguration,
-		["continuationToken"] = _continuationToken,
-		["artifactCredentials"] = _artifactCredentials,
+		["inputArtifacts"] = args["inputArtifacts"],
+		["pipelineContext"] = args["pipelineContext"],
+		["encryptionKey"] = args["encryptionKey"],
+		["actionTypeId"] = args["actionTypeId"],
+		["outputArtifacts"] = args["outputArtifacts"],
+		["actionConfiguration"] = args["actionConfiguration"],
+		["continuationToken"] = args["continuationToken"],
+		["artifactCredentials"] = args["artifactCredentials"],
 	}
 	asserts.AssertJobData(t)
 	return t
@@ -2493,18 +2745,21 @@ end
 
 --- Create a structure of type EnableStageTransitionInput
 -- <p>Represents the input of an enable stage transition action.</p>
--- @param _pipelineName [PipelineName] <p>The name of the pipeline in which you want to enable the flow of artifacts from one stage to another.</p>
--- @param _stageName [StageName] <p>The name of the stage where you want to enable the transition of artifacts, either into the stage (inbound) or from that stage to the next stage (outbound).</p>
--- @param _transitionType [StageTransitionType] <p>Specifies whether artifacts will be allowed to enter the stage and be processed by the actions in that stage (inbound) or whether already-processed artifacts will be allowed to transition to the next stage (outbound).</p>
--- Required parameter: pipelineName
--- Required parameter: stageName
--- Required parameter: transitionType
-function M.EnableStageTransitionInput(_pipelineName, _stageName, _transitionType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableStageTransitionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineName [PipelineName] <p>The name of the pipeline in which you want to enable the flow of artifacts from one stage to another.</p>
+-- * stageName [StageName] <p>The name of the stage where you want to enable the transition of artifacts, either into the stage (inbound) or from that stage to the next stage (outbound).</p>
+-- * transitionType [StageTransitionType] <p>Specifies whether artifacts will be allowed to enter the stage and be processed by the actions in that stage (inbound) or whether already-processed artifacts will be allowed to transition to the next stage (outbound).</p>
+-- Required key: pipelineName
+-- Required key: stageName
+-- Required key: transitionType
+-- @return EnableStageTransitionInput structure as a key-value pair table
+function M.EnableStageTransitionInput(args)
+	assert(args, "You must provdide an argument table when creating EnableStageTransitionInput")
 	local t = { 
-		["pipelineName"] = _pipelineName,
-		["stageName"] = _stageName,
-		["transitionType"] = _transitionType,
+		["pipelineName"] = args["pipelineName"],
+		["stageName"] = args["stageName"],
+		["transitionType"] = args["transitionType"],
 	}
 	asserts.AssertEnableStageTransitionInput(t)
 	return t
@@ -2522,8 +2777,11 @@ end
 
 --- Create a structure of type ActionTypeNotFoundException
 -- <p>The specified action type cannot be found.</p>
-function M.ActionTypeNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActionTypeNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ActionTypeNotFoundException structure as a key-value pair table
+function M.ActionTypeNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ActionTypeNotFoundException")
 	local t = { 
 	}
 	asserts.AssertActionTypeNotFoundException(t)
@@ -2542,8 +2800,11 @@ end
 
 --- Create a structure of type JobNotFoundException
 -- <p>The specified job was specified in an invalid format or cannot be found.</p>
-function M.JobNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return JobNotFoundException structure as a key-value pair table
+function M.JobNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating JobNotFoundException")
 	local t = { 
 	}
 	asserts.AssertJobNotFoundException(t)
@@ -2564,12 +2825,15 @@ end
 
 --- Create a structure of type GetPipelineStateInput
 -- <p>Represents the input of a get pipeline state action.</p>
--- @param _name [PipelineName] <p>The name of the pipeline about which you want to get information.</p>
--- Required parameter: name
-function M.GetPipelineStateInput(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineStateInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [PipelineName] <p>The name of the pipeline about which you want to get information.</p>
+-- Required key: name
+-- @return GetPipelineStateInput structure as a key-value pair table
+function M.GetPipelineStateInput(args)
+	assert(args, "You must provdide an argument table when creating GetPipelineStateInput")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertGetPipelineStateInput(t)
 	return t
@@ -2590,15 +2854,18 @@ end
 
 --- Create a structure of type PipelineContext
 -- <p>Represents information about a pipeline to a job worker.</p>
--- @param _action [ActionContext] <p/>
--- @param _pipelineName [PipelineName] <p>The name of the pipeline. This is a user-specified value. Pipeline names must be unique across all pipeline names under an Amazon Web Services account.</p>
--- @param _stage [StageContext] <p>The stage of the pipeline.</p>
-function M.PipelineContext(_action, _pipelineName, _stage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineContext")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * action [ActionContext] <p/>
+-- * pipelineName [PipelineName] <p>The name of the pipeline. This is a user-specified value. Pipeline names must be unique across all pipeline names under an Amazon Web Services account.</p>
+-- * stage [StageContext] <p>The stage of the pipeline.</p>
+-- @return PipelineContext structure as a key-value pair table
+function M.PipelineContext(args)
+	assert(args, "You must provdide an argument table when creating PipelineContext")
 	local t = { 
-		["action"] = _action,
-		["pipelineName"] = _pipelineName,
-		["stage"] = _stage,
+		["action"] = args["action"],
+		["pipelineName"] = args["pipelineName"],
+		["stage"] = args["stage"],
 	}
 	asserts.AssertPipelineContext(t)
 	return t
@@ -2617,11 +2884,14 @@ end
 
 --- Create a structure of type GetJobDetailsOutput
 -- <p>Represents the output of a get job details action.</p>
--- @param _jobDetails [JobDetails] <p>The details of the job.</p> <note> <p>If AWSSessionCredentials is used, a long-running job can call GetJobDetails again to obtain new credentials.</p> </note>
-function M.GetJobDetailsOutput(_jobDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetJobDetailsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * jobDetails [JobDetails] <p>The details of the job.</p> <note> <p>If AWSSessionCredentials is used, a long-running job can call GetJobDetails again to obtain new credentials.</p> </note>
+-- @return GetJobDetailsOutput structure as a key-value pair table
+function M.GetJobDetailsOutput(args)
+	assert(args, "You must provdide an argument table when creating GetJobDetailsOutput")
 	local t = { 
-		["jobDetails"] = _jobDetails,
+		["jobDetails"] = args["jobDetails"],
 	}
 	asserts.AssertGetJobDetailsOutput(t)
 	return t
@@ -2640,11 +2910,14 @@ end
 
 --- Create a structure of type PutApprovalResultOutput
 -- <p>Represents the output of a put approval result action.</p>
--- @param _approvedAt [Timestamp] <p>The timestamp showing when the approval or rejection was submitted.</p>
-function M.PutApprovalResultOutput(_approvedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutApprovalResultOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * approvedAt [Timestamp] <p>The timestamp showing when the approval or rejection was submitted.</p>
+-- @return PutApprovalResultOutput structure as a key-value pair table
+function M.PutApprovalResultOutput(args)
+	assert(args, "You must provdide an argument table when creating PutApprovalResultOutput")
 	local t = { 
-		["approvedAt"] = _approvedAt,
+		["approvedAt"] = args["approvedAt"],
 	}
 	asserts.AssertPutApprovalResultOutput(t)
 	return t
@@ -2662,8 +2935,11 @@ end
 
 --- Create a structure of type StageNotRetryableException
 -- <p>The specified stage can't be retried because the pipeline structure or stage state changed after the stage was not completed; the stage contains no failed actions; one or more actions are still in progress; or another retry attempt is already in progress. </p>
-function M.StageNotRetryableException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StageNotRetryableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return StageNotRetryableException structure as a key-value pair table
+function M.StageNotRetryableException(args)
+	assert(args, "You must provdide an argument table when creating StageNotRetryableException")
 	local t = { 
 	}
 	asserts.AssertStageNotRetryableException(t)
@@ -2688,19 +2964,22 @@ end
 
 --- Create a structure of type CurrentRevision
 -- <p>Represents information about a current revision.</p>
--- @param _changeIdentifier [RevisionChangeIdentifier] <p>The change identifier for the current revision.</p>
--- @param _created [Time] <p>The date and time when the most recent revision of the artifact was created, in timestamp format.</p>
--- @param _revisionSummary [RevisionSummary] <p>The summary of the most recent revision of the artifact.</p>
--- @param _revision [Revision] <p>The revision ID of the current version of an artifact.</p>
--- Required parameter: revision
--- Required parameter: changeIdentifier
-function M.CurrentRevision(_changeIdentifier, _created, _revisionSummary, _revision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CurrentRevision")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * changeIdentifier [RevisionChangeIdentifier] <p>The change identifier for the current revision.</p>
+-- * created [Time] <p>The date and time when the most recent revision of the artifact was created, in timestamp format.</p>
+-- * revisionSummary [RevisionSummary] <p>The summary of the most recent revision of the artifact.</p>
+-- * revision [Revision] <p>The revision ID of the current version of an artifact.</p>
+-- Required key: revision
+-- Required key: changeIdentifier
+-- @return CurrentRevision structure as a key-value pair table
+function M.CurrentRevision(args)
+	assert(args, "You must provdide an argument table when creating CurrentRevision")
 	local t = { 
-		["changeIdentifier"] = _changeIdentifier,
-		["created"] = _created,
-		["revisionSummary"] = _revisionSummary,
-		["revision"] = _revision,
+		["changeIdentifier"] = args["changeIdentifier"],
+		["created"] = args["created"],
+		["revisionSummary"] = args["revisionSummary"],
+		["revision"] = args["revision"],
 	}
 	asserts.AssertCurrentRevision(t)
 	return t
@@ -2718,8 +2997,11 @@ end
 
 --- Create a structure of type InvalidApprovalTokenException
 -- <p>The approval request already received a response or has expired.</p>
-function M.InvalidApprovalTokenException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidApprovalTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidApprovalTokenException structure as a key-value pair table
+function M.InvalidApprovalTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidApprovalTokenException")
 	local t = { 
 	}
 	asserts.AssertInvalidApprovalTokenException(t)
@@ -2742,15 +3024,18 @@ end
 
 --- Create a structure of type GetThirdPartyJobDetailsInput
 -- <p>Represents the input of a get third party job details action.</p>
--- @param _clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
--- @param _jobId [ThirdPartyJobId] <p>The unique system-generated ID used for identifying the job.</p>
--- Required parameter: jobId
--- Required parameter: clientToken
-function M.GetThirdPartyJobDetailsInput(_clientToken, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetThirdPartyJobDetailsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * clientToken [ClientToken] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
+-- * jobId [ThirdPartyJobId] <p>The unique system-generated ID used for identifying the job.</p>
+-- Required key: jobId
+-- Required key: clientToken
+-- @return GetThirdPartyJobDetailsInput structure as a key-value pair table
+function M.GetThirdPartyJobDetailsInput(args)
+	assert(args, "You must provdide an argument table when creating GetThirdPartyJobDetailsInput")
 	local t = { 
-		["clientToken"] = _clientToken,
-		["jobId"] = _jobId,
+		["clientToken"] = args["clientToken"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertGetThirdPartyJobDetailsInput(t)
 	return t
@@ -2772,15 +3057,18 @@ end
 
 --- Create a structure of type StageExecution
 -- <p>Represents information about the run of a stage.</p>
--- @param _pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution associated with the stage.</p>
--- @param _status [StageExecutionStatus] <p>The status of the stage, or for a completed stage, the last status of the stage.</p>
--- Required parameter: pipelineExecutionId
--- Required parameter: status
-function M.StageExecution(_pipelineExecutionId, _status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StageExecution")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution associated with the stage.</p>
+-- * status [StageExecutionStatus] <p>The status of the stage, or for a completed stage, the last status of the stage.</p>
+-- Required key: pipelineExecutionId
+-- Required key: status
+-- @return StageExecution structure as a key-value pair table
+function M.StageExecution(args)
+	assert(args, "You must provdide an argument table when creating StageExecution")
 	local t = { 
-		["pipelineExecutionId"] = _pipelineExecutionId,
-		["status"] = _status,
+		["pipelineExecutionId"] = args["pipelineExecutionId"],
+		["status"] = args["status"],
 	}
 	asserts.AssertStageExecution(t)
 	return t
@@ -2801,15 +3089,18 @@ end
 
 --- Create a structure of type Artifact
 -- <p>Represents information about an artifact that will be worked upon by actions in the pipeline.</p>
--- @param _location [ArtifactLocation] <p>The location of an artifact.</p>
--- @param _name [ArtifactName] <p>The artifact's name.</p>
--- @param _revision [Revision] <p>The artifact's revision ID. Depending on the type of object, this could be a commit ID (GitHub) or a revision ID (Amazon S3).</p>
-function M.Artifact(_location, _name, _revision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Artifact")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * location [ArtifactLocation] <p>The location of an artifact.</p>
+-- * name [ArtifactName] <p>The artifact's name.</p>
+-- * revision [Revision] <p>The artifact's revision ID. Depending on the type of object, this could be a commit ID (GitHub) or a revision ID (Amazon S3).</p>
+-- @return Artifact structure as a key-value pair table
+function M.Artifact(args)
+	assert(args, "You must provdide an argument table when creating Artifact")
 	local t = { 
-		["location"] = _location,
-		["name"] = _name,
-		["revision"] = _revision,
+		["location"] = args["location"],
+		["name"] = args["name"],
+		["revision"] = args["revision"],
 	}
 	asserts.AssertArtifact(t)
 	return t
@@ -2827,8 +3118,11 @@ end
 
 --- Create a structure of type PipelineVersionNotFoundException
 -- <p>The specified pipeline version was specified in an invalid format or cannot be found.</p>
-function M.PipelineVersionNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineVersionNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PipelineVersionNotFoundException structure as a key-value pair table
+function M.PipelineVersionNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating PipelineVersionNotFoundException")
 	local t = { 
 	}
 	asserts.AssertPipelineVersionNotFoundException(t)
@@ -2847,8 +3141,11 @@ end
 
 --- Create a structure of type InvalidJobException
 -- <p>The specified job was specified in an invalid format or cannot be found.</p>
-function M.InvalidJobException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidJobException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidJobException structure as a key-value pair table
+function M.InvalidJobException(args)
+	assert(args, "You must provdide an argument table when creating InvalidJobException")
 	local t = { 
 	}
 	asserts.AssertInvalidJobException(t)
@@ -2869,13 +3166,16 @@ end
 
 --- Create a structure of type ThirdPartyJob
 -- <p>A response to a PollForThirdPartyJobs request returned by AWS CodePipeline when there is a job to be worked upon by a partner action.</p>
--- @param _clientId [ClientId] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
--- @param _jobId [JobId] <p>The identifier used to identify the job in AWS CodePipeline.</p>
-function M.ThirdPartyJob(_clientId, _jobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThirdPartyJob")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * clientId [ClientId] <p>The clientToken portion of the clientId and clientToken pair used to verify that the calling entity is allowed access to the job and its details.</p>
+-- * jobId [JobId] <p>The identifier used to identify the job in AWS CodePipeline.</p>
+-- @return ThirdPartyJob structure as a key-value pair table
+function M.ThirdPartyJob(args)
+	assert(args, "You must provdide an argument table when creating ThirdPartyJob")
 	local t = { 
-		["clientId"] = _clientId,
-		["jobId"] = _jobId,
+		["clientId"] = args["clientId"],
+		["jobId"] = args["jobId"],
 	}
 	asserts.AssertThirdPartyJob(t)
 	return t
@@ -2898,17 +3198,20 @@ end
 
 --- Create a structure of type StageDeclaration
 -- <p>Represents information about a stage and its definition.</p>
--- @param _blockers [StageBlockerDeclarationList] <p>Reserved for future use.</p>
--- @param _name [StageName] <p>The name of the stage.</p>
--- @param _actions [StageActionDeclarationList] <p>The actions included in a stage.</p>
--- Required parameter: name
--- Required parameter: actions
-function M.StageDeclaration(_blockers, _name, _actions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StageDeclaration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * blockers [StageBlockerDeclarationList] <p>Reserved for future use.</p>
+-- * name [StageName] <p>The name of the stage.</p>
+-- * actions [StageActionDeclarationList] <p>The actions included in a stage.</p>
+-- Required key: name
+-- Required key: actions
+-- @return StageDeclaration structure as a key-value pair table
+function M.StageDeclaration(args)
+	assert(args, "You must provdide an argument table when creating StageDeclaration")
 	local t = { 
-		["blockers"] = _blockers,
-		["name"] = _name,
-		["actions"] = _actions,
+		["blockers"] = args["blockers"],
+		["name"] = args["name"],
+		["actions"] = args["actions"],
 	}
 	asserts.AssertStageDeclaration(t)
 	return t
@@ -2930,15 +3233,18 @@ end
 
 --- Create a structure of type BlockerDeclaration
 -- <p>Reserved for future use.</p>
--- @param _type [BlockerType] <p>Reserved for future use.</p>
--- @param _name [BlockerName] <p>Reserved for future use.</p>
--- Required parameter: name
--- Required parameter: type
-function M.BlockerDeclaration(_type, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BlockerDeclaration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * type [BlockerType] <p>Reserved for future use.</p>
+-- * name [BlockerName] <p>Reserved for future use.</p>
+-- Required key: name
+-- Required key: type
+-- @return BlockerDeclaration structure as a key-value pair table
+function M.BlockerDeclaration(args)
+	assert(args, "You must provdide an argument table when creating BlockerDeclaration")
 	local t = { 
-		["type"] = _type,
-		["name"] = _name,
+		["type"] = args["type"],
+		["name"] = args["name"],
 	}
 	asserts.AssertBlockerDeclaration(t)
 	return t
@@ -2960,17 +3266,20 @@ end
 
 --- Create a structure of type PipelineSummary
 -- <p>Returns a summary of a pipeline.</p>
--- @param _updated [Timestamp] <p>The date and time of the last update to the pipeline, in timestamp format.</p>
--- @param _version [PipelineVersion] <p>The version number of the pipeline.</p>
--- @param _name [PipelineName] <p>The name of the pipeline.</p>
--- @param _created [Timestamp] <p>The date and time the pipeline was created, in timestamp format.</p>
-function M.PipelineSummary(_updated, _version, _name, _created, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * updated [Timestamp] <p>The date and time of the last update to the pipeline, in timestamp format.</p>
+-- * version [PipelineVersion] <p>The version number of the pipeline.</p>
+-- * name [PipelineName] <p>The name of the pipeline.</p>
+-- * created [Timestamp] <p>The date and time the pipeline was created, in timestamp format.</p>
+-- @return PipelineSummary structure as a key-value pair table
+function M.PipelineSummary(args)
+	assert(args, "You must provdide an argument table when creating PipelineSummary")
 	local t = { 
-		["updated"] = _updated,
-		["version"] = _version,
-		["name"] = _name,
-		["created"] = _created,
+		["updated"] = args["updated"],
+		["version"] = args["version"],
+		["name"] = args["name"],
+		["created"] = args["created"],
 	}
 	asserts.AssertPipelineSummary(t)
 	return t
@@ -2989,11 +3298,14 @@ end
 
 --- Create a structure of type RetryStageExecutionOutput
 -- <p>Represents the output of a retry stage execution action.</p>
--- @param _pipelineExecutionId [PipelineExecutionId] <p>The ID of the current workflow execution in the failed stage.</p>
-function M.RetryStageExecutionOutput(_pipelineExecutionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetryStageExecutionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the current workflow execution in the failed stage.</p>
+-- @return RetryStageExecutionOutput structure as a key-value pair table
+function M.RetryStageExecutionOutput(args)
+	assert(args, "You must provdide an argument table when creating RetryStageExecutionOutput")
 	local t = { 
-		["pipelineExecutionId"] = _pipelineExecutionId,
+		["pipelineExecutionId"] = args["pipelineExecutionId"],
 	}
 	asserts.AssertRetryStageExecutionOutput(t)
 	return t
@@ -3011,8 +3323,11 @@ end
 
 --- Create a structure of type InvalidNonceException
 -- <p>The specified nonce was specified in an invalid format.</p>
-function M.InvalidNonceException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNonceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidNonceException structure as a key-value pair table
+function M.InvalidNonceException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNonceException")
 	local t = { 
 	}
 	asserts.AssertInvalidNonceException(t)
@@ -3031,8 +3346,11 @@ end
 
 --- Create a structure of type PipelineNotFoundException
 -- <p>The specified pipeline was specified in an invalid format or cannot be found.</p>
-function M.PipelineNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PipelineNotFoundException structure as a key-value pair table
+function M.PipelineNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating PipelineNotFoundException")
 	local t = { 
 	}
 	asserts.AssertPipelineNotFoundException(t)
@@ -3056,19 +3374,22 @@ end
 
 --- Create a structure of type PipelineExecution
 -- <p>Represents information about an execution of a pipeline.</p>
--- @param _pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution.</p>
--- @param _pipelineVersion [PipelineVersion] <p>The version number of the pipeline that was executed.</p>
--- @param _pipelineName [PipelineName] <p>The name of the pipeline that was executed.</p>
--- @param _status [PipelineExecutionStatus] <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The pipeline execution is currently running.</p> </li> <li> <p>Succeeded: The pipeline execution completed successfully. </p> </li> <li> <p>Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution caught up and continued through the pipeline instead. </p> </li> <li> <p>Failed: The pipeline execution did not complete successfully.</p> </li> </ul>
--- @param _artifactRevisions [ArtifactRevisionList] <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
-function M.PipelineExecution(_pipelineExecutionId, _pipelineVersion, _pipelineName, _status, _artifactRevisions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineExecution")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the pipeline execution.</p>
+-- * pipelineVersion [PipelineVersion] <p>The version number of the pipeline that was executed.</p>
+-- * pipelineName [PipelineName] <p>The name of the pipeline that was executed.</p>
+-- * status [PipelineExecutionStatus] <p>The status of the pipeline execution.</p> <ul> <li> <p>InProgress: The pipeline execution is currently running.</p> </li> <li> <p>Succeeded: The pipeline execution completed successfully. </p> </li> <li> <p>Superseded: While this pipeline execution was waiting for the next stage to be completed, a newer pipeline execution caught up and continued through the pipeline instead. </p> </li> <li> <p>Failed: The pipeline execution did not complete successfully.</p> </li> </ul>
+-- * artifactRevisions [ArtifactRevisionList] <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
+-- @return PipelineExecution structure as a key-value pair table
+function M.PipelineExecution(args)
+	assert(args, "You must provdide an argument table when creating PipelineExecution")
 	local t = { 
-		["pipelineExecutionId"] = _pipelineExecutionId,
-		["pipelineVersion"] = _pipelineVersion,
-		["pipelineName"] = _pipelineName,
-		["status"] = _status,
-		["artifactRevisions"] = _artifactRevisions,
+		["pipelineExecutionId"] = args["pipelineExecutionId"],
+		["pipelineVersion"] = args["pipelineVersion"],
+		["pipelineName"] = args["pipelineName"],
+		["status"] = args["status"],
+		["artifactRevisions"] = args["artifactRevisions"],
 	}
 	asserts.AssertPipelineExecution(t)
 	return t
@@ -3094,25 +3415,28 @@ end
 
 --- Create a structure of type ThirdPartyJobData
 -- <p>Represents information about the job data for a partner action.</p>
--- @param _inputArtifacts [ArtifactList] <p>The name of the artifact that will be worked upon by the action, if any. This name might be system-generated, such as "MyApp", or might be defined by the user when the action is created. The input artifact name must match the name of an output artifact generated by an action in an earlier action or stage of the pipeline.</p>
--- @param _pipelineContext [PipelineContext] <p>Represents information about a pipeline to a job worker.</p>
--- @param _encryptionKey [EncryptionKey] <p>The encryption key used to encrypt and decrypt data in the artifact store for the pipeline, such as an AWS Key Management Service (AWS KMS) key. This is optional and might not be present.</p>
--- @param _actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
--- @param _outputArtifacts [ArtifactList] <p>The name of the artifact that will be the result of the action, if any. This name might be system-generated, such as "MyBuiltApp", or might be defined by the user when the action is created.</p>
--- @param _actionConfiguration [ActionConfiguration] <p>Represents information about an action configuration.</p>
--- @param _continuationToken [ContinuationToken] <p>A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the job asynchronously.</p>
--- @param _artifactCredentials [AWSSessionCredentials] <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline. </p>
-function M.ThirdPartyJobData(_inputArtifacts, _pipelineContext, _encryptionKey, _actionTypeId, _outputArtifacts, _actionConfiguration, _continuationToken, _artifactCredentials, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThirdPartyJobData")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * inputArtifacts [ArtifactList] <p>The name of the artifact that will be worked upon by the action, if any. This name might be system-generated, such as "MyApp", or might be defined by the user when the action is created. The input artifact name must match the name of an output artifact generated by an action in an earlier action or stage of the pipeline.</p>
+-- * pipelineContext [PipelineContext] <p>Represents information about a pipeline to a job worker.</p>
+-- * encryptionKey [EncryptionKey] <p>The encryption key used to encrypt and decrypt data in the artifact store for the pipeline, such as an AWS Key Management Service (AWS KMS) key. This is optional and might not be present.</p>
+-- * actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
+-- * outputArtifacts [ArtifactList] <p>The name of the artifact that will be the result of the action, if any. This name might be system-generated, such as "MyBuiltApp", or might be defined by the user when the action is created.</p>
+-- * actionConfiguration [ActionConfiguration] <p>Represents information about an action configuration.</p>
+-- * continuationToken [ContinuationToken] <p>A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the job asynchronously.</p>
+-- * artifactCredentials [AWSSessionCredentials] <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline. </p>
+-- @return ThirdPartyJobData structure as a key-value pair table
+function M.ThirdPartyJobData(args)
+	assert(args, "You must provdide an argument table when creating ThirdPartyJobData")
 	local t = { 
-		["inputArtifacts"] = _inputArtifacts,
-		["pipelineContext"] = _pipelineContext,
-		["encryptionKey"] = _encryptionKey,
-		["actionTypeId"] = _actionTypeId,
-		["outputArtifacts"] = _outputArtifacts,
-		["actionConfiguration"] = _actionConfiguration,
-		["continuationToken"] = _continuationToken,
-		["artifactCredentials"] = _artifactCredentials,
+		["inputArtifacts"] = args["inputArtifacts"],
+		["pipelineContext"] = args["pipelineContext"],
+		["encryptionKey"] = args["encryptionKey"],
+		["actionTypeId"] = args["actionTypeId"],
+		["outputArtifacts"] = args["outputArtifacts"],
+		["actionConfiguration"] = args["actionConfiguration"],
+		["continuationToken"] = args["continuationToken"],
+		["artifactCredentials"] = args["artifactCredentials"],
 	}
 	asserts.AssertThirdPartyJobData(t)
 	return t
@@ -3133,14 +3457,17 @@ end
 
 --- Create a structure of type PollForThirdPartyJobsInput
 -- <p>Represents the input of a poll for third party jobs action.</p>
--- @param _actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
--- @param _maxBatchSize [MaxBatchSize] <p>The maximum number of jobs to return in a poll for jobs call.</p>
--- Required parameter: actionTypeId
-function M.PollForThirdPartyJobsInput(_actionTypeId, _maxBatchSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PollForThirdPartyJobsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * actionTypeId [ActionTypeId] <p>Represents information about an action type.</p>
+-- * maxBatchSize [MaxBatchSize] <p>The maximum number of jobs to return in a poll for jobs call.</p>
+-- Required key: actionTypeId
+-- @return PollForThirdPartyJobsInput structure as a key-value pair table
+function M.PollForThirdPartyJobsInput(args)
+	assert(args, "You must provdide an argument table when creating PollForThirdPartyJobsInput")
 	local t = { 
-		["actionTypeId"] = _actionTypeId,
-		["maxBatchSize"] = _maxBatchSize,
+		["actionTypeId"] = args["actionTypeId"],
+		["maxBatchSize"] = args["maxBatchSize"],
 	}
 	asserts.AssertPollForThirdPartyJobsInput(t)
 	return t
@@ -3158,8 +3485,11 @@ end
 
 --- Create a structure of type PipelineExecutionNotFoundException
 -- <p>The pipeline execution was specified in an invalid format or cannot be found, or an execution ID does not belong to the specified pipeline. </p>
-function M.PipelineExecutionNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineExecutionNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PipelineExecutionNotFoundException structure as a key-value pair table
+function M.PipelineExecutionNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating PipelineExecutionNotFoundException")
 	local t = { 
 	}
 	asserts.AssertPipelineExecutionNotFoundException(t)
@@ -3180,13 +3510,16 @@ end
 
 --- Create a structure of type ListActionTypesInput
 -- <p>Represents the input of a list action types action.</p>
--- @param _nextToken [NextToken] <p>An identifier that was returned from the previous list action types call, which can be used to return the next set of action types in the list.</p>
--- @param _actionOwnerFilter [ActionOwner] <p>Filters the list of action types to those created by a specified entity.</p>
-function M.ListActionTypesInput(_nextToken, _actionOwnerFilter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListActionTypesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>An identifier that was returned from the previous list action types call, which can be used to return the next set of action types in the list.</p>
+-- * actionOwnerFilter [ActionOwner] <p>Filters the list of action types to those created by a specified entity.</p>
+-- @return ListActionTypesInput structure as a key-value pair table
+function M.ListActionTypesInput(args)
+	assert(args, "You must provdide an argument table when creating ListActionTypesInput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["actionOwnerFilter"] = _actionOwnerFilter,
+		["nextToken"] = args["nextToken"],
+		["actionOwnerFilter"] = args["actionOwnerFilter"],
 	}
 	asserts.AssertListActionTypesInput(t)
 	return t

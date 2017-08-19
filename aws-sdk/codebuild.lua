@@ -35,13 +35,16 @@ end
 
 --- Create a structure of type EnvironmentPlatform
 -- <p>A set of Docker images that are related by platform and are managed by AWS CodeBuild.</p>
--- @param _languages [EnvironmentLanguages] <p>The list of programming languages that are available for the specified platform.</p>
--- @param _platform [PlatformType] <p>The platform's name.</p>
-function M.EnvironmentPlatform(_languages, _platform, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentPlatform")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * languages [EnvironmentLanguages] <p>The list of programming languages that are available for the specified platform.</p>
+-- * platform [PlatformType] <p>The platform's name.</p>
+-- @return EnvironmentPlatform structure as a key-value pair table
+function M.EnvironmentPlatform(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentPlatform")
 	local t = { 
-		["languages"] = _languages,
-		["platform"] = _platform,
+		["languages"] = args["languages"],
+		["platform"] = args["platform"],
 	}
 	asserts.AssertEnvironmentPlatform(t)
 	return t
@@ -60,11 +63,14 @@ end
 
 --- Create a structure of type CreateProjectOutput
 --  
--- @param _project [Project] <p>Information about the build project that was created.</p>
-function M.CreateProjectOutput(_project, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateProjectOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * project [Project] <p>Information about the build project that was created.</p>
+-- @return CreateProjectOutput structure as a key-value pair table
+function M.CreateProjectOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateProjectOutput")
 	local t = { 
-		["project"] = _project,
+		["project"] = args["project"],
 	}
 	asserts.AssertCreateProjectOutput(t)
 	return t
@@ -83,11 +89,14 @@ end
 
 --- Create a structure of type StartBuildOutput
 --  
--- @param _build [Build] <p>Information about the build to be run.</p>
-function M.StartBuildOutput(_build, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartBuildOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * build [Build] <p>Information about the build to be run.</p>
+-- @return StartBuildOutput structure as a key-value pair table
+function M.StartBuildOutput(args)
+	assert(args, "You must provdide an argument table when creating StartBuildOutput")
 	local t = { 
-		["build"] = _build,
+		["build"] = args["build"],
 	}
 	asserts.AssertStartBuildOutput(t)
 	return t
@@ -106,11 +115,14 @@ end
 
 --- Create a structure of type ListCuratedEnvironmentImagesOutput
 --  
--- @param _platforms [EnvironmentPlatforms] <p>Information about supported platforms for Docker images that are managed by AWS CodeBuild.</p>
-function M.ListCuratedEnvironmentImagesOutput(_platforms, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCuratedEnvironmentImagesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * platforms [EnvironmentPlatforms] <p>Information about supported platforms for Docker images that are managed by AWS CodeBuild.</p>
+-- @return ListCuratedEnvironmentImagesOutput structure as a key-value pair table
+function M.ListCuratedEnvironmentImagesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListCuratedEnvironmentImagesOutput")
 	local t = { 
-		["platforms"] = _platforms,
+		["platforms"] = args["platforms"],
 	}
 	asserts.AssertListCuratedEnvironmentImagesOutput(t)
 	return t
@@ -144,41 +156,44 @@ end
 
 --- Create a structure of type Build
 -- <p>Information about a build.</p>
--- @param _environment [ProjectEnvironment] <p>Information about the build environment for this build.</p>
--- @param _phases [BuildPhases] <p>Information about all previous build phases that are completed and information about any current build phase that is not yet complete.</p>
--- @param _buildComplete [Boolean] <p>Whether the build has finished. True if completed; otherwise, false.</p>
--- @param _logs [LogsLocation] <p>Information about the build's logs in Amazon CloudWatch Logs.</p>
--- @param _artifacts [BuildArtifacts] <p>Information about the output artifacts for the build.</p>
--- @param _projectName [NonEmptyString] <p>The name of the build project.</p>
--- @param _timeoutInMinutes [WrapperInt] <p>How long, in minutes, for AWS CodeBuild to wait before timing out this build if it does not get marked as completed.</p>
--- @param _initiator [String] <p>The entity that started the build. Valid values include:</p> <ul> <li> <p>If AWS CodePipeline started the build, the pipeline's name (for example, <code>codepipeline/my-demo-pipeline</code>).</p> </li> <li> <p>If an AWS Identity and Access Management (IAM) user started the build, the user's name (for example <code>MyUserName</code>).</p> </li> <li> <p>If the Jenkins plugin for AWS CodeBuild started the build, the string <code>CodeBuild-Jenkins-Plugin</code>.</p> </li> </ul>
--- @param _buildStatus [StatusType] <p>The current status of the build. Valid values include:</p> <ul> <li> <p> <code>FAILED</code>: The build failed.</p> </li> <li> <p> <code>FAULT</code>: The build faulted.</p> </li> <li> <p> <code>IN_PROGRESS</code>: The build is still in progress.</p> </li> <li> <p> <code>STOPPED</code>: The build stopped.</p> </li> <li> <p> <code>SUCCEEDED</code>: The build succeeded.</p> </li> <li> <p> <code>TIMED_OUT</code>: The build timed out.</p> </li> </ul>
--- @param _sourceVersion [NonEmptyString] <p>Any version identifier for the version of the source code to be built.</p>
--- @param _source [ProjectSource] <p>Information about the source code to be built.</p>
--- @param _currentPhase [String] <p>The current build phase.</p>
--- @param _startTime [Timestamp] <p>When the build process started, expressed in Unix time format.</p>
--- @param _endTime [Timestamp] <p>When the build process ended, expressed in Unix time format.</p>
--- @param _id [NonEmptyString] <p>The unique ID for the build.</p>
--- @param _arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the build.</p>
-function M.Build(_environment, _phases, _buildComplete, _logs, _artifacts, _projectName, _timeoutInMinutes, _initiator, _buildStatus, _sourceVersion, _source, _currentPhase, _startTime, _endTime, _id, _arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Build")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * environment [ProjectEnvironment] <p>Information about the build environment for this build.</p>
+-- * phases [BuildPhases] <p>Information about all previous build phases that are completed and information about any current build phase that is not yet complete.</p>
+-- * buildComplete [Boolean] <p>Whether the build has finished. True if completed; otherwise, false.</p>
+-- * logs [LogsLocation] <p>Information about the build's logs in Amazon CloudWatch Logs.</p>
+-- * artifacts [BuildArtifacts] <p>Information about the output artifacts for the build.</p>
+-- * projectName [NonEmptyString] <p>The name of the build project.</p>
+-- * timeoutInMinutes [WrapperInt] <p>How long, in minutes, for AWS CodeBuild to wait before timing out this build if it does not get marked as completed.</p>
+-- * initiator [String] <p>The entity that started the build. Valid values include:</p> <ul> <li> <p>If AWS CodePipeline started the build, the pipeline's name (for example, <code>codepipeline/my-demo-pipeline</code>).</p> </li> <li> <p>If an AWS Identity and Access Management (IAM) user started the build, the user's name (for example <code>MyUserName</code>).</p> </li> <li> <p>If the Jenkins plugin for AWS CodeBuild started the build, the string <code>CodeBuild-Jenkins-Plugin</code>.</p> </li> </ul>
+-- * buildStatus [StatusType] <p>The current status of the build. Valid values include:</p> <ul> <li> <p> <code>FAILED</code>: The build failed.</p> </li> <li> <p> <code>FAULT</code>: The build faulted.</p> </li> <li> <p> <code>IN_PROGRESS</code>: The build is still in progress.</p> </li> <li> <p> <code>STOPPED</code>: The build stopped.</p> </li> <li> <p> <code>SUCCEEDED</code>: The build succeeded.</p> </li> <li> <p> <code>TIMED_OUT</code>: The build timed out.</p> </li> </ul>
+-- * sourceVersion [NonEmptyString] <p>Any version identifier for the version of the source code to be built.</p>
+-- * source [ProjectSource] <p>Information about the source code to be built.</p>
+-- * currentPhase [String] <p>The current build phase.</p>
+-- * startTime [Timestamp] <p>When the build process started, expressed in Unix time format.</p>
+-- * endTime [Timestamp] <p>When the build process ended, expressed in Unix time format.</p>
+-- * id [NonEmptyString] <p>The unique ID for the build.</p>
+-- * arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the build.</p>
+-- @return Build structure as a key-value pair table
+function M.Build(args)
+	assert(args, "You must provdide an argument table when creating Build")
 	local t = { 
-		["environment"] = _environment,
-		["phases"] = _phases,
-		["buildComplete"] = _buildComplete,
-		["logs"] = _logs,
-		["artifacts"] = _artifacts,
-		["projectName"] = _projectName,
-		["timeoutInMinutes"] = _timeoutInMinutes,
-		["initiator"] = _initiator,
-		["buildStatus"] = _buildStatus,
-		["sourceVersion"] = _sourceVersion,
-		["source"] = _source,
-		["currentPhase"] = _currentPhase,
-		["startTime"] = _startTime,
-		["endTime"] = _endTime,
-		["id"] = _id,
-		["arn"] = _arn,
+		["environment"] = args["environment"],
+		["phases"] = args["phases"],
+		["buildComplete"] = args["buildComplete"],
+		["logs"] = args["logs"],
+		["artifacts"] = args["artifacts"],
+		["projectName"] = args["projectName"],
+		["timeoutInMinutes"] = args["timeoutInMinutes"],
+		["initiator"] = args["initiator"],
+		["buildStatus"] = args["buildStatus"],
+		["sourceVersion"] = args["sourceVersion"],
+		["source"] = args["source"],
+		["currentPhase"] = args["currentPhase"],
+		["startTime"] = args["startTime"],
+		["endTime"] = args["endTime"],
+		["id"] = args["id"],
+		["arn"] = args["arn"],
 	}
 	asserts.AssertBuild(t)
 	return t
@@ -198,13 +213,16 @@ end
 
 --- Create a structure of type PhaseContext
 -- <p>Additional information about a build phase that has an error. You can use this information to help troubleshoot a failed build.</p>
--- @param _message [String] <p>An explanation of the build phase's context. This explanation might include a command ID and an exit code.</p>
--- @param _statusCode [String] <p>The status code for the context of the build phase.</p>
-function M.PhaseContext(_message, _statusCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PhaseContext")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>An explanation of the build phase's context. This explanation might include a command ID and an exit code.</p>
+-- * statusCode [String] <p>The status code for the context of the build phase.</p>
+-- @return PhaseContext structure as a key-value pair table
+function M.PhaseContext(args)
+	assert(args, "You must provdide an argument table when creating PhaseContext")
 	local t = { 
-		["message"] = _message,
-		["statusCode"] = _statusCode,
+		["message"] = args["message"],
+		["statusCode"] = args["statusCode"],
 	}
 	asserts.AssertPhaseContext(t)
 	return t
@@ -224,12 +242,15 @@ end
 
 --- Create a structure of type StopBuildInput
 --  
--- @param _id [NonEmptyString] <p>The ID of the build.</p>
--- Required parameter: id
-function M.StopBuildInput(_id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopBuildInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * id [NonEmptyString] <p>The ID of the build.</p>
+-- Required key: id
+-- @return StopBuildInput structure as a key-value pair table
+function M.StopBuildInput(args)
+	assert(args, "You must provdide an argument table when creating StopBuildInput")
 	local t = { 
-		["id"] = _id,
+		["id"] = args["id"],
 	}
 	asserts.AssertStopBuildInput(t)
 	return t
@@ -248,11 +269,14 @@ end
 
 --- Create a structure of type UpdateProjectOutput
 --  
--- @param _project [Project] <p>Information about the build project that was changed.</p>
-function M.UpdateProjectOutput(_project, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProjectOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * project [Project] <p>Information about the build project that was changed.</p>
+-- @return UpdateProjectOutput structure as a key-value pair table
+function M.UpdateProjectOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateProjectOutput")
 	local t = { 
-		["project"] = _project,
+		["project"] = args["project"],
 	}
 	asserts.AssertUpdateProjectOutput(t)
 	return t
@@ -275,18 +299,21 @@ end
 
 --- Create a structure of type ProjectSource
 -- <p>Information about the build input source code for the build project.</p>
--- @param _buildspec [String] <p>The build spec declaration to use for the builds in this build project.</p> <p>If this value is not specified, a build spec must be included along with the source code to be built.</p>
--- @param _type [SourceType] <p>The type of repository that contains the source code to be built. Valid values include:</p> <ul> <li> <p> <code>CODECOMMIT</code>: The source code is in an AWS CodeCommit repository.</p> </li> <li> <p> <code>CODEPIPELINE</code>: The source code settings are specified in the source action of a pipeline in AWS CodePipeline.</p> </li> <li> <p> <code>GITHUB</code>: The source code is in a GitHub repository.</p> </li> <li> <p> <code>S3</code>: The source code is in an Amazon Simple Storage Service (Amazon S3) input bucket.</p> </li> </ul>
--- @param _location [String] <p>Information about the location of the source code to be built. Valid values include:</p> <ul> <li> <p>For source code settings that are specified in the source action of a pipeline in AWS CodePipeline, <code>location</code> should not be specified. If it is specified, AWS CodePipeline will ignore it. This is because AWS CodePipeline uses the settings in a pipeline's source action instead of this value.</p> </li> <li> <p>For source code in an AWS CodeCommit repository, the HTTPS clone URL to the repository that contains the source code and the build spec (for example, <code>https://git-codecommit.<i>region-ID</i>.amazonaws.com/v1/repos/<i>repo-name</i> </code>).</p> </li> <li> <p>For source code in an Amazon Simple Storage Service (Amazon S3) input bucket, the path to the ZIP file that contains the source code (for example, <code> <i>bucket-name</i>/<i>path</i>/<i>to</i>/<i>object-name</i>.zip</code>)</p> </li> <li> <p>For source code in a GitHub repository, the HTTPS clone URL to the repository that contains the source and the build spec. Also, you must connect your AWS account to your GitHub account. To do this, use the AWS CodeBuild console to begin creating a build project. When you use the console to connect (or reconnect) with GitHub, on the GitHub <b>Authorize application</b> page that displays, for <b>Organization access</b>, choose <b>Request access</b> next to each repository you want to allow AWS CodeBuild to have access to. Then choose <b>Authorize application</b>. (After you have connected to your GitHub account, you do not need to finish creating the build project, and you may then leave the AWS CodeBuild console.) To instruct AWS CodeBuild to then use this connection, in the <code>source</code> object, set the <code>auth</code> object's <code>type</code> value to <code>OAUTH</code>.</p> </li> </ul>
--- @param _auth [SourceAuth] <p>Information about the authorization settings for AWS CodeBuild to access the source code to be built.</p> <p>This information is for the AWS CodeBuild console's use only. Your code should not get or set this information directly (unless the build project's source <code>type</code> value is <code>GITHUB</code>).</p>
--- Required parameter: type
-function M.ProjectSource(_buildspec, _type, _location, _auth, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProjectSource")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * buildspec [String] <p>The build spec declaration to use for the builds in this build project.</p> <p>If this value is not specified, a build spec must be included along with the source code to be built.</p>
+-- * type [SourceType] <p>The type of repository that contains the source code to be built. Valid values include:</p> <ul> <li> <p> <code>CODECOMMIT</code>: The source code is in an AWS CodeCommit repository.</p> </li> <li> <p> <code>CODEPIPELINE</code>: The source code settings are specified in the source action of a pipeline in AWS CodePipeline.</p> </li> <li> <p> <code>GITHUB</code>: The source code is in a GitHub repository.</p> </li> <li> <p> <code>S3</code>: The source code is in an Amazon Simple Storage Service (Amazon S3) input bucket.</p> </li> </ul>
+-- * location [String] <p>Information about the location of the source code to be built. Valid values include:</p> <ul> <li> <p>For source code settings that are specified in the source action of a pipeline in AWS CodePipeline, <code>location</code> should not be specified. If it is specified, AWS CodePipeline will ignore it. This is because AWS CodePipeline uses the settings in a pipeline's source action instead of this value.</p> </li> <li> <p>For source code in an AWS CodeCommit repository, the HTTPS clone URL to the repository that contains the source code and the build spec (for example, <code>https://git-codecommit.<i>region-ID</i>.amazonaws.com/v1/repos/<i>repo-name</i> </code>).</p> </li> <li> <p>For source code in an Amazon Simple Storage Service (Amazon S3) input bucket, the path to the ZIP file that contains the source code (for example, <code> <i>bucket-name</i>/<i>path</i>/<i>to</i>/<i>object-name</i>.zip</code>)</p> </li> <li> <p>For source code in a GitHub repository, the HTTPS clone URL to the repository that contains the source and the build spec. Also, you must connect your AWS account to your GitHub account. To do this, use the AWS CodeBuild console to begin creating a build project. When you use the console to connect (or reconnect) with GitHub, on the GitHub <b>Authorize application</b> page that displays, for <b>Organization access</b>, choose <b>Request access</b> next to each repository you want to allow AWS CodeBuild to have access to. Then choose <b>Authorize application</b>. (After you have connected to your GitHub account, you do not need to finish creating the build project, and you may then leave the AWS CodeBuild console.) To instruct AWS CodeBuild to then use this connection, in the <code>source</code> object, set the <code>auth</code> object's <code>type</code> value to <code>OAUTH</code>.</p> </li> </ul>
+-- * auth [SourceAuth] <p>Information about the authorization settings for AWS CodeBuild to access the source code to be built.</p> <p>This information is for the AWS CodeBuild console's use only. Your code should not get or set this information directly (unless the build project's source <code>type</code> value is <code>GITHUB</code>).</p>
+-- Required key: type
+-- @return ProjectSource structure as a key-value pair table
+function M.ProjectSource(args)
+	assert(args, "You must provdide an argument table when creating ProjectSource")
 	local t = { 
-		["buildspec"] = _buildspec,
-		["type"] = _type,
-		["location"] = _location,
-		["auth"] = _auth,
+		["buildspec"] = args["buildspec"],
+		["type"] = args["type"],
+		["location"] = args["location"],
+		["auth"] = args["auth"],
 	}
 	asserts.AssertProjectSource(t)
 	return t
@@ -307,15 +334,18 @@ end
 
 --- Create a structure of type LogsLocation
 -- <p>Information about build logs in Amazon CloudWatch Logs.</p>
--- @param _groupName [String] <p>The name of the Amazon CloudWatch Logs group for the build logs.</p>
--- @param _deepLink [String] <p>The URL to an individual build log in Amazon CloudWatch Logs.</p>
--- @param _streamName [String] <p>The name of the Amazon CloudWatch Logs stream for the build logs.</p>
-function M.LogsLocation(_groupName, _deepLink, _streamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LogsLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * groupName [String] <p>The name of the Amazon CloudWatch Logs group for the build logs.</p>
+-- * deepLink [String] <p>The URL to an individual build log in Amazon CloudWatch Logs.</p>
+-- * streamName [String] <p>The name of the Amazon CloudWatch Logs stream for the build logs.</p>
+-- @return LogsLocation structure as a key-value pair table
+function M.LogsLocation(args)
+	assert(args, "You must provdide an argument table when creating LogsLocation")
 	local t = { 
-		["groupName"] = _groupName,
-		["deepLink"] = _deepLink,
-		["streamName"] = _streamName,
+		["groupName"] = args["groupName"],
+		["deepLink"] = args["deepLink"],
+		["streamName"] = args["streamName"],
 	}
 	asserts.AssertLogsLocation(t)
 	return t
@@ -336,15 +366,18 @@ end
 
 --- Create a structure of type ListProjectsInput
 --  
--- @param _nextToken [NonEmptyString] <p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
--- @param _sortBy [ProjectSortByType] <p>The criterion to be used to list build project names. Valid values include:</p> <ul> <li> <p> <code>CREATED_TIME</code>: List the build project names based on when each build project was created.</p> </li> <li> <p> <code>LAST_MODIFIED_TIME</code>: List the build project names based on when information about each build project was last changed.</p> </li> <li> <p> <code>NAME</code>: List the build project names based on each build project's name.</p> </li> </ul> <p>Use <code>sortOrder</code> to specify in what order to list the build project names based on the preceding criteria.</p>
--- @param _sortOrder [SortOrderType] <p>The order in which to list build projects. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build project names in ascending order.</p> </li> <li> <p> <code>DESCENDING</code>: List the build project names in descending order.</p> </li> </ul> <p>Use <code>sortBy</code> to specify the criterion to be used to list build project names.</p>
-function M.ListProjectsInput(_nextToken, _sortBy, _sortOrder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListProjectsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NonEmptyString] <p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
+-- * sortBy [ProjectSortByType] <p>The criterion to be used to list build project names. Valid values include:</p> <ul> <li> <p> <code>CREATED_TIME</code>: List the build project names based on when each build project was created.</p> </li> <li> <p> <code>LAST_MODIFIED_TIME</code>: List the build project names based on when information about each build project was last changed.</p> </li> <li> <p> <code>NAME</code>: List the build project names based on each build project's name.</p> </li> </ul> <p>Use <code>sortOrder</code> to specify in what order to list the build project names based on the preceding criteria.</p>
+-- * sortOrder [SortOrderType] <p>The order in which to list build projects. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build project names in ascending order.</p> </li> <li> <p> <code>DESCENDING</code>: List the build project names in descending order.</p> </li> </ul> <p>Use <code>sortBy</code> to specify the criterion to be used to list build project names.</p>
+-- @return ListProjectsInput structure as a key-value pair table
+function M.ListProjectsInput(args)
+	assert(args, "You must provdide an argument table when creating ListProjectsInput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["sortBy"] = _sortBy,
-		["sortOrder"] = _sortOrder,
+		["nextToken"] = args["nextToken"],
+		["sortBy"] = args["sortBy"],
+		["sortOrder"] = args["sortOrder"],
 	}
 	asserts.AssertListProjectsInput(t)
 	return t
@@ -368,21 +401,24 @@ end
 
 --- Create a structure of type BuildPhase
 -- <p>Information about a stage for a build.</p>
--- @param _contexts [PhaseContexts] <p>Additional information about a build phase, especially to help troubleshoot a failed build.</p>
--- @param _phaseType [BuildPhaseType] <p>The name of the build phase. Valid values include:</p> <ul> <li> <p> <code>BUILD</code>: Core build activities typically occur in this build phase.</p> </li> <li> <p> <code>COMPLETED</code>: The build has been completed.</p> </li> <li> <p> <code>DOWNLOAD_SOURCE</code>: Source code is being downloaded in this build phase.</p> </li> <li> <p> <code>FINALIZING</code>: The build process is completing in this build phase.</p> </li> <li> <p> <code>INSTALL</code>: Installation activities typically occur in this build phase.</p> </li> <li> <p> <code>POST_BUILD</code>: Post-build activities typically occur in this build phase.</p> </li> <li> <p> <code>PRE_BUILD</code>: Pre-build activities typically occur in this build phase.</p> </li> <li> <p> <code>PROVISIONING</code>: The build environment is being set up.</p> </li> <li> <p> <code>SUBMITTED</code>: The build has been submitted.</p> </li> <li> <p> <code>UPLOAD_ARTIFACTS</code>: Build output artifacts are being uploaded to the output location.</p> </li> </ul>
--- @param _phaseStatus [StatusType] <p>The current status of the build phase. Valid values include:</p> <ul> <li> <p> <code>FAILED</code>: The build phase failed.</p> </li> <li> <p> <code>FAULT</code>: The build phase faulted.</p> </li> <li> <p> <code>IN_PROGRESS</code>: The build phase is still in progress.</p> </li> <li> <p> <code>STOPPED</code>: The build phase stopped.</p> </li> <li> <p> <code>SUCCEEDED</code>: The build phase succeeded.</p> </li> <li> <p> <code>TIMED_OUT</code>: The build phase timed out.</p> </li> </ul>
--- @param _durationInSeconds [WrapperLong] <p>How long, in seconds, between the starting and ending times of the build's phase.</p>
--- @param _startTime [Timestamp] <p>When the build phase started, expressed in Unix time format.</p>
--- @param _endTime [Timestamp] <p>When the build phase ended, expressed in Unix time format.</p>
-function M.BuildPhase(_contexts, _phaseType, _phaseStatus, _durationInSeconds, _startTime, _endTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BuildPhase")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * contexts [PhaseContexts] <p>Additional information about a build phase, especially to help troubleshoot a failed build.</p>
+-- * phaseType [BuildPhaseType] <p>The name of the build phase. Valid values include:</p> <ul> <li> <p> <code>BUILD</code>: Core build activities typically occur in this build phase.</p> </li> <li> <p> <code>COMPLETED</code>: The build has been completed.</p> </li> <li> <p> <code>DOWNLOAD_SOURCE</code>: Source code is being downloaded in this build phase.</p> </li> <li> <p> <code>FINALIZING</code>: The build process is completing in this build phase.</p> </li> <li> <p> <code>INSTALL</code>: Installation activities typically occur in this build phase.</p> </li> <li> <p> <code>POST_BUILD</code>: Post-build activities typically occur in this build phase.</p> </li> <li> <p> <code>PRE_BUILD</code>: Pre-build activities typically occur in this build phase.</p> </li> <li> <p> <code>PROVISIONING</code>: The build environment is being set up.</p> </li> <li> <p> <code>SUBMITTED</code>: The build has been submitted.</p> </li> <li> <p> <code>UPLOAD_ARTIFACTS</code>: Build output artifacts are being uploaded to the output location.</p> </li> </ul>
+-- * phaseStatus [StatusType] <p>The current status of the build phase. Valid values include:</p> <ul> <li> <p> <code>FAILED</code>: The build phase failed.</p> </li> <li> <p> <code>FAULT</code>: The build phase faulted.</p> </li> <li> <p> <code>IN_PROGRESS</code>: The build phase is still in progress.</p> </li> <li> <p> <code>STOPPED</code>: The build phase stopped.</p> </li> <li> <p> <code>SUCCEEDED</code>: The build phase succeeded.</p> </li> <li> <p> <code>TIMED_OUT</code>: The build phase timed out.</p> </li> </ul>
+-- * durationInSeconds [WrapperLong] <p>How long, in seconds, between the starting and ending times of the build's phase.</p>
+-- * startTime [Timestamp] <p>When the build phase started, expressed in Unix time format.</p>
+-- * endTime [Timestamp] <p>When the build phase ended, expressed in Unix time format.</p>
+-- @return BuildPhase structure as a key-value pair table
+function M.BuildPhase(args)
+	assert(args, "You must provdide an argument table when creating BuildPhase")
 	local t = { 
-		["contexts"] = _contexts,
-		["phaseType"] = _phaseType,
-		["phaseStatus"] = _phaseStatus,
-		["durationInSeconds"] = _durationInSeconds,
-		["startTime"] = _startTime,
-		["endTime"] = _endTime,
+		["contexts"] = args["contexts"],
+		["phaseType"] = args["phaseType"],
+		["phaseStatus"] = args["phaseStatus"],
+		["durationInSeconds"] = args["durationInSeconds"],
+		["startTime"] = args["startTime"],
+		["endTime"] = args["endTime"],
 	}
 	asserts.AssertBuildPhase(t)
 	return t
@@ -402,12 +438,15 @@ end
 
 --- Create a structure of type BatchGetBuildsInput
 --  
--- @param _ids [BuildIds] <p>The IDs of the builds.</p>
--- Required parameter: ids
-function M.BatchGetBuildsInput(_ids, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetBuildsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ids [BuildIds] <p>The IDs of the builds.</p>
+-- Required key: ids
+-- @return BatchGetBuildsInput structure as a key-value pair table
+function M.BatchGetBuildsInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetBuildsInput")
 	local t = { 
-		["ids"] = _ids,
+		["ids"] = args["ids"],
 	}
 	asserts.AssertBatchGetBuildsInput(t)
 	return t
@@ -427,13 +466,16 @@ end
 
 --- Create a structure of type ListBuildsInput
 --  
--- @param _nextToken [String] <p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
--- @param _sortOrder [SortOrderType] <p>The order to list build IDs. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build IDs in ascending order by build ID.</p> </li> <li> <p> <code>DESCENDING</code>: List the build IDs in descending order by build ID.</p> </li> </ul>
-function M.ListBuildsInput(_nextToken, _sortOrder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
+-- * sortOrder [SortOrderType] <p>The order to list build IDs. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build IDs in ascending order by build ID.</p> </li> <li> <p> <code>DESCENDING</code>: List the build IDs in descending order by build ID.</p> </li> </ul>
+-- @return ListBuildsInput structure as a key-value pair table
+function M.ListBuildsInput(args)
+	assert(args, "You must provdide an argument table when creating ListBuildsInput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["sortOrder"] = _sortOrder,
+		["nextToken"] = args["nextToken"],
+		["sortOrder"] = args["sortOrder"],
 	}
 	asserts.AssertListBuildsInput(t)
 	return t
@@ -451,8 +493,11 @@ end
 
 --- Create a structure of type DeleteProjectOutput
 --  
-function M.DeleteProjectOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProjectOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteProjectOutput structure as a key-value pair table
+function M.DeleteProjectOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteProjectOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteProjectOutput(t)
@@ -481,28 +526,31 @@ end
 
 --- Create a structure of type UpdateProjectInput
 --  
--- @param _name [NonEmptyString] <p>The name of the build project.</p> <note> <p>You cannot change a build project's name.</p> </note>
--- @param _serviceRole [NonEmptyString] <p>The replacement ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
--- @param _tags [TagList] <p>The replacement set of tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
--- @param _artifacts [ProjectArtifacts] <p>Information to be changed about the build output artifacts for the build project.</p>
--- @param _timeoutInMinutes [TimeOut] <p>The replacement value in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed.</p>
--- @param _environment [ProjectEnvironment] <p>Information to be changed about the build environment for the build project.</p>
--- @param _source [ProjectSource] <p>Information to be changed about the build input source code for the build project.</p>
--- @param _encryptionKey [NonEmptyString] <p>The replacement AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
--- @param _description [ProjectDescription] <p>A new or replacement description of the build project.</p>
--- Required parameter: name
-function M.UpdateProjectInput(_name, _serviceRole, _tags, _artifacts, _timeoutInMinutes, _environment, _source, _encryptionKey, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProjectInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [NonEmptyString] <p>The name of the build project.</p> <note> <p>You cannot change a build project's name.</p> </note>
+-- * serviceRole [NonEmptyString] <p>The replacement ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
+-- * tags [TagList] <p>The replacement set of tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
+-- * artifacts [ProjectArtifacts] <p>Information to be changed about the build output artifacts for the build project.</p>
+-- * timeoutInMinutes [TimeOut] <p>The replacement value in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed.</p>
+-- * environment [ProjectEnvironment] <p>Information to be changed about the build environment for the build project.</p>
+-- * source [ProjectSource] <p>Information to be changed about the build input source code for the build project.</p>
+-- * encryptionKey [NonEmptyString] <p>The replacement AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
+-- * description [ProjectDescription] <p>A new or replacement description of the build project.</p>
+-- Required key: name
+-- @return UpdateProjectInput structure as a key-value pair table
+function M.UpdateProjectInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateProjectInput")
 	local t = { 
-		["name"] = _name,
-		["serviceRole"] = _serviceRole,
-		["tags"] = _tags,
-		["artifacts"] = _artifacts,
-		["timeoutInMinutes"] = _timeoutInMinutes,
-		["environment"] = _environment,
-		["source"] = _source,
-		["encryptionKey"] = _encryptionKey,
-		["description"] = _description,
+		["name"] = args["name"],
+		["serviceRole"] = args["serviceRole"],
+		["tags"] = args["tags"],
+		["artifacts"] = args["artifacts"],
+		["timeoutInMinutes"] = args["timeoutInMinutes"],
+		["environment"] = args["environment"],
+		["source"] = args["source"],
+		["encryptionKey"] = args["encryptionKey"],
+		["description"] = args["description"],
 	}
 	asserts.AssertUpdateProjectInput(t)
 	return t
@@ -522,13 +570,16 @@ end
 
 --- Create a structure of type BatchGetBuildsOutput
 --  
--- @param _buildsNotFound [BuildIds] <p>The IDs of builds for which information could not be found.</p>
--- @param _builds [Builds] <p>Information about the requested builds.</p>
-function M.BatchGetBuildsOutput(_buildsNotFound, _builds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetBuildsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * buildsNotFound [BuildIds] <p>The IDs of builds for which information could not be found.</p>
+-- * builds [Builds] <p>Information about the requested builds.</p>
+-- @return BatchGetBuildsOutput structure as a key-value pair table
+function M.BatchGetBuildsOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetBuildsOutput")
 	local t = { 
-		["buildsNotFound"] = _buildsNotFound,
-		["builds"] = _builds,
+		["buildsNotFound"] = args["buildsNotFound"],
+		["builds"] = args["builds"],
 	}
 	asserts.AssertBatchGetBuildsOutput(t)
 	return t
@@ -553,22 +604,25 @@ end
 
 --- Create a structure of type ProjectArtifacts
 -- <p>Information about the build output artifacts for the build project.</p>
--- @param _packaging [ArtifactPackaging] <p>The type of build output artifact to create, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output artifacts instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, valid values include:</p> <ul> <li> <p> <code>NONE</code>: AWS CodeBuild will create in the output bucket a folder containing the build output. This is the default if <code>packaging</code> is not specified.</p> </li> <li> <p> <code>ZIP</code>: AWS CodeBuild will create in the output bucket a ZIP file containing the build output.</p> </li> </ul> </li> </ul>
--- @param _name [String] <p>Along with <code>path</code> and <code>namespaceType</code>, the pattern that AWS CodeBuild will use to name and store the output artifact, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, this is the name of the output artifact object.</p> </li> </ul> <p>For example, if <code>path</code> is set to <code>MyArtifacts</code>, <code>namespaceType</code> is set to <code>BUILD_ID</code>, and <code>name</code> is set to <code>MyArtifact.zip</code>, then the output artifact would be stored in <code>MyArtifacts/<i>build-ID</i>/MyArtifact.zip</code>.</p>
--- @param _namespaceType [ArtifactNamespace] <p>Along with <code>path</code> and <code>name</code>, the pattern that AWS CodeBuild will use to determine the name and location to store the output artifact, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, then valid values include:</p> <ul> <li> <p> <code>BUILD_ID</code>: Include the build ID in the location of the build output artifact.</p> </li> <li> <p> <code>NONE</code>: Do not include the build ID. This is the default if <code>namespaceType</code> is not specified.</p> </li> </ul> </li> </ul> <p>For example, if <code>path</code> is set to <code>MyArtifacts</code>, <code>namespaceType</code> is set to <code>BUILD_ID</code>, and <code>name</code> is set to <code>MyArtifact.zip</code>, then the output artifact would be stored in <code>MyArtifacts/<i>build-ID</i>/MyArtifact.zip</code>.</p>
--- @param _location [String] <p>Information about the build output artifact location, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output locations instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, this is the name of the output bucket.</p> </li> </ul>
--- @param _path [String] <p>Along with <code>namespaceType</code> and <code>name</code>, the pattern that AWS CodeBuild will use to name and store the output artifact, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, this is the path to the output artifact. If <code>path</code> is not specified, then <code>path</code> will not be used.</p> </li> </ul> <p>For example, if <code>path</code> is set to <code>MyArtifacts</code>, <code>namespaceType</code> is set to <code>NONE</code>, and <code>name</code> is set to <code>MyArtifact.zip</code>, then the output artifact would be stored in the output bucket at <code>MyArtifacts/MyArtifact.zip</code>.</p>
--- @param _type [ArtifactsType] <p>The type of build output artifact. Valid values include:</p> <ul> <li> <p> <code>CODEPIPELINE</code>: The build project will have build output generated through AWS CodePipeline.</p> </li> <li> <p> <code>NO_ARTIFACTS</code>: The build project will not produce any build output.</p> </li> <li> <p> <code>S3</code>: The build project will store build output in Amazon Simple Storage Service (Amazon S3).</p> </li> </ul>
--- Required parameter: type
-function M.ProjectArtifacts(_packaging, _name, _namespaceType, _location, _path, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProjectArtifacts")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * packaging [ArtifactPackaging] <p>The type of build output artifact to create, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output artifacts instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, valid values include:</p> <ul> <li> <p> <code>NONE</code>: AWS CodeBuild will create in the output bucket a folder containing the build output. This is the default if <code>packaging</code> is not specified.</p> </li> <li> <p> <code>ZIP</code>: AWS CodeBuild will create in the output bucket a ZIP file containing the build output.</p> </li> </ul> </li> </ul>
+-- * name [String] <p>Along with <code>path</code> and <code>namespaceType</code>, the pattern that AWS CodeBuild will use to name and store the output artifact, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, this is the name of the output artifact object.</p> </li> </ul> <p>For example, if <code>path</code> is set to <code>MyArtifacts</code>, <code>namespaceType</code> is set to <code>BUILD_ID</code>, and <code>name</code> is set to <code>MyArtifact.zip</code>, then the output artifact would be stored in <code>MyArtifacts/<i>build-ID</i>/MyArtifact.zip</code>.</p>
+-- * namespaceType [ArtifactNamespace] <p>Along with <code>path</code> and <code>name</code>, the pattern that AWS CodeBuild will use to determine the name and location to store the output artifact, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, then valid values include:</p> <ul> <li> <p> <code>BUILD_ID</code>: Include the build ID in the location of the build output artifact.</p> </li> <li> <p> <code>NONE</code>: Do not include the build ID. This is the default if <code>namespaceType</code> is not specified.</p> </li> </ul> </li> </ul> <p>For example, if <code>path</code> is set to <code>MyArtifacts</code>, <code>namespaceType</code> is set to <code>BUILD_ID</code>, and <code>name</code> is set to <code>MyArtifact.zip</code>, then the output artifact would be stored in <code>MyArtifacts/<i>build-ID</i>/MyArtifact.zip</code>.</p>
+-- * location [String] <p>Information about the build output artifact location, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output locations instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, this is the name of the output bucket.</p> </li> </ul>
+-- * path [String] <p>Along with <code>namespaceType</code> and <code>name</code>, the pattern that AWS CodeBuild will use to name and store the output artifact, as follows:</p> <ul> <li> <p>If <code>type</code> is set to <code>CODEPIPELINE</code>, then AWS CodePipeline will ignore this value if specified. This is because AWS CodePipeline manages its build output names instead of AWS CodeBuild.</p> </li> <li> <p>If <code>type</code> is set to <code>NO_ARTIFACTS</code>, then this value will be ignored if specified, because no build output will be produced.</p> </li> <li> <p>If <code>type</code> is set to <code>S3</code>, this is the path to the output artifact. If <code>path</code> is not specified, then <code>path</code> will not be used.</p> </li> </ul> <p>For example, if <code>path</code> is set to <code>MyArtifacts</code>, <code>namespaceType</code> is set to <code>NONE</code>, and <code>name</code> is set to <code>MyArtifact.zip</code>, then the output artifact would be stored in the output bucket at <code>MyArtifacts/MyArtifact.zip</code>.</p>
+-- * type [ArtifactsType] <p>The type of build output artifact. Valid values include:</p> <ul> <li> <p> <code>CODEPIPELINE</code>: The build project will have build output generated through AWS CodePipeline.</p> </li> <li> <p> <code>NO_ARTIFACTS</code>: The build project will not produce any build output.</p> </li> <li> <p> <code>S3</code>: The build project will store build output in Amazon Simple Storage Service (Amazon S3).</p> </li> </ul>
+-- Required key: type
+-- @return ProjectArtifacts structure as a key-value pair table
+function M.ProjectArtifacts(args)
+	assert(args, "You must provdide an argument table when creating ProjectArtifacts")
 	local t = { 
-		["packaging"] = _packaging,
-		["name"] = _name,
-		["namespaceType"] = _namespaceType,
-		["location"] = _location,
-		["path"] = _path,
-		["type"] = _type,
+		["packaging"] = args["packaging"],
+		["name"] = args["name"],
+		["namespaceType"] = args["namespaceType"],
+		["location"] = args["location"],
+		["path"] = args["path"],
+		["type"] = args["type"],
 	}
 	asserts.AssertProjectArtifacts(t)
 	return t
@@ -588,13 +642,16 @@ end
 
 --- Create a structure of type Tag
 -- <p>A tag, consisting of a key and a value.</p> <p>This tag is available for use by AWS services that support tags in AWS CodeBuild.</p>
--- @param _value [ValueInput] <p>The tag's value.</p>
--- @param _key [KeyInput] <p>The tag's key.</p>
-function M.Tag(_value, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [ValueInput] <p>The tag's value.</p>
+-- * key [KeyInput] <p>The tag's key.</p>
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["value"] = _value,
-		["key"] = _key,
+		["value"] = args["value"],
+		["key"] = args["key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -616,16 +673,19 @@ end
 
 --- Create a structure of type ListBuildsForProjectInput
 --  
--- @param _projectName [NonEmptyString] <p>The name of the build project.</p>
--- @param _nextToken [String] <p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
--- @param _sortOrder [SortOrderType] <p>The order to list build IDs. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build IDs in ascending order by build ID.</p> </li> <li> <p> <code>DESCENDING</code>: List the build IDs in descending order by build ID.</p> </li> </ul>
--- Required parameter: projectName
-function M.ListBuildsForProjectInput(_projectName, _nextToken, _sortOrder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsForProjectInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * projectName [NonEmptyString] <p>The name of the build project.</p>
+-- * nextToken [String] <p>During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.</p>
+-- * sortOrder [SortOrderType] <p>The order to list build IDs. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build IDs in ascending order by build ID.</p> </li> <li> <p> <code>DESCENDING</code>: List the build IDs in descending order by build ID.</p> </li> </ul>
+-- Required key: projectName
+-- @return ListBuildsForProjectInput structure as a key-value pair table
+function M.ListBuildsForProjectInput(args)
+	assert(args, "You must provdide an argument table when creating ListBuildsForProjectInput")
 	local t = { 
-		["projectName"] = _projectName,
-		["nextToken"] = _nextToken,
-		["sortOrder"] = _sortOrder,
+		["projectName"] = args["projectName"],
+		["nextToken"] = args["nextToken"],
+		["sortOrder"] = args["sortOrder"],
 	}
 	asserts.AssertListBuildsForProjectInput(t)
 	return t
@@ -655,33 +715,36 @@ end
 
 --- Create a structure of type Project
 -- <p>Information about a build project.</p>
--- @param _name [ProjectName] <p>The name of the build project.</p>
--- @param _serviceRole [NonEmptyString] <p>The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
--- @param _tags [TagList] <p>The tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
--- @param _artifacts [ProjectArtifacts] <p>Information about the build output artifacts for the build project.</p>
--- @param _lastModified [Timestamp] <p>When the build project's settings were last modified, expressed in Unix time format.</p>
--- @param _timeoutInMinutes [TimeOut] <p>How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed. The default is 60 minutes.</p>
--- @param _created [Timestamp] <p>When the build project was created, expressed in Unix time format.</p>
--- @param _environment [ProjectEnvironment] <p>Information about the build environment for this build project.</p>
--- @param _source [ProjectSource] <p>Information about the build input source code for this build project.</p>
--- @param _encryptionKey [NonEmptyString] <p>The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>This is expressed either as the CMK's Amazon Resource Name (ARN) or, if specified, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
--- @param _arn [String] <p>The Amazon Resource Name (ARN) of the build project.</p>
--- @param _description [ProjectDescription] <p>A description that makes the build project easy to identify.</p>
-function M.Project(_name, _serviceRole, _tags, _artifacts, _lastModified, _timeoutInMinutes, _created, _environment, _source, _encryptionKey, _arn, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Project")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [ProjectName] <p>The name of the build project.</p>
+-- * serviceRole [NonEmptyString] <p>The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
+-- * tags [TagList] <p>The tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
+-- * artifacts [ProjectArtifacts] <p>Information about the build output artifacts for the build project.</p>
+-- * lastModified [Timestamp] <p>When the build project's settings were last modified, expressed in Unix time format.</p>
+-- * timeoutInMinutes [TimeOut] <p>How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait before timing out any related build that did not get marked as completed. The default is 60 minutes.</p>
+-- * created [Timestamp] <p>When the build project was created, expressed in Unix time format.</p>
+-- * environment [ProjectEnvironment] <p>Information about the build environment for this build project.</p>
+-- * source [ProjectSource] <p>Information about the build input source code for this build project.</p>
+-- * encryptionKey [NonEmptyString] <p>The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>This is expressed either as the CMK's Amazon Resource Name (ARN) or, if specified, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
+-- * arn [String] <p>The Amazon Resource Name (ARN) of the build project.</p>
+-- * description [ProjectDescription] <p>A description that makes the build project easy to identify.</p>
+-- @return Project structure as a key-value pair table
+function M.Project(args)
+	assert(args, "You must provdide an argument table when creating Project")
 	local t = { 
-		["name"] = _name,
-		["serviceRole"] = _serviceRole,
-		["tags"] = _tags,
-		["artifacts"] = _artifacts,
-		["lastModified"] = _lastModified,
-		["timeoutInMinutes"] = _timeoutInMinutes,
-		["created"] = _created,
-		["environment"] = _environment,
-		["source"] = _source,
-		["encryptionKey"] = _encryptionKey,
-		["arn"] = _arn,
-		["description"] = _description,
+		["name"] = args["name"],
+		["serviceRole"] = args["serviceRole"],
+		["tags"] = args["tags"],
+		["artifacts"] = args["artifacts"],
+		["lastModified"] = args["lastModified"],
+		["timeoutInMinutes"] = args["timeoutInMinutes"],
+		["created"] = args["created"],
+		["environment"] = args["environment"],
+		["source"] = args["source"],
+		["encryptionKey"] = args["encryptionKey"],
+		["arn"] = args["arn"],
+		["description"] = args["description"],
 	}
 	asserts.AssertProject(t)
 	return t
@@ -701,13 +764,16 @@ end
 
 --- Create a structure of type EnvironmentImage
 -- <p>Information about a Docker image that is managed by AWS CodeBuild.</p>
--- @param _name [String] <p>The name of the Docker image.</p>
--- @param _description [String] <p>The description of the Docker image.</p>
-function M.EnvironmentImage(_name, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentImage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [String] <p>The name of the Docker image.</p>
+-- * description [String] <p>The description of the Docker image.</p>
+-- @return EnvironmentImage structure as a key-value pair table
+function M.EnvironmentImage(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentImage")
 	local t = { 
-		["name"] = _name,
-		["description"] = _description,
+		["name"] = args["name"],
+		["description"] = args["description"],
 	}
 	asserts.AssertEnvironmentImage(t)
 	return t
@@ -725,8 +791,11 @@ end
 
 --- Create a structure of type ListCuratedEnvironmentImagesInput
 --  
-function M.ListCuratedEnvironmentImagesInput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCuratedEnvironmentImagesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ListCuratedEnvironmentImagesInput structure as a key-value pair table
+function M.ListCuratedEnvironmentImagesInput(args)
+	assert(args, "You must provdide an argument table when creating ListCuratedEnvironmentImagesInput")
 	local t = { 
 	}
 	asserts.AssertListCuratedEnvironmentImagesInput(t)
@@ -745,8 +814,11 @@ end
 
 --- Create a structure of type ResourceAlreadyExistsException
 -- <p>The specified AWS resource cannot be created, because an AWS resource with the same settings already exists.</p>
-function M.ResourceAlreadyExistsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceAlreadyExistsException structure as a key-value pair table
+function M.ResourceAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
 	local t = { 
 	}
 	asserts.AssertResourceAlreadyExistsException(t)
@@ -778,31 +850,34 @@ end
 
 --- Create a structure of type CreateProjectInput
 --  
--- @param _name [ProjectName] <p>The name of the build project.</p>
--- @param _serviceRole [NonEmptyString] <p>The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
--- @param _tags [TagList] <p>A set of tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
--- @param _artifacts [ProjectArtifacts] <p>Information about the build output artifacts for the build project.</p>
--- @param _timeoutInMinutes [TimeOut] <p>How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any build that has not been marked as completed. The default is 60 minutes.</p>
--- @param _environment [ProjectEnvironment] <p>Information about the build environment for the build project.</p>
--- @param _source [ProjectSource] <p>Information about the build input source code for the build project.</p>
--- @param _encryptionKey [NonEmptyString] <p>The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
--- @param _description [ProjectDescription] <p>A description that makes the build project easy to identify.</p>
--- Required parameter: name
--- Required parameter: source
--- Required parameter: artifacts
--- Required parameter: environment
-function M.CreateProjectInput(_name, _serviceRole, _tags, _artifacts, _timeoutInMinutes, _environment, _source, _encryptionKey, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateProjectInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [ProjectName] <p>The name of the build project.</p>
+-- * serviceRole [NonEmptyString] <p>The ARN of the AWS Identity and Access Management (IAM) role that enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.</p>
+-- * tags [TagList] <p>A set of tags for this build project.</p> <p>These tags are available for use by AWS services that support AWS CodeBuild build project tags.</p>
+-- * artifacts [ProjectArtifacts] <p>Information about the build output artifacts for the build project.</p>
+-- * timeoutInMinutes [TimeOut] <p>How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait until timing out any build that has not been marked as completed. The default is 60 minutes.</p>
+-- * environment [ProjectEnvironment] <p>Information about the build environment for the build project.</p>
+-- * source [ProjectSource] <p>Information about the build input source code for the build project.</p>
+-- * encryptionKey [NonEmptyString] <p>The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts.</p> <p>You can specify either the CMK's Amazon Resource Name (ARN) or, if available, the CMK's alias (using the format <code>alias/<i>alias-name</i> </code>).</p>
+-- * description [ProjectDescription] <p>A description that makes the build project easy to identify.</p>
+-- Required key: name
+-- Required key: source
+-- Required key: artifacts
+-- Required key: environment
+-- @return CreateProjectInput structure as a key-value pair table
+function M.CreateProjectInput(args)
+	assert(args, "You must provdide an argument table when creating CreateProjectInput")
 	local t = { 
-		["name"] = _name,
-		["serviceRole"] = _serviceRole,
-		["tags"] = _tags,
-		["artifacts"] = _artifacts,
-		["timeoutInMinutes"] = _timeoutInMinutes,
-		["environment"] = _environment,
-		["source"] = _source,
-		["encryptionKey"] = _encryptionKey,
-		["description"] = _description,
+		["name"] = args["name"],
+		["serviceRole"] = args["serviceRole"],
+		["tags"] = args["tags"],
+		["artifacts"] = args["artifacts"],
+		["timeoutInMinutes"] = args["timeoutInMinutes"],
+		["environment"] = args["environment"],
+		["source"] = args["source"],
+		["encryptionKey"] = args["encryptionKey"],
+		["description"] = args["description"],
 	}
 	asserts.AssertCreateProjectInput(t)
 	return t
@@ -822,13 +897,16 @@ end
 
 --- Create a structure of type ListBuildsOutput
 --  
--- @param _nextToken [String] <p>If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call.</p>
--- @param _ids [BuildIds] <p>A list of build IDs, with each build ID representing a single build.</p>
-function M.ListBuildsOutput(_nextToken, _ids, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call.</p>
+-- * ids [BuildIds] <p>A list of build IDs, with each build ID representing a single build.</p>
+-- @return ListBuildsOutput structure as a key-value pair table
+function M.ListBuildsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListBuildsOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["ids"] = _ids,
+		["nextToken"] = args["nextToken"],
+		["ids"] = args["ids"],
 	}
 	asserts.AssertListBuildsOutput(t)
 	return t
@@ -846,8 +924,11 @@ end
 
 --- Create a structure of type AccountLimitExceededException
 -- <p>An AWS service limit was exceeded for the calling AWS account.</p>
-function M.AccountLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccountLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AccountLimitExceededException structure as a key-value pair table
+function M.AccountLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating AccountLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertAccountLimitExceededException(t)
@@ -868,13 +949,16 @@ end
 
 --- Create a structure of type ListBuildsForProjectOutput
 --  
--- @param _nextToken [String] <p>If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call.</p>
--- @param _ids [BuildIds] <p>A list of build IDs for the specified build project, with each build ID representing a single build.</p>
-function M.ListBuildsForProjectOutput(_nextToken, _ids, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBuildsForProjectOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call.</p>
+-- * ids [BuildIds] <p>A list of build IDs for the specified build project, with each build ID representing a single build.</p>
+-- @return ListBuildsForProjectOutput structure as a key-value pair table
+function M.ListBuildsForProjectOutput(args)
+	assert(args, "You must provdide an argument table when creating ListBuildsForProjectOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["ids"] = _ids,
+		["nextToken"] = args["nextToken"],
+		["ids"] = args["ids"],
 	}
 	asserts.AssertListBuildsForProjectOutput(t)
 	return t
@@ -894,13 +978,16 @@ end
 
 --- Create a structure of type BatchGetProjectsOutput
 --  
--- @param _projectsNotFound [ProjectNames] <p>The names of build projects for which information could not be found.</p>
--- @param _projects [Projects] <p>Information about the requested build projects.</p>
-function M.BatchGetProjectsOutput(_projectsNotFound, _projects, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetProjectsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * projectsNotFound [ProjectNames] <p>The names of build projects for which information could not be found.</p>
+-- * projects [Projects] <p>Information about the requested build projects.</p>
+-- @return BatchGetProjectsOutput structure as a key-value pair table
+function M.BatchGetProjectsOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetProjectsOutput")
 	local t = { 
-		["projectsNotFound"] = _projectsNotFound,
-		["projects"] = _projects,
+		["projectsNotFound"] = args["projectsNotFound"],
+		["projects"] = args["projects"],
 	}
 	asserts.AssertBatchGetProjectsOutput(t)
 	return t
@@ -920,13 +1007,16 @@ end
 
 --- Create a structure of type ListProjectsOutput
 --  
--- @param _nextToken [String] <p>If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call.</p>
--- @param _projects [ProjectNames] <p>The list of build project names, with each build project name representing a single build project.</p>
-function M.ListProjectsOutput(_nextToken, _projects, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListProjectsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [String] <p>If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call.</p>
+-- * projects [ProjectNames] <p>The list of build project names, with each build project name representing a single build project.</p>
+-- @return ListProjectsOutput structure as a key-value pair table
+function M.ListProjectsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListProjectsOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["projects"] = _projects,
+		["nextToken"] = args["nextToken"],
+		["projects"] = args["projects"],
 	}
 	asserts.AssertListProjectsOutput(t)
 	return t
@@ -947,14 +1037,17 @@ end
 
 --- Create a structure of type SourceAuth
 -- <p>Information about the authorization settings for AWS CodeBuild to access the source code to be built.</p> <p>This information is for the AWS CodeBuild console's use only. Your code should not get or set this information directly (unless the build project's source <code>type</code> value is <code>GITHUB</code>).</p>
--- @param _resource [String] <p>The resource value that applies to the specified authorization type.</p>
--- @param _type [SourceAuthType] <p>The authorization type to use. The only valid value is <code>OAUTH</code>, which represents the OAuth authorization type.</p>
--- Required parameter: type
-function M.SourceAuth(_resource, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SourceAuth")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resource [String] <p>The resource value that applies to the specified authorization type.</p>
+-- * type [SourceAuthType] <p>The authorization type to use. The only valid value is <code>OAUTH</code>, which represents the OAuth authorization type.</p>
+-- Required key: type
+-- @return SourceAuth structure as a key-value pair table
+function M.SourceAuth(args)
+	assert(args, "You must provdide an argument table when creating SourceAuth")
 	local t = { 
-		["resource"] = _resource,
-		["type"] = _type,
+		["resource"] = args["resource"],
+		["type"] = args["type"],
 	}
 	asserts.AssertSourceAuth(t)
 	return t
@@ -976,15 +1069,18 @@ end
 
 --- Create a structure of type EnvironmentVariable
 -- <p>Information about an environment variable for a build project or a build.</p>
--- @param _name [NonEmptyString] <p>The name or key of the environment variable.</p>
--- @param _value [String] <p>The value of the environment variable.</p> <important> <p>We strongly discourage using environment variables to store sensitive values, especially AWS secret key IDs and secret access keys. Environment variables can be displayed in plain text using tools such as the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI).</p> </important>
--- Required parameter: name
--- Required parameter: value
-function M.EnvironmentVariable(_name, _value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentVariable")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [NonEmptyString] <p>The name or key of the environment variable.</p>
+-- * value [String] <p>The value of the environment variable.</p> <important> <p>We strongly discourage using environment variables to store sensitive values, especially AWS secret key IDs and secret access keys. Environment variables can be displayed in plain text using tools such as the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI).</p> </important>
+-- Required key: name
+-- Required key: value
+-- @return EnvironmentVariable structure as a key-value pair table
+function M.EnvironmentVariable(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentVariable")
 	local t = { 
-		["name"] = _name,
-		["value"] = _value,
+		["name"] = args["name"],
+		["value"] = args["value"],
 	}
 	asserts.AssertEnvironmentVariable(t)
 	return t
@@ -1002,8 +1098,11 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified AWS resource cannot be found.</p>
-function M.ResourceNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
 	}
 	asserts.AssertResourceNotFoundException(t)
@@ -1024,12 +1123,15 @@ end
 
 --- Create a structure of type BatchGetProjectsInput
 --  
--- @param _names [ProjectNames] <p>The names of the build projects.</p>
--- Required parameter: names
-function M.BatchGetProjectsInput(_names, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetProjectsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * names [ProjectNames] <p>The names of the build projects.</p>
+-- Required key: names
+-- @return BatchGetProjectsInput structure as a key-value pair table
+function M.BatchGetProjectsInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetProjectsInput")
 	local t = { 
-		["names"] = _names,
+		["names"] = args["names"],
 	}
 	asserts.AssertBatchGetProjectsInput(t)
 	return t
@@ -1048,11 +1150,14 @@ end
 
 --- Create a structure of type StopBuildOutput
 --  
--- @param _build [Build] <p>Information about the build.</p>
-function M.StopBuildOutput(_build, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopBuildOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * build [Build] <p>Information about the build.</p>
+-- @return StopBuildOutput structure as a key-value pair table
+function M.StopBuildOutput(args)
+	assert(args, "You must provdide an argument table when creating StopBuildOutput")
 	local t = { 
-		["build"] = _build,
+		["build"] = args["build"],
 	}
 	asserts.AssertStopBuildOutput(t)
 	return t
@@ -1072,12 +1177,15 @@ end
 
 --- Create a structure of type DeleteProjectInput
 --  
--- @param _name [NonEmptyString] <p>The name of the build project.</p>
--- Required parameter: name
-function M.DeleteProjectInput(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProjectInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [NonEmptyString] <p>The name of the build project.</p>
+-- Required key: name
+-- @return DeleteProjectInput structure as a key-value pair table
+function M.DeleteProjectInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteProjectInput")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertDeleteProjectInput(t)
 	return t
@@ -1102,22 +1210,25 @@ end
 
 --- Create a structure of type StartBuildInput
 --  
--- @param _buildspecOverride [String] <p>A build spec declaration that overrides, for this build only, the latest one already defined in the build project.</p>
--- @param _environmentVariablesOverride [EnvironmentVariables] <p>A set of environment variables that overrides, for this build only, the latest ones already defined in the build project.</p>
--- @param _artifactsOverride [ProjectArtifacts] <p>Build output artifact settings that override, for this build only, the latest ones already defined in the build project.</p>
--- @param _projectName [NonEmptyString] <p>The name of the build project to start running a build.</p>
--- @param _sourceVersion [String] <p>A version of the build input to be built, for this build only. If not specified, the latest version will be used. If specified, must be one of:</p> <ul> <li> <p>For AWS CodeCommit or GitHub: the commit ID to use.</p> </li> <li> <p>For Amazon Simple Storage Service (Amazon S3): the version ID of the object representing the build input ZIP file to use.</p> </li> </ul>
--- @param _timeoutInMinutesOverride [TimeOut] <p>The number of build timeout minutes, from 5 to 480 (8 hours), that overrides, for this build only, the latest setting already defined in the build project.</p>
--- Required parameter: projectName
-function M.StartBuildInput(_buildspecOverride, _environmentVariablesOverride, _artifactsOverride, _projectName, _sourceVersion, _timeoutInMinutesOverride, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartBuildInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * buildspecOverride [String] <p>A build spec declaration that overrides, for this build only, the latest one already defined in the build project.</p>
+-- * environmentVariablesOverride [EnvironmentVariables] <p>A set of environment variables that overrides, for this build only, the latest ones already defined in the build project.</p>
+-- * artifactsOverride [ProjectArtifacts] <p>Build output artifact settings that override, for this build only, the latest ones already defined in the build project.</p>
+-- * projectName [NonEmptyString] <p>The name of the build project to start running a build.</p>
+-- * sourceVersion [String] <p>A version of the build input to be built, for this build only. If not specified, the latest version will be used. If specified, must be one of:</p> <ul> <li> <p>For AWS CodeCommit or GitHub: the commit ID to use.</p> </li> <li> <p>For Amazon Simple Storage Service (Amazon S3): the version ID of the object representing the build input ZIP file to use.</p> </li> </ul>
+-- * timeoutInMinutesOverride [TimeOut] <p>The number of build timeout minutes, from 5 to 480 (8 hours), that overrides, for this build only, the latest setting already defined in the build project.</p>
+-- Required key: projectName
+-- @return StartBuildInput structure as a key-value pair table
+function M.StartBuildInput(args)
+	assert(args, "You must provdide an argument table when creating StartBuildInput")
 	local t = { 
-		["buildspecOverride"] = _buildspecOverride,
-		["environmentVariablesOverride"] = _environmentVariablesOverride,
-		["artifactsOverride"] = _artifactsOverride,
-		["projectName"] = _projectName,
-		["sourceVersion"] = _sourceVersion,
-		["timeoutInMinutesOverride"] = _timeoutInMinutesOverride,
+		["buildspecOverride"] = args["buildspecOverride"],
+		["environmentVariablesOverride"] = args["environmentVariablesOverride"],
+		["artifactsOverride"] = args["artifactsOverride"],
+		["projectName"] = args["projectName"],
+		["sourceVersion"] = args["sourceVersion"],
+		["timeoutInMinutesOverride"] = args["timeoutInMinutesOverride"],
 	}
 	asserts.AssertStartBuildInput(t)
 	return t
@@ -1135,8 +1246,11 @@ end
 
 --- Create a structure of type InvalidInputException
 -- <p>The input value that was provided is not valid.</p>
-function M.InvalidInputException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidInputException structure as a key-value pair table
+function M.InvalidInputException(args)
+	assert(args, "You must provdide an argument table when creating InvalidInputException")
 	local t = { 
 	}
 	asserts.AssertInvalidInputException(t)
@@ -1163,22 +1277,25 @@ end
 
 --- Create a structure of type ProjectEnvironment
 -- <p>Information about the build environment of the build project.</p>
--- @param _computeType [ComputeType] <p>Information about the compute resources the build project will use. Available values include:</p> <ul> <li> <p> <code>BUILD_GENERAL1_SMALL</code>: Use up to 3 GB memory and 2 vCPUs for builds.</p> </li> <li> <p> <code>BUILD_GENERAL1_MEDIUM</code>: Use up to 7 GB memory and 4 vCPUs for builds.</p> </li> <li> <p> <code>BUILD_GENERAL1_LARGE</code>: Use up to 15 GB memory and 8 vCPUs for builds.</p> </li> </ul>
--- @param _privilegedMode [WrapperBoolean] <p>If set to true, enables running the Docker daemon inside a Docker container; otherwise, false or not specified (the default). This value must be set to true only if this build project will be used to build Docker images, and the specified build environment image is not one provided by AWS CodeBuild with Docker support. Otherwise, all associated builds that attempt to interact with the Docker daemon will fail. Note that you must also start the Docker daemon so that your builds can interact with it as needed. One way to do this is to initialize the Docker daemon in the install phase of your build spec by running the following build commands. (Do not run the following build commands if the specified build environment image is provided by AWS CodeBuild with Docker support.)</p> <p> <code>- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=vfs&amp; - timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done"</code> </p>
--- @param _image [NonEmptyString] <p>The ID of the Docker image to use for this build project.</p>
--- @param _type [EnvironmentType] <p>The type of build environment to use for related builds.</p>
--- @param _environmentVariables [EnvironmentVariables] <p>A set of environment variables to make available to builds for this build project.</p>
--- Required parameter: type
--- Required parameter: image
--- Required parameter: computeType
-function M.ProjectEnvironment(_computeType, _privilegedMode, _image, _type, _environmentVariables, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProjectEnvironment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * computeType [ComputeType] <p>Information about the compute resources the build project will use. Available values include:</p> <ul> <li> <p> <code>BUILD_GENERAL1_SMALL</code>: Use up to 3 GB memory and 2 vCPUs for builds.</p> </li> <li> <p> <code>BUILD_GENERAL1_MEDIUM</code>: Use up to 7 GB memory and 4 vCPUs for builds.</p> </li> <li> <p> <code>BUILD_GENERAL1_LARGE</code>: Use up to 15 GB memory and 8 vCPUs for builds.</p> </li> </ul>
+-- * privilegedMode [WrapperBoolean] <p>If set to true, enables running the Docker daemon inside a Docker container; otherwise, false or not specified (the default). This value must be set to true only if this build project will be used to build Docker images, and the specified build environment image is not one provided by AWS CodeBuild with Docker support. Otherwise, all associated builds that attempt to interact with the Docker daemon will fail. Note that you must also start the Docker daemon so that your builds can interact with it as needed. One way to do this is to initialize the Docker daemon in the install phase of your build spec by running the following build commands. (Do not run the following build commands if the specified build environment image is provided by AWS CodeBuild with Docker support.)</p> <p> <code>- nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=vfs&amp; - timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done"</code> </p>
+-- * image [NonEmptyString] <p>The ID of the Docker image to use for this build project.</p>
+-- * type [EnvironmentType] <p>The type of build environment to use for related builds.</p>
+-- * environmentVariables [EnvironmentVariables] <p>A set of environment variables to make available to builds for this build project.</p>
+-- Required key: type
+-- Required key: image
+-- Required key: computeType
+-- @return ProjectEnvironment structure as a key-value pair table
+function M.ProjectEnvironment(args)
+	assert(args, "You must provdide an argument table when creating ProjectEnvironment")
 	local t = { 
-		["computeType"] = _computeType,
-		["privilegedMode"] = _privilegedMode,
-		["image"] = _image,
-		["type"] = _type,
-		["environmentVariables"] = _environmentVariables,
+		["computeType"] = args["computeType"],
+		["privilegedMode"] = args["privilegedMode"],
+		["image"] = args["image"],
+		["type"] = args["type"],
+		["environmentVariables"] = args["environmentVariables"],
 	}
 	asserts.AssertProjectEnvironment(t)
 	return t
@@ -1198,13 +1315,16 @@ end
 
 --- Create a structure of type EnvironmentLanguage
 -- <p>A set of Docker images that are related by programming language and are managed by AWS CodeBuild.</p>
--- @param _images [EnvironmentImages] <p>The list of Docker images that are related by the specified programming language.</p>
--- @param _language [LanguageType] <p>The programming language for the Docker images.</p>
-function M.EnvironmentLanguage(_images, _language, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentLanguage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * images [EnvironmentImages] <p>The list of Docker images that are related by the specified programming language.</p>
+-- * language [LanguageType] <p>The programming language for the Docker images.</p>
+-- @return EnvironmentLanguage structure as a key-value pair table
+function M.EnvironmentLanguage(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentLanguage")
 	local t = { 
-		["images"] = _images,
-		["language"] = _language,
+		["images"] = args["images"],
+		["language"] = args["language"],
 	}
 	asserts.AssertEnvironmentLanguage(t)
 	return t
@@ -1225,15 +1345,18 @@ end
 
 --- Create a structure of type BuildArtifacts
 -- <p>Information about build output artifacts.</p>
--- @param _md5sum [String] <p>The MD5 hash of the build artifact.</p> <p>You can use this hash along with a checksum tool to confirm both file integrity and authenticity.</p> <note> <p>This value is available only if the build project's <code>packaging</code> value is set to <code>ZIP</code>.</p> </note>
--- @param _location [String] <p>Information about the location of the build artifacts.</p>
--- @param _sha256sum [String] <p>The SHA-256 hash of the build artifact.</p> <p>You can use this hash along with a checksum tool to confirm both file integrity and authenticity.</p> <note> <p>This value is available only if the build project's <code>packaging</code> value is set to <code>ZIP</code>.</p> </note>
-function M.BuildArtifacts(_md5sum, _location, _sha256sum, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BuildArtifacts")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * md5sum [String] <p>The MD5 hash of the build artifact.</p> <p>You can use this hash along with a checksum tool to confirm both file integrity and authenticity.</p> <note> <p>This value is available only if the build project's <code>packaging</code> value is set to <code>ZIP</code>.</p> </note>
+-- * location [String] <p>Information about the location of the build artifacts.</p>
+-- * sha256sum [String] <p>The SHA-256 hash of the build artifact.</p> <p>You can use this hash along with a checksum tool to confirm both file integrity and authenticity.</p> <note> <p>This value is available only if the build project's <code>packaging</code> value is set to <code>ZIP</code>.</p> </note>
+-- @return BuildArtifacts structure as a key-value pair table
+function M.BuildArtifacts(args)
+	assert(args, "You must provdide an argument table when creating BuildArtifacts")
 	local t = { 
-		["md5sum"] = _md5sum,
-		["location"] = _location,
-		["sha256sum"] = _sha256sum,
+		["md5sum"] = args["md5sum"],
+		["location"] = args["location"],
+		["sha256sum"] = args["sha256sum"],
 	}
 	asserts.AssertBuildArtifacts(t)
 	return t

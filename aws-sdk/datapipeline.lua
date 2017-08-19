@@ -39,19 +39,22 @@ end
 
 --- Create a structure of type CreatePipelineInput
 -- <p>Contains the parameters for CreatePipeline.</p>
--- @param _tags [tagList] <p>A list of tags to associate with the pipeline at creation. Tags let you control access to pipelines. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
--- @param _name [id] <p>The name for the pipeline. You can use the same name for multiple pipelines associated with your AWS account, because AWS Data Pipeline assigns each pipeline a unique pipeline identifier.</p>
--- @param _uniqueId [id] <p>A unique identifier. This identifier is not the same as the pipeline identifier assigned by AWS Data Pipeline. You are responsible for defining the format and ensuring the uniqueness of this identifier. You use this parameter to ensure idempotency during repeated calls to <code>CreatePipeline</code>. For example, if the first call to <code>CreatePipeline</code> does not succeed, you can pass in the same unique identifier and pipeline name combination on a subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code> ensures that if a pipeline already exists with the same name and unique identifier, a new pipeline is not created. Instead, you'll receive the pipeline identifier from the previous attempt. The uniqueness of the name and unique identifier combination is scoped to the AWS account or IAM user credentials.</p>
--- @param _description [string] <p>The description for the pipeline.</p>
--- Required parameter: name
--- Required parameter: uniqueId
-function M.CreatePipelineInput(_tags, _name, _uniqueId, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePipelineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tags [tagList] <p>A list of tags to associate with the pipeline at creation. Tags let you control access to pipelines. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+-- * name [id] <p>The name for the pipeline. You can use the same name for multiple pipelines associated with your AWS account, because AWS Data Pipeline assigns each pipeline a unique pipeline identifier.</p>
+-- * uniqueId [id] <p>A unique identifier. This identifier is not the same as the pipeline identifier assigned by AWS Data Pipeline. You are responsible for defining the format and ensuring the uniqueness of this identifier. You use this parameter to ensure idempotency during repeated calls to <code>CreatePipeline</code>. For example, if the first call to <code>CreatePipeline</code> does not succeed, you can pass in the same unique identifier and pipeline name combination on a subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code> ensures that if a pipeline already exists with the same name and unique identifier, a new pipeline is not created. Instead, you'll receive the pipeline identifier from the previous attempt. The uniqueness of the name and unique identifier combination is scoped to the AWS account or IAM user credentials.</p>
+-- * description [string] <p>The description for the pipeline.</p>
+-- Required key: name
+-- Required key: uniqueId
+-- @return CreatePipelineInput structure as a key-value pair table
+function M.CreatePipelineInput(args)
+	assert(args, "You must provdide an argument table when creating CreatePipelineInput")
 	local t = { 
-		["tags"] = _tags,
-		["name"] = _name,
-		["uniqueId"] = _uniqueId,
-		["description"] = _description,
+		["tags"] = args["tags"],
+		["name"] = args["name"],
+		["uniqueId"] = args["uniqueId"],
+		["description"] = args["description"],
 	}
 	asserts.AssertCreatePipelineInput(t)
 	return t
@@ -76,21 +79,24 @@ end
 
 --- Create a structure of type QueryObjectsInput
 -- <p>Contains the parameters for QueryObjects.</p>
--- @param _marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>QueryObjects</code> with the marker value from the previous call to retrieve the next set of results.</p>
--- @param _query [Query] <p>The query that defines the objects to be returned. The <code>Query</code> object can contain a maximum of ten selectors. The conditions in the query are limited to top-level String fields in the object. These filters can be applied to components, instances, and attempts.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline.</p>
--- @param _limit [int] <p>The maximum number of object names that <code>QueryObjects</code> will return in a single call. The default value is 100. </p>
--- @param _sphere [string] <p>Indicates whether the query applies to components or instances. The possible values are: <code>COMPONENT</code>, <code>INSTANCE</code>, and <code>ATTEMPT</code>.</p>
--- Required parameter: pipelineId
--- Required parameter: sphere
-function M.QueryObjectsInput(_marker, _query, _pipelineId, _limit, _sphere, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating QueryObjectsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>QueryObjects</code> with the marker value from the previous call to retrieve the next set of results.</p>
+-- * query [Query] <p>The query that defines the objects to be returned. The <code>Query</code> object can contain a maximum of ten selectors. The conditions in the query are limited to top-level String fields in the object. These filters can be applied to components, instances, and attempts.</p>
+-- * pipelineId [id] <p>The ID of the pipeline.</p>
+-- * limit [int] <p>The maximum number of object names that <code>QueryObjects</code> will return in a single call. The default value is 100. </p>
+-- * sphere [string] <p>Indicates whether the query applies to components or instances. The possible values are: <code>COMPONENT</code>, <code>INSTANCE</code>, and <code>ATTEMPT</code>.</p>
+-- Required key: pipelineId
+-- Required key: sphere
+-- @return QueryObjectsInput structure as a key-value pair table
+function M.QueryObjectsInput(args)
+	assert(args, "You must provdide an argument table when creating QueryObjectsInput")
 	local t = { 
-		["marker"] = _marker,
-		["query"] = _query,
-		["pipelineId"] = _pipelineId,
-		["limit"] = _limit,
-		["sphere"] = _sphere,
+		["marker"] = args["marker"],
+		["query"] = args["query"],
+		["pipelineId"] = args["pipelineId"],
+		["limit"] = args["limit"],
+		["sphere"] = args["sphere"],
 	}
 	asserts.AssertQueryObjectsInput(t)
 	return t
@@ -112,16 +118,19 @@ end
 
 --- Create a structure of type ListPipelinesOutput
 -- <p>Contains the output of ListPipelines.</p>
--- @param _marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>ListPipelinesOutput</code> again with this marker value. If the value is null, there are no more results.</p>
--- @param _hasMoreResults [boolean] <p>Indicates whether there are more results that can be obtained by a subsequent call.</p>
--- @param _pipelineIdList [pipelineList] <p>The pipeline identifiers. If you require additional information about the pipelines, you can use these identifiers to call <a>DescribePipelines</a> and <a>GetPipelineDefinition</a>.</p>
--- Required parameter: pipelineIdList
-function M.ListPipelinesOutput(_marker, _hasMoreResults, _pipelineIdList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelinesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>ListPipelinesOutput</code> again with this marker value. If the value is null, there are no more results.</p>
+-- * hasMoreResults [boolean] <p>Indicates whether there are more results that can be obtained by a subsequent call.</p>
+-- * pipelineIdList [pipelineList] <p>The pipeline identifiers. If you require additional information about the pipelines, you can use these identifiers to call <a>DescribePipelines</a> and <a>GetPipelineDefinition</a>.</p>
+-- Required key: pipelineIdList
+-- @return ListPipelinesOutput structure as a key-value pair table
+function M.ListPipelinesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListPipelinesOutput")
 	local t = { 
-		["marker"] = _marker,
-		["hasMoreResults"] = _hasMoreResults,
-		["pipelineIdList"] = _pipelineIdList,
+		["marker"] = args["marker"],
+		["hasMoreResults"] = args["hasMoreResults"],
+		["pipelineIdList"] = args["pipelineIdList"],
 	}
 	asserts.AssertListPipelinesOutput(t)
 	return t
@@ -146,21 +155,24 @@ end
 
 --- Create a structure of type SetTaskStatusInput
 -- <p>Contains the parameters for SetTaskStatus.</p>
--- @param _errorStackTrace [string] <p>If an error occurred during the task, this value specifies the stack trace associated with the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.</p>
--- @param _errorMessage [errorMessage] <p>If an error occurred during the task, this value specifies a text description of the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.</p>
--- @param _errorId [string] <p>If an error occurred during the task, this value specifies the error code. This value is set on the physical attempt object. It is used to display error information to the user. It should not start with string "Service_" which is reserved by the system.</p>
--- @param _taskId [taskId] <p>The ID of the task assigned to the task runner. This value is provided in the response for <a>PollForTask</a>.</p>
--- @param _taskStatus [TaskStatus] <p>If <code>FINISHED</code>, the task successfully completed. If <code>FAILED</code>, the task ended unsuccessfully. Preconditions use false.</p>
--- Required parameter: taskId
--- Required parameter: taskStatus
-function M.SetTaskStatusInput(_errorStackTrace, _errorMessage, _errorId, _taskId, _taskStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetTaskStatusInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errorStackTrace [string] <p>If an error occurred during the task, this value specifies the stack trace associated with the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.</p>
+-- * errorMessage [errorMessage] <p>If an error occurred during the task, this value specifies a text description of the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.</p>
+-- * errorId [string] <p>If an error occurred during the task, this value specifies the error code. This value is set on the physical attempt object. It is used to display error information to the user. It should not start with string "Service_" which is reserved by the system.</p>
+-- * taskId [taskId] <p>The ID of the task assigned to the task runner. This value is provided in the response for <a>PollForTask</a>.</p>
+-- * taskStatus [TaskStatus] <p>If <code>FINISHED</code>, the task successfully completed. If <code>FAILED</code>, the task ended unsuccessfully. Preconditions use false.</p>
+-- Required key: taskId
+-- Required key: taskStatus
+-- @return SetTaskStatusInput structure as a key-value pair table
+function M.SetTaskStatusInput(args)
+	assert(args, "You must provdide an argument table when creating SetTaskStatusInput")
 	local t = { 
-		["errorStackTrace"] = _errorStackTrace,
-		["errorMessage"] = _errorMessage,
-		["errorId"] = _errorId,
-		["taskId"] = _taskId,
-		["taskStatus"] = _taskStatus,
+		["errorStackTrace"] = args["errorStackTrace"],
+		["errorMessage"] = args["errorMessage"],
+		["errorId"] = args["errorId"],
+		["taskId"] = args["taskId"],
+		["taskStatus"] = args["taskStatus"],
 	}
 	asserts.AssertSetTaskStatusInput(t)
 	return t
@@ -184,18 +196,21 @@ end
 
 --- Create a structure of type EvaluateExpressionInput
 -- <p>Contains the parameters for EvaluateExpression.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline.</p>
--- @param _expression [longString] <p>The expression to evaluate.</p>
--- @param _objectId [id] <p>The ID of the object.</p>
--- Required parameter: pipelineId
--- Required parameter: objectId
--- Required parameter: expression
-function M.EvaluateExpressionInput(_pipelineId, _expression, _objectId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EvaluateExpressionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineId [id] <p>The ID of the pipeline.</p>
+-- * expression [longString] <p>The expression to evaluate.</p>
+-- * objectId [id] <p>The ID of the object.</p>
+-- Required key: pipelineId
+-- Required key: objectId
+-- Required key: expression
+-- @return EvaluateExpressionInput structure as a key-value pair table
+function M.EvaluateExpressionInput(args)
+	assert(args, "You must provdide an argument table when creating EvaluateExpressionInput")
 	local t = { 
-		["pipelineId"] = _pipelineId,
-		["expression"] = _expression,
-		["objectId"] = _objectId,
+		["pipelineId"] = args["pipelineId"],
+		["expression"] = args["expression"],
+		["objectId"] = args["objectId"],
 	}
 	asserts.AssertEvaluateExpressionInput(t)
 	return t
@@ -213,8 +228,11 @@ end
 
 --- Create a structure of type SetTaskStatusOutput
 -- <p>Contains the output of SetTaskStatus.</p>
-function M.SetTaskStatusOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetTaskStatusOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return SetTaskStatusOutput structure as a key-value pair table
+function M.SetTaskStatusOutput(args)
+	assert(args, "You must provdide an argument table when creating SetTaskStatusOutput")
 	local t = { 
 	}
 	asserts.AssertSetTaskStatusOutput(t)
@@ -235,13 +253,16 @@ end
 
 --- Create a structure of type InstanceIdentity
 -- <p><p>Identity information for the EC2 instance that is hosting the task runner. You can get this value by calling a metadata URI from the EC2 instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p></p>
--- @param _document [string] <p>A description of an EC2 instance that is generated when the instance is launched and exposed to the instance via the instance metadata service in the form of a JSON representation of an object.</p>
--- @param _signature [string] <p>A signature which can be used to verify the accuracy and authenticity of the information provided in the instance identity document.</p>
-function M.InstanceIdentity(_document, _signature, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceIdentity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * document [string] <p>A description of an EC2 instance that is generated when the instance is launched and exposed to the instance via the instance metadata service in the form of a JSON representation of an object.</p>
+-- * signature [string] <p>A signature which can be used to verify the accuracy and authenticity of the information provided in the instance identity document.</p>
+-- @return InstanceIdentity structure as a key-value pair table
+function M.InstanceIdentity(args)
+	assert(args, "You must provdide an argument table when creating InstanceIdentity")
 	local t = { 
-		["document"] = _document,
-		["signature"] = _signature,
+		["document"] = args["document"],
+		["signature"] = args["signature"],
 	}
 	asserts.AssertInstanceIdentity(t)
 	return t
@@ -263,15 +284,18 @@ end
 
 --- Create a structure of type ParameterAttribute
 -- <p>The attributes allowed or specified with a parameter object.</p>
--- @param _stringValue [attributeValueString] <p>The field value, expressed as a String.</p>
--- @param _key [attributeNameString] <p>The field identifier.</p>
--- Required parameter: key
--- Required parameter: stringValue
-function M.ParameterAttribute(_stringValue, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * stringValue [attributeValueString] <p>The field value, expressed as a String.</p>
+-- * key [attributeNameString] <p>The field identifier.</p>
+-- Required key: key
+-- Required key: stringValue
+-- @return ParameterAttribute structure as a key-value pair table
+function M.ParameterAttribute(args)
+	assert(args, "You must provdide an argument table when creating ParameterAttribute")
 	local t = { 
-		["stringValue"] = _stringValue,
-		["key"] = _key,
+		["stringValue"] = args["stringValue"],
+		["key"] = args["key"],
 	}
 	asserts.AssertParameterAttribute(t)
 	return t
@@ -291,13 +315,16 @@ end
 
 --- Create a structure of type ValidationError
 -- <p>Defines a validation error. Validation errors prevent pipeline activation. The set of validation errors that can be returned are defined by AWS Data Pipeline.</p>
--- @param _errors [validationMessages] <p>A description of the validation error.</p>
--- @param _id [id] <p>The identifier of the object that contains the validation error.</p>
-function M.ValidationError(_errors, _id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidationError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errors [validationMessages] <p>A description of the validation error.</p>
+-- * id [id] <p>The identifier of the object that contains the validation error.</p>
+-- @return ValidationError structure as a key-value pair table
+function M.ValidationError(args)
+	assert(args, "You must provdide an argument table when creating ValidationError")
 	local t = { 
-		["errors"] = _errors,
-		["id"] = _id,
+		["errors"] = args["errors"],
+		["id"] = args["id"],
 	}
 	asserts.AssertValidationError(t)
 	return t
@@ -316,11 +343,14 @@ end
 
 --- Create a structure of type PipelineDeletedException
 -- <p>The specified pipeline has been deleted.</p>
--- @param _message [errorMessage] <p>Description of the error message.</p>
-function M.PipelineDeletedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineDeletedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>Description of the error message.</p>
+-- @return PipelineDeletedException structure as a key-value pair table
+function M.PipelineDeletedException(args)
+	assert(args, "You must provdide an argument table when creating PipelineDeletedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertPipelineDeletedException(t)
 	return t
@@ -341,15 +371,18 @@ end
 
 --- Create a structure of type GetPipelineDefinitionOutput
 -- <p>Contains the output of GetPipelineDefinition.</p>
--- @param _parameterValues [ParameterValueList] <p>The parameter values used in the pipeline definition.</p>
--- @param _pipelineObjects [PipelineObjectList] <p>The objects defined in the pipeline.</p>
--- @param _parameterObjects [ParameterObjectList] <p>The parameter objects used in the pipeline definition.</p>
-function M.GetPipelineDefinitionOutput(_parameterValues, _pipelineObjects, _parameterObjects, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineDefinitionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * parameterValues [ParameterValueList] <p>The parameter values used in the pipeline definition.</p>
+-- * pipelineObjects [PipelineObjectList] <p>The objects defined in the pipeline.</p>
+-- * parameterObjects [ParameterObjectList] <p>The parameter objects used in the pipeline definition.</p>
+-- @return GetPipelineDefinitionOutput structure as a key-value pair table
+function M.GetPipelineDefinitionOutput(args)
+	assert(args, "You must provdide an argument table when creating GetPipelineDefinitionOutput")
 	local t = { 
-		["parameterValues"] = _parameterValues,
-		["pipelineObjects"] = _pipelineObjects,
-		["parameterObjects"] = _parameterObjects,
+		["parameterValues"] = args["parameterValues"],
+		["pipelineObjects"] = args["pipelineObjects"],
+		["parameterObjects"] = args["parameterObjects"],
 	}
 	asserts.AssertGetPipelineDefinitionOutput(t)
 	return t
@@ -368,11 +401,14 @@ end
 
 --- Create a structure of type TaskNotFoundException
 -- <p>The specified task was not found. </p>
--- @param _message [errorMessage] <p>Description of the error message.</p>
-function M.TaskNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TaskNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>Description of the error message.</p>
+-- @return TaskNotFoundException structure as a key-value pair table
+function M.TaskNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating TaskNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTaskNotFoundException(t)
 	return t
@@ -394,16 +430,19 @@ end
 
 --- Create a structure of type DescribeObjectsOutput
 -- <p>Contains the output of DescribeObjects.</p>
--- @param _marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>DescribeObjects</code> again with this marker value. If the value is null, there are no more results.</p>
--- @param _pipelineObjects [PipelineObjectList] <p>An array of object definitions.</p>
--- @param _hasMoreResults [boolean] <p>Indicates whether there are more results to return.</p>
--- Required parameter: pipelineObjects
-function M.DescribeObjectsOutput(_marker, _pipelineObjects, _hasMoreResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeObjectsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>DescribeObjects</code> again with this marker value. If the value is null, there are no more results.</p>
+-- * pipelineObjects [PipelineObjectList] <p>An array of object definitions.</p>
+-- * hasMoreResults [boolean] <p>Indicates whether there are more results to return.</p>
+-- Required key: pipelineObjects
+-- @return DescribeObjectsOutput structure as a key-value pair table
+function M.DescribeObjectsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeObjectsOutput")
 	local t = { 
-		["marker"] = _marker,
-		["pipelineObjects"] = _pipelineObjects,
-		["hasMoreResults"] = _hasMoreResults,
+		["marker"] = args["marker"],
+		["pipelineObjects"] = args["pipelineObjects"],
+		["hasMoreResults"] = args["hasMoreResults"],
 	}
 	asserts.AssertDescribeObjectsOutput(t)
 	return t
@@ -424,14 +463,17 @@ end
 
 --- Create a structure of type ReportTaskProgressInput
 -- <p>Contains the parameters for ReportTaskProgress.</p>
--- @param _fields [fieldList] <p>Key-value pairs that define the properties of the ReportTaskProgressInput object.</p>
--- @param _taskId [taskId] <p>The ID of the task assigned to the task runner. This value is provided in the response for <a>PollForTask</a>.</p>
--- Required parameter: taskId
-function M.ReportTaskProgressInput(_fields, _taskId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReportTaskProgressInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * fields [fieldList] <p>Key-value pairs that define the properties of the ReportTaskProgressInput object.</p>
+-- * taskId [taskId] <p>The ID of the task assigned to the task runner. This value is provided in the response for <a>PollForTask</a>.</p>
+-- Required key: taskId
+-- @return ReportTaskProgressInput structure as a key-value pair table
+function M.ReportTaskProgressInput(args)
+	assert(args, "You must provdide an argument table when creating ReportTaskProgressInput")
 	local t = { 
-		["fields"] = _fields,
-		["taskId"] = _taskId,
+		["fields"] = args["fields"],
+		["taskId"] = args["taskId"],
 	}
 	asserts.AssertReportTaskProgressInput(t)
 	return t
@@ -453,15 +495,18 @@ end
 
 --- Create a structure of type Tag
 -- <p>Tags are key/value pairs defined by a user and associated with a pipeline to control access. AWS Data Pipeline allows you to associate ten tags per pipeline. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
--- @param _value [tagValue] <p>The optional value portion of a tag defined by a user. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
--- @param _key [tagKey] <p>The key name of a tag defined by a user. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
--- Required parameter: key
--- Required parameter: value
-function M.Tag(_value, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [tagValue] <p>The optional value portion of a tag defined by a user. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+-- * key [tagKey] <p>The key name of a tag defined by a user. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+-- Required key: key
+-- Required key: value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["value"] = _value,
-		["key"] = _key,
+		["value"] = args["value"],
+		["key"] = args["key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -481,13 +526,16 @@ end
 
 --- Create a structure of type Operator
 -- <p>Contains a logical operation for comparing the value of a field with a specified value.</p>
--- @param _values [stringList] <p>The value that the actual field value will be compared with.</p>
--- @param _type [OperatorType] <p> The logical operation to be performed: equal (<code>EQ</code>), equal reference (<code>REF_EQ</code>), less than or equal (<code>LE</code>), greater than or equal (<code>GE</code>), or between (<code>BETWEEN</code>). Equal reference (<code>REF_EQ</code>) can be used only with reference fields. The other comparison types can be used only with String fields. The comparison types you can use apply only to certain object fields, as detailed below. </p> <p> The comparison operators EQ and REF_EQ act on the following fields: </p> <ul> <li>name</li> <li>@sphere</li> <li>parent</li> <li>@componentParent</li> <li>@instanceParent</li> <li>@status</li> <li>@scheduledStartTime</li> <li>@scheduledEndTime</li> <li>@actualStartTime</li> <li>@actualEndTime</li> </ul> <p> The comparison operators <code>GE</code>, <code>LE</code>, and <code>BETWEEN</code> act on the following fields: </p> <ul> <li>@scheduledStartTime</li> <li>@scheduledEndTime</li> <li>@actualStartTime</li> <li>@actualEndTime</li> </ul> <p>Note that fields beginning with the at sign (@) are read-only and set by the web service. When you name fields, you should choose names containing only alpha-numeric values, as symbols may be reserved by AWS Data Pipeline. User-defined fields that you add to a pipeline should prefix their name with the string "my".</p>
-function M.Operator(_values, _type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Operator")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * values [stringList] <p>The value that the actual field value will be compared with.</p>
+-- * type [OperatorType] <p> The logical operation to be performed: equal (<code>EQ</code>), equal reference (<code>REF_EQ</code>), less than or equal (<code>LE</code>), greater than or equal (<code>GE</code>), or between (<code>BETWEEN</code>). Equal reference (<code>REF_EQ</code>) can be used only with reference fields. The other comparison types can be used only with String fields. The comparison types you can use apply only to certain object fields, as detailed below. </p> <p> The comparison operators EQ and REF_EQ act on the following fields: </p> <ul> <li>name</li> <li>@sphere</li> <li>parent</li> <li>@componentParent</li> <li>@instanceParent</li> <li>@status</li> <li>@scheduledStartTime</li> <li>@scheduledEndTime</li> <li>@actualStartTime</li> <li>@actualEndTime</li> </ul> <p> The comparison operators <code>GE</code>, <code>LE</code>, and <code>BETWEEN</code> act on the following fields: </p> <ul> <li>@scheduledStartTime</li> <li>@scheduledEndTime</li> <li>@actualStartTime</li> <li>@actualEndTime</li> </ul> <p>Note that fields beginning with the at sign (@) are read-only and set by the web service. When you name fields, you should choose names containing only alpha-numeric values, as symbols may be reserved by AWS Data Pipeline. User-defined fields that you add to a pipeline should prefix their name with the string "my".</p>
+-- @return Operator structure as a key-value pair table
+function M.Operator(args)
+	assert(args, "You must provdide an argument table when creating Operator")
 	local t = { 
-		["values"] = _values,
-		["type"] = _type,
+		["values"] = args["values"],
+		["type"] = args["type"],
 	}
 	asserts.AssertOperator(t)
 	return t
@@ -506,11 +554,14 @@ end
 
 --- Create a structure of type InternalServiceError
 -- <p>An internal service error occurred.</p>
--- @param _message [errorMessage] <p>Description of the error message.</p>
-function M.InternalServiceError(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>Description of the error message.</p>
+-- @return InternalServiceError structure as a key-value pair table
+function M.InternalServiceError(args)
+	assert(args, "You must provdide an argument table when creating InternalServiceError")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalServiceError(t)
 	return t
@@ -530,12 +581,15 @@ end
 
 --- Create a structure of type DescribePipelinesInput
 -- <p>Contains the parameters for DescribePipelines.</p>
--- @param _pipelineIds [idList] <p>The IDs of the pipelines to describe. You can pass as many as 25 identifiers in a single call. To obtain pipeline IDs, call <a>ListPipelines</a>.</p>
--- Required parameter: pipelineIds
-function M.DescribePipelinesInput(_pipelineIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePipelinesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineIds [idList] <p>The IDs of the pipelines to describe. You can pass as many as 25 identifiers in a single call. To obtain pipeline IDs, call <a>ListPipelines</a>.</p>
+-- Required key: pipelineIds
+-- @return DescribePipelinesInput structure as a key-value pair table
+function M.DescribePipelinesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribePipelinesInput")
 	local t = { 
-		["pipelineIds"] = _pipelineIds,
+		["pipelineIds"] = args["pipelineIds"],
 	}
 	asserts.AssertDescribePipelinesInput(t)
 	return t
@@ -555,13 +609,16 @@ end
 
 --- Create a structure of type Selector
 -- <p>A comparision that is used to determine whether a query should return this object.</p>
--- @param _operator [Operator] 
--- @param _fieldName [string] <p>The name of the field that the operator will be applied to. The field name is the "key" portion of the field definition in the pipeline definition syntax that is used by the AWS Data Pipeline API. If the field is not set on the object, the condition fails.</p>
-function M.Selector(_operator, _fieldName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Selector")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * operator [Operator] 
+-- * fieldName [string] <p>The name of the field that the operator will be applied to. The field name is the "key" portion of the field definition in the pipeline definition syntax that is used by the AWS Data Pipeline API. If the field is not set on the object, the condition fails.</p>
+-- @return Selector structure as a key-value pair table
+function M.Selector(args)
+	assert(args, "You must provdide an argument table when creating Selector")
 	local t = { 
-		["operator"] = _operator,
-		["fieldName"] = _fieldName,
+		["operator"] = args["operator"],
+		["fieldName"] = args["fieldName"],
 	}
 	asserts.AssertSelector(t)
 	return t
@@ -587,22 +644,25 @@ end
 
 --- Create a structure of type PipelineDescription
 -- <p>Contains pipeline metadata.</p>
--- @param _fields [fieldList] <p>A list of read-only fields that contain metadata about the pipeline: @userId, @accountId, and @pipelineState.</p>
--- @param _pipelineId [id] <p>The pipeline identifier that was assigned by AWS Data Pipeline. This is a string of the form <code>df-297EG78HU43EEXAMPLE</code>.</p>
--- @param _name [id] <p>The name of the pipeline.</p>
--- @param _tags [tagList] <p>A list of tags to associated with a pipeline. Tags let you control access to pipelines. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
--- @param _description [string] <p>Description of the pipeline.</p>
--- Required parameter: pipelineId
--- Required parameter: name
--- Required parameter: fields
-function M.PipelineDescription(_fields, _pipelineId, _name, _tags, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * fields [fieldList] <p>A list of read-only fields that contain metadata about the pipeline: @userId, @accountId, and @pipelineState.</p>
+-- * pipelineId [id] <p>The pipeline identifier that was assigned by AWS Data Pipeline. This is a string of the form <code>df-297EG78HU43EEXAMPLE</code>.</p>
+-- * name [id] <p>The name of the pipeline.</p>
+-- * tags [tagList] <p>A list of tags to associated with a pipeline. Tags let you control access to pipelines. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+-- * description [string] <p>Description of the pipeline.</p>
+-- Required key: pipelineId
+-- Required key: name
+-- Required key: fields
+-- @return PipelineDescription structure as a key-value pair table
+function M.PipelineDescription(args)
+	assert(args, "You must provdide an argument table when creating PipelineDescription")
 	local t = { 
-		["fields"] = _fields,
-		["pipelineId"] = _pipelineId,
-		["name"] = _name,
-		["tags"] = _tags,
-		["description"] = _description,
+		["fields"] = args["fields"],
+		["pipelineId"] = args["pipelineId"],
+		["name"] = args["name"],
+		["tags"] = args["tags"],
+		["description"] = args["description"],
 	}
 	asserts.AssertPipelineDescription(t)
 	return t
@@ -624,17 +684,20 @@ end
 
 --- Create a structure of type TaskObject
 -- <p>Contains information about a pipeline task that is assigned to a task runner.</p>
--- @param _objects [PipelineObjectMap] <p>Connection information for the location where the task runner will publish the output of the task.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline that provided the task.</p>
--- @param _attemptId [id] <p>The ID of the pipeline task attempt object. AWS Data Pipeline uses this value to track how many times a task is attempted.</p>
--- @param _taskId [taskId] <p>An internal identifier for the task. This ID is passed to the <a>SetTaskStatus</a> and <a>ReportTaskProgress</a> actions.</p>
-function M.TaskObject(_objects, _pipelineId, _attemptId, _taskId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TaskObject")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * objects [PipelineObjectMap] <p>Connection information for the location where the task runner will publish the output of the task.</p>
+-- * pipelineId [id] <p>The ID of the pipeline that provided the task.</p>
+-- * attemptId [id] <p>The ID of the pipeline task attempt object. AWS Data Pipeline uses this value to track how many times a task is attempted.</p>
+-- * taskId [taskId] <p>An internal identifier for the task. This ID is passed to the <a>SetTaskStatus</a> and <a>ReportTaskProgress</a> actions.</p>
+-- @return TaskObject structure as a key-value pair table
+function M.TaskObject(args)
+	assert(args, "You must provdide an argument table when creating TaskObject")
 	local t = { 
-		["objects"] = _objects,
-		["pipelineId"] = _pipelineId,
-		["attemptId"] = _attemptId,
-		["taskId"] = _taskId,
+		["objects"] = args["objects"],
+		["pipelineId"] = args["pipelineId"],
+		["attemptId"] = args["attemptId"],
+		["taskId"] = args["taskId"],
 	}
 	asserts.AssertTaskObject(t)
 	return t
@@ -658,18 +721,21 @@ end
 
 --- Create a structure of type PipelineObject
 -- <p>Contains information about a pipeline object. This can be a logical, physical, or physical attempt pipeline object. The complete set of components of a pipeline defines the pipeline.</p>
--- @param _fields [fieldList] <p>Key-value pairs that define the properties of the object.</p>
--- @param _id [id] <p>The ID of the object.</p>
--- @param _name [id] <p>The name of the object.</p>
--- Required parameter: id
--- Required parameter: name
--- Required parameter: fields
-function M.PipelineObject(_fields, _id, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineObject")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * fields [fieldList] <p>Key-value pairs that define the properties of the object.</p>
+-- * id [id] <p>The ID of the object.</p>
+-- * name [id] <p>The name of the object.</p>
+-- Required key: id
+-- Required key: name
+-- Required key: fields
+-- @return PipelineObject structure as a key-value pair table
+function M.PipelineObject(args)
+	assert(args, "You must provdide an argument table when creating PipelineObject")
 	local t = { 
-		["fields"] = _fields,
-		["id"] = _id,
-		["name"] = _name,
+		["fields"] = args["fields"],
+		["id"] = args["id"],
+		["name"] = args["name"],
 	}
 	asserts.AssertPipelineObject(t)
 	return t
@@ -693,19 +759,22 @@ end
 
 --- Create a structure of type ValidatePipelineDefinitionInput
 -- <p>Contains the parameters for ValidatePipelineDefinition.</p>
--- @param _parameterValues [ParameterValueList] <p>The parameter values used with the pipeline.</p>
--- @param _pipelineObjects [PipelineObjectList] <p>The objects that define the pipeline changes to validate against the pipeline.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline.</p>
--- @param _parameterObjects [ParameterObjectList] <p>The parameter objects used with the pipeline.</p>
--- Required parameter: pipelineId
--- Required parameter: pipelineObjects
-function M.ValidatePipelineDefinitionInput(_parameterValues, _pipelineObjects, _pipelineId, _parameterObjects, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidatePipelineDefinitionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * parameterValues [ParameterValueList] <p>The parameter values used with the pipeline.</p>
+-- * pipelineObjects [PipelineObjectList] <p>The objects that define the pipeline changes to validate against the pipeline.</p>
+-- * pipelineId [id] <p>The ID of the pipeline.</p>
+-- * parameterObjects [ParameterObjectList] <p>The parameter objects used with the pipeline.</p>
+-- Required key: pipelineId
+-- Required key: pipelineObjects
+-- @return ValidatePipelineDefinitionInput structure as a key-value pair table
+function M.ValidatePipelineDefinitionInput(args)
+	assert(args, "You must provdide an argument table when creating ValidatePipelineDefinitionInput")
 	local t = { 
-		["parameterValues"] = _parameterValues,
-		["pipelineObjects"] = _pipelineObjects,
-		["pipelineId"] = _pipelineId,
-		["parameterObjects"] = _parameterObjects,
+		["parameterValues"] = args["parameterValues"],
+		["pipelineObjects"] = args["pipelineObjects"],
+		["pipelineId"] = args["pipelineId"],
+		["parameterObjects"] = args["parameterObjects"],
 	}
 	asserts.AssertValidatePipelineDefinitionInput(t)
 	return t
@@ -725,12 +794,15 @@ end
 
 --- Create a structure of type DeletePipelineInput
 -- <p>Contains the parameters for DeletePipeline.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline.</p>
--- Required parameter: pipelineId
-function M.DeletePipelineInput(_pipelineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePipelineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineId [id] <p>The ID of the pipeline.</p>
+-- Required key: pipelineId
+-- @return DeletePipelineInput structure as a key-value pair table
+function M.DeletePipelineInput(args)
+	assert(args, "You must provdide an argument table when creating DeletePipelineInput")
 	local t = { 
-		["pipelineId"] = _pipelineId,
+		["pipelineId"] = args["pipelineId"],
 	}
 	asserts.AssertDeletePipelineInput(t)
 	return t
@@ -750,12 +822,15 @@ end
 
 --- Create a structure of type ReportTaskProgressOutput
 -- <p>Contains the output of ReportTaskProgress.</p>
--- @param _canceled [boolean] <p>If true, the calling task runner should cancel processing of the task. The task runner does not need to call <a>SetTaskStatus</a> for canceled tasks.</p>
--- Required parameter: canceled
-function M.ReportTaskProgressOutput(_canceled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReportTaskProgressOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * canceled [boolean] <p>If true, the calling task runner should cancel processing of the task. The task runner does not need to call <a>SetTaskStatus</a> for canceled tasks.</p>
+-- Required key: canceled
+-- @return ReportTaskProgressOutput structure as a key-value pair table
+function M.ReportTaskProgressOutput(args)
+	assert(args, "You must provdide an argument table when creating ReportTaskProgressOutput")
 	local t = { 
-		["canceled"] = _canceled,
+		["canceled"] = args["canceled"],
 	}
 	asserts.AssertReportTaskProgressOutput(t)
 	return t
@@ -777,16 +852,19 @@ end
 
 --- Create a structure of type PutPipelineDefinitionOutput
 -- <p>Contains the output of PutPipelineDefinition.</p>
--- @param _validationErrors [ValidationErrors] <p>The validation errors that are associated with the objects defined in <code>pipelineObjects</code>.</p>
--- @param _errored [boolean] <p>Indicates whether there were validation errors, and the pipeline definition is stored but cannot be activated until you correct the pipeline and call <code>PutPipelineDefinition</code> to commit the corrected pipeline.</p>
--- @param _validationWarnings [ValidationWarnings] <p>The validation warnings that are associated with the objects defined in <code>pipelineObjects</code>.</p>
--- Required parameter: errored
-function M.PutPipelineDefinitionOutput(_validationErrors, _errored, _validationWarnings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutPipelineDefinitionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * validationErrors [ValidationErrors] <p>The validation errors that are associated with the objects defined in <code>pipelineObjects</code>.</p>
+-- * errored [boolean] <p>Indicates whether there were validation errors, and the pipeline definition is stored but cannot be activated until you correct the pipeline and call <code>PutPipelineDefinition</code> to commit the corrected pipeline.</p>
+-- * validationWarnings [ValidationWarnings] <p>The validation warnings that are associated with the objects defined in <code>pipelineObjects</code>.</p>
+-- Required key: errored
+-- @return PutPipelineDefinitionOutput structure as a key-value pair table
+function M.PutPipelineDefinitionOutput(args)
+	assert(args, "You must provdide an argument table when creating PutPipelineDefinitionOutput")
 	local t = { 
-		["validationErrors"] = _validationErrors,
-		["errored"] = _errored,
-		["validationWarnings"] = _validationWarnings,
+		["validationErrors"] = args["validationErrors"],
+		["errored"] = args["errored"],
+		["validationWarnings"] = args["validationWarnings"],
 	}
 	asserts.AssertPutPipelineDefinitionOutput(t)
 	return t
@@ -806,12 +884,15 @@ end
 
 --- Create a structure of type CreatePipelineOutput
 -- <p>Contains the output of CreatePipeline.</p>
--- @param _pipelineId [id] <p>The ID that AWS Data Pipeline assigns the newly created pipeline. For example, <code>df-06372391ZG65EXAMPLE</code>.</p>
--- Required parameter: pipelineId
-function M.CreatePipelineOutput(_pipelineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePipelineOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineId [id] <p>The ID that AWS Data Pipeline assigns the newly created pipeline. For example, <code>df-06372391ZG65EXAMPLE</code>.</p>
+-- Required key: pipelineId
+-- @return CreatePipelineOutput structure as a key-value pair table
+function M.CreatePipelineOutput(args)
+	assert(args, "You must provdide an argument table when creating CreatePipelineOutput")
 	local t = { 
-		["pipelineId"] = _pipelineId,
+		["pipelineId"] = args["pipelineId"],
 	}
 	asserts.AssertCreatePipelineOutput(t)
 	return t
@@ -831,12 +912,15 @@ end
 
 --- Create a structure of type ReportTaskRunnerHeartbeatOutput
 -- <p>Contains the output of ReportTaskRunnerHeartbeat.</p>
--- @param _terminate [boolean] <p>Indicates whether the calling task runner should terminate.</p>
--- Required parameter: terminate
-function M.ReportTaskRunnerHeartbeatOutput(_terminate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReportTaskRunnerHeartbeatOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * terminate [boolean] <p>Indicates whether the calling task runner should terminate.</p>
+-- Required key: terminate
+-- @return ReportTaskRunnerHeartbeatOutput structure as a key-value pair table
+function M.ReportTaskRunnerHeartbeatOutput(args)
+	assert(args, "You must provdide an argument table when creating ReportTaskRunnerHeartbeatOutput")
 	local t = { 
-		["terminate"] = _terminate,
+		["terminate"] = args["terminate"],
 	}
 	asserts.AssertReportTaskRunnerHeartbeatOutput(t)
 	return t
@@ -858,15 +942,18 @@ end
 
 --- Create a structure of type RemoveTagsInput
 -- <p>Contains the parameters for RemoveTags.</p>
--- @param _tagKeys [stringList] <p>The keys of the tags to remove.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline.</p>
--- Required parameter: pipelineId
--- Required parameter: tagKeys
-function M.RemoveTagsInput(_tagKeys, _pipelineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tagKeys [stringList] <p>The keys of the tags to remove.</p>
+-- * pipelineId [id] <p>The ID of the pipeline.</p>
+-- Required key: pipelineId
+-- Required key: tagKeys
+-- @return RemoveTagsInput structure as a key-value pair table
+function M.RemoveTagsInput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsInput")
 	local t = { 
-		["tagKeys"] = _tagKeys,
-		["pipelineId"] = _pipelineId,
+		["tagKeys"] = args["tagKeys"],
+		["pipelineId"] = args["pipelineId"],
 	}
 	asserts.AssertRemoveTagsInput(t)
 	return t
@@ -884,8 +971,11 @@ end
 
 --- Create a structure of type ActivatePipelineOutput
 -- <p>Contains the output of ActivatePipeline.</p>
-function M.ActivatePipelineOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivatePipelineOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ActivatePipelineOutput structure as a key-value pair table
+function M.ActivatePipelineOutput(args)
+	assert(args, "You must provdide an argument table when creating ActivatePipelineOutput")
 	local t = { 
 	}
 	asserts.AssertActivatePipelineOutput(t)
@@ -904,8 +994,11 @@ end
 
 --- Create a structure of type RemoveTagsOutput
 -- <p>Contains the output of RemoveTags.</p>
-function M.RemoveTagsOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RemoveTagsOutput structure as a key-value pair table
+function M.RemoveTagsOutput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsOutput")
 	local t = { 
 	}
 	asserts.AssertRemoveTagsOutput(t)
@@ -925,11 +1018,14 @@ end
 
 --- Create a structure of type Query
 -- <p>Defines the query to run against an object.</p>
--- @param _selectors [SelectorList] <p>List of selectors that define the query. An object must satisfy all of the selectors to match the query.</p>
-function M.Query(_selectors, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Query")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * selectors [SelectorList] <p>List of selectors that define the query. An object must satisfy all of the selectors to match the query.</p>
+-- @return Query structure as a key-value pair table
+function M.Query(args)
+	assert(args, "You must provdide an argument table when creating Query")
 	local t = { 
-		["selectors"] = _selectors,
+		["selectors"] = args["selectors"],
 	}
 	asserts.AssertQuery(t)
 	return t
@@ -948,11 +1044,14 @@ end
 
 --- Create a structure of type InvalidRequestException
 -- <p>The request was not valid. Verify that your request was properly formatted, that the signature was generated with the correct credentials, and that you haven't exceeded any of the service limits for your account.</p>
--- @param _message [errorMessage] <p>Description of the error message.</p>
-function M.InvalidRequestException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>Description of the error message.</p>
+-- @return InvalidRequestException structure as a key-value pair table
+function M.InvalidRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRequestException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidRequestException(t)
 	return t
@@ -976,18 +1075,21 @@ end
 
 --- Create a structure of type SetStatusInput
 -- <p>Contains the parameters for SetStatus.</p>
--- @param _objectIds [idList] <p>The IDs of the objects. The corresponding objects can be either physical or components, but not a mix of both types.</p>
--- @param _status [string] <p>The status to be set on all the objects specified in <code>objectIds</code>. For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances, use <code>TRY_CANCEL</code>, <code>RERUN</code>, or <code>MARK_FINISHED</code>.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline that contains the objects.</p>
--- Required parameter: pipelineId
--- Required parameter: objectIds
--- Required parameter: status
-function M.SetStatusInput(_objectIds, _status, _pipelineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetStatusInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * objectIds [idList] <p>The IDs of the objects. The corresponding objects can be either physical or components, but not a mix of both types.</p>
+-- * status [string] <p>The status to be set on all the objects specified in <code>objectIds</code>. For components, use <code>PAUSE</code> or <code>RESUME</code>. For instances, use <code>TRY_CANCEL</code>, <code>RERUN</code>, or <code>MARK_FINISHED</code>.</p>
+-- * pipelineId [id] <p>The ID of the pipeline that contains the objects.</p>
+-- Required key: pipelineId
+-- Required key: objectIds
+-- Required key: status
+-- @return SetStatusInput structure as a key-value pair table
+function M.SetStatusInput(args)
+	assert(args, "You must provdide an argument table when creating SetStatusInput")
 	local t = { 
-		["objectIds"] = _objectIds,
-		["status"] = _status,
-		["pipelineId"] = _pipelineId,
+		["objectIds"] = args["objectIds"],
+		["status"] = args["status"],
+		["pipelineId"] = args["pipelineId"],
 	}
 	asserts.AssertSetStatusInput(t)
 	return t
@@ -1006,11 +1108,14 @@ end
 
 --- Create a structure of type PollForTaskOutput
 -- <p>Contains the output of PollForTask.</p>
--- @param _taskObject [TaskObject] <p>The information needed to complete the task that is being assigned to the task runner. One of the fields returned in this object is <code>taskId</code>, which contains an identifier for the task being assigned. The calling task runner uses <code>taskId</code> in subsequent calls to <a>ReportTaskProgress</a> and <a>SetTaskStatus</a>.</p>
-function M.PollForTaskOutput(_taskObject, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PollForTaskOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskObject [TaskObject] <p>The information needed to complete the task that is being assigned to the task runner. One of the fields returned in this object is <code>taskId</code>, which contains an identifier for the task being assigned. The calling task runner uses <code>taskId</code> in subsequent calls to <a>ReportTaskProgress</a> and <a>SetTaskStatus</a>.</p>
+-- @return PollForTaskOutput structure as a key-value pair table
+function M.PollForTaskOutput(args)
+	assert(args, "You must provdide an argument table when creating PollForTaskOutput")
 	local t = { 
-		["taskObject"] = _taskObject,
+		["taskObject"] = args["taskObject"],
 	}
 	asserts.AssertPollForTaskOutput(t)
 	return t
@@ -1030,12 +1135,15 @@ end
 
 --- Create a structure of type EvaluateExpressionOutput
 -- <p>Contains the output of EvaluateExpression.</p>
--- @param _evaluatedExpression [longString] <p>The evaluated expression.</p>
--- Required parameter: evaluatedExpression
-function M.EvaluateExpressionOutput(_evaluatedExpression, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EvaluateExpressionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * evaluatedExpression [longString] <p>The evaluated expression.</p>
+-- Required key: evaluatedExpression
+-- @return EvaluateExpressionOutput structure as a key-value pair table
+function M.EvaluateExpressionOutput(args)
+	assert(args, "You must provdide an argument table when creating EvaluateExpressionOutput")
 	local t = { 
-		["evaluatedExpression"] = _evaluatedExpression,
+		["evaluatedExpression"] = args["evaluatedExpression"],
 	}
 	asserts.AssertEvaluateExpressionOutput(t)
 	return t
@@ -1053,8 +1161,11 @@ end
 
 --- Create a structure of type DeactivatePipelineOutput
 -- <p>Contains the output of DeactivatePipeline.</p>
-function M.DeactivatePipelineOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeactivatePipelineOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeactivatePipelineOutput structure as a key-value pair table
+function M.DeactivatePipelineOutput(args)
+	assert(args, "You must provdide an argument table when creating DeactivatePipelineOutput")
 	local t = { 
 	}
 	asserts.AssertDeactivatePipelineOutput(t)
@@ -1073,8 +1184,11 @@ end
 
 --- Create a structure of type AddTagsOutput
 -- <p>Contains the output of AddTags.</p>
-function M.AddTagsOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AddTagsOutput structure as a key-value pair table
+function M.AddTagsOutput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsOutput")
 	local t = { 
 	}
 	asserts.AssertAddTagsOutput(t)
@@ -1094,11 +1208,14 @@ end
 
 --- Create a structure of type PipelineNotFoundException
 -- <p>The specified pipeline was not found. Verify that you used the correct user and account identifiers.</p>
--- @param _message [errorMessage] <p>Description of the error message.</p>
-function M.PipelineNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>Description of the error message.</p>
+-- @return PipelineNotFoundException structure as a key-value pair table
+function M.PipelineNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating PipelineNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertPipelineNotFoundException(t)
 	return t
@@ -1120,16 +1237,19 @@ end
 
 --- Create a structure of type PollForTaskInput
 -- <p>Contains the parameters for PollForTask.</p>
--- @param _workerGroup [string] <p>The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for <code>workerGroup</code> in the call to <code>PollForTask</code>. There are no wildcard values permitted in <code>workerGroup</code>; the string must be an exact, case-sensitive, match.</p>
--- @param _hostname [id] <p>The public DNS name of the calling task runner.</p>
--- @param _instanceIdentity [InstanceIdentity] <p>Identity information for the EC2 instance that is hosting the task runner. You can get this value from the instance using <code>http://169.254.169.254/latest/meta-data/instance-id</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p>
--- Required parameter: workerGroup
-function M.PollForTaskInput(_workerGroup, _hostname, _instanceIdentity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PollForTaskInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * workerGroup [string] <p>The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for <code>workerGroup</code> in the call to <code>PollForTask</code>. There are no wildcard values permitted in <code>workerGroup</code>; the string must be an exact, case-sensitive, match.</p>
+-- * hostname [id] <p>The public DNS name of the calling task runner.</p>
+-- * instanceIdentity [InstanceIdentity] <p>Identity information for the EC2 instance that is hosting the task runner. You can get this value from the instance using <code>http://169.254.169.254/latest/meta-data/instance-id</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p>
+-- Required key: workerGroup
+-- @return PollForTaskInput structure as a key-value pair table
+function M.PollForTaskInput(args)
+	assert(args, "You must provdide an argument table when creating PollForTaskInput")
 	local t = { 
-		["workerGroup"] = _workerGroup,
-		["hostname"] = _hostname,
-		["instanceIdentity"] = _instanceIdentity,
+		["workerGroup"] = args["workerGroup"],
+		["hostname"] = args["hostname"],
+		["instanceIdentity"] = args["instanceIdentity"],
 	}
 	asserts.AssertPollForTaskInput(t)
 	return t
@@ -1149,13 +1269,16 @@ end
 
 --- Create a structure of type PipelineIdName
 -- <p>Contains the name and identifier of a pipeline.</p>
--- @param _id [id] <p>The ID of the pipeline that was assigned by AWS Data Pipeline. This is a string of the form <code>df-297EG78HU43EEXAMPLE</code>.</p>
--- @param _name [id] <p>The name of the pipeline.</p>
-function M.PipelineIdName(_id, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PipelineIdName")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * id [id] <p>The ID of the pipeline that was assigned by AWS Data Pipeline. This is a string of the form <code>df-297EG78HU43EEXAMPLE</code>.</p>
+-- * name [id] <p>The name of the pipeline.</p>
+-- @return PipelineIdName structure as a key-value pair table
+function M.PipelineIdName(args)
+	assert(args, "You must provdide an argument table when creating PipelineIdName")
 	local t = { 
-		["id"] = _id,
-		["name"] = _name,
+		["id"] = args["id"],
+		["name"] = args["name"],
 	}
 	asserts.AssertPipelineIdName(t)
 	return t
@@ -1177,15 +1300,18 @@ end
 
 --- Create a structure of type AddTagsInput
 -- <p>Contains the parameters for AddTags.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline.</p>
--- @param _tags [tagList] <p>The tags to add, as key/value pairs.</p>
--- Required parameter: pipelineId
--- Required parameter: tags
-function M.AddTagsInput(_pipelineId, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineId [id] <p>The ID of the pipeline.</p>
+-- * tags [tagList] <p>The tags to add, as key/value pairs.</p>
+-- Required key: pipelineId
+-- Required key: tags
+-- @return AddTagsInput structure as a key-value pair table
+function M.AddTagsInput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsInput")
 	local t = { 
-		["pipelineId"] = _pipelineId,
-		["tags"] = _tags,
+		["pipelineId"] = args["pipelineId"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertAddTagsInput(t)
 	return t
@@ -1207,15 +1333,18 @@ end
 
 --- Create a structure of type ParameterObject
 -- <p>Contains information about a parameter object.</p>
--- @param _attributes [ParameterAttributeList] <p>The attributes of the parameter object.</p>
--- @param _id [fieldNameString] <p>The ID of the parameter object. </p>
--- Required parameter: id
--- Required parameter: attributes
-function M.ParameterObject(_attributes, _id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterObject")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attributes [ParameterAttributeList] <p>The attributes of the parameter object.</p>
+-- * id [fieldNameString] <p>The ID of the parameter object. </p>
+-- Required key: id
+-- Required key: attributes
+-- @return ParameterObject structure as a key-value pair table
+function M.ParameterObject(args)
+	assert(args, "You must provdide an argument table when creating ParameterObject")
 	local t = { 
-		["attributes"] = _attributes,
-		["id"] = _id,
+		["attributes"] = args["attributes"],
+		["id"] = args["id"],
 	}
 	asserts.AssertParameterObject(t)
 	return t
@@ -1234,11 +1363,14 @@ end
 
 --- Create a structure of type ListPipelinesInput
 -- <p>Contains the parameters for ListPipelines.</p>
--- @param _marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>ListPipelines</code> with the marker value from the previous call to retrieve the next set of results.</p>
-function M.ListPipelinesInput(_marker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPipelinesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>ListPipelines</code> with the marker value from the previous call to retrieve the next set of results.</p>
+-- @return ListPipelinesInput structure as a key-value pair table
+function M.ListPipelinesInput(args)
+	assert(args, "You must provdide an argument table when creating ListPipelinesInput")
 	local t = { 
-		["marker"] = _marker,
+		["marker"] = args["marker"],
 	}
 	asserts.AssertListPipelinesInput(t)
 	return t
@@ -1260,16 +1392,19 @@ end
 
 --- Create a structure of type Field
 -- <p>A key-value pair that describes a property of a pipeline object. The value is specified as either a string value (<code>StringValue</code>) or a reference to another object (<code>RefValue</code>) but not as both.</p>
--- @param _stringValue [fieldStringValue] <p>The field value, expressed as a String.</p>
--- @param _refValue [fieldNameString] <p>The field value, expressed as the identifier of another object.</p>
--- @param _key [fieldNameString] <p>The field identifier.</p>
--- Required parameter: key
-function M.Field(_stringValue, _refValue, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Field")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * stringValue [fieldStringValue] <p>The field value, expressed as a String.</p>
+-- * refValue [fieldNameString] <p>The field value, expressed as the identifier of another object.</p>
+-- * key [fieldNameString] <p>The field identifier.</p>
+-- Required key: key
+-- @return Field structure as a key-value pair table
+function M.Field(args)
+	assert(args, "You must provdide an argument table when creating Field")
 	local t = { 
-		["stringValue"] = _stringValue,
-		["refValue"] = _refValue,
-		["key"] = _key,
+		["stringValue"] = args["stringValue"],
+		["refValue"] = args["refValue"],
+		["key"] = args["key"],
 	}
 	asserts.AssertField(t)
 	return t
@@ -1290,14 +1425,17 @@ end
 
 --- Create a structure of type GetPipelineDefinitionInput
 -- <p>Contains the parameters for GetPipelineDefinition.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline.</p>
--- @param _version [string] <p>The version of the pipeline definition to retrieve. Set this parameter to <code>latest</code> (default) to use the last definition saved to the pipeline or <code>active</code> to use the last definition that was activated.</p>
--- Required parameter: pipelineId
-function M.GetPipelineDefinitionInput(_pipelineId, _version, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPipelineDefinitionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineId [id] <p>The ID of the pipeline.</p>
+-- * version [string] <p>The version of the pipeline definition to retrieve. Set this parameter to <code>latest</code> (default) to use the last definition saved to the pipeline or <code>active</code> to use the last definition that was activated.</p>
+-- Required key: pipelineId
+-- @return GetPipelineDefinitionInput structure as a key-value pair table
+function M.GetPipelineDefinitionInput(args)
+	assert(args, "You must provdide an argument table when creating GetPipelineDefinitionInput")
 	local t = { 
-		["pipelineId"] = _pipelineId,
-		["version"] = _version,
+		["pipelineId"] = args["pipelineId"],
+		["version"] = args["version"],
 	}
 	asserts.AssertGetPipelineDefinitionInput(t)
 	return t
@@ -1317,12 +1455,15 @@ end
 
 --- Create a structure of type DescribePipelinesOutput
 -- <p>Contains the output of DescribePipelines.</p>
--- @param _pipelineDescriptionList [PipelineDescriptionList] <p>An array of descriptions for the specified pipelines.</p>
--- Required parameter: pipelineDescriptionList
-function M.DescribePipelinesOutput(_pipelineDescriptionList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePipelinesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * pipelineDescriptionList [PipelineDescriptionList] <p>An array of descriptions for the specified pipelines.</p>
+-- Required key: pipelineDescriptionList
+-- @return DescribePipelinesOutput structure as a key-value pair table
+function M.DescribePipelinesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribePipelinesOutput")
 	local t = { 
-		["pipelineDescriptionList"] = _pipelineDescriptionList,
+		["pipelineDescriptionList"] = args["pipelineDescriptionList"],
 	}
 	asserts.AssertDescribePipelinesOutput(t)
 	return t
@@ -1344,16 +1485,19 @@ end
 
 --- Create a structure of type ReportTaskRunnerHeartbeatInput
 -- <p>Contains the parameters for ReportTaskRunnerHeartbeat.</p>
--- @param _workerGroup [string] <p>The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for <code>workerGroup</code>. There are no wildcard values permitted in <code>workerGroup</code>; the string must be an exact, case-sensitive, match.</p>
--- @param _hostname [id] <p>The public DNS name of the task runner.</p>
--- @param _taskrunnerId [id] <p>The ID of the task runner. This value should be unique across your AWS account. In the case of AWS Data Pipeline Task Runner launched on a resource managed by AWS Data Pipeline, the web service provides a unique identifier when it launches the application. If you have written a custom task runner, you should assign a unique identifier for the task runner.</p>
--- Required parameter: taskrunnerId
-function M.ReportTaskRunnerHeartbeatInput(_workerGroup, _hostname, _taskrunnerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReportTaskRunnerHeartbeatInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * workerGroup [string] <p>The type of task the task runner is configured to accept and process. The worker group is set as a field on objects in the pipeline when they are created. You can only specify a single value for <code>workerGroup</code>. There are no wildcard values permitted in <code>workerGroup</code>; the string must be an exact, case-sensitive, match.</p>
+-- * hostname [id] <p>The public DNS name of the task runner.</p>
+-- * taskrunnerId [id] <p>The ID of the task runner. This value should be unique across your AWS account. In the case of AWS Data Pipeline Task Runner launched on a resource managed by AWS Data Pipeline, the web service provides a unique identifier when it launches the application. If you have written a custom task runner, you should assign a unique identifier for the task runner.</p>
+-- Required key: taskrunnerId
+-- @return ReportTaskRunnerHeartbeatInput structure as a key-value pair table
+function M.ReportTaskRunnerHeartbeatInput(args)
+	assert(args, "You must provdide an argument table when creating ReportTaskRunnerHeartbeatInput")
 	local t = { 
-		["workerGroup"] = _workerGroup,
-		["hostname"] = _hostname,
-		["taskrunnerId"] = _taskrunnerId,
+		["workerGroup"] = args["workerGroup"],
+		["hostname"] = args["hostname"],
+		["taskrunnerId"] = args["taskrunnerId"],
 	}
 	asserts.AssertReportTaskRunnerHeartbeatInput(t)
 	return t
@@ -1374,14 +1518,17 @@ end
 
 --- Create a structure of type DeactivatePipelineInput
 -- <p>Contains the parameters for DeactivatePipeline.</p>
--- @param _cancelActive [cancelActive] <p>Indicates whether to cancel any running objects. The default is true, which sets the state of any running objects to <code>CANCELED</code>. If this value is false, the pipeline is deactivated after all running objects finish.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline.</p>
--- Required parameter: pipelineId
-function M.DeactivatePipelineInput(_cancelActive, _pipelineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeactivatePipelineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cancelActive [cancelActive] <p>Indicates whether to cancel any running objects. The default is true, which sets the state of any running objects to <code>CANCELED</code>. If this value is false, the pipeline is deactivated after all running objects finish.</p>
+-- * pipelineId [id] <p>The ID of the pipeline.</p>
+-- Required key: pipelineId
+-- @return DeactivatePipelineInput structure as a key-value pair table
+function M.DeactivatePipelineInput(args)
+	assert(args, "You must provdide an argument table when creating DeactivatePipelineInput")
 	local t = { 
-		["cancelActive"] = _cancelActive,
-		["pipelineId"] = _pipelineId,
+		["cancelActive"] = args["cancelActive"],
+		["pipelineId"] = args["pipelineId"],
 	}
 	asserts.AssertDeactivatePipelineInput(t)
 	return t
@@ -1403,16 +1550,19 @@ end
 
 --- Create a structure of type ValidatePipelineDefinitionOutput
 -- <p>Contains the output of ValidatePipelineDefinition.</p>
--- @param _validationErrors [ValidationErrors] <p>Any validation errors that were found.</p>
--- @param _errored [boolean] <p>Indicates whether there were validation errors.</p>
--- @param _validationWarnings [ValidationWarnings] <p>Any validation warnings that were found.</p>
--- Required parameter: errored
-function M.ValidatePipelineDefinitionOutput(_validationErrors, _errored, _validationWarnings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidatePipelineDefinitionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * validationErrors [ValidationErrors] <p>Any validation errors that were found.</p>
+-- * errored [boolean] <p>Indicates whether there were validation errors.</p>
+-- * validationWarnings [ValidationWarnings] <p>Any validation warnings that were found.</p>
+-- Required key: errored
+-- @return ValidatePipelineDefinitionOutput structure as a key-value pair table
+function M.ValidatePipelineDefinitionOutput(args)
+	assert(args, "You must provdide an argument table when creating ValidatePipelineDefinitionOutput")
 	local t = { 
-		["validationErrors"] = _validationErrors,
-		["errored"] = _errored,
-		["validationWarnings"] = _validationWarnings,
+		["validationErrors"] = args["validationErrors"],
+		["errored"] = args["errored"],
+		["validationWarnings"] = args["validationWarnings"],
 	}
 	asserts.AssertValidatePipelineDefinitionOutput(t)
 	return t
@@ -1436,19 +1586,22 @@ end
 
 --- Create a structure of type DescribeObjectsInput
 -- <p>Contains the parameters for DescribeObjects.</p>
--- @param _objectIds [idList] <p>The IDs of the pipeline objects that contain the definitions to be described. You can pass as many as 25 identifiers in a single call to <code>DescribeObjects</code>.</p>
--- @param _marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>DescribeObjects</code> with the marker value from the previous call to retrieve the next set of results.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline that contains the object definitions.</p>
--- @param _evaluateExpressions [boolean] <p>Indicates whether any expressions in the object should be evaluated when the object descriptions are returned.</p>
--- Required parameter: pipelineId
--- Required parameter: objectIds
-function M.DescribeObjectsInput(_objectIds, _marker, _pipelineId, _evaluateExpressions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeObjectsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * objectIds [idList] <p>The IDs of the pipeline objects that contain the definitions to be described. You can pass as many as 25 identifiers in a single call to <code>DescribeObjects</code>.</p>
+-- * marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>DescribeObjects</code> with the marker value from the previous call to retrieve the next set of results.</p>
+-- * pipelineId [id] <p>The ID of the pipeline that contains the object definitions.</p>
+-- * evaluateExpressions [boolean] <p>Indicates whether any expressions in the object should be evaluated when the object descriptions are returned.</p>
+-- Required key: pipelineId
+-- Required key: objectIds
+-- @return DescribeObjectsInput structure as a key-value pair table
+function M.DescribeObjectsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeObjectsInput")
 	local t = { 
-		["objectIds"] = _objectIds,
-		["marker"] = _marker,
-		["pipelineId"] = _pipelineId,
-		["evaluateExpressions"] = _evaluateExpressions,
+		["objectIds"] = args["objectIds"],
+		["marker"] = args["marker"],
+		["pipelineId"] = args["pipelineId"],
+		["evaluateExpressions"] = args["evaluateExpressions"],
 	}
 	asserts.AssertDescribeObjectsInput(t)
 	return t
@@ -1469,15 +1622,18 @@ end
 
 --- Create a structure of type QueryObjectsOutput
 -- <p>Contains the output of QueryObjects.</p>
--- @param _marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>QueryObjects</code> again with this marker value. If the value is null, there are no more results.</p>
--- @param _ids [idList] <p>The identifiers that match the query selectors.</p>
--- @param _hasMoreResults [boolean] <p>Indicates whether there are more results that can be obtained by a subsequent call.</p>
-function M.QueryObjectsOutput(_marker, _ids, _hasMoreResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating QueryObjectsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [string] <p>The starting point for the next page of results. To view the next page of results, call <code>QueryObjects</code> again with this marker value. If the value is null, there are no more results.</p>
+-- * ids [idList] <p>The identifiers that match the query selectors.</p>
+-- * hasMoreResults [boolean] <p>Indicates whether there are more results that can be obtained by a subsequent call.</p>
+-- @return QueryObjectsOutput structure as a key-value pair table
+function M.QueryObjectsOutput(args)
+	assert(args, "You must provdide an argument table when creating QueryObjectsOutput")
 	local t = { 
-		["marker"] = _marker,
-		["ids"] = _ids,
-		["hasMoreResults"] = _hasMoreResults,
+		["marker"] = args["marker"],
+		["ids"] = args["ids"],
+		["hasMoreResults"] = args["hasMoreResults"],
 	}
 	asserts.AssertQueryObjectsOutput(t)
 	return t
@@ -1499,15 +1655,18 @@ end
 
 --- Create a structure of type ParameterValue
 -- <p>A value or list of parameter values. </p>
--- @param _stringValue [fieldStringValue] <p>The field value, expressed as a String.</p>
--- @param _id [fieldNameString] <p>The ID of the parameter value.</p>
--- Required parameter: id
--- Required parameter: stringValue
-function M.ParameterValue(_stringValue, _id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * stringValue [fieldStringValue] <p>The field value, expressed as a String.</p>
+-- * id [fieldNameString] <p>The ID of the parameter value.</p>
+-- Required key: id
+-- Required key: stringValue
+-- @return ParameterValue structure as a key-value pair table
+function M.ParameterValue(args)
+	assert(args, "You must provdide an argument table when creating ParameterValue")
 	local t = { 
-		["stringValue"] = _stringValue,
-		["id"] = _id,
+		["stringValue"] = args["stringValue"],
+		["id"] = args["id"],
 	}
 	asserts.AssertParameterValue(t)
 	return t
@@ -1527,13 +1686,16 @@ end
 
 --- Create a structure of type ValidationWarning
 -- <p>Defines a validation warning. Validation warnings do not prevent pipeline activation. The set of validation warnings that can be returned are defined by AWS Data Pipeline.</p>
--- @param _id [id] <p>The identifier of the object that contains the validation warning.</p>
--- @param _warnings [validationMessages] <p>A description of the validation warning.</p>
-function M.ValidationWarning(_id, _warnings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidationWarning")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * id [id] <p>The identifier of the object that contains the validation warning.</p>
+-- * warnings [validationMessages] <p>A description of the validation warning.</p>
+-- @return ValidationWarning structure as a key-value pair table
+function M.ValidationWarning(args)
+	assert(args, "You must provdide an argument table when creating ValidationWarning")
 	local t = { 
-		["id"] = _id,
-		["warnings"] = _warnings,
+		["id"] = args["id"],
+		["warnings"] = args["warnings"],
 	}
 	asserts.AssertValidationWarning(t)
 	return t
@@ -1557,19 +1719,22 @@ end
 
 --- Create a structure of type PutPipelineDefinitionInput
 -- <p>Contains the parameters for PutPipelineDefinition.</p>
--- @param _parameterValues [ParameterValueList] <p>The parameter values used with the pipeline.</p>
--- @param _pipelineObjects [PipelineObjectList] <p>The objects that define the pipeline. These objects overwrite the existing pipeline definition.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline.</p>
--- @param _parameterObjects [ParameterObjectList] <p>The parameter objects used with the pipeline.</p>
--- Required parameter: pipelineId
--- Required parameter: pipelineObjects
-function M.PutPipelineDefinitionInput(_parameterValues, _pipelineObjects, _pipelineId, _parameterObjects, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutPipelineDefinitionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * parameterValues [ParameterValueList] <p>The parameter values used with the pipeline.</p>
+-- * pipelineObjects [PipelineObjectList] <p>The objects that define the pipeline. These objects overwrite the existing pipeline definition.</p>
+-- * pipelineId [id] <p>The ID of the pipeline.</p>
+-- * parameterObjects [ParameterObjectList] <p>The parameter objects used with the pipeline.</p>
+-- Required key: pipelineId
+-- Required key: pipelineObjects
+-- @return PutPipelineDefinitionInput structure as a key-value pair table
+function M.PutPipelineDefinitionInput(args)
+	assert(args, "You must provdide an argument table when creating PutPipelineDefinitionInput")
 	local t = { 
-		["parameterValues"] = _parameterValues,
-		["pipelineObjects"] = _pipelineObjects,
-		["pipelineId"] = _pipelineId,
-		["parameterObjects"] = _parameterObjects,
+		["parameterValues"] = args["parameterValues"],
+		["pipelineObjects"] = args["pipelineObjects"],
+		["pipelineId"] = args["pipelineId"],
+		["parameterObjects"] = args["parameterObjects"],
 	}
 	asserts.AssertPutPipelineDefinitionInput(t)
 	return t
@@ -1591,16 +1756,19 @@ end
 
 --- Create a structure of type ActivatePipelineInput
 -- <p>Contains the parameters for ActivatePipeline.</p>
--- @param _parameterValues [ParameterValueList] <p>A list of parameter values to pass to the pipeline at activation.</p>
--- @param _startTimestamp [timestamp] <p>The date and time to resume the pipeline. By default, the pipeline resumes from the last completed execution.</p>
--- @param _pipelineId [id] <p>The ID of the pipeline.</p>
--- Required parameter: pipelineId
-function M.ActivatePipelineInput(_parameterValues, _startTimestamp, _pipelineId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivatePipelineInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * parameterValues [ParameterValueList] <p>A list of parameter values to pass to the pipeline at activation.</p>
+-- * startTimestamp [timestamp] <p>The date and time to resume the pipeline. By default, the pipeline resumes from the last completed execution.</p>
+-- * pipelineId [id] <p>The ID of the pipeline.</p>
+-- Required key: pipelineId
+-- @return ActivatePipelineInput structure as a key-value pair table
+function M.ActivatePipelineInput(args)
+	assert(args, "You must provdide an argument table when creating ActivatePipelineInput")
 	local t = { 
-		["parameterValues"] = _parameterValues,
-		["startTimestamp"] = _startTimestamp,
-		["pipelineId"] = _pipelineId,
+		["parameterValues"] = args["parameterValues"],
+		["startTimestamp"] = args["startTimestamp"],
+		["pipelineId"] = args["pipelineId"],
 	}
 	asserts.AssertActivatePipelineInput(t)
 	return t

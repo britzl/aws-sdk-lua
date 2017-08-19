@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type InvalidRequestException
 -- <p>The request is not valid.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.InvalidRequestException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return InvalidRequestException structure as a key-value pair table
+function M.InvalidRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRequestException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidRequestException(t)
 	return t
@@ -57,11 +60,14 @@ end
 
 --- Create a structure of type ServiceUnavailableException
 -- <p>The service is temporarily unavailable.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.ServiceUnavailableException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return ServiceUnavailableException structure as a key-value pair table
+function M.ServiceUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServiceUnavailableException(t)
 	return t
@@ -80,11 +86,14 @@ end
 
 --- Create a structure of type RequestEntityTooLargeException
 -- <p>The payload exceeds the maximum size allowed.</p>
--- @param _message [ErrorMessage] <p>The message for the exception.</p>
-function M.RequestEntityTooLargeException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestEntityTooLargeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The message for the exception.</p>
+-- @return RequestEntityTooLargeException structure as a key-value pair table
+function M.RequestEntityTooLargeException(args)
+	assert(args, "You must provdide an argument table when creating RequestEntityTooLargeException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertRequestEntityTooLargeException(t)
 	return t
@@ -103,11 +112,14 @@ end
 
 --- Create a structure of type UnauthorizedException
 -- <p>You are not authorized to perform this operation.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.UnauthorizedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return UnauthorizedException structure as a key-value pair table
+function M.UnauthorizedException(args)
+	assert(args, "You must provdide an argument table when creating UnauthorizedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnauthorizedException(t)
 	return t
@@ -129,16 +141,19 @@ end
 
 --- Create a structure of type PublishRequest
 -- <p>The input for the Publish operation.</p>
--- @param _topic [Topic] <p>The name of the MQTT topic.</p>
--- @param _qos [Qos] <p>The Quality of Service (QoS) level.</p>
--- @param _payload [Payload] <p>The state information, in JSON format.</p>
--- Required parameter: topic
-function M.PublishRequest(_topic, _qos, _payload, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PublishRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * topic [Topic] <p>The name of the MQTT topic.</p>
+-- * qos [Qos] <p>The Quality of Service (QoS) level.</p>
+-- * payload [Payload] <p>The state information, in JSON format.</p>
+-- Required key: topic
+-- @return PublishRequest structure as a key-value pair table
+function M.PublishRequest(args)
+	assert(args, "You must provdide an argument table when creating PublishRequest")
 	local t = { 
-		["topic"] = _topic,
-		["qos"] = _qos,
-		["payload"] = _payload,
+		["topic"] = args["topic"],
+		["qos"] = args["qos"],
+		["payload"] = args["payload"],
 	}
 	asserts.AssertPublishRequest(t)
 	return t
@@ -160,15 +175,18 @@ end
 
 --- Create a structure of type UpdateThingShadowRequest
 -- <p>The input for the UpdateThingShadow operation.</p>
--- @param _thingName [ThingName] <p>The name of the thing.</p>
--- @param _payload [JsonDocument] <p>The state information, in JSON format.</p>
--- Required parameter: thingName
--- Required parameter: payload
-function M.UpdateThingShadowRequest(_thingName, _payload, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateThingShadowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingName [ThingName] <p>The name of the thing.</p>
+-- * payload [JsonDocument] <p>The state information, in JSON format.</p>
+-- Required key: thingName
+-- Required key: payload
+-- @return UpdateThingShadowRequest structure as a key-value pair table
+function M.UpdateThingShadowRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateThingShadowRequest")
 	local t = { 
-		["thingName"] = _thingName,
-		["payload"] = _payload,
+		["thingName"] = args["thingName"],
+		["payload"] = args["payload"],
 	}
 	asserts.AssertUpdateThingShadowRequest(t)
 	return t
@@ -187,11 +205,14 @@ end
 
 --- Create a structure of type UnsupportedDocumentEncodingException
 -- <p>The document encoding is not supported.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.UnsupportedDocumentEncodingException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedDocumentEncodingException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return UnsupportedDocumentEncodingException structure as a key-value pair table
+function M.UnsupportedDocumentEncodingException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedDocumentEncodingException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnsupportedDocumentEncodingException(t)
 	return t
@@ -210,11 +231,14 @@ end
 
 --- Create a structure of type UpdateThingShadowResponse
 -- <p>The output from the UpdateThingShadow operation.</p>
--- @param _payload [JsonDocument] <p>The state information, in JSON format.</p>
-function M.UpdateThingShadowResponse(_payload, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateThingShadowResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * payload [JsonDocument] <p>The state information, in JSON format.</p>
+-- @return UpdateThingShadowResponse structure as a key-value pair table
+function M.UpdateThingShadowResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateThingShadowResponse")
 	local t = { 
-		["payload"] = _payload,
+		["payload"] = args["payload"],
 	}
 	asserts.AssertUpdateThingShadowResponse(t)
 	return t
@@ -234,12 +258,15 @@ end
 
 --- Create a structure of type GetThingShadowRequest
 -- <p>The input for the GetThingShadow operation.</p>
--- @param _thingName [ThingName] <p>The name of the thing.</p>
--- Required parameter: thingName
-function M.GetThingShadowRequest(_thingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetThingShadowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingName [ThingName] <p>The name of the thing.</p>
+-- Required key: thingName
+-- @return GetThingShadowRequest structure as a key-value pair table
+function M.GetThingShadowRequest(args)
+	assert(args, "You must provdide an argument table when creating GetThingShadowRequest")
 	local t = { 
-		["thingName"] = _thingName,
+		["thingName"] = args["thingName"],
 	}
 	asserts.AssertGetThingShadowRequest(t)
 	return t
@@ -259,12 +286,15 @@ end
 
 --- Create a structure of type DeleteThingShadowResponse
 -- <p>The output from the DeleteThingShadow operation.</p>
--- @param _payload [JsonDocument] <p>The state information, in JSON format.</p>
--- Required parameter: payload
-function M.DeleteThingShadowResponse(_payload, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingShadowResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * payload [JsonDocument] <p>The state information, in JSON format.</p>
+-- Required key: payload
+-- @return DeleteThingShadowResponse structure as a key-value pair table
+function M.DeleteThingShadowResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteThingShadowResponse")
 	local t = { 
-		["payload"] = _payload,
+		["payload"] = args["payload"],
 	}
 	asserts.AssertDeleteThingShadowResponse(t)
 	return t
@@ -283,11 +313,14 @@ end
 
 --- Create a structure of type InternalFailureException
 -- <p>An unexpected error has occurred.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.InternalFailureException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalFailureException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return InternalFailureException structure as a key-value pair table
+function M.InternalFailureException(args)
+	assert(args, "You must provdide an argument table when creating InternalFailureException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalFailureException(t)
 	return t
@@ -306,11 +339,14 @@ end
 
 --- Create a structure of type ConflictException
 -- <p>The specified version does not match the version of the document.</p>
--- @param _message [ErrorMessage] <p>The message for the exception.</p>
-function M.ConflictException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The message for the exception.</p>
+-- @return ConflictException structure as a key-value pair table
+function M.ConflictException(args)
+	assert(args, "You must provdide an argument table when creating ConflictException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertConflictException(t)
 	return t
@@ -329,11 +365,14 @@ end
 
 --- Create a structure of type GetThingShadowResponse
 -- <p>The output from the GetThingShadow operation.</p>
--- @param _payload [JsonDocument] <p>The state information, in JSON format.</p>
-function M.GetThingShadowResponse(_payload, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetThingShadowResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * payload [JsonDocument] <p>The state information, in JSON format.</p>
+-- @return GetThingShadowResponse structure as a key-value pair table
+function M.GetThingShadowResponse(args)
+	assert(args, "You must provdide an argument table when creating GetThingShadowResponse")
 	local t = { 
-		["payload"] = _payload,
+		["payload"] = args["payload"],
 	}
 	asserts.AssertGetThingShadowResponse(t)
 	return t
@@ -352,11 +391,14 @@ end
 
 --- Create a structure of type MethodNotAllowedException
 -- <p>The specified combination of HTTP verb and URI is not supported.</p>
--- @param _message [ErrorMessage] <p>The message for the exception.</p>
-function M.MethodNotAllowedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MethodNotAllowedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The message for the exception.</p>
+-- @return MethodNotAllowedException structure as a key-value pair table
+function M.MethodNotAllowedException(args)
+	assert(args, "You must provdide an argument table when creating MethodNotAllowedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMethodNotAllowedException(t)
 	return t
@@ -375,11 +417,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified resource does not exist.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.ResourceNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -398,11 +443,14 @@ end
 
 --- Create a structure of type ThrottlingException
 -- <p>The rate exceeds the limit.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.ThrottlingException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return ThrottlingException structure as a key-value pair table
+function M.ThrottlingException(args)
+	assert(args, "You must provdide an argument table when creating ThrottlingException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertThrottlingException(t)
 	return t
@@ -422,12 +470,15 @@ end
 
 --- Create a structure of type DeleteThingShadowRequest
 -- <p>The input for the DeleteThingShadow operation.</p>
--- @param _thingName [ThingName] <p>The name of the thing.</p>
--- Required parameter: thingName
-function M.DeleteThingShadowRequest(_thingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingShadowRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingName [ThingName] <p>The name of the thing.</p>
+-- Required key: thingName
+-- @return DeleteThingShadowRequest structure as a key-value pair table
+function M.DeleteThingShadowRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteThingShadowRequest")
 	local t = { 
-		["thingName"] = _thingName,
+		["thingName"] = args["thingName"],
 	}
 	asserts.AssertDeleteThingShadowRequest(t)
 	return t

@@ -50,35 +50,38 @@ end
 
 --- Create a structure of type ReportDefinition
 -- The definition of AWS Cost and Usage Report. Customer can specify the report name, time unit, report format, compression format, S3 bucket and additional artifacts and schema elements in the definition.
--- @param _ReportName [ReportName] 
--- @param _Compression [CompressionFormat] 
--- @param _S3Region [AWSRegion] 
--- @param _Format [ReportFormat] 
--- @param _S3Prefix [S3Prefix] 
--- @param _S3Bucket [S3Bucket] 
--- @param _TimeUnit [TimeUnit] 
--- @param _AdditionalArtifacts [AdditionalArtifactList] 
--- @param _AdditionalSchemaElements [SchemaElementList] 
--- Required parameter: ReportName
--- Required parameter: TimeUnit
--- Required parameter: Format
--- Required parameter: Compression
--- Required parameter: AdditionalSchemaElements
--- Required parameter: S3Bucket
--- Required parameter: S3Prefix
--- Required parameter: S3Region
-function M.ReportDefinition(_ReportName, _Compression, _S3Region, _Format, _S3Prefix, _S3Bucket, _TimeUnit, _AdditionalArtifacts, _AdditionalSchemaElements, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReportDefinition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReportName [ReportName] 
+-- * Compression [CompressionFormat] 
+-- * S3Region [AWSRegion] 
+-- * Format [ReportFormat] 
+-- * S3Prefix [S3Prefix] 
+-- * S3Bucket [S3Bucket] 
+-- * TimeUnit [TimeUnit] 
+-- * AdditionalArtifacts [AdditionalArtifactList] 
+-- * AdditionalSchemaElements [SchemaElementList] 
+-- Required key: ReportName
+-- Required key: TimeUnit
+-- Required key: Format
+-- Required key: Compression
+-- Required key: AdditionalSchemaElements
+-- Required key: S3Bucket
+-- Required key: S3Prefix
+-- Required key: S3Region
+-- @return ReportDefinition structure as a key-value pair table
+function M.ReportDefinition(args)
+	assert(args, "You must provdide an argument table when creating ReportDefinition")
 	local t = { 
-		["ReportName"] = _ReportName,
-		["Compression"] = _Compression,
-		["S3Region"] = _S3Region,
-		["Format"] = _Format,
-		["S3Prefix"] = _S3Prefix,
-		["S3Bucket"] = _S3Bucket,
-		["TimeUnit"] = _TimeUnit,
-		["AdditionalArtifacts"] = _AdditionalArtifacts,
-		["AdditionalSchemaElements"] = _AdditionalSchemaElements,
+		["ReportName"] = args["ReportName"],
+		["Compression"] = args["Compression"],
+		["S3Region"] = args["S3Region"],
+		["Format"] = args["Format"],
+		["S3Prefix"] = args["S3Prefix"],
+		["S3Bucket"] = args["S3Bucket"],
+		["TimeUnit"] = args["TimeUnit"],
+		["AdditionalArtifacts"] = args["AdditionalArtifacts"],
+		["AdditionalSchemaElements"] = args["AdditionalSchemaElements"],
 	}
 	asserts.AssertReportDefinition(t)
 	return t
@@ -96,8 +99,11 @@ end
 
 --- Create a structure of type PutReportDefinitionResponse
 -- Response of PutReportDefinition
-function M.PutReportDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutReportDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PutReportDefinitionResponse structure as a key-value pair table
+function M.PutReportDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating PutReportDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertPutReportDefinitionResponse(t)
@@ -117,11 +123,14 @@ end
 
 --- Create a structure of type ReportLimitReachedException
 -- This exception is thrown when the number of report preference reaches max limit. The max number is 5.
--- @param _Message [ErrorMessage] 
-function M.ReportLimitReachedException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReportLimitReachedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return ReportLimitReachedException structure as a key-value pair table
+function M.ReportLimitReachedException(args)
+	assert(args, "You must provdide an argument table when creating ReportLimitReachedException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertReportLimitReachedException(t)
 	return t
@@ -140,11 +149,14 @@ end
 
 --- Create a structure of type InternalErrorException
 -- This exception is thrown on a known dependency failure.
--- @param _Message [ErrorMessage] 
-function M.InternalErrorException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return InternalErrorException structure as a key-value pair table
+function M.InternalErrorException(args)
+	assert(args, "You must provdide an argument table when creating InternalErrorException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInternalErrorException(t)
 	return t
@@ -163,11 +175,14 @@ end
 
 --- Create a structure of type ValidationException
 -- This exception is thrown when providing an invalid input. eg. Put a report preference with an invalid report name, or Delete a report preference with an empty report name.
--- @param _Message [ErrorMessage] 
-function M.ValidationException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return ValidationException structure as a key-value pair table
+function M.ValidationException(args)
+	assert(args, "You must provdide an argument table when creating ValidationException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertValidationException(t)
 	return t
@@ -186,11 +201,14 @@ end
 
 --- Create a structure of type DuplicateReportNameException
 -- This exception is thrown when putting a report preference with a name that already exists.
--- @param _Message [ErrorMessage] 
-function M.DuplicateReportNameException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateReportNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- @return DuplicateReportNameException structure as a key-value pair table
+function M.DuplicateReportNameException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateReportNameException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDuplicateReportNameException(t)
 	return t
@@ -209,11 +227,14 @@ end
 
 --- Create a structure of type DeleteReportDefinitionResponse
 -- Response of DeleteReportDefinition
--- @param _ResponseMessage [DeleteResponseMessage] 
-function M.DeleteReportDefinitionResponse(_ResponseMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReportDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResponseMessage [DeleteResponseMessage] 
+-- @return DeleteReportDefinitionResponse structure as a key-value pair table
+function M.DeleteReportDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteReportDefinitionResponse")
 	local t = { 
-		["ResponseMessage"] = _ResponseMessage,
+		["ResponseMessage"] = args["ResponseMessage"],
 	}
 	asserts.AssertDeleteReportDefinitionResponse(t)
 	return t
@@ -233,13 +254,16 @@ end
 
 --- Create a structure of type DescribeReportDefinitionsRequest
 -- Request of DescribeReportDefinitions
--- @param _NextToken [GenericString] 
--- @param _MaxResults [MaxResults] 
-function M.DescribeReportDefinitionsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReportDefinitionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [GenericString] 
+-- * MaxResults [MaxResults] 
+-- @return DescribeReportDefinitionsRequest structure as a key-value pair table
+function M.DescribeReportDefinitionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeReportDefinitionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeReportDefinitionsRequest(t)
 	return t
@@ -259,13 +283,16 @@ end
 
 --- Create a structure of type DescribeReportDefinitionsResponse
 -- Response of DescribeReportDefinitions
--- @param _ReportDefinitions [ReportDefinitionList] 
--- @param _NextToken [GenericString] 
-function M.DescribeReportDefinitionsResponse(_ReportDefinitions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReportDefinitionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReportDefinitions [ReportDefinitionList] 
+-- * NextToken [GenericString] 
+-- @return DescribeReportDefinitionsResponse structure as a key-value pair table
+function M.DescribeReportDefinitionsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeReportDefinitionsResponse")
 	local t = { 
-		["ReportDefinitions"] = _ReportDefinitions,
-		["NextToken"] = _NextToken,
+		["ReportDefinitions"] = args["ReportDefinitions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeReportDefinitionsResponse(t)
 	return t
@@ -284,11 +311,14 @@ end
 
 --- Create a structure of type DeleteReportDefinitionRequest
 -- Request of DeleteReportDefinition
--- @param _ReportName [ReportName] 
-function M.DeleteReportDefinitionRequest(_ReportName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReportDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReportName [ReportName] 
+-- @return DeleteReportDefinitionRequest structure as a key-value pair table
+function M.DeleteReportDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteReportDefinitionRequest")
 	local t = { 
-		["ReportName"] = _ReportName,
+		["ReportName"] = args["ReportName"],
 	}
 	asserts.AssertDeleteReportDefinitionRequest(t)
 	return t
@@ -308,12 +338,15 @@ end
 
 --- Create a structure of type PutReportDefinitionRequest
 -- Request of PutReportDefinition
--- @param _ReportDefinition [ReportDefinition] 
--- Required parameter: ReportDefinition
-function M.PutReportDefinitionRequest(_ReportDefinition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutReportDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReportDefinition [ReportDefinition] 
+-- Required key: ReportDefinition
+-- @return PutReportDefinitionRequest structure as a key-value pair table
+function M.PutReportDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating PutReportDefinitionRequest")
 	local t = { 
-		["ReportDefinition"] = _ReportDefinition,
+		["ReportDefinition"] = args["ReportDefinition"],
 	}
 	asserts.AssertPutReportDefinitionRequest(t)
 	return t

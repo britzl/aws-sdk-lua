@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests and use exponential backoff. For more information, go to <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#APIRetries">Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
--- @param _message [ErrorMessage] <p>Too many operations for a given subscriber.</p>
-function M.LimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Too many operations for a given subscriber.</p>
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -58,13 +61,16 @@ end
 
 --- Create a structure of type SequenceNumberRange
 -- <p>The beginning and ending sequence numbers for the stream records contained within a shard.</p>
--- @param _EndingSequenceNumber [SequenceNumber] <p>The last sequence number.</p>
--- @param _StartingSequenceNumber [SequenceNumber] <p>The first sequence number.</p>
-function M.SequenceNumberRange(_EndingSequenceNumber, _StartingSequenceNumber, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SequenceNumberRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndingSequenceNumber [SequenceNumber] <p>The last sequence number.</p>
+-- * StartingSequenceNumber [SequenceNumber] <p>The first sequence number.</p>
+-- @return SequenceNumberRange structure as a key-value pair table
+function M.SequenceNumberRange(args)
+	assert(args, "You must provdide an argument table when creating SequenceNumberRange")
 	local t = { 
-		["EndingSequenceNumber"] = _EndingSequenceNumber,
-		["StartingSequenceNumber"] = _StartingSequenceNumber,
+		["EndingSequenceNumber"] = args["EndingSequenceNumber"],
+		["StartingSequenceNumber"] = args["StartingSequenceNumber"],
 	}
 	asserts.AssertSequenceNumberRange(t)
 	return t
@@ -85,15 +91,18 @@ end
 
 --- Create a structure of type ListStreamsInput
 -- <p>Represents the input of a <code>ListStreams</code> operation.</p>
--- @param _Limit [PositiveIntegerObject] <p>The maximum number of streams to return. The upper limit is 100.</p>
--- @param _TableName [TableName] <p>If this parameter is provided, then only the streams associated with this table name are returned.</p>
--- @param _ExclusiveStartStreamArn [StreamArn] <p>The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedStreamArn</code> in the previous operation. </p>
-function M.ListStreamsInput(_Limit, _TableName, _ExclusiveStartStreamArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListStreamsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [PositiveIntegerObject] <p>The maximum number of streams to return. The upper limit is 100.</p>
+-- * TableName [TableName] <p>If this parameter is provided, then only the streams associated with this table name are returned.</p>
+-- * ExclusiveStartStreamArn [StreamArn] <p>The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedStreamArn</code> in the previous operation. </p>
+-- @return ListStreamsInput structure as a key-value pair table
+function M.ListStreamsInput(args)
+	assert(args, "You must provdide an argument table when creating ListStreamsInput")
 	local t = { 
-		["Limit"] = _Limit,
-		["TableName"] = _TableName,
-		["ExclusiveStartStreamArn"] = _ExclusiveStartStreamArn,
+		["Limit"] = args["Limit"],
+		["TableName"] = args["TableName"],
+		["ExclusiveStartStreamArn"] = args["ExclusiveStartStreamArn"],
 	}
 	asserts.AssertListStreamsInput(t)
 	return t
@@ -115,15 +124,18 @@ end
 
 --- Create a structure of type KeySchemaElement
 -- <p>Represents <i>a single element</i> of a key schema. A key schema specifies the attributes that make up the primary key of a table, or the key attributes of an index.</p> <p>A <code>KeySchemaElement</code> represents exactly one attribute of the primary key. For example, a simple primary key (partition key) would be represented by one <code>KeySchemaElement</code>. A composite primary key (partition key and sort key) would require one <code>KeySchemaElement</code> for the partition key, and another <code>KeySchemaElement</code> for the sort key.</p> <note> <p>The partition key of an item is also known as its <i>hash attribute</i>. The term "hash attribute" derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.</p> <p>The sort key of an item is also known as its <i>range attribute</i>. The term "range attribute" derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.</p> </note>
--- @param _KeyType [KeyType] <p>The attribute data, consisting of the data type and the attribute value itself.</p>
--- @param _AttributeName [KeySchemaAttributeName] <p>The name of a key attribute.</p>
--- Required parameter: AttributeName
--- Required parameter: KeyType
-function M.KeySchemaElement(_KeyType, _AttributeName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KeySchemaElement")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KeyType [KeyType] <p>The attribute data, consisting of the data type and the attribute value itself.</p>
+-- * AttributeName [KeySchemaAttributeName] <p>The name of a key attribute.</p>
+-- Required key: AttributeName
+-- Required key: KeyType
+-- @return KeySchemaElement structure as a key-value pair table
+function M.KeySchemaElement(args)
+	assert(args, "You must provdide an argument table when creating KeySchemaElement")
 	local t = { 
-		["KeyType"] = _KeyType,
-		["AttributeName"] = _AttributeName,
+		["KeyType"] = args["KeyType"],
+		["AttributeName"] = args["AttributeName"],
 	}
 	asserts.AssertKeySchemaElement(t)
 	return t
@@ -143,13 +155,16 @@ end
 
 --- Create a structure of type Identity
 -- <p>Contains details about the type of identity that made the request.</p>
--- @param _Type [String] <p>The type of the identity. For Time To Live, the type is "Service".</p>
--- @param _PrincipalId [String] <p>A unique identifier for the entity that made the call. For Time To Live, the principalId is "dynamodb.amazonaws.com".</p>
-function M.Identity(_Type, _PrincipalId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Identity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [String] <p>The type of the identity. For Time To Live, the type is "Service".</p>
+-- * PrincipalId [String] <p>A unique identifier for the entity that made the call. For Time To Live, the principalId is "dynamodb.amazonaws.com".</p>
+-- @return Identity structure as a key-value pair table
+function M.Identity(args)
+	assert(args, "You must provdide an argument table when creating Identity")
 	local t = { 
-		["Type"] = _Type,
-		["PrincipalId"] = _PrincipalId,
+		["Type"] = args["Type"],
+		["PrincipalId"] = args["PrincipalId"],
 	}
 	asserts.AssertIdentity(t)
 	return t
@@ -170,15 +185,18 @@ end
 
 --- Create a structure of type Shard
 -- <p>A uniquely identified group of stream records within a stream.</p>
--- @param _ShardId [ShardId] <p>The system-generated identifier for this shard.</p>
--- @param _ParentShardId [ShardId] <p>The shard ID of the current shard's parent.</p>
--- @param _SequenceNumberRange [SequenceNumberRange] <p>The range of possible sequence numbers for the shard.</p>
-function M.Shard(_ShardId, _ParentShardId, _SequenceNumberRange, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Shard")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardId [ShardId] <p>The system-generated identifier for this shard.</p>
+-- * ParentShardId [ShardId] <p>The shard ID of the current shard's parent.</p>
+-- * SequenceNumberRange [SequenceNumberRange] <p>The range of possible sequence numbers for the shard.</p>
+-- @return Shard structure as a key-value pair table
+function M.Shard(args)
+	assert(args, "You must provdide an argument table when creating Shard")
 	local t = { 
-		["ShardId"] = _ShardId,
-		["ParentShardId"] = _ParentShardId,
-		["SequenceNumberRange"] = _SequenceNumberRange,
+		["ShardId"] = args["ShardId"],
+		["ParentShardId"] = args["ParentShardId"],
+		["SequenceNumberRange"] = args["SequenceNumberRange"],
 	}
 	asserts.AssertShard(t)
 	return t
@@ -203,20 +221,23 @@ end
 
 --- Create a structure of type GetShardIteratorInput
 -- <p>Represents the input of a <code>GetShardIterator</code> operation.</p>
--- @param _ShardId [ShardId] <p>The identifier of the shard. The iterator will be returned for this shard ID.</p>
--- @param _StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
--- @param _SequenceNumber [SequenceNumber] <p>The sequence number of a stream record in the shard from which to start reading.</p>
--- @param _ShardIteratorType [ShardIteratorType] <p>Determines how the shard iterator is used to start reading stream records from the shard:</p> <ul> <li> <p> <code>AT_SEQUENCE_NUMBER</code> - Start reading exactly from the position denoted by a specific sequence number.</p> </li> <li> <p> <code>AFTER_SEQUENCE_NUMBER</code> - Start reading right after the position denoted by a specific sequence number.</p> </li> <li> <p> <code>TRIM_HORIZON</code> - Start reading at the last (untrimmed) stream record, which is the oldest record in the shard. In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age exceeds this limit are subject to removal (trimming) from the stream.</p> </li> <li> <p> <code>LATEST</code> - Start reading just after the most recent stream record in the shard, so that you always read the most recent data in the shard.</p> </li> </ul>
--- Required parameter: StreamArn
--- Required parameter: ShardId
--- Required parameter: ShardIteratorType
-function M.GetShardIteratorInput(_ShardId, _StreamArn, _SequenceNumber, _ShardIteratorType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetShardIteratorInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardId [ShardId] <p>The identifier of the shard. The iterator will be returned for this shard ID.</p>
+-- * StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
+-- * SequenceNumber [SequenceNumber] <p>The sequence number of a stream record in the shard from which to start reading.</p>
+-- * ShardIteratorType [ShardIteratorType] <p>Determines how the shard iterator is used to start reading stream records from the shard:</p> <ul> <li> <p> <code>AT_SEQUENCE_NUMBER</code> - Start reading exactly from the position denoted by a specific sequence number.</p> </li> <li> <p> <code>AFTER_SEQUENCE_NUMBER</code> - Start reading right after the position denoted by a specific sequence number.</p> </li> <li> <p> <code>TRIM_HORIZON</code> - Start reading at the last (untrimmed) stream record, which is the oldest record in the shard. In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age exceeds this limit are subject to removal (trimming) from the stream.</p> </li> <li> <p> <code>LATEST</code> - Start reading just after the most recent stream record in the shard, so that you always read the most recent data in the shard.</p> </li> </ul>
+-- Required key: StreamArn
+-- Required key: ShardId
+-- Required key: ShardIteratorType
+-- @return GetShardIteratorInput structure as a key-value pair table
+function M.GetShardIteratorInput(args)
+	assert(args, "You must provdide an argument table when creating GetShardIteratorInput")
 	local t = { 
-		["ShardId"] = _ShardId,
-		["StreamArn"] = _StreamArn,
-		["SequenceNumber"] = _SequenceNumber,
-		["ShardIteratorType"] = _ShardIteratorType,
+		["ShardId"] = args["ShardId"],
+		["StreamArn"] = args["StreamArn"],
+		["SequenceNumber"] = args["SequenceNumber"],
+		["ShardIteratorType"] = args["ShardIteratorType"],
 	}
 	asserts.AssertGetShardIteratorInput(t)
 	return t
@@ -235,11 +256,14 @@ end
 
 --- Create a structure of type ExpiredIteratorException
 -- <p>The shard iterator has expired and can no longer be used to retrieve stream records. A shard iterator expires 15 minutes after it is retrieved using the <code>GetShardIterator</code> action.</p>
--- @param _message [ErrorMessage] <p>The provided iterator exceeds the maximum age allowed.</p>
-function M.ExpiredIteratorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredIteratorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The provided iterator exceeds the maximum age allowed.</p>
+-- @return ExpiredIteratorException structure as a key-value pair table
+function M.ExpiredIteratorException(args)
+	assert(args, "You must provdide an argument table when creating ExpiredIteratorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertExpiredIteratorException(t)
 	return t
@@ -258,11 +282,14 @@ end
 
 --- Create a structure of type GetShardIteratorOutput
 -- <p>Represents the output of a <code>GetShardIterator</code> operation.</p>
--- @param _ShardIterator [ShardIterator] <p>The position in the shard from which to start reading stream records sequentially. A shard iterator specifies this position using the sequence number of a stream record in a shard.</p>
-function M.GetShardIteratorOutput(_ShardIterator, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetShardIteratorOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardIterator [ShardIterator] <p>The position in the shard from which to start reading stream records sequentially. A shard iterator specifies this position using the sequence number of a stream record in a shard.</p>
+-- @return GetShardIteratorOutput structure as a key-value pair table
+function M.GetShardIteratorOutput(args)
+	assert(args, "You must provdide an argument table when creating GetShardIteratorOutput")
 	local t = { 
-		["ShardIterator"] = _ShardIterator,
+		["ShardIterator"] = args["ShardIterator"],
 	}
 	asserts.AssertGetShardIteratorOutput(t)
 	return t
@@ -281,11 +308,14 @@ end
 
 --- Create a structure of type DescribeStreamOutput
 -- <p>Represents the output of a <code>DescribeStream</code> operation.</p>
--- @param _StreamDescription [StreamDescription] <p>A complete description of the stream, including its creation date and time, the DynamoDB table associated with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream records within the shards.</p>
-function M.DescribeStreamOutput(_StreamDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStreamOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamDescription [StreamDescription] <p>A complete description of the stream, including its creation date and time, the DynamoDB table associated with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream records within the shards.</p>
+-- @return DescribeStreamOutput structure as a key-value pair table
+function M.DescribeStreamOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeStreamOutput")
 	local t = { 
-		["StreamDescription"] = _StreamDescription,
+		["StreamDescription"] = args["StreamDescription"],
 	}
 	asserts.AssertDescribeStreamOutput(t)
 	return t
@@ -310,23 +340,26 @@ end
 
 --- Create a structure of type Record
 -- <p>A description of a unique event within a stream.</p>
--- @param _eventID [String] <p>A globally unique identifier for the event that was recorded in this stream record.</p>
--- @param _eventVersion [String] <p>The version number of the stream record format. This number is updated whenever the structure of <code>Record</code> is modified.</p> <p>Client applications must not assume that <code>eventVersion</code> will remain at a particular value, as this number is subject to change at any time. In general, <code>eventVersion</code> will only increase as the low-level DynamoDB Streams API evolves.</p>
--- @param _dynamodb [StreamRecord] <p>The main body of the stream record, containing all of the DynamoDB-specific fields.</p>
--- @param _awsRegion [String] <p>The region in which the <code>GetRecords</code> request was received.</p>
--- @param _eventName [OperationType] <p>The type of data modification that was performed on the DynamoDB table:</p> <ul> <li> <p> <code>INSERT</code> - a new item was added to the table.</p> </li> <li> <p> <code>MODIFY</code> - one or more of an existing item's attributes were modified.</p> </li> <li> <p> <code>REMOVE</code> - the item was deleted from the table</p> </li> </ul>
--- @param _userIdentity [Identity] <p>Items that are deleted by the Time to Live process after expiration have the following fields: </p> <ul> <li> <p>Records[].userIdentity.type</p> <p>"Service"</p> </li> <li> <p>Records[].userIdentity.principalId</p> <p>"dynamodb.amazonaws.com"</p> </li> </ul>
--- @param _eventSource [String] <p>The AWS service from which the stream record originated. For DynamoDB Streams, this is <code>aws:dynamodb</code>.</p>
-function M.Record(_eventID, _eventVersion, _dynamodb, _awsRegion, _eventName, _userIdentity, _eventSource, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Record")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * eventID [String] <p>A globally unique identifier for the event that was recorded in this stream record.</p>
+-- * eventVersion [String] <p>The version number of the stream record format. This number is updated whenever the structure of <code>Record</code> is modified.</p> <p>Client applications must not assume that <code>eventVersion</code> will remain at a particular value, as this number is subject to change at any time. In general, <code>eventVersion</code> will only increase as the low-level DynamoDB Streams API evolves.</p>
+-- * dynamodb [StreamRecord] <p>The main body of the stream record, containing all of the DynamoDB-specific fields.</p>
+-- * awsRegion [String] <p>The region in which the <code>GetRecords</code> request was received.</p>
+-- * eventName [OperationType] <p>The type of data modification that was performed on the DynamoDB table:</p> <ul> <li> <p> <code>INSERT</code> - a new item was added to the table.</p> </li> <li> <p> <code>MODIFY</code> - one or more of an existing item's attributes were modified.</p> </li> <li> <p> <code>REMOVE</code> - the item was deleted from the table</p> </li> </ul>
+-- * userIdentity [Identity] <p>Items that are deleted by the Time to Live process after expiration have the following fields: </p> <ul> <li> <p>Records[].userIdentity.type</p> <p>"Service"</p> </li> <li> <p>Records[].userIdentity.principalId</p> <p>"dynamodb.amazonaws.com"</p> </li> </ul>
+-- * eventSource [String] <p>The AWS service from which the stream record originated. For DynamoDB Streams, this is <code>aws:dynamodb</code>.</p>
+-- @return Record structure as a key-value pair table
+function M.Record(args)
+	assert(args, "You must provdide an argument table when creating Record")
 	local t = { 
-		["eventID"] = _eventID,
-		["eventVersion"] = _eventVersion,
-		["dynamodb"] = _dynamodb,
-		["awsRegion"] = _awsRegion,
-		["eventName"] = _eventName,
-		["userIdentity"] = _userIdentity,
-		["eventSource"] = _eventSource,
+		["eventID"] = args["eventID"],
+		["eventVersion"] = args["eventVersion"],
+		["dynamodb"] = args["dynamodb"],
+		["awsRegion"] = args["awsRegion"],
+		["eventName"] = args["eventName"],
+		["userIdentity"] = args["userIdentity"],
+		["eventSource"] = args["eventSource"],
 	}
 	asserts.AssertRecord(t)
 	return t
@@ -345,11 +378,14 @@ end
 
 --- Create a structure of type InternalServerError
 -- <p>An error occurred on the server side.</p>
--- @param _message [ErrorMessage] <p>The server encountered an internal error trying to fulfill the request.</p>
-function M.InternalServerError(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The server encountered an internal error trying to fulfill the request.</p>
+-- @return InternalServerError structure as a key-value pair table
+function M.InternalServerError(args)
+	assert(args, "You must provdide an argument table when creating InternalServerError")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalServerError(t)
 	return t
@@ -370,14 +406,17 @@ end
 
 --- Create a structure of type GetRecordsInput
 -- <p>Represents the input of a <code>GetRecords</code> operation.</p>
--- @param _ShardIterator [ShardIterator] <p>A shard iterator that was retrieved from a previous GetShardIterator operation. This iterator can be used to access the stream records in this shard.</p>
--- @param _Limit [PositiveIntegerObject] <p>The maximum number of records to return from the shard. The upper limit is 1000.</p>
--- Required parameter: ShardIterator
-function M.GetRecordsInput(_ShardIterator, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRecordsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardIterator [ShardIterator] <p>A shard iterator that was retrieved from a previous GetShardIterator operation. This iterator can be used to access the stream records in this shard.</p>
+-- * Limit [PositiveIntegerObject] <p>The maximum number of records to return from the shard. The upper limit is 1000.</p>
+-- Required key: ShardIterator
+-- @return GetRecordsInput structure as a key-value pair table
+function M.GetRecordsInput(args)
+	assert(args, "You must provdide an argument table when creating GetRecordsInput")
 	local t = { 
-		["ShardIterator"] = _ShardIterator,
-		["Limit"] = _Limit,
+		["ShardIterator"] = args["ShardIterator"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertGetRecordsInput(t)
 	return t
@@ -404,27 +443,30 @@ end
 
 --- Create a structure of type StreamDescription
 -- <p>Represents all of the data describing a particular stream.</p>
--- @param _StreamLabel [String] <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <code>StreamLabel</code> </p> </li> </ul>
--- @param _StreamStatus [StreamStatus] <p>Indicates the current status of the stream:</p> <ul> <li> <p> <code>ENABLING</code> - Streams is currently being enabled on the DynamoDB table.</p> </li> <li> <p> <code>ENABLED</code> - the stream is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Streams is currently being disabled on the DynamoDB table.</p> </li> <li> <p> <code>DISABLED</code> - the stream is disabled.</p> </li> </ul>
--- @param _TableName [TableName] <p>The DynamoDB table with which the stream is associated.</p>
--- @param _Shards [ShardDescriptionList] <p>The shards that comprise the stream.</p>
--- @param _CreationRequestDateTime [Date] <p>The date and time when the request to create this stream was issued.</p>
--- @param _StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
--- @param _LastEvaluatedShardId [ShardId] <p>The shard ID of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p> <p>If <code>LastEvaluatedShardId</code> is empty, then the "last page" of results has been processed and there is currently no more data to be retrieved.</p> <p>If <code>LastEvaluatedShardId</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedShardId</code> is empty.</p>
--- @param _KeySchema [KeySchema] <p>The key attribute(s) of the stream's DynamoDB table.</p>
--- @param _StreamViewType [StreamViewType] <p>Indicates the format of the records within this stream:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of items that were modified in the DynamoDB table.</p> </li> <li> <p> <code>NEW_IMAGE</code> - entire items from the table, as they appeared after they were modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - entire items from the table, as they appeared before they were modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old images of the items from the table.</p> </li> </ul>
-function M.StreamDescription(_StreamLabel, _StreamStatus, _TableName, _Shards, _CreationRequestDateTime, _StreamArn, _LastEvaluatedShardId, _KeySchema, _StreamViewType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StreamDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamLabel [String] <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <code>StreamLabel</code> </p> </li> </ul>
+-- * StreamStatus [StreamStatus] <p>Indicates the current status of the stream:</p> <ul> <li> <p> <code>ENABLING</code> - Streams is currently being enabled on the DynamoDB table.</p> </li> <li> <p> <code>ENABLED</code> - the stream is enabled.</p> </li> <li> <p> <code>DISABLING</code> - Streams is currently being disabled on the DynamoDB table.</p> </li> <li> <p> <code>DISABLED</code> - the stream is disabled.</p> </li> </ul>
+-- * TableName [TableName] <p>The DynamoDB table with which the stream is associated.</p>
+-- * Shards [ShardDescriptionList] <p>The shards that comprise the stream.</p>
+-- * CreationRequestDateTime [Date] <p>The date and time when the request to create this stream was issued.</p>
+-- * StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
+-- * LastEvaluatedShardId [ShardId] <p>The shard ID of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p> <p>If <code>LastEvaluatedShardId</code> is empty, then the "last page" of results has been processed and there is currently no more data to be retrieved.</p> <p>If <code>LastEvaluatedShardId</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedShardId</code> is empty.</p>
+-- * KeySchema [KeySchema] <p>The key attribute(s) of the stream's DynamoDB table.</p>
+-- * StreamViewType [StreamViewType] <p>Indicates the format of the records within this stream:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of items that were modified in the DynamoDB table.</p> </li> <li> <p> <code>NEW_IMAGE</code> - entire items from the table, as they appeared after they were modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - entire items from the table, as they appeared before they were modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old images of the items from the table.</p> </li> </ul>
+-- @return StreamDescription structure as a key-value pair table
+function M.StreamDescription(args)
+	assert(args, "You must provdide an argument table when creating StreamDescription")
 	local t = { 
-		["StreamLabel"] = _StreamLabel,
-		["StreamStatus"] = _StreamStatus,
-		["TableName"] = _TableName,
-		["Shards"] = _Shards,
-		["CreationRequestDateTime"] = _CreationRequestDateTime,
-		["StreamArn"] = _StreamArn,
-		["LastEvaluatedShardId"] = _LastEvaluatedShardId,
-		["KeySchema"] = _KeySchema,
-		["StreamViewType"] = _StreamViewType,
+		["StreamLabel"] = args["StreamLabel"],
+		["StreamStatus"] = args["StreamStatus"],
+		["TableName"] = args["TableName"],
+		["Shards"] = args["Shards"],
+		["CreationRequestDateTime"] = args["CreationRequestDateTime"],
+		["StreamArn"] = args["StreamArn"],
+		["LastEvaluatedShardId"] = args["LastEvaluatedShardId"],
+		["KeySchema"] = args["KeySchema"],
+		["StreamViewType"] = args["StreamViewType"],
 	}
 	asserts.AssertStreamDescription(t)
 	return t
@@ -452,29 +494,32 @@ end
 
 --- Create a structure of type AttributeValue
 -- <p>Represents the data for an attribute. You can set one, and only one, of the elements.</p> <p>Each attribute in an item is a name-value pair. An attribute can be single-valued or multi-valued set. For example, a book item can have title and authors attributes. Each book has one title but can have many authors. The multi-valued attribute is a set; duplicate values are not allowed.</p>
--- @param _B [BinaryAttributeValue] <p>A Binary data type.</p>
--- @param _NULL [NullAttributeValue] <p>A Null data type.</p>
--- @param _SS [StringSetAttributeValue] <p>A String Set data type.</p>
--- @param _M [MapAttributeValue] <p>A Map data type.</p>
--- @param _L [ListAttributeValue] <p>A List data type.</p>
--- @param _N [NumberAttributeValue] <p>A Number data type.</p>
--- @param _S [StringAttributeValue] <p>A String data type.</p>
--- @param _BOOL [BooleanAttributeValue] <p>A Boolean data type.</p>
--- @param _BS [BinarySetAttributeValue] <p>A Binary Set data type.</p>
--- @param _NS [NumberSetAttributeValue] <p>A Number Set data type.</p>
-function M.AttributeValue(_B, _NULL, _SS, _M, _L, _N, _S, _BOOL, _BS, _NS, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttributeValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * B [BinaryAttributeValue] <p>A Binary data type.</p>
+-- * NULL [NullAttributeValue] <p>A Null data type.</p>
+-- * SS [StringSetAttributeValue] <p>A String Set data type.</p>
+-- * M [MapAttributeValue] <p>A Map data type.</p>
+-- * L [ListAttributeValue] <p>A List data type.</p>
+-- * N [NumberAttributeValue] <p>A Number data type.</p>
+-- * S [StringAttributeValue] <p>A String data type.</p>
+-- * BOOL [BooleanAttributeValue] <p>A Boolean data type.</p>
+-- * BS [BinarySetAttributeValue] <p>A Binary Set data type.</p>
+-- * NS [NumberSetAttributeValue] <p>A Number Set data type.</p>
+-- @return AttributeValue structure as a key-value pair table
+function M.AttributeValue(args)
+	assert(args, "You must provdide an argument table when creating AttributeValue")
 	local t = { 
-		["B"] = _B,
-		["NULL"] = _NULL,
-		["SS"] = _SS,
-		["M"] = _M,
-		["L"] = _L,
-		["N"] = _N,
-		["S"] = _S,
-		["BOOL"] = _BOOL,
-		["BS"] = _BS,
-		["NS"] = _NS,
+		["B"] = args["B"],
+		["NULL"] = args["NULL"],
+		["SS"] = args["SS"],
+		["M"] = args["M"],
+		["L"] = args["L"],
+		["N"] = args["N"],
+		["S"] = args["S"],
+		["BOOL"] = args["BOOL"],
+		["BS"] = args["BS"],
+		["NS"] = args["NS"],
 	}
 	asserts.AssertAttributeValue(t)
 	return t
@@ -495,15 +540,18 @@ end
 
 --- Create a structure of type Stream
 -- <p>Represents all of the data describing a particular stream.</p>
--- @param _TableName [TableName] <p>The DynamoDB table with which the stream is associated.</p>
--- @param _StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
--- @param _StreamLabel [String] <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <code>StreamLabel</code> </p> </li> </ul>
-function M.Stream(_TableName, _StreamArn, _StreamLabel, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Stream")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TableName [TableName] <p>The DynamoDB table with which the stream is associated.</p>
+-- * StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
+-- * StreamLabel [String] <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <code>StreamLabel</code> </p> </li> </ul>
+-- @return Stream structure as a key-value pair table
+function M.Stream(args)
+	assert(args, "You must provdide an argument table when creating Stream")
 	local t = { 
-		["TableName"] = _TableName,
-		["StreamArn"] = _StreamArn,
-		["StreamLabel"] = _StreamLabel,
+		["TableName"] = args["TableName"],
+		["StreamArn"] = args["StreamArn"],
+		["StreamLabel"] = args["StreamLabel"],
 	}
 	asserts.AssertStream(t)
 	return t
@@ -523,13 +571,16 @@ end
 
 --- Create a structure of type ListStreamsOutput
 -- <p>Represents the output of a <code>ListStreams</code> operation.</p>
--- @param _LastEvaluatedStreamArn [StreamArn] <p>The stream ARN of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p> <p>If <code>LastEvaluatedStreamArn</code> is empty, then the "last page" of results has been processed and there is no more data to be retrieved.</p> <p>If <code>LastEvaluatedStreamArn</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedStreamArn</code> is empty.</p>
--- @param _Streams [StreamList] <p>A list of stream descriptors associated with the current account and endpoint.</p>
-function M.ListStreamsOutput(_LastEvaluatedStreamArn, _Streams, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListStreamsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastEvaluatedStreamArn [StreamArn] <p>The stream ARN of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request.</p> <p>If <code>LastEvaluatedStreamArn</code> is empty, then the "last page" of results has been processed and there is no more data to be retrieved.</p> <p>If <code>LastEvaluatedStreamArn</code> is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when <code>LastEvaluatedStreamArn</code> is empty.</p>
+-- * Streams [StreamList] <p>A list of stream descriptors associated with the current account and endpoint.</p>
+-- @return ListStreamsOutput structure as a key-value pair table
+function M.ListStreamsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListStreamsOutput")
 	local t = { 
-		["LastEvaluatedStreamArn"] = _LastEvaluatedStreamArn,
-		["Streams"] = _Streams,
+		["LastEvaluatedStreamArn"] = args["LastEvaluatedStreamArn"],
+		["Streams"] = args["Streams"],
 	}
 	asserts.AssertListStreamsOutput(t)
 	return t
@@ -549,13 +600,16 @@ end
 
 --- Create a structure of type GetRecordsOutput
 -- <p>Represents the output of a <code>GetRecords</code> operation.</p>
--- @param _Records [RecordList] <p>The stream records from the shard, which were retrieved using the shard iterator.</p>
--- @param _NextShardIterator [ShardIterator] <p>The next position in the shard from which to start sequentially reading stream records. If set to <code>null</code>, the shard has been closed and the requested iterator will not return any more data.</p>
-function M.GetRecordsOutput(_Records, _NextShardIterator, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRecordsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Records [RecordList] <p>The stream records from the shard, which were retrieved using the shard iterator.</p>
+-- * NextShardIterator [ShardIterator] <p>The next position in the shard from which to start sequentially reading stream records. If set to <code>null</code>, the shard has been closed and the requested iterator will not return any more data.</p>
+-- @return GetRecordsOutput structure as a key-value pair table
+function M.GetRecordsOutput(args)
+	assert(args, "You must provdide an argument table when creating GetRecordsOutput")
 	local t = { 
-		["Records"] = _Records,
-		["NextShardIterator"] = _NextShardIterator,
+		["Records"] = args["Records"],
+		["NextShardIterator"] = args["NextShardIterator"],
 	}
 	asserts.AssertGetRecordsOutput(t)
 	return t
@@ -574,11 +628,14 @@ end
 
 --- Create a structure of type TrimmedDataAccessException
 -- <p>The operation attempted to read past the oldest stream record in a shard.</p> <p>In DynamoDB Streams, there is a 24 hour limit on data retention. Stream records whose age exceeds this limit are subject to removal (trimming) from the stream. You might receive a TrimmedDataAccessException if:</p> <ul> <li><p>You request a shard iterator with a sequence number older than the trim point (24 hours).</p> </li> <li><p>You obtain a shard iterator, but before you use the iterator in a <code>GetRecords</code> request, a stream record in the shard exceeds the 24 hour period and is trimmed. This causes the iterator to access a record that no longer exists.</p> </li> </ul>
--- @param _message [ErrorMessage] <p>"The data you are trying to access has been trimmed.</p>
-function M.TrimmedDataAccessException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrimmedDataAccessException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>"The data you are trying to access has been trimmed.</p>
+-- @return TrimmedDataAccessException structure as a key-value pair table
+function M.TrimmedDataAccessException(args)
+	assert(args, "You must provdide an argument table when creating TrimmedDataAccessException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTrimmedDataAccessException(t)
 	return t
@@ -597,11 +654,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The operation tried to access a nonexistent stream.</p>
--- @param _message [ErrorMessage] <p>The resource which is being requested does not exist.</p>
-function M.ResourceNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The resource which is being requested does not exist.</p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -626,23 +686,26 @@ end
 
 --- Create a structure of type StreamRecord
 -- <p>A description of a single data modification that was performed on an item in a DynamoDB table.</p>
--- @param _OldImage [AttributeMap] <p>The item in the DynamoDB table as it appeared before it was modified.</p>
--- @param _SequenceNumber [SequenceNumber] <p>The sequence number of the stream record.</p>
--- @param _Keys [AttributeMap] <p>The primary key attribute(s) for the DynamoDB item that was modified.</p>
--- @param _SizeBytes [PositiveLongObject] <p>The size of the stream record, in bytes.</p>
--- @param _NewImage [AttributeMap] <p>The item in the DynamoDB table as it appeared after it was modified.</p>
--- @param _ApproximateCreationDateTime [Date] <p>The approximate date and time when the stream record was created, in <a href="http://www.epochconverter.com/">UNIX epoch time</a> format.</p>
--- @param _StreamViewType [StreamViewType] <p>The type of data from the modified DynamoDB item that was captured in this stream record:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of the modified item.</p> </li> <li> <p> <code>NEW_IMAGE</code> - the entire item, as it appeared after it was modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - the entire item, as it appeared before it was modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old item images of the item.</p> </li> </ul>
-function M.StreamRecord(_OldImage, _SequenceNumber, _Keys, _SizeBytes, _NewImage, _ApproximateCreationDateTime, _StreamViewType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StreamRecord")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OldImage [AttributeMap] <p>The item in the DynamoDB table as it appeared before it was modified.</p>
+-- * SequenceNumber [SequenceNumber] <p>The sequence number of the stream record.</p>
+-- * Keys [AttributeMap] <p>The primary key attribute(s) for the DynamoDB item that was modified.</p>
+-- * SizeBytes [PositiveLongObject] <p>The size of the stream record, in bytes.</p>
+-- * NewImage [AttributeMap] <p>The item in the DynamoDB table as it appeared after it was modified.</p>
+-- * ApproximateCreationDateTime [Date] <p>The approximate date and time when the stream record was created, in <a href="http://www.epochconverter.com/">UNIX epoch time</a> format.</p>
+-- * StreamViewType [StreamViewType] <p>The type of data from the modified DynamoDB item that was captured in this stream record:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of the modified item.</p> </li> <li> <p> <code>NEW_IMAGE</code> - the entire item, as it appeared after it was modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - the entire item, as it appeared before it was modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old item images of the item.</p> </li> </ul>
+-- @return StreamRecord structure as a key-value pair table
+function M.StreamRecord(args)
+	assert(args, "You must provdide an argument table when creating StreamRecord")
 	local t = { 
-		["OldImage"] = _OldImage,
-		["SequenceNumber"] = _SequenceNumber,
-		["Keys"] = _Keys,
-		["SizeBytes"] = _SizeBytes,
-		["NewImage"] = _NewImage,
-		["ApproximateCreationDateTime"] = _ApproximateCreationDateTime,
-		["StreamViewType"] = _StreamViewType,
+		["OldImage"] = args["OldImage"],
+		["SequenceNumber"] = args["SequenceNumber"],
+		["Keys"] = args["Keys"],
+		["SizeBytes"] = args["SizeBytes"],
+		["NewImage"] = args["NewImage"],
+		["ApproximateCreationDateTime"] = args["ApproximateCreationDateTime"],
+		["StreamViewType"] = args["StreamViewType"],
 	}
 	asserts.AssertStreamRecord(t)
 	return t
@@ -664,16 +727,19 @@ end
 
 --- Create a structure of type DescribeStreamInput
 -- <p>Represents the input of a <code>DescribeStream</code> operation.</p>
--- @param _Limit [PositiveIntegerObject] <p>The maximum number of shard objects to return. The upper limit is 100.</p>
--- @param _StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
--- @param _ExclusiveStartShardId [ShardId] <p>The shard ID of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedShardId</code> in the previous operation. </p>
--- Required parameter: StreamArn
-function M.DescribeStreamInput(_Limit, _StreamArn, _ExclusiveStartShardId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStreamInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [PositiveIntegerObject] <p>The maximum number of shard objects to return. The upper limit is 100.</p>
+-- * StreamArn [StreamArn] <p>The Amazon Resource Name (ARN) for the stream.</p>
+-- * ExclusiveStartShardId [ShardId] <p>The shard ID of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedShardId</code> in the previous operation. </p>
+-- Required key: StreamArn
+-- @return DescribeStreamInput structure as a key-value pair table
+function M.DescribeStreamInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeStreamInput")
 	local t = { 
-		["Limit"] = _Limit,
-		["StreamArn"] = _StreamArn,
-		["ExclusiveStartShardId"] = _ExclusiveStartShardId,
+		["Limit"] = args["Limit"],
+		["StreamArn"] = args["StreamArn"],
+		["ExclusiveStartShardId"] = args["ExclusiveStartShardId"],
 	}
 	asserts.AssertDescribeStreamInput(t)
 	return t

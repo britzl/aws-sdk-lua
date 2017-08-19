@@ -36,15 +36,18 @@ end
 
 --- Create a structure of type EnhancedMonitoringOutput
 -- <p>Represents the output for <a>EnableEnhancedMonitoring</a> and <a>DisableEnhancedMonitoring</a>.</p>
--- @param _StreamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
--- @param _CurrentShardLevelMetrics [MetricsNameList] <p>Represents the current state of the metrics that are in the enhanced state before the operation.</p>
--- @param _DesiredShardLevelMetrics [MetricsNameList] <p>Represents the list of all the metrics that would be in the enhanced state after the operation.</p>
-function M.EnhancedMonitoringOutput(_StreamName, _CurrentShardLevelMetrics, _DesiredShardLevelMetrics, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnhancedMonitoringOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
+-- * CurrentShardLevelMetrics [MetricsNameList] <p>Represents the current state of the metrics that are in the enhanced state before the operation.</p>
+-- * DesiredShardLevelMetrics [MetricsNameList] <p>Represents the list of all the metrics that would be in the enhanced state after the operation.</p>
+-- @return EnhancedMonitoringOutput structure as a key-value pair table
+function M.EnhancedMonitoringOutput(args)
+	assert(args, "You must provdide an argument table when creating EnhancedMonitoringOutput")
 	local t = { 
-		["StreamName"] = _StreamName,
-		["CurrentShardLevelMetrics"] = _CurrentShardLevelMetrics,
-		["DesiredShardLevelMetrics"] = _DesiredShardLevelMetrics,
+		["StreamName"] = args["StreamName"],
+		["CurrentShardLevelMetrics"] = args["CurrentShardLevelMetrics"],
+		["DesiredShardLevelMetrics"] = args["DesiredShardLevelMetrics"],
 	}
 	asserts.AssertEnhancedMonitoringOutput(t)
 	return t
@@ -68,18 +71,21 @@ end
 
 --- Create a structure of type UpdateShardCountInput
 --  
--- @param _TargetShardCount [PositiveIntegerObject] <p>The new number of shards.</p>
--- @param _StreamName [StreamName] <p>The name of the stream.</p>
--- @param _ScalingType [ScalingType] <p>The scaling type. Uniform scaling creates shards of equal size.</p>
--- Required parameter: StreamName
--- Required parameter: TargetShardCount
--- Required parameter: ScalingType
-function M.UpdateShardCountInput(_TargetShardCount, _StreamName, _ScalingType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateShardCountInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetShardCount [PositiveIntegerObject] <p>The new number of shards.</p>
+-- * StreamName [StreamName] <p>The name of the stream.</p>
+-- * ScalingType [ScalingType] <p>The scaling type. Uniform scaling creates shards of equal size.</p>
+-- Required key: StreamName
+-- Required key: TargetShardCount
+-- Required key: ScalingType
+-- @return UpdateShardCountInput structure as a key-value pair table
+function M.UpdateShardCountInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateShardCountInput")
 	local t = { 
-		["TargetShardCount"] = _TargetShardCount,
-		["StreamName"] = _StreamName,
-		["ScalingType"] = _ScalingType,
+		["TargetShardCount"] = args["TargetShardCount"],
+		["StreamName"] = args["StreamName"],
+		["ScalingType"] = args["ScalingType"],
 	}
 	asserts.AssertUpdateShardCountInput(t)
 	return t
@@ -101,15 +107,18 @@ end
 
 --- Create a structure of type PutRecordsInput
 -- <p>A <code>PutRecords</code> request.</p>
--- @param _Records [PutRecordsRequestEntryList] <p>The records associated with the request.</p>
--- @param _StreamName [StreamName] <p>The stream name associated with the request.</p>
--- Required parameter: Records
--- Required parameter: StreamName
-function M.PutRecordsInput(_Records, _StreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Records [PutRecordsRequestEntryList] <p>The records associated with the request.</p>
+-- * StreamName [StreamName] <p>The stream name associated with the request.</p>
+-- Required key: Records
+-- Required key: StreamName
+-- @return PutRecordsInput structure as a key-value pair table
+function M.PutRecordsInput(args)
+	assert(args, "You must provdide an argument table when creating PutRecordsInput")
 	local t = { 
-		["Records"] = _Records,
-		["StreamName"] = _StreamName,
+		["Records"] = args["Records"],
+		["StreamName"] = args["StreamName"],
 	}
 	asserts.AssertPutRecordsInput(t)
 	return t
@@ -133,18 +142,21 @@ end
 
 --- Create a structure of type SplitShardInput
 -- <p>Represents the input for <code>SplitShard</code>.</p>
--- @param _ShardToSplit [ShardId] <p>The shard ID of the shard to split.</p>
--- @param _StreamName [StreamName] <p>The name of the stream for the shard split.</p>
--- @param _NewStartingHashKey [HashKey] <p>A hash key value for the starting hash key of one of the child shards created by the split. The hash key range for a given shard constitutes a set of ordered contiguous positive integers. The value for <code>NewStartingHashKey</code> must be in the range of hash keys being mapped into the shard. The <code>NewStartingHashKey</code> hash key value and all higher hash key values in hash key range are distributed to one of the child shards. All the lower hash key values in the range are distributed to the other child shard.</p>
--- Required parameter: StreamName
--- Required parameter: ShardToSplit
--- Required parameter: NewStartingHashKey
-function M.SplitShardInput(_ShardToSplit, _StreamName, _NewStartingHashKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SplitShardInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardToSplit [ShardId] <p>The shard ID of the shard to split.</p>
+-- * StreamName [StreamName] <p>The name of the stream for the shard split.</p>
+-- * NewStartingHashKey [HashKey] <p>A hash key value for the starting hash key of one of the child shards created by the split. The hash key range for a given shard constitutes a set of ordered contiguous positive integers. The value for <code>NewStartingHashKey</code> must be in the range of hash keys being mapped into the shard. The <code>NewStartingHashKey</code> hash key value and all higher hash key values in hash key range are distributed to one of the child shards. All the lower hash key values in the range are distributed to the other child shard.</p>
+-- Required key: StreamName
+-- Required key: ShardToSplit
+-- Required key: NewStartingHashKey
+-- @return SplitShardInput structure as a key-value pair table
+function M.SplitShardInput(args)
+	assert(args, "You must provdide an argument table when creating SplitShardInput")
 	local t = { 
-		["ShardToSplit"] = _ShardToSplit,
-		["StreamName"] = _StreamName,
-		["NewStartingHashKey"] = _NewStartingHashKey,
+		["ShardToSplit"] = args["ShardToSplit"],
+		["StreamName"] = args["StreamName"],
+		["NewStartingHashKey"] = args["NewStartingHashKey"],
 	}
 	asserts.AssertSplitShardInput(t)
 	return t
@@ -163,11 +175,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests exceeds the maximum number allowed (5).</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.LimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -189,15 +204,18 @@ end
 
 --- Create a structure of type DecreaseStreamRetentionPeriodInput
 -- <p>Represents the input for <a>DecreaseStreamRetentionPeriod</a>.</p>
--- @param _RetentionPeriodHours [PositiveIntegerObject] <p>The new retention period of the stream, in hours. Must be less than the current retention period.</p>
--- @param _StreamName [StreamName] <p>The name of the stream to modify.</p>
--- Required parameter: StreamName
--- Required parameter: RetentionPeriodHours
-function M.DecreaseStreamRetentionPeriodInput(_RetentionPeriodHours, _StreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DecreaseStreamRetentionPeriodInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RetentionPeriodHours [PositiveIntegerObject] <p>The new retention period of the stream, in hours. Must be less than the current retention period.</p>
+-- * StreamName [StreamName] <p>The name of the stream to modify.</p>
+-- Required key: StreamName
+-- Required key: RetentionPeriodHours
+-- @return DecreaseStreamRetentionPeriodInput structure as a key-value pair table
+function M.DecreaseStreamRetentionPeriodInput(args)
+	assert(args, "You must provdide an argument table when creating DecreaseStreamRetentionPeriodInput")
 	local t = { 
-		["RetentionPeriodHours"] = _RetentionPeriodHours,
-		["StreamName"] = _StreamName,
+		["RetentionPeriodHours"] = args["RetentionPeriodHours"],
+		["StreamName"] = args["StreamName"],
 	}
 	asserts.AssertDecreaseStreamRetentionPeriodInput(t)
 	return t
@@ -219,15 +237,18 @@ end
 
 --- Create a structure of type DescribeLimitsOutput
 --  
--- @param _OpenShardCount [ShardCountObject] <p>The number of open shards.</p>
--- @param _ShardLimit [ShardCountObject] <p>The maximum number of shards.</p>
--- Required parameter: ShardLimit
--- Required parameter: OpenShardCount
-function M.DescribeLimitsOutput(_OpenShardCount, _ShardLimit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLimitsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OpenShardCount [ShardCountObject] <p>The number of open shards.</p>
+-- * ShardLimit [ShardCountObject] <p>The maximum number of shards.</p>
+-- Required key: ShardLimit
+-- Required key: OpenShardCount
+-- @return DescribeLimitsOutput structure as a key-value pair table
+function M.DescribeLimitsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeLimitsOutput")
 	local t = { 
-		["OpenShardCount"] = _OpenShardCount,
-		["ShardLimit"] = _ShardLimit,
+		["OpenShardCount"] = args["OpenShardCount"],
+		["ShardLimit"] = args["ShardLimit"],
 	}
 	asserts.AssertDescribeLimitsOutput(t)
 	return t
@@ -247,13 +268,16 @@ end
 
 --- Create a structure of type ListStreamsInput
 -- <p>Represents the input for <code>ListStreams</code>.</p>
--- @param _Limit [ListStreamsInputLimit] <p>The maximum number of streams to list.</p>
--- @param _ExclusiveStartStreamName [StreamName] <p>The name of the stream to start the list with.</p>
-function M.ListStreamsInput(_Limit, _ExclusiveStartStreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListStreamsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [ListStreamsInputLimit] <p>The maximum number of streams to list.</p>
+-- * ExclusiveStartStreamName [StreamName] <p>The name of the stream to start the list with.</p>
+-- @return ListStreamsInput structure as a key-value pair table
+function M.ListStreamsInput(args)
+	assert(args, "You must provdide an argument table when creating ListStreamsInput")
 	local t = { 
-		["Limit"] = _Limit,
-		["ExclusiveStartStreamName"] = _ExclusiveStartStreamName,
+		["Limit"] = args["Limit"],
+		["ExclusiveStartStreamName"] = args["ExclusiveStartStreamName"],
 	}
 	asserts.AssertListStreamsInput(t)
 	return t
@@ -275,15 +299,18 @@ end
 
 --- Create a structure of type AddTagsToStreamInput
 -- <p>Represents the input for <code>AddTagsToStream</code>.</p>
--- @param _StreamName [StreamName] <p>The name of the stream.</p>
--- @param _Tags [TagMap] <p>The set of key-value pairs to use to create the tags.</p>
--- Required parameter: StreamName
--- Required parameter: Tags
-function M.AddTagsToStreamInput(_StreamName, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToStreamInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamName [StreamName] <p>The name of the stream.</p>
+-- * Tags [TagMap] <p>The set of key-value pairs to use to create the tags.</p>
+-- Required key: StreamName
+-- Required key: Tags
+-- @return AddTagsToStreamInput structure as a key-value pair table
+function M.AddTagsToStreamInput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToStreamInput")
 	local t = { 
-		["StreamName"] = _StreamName,
-		["Tags"] = _Tags,
+		["StreamName"] = args["StreamName"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertAddTagsToStreamInput(t)
 	return t
@@ -305,15 +332,18 @@ end
 
 --- Create a structure of type HashKeyRange
 -- <p>The range of possible hash key values for the shard, which is a set of ordered contiguous positive integers.</p>
--- @param _EndingHashKey [HashKey] <p>The ending hash key of the hash key range.</p>
--- @param _StartingHashKey [HashKey] <p>The starting hash key of the hash key range.</p>
--- Required parameter: StartingHashKey
--- Required parameter: EndingHashKey
-function M.HashKeyRange(_EndingHashKey, _StartingHashKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HashKeyRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndingHashKey [HashKey] <p>The ending hash key of the hash key range.</p>
+-- * StartingHashKey [HashKey] <p>The starting hash key of the hash key range.</p>
+-- Required key: StartingHashKey
+-- Required key: EndingHashKey
+-- @return HashKeyRange structure as a key-value pair table
+function M.HashKeyRange(args)
+	assert(args, "You must provdide an argument table when creating HashKeyRange")
 	local t = { 
-		["EndingHashKey"] = _EndingHashKey,
-		["StartingHashKey"] = _StartingHashKey,
+		["EndingHashKey"] = args["EndingHashKey"],
+		["StartingHashKey"] = args["StartingHashKey"],
 	}
 	asserts.AssertHashKeyRange(t)
 	return t
@@ -332,11 +362,14 @@ end
 
 --- Create a structure of type ResourceInUseException
 -- <p>The resource is not available for this operation. For successful operation, the resource needs to be in the <code>ACTIVE</code> state.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ResourceInUseException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return ResourceInUseException structure as a key-value pair table
+function M.ResourceInUseException(args)
+	assert(args, "You must provdide an argument table when creating ResourceInUseException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceInUseException(t)
 	return t
@@ -358,15 +391,18 @@ end
 
 --- Create a structure of type DisableEnhancedMonitoringInput
 -- <p>Represents the input for <a>DisableEnhancedMonitoring</a>.</p>
--- @param _ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics to disable.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" disables every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
--- @param _StreamName [StreamName] <p>The name of the Amazon Kinesis stream for which to disable enhanced monitoring.</p>
--- Required parameter: StreamName
--- Required parameter: ShardLevelMetrics
-function M.DisableEnhancedMonitoringInput(_ShardLevelMetrics, _StreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableEnhancedMonitoringInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics to disable.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" disables every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
+-- * StreamName [StreamName] <p>The name of the Amazon Kinesis stream for which to disable enhanced monitoring.</p>
+-- Required key: StreamName
+-- Required key: ShardLevelMetrics
+-- @return DisableEnhancedMonitoringInput structure as a key-value pair table
+function M.DisableEnhancedMonitoringInput(args)
+	assert(args, "You must provdide an argument table when creating DisableEnhancedMonitoringInput")
 	local t = { 
-		["ShardLevelMetrics"] = _ShardLevelMetrics,
-		["StreamName"] = _StreamName,
+		["ShardLevelMetrics"] = args["ShardLevelMetrics"],
+		["StreamName"] = args["StreamName"],
 	}
 	asserts.AssertDisableEnhancedMonitoringInput(t)
 	return t
@@ -387,14 +423,17 @@ end
 
 --- Create a structure of type Tag
 -- <p>Metadata assigned to the stream, consisting of a key-value pair.</p>
--- @param _Value [TagValue] <p>An optional string, typically used to describe or define the tag. Maximum length: 256 characters. Valid characters: Unicode letters, digits, white space, _ . / = + - % @</p>
--- @param _Key [TagKey] <p>A unique identifier for the tag. Maximum length: 128 characters. Valid characters: Unicode letters, digits, white space, _ . / = + - % @</p>
--- Required parameter: Key
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>An optional string, typically used to describe or define the tag. Maximum length: 256 characters. Valid characters: Unicode letters, digits, white space, _ . / = + - % @</p>
+-- * Key [TagKey] <p>A unique identifier for the tag. Maximum length: 128 characters. Valid characters: Unicode letters, digits, white space, _ . / = + - % @</p>
+-- Required key: Key
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -417,17 +456,20 @@ end
 
 --- Create a structure of type PutRecordsRequestEntry
 -- <p>Represents the output for <code>PutRecords</code>.</p>
--- @param _PartitionKey [PartitionKey] <p>Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters for each key. Amazon Kinesis uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this hashing mechanism, all data records with the same partition key map to the same shard within the stream.</p>
--- @param _Data [Data] <p>The data blob to put into the record, which is base64-encoded when the blob is serialized. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
--- @param _ExplicitHashKey [HashKey] <p>The hash value used to determine explicitly the shard that the data record is assigned to by overriding the partition key hash.</p>
--- Required parameter: Data
--- Required parameter: PartitionKey
-function M.PutRecordsRequestEntry(_PartitionKey, _Data, _ExplicitHashKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordsRequestEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PartitionKey [PartitionKey] <p>Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters for each key. Amazon Kinesis uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this hashing mechanism, all data records with the same partition key map to the same shard within the stream.</p>
+-- * Data [Data] <p>The data blob to put into the record, which is base64-encoded when the blob is serialized. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
+-- * ExplicitHashKey [HashKey] <p>The hash value used to determine explicitly the shard that the data record is assigned to by overriding the partition key hash.</p>
+-- Required key: Data
+-- Required key: PartitionKey
+-- @return PutRecordsRequestEntry structure as a key-value pair table
+function M.PutRecordsRequestEntry(args)
+	assert(args, "You must provdide an argument table when creating PutRecordsRequestEntry")
 	local t = { 
-		["PartitionKey"] = _PartitionKey,
-		["Data"] = _Data,
-		["ExplicitHashKey"] = _ExplicitHashKey,
+		["PartitionKey"] = args["PartitionKey"],
+		["Data"] = args["Data"],
+		["ExplicitHashKey"] = args["ExplicitHashKey"],
 	}
 	asserts.AssertPutRecordsRequestEntry(t)
 	return t
@@ -451,18 +493,21 @@ end
 
 --- Create a structure of type MergeShardsInput
 -- <p>Represents the input for <code>MergeShards</code>.</p>
--- @param _StreamName [StreamName] <p>The name of the stream for the merge.</p>
--- @param _ShardToMerge [ShardId] <p>The shard ID of the shard to combine with the adjacent shard for the merge.</p>
--- @param _AdjacentShardToMerge [ShardId] <p>The shard ID of the adjacent shard for the merge.</p>
--- Required parameter: StreamName
--- Required parameter: ShardToMerge
--- Required parameter: AdjacentShardToMerge
-function M.MergeShardsInput(_StreamName, _ShardToMerge, _AdjacentShardToMerge, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MergeShardsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamName [StreamName] <p>The name of the stream for the merge.</p>
+-- * ShardToMerge [ShardId] <p>The shard ID of the shard to combine with the adjacent shard for the merge.</p>
+-- * AdjacentShardToMerge [ShardId] <p>The shard ID of the adjacent shard for the merge.</p>
+-- Required key: StreamName
+-- Required key: ShardToMerge
+-- Required key: AdjacentShardToMerge
+-- @return MergeShardsInput structure as a key-value pair table
+function M.MergeShardsInput(args)
+	assert(args, "You must provdide an argument table when creating MergeShardsInput")
 	local t = { 
-		["StreamName"] = _StreamName,
-		["ShardToMerge"] = _ShardToMerge,
-		["AdjacentShardToMerge"] = _AdjacentShardToMerge,
+		["StreamName"] = args["StreamName"],
+		["ShardToMerge"] = args["ShardToMerge"],
+		["AdjacentShardToMerge"] = args["AdjacentShardToMerge"],
 	}
 	asserts.AssertMergeShardsInput(t)
 	return t
@@ -482,12 +527,15 @@ end
 
 --- Create a structure of type DeleteStreamInput
 -- <p>Represents the input for <a>DeleteStream</a>.</p>
--- @param _StreamName [StreamName] <p>The name of the stream to delete.</p>
--- Required parameter: StreamName
-function M.DeleteStreamInput(_StreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStreamInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamName [StreamName] <p>The name of the stream to delete.</p>
+-- Required key: StreamName
+-- @return DeleteStreamInput structure as a key-value pair table
+function M.DeleteStreamInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteStreamInput")
 	local t = { 
-		["StreamName"] = _StreamName,
+		["StreamName"] = args["StreamName"],
 	}
 	asserts.AssertDeleteStreamInput(t)
 	return t
@@ -513,22 +561,25 @@ end
 
 --- Create a structure of type Shard
 -- <p>A uniquely identified group of data records in an Amazon Kinesis stream.</p>
--- @param _ShardId [ShardId] <p>The unique identifier of the shard within the stream.</p>
--- @param _HashKeyRange [HashKeyRange] <p>The range of possible hash key values for the shard, which is a set of ordered contiguous positive integers.</p>
--- @param _ParentShardId [ShardId] <p>The shard ID of the shard's parent.</p>
--- @param _AdjacentParentShardId [ShardId] <p>The shard ID of the shard adjacent to the shard's parent.</p>
--- @param _SequenceNumberRange [SequenceNumberRange] <p>The range of possible sequence numbers for the shard.</p>
--- Required parameter: ShardId
--- Required parameter: HashKeyRange
--- Required parameter: SequenceNumberRange
-function M.Shard(_ShardId, _HashKeyRange, _ParentShardId, _AdjacentParentShardId, _SequenceNumberRange, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Shard")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardId [ShardId] <p>The unique identifier of the shard within the stream.</p>
+-- * HashKeyRange [HashKeyRange] <p>The range of possible hash key values for the shard, which is a set of ordered contiguous positive integers.</p>
+-- * ParentShardId [ShardId] <p>The shard ID of the shard's parent.</p>
+-- * AdjacentParentShardId [ShardId] <p>The shard ID of the shard adjacent to the shard's parent.</p>
+-- * SequenceNumberRange [SequenceNumberRange] <p>The range of possible sequence numbers for the shard.</p>
+-- Required key: ShardId
+-- Required key: HashKeyRange
+-- Required key: SequenceNumberRange
+-- @return Shard structure as a key-value pair table
+function M.Shard(args)
+	assert(args, "You must provdide an argument table when creating Shard")
 	local t = { 
-		["ShardId"] = _ShardId,
-		["HashKeyRange"] = _HashKeyRange,
-		["ParentShardId"] = _ParentShardId,
-		["AdjacentParentShardId"] = _AdjacentParentShardId,
-		["SequenceNumberRange"] = _SequenceNumberRange,
+		["ShardId"] = args["ShardId"],
+		["HashKeyRange"] = args["HashKeyRange"],
+		["ParentShardId"] = args["ParentShardId"],
+		["AdjacentParentShardId"] = args["AdjacentParentShardId"],
+		["SequenceNumberRange"] = args["SequenceNumberRange"],
 	}
 	asserts.AssertShard(t)
 	return t
@@ -549,14 +600,17 @@ end
 
 --- Create a structure of type PutRecordsOutput
 -- <p> <code>PutRecords</code> results.</p>
--- @param _FailedRecordCount [PositiveIntegerObject] <p>The number of unsuccessfully processed records in a <code>PutRecords</code> request.</p>
--- @param _Records [PutRecordsResultEntryList] <p>An array of successfully and unsuccessfully processed record results, correlated with the request by natural ordering. A record that is successfully added to a stream includes <code>SequenceNumber</code> and <code>ShardId</code> in the result. A record that fails to be added to a stream includes <code>ErrorCode</code> and <code>ErrorMessage</code> in the result.</p>
--- Required parameter: Records
-function M.PutRecordsOutput(_FailedRecordCount, _Records, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedRecordCount [PositiveIntegerObject] <p>The number of unsuccessfully processed records in a <code>PutRecords</code> request.</p>
+-- * Records [PutRecordsResultEntryList] <p>An array of successfully and unsuccessfully processed record results, correlated with the request by natural ordering. A record that is successfully added to a stream includes <code>SequenceNumber</code> and <code>ShardId</code> in the result. A record that fails to be added to a stream includes <code>ErrorCode</code> and <code>ErrorMessage</code> in the result.</p>
+-- Required key: Records
+-- @return PutRecordsOutput structure as a key-value pair table
+function M.PutRecordsOutput(args)
+	assert(args, "You must provdide an argument table when creating PutRecordsOutput")
 	local t = { 
-		["FailedRecordCount"] = _FailedRecordCount,
-		["Records"] = _Records,
+		["FailedRecordCount"] = args["FailedRecordCount"],
+		["Records"] = args["Records"],
 	}
 	asserts.AssertPutRecordsOutput(t)
 	return t
@@ -578,15 +632,18 @@ end
 
 --- Create a structure of type PutRecordOutput
 -- <p>Represents the output for <code>PutRecord</code>.</p>
--- @param _ShardId [ShardId] <p>The shard ID of the shard where the data record was placed.</p>
--- @param _SequenceNumber [SequenceNumber] <p>The sequence number identifier that was assigned to the put data record. The sequence number for the record is unique across all records in the stream. A sequence number is the identifier associated with every record put into the stream.</p>
--- Required parameter: ShardId
--- Required parameter: SequenceNumber
-function M.PutRecordOutput(_ShardId, _SequenceNumber, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardId [ShardId] <p>The shard ID of the shard where the data record was placed.</p>
+-- * SequenceNumber [SequenceNumber] <p>The sequence number identifier that was assigned to the put data record. The sequence number for the record is unique across all records in the stream. A sequence number is the identifier associated with every record put into the stream.</p>
+-- Required key: ShardId
+-- Required key: SequenceNumber
+-- @return PutRecordOutput structure as a key-value pair table
+function M.PutRecordOutput(args)
+	assert(args, "You must provdide an argument table when creating PutRecordOutput")
 	local t = { 
-		["ShardId"] = _ShardId,
-		["SequenceNumber"] = _SequenceNumber,
+		["ShardId"] = args["ShardId"],
+		["SequenceNumber"] = args["SequenceNumber"],
 	}
 	asserts.AssertPutRecordOutput(t)
 	return t
@@ -612,22 +669,25 @@ end
 
 --- Create a structure of type PutRecordInput
 -- <p>Represents the input for <code>PutRecord</code>.</p>
--- @param _PartitionKey [PartitionKey] <p>Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters for each key. Amazon Kinesis uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this hashing mechanism, all data records with the same partition key map to the same shard within the stream.</p>
--- @param _SequenceNumberForOrdering [SequenceNumber] <p>Guarantees strictly increasing sequence numbers, for puts from the same client and to the same partition key. Usage: set the <code>SequenceNumberForOrdering</code> of record <i>n</i> to the sequence number of record <i>n-1</i> (as returned in the result when putting record <i>n-1</i>). If this parameter is not set, records will be coarsely ordered based on arrival time.</p>
--- @param _StreamName [StreamName] <p>The name of the stream to put the data record into.</p>
--- @param _Data [Data] <p>The data blob to put into the record, which is base64-encoded when the blob is serialized. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
--- @param _ExplicitHashKey [HashKey] <p>The hash value used to explicitly determine the shard the data record is assigned to by overriding the partition key hash.</p>
--- Required parameter: StreamName
--- Required parameter: Data
--- Required parameter: PartitionKey
-function M.PutRecordInput(_PartitionKey, _SequenceNumberForOrdering, _StreamName, _Data, _ExplicitHashKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PartitionKey [PartitionKey] <p>Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters for each key. Amazon Kinesis uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this hashing mechanism, all data records with the same partition key map to the same shard within the stream.</p>
+-- * SequenceNumberForOrdering [SequenceNumber] <p>Guarantees strictly increasing sequence numbers, for puts from the same client and to the same partition key. Usage: set the <code>SequenceNumberForOrdering</code> of record <i>n</i> to the sequence number of record <i>n-1</i> (as returned in the result when putting record <i>n-1</i>). If this parameter is not set, records will be coarsely ordered based on arrival time.</p>
+-- * StreamName [StreamName] <p>The name of the stream to put the data record into.</p>
+-- * Data [Data] <p>The data blob to put into the record, which is base64-encoded when the blob is serialized. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
+-- * ExplicitHashKey [HashKey] <p>The hash value used to explicitly determine the shard the data record is assigned to by overriding the partition key hash.</p>
+-- Required key: StreamName
+-- Required key: Data
+-- Required key: PartitionKey
+-- @return PutRecordInput structure as a key-value pair table
+function M.PutRecordInput(args)
+	assert(args, "You must provdide an argument table when creating PutRecordInput")
 	local t = { 
-		["PartitionKey"] = _PartitionKey,
-		["SequenceNumberForOrdering"] = _SequenceNumberForOrdering,
-		["StreamName"] = _StreamName,
-		["Data"] = _Data,
-		["ExplicitHashKey"] = _ExplicitHashKey,
+		["PartitionKey"] = args["PartitionKey"],
+		["SequenceNumberForOrdering"] = args["SequenceNumberForOrdering"],
+		["StreamName"] = args["StreamName"],
+		["Data"] = args["Data"],
+		["ExplicitHashKey"] = args["ExplicitHashKey"],
 	}
 	asserts.AssertPutRecordInput(t)
 	return t
@@ -653,22 +713,25 @@ end
 
 --- Create a structure of type GetShardIteratorInput
 -- <p>Represents the input for <code>GetShardIterator</code>.</p>
--- @param _ShardId [ShardId] <p>The shard ID of the Amazon Kinesis shard to get the iterator for.</p>
--- @param _Timestamp [Timestamp] <p>The timestamp of the data record from which to start reading. Used with shard iterator type AT_TIMESTAMP. A timestamp is the Unix epoch date with precision in milliseconds. For example, <code>2016-04-04T19:58:46.480-00:00</code> or <code>1459799926.480</code>. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON).</p>
--- @param _StartingSequenceNumber [SequenceNumber] <p>The sequence number of the data record in the shard from which to start reading. Used with shard iterator type AT_SEQUENCE_NUMBER and AFTER_SEQUENCE_NUMBER.</p>
--- @param _StreamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
--- @param _ShardIteratorType [ShardIteratorType] <p>Determines how the shard iterator is used to start reading data records from the shard.</p> <p>The following are the valid Amazon Kinesis shard iterator types:</p> <ul> <li> <p>AT_SEQUENCE_NUMBER - Start reading from the position denoted by a specific sequence number, provided in the value <code>StartingSequenceNumber</code>.</p> </li> <li> <p>AFTER_SEQUENCE_NUMBER - Start reading right after the position denoted by a specific sequence number, provided in the value <code>StartingSequenceNumber</code>.</p> </li> <li> <p>AT_TIMESTAMP - Start reading from the position denoted by a specific timestamp, provided in the value <code>Timestamp</code>.</p> </li> <li> <p>TRIM_HORIZON - Start reading at the last untrimmed record in the shard in the system, which is the oldest data record in the shard.</p> </li> <li> <p>LATEST - Start reading just after the most recent record in the shard, so that you always read the most recent data in the shard.</p> </li> </ul>
--- Required parameter: StreamName
--- Required parameter: ShardId
--- Required parameter: ShardIteratorType
-function M.GetShardIteratorInput(_ShardId, _Timestamp, _StartingSequenceNumber, _StreamName, _ShardIteratorType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetShardIteratorInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardId [ShardId] <p>The shard ID of the Amazon Kinesis shard to get the iterator for.</p>
+-- * Timestamp [Timestamp] <p>The timestamp of the data record from which to start reading. Used with shard iterator type AT_TIMESTAMP. A timestamp is the Unix epoch date with precision in milliseconds. For example, <code>2016-04-04T19:58:46.480-00:00</code> or <code>1459799926.480</code>. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON).</p>
+-- * StartingSequenceNumber [SequenceNumber] <p>The sequence number of the data record in the shard from which to start reading. Used with shard iterator type AT_SEQUENCE_NUMBER and AFTER_SEQUENCE_NUMBER.</p>
+-- * StreamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
+-- * ShardIteratorType [ShardIteratorType] <p>Determines how the shard iterator is used to start reading data records from the shard.</p> <p>The following are the valid Amazon Kinesis shard iterator types:</p> <ul> <li> <p>AT_SEQUENCE_NUMBER - Start reading from the position denoted by a specific sequence number, provided in the value <code>StartingSequenceNumber</code>.</p> </li> <li> <p>AFTER_SEQUENCE_NUMBER - Start reading right after the position denoted by a specific sequence number, provided in the value <code>StartingSequenceNumber</code>.</p> </li> <li> <p>AT_TIMESTAMP - Start reading from the position denoted by a specific timestamp, provided in the value <code>Timestamp</code>.</p> </li> <li> <p>TRIM_HORIZON - Start reading at the last untrimmed record in the shard in the system, which is the oldest data record in the shard.</p> </li> <li> <p>LATEST - Start reading just after the most recent record in the shard, so that you always read the most recent data in the shard.</p> </li> </ul>
+-- Required key: StreamName
+-- Required key: ShardId
+-- Required key: ShardIteratorType
+-- @return GetShardIteratorInput structure as a key-value pair table
+function M.GetShardIteratorInput(args)
+	assert(args, "You must provdide an argument table when creating GetShardIteratorInput")
 	local t = { 
-		["ShardId"] = _ShardId,
-		["Timestamp"] = _Timestamp,
-		["StartingSequenceNumber"] = _StartingSequenceNumber,
-		["StreamName"] = _StreamName,
-		["ShardIteratorType"] = _ShardIteratorType,
+		["ShardId"] = args["ShardId"],
+		["Timestamp"] = args["Timestamp"],
+		["StartingSequenceNumber"] = args["StartingSequenceNumber"],
+		["StreamName"] = args["StreamName"],
+		["ShardIteratorType"] = args["ShardIteratorType"],
 	}
 	asserts.AssertGetShardIteratorInput(t)
 	return t
@@ -687,11 +750,14 @@ end
 
 --- Create a structure of type ExpiredIteratorException
 -- <p>The provided iterator exceeds the maximum age allowed.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ExpiredIteratorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredIteratorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return ExpiredIteratorException structure as a key-value pair table
+function M.ExpiredIteratorException(args)
+	assert(args, "You must provdide an argument table when creating ExpiredIteratorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertExpiredIteratorException(t)
 	return t
@@ -712,14 +778,17 @@ end
 
 --- Create a structure of type SequenceNumberRange
 -- <p>The range of possible sequence numbers for the shard.</p>
--- @param _EndingSequenceNumber [SequenceNumber] <p>The ending sequence number for the range. Shards that are in the OPEN state have an ending sequence number of <code>null</code>.</p>
--- @param _StartingSequenceNumber [SequenceNumber] <p>The starting sequence number for the range.</p>
--- Required parameter: StartingSequenceNumber
-function M.SequenceNumberRange(_EndingSequenceNumber, _StartingSequenceNumber, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SequenceNumberRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndingSequenceNumber [SequenceNumber] <p>The ending sequence number for the range. Shards that are in the OPEN state have an ending sequence number of <code>null</code>.</p>
+-- * StartingSequenceNumber [SequenceNumber] <p>The starting sequence number for the range.</p>
+-- Required key: StartingSequenceNumber
+-- @return SequenceNumberRange structure as a key-value pair table
+function M.SequenceNumberRange(args)
+	assert(args, "You must provdide an argument table when creating SequenceNumberRange")
 	local t = { 
-		["EndingSequenceNumber"] = _EndingSequenceNumber,
-		["StartingSequenceNumber"] = _StartingSequenceNumber,
+		["EndingSequenceNumber"] = args["EndingSequenceNumber"],
+		["StartingSequenceNumber"] = args["StartingSequenceNumber"],
 	}
 	asserts.AssertSequenceNumberRange(t)
 	return t
@@ -738,11 +807,14 @@ end
 
 --- Create a structure of type GetShardIteratorOutput
 -- <p>Represents the output for <code>GetShardIterator</code>.</p>
--- @param _ShardIterator [ShardIterator] <p>The position in the shard from which to start reading data records sequentially. A shard iterator specifies this position using the sequence number of a data record in a shard.</p>
-function M.GetShardIteratorOutput(_ShardIterator, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetShardIteratorOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardIterator [ShardIterator] <p>The position in the shard from which to start reading data records sequentially. A shard iterator specifies this position using the sequence number of a data record in a shard.</p>
+-- @return GetShardIteratorOutput structure as a key-value pair table
+function M.GetShardIteratorOutput(args)
+	assert(args, "You must provdide an argument table when creating GetShardIteratorOutput")
 	local t = { 
-		["ShardIterator"] = _ShardIterator,
+		["ShardIterator"] = args["ShardIterator"],
 	}
 	asserts.AssertGetShardIteratorOutput(t)
 	return t
@@ -762,12 +834,15 @@ end
 
 --- Create a structure of type DescribeStreamOutput
 -- <p>Represents the output for <code>DescribeStream</code>.</p>
--- @param _StreamDescription [StreamDescription] <p>The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and whether there are more shards available.</p>
--- Required parameter: StreamDescription
-function M.DescribeStreamOutput(_StreamDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStreamOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamDescription [StreamDescription] <p>The current status of the stream, the stream ARN, an array of shard objects that comprise the stream, and whether there are more shards available.</p>
+-- Required key: StreamDescription
+-- @return DescribeStreamOutput structure as a key-value pair table
+function M.DescribeStreamOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeStreamOutput")
 	local t = { 
-		["StreamDescription"] = _StreamDescription,
+		["StreamDescription"] = args["StreamDescription"],
 	}
 	asserts.AssertDescribeStreamOutput(t)
 	return t
@@ -792,20 +867,23 @@ end
 
 --- Create a structure of type Record
 -- <p>The unit of data of the Amazon Kinesis stream, which is composed of a sequence number, a partition key, and a data blob.</p>
--- @param _Data [Data] <p>The data blob. The data in the blob is both opaque and immutable to the Amazon Kinesis service, which does not inspect, interpret, or change the data in the blob in any way. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
--- @param _PartitionKey [PartitionKey] <p>Identifies which shard in the stream the data record is assigned to.</p>
--- @param _ApproximateArrivalTimestamp [Timestamp] <p>The approximate time that the record was inserted into the stream.</p>
--- @param _SequenceNumber [SequenceNumber] <p>The unique identifier of the record in the stream.</p>
--- Required parameter: SequenceNumber
--- Required parameter: Data
--- Required parameter: PartitionKey
-function M.Record(_Data, _PartitionKey, _ApproximateArrivalTimestamp, _SequenceNumber, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Record")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Data [Data] <p>The data blob. The data in the blob is both opaque and immutable to the Amazon Kinesis service, which does not inspect, interpret, or change the data in the blob in any way. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (1 MB).</p>
+-- * PartitionKey [PartitionKey] <p>Identifies which shard in the stream the data record is assigned to.</p>
+-- * ApproximateArrivalTimestamp [Timestamp] <p>The approximate time that the record was inserted into the stream.</p>
+-- * SequenceNumber [SequenceNumber] <p>The unique identifier of the record in the stream.</p>
+-- Required key: SequenceNumber
+-- Required key: Data
+-- Required key: PartitionKey
+-- @return Record structure as a key-value pair table
+function M.Record(args)
+	assert(args, "You must provdide an argument table when creating Record")
 	local t = { 
-		["Data"] = _Data,
-		["PartitionKey"] = _PartitionKey,
-		["ApproximateArrivalTimestamp"] = _ApproximateArrivalTimestamp,
-		["SequenceNumber"] = _SequenceNumber,
+		["Data"] = args["Data"],
+		["PartitionKey"] = args["PartitionKey"],
+		["ApproximateArrivalTimestamp"] = args["ApproximateArrivalTimestamp"],
+		["SequenceNumber"] = args["SequenceNumber"],
 	}
 	asserts.AssertRecord(t)
 	return t
@@ -827,15 +905,18 @@ end
 
 --- Create a structure of type IncreaseStreamRetentionPeriodInput
 -- <p>Represents the input for <a>IncreaseStreamRetentionPeriod</a>.</p>
--- @param _RetentionPeriodHours [PositiveIntegerObject] <p>The new retention period of the stream, in hours. Must be more than the current retention period.</p>
--- @param _StreamName [StreamName] <p>The name of the stream to modify.</p>
--- Required parameter: StreamName
--- Required parameter: RetentionPeriodHours
-function M.IncreaseStreamRetentionPeriodInput(_RetentionPeriodHours, _StreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IncreaseStreamRetentionPeriodInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RetentionPeriodHours [PositiveIntegerObject] <p>The new retention period of the stream, in hours. Must be more than the current retention period.</p>
+-- * StreamName [StreamName] <p>The name of the stream to modify.</p>
+-- Required key: StreamName
+-- Required key: RetentionPeriodHours
+-- @return IncreaseStreamRetentionPeriodInput structure as a key-value pair table
+function M.IncreaseStreamRetentionPeriodInput(args)
+	assert(args, "You must provdide an argument table when creating IncreaseStreamRetentionPeriodInput")
 	local t = { 
-		["RetentionPeriodHours"] = _RetentionPeriodHours,
-		["StreamName"] = _StreamName,
+		["RetentionPeriodHours"] = args["RetentionPeriodHours"],
+		["StreamName"] = args["StreamName"],
 	}
 	asserts.AssertIncreaseStreamRetentionPeriodInput(t)
 	return t
@@ -857,15 +938,18 @@ end
 
 --- Create a structure of type RemoveTagsFromStreamInput
 -- <p>Represents the input for <code>RemoveTagsFromStream</code>.</p>
--- @param _StreamName [StreamName] <p>The name of the stream.</p>
--- @param _TagKeys [TagKeyList] <p>A list of tag keys. Each corresponding tag is removed from the stream.</p>
--- Required parameter: StreamName
--- Required parameter: TagKeys
-function M.RemoveTagsFromStreamInput(_StreamName, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromStreamInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamName [StreamName] <p>The name of the stream.</p>
+-- * TagKeys [TagKeyList] <p>A list of tag keys. Each corresponding tag is removed from the stream.</p>
+-- Required key: StreamName
+-- Required key: TagKeys
+-- @return RemoveTagsFromStreamInput structure as a key-value pair table
+function M.RemoveTagsFromStreamInput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromStreamInput")
 	local t = { 
-		["StreamName"] = _StreamName,
-		["TagKeys"] = _TagKeys,
+		["StreamName"] = args["StreamName"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertRemoveTagsFromStreamInput(t)
 	return t
@@ -886,15 +970,18 @@ end
 
 --- Create a structure of type UpdateShardCountOutput
 --  
--- @param _TargetShardCount [PositiveIntegerObject] <p>The updated number of shards.</p>
--- @param _StreamName [StreamName] <p>The name of the stream.</p>
--- @param _CurrentShardCount [PositiveIntegerObject] <p>The current number of shards.</p>
-function M.UpdateShardCountOutput(_TargetShardCount, _StreamName, _CurrentShardCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateShardCountOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetShardCount [PositiveIntegerObject] <p>The updated number of shards.</p>
+-- * StreamName [StreamName] <p>The name of the stream.</p>
+-- * CurrentShardCount [PositiveIntegerObject] <p>The current number of shards.</p>
+-- @return UpdateShardCountOutput structure as a key-value pair table
+function M.UpdateShardCountOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateShardCountOutput")
 	local t = { 
-		["TargetShardCount"] = _TargetShardCount,
-		["StreamName"] = _StreamName,
-		["CurrentShardCount"] = _CurrentShardCount,
+		["TargetShardCount"] = args["TargetShardCount"],
+		["StreamName"] = args["StreamName"],
+		["CurrentShardCount"] = args["CurrentShardCount"],
 	}
 	asserts.AssertUpdateShardCountOutput(t)
 	return t
@@ -916,15 +1003,18 @@ end
 
 --- Create a structure of type EnableEnhancedMonitoringInput
 -- <p>Represents the input for <a>EnableEnhancedMonitoring</a>.</p>
--- @param _ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics to enable.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" enables every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
--- @param _StreamName [StreamName] <p>The name of the stream for which to enable enhanced monitoring.</p>
--- Required parameter: StreamName
--- Required parameter: ShardLevelMetrics
-function M.EnableEnhancedMonitoringInput(_ShardLevelMetrics, _StreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableEnhancedMonitoringInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics to enable.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" enables every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
+-- * StreamName [StreamName] <p>The name of the stream for which to enable enhanced monitoring.</p>
+-- Required key: StreamName
+-- Required key: ShardLevelMetrics
+-- @return EnableEnhancedMonitoringInput structure as a key-value pair table
+function M.EnableEnhancedMonitoringInput(args)
+	assert(args, "You must provdide an argument table when creating EnableEnhancedMonitoringInput")
 	local t = { 
-		["ShardLevelMetrics"] = _ShardLevelMetrics,
-		["StreamName"] = _StreamName,
+		["ShardLevelMetrics"] = args["ShardLevelMetrics"],
+		["StreamName"] = args["StreamName"],
 	}
 	asserts.AssertEnableEnhancedMonitoringInput(t)
 	return t
@@ -943,11 +1033,14 @@ end
 
 --- Create a structure of type InvalidArgumentException
 -- <p>A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information, see the returned message.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.InvalidArgumentException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArgumentException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return InvalidArgumentException structure as a key-value pair table
+function M.InvalidArgumentException(args)
+	assert(args, "You must provdide an argument table when creating InvalidArgumentException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidArgumentException(t)
 	return t
@@ -981,33 +1074,36 @@ end
 
 --- Create a structure of type StreamDescription
 -- <p>Represents the output for <a>DescribeStream</a>.</p>
--- @param _HasMoreShards [BooleanObject] <p>If set to <code>true</code>, more shards in the stream are available to describe.</p>
--- @param _RetentionPeriodHours [PositiveIntegerObject] <p>The current retention period, in hours.</p>
--- @param _StreamName [StreamName] <p>The name of the stream being described.</p>
--- @param _Shards [ShardList] <p>The shards that comprise the stream.</p>
--- @param _StreamARN [StreamARN] <p>The Amazon Resource Name (ARN) for the stream being described.</p>
--- @param _EnhancedMonitoring [EnhancedMonitoringList] <p>Represents the current enhanced monitoring settings of the stream.</p>
--- @param _StreamCreationTimestamp [Timestamp] <p>The approximate time that the stream was created.</p>
--- @param _StreamStatus [StreamStatus] <p>The current status of the stream being described. The stream status is one of the following states:</p> <ul> <li> <p> <code>CREATING</code> - The stream is being created. Amazon Kinesis immediately returns and sets <code>StreamStatus</code> to <code>CREATING</code>.</p> </li> <li> <p> <code>DELETING</code> - The stream is being deleted. The specified stream is in the <code>DELETING</code> state until Amazon Kinesis completes the deletion.</p> </li> <li> <p> <code>ACTIVE</code> - The stream exists and is ready for read and write operations or deletion. You should perform read and write operations only on an <code>ACTIVE</code> stream.</p> </li> <li> <p> <code>UPDATING</code> - Shards in the stream are being merged or split. Read and write operations continue to work while the stream is in the <code>UPDATING</code> state.</p> </li> </ul>
--- Required parameter: StreamName
--- Required parameter: StreamARN
--- Required parameter: StreamStatus
--- Required parameter: Shards
--- Required parameter: HasMoreShards
--- Required parameter: RetentionPeriodHours
--- Required parameter: StreamCreationTimestamp
--- Required parameter: EnhancedMonitoring
-function M.StreamDescription(_HasMoreShards, _RetentionPeriodHours, _StreamName, _Shards, _StreamARN, _EnhancedMonitoring, _StreamCreationTimestamp, _StreamStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StreamDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HasMoreShards [BooleanObject] <p>If set to <code>true</code>, more shards in the stream are available to describe.</p>
+-- * RetentionPeriodHours [PositiveIntegerObject] <p>The current retention period, in hours.</p>
+-- * StreamName [StreamName] <p>The name of the stream being described.</p>
+-- * Shards [ShardList] <p>The shards that comprise the stream.</p>
+-- * StreamARN [StreamARN] <p>The Amazon Resource Name (ARN) for the stream being described.</p>
+-- * EnhancedMonitoring [EnhancedMonitoringList] <p>Represents the current enhanced monitoring settings of the stream.</p>
+-- * StreamCreationTimestamp [Timestamp] <p>The approximate time that the stream was created.</p>
+-- * StreamStatus [StreamStatus] <p>The current status of the stream being described. The stream status is one of the following states:</p> <ul> <li> <p> <code>CREATING</code> - The stream is being created. Amazon Kinesis immediately returns and sets <code>StreamStatus</code> to <code>CREATING</code>.</p> </li> <li> <p> <code>DELETING</code> - The stream is being deleted. The specified stream is in the <code>DELETING</code> state until Amazon Kinesis completes the deletion.</p> </li> <li> <p> <code>ACTIVE</code> - The stream exists and is ready for read and write operations or deletion. You should perform read and write operations only on an <code>ACTIVE</code> stream.</p> </li> <li> <p> <code>UPDATING</code> - Shards in the stream are being merged or split. Read and write operations continue to work while the stream is in the <code>UPDATING</code> state.</p> </li> </ul>
+-- Required key: StreamName
+-- Required key: StreamARN
+-- Required key: StreamStatus
+-- Required key: Shards
+-- Required key: HasMoreShards
+-- Required key: RetentionPeriodHours
+-- Required key: StreamCreationTimestamp
+-- Required key: EnhancedMonitoring
+-- @return StreamDescription structure as a key-value pair table
+function M.StreamDescription(args)
+	assert(args, "You must provdide an argument table when creating StreamDescription")
 	local t = { 
-		["HasMoreShards"] = _HasMoreShards,
-		["RetentionPeriodHours"] = _RetentionPeriodHours,
-		["StreamName"] = _StreamName,
-		["Shards"] = _Shards,
-		["StreamARN"] = _StreamARN,
-		["EnhancedMonitoring"] = _EnhancedMonitoring,
-		["StreamCreationTimestamp"] = _StreamCreationTimestamp,
-		["StreamStatus"] = _StreamStatus,
+		["HasMoreShards"] = args["HasMoreShards"],
+		["RetentionPeriodHours"] = args["RetentionPeriodHours"],
+		["StreamName"] = args["StreamName"],
+		["Shards"] = args["Shards"],
+		["StreamARN"] = args["StreamARN"],
+		["EnhancedMonitoring"] = args["EnhancedMonitoring"],
+		["StreamCreationTimestamp"] = args["StreamCreationTimestamp"],
+		["StreamStatus"] = args["StreamStatus"],
 	}
 	asserts.AssertStreamDescription(t)
 	return t
@@ -1026,11 +1122,14 @@ end
 
 --- Create a structure of type ProvisionedThroughputExceededException
 -- <p>The request rate for the stream is too high, or the requested data is too large for the available throughput. Reduce the frequency or size of your requests. For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html">Streams Limits</a> in the <i>Amazon Kinesis Streams Developer Guide</i>, and <a href="http://docs.aws.amazon.com/general/latest/gr/api-retries.html">Error Retries and Exponential Backoff in AWS</a> in the <i>AWS General Reference</i>.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ProvisionedThroughputExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionedThroughputExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return ProvisionedThroughputExceededException structure as a key-value pair table
+function M.ProvisionedThroughputExceededException(args)
+	assert(args, "You must provdide an argument table when creating ProvisionedThroughputExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertProvisionedThroughputExceededException(t)
 	return t
@@ -1049,11 +1148,14 @@ end
 
 --- Create a structure of type EnhancedMetrics
 -- <p>Represents enhanced metrics types.</p>
--- @param _ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
-function M.EnhancedMetrics(_ShardLevelMetrics, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnhancedMetrics")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
+-- @return EnhancedMetrics structure as a key-value pair table
+function M.EnhancedMetrics(args)
+	assert(args, "You must provdide an argument table when creating EnhancedMetrics")
 	local t = { 
-		["ShardLevelMetrics"] = _ShardLevelMetrics,
+		["ShardLevelMetrics"] = args["ShardLevelMetrics"],
 	}
 	asserts.AssertEnhancedMetrics(t)
 	return t
@@ -1075,16 +1177,19 @@ end
 
 --- Create a structure of type ListTagsForStreamInput
 -- <p>Represents the input for <code>ListTagsForStream</code>.</p>
--- @param _StreamName [StreamName] <p>The name of the stream.</p>
--- @param _Limit [ListTagsForStreamInputLimit] <p>The number of tags to return. If this number is less than the total number of tags associated with the stream, <code>HasMoreTags</code> is set to <code>true</code>. To list additional tags, set <code>ExclusiveStartTagKey</code> to the last key in the response.</p>
--- @param _ExclusiveStartTagKey [TagKey] <p>The key to use as the starting point for the list of tags. If this parameter is set, <code>ListTagsForStream</code> gets all tags that occur after <code>ExclusiveStartTagKey</code>. </p>
--- Required parameter: StreamName
-function M.ListTagsForStreamInput(_StreamName, _Limit, _ExclusiveStartTagKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForStreamInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamName [StreamName] <p>The name of the stream.</p>
+-- * Limit [ListTagsForStreamInputLimit] <p>The number of tags to return. If this number is less than the total number of tags associated with the stream, <code>HasMoreTags</code> is set to <code>true</code>. To list additional tags, set <code>ExclusiveStartTagKey</code> to the last key in the response.</p>
+-- * ExclusiveStartTagKey [TagKey] <p>The key to use as the starting point for the list of tags. If this parameter is set, <code>ListTagsForStream</code> gets all tags that occur after <code>ExclusiveStartTagKey</code>. </p>
+-- Required key: StreamName
+-- @return ListTagsForStreamInput structure as a key-value pair table
+function M.ListTagsForStreamInput(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForStreamInput")
 	local t = { 
-		["StreamName"] = _StreamName,
-		["Limit"] = _Limit,
-		["ExclusiveStartTagKey"] = _ExclusiveStartTagKey,
+		["StreamName"] = args["StreamName"],
+		["Limit"] = args["Limit"],
+		["ExclusiveStartTagKey"] = args["ExclusiveStartTagKey"],
 	}
 	asserts.AssertListTagsForStreamInput(t)
 	return t
@@ -1106,17 +1211,20 @@ end
 
 --- Create a structure of type PutRecordsResultEntry
 -- <p>Represents the result of an individual record from a <code>PutRecords</code> request. A record that is successfully added to a stream includes <code>SequenceNumber</code> and <code>ShardId</code> in the result. A record that fails to be added to the stream includes <code>ErrorCode</code> and <code>ErrorMessage</code> in the result.</p>
--- @param _ShardId [ShardId] <p>The shard ID for an individual record result.</p>
--- @param _ErrorCode [ErrorCode] <p>The error code for an individual record result. <code>ErrorCodes</code> can be either <code>ProvisionedThroughputExceededException</code> or <code>InternalFailure</code>.</p>
--- @param _ErrorMessage [ErrorMessage] <p>The error message for an individual record result. An <code>ErrorCode</code> value of <code>ProvisionedThroughputExceededException</code> has an error message that includes the account ID, stream name, and shard ID. An <code>ErrorCode</code> value of <code>InternalFailure</code> has the error message <code>"Internal Service Failure"</code>.</p>
--- @param _SequenceNumber [SequenceNumber] <p>The sequence number for an individual record result.</p>
-function M.PutRecordsResultEntry(_ShardId, _ErrorCode, _ErrorMessage, _SequenceNumber, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordsResultEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardId [ShardId] <p>The shard ID for an individual record result.</p>
+-- * ErrorCode [ErrorCode] <p>The error code for an individual record result. <code>ErrorCodes</code> can be either <code>ProvisionedThroughputExceededException</code> or <code>InternalFailure</code>.</p>
+-- * ErrorMessage [ErrorMessage] <p>The error message for an individual record result. An <code>ErrorCode</code> value of <code>ProvisionedThroughputExceededException</code> has an error message that includes the account ID, stream name, and shard ID. An <code>ErrorCode</code> value of <code>InternalFailure</code> has the error message <code>"Internal Service Failure"</code>.</p>
+-- * SequenceNumber [SequenceNumber] <p>The sequence number for an individual record result.</p>
+-- @return PutRecordsResultEntry structure as a key-value pair table
+function M.PutRecordsResultEntry(args)
+	assert(args, "You must provdide an argument table when creating PutRecordsResultEntry")
 	local t = { 
-		["ShardId"] = _ShardId,
-		["ErrorCode"] = _ErrorCode,
-		["ErrorMessage"] = _ErrorMessage,
-		["SequenceNumber"] = _SequenceNumber,
+		["ShardId"] = args["ShardId"],
+		["ErrorCode"] = args["ErrorCode"],
+		["ErrorMessage"] = args["ErrorMessage"],
+		["SequenceNumber"] = args["SequenceNumber"],
 	}
 	asserts.AssertPutRecordsResultEntry(t)
 	return t
@@ -1138,15 +1246,18 @@ end
 
 --- Create a structure of type ListStreamsOutput
 -- <p>Represents the output for <code>ListStreams</code>.</p>
--- @param _StreamNames [StreamNameList] <p>The names of the streams that are associated with the AWS account making the <code>ListStreams</code> request.</p>
--- @param _HasMoreStreams [BooleanObject] <p>If set to <code>true</code>, there are more streams available to list.</p>
--- Required parameter: StreamNames
--- Required parameter: HasMoreStreams
-function M.ListStreamsOutput(_StreamNames, _HasMoreStreams, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListStreamsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamNames [StreamNameList] <p>The names of the streams that are associated with the AWS account making the <code>ListStreams</code> request.</p>
+-- * HasMoreStreams [BooleanObject] <p>If set to <code>true</code>, there are more streams available to list.</p>
+-- Required key: StreamNames
+-- Required key: HasMoreStreams
+-- @return ListStreamsOutput structure as a key-value pair table
+function M.ListStreamsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListStreamsOutput")
 	local t = { 
-		["StreamNames"] = _StreamNames,
-		["HasMoreStreams"] = _HasMoreStreams,
+		["StreamNames"] = args["StreamNames"],
+		["HasMoreStreams"] = args["HasMoreStreams"],
 	}
 	asserts.AssertListStreamsOutput(t)
 	return t
@@ -1168,15 +1279,18 @@ end
 
 --- Create a structure of type ListTagsForStreamOutput
 -- <p>Represents the output for <code>ListTagsForStream</code>.</p>
--- @param _HasMoreTags [BooleanObject] <p>If set to <code>true</code>, more tags are available. To request additional tags, set <code>ExclusiveStartTagKey</code> to the key of the last tag returned.</p>
--- @param _Tags [TagList] <p>A list of tags associated with <code>StreamName</code>, starting with the first tag after <code>ExclusiveStartTagKey</code> and up to the specified <code>Limit</code>. </p>
--- Required parameter: Tags
--- Required parameter: HasMoreTags
-function M.ListTagsForStreamOutput(_HasMoreTags, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForStreamOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HasMoreTags [BooleanObject] <p>If set to <code>true</code>, more tags are available. To request additional tags, set <code>ExclusiveStartTagKey</code> to the key of the last tag returned.</p>
+-- * Tags [TagList] <p>A list of tags associated with <code>StreamName</code>, starting with the first tag after <code>ExclusiveStartTagKey</code> and up to the specified <code>Limit</code>. </p>
+-- Required key: Tags
+-- Required key: HasMoreTags
+-- @return ListTagsForStreamOutput structure as a key-value pair table
+function M.ListTagsForStreamOutput(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForStreamOutput")
 	local t = { 
-		["HasMoreTags"] = _HasMoreTags,
-		["Tags"] = _Tags,
+		["HasMoreTags"] = args["HasMoreTags"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertListTagsForStreamOutput(t)
 	return t
@@ -1198,16 +1312,19 @@ end
 
 --- Create a structure of type GetRecordsOutput
 -- <p>Represents the output for <a>GetRecords</a>.</p>
--- @param _Records [RecordList] <p>The data records retrieved from the shard.</p>
--- @param _NextShardIterator [ShardIterator] <p>The next position in the shard from which to start sequentially reading data records. If set to <code>null</code>, the shard has been closed and the requested iterator will not return any more data. </p>
--- @param _MillisBehindLatest [MillisBehindLatest] <p>The number of milliseconds the <a>GetRecords</a> response is from the tip of the stream, indicating how far behind current time the consumer is. A value of zero indicates record processing is caught up, and there are no new records to process at this moment.</p>
--- Required parameter: Records
-function M.GetRecordsOutput(_Records, _NextShardIterator, _MillisBehindLatest, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRecordsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Records [RecordList] <p>The data records retrieved from the shard.</p>
+-- * NextShardIterator [ShardIterator] <p>The next position in the shard from which to start sequentially reading data records. If set to <code>null</code>, the shard has been closed and the requested iterator will not return any more data. </p>
+-- * MillisBehindLatest [MillisBehindLatest] <p>The number of milliseconds the <a>GetRecords</a> response is from the tip of the stream, indicating how far behind current time the consumer is. A value of zero indicates record processing is caught up, and there are no new records to process at this moment.</p>
+-- Required key: Records
+-- @return GetRecordsOutput structure as a key-value pair table
+function M.GetRecordsOutput(args)
+	assert(args, "You must provdide an argument table when creating GetRecordsOutput")
 	local t = { 
-		["Records"] = _Records,
-		["NextShardIterator"] = _NextShardIterator,
-		["MillisBehindLatest"] = _MillisBehindLatest,
+		["Records"] = args["Records"],
+		["NextShardIterator"] = args["NextShardIterator"],
+		["MillisBehindLatest"] = args["MillisBehindLatest"],
 	}
 	asserts.AssertGetRecordsOutput(t)
 	return t
@@ -1225,8 +1342,11 @@ end
 
 --- Create a structure of type DescribeLimitsInput
 --  
-function M.DescribeLimitsInput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLimitsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DescribeLimitsInput structure as a key-value pair table
+function M.DescribeLimitsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeLimitsInput")
 	local t = { 
 	}
 	asserts.AssertDescribeLimitsInput(t)
@@ -1249,15 +1369,18 @@ end
 
 --- Create a structure of type CreateStreamInput
 -- <p>Represents the input for <code>CreateStream</code>.</p>
--- @param _StreamName [StreamName] <p>A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates the stream. It is also scoped by region. That is, two streams in two different AWS accounts can have the same name, and two streams in the same AWS account but in two different regions can have the same name.</p>
--- @param _ShardCount [PositiveIntegerObject] <p>The number of shards that the stream will use. The throughput of the stream is a function of the number of shards; more shards are required for greater provisioned throughput.</p> <p>DefaultShardLimit;</p>
--- Required parameter: StreamName
--- Required parameter: ShardCount
-function M.CreateStreamInput(_StreamName, _ShardCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStreamInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamName [StreamName] <p>A name to identify the stream. The stream name is scoped to the AWS account used by the application that creates the stream. It is also scoped by region. That is, two streams in two different AWS accounts can have the same name, and two streams in the same AWS account but in two different regions can have the same name.</p>
+-- * ShardCount [PositiveIntegerObject] <p>The number of shards that the stream will use. The throughput of the stream is a function of the number of shards; more shards are required for greater provisioned throughput.</p> <p>DefaultShardLimit;</p>
+-- Required key: StreamName
+-- Required key: ShardCount
+-- @return CreateStreamInput structure as a key-value pair table
+function M.CreateStreamInput(args)
+	assert(args, "You must provdide an argument table when creating CreateStreamInput")
 	local t = { 
-		["StreamName"] = _StreamName,
-		["ShardCount"] = _ShardCount,
+		["StreamName"] = args["StreamName"],
+		["ShardCount"] = args["ShardCount"],
 	}
 	asserts.AssertCreateStreamInput(t)
 	return t
@@ -1278,14 +1401,17 @@ end
 
 --- Create a structure of type GetRecordsInput
 -- <p>Represents the input for <a>GetRecords</a>.</p>
--- @param _ShardIterator [ShardIterator] <p>The position in the shard from which you want to start sequentially reading data records. A shard iterator specifies this position using the sequence number of a data record in the shard.</p>
--- @param _Limit [GetRecordsInputLimit] <p>The maximum number of records to return. Specify a value of up to 10,000. If you specify a value that is greater than 10,000, <a>GetRecords</a> throws <code>InvalidArgumentException</code>.</p>
--- Required parameter: ShardIterator
-function M.GetRecordsInput(_ShardIterator, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRecordsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShardIterator [ShardIterator] <p>The position in the shard from which you want to start sequentially reading data records. A shard iterator specifies this position using the sequence number of a data record in the shard.</p>
+-- * Limit [GetRecordsInputLimit] <p>The maximum number of records to return. Specify a value of up to 10,000. If you specify a value that is greater than 10,000, <a>GetRecords</a> throws <code>InvalidArgumentException</code>.</p>
+-- Required key: ShardIterator
+-- @return GetRecordsInput structure as a key-value pair table
+function M.GetRecordsInput(args)
+	assert(args, "You must provdide an argument table when creating GetRecordsInput")
 	local t = { 
-		["ShardIterator"] = _ShardIterator,
-		["Limit"] = _Limit,
+		["ShardIterator"] = args["ShardIterator"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertGetRecordsInput(t)
 	return t
@@ -1307,16 +1433,19 @@ end
 
 --- Create a structure of type DescribeStreamInput
 -- <p>Represents the input for <code>DescribeStream</code>.</p>
--- @param _StreamName [StreamName] <p>The name of the stream to describe.</p>
--- @param _Limit [DescribeStreamInputLimit] <p>The maximum number of shards to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 shards are returned.</p>
--- @param _ExclusiveStartShardId [ShardId] <p>The shard ID of the shard to start with.</p>
--- Required parameter: StreamName
-function M.DescribeStreamInput(_StreamName, _Limit, _ExclusiveStartShardId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStreamInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StreamName [StreamName] <p>The name of the stream to describe.</p>
+-- * Limit [DescribeStreamInputLimit] <p>The maximum number of shards to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 shards are returned.</p>
+-- * ExclusiveStartShardId [ShardId] <p>The shard ID of the shard to start with.</p>
+-- Required key: StreamName
+-- @return DescribeStreamInput structure as a key-value pair table
+function M.DescribeStreamInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeStreamInput")
 	local t = { 
-		["StreamName"] = _StreamName,
-		["Limit"] = _Limit,
-		["ExclusiveStartShardId"] = _ExclusiveStartShardId,
+		["StreamName"] = args["StreamName"],
+		["Limit"] = args["Limit"],
+		["ExclusiveStartShardId"] = args["ExclusiveStartShardId"],
 	}
 	asserts.AssertDescribeStreamInput(t)
 	return t
@@ -1335,11 +1464,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The requested resource could not be found. The stream might not be specified correctly.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ResourceNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t

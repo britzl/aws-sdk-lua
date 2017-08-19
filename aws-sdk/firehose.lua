@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type ServiceUnavailableException
 -- <p>The service is unavailable, back off and retry the operation. If you continue to see the exception, throughput limits for the delivery stream may have been exceeded. For more information about limits and how to request an increase, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Firehose Limits</a>.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ServiceUnavailableException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return ServiceUnavailableException structure as a key-value pair table
+function M.ServiceUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServiceUnavailableException(t)
 	return t
@@ -56,8 +59,11 @@ end
 
 --- Create a structure of type UpdateDestinationOutput
 --  
-function M.UpdateDestinationOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDestinationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateDestinationOutput structure as a key-value pair table
+function M.UpdateDestinationOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateDestinationOutput")
 	local t = { 
 	}
 	asserts.AssertUpdateDestinationOutput(t)
@@ -78,12 +84,15 @@ end
 
 --- Create a structure of type KMSEncryptionConfig
 -- <p>Describes an encryption key for a destination in Amazon S3.</p>
--- @param _AWSKMSKeyARN [AWSKMSKeyARN] <p>The ARN of the encryption key. Must belong to the same region as the destination Amazon S3 bucket.</p>
--- Required parameter: AWSKMSKeyARN
-function M.KMSEncryptionConfig(_AWSKMSKeyARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KMSEncryptionConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AWSKMSKeyARN [AWSKMSKeyARN] <p>The ARN of the encryption key. Must belong to the same region as the destination Amazon S3 bucket.</p>
+-- Required key: AWSKMSKeyARN
+-- @return KMSEncryptionConfig structure as a key-value pair table
+function M.KMSEncryptionConfig(args)
+	assert(args, "You must provdide an argument table when creating KMSEncryptionConfig")
 	local t = { 
-		["AWSKMSKeyARN"] = _AWSKMSKeyARN,
+		["AWSKMSKeyARN"] = args["AWSKMSKeyARN"],
 	}
 	asserts.AssertKMSEncryptionConfig(t)
 	return t
@@ -105,15 +114,18 @@ end
 
 --- Create a structure of type PutRecordBatchOutput
 --  
--- @param _FailedPutCount [NonNegativeIntegerObject] <p>The number of records that might have failed processing.</p>
--- @param _RequestResponses [PutRecordBatchResponseEntryList] <p>The results array. For each record, the index of the response element is the same as the index used in the request array.</p>
--- Required parameter: FailedPutCount
--- Required parameter: RequestResponses
-function M.PutRecordBatchOutput(_FailedPutCount, _RequestResponses, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordBatchOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedPutCount [NonNegativeIntegerObject] <p>The number of records that might have failed processing.</p>
+-- * RequestResponses [PutRecordBatchResponseEntryList] <p>The results array. For each record, the index of the response element is the same as the index used in the request array.</p>
+-- Required key: FailedPutCount
+-- Required key: RequestResponses
+-- @return PutRecordBatchOutput structure as a key-value pair table
+function M.PutRecordBatchOutput(args)
+	assert(args, "You must provdide an argument table when creating PutRecordBatchOutput")
 	local t = { 
-		["FailedPutCount"] = _FailedPutCount,
-		["RequestResponses"] = _RequestResponses,
+		["FailedPutCount"] = args["FailedPutCount"],
+		["RequestResponses"] = args["RequestResponses"],
 	}
 	asserts.AssertPutRecordBatchOutput(t)
 	return t
@@ -135,15 +147,18 @@ end
 
 --- Create a structure of type PutRecordInput
 --  
--- @param _Record [Record] <p>The record.</p>
--- @param _DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
--- Required parameter: DeliveryStreamName
--- Required parameter: Record
-function M.PutRecordInput(_Record, _DeliveryStreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Record [Record] <p>The record.</p>
+-- * DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
+-- Required key: DeliveryStreamName
+-- Required key: Record
+-- @return PutRecordInput structure as a key-value pair table
+function M.PutRecordInput(args)
+	assert(args, "You must provdide an argument table when creating PutRecordInput")
 	local t = { 
-		["Record"] = _Record,
-		["DeliveryStreamName"] = _DeliveryStreamName,
+		["Record"] = args["Record"],
+		["DeliveryStreamName"] = args["DeliveryStreamName"],
 	}
 	asserts.AssertPutRecordInput(t)
 	return t
@@ -175,31 +190,34 @@ end
 
 --- Create a structure of type DeliveryStreamDescription
 -- <p>Contains information about a delivery stream.</p>
--- @param _HasMoreDestinations [BooleanObject] <p>Indicates whether there are more destinations available to list.</p>
--- @param _LastUpdateTimestamp [Timestamp] <p>The date and time that the delivery stream was last updated.</p>
--- @param _VersionId [DeliveryStreamVersionId] <p>Each time the destination is updated for a delivery stream, the version ID is changed, and the current version ID is required when updating the destination. This is so that the service knows it is applying the changes to the correct version of the delivery stream.</p>
--- @param _CreateTimestamp [Timestamp] <p>The date and time that the delivery stream was created.</p>
--- @param _DeliveryStreamARN [DeliveryStreamARN] <p>The Amazon Resource Name (ARN) of the delivery stream.</p>
--- @param _DeliveryStreamStatus [DeliveryStreamStatus] <p>The status of the delivery stream.</p>
--- @param _DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
--- @param _Destinations [DestinationDescriptionList] <p>The destinations.</p>
--- Required parameter: DeliveryStreamName
--- Required parameter: DeliveryStreamARN
--- Required parameter: DeliveryStreamStatus
--- Required parameter: VersionId
--- Required parameter: Destinations
--- Required parameter: HasMoreDestinations
-function M.DeliveryStreamDescription(_HasMoreDestinations, _LastUpdateTimestamp, _VersionId, _CreateTimestamp, _DeliveryStreamARN, _DeliveryStreamStatus, _DeliveryStreamName, _Destinations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeliveryStreamDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HasMoreDestinations [BooleanObject] <p>Indicates whether there are more destinations available to list.</p>
+-- * LastUpdateTimestamp [Timestamp] <p>The date and time that the delivery stream was last updated.</p>
+-- * VersionId [DeliveryStreamVersionId] <p>Each time the destination is updated for a delivery stream, the version ID is changed, and the current version ID is required when updating the destination. This is so that the service knows it is applying the changes to the correct version of the delivery stream.</p>
+-- * CreateTimestamp [Timestamp] <p>The date and time that the delivery stream was created.</p>
+-- * DeliveryStreamARN [DeliveryStreamARN] <p>The Amazon Resource Name (ARN) of the delivery stream.</p>
+-- * DeliveryStreamStatus [DeliveryStreamStatus] <p>The status of the delivery stream.</p>
+-- * DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
+-- * Destinations [DestinationDescriptionList] <p>The destinations.</p>
+-- Required key: DeliveryStreamName
+-- Required key: DeliveryStreamARN
+-- Required key: DeliveryStreamStatus
+-- Required key: VersionId
+-- Required key: Destinations
+-- Required key: HasMoreDestinations
+-- @return DeliveryStreamDescription structure as a key-value pair table
+function M.DeliveryStreamDescription(args)
+	assert(args, "You must provdide an argument table when creating DeliveryStreamDescription")
 	local t = { 
-		["HasMoreDestinations"] = _HasMoreDestinations,
-		["LastUpdateTimestamp"] = _LastUpdateTimestamp,
-		["VersionId"] = _VersionId,
-		["CreateTimestamp"] = _CreateTimestamp,
-		["DeliveryStreamARN"] = _DeliveryStreamARN,
-		["DeliveryStreamStatus"] = _DeliveryStreamStatus,
-		["DeliveryStreamName"] = _DeliveryStreamName,
-		["Destinations"] = _Destinations,
+		["HasMoreDestinations"] = args["HasMoreDestinations"],
+		["LastUpdateTimestamp"] = args["LastUpdateTimestamp"],
+		["VersionId"] = args["VersionId"],
+		["CreateTimestamp"] = args["CreateTimestamp"],
+		["DeliveryStreamARN"] = args["DeliveryStreamARN"],
+		["DeliveryStreamStatus"] = args["DeliveryStreamStatus"],
+		["DeliveryStreamName"] = args["DeliveryStreamName"],
+		["Destinations"] = args["Destinations"],
 	}
 	asserts.AssertDeliveryStreamDescription(t)
 	return t
@@ -229,28 +247,31 @@ end
 
 --- Create a structure of type S3DestinationDescription
 -- <p>Describes a destination in Amazon S3.</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
--- @param _Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
--- @param _BufferingHints [BufferingHints] <p>The buffering option. If no value is specified, <b>BufferingHints</b> object default values are used.</p>
--- @param _EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
--- @param _CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is <code>UNCOMPRESSED</code>.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
--- Required parameter: RoleARN
--- Required parameter: BucketARN
--- Required parameter: BufferingHints
--- Required parameter: CompressionFormat
--- Required parameter: EncryptionConfiguration
-function M.S3DestinationDescription(_RoleARN, _Prefix, _BufferingHints, _EncryptionConfiguration, _CompressionFormat, _CloudWatchLoggingOptions, _BucketARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3DestinationDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
+-- * Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
+-- * BufferingHints [BufferingHints] <p>The buffering option. If no value is specified, <b>BufferingHints</b> object default values are used.</p>
+-- * EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
+-- * CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is <code>UNCOMPRESSED</code>.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
+-- Required key: RoleARN
+-- Required key: BucketARN
+-- Required key: BufferingHints
+-- Required key: CompressionFormat
+-- Required key: EncryptionConfiguration
+-- @return S3DestinationDescription structure as a key-value pair table
+function M.S3DestinationDescription(args)
+	assert(args, "You must provdide an argument table when creating S3DestinationDescription")
 	local t = { 
-		["RoleARN"] = _RoleARN,
-		["Prefix"] = _Prefix,
-		["BufferingHints"] = _BufferingHints,
-		["EncryptionConfiguration"] = _EncryptionConfiguration,
-		["CompressionFormat"] = _CompressionFormat,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["BucketARN"] = _BucketARN,
+		["RoleARN"] = args["RoleARN"],
+		["Prefix"] = args["Prefix"],
+		["BufferingHints"] = args["BufferingHints"],
+		["EncryptionConfiguration"] = args["EncryptionConfiguration"],
+		["CompressionFormat"] = args["CompressionFormat"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["BucketARN"] = args["BucketARN"],
 	}
 	asserts.AssertS3DestinationDescription(t)
 	return t
@@ -271,15 +292,18 @@ end
 
 --- Create a structure of type PutRecordBatchResponseEntry
 -- <p>Contains the result for an individual record from a <a>PutRecordBatch</a> request. If the record is successfully added to your delivery stream, it receives a record ID. If the record fails to be added to your delivery stream, the result includes an error code and an error message.</p>
--- @param _RecordId [PutResponseRecordId] <p>The ID of the record.</p>
--- @param _ErrorCode [ErrorCode] <p>The error code for an individual record result.</p>
--- @param _ErrorMessage [ErrorMessage] <p>The error message for an individual record result.</p>
-function M.PutRecordBatchResponseEntry(_RecordId, _ErrorCode, _ErrorMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordBatchResponseEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RecordId [PutResponseRecordId] <p>The ID of the record.</p>
+-- * ErrorCode [ErrorCode] <p>The error code for an individual record result.</p>
+-- * ErrorMessage [ErrorMessage] <p>The error message for an individual record result.</p>
+-- @return PutRecordBatchResponseEntry structure as a key-value pair table
+function M.PutRecordBatchResponseEntry(args)
+	assert(args, "You must provdide an argument table when creating PutRecordBatchResponseEntry")
 	local t = { 
-		["RecordId"] = _RecordId,
-		["ErrorCode"] = _ErrorCode,
-		["ErrorMessage"] = _ErrorMessage,
+		["RecordId"] = args["RecordId"],
+		["ErrorCode"] = args["ErrorCode"],
+		["ErrorMessage"] = args["ErrorMessage"],
 	}
 	asserts.AssertPutRecordBatchResponseEntry(t)
 	return t
@@ -298,11 +322,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>You have already reached the limit for a requested resource.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.LimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -321,11 +348,14 @@ end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>Another modification has already happened. Fetch <b>VersionId</b> again and use it to update the destination.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ConcurrentModificationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return ConcurrentModificationException structure as a key-value pair table
+function M.ConcurrentModificationException(args)
+	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertConcurrentModificationException(t)
 	return t
@@ -353,29 +383,32 @@ end
 
 --- Create a structure of type ExtendedS3DestinationUpdate
 -- <p>Describes an update for a destination in Amazon S3.</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
--- @param _Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
--- @param _BufferingHints [BufferingHints] <p>The buffering option.</p>
--- @param _S3BackupUpdate [S3DestinationUpdate] <p>The Amazon S3 destination for backup.</p>
--- @param _EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
--- @param _CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is <code>UNCOMPRESSED</code>. </p>
--- @param _S3BackupMode [S3BackupMode] <p>Enables or disables Amazon S3 backup mode.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
--- @param _ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
-function M.ExtendedS3DestinationUpdate(_RoleARN, _Prefix, _BufferingHints, _S3BackupUpdate, _EncryptionConfiguration, _CompressionFormat, _S3BackupMode, _CloudWatchLoggingOptions, _BucketARN, _ProcessingConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExtendedS3DestinationUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
+-- * Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
+-- * BufferingHints [BufferingHints] <p>The buffering option.</p>
+-- * S3BackupUpdate [S3DestinationUpdate] <p>The Amazon S3 destination for backup.</p>
+-- * EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
+-- * CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is <code>UNCOMPRESSED</code>. </p>
+-- * S3BackupMode [S3BackupMode] <p>Enables or disables Amazon S3 backup mode.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
+-- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
+-- @return ExtendedS3DestinationUpdate structure as a key-value pair table
+function M.ExtendedS3DestinationUpdate(args)
+	assert(args, "You must provdide an argument table when creating ExtendedS3DestinationUpdate")
 	local t = { 
-		["RoleARN"] = _RoleARN,
-		["Prefix"] = _Prefix,
-		["BufferingHints"] = _BufferingHints,
-		["S3BackupUpdate"] = _S3BackupUpdate,
-		["EncryptionConfiguration"] = _EncryptionConfiguration,
-		["CompressionFormat"] = _CompressionFormat,
-		["S3BackupMode"] = _S3BackupMode,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["BucketARN"] = _BucketARN,
-		["ProcessingConfiguration"] = _ProcessingConfiguration,
+		["RoleARN"] = args["RoleARN"],
+		["Prefix"] = args["Prefix"],
+		["BufferingHints"] = args["BufferingHints"],
+		["S3BackupUpdate"] = args["S3BackupUpdate"],
+		["EncryptionConfiguration"] = args["EncryptionConfiguration"],
+		["CompressionFormat"] = args["CompressionFormat"],
+		["S3BackupMode"] = args["S3BackupMode"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["BucketARN"] = args["BucketARN"],
+		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 	}
 	asserts.AssertExtendedS3DestinationUpdate(t)
 	return t
@@ -397,15 +430,18 @@ end
 
 --- Create a structure of type ProcessorParameter
 -- <p>Describes the processor parameter.</p>
--- @param _ParameterName [ProcessorParameterName] <p>The name of the parameter.</p>
--- @param _ParameterValue [ProcessorParameterValue] <p>The parameter value.</p>
--- Required parameter: ParameterName
--- Required parameter: ParameterValue
-function M.ProcessorParameter(_ParameterName, _ParameterValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProcessorParameter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterName [ProcessorParameterName] <p>The name of the parameter.</p>
+-- * ParameterValue [ProcessorParameterValue] <p>The parameter value.</p>
+-- Required key: ParameterName
+-- Required key: ParameterValue
+-- @return ProcessorParameter structure as a key-value pair table
+function M.ProcessorParameter(args)
+	assert(args, "You must provdide an argument table when creating ProcessorParameter")
 	local t = { 
-		["ParameterName"] = _ParameterName,
-		["ParameterValue"] = _ParameterValue,
+		["ParameterName"] = args["ParameterName"],
+		["ParameterValue"] = args["ParameterValue"],
 	}
 	asserts.AssertProcessorParameter(t)
 	return t
@@ -425,13 +461,16 @@ end
 
 --- Create a structure of type BufferingHints
 -- <p>Describes hints for the buffering to perform before delivering data to the destination. Please note that these options are treated as hints, and therefore Firehose may choose to use different values when it is optimal.</p>
--- @param _IntervalInSeconds [IntervalInSeconds] <p>Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. The default value is 300.</p>
--- @param _SizeInMBs [SizeInMBs] <p>Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5.</p> <p>We recommend setting this parameter to a value greater than the amount of data you typically ingest into the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should be 10 MB or higher.</p>
-function M.BufferingHints(_IntervalInSeconds, _SizeInMBs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BufferingHints")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IntervalInSeconds [IntervalInSeconds] <p>Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. The default value is 300.</p>
+-- * SizeInMBs [SizeInMBs] <p>Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5.</p> <p>We recommend setting this parameter to a value greater than the amount of data you typically ingest into the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should be 10 MB or higher.</p>
+-- @return BufferingHints structure as a key-value pair table
+function M.BufferingHints(args)
+	assert(args, "You must provdide an argument table when creating BufferingHints")
 	local t = { 
-		["IntervalInSeconds"] = _IntervalInSeconds,
-		["SizeInMBs"] = _SizeInMBs,
+		["IntervalInSeconds"] = args["IntervalInSeconds"],
+		["SizeInMBs"] = args["SizeInMBs"],
 	}
 	asserts.AssertBufferingHints(t)
 	return t
@@ -451,12 +490,15 @@ end
 
 --- Create a structure of type Record
 -- <p>The unit of data in a delivery stream.</p>
--- @param _Data [Data] <p>The data blob, which is base64-encoded when the blob is serialized. The maximum size of the data blob, before base64-encoding, is 1,000 KB.</p>
--- Required parameter: Data
-function M.Record(_Data, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Record")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Data [Data] <p>The data blob, which is base64-encoded when the blob is serialized. The maximum size of the data blob, before base64-encoding, is 1,000 KB.</p>
+-- Required key: Data
+-- @return Record structure as a key-value pair table
+function M.Record(args)
+	assert(args, "You must provdide an argument table when creating Record")
 	local t = { 
-		["Data"] = _Data,
+		["Data"] = args["Data"],
 	}
 	asserts.AssertRecord(t)
 	return t
@@ -485,31 +527,34 @@ end
 
 --- Create a structure of type ElasticsearchDestinationDescription
 -- <p>The destination description in Amazon ES.</p>
--- @param _IndexName [ElasticsearchIndexName] <p>The Elasticsearch index name.</p>
--- @param _RetryOptions [ElasticsearchRetryOptions] <p>The Amazon ES retry options.</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
--- @param _BufferingHints [ElasticsearchBufferingHints] <p>The buffering options.</p>
--- @param _TypeName [ElasticsearchTypeName] <p>The Elasticsearch type name.</p>
--- @param _S3BackupMode [ElasticsearchS3BackupMode] <p>The Amazon S3 backup mode.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options.</p>
--- @param _DomainARN [ElasticsearchDomainARN] <p>The ARN of the Amazon ES domain.</p>
--- @param _S3DestinationDescription [S3DestinationDescription] <p>The Amazon S3 destination.</p>
--- @param _IndexRotationPeriod [ElasticsearchIndexRotationPeriod] <p>The Elasticsearch index rotation period</p>
--- @param _ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
-function M.ElasticsearchDestinationDescription(_IndexName, _RetryOptions, _RoleARN, _BufferingHints, _TypeName, _S3BackupMode, _CloudWatchLoggingOptions, _DomainARN, _S3DestinationDescription, _IndexRotationPeriod, _ProcessingConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchDestinationDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexName [ElasticsearchIndexName] <p>The Elasticsearch index name.</p>
+-- * RetryOptions [ElasticsearchRetryOptions] <p>The Amazon ES retry options.</p>
+-- * RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
+-- * BufferingHints [ElasticsearchBufferingHints] <p>The buffering options.</p>
+-- * TypeName [ElasticsearchTypeName] <p>The Elasticsearch type name.</p>
+-- * S3BackupMode [ElasticsearchS3BackupMode] <p>The Amazon S3 backup mode.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options.</p>
+-- * DomainARN [ElasticsearchDomainARN] <p>The ARN of the Amazon ES domain.</p>
+-- * S3DestinationDescription [S3DestinationDescription] <p>The Amazon S3 destination.</p>
+-- * IndexRotationPeriod [ElasticsearchIndexRotationPeriod] <p>The Elasticsearch index rotation period</p>
+-- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
+-- @return ElasticsearchDestinationDescription structure as a key-value pair table
+function M.ElasticsearchDestinationDescription(args)
+	assert(args, "You must provdide an argument table when creating ElasticsearchDestinationDescription")
 	local t = { 
-		["IndexName"] = _IndexName,
-		["RetryOptions"] = _RetryOptions,
-		["RoleARN"] = _RoleARN,
-		["BufferingHints"] = _BufferingHints,
-		["TypeName"] = _TypeName,
-		["S3BackupMode"] = _S3BackupMode,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["DomainARN"] = _DomainARN,
-		["S3DestinationDescription"] = _S3DestinationDescription,
-		["IndexRotationPeriod"] = _IndexRotationPeriod,
-		["ProcessingConfiguration"] = _ProcessingConfiguration,
+		["IndexName"] = args["IndexName"],
+		["RetryOptions"] = args["RetryOptions"],
+		["RoleARN"] = args["RoleARN"],
+		["BufferingHints"] = args["BufferingHints"],
+		["TypeName"] = args["TypeName"],
+		["S3BackupMode"] = args["S3BackupMode"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["DomainARN"] = args["DomainARN"],
+		["S3DestinationDescription"] = args["S3DestinationDescription"],
+		["IndexRotationPeriod"] = args["IndexRotationPeriod"],
+		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 	}
 	asserts.AssertElasticsearchDestinationDescription(t)
 	return t
@@ -529,12 +574,15 @@ end
 
 --- Create a structure of type DeleteDeliveryStreamInput
 --  
--- @param _DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
--- Required parameter: DeliveryStreamName
-function M.DeleteDeliveryStreamInput(_DeliveryStreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeliveryStreamInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
+-- Required key: DeliveryStreamName
+-- @return DeleteDeliveryStreamInput structure as a key-value pair table
+function M.DeleteDeliveryStreamInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteDeliveryStreamInput")
 	local t = { 
-		["DeliveryStreamName"] = _DeliveryStreamName,
+		["DeliveryStreamName"] = args["DeliveryStreamName"],
 	}
 	asserts.AssertDeleteDeliveryStreamInput(t)
 	return t
@@ -553,11 +601,14 @@ end
 
 --- Create a structure of type RedshiftRetryOptions
 -- <p>Configures retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift.</p>
--- @param _DurationInSeconds [RedshiftRetryDurationInSeconds] <p>The length of time during which Firehose retries delivery after a failure, starting from the initial request and including the first attempt. The default value is 3600 seconds (60 minutes). Firehose does not retry if the value of <code>DurationInSeconds</code> is 0 (zero) or if the first delivery attempt takes longer than the current value.</p>
-function M.RedshiftRetryOptions(_DurationInSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RedshiftRetryOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DurationInSeconds [RedshiftRetryDurationInSeconds] <p>The length of time during which Firehose retries delivery after a failure, starting from the initial request and including the first attempt. The default value is 3600 seconds (60 minutes). Firehose does not retry if the value of <code>DurationInSeconds</code> is 0 (zero) or if the first delivery attempt takes longer than the current value.</p>
+-- @return RedshiftRetryOptions structure as a key-value pair table
+function M.RedshiftRetryOptions(args)
+	assert(args, "You must provdide an argument table when creating RedshiftRetryOptions")
 	local t = { 
-		["DurationInSeconds"] = _DurationInSeconds,
+		["DurationInSeconds"] = args["DurationInSeconds"],
 	}
 	asserts.AssertRedshiftRetryOptions(t)
 	return t
@@ -579,15 +630,18 @@ end
 
 --- Create a structure of type ListDeliveryStreamsOutput
 --  
--- @param _DeliveryStreamNames [DeliveryStreamNameList] <p>The names of the delivery streams.</p>
--- @param _HasMoreDeliveryStreams [BooleanObject] <p>Indicates whether there are more delivery streams available to list.</p>
--- Required parameter: DeliveryStreamNames
--- Required parameter: HasMoreDeliveryStreams
-function M.ListDeliveryStreamsOutput(_DeliveryStreamNames, _HasMoreDeliveryStreams, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeliveryStreamsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryStreamNames [DeliveryStreamNameList] <p>The names of the delivery streams.</p>
+-- * HasMoreDeliveryStreams [BooleanObject] <p>Indicates whether there are more delivery streams available to list.</p>
+-- Required key: DeliveryStreamNames
+-- Required key: HasMoreDeliveryStreams
+-- @return ListDeliveryStreamsOutput structure as a key-value pair table
+function M.ListDeliveryStreamsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListDeliveryStreamsOutput")
 	local t = { 
-		["DeliveryStreamNames"] = _DeliveryStreamNames,
-		["HasMoreDeliveryStreams"] = _HasMoreDeliveryStreams,
+		["DeliveryStreamNames"] = args["DeliveryStreamNames"],
+		["HasMoreDeliveryStreams"] = args["HasMoreDeliveryStreams"],
 	}
 	asserts.AssertListDeliveryStreamsOutput(t)
 	return t
@@ -606,11 +660,14 @@ end
 
 --- Create a structure of type ResourceInUseException
 -- <p>The resource is already in use and not available for this operation.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ResourceInUseException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return ResourceInUseException structure as a key-value pair table
+function M.ResourceInUseException(args)
+	assert(args, "You must provdide an argument table when creating ResourceInUseException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceInUseException(t)
 	return t
@@ -643,34 +700,37 @@ end
 
 --- Create a structure of type RedshiftDestinationDescription
 -- <p>Describes a destination in Amazon Redshift.</p>
--- @param _Username [Username] <p>The name of the user.</p>
--- @param _S3BackupDescription [S3DestinationDescription] <p>The configuration for backup in Amazon S3.</p>
--- @param _S3DestinationDescription [S3DestinationDescription] <p>The Amazon S3 destination.</p>
--- @param _RetryOptions [RedshiftRetryOptions] <p>The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default value is 3600 (60 minutes).</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
--- @param _ClusterJDBCURL [ClusterJDBCURL] <p>The database connection string.</p>
--- @param _CopyCommand [CopyCommand] <p>The <code>COPY</code> command.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
--- @param _S3BackupMode [RedshiftS3BackupMode] <p>The Amazon S3 backup mode.</p>
--- Required parameter: RoleARN
--- Required parameter: ClusterJDBCURL
--- Required parameter: CopyCommand
--- Required parameter: Username
--- Required parameter: S3DestinationDescription
-function M.RedshiftDestinationDescription(_Username, _S3BackupDescription, _S3DestinationDescription, _RetryOptions, _RoleARN, _ClusterJDBCURL, _CopyCommand, _CloudWatchLoggingOptions, _ProcessingConfiguration, _S3BackupMode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RedshiftDestinationDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [Username] <p>The name of the user.</p>
+-- * S3BackupDescription [S3DestinationDescription] <p>The configuration for backup in Amazon S3.</p>
+-- * S3DestinationDescription [S3DestinationDescription] <p>The Amazon S3 destination.</p>
+-- * RetryOptions [RedshiftRetryOptions] <p>The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default value is 3600 (60 minutes).</p>
+-- * RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
+-- * ClusterJDBCURL [ClusterJDBCURL] <p>The database connection string.</p>
+-- * CopyCommand [CopyCommand] <p>The <code>COPY</code> command.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
+-- * S3BackupMode [RedshiftS3BackupMode] <p>The Amazon S3 backup mode.</p>
+-- Required key: RoleARN
+-- Required key: ClusterJDBCURL
+-- Required key: CopyCommand
+-- Required key: Username
+-- Required key: S3DestinationDescription
+-- @return RedshiftDestinationDescription structure as a key-value pair table
+function M.RedshiftDestinationDescription(args)
+	assert(args, "You must provdide an argument table when creating RedshiftDestinationDescription")
 	local t = { 
-		["Username"] = _Username,
-		["S3BackupDescription"] = _S3BackupDescription,
-		["S3DestinationDescription"] = _S3DestinationDescription,
-		["RetryOptions"] = _RetryOptions,
-		["RoleARN"] = _RoleARN,
-		["ClusterJDBCURL"] = _ClusterJDBCURL,
-		["CopyCommand"] = _CopyCommand,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["ProcessingConfiguration"] = _ProcessingConfiguration,
-		["S3BackupMode"] = _S3BackupMode,
+		["Username"] = args["Username"],
+		["S3BackupDescription"] = args["S3BackupDescription"],
+		["S3DestinationDescription"] = args["S3DestinationDescription"],
+		["RetryOptions"] = args["RetryOptions"],
+		["RoleARN"] = args["RoleARN"],
+		["ClusterJDBCURL"] = args["ClusterJDBCURL"],
+		["CopyCommand"] = args["CopyCommand"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
+		["S3BackupMode"] = args["S3BackupMode"],
 	}
 	asserts.AssertRedshiftDestinationDescription(t)
 	return t
@@ -691,14 +751,17 @@ end
 
 --- Create a structure of type Processor
 -- <p>Describes a data processor.</p>
--- @param _Type [ProcessorType] <p>The type of processor.</p>
--- @param _Parameters [ProcessorParameterList] <p>The processor parameters.</p>
--- Required parameter: Type
-function M.Processor(_Type, _Parameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Processor")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [ProcessorType] <p>The type of processor.</p>
+-- * Parameters [ProcessorParameterList] <p>The processor parameters.</p>
+-- Required key: Type
+-- @return Processor structure as a key-value pair table
+function M.Processor(args)
+	assert(args, "You must provdide an argument table when creating Processor")
 	local t = { 
-		["Type"] = _Type,
-		["Parameters"] = _Parameters,
+		["Type"] = args["Type"],
+		["Parameters"] = args["Parameters"],
 	}
 	asserts.AssertProcessor(t)
 	return t
@@ -716,8 +779,11 @@ end
 
 --- Create a structure of type DeleteDeliveryStreamOutput
 --  
-function M.DeleteDeliveryStreamOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeliveryStreamOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteDeliveryStreamOutput structure as a key-value pair table
+function M.DeleteDeliveryStreamOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteDeliveryStreamOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteDeliveryStreamOutput(t)
@@ -742,20 +808,23 @@ end
 
 --- Create a structure of type CreateDeliveryStreamInput
 --  
--- @param _ExtendedS3DestinationConfiguration [ExtendedS3DestinationConfiguration] <p>The destination in Amazon S3. You can specify only one destination.</p>
--- @param _S3DestinationConfiguration [S3DestinationConfiguration] <p>[Deprecated] The destination in Amazon S3. You can specify only one destination.</p>
--- @param _DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream. This name must be unique per AWS account in the same region. You can have multiple delivery streams with the same name if they are in different accounts or different regions.</p>
--- @param _ElasticsearchDestinationConfiguration [ElasticsearchDestinationConfiguration] <p>The destination in Amazon ES. You can specify only one destination.</p>
--- @param _RedshiftDestinationConfiguration [RedshiftDestinationConfiguration] <p>The destination in Amazon Redshift. You can specify only one destination.</p>
--- Required parameter: DeliveryStreamName
-function M.CreateDeliveryStreamInput(_ExtendedS3DestinationConfiguration, _S3DestinationConfiguration, _DeliveryStreamName, _ElasticsearchDestinationConfiguration, _RedshiftDestinationConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeliveryStreamInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ExtendedS3DestinationConfiguration [ExtendedS3DestinationConfiguration] <p>The destination in Amazon S3. You can specify only one destination.</p>
+-- * S3DestinationConfiguration [S3DestinationConfiguration] <p>[Deprecated] The destination in Amazon S3. You can specify only one destination.</p>
+-- * DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream. This name must be unique per AWS account in the same region. You can have multiple delivery streams with the same name if they are in different accounts or different regions.</p>
+-- * ElasticsearchDestinationConfiguration [ElasticsearchDestinationConfiguration] <p>The destination in Amazon ES. You can specify only one destination.</p>
+-- * RedshiftDestinationConfiguration [RedshiftDestinationConfiguration] <p>The destination in Amazon Redshift. You can specify only one destination.</p>
+-- Required key: DeliveryStreamName
+-- @return CreateDeliveryStreamInput structure as a key-value pair table
+function M.CreateDeliveryStreamInput(args)
+	assert(args, "You must provdide an argument table when creating CreateDeliveryStreamInput")
 	local t = { 
-		["ExtendedS3DestinationConfiguration"] = _ExtendedS3DestinationConfiguration,
-		["S3DestinationConfiguration"] = _S3DestinationConfiguration,
-		["DeliveryStreamName"] = _DeliveryStreamName,
-		["ElasticsearchDestinationConfiguration"] = _ElasticsearchDestinationConfiguration,
-		["RedshiftDestinationConfiguration"] = _RedshiftDestinationConfiguration,
+		["ExtendedS3DestinationConfiguration"] = args["ExtendedS3DestinationConfiguration"],
+		["S3DestinationConfiguration"] = args["S3DestinationConfiguration"],
+		["DeliveryStreamName"] = args["DeliveryStreamName"],
+		["ElasticsearchDestinationConfiguration"] = args["ElasticsearchDestinationConfiguration"],
+		["RedshiftDestinationConfiguration"] = args["RedshiftDestinationConfiguration"],
 	}
 	asserts.AssertCreateDeliveryStreamInput(t)
 	return t
@@ -784,31 +853,34 @@ end
 
 --- Create a structure of type RedshiftDestinationUpdate
 -- <p>Describes an update for a destination in Amazon Redshift.</p>
--- @param _Username [Username] <p>The name of the user.</p>
--- @param _S3Update [S3DestinationUpdate] <p>The Amazon S3 destination.</p> <p>The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in <b>RedshiftDestinationUpdate.S3Update</b> because the Amazon Redshift <code>COPY</code> operation that reads from the S3 bucket doesn't support these compression formats.</p>
--- @param _RetryOptions [RedshiftRetryOptions] <p>The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default value is 3600 (60 minutes).</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
--- @param _ClusterJDBCURL [ClusterJDBCURL] <p>The database connection string.</p>
--- @param _CopyCommand [CopyCommand] <p>The <code>COPY</code> command.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _Password [Password] <p>The user password.</p>
--- @param _S3BackupUpdate [S3DestinationUpdate] <p>The Amazon S3 destination for backup.</p>
--- @param _ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
--- @param _S3BackupMode [RedshiftS3BackupMode] <p>The Amazon S3 backup mode.</p>
-function M.RedshiftDestinationUpdate(_Username, _S3Update, _RetryOptions, _RoleARN, _ClusterJDBCURL, _CopyCommand, _CloudWatchLoggingOptions, _Password, _S3BackupUpdate, _ProcessingConfiguration, _S3BackupMode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RedshiftDestinationUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [Username] <p>The name of the user.</p>
+-- * S3Update [S3DestinationUpdate] <p>The Amazon S3 destination.</p> <p>The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in <b>RedshiftDestinationUpdate.S3Update</b> because the Amazon Redshift <code>COPY</code> operation that reads from the S3 bucket doesn't support these compression formats.</p>
+-- * RetryOptions [RedshiftRetryOptions] <p>The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default value is 3600 (60 minutes).</p>
+-- * RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
+-- * ClusterJDBCURL [ClusterJDBCURL] <p>The database connection string.</p>
+-- * CopyCommand [CopyCommand] <p>The <code>COPY</code> command.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * Password [Password] <p>The user password.</p>
+-- * S3BackupUpdate [S3DestinationUpdate] <p>The Amazon S3 destination for backup.</p>
+-- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
+-- * S3BackupMode [RedshiftS3BackupMode] <p>The Amazon S3 backup mode.</p>
+-- @return RedshiftDestinationUpdate structure as a key-value pair table
+function M.RedshiftDestinationUpdate(args)
+	assert(args, "You must provdide an argument table when creating RedshiftDestinationUpdate")
 	local t = { 
-		["Username"] = _Username,
-		["S3Update"] = _S3Update,
-		["RetryOptions"] = _RetryOptions,
-		["RoleARN"] = _RoleARN,
-		["ClusterJDBCURL"] = _ClusterJDBCURL,
-		["CopyCommand"] = _CopyCommand,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["Password"] = _Password,
-		["S3BackupUpdate"] = _S3BackupUpdate,
-		["ProcessingConfiguration"] = _ProcessingConfiguration,
-		["S3BackupMode"] = _S3BackupMode,
+		["Username"] = args["Username"],
+		["S3Update"] = args["S3Update"],
+		["RetryOptions"] = args["RetryOptions"],
+		["RoleARN"] = args["RoleARN"],
+		["ClusterJDBCURL"] = args["ClusterJDBCURL"],
+		["CopyCommand"] = args["CopyCommand"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["Password"] = args["Password"],
+		["S3BackupUpdate"] = args["S3BackupUpdate"],
+		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
+		["S3BackupMode"] = args["S3BackupMode"],
 	}
 	asserts.AssertRedshiftDestinationUpdate(t)
 	return t
@@ -836,26 +908,29 @@ end
 
 --- Create a structure of type UpdateDestinationInput
 --  
--- @param _DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
--- @param _ElasticsearchDestinationUpdate [ElasticsearchDestinationUpdate] <p>Describes an update for a destination in Amazon ES.</p>
--- @param _CurrentDeliveryStreamVersionId [DeliveryStreamVersionId] <p>Obtain this value from the <b>VersionId</b> result of <a>DeliveryStreamDescription</a>. This value is required, and helps the service to perform conditional operations. For example, if there is a interleaving update and this value is null, then the update destination fails. After the update is successful, the <b>VersionId</b> value is updated. The service then performs a merge of the old configuration with the new configuration.</p>
--- @param _DestinationId [DestinationId] <p>The ID of the destination.</p>
--- @param _ExtendedS3DestinationUpdate [ExtendedS3DestinationUpdate] <p>Describes an update for a destination in Amazon S3.</p>
--- @param _S3DestinationUpdate [S3DestinationUpdate] <p>[Deprecated] Describes an update for a destination in Amazon S3.</p>
--- @param _RedshiftDestinationUpdate [RedshiftDestinationUpdate] <p>Describes an update for a destination in Amazon Redshift.</p>
--- Required parameter: DeliveryStreamName
--- Required parameter: CurrentDeliveryStreamVersionId
--- Required parameter: DestinationId
-function M.UpdateDestinationInput(_DeliveryStreamName, _ElasticsearchDestinationUpdate, _CurrentDeliveryStreamVersionId, _DestinationId, _ExtendedS3DestinationUpdate, _S3DestinationUpdate, _RedshiftDestinationUpdate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDestinationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
+-- * ElasticsearchDestinationUpdate [ElasticsearchDestinationUpdate] <p>Describes an update for a destination in Amazon ES.</p>
+-- * CurrentDeliveryStreamVersionId [DeliveryStreamVersionId] <p>Obtain this value from the <b>VersionId</b> result of <a>DeliveryStreamDescription</a>. This value is required, and helps the service to perform conditional operations. For example, if there is a interleaving update and this value is null, then the update destination fails. After the update is successful, the <b>VersionId</b> value is updated. The service then performs a merge of the old configuration with the new configuration.</p>
+-- * DestinationId [DestinationId] <p>The ID of the destination.</p>
+-- * ExtendedS3DestinationUpdate [ExtendedS3DestinationUpdate] <p>Describes an update for a destination in Amazon S3.</p>
+-- * S3DestinationUpdate [S3DestinationUpdate] <p>[Deprecated] Describes an update for a destination in Amazon S3.</p>
+-- * RedshiftDestinationUpdate [RedshiftDestinationUpdate] <p>Describes an update for a destination in Amazon Redshift.</p>
+-- Required key: DeliveryStreamName
+-- Required key: CurrentDeliveryStreamVersionId
+-- Required key: DestinationId
+-- @return UpdateDestinationInput structure as a key-value pair table
+function M.UpdateDestinationInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateDestinationInput")
 	local t = { 
-		["DeliveryStreamName"] = _DeliveryStreamName,
-		["ElasticsearchDestinationUpdate"] = _ElasticsearchDestinationUpdate,
-		["CurrentDeliveryStreamVersionId"] = _CurrentDeliveryStreamVersionId,
-		["DestinationId"] = _DestinationId,
-		["ExtendedS3DestinationUpdate"] = _ExtendedS3DestinationUpdate,
-		["S3DestinationUpdate"] = _S3DestinationUpdate,
-		["RedshiftDestinationUpdate"] = _RedshiftDestinationUpdate,
+		["DeliveryStreamName"] = args["DeliveryStreamName"],
+		["ElasticsearchDestinationUpdate"] = args["ElasticsearchDestinationUpdate"],
+		["CurrentDeliveryStreamVersionId"] = args["CurrentDeliveryStreamVersionId"],
+		["DestinationId"] = args["DestinationId"],
+		["ExtendedS3DestinationUpdate"] = args["ExtendedS3DestinationUpdate"],
+		["S3DestinationUpdate"] = args["S3DestinationUpdate"],
+		["RedshiftDestinationUpdate"] = args["RedshiftDestinationUpdate"],
 	}
 	asserts.AssertUpdateDestinationInput(t)
 	return t
@@ -889,36 +964,39 @@ end
 
 --- Create a structure of type ElasticsearchDestinationConfiguration
 -- <p>Describes the configuration of a destination in Amazon ES.</p>
--- @param _S3Configuration [S3DestinationConfiguration] <p>The configuration for the intermediate Amazon S3 location from which Amazon ES obtains data.</p>
--- @param _IndexName [ElasticsearchIndexName] <p>The Elasticsearch index name.</p>
--- @param _RetryOptions [ElasticsearchRetryOptions] <p>The retry behavior in the event that Firehose is unable to deliver documents to Amazon ES. The default value is 300 (5 minutes).</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the IAM role to be assumed by Firehose for calling the Amazon ES Configuration API and for indexing documents. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3">Amazon S3 Bucket Access</a>.</p>
--- @param _BufferingHints [ElasticsearchBufferingHints] <p>The buffering options. If no value is specified, the default values for <b>ElasticsearchBufferingHints</b> are used.</p>
--- @param _TypeName [ElasticsearchTypeName] <p>The Elasticsearch type name.</p>
--- @param _S3BackupMode [ElasticsearchS3BackupMode] <p>Defines how documents should be delivered to Amazon S3. When set to FailedDocumentsOnly, Firehose writes any documents that could not be indexed to the configured Amazon S3 destination, with elasticsearch-failed/ appended to the key prefix. When set to AllDocuments, Firehose delivers all incoming records to Amazon S3, and also writes failed documents with elasticsearch-failed/ appended to the prefix. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-s3-backup">Amazon S3 Backup for Amazon Elasticsearch Service Destination</a>. Default value is FailedDocumentsOnly.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _DomainARN [ElasticsearchDomainARN] <p>The ARN of the Amazon ES domain. The IAM role must have permissions for <code>DescribeElasticsearchDomain</code>, <code>DescribeElasticsearchDomains</code>, and <code>DescribeElasticsearchDomainConfig</code> after assuming the role specified in <b>RoleARN</b>.</p>
--- @param _IndexRotationPeriod [ElasticsearchIndexRotationPeriod] <p>The Elasticsearch index rotation period. Index rotation appends a timestamp to the IndexName to facilitate expiration of old data. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation">Index Rotation for Amazon Elasticsearch Service Destination</a>. The default value is <code>OneDay</code>.</p>
--- @param _ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
--- Required parameter: RoleARN
--- Required parameter: DomainARN
--- Required parameter: IndexName
--- Required parameter: TypeName
--- Required parameter: S3Configuration
-function M.ElasticsearchDestinationConfiguration(_S3Configuration, _IndexName, _RetryOptions, _RoleARN, _BufferingHints, _TypeName, _S3BackupMode, _CloudWatchLoggingOptions, _DomainARN, _IndexRotationPeriod, _ProcessingConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchDestinationConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * S3Configuration [S3DestinationConfiguration] <p>The configuration for the intermediate Amazon S3 location from which Amazon ES obtains data.</p>
+-- * IndexName [ElasticsearchIndexName] <p>The Elasticsearch index name.</p>
+-- * RetryOptions [ElasticsearchRetryOptions] <p>The retry behavior in the event that Firehose is unable to deliver documents to Amazon ES. The default value is 300 (5 minutes).</p>
+-- * RoleARN [RoleARN] <p>The ARN of the IAM role to be assumed by Firehose for calling the Amazon ES Configuration API and for indexing documents. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3">Amazon S3 Bucket Access</a>.</p>
+-- * BufferingHints [ElasticsearchBufferingHints] <p>The buffering options. If no value is specified, the default values for <b>ElasticsearchBufferingHints</b> are used.</p>
+-- * TypeName [ElasticsearchTypeName] <p>The Elasticsearch type name.</p>
+-- * S3BackupMode [ElasticsearchS3BackupMode] <p>Defines how documents should be delivered to Amazon S3. When set to FailedDocumentsOnly, Firehose writes any documents that could not be indexed to the configured Amazon S3 destination, with elasticsearch-failed/ appended to the key prefix. When set to AllDocuments, Firehose delivers all incoming records to Amazon S3, and also writes failed documents with elasticsearch-failed/ appended to the prefix. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-s3-backup">Amazon S3 Backup for Amazon Elasticsearch Service Destination</a>. Default value is FailedDocumentsOnly.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * DomainARN [ElasticsearchDomainARN] <p>The ARN of the Amazon ES domain. The IAM role must have permissions for <code>DescribeElasticsearchDomain</code>, <code>DescribeElasticsearchDomains</code>, and <code>DescribeElasticsearchDomainConfig</code> after assuming the role specified in <b>RoleARN</b>.</p>
+-- * IndexRotationPeriod [ElasticsearchIndexRotationPeriod] <p>The Elasticsearch index rotation period. Index rotation appends a timestamp to the IndexName to facilitate expiration of old data. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation">Index Rotation for Amazon Elasticsearch Service Destination</a>. The default value is <code>OneDay</code>.</p>
+-- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
+-- Required key: RoleARN
+-- Required key: DomainARN
+-- Required key: IndexName
+-- Required key: TypeName
+-- Required key: S3Configuration
+-- @return ElasticsearchDestinationConfiguration structure as a key-value pair table
+function M.ElasticsearchDestinationConfiguration(args)
+	assert(args, "You must provdide an argument table when creating ElasticsearchDestinationConfiguration")
 	local t = { 
-		["S3Configuration"] = _S3Configuration,
-		["IndexName"] = _IndexName,
-		["RetryOptions"] = _RetryOptions,
-		["RoleARN"] = _RoleARN,
-		["BufferingHints"] = _BufferingHints,
-		["TypeName"] = _TypeName,
-		["S3BackupMode"] = _S3BackupMode,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["DomainARN"] = _DomainARN,
-		["IndexRotationPeriod"] = _IndexRotationPeriod,
-		["ProcessingConfiguration"] = _ProcessingConfiguration,
+		["S3Configuration"] = args["S3Configuration"],
+		["IndexName"] = args["IndexName"],
+		["RetryOptions"] = args["RetryOptions"],
+		["RoleARN"] = args["RoleARN"],
+		["BufferingHints"] = args["BufferingHints"],
+		["TypeName"] = args["TypeName"],
+		["S3BackupMode"] = args["S3BackupMode"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["DomainARN"] = args["DomainARN"],
+		["IndexRotationPeriod"] = args["IndexRotationPeriod"],
+		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 	}
 	asserts.AssertElasticsearchDestinationConfiguration(t)
 	return t
@@ -937,11 +1015,14 @@ end
 
 --- Create a structure of type CreateDeliveryStreamOutput
 --  
--- @param _DeliveryStreamARN [DeliveryStreamARN] <p>The ARN of the delivery stream.</p>
-function M.CreateDeliveryStreamOutput(_DeliveryStreamARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeliveryStreamOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryStreamARN [DeliveryStreamARN] <p>The ARN of the delivery stream.</p>
+-- @return CreateDeliveryStreamOutput structure as a key-value pair table
+function M.CreateDeliveryStreamOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateDeliveryStreamOutput")
 	local t = { 
-		["DeliveryStreamARN"] = _DeliveryStreamARN,
+		["DeliveryStreamARN"] = args["DeliveryStreamARN"],
 	}
 	asserts.AssertCreateDeliveryStreamOutput(t)
 	return t
@@ -961,12 +1042,15 @@ end
 
 --- Create a structure of type PutRecordOutput
 --  
--- @param _RecordId [PutResponseRecordId] <p>The ID of the record.</p>
--- Required parameter: RecordId
-function M.PutRecordOutput(_RecordId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RecordId [PutResponseRecordId] <p>The ID of the record.</p>
+-- Required key: RecordId
+-- @return PutRecordOutput structure as a key-value pair table
+function M.PutRecordOutput(args)
+	assert(args, "You must provdide an argument table when creating PutRecordOutput")
 	local t = { 
-		["RecordId"] = _RecordId,
+		["RecordId"] = args["RecordId"],
 	}
 	asserts.AssertPutRecordOutput(t)
 	return t
@@ -999,34 +1083,37 @@ end
 
 --- Create a structure of type ExtendedS3DestinationDescription
 -- <p>Describes a destination in Amazon S3.</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
--- @param _Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
--- @param _BufferingHints [BufferingHints] <p>The buffering option.</p>
--- @param _EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
--- @param _CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is <code>UNCOMPRESSED</code>.</p>
--- @param _S3BackupMode [S3BackupMode] <p>The Amazon S3 backup mode.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
--- @param _ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
--- @param _S3BackupDescription [S3DestinationDescription] <p>The configuration for backup in Amazon S3.</p>
--- Required parameter: RoleARN
--- Required parameter: BucketARN
--- Required parameter: BufferingHints
--- Required parameter: CompressionFormat
--- Required parameter: EncryptionConfiguration
-function M.ExtendedS3DestinationDescription(_RoleARN, _Prefix, _BufferingHints, _EncryptionConfiguration, _CompressionFormat, _S3BackupMode, _CloudWatchLoggingOptions, _BucketARN, _ProcessingConfiguration, _S3BackupDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExtendedS3DestinationDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
+-- * Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
+-- * BufferingHints [BufferingHints] <p>The buffering option.</p>
+-- * EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
+-- * CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is <code>UNCOMPRESSED</code>.</p>
+-- * S3BackupMode [S3BackupMode] <p>The Amazon S3 backup mode.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
+-- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
+-- * S3BackupDescription [S3DestinationDescription] <p>The configuration for backup in Amazon S3.</p>
+-- Required key: RoleARN
+-- Required key: BucketARN
+-- Required key: BufferingHints
+-- Required key: CompressionFormat
+-- Required key: EncryptionConfiguration
+-- @return ExtendedS3DestinationDescription structure as a key-value pair table
+function M.ExtendedS3DestinationDescription(args)
+	assert(args, "You must provdide an argument table when creating ExtendedS3DestinationDescription")
 	local t = { 
-		["RoleARN"] = _RoleARN,
-		["Prefix"] = _Prefix,
-		["BufferingHints"] = _BufferingHints,
-		["EncryptionConfiguration"] = _EncryptionConfiguration,
-		["CompressionFormat"] = _CompressionFormat,
-		["S3BackupMode"] = _S3BackupMode,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["BucketARN"] = _BucketARN,
-		["ProcessingConfiguration"] = _ProcessingConfiguration,
-		["S3BackupDescription"] = _S3BackupDescription,
+		["RoleARN"] = args["RoleARN"],
+		["Prefix"] = args["Prefix"],
+		["BufferingHints"] = args["BufferingHints"],
+		["EncryptionConfiguration"] = args["EncryptionConfiguration"],
+		["CompressionFormat"] = args["CompressionFormat"],
+		["S3BackupMode"] = args["S3BackupMode"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["BucketARN"] = args["BucketARN"],
+		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
+		["S3BackupDescription"] = args["S3BackupDescription"],
 	}
 	asserts.AssertExtendedS3DestinationDescription(t)
 	return t
@@ -1061,37 +1148,40 @@ end
 
 --- Create a structure of type RedshiftDestinationConfiguration
 -- <p>Describes the configuration of a destination in Amazon Redshift.</p>
--- @param _Username [Username] <p>The name of the user.</p>
--- @param _S3Configuration [S3DestinationConfiguration] <p>The configuration for the intermediate Amazon S3 location from which Amazon Redshift obtains data. Restrictions are described in the topic for <a>CreateDeliveryStream</a>.</p> <p>The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in <b>RedshiftDestinationConfiguration.S3Configuration</b> because the Amazon Redshift <code>COPY</code> operation that reads from the S3 bucket doesn't support these compression formats.</p>
--- @param _S3BackupConfiguration [S3DestinationConfiguration] <p>The configuration for backup in Amazon S3.</p>
--- @param _RetryOptions [RedshiftRetryOptions] <p>The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default value is 3600 (60 minutes).</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
--- @param _ClusterJDBCURL [ClusterJDBCURL] <p>The database connection string.</p>
--- @param _CopyCommand [CopyCommand] <p>The <code>COPY</code> command.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _Password [Password] <p>The user password.</p>
--- @param _ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
--- @param _S3BackupMode [RedshiftS3BackupMode] <p>The Amazon S3 backup mode.</p>
--- Required parameter: RoleARN
--- Required parameter: ClusterJDBCURL
--- Required parameter: CopyCommand
--- Required parameter: Username
--- Required parameter: Password
--- Required parameter: S3Configuration
-function M.RedshiftDestinationConfiguration(_Username, _S3Configuration, _S3BackupConfiguration, _RetryOptions, _RoleARN, _ClusterJDBCURL, _CopyCommand, _CloudWatchLoggingOptions, _Password, _ProcessingConfiguration, _S3BackupMode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RedshiftDestinationConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [Username] <p>The name of the user.</p>
+-- * S3Configuration [S3DestinationConfiguration] <p>The configuration for the intermediate Amazon S3 location from which Amazon Redshift obtains data. Restrictions are described in the topic for <a>CreateDeliveryStream</a>.</p> <p>The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified in <b>RedshiftDestinationConfiguration.S3Configuration</b> because the Amazon Redshift <code>COPY</code> operation that reads from the S3 bucket doesn't support these compression formats.</p>
+-- * S3BackupConfiguration [S3DestinationConfiguration] <p>The configuration for backup in Amazon S3.</p>
+-- * RetryOptions [RedshiftRetryOptions] <p>The retry behavior in the event that Firehose is unable to deliver documents to Amazon Redshift. Default value is 3600 (60 minutes).</p>
+-- * RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
+-- * ClusterJDBCURL [ClusterJDBCURL] <p>The database connection string.</p>
+-- * CopyCommand [CopyCommand] <p>The <code>COPY</code> command.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * Password [Password] <p>The user password.</p>
+-- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
+-- * S3BackupMode [RedshiftS3BackupMode] <p>The Amazon S3 backup mode.</p>
+-- Required key: RoleARN
+-- Required key: ClusterJDBCURL
+-- Required key: CopyCommand
+-- Required key: Username
+-- Required key: Password
+-- Required key: S3Configuration
+-- @return RedshiftDestinationConfiguration structure as a key-value pair table
+function M.RedshiftDestinationConfiguration(args)
+	assert(args, "You must provdide an argument table when creating RedshiftDestinationConfiguration")
 	local t = { 
-		["Username"] = _Username,
-		["S3Configuration"] = _S3Configuration,
-		["S3BackupConfiguration"] = _S3BackupConfiguration,
-		["RetryOptions"] = _RetryOptions,
-		["RoleARN"] = _RoleARN,
-		["ClusterJDBCURL"] = _ClusterJDBCURL,
-		["CopyCommand"] = _CopyCommand,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["Password"] = _Password,
-		["ProcessingConfiguration"] = _ProcessingConfiguration,
-		["S3BackupMode"] = _S3BackupMode,
+		["Username"] = args["Username"],
+		["S3Configuration"] = args["S3Configuration"],
+		["S3BackupConfiguration"] = args["S3BackupConfiguration"],
+		["RetryOptions"] = args["RetryOptions"],
+		["RoleARN"] = args["RoleARN"],
+		["ClusterJDBCURL"] = args["ClusterJDBCURL"],
+		["CopyCommand"] = args["CopyCommand"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["Password"] = args["Password"],
+		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
+		["S3BackupMode"] = args["S3BackupMode"],
 	}
 	asserts.AssertRedshiftDestinationConfiguration(t)
 	return t
@@ -1110,11 +1200,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified resource could not be found.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.ResourceNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -1136,15 +1229,18 @@ end
 
 --- Create a structure of type PutRecordBatchInput
 --  
--- @param _Records [PutRecordBatchRequestEntryList] <p>One or more records.</p>
--- @param _DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
--- Required parameter: DeliveryStreamName
--- Required parameter: Records
-function M.PutRecordBatchInput(_Records, _DeliveryStreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRecordBatchInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Records [PutRecordBatchRequestEntryList] <p>One or more records.</p>
+-- * DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
+-- Required key: DeliveryStreamName
+-- Required key: Records
+-- @return PutRecordBatchInput structure as a key-value pair table
+function M.PutRecordBatchInput(args)
+	assert(args, "You must provdide an argument table when creating PutRecordBatchInput")
 	local t = { 
-		["Records"] = _Records,
-		["DeliveryStreamName"] = _DeliveryStreamName,
+		["Records"] = args["Records"],
+		["DeliveryStreamName"] = args["DeliveryStreamName"],
 	}
 	asserts.AssertPutRecordBatchInput(t)
 	return t
@@ -1164,12 +1260,15 @@ end
 
 --- Create a structure of type DescribeDeliveryStreamOutput
 --  
--- @param _DeliveryStreamDescription [DeliveryStreamDescription] <p>Information about the delivery stream.</p>
--- Required parameter: DeliveryStreamDescription
-function M.DescribeDeliveryStreamOutput(_DeliveryStreamDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeliveryStreamOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeliveryStreamDescription [DeliveryStreamDescription] <p>Information about the delivery stream.</p>
+-- Required key: DeliveryStreamDescription
+-- @return DescribeDeliveryStreamOutput structure as a key-value pair table
+function M.DescribeDeliveryStreamOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeDeliveryStreamOutput")
 	local t = { 
-		["DeliveryStreamDescription"] = _DeliveryStreamDescription,
+		["DeliveryStreamDescription"] = args["DeliveryStreamDescription"],
 	}
 	asserts.AssertDescribeDeliveryStreamOutput(t)
 	return t
@@ -1188,11 +1287,14 @@ end
 
 --- Create a structure of type ElasticsearchRetryOptions
 -- <p>Configures retry behavior in the event that Firehose is unable to deliver documents to Amazon ES.</p>
--- @param _DurationInSeconds [ElasticsearchRetryDurationInSeconds] <p>After an initial failure to deliver to Amazon ES, the total amount of time during which Firehose re-attempts delivery (including the first attempt). After this time has elapsed, the failed documents are written to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.</p>
-function M.ElasticsearchRetryOptions(_DurationInSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchRetryOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DurationInSeconds [ElasticsearchRetryDurationInSeconds] <p>After an initial failure to deliver to Amazon ES, the total amount of time during which Firehose re-attempts delivery (including the first attempt). After this time has elapsed, the failed documents are written to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.</p>
+-- @return ElasticsearchRetryOptions structure as a key-value pair table
+function M.ElasticsearchRetryOptions(args)
+	assert(args, "You must provdide an argument table when creating ElasticsearchRetryOptions")
 	local t = { 
-		["DurationInSeconds"] = _DurationInSeconds,
+		["DurationInSeconds"] = args["DurationInSeconds"],
 	}
 	asserts.AssertElasticsearchRetryOptions(t)
 	return t
@@ -1219,25 +1321,28 @@ end
 
 --- Create a structure of type S3DestinationConfiguration
 -- <p>Describes the configuration of a destination in Amazon S3.</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
--- @param _Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
--- @param _BufferingHints [BufferingHints] <p>The buffering option. If no value is specified, <b>BufferingHints</b> object default values are used.</p>
--- @param _EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
--- @param _CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is <code>UNCOMPRESSED</code>.</p> <p>The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified for Amazon Redshift destinations because they are not supported by the Amazon Redshift <code>COPY</code> operation that reads from the S3 bucket.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
--- Required parameter: RoleARN
--- Required parameter: BucketARN
-function M.S3DestinationConfiguration(_RoleARN, _Prefix, _BufferingHints, _EncryptionConfiguration, _CompressionFormat, _CloudWatchLoggingOptions, _BucketARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3DestinationConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
+-- * Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
+-- * BufferingHints [BufferingHints] <p>The buffering option. If no value is specified, <b>BufferingHints</b> object default values are used.</p>
+-- * EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
+-- * CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is <code>UNCOMPRESSED</code>.</p> <p>The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified for Amazon Redshift destinations because they are not supported by the Amazon Redshift <code>COPY</code> operation that reads from the S3 bucket.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
+-- Required key: RoleARN
+-- Required key: BucketARN
+-- @return S3DestinationConfiguration structure as a key-value pair table
+function M.S3DestinationConfiguration(args)
+	assert(args, "You must provdide an argument table when creating S3DestinationConfiguration")
 	local t = { 
-		["RoleARN"] = _RoleARN,
-		["Prefix"] = _Prefix,
-		["BufferingHints"] = _BufferingHints,
-		["EncryptionConfiguration"] = _EncryptionConfiguration,
-		["CompressionFormat"] = _CompressionFormat,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["BucketARN"] = _BucketARN,
+		["RoleARN"] = args["RoleARN"],
+		["Prefix"] = args["Prefix"],
+		["BufferingHints"] = args["BufferingHints"],
+		["EncryptionConfiguration"] = args["EncryptionConfiguration"],
+		["CompressionFormat"] = args["CompressionFormat"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["BucketARN"] = args["BucketARN"],
 	}
 	asserts.AssertS3DestinationConfiguration(t)
 	return t
@@ -1257,13 +1362,16 @@ end
 
 --- Create a structure of type EncryptionConfiguration
 -- <p>Describes the encryption for a destination in Amazon S3.</p>
--- @param _KMSEncryptionConfig [KMSEncryptionConfig] <p>The encryption key.</p>
--- @param _NoEncryptionConfig [NoEncryptionConfig] <p>Specifically override existing encryption information to ensure no encryption is used.</p>
-function M.EncryptionConfiguration(_KMSEncryptionConfig, _NoEncryptionConfig, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KMSEncryptionConfig [KMSEncryptionConfig] <p>The encryption key.</p>
+-- * NoEncryptionConfig [NoEncryptionConfig] <p>Specifically override existing encryption information to ensure no encryption is used.</p>
+-- @return EncryptionConfiguration structure as a key-value pair table
+function M.EncryptionConfiguration(args)
+	assert(args, "You must provdide an argument table when creating EncryptionConfiguration")
 	local t = { 
-		["KMSEncryptionConfig"] = _KMSEncryptionConfig,
-		["NoEncryptionConfig"] = _NoEncryptionConfig,
+		["KMSEncryptionConfig"] = args["KMSEncryptionConfig"],
+		["NoEncryptionConfig"] = args["NoEncryptionConfig"],
 	}
 	asserts.AssertEncryptionConfiguration(t)
 	return t
@@ -1283,13 +1391,16 @@ end
 
 --- Create a structure of type ElasticsearchBufferingHints
 -- <p>Describes the buffering to perform before delivering data to the Amazon ES destination.</p>
--- @param _IntervalInSeconds [ElasticsearchBufferingIntervalInSeconds] <p>Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. The default value is 300 (5 minutes).</p>
--- @param _SizeInMBs [ElasticsearchBufferingSizeInMBs] <p>Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5.</p> <p>We recommend setting this parameter to a value greater than the amount of data you typically ingest into the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should be 10 MB or higher.</p>
-function M.ElasticsearchBufferingHints(_IntervalInSeconds, _SizeInMBs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchBufferingHints")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IntervalInSeconds [ElasticsearchBufferingIntervalInSeconds] <p>Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. The default value is 300 (5 minutes).</p>
+-- * SizeInMBs [ElasticsearchBufferingSizeInMBs] <p>Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5.</p> <p>We recommend setting this parameter to a value greater than the amount of data you typically ingest into the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should be 10 MB or higher.</p>
+-- @return ElasticsearchBufferingHints structure as a key-value pair table
+function M.ElasticsearchBufferingHints(args)
+	assert(args, "You must provdide an argument table when creating ElasticsearchBufferingHints")
 	local t = { 
-		["IntervalInSeconds"] = _IntervalInSeconds,
-		["SizeInMBs"] = _SizeInMBs,
+		["IntervalInSeconds"] = args["IntervalInSeconds"],
+		["SizeInMBs"] = args["SizeInMBs"],
 	}
 	asserts.AssertElasticsearchBufferingHints(t)
 	return t
@@ -1310,15 +1421,18 @@ end
 
 --- Create a structure of type CloudWatchLoggingOptions
 -- <p>Describes the CloudWatch logging options for your delivery stream.</p>
--- @param _Enabled [BooleanObject] <p>Enables or disables CloudWatch logging.</p>
--- @param _LogStreamName [LogStreamName] <p>The CloudWatch log stream name for logging. This value is required if CloudWatch logging is enabled.</p>
--- @param _LogGroupName [LogGroupName] <p>The CloudWatch group name for logging. This value is required if CloudWatch logging is enabled.</p>
-function M.CloudWatchLoggingOptions(_Enabled, _LogStreamName, _LogGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchLoggingOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Enabled [BooleanObject] <p>Enables or disables CloudWatch logging.</p>
+-- * LogStreamName [LogStreamName] <p>The CloudWatch log stream name for logging. This value is required if CloudWatch logging is enabled.</p>
+-- * LogGroupName [LogGroupName] <p>The CloudWatch group name for logging. This value is required if CloudWatch logging is enabled.</p>
+-- @return CloudWatchLoggingOptions structure as a key-value pair table
+function M.CloudWatchLoggingOptions(args)
+	assert(args, "You must provdide an argument table when creating CloudWatchLoggingOptions")
 	local t = { 
-		["Enabled"] = _Enabled,
-		["LogStreamName"] = _LogStreamName,
-		["LogGroupName"] = _LogGroupName,
+		["Enabled"] = args["Enabled"],
+		["LogStreamName"] = args["LogStreamName"],
+		["LogGroupName"] = args["LogGroupName"],
 	}
 	asserts.AssertCloudWatchLoggingOptions(t)
 	return t
@@ -1346,29 +1460,32 @@ end
 
 --- Create a structure of type ElasticsearchDestinationUpdate
 -- <p>Describes an update for a destination in Amazon ES.</p>
--- @param _IndexName [ElasticsearchIndexName] <p>The Elasticsearch index name.</p>
--- @param _S3Update [S3DestinationUpdate] <p>The Amazon S3 destination.</p>
--- @param _RetryOptions [ElasticsearchRetryOptions] <p>The retry behavior in the event that Firehose is unable to deliver documents to Amazon ES. Default value is 300 (5 minutes).</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the IAM role to be assumed by Firehose for calling the Amazon ES Configuration API and for indexing documents. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3">Amazon S3 Bucket Access</a>.</p>
--- @param _BufferingHints [ElasticsearchBufferingHints] <p>The buffering options. If no value is specified, <b>ElasticsearchBufferingHints</b> object default values are used. </p>
--- @param _TypeName [ElasticsearchTypeName] <p>The Elasticsearch type name.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _DomainARN [ElasticsearchDomainARN] <p>The ARN of the Amazon ES domain. The IAM role must have permissions for <code>DescribeElasticsearchDomain</code>, <code>DescribeElasticsearchDomains</code>, and <code>DescribeElasticsearchDomainConfig</code> after assuming the IAM role specified in <b>RoleARN</b>.</p>
--- @param _IndexRotationPeriod [ElasticsearchIndexRotationPeriod] <p>The Elasticsearch index rotation period. Index rotation appends a timestamp to IndexName to facilitate the expiration of old data. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation">Index Rotation for Amazon Elasticsearch Service Destination</a>. Default value is <code>OneDay</code>.</p>
--- @param _ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
-function M.ElasticsearchDestinationUpdate(_IndexName, _S3Update, _RetryOptions, _RoleARN, _BufferingHints, _TypeName, _CloudWatchLoggingOptions, _DomainARN, _IndexRotationPeriod, _ProcessingConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchDestinationUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexName [ElasticsearchIndexName] <p>The Elasticsearch index name.</p>
+-- * S3Update [S3DestinationUpdate] <p>The Amazon S3 destination.</p>
+-- * RetryOptions [ElasticsearchRetryOptions] <p>The retry behavior in the event that Firehose is unable to deliver documents to Amazon ES. Default value is 300 (5 minutes).</p>
+-- * RoleARN [RoleARN] <p>The ARN of the IAM role to be assumed by Firehose for calling the Amazon ES Configuration API and for indexing documents. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3">Amazon S3 Bucket Access</a>.</p>
+-- * BufferingHints [ElasticsearchBufferingHints] <p>The buffering options. If no value is specified, <b>ElasticsearchBufferingHints</b> object default values are used. </p>
+-- * TypeName [ElasticsearchTypeName] <p>The Elasticsearch type name.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * DomainARN [ElasticsearchDomainARN] <p>The ARN of the Amazon ES domain. The IAM role must have permissions for <code>DescribeElasticsearchDomain</code>, <code>DescribeElasticsearchDomains</code>, and <code>DescribeElasticsearchDomainConfig</code> after assuming the IAM role specified in <b>RoleARN</b>.</p>
+-- * IndexRotationPeriod [ElasticsearchIndexRotationPeriod] <p>The Elasticsearch index rotation period. Index rotation appends a timestamp to IndexName to facilitate the expiration of old data. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation">Index Rotation for Amazon Elasticsearch Service Destination</a>. Default value is <code>OneDay</code>.</p>
+-- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
+-- @return ElasticsearchDestinationUpdate structure as a key-value pair table
+function M.ElasticsearchDestinationUpdate(args)
+	assert(args, "You must provdide an argument table when creating ElasticsearchDestinationUpdate")
 	local t = { 
-		["IndexName"] = _IndexName,
-		["S3Update"] = _S3Update,
-		["RetryOptions"] = _RetryOptions,
-		["RoleARN"] = _RoleARN,
-		["BufferingHints"] = _BufferingHints,
-		["TypeName"] = _TypeName,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["DomainARN"] = _DomainARN,
-		["IndexRotationPeriod"] = _IndexRotationPeriod,
-		["ProcessingConfiguration"] = _ProcessingConfiguration,
+		["IndexName"] = args["IndexName"],
+		["S3Update"] = args["S3Update"],
+		["RetryOptions"] = args["RetryOptions"],
+		["RoleARN"] = args["RoleARN"],
+		["BufferingHints"] = args["BufferingHints"],
+		["TypeName"] = args["TypeName"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["DomainARN"] = args["DomainARN"],
+		["IndexRotationPeriod"] = args["IndexRotationPeriod"],
+		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 	}
 	asserts.AssertElasticsearchDestinationUpdate(t)
 	return t
@@ -1392,20 +1509,23 @@ end
 
 --- Create a structure of type DestinationDescription
 -- <p>Describes the destination for a delivery stream.</p>
--- @param _ElasticsearchDestinationDescription [ElasticsearchDestinationDescription] <p>The destination in Amazon ES.</p>
--- @param _DestinationId [DestinationId] <p>The ID of the destination.</p>
--- @param _ExtendedS3DestinationDescription [ExtendedS3DestinationDescription] <p>The destination in Amazon S3.</p>
--- @param _S3DestinationDescription [S3DestinationDescription] <p>[Deprecated] The destination in Amazon S3.</p>
--- @param _RedshiftDestinationDescription [RedshiftDestinationDescription] <p>The destination in Amazon Redshift.</p>
--- Required parameter: DestinationId
-function M.DestinationDescription(_ElasticsearchDestinationDescription, _DestinationId, _ExtendedS3DestinationDescription, _S3DestinationDescription, _RedshiftDestinationDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DestinationDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ElasticsearchDestinationDescription [ElasticsearchDestinationDescription] <p>The destination in Amazon ES.</p>
+-- * DestinationId [DestinationId] <p>The ID of the destination.</p>
+-- * ExtendedS3DestinationDescription [ExtendedS3DestinationDescription] <p>The destination in Amazon S3.</p>
+-- * S3DestinationDescription [S3DestinationDescription] <p>[Deprecated] The destination in Amazon S3.</p>
+-- * RedshiftDestinationDescription [RedshiftDestinationDescription] <p>The destination in Amazon Redshift.</p>
+-- Required key: DestinationId
+-- @return DestinationDescription structure as a key-value pair table
+function M.DestinationDescription(args)
+	assert(args, "You must provdide an argument table when creating DestinationDescription")
 	local t = { 
-		["ElasticsearchDestinationDescription"] = _ElasticsearchDestinationDescription,
-		["DestinationId"] = _DestinationId,
-		["ExtendedS3DestinationDescription"] = _ExtendedS3DestinationDescription,
-		["S3DestinationDescription"] = _S3DestinationDescription,
-		["RedshiftDestinationDescription"] = _RedshiftDestinationDescription,
+		["ElasticsearchDestinationDescription"] = args["ElasticsearchDestinationDescription"],
+		["DestinationId"] = args["DestinationId"],
+		["ExtendedS3DestinationDescription"] = args["ExtendedS3DestinationDescription"],
+		["S3DestinationDescription"] = args["S3DestinationDescription"],
+		["RedshiftDestinationDescription"] = args["RedshiftDestinationDescription"],
 	}
 	asserts.AssertDestinationDescription(t)
 	return t
@@ -1427,16 +1547,19 @@ end
 
 --- Create a structure of type CopyCommand
 -- <p>Describes a <code>COPY</code> command for Amazon Redshift.</p>
--- @param _DataTableName [DataTableName] <p>The name of the target table. The table must already exist in the database.</p>
--- @param _CopyOptions [CopyOptions] <p>Optional parameters to use with the Amazon Redshift <code>COPY</code> command. For more information, see the "Optional Parameters" section of <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">Amazon Redshift COPY command</a>. Some possible examples that would apply to Firehose are as follows:</p> <p> <code>delimiter '\t' lzop;</code> - fields are delimited with "\t" (TAB character) and compressed using lzop.</p> <p> <code>delimiter '|</code> - fields are delimited with "|" (this is the default delimiter).</p> <p> <code>delimiter '|' escape</code> - the delimiter should be escaped.</p> <p> <code>fixedwidth 'venueid:3,venuename:25,venuecity:12,venuestate:2,venueseats:6'</code> - fields are fixed width in the source, with each width specified after every column in the table.</p> <p> <code>JSON 's3://mybucket/jsonpaths.txt'</code> - data is in JSON format, and the path specified is the format of the data.</p> <p>For more examples, see <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY_command_examples.html">Amazon Redshift COPY command examples</a>.</p>
--- @param _DataTableColumns [DataTableColumns] <p>A comma-separated list of column names.</p>
--- Required parameter: DataTableName
-function M.CopyCommand(_DataTableName, _CopyOptions, _DataTableColumns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CopyCommand")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DataTableName [DataTableName] <p>The name of the target table. The table must already exist in the database.</p>
+-- * CopyOptions [CopyOptions] <p>Optional parameters to use with the Amazon Redshift <code>COPY</code> command. For more information, see the "Optional Parameters" section of <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">Amazon Redshift COPY command</a>. Some possible examples that would apply to Firehose are as follows:</p> <p> <code>delimiter '\t' lzop;</code> - fields are delimited with "\t" (TAB character) and compressed using lzop.</p> <p> <code>delimiter '|</code> - fields are delimited with "|" (this is the default delimiter).</p> <p> <code>delimiter '|' escape</code> - the delimiter should be escaped.</p> <p> <code>fixedwidth 'venueid:3,venuename:25,venuecity:12,venuestate:2,venueseats:6'</code> - fields are fixed width in the source, with each width specified after every column in the table.</p> <p> <code>JSON 's3://mybucket/jsonpaths.txt'</code> - data is in JSON format, and the path specified is the format of the data.</p> <p>For more examples, see <a href="http://docs.aws.amazon.com/redshift/latest/dg/r_COPY_command_examples.html">Amazon Redshift COPY command examples</a>.</p>
+-- * DataTableColumns [DataTableColumns] <p>A comma-separated list of column names.</p>
+-- Required key: DataTableName
+-- @return CopyCommand structure as a key-value pair table
+function M.CopyCommand(args)
+	assert(args, "You must provdide an argument table when creating CopyCommand")
 	local t = { 
-		["DataTableName"] = _DataTableName,
-		["CopyOptions"] = _CopyOptions,
-		["DataTableColumns"] = _DataTableColumns,
+		["DataTableName"] = args["DataTableName"],
+		["CopyOptions"] = args["CopyOptions"],
+		["DataTableColumns"] = args["DataTableColumns"],
 	}
 	asserts.AssertCopyCommand(t)
 	return t
@@ -1461,23 +1584,26 @@ end
 
 --- Create a structure of type S3DestinationUpdate
 -- <p>Describes an update for a destination in Amazon S3.</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
--- @param _Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
--- @param _BufferingHints [BufferingHints] <p>The buffering option. If no value is specified, <b>BufferingHints</b> object default values are used.</p>
--- @param _EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
--- @param _CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is <code>UNCOMPRESSED</code>.</p> <p>The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified for Amazon Redshift destinations because they are not supported by the Amazon Redshift <code>COPY</code> operation that reads from the S3 bucket.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
-function M.S3DestinationUpdate(_RoleARN, _Prefix, _BufferingHints, _EncryptionConfiguration, _CompressionFormat, _CloudWatchLoggingOptions, _BucketARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3DestinationUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
+-- * Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
+-- * BufferingHints [BufferingHints] <p>The buffering option. If no value is specified, <b>BufferingHints</b> object default values are used.</p>
+-- * EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
+-- * CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is <code>UNCOMPRESSED</code>.</p> <p>The compression formats <code>SNAPPY</code> or <code>ZIP</code> cannot be specified for Amazon Redshift destinations because they are not supported by the Amazon Redshift <code>COPY</code> operation that reads from the S3 bucket.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
+-- @return S3DestinationUpdate structure as a key-value pair table
+function M.S3DestinationUpdate(args)
+	assert(args, "You must provdide an argument table when creating S3DestinationUpdate")
 	local t = { 
-		["RoleARN"] = _RoleARN,
-		["Prefix"] = _Prefix,
-		["BufferingHints"] = _BufferingHints,
-		["EncryptionConfiguration"] = _EncryptionConfiguration,
-		["CompressionFormat"] = _CompressionFormat,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["BucketARN"] = _BucketARN,
+		["RoleARN"] = args["RoleARN"],
+		["Prefix"] = args["Prefix"],
+		["BufferingHints"] = args["BufferingHints"],
+		["EncryptionConfiguration"] = args["EncryptionConfiguration"],
+		["CompressionFormat"] = args["CompressionFormat"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["BucketARN"] = args["BucketARN"],
 	}
 	asserts.AssertS3DestinationUpdate(t)
 	return t
@@ -1496,11 +1622,14 @@ end
 
 --- Create a structure of type InvalidArgumentException
 -- <p>The specified input parameter has an value that is not valid.</p>
--- @param _message [ErrorMessage] <p>A message that provides information about the error.</p>
-function M.InvalidArgumentException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArgumentException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A message that provides information about the error.</p>
+-- @return InvalidArgumentException structure as a key-value pair table
+function M.InvalidArgumentException(args)
+	assert(args, "You must provdide an argument table when creating InvalidArgumentException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidArgumentException(t)
 	return t
@@ -1520,13 +1649,16 @@ end
 
 --- Create a structure of type ListDeliveryStreamsInput
 --  
--- @param _Limit [ListDeliveryStreamsInputLimit] <p>The maximum number of delivery streams to list.</p>
--- @param _ExclusiveStartDeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream to start the list with.</p>
-function M.ListDeliveryStreamsInput(_Limit, _ExclusiveStartDeliveryStreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeliveryStreamsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [ListDeliveryStreamsInputLimit] <p>The maximum number of delivery streams to list.</p>
+-- * ExclusiveStartDeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream to start the list with.</p>
+-- @return ListDeliveryStreamsInput structure as a key-value pair table
+function M.ListDeliveryStreamsInput(args)
+	assert(args, "You must provdide an argument table when creating ListDeliveryStreamsInput")
 	local t = { 
-		["Limit"] = _Limit,
-		["ExclusiveStartDeliveryStreamName"] = _ExclusiveStartDeliveryStreamName,
+		["Limit"] = args["Limit"],
+		["ExclusiveStartDeliveryStreamName"] = args["ExclusiveStartDeliveryStreamName"],
 	}
 	asserts.AssertListDeliveryStreamsInput(t)
 	return t
@@ -1556,31 +1688,34 @@ end
 
 --- Create a structure of type ExtendedS3DestinationConfiguration
 -- <p>Describes the configuration of a destination in Amazon S3.</p>
--- @param _RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
--- @param _Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
--- @param _BufferingHints [BufferingHints] <p>The buffering option.</p>
--- @param _EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
--- @param _CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is UNCOMPRESSED.</p>
--- @param _S3BackupMode [S3BackupMode] <p>The Amazon S3 backup mode.</p>
--- @param _CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
--- @param _S3BackupConfiguration [S3DestinationConfiguration] <p>The configuration for backup in Amazon S3.</p>
--- @param _BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
--- @param _ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
--- Required parameter: RoleARN
--- Required parameter: BucketARN
-function M.ExtendedS3DestinationConfiguration(_RoleARN, _Prefix, _BufferingHints, _EncryptionConfiguration, _CompressionFormat, _S3BackupMode, _CloudWatchLoggingOptions, _S3BackupConfiguration, _BucketARN, _ProcessingConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExtendedS3DestinationConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleARN [RoleARN] <p>The ARN of the AWS credentials.</p>
+-- * Prefix [Prefix] <p>The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html">Amazon S3 Object Name Format</a> in the <i>Amazon Kinesis Firehose Developer Guide</i>.</p>
+-- * BufferingHints [BufferingHints] <p>The buffering option.</p>
+-- * EncryptionConfiguration [EncryptionConfiguration] <p>The encryption configuration. If no value is specified, the default is no encryption.</p>
+-- * CompressionFormat [CompressionFormat] <p>The compression format. If no value is specified, the default is UNCOMPRESSED.</p>
+-- * S3BackupMode [S3BackupMode] <p>The Amazon S3 backup mode.</p>
+-- * CloudWatchLoggingOptions [CloudWatchLoggingOptions] <p>The CloudWatch logging options for your delivery stream.</p>
+-- * S3BackupConfiguration [S3DestinationConfiguration] <p>The configuration for backup in Amazon S3.</p>
+-- * BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
+-- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
+-- Required key: RoleARN
+-- Required key: BucketARN
+-- @return ExtendedS3DestinationConfiguration structure as a key-value pair table
+function M.ExtendedS3DestinationConfiguration(args)
+	assert(args, "You must provdide an argument table when creating ExtendedS3DestinationConfiguration")
 	local t = { 
-		["RoleARN"] = _RoleARN,
-		["Prefix"] = _Prefix,
-		["BufferingHints"] = _BufferingHints,
-		["EncryptionConfiguration"] = _EncryptionConfiguration,
-		["CompressionFormat"] = _CompressionFormat,
-		["S3BackupMode"] = _S3BackupMode,
-		["CloudWatchLoggingOptions"] = _CloudWatchLoggingOptions,
-		["S3BackupConfiguration"] = _S3BackupConfiguration,
-		["BucketARN"] = _BucketARN,
-		["ProcessingConfiguration"] = _ProcessingConfiguration,
+		["RoleARN"] = args["RoleARN"],
+		["Prefix"] = args["Prefix"],
+		["BufferingHints"] = args["BufferingHints"],
+		["EncryptionConfiguration"] = args["EncryptionConfiguration"],
+		["CompressionFormat"] = args["CompressionFormat"],
+		["S3BackupMode"] = args["S3BackupMode"],
+		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
+		["S3BackupConfiguration"] = args["S3BackupConfiguration"],
+		["BucketARN"] = args["BucketARN"],
+		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 	}
 	asserts.AssertExtendedS3DestinationConfiguration(t)
 	return t
@@ -1602,16 +1737,19 @@ end
 
 --- Create a structure of type DescribeDeliveryStreamInput
 --  
--- @param _ExclusiveStartDestinationId [DestinationId] <p>The ID of the destination to start returning the destination information. Currently Firehose supports one destination per delivery stream.</p>
--- @param _DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
--- @param _Limit [DescribeDeliveryStreamInputLimit] <p>The limit on the number of destinations to return. Currently, you can have one destination per delivery stream.</p>
--- Required parameter: DeliveryStreamName
-function M.DescribeDeliveryStreamInput(_ExclusiveStartDestinationId, _DeliveryStreamName, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeliveryStreamInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ExclusiveStartDestinationId [DestinationId] <p>The ID of the destination to start returning the destination information. Currently Firehose supports one destination per delivery stream.</p>
+-- * DeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream.</p>
+-- * Limit [DescribeDeliveryStreamInputLimit] <p>The limit on the number of destinations to return. Currently, you can have one destination per delivery stream.</p>
+-- Required key: DeliveryStreamName
+-- @return DescribeDeliveryStreamInput structure as a key-value pair table
+function M.DescribeDeliveryStreamInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeDeliveryStreamInput")
 	local t = { 
-		["ExclusiveStartDestinationId"] = _ExclusiveStartDestinationId,
-		["DeliveryStreamName"] = _DeliveryStreamName,
-		["Limit"] = _Limit,
+		["ExclusiveStartDestinationId"] = args["ExclusiveStartDestinationId"],
+		["DeliveryStreamName"] = args["DeliveryStreamName"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeDeliveryStreamInput(t)
 	return t
@@ -1631,13 +1769,16 @@ end
 
 --- Create a structure of type ProcessingConfiguration
 -- <p>Describes a data processing configuration.</p>
--- @param _Enabled [BooleanObject] <p>Enables or disables data processing.</p>
--- @param _Processors [ProcessorList] <p>The data processors.</p>
-function M.ProcessingConfiguration(_Enabled, _Processors, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProcessingConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Enabled [BooleanObject] <p>Enables or disables data processing.</p>
+-- * Processors [ProcessorList] <p>The data processors.</p>
+-- @return ProcessingConfiguration structure as a key-value pair table
+function M.ProcessingConfiguration(args)
+	assert(args, "You must provdide an argument table when creating ProcessingConfiguration")
 	local t = { 
-		["Enabled"] = _Enabled,
-		["Processors"] = _Processors,
+		["Enabled"] = args["Enabled"],
+		["Processors"] = args["Processors"],
 	}
 	asserts.AssertProcessingConfiguration(t)
 	return t

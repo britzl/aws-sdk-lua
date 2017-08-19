@@ -35,13 +35,16 @@ end
 
 --- Create a structure of type DescribeEventCategoriesMessage
 -- <p/>
--- @param _SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | migration-task</p>
--- @param _Filters [FilterList] <p>Filters applied to the action.</p>
-function M.DescribeEventCategoriesMessage(_SourceType, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventCategoriesMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | migration-task</p>
+-- * Filters [FilterList] <p>Filters applied to the action.</p>
+-- @return DescribeEventCategoriesMessage structure as a key-value pair table
+function M.DescribeEventCategoriesMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventCategoriesMessage")
 	local t = { 
-		["SourceType"] = _SourceType,
-		["Filters"] = _Filters,
+		["SourceType"] = args["SourceType"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeEventCategoriesMessage(t)
 	return t
@@ -61,13 +64,16 @@ end
 
 --- Create a structure of type DescribeConnectionsResponse
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _Connections [ConnectionList] <p>A description of the connections.</p>
-function M.DescribeConnectionsResponse(_Marker, _Connections, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * Connections [ConnectionList] <p>A description of the connections.</p>
+-- @return DescribeConnectionsResponse structure as a key-value pair table
+function M.DescribeConnectionsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeConnectionsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["Connections"] = _Connections,
+		["Marker"] = args["Marker"],
+		["Connections"] = args["Connections"],
 	}
 	asserts.AssertDescribeConnectionsResponse(t)
 	return t
@@ -85,8 +91,11 @@ end
 
 --- Create a structure of type DeleteReplicationSubnetGroupResponse
 -- <p/>
-function M.DeleteReplicationSubnetGroupResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationSubnetGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteReplicationSubnetGroupResponse structure as a key-value pair table
+function M.DeleteReplicationSubnetGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteReplicationSubnetGroupResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteReplicationSubnetGroupResponse(t)
@@ -106,11 +115,14 @@ end
 
 --- Create a structure of type DescribeRefreshSchemasStatusResponse
 -- <p/>
--- @param _RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the schema.</p>
-function M.DescribeRefreshSchemasStatusResponse(_RefreshSchemasStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRefreshSchemasStatusResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the schema.</p>
+-- @return DescribeRefreshSchemasStatusResponse structure as a key-value pair table
+function M.DescribeRefreshSchemasStatusResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeRefreshSchemasStatusResponse")
 	local t = { 
-		["RefreshSchemasStatus"] = _RefreshSchemasStatus,
+		["RefreshSchemasStatus"] = args["RefreshSchemasStatus"],
 	}
 	asserts.AssertDescribeRefreshSchemasStatusResponse(t)
 	return t
@@ -131,15 +143,18 @@ end
 
 --- Create a structure of type DescribeTableStatisticsResponse
 -- <p/>
--- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _TableStatistics [TableStatisticsList] <p>The table statistics.</p>
-function M.DescribeTableStatisticsResponse(_ReplicationTaskArn, _Marker, _TableStatistics, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTableStatisticsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * TableStatistics [TableStatisticsList] <p>The table statistics.</p>
+-- @return DescribeTableStatisticsResponse structure as a key-value pair table
+function M.DescribeTableStatisticsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTableStatisticsResponse")
 	local t = { 
-		["ReplicationTaskArn"] = _ReplicationTaskArn,
-		["Marker"] = _Marker,
-		["TableStatistics"] = _TableStatistics,
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["Marker"] = args["Marker"],
+		["TableStatistics"] = args["TableStatistics"],
 	}
 	asserts.AssertDescribeTableStatisticsResponse(t)
 	return t
@@ -159,12 +174,15 @@ end
 
 --- Create a structure of type DeleteCertificateMessage
 --  
--- @param _CertificateArn [String] <p>The Amazon Resource Name (ARN) of the deleted certificate.</p>
--- Required parameter: CertificateArn
-function M.DeleteCertificateMessage(_CertificateArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCertificateMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateArn [String] <p>The Amazon Resource Name (ARN) of the deleted certificate.</p>
+-- Required key: CertificateArn
+-- @return DeleteCertificateMessage structure as a key-value pair table
+function M.DeleteCertificateMessage(args)
+	assert(args, "You must provdide an argument table when creating DeleteCertificateMessage")
 	local t = { 
-		["CertificateArn"] = _CertificateArn,
+		["CertificateArn"] = args["CertificateArn"],
 	}
 	asserts.AssertDeleteCertificateMessage(t)
 	return t
@@ -188,20 +206,23 @@ end
 
 --- Create a structure of type ModifyEventSubscriptionMessage
 -- <p/>
--- @param _EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. Use the <code>DescribeEventCategories</code> action to see a list of event categories. </p>
--- @param _Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription. </p>
--- @param _SourceType [String] <p> The type of AWS DMS resource that generates the events you want to subscribe to. </p> <p>Valid values: replication-instance | migration-task</p>
--- @param _SubscriptionName [String] <p>The name of the AWS DMS event notification subscription to be modified.</p>
--- @param _SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.</p>
--- Required parameter: SubscriptionName
-function M.ModifyEventSubscriptionMessage(_EventCategories, _Enabled, _SourceType, _SubscriptionName, _SnsTopicArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEventSubscriptionMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. Use the <code>DescribeEventCategories</code> action to see a list of event categories. </p>
+-- * Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription. </p>
+-- * SourceType [String] <p> The type of AWS DMS resource that generates the events you want to subscribe to. </p> <p>Valid values: replication-instance | migration-task</p>
+-- * SubscriptionName [String] <p>The name of the AWS DMS event notification subscription to be modified.</p>
+-- * SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it.</p>
+-- Required key: SubscriptionName
+-- @return ModifyEventSubscriptionMessage structure as a key-value pair table
+function M.ModifyEventSubscriptionMessage(args)
+	assert(args, "You must provdide an argument table when creating ModifyEventSubscriptionMessage")
 	local t = { 
-		["EventCategories"] = _EventCategories,
-		["Enabled"] = _Enabled,
-		["SourceType"] = _SourceType,
-		["SubscriptionName"] = _SubscriptionName,
-		["SnsTopicArn"] = _SnsTopicArn,
+		["EventCategories"] = args["EventCategories"],
+		["Enabled"] = args["Enabled"],
+		["SourceType"] = args["SourceType"],
+		["SubscriptionName"] = args["SubscriptionName"],
+		["SnsTopicArn"] = args["SnsTopicArn"],
 	}
 	asserts.AssertModifyEventSubscriptionMessage(t)
 	return t
@@ -222,15 +243,18 @@ end
 
 --- Create a structure of type AccountQuota
 -- <p>Describes a quota for an AWS account, for example, the number of replication instances allowed.</p>
--- @param _Max [Long] <p>The maximum allowed value for the quota.</p>
--- @param _AccountQuotaName [String] <p>The name of the AWS DMS quota for this AWS account.</p>
--- @param _Used [Long] <p>The amount currently used toward the quota maximum.</p>
-function M.AccountQuota(_Max, _AccountQuotaName, _Used, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccountQuota")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Max [Long] <p>The maximum allowed value for the quota.</p>
+-- * AccountQuotaName [String] <p>The name of the AWS DMS quota for this AWS account.</p>
+-- * Used [Long] <p>The amount currently used toward the quota maximum.</p>
+-- @return AccountQuota structure as a key-value pair table
+function M.AccountQuota(args)
+	assert(args, "You must provdide an argument table when creating AccountQuota")
 	local t = { 
-		["Max"] = _Max,
-		["AccountQuotaName"] = _AccountQuotaName,
-		["Used"] = _Used,
+		["Max"] = args["Max"],
+		["AccountQuotaName"] = args["AccountQuotaName"],
+		["Used"] = args["Used"],
 	}
 	asserts.AssertAccountQuota(t)
 	return t
@@ -249,11 +273,14 @@ end
 
 --- Create a structure of type InvalidCertificateFault
 -- <p>The certificate was not valid.</p>
--- @param _message [ExceptionMessage] 
-function M.InvalidCertificateFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCertificateFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] 
+-- @return InvalidCertificateFault structure as a key-value pair table
+function M.InvalidCertificateFault(args)
+	assert(args, "You must provdide an argument table when creating InvalidCertificateFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidCertificateFault(t)
 	return t
@@ -282,31 +309,34 @@ end
 
 --- Create a structure of type MongoDbSettings
 -- <p/>
--- @param _Username [String] <p>The user name you use to access the MongoDB source endpoint. </p>
--- @param _NestingLevel [NestingLevelValue] <p> Specifies either document or table mode. </p> <p>Valid values: NONE, ONE</p> <p>Default value is NONE. Specify NONE to use document mode. Specify ONE to use table mode.</p>
--- @param _AuthType [AuthTypeValue] <p> The authentication type you use to access the MongoDB source endpoint.</p> <p>Valid values: NO, PASSWORD </p> <p>When NO is selected, user name and password parameters are not used and can be empty. </p>
--- @param _AuthSource [String] <p> The MongoDB database name. This attribute is not used when <code>authType=NO</code>. </p> <p>The default is admin.</p>
--- @param _ServerName [String] <p> The name of the server on the MongoDB source endpoint. </p>
--- @param _AuthMechanism [AuthMechanismValue] <p> The authentication mechanism you use to access the MongoDB source endpoint.</p> <p>Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1 </p> <p>DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This attribute is not used when authType=No.</p>
--- @param _DocsToInvestigate [String] <p> Indicates the number of documents to preview to determine the document organization. Use this attribute when <code>NestingLevel</code> is set to ONE. </p> <p>Must be a positive value greater than 0. Default value is 1000.</p>
--- @param _DatabaseName [String] <p> The database name on the MongoDB source endpoint. </p>
--- @param _ExtractDocId [String] <p> Specifies the document ID. Use this attribute when <code>NestingLevel</code> is set to NONE. </p> <p>Default value is false. </p>
--- @param _Password [SecretString] <p> The password for the user account you use to access the MongoDB source endpoint. </p>
--- @param _Port [IntegerOptional] <p> The port value for the MongoDB source endpoint. </p>
-function M.MongoDbSettings(_Username, _NestingLevel, _AuthType, _AuthSource, _ServerName, _AuthMechanism, _DocsToInvestigate, _DatabaseName, _ExtractDocId, _Password, _Port, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MongoDbSettings")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [String] <p>The user name you use to access the MongoDB source endpoint. </p>
+-- * NestingLevel [NestingLevelValue] <p> Specifies either document or table mode. </p> <p>Valid values: NONE, ONE</p> <p>Default value is NONE. Specify NONE to use document mode. Specify ONE to use table mode.</p>
+-- * AuthType [AuthTypeValue] <p> The authentication type you use to access the MongoDB source endpoint.</p> <p>Valid values: NO, PASSWORD </p> <p>When NO is selected, user name and password parameters are not used and can be empty. </p>
+-- * AuthSource [String] <p> The MongoDB database name. This attribute is not used when <code>authType=NO</code>. </p> <p>The default is admin.</p>
+-- * ServerName [String] <p> The name of the server on the MongoDB source endpoint. </p>
+-- * AuthMechanism [AuthMechanismValue] <p> The authentication mechanism you use to access the MongoDB source endpoint.</p> <p>Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1 </p> <p>DEFAULT – For MongoDB version 2.x, use MONGODB_CR. For MongoDB version 3.x, use SCRAM_SHA_1. This attribute is not used when authType=No.</p>
+-- * DocsToInvestigate [String] <p> Indicates the number of documents to preview to determine the document organization. Use this attribute when <code>NestingLevel</code> is set to ONE. </p> <p>Must be a positive value greater than 0. Default value is 1000.</p>
+-- * DatabaseName [String] <p> The database name on the MongoDB source endpoint. </p>
+-- * ExtractDocId [String] <p> Specifies the document ID. Use this attribute when <code>NestingLevel</code> is set to NONE. </p> <p>Default value is false. </p>
+-- * Password [SecretString] <p> The password for the user account you use to access the MongoDB source endpoint. </p>
+-- * Port [IntegerOptional] <p> The port value for the MongoDB source endpoint. </p>
+-- @return MongoDbSettings structure as a key-value pair table
+function M.MongoDbSettings(args)
+	assert(args, "You must provdide an argument table when creating MongoDbSettings")
 	local t = { 
-		["Username"] = _Username,
-		["NestingLevel"] = _NestingLevel,
-		["AuthType"] = _AuthType,
-		["AuthSource"] = _AuthSource,
-		["ServerName"] = _ServerName,
-		["AuthMechanism"] = _AuthMechanism,
-		["DocsToInvestigate"] = _DocsToInvestigate,
-		["DatabaseName"] = _DatabaseName,
-		["ExtractDocId"] = _ExtractDocId,
-		["Password"] = _Password,
-		["Port"] = _Port,
+		["Username"] = args["Username"],
+		["NestingLevel"] = args["NestingLevel"],
+		["AuthType"] = args["AuthType"],
+		["AuthSource"] = args["AuthSource"],
+		["ServerName"] = args["ServerName"],
+		["AuthMechanism"] = args["AuthMechanism"],
+		["DocsToInvestigate"] = args["DocsToInvestigate"],
+		["DatabaseName"] = args["DatabaseName"],
+		["ExtractDocId"] = args["ExtractDocId"],
+		["Password"] = args["Password"],
+		["Port"] = args["Port"],
 	}
 	asserts.AssertMongoDbSettings(t)
 	return t
@@ -325,11 +355,14 @@ end
 
 --- Create a structure of type ModifyEventSubscriptionResponse
 -- <p/>
--- @param _EventSubscription [EventSubscription] <p>The modified event subscription.</p>
-function M.ModifyEventSubscriptionResponse(_EventSubscription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEventSubscriptionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventSubscription [EventSubscription] <p>The modified event subscription.</p>
+-- @return ModifyEventSubscriptionResponse structure as a key-value pair table
+function M.ModifyEventSubscriptionResponse(args)
+	assert(args, "You must provdide an argument table when creating ModifyEventSubscriptionResponse")
 	local t = { 
-		["EventSubscription"] = _EventSubscription,
+		["EventSubscription"] = args["EventSubscription"],
 	}
 	asserts.AssertModifyEventSubscriptionResponse(t)
 	return t
@@ -353,21 +386,24 @@ end
 
 --- Create a structure of type ReplicationTaskStats
 -- <p/>
--- @param _TablesLoading [Integer] <p>The number of tables currently loading for this task.</p>
--- @param _TablesQueued [Integer] <p>The number of tables queued for this task.</p>
--- @param _TablesErrored [Integer] <p>The number of errors that have occurred during this task.</p>
--- @param _FullLoadProgressPercent [Integer] <p>The percent complete for the full load migration task.</p>
--- @param _TablesLoaded [Integer] <p>The number of tables loaded for this task.</p>
--- @param _ElapsedTimeMillis [Long] <p>The elapsed time of the task, in milliseconds.</p>
-function M.ReplicationTaskStats(_TablesLoading, _TablesQueued, _TablesErrored, _FullLoadProgressPercent, _TablesLoaded, _ElapsedTimeMillis, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationTaskStats")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TablesLoading [Integer] <p>The number of tables currently loading for this task.</p>
+-- * TablesQueued [Integer] <p>The number of tables queued for this task.</p>
+-- * TablesErrored [Integer] <p>The number of errors that have occurred during this task.</p>
+-- * FullLoadProgressPercent [Integer] <p>The percent complete for the full load migration task.</p>
+-- * TablesLoaded [Integer] <p>The number of tables loaded for this task.</p>
+-- * ElapsedTimeMillis [Long] <p>The elapsed time of the task, in milliseconds.</p>
+-- @return ReplicationTaskStats structure as a key-value pair table
+function M.ReplicationTaskStats(args)
+	assert(args, "You must provdide an argument table when creating ReplicationTaskStats")
 	local t = { 
-		["TablesLoading"] = _TablesLoading,
-		["TablesQueued"] = _TablesQueued,
-		["TablesErrored"] = _TablesErrored,
-		["FullLoadProgressPercent"] = _FullLoadProgressPercent,
-		["TablesLoaded"] = _TablesLoaded,
-		["ElapsedTimeMillis"] = _ElapsedTimeMillis,
+		["TablesLoading"] = args["TablesLoading"],
+		["TablesQueued"] = args["TablesQueued"],
+		["TablesErrored"] = args["TablesErrored"],
+		["FullLoadProgressPercent"] = args["FullLoadProgressPercent"],
+		["TablesLoaded"] = args["TablesLoaded"],
+		["ElapsedTimeMillis"] = args["ElapsedTimeMillis"],
 	}
 	asserts.AssertReplicationTaskStats(t)
 	return t
@@ -387,12 +423,15 @@ end
 
 --- Create a structure of type DynamoDbSettings
 -- <p/>
--- @param _ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
--- Required parameter: ServiceAccessRoleArn
-function M.DynamoDbSettings(_ServiceAccessRoleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DynamoDbSettings")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
+-- Required key: ServiceAccessRoleArn
+-- @return DynamoDbSettings structure as a key-value pair table
+function M.DynamoDbSettings(args)
+	assert(args, "You must provdide an argument table when creating DynamoDbSettings")
 	local t = { 
-		["ServiceAccessRoleArn"] = _ServiceAccessRoleArn,
+		["ServiceAccessRoleArn"] = args["ServiceAccessRoleArn"],
 	}
 	asserts.AssertDynamoDbSettings(t)
 	return t
@@ -411,11 +450,14 @@ end
 
 --- Create a structure of type DeleteEndpointResponse
 -- <p/>
--- @param _Endpoint [Endpoint] <p>The endpoint that was deleted.</p>
-function M.DeleteEndpointResponse(_Endpoint, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEndpointResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Endpoint [Endpoint] <p>The endpoint that was deleted.</p>
+-- @return DeleteEndpointResponse structure as a key-value pair table
+function M.DeleteEndpointResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteEndpointResponse")
 	local t = { 
-		["Endpoint"] = _Endpoint,
+		["Endpoint"] = args["Endpoint"],
 	}
 	asserts.AssertDeleteEndpointResponse(t)
 	return t
@@ -434,11 +476,14 @@ end
 
 --- Create a structure of type AccessDeniedFault
 -- <p>AWS DMS was denied access to the endpoint.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.AccessDeniedFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return AccessDeniedFault structure as a key-value pair table
+function M.AccessDeniedFault(args)
+	assert(args, "You must provdide an argument table when creating AccessDeniedFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertAccessDeniedFault(t)
 	return t
@@ -460,16 +505,19 @@ end
 
 --- Create a structure of type DescribeTableStatisticsMessage
 -- <p/>
--- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- Required parameter: ReplicationTaskArn
-function M.DescribeTableStatisticsMessage(_ReplicationTaskArn, _Marker, _MaxRecords, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTableStatisticsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- Required key: ReplicationTaskArn
+-- @return DescribeTableStatisticsMessage structure as a key-value pair table
+function M.DescribeTableStatisticsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeTableStatisticsMessage")
 	local t = { 
-		["ReplicationTaskArn"] = _ReplicationTaskArn,
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
 	}
 	asserts.AssertDescribeTableStatisticsMessage(t)
 	return t
@@ -488,11 +536,14 @@ end
 
 --- Create a structure of type InsufficientResourceCapacityFault
 -- <p>There are not enough resources allocated to the database migration.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.InsufficientResourceCapacityFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InsufficientResourceCapacityFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return InsufficientResourceCapacityFault structure as a key-value pair table
+function M.InsufficientResourceCapacityFault(args)
+	assert(args, "You must provdide an argument table when creating InsufficientResourceCapacityFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInsufficientResourceCapacityFault(t)
 	return t
@@ -513,15 +564,18 @@ end
 
 --- Create a structure of type DescribeReplicationInstancesMessage
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param _Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-instance-arn | replication-instance-id | replication-instance-class | engine-version</p>
-function M.DescribeReplicationInstancesMessage(_Marker, _MaxRecords, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationInstancesMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-instance-arn | replication-instance-id | replication-instance-class | engine-version</p>
+-- @return DescribeReplicationInstancesMessage structure as a key-value pair table
+function M.DescribeReplicationInstancesMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeReplicationInstancesMessage")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
-		["Filters"] = _Filters,
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeReplicationInstancesMessage(t)
 	return t
@@ -554,33 +608,36 @@ end
 
 --- Create a structure of type CreateReplicationTaskMessage
 -- <p/>
--- @param _SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param _ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
--- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- @param _Tags [TagList] <p>Tags to be added to the replication instance.</p>
--- @param _TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
--- @param _MigrationType [MigrationTypeValue] <p>The migration type.</p>
--- @param _TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param _ReplicationTaskSettings [String] <p>Settings for the task, such as target metadata settings. For a complete list of task settings, see <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task Settings for AWS Database Migration Service Tasks</a>.</p>
--- @param _CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
--- Required parameter: ReplicationTaskIdentifier
--- Required parameter: SourceEndpointArn
--- Required parameter: TargetEndpointArn
--- Required parameter: ReplicationInstanceArn
--- Required parameter: MigrationType
--- Required parameter: TableMappings
-function M.CreateReplicationTaskMessage(_SourceEndpointArn, _ReplicationTaskIdentifier, _ReplicationInstanceArn, _Tags, _TableMappings, _MigrationType, _TargetEndpointArn, _ReplicationTaskSettings, _CdcStartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationTaskMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- * ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- * Tags [TagList] <p>Tags to be added to the replication instance.</p>
+-- * TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
+-- * MigrationType [MigrationTypeValue] <p>The migration type.</p>
+-- * TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- * ReplicationTaskSettings [String] <p>Settings for the task, such as target metadata settings. For a complete list of task settings, see <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html">Task Settings for AWS Database Migration Service Tasks</a>.</p>
+-- * CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
+-- Required key: ReplicationTaskIdentifier
+-- Required key: SourceEndpointArn
+-- Required key: TargetEndpointArn
+-- Required key: ReplicationInstanceArn
+-- Required key: MigrationType
+-- Required key: TableMappings
+-- @return CreateReplicationTaskMessage structure as a key-value pair table
+function M.CreateReplicationTaskMessage(args)
+	assert(args, "You must provdide an argument table when creating CreateReplicationTaskMessage")
 	local t = { 
-		["SourceEndpointArn"] = _SourceEndpointArn,
-		["ReplicationTaskIdentifier"] = _ReplicationTaskIdentifier,
-		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
-		["Tags"] = _Tags,
-		["TableMappings"] = _TableMappings,
-		["MigrationType"] = _MigrationType,
-		["TargetEndpointArn"] = _TargetEndpointArn,
-		["ReplicationTaskSettings"] = _ReplicationTaskSettings,
-		["CdcStartTime"] = _CdcStartTime,
+		["SourceEndpointArn"] = args["SourceEndpointArn"],
+		["ReplicationTaskIdentifier"] = args["ReplicationTaskIdentifier"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
+		["Tags"] = args["Tags"],
+		["TableMappings"] = args["TableMappings"],
+		["MigrationType"] = args["MigrationType"],
+		["TargetEndpointArn"] = args["TargetEndpointArn"],
+		["ReplicationTaskSettings"] = args["ReplicationTaskSettings"],
+		["CdcStartTime"] = args["CdcStartTime"],
 	}
 	asserts.AssertCreateReplicationTaskMessage(t)
 	return t
@@ -599,11 +656,14 @@ end
 
 --- Create a structure of type InvalidResourceStateFault
 -- <p>The resource is in a state that prevents it from being used for database migration.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.InvalidResourceStateFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceStateFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return InvalidResourceStateFault structure as a key-value pair table
+function M.InvalidResourceStateFault(args)
+	assert(args, "You must provdide an argument table when creating InvalidResourceStateFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidResourceStateFault(t)
 	return t
@@ -622,11 +682,14 @@ end
 
 --- Create a structure of type TestConnectionResponse
 -- <p/>
--- @param _Connection [Connection] <p>The connection tested.</p>
-function M.TestConnectionResponse(_Connection, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TestConnectionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Connection [Connection] <p>The connection tested.</p>
+-- @return TestConnectionResponse structure as a key-value pair table
+function M.TestConnectionResponse(args)
+	assert(args, "You must provdide an argument table when creating TestConnectionResponse")
 	local t = { 
-		["Connection"] = _Connection,
+		["Connection"] = args["Connection"],
 	}
 	asserts.AssertTestConnectionResponse(t)
 	return t
@@ -653,27 +716,30 @@ end
 
 --- Create a structure of type DescribeEventsMessage
 -- <p/>
--- @param _EventCategories [EventCategoriesList] <p>A list of event categories for a source type that you want to subscribe to.</p>
--- @param _SourceType [SourceType] <p>The type of AWS DMS resource that generates events.</p> <p>Valid values: replication-instance | migration-task</p>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param _StartTime [TStamp] <p>The start time for the events to be listed.</p>
--- @param _Duration [IntegerOptional] <p>The duration of the events to be listed.</p>
--- @param _Filters [FilterList] <p>Filters applied to the action.</p>
--- @param _SourceIdentifier [String] <p> The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens. It cannot end with a hyphen or contain two consecutive hyphens. </p>
--- @param _EndTime [TStamp] <p>The end time for the events to be listed.</p>
-function M.DescribeEventsMessage(_EventCategories, _SourceType, _Marker, _MaxRecords, _StartTime, _Duration, _Filters, _SourceIdentifier, _EndTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventCategories [EventCategoriesList] <p>A list of event categories for a source type that you want to subscribe to.</p>
+-- * SourceType [SourceType] <p>The type of AWS DMS resource that generates events.</p> <p>Valid values: replication-instance | migration-task</p>
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * StartTime [TStamp] <p>The start time for the events to be listed.</p>
+-- * Duration [IntegerOptional] <p>The duration of the events to be listed.</p>
+-- * Filters [FilterList] <p>Filters applied to the action.</p>
+-- * SourceIdentifier [String] <p> The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens. It cannot end with a hyphen or contain two consecutive hyphens. </p>
+-- * EndTime [TStamp] <p>The end time for the events to be listed.</p>
+-- @return DescribeEventsMessage structure as a key-value pair table
+function M.DescribeEventsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventsMessage")
 	local t = { 
-		["EventCategories"] = _EventCategories,
-		["SourceType"] = _SourceType,
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
-		["StartTime"] = _StartTime,
-		["Duration"] = _Duration,
-		["Filters"] = _Filters,
-		["SourceIdentifier"] = _SourceIdentifier,
-		["EndTime"] = _EndTime,
+		["EventCategories"] = args["EventCategories"],
+		["SourceType"] = args["SourceType"],
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["StartTime"] = args["StartTime"],
+		["Duration"] = args["Duration"],
+		["Filters"] = args["Filters"],
+		["SourceIdentifier"] = args["SourceIdentifier"],
+		["EndTime"] = args["EndTime"],
 	}
 	asserts.AssertDescribeEventsMessage(t)
 	return t
@@ -692,11 +758,14 @@ end
 
 --- Create a structure of type CreateReplicationTaskResponse
 -- <p/>
--- @param _ReplicationTask [ReplicationTask] <p>The replication task that was created.</p>
-function M.CreateReplicationTaskResponse(_ReplicationTask, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationTaskResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTask [ReplicationTask] <p>The replication task that was created.</p>
+-- @return CreateReplicationTaskResponse structure as a key-value pair table
+function M.CreateReplicationTaskResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateReplicationTaskResponse")
 	local t = { 
-		["ReplicationTask"] = _ReplicationTask,
+		["ReplicationTask"] = args["ReplicationTask"],
 	}
 	asserts.AssertCreateReplicationTaskResponse(t)
 	return t
@@ -715,11 +784,14 @@ end
 
 --- Create a structure of type StorageQuotaExceededFault
 -- <p>The storage quota has been exceeded.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.StorageQuotaExceededFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StorageQuotaExceededFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return StorageQuotaExceededFault structure as a key-value pair table
+function M.StorageQuotaExceededFault(args)
+	assert(args, "You must provdide an argument table when creating StorageQuotaExceededFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertStorageQuotaExceededFault(t)
 	return t
@@ -739,13 +811,16 @@ end
 
 --- Create a structure of type Tag
 -- <p/>
--- @param _Value [String] <p>A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
--- @param _Key [String] <p>A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [String] <p>A value is the optional value of the tag. The string value can be from 1 to 256 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
+-- * Key [String] <p>A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -767,15 +842,18 @@ end
 
 --- Create a structure of type AddTagsToResourceMessage
 -- <p/>
--- @param _ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be added to. AWS DMS resources include a replication instance, endpoint, and a replication task.</p>
--- @param _Tags [TagList] <p>The tag to be assigned to the DMS resource.</p>
--- Required parameter: ResourceArn
--- Required parameter: Tags
-function M.AddTagsToResourceMessage(_ResourceArn, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [String] <p>The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be added to. AWS DMS resources include a replication instance, endpoint, and a replication task.</p>
+-- * Tags [TagList] <p>The tag to be assigned to the DMS resource.</p>
+-- Required key: ResourceArn
+-- Required key: Tags
+-- @return AddTagsToResourceMessage structure as a key-value pair table
+function M.AddTagsToResourceMessage(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToResourceMessage")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["Tags"] = _Tags,
+		["ResourceArn"] = args["ResourceArn"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertAddTagsToResourceMessage(t)
 	return t
@@ -798,19 +876,22 @@ end
 
 --- Create a structure of type Event
 -- <p/>
--- @param _Date [TStamp] <p>The date of the event.</p>
--- @param _Message [String] <p>The event message.</p>
--- @param _SourceIdentifier [String] <p> The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p> <p>Constraints:replication instance, endpoint, migration task</p>
--- @param _EventCategories [EventCategoriesList] <p>The event categories available for the specified source type.</p>
--- @param _SourceType [SourceType] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | endpoint | migration-task</p>
-function M.Event(_Date, _Message, _SourceIdentifier, _EventCategories, _SourceType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Event")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Date [TStamp] <p>The date of the event.</p>
+-- * Message [String] <p>The event message.</p>
+-- * SourceIdentifier [String] <p> The identifier of the event source. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p> <p>Constraints:replication instance, endpoint, migration task</p>
+-- * EventCategories [EventCategoriesList] <p>The event categories available for the specified source type.</p>
+-- * SourceType [SourceType] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | endpoint | migration-task</p>
+-- @return Event structure as a key-value pair table
+function M.Event(args)
+	assert(args, "You must provdide an argument table when creating Event")
 	local t = { 
-		["Date"] = _Date,
-		["Message"] = _Message,
-		["SourceIdentifier"] = _SourceIdentifier,
-		["EventCategories"] = _EventCategories,
-		["SourceType"] = _SourceType,
+		["Date"] = args["Date"],
+		["Message"] = args["Message"],
+		["SourceIdentifier"] = args["SourceIdentifier"],
+		["EventCategories"] = args["EventCategories"],
+		["SourceType"] = args["SourceType"],
 	}
 	asserts.AssertEvent(t)
 	return t
@@ -830,12 +911,15 @@ end
 
 --- Create a structure of type DeleteReplicationSubnetGroupMessage
 -- <p/>
--- @param _ReplicationSubnetGroupIdentifier [String] <p>The subnet group name of the replication instance.</p>
--- Required parameter: ReplicationSubnetGroupIdentifier
-function M.DeleteReplicationSubnetGroupMessage(_ReplicationSubnetGroupIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationSubnetGroupMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationSubnetGroupIdentifier [String] <p>The subnet group name of the replication instance.</p>
+-- Required key: ReplicationSubnetGroupIdentifier
+-- @return DeleteReplicationSubnetGroupMessage structure as a key-value pair table
+function M.DeleteReplicationSubnetGroupMessage(args)
+	assert(args, "You must provdide an argument table when creating DeleteReplicationSubnetGroupMessage")
 	local t = { 
-		["ReplicationSubnetGroupIdentifier"] = _ReplicationSubnetGroupIdentifier,
+		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
 	asserts.AssertDeleteReplicationSubnetGroupMessage(t)
 	return t
@@ -855,12 +939,15 @@ end
 
 --- Create a structure of type DescribeRefreshSchemasStatusMessage
 -- <p/>
--- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- Required parameter: EndpointArn
-function M.DescribeRefreshSchemasStatusMessage(_EndpointArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRefreshSchemasStatusMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- Required key: EndpointArn
+-- @return DescribeRefreshSchemasStatusMessage structure as a key-value pair table
+function M.DescribeRefreshSchemasStatusMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeRefreshSchemasStatusMessage")
 	local t = { 
-		["EndpointArn"] = _EndpointArn,
+		["EndpointArn"] = args["EndpointArn"],
 	}
 	asserts.AssertDescribeRefreshSchemasStatusMessage(t)
 	return t
@@ -882,15 +969,18 @@ end
 
 --- Create a structure of type TestConnectionMessage
 -- <p/>
--- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- Required parameter: ReplicationInstanceArn
--- Required parameter: EndpointArn
-function M.TestConnectionMessage(_EndpointArn, _ReplicationInstanceArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TestConnectionMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- Required key: ReplicationInstanceArn
+-- Required key: EndpointArn
+-- @return TestConnectionMessage structure as a key-value pair table
+function M.TestConnectionMessage(args)
+	assert(args, "You must provdide an argument table when creating TestConnectionMessage")
 	local t = { 
-		["EndpointArn"] = _EndpointArn,
-		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
+		["EndpointArn"] = args["EndpointArn"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
 	}
 	asserts.AssertTestConnectionMessage(t)
 	return t
@@ -909,11 +999,14 @@ end
 
 --- Create a structure of type InvalidSubnet
 -- <p>The subnet provided is invalid.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.InvalidSubnet(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return InvalidSubnet structure as a key-value pair table
+function M.InvalidSubnet(args)
+	assert(args, "You must provdide an argument table when creating InvalidSubnet")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidSubnet(t)
 	return t
@@ -933,13 +1026,16 @@ end
 
 --- Create a structure of type TableToReload
 -- <p/>
--- @param _SchemaName [String] <p>The schema name of the table to be reloaded.</p>
--- @param _TableName [String] <p>The table name of the table to be reloaded.</p>
-function M.TableToReload(_SchemaName, _TableName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TableToReload")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaName [String] <p>The schema name of the table to be reloaded.</p>
+-- * TableName [String] <p>The table name of the table to be reloaded.</p>
+-- @return TableToReload structure as a key-value pair table
+function M.TableToReload(args)
+	assert(args, "You must provdide an argument table when creating TableToReload")
 	local t = { 
-		["SchemaName"] = _SchemaName,
-		["TableName"] = _TableName,
+		["SchemaName"] = args["SchemaName"],
+		["TableName"] = args["TableName"],
 	}
 	asserts.AssertTableToReload(t)
 	return t
@@ -961,15 +1057,18 @@ end
 
 --- Create a structure of type ReloadTablesMessage
 --  
--- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication instance. </p>
--- @param _TablesToReload [TableListToReload] <p>The name and schema of the table to be reloaded. </p>
--- Required parameter: ReplicationTaskArn
--- Required parameter: TablesToReload
-function M.ReloadTablesMessage(_ReplicationTaskArn, _TablesToReload, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReloadTablesMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication instance. </p>
+-- * TablesToReload [TableListToReload] <p>The name and schema of the table to be reloaded. </p>
+-- Required key: ReplicationTaskArn
+-- Required key: TablesToReload
+-- @return ReloadTablesMessage structure as a key-value pair table
+function M.ReloadTablesMessage(args)
+	assert(args, "You must provdide an argument table when creating ReloadTablesMessage")
 	local t = { 
-		["ReplicationTaskArn"] = _ReplicationTaskArn,
-		["TablesToReload"] = _TablesToReload,
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["TablesToReload"] = args["TablesToReload"],
 	}
 	asserts.AssertReloadTablesMessage(t)
 	return t
@@ -988,11 +1087,14 @@ end
 
 --- Create a structure of type ResourceNotFoundFault
 -- <p>The resource could not be found.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.ResourceNotFoundFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return ResourceNotFoundFault structure as a key-value pair table
+function M.ResourceNotFoundFault(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundFault(t)
 	return t
@@ -1010,8 +1112,11 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceResponse
 -- <p/>
-function M.RemoveTagsFromResourceResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RemoveTagsFromResourceResponse structure as a key-value pair table
+function M.RemoveTagsFromResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceResponse")
 	local t = { 
 	}
 	asserts.AssertRemoveTagsFromResourceResponse(t)
@@ -1032,13 +1137,16 @@ end
 
 --- Create a structure of type DescribeReplicationSubnetGroupsResponse
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _ReplicationSubnetGroups [ReplicationSubnetGroups] <p>A description of the replication subnet groups.</p>
-function M.DescribeReplicationSubnetGroupsResponse(_Marker, _ReplicationSubnetGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationSubnetGroupsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * ReplicationSubnetGroups [ReplicationSubnetGroups] <p>A description of the replication subnet groups.</p>
+-- @return DescribeReplicationSubnetGroupsResponse structure as a key-value pair table
+function M.DescribeReplicationSubnetGroupsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeReplicationSubnetGroupsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["ReplicationSubnetGroups"] = _ReplicationSubnetGroups,
+		["Marker"] = args["Marker"],
+		["ReplicationSubnetGroups"] = args["ReplicationSubnetGroups"],
 	}
 	asserts.AssertDescribeReplicationSubnetGroupsResponse(t)
 	return t
@@ -1057,11 +1165,14 @@ end
 
 --- Create a structure of type CreateEventSubscriptionResponse
 -- <p/>
--- @param _EventSubscription [EventSubscription] <p>The event subscription that was created.</p>
-function M.CreateEventSubscriptionResponse(_EventSubscription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateEventSubscriptionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventSubscription [EventSubscription] <p>The event subscription that was created.</p>
+-- @return CreateEventSubscriptionResponse structure as a key-value pair table
+function M.CreateEventSubscriptionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateEventSubscriptionResponse")
 	local t = { 
-		["EventSubscription"] = _EventSubscription,
+		["EventSubscription"] = args["EventSubscription"],
 	}
 	asserts.AssertCreateEventSubscriptionResponse(t)
 	return t
@@ -1081,13 +1192,16 @@ end
 
 --- Create a structure of type DescribeOrderableReplicationInstancesResponse
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _OrderableReplicationInstances [OrderableReplicationInstanceList] <p>The order-able replication instances available.</p>
-function M.DescribeOrderableReplicationInstancesResponse(_Marker, _OrderableReplicationInstances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrderableReplicationInstancesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * OrderableReplicationInstances [OrderableReplicationInstanceList] <p>The order-able replication instances available.</p>
+-- @return DescribeOrderableReplicationInstancesResponse structure as a key-value pair table
+function M.DescribeOrderableReplicationInstancesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeOrderableReplicationInstancesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["OrderableReplicationInstances"] = _OrderableReplicationInstances,
+		["Marker"] = args["Marker"],
+		["OrderableReplicationInstances"] = args["OrderableReplicationInstances"],
 	}
 	asserts.AssertDescribeOrderableReplicationInstancesResponse(t)
 	return t
@@ -1112,22 +1226,25 @@ end
 
 --- Create a structure of type ModifyReplicationTaskMessage
 -- <p/>
--- @param _ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
--- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
--- @param _MigrationType [MigrationTypeValue] <p>The migration type.</p> <p>Valid values: full-load | cdc | full-load-and-cdc</p>
--- @param _TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
--- @param _ReplicationTaskSettings [String] <p>JSON file that contains settings for the task, such as target metadata settings.</p>
--- @param _CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
--- Required parameter: ReplicationTaskArn
-function M.ModifyReplicationTaskMessage(_ReplicationTaskIdentifier, _ReplicationTaskArn, _MigrationType, _TableMappings, _ReplicationTaskSettings, _CdcStartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationTaskMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- * MigrationType [MigrationTypeValue] <p>The migration type.</p> <p>Valid values: full-load | cdc | full-load-and-cdc</p>
+-- * TableMappings [String] <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the table mappings. Precede the path with "file://". When working with the DMS API, provide the JSON as the parameter value.</p> <p>For example, --table-mappings file://mappingfile.json</p>
+-- * ReplicationTaskSettings [String] <p>JSON file that contains settings for the task, such as target metadata settings.</p>
+-- * CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
+-- Required key: ReplicationTaskArn
+-- @return ModifyReplicationTaskMessage structure as a key-value pair table
+function M.ModifyReplicationTaskMessage(args)
+	assert(args, "You must provdide an argument table when creating ModifyReplicationTaskMessage")
 	local t = { 
-		["ReplicationTaskIdentifier"] = _ReplicationTaskIdentifier,
-		["ReplicationTaskArn"] = _ReplicationTaskArn,
-		["MigrationType"] = _MigrationType,
-		["TableMappings"] = _TableMappings,
-		["ReplicationTaskSettings"] = _ReplicationTaskSettings,
-		["CdcStartTime"] = _CdcStartTime,
+		["ReplicationTaskIdentifier"] = args["ReplicationTaskIdentifier"],
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["MigrationType"] = args["MigrationType"],
+		["TableMappings"] = args["TableMappings"],
+		["ReplicationTaskSettings"] = args["ReplicationTaskSettings"],
+		["CdcStartTime"] = args["CdcStartTime"],
 	}
 	asserts.AssertModifyReplicationTaskMessage(t)
 	return t
@@ -1148,15 +1265,18 @@ end
 
 --- Create a structure of type DescribeConnectionsMessage
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param _Filters [FilterList] <p>The filters applied to the connection.</p> <p>Valid filter names: endpoint-arn | replication-instance-arn</p>
-function M.DescribeConnectionsMessage(_Marker, _MaxRecords, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConnectionsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * Filters [FilterList] <p>The filters applied to the connection.</p> <p>Valid filter names: endpoint-arn | replication-instance-arn</p>
+-- @return DescribeConnectionsMessage structure as a key-value pair table
+function M.DescribeConnectionsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeConnectionsMessage")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
-		["Filters"] = _Filters,
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeConnectionsMessage(t)
 	return t
@@ -1176,13 +1296,16 @@ end
 
 --- Create a structure of type DescribeReplicationInstancesResponse
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _ReplicationInstances [ReplicationInstanceList] <p>The replication instances described.</p>
-function M.DescribeReplicationInstancesResponse(_Marker, _ReplicationInstances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationInstancesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * ReplicationInstances [ReplicationInstanceList] <p>The replication instances described.</p>
+-- @return DescribeReplicationInstancesResponse structure as a key-value pair table
+function M.DescribeReplicationInstancesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeReplicationInstancesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["ReplicationInstances"] = _ReplicationInstances,
+		["Marker"] = args["Marker"],
+		["ReplicationInstances"] = args["ReplicationInstances"],
 	}
 	asserts.AssertDescribeReplicationInstancesResponse(t)
 	return t
@@ -1202,13 +1325,16 @@ end
 
 --- Create a structure of type DescribeSchemasResponse
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _Schemas [SchemaList] <p>The described schema.</p>
-function M.DescribeSchemasResponse(_Marker, _Schemas, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSchemasResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * Schemas [SchemaList] <p>The described schema.</p>
+-- @return DescribeSchemasResponse structure as a key-value pair table
+function M.DescribeSchemasResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeSchemasResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["Schemas"] = _Schemas,
+		["Marker"] = args["Marker"],
+		["Schemas"] = args["Schemas"],
 	}
 	asserts.AssertDescribeSchemasResponse(t)
 	return t
@@ -1228,13 +1354,16 @@ end
 
 --- Create a structure of type VpcSecurityGroupMembership
 -- <p/>
--- @param _Status [String] <p>The status of the VPC security group.</p>
--- @param _VpcSecurityGroupId [String] <p>The VPC security group Id.</p>
-function M.VpcSecurityGroupMembership(_Status, _VpcSecurityGroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VpcSecurityGroupMembership")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The status of the VPC security group.</p>
+-- * VpcSecurityGroupId [String] <p>The VPC security group Id.</p>
+-- @return VpcSecurityGroupMembership structure as a key-value pair table
+function M.VpcSecurityGroupMembership(args)
+	assert(args, "You must provdide an argument table when creating VpcSecurityGroupMembership")
 	local t = { 
-		["Status"] = _Status,
-		["VpcSecurityGroupId"] = _VpcSecurityGroupId,
+		["Status"] = args["Status"],
+		["VpcSecurityGroupId"] = args["VpcSecurityGroupId"],
 	}
 	asserts.AssertVpcSecurityGroupMembership(t)
 	return t
@@ -1259,23 +1388,26 @@ end
 
 --- Create a structure of type S3Settings
 -- <p/>
--- @param _CompressionType [CompressionTypeValue] <p> An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed. </p>
--- @param _BucketFolder [String] <p> An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path &lt;bucketFolder&gt;/&lt;schema_name&gt;/&lt;table_name&gt;/. If this parameter is not specified, then the path used is &lt;schema_name&gt;/&lt;table_name&gt;/. </p>
--- @param _CsvRowDelimiter [String] <p> The delimiter used to separate rows in the source files. The default is a carriage return (\n). </p>
--- @param _CsvDelimiter [String] <p> The delimiter used to separate columns in the source files. The default is a comma. </p>
--- @param _ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
--- @param _ExternalTableDefinition [String] <p> </p>
--- @param _BucketName [String] <p> The name of the S3 bucket. </p>
-function M.S3Settings(_CompressionType, _BucketFolder, _CsvRowDelimiter, _CsvDelimiter, _ServiceAccessRoleArn, _ExternalTableDefinition, _BucketName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3Settings")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CompressionType [CompressionTypeValue] <p> An optional parameter to use GZIP to compress the target files. Set to GZIP to compress the target files. Set to NONE (the default) or do not use to leave the files uncompressed. </p>
+-- * BucketFolder [String] <p> An optional parameter to set a folder name in the S3 bucket. If provided, tables are created in the path &lt;bucketFolder&gt;/&lt;schema_name&gt;/&lt;table_name&gt;/. If this parameter is not specified, then the path used is &lt;schema_name&gt;/&lt;table_name&gt;/. </p>
+-- * CsvRowDelimiter [String] <p> The delimiter used to separate rows in the source files. The default is a carriage return (\n). </p>
+-- * CsvDelimiter [String] <p> The delimiter used to separate columns in the source files. The default is a comma. </p>
+-- * ServiceAccessRoleArn [String] <p> The Amazon Resource Name (ARN) used by the service access IAM role. </p>
+-- * ExternalTableDefinition [String] <p> </p>
+-- * BucketName [String] <p> The name of the S3 bucket. </p>
+-- @return S3Settings structure as a key-value pair table
+function M.S3Settings(args)
+	assert(args, "You must provdide an argument table when creating S3Settings")
 	local t = { 
-		["CompressionType"] = _CompressionType,
-		["BucketFolder"] = _BucketFolder,
-		["CsvRowDelimiter"] = _CsvRowDelimiter,
-		["CsvDelimiter"] = _CsvDelimiter,
-		["ServiceAccessRoleArn"] = _ServiceAccessRoleArn,
-		["ExternalTableDefinition"] = _ExternalTableDefinition,
-		["BucketName"] = _BucketName,
+		["CompressionType"] = args["CompressionType"],
+		["BucketFolder"] = args["BucketFolder"],
+		["CsvRowDelimiter"] = args["CsvRowDelimiter"],
+		["CsvDelimiter"] = args["CsvDelimiter"],
+		["ServiceAccessRoleArn"] = args["ServiceAccessRoleArn"],
+		["ExternalTableDefinition"] = args["ExternalTableDefinition"],
+		["BucketName"] = args["BucketName"],
 	}
 	asserts.AssertS3Settings(t)
 	return t
@@ -1295,13 +1427,16 @@ end
 
 --- Create a structure of type DescribeEndpointsResponse
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _Endpoints [EndpointList] <p>Endpoint description.</p>
-function M.DescribeEndpointsResponse(_Marker, _Endpoints, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * Endpoints [EndpointList] <p>Endpoint description.</p>
+-- @return DescribeEndpointsResponse structure as a key-value pair table
+function M.DescribeEndpointsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEndpointsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["Endpoints"] = _Endpoints,
+		["Marker"] = args["Marker"],
+		["Endpoints"] = args["Endpoints"],
 	}
 	asserts.AssertDescribeEndpointsResponse(t)
 	return t
@@ -1320,11 +1455,14 @@ end
 
 --- Create a structure of type CreateEndpointResponse
 -- <p/>
--- @param _Endpoint [Endpoint] <p>The endpoint that was created.</p>
-function M.CreateEndpointResponse(_Endpoint, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateEndpointResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Endpoint [Endpoint] <p>The endpoint that was created.</p>
+-- @return CreateEndpointResponse structure as a key-value pair table
+function M.CreateEndpointResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateEndpointResponse")
 	local t = { 
-		["Endpoint"] = _Endpoint,
+		["Endpoint"] = args["Endpoint"],
 	}
 	asserts.AssertCreateEndpointResponse(t)
 	return t
@@ -1349,20 +1487,23 @@ end
 
 --- Create a structure of type CreateReplicationSubnetGroupMessage
 -- <p/>
--- @param _ReplicationSubnetGroupDescription [String] <p>The description for the subnet group.</p>
--- @param _SubnetIds [SubnetIdentifierList] <p>The EC2 subnet IDs for the subnet group.</p>
--- @param _Tags [TagList] <p>The tag to be assigned to the subnet group.</p>
--- @param _ReplicationSubnetGroupIdentifier [String] <p>The name for the replication subnet group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default".</p> <p>Example: <code>mySubnetgroup</code> </p>
--- Required parameter: ReplicationSubnetGroupIdentifier
--- Required parameter: ReplicationSubnetGroupDescription
--- Required parameter: SubnetIds
-function M.CreateReplicationSubnetGroupMessage(_ReplicationSubnetGroupDescription, _SubnetIds, _Tags, _ReplicationSubnetGroupIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationSubnetGroupMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationSubnetGroupDescription [String] <p>The description for the subnet group.</p>
+-- * SubnetIds [SubnetIdentifierList] <p>The EC2 subnet IDs for the subnet group.</p>
+-- * Tags [TagList] <p>The tag to be assigned to the subnet group.</p>
+-- * ReplicationSubnetGroupIdentifier [String] <p>The name for the replication subnet group. This value is stored as a lowercase string.</p> <p>Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default".</p> <p>Example: <code>mySubnetgroup</code> </p>
+-- Required key: ReplicationSubnetGroupIdentifier
+-- Required key: ReplicationSubnetGroupDescription
+-- Required key: SubnetIds
+-- @return CreateReplicationSubnetGroupMessage structure as a key-value pair table
+function M.CreateReplicationSubnetGroupMessage(args)
+	assert(args, "You must provdide an argument table when creating CreateReplicationSubnetGroupMessage")
 	local t = { 
-		["ReplicationSubnetGroupDescription"] = _ReplicationSubnetGroupDescription,
-		["SubnetIds"] = _SubnetIds,
-		["Tags"] = _Tags,
-		["ReplicationSubnetGroupIdentifier"] = _ReplicationSubnetGroupIdentifier,
+		["ReplicationSubnetGroupDescription"] = args["ReplicationSubnetGroupDescription"],
+		["SubnetIds"] = args["SubnetIds"],
+		["Tags"] = args["Tags"],
+		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
 	asserts.AssertCreateReplicationSubnetGroupMessage(t)
 	return t
@@ -1383,15 +1524,18 @@ end
 
 --- Create a structure of type DescribeReplicationSubnetGroupsMessage
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param _Filters [FilterList] <p>Filters applied to the describe action.</p>
-function M.DescribeReplicationSubnetGroupsMessage(_Marker, _MaxRecords, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationSubnetGroupsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * Filters [FilterList] <p>Filters applied to the describe action.</p>
+-- @return DescribeReplicationSubnetGroupsMessage structure as a key-value pair table
+function M.DescribeReplicationSubnetGroupsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeReplicationSubnetGroupsMessage")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
-		["Filters"] = _Filters,
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeReplicationSubnetGroupsMessage(t)
 	return t
@@ -1414,19 +1558,22 @@ end
 
 --- Create a structure of type ReplicationSubnetGroup
 -- <p/>
--- @param _ReplicationSubnetGroupDescription [String] <p>The description of the replication subnet group.</p>
--- @param _Subnets [SubnetList] <p>The subnets that are in the subnet group.</p>
--- @param _VpcId [String] <p>The ID of the VPC.</p>
--- @param _SubnetGroupStatus [String] <p>The status of the subnet group.</p>
--- @param _ReplicationSubnetGroupIdentifier [String] <p>The identifier of the replication instance subnet group.</p>
-function M.ReplicationSubnetGroup(_ReplicationSubnetGroupDescription, _Subnets, _VpcId, _SubnetGroupStatus, _ReplicationSubnetGroupIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationSubnetGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationSubnetGroupDescription [String] <p>The description of the replication subnet group.</p>
+-- * Subnets [SubnetList] <p>The subnets that are in the subnet group.</p>
+-- * VpcId [String] <p>The ID of the VPC.</p>
+-- * SubnetGroupStatus [String] <p>The status of the subnet group.</p>
+-- * ReplicationSubnetGroupIdentifier [String] <p>The identifier of the replication instance subnet group.</p>
+-- @return ReplicationSubnetGroup structure as a key-value pair table
+function M.ReplicationSubnetGroup(args)
+	assert(args, "You must provdide an argument table when creating ReplicationSubnetGroup")
 	local t = { 
-		["ReplicationSubnetGroupDescription"] = _ReplicationSubnetGroupDescription,
-		["Subnets"] = _Subnets,
-		["VpcId"] = _VpcId,
-		["SubnetGroupStatus"] = _SubnetGroupStatus,
-		["ReplicationSubnetGroupIdentifier"] = _ReplicationSubnetGroupIdentifier,
+		["ReplicationSubnetGroupDescription"] = args["ReplicationSubnetGroupDescription"],
+		["Subnets"] = args["Subnets"],
+		["VpcId"] = args["VpcId"],
+		["SubnetGroupStatus"] = args["SubnetGroupStatus"],
+		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
 	asserts.AssertReplicationSubnetGroup(t)
 	return t
@@ -1445,11 +1592,14 @@ end
 
 --- Create a structure of type ModifyReplicationInstanceResponse
 -- <p/>
--- @param _ReplicationInstance [ReplicationInstance] <p>The modified replication instance.</p>
-function M.ModifyReplicationInstanceResponse(_ReplicationInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationInstanceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationInstance [ReplicationInstance] <p>The modified replication instance.</p>
+-- @return ModifyReplicationInstanceResponse structure as a key-value pair table
+function M.ModifyReplicationInstanceResponse(args)
+	assert(args, "You must provdide an argument table when creating ModifyReplicationInstanceResponse")
 	local t = { 
-		["ReplicationInstance"] = _ReplicationInstance,
+		["ReplicationInstance"] = args["ReplicationInstance"],
 	}
 	asserts.AssertModifyReplicationInstanceResponse(t)
 	return t
@@ -1468,11 +1618,14 @@ end
 
 --- Create a structure of type RefreshSchemasResponse
 -- <p/>
--- @param _RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the refreshed schema.</p>
-function M.RefreshSchemasResponse(_RefreshSchemasStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RefreshSchemasResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the refreshed schema.</p>
+-- @return RefreshSchemasResponse structure as a key-value pair table
+function M.RefreshSchemasResponse(args)
+	assert(args, "You must provdide an argument table when creating RefreshSchemasResponse")
 	local t = { 
-		["RefreshSchemasStatus"] = _RefreshSchemasStatus,
+		["RefreshSchemasStatus"] = args["RefreshSchemasStatus"],
 	}
 	asserts.AssertRefreshSchemasResponse(t)
 	return t
@@ -1492,13 +1645,16 @@ end
 
 --- Create a structure of type DescribeCertificatesResponse
 --  
--- @param _Marker [String] <p>The pagination token.</p>
--- @param _Certificates [CertificateList] <p>The Secure Sockets Layer (SSL) certificates associated with the replication instance.</p>
-function M.DescribeCertificatesResponse(_Marker, _Certificates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificatesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p>The pagination token.</p>
+-- * Certificates [CertificateList] <p>The Secure Sockets Layer (SSL) certificates associated with the replication instance.</p>
+-- @return DescribeCertificatesResponse structure as a key-value pair table
+function M.DescribeCertificatesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeCertificatesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["Certificates"] = _Certificates,
+		["Marker"] = args["Marker"],
+		["Certificates"] = args["Certificates"],
 	}
 	asserts.AssertDescribeCertificatesResponse(t)
 	return t
@@ -1521,17 +1677,20 @@ end
 
 --- Create a structure of type StartReplicationTaskMessage
 -- <p/>
--- @param _ReplicationTaskArn [String] <p>The Amazon Resource Number (ARN) of the replication task to be started.</p>
--- @param _StartReplicationTaskType [StartReplicationTaskTypeValue] <p>The type of replication task.</p>
--- @param _CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
--- Required parameter: ReplicationTaskArn
--- Required parameter: StartReplicationTaskType
-function M.StartReplicationTaskMessage(_ReplicationTaskArn, _StartReplicationTaskType, _CdcStartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartReplicationTaskMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Number (ARN) of the replication task to be started.</p>
+-- * StartReplicationTaskType [StartReplicationTaskTypeValue] <p>The type of replication task.</p>
+-- * CdcStartTime [TStamp] <p>The start time for the Change Data Capture (CDC) operation.</p>
+-- Required key: ReplicationTaskArn
+-- Required key: StartReplicationTaskType
+-- @return StartReplicationTaskMessage structure as a key-value pair table
+function M.StartReplicationTaskMessage(args)
+	assert(args, "You must provdide an argument table when creating StartReplicationTaskMessage")
 	local t = { 
-		["ReplicationTaskArn"] = _ReplicationTaskArn,
-		["StartReplicationTaskType"] = _StartReplicationTaskType,
-		["CdcStartTime"] = _CdcStartTime,
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["StartReplicationTaskType"] = args["StartReplicationTaskType"],
+		["CdcStartTime"] = args["CdcStartTime"],
 	}
 	asserts.AssertStartReplicationTaskMessage(t)
 	return t
@@ -1550,11 +1709,14 @@ end
 
 --- Create a structure of type ResourceQuotaExceededFault
 -- <p>The quota for this resource quota has been exceeded.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.ResourceQuotaExceededFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceQuotaExceededFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return ResourceQuotaExceededFault structure as a key-value pair table
+function M.ResourceQuotaExceededFault(args)
+	assert(args, "You must provdide an argument table when creating ResourceQuotaExceededFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceQuotaExceededFault(t)
 	return t
@@ -1573,11 +1735,14 @@ end
 
 --- Create a structure of type StartReplicationTaskResponse
 -- <p/>
--- @param _ReplicationTask [ReplicationTask] <p>The replication task started.</p>
-function M.StartReplicationTaskResponse(_ReplicationTask, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartReplicationTaskResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTask [ReplicationTask] <p>The replication task started.</p>
+-- @return StartReplicationTaskResponse structure as a key-value pair table
+function M.StartReplicationTaskResponse(args)
+	assert(args, "You must provdide an argument table when creating StartReplicationTaskResponse")
 	local t = { 
-		["ReplicationTask"] = _ReplicationTask,
+		["ReplicationTask"] = args["ReplicationTask"],
 	}
 	asserts.AssertStartReplicationTaskResponse(t)
 	return t
@@ -1600,17 +1765,20 @@ end
 
 --- Create a structure of type ModifyReplicationSubnetGroupMessage
 -- <p/>
--- @param _ReplicationSubnetGroupDescription [String] <p>The description of the replication instance subnet group.</p>
--- @param _SubnetIds [SubnetIdentifierList] <p>A list of subnet IDs.</p>
--- @param _ReplicationSubnetGroupIdentifier [String] <p>The name of the replication instance subnet group.</p>
--- Required parameter: ReplicationSubnetGroupIdentifier
--- Required parameter: SubnetIds
-function M.ModifyReplicationSubnetGroupMessage(_ReplicationSubnetGroupDescription, _SubnetIds, _ReplicationSubnetGroupIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationSubnetGroupMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationSubnetGroupDescription [String] <p>The description of the replication instance subnet group.</p>
+-- * SubnetIds [SubnetIdentifierList] <p>A list of subnet IDs.</p>
+-- * ReplicationSubnetGroupIdentifier [String] <p>The name of the replication instance subnet group.</p>
+-- Required key: ReplicationSubnetGroupIdentifier
+-- Required key: SubnetIds
+-- @return ModifyReplicationSubnetGroupMessage structure as a key-value pair table
+function M.ModifyReplicationSubnetGroupMessage(args)
+	assert(args, "You must provdide an argument table when creating ModifyReplicationSubnetGroupMessage")
 	local t = { 
-		["ReplicationSubnetGroupDescription"] = _ReplicationSubnetGroupDescription,
-		["SubnetIds"] = _SubnetIds,
-		["ReplicationSubnetGroupIdentifier"] = _ReplicationSubnetGroupIdentifier,
+		["ReplicationSubnetGroupDescription"] = args["ReplicationSubnetGroupDescription"],
+		["SubnetIds"] = args["SubnetIds"],
+		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
 	asserts.AssertModifyReplicationSubnetGroupMessage(t)
 	return t
@@ -1629,11 +1797,14 @@ end
 
 --- Create a structure of type AvailabilityZone
 -- <p/>
--- @param _Name [String] <p>The name of the availability zone.</p>
-function M.AvailabilityZone(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityZone")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>The name of the availability zone.</p>
+-- @return AvailabilityZone structure as a key-value pair table
+function M.AvailabilityZone(args)
+	assert(args, "You must provdide an argument table when creating AvailabilityZone")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertAvailabilityZone(t)
 	return t
@@ -1662,31 +1833,34 @@ end
 
 --- Create a structure of type TableStatistics
 -- <p/>
--- @param _Inserts [Long] <p>The number of insert actions performed on a table.</p>
--- @param _LastUpdateTime [TStamp] <p>The last time the table was updated.</p>
--- @param _FullLoadErrorRows [Long] <p>The number of rows that failed to load during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
--- @param _FullLoadCondtnlChkFailedRows [Long] <p>The number of rows that failed conditional checks during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
--- @param _Ddls [Long] <p>The Data Definition Language (DDL) used to build and modify the structure of your tables.</p>
--- @param _TableName [String] <p>The name of the table.</p>
--- @param _Updates [Long] <p>The number of update actions performed on a table.</p>
--- @param _FullLoadRows [Long] <p>The number of rows added during the Full Load operation.</p>
--- @param _TableState [String] <p>The state of the table.</p>
--- @param _SchemaName [String] <p>The schema name.</p>
--- @param _Deletes [Long] <p>The number of delete actions performed on a table.</p>
-function M.TableStatistics(_Inserts, _LastUpdateTime, _FullLoadErrorRows, _FullLoadCondtnlChkFailedRows, _Ddls, _TableName, _Updates, _FullLoadRows, _TableState, _SchemaName, _Deletes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TableStatistics")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Inserts [Long] <p>The number of insert actions performed on a table.</p>
+-- * LastUpdateTime [TStamp] <p>The last time the table was updated.</p>
+-- * FullLoadErrorRows [Long] <p>The number of rows that failed to load during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
+-- * FullLoadCondtnlChkFailedRows [Long] <p>The number of rows that failed conditional checks during the Full Load operation (valid only for DynamoDB as a target migrations).</p>
+-- * Ddls [Long] <p>The Data Definition Language (DDL) used to build and modify the structure of your tables.</p>
+-- * TableName [String] <p>The name of the table.</p>
+-- * Updates [Long] <p>The number of update actions performed on a table.</p>
+-- * FullLoadRows [Long] <p>The number of rows added during the Full Load operation.</p>
+-- * TableState [String] <p>The state of the table.</p>
+-- * SchemaName [String] <p>The schema name.</p>
+-- * Deletes [Long] <p>The number of delete actions performed on a table.</p>
+-- @return TableStatistics structure as a key-value pair table
+function M.TableStatistics(args)
+	assert(args, "You must provdide an argument table when creating TableStatistics")
 	local t = { 
-		["Inserts"] = _Inserts,
-		["LastUpdateTime"] = _LastUpdateTime,
-		["FullLoadErrorRows"] = _FullLoadErrorRows,
-		["FullLoadCondtnlChkFailedRows"] = _FullLoadCondtnlChkFailedRows,
-		["Ddls"] = _Ddls,
-		["TableName"] = _TableName,
-		["Updates"] = _Updates,
-		["FullLoadRows"] = _FullLoadRows,
-		["TableState"] = _TableState,
-		["SchemaName"] = _SchemaName,
-		["Deletes"] = _Deletes,
+		["Inserts"] = args["Inserts"],
+		["LastUpdateTime"] = args["LastUpdateTime"],
+		["FullLoadErrorRows"] = args["FullLoadErrorRows"],
+		["FullLoadCondtnlChkFailedRows"] = args["FullLoadCondtnlChkFailedRows"],
+		["Ddls"] = args["Ddls"],
+		["TableName"] = args["TableName"],
+		["Updates"] = args["Updates"],
+		["FullLoadRows"] = args["FullLoadRows"],
+		["TableState"] = args["TableState"],
+		["SchemaName"] = args["SchemaName"],
+		["Deletes"] = args["Deletes"],
 	}
 	asserts.AssertTableStatistics(t)
 	return t
@@ -1716,32 +1890,35 @@ end
 
 --- Create a structure of type ModifyReplicationInstanceMessage
 -- <p/>
--- @param _MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
--- @param _AllowMajorVersionUpgrade [Boolean] <p>Indicates that major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.</p> <p>Constraints: This parameter must be set to true when specifying a value for the <code>EngineVersion</code> parameter that is a different major version than the replication instance's current version.</p>
--- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- @param _ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- @param _VpcSecurityGroupIds [VpcSecurityGroupIdList] <p> Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. </p>
--- @param _ApplyImmediately [Boolean] <p>Indicates whether the changes should be applied immediately or during the next maintenance window.</p>
--- @param _AutoMinorVersionUpgrade [BooleanOptional] <p> Indicates that minor version upgrades will be applied automatically to the replication instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code> during the maintenance window, and a newer minor version is available, and AWS DMS has enabled auto patching for that engine version. </p>
--- @param _AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be allocated for the replication instance.</p>
--- @param _EngineVersion [String] <p>The engine version number of the replication instance.</p>
--- @param _ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p>
--- @param _PreferredMaintenanceWindow [String] <p>The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage. Changing this parameter does not result in an outage, except in the following situation, and the change is asynchronously applied as soon as possible. If moving this window to the current time, there must be at least 30 minutes between the current time and end of the window to ensure pending changes are applied.</p> <p>Default: Uses existing setting</p> <p>Format: ddd:hh24:mi-ddd:hh24:mi</p> <p>Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Must be at least 30 minutes</p>
--- Required parameter: ReplicationInstanceArn
-function M.ModifyReplicationInstanceMessage(_MultiAZ, _AllowMajorVersionUpgrade, _ReplicationInstanceArn, _ReplicationInstanceClass, _VpcSecurityGroupIds, _ApplyImmediately, _AutoMinorVersionUpgrade, _AllocatedStorage, _EngineVersion, _ReplicationInstanceIdentifier, _PreferredMaintenanceWindow, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationInstanceMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- * AllowMajorVersionUpgrade [Boolean] <p>Indicates that major version upgrades are allowed. Changing this parameter does not result in an outage and the change is asynchronously applied as soon as possible.</p> <p>Constraints: This parameter must be set to true when specifying a value for the <code>EngineVersion</code> parameter that is a different major version than the replication instance's current version.</p>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- * ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- * VpcSecurityGroupIds [VpcSecurityGroupIdList] <p> Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. </p>
+-- * ApplyImmediately [Boolean] <p>Indicates whether the changes should be applied immediately or during the next maintenance window.</p>
+-- * AutoMinorVersionUpgrade [BooleanOptional] <p> Indicates that minor version upgrades will be applied automatically to the replication instance during the maintenance window. Changing this parameter does not result in an outage except in the following case and the change is asynchronously applied as soon as possible. An outage will result if this parameter is set to <code>true</code> during the maintenance window, and a newer minor version is available, and AWS DMS has enabled auto patching for that engine version. </p>
+-- * AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be allocated for the replication instance.</p>
+-- * EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- * ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p>
+-- * PreferredMaintenanceWindow [String] <p>The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage. Changing this parameter does not result in an outage, except in the following situation, and the change is asynchronously applied as soon as possible. If moving this window to the current time, there must be at least 30 minutes between the current time and end of the window to ensure pending changes are applied.</p> <p>Default: Uses existing setting</p> <p>Format: ddd:hh24:mi-ddd:hh24:mi</p> <p>Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun</p> <p>Constraints: Must be at least 30 minutes</p>
+-- Required key: ReplicationInstanceArn
+-- @return ModifyReplicationInstanceMessage structure as a key-value pair table
+function M.ModifyReplicationInstanceMessage(args)
+	assert(args, "You must provdide an argument table when creating ModifyReplicationInstanceMessage")
 	local t = { 
-		["MultiAZ"] = _MultiAZ,
-		["AllowMajorVersionUpgrade"] = _AllowMajorVersionUpgrade,
-		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
-		["ReplicationInstanceClass"] = _ReplicationInstanceClass,
-		["VpcSecurityGroupIds"] = _VpcSecurityGroupIds,
-		["ApplyImmediately"] = _ApplyImmediately,
-		["AutoMinorVersionUpgrade"] = _AutoMinorVersionUpgrade,
-		["AllocatedStorage"] = _AllocatedStorage,
-		["EngineVersion"] = _EngineVersion,
-		["ReplicationInstanceIdentifier"] = _ReplicationInstanceIdentifier,
-		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
+		["MultiAZ"] = args["MultiAZ"],
+		["AllowMajorVersionUpgrade"] = args["AllowMajorVersionUpgrade"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
+		["ReplicationInstanceClass"] = args["ReplicationInstanceClass"],
+		["VpcSecurityGroupIds"] = args["VpcSecurityGroupIds"],
+		["ApplyImmediately"] = args["ApplyImmediately"],
+		["AutoMinorVersionUpgrade"] = args["AutoMinorVersionUpgrade"],
+		["AllocatedStorage"] = args["AllocatedStorage"],
+		["EngineVersion"] = args["EngineVersion"],
+		["ReplicationInstanceIdentifier"] = args["ReplicationInstanceIdentifier"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
 	asserts.AssertModifyReplicationInstanceMessage(t)
 	return t
@@ -1760,11 +1937,14 @@ end
 
 --- Create a structure of type ModifyReplicationTaskResponse
 -- <p/>
--- @param _ReplicationTask [ReplicationTask] <p>The replication task that was modified.</p>
-function M.ModifyReplicationTaskResponse(_ReplicationTask, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationTaskResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTask [ReplicationTask] <p>The replication task that was modified.</p>
+-- @return ModifyReplicationTaskResponse structure as a key-value pair table
+function M.ModifyReplicationTaskResponse(args)
+	assert(args, "You must provdide an argument table when creating ModifyReplicationTaskResponse")
 	local t = { 
-		["ReplicationTask"] = _ReplicationTask,
+		["ReplicationTask"] = args["ReplicationTask"],
 	}
 	asserts.AssertModifyReplicationTaskResponse(t)
 	return t
@@ -1785,15 +1965,18 @@ end
 
 --- Create a structure of type Subnet
 -- <p/>
--- @param _SubnetStatus [String] <p>The status of the subnet.</p>
--- @param _SubnetIdentifier [String] <p>The subnet identifier.</p>
--- @param _SubnetAvailabilityZone [AvailabilityZone] <p>The Availability Zone of the subnet.</p>
-function M.Subnet(_SubnetStatus, _SubnetIdentifier, _SubnetAvailabilityZone, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Subnet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetStatus [String] <p>The status of the subnet.</p>
+-- * SubnetIdentifier [String] <p>The subnet identifier.</p>
+-- * SubnetAvailabilityZone [AvailabilityZone] <p>The Availability Zone of the subnet.</p>
+-- @return Subnet structure as a key-value pair table
+function M.Subnet(args)
+	assert(args, "You must provdide an argument table when creating Subnet")
 	local t = { 
-		["SubnetStatus"] = _SubnetStatus,
-		["SubnetIdentifier"] = _SubnetIdentifier,
-		["SubnetAvailabilityZone"] = _SubnetAvailabilityZone,
+		["SubnetStatus"] = args["SubnetStatus"],
+		["SubnetIdentifier"] = args["SubnetIdentifier"],
+		["SubnetAvailabilityZone"] = args["SubnetAvailabilityZone"],
 	}
 	asserts.AssertSubnet(t)
 	return t
@@ -1812,11 +1995,14 @@ end
 
 --- Create a structure of type DeleteReplicationTaskResponse
 -- <p/>
--- @param _ReplicationTask [ReplicationTask] <p>The deleted replication task.</p>
-function M.DeleteReplicationTaskResponse(_ReplicationTask, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationTaskResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTask [ReplicationTask] <p>The deleted replication task.</p>
+-- @return DeleteReplicationTaskResponse structure as a key-value pair table
+function M.DeleteReplicationTaskResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteReplicationTaskResponse")
 	local t = { 
-		["ReplicationTask"] = _ReplicationTask,
+		["ReplicationTask"] = args["ReplicationTask"],
 	}
 	asserts.AssertDeleteReplicationTaskResponse(t)
 	return t
@@ -1844,29 +2030,32 @@ end
 
 --- Create a structure of type Certificate
 -- <p>The SSL certificate that can be used to encrypt connections between the endpoints and the replication instance.</p>
--- @param _CertificateArn [String] <p>The Amazon Resource Name (ARN) for the certificate.</p>
--- @param _CertificateCreationDate [TStamp] <p>The date that the certificate was created.</p>
--- @param _CertificatePem [String] <p>The contents of the .pem X.509 certificate file for the certificate.</p>
--- @param _CertificateOwner [String] <p>The owner of the certificate.</p>
--- @param _CertificateWallet [CertificateWallet] <p>The location of the imported Oracle Wallet certificate for use with SSL.</p>
--- @param _ValidToDate [TStamp] <p>The final date that the certificate is valid.</p>
--- @param _KeyLength [IntegerOptional] <p>The key length of the cryptographic algorithm being used.</p>
--- @param _CertificateIdentifier [String] <p>The customer-assigned name of the certificate. Valid characters are A-z and 0-9.</p>
--- @param _SigningAlgorithm [String] <p>The signing algorithm for the certificate.</p>
--- @param _ValidFromDate [TStamp] <p>The beginning date that the certificate is valid.</p>
-function M.Certificate(_CertificateArn, _CertificateCreationDate, _CertificatePem, _CertificateOwner, _CertificateWallet, _ValidToDate, _KeyLength, _CertificateIdentifier, _SigningAlgorithm, _ValidFromDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Certificate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateArn [String] <p>The Amazon Resource Name (ARN) for the certificate.</p>
+-- * CertificateCreationDate [TStamp] <p>The date that the certificate was created.</p>
+-- * CertificatePem [String] <p>The contents of the .pem X.509 certificate file for the certificate.</p>
+-- * CertificateOwner [String] <p>The owner of the certificate.</p>
+-- * CertificateWallet [CertificateWallet] <p>The location of the imported Oracle Wallet certificate for use with SSL.</p>
+-- * ValidToDate [TStamp] <p>The final date that the certificate is valid.</p>
+-- * KeyLength [IntegerOptional] <p>The key length of the cryptographic algorithm being used.</p>
+-- * CertificateIdentifier [String] <p>The customer-assigned name of the certificate. Valid characters are A-z and 0-9.</p>
+-- * SigningAlgorithm [String] <p>The signing algorithm for the certificate.</p>
+-- * ValidFromDate [TStamp] <p>The beginning date that the certificate is valid.</p>
+-- @return Certificate structure as a key-value pair table
+function M.Certificate(args)
+	assert(args, "You must provdide an argument table when creating Certificate")
 	local t = { 
-		["CertificateArn"] = _CertificateArn,
-		["CertificateCreationDate"] = _CertificateCreationDate,
-		["CertificatePem"] = _CertificatePem,
-		["CertificateOwner"] = _CertificateOwner,
-		["CertificateWallet"] = _CertificateWallet,
-		["ValidToDate"] = _ValidToDate,
-		["KeyLength"] = _KeyLength,
-		["CertificateIdentifier"] = _CertificateIdentifier,
-		["SigningAlgorithm"] = _SigningAlgorithm,
-		["ValidFromDate"] = _ValidFromDate,
+		["CertificateArn"] = args["CertificateArn"],
+		["CertificateCreationDate"] = args["CertificateCreationDate"],
+		["CertificatePem"] = args["CertificatePem"],
+		["CertificateOwner"] = args["CertificateOwner"],
+		["CertificateWallet"] = args["CertificateWallet"],
+		["ValidToDate"] = args["ValidToDate"],
+		["KeyLength"] = args["KeyLength"],
+		["CertificateIdentifier"] = args["CertificateIdentifier"],
+		["SigningAlgorithm"] = args["SigningAlgorithm"],
+		["ValidFromDate"] = args["ValidFromDate"],
 	}
 	asserts.AssertCertificate(t)
 	return t
@@ -1886,13 +2075,16 @@ end
 
 --- Create a structure of type DescribeOrderableReplicationInstancesMessage
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
-function M.DescribeOrderableReplicationInstancesMessage(_Marker, _MaxRecords, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeOrderableReplicationInstancesMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- @return DescribeOrderableReplicationInstancesMessage structure as a key-value pair table
+function M.DescribeOrderableReplicationInstancesMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeOrderableReplicationInstancesMessage")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
 	}
 	asserts.AssertDescribeOrderableReplicationInstancesMessage(t)
 	return t
@@ -1914,17 +2106,20 @@ end
 
 --- Create a structure of type DescribeEventSubscriptionsMessage
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param _Filters [FilterList] <p>Filters applied to the action.</p>
--- @param _SubscriptionName [String] <p>The name of the AWS DMS event subscription to be described.</p>
-function M.DescribeEventSubscriptionsMessage(_Marker, _MaxRecords, _Filters, _SubscriptionName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventSubscriptionsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * Filters [FilterList] <p>Filters applied to the action.</p>
+-- * SubscriptionName [String] <p>The name of the AWS DMS event subscription to be described.</p>
+-- @return DescribeEventSubscriptionsMessage structure as a key-value pair table
+function M.DescribeEventSubscriptionsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventSubscriptionsMessage")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
-		["Filters"] = _Filters,
-		["SubscriptionName"] = _SubscriptionName,
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["Filters"] = args["Filters"],
+		["SubscriptionName"] = args["SubscriptionName"],
 	}
 	asserts.AssertDescribeEventSubscriptionsMessage(t)
 	return t
@@ -1944,13 +2139,16 @@ end
 
 --- Create a structure of type DescribeEventsResponse
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _Events [EventList] <p>The events described.</p>
-function M.DescribeEventsResponse(_Marker, _Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * Events [EventList] <p>The events described.</p>
+-- @return DescribeEventsResponse structure as a key-value pair table
+function M.DescribeEventsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["Events"] = _Events,
+		["Marker"] = args["Marker"],
+		["Events"] = args["Events"],
 	}
 	asserts.AssertDescribeEventsResponse(t)
 	return t
@@ -1970,12 +2168,15 @@ end
 
 --- Create a structure of type DeleteReplicationInstanceMessage
 -- <p/>
--- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance to be deleted.</p>
--- Required parameter: ReplicationInstanceArn
-function M.DeleteReplicationInstanceMessage(_ReplicationInstanceArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationInstanceMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance to be deleted.</p>
+-- Required key: ReplicationInstanceArn
+-- @return DeleteReplicationInstanceMessage structure as a key-value pair table
+function M.DeleteReplicationInstanceMessage(args)
+	assert(args, "You must provdide an argument table when creating DeleteReplicationInstanceMessage")
 	local t = { 
-		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
 	}
 	asserts.AssertDeleteReplicationInstanceMessage(t)
 	return t
@@ -1995,12 +2196,15 @@ end
 
 --- Create a structure of type DeleteEndpointMessage
 -- <p/>
--- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- Required parameter: EndpointArn
-function M.DeleteEndpointMessage(_EndpointArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEndpointMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- Required key: EndpointArn
+-- @return DeleteEndpointMessage structure as a key-value pair table
+function M.DeleteEndpointMessage(args)
+	assert(args, "You must provdide an argument table when creating DeleteEndpointMessage")
 	local t = { 
-		["EndpointArn"] = _EndpointArn,
+		["EndpointArn"] = args["EndpointArn"],
 	}
 	asserts.AssertDeleteEndpointMessage(t)
 	return t
@@ -2020,13 +2224,16 @@ end
 
 --- Create a structure of type EventCategoryGroup
 -- <p/>
--- @param _EventCategories [EventCategoriesList] <p> A list of event categories for a <code>SourceType</code> that you want to subscribe to. </p>
--- @param _SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
-function M.EventCategoryGroup(_EventCategories, _SourceType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventCategoryGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventCategories [EventCategoriesList] <p> A list of event categories for a <code>SourceType</code> that you want to subscribe to. </p>
+-- * SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
+-- @return EventCategoryGroup structure as a key-value pair table
+function M.EventCategoryGroup(args)
+	assert(args, "You must provdide an argument table when creating EventCategoryGroup")
 	local t = { 
-		["EventCategories"] = _EventCategories,
-		["SourceType"] = _SourceType,
+		["EventCategories"] = args["EventCategories"],
+		["SourceType"] = args["SourceType"],
 	}
 	asserts.AssertEventCategoryGroup(t)
 	return t
@@ -2047,15 +2254,18 @@ end
 
 --- Create a structure of type SupportedEndpointType
 -- <p/>
--- @param _EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
--- @param _SupportsCDC [Boolean] <p>Indicates if Change Data Capture (CDC) is supported.</p>
--- @param _EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
-function M.SupportedEndpointType(_EngineName, _SupportsCDC, _EndpointType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SupportedEndpointType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- * SupportsCDC [Boolean] <p>Indicates if Change Data Capture (CDC) is supported.</p>
+-- * EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- @return SupportedEndpointType structure as a key-value pair table
+function M.SupportedEndpointType(args)
+	assert(args, "You must provdide an argument table when creating SupportedEndpointType")
 	local t = { 
-		["EngineName"] = _EngineName,
-		["SupportsCDC"] = _SupportsCDC,
-		["EndpointType"] = _EndpointType,
+		["EngineName"] = args["EngineName"],
+		["SupportsCDC"] = args["SupportsCDC"],
+		["EndpointType"] = args["EndpointType"],
 	}
 	asserts.AssertSupportedEndpointType(t)
 	return t
@@ -2074,11 +2284,14 @@ end
 
 --- Create a structure of type DeleteCertificateResponse
 --  
--- @param _Certificate [Certificate] <p>The Secure Sockets Layer (SSL) certificate.</p>
-function M.DeleteCertificateResponse(_Certificate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Certificate [Certificate] <p>The Secure Sockets Layer (SSL) certificate.</p>
+-- @return DeleteCertificateResponse structure as a key-value pair table
+function M.DeleteCertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteCertificateResponse")
 	local t = { 
-		["Certificate"] = _Certificate,
+		["Certificate"] = args["Certificate"],
 	}
 	asserts.AssertDeleteCertificateResponse(t)
 	return t
@@ -2097,11 +2310,14 @@ end
 
 --- Create a structure of type DescribeEventCategoriesResponse
 -- <p/>
--- @param _EventCategoryGroupList [EventCategoryGroupList] <p>A list of event categories.</p>
-function M.DescribeEventCategoriesResponse(_EventCategoryGroupList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventCategoriesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventCategoryGroupList [EventCategoryGroupList] <p>A list of event categories.</p>
+-- @return DescribeEventCategoriesResponse structure as a key-value pair table
+function M.DescribeEventCategoriesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventCategoriesResponse")
 	local t = { 
-		["EventCategoryGroupList"] = _EventCategoryGroupList,
+		["EventCategoryGroupList"] = args["EventCategoryGroupList"],
 	}
 	asserts.AssertDescribeEventCategoriesResponse(t)
 	return t
@@ -2120,11 +2336,14 @@ end
 
 --- Create a structure of type DeleteReplicationInstanceResponse
 -- <p/>
--- @param _ReplicationInstance [ReplicationInstance] <p>The replication instance that was deleted.</p>
-function M.DeleteReplicationInstanceResponse(_ReplicationInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationInstanceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationInstance [ReplicationInstance] <p>The replication instance that was deleted.</p>
+-- @return DeleteReplicationInstanceResponse structure as a key-value pair table
+function M.DeleteReplicationInstanceResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteReplicationInstanceResponse")
 	local t = { 
-		["ReplicationInstance"] = _ReplicationInstance,
+		["ReplicationInstance"] = args["ReplicationInstance"],
 	}
 	asserts.AssertDeleteReplicationInstanceResponse(t)
 	return t
@@ -2144,12 +2363,15 @@ end
 
 --- Create a structure of type ListTagsForResourceMessage
 -- <p/>
--- @param _ResourceArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the AWS DMS resource.</p>
--- Required parameter: ResourceArn
-function M.ListTagsForResourceMessage(_ResourceArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the AWS DMS resource.</p>
+-- Required key: ResourceArn
+-- @return ListTagsForResourceMessage structure as a key-value pair table
+function M.ListTagsForResourceMessage(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceMessage")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
+		["ResourceArn"] = args["ResourceArn"],
 	}
 	asserts.AssertListTagsForResourceMessage(t)
 	return t
@@ -2169,12 +2391,15 @@ end
 
 --- Create a structure of type DeleteReplicationTaskMessage
 -- <p/>
--- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task to be deleted.</p>
--- Required parameter: ReplicationTaskArn
-function M.DeleteReplicationTaskMessage(_ReplicationTaskArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReplicationTaskMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task to be deleted.</p>
+-- Required key: ReplicationTaskArn
+-- @return DeleteReplicationTaskMessage structure as a key-value pair table
+function M.DeleteReplicationTaskMessage(args)
+	assert(args, "You must provdide an argument table when creating DeleteReplicationTaskMessage")
 	local t = { 
-		["ReplicationTaskArn"] = _ReplicationTaskArn,
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 	}
 	asserts.AssertDeleteReplicationTaskMessage(t)
 	return t
@@ -2195,15 +2420,18 @@ end
 
 --- Create a structure of type DescribeEndpointsMessage
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param _Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: endpoint-arn | endpoint-type | endpoint-id | engine-name</p>
-function M.DescribeEndpointsMessage(_Marker, _MaxRecords, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointsMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: endpoint-arn | endpoint-type | endpoint-id | engine-name</p>
+-- @return DescribeEndpointsMessage structure as a key-value pair table
+function M.DescribeEndpointsMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeEndpointsMessage")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
-		["Filters"] = _Filters,
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeEndpointsMessage(t)
 	return t
@@ -2225,15 +2453,18 @@ end
 
 --- Create a structure of type Filter
 -- <p/>
--- @param _Values [FilterValueList] <p>The filter value.</p>
--- @param _Name [String] <p>The name of the filter.</p>
--- Required parameter: Name
--- Required parameter: Values
-function M.Filter(_Values, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Filter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [FilterValueList] <p>The filter value.</p>
+-- * Name [String] <p>The name of the filter.</p>
+-- Required key: Name
+-- Required key: Values
+-- @return Filter structure as a key-value pair table
+function M.Filter(args)
+	assert(args, "You must provdide an argument table when creating Filter")
 	local t = { 
-		["Values"] = _Values,
-		["Name"] = _Name,
+		["Values"] = args["Values"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertFilter(t)
 	return t
@@ -2257,21 +2488,24 @@ end
 
 --- Create a structure of type Connection
 -- <p/>
--- @param _Status [String] <p>The connection status.</p>
--- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- @param _LastFailureMessage [String] <p>The error message when the connection last failed.</p>
--- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param _ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p>
--- @param _EndpointIdentifier [String] <p>The identifier of the endpoint. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
-function M.Connection(_Status, _ReplicationInstanceArn, _LastFailureMessage, _EndpointArn, _ReplicationInstanceIdentifier, _EndpointIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Connection")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The connection status.</p>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- * LastFailureMessage [String] <p>The error message when the connection last failed.</p>
+-- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- * ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p>
+-- * EndpointIdentifier [String] <p>The identifier of the endpoint. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+-- @return Connection structure as a key-value pair table
+function M.Connection(args)
+	assert(args, "You must provdide an argument table when creating Connection")
 	local t = { 
-		["Status"] = _Status,
-		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
-		["LastFailureMessage"] = _LastFailureMessage,
-		["EndpointArn"] = _EndpointArn,
-		["ReplicationInstanceIdentifier"] = _ReplicationInstanceIdentifier,
-		["EndpointIdentifier"] = _EndpointIdentifier,
+		["Status"] = args["Status"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
+		["LastFailureMessage"] = args["LastFailureMessage"],
+		["EndpointArn"] = args["EndpointArn"],
+		["ReplicationInstanceIdentifier"] = args["ReplicationInstanceIdentifier"],
+		["EndpointIdentifier"] = args["EndpointIdentifier"],
 	}
 	asserts.AssertConnection(t)
 	return t
@@ -2291,13 +2525,16 @@ end
 
 --- Create a structure of type DescribeEndpointTypesResponse
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _SupportedEndpointTypes [SupportedEndpointTypeList] <p>The type of endpoints that are supported.</p>
-function M.DescribeEndpointTypesResponse(_Marker, _SupportedEndpointTypes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointTypesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * SupportedEndpointTypes [SupportedEndpointTypeList] <p>The type of endpoints that are supported.</p>
+-- @return DescribeEndpointTypesResponse structure as a key-value pair table
+function M.DescribeEndpointTypesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEndpointTypesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["SupportedEndpointTypes"] = _SupportedEndpointTypes,
+		["Marker"] = args["Marker"],
+		["SupportedEndpointTypes"] = args["SupportedEndpointTypes"],
 	}
 	asserts.AssertDescribeEndpointTypesResponse(t)
 	return t
@@ -2316,11 +2553,14 @@ end
 
 --- Create a structure of type UpgradeDependencyFailureFault
 -- <p>An upgrade dependency is preventing the database migration.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.UpgradeDependencyFailureFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpgradeDependencyFailureFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return UpgradeDependencyFailureFault structure as a key-value pair table
+function M.UpgradeDependencyFailureFault(args)
+	assert(args, "You must provdide an argument table when creating UpgradeDependencyFailureFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUpgradeDependencyFailureFault(t)
 	return t
@@ -2341,15 +2581,18 @@ end
 
 --- Create a structure of type DescribeCertificatesMessage
 --  
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 10</p>
--- @param _Filters [FilterList] <p>Filters applied to the certificate described in the form of key-value pairs.</p>
-function M.DescribeCertificatesMessage(_Marker, _MaxRecords, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificatesMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 10</p>
+-- * Filters [FilterList] <p>Filters applied to the certificate described in the form of key-value pairs.</p>
+-- @return DescribeCertificatesMessage structure as a key-value pair table
+function M.DescribeCertificatesMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeCertificatesMessage")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
-		["Filters"] = _Filters,
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeCertificatesMessage(t)
 	return t
@@ -2371,17 +2614,20 @@ end
 
 --- Create a structure of type ReplicationPendingModifiedValues
 -- <p/>
--- @param _ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- @param _EngineVersion [String] <p>The engine version number of the replication instance.</p>
--- @param _AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
--- @param _MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
-function M.ReplicationPendingModifiedValues(_ReplicationInstanceClass, _EngineVersion, _AllocatedStorage, _MultiAZ, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationPendingModifiedValues")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- * EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- * AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- * MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- @return ReplicationPendingModifiedValues structure as a key-value pair table
+function M.ReplicationPendingModifiedValues(args)
+	assert(args, "You must provdide an argument table when creating ReplicationPendingModifiedValues")
 	local t = { 
-		["ReplicationInstanceClass"] = _ReplicationInstanceClass,
-		["EngineVersion"] = _EngineVersion,
-		["AllocatedStorage"] = _AllocatedStorage,
-		["MultiAZ"] = _MultiAZ,
+		["ReplicationInstanceClass"] = args["ReplicationInstanceClass"],
+		["EngineVersion"] = args["EngineVersion"],
+		["AllocatedStorage"] = args["AllocatedStorage"],
+		["MultiAZ"] = args["MultiAZ"],
 	}
 	asserts.AssertReplicationPendingModifiedValues(t)
 	return t
@@ -2402,15 +2648,18 @@ end
 
 --- Create a structure of type DescribeReplicationTasksMessage
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param _Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-task-arn | replication-task-id | migration-type | endpoint-arn | replication-instance-arn</p>
-function M.DescribeReplicationTasksMessage(_Marker, _MaxRecords, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationTasksMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-task-arn | replication-task-id | migration-type | endpoint-arn | replication-instance-arn</p>
+-- @return DescribeReplicationTasksMessage structure as a key-value pair table
+function M.DescribeReplicationTasksMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeReplicationTasksMessage")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
-		["Filters"] = _Filters,
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeReplicationTasksMessage(t)
 	return t
@@ -2443,37 +2692,40 @@ end
 
 --- Create a structure of type CreateReplicationInstanceMessage
 -- <p/>
--- @param _MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
--- @param _AvailabilityZone [String] <p>The EC2 Availability Zone that the replication instance will be created in.</p> <p>Default: A random, system-chosen Availability Zone in the endpoint's region.</p> <p> Example: <code>us-east-1d</code> </p>
--- @param _PubliclyAccessible [BooleanOptional] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
--- @param _Tags [TagList] <p>Tags to be associated with the replication instance.</p>
--- @param _ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance as specified by the replication instance class.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- @param _VpcSecurityGroupIds [VpcSecurityGroupIdList] <p> Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. </p>
--- @param _AutoMinorVersionUpgrade [BooleanOptional] <p>Indicates that minor engine upgrades will be applied automatically to the replication instance during the maintenance window.</p> <p>Default: <code>true</code> </p>
--- @param _KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
--- @param _AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be initially allocated for the replication instance.</p>
--- @param _EngineVersion [String] <p>The engine version number of the replication instance.</p>
--- @param _ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
--- @param _PreferredMaintenanceWindow [String] <p>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week.</p> <p>Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute window.</p>
--- @param _ReplicationSubnetGroupIdentifier [String] <p>A subnet group to associate with the replication instance.</p>
--- Required parameter: ReplicationInstanceIdentifier
--- Required parameter: ReplicationInstanceClass
-function M.CreateReplicationInstanceMessage(_MultiAZ, _AvailabilityZone, _PubliclyAccessible, _Tags, _ReplicationInstanceClass, _VpcSecurityGroupIds, _AutoMinorVersionUpgrade, _KmsKeyId, _AllocatedStorage, _EngineVersion, _ReplicationInstanceIdentifier, _PreferredMaintenanceWindow, _ReplicationSubnetGroupIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationInstanceMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- * AvailabilityZone [String] <p>The EC2 Availability Zone that the replication instance will be created in.</p> <p>Default: A random, system-chosen Availability Zone in the endpoint's region.</p> <p> Example: <code>us-east-1d</code> </p>
+-- * PubliclyAccessible [BooleanOptional] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
+-- * Tags [TagList] <p>Tags to be associated with the replication instance.</p>
+-- * ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance as specified by the replication instance class.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- * VpcSecurityGroupIds [VpcSecurityGroupIdList] <p> Specifies the VPC security group to be used with the replication instance. The VPC security group must work with the VPC containing the replication instance. </p>
+-- * AutoMinorVersionUpgrade [BooleanOptional] <p>Indicates that minor engine upgrades will be applied automatically to the replication instance during the maintenance window.</p> <p>Default: <code>true</code> </p>
+-- * KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- * AllocatedStorage [IntegerOptional] <p>The amount of storage (in gigabytes) to be initially allocated for the replication instance.</p>
+-- * EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- * ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
+-- * PreferredMaintenanceWindow [String] <p>The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).</p> <p> Format: <code>ddd:hh24:mi-ddd:hh24:mi</code> </p> <p>Default: A 30-minute window selected at random from an 8-hour block of time per region, occurring on a random day of the week.</p> <p>Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun</p> <p>Constraints: Minimum 30-minute window.</p>
+-- * ReplicationSubnetGroupIdentifier [String] <p>A subnet group to associate with the replication instance.</p>
+-- Required key: ReplicationInstanceIdentifier
+-- Required key: ReplicationInstanceClass
+-- @return CreateReplicationInstanceMessage structure as a key-value pair table
+function M.CreateReplicationInstanceMessage(args)
+	assert(args, "You must provdide an argument table when creating CreateReplicationInstanceMessage")
 	local t = { 
-		["MultiAZ"] = _MultiAZ,
-		["AvailabilityZone"] = _AvailabilityZone,
-		["PubliclyAccessible"] = _PubliclyAccessible,
-		["Tags"] = _Tags,
-		["ReplicationInstanceClass"] = _ReplicationInstanceClass,
-		["VpcSecurityGroupIds"] = _VpcSecurityGroupIds,
-		["AutoMinorVersionUpgrade"] = _AutoMinorVersionUpgrade,
-		["KmsKeyId"] = _KmsKeyId,
-		["AllocatedStorage"] = _AllocatedStorage,
-		["EngineVersion"] = _EngineVersion,
-		["ReplicationInstanceIdentifier"] = _ReplicationInstanceIdentifier,
-		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
-		["ReplicationSubnetGroupIdentifier"] = _ReplicationSubnetGroupIdentifier,
+		["MultiAZ"] = args["MultiAZ"],
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["PubliclyAccessible"] = args["PubliclyAccessible"],
+		["Tags"] = args["Tags"],
+		["ReplicationInstanceClass"] = args["ReplicationInstanceClass"],
+		["VpcSecurityGroupIds"] = args["VpcSecurityGroupIds"],
+		["AutoMinorVersionUpgrade"] = args["AutoMinorVersionUpgrade"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["AllocatedStorage"] = args["AllocatedStorage"],
+		["EngineVersion"] = args["EngineVersion"],
+		["ReplicationInstanceIdentifier"] = args["ReplicationInstanceIdentifier"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
+		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
 	asserts.AssertCreateReplicationInstanceMessage(t)
 	return t
@@ -2492,11 +2744,14 @@ end
 
 --- Create a structure of type ModifyEndpointResponse
 -- <p/>
--- @param _Endpoint [Endpoint] <p>The modified endpoint.</p>
-function M.ModifyEndpointResponse(_Endpoint, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEndpointResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Endpoint [Endpoint] <p>The modified endpoint.</p>
+-- @return ModifyEndpointResponse structure as a key-value pair table
+function M.ModifyEndpointResponse(args)
+	assert(args, "You must provdide an argument table when creating ModifyEndpointResponse")
 	local t = { 
-		["Endpoint"] = _Endpoint,
+		["Endpoint"] = args["Endpoint"],
 	}
 	asserts.AssertModifyEndpointResponse(t)
 	return t
@@ -2530,40 +2785,43 @@ end
 
 --- Create a structure of type ModifyEndpointMessage
 -- <p/>
--- @param _Username [String] <p>The user name to be used to login to the endpoint database.</p>
--- @param _CertificateArn [String] <p>The Amazon Resource Name (ARN) of the certificate used for SSL connection.</p>
--- @param _MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
--- @param _S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
--- @param _ServerName [String] <p>The name of the server where the endpoint database resides.</p>
--- @param _EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
--- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param _ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
--- @param _DatabaseName [String] <p>The name of the endpoint database.</p>
--- @param _DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
--- @param _SslMode [DmsSslModeValue] <p>The SSL mode to be used.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
--- @param _EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.</p>
--- @param _Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
--- @param _EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
--- @param _Port [IntegerOptional] <p>The port used by the endpoint database.</p>
--- Required parameter: EndpointArn
-function M.ModifyEndpointMessage(_Username, _CertificateArn, _MongoDbSettings, _S3Settings, _ServerName, _EndpointType, _EndpointArn, _ExtraConnectionAttributes, _DatabaseName, _DynamoDbSettings, _SslMode, _EngineName, _Password, _EndpointIdentifier, _Port, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyEndpointMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [String] <p>The user name to be used to login to the endpoint database.</p>
+-- * CertificateArn [String] <p>The Amazon Resource Name (ARN) of the certificate used for SSL connection.</p>
+-- * MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- * S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- * ServerName [String] <p>The name of the server where the endpoint database resides.</p>
+-- * EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- * ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
+-- * DatabaseName [String] <p>The name of the endpoint database.</p>
+-- * DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
+-- * SslMode [DmsSslModeValue] <p>The SSL mode to be used.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
+-- * EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, DYNAMODB, MONGODB, SYBASE, and SQLSERVER.</p>
+-- * Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
+-- * EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+-- * Port [IntegerOptional] <p>The port used by the endpoint database.</p>
+-- Required key: EndpointArn
+-- @return ModifyEndpointMessage structure as a key-value pair table
+function M.ModifyEndpointMessage(args)
+	assert(args, "You must provdide an argument table when creating ModifyEndpointMessage")
 	local t = { 
-		["Username"] = _Username,
-		["CertificateArn"] = _CertificateArn,
-		["MongoDbSettings"] = _MongoDbSettings,
-		["S3Settings"] = _S3Settings,
-		["ServerName"] = _ServerName,
-		["EndpointType"] = _EndpointType,
-		["EndpointArn"] = _EndpointArn,
-		["ExtraConnectionAttributes"] = _ExtraConnectionAttributes,
-		["DatabaseName"] = _DatabaseName,
-		["DynamoDbSettings"] = _DynamoDbSettings,
-		["SslMode"] = _SslMode,
-		["EngineName"] = _EngineName,
-		["Password"] = _Password,
-		["EndpointIdentifier"] = _EndpointIdentifier,
-		["Port"] = _Port,
+		["Username"] = args["Username"],
+		["CertificateArn"] = args["CertificateArn"],
+		["MongoDbSettings"] = args["MongoDbSettings"],
+		["S3Settings"] = args["S3Settings"],
+		["ServerName"] = args["ServerName"],
+		["EndpointType"] = args["EndpointType"],
+		["EndpointArn"] = args["EndpointArn"],
+		["ExtraConnectionAttributes"] = args["ExtraConnectionAttributes"],
+		["DatabaseName"] = args["DatabaseName"],
+		["DynamoDbSettings"] = args["DynamoDbSettings"],
+		["SslMode"] = args["SslMode"],
+		["EngineName"] = args["EngineName"],
+		["Password"] = args["Password"],
+		["EndpointIdentifier"] = args["EndpointIdentifier"],
+		["Port"] = args["Port"],
 	}
 	asserts.AssertModifyEndpointMessage(t)
 	return t
@@ -2585,15 +2843,18 @@ end
 
 --- Create a structure of type RefreshSchemasMessage
 -- <p/>
--- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- Required parameter: EndpointArn
--- Required parameter: ReplicationInstanceArn
-function M.RefreshSchemasMessage(_EndpointArn, _ReplicationInstanceArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RefreshSchemasMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- Required key: EndpointArn
+-- Required key: ReplicationInstanceArn
+-- @return RefreshSchemasMessage structure as a key-value pair table
+function M.RefreshSchemasMessage(args)
+	assert(args, "You must provdide an argument table when creating RefreshSchemasMessage")
 	local t = { 
-		["EndpointArn"] = _EndpointArn,
-		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
+		["EndpointArn"] = args["EndpointArn"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
 	}
 	asserts.AssertRefreshSchemasMessage(t)
 	return t
@@ -2612,11 +2873,14 @@ end
 
 --- Create a structure of type StopReplicationTaskResponse
 -- <p/>
--- @param _ReplicationTask [ReplicationTask] <p>The replication task stopped.</p>
-function M.StopReplicationTaskResponse(_ReplicationTask, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopReplicationTaskResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTask [ReplicationTask] <p>The replication task stopped.</p>
+-- @return StopReplicationTaskResponse structure as a key-value pair table
+function M.StopReplicationTaskResponse(args)
+	assert(args, "You must provdide an argument table when creating StopReplicationTaskResponse")
 	local t = { 
-		["ReplicationTask"] = _ReplicationTask,
+		["ReplicationTask"] = args["ReplicationTask"],
 	}
 	asserts.AssertStopReplicationTaskResponse(t)
 	return t
@@ -2635,11 +2899,14 @@ end
 
 --- Create a structure of type KMSKeyNotAccessibleFault
 -- <p>AWS DMS cannot access the KMS key.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.KMSKeyNotAccessibleFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KMSKeyNotAccessibleFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return KMSKeyNotAccessibleFault structure as a key-value pair table
+function M.KMSKeyNotAccessibleFault(args)
+	assert(args, "You must provdide an argument table when creating KMSKeyNotAccessibleFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertKMSKeyNotAccessibleFault(t)
 	return t
@@ -2658,11 +2925,14 @@ end
 
 --- Create a structure of type DescribeAccountAttributesResponse
 -- <p/>
--- @param _AccountQuotas [AccountQuotaList] <p>Account quota information.</p>
-function M.DescribeAccountAttributesResponse(_AccountQuotas, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccountQuotas [AccountQuotaList] <p>Account quota information.</p>
+-- @return DescribeAccountAttributesResponse structure as a key-value pair table
+function M.DescribeAccountAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesResponse")
 	local t = { 
-		["AccountQuotas"] = _AccountQuotas,
+		["AccountQuotas"] = args["AccountQuotas"],
 	}
 	asserts.AssertDescribeAccountAttributesResponse(t)
 	return t
@@ -2684,16 +2954,19 @@ end
 
 --- Create a structure of type DescribeSchemasMessage
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- Required parameter: EndpointArn
-function M.DescribeSchemasMessage(_Marker, _MaxRecords, _EndpointArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSchemasMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- Required key: EndpointArn
+-- @return DescribeSchemasMessage structure as a key-value pair table
+function M.DescribeSchemasMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeSchemasMessage")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
-		["EndpointArn"] = _EndpointArn,
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["EndpointArn"] = args["EndpointArn"],
 	}
 	asserts.AssertDescribeSchemasMessage(t)
 	return t
@@ -2712,11 +2985,14 @@ end
 
 --- Create a structure of type ReloadTablesResponse
 --  
--- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task. </p>
-function M.ReloadTablesResponse(_ReplicationTaskArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReloadTablesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task. </p>
+-- @return ReloadTablesResponse structure as a key-value pair table
+function M.ReloadTablesResponse(args)
+	assert(args, "You must provdide an argument table when creating ReloadTablesResponse")
 	local t = { 
-		["ReplicationTaskArn"] = _ReplicationTaskArn,
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 	}
 	asserts.AssertReloadTablesResponse(t)
 	return t
@@ -2735,11 +3011,14 @@ end
 
 --- Create a structure of type SNSNoAuthorizationFault
 -- <p>You are not authorized for the SNS subscription.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.SNSNoAuthorizationFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SNSNoAuthorizationFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return SNSNoAuthorizationFault structure as a key-value pair table
+function M.SNSNoAuthorizationFault(args)
+	assert(args, "You must provdide an argument table when creating SNSNoAuthorizationFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertSNSNoAuthorizationFault(t)
 	return t
@@ -2758,11 +3037,14 @@ end
 
 --- Create a structure of type CreateReplicationInstanceResponse
 -- <p/>
--- @param _ReplicationInstance [ReplicationInstance] <p>The replication instance that was created.</p>
-function M.CreateReplicationInstanceResponse(_ReplicationInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationInstanceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationInstance [ReplicationInstance] <p>The replication instance that was created.</p>
+-- @return CreateReplicationInstanceResponse structure as a key-value pair table
+function M.CreateReplicationInstanceResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateReplicationInstanceResponse")
 	local t = { 
-		["ReplicationInstance"] = _ReplicationInstance,
+		["ReplicationInstance"] = args["ReplicationInstance"],
 	}
 	asserts.AssertCreateReplicationInstanceResponse(t)
 	return t
@@ -2781,11 +3063,14 @@ end
 
 --- Create a structure of type ListTagsForResourceResponse
 -- <p/>
--- @param _TagList [TagList] <p>A list of tags for the resource.</p>
-function M.ListTagsForResourceResponse(_TagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagList [TagList] <p>A list of tags for the resource.</p>
+-- @return ListTagsForResourceResponse structure as a key-value pair table
+function M.ListTagsForResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceResponse")
 	local t = { 
-		["TagList"] = _TagList,
+		["TagList"] = args["TagList"],
 	}
 	asserts.AssertListTagsForResourceResponse(t)
 	return t
@@ -2805,12 +3090,15 @@ end
 
 --- Create a structure of type DeleteEventSubscriptionMessage
 -- <p/>
--- @param _SubscriptionName [String] <p>The name of the DMS event notification subscription to be deleted.</p>
--- Required parameter: SubscriptionName
-function M.DeleteEventSubscriptionMessage(_SubscriptionName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEventSubscriptionMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubscriptionName [String] <p>The name of the DMS event notification subscription to be deleted.</p>
+-- Required key: SubscriptionName
+-- @return DeleteEventSubscriptionMessage structure as a key-value pair table
+function M.DeleteEventSubscriptionMessage(args)
+	assert(args, "You must provdide an argument table when creating DeleteEventSubscriptionMessage")
 	local t = { 
-		["SubscriptionName"] = _SubscriptionName,
+		["SubscriptionName"] = args["SubscriptionName"],
 	}
 	asserts.AssertDeleteEventSubscriptionMessage(t)
 	return t
@@ -2829,11 +3117,14 @@ end
 
 --- Create a structure of type SNSInvalidTopicFault
 -- <p>The SNS topic is invalid.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.SNSInvalidTopicFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SNSInvalidTopicFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return SNSInvalidTopicFault structure as a key-value pair table
+function M.SNSInvalidTopicFault(args)
+	assert(args, "You must provdide an argument table when creating SNSInvalidTopicFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertSNSInvalidTopicFault(t)
 	return t
@@ -2865,37 +3156,40 @@ end
 
 --- Create a structure of type ReplicationTask
 -- <p/>
--- @param _SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param _ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
--- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- @param _TableMappings [String] <p>Table mappings specified in the task.</p>
--- @param _ReplicationTaskStartDate [TStamp] <p>The date the replication task is scheduled to start.</p>
--- @param _ReplicationTaskStats [ReplicationTaskStats] <p>The statistics for the task, including elapsed time, tables loaded, and table errors.</p>
--- @param _Status [String] <p>The status of the replication task.</p>
--- @param _ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
--- @param _LastFailureMessage [String] <p>The last error (failure) message generated for the replication instance.</p>
--- @param _StopReason [String] <p>The reason the replication task was stopped.</p>
--- @param _ReplicationTaskCreationDate [TStamp] <p>The date the replication task was created.</p>
--- @param _MigrationType [MigrationTypeValue] <p>The type of migration.</p>
--- @param _TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param _ReplicationTaskSettings [String] <p>The settings for the replication task.</p>
-function M.ReplicationTask(_SourceEndpointArn, _ReplicationTaskIdentifier, _ReplicationInstanceArn, _TableMappings, _ReplicationTaskStartDate, _ReplicationTaskStats, _Status, _ReplicationTaskArn, _LastFailureMessage, _StopReason, _ReplicationTaskCreationDate, _MigrationType, _TargetEndpointArn, _ReplicationTaskSettings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationTask")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- * ReplicationTaskIdentifier [String] <p>The replication task identifier.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 255 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- * TableMappings [String] <p>Table mappings specified in the task.</p>
+-- * ReplicationTaskStartDate [TStamp] <p>The date the replication task is scheduled to start.</p>
+-- * ReplicationTaskStats [ReplicationTaskStats] <p>The statistics for the task, including elapsed time, tables loaded, and table errors.</p>
+-- * Status [String] <p>The status of the replication task.</p>
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task.</p>
+-- * LastFailureMessage [String] <p>The last error (failure) message generated for the replication instance.</p>
+-- * StopReason [String] <p>The reason the replication task was stopped.</p>
+-- * ReplicationTaskCreationDate [TStamp] <p>The date the replication task was created.</p>
+-- * MigrationType [MigrationTypeValue] <p>The type of migration.</p>
+-- * TargetEndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- * ReplicationTaskSettings [String] <p>The settings for the replication task.</p>
+-- @return ReplicationTask structure as a key-value pair table
+function M.ReplicationTask(args)
+	assert(args, "You must provdide an argument table when creating ReplicationTask")
 	local t = { 
-		["SourceEndpointArn"] = _SourceEndpointArn,
-		["ReplicationTaskIdentifier"] = _ReplicationTaskIdentifier,
-		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
-		["TableMappings"] = _TableMappings,
-		["ReplicationTaskStartDate"] = _ReplicationTaskStartDate,
-		["ReplicationTaskStats"] = _ReplicationTaskStats,
-		["Status"] = _Status,
-		["ReplicationTaskArn"] = _ReplicationTaskArn,
-		["LastFailureMessage"] = _LastFailureMessage,
-		["StopReason"] = _StopReason,
-		["ReplicationTaskCreationDate"] = _ReplicationTaskCreationDate,
-		["MigrationType"] = _MigrationType,
-		["TargetEndpointArn"] = _TargetEndpointArn,
-		["ReplicationTaskSettings"] = _ReplicationTaskSettings,
+		["SourceEndpointArn"] = args["SourceEndpointArn"],
+		["ReplicationTaskIdentifier"] = args["ReplicationTaskIdentifier"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
+		["TableMappings"] = args["TableMappings"],
+		["ReplicationTaskStartDate"] = args["ReplicationTaskStartDate"],
+		["ReplicationTaskStats"] = args["ReplicationTaskStats"],
+		["Status"] = args["Status"],
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
+		["LastFailureMessage"] = args["LastFailureMessage"],
+		["StopReason"] = args["StopReason"],
+		["ReplicationTaskCreationDate"] = args["ReplicationTaskCreationDate"],
+		["MigrationType"] = args["MigrationType"],
+		["TargetEndpointArn"] = args["TargetEndpointArn"],
+		["ReplicationTaskSettings"] = args["ReplicationTaskSettings"],
 	}
 	asserts.AssertReplicationTask(t)
 	return t
@@ -2930,43 +3224,46 @@ end
 
 --- Create a structure of type Endpoint
 -- <p/>
--- @param _Username [String] <p>The user name used to connect to the endpoint.</p>
--- @param _Status [String] <p>The status of the endpoint.</p>
--- @param _MongoDbSettings [MongoDbSettings] <p>The settings for the MongoDB source endpoint. For more information, see the <code>MongoDbSettings</code> structure.</p>
--- @param _S3Settings [S3Settings] <p>The settings for the S3 target endpoint. For more information, see the <code>S3Settings</code> structure.</p>
--- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param _ServerName [String] <p>The name of the server at the endpoint.</p>
--- @param _CertificateArn [String] <p>The Amazon Resource Name (ARN) used for SSL connection to the endpoint.</p>
--- @param _EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
--- @param _ExternalId [String] <p> Value returned by a call to CreateEndpoint that can be used for cross-account validation. Use it on a subsequent call to CreateEndpoint to create the endpoint with a cross-account. </p>
--- @param _KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
--- @param _ExtraConnectionAttributes [String] <p>Additional connection attributes used to connect to the endpoint.</p>
--- @param _DatabaseName [String] <p>The name of the database at the endpoint.</p>
--- @param _DynamoDbSettings [DynamoDbSettings] <p>The settings for the target DynamoDB database. For more information, see the <code>DynamoDBSettings</code> structure.</p>
--- @param _SslMode [DmsSslModeValue] <p>The SSL mode used to connect to the endpoint.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
--- @param _EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
--- @param _EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
--- @param _Port [IntegerOptional] <p>The port value used to access the endpoint.</p>
-function M.Endpoint(_Username, _Status, _MongoDbSettings, _S3Settings, _EndpointArn, _ServerName, _CertificateArn, _EndpointType, _ExternalId, _KmsKeyId, _ExtraConnectionAttributes, _DatabaseName, _DynamoDbSettings, _SslMode, _EngineName, _EndpointIdentifier, _Port, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Endpoint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [String] <p>The user name used to connect to the endpoint.</p>
+-- * Status [String] <p>The status of the endpoint.</p>
+-- * MongoDbSettings [MongoDbSettings] <p>The settings for the MongoDB source endpoint. For more information, see the <code>MongoDbSettings</code> structure.</p>
+-- * S3Settings [S3Settings] <p>The settings for the S3 target endpoint. For more information, see the <code>S3Settings</code> structure.</p>
+-- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- * ServerName [String] <p>The name of the server at the endpoint.</p>
+-- * CertificateArn [String] <p>The Amazon Resource Name (ARN) used for SSL connection to the endpoint.</p>
+-- * EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- * ExternalId [String] <p> Value returned by a call to CreateEndpoint that can be used for cross-account validation. Use it on a subsequent call to CreateEndpoint to create the endpoint with a cross-account. </p>
+-- * KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- * ExtraConnectionAttributes [String] <p>Additional connection attributes used to connect to the endpoint.</p>
+-- * DatabaseName [String] <p>The name of the database at the endpoint.</p>
+-- * DynamoDbSettings [DynamoDbSettings] <p>The settings for the target DynamoDB database. For more information, see the <code>DynamoDBSettings</code> structure.</p>
+-- * SslMode [DmsSslModeValue] <p>The SSL mode used to connect to the endpoint.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
+-- * EngineName [String] <p>The database engine name. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- * EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+-- * Port [IntegerOptional] <p>The port value used to access the endpoint.</p>
+-- @return Endpoint structure as a key-value pair table
+function M.Endpoint(args)
+	assert(args, "You must provdide an argument table when creating Endpoint")
 	local t = { 
-		["Username"] = _Username,
-		["Status"] = _Status,
-		["MongoDbSettings"] = _MongoDbSettings,
-		["S3Settings"] = _S3Settings,
-		["EndpointArn"] = _EndpointArn,
-		["ServerName"] = _ServerName,
-		["CertificateArn"] = _CertificateArn,
-		["EndpointType"] = _EndpointType,
-		["ExternalId"] = _ExternalId,
-		["KmsKeyId"] = _KmsKeyId,
-		["ExtraConnectionAttributes"] = _ExtraConnectionAttributes,
-		["DatabaseName"] = _DatabaseName,
-		["DynamoDbSettings"] = _DynamoDbSettings,
-		["SslMode"] = _SslMode,
-		["EngineName"] = _EngineName,
-		["EndpointIdentifier"] = _EndpointIdentifier,
-		["Port"] = _Port,
+		["Username"] = args["Username"],
+		["Status"] = args["Status"],
+		["MongoDbSettings"] = args["MongoDbSettings"],
+		["S3Settings"] = args["S3Settings"],
+		["EndpointArn"] = args["EndpointArn"],
+		["ServerName"] = args["ServerName"],
+		["CertificateArn"] = args["CertificateArn"],
+		["EndpointType"] = args["EndpointType"],
+		["ExternalId"] = args["ExternalId"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["ExtraConnectionAttributes"] = args["ExtraConnectionAttributes"],
+		["DatabaseName"] = args["DatabaseName"],
+		["DynamoDbSettings"] = args["DynamoDbSettings"],
+		["SslMode"] = args["SslMode"],
+		["EngineName"] = args["EngineName"],
+		["EndpointIdentifier"] = args["EndpointIdentifier"],
+		["Port"] = args["Port"],
 	}
 	asserts.AssertEndpoint(t)
 	return t
@@ -2985,11 +3282,14 @@ end
 
 --- Create a structure of type ImportCertificateResponse
 --  
--- @param _Certificate [Certificate] <p>The certificate to be uploaded.</p>
-function M.ImportCertificateResponse(_Certificate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImportCertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Certificate [Certificate] <p>The certificate to be uploaded.</p>
+-- @return ImportCertificateResponse structure as a key-value pair table
+function M.ImportCertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating ImportCertificateResponse")
 	local t = { 
-		["Certificate"] = _Certificate,
+		["Certificate"] = args["Certificate"],
 	}
 	asserts.AssertImportCertificateResponse(t)
 	return t
@@ -3026,44 +3326,47 @@ end
 
 --- Create a structure of type CreateEndpointMessage
 -- <p/>
--- @param _Username [String] <p>The user name to be used to login to the endpoint database.</p>
--- @param _CertificateArn [String] <p>The Amazon Resource Number (ARN) for the certificate.</p>
--- @param _MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
--- @param _S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
--- @param _Tags [TagList] <p>Tags to be added to the endpoint.</p>
--- @param _ServerName [String] <p>The name of the server where the endpoint database resides.</p>
--- @param _EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
--- @param _KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
--- @param _ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
--- @param _DatabaseName [String] <p>The name of the endpoint database.</p>
--- @param _DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
--- @param _SslMode [DmsSslModeValue] <p>The SSL mode to use for the SSL connection.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
--- @param _EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
--- @param _Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
--- @param _EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
--- @param _Port [IntegerOptional] <p>The port used by the endpoint database.</p>
--- Required parameter: EndpointIdentifier
--- Required parameter: EndpointType
--- Required parameter: EngineName
-function M.CreateEndpointMessage(_Username, _CertificateArn, _MongoDbSettings, _S3Settings, _Tags, _ServerName, _EndpointType, _KmsKeyId, _ExtraConnectionAttributes, _DatabaseName, _DynamoDbSettings, _SslMode, _EngineName, _Password, _EndpointIdentifier, _Port, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateEndpointMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [String] <p>The user name to be used to login to the endpoint database.</p>
+-- * CertificateArn [String] <p>The Amazon Resource Number (ARN) for the certificate.</p>
+-- * MongoDbSettings [MongoDbSettings] <p>Settings in JSON format for the source MongoDB endpoint. For more information about the available settings, see the <b>Configuration Properties When Using MongoDB as a Source for AWS Database Migration Service</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- * S3Settings [S3Settings] <p>Settings in JSON format for the target S3 endpoint. For more information about the available settings, see the <b>Extra Connection Attributes</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html"> Using Amazon S3 as a Target for AWS Database Migration Service</a>. </p>
+-- * Tags [TagList] <p>Tags to be added to the endpoint.</p>
+-- * ServerName [String] <p>The name of the server where the endpoint database resides.</p>
+-- * EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
+-- * KmsKeyId [String] <p>The KMS key identifier that will be used to encrypt the connection parameters. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- * ExtraConnectionAttributes [String] <p>Additional attributes associated with the connection.</p>
+-- * DatabaseName [String] <p>The name of the endpoint database.</p>
+-- * DynamoDbSettings [DynamoDbSettings] <p>Settings in JSON format for the target Amazon DynamoDB endpoint. For more information about the available settings, see the <b>Using Object Mapping to Migrate Data to DynamoDB</b> section at <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html"> Using an Amazon DynamoDB Database as a Target for AWS Database Migration Service</a>. </p>
+-- * SslMode [DmsSslModeValue] <p>The SSL mode to use for the SSL connection.</p> <p>SSL mode can be one of four values: none, require, verify-ca, verify-full. </p> <p>The default value is none.</p>
+-- * EngineName [String] <p>The type of engine for the endpoint. Valid values, depending on the EndPointType, include MYSQL, ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, S3, SYBASE, DYNAMODB, MONGODB, and SQLSERVER.</p>
+-- * Password [SecretString] <p>The password to be used to login to the endpoint database.</p>
+-- * EndpointIdentifier [String] <p>The database endpoint identifier. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
+-- * Port [IntegerOptional] <p>The port used by the endpoint database.</p>
+-- Required key: EndpointIdentifier
+-- Required key: EndpointType
+-- Required key: EngineName
+-- @return CreateEndpointMessage structure as a key-value pair table
+function M.CreateEndpointMessage(args)
+	assert(args, "You must provdide an argument table when creating CreateEndpointMessage")
 	local t = { 
-		["Username"] = _Username,
-		["CertificateArn"] = _CertificateArn,
-		["MongoDbSettings"] = _MongoDbSettings,
-		["S3Settings"] = _S3Settings,
-		["Tags"] = _Tags,
-		["ServerName"] = _ServerName,
-		["EndpointType"] = _EndpointType,
-		["KmsKeyId"] = _KmsKeyId,
-		["ExtraConnectionAttributes"] = _ExtraConnectionAttributes,
-		["DatabaseName"] = _DatabaseName,
-		["DynamoDbSettings"] = _DynamoDbSettings,
-		["SslMode"] = _SslMode,
-		["EngineName"] = _EngineName,
-		["Password"] = _Password,
-		["EndpointIdentifier"] = _EndpointIdentifier,
-		["Port"] = _Port,
+		["Username"] = args["Username"],
+		["CertificateArn"] = args["CertificateArn"],
+		["MongoDbSettings"] = args["MongoDbSettings"],
+		["S3Settings"] = args["S3Settings"],
+		["Tags"] = args["Tags"],
+		["ServerName"] = args["ServerName"],
+		["EndpointType"] = args["EndpointType"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["ExtraConnectionAttributes"] = args["ExtraConnectionAttributes"],
+		["DatabaseName"] = args["DatabaseName"],
+		["DynamoDbSettings"] = args["DynamoDbSettings"],
+		["SslMode"] = args["SslMode"],
+		["EngineName"] = args["EngineName"],
+		["Password"] = args["Password"],
+		["EndpointIdentifier"] = args["EndpointIdentifier"],
+		["Port"] = args["Port"],
 	}
 	asserts.AssertCreateEndpointMessage(t)
 	return t
@@ -3085,15 +3388,18 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceMessage
 -- <p/>
--- @param _ResourceArn [String] <p>&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.</p>
--- @param _TagKeys [KeyList] <p>The tag key (name) of the tag to be removed.</p>
--- Required parameter: ResourceArn
--- Required parameter: TagKeys
-function M.RemoveTagsFromResourceMessage(_ResourceArn, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [String] <p>&gt;The Amazon Resource Name (ARN) of the AWS DMS resource the tag is to be removed from.</p>
+-- * TagKeys [KeyList] <p>The tag key (name) of the tag to be removed.</p>
+-- Required key: ResourceArn
+-- Required key: TagKeys
+-- @return RemoveTagsFromResourceMessage structure as a key-value pair table
+function M.RemoveTagsFromResourceMessage(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceMessage")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["TagKeys"] = _TagKeys,
+		["ResourceArn"] = args["ResourceArn"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertRemoveTagsFromResourceMessage(t)
 	return t
@@ -3118,23 +3424,26 @@ end
 
 --- Create a structure of type OrderableReplicationInstance
 -- <p/>
--- @param _StorageType [String] <p>The type of storage used by the replication instance.</p>
--- @param _ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- @param _EngineVersion [String] <p>The version of the replication engine.</p>
--- @param _IncludedAllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
--- @param _DefaultAllocatedStorage [Integer] <p>The default amount of storage (in gigabytes) that is allocated for the replication instance.</p>
--- @param _MinAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
--- @param _MaxAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
-function M.OrderableReplicationInstance(_StorageType, _ReplicationInstanceClass, _EngineVersion, _IncludedAllocatedStorage, _DefaultAllocatedStorage, _MinAllocatedStorage, _MaxAllocatedStorage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OrderableReplicationInstance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StorageType [String] <p>The type of storage used by the replication instance.</p>
+-- * ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- * EngineVersion [String] <p>The version of the replication engine.</p>
+-- * IncludedAllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- * DefaultAllocatedStorage [Integer] <p>The default amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- * MinAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
+-- * MaxAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
+-- @return OrderableReplicationInstance structure as a key-value pair table
+function M.OrderableReplicationInstance(args)
+	assert(args, "You must provdide an argument table when creating OrderableReplicationInstance")
 	local t = { 
-		["StorageType"] = _StorageType,
-		["ReplicationInstanceClass"] = _ReplicationInstanceClass,
-		["EngineVersion"] = _EngineVersion,
-		["IncludedAllocatedStorage"] = _IncludedAllocatedStorage,
-		["DefaultAllocatedStorage"] = _DefaultAllocatedStorage,
-		["MinAllocatedStorage"] = _MinAllocatedStorage,
-		["MaxAllocatedStorage"] = _MaxAllocatedStorage,
+		["StorageType"] = args["StorageType"],
+		["ReplicationInstanceClass"] = args["ReplicationInstanceClass"],
+		["EngineVersion"] = args["EngineVersion"],
+		["IncludedAllocatedStorage"] = args["IncludedAllocatedStorage"],
+		["DefaultAllocatedStorage"] = args["DefaultAllocatedStorage"],
+		["MinAllocatedStorage"] = args["MinAllocatedStorage"],
+		["MaxAllocatedStorage"] = args["MaxAllocatedStorage"],
 	}
 	asserts.AssertOrderableReplicationInstance(t)
 	return t
@@ -3173,51 +3482,54 @@ end
 
 --- Create a structure of type ReplicationInstance
 -- <p/>
--- @param _MultiAZ [Boolean] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
--- @param _AvailabilityZone [String] <p>The Availability Zone for the instance.</p>
--- @param _ReplicationInstancePrivateIpAddress [String] <p>The private IP address of the replication instance.</p>
--- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
--- @param _ReplicationInstancePrivateIpAddresses [ReplicationInstancePrivateIpAddressList] <p>The private IP address of the replication instance.</p>
--- @param _ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
--- @param _ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The subnet group for the replication instance.</p>
--- @param _AutoMinorVersionUpgrade [Boolean] <p>Boolean value indicating if minor version upgrades will be automatically applied to the instance.</p>
--- @param _ReplicationInstanceStatus [String] <p>The status of the replication instance.</p>
--- @param _VpcSecurityGroups [VpcSecurityGroupMembershipList] <p>The VPC security group for the instance.</p>
--- @param _KmsKeyId [String] <p>The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
--- @param _InstanceCreateTime [TStamp] <p>The time the replication instance was created.</p>
--- @param _ReplicationInstancePublicIpAddress [String] <p>The public IP address of the replication instance.</p>
--- @param _AllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
--- @param _EngineVersion [String] <p>The engine version number of the replication instance.</p>
--- @param _ReplicationInstancePublicIpAddresses [ReplicationInstancePublicIpAddressList] <p>The public IP address of the replication instance.</p>
--- @param _SecondaryAvailabilityZone [String] <p>The availability zone of the standby replication instance in a Multi-AZ deployment.</p>
--- @param _ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
--- @param _PubliclyAccessible [Boolean] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
--- @param _PreferredMaintenanceWindow [String] <p>The maintenance window times for the replication instance.</p>
--- @param _PendingModifiedValues [ReplicationPendingModifiedValues] <p>The pending modification values.</p>
-function M.ReplicationInstance(_MultiAZ, _AvailabilityZone, _ReplicationInstancePrivateIpAddress, _ReplicationInstanceArn, _ReplicationInstancePrivateIpAddresses, _ReplicationInstanceClass, _ReplicationSubnetGroup, _AutoMinorVersionUpgrade, _ReplicationInstanceStatus, _VpcSecurityGroups, _KmsKeyId, _InstanceCreateTime, _ReplicationInstancePublicIpAddress, _AllocatedStorage, _EngineVersion, _ReplicationInstancePublicIpAddresses, _SecondaryAvailabilityZone, _ReplicationInstanceIdentifier, _PubliclyAccessible, _PreferredMaintenanceWindow, _PendingModifiedValues, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationInstance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MultiAZ [Boolean] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
+-- * AvailabilityZone [String] <p>The Availability Zone for the instance.</p>
+-- * ReplicationInstancePrivateIpAddress [String] <p>The private IP address of the replication instance.</p>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- * ReplicationInstancePrivateIpAddresses [ReplicationInstancePrivateIpAddressList] <p>The private IP address of the replication instance.</p>
+-- * ReplicationInstanceClass [String] <p>The compute and memory capacity of the replication instance.</p> <p> Valid Values: <code>dms.t2.micro | dms.t2.small | dms.t2.medium | dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge | dms.c4.4xlarge </code> </p>
+-- * ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The subnet group for the replication instance.</p>
+-- * AutoMinorVersionUpgrade [Boolean] <p>Boolean value indicating if minor version upgrades will be automatically applied to the instance.</p>
+-- * ReplicationInstanceStatus [String] <p>The status of the replication instance.</p>
+-- * VpcSecurityGroups [VpcSecurityGroupMembershipList] <p>The VPC security group for the instance.</p>
+-- * KmsKeyId [String] <p>The KMS key identifier that is used to encrypt the content on the replication instance. If you do not specify a value for the KmsKeyId parameter, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.</p>
+-- * InstanceCreateTime [TStamp] <p>The time the replication instance was created.</p>
+-- * ReplicationInstancePublicIpAddress [String] <p>The public IP address of the replication instance.</p>
+-- * AllocatedStorage [Integer] <p>The amount of storage (in gigabytes) that is allocated for the replication instance.</p>
+-- * EngineVersion [String] <p>The engine version number of the replication instance.</p>
+-- * ReplicationInstancePublicIpAddresses [ReplicationInstancePublicIpAddressList] <p>The public IP address of the replication instance.</p>
+-- * SecondaryAvailabilityZone [String] <p>The availability zone of the standby replication instance in a Multi-AZ deployment.</p>
+-- * ReplicationInstanceIdentifier [String] <p>The replication instance identifier. This parameter is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First character must be a letter.</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens.</p> </li> </ul> <p>Example: <code>myrepinstance</code> </p>
+-- * PubliclyAccessible [Boolean] <p> Specifies the accessibility options for the replication instance. A value of <code>true</code> represents an instance with a public IP address. A value of <code>false</code> represents an instance with a private IP address. The default value is <code>true</code>. </p>
+-- * PreferredMaintenanceWindow [String] <p>The maintenance window times for the replication instance.</p>
+-- * PendingModifiedValues [ReplicationPendingModifiedValues] <p>The pending modification values.</p>
+-- @return ReplicationInstance structure as a key-value pair table
+function M.ReplicationInstance(args)
+	assert(args, "You must provdide an argument table when creating ReplicationInstance")
 	local t = { 
-		["MultiAZ"] = _MultiAZ,
-		["AvailabilityZone"] = _AvailabilityZone,
-		["ReplicationInstancePrivateIpAddress"] = _ReplicationInstancePrivateIpAddress,
-		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
-		["ReplicationInstancePrivateIpAddresses"] = _ReplicationInstancePrivateIpAddresses,
-		["ReplicationInstanceClass"] = _ReplicationInstanceClass,
-		["ReplicationSubnetGroup"] = _ReplicationSubnetGroup,
-		["AutoMinorVersionUpgrade"] = _AutoMinorVersionUpgrade,
-		["ReplicationInstanceStatus"] = _ReplicationInstanceStatus,
-		["VpcSecurityGroups"] = _VpcSecurityGroups,
-		["KmsKeyId"] = _KmsKeyId,
-		["InstanceCreateTime"] = _InstanceCreateTime,
-		["ReplicationInstancePublicIpAddress"] = _ReplicationInstancePublicIpAddress,
-		["AllocatedStorage"] = _AllocatedStorage,
-		["EngineVersion"] = _EngineVersion,
-		["ReplicationInstancePublicIpAddresses"] = _ReplicationInstancePublicIpAddresses,
-		["SecondaryAvailabilityZone"] = _SecondaryAvailabilityZone,
-		["ReplicationInstanceIdentifier"] = _ReplicationInstanceIdentifier,
-		["PubliclyAccessible"] = _PubliclyAccessible,
-		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
-		["PendingModifiedValues"] = _PendingModifiedValues,
+		["MultiAZ"] = args["MultiAZ"],
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["ReplicationInstancePrivateIpAddress"] = args["ReplicationInstancePrivateIpAddress"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
+		["ReplicationInstancePrivateIpAddresses"] = args["ReplicationInstancePrivateIpAddresses"],
+		["ReplicationInstanceClass"] = args["ReplicationInstanceClass"],
+		["ReplicationSubnetGroup"] = args["ReplicationSubnetGroup"],
+		["AutoMinorVersionUpgrade"] = args["AutoMinorVersionUpgrade"],
+		["ReplicationInstanceStatus"] = args["ReplicationInstanceStatus"],
+		["VpcSecurityGroups"] = args["VpcSecurityGroups"],
+		["KmsKeyId"] = args["KmsKeyId"],
+		["InstanceCreateTime"] = args["InstanceCreateTime"],
+		["ReplicationInstancePublicIpAddress"] = args["ReplicationInstancePublicIpAddress"],
+		["AllocatedStorage"] = args["AllocatedStorage"],
+		["EngineVersion"] = args["EngineVersion"],
+		["ReplicationInstancePublicIpAddresses"] = args["ReplicationInstancePublicIpAddresses"],
+		["SecondaryAvailabilityZone"] = args["SecondaryAvailabilityZone"],
+		["ReplicationInstanceIdentifier"] = args["ReplicationInstanceIdentifier"],
+		["PubliclyAccessible"] = args["PubliclyAccessible"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
+		["PendingModifiedValues"] = args["PendingModifiedValues"],
 	}
 	asserts.AssertReplicationInstance(t)
 	return t
@@ -3235,8 +3547,11 @@ end
 
 --- Create a structure of type AddTagsToResourceResponse
 -- <p/>
-function M.AddTagsToResourceResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AddTagsToResourceResponse structure as a key-value pair table
+function M.AddTagsToResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToResourceResponse")
 	local t = { 
 	}
 	asserts.AssertAddTagsToResourceResponse(t)
@@ -3256,11 +3571,14 @@ end
 
 --- Create a structure of type ResourceAlreadyExistsFault
 -- <p>The resource you are attempting to create already exists.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.ResourceAlreadyExistsFault(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsFault")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return ResourceAlreadyExistsFault structure as a key-value pair table
+function M.ResourceAlreadyExistsFault(args)
+	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsFault")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceAlreadyExistsFault(t)
 	return t
@@ -3279,11 +3597,14 @@ end
 
 --- Create a structure of type ReplicationSubnetGroupDoesNotCoverEnoughAZs
 -- <p>The replication subnet group does not cover enough Availability Zones (AZs). Edit the replication subnet group and add more AZs.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.ReplicationSubnetGroupDoesNotCoverEnoughAZs(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationSubnetGroupDoesNotCoverEnoughAZs")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return ReplicationSubnetGroupDoesNotCoverEnoughAZs structure as a key-value pair table
+function M.ReplicationSubnetGroupDoesNotCoverEnoughAZs(args)
+	assert(args, "You must provdide an argument table when creating ReplicationSubnetGroupDoesNotCoverEnoughAZs")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertReplicationSubnetGroupDoesNotCoverEnoughAZs(t)
 	return t
@@ -3303,13 +3624,16 @@ end
 
 --- Create a structure of type DescribeReplicationTasksResponse
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _ReplicationTasks [ReplicationTaskList] <p>A description of the replication tasks.</p>
-function M.DescribeReplicationTasksResponse(_Marker, _ReplicationTasks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeReplicationTasksResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * ReplicationTasks [ReplicationTaskList] <p>A description of the replication tasks.</p>
+-- @return DescribeReplicationTasksResponse structure as a key-value pair table
+function M.DescribeReplicationTasksResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeReplicationTasksResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["ReplicationTasks"] = _ReplicationTasks,
+		["Marker"] = args["Marker"],
+		["ReplicationTasks"] = args["ReplicationTasks"],
 	}
 	asserts.AssertDescribeReplicationTasksResponse(t)
 	return t
@@ -3332,18 +3656,21 @@ end
 
 --- Create a structure of type ImportCertificateMessage
 --  
--- @param _CertificateIdentifier [String] <p>The customer-assigned name of the certificate. Valid characters are A-z and 0-9.</p>
--- @param _Tags [TagList] <p>The tags associated with the certificate.</p>
--- @param _CertificatePem [String] <p>The contents of the .pem X.509 certificate file for the certificate.</p>
--- @param _CertificateWallet [CertificateWallet] <p>The location of the imported Oracle Wallet certificate for use with SSL.</p>
--- Required parameter: CertificateIdentifier
-function M.ImportCertificateMessage(_CertificateIdentifier, _Tags, _CertificatePem, _CertificateWallet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImportCertificateMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateIdentifier [String] <p>The customer-assigned name of the certificate. Valid characters are A-z and 0-9.</p>
+-- * Tags [TagList] <p>The tags associated with the certificate.</p>
+-- * CertificatePem [String] <p>The contents of the .pem X.509 certificate file for the certificate.</p>
+-- * CertificateWallet [CertificateWallet] <p>The location of the imported Oracle Wallet certificate for use with SSL.</p>
+-- Required key: CertificateIdentifier
+-- @return ImportCertificateMessage structure as a key-value pair table
+function M.ImportCertificateMessage(args)
+	assert(args, "You must provdide an argument table when creating ImportCertificateMessage")
 	local t = { 
-		["CertificateIdentifier"] = _CertificateIdentifier,
-		["Tags"] = _Tags,
-		["CertificatePem"] = _CertificatePem,
-		["CertificateWallet"] = _CertificateWallet,
+		["CertificateIdentifier"] = args["CertificateIdentifier"],
+		["Tags"] = args["Tags"],
+		["CertificatePem"] = args["CertificatePem"],
+		["CertificateWallet"] = args["CertificateWallet"],
 	}
 	asserts.AssertImportCertificateMessage(t)
 	return t
@@ -3362,11 +3689,14 @@ end
 
 --- Create a structure of type CreateReplicationSubnetGroupResponse
 -- <p/>
--- @param _ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The replication subnet group that was created.</p>
-function M.CreateReplicationSubnetGroupResponse(_ReplicationSubnetGroup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReplicationSubnetGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The replication subnet group that was created.</p>
+-- @return CreateReplicationSubnetGroupResponse structure as a key-value pair table
+function M.CreateReplicationSubnetGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateReplicationSubnetGroupResponse")
 	local t = { 
-		["ReplicationSubnetGroup"] = _ReplicationSubnetGroup,
+		["ReplicationSubnetGroup"] = args["ReplicationSubnetGroup"],
 	}
 	asserts.AssertCreateReplicationSubnetGroupResponse(t)
 	return t
@@ -3387,15 +3717,18 @@ end
 
 --- Create a structure of type DescribeEndpointTypesMessage
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
--- @param _Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: engine-name | endpoint-type</p>
-function M.DescribeEndpointTypesMessage(_Marker, _MaxRecords, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointTypesMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
+-- * Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: engine-name | endpoint-type</p>
+-- @return DescribeEndpointTypesMessage structure as a key-value pair table
+function M.DescribeEndpointTypesMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeEndpointTypesMessage")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxRecords"] = _MaxRecords,
-		["Filters"] = _Filters,
+		["Marker"] = args["Marker"],
+		["MaxRecords"] = args["MaxRecords"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertDescribeEndpointTypesMessage(t)
 	return t
@@ -3414,11 +3747,14 @@ end
 
 --- Create a structure of type ModifyReplicationSubnetGroupResponse
 -- <p/>
--- @param _ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The modified replication subnet group.</p>
-function M.ModifyReplicationSubnetGroupResponse(_ReplicationSubnetGroup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyReplicationSubnetGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The modified replication subnet group.</p>
+-- @return ModifyReplicationSubnetGroupResponse structure as a key-value pair table
+function M.ModifyReplicationSubnetGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating ModifyReplicationSubnetGroupResponse")
 	local t = { 
-		["ReplicationSubnetGroup"] = _ReplicationSubnetGroup,
+		["ReplicationSubnetGroup"] = args["ReplicationSubnetGroup"],
 	}
 	asserts.AssertModifyReplicationSubnetGroupResponse(t)
 	return t
@@ -3438,13 +3774,16 @@ end
 
 --- Create a structure of type DescribeEventSubscriptionsResponse
 -- <p/>
--- @param _Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
--- @param _EventSubscriptionsList [EventSubscriptionsList] <p>A list of event subscriptions.</p>
-function M.DescribeEventSubscriptionsResponse(_Marker, _EventSubscriptionsList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventSubscriptionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
+-- * EventSubscriptionsList [EventSubscriptionsList] <p>A list of event subscriptions.</p>
+-- @return DescribeEventSubscriptionsResponse structure as a key-value pair table
+function M.DescribeEventSubscriptionsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventSubscriptionsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["EventSubscriptionsList"] = _EventSubscriptionsList,
+		["Marker"] = args["Marker"],
+		["EventSubscriptionsList"] = args["EventSubscriptionsList"],
 	}
 	asserts.AssertDescribeEventSubscriptionsResponse(t)
 	return t
@@ -3471,25 +3810,28 @@ end
 
 --- Create a structure of type CreateEventSubscriptionMessage
 -- <p/>
--- @param _EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. You can see a list of the categories for a given source type by calling the <b>DescribeEventCategories</b> action or in the topic <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html"> Working with Events and Notifications</a> in the AWS Database Migration Service User Guide. </p>
--- @param _SourceType [String] <p> The type of AWS DMS resource that generates the events. For example, if you want to be notified of events generated by a replication instance, you set this parameter to <code>replication-instance</code>. If this value is not specified, all events are returned. </p> <p>Valid values: replication-instance | migration-task</p>
--- @param _Tags [TagList] <p>A tag to be attached to the event subscription.</p>
--- @param _Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription, or set to <b>false</b> to create the subscription but not activate it. </p>
--- @param _SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it. </p>
--- @param _SubscriptionName [String] <p>The name of the DMS event notification subscription. </p> <p>Constraints: The name must be less than 255 characters. </p>
--- @param _SourceIds [SourceIdsList] <p> The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p>
--- Required parameter: SubscriptionName
--- Required parameter: SnsTopicArn
-function M.CreateEventSubscriptionMessage(_EventCategories, _SourceType, _Tags, _Enabled, _SnsTopicArn, _SubscriptionName, _SourceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateEventSubscriptionMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventCategories [EventCategoriesList] <p> A list of event categories for a source type that you want to subscribe to. You can see a list of the categories for a given source type by calling the <b>DescribeEventCategories</b> action or in the topic <a href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html"> Working with Events and Notifications</a> in the AWS Database Migration Service User Guide. </p>
+-- * SourceType [String] <p> The type of AWS DMS resource that generates the events. For example, if you want to be notified of events generated by a replication instance, you set this parameter to <code>replication-instance</code>. If this value is not specified, all events are returned. </p> <p>Valid values: replication-instance | migration-task</p>
+-- * Tags [TagList] <p>A tag to be attached to the event subscription.</p>
+-- * Enabled [BooleanOptional] <p> A Boolean value; set to <b>true</b> to activate the subscription, or set to <b>false</b> to create the subscription but not activate it. </p>
+-- * SnsTopicArn [String] <p> The Amazon Resource Name (ARN) of the Amazon SNS topic created for event notification. The ARN is created by Amazon SNS when you create a topic and subscribe to it. </p>
+-- * SubscriptionName [String] <p>The name of the DMS event notification subscription. </p> <p>Constraints: The name must be less than 255 characters. </p>
+-- * SourceIds [SourceIdsList] <p> The list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. An identifier must begin with a letter and must contain only ASCII letters, digits, and hyphens; it cannot end with a hyphen or contain two consecutive hyphens. </p>
+-- Required key: SubscriptionName
+-- Required key: SnsTopicArn
+-- @return CreateEventSubscriptionMessage structure as a key-value pair table
+function M.CreateEventSubscriptionMessage(args)
+	assert(args, "You must provdide an argument table when creating CreateEventSubscriptionMessage")
 	local t = { 
-		["EventCategories"] = _EventCategories,
-		["SourceType"] = _SourceType,
-		["Tags"] = _Tags,
-		["Enabled"] = _Enabled,
-		["SnsTopicArn"] = _SnsTopicArn,
-		["SubscriptionName"] = _SubscriptionName,
-		["SourceIds"] = _SourceIds,
+		["EventCategories"] = args["EventCategories"],
+		["SourceType"] = args["SourceType"],
+		["Tags"] = args["Tags"],
+		["Enabled"] = args["Enabled"],
+		["SnsTopicArn"] = args["SnsTopicArn"],
+		["SubscriptionName"] = args["SubscriptionName"],
+		["SourceIds"] = args["SourceIds"],
 	}
 	asserts.AssertCreateEventSubscriptionMessage(t)
 	return t
@@ -3508,11 +3850,14 @@ end
 
 --- Create a structure of type DeleteEventSubscriptionResponse
 -- <p/>
--- @param _EventSubscription [EventSubscription] <p>The event subscription that was deleted.</p>
-function M.DeleteEventSubscriptionResponse(_EventSubscription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEventSubscriptionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventSubscription [EventSubscription] <p>The event subscription that was deleted.</p>
+-- @return DeleteEventSubscriptionResponse structure as a key-value pair table
+function M.DeleteEventSubscriptionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteEventSubscriptionResponse")
 	local t = { 
-		["EventSubscription"] = _EventSubscription,
+		["EventSubscription"] = args["EventSubscription"],
 	}
 	asserts.AssertDeleteEventSubscriptionResponse(t)
 	return t
@@ -3530,8 +3875,11 @@ end
 
 --- Create a structure of type DescribeAccountAttributesMessage
 -- <p/>
-function M.DescribeAccountAttributesMessage(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountAttributesMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DescribeAccountAttributesMessage structure as a key-value pair table
+function M.DescribeAccountAttributesMessage(args)
+	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesMessage")
 	local t = { 
 	}
 	asserts.AssertDescribeAccountAttributesMessage(t)
@@ -3555,19 +3903,22 @@ end
 
 --- Create a structure of type RefreshSchemasStatus
 -- <p/>
--- @param _Status [RefreshSchemasStatusTypeValue] <p>The status of the schema.</p>
--- @param _LastFailureMessage [String] <p>The last failure message for the schema.</p>
--- @param _LastRefreshDate [TStamp] <p>The date the schema was last refreshed.</p>
--- @param _EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
--- @param _ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
-function M.RefreshSchemasStatus(_Status, _LastFailureMessage, _LastRefreshDate, _EndpointArn, _ReplicationInstanceArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RefreshSchemasStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [RefreshSchemasStatusTypeValue] <p>The status of the schema.</p>
+-- * LastFailureMessage [String] <p>The last failure message for the schema.</p>
+-- * LastRefreshDate [TStamp] <p>The date the schema was last refreshed.</p>
+-- * EndpointArn [String] <p>The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.</p>
+-- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
+-- @return RefreshSchemasStatus structure as a key-value pair table
+function M.RefreshSchemasStatus(args)
+	assert(args, "You must provdide an argument table when creating RefreshSchemasStatus")
 	local t = { 
-		["Status"] = _Status,
-		["LastFailureMessage"] = _LastFailureMessage,
-		["LastRefreshDate"] = _LastRefreshDate,
-		["EndpointArn"] = _EndpointArn,
-		["ReplicationInstanceArn"] = _ReplicationInstanceArn,
+		["Status"] = args["Status"],
+		["LastFailureMessage"] = args["LastFailureMessage"],
+		["LastRefreshDate"] = args["LastRefreshDate"],
+		["EndpointArn"] = args["EndpointArn"],
+		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
 	}
 	asserts.AssertRefreshSchemasStatus(t)
 	return t
@@ -3594,27 +3945,30 @@ end
 
 --- Create a structure of type EventSubscription
 -- <p/>
--- @param _Status [String] <p>The status of the AWS DMS event notification subscription.</p> <p>Constraints:</p> <p>Can be one of the following: creating | modifying | deleting | active | no-permission | topic-not-exist</p> <p>The status "no-permission" indicates that AWS DMS no longer has permission to post to the SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.</p>
--- @param _SubscriptionCreationTime [String] <p>The time the RDS event notification subscription was created.</p>
--- @param _SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
--- @param _EventCategoriesList [EventCategoriesList] <p>A lists of event categories.</p>
--- @param _SourceIdsList [SourceIdsList] <p>A list of source Ids for the event subscription.</p>
--- @param _CustSubscriptionId [String] <p>The AWS DMS event notification subscription Id.</p>
--- @param _Enabled [Boolean] <p>Boolean value that indicates if the event subscription is enabled.</p>
--- @param _SnsTopicArn [String] <p>The topic ARN of the AWS DMS event notification subscription.</p>
--- @param _CustomerAwsId [String] <p>The AWS customer account associated with the AWS DMS event notification subscription.</p>
-function M.EventSubscription(_Status, _SubscriptionCreationTime, _SourceType, _EventCategoriesList, _SourceIdsList, _CustSubscriptionId, _Enabled, _SnsTopicArn, _CustomerAwsId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventSubscription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The status of the AWS DMS event notification subscription.</p> <p>Constraints:</p> <p>Can be one of the following: creating | modifying | deleting | active | no-permission | topic-not-exist</p> <p>The status "no-permission" indicates that AWS DMS no longer has permission to post to the SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created.</p>
+-- * SubscriptionCreationTime [String] <p>The time the RDS event notification subscription was created.</p>
+-- * SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
+-- * EventCategoriesList [EventCategoriesList] <p>A lists of event categories.</p>
+-- * SourceIdsList [SourceIdsList] <p>A list of source Ids for the event subscription.</p>
+-- * CustSubscriptionId [String] <p>The AWS DMS event notification subscription Id.</p>
+-- * Enabled [Boolean] <p>Boolean value that indicates if the event subscription is enabled.</p>
+-- * SnsTopicArn [String] <p>The topic ARN of the AWS DMS event notification subscription.</p>
+-- * CustomerAwsId [String] <p>The AWS customer account associated with the AWS DMS event notification subscription.</p>
+-- @return EventSubscription structure as a key-value pair table
+function M.EventSubscription(args)
+	assert(args, "You must provdide an argument table when creating EventSubscription")
 	local t = { 
-		["Status"] = _Status,
-		["SubscriptionCreationTime"] = _SubscriptionCreationTime,
-		["SourceType"] = _SourceType,
-		["EventCategoriesList"] = _EventCategoriesList,
-		["SourceIdsList"] = _SourceIdsList,
-		["CustSubscriptionId"] = _CustSubscriptionId,
-		["Enabled"] = _Enabled,
-		["SnsTopicArn"] = _SnsTopicArn,
-		["CustomerAwsId"] = _CustomerAwsId,
+		["Status"] = args["Status"],
+		["SubscriptionCreationTime"] = args["SubscriptionCreationTime"],
+		["SourceType"] = args["SourceType"],
+		["EventCategoriesList"] = args["EventCategoriesList"],
+		["SourceIdsList"] = args["SourceIdsList"],
+		["CustSubscriptionId"] = args["CustSubscriptionId"],
+		["Enabled"] = args["Enabled"],
+		["SnsTopicArn"] = args["SnsTopicArn"],
+		["CustomerAwsId"] = args["CustomerAwsId"],
 	}
 	asserts.AssertEventSubscription(t)
 	return t
@@ -3633,11 +3987,14 @@ end
 
 --- Create a structure of type SubnetAlreadyInUse
 -- <p>The specified subnet is already in use.</p>
--- @param _message [ExceptionMessage] <p/>
-function M.SubnetAlreadyInUse(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetAlreadyInUse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExceptionMessage] <p/>
+-- @return SubnetAlreadyInUse structure as a key-value pair table
+function M.SubnetAlreadyInUse(args)
+	assert(args, "You must provdide an argument table when creating SubnetAlreadyInUse")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertSubnetAlreadyInUse(t)
 	return t
@@ -3657,12 +4014,15 @@ end
 
 --- Create a structure of type StopReplicationTaskMessage
 -- <p/>
--- @param _ReplicationTaskArn [String] <p>The Amazon Resource Number(ARN) of the replication task to be stopped.</p>
--- Required parameter: ReplicationTaskArn
-function M.StopReplicationTaskMessage(_ReplicationTaskArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopReplicationTaskMessage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationTaskArn [String] <p>The Amazon Resource Number(ARN) of the replication task to be stopped.</p>
+-- Required key: ReplicationTaskArn
+-- @return StopReplicationTaskMessage structure as a key-value pair table
+function M.StopReplicationTaskMessage(args)
+	assert(args, "You must provdide an argument table when creating StopReplicationTaskMessage")
 	local t = { 
-		["ReplicationTaskArn"] = _ReplicationTaskArn,
+		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 	}
 	asserts.AssertStopReplicationTaskMessage(t)
 	return t

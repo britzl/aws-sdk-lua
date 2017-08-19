@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type ListTagsRequest
 --  
--- @param _Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the function.</p>
--- Required parameter: Resource
-function M.ListTagsRequest(_Resource, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the function.</p>
+-- Required key: Resource
+-- @return ListTagsRequest structure as a key-value pair table
+function M.ListTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsRequest")
 	local t = { 
-		["Resource"] = _Resource,
+		["Resource"] = args["Resource"],
 	}
 	asserts.AssertListTagsRequest(t)
 	return t
@@ -60,13 +63,16 @@ end
 
 --- Create a structure of type ListAliasesResponse
 --  
--- @param _NextMarker [String] <p>A string, present if there are more aliases.</p>
--- @param _Aliases [AliasList] <p>A list of aliases.</p>
-function M.ListAliasesResponse(_NextMarker, _Aliases, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAliasesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [String] <p>A string, present if there are more aliases.</p>
+-- * Aliases [AliasList] <p>A list of aliases.</p>
+-- @return ListAliasesResponse structure as a key-value pair table
+function M.ListAliasesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAliasesResponse")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Aliases"] = _Aliases,
+		["NextMarker"] = args["NextMarker"],
+		["Aliases"] = args["Aliases"],
 	}
 	asserts.AssertListAliasesResponse(t)
 	return t
@@ -88,16 +94,19 @@ end
 
 --- Create a structure of type ListVersionsByFunctionRequest
 -- <p/>
--- @param _Marker [String] <p> Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code> operation. If present, indicates where to continue the listing. </p>
--- @param _FunctionName [FunctionName] <p>Function name whose versions to list. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This parameter value must be greater than 0.</p>
--- Required parameter: FunctionName
-function M.ListVersionsByFunctionRequest(_Marker, _FunctionName, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVersionsByFunctionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p> Optional string. An opaque pagination token returned from a previous <code>ListVersionsByFunction</code> operation. If present, indicates where to continue the listing. </p>
+-- * FunctionName [FunctionName] <p>Function name whose versions to list. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of AWS Lambda function versions to return in response. This parameter value must be greater than 0.</p>
+-- Required key: FunctionName
+-- @return ListVersionsByFunctionRequest structure as a key-value pair table
+function M.ListVersionsByFunctionRequest(args)
+	assert(args, "You must provdide an argument table when creating ListVersionsByFunctionRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["FunctionName"] = _FunctionName,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["FunctionName"] = args["FunctionName"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListVersionsByFunctionRequest(t)
 	return t
@@ -116,11 +125,14 @@ end
 
 --- Create a structure of type TracingConfig
 -- <p>The parent object that contains your function's tracing settings.</p>
--- @param _Mode [TracingMode] <p>Can be either PassThrough or Active. If PassThrough, Lambda will only trace the request from an upstream service if it contains a tracing header with "sampled=1". If Active, Lambda will respect any tracing header it receives from an upstream service. If no tracing header is received, Lambda will call X-Ray for a tracing decision.</p>
-function M.TracingConfig(_Mode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TracingConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Mode [TracingMode] <p>Can be either PassThrough or Active. If PassThrough, Lambda will only trace the request from an upstream service if it contains a tracing header with "sampled=1". If Active, Lambda will respect any tracing header it receives from an upstream service. If no tracing header is received, Lambda will call X-Ray for a tracing decision.</p>
+-- @return TracingConfig structure as a key-value pair table
+function M.TracingConfig(args)
+	assert(args, "You must provdide an argument table when creating TracingConfig")
 	local t = { 
-		["Mode"] = _Mode,
+		["Mode"] = args["Mode"],
 	}
 	asserts.AssertTracingConfig(t)
 	return t
@@ -144,19 +156,22 @@ end
 
 --- Create a structure of type UpdateAliasRequest
 --  
--- @param _Description [Description] <p>You can change the description of the alias using this parameter.</p>
--- @param _FunctionVersion [Version] <p>Using this parameter you can change the Lambda function version to which the alias points.</p>
--- @param _FunctionName [FunctionName] <p>The function name for which the alias is created. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param _Name [Alias] <p>The alias name.</p>
--- Required parameter: FunctionName
--- Required parameter: Name
-function M.UpdateAliasRequest(_Description, _FunctionVersion, _FunctionName, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAliasRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [Description] <p>You can change the description of the alias using this parameter.</p>
+-- * FunctionVersion [Version] <p>Using this parameter you can change the Lambda function version to which the alias points.</p>
+-- * FunctionName [FunctionName] <p>The function name for which the alias is created. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- * Name [Alias] <p>The alias name.</p>
+-- Required key: FunctionName
+-- Required key: Name
+-- @return UpdateAliasRequest structure as a key-value pair table
+function M.UpdateAliasRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateAliasRequest")
 	local t = { 
-		["Description"] = _Description,
-		["FunctionVersion"] = _FunctionVersion,
-		["FunctionName"] = _FunctionName,
-		["Name"] = _Name,
+		["Description"] = args["Description"],
+		["FunctionVersion"] = args["FunctionVersion"],
+		["FunctionName"] = args["FunctionName"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateAliasRequest(t)
 	return t
@@ -176,13 +191,16 @@ end
 
 --- Create a structure of type KMSInvalidStateException
 -- <p>Lambda was unable to decrypt the environment variables because the KMS key used is in an invalid state for Decrypt. Check the function's KMS key settings.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.KMSInvalidStateException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KMSInvalidStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return KMSInvalidStateException structure as a key-value pair table
+function M.KMSInvalidStateException(args)
+	assert(args, "You must provdide an argument table when creating KMSInvalidStateException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertKMSInvalidStateException(t)
 	return t
@@ -204,15 +222,18 @@ end
 
 --- Create a structure of type InvokeAsyncRequest
 -- <p/>
--- @param _FunctionName [FunctionName] <p>The Lambda function name. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param _InvokeArgs [BlobStream] <p>JSON that you want to provide to your Lambda function as input.</p>
--- Required parameter: FunctionName
--- Required parameter: InvokeArgs
-function M.InvokeAsyncRequest(_FunctionName, _InvokeArgs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvokeAsyncRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionName [FunctionName] <p>The Lambda function name. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- * InvokeArgs [BlobStream] <p>JSON that you want to provide to your Lambda function as input.</p>
+-- Required key: FunctionName
+-- Required key: InvokeArgs
+-- @return InvokeAsyncRequest structure as a key-value pair table
+function M.InvokeAsyncRequest(args)
+	assert(args, "You must provdide an argument table when creating InvokeAsyncRequest")
 	local t = { 
-		["FunctionName"] = _FunctionName,
-		["InvokeArgs"] = _InvokeArgs,
+		["FunctionName"] = args["FunctionName"],
+		["InvokeArgs"] = args["InvokeArgs"],
 	}
 	asserts.AssertInvokeAsyncRequest(t)
 	return t
@@ -231,11 +252,14 @@ end
 
 --- Create a structure of type Environment
 -- <p>The parent object that contains your environment's configuration settings.</p>
--- @param _Variables [EnvironmentVariables] <p>The key-value pairs that represent your environment's configuration settings.</p>
-function M.Environment(_Variables, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Environment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Variables [EnvironmentVariables] <p>The key-value pairs that represent your environment's configuration settings.</p>
+-- @return Environment structure as a key-value pair table
+function M.Environment(args)
+	assert(args, "You must provdide an argument table when creating Environment")
 	local t = { 
-		["Variables"] = _Variables,
+		["Variables"] = args["Variables"],
 	}
 	asserts.AssertEnvironment(t)
 	return t
@@ -255,13 +279,16 @@ end
 
 --- Create a structure of type ListVersionsByFunctionResponse
 -- <p/>
--- @param _NextMarker [String] <p>A string, present if there are more function versions.</p>
--- @param _Versions [FunctionList] <p>A list of Lambda function versions.</p>
-function M.ListVersionsByFunctionResponse(_NextMarker, _Versions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVersionsByFunctionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [String] <p>A string, present if there are more function versions.</p>
+-- * Versions [FunctionList] <p>A list of Lambda function versions.</p>
+-- @return ListVersionsByFunctionResponse structure as a key-value pair table
+function M.ListVersionsByFunctionResponse(args)
+	assert(args, "You must provdide an argument table when creating ListVersionsByFunctionResponse")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Versions"] = _Versions,
+		["NextMarker"] = args["NextMarker"],
+		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListVersionsByFunctionResponse(t)
 	return t
@@ -283,17 +310,20 @@ end
 
 --- Create a structure of type ListEventSourceMappingsRequest
 -- <p/>
--- @param _Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListEventSourceMappings</code> operation. If present, specifies to continue the list from where the returning call left off. </p>
--- @param _EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter is optional.)</p>
--- @param _FunctionName [FunctionName] <p>The name of the Lambda function.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of event sources to return in response. This value must be greater than 0.</p>
-function M.ListEventSourceMappingsRequest(_Marker, _EventSourceArn, _FunctionName, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListEventSourceMappingsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListEventSourceMappings</code> operation. If present, specifies to continue the list from where the returning call left off. </p>
+-- * EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This parameter is optional.)</p>
+-- * FunctionName [FunctionName] <p>The name of the Lambda function.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of event sources to return in response. This value must be greater than 0.</p>
+-- @return ListEventSourceMappingsRequest structure as a key-value pair table
+function M.ListEventSourceMappingsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListEventSourceMappingsRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["EventSourceArn"] = _EventSourceArn,
-		["FunctionName"] = _FunctionName,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["EventSourceArn"] = args["EventSourceArn"],
+		["FunctionName"] = args["FunctionName"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListEventSourceMappingsRequest(t)
 	return t
@@ -313,13 +343,16 @@ end
 
 --- Create a structure of type AccountUsage
 -- <p>Provides code size usage and function count associated with the current account and region.</p>
--- @param _FunctionCount [Long] <p>The number of your account's existing functions per region.</p>
--- @param _TotalCodeSize [Long] <p>Total size, in bytes, of the account's deployment packages per region.</p>
-function M.AccountUsage(_FunctionCount, _TotalCodeSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccountUsage")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionCount [Long] <p>The number of your account's existing functions per region.</p>
+-- * TotalCodeSize [Long] <p>Total size, in bytes, of the account's deployment packages per region.</p>
+-- @return AccountUsage structure as a key-value pair table
+function M.AccountUsage(args)
+	assert(args, "You must provdide an argument table when creating AccountUsage")
 	local t = { 
-		["FunctionCount"] = _FunctionCount,
-		["TotalCodeSize"] = _TotalCodeSize,
+		["FunctionCount"] = args["FunctionCount"],
+		["TotalCodeSize"] = args["TotalCodeSize"],
 	}
 	asserts.AssertAccountUsage(t)
 	return t
@@ -339,13 +372,16 @@ end
 
 --- Create a structure of type KMSNotFoundException
 -- <p>Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the function's KMS key settings. </p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.KMSNotFoundException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KMSNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return KMSNotFoundException structure as a key-value pair table
+function M.KMSNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating KMSNotFoundException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertKMSNotFoundException(t)
 	return t
@@ -366,14 +402,17 @@ end
 
 --- Create a structure of type DeleteFunctionRequest
 --  
--- @param _FunctionName [FunctionName] <p>The Lambda function to delete.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _Qualifier [Qualifier] <p>Using this optional parameter you can specify a function version (but not the <code>$LATEST</code> version) to direct AWS Lambda to delete a specific function version. If the function version has one or more aliases pointing to it, you will get an error because you cannot have aliases pointing to it. You can delete any function version but not the <code>$LATEST</code>, that is, you cannot specify <code>$LATEST</code> as the value of this parameter. The <code>$LATEST</code> version can be deleted only when you want to delete all the function versions and aliases.</p> <p>You can only specify a function version, not an alias name, using this parameter. You cannot delete a function version using its alias.</p> <p>If you don't specify this parameter, AWS Lambda will delete the function, including all of its versions and aliases.</p>
--- Required parameter: FunctionName
-function M.DeleteFunctionRequest(_FunctionName, _Qualifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFunctionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionName [FunctionName] <p>The Lambda function to delete.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * Qualifier [Qualifier] <p>Using this optional parameter you can specify a function version (but not the <code>$LATEST</code> version) to direct AWS Lambda to delete a specific function version. If the function version has one or more aliases pointing to it, you will get an error because you cannot have aliases pointing to it. You can delete any function version but not the <code>$LATEST</code>, that is, you cannot specify <code>$LATEST</code> as the value of this parameter. The <code>$LATEST</code> version can be deleted only when you want to delete all the function versions and aliases.</p> <p>You can only specify a function version, not an alias name, using this parameter. You cannot delete a function version using its alias.</p> <p>If you don't specify this parameter, AWS Lambda will delete the function, including all of its versions and aliases.</p>
+-- Required key: FunctionName
+-- @return DeleteFunctionRequest structure as a key-value pair table
+function M.DeleteFunctionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteFunctionRequest")
 	local t = { 
-		["FunctionName"] = _FunctionName,
-		["Qualifier"] = _Qualifier,
+		["FunctionName"] = args["FunctionName"],
+		["Qualifier"] = args["Qualifier"],
 	}
 	asserts.AssertDeleteFunctionRequest(t)
 	return t
@@ -394,14 +433,17 @@ end
 
 --- Create a structure of type GetFunctionRequest
 -- <p/>
--- @param _FunctionName [FunctionName] <p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _Qualifier [Qualifier] <p>Using this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the <code>$LATEST</code> version of the Lambda function.</p>
--- Required parameter: FunctionName
-function M.GetFunctionRequest(_FunctionName, _Qualifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionName [FunctionName] <p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * Qualifier [Qualifier] <p>Using this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the <code>$LATEST</code> version of the Lambda function.</p>
+-- Required key: FunctionName
+-- @return GetFunctionRequest structure as a key-value pair table
+function M.GetFunctionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetFunctionRequest")
 	local t = { 
-		["FunctionName"] = _FunctionName,
-		["Qualifier"] = _Qualifier,
+		["FunctionName"] = args["FunctionName"],
+		["Qualifier"] = args["Qualifier"],
 	}
 	asserts.AssertGetFunctionRequest(t)
 	return t
@@ -423,16 +465,19 @@ end
 
 --- Create a structure of type PublishVersionRequest
 -- <p/>
--- @param _CodeSha256 [String] <p>The SHA256 hash of the deployment package you want to publish. This provides validation on the code you are publishing. If you provide this parameter value must match the SHA256 of the $LATEST version for the publication to succeed.</p>
--- @param _FunctionName [FunctionName] <p>The Lambda function name. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _Description [Description] <p>The description for the version you are publishing. If not provided, AWS Lambda copies the description from the $LATEST version.</p>
--- Required parameter: FunctionName
-function M.PublishVersionRequest(_CodeSha256, _FunctionName, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PublishVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CodeSha256 [String] <p>The SHA256 hash of the deployment package you want to publish. This provides validation on the code you are publishing. If you provide this parameter value must match the SHA256 of the $LATEST version for the publication to succeed.</p>
+-- * FunctionName [FunctionName] <p>The Lambda function name. You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * Description [Description] <p>The description for the version you are publishing. If not provided, AWS Lambda copies the description from the $LATEST version.</p>
+-- Required key: FunctionName
+-- @return PublishVersionRequest structure as a key-value pair table
+function M.PublishVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating PublishVersionRequest")
 	local t = { 
-		["CodeSha256"] = _CodeSha256,
-		["FunctionName"] = _FunctionName,
-		["Description"] = _Description,
+		["CodeSha256"] = args["CodeSha256"],
+		["FunctionName"] = args["FunctionName"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertPublishVersionRequest(t)
 	return t
@@ -454,15 +499,18 @@ end
 
 --- Create a structure of type DeleteAliasRequest
 --  
--- @param _FunctionName [FunctionName] <p>The Lambda function name for which the alias is created. Deleting an alias does not delete the function version to which it is pointing. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param _Name [Alias] <p>Name of the alias to delete.</p>
--- Required parameter: FunctionName
--- Required parameter: Name
-function M.DeleteAliasRequest(_FunctionName, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAliasRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionName [FunctionName] <p>The Lambda function name for which the alias is created. Deleting an alias does not delete the function version to which it is pointing. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- * Name [Alias] <p>Name of the alias to delete.</p>
+-- Required key: FunctionName
+-- Required key: Name
+-- @return DeleteAliasRequest structure as a key-value pair table
+function M.DeleteAliasRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAliasRequest")
 	local t = { 
-		["FunctionName"] = _FunctionName,
-		["Name"] = _Name,
+		["FunctionName"] = args["FunctionName"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteAliasRequest(t)
 	return t
@@ -487,22 +535,25 @@ end
 
 --- Create a structure of type InvocationRequest
 -- <p/>
--- @param _FunctionName [FunctionName] <p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _InvocationType [InvocationType] <p>By default, the <code>Invoke</code> API assumes <code>RequestResponse</code> invocation type. You can optionally request asynchronous execution by specifying <code>Event</code> as the <code>InvocationType</code>. You can also use this parameter to request AWS Lambda to not execute the function but do some verification, such as if the caller is authorized to invoke the function and if the inputs are valid. You request this by specifying <code>DryRun</code> as the <code>InvocationType</code>. This is useful in a cross-account scenario when you want to verify access to a function without running it. </p>
--- @param _LogType [LogType] <p>You can set this optional parameter to <code>Tail</code> in the request only if you specify the <code>InvocationType</code> parameter with value <code>RequestResponse</code>. In this case, AWS Lambda returns the base64-encoded last 4 KB of log data produced by your Lambda function in the <code>x-amz-log-result</code> header. </p>
--- @param _ClientContext [String] <p>Using the <code>ClientContext</code> you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a <code>ClientContext</code> JSON, see <a href="http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html">PutEvents</a> in the <i>Amazon Mobile Analytics API Reference and User Guide</i>.</p> <p>The ClientContext JSON must be base64-encoded.</p>
--- @param _Payload [Blob] <p>JSON that you want to provide to your Lambda function as input.</p>
--- @param _Qualifier [Qualifier] <p>You can use this optional parameter to specify a Lambda function version or alias name. If you specify a function version, the API uses the qualified function ARN to invoke a specific Lambda function. If you specify an alias name, the API uses the alias ARN to invoke the Lambda function version to which the alias points.</p> <p>If you don't provide this parameter, then the API uses unqualified function ARN which results in invocation of the <code>$LATEST</code> version.</p>
--- Required parameter: FunctionName
-function M.InvocationRequest(_FunctionName, _InvocationType, _LogType, _ClientContext, _Payload, _Qualifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvocationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionName [FunctionName] <p>The Lambda function name.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * InvocationType [InvocationType] <p>By default, the <code>Invoke</code> API assumes <code>RequestResponse</code> invocation type. You can optionally request asynchronous execution by specifying <code>Event</code> as the <code>InvocationType</code>. You can also use this parameter to request AWS Lambda to not execute the function but do some verification, such as if the caller is authorized to invoke the function and if the inputs are valid. You request this by specifying <code>DryRun</code> as the <code>InvocationType</code>. This is useful in a cross-account scenario when you want to verify access to a function without running it. </p>
+-- * LogType [LogType] <p>You can set this optional parameter to <code>Tail</code> in the request only if you specify the <code>InvocationType</code> parameter with value <code>RequestResponse</code>. In this case, AWS Lambda returns the base64-encoded last 4 KB of log data produced by your Lambda function in the <code>x-amz-log-result</code> header. </p>
+-- * ClientContext [String] <p>Using the <code>ClientContext</code> you can pass client-specific information to the Lambda function you are invoking. You can then process the client information in your Lambda function as you choose through the context variable. For an example of a <code>ClientContext</code> JSON, see <a href="http://docs.aws.amazon.com/mobileanalytics/latest/ug/PutEvents.html">PutEvents</a> in the <i>Amazon Mobile Analytics API Reference and User Guide</i>.</p> <p>The ClientContext JSON must be base64-encoded.</p>
+-- * Payload [Blob] <p>JSON that you want to provide to your Lambda function as input.</p>
+-- * Qualifier [Qualifier] <p>You can use this optional parameter to specify a Lambda function version or alias name. If you specify a function version, the API uses the qualified function ARN to invoke a specific Lambda function. If you specify an alias name, the API uses the alias ARN to invoke the Lambda function version to which the alias points.</p> <p>If you don't provide this parameter, then the API uses unqualified function ARN which results in invocation of the <code>$LATEST</code> version.</p>
+-- Required key: FunctionName
+-- @return InvocationRequest structure as a key-value pair table
+function M.InvocationRequest(args)
+	assert(args, "You must provdide an argument table when creating InvocationRequest")
 	local t = { 
-		["FunctionName"] = _FunctionName,
-		["InvocationType"] = _InvocationType,
-		["LogType"] = _LogType,
-		["ClientContext"] = _ClientContext,
-		["Payload"] = _Payload,
-		["Qualifier"] = _Qualifier,
+		["FunctionName"] = args["FunctionName"],
+		["InvocationType"] = args["InvocationType"],
+		["LogType"] = args["LogType"],
+		["ClientContext"] = args["ClientContext"],
+		["Payload"] = args["Payload"],
+		["Qualifier"] = args["Qualifier"],
 	}
 	asserts.AssertInvocationRequest(t)
 	return t
@@ -524,15 +575,18 @@ end
 
 --- Create a structure of type GetAliasRequest
 --  
--- @param _FunctionName [FunctionName] <p>Function name for which the alias is created. An alias is a subresource that exists only in the context of an existing Lambda function so you must specify the function name. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param _Name [Alias] <p>Name of the alias for which you want to retrieve information.</p>
--- Required parameter: FunctionName
--- Required parameter: Name
-function M.GetAliasRequest(_FunctionName, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAliasRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionName [FunctionName] <p>Function name for which the alias is created. An alias is a subresource that exists only in the context of an existing Lambda function so you must specify the function name. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- * Name [Alias] <p>Name of the alias for which you want to retrieve information.</p>
+-- Required key: FunctionName
+-- Required key: Name
+-- @return GetAliasRequest structure as a key-value pair table
+function M.GetAliasRequest(args)
+	assert(args, "You must provdide an argument table when creating GetAliasRequest")
 	local t = { 
-		["FunctionName"] = _FunctionName,
-		["Name"] = _Name,
+		["FunctionName"] = args["FunctionName"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertGetAliasRequest(t)
 	return t
@@ -558,24 +612,27 @@ end
 
 --- Create a structure of type UpdateFunctionCodeRequest
 -- <p/>
--- @param _DryRun [Boolean] <p>This boolean parameter can be used to test your request to AWS Lambda to update the Lambda function and publish a version as an atomic operation. It will do all necessary computation and validation of your code but will not upload it or a publish a version. Each time this operation is invoked, the <code>CodeSha256</code> hash value the provided code will also be computed and returned in the response.</p>
--- @param _FunctionName [FunctionName] <p>The existing Lambda function name whose code you want to replace.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _ZipFile [Blob] <p>The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
--- @param _Publish [Boolean] <p>This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.</p>
--- @param _S3Bucket [S3Bucket] <p>Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS Region where you are creating the Lambda function.</p>
--- @param _S3Key [S3Key] <p>The Amazon S3 object (the deployment package) key name you want to upload.</p>
--- @param _S3ObjectVersion [S3ObjectVersion] <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
--- Required parameter: FunctionName
-function M.UpdateFunctionCodeRequest(_DryRun, _FunctionName, _ZipFile, _Publish, _S3Bucket, _S3Key, _S3ObjectVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFunctionCodeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DryRun [Boolean] <p>This boolean parameter can be used to test your request to AWS Lambda to update the Lambda function and publish a version as an atomic operation. It will do all necessary computation and validation of your code but will not upload it or a publish a version. Each time this operation is invoked, the <code>CodeSha256</code> hash value the provided code will also be computed and returned in the response.</p>
+-- * FunctionName [FunctionName] <p>The existing Lambda function name whose code you want to replace.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * ZipFile [Blob] <p>The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
+-- * Publish [Boolean] <p>This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.</p>
+-- * S3Bucket [S3Bucket] <p>Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS Region where you are creating the Lambda function.</p>
+-- * S3Key [S3Key] <p>The Amazon S3 object (the deployment package) key name you want to upload.</p>
+-- * S3ObjectVersion [S3ObjectVersion] <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+-- Required key: FunctionName
+-- @return UpdateFunctionCodeRequest structure as a key-value pair table
+function M.UpdateFunctionCodeRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateFunctionCodeRequest")
 	local t = { 
-		["DryRun"] = _DryRun,
-		["FunctionName"] = _FunctionName,
-		["ZipFile"] = _ZipFile,
-		["Publish"] = _Publish,
-		["S3Bucket"] = _S3Bucket,
-		["S3Key"] = _S3Key,
-		["S3ObjectVersion"] = _S3ObjectVersion,
+		["DryRun"] = args["DryRun"],
+		["FunctionName"] = args["FunctionName"],
+		["ZipFile"] = args["ZipFile"],
+		["Publish"] = args["Publish"],
+		["S3Bucket"] = args["S3Bucket"],
+		["S3Key"] = args["S3Key"],
+		["S3ObjectVersion"] = args["S3ObjectVersion"],
 	}
 	asserts.AssertUpdateFunctionCodeRequest(t)
 	return t
@@ -606,34 +663,37 @@ end
 
 --- Create a structure of type UpdateFunctionConfigurationRequest
 -- <p/>
--- @param _TracingConfig [TracingConfig] <p>The parent object that contains your function's tracing settings.</p>
--- @param _DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.</p>
--- @param _FunctionName [FunctionName] <p>The name of the Lambda function.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
--- @param _VpcConfig [VpcConfig] 
--- @param _KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If you elect to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.</p>
--- @param _MemorySize [MemorySize] <p>The amount of memory, in MB, your Lambda function is given. AWS Lambda uses this memory size to infer the amount of CPU allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
--- @param _Environment [Environment] <p>The parent object that contains your environment's configuration settings.</p>
--- @param _Handler [Handler] <p>The function that Lambda calls to begin executing your function. For Node.js, it is the <code>module-name.export</code> value in your function. </p>
--- @param _Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda will assume when it executes your function.</p>
--- @param _Timeout [Timeout] <p>The function execution time at which AWS Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
--- @param _Runtime [Runtime] <p>The runtime environment for the Lambda function.</p> <p>To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7".</p> <note> <p>Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can request a one-time extension until June 30, 2017 by going to the Lambda console and following the instructions provided. Failure to do so will result in an invalid parameter value error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.</p> </note>
--- @param _Description [Description] <p>A short user-defined function description. AWS Lambda does not use this value. Assign a meaningful description as you see fit.</p>
--- Required parameter: FunctionName
-function M.UpdateFunctionConfigurationRequest(_TracingConfig, _DeadLetterConfig, _FunctionName, _VpcConfig, _KMSKeyArn, _MemorySize, _Environment, _Handler, _Role, _Timeout, _Runtime, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFunctionConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TracingConfig [TracingConfig] <p>The parent object that contains your function's tracing settings.</p>
+-- * DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.</p>
+-- * FunctionName [FunctionName] <p>The name of the Lambda function.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length. </p>
+-- * VpcConfig [VpcConfig] 
+-- * KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If you elect to use the AWS Lambda default service key, pass in an empty string ("") for this parameter.</p>
+-- * MemorySize [MemorySize] <p>The amount of memory, in MB, your Lambda function is given. AWS Lambda uses this memory size to infer the amount of CPU allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
+-- * Environment [Environment] <p>The parent object that contains your environment's configuration settings.</p>
+-- * Handler [Handler] <p>The function that Lambda calls to begin executing your function. For Node.js, it is the <code>module-name.export</code> value in your function. </p>
+-- * Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda will assume when it executes your function.</p>
+-- * Timeout [Timeout] <p>The function execution time at which AWS Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
+-- * Runtime [Runtime] <p>The runtime environment for the Lambda function.</p> <p>To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7".</p> <note> <p>Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can request a one-time extension until June 30, 2017 by going to the Lambda console and following the instructions provided. Failure to do so will result in an invalid parameter value error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.</p> </note>
+-- * Description [Description] <p>A short user-defined function description. AWS Lambda does not use this value. Assign a meaningful description as you see fit.</p>
+-- Required key: FunctionName
+-- @return UpdateFunctionConfigurationRequest structure as a key-value pair table
+function M.UpdateFunctionConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateFunctionConfigurationRequest")
 	local t = { 
-		["TracingConfig"] = _TracingConfig,
-		["DeadLetterConfig"] = _DeadLetterConfig,
-		["FunctionName"] = _FunctionName,
-		["VpcConfig"] = _VpcConfig,
-		["KMSKeyArn"] = _KMSKeyArn,
-		["MemorySize"] = _MemorySize,
-		["Environment"] = _Environment,
-		["Handler"] = _Handler,
-		["Role"] = _Role,
-		["Timeout"] = _Timeout,
-		["Runtime"] = _Runtime,
-		["Description"] = _Description,
+		["TracingConfig"] = args["TracingConfig"],
+		["DeadLetterConfig"] = args["DeadLetterConfig"],
+		["FunctionName"] = args["FunctionName"],
+		["VpcConfig"] = args["VpcConfig"],
+		["KMSKeyArn"] = args["KMSKeyArn"],
+		["MemorySize"] = args["MemorySize"],
+		["Environment"] = args["Environment"],
+		["Handler"] = args["Handler"],
+		["Role"] = args["Role"],
+		["Timeout"] = args["Timeout"],
+		["Runtime"] = args["Runtime"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdateFunctionConfigurationRequest(t)
 	return t
@@ -655,17 +715,20 @@ end
 
 --- Create a structure of type AliasConfiguration
 -- <p>Provides configuration information about a Lambda function version alias.</p>
--- @param _AliasArn [FunctionArn] <p>Lambda function ARN that is qualified using the alias name as the suffix. For example, if you create an alias called <code>BETA</code> that points to a helloworld function version, the ARN is <code>arn:aws:lambda:aws-regions:acct-id:function:helloworld:BETA</code>.</p>
--- @param _FunctionVersion [Version] <p>Function version to which the alias points.</p>
--- @param _Name [Alias] <p>Alias name.</p>
--- @param _Description [Description] <p>Alias description.</p>
-function M.AliasConfiguration(_AliasArn, _FunctionVersion, _Name, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AliasConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AliasArn [FunctionArn] <p>Lambda function ARN that is qualified using the alias name as the suffix. For example, if you create an alias called <code>BETA</code> that points to a helloworld function version, the ARN is <code>arn:aws:lambda:aws-regions:acct-id:function:helloworld:BETA</code>.</p>
+-- * FunctionVersion [Version] <p>Function version to which the alias points.</p>
+-- * Name [Alias] <p>Alias name.</p>
+-- * Description [Description] <p>Alias description.</p>
+-- @return AliasConfiguration structure as a key-value pair table
+function M.AliasConfiguration(args)
+	assert(args, "You must provdide an argument table when creating AliasConfiguration")
 	local t = { 
-		["AliasArn"] = _AliasArn,
-		["FunctionVersion"] = _FunctionVersion,
-		["Name"] = _Name,
-		["Description"] = _Description,
+		["AliasArn"] = args["AliasArn"],
+		["FunctionVersion"] = args["FunctionVersion"],
+		["Name"] = args["Name"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertAliasConfiguration(t)
 	return t
@@ -685,13 +748,16 @@ end
 
 --- Create a structure of type GetAccountSettingsResponse
 --  
--- @param _AccountLimit [AccountLimit] 
--- @param _AccountUsage [AccountUsage] 
-function M.GetAccountSettingsResponse(_AccountLimit, _AccountUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAccountSettingsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccountLimit [AccountLimit] 
+-- * AccountUsage [AccountUsage] 
+-- @return GetAccountSettingsResponse structure as a key-value pair table
+function M.GetAccountSettingsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetAccountSettingsResponse")
 	local t = { 
-		["AccountLimit"] = _AccountLimit,
-		["AccountUsage"] = _AccountUsage,
+		["AccountLimit"] = args["AccountLimit"],
+		["AccountUsage"] = args["AccountUsage"],
 	}
 	asserts.AssertGetAccountSettingsResponse(t)
 	return t
@@ -712,15 +778,18 @@ end
 
 --- Create a structure of type VpcConfigResponse
 -- <p>VPC configuration associated with your Lambda function.</p>
--- @param _SubnetIds [SubnetIds] <p>A list of subnet IDs associated with the Lambda function.</p>
--- @param _VpcId [VpcId] <p>The VPC ID associated with you Lambda function.</p>
--- @param _SecurityGroupIds [SecurityGroupIds] <p>A list of security group IDs associated with the Lambda function.</p>
-function M.VpcConfigResponse(_SubnetIds, _VpcId, _SecurityGroupIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VpcConfigResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetIds [SubnetIds] <p>A list of subnet IDs associated with the Lambda function.</p>
+-- * VpcId [VpcId] <p>The VPC ID associated with you Lambda function.</p>
+-- * SecurityGroupIds [SecurityGroupIds] <p>A list of security group IDs associated with the Lambda function.</p>
+-- @return VpcConfigResponse structure as a key-value pair table
+function M.VpcConfigResponse(args)
+	assert(args, "You must provdide an argument table when creating VpcConfigResponse")
 	local t = { 
-		["SubnetIds"] = _SubnetIds,
-		["VpcId"] = _VpcId,
-		["SecurityGroupIds"] = _SecurityGroupIds,
+		["SubnetIds"] = args["SubnetIds"],
+		["VpcId"] = args["VpcId"],
+		["SecurityGroupIds"] = args["SecurityGroupIds"],
 	}
 	asserts.AssertVpcConfigResponse(t)
 	return t
@@ -742,17 +811,20 @@ end
 
 --- Create a structure of type InvocationResponse
 -- <p>Upon success, returns an empty response. Otherwise, throws an exception.</p>
--- @param _LogResult [String] <p> It is the base64-encoded logs for the Lambda function invocation. This is present only if the invocation type is <code>RequestResponse</code> and the logs were requested. </p>
--- @param _FunctionError [String] <p>Indicates whether an error occurred while executing the Lambda function. If an error occurred this field will have one of two values; <code>Handled</code> or <code>Unhandled</code>. <code>Handled</code> errors are errors that are reported by the function while the <code>Unhandled</code> errors are those detected and reported by AWS Lambda. Unhandled errors include out of memory errors and function timeouts. For information about how to report an <code>Handled</code> error, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html">Programming Model</a>. </p>
--- @param _Payload [Blob] <p> It is the JSON representation of the object returned by the Lambda function. This is present only if the invocation type is <code>RequestResponse</code>. </p> <p>In the event of a function error this field contains a message describing the error. For the <code>Handled</code> errors the Lambda function will report this message. For <code>Unhandled</code> errors AWS Lambda reports the message. </p>
--- @param _StatusCode [Integer] <p>The HTTP status code will be in the 200 range for successful request. For the <code>RequestResponse</code> invocation type this status code will be 200. For the <code>Event</code> invocation type this status code will be 202. For the <code>DryRun</code> invocation type the status code will be 204. </p>
-function M.InvocationResponse(_LogResult, _FunctionError, _Payload, _StatusCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvocationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LogResult [String] <p> It is the base64-encoded logs for the Lambda function invocation. This is present only if the invocation type is <code>RequestResponse</code> and the logs were requested. </p>
+-- * FunctionError [String] <p>Indicates whether an error occurred while executing the Lambda function. If an error occurred this field will have one of two values; <code>Handled</code> or <code>Unhandled</code>. <code>Handled</code> errors are errors that are reported by the function while the <code>Unhandled</code> errors are those detected and reported by AWS Lambda. Unhandled errors include out of memory errors and function timeouts. For information about how to report an <code>Handled</code> error, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html">Programming Model</a>. </p>
+-- * Payload [Blob] <p> It is the JSON representation of the object returned by the Lambda function. This is present only if the invocation type is <code>RequestResponse</code>. </p> <p>In the event of a function error this field contains a message describing the error. For the <code>Handled</code> errors the Lambda function will report this message. For <code>Unhandled</code> errors AWS Lambda reports the message. </p>
+-- * StatusCode [Integer] <p>The HTTP status code will be in the 200 range for successful request. For the <code>RequestResponse</code> invocation type this status code will be 200. For the <code>Event</code> invocation type this status code will be 202. For the <code>DryRun</code> invocation type the status code will be 204. </p>
+-- @return InvocationResponse structure as a key-value pair table
+function M.InvocationResponse(args)
+	assert(args, "You must provdide an argument table when creating InvocationResponse")
 	local t = { 
-		["LogResult"] = _LogResult,
-		["FunctionError"] = _FunctionError,
-		["Payload"] = _Payload,
-		["StatusCode"] = _StatusCode,
+		["LogResult"] = args["LogResult"],
+		["FunctionError"] = args["FunctionError"],
+		["Payload"] = args["Payload"],
+		["StatusCode"] = args["StatusCode"],
 	}
 	asserts.AssertInvocationResponse(t)
 	return t
@@ -772,13 +844,16 @@ end
 
 --- Create a structure of type CodeStorageExceededException
 -- <p>You have exceeded your maximum total code size per account. <a href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a> </p>
--- @param _message [String] 
--- @param _Type [String] <p/>
-function M.CodeStorageExceededException(_message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CodeStorageExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- * Type [String] <p/>
+-- @return CodeStorageExceededException structure as a key-value pair table
+function M.CodeStorageExceededException(args)
+	assert(args, "You must provdide an argument table when creating CodeStorageExceededException")
 	local t = { 
-		["message"] = _message,
-		["Type"] = _Type,
+		["message"] = args["message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertCodeStorageExceededException(t)
 	return t
@@ -800,17 +875,20 @@ end
 
 --- Create a structure of type TooManyRequestsException
 -- <p/>
--- @param _message [String] 
--- @param _Type [String] 
--- @param _Reason [ThrottleReason] 
--- @param _retryAfterSeconds [String] <p>The number of seconds the caller should wait before retrying.</p>
-function M.TooManyRequestsException(_message, _Type, _Reason, _retryAfterSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- * Type [String] 
+-- * Reason [ThrottleReason] 
+-- * retryAfterSeconds [String] <p>The number of seconds the caller should wait before retrying.</p>
+-- @return TooManyRequestsException structure as a key-value pair table
+function M.TooManyRequestsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
 	local t = { 
-		["message"] = _message,
-		["Type"] = _Type,
-		["Reason"] = _Reason,
-		["retryAfterSeconds"] = _retryAfterSeconds,
+		["message"] = args["message"],
+		["Type"] = args["Type"],
+		["Reason"] = args["Reason"],
+		["retryAfterSeconds"] = args["retryAfterSeconds"],
 	}
 	asserts.AssertTooManyRequestsException(t)
 	return t
@@ -830,13 +908,16 @@ end
 
 --- Create a structure of type ENILimitReachedException
 -- <p>AWS Lambda was not able to create an Elastic Network Interface (ENI) in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.ENILimitReachedException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ENILimitReachedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return ENILimitReachedException structure as a key-value pair table
+function M.ENILimitReachedException(args)
+	assert(args, "You must provdide an argument table when creating ENILimitReachedException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertENILimitReachedException(t)
 	return t
@@ -863,24 +944,27 @@ end
 
 --- Create a structure of type CreateEventSourceMappingRequest
 -- <p/>
--- @param _FunctionName [FunctionName] <p>The Lambda function to invoke when AWS Lambda detects an event on the stream.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p> If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param _StartingPositionTimestamp [Date] <p>The timestamp of the data record from which to start reading. Used with <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">shard iterator type</a> AT_TIMESTAMP. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams. </p>
--- @param _BatchSize [BatchSize] <p>The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records. The default is 100 records.</p>
--- @param _Enabled [Enabled] <p>Indicates whether AWS Lambda should begin polling the event source. By default, <code>Enabled</code> is true. </p>
--- @param _EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB stream that is the event source. Any record added to this stream could cause AWS Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>. AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda function as JSON.</p>
--- @param _StartingPosition [EventSourcePosition] <p>The position in the stream where AWS Lambda should start reading. Valid only for Kinesis streams. For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">ShardIteratorType</a> in the <i>Amazon Kinesis API Reference</i>. </p>
--- Required parameter: EventSourceArn
--- Required parameter: FunctionName
--- Required parameter: StartingPosition
-function M.CreateEventSourceMappingRequest(_FunctionName, _StartingPositionTimestamp, _BatchSize, _Enabled, _EventSourceArn, _StartingPosition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateEventSourceMappingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionName [FunctionName] <p>The Lambda function to invoke when AWS Lambda detects an event on the stream.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). </p> <p> If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- * StartingPositionTimestamp [Date] <p>The timestamp of the data record from which to start reading. Used with <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">shard iterator type</a> AT_TIMESTAMP. If a record with this exact timestamp does not exist, the iterator returned is for the next (later) record. If the timestamp is older than the current trim horizon, the iterator returned is for the oldest untrimmed data record (TRIM_HORIZON). Valid only for Kinesis streams. </p>
+-- * BatchSize [BatchSize] <p>The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records. The default is 100 records.</p>
+-- * Enabled [Enabled] <p>Indicates whether AWS Lambda should begin polling the event source. By default, <code>Enabled</code> is true. </p>
+-- * EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon DynamoDB stream that is the event source. Any record added to this stream could cause AWS Lambda to invoke your Lambda function, it depends on the <code>BatchSize</code>. AWS Lambda POSTs the Amazon Kinesis event, containing records, to your Lambda function as JSON.</p>
+-- * StartingPosition [EventSourcePosition] <p>The position in the stream where AWS Lambda should start reading. Valid only for Kinesis streams. For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetShardIterator.html#Kinesis-GetShardIterator-request-ShardIteratorType">ShardIteratorType</a> in the <i>Amazon Kinesis API Reference</i>. </p>
+-- Required key: EventSourceArn
+-- Required key: FunctionName
+-- Required key: StartingPosition
+-- @return CreateEventSourceMappingRequest structure as a key-value pair table
+function M.CreateEventSourceMappingRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateEventSourceMappingRequest")
 	local t = { 
-		["FunctionName"] = _FunctionName,
-		["StartingPositionTimestamp"] = _StartingPositionTimestamp,
-		["BatchSize"] = _BatchSize,
-		["Enabled"] = _Enabled,
-		["EventSourceArn"] = _EventSourceArn,
-		["StartingPosition"] = _StartingPosition,
+		["FunctionName"] = args["FunctionName"],
+		["StartingPositionTimestamp"] = args["StartingPositionTimestamp"],
+		["BatchSize"] = args["BatchSize"],
+		["Enabled"] = args["Enabled"],
+		["EventSourceArn"] = args["EventSourceArn"],
+		["StartingPosition"] = args["StartingPosition"],
 	}
 	asserts.AssertCreateEventSourceMappingRequest(t)
 	return t
@@ -903,17 +987,20 @@ end
 
 --- Create a structure of type RemovePermissionRequest
 -- <p/>
--- @param _StatementId [StatementId] <p>Statement ID of the permission to remove.</p>
--- @param _FunctionName [FunctionName] <p>Lambda function whose resource policy you want to remove a permission from.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _Qualifier [Qualifier] <p>You can specify this optional parameter to remove permission associated with a specific function version or function alias. If you don't specify this parameter, the API removes permission associated with the unqualified function ARN.</p>
--- Required parameter: FunctionName
--- Required parameter: StatementId
-function M.RemovePermissionRequest(_StatementId, _FunctionName, _Qualifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemovePermissionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StatementId [StatementId] <p>Statement ID of the permission to remove.</p>
+-- * FunctionName [FunctionName] <p>Lambda function whose resource policy you want to remove a permission from.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * Qualifier [Qualifier] <p>You can specify this optional parameter to remove permission associated with a specific function version or function alias. If you don't specify this parameter, the API removes permission associated with the unqualified function ARN.</p>
+-- Required key: FunctionName
+-- Required key: StatementId
+-- @return RemovePermissionRequest structure as a key-value pair table
+function M.RemovePermissionRequest(args)
+	assert(args, "You must provdide an argument table when creating RemovePermissionRequest")
 	local t = { 
-		["StatementId"] = _StatementId,
-		["FunctionName"] = _FunctionName,
-		["Qualifier"] = _Qualifier,
+		["StatementId"] = args["StatementId"],
+		["FunctionName"] = args["FunctionName"],
+		["Qualifier"] = args["Qualifier"],
 	}
 	asserts.AssertRemovePermissionRequest(t)
 	return t
@@ -933,13 +1020,16 @@ end
 
 --- Create a structure of type ListFunctionsRequest
 -- <p/>
--- @param _Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListFunctions</code> operation. If present, indicates where to continue the listing. </p>
--- @param _MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of AWS Lambda functions to return in response. This parameter value must be greater than 0.</p>
-function M.ListFunctionsRequest(_Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListFunctions</code> operation. If present, indicates where to continue the listing. </p>
+-- * MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of AWS Lambda functions to return in response. This parameter value must be greater than 0.</p>
+-- @return ListFunctionsRequest structure as a key-value pair table
+function M.ListFunctionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListFunctionsRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListFunctionsRequest(t)
 	return t
@@ -960,15 +1050,18 @@ end
 
 --- Create a structure of type EC2UnexpectedException
 -- <p>AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.</p>
--- @param _Message [String] 
--- @param _Type [String] 
--- @param _EC2ErrorCode [String] 
-function M.EC2UnexpectedException(_Message, _Type, _EC2ErrorCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EC2UnexpectedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- * EC2ErrorCode [String] 
+-- @return EC2UnexpectedException structure as a key-value pair table
+function M.EC2UnexpectedException(args)
+	assert(args, "You must provdide an argument table when creating EC2UnexpectedException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
-		["EC2ErrorCode"] = _EC2ErrorCode,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
+		["EC2ErrorCode"] = args["EC2ErrorCode"],
 	}
 	asserts.AssertEC2UnexpectedException(t)
 	return t
@@ -990,15 +1083,18 @@ end
 
 --- Create a structure of type UntagResourceRequest
 --  
--- @param _TagKeys [TagKeyList] <p>The list of tag keys to be deleted from the function.</p>
--- @param _Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the function.</p>
--- Required parameter: Resource
--- Required parameter: TagKeys
-function M.UntagResourceRequest(_TagKeys, _Resource, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagKeys [TagKeyList] <p>The list of tag keys to be deleted from the function.</p>
+-- * Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the function.</p>
+-- Required key: Resource
+-- Required key: TagKeys
+-- @return UntagResourceRequest structure as a key-value pair table
+function M.UntagResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
 	local t = { 
-		["TagKeys"] = _TagKeys,
-		["Resource"] = _Resource,
+		["TagKeys"] = args["TagKeys"],
+		["Resource"] = args["Resource"],
 	}
 	asserts.AssertUntagResourceRequest(t)
 	return t
@@ -1036,44 +1132,47 @@ end
 
 --- Create a structure of type CreateFunctionRequest
 -- <p/>
--- @param _TracingConfig [TracingConfig] <p>The parent object that contains your function's tracing settings.</p>
--- @param _Code [FunctionCode] <p>The code for the Lambda function.</p>
--- @param _DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic. </p>
--- @param _FunctionName [FunctionName] <p>The name you want to assign to the function you are uploading. The function names appear in the console and are returned in the <a>ListFunctions</a> API. Function names are used to specify functions to other AWS Lambda API operations, such as <a>Invoke</a>. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _VpcConfig [VpcConfig] <p>If your Lambda function accesses resources in a VPC, you provide this parameter identifying the list of security group IDs and subnet IDs. These must belong to the same VPC. You must provide at least one security group and one subnet ID.</p>
--- @param _Tags [Tags] <p>The list of tags (key-value pairs) assigned to the new function.</p>
--- @param _KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If not provided, AWS Lambda will use a default service key.</p>
--- @param _MemorySize [MemorySize] <p>The amount of memory, in MB, your Lambda function is given. Lambda uses this memory size to infer the amount of CPU and memory allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
--- @param _Publish [Boolean] <p>This boolean parameter can be used to request AWS Lambda to create the Lambda function and publish a version as an atomic operation.</p>
--- @param _Environment [Environment] 
--- @param _Handler [Handler] <p>The function within your code that Lambda calls to begin execution. For Node.js, it is the <i>module-name</i>.<i>export</i> value in your function. For Java, it can be <code>package.class-name::handler</code> or <code>package.class-name</code>. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-handler-types.html">Lambda Function Handler (Java)</a>. </p>
--- @param _Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a>. </p>
--- @param _Timeout [Timeout] <p>The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
--- @param _Runtime [Runtime] <p>The runtime environment for the Lambda function you are uploading.</p> <p>To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3".</p> <note> <p>Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can request a one-time extension until June 30, 2017 by going to the Lambda console and following the instructions provided. Failure to do so will result in an invalid parmaeter error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.</p> </note>
--- @param _Description [Description] <p>A short, user-defined function description. Lambda does not use this value. Assign a meaningful description as you see fit.</p>
--- Required parameter: FunctionName
--- Required parameter: Runtime
--- Required parameter: Role
--- Required parameter: Handler
--- Required parameter: Code
-function M.CreateFunctionRequest(_TracingConfig, _Code, _DeadLetterConfig, _FunctionName, _VpcConfig, _Tags, _KMSKeyArn, _MemorySize, _Publish, _Environment, _Handler, _Role, _Timeout, _Runtime, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFunctionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TracingConfig [TracingConfig] <p>The parent object that contains your function's tracing settings.</p>
+-- * Code [FunctionCode] <p>The code for the Lambda function.</p>
+-- * DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic. </p>
+-- * FunctionName [FunctionName] <p>The name you want to assign to the function you are uploading. The function names appear in the console and are returned in the <a>ListFunctions</a> API. Function names are used to specify functions to other AWS Lambda API operations, such as <a>Invoke</a>. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * VpcConfig [VpcConfig] <p>If your Lambda function accesses resources in a VPC, you provide this parameter identifying the list of security group IDs and subnet IDs. These must belong to the same VPC. You must provide at least one security group and one subnet ID.</p>
+-- * Tags [Tags] <p>The list of tags (key-value pairs) assigned to the new function.</p>
+-- * KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If not provided, AWS Lambda will use a default service key.</p>
+-- * MemorySize [MemorySize] <p>The amount of memory, in MB, your Lambda function is given. Lambda uses this memory size to infer the amount of CPU and memory allocated to your function. Your function use-case determines your CPU and memory requirements. For example, a database operation might need less memory compared to an image processing function. The default value is 128 MB. The value must be a multiple of 64 MB.</p>
+-- * Publish [Boolean] <p>This boolean parameter can be used to request AWS Lambda to create the Lambda function and publish a version as an atomic operation.</p>
+-- * Environment [Environment] 
+-- * Handler [Handler] <p>The function within your code that Lambda calls to begin execution. For Node.js, it is the <i>module-name</i>.<i>export</i> value in your function. For Java, it can be <code>package.class-name::handler</code> or <code>package.class-name</code>. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/java-programming-model-handler-types.html">Lambda Function Handler (Java)</a>. </p>
+-- * Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a>. </p>
+-- * Timeout [Timeout] <p>The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
+-- * Runtime [Runtime] <p>The runtime environment for the Lambda function you are uploading.</p> <p>To use the Python runtime v3.6, set the value to "python3.6". To use the Python runtime v2.7, set the value to "python2.7". To use the Node.js runtime v6.10, set the value to "nodejs6.10". To use the Node.js runtime v4.3, set the value to "nodejs4.3".</p> <note> <p>Node v0.10.42 is currently marked as deprecated. You must migrate existing functions to the newer Node.js runtime versions available on AWS Lambda (nodejs4.3 or nodejs6.10) as soon as possible. You can request a one-time extension until June 30, 2017 by going to the Lambda console and following the instructions provided. Failure to do so will result in an invalid parmaeter error being returned. Note that you will have to follow this procedure for each region that contains functions written in the Node v0.10.42 runtime.</p> </note>
+-- * Description [Description] <p>A short, user-defined function description. Lambda does not use this value. Assign a meaningful description as you see fit.</p>
+-- Required key: FunctionName
+-- Required key: Runtime
+-- Required key: Role
+-- Required key: Handler
+-- Required key: Code
+-- @return CreateFunctionRequest structure as a key-value pair table
+function M.CreateFunctionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateFunctionRequest")
 	local t = { 
-		["TracingConfig"] = _TracingConfig,
-		["Code"] = _Code,
-		["DeadLetterConfig"] = _DeadLetterConfig,
-		["FunctionName"] = _FunctionName,
-		["VpcConfig"] = _VpcConfig,
-		["Tags"] = _Tags,
-		["KMSKeyArn"] = _KMSKeyArn,
-		["MemorySize"] = _MemorySize,
-		["Publish"] = _Publish,
-		["Environment"] = _Environment,
-		["Handler"] = _Handler,
-		["Role"] = _Role,
-		["Timeout"] = _Timeout,
-		["Runtime"] = _Runtime,
-		["Description"] = _Description,
+		["TracingConfig"] = args["TracingConfig"],
+		["Code"] = args["Code"],
+		["DeadLetterConfig"] = args["DeadLetterConfig"],
+		["FunctionName"] = args["FunctionName"],
+		["VpcConfig"] = args["VpcConfig"],
+		["Tags"] = args["Tags"],
+		["KMSKeyArn"] = args["KMSKeyArn"],
+		["MemorySize"] = args["MemorySize"],
+		["Publish"] = args["Publish"],
+		["Environment"] = args["Environment"],
+		["Handler"] = args["Handler"],
+		["Role"] = args["Role"],
+		["Timeout"] = args["Timeout"],
+		["Runtime"] = args["Runtime"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateFunctionRequest(t)
 	return t
@@ -1093,13 +1192,16 @@ end
 
 --- Create a structure of type KMSDisabledException
 -- <p>Lambda was unable to decrypt the environment variables because the KMS key used is disabled. Check the Lambda function's KMS key settings.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.KMSDisabledException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KMSDisabledException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return KMSDisabledException structure as a key-value pair table
+function M.KMSDisabledException(args)
+	assert(args, "You must provdide an argument table when creating KMSDisabledException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertKMSDisabledException(t)
 	return t
@@ -1119,13 +1221,16 @@ end
 
 --- Create a structure of type KMSAccessDeniedException
 -- <p>Lambda was unable to decrypt the environment variables because KMS access was denied. Check the Lambda function's KMS permissions.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.KMSAccessDeniedException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KMSAccessDeniedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return KMSAccessDeniedException structure as a key-value pair table
+function M.KMSAccessDeniedException(args)
+	assert(args, "You must provdide an argument table when creating KMSAccessDeniedException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertKMSAccessDeniedException(t)
 	return t
@@ -1145,13 +1250,16 @@ end
 
 --- Create a structure of type EnvironmentResponse
 -- <p>The parent object returned that contains your environment's configuration settings or any error information associated with your configuration settings.</p>
--- @param _Variables [EnvironmentVariables] <p>The key-value pairs returned that represent your environment's configuration settings or error information.</p>
--- @param _Error [EnvironmentError] 
-function M.EnvironmentResponse(_Variables, _Error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Variables [EnvironmentVariables] <p>The key-value pairs returned that represent your environment's configuration settings or error information.</p>
+-- * Error [EnvironmentError] 
+-- @return EnvironmentResponse structure as a key-value pair table
+function M.EnvironmentResponse(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentResponse")
 	local t = { 
-		["Variables"] = _Variables,
-		["Error"] = _Error,
+		["Variables"] = args["Variables"],
+		["Error"] = args["Error"],
 	}
 	asserts.AssertEnvironmentResponse(t)
 	return t
@@ -1171,13 +1279,16 @@ end
 
 --- Create a structure of type EC2AccessDeniedException
 -- <p/>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.EC2AccessDeniedException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EC2AccessDeniedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return EC2AccessDeniedException structure as a key-value pair table
+function M.EC2AccessDeniedException(args)
+	assert(args, "You must provdide an argument table when creating EC2AccessDeniedException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertEC2AccessDeniedException(t)
 	return t
@@ -1197,13 +1308,16 @@ end
 
 --- Create a structure of type InvalidRequestContentException
 -- <p>The request body could not be parsed as JSON.</p>
--- @param _message [String] <p/>
--- @param _Type [String] <p/>
-function M.InvalidRequestContentException(_message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestContentException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p/>
+-- * Type [String] <p/>
+-- @return InvalidRequestContentException structure as a key-value pair table
+function M.InvalidRequestContentException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRequestContentException")
 	local t = { 
-		["message"] = _message,
-		["Type"] = _Type,
+		["message"] = args["message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertInvalidRequestContentException(t)
 	return t
@@ -1238,43 +1352,46 @@ end
 
 --- Create a structure of type FunctionConfiguration
 -- <p>A complex type that describes function metadata.</p>
--- @param _TracingConfig [TracingConfigResponse] <p>The parent object that contains your function's tracing settings.</p>
--- @param _Version [Version] <p>The version of the Lambda function.</p>
--- @param _CodeSha256 [String] <p>It is the SHA256 hash of your function deployment package.</p>
--- @param _FunctionName [FunctionName] <p>The name of the function. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param _VpcConfig [VpcConfigResponse] <p>VPC configuration associated with your Lambda function.</p>
--- @param _KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If empty, it means you are using the AWS Lambda default service key.</p>
--- @param _MemorySize [MemorySize] <p>The memory size, in MB, you configured for the function. Must be a multiple of 64 MB.</p>
--- @param _CodeSize [Long] <p>The size, in bytes, of the function .zip file you uploaded.</p>
--- @param _FunctionArn [FunctionArn] <p>The Amazon Resource Name (ARN) assigned to the function.</p>
--- @param _Environment [EnvironmentResponse] <p>The parent object that contains your environment's configuration settings.</p>
--- @param _Handler [Handler] <p>The function Lambda calls to begin executing your function.</p>
--- @param _Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources.</p>
--- @param _Timeout [Timeout] <p>The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
--- @param _LastModified [Timestamp] <p>The time stamp of the last time you updated the function. The time stamp is conveyed as a string complying with ISO-8601 in this way YYYY-MM-DDThh:mm:ssTZD (e.g., 1997-07-16T19:20:30+01:00). For more information, see <a href="https://www.w3.org/TR/NOTE-datetime">Date and Time Formats</a>.</p>
--- @param _DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.</p>
--- @param _Runtime [Runtime] <p>The runtime environment for the Lambda function.</p>
--- @param _Description [Description] <p>The user-provided description.</p>
-function M.FunctionConfiguration(_TracingConfig, _Version, _CodeSha256, _FunctionName, _VpcConfig, _KMSKeyArn, _MemorySize, _CodeSize, _FunctionArn, _Environment, _Handler, _Role, _Timeout, _LastModified, _DeadLetterConfig, _Runtime, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FunctionConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TracingConfig [TracingConfigResponse] <p>The parent object that contains your function's tracing settings.</p>
+-- * Version [Version] <p>The version of the Lambda function.</p>
+-- * CodeSha256 [String] <p>It is the SHA256 hash of your function deployment package.</p>
+-- * FunctionName [FunctionName] <p>The name of the function. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- * VpcConfig [VpcConfigResponse] <p>VPC configuration associated with your Lambda function.</p>
+-- * KMSKeyArn [KMSKeyArn] <p>The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If empty, it means you are using the AWS Lambda default service key.</p>
+-- * MemorySize [MemorySize] <p>The memory size, in MB, you configured for the function. Must be a multiple of 64 MB.</p>
+-- * CodeSize [Long] <p>The size, in bytes, of the function .zip file you uploaded.</p>
+-- * FunctionArn [FunctionArn] <p>The Amazon Resource Name (ARN) assigned to the function.</p>
+-- * Environment [EnvironmentResponse] <p>The parent object that contains your environment's configuration settings.</p>
+-- * Handler [Handler] <p>The function Lambda calls to begin executing your function.</p>
+-- * Role [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources.</p>
+-- * Timeout [Timeout] <p>The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.</p>
+-- * LastModified [Timestamp] <p>The time stamp of the last time you updated the function. The time stamp is conveyed as a string complying with ISO-8601 in this way YYYY-MM-DDThh:mm:ssTZD (e.g., 1997-07-16T19:20:30+01:00). For more information, see <a href="https://www.w3.org/TR/NOTE-datetime">Date and Time Formats</a>.</p>
+-- * DeadLetterConfig [DeadLetterConfig] <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.</p>
+-- * Runtime [Runtime] <p>The runtime environment for the Lambda function.</p>
+-- * Description [Description] <p>The user-provided description.</p>
+-- @return FunctionConfiguration structure as a key-value pair table
+function M.FunctionConfiguration(args)
+	assert(args, "You must provdide an argument table when creating FunctionConfiguration")
 	local t = { 
-		["TracingConfig"] = _TracingConfig,
-		["Version"] = _Version,
-		["CodeSha256"] = _CodeSha256,
-		["FunctionName"] = _FunctionName,
-		["VpcConfig"] = _VpcConfig,
-		["KMSKeyArn"] = _KMSKeyArn,
-		["MemorySize"] = _MemorySize,
-		["CodeSize"] = _CodeSize,
-		["FunctionArn"] = _FunctionArn,
-		["Environment"] = _Environment,
-		["Handler"] = _Handler,
-		["Role"] = _Role,
-		["Timeout"] = _Timeout,
-		["LastModified"] = _LastModified,
-		["DeadLetterConfig"] = _DeadLetterConfig,
-		["Runtime"] = _Runtime,
-		["Description"] = _Description,
+		["TracingConfig"] = args["TracingConfig"],
+		["Version"] = args["Version"],
+		["CodeSha256"] = args["CodeSha256"],
+		["FunctionName"] = args["FunctionName"],
+		["VpcConfig"] = args["VpcConfig"],
+		["KMSKeyArn"] = args["KMSKeyArn"],
+		["MemorySize"] = args["MemorySize"],
+		["CodeSize"] = args["CodeSize"],
+		["FunctionArn"] = args["FunctionArn"],
+		["Environment"] = args["Environment"],
+		["Handler"] = args["Handler"],
+		["Role"] = args["Role"],
+		["Timeout"] = args["Timeout"],
+		["LastModified"] = args["LastModified"],
+		["DeadLetterConfig"] = args["DeadLetterConfig"],
+		["Runtime"] = args["Runtime"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertFunctionConfiguration(t)
 	return t
@@ -1294,13 +1411,16 @@ end
 
 --- Create a structure of type InvalidSecurityGroupIDException
 -- <p>The Security Group ID provided in the Lambda function VPC configuration is invalid.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.InvalidSecurityGroupIDException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSecurityGroupIDException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return InvalidSecurityGroupIDException structure as a key-value pair table
+function M.InvalidSecurityGroupIDException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSecurityGroupIDException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertInvalidSecurityGroupIDException(t)
 	return t
@@ -1319,11 +1439,14 @@ end
 
 --- Create a structure of type InvokeAsyncResponse
 -- <p>Upon success, it returns empty response. Otherwise, throws an exception.</p>
--- @param _Status [HttpStatus] <p>It will be 202 upon success.</p>
-function M.InvokeAsyncResponse(_Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvokeAsyncResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [HttpStatus] <p>It will be 202 upon success.</p>
+-- @return InvokeAsyncResponse structure as a key-value pair table
+function M.InvokeAsyncResponse(args)
+	assert(args, "You must provdide an argument table when creating InvokeAsyncResponse")
 	local t = { 
-		["Status"] = _Status,
+		["Status"] = args["Status"],
 	}
 	asserts.AssertInvokeAsyncResponse(t)
 	return t
@@ -1343,13 +1466,16 @@ end
 
 --- Create a structure of type ServiceException
 -- <p>The AWS Lambda service encountered an internal error.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.ServiceException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return ServiceException structure as a key-value pair table
+function M.ServiceException(args)
+	assert(args, "You must provdide an argument table when creating ServiceException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertServiceException(t)
 	return t
@@ -1374,20 +1500,23 @@ end
 
 --- Create a structure of type CreateAliasRequest
 --  
--- @param _Description [Description] <p>Description of the alias.</p>
--- @param _FunctionVersion [Version] <p>Lambda function version for which you are creating the alias.</p>
--- @param _FunctionName [FunctionName] <p>Name of the Lambda function for which you want to create an alias. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param _Name [Alias] <p>Name for the alias you are creating.</p>
--- Required parameter: FunctionName
--- Required parameter: Name
--- Required parameter: FunctionVersion
-function M.CreateAliasRequest(_Description, _FunctionVersion, _FunctionName, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAliasRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [Description] <p>Description of the alias.</p>
+-- * FunctionVersion [Version] <p>Lambda function version for which you are creating the alias.</p>
+-- * FunctionName [FunctionName] <p>Name of the Lambda function for which you want to create an alias. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- * Name [Alias] <p>Name for the alias you are creating.</p>
+-- Required key: FunctionName
+-- Required key: Name
+-- Required key: FunctionVersion
+-- @return CreateAliasRequest structure as a key-value pair table
+function M.CreateAliasRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateAliasRequest")
 	local t = { 
-		["Description"] = _Description,
-		["FunctionVersion"] = _FunctionVersion,
-		["FunctionName"] = _FunctionName,
-		["Name"] = _Name,
+		["Description"] = args["Description"],
+		["FunctionVersion"] = args["FunctionVersion"],
+		["FunctionName"] = args["FunctionName"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateAliasRequest(t)
 	return t
@@ -1407,12 +1536,15 @@ end
 
 --- Create a structure of type DeleteEventSourceMappingRequest
 -- <p/>
--- @param _UUID [String] <p>The event source mapping ID.</p>
--- Required parameter: UUID
-function M.DeleteEventSourceMappingRequest(_UUID, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteEventSourceMappingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UUID [String] <p>The event source mapping ID.</p>
+-- Required key: UUID
+-- @return DeleteEventSourceMappingRequest structure as a key-value pair table
+function M.DeleteEventSourceMappingRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteEventSourceMappingRequest")
 	local t = { 
-		["UUID"] = _UUID,
+		["UUID"] = args["UUID"],
 	}
 	asserts.AssertDeleteEventSourceMappingRequest(t)
 	return t
@@ -1432,13 +1564,16 @@ end
 
 --- Create a structure of type UnsupportedMediaTypeException
 -- <p>The content type of the <code>Invoke</code> request body is not JSON.</p>
--- @param _message [String] 
--- @param _Type [String] 
-function M.UnsupportedMediaTypeException(_message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedMediaTypeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- * Type [String] 
+-- @return UnsupportedMediaTypeException structure as a key-value pair table
+function M.UnsupportedMediaTypeException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedMediaTypeException")
 	local t = { 
-		["message"] = _message,
-		["Type"] = _Type,
+		["message"] = args["message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertUnsupportedMediaTypeException(t)
 	return t
@@ -1461,18 +1596,21 @@ end
 
 --- Create a structure of type UpdateEventSourceMappingRequest
 -- <p/>
--- @param _BatchSize [BatchSize] <p>The maximum number of stream records that can be sent to your Lambda function for a single invocation.</p>
--- @param _Enabled [Enabled] <p>Specifies whether AWS Lambda should actively poll the stream or not. If disabled, AWS Lambda will not poll the stream.</p>
--- @param _UUID [String] <p>The event source mapping identifier.</p>
--- @param _FunctionName [FunctionName] <p>The Lambda function to which you want the stream records sent.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p> <p>If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length.</p>
--- Required parameter: UUID
-function M.UpdateEventSourceMappingRequest(_BatchSize, _Enabled, _UUID, _FunctionName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateEventSourceMappingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BatchSize [BatchSize] <p>The maximum number of stream records that can be sent to your Lambda function for a single invocation.</p>
+-- * Enabled [Enabled] <p>Specifies whether AWS Lambda should actively poll the stream or not. If disabled, AWS Lambda will not poll the stream.</p>
+-- * UUID [String] <p>The event source mapping identifier.</p>
+-- * FunctionName [FunctionName] <p>The Lambda function to which you want the stream records sent.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p> <p>If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). For more information about versioning, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">AWS Lambda Function Versioning and Aliases</a> </p> <p>Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 character in length.</p>
+-- Required key: UUID
+-- @return UpdateEventSourceMappingRequest structure as a key-value pair table
+function M.UpdateEventSourceMappingRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateEventSourceMappingRequest")
 	local t = { 
-		["BatchSize"] = _BatchSize,
-		["Enabled"] = _Enabled,
-		["UUID"] = _UUID,
-		["FunctionName"] = _FunctionName,
+		["BatchSize"] = args["BatchSize"],
+		["Enabled"] = args["Enabled"],
+		["UUID"] = args["UUID"],
+		["FunctionName"] = args["FunctionName"],
 	}
 	asserts.AssertUpdateEventSourceMappingRequest(t)
 	return t
@@ -1490,8 +1628,11 @@ end
 
 --- Create a structure of type GetAccountSettingsRequest
 --  
-function M.GetAccountSettingsRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAccountSettingsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetAccountSettingsRequest structure as a key-value pair table
+function M.GetAccountSettingsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetAccountSettingsRequest")
 	local t = { 
 	}
 	asserts.AssertGetAccountSettingsRequest(t)
@@ -1512,13 +1653,16 @@ end
 
 --- Create a structure of type InvalidRuntimeException
 -- <p>The runtime or runtime version specified is not supported.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.InvalidRuntimeException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRuntimeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return InvalidRuntimeException structure as a key-value pair table
+function M.InvalidRuntimeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRuntimeException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertInvalidRuntimeException(t)
 	return t
@@ -1539,15 +1683,18 @@ end
 
 --- Create a structure of type GetFunctionResponse
 -- <p>This response contains the object for the Lambda function location (see <a>FunctionCodeLocation</a>.</p>
--- @param _Code [FunctionCodeLocation] 
--- @param _Configuration [FunctionConfiguration] 
--- @param _Tags [Tags] <p>Returns the list of tags associated with the function.</p>
-function M.GetFunctionResponse(_Code, _Configuration, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Code [FunctionCodeLocation] 
+-- * Configuration [FunctionConfiguration] 
+-- * Tags [Tags] <p>Returns the list of tags associated with the function.</p>
+-- @return GetFunctionResponse structure as a key-value pair table
+function M.GetFunctionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetFunctionResponse")
 	local t = { 
-		["Code"] = _Code,
-		["Configuration"] = _Configuration,
-		["Tags"] = _Tags,
+		["Code"] = args["Code"],
+		["Configuration"] = args["Configuration"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertGetFunctionResponse(t)
 	return t
@@ -1569,17 +1716,20 @@ end
 
 --- Create a structure of type FunctionCode
 -- <p>The code for the Lambda function.</p>
--- @param _S3Bucket [S3Bucket] <p>Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS region where you are creating the Lambda function.</p>
--- @param _S3Key [S3Key] <p>The Amazon S3 object (the deployment package) key name you want to upload.</p>
--- @param _ZipFile [Blob] <p>The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
--- @param _S3ObjectVersion [S3ObjectVersion] <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
-function M.FunctionCode(_S3Bucket, _S3Key, _ZipFile, _S3ObjectVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FunctionCode")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * S3Bucket [S3Bucket] <p>Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS region where you are creating the Lambda function.</p>
+-- * S3Key [S3Key] <p>The Amazon S3 object (the deployment package) key name you want to upload.</p>
+-- * ZipFile [Blob] <p>The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html">Execution Permissions</a> in the <i>AWS Lambda Developer Guide</i>. </p>
+-- * S3ObjectVersion [S3ObjectVersion] <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
+-- @return FunctionCode structure as a key-value pair table
+function M.FunctionCode(args)
+	assert(args, "You must provdide an argument table when creating FunctionCode")
 	local t = { 
-		["S3Bucket"] = _S3Bucket,
-		["S3Key"] = _S3Key,
-		["ZipFile"] = _ZipFile,
-		["S3ObjectVersion"] = _S3ObjectVersion,
+		["S3Bucket"] = args["S3Bucket"],
+		["S3Key"] = args["S3Key"],
+		["ZipFile"] = args["ZipFile"],
+		["S3ObjectVersion"] = args["S3ObjectVersion"],
 	}
 	asserts.AssertFunctionCode(t)
 	return t
@@ -1599,13 +1749,16 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The resource (for example, a Lambda function or access policy statement) specified in the request does not exist.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.ResourceNotFoundException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -1624,11 +1777,14 @@ end
 
 --- Create a structure of type TracingConfigResponse
 -- <p>Parent object of the tracing information associated with your Lambda function.</p>
--- @param _Mode [TracingMode] <p>The tracing mode associated with your Lambda function.</p>
-function M.TracingConfigResponse(_Mode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TracingConfigResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Mode [TracingMode] <p>The tracing mode associated with your Lambda function.</p>
+-- @return TracingConfigResponse structure as a key-value pair table
+function M.TracingConfigResponse(args)
+	assert(args, "You must provdide an argument table when creating TracingConfigResponse")
 	local t = { 
-		["Mode"] = _Mode,
+		["Mode"] = args["Mode"],
 	}
 	asserts.AssertTracingConfigResponse(t)
 	return t
@@ -1648,13 +1804,16 @@ end
 
 --- Create a structure of type FunctionCodeLocation
 -- <p>The object for the Lambda function location.</p>
--- @param _RepositoryType [String] <p>The repository from which you can download the function.</p>
--- @param _Location [String] <p>The presigned URL you can use to download the function's .zip file that you previously uploaded. The URL is valid for up to 10 minutes.</p>
-function M.FunctionCodeLocation(_RepositoryType, _Location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FunctionCodeLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RepositoryType [String] <p>The repository from which you can download the function.</p>
+-- * Location [String] <p>The presigned URL you can use to download the function's .zip file that you previously uploaded. The URL is valid for up to 10 minutes.</p>
+-- @return FunctionCodeLocation structure as a key-value pair table
+function M.FunctionCodeLocation(args)
+	assert(args, "You must provdide an argument table when creating FunctionCodeLocation")
 	local t = { 
-		["RepositoryType"] = _RepositoryType,
-		["Location"] = _Location,
+		["RepositoryType"] = args["RepositoryType"],
+		["Location"] = args["Location"],
 	}
 	asserts.AssertFunctionCodeLocation(t)
 	return t
@@ -1676,17 +1835,20 @@ end
 
 --- Create a structure of type AccountLimit
 -- <p>Provides limits of code size and concurrency associated with the current account and region.</p>
--- @param _CodeSizeUnzipped [Long] <p>Size, in bytes, of code/dependencies that you can zip into a deployment package (uncompressed zip/jar size) for uploading. The default limit is 250 MB.</p>
--- @param _ConcurrentExecutions [Integer] <p>Number of simultaneous executions of your function per region. For more information or to request a limit increase for concurrent executions, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Lambda Function Concurrent Executions</a>. The default limit is 100.</p>
--- @param _CodeSizeZipped [Long] <p>Size, in bytes, of a single zipped code/dependencies package you can upload for your Lambda function(.zip/.jar file). Try using Amazon S3 for uploading larger files. Default limit is 50 MB.</p>
--- @param _TotalCodeSize [Long] <p>Maximum size, in bytes, of a code package you can upload per region. The default size is 75 GB. </p>
-function M.AccountLimit(_CodeSizeUnzipped, _ConcurrentExecutions, _CodeSizeZipped, _TotalCodeSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccountLimit")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CodeSizeUnzipped [Long] <p>Size, in bytes, of code/dependencies that you can zip into a deployment package (uncompressed zip/jar size) for uploading. The default limit is 250 MB.</p>
+-- * ConcurrentExecutions [Integer] <p>Number of simultaneous executions of your function per region. For more information or to request a limit increase for concurrent executions, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Lambda Function Concurrent Executions</a>. The default limit is 100.</p>
+-- * CodeSizeZipped [Long] <p>Size, in bytes, of a single zipped code/dependencies package you can upload for your Lambda function(.zip/.jar file). Try using Amazon S3 for uploading larger files. Default limit is 50 MB.</p>
+-- * TotalCodeSize [Long] <p>Maximum size, in bytes, of a code package you can upload per region. The default size is 75 GB. </p>
+-- @return AccountLimit structure as a key-value pair table
+function M.AccountLimit(args)
+	assert(args, "You must provdide an argument table when creating AccountLimit")
 	local t = { 
-		["CodeSizeUnzipped"] = _CodeSizeUnzipped,
-		["ConcurrentExecutions"] = _ConcurrentExecutions,
-		["CodeSizeZipped"] = _CodeSizeZipped,
-		["TotalCodeSize"] = _TotalCodeSize,
+		["CodeSizeUnzipped"] = args["CodeSizeUnzipped"],
+		["ConcurrentExecutions"] = args["ConcurrentExecutions"],
+		["CodeSizeZipped"] = args["CodeSizeZipped"],
+		["TotalCodeSize"] = args["TotalCodeSize"],
 	}
 	asserts.AssertAccountLimit(t)
 	return t
@@ -1712,25 +1874,28 @@ end
 
 --- Create a structure of type EventSourceMappingConfiguration
 -- <p>Describes mapping between an Amazon Kinesis stream and a Lambda function.</p>
--- @param _UUID [String] <p>The AWS Lambda assigned opaque identifier for the mapping.</p>
--- @param _StateTransitionReason [String] <p>The reason the event source mapping is in its current state. It is either user-requested or an AWS Lambda-initiated state transition.</p>
--- @param _LastModified [Date] <p>The UTC time string indicating the last time the event mapping was updated.</p>
--- @param _BatchSize [BatchSize] <p>The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records.</p>
--- @param _State [String] <p>The state of the event source mapping. It can be <code>Creating</code>, <code>Enabled</code>, <code>Disabled</code>, <code>Enabling</code>, <code>Disabling</code>, <code>Updating</code>, or <code>Deleting</code>.</p>
--- @param _FunctionArn [FunctionArn] <p>The Lambda function to invoke when AWS Lambda detects an event on the stream.</p>
--- @param _EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the source of events.</p>
--- @param _LastProcessingResult [String] <p>The result of the last AWS Lambda invocation of your Lambda function.</p>
-function M.EventSourceMappingConfiguration(_UUID, _StateTransitionReason, _LastModified, _BatchSize, _State, _FunctionArn, _EventSourceArn, _LastProcessingResult, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventSourceMappingConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UUID [String] <p>The AWS Lambda assigned opaque identifier for the mapping.</p>
+-- * StateTransitionReason [String] <p>The reason the event source mapping is in its current state. It is either user-requested or an AWS Lambda-initiated state transition.</p>
+-- * LastModified [Date] <p>The UTC time string indicating the last time the event mapping was updated.</p>
+-- * BatchSize [BatchSize] <p>The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records.</p>
+-- * State [String] <p>The state of the event source mapping. It can be <code>Creating</code>, <code>Enabled</code>, <code>Disabled</code>, <code>Enabling</code>, <code>Disabling</code>, <code>Updating</code>, or <code>Deleting</code>.</p>
+-- * FunctionArn [FunctionArn] <p>The Lambda function to invoke when AWS Lambda detects an event on the stream.</p>
+-- * EventSourceArn [Arn] <p>The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the source of events.</p>
+-- * LastProcessingResult [String] <p>The result of the last AWS Lambda invocation of your Lambda function.</p>
+-- @return EventSourceMappingConfiguration structure as a key-value pair table
+function M.EventSourceMappingConfiguration(args)
+	assert(args, "You must provdide an argument table when creating EventSourceMappingConfiguration")
 	local t = { 
-		["UUID"] = _UUID,
-		["StateTransitionReason"] = _StateTransitionReason,
-		["LastModified"] = _LastModified,
-		["BatchSize"] = _BatchSize,
-		["State"] = _State,
-		["FunctionArn"] = _FunctionArn,
-		["EventSourceArn"] = _EventSourceArn,
-		["LastProcessingResult"] = _LastProcessingResult,
+		["UUID"] = args["UUID"],
+		["StateTransitionReason"] = args["StateTransitionReason"],
+		["LastModified"] = args["LastModified"],
+		["BatchSize"] = args["BatchSize"],
+		["State"] = args["State"],
+		["FunctionArn"] = args["FunctionArn"],
+		["EventSourceArn"] = args["EventSourceArn"],
+		["LastProcessingResult"] = args["LastProcessingResult"],
 	}
 	asserts.AssertEventSourceMappingConfiguration(t)
 	return t
@@ -1750,13 +1915,16 @@ end
 
 --- Create a structure of type EnvironmentError
 -- <p>The parent object that contains error information associated with your configuration settings.</p>
--- @param _ErrorCode [String] <p>The error code returned by the environment error object.</p>
--- @param _Message [SensitiveString] <p>The message returned by the environment error object.</p>
-function M.EnvironmentError(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [String] <p>The error code returned by the environment error object.</p>
+-- * Message [SensitiveString] <p>The message returned by the environment error object.</p>
+-- @return EnvironmentError structure as a key-value pair table
+function M.EnvironmentError(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentError")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertEnvironmentError(t)
 	return t
@@ -1777,14 +1945,17 @@ end
 
 --- Create a structure of type GetPolicyRequest
 -- <p/>
--- @param _FunctionName [FunctionName] <p>Function name whose resource policy you want to retrieve.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _Qualifier [Qualifier] <p>You can specify this optional query parameter to specify a function version or an alias name in which case this API will return all permissions associated with the specific qualified ARN. If you don't provide this parameter, the API will return permissions that apply to the unqualified function ARN.</p>
--- Required parameter: FunctionName
-function M.GetPolicyRequest(_FunctionName, _Qualifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionName [FunctionName] <p>Function name whose resource policy you want to retrieve.</p> <p> You can specify the function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). If you are using versioning, you can also provide a qualified function ARN (ARN that is qualified with function version or alias name as suffix). AWS Lambda also allows you to specify only the function name with the account ID qualifier (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * Qualifier [Qualifier] <p>You can specify this optional query parameter to specify a function version or an alias name in which case this API will return all permissions associated with the specific qualified ARN. If you don't provide this parameter, the API will return permissions that apply to the unqualified function ARN.</p>
+-- Required key: FunctionName
+-- @return GetPolicyRequest structure as a key-value pair table
+function M.GetPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetPolicyRequest")
 	local t = { 
-		["FunctionName"] = _FunctionName,
-		["Qualifier"] = _Qualifier,
+		["FunctionName"] = args["FunctionName"],
+		["Qualifier"] = args["Qualifier"],
 	}
 	asserts.AssertGetPolicyRequest(t)
 	return t
@@ -1804,13 +1975,16 @@ end
 
 --- Create a structure of type SubnetIPAddressLimitReachedException
 -- <p>AWS Lambda was not able to set up VPC access for the Lambda function because one or more configured subnets has no available IP addresses.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.SubnetIPAddressLimitReachedException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetIPAddressLimitReachedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return SubnetIPAddressLimitReachedException structure as a key-value pair table
+function M.SubnetIPAddressLimitReachedException(args)
+	assert(args, "You must provdide an argument table when creating SubnetIPAddressLimitReachedException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertSubnetIPAddressLimitReachedException(t)
 	return t
@@ -1830,12 +2004,15 @@ end
 
 --- Create a structure of type GetEventSourceMappingRequest
 -- <p/>
--- @param _UUID [String] <p>The AWS Lambda assigned ID of the event source mapping.</p>
--- Required parameter: UUID
-function M.GetEventSourceMappingRequest(_UUID, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetEventSourceMappingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UUID [String] <p>The AWS Lambda assigned ID of the event source mapping.</p>
+-- Required key: UUID
+-- @return GetEventSourceMappingRequest structure as a key-value pair table
+function M.GetEventSourceMappingRequest(args)
+	assert(args, "You must provdide an argument table when creating GetEventSourceMappingRequest")
 	local t = { 
-		["UUID"] = _UUID,
+		["UUID"] = args["UUID"],
 	}
 	asserts.AssertGetEventSourceMappingRequest(t)
 	return t
@@ -1855,13 +2032,16 @@ end
 
 --- Create a structure of type EC2ThrottledException
 -- <p>AWS Lambda was throttled by Amazon EC2 during Lambda function initialization using the execution role provided for the Lambda function.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.EC2ThrottledException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EC2ThrottledException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return EC2ThrottledException structure as a key-value pair table
+function M.EC2ThrottledException(args)
+	assert(args, "You must provdide an argument table when creating EC2ThrottledException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertEC2ThrottledException(t)
 	return t
@@ -1880,11 +2060,14 @@ end
 
 --- Create a structure of type AddPermissionResponse
 -- <p/>
--- @param _Statement [String] <p>The permission statement you specified in the request. The response returns the same as a string using a backslash ("\") as an escape character in the JSON.</p>
-function M.AddPermissionResponse(_Statement, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddPermissionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Statement [String] <p>The permission statement you specified in the request. The response returns the same as a string using a backslash ("\") as an escape character in the JSON.</p>
+-- @return AddPermissionResponse structure as a key-value pair table
+function M.AddPermissionResponse(args)
+	assert(args, "You must provdide an argument table when creating AddPermissionResponse")
 	local t = { 
-		["Statement"] = _Statement,
+		["Statement"] = args["Statement"],
 	}
 	asserts.AssertAddPermissionResponse(t)
 	return t
@@ -1905,14 +2088,17 @@ end
 
 --- Create a structure of type GetFunctionConfigurationRequest
 -- <p/>
--- @param _FunctionName [FunctionName] <p>The name of the Lambda function for which you want to retrieve the configuration information.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _Qualifier [Qualifier] <p>Using this optional parameter you can specify a function version or an alias name. If you specify function version, the API uses qualified function ARN and returns information about the specific function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points.</p> <p>If you don't specify this parameter, the API uses unqualified function ARN, and returns information about the <code>$LATEST</code> function version.</p>
--- Required parameter: FunctionName
-function M.GetFunctionConfigurationRequest(_FunctionName, _Qualifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionName [FunctionName] <p>The name of the Lambda function for which you want to retrieve the configuration information.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify a partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * Qualifier [Qualifier] <p>Using this optional parameter you can specify a function version or an alias name. If you specify function version, the API uses qualified function ARN and returns information about the specific function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points.</p> <p>If you don't specify this parameter, the API uses unqualified function ARN, and returns information about the <code>$LATEST</code> function version.</p>
+-- Required key: FunctionName
+-- @return GetFunctionConfigurationRequest structure as a key-value pair table
+function M.GetFunctionConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetFunctionConfigurationRequest")
 	local t = { 
-		["FunctionName"] = _FunctionName,
-		["Qualifier"] = _Qualifier,
+		["FunctionName"] = args["FunctionName"],
+		["Qualifier"] = args["Qualifier"],
 	}
 	asserts.AssertGetFunctionConfigurationRequest(t)
 	return t
@@ -1932,13 +2118,16 @@ end
 
 --- Create a structure of type ListFunctionsResponse
 -- <p>Contains a list of AWS Lambda function configurations (see <a>FunctionConfiguration</a>.</p>
--- @param _Functions [FunctionList] <p>A list of Lambda functions.</p>
--- @param _NextMarker [String] <p>A string, present if there are more functions.</p>
-function M.ListFunctionsResponse(_Functions, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Functions [FunctionList] <p>A list of Lambda functions.</p>
+-- * NextMarker [String] <p>A string, present if there are more functions.</p>
+-- @return ListFunctionsResponse structure as a key-value pair table
+function M.ListFunctionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListFunctionsResponse")
 	local t = { 
-		["Functions"] = _Functions,
-		["NextMarker"] = _NextMarker,
+		["Functions"] = args["Functions"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertListFunctionsResponse(t)
 	return t
@@ -1958,13 +2147,16 @@ end
 
 --- Create a structure of type InvalidSubnetIDException
 -- <p>The Subnet ID provided in the Lambda function VPC configuration is invalid.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.InvalidSubnetIDException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSubnetIDException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return InvalidSubnetIDException structure as a key-value pair table
+function M.InvalidSubnetIDException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSubnetIDException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertInvalidSubnetIDException(t)
 	return t
@@ -1983,11 +2175,14 @@ end
 
 --- Create a structure of type GetPolicyResponse
 -- <p/>
--- @param _Policy [String] <p>The resource policy associated with the specified function. The response returns the same as a string using a backslash ("\") as an escape character in the JSON.</p>
-function M.GetPolicyResponse(_Policy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [String] <p>The resource policy associated with the specified function. The response returns the same as a string using a backslash ("\") as an escape character in the JSON.</p>
+-- @return GetPolicyResponse structure as a key-value pair table
+function M.GetPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetPolicyResponse")
 	local t = { 
-		["Policy"] = _Policy,
+		["Policy"] = args["Policy"],
 	}
 	asserts.AssertGetPolicyResponse(t)
 	return t
@@ -2010,18 +2205,21 @@ end
 
 --- Create a structure of type ListAliasesRequest
 --  
--- @param _Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListAliases</code> operation. If present, indicates where to continue the listing.</p>
--- @param _FunctionVersion [Version] <p>If you specify this optional parameter, the API returns only the aliases that are pointing to the specific Lambda function version, otherwise the API returns all of the aliases created for the Lambda function.</p>
--- @param _FunctionName [FunctionName] <p>Lambda function name for which the alias is created. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
--- @param _MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of aliases to return in response. This parameter value must be greater than 0.</p>
--- Required parameter: FunctionName
-function M.ListAliasesRequest(_Marker, _FunctionVersion, _FunctionName, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAliasesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [String] <p>Optional string. An opaque pagination token returned from a previous <code>ListAliases</code> operation. If present, indicates where to continue the listing.</p>
+-- * FunctionVersion [Version] <p>If you specify this optional parameter, the API returns only the aliases that are pointing to the specific Lambda function version, otherwise the API returns all of the aliases created for the Lambda function.</p>
+-- * FunctionName [FunctionName] <p>Lambda function name for which the alias is created. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.</p>
+-- * MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of aliases to return in response. This parameter value must be greater than 0.</p>
+-- Required key: FunctionName
+-- @return ListAliasesRequest structure as a key-value pair table
+function M.ListAliasesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAliasesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["FunctionVersion"] = _FunctionVersion,
-		["FunctionName"] = _FunctionName,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["FunctionVersion"] = args["FunctionVersion"],
+		["FunctionName"] = args["FunctionName"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListAliasesRequest(t)
 	return t
@@ -2041,13 +2239,16 @@ end
 
 --- Create a structure of type RequestTooLargeException
 -- <p>The request payload exceeded the <code>Invoke</code> request body JSON input limit. For more information, see <a href="http://docs.aws.amazon.com/lambda/latest/dg/limits.html">Limits</a>. </p>
--- @param _message [String] 
--- @param _Type [String] 
-function M.RequestTooLargeException(_message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestTooLargeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- * Type [String] 
+-- @return RequestTooLargeException structure as a key-value pair table
+function M.RequestTooLargeException(args)
+	assert(args, "You must provdide an argument table when creating RequestTooLargeException")
 	local t = { 
-		["message"] = _message,
-		["Type"] = _Type,
+		["message"] = args["message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertRequestTooLargeException(t)
 	return t
@@ -2067,13 +2268,16 @@ end
 
 --- Create a structure of type ListEventSourceMappingsResponse
 -- <p>Contains a list of event sources (see <a>EventSourceMappingConfiguration</a>)</p>
--- @param _NextMarker [String] <p>A string, present if there are more event source mappings.</p>
--- @param _EventSourceMappings [EventSourceMappingsList] <p>An array of <code>EventSourceMappingConfiguration</code> objects.</p>
-function M.ListEventSourceMappingsResponse(_NextMarker, _EventSourceMappings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListEventSourceMappingsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [String] <p>A string, present if there are more event source mappings.</p>
+-- * EventSourceMappings [EventSourceMappingsList] <p>An array of <code>EventSourceMappingConfiguration</code> objects.</p>
+-- @return ListEventSourceMappingsResponse structure as a key-value pair table
+function M.ListEventSourceMappingsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListEventSourceMappingsResponse")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["EventSourceMappings"] = _EventSourceMappings,
+		["NextMarker"] = args["NextMarker"],
+		["EventSourceMappings"] = args["EventSourceMappings"],
 	}
 	asserts.AssertListEventSourceMappingsResponse(t)
 	return t
@@ -2092,11 +2296,14 @@ end
 
 --- Create a structure of type DeadLetterConfig
 -- <p>The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic.</p>
--- @param _TargetArn [ResourceArn] <p>The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic you specify as your Dead Letter Queue (DLQ).</p>
-function M.DeadLetterConfig(_TargetArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeadLetterConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetArn [ResourceArn] <p>The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic you specify as your Dead Letter Queue (DLQ).</p>
+-- @return DeadLetterConfig structure as a key-value pair table
+function M.DeadLetterConfig(args)
+	assert(args, "You must provdide an argument table when creating DeadLetterConfig")
 	local t = { 
-		["TargetArn"] = _TargetArn,
+		["TargetArn"] = args["TargetArn"],
 	}
 	asserts.AssertDeadLetterConfig(t)
 	return t
@@ -2126,29 +2333,32 @@ end
 
 --- Create a structure of type AddPermissionRequest
 -- <p/>
--- @param _FunctionName [FunctionName] <p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
--- @param _Qualifier [Qualifier] <p>You can use this optional query parameter to describe a qualified ARN using a function version or an alias name. The permission will then apply to the specific qualified ARN. For example, if you specify function version 2 as the qualifier, then permission applies only when request is made using qualified function ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:2</code> </p> <p>If you specify an alias name, for example <code>PROD</code>, then the permission is valid only for requests made using the alias ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:PROD</code> </p> <p>If the qualifier is not specified, the permission is valid only when requests is made using unqualified function ARN.</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p>
--- @param _StatementId [StatementId] <p>A unique statement identifier.</p>
--- @param _Action [Action] <p>The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with <code>lambda:</code> followed by the API name . For example, <code>lambda:CreateFunction</code>. You can use wildcard (<code>lambda:*</code>) to grant permission for all AWS Lambda actions. </p>
--- @param _SourceAccount [SourceOwner] <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner. For example, if the <code>SourceArn</code> identifies a bucket, then this is the bucket owner's account ID. You can use this additional condition to ensure the bucket you specify is owned by a specific account (it is possible the bucket owner deleted the bucket and some other AWS account created the bucket). You can also use this condition to specify all sources (that is, you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
--- @param _SourceArn [Arn] <p>This is optional; however, when granting permission to invoke your function, you should specify this field with the Amazon Resource Name (ARN) as its value. This ensures that only events generated from the specified source can invoke the function.</p> <important> <p>If you add a permission without providing the source ARN, any AWS account that creates a mapping to your function ARN can send events to invoke your Lambda function.</p> </important>
--- @param _EventSourceToken [EventSourceToken] <p>A unique token that must be supplied by the principal invoking the function. This is currently only used for Alexa Smart Home functions.</p>
--- @param _Principal [Principal] <p>The principal who is getting this permission. It can be Amazon S3 service Principal (<code>s3.amazonaws.com</code>) if you want Amazon S3 to invoke the function, an AWS account ID if you are granting cross-account permission, or any valid AWS service principal such as <code>sns.amazonaws.com</code>. For example, you might want to allow a custom application in another AWS account to push events to AWS Lambda by invoking your function. </p>
--- Required parameter: FunctionName
--- Required parameter: StatementId
--- Required parameter: Action
--- Required parameter: Principal
-function M.AddPermissionRequest(_FunctionName, _Qualifier, _StatementId, _Action, _SourceAccount, _SourceArn, _EventSourceToken, _Principal, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddPermissionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionName [FunctionName] <p>Name of the Lambda function whose resource policy you are updating by adding a new permission.</p> <p> You can specify a function name (for example, <code>Thumbnail</code>) or you can specify Amazon Resource Name (ARN) of the function (for example, <code>arn:aws:lambda:us-west-2:account-id:function:ThumbNail</code>). AWS Lambda also allows you to specify partial ARN (for example, <code>account-id:Thumbnail</code>). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. </p>
+-- * Qualifier [Qualifier] <p>You can use this optional query parameter to describe a qualified ARN using a function version or an alias name. The permission will then apply to the specific qualified ARN. For example, if you specify function version 2 as the qualifier, then permission applies only when request is made using qualified function ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:2</code> </p> <p>If you specify an alias name, for example <code>PROD</code>, then the permission is valid only for requests made using the alias ARN:</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name:PROD</code> </p> <p>If the qualifier is not specified, the permission is valid only when requests is made using unqualified function ARN.</p> <p> <code>arn:aws:lambda:aws-region:acct-id:function:function-name</code> </p>
+-- * StatementId [StatementId] <p>A unique statement identifier.</p>
+-- * Action [Action] <p>The AWS Lambda action you want to allow in this statement. Each Lambda action is a string starting with <code>lambda:</code> followed by the API name . For example, <code>lambda:CreateFunction</code>. You can use wildcard (<code>lambda:*</code>) to grant permission for all AWS Lambda actions. </p>
+-- * SourceAccount [SourceOwner] <p>This parameter is used for S3 and SES. The AWS account ID (without a hyphen) of the source owner. For example, if the <code>SourceArn</code> identifies a bucket, then this is the bucket owner's account ID. You can use this additional condition to ensure the bucket you specify is owned by a specific account (it is possible the bucket owner deleted the bucket and some other AWS account created the bucket). You can also use this condition to specify all sources (that is, you don't specify the <code>SourceArn</code>) owned by a specific account. </p>
+-- * SourceArn [Arn] <p>This is optional; however, when granting permission to invoke your function, you should specify this field with the Amazon Resource Name (ARN) as its value. This ensures that only events generated from the specified source can invoke the function.</p> <important> <p>If you add a permission without providing the source ARN, any AWS account that creates a mapping to your function ARN can send events to invoke your Lambda function.</p> </important>
+-- * EventSourceToken [EventSourceToken] <p>A unique token that must be supplied by the principal invoking the function. This is currently only used for Alexa Smart Home functions.</p>
+-- * Principal [Principal] <p>The principal who is getting this permission. It can be Amazon S3 service Principal (<code>s3.amazonaws.com</code>) if you want Amazon S3 to invoke the function, an AWS account ID if you are granting cross-account permission, or any valid AWS service principal such as <code>sns.amazonaws.com</code>. For example, you might want to allow a custom application in another AWS account to push events to AWS Lambda by invoking your function. </p>
+-- Required key: FunctionName
+-- Required key: StatementId
+-- Required key: Action
+-- Required key: Principal
+-- @return AddPermissionRequest structure as a key-value pair table
+function M.AddPermissionRequest(args)
+	assert(args, "You must provdide an argument table when creating AddPermissionRequest")
 	local t = { 
-		["FunctionName"] = _FunctionName,
-		["Qualifier"] = _Qualifier,
-		["StatementId"] = _StatementId,
-		["Action"] = _Action,
-		["SourceAccount"] = _SourceAccount,
-		["SourceArn"] = _SourceArn,
-		["EventSourceToken"] = _EventSourceToken,
-		["Principal"] = _Principal,
+		["FunctionName"] = args["FunctionName"],
+		["Qualifier"] = args["Qualifier"],
+		["StatementId"] = args["StatementId"],
+		["Action"] = args["Action"],
+		["SourceAccount"] = args["SourceAccount"],
+		["SourceArn"] = args["SourceArn"],
+		["EventSourceToken"] = args["EventSourceToken"],
+		["Principal"] = args["Principal"],
 	}
 	asserts.AssertAddPermissionRequest(t)
 	return t
@@ -2170,15 +2380,18 @@ end
 
 --- Create a structure of type TagResourceRequest
 --  
--- @param _Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the Lambda function.</p>
--- @param _Tags [Tags] <p>The list of tags (key-value pairs) you are assigning to the Lambda function.</p>
--- Required parameter: Resource
--- Required parameter: Tags
-function M.TagResourceRequest(_Resource, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Resource [FunctionArn] <p>The ARN (Amazon Resource Name) of the Lambda function.</p>
+-- * Tags [Tags] <p>The list of tags (key-value pairs) you are assigning to the Lambda function.</p>
+-- Required key: Resource
+-- Required key: Tags
+-- @return TagResourceRequest structure as a key-value pair table
+function M.TagResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating TagResourceRequest")
 	local t = { 
-		["Resource"] = _Resource,
-		["Tags"] = _Tags,
+		["Resource"] = args["Resource"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertTagResourceRequest(t)
 	return t
@@ -2197,11 +2410,14 @@ end
 
 --- Create a structure of type ListTagsResponse
 --  
--- @param _Tags [Tags] <p>The list of tags assigned to the function.</p>
-function M.ListTagsResponse(_Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Tags [Tags] <p>The list of tags assigned to the function.</p>
+-- @return ListTagsResponse structure as a key-value pair table
+function M.ListTagsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsResponse")
 	local t = { 
-		["Tags"] = _Tags,
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertListTagsResponse(t)
 	return t
@@ -2221,13 +2437,16 @@ end
 
 --- Create a structure of type ResourceConflictException
 -- <p>The resource already exists.</p>
--- @param _message [String] <p/>
--- @param _Type [String] <p/>
-function M.ResourceConflictException(_message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p/>
+-- * Type [String] <p/>
+-- @return ResourceConflictException structure as a key-value pair table
+function M.ResourceConflictException(args)
+	assert(args, "You must provdide an argument table when creating ResourceConflictException")
 	local t = { 
-		["message"] = _message,
-		["Type"] = _Type,
+		["message"] = args["message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertResourceConflictException(t)
 	return t
@@ -2247,13 +2466,16 @@ end
 
 --- Create a structure of type VpcConfig
 -- <p>If your Lambda function accesses resources in a VPC, you provide this parameter identifying the list of security group IDs and subnet IDs. These must belong to the same VPC. You must provide at least one security group and one subnet ID.</p>
--- @param _SubnetIds [SubnetIds] <p>A list of one or more subnet IDs in your VPC.</p>
--- @param _SecurityGroupIds [SecurityGroupIds] <p>A list of one or more security groups IDs in your VPC.</p>
-function M.VpcConfig(_SubnetIds, _SecurityGroupIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VpcConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetIds [SubnetIds] <p>A list of one or more subnet IDs in your VPC.</p>
+-- * SecurityGroupIds [SecurityGroupIds] <p>A list of one or more security groups IDs in your VPC.</p>
+-- @return VpcConfig structure as a key-value pair table
+function M.VpcConfig(args)
+	assert(args, "You must provdide an argument table when creating VpcConfig")
 	local t = { 
-		["SubnetIds"] = _SubnetIds,
-		["SecurityGroupIds"] = _SecurityGroupIds,
+		["SubnetIds"] = args["SubnetIds"],
+		["SecurityGroupIds"] = args["SecurityGroupIds"],
 	}
 	asserts.AssertVpcConfig(t)
 	return t
@@ -2273,13 +2495,16 @@ end
 
 --- Create a structure of type InvalidParameterValueException
 -- <p>One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that AWS Lambda is unable to assume you will get this exception. You will also get this exception if you have selected a deprecated runtime, such as Node v0.10.42. </p>
--- @param _message [String] <p/>
--- @param _Type [String] <p/>
-function M.InvalidParameterValueException(_message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValueException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p/>
+-- * Type [String] <p/>
+-- @return InvalidParameterValueException structure as a key-value pair table
+function M.InvalidParameterValueException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
 	local t = { 
-		["message"] = _message,
-		["Type"] = _Type,
+		["message"] = args["message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertInvalidParameterValueException(t)
 	return t
@@ -2299,13 +2524,16 @@ end
 
 --- Create a structure of type InvalidZipFileException
 -- <p>AWS Lambda could not unzip the function zip file.</p>
--- @param _Message [String] 
--- @param _Type [String] 
-function M.InvalidZipFileException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidZipFileException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- * Type [String] 
+-- @return InvalidZipFileException structure as a key-value pair table
+function M.InvalidZipFileException(args)
+	assert(args, "You must provdide an argument table when creating InvalidZipFileException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertInvalidZipFileException(t)
 	return t
@@ -2325,13 +2553,16 @@ end
 
 --- Create a structure of type PolicyLengthExceededException
 -- <p>Lambda function access policy is limited to 20 KB.</p>
--- @param _message [String] 
--- @param _Type [String] 
-function M.PolicyLengthExceededException(_message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyLengthExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- * Type [String] 
+-- @return PolicyLengthExceededException structure as a key-value pair table
+function M.PolicyLengthExceededException(args)
+	assert(args, "You must provdide an argument table when creating PolicyLengthExceededException")
 	local t = { 
-		["message"] = _message,
-		["Type"] = _Type,
+		["message"] = args["message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertPolicyLengthExceededException(t)
 	return t

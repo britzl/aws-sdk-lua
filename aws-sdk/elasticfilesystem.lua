@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type DescribeMountTargetSecurityGroupsRequest
 -- <p/>
--- @param _MountTargetId [MountTargetId] <p>ID of the mount target whose security groups you want to retrieve.</p>
--- Required parameter: MountTargetId
-function M.DescribeMountTargetSecurityGroupsRequest(_MountTargetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMountTargetSecurityGroupsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MountTargetId [MountTargetId] <p>ID of the mount target whose security groups you want to retrieve.</p>
+-- Required key: MountTargetId
+-- @return DescribeMountTargetSecurityGroupsRequest structure as a key-value pair table
+function M.DescribeMountTargetSecurityGroupsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeMountTargetSecurityGroupsRequest")
 	local t = { 
-		["MountTargetId"] = _MountTargetId,
+		["MountTargetId"] = args["MountTargetId"],
 	}
 	asserts.AssertDescribeMountTargetSecurityGroupsRequest(t)
 	return t
@@ -61,14 +64,17 @@ end
 
 --- Create a structure of type SecurityGroupNotFound
 -- <p>Returned if one of the specified security groups does not exist in the subnet's VPC.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.SecurityGroupNotFound(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SecurityGroupNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return SecurityGroupNotFound structure as a key-value pair table
+function M.SecurityGroupNotFound(args)
+	assert(args, "You must provdide an argument table when creating SecurityGroupNotFound")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertSecurityGroupNotFound(t)
 	return t
@@ -89,14 +95,17 @@ end
 
 --- Create a structure of type DependencyTimeout
 -- <p>The service timed out trying to fulfill the request, and the client should try the call again.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.DependencyTimeout(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DependencyTimeout")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return DependencyTimeout structure as a key-value pair table
+function M.DependencyTimeout(args)
+	assert(args, "You must provdide an argument table when creating DependencyTimeout")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDependencyTimeout(t)
 	return t
@@ -116,12 +125,15 @@ end
 
 --- Create a structure of type DeleteMountTargetRequest
 -- <p/>
--- @param _MountTargetId [MountTargetId] <p>ID of the mount target to delete (String).</p>
--- Required parameter: MountTargetId
-function M.DeleteMountTargetRequest(_MountTargetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMountTargetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MountTargetId [MountTargetId] <p>ID of the mount target to delete (String).</p>
+-- Required key: MountTargetId
+-- @return DeleteMountTargetRequest structure as a key-value pair table
+function M.DeleteMountTargetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteMountTargetRequest")
 	local t = { 
-		["MountTargetId"] = _MountTargetId,
+		["MountTargetId"] = args["MountTargetId"],
 	}
 	asserts.AssertDeleteMountTargetRequest(t)
 	return t
@@ -150,27 +162,30 @@ end
 
 --- Create a structure of type MountTargetDescription
 -- <p>Provides a description of a mount target.</p>
--- @param _MountTargetId [MountTargetId] <p>System-assigned mount target ID.</p>
--- @param _NetworkInterfaceId [NetworkInterfaceId] <p>ID of the network interface that Amazon EFS created when it created the mount target.</p>
--- @param _FileSystemId [FileSystemId] <p>ID of the file system for which the mount target is intended.</p>
--- @param _LifeCycleState [LifeCycleState] <p>Lifecycle state of the mount target.</p>
--- @param _SubnetId [SubnetId] <p>ID of the mount target's subnet.</p>
--- @param _OwnerId [AwsAccountId] <p>AWS account ID that owns the resource.</p>
--- @param _IpAddress [IpAddress] <p>Address at which the file system may be mounted via the mount target.</p>
--- Required parameter: MountTargetId
--- Required parameter: FileSystemId
--- Required parameter: SubnetId
--- Required parameter: LifeCycleState
-function M.MountTargetDescription(_MountTargetId, _NetworkInterfaceId, _FileSystemId, _LifeCycleState, _SubnetId, _OwnerId, _IpAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MountTargetDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MountTargetId [MountTargetId] <p>System-assigned mount target ID.</p>
+-- * NetworkInterfaceId [NetworkInterfaceId] <p>ID of the network interface that Amazon EFS created when it created the mount target.</p>
+-- * FileSystemId [FileSystemId] <p>ID of the file system for which the mount target is intended.</p>
+-- * LifeCycleState [LifeCycleState] <p>Lifecycle state of the mount target.</p>
+-- * SubnetId [SubnetId] <p>ID of the mount target's subnet.</p>
+-- * OwnerId [AwsAccountId] <p>AWS account ID that owns the resource.</p>
+-- * IpAddress [IpAddress] <p>Address at which the file system may be mounted via the mount target.</p>
+-- Required key: MountTargetId
+-- Required key: FileSystemId
+-- Required key: SubnetId
+-- Required key: LifeCycleState
+-- @return MountTargetDescription structure as a key-value pair table
+function M.MountTargetDescription(args)
+	assert(args, "You must provdide an argument table when creating MountTargetDescription")
 	local t = { 
-		["MountTargetId"] = _MountTargetId,
-		["NetworkInterfaceId"] = _NetworkInterfaceId,
-		["FileSystemId"] = _FileSystemId,
-		["LifeCycleState"] = _LifeCycleState,
-		["SubnetId"] = _SubnetId,
-		["OwnerId"] = _OwnerId,
-		["IpAddress"] = _IpAddress,
+		["MountTargetId"] = args["MountTargetId"],
+		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
+		["FileSystemId"] = args["FileSystemId"],
+		["LifeCycleState"] = args["LifeCycleState"],
+		["SubnetId"] = args["SubnetId"],
+		["OwnerId"] = args["OwnerId"],
+		["IpAddress"] = args["IpAddress"],
 	}
 	asserts.AssertMountTargetDescription(t)
 	return t
@@ -191,14 +206,17 @@ end
 
 --- Create a structure of type IpAddressInUse
 -- <p>Returned if the request specified an <code>IpAddress</code> that is already in use in the subnet.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.IpAddressInUse(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IpAddressInUse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return IpAddressInUse structure as a key-value pair table
+function M.IpAddressInUse(args)
+	assert(args, "You must provdide an argument table when creating IpAddressInUse")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertIpAddressInUse(t)
 	return t
@@ -219,14 +237,17 @@ end
 
 --- Create a structure of type IncorrectMountTargetState
 -- <p>Returned if the mount target is not in the correct state for the operation.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.IncorrectMountTargetState(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IncorrectMountTargetState")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return IncorrectMountTargetState structure as a key-value pair table
+function M.IncorrectMountTargetState(args)
+	assert(args, "You must provdide an argument table when creating IncorrectMountTargetState")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertIncorrectMountTargetState(t)
 	return t
@@ -247,14 +268,17 @@ end
 
 --- Create a structure of type MountTargetConflict
 -- <p>Returned if the mount target would violate one of the specified restrictions based on the file system's existing mount targets.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.MountTargetConflict(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MountTargetConflict")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return MountTargetConflict structure as a key-value pair table
+function M.MountTargetConflict(args)
+	assert(args, "You must provdide an argument table when creating MountTargetConflict")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertMountTargetConflict(t)
 	return t
@@ -275,14 +299,17 @@ end
 
 --- Create a structure of type FileSystemNotFound
 -- <p>Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.FileSystemNotFound(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FileSystemNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return FileSystemNotFound structure as a key-value pair table
+function M.FileSystemNotFound(args)
+	assert(args, "You must provdide an argument table when creating FileSystemNotFound")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertFileSystemNotFound(t)
 	return t
@@ -303,15 +330,18 @@ end
 
 --- Create a structure of type DescribeFileSystemsResponse
 --  
--- @param _Marker [Marker] <p>Present if provided by caller in the request (String).</p>
--- @param _NextMarker [Marker] <p>Present if there are more file systems than returned in the response (String). You can use the <code>NextMarker</code> in the subsequent request to fetch the descriptions.</p>
--- @param _FileSystems [FileSystemDescriptions] <p>Array of file system descriptions.</p>
-function M.DescribeFileSystemsResponse(_Marker, _NextMarker, _FileSystems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFileSystemsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>Present if provided by caller in the request (String).</p>
+-- * NextMarker [Marker] <p>Present if there are more file systems than returned in the response (String). You can use the <code>NextMarker</code> in the subsequent request to fetch the descriptions.</p>
+-- * FileSystems [FileSystemDescriptions] <p>Array of file system descriptions.</p>
+-- @return DescribeFileSystemsResponse structure as a key-value pair table
+function M.DescribeFileSystemsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeFileSystemsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["NextMarker"] = _NextMarker,
-		["FileSystems"] = _FileSystems,
+		["Marker"] = args["Marker"],
+		["NextMarker"] = args["NextMarker"],
+		["FileSystems"] = args["FileSystems"],
 	}
 	asserts.AssertDescribeFileSystemsResponse(t)
 	return t
@@ -332,15 +362,18 @@ end
 
 --- Create a structure of type DescribeMountTargetsResponse
 -- <p/>
--- @param _Marker [Marker] <p>If the request included the <code>Marker</code>, the response returns that value in this field.</p>
--- @param _NextMarker [Marker] <p>If a value is present, there are more mount targets to return. In a subsequent request, you can provide <code>Marker</code> in your request with this value to retrieve the next set of mount targets.</p>
--- @param _MountTargets [MountTargetDescriptions] <p>Returns the file system's mount targets as an array of <code>MountTargetDescription</code> objects.</p>
-function M.DescribeMountTargetsResponse(_Marker, _NextMarker, _MountTargets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMountTargetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>If the request included the <code>Marker</code>, the response returns that value in this field.</p>
+-- * NextMarker [Marker] <p>If a value is present, there are more mount targets to return. In a subsequent request, you can provide <code>Marker</code> in your request with this value to retrieve the next set of mount targets.</p>
+-- * MountTargets [MountTargetDescriptions] <p>Returns the file system's mount targets as an array of <code>MountTargetDescription</code> objects.</p>
+-- @return DescribeMountTargetsResponse structure as a key-value pair table
+function M.DescribeMountTargetsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeMountTargetsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["NextMarker"] = _NextMarker,
-		["MountTargets"] = _MountTargets,
+		["Marker"] = args["Marker"],
+		["NextMarker"] = args["NextMarker"],
+		["MountTargets"] = args["MountTargets"],
 	}
 	asserts.AssertDescribeMountTargetsResponse(t)
 	return t
@@ -361,14 +394,17 @@ end
 
 --- Create a structure of type BadRequest
 -- <p>Returned if the request is malformed or contains an error such as an invalid parameter value or a missing required parameter.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.BadRequest(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BadRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return BadRequest structure as a key-value pair table
+function M.BadRequest(args)
+	assert(args, "You must provdide an argument table when creating BadRequest")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertBadRequest(t)
 	return t
@@ -390,16 +426,19 @@ end
 
 --- Create a structure of type DescribeTagsResponse
 -- <p/>
--- @param _Marker [Marker] <p>If the request included a <code>Marker</code>, the response returns that value in this field.</p>
--- @param _NextMarker [Marker] <p>If a value is present, there are more tags to return. In a subsequent request, you can provide the value of <code>NextMarker</code> as the value of the <code>Marker</code> parameter in your next request to retrieve the next set of tags.</p>
--- @param _Tags [Tags] <p>Returns tags associated with the file system as an array of <code>Tag</code> objects. </p>
--- Required parameter: Tags
-function M.DescribeTagsResponse(_Marker, _NextMarker, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>If the request included a <code>Marker</code>, the response returns that value in this field.</p>
+-- * NextMarker [Marker] <p>If a value is present, there are more tags to return. In a subsequent request, you can provide the value of <code>NextMarker</code> as the value of the <code>Marker</code> parameter in your next request to retrieve the next set of tags.</p>
+-- * Tags [Tags] <p>Returns tags associated with the file system as an array of <code>Tag</code> objects. </p>
+-- Required key: Tags
+-- @return DescribeTagsResponse structure as a key-value pair table
+function M.DescribeTagsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["NextMarker"] = _NextMarker,
-		["Tags"] = _Tags,
+		["Marker"] = args["Marker"],
+		["NextMarker"] = args["NextMarker"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertDescribeTagsResponse(t)
 	return t
@@ -419,12 +458,15 @@ end
 
 --- Create a structure of type DeleteFileSystemRequest
 -- <p/>
--- @param _FileSystemId [FileSystemId] <p>ID of the file system you want to delete.</p>
--- Required parameter: FileSystemId
-function M.DeleteFileSystemRequest(_FileSystemId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFileSystemRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileSystemId [FileSystemId] <p>ID of the file system you want to delete.</p>
+-- Required key: FileSystemId
+-- @return DeleteFileSystemRequest structure as a key-value pair table
+function M.DeleteFileSystemRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteFileSystemRequest")
 	local t = { 
-		["FileSystemId"] = _FileSystemId,
+		["FileSystemId"] = args["FileSystemId"],
 	}
 	asserts.AssertDeleteFileSystemRequest(t)
 	return t
@@ -445,14 +487,17 @@ end
 
 --- Create a structure of type CreateFileSystemRequest
 --  
--- @param _PerformanceMode [PerformanceMode] <p>The <code>PerformanceMode</code> of the file system. We recommend <code>generalPurpose</code> performance mode for most file systems. File systems using the <code>maxIO</code> performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. This can't be changed after the file system has been created.</p>
--- @param _CreationToken [CreationToken] <p>String of up to 64 ASCII characters. Amazon EFS uses this to ensure idempotent creation.</p>
--- Required parameter: CreationToken
-function M.CreateFileSystemRequest(_PerformanceMode, _CreationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFileSystemRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PerformanceMode [PerformanceMode] <p>The <code>PerformanceMode</code> of the file system. We recommend <code>generalPurpose</code> performance mode for most file systems. File systems using the <code>maxIO</code> performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. This can't be changed after the file system has been created.</p>
+-- * CreationToken [CreationToken] <p>String of up to 64 ASCII characters. Amazon EFS uses this to ensure idempotent creation.</p>
+-- Required key: CreationToken
+-- @return CreateFileSystemRequest structure as a key-value pair table
+function M.CreateFileSystemRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateFileSystemRequest")
 	local t = { 
-		["PerformanceMode"] = _PerformanceMode,
-		["CreationToken"] = _CreationToken,
+		["PerformanceMode"] = args["PerformanceMode"],
+		["CreationToken"] = args["CreationToken"],
 	}
 	asserts.AssertCreateFileSystemRequest(t)
 	return t
@@ -472,12 +517,15 @@ end
 
 --- Create a structure of type DescribeMountTargetSecurityGroupsResponse
 --  
--- @param _SecurityGroups [SecurityGroups] <p>Array of security groups.</p>
--- Required parameter: SecurityGroups
-function M.DescribeMountTargetSecurityGroupsResponse(_SecurityGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMountTargetSecurityGroupsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SecurityGroups [SecurityGroups] <p>Array of security groups.</p>
+-- Required key: SecurityGroups
+-- @return DescribeMountTargetSecurityGroupsResponse structure as a key-value pair table
+function M.DescribeMountTargetSecurityGroupsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeMountTargetSecurityGroupsResponse")
 	local t = { 
-		["SecurityGroups"] = _SecurityGroups,
+		["SecurityGroups"] = args["SecurityGroups"],
 	}
 	asserts.AssertDescribeMountTargetSecurityGroupsResponse(t)
 	return t
@@ -498,14 +546,17 @@ end
 
 --- Create a structure of type FileSystemInUse
 -- <p>Returned if a file system has mount targets.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.FileSystemInUse(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FileSystemInUse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return FileSystemInUse structure as a key-value pair table
+function M.FileSystemInUse(args)
+	assert(args, "You must provdide an argument table when creating FileSystemInUse")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertFileSystemInUse(t)
 	return t
@@ -526,14 +577,17 @@ end
 
 --- Create a structure of type FileSystemSize
 -- <p>Latest known metered size (in bytes) of data stored in the file system, in its <code>Value</code> field, and the time at which that size was determined in its <code>Timestamp</code> field. Note that the value does not represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, the value will represent the actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not necessarily the exact size the file system was at any instant in time.</p>
--- @param _Timestamp [Timestamp] <p>Time at which the size of data, returned in the <code>Value</code> field, was determined. The value is the integer number of seconds since 1970-01-01T00:00:00Z.</p>
--- @param _Value [FileSystemSizeValue] <p>Latest known metered size (in bytes) of data stored in the file system.</p>
--- Required parameter: Value
-function M.FileSystemSize(_Timestamp, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FileSystemSize")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Timestamp [Timestamp] <p>Time at which the size of data, returned in the <code>Value</code> field, was determined. The value is the integer number of seconds since 1970-01-01T00:00:00Z.</p>
+-- * Value [FileSystemSizeValue] <p>Latest known metered size (in bytes) of data stored in the file system.</p>
+-- Required key: Value
+-- @return FileSystemSize structure as a key-value pair table
+function M.FileSystemSize(args)
+	assert(args, "You must provdide an argument table when creating FileSystemSize")
 	local t = { 
-		["Timestamp"] = _Timestamp,
-		["Value"] = _Value,
+		["Timestamp"] = args["Timestamp"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertFileSystemSize(t)
 	return t
@@ -554,14 +608,17 @@ end
 
 --- Create a structure of type FileSystemLimitExceeded
 -- <p>Returned if the AWS account has already created maximum number of file systems allowed per account.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.FileSystemLimitExceeded(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FileSystemLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return FileSystemLimitExceeded structure as a key-value pair table
+function M.FileSystemLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating FileSystemLimitExceeded")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertFileSystemLimitExceeded(t)
 	return t
@@ -585,19 +642,22 @@ end
 
 --- Create a structure of type CreateMountTargetRequest
 -- <p/>
--- @param _SubnetId [SubnetId] <p>ID of the subnet to add the mount target in.</p>
--- @param _SecurityGroups [SecurityGroups] <p>Up to five VPC security group IDs, of the form <code>sg-xxxxxxxx</code>. These must be for the same VPC as subnet specified.</p>
--- @param _FileSystemId [FileSystemId] <p>ID of the file system for which to create the mount target.</p>
--- @param _IpAddress [IpAddress] <p>Valid IPv4 address within the address range of the specified subnet.</p>
--- Required parameter: FileSystemId
--- Required parameter: SubnetId
-function M.CreateMountTargetRequest(_SubnetId, _SecurityGroups, _FileSystemId, _IpAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateMountTargetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubnetId [SubnetId] <p>ID of the subnet to add the mount target in.</p>
+-- * SecurityGroups [SecurityGroups] <p>Up to five VPC security group IDs, of the form <code>sg-xxxxxxxx</code>. These must be for the same VPC as subnet specified.</p>
+-- * FileSystemId [FileSystemId] <p>ID of the file system for which to create the mount target.</p>
+-- * IpAddress [IpAddress] <p>Valid IPv4 address within the address range of the specified subnet.</p>
+-- Required key: FileSystemId
+-- Required key: SubnetId
+-- @return CreateMountTargetRequest structure as a key-value pair table
+function M.CreateMountTargetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateMountTargetRequest")
 	local t = { 
-		["SubnetId"] = _SubnetId,
-		["SecurityGroups"] = _SecurityGroups,
-		["FileSystemId"] = _FileSystemId,
-		["IpAddress"] = _IpAddress,
+		["SubnetId"] = args["SubnetId"],
+		["SecurityGroups"] = args["SecurityGroups"],
+		["FileSystemId"] = args["FileSystemId"],
+		["IpAddress"] = args["IpAddress"],
 	}
 	asserts.AssertCreateMountTargetRequest(t)
 	return t
@@ -619,16 +679,19 @@ end
 
 --- Create a structure of type DescribeTagsRequest
 -- <p/>
--- @param _Marker [Marker] <p>(Optional) Opaque pagination token returned from a previous <code>DescribeTags</code> operation (String). If present, it specifies to continue the list from where the previous call left off.</p>
--- @param _FileSystemId [FileSystemId] <p>ID of the file system whose tag set you want to retrieve.</p>
--- @param _MaxItems [MaxItems] <p>(Optional) Maximum number of file system tags to return in the response. It must be an integer with a value greater than zero.</p>
--- Required parameter: FileSystemId
-function M.DescribeTagsRequest(_Marker, _FileSystemId, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>(Optional) Opaque pagination token returned from a previous <code>DescribeTags</code> operation (String). If present, it specifies to continue the list from where the previous call left off.</p>
+-- * FileSystemId [FileSystemId] <p>ID of the file system whose tag set you want to retrieve.</p>
+-- * MaxItems [MaxItems] <p>(Optional) Maximum number of file system tags to return in the response. It must be an integer with a value greater than zero.</p>
+-- Required key: FileSystemId
+-- @return DescribeTagsRequest structure as a key-value pair table
+function M.DescribeTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagsRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["FileSystemId"] = _FileSystemId,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["FileSystemId"] = args["FileSystemId"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertDescribeTagsRequest(t)
 	return t
@@ -650,15 +713,18 @@ end
 
 --- Create a structure of type DeleteTagsRequest
 -- <p/>
--- @param _FileSystemId [FileSystemId] <p>ID of the file system whose tags you want to delete (String).</p>
--- @param _TagKeys [TagKeys] <p>List of tag keys to delete.</p>
--- Required parameter: FileSystemId
--- Required parameter: TagKeys
-function M.DeleteTagsRequest(_FileSystemId, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileSystemId [FileSystemId] <p>ID of the file system whose tags you want to delete (String).</p>
+-- * TagKeys [TagKeys] <p>List of tag keys to delete.</p>
+-- Required key: FileSystemId
+-- Required key: TagKeys
+-- @return DeleteTagsRequest structure as a key-value pair table
+function M.DeleteTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteTagsRequest")
 	local t = { 
-		["FileSystemId"] = _FileSystemId,
-		["TagKeys"] = _TagKeys,
+		["FileSystemId"] = args["FileSystemId"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertDeleteTagsRequest(t)
 	return t
@@ -680,17 +746,20 @@ end
 
 --- Create a structure of type DescribeMountTargetsRequest
 -- <p/>
--- @param _Marker [Marker] <p>(Optional) Opaque pagination token returned from a previous <code>DescribeMountTargets</code> operation (String). If present, it specifies to continue the list from where the previous returning call left off.</p>
--- @param _FileSystemId [FileSystemId] <p>(Optional) ID of the file system whose mount targets you want to list (String). It must be included in your request if <code>MountTargetId</code> is not included.</p>
--- @param _MountTargetId [MountTargetId] <p>(Optional) ID of the mount target that you want to have described (String). It must be included in your request if <code>FileSystemId</code> is not included.</p>
--- @param _MaxItems [MaxItems] <p>(Optional) Maximum number of mount targets to return in the response. It must be an integer with a value greater than zero.</p>
-function M.DescribeMountTargetsRequest(_Marker, _FileSystemId, _MountTargetId, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMountTargetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>(Optional) Opaque pagination token returned from a previous <code>DescribeMountTargets</code> operation (String). If present, it specifies to continue the list from where the previous returning call left off.</p>
+-- * FileSystemId [FileSystemId] <p>(Optional) ID of the file system whose mount targets you want to list (String). It must be included in your request if <code>MountTargetId</code> is not included.</p>
+-- * MountTargetId [MountTargetId] <p>(Optional) ID of the mount target that you want to have described (String). It must be included in your request if <code>FileSystemId</code> is not included.</p>
+-- * MaxItems [MaxItems] <p>(Optional) Maximum number of mount targets to return in the response. It must be an integer with a value greater than zero.</p>
+-- @return DescribeMountTargetsRequest structure as a key-value pair table
+function M.DescribeMountTargetsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeMountTargetsRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["FileSystemId"] = _FileSystemId,
-		["MountTargetId"] = _MountTargetId,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["FileSystemId"] = args["FileSystemId"],
+		["MountTargetId"] = args["MountTargetId"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertDescribeMountTargetsRequest(t)
 	return t
@@ -711,14 +780,17 @@ end
 
 --- Create a structure of type SecurityGroupLimitExceeded
 -- <p>Returned if the size of <code>SecurityGroups</code> specified in the request is greater than five.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.SecurityGroupLimitExceeded(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SecurityGroupLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return SecurityGroupLimitExceeded structure as a key-value pair table
+function M.SecurityGroupLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating SecurityGroupLimitExceeded")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertSecurityGroupLimitExceeded(t)
 	return t
@@ -739,14 +811,17 @@ end
 
 --- Create a structure of type NoFreeAddressesInSubnet
 -- <p>Returned if <code>IpAddress</code> was not specified in the request and there are no free IP addresses in the subnet.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.NoFreeAddressesInSubnet(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoFreeAddressesInSubnet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return NoFreeAddressesInSubnet structure as a key-value pair table
+function M.NoFreeAddressesInSubnet(args)
+	assert(args, "You must provdide an argument table when creating NoFreeAddressesInSubnet")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertNoFreeAddressesInSubnet(t)
 	return t
@@ -768,17 +843,20 @@ end
 
 --- Create a structure of type DescribeFileSystemsRequest
 -- <p/>
--- @param _Marker [Marker] <p>(Optional) Opaque pagination token returned from a previous <code>DescribeFileSystems</code> operation (String). If present, specifies to continue the list from where the returning call had left off. </p>
--- @param _FileSystemId [FileSystemId] <p>(Optional) ID of the file system whose description you want to retrieve (String).</p>
--- @param _MaxItems [MaxItems] <p>(Optional) Specifies the maximum number of file systems to return in the response (integer). This parameter value must be greater than 0. The number of items that Amazon EFS returns is the minimum of the <code>MaxItems</code> parameter specified in the request and the service's internal maximum number of items per page. </p>
--- @param _CreationToken [CreationToken] <p>(Optional) Restricts the list to the file system with this creation token (String). You specify a creation token when you create an Amazon EFS file system.</p>
-function M.DescribeFileSystemsRequest(_Marker, _FileSystemId, _MaxItems, _CreationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeFileSystemsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>(Optional) Opaque pagination token returned from a previous <code>DescribeFileSystems</code> operation (String). If present, specifies to continue the list from where the returning call had left off. </p>
+-- * FileSystemId [FileSystemId] <p>(Optional) ID of the file system whose description you want to retrieve (String).</p>
+-- * MaxItems [MaxItems] <p>(Optional) Specifies the maximum number of file systems to return in the response (integer). This parameter value must be greater than 0. The number of items that Amazon EFS returns is the minimum of the <code>MaxItems</code> parameter specified in the request and the service's internal maximum number of items per page. </p>
+-- * CreationToken [CreationToken] <p>(Optional) Restricts the list to the file system with this creation token (String). You specify a creation token when you create an Amazon EFS file system.</p>
+-- @return DescribeFileSystemsRequest structure as a key-value pair table
+function M.DescribeFileSystemsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeFileSystemsRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["FileSystemId"] = _FileSystemId,
-		["MaxItems"] = _MaxItems,
-		["CreationToken"] = _CreationToken,
+		["Marker"] = args["Marker"],
+		["FileSystemId"] = args["FileSystemId"],
+		["MaxItems"] = args["MaxItems"],
+		["CreationToken"] = args["CreationToken"],
 	}
 	asserts.AssertDescribeFileSystemsRequest(t)
 	return t
@@ -799,14 +877,17 @@ end
 
 --- Create a structure of type InternalServerError
 -- <p>Returned if an error occurred on the server side.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.InternalServerError(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return InternalServerError structure as a key-value pair table
+function M.InternalServerError(args)
+	assert(args, "You must provdide an argument table when creating InternalServerError")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInternalServerError(t)
 	return t
@@ -827,14 +908,17 @@ end
 
 --- Create a structure of type ModifyMountTargetSecurityGroupsRequest
 -- <p/>
--- @param _MountTargetId [MountTargetId] <p>ID of the mount target whose security groups you want to modify.</p>
--- @param _SecurityGroups [SecurityGroups] <p>Array of up to five VPC security group IDs.</p>
--- Required parameter: MountTargetId
-function M.ModifyMountTargetSecurityGroupsRequest(_MountTargetId, _SecurityGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyMountTargetSecurityGroupsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MountTargetId [MountTargetId] <p>ID of the mount target whose security groups you want to modify.</p>
+-- * SecurityGroups [SecurityGroups] <p>Array of up to five VPC security group IDs.</p>
+-- Required key: MountTargetId
+-- @return ModifyMountTargetSecurityGroupsRequest structure as a key-value pair table
+function M.ModifyMountTargetSecurityGroupsRequest(args)
+	assert(args, "You must provdide an argument table when creating ModifyMountTargetSecurityGroupsRequest")
 	local t = { 
-		["MountTargetId"] = _MountTargetId,
-		["SecurityGroups"] = _SecurityGroups,
+		["MountTargetId"] = args["MountTargetId"],
+		["SecurityGroups"] = args["SecurityGroups"],
 	}
 	asserts.AssertModifyMountTargetSecurityGroupsRequest(t)
 	return t
@@ -855,14 +939,17 @@ end
 
 --- Create a structure of type IncorrectFileSystemLifeCycleState
 -- <p>Returned if the file system's life cycle state is not "created".</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.IncorrectFileSystemLifeCycleState(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IncorrectFileSystemLifeCycleState")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return IncorrectFileSystemLifeCycleState structure as a key-value pair table
+function M.IncorrectFileSystemLifeCycleState(args)
+	assert(args, "You must provdide an argument table when creating IncorrectFileSystemLifeCycleState")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertIncorrectFileSystemLifeCycleState(t)
 	return t
@@ -885,17 +972,20 @@ end
 
 --- Create a structure of type FileSystemAlreadyExists
 -- <p>Returned if the file system you are trying to create already exists, with the creation token you provided.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- @param _FileSystemId [FileSystemId] 
--- Required parameter: ErrorCode
--- Required parameter: FileSystemId
-function M.FileSystemAlreadyExists(_ErrorCode, _Message, _FileSystemId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FileSystemAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- * FileSystemId [FileSystemId] 
+-- Required key: ErrorCode
+-- Required key: FileSystemId
+-- @return FileSystemAlreadyExists structure as a key-value pair table
+function M.FileSystemAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating FileSystemAlreadyExists")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
-		["FileSystemId"] = _FileSystemId,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
+		["FileSystemId"] = args["FileSystemId"],
 	}
 	asserts.AssertFileSystemAlreadyExists(t)
 	return t
@@ -916,14 +1006,17 @@ end
 
 --- Create a structure of type SubnetNotFound
 -- <p>Returned if there is no subnet with ID <code>SubnetId</code> provided in the request.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.SubnetNotFound(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubnetNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return SubnetNotFound structure as a key-value pair table
+function M.SubnetNotFound(args)
+	assert(args, "You must provdide an argument table when creating SubnetNotFound")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertSubnetNotFound(t)
 	return t
@@ -944,14 +1037,17 @@ end
 
 --- Create a structure of type MountTargetNotFound
 -- <p>Returned if there is no mount target with the specified ID found in the caller's account.</p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.MountTargetNotFound(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MountTargetNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return MountTargetNotFound structure as a key-value pair table
+function M.MountTargetNotFound(args)
+	assert(args, "You must provdide an argument table when creating MountTargetNotFound")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertMountTargetNotFound(t)
 	return t
@@ -986,35 +1082,38 @@ end
 
 --- Create a structure of type FileSystemDescription
 -- <p>Description of the file system.</p>
--- @param _SizeInBytes [FileSystemSize] <p>Latest known metered size (in bytes) of data stored in the file system, in bytes, in its <code>Value</code> field, and the time at which that size was determined in its <code>Timestamp</code> field. The <code>Timestamp</code> value is the integer number of seconds since 1970-01-01T00:00:00Z. Note that the value does not represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, the value will represent actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not the exact size the file system was at any instant in time. </p>
--- @param _Name [TagValue] <p>You can add tags to a file system, including a <code>Name</code> tag. For more information, see <a>CreateTags</a>. If the file system has a <code>Name</code> tag, Amazon EFS returns the value in this field. </p>
--- @param _CreationToken [CreationToken] <p>Opaque string specified in the request.</p>
--- @param _CreationTime [Timestamp] <p>Time that the file system was created, in seconds (since 1970-01-01T00:00:00Z).</p>
--- @param _PerformanceMode [PerformanceMode] <p>The <code>PerformanceMode</code> of the file system.</p>
--- @param _FileSystemId [FileSystemId] <p>ID of the file system, assigned by Amazon EFS.</p>
--- @param _NumberOfMountTargets [MountTargetCount] <p>Current number of mount targets that the file system has. For more information, see <a>CreateMountTarget</a>.</p>
--- @param _LifeCycleState [LifeCycleState] <p>Lifecycle phase of the file system.</p>
--- @param _OwnerId [AwsAccountId] <p>AWS account that created the file system. If the file system was created by an IAM user, the parent account to which the user belongs is the owner.</p>
--- Required parameter: OwnerId
--- Required parameter: CreationToken
--- Required parameter: FileSystemId
--- Required parameter: CreationTime
--- Required parameter: LifeCycleState
--- Required parameter: NumberOfMountTargets
--- Required parameter: SizeInBytes
--- Required parameter: PerformanceMode
-function M.FileSystemDescription(_SizeInBytes, _Name, _CreationToken, _CreationTime, _PerformanceMode, _FileSystemId, _NumberOfMountTargets, _LifeCycleState, _OwnerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FileSystemDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeInBytes [FileSystemSize] <p>Latest known metered size (in bytes) of data stored in the file system, in bytes, in its <code>Value</code> field, and the time at which that size was determined in its <code>Timestamp</code> field. The <code>Timestamp</code> value is the integer number of seconds since 1970-01-01T00:00:00Z. Note that the value does not represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, the value will represent actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not the exact size the file system was at any instant in time. </p>
+-- * Name [TagValue] <p>You can add tags to a file system, including a <code>Name</code> tag. For more information, see <a>CreateTags</a>. If the file system has a <code>Name</code> tag, Amazon EFS returns the value in this field. </p>
+-- * CreationToken [CreationToken] <p>Opaque string specified in the request.</p>
+-- * CreationTime [Timestamp] <p>Time that the file system was created, in seconds (since 1970-01-01T00:00:00Z).</p>
+-- * PerformanceMode [PerformanceMode] <p>The <code>PerformanceMode</code> of the file system.</p>
+-- * FileSystemId [FileSystemId] <p>ID of the file system, assigned by Amazon EFS.</p>
+-- * NumberOfMountTargets [MountTargetCount] <p>Current number of mount targets that the file system has. For more information, see <a>CreateMountTarget</a>.</p>
+-- * LifeCycleState [LifeCycleState] <p>Lifecycle phase of the file system.</p>
+-- * OwnerId [AwsAccountId] <p>AWS account that created the file system. If the file system was created by an IAM user, the parent account to which the user belongs is the owner.</p>
+-- Required key: OwnerId
+-- Required key: CreationToken
+-- Required key: FileSystemId
+-- Required key: CreationTime
+-- Required key: LifeCycleState
+-- Required key: NumberOfMountTargets
+-- Required key: SizeInBytes
+-- Required key: PerformanceMode
+-- @return FileSystemDescription structure as a key-value pair table
+function M.FileSystemDescription(args)
+	assert(args, "You must provdide an argument table when creating FileSystemDescription")
 	local t = { 
-		["SizeInBytes"] = _SizeInBytes,
-		["Name"] = _Name,
-		["CreationToken"] = _CreationToken,
-		["CreationTime"] = _CreationTime,
-		["PerformanceMode"] = _PerformanceMode,
-		["FileSystemId"] = _FileSystemId,
-		["NumberOfMountTargets"] = _NumberOfMountTargets,
-		["LifeCycleState"] = _LifeCycleState,
-		["OwnerId"] = _OwnerId,
+		["SizeInBytes"] = args["SizeInBytes"],
+		["Name"] = args["Name"],
+		["CreationToken"] = args["CreationToken"],
+		["CreationTime"] = args["CreationTime"],
+		["PerformanceMode"] = args["PerformanceMode"],
+		["FileSystemId"] = args["FileSystemId"],
+		["NumberOfMountTargets"] = args["NumberOfMountTargets"],
+		["LifeCycleState"] = args["LifeCycleState"],
+		["OwnerId"] = args["OwnerId"],
 	}
 	asserts.AssertFileSystemDescription(t)
 	return t
@@ -1035,14 +1134,17 @@ end
 
 --- Create a structure of type NetworkInterfaceLimitExceeded
 -- <p> The calling account has reached the ENI limit for the specific AWS region. Client should try to delete some ENIs or get its account limit raised. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a> in the Amazon Virtual Private Cloud User Guide (see the Network interfaces per VPC entry in the table). </p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.NetworkInterfaceLimitExceeded(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NetworkInterfaceLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return NetworkInterfaceLimitExceeded structure as a key-value pair table
+function M.NetworkInterfaceLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating NetworkInterfaceLimitExceeded")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertNetworkInterfaceLimitExceeded(t)
 	return t
@@ -1064,15 +1166,18 @@ end
 
 --- Create a structure of type CreateTagsRequest
 -- <p/>
--- @param _FileSystemId [FileSystemId] <p>ID of the file system whose tags you want to modify (String). This operation modifies the tags only, not the file system.</p>
--- @param _Tags [Tags] <p>Array of <code>Tag</code> objects to add. Each <code>Tag</code> object is a key-value pair. </p>
--- Required parameter: FileSystemId
--- Required parameter: Tags
-function M.CreateTagsRequest(_FileSystemId, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileSystemId [FileSystemId] <p>ID of the file system whose tags you want to modify (String). This operation modifies the tags only, not the file system.</p>
+-- * Tags [Tags] <p>Array of <code>Tag</code> objects to add. Each <code>Tag</code> object is a key-value pair. </p>
+-- Required key: FileSystemId
+-- Required key: Tags
+-- @return CreateTagsRequest structure as a key-value pair table
+function M.CreateTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateTagsRequest")
 	local t = { 
-		["FileSystemId"] = _FileSystemId,
-		["Tags"] = _Tags,
+		["FileSystemId"] = args["FileSystemId"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertCreateTagsRequest(t)
 	return t
@@ -1094,15 +1199,18 @@ end
 
 --- Create a structure of type Tag
 -- <p>A tag is a key-value pair. Allowed characters: letters, whitespace, and numbers, representable in UTF-8, and the following characters:<code> + - = . _ : /</code> </p>
--- @param _Value [TagValue] <p>Value of the tag key.</p>
--- @param _Key [TagKey] <p>Tag key (String). The key can't start with <code>aws:</code>.</p>
--- Required parameter: Key
--- Required parameter: Value
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>Value of the tag key.</p>
+-- * Key [TagKey] <p>Tag key (String). The key can't start with <code>aws:</code>.</p>
+-- Required key: Key
+-- Required key: Value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -1123,14 +1231,17 @@ end
 
 --- Create a structure of type UnsupportedAvailabilityZone
 -- <p></p>
--- @param _ErrorCode [ErrorCode] 
--- @param _Message [ErrorMessage] 
--- Required parameter: ErrorCode
-function M.UnsupportedAvailabilityZone(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedAvailabilityZone")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] 
+-- * Message [ErrorMessage] 
+-- Required key: ErrorCode
+-- @return UnsupportedAvailabilityZone structure as a key-value pair table
+function M.UnsupportedAvailabilityZone(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedAvailabilityZone")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertUnsupportedAvailabilityZone(t)
 	return t

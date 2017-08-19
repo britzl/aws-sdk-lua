@@ -37,15 +37,18 @@ end
 
 --- Create a structure of type ExpressionStatus
 -- <p>The value of an <code>Expression</code> and its current status.</p>
--- @param _Status [OptionStatus] 
--- @param _Options [Expression] <p>The expression that is evaluated for sorting while processing a search request.</p>
--- Required parameter: Options
--- Required parameter: Status
-function M.ExpressionStatus(_Status, _Options, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExpressionStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [OptionStatus] 
+-- * Options [Expression] <p>The expression that is evaluated for sorting while processing a search request.</p>
+-- Required key: Options
+-- Required key: Status
+-- @return ExpressionStatus structure as a key-value pair table
+function M.ExpressionStatus(args)
+	assert(args, "You must provdide an argument table when creating ExpressionStatus")
 	local t = { 
-		["Status"] = _Status,
-		["Options"] = _Options,
+		["Status"] = args["Status"],
+		["Options"] = args["Options"],
 	}
 	asserts.AssertExpressionStatus(t)
 	return t
@@ -65,12 +68,15 @@ end
 
 --- Create a structure of type DescribeAnalysisSchemesResponse
 -- <p>The result of a <code>DescribeAnalysisSchemes</code> request. Contains the analysis schemes configured for the domain specified in the request.</p>
--- @param _AnalysisSchemes [AnalysisSchemeStatusList] <p>The analysis scheme descriptions.</p>
--- Required parameter: AnalysisSchemes
-function M.DescribeAnalysisSchemesResponse(_AnalysisSchemes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAnalysisSchemesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalysisSchemes [AnalysisSchemeStatusList] <p>The analysis scheme descriptions.</p>
+-- Required key: AnalysisSchemes
+-- @return DescribeAnalysisSchemesResponse structure as a key-value pair table
+function M.DescribeAnalysisSchemesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAnalysisSchemesResponse")
 	local t = { 
-		["AnalysisSchemes"] = _AnalysisSchemes,
+		["AnalysisSchemes"] = args["AnalysisSchemes"],
 	}
 	asserts.AssertDescribeAnalysisSchemesResponse(t)
 	return t
@@ -92,15 +98,18 @@ end
 
 --- Create a structure of type DeleteAnalysisSchemeRequest
 -- <p>Container for the parameters to the <code><a>DeleteAnalysisScheme</a></code> operation. Specifies the name of the domain you want to update and the analysis scheme you want to delete. </p>
--- @param _AnalysisSchemeName [StandardName] <p>The name of the analysis scheme you want to delete.</p>
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: AnalysisSchemeName
-function M.DeleteAnalysisSchemeRequest(_AnalysisSchemeName, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAnalysisSchemeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalysisSchemeName [StandardName] <p>The name of the analysis scheme you want to delete.</p>
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: AnalysisSchemeName
+-- @return DeleteAnalysisSchemeRequest structure as a key-value pair table
+function M.DeleteAnalysisSchemeRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAnalysisSchemeRequest")
 	local t = { 
-		["AnalysisSchemeName"] = _AnalysisSchemeName,
-		["DomainName"] = _DomainName,
+		["AnalysisSchemeName"] = args["AnalysisSchemeName"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDeleteAnalysisSchemeRequest(t)
 	return t
@@ -119,11 +128,14 @@ end
 
 --- Create a structure of type IndexDocumentsResponse
 -- <p>The result of an <code>IndexDocuments</code> request. Contains the status of the indexing operation, including the fields being indexed.</p>
--- @param _FieldNames [FieldNameList] <p>The names of the fields that are currently being indexed.</p>
-function M.IndexDocumentsResponse(_FieldNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IndexDocumentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FieldNames [FieldNameList] <p>The names of the fields that are currently being indexed.</p>
+-- @return IndexDocumentsResponse structure as a key-value pair table
+function M.IndexDocumentsResponse(args)
+	assert(args, "You must provdide an argument table when creating IndexDocumentsResponse")
 	local t = { 
-		["FieldNames"] = _FieldNames,
+		["FieldNames"] = args["FieldNames"],
 	}
 	asserts.AssertIndexDocumentsResponse(t)
 	return t
@@ -145,15 +157,18 @@ end
 
 --- Create a structure of type UpdateServiceAccessPoliciesRequest
 -- <p>Container for the parameters to the <code><a>UpdateServiceAccessPolicies</a></code> operation. Specifies the name of the domain you want to update and the access rules you want to configure.</p>
--- @param _AccessPolicies [PolicyDocument] <p>The access rules you want to configure. These rules replace any existing rules. </p>
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: AccessPolicies
-function M.UpdateServiceAccessPoliciesRequest(_AccessPolicies, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServiceAccessPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccessPolicies [PolicyDocument] <p>The access rules you want to configure. These rules replace any existing rules. </p>
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: AccessPolicies
+-- @return UpdateServiceAccessPoliciesRequest structure as a key-value pair table
+function M.UpdateServiceAccessPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateServiceAccessPoliciesRequest")
 	local t = { 
-		["AccessPolicies"] = _AccessPolicies,
-		["DomainName"] = _DomainName,
+		["AccessPolicies"] = args["AccessPolicies"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertUpdateServiceAccessPoliciesRequest(t)
 	return t
@@ -173,12 +188,15 @@ end
 
 --- Create a structure of type DeleteIndexFieldResponse
 -- <p>The result of a <code><a>DeleteIndexField</a></code> request.</p>
--- @param _IndexField [IndexFieldStatus] <p>The status of the index field being deleted.</p>
--- Required parameter: IndexField
-function M.DeleteIndexFieldResponse(_IndexField, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIndexFieldResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexField [IndexFieldStatus] <p>The status of the index field being deleted.</p>
+-- Required key: IndexField
+-- @return DeleteIndexFieldResponse structure as a key-value pair table
+function M.DeleteIndexFieldResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteIndexFieldResponse")
 	local t = { 
-		["IndexField"] = _IndexField,
+		["IndexField"] = args["IndexField"],
 	}
 	asserts.AssertDeleteIndexFieldResponse(t)
 	return t
@@ -202,21 +220,24 @@ end
 
 --- Create a structure of type DoubleOptions
 -- <p>Options for a double-precision 64-bit floating point field. Present if <code>IndexFieldType</code> specifies the field is of type <code>double</code>. All options are enabled by default.</p>
--- @param _SourceField [FieldName] <p>The name of the source field to map to the field. </p>
--- @param _DefaultValue [Double] <p>A value to use for the field if the field isn't specified for a document. This can be important if you are using the field in an expression and that field is not present in every document.</p>
--- @param _FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
--- @param _SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
--- @param _SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
-function M.DoubleOptions(_SourceField, _DefaultValue, _FacetEnabled, _SearchEnabled, _SortEnabled, _ReturnEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DoubleOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceField [FieldName] <p>The name of the source field to map to the field. </p>
+-- * DefaultValue [Double] <p>A value to use for the field if the field isn't specified for a document. This can be important if you are using the field in an expression and that field is not present in every document.</p>
+-- * FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- * SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @return DoubleOptions structure as a key-value pair table
+function M.DoubleOptions(args)
+	assert(args, "You must provdide an argument table when creating DoubleOptions")
 	local t = { 
-		["SourceField"] = _SourceField,
-		["DefaultValue"] = _DefaultValue,
-		["FacetEnabled"] = _FacetEnabled,
-		["SearchEnabled"] = _SearchEnabled,
-		["SortEnabled"] = _SortEnabled,
-		["ReturnEnabled"] = _ReturnEnabled,
+		["SourceField"] = args["SourceField"],
+		["DefaultValue"] = args["DefaultValue"],
+		["FacetEnabled"] = args["FacetEnabled"],
+		["SearchEnabled"] = args["SearchEnabled"],
+		["SortEnabled"] = args["SortEnabled"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
 	asserts.AssertDoubleOptions(t)
 	return t
@@ -235,11 +256,14 @@ end
 
 --- Create a structure of type ListDomainNamesResponse
 -- <p>The result of a <code>ListDomainNames</code> request. Contains a list of the domains owned by an account.</p>
--- @param _DomainNames [DomainNameMap] <p>The names of the search domains owned by an account.</p>
-function M.ListDomainNamesResponse(_DomainNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainNamesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainNames [DomainNameMap] <p>The names of the search domains owned by an account.</p>
+-- @return ListDomainNamesResponse structure as a key-value pair table
+function M.ListDomainNamesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListDomainNamesResponse")
 	local t = { 
-		["DomainNames"] = _DomainNames,
+		["DomainNames"] = args["DomainNames"],
 	}
 	asserts.AssertListDomainNamesResponse(t)
 	return t
@@ -261,15 +285,18 @@ end
 
 --- Create a structure of type AnalysisSchemeStatus
 -- <p>The status and configuration of an <code>AnalysisScheme</code>.</p>
--- @param _Status [OptionStatus] 
--- @param _Options [AnalysisScheme] 
--- Required parameter: Options
--- Required parameter: Status
-function M.AnalysisSchemeStatus(_Status, _Options, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AnalysisSchemeStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [OptionStatus] 
+-- * Options [AnalysisScheme] 
+-- Required key: Options
+-- Required key: Status
+-- @return AnalysisSchemeStatus structure as a key-value pair table
+function M.AnalysisSchemeStatus(args)
+	assert(args, "You must provdide an argument table when creating AnalysisSchemeStatus")
 	local t = { 
-		["Status"] = _Status,
-		["Options"] = _Options,
+		["Status"] = args["Status"],
+		["Options"] = args["Options"],
 	}
 	asserts.AssertAnalysisSchemeStatus(t)
 	return t
@@ -292,19 +319,22 @@ end
 
 --- Create a structure of type DateArrayOptions
 -- <p>Options for a field that contains an array of dates. Present if <code>IndexFieldType</code> specifies the field is of type <code>date-array</code>. All options are enabled by default.</p>
--- @param _SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
--- @param _FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
--- @param _DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
--- @param _SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
-function M.DateArrayOptions(_SourceFields, _FacetEnabled, _DefaultValue, _ReturnEnabled, _SearchEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DateArrayOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
+-- * FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- * DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- @return DateArrayOptions structure as a key-value pair table
+function M.DateArrayOptions(args)
+	assert(args, "You must provdide an argument table when creating DateArrayOptions")
 	local t = { 
-		["SourceFields"] = _SourceFields,
-		["FacetEnabled"] = _FacetEnabled,
-		["DefaultValue"] = _DefaultValue,
-		["ReturnEnabled"] = _ReturnEnabled,
-		["SearchEnabled"] = _SearchEnabled,
+		["SourceFields"] = args["SourceFields"],
+		["FacetEnabled"] = args["FacetEnabled"],
+		["DefaultValue"] = args["DefaultValue"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
+		["SearchEnabled"] = args["SearchEnabled"],
 	}
 	asserts.AssertDateArrayOptions(t)
 	return t
@@ -324,12 +354,15 @@ end
 
 --- Create a structure of type DescribeDomainsResponse
 -- <p>The result of a <code>DescribeDomains</code> request. Contains the status of the domains specified in the request or all domains owned by the account.</p>
--- @param _DomainStatusList [DomainStatusList] 
--- Required parameter: DomainStatusList
-function M.DescribeDomainsResponse(_DomainStatusList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDomainsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainStatusList [DomainStatusList] 
+-- Required key: DomainStatusList
+-- @return DescribeDomainsResponse structure as a key-value pair table
+function M.DescribeDomainsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeDomainsResponse")
 	local t = { 
-		["DomainStatusList"] = _DomainStatusList,
+		["DomainStatusList"] = args["DomainStatusList"],
 	}
 	asserts.AssertDescribeDomainsResponse(t)
 	return t
@@ -351,15 +384,18 @@ end
 
 --- Create a structure of type AvailabilityOptionsStatus
 -- <p>The status and configuration of the domain's availability options.</p>
--- @param _Status [OptionStatus] 
--- @param _Options [MultiAZ] <p>The availability options configured for the domain.</p>
--- Required parameter: Options
--- Required parameter: Status
-function M.AvailabilityOptionsStatus(_Status, _Options, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AvailabilityOptionsStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [OptionStatus] 
+-- * Options [MultiAZ] <p>The availability options configured for the domain.</p>
+-- Required key: Options
+-- Required key: Status
+-- @return AvailabilityOptionsStatus structure as a key-value pair table
+function M.AvailabilityOptionsStatus(args)
+	assert(args, "You must provdide an argument table when creating AvailabilityOptionsStatus")
 	local t = { 
-		["Status"] = _Status,
-		["Options"] = _Options,
+		["Status"] = args["Status"],
+		["Options"] = args["Options"],
 	}
 	asserts.AssertAvailabilityOptionsStatus(t)
 	return t
@@ -380,14 +416,17 @@ end
 
 --- Create a structure of type DescribeServiceAccessPoliciesRequest
 -- <p>Container for the parameters to the <code><a>DescribeServiceAccessPolicies</a></code> operation. Specifies the name of the domain you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
--- @param _Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
--- @param _DomainName [DomainName] <p>The name of the domain you want to describe.</p>
--- Required parameter: DomainName
-function M.DescribeServiceAccessPoliciesRequest(_Deployed, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServiceAccessPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- * DomainName [DomainName] <p>The name of the domain you want to describe.</p>
+-- Required key: DomainName
+-- @return DescribeServiceAccessPoliciesRequest structure as a key-value pair table
+function M.DescribeServiceAccessPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeServiceAccessPoliciesRequest")
 	local t = { 
-		["Deployed"] = _Deployed,
-		["DomainName"] = _DomainName,
+		["Deployed"] = args["Deployed"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDescribeServiceAccessPoliciesRequest(t)
 	return t
@@ -409,15 +448,18 @@ end
 
 --- Create a structure of type DefineExpressionRequest
 -- <p>Container for the parameters to the <code><a>DefineExpression</a></code> operation. Specifies the name of the domain you want to update and the expression you want to configure.</p>
--- @param _Expression [Expression] 
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: Expression
-function M.DefineExpressionRequest(_Expression, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefineExpressionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Expression [Expression] 
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: Expression
+-- @return DefineExpressionRequest structure as a key-value pair table
+function M.DefineExpressionRequest(args)
+	assert(args, "You must provdide an argument table when creating DefineExpressionRequest")
 	local t = { 
-		["Expression"] = _Expression,
-		["DomainName"] = _DomainName,
+		["Expression"] = args["Expression"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDefineExpressionRequest(t)
 	return t
@@ -439,15 +481,18 @@ end
 
 --- Create a structure of type DeleteIndexFieldRequest
 -- <p>Container for the parameters to the <code><a>DeleteIndexField</a></code> operation. Specifies the name of the domain you want to update and the name of the index field you want to delete.</p>
--- @param _IndexFieldName [DynamicFieldName] <p>The name of the index field your want to remove from the domain's indexing options.</p>
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: IndexFieldName
-function M.DeleteIndexFieldRequest(_IndexFieldName, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIndexFieldRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexFieldName [DynamicFieldName] <p>The name of the index field your want to remove from the domain's indexing options.</p>
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: IndexFieldName
+-- @return DeleteIndexFieldRequest structure as a key-value pair table
+function M.DeleteIndexFieldRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteIndexFieldRequest")
 	local t = { 
-		["IndexFieldName"] = _IndexFieldName,
-		["DomainName"] = _DomainName,
+		["IndexFieldName"] = args["IndexFieldName"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDeleteIndexFieldRequest(t)
 	return t
@@ -470,19 +515,22 @@ end
 
 --- Create a structure of type LiteralArrayOptions
 -- <p>Options for a field that contains an array of literal strings. Present if <code>IndexFieldType</code> specifies the field is of type <code>literal-array</code>. All options are enabled by default.</p>
--- @param _SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
--- @param _FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
--- @param _DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
--- @param _SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
-function M.LiteralArrayOptions(_SourceFields, _FacetEnabled, _DefaultValue, _ReturnEnabled, _SearchEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LiteralArrayOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
+-- * FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- * DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- @return LiteralArrayOptions structure as a key-value pair table
+function M.LiteralArrayOptions(args)
+	assert(args, "You must provdide an argument table when creating LiteralArrayOptions")
 	local t = { 
-		["SourceFields"] = _SourceFields,
-		["FacetEnabled"] = _FacetEnabled,
-		["DefaultValue"] = _DefaultValue,
-		["ReturnEnabled"] = _ReturnEnabled,
-		["SearchEnabled"] = _SearchEnabled,
+		["SourceFields"] = args["SourceFields"],
+		["FacetEnabled"] = args["FacetEnabled"],
+		["DefaultValue"] = args["DefaultValue"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
+		["SearchEnabled"] = args["SearchEnabled"],
 	}
 	asserts.AssertLiteralArrayOptions(t)
 	return t
@@ -504,15 +552,18 @@ end
 
 --- Create a structure of type AccessPoliciesStatus
 -- <p>The configured access rules for the domain's document and search endpoints, and the current status of those rules.</p>
--- @param _Status [OptionStatus] 
--- @param _Options [PolicyDocument] 
--- Required parameter: Options
--- Required parameter: Status
-function M.AccessPoliciesStatus(_Status, _Options, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessPoliciesStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [OptionStatus] 
+-- * Options [PolicyDocument] 
+-- Required key: Options
+-- Required key: Status
+-- @return AccessPoliciesStatus structure as a key-value pair table
+function M.AccessPoliciesStatus(args)
+	assert(args, "You must provdide an argument table when creating AccessPoliciesStatus")
 	local t = { 
-		["Status"] = _Status,
-		["Options"] = _Options,
+		["Status"] = args["Status"],
+		["Options"] = args["Options"],
 	}
 	asserts.AssertAccessPoliciesStatus(t)
 	return t
@@ -531,11 +582,14 @@ end
 
 --- Create a structure of type UpdateAvailabilityOptionsResponse
 -- <p>The result of a <code>UpdateAvailabilityOptions</code> request. Contains the status of the domain's availability options. </p>
--- @param _AvailabilityOptions [AvailabilityOptionsStatus] <p>The newly-configured availability options. Indicates whether Multi-AZ is enabled for the domain. </p>
-function M.UpdateAvailabilityOptionsResponse(_AvailabilityOptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAvailabilityOptionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AvailabilityOptions [AvailabilityOptionsStatus] <p>The newly-configured availability options. Indicates whether Multi-AZ is enabled for the domain. </p>
+-- @return UpdateAvailabilityOptionsResponse structure as a key-value pair table
+function M.UpdateAvailabilityOptionsResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateAvailabilityOptionsResponse")
 	local t = { 
-		["AvailabilityOptions"] = _AvailabilityOptions,
+		["AvailabilityOptions"] = args["AvailabilityOptions"],
 	}
 	asserts.AssertUpdateAvailabilityOptionsResponse(t)
 	return t
@@ -555,12 +609,15 @@ end
 
 --- Create a structure of type DefineExpressionResponse
 -- <p>The result of a <code>DefineExpression</code> request. Contains the status of the newly-configured expression.</p>
--- @param _Expression [ExpressionStatus] 
--- Required parameter: Expression
-function M.DefineExpressionResponse(_Expression, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefineExpressionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Expression [ExpressionStatus] 
+-- Required key: Expression
+-- @return DefineExpressionResponse structure as a key-value pair table
+function M.DefineExpressionResponse(args)
+	assert(args, "You must provdide an argument table when creating DefineExpressionResponse")
 	local t = { 
-		["Expression"] = _Expression,
+		["Expression"] = args["Expression"],
 	}
 	asserts.AssertDefineExpressionResponse(t)
 	return t
@@ -582,16 +639,19 @@ end
 
 --- Create a structure of type DocumentSuggesterOptions
 -- <p>Options for a search suggester.</p>
--- @param _SortExpression [String] <p>An expression that computes a score for each suggestion to control how they are sorted. The scores are rounded to the nearest integer, with a floor of 0 and a ceiling of 2^31-1. A document's relevance score is not computed for suggestions, so sort expressions cannot reference the <code>_score</code> value. To sort suggestions using a numeric field or existing expression, simply specify the name of the field or expression. If no expression is configured for the suggester, the suggestions are sorted with the closest matches listed first.</p>
--- @param _FuzzyMatching [SuggesterFuzzyMatching] <p>The level of fuzziness allowed when suggesting matches for a string: <code>none</code>, <code>low</code>, or <code>high</code>. With none, the specified string is treated as an exact prefix. With low, suggestions must differ from the specified string by no more than one character. With high, suggestions can differ by up to two characters. The default is none. </p>
--- @param _SourceField [FieldName] <p>The name of the index field you want to use for suggestions. </p>
--- Required parameter: SourceField
-function M.DocumentSuggesterOptions(_SortExpression, _FuzzyMatching, _SourceField, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DocumentSuggesterOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SortExpression [String] <p>An expression that computes a score for each suggestion to control how they are sorted. The scores are rounded to the nearest integer, with a floor of 0 and a ceiling of 2^31-1. A document's relevance score is not computed for suggestions, so sort expressions cannot reference the <code>_score</code> value. To sort suggestions using a numeric field or existing expression, simply specify the name of the field or expression. If no expression is configured for the suggester, the suggestions are sorted with the closest matches listed first.</p>
+-- * FuzzyMatching [SuggesterFuzzyMatching] <p>The level of fuzziness allowed when suggesting matches for a string: <code>none</code>, <code>low</code>, or <code>high</code>. With none, the specified string is treated as an exact prefix. With low, suggestions must differ from the specified string by no more than one character. With high, suggestions can differ by up to two characters. The default is none. </p>
+-- * SourceField [FieldName] <p>The name of the index field you want to use for suggestions. </p>
+-- Required key: SourceField
+-- @return DocumentSuggesterOptions structure as a key-value pair table
+function M.DocumentSuggesterOptions(args)
+	assert(args, "You must provdide an argument table when creating DocumentSuggesterOptions")
 	local t = { 
-		["SortExpression"] = _SortExpression,
-		["FuzzyMatching"] = _FuzzyMatching,
-		["SourceField"] = _SourceField,
+		["SortExpression"] = args["SortExpression"],
+		["FuzzyMatching"] = args["FuzzyMatching"],
+		["SourceField"] = args["SourceField"],
 	}
 	asserts.AssertDocumentSuggesterOptions(t)
 	return t
@@ -611,12 +671,15 @@ end
 
 --- Create a structure of type DefineAnalysisSchemeResponse
 -- <p>The result of a <code><a>DefineAnalysisScheme</a></code> request. Contains the status of the newly-configured analysis scheme.</p>
--- @param _AnalysisScheme [AnalysisSchemeStatus] 
--- Required parameter: AnalysisScheme
-function M.DefineAnalysisSchemeResponse(_AnalysisScheme, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefineAnalysisSchemeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalysisScheme [AnalysisSchemeStatus] 
+-- Required key: AnalysisScheme
+-- @return DefineAnalysisSchemeResponse structure as a key-value pair table
+function M.DefineAnalysisSchemeResponse(args)
+	assert(args, "You must provdide an argument table when creating DefineAnalysisSchemeResponse")
 	local t = { 
-		["AnalysisScheme"] = _AnalysisScheme,
+		["AnalysisScheme"] = args["AnalysisScheme"],
 	}
 	asserts.AssertDefineAnalysisSchemeResponse(t)
 	return t
@@ -636,12 +699,15 @@ end
 
 --- Create a structure of type DeleteDomainRequest
 -- <p>Container for the parameters to the <code><a>DeleteDomain</a></code> operation. Specifies the name of the domain you want to delete.</p>
--- @param _DomainName [DomainName] <p>The name of the domain you want to permanently delete.</p>
--- Required parameter: DomainName
-function M.DeleteDomainRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] <p>The name of the domain you want to permanently delete.</p>
+-- Required key: DomainName
+-- @return DeleteDomainRequest structure as a key-value pair table
+function M.DeleteDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDomainRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDeleteDomainRequest(t)
 	return t
@@ -661,12 +727,15 @@ end
 
 --- Create a structure of type UpdateScalingParametersResponse
 -- <p>The result of a <code>UpdateScalingParameters</code> request. Contains the status of the newly-configured scaling parameters.</p>
--- @param _ScalingParameters [ScalingParametersStatus] 
--- Required parameter: ScalingParameters
-function M.UpdateScalingParametersResponse(_ScalingParameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateScalingParametersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScalingParameters [ScalingParametersStatus] 
+-- Required key: ScalingParameters
+-- @return UpdateScalingParametersResponse structure as a key-value pair table
+function M.UpdateScalingParametersResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateScalingParametersResponse")
 	local t = { 
-		["ScalingParameters"] = _ScalingParameters,
+		["ScalingParameters"] = args["ScalingParameters"],
 	}
 	asserts.AssertUpdateScalingParametersResponse(t)
 	return t
@@ -688,15 +757,18 @@ end
 
 --- Create a structure of type SuggesterStatus
 -- <p>The value of a <code>Suggester</code> and its current status.</p>
--- @param _Status [OptionStatus] 
--- @param _Options [Suggester] 
--- Required parameter: Options
--- Required parameter: Status
-function M.SuggesterStatus(_Status, _Options, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SuggesterStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [OptionStatus] 
+-- * Options [Suggester] 
+-- Required key: Options
+-- Required key: Status
+-- @return SuggesterStatus structure as a key-value pair table
+function M.SuggesterStatus(args)
+	assert(args, "You must provdide an argument table when creating SuggesterStatus")
 	local t = { 
-		["Status"] = _Status,
-		["Options"] = _Options,
+		["Status"] = args["Status"],
+		["Options"] = args["Options"],
 	}
 	asserts.AssertSuggesterStatus(t)
 	return t
@@ -716,12 +788,15 @@ end
 
 --- Create a structure of type DescribeScalingParametersRequest
 -- <p>Container for the parameters to the <code><a>DescribeScalingParameters</a></code> operation. Specifies the name of the domain you want to describe. </p>
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
-function M.DescribeScalingParametersRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScalingParametersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- @return DescribeScalingParametersRequest structure as a key-value pair table
+function M.DescribeScalingParametersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeScalingParametersRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDescribeScalingParametersRequest(t)
 	return t
@@ -741,12 +816,15 @@ end
 
 --- Create a structure of type DeleteSuggesterResponse
 -- <p>The result of a <code>DeleteSuggester</code> request. Contains the status of the deleted suggester.</p>
--- @param _Suggester [SuggesterStatus] <p>The status of the suggester being deleted.</p>
--- Required parameter: Suggester
-function M.DeleteSuggesterResponse(_Suggester, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSuggesterResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Suggester [SuggesterStatus] <p>The status of the suggester being deleted.</p>
+-- Required key: Suggester
+-- @return DeleteSuggesterResponse structure as a key-value pair table
+function M.DeleteSuggesterResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteSuggesterResponse")
 	local t = { 
-		["Suggester"] = _Suggester,
+		["Suggester"] = args["Suggester"],
 	}
 	asserts.AssertDeleteSuggesterResponse(t)
 	return t
@@ -766,12 +844,15 @@ end
 
 --- Create a structure of type DeleteExpressionResponse
 -- <p>The result of a <code><a>DeleteExpression</a></code> request. Specifies the expression being deleted.</p>
--- @param _Expression [ExpressionStatus] <p>The status of the expression being deleted.</p>
--- Required parameter: Expression
-function M.DeleteExpressionResponse(_Expression, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteExpressionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Expression [ExpressionStatus] <p>The status of the expression being deleted.</p>
+-- Required key: Expression
+-- @return DeleteExpressionResponse structure as a key-value pair table
+function M.DeleteExpressionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteExpressionResponse")
 	local t = { 
-		["Expression"] = _Expression,
+		["Expression"] = args["Expression"],
 	}
 	asserts.AssertDeleteExpressionResponse(t)
 	return t
@@ -792,15 +873,18 @@ end
 
 --- Create a structure of type ScalingParameters
 -- <p>The desired instance type and desired number of replicas of each index partition.</p>
--- @param _DesiredPartitionCount [UIntValue] <p>The number of partitions you want to preconfigure for your domain. Only valid when you select <code>m2.2xlarge</code> as the desired instance type.</p>
--- @param _DesiredInstanceType [PartitionInstanceType] <p>The instance type that you want to preconfigure for your domain. For example, <code>search.m1.small</code>.</p>
--- @param _DesiredReplicationCount [UIntValue] <p>The number of replicas you want to preconfigure for each index partition.</p>
-function M.ScalingParameters(_DesiredPartitionCount, _DesiredInstanceType, _DesiredReplicationCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScalingParameters")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DesiredPartitionCount [UIntValue] <p>The number of partitions you want to preconfigure for your domain. Only valid when you select <code>m2.2xlarge</code> as the desired instance type.</p>
+-- * DesiredInstanceType [PartitionInstanceType] <p>The instance type that you want to preconfigure for your domain. For example, <code>search.m1.small</code>.</p>
+-- * DesiredReplicationCount [UIntValue] <p>The number of replicas you want to preconfigure for each index partition.</p>
+-- @return ScalingParameters structure as a key-value pair table
+function M.ScalingParameters(args)
+	assert(args, "You must provdide an argument table when creating ScalingParameters")
 	local t = { 
-		["DesiredPartitionCount"] = _DesiredPartitionCount,
-		["DesiredInstanceType"] = _DesiredInstanceType,
-		["DesiredReplicationCount"] = _DesiredReplicationCount,
+		["DesiredPartitionCount"] = args["DesiredPartitionCount"],
+		["DesiredInstanceType"] = args["DesiredInstanceType"],
+		["DesiredReplicationCount"] = args["DesiredReplicationCount"],
 	}
 	asserts.AssertScalingParameters(t)
 	return t
@@ -820,12 +904,15 @@ end
 
 --- Create a structure of type DeleteAnalysisSchemeResponse
 -- <p>The result of a <code>DeleteAnalysisScheme</code> request. Contains the status of the deleted analysis scheme.</p>
--- @param _AnalysisScheme [AnalysisSchemeStatus] <p>The status of the analysis scheme being deleted.</p>
--- Required parameter: AnalysisScheme
-function M.DeleteAnalysisSchemeResponse(_AnalysisScheme, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAnalysisSchemeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalysisScheme [AnalysisSchemeStatus] <p>The status of the analysis scheme being deleted.</p>
+-- Required key: AnalysisScheme
+-- @return DeleteAnalysisSchemeResponse structure as a key-value pair table
+function M.DeleteAnalysisSchemeResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteAnalysisSchemeResponse")
 	local t = { 
-		["AnalysisScheme"] = _AnalysisScheme,
+		["AnalysisScheme"] = args["AnalysisScheme"],
 	}
 	asserts.AssertDeleteAnalysisSchemeResponse(t)
 	return t
@@ -847,15 +934,18 @@ end
 
 --- Create a structure of type DefineSuggesterRequest
 -- <p>Container for the parameters to the <code><a>DefineSuggester</a></code> operation. Specifies the name of the domain you want to update and the suggester configuration.</p>
--- @param _Suggester [Suggester] 
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: Suggester
-function M.DefineSuggesterRequest(_Suggester, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefineSuggesterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Suggester [Suggester] 
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: Suggester
+-- @return DefineSuggesterRequest structure as a key-value pair table
+function M.DefineSuggesterRequest(args)
+	assert(args, "You must provdide an argument table when creating DefineSuggesterRequest")
 	local t = { 
-		["Suggester"] = _Suggester,
-		["DomainName"] = _DomainName,
+		["Suggester"] = args["Suggester"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDefineSuggesterRequest(t)
 	return t
@@ -873,8 +963,11 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The request was rejected because a resource limit has already been met.</p>
-function M.LimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
 	}
 	asserts.AssertLimitExceededException(t)
@@ -897,15 +990,18 @@ end
 
 --- Create a structure of type Suggester
 -- <p>Configuration information for a search suggester. Each suggester has a unique name and specifies the text field you want to use for suggestions. The following options can be configured for a suggester: <code>FuzzyMatching</code>, <code>SortExpression</code>. </p>
--- @param _DocumentSuggesterOptions [DocumentSuggesterOptions] 
--- @param _SuggesterName [StandardName] 
--- Required parameter: SuggesterName
--- Required parameter: DocumentSuggesterOptions
-function M.Suggester(_DocumentSuggesterOptions, _SuggesterName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Suggester")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DocumentSuggesterOptions [DocumentSuggesterOptions] 
+-- * SuggesterName [StandardName] 
+-- Required key: SuggesterName
+-- Required key: DocumentSuggesterOptions
+-- @return Suggester structure as a key-value pair table
+function M.Suggester(args)
+	assert(args, "You must provdide an argument table when creating Suggester")
 	local t = { 
-		["DocumentSuggesterOptions"] = _DocumentSuggesterOptions,
-		["SuggesterName"] = _SuggesterName,
+		["DocumentSuggesterOptions"] = args["DocumentSuggesterOptions"],
+		["SuggesterName"] = args["SuggesterName"],
 	}
 	asserts.AssertSuggester(t)
 	return t
@@ -925,12 +1021,15 @@ end
 
 --- Create a structure of type DescribeExpressionsResponse
 -- <p>The result of a <code>DescribeExpressions</code> request. Contains the expressions configured for the domain specified in the request.</p>
--- @param _Expressions [ExpressionStatusList] <p>The expressions configured for the domain.</p>
--- Required parameter: Expressions
-function M.DescribeExpressionsResponse(_Expressions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExpressionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Expressions [ExpressionStatusList] <p>The expressions configured for the domain.</p>
+-- Required key: Expressions
+-- @return DescribeExpressionsResponse structure as a key-value pair table
+function M.DescribeExpressionsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeExpressionsResponse")
 	local t = { 
-		["Expressions"] = _Expressions,
+		["Expressions"] = args["Expressions"],
 	}
 	asserts.AssertDescribeExpressionsResponse(t)
 	return t
@@ -952,15 +1051,18 @@ end
 
 --- Create a structure of type UpdateScalingParametersRequest
 -- <p>Container for the parameters to the <code><a>UpdateScalingParameters</a></code> operation. Specifies the name of the domain you want to update and the scaling parameters you want to configure.</p>
--- @param _ScalingParameters [ScalingParameters] 
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: ScalingParameters
-function M.UpdateScalingParametersRequest(_ScalingParameters, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateScalingParametersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScalingParameters [ScalingParameters] 
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: ScalingParameters
+-- @return UpdateScalingParametersRequest structure as a key-value pair table
+function M.UpdateScalingParametersRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateScalingParametersRequest")
 	local t = { 
-		["ScalingParameters"] = _ScalingParameters,
-		["DomainName"] = _DomainName,
+		["ScalingParameters"] = args["ScalingParameters"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertUpdateScalingParametersRequest(t)
 	return t
@@ -984,21 +1086,24 @@ end
 
 --- Create a structure of type LiteralOptions
 -- <p>Options for literal field. Present if <code>IndexFieldType</code> specifies the field is of type <code>literal</code>. All options are enabled by default.</p>
--- @param _SourceField [FieldName] 
--- @param _DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param _FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
--- @param _SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
--- @param _SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
-function M.LiteralOptions(_SourceField, _DefaultValue, _FacetEnabled, _SearchEnabled, _SortEnabled, _ReturnEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LiteralOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceField [FieldName] 
+-- * DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
+-- * FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- * SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @return LiteralOptions structure as a key-value pair table
+function M.LiteralOptions(args)
+	assert(args, "You must provdide an argument table when creating LiteralOptions")
 	local t = { 
-		["SourceField"] = _SourceField,
-		["DefaultValue"] = _DefaultValue,
-		["FacetEnabled"] = _FacetEnabled,
-		["SearchEnabled"] = _SearchEnabled,
-		["SortEnabled"] = _SortEnabled,
-		["ReturnEnabled"] = _ReturnEnabled,
+		["SourceField"] = args["SourceField"],
+		["DefaultValue"] = args["DefaultValue"],
+		["FacetEnabled"] = args["FacetEnabled"],
+		["SearchEnabled"] = args["SearchEnabled"],
+		["SortEnabled"] = args["SortEnabled"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
 	asserts.AssertLiteralOptions(t)
 	return t
@@ -1017,11 +1122,14 @@ end
 
 --- Create a structure of type CreateDomainResponse
 -- <p>The result of a <code>CreateDomainRequest</code>. Contains the status of a newly created domain.</p>
--- @param _DomainStatus [DomainStatus] 
-function M.CreateDomainResponse(_DomainStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainStatus [DomainStatus] 
+-- @return CreateDomainResponse structure as a key-value pair table
+function M.CreateDomainResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateDomainResponse")
 	local t = { 
-		["DomainStatus"] = _DomainStatus,
+		["DomainStatus"] = args["DomainStatus"],
 	}
 	asserts.AssertCreateDomainResponse(t)
 	return t
@@ -1040,11 +1148,14 @@ end
 
 --- Create a structure of type ServiceEndpoint
 -- <p>The endpoint to which service requests can be submitted.</p>
--- @param _Endpoint [ServiceUrl] 
-function M.ServiceEndpoint(_Endpoint, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceEndpoint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Endpoint [ServiceUrl] 
+-- @return ServiceEndpoint structure as a key-value pair table
+function M.ServiceEndpoint(args)
+	assert(args, "You must provdide an argument table when creating ServiceEndpoint")
 	local t = { 
-		["Endpoint"] = _Endpoint,
+		["Endpoint"] = args["Endpoint"],
 	}
 	asserts.AssertServiceEndpoint(t)
 	return t
@@ -1064,13 +1175,16 @@ end
 
 --- Create a structure of type BaseException
 -- <p>An error occurred while processing the request.</p>
--- @param _Message [ErrorMessage] 
--- @param _Code [ErrorCode] 
-function M.BaseException(_Message, _Code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BaseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] 
+-- * Code [ErrorCode] 
+-- @return BaseException structure as a key-value pair table
+function M.BaseException(args)
+	assert(args, "You must provdide an argument table when creating BaseException")
 	local t = { 
-		["Message"] = _Message,
-		["Code"] = _Code,
+		["Message"] = args["Message"],
+		["Code"] = args["Code"],
 	}
 	asserts.AssertBaseException(t)
 	return t
@@ -1092,15 +1206,18 @@ end
 
 --- Create a structure of type DeleteSuggesterRequest
 -- <p>Container for the parameters to the <code><a>DeleteSuggester</a></code> operation. Specifies the name of the domain you want to update and name of the suggester you want to delete.</p>
--- @param _SuggesterName [StandardName] <p>Specifies the name of the suggester you want to delete.</p>
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: SuggesterName
-function M.DeleteSuggesterRequest(_SuggesterName, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSuggesterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SuggesterName [StandardName] <p>Specifies the name of the suggester you want to delete.</p>
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: SuggesterName
+-- @return DeleteSuggesterRequest structure as a key-value pair table
+function M.DeleteSuggesterRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSuggesterRequest")
 	local t = { 
-		["SuggesterName"] = _SuggesterName,
-		["DomainName"] = _DomainName,
+		["SuggesterName"] = args["SuggesterName"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDeleteSuggesterRequest(t)
 	return t
@@ -1122,16 +1239,19 @@ end
 
 --- Create a structure of type DescribeExpressionsRequest
 -- <p>Container for the parameters to the <code><a>DescribeDomains</a></code> operation. Specifies the name of the domain you want to describe. To restrict the response to particular expressions, specify the names of the expressions you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
--- @param _ExpressionNames [StandardNameList] <p>Limits the <code><a>DescribeExpressions</a></code> response to the specified expressions. If not specified, all expressions are shown.</p>
--- @param _Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
--- @param _DomainName [DomainName] <p>The name of the domain you want to describe.</p>
--- Required parameter: DomainName
-function M.DescribeExpressionsRequest(_ExpressionNames, _Deployed, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExpressionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ExpressionNames [StandardNameList] <p>Limits the <code><a>DescribeExpressions</a></code> response to the specified expressions. If not specified, all expressions are shown.</p>
+-- * Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- * DomainName [DomainName] <p>The name of the domain you want to describe.</p>
+-- Required key: DomainName
+-- @return DescribeExpressionsRequest structure as a key-value pair table
+function M.DescribeExpressionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeExpressionsRequest")
 	local t = { 
-		["ExpressionNames"] = _ExpressionNames,
-		["Deployed"] = _Deployed,
-		["DomainName"] = _DomainName,
+		["ExpressionNames"] = args["ExpressionNames"],
+		["Deployed"] = args["Deployed"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDescribeExpressionsRequest(t)
 	return t
@@ -1155,21 +1275,24 @@ end
 
 --- Create a structure of type LatLonOptions
 -- <p>Options for a latlon field. A latlon field contains a location stored as a latitude and longitude value pair. Present if <code>IndexFieldType</code> specifies the field is of type <code>latlon</code>. All options are enabled by default.</p>
--- @param _SourceField [FieldName] 
--- @param _DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param _FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
--- @param _SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
--- @param _SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
-function M.LatLonOptions(_SourceField, _DefaultValue, _FacetEnabled, _SearchEnabled, _SortEnabled, _ReturnEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LatLonOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceField [FieldName] 
+-- * DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
+-- * FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- * SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @return LatLonOptions structure as a key-value pair table
+function M.LatLonOptions(args)
+	assert(args, "You must provdide an argument table when creating LatLonOptions")
 	local t = { 
-		["SourceField"] = _SourceField,
-		["DefaultValue"] = _DefaultValue,
-		["FacetEnabled"] = _FacetEnabled,
-		["SearchEnabled"] = _SearchEnabled,
-		["SortEnabled"] = _SortEnabled,
-		["ReturnEnabled"] = _ReturnEnabled,
+		["SourceField"] = args["SourceField"],
+		["DefaultValue"] = args["DefaultValue"],
+		["FacetEnabled"] = args["FacetEnabled"],
+		["SearchEnabled"] = args["SearchEnabled"],
+		["SortEnabled"] = args["SortEnabled"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
 	asserts.AssertLatLonOptions(t)
 	return t
@@ -1193,21 +1316,24 @@ end
 
 --- Create a structure of type DateOptions
 -- <p>Options for a date field. Dates and times are specified in UTC (Coordinated Universal Time) according to IETF RFC3339: yyyy-mm-ddT00:00:00Z. Present if <code>IndexFieldType</code> specifies the field is of type <code>date</code>. All options are enabled by default.</p>
--- @param _SourceField [FieldName] 
--- @param _DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param _FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
--- @param _SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
--- @param _SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
-function M.DateOptions(_SourceField, _DefaultValue, _FacetEnabled, _SearchEnabled, _SortEnabled, _ReturnEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DateOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceField [FieldName] 
+-- * DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
+-- * FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- * SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @return DateOptions structure as a key-value pair table
+function M.DateOptions(args)
+	assert(args, "You must provdide an argument table when creating DateOptions")
 	local t = { 
-		["SourceField"] = _SourceField,
-		["DefaultValue"] = _DefaultValue,
-		["FacetEnabled"] = _FacetEnabled,
-		["SearchEnabled"] = _SearchEnabled,
-		["SortEnabled"] = _SortEnabled,
-		["ReturnEnabled"] = _ReturnEnabled,
+		["SourceField"] = args["SourceField"],
+		["DefaultValue"] = args["DefaultValue"],
+		["FacetEnabled"] = args["FacetEnabled"],
+		["SearchEnabled"] = args["SearchEnabled"],
+		["SortEnabled"] = args["SortEnabled"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
 	asserts.AssertDateOptions(t)
 	return t
@@ -1229,15 +1355,18 @@ end
 
 --- Create a structure of type DefineIndexFieldRequest
 -- <p>Container for the parameters to the <code><a>DefineIndexField</a></code> operation. Specifies the name of the domain you want to update and the index field configuration.</p>
--- @param _IndexField [IndexField] <p>The index field and field options you want to configure. </p>
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: IndexField
-function M.DefineIndexFieldRequest(_IndexField, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefineIndexFieldRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexField [IndexField] <p>The index field and field options you want to configure. </p>
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: IndexField
+-- @return DefineIndexFieldRequest structure as a key-value pair table
+function M.DefineIndexFieldRequest(args)
+	assert(args, "You must provdide an argument table when creating DefineIndexFieldRequest")
 	local t = { 
-		["IndexField"] = _IndexField,
-		["DomainName"] = _DomainName,
+		["IndexField"] = args["IndexField"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDefineIndexFieldRequest(t)
 	return t
@@ -1257,12 +1386,15 @@ end
 
 --- Create a structure of type DescribeScalingParametersResponse
 -- <p>The result of a <code>DescribeScalingParameters</code> request. Contains the scaling parameters configured for the domain specified in the request.</p>
--- @param _ScalingParameters [ScalingParametersStatus] 
--- Required parameter: ScalingParameters
-function M.DescribeScalingParametersResponse(_ScalingParameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeScalingParametersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScalingParameters [ScalingParametersStatus] 
+-- Required key: ScalingParameters
+-- @return DescribeScalingParametersResponse structure as a key-value pair table
+function M.DescribeScalingParametersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeScalingParametersResponse")
 	local t = { 
-		["ScalingParameters"] = _ScalingParameters,
+		["ScalingParameters"] = args["ScalingParameters"],
 	}
 	asserts.AssertDescribeScalingParametersResponse(t)
 	return t
@@ -1282,12 +1414,15 @@ end
 
 --- Create a structure of type CreateDomainRequest
 -- <p>Container for the parameters to the <code><a>CreateDomain</a></code> operation. Specifies a name for the new search domain.</p>
--- @param _DomainName [DomainName] <p>A name for the domain you are creating. Allowed characters are a-z (lower-case letters), 0-9, and hyphen (-). Domain names must start with a letter or number and be at least 3 and no more than 28 characters long.</p>
--- Required parameter: DomainName
-function M.CreateDomainRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] <p>A name for the domain you are creating. Allowed characters are a-z (lower-case letters), 0-9, and hyphen (-). Domain names must start with a letter or number and be at least 3 and no more than 28 characters long.</p>
+-- Required key: DomainName
+-- @return CreateDomainRequest structure as a key-value pair table
+function M.CreateDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDomainRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertCreateDomainRequest(t)
 	return t
@@ -1309,15 +1444,18 @@ end
 
 --- Create a structure of type Limits
 --  
--- @param _MaximumReplicationCount [MaximumReplicationCount] 
--- @param _MaximumPartitionCount [MaximumPartitionCount] 
--- Required parameter: MaximumReplicationCount
--- Required parameter: MaximumPartitionCount
-function M.Limits(_MaximumReplicationCount, _MaximumPartitionCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Limits")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaximumReplicationCount [MaximumReplicationCount] 
+-- * MaximumPartitionCount [MaximumPartitionCount] 
+-- Required key: MaximumReplicationCount
+-- Required key: MaximumPartitionCount
+-- @return Limits structure as a key-value pair table
+function M.Limits(args)
+	assert(args, "You must provdide an argument table when creating Limits")
 	local t = { 
-		["MaximumReplicationCount"] = _MaximumReplicationCount,
-		["MaximumPartitionCount"] = _MaximumPartitionCount,
+		["MaximumReplicationCount"] = args["MaximumReplicationCount"],
+		["MaximumPartitionCount"] = args["MaximumPartitionCount"],
 	}
 	asserts.AssertLimits(t)
 	return t
@@ -1335,8 +1473,11 @@ end
 
 --- Create a structure of type InternalException
 -- <p>An internal error occurred while processing the request. If this problem persists, report an issue from the <a href="http://status.aws.amazon.com/" target="_blank">Service Health Dashboard</a>.</p>
-function M.InternalException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InternalException structure as a key-value pair table
+function M.InternalException(args)
+	assert(args, "You must provdide an argument table when creating InternalException")
 	local t = { 
 	}
 	asserts.AssertInternalException(t)
@@ -1371,38 +1512,41 @@ end
 
 --- Create a structure of type DomainStatus
 -- <p>The current status of the search domain.</p>
--- @param _SearchInstanceType [SearchInstanceType] <p>The instance type that is being used to process search requests.</p>
--- @param _DomainId [DomainId] 
--- @param _Limits [Limits] 
--- @param _Created [Boolean] <p>True if the search domain is created. It can take several minutes to initialize a domain when <a>CreateDomain</a> is called. Newly created search domains are returned from <a>DescribeDomains</a> with a false value for Created until domain creation is complete.</p>
--- @param _Deleted [Boolean] <p>True if the search domain has been deleted. The system must clean up resources dedicated to the search domain when <a>DeleteDomain</a> is called. Newly deleted search domains are returned from <a>DescribeDomains</a> with a true value for IsDeleted for several minutes until resource cleanup is complete.</p>
--- @param _SearchInstanceCount [InstanceCount] <p>The number of search instances that are available to process search requests.</p>
--- @param _DomainName [DomainName] 
--- @param _SearchService [ServiceEndpoint] <p>The service endpoint for requesting search results from a search domain.</p>
--- @param _RequiresIndexDocuments [Boolean] <p>True if <a>IndexDocuments</a> needs to be called to activate the current domain configuration.</p>
--- @param _Processing [Boolean] <p>True if processing is being done to activate the current domain configuration.</p>
--- @param _DocService [ServiceEndpoint] <p>The service endpoint for updating documents in a search domain.</p>
--- @param _ARN [ARN] 
--- @param _SearchPartitionCount [PartitionCount] <p>The number of partitions across which the search index is spread.</p>
--- Required parameter: DomainId
--- Required parameter: DomainName
--- Required parameter: RequiresIndexDocuments
-function M.DomainStatus(_SearchInstanceType, _DomainId, _Limits, _Created, _Deleted, _SearchInstanceCount, _DomainName, _SearchService, _RequiresIndexDocuments, _Processing, _DocService, _ARN, _SearchPartitionCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SearchInstanceType [SearchInstanceType] <p>The instance type that is being used to process search requests.</p>
+-- * DomainId [DomainId] 
+-- * Limits [Limits] 
+-- * Created [Boolean] <p>True if the search domain is created. It can take several minutes to initialize a domain when <a>CreateDomain</a> is called. Newly created search domains are returned from <a>DescribeDomains</a> with a false value for Created until domain creation is complete.</p>
+-- * Deleted [Boolean] <p>True if the search domain has been deleted. The system must clean up resources dedicated to the search domain when <a>DeleteDomain</a> is called. Newly deleted search domains are returned from <a>DescribeDomains</a> with a true value for IsDeleted for several minutes until resource cleanup is complete.</p>
+-- * SearchInstanceCount [InstanceCount] <p>The number of search instances that are available to process search requests.</p>
+-- * DomainName [DomainName] 
+-- * SearchService [ServiceEndpoint] <p>The service endpoint for requesting search results from a search domain.</p>
+-- * RequiresIndexDocuments [Boolean] <p>True if <a>IndexDocuments</a> needs to be called to activate the current domain configuration.</p>
+-- * Processing [Boolean] <p>True if processing is being done to activate the current domain configuration.</p>
+-- * DocService [ServiceEndpoint] <p>The service endpoint for updating documents in a search domain.</p>
+-- * ARN [ARN] 
+-- * SearchPartitionCount [PartitionCount] <p>The number of partitions across which the search index is spread.</p>
+-- Required key: DomainId
+-- Required key: DomainName
+-- Required key: RequiresIndexDocuments
+-- @return DomainStatus structure as a key-value pair table
+function M.DomainStatus(args)
+	assert(args, "You must provdide an argument table when creating DomainStatus")
 	local t = { 
-		["SearchInstanceType"] = _SearchInstanceType,
-		["DomainId"] = _DomainId,
-		["Limits"] = _Limits,
-		["Created"] = _Created,
-		["Deleted"] = _Deleted,
-		["SearchInstanceCount"] = _SearchInstanceCount,
-		["DomainName"] = _DomainName,
-		["SearchService"] = _SearchService,
-		["RequiresIndexDocuments"] = _RequiresIndexDocuments,
-		["Processing"] = _Processing,
-		["DocService"] = _DocService,
-		["ARN"] = _ARN,
-		["SearchPartitionCount"] = _SearchPartitionCount,
+		["SearchInstanceType"] = args["SearchInstanceType"],
+		["DomainId"] = args["DomainId"],
+		["Limits"] = args["Limits"],
+		["Created"] = args["Created"],
+		["Deleted"] = args["Deleted"],
+		["SearchInstanceCount"] = args["SearchInstanceCount"],
+		["DomainName"] = args["DomainName"],
+		["SearchService"] = args["SearchService"],
+		["RequiresIndexDocuments"] = args["RequiresIndexDocuments"],
+		["Processing"] = args["Processing"],
+		["DocService"] = args["DocService"],
+		["ARN"] = args["ARN"],
+		["SearchPartitionCount"] = args["SearchPartitionCount"],
 	}
 	asserts.AssertDomainStatus(t)
 	return t
@@ -1422,12 +1566,15 @@ end
 
 --- Create a structure of type UpdateServiceAccessPoliciesResponse
 -- <p>The result of an <code>UpdateServiceAccessPolicies</code> request. Contains the new access policies.</p>
--- @param _AccessPolicies [AccessPoliciesStatus] <p>The access rules configured for the domain.</p>
--- Required parameter: AccessPolicies
-function M.UpdateServiceAccessPoliciesResponse(_AccessPolicies, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServiceAccessPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccessPolicies [AccessPoliciesStatus] <p>The access rules configured for the domain.</p>
+-- Required key: AccessPolicies
+-- @return UpdateServiceAccessPoliciesResponse structure as a key-value pair table
+function M.UpdateServiceAccessPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateServiceAccessPoliciesResponse")
 	local t = { 
-		["AccessPolicies"] = _AccessPolicies,
+		["AccessPolicies"] = args["AccessPolicies"],
 	}
 	asserts.AssertUpdateServiceAccessPoliciesResponse(t)
 	return t
@@ -1449,15 +1596,18 @@ end
 
 --- Create a structure of type Expression
 -- <p>A named expression that can be evaluated at search time. Can be used to sort the search results, define other expressions, or return computed information in the search results. </p>
--- @param _ExpressionName [StandardName] 
--- @param _ExpressionValue [ExpressionValue] 
--- Required parameter: ExpressionName
--- Required parameter: ExpressionValue
-function M.Expression(_ExpressionName, _ExpressionValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Expression")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ExpressionName [StandardName] 
+-- * ExpressionValue [ExpressionValue] 
+-- Required key: ExpressionName
+-- Required key: ExpressionValue
+-- @return Expression structure as a key-value pair table
+function M.Expression(args)
+	assert(args, "You must provdide an argument table when creating Expression")
 	local t = { 
-		["ExpressionName"] = _ExpressionName,
-		["ExpressionValue"] = _ExpressionValue,
+		["ExpressionName"] = args["ExpressionName"],
+		["ExpressionValue"] = args["ExpressionValue"],
 	}
 	asserts.AssertExpression(t)
 	return t
@@ -1477,12 +1627,15 @@ end
 
 --- Create a structure of type DefineSuggesterResponse
 -- <p>The result of a <code>DefineSuggester</code> request. Contains the status of the newly-configured suggester.</p>
--- @param _Suggester [SuggesterStatus] 
--- Required parameter: Suggester
-function M.DefineSuggesterResponse(_Suggester, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefineSuggesterResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Suggester [SuggesterStatus] 
+-- Required key: Suggester
+-- @return DefineSuggesterResponse structure as a key-value pair table
+function M.DefineSuggesterResponse(args)
+	assert(args, "You must provdide an argument table when creating DefineSuggesterResponse")
 	local t = { 
-		["Suggester"] = _Suggester,
+		["Suggester"] = args["Suggester"],
 	}
 	asserts.AssertDefineSuggesterResponse(t)
 	return t
@@ -1505,17 +1658,20 @@ end
 
 --- Create a structure of type AnalysisScheme
 -- <p>Configuration information for an analysis scheme. Each analysis scheme has a unique name and specifies the language of the text to be processed. The following options can be configured for an analysis scheme: <code>Synonyms</code>, <code>Stopwords</code>, <code>StemmingDictionary</code>, <code>JapaneseTokenizationDictionary</code> and <code>AlgorithmicStemming</code>.</p>
--- @param _AnalysisSchemeLanguage [AnalysisSchemeLanguage] 
--- @param _AnalysisSchemeName [StandardName] 
--- @param _AnalysisOptions [AnalysisOptions] 
--- Required parameter: AnalysisSchemeName
--- Required parameter: AnalysisSchemeLanguage
-function M.AnalysisScheme(_AnalysisSchemeLanguage, _AnalysisSchemeName, _AnalysisOptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AnalysisScheme")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalysisSchemeLanguage [AnalysisSchemeLanguage] 
+-- * AnalysisSchemeName [StandardName] 
+-- * AnalysisOptions [AnalysisOptions] 
+-- Required key: AnalysisSchemeName
+-- Required key: AnalysisSchemeLanguage
+-- @return AnalysisScheme structure as a key-value pair table
+function M.AnalysisScheme(args)
+	assert(args, "You must provdide an argument table when creating AnalysisScheme")
 	local t = { 
-		["AnalysisSchemeLanguage"] = _AnalysisSchemeLanguage,
-		["AnalysisSchemeName"] = _AnalysisSchemeName,
-		["AnalysisOptions"] = _AnalysisOptions,
+		["AnalysisSchemeLanguage"] = args["AnalysisSchemeLanguage"],
+		["AnalysisSchemeName"] = args["AnalysisSchemeName"],
+		["AnalysisOptions"] = args["AnalysisOptions"],
 	}
 	asserts.AssertAnalysisScheme(t)
 	return t
@@ -1538,19 +1694,22 @@ end
 
 --- Create a structure of type AnalysisOptions
 -- <p>Synonyms, stopwords, and stemming options for an analysis scheme. Includes tokenization dictionary for Japanese.</p>
--- @param _AlgorithmicStemming [AlgorithmicStemming] <p>The level of algorithmic stemming to perform: <code>none</code>, <code>minimal</code>, <code>light</code>, or <code>full</code>. The available levels vary depending on the language. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/text-processing.html#text-processing-settings" target="_blank">Language Specific Text Processing Settings</a> in the <i>Amazon CloudSearch Developer Guide</i> </p>
--- @param _Synonyms [String] <p>A JSON object that defines synonym groups and aliases. A synonym group is an array of arrays, where each sub-array is a group of terms where each term in the group is considered a synonym of every other term in the group. The aliases value is an object that contains a collection of string:value pairs where the string specifies a term and the array of values specifies each of the aliases for that term. An alias is considered a synonym of the specified term, but the term is not considered a synonym of the alias. For more information about specifying synonyms, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html#synonyms">Synonyms</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
--- @param _StemmingDictionary [String] <p>A JSON object that contains a collection of string:value pairs that each map a term to its stem. For example, <code>{"term1": "stem1", "term2": "stem2", "term3": "stem3"}</code>. The stemming dictionary is applied in addition to any algorithmic stemming. This enables you to override the results of the algorithmic stemming to correct specific cases of overstemming or understemming. The maximum size of a stemming dictionary is 500 KB.</p>
--- @param _Stopwords [String] <p>A JSON array of terms to ignore during indexing and searching. For example, <code>["a", "an", "the", "of"]</code>. The stopwords dictionary must explicitly list each word you want to ignore. Wildcards and regular expressions are not supported. </p>
--- @param _JapaneseTokenizationDictionary [String] <p>A JSON array that contains a collection of terms, tokens, readings and part of speech for Japanese Tokenizaiton. The Japanese tokenization dictionary enables you to override the default tokenization for selected terms. This is only valid for Japanese language fields.</p>
-function M.AnalysisOptions(_AlgorithmicStemming, _Synonyms, _StemmingDictionary, _Stopwords, _JapaneseTokenizationDictionary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AnalysisOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AlgorithmicStemming [AlgorithmicStemming] <p>The level of algorithmic stemming to perform: <code>none</code>, <code>minimal</code>, <code>light</code>, or <code>full</code>. The available levels vary depending on the language. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/text-processing.html#text-processing-settings" target="_blank">Language Specific Text Processing Settings</a> in the <i>Amazon CloudSearch Developer Guide</i> </p>
+-- * Synonyms [String] <p>A JSON object that defines synonym groups and aliases. A synonym group is an array of arrays, where each sub-array is a group of terms where each term in the group is considered a synonym of every other term in the group. The aliases value is an object that contains a collection of string:value pairs where the string specifies a term and the array of values specifies each of the aliases for that term. An alias is considered a synonym of the specified term, but the term is not considered a synonym of the alias. For more information about specifying synonyms, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html#synonyms">Synonyms</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
+-- * StemmingDictionary [String] <p>A JSON object that contains a collection of string:value pairs that each map a term to its stem. For example, <code>{"term1": "stem1", "term2": "stem2", "term3": "stem3"}</code>. The stemming dictionary is applied in addition to any algorithmic stemming. This enables you to override the results of the algorithmic stemming to correct specific cases of overstemming or understemming. The maximum size of a stemming dictionary is 500 KB.</p>
+-- * Stopwords [String] <p>A JSON array of terms to ignore during indexing and searching. For example, <code>["a", "an", "the", "of"]</code>. The stopwords dictionary must explicitly list each word you want to ignore. Wildcards and regular expressions are not supported. </p>
+-- * JapaneseTokenizationDictionary [String] <p>A JSON array that contains a collection of terms, tokens, readings and part of speech for Japanese Tokenizaiton. The Japanese tokenization dictionary enables you to override the default tokenization for selected terms. This is only valid for Japanese language fields.</p>
+-- @return AnalysisOptions structure as a key-value pair table
+function M.AnalysisOptions(args)
+	assert(args, "You must provdide an argument table when creating AnalysisOptions")
 	local t = { 
-		["AlgorithmicStemming"] = _AlgorithmicStemming,
-		["Synonyms"] = _Synonyms,
-		["StemmingDictionary"] = _StemmingDictionary,
-		["Stopwords"] = _Stopwords,
-		["JapaneseTokenizationDictionary"] = _JapaneseTokenizationDictionary,
+		["AlgorithmicStemming"] = args["AlgorithmicStemming"],
+		["Synonyms"] = args["Synonyms"],
+		["StemmingDictionary"] = args["StemmingDictionary"],
+		["Stopwords"] = args["Stopwords"],
+		["JapaneseTokenizationDictionary"] = args["JapaneseTokenizationDictionary"],
 	}
 	asserts.AssertAnalysisOptions(t)
 	return t
@@ -1569,11 +1728,14 @@ end
 
 --- Create a structure of type DeleteDomainResponse
 -- <p>The result of a <code>DeleteDomain</code> request. Contains the status of a newly deleted domain, or no status if the domain has already been completely deleted.</p>
--- @param _DomainStatus [DomainStatus] 
-function M.DeleteDomainResponse(_DomainStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainStatus [DomainStatus] 
+-- @return DeleteDomainResponse structure as a key-value pair table
+function M.DeleteDomainResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteDomainResponse")
 	local t = { 
-		["DomainStatus"] = _DomainStatus,
+		["DomainStatus"] = args["DomainStatus"],
 	}
 	asserts.AssertDeleteDomainResponse(t)
 	return t
@@ -1591,8 +1753,11 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The request was rejected because it attempted to reference a resource that does not exist.</p>
-function M.ResourceNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
 	}
 	asserts.AssertResourceNotFoundException(t)
@@ -1613,12 +1778,15 @@ end
 
 --- Create a structure of type DescribeServiceAccessPoliciesResponse
 -- <p>The result of a <code>DescribeServiceAccessPolicies</code> request.</p>
--- @param _AccessPolicies [AccessPoliciesStatus] <p>The access rules configured for the domain specified in the request.</p>
--- Required parameter: AccessPolicies
-function M.DescribeServiceAccessPoliciesResponse(_AccessPolicies, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServiceAccessPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccessPolicies [AccessPoliciesStatus] <p>The access rules configured for the domain specified in the request.</p>
+-- Required key: AccessPolicies
+-- @return DescribeServiceAccessPoliciesResponse structure as a key-value pair table
+function M.DescribeServiceAccessPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeServiceAccessPoliciesResponse")
 	local t = { 
-		["AccessPolicies"] = _AccessPolicies,
+		["AccessPolicies"] = args["AccessPolicies"],
 	}
 	asserts.AssertDescribeServiceAccessPoliciesResponse(t)
 	return t
@@ -1636,8 +1804,11 @@ end
 
 --- Create a structure of type DisabledOperationException
 -- <p>The request was rejected because it attempted an operation which is not enabled.</p>
-function M.DisabledOperationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisabledOperationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisabledOperationException structure as a key-value pair table
+function M.DisabledOperationException(args)
+	assert(args, "You must provdide an argument table when creating DisabledOperationException")
 	local t = { 
 	}
 	asserts.AssertDisabledOperationException(t)
@@ -1661,19 +1832,22 @@ end
 
 --- Create a structure of type TextArrayOptions
 -- <p>Options for a field that contains an array of text strings. Present if <code>IndexFieldType</code> specifies the field is of type <code>text-array</code>. A <code>text-array</code> field is always searchable. All options are enabled by default.</p>
--- @param _SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
--- @param _DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param _HighlightEnabled [Boolean] <p>Whether highlights can be returned for the field.</p>
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
--- @param _AnalysisScheme [Word] <p>The name of an analysis scheme for a <code>text-array</code> field.</p>
-function M.TextArrayOptions(_SourceFields, _DefaultValue, _HighlightEnabled, _ReturnEnabled, _AnalysisScheme, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TextArrayOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
+-- * DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
+-- * HighlightEnabled [Boolean] <p>Whether highlights can be returned for the field.</p>
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- * AnalysisScheme [Word] <p>The name of an analysis scheme for a <code>text-array</code> field.</p>
+-- @return TextArrayOptions structure as a key-value pair table
+function M.TextArrayOptions(args)
+	assert(args, "You must provdide an argument table when creating TextArrayOptions")
 	local t = { 
-		["SourceFields"] = _SourceFields,
-		["DefaultValue"] = _DefaultValue,
-		["HighlightEnabled"] = _HighlightEnabled,
-		["ReturnEnabled"] = _ReturnEnabled,
-		["AnalysisScheme"] = _AnalysisScheme,
+		["SourceFields"] = args["SourceFields"],
+		["DefaultValue"] = args["DefaultValue"],
+		["HighlightEnabled"] = args["HighlightEnabled"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
+		["AnalysisScheme"] = args["AnalysisScheme"],
 	}
 	asserts.AssertTextArrayOptions(t)
 	return t
@@ -1692,11 +1866,14 @@ end
 
 --- Create a structure of type DescribeAvailabilityOptionsResponse
 -- <p>The result of a <code>DescribeAvailabilityOptions</code> request. Indicates whether or not the Multi-AZ option is enabled for the domain specified in the request. </p>
--- @param _AvailabilityOptions [AvailabilityOptionsStatus] <p>The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain. </p>
-function M.DescribeAvailabilityOptionsResponse(_AvailabilityOptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAvailabilityOptionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AvailabilityOptions [AvailabilityOptionsStatus] <p>The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain. </p>
+-- @return DescribeAvailabilityOptionsResponse structure as a key-value pair table
+function M.DescribeAvailabilityOptionsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAvailabilityOptionsResponse")
 	local t = { 
-		["AvailabilityOptions"] = _AvailabilityOptions,
+		["AvailabilityOptions"] = args["AvailabilityOptions"],
 	}
 	asserts.AssertDescribeAvailabilityOptionsResponse(t)
 	return t
@@ -1718,15 +1895,18 @@ end
 
 --- Create a structure of type IndexFieldStatus
 -- <p>The value of an <code>IndexField</code> and its current status.</p>
--- @param _Status [OptionStatus] 
--- @param _Options [IndexField] 
--- Required parameter: Options
--- Required parameter: Status
-function M.IndexFieldStatus(_Status, _Options, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IndexFieldStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [OptionStatus] 
+-- * Options [IndexField] 
+-- Required key: Options
+-- Required key: Status
+-- @return IndexFieldStatus structure as a key-value pair table
+function M.IndexFieldStatus(args)
+	assert(args, "You must provdide an argument table when creating IndexFieldStatus")
 	local t = { 
-		["Status"] = _Status,
-		["Options"] = _Options,
+		["Status"] = args["Status"],
+		["Options"] = args["Options"],
 	}
 	asserts.AssertIndexFieldStatus(t)
 	return t
@@ -1748,16 +1928,19 @@ end
 
 --- Create a structure of type DescribeAnalysisSchemesRequest
 -- <p>Container for the parameters to the <code><a>DescribeAnalysisSchemes</a></code> operation. Specifies the name of the domain you want to describe. To limit the response to particular analysis schemes, specify the names of the analysis schemes you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>. </p>
--- @param _AnalysisSchemeNames [StandardNameList] <p>The analysis schemes you want to describe.</p>
--- @param _Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
--- @param _DomainName [DomainName] <p>The name of the domain you want to describe.</p>
--- Required parameter: DomainName
-function M.DescribeAnalysisSchemesRequest(_AnalysisSchemeNames, _Deployed, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAnalysisSchemesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalysisSchemeNames [StandardNameList] <p>The analysis schemes you want to describe.</p>
+-- * Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- * DomainName [DomainName] <p>The name of the domain you want to describe.</p>
+-- Required key: DomainName
+-- @return DescribeAnalysisSchemesRequest structure as a key-value pair table
+function M.DescribeAnalysisSchemesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAnalysisSchemesRequest")
 	local t = { 
-		["AnalysisSchemeNames"] = _AnalysisSchemeNames,
-		["Deployed"] = _Deployed,
-		["DomainName"] = _DomainName,
+		["AnalysisSchemeNames"] = args["AnalysisSchemeNames"],
+		["Deployed"] = args["Deployed"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDescribeAnalysisSchemesRequest(t)
 	return t
@@ -1779,15 +1962,18 @@ end
 
 --- Create a structure of type DeleteExpressionRequest
 -- <p>Container for the parameters to the <code><a>DeleteExpression</a></code> operation. Specifies the name of the domain you want to update and the name of the expression you want to delete.</p>
--- @param _ExpressionName [StandardName] <p>The name of the <code><a>Expression</a></code> to delete.</p>
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: ExpressionName
-function M.DeleteExpressionRequest(_ExpressionName, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteExpressionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ExpressionName [StandardName] <p>The name of the <code><a>Expression</a></code> to delete.</p>
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: ExpressionName
+-- @return DeleteExpressionRequest structure as a key-value pair table
+function M.DeleteExpressionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteExpressionRequest")
 	local t = { 
-		["ExpressionName"] = _ExpressionName,
-		["DomainName"] = _DomainName,
+		["ExpressionName"] = args["ExpressionName"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDeleteExpressionRequest(t)
 	return t
@@ -1805,8 +1991,11 @@ end
 
 --- Create a structure of type InvalidTypeException
 -- <p>The request was rejected because it specified an invalid type definition.</p>
-function M.InvalidTypeException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTypeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidTypeException structure as a key-value pair table
+function M.InvalidTypeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTypeException")
 	local t = { 
 	}
 	asserts.AssertInvalidTypeException(t)
@@ -1833,22 +2022,25 @@ end
 
 --- Create a structure of type OptionStatus
 -- <p>The status of domain configuration option.</p>
--- @param _PendingDeletion [Boolean] <p>Indicates that the option will be deleted once processing is complete.</p>
--- @param _State [OptionState] <p>The state of processing a change to an option. Possible values:</p> <ul> <li> <code>RequiresIndexDocuments</code>: the option's latest value will not be deployed until <a>IndexDocuments</a> has been called and indexing is complete.</li> <li> <code>Processing</code>: the option's latest value is in the process of being activated. </li> <li> <code>Active</code>: the option's latest value is completely deployed.</li> <li> <code>FailedToValidate</code>: the option value is not compatible with the domain's data and cannot be used to index the data. You must either modify the option value or update or remove the incompatible documents.</li> </ul>
--- @param _CreationDate [UpdateTimestamp] <p>A timestamp for when this option was created.</p>
--- @param _UpdateVersion [UIntValue] <p>A unique integer that indicates when this option was last updated.</p>
--- @param _UpdateDate [UpdateTimestamp] <p>A timestamp for when this option was last updated.</p>
--- Required parameter: CreationDate
--- Required parameter: UpdateDate
--- Required parameter: State
-function M.OptionStatus(_PendingDeletion, _State, _CreationDate, _UpdateVersion, _UpdateDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OptionStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PendingDeletion [Boolean] <p>Indicates that the option will be deleted once processing is complete.</p>
+-- * State [OptionState] <p>The state of processing a change to an option. Possible values:</p> <ul> <li> <code>RequiresIndexDocuments</code>: the option's latest value will not be deployed until <a>IndexDocuments</a> has been called and indexing is complete.</li> <li> <code>Processing</code>: the option's latest value is in the process of being activated. </li> <li> <code>Active</code>: the option's latest value is completely deployed.</li> <li> <code>FailedToValidate</code>: the option value is not compatible with the domain's data and cannot be used to index the data. You must either modify the option value or update or remove the incompatible documents.</li> </ul>
+-- * CreationDate [UpdateTimestamp] <p>A timestamp for when this option was created.</p>
+-- * UpdateVersion [UIntValue] <p>A unique integer that indicates when this option was last updated.</p>
+-- * UpdateDate [UpdateTimestamp] <p>A timestamp for when this option was last updated.</p>
+-- Required key: CreationDate
+-- Required key: UpdateDate
+-- Required key: State
+-- @return OptionStatus structure as a key-value pair table
+function M.OptionStatus(args)
+	assert(args, "You must provdide an argument table when creating OptionStatus")
 	local t = { 
-		["PendingDeletion"] = _PendingDeletion,
-		["State"] = _State,
-		["CreationDate"] = _CreationDate,
-		["UpdateVersion"] = _UpdateVersion,
-		["UpdateDate"] = _UpdateDate,
+		["PendingDeletion"] = args["PendingDeletion"],
+		["State"] = args["State"],
+		["CreationDate"] = args["CreationDate"],
+		["UpdateVersion"] = args["UpdateVersion"],
+		["UpdateDate"] = args["UpdateDate"],
 	}
 	asserts.AssertOptionStatus(t)
 	return t
@@ -1881,37 +2073,40 @@ end
 
 --- Create a structure of type IndexField
 -- <p>Configuration information for a field in the index, including its name, type, and options. The supported options depend on the <code><a>IndexFieldType</a></code>.</p>
--- @param _IntArrayOptions [IntArrayOptions] 
--- @param _LiteralArrayOptions [LiteralArrayOptions] 
--- @param _LiteralOptions [LiteralOptions] 
--- @param _LatLonOptions [LatLonOptions] 
--- @param _DateArrayOptions [DateArrayOptions] 
--- @param _DoubleArrayOptions [DoubleArrayOptions] 
--- @param _TextArrayOptions [TextArrayOptions] 
--- @param _IndexFieldName [DynamicFieldName] <p>A string that represents the name of an index field. CloudSearch supports regular index fields as well as dynamic fields. A dynamic field's name defines a pattern that begins or ends with a wildcard. Any document fields that don't map to a regular index field but do match a dynamic field's pattern are configured with the dynamic field's indexing options. </p> <p>Regular field names begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard (*). The wildcard can also be the only character in a dynamic field name. Multiple wildcards, and wildcards embedded within a string are not supported. </p> <p>The name <code>score</code> is reserved and cannot be used as a field name. To reference a document's ID, you can use the name <code>_id</code>. </p>
--- @param _DoubleOptions [DoubleOptions] 
--- @param _DateOptions [DateOptions] 
--- @param _IndexFieldType [IndexFieldType] 
--- @param _IntOptions [IntOptions] 
--- @param _TextOptions [TextOptions] 
--- Required parameter: IndexFieldName
--- Required parameter: IndexFieldType
-function M.IndexField(_IntArrayOptions, _LiteralArrayOptions, _LiteralOptions, _LatLonOptions, _DateArrayOptions, _DoubleArrayOptions, _TextArrayOptions, _IndexFieldName, _DoubleOptions, _DateOptions, _IndexFieldType, _IntOptions, _TextOptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IndexField")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IntArrayOptions [IntArrayOptions] 
+-- * LiteralArrayOptions [LiteralArrayOptions] 
+-- * LiteralOptions [LiteralOptions] 
+-- * LatLonOptions [LatLonOptions] 
+-- * DateArrayOptions [DateArrayOptions] 
+-- * DoubleArrayOptions [DoubleArrayOptions] 
+-- * TextArrayOptions [TextArrayOptions] 
+-- * IndexFieldName [DynamicFieldName] <p>A string that represents the name of an index field. CloudSearch supports regular index fields as well as dynamic fields. A dynamic field's name defines a pattern that begins or ends with a wildcard. Any document fields that don't map to a regular index field but do match a dynamic field's pattern are configured with the dynamic field's indexing options. </p> <p>Regular field names begin with a letter and can contain the following characters: a-z (lowercase), 0-9, and _ (underscore). Dynamic field names must begin or end with a wildcard (*). The wildcard can also be the only character in a dynamic field name. Multiple wildcards, and wildcards embedded within a string are not supported. </p> <p>The name <code>score</code> is reserved and cannot be used as a field name. To reference a document's ID, you can use the name <code>_id</code>. </p>
+-- * DoubleOptions [DoubleOptions] 
+-- * DateOptions [DateOptions] 
+-- * IndexFieldType [IndexFieldType] 
+-- * IntOptions [IntOptions] 
+-- * TextOptions [TextOptions] 
+-- Required key: IndexFieldName
+-- Required key: IndexFieldType
+-- @return IndexField structure as a key-value pair table
+function M.IndexField(args)
+	assert(args, "You must provdide an argument table when creating IndexField")
 	local t = { 
-		["IntArrayOptions"] = _IntArrayOptions,
-		["LiteralArrayOptions"] = _LiteralArrayOptions,
-		["LiteralOptions"] = _LiteralOptions,
-		["LatLonOptions"] = _LatLonOptions,
-		["DateArrayOptions"] = _DateArrayOptions,
-		["DoubleArrayOptions"] = _DoubleArrayOptions,
-		["TextArrayOptions"] = _TextArrayOptions,
-		["IndexFieldName"] = _IndexFieldName,
-		["DoubleOptions"] = _DoubleOptions,
-		["DateOptions"] = _DateOptions,
-		["IndexFieldType"] = _IndexFieldType,
-		["IntOptions"] = _IntOptions,
-		["TextOptions"] = _TextOptions,
+		["IntArrayOptions"] = args["IntArrayOptions"],
+		["LiteralArrayOptions"] = args["LiteralArrayOptions"],
+		["LiteralOptions"] = args["LiteralOptions"],
+		["LatLonOptions"] = args["LatLonOptions"],
+		["DateArrayOptions"] = args["DateArrayOptions"],
+		["DoubleArrayOptions"] = args["DoubleArrayOptions"],
+		["TextArrayOptions"] = args["TextArrayOptions"],
+		["IndexFieldName"] = args["IndexFieldName"],
+		["DoubleOptions"] = args["DoubleOptions"],
+		["DateOptions"] = args["DateOptions"],
+		["IndexFieldType"] = args["IndexFieldType"],
+		["IntOptions"] = args["IntOptions"],
+		["TextOptions"] = args["TextOptions"],
 	}
 	asserts.AssertIndexField(t)
 	return t
@@ -1933,16 +2128,19 @@ end
 
 --- Create a structure of type DescribeSuggestersRequest
 -- <p>Container for the parameters to the <code><a>DescribeSuggester</a></code> operation. Specifies the name of the domain you want to describe. To restrict the response to particular suggesters, specify the names of the suggesters you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
--- @param _SuggesterNames [StandardNameList] <p>The suggesters you want to describe.</p>
--- @param _Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
--- @param _DomainName [DomainName] <p>The name of the domain you want to describe.</p>
--- Required parameter: DomainName
-function M.DescribeSuggestersRequest(_SuggesterNames, _Deployed, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSuggestersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SuggesterNames [StandardNameList] <p>The suggesters you want to describe.</p>
+-- * Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- * DomainName [DomainName] <p>The name of the domain you want to describe.</p>
+-- Required key: DomainName
+-- @return DescribeSuggestersRequest structure as a key-value pair table
+function M.DescribeSuggestersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeSuggestersRequest")
 	local t = { 
-		["SuggesterNames"] = _SuggesterNames,
-		["Deployed"] = _Deployed,
-		["DomainName"] = _DomainName,
+		["SuggesterNames"] = args["SuggesterNames"],
+		["Deployed"] = args["Deployed"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDescribeSuggestersRequest(t)
 	return t
@@ -1964,16 +2162,19 @@ end
 
 --- Create a structure of type DescribeIndexFieldsRequest
 -- <p>Container for the parameters to the <code><a>DescribeIndexFields</a></code> operation. Specifies the name of the domain you want to describe. To restrict the response to particular index fields, specify the names of the index fields you want to describe. To show the active configuration and exclude any pending changes, set the <code>Deployed</code> option to <code>true</code>.</p>
--- @param _Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
--- @param _FieldNames [DynamicFieldNameList] <p>A list of the index fields you want to describe. If not specified, information is returned for all configured index fields.</p>
--- @param _DomainName [DomainName] <p>The name of the domain you want to describe.</p>
--- Required parameter: DomainName
-function M.DescribeIndexFieldsRequest(_Deployed, _FieldNames, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIndexFieldsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- * FieldNames [DynamicFieldNameList] <p>A list of the index fields you want to describe. If not specified, information is returned for all configured index fields.</p>
+-- * DomainName [DomainName] <p>The name of the domain you want to describe.</p>
+-- Required key: DomainName
+-- @return DescribeIndexFieldsRequest structure as a key-value pair table
+function M.DescribeIndexFieldsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeIndexFieldsRequest")
 	local t = { 
-		["Deployed"] = _Deployed,
-		["FieldNames"] = _FieldNames,
-		["DomainName"] = _DomainName,
+		["Deployed"] = args["Deployed"],
+		["FieldNames"] = args["FieldNames"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDescribeIndexFieldsRequest(t)
 	return t
@@ -1995,15 +2196,18 @@ end
 
 --- Create a structure of type ScalingParametersStatus
 -- <p>The status and configuration of a search domain's scaling parameters. </p>
--- @param _Status [OptionStatus] 
--- @param _Options [ScalingParameters] 
--- Required parameter: Options
--- Required parameter: Status
-function M.ScalingParametersStatus(_Status, _Options, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScalingParametersStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [OptionStatus] 
+-- * Options [ScalingParameters] 
+-- Required key: Options
+-- Required key: Status
+-- @return ScalingParametersStatus structure as a key-value pair table
+function M.ScalingParametersStatus(args)
+	assert(args, "You must provdide an argument table when creating ScalingParametersStatus")
 	local t = { 
-		["Status"] = _Status,
-		["Options"] = _Options,
+		["Status"] = args["Status"],
+		["Options"] = args["Options"],
 	}
 	asserts.AssertScalingParametersStatus(t)
 	return t
@@ -2023,12 +2227,15 @@ end
 
 --- Create a structure of type BuildSuggestersRequest
 -- <p>Container for the parameters to the <code><a>BuildSuggester</a></code> operation. Specifies the name of the domain you want to update.</p>
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
-function M.BuildSuggestersRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BuildSuggestersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- @return BuildSuggestersRequest structure as a key-value pair table
+function M.BuildSuggestersRequest(args)
+	assert(args, "You must provdide an argument table when creating BuildSuggestersRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertBuildSuggestersRequest(t)
 	return t
@@ -2050,15 +2257,18 @@ end
 
 --- Create a structure of type DefineAnalysisSchemeRequest
 -- <p>Container for the parameters to the <code><a>DefineAnalysisScheme</a></code> operation. Specifies the name of the domain you want to update and the analysis scheme configuration.</p>
--- @param _AnalysisScheme [AnalysisScheme] 
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: AnalysisScheme
-function M.DefineAnalysisSchemeRequest(_AnalysisScheme, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefineAnalysisSchemeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalysisScheme [AnalysisScheme] 
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: AnalysisScheme
+-- @return DefineAnalysisSchemeRequest structure as a key-value pair table
+function M.DefineAnalysisSchemeRequest(args)
+	assert(args, "You must provdide an argument table when creating DefineAnalysisSchemeRequest")
 	local t = { 
-		["AnalysisScheme"] = _AnalysisScheme,
-		["DomainName"] = _DomainName,
+		["AnalysisScheme"] = args["AnalysisScheme"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDefineAnalysisSchemeRequest(t)
 	return t
@@ -2081,19 +2291,22 @@ end
 
 --- Create a structure of type IntArrayOptions
 -- <p>Options for a field that contains an array of 64-bit signed integers. Present if <code>IndexFieldType</code> specifies the field is of type <code>int-array</code>. All options are enabled by default.</p>
--- @param _SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
--- @param _FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
--- @param _DefaultValue [Long] A value to use for the field if the field isn't specified for a document.
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
--- @param _SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
-function M.IntArrayOptions(_SourceFields, _FacetEnabled, _DefaultValue, _ReturnEnabled, _SearchEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IntArrayOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
+-- * FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- * DefaultValue [Long] A value to use for the field if the field isn't specified for a document.
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- @return IntArrayOptions structure as a key-value pair table
+function M.IntArrayOptions(args)
+	assert(args, "You must provdide an argument table when creating IntArrayOptions")
 	local t = { 
-		["SourceFields"] = _SourceFields,
-		["FacetEnabled"] = _FacetEnabled,
-		["DefaultValue"] = _DefaultValue,
-		["ReturnEnabled"] = _ReturnEnabled,
-		["SearchEnabled"] = _SearchEnabled,
+		["SourceFields"] = args["SourceFields"],
+		["FacetEnabled"] = args["FacetEnabled"],
+		["DefaultValue"] = args["DefaultValue"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
+		["SearchEnabled"] = args["SearchEnabled"],
 	}
 	asserts.AssertIntArrayOptions(t)
 	return t
@@ -2117,21 +2330,24 @@ end
 
 --- Create a structure of type TextOptions
 -- <p>Options for text field. Present if <code>IndexFieldType</code> specifies the field is of type <code>text</code>. A <code>text</code> field is always searchable. All options are enabled by default.</p>
--- @param _AnalysisScheme [Word] <p>The name of an analysis scheme for a <code>text</code> field.</p>
--- @param _SourceField [FieldName] 
--- @param _DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
--- @param _HighlightEnabled [Boolean] <p>Whether highlights can be returned for the field.</p>
--- @param _SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
-function M.TextOptions(_AnalysisScheme, _SourceField, _DefaultValue, _HighlightEnabled, _SortEnabled, _ReturnEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TextOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalysisScheme [Word] <p>The name of an analysis scheme for a <code>text</code> field.</p>
+-- * SourceField [FieldName] 
+-- * DefaultValue [FieldValue] A value to use for the field if the field isn't specified for a document.
+-- * HighlightEnabled [Boolean] <p>Whether highlights can be returned for the field.</p>
+-- * SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @return TextOptions structure as a key-value pair table
+function M.TextOptions(args)
+	assert(args, "You must provdide an argument table when creating TextOptions")
 	local t = { 
-		["AnalysisScheme"] = _AnalysisScheme,
-		["SourceField"] = _SourceField,
-		["DefaultValue"] = _DefaultValue,
-		["HighlightEnabled"] = _HighlightEnabled,
-		["SortEnabled"] = _SortEnabled,
-		["ReturnEnabled"] = _ReturnEnabled,
+		["AnalysisScheme"] = args["AnalysisScheme"],
+		["SourceField"] = args["SourceField"],
+		["DefaultValue"] = args["DefaultValue"],
+		["HighlightEnabled"] = args["HighlightEnabled"],
+		["SortEnabled"] = args["SortEnabled"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
 	asserts.AssertTextOptions(t)
 	return t
@@ -2151,12 +2367,15 @@ end
 
 --- Create a structure of type IndexDocumentsRequest
 -- <p>Container for the parameters to the <code><a>IndexDocuments</a></code> operation. Specifies the name of the domain you want to re-index.</p>
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
-function M.IndexDocumentsRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IndexDocumentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- @return IndexDocumentsRequest structure as a key-value pair table
+function M.IndexDocumentsRequest(args)
+	assert(args, "You must provdide an argument table when creating IndexDocumentsRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertIndexDocumentsRequest(t)
 	return t
@@ -2177,14 +2396,17 @@ end
 
 --- Create a structure of type DescribeAvailabilityOptionsRequest
 -- <p>Container for the parameters to the <code><a>DescribeAvailabilityOptions</a></code> operation. Specifies the name of the domain you want to describe. To show the active configuration and exclude any pending changes, set the Deployed option to <code>true</code>.</p>
--- @param _Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
--- @param _DomainName [DomainName] <p>The name of the domain you want to describe.</p>
--- Required parameter: DomainName
-function M.DescribeAvailabilityOptionsRequest(_Deployed, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAvailabilityOptionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Deployed [Boolean] <p>Whether to display the deployed configuration (<code>true</code>) or include any pending changes (<code>false</code>). Defaults to <code>false</code>.</p>
+-- * DomainName [DomainName] <p>The name of the domain you want to describe.</p>
+-- Required key: DomainName
+-- @return DescribeAvailabilityOptionsRequest structure as a key-value pair table
+function M.DescribeAvailabilityOptionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAvailabilityOptionsRequest")
 	local t = { 
-		["Deployed"] = _Deployed,
-		["DomainName"] = _DomainName,
+		["Deployed"] = args["Deployed"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDescribeAvailabilityOptionsRequest(t)
 	return t
@@ -2204,12 +2426,15 @@ end
 
 --- Create a structure of type DefineIndexFieldResponse
 -- <p>The result of a <code><a>DefineIndexField</a></code> request. Contains the status of the newly-configured index field.</p>
--- @param _IndexField [IndexFieldStatus] 
--- Required parameter: IndexField
-function M.DefineIndexFieldResponse(_IndexField, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefineIndexFieldResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexField [IndexFieldStatus] 
+-- Required key: IndexField
+-- @return DefineIndexFieldResponse structure as a key-value pair table
+function M.DefineIndexFieldResponse(args)
+	assert(args, "You must provdide an argument table when creating DefineIndexFieldResponse")
 	local t = { 
-		["IndexField"] = _IndexField,
+		["IndexField"] = args["IndexField"],
 	}
 	asserts.AssertDefineIndexFieldResponse(t)
 	return t
@@ -2229,12 +2454,15 @@ end
 
 --- Create a structure of type DescribeIndexFieldsResponse
 -- <p>The result of a <code>DescribeIndexFields</code> request. Contains the index fields configured for the domain specified in the request.</p>
--- @param _IndexFields [IndexFieldStatusList] <p>The index fields configured for the domain.</p>
--- Required parameter: IndexFields
-function M.DescribeIndexFieldsResponse(_IndexFields, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIndexFieldsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexFields [IndexFieldStatusList] <p>The index fields configured for the domain.</p>
+-- Required key: IndexFields
+-- @return DescribeIndexFieldsResponse structure as a key-value pair table
+function M.DescribeIndexFieldsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeIndexFieldsResponse")
 	local t = { 
-		["IndexFields"] = _IndexFields,
+		["IndexFields"] = args["IndexFields"],
 	}
 	asserts.AssertDescribeIndexFieldsResponse(t)
 	return t
@@ -2257,19 +2485,22 @@ end
 
 --- Create a structure of type DoubleArrayOptions
 -- <p>Options for a field that contains an array of double-precision 64-bit floating point values. Present if <code>IndexFieldType</code> specifies the field is of type <code>double-array</code>. All options are enabled by default.</p>
--- @param _SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
--- @param _FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
--- @param _DefaultValue [Double] A value to use for the field if the field isn't specified for a document.
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
--- @param _SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
-function M.DoubleArrayOptions(_SourceFields, _FacetEnabled, _DefaultValue, _ReturnEnabled, _SearchEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DoubleArrayOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceFields [FieldNameCommaList] <p>A list of source fields to map to the field. </p>
+-- * FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- * DefaultValue [Double] A value to use for the field if the field isn't specified for a document.
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- @return DoubleArrayOptions structure as a key-value pair table
+function M.DoubleArrayOptions(args)
+	assert(args, "You must provdide an argument table when creating DoubleArrayOptions")
 	local t = { 
-		["SourceFields"] = _SourceFields,
-		["FacetEnabled"] = _FacetEnabled,
-		["DefaultValue"] = _DefaultValue,
-		["ReturnEnabled"] = _ReturnEnabled,
-		["SearchEnabled"] = _SearchEnabled,
+		["SourceFields"] = args["SourceFields"],
+		["FacetEnabled"] = args["FacetEnabled"],
+		["DefaultValue"] = args["DefaultValue"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
+		["SearchEnabled"] = args["SearchEnabled"],
 	}
 	asserts.AssertDoubleArrayOptions(t)
 	return t
@@ -2288,11 +2519,14 @@ end
 
 --- Create a structure of type DescribeDomainsRequest
 -- <p>Container for the parameters to the <code><a>DescribeDomains</a></code> operation. By default shows the status of all domains. To restrict the response to particular domains, specify the names of the domains you want to describe.</p>
--- @param _DomainNames [DomainNameList] <p>The names of the domains you want to include in the response.</p>
-function M.DescribeDomainsRequest(_DomainNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDomainsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainNames [DomainNameList] <p>The names of the domains you want to include in the response.</p>
+-- @return DescribeDomainsRequest structure as a key-value pair table
+function M.DescribeDomainsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDomainsRequest")
 	local t = { 
-		["DomainNames"] = _DomainNames,
+		["DomainNames"] = args["DomainNames"],
 	}
 	asserts.AssertDescribeDomainsRequest(t)
 	return t
@@ -2314,15 +2548,18 @@ end
 
 --- Create a structure of type UpdateAvailabilityOptionsRequest
 -- <p>Container for the parameters to the <code><a>UpdateAvailabilityOptions</a></code> operation. Specifies the name of the domain you want to update and the Multi-AZ availability option.</p>
--- @param _MultiAZ [Boolean] <p>You expand an existing search domain to a second Availability Zone by setting the Multi-AZ option to true. Similarly, you can turn off the Multi-AZ option to downgrade the domain to a single Availability Zone by setting the Multi-AZ option to <code>false</code>. </p>
--- @param _DomainName [DomainName] 
--- Required parameter: DomainName
--- Required parameter: MultiAZ
-function M.UpdateAvailabilityOptionsRequest(_MultiAZ, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAvailabilityOptionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MultiAZ [Boolean] <p>You expand an existing search domain to a second Availability Zone by setting the Multi-AZ option to true. Similarly, you can turn off the Multi-AZ option to downgrade the domain to a single Availability Zone by setting the Multi-AZ option to <code>false</code>. </p>
+-- * DomainName [DomainName] 
+-- Required key: DomainName
+-- Required key: MultiAZ
+-- @return UpdateAvailabilityOptionsRequest structure as a key-value pair table
+function M.UpdateAvailabilityOptionsRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateAvailabilityOptionsRequest")
 	local t = { 
-		["MultiAZ"] = _MultiAZ,
-		["DomainName"] = _DomainName,
+		["MultiAZ"] = args["MultiAZ"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertUpdateAvailabilityOptionsRequest(t)
 	return t
@@ -2341,11 +2578,14 @@ end
 
 --- Create a structure of type BuildSuggestersResponse
 -- <p>The result of a <code>BuildSuggester</code> request. Contains a list of the fields used for suggestions.</p>
--- @param _FieldNames [FieldNameList] 
-function M.BuildSuggestersResponse(_FieldNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BuildSuggestersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FieldNames [FieldNameList] 
+-- @return BuildSuggestersResponse structure as a key-value pair table
+function M.BuildSuggestersResponse(args)
+	assert(args, "You must provdide an argument table when creating BuildSuggestersResponse")
 	local t = { 
-		["FieldNames"] = _FieldNames,
+		["FieldNames"] = args["FieldNames"],
 	}
 	asserts.AssertBuildSuggestersResponse(t)
 	return t
@@ -2369,21 +2609,24 @@ end
 
 --- Create a structure of type IntOptions
 -- <p>Options for a 64-bit signed integer field. Present if <code>IndexFieldType</code> specifies the field is of type <code>int</code>. All options are enabled by default.</p>
--- @param _SourceField [FieldName] <p>The name of the source field to map to the field. </p>
--- @param _DefaultValue [Long] A value to use for the field if the field isn't specified for a document. This can be important if you are using the field in an expression and that field is not present in every document.
--- @param _FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
--- @param _SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
--- @param _SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
--- @param _ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
-function M.IntOptions(_SourceField, _DefaultValue, _FacetEnabled, _SearchEnabled, _SortEnabled, _ReturnEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IntOptions")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceField [FieldName] <p>The name of the source field to map to the field. </p>
+-- * DefaultValue [Long] A value to use for the field if the field isn't specified for a document. This can be important if you are using the field in an expression and that field is not present in every document.
+-- * FacetEnabled [Boolean] <p>Whether facet information can be returned for the field.</p>
+-- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
+-- * SortEnabled [Boolean] <p>Whether the field can be used to sort the search results.</p>
+-- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
+-- @return IntOptions structure as a key-value pair table
+function M.IntOptions(args)
+	assert(args, "You must provdide an argument table when creating IntOptions")
 	local t = { 
-		["SourceField"] = _SourceField,
-		["DefaultValue"] = _DefaultValue,
-		["FacetEnabled"] = _FacetEnabled,
-		["SearchEnabled"] = _SearchEnabled,
-		["SortEnabled"] = _SortEnabled,
-		["ReturnEnabled"] = _ReturnEnabled,
+		["SourceField"] = args["SourceField"],
+		["DefaultValue"] = args["DefaultValue"],
+		["FacetEnabled"] = args["FacetEnabled"],
+		["SearchEnabled"] = args["SearchEnabled"],
+		["SortEnabled"] = args["SortEnabled"],
+		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
 	asserts.AssertIntOptions(t)
 	return t
@@ -2403,12 +2646,15 @@ end
 
 --- Create a structure of type DescribeSuggestersResponse
 -- <p>The result of a <code>DescribeSuggesters</code> request.</p>
--- @param _Suggesters [SuggesterStatusList] <p>The suggesters configured for the domain specified in the request.</p>
--- Required parameter: Suggesters
-function M.DescribeSuggestersResponse(_Suggesters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSuggestersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Suggesters [SuggesterStatusList] <p>The suggesters configured for the domain specified in the request.</p>
+-- Required key: Suggesters
+-- @return DescribeSuggestersResponse structure as a key-value pair table
+function M.DescribeSuggestersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeSuggestersResponse")
 	local t = { 
-		["Suggesters"] = _Suggesters,
+		["Suggesters"] = args["Suggesters"],
 	}
 	asserts.AssertDescribeSuggestersResponse(t)
 	return t

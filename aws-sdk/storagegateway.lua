@@ -35,13 +35,16 @@ end
 
 --- Create a structure of type StorageGatewayError
 -- <p>Provides additional information about an error that was returned by the service as an or. See the <code>errorCode</code> and <code>errorDetails</code> members for more information about the error.</p>
--- @param _errorCode [ErrorCode] <p>Additional information about the error.</p>
--- @param _errorDetails [errorDetails] <p>Human-readable text that provides detail about the error that occurred.</p>
-function M.StorageGatewayError(_errorCode, _errorDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StorageGatewayError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * errorCode [ErrorCode] <p>Additional information about the error.</p>
+-- * errorDetails [errorDetails] <p>Human-readable text that provides detail about the error that occurred.</p>
+-- @return StorageGatewayError structure as a key-value pair table
+function M.StorageGatewayError(args)
+	assert(args, "You must provdide an argument table when creating StorageGatewayError")
 	local t = { 
-		["errorCode"] = _errorCode,
-		["errorDetails"] = _errorDetails,
+		["errorCode"] = args["errorCode"],
+		["errorDetails"] = args["errorDetails"],
 	}
 	asserts.AssertStorageGatewayError(t)
 	return t
@@ -61,12 +64,15 @@ end
 
 --- Create a structure of type ResetCacheInput
 --  
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.ResetCacheInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResetCacheInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return ResetCacheInput structure as a key-value pair table
+function M.ResetCacheInput(args)
+	assert(args, "You must provdide an argument table when creating ResetCacheInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertResetCacheInput(t)
 	return t
@@ -85,11 +91,14 @@ end
 
 --- Create a structure of type ShutdownGatewayOutput
 -- <p>A JSON object containing the of the gateway that was shut down.</p>
--- @param _GatewayARN [GatewayARN] 
-function M.ShutdownGatewayOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ShutdownGatewayOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return ShutdownGatewayOutput structure as a key-value pair table
+function M.ShutdownGatewayOutput(args)
+	assert(args, "You must provdide an argument table when creating ShutdownGatewayOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertShutdownGatewayOutput(t)
 	return t
@@ -118,31 +127,34 @@ end
 
 --- Create a structure of type StorediSCSIVolume
 -- <p>Describes an iSCSI stored volume.</p>
--- @param _VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
--- @param _VolumeProgress [DoubleObject] <p>Represents the percentage complete if the volume is restoring or bootstrapping that represents the percent of data transferred. This field does not appear in the response if the stored volume is not restoring or bootstrapping.</p>
--- @param _VolumeDiskId [DiskId] <p>The ID of the local disk that was specified in the <a>CreateStorediSCSIVolume</a> operation.</p>
--- @param _PreservedExistingData [boolean] <p>Indicates if when the stored volume was created, existing data on the underlying local disk was preserved.</p> <p> Valid Values: true, false</p>
--- @param _VolumeiSCSIAttributes [VolumeiSCSIAttributes] <p>An <a>VolumeiSCSIAttributes</a> object that represents a collection of iSCSI attributes for one stored volume.</p>
--- @param _VolumeType [VolumeType] <p>One of the VolumeType enumeration values describing the type of the volume.</p>
--- @param _VolumeId [VolumeId] <p>The unique identifier of the volume, e.g. vol-AE4B946D.</p>
--- @param _SourceSnapshotId [SnapshotId] <p>If the stored volume was created from a snapshot, this field contains the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not included.</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume.</p>
--- @param _CreatedDate [CreatedDate] <p>The date the volume was created. Volumes created prior to March 28, 2017 don’t have this time stamp.</p>
--- @param _VolumeStatus [VolumeStatus] <p>One of the VolumeStatus values that indicates the state of the storage volume.</p>
-function M.StorediSCSIVolume(_VolumeSizeInBytes, _VolumeProgress, _VolumeDiskId, _PreservedExistingData, _VolumeiSCSIAttributes, _VolumeType, _VolumeId, _SourceSnapshotId, _VolumeARN, _CreatedDate, _VolumeStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StorediSCSIVolume")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
+-- * VolumeProgress [DoubleObject] <p>Represents the percentage complete if the volume is restoring or bootstrapping that represents the percent of data transferred. This field does not appear in the response if the stored volume is not restoring or bootstrapping.</p>
+-- * VolumeDiskId [DiskId] <p>The ID of the local disk that was specified in the <a>CreateStorediSCSIVolume</a> operation.</p>
+-- * PreservedExistingData [boolean] <p>Indicates if when the stored volume was created, existing data on the underlying local disk was preserved.</p> <p> Valid Values: true, false</p>
+-- * VolumeiSCSIAttributes [VolumeiSCSIAttributes] <p>An <a>VolumeiSCSIAttributes</a> object that represents a collection of iSCSI attributes for one stored volume.</p>
+-- * VolumeType [VolumeType] <p>One of the VolumeType enumeration values describing the type of the volume.</p>
+-- * VolumeId [VolumeId] <p>The unique identifier of the volume, e.g. vol-AE4B946D.</p>
+-- * SourceSnapshotId [SnapshotId] <p>If the stored volume was created from a snapshot, this field contains the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not included.</p>
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume.</p>
+-- * CreatedDate [CreatedDate] <p>The date the volume was created. Volumes created prior to March 28, 2017 don’t have this time stamp.</p>
+-- * VolumeStatus [VolumeStatus] <p>One of the VolumeStatus values that indicates the state of the storage volume.</p>
+-- @return StorediSCSIVolume structure as a key-value pair table
+function M.StorediSCSIVolume(args)
+	assert(args, "You must provdide an argument table when creating StorediSCSIVolume")
 	local t = { 
-		["VolumeSizeInBytes"] = _VolumeSizeInBytes,
-		["VolumeProgress"] = _VolumeProgress,
-		["VolumeDiskId"] = _VolumeDiskId,
-		["PreservedExistingData"] = _PreservedExistingData,
-		["VolumeiSCSIAttributes"] = _VolumeiSCSIAttributes,
-		["VolumeType"] = _VolumeType,
-		["VolumeId"] = _VolumeId,
-		["SourceSnapshotId"] = _SourceSnapshotId,
-		["VolumeARN"] = _VolumeARN,
-		["CreatedDate"] = _CreatedDate,
-		["VolumeStatus"] = _VolumeStatus,
+		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
+		["VolumeProgress"] = args["VolumeProgress"],
+		["VolumeDiskId"] = args["VolumeDiskId"],
+		["PreservedExistingData"] = args["PreservedExistingData"],
+		["VolumeiSCSIAttributes"] = args["VolumeiSCSIAttributes"],
+		["VolumeType"] = args["VolumeType"],
+		["VolumeId"] = args["VolumeId"],
+		["SourceSnapshotId"] = args["SourceSnapshotId"],
+		["VolumeARN"] = args["VolumeARN"],
+		["CreatedDate"] = args["CreatedDate"],
+		["VolumeStatus"] = args["VolumeStatus"],
 	}
 	asserts.AssertStorediSCSIVolume(t)
 	return t
@@ -161,11 +173,14 @@ end
 
 --- Create a structure of type CancelRetrievalOutput
 -- <p>CancelRetrievalOutput</p>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which retrieval was canceled.</p>
-function M.CancelRetrievalOutput(_TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelRetrievalOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which retrieval was canceled.</p>
+-- @return CancelRetrievalOutput structure as a key-value pair table
+function M.CancelRetrievalOutput(args)
+	assert(args, "You must provdide an argument table when creating CancelRetrievalOutput")
 	local t = { 
-		["TapeARN"] = _TapeARN,
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertCancelRetrievalOutput(t)
 	return t
@@ -187,15 +202,18 @@ end
 
 --- Create a structure of type DeleteTapeInput
 -- <p>DeleteTapeInput</p>
--- @param _GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape to delete.</p>
--- Required parameter: GatewayARN
--- Required parameter: TapeARN
-function M.DeleteTapeInput(_GatewayARN, _TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTapeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) of the gateway that the virtual tape to delete is associated with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape to delete.</p>
+-- Required key: GatewayARN
+-- Required key: TapeARN
+-- @return DeleteTapeInput structure as a key-value pair table
+function M.DeleteTapeInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteTapeInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["TapeARN"] = _TapeARN,
+		["GatewayARN"] = args["GatewayARN"],
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertDeleteTapeInput(t)
 	return t
@@ -217,16 +235,19 @@ end
 
 --- Create a structure of type DescribeTapeRecoveryPointsInput
 -- <p>DescribeTapeRecoveryPointsInput</p>
--- @param _Marker [Marker] <p>An opaque string that indicates the position at which to begin describing the virtual tape recovery points.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _Limit [PositiveIntObject] <p>Specifies that the number of virtual tape recovery points that are described be limited to the specified number.</p>
--- Required parameter: GatewayARN
-function M.DescribeTapeRecoveryPointsInput(_Marker, _GatewayARN, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapeRecoveryPointsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>An opaque string that indicates the position at which to begin describing the virtual tape recovery points.</p>
+-- * GatewayARN [GatewayARN] 
+-- * Limit [PositiveIntObject] <p>Specifies that the number of virtual tape recovery points that are described be limited to the specified number.</p>
+-- Required key: GatewayARN
+-- @return DescribeTapeRecoveryPointsInput structure as a key-value pair table
+function M.DescribeTapeRecoveryPointsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTapeRecoveryPointsInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["GatewayARN"] = _GatewayARN,
-		["Limit"] = _Limit,
+		["Marker"] = args["Marker"],
+		["GatewayARN"] = args["GatewayARN"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeTapeRecoveryPointsInput(t)
 	return t
@@ -253,27 +274,30 @@ end
 
 --- Create a structure of type CachediSCSIVolume
 -- <p>Describes an iSCSI cached volume.</p>
--- @param _VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
--- @param _VolumeProgress [DoubleObject] <p>Represents the percentage complete if the volume is restoring or bootstrapping that represents the percent of data transferred. This field does not appear in the response if the cached volume is not restoring or bootstrapping.</p>
--- @param _VolumeiSCSIAttributes [VolumeiSCSIAttributes] <p>An <a>VolumeiSCSIAttributes</a> object that represents a collection of iSCSI attributes for one stored volume.</p>
--- @param _VolumeType [VolumeType] <p>One of the VolumeType enumeration values that describes the type of the volume.</p>
--- @param _VolumeId [VolumeId] <p>The unique identifier of the volume, e.g. vol-AE4B946D.</p>
--- @param _SourceSnapshotId [SnapshotId] <p>If the cached volume was created from a snapshot, this field contains the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not included.</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume.</p>
--- @param _CreatedDate [CreatedDate] <p>The date the volume was created. Volumes created prior to March 28, 2017 don’t have this time stamp.</p>
--- @param _VolumeStatus [VolumeStatus] <p>One of the VolumeStatus values that indicates the state of the storage volume.</p>
-function M.CachediSCSIVolume(_VolumeSizeInBytes, _VolumeProgress, _VolumeiSCSIAttributes, _VolumeType, _VolumeId, _SourceSnapshotId, _VolumeARN, _CreatedDate, _VolumeStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CachediSCSIVolume")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
+-- * VolumeProgress [DoubleObject] <p>Represents the percentage complete if the volume is restoring or bootstrapping that represents the percent of data transferred. This field does not appear in the response if the cached volume is not restoring or bootstrapping.</p>
+-- * VolumeiSCSIAttributes [VolumeiSCSIAttributes] <p>An <a>VolumeiSCSIAttributes</a> object that represents a collection of iSCSI attributes for one stored volume.</p>
+-- * VolumeType [VolumeType] <p>One of the VolumeType enumeration values that describes the type of the volume.</p>
+-- * VolumeId [VolumeId] <p>The unique identifier of the volume, e.g. vol-AE4B946D.</p>
+-- * SourceSnapshotId [SnapshotId] <p>If the cached volume was created from a snapshot, this field contains the snapshot ID used, e.g. snap-78e22663. Otherwise, this field is not included.</p>
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume.</p>
+-- * CreatedDate [CreatedDate] <p>The date the volume was created. Volumes created prior to March 28, 2017 don’t have this time stamp.</p>
+-- * VolumeStatus [VolumeStatus] <p>One of the VolumeStatus values that indicates the state of the storage volume.</p>
+-- @return CachediSCSIVolume structure as a key-value pair table
+function M.CachediSCSIVolume(args)
+	assert(args, "You must provdide an argument table when creating CachediSCSIVolume")
 	local t = { 
-		["VolumeSizeInBytes"] = _VolumeSizeInBytes,
-		["VolumeProgress"] = _VolumeProgress,
-		["VolumeiSCSIAttributes"] = _VolumeiSCSIAttributes,
-		["VolumeType"] = _VolumeType,
-		["VolumeId"] = _VolumeId,
-		["SourceSnapshotId"] = _SourceSnapshotId,
-		["VolumeARN"] = _VolumeARN,
-		["CreatedDate"] = _CreatedDate,
-		["VolumeStatus"] = _VolumeStatus,
+		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
+		["VolumeProgress"] = args["VolumeProgress"],
+		["VolumeiSCSIAttributes"] = args["VolumeiSCSIAttributes"],
+		["VolumeType"] = args["VolumeType"],
+		["VolumeId"] = args["VolumeId"],
+		["SourceSnapshotId"] = args["SourceSnapshotId"],
+		["VolumeARN"] = args["VolumeARN"],
+		["CreatedDate"] = args["CreatedDate"],
+		["VolumeStatus"] = args["VolumeStatus"],
 	}
 	asserts.AssertCachediSCSIVolume(t)
 	return t
@@ -295,15 +319,18 @@ end
 
 --- Create a structure of type DeleteBandwidthRateLimitInput
 -- <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DeleteBandwidthRateLimitInput$BandwidthType</a> </p> </li> </ul>
--- @param _GatewayARN [GatewayARN] 
--- @param _BandwidthType [BandwidthType] <p>One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.</p> <p>Valid Values: <code>Upload</code>, <code>Download</code>, <code>All</code>.</p>
--- Required parameter: GatewayARN
--- Required parameter: BandwidthType
-function M.DeleteBandwidthRateLimitInput(_GatewayARN, _BandwidthType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBandwidthRateLimitInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * BandwidthType [BandwidthType] <p>One of the BandwidthType values that indicates the gateway bandwidth rate limit to delete.</p> <p>Valid Values: <code>Upload</code>, <code>Download</code>, <code>All</code>.</p>
+-- Required key: GatewayARN
+-- Required key: BandwidthType
+-- @return DeleteBandwidthRateLimitInput structure as a key-value pair table
+function M.DeleteBandwidthRateLimitInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteBandwidthRateLimitInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["BandwidthType"] = _BandwidthType,
+		["GatewayARN"] = args["GatewayARN"],
+		["BandwidthType"] = args["BandwidthType"],
 	}
 	asserts.AssertDeleteBandwidthRateLimitInput(t)
 	return t
@@ -331,24 +358,27 @@ end
 
 --- Create a structure of type CreateTapesInput
 -- <p>CreateTapesInput</p>
--- @param _GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
--- @param _TapeBarcodePrefix [TapeBarcodePrefix] <p>A prefix that you append to the barcode of the virtual tape you are creating. This prefix makes the barcode unique.</p> <note> <p>The prefix must be 1 to 4 characters in length and must be one of the uppercase letters from A to Z.</p> </note>
--- @param _TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tapes that you want to create.</p> <note> <p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
--- @param _NumTapesToCreate [NumTapesToCreate] <p>The number of virtual tapes that you want to create.</p>
--- @param _ClientToken [ClientToken] <p>A unique identifier that you use to retry a request. If you retry a request, use the same <code>ClientToken</code> you specified in the initial request.</p> <note> <p>Using the same <code>ClientToken</code> prevents creating the tape multiple times.</p> </note>
--- Required parameter: GatewayARN
--- Required parameter: TapeSizeInBytes
--- Required parameter: ClientToken
--- Required parameter: NumTapesToCreate
--- Required parameter: TapeBarcodePrefix
-function M.CreateTapesInput(_GatewayARN, _TapeBarcodePrefix, _TapeSizeInBytes, _NumTapesToCreate, _ClientToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTapesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- * TapeBarcodePrefix [TapeBarcodePrefix] <p>A prefix that you append to the barcode of the virtual tape you are creating. This prefix makes the barcode unique.</p> <note> <p>The prefix must be 1 to 4 characters in length and must be one of the uppercase letters from A to Z.</p> </note>
+-- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tapes that you want to create.</p> <note> <p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
+-- * NumTapesToCreate [NumTapesToCreate] <p>The number of virtual tapes that you want to create.</p>
+-- * ClientToken [ClientToken] <p>A unique identifier that you use to retry a request. If you retry a request, use the same <code>ClientToken</code> you specified in the initial request.</p> <note> <p>Using the same <code>ClientToken</code> prevents creating the tape multiple times.</p> </note>
+-- Required key: GatewayARN
+-- Required key: TapeSizeInBytes
+-- Required key: ClientToken
+-- Required key: NumTapesToCreate
+-- Required key: TapeBarcodePrefix
+-- @return CreateTapesInput structure as a key-value pair table
+function M.CreateTapesInput(args)
+	assert(args, "You must provdide an argument table when creating CreateTapesInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["TapeBarcodePrefix"] = _TapeBarcodePrefix,
-		["TapeSizeInBytes"] = _TapeSizeInBytes,
-		["NumTapesToCreate"] = _NumTapesToCreate,
-		["ClientToken"] = _ClientToken,
+		["GatewayARN"] = args["GatewayARN"],
+		["TapeBarcodePrefix"] = args["TapeBarcodePrefix"],
+		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
+		["NumTapesToCreate"] = args["NumTapesToCreate"],
+		["ClientToken"] = args["ClientToken"],
 	}
 	asserts.AssertCreateTapesInput(t)
 	return t
@@ -370,15 +400,18 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceInput
 -- <p>RemoveTagsFromResourceInput</p>
--- @param _ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource you want to remove the tags from.</p>
--- @param _TagKeys [TagKeys] <p>The keys of the tags you want to remove from the specified resource. A tag is composed of a key/value pair.</p>
--- Required parameter: ResourceARN
--- Required parameter: TagKeys
-function M.RemoveTagsFromResourceInput(_ResourceARN, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource you want to remove the tags from.</p>
+-- * TagKeys [TagKeys] <p>The keys of the tags you want to remove from the specified resource. A tag is composed of a key/value pair.</p>
+-- Required key: ResourceARN
+-- Required key: TagKeys
+-- @return RemoveTagsFromResourceInput structure as a key-value pair table
+function M.RemoveTagsFromResourceInput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceInput")
 	local t = { 
-		["ResourceARN"] = _ResourceARN,
-		["TagKeys"] = _TagKeys,
+		["ResourceARN"] = args["ResourceARN"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertRemoveTagsFromResourceInput(t)
 	return t
@@ -398,12 +431,15 @@ end
 
 --- Create a structure of type DeleteFileShareInput
 -- <p>DeleteFileShareInput</p>
--- @param _FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the file share to be deleted. </p>
--- Required parameter: FileShareARN
-function M.DeleteFileShareInput(_FileShareARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFileShareInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the file share to be deleted. </p>
+-- Required key: FileShareARN
+-- @return DeleteFileShareInput structure as a key-value pair table
+function M.DeleteFileShareInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteFileShareInput")
 	local t = { 
-		["FileShareARN"] = _FileShareARN,
+		["FileShareARN"] = args["FileShareARN"],
 	}
 	asserts.AssertDeleteFileShareInput(t)
 	return t
@@ -425,15 +461,18 @@ end
 
 --- Create a structure of type AddWorkingStorageInput
 -- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>AddWorkingStorageInput$DiskIds</a> </p> </li> </ul>
--- @param _GatewayARN [GatewayARN] 
--- @param _DiskIds [DiskIds] <p>An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the <a>ListLocalDisks</a> API.</p>
--- Required parameter: GatewayARN
--- Required parameter: DiskIds
-function M.AddWorkingStorageInput(_GatewayARN, _DiskIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddWorkingStorageInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * DiskIds [DiskIds] <p>An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the <a>ListLocalDisks</a> API.</p>
+-- Required key: GatewayARN
+-- Required key: DiskIds
+-- @return AddWorkingStorageInput structure as a key-value pair table
+function M.AddWorkingStorageInput(args)
+	assert(args, "You must provdide an argument table when creating AddWorkingStorageInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["DiskIds"] = _DiskIds,
+		["GatewayARN"] = args["GatewayARN"],
+		["DiskIds"] = args["DiskIds"],
 	}
 	asserts.AssertAddWorkingStorageInput(t)
 	return t
@@ -454,15 +493,18 @@ end
 
 --- Create a structure of type ListFileSharesOutput
 -- <p>ListFileShareOutput</p>
--- @param _Marker [Marker] <p>If the request includes <code>Marker</code>, the response returns that value in this field. </p>
--- @param _FileShareInfoList [FileShareInfoList] <p>An array of information about the file gateway's file shares. </p>
--- @param _NextMarker [Marker] <p>If a value is present, there are more file shares to return. In a subsequent request, use <code>NextMarker</code> as the value for <code>Marker</code> to retrieve the next set of file shares. </p>
-function M.ListFileSharesOutput(_Marker, _FileShareInfoList, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFileSharesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>If the request includes <code>Marker</code>, the response returns that value in this field. </p>
+-- * FileShareInfoList [FileShareInfoList] <p>An array of information about the file gateway's file shares. </p>
+-- * NextMarker [Marker] <p>If a value is present, there are more file shares to return. In a subsequent request, use <code>NextMarker</code> as the value for <code>Marker</code> to retrieve the next set of file shares. </p>
+-- @return ListFileSharesOutput structure as a key-value pair table
+function M.ListFileSharesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListFileSharesOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["FileShareInfoList"] = _FileShareInfoList,
-		["NextMarker"] = _NextMarker,
+		["Marker"] = args["Marker"],
+		["FileShareInfoList"] = args["FileShareInfoList"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertListFileSharesOutput(t)
 	return t
@@ -484,17 +526,20 @@ end
 
 --- Create a structure of type ChapInfo
 -- <p>Describes Challenge-Handshake Authentication Protocol (CHAP) information that supports authentication between your gateway and iSCSI initiators.</p>
--- @param _TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the volume.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
--- @param _SecretToAuthenticateInitiator [ChapSecret] <p>The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p>
--- @param _InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
--- @param _SecretToAuthenticateTarget [ChapSecret] <p>The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p>
-function M.ChapInfo(_TargetARN, _SecretToAuthenticateInitiator, _InitiatorName, _SecretToAuthenticateTarget, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChapInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the volume.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- * SecretToAuthenticateInitiator [ChapSecret] <p>The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p>
+-- * InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
+-- * SecretToAuthenticateTarget [ChapSecret] <p>The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p>
+-- @return ChapInfo structure as a key-value pair table
+function M.ChapInfo(args)
+	assert(args, "You must provdide an argument table when creating ChapInfo")
 	local t = { 
-		["TargetARN"] = _TargetARN,
-		["SecretToAuthenticateInitiator"] = _SecretToAuthenticateInitiator,
-		["InitiatorName"] = _InitiatorName,
-		["SecretToAuthenticateTarget"] = _SecretToAuthenticateTarget,
+		["TargetARN"] = args["TargetARN"],
+		["SecretToAuthenticateInitiator"] = args["SecretToAuthenticateInitiator"],
+		["InitiatorName"] = args["InitiatorName"],
+		["SecretToAuthenticateTarget"] = args["SecretToAuthenticateTarget"],
 	}
 	asserts.AssertChapInfo(t)
 	return t
@@ -513,11 +558,14 @@ end
 
 --- Create a structure of type SetLocalConsolePasswordOutput
 --  
--- @param _GatewayARN [GatewayARN] 
-function M.SetLocalConsolePasswordOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetLocalConsolePasswordOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return SetLocalConsolePasswordOutput structure as a key-value pair table
+function M.SetLocalConsolePasswordOutput(args)
+	assert(args, "You must provdide an argument table when creating SetLocalConsolePasswordOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertSetLocalConsolePasswordOutput(t)
 	return t
@@ -537,12 +585,15 @@ end
 
 --- Create a structure of type ListVolumeRecoveryPointsInput
 --  
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.ListVolumeRecoveryPointsInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVolumeRecoveryPointsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return ListVolumeRecoveryPointsInput structure as a key-value pair table
+function M.ListVolumeRecoveryPointsInput(args)
+	assert(args, "You must provdide an argument table when creating ListVolumeRecoveryPointsInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertListVolumeRecoveryPointsInput(t)
 	return t
@@ -565,18 +616,21 @@ end
 
 --- Create a structure of type DescribeTapesInput
 -- <p>DescribeTapesInput</p>
--- @param _Marker [Marker] <p>A marker value, obtained in a previous call to <code>DescribeTapes</code>. This marker indicates which page of results to retrieve. </p> <p>If not specified, the first page of results is retrieved.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _TapeARNs [TapeARNs] <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe. If this parameter is not specified, Tape gateway returns a description of all virtual tapes associated with the specified gateway.</p>
--- @param _Limit [PositiveIntObject] <p>Specifies that the number of virtual tapes described be limited to the specified number.</p> <note> <p>Amazon Web Services may impose its own limit, if this field is not set.</p> </note>
--- Required parameter: GatewayARN
-function M.DescribeTapesInput(_Marker, _GatewayARN, _TapeARNs, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>A marker value, obtained in a previous call to <code>DescribeTapes</code>. This marker indicates which page of results to retrieve. </p> <p>If not specified, the first page of results is retrieved.</p>
+-- * GatewayARN [GatewayARN] 
+-- * TapeARNs [TapeARNs] <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe. If this parameter is not specified, Tape gateway returns a description of all virtual tapes associated with the specified gateway.</p>
+-- * Limit [PositiveIntObject] <p>Specifies that the number of virtual tapes described be limited to the specified number.</p> <note> <p>Amazon Web Services may impose its own limit, if this field is not set.</p> </note>
+-- Required key: GatewayARN
+-- @return DescribeTapesInput structure as a key-value pair table
+function M.DescribeTapesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTapesInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["GatewayARN"] = _GatewayARN,
-		["TapeARNs"] = _TapeARNs,
-		["Limit"] = _Limit,
+		["Marker"] = args["Marker"],
+		["GatewayARN"] = args["GatewayARN"],
+		["TapeARNs"] = args["TapeARNs"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertDescribeTapesInput(t)
 	return t
@@ -598,16 +652,19 @@ end
 
 --- Create a structure of type UpdateBandwidthRateLimitInput
 -- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec</a> </p> </li> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec</a> </p> </li> </ul>
--- @param _GatewayARN [GatewayARN] 
--- @param _AverageUploadRateLimitInBitsPerSec [BandwidthUploadRateLimit] <p>The average upload bandwidth rate limit in bits per second.</p>
--- @param _AverageDownloadRateLimitInBitsPerSec [BandwidthDownloadRateLimit] <p>The average download bandwidth rate limit in bits per second.</p>
--- Required parameter: GatewayARN
-function M.UpdateBandwidthRateLimitInput(_GatewayARN, _AverageUploadRateLimitInBitsPerSec, _AverageDownloadRateLimitInBitsPerSec, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBandwidthRateLimitInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * AverageUploadRateLimitInBitsPerSec [BandwidthUploadRateLimit] <p>The average upload bandwidth rate limit in bits per second.</p>
+-- * AverageDownloadRateLimitInBitsPerSec [BandwidthDownloadRateLimit] <p>The average download bandwidth rate limit in bits per second.</p>
+-- Required key: GatewayARN
+-- @return UpdateBandwidthRateLimitInput structure as a key-value pair table
+function M.UpdateBandwidthRateLimitInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateBandwidthRateLimitInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["AverageUploadRateLimitInBitsPerSec"] = _AverageUploadRateLimitInBitsPerSec,
-		["AverageDownloadRateLimitInBitsPerSec"] = _AverageDownloadRateLimitInBitsPerSec,
+		["GatewayARN"] = args["GatewayARN"],
+		["AverageUploadRateLimitInBitsPerSec"] = args["AverageUploadRateLimitInBitsPerSec"],
+		["AverageDownloadRateLimitInBitsPerSec"] = args["AverageDownloadRateLimitInBitsPerSec"],
 	}
 	asserts.AssertUpdateBandwidthRateLimitInput(t)
 	return t
@@ -629,17 +686,20 @@ end
 
 --- Create a structure of type TapeRecoveryPointInfo
 -- <p>Describes a recovery point.</p>
--- @param _TapeStatus [TapeRecoveryPointStatus] 
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
--- @param _TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tapes to recover.</p>
--- @param _TapeRecoveryPointTime [Time] <p>The time when the point-in-time view of the virtual tape was replicated for later recovery.</p> <p>The string format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
-function M.TapeRecoveryPointInfo(_TapeStatus, _TapeARN, _TapeSizeInBytes, _TapeRecoveryPointTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TapeRecoveryPointInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeStatus [TapeRecoveryPointStatus] 
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
+-- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tapes to recover.</p>
+-- * TapeRecoveryPointTime [Time] <p>The time when the point-in-time view of the virtual tape was replicated for later recovery.</p> <p>The string format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
+-- @return TapeRecoveryPointInfo structure as a key-value pair table
+function M.TapeRecoveryPointInfo(args)
+	assert(args, "You must provdide an argument table when creating TapeRecoveryPointInfo")
 	local t = { 
-		["TapeStatus"] = _TapeStatus,
-		["TapeARN"] = _TapeARN,
-		["TapeSizeInBytes"] = _TapeSizeInBytes,
-		["TapeRecoveryPointTime"] = _TapeRecoveryPointTime,
+		["TapeStatus"] = args["TapeStatus"],
+		["TapeARN"] = args["TapeARN"],
+		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
+		["TapeRecoveryPointTime"] = args["TapeRecoveryPointTime"],
 	}
 	asserts.AssertTapeRecoveryPointInfo(t)
 	return t
@@ -659,12 +719,15 @@ end
 
 --- Create a structure of type ListLocalDisksInput
 -- <p>A JSON object containing the of the gateway.</p>
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.ListLocalDisksInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLocalDisksInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return ListLocalDisksInput structure as a key-value pair table
+function M.ListLocalDisksInput(args)
+	assert(args, "You must provdide an argument table when creating ListLocalDisksInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertListLocalDisksInput(t)
 	return t
@@ -683,11 +746,14 @@ end
 
 --- Create a structure of type DescribeCachediSCSIVolumesOutput
 -- <p>A JSON object containing the following fields:</p>
--- @param _CachediSCSIVolumes [CachediSCSIVolumes] <p>An array of objects where each object contains metadata about one cached volume.</p>
-function M.DescribeCachediSCSIVolumesOutput(_CachediSCSIVolumes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCachediSCSIVolumesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CachediSCSIVolumes [CachediSCSIVolumes] <p>An array of objects where each object contains metadata about one cached volume.</p>
+-- @return DescribeCachediSCSIVolumesOutput structure as a key-value pair table
+function M.DescribeCachediSCSIVolumesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeCachediSCSIVolumesOutput")
 	local t = { 
-		["CachediSCSIVolumes"] = _CachediSCSIVolumes,
+		["CachediSCSIVolumes"] = args["CachediSCSIVolumes"],
 	}
 	asserts.AssertDescribeCachediSCSIVolumesOutput(t)
 	return t
@@ -707,13 +773,16 @@ end
 
 --- Create a structure of type InternalServerError
 -- <p>An internal server error has occurred during the request. For more information, see the error and message fields.</p>
--- @param _message [string] <p>A human-readable message describing the error that occurred.</p>
--- @param _error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more information about the cause of the error.</p>
-function M.InternalServerError(_message, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>A human-readable message describing the error that occurred.</p>
+-- * error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more information about the cause of the error.</p>
+-- @return InternalServerError structure as a key-value pair table
+function M.InternalServerError(args)
+	assert(args, "You must provdide an argument table when creating InternalServerError")
 	local t = { 
-		["message"] = _message,
-		["error"] = _error,
+		["message"] = args["message"],
+		["error"] = args["error"],
 	}
 	asserts.AssertInternalServerError(t)
 	return t
@@ -735,15 +804,18 @@ end
 
 --- Create a structure of type RetrieveTapeRecoveryPointInput
 -- <p>RetrieveTapeRecoveryPointInput</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which you want to retrieve the recovery point.</p>
--- Required parameter: TapeARN
--- Required parameter: GatewayARN
-function M.RetrieveTapeRecoveryPointInput(_GatewayARN, _TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveTapeRecoveryPointInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which you want to retrieve the recovery point.</p>
+-- Required key: TapeARN
+-- Required key: GatewayARN
+-- @return RetrieveTapeRecoveryPointInput structure as a key-value pair table
+function M.RetrieveTapeRecoveryPointInput(args)
+	assert(args, "You must provdide an argument table when creating RetrieveTapeRecoveryPointInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["TapeARN"] = _TapeARN,
+		["GatewayARN"] = args["GatewayARN"],
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertRetrieveTapeRecoveryPointInput(t)
 	return t
@@ -764,15 +836,18 @@ end
 
 --- Create a structure of type DescribeTapeRecoveryPointsOutput
 -- <p>DescribeTapeRecoveryPointsOutput</p>
--- @param _Marker [Marker] <p>An opaque string that indicates the position at which the virtual tape recovery points that were listed for description ended.</p> <p>Use this marker in your next request to list the next set of virtual tape recovery points in the list. If there are no more recovery points to describe, this field does not appear in the response.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _TapeRecoveryPointInfos [TapeRecoveryPointInfos] <p>An array of TapeRecoveryPointInfos that are available for the specified gateway.</p>
-function M.DescribeTapeRecoveryPointsOutput(_Marker, _GatewayARN, _TapeRecoveryPointInfos, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapeRecoveryPointsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>An opaque string that indicates the position at which the virtual tape recovery points that were listed for description ended.</p> <p>Use this marker in your next request to list the next set of virtual tape recovery points in the list. If there are no more recovery points to describe, this field does not appear in the response.</p>
+-- * GatewayARN [GatewayARN] 
+-- * TapeRecoveryPointInfos [TapeRecoveryPointInfos] <p>An array of TapeRecoveryPointInfos that are available for the specified gateway.</p>
+-- @return DescribeTapeRecoveryPointsOutput structure as a key-value pair table
+function M.DescribeTapeRecoveryPointsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTapeRecoveryPointsOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["GatewayARN"] = _GatewayARN,
-		["TapeRecoveryPointInfos"] = _TapeRecoveryPointInfos,
+		["Marker"] = args["Marker"],
+		["GatewayARN"] = args["GatewayARN"],
+		["TapeRecoveryPointInfos"] = args["TapeRecoveryPointInfos"],
 	}
 	asserts.AssertDescribeTapeRecoveryPointsOutput(t)
 	return t
@@ -794,16 +869,19 @@ end
 
 --- Create a structure of type UpdateGatewayInformationInput
 --  
--- @param _GatewayTimezone [GatewayTimezone] 
--- @param _GatewayARN [GatewayARN] 
--- @param _GatewayName [GatewayName] 
--- Required parameter: GatewayARN
-function M.UpdateGatewayInformationInput(_GatewayTimezone, _GatewayARN, _GatewayName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGatewayInformationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayTimezone [GatewayTimezone] 
+-- * GatewayARN [GatewayARN] 
+-- * GatewayName [GatewayName] 
+-- Required key: GatewayARN
+-- @return UpdateGatewayInformationInput structure as a key-value pair table
+function M.UpdateGatewayInformationInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateGatewayInformationInput")
 	local t = { 
-		["GatewayTimezone"] = _GatewayTimezone,
-		["GatewayARN"] = _GatewayARN,
-		["GatewayName"] = _GatewayName,
+		["GatewayTimezone"] = args["GatewayTimezone"],
+		["GatewayARN"] = args["GatewayARN"],
+		["GatewayName"] = args["GatewayName"],
 	}
 	asserts.AssertUpdateGatewayInformationInput(t)
 	return t
@@ -823,12 +901,15 @@ end
 
 --- Create a structure of type UpdateGatewaySoftwareNowInput
 -- <p>A JSON object containing the of the gateway to update.</p>
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.UpdateGatewaySoftwareNowInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGatewaySoftwareNowInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return UpdateGatewaySoftwareNowInput structure as a key-value pair table
+function M.UpdateGatewaySoftwareNowInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateGatewaySoftwareNowInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertUpdateGatewaySoftwareNowInput(t)
 	return t
@@ -848,12 +929,15 @@ end
 
 --- Create a structure of type ListVolumeInitiatorsInput
 -- <p>ListVolumeInitiatorsInput</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes for the gateway.</p>
--- Required parameter: VolumeARN
-function M.ListVolumeInitiatorsInput(_VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVolumeInitiatorsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes for the gateway.</p>
+-- Required key: VolumeARN
+-- @return ListVolumeInitiatorsInput structure as a key-value pair table
+function M.ListVolumeInitiatorsInput(args)
+	assert(args, "You must provdide an argument table when creating ListVolumeInitiatorsInput")
 	local t = { 
-		["VolumeARN"] = _VolumeARN,
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertListVolumeInitiatorsInput(t)
 	return t
@@ -886,35 +970,38 @@ end
 
 --- Create a structure of type CreateNFSFileShareInput
 -- <p>CreateNFSFileShareInput</p>
--- @param _DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
--- @param _ClientList [FileShareClientList] <p>The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. </p>
--- @param _Squash [Squash] <p>Maps a user to anonymous user. Valid options are the following: </p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user.</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
--- @param _NFSFileShareDefaults [NFSFileShareDefaults] <p>File share default values. Optional.</p>
--- @param _KMSKey [KMSKey] <p>The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional.</p>
--- @param _Role [Role] <p>The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage. </p>
--- @param _LocationARN [LocationARN] <p>The ARN of the backed storage used for storing file data. </p>
--- @param _ClientToken [ClientToken] <p>A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.</p>
--- @param _GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the file gateway on which you want to create a file share.</p>
--- @param _ReadOnly [Boolean] <p>Sets the write status of a file share: "true" if the write status is read-only, and otherwise "false".</p>
--- @param _KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.</p>
--- Required parameter: ClientToken
--- Required parameter: GatewayARN
--- Required parameter: Role
--- Required parameter: LocationARN
-function M.CreateNFSFileShareInput(_DefaultStorageClass, _ClientList, _Squash, _NFSFileShareDefaults, _KMSKey, _Role, _LocationARN, _ClientToken, _GatewayARN, _ReadOnly, _KMSEncrypted, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateNFSFileShareInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
+-- * ClientList [FileShareClientList] <p>The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. </p>
+-- * Squash [Squash] <p>Maps a user to anonymous user. Valid options are the following: </p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user.</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
+-- * NFSFileShareDefaults [NFSFileShareDefaults] <p>File share default values. Optional.</p>
+-- * KMSKey [KMSKey] <p>The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional.</p>
+-- * Role [Role] <p>The ARN of the AWS Identity and Access Management (IAM) role that a file gateway assumes when it accesses the underlying storage. </p>
+-- * LocationARN [LocationARN] <p>The ARN of the backed storage used for storing file data. </p>
+-- * ClientToken [ClientToken] <p>A unique string value that you supply that is used by file gateway to ensure idempotent file share creation.</p>
+-- * GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the file gateway on which you want to create a file share.</p>
+-- * ReadOnly [Boolean] <p>Sets the write status of a file share: "true" if the write status is read-only, and otherwise "false".</p>
+-- * KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.</p>
+-- Required key: ClientToken
+-- Required key: GatewayARN
+-- Required key: Role
+-- Required key: LocationARN
+-- @return CreateNFSFileShareInput structure as a key-value pair table
+function M.CreateNFSFileShareInput(args)
+	assert(args, "You must provdide an argument table when creating CreateNFSFileShareInput")
 	local t = { 
-		["DefaultStorageClass"] = _DefaultStorageClass,
-		["ClientList"] = _ClientList,
-		["Squash"] = _Squash,
-		["NFSFileShareDefaults"] = _NFSFileShareDefaults,
-		["KMSKey"] = _KMSKey,
-		["Role"] = _Role,
-		["LocationARN"] = _LocationARN,
-		["ClientToken"] = _ClientToken,
-		["GatewayARN"] = _GatewayARN,
-		["ReadOnly"] = _ReadOnly,
-		["KMSEncrypted"] = _KMSEncrypted,
+		["DefaultStorageClass"] = args["DefaultStorageClass"],
+		["ClientList"] = args["ClientList"],
+		["Squash"] = args["Squash"],
+		["NFSFileShareDefaults"] = args["NFSFileShareDefaults"],
+		["KMSKey"] = args["KMSKey"],
+		["Role"] = args["Role"],
+		["LocationARN"] = args["LocationARN"],
+		["ClientToken"] = args["ClientToken"],
+		["GatewayARN"] = args["GatewayARN"],
+		["ReadOnly"] = args["ReadOnly"],
+		["KMSEncrypted"] = args["KMSEncrypted"],
 	}
 	asserts.AssertCreateNFSFileShareInput(t)
 	return t
@@ -933,11 +1020,14 @@ end
 
 --- Create a structure of type DisableGatewayOutput
 -- <p>DisableGatewayOutput</p>
--- @param _GatewayARN [GatewayARN] <p>The unique Amazon Resource Name of the disabled gateway.</p>
-function M.DisableGatewayOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableGatewayOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name of the disabled gateway.</p>
+-- @return DisableGatewayOutput structure as a key-value pair table
+function M.DisableGatewayOutput(args)
+	assert(args, "You must provdide an argument table when creating DisableGatewayOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDisableGatewayOutput(t)
 	return t
@@ -957,12 +1047,15 @@ end
 
 --- Create a structure of type DescribeChapCredentialsInput
 -- <p>A JSON object containing the Amazon Resource Name (ARN) of the iSCSI volume target.</p>
--- @param _TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN for specified VolumeARN.</p>
--- Required parameter: TargetARN
-function M.DescribeChapCredentialsInput(_TargetARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeChapCredentialsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN for specified VolumeARN.</p>
+-- Required key: TargetARN
+-- @return DescribeChapCredentialsInput structure as a key-value pair table
+function M.DescribeChapCredentialsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeChapCredentialsInput")
 	local t = { 
-		["TargetARN"] = _TargetARN,
+		["TargetARN"] = args["TargetARN"],
 	}
 	asserts.AssertDescribeChapCredentialsInput(t)
 	return t
@@ -982,12 +1075,15 @@ end
 
 --- Create a structure of type DeleteSnapshotScheduleInput
 --  
--- @param _VolumeARN [VolumeARN] 
--- Required parameter: VolumeARN
-function M.DeleteSnapshotScheduleInput(_VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSnapshotScheduleInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeARN [VolumeARN] 
+-- Required key: VolumeARN
+-- @return DeleteSnapshotScheduleInput structure as a key-value pair table
+function M.DeleteSnapshotScheduleInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteSnapshotScheduleInput")
 	local t = { 
-		["VolumeARN"] = _VolumeARN,
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertDeleteSnapshotScheduleInput(t)
 	return t
@@ -1009,15 +1105,18 @@ end
 
 --- Create a structure of type Tag
 --  
--- @param _Value [TagValue] 
--- @param _Key [TagKey] 
--- Required parameter: Key
--- Required parameter: Value
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] 
+-- * Key [TagKey] 
+-- Required key: Key
+-- Required key: Value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -1037,13 +1136,16 @@ end
 
 --- Create a structure of type UpdateChapCredentialsOutput
 -- <p>A JSON object containing the following fields:</p>
--- @param _TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the target. This is the same target specified in the request.</p>
--- @param _InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target. This is the same initiator name specified in the request.</p>
-function M.UpdateChapCredentialsOutput(_TargetARN, _InitiatorName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateChapCredentialsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the target. This is the same target specified in the request.</p>
+-- * InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target. This is the same initiator name specified in the request.</p>
+-- @return UpdateChapCredentialsOutput structure as a key-value pair table
+function M.UpdateChapCredentialsOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateChapCredentialsOutput")
 	local t = { 
-		["TargetARN"] = _TargetARN,
-		["InitiatorName"] = _InitiatorName,
+		["TargetARN"] = args["TargetARN"],
+		["InitiatorName"] = args["InitiatorName"],
 	}
 	asserts.AssertUpdateChapCredentialsOutput(t)
 	return t
@@ -1065,15 +1167,18 @@ end
 
 --- Create a structure of type SetLocalConsolePasswordInput
 -- <p>SetLocalConsolePasswordInput</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _LocalConsolePassword [LocalConsolePassword] <p>The password you want to set for your VM local console.</p>
--- Required parameter: GatewayARN
--- Required parameter: LocalConsolePassword
-function M.SetLocalConsolePasswordInput(_GatewayARN, _LocalConsolePassword, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetLocalConsolePasswordInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * LocalConsolePassword [LocalConsolePassword] <p>The password you want to set for your VM local console.</p>
+-- Required key: GatewayARN
+-- Required key: LocalConsolePassword
+-- @return SetLocalConsolePasswordInput structure as a key-value pair table
+function M.SetLocalConsolePasswordInput(args)
+	assert(args, "You must provdide an argument table when creating SetLocalConsolePasswordInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["LocalConsolePassword"] = _LocalConsolePassword,
+		["GatewayARN"] = args["GatewayARN"],
+		["LocalConsolePassword"] = args["LocalConsolePassword"],
 	}
 	asserts.AssertSetLocalConsolePasswordInput(t)
 	return t
@@ -1098,23 +1203,26 @@ end
 
 --- Create a structure of type Disk
 --  
--- @param _DiskSizeInBytes [long] 
--- @param _DiskAllocationType [DiskAllocationType] 
--- @param _DiskPath [string] 
--- @param _DiskStatus [string] 
--- @param _DiskAllocationResource [string] 
--- @param _DiskId [DiskId] 
--- @param _DiskNode [string] 
-function M.Disk(_DiskSizeInBytes, _DiskAllocationType, _DiskPath, _DiskStatus, _DiskAllocationResource, _DiskId, _DiskNode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Disk")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DiskSizeInBytes [long] 
+-- * DiskAllocationType [DiskAllocationType] 
+-- * DiskPath [string] 
+-- * DiskStatus [string] 
+-- * DiskAllocationResource [string] 
+-- * DiskId [DiskId] 
+-- * DiskNode [string] 
+-- @return Disk structure as a key-value pair table
+function M.Disk(args)
+	assert(args, "You must provdide an argument table when creating Disk")
 	local t = { 
-		["DiskSizeInBytes"] = _DiskSizeInBytes,
-		["DiskAllocationType"] = _DiskAllocationType,
-		["DiskPath"] = _DiskPath,
-		["DiskStatus"] = _DiskStatus,
-		["DiskAllocationResource"] = _DiskAllocationResource,
-		["DiskId"] = _DiskId,
-		["DiskNode"] = _DiskNode,
+		["DiskSizeInBytes"] = args["DiskSizeInBytes"],
+		["DiskAllocationType"] = args["DiskAllocationType"],
+		["DiskPath"] = args["DiskPath"],
+		["DiskStatus"] = args["DiskStatus"],
+		["DiskAllocationResource"] = args["DiskAllocationResource"],
+		["DiskId"] = args["DiskId"],
+		["DiskNode"] = args["DiskNode"],
 	}
 	asserts.AssertDisk(t)
 	return t
@@ -1141,27 +1249,30 @@ end
 
 --- Create a structure of type DescribeGatewayInformationOutput
 -- <p>A JSON object containing the following fields:</p>
--- @param _GatewayName [string] <p>The name you configured for your gateway.</p>
--- @param _GatewayType [GatewayType] <p>The type of the gateway.</p>
--- @param _GatewayState [GatewayState] <p>A value that indicates the operating state of the gateway.</p>
--- @param _LastSoftwareUpdate [LastSoftwareUpdate] <p>The date on which the last software update was applied to the gateway. If the gateway has never been updated, this field does not return a value in the response.</p>
--- @param _GatewayTimezone [GatewayTimezone] <p>A value that indicates the time zone configured for the gateway.</p>
--- @param _GatewayNetworkInterfaces [GatewayNetworkInterfaces] <p>A <a>NetworkInterface</a> array that contains descriptions of the gateway network interfaces.</p>
--- @param _NextUpdateAvailabilityDate [NextUpdateAvailabilityDate] <p>The date on which an update to the gateway is available. This date is in the time zone of the gateway. If the gateway is not available for an update this field is not returned in the response.</p>
--- @param _GatewayId [GatewayId] <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p>
--- @param _GatewayARN [GatewayARN] 
-function M.DescribeGatewayInformationOutput(_GatewayName, _GatewayType, _GatewayState, _LastSoftwareUpdate, _GatewayTimezone, _GatewayNetworkInterfaces, _NextUpdateAvailabilityDate, _GatewayId, _GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGatewayInformationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayName [string] <p>The name you configured for your gateway.</p>
+-- * GatewayType [GatewayType] <p>The type of the gateway.</p>
+-- * GatewayState [GatewayState] <p>A value that indicates the operating state of the gateway.</p>
+-- * LastSoftwareUpdate [LastSoftwareUpdate] <p>The date on which the last software update was applied to the gateway. If the gateway has never been updated, this field does not return a value in the response.</p>
+-- * GatewayTimezone [GatewayTimezone] <p>A value that indicates the time zone configured for the gateway.</p>
+-- * GatewayNetworkInterfaces [GatewayNetworkInterfaces] <p>A <a>NetworkInterface</a> array that contains descriptions of the gateway network interfaces.</p>
+-- * NextUpdateAvailabilityDate [NextUpdateAvailabilityDate] <p>The date on which an update to the gateway is available. This date is in the time zone of the gateway. If the gateway is not available for an update this field is not returned in the response.</p>
+-- * GatewayId [GatewayId] <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p>
+-- * GatewayARN [GatewayARN] 
+-- @return DescribeGatewayInformationOutput structure as a key-value pair table
+function M.DescribeGatewayInformationOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeGatewayInformationOutput")
 	local t = { 
-		["GatewayName"] = _GatewayName,
-		["GatewayType"] = _GatewayType,
-		["GatewayState"] = _GatewayState,
-		["LastSoftwareUpdate"] = _LastSoftwareUpdate,
-		["GatewayTimezone"] = _GatewayTimezone,
-		["GatewayNetworkInterfaces"] = _GatewayNetworkInterfaces,
-		["NextUpdateAvailabilityDate"] = _NextUpdateAvailabilityDate,
-		["GatewayId"] = _GatewayId,
-		["GatewayARN"] = _GatewayARN,
+		["GatewayName"] = args["GatewayName"],
+		["GatewayType"] = args["GatewayType"],
+		["GatewayState"] = args["GatewayState"],
+		["LastSoftwareUpdate"] = args["LastSoftwareUpdate"],
+		["GatewayTimezone"] = args["GatewayTimezone"],
+		["GatewayNetworkInterfaces"] = args["GatewayNetworkInterfaces"],
+		["NextUpdateAvailabilityDate"] = args["NextUpdateAvailabilityDate"],
+		["GatewayId"] = args["GatewayId"],
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDescribeGatewayInformationOutput(t)
 	return t
@@ -1181,12 +1292,15 @@ end
 
 --- Create a structure of type DisableGatewayInput
 -- <p>DisableGatewayInput</p>
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.DisableGatewayInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableGatewayInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return DisableGatewayInput structure as a key-value pair table
+function M.DisableGatewayInput(args)
+	assert(args, "You must provdide an argument table when creating DisableGatewayInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDisableGatewayInput(t)
 	return t
@@ -1205,11 +1319,14 @@ end
 
 --- Create a structure of type DeleteFileShareOutput
 -- <p>DeleteFileShareOutput</p>
--- @param _FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the deleted file share. </p>
-function M.DeleteFileShareOutput(_FileShareARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFileShareOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the deleted file share. </p>
+-- @return DeleteFileShareOutput structure as a key-value pair table
+function M.DeleteFileShareOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteFileShareOutput")
 	local t = { 
-		["FileShareARN"] = _FileShareARN,
+		["FileShareARN"] = args["FileShareARN"],
 	}
 	asserts.AssertDeleteFileShareOutput(t)
 	return t
@@ -1231,17 +1348,20 @@ end
 
 --- Create a structure of type DescribeUploadBufferOutput
 --  
--- @param _GatewayARN [GatewayARN] 
--- @param _UploadBufferAllocatedInBytes [long] 
--- @param _DiskIds [DiskIds] 
--- @param _UploadBufferUsedInBytes [long] 
-function M.DescribeUploadBufferOutput(_GatewayARN, _UploadBufferAllocatedInBytes, _DiskIds, _UploadBufferUsedInBytes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUploadBufferOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * UploadBufferAllocatedInBytes [long] 
+-- * DiskIds [DiskIds] 
+-- * UploadBufferUsedInBytes [long] 
+-- @return DescribeUploadBufferOutput structure as a key-value pair table
+function M.DescribeUploadBufferOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeUploadBufferOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["UploadBufferAllocatedInBytes"] = _UploadBufferAllocatedInBytes,
-		["DiskIds"] = _DiskIds,
-		["UploadBufferUsedInBytes"] = _UploadBufferUsedInBytes,
+		["GatewayARN"] = args["GatewayARN"],
+		["UploadBufferAllocatedInBytes"] = args["UploadBufferAllocatedInBytes"],
+		["DiskIds"] = args["DiskIds"],
+		["UploadBufferUsedInBytes"] = args["UploadBufferUsedInBytes"],
 	}
 	asserts.AssertDescribeUploadBufferOutput(t)
 	return t
@@ -1260,11 +1380,14 @@ end
 
 --- Create a structure of type AddWorkingStorageOutput
 -- <p>A JSON object containing the of the gateway for which working storage was configured.</p>
--- @param _GatewayARN [GatewayARN] 
-function M.AddWorkingStorageOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddWorkingStorageOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return AddWorkingStorageOutput structure as a key-value pair table
+function M.AddWorkingStorageOutput(args)
+	assert(args, "You must provdide an argument table when creating AddWorkingStorageOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertAddWorkingStorageOutput(t)
 	return t
@@ -1283,11 +1406,14 @@ end
 
 --- Create a structure of type ResetCacheOutput
 --  
--- @param _GatewayARN [GatewayARN] 
-function M.ResetCacheOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResetCacheOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return ResetCacheOutput structure as a key-value pair table
+function M.ResetCacheOutput(args)
+	assert(args, "You must provdide an argument table when creating ResetCacheOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertResetCacheOutput(t)
 	return t
@@ -1308,15 +1434,18 @@ end
 
 --- Create a structure of type ListTapesInput
 -- <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListTapesInput$Limit</a> </p> </li> <li> <p> <a>ListTapesInput$Marker</a> </p> </li> <li> <p> <a>ListTapesInput$TapeARNs</a> </p> </li> </ul>
--- @param _Marker [Marker] <p>A string that indicates the position at which to begin the returned list of tapes.</p>
--- @param _Limit [PositiveIntObject] <p>An optional number limit for the tapes in the list returned by this call.</p>
--- @param _TapeARNs [TapeARNs] 
-function M.ListTapesInput(_Marker, _Limit, _TapeARNs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTapesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>A string that indicates the position at which to begin the returned list of tapes.</p>
+-- * Limit [PositiveIntObject] <p>An optional number limit for the tapes in the list returned by this call.</p>
+-- * TapeARNs [TapeARNs] 
+-- @return ListTapesInput structure as a key-value pair table
+function M.ListTapesInput(args)
+	assert(args, "You must provdide an argument table when creating ListTapesInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
-		["TapeARNs"] = _TapeARNs,
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
+		["TapeARNs"] = args["TapeARNs"],
 	}
 	asserts.AssertListTapesInput(t)
 	return t
@@ -1342,25 +1471,28 @@ end
 
 --- Create a structure of type Tape
 -- <p>Describes a virtual tape object.</p>
--- @param _TapeCreatedDate [Time] <p>The date the virtual tape was created.</p>
--- @param _TapeUsedInBytes [TapeUsage] <p>The size, in bytes, of data written to the virtual tape.</p> <note> <p>This value is not available for tapes created prior to May,13 2015.</p> </note>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
--- @param _VTLDevice [VTLDeviceARN] <p>The virtual tape library (VTL) device that the virtual tape is associated with.</p>
--- @param _TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tape capacity.</p>
--- @param _TapeBarcode [TapeBarcode] <p>The barcode that identifies a specific virtual tape.</p>
--- @param _Progress [DoubleObject] <p>For archiving virtual tapes, indicates how much data remains to be uploaded before archiving is complete.</p> <p>Range: 0 (not started) to 100 (complete).</p>
--- @param _TapeStatus [TapeStatus] <p>The current state of the virtual tape.</p>
-function M.Tape(_TapeCreatedDate, _TapeUsedInBytes, _TapeARN, _VTLDevice, _TapeSizeInBytes, _TapeBarcode, _Progress, _TapeStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tape")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeCreatedDate [Time] <p>The date the virtual tape was created.</p>
+-- * TapeUsedInBytes [TapeUsage] <p>The size, in bytes, of data written to the virtual tape.</p> <note> <p>This value is not available for tapes created prior to May,13 2015.</p> </note>
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape.</p>
+-- * VTLDevice [VTLDeviceARN] <p>The virtual tape library (VTL) device that the virtual tape is associated with.</p>
+-- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tape capacity.</p>
+-- * TapeBarcode [TapeBarcode] <p>The barcode that identifies a specific virtual tape.</p>
+-- * Progress [DoubleObject] <p>For archiving virtual tapes, indicates how much data remains to be uploaded before archiving is complete.</p> <p>Range: 0 (not started) to 100 (complete).</p>
+-- * TapeStatus [TapeStatus] <p>The current state of the virtual tape.</p>
+-- @return Tape structure as a key-value pair table
+function M.Tape(args)
+	assert(args, "You must provdide an argument table when creating Tape")
 	local t = { 
-		["TapeCreatedDate"] = _TapeCreatedDate,
-		["TapeUsedInBytes"] = _TapeUsedInBytes,
-		["TapeARN"] = _TapeARN,
-		["VTLDevice"] = _VTLDevice,
-		["TapeSizeInBytes"] = _TapeSizeInBytes,
-		["TapeBarcode"] = _TapeBarcode,
-		["Progress"] = _Progress,
-		["TapeStatus"] = _TapeStatus,
+		["TapeCreatedDate"] = args["TapeCreatedDate"],
+		["TapeUsedInBytes"] = args["TapeUsedInBytes"],
+		["TapeARN"] = args["TapeARN"],
+		["VTLDevice"] = args["VTLDevice"],
+		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
+		["TapeBarcode"] = args["TapeBarcode"],
+		["Progress"] = args["Progress"],
+		["TapeStatus"] = args["TapeStatus"],
 	}
 	asserts.AssertTape(t)
 	return t
@@ -1380,12 +1512,15 @@ end
 
 --- Create a structure of type DescribeGatewayInformationInput
 -- <p>A JSON object containing the id of the gateway.</p>
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.DescribeGatewayInformationInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeGatewayInformationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return DescribeGatewayInformationInput structure as a key-value pair table
+function M.DescribeGatewayInformationInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeGatewayInformationInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDescribeGatewayInformationInput(t)
 	return t
@@ -1406,15 +1541,18 @@ end
 
 --- Create a structure of type DescribeVTLDevicesOutput
 -- <p>DescribeVTLDevicesOutput</p>
--- @param _Marker [Marker] <p>An opaque string that indicates the position at which the VTL devices that were fetched for description ended. Use the marker in your next request to fetch the next set of VTL devices in the list. If there are no more VTL devices to describe, this field does not appear in the response.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _VTLDevices [VTLDevices] <p>An array of VTL device objects composed of the Amazon Resource Name(ARN) of the VTL devices.</p>
-function M.DescribeVTLDevicesOutput(_Marker, _GatewayARN, _VTLDevices, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVTLDevicesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>An opaque string that indicates the position at which the VTL devices that were fetched for description ended. Use the marker in your next request to fetch the next set of VTL devices in the list. If there are no more VTL devices to describe, this field does not appear in the response.</p>
+-- * GatewayARN [GatewayARN] 
+-- * VTLDevices [VTLDevices] <p>An array of VTL device objects composed of the Amazon Resource Name(ARN) of the VTL devices.</p>
+-- @return DescribeVTLDevicesOutput structure as a key-value pair table
+function M.DescribeVTLDevicesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeVTLDevicesOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["GatewayARN"] = _GatewayARN,
-		["VTLDevices"] = _VTLDevices,
+		["Marker"] = args["Marker"],
+		["GatewayARN"] = args["GatewayARN"],
+		["VTLDevices"] = args["VTLDevices"],
 	}
 	asserts.AssertDescribeVTLDevicesOutput(t)
 	return t
@@ -1434,12 +1572,15 @@ end
 
 --- Create a structure of type DescribeSnapshotScheduleInput
 -- <p>A JSON object containing the <a>DescribeSnapshotScheduleInput$VolumeARN</a> of the volume.</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
--- Required parameter: VolumeARN
-function M.DescribeSnapshotScheduleInput(_VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSnapshotScheduleInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
+-- Required key: VolumeARN
+-- @return DescribeSnapshotScheduleInput structure as a key-value pair table
+function M.DescribeSnapshotScheduleInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeSnapshotScheduleInput")
 	local t = { 
-		["VolumeARN"] = _VolumeARN,
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertDescribeSnapshotScheduleInput(t)
 	return t
@@ -1460,15 +1601,18 @@ end
 
 --- Create a structure of type DescribeBandwidthRateLimitOutput
 -- <p>A JSON object containing the following fields:</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _AverageUploadRateLimitInBitsPerSec [BandwidthUploadRateLimit] <p>The average upload bandwidth rate limit in bits per second. This field does not appear in the response if the upload rate limit is not set.</p>
--- @param _AverageDownloadRateLimitInBitsPerSec [BandwidthDownloadRateLimit] <p>The average download bandwidth rate limit in bits per second. This field does not appear in the response if the download rate limit is not set.</p>
-function M.DescribeBandwidthRateLimitOutput(_GatewayARN, _AverageUploadRateLimitInBitsPerSec, _AverageDownloadRateLimitInBitsPerSec, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBandwidthRateLimitOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * AverageUploadRateLimitInBitsPerSec [BandwidthUploadRateLimit] <p>The average upload bandwidth rate limit in bits per second. This field does not appear in the response if the upload rate limit is not set.</p>
+-- * AverageDownloadRateLimitInBitsPerSec [BandwidthDownloadRateLimit] <p>The average download bandwidth rate limit in bits per second. This field does not appear in the response if the download rate limit is not set.</p>
+-- @return DescribeBandwidthRateLimitOutput structure as a key-value pair table
+function M.DescribeBandwidthRateLimitOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeBandwidthRateLimitOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["AverageUploadRateLimitInBitsPerSec"] = _AverageUploadRateLimitInBitsPerSec,
-		["AverageDownloadRateLimitInBitsPerSec"] = _AverageDownloadRateLimitInBitsPerSec,
+		["GatewayARN"] = args["GatewayARN"],
+		["AverageUploadRateLimitInBitsPerSec"] = args["AverageUploadRateLimitInBitsPerSec"],
+		["AverageDownloadRateLimitInBitsPerSec"] = args["AverageDownloadRateLimitInBitsPerSec"],
 	}
 	asserts.AssertDescribeBandwidthRateLimitOutput(t)
 	return t
@@ -1489,15 +1633,18 @@ end
 
 --- Create a structure of type ListVolumesInput
 -- <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListVolumesInput$Limit</a> </p> </li> <li> <p> <a>ListVolumesInput$Marker</a> </p> </li> </ul>
--- @param _Marker [Marker] <p>A string that indicates the position at which to begin the returned list of volumes. Obtain the marker from the response of a previous List iSCSI Volumes request.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _Limit [PositiveIntObject] <p>Specifies that the list of volumes returned be limited to the specified number of items.</p>
-function M.ListVolumesInput(_Marker, _GatewayARN, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVolumesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>A string that indicates the position at which to begin the returned list of volumes. Obtain the marker from the response of a previous List iSCSI Volumes request.</p>
+-- * GatewayARN [GatewayARN] 
+-- * Limit [PositiveIntObject] <p>Specifies that the list of volumes returned be limited to the specified number of items.</p>
+-- @return ListVolumesInput structure as a key-value pair table
+function M.ListVolumesInput(args)
+	assert(args, "You must provdide an argument table when creating ListVolumesInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["GatewayARN"] = _GatewayARN,
-		["Limit"] = _Limit,
+		["Marker"] = args["Marker"],
+		["GatewayARN"] = args["GatewayARN"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListVolumesInput(t)
 	return t
@@ -1516,11 +1663,14 @@ end
 
 --- Create a structure of type ListVolumeInitiatorsOutput
 -- <p>ListVolumeInitiatorsOutput</p>
--- @param _Initiators [Initiators] <p>The host names and port numbers of all iSCSI initiators that are connected to the gateway.</p>
-function M.ListVolumeInitiatorsOutput(_Initiators, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVolumeInitiatorsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Initiators [Initiators] <p>The host names and port numbers of all iSCSI initiators that are connected to the gateway.</p>
+-- @return ListVolumeInitiatorsOutput structure as a key-value pair table
+function M.ListVolumeInitiatorsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListVolumeInitiatorsOutput")
 	local t = { 
-		["Initiators"] = _Initiators,
+		["Initiators"] = args["Initiators"],
 	}
 	asserts.AssertListVolumeInitiatorsOutput(t)
 	return t
@@ -1541,15 +1691,18 @@ end
 
 --- Create a structure of type DescribeTapeArchivesInput
 -- <p>DescribeTapeArchivesInput</p>
--- @param _Marker [Marker] <p>An opaque string that indicates the position at which to begin describing virtual tapes.</p>
--- @param _Limit [PositiveIntObject] <p>Specifies that the number of virtual tapes descried be limited to the specified number.</p>
--- @param _TapeARNs [TapeARNs] <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe.</p>
-function M.DescribeTapeArchivesInput(_Marker, _Limit, _TapeARNs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapeArchivesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>An opaque string that indicates the position at which to begin describing virtual tapes.</p>
+-- * Limit [PositiveIntObject] <p>Specifies that the number of virtual tapes descried be limited to the specified number.</p>
+-- * TapeARNs [TapeARNs] <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe.</p>
+-- @return DescribeTapeArchivesInput structure as a key-value pair table
+function M.DescribeTapeArchivesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTapeArchivesInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
-		["TapeARNs"] = _TapeARNs,
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
+		["TapeARNs"] = args["TapeARNs"],
 	}
 	asserts.AssertDescribeTapeArchivesInput(t)
 	return t
@@ -1570,15 +1723,18 @@ end
 
 --- Create a structure of type ListTagsForResourceOutput
 -- <p>ListTagsForResourceOutput</p>
--- @param _Marker [Marker] <p>An opaque string that indicates the position at which to stop returning the list of tags.</p>
--- @param _ResourceARN [ResourceARN] <p>he Amazon Resource Name (ARN) of the resource for which you want to list tags.</p>
--- @param _Tags [Tags] <p>An array that contains the tags for the specified resource.</p>
-function M.ListTagsForResourceOutput(_Marker, _ResourceARN, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>An opaque string that indicates the position at which to stop returning the list of tags.</p>
+-- * ResourceARN [ResourceARN] <p>he Amazon Resource Name (ARN) of the resource for which you want to list tags.</p>
+-- * Tags [Tags] <p>An array that contains the tags for the specified resource.</p>
+-- @return ListTagsForResourceOutput structure as a key-value pair table
+function M.ListTagsForResourceOutput(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["ResourceARN"] = _ResourceARN,
-		["Tags"] = _Tags,
+		["Marker"] = args["Marker"],
+		["ResourceARN"] = args["ResourceARN"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertListTagsForResourceOutput(t)
 	return t
@@ -1598,13 +1754,16 @@ end
 
 --- Create a structure of type ListTapesOutput
 -- <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>ListTapesOutput$Marker</a> </p> </li> <li> <p> <a>ListTapesOutput$VolumeInfos</a> </p> </li> </ul>
--- @param _Marker [Marker] <p>A string that indicates the position at which to begin returning the next list of tapes. Use the marker in your next request to continue pagination of tapes. If there are no more tapes to list, this element does not appear in the response body.</p>
--- @param _TapeInfos [TapeInfos] 
-function M.ListTapesOutput(_Marker, _TapeInfos, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTapesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>A string that indicates the position at which to begin returning the next list of tapes. Use the marker in your next request to continue pagination of tapes. If there are no more tapes to list, this element does not appear in the response body.</p>
+-- * TapeInfos [TapeInfos] 
+-- @return ListTapesOutput structure as a key-value pair table
+function M.ListTapesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListTapesOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["TapeInfos"] = _TapeInfos,
+		["Marker"] = args["Marker"],
+		["TapeInfos"] = args["TapeInfos"],
 	}
 	asserts.AssertListTapesOutput(t)
 	return t
@@ -1627,19 +1786,22 @@ end
 
 --- Create a structure of type VolumeiSCSIAttributes
 -- <p>Lists iSCSI information about a volume.</p>
--- @param _TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the volume target.</p>
--- @param _NetworkInterfaceId [NetworkInterfaceId] <p>The network interface identifier.</p>
--- @param _LunNumber [PositiveIntObject] <p>The logical disk number.</p>
--- @param _ChapEnabled [boolean] <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
--- @param _NetworkInterfacePort [integer] <p>The port used to communicate with iSCSI targets.</p>
-function M.VolumeiSCSIAttributes(_TargetARN, _NetworkInterfaceId, _LunNumber, _ChapEnabled, _NetworkInterfacePort, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VolumeiSCSIAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the volume target.</p>
+-- * NetworkInterfaceId [NetworkInterfaceId] <p>The network interface identifier.</p>
+-- * LunNumber [PositiveIntObject] <p>The logical disk number.</p>
+-- * ChapEnabled [boolean] <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
+-- * NetworkInterfacePort [integer] <p>The port used to communicate with iSCSI targets.</p>
+-- @return VolumeiSCSIAttributes structure as a key-value pair table
+function M.VolumeiSCSIAttributes(args)
+	assert(args, "You must provdide an argument table when creating VolumeiSCSIAttributes")
 	local t = { 
-		["TargetARN"] = _TargetARN,
-		["NetworkInterfaceId"] = _NetworkInterfaceId,
-		["LunNumber"] = _LunNumber,
-		["ChapEnabled"] = _ChapEnabled,
-		["NetworkInterfacePort"] = _NetworkInterfacePort,
+		["TargetARN"] = args["TargetARN"],
+		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
+		["LunNumber"] = args["LunNumber"],
+		["ChapEnabled"] = args["ChapEnabled"],
+		["NetworkInterfacePort"] = args["NetworkInterfacePort"],
 	}
 	asserts.AssertVolumeiSCSIAttributes(t)
 	return t
@@ -1658,11 +1820,14 @@ end
 
 --- Create a structure of type UpdateSnapshotScheduleOutput
 -- <p>A JSON object containing the of the updated storage volume.</p>
--- @param _VolumeARN [VolumeARN] <p/>
-function M.UpdateSnapshotScheduleOutput(_VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSnapshotScheduleOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeARN [VolumeARN] <p/>
+-- @return UpdateSnapshotScheduleOutput structure as a key-value pair table
+function M.UpdateSnapshotScheduleOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateSnapshotScheduleOutput")
 	local t = { 
-		["VolumeARN"] = _VolumeARN,
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertUpdateSnapshotScheduleOutput(t)
 	return t
@@ -1681,11 +1846,14 @@ end
 
 --- Create a structure of type UpdateBandwidthRateLimitOutput
 -- <p>A JSON object containing the of the gateway whose throttle information was updated.</p>
--- @param _GatewayARN [GatewayARN] 
-function M.UpdateBandwidthRateLimitOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateBandwidthRateLimitOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return UpdateBandwidthRateLimitOutput structure as a key-value pair table
+function M.UpdateBandwidthRateLimitOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateBandwidthRateLimitOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertUpdateBandwidthRateLimitOutput(t)
 	return t
@@ -1717,37 +1885,40 @@ end
 
 --- Create a structure of type NFSFileShareInfo
 -- <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
--- @param _FileShareARN [FileShareARN] 
--- @param _FileShareStatus [FileShareStatus] 
--- @param _FileShareId [FileShareId] 
--- @param _DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
--- @param _ClientList [FileShareClientList] 
--- @param _Squash [Squash] 
--- @param _NFSFileShareDefaults [NFSFileShareDefaults] 
--- @param _KMSKey [KMSKey] 
--- @param _Role [Role] 
--- @param _LocationARN [LocationARN] 
--- @param _Path [Path] 
--- @param _GatewayARN [GatewayARN] 
--- @param _ReadOnly [Boolean] 
--- @param _KMSEncrypted [boolean] <p>True to use Amazon S3 server side encryption with your own KMS key, or false to use a key managed by Amazon S3. Optional. </p>
-function M.NFSFileShareInfo(_FileShareARN, _FileShareStatus, _FileShareId, _DefaultStorageClass, _ClientList, _Squash, _NFSFileShareDefaults, _KMSKey, _Role, _LocationARN, _Path, _GatewayARN, _ReadOnly, _KMSEncrypted, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NFSFileShareInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] 
+-- * FileShareStatus [FileShareStatus] 
+-- * FileShareId [FileShareId] 
+-- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
+-- * ClientList [FileShareClientList] 
+-- * Squash [Squash] 
+-- * NFSFileShareDefaults [NFSFileShareDefaults] 
+-- * KMSKey [KMSKey] 
+-- * Role [Role] 
+-- * LocationARN [LocationARN] 
+-- * Path [Path] 
+-- * GatewayARN [GatewayARN] 
+-- * ReadOnly [Boolean] 
+-- * KMSEncrypted [boolean] <p>True to use Amazon S3 server side encryption with your own KMS key, or false to use a key managed by Amazon S3. Optional. </p>
+-- @return NFSFileShareInfo structure as a key-value pair table
+function M.NFSFileShareInfo(args)
+	assert(args, "You must provdide an argument table when creating NFSFileShareInfo")
 	local t = { 
-		["FileShareARN"] = _FileShareARN,
-		["FileShareStatus"] = _FileShareStatus,
-		["FileShareId"] = _FileShareId,
-		["DefaultStorageClass"] = _DefaultStorageClass,
-		["ClientList"] = _ClientList,
-		["Squash"] = _Squash,
-		["NFSFileShareDefaults"] = _NFSFileShareDefaults,
-		["KMSKey"] = _KMSKey,
-		["Role"] = _Role,
-		["LocationARN"] = _LocationARN,
-		["Path"] = _Path,
-		["GatewayARN"] = _GatewayARN,
-		["ReadOnly"] = _ReadOnly,
-		["KMSEncrypted"] = _KMSEncrypted,
+		["FileShareARN"] = args["FileShareARN"],
+		["FileShareStatus"] = args["FileShareStatus"],
+		["FileShareId"] = args["FileShareId"],
+		["DefaultStorageClass"] = args["DefaultStorageClass"],
+		["ClientList"] = args["ClientList"],
+		["Squash"] = args["Squash"],
+		["NFSFileShareDefaults"] = args["NFSFileShareDefaults"],
+		["KMSKey"] = args["KMSKey"],
+		["Role"] = args["Role"],
+		["LocationARN"] = args["LocationARN"],
+		["Path"] = args["Path"],
+		["GatewayARN"] = args["GatewayARN"],
+		["ReadOnly"] = args["ReadOnly"],
+		["KMSEncrypted"] = args["KMSEncrypted"],
 	}
 	asserts.AssertNFSFileShareInfo(t)
 	return t
@@ -1767,13 +1938,16 @@ end
 
 --- Create a structure of type CreateCachediSCSIVolumeOutput
 --  
--- @param _TargetARN [TargetARN] 
--- @param _VolumeARN [VolumeARN] 
-function M.CreateCachediSCSIVolumeOutput(_TargetARN, _VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCachediSCSIVolumeOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetARN [TargetARN] 
+-- * VolumeARN [VolumeARN] 
+-- @return CreateCachediSCSIVolumeOutput structure as a key-value pair table
+function M.CreateCachediSCSIVolumeOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateCachediSCSIVolumeOutput")
 	local t = { 
-		["TargetARN"] = _TargetARN,
-		["VolumeARN"] = _VolumeARN,
+		["TargetARN"] = args["TargetARN"],
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertCreateCachediSCSIVolumeOutput(t)
 	return t
@@ -1796,19 +1970,22 @@ end
 
 --- Create a structure of type DescribeMaintenanceStartTimeOutput
 -- <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DescribeMaintenanceStartTimeOutput$DayOfWeek</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$HourOfDay</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$MinuteOfHour</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$Timezone</a> </p> </li> </ul>
--- @param _HourOfDay [HourOfDay] <p>The hour component of the maintenance start time represented as <i>hh</i>, where <i>hh</i> is the hour (0 to 23). The hour of the day is in the time zone of the gateway.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _DayOfWeek [DayOfWeek] <p>An ordinal number between 0 and 6 that represents the day of the week, where 0 represents Sunday and 6 represents Saturday. The day of week is in the time zone of the gateway.</p>
--- @param _MinuteOfHour [MinuteOfHour] <p>The minute component of the maintenance start time represented as <i>mm</i>, where <i>mm</i> is the minute (0 to 59). The minute of the hour is in the time zone of the gateway.</p>
--- @param _Timezone [GatewayTimezone] 
-function M.DescribeMaintenanceStartTimeOutput(_HourOfDay, _GatewayARN, _DayOfWeek, _MinuteOfHour, _Timezone, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceStartTimeOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HourOfDay [HourOfDay] <p>The hour component of the maintenance start time represented as <i>hh</i>, where <i>hh</i> is the hour (0 to 23). The hour of the day is in the time zone of the gateway.</p>
+-- * GatewayARN [GatewayARN] 
+-- * DayOfWeek [DayOfWeek] <p>An ordinal number between 0 and 6 that represents the day of the week, where 0 represents Sunday and 6 represents Saturday. The day of week is in the time zone of the gateway.</p>
+-- * MinuteOfHour [MinuteOfHour] <p>The minute component of the maintenance start time represented as <i>mm</i>, where <i>mm</i> is the minute (0 to 59). The minute of the hour is in the time zone of the gateway.</p>
+-- * Timezone [GatewayTimezone] 
+-- @return DescribeMaintenanceStartTimeOutput structure as a key-value pair table
+function M.DescribeMaintenanceStartTimeOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceStartTimeOutput")
 	local t = { 
-		["HourOfDay"] = _HourOfDay,
-		["GatewayARN"] = _GatewayARN,
-		["DayOfWeek"] = _DayOfWeek,
-		["MinuteOfHour"] = _MinuteOfHour,
-		["Timezone"] = _Timezone,
+		["HourOfDay"] = args["HourOfDay"],
+		["GatewayARN"] = args["GatewayARN"],
+		["DayOfWeek"] = args["DayOfWeek"],
+		["MinuteOfHour"] = args["MinuteOfHour"],
+		["Timezone"] = args["Timezone"],
 	}
 	asserts.AssertDescribeMaintenanceStartTimeOutput(t)
 	return t
@@ -1830,15 +2007,18 @@ end
 
 --- Create a structure of type DeleteChapCredentialsInput
 -- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>DeleteChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p> <a>DeleteChapCredentialsInput$TargetARN</a> </p> </li> </ul>
--- @param _TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN for specified VolumeARN.</p>
--- @param _InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
--- Required parameter: TargetARN
--- Required parameter: InitiatorName
-function M.DeleteChapCredentialsInput(_TargetARN, _InitiatorName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteChapCredentialsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return to retrieve the TargetARN for specified VolumeARN.</p>
+-- * InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
+-- Required key: TargetARN
+-- Required key: InitiatorName
+-- @return DeleteChapCredentialsInput structure as a key-value pair table
+function M.DeleteChapCredentialsInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteChapCredentialsInput")
 	local t = { 
-		["TargetARN"] = _TargetARN,
-		["InitiatorName"] = _InitiatorName,
+		["TargetARN"] = args["TargetARN"],
+		["InitiatorName"] = args["InitiatorName"],
 	}
 	asserts.AssertDeleteChapCredentialsInput(t)
 	return t
@@ -1860,16 +2040,19 @@ end
 
 --- Create a structure of type ListTagsForResourceInput
 -- <p>ListTagsForResourceInput</p>
--- @param _Marker [Marker] <p>An opaque string that indicates the position at which to begin returning the list of tags.</p>
--- @param _ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource for which you want to list tags.</p>
--- @param _Limit [PositiveIntObject] <p>Specifies that the list of tags returned be limited to the specified number of items.</p>
--- Required parameter: ResourceARN
-function M.ListTagsForResourceInput(_Marker, _ResourceARN, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>An opaque string that indicates the position at which to begin returning the list of tags.</p>
+-- * ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource for which you want to list tags.</p>
+-- * Limit [PositiveIntObject] <p>Specifies that the list of tags returned be limited to the specified number of items.</p>
+-- Required key: ResourceARN
+-- @return ListTagsForResourceInput structure as a key-value pair table
+function M.ListTagsForResourceInput(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["ResourceARN"] = _ResourceARN,
-		["Limit"] = _Limit,
+		["Marker"] = args["Marker"],
+		["ResourceARN"] = args["ResourceARN"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListTagsForResourceInput(t)
 	return t
@@ -1888,11 +2071,14 @@ end
 
 --- Create a structure of type CreateTapesOutput
 -- <p>CreateTapeOutput</p>
--- @param _TapeARNs [TapeARNs] <p>A list of unique Amazon Resource Names (ARNs) that represents the virtual tapes that were created.</p>
-function M.CreateTapesOutput(_TapeARNs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTapesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeARNs [TapeARNs] <p>A list of unique Amazon Resource Names (ARNs) that represents the virtual tapes that were created.</p>
+-- @return CreateTapesOutput structure as a key-value pair table
+function M.CreateTapesOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateTapesOutput")
 	local t = { 
-		["TapeARNs"] = _TapeARNs,
+		["TapeARNs"] = args["TapeARNs"],
 	}
 	asserts.AssertCreateTapesOutput(t)
 	return t
@@ -1911,11 +2097,14 @@ end
 
 --- Create a structure of type DeleteSnapshotScheduleOutput
 --  
--- @param _VolumeARN [VolumeARN] 
-function M.DeleteSnapshotScheduleOutput(_VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSnapshotScheduleOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeARN [VolumeARN] 
+-- @return DeleteSnapshotScheduleOutput structure as a key-value pair table
+function M.DeleteSnapshotScheduleOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteSnapshotScheduleOutput")
 	local t = { 
-		["VolumeARN"] = _VolumeARN,
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertDeleteSnapshotScheduleOutput(t)
 	return t
@@ -1937,15 +2126,18 @@ end
 
 --- Create a structure of type AddTagsToResourceInput
 -- <p>AddTagsToResourceInput</p>
--- @param _ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource you want to add tags to.</p>
--- @param _Tags [Tags] <p>The key-value pair that represents the tag you want to add to the resource. The value can be an empty string.</p> <note> <p>Valid characters for key and value are letters, spaces, and numbers representable in UTF-8 format, and the following special characters: + - = . _ : / @.</p> </note>
--- Required parameter: ResourceARN
--- Required parameter: Tags
-function M.AddTagsToResourceInput(_ResourceARN, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource you want to add tags to.</p>
+-- * Tags [Tags] <p>The key-value pair that represents the tag you want to add to the resource. The value can be an empty string.</p> <note> <p>Valid characters for key and value are letters, spaces, and numbers representable in UTF-8 format, and the following special characters: + - = . _ : / @.</p> </note>
+-- Required key: ResourceARN
+-- Required key: Tags
+-- @return AddTagsToResourceInput structure as a key-value pair table
+function M.AddTagsToResourceInput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToResourceInput")
 	local t = { 
-		["ResourceARN"] = _ResourceARN,
-		["Tags"] = _Tags,
+		["ResourceARN"] = args["ResourceARN"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertAddTagsToResourceInput(t)
 	return t
@@ -1964,11 +2156,14 @@ end
 
 --- Create a structure of type RefreshCacheOutput
 --  
--- @param _FileShareARN [FileShareARN] 
-function M.RefreshCacheOutput(_FileShareARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RefreshCacheOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] 
+-- @return RefreshCacheOutput structure as a key-value pair table
+function M.RefreshCacheOutput(args)
+	assert(args, "You must provdide an argument table when creating RefreshCacheOutput")
 	local t = { 
-		["FileShareARN"] = _FileShareARN,
+		["FileShareARN"] = args["FileShareARN"],
 	}
 	asserts.AssertRefreshCacheOutput(t)
 	return t
@@ -1987,11 +2182,14 @@ end
 
 --- Create a structure of type DescribeStorediSCSIVolumesOutput
 --  
--- @param _StorediSCSIVolumes [StorediSCSIVolumes] 
-function M.DescribeStorediSCSIVolumesOutput(_StorediSCSIVolumes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStorediSCSIVolumesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StorediSCSIVolumes [StorediSCSIVolumes] 
+-- @return DescribeStorediSCSIVolumesOutput structure as a key-value pair table
+function M.DescribeStorediSCSIVolumesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeStorediSCSIVolumesOutput")
 	local t = { 
-		["StorediSCSIVolumes"] = _StorediSCSIVolumes,
+		["StorediSCSIVolumes"] = args["StorediSCSIVolumes"],
 	}
 	asserts.AssertDescribeStorediSCSIVolumesOutput(t)
 	return t
@@ -2010,11 +2208,14 @@ end
 
 --- Create a structure of type UpdateVTLDeviceTypeOutput
 -- <p>UpdateVTLDeviceTypeOutput</p>
--- @param _VTLDeviceARN [VTLDeviceARN] <p>The Amazon Resource Name (ARN) of the medium changer you have selected.</p>
-function M.UpdateVTLDeviceTypeOutput(_VTLDeviceARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateVTLDeviceTypeOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VTLDeviceARN [VTLDeviceARN] <p>The Amazon Resource Name (ARN) of the medium changer you have selected.</p>
+-- @return UpdateVTLDeviceTypeOutput structure as a key-value pair table
+function M.UpdateVTLDeviceTypeOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateVTLDeviceTypeOutput")
 	local t = { 
-		["VTLDeviceARN"] = _VTLDeviceARN,
+		["VTLDeviceARN"] = args["VTLDeviceARN"],
 	}
 	asserts.AssertUpdateVTLDeviceTypeOutput(t)
 	return t
@@ -2036,15 +2237,18 @@ end
 
 --- Create a structure of type AddCacheInput
 --  
--- @param _GatewayARN [GatewayARN] 
--- @param _DiskIds [DiskIds] 
--- Required parameter: GatewayARN
--- Required parameter: DiskIds
-function M.AddCacheInput(_GatewayARN, _DiskIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddCacheInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * DiskIds [DiskIds] 
+-- Required key: GatewayARN
+-- Required key: DiskIds
+-- @return AddCacheInput structure as a key-value pair table
+function M.AddCacheInput(args)
+	assert(args, "You must provdide an argument table when creating AddCacheInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["DiskIds"] = _DiskIds,
+		["GatewayARN"] = args["GatewayARN"],
+		["DiskIds"] = args["DiskIds"],
 	}
 	asserts.AssertAddCacheInput(t)
 	return t
@@ -2066,17 +2270,20 @@ end
 
 --- Create a structure of type VolumeRecoveryPointInfo
 --  
--- @param _VolumeSizeInBytes [long] 
--- @param _VolumeUsageInBytes [long] 
--- @param _VolumeARN [VolumeARN] 
--- @param _VolumeRecoveryPointTime [string] 
-function M.VolumeRecoveryPointInfo(_VolumeSizeInBytes, _VolumeUsageInBytes, _VolumeARN, _VolumeRecoveryPointTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VolumeRecoveryPointInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeSizeInBytes [long] 
+-- * VolumeUsageInBytes [long] 
+-- * VolumeARN [VolumeARN] 
+-- * VolumeRecoveryPointTime [string] 
+-- @return VolumeRecoveryPointInfo structure as a key-value pair table
+function M.VolumeRecoveryPointInfo(args)
+	assert(args, "You must provdide an argument table when creating VolumeRecoveryPointInfo")
 	local t = { 
-		["VolumeSizeInBytes"] = _VolumeSizeInBytes,
-		["VolumeUsageInBytes"] = _VolumeUsageInBytes,
-		["VolumeARN"] = _VolumeARN,
-		["VolumeRecoveryPointTime"] = _VolumeRecoveryPointTime,
+		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
+		["VolumeUsageInBytes"] = args["VolumeUsageInBytes"],
+		["VolumeARN"] = args["VolumeARN"],
+		["VolumeRecoveryPointTime"] = args["VolumeRecoveryPointTime"],
 	}
 	asserts.AssertVolumeRecoveryPointInfo(t)
 	return t
@@ -2096,13 +2303,16 @@ end
 
 --- Create a structure of type ListGatewaysInput
 -- <p>A JSON object containing zero or more of the following fields:</p> <ul> <li> <p> <a>ListGatewaysInput$Limit</a> </p> </li> <li> <p> <a>ListGatewaysInput$Marker</a> </p> </li> </ul>
--- @param _Marker [Marker] <p>An opaque string that indicates the position at which to begin the returned list of gateways.</p>
--- @param _Limit [PositiveIntObject] <p>Specifies that the list of gateways returned be limited to the specified number of items.</p>
-function M.ListGatewaysInput(_Marker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGatewaysInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>An opaque string that indicates the position at which to begin the returned list of gateways.</p>
+-- * Limit [PositiveIntObject] <p>Specifies that the list of gateways returned be limited to the specified number of items.</p>
+-- @return ListGatewaysInput structure as a key-value pair table
+function M.ListGatewaysInput(args)
+	assert(args, "You must provdide an argument table when creating ListGatewaysInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["Limit"] = _Limit,
+		["Marker"] = args["Marker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListGatewaysInput(t)
 	return t
@@ -2126,21 +2336,24 @@ end
 
 --- Create a structure of type VolumeInfo
 -- <p>Describes a storage volume object.</p>
--- @param _VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p> <p>Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
--- @param _VolumeType [VolumeType] 
--- @param _VolumeId [VolumeId] <p>The unique identifier assigned to the volume. This ID becomes part of the volume Amazon Resource Name (ARN), which you use as input for other operations.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) for the storage volume. For example, the following is a valid ARN:</p> <p> <code>arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB</code> </p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
--- @param _GatewayId [GatewayId] <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
--- @param _GatewayARN [GatewayARN] 
-function M.VolumeInfo(_VolumeSizeInBytes, _VolumeType, _VolumeId, _VolumeARN, _GatewayId, _GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VolumeInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p> <p>Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- * VolumeType [VolumeType] 
+-- * VolumeId [VolumeId] <p>The unique identifier assigned to the volume. This ID becomes part of the volume Amazon Resource Name (ARN), which you use as input for other operations.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) for the storage volume. For example, the following is a valid ARN:</p> <p> <code>arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB</code> </p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- * GatewayId [GatewayId] <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p> <p> Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).</p>
+-- * GatewayARN [GatewayARN] 
+-- @return VolumeInfo structure as a key-value pair table
+function M.VolumeInfo(args)
+	assert(args, "You must provdide an argument table when creating VolumeInfo")
 	local t = { 
-		["VolumeSizeInBytes"] = _VolumeSizeInBytes,
-		["VolumeType"] = _VolumeType,
-		["VolumeId"] = _VolumeId,
-		["VolumeARN"] = _VolumeARN,
-		["GatewayId"] = _GatewayId,
-		["GatewayARN"] = _GatewayARN,
+		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
+		["VolumeType"] = args["VolumeType"],
+		["VolumeId"] = args["VolumeId"],
+		["VolumeARN"] = args["VolumeARN"],
+		["GatewayId"] = args["GatewayId"],
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertVolumeInfo(t)
 	return t
@@ -2160,12 +2373,15 @@ end
 
 --- Create a structure of type DescribeNFSFileSharesInput
 -- <p>DescribeNFSFileSharesInput</p>
--- @param _FileShareARNList [FileShareARNList] <p>An array containing the Amazon Resource Name (ARN) of each file share to be described. </p>
--- Required parameter: FileShareARNList
-function M.DescribeNFSFileSharesInput(_FileShareARNList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNFSFileSharesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARNList [FileShareARNList] <p>An array containing the Amazon Resource Name (ARN) of each file share to be described. </p>
+-- Required key: FileShareARNList
+-- @return DescribeNFSFileSharesInput structure as a key-value pair table
+function M.DescribeNFSFileSharesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeNFSFileSharesInput")
 	local t = { 
-		["FileShareARNList"] = _FileShareARNList,
+		["FileShareARNList"] = args["FileShareARNList"],
 	}
 	asserts.AssertDescribeNFSFileSharesInput(t)
 	return t
@@ -2185,13 +2401,16 @@ end
 
 --- Create a structure of type ListVolumeRecoveryPointsOutput
 --  
--- @param _GatewayARN [GatewayARN] 
--- @param _VolumeRecoveryPointInfos [VolumeRecoveryPointInfos] 
-function M.ListVolumeRecoveryPointsOutput(_GatewayARN, _VolumeRecoveryPointInfos, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVolumeRecoveryPointsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * VolumeRecoveryPointInfos [VolumeRecoveryPointInfos] 
+-- @return ListVolumeRecoveryPointsOutput structure as a key-value pair table
+function M.ListVolumeRecoveryPointsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListVolumeRecoveryPointsOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["VolumeRecoveryPointInfos"] = _VolumeRecoveryPointInfos,
+		["GatewayARN"] = args["GatewayARN"],
+		["VolumeRecoveryPointInfos"] = args["VolumeRecoveryPointInfos"],
 	}
 	asserts.AssertListVolumeRecoveryPointsOutput(t)
 	return t
@@ -2211,12 +2430,15 @@ end
 
 --- Create a structure of type DeleteTapeArchiveInput
 -- <p>DeleteTapeArchiveInput</p>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape to delete from the virtual tape shelf (VTS).</p>
--- Required parameter: TapeARN
-function M.DeleteTapeArchiveInput(_TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTapeArchiveInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape to delete from the virtual tape shelf (VTS).</p>
+-- Required key: TapeARN
+-- @return DeleteTapeArchiveInput structure as a key-value pair table
+function M.DeleteTapeArchiveInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteTapeArchiveInput")
 	local t = { 
-		["TapeARN"] = _TapeARN,
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertDeleteTapeArchiveInput(t)
 	return t
@@ -2235,11 +2457,14 @@ end
 
 --- Create a structure of type ActivateGatewayOutput
 -- <p>AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated gateway. It is a string made of information such as your account, gateway name, and region. This ARN is used to reference the gateway in other API operations as well as resource-based authorization.</p> <note> <p>For gateways activated prior to September 02, 2015 the gateway ARN contains the gateway name rather than the gateway id. Changing the name of the gateway has no effect on the gateway ARN.</p> </note>
--- @param _GatewayARN [GatewayARN] 
-function M.ActivateGatewayOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivateGatewayOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return ActivateGatewayOutput structure as a key-value pair table
+function M.ActivateGatewayOutput(args)
+	assert(args, "You must provdide an argument table when creating ActivateGatewayOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertActivateGatewayOutput(t)
 	return t
@@ -2260,15 +2485,18 @@ end
 
 --- Create a structure of type ListVolumesOutput
 --  
--- @param _Marker [Marker] 
--- @param _GatewayARN [GatewayARN] 
--- @param _VolumeInfos [VolumeInfos] 
-function M.ListVolumesOutput(_Marker, _GatewayARN, _VolumeInfos, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVolumesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] 
+-- * GatewayARN [GatewayARN] 
+-- * VolumeInfos [VolumeInfos] 
+-- @return ListVolumesOutput structure as a key-value pair table
+function M.ListVolumesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListVolumesOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["GatewayARN"] = _GatewayARN,
-		["VolumeInfos"] = _VolumeInfos,
+		["Marker"] = args["Marker"],
+		["GatewayARN"] = args["GatewayARN"],
+		["VolumeInfos"] = args["VolumeInfos"],
 	}
 	asserts.AssertListVolumesOutput(t)
 	return t
@@ -2288,12 +2516,15 @@ end
 
 --- Create a structure of type DeleteVolumeInput
 -- <p>A JSON object containing the <a>DeleteVolumeInput$VolumeARN</a> to delete.</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
--- Required parameter: VolumeARN
-function M.DeleteVolumeInput(_VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVolumeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
+-- Required key: VolumeARN
+-- @return DeleteVolumeInput structure as a key-value pair table
+function M.DeleteVolumeInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteVolumeInput")
 	local t = { 
-		["VolumeARN"] = _VolumeARN,
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertDeleteVolumeInput(t)
 	return t
@@ -2313,12 +2544,15 @@ end
 
 --- Create a structure of type ShutdownGatewayInput
 -- <p>A JSON object containing the of the gateway to shut down.</p>
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.ShutdownGatewayInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ShutdownGatewayInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return ShutdownGatewayInput structure as a key-value pair table
+function M.ShutdownGatewayInput(args)
+	assert(args, "You must provdide an argument table when creating ShutdownGatewayInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertShutdownGatewayInput(t)
 	return t
@@ -2338,12 +2572,15 @@ end
 
 --- Create a structure of type DeleteGatewayInput
 -- <p>A JSON object containing the id of the gateway to delete.</p>
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.DeleteGatewayInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGatewayInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return DeleteGatewayInput structure as a key-value pair table
+function M.DeleteGatewayInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteGatewayInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDeleteGatewayInput(t)
 	return t
@@ -2368,20 +2605,23 @@ end
 
 --- Create a structure of type UpdateChapCredentialsInput
 -- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$SecretToAuthenticateInitiator</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$SecretToAuthenticateTarget</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$TargetARN</a> </p> </li> </ul>
--- @param _TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return the TargetARN for specified VolumeARN.</p>
--- @param _SecretToAuthenticateInitiator [ChapSecret] <p>The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p> <note> <p>The secret key must be between 12 and 16 bytes when encoded in UTF-8.</p> </note>
--- @param _InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
--- @param _SecretToAuthenticateTarget [ChapSecret] <p>The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p> <p>Byte constraints: Minimum bytes of 12. Maximum bytes of 16.</p> <note> <p>The secret key must be between 12 and 16 bytes when encoded in UTF-8.</p> </note>
--- Required parameter: TargetARN
--- Required parameter: SecretToAuthenticateInitiator
--- Required parameter: InitiatorName
-function M.UpdateChapCredentialsInput(_TargetARN, _SecretToAuthenticateInitiator, _InitiatorName, _SecretToAuthenticateTarget, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateChapCredentialsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the iSCSI volume target. Use the <a>DescribeStorediSCSIVolumes</a> operation to return the TargetARN for specified VolumeARN.</p>
+-- * SecretToAuthenticateInitiator [ChapSecret] <p>The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p> <note> <p>The secret key must be between 12 and 16 bytes when encoded in UTF-8.</p> </note>
+-- * InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
+-- * SecretToAuthenticateTarget [ChapSecret] <p>The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p> <p>Byte constraints: Minimum bytes of 12. Maximum bytes of 16.</p> <note> <p>The secret key must be between 12 and 16 bytes when encoded in UTF-8.</p> </note>
+-- Required key: TargetARN
+-- Required key: SecretToAuthenticateInitiator
+-- Required key: InitiatorName
+-- @return UpdateChapCredentialsInput structure as a key-value pair table
+function M.UpdateChapCredentialsInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateChapCredentialsInput")
 	local t = { 
-		["TargetARN"] = _TargetARN,
-		["SecretToAuthenticateInitiator"] = _SecretToAuthenticateInitiator,
-		["InitiatorName"] = _InitiatorName,
-		["SecretToAuthenticateTarget"] = _SecretToAuthenticateTarget,
+		["TargetARN"] = args["TargetARN"],
+		["SecretToAuthenticateInitiator"] = args["SecretToAuthenticateInitiator"],
+		["InitiatorName"] = args["InitiatorName"],
+		["SecretToAuthenticateTarget"] = args["SecretToAuthenticateTarget"],
 	}
 	asserts.AssertUpdateChapCredentialsInput(t)
 	return t
@@ -2401,12 +2641,15 @@ end
 
 --- Create a structure of type DescribeUploadBufferInput
 --  
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.DescribeUploadBufferInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUploadBufferInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return DescribeUploadBufferInput structure as a key-value pair table
+function M.DescribeUploadBufferInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeUploadBufferInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDescribeUploadBufferInput(t)
 	return t
@@ -2426,13 +2669,16 @@ end
 
 --- Create a structure of type ListLocalDisksOutput
 --  
--- @param _GatewayARN [GatewayARN] 
--- @param _Disks [Disks] 
-function M.ListLocalDisksOutput(_GatewayARN, _Disks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLocalDisksOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * Disks [Disks] 
+-- @return ListLocalDisksOutput structure as a key-value pair table
+function M.ListLocalDisksOutput(args)
+	assert(args, "You must provdide an argument table when creating ListLocalDisksOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["Disks"] = _Disks,
+		["GatewayARN"] = args["GatewayARN"],
+		["Disks"] = args["Disks"],
 	}
 	asserts.AssertListLocalDisksOutput(t)
 	return t
@@ -2455,19 +2701,22 @@ end
 
 --- Create a structure of type GatewayInfo
 -- <p>Describes a gateway object.</p>
--- @param _GatewayId [GatewayId] <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p>
--- @param _GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
--- @param _GatewayName [string] <p>The name of the gateway.</p>
--- @param _GatewayOperationalState [GatewayOperationalState] <p>The state of the gateway.</p> <p>Valid Values: DISABLED or ACTIVE</p>
--- @param _GatewayType [GatewayType] <p>The type of the gateway.</p>
-function M.GatewayInfo(_GatewayId, _GatewayARN, _GatewayName, _GatewayOperationalState, _GatewayType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GatewayInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayId [GatewayId] <p>The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations.</p>
+-- * GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- * GatewayName [string] <p>The name of the gateway.</p>
+-- * GatewayOperationalState [GatewayOperationalState] <p>The state of the gateway.</p> <p>Valid Values: DISABLED or ACTIVE</p>
+-- * GatewayType [GatewayType] <p>The type of the gateway.</p>
+-- @return GatewayInfo structure as a key-value pair table
+function M.GatewayInfo(args)
+	assert(args, "You must provdide an argument table when creating GatewayInfo")
 	local t = { 
-		["GatewayId"] = _GatewayId,
-		["GatewayARN"] = _GatewayARN,
-		["GatewayName"] = _GatewayName,
-		["GatewayOperationalState"] = _GatewayOperationalState,
-		["GatewayType"] = _GatewayType,
+		["GatewayId"] = args["GatewayId"],
+		["GatewayARN"] = args["GatewayARN"],
+		["GatewayName"] = args["GatewayName"],
+		["GatewayOperationalState"] = args["GatewayOperationalState"],
+		["GatewayType"] = args["GatewayType"],
 	}
 	asserts.AssertGatewayInfo(t)
 	return t
@@ -2489,17 +2738,20 @@ end
 
 --- Create a structure of type FileShareInfo
 -- <p>Describes a file share.</p>
--- @param _FileShareARN [FileShareARN] 
--- @param _GatewayARN [GatewayARN] 
--- @param _FileShareStatus [FileShareStatus] 
--- @param _FileShareId [FileShareId] 
-function M.FileShareInfo(_FileShareARN, _GatewayARN, _FileShareStatus, _FileShareId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FileShareInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] 
+-- * GatewayARN [GatewayARN] 
+-- * FileShareStatus [FileShareStatus] 
+-- * FileShareId [FileShareId] 
+-- @return FileShareInfo structure as a key-value pair table
+function M.FileShareInfo(args)
+	assert(args, "You must provdide an argument table when creating FileShareInfo")
 	local t = { 
-		["FileShareARN"] = _FileShareARN,
-		["GatewayARN"] = _GatewayARN,
-		["FileShareStatus"] = _FileShareStatus,
-		["FileShareId"] = _FileShareId,
+		["FileShareARN"] = args["FileShareARN"],
+		["GatewayARN"] = args["GatewayARN"],
+		["FileShareStatus"] = args["FileShareStatus"],
+		["FileShareId"] = args["FileShareId"],
 	}
 	asserts.AssertFileShareInfo(t)
 	return t
@@ -2518,11 +2770,14 @@ end
 
 --- Create a structure of type AddTagsToResourceOutput
 -- <p>AddTagsToResourceOutput</p>
--- @param _ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource you want to add tags to.</p>
-function M.AddTagsToResourceOutput(_ResourceARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsToResourceOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource you want to add tags to.</p>
+-- @return AddTagsToResourceOutput structure as a key-value pair table
+function M.AddTagsToResourceOutput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsToResourceOutput")
 	local t = { 
-		["ResourceARN"] = _ResourceARN,
+		["ResourceARN"] = args["ResourceARN"],
 	}
 	asserts.AssertAddTagsToResourceOutput(t)
 	return t
@@ -2541,11 +2796,14 @@ end
 
 --- Create a structure of type AddUploadBufferOutput
 --  
--- @param _GatewayARN [GatewayARN] 
-function M.AddUploadBufferOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddUploadBufferOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return AddUploadBufferOutput structure as a key-value pair table
+function M.AddUploadBufferOutput(args)
+	assert(args, "You must provdide an argument table when creating AddUploadBufferOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertAddUploadBufferOutput(t)
 	return t
@@ -2568,19 +2826,22 @@ end
 
 --- Create a structure of type TapeInfo
 -- <p>Describes a virtual tape.</p>
--- @param _TapeStatus [TapeStatus] <p>The status of the tape.</p>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of a virtual tape.</p>
--- @param _TapeSizeInBytes [TapeSize] <p>The size, in bytes, of a virtual tape.</p>
--- @param _GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
--- @param _TapeBarcode [TapeBarcode] <p>The barcode that identifies a specific virtual tape.</p>
-function M.TapeInfo(_TapeStatus, _TapeARN, _TapeSizeInBytes, _GatewayARN, _TapeBarcode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TapeInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeStatus [TapeStatus] <p>The status of the tape.</p>
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of a virtual tape.</p>
+-- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of a virtual tape.</p>
+-- * GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- * TapeBarcode [TapeBarcode] <p>The barcode that identifies a specific virtual tape.</p>
+-- @return TapeInfo structure as a key-value pair table
+function M.TapeInfo(args)
+	assert(args, "You must provdide an argument table when creating TapeInfo")
 	local t = { 
-		["TapeStatus"] = _TapeStatus,
-		["TapeARN"] = _TapeARN,
-		["TapeSizeInBytes"] = _TapeSizeInBytes,
-		["GatewayARN"] = _GatewayARN,
-		["TapeBarcode"] = _TapeBarcode,
+		["TapeStatus"] = args["TapeStatus"],
+		["TapeARN"] = args["TapeARN"],
+		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
+		["GatewayARN"] = args["GatewayARN"],
+		["TapeBarcode"] = args["TapeBarcode"],
 	}
 	asserts.AssertTapeInfo(t)
 	return t
@@ -2599,11 +2860,14 @@ end
 
 --- Create a structure of type DeleteTapeArchiveOutput
 -- <p>DeleteTapeArchiveOutput</p>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape that was deleted from the virtual tape shelf (VTS).</p>
-function M.DeleteTapeArchiveOutput(_TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTapeArchiveOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape that was deleted from the virtual tape shelf (VTS).</p>
+-- @return DeleteTapeArchiveOutput structure as a key-value pair table
+function M.DeleteTapeArchiveOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteTapeArchiveOutput")
 	local t = { 
-		["TapeARN"] = _TapeARN,
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertDeleteTapeArchiveOutput(t)
 	return t
@@ -2623,13 +2887,16 @@ end
 
 --- Create a structure of type DeleteChapCredentialsOutput
 -- <p>A JSON object containing the following fields:</p>
--- @param _TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the target.</p>
--- @param _InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
-function M.DeleteChapCredentialsOutput(_TargetARN, _InitiatorName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteChapCredentialsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetARN [TargetARN] <p>The Amazon Resource Name (ARN) of the target.</p>
+-- * InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
+-- @return DeleteChapCredentialsOutput structure as a key-value pair table
+function M.DeleteChapCredentialsOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteChapCredentialsOutput")
 	local t = { 
-		["TargetARN"] = _TargetARN,
-		["InitiatorName"] = _InitiatorName,
+		["TargetARN"] = args["TargetARN"],
+		["InitiatorName"] = args["InitiatorName"],
 	}
 	asserts.AssertDeleteChapCredentialsOutput(t)
 	return t
@@ -2649,12 +2916,15 @@ end
 
 --- Create a structure of type RefreshCacheInput
 --  
--- @param _FileShareARN [FileShareARN] 
--- Required parameter: FileShareARN
-function M.RefreshCacheInput(_FileShareARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RefreshCacheInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] 
+-- Required key: FileShareARN
+-- @return RefreshCacheInput structure as a key-value pair table
+function M.RefreshCacheInput(args)
+	assert(args, "You must provdide an argument table when creating RefreshCacheInput")
 	local t = { 
-		["FileShareARN"] = _FileShareARN,
+		["FileShareARN"] = args["FileShareARN"],
 	}
 	asserts.AssertRefreshCacheInput(t)
 	return t
@@ -2683,27 +2953,30 @@ end
 
 --- Create a structure of type ActivateGatewayInput
 -- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>ActivateGatewayInput$ActivationKey</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayName</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayRegion</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayTimezone</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayType</a> </p> </li> <li> <p> <a>ActivateGatewayInput$TapeDriveType</a> </p> </li> <li> <p> <a>ActivateGatewayInput$MediumChangerType</a> </p> </li> </ul>
--- @param _GatewayName [GatewayName] <p>The name you configured for your gateway.</p>
--- @param _GatewayType [GatewayType] <p>A value that defines the type of gateway to activate. The type specified is critical to all later functions of the gateway and cannot be changed after activation. The default value is <code>STORED</code>. </p> <p> Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"</p>
--- @param _TapeDriveType [TapeDriveType] <p>The value that indicates the type of tape drive to use for tape gateway. This field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
--- @param _MediumChangerType [MediumChangerType] <p>The value that indicates the type of medium changer to use for tape gateway. This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
--- @param _GatewayTimezone [GatewayTimezone] <p>A value that indicates the time zone you want to set for the gateway. The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example, GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates the time is 2 hours ahead of GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.</p>
--- @param _GatewayRegion [RegionId] <p>A value that indicates the region where you want to store your data. The gateway region specified must be the same region as the region in your <code>Host</code> header in the request. For more information about available regions and endpoints for AWS Storage Gateway, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "sa-east-1"</p>
--- @param _ActivationKey [ActivationKey] <p>Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter <code>activationKey</code>. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the <code>ActivateGateway</code> API call determine the actual configuration of your gateway.</p>
--- Required parameter: ActivationKey
--- Required parameter: GatewayName
--- Required parameter: GatewayTimezone
--- Required parameter: GatewayRegion
-function M.ActivateGatewayInput(_GatewayName, _GatewayType, _TapeDriveType, _MediumChangerType, _GatewayTimezone, _GatewayRegion, _ActivationKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivateGatewayInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayName [GatewayName] <p>The name you configured for your gateway.</p>
+-- * GatewayType [GatewayType] <p>A value that defines the type of gateway to activate. The type specified is critical to all later functions of the gateway and cannot be changed after activation. The default value is <code>STORED</code>. </p> <p> Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"</p>
+-- * TapeDriveType [TapeDriveType] <p>The value that indicates the type of tape drive to use for tape gateway. This field is optional.</p> <p> Valid Values: "IBM-ULT3580-TD5" </p>
+-- * MediumChangerType [MediumChangerType] <p>The value that indicates the type of medium changer to use for tape gateway. This field is optional.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
+-- * GatewayTimezone [GatewayTimezone] <p>A value that indicates the time zone you want to set for the gateway. The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example, GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates the time is 2 hours ahead of GMT. The time zone is used, for example, for scheduling snapshots and your gateway's maintenance schedule.</p>
+-- * GatewayRegion [RegionId] <p>A value that indicates the region where you want to store your data. The gateway region specified must be the same region as the region in your <code>Host</code> header in the request. For more information about available regions and endpoints for AWS Storage Gateway, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">Regions and Endpoints</a> in the <i>Amazon Web Services Glossary</i>.</p> <p> Valid Values: "us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1", "eu-west-1", "eu-central-1", "eu-west-2", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ap-south-1", "sa-east-1"</p>
+-- * ActivationKey [ActivationKey] <p>Your gateway activation key. You can obtain the activation key by sending an HTTP GET request with redirects enabled to the gateway IP address (port 80). The redirect URL returned in the response provides you the activation key for your gateway in the query string parameter <code>activationKey</code>. It may also include other activation-related parameters, however, these are merely defaults -- the arguments you pass to the <code>ActivateGateway</code> API call determine the actual configuration of your gateway.</p>
+-- Required key: ActivationKey
+-- Required key: GatewayName
+-- Required key: GatewayTimezone
+-- Required key: GatewayRegion
+-- @return ActivateGatewayInput structure as a key-value pair table
+function M.ActivateGatewayInput(args)
+	assert(args, "You must provdide an argument table when creating ActivateGatewayInput")
 	local t = { 
-		["GatewayName"] = _GatewayName,
-		["GatewayType"] = _GatewayType,
-		["TapeDriveType"] = _TapeDriveType,
-		["MediumChangerType"] = _MediumChangerType,
-		["GatewayTimezone"] = _GatewayTimezone,
-		["GatewayRegion"] = _GatewayRegion,
-		["ActivationKey"] = _ActivationKey,
+		["GatewayName"] = args["GatewayName"],
+		["GatewayType"] = args["GatewayType"],
+		["TapeDriveType"] = args["TapeDriveType"],
+		["MediumChangerType"] = args["MediumChangerType"],
+		["GatewayTimezone"] = args["GatewayTimezone"],
+		["GatewayRegion"] = args["GatewayRegion"],
+		["ActivationKey"] = args["ActivationKey"],
 	}
 	asserts.AssertActivateGatewayInput(t)
 	return t
@@ -2723,12 +2996,15 @@ end
 
 --- Create a structure of type DescribeCacheInput
 --  
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.DescribeCacheInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCacheInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return DescribeCacheInput structure as a key-value pair table
+function M.DescribeCacheInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeCacheInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDescribeCacheInput(t)
 	return t
@@ -2748,13 +3024,16 @@ end
 
 --- Create a structure of type InvalidGatewayRequestException
 -- <p>An exception occurred because an invalid gateway request was issued to the service. For more information, see the error and message fields.</p>
--- @param _message [string] <p>A human-readable message describing the error that occurred.</p>
--- @param _error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more detail about the cause of the error.</p>
-function M.InvalidGatewayRequestException(_message, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidGatewayRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>A human-readable message describing the error that occurred.</p>
+-- * error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more detail about the cause of the error.</p>
+-- @return InvalidGatewayRequestException structure as a key-value pair table
+function M.InvalidGatewayRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidGatewayRequestException")
 	local t = { 
-		["message"] = _message,
-		["error"] = _error,
+		["message"] = args["message"],
+		["error"] = args["error"],
 	}
 	asserts.AssertInvalidGatewayRequestException(t)
 	return t
@@ -2773,11 +3052,14 @@ end
 
 --- Create a structure of type DeleteVolumeOutput
 -- <p>A JSON object containing the of the storage volume that was deleted</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume that was deleted. It is the same ARN you provided in the request.</p>
-function M.DeleteVolumeOutput(_VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVolumeOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume that was deleted. It is the same ARN you provided in the request.</p>
+-- @return DeleteVolumeOutput structure as a key-value pair table
+function M.DeleteVolumeOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteVolumeOutput")
 	local t = { 
-		["VolumeARN"] = _VolumeARN,
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertDeleteVolumeOutput(t)
 	return t
@@ -2799,15 +3081,18 @@ end
 
 --- Create a structure of type RetrieveTapeArchiveInput
 -- <p>RetrieveTapeArchiveInput</p>
--- @param _GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the gateway you want to retrieve the virtual tape to. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p> <p>You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.</p>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from the virtual tape shelf (VTS).</p>
--- Required parameter: TapeARN
--- Required parameter: GatewayARN
-function M.RetrieveTapeArchiveInput(_GatewayARN, _TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveTapeArchiveInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] <p>The Amazon Resource Name (ARN) of the gateway you want to retrieve the virtual tape to. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p> <p>You retrieve archived virtual tapes to only one gateway and the gateway must be a tape gateway.</p>
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape you want to retrieve from the virtual tape shelf (VTS).</p>
+-- Required key: TapeARN
+-- Required key: GatewayARN
+-- @return RetrieveTapeArchiveInput structure as a key-value pair table
+function M.RetrieveTapeArchiveInput(args)
+	assert(args, "You must provdide an argument table when creating RetrieveTapeArchiveInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["TapeARN"] = _TapeARN,
+		["GatewayARN"] = args["GatewayARN"],
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertRetrieveTapeArchiveInput(t)
 	return t
@@ -2827,12 +3112,15 @@ end
 
 --- Create a structure of type DescribeCachediSCSIVolumesInput
 --  
--- @param _VolumeARNs [VolumeARNs] 
--- Required parameter: VolumeARNs
-function M.DescribeCachediSCSIVolumesInput(_VolumeARNs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCachediSCSIVolumesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeARNs [VolumeARNs] 
+-- Required key: VolumeARNs
+-- @return DescribeCachediSCSIVolumesInput structure as a key-value pair table
+function M.DescribeCachediSCSIVolumesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeCachediSCSIVolumesInput")
 	local t = { 
-		["VolumeARNs"] = _VolumeARNs,
+		["VolumeARNs"] = args["VolumeARNs"],
 	}
 	asserts.AssertDescribeCachediSCSIVolumesInput(t)
 	return t
@@ -2852,13 +3140,16 @@ end
 
 --- Create a structure of type UpdateGatewayInformationOutput
 -- <p>A JSON object containing the ARN of the gateway that was updated.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _GatewayName [string] 
-function M.UpdateGatewayInformationOutput(_GatewayARN, _GatewayName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGatewayInformationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * GatewayName [string] 
+-- @return UpdateGatewayInformationOutput structure as a key-value pair table
+function M.UpdateGatewayInformationOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateGatewayInformationOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["GatewayName"] = _GatewayName,
+		["GatewayARN"] = args["GatewayARN"],
+		["GatewayName"] = args["GatewayName"],
 	}
 	asserts.AssertUpdateGatewayInformationOutput(t)
 	return t
@@ -2879,15 +3170,18 @@ end
 
 --- Create a structure of type ListFileSharesInput
 -- <p>ListFileShareInput</p>
--- @param _Marker [Marker] <p>Opaque pagination token returned from a previous ListFileShares operation. If present, <code>Marker</code> specifies where to continue the list from after a previous call to ListFileShares. Optional.</p>
--- @param _GatewayARN [GatewayARN] <p>The Amazon resource Name (ARN) of the gateway whose file shares you want to list. If this field is not present, all file shares under your account are listed.</p>
--- @param _Limit [PositiveIntObject] <p>The maximum number of file shares to return in the response. The value must be an integer with a value greater than zero. Optional.</p>
-function M.ListFileSharesInput(_Marker, _GatewayARN, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFileSharesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>Opaque pagination token returned from a previous ListFileShares operation. If present, <code>Marker</code> specifies where to continue the list from after a previous call to ListFileShares. Optional.</p>
+-- * GatewayARN [GatewayARN] <p>The Amazon resource Name (ARN) of the gateway whose file shares you want to list. If this field is not present, all file shares under your account are listed.</p>
+-- * Limit [PositiveIntObject] <p>The maximum number of file shares to return in the response. The value must be an integer with a value greater than zero. Optional.</p>
+-- @return ListFileSharesInput structure as a key-value pair table
+function M.ListFileSharesInput(args)
+	assert(args, "You must provdide an argument table when creating ListFileSharesInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["GatewayARN"] = _GatewayARN,
-		["Limit"] = _Limit,
+		["Marker"] = args["Marker"],
+		["GatewayARN"] = args["GatewayARN"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListFileSharesInput(t)
 	return t
@@ -2906,11 +3200,14 @@ end
 
 --- Create a structure of type UpdateGatewaySoftwareNowOutput
 -- <p>A JSON object containing the of the gateway that was updated.</p>
--- @param _GatewayARN [GatewayARN] 
-function M.UpdateGatewaySoftwareNowOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGatewaySoftwareNowOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return UpdateGatewaySoftwareNowOutput structure as a key-value pair table
+function M.UpdateGatewaySoftwareNowOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateGatewaySoftwareNowOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertUpdateGatewaySoftwareNowOutput(t)
 	return t
@@ -2929,11 +3226,14 @@ end
 
 --- Create a structure of type RemoveTagsFromResourceOutput
 -- <p>RemoveTagsFromResourceOutput</p>
--- @param _ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource that the tags were removed from.</p>
-function M.RemoveTagsFromResourceOutput(_ResourceARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsFromResourceOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource that the tags were removed from.</p>
+-- @return RemoveTagsFromResourceOutput structure as a key-value pair table
+function M.RemoveTagsFromResourceOutput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceOutput")
 	local t = { 
-		["ResourceARN"] = _ResourceARN,
+		["ResourceARN"] = args["ResourceARN"],
 	}
 	asserts.AssertRemoveTagsFromResourceOutput(t)
 	return t
@@ -2952,11 +3252,14 @@ end
 
 --- Create a structure of type DeleteBandwidthRateLimitOutput
 -- <p>A JSON object containing the of the gateway whose bandwidth rate information was deleted.</p>
--- @param _GatewayARN [GatewayARN] 
-function M.DeleteBandwidthRateLimitOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBandwidthRateLimitOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return DeleteBandwidthRateLimitOutput structure as a key-value pair table
+function M.DeleteBandwidthRateLimitOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteBandwidthRateLimitOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDeleteBandwidthRateLimitOutput(t)
 	return t
@@ -2975,11 +3278,14 @@ end
 
 --- Create a structure of type UpdateMaintenanceStartTimeOutput
 -- <p>A JSON object containing the of the gateway whose maintenance start time is updated.</p>
--- @param _GatewayARN [GatewayARN] 
-function M.UpdateMaintenanceStartTimeOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMaintenanceStartTimeOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return UpdateMaintenanceStartTimeOutput structure as a key-value pair table
+function M.UpdateMaintenanceStartTimeOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateMaintenanceStartTimeOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertUpdateMaintenanceStartTimeOutput(t)
 	return t
@@ -3001,15 +3307,18 @@ end
 
 --- Create a structure of type CreateSnapshotFromVolumeRecoveryPointInput
 --  
--- @param _SnapshotDescription [SnapshotDescription] 
--- @param _VolumeARN [VolumeARN] 
--- Required parameter: VolumeARN
--- Required parameter: SnapshotDescription
-function M.CreateSnapshotFromVolumeRecoveryPointInput(_SnapshotDescription, _VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSnapshotFromVolumeRecoveryPointInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnapshotDescription [SnapshotDescription] 
+-- * VolumeARN [VolumeARN] 
+-- Required key: VolumeARN
+-- Required key: SnapshotDescription
+-- @return CreateSnapshotFromVolumeRecoveryPointInput structure as a key-value pair table
+function M.CreateSnapshotFromVolumeRecoveryPointInput(args)
+	assert(args, "You must provdide an argument table when creating CreateSnapshotFromVolumeRecoveryPointInput")
 	local t = { 
-		["SnapshotDescription"] = _SnapshotDescription,
-		["VolumeARN"] = _VolumeARN,
+		["SnapshotDescription"] = args["SnapshotDescription"],
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertCreateSnapshotFromVolumeRecoveryPointInput(t)
 	return t
@@ -3035,25 +3344,28 @@ end
 
 --- Create a structure of type TapeArchive
 -- <p>Represents a virtual tape that is archived in the virtual tape shelf (VTS).</p>
--- @param _TapeCreatedDate [Time] 
--- @param _TapeUsedInBytes [TapeUsage] <p>The size, in bytes, of data written to the virtual tape.</p> <note> <p>This value is not available for tapes created prior to May,13 2015.</p> </note>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of an archived virtual tape.</p>
--- @param _CompletionTime [Time] <p>The time that the archiving of the virtual tape was completed.</p> <p>The string format of the completion time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
--- @param _TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the archived virtual tape.</p>
--- @param _TapeBarcode [TapeBarcode] <p>The barcode that identifies the archived virtual tape.</p>
--- @param _RetrievedTo [GatewayARN] <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape shelf (VTS).</p>
--- @param _TapeStatus [TapeArchiveStatus] <p>The current state of the archived virtual tape.</p>
-function M.TapeArchive(_TapeCreatedDate, _TapeUsedInBytes, _TapeARN, _CompletionTime, _TapeSizeInBytes, _TapeBarcode, _RetrievedTo, _TapeStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TapeArchive")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeCreatedDate [Time] 
+-- * TapeUsedInBytes [TapeUsage] <p>The size, in bytes, of data written to the virtual tape.</p> <note> <p>This value is not available for tapes created prior to May,13 2015.</p> </note>
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of an archived virtual tape.</p>
+-- * CompletionTime [Time] <p>The time that the archiving of the virtual tape was completed.</p> <p>The string format of the completion time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
+-- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the archived virtual tape.</p>
+-- * TapeBarcode [TapeBarcode] <p>The barcode that identifies the archived virtual tape.</p>
+-- * RetrievedTo [GatewayARN] <p>The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to.</p> <p>The virtual tape is retrieved from the virtual tape shelf (VTS).</p>
+-- * TapeStatus [TapeArchiveStatus] <p>The current state of the archived virtual tape.</p>
+-- @return TapeArchive structure as a key-value pair table
+function M.TapeArchive(args)
+	assert(args, "You must provdide an argument table when creating TapeArchive")
 	local t = { 
-		["TapeCreatedDate"] = _TapeCreatedDate,
-		["TapeUsedInBytes"] = _TapeUsedInBytes,
-		["TapeARN"] = _TapeARN,
-		["CompletionTime"] = _CompletionTime,
-		["TapeSizeInBytes"] = _TapeSizeInBytes,
-		["TapeBarcode"] = _TapeBarcode,
-		["RetrievedTo"] = _RetrievedTo,
-		["TapeStatus"] = _TapeStatus,
+		["TapeCreatedDate"] = args["TapeCreatedDate"],
+		["TapeUsedInBytes"] = args["TapeUsedInBytes"],
+		["TapeARN"] = args["TapeARN"],
+		["CompletionTime"] = args["CompletionTime"],
+		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
+		["TapeBarcode"] = args["TapeBarcode"],
+		["RetrievedTo"] = args["RetrievedTo"],
+		["TapeStatus"] = args["TapeStatus"],
 	}
 	asserts.AssertTapeArchive(t)
 	return t
@@ -3073,12 +3385,15 @@ end
 
 --- Create a structure of type StartGatewayInput
 -- <p>A JSON object containing the of the gateway to start.</p>
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.StartGatewayInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartGatewayInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return StartGatewayInput structure as a key-value pair table
+function M.StartGatewayInput(args)
+	assert(args, "You must provdide an argument table when creating StartGatewayInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertStartGatewayInput(t)
 	return t
@@ -3097,11 +3412,14 @@ end
 
 --- Create a structure of type DescribeNFSFileSharesOutput
 -- <p>DescribeNFSFileSharesOutput</p>
--- @param _NFSFileShareInfoList [NFSFileShareInfoList] <p>An array containing a description for each requested file share. </p>
-function M.DescribeNFSFileSharesOutput(_NFSFileShareInfoList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNFSFileSharesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NFSFileShareInfoList [NFSFileShareInfoList] <p>An array containing a description for each requested file share. </p>
+-- @return DescribeNFSFileSharesOutput structure as a key-value pair table
+function M.DescribeNFSFileSharesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeNFSFileSharesOutput")
 	local t = { 
-		["NFSFileShareInfoList"] = _NFSFileShareInfoList,
+		["NFSFileShareInfoList"] = args["NFSFileShareInfoList"],
 	}
 	asserts.AssertDescribeNFSFileSharesOutput(t)
 	return t
@@ -3120,11 +3438,14 @@ end
 
 --- Create a structure of type CreateNFSFileShareOutput
 -- <p>CreateNFSFileShareOutput</p>
--- @param _FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the newly created file share. </p>
-function M.CreateNFSFileShareOutput(_FileShareARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateNFSFileShareOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the newly created file share. </p>
+-- @return CreateNFSFileShareOutput structure as a key-value pair table
+function M.CreateNFSFileShareOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateNFSFileShareOutput")
 	local t = { 
-		["FileShareARN"] = _FileShareARN,
+		["FileShareARN"] = args["FileShareARN"],
 	}
 	asserts.AssertCreateNFSFileShareOutput(t)
 	return t
@@ -3147,19 +3468,22 @@ end
 
 --- Create a structure of type VTLDevice
 -- <p>Represents a device object associated with a tape gateway.</p>
--- @param _VTLDeviceType [VTLDeviceType] 
--- @param _VTLDeviceProductIdentifier [VTLDeviceProductIdentifier] 
--- @param _DeviceiSCSIAttributes [DeviceiSCSIAttributes] <p>A list of iSCSI information about a VTL device.</p>
--- @param _VTLDeviceARN [VTLDeviceARN] <p>Specifies the unique Amazon Resource Name (ARN) of the device (tape drive or media changer).</p>
--- @param _VTLDeviceVendor [VTLDeviceVendor] 
-function M.VTLDevice(_VTLDeviceType, _VTLDeviceProductIdentifier, _DeviceiSCSIAttributes, _VTLDeviceARN, _VTLDeviceVendor, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VTLDevice")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VTLDeviceType [VTLDeviceType] 
+-- * VTLDeviceProductIdentifier [VTLDeviceProductIdentifier] 
+-- * DeviceiSCSIAttributes [DeviceiSCSIAttributes] <p>A list of iSCSI information about a VTL device.</p>
+-- * VTLDeviceARN [VTLDeviceARN] <p>Specifies the unique Amazon Resource Name (ARN) of the device (tape drive or media changer).</p>
+-- * VTLDeviceVendor [VTLDeviceVendor] 
+-- @return VTLDevice structure as a key-value pair table
+function M.VTLDevice(args)
+	assert(args, "You must provdide an argument table when creating VTLDevice")
 	local t = { 
-		["VTLDeviceType"] = _VTLDeviceType,
-		["VTLDeviceProductIdentifier"] = _VTLDeviceProductIdentifier,
-		["DeviceiSCSIAttributes"] = _DeviceiSCSIAttributes,
-		["VTLDeviceARN"] = _VTLDeviceARN,
-		["VTLDeviceVendor"] = _VTLDeviceVendor,
+		["VTLDeviceType"] = args["VTLDeviceType"],
+		["VTLDeviceProductIdentifier"] = args["VTLDeviceProductIdentifier"],
+		["DeviceiSCSIAttributes"] = args["DeviceiSCSIAttributes"],
+		["VTLDeviceARN"] = args["VTLDeviceARN"],
+		["VTLDeviceVendor"] = args["VTLDeviceVendor"],
 	}
 	asserts.AssertVTLDevice(t)
 	return t
@@ -3181,15 +3505,18 @@ end
 
 --- Create a structure of type AddUploadBufferInput
 --  
--- @param _GatewayARN [GatewayARN] 
--- @param _DiskIds [DiskIds] 
--- Required parameter: GatewayARN
--- Required parameter: DiskIds
-function M.AddUploadBufferInput(_GatewayARN, _DiskIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddUploadBufferInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * DiskIds [DiskIds] 
+-- Required key: GatewayARN
+-- Required key: DiskIds
+-- @return AddUploadBufferInput structure as a key-value pair table
+function M.AddUploadBufferInput(args)
+	assert(args, "You must provdide an argument table when creating AddUploadBufferInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["DiskIds"] = _DiskIds,
+		["GatewayARN"] = args["GatewayARN"],
+		["DiskIds"] = args["DiskIds"],
 	}
 	asserts.AssertAddUploadBufferInput(t)
 	return t
@@ -3211,15 +3538,18 @@ end
 
 --- Create a structure of type CancelRetrievalInput
 -- <p>CancelRetrievalInput</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel retrieval for.</p>
--- Required parameter: GatewayARN
--- Required parameter: TapeARN
-function M.CancelRetrievalInput(_GatewayARN, _TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelRetrievalInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel retrieval for.</p>
+-- Required key: GatewayARN
+-- Required key: TapeARN
+-- @return CancelRetrievalInput structure as a key-value pair table
+function M.CancelRetrievalInput(args)
+	assert(args, "You must provdide an argument table when creating CancelRetrievalInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["TapeARN"] = _TapeARN,
+		["GatewayARN"] = args["GatewayARN"],
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertCancelRetrievalInput(t)
 	return t
@@ -3239,13 +3569,16 @@ end
 
 --- Create a structure of type ListGatewaysOutput
 --  
--- @param _Marker [Marker] 
--- @param _Gateways [Gateways] 
-function M.ListGatewaysOutput(_Marker, _Gateways, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGatewaysOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] 
+-- * Gateways [Gateways] 
+-- @return ListGatewaysOutput structure as a key-value pair table
+function M.ListGatewaysOutput(args)
+	assert(args, "You must provdide an argument table when creating ListGatewaysOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["Gateways"] = _Gateways,
+		["Marker"] = args["Marker"],
+		["Gateways"] = args["Gateways"],
 	}
 	asserts.AssertListGatewaysOutput(t)
 	return t
@@ -3269,18 +3602,21 @@ end
 
 --- Create a structure of type CreateTapeWithBarcodeInput
 -- <p>CreateTapeWithBarcodeInput</p>
--- @param _GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tape with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
--- @param _TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tape that you want to create.</p> <note> <p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
--- @param _TapeBarcode [TapeBarcode] <p>The barcode that you want to assign to the tape.</p>
--- Required parameter: GatewayARN
--- Required parameter: TapeSizeInBytes
--- Required parameter: TapeBarcode
-function M.CreateTapeWithBarcodeInput(_GatewayARN, _TapeSizeInBytes, _TapeBarcode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTapeWithBarcodeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tape with. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
+-- * TapeSizeInBytes [TapeSize] <p>The size, in bytes, of the virtual tape that you want to create.</p> <note> <p>The size must be aligned by gigabyte (1024*1024*1024 byte).</p> </note>
+-- * TapeBarcode [TapeBarcode] <p>The barcode that you want to assign to the tape.</p>
+-- Required key: GatewayARN
+-- Required key: TapeSizeInBytes
+-- Required key: TapeBarcode
+-- @return CreateTapeWithBarcodeInput structure as a key-value pair table
+function M.CreateTapeWithBarcodeInput(args)
+	assert(args, "You must provdide an argument table when creating CreateTapeWithBarcodeInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["TapeSizeInBytes"] = _TapeSizeInBytes,
-		["TapeBarcode"] = _TapeBarcode,
+		["GatewayARN"] = args["GatewayARN"],
+		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
+		["TapeBarcode"] = args["TapeBarcode"],
 	}
 	asserts.AssertCreateTapeWithBarcodeInput(t)
 	return t
@@ -3300,12 +3636,15 @@ end
 
 --- Create a structure of type DescribeWorkingStorageInput
 -- <p>A JSON object containing the of the gateway.</p>
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.DescribeWorkingStorageInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkingStorageInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return DescribeWorkingStorageInput structure as a key-value pair table
+function M.DescribeWorkingStorageInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkingStorageInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDescribeWorkingStorageInput(t)
 	return t
@@ -3330,20 +3669,23 @@ end
 
 --- Create a structure of type UpdateSnapshotScheduleInput
 -- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateSnapshotScheduleInput$Description</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$RecurrenceInHours</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$StartAt</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$VolumeARN</a> </p> </li> </ul>
--- @param _RecurrenceInHours [RecurrenceInHours] <p>Frequency of snapshots. Specify the number of hours between snapshots.</p>
--- @param _StartAt [HourOfDay] <p>The hour of the day at which the snapshot schedule begins represented as <i>hh</i>, where <i>hh</i> is the hour (0 to 23). The hour of the day is in the time zone of the gateway.</p>
--- @param _Description [Description] <p>Optional description of the snapshot that overwrites the existing description.</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
--- Required parameter: VolumeARN
--- Required parameter: StartAt
--- Required parameter: RecurrenceInHours
-function M.UpdateSnapshotScheduleInput(_RecurrenceInHours, _StartAt, _Description, _VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSnapshotScheduleInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RecurrenceInHours [RecurrenceInHours] <p>Frequency of snapshots. Specify the number of hours between snapshots.</p>
+-- * StartAt [HourOfDay] <p>The hour of the day at which the snapshot schedule begins represented as <i>hh</i>, where <i>hh</i> is the hour (0 to 23). The hour of the day is in the time zone of the gateway.</p>
+-- * Description [Description] <p>Optional description of the snapshot that overwrites the existing description.</p>
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
+-- Required key: VolumeARN
+-- Required key: StartAt
+-- Required key: RecurrenceInHours
+-- @return UpdateSnapshotScheduleInput structure as a key-value pair table
+function M.UpdateSnapshotScheduleInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateSnapshotScheduleInput")
 	local t = { 
-		["RecurrenceInHours"] = _RecurrenceInHours,
-		["StartAt"] = _StartAt,
-		["Description"] = _Description,
-		["VolumeARN"] = _VolumeARN,
+		["RecurrenceInHours"] = args["RecurrenceInHours"],
+		["StartAt"] = args["StartAt"],
+		["Description"] = args["Description"],
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertUpdateSnapshotScheduleInput(t)
 	return t
@@ -3365,17 +3707,20 @@ end
 
 --- Create a structure of type DeviceiSCSIAttributes
 -- <p>Lists iSCSI information about a VTL device.</p>
--- @param _TargetARN [TargetARN] <p>Specifies the unique Amazon Resource Name(ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.</p>
--- @param _NetworkInterfaceId [NetworkInterfaceId] <p>The network interface identifier of the VTL device.</p>
--- @param _ChapEnabled [boolean] <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
--- @param _NetworkInterfacePort [integer] <p>The port used to communicate with iSCSI VTL device targets.</p>
-function M.DeviceiSCSIAttributes(_TargetARN, _NetworkInterfaceId, _ChapEnabled, _NetworkInterfacePort, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeviceiSCSIAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetARN [TargetARN] <p>Specifies the unique Amazon Resource Name(ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.</p>
+-- * NetworkInterfaceId [NetworkInterfaceId] <p>The network interface identifier of the VTL device.</p>
+-- * ChapEnabled [boolean] <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
+-- * NetworkInterfacePort [integer] <p>The port used to communicate with iSCSI VTL device targets.</p>
+-- @return DeviceiSCSIAttributes structure as a key-value pair table
+function M.DeviceiSCSIAttributes(args)
+	assert(args, "You must provdide an argument table when creating DeviceiSCSIAttributes")
 	local t = { 
-		["TargetARN"] = _TargetARN,
-		["NetworkInterfaceId"] = _NetworkInterfaceId,
-		["ChapEnabled"] = _ChapEnabled,
-		["NetworkInterfacePort"] = _NetworkInterfacePort,
+		["TargetARN"] = args["TargetARN"],
+		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
+		["ChapEnabled"] = args["ChapEnabled"],
+		["NetworkInterfacePort"] = args["NetworkInterfacePort"],
 	}
 	asserts.AssertDeviceiSCSIAttributes(t)
 	return t
@@ -3394,11 +3739,14 @@ end
 
 --- Create a structure of type DescribeChapCredentialsOutput
 -- <p>A JSON object containing a .</p>
--- @param _ChapCredentials [ChapCredentials] <p>An array of <a>ChapInfo</a> objects that represent CHAP credentials. Each object in the array contains CHAP credential information for one target-initiator pair. If no CHAP credentials are set, an empty array is returned. CHAP credential information is provided in a JSON object with the following fields:</p> <ul> <li> <p> <b>InitiatorName</b>: The iSCSI initiator that connects to the target.</p> </li> <li> <p> <b>SecretToAuthenticateInitiator</b>: The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p> </li> <li> <p> <b>SecretToAuthenticateTarget</b>: The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p> </li> <li> <p> <b>TargetARN</b>: The Amazon Resource Name (ARN) of the storage volume.</p> </li> </ul>
-function M.DescribeChapCredentialsOutput(_ChapCredentials, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeChapCredentialsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChapCredentials [ChapCredentials] <p>An array of <a>ChapInfo</a> objects that represent CHAP credentials. Each object in the array contains CHAP credential information for one target-initiator pair. If no CHAP credentials are set, an empty array is returned. CHAP credential information is provided in a JSON object with the following fields:</p> <ul> <li> <p> <b>InitiatorName</b>: The iSCSI initiator that connects to the target.</p> </li> <li> <p> <b>SecretToAuthenticateInitiator</b>: The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p> </li> <li> <p> <b>SecretToAuthenticateTarget</b>: The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p> </li> <li> <p> <b>TargetARN</b>: The Amazon Resource Name (ARN) of the storage volume.</p> </li> </ul>
+-- @return DescribeChapCredentialsOutput structure as a key-value pair table
+function M.DescribeChapCredentialsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeChapCredentialsOutput")
 	local t = { 
-		["ChapCredentials"] = _ChapCredentials,
+		["ChapCredentials"] = args["ChapCredentials"],
 	}
 	asserts.AssertDescribeChapCredentialsOutput(t)
 	return t
@@ -3418,13 +3766,16 @@ end
 
 --- Create a structure of type ServiceUnavailableError
 -- <p>An internal server error has occurred because the service is unavailable. For more information, see the error and message fields.</p>
--- @param _message [string] <p>A human-readable message describing the error that occurred.</p>
--- @param _error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more information about the cause of the error.</p>
-function M.ServiceUnavailableError(_message, _error, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [string] <p>A human-readable message describing the error that occurred.</p>
+-- * error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more information about the cause of the error.</p>
+-- @return ServiceUnavailableError structure as a key-value pair table
+function M.ServiceUnavailableError(args)
+	assert(args, "You must provdide an argument table when creating ServiceUnavailableError")
 	local t = { 
-		["message"] = _message,
-		["error"] = _error,
+		["message"] = args["message"],
+		["error"] = args["error"],
 	}
 	asserts.AssertServiceUnavailableError(t)
 	return t
@@ -3443,11 +3794,14 @@ end
 
 --- Create a structure of type UpdateNFSFileShareOutput
 -- <p>UpdateNFSFileShareOutput</p>
--- @param _FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the updated file share. </p>
-function M.UpdateNFSFileShareOutput(_FileShareARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateNFSFileShareOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the updated file share. </p>
+-- @return UpdateNFSFileShareOutput structure as a key-value pair table
+function M.UpdateNFSFileShareOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateNFSFileShareOutput")
 	local t = { 
-		["FileShareARN"] = _FileShareARN,
+		["FileShareARN"] = args["FileShareARN"],
 	}
 	asserts.AssertUpdateNFSFileShareOutput(t)
 	return t
@@ -3469,17 +3823,20 @@ end
 
 --- Create a structure of type NFSFileShareDefaults
 -- <p>Describes file share default values. Files and folders stored as Amazon S3 objects in S3 buckets don't, by default, have Unix file permissions assigned to them. Upon discovery in an S3 bucket by Storage Gateway, the S3 objects that represent files and folders are assigned these default Unix permissions. This operation is only supported in the file gateway architecture.</p>
--- @param _OwnerId [PermissionId] <p>The default owner ID for files in the file share (unless the files have another owner ID specified). The default value is nfsnobody. </p>
--- @param _DirectoryMode [PermissionMode] <p>The Unix directory mode in the form "nnnn". For example, "0666" represents the default access mode for all directories inside the file share. The default value is 0777.</p>
--- @param _GroupId [PermissionId] <p>The default group ID for the file share (unless the files have another group ID specified). The default value is nfsnobody. </p>
--- @param _FileMode [PermissionMode] <p>The Unix file mode in the form "nnnn". For example, "0666" represents the default file mode inside the file share. The default value is 0666. </p>
-function M.NFSFileShareDefaults(_OwnerId, _DirectoryMode, _GroupId, _FileMode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NFSFileShareDefaults")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OwnerId [PermissionId] <p>The default owner ID for files in the file share (unless the files have another owner ID specified). The default value is nfsnobody. </p>
+-- * DirectoryMode [PermissionMode] <p>The Unix directory mode in the form "nnnn". For example, "0666" represents the default access mode for all directories inside the file share. The default value is 0777.</p>
+-- * GroupId [PermissionId] <p>The default group ID for the file share (unless the files have another group ID specified). The default value is nfsnobody. </p>
+-- * FileMode [PermissionMode] <p>The Unix file mode in the form "nnnn". For example, "0666" represents the default file mode inside the file share. The default value is 0666. </p>
+-- @return NFSFileShareDefaults structure as a key-value pair table
+function M.NFSFileShareDefaults(args)
+	assert(args, "You must provdide an argument table when creating NFSFileShareDefaults")
 	local t = { 
-		["OwnerId"] = _OwnerId,
-		["DirectoryMode"] = _DirectoryMode,
-		["GroupId"] = _GroupId,
-		["FileMode"] = _FileMode,
+		["OwnerId"] = args["OwnerId"],
+		["DirectoryMode"] = args["DirectoryMode"],
+		["GroupId"] = args["GroupId"],
+		["FileMode"] = args["FileMode"],
 	}
 	asserts.AssertNFSFileShareDefaults(t)
 	return t
@@ -3501,15 +3858,18 @@ end
 
 --- Create a structure of type CancelArchivalInput
 -- <p>CancelArchivalInput</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel archiving for.</p>
--- Required parameter: GatewayARN
--- Required parameter: TapeARN
-function M.CancelArchivalInput(_GatewayARN, _TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelArchivalInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape you want to cancel archiving for.</p>
+-- Required key: GatewayARN
+-- Required key: TapeARN
+-- @return CancelArchivalInput structure as a key-value pair table
+function M.CancelArchivalInput(args)
+	assert(args, "You must provdide an argument table when creating CancelArchivalInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["TapeARN"] = _TapeARN,
+		["GatewayARN"] = args["GatewayARN"],
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertCancelArchivalInput(t)
 	return t
@@ -3528,11 +3888,14 @@ end
 
 --- Create a structure of type AddCacheOutput
 --  
--- @param _GatewayARN [GatewayARN] 
-function M.AddCacheOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddCacheOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return AddCacheOutput structure as a key-value pair table
+function M.AddCacheOutput(args)
+	assert(args, "You must provdide an argument table when creating AddCacheOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertAddCacheOutput(t)
 	return t
@@ -3552,12 +3915,15 @@ end
 
 --- Create a structure of type DescribeStorediSCSIVolumesInput
 -- <p>A JSON object containing a list of <a>DescribeStorediSCSIVolumesInput$VolumeARNs</a>.</p>
--- @param _VolumeARNs [VolumeARNs] <p>An array of strings where each string represents the Amazon Resource Name (ARN) of a stored volume. All of the specified stored volumes must from the same gateway. Use <a>ListVolumes</a> to get volume ARNs for a gateway.</p>
--- Required parameter: VolumeARNs
-function M.DescribeStorediSCSIVolumesInput(_VolumeARNs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStorediSCSIVolumesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeARNs [VolumeARNs] <p>An array of strings where each string represents the Amazon Resource Name (ARN) of a stored volume. All of the specified stored volumes must from the same gateway. Use <a>ListVolumes</a> to get volume ARNs for a gateway.</p>
+-- Required key: VolumeARNs
+-- @return DescribeStorediSCSIVolumesInput structure as a key-value pair table
+function M.DescribeStorediSCSIVolumesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeStorediSCSIVolumesInput")
 	local t = { 
-		["VolumeARNs"] = _VolumeARNs,
+		["VolumeARNs"] = args["VolumeARNs"],
 	}
 	asserts.AssertDescribeStorediSCSIVolumesInput(t)
 	return t
@@ -3582,23 +3948,26 @@ end
 
 --- Create a structure of type DescribeCacheOutput
 --  
--- @param _CacheUsedPercentage [double] 
--- @param _CacheMissPercentage [double] 
--- @param _CacheDirtyPercentage [double] 
--- @param _CacheHitPercentage [double] 
--- @param _CacheAllocatedInBytes [long] 
--- @param _GatewayARN [GatewayARN] 
--- @param _DiskIds [DiskIds] 
-function M.DescribeCacheOutput(_CacheUsedPercentage, _CacheMissPercentage, _CacheDirtyPercentage, _CacheHitPercentage, _CacheAllocatedInBytes, _GatewayARN, _DiskIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCacheOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CacheUsedPercentage [double] 
+-- * CacheMissPercentage [double] 
+-- * CacheDirtyPercentage [double] 
+-- * CacheHitPercentage [double] 
+-- * CacheAllocatedInBytes [long] 
+-- * GatewayARN [GatewayARN] 
+-- * DiskIds [DiskIds] 
+-- @return DescribeCacheOutput structure as a key-value pair table
+function M.DescribeCacheOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeCacheOutput")
 	local t = { 
-		["CacheUsedPercentage"] = _CacheUsedPercentage,
-		["CacheMissPercentage"] = _CacheMissPercentage,
-		["CacheDirtyPercentage"] = _CacheDirtyPercentage,
-		["CacheHitPercentage"] = _CacheHitPercentage,
-		["CacheAllocatedInBytes"] = _CacheAllocatedInBytes,
-		["GatewayARN"] = _GatewayARN,
-		["DiskIds"] = _DiskIds,
+		["CacheUsedPercentage"] = args["CacheUsedPercentage"],
+		["CacheMissPercentage"] = args["CacheMissPercentage"],
+		["CacheDirtyPercentage"] = args["CacheDirtyPercentage"],
+		["CacheHitPercentage"] = args["CacheHitPercentage"],
+		["CacheAllocatedInBytes"] = args["CacheAllocatedInBytes"],
+		["GatewayARN"] = args["GatewayARN"],
+		["DiskIds"] = args["DiskIds"],
 	}
 	asserts.AssertDescribeCacheOutput(t)
 	return t
@@ -3617,11 +3986,14 @@ end
 
 --- Create a structure of type CreateTapeWithBarcodeOutput
 -- <p>CreateTapeOutput</p>
--- @param _TapeARN [TapeARN] <p>A unique Amazon Resource Name (ARN) that represents the virtual tape that was created.</p>
-function M.CreateTapeWithBarcodeOutput(_TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTapeWithBarcodeOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeARN [TapeARN] <p>A unique Amazon Resource Name (ARN) that represents the virtual tape that was created.</p>
+-- @return CreateTapeWithBarcodeOutput structure as a key-value pair table
+function M.CreateTapeWithBarcodeOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateTapeWithBarcodeOutput")
 	local t = { 
-		["TapeARN"] = _TapeARN,
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertCreateTapeWithBarcodeOutput(t)
 	return t
@@ -3641,13 +4013,16 @@ end
 
 --- Create a structure of type DescribeTapesOutput
 -- <p>DescribeTapesOutput</p>
--- @param _Marker [Marker] <p>An opaque string which can be used as part of a subsequent DescribeTapes call to retrieve the next page of results.</p> <p>If a response does not contain a marker, then there are no more results to be retrieved.</p>
--- @param _Tapes [Tapes] <p>An array of virtual tape descriptions.</p>
-function M.DescribeTapesOutput(_Marker, _Tapes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>An opaque string which can be used as part of a subsequent DescribeTapes call to retrieve the next page of results.</p> <p>If a response does not contain a marker, then there are no more results to be retrieved.</p>
+-- * Tapes [Tapes] <p>An array of virtual tape descriptions.</p>
+-- @return DescribeTapesOutput structure as a key-value pair table
+function M.DescribeTapesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTapesOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["Tapes"] = _Tapes,
+		["Marker"] = args["Marker"],
+		["Tapes"] = args["Tapes"],
 	}
 	asserts.AssertDescribeTapesOutput(t)
 	return t
@@ -3673,21 +4048,24 @@ end
 
 --- Create a structure of type UpdateMaintenanceStartTimeInput
 -- <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>UpdateMaintenanceStartTimeInput$DayOfWeek</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$HourOfDay</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$MinuteOfHour</a> </p> </li> </ul>
--- @param _HourOfDay [HourOfDay] <p>The hour component of the maintenance start time represented as <i>hh</i>, where <i>hh</i> is the hour (00 to 23). The hour of the day is in the time zone of the gateway.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _DayOfWeek [DayOfWeek] <p>The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents Sunday and 6 Saturday.</p>
--- @param _MinuteOfHour [MinuteOfHour] <p>The minute component of the maintenance start time represented as <i>mm</i>, where <i>mm</i> is the minute (00 to 59). The minute of the hour is in the time zone of the gateway.</p>
--- Required parameter: GatewayARN
--- Required parameter: HourOfDay
--- Required parameter: MinuteOfHour
--- Required parameter: DayOfWeek
-function M.UpdateMaintenanceStartTimeInput(_HourOfDay, _GatewayARN, _DayOfWeek, _MinuteOfHour, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMaintenanceStartTimeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HourOfDay [HourOfDay] <p>The hour component of the maintenance start time represented as <i>hh</i>, where <i>hh</i> is the hour (00 to 23). The hour of the day is in the time zone of the gateway.</p>
+-- * GatewayARN [GatewayARN] 
+-- * DayOfWeek [DayOfWeek] <p>The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents Sunday and 6 Saturday.</p>
+-- * MinuteOfHour [MinuteOfHour] <p>The minute component of the maintenance start time represented as <i>mm</i>, where <i>mm</i> is the minute (00 to 59). The minute of the hour is in the time zone of the gateway.</p>
+-- Required key: GatewayARN
+-- Required key: HourOfDay
+-- Required key: MinuteOfHour
+-- Required key: DayOfWeek
+-- @return UpdateMaintenanceStartTimeInput structure as a key-value pair table
+function M.UpdateMaintenanceStartTimeInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateMaintenanceStartTimeInput")
 	local t = { 
-		["HourOfDay"] = _HourOfDay,
-		["GatewayARN"] = _GatewayARN,
-		["DayOfWeek"] = _DayOfWeek,
-		["MinuteOfHour"] = _MinuteOfHour,
+		["HourOfDay"] = args["HourOfDay"],
+		["GatewayARN"] = args["GatewayARN"],
+		["DayOfWeek"] = args["DayOfWeek"],
+		["MinuteOfHour"] = args["MinuteOfHour"],
 	}
 	asserts.AssertUpdateMaintenanceStartTimeInput(t)
 	return t
@@ -3707,13 +4085,16 @@ end
 
 --- Create a structure of type DescribeTapeArchivesOutput
 -- <p>DescribeTapeArchivesOutput</p>
--- @param _Marker [Marker] <p>An opaque string that indicates the position at which the virtual tapes that were fetched for description ended. Use this marker in your next request to fetch the next set of virtual tapes in the virtual tape shelf (VTS). If there are no more virtual tapes to describe, this field does not appear in the response.</p>
--- @param _TapeArchives [TapeArchives] <p>An array of virtual tape objects in the virtual tape shelf (VTS). The description includes of the Amazon Resource Name(ARN) of the virtual tapes. The information returned includes the Amazon Resource Names (ARNs) of the tapes, size of the tapes, status of the tapes, progress of the description and tape barcode.</p>
-function M.DescribeTapeArchivesOutput(_Marker, _TapeArchives, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTapeArchivesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>An opaque string that indicates the position at which the virtual tapes that were fetched for description ended. Use this marker in your next request to fetch the next set of virtual tapes in the virtual tape shelf (VTS). If there are no more virtual tapes to describe, this field does not appear in the response.</p>
+-- * TapeArchives [TapeArchives] <p>An array of virtual tape objects in the virtual tape shelf (VTS). The description includes of the Amazon Resource Name(ARN) of the virtual tapes. The information returned includes the Amazon Resource Names (ARNs) of the tapes, size of the tapes, status of the tapes, progress of the description and tape barcode.</p>
+-- @return DescribeTapeArchivesOutput structure as a key-value pair table
+function M.DescribeTapeArchivesOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTapeArchivesOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["TapeArchives"] = _TapeArchives,
+		["Marker"] = args["Marker"],
+		["TapeArchives"] = args["TapeArchives"],
 	}
 	asserts.AssertDescribeTapeArchivesOutput(t)
 	return t
@@ -3732,11 +4113,14 @@ end
 
 --- Create a structure of type DeleteTapeOutput
 -- <p>DeleteTapeOutput</p>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the deleted virtual tape.</p>
-function M.DeleteTapeOutput(_TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTapeOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the deleted virtual tape.</p>
+-- @return DeleteTapeOutput structure as a key-value pair table
+function M.DeleteTapeOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteTapeOutput")
 	local t = { 
-		["TapeARN"] = _TapeARN,
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertDeleteTapeOutput(t)
 	return t
@@ -3755,11 +4139,14 @@ end
 
 --- Create a structure of type StartGatewayOutput
 -- <p>A JSON object containing the of the gateway that was restarted.</p>
--- @param _GatewayARN [GatewayARN] 
-function M.StartGatewayOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartGatewayOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return StartGatewayOutput structure as a key-value pair table
+function M.StartGatewayOutput(args)
+	assert(args, "You must provdide an argument table when creating StartGatewayOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertStartGatewayOutput(t)
 	return t
@@ -3779,12 +4166,15 @@ end
 
 --- Create a structure of type DescribeBandwidthRateLimitInput
 -- <p>A JSON object containing the of the gateway.</p>
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.DescribeBandwidthRateLimitInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBandwidthRateLimitInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return DescribeBandwidthRateLimitInput structure as a key-value pair table
+function M.DescribeBandwidthRateLimitInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeBandwidthRateLimitInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDescribeBandwidthRateLimitInput(t)
 	return t
@@ -3805,15 +4195,18 @@ end
 
 --- Create a structure of type CreateSnapshotFromVolumeRecoveryPointOutput
 --  
--- @param _SnapshotId [SnapshotId] 
--- @param _VolumeARN [VolumeARN] 
--- @param _VolumeRecoveryPointTime [string] 
-function M.CreateSnapshotFromVolumeRecoveryPointOutput(_SnapshotId, _VolumeARN, _VolumeRecoveryPointTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSnapshotFromVolumeRecoveryPointOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnapshotId [SnapshotId] 
+-- * VolumeARN [VolumeARN] 
+-- * VolumeRecoveryPointTime [string] 
+-- @return CreateSnapshotFromVolumeRecoveryPointOutput structure as a key-value pair table
+function M.CreateSnapshotFromVolumeRecoveryPointOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateSnapshotFromVolumeRecoveryPointOutput")
 	local t = { 
-		["SnapshotId"] = _SnapshotId,
-		["VolumeARN"] = _VolumeARN,
-		["VolumeRecoveryPointTime"] = _VolumeRecoveryPointTime,
+		["SnapshotId"] = args["SnapshotId"],
+		["VolumeARN"] = args["VolumeARN"],
+		["VolumeRecoveryPointTime"] = args["VolumeRecoveryPointTime"],
 	}
 	asserts.AssertCreateSnapshotFromVolumeRecoveryPointOutput(t)
 	return t
@@ -3834,15 +4227,18 @@ end
 
 --- Create a structure of type NetworkInterface
 -- <p>Describes a gateway's network interface.</p>
--- @param _Ipv4Address [string] <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
--- @param _MacAddress [string] <p>The Media Access Control (MAC) address of the interface.</p> <note> <p>This is currently unsupported and will not be returned in output.</p> </note>
--- @param _Ipv6Address [string] <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently not supported</i>.</p>
-function M.NetworkInterface(_Ipv4Address, _MacAddress, _Ipv6Address, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NetworkInterface")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Ipv4Address [string] <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
+-- * MacAddress [string] <p>The Media Access Control (MAC) address of the interface.</p> <note> <p>This is currently unsupported and will not be returned in output.</p> </note>
+-- * Ipv6Address [string] <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently not supported</i>.</p>
+-- @return NetworkInterface structure as a key-value pair table
+function M.NetworkInterface(args)
+	assert(args, "You must provdide an argument table when creating NetworkInterface")
 	local t = { 
-		["Ipv4Address"] = _Ipv4Address,
-		["MacAddress"] = _MacAddress,
-		["Ipv6Address"] = _Ipv6Address,
+		["Ipv4Address"] = args["Ipv4Address"],
+		["MacAddress"] = args["MacAddress"],
+		["Ipv6Address"] = args["Ipv6Address"],
 	}
 	asserts.AssertNetworkInterface(t)
 	return t
@@ -3861,11 +4257,14 @@ end
 
 --- Create a structure of type DeleteGatewayOutput
 -- <p>A JSON object containing the id of the deleted gateway.</p>
--- @param _GatewayARN [GatewayARN] 
-function M.DeleteGatewayOutput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGatewayOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- @return DeleteGatewayOutput structure as a key-value pair table
+function M.DeleteGatewayOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteGatewayOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDeleteGatewayOutput(t)
 	return t
@@ -3887,15 +4286,18 @@ end
 
 --- Create a structure of type UpdateVTLDeviceTypeInput
 --  
--- @param _DeviceType [DeviceType] <p>The type of medium changer you want to select.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
--- @param _VTLDeviceARN [VTLDeviceARN] <p>The Amazon Resource Name (ARN) of the medium changer you want to select.</p>
--- Required parameter: VTLDeviceARN
--- Required parameter: DeviceType
-function M.UpdateVTLDeviceTypeInput(_DeviceType, _VTLDeviceARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateVTLDeviceTypeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeviceType [DeviceType] <p>The type of medium changer you want to select.</p> <p> Valid Values: "STK-L700", "AWS-Gateway-VTL"</p>
+-- * VTLDeviceARN [VTLDeviceARN] <p>The Amazon Resource Name (ARN) of the medium changer you want to select.</p>
+-- Required key: VTLDeviceARN
+-- Required key: DeviceType
+-- @return UpdateVTLDeviceTypeInput structure as a key-value pair table
+function M.UpdateVTLDeviceTypeInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateVTLDeviceTypeInput")
 	local t = { 
-		["DeviceType"] = _DeviceType,
-		["VTLDeviceARN"] = _VTLDeviceARN,
+		["DeviceType"] = args["DeviceType"],
+		["VTLDeviceARN"] = args["VTLDeviceARN"],
 	}
 	asserts.AssertUpdateVTLDeviceTypeInput(t)
 	return t
@@ -3917,17 +4319,20 @@ end
 
 --- Create a structure of type DescribeWorkingStorageOutput
 -- <p>A JSON object containing the following fields:</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _DiskIds [DiskIds] <p>An array of the gateway's local disk IDs that are configured as working storage. Each local disk ID is specified as a string (minimum length of 1 and maximum length of 300). If no local disks are configured as working storage, then the DiskIds array is empty.</p>
--- @param _WorkingStorageAllocatedInBytes [long] <p>The total working storage in bytes allocated for the gateway. If no working storage is configured for the gateway, this field returns 0.</p>
--- @param _WorkingStorageUsedInBytes [long] <p>The total working storage in bytes in use by the gateway. If no working storage is configured for the gateway, this field returns 0.</p>
-function M.DescribeWorkingStorageOutput(_GatewayARN, _DiskIds, _WorkingStorageAllocatedInBytes, _WorkingStorageUsedInBytes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeWorkingStorageOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- * DiskIds [DiskIds] <p>An array of the gateway's local disk IDs that are configured as working storage. Each local disk ID is specified as a string (minimum length of 1 and maximum length of 300). If no local disks are configured as working storage, then the DiskIds array is empty.</p>
+-- * WorkingStorageAllocatedInBytes [long] <p>The total working storage in bytes allocated for the gateway. If no working storage is configured for the gateway, this field returns 0.</p>
+-- * WorkingStorageUsedInBytes [long] <p>The total working storage in bytes in use by the gateway. If no working storage is configured for the gateway, this field returns 0.</p>
+-- @return DescribeWorkingStorageOutput structure as a key-value pair table
+function M.DescribeWorkingStorageOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeWorkingStorageOutput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
-		["DiskIds"] = _DiskIds,
-		["WorkingStorageAllocatedInBytes"] = _WorkingStorageAllocatedInBytes,
-		["WorkingStorageUsedInBytes"] = _WorkingStorageUsedInBytes,
+		["GatewayARN"] = args["GatewayARN"],
+		["DiskIds"] = args["DiskIds"],
+		["WorkingStorageAllocatedInBytes"] = args["WorkingStorageAllocatedInBytes"],
+		["WorkingStorageUsedInBytes"] = args["WorkingStorageUsedInBytes"],
 	}
 	asserts.AssertDescribeWorkingStorageOutput(t)
 	return t
@@ -3950,19 +4355,22 @@ end
 
 --- Create a structure of type DescribeSnapshotScheduleOutput
 --  
--- @param _RecurrenceInHours [RecurrenceInHours] 
--- @param _StartAt [HourOfDay] 
--- @param _Description [Description] 
--- @param _VolumeARN [VolumeARN] 
--- @param _Timezone [GatewayTimezone] 
-function M.DescribeSnapshotScheduleOutput(_RecurrenceInHours, _StartAt, _Description, _VolumeARN, _Timezone, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSnapshotScheduleOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RecurrenceInHours [RecurrenceInHours] 
+-- * StartAt [HourOfDay] 
+-- * Description [Description] 
+-- * VolumeARN [VolumeARN] 
+-- * Timezone [GatewayTimezone] 
+-- @return DescribeSnapshotScheduleOutput structure as a key-value pair table
+function M.DescribeSnapshotScheduleOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeSnapshotScheduleOutput")
 	local t = { 
-		["RecurrenceInHours"] = _RecurrenceInHours,
-		["StartAt"] = _StartAt,
-		["Description"] = _Description,
-		["VolumeARN"] = _VolumeARN,
-		["Timezone"] = _Timezone,
+		["RecurrenceInHours"] = args["RecurrenceInHours"],
+		["StartAt"] = args["StartAt"],
+		["Description"] = args["Description"],
+		["VolumeARN"] = args["VolumeARN"],
+		["Timezone"] = args["Timezone"],
 	}
 	asserts.AssertDescribeSnapshotScheduleOutput(t)
 	return t
@@ -3984,15 +4392,18 @@ end
 
 --- Create a structure of type CreateSnapshotInput
 -- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateSnapshotInput$SnapshotDescription</a> </p> </li> <li> <p> <a>CreateSnapshotInput$VolumeARN</a> </p> </li> </ul>
--- @param _SnapshotDescription [SnapshotDescription] <p>Textual description of the snapshot that appears in the Amazon EC2 console, Elastic Block Store snapshots panel in the <b>Description</b> field, and in the AWS Storage Gateway snapshot <b>Details</b> pane, <b>Description</b> field</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
--- Required parameter: VolumeARN
--- Required parameter: SnapshotDescription
-function M.CreateSnapshotInput(_SnapshotDescription, _VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSnapshotInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnapshotDescription [SnapshotDescription] <p>Textual description of the snapshot that appears in the Amazon EC2 console, Elastic Block Store snapshots panel in the <b>Description</b> field, and in the AWS Storage Gateway snapshot <b>Details</b> pane, <b>Description</b> field</p>
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume. Use the <a>ListVolumes</a> operation to return a list of gateway volumes.</p>
+-- Required key: VolumeARN
+-- Required key: SnapshotDescription
+-- @return CreateSnapshotInput structure as a key-value pair table
+function M.CreateSnapshotInput(args)
+	assert(args, "You must provdide an argument table when creating CreateSnapshotInput")
 	local t = { 
-		["SnapshotDescription"] = _SnapshotDescription,
-		["VolumeARN"] = _VolumeARN,
+		["SnapshotDescription"] = args["SnapshotDescription"],
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertCreateSnapshotInput(t)
 	return t
@@ -4013,15 +4424,18 @@ end
 
 --- Create a structure of type CreateStorediSCSIVolumeOutput
 -- <p>A JSON object containing the following fields:</p>
--- @param _VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
--- @param _TargetARN [TargetARN] <p>he Amazon Resource Name (ARN) of the volume target that includes the iSCSI name that initiators can use to connect to the target.</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the configured volume.</p>
-function M.CreateStorediSCSIVolumeOutput(_VolumeSizeInBytes, _TargetARN, _VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStorediSCSIVolumeOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeSizeInBytes [long] <p>The size of the volume in bytes.</p>
+-- * TargetARN [TargetARN] <p>he Amazon Resource Name (ARN) of the volume target that includes the iSCSI name that initiators can use to connect to the target.</p>
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the configured volume.</p>
+-- @return CreateStorediSCSIVolumeOutput structure as a key-value pair table
+function M.CreateStorediSCSIVolumeOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateStorediSCSIVolumeOutput")
 	local t = { 
-		["VolumeSizeInBytes"] = _VolumeSizeInBytes,
-		["TargetARN"] = _TargetARN,
-		["VolumeARN"] = _VolumeARN,
+		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
+		["TargetARN"] = args["TargetARN"],
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertCreateStorediSCSIVolumeOutput(t)
 	return t
@@ -4040,11 +4454,14 @@ end
 
 --- Create a structure of type RetrieveTapeArchiveOutput
 -- <p>RetrieveTapeArchiveOutput</p>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the retrieved virtual tape.</p>
-function M.RetrieveTapeArchiveOutput(_TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveTapeArchiveOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the retrieved virtual tape.</p>
+-- @return RetrieveTapeArchiveOutput structure as a key-value pair table
+function M.RetrieveTapeArchiveOutput(args)
+	assert(args, "You must provdide an argument table when creating RetrieveTapeArchiveOutput")
 	local t = { 
-		["TapeARN"] = _TapeARN,
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertRetrieveTapeArchiveOutput(t)
 	return t
@@ -4064,13 +4481,16 @@ end
 
 --- Create a structure of type CreateSnapshotOutput
 -- <p>A JSON object containing the following fields:</p>
--- @param _SnapshotId [SnapshotId] <p>The snapshot ID that is used to refer to the snapshot in future operations such as describing snapshots (Amazon Elastic Compute Cloud API <code>DescribeSnapshots</code>) or creating a volume from a snapshot (<a>CreateStorediSCSIVolume</a>).</p>
--- @param _VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume of which the snapshot was taken.</p>
-function M.CreateSnapshotOutput(_SnapshotId, _VolumeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSnapshotOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnapshotId [SnapshotId] <p>The snapshot ID that is used to refer to the snapshot in future operations such as describing snapshots (Amazon Elastic Compute Cloud API <code>DescribeSnapshots</code>) or creating a volume from a snapshot (<a>CreateStorediSCSIVolume</a>).</p>
+-- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume of which the snapshot was taken.</p>
+-- @return CreateSnapshotOutput structure as a key-value pair table
+function M.CreateSnapshotOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateSnapshotOutput")
 	local t = { 
-		["SnapshotId"] = _SnapshotId,
-		["VolumeARN"] = _VolumeARN,
+		["SnapshotId"] = args["SnapshotId"],
+		["VolumeARN"] = args["VolumeARN"],
 	}
 	asserts.AssertCreateSnapshotOutput(t)
 	return t
@@ -4089,11 +4509,14 @@ end
 
 --- Create a structure of type RetrieveTapeRecoveryPointOutput
 -- <p>RetrieveTapeRecoveryPointOutput</p>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which the recovery point was retrieved.</p>
-function M.RetrieveTapeRecoveryPointOutput(_TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveTapeRecoveryPointOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which the recovery point was retrieved.</p>
+-- @return RetrieveTapeRecoveryPointOutput structure as a key-value pair table
+function M.RetrieveTapeRecoveryPointOutput(args)
+	assert(args, "You must provdide an argument table when creating RetrieveTapeRecoveryPointOutput")
 	local t = { 
-		["TapeARN"] = _TapeARN,
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertRetrieveTapeRecoveryPointOutput(t)
 	return t
@@ -4120,26 +4543,29 @@ end
 
 --- Create a structure of type UpdateNFSFileShareInput
 -- <p>UpdateNFSFileShareInput</p>
--- @param _FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the file share to be updated. </p>
--- @param _DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by a file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
--- @param _Squash [Squash] <p>The user mapped to anonymous user. Valid options are the following:</p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
--- @param _NFSFileShareDefaults [NFSFileShareDefaults] <p>The default values for the file share. Optional.</p>
--- @param _KMSKey [KMSKey] <p>The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional. </p>
--- @param _ReadOnly [Boolean] <p>Sets the write status of a file share: "true" if the write status is read-only, and otherwise "false".</p>
--- @param _ClientList [FileShareClientList] <p>The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks.</p>
--- @param _KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional. </p>
--- Required parameter: FileShareARN
-function M.UpdateNFSFileShareInput(_FileShareARN, _DefaultStorageClass, _Squash, _NFSFileShareDefaults, _KMSKey, _ReadOnly, _ClientList, _KMSEncrypted, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateNFSFileShareInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the file share to be updated. </p>
+-- * DefaultStorageClass [StorageClass] <p>The default storage class for objects put into an Amazon S3 bucket by a file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.</p>
+-- * Squash [Squash] <p>The user mapped to anonymous user. Valid options are the following:</p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
+-- * NFSFileShareDefaults [NFSFileShareDefaults] <p>The default values for the file share. Optional.</p>
+-- * KMSKey [KMSKey] <p>The KMS key used for Amazon S3 server side encryption. This value can only be set when KmsEncrypted is true. Optional. </p>
+-- * ReadOnly [Boolean] <p>Sets the write status of a file share: "true" if the write status is read-only, and otherwise "false".</p>
+-- * ClientList [FileShareClientList] <p>The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks.</p>
+-- * KMSEncrypted [Boolean] <p>True to use Amazon S3 server side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional. </p>
+-- Required key: FileShareARN
+-- @return UpdateNFSFileShareInput structure as a key-value pair table
+function M.UpdateNFSFileShareInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateNFSFileShareInput")
 	local t = { 
-		["FileShareARN"] = _FileShareARN,
-		["DefaultStorageClass"] = _DefaultStorageClass,
-		["Squash"] = _Squash,
-		["NFSFileShareDefaults"] = _NFSFileShareDefaults,
-		["KMSKey"] = _KMSKey,
-		["ReadOnly"] = _ReadOnly,
-		["ClientList"] = _ClientList,
-		["KMSEncrypted"] = _KMSEncrypted,
+		["FileShareARN"] = args["FileShareARN"],
+		["DefaultStorageClass"] = args["DefaultStorageClass"],
+		["Squash"] = args["Squash"],
+		["NFSFileShareDefaults"] = args["NFSFileShareDefaults"],
+		["KMSKey"] = args["KMSKey"],
+		["ReadOnly"] = args["ReadOnly"],
+		["ClientList"] = args["ClientList"],
+		["KMSEncrypted"] = args["KMSEncrypted"],
 	}
 	asserts.AssertUpdateNFSFileShareInput(t)
 	return t
@@ -4168,26 +4594,29 @@ end
 
 --- Create a structure of type CreateStorediSCSIVolumeInput
 -- <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateStorediSCSIVolumeInput$DiskId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$NetworkInterfaceId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$PreserveExistingData</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$SnapshotId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$TargetName</a> </p> </li> </ul>
--- @param _NetworkInterfaceId [NetworkInterfaceId] <p>The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use <a>DescribeGatewayInformation</a> to get a list of the network interfaces available on a gateway.</p> <p> Valid Values: A valid IP address.</p>
--- @param _SnapshotId [SnapshotId] <p>The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the new stored volume. Specify this field if you want to create the iSCSI storage volume from a snapshot otherwise do not include this field. To list snapshots for your account use <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a> in the <i>Amazon Elastic Compute Cloud API Reference</i>.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _PreserveExistingData [boolean] <p>Specify this field as true if you want to preserve the data on the local disk. Otherwise, specifying this field as false creates an empty volume.</p> <p> Valid Values: true, false</p>
--- @param _TargetName [TargetName] <p>The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying <code>TargetName</code> as <i>myvolume</i> results in the target ARN of arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.</p>
--- @param _DiskId [DiskId] <p>The unique identifier for the gateway local disk that is configured as a stored volume. Use <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a> to list disk IDs for a gateway.</p>
--- Required parameter: GatewayARN
--- Required parameter: DiskId
--- Required parameter: PreserveExistingData
--- Required parameter: TargetName
--- Required parameter: NetworkInterfaceId
-function M.CreateStorediSCSIVolumeInput(_NetworkInterfaceId, _SnapshotId, _GatewayARN, _PreserveExistingData, _TargetName, _DiskId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStorediSCSIVolumeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NetworkInterfaceId [NetworkInterfaceId] <p>The network interface of the gateway on which to expose the iSCSI target. Only IPv4 addresses are accepted. Use <a>DescribeGatewayInformation</a> to get a list of the network interfaces available on a gateway.</p> <p> Valid Values: A valid IP address.</p>
+-- * SnapshotId [SnapshotId] <p>The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the new stored volume. Specify this field if you want to create the iSCSI storage volume from a snapshot otherwise do not include this field. To list snapshots for your account use <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html">DescribeSnapshots</a> in the <i>Amazon Elastic Compute Cloud API Reference</i>.</p>
+-- * GatewayARN [GatewayARN] 
+-- * PreserveExistingData [boolean] <p>Specify this field as true if you want to preserve the data on the local disk. Otherwise, specifying this field as false creates an empty volume.</p> <p> Valid Values: true, false</p>
+-- * TargetName [TargetName] <p>The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. For example, specifying <code>TargetName</code> as <i>myvolume</i> results in the target ARN of arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/target/iqn.1997-05.com.amazon:myvolume. The target name must be unique across all volumes of a gateway.</p>
+-- * DiskId [DiskId] <p>The unique identifier for the gateway local disk that is configured as a stored volume. Use <a href="http://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html">ListLocalDisks</a> to list disk IDs for a gateway.</p>
+-- Required key: GatewayARN
+-- Required key: DiskId
+-- Required key: PreserveExistingData
+-- Required key: TargetName
+-- Required key: NetworkInterfaceId
+-- @return CreateStorediSCSIVolumeInput structure as a key-value pair table
+function M.CreateStorediSCSIVolumeInput(args)
+	assert(args, "You must provdide an argument table when creating CreateStorediSCSIVolumeInput")
 	local t = { 
-		["NetworkInterfaceId"] = _NetworkInterfaceId,
-		["SnapshotId"] = _SnapshotId,
-		["GatewayARN"] = _GatewayARN,
-		["PreserveExistingData"] = _PreserveExistingData,
-		["TargetName"] = _TargetName,
-		["DiskId"] = _DiskId,
+		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
+		["SnapshotId"] = args["SnapshotId"],
+		["GatewayARN"] = args["GatewayARN"],
+		["PreserveExistingData"] = args["PreserveExistingData"],
+		["TargetName"] = args["TargetName"],
+		["DiskId"] = args["DiskId"],
 	}
 	asserts.AssertCreateStorediSCSIVolumeInput(t)
 	return t
@@ -4206,11 +4635,14 @@ end
 
 --- Create a structure of type CancelArchivalOutput
 -- <p>CancelArchivalOutput</p>
--- @param _TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which archiving was canceled.</p>
-function M.CancelArchivalOutput(_TapeARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelArchivalOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which archiving was canceled.</p>
+-- @return CancelArchivalOutput structure as a key-value pair table
+function M.CancelArchivalOutput(args)
+	assert(args, "You must provdide an argument table when creating CancelArchivalOutput")
 	local t = { 
-		["TapeARN"] = _TapeARN,
+		["TapeARN"] = args["TapeARN"],
 	}
 	asserts.AssertCancelArchivalOutput(t)
 	return t
@@ -4240,28 +4672,31 @@ end
 
 --- Create a structure of type CreateCachediSCSIVolumeInput
 --  
--- @param _VolumeSizeInBytes [long] 
--- @param _NetworkInterfaceId [NetworkInterfaceId] 
--- @param _ClientToken [ClientToken] 
--- @param _SnapshotId [SnapshotId] 
--- @param _SourceVolumeARN [VolumeARN] <p>The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new volume must be equal to or larger than the size of the existing volume, in bytes.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _TargetName [TargetName] 
--- Required parameter: GatewayARN
--- Required parameter: VolumeSizeInBytes
--- Required parameter: TargetName
--- Required parameter: NetworkInterfaceId
--- Required parameter: ClientToken
-function M.CreateCachediSCSIVolumeInput(_VolumeSizeInBytes, _NetworkInterfaceId, _ClientToken, _SnapshotId, _SourceVolumeARN, _GatewayARN, _TargetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCachediSCSIVolumeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeSizeInBytes [long] 
+-- * NetworkInterfaceId [NetworkInterfaceId] 
+-- * ClientToken [ClientToken] 
+-- * SnapshotId [SnapshotId] 
+-- * SourceVolumeARN [VolumeARN] <p>The ARN for an existing volume. Specifying this ARN makes the new volume into an exact copy of the specified existing volume's latest recovery point. The <code>VolumeSizeInBytes</code> value for this new volume must be equal to or larger than the size of the existing volume, in bytes.</p>
+-- * GatewayARN [GatewayARN] 
+-- * TargetName [TargetName] 
+-- Required key: GatewayARN
+-- Required key: VolumeSizeInBytes
+-- Required key: TargetName
+-- Required key: NetworkInterfaceId
+-- Required key: ClientToken
+-- @return CreateCachediSCSIVolumeInput structure as a key-value pair table
+function M.CreateCachediSCSIVolumeInput(args)
+	assert(args, "You must provdide an argument table when creating CreateCachediSCSIVolumeInput")
 	local t = { 
-		["VolumeSizeInBytes"] = _VolumeSizeInBytes,
-		["NetworkInterfaceId"] = _NetworkInterfaceId,
-		["ClientToken"] = _ClientToken,
-		["SnapshotId"] = _SnapshotId,
-		["SourceVolumeARN"] = _SourceVolumeARN,
-		["GatewayARN"] = _GatewayARN,
-		["TargetName"] = _TargetName,
+		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
+		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
+		["ClientToken"] = args["ClientToken"],
+		["SnapshotId"] = args["SnapshotId"],
+		["SourceVolumeARN"] = args["SourceVolumeARN"],
+		["GatewayARN"] = args["GatewayARN"],
+		["TargetName"] = args["TargetName"],
 	}
 	asserts.AssertCreateCachediSCSIVolumeInput(t)
 	return t
@@ -4284,18 +4719,21 @@ end
 
 --- Create a structure of type DescribeVTLDevicesInput
 -- <p>DescribeVTLDevicesInput</p>
--- @param _Marker [Marker] <p>An opaque string that indicates the position at which to begin describing the VTL devices.</p>
--- @param _GatewayARN [GatewayARN] 
--- @param _Limit [PositiveIntObject] <p>Specifies that the number of VTL devices described be limited to the specified number.</p>
--- @param _VTLDeviceARNs [VTLDeviceARNs] <p>An array of strings, where each string represents the Amazon Resource Name (ARN) of a VTL device.</p> <note> <p>All of the specified VTL devices must be from the same gateway. If no VTL devices are specified, the result will contain all devices on the specified gateway.</p> </note>
--- Required parameter: GatewayARN
-function M.DescribeVTLDevicesInput(_Marker, _GatewayARN, _Limit, _VTLDeviceARNs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVTLDevicesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>An opaque string that indicates the position at which to begin describing the VTL devices.</p>
+-- * GatewayARN [GatewayARN] 
+-- * Limit [PositiveIntObject] <p>Specifies that the number of VTL devices described be limited to the specified number.</p>
+-- * VTLDeviceARNs [VTLDeviceARNs] <p>An array of strings, where each string represents the Amazon Resource Name (ARN) of a VTL device.</p> <note> <p>All of the specified VTL devices must be from the same gateway. If no VTL devices are specified, the result will contain all devices on the specified gateway.</p> </note>
+-- Required key: GatewayARN
+-- @return DescribeVTLDevicesInput structure as a key-value pair table
+function M.DescribeVTLDevicesInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeVTLDevicesInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["GatewayARN"] = _GatewayARN,
-		["Limit"] = _Limit,
-		["VTLDeviceARNs"] = _VTLDeviceARNs,
+		["Marker"] = args["Marker"],
+		["GatewayARN"] = args["GatewayARN"],
+		["Limit"] = args["Limit"],
+		["VTLDeviceARNs"] = args["VTLDeviceARNs"],
 	}
 	asserts.AssertDescribeVTLDevicesInput(t)
 	return t
@@ -4315,12 +4753,15 @@ end
 
 --- Create a structure of type DescribeMaintenanceStartTimeInput
 -- <p>A JSON object containing the of the gateway.</p>
--- @param _GatewayARN [GatewayARN] 
--- Required parameter: GatewayARN
-function M.DescribeMaintenanceStartTimeInput(_GatewayARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMaintenanceStartTimeInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GatewayARN [GatewayARN] 
+-- Required key: GatewayARN
+-- @return DescribeMaintenanceStartTimeInput structure as a key-value pair table
+function M.DescribeMaintenanceStartTimeInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeMaintenanceStartTimeInput")
 	local t = { 
-		["GatewayARN"] = _GatewayARN,
+		["GatewayARN"] = args["GatewayARN"],
 	}
 	asserts.AssertDescribeMaintenanceStartTimeInput(t)
 	return t

@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type NumberDomainAttributesExceeded
 -- <p>Too many attributes in this domain.</p>
--- @param _BoxUsage [Float] 
-function M.NumberDomainAttributesExceeded(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NumberDomainAttributesExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return NumberDomainAttributesExceeded structure as a key-value pair table
+function M.NumberDomainAttributesExceeded(args)
+	assert(args, "You must provdide an argument table when creating NumberDomainAttributesExceeded")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertNumberDomainAttributesExceeded(t)
 	return t
@@ -58,12 +61,15 @@ end
 
 --- Create a structure of type DeleteDomainRequest
 --  
--- @param _DomainName [String] The name of the domain to delete.
--- Required parameter: DomainName
-function M.DeleteDomainRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [String] The name of the domain to delete.
+-- Required key: DomainName
+-- @return DeleteDomainRequest structure as a key-value pair table
+function M.DeleteDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDomainRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDeleteDomainRequest(t)
 	return t
@@ -82,11 +88,14 @@ end
 
 --- Create a structure of type InvalidQueryExpression
 -- <p>The specified query expression syntax is not valid.</p>
--- @param _BoxUsage [Float] 
-function M.InvalidQueryExpression(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidQueryExpression")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return InvalidQueryExpression structure as a key-value pair table
+function M.InvalidQueryExpression(args)
+	assert(args, "You must provdide an argument table when creating InvalidQueryExpression")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertInvalidQueryExpression(t)
 	return t
@@ -105,11 +114,14 @@ end
 
 --- Create a structure of type RequestTimeout
 -- <p>A timeout occurred when attempting to query the specified domain with specified query expression.</p>
--- @param _BoxUsage [Float] 
-function M.RequestTimeout(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestTimeout")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return RequestTimeout structure as a key-value pair table
+function M.RequestTimeout(args)
+	assert(args, "You must provdide an argument table when creating RequestTimeout")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertRequestTimeout(t)
 	return t
@@ -130,14 +142,17 @@ end
 
 --- Create a structure of type DeletableAttribute
 -- <p></p>
--- @param _Name [String] The name of the attribute.
--- @param _Value [String] The value of the attribute.
--- Required parameter: Name
-function M.DeletableAttribute(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletableAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] The name of the attribute.
+-- * Value [String] The value of the attribute.
+-- Required key: Name
+-- @return DeletableAttribute structure as a key-value pair table
+function M.DeletableAttribute(args)
+	assert(args, "You must provdide an argument table when creating DeletableAttribute")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertDeletableAttribute(t)
 	return t
@@ -156,11 +171,14 @@ end
 
 --- Create a structure of type InvalidNumberValueTests
 -- <p>Too many predicates exist in the query expression.</p>
--- @param _BoxUsage [Float] 
-function M.InvalidNumberValueTests(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNumberValueTests")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return InvalidNumberValueTests structure as a key-value pair table
+function M.InvalidNumberValueTests(args)
+	assert(args, "You must provdide an argument table when creating InvalidNumberValueTests")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertInvalidNumberValueTests(t)
 	return t
@@ -179,11 +197,14 @@ end
 
 --- Create a structure of type NumberDomainsExceeded
 -- <p>Too many domains exist per this account.</p>
--- @param _BoxUsage [Float] 
-function M.NumberDomainsExceeded(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NumberDomainsExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return NumberDomainsExceeded structure as a key-value pair table
+function M.NumberDomainsExceeded(args)
+	assert(args, "You must provdide an argument table when creating NumberDomainsExceeded")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertNumberDomainsExceeded(t)
 	return t
@@ -202,11 +223,14 @@ end
 
 --- Create a structure of type NumberItemAttributesExceeded
 -- <p>Too many attributes in this item.</p>
--- @param _BoxUsage [Float] 
-function M.NumberItemAttributesExceeded(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NumberItemAttributesExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return NumberItemAttributesExceeded structure as a key-value pair table
+function M.NumberItemAttributesExceeded(args)
+	assert(args, "You must provdide an argument table when creating NumberItemAttributesExceeded")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertNumberItemAttributesExceeded(t)
 	return t
@@ -228,16 +252,19 @@ end
 
 --- Create a structure of type SelectRequest
 --  
--- @param _ConsistentRead [Boolean] Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.
--- @param _NextToken [String] A string informing Amazon SimpleDB where to start the next list of <code>ItemNames</code>.
--- @param _SelectExpression [String] The expression used to query the domain.
--- Required parameter: SelectExpression
-function M.SelectRequest(_ConsistentRead, _NextToken, _SelectExpression, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SelectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConsistentRead [Boolean] Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.
+-- * NextToken [String] A string informing Amazon SimpleDB where to start the next list of <code>ItemNames</code>.
+-- * SelectExpression [String] The expression used to query the domain.
+-- Required key: SelectExpression
+-- @return SelectRequest structure as a key-value pair table
+function M.SelectRequest(args)
+	assert(args, "You must provdide an argument table when creating SelectRequest")
 	local t = { 
-		["ConsistentRead"] = _ConsistentRead,
-		["NextToken"] = _NextToken,
-		["SelectExpression"] = _SelectExpression,
+		["ConsistentRead"] = args["ConsistentRead"],
+		["NextToken"] = args["NextToken"],
+		["SelectExpression"] = args["SelectExpression"],
 	}
 	asserts.AssertSelectRequest(t)
 	return t
@@ -256,11 +283,14 @@ end
 
 --- Create a structure of type AttributeDoesNotExist
 -- <p>The specified attribute does not exist.</p>
--- @param _BoxUsage [Float] 
-function M.AttributeDoesNotExist(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttributeDoesNotExist")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return AttributeDoesNotExist structure as a key-value pair table
+function M.AttributeDoesNotExist(args)
+	assert(args, "You must provdide an argument table when creating AttributeDoesNotExist")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertAttributeDoesNotExist(t)
 	return t
@@ -281,14 +311,17 @@ end
 
 --- Create a structure of type DeletableItem
 --  
--- @param _Attributes [DeletableAttributeList] 
--- @param _Name [String] 
--- Required parameter: Name
-function M.DeletableItem(_Attributes, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletableItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [DeletableAttributeList] 
+-- * Name [String] 
+-- Required key: Name
+-- @return DeletableItem structure as a key-value pair table
+function M.DeletableItem(args)
+	assert(args, "You must provdide an argument table when creating DeletableItem")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["Name"] = _Name,
+		["Attributes"] = args["Attributes"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeletableItem(t)
 	return t
@@ -308,12 +341,15 @@ end
 
 --- Create a structure of type CreateDomainRequest
 --  
--- @param _DomainName [String] The name of the domain to create. The name can range between 3 and 255 characters and can contain the following characters: a-z, A-Z, 0-9, '_', '-', and '.'.
--- Required parameter: DomainName
-function M.CreateDomainRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [String] The name of the domain to create. The name can range between 3 and 255 characters and can contain the following characters: a-z, A-Z, 0-9, '_', '-', and '.'.
+-- Required key: DomainName
+-- @return CreateDomainRequest structure as a key-value pair table
+function M.CreateDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDomainRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertCreateDomainRequest(t)
 	return t
@@ -334,15 +370,18 @@ end
 
 --- Create a structure of type UpdateCondition
 -- <p> Specifies the conditions under which data should be updated. If an update condition is specified for a request, the data will only be updated if the condition is satisfied. For example, if an attribute with a specific name and value exists, or if a specific attribute doesn't exist. </p>
--- @param _Exists [Boolean] <p>A value specifying whether or not the specified attribute must exist with the specified value in order for the update condition to be satisfied. Specify <code>true</code> if the attribute must exist for the update condition to be satisfied. Specify <code>false</code> if the attribute should not exist in order for the update condition to be satisfied.</p>
--- @param _Name [String] <p>The name of the attribute involved in the condition.</p>
--- @param _Value [String] <p>The value of an attribute. This value can only be specified when the <code>Exists</code> parameter is equal to <code>true</code>.</p>
-function M.UpdateCondition(_Exists, _Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateCondition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Exists [Boolean] <p>A value specifying whether or not the specified attribute must exist with the specified value in order for the update condition to be satisfied. Specify <code>true</code> if the attribute must exist for the update condition to be satisfied. Specify <code>false</code> if the attribute should not exist in order for the update condition to be satisfied.</p>
+-- * Name [String] <p>The name of the attribute involved in the condition.</p>
+-- * Value [String] <p>The value of an attribute. This value can only be specified when the <code>Exists</code> parameter is equal to <code>true</code>.</p>
+-- @return UpdateCondition structure as a key-value pair table
+function M.UpdateCondition(args)
+	assert(args, "You must provdide an argument table when creating UpdateCondition")
 	local t = { 
-		["Exists"] = _Exists,
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Exists"] = args["Exists"],
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertUpdateCondition(t)
 	return t
@@ -361,11 +400,14 @@ end
 
 --- Create a structure of type NumberSubmittedAttributesExceeded
 -- <p>Too many attributes exist in a single call.</p>
--- @param _BoxUsage [Float] 
-function M.NumberSubmittedAttributesExceeded(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NumberSubmittedAttributesExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return NumberSubmittedAttributesExceeded structure as a key-value pair table
+function M.NumberSubmittedAttributesExceeded(args)
+	assert(args, "You must provdide an argument table when creating NumberSubmittedAttributesExceeded")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertNumberSubmittedAttributesExceeded(t)
 	return t
@@ -384,11 +426,14 @@ end
 
 --- Create a structure of type InvalidNextToken
 -- <p>The specified NextToken is not valid. </p>
--- @param _BoxUsage [Float] 
-function M.InvalidNextToken(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextToken")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return InvalidNextToken structure as a key-value pair table
+function M.InvalidNextToken(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextToken")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertInvalidNextToken(t)
 	return t
@@ -407,11 +452,14 @@ end
 
 --- Create a structure of type InvalidNumberPredicates
 -- <p>Too many predicates exist in the query expression.</p>
--- @param _BoxUsage [Float] 
-function M.InvalidNumberPredicates(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNumberPredicates")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return InvalidNumberPredicates structure as a key-value pair table
+function M.InvalidNumberPredicates(args)
+	assert(args, "You must provdide an argument table when creating InvalidNumberPredicates")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertInvalidNumberPredicates(t)
 	return t
@@ -430,11 +478,14 @@ end
 
 --- Create a structure of type GetAttributesResult
 --  
--- @param _Attributes [AttributeList] The list of attributes returned by the operation.
-function M.GetAttributesResult(_Attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAttributesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [AttributeList] The list of attributes returned by the operation.
+-- @return GetAttributesResult structure as a key-value pair table
+function M.GetAttributesResult(args)
+	assert(args, "You must provdide an argument table when creating GetAttributesResult")
 	local t = { 
-		["Attributes"] = _Attributes,
+		["Attributes"] = args["Attributes"],
 	}
 	asserts.AssertGetAttributesResult(t)
 	return t
@@ -458,19 +509,22 @@ end
 
 --- Create a structure of type GetAttributesRequest
 --  
--- @param _ConsistentRead [Boolean] Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.
--- @param _ItemName [String] The name of the item.
--- @param _AttributeNames [AttributeNameList] The names of the attributes.
--- @param _DomainName [String] The name of the domain in which to perform the operation.
--- Required parameter: DomainName
--- Required parameter: ItemName
-function M.GetAttributesRequest(_ConsistentRead, _ItemName, _AttributeNames, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConsistentRead [Boolean] Determines whether or not strong consistency should be enforced when data is read from SimpleDB. If <code>true</code>, any data previously written to SimpleDB will be returned. Otherwise, results will be consistent eventually, and the client may not see data that was written immediately before your read.
+-- * ItemName [String] The name of the item.
+-- * AttributeNames [AttributeNameList] The names of the attributes.
+-- * DomainName [String] The name of the domain in which to perform the operation.
+-- Required key: DomainName
+-- Required key: ItemName
+-- @return GetAttributesRequest structure as a key-value pair table
+function M.GetAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetAttributesRequest")
 	local t = { 
-		["ConsistentRead"] = _ConsistentRead,
-		["ItemName"] = _ItemName,
-		["AttributeNames"] = _AttributeNames,
-		["DomainName"] = _DomainName,
+		["ConsistentRead"] = args["ConsistentRead"],
+		["ItemName"] = args["ItemName"],
+		["AttributeNames"] = args["AttributeNames"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertGetAttributesRequest(t)
 	return t
@@ -490,13 +544,16 @@ end
 
 --- Create a structure of type ListDomainsResult
 --  
--- @param _NextToken [String] An opaque token indicating that there are more domains than the specified <code>MaxNumberOfDomains</code> still available.
--- @param _DomainNames [DomainNameList] A list of domain names that match the expression.
-function M.ListDomainsResult(_NextToken, _DomainNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] An opaque token indicating that there are more domains than the specified <code>MaxNumberOfDomains</code> still available.
+-- * DomainNames [DomainNameList] A list of domain names that match the expression.
+-- @return ListDomainsResult structure as a key-value pair table
+function M.ListDomainsResult(args)
+	assert(args, "You must provdide an argument table when creating ListDomainsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["DomainNames"] = _DomainNames,
+		["NextToken"] = args["NextToken"],
+		["DomainNames"] = args["DomainNames"],
 	}
 	asserts.AssertListDomainsResult(t)
 	return t
@@ -515,11 +572,14 @@ end
 
 --- Create a structure of type NoSuchDomain
 -- <p>The specified domain does not exist.</p>
--- @param _BoxUsage [Float] 
-function M.NoSuchDomain(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchDomain")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return NoSuchDomain structure as a key-value pair table
+function M.NoSuchDomain(args)
+	assert(args, "You must provdide an argument table when creating NoSuchDomain")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertNoSuchDomain(t)
 	return t
@@ -544,20 +604,23 @@ end
 
 --- Create a structure of type PutAttributesRequest
 --  
--- @param _Expected [UpdateCondition] The update condition which, if specified, determines whether the specified attributes will be updated or not. The update condition must be satisfied in order for this request to be processed and the attributes to be updated.
--- @param _Attributes [ReplaceableAttributeList] The list of attributes.
--- @param _ItemName [String] The name of the item.
--- @param _DomainName [String] The name of the domain in which to perform the operation.
--- Required parameter: DomainName
--- Required parameter: ItemName
--- Required parameter: Attributes
-function M.PutAttributesRequest(_Expected, _Attributes, _ItemName, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Expected [UpdateCondition] The update condition which, if specified, determines whether the specified attributes will be updated or not. The update condition must be satisfied in order for this request to be processed and the attributes to be updated.
+-- * Attributes [ReplaceableAttributeList] The list of attributes.
+-- * ItemName [String] The name of the item.
+-- * DomainName [String] The name of the domain in which to perform the operation.
+-- Required key: DomainName
+-- Required key: ItemName
+-- Required key: Attributes
+-- @return PutAttributesRequest structure as a key-value pair table
+function M.PutAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating PutAttributesRequest")
 	local t = { 
-		["Expected"] = _Expected,
-		["Attributes"] = _Attributes,
-		["ItemName"] = _ItemName,
-		["DomainName"] = _DomainName,
+		["Expected"] = args["Expected"],
+		["Attributes"] = args["Attributes"],
+		["ItemName"] = args["ItemName"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertPutAttributesRequest(t)
 	return t
@@ -582,23 +645,26 @@ end
 
 --- Create a structure of type DomainMetadataResult
 --  
--- @param _Timestamp [Integer] The data and time when metadata was calculated, in Epoch (UNIX) seconds.
--- @param _AttributeValueCount [Integer] The number of all attribute name/value pairs in the domain.
--- @param _AttributeValuesSizeBytes [Long] The total size of all attribute values in the domain, in bytes.
--- @param _ItemNamesSizeBytes [Long] The total size of all item names in the domain, in bytes.
--- @param _AttributeNameCount [Integer] The number of unique attribute names in the domain.
--- @param _ItemCount [Integer] The number of all items in the domain.
--- @param _AttributeNamesSizeBytes [Long] The total size of all unique attribute names in the domain, in bytes.
-function M.DomainMetadataResult(_Timestamp, _AttributeValueCount, _AttributeValuesSizeBytes, _ItemNamesSizeBytes, _AttributeNameCount, _ItemCount, _AttributeNamesSizeBytes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainMetadataResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Timestamp [Integer] The data and time when metadata was calculated, in Epoch (UNIX) seconds.
+-- * AttributeValueCount [Integer] The number of all attribute name/value pairs in the domain.
+-- * AttributeValuesSizeBytes [Long] The total size of all attribute values in the domain, in bytes.
+-- * ItemNamesSizeBytes [Long] The total size of all item names in the domain, in bytes.
+-- * AttributeNameCount [Integer] The number of unique attribute names in the domain.
+-- * ItemCount [Integer] The number of all items in the domain.
+-- * AttributeNamesSizeBytes [Long] The total size of all unique attribute names in the domain, in bytes.
+-- @return DomainMetadataResult structure as a key-value pair table
+function M.DomainMetadataResult(args)
+	assert(args, "You must provdide an argument table when creating DomainMetadataResult")
 	local t = { 
-		["Timestamp"] = _Timestamp,
-		["AttributeValueCount"] = _AttributeValueCount,
-		["AttributeValuesSizeBytes"] = _AttributeValuesSizeBytes,
-		["ItemNamesSizeBytes"] = _ItemNamesSizeBytes,
-		["AttributeNameCount"] = _AttributeNameCount,
-		["ItemCount"] = _ItemCount,
-		["AttributeNamesSizeBytes"] = _AttributeNamesSizeBytes,
+		["Timestamp"] = args["Timestamp"],
+		["AttributeValueCount"] = args["AttributeValueCount"],
+		["AttributeValuesSizeBytes"] = args["AttributeValuesSizeBytes"],
+		["ItemNamesSizeBytes"] = args["ItemNamesSizeBytes"],
+		["AttributeNameCount"] = args["AttributeNameCount"],
+		["ItemCount"] = args["ItemCount"],
+		["AttributeNamesSizeBytes"] = args["AttributeNamesSizeBytes"],
 	}
 	asserts.AssertDomainMetadataResult(t)
 	return t
@@ -620,15 +686,18 @@ end
 
 --- Create a structure of type BatchPutAttributesRequest
 --  
--- @param _Items [ReplaceableItemList] A list of items on which to perform the operation.
--- @param _DomainName [String] The name of the domain in which the attributes are being stored.
--- Required parameter: DomainName
--- Required parameter: Items
-function M.BatchPutAttributesRequest(_Items, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchPutAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Items [ReplaceableItemList] A list of items on which to perform the operation.
+-- * DomainName [String] The name of the domain in which the attributes are being stored.
+-- Required key: DomainName
+-- Required key: Items
+-- @return BatchPutAttributesRequest structure as a key-value pair table
+function M.BatchPutAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating BatchPutAttributesRequest")
 	local t = { 
-		["Items"] = _Items,
-		["DomainName"] = _DomainName,
+		["Items"] = args["Items"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertBatchPutAttributesRequest(t)
 	return t
@@ -651,17 +720,20 @@ end
 
 --- Create a structure of type Item
 -- <p></p>
--- @param _Attributes [AttributeList] A list of attributes.
--- @param _Name [String] The name of the item.
--- @param _AlternateNameEncoding [String] <p></p>
--- Required parameter: Name
--- Required parameter: Attributes
-function M.Item(_Attributes, _Name, _AlternateNameEncoding, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Item")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [AttributeList] A list of attributes.
+-- * Name [String] The name of the item.
+-- * AlternateNameEncoding [String] <p></p>
+-- Required key: Name
+-- Required key: Attributes
+-- @return Item structure as a key-value pair table
+function M.Item(args)
+	assert(args, "You must provdide an argument table when creating Item")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["Name"] = _Name,
-		["AlternateNameEncoding"] = _AlternateNameEncoding,
+		["Attributes"] = args["Attributes"],
+		["Name"] = args["Name"],
+		["AlternateNameEncoding"] = args["AlternateNameEncoding"],
 	}
 	asserts.AssertItem(t)
 	return t
@@ -684,17 +756,20 @@ end
 
 --- Create a structure of type ReplaceableAttribute
 -- <p></p>
--- @param _Name [String] The name of the replaceable attribute.
--- @param _Value [String] The value of the replaceable attribute.
--- @param _Replace [Boolean] A flag specifying whether or not to replace the attribute/value pair or to add a new attribute/value pair. The default setting is <code>false</code>.
--- Required parameter: Name
--- Required parameter: Value
-function M.ReplaceableAttribute(_Name, _Value, _Replace, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplaceableAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] The name of the replaceable attribute.
+-- * Value [String] The value of the replaceable attribute.
+-- * Replace [Boolean] A flag specifying whether or not to replace the attribute/value pair or to add a new attribute/value pair. The default setting is <code>false</code>.
+-- Required key: Name
+-- Required key: Value
+-- @return ReplaceableAttribute structure as a key-value pair table
+function M.ReplaceableAttribute(args)
+	assert(args, "You must provdide an argument table when creating ReplaceableAttribute")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
-		["Replace"] = _Replace,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
+		["Replace"] = args["Replace"],
 	}
 	asserts.AssertReplaceableAttribute(t)
 	return t
@@ -714,13 +789,16 @@ end
 
 --- Create a structure of type SelectResult
 --  
--- @param _Items [ItemList] A list of items that match the select expression.
--- @param _NextToken [String] An opaque token indicating that more items than <code>MaxNumberOfItems</code> were matched, the response size exceeded 1 megabyte, or the execution time exceeded 5 seconds.
-function M.SelectResult(_Items, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SelectResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Items [ItemList] A list of items that match the select expression.
+-- * NextToken [String] An opaque token indicating that more items than <code>MaxNumberOfItems</code> were matched, the response size exceeded 1 megabyte, or the execution time exceeded 5 seconds.
+-- @return SelectResult structure as a key-value pair table
+function M.SelectResult(args)
+	assert(args, "You must provdide an argument table when creating SelectResult")
 	local t = { 
-		["Items"] = _Items,
-		["NextToken"] = _NextToken,
+		["Items"] = args["Items"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertSelectResult(t)
 	return t
@@ -739,11 +817,14 @@ end
 
 --- Create a structure of type DuplicateItemName
 -- <p>The item name was specified more than once. </p>
--- @param _BoxUsage [Float] 
-function M.DuplicateItemName(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateItemName")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return DuplicateItemName structure as a key-value pair table
+function M.DuplicateItemName(args)
+	assert(args, "You must provdide an argument table when creating DuplicateItemName")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertDuplicateItemName(t)
 	return t
@@ -762,11 +843,14 @@ end
 
 --- Create a structure of type InvalidParameterValue
 -- <p>The value for a parameter is invalid.</p>
--- @param _BoxUsage [Float] 
-function M.InvalidParameterValue(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return InvalidParameterValue structure as a key-value pair table
+function M.InvalidParameterValue(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterValue")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertInvalidParameterValue(t)
 	return t
@@ -788,15 +872,18 @@ end
 
 --- Create a structure of type BatchDeleteAttributesRequest
 --  
--- @param _Items [DeletableItemList] A list of items on which to perform the operation.
--- @param _DomainName [String] The name of the domain in which the attributes are being deleted.
--- Required parameter: DomainName
--- Required parameter: Items
-function M.BatchDeleteAttributesRequest(_Items, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchDeleteAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Items [DeletableItemList] A list of items on which to perform the operation.
+-- * DomainName [String] The name of the domain in which the attributes are being deleted.
+-- Required key: DomainName
+-- Required key: Items
+-- @return BatchDeleteAttributesRequest structure as a key-value pair table
+function M.BatchDeleteAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating BatchDeleteAttributesRequest")
 	local t = { 
-		["Items"] = _Items,
-		["DomainName"] = _DomainName,
+		["Items"] = args["Items"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertBatchDeleteAttributesRequest(t)
 	return t
@@ -820,19 +907,22 @@ end
 
 --- Create a structure of type DeleteAttributesRequest
 --  
--- @param _Expected [UpdateCondition] The update condition which, if specified, determines whether the specified attributes will be deleted or not. The update condition must be satisfied in order for this request to be processed and the attributes to be deleted.
--- @param _Attributes [DeletableAttributeList] A list of Attributes. Similar to columns on a spreadsheet, attributes represent categories of data that can be assigned to items.
--- @param _ItemName [String] The name of the item. Similar to rows on a spreadsheet, items represent individual objects that contain one or more value-attribute pairs.
--- @param _DomainName [String] The name of the domain in which to perform the operation.
--- Required parameter: DomainName
--- Required parameter: ItemName
-function M.DeleteAttributesRequest(_Expected, _Attributes, _ItemName, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Expected [UpdateCondition] The update condition which, if specified, determines whether the specified attributes will be deleted or not. The update condition must be satisfied in order for this request to be processed and the attributes to be deleted.
+-- * Attributes [DeletableAttributeList] A list of Attributes. Similar to columns on a spreadsheet, attributes represent categories of data that can be assigned to items.
+-- * ItemName [String] The name of the item. Similar to rows on a spreadsheet, items represent individual objects that contain one or more value-attribute pairs.
+-- * DomainName [String] The name of the domain in which to perform the operation.
+-- Required key: DomainName
+-- Required key: ItemName
+-- @return DeleteAttributesRequest structure as a key-value pair table
+function M.DeleteAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAttributesRequest")
 	local t = { 
-		["Expected"] = _Expected,
-		["Attributes"] = _Attributes,
-		["ItemName"] = _ItemName,
-		["DomainName"] = _DomainName,
+		["Expected"] = args["Expected"],
+		["Attributes"] = args["Attributes"],
+		["ItemName"] = args["ItemName"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDeleteAttributesRequest(t)
 	return t
@@ -851,11 +941,14 @@ end
 
 --- Create a structure of type MissingParameter
 -- <p>The request must contain the specified missing parameter.</p>
--- @param _BoxUsage [Float] 
-function M.MissingParameter(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MissingParameter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return MissingParameter structure as a key-value pair table
+function M.MissingParameter(args)
+	assert(args, "You must provdide an argument table when creating MissingParameter")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertMissingParameter(t)
 	return t
@@ -874,11 +967,14 @@ end
 
 --- Create a structure of type TooManyRequestedAttributes
 -- <p>Too many attributes requested.</p>
--- @param _BoxUsage [Float] 
-function M.TooManyRequestedAttributes(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestedAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return TooManyRequestedAttributes structure as a key-value pair table
+function M.TooManyRequestedAttributes(args)
+	assert(args, "You must provdide an argument table when creating TooManyRequestedAttributes")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertTooManyRequestedAttributes(t)
 	return t
@@ -898,13 +994,16 @@ end
 
 --- Create a structure of type ListDomainsRequest
 --  
--- @param _MaxNumberOfDomains [Integer] The maximum number of domain names you want returned. The range is 1 to 100. The default setting is 100.
--- @param _NextToken [String] A string informing Amazon SimpleDB where to start the next list of domain names.
-function M.ListDomainsRequest(_MaxNumberOfDomains, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaxNumberOfDomains [Integer] The maximum number of domain names you want returned. The range is 1 to 100. The default setting is 100.
+-- * NextToken [String] A string informing Amazon SimpleDB where to start the next list of domain names.
+-- @return ListDomainsRequest structure as a key-value pair table
+function M.ListDomainsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDomainsRequest")
 	local t = { 
-		["MaxNumberOfDomains"] = _MaxNumberOfDomains,
-		["NextToken"] = _NextToken,
+		["MaxNumberOfDomains"] = args["MaxNumberOfDomains"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListDomainsRequest(t)
 	return t
@@ -928,19 +1027,22 @@ end
 
 --- Create a structure of type Attribute
 -- <p></p>
--- @param _AlternateValueEncoding [String] <p></p>
--- @param _Name [String] The name of the attribute.
--- @param _Value [String] The value of the attribute.
--- @param _AlternateNameEncoding [String] <p></p>
--- Required parameter: Name
--- Required parameter: Value
-function M.Attribute(_AlternateValueEncoding, _Name, _Value, _AlternateNameEncoding, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Attribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AlternateValueEncoding [String] <p></p>
+-- * Name [String] The name of the attribute.
+-- * Value [String] The value of the attribute.
+-- * AlternateNameEncoding [String] <p></p>
+-- Required key: Name
+-- Required key: Value
+-- @return Attribute structure as a key-value pair table
+function M.Attribute(args)
+	assert(args, "You must provdide an argument table when creating Attribute")
 	local t = { 
-		["AlternateValueEncoding"] = _AlternateValueEncoding,
-		["Name"] = _Name,
-		["Value"] = _Value,
-		["AlternateNameEncoding"] = _AlternateNameEncoding,
+		["AlternateValueEncoding"] = args["AlternateValueEncoding"],
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
+		["AlternateNameEncoding"] = args["AlternateNameEncoding"],
 	}
 	asserts.AssertAttribute(t)
 	return t
@@ -959,11 +1061,14 @@ end
 
 --- Create a structure of type NumberDomainBytesExceeded
 -- <p>Too many bytes in this domain.</p>
--- @param _BoxUsage [Float] 
-function M.NumberDomainBytesExceeded(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NumberDomainBytesExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return NumberDomainBytesExceeded structure as a key-value pair table
+function M.NumberDomainBytesExceeded(args)
+	assert(args, "You must provdide an argument table when creating NumberDomainBytesExceeded")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertNumberDomainBytesExceeded(t)
 	return t
@@ -982,11 +1087,14 @@ end
 
 --- Create a structure of type NumberSubmittedItemsExceeded
 -- <p>Too many items exist in a single call.</p>
--- @param _BoxUsage [Float] 
-function M.NumberSubmittedItemsExceeded(_BoxUsage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NumberSubmittedItemsExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoxUsage [Float] 
+-- @return NumberSubmittedItemsExceeded structure as a key-value pair table
+function M.NumberSubmittedItemsExceeded(args)
+	assert(args, "You must provdide an argument table when creating NumberSubmittedItemsExceeded")
 	local t = { 
-		["BoxUsage"] = _BoxUsage,
+		["BoxUsage"] = args["BoxUsage"],
 	}
 	asserts.AssertNumberSubmittedItemsExceeded(t)
 	return t
@@ -1008,15 +1116,18 @@ end
 
 --- Create a structure of type ReplaceableItem
 -- <p></p>
--- @param _Attributes [ReplaceableAttributeList] The list of attributes for a replaceable item.
--- @param _Name [String] The name of the replaceable item.
--- Required parameter: Name
--- Required parameter: Attributes
-function M.ReplaceableItem(_Attributes, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplaceableItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [ReplaceableAttributeList] The list of attributes for a replaceable item.
+-- * Name [String] The name of the replaceable item.
+-- Required key: Name
+-- Required key: Attributes
+-- @return ReplaceableItem structure as a key-value pair table
+function M.ReplaceableItem(args)
+	assert(args, "You must provdide an argument table when creating ReplaceableItem")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["Name"] = _Name,
+		["Attributes"] = args["Attributes"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertReplaceableItem(t)
 	return t
@@ -1036,12 +1147,15 @@ end
 
 --- Create a structure of type DomainMetadataRequest
 --  
--- @param _DomainName [String] The name of the domain for which to display the metadata of.
--- Required parameter: DomainName
-function M.DomainMetadataRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainMetadataRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [String] The name of the domain for which to display the metadata of.
+-- Required key: DomainName
+-- @return DomainMetadataRequest structure as a key-value pair table
+function M.DomainMetadataRequest(args)
+	assert(args, "You must provdide an argument table when creating DomainMetadataRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDomainMetadataRequest(t)
 	return t

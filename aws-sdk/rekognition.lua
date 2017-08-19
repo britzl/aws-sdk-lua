@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type DeleteCollectionResponse
 --  
--- @param _StatusCode [UInteger] <p>HTTP status code that indicates the result of the operation.</p>
-function M.DeleteCollectionResponse(_StatusCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCollectionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StatusCode [UInteger] <p>HTTP status code that indicates the result of the operation.</p>
+-- @return DeleteCollectionResponse structure as a key-value pair table
+function M.DeleteCollectionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteCollectionResponse")
 	local t = { 
-		["StatusCode"] = _StatusCode,
+		["StatusCode"] = args["StatusCode"],
 	}
 	asserts.AssertDeleteCollectionResponse(t)
 	return t
@@ -57,11 +60,14 @@ end
 
 --- Create a structure of type DeleteFacesResponse
 --  
--- @param _DeletedFaces [FaceIdList] <p>An array of strings (face IDs) of the faces that were deleted.</p>
-function M.DeleteFacesResponse(_DeletedFaces, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFacesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeletedFaces [FaceIdList] <p>An array of strings (face IDs) of the faces that were deleted.</p>
+-- @return DeleteFacesResponse structure as a key-value pair table
+function M.DeleteFacesResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteFacesResponse")
 	local t = { 
-		["DeletedFaces"] = _DeletedFaces,
+		["DeletedFaces"] = args["DeletedFaces"],
 	}
 	asserts.AssertDeleteFacesResponse(t)
 	return t
@@ -81,13 +87,16 @@ end
 
 --- Create a structure of type Smile
 -- <p>Indicates whether or not the face is smiling, and the confidence level in the determination.</p>
--- @param _Confidence [Percent] <p>Level of confidence in the determination.</p>
--- @param _Value [Boolean] <p>Boolean value that indicates whether the face is smiling or not.</p>
-function M.Smile(_Confidence, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Smile")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- * Value [Boolean] <p>Boolean value that indicates whether the face is smiling or not.</p>
+-- @return Smile structure as a key-value pair table
+function M.Smile(args)
+	assert(args, "You must provdide an argument table when creating Smile")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Value"] = _Value,
+		["Confidence"] = args["Confidence"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertSmile(t)
 	return t
@@ -107,13 +116,16 @@ end
 
 --- Create a structure of type ComparedSourceImageFace
 -- <p>Type that describes the face Amazon Rekognition chose to compare with the faces in the target. This contains a bounding box for the selected face and confidence level that the bounding box contains a face. Note that Amazon Rekognition selects the largest face in the source image for this comparison. </p>
--- @param _BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
--- @param _Confidence [Percent] <p>Confidence level that the selected bounding box contains a face.</p>
-function M.ComparedSourceImageFace(_BoundingBox, _Confidence, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComparedSourceImageFace")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
+-- * Confidence [Percent] <p>Confidence level that the selected bounding box contains a face.</p>
+-- @return ComparedSourceImageFace structure as a key-value pair table
+function M.ComparedSourceImageFace(args)
+	assert(args, "You must provdide an argument table when creating ComparedSourceImageFace")
 	local t = { 
-		["BoundingBox"] = _BoundingBox,
-		["Confidence"] = _Confidence,
+		["BoundingBox"] = args["BoundingBox"],
+		["Confidence"] = args["Confidence"],
 	}
 	asserts.AssertComparedSourceImageFace(t)
 	return t
@@ -131,8 +143,11 @@ end
 
 --- Create a structure of type InvalidS3ObjectException
 -- <p>Amazon Rekognition is unable to access the S3 object specified in the request.</p>
-function M.InvalidS3ObjectException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidS3ObjectException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidS3ObjectException structure as a key-value pair table
+function M.InvalidS3ObjectException(args)
+	assert(args, "You must provdide an argument table when creating InvalidS3ObjectException")
 	local t = { 
 	}
 	asserts.AssertInvalidS3ObjectException(t)
@@ -155,15 +170,18 @@ end
 
 --- Create a structure of type DeleteFacesRequest
 --  
--- @param _FaceIds [FaceIdList] <p>An array of face IDs to delete.</p>
--- @param _CollectionId [CollectionId] <p>Collection from which to remove the specific faces.</p>
--- Required parameter: CollectionId
--- Required parameter: FaceIds
-function M.DeleteFacesRequest(_FaceIds, _CollectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FaceIds [FaceIdList] <p>An array of face IDs to delete.</p>
+-- * CollectionId [CollectionId] <p>Collection from which to remove the specific faces.</p>
+-- Required key: CollectionId
+-- Required key: FaceIds
+-- @return DeleteFacesRequest structure as a key-value pair table
+function M.DeleteFacesRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteFacesRequest")
 	local t = { 
-		["FaceIds"] = _FaceIds,
-		["CollectionId"] = _CollectionId,
+		["FaceIds"] = args["FaceIds"],
+		["CollectionId"] = args["CollectionId"],
 	}
 	asserts.AssertDeleteFacesRequest(t)
 	return t
@@ -183,13 +201,16 @@ end
 
 --- Create a structure of type GetCelebrityInfoResponse
 --  
--- @param _Name [String] <p>The name of the celebrity.</p>
--- @param _Urls [Urls] <p>An array of URLs pointing to additional celebrity information. </p>
-function M.GetCelebrityInfoResponse(_Name, _Urls, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCelebrityInfoResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>The name of the celebrity.</p>
+-- * Urls [Urls] <p>An array of URLs pointing to additional celebrity information. </p>
+-- @return GetCelebrityInfoResponse structure as a key-value pair table
+function M.GetCelebrityInfoResponse(args)
+	assert(args, "You must provdide an argument table when creating GetCelebrityInfoResponse")
 	local t = { 
-		["Name"] = _Name,
-		["Urls"] = _Urls,
+		["Name"] = args["Name"],
+		["Urls"] = args["Urls"],
 	}
 	asserts.AssertGetCelebrityInfoResponse(t)
 	return t
@@ -207,8 +228,11 @@ end
 
 --- Create a structure of type InternalServerError
 -- <p>Amazon Rekognition experienced a service issue. Try your call again.</p>
-function M.InternalServerError(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InternalServerError structure as a key-value pair table
+function M.InternalServerError(args)
+	assert(args, "You must provdide an argument table when creating InternalServerError")
 	local t = { 
 	}
 	asserts.AssertInternalServerError(t)
@@ -227,8 +251,11 @@ end
 
 --- Create a structure of type ImageTooLargeException
 -- <p>The input image size exceeds the allowed limit. For more information, see <a>limits</a>. </p>
-function M.ImageTooLargeException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImageTooLargeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ImageTooLargeException structure as a key-value pair table
+function M.ImageTooLargeException(args)
+	assert(args, "You must provdide an argument table when creating ImageTooLargeException")
 	local t = { 
 	}
 	asserts.AssertImageTooLargeException(t)
@@ -250,15 +277,18 @@ end
 
 --- Create a structure of type Landmark
 -- <p>Indicates the location of the landmark on the face.</p>
--- @param _Y [Float] <p>y-coordinate from the top left of the landmark expressed as the ration of the height of the image. For example, if the images is 700x200 and the y-coordinate of the landmark is at 100 pixels, this value is 0.5.</p>
--- @param _X [Float] <p>x-coordinate from the top left of the landmark expressed as the ration of the width of the image. For example, if the images is 700x200 and the x-coordinate of the landmark is at 350 pixels, this value is 0.5. </p>
--- @param _Type [LandmarkType] <p>Type of the landmark.</p>
-function M.Landmark(_Y, _X, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Landmark")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Y [Float] <p>y-coordinate from the top left of the landmark expressed as the ration of the height of the image. For example, if the images is 700x200 and the y-coordinate of the landmark is at 100 pixels, this value is 0.5.</p>
+-- * X [Float] <p>x-coordinate from the top left of the landmark expressed as the ration of the width of the image. For example, if the images is 700x200 and the x-coordinate of the landmark is at 350 pixels, this value is 0.5. </p>
+-- * Type [LandmarkType] <p>Type of the landmark.</p>
+-- @return Landmark structure as a key-value pair table
+function M.Landmark(args)
+	assert(args, "You must provdide an argument table when creating Landmark")
 	local t = { 
-		["Y"] = _Y,
-		["X"] = _X,
-		["Type"] = _Type,
+		["Y"] = args["Y"],
+		["X"] = args["X"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertLandmark(t)
 	return t
@@ -278,13 +308,16 @@ end
 
 --- Create a structure of type Eyeglasses
 -- <p>Indicates whether or not the face is wearing eye glasses, and the confidence level in the determination.</p>
--- @param _Confidence [Percent] <p>Level of confidence in the determination.</p>
--- @param _Value [Boolean] <p>Boolean value that indicates whether the face is wearing eye glasses or not.</p>
-function M.Eyeglasses(_Confidence, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Eyeglasses")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- * Value [Boolean] <p>Boolean value that indicates whether the face is wearing eye glasses or not.</p>
+-- @return Eyeglasses structure as a key-value pair table
+function M.Eyeglasses(args)
+	assert(args, "You must provdide an argument table when creating Eyeglasses")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Value"] = _Value,
+		["Confidence"] = args["Confidence"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertEyeglasses(t)
 	return t
@@ -304,13 +337,16 @@ end
 
 --- Create a structure of type SearchFacesResponse
 --  
--- @param _SearchedFaceId [FaceId] <p>ID of the face that was searched for matches in a collection.</p>
--- @param _FaceMatches [FaceMatchList] <p>An array of faces that matched the input face, along with the confidence in the match.</p>
-function M.SearchFacesResponse(_SearchedFaceId, _FaceMatches, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchFacesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SearchedFaceId [FaceId] <p>ID of the face that was searched for matches in a collection.</p>
+-- * FaceMatches [FaceMatchList] <p>An array of faces that matched the input face, along with the confidence in the match.</p>
+-- @return SearchFacesResponse structure as a key-value pair table
+function M.SearchFacesResponse(args)
+	assert(args, "You must provdide an argument table when creating SearchFacesResponse")
 	local t = { 
-		["SearchedFaceId"] = _SearchedFaceId,
-		["FaceMatches"] = _FaceMatches,
+		["SearchedFaceId"] = args["SearchedFaceId"],
+		["FaceMatches"] = args["FaceMatches"],
 	}
 	asserts.AssertSearchFacesResponse(t)
 	return t
@@ -330,13 +366,16 @@ end
 
 --- Create a structure of type ListCollectionsResponse
 --  
--- @param _NextToken [PaginationToken] <p>If the result is truncated, the response provides a <code>NextToken</code> that you can use in the subsequent request to fetch the next set of collection IDs.</p>
--- @param _CollectionIds [CollectionIdList] <p>An array of collection IDs.</p>
-function M.ListCollectionsResponse(_NextToken, _CollectionIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCollectionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationToken] <p>If the result is truncated, the response provides a <code>NextToken</code> that you can use in the subsequent request to fetch the next set of collection IDs.</p>
+-- * CollectionIds [CollectionIdList] <p>An array of collection IDs.</p>
+-- @return ListCollectionsResponse structure as a key-value pair table
+function M.ListCollectionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListCollectionsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["CollectionIds"] = _CollectionIds,
+		["NextToken"] = args["NextToken"],
+		["CollectionIds"] = args["CollectionIds"],
 	}
 	asserts.AssertListCollectionsResponse(t)
 	return t
@@ -360,19 +399,22 @@ end
 
 --- Create a structure of type SearchFacesByImageRequest
 --  
--- @param _Image [Image] <p>The input image as bytes or an S3 object.</p>
--- @param _MaxFaces [MaxFaces] <p>Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.</p>
--- @param _FaceMatchThreshold [Percent] <p>(Optional) Specifies the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.</p>
--- @param _CollectionId [CollectionId] <p>ID of the collection to search.</p>
--- Required parameter: CollectionId
--- Required parameter: Image
-function M.SearchFacesByImageRequest(_Image, _MaxFaces, _FaceMatchThreshold, _CollectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchFacesByImageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Image [Image] <p>The input image as bytes or an S3 object.</p>
+-- * MaxFaces [MaxFaces] <p>Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.</p>
+-- * FaceMatchThreshold [Percent] <p>(Optional) Specifies the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.</p>
+-- * CollectionId [CollectionId] <p>ID of the collection to search.</p>
+-- Required key: CollectionId
+-- Required key: Image
+-- @return SearchFacesByImageRequest structure as a key-value pair table
+function M.SearchFacesByImageRequest(args)
+	assert(args, "You must provdide an argument table when creating SearchFacesByImageRequest")
 	local t = { 
-		["Image"] = _Image,
-		["MaxFaces"] = _MaxFaces,
-		["FaceMatchThreshold"] = _FaceMatchThreshold,
-		["CollectionId"] = _CollectionId,
+		["Image"] = args["Image"],
+		["MaxFaces"] = args["MaxFaces"],
+		["FaceMatchThreshold"] = args["FaceMatchThreshold"],
+		["CollectionId"] = args["CollectionId"],
 	}
 	asserts.AssertSearchFacesByImageRequest(t)
 	return t
@@ -396,19 +438,22 @@ end
 
 --- Create a structure of type IndexFacesRequest
 --  
--- @param _DetectionAttributes [Attributes] <p>An array of facial attributes that you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for <code>Attributes</code> or if you specify <code>["DEFAULT"]</code>, the API returns the following subset of facial attributes: <code>BoundingBox</code>, <code>Confidence</code>, <code>Pose</code>, <code>Quality</code> and <code>Landmarks</code>. If you provide <code>["ALL"]</code>, all facial attributes are returned but the operation will take longer to complete.</p> <p>If you provide both, <code>["ALL", "DEFAULT"]</code>, the service uses a logical AND operator to determine which attributes to return (in this case, all attributes). </p>
--- @param _Image [Image] <p>The input image as bytes or an S3 object.</p>
--- @param _ExternalImageId [ExternalImageId] <p>ID you want to assign to all the faces detected in the image.</p>
--- @param _CollectionId [CollectionId] <p>The ID of an existing collection to which you want to add the faces that are detected in the input images.</p>
--- Required parameter: CollectionId
--- Required parameter: Image
-function M.IndexFacesRequest(_DetectionAttributes, _Image, _ExternalImageId, _CollectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IndexFacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DetectionAttributes [Attributes] <p>An array of facial attributes that you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for <code>Attributes</code> or if you specify <code>["DEFAULT"]</code>, the API returns the following subset of facial attributes: <code>BoundingBox</code>, <code>Confidence</code>, <code>Pose</code>, <code>Quality</code> and <code>Landmarks</code>. If you provide <code>["ALL"]</code>, all facial attributes are returned but the operation will take longer to complete.</p> <p>If you provide both, <code>["ALL", "DEFAULT"]</code>, the service uses a logical AND operator to determine which attributes to return (in this case, all attributes). </p>
+-- * Image [Image] <p>The input image as bytes or an S3 object.</p>
+-- * ExternalImageId [ExternalImageId] <p>ID you want to assign to all the faces detected in the image.</p>
+-- * CollectionId [CollectionId] <p>The ID of an existing collection to which you want to add the faces that are detected in the input images.</p>
+-- Required key: CollectionId
+-- Required key: Image
+-- @return IndexFacesRequest structure as a key-value pair table
+function M.IndexFacesRequest(args)
+	assert(args, "You must provdide an argument table when creating IndexFacesRequest")
 	local t = { 
-		["DetectionAttributes"] = _DetectionAttributes,
-		["Image"] = _Image,
-		["ExternalImageId"] = _ExternalImageId,
-		["CollectionId"] = _CollectionId,
+		["DetectionAttributes"] = args["DetectionAttributes"],
+		["Image"] = args["Image"],
+		["ExternalImageId"] = args["ExternalImageId"],
+		["CollectionId"] = args["CollectionId"],
 	}
 	asserts.AssertIndexFacesRequest(t)
 	return t
@@ -428,12 +473,15 @@ end
 
 --- Create a structure of type DeleteCollectionRequest
 --  
--- @param _CollectionId [CollectionId] <p>ID of the collection to delete.</p>
--- Required parameter: CollectionId
-function M.DeleteCollectionRequest(_CollectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCollectionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CollectionId [CollectionId] <p>ID of the collection to delete.</p>
+-- Required key: CollectionId
+-- @return DeleteCollectionRequest structure as a key-value pair table
+function M.DeleteCollectionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteCollectionRequest")
 	local t = { 
-		["CollectionId"] = _CollectionId,
+		["CollectionId"] = args["CollectionId"],
 	}
 	asserts.AssertDeleteCollectionRequest(t)
 	return t
@@ -454,15 +502,18 @@ end
 
 --- Create a structure of type S3Object
 -- <p>Provides the S3 bucket name and object name.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
--- @param _Version [S3ObjectVersion] <p>If the bucket is versioning enabled, you can specify the object version. </p>
--- @param _Bucket [S3Bucket] <p>Name of the S3 bucket.</p>
--- @param _Name [S3ObjectName] <p>S3 object key name.</p>
-function M.S3Object(_Version, _Bucket, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3Object")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [S3ObjectVersion] <p>If the bucket is versioning enabled, you can specify the object version. </p>
+-- * Bucket [S3Bucket] <p>Name of the S3 bucket.</p>
+-- * Name [S3ObjectName] <p>S3 object key name.</p>
+-- @return S3Object structure as a key-value pair table
+function M.S3Object(args)
+	assert(args, "You must provdide an argument table when creating S3Object")
 	local t = { 
-		["Version"] = _Version,
-		["Bucket"] = _Bucket,
-		["Name"] = _Name,
+		["Version"] = args["Version"],
+		["Bucket"] = args["Bucket"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertS3Object(t)
 	return t
@@ -482,13 +533,16 @@ end
 
 --- Create a structure of type Label
 -- <p>Structure containing details about the detected label, including name, and level of confidence.</p>
--- @param _Confidence [Percent] <p>Level of confidence.</p>
--- @param _Name [String] <p>The name (label) of the object.</p>
-function M.Label(_Confidence, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Label")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Level of confidence.</p>
+-- * Name [String] <p>The name (label) of the object.</p>
+-- @return Label structure as a key-value pair table
+function M.Label(args)
+	assert(args, "You must provdide an argument table when creating Label")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Name"] = _Name,
+		["Confidence"] = args["Confidence"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertLabel(t)
 	return t
@@ -508,13 +562,16 @@ end
 
 --- Create a structure of type ImageQuality
 -- <p>Identifies face image brightness and sharpness. </p>
--- @param _Sharpness [Float] <p>Value representing sharpness of the face. The service returns a value between 0 and 100 (inclusive). A higher value indicates a sharper face image.</p>
--- @param _Brightness [Float] <p>Value representing brightness of the face. The service returns a value between 0 and 100 (inclusive). A higher value indicates a brighter face image.</p>
-function M.ImageQuality(_Sharpness, _Brightness, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ImageQuality")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Sharpness [Float] <p>Value representing sharpness of the face. The service returns a value between 0 and 100 (inclusive). A higher value indicates a sharper face image.</p>
+-- * Brightness [Float] <p>Value representing brightness of the face. The service returns a value between 0 and 100 (inclusive). A higher value indicates a brighter face image.</p>
+-- @return ImageQuality structure as a key-value pair table
+function M.ImageQuality(args)
+	assert(args, "You must provdide an argument table when creating ImageQuality")
 	local t = { 
-		["Sharpness"] = _Sharpness,
-		["Brightness"] = _Brightness,
+		["Sharpness"] = args["Sharpness"],
+		["Brightness"] = args["Brightness"],
 	}
 	asserts.AssertImageQuality(t)
 	return t
@@ -533,11 +590,14 @@ end
 
 --- Create a structure of type DetectModerationLabelsResponse
 --  
--- @param _ModerationLabels [ModerationLabels] <p>An array of labels for explicit or suggestive adult content found in the image. The list includes the top-level label and each child label detected in the image. This is useful for filtering specific categories of content. </p>
-function M.DetectModerationLabelsResponse(_ModerationLabels, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetectModerationLabelsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ModerationLabels [ModerationLabels] <p>An array of labels for explicit or suggestive adult content found in the image. The list includes the top-level label and each child label detected in the image. This is useful for filtering specific categories of content. </p>
+-- @return DetectModerationLabelsResponse structure as a key-value pair table
+function M.DetectModerationLabelsResponse(args)
+	assert(args, "You must provdide an argument table when creating DetectModerationLabelsResponse")
 	local t = { 
-		["ModerationLabels"] = _ModerationLabels,
+		["ModerationLabels"] = args["ModerationLabels"],
 	}
 	asserts.AssertDetectModerationLabelsResponse(t)
 	return t
@@ -557,13 +617,16 @@ end
 
 --- Create a structure of type IndexFacesResponse
 --  
--- @param _FaceRecords [FaceRecordList] <p>An array of faces detected and added to the collection. For more information, see <a>howitworks-index-faces</a>. </p>
--- @param _OrientationCorrection [OrientationCorrection] <p>The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>FaceRecords</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in jpeg format, it might contain exchangeable image (Exif) metadata. If so, and the Exif metadata populates the orientation field, the value of <code>OrientationCorrection</code> is null and the bounding box coordinates in <code>FaceRecords</code> represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata.</p> </note>
-function M.IndexFacesResponse(_FaceRecords, _OrientationCorrection, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IndexFacesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FaceRecords [FaceRecordList] <p>An array of faces detected and added to the collection. For more information, see <a>howitworks-index-faces</a>. </p>
+-- * OrientationCorrection [OrientationCorrection] <p>The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>FaceRecords</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in jpeg format, it might contain exchangeable image (Exif) metadata. If so, and the Exif metadata populates the orientation field, the value of <code>OrientationCorrection</code> is null and the bounding box coordinates in <code>FaceRecords</code> represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata.</p> </note>
+-- @return IndexFacesResponse structure as a key-value pair table
+function M.IndexFacesResponse(args)
+	assert(args, "You must provdide an argument table when creating IndexFacesResponse")
 	local t = { 
-		["FaceRecords"] = _FaceRecords,
-		["OrientationCorrection"] = _OrientationCorrection,
+		["FaceRecords"] = args["FaceRecords"],
+		["OrientationCorrection"] = args["OrientationCorrection"],
 	}
 	asserts.AssertIndexFacesResponse(t)
 	return t
@@ -583,12 +646,15 @@ end
 
 --- Create a structure of type CreateCollectionRequest
 --  
--- @param _CollectionId [CollectionId] <p>ID for the collection that you are creating.</p>
--- Required parameter: CollectionId
-function M.CreateCollectionRequest(_CollectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCollectionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CollectionId [CollectionId] <p>ID for the collection that you are creating.</p>
+-- Required key: CollectionId
+-- @return CreateCollectionRequest structure as a key-value pair table
+function M.CreateCollectionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateCollectionRequest")
 	local t = { 
-		["CollectionId"] = _CollectionId,
+		["CollectionId"] = args["CollectionId"],
 	}
 	asserts.AssertCreateCollectionRequest(t)
 	return t
@@ -608,13 +674,16 @@ end
 
 --- Create a structure of type Gender
 -- <p>Gender of the face and the confidence level in the determination.</p>
--- @param _Confidence [Percent] <p>Level of confidence in the determination.</p>
--- @param _Value [GenderType] <p>Gender of the face.</p>
-function M.Gender(_Confidence, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Gender")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- * Value [GenderType] <p>Gender of the face.</p>
+-- @return Gender structure as a key-value pair table
+function M.Gender(args)
+	assert(args, "You must provdide an argument table when creating Gender")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Value"] = _Value,
+		["Confidence"] = args["Confidence"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertGender(t)
 	return t
@@ -634,12 +703,15 @@ end
 
 --- Create a structure of type GetCelebrityInfoRequest
 --  
--- @param _Id [RekognitionUniqueId] <p>The ID for the celebrity. You get the celebrity ID from a call to the operation, which recognizes celebrities in an image. </p>
--- Required parameter: Id
-function M.GetCelebrityInfoRequest(_Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCelebrityInfoRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [RekognitionUniqueId] <p>The ID for the celebrity. You get the celebrity ID from a call to the operation, which recognizes celebrities in an image. </p>
+-- Required key: Id
+-- @return GetCelebrityInfoRequest structure as a key-value pair table
+function M.GetCelebrityInfoRequest(args)
+	assert(args, "You must provdide an argument table when creating GetCelebrityInfoRequest")
 	local t = { 
-		["Id"] = _Id,
+		["Id"] = args["Id"],
 	}
 	asserts.AssertGetCelebrityInfoRequest(t)
 	return t
@@ -659,12 +731,15 @@ end
 
 --- Create a structure of type RecognizeCelebritiesRequest
 --  
--- @param _Image [Image] <p>The input image to use for celebrity recognition.</p>
--- Required parameter: Image
-function M.RecognizeCelebritiesRequest(_Image, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecognizeCelebritiesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Image [Image] <p>The input image to use for celebrity recognition.</p>
+-- Required key: Image
+-- @return RecognizeCelebritiesRequest structure as a key-value pair table
+function M.RecognizeCelebritiesRequest(args)
+	assert(args, "You must provdide an argument table when creating RecognizeCelebritiesRequest")
 	local t = { 
-		["Image"] = _Image,
+		["Image"] = args["Image"],
 	}
 	asserts.AssertRecognizeCelebritiesRequest(t)
 	return t
@@ -686,16 +761,19 @@ end
 
 --- Create a structure of type DetectLabelsRequest
 --  
--- @param _MinConfidence [Percent] <p>Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with confidence lower than this specified value.</p> <p>If <code>MinConfidence</code> is not specified, the operation returns labels with a confidence values greater than or equal to 50 percent.</p>
--- @param _Image [Image] <p>The input image. You can provide a blob of image bytes or an S3 object.</p>
--- @param _MaxLabels [UInteger] <p>Maximum number of labels you want the service to return in the response. The service returns the specified number of highest confidence labels. </p>
--- Required parameter: Image
-function M.DetectLabelsRequest(_MinConfidence, _Image, _MaxLabels, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetectLabelsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MinConfidence [Percent] <p>Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with confidence lower than this specified value.</p> <p>If <code>MinConfidence</code> is not specified, the operation returns labels with a confidence values greater than or equal to 50 percent.</p>
+-- * Image [Image] <p>The input image. You can provide a blob of image bytes or an S3 object.</p>
+-- * MaxLabels [UInteger] <p>Maximum number of labels you want the service to return in the response. The service returns the specified number of highest confidence labels. </p>
+-- Required key: Image
+-- @return DetectLabelsRequest structure as a key-value pair table
+function M.DetectLabelsRequest(args)
+	assert(args, "You must provdide an argument table when creating DetectLabelsRequest")
 	local t = { 
-		["MinConfidence"] = _MinConfidence,
-		["Image"] = _Image,
-		["MaxLabels"] = _MaxLabels,
+		["MinConfidence"] = args["MinConfidence"],
+		["Image"] = args["Image"],
+		["MaxLabels"] = args["MaxLabels"],
 	}
 	asserts.AssertDetectLabelsRequest(t)
 	return t
@@ -715,13 +793,16 @@ end
 
 --- Create a structure of type CreateCollectionResponse
 --  
--- @param _CollectionArn [String] <p>Amazon Resource Name (ARN) of the collection. You can use this to manage permissions on your resources. </p>
--- @param _StatusCode [UInteger] <p>HTTP status code indicating the result of the operation.</p>
-function M.CreateCollectionResponse(_CollectionArn, _StatusCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCollectionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CollectionArn [String] <p>Amazon Resource Name (ARN) of the collection. You can use this to manage permissions on your resources. </p>
+-- * StatusCode [UInteger] <p>HTTP status code indicating the result of the operation.</p>
+-- @return CreateCollectionResponse structure as a key-value pair table
+function M.CreateCollectionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateCollectionResponse")
 	local t = { 
-		["CollectionArn"] = _CollectionArn,
-		["StatusCode"] = _StatusCode,
+		["CollectionArn"] = args["CollectionArn"],
+		["StatusCode"] = args["StatusCode"],
 	}
 	asserts.AssertCreateCollectionResponse(t)
 	return t
@@ -739,8 +820,11 @@ end
 
 --- Create a structure of type InvalidPaginationTokenException
 -- <p>Pagination token in the request is not valid.</p>
-function M.InvalidPaginationTokenException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPaginationTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidPaginationTokenException structure as a key-value pair table
+function M.InvalidPaginationTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidPaginationTokenException")
 	local t = { 
 	}
 	asserts.AssertInvalidPaginationTokenException(t)
@@ -759,8 +843,11 @@ end
 
 --- Create a structure of type InvalidImageFormatException
 -- <p>The provided image format is not supported. </p>
-function M.InvalidImageFormatException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidImageFormatException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidImageFormatException structure as a key-value pair table
+function M.InvalidImageFormatException(args)
+	assert(args, "You must provdide an argument table when creating InvalidImageFormatException")
 	local t = { 
 	}
 	asserts.AssertInvalidImageFormatException(t)
@@ -779,8 +866,11 @@ end
 
 --- Create a structure of type ResourceAlreadyExistsException
 -- <p>A collection with the specified ID already exists.</p>
-function M.ResourceAlreadyExistsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceAlreadyExistsException structure as a key-value pair table
+function M.ResourceAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
 	local t = { 
 	}
 	asserts.AssertResourceAlreadyExistsException(t)
@@ -801,13 +891,16 @@ end
 
 --- Create a structure of type Emotion
 -- <p>The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY.</p>
--- @param _Confidence [Percent] <p>Level of confidence in the determination.</p>
--- @param _Type [EmotionName] <p>Type of emotion detected.</p>
-function M.Emotion(_Confidence, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Emotion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- * Type [EmotionName] <p>Type of emotion detected.</p>
+-- @return Emotion structure as a key-value pair table
+function M.Emotion(args)
+	assert(args, "You must provdide an argument table when creating Emotion")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Type"] = _Type,
+		["Confidence"] = args["Confidence"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertEmotion(t)
 	return t
@@ -827,13 +920,16 @@ end
 
 --- Create a structure of type Image
 -- <p>Provides the input image either as bytes or an S3 object.</p> <p>You pass image bytes to a Rekognition API operation by using the <code>Bytes</code> property. For example, you would use the <code>Bytes</code> property to pass an image loaded from a local file system. Image bytes passed by using the <code>Bytes</code> property must be base64-encoded. Your code may not need to encode image bytes if you are using an AWS SDK to call Rekognition API operations. For more information, see <a>example4</a>.</p> <p> You pass images stored in an S3 bucket to a Rekognition API operation by using the <code>S3Object</code> property. Images stored in an S3 bucket do not need to be base64-encoded.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
--- @param _Bytes [ImageBlob] <p>Blob of image bytes up to 5 MBs.</p>
--- @param _S3Object [S3Object] <p>Identifies an S3 object as the image source.</p>
-function M.Image(_Bytes, _S3Object, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Image")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bytes [ImageBlob] <p>Blob of image bytes up to 5 MBs.</p>
+-- * S3Object [S3Object] <p>Identifies an S3 object as the image source.</p>
+-- @return Image structure as a key-value pair table
+function M.Image(args)
+	assert(args, "You must provdide an argument table when creating Image")
 	local t = { 
-		["Bytes"] = _Bytes,
-		["S3Object"] = _S3Object,
+		["Bytes"] = args["Bytes"],
+		["S3Object"] = args["S3Object"],
 	}
 	asserts.AssertImage(t)
 	return t
@@ -856,19 +952,22 @@ end
 
 --- Create a structure of type CompareFacesResponse
 --  
--- @param _TargetImageOrientationCorrection [OrientationCorrection] <p> The orientation of the target image (in counterclockwise direction). If your application displays the target image, you can use this value to correct the orientation of the image. The bounding box coordinates returned in <code>FaceMatches</code> and <code>UnmatchedFaces</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the target image is in .jpg format, it might contain Exif metadata that includes the orientation of the image. If the Exif metadata for the target image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the bounding box coordinates in <code>FaceMatches</code> and <code>UnmatchedFaces</code> represent the location of the face after Exif metadata is used to correct the orientation. Images in .png format don't contain Exif metadata.</p> </note>
--- @param _UnmatchedFaces [CompareFacesUnmatchList] <p>An array of faces in the target image that did not match the source image face.</p>
--- @param _SourceImageOrientationCorrection [OrientationCorrection] <p> The orientation of the source image (counterclockwise direction). If your application displays the source image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>SourceImageFace</code> represent the location of the face before the image orientation is corrected. </p> <note> <p>If the source image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If the Exif metadata for the source image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>SourceImageFace</code> bounding box coordinates represent the location of the face after Exif metadata is used to correct the orientation. Images in .png format don't contain Exif metadata.</p> </note>
--- @param _FaceMatches [CompareFacesMatchList] <p>An array of faces in the target image that match the source image face. Each <code>CompareFacesMatch</code> object provides the bounding box, the confidence level that the bounding box contains a face, and the similarity score for the face in the bounding box and the face in the source image.</p>
--- @param _SourceImageFace [ComparedSourceImageFace] <p>The face in the source image that was used for comparison.</p>
-function M.CompareFacesResponse(_TargetImageOrientationCorrection, _UnmatchedFaces, _SourceImageOrientationCorrection, _FaceMatches, _SourceImageFace, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompareFacesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetImageOrientationCorrection [OrientationCorrection] <p> The orientation of the target image (in counterclockwise direction). If your application displays the target image, you can use this value to correct the orientation of the image. The bounding box coordinates returned in <code>FaceMatches</code> and <code>UnmatchedFaces</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the target image is in .jpg format, it might contain Exif metadata that includes the orientation of the image. If the Exif metadata for the target image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the bounding box coordinates in <code>FaceMatches</code> and <code>UnmatchedFaces</code> represent the location of the face after Exif metadata is used to correct the orientation. Images in .png format don't contain Exif metadata.</p> </note>
+-- * UnmatchedFaces [CompareFacesUnmatchList] <p>An array of faces in the target image that did not match the source image face.</p>
+-- * SourceImageOrientationCorrection [OrientationCorrection] <p> The orientation of the source image (counterclockwise direction). If your application displays the source image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>SourceImageFace</code> represent the location of the face before the image orientation is corrected. </p> <note> <p>If the source image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If the Exif metadata for the source image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>SourceImageFace</code> bounding box coordinates represent the location of the face after Exif metadata is used to correct the orientation. Images in .png format don't contain Exif metadata.</p> </note>
+-- * FaceMatches [CompareFacesMatchList] <p>An array of faces in the target image that match the source image face. Each <code>CompareFacesMatch</code> object provides the bounding box, the confidence level that the bounding box contains a face, and the similarity score for the face in the bounding box and the face in the source image.</p>
+-- * SourceImageFace [ComparedSourceImageFace] <p>The face in the source image that was used for comparison.</p>
+-- @return CompareFacesResponse structure as a key-value pair table
+function M.CompareFacesResponse(args)
+	assert(args, "You must provdide an argument table when creating CompareFacesResponse")
 	local t = { 
-		["TargetImageOrientationCorrection"] = _TargetImageOrientationCorrection,
-		["UnmatchedFaces"] = _UnmatchedFaces,
-		["SourceImageOrientationCorrection"] = _SourceImageOrientationCorrection,
-		["FaceMatches"] = _FaceMatches,
-		["SourceImageFace"] = _SourceImageFace,
+		["TargetImageOrientationCorrection"] = args["TargetImageOrientationCorrection"],
+		["UnmatchedFaces"] = args["UnmatchedFaces"],
+		["SourceImageOrientationCorrection"] = args["SourceImageOrientationCorrection"],
+		["FaceMatches"] = args["FaceMatches"],
+		["SourceImageFace"] = args["SourceImageFace"],
 	}
 	asserts.AssertCompareFacesResponse(t)
 	return t
@@ -888,13 +987,16 @@ end
 
 --- Create a structure of type Beard
 -- <p>Indicates whether or not the face has a beard, and the confidence level in the determination.</p>
--- @param _Confidence [Percent] <p>Level of confidence in the determination.</p>
--- @param _Value [Boolean] <p>Boolean value that indicates whether the face has beard or not.</p>
-function M.Beard(_Confidence, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Beard")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- * Value [Boolean] <p>Boolean value that indicates whether the face has beard or not.</p>
+-- @return Beard structure as a key-value pair table
+function M.Beard(args)
+	assert(args, "You must provdide an argument table when creating Beard")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Value"] = _Value,
+		["Confidence"] = args["Confidence"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertBeard(t)
 	return t
@@ -915,15 +1017,18 @@ end
 
 --- Create a structure of type Pose
 -- <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
--- @param _Yaw [Degree] <p>Value representing the face rotation on the yaw axis.</p>
--- @param _Roll [Degree] <p>Value representing the face rotation on the roll axis.</p>
--- @param _Pitch [Degree] <p>Value representing the face rotation on the pitch axis.</p>
-function M.Pose(_Yaw, _Roll, _Pitch, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Pose")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Yaw [Degree] <p>Value representing the face rotation on the yaw axis.</p>
+-- * Roll [Degree] <p>Value representing the face rotation on the roll axis.</p>
+-- * Pitch [Degree] <p>Value representing the face rotation on the pitch axis.</p>
+-- @return Pose structure as a key-value pair table
+function M.Pose(args)
+	assert(args, "You must provdide an argument table when creating Pose")
 	local t = { 
-		["Yaw"] = _Yaw,
-		["Roll"] = _Roll,
-		["Pitch"] = _Pitch,
+		["Yaw"] = args["Yaw"],
+		["Roll"] = args["Roll"],
+		["Pitch"] = args["Pitch"],
 	}
 	asserts.AssertPose(t)
 	return t
@@ -943,13 +1048,16 @@ end
 
 --- Create a structure of type MouthOpen
 -- <p>Indicates whether or not the mouth on the face is open, and the confidence level in the determination.</p>
--- @param _Confidence [Percent] <p>Level of confidence in the determination.</p>
--- @param _Value [Boolean] <p>Boolean value that indicates whether the mouth on the face is open or not.</p>
-function M.MouthOpen(_Confidence, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MouthOpen")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- * Value [Boolean] <p>Boolean value that indicates whether the mouth on the face is open or not.</p>
+-- @return MouthOpen structure as a key-value pair table
+function M.MouthOpen(args)
+	assert(args, "You must provdide an argument table when creating MouthOpen")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Value"] = _Value,
+		["Confidence"] = args["Confidence"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertMouthOpen(t)
 	return t
@@ -969,13 +1077,16 @@ end
 
 --- Create a structure of type ListCollectionsRequest
 --  
--- @param _NextToken [PaginationToken] <p>Pagination token from the previous response.</p>
--- @param _MaxResults [PageSize] <p>Maximum number of collection IDs to return.</p>
-function M.ListCollectionsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCollectionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationToken] <p>Pagination token from the previous response.</p>
+-- * MaxResults [PageSize] <p>Maximum number of collection IDs to return.</p>
+-- @return ListCollectionsRequest structure as a key-value pair table
+function M.ListCollectionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListCollectionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListCollectionsRequest(t)
 	return t
@@ -998,19 +1109,22 @@ end
 
 --- Create a structure of type Face
 -- <p>Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. </p>
--- @param _BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
--- @param _FaceId [FaceId] <p>Unique identifier that Amazon Rekognition assigns to the face.</p>
--- @param _ExternalImageId [ExternalImageId] <p>Identifier that you assign to all the faces in the input image.</p>
--- @param _Confidence [Percent] <p>Confidence level that the bounding box contains a face (and not a different object such as a tree).</p>
--- @param _ImageId [ImageId] <p>Unique identifier that Amazon Rekognition assigns to the input image.</p>
-function M.Face(_BoundingBox, _FaceId, _ExternalImageId, _Confidence, _ImageId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Face")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
+-- * FaceId [FaceId] <p>Unique identifier that Amazon Rekognition assigns to the face.</p>
+-- * ExternalImageId [ExternalImageId] <p>Identifier that you assign to all the faces in the input image.</p>
+-- * Confidence [Percent] <p>Confidence level that the bounding box contains a face (and not a different object such as a tree).</p>
+-- * ImageId [ImageId] <p>Unique identifier that Amazon Rekognition assigns to the input image.</p>
+-- @return Face structure as a key-value pair table
+function M.Face(args)
+	assert(args, "You must provdide an argument table when creating Face")
 	local t = { 
-		["BoundingBox"] = _BoundingBox,
-		["FaceId"] = _FaceId,
-		["ExternalImageId"] = _ExternalImageId,
-		["Confidence"] = _Confidence,
-		["ImageId"] = _ImageId,
+		["BoundingBox"] = args["BoundingBox"],
+		["FaceId"] = args["FaceId"],
+		["ExternalImageId"] = args["ExternalImageId"],
+		["Confidence"] = args["Confidence"],
+		["ImageId"] = args["ImageId"],
 	}
 	asserts.AssertFace(t)
 	return t
@@ -1031,14 +1145,17 @@ end
 
 --- Create a structure of type DetectModerationLabelsRequest
 --  
--- @param _MinConfidence [Percent] <p>Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with a confidence level lower than this specified value.</p> <p>If you don't specify <code>MinConfidence</code>, the operation returns labels with confidence values greater than or equal to 50 percent.</p>
--- @param _Image [Image] <p>The input image as bytes or an S3 object.</p>
--- Required parameter: Image
-function M.DetectModerationLabelsRequest(_MinConfidence, _Image, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetectModerationLabelsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MinConfidence [Percent] <p>Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with a confidence level lower than this specified value.</p> <p>If you don't specify <code>MinConfidence</code>, the operation returns labels with confidence values greater than or equal to 50 percent.</p>
+-- * Image [Image] <p>The input image as bytes or an S3 object.</p>
+-- Required key: Image
+-- @return DetectModerationLabelsRequest structure as a key-value pair table
+function M.DetectModerationLabelsRequest(args)
+	assert(args, "You must provdide an argument table when creating DetectModerationLabelsRequest")
 	local t = { 
-		["MinConfidence"] = _MinConfidence,
-		["Image"] = _Image,
+		["MinConfidence"] = args["MinConfidence"],
+		["Image"] = args["Image"],
 	}
 	asserts.AssertDetectModerationLabelsRequest(t)
 	return t
@@ -1058,13 +1175,16 @@ end
 
 --- Create a structure of type DetectLabelsResponse
 --  
--- @param _Labels [Labels] <p>An array of labels for the real-world objects detected. </p>
--- @param _OrientationCorrection [OrientationCorrection] <p> The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct the orientation. If Amazon Rekognition detects that the input image was rotated (for example, by 90 degrees), it first corrects the orientation before detecting the labels. </p> <note> <p>If the input image Exif metadata populates the orientation field, Amazon Rekognition does not perform orientation correction and the value of OrientationCorrection will be null.</p> </note>
-function M.DetectLabelsResponse(_Labels, _OrientationCorrection, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetectLabelsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Labels [Labels] <p>An array of labels for the real-world objects detected. </p>
+-- * OrientationCorrection [OrientationCorrection] <p> The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct the orientation. If Amazon Rekognition detects that the input image was rotated (for example, by 90 degrees), it first corrects the orientation before detecting the labels. </p> <note> <p>If the input image Exif metadata populates the orientation field, Amazon Rekognition does not perform orientation correction and the value of OrientationCorrection will be null.</p> </note>
+-- @return DetectLabelsResponse structure as a key-value pair table
+function M.DetectLabelsResponse(args)
+	assert(args, "You must provdide an argument table when creating DetectLabelsResponse")
 	local t = { 
-		["Labels"] = _Labels,
-		["OrientationCorrection"] = _OrientationCorrection,
+		["Labels"] = args["Labels"],
+		["OrientationCorrection"] = args["OrientationCorrection"],
 	}
 	asserts.AssertDetectLabelsResponse(t)
 	return t
@@ -1084,13 +1204,16 @@ end
 
 --- Create a structure of type Mustache
 -- <p>Indicates whether or not the face has a mustache, and the confidence level in the determination.</p>
--- @param _Confidence [Percent] <p>Level of confidence in the determination.</p>
--- @param _Value [Boolean] <p>Boolean value that indicates whether the face has mustache or not.</p>
-function M.Mustache(_Confidence, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Mustache")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- * Value [Boolean] <p>Boolean value that indicates whether the face has mustache or not.</p>
+-- @return Mustache structure as a key-value pair table
+function M.Mustache(args)
+	assert(args, "You must provdide an argument table when creating Mustache")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Value"] = _Value,
+		["Confidence"] = args["Confidence"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertMustache(t)
 	return t
@@ -1108,8 +1231,11 @@ end
 
 --- Create a structure of type ProvisionedThroughputExceededException
 -- <p>The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon Rekognition.</p>
-function M.ProvisionedThroughputExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionedThroughputExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ProvisionedThroughputExceededException structure as a key-value pair table
+function M.ProvisionedThroughputExceededException(args)
+	assert(args, "You must provdide an argument table when creating ProvisionedThroughputExceededException")
 	local t = { 
 	}
 	asserts.AssertProvisionedThroughputExceededException(t)
@@ -1128,8 +1254,11 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>Collection specified in the request is not found.</p>
-function M.ResourceNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
 	}
 	asserts.AssertResourceNotFoundException(t)
@@ -1148,8 +1277,11 @@ end
 
 --- Create a structure of type ThrottlingException
 -- <p>Amazon Rekognition is temporarily unable to process the request. Try your call again.</p>
-function M.ThrottlingException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ThrottlingException structure as a key-value pair table
+function M.ThrottlingException(args)
+	assert(args, "You must provdide an argument table when creating ThrottlingException")
 	local t = { 
 	}
 	asserts.AssertThrottlingException(t)
@@ -1173,19 +1305,22 @@ end
 
 --- Create a structure of type ComparedFace
 -- <p>Provides face metadata for target image faces that are analysed by <code>CompareFaces</code> and <code>RecognizeCelebrities</code>.</p>
--- @param _BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
--- @param _Confidence [Percent] <p>Level of confidence that what the bounding box contains is a face.</p>
--- @param _Pose [Pose] <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
--- @param _Quality [ImageQuality] <p>Identifies face image brightness and sharpness. </p>
--- @param _Landmarks [Landmarks] <p>An array of facial landmarks.</p>
-function M.ComparedFace(_BoundingBox, _Confidence, _Pose, _Quality, _Landmarks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ComparedFace")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
+-- * Confidence [Percent] <p>Level of confidence that what the bounding box contains is a face.</p>
+-- * Pose [Pose] <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
+-- * Quality [ImageQuality] <p>Identifies face image brightness and sharpness. </p>
+-- * Landmarks [Landmarks] <p>An array of facial landmarks.</p>
+-- @return ComparedFace structure as a key-value pair table
+function M.ComparedFace(args)
+	assert(args, "You must provdide an argument table when creating ComparedFace")
 	local t = { 
-		["BoundingBox"] = _BoundingBox,
-		["Confidence"] = _Confidence,
-		["Pose"] = _Pose,
-		["Quality"] = _Quality,
-		["Landmarks"] = _Landmarks,
+		["BoundingBox"] = args["BoundingBox"],
+		["Confidence"] = args["Confidence"],
+		["Pose"] = args["Pose"],
+		["Quality"] = args["Quality"],
+		["Landmarks"] = args["Landmarks"],
 	}
 	asserts.AssertComparedFace(t)
 	return t
@@ -1209,19 +1344,22 @@ end
 
 --- Create a structure of type SearchFacesRequest
 --  
--- @param _FaceId [FaceId] <p>ID of a face to find matches for in the collection.</p>
--- @param _MaxFaces [MaxFaces] <p>Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.</p>
--- @param _FaceMatchThreshold [Percent] <p>Optional value specifying the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.</p>
--- @param _CollectionId [CollectionId] <p>ID of the collection the face belongs to.</p>
--- Required parameter: CollectionId
--- Required parameter: FaceId
-function M.SearchFacesRequest(_FaceId, _MaxFaces, _FaceMatchThreshold, _CollectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchFacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FaceId [FaceId] <p>ID of a face to find matches for in the collection.</p>
+-- * MaxFaces [MaxFaces] <p>Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.</p>
+-- * FaceMatchThreshold [Percent] <p>Optional value specifying the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.</p>
+-- * CollectionId [CollectionId] <p>ID of the collection the face belongs to.</p>
+-- Required key: CollectionId
+-- Required key: FaceId
+-- @return SearchFacesRequest structure as a key-value pair table
+function M.SearchFacesRequest(args)
+	assert(args, "You must provdide an argument table when creating SearchFacesRequest")
 	local t = { 
-		["FaceId"] = _FaceId,
-		["MaxFaces"] = _MaxFaces,
-		["FaceMatchThreshold"] = _FaceMatchThreshold,
-		["CollectionId"] = _CollectionId,
+		["FaceId"] = args["FaceId"],
+		["MaxFaces"] = args["MaxFaces"],
+		["FaceMatchThreshold"] = args["FaceMatchThreshold"],
+		["CollectionId"] = args["CollectionId"],
 	}
 	asserts.AssertSearchFacesRequest(t)
 	return t
@@ -1242,15 +1380,18 @@ end
 
 --- Create a structure of type SearchFacesByImageResponse
 --  
--- @param _SearchedFaceBoundingBox [BoundingBox] <p>The bounding box around the face in the input image that Amazon Rekognition used for the search.</p>
--- @param _SearchedFaceConfidence [Percent] <p>The level of confidence that the <code>searchedFaceBoundingBox</code>, contains a face.</p>
--- @param _FaceMatches [FaceMatchList] <p>An array of faces that match the input face, along with the confidence in the match.</p>
-function M.SearchFacesByImageResponse(_SearchedFaceBoundingBox, _SearchedFaceConfidence, _FaceMatches, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchFacesByImageResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SearchedFaceBoundingBox [BoundingBox] <p>The bounding box around the face in the input image that Amazon Rekognition used for the search.</p>
+-- * SearchedFaceConfidence [Percent] <p>The level of confidence that the <code>searchedFaceBoundingBox</code>, contains a face.</p>
+-- * FaceMatches [FaceMatchList] <p>An array of faces that match the input face, along with the confidence in the match.</p>
+-- @return SearchFacesByImageResponse structure as a key-value pair table
+function M.SearchFacesByImageResponse(args)
+	assert(args, "You must provdide an argument table when creating SearchFacesByImageResponse")
 	local t = { 
-		["SearchedFaceBoundingBox"] = _SearchedFaceBoundingBox,
-		["SearchedFaceConfidence"] = _SearchedFaceConfidence,
-		["FaceMatches"] = _FaceMatches,
+		["SearchedFaceBoundingBox"] = args["SearchedFaceBoundingBox"],
+		["SearchedFaceConfidence"] = args["SearchedFaceConfidence"],
+		["FaceMatches"] = args["FaceMatches"],
 	}
 	asserts.AssertSearchFacesByImageResponse(t)
 	return t
@@ -1270,13 +1411,16 @@ end
 
 --- Create a structure of type FaceRecord
 -- <p>Object containing both the face metadata (stored in the back-end database) and facial attributes that are detected but aren't stored in the database.</p>
--- @param _FaceDetail [FaceDetail] <p>Structure containing attributes of the face that the algorithm detected.</p>
--- @param _Face [Face] <p>Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. </p>
-function M.FaceRecord(_FaceDetail, _Face, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FaceRecord")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FaceDetail [FaceDetail] <p>Structure containing attributes of the face that the algorithm detected.</p>
+-- * Face [Face] <p>Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. </p>
+-- @return FaceRecord structure as a key-value pair table
+function M.FaceRecord(args)
+	assert(args, "You must provdide an argument table when creating FaceRecord")
 	local t = { 
-		["FaceDetail"] = _FaceDetail,
-		["Face"] = _Face,
+		["FaceDetail"] = args["FaceDetail"],
+		["Face"] = args["Face"],
 	}
 	asserts.AssertFaceRecord(t)
 	return t
@@ -1296,13 +1440,16 @@ end
 
 --- Create a structure of type AgeRange
 -- <p>Structure containing the estimated age range, in years, for a face.</p> <p>Rekognition estimates an age-range for faces detected in the input image. Estimated age ranges can overlap; a face of a 5 year old may have an estimated range of 4-6 whilst the face of a 6 year old may have an estimated range of 4-8.</p>
--- @param _High [UInteger] <p>The highest estimated age.</p>
--- @param _Low [UInteger] <p>The lowest estimated age.</p>
-function M.AgeRange(_High, _Low, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AgeRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * High [UInteger] <p>The highest estimated age.</p>
+-- * Low [UInteger] <p>The lowest estimated age.</p>
+-- @return AgeRange structure as a key-value pair table
+function M.AgeRange(args)
+	assert(args, "You must provdide an argument table when creating AgeRange")
 	local t = { 
-		["High"] = _High,
-		["Low"] = _Low,
+		["High"] = args["High"],
+		["Low"] = args["Low"],
 	}
 	asserts.AssertAgeRange(t)
 	return t
@@ -1325,17 +1472,20 @@ end
 
 --- Create a structure of type CompareFacesRequest
 --  
--- @param _TargetImage [Image] <p>The target image, either as bytes or as an S3 object.</p>
--- @param _SourceImage [Image] <p>The source image, either as bytes or as an S3 object.</p>
--- @param _SimilarityThreshold [Percent] <p>The minimum level of confidence in the face matches that a match must meet to be included in the <code>FaceMatches</code> array.</p>
--- Required parameter: SourceImage
--- Required parameter: TargetImage
-function M.CompareFacesRequest(_TargetImage, _SourceImage, _SimilarityThreshold, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompareFacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetImage [Image] <p>The target image, either as bytes or as an S3 object.</p>
+-- * SourceImage [Image] <p>The source image, either as bytes or as an S3 object.</p>
+-- * SimilarityThreshold [Percent] <p>The minimum level of confidence in the face matches that a match must meet to be included in the <code>FaceMatches</code> array.</p>
+-- Required key: SourceImage
+-- Required key: TargetImage
+-- @return CompareFacesRequest structure as a key-value pair table
+function M.CompareFacesRequest(args)
+	assert(args, "You must provdide an argument table when creating CompareFacesRequest")
 	local t = { 
-		["TargetImage"] = _TargetImage,
-		["SourceImage"] = _SourceImage,
-		["SimilarityThreshold"] = _SimilarityThreshold,
+		["TargetImage"] = args["TargetImage"],
+		["SourceImage"] = args["SourceImage"],
+		["SimilarityThreshold"] = args["SimilarityThreshold"],
 	}
 	asserts.AssertCompareFacesRequest(t)
 	return t
@@ -1355,13 +1505,16 @@ end
 
 --- Create a structure of type Sunglasses
 -- <p>Indicates whether or not the face is wearing sunglasses, and the confidence level in the determination.</p>
--- @param _Confidence [Percent] <p>Level of confidence in the determination.</p>
--- @param _Value [Boolean] <p>Boolean value that indicates whether the face is wearing sunglasses or not.</p>
-function M.Sunglasses(_Confidence, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Sunglasses")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- * Value [Boolean] <p>Boolean value that indicates whether the face is wearing sunglasses or not.</p>
+-- @return Sunglasses structure as a key-value pair table
+function M.Sunglasses(args)
+	assert(args, "You must provdide an argument table when creating Sunglasses")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Value"] = _Value,
+		["Confidence"] = args["Confidence"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertSunglasses(t)
 	return t
@@ -1382,15 +1535,18 @@ end
 
 --- Create a structure of type RecognizeCelebritiesResponse
 --  
--- @param _UnrecognizedFaces [ComparedFaceList] <p>Details about each unrecognized face in the image.</p>
--- @param _CelebrityFaces [CelebrityList] <p>Details about each celebrity found in the image. Amazon Rekognition can detect a maximum of 15 celebrities in an image.</p>
--- @param _OrientationCorrection [OrientationCorrection] <p>The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct the orientation. The bounding box coordinates returned in <code>CelebrityFaces</code> and <code>UnrecognizedFaces</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If so, and the Exif metadata for the input image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>CelebrityFaces</code> and <code>UnrecognizedFaces</code> bounding box coordinates represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata. </p> </note>
-function M.RecognizeCelebritiesResponse(_UnrecognizedFaces, _CelebrityFaces, _OrientationCorrection, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecognizeCelebritiesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UnrecognizedFaces [ComparedFaceList] <p>Details about each unrecognized face in the image.</p>
+-- * CelebrityFaces [CelebrityList] <p>Details about each celebrity found in the image. Amazon Rekognition can detect a maximum of 15 celebrities in an image.</p>
+-- * OrientationCorrection [OrientationCorrection] <p>The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct the orientation. The bounding box coordinates returned in <code>CelebrityFaces</code> and <code>UnrecognizedFaces</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If so, and the Exif metadata for the input image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>CelebrityFaces</code> and <code>UnrecognizedFaces</code> bounding box coordinates represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata. </p> </note>
+-- @return RecognizeCelebritiesResponse structure as a key-value pair table
+function M.RecognizeCelebritiesResponse(args)
+	assert(args, "You must provdide an argument table when creating RecognizeCelebritiesResponse")
 	local t = { 
-		["UnrecognizedFaces"] = _UnrecognizedFaces,
-		["CelebrityFaces"] = _CelebrityFaces,
-		["OrientationCorrection"] = _OrientationCorrection,
+		["UnrecognizedFaces"] = args["UnrecognizedFaces"],
+		["CelebrityFaces"] = args["CelebrityFaces"],
+		["OrientationCorrection"] = args["OrientationCorrection"],
 	}
 	asserts.AssertRecognizeCelebritiesResponse(t)
 	return t
@@ -1408,8 +1564,11 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- <p>Input parameter violated a constraint. Validate your parameter before calling the API operation again.</p>
-function M.InvalidParameterException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
 	}
 	asserts.AssertInvalidParameterException(t)
@@ -1430,13 +1589,16 @@ end
 
 --- Create a structure of type EyeOpen
 -- <p>Indicates whether or not the eyes on the face are open, and the confidence level in the determination.</p>
--- @param _Confidence [Percent] <p>Level of confidence in the determination.</p>
--- @param _Value [Boolean] <p>Boolean value that indicates whether the eyes on the face are open.</p>
-function M.EyeOpen(_Confidence, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EyeOpen")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Level of confidence in the determination.</p>
+-- * Value [Boolean] <p>Boolean value that indicates whether the eyes on the face are open.</p>
+-- @return EyeOpen structure as a key-value pair table
+function M.EyeOpen(args)
+	assert(args, "You must provdide an argument table when creating EyeOpen")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Value"] = _Value,
+		["Confidence"] = args["Confidence"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertEyeOpen(t)
 	return t
@@ -1456,13 +1618,16 @@ end
 
 --- Create a structure of type DetectFacesResponse
 --  
--- @param _FaceDetails [FaceDetailList] <p>Details of each face found in the image. </p>
--- @param _OrientationCorrection [OrientationCorrection] <p> The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>FaceDetails</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If so, and the Exif metadata for the input image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>FaceDetails</code> bounding box coordinates represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata.</p> </note>
-function M.DetectFacesResponse(_FaceDetails, _OrientationCorrection, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetectFacesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FaceDetails [FaceDetailList] <p>Details of each face found in the image. </p>
+-- * OrientationCorrection [OrientationCorrection] <p> The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>FaceDetails</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If so, and the Exif metadata for the input image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>FaceDetails</code> bounding box coordinates represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata.</p> </note>
+-- @return DetectFacesResponse structure as a key-value pair table
+function M.DetectFacesResponse(args)
+	assert(args, "You must provdide an argument table when creating DetectFacesResponse")
 	local t = { 
-		["FaceDetails"] = _FaceDetails,
-		["OrientationCorrection"] = _OrientationCorrection,
+		["FaceDetails"] = args["FaceDetails"],
+		["OrientationCorrection"] = args["OrientationCorrection"],
 	}
 	asserts.AssertDetectFacesResponse(t)
 	return t
@@ -1485,19 +1650,22 @@ end
 
 --- Create a structure of type Celebrity
 -- <p>Provides information about a celebrity recognized by the operation.</p>
--- @param _MatchConfidence [Percent] <p>The confidence, in percentage, that Rekognition has that the recognized face is the celebrity.</p>
--- @param _Face [ComparedFace] <p>Provides information about the celebrity's face, such as its location on the image.</p>
--- @param _Name [String] <p>The name of the celebrity.</p>
--- @param _Urls [Urls] <p>An array of URLs pointing to additional information about the celebrity. If there is no additional information about the celebrity, this list is empty.</p>
--- @param _Id [RekognitionUniqueId] <p>A unique identifier for the celebrity. </p>
-function M.Celebrity(_MatchConfidence, _Face, _Name, _Urls, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Celebrity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MatchConfidence [Percent] <p>The confidence, in percentage, that Rekognition has that the recognized face is the celebrity.</p>
+-- * Face [ComparedFace] <p>Provides information about the celebrity's face, such as its location on the image.</p>
+-- * Name [String] <p>The name of the celebrity.</p>
+-- * Urls [Urls] <p>An array of URLs pointing to additional information about the celebrity. If there is no additional information about the celebrity, this list is empty.</p>
+-- * Id [RekognitionUniqueId] <p>A unique identifier for the celebrity. </p>
+-- @return Celebrity structure as a key-value pair table
+function M.Celebrity(args)
+	assert(args, "You must provdide an argument table when creating Celebrity")
 	local t = { 
-		["MatchConfidence"] = _MatchConfidence,
-		["Face"] = _Face,
-		["Name"] = _Name,
-		["Urls"] = _Urls,
-		["Id"] = _Id,
+		["MatchConfidence"] = args["MatchConfidence"],
+		["Face"] = args["Face"],
+		["Name"] = args["Name"],
+		["Urls"] = args["Urls"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertCelebrity(t)
 	return t
@@ -1518,14 +1686,17 @@ end
 
 --- Create a structure of type DetectFacesRequest
 --  
--- @param _Attributes [Attributes] <p>An array of facial attributes you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for <code>Attributes</code> or if you specify <code>["DEFAULT"]</code>, the API returns the following subset of facial attributes: <code>BoundingBox</code>, <code>Confidence</code>, <code>Pose</code>, <code>Quality</code> and <code>Landmarks</code>. If you provide <code>["ALL"]</code>, all facial attributes are returned but the operation will take longer to complete.</p> <p>If you provide both, <code>["ALL", "DEFAULT"]</code>, the service uses a logical AND operator to determine which attributes to return (in this case, all attributes). </p>
--- @param _Image [Image] <p>The image in which you want to detect faces. You can specify a blob or an S3 object. </p>
--- Required parameter: Image
-function M.DetectFacesRequest(_Attributes, _Image, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetectFacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [Attributes] <p>An array of facial attributes you want to be returned. This can be the default list of attributes or all attributes. If you don't specify a value for <code>Attributes</code> or if you specify <code>["DEFAULT"]</code>, the API returns the following subset of facial attributes: <code>BoundingBox</code>, <code>Confidence</code>, <code>Pose</code>, <code>Quality</code> and <code>Landmarks</code>. If you provide <code>["ALL"]</code>, all facial attributes are returned but the operation will take longer to complete.</p> <p>If you provide both, <code>["ALL", "DEFAULT"]</code>, the service uses a logical AND operator to determine which attributes to return (in this case, all attributes). </p>
+-- * Image [Image] <p>The image in which you want to detect faces. You can specify a blob or an S3 object. </p>
+-- Required key: Image
+-- @return DetectFacesRequest structure as a key-value pair table
+function M.DetectFacesRequest(args)
+	assert(args, "You must provdide an argument table when creating DetectFacesRequest")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["Image"] = _Image,
+		["Attributes"] = args["Attributes"],
+		["Image"] = args["Image"],
 	}
 	asserts.AssertDetectFacesRequest(t)
 	return t
@@ -1545,13 +1716,16 @@ end
 
 --- Create a structure of type CompareFacesMatch
 -- <p>Provides information about a face in a target image that matches the source image face analysed by <code>CompareFaces</code>. The <code>Face</code> property contains the bounding box of the face in the target image. The <code>Similarity</code> property is the confidence that the source image face matches the face in the bounding box.</p>
--- @param _Face [ComparedFace] <p>Provides face metadata (bounding box and confidence that the bounding box actually contains a face).</p>
--- @param _Similarity [Percent] <p>Level of confidence that the faces match.</p>
-function M.CompareFacesMatch(_Face, _Similarity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompareFacesMatch")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Face [ComparedFace] <p>Provides face metadata (bounding box and confidence that the bounding box actually contains a face).</p>
+-- * Similarity [Percent] <p>Level of confidence that the faces match.</p>
+-- @return CompareFacesMatch structure as a key-value pair table
+function M.CompareFacesMatch(args)
+	assert(args, "You must provdide an argument table when creating CompareFacesMatch")
 	local t = { 
-		["Face"] = _Face,
-		["Similarity"] = _Similarity,
+		["Face"] = args["Face"],
+		["Similarity"] = args["Similarity"],
 	}
 	asserts.AssertCompareFacesMatch(t)
 	return t
@@ -1569,8 +1743,11 @@ end
 
 --- Create a structure of type AccessDeniedException
 -- <p>You are not authorized to perform the action.</p>
-function M.AccessDeniedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AccessDeniedException structure as a key-value pair table
+function M.AccessDeniedException(args)
+	assert(args, "You must provdide an argument table when creating AccessDeniedException")
 	local t = { 
 	}
 	asserts.AssertAccessDeniedException(t)
@@ -1591,13 +1768,16 @@ end
 
 --- Create a structure of type ListFacesResponse
 --  
--- @param _NextToken [String] <p>If the response is truncated, Amazon Rekognition returns this token that you can use in the subsequent request to retrieve the next set of faces.</p>
--- @param _Faces [FaceList] <p>An array of <code>Face</code> objects. </p>
-function M.ListFacesResponse(_NextToken, _Faces, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFacesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>If the response is truncated, Amazon Rekognition returns this token that you can use in the subsequent request to retrieve the next set of faces.</p>
+-- * Faces [FaceList] <p>An array of <code>Face</code> objects. </p>
+-- @return ListFacesResponse structure as a key-value pair table
+function M.ListFacesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListFacesResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Faces"] = _Faces,
+		["NextToken"] = args["NextToken"],
+		["Faces"] = args["Faces"],
 	}
 	asserts.AssertListFacesResponse(t)
 	return t
@@ -1618,15 +1798,18 @@ end
 
 --- Create a structure of type ModerationLabel
 -- <p>Provides information about a single type of moderated content found in an image. Each type of moderated content has a label within a hierarchical taxonomy. For more information, see <a>image-moderation</a>.</p>
--- @param _Confidence [Percent] <p>Specifies the confidence that Amazon Rekognition has that the label has been correctly identified.</p> <p>If you don't specify the <code>MinConfidence</code> parameter in the call to <code>DetectModerationLabels</code>, the operation returns labels with a confidence value greater than or equal to 50 percent.</p>
--- @param _ParentName [String] <p>The name for the parent label. Labels at the top-level of the hierarchy have the parent label <code>""</code>.</p>
--- @param _Name [String] <p>The label name for the type of content detected in the image.</p>
-function M.ModerationLabel(_Confidence, _ParentName, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModerationLabel")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Specifies the confidence that Amazon Rekognition has that the label has been correctly identified.</p> <p>If you don't specify the <code>MinConfidence</code> parameter in the call to <code>DetectModerationLabels</code>, the operation returns labels with a confidence value greater than or equal to 50 percent.</p>
+-- * ParentName [String] <p>The name for the parent label. Labels at the top-level of the hierarchy have the parent label <code>""</code>.</p>
+-- * Name [String] <p>The label name for the type of content detected in the image.</p>
+-- @return ModerationLabel structure as a key-value pair table
+function M.ModerationLabel(args)
+	assert(args, "You must provdide an argument table when creating ModerationLabel")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["ParentName"] = _ParentName,
-		["Name"] = _Name,
+		["Confidence"] = args["Confidence"],
+		["ParentName"] = args["ParentName"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertModerationLabel(t)
 	return t
@@ -1648,16 +1831,19 @@ end
 
 --- Create a structure of type ListFacesRequest
 --  
--- @param _NextToken [PaginationToken] <p>If the previous response was incomplete (because there is more data to retrieve), Amazon Rekognition returns a pagination token in the response. You can use this pagination token to retrieve the next set of faces.</p>
--- @param _MaxResults [PageSize] <p>Maximum number of faces to return.</p>
--- @param _CollectionId [CollectionId] <p>ID of the collection from which to list the faces.</p>
--- Required parameter: CollectionId
-function M.ListFacesRequest(_NextToken, _MaxResults, _CollectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFacesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationToken] <p>If the previous response was incomplete (because there is more data to retrieve), Amazon Rekognition returns a pagination token in the response. You can use this pagination token to retrieve the next set of faces.</p>
+-- * MaxResults [PageSize] <p>Maximum number of faces to return.</p>
+-- * CollectionId [CollectionId] <p>ID of the collection from which to list the faces.</p>
+-- Required key: CollectionId
+-- @return ListFacesRequest structure as a key-value pair table
+function M.ListFacesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListFacesRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["CollectionId"] = _CollectionId,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["CollectionId"] = args["CollectionId"],
 	}
 	asserts.AssertListFacesRequest(t)
 	return t
@@ -1677,13 +1863,16 @@ end
 
 --- Create a structure of type FaceMatch
 -- <p>Provides face metadata. In addition, it also provides the confidence in the match of this face with the input face.</p>
--- @param _Face [Face] <p>Describes the face properties such as the bounding box, face ID, image ID of the source image, and external image ID that you assigned.</p>
--- @param _Similarity [Percent] <p>Confidence in the match of this face with the input face.</p>
-function M.FaceMatch(_Face, _Similarity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FaceMatch")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Face [Face] <p>Describes the face properties such as the bounding box, face ID, image ID of the source image, and external image ID that you assigned.</p>
+-- * Similarity [Percent] <p>Confidence in the match of this face with the input face.</p>
+-- @return FaceMatch structure as a key-value pair table
+function M.FaceMatch(args)
+	assert(args, "You must provdide an argument table when creating FaceMatch")
 	local t = { 
-		["Face"] = _Face,
-		["Similarity"] = _Similarity,
+		["Face"] = args["Face"],
+		["Similarity"] = args["Similarity"],
 	}
 	asserts.AssertFaceMatch(t)
 	return t
@@ -1705,17 +1894,20 @@ end
 
 --- Create a structure of type BoundingBox
 -- <p>Identifies the bounding box around the object or face. The <code>left</code> (x-coordinate) and <code>top</code> (y-coordinate) are coordinates representing the top and left sides of the bounding box. Note that the upper-left corner of the image is the origin (0,0). </p> <p>The <code>top</code> and <code>left</code> values returned are ratios of the overall image size. For example, if the input image is 700x200 pixels, and the top-left coordinate of the bounding box is 350x50 pixels, the API returns a <code>left</code> value of 0.5 (350/700) and a <code>top</code> value of 0.25 (50/200).</p> <p> The <code>width</code> and <code>height</code> values represent the dimensions of the bounding box as a ratio of the overall image dimension. For example, if the input image is 700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. </p> <note> <p> The bounding box coordinates can have negative values. For example, if Amazon Rekognition is able to detect a face that is at the image edge and is only partially visible, the service can return coordinates that are outside the image bounds and, depending on the image edge, you might get negative values or values greater than 1 for the <code>left</code> or <code>top</code> values. </p> </note>
--- @param _Width [Float] <p>Width of the bounding box as a ratio of the overall image width.</p>
--- @param _Top [Float] <p>Top coordinate of the bounding box as a ratio of overall image height.</p>
--- @param _Left [Float] <p>Left coordinate of the bounding box as a ratio of overall image width.</p>
--- @param _Height [Float] <p>Height of the bounding box as a ratio of the overall image height.</p>
-function M.BoundingBox(_Width, _Top, _Left, _Height, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BoundingBox")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Width [Float] <p>Width of the bounding box as a ratio of the overall image width.</p>
+-- * Top [Float] <p>Top coordinate of the bounding box as a ratio of overall image height.</p>
+-- * Left [Float] <p>Left coordinate of the bounding box as a ratio of overall image width.</p>
+-- * Height [Float] <p>Height of the bounding box as a ratio of the overall image height.</p>
+-- @return BoundingBox structure as a key-value pair table
+function M.BoundingBox(args)
+	assert(args, "You must provdide an argument table when creating BoundingBox")
 	local t = { 
-		["Width"] = _Width,
-		["Top"] = _Top,
-		["Left"] = _Left,
-		["Height"] = _Height,
+		["Width"] = args["Width"],
+		["Top"] = args["Top"],
+		["Left"] = args["Left"],
+		["Height"] = args["Height"],
 	}
 	asserts.AssertBoundingBox(t)
 	return t
@@ -1748,39 +1940,42 @@ end
 
 --- Create a structure of type FaceDetail
 -- <p>Structure containing attributes of the face that the algorithm detected.</p>
--- @param _Confidence [Percent] <p>Confidence level that the bounding box contains a face (and not a different object such as a tree).</p>
--- @param _Eyeglasses [Eyeglasses] <p>Indicates whether or not the face is wearing eye glasses, and the confidence level in the determination.</p>
--- @param _Sunglasses [Sunglasses] <p>Indicates whether or not the face is wearing sunglasses, and the confidence level in the determination.</p>
--- @param _Gender [Gender] <p>Gender of the face and the confidence level in the determination.</p>
--- @param _Landmarks [Landmarks] <p>Indicates the location of landmarks on the face.</p>
--- @param _Pose [Pose] <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
--- @param _Emotions [Emotions] <p>The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY. </p>
--- @param _AgeRange [AgeRange] <p>The estimated age range, in years, for the face. Low represents the lowest estimated age and High represents the highest estimated age.</p>
--- @param _EyesOpen [EyeOpen] <p>Indicates whether or not the eyes on the face are open, and the confidence level in the determination.</p>
--- @param _BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
--- @param _Smile [Smile] <p>Indicates whether or not the face is smiling, and the confidence level in the determination.</p>
--- @param _MouthOpen [MouthOpen] <p>Indicates whether or not the mouth on the face is open, and the confidence level in the determination.</p>
--- @param _Quality [ImageQuality] <p>Identifies image brightness and sharpness.</p>
--- @param _Mustache [Mustache] <p>Indicates whether or not the face has a mustache, and the confidence level in the determination.</p>
--- @param _Beard [Beard] <p>Indicates whether or not the face has a beard, and the confidence level in the determination.</p>
-function M.FaceDetail(_Confidence, _Eyeglasses, _Sunglasses, _Gender, _Landmarks, _Pose, _Emotions, _AgeRange, _EyesOpen, _BoundingBox, _Smile, _MouthOpen, _Quality, _Mustache, _Beard, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FaceDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Confidence [Percent] <p>Confidence level that the bounding box contains a face (and not a different object such as a tree).</p>
+-- * Eyeglasses [Eyeglasses] <p>Indicates whether or not the face is wearing eye glasses, and the confidence level in the determination.</p>
+-- * Sunglasses [Sunglasses] <p>Indicates whether or not the face is wearing sunglasses, and the confidence level in the determination.</p>
+-- * Gender [Gender] <p>Gender of the face and the confidence level in the determination.</p>
+-- * Landmarks [Landmarks] <p>Indicates the location of landmarks on the face.</p>
+-- * Pose [Pose] <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
+-- * Emotions [Emotions] <p>The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY. </p>
+-- * AgeRange [AgeRange] <p>The estimated age range, in years, for the face. Low represents the lowest estimated age and High represents the highest estimated age.</p>
+-- * EyesOpen [EyeOpen] <p>Indicates whether or not the eyes on the face are open, and the confidence level in the determination.</p>
+-- * BoundingBox [BoundingBox] <p>Bounding box of the face.</p>
+-- * Smile [Smile] <p>Indicates whether or not the face is smiling, and the confidence level in the determination.</p>
+-- * MouthOpen [MouthOpen] <p>Indicates whether or not the mouth on the face is open, and the confidence level in the determination.</p>
+-- * Quality [ImageQuality] <p>Identifies image brightness and sharpness.</p>
+-- * Mustache [Mustache] <p>Indicates whether or not the face has a mustache, and the confidence level in the determination.</p>
+-- * Beard [Beard] <p>Indicates whether or not the face has a beard, and the confidence level in the determination.</p>
+-- @return FaceDetail structure as a key-value pair table
+function M.FaceDetail(args)
+	assert(args, "You must provdide an argument table when creating FaceDetail")
 	local t = { 
-		["Confidence"] = _Confidence,
-		["Eyeglasses"] = _Eyeglasses,
-		["Sunglasses"] = _Sunglasses,
-		["Gender"] = _Gender,
-		["Landmarks"] = _Landmarks,
-		["Pose"] = _Pose,
-		["Emotions"] = _Emotions,
-		["AgeRange"] = _AgeRange,
-		["EyesOpen"] = _EyesOpen,
-		["BoundingBox"] = _BoundingBox,
-		["Smile"] = _Smile,
-		["MouthOpen"] = _MouthOpen,
-		["Quality"] = _Quality,
-		["Mustache"] = _Mustache,
-		["Beard"] = _Beard,
+		["Confidence"] = args["Confidence"],
+		["Eyeglasses"] = args["Eyeglasses"],
+		["Sunglasses"] = args["Sunglasses"],
+		["Gender"] = args["Gender"],
+		["Landmarks"] = args["Landmarks"],
+		["Pose"] = args["Pose"],
+		["Emotions"] = args["Emotions"],
+		["AgeRange"] = args["AgeRange"],
+		["EyesOpen"] = args["EyesOpen"],
+		["BoundingBox"] = args["BoundingBox"],
+		["Smile"] = args["Smile"],
+		["MouthOpen"] = args["MouthOpen"],
+		["Quality"] = args["Quality"],
+		["Mustache"] = args["Mustache"],
+		["Beard"] = args["Beard"],
 	}
 	asserts.AssertFaceDetail(t)
 	return t

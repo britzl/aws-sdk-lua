@@ -35,13 +35,16 @@ end
 
 --- Create a structure of type GetSchemaAsJsonResponse
 --  
--- @param _Document [SchemaJsonDocument] <p>The JSON representation of the schema document.</p>
--- @param _Name [SchemaName] <p>The name of the retrieved schema.</p>
-function M.GetSchemaAsJsonResponse(_Document, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSchemaAsJsonResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Document [SchemaJsonDocument] <p>The JSON representation of the schema document.</p>
+-- * Name [SchemaName] <p>The name of the retrieved schema.</p>
+-- @return GetSchemaAsJsonResponse structure as a key-value pair table
+function M.GetSchemaAsJsonResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSchemaAsJsonResponse")
 	local t = { 
-		["Document"] = _Document,
-		["Name"] = _Name,
+		["Document"] = args["Document"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertGetSchemaAsJsonResponse(t)
 	return t
@@ -61,13 +64,16 @@ end
 
 --- Create a structure of type ObjectAttributeRange
 -- <p>A range of attributes.</p>
--- @param _AttributeKey [AttributeKey] <p>The key of the attribute that the attribute range covers.</p>
--- @param _Range [TypedAttributeValueRange] <p>The range of attribute values being selected.</p>
-function M.ObjectAttributeRange(_AttributeKey, _Range, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ObjectAttributeRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeKey [AttributeKey] <p>The key of the attribute that the attribute range covers.</p>
+-- * Range [TypedAttributeValueRange] <p>The range of attribute values being selected.</p>
+-- @return ObjectAttributeRange structure as a key-value pair table
+function M.ObjectAttributeRange(args)
+	assert(args, "You must provdide an argument table when creating ObjectAttributeRange")
 	local t = { 
-		["AttributeKey"] = _AttributeKey,
-		["Range"] = _Range,
+		["AttributeKey"] = args["AttributeKey"],
+		["Range"] = args["Range"],
 	}
 	asserts.AssertObjectAttributeRange(t)
 	return t
@@ -86,11 +92,14 @@ end
 
 --- Create a structure of type LinkNameAlreadyInUseException
 -- <p>Indicates that a link could not be created due to a naming conflict. Choose a different name and then try again.</p>
--- @param _Message [ExceptionMessage] 
-function M.LinkNameAlreadyInUseException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LinkNameAlreadyInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return LinkNameAlreadyInUseException structure as a key-value pair table
+function M.LinkNameAlreadyInUseException(args)
+	assert(args, "You must provdide an argument table when creating LinkNameAlreadyInUseException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertLinkNameAlreadyInUseException(t)
 	return t
@@ -110,13 +119,16 @@ end
 
 --- Create a structure of type BatchReadException
 -- <p>The batch read exception structure, which contains the exception type and message.</p>
--- @param _Message [ExceptionMessage] <p>An exception message that is associated with the failure.</p>
--- @param _Type [BatchReadExceptionType] <p>A type of exception, such as <code>InvalidArnException</code>.</p>
-function M.BatchReadException(_Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] <p>An exception message that is associated with the failure.</p>
+-- * Type [BatchReadExceptionType] <p>A type of exception, such as <code>InvalidArnException</code>.</p>
+-- @return BatchReadException structure as a key-value pair table
+function M.BatchReadException(args)
+	assert(args, "You must provdide an argument table when creating BatchReadException")
 	local t = { 
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertBatchReadException(t)
 	return t
@@ -134,8 +146,11 @@ end
 
 --- Create a structure of type RemoveFacetFromObjectResponse
 --  
-function M.RemoveFacetFromObjectResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveFacetFromObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RemoveFacetFromObjectResponse structure as a key-value pair table
+function M.RemoveFacetFromObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating RemoveFacetFromObjectResponse")
 	local t = { 
 	}
 	asserts.AssertRemoveFacetFromObjectResponse(t)
@@ -155,11 +170,14 @@ end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>Indicates that the <code>NextToken</code> value is not valid.</p>
--- @param _Message [ExceptionMessage] 
-function M.InvalidNextTokenException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return InvalidNextTokenException structure as a key-value pair table
+function M.InvalidNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidNextTokenException(t)
 	return t
@@ -185,21 +203,24 @@ end
 
 --- Create a structure of type AttachObjectRequest
 --  
--- @param _ParentReference [ObjectReference] <p>The parent object reference.</p>
--- @param _LinkName [LinkName] <p>The link name with which the child object is attached to the parent.</p>
--- @param _DirectoryArn [Arn] <p>Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
--- @param _ChildReference [ObjectReference] <p>The child object reference to be attached to the object.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ParentReference
--- Required parameter: ChildReference
--- Required parameter: LinkName
-function M.AttachObjectRequest(_ParentReference, _LinkName, _DirectoryArn, _ChildReference, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParentReference [ObjectReference] <p>The parent object reference.</p>
+-- * LinkName [LinkName] <p>The link name with which the child object is attached to the parent.</p>
+-- * DirectoryArn [Arn] <p>Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
+-- * ChildReference [ObjectReference] <p>The child object reference to be attached to the object.</p>
+-- Required key: DirectoryArn
+-- Required key: ParentReference
+-- Required key: ChildReference
+-- Required key: LinkName
+-- @return AttachObjectRequest structure as a key-value pair table
+function M.AttachObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachObjectRequest")
 	local t = { 
-		["ParentReference"] = _ParentReference,
-		["LinkName"] = _LinkName,
-		["DirectoryArn"] = _DirectoryArn,
-		["ChildReference"] = _ChildReference,
+		["ParentReference"] = args["ParentReference"],
+		["LinkName"] = args["LinkName"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["ChildReference"] = args["ChildReference"],
 	}
 	asserts.AssertAttachObjectRequest(t)
 	return t
@@ -218,11 +239,14 @@ end
 
 --- Create a structure of type SchemaAlreadyPublishedException
 -- <p>Indicates that a schema is already published.</p>
--- @param _Message [ExceptionMessage] 
-function M.SchemaAlreadyPublishedException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SchemaAlreadyPublishedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return SchemaAlreadyPublishedException structure as a key-value pair table
+function M.SchemaAlreadyPublishedException(args)
+	assert(args, "You must provdide an argument table when creating SchemaAlreadyPublishedException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertSchemaAlreadyPublishedException(t)
 	return t
@@ -244,15 +268,18 @@ end
 
 --- Create a structure of type ApplySchemaRequest
 --  
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> into which the schema is copied. For more information, see <a>arns</a>.</p>
--- @param _PublishedSchemaArn [Arn] <p>Published schema Amazon Resource Name (ARN) that needs to be copied. For more information, see <a>arns</a>.</p>
--- Required parameter: PublishedSchemaArn
--- Required parameter: DirectoryArn
-function M.ApplySchemaRequest(_DirectoryArn, _PublishedSchemaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplySchemaRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> into which the schema is copied. For more information, see <a>arns</a>.</p>
+-- * PublishedSchemaArn [Arn] <p>Published schema Amazon Resource Name (ARN) that needs to be copied. For more information, see <a>arns</a>.</p>
+-- Required key: PublishedSchemaArn
+-- Required key: DirectoryArn
+-- @return ApplySchemaRequest structure as a key-value pair table
+function M.ApplySchemaRequest(args)
+	assert(args, "You must provdide an argument table when creating ApplySchemaRequest")
 	local t = { 
-		["DirectoryArn"] = _DirectoryArn,
-		["PublishedSchemaArn"] = _PublishedSchemaArn,
+		["DirectoryArn"] = args["DirectoryArn"],
+		["PublishedSchemaArn"] = args["PublishedSchemaArn"],
 	}
 	asserts.AssertApplySchemaRequest(t)
 	return t
@@ -276,19 +303,22 @@ end
 
 --- Create a structure of type TypedAttributeValueRange
 -- <p>A range of attribute values.</p>
--- @param _EndMode [RangeMode] <p>The inclusive or exclusive range end.</p>
--- @param _StartMode [RangeMode] <p>The inclusive or exclusive range start.</p>
--- @param _StartValue [TypedAttributeValue] <p>The value to start the range at.</p>
--- @param _EndValue [TypedAttributeValue] <p>The attribute value to terminate the range at.</p>
--- Required parameter: StartMode
--- Required parameter: EndMode
-function M.TypedAttributeValueRange(_EndMode, _StartMode, _StartValue, _EndValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TypedAttributeValueRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndMode [RangeMode] <p>The inclusive or exclusive range end.</p>
+-- * StartMode [RangeMode] <p>The inclusive or exclusive range start.</p>
+-- * StartValue [TypedAttributeValue] <p>The value to start the range at.</p>
+-- * EndValue [TypedAttributeValue] <p>The attribute value to terminate the range at.</p>
+-- Required key: StartMode
+-- Required key: EndMode
+-- @return TypedAttributeValueRange structure as a key-value pair table
+function M.TypedAttributeValueRange(args)
+	assert(args, "You must provdide an argument table when creating TypedAttributeValueRange")
 	local t = { 
-		["EndMode"] = _EndMode,
-		["StartMode"] = _StartMode,
-		["StartValue"] = _StartValue,
-		["EndValue"] = _EndValue,
+		["EndMode"] = args["EndMode"],
+		["StartMode"] = args["StartMode"],
+		["StartValue"] = args["StartValue"],
+		["EndValue"] = args["EndValue"],
 	}
 	asserts.AssertTypedAttributeValueRange(t)
 	return t
@@ -307,11 +337,14 @@ end
 
 --- Create a structure of type InvalidFacetUpdateException
 -- <p>An attempt to modify a <a>Facet</a> resulted in an invalid schema exception.</p>
--- @param _Message [ExceptionMessage] 
-function M.InvalidFacetUpdateException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFacetUpdateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return InvalidFacetUpdateException structure as a key-value pair table
+function M.InvalidFacetUpdateException(args)
+	assert(args, "You must provdide an argument table when creating InvalidFacetUpdateException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidFacetUpdateException(t)
 	return t
@@ -331,13 +364,16 @@ end
 
 --- Create a structure of type ListObjectChildrenResponse
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _Children [LinkNameToObjectIdentifierMap] <p>Children structure, which is a map with key as the <code>LinkName</code> and <code>ObjectIdentifier</code> as the value.</p>
-function M.ListObjectChildrenResponse(_NextToken, _Children, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectChildrenResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * Children [LinkNameToObjectIdentifierMap] <p>Children structure, which is a map with key as the <code>LinkName</code> and <code>ObjectIdentifier</code> as the value.</p>
+-- @return ListObjectChildrenResponse structure as a key-value pair table
+function M.ListObjectChildrenResponse(args)
+	assert(args, "You must provdide an argument table when creating ListObjectChildrenResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Children"] = _Children,
+		["NextToken"] = args["NextToken"],
+		["Children"] = args["Children"],
 	}
 	asserts.AssertListObjectChildrenResponse(t)
 	return t
@@ -357,13 +393,16 @@ end
 
 --- Create a structure of type ListPolicyAttachmentsResponse
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _ObjectIdentifiers [ObjectIdentifierList] <p>A list of <code>ObjectIdentifiers</code> to which the policy is attached.</p>
-function M.ListPolicyAttachmentsResponse(_NextToken, _ObjectIdentifiers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyAttachmentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * ObjectIdentifiers [ObjectIdentifierList] <p>A list of <code>ObjectIdentifiers</code> to which the policy is attached.</p>
+-- @return ListPolicyAttachmentsResponse structure as a key-value pair table
+function M.ListPolicyAttachmentsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListPolicyAttachmentsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ObjectIdentifiers"] = _ObjectIdentifiers,
+		["NextToken"] = args["NextToken"],
+		["ObjectIdentifiers"] = args["ObjectIdentifiers"],
 	}
 	asserts.AssertListPolicyAttachmentsResponse(t)
 	return t
@@ -386,17 +425,20 @@ end
 
 --- Create a structure of type AttachPolicyRequest
 --  
--- @param _PolicyReference [ObjectReference] <p>The reference that is associated with the policy object.</p>
--- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object to which the policy will be attached.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
--- Required parameter: PolicyReference
--- Required parameter: ObjectReference
-function M.AttachPolicyRequest(_PolicyReference, _ObjectReference, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyReference [ObjectReference] <p>The reference that is associated with the policy object.</p>
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object to which the policy will be attached.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
+-- Required key: PolicyReference
+-- Required key: ObjectReference
+-- @return AttachPolicyRequest structure as a key-value pair table
+function M.AttachPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachPolicyRequest")
 	local t = { 
-		["PolicyReference"] = _PolicyReference,
-		["ObjectReference"] = _ObjectReference,
-		["DirectoryArn"] = _DirectoryArn,
+		["PolicyReference"] = args["PolicyReference"],
+		["ObjectReference"] = args["ObjectReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertAttachPolicyRequest(t)
 	return t
@@ -416,12 +458,15 @@ end
 
 --- Create a structure of type EnableDirectoryResponse
 --  
--- @param _DirectoryArn [Arn] <p>The ARN of the enabled directory.</p>
--- Required parameter: DirectoryArn
-function M.EnableDirectoryResponse(_DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableDirectoryResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryArn [Arn] <p>The ARN of the enabled directory.</p>
+-- Required key: DirectoryArn
+-- @return EnableDirectoryResponse structure as a key-value pair table
+function M.EnableDirectoryResponse(args)
+	assert(args, "You must provdide an argument table when creating EnableDirectoryResponse")
 	local t = { 
-		["DirectoryArn"] = _DirectoryArn,
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertEnableDirectoryResponse(t)
 	return t
@@ -441,13 +486,16 @@ end
 
 --- Create a structure of type ListDevelopmentSchemaArnsRequest
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
-function M.ListDevelopmentSchemaArnsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDevelopmentSchemaArnsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @return ListDevelopmentSchemaArnsRequest structure as a key-value pair table
+function M.ListDevelopmentSchemaArnsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDevelopmentSchemaArnsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListDevelopmentSchemaArnsRequest(t)
 	return t
@@ -466,11 +514,14 @@ end
 
 --- Create a structure of type ObjectNotDetachedException
 -- <p>Indicates that the requested operation cannot be completed because the object has not been detached from the tree.</p>
--- @param _Message [ExceptionMessage] 
-function M.ObjectNotDetachedException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ObjectNotDetachedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return ObjectNotDetachedException structure as a key-value pair table
+function M.ObjectNotDetachedException(args)
+	assert(args, "You must provdide an argument table when creating ObjectNotDetachedException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertObjectNotDetachedException(t)
 	return t
@@ -489,11 +540,14 @@ end
 
 --- Create a structure of type StillContainsLinksException
 -- <p>The object could not be deleted because links still exist. Remove the links and then try the operation again.</p>
--- @param _Message [ExceptionMessage] 
-function M.StillContainsLinksException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StillContainsLinksException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return StillContainsLinksException structure as a key-value pair table
+function M.StillContainsLinksException(args)
+	assert(args, "You must provdide an argument table when creating StillContainsLinksException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertStillContainsLinksException(t)
 	return t
@@ -515,15 +569,18 @@ end
 
 --- Create a structure of type BatchWriteRequest
 --  
--- @param _Operations [BatchWriteOperationList] <p>A list of operations that are part of the batch.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: Operations
-function M.BatchWriteRequest(_Operations, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchWriteRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Operations [BatchWriteOperationList] <p>A list of operations that are part of the batch.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: Operations
+-- @return BatchWriteRequest structure as a key-value pair table
+function M.BatchWriteRequest(args)
+	assert(args, "You must provdide an argument table when creating BatchWriteRequest")
 	local t = { 
-		["Operations"] = _Operations,
-		["DirectoryArn"] = _DirectoryArn,
+		["Operations"] = args["Operations"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertBatchWriteRequest(t)
 	return t
@@ -544,15 +601,18 @@ end
 
 --- Create a structure of type PolicyAttachment
 -- <p>Contains the <code>PolicyType</code>, <code>PolicyId</code>, and the <code>ObjectIdentifier</code> to which it is attached. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p>
--- @param _PolicyType [PolicyType] <p>The type of policy that can be associated with <code>PolicyAttachment</code>.</p>
--- @param _ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> that is associated with <code>PolicyAttachment</code>.</p>
--- @param _PolicyId [ObjectIdentifier] <p>The ID of <code>PolicyAttachment</code>.</p>
-function M.PolicyAttachment(_PolicyType, _ObjectIdentifier, _PolicyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyAttachment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyType [PolicyType] <p>The type of policy that can be associated with <code>PolicyAttachment</code>.</p>
+-- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> that is associated with <code>PolicyAttachment</code>.</p>
+-- * PolicyId [ObjectIdentifier] <p>The ID of <code>PolicyAttachment</code>.</p>
+-- @return PolicyAttachment structure as a key-value pair table
+function M.PolicyAttachment(args)
+	assert(args, "You must provdide an argument table when creating PolicyAttachment")
 	local t = { 
-		["PolicyType"] = _PolicyType,
-		["ObjectIdentifier"] = _ObjectIdentifier,
-		["PolicyId"] = _PolicyId,
+		["PolicyType"] = args["PolicyType"],
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
+		["PolicyId"] = args["PolicyId"],
 	}
 	asserts.AssertPolicyAttachment(t)
 	return t
@@ -571,11 +631,14 @@ end
 
 --- Create a structure of type AttachToIndexResponse
 --  
--- @param _AttachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was attached to the index.</p>
-function M.AttachToIndexResponse(_AttachedObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachToIndexResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was attached to the index.</p>
+-- @return AttachToIndexResponse structure as a key-value pair table
+function M.AttachToIndexResponse(args)
+	assert(args, "You must provdide an argument table when creating AttachToIndexResponse")
 	local t = { 
-		["AttachedObjectIdentifier"] = _AttachedObjectIdentifier,
+		["AttachedObjectIdentifier"] = args["AttachedObjectIdentifier"],
 	}
 	asserts.AssertAttachToIndexResponse(t)
 	return t
@@ -594,11 +657,14 @@ end
 
 --- Create a structure of type FacetNotFoundException
 -- <p>The specified <a>Facet</a> could not be found.</p>
--- @param _Message [ExceptionMessage] 
-function M.FacetNotFoundException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FacetNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return FacetNotFoundException structure as a key-value pair table
+function M.FacetNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating FacetNotFoundException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertFacetNotFoundException(t)
 	return t
@@ -617,11 +683,14 @@ end
 
 --- Create a structure of type UpdateObjectAttributesResponse
 --  
--- @param _ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the updated object.</p>
-function M.UpdateObjectAttributesResponse(_ObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateObjectAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the updated object.</p>
+-- @return UpdateObjectAttributesResponse structure as a key-value pair table
+function M.UpdateObjectAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateObjectAttributesResponse")
 	local t = { 
-		["ObjectIdentifier"] = _ObjectIdentifier,
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
 	asserts.AssertUpdateObjectAttributesResponse(t)
 	return t
@@ -649,24 +718,27 @@ end
 
 --- Create a structure of type AttachTypedLinkRequest
 --  
--- @param _SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
--- @param _Attributes [AttributeNameAndValueList] <p>A set of attributes that are associated with the typed link.</p>
--- @param _TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.</p>
--- @param _TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
--- Required parameter: DirectoryArn
--- Required parameter: SourceObjectReference
--- Required parameter: TargetObjectReference
--- Required parameter: TypedLinkFacet
--- Required parameter: Attributes
-function M.AttachTypedLinkRequest(_SourceObjectReference, _Attributes, _TargetObjectReference, _DirectoryArn, _TypedLinkFacet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachTypedLinkRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
+-- * Attributes [AttributeNameAndValueList] <p>A set of attributes that are associated with the typed link.</p>
+-- * TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to attach the typed link.</p>
+-- * TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
+-- Required key: DirectoryArn
+-- Required key: SourceObjectReference
+-- Required key: TargetObjectReference
+-- Required key: TypedLinkFacet
+-- Required key: Attributes
+-- @return AttachTypedLinkRequest structure as a key-value pair table
+function M.AttachTypedLinkRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachTypedLinkRequest")
 	local t = { 
-		["SourceObjectReference"] = _SourceObjectReference,
-		["Attributes"] = _Attributes,
-		["TargetObjectReference"] = _TargetObjectReference,
-		["DirectoryArn"] = _DirectoryArn,
-		["TypedLinkFacet"] = _TypedLinkFacet,
+		["SourceObjectReference"] = args["SourceObjectReference"],
+		["Attributes"] = args["Attributes"],
+		["TargetObjectReference"] = args["TargetObjectReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["TypedLinkFacet"] = args["TypedLinkFacet"],
 	}
 	asserts.AssertAttachTypedLinkRequest(t)
 	return t
@@ -685,11 +757,14 @@ end
 
 --- Create a structure of type UnsupportedIndexTypeException
 -- <p>Indicates that the requested index type is not supported.</p>
--- @param _Message [ExceptionMessage] 
-function M.UnsupportedIndexTypeException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedIndexTypeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return UnsupportedIndexTypeException structure as a key-value pair table
+function M.UnsupportedIndexTypeException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedIndexTypeException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertUnsupportedIndexTypeException(t)
 	return t
@@ -709,13 +784,16 @@ end
 
 --- Create a structure of type BatchReadOperationResponse
 -- <p>Represents the output of a <code>BatchRead</code> response operation.</p>
--- @param _SuccessfulResponse [BatchReadSuccessfulResponse] <p>Identifies which operation in a batch has succeeded.</p>
--- @param _ExceptionResponse [BatchReadException] <p>Identifies which operation in a batch has failed.</p>
-function M.BatchReadOperationResponse(_SuccessfulResponse, _ExceptionResponse, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadOperationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SuccessfulResponse [BatchReadSuccessfulResponse] <p>Identifies which operation in a batch has succeeded.</p>
+-- * ExceptionResponse [BatchReadException] <p>Identifies which operation in a batch has failed.</p>
+-- @return BatchReadOperationResponse structure as a key-value pair table
+function M.BatchReadOperationResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchReadOperationResponse")
 	local t = { 
-		["SuccessfulResponse"] = _SuccessfulResponse,
-		["ExceptionResponse"] = _ExceptionResponse,
+		["SuccessfulResponse"] = args["SuccessfulResponse"],
+		["ExceptionResponse"] = args["ExceptionResponse"],
 	}
 	asserts.AssertBatchReadOperationResponse(t)
 	return t
@@ -733,8 +811,11 @@ end
 
 --- Create a structure of type AddFacetToObjectResponse
 --  
-function M.AddFacetToObjectResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddFacetToObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AddFacetToObjectResponse structure as a key-value pair table
+function M.AddFacetToObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating AddFacetToObjectResponse")
 	local t = { 
 	}
 	asserts.AssertAddFacetToObjectResponse(t)
@@ -757,16 +838,19 @@ end
 
 --- Create a structure of type ListFacetNamesRequest
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) to retrieve facet names from.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- Required parameter: SchemaArn
-function M.ListFacetNamesRequest(_SchemaArn, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFacetNamesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) to retrieve facet names from.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: SchemaArn
+-- @return ListFacetNamesRequest structure as a key-value pair table
+function M.ListFacetNamesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListFacetNamesRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["SchemaArn"] = args["SchemaArn"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListFacetNamesRequest(t)
 	return t
@@ -784,8 +868,11 @@ end
 
 --- Create a structure of type DeleteFacetResponse
 --  
-function M.DeleteFacetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFacetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteFacetResponse structure as a key-value pair table
+function M.DeleteFacetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteFacetResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteFacetResponse(t)
@@ -805,11 +892,14 @@ end
 
 --- Create a structure of type InvalidArnException
 -- <p>Indicates that the provided ARN value is not valid.</p>
--- @param _Message [ExceptionMessage] 
-function M.InvalidArnException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArnException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return InvalidArnException structure as a key-value pair table
+function M.InvalidArnException(args)
+	assert(args, "You must provdide an argument table when creating InvalidArnException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidArnException(t)
 	return t
@@ -833,18 +923,21 @@ end
 
 --- Create a structure of type AttributeKey
 -- <p>A unique identifier for an attribute.</p>
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.</p>
--- @param _FacetName [FacetName] <p>The name of the facet that the attribute exists within.</p>
--- @param _Name [AttributeName] <p>The name of the attribute.</p>
--- Required parameter: SchemaArn
--- Required parameter: FacetName
--- Required parameter: Name
-function M.AttributeKey(_SchemaArn, _FacetName, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttributeKey")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the schema that contains the facet and attribute.</p>
+-- * FacetName [FacetName] <p>The name of the facet that the attribute exists within.</p>
+-- * Name [AttributeName] <p>The name of the attribute.</p>
+-- Required key: SchemaArn
+-- Required key: FacetName
+-- Required key: Name
+-- @return AttributeKey structure as a key-value pair table
+function M.AttributeKey(args)
+	assert(args, "You must provdide an argument table when creating AttributeKey")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["FacetName"] = _FacetName,
-		["Name"] = _Name,
+		["SchemaArn"] = args["SchemaArn"],
+		["FacetName"] = args["FacetName"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertAttributeKey(t)
 	return t
@@ -866,16 +959,19 @@ end
 
 --- Create a structure of type ListAppliedSchemaArnsRequest
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- @param _DirectoryArn [Arn] <p>The ARN of the directory you are listing.</p>
--- Required parameter: DirectoryArn
-function M.ListAppliedSchemaArnsRequest(_NextToken, _MaxResults, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAppliedSchemaArnsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- * DirectoryArn [Arn] <p>The ARN of the directory you are listing.</p>
+-- Required key: DirectoryArn
+-- @return ListAppliedSchemaArnsRequest structure as a key-value pair table
+function M.ListAppliedSchemaArnsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAppliedSchemaArnsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["DirectoryArn"] = _DirectoryArn,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertListAppliedSchemaArnsRequest(t)
 	return t
@@ -894,11 +990,14 @@ end
 
 --- Create a structure of type BatchCreateObjectResponse
 -- <p>Represents the output of a <code>CreateObject</code> response operation.</p>
--- @param _ObjectIdentifier [ObjectIdentifier] <p>The ID that is associated with the object.</p>
-function M.BatchCreateObjectResponse(_ObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchCreateObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectIdentifier [ObjectIdentifier] <p>The ID that is associated with the object.</p>
+-- @return BatchCreateObjectResponse structure as a key-value pair table
+function M.BatchCreateObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchCreateObjectResponse")
 	local t = { 
-		["ObjectIdentifier"] = _ObjectIdentifier,
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
 	asserts.AssertBatchCreateObjectResponse(t)
 	return t
@@ -916,8 +1015,11 @@ end
 
 --- Create a structure of type UpdateFacetResponse
 --  
-function M.UpdateFacetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFacetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateFacetResponse structure as a key-value pair table
+function M.UpdateFacetResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateFacetResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateFacetResponse(t)
@@ -937,11 +1039,14 @@ end
 
 --- Create a structure of type FacetInUseException
 -- <p>Occurs when deleting a facet that contains an attribute that is a target to an attribute reference in a different facet.</p>
--- @param _Message [ExceptionMessage] 
-function M.FacetInUseException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FacetInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return FacetInUseException structure as a key-value pair table
+function M.FacetInUseException(args)
+	assert(args, "You must provdide an argument table when creating FacetInUseException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertFacetInUseException(t)
 	return t
@@ -961,13 +1066,16 @@ end
 
 --- Create a structure of type PathToObjectIdentifiers
 -- <p>Returns the path to the <code>ObjectIdentifiers</code> that is associated with the directory.</p>
--- @param _Path [PathString] <p>The path that is used to identify the object starting from directory root.</p>
--- @param _ObjectIdentifiers [ObjectIdentifierList] <p>Lists <code>ObjectIdentifiers</code> starting from directory root to the object in the request.</p>
-function M.PathToObjectIdentifiers(_Path, _ObjectIdentifiers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PathToObjectIdentifiers")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [PathString] <p>The path that is used to identify the object starting from directory root.</p>
+-- * ObjectIdentifiers [ObjectIdentifierList] <p>Lists <code>ObjectIdentifiers</code> starting from directory root to the object in the request.</p>
+-- @return PathToObjectIdentifiers structure as a key-value pair table
+function M.PathToObjectIdentifiers(args)
+	assert(args, "You must provdide an argument table when creating PathToObjectIdentifiers")
 	local t = { 
-		["Path"] = _Path,
-		["ObjectIdentifiers"] = _ObjectIdentifiers,
+		["Path"] = args["Path"],
+		["ObjectIdentifiers"] = args["ObjectIdentifiers"],
 	}
 	asserts.AssertPathToObjectIdentifiers(t)
 	return t
@@ -990,17 +1098,20 @@ end
 
 --- Create a structure of type BatchReadRequest
 --  
--- @param _Operations [BatchReadOperationList] <p>A list of operations that are part of the batch.</p>
--- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: Operations
-function M.BatchReadRequest(_Operations, _ConsistencyLevel, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Operations [BatchReadOperationList] <p>A list of operations that are part of the batch.</p>
+-- * ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: Operations
+-- @return BatchReadRequest structure as a key-value pair table
+function M.BatchReadRequest(args)
+	assert(args, "You must provdide an argument table when creating BatchReadRequest")
 	local t = { 
-		["Operations"] = _Operations,
-		["ConsistencyLevel"] = _ConsistencyLevel,
-		["DirectoryArn"] = _DirectoryArn,
+		["Operations"] = args["Operations"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertBatchReadRequest(t)
 	return t
@@ -1019,11 +1130,14 @@ end
 
 --- Create a structure of type FacetValidationException
 -- <p>The <a>Facet</a> that you provided was not well formed or could not be validated with the schema.</p>
--- @param _Message [ExceptionMessage] 
-function M.FacetValidationException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FacetValidationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return FacetValidationException structure as a key-value pair table
+function M.FacetValidationException(args)
+	assert(args, "You must provdide an argument table when creating FacetValidationException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertFacetValidationException(t)
 	return t
@@ -1048,21 +1162,24 @@ end
 
 --- Create a structure of type ListObjectChildrenRequest
 --  
--- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object for which child objects are being listed.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
-function M.ListObjectChildrenRequest(_ConsistencyLevel, _ObjectReference, _NextToken, _MaxResults, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectChildrenRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object for which child objects are being listed.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return ListObjectChildrenRequest structure as a key-value pair table
+function M.ListObjectChildrenRequest(args)
+	assert(args, "You must provdide an argument table when creating ListObjectChildrenRequest")
 	local t = { 
-		["ConsistencyLevel"] = _ConsistencyLevel,
-		["ObjectReference"] = _ObjectReference,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["DirectoryArn"] = _DirectoryArn,
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertListObjectChildrenRequest(t)
 	return t
@@ -1087,23 +1204,26 @@ end
 
 --- Create a structure of type BatchWriteOperationResponse
 -- <p>Represents the output of a <code>BatchWrite</code> response operation.</p>
--- @param _DetachObject [BatchDetachObjectResponse] <p>Detaches an object from a <a>Directory</a>.</p>
--- @param _AttachObject [BatchAttachObjectResponse] <p>Attaches an object to a <a>Directory</a>.</p>
--- @param _AddFacetToObject [BatchAddFacetToObjectResponse] <p>The result of an add facet to object batch operation.</p>
--- @param _RemoveFacetFromObject [BatchRemoveFacetFromObjectResponse] <p>The result of a batch remove facet from object operation.</p>
--- @param _CreateObject [BatchCreateObjectResponse] <p>Creates an object in a <a>Directory</a>.</p>
--- @param _DeleteObject [BatchDeleteObjectResponse] <p>Deletes an object in a <a>Directory</a>.</p>
--- @param _UpdateObjectAttributes [BatchUpdateObjectAttributesResponse] <p>Updates a given object’s attributes.</p>
-function M.BatchWriteOperationResponse(_DetachObject, _AttachObject, _AddFacetToObject, _RemoveFacetFromObject, _CreateObject, _DeleteObject, _UpdateObjectAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchWriteOperationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DetachObject [BatchDetachObjectResponse] <p>Detaches an object from a <a>Directory</a>.</p>
+-- * AttachObject [BatchAttachObjectResponse] <p>Attaches an object to a <a>Directory</a>.</p>
+-- * AddFacetToObject [BatchAddFacetToObjectResponse] <p>The result of an add facet to object batch operation.</p>
+-- * RemoveFacetFromObject [BatchRemoveFacetFromObjectResponse] <p>The result of a batch remove facet from object operation.</p>
+-- * CreateObject [BatchCreateObjectResponse] <p>Creates an object in a <a>Directory</a>.</p>
+-- * DeleteObject [BatchDeleteObjectResponse] <p>Deletes an object in a <a>Directory</a>.</p>
+-- * UpdateObjectAttributes [BatchUpdateObjectAttributesResponse] <p>Updates a given object’s attributes.</p>
+-- @return BatchWriteOperationResponse structure as a key-value pair table
+function M.BatchWriteOperationResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchWriteOperationResponse")
 	local t = { 
-		["DetachObject"] = _DetachObject,
-		["AttachObject"] = _AttachObject,
-		["AddFacetToObject"] = _AddFacetToObject,
-		["RemoveFacetFromObject"] = _RemoveFacetFromObject,
-		["CreateObject"] = _CreateObject,
-		["DeleteObject"] = _DeleteObject,
-		["UpdateObjectAttributes"] = _UpdateObjectAttributes,
+		["DetachObject"] = args["DetachObject"],
+		["AttachObject"] = args["AttachObject"],
+		["AddFacetToObject"] = args["AddFacetToObject"],
+		["RemoveFacetFromObject"] = args["RemoveFacetFromObject"],
+		["CreateObject"] = args["CreateObject"],
+		["DeleteObject"] = args["DeleteObject"],
+		["UpdateObjectAttributes"] = args["UpdateObjectAttributes"],
 	}
 	asserts.AssertBatchWriteOperationResponse(t)
 	return t
@@ -1123,13 +1243,16 @@ end
 
 --- Create a structure of type Tag
 -- <p>The tag structure that contains a tag key and value.</p>
--- @param _Value [TagValue] <p>The value that is associated with the tag.</p>
--- @param _Key [TagKey] <p>The key that is associated with the tag.</p>
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The value that is associated with the tag.</p>
+-- * Key [TagKey] <p>The key that is associated with the tag.</p>
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -1149,13 +1272,16 @@ end
 
 --- Create a structure of type ListFacetAttributesResponse
 --  
--- @param _Attributes [FacetAttributeList] <p>The attributes attached to the facet.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
-function M.ListFacetAttributesResponse(_Attributes, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFacetAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [FacetAttributeList] <p>The attributes attached to the facet.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return ListFacetAttributesResponse structure as a key-value pair table
+function M.ListFacetAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListFacetAttributesResponse")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["NextToken"] = _NextToken,
+		["Attributes"] = args["Attributes"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListFacetAttributesResponse(t)
 	return t
@@ -1174,11 +1300,14 @@ end
 
 --- Create a structure of type UpdateSchemaResponse
 --  
--- @param _SchemaArn [Arn] <p>The ARN that is associated with the updated schema. For more information, see <a>arns</a>.</p>
-function M.UpdateSchemaResponse(_SchemaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSchemaResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The ARN that is associated with the updated schema. For more information, see <a>arns</a>.</p>
+-- @return UpdateSchemaResponse structure as a key-value pair table
+function M.UpdateSchemaResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateSchemaResponse")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
+		["SchemaArn"] = args["SchemaArn"],
 	}
 	asserts.AssertUpdateSchemaResponse(t)
 	return t
@@ -1198,12 +1327,15 @@ end
 
 --- Create a structure of type DisableDirectoryRequest
 --  
--- @param _DirectoryArn [Arn] <p>The ARN of the directory to disable.</p>
--- Required parameter: DirectoryArn
-function M.DisableDirectoryRequest(_DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableDirectoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryArn [Arn] <p>The ARN of the directory to disable.</p>
+-- Required key: DirectoryArn
+-- @return DisableDirectoryRequest structure as a key-value pair table
+function M.DisableDirectoryRequest(args)
+	assert(args, "You must provdide an argument table when creating DisableDirectoryRequest")
 	local t = { 
-		["DirectoryArn"] = _DirectoryArn,
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertDisableDirectoryRequest(t)
 	return t
@@ -1222,11 +1354,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>Indicates that limits are exceeded. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/limits.html">Limits</a> for more information.</p>
--- @param _Message [ExceptionMessage] 
-function M.LimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -1248,16 +1383,19 @@ end
 
 --- Create a structure of type ListTypedLinkFacetNamesRequest
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- Required parameter: SchemaArn
-function M.ListTypedLinkFacetNamesRequest(_SchemaArn, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTypedLinkFacetNamesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: SchemaArn
+-- @return ListTypedLinkFacetNamesRequest structure as a key-value pair table
+function M.ListTypedLinkFacetNamesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTypedLinkFacetNamesRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["SchemaArn"] = args["SchemaArn"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListTypedLinkFacetNamesRequest(t)
 	return t
@@ -1282,21 +1420,24 @@ end
 
 --- Create a structure of type ListObjectPoliciesRequest
 --  
--- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- @param _ObjectReference [ObjectReference] <p>Reference that identifies the object for which policies will be listed.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
-function M.ListObjectPoliciesRequest(_ConsistencyLevel, _ObjectReference, _NextToken, _MaxResults, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- * ObjectReference [ObjectReference] <p>Reference that identifies the object for which policies will be listed.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return ListObjectPoliciesRequest structure as a key-value pair table
+function M.ListObjectPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListObjectPoliciesRequest")
 	local t = { 
-		["ConsistencyLevel"] = _ConsistencyLevel,
-		["ObjectReference"] = _ObjectReference,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["DirectoryArn"] = _DirectoryArn,
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertListObjectPoliciesRequest(t)
 	return t
@@ -1315,11 +1456,14 @@ end
 
 --- Create a structure of type GetFacetResponse
 --  
--- @param _Facet [Facet] <p>The <a>Facet</a> structure that is associated with the facet.</p>
-function M.GetFacetResponse(_Facet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFacetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Facet [Facet] <p>The <a>Facet</a> structure that is associated with the facet.</p>
+-- @return GetFacetResponse structure as a key-value pair table
+function M.GetFacetResponse(args)
+	assert(args, "You must provdide an argument table when creating GetFacetResponse")
 	local t = { 
-		["Facet"] = _Facet,
+		["Facet"] = args["Facet"],
 	}
 	asserts.AssertGetFacetResponse(t)
 	return t
@@ -1340,15 +1484,18 @@ end
 
 --- Create a structure of type ListDirectoriesRequest
 --  
--- @param _state [DirectoryState] <p>The state of the directories in the list. Can be either Enabled, Disabled, or Deleted.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
-function M.ListDirectoriesRequest(_state, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDirectoriesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * state [DirectoryState] <p>The state of the directories in the list. Can be either Enabled, Disabled, or Deleted.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @return ListDirectoriesRequest structure as a key-value pair table
+function M.ListDirectoriesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDirectoriesRequest")
 	local t = { 
-		["state"] = _state,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["state"] = args["state"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListDirectoriesRequest(t)
 	return t
@@ -1367,11 +1514,14 @@ end
 
 --- Create a structure of type ValidationException
 -- <p>Indicates that your request is malformed in some manner. See the exception message.</p>
--- @param _Message [ExceptionMessage] 
-function M.ValidationException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return ValidationException structure as a key-value pair table
+function M.ValidationException(args)
+	assert(args, "You must provdide an argument table when creating ValidationException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertValidationException(t)
 	return t
@@ -1390,11 +1540,14 @@ end
 
 --- Create a structure of type DirectoryNotDisabledException
 -- <p>An operation can only operate on a disabled directory.</p>
--- @param _Message [ExceptionMessage] 
-function M.DirectoryNotDisabledException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryNotDisabledException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return DirectoryNotDisabledException structure as a key-value pair table
+function M.DirectoryNotDisabledException(args)
+	assert(args, "You must provdide an argument table when creating DirectoryNotDisabledException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDirectoryNotDisabledException(t)
 	return t
@@ -1413,11 +1566,14 @@ end
 
 --- Create a structure of type ObjectReference
 -- <p>The reference that identifies an object.</p>
--- @param _Selector [SelectorObjectReference] <p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#accessingobjects">Accessing Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>
-function M.ObjectReference(_Selector, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ObjectReference")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Selector [SelectorObjectReference] <p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#accessingobjects">Accessing Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>
+-- @return ObjectReference structure as a key-value pair table
+function M.ObjectReference(args)
+	assert(args, "You must provdide an argument table when creating ObjectReference")
 	local t = { 
-		["Selector"] = _Selector,
+		["Selector"] = args["Selector"],
 	}
 	asserts.AssertObjectReference(t)
 	return t
@@ -1437,13 +1593,16 @@ end
 
 --- Create a structure of type ListObjectPoliciesResponse
 --  
--- @param _AttachedPolicyIds [ObjectIdentifierList] <p>A list of policy <code>ObjectIdentifiers</code>, that are attached to the object.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
-function M.ListObjectPoliciesResponse(_AttachedPolicyIds, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttachedPolicyIds [ObjectIdentifierList] <p>A list of policy <code>ObjectIdentifiers</code>, that are attached to the object.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return ListObjectPoliciesResponse structure as a key-value pair table
+function M.ListObjectPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListObjectPoliciesResponse")
 	local t = { 
-		["AttachedPolicyIds"] = _AttachedPolicyIds,
-		["NextToken"] = _NextToken,
+		["AttachedPolicyIds"] = args["AttachedPolicyIds"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListObjectPoliciesResponse(t)
 	return t
@@ -1462,11 +1621,14 @@ end
 
 --- Create a structure of type InternalServiceException
 -- <p>Indicates a problem that must be resolved by Amazon Web Services. This might be a transient error in which case you can retry your request until it succeeds. Otherwise, go to the <a href="http://status.aws.amazon.com/">AWS Service Health Dashboard</a> site to see if there are any operational issues with the service.</p>
--- @param _Message [ExceptionMessage] 
-function M.InternalServiceException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return InternalServiceException structure as a key-value pair table
+function M.InternalServiceException(args)
+	assert(args, "You must provdide an argument table when creating InternalServiceException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInternalServiceException(t)
 	return t
@@ -1486,13 +1648,16 @@ end
 
 --- Create a structure of type ApplySchemaResponse
 --  
--- @param _AppliedSchemaArn [Arn] <p>The applied schema ARN that is associated with the copied schema in the <a>Directory</a>. You can use this ARN to describe the schema information applied on this directory. For more information, see <a>arns</a>.</p>
--- @param _DirectoryArn [Arn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
-function M.ApplySchemaResponse(_AppliedSchemaArn, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ApplySchemaResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AppliedSchemaArn [Arn] <p>The applied schema ARN that is associated with the copied schema in the <a>Directory</a>. You can use this ARN to describe the schema information applied on this directory. For more information, see <a>arns</a>.</p>
+-- * DirectoryArn [Arn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- @return ApplySchemaResponse structure as a key-value pair table
+function M.ApplySchemaResponse(args)
+	assert(args, "You must provdide an argument table when creating ApplySchemaResponse")
 	local t = { 
-		["AppliedSchemaArn"] = _AppliedSchemaArn,
-		["DirectoryArn"] = _DirectoryArn,
+		["AppliedSchemaArn"] = args["AppliedSchemaArn"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertApplySchemaResponse(t)
 	return t
@@ -1515,18 +1680,21 @@ end
 
 --- Create a structure of type FacetAttribute
 -- <p>An attribute that is associated with the <a>Facet</a>.</p>
--- @param _AttributeDefinition [FacetAttributeDefinition] <p>A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
--- @param _RequiredBehavior [RequiredAttributeBehavior] <p>The required behavior of the <code>FacetAttribute</code>.</p>
--- @param _Name [AttributeName] <p>The name of the facet attribute.</p>
--- @param _AttributeReference [FacetAttributeReference] <p>An attribute reference that is associated with the attribute. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
--- Required parameter: Name
-function M.FacetAttribute(_AttributeDefinition, _RequiredBehavior, _Name, _AttributeReference, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FacetAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeDefinition [FacetAttributeDefinition] <p>A facet attribute consists of either a definition or a reference. This structure contains the attribute definition. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- * RequiredBehavior [RequiredAttributeBehavior] <p>The required behavior of the <code>FacetAttribute</code>.</p>
+-- * Name [AttributeName] <p>The name of the facet attribute.</p>
+-- * AttributeReference [FacetAttributeReference] <p>An attribute reference that is associated with the attribute. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- Required key: Name
+-- @return FacetAttribute structure as a key-value pair table
+function M.FacetAttribute(args)
+	assert(args, "You must provdide an argument table when creating FacetAttribute")
 	local t = { 
-		["AttributeDefinition"] = _AttributeDefinition,
-		["RequiredBehavior"] = _RequiredBehavior,
-		["Name"] = _Name,
-		["AttributeReference"] = _AttributeReference,
+		["AttributeDefinition"] = args["AttributeDefinition"],
+		["RequiredBehavior"] = args["RequiredBehavior"],
+		["Name"] = args["Name"],
+		["AttributeReference"] = args["AttributeReference"],
 	}
 	asserts.AssertFacetAttribute(t)
 	return t
@@ -1548,15 +1716,18 @@ end
 
 --- Create a structure of type BatchUpdateObjectAttributes
 -- <p>Represents the output of a <code>BatchUpdate</code> operation. </p>
--- @param _AttributeUpdates [ObjectAttributeUpdateList] <p>Attributes update structure.</p>
--- @param _ObjectReference [ObjectReference] <p>Reference that identifies the object.</p>
--- Required parameter: ObjectReference
--- Required parameter: AttributeUpdates
-function M.BatchUpdateObjectAttributes(_AttributeUpdates, _ObjectReference, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchUpdateObjectAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeUpdates [ObjectAttributeUpdateList] <p>Attributes update structure.</p>
+-- * ObjectReference [ObjectReference] <p>Reference that identifies the object.</p>
+-- Required key: ObjectReference
+-- Required key: AttributeUpdates
+-- @return BatchUpdateObjectAttributes structure as a key-value pair table
+function M.BatchUpdateObjectAttributes(args)
+	assert(args, "You must provdide an argument table when creating BatchUpdateObjectAttributes")
 	local t = { 
-		["AttributeUpdates"] = _AttributeUpdates,
-		["ObjectReference"] = _ObjectReference,
+		["AttributeUpdates"] = args["AttributeUpdates"],
+		["ObjectReference"] = args["ObjectReference"],
 	}
 	asserts.AssertBatchUpdateObjectAttributes(t)
 	return t
@@ -1580,19 +1751,22 @@ end
 
 --- Create a structure of type UpdateFacetRequest
 --  
--- @param _AttributeUpdates [FacetAttributeUpdateList] <p>List of attributes that need to be updated in a given schema <a>Facet</a>. Each attribute is followed by <code>AttributeAction</code>, which specifies the type of update operation to perform. </p>
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
--- @param _Name [FacetName] <p>The name of the facet.</p>
--- @param _ObjectType [ObjectType] <p>The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.</p>
--- Required parameter: SchemaArn
--- Required parameter: Name
-function M.UpdateFacetRequest(_AttributeUpdates, _SchemaArn, _Name, _ObjectType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFacetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeUpdates [FacetAttributeUpdateList] <p>List of attributes that need to be updated in a given schema <a>Facet</a>. Each attribute is followed by <code>AttributeAction</code>, which specifies the type of update operation to perform. </p>
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
+-- * Name [FacetName] <p>The name of the facet.</p>
+-- * ObjectType [ObjectType] <p>The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.</p>
+-- Required key: SchemaArn
+-- Required key: Name
+-- @return UpdateFacetRequest structure as a key-value pair table
+function M.UpdateFacetRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateFacetRequest")
 	local t = { 
-		["AttributeUpdates"] = _AttributeUpdates,
-		["SchemaArn"] = _SchemaArn,
-		["Name"] = _Name,
-		["ObjectType"] = _ObjectType,
+		["AttributeUpdates"] = args["AttributeUpdates"],
+		["SchemaArn"] = args["SchemaArn"],
+		["Name"] = args["Name"],
+		["ObjectType"] = args["ObjectType"],
 	}
 	asserts.AssertUpdateFacetRequest(t)
 	return t
@@ -1616,19 +1790,22 @@ end
 
 --- Create a structure of type ListObjectParentPathsRequest
 --  
--- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object whose parent paths are listed.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param _DirectoryArn [Arn] <p>The ARN of the directory to which the parent path applies.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
-function M.ListObjectParentPathsRequest(_ObjectReference, _NextToken, _MaxResults, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectParentPathsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object whose parent paths are listed.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- * DirectoryArn [Arn] <p>The ARN of the directory to which the parent path applies.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return ListObjectParentPathsRequest structure as a key-value pair table
+function M.ListObjectParentPathsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListObjectParentPathsRequest")
 	local t = { 
-		["ObjectReference"] = _ObjectReference,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["DirectoryArn"] = _DirectoryArn,
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertListObjectParentPathsRequest(t)
 	return t
@@ -1647,11 +1824,14 @@ end
 
 --- Create a structure of type RetryableConflictException
 -- <p>Occurs when a conflict with a previous successful write is detected. For example, if a write operation occurs on an object and then an attempt is made to read the object using “SERIALIZABLE” consistency, this exception may result. This generally occurs when the previous write did not have time to propagate to the host serving the current request. A retry (with appropriate backoff logic) is the recommended response to this exception.</p>
--- @param _Message [ExceptionMessage] 
-function M.RetryableConflictException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetryableConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return RetryableConflictException structure as a key-value pair table
+function M.RetryableConflictException(args)
+	assert(args, "You must provdide an argument table when creating RetryableConflictException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertRetryableConflictException(t)
 	return t
@@ -1670,11 +1850,14 @@ end
 
 --- Create a structure of type SchemaAlreadyExistsException
 -- <p>Indicates that a schema could not be created due to a naming conflict. Please select a different name and then try again.</p>
--- @param _Message [ExceptionMessage] 
-function M.SchemaAlreadyExistsException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SchemaAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return SchemaAlreadyExistsException structure as a key-value pair table
+function M.SchemaAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating SchemaAlreadyExistsException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertSchemaAlreadyExistsException(t)
 	return t
@@ -1693,11 +1876,14 @@ end
 
 --- Create a structure of type NotIndexException
 -- <p>Indicates that the requested operation can only operate on index objects.</p>
--- @param _Message [ExceptionMessage] 
-function M.NotIndexException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotIndexException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return NotIndexException structure as a key-value pair table
+function M.NotIndexException(args)
+	assert(args, "You must provdide an argument table when creating NotIndexException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertNotIndexException(t)
 	return t
@@ -1717,13 +1903,16 @@ end
 
 --- Create a structure of type ListObjectParentsResponse
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _Parents [ObjectIdentifierToLinkNameMap] <p>The parent structure, which is a map with key as the <code>ObjectIdentifier</code> and LinkName as the value.</p>
-function M.ListObjectParentsResponse(_NextToken, _Parents, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectParentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * Parents [ObjectIdentifierToLinkNameMap] <p>The parent structure, which is a map with key as the <code>ObjectIdentifier</code> and LinkName as the value.</p>
+-- @return ListObjectParentsResponse structure as a key-value pair table
+function M.ListObjectParentsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListObjectParentsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Parents"] = _Parents,
+		["NextToken"] = args["NextToken"],
+		["Parents"] = args["Parents"],
 	}
 	asserts.AssertListObjectParentsResponse(t)
 	return t
@@ -1745,15 +1934,18 @@ end
 
 --- Create a structure of type AttributeNameAndValue
 -- <p>Identifies the attribute name and value for a typed link.</p>
--- @param _AttributeName [AttributeName] <p>The attribute name of the typed link.</p>
--- @param _Value [TypedAttributeValue] <p>The value for the typed link.</p>
--- Required parameter: AttributeName
--- Required parameter: Value
-function M.AttributeNameAndValue(_AttributeName, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttributeNameAndValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeName [AttributeName] <p>The attribute name of the typed link.</p>
+-- * Value [TypedAttributeValue] <p>The value for the typed link.</p>
+-- Required key: AttributeName
+-- Required key: Value
+-- @return AttributeNameAndValue structure as a key-value pair table
+function M.AttributeNameAndValue(args)
+	assert(args, "You must provdide an argument table when creating AttributeNameAndValue")
 	local t = { 
-		["AttributeName"] = _AttributeName,
-		["Value"] = _Value,
+		["AttributeName"] = args["AttributeName"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertAttributeNameAndValue(t)
 	return t
@@ -1777,18 +1969,21 @@ end
 
 --- Create a structure of type RemoveFacetFromObjectRequest
 --  
--- @param _ObjectReference [ObjectReference] <p>A reference to the object to remove the facet from.</p>
--- @param _SchemaFacet [SchemaFacet] <p>The facet to remove.</p>
--- @param _DirectoryArn [Arn] <p>The ARN of the directory in which the object resides.</p>
--- Required parameter: DirectoryArn
--- Required parameter: SchemaFacet
--- Required parameter: ObjectReference
-function M.RemoveFacetFromObjectRequest(_ObjectReference, _SchemaFacet, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveFacetFromObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>A reference to the object to remove the facet from.</p>
+-- * SchemaFacet [SchemaFacet] <p>The facet to remove.</p>
+-- * DirectoryArn [Arn] <p>The ARN of the directory in which the object resides.</p>
+-- Required key: DirectoryArn
+-- Required key: SchemaFacet
+-- Required key: ObjectReference
+-- @return RemoveFacetFromObjectRequest structure as a key-value pair table
+function M.RemoveFacetFromObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveFacetFromObjectRequest")
 	local t = { 
-		["ObjectReference"] = _ObjectReference,
-		["SchemaFacet"] = _SchemaFacet,
-		["DirectoryArn"] = _DirectoryArn,
+		["ObjectReference"] = args["ObjectReference"],
+		["SchemaFacet"] = args["SchemaFacet"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertRemoveFacetFromObjectRequest(t)
 	return t
@@ -1810,15 +2005,18 @@ end
 
 --- Create a structure of type TypedLinkFacetAttributeUpdate
 -- <p>A typed link facet attribute update.</p>
--- @param _Action [UpdateActionType] <p>The action to perform when updating the attribute.</p>
--- @param _Attribute [TypedLinkAttributeDefinition] <p>The attribute to update.</p>
--- Required parameter: Attribute
--- Required parameter: Action
-function M.TypedLinkFacetAttributeUpdate(_Action, _Attribute, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkFacetAttributeUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [UpdateActionType] <p>The action to perform when updating the attribute.</p>
+-- * Attribute [TypedLinkAttributeDefinition] <p>The attribute to update.</p>
+-- Required key: Attribute
+-- Required key: Action
+-- @return TypedLinkFacetAttributeUpdate structure as a key-value pair table
+function M.TypedLinkFacetAttributeUpdate(args)
+	assert(args, "You must provdide an argument table when creating TypedLinkFacetAttributeUpdate")
 	local t = { 
-		["Action"] = _Action,
-		["Attribute"] = _Attribute,
+		["Action"] = args["Action"],
+		["Attribute"] = args["Attribute"],
 	}
 	asserts.AssertTypedLinkFacetAttributeUpdate(t)
 	return t
@@ -1837,11 +2035,14 @@ end
 
 --- Create a structure of type InvalidSchemaDocException
 -- <p>Indicates that the provided <code>SchemaDoc</code> value is not valid.</p>
--- @param _Message [ExceptionMessage] 
-function M.InvalidSchemaDocException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSchemaDocException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return InvalidSchemaDocException structure as a key-value pair table
+function M.InvalidSchemaDocException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSchemaDocException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidSchemaDocException(t)
 	return t
@@ -1859,8 +2060,11 @@ end
 
 --- Create a structure of type DeleteObjectResponse
 --  
-function M.DeleteObjectResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteObjectResponse structure as a key-value pair table
+function M.DeleteObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteObjectResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteObjectResponse(t)
@@ -1886,21 +2090,24 @@ end
 
 --- Create a structure of type ListAttachedIndicesRequest
 --  
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- @param _ConsistencyLevel [ConsistencyLevel] <p>The consistency level to use for this operation.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _TargetReference [ObjectReference] <p>A reference to the object to that has indices attached.</p>
--- @param _DirectoryArn [Arn] <p>The ARN of the directory.</p>
--- Required parameter: DirectoryArn
--- Required parameter: TargetReference
-function M.ListAttachedIndicesRequest(_MaxResults, _ConsistencyLevel, _NextToken, _TargetReference, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttachedIndicesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- * ConsistencyLevel [ConsistencyLevel] <p>The consistency level to use for this operation.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * TargetReference [ObjectReference] <p>A reference to the object to that has indices attached.</p>
+-- * DirectoryArn [Arn] <p>The ARN of the directory.</p>
+-- Required key: DirectoryArn
+-- Required key: TargetReference
+-- @return ListAttachedIndicesRequest structure as a key-value pair table
+function M.ListAttachedIndicesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAttachedIndicesRequest")
 	local t = { 
-		["MaxResults"] = _MaxResults,
-		["ConsistencyLevel"] = _ConsistencyLevel,
-		["NextToken"] = _NextToken,
-		["TargetReference"] = _TargetReference,
-		["DirectoryArn"] = _DirectoryArn,
+		["MaxResults"] = args["MaxResults"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
+		["NextToken"] = args["NextToken"],
+		["TargetReference"] = args["TargetReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertListAttachedIndicesRequest(t)
 	return t
@@ -1919,11 +2126,14 @@ end
 
 --- Create a structure of type AttachObjectResponse
 --  
--- @param _AttachedObjectIdentifier [ObjectIdentifier] <p>The attached <code>ObjectIdentifier</code>, which is the child <code>ObjectIdentifier</code>.</p>
-function M.AttachObjectResponse(_AttachedObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttachedObjectIdentifier [ObjectIdentifier] <p>The attached <code>ObjectIdentifier</code>, which is the child <code>ObjectIdentifier</code>.</p>
+-- @return AttachObjectResponse structure as a key-value pair table
+function M.AttachObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating AttachObjectResponse")
 	local t = { 
-		["AttachedObjectIdentifier"] = _AttachedObjectIdentifier,
+		["AttachedObjectIdentifier"] = args["AttachedObjectIdentifier"],
 	}
 	asserts.AssertAttachObjectResponse(t)
 	return t
@@ -1946,19 +2156,22 @@ end
 
 --- Create a structure of type TypedAttributeValue
 -- <p>Represents the data for a typed attribute. You can set one, and only one, of the elements. Each attribute in an item is a name-value pair. Attributes have a single value.</p>
--- @param _StringValue [StringAttributeValue] <p>A string data value.</p>
--- @param _BooleanValue [BooleanAttributeValue] <p>A Boolean data value.</p>
--- @param _DatetimeValue [DatetimeAttributeValue] <p>A date and time value.</p>
--- @param _BinaryValue [BinaryAttributeValue] <p>A binary data value.</p>
--- @param _NumberValue [NumberAttributeValue] <p>A number data value.</p>
-function M.TypedAttributeValue(_StringValue, _BooleanValue, _DatetimeValue, _BinaryValue, _NumberValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TypedAttributeValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StringValue [StringAttributeValue] <p>A string data value.</p>
+-- * BooleanValue [BooleanAttributeValue] <p>A Boolean data value.</p>
+-- * DatetimeValue [DatetimeAttributeValue] <p>A date and time value.</p>
+-- * BinaryValue [BinaryAttributeValue] <p>A binary data value.</p>
+-- * NumberValue [NumberAttributeValue] <p>A number data value.</p>
+-- @return TypedAttributeValue structure as a key-value pair table
+function M.TypedAttributeValue(args)
+	assert(args, "You must provdide an argument table when creating TypedAttributeValue")
 	local t = { 
-		["StringValue"] = _StringValue,
-		["BooleanValue"] = _BooleanValue,
-		["DatetimeValue"] = _DatetimeValue,
-		["BinaryValue"] = _BinaryValue,
-		["NumberValue"] = _NumberValue,
+		["StringValue"] = args["StringValue"],
+		["BooleanValue"] = args["BooleanValue"],
+		["DatetimeValue"] = args["DatetimeValue"],
+		["BinaryValue"] = args["BinaryValue"],
+		["NumberValue"] = args["NumberValue"],
 	}
 	asserts.AssertTypedAttributeValue(t)
 	return t
@@ -1980,15 +2193,18 @@ end
 
 --- Create a structure of type UpdateSchemaRequest
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the development schema. For more information, see <a>arns</a>.</p>
--- @param _Name [SchemaName] <p>The name of the schema.</p>
--- Required parameter: SchemaArn
--- Required parameter: Name
-function M.UpdateSchemaRequest(_SchemaArn, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSchemaRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the development schema. For more information, see <a>arns</a>.</p>
+-- * Name [SchemaName] <p>The name of the schema.</p>
+-- Required key: SchemaArn
+-- Required key: Name
+-- @return UpdateSchemaRequest structure as a key-value pair table
+function M.UpdateSchemaRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateSchemaRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["Name"] = _Name,
+		["SchemaArn"] = args["SchemaArn"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateSchemaRequest(t)
 	return t
@@ -2008,13 +2224,16 @@ end
 
 --- Create a structure of type FacetAttributeUpdate
 -- <p>A structure that contains information used to update an attribute.</p>
--- @param _Action [UpdateActionType] <p>The action to perform when updating the attribute.</p>
--- @param _Attribute [FacetAttribute] <p>The attribute to update.</p>
-function M.FacetAttributeUpdate(_Action, _Attribute, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FacetAttributeUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [UpdateActionType] <p>The action to perform when updating the attribute.</p>
+-- * Attribute [FacetAttribute] <p>The attribute to update.</p>
+-- @return FacetAttributeUpdate structure as a key-value pair table
+function M.FacetAttributeUpdate(args)
+	assert(args, "You must provdide an argument table when creating FacetAttributeUpdate")
 	local t = { 
-		["Action"] = _Action,
-		["Attribute"] = _Attribute,
+		["Action"] = args["Action"],
+		["Attribute"] = args["Attribute"],
 	}
 	asserts.AssertFacetAttributeUpdate(t)
 	return t
@@ -2040,22 +2259,25 @@ end
 
 --- Create a structure of type CreateIndexRequest
 --  
--- @param _ParentReference [ObjectReference] <p>A reference to the parent object that contains the index object.</p>
--- @param _OrderedIndexedAttributeList [AttributeKeyList] <p>Specifies the attributes that should be indexed on. Currently only a single attribute is supported.</p>
--- @param _IsUnique [Bool] <p>Indicates whether the attribute that is being indexed has unique values or not.</p>
--- @param _DirectoryArn [Arn] <p>The ARN of the directory where the index should be created.</p>
--- @param _LinkName [LinkName] <p>The name of the link between the parent object and the index object.</p>
--- Required parameter: DirectoryArn
--- Required parameter: OrderedIndexedAttributeList
--- Required parameter: IsUnique
-function M.CreateIndexRequest(_ParentReference, _OrderedIndexedAttributeList, _IsUnique, _DirectoryArn, _LinkName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateIndexRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParentReference [ObjectReference] <p>A reference to the parent object that contains the index object.</p>
+-- * OrderedIndexedAttributeList [AttributeKeyList] <p>Specifies the attributes that should be indexed on. Currently only a single attribute is supported.</p>
+-- * IsUnique [Bool] <p>Indicates whether the attribute that is being indexed has unique values or not.</p>
+-- * DirectoryArn [Arn] <p>The ARN of the directory where the index should be created.</p>
+-- * LinkName [LinkName] <p>The name of the link between the parent object and the index object.</p>
+-- Required key: DirectoryArn
+-- Required key: OrderedIndexedAttributeList
+-- Required key: IsUnique
+-- @return CreateIndexRequest structure as a key-value pair table
+function M.CreateIndexRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateIndexRequest")
 	local t = { 
-		["ParentReference"] = _ParentReference,
-		["OrderedIndexedAttributeList"] = _OrderedIndexedAttributeList,
-		["IsUnique"] = _IsUnique,
-		["DirectoryArn"] = _DirectoryArn,
-		["LinkName"] = _LinkName,
+		["ParentReference"] = args["ParentReference"],
+		["OrderedIndexedAttributeList"] = args["OrderedIndexedAttributeList"],
+		["IsUnique"] = args["IsUnique"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["LinkName"] = args["LinkName"],
 	}
 	asserts.AssertCreateIndexRequest(t)
 	return t
@@ -2074,11 +2296,14 @@ end
 
 --- Create a structure of type DeleteSchemaResponse
 --  
--- @param _SchemaArn [Arn] <p>The input ARN that is returned as part of the response. For more information, see <a>arns</a>.</p>
-function M.DeleteSchemaResponse(_SchemaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSchemaResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The input ARN that is returned as part of the response. For more information, see <a>arns</a>.</p>
+-- @return DeleteSchemaResponse structure as a key-value pair table
+function M.DeleteSchemaResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteSchemaResponse")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
+		["SchemaArn"] = args["SchemaArn"],
 	}
 	asserts.AssertDeleteSchemaResponse(t)
 	return t
@@ -2098,13 +2323,16 @@ end
 
 --- Create a structure of type Facet
 -- <p>A structure that contains <code>Name</code>, <code>ARN</code>, <code>Attributes</code>, <a>Rule</a>s, and <code>ObjectTypes</code>.</p>
--- @param _Name [FacetName] <p>The name of the <a>Facet</a>.</p>
--- @param _ObjectType [ObjectType] <p>The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.</p>
-function M.Facet(_Name, _ObjectType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Facet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [FacetName] <p>The name of the <a>Facet</a>.</p>
+-- * ObjectType [ObjectType] <p>The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.</p>
+-- @return Facet structure as a key-value pair table
+function M.Facet(args)
+	assert(args, "You must provdide an argument table when creating Facet")
 	local t = { 
-		["Name"] = _Name,
-		["ObjectType"] = _ObjectType,
+		["Name"] = args["Name"],
+		["ObjectType"] = args["ObjectType"],
 	}
 	asserts.AssertFacet(t)
 	return t
@@ -2126,15 +2354,18 @@ end
 
 --- Create a structure of type CreateTypedLinkFacetRequest
 --  
--- @param _Facet [TypedLinkFacet] <p> <a>Facet</a> structure that is associated with the typed link facet.</p>
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- Required parameter: SchemaArn
--- Required parameter: Facet
-function M.CreateTypedLinkFacetRequest(_Facet, _SchemaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTypedLinkFacetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Facet [TypedLinkFacet] <p> <a>Facet</a> structure that is associated with the typed link facet.</p>
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- Required key: SchemaArn
+-- Required key: Facet
+-- @return CreateTypedLinkFacetRequest structure as a key-value pair table
+function M.CreateTypedLinkFacetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateTypedLinkFacetRequest")
 	local t = { 
-		["Facet"] = _Facet,
-		["SchemaArn"] = _SchemaArn,
+		["Facet"] = args["Facet"],
+		["SchemaArn"] = args["SchemaArn"],
 	}
 	asserts.AssertCreateTypedLinkFacetRequest(t)
 	return t
@@ -2153,11 +2384,14 @@ end
 
 --- Create a structure of type DirectoryDeletedException
 -- <p>A directory that has been deleted and to which access has been attempted. Note: The requested resource will eventually cease to exist.</p>
--- @param _Message [ExceptionMessage] 
-function M.DirectoryDeletedException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryDeletedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return DirectoryDeletedException structure as a key-value pair table
+function M.DirectoryDeletedException(args)
+	assert(args, "You must provdide an argument table when creating DirectoryDeletedException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDirectoryDeletedException(t)
 	return t
@@ -2182,21 +2416,24 @@ end
 
 --- Create a structure of type ListObjectParentsRequest
 --  
--- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object for which parent objects are being listed.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
-function M.ListObjectParentsRequest(_ConsistencyLevel, _ObjectReference, _NextToken, _MaxResults, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectParentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object for which parent objects are being listed.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return ListObjectParentsRequest structure as a key-value pair table
+function M.ListObjectParentsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListObjectParentsRequest")
 	local t = { 
-		["ConsistencyLevel"] = _ConsistencyLevel,
-		["ObjectReference"] = _ObjectReference,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["DirectoryArn"] = _DirectoryArn,
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertListObjectParentsRequest(t)
 	return t
@@ -2218,17 +2455,20 @@ end
 
 --- Create a structure of type Directory
 -- <p>Directory structure that includes the directory name and directory ARN.</p>
--- @param _State [DirectoryState] <p>The state of the directory. Can be either <code>Enabled</code>, <code>Disabled</code>, or <code>Deleted</code>.</p>
--- @param _CreationDateTime [Date] <p>The date and time when the directory was created.</p>
--- @param _Name [DirectoryName] <p>The name of the directory.</p>
--- @param _DirectoryArn [DirectoryArn] <p>The Amazon Resource Name (ARN) that is associated with the directory. For more information, see <a>arns</a>.</p>
-function M.Directory(_State, _CreationDateTime, _Name, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Directory")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * State [DirectoryState] <p>The state of the directory. Can be either <code>Enabled</code>, <code>Disabled</code>, or <code>Deleted</code>.</p>
+-- * CreationDateTime [Date] <p>The date and time when the directory was created.</p>
+-- * Name [DirectoryName] <p>The name of the directory.</p>
+-- * DirectoryArn [DirectoryArn] <p>The Amazon Resource Name (ARN) that is associated with the directory. For more information, see <a>arns</a>.</p>
+-- @return Directory structure as a key-value pair table
+function M.Directory(args)
+	assert(args, "You must provdide an argument table when creating Directory")
 	local t = { 
-		["State"] = _State,
-		["CreationDateTime"] = _CreationDateTime,
-		["Name"] = _Name,
-		["DirectoryArn"] = _DirectoryArn,
+		["State"] = args["State"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["Name"] = args["Name"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertDirectory(t)
 	return t
@@ -2248,13 +2488,16 @@ end
 
 --- Create a structure of type SchemaFacet
 -- <p>A facet.</p>
--- @param _SchemaArn [Arn] <p>The ARN of the schema that contains the facet.</p>
--- @param _FacetName [FacetName] <p>The name of the facet.</p>
-function M.SchemaFacet(_SchemaArn, _FacetName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SchemaFacet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The ARN of the schema that contains the facet.</p>
+-- * FacetName [FacetName] <p>The name of the facet.</p>
+-- @return SchemaFacet structure as a key-value pair table
+function M.SchemaFacet(args)
+	assert(args, "You must provdide an argument table when creating SchemaFacet")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["FacetName"] = _FacetName,
+		["SchemaArn"] = args["SchemaArn"],
+		["FacetName"] = args["FacetName"],
 	}
 	asserts.AssertSchemaFacet(t)
 	return t
@@ -2280,23 +2523,26 @@ end
 
 --- Create a structure of type ListObjectAttributesRequest
 --  
--- @param _FacetFilter [SchemaFacet] <p>Used to filter the list of object attributes that are associated with a certain facet.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object whose attributes will be listed.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
-function M.ListObjectAttributesRequest(_FacetFilter, _MaxResults, _ObjectReference, _DirectoryArn, _NextToken, _ConsistencyLevel, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FacetFilter [SchemaFacet] <p>Used to filter the list of object attributes that are associated with a certain facet.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object whose attributes will be listed.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return ListObjectAttributesRequest structure as a key-value pair table
+function M.ListObjectAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListObjectAttributesRequest")
 	local t = { 
-		["FacetFilter"] = _FacetFilter,
-		["MaxResults"] = _MaxResults,
-		["ObjectReference"] = _ObjectReference,
-		["DirectoryArn"] = _DirectoryArn,
-		["NextToken"] = _NextToken,
-		["ConsistencyLevel"] = _ConsistencyLevel,
+		["FacetFilter"] = args["FacetFilter"],
+		["MaxResults"] = args["MaxResults"],
+		["ObjectReference"] = args["ObjectReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["NextToken"] = args["NextToken"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
 	}
 	asserts.AssertListObjectAttributesRequest(t)
 	return t
@@ -2315,11 +2561,14 @@ end
 
 --- Create a structure of type BatchDetachObjectResponse
 -- <p>Represents the output of a <code>DetachObject</code> response operation.</p>
--- @param _detachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the detached object.</p>
-function M.BatchDetachObjectResponse(_detachedObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchDetachObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * detachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the detached object.</p>
+-- @return BatchDetachObjectResponse structure as a key-value pair table
+function M.BatchDetachObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchDetachObjectResponse")
 	local t = { 
-		["detachedObjectIdentifier"] = _detachedObjectIdentifier,
+		["detachedObjectIdentifier"] = args["detachedObjectIdentifier"],
 	}
 	asserts.AssertBatchDetachObjectResponse(t)
 	return t
@@ -2339,13 +2588,16 @@ end
 
 --- Create a structure of type ListIndexResponse
 --  
--- @param _IndexAttachments [IndexAttachmentList] <p>The objects and indexed values attached to the index.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
-function M.ListIndexResponse(_IndexAttachments, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIndexResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexAttachments [IndexAttachmentList] <p>The objects and indexed values attached to the index.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return ListIndexResponse structure as a key-value pair table
+function M.ListIndexResponse(args)
+	assert(args, "You must provdide an argument table when creating ListIndexResponse")
 	local t = { 
-		["IndexAttachments"] = _IndexAttachments,
-		["NextToken"] = _NextToken,
+		["IndexAttachments"] = args["IndexAttachments"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListIndexResponse(t)
 	return t
@@ -2363,8 +2615,11 @@ end
 
 --- Create a structure of type DetachPolicyResponse
 --  
-function M.DetachPolicyResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DetachPolicyResponse structure as a key-value pair table
+function M.DetachPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating DetachPolicyResponse")
 	local t = { 
 	}
 	asserts.AssertDetachPolicyResponse(t)
@@ -2388,17 +2643,20 @@ end
 
 --- Create a structure of type PublishSchemaRequest
 --  
--- @param _DevelopmentSchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the development schema. For more information, see <a>arns</a>.</p>
--- @param _Version [Version] <p>The version under which the schema will be published.</p>
--- @param _Name [SchemaName] <p>The new name under which the schema will be published. If this is not provided, the development schema is considered.</p>
--- Required parameter: DevelopmentSchemaArn
--- Required parameter: Version
-function M.PublishSchemaRequest(_DevelopmentSchemaArn, _Version, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PublishSchemaRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DevelopmentSchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the development schema. For more information, see <a>arns</a>.</p>
+-- * Version [Version] <p>The version under which the schema will be published.</p>
+-- * Name [SchemaName] <p>The new name under which the schema will be published. If this is not provided, the development schema is considered.</p>
+-- Required key: DevelopmentSchemaArn
+-- Required key: Version
+-- @return PublishSchemaRequest structure as a key-value pair table
+function M.PublishSchemaRequest(args)
+	assert(args, "You must provdide an argument table when creating PublishSchemaRequest")
 	local t = { 
-		["DevelopmentSchemaArn"] = _DevelopmentSchemaArn,
-		["Version"] = _Version,
-		["Name"] = _Name,
+		["DevelopmentSchemaArn"] = args["DevelopmentSchemaArn"],
+		["Version"] = args["Version"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertPublishSchemaRequest(t)
 	return t
@@ -2417,11 +2675,14 @@ end
 
 --- Create a structure of type CreateObjectResponse
 --  
--- @param _ObjectIdentifier [ObjectIdentifier] <p>The identifier that is associated with the object.</p>
-function M.CreateObjectResponse(_ObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectIdentifier [ObjectIdentifier] <p>The identifier that is associated with the object.</p>
+-- @return CreateObjectResponse structure as a key-value pair table
+function M.CreateObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateObjectResponse")
 	local t = { 
-		["ObjectIdentifier"] = _ObjectIdentifier,
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
 	asserts.AssertCreateObjectResponse(t)
 	return t
@@ -2445,19 +2706,22 @@ end
 
 --- Create a structure of type ListFacetAttributesRequest
 --  
--- @param _SchemaArn [Arn] <p>The ARN of the schema where the facet resides.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _Name [FacetName] <p>The name of the facet whose attributes will be retrieved.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- Required parameter: SchemaArn
--- Required parameter: Name
-function M.ListFacetAttributesRequest(_SchemaArn, _NextToken, _Name, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFacetAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The ARN of the schema where the facet resides.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * Name [FacetName] <p>The name of the facet whose attributes will be retrieved.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: SchemaArn
+-- Required key: Name
+-- @return ListFacetAttributesRequest structure as a key-value pair table
+function M.ListFacetAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListFacetAttributesRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["NextToken"] = _NextToken,
-		["Name"] = _Name,
-		["MaxResults"] = _MaxResults,
+		["SchemaArn"] = args["SchemaArn"],
+		["NextToken"] = args["NextToken"],
+		["Name"] = args["Name"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListFacetAttributesRequest(t)
 	return t
@@ -2479,15 +2743,18 @@ end
 
 --- Create a structure of type DeleteObjectRequest
 --  
--- @param _ObjectReference [ObjectReference] <p>A reference that identifies the object.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
-function M.DeleteObjectRequest(_ObjectReference, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>A reference that identifies the object.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return DeleteObjectRequest structure as a key-value pair table
+function M.DeleteObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteObjectRequest")
 	local t = { 
-		["ObjectReference"] = _ObjectReference,
-		["DirectoryArn"] = _DirectoryArn,
+		["ObjectReference"] = args["ObjectReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertDeleteObjectRequest(t)
 	return t
@@ -2511,18 +2778,21 @@ end
 
 --- Create a structure of type DetachObjectRequest
 --  
--- @param _ParentReference [ObjectReference] <p>The parent reference from which the object with the specified link name is detached.</p>
--- @param _LinkName [LinkName] <p>The link name associated with the object that needs to be detached.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ParentReference
--- Required parameter: LinkName
-function M.DetachObjectRequest(_ParentReference, _LinkName, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParentReference [ObjectReference] <p>The parent reference from which the object with the specified link name is detached.</p>
+-- * LinkName [LinkName] <p>The link name associated with the object that needs to be detached.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: ParentReference
+-- Required key: LinkName
+-- @return DetachObjectRequest structure as a key-value pair table
+function M.DetachObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachObjectRequest")
 	local t = { 
-		["ParentReference"] = _ParentReference,
-		["LinkName"] = _LinkName,
-		["DirectoryArn"] = _DirectoryArn,
+		["ParentReference"] = args["ParentReference"],
+		["LinkName"] = args["LinkName"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertDetachObjectRequest(t)
 	return t
@@ -2544,15 +2814,18 @@ end
 
 --- Create a structure of type GetFacetRequest
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
--- @param _Name [FacetName] <p>The name of the facet to retrieve.</p>
--- Required parameter: SchemaArn
--- Required parameter: Name
-function M.GetFacetRequest(_SchemaArn, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFacetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
+-- * Name [FacetName] <p>The name of the facet to retrieve.</p>
+-- Required key: SchemaArn
+-- Required key: Name
+-- @return GetFacetRequest structure as a key-value pair table
+function M.GetFacetRequest(args)
+	assert(args, "You must provdide an argument table when creating GetFacetRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["Name"] = _Name,
+		["SchemaArn"] = args["SchemaArn"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertGetFacetRequest(t)
 	return t
@@ -2573,14 +2846,17 @@ end
 
 --- Create a structure of type ListDirectoriesResponse
 --  
--- @param _Directories [DirectoryList] <p>Lists all directories that are associated with your account in pagination fashion.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- Required parameter: Directories
-function M.ListDirectoriesResponse(_Directories, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDirectoriesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Directories [DirectoryList] <p>Lists all directories that are associated with your account in pagination fashion.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- Required key: Directories
+-- @return ListDirectoriesResponse structure as a key-value pair table
+function M.ListDirectoriesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListDirectoriesResponse")
 	local t = { 
-		["Directories"] = _Directories,
-		["NextToken"] = _NextToken,
+		["Directories"] = args["Directories"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListDirectoriesResponse(t)
 	return t
@@ -2599,11 +2875,14 @@ end
 
 --- Create a structure of type InvalidTaggingRequestException
 -- <p>Can occur for multiple reasons such as when you tag a resource that doesn’t exist or if you specify a higher number of tags for a resource than the allowed limit. Allowed limit is 50 tags per resource.</p>
--- @param _Message [ExceptionMessage] 
-function M.InvalidTaggingRequestException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTaggingRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return InvalidTaggingRequestException structure as a key-value pair table
+function M.InvalidTaggingRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTaggingRequestException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidTaggingRequestException(t)
 	return t
@@ -2629,21 +2908,24 @@ end
 
 --- Create a structure of type CreateDirectoryResponse
 --  
--- @param _AppliedSchemaArn [Arn] <p>The ARN of the published schema in the <a>Directory</a>. Once a published schema is copied into the directory, it has its own ARN, which is referred to applied schema ARN. For more information, see <a>arns</a>.</p>
--- @param _ObjectIdentifier [ObjectIdentifier] <p>The root object node of the created directory.</p>
--- @param _Name [DirectoryName] <p>The name of the <a>Directory</a>.</p>
--- @param _DirectoryArn [DirectoryArn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: Name
--- Required parameter: ObjectIdentifier
--- Required parameter: AppliedSchemaArn
-function M.CreateDirectoryResponse(_AppliedSchemaArn, _ObjectIdentifier, _Name, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDirectoryResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AppliedSchemaArn [Arn] <p>The ARN of the published schema in the <a>Directory</a>. Once a published schema is copied into the directory, it has its own ARN, which is referred to applied schema ARN. For more information, see <a>arns</a>.</p>
+-- * ObjectIdentifier [ObjectIdentifier] <p>The root object node of the created directory.</p>
+-- * Name [DirectoryName] <p>The name of the <a>Directory</a>.</p>
+-- * DirectoryArn [DirectoryArn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: Name
+-- Required key: ObjectIdentifier
+-- Required key: AppliedSchemaArn
+-- @return CreateDirectoryResponse structure as a key-value pair table
+function M.CreateDirectoryResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateDirectoryResponse")
 	local t = { 
-		["AppliedSchemaArn"] = _AppliedSchemaArn,
-		["ObjectIdentifier"] = _ObjectIdentifier,
-		["Name"] = _Name,
-		["DirectoryArn"] = _DirectoryArn,
+		["AppliedSchemaArn"] = args["AppliedSchemaArn"],
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
+		["Name"] = args["Name"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertCreateDirectoryResponse(t)
 	return t
@@ -2663,13 +2945,16 @@ end
 
 --- Create a structure of type ListAttachedIndicesResponse
 --  
--- @param _IndexAttachments [IndexAttachmentList] <p>The indices attached to the specified object.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
-function M.ListAttachedIndicesResponse(_IndexAttachments, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttachedIndicesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexAttachments [IndexAttachmentList] <p>The indices attached to the specified object.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return ListAttachedIndicesResponse structure as a key-value pair table
+function M.ListAttachedIndicesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAttachedIndicesResponse")
 	local t = { 
-		["IndexAttachments"] = _IndexAttachments,
-		["NextToken"] = _NextToken,
+		["IndexAttachments"] = args["IndexAttachments"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListAttachedIndicesResponse(t)
 	return t
@@ -2691,15 +2976,18 @@ end
 
 --- Create a structure of type UntagResourceRequest
 --  
--- @param _ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
--- @param _TagKeys [TagKeyList] <p>Keys of the tag that need to be removed from the resource.</p>
--- Required parameter: ResourceArn
--- Required parameter: TagKeys
-function M.UntagResourceRequest(_ResourceArn, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
+-- * TagKeys [TagKeyList] <p>Keys of the tag that need to be removed from the resource.</p>
+-- Required key: ResourceArn
+-- Required key: TagKeys
+-- @return UntagResourceRequest structure as a key-value pair table
+function M.UntagResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["TagKeys"] = _TagKeys,
+		["ResourceArn"] = args["ResourceArn"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertUntagResourceRequest(t)
 	return t
@@ -2718,11 +3006,14 @@ end
 
 --- Create a structure of type DirectoryAlreadyExistsException
 -- <p>Indicates that a <a>Directory</a> could not be created due to a naming conflict. Choose a different name and try again.</p>
--- @param _Message [ExceptionMessage] 
-function M.DirectoryAlreadyExistsException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return DirectoryAlreadyExistsException structure as a key-value pair table
+function M.DirectoryAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating DirectoryAlreadyExistsException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDirectoryAlreadyExistsException(t)
 	return t
@@ -2742,13 +3033,16 @@ end
 
 --- Create a structure of type BatchListObjectChildrenResponse
 -- <p>Represents the output of a <code>ListObjectChildren</code> response operation.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _Children [LinkNameToObjectIdentifierMap] <p>The children structure, which is a map with the key as the <code>LinkName</code> and <code>ObjectIdentifier</code> as the value.</p>
-function M.BatchListObjectChildrenResponse(_NextToken, _Children, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchListObjectChildrenResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * Children [LinkNameToObjectIdentifierMap] <p>The children structure, which is a map with the key as the <code>LinkName</code> and <code>ObjectIdentifier</code> as the value.</p>
+-- @return BatchListObjectChildrenResponse structure as a key-value pair table
+function M.BatchListObjectChildrenResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchListObjectChildrenResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Children"] = _Children,
+		["NextToken"] = args["NextToken"],
+		["Children"] = args["Children"],
 	}
 	asserts.AssertBatchListObjectChildrenResponse(t)
 	return t
@@ -2771,17 +3065,20 @@ end
 
 --- Create a structure of type GetObjectInformationRequest
 --  
--- @param _ObjectReference [ObjectReference] <p>A reference to the object.</p>
--- @param _ConsistencyLevel [ConsistencyLevel] <p>The consistency level at which to retrieve the object information.</p>
--- @param _DirectoryArn [Arn] <p>The ARN of the directory being retrieved.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
-function M.GetObjectInformationRequest(_ObjectReference, _ConsistencyLevel, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectInformationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>A reference to the object.</p>
+-- * ConsistencyLevel [ConsistencyLevel] <p>The consistency level at which to retrieve the object information.</p>
+-- * DirectoryArn [Arn] <p>The ARN of the directory being retrieved.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return GetObjectInformationRequest structure as a key-value pair table
+function M.GetObjectInformationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetObjectInformationRequest")
 	local t = { 
-		["ObjectReference"] = _ObjectReference,
-		["ConsistencyLevel"] = _ConsistencyLevel,
-		["DirectoryArn"] = _DirectoryArn,
+		["ObjectReference"] = args["ObjectReference"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertGetObjectInformationRequest(t)
 	return t
@@ -2800,11 +3097,14 @@ end
 
 --- Create a structure of type PublishSchemaResponse
 --  
--- @param _PublishedSchemaArn [Arn] <p>The ARN that is associated with the published schema. For more information, see <a>arns</a>.</p>
-function M.PublishSchemaResponse(_PublishedSchemaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PublishSchemaResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PublishedSchemaArn [Arn] <p>The ARN that is associated with the published schema. For more information, see <a>arns</a>.</p>
+-- @return PublishSchemaResponse structure as a key-value pair table
+function M.PublishSchemaResponse(args)
+	assert(args, "You must provdide an argument table when creating PublishSchemaResponse")
 	local t = { 
-		["PublishedSchemaArn"] = _PublishedSchemaArn,
+		["PublishedSchemaArn"] = args["PublishedSchemaArn"],
 	}
 	asserts.AssertPublishSchemaResponse(t)
 	return t
@@ -2823,11 +3123,14 @@ end
 
 --- Create a structure of type InvalidAttachmentException
 -- <p>Indicates that an attempt to attach an object with the same link name or to apply a schema with the same name has occurred. Rename the link or the schema and then try again.</p>
--- @param _Message [ExceptionMessage] 
-function M.InvalidAttachmentException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAttachmentException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return InvalidAttachmentException structure as a key-value pair table
+function M.InvalidAttachmentException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAttachmentException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidAttachmentException(t)
 	return t
@@ -2851,18 +3154,21 @@ end
 
 --- Create a structure of type UpdateObjectAttributesRequest
 --  
--- @param _AttributeUpdates [ObjectAttributeUpdateList] <p>The attributes update structure.</p>
--- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
--- Required parameter: AttributeUpdates
-function M.UpdateObjectAttributesRequest(_AttributeUpdates, _ObjectReference, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateObjectAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeUpdates [ObjectAttributeUpdateList] <p>The attributes update structure.</p>
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- Required key: AttributeUpdates
+-- @return UpdateObjectAttributesRequest structure as a key-value pair table
+function M.UpdateObjectAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateObjectAttributesRequest")
 	local t = { 
-		["AttributeUpdates"] = _AttributeUpdates,
-		["ObjectReference"] = _ObjectReference,
-		["DirectoryArn"] = _DirectoryArn,
+		["AttributeUpdates"] = args["AttributeUpdates"],
+		["ObjectReference"] = args["ObjectReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertUpdateObjectAttributesRequest(t)
 	return t
@@ -2886,18 +3192,21 @@ end
 
 --- Create a structure of type DetachFromIndexRequest
 --  
--- @param _IndexReference [ObjectReference] <p>A reference to the index object.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory the index and object exist in.</p>
--- @param _TargetReference [ObjectReference] <p>A reference to the object being detached from the index.</p>
--- Required parameter: DirectoryArn
--- Required parameter: IndexReference
--- Required parameter: TargetReference
-function M.DetachFromIndexRequest(_IndexReference, _DirectoryArn, _TargetReference, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachFromIndexRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexReference [ObjectReference] <p>A reference to the index object.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory the index and object exist in.</p>
+-- * TargetReference [ObjectReference] <p>A reference to the object being detached from the index.</p>
+-- Required key: DirectoryArn
+-- Required key: IndexReference
+-- Required key: TargetReference
+-- @return DetachFromIndexRequest structure as a key-value pair table
+function M.DetachFromIndexRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachFromIndexRequest")
 	local t = { 
-		["IndexReference"] = _IndexReference,
-		["DirectoryArn"] = _DirectoryArn,
-		["TargetReference"] = _TargetReference,
+		["IndexReference"] = args["IndexReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["TargetReference"] = args["TargetReference"],
 	}
 	asserts.AssertDetachFromIndexRequest(t)
 	return t
@@ -2917,13 +3226,16 @@ end
 
 --- Create a structure of type ListAppliedSchemaArnsResponse
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _SchemaArns [Arns] <p>The ARNs of schemas that are applied to the directory.</p>
-function M.ListAppliedSchemaArnsResponse(_NextToken, _SchemaArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAppliedSchemaArnsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * SchemaArns [Arns] <p>The ARNs of schemas that are applied to the directory.</p>
+-- @return ListAppliedSchemaArnsResponse structure as a key-value pair table
+function M.ListAppliedSchemaArnsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAppliedSchemaArnsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["SchemaArns"] = _SchemaArns,
+		["NextToken"] = args["NextToken"],
+		["SchemaArns"] = args["SchemaArns"],
 	}
 	asserts.AssertListAppliedSchemaArnsResponse(t)
 	return t
@@ -2950,25 +3262,28 @@ end
 
 --- Create a structure of type ListIncomingTypedLinksRequest
 --  
--- @param _FilterAttributeRanges [TypedLinkAttributeRangeList] <p>Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- @param _FilterTypedLink [TypedLinkSchemaAndFacetName] <p>Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls.</p>
--- @param _ObjectReference [ObjectReference] <p>Reference that identifies the object whose attributes will be listed.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to list the typed links.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
-function M.ListIncomingTypedLinksRequest(_FilterAttributeRanges, _MaxResults, _FilterTypedLink, _ObjectReference, _DirectoryArn, _NextToken, _ConsistencyLevel, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIncomingTypedLinksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FilterAttributeRanges [TypedLinkAttributeRangeList] <p>Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- * FilterTypedLink [TypedLinkSchemaAndFacetName] <p>Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls.</p>
+-- * ObjectReference [ObjectReference] <p>Reference that identifies the object whose attributes will be listed.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to list the typed links.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return ListIncomingTypedLinksRequest structure as a key-value pair table
+function M.ListIncomingTypedLinksRequest(args)
+	assert(args, "You must provdide an argument table when creating ListIncomingTypedLinksRequest")
 	local t = { 
-		["FilterAttributeRanges"] = _FilterAttributeRanges,
-		["MaxResults"] = _MaxResults,
-		["FilterTypedLink"] = _FilterTypedLink,
-		["ObjectReference"] = _ObjectReference,
-		["DirectoryArn"] = _DirectoryArn,
-		["NextToken"] = _NextToken,
-		["ConsistencyLevel"] = _ConsistencyLevel,
+		["FilterAttributeRanges"] = args["FilterAttributeRanges"],
+		["MaxResults"] = args["MaxResults"],
+		["FilterTypedLink"] = args["FilterTypedLink"],
+		["ObjectReference"] = args["ObjectReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["NextToken"] = args["NextToken"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
 	}
 	asserts.AssertListIncomingTypedLinksRequest(t)
 	return t
@@ -2992,18 +3307,21 @@ end
 
 --- Create a structure of type DetachPolicyRequest
 --  
--- @param _PolicyReference [ObjectReference] <p>Reference that identifies the policy object.</p>
--- @param _ObjectReference [ObjectReference] <p>Reference that identifies the object whose policy object will be detached.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: PolicyReference
--- Required parameter: ObjectReference
-function M.DetachPolicyRequest(_PolicyReference, _ObjectReference, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyReference [ObjectReference] <p>Reference that identifies the policy object.</p>
+-- * ObjectReference [ObjectReference] <p>Reference that identifies the object whose policy object will be detached.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where both objects reside. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: PolicyReference
+-- Required key: ObjectReference
+-- @return DetachPolicyRequest structure as a key-value pair table
+function M.DetachPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachPolicyRequest")
 	local t = { 
-		["PolicyReference"] = _PolicyReference,
-		["ObjectReference"] = _ObjectReference,
-		["DirectoryArn"] = _DirectoryArn,
+		["PolicyReference"] = args["PolicyReference"],
+		["ObjectReference"] = args["ObjectReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertDetachPolicyRequest(t)
 	return t
@@ -3022,11 +3340,14 @@ end
 
 --- Create a structure of type PutSchemaFromJsonResponse
 --  
--- @param _Arn [Arn] <p>The ARN of the schema to update.</p>
-function M.PutSchemaFromJsonResponse(_Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutSchemaFromJsonResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Arn [Arn] <p>The ARN of the schema to update.</p>
+-- @return PutSchemaFromJsonResponse structure as a key-value pair table
+function M.PutSchemaFromJsonResponse(args)
+	assert(args, "You must provdide an argument table when creating PutSchemaFromJsonResponse")
 	local t = { 
-		["Arn"] = _Arn,
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertPutSchemaFromJsonResponse(t)
 	return t
@@ -3052,21 +3373,24 @@ end
 
 --- Create a structure of type TypedLinkSpecifier
 -- <p>Contains all the information that is used to uniquely identify a typed link. The parameters discussed in this topic are used to uniquely specify the typed link being operated on. The <a>AttachTypedLink</a> API returns a typed link specifier while the <a>DetachTypedLink</a> API accepts one as input. Similarly, the <a>ListIncomingTypedLinks</a> and <a>ListOutgoingTypedLinks</a> API operations provide typed link specifiers as output. You can also construct a typed link specifier from scratch.</p>
--- @param _SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
--- @param _IdentityAttributeValues [AttributeNameAndValueList] <p>Identifies the attribute value to update.</p>
--- @param _TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
--- @param _TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
--- Required parameter: TypedLinkFacet
--- Required parameter: SourceObjectReference
--- Required parameter: TargetObjectReference
--- Required parameter: IdentityAttributeValues
-function M.TypedLinkSpecifier(_SourceObjectReference, _IdentityAttributeValues, _TargetObjectReference, _TypedLinkFacet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkSpecifier")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourceObjectReference [ObjectReference] <p>Identifies the source object that the typed link will attach to.</p>
+-- * IdentityAttributeValues [AttributeNameAndValueList] <p>Identifies the attribute value to update.</p>
+-- * TargetObjectReference [ObjectReference] <p>Identifies the target object that the typed link will attach to.</p>
+-- * TypedLinkFacet [TypedLinkSchemaAndFacetName] <p>Identifies the typed link facet that is associated with the typed link.</p>
+-- Required key: TypedLinkFacet
+-- Required key: SourceObjectReference
+-- Required key: TargetObjectReference
+-- Required key: IdentityAttributeValues
+-- @return TypedLinkSpecifier structure as a key-value pair table
+function M.TypedLinkSpecifier(args)
+	assert(args, "You must provdide an argument table when creating TypedLinkSpecifier")
 	local t = { 
-		["SourceObjectReference"] = _SourceObjectReference,
-		["IdentityAttributeValues"] = _IdentityAttributeValues,
-		["TargetObjectReference"] = _TargetObjectReference,
-		["TypedLinkFacet"] = _TypedLinkFacet,
+		["SourceObjectReference"] = args["SourceObjectReference"],
+		["IdentityAttributeValues"] = args["IdentityAttributeValues"],
+		["TargetObjectReference"] = args["TargetObjectReference"],
+		["TypedLinkFacet"] = args["TypedLinkFacet"],
 	}
 	asserts.AssertTypedLinkSpecifier(t)
 	return t
@@ -3085,11 +3409,14 @@ end
 
 --- Create a structure of type ObjectAlreadyDetachedException
 -- <p>Indicates that the object is not attached to the index.</p>
--- @param _Message [ExceptionMessage] 
-function M.ObjectAlreadyDetachedException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ObjectAlreadyDetachedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return ObjectAlreadyDetachedException structure as a key-value pair table
+function M.ObjectAlreadyDetachedException(args)
+	assert(args, "You must provdide an argument table when creating ObjectAlreadyDetachedException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertObjectAlreadyDetachedException(t)
 	return t
@@ -3115,23 +3442,26 @@ end
 
 --- Create a structure of type ListIndexRequest
 --  
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve from the index.</p>
--- @param _RangesOnIndexedValues [ObjectAttributeRangeList] <p>Specifies the ranges of indexed values that you want to query.</p>
--- @param _IndexReference [ObjectReference] <p>The reference to the index to list.</p>
--- @param _DirectoryArn [Arn] <p>The ARN of the directory that the index exists in.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
--- Required parameter: DirectoryArn
--- Required parameter: IndexReference
-function M.ListIndexRequest(_MaxResults, _RangesOnIndexedValues, _IndexReference, _DirectoryArn, _NextToken, _ConsistencyLevel, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIndexRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve from the index.</p>
+-- * RangesOnIndexedValues [ObjectAttributeRangeList] <p>Specifies the ranges of indexed values that you want to query.</p>
+-- * IndexReference [ObjectReference] <p>The reference to the index to list.</p>
+-- * DirectoryArn [Arn] <p>The ARN of the directory that the index exists in.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
+-- Required key: DirectoryArn
+-- Required key: IndexReference
+-- @return ListIndexRequest structure as a key-value pair table
+function M.ListIndexRequest(args)
+	assert(args, "You must provdide an argument table when creating ListIndexRequest")
 	local t = { 
-		["MaxResults"] = _MaxResults,
-		["RangesOnIndexedValues"] = _RangesOnIndexedValues,
-		["IndexReference"] = _IndexReference,
-		["DirectoryArn"] = _DirectoryArn,
-		["NextToken"] = _NextToken,
-		["ConsistencyLevel"] = _ConsistencyLevel,
+		["MaxResults"] = args["MaxResults"],
+		["RangesOnIndexedValues"] = args["RangesOnIndexedValues"],
+		["IndexReference"] = args["IndexReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["NextToken"] = args["NextToken"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
 	}
 	asserts.AssertListIndexRequest(t)
 	return t
@@ -3149,8 +3479,11 @@ end
 
 --- Create a structure of type CreateTypedLinkFacetResponse
 --  
-function M.CreateTypedLinkFacetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTypedLinkFacetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateTypedLinkFacetResponse structure as a key-value pair table
+function M.CreateTypedLinkFacetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateTypedLinkFacetResponse")
 	local t = { 
 	}
 	asserts.AssertCreateTypedLinkFacetResponse(t)
@@ -3171,13 +3504,16 @@ end
 
 --- Create a structure of type ListPublishedSchemaArnsResponse
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _SchemaArns [Arns] <p>The ARNs of published schemas.</p>
-function M.ListPublishedSchemaArnsResponse(_NextToken, _SchemaArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPublishedSchemaArnsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * SchemaArns [Arns] <p>The ARNs of published schemas.</p>
+-- @return ListPublishedSchemaArnsResponse structure as a key-value pair table
+function M.ListPublishedSchemaArnsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListPublishedSchemaArnsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["SchemaArns"] = _SchemaArns,
+		["NextToken"] = args["NextToken"],
+		["SchemaArns"] = args["SchemaArns"],
 	}
 	asserts.AssertListPublishedSchemaArnsResponse(t)
 	return t
@@ -3196,11 +3532,14 @@ end
 
 --- Create a structure of type CreateIndexResponse
 --  
--- @param _ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
-function M.CreateIndexResponse(_ObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateIndexResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
+-- @return CreateIndexResponse structure as a key-value pair table
+function M.CreateIndexResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateIndexResponse")
 	local t = { 
-		["ObjectIdentifier"] = _ObjectIdentifier,
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
 	asserts.AssertCreateIndexResponse(t)
 	return t
@@ -3224,18 +3563,21 @@ end
 
 --- Create a structure of type BatchAttachObject
 -- <p>Represents the output of an <code>AttachObject</code> operation.</p>
--- @param _ParentReference [ObjectReference] <p>The parent object reference.</p>
--- @param _LinkName [LinkName] <p>The name of the link.</p>
--- @param _ChildReference [ObjectReference] <p>The child object reference that is to be attached to the object.</p>
--- Required parameter: ParentReference
--- Required parameter: ChildReference
--- Required parameter: LinkName
-function M.BatchAttachObject(_ParentReference, _LinkName, _ChildReference, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchAttachObject")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParentReference [ObjectReference] <p>The parent object reference.</p>
+-- * LinkName [LinkName] <p>The name of the link.</p>
+-- * ChildReference [ObjectReference] <p>The child object reference that is to be attached to the object.</p>
+-- Required key: ParentReference
+-- Required key: ChildReference
+-- Required key: LinkName
+-- @return BatchAttachObject structure as a key-value pair table
+function M.BatchAttachObject(args)
+	assert(args, "You must provdide an argument table when creating BatchAttachObject")
 	local t = { 
-		["ParentReference"] = _ParentReference,
-		["LinkName"] = _LinkName,
-		["ChildReference"] = _ChildReference,
+		["ParentReference"] = args["ParentReference"],
+		["LinkName"] = args["LinkName"],
+		["ChildReference"] = args["ChildReference"],
 	}
 	asserts.AssertBatchAttachObject(t)
 	return t
@@ -3258,18 +3600,21 @@ end
 
 --- Create a structure of type FacetAttributeDefinition
 -- <p>A facet attribute definition. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
--- @param _Rules [RuleMap] <p>Validation rules attached to the attribute definition.</p>
--- @param _DefaultValue [TypedAttributeValue] <p>The default value of the attribute (if configured).</p>
--- @param _Type [FacetAttributeType] <p>The type of the attribute.</p>
--- @param _IsImmutable [Bool] <p>Whether the attribute is mutable or not.</p>
--- Required parameter: Type
-function M.FacetAttributeDefinition(_Rules, _DefaultValue, _Type, _IsImmutable, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FacetAttributeDefinition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [RuleMap] <p>Validation rules attached to the attribute definition.</p>
+-- * DefaultValue [TypedAttributeValue] <p>The default value of the attribute (if configured).</p>
+-- * Type [FacetAttributeType] <p>The type of the attribute.</p>
+-- * IsImmutable [Bool] <p>Whether the attribute is mutable or not.</p>
+-- Required key: Type
+-- @return FacetAttributeDefinition structure as a key-value pair table
+function M.FacetAttributeDefinition(args)
+	assert(args, "You must provdide an argument table when creating FacetAttributeDefinition")
 	local t = { 
-		["Rules"] = _Rules,
-		["DefaultValue"] = _DefaultValue,
-		["Type"] = _Type,
-		["IsImmutable"] = _IsImmutable,
+		["Rules"] = args["Rules"],
+		["DefaultValue"] = args["DefaultValue"],
+		["Type"] = args["Type"],
+		["IsImmutable"] = args["IsImmutable"],
 	}
 	asserts.AssertFacetAttributeDefinition(t)
 	return t
@@ -3291,16 +3636,19 @@ end
 
 --- Create a structure of type ListTagsForResourceRequest
 --  
--- @param _ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
--- @param _NextToken [NextToken] <p>The pagination token. This is for future use. Currently pagination is not supported for tagging.</p>
--- @param _MaxResults [TagsNumberResults] <p>The <code>MaxResults</code> parameter sets the maximum number of results returned in a single page. This is for future use and is not supported currently.</p>
--- Required parameter: ResourceArn
-function M.ListTagsForResourceRequest(_ResourceArn, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
+-- * NextToken [NextToken] <p>The pagination token. This is for future use. Currently pagination is not supported for tagging.</p>
+-- * MaxResults [TagsNumberResults] <p>The <code>MaxResults</code> parameter sets the maximum number of results returned in a single page. This is for future use and is not supported currently.</p>
+-- Required key: ResourceArn
+-- @return ListTagsForResourceRequest structure as a key-value pair table
+function M.ListTagsForResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["ResourceArn"] = args["ResourceArn"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListTagsForResourceRequest(t)
 	return t
@@ -3318,8 +3666,11 @@ end
 
 --- Create a structure of type BatchAddFacetToObjectResponse
 -- <p>The result of a batch add facet to object operation.</p>
-function M.BatchAddFacetToObjectResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchAddFacetToObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BatchAddFacetToObjectResponse structure as a key-value pair table
+function M.BatchAddFacetToObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchAddFacetToObjectResponse")
 	local t = { 
 	}
 	asserts.AssertBatchAddFacetToObjectResponse(t)
@@ -3338,8 +3689,11 @@ end
 
 --- Create a structure of type BatchRemoveFacetFromObjectResponse
 -- <p>An empty result that represents success.</p>
-function M.BatchRemoveFacetFromObjectResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchRemoveFacetFromObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BatchRemoveFacetFromObjectResponse structure as a key-value pair table
+function M.BatchRemoveFacetFromObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchRemoveFacetFromObjectResponse")
 	local t = { 
 	}
 	asserts.AssertBatchRemoveFacetFromObjectResponse(t)
@@ -3358,8 +3712,11 @@ end
 
 --- Create a structure of type AttachPolicyResponse
 --  
-function M.AttachPolicyResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AttachPolicyResponse structure as a key-value pair table
+function M.AttachPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating AttachPolicyResponse")
 	local t = { 
 	}
 	asserts.AssertAttachPolicyResponse(t)
@@ -3380,13 +3737,16 @@ end
 
 --- Create a structure of type PolicyToPath
 -- <p>Used when a regular object exists in a <a>Directory</a> and you want to find all of the policies that are associated with that object and the parent to that object.</p>
--- @param _Path [PathString] <p>The path that is referenced from the root.</p>
--- @param _Policies [PolicyAttachmentList] <p>List of policy objects.</p>
-function M.PolicyToPath(_Path, _Policies, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyToPath")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [PathString] <p>The path that is referenced from the root.</p>
+-- * Policies [PolicyAttachmentList] <p>List of policy objects.</p>
+-- @return PolicyToPath structure as a key-value pair table
+function M.PolicyToPath(args)
+	assert(args, "You must provdide an argument table when creating PolicyToPath")
 	local t = { 
-		["Path"] = _Path,
-		["Policies"] = _Policies,
+		["Path"] = args["Path"],
+		["Policies"] = args["Policies"],
 	}
 	asserts.AssertPolicyToPath(t)
 	return t
@@ -3408,16 +3768,19 @@ end
 
 --- Create a structure of type BatchListObjectChildren
 -- <p>Represents the output of a <code>ListObjectChildren</code> operation.</p>
--- @param _ObjectReference [ObjectReference] <p>Reference of the object for which child objects are being listed.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>Maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- Required parameter: ObjectReference
-function M.BatchListObjectChildren(_ObjectReference, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchListObjectChildren")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>Reference of the object for which child objects are being listed.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>Maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- Required key: ObjectReference
+-- @return BatchListObjectChildren structure as a key-value pair table
+function M.BatchListObjectChildren(args)
+	assert(args, "You must provdide an argument table when creating BatchListObjectChildren")
 	local t = { 
-		["ObjectReference"] = _ObjectReference,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertBatchListObjectChildren(t)
 	return t
@@ -3437,13 +3800,16 @@ end
 
 --- Create a structure of type ListPublishedSchemaArnsRequest
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
-function M.ListPublishedSchemaArnsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPublishedSchemaArnsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- @return ListPublishedSchemaArnsRequest structure as a key-value pair table
+function M.ListPublishedSchemaArnsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPublishedSchemaArnsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListPublishedSchemaArnsRequest(t)
 	return t
@@ -3461,8 +3827,11 @@ end
 
 --- Create a structure of type UpdateTypedLinkFacetResponse
 --  
-function M.UpdateTypedLinkFacetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTypedLinkFacetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateTypedLinkFacetResponse structure as a key-value pair table
+function M.UpdateTypedLinkFacetResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateTypedLinkFacetResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateTypedLinkFacetResponse(t)
@@ -3482,11 +3851,14 @@ end
 
 --- Create a structure of type FacetAlreadyExistsException
 -- <p>A facet with the same name already exists.</p>
--- @param _Message [ExceptionMessage] 
-function M.FacetAlreadyExistsException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FacetAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return FacetAlreadyExistsException structure as a key-value pair table
+function M.FacetAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating FacetAlreadyExistsException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertFacetAlreadyExistsException(t)
 	return t
@@ -3508,15 +3880,18 @@ end
 
 --- Create a structure of type TagResourceRequest
 --  
--- @param _ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
--- @param _Tags [TagList] <p>A list of tag key-value pairs.</p>
--- Required parameter: ResourceArn
--- Required parameter: Tags
-function M.TagResourceRequest(_ResourceArn, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [Arn] <p>The Amazon Resource Name (ARN) of the resource. Tagging is only supported for directories.</p>
+-- * Tags [TagList] <p>A list of tag key-value pairs.</p>
+-- Required key: ResourceArn
+-- Required key: Tags
+-- @return TagResourceRequest structure as a key-value pair table
+function M.TagResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating TagResourceRequest")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["Tags"] = _Tags,
+		["ResourceArn"] = args["ResourceArn"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertTagResourceRequest(t)
 	return t
@@ -3535,11 +3910,14 @@ end
 
 --- Create a structure of type AttachTypedLinkResponse
 --  
--- @param _TypedLinkSpecifier [TypedLinkSpecifier] <p>Returns a typed link specifier as output.</p>
-function M.AttachTypedLinkResponse(_TypedLinkSpecifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachTypedLinkResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypedLinkSpecifier [TypedLinkSpecifier] <p>Returns a typed link specifier as output.</p>
+-- @return AttachTypedLinkResponse structure as a key-value pair table
+function M.AttachTypedLinkResponse(args)
+	assert(args, "You must provdide an argument table when creating AttachTypedLinkResponse")
 	local t = { 
-		["TypedLinkSpecifier"] = _TypedLinkSpecifier,
+		["TypedLinkSpecifier"] = args["TypedLinkSpecifier"],
 	}
 	asserts.AssertAttachTypedLinkResponse(t)
 	return t
@@ -3559,12 +3937,15 @@ end
 
 --- Create a structure of type DisableDirectoryResponse
 --  
--- @param _DirectoryArn [Arn] <p>The ARN of the directory that has been disabled.</p>
--- Required parameter: DirectoryArn
-function M.DisableDirectoryResponse(_DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableDirectoryResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryArn [Arn] <p>The ARN of the directory that has been disabled.</p>
+-- Required key: DirectoryArn
+-- @return DisableDirectoryResponse structure as a key-value pair table
+function M.DisableDirectoryResponse(args)
+	assert(args, "You must provdide an argument table when creating DisableDirectoryResponse")
 	local t = { 
-		["DirectoryArn"] = _DirectoryArn,
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertDisableDirectoryResponse(t)
 	return t
@@ -3583,11 +3964,14 @@ end
 
 --- Create a structure of type DetachObjectResponse
 --  
--- @param _DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> that was detached from the object.</p>
-function M.DetachObjectResponse(_DetachedObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> that was detached from the object.</p>
+-- @return DetachObjectResponse structure as a key-value pair table
+function M.DetachObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating DetachObjectResponse")
 	local t = { 
-		["DetachedObjectIdentifier"] = _DetachedObjectIdentifier,
+		["DetachedObjectIdentifier"] = args["DetachedObjectIdentifier"],
 	}
 	asserts.AssertDetachObjectResponse(t)
 	return t
@@ -3610,18 +3994,21 @@ end
 
 --- Create a structure of type BatchListObjectAttributes
 -- <p>Represents the output of a <code>ListObjectAttributes</code> operation.</p>
--- @param _FacetFilter [SchemaFacet] <p>Used to filter the list of object attributes that are associated with a certain facet.</p>
--- @param _ObjectReference [ObjectReference] <p>Reference of the object whose attributes need to be listed.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- Required parameter: ObjectReference
-function M.BatchListObjectAttributes(_FacetFilter, _ObjectReference, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchListObjectAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FacetFilter [SchemaFacet] <p>Used to filter the list of object attributes that are associated with a certain facet.</p>
+-- * ObjectReference [ObjectReference] <p>Reference of the object whose attributes need to be listed.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- Required key: ObjectReference
+-- @return BatchListObjectAttributes structure as a key-value pair table
+function M.BatchListObjectAttributes(args)
+	assert(args, "You must provdide an argument table when creating BatchListObjectAttributes")
 	local t = { 
-		["FacetFilter"] = _FacetFilter,
-		["ObjectReference"] = _ObjectReference,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["FacetFilter"] = args["FacetFilter"],
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertBatchListObjectAttributes(t)
 	return t
@@ -3640,11 +4027,14 @@ end
 
 --- Create a structure of type GetTypedLinkFacetInformationResponse
 --  
--- @param _IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
-function M.GetTypedLinkFacetInformationResponse(_IdentityAttributeOrder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTypedLinkFacetInformationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
+-- @return GetTypedLinkFacetInformationResponse structure as a key-value pair table
+function M.GetTypedLinkFacetInformationResponse(args)
+	assert(args, "You must provdide an argument table when creating GetTypedLinkFacetInformationResponse")
 	local t = { 
-		["IdentityAttributeOrder"] = _IdentityAttributeOrder,
+		["IdentityAttributeOrder"] = args["IdentityAttributeOrder"],
 	}
 	asserts.AssertGetTypedLinkFacetInformationResponse(t)
 	return t
@@ -3662,8 +4052,11 @@ end
 
 --- Create a structure of type UntagResourceResponse
 --  
-function M.UntagResourceResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UntagResourceResponse structure as a key-value pair table
+function M.UntagResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating UntagResourceResponse")
 	local t = { 
 	}
 	asserts.AssertUntagResourceResponse(t)
@@ -3684,13 +4077,16 @@ end
 
 --- Create a structure of type GetObjectInformationResponse
 --  
--- @param _ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the specified object.</p>
--- @param _SchemaFacets [SchemaFacetList] <p>The facets attached to the specified object.</p>
-function M.GetObjectInformationResponse(_ObjectIdentifier, _SchemaFacets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectInformationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the specified object.</p>
+-- * SchemaFacets [SchemaFacetList] <p>The facets attached to the specified object.</p>
+-- @return GetObjectInformationResponse structure as a key-value pair table
+function M.GetObjectInformationResponse(args)
+	assert(args, "You must provdide an argument table when creating GetObjectInformationResponse")
 	local t = { 
-		["ObjectIdentifier"] = _ObjectIdentifier,
-		["SchemaFacets"] = _SchemaFacets,
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
+		["SchemaFacets"] = args["SchemaFacets"],
 	}
 	asserts.AssertGetObjectInformationResponse(t)
 	return t
@@ -3709,11 +4105,14 @@ end
 
 --- Create a structure of type DirectoryNotEnabledException
 -- <p>An operation can only operate on a directory that is not enabled.</p>
--- @param _Message [ExceptionMessage] 
-function M.DirectoryNotEnabledException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DirectoryNotEnabledException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return DirectoryNotEnabledException structure as a key-value pair table
+function M.DirectoryNotEnabledException(args)
+	assert(args, "You must provdide an argument table when creating DirectoryNotEnabledException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertDirectoryNotEnabledException(t)
 	return t
@@ -3732,11 +4131,14 @@ end
 
 --- Create a structure of type CreateSchemaResponse
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
-function M.CreateSchemaResponse(_SchemaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSchemaResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- @return CreateSchemaResponse structure as a key-value pair table
+function M.CreateSchemaResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateSchemaResponse")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
+		["SchemaArn"] = args["SchemaArn"],
 	}
 	asserts.AssertCreateSchemaResponse(t)
 	return t
@@ -3754,8 +4156,11 @@ end
 
 --- Create a structure of type CreateFacetResponse
 --  
-function M.CreateFacetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFacetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateFacetResponse structure as a key-value pair table
+function M.CreateFacetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateFacetResponse")
 	local t = { 
 	}
 	asserts.AssertCreateFacetResponse(t)
@@ -3776,12 +4181,15 @@ end
 
 --- Create a structure of type GetSchemaAsJsonRequest
 --  
--- @param _SchemaArn [Arn] <p>The ARN of the schema to retrieve.</p>
--- Required parameter: SchemaArn
-function M.GetSchemaAsJsonRequest(_SchemaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSchemaAsJsonRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The ARN of the schema to retrieve.</p>
+-- Required key: SchemaArn
+-- @return GetSchemaAsJsonRequest structure as a key-value pair table
+function M.GetSchemaAsJsonRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSchemaAsJsonRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
+		["SchemaArn"] = args["SchemaArn"],
 	}
 	asserts.AssertGetSchemaAsJsonRequest(t)
 	return t
@@ -3799,8 +4207,11 @@ end
 
 --- Create a structure of type DeleteTypedLinkFacetResponse
 --  
-function M.DeleteTypedLinkFacetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTypedLinkFacetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteTypedLinkFacetResponse structure as a key-value pair table
+function M.DeleteTypedLinkFacetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteTypedLinkFacetResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteTypedLinkFacetResponse(t)
@@ -3823,15 +4234,18 @@ end
 
 --- Create a structure of type GetTypedLinkFacetInformationRequest
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- @param _Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
--- Required parameter: SchemaArn
--- Required parameter: Name
-function M.GetTypedLinkFacetInformationRequest(_SchemaArn, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTypedLinkFacetInformationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- * Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- Required key: SchemaArn
+-- Required key: Name
+-- @return GetTypedLinkFacetInformationRequest structure as a key-value pair table
+function M.GetTypedLinkFacetInformationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetTypedLinkFacetInformationRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["Name"] = _Name,
+		["SchemaArn"] = args["SchemaArn"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertGetTypedLinkFacetInformationRequest(t)
 	return t
@@ -3851,13 +4265,16 @@ end
 
 --- Create a structure of type ListOutgoingTypedLinksResponse
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _TypedLinkSpecifiers [TypedLinkSpecifierList] <p>Returns a typed link specifier as output.</p>
-function M.ListOutgoingTypedLinksResponse(_NextToken, _TypedLinkSpecifiers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOutgoingTypedLinksResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * TypedLinkSpecifiers [TypedLinkSpecifierList] <p>Returns a typed link specifier as output.</p>
+-- @return ListOutgoingTypedLinksResponse structure as a key-value pair table
+function M.ListOutgoingTypedLinksResponse(args)
+	assert(args, "You must provdide an argument table when creating ListOutgoingTypedLinksResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["TypedLinkSpecifiers"] = _TypedLinkSpecifiers,
+		["NextToken"] = args["NextToken"],
+		["TypedLinkSpecifiers"] = args["TypedLinkSpecifiers"],
 	}
 	asserts.AssertListOutgoingTypedLinksResponse(t)
 	return t
@@ -3879,15 +4296,18 @@ end
 
 --- Create a structure of type PutSchemaFromJsonRequest
 --  
--- @param _Document [SchemaJsonDocument] <p>The replacement JSON schema.</p>
--- @param _SchemaArn [Arn] <p>The ARN of the schema to update.</p>
--- Required parameter: SchemaArn
--- Required parameter: Document
-function M.PutSchemaFromJsonRequest(_Document, _SchemaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutSchemaFromJsonRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Document [SchemaJsonDocument] <p>The replacement JSON schema.</p>
+-- * SchemaArn [Arn] <p>The ARN of the schema to update.</p>
+-- Required key: SchemaArn
+-- Required key: Document
+-- @return PutSchemaFromJsonRequest structure as a key-value pair table
+function M.PutSchemaFromJsonRequest(args)
+	assert(args, "You must provdide an argument table when creating PutSchemaFromJsonRequest")
 	local t = { 
-		["Document"] = _Document,
-		["SchemaArn"] = _SchemaArn,
+		["Document"] = args["Document"],
+		["SchemaArn"] = args["SchemaArn"],
 	}
 	asserts.AssertPutSchemaFromJsonRequest(t)
 	return t
@@ -3907,12 +4327,15 @@ end
 
 --- Create a structure of type EnableDirectoryRequest
 --  
--- @param _DirectoryArn [Arn] <p>The ARN of the directory to enable.</p>
--- Required parameter: DirectoryArn
-function M.EnableDirectoryRequest(_DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableDirectoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryArn [Arn] <p>The ARN of the directory to enable.</p>
+-- Required key: DirectoryArn
+-- @return EnableDirectoryRequest structure as a key-value pair table
+function M.EnableDirectoryRequest(args)
+	assert(args, "You must provdide an argument table when creating EnableDirectoryRequest")
 	local t = { 
-		["DirectoryArn"] = _DirectoryArn,
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertEnableDirectoryRequest(t)
 	return t
@@ -3931,11 +4354,14 @@ end
 
 --- Create a structure of type IndexedAttributeMissingException
 -- <p>An object has been attempted to be attached to an object that does not have the appropriate attribute value.</p>
--- @param _Message [ExceptionMessage] 
-function M.IndexedAttributeMissingException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IndexedAttributeMissingException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return IndexedAttributeMissingException structure as a key-value pair table
+function M.IndexedAttributeMissingException(args)
+	assert(args, "You must provdide an argument table when creating IndexedAttributeMissingException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertIndexedAttributeMissingException(t)
 	return t
@@ -3955,13 +4381,16 @@ end
 
 --- Create a structure of type ListObjectParentPathsResponse
 --  
--- @param _PathToObjectIdentifiersList [PathToObjectIdentifiersList] <p>Returns the path to the <code>ObjectIdentifiers</code> that are associated with the directory.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
-function M.ListObjectParentPathsResponse(_PathToObjectIdentifiersList, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectParentPathsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PathToObjectIdentifiersList [PathToObjectIdentifiersList] <p>Returns the path to the <code>ObjectIdentifiers</code> that are associated with the directory.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return ListObjectParentPathsResponse structure as a key-value pair table
+function M.ListObjectParentPathsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListObjectParentPathsResponse")
 	local t = { 
-		["PathToObjectIdentifiersList"] = _PathToObjectIdentifiersList,
-		["NextToken"] = _NextToken,
+		["PathToObjectIdentifiersList"] = args["PathToObjectIdentifiersList"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListObjectParentPathsResponse(t)
 	return t
@@ -3987,21 +4416,24 @@ end
 
 --- Create a structure of type UpdateTypedLinkFacetRequest
 --  
--- @param _AttributeUpdates [TypedLinkFacetAttributeUpdateList] <p>Attributes update structure.</p>
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- @param _IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to a typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
--- @param _Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
--- Required parameter: SchemaArn
--- Required parameter: Name
--- Required parameter: AttributeUpdates
--- Required parameter: IdentityAttributeOrder
-function M.UpdateTypedLinkFacetRequest(_AttributeUpdates, _SchemaArn, _IdentityAttributeOrder, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTypedLinkFacetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttributeUpdates [TypedLinkFacetAttributeUpdateList] <p>Attributes update structure.</p>
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- * IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to a typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
+-- * Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- Required key: SchemaArn
+-- Required key: Name
+-- Required key: AttributeUpdates
+-- Required key: IdentityAttributeOrder
+-- @return UpdateTypedLinkFacetRequest structure as a key-value pair table
+function M.UpdateTypedLinkFacetRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateTypedLinkFacetRequest")
 	local t = { 
-		["AttributeUpdates"] = _AttributeUpdates,
-		["SchemaArn"] = _SchemaArn,
-		["IdentityAttributeOrder"] = _IdentityAttributeOrder,
-		["Name"] = _Name,
+		["AttributeUpdates"] = args["AttributeUpdates"],
+		["SchemaArn"] = args["SchemaArn"],
+		["IdentityAttributeOrder"] = args["IdentityAttributeOrder"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateTypedLinkFacetRequest(t)
 	return t
@@ -4021,13 +4453,16 @@ end
 
 --- Create a structure of type ListFacetNamesResponse
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _FacetNames [FacetNameList] <p>The names of facets that exist within the schema.</p>
-function M.ListFacetNamesResponse(_NextToken, _FacetNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFacetNamesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * FacetNames [FacetNameList] <p>The names of facets that exist within the schema.</p>
+-- @return ListFacetNamesResponse structure as a key-value pair table
+function M.ListFacetNamesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListFacetNamesResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["FacetNames"] = _FacetNames,
+		["NextToken"] = args["NextToken"],
+		["FacetNames"] = args["FacetNames"],
 	}
 	asserts.AssertListFacetNamesResponse(t)
 	return t
@@ -4051,19 +4486,22 @@ end
 
 --- Create a structure of type ListTypedLinkFacetAttributesRequest
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- Required parameter: SchemaArn
--- Required parameter: Name
-function M.ListTypedLinkFacetAttributesRequest(_SchemaArn, _NextToken, _Name, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTypedLinkFacetAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- Required key: SchemaArn
+-- Required key: Name
+-- @return ListTypedLinkFacetAttributesRequest structure as a key-value pair table
+function M.ListTypedLinkFacetAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTypedLinkFacetAttributesRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["NextToken"] = _NextToken,
-		["Name"] = _Name,
-		["MaxResults"] = _MaxResults,
+		["SchemaArn"] = args["SchemaArn"],
+		["NextToken"] = args["NextToken"],
+		["Name"] = args["Name"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListTypedLinkFacetAttributesRequest(t)
 	return t
@@ -4081,8 +4519,11 @@ end
 
 --- Create a structure of type TagResourceResponse
 --  
-function M.TagResourceResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TagResourceResponse structure as a key-value pair table
+function M.TagResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating TagResourceResponse")
 	local t = { 
 	}
 	asserts.AssertTagResourceResponse(t)
@@ -4110,24 +4551,27 @@ end
 
 --- Create a structure of type TypedLinkAttributeDefinition
 -- <p>A typed link attribute definition.</p>
--- @param _RequiredBehavior [RequiredAttributeBehavior] <p>The required behavior of the <code>TypedLinkAttributeDefinition</code>.</p>
--- @param _Name [AttributeName] <p>The unique name of the typed link attribute.</p>
--- @param _IsImmutable [Bool] <p>Whether the attribute is mutable or not.</p>
--- @param _Rules [RuleMap] <p>Validation rules that are attached to the attribute definition.</p>
--- @param _DefaultValue [TypedAttributeValue] <p>The default value of the attribute (if configured).</p>
--- @param _Type [FacetAttributeType] <p>The type of the attribute.</p>
--- Required parameter: Name
--- Required parameter: Type
--- Required parameter: RequiredBehavior
-function M.TypedLinkAttributeDefinition(_RequiredBehavior, _Name, _IsImmutable, _Rules, _DefaultValue, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkAttributeDefinition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequiredBehavior [RequiredAttributeBehavior] <p>The required behavior of the <code>TypedLinkAttributeDefinition</code>.</p>
+-- * Name [AttributeName] <p>The unique name of the typed link attribute.</p>
+-- * IsImmutable [Bool] <p>Whether the attribute is mutable or not.</p>
+-- * Rules [RuleMap] <p>Validation rules that are attached to the attribute definition.</p>
+-- * DefaultValue [TypedAttributeValue] <p>The default value of the attribute (if configured).</p>
+-- * Type [FacetAttributeType] <p>The type of the attribute.</p>
+-- Required key: Name
+-- Required key: Type
+-- Required key: RequiredBehavior
+-- @return TypedLinkAttributeDefinition structure as a key-value pair table
+function M.TypedLinkAttributeDefinition(args)
+	assert(args, "You must provdide an argument table when creating TypedLinkAttributeDefinition")
 	local t = { 
-		["RequiredBehavior"] = _RequiredBehavior,
-		["Name"] = _Name,
-		["IsImmutable"] = _IsImmutable,
-		["Rules"] = _Rules,
-		["DefaultValue"] = _DefaultValue,
-		["Type"] = _Type,
+		["RequiredBehavior"] = args["RequiredBehavior"],
+		["Name"] = args["Name"],
+		["IsImmutable"] = args["IsImmutable"],
+		["Rules"] = args["Rules"],
+		["DefaultValue"] = args["DefaultValue"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertTypedLinkAttributeDefinition(t)
 	return t
@@ -4154,25 +4598,28 @@ end
 
 --- Create a structure of type ListOutgoingTypedLinksRequest
 --  
--- @param _FilterAttributeRanges [TypedLinkAttributeRangeList] <p>Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
--- @param _FilterTypedLink [TypedLinkSchemaAndFacetName] <p>Filters are interpreted in the order of the attributes defined on the typed link facet, not the order they are supplied to any API calls.</p>
--- @param _ObjectReference [ObjectReference] <p>A reference that identifies the object whose attributes will be listed.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to list the typed links.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
-function M.ListOutgoingTypedLinksRequest(_FilterAttributeRanges, _MaxResults, _FilterTypedLink, _ObjectReference, _DirectoryArn, _NextToken, _ConsistencyLevel, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOutgoingTypedLinksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FilterAttributeRanges [TypedLinkAttributeRangeList] <p>Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
+-- * FilterTypedLink [TypedLinkSchemaAndFacetName] <p>Filters are interpreted in the order of the attributes defined on the typed link facet, not the order they are supplied to any API calls.</p>
+-- * ObjectReference [ObjectReference] <p>A reference that identifies the object whose attributes will be listed.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to list the typed links.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * ConsistencyLevel [ConsistencyLevel] <p>The consistency level to execute the request at.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return ListOutgoingTypedLinksRequest structure as a key-value pair table
+function M.ListOutgoingTypedLinksRequest(args)
+	assert(args, "You must provdide an argument table when creating ListOutgoingTypedLinksRequest")
 	local t = { 
-		["FilterAttributeRanges"] = _FilterAttributeRanges,
-		["MaxResults"] = _MaxResults,
-		["FilterTypedLink"] = _FilterTypedLink,
-		["ObjectReference"] = _ObjectReference,
-		["DirectoryArn"] = _DirectoryArn,
-		["NextToken"] = _NextToken,
-		["ConsistencyLevel"] = _ConsistencyLevel,
+		["FilterAttributeRanges"] = args["FilterAttributeRanges"],
+		["MaxResults"] = args["MaxResults"],
+		["FilterTypedLink"] = args["FilterTypedLink"],
+		["ObjectReference"] = args["ObjectReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["NextToken"] = args["NextToken"],
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
 	}
 	asserts.AssertListOutgoingTypedLinksRequest(t)
 	return t
@@ -4194,15 +4641,18 @@ end
 
 --- Create a structure of type CreateDirectoryRequest
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the published schema that will be copied into the data <a>Directory</a>. For more information, see <a>arns</a>.</p>
--- @param _Name [DirectoryName] <p>The name of the <a>Directory</a>. Should be unique per account, per region.</p>
--- Required parameter: Name
--- Required parameter: SchemaArn
-function M.CreateDirectoryRequest(_SchemaArn, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDirectoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the published schema that will be copied into the data <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- * Name [DirectoryName] <p>The name of the <a>Directory</a>. Should be unique per account, per region.</p>
+-- Required key: Name
+-- Required key: SchemaArn
+-- @return CreateDirectoryRequest structure as a key-value pair table
+function M.CreateDirectoryRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDirectoryRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["Name"] = _Name,
+		["SchemaArn"] = args["SchemaArn"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateDirectoryRequest(t)
 	return t
@@ -4222,13 +4672,16 @@ end
 
 --- Create a structure of type ListTypedLinkFacetNamesResponse
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _FacetNames [TypedLinkNameList] <p>The names of typed link facets that exist within the schema.</p>
-function M.ListTypedLinkFacetNamesResponse(_NextToken, _FacetNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTypedLinkFacetNamesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * FacetNames [TypedLinkNameList] <p>The names of typed link facets that exist within the schema.</p>
+-- @return ListTypedLinkFacetNamesResponse structure as a key-value pair table
+function M.ListTypedLinkFacetNamesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTypedLinkFacetNamesResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["FacetNames"] = _FacetNames,
+		["NextToken"] = args["NextToken"],
+		["FacetNames"] = args["FacetNames"],
 	}
 	asserts.AssertListTypedLinkFacetNamesResponse(t)
 	return t
@@ -4248,12 +4701,15 @@ end
 
 --- Create a structure of type GetDirectoryRequest
 --  
--- @param _DirectoryArn [DirectoryArn] <p>The ARN of the directory.</p>
--- Required parameter: DirectoryArn
-function M.GetDirectoryRequest(_DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDirectoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryArn [DirectoryArn] <p>The ARN of the directory.</p>
+-- Required key: DirectoryArn
+-- @return GetDirectoryRequest structure as a key-value pair table
+function M.GetDirectoryRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDirectoryRequest")
 	local t = { 
-		["DirectoryArn"] = _DirectoryArn,
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertGetDirectoryRequest(t)
 	return t
@@ -4272,11 +4728,14 @@ end
 
 --- Create a structure of type BatchAttachObjectResponse
 -- <p>Represents the output batch <code>AttachObject</code> response operation.</p>
--- @param _attachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that has been attached.</p>
-function M.BatchAttachObjectResponse(_attachedObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchAttachObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that has been attached.</p>
+-- @return BatchAttachObjectResponse structure as a key-value pair table
+function M.BatchAttachObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchAttachObjectResponse")
 	local t = { 
-		["attachedObjectIdentifier"] = _attachedObjectIdentifier,
+		["attachedObjectIdentifier"] = args["attachedObjectIdentifier"],
 	}
 	asserts.AssertBatchAttachObjectResponse(t)
 	return t
@@ -4301,23 +4760,26 @@ end
 
 --- Create a structure of type BatchWriteOperation
 -- <p>Represents the output of a <code>BatchWrite</code> operation. </p>
--- @param _DetachObject [BatchDetachObject] <p>Detaches an object from a <a>Directory</a>.</p>
--- @param _AttachObject [BatchAttachObject] <p>Attaches an object to a <a>Directory</a>.</p>
--- @param _AddFacetToObject [BatchAddFacetToObject] <p>A batch operation that adds a facet to an object.</p>
--- @param _RemoveFacetFromObject [BatchRemoveFacetFromObject] <p>A batch operation that removes a facet from an object.</p>
--- @param _CreateObject [BatchCreateObject] <p>Creates an object.</p>
--- @param _DeleteObject [BatchDeleteObject] <p>Deletes an object in a <a>Directory</a>.</p>
--- @param _UpdateObjectAttributes [BatchUpdateObjectAttributes] <p>Updates a given object's attributes.</p>
-function M.BatchWriteOperation(_DetachObject, _AttachObject, _AddFacetToObject, _RemoveFacetFromObject, _CreateObject, _DeleteObject, _UpdateObjectAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchWriteOperation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DetachObject [BatchDetachObject] <p>Detaches an object from a <a>Directory</a>.</p>
+-- * AttachObject [BatchAttachObject] <p>Attaches an object to a <a>Directory</a>.</p>
+-- * AddFacetToObject [BatchAddFacetToObject] <p>A batch operation that adds a facet to an object.</p>
+-- * RemoveFacetFromObject [BatchRemoveFacetFromObject] <p>A batch operation that removes a facet from an object.</p>
+-- * CreateObject [BatchCreateObject] <p>Creates an object.</p>
+-- * DeleteObject [BatchDeleteObject] <p>Deletes an object in a <a>Directory</a>.</p>
+-- * UpdateObjectAttributes [BatchUpdateObjectAttributes] <p>Updates a given object's attributes.</p>
+-- @return BatchWriteOperation structure as a key-value pair table
+function M.BatchWriteOperation(args)
+	assert(args, "You must provdide an argument table when creating BatchWriteOperation")
 	local t = { 
-		["DetachObject"] = _DetachObject,
-		["AttachObject"] = _AttachObject,
-		["AddFacetToObject"] = _AddFacetToObject,
-		["RemoveFacetFromObject"] = _RemoveFacetFromObject,
-		["CreateObject"] = _CreateObject,
-		["DeleteObject"] = _DeleteObject,
-		["UpdateObjectAttributes"] = _UpdateObjectAttributes,
+		["DetachObject"] = args["DetachObject"],
+		["AttachObject"] = args["AttachObject"],
+		["AddFacetToObject"] = args["AddFacetToObject"],
+		["RemoveFacetFromObject"] = args["RemoveFacetFromObject"],
+		["CreateObject"] = args["CreateObject"],
+		["DeleteObject"] = args["DeleteObject"],
+		["UpdateObjectAttributes"] = args["UpdateObjectAttributes"],
 	}
 	asserts.AssertBatchWriteOperation(t)
 	return t
@@ -4337,12 +4799,15 @@ end
 
 --- Create a structure of type GetDirectoryResponse
 --  
--- @param _Directory [Directory] <p>Metadata about the directory.</p>
--- Required parameter: Directory
-function M.GetDirectoryResponse(_Directory, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDirectoryResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Directory [Directory] <p>Metadata about the directory.</p>
+-- Required key: Directory
+-- @return GetDirectoryResponse structure as a key-value pair table
+function M.GetDirectoryResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDirectoryResponse")
 	local t = { 
-		["Directory"] = _Directory,
+		["Directory"] = args["Directory"],
 	}
 	asserts.AssertGetDirectoryResponse(t)
 	return t
@@ -4362,13 +4827,16 @@ end
 
 --- Create a structure of type BatchReadSuccessfulResponse
 -- <p>Represents the output of a <code>BatchRead</code> success response operation.</p>
--- @param _ListObjectAttributes [BatchListObjectAttributesResponse] <p>Lists all attributes that are associated with an object.</p>
--- @param _ListObjectChildren [BatchListObjectChildrenResponse] <p>Returns a paginated list of child objects that are associated with a given object.</p>
-function M.BatchReadSuccessfulResponse(_ListObjectAttributes, _ListObjectChildren, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadSuccessfulResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ListObjectAttributes [BatchListObjectAttributesResponse] <p>Lists all attributes that are associated with an object.</p>
+-- * ListObjectChildren [BatchListObjectChildrenResponse] <p>Returns a paginated list of child objects that are associated with a given object.</p>
+-- @return BatchReadSuccessfulResponse structure as a key-value pair table
+function M.BatchReadSuccessfulResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchReadSuccessfulResponse")
 	local t = { 
-		["ListObjectAttributes"] = _ListObjectAttributes,
-		["ListObjectChildren"] = _ListObjectChildren,
+		["ListObjectAttributes"] = args["ListObjectAttributes"],
+		["ListObjectChildren"] = args["ListObjectChildren"],
 	}
 	asserts.AssertBatchReadSuccessfulResponse(t)
 	return t
@@ -4388,12 +4856,15 @@ end
 
 --- Create a structure of type CreateSchemaRequest
 --  
--- @param _Name [SchemaName] <p>The name that is associated with the schema. This is unique to each account and in each region.</p>
--- Required parameter: Name
-function M.CreateSchemaRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSchemaRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [SchemaName] <p>The name that is associated with the schema. This is unique to each account and in each region.</p>
+-- Required key: Name
+-- @return CreateSchemaRequest structure as a key-value pair table
+function M.CreateSchemaRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSchemaRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateSchemaRequest(t)
 	return t
@@ -4412,11 +4883,14 @@ end
 
 --- Create a structure of type BatchReadResponse
 --  
--- @param _Responses [BatchReadOperationResponseList] <p>A list of all the responses for each batch read.</p>
-function M.BatchReadResponse(_Responses, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Responses [BatchReadOperationResponseList] <p>A list of all the responses for each batch read.</p>
+-- @return BatchReadResponse structure as a key-value pair table
+function M.BatchReadResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchReadResponse")
 	local t = { 
-		["Responses"] = _Responses,
+		["Responses"] = args["Responses"],
 	}
 	asserts.AssertBatchReadResponse(t)
 	return t
@@ -4438,15 +4912,18 @@ end
 
 --- Create a structure of type DeleteTypedLinkFacetRequest
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- @param _Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
--- Required parameter: SchemaArn
--- Required parameter: Name
-function M.DeleteTypedLinkFacetRequest(_SchemaArn, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTypedLinkFacetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- * Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- Required key: SchemaArn
+-- Required key: Name
+-- @return DeleteTypedLinkFacetRequest structure as a key-value pair table
+function M.DeleteTypedLinkFacetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteTypedLinkFacetRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["Name"] = _Name,
+		["SchemaArn"] = args["SchemaArn"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteTypedLinkFacetRequest(t)
 	return t
@@ -4466,13 +4943,16 @@ end
 
 --- Create a structure of type ListObjectAttributesResponse
 --  
--- @param _Attributes [AttributeKeyAndValueList] <p>Attributes map that is associated with the object. <code>AttributeArn</code> is the key, and attribute value is the value.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
-function M.ListObjectAttributesResponse(_Attributes, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [AttributeKeyAndValueList] <p>Attributes map that is associated with the object. <code>AttributeArn</code> is the key, and attribute value is the value.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return ListObjectAttributesResponse structure as a key-value pair table
+function M.ListObjectAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListObjectAttributesResponse")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["NextToken"] = _NextToken,
+		["Attributes"] = args["Attributes"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListObjectAttributesResponse(t)
 	return t
@@ -4496,18 +4976,21 @@ end
 
 --- Create a structure of type AttachToIndexRequest
 --  
--- @param _IndexReference [ObjectReference] <p>A reference to the index that you are attaching the object to.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where the object and index exist.</p>
--- @param _TargetReference [ObjectReference] <p>A reference to the object that you are attaching to the index.</p>
--- Required parameter: DirectoryArn
--- Required parameter: IndexReference
--- Required parameter: TargetReference
-function M.AttachToIndexRequest(_IndexReference, _DirectoryArn, _TargetReference, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachToIndexRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IndexReference [ObjectReference] <p>A reference to the index that you are attaching the object to.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where the object and index exist.</p>
+-- * TargetReference [ObjectReference] <p>A reference to the object that you are attaching to the index.</p>
+-- Required key: DirectoryArn
+-- Required key: IndexReference
+-- Required key: TargetReference
+-- @return AttachToIndexRequest structure as a key-value pair table
+function M.AttachToIndexRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachToIndexRequest")
 	local t = { 
-		["IndexReference"] = _IndexReference,
-		["DirectoryArn"] = _DirectoryArn,
-		["TargetReference"] = _TargetReference,
+		["IndexReference"] = args["IndexReference"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["TargetReference"] = args["TargetReference"],
 	}
 	asserts.AssertAttachToIndexRequest(t)
 	return t
@@ -4531,19 +5014,22 @@ end
 
 --- Create a structure of type LookupPolicyRequest
 --  
--- @param _ObjectReference [ObjectReference] <p>Reference that identifies the object whose policies will be looked up.</p>
--- @param _NextToken [NextToken] <p>The token to request the next page of results.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: ObjectReference
-function M.LookupPolicyRequest(_ObjectReference, _NextToken, _MaxResults, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LookupPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>Reference that identifies the object whose policies will be looked up.</p>
+-- * NextToken [NextToken] <p>The token to request the next page of results.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: ObjectReference
+-- @return LookupPolicyRequest structure as a key-value pair table
+function M.LookupPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating LookupPolicyRequest")
 	local t = { 
-		["ObjectReference"] = _ObjectReference,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["DirectoryArn"] = _DirectoryArn,
+		["ObjectReference"] = args["ObjectReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertLookupPolicyRequest(t)
 	return t
@@ -4564,15 +5050,18 @@ end
 
 --- Create a structure of type BatchWriteException
 -- <p>A <code>BatchWrite</code> exception has occurred.</p>
--- @param _Index [BatchOperationIndex] 
--- @param _Message [ExceptionMessage] 
--- @param _Type [BatchWriteExceptionType] 
-function M.BatchWriteException(_Index, _Message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchWriteException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Index [BatchOperationIndex] 
+-- * Message [ExceptionMessage] 
+-- * Type [BatchWriteExceptionType] 
+-- @return BatchWriteException structure as a key-value pair table
+function M.BatchWriteException(args)
+	assert(args, "You must provdide an argument table when creating BatchWriteException")
 	local t = { 
-		["Index"] = _Index,
-		["Message"] = _Message,
-		["Type"] = _Type,
+		["Index"] = args["Index"],
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertBatchWriteException(t)
 	return t
@@ -4592,13 +5081,16 @@ end
 
 --- Create a structure of type BatchReadOperation
 -- <p>Represents the output of a <code>BatchRead</code> operation.</p>
--- @param _ListObjectAttributes [BatchListObjectAttributes] <p>Lists all attributes that are associated with an object.</p>
--- @param _ListObjectChildren [BatchListObjectChildren] <p>Returns a paginated list of child objects that are associated with a given object.</p>
-function M.BatchReadOperation(_ListObjectAttributes, _ListObjectChildren, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchReadOperation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ListObjectAttributes [BatchListObjectAttributes] <p>Lists all attributes that are associated with an object.</p>
+-- * ListObjectChildren [BatchListObjectChildren] <p>Returns a paginated list of child objects that are associated with a given object.</p>
+-- @return BatchReadOperation structure as a key-value pair table
+function M.BatchReadOperation(args)
+	assert(args, "You must provdide an argument table when creating BatchReadOperation")
 	local t = { 
-		["ListObjectAttributes"] = _ListObjectAttributes,
-		["ListObjectChildren"] = _ListObjectChildren,
+		["ListObjectAttributes"] = args["ListObjectAttributes"],
+		["ListObjectChildren"] = args["ListObjectChildren"],
 	}
 	asserts.AssertBatchReadOperation(t)
 	return t
@@ -4620,15 +5112,18 @@ end
 
 --- Create a structure of type AttributeKeyAndValue
 -- <p>The combination of an attribute key and an attribute value.</p>
--- @param _Value [TypedAttributeValue] <p>The value of the attribute.</p>
--- @param _Key [AttributeKey] <p>The key of the attribute.</p>
--- Required parameter: Key
--- Required parameter: Value
-function M.AttributeKeyAndValue(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttributeKeyAndValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TypedAttributeValue] <p>The value of the attribute.</p>
+-- * Key [AttributeKey] <p>The key of the attribute.</p>
+-- Required key: Key
+-- Required key: Value
+-- @return AttributeKeyAndValue structure as a key-value pair table
+function M.AttributeKeyAndValue(args)
+	assert(args, "You must provdide an argument table when creating AttributeKeyAndValue")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertAttributeKeyAndValue(t)
 	return t
@@ -4648,13 +5143,16 @@ end
 
 --- Create a structure of type IndexAttachment
 -- <p>Represents an index and an attached object.</p>
--- @param _ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object attached to the index.</p>
--- @param _IndexedAttributes [AttributeKeyAndValueList] <p>The indexed attribute values.</p>
-function M.IndexAttachment(_ObjectIdentifier, _IndexedAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IndexAttachment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object attached to the index.</p>
+-- * IndexedAttributes [AttributeKeyAndValueList] <p>The indexed attribute values.</p>
+-- @return IndexAttachment structure as a key-value pair table
+function M.IndexAttachment(args)
+	assert(args, "You must provdide an argument table when creating IndexAttachment")
 	local t = { 
-		["ObjectIdentifier"] = _ObjectIdentifier,
-		["IndexedAttributes"] = _IndexedAttributes,
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
+		["IndexedAttributes"] = args["IndexedAttributes"],
 	}
 	asserts.AssertIndexAttachment(t)
 	return t
@@ -4682,24 +5180,27 @@ end
 
 --- Create a structure of type BatchCreateObject
 -- <p>Represents the output of a <code>CreateObject</code> operation.</p>
--- @param _ObjectAttributeList [AttributeKeyAndValueList] <p>An attribute map, which contains an attribute ARN as the key and attribute value as the map value.</p>
--- @param _ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
--- @param _BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches">Batches</a> for more information.</p>
--- @param _SchemaFacet [SchemaFacetList] <p>A list of <code>FacetArns</code> that will be associated with the object. For more information, see <a>arns</a>.</p>
--- @param _LinkName [LinkName] <p>The name of the link.</p>
--- Required parameter: SchemaFacet
--- Required parameter: ObjectAttributeList
--- Required parameter: ParentReference
--- Required parameter: LinkName
--- Required parameter: BatchReferenceName
-function M.BatchCreateObject(_ObjectAttributeList, _ParentReference, _BatchReferenceName, _SchemaFacet, _LinkName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchCreateObject")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectAttributeList [AttributeKeyAndValueList] <p>An attribute map, which contains an attribute ARN as the key and attribute value as the map value.</p>
+-- * ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
+-- * BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches">Batches</a> for more information.</p>
+-- * SchemaFacet [SchemaFacetList] <p>A list of <code>FacetArns</code> that will be associated with the object. For more information, see <a>arns</a>.</p>
+-- * LinkName [LinkName] <p>The name of the link.</p>
+-- Required key: SchemaFacet
+-- Required key: ObjectAttributeList
+-- Required key: ParentReference
+-- Required key: LinkName
+-- Required key: BatchReferenceName
+-- @return BatchCreateObject structure as a key-value pair table
+function M.BatchCreateObject(args)
+	assert(args, "You must provdide an argument table when creating BatchCreateObject")
 	local t = { 
-		["ObjectAttributeList"] = _ObjectAttributeList,
-		["ParentReference"] = _ParentReference,
-		["BatchReferenceName"] = _BatchReferenceName,
-		["SchemaFacet"] = _SchemaFacet,
-		["LinkName"] = _LinkName,
+		["ObjectAttributeList"] = args["ObjectAttributeList"],
+		["ParentReference"] = args["ParentReference"],
+		["BatchReferenceName"] = args["BatchReferenceName"],
+		["SchemaFacet"] = args["SchemaFacet"],
+		["LinkName"] = args["LinkName"],
 	}
 	asserts.AssertBatchCreateObject(t)
 	return t
@@ -4719,13 +5220,16 @@ end
 
 --- Create a structure of type ListDevelopmentSchemaArnsResponse
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _SchemaArns [Arns] <p>The ARNs of retrieved development schemas.</p>
-function M.ListDevelopmentSchemaArnsResponse(_NextToken, _SchemaArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDevelopmentSchemaArnsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * SchemaArns [Arns] <p>The ARNs of retrieved development schemas.</p>
+-- @return ListDevelopmentSchemaArnsResponse structure as a key-value pair table
+function M.ListDevelopmentSchemaArnsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListDevelopmentSchemaArnsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["SchemaArns"] = _SchemaArns,
+		["NextToken"] = args["NextToken"],
+		["SchemaArns"] = args["SchemaArns"],
 	}
 	asserts.AssertListDevelopmentSchemaArnsResponse(t)
 	return t
@@ -4745,13 +5249,16 @@ end
 
 --- Create a structure of type LookupPolicyResponse
 --  
--- @param _PolicyToPathList [PolicyToPathList] <p>Provides list of path to policies. Policies contain <code>PolicyId</code>, <code>ObjectIdentifier</code>, and <code>PolicyType</code>. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
-function M.LookupPolicyResponse(_PolicyToPathList, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LookupPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyToPathList [PolicyToPathList] <p>Provides list of path to policies. Policies contain <code>PolicyId</code>, <code>ObjectIdentifier</code>, and <code>PolicyType</code>. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return LookupPolicyResponse structure as a key-value pair table
+function M.LookupPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating LookupPolicyResponse")
 	local t = { 
-		["PolicyToPathList"] = _PolicyToPathList,
-		["NextToken"] = _NextToken,
+		["PolicyToPathList"] = args["PolicyToPathList"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertLookupPolicyResponse(t)
 	return t
@@ -4770,11 +5277,14 @@ end
 
 --- Create a structure of type InvalidRuleException
 -- <p>Occurs when any of the rule parameter keys or values are invalid.</p>
--- @param _Message [ExceptionMessage] 
-function M.InvalidRuleException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRuleException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return InvalidRuleException structure as a key-value pair table
+function M.InvalidRuleException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRuleException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidRuleException(t)
 	return t
@@ -4794,13 +5304,16 @@ end
 
 --- Create a structure of type ListTagsForResourceResponse
 --  
--- @param _NextToken [NextToken] <p>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</p>
--- @param _Tags [TagList] <p>A list of tag key value pairs that are associated with the response.</p>
-function M.ListTagsForResourceResponse(_NextToken, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</p>
+-- * Tags [TagList] <p>A list of tag key value pairs that are associated with the response.</p>
+-- @return ListTagsForResourceResponse structure as a key-value pair table
+function M.ListTagsForResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Tags"] = _Tags,
+		["NextToken"] = args["NextToken"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertListTagsForResourceResponse(t)
 	return t
@@ -4822,15 +5335,18 @@ end
 
 --- Create a structure of type TypedLinkSchemaAndFacetName
 -- <p>Identifies the schema Amazon Resource Name (ARN) and facet name for the typed link.</p>
--- @param _TypedLinkName [TypedLinkName] <p>The unique name of the typed link facet.</p>
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
--- Required parameter: SchemaArn
--- Required parameter: TypedLinkName
-function M.TypedLinkSchemaAndFacetName(_TypedLinkName, _SchemaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkSchemaAndFacetName")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypedLinkName [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
+-- Required key: SchemaArn
+-- Required key: TypedLinkName
+-- @return TypedLinkSchemaAndFacetName structure as a key-value pair table
+function M.TypedLinkSchemaAndFacetName(args)
+	assert(args, "You must provdide an argument table when creating TypedLinkSchemaAndFacetName")
 	local t = { 
-		["TypedLinkName"] = _TypedLinkName,
-		["SchemaArn"] = _SchemaArn,
+		["TypedLinkName"] = args["TypedLinkName"],
+		["SchemaArn"] = args["SchemaArn"],
 	}
 	asserts.AssertTypedLinkSchemaAndFacetName(t)
 	return t
@@ -4850,13 +5366,16 @@ end
 
 --- Create a structure of type ListIncomingTypedLinksResponse
 --  
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _LinkSpecifiers [TypedLinkSpecifierList] <p>Returns one or more typed link specifiers as output.</p>
-function M.ListIncomingTypedLinksResponse(_NextToken, _LinkSpecifiers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIncomingTypedLinksResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * LinkSpecifiers [TypedLinkSpecifierList] <p>Returns one or more typed link specifiers as output.</p>
+-- @return ListIncomingTypedLinksResponse structure as a key-value pair table
+function M.ListIncomingTypedLinksResponse(args)
+	assert(args, "You must provdide an argument table when creating ListIncomingTypedLinksResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["LinkSpecifiers"] = _LinkSpecifiers,
+		["NextToken"] = args["NextToken"],
+		["LinkSpecifiers"] = args["LinkSpecifiers"],
 	}
 	asserts.AssertListIncomingTypedLinksResponse(t)
 	return t
@@ -4880,18 +5399,21 @@ end
 
 --- Create a structure of type BatchDetachObject
 -- <p>Represents the output of a <code>DetachObject</code> operation.</p>
--- @param _ParentReference [ObjectReference] <p>Parent reference from which the object with the specified link name is detached.</p>
--- @param _LinkName [LinkName] <p>The name of the link.</p>
--- @param _BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches">Batches</a> for more information.</p>
--- Required parameter: ParentReference
--- Required parameter: LinkName
--- Required parameter: BatchReferenceName
-function M.BatchDetachObject(_ParentReference, _LinkName, _BatchReferenceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchDetachObject")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParentReference [ObjectReference] <p>Parent reference from which the object with the specified link name is detached.</p>
+-- * LinkName [LinkName] <p>The name of the link.</p>
+-- * BatchReferenceName [BatchReferenceName] <p>The batch reference name. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#batches">Batches</a> for more information.</p>
+-- Required key: ParentReference
+-- Required key: LinkName
+-- Required key: BatchReferenceName
+-- @return BatchDetachObject structure as a key-value pair table
+function M.BatchDetachObject(args)
+	assert(args, "You must provdide an argument table when creating BatchDetachObject")
 	local t = { 
-		["ParentReference"] = _ParentReference,
-		["LinkName"] = _LinkName,
-		["BatchReferenceName"] = _BatchReferenceName,
+		["ParentReference"] = args["ParentReference"],
+		["LinkName"] = args["LinkName"],
+		["BatchReferenceName"] = args["BatchReferenceName"],
 	}
 	asserts.AssertBatchDetachObject(t)
 	return t
@@ -4916,20 +5438,23 @@ end
 
 --- Create a structure of type CreateFacetRequest
 --  
--- @param _Attributes [FacetAttributeList] <p>The attributes that are associated with the <a>Facet</a>.</p>
--- @param _SchemaArn [Arn] <p>The schema ARN in which the new <a>Facet</a> will be created. For more information, see <a>arns</a>.</p>
--- @param _Name [FacetName] <p>The name of the <a>Facet</a>, which is unique for a given schema.</p>
--- @param _ObjectType [ObjectType] <p>Specifies whether a given object created from this facet is of type node, leaf node, policy or index.</p> <ul> <li> <p>Node: Can have multiple children but one parent.</p> </li> </ul> <ul> <li> <p>Leaf node: Cannot have children but can have multiple parents.</p> </li> </ul> <ul> <li> <p>Policy: Allows you to store a policy document and policy type. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p> </li> </ul> <ul> <li> <p>Index: Can be created with the Index API.</p> </li> </ul>
--- Required parameter: SchemaArn
--- Required parameter: Name
--- Required parameter: ObjectType
-function M.CreateFacetRequest(_Attributes, _SchemaArn, _Name, _ObjectType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFacetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [FacetAttributeList] <p>The attributes that are associated with the <a>Facet</a>.</p>
+-- * SchemaArn [Arn] <p>The schema ARN in which the new <a>Facet</a> will be created. For more information, see <a>arns</a>.</p>
+-- * Name [FacetName] <p>The name of the <a>Facet</a>, which is unique for a given schema.</p>
+-- * ObjectType [ObjectType] <p>Specifies whether a given object created from this facet is of type node, leaf node, policy or index.</p> <ul> <li> <p>Node: Can have multiple children but one parent.</p> </li> </ul> <ul> <li> <p>Leaf node: Cannot have children but can have multiple parents.</p> </li> </ul> <ul> <li> <p>Policy: Allows you to store a policy document and policy type. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p> </li> </ul> <ul> <li> <p>Index: Can be created with the Index API.</p> </li> </ul>
+-- Required key: SchemaArn
+-- Required key: Name
+-- Required key: ObjectType
+-- @return CreateFacetRequest structure as a key-value pair table
+function M.CreateFacetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateFacetRequest")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["SchemaArn"] = _SchemaArn,
-		["Name"] = _Name,
-		["ObjectType"] = _ObjectType,
+		["Attributes"] = args["Attributes"],
+		["SchemaArn"] = args["SchemaArn"],
+		["Name"] = args["Name"],
+		["ObjectType"] = args["ObjectType"],
 	}
 	asserts.AssertCreateFacetRequest(t)
 	return t
@@ -4950,14 +5475,17 @@ end
 
 --- Create a structure of type TypedLinkAttributeRange
 -- <p>Identifies the range of attributes that are used by a specified filter.</p>
--- @param _Range [TypedAttributeValueRange] <p>The range of attribute values that are being selected.</p>
--- @param _AttributeName [AttributeName] <p>The unique name of the typed link attribute.</p>
--- Required parameter: Range
-function M.TypedLinkAttributeRange(_Range, _AttributeName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkAttributeRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Range [TypedAttributeValueRange] <p>The range of attribute values that are being selected.</p>
+-- * AttributeName [AttributeName] <p>The unique name of the typed link attribute.</p>
+-- Required key: Range
+-- @return TypedLinkAttributeRange structure as a key-value pair table
+function M.TypedLinkAttributeRange(args)
+	assert(args, "You must provdide an argument table when creating TypedLinkAttributeRange")
 	local t = { 
-		["Range"] = _Range,
-		["AttributeName"] = _AttributeName,
+		["Range"] = args["Range"],
+		["AttributeName"] = args["AttributeName"],
 	}
 	asserts.AssertTypedLinkAttributeRange(t)
 	return t
@@ -4977,12 +5505,15 @@ end
 
 --- Create a structure of type BatchDeleteObject
 -- <p>Represents the output of a <code>DeleteObject</code> operation.</p>
--- @param _ObjectReference [ObjectReference] <p>The reference that identifies the object.</p>
--- Required parameter: ObjectReference
-function M.BatchDeleteObject(_ObjectReference, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchDeleteObject")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>The reference that identifies the object.</p>
+-- Required key: ObjectReference
+-- @return BatchDeleteObject structure as a key-value pair table
+function M.BatchDeleteObject(args)
+	assert(args, "You must provdide an argument table when creating BatchDeleteObject")
 	local t = { 
-		["ObjectReference"] = _ObjectReference,
+		["ObjectReference"] = args["ObjectReference"],
 	}
 	asserts.AssertBatchDeleteObject(t)
 	return t
@@ -5002,12 +5533,15 @@ end
 
 --- Create a structure of type DeleteDirectoryRequest
 --  
--- @param _DirectoryArn [Arn] <p>The ARN of the directory to delete.</p>
--- Required parameter: DirectoryArn
-function M.DeleteDirectoryRequest(_DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDirectoryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryArn [Arn] <p>The ARN of the directory to delete.</p>
+-- Required key: DirectoryArn
+-- @return DeleteDirectoryRequest structure as a key-value pair table
+function M.DeleteDirectoryRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDirectoryRequest")
 	local t = { 
-		["DirectoryArn"] = _DirectoryArn,
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertDeleteDirectoryRequest(t)
 	return t
@@ -5027,13 +5561,16 @@ end
 
 --- Create a structure of type BatchListObjectAttributesResponse
 -- <p>Represents the output of a <code>ListObjectAttributes</code> response operation.</p>
--- @param _Attributes [AttributeKeyAndValueList] <p>The attributes map that is associated with the object. <code>AttributeArn</code> is the key; attribute value is the value.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
-function M.BatchListObjectAttributesResponse(_Attributes, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchListObjectAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [AttributeKeyAndValueList] <p>The attributes map that is associated with the object. <code>AttributeArn</code> is the key; attribute value is the value.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return BatchListObjectAttributesResponse structure as a key-value pair table
+function M.BatchListObjectAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchListObjectAttributesResponse")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["NextToken"] = _NextToken,
+		["Attributes"] = args["Attributes"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertBatchListObjectAttributesResponse(t)
 	return t
@@ -5058,20 +5595,23 @@ end
 
 --- Create a structure of type AddFacetToObjectRequest
 --  
--- @param _ObjectAttributeList [AttributeKeyAndValueList] <p>Attributes on the facet that you are adding to the object.</p>
--- @param _ObjectReference [ObjectReference] <p>A reference to the object you are adding the specified facet to.</p>
--- @param _SchemaFacet [SchemaFacet] <p>Identifiers for the facet that you are adding to the object.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: SchemaFacet
--- Required parameter: ObjectReference
-function M.AddFacetToObjectRequest(_ObjectAttributeList, _ObjectReference, _SchemaFacet, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddFacetToObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectAttributeList [AttributeKeyAndValueList] <p>Attributes on the facet that you are adding to the object.</p>
+-- * ObjectReference [ObjectReference] <p>A reference to the object you are adding the specified facet to.</p>
+-- * SchemaFacet [SchemaFacet] <p>Identifiers for the facet that you are adding to the object.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where the object resides. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: SchemaFacet
+-- Required key: ObjectReference
+-- @return AddFacetToObjectRequest structure as a key-value pair table
+function M.AddFacetToObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating AddFacetToObjectRequest")
 	local t = { 
-		["ObjectAttributeList"] = _ObjectAttributeList,
-		["ObjectReference"] = _ObjectReference,
-		["SchemaFacet"] = _SchemaFacet,
-		["DirectoryArn"] = _DirectoryArn,
+		["ObjectAttributeList"] = args["ObjectAttributeList"],
+		["ObjectReference"] = args["ObjectReference"],
+		["SchemaFacet"] = args["SchemaFacet"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertAddFacetToObjectRequest(t)
 	return t
@@ -5091,13 +5631,16 @@ end
 
 --- Create a structure of type ObjectAttributeUpdate
 -- <p>Structure that contains attribute update information.</p>
--- @param _ObjectAttributeAction [ObjectAttributeAction] <p>The action to perform as part of the attribute update.</p>
--- @param _ObjectAttributeKey [AttributeKey] <p>The key of the attribute being updated.</p>
-function M.ObjectAttributeUpdate(_ObjectAttributeAction, _ObjectAttributeKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ObjectAttributeUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectAttributeAction [ObjectAttributeAction] <p>The action to perform as part of the attribute update.</p>
+-- * ObjectAttributeKey [AttributeKey] <p>The key of the attribute being updated.</p>
+-- @return ObjectAttributeUpdate structure as a key-value pair table
+function M.ObjectAttributeUpdate(args)
+	assert(args, "You must provdide an argument table when creating ObjectAttributeUpdate")
 	local t = { 
-		["ObjectAttributeAction"] = _ObjectAttributeAction,
-		["ObjectAttributeKey"] = _ObjectAttributeKey,
+		["ObjectAttributeAction"] = args["ObjectAttributeAction"],
+		["ObjectAttributeKey"] = args["ObjectAttributeKey"],
 	}
 	asserts.AssertObjectAttributeUpdate(t)
 	return t
@@ -5116,11 +5659,14 @@ end
 
 --- Create a structure of type CannotListParentOfRootException
 -- <p>Cannot list the parents of a <a>Directory</a> root.</p>
--- @param _Message [ExceptionMessage] 
-function M.CannotListParentOfRootException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CannotListParentOfRootException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return CannotListParentOfRootException structure as a key-value pair table
+function M.CannotListParentOfRootException(args)
+	assert(args, "You must provdide an argument table when creating CannotListParentOfRootException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertCannotListParentOfRootException(t)
 	return t
@@ -5140,13 +5686,16 @@ end
 
 --- Create a structure of type ListTypedLinkFacetAttributesResponse
 --  
--- @param _Attributes [TypedLinkAttributeDefinitionList] <p>An ordered set of attributes associate with the typed link.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
-function M.ListTypedLinkFacetAttributesResponse(_Attributes, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTypedLinkFacetAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [TypedLinkAttributeDefinitionList] <p>An ordered set of attributes associate with the typed link.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- @return ListTypedLinkFacetAttributesResponse structure as a key-value pair table
+function M.ListTypedLinkFacetAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTypedLinkFacetAttributesResponse")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["NextToken"] = _NextToken,
+		["Attributes"] = args["Attributes"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListTypedLinkFacetAttributesResponse(t)
 	return t
@@ -5165,11 +5714,14 @@ end
 
 --- Create a structure of type DetachFromIndexResponse
 --  
--- @param _DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was detached from the index.</p>
-function M.DetachFromIndexResponse(_DetachedObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachFromIndexResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was detached from the index.</p>
+-- @return DetachFromIndexResponse structure as a key-value pair table
+function M.DetachFromIndexResponse(args)
+	assert(args, "You must provdide an argument table when creating DetachFromIndexResponse")
 	local t = { 
-		["DetachedObjectIdentifier"] = _DetachedObjectIdentifier,
+		["DetachedObjectIdentifier"] = args["DetachedObjectIdentifier"],
 	}
 	asserts.AssertDetachFromIndexResponse(t)
 	return t
@@ -5188,11 +5740,14 @@ end
 
 --- Create a structure of type AccessDeniedException
 -- <p>Access denied. Check your permissions.</p>
--- @param _Message [ExceptionMessage] 
-function M.AccessDeniedException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessDeniedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return AccessDeniedException structure as a key-value pair table
+function M.AccessDeniedException(args)
+	assert(args, "You must provdide an argument table when creating AccessDeniedException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertAccessDeniedException(t)
 	return t
@@ -5211,11 +5766,14 @@ end
 
 --- Create a structure of type NotPolicyException
 -- <p>Indicates that the requested operation can only operate on policy objects.</p>
--- @param _Message [ExceptionMessage] 
-function M.NotPolicyException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotPolicyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return NotPolicyException structure as a key-value pair table
+function M.NotPolicyException(args)
+	assert(args, "You must provdide an argument table when creating NotPolicyException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertNotPolicyException(t)
 	return t
@@ -5234,11 +5792,14 @@ end
 
 --- Create a structure of type NotNodeException
 -- <p>Occurs when any invalid operations are performed on an object that is not a node, such as calling <code>ListObjectChildren</code> for a leaf node object.</p>
--- @param _Message [ExceptionMessage] 
-function M.NotNodeException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotNodeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return NotNodeException structure as a key-value pair table
+function M.NotNodeException(args)
+	assert(args, "You must provdide an argument table when creating NotNodeException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertNotNodeException(t)
 	return t
@@ -5257,11 +5818,14 @@ end
 
 --- Create a structure of type BatchUpdateObjectAttributesResponse
 -- <p>Represents the output of a <code>BatchUpdate</code> response operation.</p>
--- @param _ObjectIdentifier [ObjectIdentifier] <p>ID that is associated with the object.</p>
-function M.BatchUpdateObjectAttributesResponse(_ObjectIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchUpdateObjectAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectIdentifier [ObjectIdentifier] <p>ID that is associated with the object.</p>
+-- @return BatchUpdateObjectAttributesResponse structure as a key-value pair table
+function M.BatchUpdateObjectAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchUpdateObjectAttributesResponse")
 	local t = { 
-		["ObjectIdentifier"] = _ObjectIdentifier,
+		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
 	asserts.AssertBatchUpdateObjectAttributesResponse(t)
 	return t
@@ -5281,13 +5845,16 @@ end
 
 --- Create a structure of type Rule
 -- <p>Contains an Amazon Resource Name (ARN) and parameters that are associated with the rule.</p>
--- @param _Type [RuleType] <p>The type of attribute validation rule.</p>
--- @param _Parameters [RuleParameterMap] <p>The minimum and maximum parameters that are associated with the rule.</p>
-function M.Rule(_Type, _Parameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Rule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [RuleType] <p>The type of attribute validation rule.</p>
+-- * Parameters [RuleParameterMap] <p>The minimum and maximum parameters that are associated with the rule.</p>
+-- @return Rule structure as a key-value pair table
+function M.Rule(args)
+	assert(args, "You must provdide an argument table when creating Rule")
 	local t = { 
-		["Type"] = _Type,
-		["Parameters"] = _Parameters,
+		["Type"] = args["Type"],
+		["Parameters"] = args["Parameters"],
 	}
 	asserts.AssertRule(t)
 	return t
@@ -5312,21 +5879,24 @@ end
 
 --- Create a structure of type CreateObjectRequest
 --  
--- @param _ObjectAttributeList [AttributeKeyAndValueList] <p>The attribute map whose attribute ARN contains the key and attribute value as the map value.</p>
--- @param _ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
--- @param _SchemaFacets [SchemaFacetList] <p>A list of schema facets to be associated with the object that contains <code>SchemaArn</code> and facet name. For more information, see <a>arns</a>.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> in which the object will be created. For more information, see <a>arns</a>.</p>
--- @param _LinkName [LinkName] <p>The name of link that is used to attach this object to a parent.</p>
--- Required parameter: DirectoryArn
--- Required parameter: SchemaFacets
-function M.CreateObjectRequest(_ObjectAttributeList, _ParentReference, _SchemaFacets, _DirectoryArn, _LinkName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectAttributeList [AttributeKeyAndValueList] <p>The attribute map whose attribute ARN contains the key and attribute value as the map value.</p>
+-- * ParentReference [ObjectReference] <p>If specified, the parent reference to which this object will be attached.</p>
+-- * SchemaFacets [SchemaFacetList] <p>A list of schema facets to be associated with the object that contains <code>SchemaArn</code> and facet name. For more information, see <a>arns</a>.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> in which the object will be created. For more information, see <a>arns</a>.</p>
+-- * LinkName [LinkName] <p>The name of link that is used to attach this object to a parent.</p>
+-- Required key: DirectoryArn
+-- Required key: SchemaFacets
+-- @return CreateObjectRequest structure as a key-value pair table
+function M.CreateObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateObjectRequest")
 	local t = { 
-		["ObjectAttributeList"] = _ObjectAttributeList,
-		["ParentReference"] = _ParentReference,
-		["SchemaFacets"] = _SchemaFacets,
-		["DirectoryArn"] = _DirectoryArn,
-		["LinkName"] = _LinkName,
+		["ObjectAttributeList"] = args["ObjectAttributeList"],
+		["ParentReference"] = args["ParentReference"],
+		["SchemaFacets"] = args["SchemaFacets"],
+		["DirectoryArn"] = args["DirectoryArn"],
+		["LinkName"] = args["LinkName"],
 	}
 	asserts.AssertCreateObjectRequest(t)
 	return t
@@ -5350,18 +5920,21 @@ end
 
 --- Create a structure of type BatchAddFacetToObject
 -- <p>Represents the output of a batch add facet to object operation.</p>
--- @param _ObjectAttributeList [AttributeKeyAndValueList] <p>The attributes to set on the object.</p>
--- @param _ObjectReference [ObjectReference] <p>A reference to the object being mutated.</p>
--- @param _SchemaFacet [SchemaFacet] <p>Represents the facet being added to the object.</p>
--- Required parameter: SchemaFacet
--- Required parameter: ObjectAttributeList
--- Required parameter: ObjectReference
-function M.BatchAddFacetToObject(_ObjectAttributeList, _ObjectReference, _SchemaFacet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchAddFacetToObject")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectAttributeList [AttributeKeyAndValueList] <p>The attributes to set on the object.</p>
+-- * ObjectReference [ObjectReference] <p>A reference to the object being mutated.</p>
+-- * SchemaFacet [SchemaFacet] <p>Represents the facet being added to the object.</p>
+-- Required key: SchemaFacet
+-- Required key: ObjectAttributeList
+-- Required key: ObjectReference
+-- @return BatchAddFacetToObject structure as a key-value pair table
+function M.BatchAddFacetToObject(args)
+	assert(args, "You must provdide an argument table when creating BatchAddFacetToObject")
 	local t = { 
-		["ObjectAttributeList"] = _ObjectAttributeList,
-		["ObjectReference"] = _ObjectReference,
-		["SchemaFacet"] = _SchemaFacet,
+		["ObjectAttributeList"] = args["ObjectAttributeList"],
+		["ObjectReference"] = args["ObjectReference"],
+		["SchemaFacet"] = args["SchemaFacet"],
 	}
 	asserts.AssertBatchAddFacetToObject(t)
 	return t
@@ -5380,11 +5953,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified resource could not be found.</p>
--- @param _Message [ExceptionMessage] 
-function M.ResourceNotFoundException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ExceptionMessage] 
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -5402,8 +5978,11 @@ end
 
 --- Create a structure of type BatchDeleteObjectResponse
 -- <p>Represents the output of a <code>DeleteObject</code> response operation.</p>
-function M.BatchDeleteObjectResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchDeleteObjectResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BatchDeleteObjectResponse structure as a key-value pair table
+function M.BatchDeleteObjectResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchDeleteObjectResponse")
 	local t = { 
 	}
 	asserts.AssertBatchDeleteObjectResponse(t)
@@ -5424,12 +6003,15 @@ end
 
 --- Create a structure of type DeleteDirectoryResponse
 --  
--- @param _DirectoryArn [Arn] <p>The ARN of the deleted directory.</p>
--- Required parameter: DirectoryArn
-function M.DeleteDirectoryResponse(_DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDirectoryResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DirectoryArn [Arn] <p>The ARN of the deleted directory.</p>
+-- Required key: DirectoryArn
+-- @return DeleteDirectoryResponse structure as a key-value pair table
+function M.DeleteDirectoryResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteDirectoryResponse")
 	local t = { 
-		["DirectoryArn"] = _DirectoryArn,
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertDeleteDirectoryResponse(t)
 	return t
@@ -5451,15 +6033,18 @@ end
 
 --- Create a structure of type FacetAttributeReference
 -- <p>The facet attribute reference that specifies the attribute definition that contains the attribute facet name and attribute name.</p>
--- @param _TargetFacetName [FacetName] <p>The target facet name that is associated with the facet reference. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
--- @param _TargetAttributeName [AttributeName] <p>The target attribute name that is associated with the facet reference. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
--- Required parameter: TargetFacetName
--- Required parameter: TargetAttributeName
-function M.FacetAttributeReference(_TargetFacetName, _TargetAttributeName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FacetAttributeReference")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetFacetName [FacetName] <p>The target facet name that is associated with the facet reference. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- * TargetAttributeName [AttributeName] <p>The target attribute name that is associated with the facet reference. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_advanced.html#attributereferences">Attribute References</a> for more information.</p>
+-- Required key: TargetFacetName
+-- Required key: TargetAttributeName
+-- @return FacetAttributeReference structure as a key-value pair table
+function M.FacetAttributeReference(args)
+	assert(args, "You must provdide an argument table when creating FacetAttributeReference")
 	local t = { 
-		["TargetFacetName"] = _TargetFacetName,
-		["TargetAttributeName"] = _TargetAttributeName,
+		["TargetFacetName"] = args["TargetFacetName"],
+		["TargetAttributeName"] = args["TargetAttributeName"],
 	}
 	asserts.AssertFacetAttributeReference(t)
 	return t
@@ -5481,15 +6066,18 @@ end
 
 --- Create a structure of type DetachTypedLinkRequest
 --  
--- @param _TypedLinkSpecifier [TypedLinkSpecifier] <p>Used to accept a typed link specifier as input.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to detach the typed link.</p>
--- Required parameter: DirectoryArn
--- Required parameter: TypedLinkSpecifier
-function M.DetachTypedLinkRequest(_TypedLinkSpecifier, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachTypedLinkRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TypedLinkSpecifier [TypedLinkSpecifier] <p>Used to accept a typed link specifier as input.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) of the directory where you want to detach the typed link.</p>
+-- Required key: DirectoryArn
+-- Required key: TypedLinkSpecifier
+-- @return DetachTypedLinkRequest structure as a key-value pair table
+function M.DetachTypedLinkRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachTypedLinkRequest")
 	local t = { 
-		["TypedLinkSpecifier"] = _TypedLinkSpecifier,
-		["DirectoryArn"] = _DirectoryArn,
+		["TypedLinkSpecifier"] = args["TypedLinkSpecifier"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertDetachTypedLinkRequest(t)
 	return t
@@ -5509,13 +6097,16 @@ end
 
 --- Create a structure of type ObjectAttributeAction
 -- <p>The action to take on the object attribute.</p>
--- @param _ObjectAttributeActionType [UpdateActionType] <p>A type that can be either <code>Update</code> or <code>Delete</code>.</p>
--- @param _ObjectAttributeUpdateValue [TypedAttributeValue] <p>The value that you want to update to.</p>
-function M.ObjectAttributeAction(_ObjectAttributeActionType, _ObjectAttributeUpdateValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ObjectAttributeAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectAttributeActionType [UpdateActionType] <p>A type that can be either <code>Update</code> or <code>Delete</code>.</p>
+-- * ObjectAttributeUpdateValue [TypedAttributeValue] <p>The value that you want to update to.</p>
+-- @return ObjectAttributeAction structure as a key-value pair table
+function M.ObjectAttributeAction(args)
+	assert(args, "You must provdide an argument table when creating ObjectAttributeAction")
 	local t = { 
-		["ObjectAttributeActionType"] = _ObjectAttributeActionType,
-		["ObjectAttributeUpdateValue"] = _ObjectAttributeUpdateValue,
+		["ObjectAttributeActionType"] = args["ObjectAttributeActionType"],
+		["ObjectAttributeUpdateValue"] = args["ObjectAttributeUpdateValue"],
 	}
 	asserts.AssertObjectAttributeAction(t)
 	return t
@@ -5537,15 +6128,18 @@ end
 
 --- Create a structure of type BatchRemoveFacetFromObject
 -- <p>A batch operation to remove a facet from an object.</p>
--- @param _ObjectReference [ObjectReference] <p>A reference to the object whose facet will be removed.</p>
--- @param _SchemaFacet [SchemaFacet] <p>The facet to remove from the object.</p>
--- Required parameter: SchemaFacet
--- Required parameter: ObjectReference
-function M.BatchRemoveFacetFromObject(_ObjectReference, _SchemaFacet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchRemoveFacetFromObject")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectReference [ObjectReference] <p>A reference to the object whose facet will be removed.</p>
+-- * SchemaFacet [SchemaFacet] <p>The facet to remove from the object.</p>
+-- Required key: SchemaFacet
+-- Required key: ObjectReference
+-- @return BatchRemoveFacetFromObject structure as a key-value pair table
+function M.BatchRemoveFacetFromObject(args)
+	assert(args, "You must provdide an argument table when creating BatchRemoveFacetFromObject")
 	local t = { 
-		["ObjectReference"] = _ObjectReference,
-		["SchemaFacet"] = _SchemaFacet,
+		["ObjectReference"] = args["ObjectReference"],
+		["SchemaFacet"] = args["SchemaFacet"],
 	}
 	asserts.AssertBatchRemoveFacetFromObject(t)
 	return t
@@ -5570,21 +6164,24 @@ end
 
 --- Create a structure of type ListPolicyAttachmentsRequest
 --  
--- @param _ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
--- @param _PolicyReference [ObjectReference] <p>The reference that identifies the policy object.</p>
--- @param _NextToken [NextToken] <p>The pagination token.</p>
--- @param _MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
--- @param _DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
--- Required parameter: DirectoryArn
--- Required parameter: PolicyReference
-function M.ListPolicyAttachmentsRequest(_ConsistencyLevel, _PolicyReference, _NextToken, _MaxResults, _DirectoryArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyAttachmentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConsistencyLevel [ConsistencyLevel] <p>Represents the manner and timing in which the successful write or update of an object is reflected in a subsequent read operation of that same object.</p>
+-- * PolicyReference [ObjectReference] <p>The reference that identifies the policy object.</p>
+-- * NextToken [NextToken] <p>The pagination token.</p>
+-- * MaxResults [NumberResults] <p>The maximum number of items to be retrieved in a single call. This is an approximate number.</p>
+-- * DirectoryArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Directory</a> where objects reside. For more information, see <a>arns</a>.</p>
+-- Required key: DirectoryArn
+-- Required key: PolicyReference
+-- @return ListPolicyAttachmentsRequest structure as a key-value pair table
+function M.ListPolicyAttachmentsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPolicyAttachmentsRequest")
 	local t = { 
-		["ConsistencyLevel"] = _ConsistencyLevel,
-		["PolicyReference"] = _PolicyReference,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
-		["DirectoryArn"] = _DirectoryArn,
+		["ConsistencyLevel"] = args["ConsistencyLevel"],
+		["PolicyReference"] = args["PolicyReference"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
+		["DirectoryArn"] = args["DirectoryArn"],
 	}
 	asserts.AssertListPolicyAttachmentsRequest(t)
 	return t
@@ -5604,12 +6201,15 @@ end
 
 --- Create a structure of type DeleteSchemaRequest
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the development schema. For more information, see <a>arns</a>.</p>
--- Required parameter: SchemaArn
-function M.DeleteSchemaRequest(_SchemaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSchemaRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) of the development schema. For more information, see <a>arns</a>.</p>
+-- Required key: SchemaArn
+-- @return DeleteSchemaRequest structure as a key-value pair table
+function M.DeleteSchemaRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSchemaRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
+		["SchemaArn"] = args["SchemaArn"],
 	}
 	asserts.AssertDeleteSchemaRequest(t)
 	return t
@@ -5631,15 +6231,18 @@ end
 
 --- Create a structure of type DeleteFacetRequest
 --  
--- @param _SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
--- @param _Name [FacetName] <p>The name of the facet to delete.</p>
--- Required parameter: SchemaArn
--- Required parameter: Name
-function M.DeleteFacetRequest(_SchemaArn, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFacetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the <a>Facet</a>. For more information, see <a>arns</a>.</p>
+-- * Name [FacetName] <p>The name of the facet to delete.</p>
+-- Required key: SchemaArn
+-- Required key: Name
+-- @return DeleteFacetRequest structure as a key-value pair table
+function M.DeleteFacetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteFacetRequest")
 	local t = { 
-		["SchemaArn"] = _SchemaArn,
-		["Name"] = _Name,
+		["SchemaArn"] = args["SchemaArn"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteFacetRequest(t)
 	return t
@@ -5663,18 +6266,21 @@ end
 
 --- Create a structure of type TypedLinkFacet
 -- <p>Defines the typed links structure and its attributes. To create a typed link facet, use the <a>CreateTypedLinkFacet</a> API.</p>
--- @param _Attributes [TypedLinkAttributeDefinitionList] <p>A set of key-value pairs associated with the typed link. Typed link attributes are used when you have data values that are related to the link itself, and not to one of the two objects being linked. Identity attributes also serve to distinguish the link from others of the same type between the same objects.</p>
--- @param _IdentityAttributeOrder [AttributeNameList] <p>The set of attributes that distinguish links made from this facet from each other, in the order of significance. Listing typed links can filter on the values of these attributes. See <a>ListOutgoingTypedLinks</a> and <a>ListIncomingTypeLinks</a> for details.</p>
--- @param _Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
--- Required parameter: Name
--- Required parameter: Attributes
--- Required parameter: IdentityAttributeOrder
-function M.TypedLinkFacet(_Attributes, _IdentityAttributeOrder, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TypedLinkFacet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [TypedLinkAttributeDefinitionList] <p>A set of key-value pairs associated with the typed link. Typed link attributes are used when you have data values that are related to the link itself, and not to one of the two objects being linked. Identity attributes also serve to distinguish the link from others of the same type between the same objects.</p>
+-- * IdentityAttributeOrder [AttributeNameList] <p>The set of attributes that distinguish links made from this facet from each other, in the order of significance. Listing typed links can filter on the values of these attributes. See <a>ListOutgoingTypedLinks</a> and <a>ListIncomingTypeLinks</a> for details.</p>
+-- * Name [TypedLinkName] <p>The unique name of the typed link facet.</p>
+-- Required key: Name
+-- Required key: Attributes
+-- Required key: IdentityAttributeOrder
+-- @return TypedLinkFacet structure as a key-value pair table
+function M.TypedLinkFacet(args)
+	assert(args, "You must provdide an argument table when creating TypedLinkFacet")
 	local t = { 
-		["Attributes"] = _Attributes,
-		["IdentityAttributeOrder"] = _IdentityAttributeOrder,
-		["Name"] = _Name,
+		["Attributes"] = args["Attributes"],
+		["IdentityAttributeOrder"] = args["IdentityAttributeOrder"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertTypedLinkFacet(t)
 	return t
@@ -5693,11 +6299,14 @@ end
 
 --- Create a structure of type BatchWriteResponse
 --  
--- @param _Responses [BatchWriteOperationResponseList] <p>A list of all the responses for each batch write.</p>
-function M.BatchWriteResponse(_Responses, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchWriteResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Responses [BatchWriteOperationResponseList] <p>A list of all the responses for each batch write.</p>
+-- @return BatchWriteResponse structure as a key-value pair table
+function M.BatchWriteResponse(args)
+	assert(args, "You must provdide an argument table when creating BatchWriteResponse")
 	local t = { 
-		["Responses"] = _Responses,
+		["Responses"] = args["Responses"],
 	}
 	asserts.AssertBatchWriteResponse(t)
 	return t

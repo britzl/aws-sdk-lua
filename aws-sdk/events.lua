@@ -33,8 +33,11 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>You tried to create more rules or add more targets to a rule than is allowed.</p>
-function M.LimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
 	}
 	asserts.AssertLimitExceededException(t)
@@ -55,13 +58,16 @@ end
 
 --- Create a structure of type ListTargetsByRuleResponse
 --  
--- @param _NextToken [NextToken] <p>Indicates whether there are additional results to retrieve. If there are no more results, the value is null.</p>
--- @param _Targets [TargetList] <p>The targets assigned to the rule.</p>
-function M.ListTargetsByRuleResponse(_NextToken, _Targets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTargetsByRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>Indicates whether there are additional results to retrieve. If there are no more results, the value is null.</p>
+-- * Targets [TargetList] <p>The targets assigned to the rule.</p>
+-- @return ListTargetsByRuleResponse structure as a key-value pair table
+function M.ListTargetsByRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTargetsByRuleResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Targets"] = _Targets,
+		["NextToken"] = args["NextToken"],
+		["Targets"] = args["Targets"],
 	}
 	asserts.AssertListTargetsByRuleResponse(t)
 	return t
@@ -84,19 +90,22 @@ end
 
 --- Create a structure of type PutEventsRequestEntry
 -- <p>Represents an event to be submitted.</p>
--- @param _Source [String] <p>The source of the event.</p>
--- @param _DetailType [String] <p>Free-form string used to decide what fields to expect in the event detail.</p>
--- @param _Detail [String] <p>In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints are imposed on its contents.</p>
--- @param _Resources [EventResourceList] <p>AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number, including zero, may be present.</p>
--- @param _Time [EventTime] <p>The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no timestamp is provided, the timestamp of the <a>PutEvents</a> call is used.</p>
-function M.PutEventsRequestEntry(_Source, _DetailType, _Detail, _Resources, _Time, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutEventsRequestEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Source [String] <p>The source of the event.</p>
+-- * DetailType [String] <p>Free-form string used to decide what fields to expect in the event detail.</p>
+-- * Detail [String] <p>In the JSON sense, an object containing fields, which may also contain nested subobjects. No constraints are imposed on its contents.</p>
+-- * Resources [EventResourceList] <p>AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number, including zero, may be present.</p>
+-- * Time [EventTime] <p>The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no timestamp is provided, the timestamp of the <a>PutEvents</a> call is used.</p>
+-- @return PutEventsRequestEntry structure as a key-value pair table
+function M.PutEventsRequestEntry(args)
+	assert(args, "You must provdide an argument table when creating PutEventsRequestEntry")
 	local t = { 
-		["Source"] = _Source,
-		["DetailType"] = _DetailType,
-		["Detail"] = _Detail,
-		["Resources"] = _Resources,
-		["Time"] = _Time,
+		["Source"] = args["Source"],
+		["DetailType"] = args["DetailType"],
+		["Detail"] = args["Detail"],
+		["Resources"] = args["Resources"],
+		["Time"] = args["Time"],
 	}
 	asserts.AssertPutEventsRequestEntry(t)
 	return t
@@ -114,8 +123,11 @@ end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>There is concurrent modification on a rule or target.</p>
-function M.ConcurrentModificationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ConcurrentModificationException structure as a key-value pair table
+function M.ConcurrentModificationException(args)
+	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
 	local t = { 
 	}
 	asserts.AssertConcurrentModificationException(t)
@@ -136,12 +148,15 @@ end
 
 --- Create a structure of type DeleteRuleRequest
 --  
--- @param _Name [RuleName] <p>The name of the rule.</p>
--- Required parameter: Name
-function M.DeleteRuleRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [RuleName] <p>The name of the rule.</p>
+-- Required key: Name
+-- @return DeleteRuleRequest structure as a key-value pair table
+function M.DeleteRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteRuleRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteRuleRequest(t)
 	return t
@@ -162,14 +177,17 @@ end
 
 --- Create a structure of type InputTransformer
 -- <p>Contains the parameters needed for you to provide custom input to a target based on one or more pieces of data extracted from the event.</p>
--- @param _InputTemplate [TransformerInput] <p>Input template where you can use the values of the keys from <code>InputPathsMap</code> to customize the data sent to the target.</p>
--- @param _InputPathsMap [TransformerPaths] <p>Map of JSON paths to be extracted from the event. These are key-value pairs, where each value is a JSON path. You must use JSON dot notation, not bracket notation.</p>
--- Required parameter: InputTemplate
-function M.InputTransformer(_InputTemplate, _InputPathsMap, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InputTransformer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InputTemplate [TransformerInput] <p>Input template where you can use the values of the keys from <code>InputPathsMap</code> to customize the data sent to the target.</p>
+-- * InputPathsMap [TransformerPaths] <p>Map of JSON paths to be extracted from the event. These are key-value pairs, where each value is a JSON path. You must use JSON dot notation, not bracket notation.</p>
+-- Required key: InputTemplate
+-- @return InputTransformer structure as a key-value pair table
+function M.InputTransformer(args)
+	assert(args, "You must provdide an argument table when creating InputTransformer")
 	local t = { 
-		["InputTemplate"] = _InputTemplate,
-		["InputPathsMap"] = _InputPathsMap,
+		["InputTemplate"] = args["InputTemplate"],
+		["InputPathsMap"] = args["InputPathsMap"],
 	}
 	asserts.AssertInputTransformer(t)
 	return t
@@ -191,15 +209,18 @@ end
 
 --- Create a structure of type RunCommandTarget
 -- <p>Information about the EC2 instances that are to be sent the command, specified as key-value pairs. Each <code>RunCommandTarget</code> block can include only one key, but this key may specify multiple values.</p>
--- @param _Values [RunCommandTargetValues] <p>If <code>Key</code> is <code>tag:</code> <i>tag-key</i>, <code>Values</code> is a list of tag values. If <code>Key</code> is <code>InstanceIds</code>, <code>Values</code> is a list of Amazon EC2 instance IDs.</p>
--- @param _Key [RunCommandTargetKey] <p>Can be either <code>tag:</code> <i>tag-key</i> or <code>InstanceIds</code>.</p>
--- Required parameter: Key
--- Required parameter: Values
-function M.RunCommandTarget(_Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RunCommandTarget")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [RunCommandTargetValues] <p>If <code>Key</code> is <code>tag:</code> <i>tag-key</i>, <code>Values</code> is a list of tag values. If <code>Key</code> is <code>InstanceIds</code>, <code>Values</code> is a list of Amazon EC2 instance IDs.</p>
+-- * Key [RunCommandTargetKey] <p>Can be either <code>tag:</code> <i>tag-key</i> or <code>InstanceIds</code>.</p>
+-- Required key: Key
+-- Required key: Values
+-- @return RunCommandTarget structure as a key-value pair table
+function M.RunCommandTarget(args)
+	assert(args, "You must provdide an argument table when creating RunCommandTarget")
 	local t = { 
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertRunCommandTarget(t)
 	return t
@@ -219,12 +240,15 @@ end
 
 --- Create a structure of type KinesisParameters
 -- <p>This object enables you to specify a JSON path to extract from the event and use as the partition key for the Amazon Kinesis stream, so that you can control the shard to which the event goes. If you do not include this parameter, the default is to use the <code>eventId</code> as the partition key.</p>
--- @param _PartitionKeyPath [TargetPartitionKeyPath] <p>The JSON path to be extracted from the event and used as the partition key. For more information, see <a href="http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html#partition-key">Amazon Kinesis Streams Key Concepts</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
--- Required parameter: PartitionKeyPath
-function M.KinesisParameters(_PartitionKeyPath, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KinesisParameters")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PartitionKeyPath [TargetPartitionKeyPath] <p>The JSON path to be extracted from the event and used as the partition key. For more information, see <a href="http://docs.aws.amazon.com/streams/latest/dev/key-concepts.html#partition-key">Amazon Kinesis Streams Key Concepts</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
+-- Required key: PartitionKeyPath
+-- @return KinesisParameters structure as a key-value pair table
+function M.KinesisParameters(args)
+	assert(args, "You must provdide an argument table when creating KinesisParameters")
 	local t = { 
-		["PartitionKeyPath"] = _PartitionKeyPath,
+		["PartitionKeyPath"] = args["PartitionKeyPath"],
 	}
 	asserts.AssertKinesisParameters(t)
 	return t
@@ -244,13 +268,16 @@ end
 
 --- Create a structure of type ListRulesResponse
 --  
--- @param _Rules [RuleResponseList] <p>The rules that match the specified criteria.</p>
--- @param _NextToken [NextToken] <p>Indicates whether there are additional results to retrieve. If there are no more results, the value is null.</p>
-function M.ListRulesResponse(_Rules, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [RuleResponseList] <p>The rules that match the specified criteria.</p>
+-- * NextToken [NextToken] <p>Indicates whether there are additional results to retrieve. If there are no more results, the value is null.</p>
+-- @return ListRulesResponse structure as a key-value pair table
+function M.ListRulesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListRulesResponse")
 	local t = { 
-		["Rules"] = _Rules,
-		["NextToken"] = _NextToken,
+		["Rules"] = args["Rules"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListRulesResponse(t)
 	return t
@@ -270,12 +297,15 @@ end
 
 --- Create a structure of type DisableRuleRequest
 --  
--- @param _Name [RuleName] <p>The name of the rule.</p>
--- Required parameter: Name
-function M.DisableRuleRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [RuleName] <p>The name of the rule.</p>
+-- Required key: Name
+-- @return DisableRuleRequest structure as a key-value pair table
+function M.DisableRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DisableRuleRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDisableRuleRequest(t)
 	return t
@@ -295,13 +325,16 @@ end
 
 --- Create a structure of type PutTargetsResponse
 --  
--- @param _FailedEntries [PutTargetsResultEntryList] <p>The failed target entries.</p>
--- @param _FailedEntryCount [Integer] <p>The number of failed entries.</p>
-function M.PutTargetsResponse(_FailedEntries, _FailedEntryCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutTargetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedEntries [PutTargetsResultEntryList] <p>The failed target entries.</p>
+-- * FailedEntryCount [Integer] <p>The number of failed entries.</p>
+-- @return PutTargetsResponse structure as a key-value pair table
+function M.PutTargetsResponse(args)
+	assert(args, "You must provdide an argument table when creating PutTargetsResponse")
 	local t = { 
-		["FailedEntries"] = _FailedEntries,
-		["FailedEntryCount"] = _FailedEntryCount,
+		["FailedEntries"] = args["FailedEntries"],
+		["FailedEntryCount"] = args["FailedEntryCount"],
 	}
 	asserts.AssertPutTargetsResponse(t)
 	return t
@@ -323,16 +356,19 @@ end
 
 --- Create a structure of type ListRuleNamesByTargetRequest
 --  
--- @param _TargetArn [TargetArn] <p>The Amazon Resource Name (ARN) of the target resource.</p>
--- @param _NextToken [NextToken] <p>The token returned by a previous call to retrieve the next set of results.</p>
--- @param _Limit [LimitMax100] <p>The maximum number of results to return.</p>
--- Required parameter: TargetArn
-function M.ListRuleNamesByTargetRequest(_TargetArn, _NextToken, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRuleNamesByTargetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetArn [TargetArn] <p>The Amazon Resource Name (ARN) of the target resource.</p>
+-- * NextToken [NextToken] <p>The token returned by a previous call to retrieve the next set of results.</p>
+-- * Limit [LimitMax100] <p>The maximum number of results to return.</p>
+-- Required key: TargetArn
+-- @return ListRuleNamesByTargetRequest structure as a key-value pair table
+function M.ListRuleNamesByTargetRequest(args)
+	assert(args, "You must provdide an argument table when creating ListRuleNamesByTargetRequest")
 	local t = { 
-		["TargetArn"] = _TargetArn,
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
+		["TargetArn"] = args["TargetArn"],
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListRuleNamesByTargetRequest(t)
 	return t
@@ -361,29 +397,32 @@ end
 
 --- Create a structure of type Target
 -- <p>Targets are the resources to be invoked when a rule is triggered. Target types include EC2 instances, AWS Lambda functions, Amazon Kinesis streams, Amazon ECS tasks, AWS Step Functions state machines, Run Command, and built-in targets.</p>
--- @param _RunCommandParameters [RunCommandParameters] <p>Parameters used when you are using the rule to invoke Amazon EC2 Run Command.</p>
--- @param _RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. If one rule triggers multiple targets, you can use a different IAM role for each target.</p>
--- @param _InputTransformer [InputTransformer] <p>Settings to enable you to provide custom input to a target based on certain event data. You can extract one or more key-value pairs from the event and then use that data to send customized input to the target.</p>
--- @param _EcsParameters [EcsParameters] <p>Contains the Amazon ECS task definition and task count to be used, if the event target is an Amazon ECS task. For more information about Amazon ECS tasks, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Task Definitions </a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
--- @param _KinesisParameters [KinesisParameters] <p>The custom parameter you can use to control shard assignment, when the target is an Amazon Kinesis stream. If you do not include this parameter, the default is to use the <code>eventId</code> as the partition key.</p>
--- @param _InputPath [TargetInputPath] <p>The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. You must use JSON dot notation, not bracket notation. For more information about JSON paths, see <a href="http://goessner.net/articles/JsonPath/">JSONPath</a>.</p>
--- @param _Input [TargetInput] <p>Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the target. You must use JSON dot notation, not bracket notation. For more information, see <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">The JavaScript Object Notation (JSON) Data Interchange Format</a>.</p>
--- @param _Id [TargetId] <p>The ID of the target.</p>
--- @param _Arn [TargetArn] <p>The Amazon Resource Name (ARN) of the target.</p>
--- Required parameter: Id
--- Required parameter: Arn
-function M.Target(_RunCommandParameters, _RoleArn, _InputTransformer, _EcsParameters, _KinesisParameters, _InputPath, _Input, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Target")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RunCommandParameters [RunCommandParameters] <p>Parameters used when you are using the rule to invoke Amazon EC2 Run Command.</p>
+-- * RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. If one rule triggers multiple targets, you can use a different IAM role for each target.</p>
+-- * InputTransformer [InputTransformer] <p>Settings to enable you to provide custom input to a target based on certain event data. You can extract one or more key-value pairs from the event and then use that data to send customized input to the target.</p>
+-- * EcsParameters [EcsParameters] <p>Contains the Amazon ECS task definition and task count to be used, if the event target is an Amazon ECS task. For more information about Amazon ECS tasks, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html">Task Definitions </a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>
+-- * KinesisParameters [KinesisParameters] <p>The custom parameter you can use to control shard assignment, when the target is an Amazon Kinesis stream. If you do not include this parameter, the default is to use the <code>eventId</code> as the partition key.</p>
+-- * InputPath [TargetInputPath] <p>The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. You must use JSON dot notation, not bracket notation. For more information about JSON paths, see <a href="http://goessner.net/articles/JsonPath/">JSONPath</a>.</p>
+-- * Input [TargetInput] <p>Valid JSON text passed to the target. In this case, nothing from the event itself is passed to the target. You must use JSON dot notation, not bracket notation. For more information, see <a href="http://www.rfc-editor.org/rfc/rfc7159.txt">The JavaScript Object Notation (JSON) Data Interchange Format</a>.</p>
+-- * Id [TargetId] <p>The ID of the target.</p>
+-- * Arn [TargetArn] <p>The Amazon Resource Name (ARN) of the target.</p>
+-- Required key: Id
+-- Required key: Arn
+-- @return Target structure as a key-value pair table
+function M.Target(args)
+	assert(args, "You must provdide an argument table when creating Target")
 	local t = { 
-		["RunCommandParameters"] = _RunCommandParameters,
-		["RoleArn"] = _RoleArn,
-		["InputTransformer"] = _InputTransformer,
-		["EcsParameters"] = _EcsParameters,
-		["KinesisParameters"] = _KinesisParameters,
-		["InputPath"] = _InputPath,
-		["Input"] = _Input,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["RunCommandParameters"] = args["RunCommandParameters"],
+		["RoleArn"] = args["RoleArn"],
+		["InputTransformer"] = args["InputTransformer"],
+		["EcsParameters"] = args["EcsParameters"],
+		["KinesisParameters"] = args["KinesisParameters"],
+		["InputPath"] = args["InputPath"],
+		["Input"] = args["Input"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertTarget(t)
 	return t
@@ -408,23 +447,26 @@ end
 
 --- Create a structure of type DescribeRuleResponse
 --  
--- @param _ScheduleExpression [ScheduleExpression] <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
--- @param _Name [RuleName] <p>The name of the rule.</p>
--- @param _EventPattern [EventPattern] <p>The event pattern. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
--- @param _State [RuleState] <p>Specifies whether the rule is enabled or disabled.</p>
--- @param _RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role associated with the rule.</p>
--- @param _Arn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- @param _Description [RuleDescription] <p>The description of the rule.</p>
-function M.DescribeRuleResponse(_ScheduleExpression, _Name, _EventPattern, _State, _RoleArn, _Arn, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScheduleExpression [ScheduleExpression] <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
+-- * Name [RuleName] <p>The name of the rule.</p>
+-- * EventPattern [EventPattern] <p>The event pattern. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
+-- * State [RuleState] <p>Specifies whether the rule is enabled or disabled.</p>
+-- * RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role associated with the rule.</p>
+-- * Arn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- * Description [RuleDescription] <p>The description of the rule.</p>
+-- @return DescribeRuleResponse structure as a key-value pair table
+function M.DescribeRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeRuleResponse")
 	local t = { 
-		["ScheduleExpression"] = _ScheduleExpression,
-		["Name"] = _Name,
-		["EventPattern"] = _EventPattern,
-		["State"] = _State,
-		["RoleArn"] = _RoleArn,
-		["Arn"] = _Arn,
-		["Description"] = _Description,
+		["ScheduleExpression"] = args["ScheduleExpression"],
+		["Name"] = args["Name"],
+		["EventPattern"] = args["EventPattern"],
+		["State"] = args["State"],
+		["RoleArn"] = args["RoleArn"],
+		["Arn"] = args["Arn"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertDescribeRuleResponse(t)
 	return t
@@ -444,12 +486,15 @@ end
 
 --- Create a structure of type RunCommandParameters
 -- <p>This parameter contains the criteria (either InstanceIds or a tag) used to specify which EC2 instances are to be sent the command. </p>
--- @param _RunCommandTargets [RunCommandTargets] <p>Currently, we support including only one RunCommandTarget block, which specifies either an array of InstanceIds or a tag.</p>
--- Required parameter: RunCommandTargets
-function M.RunCommandParameters(_RunCommandTargets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RunCommandParameters")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RunCommandTargets [RunCommandTargets] <p>Currently, we support including only one RunCommandTarget block, which specifies either an array of InstanceIds or a tag.</p>
+-- Required key: RunCommandTargets
+-- @return RunCommandParameters structure as a key-value pair table
+function M.RunCommandParameters(args)
+	assert(args, "You must provdide an argument table when creating RunCommandParameters")
 	local t = { 
-		["RunCommandTargets"] = _RunCommandTargets,
+		["RunCommandTargets"] = args["RunCommandTargets"],
 	}
 	asserts.AssertRunCommandParameters(t)
 	return t
@@ -470,15 +515,18 @@ end
 
 --- Create a structure of type PutEventsResultEntry
 -- <p>Represents an event that failed to be submitted.</p>
--- @param _EventId [EventId] <p>The ID of the event.</p>
--- @param _ErrorCode [ErrorCode] <p>The error code that indicates why the event submission failed.</p>
--- @param _ErrorMessage [ErrorMessage] <p>The error message that explains why the event submission failed.</p>
-function M.PutEventsResultEntry(_EventId, _ErrorCode, _ErrorMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutEventsResultEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventId [EventId] <p>The ID of the event.</p>
+-- * ErrorCode [ErrorCode] <p>The error code that indicates why the event submission failed.</p>
+-- * ErrorMessage [ErrorMessage] <p>The error message that explains why the event submission failed.</p>
+-- @return PutEventsResultEntry structure as a key-value pair table
+function M.PutEventsResultEntry(args)
+	assert(args, "You must provdide an argument table when creating PutEventsResultEntry")
 	local t = { 
-		["EventId"] = _EventId,
-		["ErrorCode"] = _ErrorCode,
-		["ErrorMessage"] = _ErrorMessage,
+		["EventId"] = args["EventId"],
+		["ErrorCode"] = args["ErrorCode"],
+		["ErrorMessage"] = args["ErrorMessage"],
 	}
 	asserts.AssertPutEventsResultEntry(t)
 	return t
@@ -498,13 +546,16 @@ end
 
 --- Create a structure of type RemoveTargetsResponse
 --  
--- @param _FailedEntries [RemoveTargetsResultEntryList] <p>The failed target entries.</p>
--- @param _FailedEntryCount [Integer] <p>The number of failed entries.</p>
-function M.RemoveTargetsResponse(_FailedEntries, _FailedEntryCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTargetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedEntries [RemoveTargetsResultEntryList] <p>The failed target entries.</p>
+-- * FailedEntryCount [Integer] <p>The number of failed entries.</p>
+-- @return RemoveTargetsResponse structure as a key-value pair table
+function M.RemoveTargetsResponse(args)
+	assert(args, "You must provdide an argument table when creating RemoveTargetsResponse")
 	local t = { 
-		["FailedEntries"] = _FailedEntries,
-		["FailedEntryCount"] = _FailedEntryCount,
+		["FailedEntries"] = args["FailedEntries"],
+		["FailedEntryCount"] = args["FailedEntryCount"],
 	}
 	asserts.AssertRemoveTargetsResponse(t)
 	return t
@@ -526,15 +577,18 @@ end
 
 --- Create a structure of type PutTargetsRequest
 --  
--- @param _Targets [TargetList] <p>The targets to update or add to the rule.</p>
--- @param _Rule [RuleName] <p>The name of the rule.</p>
--- Required parameter: Rule
--- Required parameter: Targets
-function M.PutTargetsRequest(_Targets, _Rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutTargetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Targets [TargetList] <p>The targets to update or add to the rule.</p>
+-- * Rule [RuleName] <p>The name of the rule.</p>
+-- Required key: Rule
+-- Required key: Targets
+-- @return PutTargetsRequest structure as a key-value pair table
+function M.PutTargetsRequest(args)
+	assert(args, "You must provdide an argument table when creating PutTargetsRequest")
 	local t = { 
-		["Targets"] = _Targets,
-		["Rule"] = _Rule,
+		["Targets"] = args["Targets"],
+		["Rule"] = args["Rule"],
 	}
 	asserts.AssertPutTargetsRequest(t)
 	return t
@@ -555,15 +609,18 @@ end
 
 --- Create a structure of type RemoveTargetsResultEntry
 -- <p>Represents a target that failed to be removed from a rule.</p>
--- @param _ErrorCode [ErrorCode] <p>The error code that indicates why the target removal failed. If the value is <code>ConcurrentModificationException</code>, too many requests were made at the same time.</p>
--- @param _ErrorMessage [ErrorMessage] <p>The error message that explains why the target removal failed.</p>
--- @param _TargetId [TargetId] <p>The ID of the target.</p>
-function M.RemoveTargetsResultEntry(_ErrorCode, _ErrorMessage, _TargetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTargetsResultEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] <p>The error code that indicates why the target removal failed. If the value is <code>ConcurrentModificationException</code>, too many requests were made at the same time.</p>
+-- * ErrorMessage [ErrorMessage] <p>The error message that explains why the target removal failed.</p>
+-- * TargetId [TargetId] <p>The ID of the target.</p>
+-- @return RemoveTargetsResultEntry structure as a key-value pair table
+function M.RemoveTargetsResultEntry(args)
+	assert(args, "You must provdide an argument table when creating RemoveTargetsResultEntry")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["ErrorMessage"] = _ErrorMessage,
-		["TargetId"] = _TargetId,
+		["ErrorCode"] = args["ErrorCode"],
+		["ErrorMessage"] = args["ErrorMessage"],
+		["TargetId"] = args["TargetId"],
 	}
 	asserts.AssertRemoveTargetsResultEntry(t)
 	return t
@@ -584,15 +641,18 @@ end
 
 --- Create a structure of type PutTargetsResultEntry
 -- <p>Represents a target that failed to be added to a rule.</p>
--- @param _ErrorCode [ErrorCode] <p>The error code that indicates why the target addition failed. If the value is <code>ConcurrentModificationException</code>, too many requests were made at the same time.</p>
--- @param _ErrorMessage [ErrorMessage] <p>The error message that explains why the target addition failed.</p>
--- @param _TargetId [TargetId] <p>The ID of the target.</p>
-function M.PutTargetsResultEntry(_ErrorCode, _ErrorMessage, _TargetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutTargetsResultEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] <p>The error code that indicates why the target addition failed. If the value is <code>ConcurrentModificationException</code>, too many requests were made at the same time.</p>
+-- * ErrorMessage [ErrorMessage] <p>The error message that explains why the target addition failed.</p>
+-- * TargetId [TargetId] <p>The ID of the target.</p>
+-- @return PutTargetsResultEntry structure as a key-value pair table
+function M.PutTargetsResultEntry(args)
+	assert(args, "You must provdide an argument table when creating PutTargetsResultEntry")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["ErrorMessage"] = _ErrorMessage,
-		["TargetId"] = _TargetId,
+		["ErrorCode"] = args["ErrorCode"],
+		["ErrorMessage"] = args["ErrorMessage"],
+		["TargetId"] = args["TargetId"],
 	}
 	asserts.AssertPutTargetsResultEntry(t)
 	return t
@@ -613,14 +673,17 @@ end
 
 --- Create a structure of type EcsParameters
 -- <p>The custom parameters to be used when the target is an Amazon ECS cluster.</p>
--- @param _TaskDefinitionArn [Arn] <p>The ARN of the task definition to use if the event target is an Amazon ECS cluster. </p>
--- @param _TaskCount [LimitMin1] <p>The number of tasks to create based on the <code>TaskDefinition</code>. The default is one.</p>
--- Required parameter: TaskDefinitionArn
-function M.EcsParameters(_TaskDefinitionArn, _TaskCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EcsParameters")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TaskDefinitionArn [Arn] <p>The ARN of the task definition to use if the event target is an Amazon ECS cluster. </p>
+-- * TaskCount [LimitMin1] <p>The number of tasks to create based on the <code>TaskDefinition</code>. The default is one.</p>
+-- Required key: TaskDefinitionArn
+-- @return EcsParameters structure as a key-value pair table
+function M.EcsParameters(args)
+	assert(args, "You must provdide an argument table when creating EcsParameters")
 	local t = { 
-		["TaskDefinitionArn"] = _TaskDefinitionArn,
-		["TaskCount"] = _TaskCount,
+		["TaskDefinitionArn"] = args["TaskDefinitionArn"],
+		["TaskCount"] = args["TaskCount"],
 	}
 	asserts.AssertEcsParameters(t)
 	return t
@@ -642,15 +705,18 @@ end
 
 --- Create a structure of type RemoveTargetsRequest
 --  
--- @param _Ids [TargetIdList] <p>The IDs of the targets to remove from the rule.</p>
--- @param _Rule [RuleName] <p>The name of the rule.</p>
--- Required parameter: Rule
--- Required parameter: Ids
-function M.RemoveTargetsRequest(_Ids, _Rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTargetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Ids [TargetIdList] <p>The IDs of the targets to remove from the rule.</p>
+-- * Rule [RuleName] <p>The name of the rule.</p>
+-- Required key: Rule
+-- Required key: Ids
+-- @return RemoveTargetsRequest structure as a key-value pair table
+function M.RemoveTargetsRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveTargetsRequest")
 	local t = { 
-		["Ids"] = _Ids,
-		["Rule"] = _Rule,
+		["Ids"] = args["Ids"],
+		["Rule"] = args["Rule"],
 	}
 	asserts.AssertRemoveTargetsRequest(t)
 	return t
@@ -670,12 +736,15 @@ end
 
 --- Create a structure of type DescribeRuleRequest
 --  
--- @param _Name [RuleName] <p>The name of the rule.</p>
--- Required parameter: Name
-function M.DescribeRuleRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [RuleName] <p>The name of the rule.</p>
+-- Required key: Name
+-- @return DescribeRuleRequest structure as a key-value pair table
+function M.DescribeRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeRuleRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDescribeRuleRequest(t)
 	return t
@@ -696,15 +765,18 @@ end
 
 --- Create a structure of type ListRulesRequest
 --  
--- @param _NextToken [NextToken] <p>The token returned by a previous call to retrieve the next set of results.</p>
--- @param _Limit [LimitMax100] <p>The maximum number of results to return.</p>
--- @param _NamePrefix [RuleName] <p>The prefix matching the rule name.</p>
-function M.ListRulesRequest(_NextToken, _Limit, _NamePrefix, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token returned by a previous call to retrieve the next set of results.</p>
+-- * Limit [LimitMax100] <p>The maximum number of results to return.</p>
+-- * NamePrefix [RuleName] <p>The prefix matching the rule name.</p>
+-- @return ListRulesRequest structure as a key-value pair table
+function M.ListRulesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListRulesRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
-		["NamePrefix"] = _NamePrefix,
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
+		["NamePrefix"] = args["NamePrefix"],
 	}
 	asserts.AssertListRulesRequest(t)
 	return t
@@ -724,12 +796,15 @@ end
 
 --- Create a structure of type EnableRuleRequest
 --  
--- @param _Name [RuleName] <p>The name of the rule.</p>
--- Required parameter: Name
-function M.EnableRuleRequest(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [RuleName] <p>The name of the rule.</p>
+-- Required key: Name
+-- @return EnableRuleRequest structure as a key-value pair table
+function M.EnableRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating EnableRuleRequest")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertEnableRuleRequest(t)
 	return t
@@ -749,13 +824,16 @@ end
 
 --- Create a structure of type ListRuleNamesByTargetResponse
 --  
--- @param _NextToken [NextToken] <p>Indicates whether there are additional results to retrieve. If there are no more results, the value is null.</p>
--- @param _RuleNames [RuleNameList] <p>The names of the rules that can invoke the given target.</p>
-function M.ListRuleNamesByTargetResponse(_NextToken, _RuleNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRuleNamesByTargetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>Indicates whether there are additional results to retrieve. If there are no more results, the value is null.</p>
+-- * RuleNames [RuleNameList] <p>The names of the rules that can invoke the given target.</p>
+-- @return ListRuleNamesByTargetResponse structure as a key-value pair table
+function M.ListRuleNamesByTargetResponse(args)
+	assert(args, "You must provdide an argument table when creating ListRuleNamesByTargetResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["RuleNames"] = _RuleNames,
+		["NextToken"] = args["NextToken"],
+		["RuleNames"] = args["RuleNames"],
 	}
 	asserts.AssertListRuleNamesByTargetResponse(t)
 	return t
@@ -773,8 +851,11 @@ end
 
 --- Create a structure of type InternalException
 -- <p>This exception occurs due to unexpected causes.</p>
-function M.InternalException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InternalException structure as a key-value pair table
+function M.InternalException(args)
+	assert(args, "You must provdide an argument table when creating InternalException")
 	local t = { 
 	}
 	asserts.AssertInternalException(t)
@@ -797,16 +878,19 @@ end
 
 --- Create a structure of type ListTargetsByRuleRequest
 --  
--- @param _NextToken [NextToken] <p>The token returned by a previous call to retrieve the next set of results.</p>
--- @param _Limit [LimitMax100] <p>The maximum number of results to return.</p>
--- @param _Rule [RuleName] <p>The name of the rule.</p>
--- Required parameter: Rule
-function M.ListTargetsByRuleRequest(_NextToken, _Limit, _Rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTargetsByRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>The token returned by a previous call to retrieve the next set of results.</p>
+-- * Limit [LimitMax100] <p>The maximum number of results to return.</p>
+-- * Rule [RuleName] <p>The name of the rule.</p>
+-- Required key: Rule
+-- @return ListTargetsByRuleRequest structure as a key-value pair table
+function M.ListTargetsByRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTargetsByRuleRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Limit"] = _Limit,
-		["Rule"] = _Rule,
+		["NextToken"] = args["NextToken"],
+		["Limit"] = args["Limit"],
+		["Rule"] = args["Rule"],
 	}
 	asserts.AssertListTargetsByRuleRequest(t)
 	return t
@@ -825,11 +909,14 @@ end
 
 --- Create a structure of type PutRuleResponse
 --  
--- @param _RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
-function M.PutRuleResponse(_RuleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- @return PutRuleResponse structure as a key-value pair table
+function M.PutRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating PutRuleResponse")
 	local t = { 
-		["RuleArn"] = _RuleArn,
+		["RuleArn"] = args["RuleArn"],
 	}
 	asserts.AssertPutRuleResponse(t)
 	return t
@@ -848,11 +935,14 @@ end
 
 --- Create a structure of type TestEventPatternResponse
 --  
--- @param _Result [Boolean] <p>Indicates whether the event matches the event pattern.</p>
-function M.TestEventPatternResponse(_Result, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TestEventPatternResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Result [Boolean] <p>Indicates whether the event matches the event pattern.</p>
+-- @return TestEventPatternResponse structure as a key-value pair table
+function M.TestEventPatternResponse(args)
+	assert(args, "You must provdide an argument table when creating TestEventPatternResponse")
 	local t = { 
-		["Result"] = _Result,
+		["Result"] = args["Result"],
 	}
 	asserts.AssertTestEventPatternResponse(t)
 	return t
@@ -877,23 +967,26 @@ end
 
 --- Create a structure of type Rule
 -- <p>Contains information about a rule in Amazon CloudWatch Events.</p>
--- @param _ScheduleExpression [ScheduleExpression] <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
--- @param _Name [RuleName] <p>The name of the rule.</p>
--- @param _EventPattern [EventPattern] <p>The event pattern of the rule. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
--- @param _State [RuleState] <p>The state of the rule.</p>
--- @param _RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the role that is used for target invocation.</p>
--- @param _Arn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
--- @param _Description [RuleDescription] <p>The description of the rule.</p>
-function M.Rule(_ScheduleExpression, _Name, _EventPattern, _State, _RoleArn, _Arn, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Rule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScheduleExpression [ScheduleExpression] <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
+-- * Name [RuleName] <p>The name of the rule.</p>
+-- * EventPattern [EventPattern] <p>The event pattern of the rule. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
+-- * State [RuleState] <p>The state of the rule.</p>
+-- * RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the role that is used for target invocation.</p>
+-- * Arn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
+-- * Description [RuleDescription] <p>The description of the rule.</p>
+-- @return Rule structure as a key-value pair table
+function M.Rule(args)
+	assert(args, "You must provdide an argument table when creating Rule")
 	local t = { 
-		["ScheduleExpression"] = _ScheduleExpression,
-		["Name"] = _Name,
-		["EventPattern"] = _EventPattern,
-		["State"] = _State,
-		["RoleArn"] = _RoleArn,
-		["Arn"] = _Arn,
-		["Description"] = _Description,
+		["ScheduleExpression"] = args["ScheduleExpression"],
+		["Name"] = args["Name"],
+		["EventPattern"] = args["EventPattern"],
+		["State"] = args["State"],
+		["RoleArn"] = args["RoleArn"],
+		["Arn"] = args["Arn"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertRule(t)
 	return t
@@ -913,12 +1006,15 @@ end
 
 --- Create a structure of type PutEventsRequest
 --  
--- @param _Entries [PutEventsRequestEntryList] <p>The entry that defines an event in your system. You can specify several parameters for the entry such as the source and type of the event, resources associated with the event, and so on.</p>
--- Required parameter: Entries
-function M.PutEventsRequest(_Entries, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutEventsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Entries [PutEventsRequestEntryList] <p>The entry that defines an event in your system. You can specify several parameters for the entry such as the source and type of the event, resources associated with the event, and so on.</p>
+-- Required key: Entries
+-- @return PutEventsRequest structure as a key-value pair table
+function M.PutEventsRequest(args)
+	assert(args, "You must provdide an argument table when creating PutEventsRequest")
 	local t = { 
-		["Entries"] = _Entries,
+		["Entries"] = args["Entries"],
 	}
 	asserts.AssertPutEventsRequest(t)
 	return t
@@ -943,22 +1039,25 @@ end
 
 --- Create a structure of type PutRuleRequest
 --  
--- @param _ScheduleExpression [ScheduleExpression] <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
--- @param _Name [RuleName] <p>The name of the rule that you are creating or updating.</p>
--- @param _RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role associated with the rule.</p>
--- @param _State [RuleState] <p>Indicates whether the rule is enabled or disabled.</p>
--- @param _EventPattern [EventPattern] <p>The event pattern. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
--- @param _Description [RuleDescription] <p>A description of the rule.</p>
--- Required parameter: Name
-function M.PutRuleRequest(_ScheduleExpression, _Name, _RoleArn, _State, _EventPattern, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScheduleExpression [ScheduleExpression] <p>The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".</p>
+-- * Name [RuleName] <p>The name of the rule that you are creating or updating.</p>
+-- * RoleArn [RoleArn] <p>The Amazon Resource Name (ARN) of the IAM role associated with the rule.</p>
+-- * State [RuleState] <p>Indicates whether the rule is enabled or disabled.</p>
+-- * EventPattern [EventPattern] <p>The event pattern. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
+-- * Description [RuleDescription] <p>A description of the rule.</p>
+-- Required key: Name
+-- @return PutRuleRequest structure as a key-value pair table
+function M.PutRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating PutRuleRequest")
 	local t = { 
-		["ScheduleExpression"] = _ScheduleExpression,
-		["Name"] = _Name,
-		["RoleArn"] = _RoleArn,
-		["State"] = _State,
-		["EventPattern"] = _EventPattern,
-		["Description"] = _Description,
+		["ScheduleExpression"] = args["ScheduleExpression"],
+		["Name"] = args["Name"],
+		["RoleArn"] = args["RoleArn"],
+		["State"] = args["State"],
+		["EventPattern"] = args["EventPattern"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertPutRuleRequest(t)
 	return t
@@ -978,13 +1077,16 @@ end
 
 --- Create a structure of type PutEventsResponse
 --  
--- @param _FailedEntryCount [Integer] <p>The number of failed entries.</p>
--- @param _Entries [PutEventsResultEntryList] <p>The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.</p>
-function M.PutEventsResponse(_FailedEntryCount, _Entries, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutEventsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailedEntryCount [Integer] <p>The number of failed entries.</p>
+-- * Entries [PutEventsResultEntryList] <p>The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.</p>
+-- @return PutEventsResponse structure as a key-value pair table
+function M.PutEventsResponse(args)
+	assert(args, "You must provdide an argument table when creating PutEventsResponse")
 	local t = { 
-		["FailedEntryCount"] = _FailedEntryCount,
-		["Entries"] = _Entries,
+		["FailedEntryCount"] = args["FailedEntryCount"],
+		["Entries"] = args["Entries"],
 	}
 	asserts.AssertPutEventsResponse(t)
 	return t
@@ -1002,8 +1104,11 @@ end
 
 --- Create a structure of type InvalidEventPatternException
 -- <p>The event pattern is not valid.</p>
-function M.InvalidEventPatternException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidEventPatternException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidEventPatternException structure as a key-value pair table
+function M.InvalidEventPatternException(args)
+	assert(args, "You must provdide an argument table when creating InvalidEventPatternException")
 	local t = { 
 	}
 	asserts.AssertInvalidEventPatternException(t)
@@ -1026,15 +1131,18 @@ end
 
 --- Create a structure of type TestEventPatternRequest
 --  
--- @param _EventPattern [EventPattern] <p>The event pattern. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
--- @param _Event [String] <p>The event, in JSON format, to test against the event pattern.</p>
--- Required parameter: EventPattern
--- Required parameter: Event
-function M.TestEventPatternRequest(_EventPattern, _Event, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TestEventPatternRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventPattern [EventPattern] <p>The event pattern. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html">Events and Event Patterns</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
+-- * Event [String] <p>The event, in JSON format, to test against the event pattern.</p>
+-- Required key: EventPattern
+-- Required key: Event
+-- @return TestEventPatternRequest structure as a key-value pair table
+function M.TestEventPatternRequest(args)
+	assert(args, "You must provdide an argument table when creating TestEventPatternRequest")
 	local t = { 
-		["EventPattern"] = _EventPattern,
-		["Event"] = _Event,
+		["EventPattern"] = args["EventPattern"],
+		["Event"] = args["Event"],
 	}
 	asserts.AssertTestEventPatternRequest(t)
 	return t
@@ -1052,8 +1160,11 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The rule does not exist.</p>
-function M.ResourceNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
 	}
 	asserts.AssertResourceNotFoundException(t)

@@ -35,13 +35,16 @@ end
 
 --- Create a structure of type GroupCertificateAuthorityProperties
 -- Information on group certificate authority properties
--- @param _GroupCertificateAuthorityId [__string] Id of the certificate authority for the group.
--- @param _GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
-function M.GroupCertificateAuthorityProperties(_GroupCertificateAuthorityId, _GroupCertificateAuthorityArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GroupCertificateAuthorityProperties")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupCertificateAuthorityId [__string] Id of the certificate authority for the group.
+-- * GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
+-- @return GroupCertificateAuthorityProperties structure as a key-value pair table
+function M.GroupCertificateAuthorityProperties(args)
+	assert(args, "You must provdide an argument table when creating GroupCertificateAuthorityProperties")
 	local t = { 
-		["GroupCertificateAuthorityId"] = _GroupCertificateAuthorityId,
-		["GroupCertificateAuthorityArn"] = _GroupCertificateAuthorityArn,
+		["GroupCertificateAuthorityId"] = args["GroupCertificateAuthorityId"],
+		["GroupCertificateAuthorityArn"] = args["GroupCertificateAuthorityArn"],
 	}
 	asserts.AssertGroupCertificateAuthorityProperties(t)
 	return t
@@ -61,12 +64,15 @@ end
 
 --- Create a structure of type GetGroupCertificateConfigurationRequest
 --  
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.GetGroupCertificateConfigurationRequest(_GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupCertificateConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return GetGroupCertificateConfigurationRequest structure as a key-value pair table
+function M.GetGroupCertificateConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetGroupCertificateConfigurationRequest")
 	local t = { 
-		["GroupId"] = _GroupId,
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertGetGroupCertificateConfigurationRequest(t)
 	return t
@@ -88,16 +94,19 @@ end
 
 --- Create a structure of type ListSubscriptionDefinitionVersionsRequest
 --  
--- @param _SubscriptionDefinitionId [__string] subscription definition Id
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
--- Required parameter: SubscriptionDefinitionId
-function M.ListSubscriptionDefinitionVersionsRequest(_SubscriptionDefinitionId, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionDefinitionVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubscriptionDefinitionId [__string] subscription definition Id
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- Required key: SubscriptionDefinitionId
+-- @return ListSubscriptionDefinitionVersionsRequest structure as a key-value pair table
+function M.ListSubscriptionDefinitionVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListSubscriptionDefinitionVersionsRequest")
 	local t = { 
-		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListSubscriptionDefinitionVersionsRequest(t)
 	return t
@@ -117,13 +126,16 @@ end
 
 --- Create a structure of type BadRequestException
 -- General Error
--- @param _ErrorDetails [ErrorDetails] Error Details
--- @param _Message [__string] Message
-function M.BadRequestException(_ErrorDetails, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BadRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorDetails [ErrorDetails] Error Details
+-- * Message [__string] Message
+-- @return BadRequestException structure as a key-value pair table
+function M.BadRequestException(args)
+	assert(args, "You must provdide an argument table when creating BadRequestException")
 	local t = { 
-		["ErrorDetails"] = _ErrorDetails,
-		["Message"] = _Message,
+		["ErrorDetails"] = args["ErrorDetails"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertBadRequestException(t)
 	return t
@@ -142,11 +154,14 @@ end
 
 --- Create a structure of type AssociateServiceRoleToAccountRequest
 --  
--- @param _RoleArn [__string] Role arn you wish to associate with this account.
-function M.AssociateServiceRoleToAccountRequest(_RoleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateServiceRoleToAccountRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleArn [__string] Role arn you wish to associate with this account.
+-- @return AssociateServiceRoleToAccountRequest structure as a key-value pair table
+function M.AssociateServiceRoleToAccountRequest(args)
+	assert(args, "You must provdide an argument table when creating AssociateServiceRoleToAccountRequest")
 	local t = { 
-		["RoleArn"] = _RoleArn,
+		["RoleArn"] = args["RoleArn"],
 	}
 	asserts.AssertAssociateServiceRoleToAccountRequest(t)
 	return t
@@ -166,13 +181,16 @@ end
 
 --- Create a structure of type ListGroupsRequest
 --  
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListGroupsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @return ListGroupsRequest structure as a key-value pair table
+function M.ListGroupsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListGroupsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListGroupsRequest(t)
 	return t
@@ -192,13 +210,16 @@ end
 
 --- Create a structure of type ListCoreDefinitionsResponse
 --  
--- @param _Definitions [ListOfDefinitionInformation] Definitions
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListCoreDefinitionsResponse(_Definitions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCoreDefinitionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definitions [ListOfDefinitionInformation] Definitions
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @return ListCoreDefinitionsResponse structure as a key-value pair table
+function M.ListCoreDefinitionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListCoreDefinitionsResponse")
 	local t = { 
-		["Definitions"] = _Definitions,
-		["NextToken"] = _NextToken,
+		["Definitions"] = args["Definitions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListCoreDefinitionsResponse(t)
 	return t
@@ -219,15 +240,18 @@ end
 
 --- Create a structure of type CreateDeviceDefinitionRequest
 --  
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _InitialVersion [DeviceDefinitionVersion] Information on the initial version
--- @param _Name [__string] name of the device definition
-function M.CreateDeviceDefinitionRequest(_AmznClientToken, _InitialVersion, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeviceDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * InitialVersion [DeviceDefinitionVersion] Information on the initial version
+-- * Name [__string] name of the device definition
+-- @return CreateDeviceDefinitionRequest structure as a key-value pair table
+function M.CreateDeviceDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDeviceDefinitionRequest")
 	local t = { 
-		["AmznClientToken"] = _AmznClientToken,
-		["InitialVersion"] = _InitialVersion,
-		["Name"] = _Name,
+		["AmznClientToken"] = args["AmznClientToken"],
+		["InitialVersion"] = args["InitialVersion"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateDeviceDefinitionRequest(t)
 	return t
@@ -247,13 +271,16 @@ end
 
 --- Create a structure of type InternalServerErrorException
 -- General Error
--- @param _ErrorDetails [ErrorDetails] Error Details
--- @param _Message [__string] Message
-function M.InternalServerErrorException(_ErrorDetails, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorDetails [ErrorDetails] Error Details
+-- * Message [__string] Message
+-- @return InternalServerErrorException structure as a key-value pair table
+function M.InternalServerErrorException(args)
+	assert(args, "You must provdide an argument table when creating InternalServerErrorException")
 	local t = { 
-		["ErrorDetails"] = _ErrorDetails,
-		["Message"] = _Message,
+		["ErrorDetails"] = args["ErrorDetails"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInternalServerErrorException(t)
 	return t
@@ -271,8 +298,11 @@ end
 
 --- Create a structure of type GetServiceRoleForAccountRequest
 --  
-function M.GetServiceRoleForAccountRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetServiceRoleForAccountRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetServiceRoleForAccountRequest structure as a key-value pair table
+function M.GetServiceRoleForAccountRequest(args)
+	assert(args, "You must provdide an argument table when creating GetServiceRoleForAccountRequest")
 	local t = { 
 	}
 	asserts.AssertGetServiceRoleForAccountRequest(t)
@@ -295,16 +325,19 @@ end
 
 --- Create a structure of type ListDeviceDefinitionVersionsRequest
 --  
--- @param _DeviceDefinitionId [__string] device definition Id
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
--- Required parameter: DeviceDefinitionId
-function M.ListDeviceDefinitionVersionsRequest(_DeviceDefinitionId, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeviceDefinitionVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeviceDefinitionId [__string] device definition Id
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- Required key: DeviceDefinitionId
+-- @return ListDeviceDefinitionVersionsRequest structure as a key-value pair table
+function M.ListDeviceDefinitionVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDeviceDefinitionVersionsRequest")
 	local t = { 
-		["DeviceDefinitionId"] = _DeviceDefinitionId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListDeviceDefinitionVersionsRequest(t)
 	return t
@@ -325,15 +358,18 @@ end
 
 --- Create a structure of type CreateLoggerDefinitionRequest
 --  
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _InitialVersion [LoggerDefinitionVersion] Information on the initial version
--- @param _Name [__string] name of the logger definition
-function M.CreateLoggerDefinitionRequest(_AmznClientToken, _InitialVersion, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoggerDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * InitialVersion [LoggerDefinitionVersion] Information on the initial version
+-- * Name [__string] name of the logger definition
+-- @return CreateLoggerDefinitionRequest structure as a key-value pair table
+function M.CreateLoggerDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateLoggerDefinitionRequest")
 	local t = { 
-		["AmznClientToken"] = _AmznClientToken,
-		["InitialVersion"] = _InitialVersion,
-		["Name"] = _Name,
+		["AmznClientToken"] = args["AmznClientToken"],
+		["InitialVersion"] = args["InitialVersion"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateLoggerDefinitionRequest(t)
 	return t
@@ -354,15 +390,18 @@ end
 
 --- Create a structure of type CreateSubscriptionDefinitionRequest
 --  
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _InitialVersion [SubscriptionDefinitionVersion] Information on the initial version
--- @param _Name [__string] name of the subscription definition
-function M.CreateSubscriptionDefinitionRequest(_AmznClientToken, _InitialVersion, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriptionDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * InitialVersion [SubscriptionDefinitionVersion] Information on the initial version
+-- * Name [__string] name of the subscription definition
+-- @return CreateSubscriptionDefinitionRequest structure as a key-value pair table
+function M.CreateSubscriptionDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSubscriptionDefinitionRequest")
 	local t = { 
-		["AmznClientToken"] = _AmznClientToken,
-		["InitialVersion"] = _InitialVersion,
-		["Name"] = _Name,
+		["AmznClientToken"] = args["AmznClientToken"],
+		["InitialVersion"] = args["InitialVersion"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateSubscriptionDefinitionRequest(t)
 	return t
@@ -382,13 +421,16 @@ end
 
 --- Create a structure of type ListCoreDefinitionVersionsResponse
 --  
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param _Versions [ListOfVersionInformation] Versions
-function M.ListCoreDefinitionVersionsResponse(_NextToken, _Versions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCoreDefinitionVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Versions [ListOfVersionInformation] Versions
+-- @return ListCoreDefinitionVersionsResponse structure as a key-value pair table
+function M.ListCoreDefinitionVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListCoreDefinitionVersionsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Versions"] = _Versions,
+		["NextToken"] = args["NextToken"],
+		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListCoreDefinitionVersionsResponse(t)
 	return t
@@ -408,13 +450,16 @@ end
 
 --- Create a structure of type ListLoggerDefinitionsResponse
 --  
--- @param _Definitions [ListOfDefinitionInformation] Definitions
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListLoggerDefinitionsResponse(_Definitions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLoggerDefinitionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definitions [ListOfDefinitionInformation] Definitions
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @return ListLoggerDefinitionsResponse structure as a key-value pair table
+function M.ListLoggerDefinitionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListLoggerDefinitionsResponse")
 	local t = { 
-		["Definitions"] = _Definitions,
-		["NextToken"] = _NextToken,
+		["Definitions"] = args["Definitions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListLoggerDefinitionsResponse(t)
 	return t
@@ -439,23 +484,26 @@ end
 
 --- Create a structure of type GetLoggerDefinitionResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.GetLoggerDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggerDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return GetLoggerDefinitionResponse structure as a key-value pair table
+function M.GetLoggerDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetLoggerDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetLoggerDefinitionResponse(t)
 	return t
@@ -478,19 +526,22 @@ end
 
 --- Create a structure of type GetGroupVersionResponse
 --  
--- @param _Definition [GroupVersion] Information on the definition
--- @param _Version [__string] Unique Id for a version of the Group.
--- @param _CreationTimestamp [__string] Timestamp when the group version was created.
--- @param _Id [__string] Id of the group version.
--- @param _Arn [__string] Arn of the group version.
-function M.GetGroupVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definition [GroupVersion] Information on the definition
+-- * Version [__string] Unique Id for a version of the Group.
+-- * CreationTimestamp [__string] Timestamp when the group version was created.
+-- * Id [__string] Id of the group version.
+-- * Arn [__string] Arn of the group version.
+-- @return GetGroupVersionResponse structure as a key-value pair table
+function M.GetGroupVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetGroupVersionResponse")
 	local t = { 
-		["Definition"] = _Definition,
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Definition"] = args["Definition"],
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetGroupVersionResponse(t)
 	return t
@@ -511,15 +562,18 @@ end
 
 --- Create a structure of type CreateGroupRequest
 --  
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _InitialVersion [GroupVersion] Information on the initial version
--- @param _Name [__string] name of the group
-function M.CreateGroupRequest(_AmznClientToken, _InitialVersion, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * InitialVersion [GroupVersion] Information on the initial version
+-- * Name [__string] name of the group
+-- @return CreateGroupRequest structure as a key-value pair table
+function M.CreateGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateGroupRequest")
 	local t = { 
-		["AmznClientToken"] = _AmznClientToken,
-		["InitialVersion"] = _InitialVersion,
-		["Name"] = _Name,
+		["AmznClientToken"] = args["AmznClientToken"],
+		["InitialVersion"] = args["InitialVersion"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateGroupRequest(t)
 	return t
@@ -539,12 +593,15 @@ end
 
 --- Create a structure of type GetGroupRequest
 --  
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.GetGroupRequest(_GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return GetGroupRequest structure as a key-value pair table
+function M.GetGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating GetGroupRequest")
 	local t = { 
-		["GroupId"] = _GroupId,
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertGetGroupRequest(t)
 	return t
@@ -562,8 +619,11 @@ end
 
 --- Create a structure of type UpdateSubscriptionDefinitionResponse
 --  
-function M.UpdateSubscriptionDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSubscriptionDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateSubscriptionDefinitionResponse structure as a key-value pair table
+function M.UpdateSubscriptionDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateSubscriptionDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateSubscriptionDefinitionResponse(t)
@@ -583,11 +643,14 @@ end
 
 --- Create a structure of type AssociateServiceRoleToAccountResponse
 --  
--- @param _AssociatedAt [__string] Time when the service role was associated to the account.
-function M.AssociateServiceRoleToAccountResponse(_AssociatedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateServiceRoleToAccountResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssociatedAt [__string] Time when the service role was associated to the account.
+-- @return AssociateServiceRoleToAccountResponse structure as a key-value pair table
+function M.AssociateServiceRoleToAccountResponse(args)
+	assert(args, "You must provdide an argument table when creating AssociateServiceRoleToAccountResponse")
 	local t = { 
-		["AssociatedAt"] = _AssociatedAt,
+		["AssociatedAt"] = args["AssociatedAt"],
 	}
 	asserts.AssertAssociateServiceRoleToAccountResponse(t)
 	return t
@@ -609,16 +672,19 @@ end
 
 --- Create a structure of type CreateLoggerDefinitionVersionRequest
 --  
--- @param _Loggers [ListOfLogger] List of loggers.
--- @param _LoggerDefinitionId [__string] logger definition Id
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- Required parameter: LoggerDefinitionId
-function M.CreateLoggerDefinitionVersionRequest(_Loggers, _LoggerDefinitionId, _AmznClientToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoggerDefinitionVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Loggers [ListOfLogger] List of loggers.
+-- * LoggerDefinitionId [__string] logger definition Id
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- Required key: LoggerDefinitionId
+-- @return CreateLoggerDefinitionVersionRequest structure as a key-value pair table
+function M.CreateLoggerDefinitionVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateLoggerDefinitionVersionRequest")
 	local t = { 
-		["Loggers"] = _Loggers,
-		["LoggerDefinitionId"] = _LoggerDefinitionId,
-		["AmznClientToken"] = _AmznClientToken,
+		["Loggers"] = args["Loggers"],
+		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
+		["AmznClientToken"] = args["AmznClientToken"],
 	}
 	asserts.AssertCreateLoggerDefinitionVersionRequest(t)
 	return t
@@ -638,12 +704,15 @@ end
 
 --- Create a structure of type DeleteLoggerDefinitionRequest
 --  
--- @param _LoggerDefinitionId [__string] logger definition Id
--- Required parameter: LoggerDefinitionId
-function M.DeleteLoggerDefinitionRequest(_LoggerDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLoggerDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggerDefinitionId [__string] logger definition Id
+-- Required key: LoggerDefinitionId
+-- @return DeleteLoggerDefinitionRequest structure as a key-value pair table
+function M.DeleteLoggerDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteLoggerDefinitionRequest")
 	local t = { 
-		["LoggerDefinitionId"] = _LoggerDefinitionId,
+		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
 	}
 	asserts.AssertDeleteLoggerDefinitionRequest(t)
 	return t
@@ -665,16 +734,19 @@ end
 
 --- Create a structure of type ListGroupVersionsRequest
 --  
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
--- Required parameter: GroupId
-function M.ListGroupVersionsRequest(_NextToken, _GroupId, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- Required key: GroupId
+-- @return ListGroupVersionsRequest structure as a key-value pair table
+function M.ListGroupVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListGroupVersionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["GroupId"] = _GroupId,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["GroupId"] = args["GroupId"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListGroupVersionsRequest(t)
 	return t
@@ -695,15 +767,18 @@ end
 
 --- Create a structure of type GetGroupCertificateAuthorityResponse
 --  
--- @param _PemEncodedCertificate [__string] PEM encoded certificate for the group.
--- @param _GroupCertificateAuthorityId [__string] Id of the certificate authority for the group.
--- @param _GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
-function M.GetGroupCertificateAuthorityResponse(_PemEncodedCertificate, _GroupCertificateAuthorityId, _GroupCertificateAuthorityArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupCertificateAuthorityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PemEncodedCertificate [__string] PEM encoded certificate for the group.
+-- * GroupCertificateAuthorityId [__string] Id of the certificate authority for the group.
+-- * GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
+-- @return GetGroupCertificateAuthorityResponse structure as a key-value pair table
+function M.GetGroupCertificateAuthorityResponse(args)
+	assert(args, "You must provdide an argument table when creating GetGroupCertificateAuthorityResponse")
 	local t = { 
-		["PemEncodedCertificate"] = _PemEncodedCertificate,
-		["GroupCertificateAuthorityId"] = _GroupCertificateAuthorityId,
-		["GroupCertificateAuthorityArn"] = _GroupCertificateAuthorityArn,
+		["PemEncodedCertificate"] = args["PemEncodedCertificate"],
+		["GroupCertificateAuthorityId"] = args["GroupCertificateAuthorityId"],
+		["GroupCertificateAuthorityArn"] = args["GroupCertificateAuthorityArn"],
 	}
 	asserts.AssertGetGroupCertificateAuthorityResponse(t)
 	return t
@@ -728,23 +803,26 @@ end
 
 --- Create a structure of type CreateDeviceDefinitionResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.CreateDeviceDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeviceDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return CreateDeviceDefinitionResponse structure as a key-value pair table
+function M.CreateDeviceDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateDeviceDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateDeviceDefinitionResponse(t)
 	return t
@@ -762,8 +840,11 @@ end
 
 --- Create a structure of type DeleteFunctionDefinitionResponse
 --  
-function M.DeleteFunctionDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFunctionDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteFunctionDefinitionResponse structure as a key-value pair table
+function M.DeleteFunctionDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteFunctionDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteFunctionDefinitionResponse(t)
@@ -785,15 +866,18 @@ end
 
 --- Create a structure of type CreateCoreDefinitionRequest
 -- Information on the core definition request
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _InitialVersion [CoreDefinitionVersion] Information on the initial version
--- @param _Name [__string] name of the core definition
-function M.CreateCoreDefinitionRequest(_AmznClientToken, _InitialVersion, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCoreDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * InitialVersion [CoreDefinitionVersion] Information on the initial version
+-- * Name [__string] name of the core definition
+-- @return CreateCoreDefinitionRequest structure as a key-value pair table
+function M.CreateCoreDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateCoreDefinitionRequest")
 	local t = { 
-		["AmznClientToken"] = _AmznClientToken,
-		["InitialVersion"] = _InitialVersion,
-		["Name"] = _Name,
+		["AmznClientToken"] = args["AmznClientToken"],
+		["InitialVersion"] = args["InitialVersion"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateCoreDefinitionRequest(t)
 	return t
@@ -812,11 +896,14 @@ end
 
 --- Create a structure of type DisassociateServiceRoleFromAccountResponse
 --  
--- @param _DisassociatedAt [__string] Time when the service role was disassociated from the account.
-function M.DisassociateServiceRoleFromAccountResponse(_DisassociatedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateServiceRoleFromAccountResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisassociatedAt [__string] Time when the service role was disassociated from the account.
+-- @return DisassociateServiceRoleFromAccountResponse structure as a key-value pair table
+function M.DisassociateServiceRoleFromAccountResponse(args)
+	assert(args, "You must provdide an argument table when creating DisassociateServiceRoleFromAccountResponse")
 	local t = { 
-		["DisassociatedAt"] = _DisassociatedAt,
+		["DisassociatedAt"] = args["DisassociatedAt"],
 	}
 	asserts.AssertDisassociateServiceRoleFromAccountResponse(t)
 	return t
@@ -835,11 +922,14 @@ end
 
 --- Create a structure of type DeviceDefinitionVersion
 -- Information on device definition version
--- @param _Devices [ListOfDevice] Devices in the definition version.
-function M.DeviceDefinitionVersion(_Devices, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeviceDefinitionVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Devices [ListOfDevice] Devices in the definition version.
+-- @return DeviceDefinitionVersion structure as a key-value pair table
+function M.DeviceDefinitionVersion(args)
+	assert(args, "You must provdide an argument table when creating DeviceDefinitionVersion")
 	local t = { 
-		["Devices"] = _Devices,
+		["Devices"] = args["Devices"],
 	}
 	asserts.AssertDeviceDefinitionVersion(t)
 	return t
@@ -861,16 +951,19 @@ end
 
 --- Create a structure of type ListFunctionDefinitionVersionsRequest
 --  
--- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
--- Required parameter: FunctionDefinitionId
-function M.ListFunctionDefinitionVersionsRequest(_FunctionDefinitionId, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionDefinitionVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- Required key: FunctionDefinitionId
+-- @return ListFunctionDefinitionVersionsRequest structure as a key-value pair table
+function M.ListFunctionDefinitionVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListFunctionDefinitionVersionsRequest")
 	local t = { 
-		["FunctionDefinitionId"] = _FunctionDefinitionId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListFunctionDefinitionVersionsRequest(t)
 	return t
@@ -889,11 +982,14 @@ end
 
 --- Create a structure of type DisassociateRoleFromGroupResponse
 --  
--- @param _DisassociatedAt [__string] Time when the role was disassociated from the group.
-function M.DisassociateRoleFromGroupResponse(_DisassociatedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateRoleFromGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisassociatedAt [__string] Time when the role was disassociated from the group.
+-- @return DisassociateRoleFromGroupResponse structure as a key-value pair table
+function M.DisassociateRoleFromGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating DisassociateRoleFromGroupResponse")
 	local t = { 
-		["DisassociatedAt"] = _DisassociatedAt,
+		["DisassociatedAt"] = args["DisassociatedAt"],
 	}
 	asserts.AssertDisassociateRoleFromGroupResponse(t)
 	return t
@@ -912,11 +1008,14 @@ end
 
 --- Create a structure of type LoggerDefinitionVersion
 -- Information on logger definition version
--- @param _Loggers [ListOfLogger] List of loggers.
-function M.LoggerDefinitionVersion(_Loggers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoggerDefinitionVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Loggers [ListOfLogger] List of loggers.
+-- @return LoggerDefinitionVersion structure as a key-value pair table
+function M.LoggerDefinitionVersion(args)
+	assert(args, "You must provdide an argument table when creating LoggerDefinitionVersion")
 	local t = { 
-		["Loggers"] = _Loggers,
+		["Loggers"] = args["Loggers"],
 	}
 	asserts.AssertLoggerDefinitionVersion(t)
 	return t
@@ -938,16 +1037,19 @@ end
 
 --- Create a structure of type CreateFunctionDefinitionVersionRequest
 -- Function definition version
--- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
--- @param _Functions [ListOfFunction] Lambda functions in this function definition version.
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- Required parameter: FunctionDefinitionId
-function M.CreateFunctionDefinitionVersionRequest(_FunctionDefinitionId, _Functions, _AmznClientToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFunctionDefinitionVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- * Functions [ListOfFunction] Lambda functions in this function definition version.
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- Required key: FunctionDefinitionId
+-- @return CreateFunctionDefinitionVersionRequest structure as a key-value pair table
+function M.CreateFunctionDefinitionVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateFunctionDefinitionVersionRequest")
 	local t = { 
-		["FunctionDefinitionId"] = _FunctionDefinitionId,
-		["Functions"] = _Functions,
-		["AmznClientToken"] = _AmznClientToken,
+		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
+		["Functions"] = args["Functions"],
+		["AmznClientToken"] = args["AmznClientToken"],
 	}
 	asserts.AssertCreateFunctionDefinitionVersionRequest(t)
 	return t
@@ -965,8 +1067,11 @@ end
 
 --- Create a structure of type DeleteDeviceDefinitionResponse
 --  
-function M.DeleteDeviceDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeviceDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteDeviceDefinitionResponse structure as a key-value pair table
+function M.DeleteDeviceDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteDeviceDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteDeviceDefinitionResponse(t)
@@ -989,17 +1094,20 @@ end
 
 --- Create a structure of type CreateDeviceDefinitionVersionResponse
 --  
--- @param _Version [__string] Unique Id of a version.
--- @param _CreationTimestamp [__string] Timestamp of when the version was created.
--- @param _Id [__string] Id of the resource container.
--- @param _Arn [__string] Arn of the version.
-function M.CreateDeviceDefinitionVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeviceDefinitionVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [__string] Unique Id of a version.
+-- * CreationTimestamp [__string] Timestamp of when the version was created.
+-- * Id [__string] Id of the resource container.
+-- * Arn [__string] Arn of the version.
+-- @return CreateDeviceDefinitionVersionResponse structure as a key-value pair table
+function M.CreateDeviceDefinitionVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateDeviceDefinitionVersionResponse")
 	local t = { 
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateDeviceDefinitionVersionResponse(t)
 	return t
@@ -1021,16 +1129,19 @@ end
 
 --- Create a structure of type ListLoggerDefinitionVersionsRequest
 --  
--- @param _LoggerDefinitionId [__string] logger definition Id
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
--- Required parameter: LoggerDefinitionId
-function M.ListLoggerDefinitionVersionsRequest(_LoggerDefinitionId, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLoggerDefinitionVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggerDefinitionId [__string] logger definition Id
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- Required key: LoggerDefinitionId
+-- @return ListLoggerDefinitionVersionsRequest structure as a key-value pair table
+function M.ListLoggerDefinitionVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListLoggerDefinitionVersionsRequest")
 	local t = { 
-		["LoggerDefinitionId"] = _LoggerDefinitionId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListLoggerDefinitionVersionsRequest(t)
 	return t
@@ -1055,23 +1166,26 @@ end
 
 --- Create a structure of type DefinitionInformation
 -- Information on the Definition
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.DefinitionInformation(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DefinitionInformation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return DefinitionInformation structure as a key-value pair table
+function M.DefinitionInformation(args)
+	assert(args, "You must provdide an argument table when creating DefinitionInformation")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertDefinitionInformation(t)
 	return t
@@ -1091,13 +1205,16 @@ end
 
 --- Create a structure of type GeneralError
 -- General Error
--- @param _ErrorDetails [ErrorDetails] Error Details
--- @param _Message [__string] Message
-function M.GeneralError(_ErrorDetails, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GeneralError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorDetails [ErrorDetails] Error Details
+-- * Message [__string] Message
+-- @return GeneralError structure as a key-value pair table
+function M.GeneralError(args)
+	assert(args, "You must provdide an argument table when creating GeneralError")
 	local t = { 
-		["ErrorDetails"] = _ErrorDetails,
-		["Message"] = _Message,
+		["ErrorDetails"] = args["ErrorDetails"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertGeneralError(t)
 	return t
@@ -1122,23 +1239,26 @@ end
 
 --- Create a structure of type GetCoreDefinitionResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.GetCoreDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCoreDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return GetCoreDefinitionResponse structure as a key-value pair table
+function M.GetCoreDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetCoreDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetCoreDefinitionResponse(t)
 	return t
@@ -1158,12 +1278,15 @@ end
 
 --- Create a structure of type GetSubscriptionDefinitionRequest
 --  
--- @param _SubscriptionDefinitionId [__string] subscription definition Id
--- Required parameter: SubscriptionDefinitionId
-function M.GetSubscriptionDefinitionRequest(_SubscriptionDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubscriptionDefinitionId [__string] subscription definition Id
+-- Required key: SubscriptionDefinitionId
+-- @return GetSubscriptionDefinitionRequest structure as a key-value pair table
+function M.GetSubscriptionDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSubscriptionDefinitionRequest")
 	local t = { 
-		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
+		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
 	}
 	asserts.AssertGetSubscriptionDefinitionRequest(t)
 	return t
@@ -1181,8 +1304,11 @@ end
 
 --- Create a structure of type UpdateFunctionDefinitionResponse
 --  
-function M.UpdateFunctionDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFunctionDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateFunctionDefinitionResponse structure as a key-value pair table
+function M.UpdateFunctionDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateFunctionDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateFunctionDefinitionResponse(t)
@@ -1204,14 +1330,17 @@ end
 
 --- Create a structure of type UpdateSubscriptionDefinitionRequest
 --  
--- @param _SubscriptionDefinitionId [__string] subscription definition Id
--- @param _Name [__string] name of the definition
--- Required parameter: SubscriptionDefinitionId
-function M.UpdateSubscriptionDefinitionRequest(_SubscriptionDefinitionId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSubscriptionDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubscriptionDefinitionId [__string] subscription definition Id
+-- * Name [__string] name of the definition
+-- Required key: SubscriptionDefinitionId
+-- @return UpdateSubscriptionDefinitionRequest structure as a key-value pair table
+function M.UpdateSubscriptionDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateSubscriptionDefinitionRequest")
 	local t = { 
-		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
-		["Name"] = _Name,
+		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateSubscriptionDefinitionRequest(t)
 	return t
@@ -1235,20 +1364,23 @@ end
 
 --- Create a structure of type CreateDeploymentRequest
 --  
--- @param _DeploymentId [__string] Id of the deployment if you wish to redeploy a previous deployment.
--- @param _DeploymentType [DeploymentType] Type of deployment
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _GroupVersionId [__string] Group Version you wish to deploy.
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.CreateDeploymentRequest(_DeploymentId, _DeploymentType, _AmznClientToken, _GroupVersionId, _GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeploymentId [__string] Id of the deployment if you wish to redeploy a previous deployment.
+-- * DeploymentType [DeploymentType] Type of deployment
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * GroupVersionId [__string] Group Version you wish to deploy.
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return CreateDeploymentRequest structure as a key-value pair table
+function M.CreateDeploymentRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDeploymentRequest")
 	local t = { 
-		["DeploymentId"] = _DeploymentId,
-		["DeploymentType"] = _DeploymentType,
-		["AmznClientToken"] = _AmznClientToken,
-		["GroupVersionId"] = _GroupVersionId,
-		["GroupId"] = _GroupId,
+		["DeploymentId"] = args["DeploymentId"],
+		["DeploymentType"] = args["DeploymentType"],
+		["AmznClientToken"] = args["AmznClientToken"],
+		["GroupVersionId"] = args["GroupVersionId"],
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertCreateDeploymentRequest(t)
 	return t
@@ -1268,13 +1400,16 @@ end
 
 --- Create a structure of type GetConnectivityInfoResponse
 --  
--- @param _ConnectivityInfo [ListOfConnectivityInfo] Connectivity info array
--- @param _Message [__string] Response Text
-function M.GetConnectivityInfoResponse(_ConnectivityInfo, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetConnectivityInfoResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConnectivityInfo [ListOfConnectivityInfo] Connectivity info array
+-- * Message [__string] Response Text
+-- @return GetConnectivityInfoResponse structure as a key-value pair table
+function M.GetConnectivityInfoResponse(args)
+	assert(args, "You must provdide an argument table when creating GetConnectivityInfoResponse")
 	local t = { 
-		["ConnectivityInfo"] = _ConnectivityInfo,
-		["Message"] = _Message,
+		["ConnectivityInfo"] = args["ConnectivityInfo"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertGetConnectivityInfoResponse(t)
 	return t
@@ -1296,16 +1431,19 @@ end
 
 --- Create a structure of type ListCoreDefinitionVersionsRequest
 --  
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _CoreDefinitionId [__string] core definition Id
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
--- Required parameter: CoreDefinitionId
-function M.ListCoreDefinitionVersionsRequest(_NextToken, _CoreDefinitionId, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCoreDefinitionVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * CoreDefinitionId [__string] core definition Id
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- Required key: CoreDefinitionId
+-- @return ListCoreDefinitionVersionsRequest structure as a key-value pair table
+function M.ListCoreDefinitionVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListCoreDefinitionVersionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["CoreDefinitionId"] = _CoreDefinitionId,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["CoreDefinitionId"] = args["CoreDefinitionId"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListCoreDefinitionVersionsRequest(t)
 	return t
@@ -1325,12 +1463,15 @@ end
 
 --- Create a structure of type DeleteDeviceDefinitionRequest
 --  
--- @param _DeviceDefinitionId [__string] device definition Id
--- Required parameter: DeviceDefinitionId
-function M.DeleteDeviceDefinitionRequest(_DeviceDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDeviceDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeviceDefinitionId [__string] device definition Id
+-- Required key: DeviceDefinitionId
+-- @return DeleteDeviceDefinitionRequest structure as a key-value pair table
+function M.DeleteDeviceDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDeviceDefinitionRequest")
 	local t = { 
-		["DeviceDefinitionId"] = _DeviceDefinitionId,
+		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
 	}
 	asserts.AssertDeleteDeviceDefinitionRequest(t)
 	return t
@@ -1348,8 +1489,11 @@ end
 
 --- Create a structure of type UpdateCoreDefinitionResponse
 --  
-function M.UpdateCoreDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateCoreDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateCoreDefinitionResponse structure as a key-value pair table
+function M.UpdateCoreDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateCoreDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateCoreDefinitionResponse(t)
@@ -1368,8 +1512,11 @@ end
 
 --- Create a structure of type UpdateLoggerDefinitionResponse
 --  
-function M.UpdateLoggerDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateLoggerDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateLoggerDefinitionResponse structure as a key-value pair table
+function M.UpdateLoggerDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateLoggerDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateLoggerDefinitionResponse(t)
@@ -1389,11 +1536,14 @@ end
 
 --- Create a structure of type FunctionDefinitionVersion
 -- Information on the function definition version
--- @param _Functions [ListOfFunction] Lambda functions in this function definition version.
-function M.FunctionDefinitionVersion(_Functions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FunctionDefinitionVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Functions [ListOfFunction] Lambda functions in this function definition version.
+-- @return FunctionDefinitionVersion structure as a key-value pair table
+function M.FunctionDefinitionVersion(args)
+	assert(args, "You must provdide an argument table when creating FunctionDefinitionVersion")
 	local t = { 
-		["Functions"] = _Functions,
+		["Functions"] = args["Functions"],
 	}
 	asserts.AssertFunctionDefinitionVersion(t)
 	return t
@@ -1418,23 +1568,26 @@ end
 
 --- Create a structure of type CreateSubscriptionDefinitionResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.CreateSubscriptionDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriptionDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return CreateSubscriptionDefinitionResponse structure as a key-value pair table
+function M.CreateSubscriptionDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateSubscriptionDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateSubscriptionDefinitionResponse(t)
 	return t
@@ -1454,12 +1607,15 @@ end
 
 --- Create a structure of type GetDeviceDefinitionRequest
 --  
--- @param _DeviceDefinitionId [__string] device definition Id
--- Required parameter: DeviceDefinitionId
-function M.GetDeviceDefinitionRequest(_DeviceDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeviceDefinitionId [__string] device definition Id
+-- Required key: DeviceDefinitionId
+-- @return GetDeviceDefinitionRequest structure as a key-value pair table
+function M.GetDeviceDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDeviceDefinitionRequest")
 	local t = { 
-		["DeviceDefinitionId"] = _DeviceDefinitionId,
+		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
 	}
 	asserts.AssertGetDeviceDefinitionRequest(t)
 	return t
@@ -1478,11 +1634,14 @@ end
 
 --- Create a structure of type SubscriptionDefinitionVersion
 -- Information on subscription definition version
--- @param _Subscriptions [ListOfSubscription] Subscriptions in the version.
-function M.SubscriptionDefinitionVersion(_Subscriptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionDefinitionVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subscriptions [ListOfSubscription] Subscriptions in the version.
+-- @return SubscriptionDefinitionVersion structure as a key-value pair table
+function M.SubscriptionDefinitionVersion(args)
+	assert(args, "You must provdide an argument table when creating SubscriptionDefinitionVersion")
 	local t = { 
-		["Subscriptions"] = _Subscriptions,
+		["Subscriptions"] = args["Subscriptions"],
 	}
 	asserts.AssertSubscriptionDefinitionVersion(t)
 	return t
@@ -1501,11 +1660,14 @@ end
 
 --- Create a structure of type CoreDefinitionVersion
 -- Information on core definition version
--- @param _Cores [ListOfCore] Cores in the definition version.
-function M.CoreDefinitionVersion(_Cores, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CoreDefinitionVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cores [ListOfCore] Cores in the definition version.
+-- @return CoreDefinitionVersion structure as a key-value pair table
+function M.CoreDefinitionVersion(args)
+	assert(args, "You must provdide an argument table when creating CoreDefinitionVersion")
 	local t = { 
-		["Cores"] = _Cores,
+		["Cores"] = args["Cores"],
 	}
 	asserts.AssertCoreDefinitionVersion(t)
 	return t
@@ -1526,15 +1688,18 @@ end
 
 --- Create a structure of type GetDeploymentStatusResponse
 --  
--- @param _UpdatedAt [__string] Last time the deployment status was updated.
--- @param _DeploymentStatus [__string] Status of the deployment.
--- @param _ErrorMessage [__string] Error Message
-function M.GetDeploymentStatusResponse(_UpdatedAt, _DeploymentStatus, _ErrorMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentStatusResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UpdatedAt [__string] Last time the deployment status was updated.
+-- * DeploymentStatus [__string] Status of the deployment.
+-- * ErrorMessage [__string] Error Message
+-- @return GetDeploymentStatusResponse structure as a key-value pair table
+function M.GetDeploymentStatusResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDeploymentStatusResponse")
 	local t = { 
-		["UpdatedAt"] = _UpdatedAt,
-		["DeploymentStatus"] = _DeploymentStatus,
-		["ErrorMessage"] = _ErrorMessage,
+		["UpdatedAt"] = args["UpdatedAt"],
+		["DeploymentStatus"] = args["DeploymentStatus"],
+		["ErrorMessage"] = args["ErrorMessage"],
 	}
 	asserts.AssertGetDeploymentStatusResponse(t)
 	return t
@@ -1554,13 +1719,16 @@ end
 
 --- Create a structure of type GetAssociatedRoleResponse
 --  
--- @param _AssociatedAt [__string] Time when the role was associated for the group.
--- @param _RoleArn [__string] Arn of the role that is associated with the group.
-function M.GetAssociatedRoleResponse(_AssociatedAt, _RoleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAssociatedRoleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssociatedAt [__string] Time when the role was associated for the group.
+-- * RoleArn [__string] Arn of the role that is associated with the group.
+-- @return GetAssociatedRoleResponse structure as a key-value pair table
+function M.GetAssociatedRoleResponse(args)
+	assert(args, "You must provdide an argument table when creating GetAssociatedRoleResponse")
 	local t = { 
-		["AssociatedAt"] = _AssociatedAt,
-		["RoleArn"] = _RoleArn,
+		["AssociatedAt"] = args["AssociatedAt"],
+		["RoleArn"] = args["RoleArn"],
 	}
 	asserts.AssertGetAssociatedRoleResponse(t)
 	return t
@@ -1580,12 +1748,15 @@ end
 
 --- Create a structure of type DeleteGroupRequest
 --  
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.DeleteGroupRequest(_GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return DeleteGroupRequest structure as a key-value pair table
+function M.DeleteGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteGroupRequest")
 	local t = { 
-		["GroupId"] = _GroupId,
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertDeleteGroupRequest(t)
 	return t
@@ -1603,8 +1774,11 @@ end
 
 --- Create a structure of type DeleteSubscriptionDefinitionResponse
 --  
-function M.DeleteSubscriptionDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubscriptionDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteSubscriptionDefinitionResponse structure as a key-value pair table
+function M.DeleteSubscriptionDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteSubscriptionDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteSubscriptionDefinitionResponse(t)
@@ -1627,16 +1801,19 @@ end
 
 --- Create a structure of type ListDeploymentsRequest
 --  
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
--- Required parameter: GroupId
-function M.ListDeploymentsRequest(_NextToken, _GroupId, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- Required key: GroupId
+-- @return ListDeploymentsRequest structure as a key-value pair table
+function M.ListDeploymentsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDeploymentsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["GroupId"] = _GroupId,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["GroupId"] = args["GroupId"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListDeploymentsRequest(t)
 	return t
@@ -1656,13 +1833,16 @@ end
 
 --- Create a structure of type ListGroupsResponse
 --  
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param _Groups [ListOfGroupInformation] Groups
-function M.ListGroupsResponse(_NextToken, _Groups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Groups [ListOfGroupInformation] Groups
+-- @return ListGroupsResponse structure as a key-value pair table
+function M.ListGroupsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListGroupsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Groups"] = _Groups,
+		["NextToken"] = args["NextToken"],
+		["Groups"] = args["Groups"],
 	}
 	asserts.AssertListGroupsResponse(t)
 	return t
@@ -1683,14 +1863,17 @@ end
 
 --- Create a structure of type UpdateGroupRequest
 --  
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- @param _Name [__string] name of the definition
--- Required parameter: GroupId
-function M.UpdateGroupRequest(_GroupId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * Name [__string] name of the definition
+-- Required key: GroupId
+-- @return UpdateGroupRequest structure as a key-value pair table
+function M.UpdateGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateGroupRequest")
 	local t = { 
-		["GroupId"] = _GroupId,
-		["Name"] = _Name,
+		["GroupId"] = args["GroupId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateGroupRequest(t)
 	return t
@@ -1712,17 +1895,20 @@ end
 
 --- Create a structure of type ConnectivityInfo
 -- Connectivity Info
--- @param _Metadata [__string] Metadata for this endpoint.
--- @param _PortNumber [__integer] Port of the GGC. Usually 8883.
--- @param _HostAddress [__string] Endpoint for the GGC. Can be an IP address or DNS.
--- @param _Id [__string] Element Id for this entry in the list.
-function M.ConnectivityInfo(_Metadata, _PortNumber, _HostAddress, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConnectivityInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Metadata [__string] Metadata for this endpoint.
+-- * PortNumber [__integer] Port of the GGC. Usually 8883.
+-- * HostAddress [__string] Endpoint for the GGC. Can be an IP address or DNS.
+-- * Id [__string] Element Id for this entry in the list.
+-- @return ConnectivityInfo structure as a key-value pair table
+function M.ConnectivityInfo(args)
+	assert(args, "You must provdide an argument table when creating ConnectivityInfo")
 	local t = { 
-		["Metadata"] = _Metadata,
-		["PortNumber"] = _PortNumber,
-		["HostAddress"] = _HostAddress,
-		["Id"] = _Id,
+		["Metadata"] = args["Metadata"],
+		["PortNumber"] = args["PortNumber"],
+		["HostAddress"] = args["HostAddress"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertConnectivityInfo(t)
 	return t
@@ -1742,13 +1928,16 @@ end
 
 --- Create a structure of type ErrorDetail
 -- ErrorDetail
--- @param _DetailedErrorCode [__string] Detailed Error Code
--- @param _DetailedErrorMessage [__string] Detailed Error Message
-function M.ErrorDetail(_DetailedErrorCode, _DetailedErrorMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ErrorDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DetailedErrorCode [__string] Detailed Error Code
+-- * DetailedErrorMessage [__string] Detailed Error Message
+-- @return ErrorDetail structure as a key-value pair table
+function M.ErrorDetail(args)
+	assert(args, "You must provdide an argument table when creating ErrorDetail")
 	local t = { 
-		["DetailedErrorCode"] = _DetailedErrorCode,
-		["DetailedErrorMessage"] = _DetailedErrorMessage,
+		["DetailedErrorCode"] = args["DetailedErrorCode"],
+		["DetailedErrorMessage"] = args["DetailedErrorMessage"],
 	}
 	asserts.AssertErrorDetail(t)
 	return t
@@ -1768,12 +1957,15 @@ end
 
 --- Create a structure of type DeleteCoreDefinitionRequest
 --  
--- @param _CoreDefinitionId [__string] core definition Id
--- Required parameter: CoreDefinitionId
-function M.DeleteCoreDefinitionRequest(_CoreDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCoreDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CoreDefinitionId [__string] core definition Id
+-- Required key: CoreDefinitionId
+-- @return DeleteCoreDefinitionRequest structure as a key-value pair table
+function M.DeleteCoreDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteCoreDefinitionRequest")
 	local t = { 
-		["CoreDefinitionId"] = _CoreDefinitionId,
+		["CoreDefinitionId"] = args["CoreDefinitionId"],
 	}
 	asserts.AssertDeleteCoreDefinitionRequest(t)
 	return t
@@ -1796,19 +1988,22 @@ end
 
 --- Create a structure of type GetDeviceDefinitionVersionResponse
 --  
--- @param _Definition [DeviceDefinitionVersion] Device definition version
--- @param _Version [__string] Version of the device definition version.
--- @param _CreationTimestamp [__string] Timestamp of when the device definition version was created.
--- @param _Id [__string] Id of the device definition the version belongs to.
--- @param _Arn [__string] Arn of the device definition version.
-function M.GetDeviceDefinitionVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceDefinitionVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definition [DeviceDefinitionVersion] Device definition version
+-- * Version [__string] Version of the device definition version.
+-- * CreationTimestamp [__string] Timestamp of when the device definition version was created.
+-- * Id [__string] Id of the device definition the version belongs to.
+-- * Arn [__string] Arn of the device definition version.
+-- @return GetDeviceDefinitionVersionResponse structure as a key-value pair table
+function M.GetDeviceDefinitionVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDeviceDefinitionVersionResponse")
 	local t = { 
-		["Definition"] = _Definition,
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Definition"] = args["Definition"],
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetDeviceDefinitionVersionResponse(t)
 	return t
@@ -1833,23 +2028,26 @@ end
 
 --- Create a structure of type GroupInformation
 -- Information of a group
--- @param _LatestVersionArn [__string] Latest version arn of the group.
--- @param _Name [__string] Name of a group.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the group.
--- @param _LatestVersion [__string] Last version of the group.
--- @param _CreationTimestamp [__string] Timestamp of when the group was created.
--- @param _Id [__string] Id of a group.
--- @param _Arn [__string] Arn of a group.
-function M.GroupInformation(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GroupInformation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the group.
+-- * Name [__string] Name of a group.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the group.
+-- * LatestVersion [__string] Last version of the group.
+-- * CreationTimestamp [__string] Timestamp of when the group was created.
+-- * Id [__string] Id of a group.
+-- * Arn [__string] Arn of a group.
+-- @return GroupInformation structure as a key-value pair table
+function M.GroupInformation(args)
+	assert(args, "You must provdide an argument table when creating GroupInformation")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGroupInformation(t)
 	return t
@@ -1870,14 +2068,17 @@ end
 
 --- Create a structure of type CreateGroupCertificateAuthorityRequest
 --  
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.CreateGroupCertificateAuthorityRequest(_AmznClientToken, _GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupCertificateAuthorityRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return CreateGroupCertificateAuthorityRequest structure as a key-value pair table
+function M.CreateGroupCertificateAuthorityRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateGroupCertificateAuthorityRequest")
 	local t = { 
-		["AmznClientToken"] = _AmznClientToken,
-		["GroupId"] = _GroupId,
+		["AmznClientToken"] = args["AmznClientToken"],
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertCreateGroupCertificateAuthorityRequest(t)
 	return t
@@ -1899,17 +2100,20 @@ end
 
 --- Create a structure of type Subscription
 -- Information on subscription
--- @param _Source [__string] Source of the subscription. Can be a thing arn, lambda arn or word 'cloud'
--- @param _Target [__string] Where the message is sent to. Can be a thing arn, lambda arn or word 'cloud'.
--- @param _Id [__string] Element Id for this entry in the list.
--- @param _Subject [__string] Subject of the message.
-function M.Subscription(_Source, _Target, _Id, _Subject, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Source [__string] Source of the subscription. Can be a thing arn, lambda arn or word 'cloud'
+-- * Target [__string] Where the message is sent to. Can be a thing arn, lambda arn or word 'cloud'.
+-- * Id [__string] Element Id for this entry in the list.
+-- * Subject [__string] Subject of the message.
+-- @return Subscription structure as a key-value pair table
+function M.Subscription(args)
+	assert(args, "You must provdide an argument table when creating Subscription")
 	local t = { 
-		["Source"] = _Source,
-		["Target"] = _Target,
-		["Id"] = _Id,
-		["Subject"] = _Subject,
+		["Source"] = args["Source"],
+		["Target"] = args["Target"],
+		["Id"] = args["Id"],
+		["Subject"] = args["Subject"],
 	}
 	asserts.AssertSubscription(t)
 	return t
@@ -1932,19 +2136,22 @@ end
 
 --- Create a structure of type GetSubscriptionDefinitionVersionResponse
 --  
--- @param _Definition [SubscriptionDefinitionVersion] Information on the definition
--- @param _Version [__string] Version of the subscription definition version.
--- @param _CreationTimestamp [__string] Timestamp of when the subscription definition version was created.
--- @param _Id [__string] Id of the subscription definition the version belongs to.
--- @param _Arn [__string] Arn of the subscription definition version.
-function M.GetSubscriptionDefinitionVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionDefinitionVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definition [SubscriptionDefinitionVersion] Information on the definition
+-- * Version [__string] Version of the subscription definition version.
+-- * CreationTimestamp [__string] Timestamp of when the subscription definition version was created.
+-- * Id [__string] Id of the subscription definition the version belongs to.
+-- * Arn [__string] Arn of the subscription definition version.
+-- @return GetSubscriptionDefinitionVersionResponse structure as a key-value pair table
+function M.GetSubscriptionDefinitionVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSubscriptionDefinitionVersionResponse")
 	local t = { 
-		["Definition"] = _Definition,
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Definition"] = args["Definition"],
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetSubscriptionDefinitionVersionResponse(t)
 	return t
@@ -1966,15 +2173,18 @@ end
 
 --- Create a structure of type GetCoreDefinitionVersionRequest
 --  
--- @param _CoreDefinitionId [__string] core definition Id
--- @param _CoreDefinitionVersionId [__string] core definition version Id
--- Required parameter: CoreDefinitionId
--- Required parameter: CoreDefinitionVersionId
-function M.GetCoreDefinitionVersionRequest(_CoreDefinitionId, _CoreDefinitionVersionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCoreDefinitionVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CoreDefinitionId [__string] core definition Id
+-- * CoreDefinitionVersionId [__string] core definition version Id
+-- Required key: CoreDefinitionId
+-- Required key: CoreDefinitionVersionId
+-- @return GetCoreDefinitionVersionRequest structure as a key-value pair table
+function M.GetCoreDefinitionVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetCoreDefinitionVersionRequest")
 	local t = { 
-		["CoreDefinitionId"] = _CoreDefinitionId,
-		["CoreDefinitionVersionId"] = _CoreDefinitionVersionId,
+		["CoreDefinitionId"] = args["CoreDefinitionId"],
+		["CoreDefinitionVersionId"] = args["CoreDefinitionVersionId"],
 	}
 	asserts.AssertGetCoreDefinitionVersionRequest(t)
 	return t
@@ -1992,8 +2202,11 @@ end
 
 --- Create a structure of type DisassociateServiceRoleFromAccountRequest
 --  
-function M.DisassociateServiceRoleFromAccountRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateServiceRoleFromAccountRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisassociateServiceRoleFromAccountRequest structure as a key-value pair table
+function M.DisassociateServiceRoleFromAccountRequest(args)
+	assert(args, "You must provdide an argument table when creating DisassociateServiceRoleFromAccountRequest")
 	local t = { 
 	}
 	asserts.AssertDisassociateServiceRoleFromAccountRequest(t)
@@ -2016,15 +2229,18 @@ end
 
 --- Create a structure of type GetSubscriptionDefinitionVersionRequest
 --  
--- @param _SubscriptionDefinitionVersionId [__string] subscription definition version Id
--- @param _SubscriptionDefinitionId [__string] subscription definition Id
--- Required parameter: SubscriptionDefinitionId
--- Required parameter: SubscriptionDefinitionVersionId
-function M.GetSubscriptionDefinitionVersionRequest(_SubscriptionDefinitionVersionId, _SubscriptionDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionDefinitionVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubscriptionDefinitionVersionId [__string] subscription definition version Id
+-- * SubscriptionDefinitionId [__string] subscription definition Id
+-- Required key: SubscriptionDefinitionId
+-- Required key: SubscriptionDefinitionVersionId
+-- @return GetSubscriptionDefinitionVersionRequest structure as a key-value pair table
+function M.GetSubscriptionDefinitionVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSubscriptionDefinitionVersionRequest")
 	local t = { 
-		["SubscriptionDefinitionVersionId"] = _SubscriptionDefinitionVersionId,
-		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
+		["SubscriptionDefinitionVersionId"] = args["SubscriptionDefinitionVersionId"],
+		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
 	}
 	asserts.AssertGetSubscriptionDefinitionVersionRequest(t)
 	return t
@@ -2044,13 +2260,16 @@ end
 
 --- Create a structure of type ListFunctionDefinitionVersionsResponse
 --  
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param _Versions [ListOfVersionInformation] Versions
-function M.ListFunctionDefinitionVersionsResponse(_NextToken, _Versions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionDefinitionVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Versions [ListOfVersionInformation] Versions
+-- @return ListFunctionDefinitionVersionsResponse structure as a key-value pair table
+function M.ListFunctionDefinitionVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListFunctionDefinitionVersionsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Versions"] = _Versions,
+		["NextToken"] = args["NextToken"],
+		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListFunctionDefinitionVersionsResponse(t)
 	return t
@@ -2070,13 +2289,16 @@ end
 
 --- Create a structure of type CreateDeploymentResponse
 --  
--- @param _DeploymentId [__string] Id of the deployment.
--- @param _DeploymentArn [__string] Arn of the deployment.
-function M.CreateDeploymentResponse(_DeploymentId, _DeploymentArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeploymentId [__string] Id of the deployment.
+-- * DeploymentArn [__string] Arn of the deployment.
+-- @return CreateDeploymentResponse structure as a key-value pair table
+function M.CreateDeploymentResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateDeploymentResponse")
 	local t = { 
-		["DeploymentId"] = _DeploymentId,
-		["DeploymentArn"] = _DeploymentArn,
+		["DeploymentId"] = args["DeploymentId"],
+		["DeploymentArn"] = args["DeploymentArn"],
 	}
 	asserts.AssertCreateDeploymentResponse(t)
 	return t
@@ -2097,14 +2319,17 @@ end
 
 --- Create a structure of type UpdateFunctionDefinitionRequest
 --  
--- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
--- @param _Name [__string] name of the definition
--- Required parameter: FunctionDefinitionId
-function M.UpdateFunctionDefinitionRequest(_FunctionDefinitionId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateFunctionDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- * Name [__string] name of the definition
+-- Required key: FunctionDefinitionId
+-- @return UpdateFunctionDefinitionRequest structure as a key-value pair table
+function M.UpdateFunctionDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateFunctionDefinitionRequest")
 	local t = { 
-		["FunctionDefinitionId"] = _FunctionDefinitionId,
-		["Name"] = _Name,
+		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateFunctionDefinitionRequest(t)
 	return t
@@ -2126,17 +2351,20 @@ end
 
 --- Create a structure of type CreateLoggerDefinitionVersionResponse
 --  
--- @param _Version [__string] Unique Id of a version.
--- @param _CreationTimestamp [__string] Timestamp of when the version was created.
--- @param _Id [__string] Id of the resource container.
--- @param _Arn [__string] Arn of the version.
-function M.CreateLoggerDefinitionVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoggerDefinitionVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [__string] Unique Id of a version.
+-- * CreationTimestamp [__string] Timestamp of when the version was created.
+-- * Id [__string] Id of the resource container.
+-- * Arn [__string] Arn of the version.
+-- @return CreateLoggerDefinitionVersionResponse structure as a key-value pair table
+function M.CreateLoggerDefinitionVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateLoggerDefinitionVersionResponse")
 	local t = { 
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateLoggerDefinitionVersionResponse(t)
 	return t
@@ -2154,8 +2382,11 @@ end
 
 --- Create a structure of type DeleteCoreDefinitionResponse
 --  
-function M.DeleteCoreDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCoreDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteCoreDefinitionResponse structure as a key-value pair table
+function M.DeleteCoreDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteCoreDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteCoreDefinitionResponse(t)
@@ -2178,15 +2409,18 @@ end
 
 --- Create a structure of type GetDeviceDefinitionVersionRequest
 --  
--- @param _DeviceDefinitionId [__string] device definition Id
--- @param _DeviceDefinitionVersionId [__string] device definition version Id
--- Required parameter: DeviceDefinitionVersionId
--- Required parameter: DeviceDefinitionId
-function M.GetDeviceDefinitionVersionRequest(_DeviceDefinitionId, _DeviceDefinitionVersionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceDefinitionVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeviceDefinitionId [__string] device definition Id
+-- * DeviceDefinitionVersionId [__string] device definition version Id
+-- Required key: DeviceDefinitionVersionId
+-- Required key: DeviceDefinitionId
+-- @return GetDeviceDefinitionVersionRequest structure as a key-value pair table
+function M.GetDeviceDefinitionVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDeviceDefinitionVersionRequest")
 	local t = { 
-		["DeviceDefinitionId"] = _DeviceDefinitionId,
-		["DeviceDefinitionVersionId"] = _DeviceDefinitionVersionId,
+		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
+		["DeviceDefinitionVersionId"] = args["DeviceDefinitionVersionId"],
 	}
 	asserts.AssertGetDeviceDefinitionVersionRequest(t)
 	return t
@@ -2206,13 +2440,16 @@ end
 
 --- Create a structure of type ListDefinitionsResponse
 -- List of definition response
--- @param _Definitions [ListOfDefinitionInformation] Definitions
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListDefinitionsResponse(_Definitions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDefinitionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definitions [ListOfDefinitionInformation] Definitions
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @return ListDefinitionsResponse structure as a key-value pair table
+function M.ListDefinitionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListDefinitionsResponse")
 	local t = { 
-		["Definitions"] = _Definitions,
-		["NextToken"] = _NextToken,
+		["Definitions"] = args["Definitions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListDefinitionsResponse(t)
 	return t
@@ -2237,23 +2474,26 @@ end
 
 --- Create a structure of type CreateCoreDefinitionResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.CreateCoreDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCoreDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return CreateCoreDefinitionResponse structure as a key-value pair table
+function M.CreateCoreDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateCoreDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateCoreDefinitionResponse(t)
 	return t
@@ -2274,14 +2514,17 @@ end
 
 --- Create a structure of type UpdateLoggerDefinitionRequest
 --  
--- @param _LoggerDefinitionId [__string] logger definition Id
--- @param _Name [__string] name of the definition
--- Required parameter: LoggerDefinitionId
-function M.UpdateLoggerDefinitionRequest(_LoggerDefinitionId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateLoggerDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggerDefinitionId [__string] logger definition Id
+-- * Name [__string] name of the definition
+-- Required key: LoggerDefinitionId
+-- @return UpdateLoggerDefinitionRequest structure as a key-value pair table
+function M.UpdateLoggerDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateLoggerDefinitionRequest")
 	local t = { 
-		["LoggerDefinitionId"] = _LoggerDefinitionId,
-		["Name"] = _Name,
+		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateLoggerDefinitionRequest(t)
 	return t
@@ -2306,23 +2549,26 @@ end
 
 --- Create a structure of type GetDeviceDefinitionResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.GetDeviceDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeviceDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return GetDeviceDefinitionResponse structure as a key-value pair table
+function M.GetDeviceDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDeviceDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetDeviceDefinitionResponse(t)
 	return t
@@ -2344,15 +2590,18 @@ end
 
 --- Create a structure of type GetFunctionDefinitionVersionRequest
 --  
--- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
--- @param _FunctionDefinitionVersionId [__string] Function definition version Id
--- Required parameter: FunctionDefinitionId
--- Required parameter: FunctionDefinitionVersionId
-function M.GetFunctionDefinitionVersionRequest(_FunctionDefinitionId, _FunctionDefinitionVersionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionDefinitionVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- * FunctionDefinitionVersionId [__string] Function definition version Id
+-- Required key: FunctionDefinitionId
+-- Required key: FunctionDefinitionVersionId
+-- @return GetFunctionDefinitionVersionRequest structure as a key-value pair table
+function M.GetFunctionDefinitionVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetFunctionDefinitionVersionRequest")
 	local t = { 
-		["FunctionDefinitionId"] = _FunctionDefinitionId,
-		["FunctionDefinitionVersionId"] = _FunctionDefinitionVersionId,
+		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
+		["FunctionDefinitionVersionId"] = args["FunctionDefinitionVersionId"],
 	}
 	asserts.AssertGetFunctionDefinitionVersionRequest(t)
 	return t
@@ -2372,13 +2621,16 @@ end
 
 --- Create a structure of type ListSubscriptionDefinitionsResponse
 --  
--- @param _Definitions [ListOfDefinitionInformation] Definitions
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListSubscriptionDefinitionsResponse(_Definitions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionDefinitionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definitions [ListOfDefinitionInformation] Definitions
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @return ListSubscriptionDefinitionsResponse structure as a key-value pair table
+function M.ListSubscriptionDefinitionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListSubscriptionDefinitionsResponse")
 	local t = { 
-		["Definitions"] = _Definitions,
-		["NextToken"] = _NextToken,
+		["Definitions"] = args["Definitions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListSubscriptionDefinitionsResponse(t)
 	return t
@@ -2398,12 +2650,15 @@ end
 
 --- Create a structure of type GetConnectivityInfoRequest
 --  
--- @param _ThingName [__string] Thing Name
--- Required parameter: ThingName
-function M.GetConnectivityInfoRequest(_ThingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetConnectivityInfoRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ThingName [__string] Thing Name
+-- Required key: ThingName
+-- @return GetConnectivityInfoRequest structure as a key-value pair table
+function M.GetConnectivityInfoRequest(args)
+	assert(args, "You must provdide an argument table when creating GetConnectivityInfoRequest")
 	local t = { 
-		["ThingName"] = _ThingName,
+		["ThingName"] = args["ThingName"],
 	}
 	asserts.AssertGetConnectivityInfoRequest(t)
 	return t
@@ -2427,21 +2682,24 @@ end
 
 --- Create a structure of type FunctionConfiguration
 -- Configuration of the function
--- @param _ExecArgs [__string] Execution Arguments
--- @param _Executable [__string] Executable
--- @param _MemorySize [__integer] The memory size, in KB, you configured for the function.
--- @param _Environment [FunctionConfigurationEnvironment] Environment of the function configuration
--- @param _Pinned [__boolean] Whether the function is pinned or not. Pinned means the function is long-lived and starts when the core starts.
--- @param _Timeout [__integer] The function execution time at which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
-function M.FunctionConfiguration(_ExecArgs, _Executable, _MemorySize, _Environment, _Pinned, _Timeout, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FunctionConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ExecArgs [__string] Execution Arguments
+-- * Executable [__string] Executable
+-- * MemorySize [__integer] The memory size, in KB, you configured for the function.
+-- * Environment [FunctionConfigurationEnvironment] Environment of the function configuration
+-- * Pinned [__boolean] Whether the function is pinned or not. Pinned means the function is long-lived and starts when the core starts.
+-- * Timeout [__integer] The function execution time at which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
+-- @return FunctionConfiguration structure as a key-value pair table
+function M.FunctionConfiguration(args)
+	assert(args, "You must provdide an argument table when creating FunctionConfiguration")
 	local t = { 
-		["ExecArgs"] = _ExecArgs,
-		["Executable"] = _Executable,
-		["MemorySize"] = _MemorySize,
-		["Environment"] = _Environment,
-		["Pinned"] = _Pinned,
-		["Timeout"] = _Timeout,
+		["ExecArgs"] = args["ExecArgs"],
+		["Executable"] = args["Executable"],
+		["MemorySize"] = args["MemorySize"],
+		["Environment"] = args["Environment"],
+		["Pinned"] = args["Pinned"],
+		["Timeout"] = args["Timeout"],
 	}
 	asserts.AssertFunctionConfiguration(t)
 	return t
@@ -2461,13 +2719,16 @@ end
 
 --- Create a structure of type ListFunctionDefinitionsResponse
 --  
--- @param _Definitions [ListOfDefinitionInformation] Definitions
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListFunctionDefinitionsResponse(_Definitions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionDefinitionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definitions [ListOfDefinitionInformation] Definitions
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @return ListFunctionDefinitionsResponse structure as a key-value pair table
+function M.ListFunctionDefinitionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListFunctionDefinitionsResponse")
 	local t = { 
-		["Definitions"] = _Definitions,
-		["NextToken"] = _NextToken,
+		["Definitions"] = args["Definitions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListFunctionDefinitionsResponse(t)
 	return t
@@ -2485,8 +2746,11 @@ end
 
 --- Create a structure of type Empty
 -- Empty
-function M.Empty(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Empty")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return Empty structure as a key-value pair table
+function M.Empty(args)
+	assert(args, "You must provdide an argument table when creating Empty")
 	local t = { 
 	}
 	asserts.AssertEmpty(t)
@@ -2509,17 +2773,20 @@ end
 
 --- Create a structure of type Core
 -- Information on the core
--- @param _CertificateArn [__string] Certificate arn of the core.
--- @param _ThingArn [__string] Thing arn of the core.
--- @param _SyncShadow [__boolean] If true, the local shadow value automatically syncs with the cloud's shadow state.
--- @param _Id [__string] Element Id for this entry in the list.
-function M.Core(_CertificateArn, _ThingArn, _SyncShadow, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Core")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateArn [__string] Certificate arn of the core.
+-- * ThingArn [__string] Thing arn of the core.
+-- * SyncShadow [__boolean] If true, the local shadow value automatically syncs with the cloud's shadow state.
+-- * Id [__string] Element Id for this entry in the list.
+-- @return Core structure as a key-value pair table
+function M.Core(args)
+	assert(args, "You must provdide an argument table when creating Core")
 	local t = { 
-		["CertificateArn"] = _CertificateArn,
-		["ThingArn"] = _ThingArn,
-		["SyncShadow"] = _SyncShadow,
-		["Id"] = _Id,
+		["CertificateArn"] = args["CertificateArn"],
+		["ThingArn"] = args["ThingArn"],
+		["SyncShadow"] = args["SyncShadow"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertCore(t)
 	return t
@@ -2539,12 +2806,15 @@ end
 
 --- Create a structure of type GetFunctionDefinitionRequest
 --  
--- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
--- Required parameter: FunctionDefinitionId
-function M.GetFunctionDefinitionRequest(_FunctionDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- Required key: FunctionDefinitionId
+-- @return GetFunctionDefinitionRequest structure as a key-value pair table
+function M.GetFunctionDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetFunctionDefinitionRequest")
 	local t = { 
-		["FunctionDefinitionId"] = _FunctionDefinitionId,
+		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
 	}
 	asserts.AssertGetFunctionDefinitionRequest(t)
 	return t
@@ -2566,17 +2836,20 @@ end
 
 --- Create a structure of type CreateCoreDefinitionVersionResponse
 --  
--- @param _Version [__string] Unique Id of a version.
--- @param _CreationTimestamp [__string] Timestamp of when the version was created.
--- @param _Id [__string] Id of the resource container.
--- @param _Arn [__string] Arn of the version.
-function M.CreateCoreDefinitionVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCoreDefinitionVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [__string] Unique Id of a version.
+-- * CreationTimestamp [__string] Timestamp of when the version was created.
+-- * Id [__string] Id of the resource container.
+-- * Arn [__string] Arn of the version.
+-- @return CreateCoreDefinitionVersionResponse structure as a key-value pair table
+function M.CreateCoreDefinitionVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateCoreDefinitionVersionResponse")
 	local t = { 
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateCoreDefinitionVersionResponse(t)
 	return t
@@ -2597,15 +2870,18 @@ end
 
 --- Create a structure of type UpdateGroupCertificateConfigurationResponse
 --  
--- @param _CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- @param _GroupId [__string] Id of the group the certificate configuration belongs to.
--- @param _CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
-function M.UpdateGroupCertificateConfigurationResponse(_CertificateExpiryInMilliseconds, _GroupId, _CertificateAuthorityExpiryInMilliseconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupCertificateConfigurationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
+-- * GroupId [__string] Id of the group the certificate configuration belongs to.
+-- * CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
+-- @return UpdateGroupCertificateConfigurationResponse structure as a key-value pair table
+function M.UpdateGroupCertificateConfigurationResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateGroupCertificateConfigurationResponse")
 	local t = { 
-		["CertificateExpiryInMilliseconds"] = _CertificateExpiryInMilliseconds,
-		["GroupId"] = _GroupId,
-		["CertificateAuthorityExpiryInMilliseconds"] = _CertificateAuthorityExpiryInMilliseconds,
+		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
+		["GroupId"] = args["GroupId"],
+		["CertificateAuthorityExpiryInMilliseconds"] = args["CertificateAuthorityExpiryInMilliseconds"],
 	}
 	asserts.AssertUpdateGroupCertificateConfigurationResponse(t)
 	return t
@@ -2630,23 +2906,26 @@ end
 
 --- Create a structure of type GetGroupResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.GetGroupResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return GetGroupResponse structure as a key-value pair table
+function M.GetGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating GetGroupResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetGroupResponse(t)
 	return t
@@ -2668,15 +2947,18 @@ end
 
 --- Create a structure of type GetLoggerDefinitionVersionRequest
 --  
--- @param _LoggerDefinitionId [__string] logger definition Id
--- @param _LoggerDefinitionVersionId [__string] logger definition version Id
--- Required parameter: LoggerDefinitionVersionId
--- Required parameter: LoggerDefinitionId
-function M.GetLoggerDefinitionVersionRequest(_LoggerDefinitionId, _LoggerDefinitionVersionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggerDefinitionVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggerDefinitionId [__string] logger definition Id
+-- * LoggerDefinitionVersionId [__string] logger definition version Id
+-- Required key: LoggerDefinitionVersionId
+-- Required key: LoggerDefinitionId
+-- @return GetLoggerDefinitionVersionRequest structure as a key-value pair table
+function M.GetLoggerDefinitionVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetLoggerDefinitionVersionRequest")
 	local t = { 
-		["LoggerDefinitionId"] = _LoggerDefinitionId,
-		["LoggerDefinitionVersionId"] = _LoggerDefinitionVersionId,
+		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
+		["LoggerDefinitionVersionId"] = args["LoggerDefinitionVersionId"],
 	}
 	asserts.AssertGetLoggerDefinitionVersionRequest(t)
 	return t
@@ -2696,13 +2978,16 @@ end
 
 --- Create a structure of type ListLoggerDefinitionsRequest
 --  
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListLoggerDefinitionsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLoggerDefinitionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @return ListLoggerDefinitionsRequest structure as a key-value pair table
+function M.ListLoggerDefinitionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListLoggerDefinitionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListLoggerDefinitionsRequest(t)
 	return t
@@ -2724,17 +3009,20 @@ end
 
 --- Create a structure of type Device
 -- Information on a Device
--- @param _CertificateArn [__string] Certificate arn of the device.
--- @param _ThingArn [__string] Thing arn of the device.
--- @param _SyncShadow [__boolean] If true, the local shadow value automatically syncs with the cloud's shadow state.
--- @param _Id [__string] Element Id for this entry in the list.
-function M.Device(_CertificateArn, _ThingArn, _SyncShadow, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Device")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateArn [__string] Certificate arn of the device.
+-- * ThingArn [__string] Thing arn of the device.
+-- * SyncShadow [__boolean] If true, the local shadow value automatically syncs with the cloud's shadow state.
+-- * Id [__string] Element Id for this entry in the list.
+-- @return Device structure as a key-value pair table
+function M.Device(args)
+	assert(args, "You must provdide an argument table when creating Device")
 	local t = { 
-		["CertificateArn"] = _CertificateArn,
-		["ThingArn"] = _ThingArn,
-		["SyncShadow"] = _SyncShadow,
-		["Id"] = _Id,
+		["CertificateArn"] = args["CertificateArn"],
+		["ThingArn"] = args["ThingArn"],
+		["SyncShadow"] = args["SyncShadow"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDevice(t)
 	return t
@@ -2759,23 +3047,26 @@ end
 
 --- Create a structure of type GetFunctionDefinitionResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.GetFunctionDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return GetFunctionDefinitionResponse structure as a key-value pair table
+function M.GetFunctionDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetFunctionDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetFunctionDefinitionResponse(t)
 	return t
@@ -2797,15 +3088,18 @@ end
 
 --- Create a structure of type GetGroupCertificateAuthorityRequest
 --  
--- @param _CertificateAuthorityId [__string] certificate authority Id
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: CertificateAuthorityId
--- Required parameter: GroupId
-function M.GetGroupCertificateAuthorityRequest(_CertificateAuthorityId, _GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupCertificateAuthorityRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateAuthorityId [__string] certificate authority Id
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: CertificateAuthorityId
+-- Required key: GroupId
+-- @return GetGroupCertificateAuthorityRequest structure as a key-value pair table
+function M.GetGroupCertificateAuthorityRequest(args)
+	assert(args, "You must provdide an argument table when creating GetGroupCertificateAuthorityRequest")
 	local t = { 
-		["CertificateAuthorityId"] = _CertificateAuthorityId,
-		["GroupId"] = _GroupId,
+		["CertificateAuthorityId"] = args["CertificateAuthorityId"],
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertGetGroupCertificateAuthorityRequest(t)
 	return t
@@ -2825,13 +3119,16 @@ end
 
 --- Create a structure of type ListSubscriptionDefinitionVersionsResponse
 --  
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param _Versions [ListOfVersionInformation] Versions
-function M.ListSubscriptionDefinitionVersionsResponse(_NextToken, _Versions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionDefinitionVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Versions [ListOfVersionInformation] Versions
+-- @return ListSubscriptionDefinitionVersionsResponse structure as a key-value pair table
+function M.ListSubscriptionDefinitionVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListSubscriptionDefinitionVersionsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Versions"] = _Versions,
+		["NextToken"] = args["NextToken"],
+		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListSubscriptionDefinitionVersionsResponse(t)
 	return t
@@ -2852,14 +3149,17 @@ end
 
 --- Create a structure of type UpdateCoreDefinitionRequest
 --  
--- @param _CoreDefinitionId [__string] core definition Id
--- @param _Name [__string] name of the definition
--- Required parameter: CoreDefinitionId
-function M.UpdateCoreDefinitionRequest(_CoreDefinitionId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateCoreDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CoreDefinitionId [__string] core definition Id
+-- * Name [__string] name of the definition
+-- Required key: CoreDefinitionId
+-- @return UpdateCoreDefinitionRequest structure as a key-value pair table
+function M.UpdateCoreDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateCoreDefinitionRequest")
 	local t = { 
-		["CoreDefinitionId"] = _CoreDefinitionId,
-		["Name"] = _Name,
+		["CoreDefinitionId"] = args["CoreDefinitionId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateCoreDefinitionRequest(t)
 	return t
@@ -2882,19 +3182,22 @@ end
 
 --- Create a structure of type GetCoreDefinitionVersionResponse
 --  
--- @param _Definition [CoreDefinitionVersion] Information on definition
--- @param _Version [__string] Version of the core definition version.
--- @param _CreationTimestamp [__string] Timestamp of when the core definition version was created.
--- @param _Id [__string] Id of the core definition the version belongs to.
--- @param _Arn [__string] Arn of the core definition version.
-function M.GetCoreDefinitionVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCoreDefinitionVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definition [CoreDefinitionVersion] Information on definition
+-- * Version [__string] Version of the core definition version.
+-- * CreationTimestamp [__string] Timestamp of when the core definition version was created.
+-- * Id [__string] Id of the core definition the version belongs to.
+-- * Arn [__string] Arn of the core definition version.
+-- @return GetCoreDefinitionVersionResponse structure as a key-value pair table
+function M.GetCoreDefinitionVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetCoreDefinitionVersionResponse")
 	local t = { 
-		["Definition"] = _Definition,
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Definition"] = args["Definition"],
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetCoreDefinitionVersionResponse(t)
 	return t
@@ -2914,12 +3217,15 @@ end
 
 --- Create a structure of type DisassociateRoleFromGroupRequest
 --  
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.DisassociateRoleFromGroupRequest(_GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateRoleFromGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return DisassociateRoleFromGroupRequest structure as a key-value pair table
+function M.DisassociateRoleFromGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating DisassociateRoleFromGroupRequest")
 	local t = { 
-		["GroupId"] = _GroupId,
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertDisassociateRoleFromGroupRequest(t)
 	return t
@@ -2939,13 +3245,16 @@ end
 
 --- Create a structure of type ListDeviceDefinitionsRequest
 --  
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListDeviceDefinitionsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeviceDefinitionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @return ListDeviceDefinitionsRequest structure as a key-value pair table
+function M.ListDeviceDefinitionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDeviceDefinitionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListDeviceDefinitionsRequest(t)
 	return t
@@ -2967,17 +3276,20 @@ end
 
 --- Create a structure of type CreateSubscriptionDefinitionVersionResponse
 --  
--- @param _Version [__string] Unique Id of a version.
--- @param _CreationTimestamp [__string] Timestamp of when the version was created.
--- @param _Id [__string] Id of the resource container.
--- @param _Arn [__string] Arn of the version.
-function M.CreateSubscriptionDefinitionVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriptionDefinitionVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [__string] Unique Id of a version.
+-- * CreationTimestamp [__string] Timestamp of when the version was created.
+-- * Id [__string] Id of the resource container.
+-- * Arn [__string] Arn of the version.
+-- @return CreateSubscriptionDefinitionVersionResponse structure as a key-value pair table
+function M.CreateSubscriptionDefinitionVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateSubscriptionDefinitionVersionResponse")
 	local t = { 
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateSubscriptionDefinitionVersionResponse(t)
 	return t
@@ -2995,8 +3307,11 @@ end
 
 --- Create a structure of type UpdateGroupResponse
 --  
-function M.UpdateGroupResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateGroupResponse structure as a key-value pair table
+function M.UpdateGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateGroupResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateGroupResponse(t)
@@ -3018,14 +3333,17 @@ end
 
 --- Create a structure of type UpdateConnectivityInfoRequest
 -- connectivity info request
--- @param _ConnectivityInfo [ListOfConnectivityInfo] Connectivity info array
--- @param _ThingName [__string] Thing Name
--- Required parameter: ThingName
-function M.UpdateConnectivityInfoRequest(_ConnectivityInfo, _ThingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConnectivityInfoRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ConnectivityInfo [ListOfConnectivityInfo] Connectivity info array
+-- * ThingName [__string] Thing Name
+-- Required key: ThingName
+-- @return UpdateConnectivityInfoRequest structure as a key-value pair table
+function M.UpdateConnectivityInfoRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateConnectivityInfoRequest")
 	local t = { 
-		["ConnectivityInfo"] = _ConnectivityInfo,
-		["ThingName"] = _ThingName,
+		["ConnectivityInfo"] = args["ConnectivityInfo"],
+		["ThingName"] = args["ThingName"],
 	}
 	asserts.AssertUpdateConnectivityInfoRequest(t)
 	return t
@@ -3045,12 +3363,15 @@ end
 
 --- Create a structure of type DeleteSubscriptionDefinitionRequest
 --  
--- @param _SubscriptionDefinitionId [__string] subscription definition Id
--- Required parameter: SubscriptionDefinitionId
-function M.DeleteSubscriptionDefinitionRequest(_SubscriptionDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubscriptionDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubscriptionDefinitionId [__string] subscription definition Id
+-- Required key: SubscriptionDefinitionId
+-- @return DeleteSubscriptionDefinitionRequest structure as a key-value pair table
+function M.DeleteSubscriptionDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSubscriptionDefinitionRequest")
 	local t = { 
-		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
+		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
 	}
 	asserts.AssertDeleteSubscriptionDefinitionRequest(t)
 	return t
@@ -3072,17 +3393,20 @@ end
 
 --- Create a structure of type VersionInformation
 -- Information on the version
--- @param _Version [__string] Unique Id of a version.
--- @param _CreationTimestamp [__string] Timestamp of when the version was created.
--- @param _Id [__string] Id of the resource container.
--- @param _Arn [__string] Arn of the version.
-function M.VersionInformation(_Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VersionInformation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [__string] Unique Id of a version.
+-- * CreationTimestamp [__string] Timestamp of when the version was created.
+-- * Id [__string] Id of the resource container.
+-- * Arn [__string] Arn of the version.
+-- @return VersionInformation structure as a key-value pair table
+function M.VersionInformation(args)
+	assert(args, "You must provdide an argument table when creating VersionInformation")
 	local t = { 
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertVersionInformation(t)
 	return t
@@ -3103,15 +3427,18 @@ end
 
 --- Create a structure of type GroupCertificateConfiguration
 -- Information on the group certificate configuration
--- @param _CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- @param _GroupId [__string] Id of the group the certificate configuration belongs to.
--- @param _CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
-function M.GroupCertificateConfiguration(_CertificateExpiryInMilliseconds, _GroupId, _CertificateAuthorityExpiryInMilliseconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GroupCertificateConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
+-- * GroupId [__string] Id of the group the certificate configuration belongs to.
+-- * CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
+-- @return GroupCertificateConfiguration structure as a key-value pair table
+function M.GroupCertificateConfiguration(args)
+	assert(args, "You must provdide an argument table when creating GroupCertificateConfiguration")
 	local t = { 
-		["CertificateExpiryInMilliseconds"] = _CertificateExpiryInMilliseconds,
-		["GroupId"] = _GroupId,
-		["CertificateAuthorityExpiryInMilliseconds"] = _CertificateAuthorityExpiryInMilliseconds,
+		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
+		["GroupId"] = args["GroupId"],
+		["CertificateAuthorityExpiryInMilliseconds"] = args["CertificateAuthorityExpiryInMilliseconds"],
 	}
 	asserts.AssertGroupCertificateConfiguration(t)
 	return t
@@ -3131,12 +3458,15 @@ end
 
 --- Create a structure of type GetAssociatedRoleRequest
 --  
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.GetAssociatedRoleRequest(_GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAssociatedRoleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return GetAssociatedRoleRequest structure as a key-value pair table
+function M.GetAssociatedRoleRequest(args)
+	assert(args, "You must provdide an argument table when creating GetAssociatedRoleRequest")
 	local t = { 
-		["GroupId"] = _GroupId,
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertGetAssociatedRoleRequest(t)
 	return t
@@ -3156,12 +3486,15 @@ end
 
 --- Create a structure of type GetCoreDefinitionRequest
 --  
--- @param _CoreDefinitionId [__string] core definition Id
--- Required parameter: CoreDefinitionId
-function M.GetCoreDefinitionRequest(_CoreDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCoreDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CoreDefinitionId [__string] core definition Id
+-- Required key: CoreDefinitionId
+-- @return GetCoreDefinitionRequest structure as a key-value pair table
+function M.GetCoreDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetCoreDefinitionRequest")
 	local t = { 
-		["CoreDefinitionId"] = _CoreDefinitionId,
+		["CoreDefinitionId"] = args["CoreDefinitionId"],
 	}
 	asserts.AssertGetCoreDefinitionRequest(t)
 	return t
@@ -3181,13 +3514,16 @@ end
 
 --- Create a structure of type ListSubscriptionDefinitionsRequest
 --  
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListSubscriptionDefinitionsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSubscriptionDefinitionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @return ListSubscriptionDefinitionsRequest structure as a key-value pair table
+function M.ListSubscriptionDefinitionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListSubscriptionDefinitionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListSubscriptionDefinitionsRequest(t)
 	return t
@@ -3209,16 +3545,19 @@ end
 
 --- Create a structure of type CreateSubscriptionDefinitionVersionRequest
 --  
--- @param _SubscriptionDefinitionId [__string] subscription definition Id
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _Subscriptions [ListOfSubscription] Subscriptions in the version.
--- Required parameter: SubscriptionDefinitionId
-function M.CreateSubscriptionDefinitionVersionRequest(_SubscriptionDefinitionId, _AmznClientToken, _Subscriptions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriptionDefinitionVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubscriptionDefinitionId [__string] subscription definition Id
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * Subscriptions [ListOfSubscription] Subscriptions in the version.
+-- Required key: SubscriptionDefinitionId
+-- @return CreateSubscriptionDefinitionVersionRequest structure as a key-value pair table
+function M.CreateSubscriptionDefinitionVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSubscriptionDefinitionVersionRequest")
 	local t = { 
-		["SubscriptionDefinitionId"] = _SubscriptionDefinitionId,
-		["AmznClientToken"] = _AmznClientToken,
-		["Subscriptions"] = _Subscriptions,
+		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
+		["AmznClientToken"] = args["AmznClientToken"],
+		["Subscriptions"] = args["Subscriptions"],
 	}
 	asserts.AssertCreateSubscriptionDefinitionVersionRequest(t)
 	return t
@@ -3240,16 +3579,19 @@ end
 
 --- Create a structure of type CreateCoreDefinitionVersionRequest
 --  
--- @param _Cores [ListOfCore] Cores in the definition version.
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _CoreDefinitionId [__string] core definition Id
--- Required parameter: CoreDefinitionId
-function M.CreateCoreDefinitionVersionRequest(_Cores, _AmznClientToken, _CoreDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCoreDefinitionVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cores [ListOfCore] Cores in the definition version.
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * CoreDefinitionId [__string] core definition Id
+-- Required key: CoreDefinitionId
+-- @return CreateCoreDefinitionVersionRequest structure as a key-value pair table
+function M.CreateCoreDefinitionVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateCoreDefinitionVersionRequest")
 	local t = { 
-		["Cores"] = _Cores,
-		["AmznClientToken"] = _AmznClientToken,
-		["CoreDefinitionId"] = _CoreDefinitionId,
+		["Cores"] = args["Cores"],
+		["AmznClientToken"] = args["AmznClientToken"],
+		["CoreDefinitionId"] = args["CoreDefinitionId"],
 	}
 	asserts.AssertCreateCoreDefinitionVersionRequest(t)
 	return t
@@ -3270,15 +3612,18 @@ end
 
 --- Create a structure of type CreateFunctionDefinitionRequest
 --  
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _InitialVersion [FunctionDefinitionVersion] Information on the initial version
--- @param _Name [__string] name of the function definition
-function M.CreateFunctionDefinitionRequest(_AmznClientToken, _InitialVersion, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFunctionDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * InitialVersion [FunctionDefinitionVersion] Information on the initial version
+-- * Name [__string] name of the function definition
+-- @return CreateFunctionDefinitionRequest structure as a key-value pair table
+function M.CreateFunctionDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateFunctionDefinitionRequest")
 	local t = { 
-		["AmznClientToken"] = _AmznClientToken,
-		["InitialVersion"] = _InitialVersion,
-		["Name"] = _Name,
+		["AmznClientToken"] = args["AmznClientToken"],
+		["InitialVersion"] = args["InitialVersion"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateFunctionDefinitionRequest(t)
 	return t
@@ -3299,14 +3644,17 @@ end
 
 --- Create a structure of type AssociateRoleToGroupRequest
 --  
--- @param _RoleArn [__string] Role arn you wish to associate with this group.
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.AssociateRoleToGroupRequest(_RoleArn, _GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateRoleToGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleArn [__string] Role arn you wish to associate with this group.
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return AssociateRoleToGroupRequest structure as a key-value pair table
+function M.AssociateRoleToGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating AssociateRoleToGroupRequest")
 	local t = { 
-		["RoleArn"] = _RoleArn,
-		["GroupId"] = _GroupId,
+		["RoleArn"] = args["RoleArn"],
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertAssociateRoleToGroupRequest(t)
 	return t
@@ -3331,23 +3679,26 @@ end
 
 --- Create a structure of type GetSubscriptionDefinitionResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.GetSubscriptionDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSubscriptionDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return GetSubscriptionDefinitionResponse structure as a key-value pair table
+function M.GetSubscriptionDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSubscriptionDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetSubscriptionDefinitionResponse(t)
 	return t
@@ -3367,13 +3718,16 @@ end
 
 --- Create a structure of type ListGroupVersionsResponse
 --  
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param _Versions [ListOfVersionInformation] Versions
-function M.ListGroupVersionsResponse(_NextToken, _Versions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Versions [ListOfVersionInformation] Versions
+-- @return ListGroupVersionsResponse structure as a key-value pair table
+function M.ListGroupVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListGroupVersionsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Versions"] = _Versions,
+		["NextToken"] = args["NextToken"],
+		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListGroupVersionsResponse(t)
 	return t
@@ -3393,13 +3747,16 @@ end
 
 --- Create a structure of type ListCoreDefinitionsRequest
 --  
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListCoreDefinitionsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCoreDefinitionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @return ListCoreDefinitionsRequest structure as a key-value pair table
+function M.ListCoreDefinitionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListCoreDefinitionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListCoreDefinitionsRequest(t)
 	return t
@@ -3418,11 +3775,14 @@ end
 
 --- Create a structure of type ListGroupCertificateAuthoritiesResponse
 --  
--- @param _GroupCertificateAuthorities [ListOfGroupCertificateAuthorityProperties] List of certificate authorities associated with the group.
-function M.ListGroupCertificateAuthoritiesResponse(_GroupCertificateAuthorities, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupCertificateAuthoritiesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupCertificateAuthorities [ListOfGroupCertificateAuthorityProperties] List of certificate authorities associated with the group.
+-- @return ListGroupCertificateAuthoritiesResponse structure as a key-value pair table
+function M.ListGroupCertificateAuthoritiesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListGroupCertificateAuthoritiesResponse")
 	local t = { 
-		["GroupCertificateAuthorities"] = _GroupCertificateAuthorities,
+		["GroupCertificateAuthorities"] = args["GroupCertificateAuthorities"],
 	}
 	asserts.AssertListGroupCertificateAuthoritiesResponse(t)
 	return t
@@ -3445,19 +3805,22 @@ end
 
 --- Create a structure of type Logger
 -- Information on the Logger
--- @param _Type [LoggerType] The type which will be use for log output
--- @param _Space [__integer] Amount of hardware space, in KB, to use if file system is used for logging purposes.
--- @param _Component [LoggerComponent] The component that will be subject to logs
--- @param _Id [__string] Element Id for this entry in the list.
--- @param _Level [LoggerLevel] The level of the logs
-function M.Logger(_Type, _Space, _Component, _Id, _Level, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Logger")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [LoggerType] The type which will be use for log output
+-- * Space [__integer] Amount of hardware space, in KB, to use if file system is used for logging purposes.
+-- * Component [LoggerComponent] The component that will be subject to logs
+-- * Id [__string] Element Id for this entry in the list.
+-- * Level [LoggerLevel] The level of the logs
+-- @return Logger structure as a key-value pair table
+function M.Logger(args)
+	assert(args, "You must provdide an argument table when creating Logger")
 	local t = { 
-		["Type"] = _Type,
-		["Space"] = _Space,
-		["Component"] = _Component,
-		["Id"] = _Id,
-		["Level"] = _Level,
+		["Type"] = args["Type"],
+		["Space"] = args["Space"],
+		["Component"] = args["Component"],
+		["Id"] = args["Id"],
+		["Level"] = args["Level"],
 	}
 	asserts.AssertLogger(t)
 	return t
@@ -3478,14 +3841,17 @@ end
 
 --- Create a structure of type UpdateGroupCertificateConfigurationRequest
 --  
--- @param _CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.UpdateGroupCertificateConfigurationRequest(_CertificateExpiryInMilliseconds, _GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupCertificateConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return UpdateGroupCertificateConfigurationRequest structure as a key-value pair table
+function M.UpdateGroupCertificateConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateGroupCertificateConfigurationRequest")
 	local t = { 
-		["CertificateExpiryInMilliseconds"] = _CertificateExpiryInMilliseconds,
-		["GroupId"] = _GroupId,
+		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertUpdateGroupCertificateConfigurationRequest(t)
 	return t
@@ -3508,19 +3874,22 @@ end
 
 --- Create a structure of type GetFunctionDefinitionVersionResponse
 --  
--- @param _Definition [FunctionDefinitionVersion] 
--- @param _Version [__string] Version of the function definition version.
--- @param _CreationTimestamp [__string] Timestamp when the funtion definition version was created.
--- @param _Id [__string] Id of the function definition the version belongs to.
--- @param _Arn [__string] Arn of the function definition version.
-function M.GetFunctionDefinitionVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFunctionDefinitionVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definition [FunctionDefinitionVersion] 
+-- * Version [__string] Version of the function definition version.
+-- * CreationTimestamp [__string] Timestamp when the funtion definition version was created.
+-- * Id [__string] Id of the function definition the version belongs to.
+-- * Arn [__string] Arn of the function definition version.
+-- @return GetFunctionDefinitionVersionResponse structure as a key-value pair table
+function M.GetFunctionDefinitionVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetFunctionDefinitionVersionResponse")
 	local t = { 
-		["Definition"] = _Definition,
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Definition"] = args["Definition"],
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetFunctionDefinitionVersionResponse(t)
 	return t
@@ -3540,12 +3909,15 @@ end
 
 --- Create a structure of type ListGroupCertificateAuthoritiesRequest
 --  
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.ListGroupCertificateAuthoritiesRequest(_GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupCertificateAuthoritiesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return ListGroupCertificateAuthoritiesRequest structure as a key-value pair table
+function M.ListGroupCertificateAuthoritiesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListGroupCertificateAuthoritiesRequest")
 	local t = { 
-		["GroupId"] = _GroupId,
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertListGroupCertificateAuthoritiesRequest(t)
 	return t
@@ -3565,13 +3937,16 @@ end
 
 --- Create a structure of type ListDeviceDefinitionsResponse
 --  
--- @param _Definitions [ListOfDefinitionInformation] Definitions
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
-function M.ListDeviceDefinitionsResponse(_Definitions, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeviceDefinitionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definitions [ListOfDefinitionInformation] Definitions
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- @return ListDeviceDefinitionsResponse structure as a key-value pair table
+function M.ListDeviceDefinitionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListDeviceDefinitionsResponse")
 	local t = { 
-		["Definitions"] = _Definitions,
-		["NextToken"] = _NextToken,
+		["Definitions"] = args["Definitions"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListDeviceDefinitionsResponse(t)
 	return t
@@ -3593,17 +3968,20 @@ end
 
 --- Create a structure of type CreateFunctionDefinitionVersionResponse
 --  
--- @param _Version [__string] Unique Id of a version.
--- @param _CreationTimestamp [__string] Timestamp of when the version was created.
--- @param _Id [__string] Id of the resource container.
--- @param _Arn [__string] Arn of the version.
-function M.CreateFunctionDefinitionVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFunctionDefinitionVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [__string] Unique Id of a version.
+-- * CreationTimestamp [__string] Timestamp of when the version was created.
+-- * Id [__string] Id of the resource container.
+-- * Arn [__string] Arn of the version.
+-- @return CreateFunctionDefinitionVersionResponse structure as a key-value pair table
+function M.CreateFunctionDefinitionVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateFunctionDefinitionVersionResponse")
 	local t = { 
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateFunctionDefinitionVersionResponse(t)
 	return t
@@ -3625,17 +4003,20 @@ end
 
 --- Create a structure of type CreateGroupVersionResponse
 --  
--- @param _Version [__string] Unique Id of a version.
--- @param _CreationTimestamp [__string] Timestamp of when the version was created.
--- @param _Id [__string] Id of the resource container.
--- @param _Arn [__string] Arn of the version.
-function M.CreateGroupVersionResponse(_Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [__string] Unique Id of a version.
+-- * CreationTimestamp [__string] Timestamp of when the version was created.
+-- * Id [__string] Id of the resource container.
+-- * Arn [__string] Arn of the version.
+-- @return CreateGroupVersionResponse structure as a key-value pair table
+function M.CreateGroupVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateGroupVersionResponse")
 	local t = { 
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateGroupVersionResponse(t)
 	return t
@@ -3655,13 +4036,16 @@ end
 
 --- Create a structure of type ListVersionsResponse
 -- List of versions response
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param _Versions [ListOfVersionInformation] Versions
-function M.ListVersionsResponse(_NextToken, _Versions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Versions [ListOfVersionInformation] Versions
+-- @return ListVersionsResponse structure as a key-value pair table
+function M.ListVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListVersionsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Versions"] = _Versions,
+		["NextToken"] = args["NextToken"],
+		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListVersionsResponse(t)
 	return t
@@ -3682,14 +4066,17 @@ end
 
 --- Create a structure of type UpdateDeviceDefinitionRequest
 --  
--- @param _DeviceDefinitionId [__string] device definition Id
--- @param _Name [__string] name of the definition
--- Required parameter: DeviceDefinitionId
-function M.UpdateDeviceDefinitionRequest(_DeviceDefinitionId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDeviceDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeviceDefinitionId [__string] device definition Id
+-- * Name [__string] name of the definition
+-- Required key: DeviceDefinitionId
+-- @return UpdateDeviceDefinitionRequest structure as a key-value pair table
+function M.UpdateDeviceDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateDeviceDefinitionRequest")
 	local t = { 
-		["DeviceDefinitionId"] = _DeviceDefinitionId,
-		["Name"] = _Name,
+		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateDeviceDefinitionRequest(t)
 	return t
@@ -3712,19 +4099,22 @@ end
 
 --- Create a structure of type GroupVersion
 -- Information on group version
--- @param _CoreDefinitionVersionArn [__string] Core definition version arn for this group.
--- @param _LoggerDefinitionVersionArn [__string] Logger definitionv ersion arn for this group.
--- @param _FunctionDefinitionVersionArn [__string] Function definition version arn for this group.
--- @param _DeviceDefinitionVersionArn [__string] Device definition version arn for this group.
--- @param _SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
-function M.GroupVersion(_CoreDefinitionVersionArn, _LoggerDefinitionVersionArn, _FunctionDefinitionVersionArn, _DeviceDefinitionVersionArn, _SubscriptionDefinitionVersionArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GroupVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CoreDefinitionVersionArn [__string] Core definition version arn for this group.
+-- * LoggerDefinitionVersionArn [__string] Logger definitionv ersion arn for this group.
+-- * FunctionDefinitionVersionArn [__string] Function definition version arn for this group.
+-- * DeviceDefinitionVersionArn [__string] Device definition version arn for this group.
+-- * SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
+-- @return GroupVersion structure as a key-value pair table
+function M.GroupVersion(args)
+	assert(args, "You must provdide an argument table when creating GroupVersion")
 	local t = { 
-		["CoreDefinitionVersionArn"] = _CoreDefinitionVersionArn,
-		["LoggerDefinitionVersionArn"] = _LoggerDefinitionVersionArn,
-		["FunctionDefinitionVersionArn"] = _FunctionDefinitionVersionArn,
-		["DeviceDefinitionVersionArn"] = _DeviceDefinitionVersionArn,
-		["SubscriptionDefinitionVersionArn"] = _SubscriptionDefinitionVersionArn,
+		["CoreDefinitionVersionArn"] = args["CoreDefinitionVersionArn"],
+		["LoggerDefinitionVersionArn"] = args["LoggerDefinitionVersionArn"],
+		["FunctionDefinitionVersionArn"] = args["FunctionDefinitionVersionArn"],
+		["DeviceDefinitionVersionArn"] = args["DeviceDefinitionVersionArn"],
+		["SubscriptionDefinitionVersionArn"] = args["SubscriptionDefinitionVersionArn"],
 	}
 	asserts.AssertGroupVersion(t)
 	return t
@@ -3742,8 +4132,11 @@ end
 
 --- Create a structure of type DeleteLoggerDefinitionResponse
 --  
-function M.DeleteLoggerDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLoggerDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteLoggerDefinitionResponse structure as a key-value pair table
+function M.DeleteLoggerDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteLoggerDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteLoggerDefinitionResponse(t)
@@ -3764,12 +4157,15 @@ end
 
 --- Create a structure of type DeleteFunctionDefinitionRequest
 --  
--- @param _FunctionDefinitionId [__string] the unique Id of the lambda definition
--- Required parameter: FunctionDefinitionId
-function M.DeleteFunctionDefinitionRequest(_FunctionDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteFunctionDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionDefinitionId [__string] the unique Id of the lambda definition
+-- Required key: FunctionDefinitionId
+-- @return DeleteFunctionDefinitionRequest structure as a key-value pair table
+function M.DeleteFunctionDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteFunctionDefinitionRequest")
 	local t = { 
-		["FunctionDefinitionId"] = _FunctionDefinitionId,
+		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
 	}
 	asserts.AssertDeleteFunctionDefinitionRequest(t)
 	return t
@@ -3791,17 +4187,20 @@ end
 
 --- Create a structure of type Deployment
 -- Information on the deployment
--- @param _DeploymentId [__string] Id of the deployment.
--- @param _DeploymentArn [__string] Arn of the deployment.
--- @param _GroupArn [__string] Arn of the group for this deployment.
--- @param _CreatedAt [__string] Timestamp when the deployment was created.
-function M.Deployment(_DeploymentId, _DeploymentArn, _GroupArn, _CreatedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Deployment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeploymentId [__string] Id of the deployment.
+-- * DeploymentArn [__string] Arn of the deployment.
+-- * GroupArn [__string] Arn of the group for this deployment.
+-- * CreatedAt [__string] Timestamp when the deployment was created.
+-- @return Deployment structure as a key-value pair table
+function M.Deployment(args)
+	assert(args, "You must provdide an argument table when creating Deployment")
 	local t = { 
-		["DeploymentId"] = _DeploymentId,
-		["DeploymentArn"] = _DeploymentArn,
-		["GroupArn"] = _GroupArn,
-		["CreatedAt"] = _CreatedAt,
+		["DeploymentId"] = args["DeploymentId"],
+		["DeploymentArn"] = args["DeploymentArn"],
+		["GroupArn"] = args["GroupArn"],
+		["CreatedAt"] = args["CreatedAt"],
 	}
 	asserts.AssertDeployment(t)
 	return t
@@ -3822,15 +4221,18 @@ end
 
 --- Create a structure of type GetGroupCertificateConfigurationResponse
 --  
--- @param _CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
--- @param _GroupId [__string] Id of the group the certificate configuration belongs to.
--- @param _CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
-function M.GetGroupCertificateConfigurationResponse(_CertificateExpiryInMilliseconds, _GroupId, _CertificateAuthorityExpiryInMilliseconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupCertificateConfigurationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateExpiryInMilliseconds [__string] Amount of time when the certificate expires in milliseconds.
+-- * GroupId [__string] Id of the group the certificate configuration belongs to.
+-- * CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
+-- @return GetGroupCertificateConfigurationResponse structure as a key-value pair table
+function M.GetGroupCertificateConfigurationResponse(args)
+	assert(args, "You must provdide an argument table when creating GetGroupCertificateConfigurationResponse")
 	local t = { 
-		["CertificateExpiryInMilliseconds"] = _CertificateExpiryInMilliseconds,
-		["GroupId"] = _GroupId,
-		["CertificateAuthorityExpiryInMilliseconds"] = _CertificateAuthorityExpiryInMilliseconds,
+		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
+		["GroupId"] = args["GroupId"],
+		["CertificateAuthorityExpiryInMilliseconds"] = args["CertificateAuthorityExpiryInMilliseconds"],
 	}
 	asserts.AssertGetGroupCertificateConfigurationResponse(t)
 	return t
@@ -3849,11 +4251,14 @@ end
 
 --- Create a structure of type CreateGroupCertificateAuthorityResponse
 --  
--- @param _GroupCertificateAuthorityArn [__string] Arn of the group certificate authority.
-function M.CreateGroupCertificateAuthorityResponse(_GroupCertificateAuthorityArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupCertificateAuthorityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupCertificateAuthorityArn [__string] Arn of the group certificate authority.
+-- @return CreateGroupCertificateAuthorityResponse structure as a key-value pair table
+function M.CreateGroupCertificateAuthorityResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateGroupCertificateAuthorityResponse")
 	local t = { 
-		["GroupCertificateAuthorityArn"] = _GroupCertificateAuthorityArn,
+		["GroupCertificateAuthorityArn"] = args["GroupCertificateAuthorityArn"],
 	}
 	asserts.AssertCreateGroupCertificateAuthorityResponse(t)
 	return t
@@ -3875,15 +4280,18 @@ end
 
 --- Create a structure of type GetDeploymentStatusRequest
 --  
--- @param _DeploymentId [__string] the deployment Id
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
--- Required parameter: DeploymentId
-function M.GetDeploymentStatusRequest(_DeploymentId, _GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDeploymentStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeploymentId [__string] the deployment Id
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- Required key: DeploymentId
+-- @return GetDeploymentStatusRequest structure as a key-value pair table
+function M.GetDeploymentStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDeploymentStatusRequest")
 	local t = { 
-		["DeploymentId"] = _DeploymentId,
-		["GroupId"] = _GroupId,
+		["DeploymentId"] = args["DeploymentId"],
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertGetDeploymentStatusRequest(t)
 	return t
@@ -3902,11 +4310,14 @@ end
 
 --- Create a structure of type FunctionConfigurationEnvironment
 -- Environment of the function configuration
--- @param _Variables [MapOf__string] Environment variables for the lambda function.
-function M.FunctionConfigurationEnvironment(_Variables, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FunctionConfigurationEnvironment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Variables [MapOf__string] Environment variables for the lambda function.
+-- @return FunctionConfigurationEnvironment structure as a key-value pair table
+function M.FunctionConfigurationEnvironment(args)
+	assert(args, "You must provdide an argument table when creating FunctionConfigurationEnvironment")
 	local t = { 
-		["Variables"] = _Variables,
+		["Variables"] = args["Variables"],
 	}
 	asserts.AssertFunctionConfigurationEnvironment(t)
 	return t
@@ -3927,15 +4338,18 @@ end
 
 --- Create a structure of type Function
 -- Information on function
--- @param _FunctionConfiguration [FunctionConfiguration] Configuration of the function
--- @param _Id [__string] Id of the function in this version.
--- @param _FunctionArn [__string] Arn of the Lambda function.
-function M.Function(_FunctionConfiguration, _Id, _FunctionArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Function")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FunctionConfiguration [FunctionConfiguration] Configuration of the function
+-- * Id [__string] Id of the function in this version.
+-- * FunctionArn [__string] Arn of the Lambda function.
+-- @return Function structure as a key-value pair table
+function M.Function(args)
+	assert(args, "You must provdide an argument table when creating Function")
 	local t = { 
-		["FunctionConfiguration"] = _FunctionConfiguration,
-		["Id"] = _Id,
-		["FunctionArn"] = _FunctionArn,
+		["FunctionConfiguration"] = args["FunctionConfiguration"],
+		["Id"] = args["Id"],
+		["FunctionArn"] = args["FunctionArn"],
 	}
 	asserts.AssertFunction(t)
 	return t
@@ -3961,24 +4375,27 @@ end
 
 --- Create a structure of type CreateGroupVersionRequest
 --  
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _DeviceDefinitionVersionArn [__string] Device definition version arn for this group.
--- @param _SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
--- @param _FunctionDefinitionVersionArn [__string] Function definition version arn for this group.
--- @param _CoreDefinitionVersionArn [__string] Core definition version arn for this group.
--- @param _LoggerDefinitionVersionArn [__string] Logger definitionv ersion arn for this group.
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- Required parameter: GroupId
-function M.CreateGroupVersionRequest(_AmznClientToken, _DeviceDefinitionVersionArn, _SubscriptionDefinitionVersionArn, _FunctionDefinitionVersionArn, _CoreDefinitionVersionArn, _LoggerDefinitionVersionArn, _GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * DeviceDefinitionVersionArn [__string] Device definition version arn for this group.
+-- * SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
+-- * FunctionDefinitionVersionArn [__string] Function definition version arn for this group.
+-- * CoreDefinitionVersionArn [__string] Core definition version arn for this group.
+-- * LoggerDefinitionVersionArn [__string] Logger definitionv ersion arn for this group.
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- Required key: GroupId
+-- @return CreateGroupVersionRequest structure as a key-value pair table
+function M.CreateGroupVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateGroupVersionRequest")
 	local t = { 
-		["AmznClientToken"] = _AmznClientToken,
-		["DeviceDefinitionVersionArn"] = _DeviceDefinitionVersionArn,
-		["SubscriptionDefinitionVersionArn"] = _SubscriptionDefinitionVersionArn,
-		["FunctionDefinitionVersionArn"] = _FunctionDefinitionVersionArn,
-		["CoreDefinitionVersionArn"] = _CoreDefinitionVersionArn,
-		["LoggerDefinitionVersionArn"] = _LoggerDefinitionVersionArn,
-		["GroupId"] = _GroupId,
+		["AmznClientToken"] = args["AmznClientToken"],
+		["DeviceDefinitionVersionArn"] = args["DeviceDefinitionVersionArn"],
+		["SubscriptionDefinitionVersionArn"] = args["SubscriptionDefinitionVersionArn"],
+		["FunctionDefinitionVersionArn"] = args["FunctionDefinitionVersionArn"],
+		["CoreDefinitionVersionArn"] = args["CoreDefinitionVersionArn"],
+		["LoggerDefinitionVersionArn"] = args["LoggerDefinitionVersionArn"],
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertCreateGroupVersionRequest(t)
 	return t
@@ -3996,8 +4413,11 @@ end
 
 --- Create a structure of type DeleteGroupResponse
 --  
-function M.DeleteGroupResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteGroupResponse structure as a key-value pair table
+function M.DeleteGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteGroupResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteGroupResponse(t)
@@ -4023,23 +4443,26 @@ end
 
 --- Create a structure of type CreateFunctionDefinitionResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.CreateFunctionDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateFunctionDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return CreateFunctionDefinitionResponse structure as a key-value pair table
+function M.CreateFunctionDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateFunctionDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateFunctionDefinitionResponse(t)
 	return t
@@ -4058,11 +4481,14 @@ end
 
 --- Create a structure of type AssociateRoleToGroupResponse
 --  
--- @param _AssociatedAt [__string] Time the role arn was associated to your group.
-function M.AssociateRoleToGroupResponse(_AssociatedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateRoleToGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssociatedAt [__string] Time the role arn was associated to your group.
+-- @return AssociateRoleToGroupResponse structure as a key-value pair table
+function M.AssociateRoleToGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating AssociateRoleToGroupResponse")
 	local t = { 
-		["AssociatedAt"] = _AssociatedAt,
+		["AssociatedAt"] = args["AssociatedAt"],
 	}
 	asserts.AssertAssociateRoleToGroupResponse(t)
 	return t
@@ -4087,23 +4513,26 @@ end
 
 --- Create a structure of type CreateLoggerDefinitionResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.CreateLoggerDefinitionResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoggerDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return CreateLoggerDefinitionResponse structure as a key-value pair table
+function M.CreateLoggerDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateLoggerDefinitionResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateLoggerDefinitionResponse(t)
 	return t
@@ -4123,13 +4552,16 @@ end
 
 --- Create a structure of type UpdateConnectivityInfoResponse
 --  
--- @param _Message [__string] Response Text
--- @param _Version [__string] New Version
-function M.UpdateConnectivityInfoResponse(_Message, _Version, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConnectivityInfoResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [__string] Response Text
+-- * Version [__string] New Version
+-- @return UpdateConnectivityInfoResponse structure as a key-value pair table
+function M.UpdateConnectivityInfoResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateConnectivityInfoResponse")
 	local t = { 
-		["Message"] = _Message,
-		["Version"] = _Version,
+		["Message"] = args["Message"],
+		["Version"] = args["Version"],
 	}
 	asserts.AssertUpdateConnectivityInfoResponse(t)
 	return t
@@ -4151,16 +4583,19 @@ end
 
 --- Create a structure of type CreateDeviceDefinitionVersionRequest
 --  
--- @param _DeviceDefinitionId [__string] device definition Id
--- @param _AmznClientToken [__string] The client token used to request idempotent operations.
--- @param _Devices [ListOfDevice] Devices in the definition version.
--- Required parameter: DeviceDefinitionId
-function M.CreateDeviceDefinitionVersionRequest(_DeviceDefinitionId, _AmznClientToken, _Devices, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeviceDefinitionVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeviceDefinitionId [__string] device definition Id
+-- * AmznClientToken [__string] The client token used to request idempotent operations.
+-- * Devices [ListOfDevice] Devices in the definition version.
+-- Required key: DeviceDefinitionId
+-- @return CreateDeviceDefinitionVersionRequest structure as a key-value pair table
+function M.CreateDeviceDefinitionVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDeviceDefinitionVersionRequest")
 	local t = { 
-		["DeviceDefinitionId"] = _DeviceDefinitionId,
-		["AmznClientToken"] = _AmznClientToken,
-		["Devices"] = _Devices,
+		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
+		["AmznClientToken"] = args["AmznClientToken"],
+		["Devices"] = args["Devices"],
 	}
 	asserts.AssertCreateDeviceDefinitionVersionRequest(t)
 	return t
@@ -4183,19 +4618,22 @@ end
 
 --- Create a structure of type GetLoggerDefinitionVersionResponse
 --  
--- @param _Definition [LoggerDefinitionVersion] Information on definition
--- @param _Version [__string] Version of the logger definition version.
--- @param _CreationTimestamp [__string] Timestamp of when the logger definition version was created.
--- @param _Id [__string] Id of the logger definition the version belongs to.
--- @param _Arn [__string] Arn of the logger definition version.
-function M.GetLoggerDefinitionVersionResponse(_Definition, _Version, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggerDefinitionVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Definition [LoggerDefinitionVersion] Information on definition
+-- * Version [__string] Version of the logger definition version.
+-- * CreationTimestamp [__string] Timestamp of when the logger definition version was created.
+-- * Id [__string] Id of the logger definition the version belongs to.
+-- * Arn [__string] Arn of the logger definition version.
+-- @return GetLoggerDefinitionVersionResponse structure as a key-value pair table
+function M.GetLoggerDefinitionVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetLoggerDefinitionVersionResponse")
 	local t = { 
-		["Definition"] = _Definition,
-		["Version"] = _Version,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["Definition"] = args["Definition"],
+		["Version"] = args["Version"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetLoggerDefinitionVersionResponse(t)
 	return t
@@ -4213,8 +4651,11 @@ end
 
 --- Create a structure of type UpdateDeviceDefinitionResponse
 --  
-function M.UpdateDeviceDefinitionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDeviceDefinitionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateDeviceDefinitionResponse structure as a key-value pair table
+function M.UpdateDeviceDefinitionResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateDeviceDefinitionResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateDeviceDefinitionResponse(t)
@@ -4235,13 +4676,16 @@ end
 
 --- Create a structure of type ListFunctionDefinitionsRequest
 --  
--- @param _NextToken [__string] Specifies the pagination token used when iterating through a paginated request
--- @param _MaxResults [__string] Specifies the maximum number of list results to be returned in this page
-function M.ListFunctionDefinitionsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListFunctionDefinitionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] Specifies the pagination token used when iterating through a paginated request
+-- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
+-- @return ListFunctionDefinitionsRequest structure as a key-value pair table
+function M.ListFunctionDefinitionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListFunctionDefinitionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListFunctionDefinitionsRequest(t)
 	return t
@@ -4261,13 +4705,16 @@ end
 
 --- Create a structure of type ListLoggerDefinitionVersionsResponse
 --  
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param _Versions [ListOfVersionInformation] Versions
-function M.ListLoggerDefinitionVersionsResponse(_NextToken, _Versions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLoggerDefinitionVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Versions [ListOfVersionInformation] Versions
+-- @return ListLoggerDefinitionVersionsResponse structure as a key-value pair table
+function M.ListLoggerDefinitionVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListLoggerDefinitionVersionsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Versions"] = _Versions,
+		["NextToken"] = args["NextToken"],
+		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListLoggerDefinitionVersionsResponse(t)
 	return t
@@ -4287,13 +4734,16 @@ end
 
 --- Create a structure of type GetServiceRoleForAccountResponse
 --  
--- @param _AssociatedAt [__string] Time when the service role was associated to the account.
--- @param _RoleArn [__string] Role arn which is associated to the account.
-function M.GetServiceRoleForAccountResponse(_AssociatedAt, _RoleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetServiceRoleForAccountResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssociatedAt [__string] Time when the service role was associated to the account.
+-- * RoleArn [__string] Role arn which is associated to the account.
+-- @return GetServiceRoleForAccountResponse structure as a key-value pair table
+function M.GetServiceRoleForAccountResponse(args)
+	assert(args, "You must provdide an argument table when creating GetServiceRoleForAccountResponse")
 	local t = { 
-		["AssociatedAt"] = _AssociatedAt,
-		["RoleArn"] = _RoleArn,
+		["AssociatedAt"] = args["AssociatedAt"],
+		["RoleArn"] = args["RoleArn"],
 	}
 	asserts.AssertGetServiceRoleForAccountResponse(t)
 	return t
@@ -4313,12 +4763,15 @@ end
 
 --- Create a structure of type GetLoggerDefinitionRequest
 --  
--- @param _LoggerDefinitionId [__string] logger definition Id
--- Required parameter: LoggerDefinitionId
-function M.GetLoggerDefinitionRequest(_LoggerDefinitionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggerDefinitionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggerDefinitionId [__string] logger definition Id
+-- Required key: LoggerDefinitionId
+-- @return GetLoggerDefinitionRequest structure as a key-value pair table
+function M.GetLoggerDefinitionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetLoggerDefinitionRequest")
 	local t = { 
-		["LoggerDefinitionId"] = _LoggerDefinitionId,
+		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
 	}
 	asserts.AssertGetLoggerDefinitionRequest(t)
 	return t
@@ -4340,15 +4793,18 @@ end
 
 --- Create a structure of type GetGroupVersionRequest
 --  
--- @param _GroupId [__string] The unique Id of the AWS Greengrass Group
--- @param _GroupVersionId [__string] Group version Id
--- Required parameter: GroupVersionId
--- Required parameter: GroupId
-function M.GetGroupVersionRequest(_GroupId, _GroupVersionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupId [__string] The unique Id of the AWS Greengrass Group
+-- * GroupVersionId [__string] Group version Id
+-- Required key: GroupVersionId
+-- Required key: GroupId
+-- @return GetGroupVersionRequest structure as a key-value pair table
+function M.GetGroupVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetGroupVersionRequest")
 	local t = { 
-		["GroupId"] = _GroupId,
-		["GroupVersionId"] = _GroupVersionId,
+		["GroupId"] = args["GroupId"],
+		["GroupVersionId"] = args["GroupVersionId"],
 	}
 	asserts.AssertGetGroupVersionRequest(t)
 	return t
@@ -4368,13 +4824,16 @@ end
 
 --- Create a structure of type ListDeploymentsResponse
 --  
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param _Deployments [Deployments] Information on deployments
-function M.ListDeploymentsResponse(_NextToken, _Deployments, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeploymentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Deployments [Deployments] Information on deployments
+-- @return ListDeploymentsResponse structure as a key-value pair table
+function M.ListDeploymentsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListDeploymentsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Deployments"] = _Deployments,
+		["NextToken"] = args["NextToken"],
+		["Deployments"] = args["Deployments"],
 	}
 	asserts.AssertListDeploymentsResponse(t)
 	return t
@@ -4394,13 +4853,16 @@ end
 
 --- Create a structure of type ListDeviceDefinitionVersionsResponse
 --  
--- @param _NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
--- @param _Versions [ListOfVersionInformation] Versions
-function M.ListDeviceDefinitionVersionsResponse(_NextToken, _Versions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDeviceDefinitionVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
+-- * Versions [ListOfVersionInformation] Versions
+-- @return ListDeviceDefinitionVersionsResponse structure as a key-value pair table
+function M.ListDeviceDefinitionVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListDeviceDefinitionVersionsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Versions"] = _Versions,
+		["NextToken"] = args["NextToken"],
+		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListDeviceDefinitionVersionsResponse(t)
 	return t
@@ -4425,23 +4887,26 @@ end
 
 --- Create a structure of type CreateGroupResponse
 --  
--- @param _LatestVersionArn [__string] Latest version arn of the definition.
--- @param _Name [__string] Name of the definition.
--- @param _LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
--- @param _LatestVersion [__string] Last version of the definition.
--- @param _CreationTimestamp [__string] Timestamp of when the definition was created.
--- @param _Id [__string] Id of the definition.
--- @param _Arn [__string] Arn of the definition.
-function M.CreateGroupResponse(_LatestVersionArn, _Name, _LastUpdatedTimestamp, _LatestVersion, _CreationTimestamp, _Id, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LatestVersionArn [__string] Latest version arn of the definition.
+-- * Name [__string] Name of the definition.
+-- * LastUpdatedTimestamp [__string] Last updated timestamp of the definition.
+-- * LatestVersion [__string] Last version of the definition.
+-- * CreationTimestamp [__string] Timestamp of when the definition was created.
+-- * Id [__string] Id of the definition.
+-- * Arn [__string] Arn of the definition.
+-- @return CreateGroupResponse structure as a key-value pair table
+function M.CreateGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateGroupResponse")
 	local t = { 
-		["LatestVersionArn"] = _LatestVersionArn,
-		["Name"] = _Name,
-		["LastUpdatedTimestamp"] = _LastUpdatedTimestamp,
-		["LatestVersion"] = _LatestVersion,
-		["CreationTimestamp"] = _CreationTimestamp,
-		["Id"] = _Id,
-		["Arn"] = _Arn,
+		["LatestVersionArn"] = args["LatestVersionArn"],
+		["Name"] = args["Name"],
+		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
+		["LatestVersion"] = args["LatestVersion"],
+		["CreationTimestamp"] = args["CreationTimestamp"],
+		["Id"] = args["Id"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertCreateGroupResponse(t)
 	return t

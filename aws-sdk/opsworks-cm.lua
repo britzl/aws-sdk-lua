@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The limit of servers or backups has been reached. </p>
--- @param _Message [String] <p>Error or informational message that the maximum allowed number of servers or backups has been exceeded. </p>
-function M.LimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>Error or informational message that the maximum allowed number of servers or backups has been exceeded. </p>
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -57,11 +60,14 @@ end
 
 --- Create a structure of type UpdateServerEngineAttributesResponse
 --  
--- @param _Server [Server] <p>Contains the response to an <code>UpdateServerEngineAttributes</code> request. </p>
-function M.UpdateServerEngineAttributesResponse(_Server, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServerEngineAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Server [Server] <p>Contains the response to an <code>UpdateServerEngineAttributes</code> request. </p>
+-- @return UpdateServerEngineAttributesResponse structure as a key-value pair table
+function M.UpdateServerEngineAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateServerEngineAttributesResponse")
 	local t = { 
-		["Server"] = _Server,
+		["Server"] = args["Server"],
 	}
 	asserts.AssertUpdateServerEngineAttributesResponse(t)
 	return t
@@ -80,11 +86,14 @@ end
 
 --- Create a structure of type ValidationException
 -- <p>One or more of the provided request parameters are not valid. </p>
--- @param _Message [String] <p>Error or informational message that can contain more detail about a validation failure. </p>
-function M.ValidationException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>Error or informational message that can contain more detail about a validation failure. </p>
+-- @return ValidationException structure as a key-value pair table
+function M.ValidationException(args)
+	assert(args, "You must provdide an argument table when creating ValidationException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertValidationException(t)
 	return t
@@ -105,14 +114,17 @@ end
 
 --- Create a structure of type CreateBackupRequest
 --  
--- @param _ServerName [ServerName] <p>The name of the server that you want to back up. </p>
--- @param _Description [String] <p> A user-defined description of the backup. </p>
--- Required parameter: ServerName
-function M.CreateBackupRequest(_ServerName, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBackupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerName [ServerName] <p>The name of the server that you want to back up. </p>
+-- * Description [String] <p> A user-defined description of the backup. </p>
+-- Required key: ServerName
+-- @return CreateBackupRequest structure as a key-value pair table
+function M.CreateBackupRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateBackupRequest")
 	local t = { 
-		["ServerName"] = _ServerName,
-		["Description"] = _Description,
+		["ServerName"] = args["ServerName"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateBackupRequest(t)
 	return t
@@ -131,11 +143,14 @@ end
 
 --- Create a structure of type DescribeAccountAttributesResponse
 --  
--- @param _Attributes [AccountAttributes] <p> The attributes that are currently set for the account. </p>
-function M.DescribeAccountAttributesResponse(_Attributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountAttributesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attributes [AccountAttributes] <p> The attributes that are currently set for the account. </p>
+-- @return DescribeAccountAttributesResponse structure as a key-value pair table
+function M.DescribeAccountAttributesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesResponse")
 	local t = { 
-		["Attributes"] = _Attributes,
+		["Attributes"] = args["Attributes"],
 	}
 	asserts.AssertDescribeAccountAttributesResponse(t)
 	return t
@@ -155,12 +170,15 @@ end
 
 --- Create a structure of type DeleteServerRequest
 --  
--- @param _ServerName [ServerName] <p>The ID of the server to delete.</p>
--- Required parameter: ServerName
-function M.DeleteServerRequest(_ServerName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteServerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerName [ServerName] <p>The ID of the server to delete.</p>
+-- Required key: ServerName
+-- @return DeleteServerRequest structure as a key-value pair table
+function M.DeleteServerRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteServerRequest")
 	local t = { 
-		["ServerName"] = _ServerName,
+		["ServerName"] = args["ServerName"],
 	}
 	asserts.AssertDeleteServerRequest(t)
 	return t
@@ -179,11 +197,14 @@ end
 
 --- Create a structure of type StartMaintenanceResponse
 --  
--- @param _Server [Server] <p>Contains the response to a <code>StartMaintenance</code> request. </p>
-function M.StartMaintenanceResponse(_Server, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartMaintenanceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Server [Server] <p>Contains the response to a <code>StartMaintenance</code> request. </p>
+-- @return StartMaintenanceResponse structure as a key-value pair table
+function M.StartMaintenanceResponse(args)
+	assert(args, "You must provdide an argument table when creating StartMaintenanceResponse")
 	local t = { 
-		["Server"] = _Server,
+		["Server"] = args["Server"],
 	}
 	asserts.AssertStartMaintenanceResponse(t)
 	return t
@@ -204,15 +225,18 @@ end
 
 --- Create a structure of type AccountAttribute
 -- <p>Stores account attributes. </p>
--- @param _Used [Integer] <p> The current usage, such as the current number of servers that are associated with the account. </p>
--- @param _Name [String] <p> The attribute name. The following are supported attribute names. </p> <ul> <li> <p> <i>ServerLimit:</i> The number of current servers/maximum number of servers allowed. By default, you can have a maximum of 10 servers. </p> </li> <li> <p> <i>ManualBackupLimit:</i> The number of current manual backups/maximum number of backups allowed. By default, you can have a maximum of 50 manual backups saved. </p> </li> </ul>
--- @param _Maximum [Integer] <p> The maximum allowed value. </p>
-function M.AccountAttribute(_Used, _Name, _Maximum, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccountAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Used [Integer] <p> The current usage, such as the current number of servers that are associated with the account. </p>
+-- * Name [String] <p> The attribute name. The following are supported attribute names. </p> <ul> <li> <p> <i>ServerLimit:</i> The number of current servers/maximum number of servers allowed. By default, you can have a maximum of 10 servers. </p> </li> <li> <p> <i>ManualBackupLimit:</i> The number of current manual backups/maximum number of backups allowed. By default, you can have a maximum of 50 manual backups saved. </p> </li> </ul>
+-- * Maximum [Integer] <p> The maximum allowed value. </p>
+-- @return AccountAttribute structure as a key-value pair table
+function M.AccountAttribute(args)
+	assert(args, "You must provdide an argument table when creating AccountAttribute")
 	local t = { 
-		["Used"] = _Used,
-		["Name"] = _Name,
-		["Maximum"] = _Maximum,
+		["Used"] = args["Used"],
+		["Name"] = args["Name"],
+		["Maximum"] = args["Maximum"],
 	}
 	asserts.AssertAccountAttribute(t)
 	return t
@@ -231,11 +255,14 @@ end
 
 --- Create a structure of type CreateServerResponse
 --  
--- @param _Server [Server] <p>The server that is created by the request. </p>
-function M.CreateServerResponse(_Server, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateServerResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Server [Server] <p>The server that is created by the request. </p>
+-- @return CreateServerResponse structure as a key-value pair table
+function M.CreateServerResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateServerResponse")
 	local t = { 
-		["Server"] = _Server,
+		["Server"] = args["Server"],
 	}
 	asserts.AssertCreateServerResponse(t)
 	return t
@@ -254,11 +281,14 @@ end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>This occurs when the provided nextToken is not valid. </p>
--- @param _Message [String] <p>Error or informational message that can contain more detail about a nextToken failure. </p>
-function M.InvalidNextTokenException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>Error or informational message that can contain more detail about a nextToken failure. </p>
+-- @return InvalidNextTokenException structure as a key-value pair table
+function M.InvalidNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidNextTokenException(t)
 	return t
@@ -281,17 +311,20 @@ end
 
 --- Create a structure of type DisassociateNodeRequest
 --  
--- @param _ServerName [ServerName] <p>The name of the server from which to disassociate the node. </p>
--- @param _NodeName [NodeName] <p>The name of the Chef client node. </p>
--- @param _EngineAttributes [EngineAttributes] <p>Engine attributes used for disassociating the node. </p> <p class="title"> <b>Attributes accepted in a DisassociateNode request:</b> </p> <ul> <li> <p> <code>CHEF_ORGANIZATION</code>: The Chef organization with which the node was associated. By default only one organization named <code>default</code> can exist. </p> </li> </ul>
--- Required parameter: ServerName
--- Required parameter: NodeName
-function M.DisassociateNodeRequest(_ServerName, _NodeName, _EngineAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateNodeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerName [ServerName] <p>The name of the server from which to disassociate the node. </p>
+-- * NodeName [NodeName] <p>The name of the Chef client node. </p>
+-- * EngineAttributes [EngineAttributes] <p>Engine attributes used for disassociating the node. </p> <p class="title"> <b>Attributes accepted in a DisassociateNode request:</b> </p> <ul> <li> <p> <code>CHEF_ORGANIZATION</code>: The Chef organization with which the node was associated. By default only one organization named <code>default</code> can exist. </p> </li> </ul>
+-- Required key: ServerName
+-- Required key: NodeName
+-- @return DisassociateNodeRequest structure as a key-value pair table
+function M.DisassociateNodeRequest(args)
+	assert(args, "You must provdide an argument table when creating DisassociateNodeRequest")
 	local t = { 
-		["ServerName"] = _ServerName,
-		["NodeName"] = _NodeName,
-		["EngineAttributes"] = _EngineAttributes,
+		["ServerName"] = args["ServerName"],
+		["NodeName"] = args["NodeName"],
+		["EngineAttributes"] = args["EngineAttributes"],
 	}
 	asserts.AssertDisassociateNodeRequest(t)
 	return t
@@ -311,13 +344,16 @@ end
 
 --- Create a structure of type DescribeEventsResponse
 --  
--- @param _NextToken [String] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeEvents</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
--- @param _ServerEvents [ServerEvents] <p>Contains the response to a <code>DescribeEvents</code> request. </p>
-function M.DescribeEventsResponse(_NextToken, _ServerEvents, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeEvents</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
+-- * ServerEvents [ServerEvents] <p>Contains the response to a <code>DescribeEvents</code> request. </p>
+-- @return DescribeEventsResponse structure as a key-value pair table
+function M.DescribeEventsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ServerEvents"] = _ServerEvents,
+		["NextToken"] = args["NextToken"],
+		["ServerEvents"] = args["ServerEvents"],
 	}
 	asserts.AssertDescribeEventsResponse(t)
 	return t
@@ -337,13 +373,16 @@ end
 
 --- Create a structure of type EngineAttribute
 -- <p>A name and value pair that is specific to the engine of the server. </p>
--- @param _Name [EngineAttributeName] <p>The name of the engine attribute. </p>
--- @param _Value [EngineAttributeValue] <p>The value of the engine attribute. </p>
-function M.EngineAttribute(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EngineAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [EngineAttributeName] <p>The name of the engine attribute. </p>
+-- * Value [EngineAttributeValue] <p>The value of the engine attribute. </p>
+-- @return EngineAttribute structure as a key-value pair table
+function M.EngineAttribute(args)
+	assert(args, "You must provdide an argument table when creating EngineAttribute")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertEngineAttribute(t)
 	return t
@@ -361,8 +400,11 @@ end
 
 --- Create a structure of type DeleteServerResponse
 --  
-function M.DeleteServerResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteServerResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteServerResponse structure as a key-value pair table
+function M.DeleteServerResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteServerResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteServerResponse(t)
@@ -382,11 +424,14 @@ end
 
 --- Create a structure of type UpdateServerResponse
 --  
--- @param _Server [Server] <p>Contains the response to a <code>UpdateServer</code> request. </p>
-function M.UpdateServerResponse(_Server, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServerResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Server [Server] <p>Contains the response to a <code>UpdateServer</code> request. </p>
+-- @return UpdateServerResponse structure as a key-value pair table
+function M.UpdateServerResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateServerResponse")
 	local t = { 
-		["Server"] = _Server,
+		["Server"] = args["Server"],
 	}
 	asserts.AssertUpdateServerResponse(t)
 	return t
@@ -410,19 +455,22 @@ end
 
 --- Create a structure of type RestoreServerRequest
 --  
--- @param _KeyPair [KeyPair] <p> The name of the key pair to set on the new EC2 instance. This can be helpful if the administrator no longer has the SSH key. </p>
--- @param _BackupId [BackupId] <p> The ID of the backup that you want to use to restore a server. </p>
--- @param _ServerName [ServerName] <p> The name of the server that you want to restore. </p>
--- @param _InstanceType [String] <p> The type of the instance to create. Valid values must be specified in the following format: <code>^([cm][34]|t2).*</code> For example, <code>m4.large</code>. Valid values are <code>t2.medium</code>, <code>m4.large</code>, and <code>m4.2xlarge</code>. If you do not specify this parameter, RestoreServer uses the instance type from the specified backup. </p>
--- Required parameter: BackupId
--- Required parameter: ServerName
-function M.RestoreServerRequest(_KeyPair, _BackupId, _ServerName, _InstanceType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RestoreServerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * KeyPair [KeyPair] <p> The name of the key pair to set on the new EC2 instance. This can be helpful if the administrator no longer has the SSH key. </p>
+-- * BackupId [BackupId] <p> The ID of the backup that you want to use to restore a server. </p>
+-- * ServerName [ServerName] <p> The name of the server that you want to restore. </p>
+-- * InstanceType [String] <p> The type of the instance to create. Valid values must be specified in the following format: <code>^([cm][34]|t2).*</code> For example, <code>m4.large</code>. Valid values are <code>t2.medium</code>, <code>m4.large</code>, and <code>m4.2xlarge</code>. If you do not specify this parameter, RestoreServer uses the instance type from the specified backup. </p>
+-- Required key: BackupId
+-- Required key: ServerName
+-- @return RestoreServerRequest structure as a key-value pair table
+function M.RestoreServerRequest(args)
+	assert(args, "You must provdide an argument table when creating RestoreServerRequest")
 	local t = { 
-		["KeyPair"] = _KeyPair,
-		["BackupId"] = _BackupId,
-		["ServerName"] = _ServerName,
-		["InstanceType"] = _InstanceType,
+		["KeyPair"] = args["KeyPair"],
+		["BackupId"] = args["BackupId"],
+		["ServerName"] = args["ServerName"],
+		["InstanceType"] = args["InstanceType"],
 	}
 	asserts.AssertRestoreServerRequest(t)
 	return t
@@ -446,20 +494,23 @@ end
 
 --- Create a structure of type UpdateServerRequest
 --  
--- @param _PreferredBackupWindow [TimeWindowDefinition] 
--- @param _ServerName [ServerName] <p>The name of the server to update. </p>
--- @param _BackupRetentionCount [Integer] <p>Sets the number of automated backups that you want to keep. </p>
--- @param _DisableAutomatedBackup [Boolean] <p>Setting DisableAutomatedBackup to <code>true</code> disables automated or scheduled backups. Automated backups are enabled by default. </p>
--- @param _PreferredMaintenanceWindow [TimeWindowDefinition] 
--- Required parameter: ServerName
-function M.UpdateServerRequest(_PreferredBackupWindow, _ServerName, _BackupRetentionCount, _DisableAutomatedBackup, _PreferredMaintenanceWindow, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PreferredBackupWindow [TimeWindowDefinition] 
+-- * ServerName [ServerName] <p>The name of the server to update. </p>
+-- * BackupRetentionCount [Integer] <p>Sets the number of automated backups that you want to keep. </p>
+-- * DisableAutomatedBackup [Boolean] <p>Setting DisableAutomatedBackup to <code>true</code> disables automated or scheduled backups. Automated backups are enabled by default. </p>
+-- * PreferredMaintenanceWindow [TimeWindowDefinition] 
+-- Required key: ServerName
+-- @return UpdateServerRequest structure as a key-value pair table
+function M.UpdateServerRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateServerRequest")
 	local t = { 
-		["PreferredBackupWindow"] = _PreferredBackupWindow,
-		["ServerName"] = _ServerName,
-		["BackupRetentionCount"] = _BackupRetentionCount,
-		["DisableAutomatedBackup"] = _DisableAutomatedBackup,
-		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
+		["PreferredBackupWindow"] = args["PreferredBackupWindow"],
+		["ServerName"] = args["ServerName"],
+		["BackupRetentionCount"] = args["BackupRetentionCount"],
+		["DisableAutomatedBackup"] = args["DisableAutomatedBackup"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
 	asserts.AssertUpdateServerRequest(t)
 	return t
@@ -477,8 +528,11 @@ end
 
 --- Create a structure of type RestoreServerResponse
 --  
-function M.RestoreServerResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RestoreServerResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RestoreServerResponse structure as a key-value pair table
+function M.RestoreServerResponse(args)
+	assert(args, "You must provdide an argument table when creating RestoreServerResponse")
 	local t = { 
 	}
 	asserts.AssertRestoreServerResponse(t)
@@ -497,8 +551,11 @@ end
 
 --- Create a structure of type DeleteBackupResponse
 --  
-function M.DeleteBackupResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBackupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteBackupResponse structure as a key-value pair table
+function M.DeleteBackupResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteBackupResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteBackupResponse(t)
@@ -518,11 +575,14 @@ end
 
 --- Create a structure of type CreateBackupResponse
 --  
--- @param _Backup [Backup] <p>Backup created by request.</p>
-function M.CreateBackupResponse(_Backup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBackupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Backup [Backup] <p>Backup created by request.</p>
+-- @return CreateBackupResponse structure as a key-value pair table
+function M.CreateBackupResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateBackupResponse")
 	local t = { 
-		["Backup"] = _Backup,
+		["Backup"] = args["Backup"],
 	}
 	asserts.AssertCreateBackupResponse(t)
 	return t
@@ -541,11 +601,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The requested resource does not exist, or access was denied. </p>
--- @param _Message [String] <p>Error or informational message that can contain more detail about problems locating or accessing a resource. </p>
-function M.ResourceNotFoundException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>Error or informational message that can contain more detail about problems locating or accessing a resource. </p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -563,8 +626,11 @@ end
 
 --- Create a structure of type DescribeAccountAttributesRequest
 --  
-function M.DescribeAccountAttributesRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAccountAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DescribeAccountAttributesRequest structure as a key-value pair table
+function M.DescribeAccountAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesRequest")
 	local t = { 
 	}
 	asserts.AssertDescribeAccountAttributesRequest(t)
@@ -584,11 +650,14 @@ end
 
 --- Create a structure of type DisassociateNodeResponse
 --  
--- @param _NodeAssociationStatusToken [NodeAssociationStatusToken] <p>Contains a token which can be passed to the <code>DescribeNodeAssociationStatus</code> API call to get the status of the disassociation request. </p>
-function M.DisassociateNodeResponse(_NodeAssociationStatusToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateNodeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NodeAssociationStatusToken [NodeAssociationStatusToken] <p>Contains a token which can be passed to the <code>DescribeNodeAssociationStatus</code> API call to get the status of the disassociation request. </p>
+-- @return DisassociateNodeResponse structure as a key-value pair table
+function M.DisassociateNodeResponse(args)
+	assert(args, "You must provdide an argument table when creating DisassociateNodeResponse")
 	local t = { 
-		["NodeAssociationStatusToken"] = _NodeAssociationStatusToken,
+		["NodeAssociationStatusToken"] = args["NodeAssociationStatusToken"],
 	}
 	asserts.AssertDisassociateNodeResponse(t)
 	return t
@@ -608,13 +677,16 @@ end
 
 --- Create a structure of type DescribeServersResponse
 --  
--- @param _NextToken [String] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeServers</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
--- @param _Servers [Servers] <p>Contains the response to a <code>DescribeServers</code> request. </p>
-function M.DescribeServersResponse(_NextToken, _Servers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeServers</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
+-- * Servers [Servers] <p>Contains the response to a <code>DescribeServers</code> request. </p>
+-- @return DescribeServersResponse structure as a key-value pair table
+function M.DescribeServersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeServersResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Servers"] = _Servers,
+		["NextToken"] = args["NextToken"],
+		["Servers"] = args["Servers"],
 	}
 	asserts.AssertDescribeServersResponse(t)
 	return t
@@ -635,15 +707,18 @@ end
 
 --- Create a structure of type DescribeServersRequest
 --  
--- @param _ServerName [ServerName] <p>Describes the server with the specified ServerName.</p>
--- @param _NextToken [NextToken] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeServers</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
--- @param _MaxResults [MaxResults] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
-function M.DescribeServersRequest(_ServerName, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerName [ServerName] <p>Describes the server with the specified ServerName.</p>
+-- * NextToken [NextToken] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeServers</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
+-- * MaxResults [MaxResults] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
+-- @return DescribeServersRequest structure as a key-value pair table
+function M.DescribeServersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeServersRequest")
 	local t = { 
-		["ServerName"] = _ServerName,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["ServerName"] = args["ServerName"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeServersRequest(t)
 	return t
@@ -684,55 +759,58 @@ end
 
 --- Create a structure of type Server
 -- <p>Describes a configuration management server. </p>
--- @param _MaintenanceStatus [MaintenanceStatus] <p>The status of the most recent server maintenance run. Shows <code>SUCCESS</code> or <code>FAILED</code>. </p>
--- @param _ServerArn [String] <p>The ARN of the server. </p>
--- @param _EngineAttributes [EngineAttributes] <p>The response of a createServer() request returns the master credential to access the server in EngineAttributes. These credentials are not stored by AWS OpsWorks for Chef Automate; they are returned only as part of the result of createServer(). </p> <p class="title"> <b>Attributes returned in a createServer response:</b> </p> <ul> <li> <p> <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is generated by AWS OpsWorks for Chef Automate. This private key is required to access the Chef API.</p> </li> <li> <p> <code>CHEF_STARTER_KIT</code>: A base64-encoded ZIP file. The ZIP file contains a Chef starter kit, which includes a README, a configuration file, and the required RSA private key. Save this file, unzip it, and then change to the directory where you've unzipped the file contents. From this directory, you can run Knife commands.</p> </li> </ul>
--- @param _EngineModel [String] <p>The engine model of the server. The valid value in this release is <code>Single</code>. </p>
--- @param _Engine [String] <p>The engine type of the server. The valid value in this release is <code>Chef</code>. </p>
--- @param _CloudFormationStackArn [String] <p>The ARN of the CloudFormation stack that was used to create the server. </p>
--- @param _DisableAutomatedBackup [Boolean] <p>Disables automated backups. The number of stored backups is dependent on the value of PreferredBackupCount. </p>
--- @param _BackupRetentionCount [Integer] <p>The number of automated backups to keep. </p>
--- @param _StatusReason [String] <p> Depending on the server status, this field has either a human-readable message (such as a create or backup error), or an escaped block of JSON (used for health check results). </p>
--- @param _PreferredBackupWindow [TimeWindowDefinition] <p>The preferred backup period specified for the server. </p>
--- @param _InstanceProfileArn [String] <p>The instance profile ARN of the server. </p>
--- @param _InstanceType [String] <p> The instance type for the server, as specified in the CloudFormation stack. This might not be the same instance type that is shown in the EC2 console. </p>
--- @param _PreferredMaintenanceWindow [TimeWindowDefinition] <p>The preferred maintenance period specified for the server. </p>
--- @param _Status [ServerStatus] <p> The server's status. This field displays the states of actions in progress, such as creating, running, or backing up the server, as well as the server's health state. </p>
--- @param _Endpoint [String] <p> A DNS name that can be used to access the engine. Example: <code>myserver-asdfghjkl.us-east-1.opsworks.io</code> </p>
--- @param _ServerName [String] <p>The name of the server. </p>
--- @param _SecurityGroupIds [Strings] <p> The security group IDs for the server, as specified in the CloudFormation stack. These might not be the same security groups that are shown in the EC2 console. </p>
--- @param _KeyPair [String] <p>The key pair associated with the server. </p>
--- @param _EngineVersion [String] <p>The engine version of the server. Because Chef is the engine available in this release, the valid value for EngineVersion is <code>12</code>. </p>
--- @param _AssociatePublicIpAddress [Boolean] <p>Associate a public IP address with a server that you are launching. </p>
--- @param _SubnetIds [Strings] <p> The subnet IDs specified in a CreateServer request. </p>
--- @param _CreatedAt [Timestamp] <p>Time stamp of server creation. Example <code>2016-07-29T13:38:47.520Z</code> </p>
--- @param _ServiceRoleArn [String] <p>The service role ARN used to create the server. </p>
-function M.Server(_MaintenanceStatus, _ServerArn, _EngineAttributes, _EngineModel, _Engine, _CloudFormationStackArn, _DisableAutomatedBackup, _BackupRetentionCount, _StatusReason, _PreferredBackupWindow, _InstanceProfileArn, _InstanceType, _PreferredMaintenanceWindow, _Status, _Endpoint, _ServerName, _SecurityGroupIds, _KeyPair, _EngineVersion, _AssociatePublicIpAddress, _SubnetIds, _CreatedAt, _ServiceRoleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Server")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaintenanceStatus [MaintenanceStatus] <p>The status of the most recent server maintenance run. Shows <code>SUCCESS</code> or <code>FAILED</code>. </p>
+-- * ServerArn [String] <p>The ARN of the server. </p>
+-- * EngineAttributes [EngineAttributes] <p>The response of a createServer() request returns the master credential to access the server in EngineAttributes. These credentials are not stored by AWS OpsWorks for Chef Automate; they are returned only as part of the result of createServer(). </p> <p class="title"> <b>Attributes returned in a createServer response:</b> </p> <ul> <li> <p> <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is generated by AWS OpsWorks for Chef Automate. This private key is required to access the Chef API.</p> </li> <li> <p> <code>CHEF_STARTER_KIT</code>: A base64-encoded ZIP file. The ZIP file contains a Chef starter kit, which includes a README, a configuration file, and the required RSA private key. Save this file, unzip it, and then change to the directory where you've unzipped the file contents. From this directory, you can run Knife commands.</p> </li> </ul>
+-- * EngineModel [String] <p>The engine model of the server. The valid value in this release is <code>Single</code>. </p>
+-- * Engine [String] <p>The engine type of the server. The valid value in this release is <code>Chef</code>. </p>
+-- * CloudFormationStackArn [String] <p>The ARN of the CloudFormation stack that was used to create the server. </p>
+-- * DisableAutomatedBackup [Boolean] <p>Disables automated backups. The number of stored backups is dependent on the value of PreferredBackupCount. </p>
+-- * BackupRetentionCount [Integer] <p>The number of automated backups to keep. </p>
+-- * StatusReason [String] <p> Depending on the server status, this field has either a human-readable message (such as a create or backup error), or an escaped block of JSON (used for health check results). </p>
+-- * PreferredBackupWindow [TimeWindowDefinition] <p>The preferred backup period specified for the server. </p>
+-- * InstanceProfileArn [String] <p>The instance profile ARN of the server. </p>
+-- * InstanceType [String] <p> The instance type for the server, as specified in the CloudFormation stack. This might not be the same instance type that is shown in the EC2 console. </p>
+-- * PreferredMaintenanceWindow [TimeWindowDefinition] <p>The preferred maintenance period specified for the server. </p>
+-- * Status [ServerStatus] <p> The server's status. This field displays the states of actions in progress, such as creating, running, or backing up the server, as well as the server's health state. </p>
+-- * Endpoint [String] <p> A DNS name that can be used to access the engine. Example: <code>myserver-asdfghjkl.us-east-1.opsworks.io</code> </p>
+-- * ServerName [String] <p>The name of the server. </p>
+-- * SecurityGroupIds [Strings] <p> The security group IDs for the server, as specified in the CloudFormation stack. These might not be the same security groups that are shown in the EC2 console. </p>
+-- * KeyPair [String] <p>The key pair associated with the server. </p>
+-- * EngineVersion [String] <p>The engine version of the server. Because Chef is the engine available in this release, the valid value for EngineVersion is <code>12</code>. </p>
+-- * AssociatePublicIpAddress [Boolean] <p>Associate a public IP address with a server that you are launching. </p>
+-- * SubnetIds [Strings] <p> The subnet IDs specified in a CreateServer request. </p>
+-- * CreatedAt [Timestamp] <p>Time stamp of server creation. Example <code>2016-07-29T13:38:47.520Z</code> </p>
+-- * ServiceRoleArn [String] <p>The service role ARN used to create the server. </p>
+-- @return Server structure as a key-value pair table
+function M.Server(args)
+	assert(args, "You must provdide an argument table when creating Server")
 	local t = { 
-		["MaintenanceStatus"] = _MaintenanceStatus,
-		["ServerArn"] = _ServerArn,
-		["EngineAttributes"] = _EngineAttributes,
-		["EngineModel"] = _EngineModel,
-		["Engine"] = _Engine,
-		["CloudFormationStackArn"] = _CloudFormationStackArn,
-		["DisableAutomatedBackup"] = _DisableAutomatedBackup,
-		["BackupRetentionCount"] = _BackupRetentionCount,
-		["StatusReason"] = _StatusReason,
-		["PreferredBackupWindow"] = _PreferredBackupWindow,
-		["InstanceProfileArn"] = _InstanceProfileArn,
-		["InstanceType"] = _InstanceType,
-		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
-		["Status"] = _Status,
-		["Endpoint"] = _Endpoint,
-		["ServerName"] = _ServerName,
-		["SecurityGroupIds"] = _SecurityGroupIds,
-		["KeyPair"] = _KeyPair,
-		["EngineVersion"] = _EngineVersion,
-		["AssociatePublicIpAddress"] = _AssociatePublicIpAddress,
-		["SubnetIds"] = _SubnetIds,
-		["CreatedAt"] = _CreatedAt,
-		["ServiceRoleArn"] = _ServiceRoleArn,
+		["MaintenanceStatus"] = args["MaintenanceStatus"],
+		["ServerArn"] = args["ServerArn"],
+		["EngineAttributes"] = args["EngineAttributes"],
+		["EngineModel"] = args["EngineModel"],
+		["Engine"] = args["Engine"],
+		["CloudFormationStackArn"] = args["CloudFormationStackArn"],
+		["DisableAutomatedBackup"] = args["DisableAutomatedBackup"],
+		["BackupRetentionCount"] = args["BackupRetentionCount"],
+		["StatusReason"] = args["StatusReason"],
+		["PreferredBackupWindow"] = args["PreferredBackupWindow"],
+		["InstanceProfileArn"] = args["InstanceProfileArn"],
+		["InstanceType"] = args["InstanceType"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
+		["Status"] = args["Status"],
+		["Endpoint"] = args["Endpoint"],
+		["ServerName"] = args["ServerName"],
+		["SecurityGroupIds"] = args["SecurityGroupIds"],
+		["KeyPair"] = args["KeyPair"],
+		["EngineVersion"] = args["EngineVersion"],
+		["AssociatePublicIpAddress"] = args["AssociatePublicIpAddress"],
+		["SubnetIds"] = args["SubnetIds"],
+		["CreatedAt"] = args["CreatedAt"],
+		["ServiceRoleArn"] = args["ServiceRoleArn"],
 	}
 	asserts.AssertServer(t)
 	return t
@@ -751,11 +829,14 @@ end
 
 --- Create a structure of type DescribeNodeAssociationStatusResponse
 --  
--- @param _NodeAssociationStatus [NodeAssociationStatus] <p>The status of the association or disassociation request. </p> <p class="title"> <b>Possible values:</b> </p> <ul> <li> <p> <code>SUCCESS</code>: The association or disassociation succeeded. </p> </li> <li> <p> <code>FAILED</code>: The association or disassociation failed. </p> </li> <li> <p> <code>IN_PROGRESS</code>: The association or disassociation is still in progress. </p> </li> </ul>
-function M.DescribeNodeAssociationStatusResponse(_NodeAssociationStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNodeAssociationStatusResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NodeAssociationStatus [NodeAssociationStatus] <p>The status of the association or disassociation request. </p> <p class="title"> <b>Possible values:</b> </p> <ul> <li> <p> <code>SUCCESS</code>: The association or disassociation succeeded. </p> </li> <li> <p> <code>FAILED</code>: The association or disassociation failed. </p> </li> <li> <p> <code>IN_PROGRESS</code>: The association or disassociation is still in progress. </p> </li> </ul>
+-- @return DescribeNodeAssociationStatusResponse structure as a key-value pair table
+function M.DescribeNodeAssociationStatusResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeNodeAssociationStatusResponse")
 	local t = { 
-		["NodeAssociationStatus"] = _NodeAssociationStatus,
+		["NodeAssociationStatus"] = args["NodeAssociationStatus"],
 	}
 	asserts.AssertDescribeNodeAssociationStatusResponse(t)
 	return t
@@ -777,17 +858,20 @@ end
 
 --- Create a structure of type DescribeBackupsRequest
 --  
--- @param _BackupId [BackupId] <p>Describes a single backup. </p>
--- @param _ServerName [ServerName] <p>Returns backups for the server with the specified ServerName. </p>
--- @param _NextToken [NextToken] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeBackups</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur.</p>
--- @param _MaxResults [MaxResults] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
-function M.DescribeBackupsRequest(_BackupId, _ServerName, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBackupsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BackupId [BackupId] <p>Describes a single backup. </p>
+-- * ServerName [ServerName] <p>Returns backups for the server with the specified ServerName. </p>
+-- * NextToken [NextToken] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeBackups</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur.</p>
+-- * MaxResults [MaxResults] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
+-- @return DescribeBackupsRequest structure as a key-value pair table
+function M.DescribeBackupsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeBackupsRequest")
 	local t = { 
-		["BackupId"] = _BackupId,
-		["ServerName"] = _ServerName,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["BackupId"] = args["BackupId"],
+		["ServerName"] = args["ServerName"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeBackupsRequest(t)
 	return t
@@ -806,11 +890,14 @@ end
 
 --- Create a structure of type AssociateNodeResponse
 --  
--- @param _NodeAssociationStatusToken [NodeAssociationStatusToken] <p>Contains a token which can be passed to the <code>DescribeNodeAssociationStatus</code> API call to get the status of the association request. </p>
-function M.AssociateNodeResponse(_NodeAssociationStatusToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateNodeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NodeAssociationStatusToken [NodeAssociationStatusToken] <p>Contains a token which can be passed to the <code>DescribeNodeAssociationStatus</code> API call to get the status of the association request. </p>
+-- @return AssociateNodeResponse structure as a key-value pair table
+function M.AssociateNodeResponse(args)
+	assert(args, "You must provdide an argument table when creating AssociateNodeResponse")
 	local t = { 
-		["NodeAssociationStatusToken"] = _NodeAssociationStatusToken,
+		["NodeAssociationStatusToken"] = args["NodeAssociationStatusToken"],
 	}
 	asserts.AssertAssociateNodeResponse(t)
 	return t
@@ -832,17 +919,20 @@ end
 
 --- Create a structure of type ServerEvent
 -- <p>An event that is related to the server, such as the start of maintenance or backup. </p>
--- @param _ServerName [String] <p>The name of the server on or for which the event occurred. </p>
--- @param _Message [String] <p>A human-readable informational or status message.</p>
--- @param _CreatedAt [Timestamp] <p>The time when the event occurred. </p>
--- @param _LogUrl [String] <p>The Amazon S3 URL of the event's log file.</p>
-function M.ServerEvent(_ServerName, _Message, _CreatedAt, _LogUrl, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServerEvent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerName [String] <p>The name of the server on or for which the event occurred. </p>
+-- * Message [String] <p>A human-readable informational or status message.</p>
+-- * CreatedAt [Timestamp] <p>The time when the event occurred. </p>
+-- * LogUrl [String] <p>The Amazon S3 URL of the event's log file.</p>
+-- @return ServerEvent structure as a key-value pair table
+function M.ServerEvent(args)
+	assert(args, "You must provdide an argument table when creating ServerEvent")
 	local t = { 
-		["ServerName"] = _ServerName,
-		["Message"] = _Message,
-		["CreatedAt"] = _CreatedAt,
-		["LogUrl"] = _LogUrl,
+		["ServerName"] = args["ServerName"],
+		["Message"] = args["Message"],
+		["CreatedAt"] = args["CreatedAt"],
+		["LogUrl"] = args["LogUrl"],
 	}
 	asserts.AssertServerEvent(t)
 	return t
@@ -862,12 +952,15 @@ end
 
 --- Create a structure of type DeleteBackupRequest
 --  
--- @param _BackupId [BackupId] <p>The ID of the backup to delete. Run the DescribeBackups command to get a list of backup IDs. Backup IDs are in the format <code>ServerName-yyyyMMddHHmmssSSS</code>. </p>
--- Required parameter: BackupId
-function M.DeleteBackupRequest(_BackupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBackupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BackupId [BackupId] <p>The ID of the backup to delete. Run the DescribeBackups command to get a list of backup IDs. Backup IDs are in the format <code>ServerName-yyyyMMddHHmmssSSS</code>. </p>
+-- Required key: BackupId
+-- @return DeleteBackupRequest structure as a key-value pair table
+function M.DeleteBackupRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBackupRequest")
 	local t = { 
-		["BackupId"] = _BackupId,
+		["BackupId"] = args["BackupId"],
 	}
 	asserts.AssertDeleteBackupRequest(t)
 	return t
@@ -906,47 +999,50 @@ end
 
 --- Create a structure of type CreateServerRequest
 --  
--- @param _Engine [String] <p> The configuration management engine to use. Valid values include <code>Chef</code>. </p>
--- @param _ServiceRoleArn [ServiceRoleArn] <p> The service role that the AWS OpsWorks for Chef Automate service backend uses to work with your account. Although the AWS OpsWorks management console typically creates the service role for you, if you are using the AWS CLI or API commands, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-stuff/latest/service-role-creation.yaml. This template creates a CloudFormation stack that includes the service role that you need. </p>
--- @param _SubnetIds [Strings] <p> The IDs of subnets in which to launch the server EC2 instance. </p> <p> Amazon EC2-Classic customers: This field is required. All servers must run within a VPC. The VPC must have "Auto Assign Public IP" enabled. </p> <p> EC2-VPC customers: This field is optional. If you do not specify subnet IDs, your EC2 instances are created in a default subnet that is selected by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto Assign Public IP" enabled. </p> <p>For more information about supported Amazon EC2 platforms, see <a href="http://docs.aws.amazon.com/https:/docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.</p>
--- @param _DisableAutomatedBackup [Boolean] <p> Enable or disable scheduled backups. Valid values are <code>true</code> or <code>false</code>. The default value is <code>true</code>. </p>
--- @param _PreferredMaintenanceWindow [TimeWindowDefinition] <p> The start time for a one-hour period each week during which AWS OpsWorks for Chef Automate performs maintenance on the instance. Valid values must be specified in the following format: <code>DDD:HH:MM</code>. The specified time is in coordinated universal time (UTC). The default value is a random one-hour period on Tuesday, Wednesday, or Friday. See <code>TimeWindowDefinition</code> for more information. </p> <p> <b>Example:</b> <code>Mon:08:00</code>, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.) </p>
--- @param _ServerName [ServerName] <p> The name of the server. The server name must be unique within your AWS account, within each region. Server names must start with a letter; then letters, numbers, or hyphens (-) are allowed, up to a maximum of 40 characters. </p>
--- @param _BackupRetentionCount [BackupRetentionCountDefinition] <p> The number of automated backups that you want to keep. Whenever a new backup is created, AWS OpsWorks for Chef Automate deletes the oldest backups if this number is exceeded. The default value is <code>1</code>. </p>
--- @param _InstanceType [String] <p> The Amazon EC2 instance type to use. Valid values must be specified in the following format: <code>^([cm][34]|t2).*</code> For example, <code>m4.large</code>. Valid values are <code>t2.medium</code>, <code>m4.large</code>, or <code>m4.2xlarge</code>. </p>
--- @param _PreferredBackupWindow [TimeWindowDefinition] <p> The start time for a one-hour period during which AWS OpsWorks for Chef Automate backs up application-level data on your server if automated backups are enabled. Valid values must be specified in one of the following formats: </p> <ul> <li> <p> <code>HH:MM</code> for daily backups</p> </li> <li> <p> <code>DDD:HH:MM</code> for weekly backups</p> </li> </ul> <p>The specified time is in coordinated universal time (UTC). The default value is a random, daily start time.</p> <p> <b>Example:</b> <code>08:00</code>, which represents a daily start time of 08:00 UTC.</p> <p> <b>Example:</b> <code>Mon:08:00</code>, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.)</p>
--- @param _KeyPair [KeyPair] <p> The Amazon EC2 key pair to set for the instance. This parameter is optional; if desired, you may specify this parameter to connect to your instances by using SSH. </p>
--- @param _AssociatePublicIpAddress [Boolean] <p> Associate a public IP address with a server that you are launching. Valid values are <code>true</code> or <code>false</code>. The default value is <code>true</code>. </p>
--- @param _SecurityGroupIds [Strings] <p> A list of security group IDs to attach to the Amazon EC2 instance. If you add this parameter, the specified security groups must be within the VPC that is specified by <code>SubnetIds</code>. </p> <p> If you do not specify this parameter, AWS OpsWorks for Chef Automate creates one new security group that uses TCP ports 22 and 443, open to 0.0.0.0/0 (everyone). </p>
--- @param _EngineVersion [String] <p> The major release version of the engine that you want to use. Values depend on the engine that you choose. </p>
--- @param _BackupId [BackupId] <p> If you specify this field, AWS OpsWorks for Chef Automate creates the server by using the backup represented by BackupId. </p>
--- @param _InstanceProfileArn [InstanceProfileArn] <p> The ARN of the instance profile that your Amazon EC2 instances use. Although the AWS OpsWorks console typically creates the instance profile for you, if you are using API commands instead, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the instance profile you need. </p>
--- @param _EngineAttributes [EngineAttributes] <p>Optional engine attributes on a specified server. </p> <p class="title"> <b>Attributes accepted in a createServer request:</b> </p> <ul> <li> <p> <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated and returned in the response. </p> </li> <li> <p> <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower case letter, one upper case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.</p> </li> </ul>
--- @param _EngineModel [String] <p> The engine model, or option. Valid values include <code>Single</code>. </p>
--- Required parameter: ServerName
--- Required parameter: InstanceProfileArn
--- Required parameter: InstanceType
--- Required parameter: ServiceRoleArn
-function M.CreateServerRequest(_Engine, _ServiceRoleArn, _SubnetIds, _DisableAutomatedBackup, _PreferredMaintenanceWindow, _ServerName, _BackupRetentionCount, _InstanceType, _PreferredBackupWindow, _KeyPair, _AssociatePublicIpAddress, _SecurityGroupIds, _EngineVersion, _BackupId, _InstanceProfileArn, _EngineAttributes, _EngineModel, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateServerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Engine [String] <p> The configuration management engine to use. Valid values include <code>Chef</code>. </p>
+-- * ServiceRoleArn [ServiceRoleArn] <p> The service role that the AWS OpsWorks for Chef Automate service backend uses to work with your account. Although the AWS OpsWorks management console typically creates the service role for you, if you are using the AWS CLI or API commands, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-stuff/latest/service-role-creation.yaml. This template creates a CloudFormation stack that includes the service role that you need. </p>
+-- * SubnetIds [Strings] <p> The IDs of subnets in which to launch the server EC2 instance. </p> <p> Amazon EC2-Classic customers: This field is required. All servers must run within a VPC. The VPC must have "Auto Assign Public IP" enabled. </p> <p> EC2-VPC customers: This field is optional. If you do not specify subnet IDs, your EC2 instances are created in a default subnet that is selected by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto Assign Public IP" enabled. </p> <p>For more information about supported Amazon EC2 platforms, see <a href="http://docs.aws.amazon.com/https:/docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>.</p>
+-- * DisableAutomatedBackup [Boolean] <p> Enable or disable scheduled backups. Valid values are <code>true</code> or <code>false</code>. The default value is <code>true</code>. </p>
+-- * PreferredMaintenanceWindow [TimeWindowDefinition] <p> The start time for a one-hour period each week during which AWS OpsWorks for Chef Automate performs maintenance on the instance. Valid values must be specified in the following format: <code>DDD:HH:MM</code>. The specified time is in coordinated universal time (UTC). The default value is a random one-hour period on Tuesday, Wednesday, or Friday. See <code>TimeWindowDefinition</code> for more information. </p> <p> <b>Example:</b> <code>Mon:08:00</code>, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.) </p>
+-- * ServerName [ServerName] <p> The name of the server. The server name must be unique within your AWS account, within each region. Server names must start with a letter; then letters, numbers, or hyphens (-) are allowed, up to a maximum of 40 characters. </p>
+-- * BackupRetentionCount [BackupRetentionCountDefinition] <p> The number of automated backups that you want to keep. Whenever a new backup is created, AWS OpsWorks for Chef Automate deletes the oldest backups if this number is exceeded. The default value is <code>1</code>. </p>
+-- * InstanceType [String] <p> The Amazon EC2 instance type to use. Valid values must be specified in the following format: <code>^([cm][34]|t2).*</code> For example, <code>m4.large</code>. Valid values are <code>t2.medium</code>, <code>m4.large</code>, or <code>m4.2xlarge</code>. </p>
+-- * PreferredBackupWindow [TimeWindowDefinition] <p> The start time for a one-hour period during which AWS OpsWorks for Chef Automate backs up application-level data on your server if automated backups are enabled. Valid values must be specified in one of the following formats: </p> <ul> <li> <p> <code>HH:MM</code> for daily backups</p> </li> <li> <p> <code>DDD:HH:MM</code> for weekly backups</p> </li> </ul> <p>The specified time is in coordinated universal time (UTC). The default value is a random, daily start time.</p> <p> <b>Example:</b> <code>08:00</code>, which represents a daily start time of 08:00 UTC.</p> <p> <b>Example:</b> <code>Mon:08:00</code>, which represents a start time of every Monday at 08:00 UTC. (8:00 a.m.)</p>
+-- * KeyPair [KeyPair] <p> The Amazon EC2 key pair to set for the instance. This parameter is optional; if desired, you may specify this parameter to connect to your instances by using SSH. </p>
+-- * AssociatePublicIpAddress [Boolean] <p> Associate a public IP address with a server that you are launching. Valid values are <code>true</code> or <code>false</code>. The default value is <code>true</code>. </p>
+-- * SecurityGroupIds [Strings] <p> A list of security group IDs to attach to the Amazon EC2 instance. If you add this parameter, the specified security groups must be within the VPC that is specified by <code>SubnetIds</code>. </p> <p> If you do not specify this parameter, AWS OpsWorks for Chef Automate creates one new security group that uses TCP ports 22 and 443, open to 0.0.0.0/0 (everyone). </p>
+-- * EngineVersion [String] <p> The major release version of the engine that you want to use. Values depend on the engine that you choose. </p>
+-- * BackupId [BackupId] <p> If you specify this field, AWS OpsWorks for Chef Automate creates the server by using the backup represented by BackupId. </p>
+-- * InstanceProfileArn [InstanceProfileArn] <p> The ARN of the instance profile that your Amazon EC2 instances use. Although the AWS OpsWorks console typically creates the instance profile for you, if you are using API commands instead, run the service-role-creation.yaml AWS CloudFormation template, located at https://s3.amazonaws.com/opsworks-cm-us-east-1-prod-default-assets/misc/opsworks-cm-roles.yaml. This template creates a CloudFormation stack that includes the instance profile you need. </p>
+-- * EngineAttributes [EngineAttributes] <p>Optional engine attributes on a specified server. </p> <p class="title"> <b>Attributes accepted in a createServer request:</b> </p> <ul> <li> <p> <code>CHEF_PIVOTAL_KEY</code>: A base64-encoded RSA private key that is not stored by AWS OpsWorks for Chef. This private key is required to access the Chef API. When no CHEF_PIVOTAL_KEY is set, one is generated and returned in the response. </p> </li> <li> <p> <code>CHEF_DELIVERY_ADMIN_PASSWORD</code>: The password for the administrative user in the Chef Automate GUI. The password length is a minimum of eight characters, and a maximum of 32. The password can contain letters, numbers, and special characters (!/@#$%^&amp;+=_). The password must contain at least one lower case letter, one upper case letter, one number, and one special character. When no CHEF_DELIVERY_ADMIN_PASSWORD is set, one is generated and returned in the response.</p> </li> </ul>
+-- * EngineModel [String] <p> The engine model, or option. Valid values include <code>Single</code>. </p>
+-- Required key: ServerName
+-- Required key: InstanceProfileArn
+-- Required key: InstanceType
+-- Required key: ServiceRoleArn
+-- @return CreateServerRequest structure as a key-value pair table
+function M.CreateServerRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateServerRequest")
 	local t = { 
-		["Engine"] = _Engine,
-		["ServiceRoleArn"] = _ServiceRoleArn,
-		["SubnetIds"] = _SubnetIds,
-		["DisableAutomatedBackup"] = _DisableAutomatedBackup,
-		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
-		["ServerName"] = _ServerName,
-		["BackupRetentionCount"] = _BackupRetentionCount,
-		["InstanceType"] = _InstanceType,
-		["PreferredBackupWindow"] = _PreferredBackupWindow,
-		["KeyPair"] = _KeyPair,
-		["AssociatePublicIpAddress"] = _AssociatePublicIpAddress,
-		["SecurityGroupIds"] = _SecurityGroupIds,
-		["EngineVersion"] = _EngineVersion,
-		["BackupId"] = _BackupId,
-		["InstanceProfileArn"] = _InstanceProfileArn,
-		["EngineAttributes"] = _EngineAttributes,
-		["EngineModel"] = _EngineModel,
+		["Engine"] = args["Engine"],
+		["ServiceRoleArn"] = args["ServiceRoleArn"],
+		["SubnetIds"] = args["SubnetIds"],
+		["DisableAutomatedBackup"] = args["DisableAutomatedBackup"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
+		["ServerName"] = args["ServerName"],
+		["BackupRetentionCount"] = args["BackupRetentionCount"],
+		["InstanceType"] = args["InstanceType"],
+		["PreferredBackupWindow"] = args["PreferredBackupWindow"],
+		["KeyPair"] = args["KeyPair"],
+		["AssociatePublicIpAddress"] = args["AssociatePublicIpAddress"],
+		["SecurityGroupIds"] = args["SecurityGroupIds"],
+		["EngineVersion"] = args["EngineVersion"],
+		["BackupId"] = args["BackupId"],
+		["InstanceProfileArn"] = args["InstanceProfileArn"],
+		["EngineAttributes"] = args["EngineAttributes"],
+		["EngineModel"] = args["EngineModel"],
 	}
 	asserts.AssertCreateServerRequest(t)
 	return t
@@ -968,16 +1064,19 @@ end
 
 --- Create a structure of type DescribeEventsRequest
 --  
--- @param _ServerName [ServerName] <p>The name of the server for which you want to view events.</p>
--- @param _NextToken [NextToken] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeEvents</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
--- @param _MaxResults [MaxResults] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
--- Required parameter: ServerName
-function M.DescribeEventsRequest(_ServerName, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEventsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerName [ServerName] <p>The name of the server for which you want to view events.</p>
+-- * NextToken [NextToken] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeEvents</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
+-- * MaxResults [MaxResults] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
+-- Required key: ServerName
+-- @return DescribeEventsRequest structure as a key-value pair table
+function M.DescribeEventsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEventsRequest")
 	local t = { 
-		["ServerName"] = _ServerName,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["ServerName"] = args["ServerName"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeEventsRequest(t)
 	return t
@@ -997,12 +1096,15 @@ end
 
 --- Create a structure of type StartMaintenanceRequest
 --  
--- @param _ServerName [ServerName] <p>The name of the server on which to run maintenance. </p>
--- Required parameter: ServerName
-function M.StartMaintenanceRequest(_ServerName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartMaintenanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerName [ServerName] <p>The name of the server on which to run maintenance. </p>
+-- Required key: ServerName
+-- @return StartMaintenanceRequest structure as a key-value pair table
+function M.StartMaintenanceRequest(args)
+	assert(args, "You must provdide an argument table when creating StartMaintenanceRequest")
 	local t = { 
-		["ServerName"] = _ServerName,
+		["ServerName"] = args["ServerName"],
 	}
 	asserts.AssertStartMaintenanceRequest(t)
 	return t
@@ -1044,57 +1146,60 @@ end
 
 --- Create a structure of type Backup
 -- <p>Describes a single backup. </p>
--- @param _ToolsVersion [String] <p> The version of AWS OpsWorks for Chef Automate-specific tools that is obtained from the server when the backup is created. </p>
--- @param _S3DataUrl [String] <p> This field is deprecated and is no longer used. </p>
--- @param _EngineModel [String] <p> The engine model that is obtained from the server when the backup is created. </p>
--- @param _S3DataSize [Integer] <p> This field is deprecated and is no longer used. </p>
--- @param _Engine [String] <p> The engine type that is obtained from the server when the backup is created. </p>
--- @param _Description [String] <p> A user-provided description for a manual backup. This field is empty for automated backups. </p>
--- @param _S3LogUrl [String] <p> The Amazon S3 URL of the backup's log file. </p>
--- @param _PreferredBackupWindow [TimeWindowDefinition] <p> The preferred backup period that is obtained from the server when the backup is created. </p>
--- @param _BackupArn [String] <p>The ARN of the backup. </p>
--- @param _InstanceProfileArn [String] <p> The EC2 instance profile ARN that is obtained from the server when the backup is created. Because this value is stored, you are not required to provide the InstanceProfileArn again if you restore a backup. </p>
--- @param _InstanceType [String] <p> The instance type that is obtained from the server when the backup is created. </p>
--- @param _PreferredMaintenanceWindow [TimeWindowDefinition] <p> The preferred maintenance period that is obtained from the server when the backup is created. </p>
--- @param _Status [BackupStatus] <p>The status of a backup while in progress. </p>
--- @param _ServerName [ServerName] <p> The name of the server from which the backup was made. </p>
--- @param _SecurityGroupIds [Strings] <p> The security group IDs that are obtained from the server when the backup is created. </p>
--- @param _BackupType [BackupType] <p> The backup type. Valid values are <code>automated</code> or <code>manual</code>. </p>
--- @param _KeyPair [String] <p> The key pair that is obtained from the server when the backup is created. </p>
--- @param _EngineVersion [String] <p> The engine version that is obtained from the server when the backup is created. </p>
--- @param _StatusDescription [String] <p> An informational message about backup status. </p>
--- @param _UserArn [String] <p> The IAM user ARN of the requester for manual backups. This field is empty for automated backups. </p>
--- @param _SubnetIds [Strings] <p> The subnet IDs that are obtained from the server when the backup is created. </p>
--- @param _CreatedAt [Timestamp] <p> The time stamp when the backup was created in the database. Example: <code>2016-07-29T13:38:47.520Z</code> </p>
--- @param _BackupId [BackupId] <p> The generated ID of the backup. Example: <code>myServerName-yyyyMMddHHmmssSSS</code> </p>
--- @param _ServiceRoleArn [String] <p> The service role ARN that is obtained from the server when the backup is created. </p>
-function M.Backup(_ToolsVersion, _S3DataUrl, _EngineModel, _S3DataSize, _Engine, _Description, _S3LogUrl, _PreferredBackupWindow, _BackupArn, _InstanceProfileArn, _InstanceType, _PreferredMaintenanceWindow, _Status, _ServerName, _SecurityGroupIds, _BackupType, _KeyPair, _EngineVersion, _StatusDescription, _UserArn, _SubnetIds, _CreatedAt, _BackupId, _ServiceRoleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Backup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ToolsVersion [String] <p> The version of AWS OpsWorks for Chef Automate-specific tools that is obtained from the server when the backup is created. </p>
+-- * S3DataUrl [String] <p> This field is deprecated and is no longer used. </p>
+-- * EngineModel [String] <p> The engine model that is obtained from the server when the backup is created. </p>
+-- * S3DataSize [Integer] <p> This field is deprecated and is no longer used. </p>
+-- * Engine [String] <p> The engine type that is obtained from the server when the backup is created. </p>
+-- * Description [String] <p> A user-provided description for a manual backup. This field is empty for automated backups. </p>
+-- * S3LogUrl [String] <p> The Amazon S3 URL of the backup's log file. </p>
+-- * PreferredBackupWindow [TimeWindowDefinition] <p> The preferred backup period that is obtained from the server when the backup is created. </p>
+-- * BackupArn [String] <p>The ARN of the backup. </p>
+-- * InstanceProfileArn [String] <p> The EC2 instance profile ARN that is obtained from the server when the backup is created. Because this value is stored, you are not required to provide the InstanceProfileArn again if you restore a backup. </p>
+-- * InstanceType [String] <p> The instance type that is obtained from the server when the backup is created. </p>
+-- * PreferredMaintenanceWindow [TimeWindowDefinition] <p> The preferred maintenance period that is obtained from the server when the backup is created. </p>
+-- * Status [BackupStatus] <p>The status of a backup while in progress. </p>
+-- * ServerName [ServerName] <p> The name of the server from which the backup was made. </p>
+-- * SecurityGroupIds [Strings] <p> The security group IDs that are obtained from the server when the backup is created. </p>
+-- * BackupType [BackupType] <p> The backup type. Valid values are <code>automated</code> or <code>manual</code>. </p>
+-- * KeyPair [String] <p> The key pair that is obtained from the server when the backup is created. </p>
+-- * EngineVersion [String] <p> The engine version that is obtained from the server when the backup is created. </p>
+-- * StatusDescription [String] <p> An informational message about backup status. </p>
+-- * UserArn [String] <p> The IAM user ARN of the requester for manual backups. This field is empty for automated backups. </p>
+-- * SubnetIds [Strings] <p> The subnet IDs that are obtained from the server when the backup is created. </p>
+-- * CreatedAt [Timestamp] <p> The time stamp when the backup was created in the database. Example: <code>2016-07-29T13:38:47.520Z</code> </p>
+-- * BackupId [BackupId] <p> The generated ID of the backup. Example: <code>myServerName-yyyyMMddHHmmssSSS</code> </p>
+-- * ServiceRoleArn [String] <p> The service role ARN that is obtained from the server when the backup is created. </p>
+-- @return Backup structure as a key-value pair table
+function M.Backup(args)
+	assert(args, "You must provdide an argument table when creating Backup")
 	local t = { 
-		["ToolsVersion"] = _ToolsVersion,
-		["S3DataUrl"] = _S3DataUrl,
-		["EngineModel"] = _EngineModel,
-		["S3DataSize"] = _S3DataSize,
-		["Engine"] = _Engine,
-		["Description"] = _Description,
-		["S3LogUrl"] = _S3LogUrl,
-		["PreferredBackupWindow"] = _PreferredBackupWindow,
-		["BackupArn"] = _BackupArn,
-		["InstanceProfileArn"] = _InstanceProfileArn,
-		["InstanceType"] = _InstanceType,
-		["PreferredMaintenanceWindow"] = _PreferredMaintenanceWindow,
-		["Status"] = _Status,
-		["ServerName"] = _ServerName,
-		["SecurityGroupIds"] = _SecurityGroupIds,
-		["BackupType"] = _BackupType,
-		["KeyPair"] = _KeyPair,
-		["EngineVersion"] = _EngineVersion,
-		["StatusDescription"] = _StatusDescription,
-		["UserArn"] = _UserArn,
-		["SubnetIds"] = _SubnetIds,
-		["CreatedAt"] = _CreatedAt,
-		["BackupId"] = _BackupId,
-		["ServiceRoleArn"] = _ServiceRoleArn,
+		["ToolsVersion"] = args["ToolsVersion"],
+		["S3DataUrl"] = args["S3DataUrl"],
+		["EngineModel"] = args["EngineModel"],
+		["S3DataSize"] = args["S3DataSize"],
+		["Engine"] = args["Engine"],
+		["Description"] = args["Description"],
+		["S3LogUrl"] = args["S3LogUrl"],
+		["PreferredBackupWindow"] = args["PreferredBackupWindow"],
+		["BackupArn"] = args["BackupArn"],
+		["InstanceProfileArn"] = args["InstanceProfileArn"],
+		["InstanceType"] = args["InstanceType"],
+		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
+		["Status"] = args["Status"],
+		["ServerName"] = args["ServerName"],
+		["SecurityGroupIds"] = args["SecurityGroupIds"],
+		["BackupType"] = args["BackupType"],
+		["KeyPair"] = args["KeyPair"],
+		["EngineVersion"] = args["EngineVersion"],
+		["StatusDescription"] = args["StatusDescription"],
+		["UserArn"] = args["UserArn"],
+		["SubnetIds"] = args["SubnetIds"],
+		["CreatedAt"] = args["CreatedAt"],
+		["BackupId"] = args["BackupId"],
+		["ServiceRoleArn"] = args["ServiceRoleArn"],
 	}
 	asserts.AssertBackup(t)
 	return t
@@ -1114,13 +1219,16 @@ end
 
 --- Create a structure of type DescribeBackupsResponse
 --  
--- @param _Backups [Backups] <p>Contains the response to a <code>DescribeBackups</code> request. </p>
--- @param _NextToken [String] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeBackups</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
-function M.DescribeBackupsResponse(_Backups, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeBackupsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Backups [Backups] <p>Contains the response to a <code>DescribeBackups</code> request. </p>
+-- * NextToken [String] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeBackups</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
+-- @return DescribeBackupsResponse structure as a key-value pair table
+function M.DescribeBackupsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeBackupsResponse")
 	local t = { 
-		["Backups"] = _Backups,
-		["NextToken"] = _NextToken,
+		["Backups"] = args["Backups"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertDescribeBackupsResponse(t)
 	return t
@@ -1144,18 +1252,21 @@ end
 
 --- Create a structure of type AssociateNodeRequest
 --  
--- @param _ServerName [ServerName] <p>The name of the server with which to associate the node. </p>
--- @param _NodeName [NodeName] <p>The name of the Chef client node. </p>
--- @param _EngineAttributes [EngineAttributes] <p>Engine attributes used for associating the node. </p> <p class="title"> <b>Attributes accepted in a AssociateNode request:</b> </p> <ul> <li> <p> <code>CHEF_ORGANIZATION</code>: The Chef organization with which the node is associated. By default only one organization named <code>default</code> can exist. </p> </li> <li> <p> <code>CHEF_NODE_PUBLIC_KEY</code>: A PEM-formatted public key. This key is required for the <code>chef-client</code> agent to access the Chef API. </p> </li> </ul>
--- Required parameter: ServerName
--- Required parameter: NodeName
--- Required parameter: EngineAttributes
-function M.AssociateNodeRequest(_ServerName, _NodeName, _EngineAttributes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateNodeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerName [ServerName] <p>The name of the server with which to associate the node. </p>
+-- * NodeName [NodeName] <p>The name of the Chef client node. </p>
+-- * EngineAttributes [EngineAttributes] <p>Engine attributes used for associating the node. </p> <p class="title"> <b>Attributes accepted in a AssociateNode request:</b> </p> <ul> <li> <p> <code>CHEF_ORGANIZATION</code>: The Chef organization with which the node is associated. By default only one organization named <code>default</code> can exist. </p> </li> <li> <p> <code>CHEF_NODE_PUBLIC_KEY</code>: A PEM-formatted public key. This key is required for the <code>chef-client</code> agent to access the Chef API. </p> </li> </ul>
+-- Required key: ServerName
+-- Required key: NodeName
+-- Required key: EngineAttributes
+-- @return AssociateNodeRequest structure as a key-value pair table
+function M.AssociateNodeRequest(args)
+	assert(args, "You must provdide an argument table when creating AssociateNodeRequest")
 	local t = { 
-		["ServerName"] = _ServerName,
-		["NodeName"] = _NodeName,
-		["EngineAttributes"] = _EngineAttributes,
+		["ServerName"] = args["ServerName"],
+		["NodeName"] = args["NodeName"],
+		["EngineAttributes"] = args["EngineAttributes"],
 	}
 	asserts.AssertAssociateNodeRequest(t)
 	return t
@@ -1177,15 +1288,18 @@ end
 
 --- Create a structure of type DescribeNodeAssociationStatusRequest
 --  
--- @param _ServerName [ServerName] <p>The name of the server from which to disassociate the node. </p>
--- @param _NodeAssociationStatusToken [NodeAssociationStatusToken] 
--- Required parameter: NodeAssociationStatusToken
--- Required parameter: ServerName
-function M.DescribeNodeAssociationStatusRequest(_ServerName, _NodeAssociationStatusToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeNodeAssociationStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerName [ServerName] <p>The name of the server from which to disassociate the node. </p>
+-- * NodeAssociationStatusToken [NodeAssociationStatusToken] 
+-- Required key: NodeAssociationStatusToken
+-- Required key: ServerName
+-- @return DescribeNodeAssociationStatusRequest structure as a key-value pair table
+function M.DescribeNodeAssociationStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeNodeAssociationStatusRequest")
 	local t = { 
-		["ServerName"] = _ServerName,
-		["NodeAssociationStatusToken"] = _NodeAssociationStatusToken,
+		["ServerName"] = args["ServerName"],
+		["NodeAssociationStatusToken"] = args["NodeAssociationStatusToken"],
 	}
 	asserts.AssertDescribeNodeAssociationStatusRequest(t)
 	return t
@@ -1208,17 +1322,20 @@ end
 
 --- Create a structure of type UpdateServerEngineAttributesRequest
 --  
--- @param _ServerName [ServerName] <p>The name of the server to update. </p>
--- @param _AttributeName [AttributeName] <p>The name of the engine attribute to update. </p>
--- @param _AttributeValue [AttributeValue] <p>The value to set for the attribute. </p>
--- Required parameter: ServerName
--- Required parameter: AttributeName
-function M.UpdateServerEngineAttributesRequest(_ServerName, _AttributeName, _AttributeValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServerEngineAttributesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerName [ServerName] <p>The name of the server to update. </p>
+-- * AttributeName [AttributeName] <p>The name of the engine attribute to update. </p>
+-- * AttributeValue [AttributeValue] <p>The value to set for the attribute. </p>
+-- Required key: ServerName
+-- Required key: AttributeName
+-- @return UpdateServerEngineAttributesRequest structure as a key-value pair table
+function M.UpdateServerEngineAttributesRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateServerEngineAttributesRequest")
 	local t = { 
-		["ServerName"] = _ServerName,
-		["AttributeName"] = _AttributeName,
-		["AttributeValue"] = _AttributeValue,
+		["ServerName"] = args["ServerName"],
+		["AttributeName"] = args["AttributeName"],
+		["AttributeValue"] = args["AttributeValue"],
 	}
 	asserts.AssertUpdateServerEngineAttributesRequest(t)
 	return t
@@ -1237,11 +1354,14 @@ end
 
 --- Create a structure of type InvalidStateException
 -- <p>The resource is in a state that does not allow you to perform a specified action. </p>
--- @param _Message [String] <p>Error or informational message that provides more detail if a resource is in a state that is not valid for performing a specified action. </p>
-function M.InvalidStateException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>Error or informational message that provides more detail if a resource is in a state that is not valid for performing a specified action. </p>
+-- @return InvalidStateException structure as a key-value pair table
+function M.InvalidStateException(args)
+	assert(args, "You must provdide an argument table when creating InvalidStateException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidStateException(t)
 	return t
@@ -1260,11 +1380,14 @@ end
 
 --- Create a structure of type ResourceAlreadyExistsException
 -- <p>The requested resource cannot be created because it already exists. </p>
--- @param _Message [String] <p>Error or informational message in response to a CreateServer request that a resource cannot be created because it already exists. </p>
-function M.ResourceAlreadyExistsException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>Error or informational message in response to a CreateServer request that a resource cannot be created because it already exists. </p>
+-- @return ResourceAlreadyExistsException structure as a key-value pair table
+function M.ResourceAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertResourceAlreadyExistsException(t)
 	return t

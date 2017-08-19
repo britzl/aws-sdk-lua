@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type CaseCreationLimitExceeded
 -- <p>The case creation limit for the account has been exceeded.</p>
--- @param _message [ErrorMessage] <p>An error message that indicates that you have exceeded the number of cases you can have open.</p>
-function M.CaseCreationLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CaseCreationLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>An error message that indicates that you have exceeded the number of cases you can have open.</p>
+-- @return CaseCreationLimitExceeded structure as a key-value pair table
+function M.CaseCreationLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating CaseCreationLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertCaseCreationLimitExceeded(t)
 	return t
@@ -59,15 +62,18 @@ end
 
 --- Create a structure of type Service
 -- <p>Information about an AWS service returned by the <a>DescribeServices</a> operation. </p>
--- @param _code [ServiceCode] <p>The code for an AWS service returned by the <a>DescribeServices</a> response. The <code>name</code> element contains the corresponding friendly name.</p>
--- @param _name [ServiceName] <p>The friendly name for an AWS service. The <code>code</code> element contains the corresponding code.</p>
--- @param _categories [CategoryList] <p>A list of categories that describe the type of support issue a case describes. Categories consist of a category name and a category code. Category names and codes are passed to AWS Support when you call <a>CreateCase</a>.</p>
-function M.Service(_code, _name, _categories, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Service")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * code [ServiceCode] <p>The code for an AWS service returned by the <a>DescribeServices</a> response. The <code>name</code> element contains the corresponding friendly name.</p>
+-- * name [ServiceName] <p>The friendly name for an AWS service. The <code>code</code> element contains the corresponding code.</p>
+-- * categories [CategoryList] <p>A list of categories that describe the type of support issue a case describes. Categories consist of a category name and a category code. Category names and codes are passed to AWS Support when you call <a>CreateCase</a>.</p>
+-- @return Service structure as a key-value pair table
+function M.Service(args)
+	assert(args, "You must provdide an argument table when creating Service")
 	local t = { 
-		["code"] = _code,
-		["name"] = _name,
-		["categories"] = _categories,
+		["code"] = args["code"],
+		["name"] = args["name"],
+		["categories"] = args["categories"],
 	}
 	asserts.AssertService(t)
 	return t
@@ -87,13 +93,16 @@ end
 
 --- Create a structure of type RecentCaseCommunications
 -- <p>The five most recent communications associated with the case.</p>
--- @param _communications [CommunicationList] <p>The five most recent communications associated with the case.</p>
--- @param _nextToken [NextToken] <p>A resumption point for pagination.</p>
-function M.RecentCaseCommunications(_communications, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecentCaseCommunications")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * communications [CommunicationList] <p>The five most recent communications associated with the case.</p>
+-- * nextToken [NextToken] <p>A resumption point for pagination.</p>
+-- @return RecentCaseCommunications structure as a key-value pair table
+function M.RecentCaseCommunications(args)
+	assert(args, "You must provdide an argument table when creating RecentCaseCommunications")
 	local t = { 
-		["communications"] = _communications,
-		["nextToken"] = _nextToken,
+		["communications"] = args["communications"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertRecentCaseCommunications(t)
 	return t
@@ -113,12 +122,15 @@ end
 
 --- Create a structure of type DescribeAttachmentRequest
 --  
--- @param _attachmentId [AttachmentId] <p>The ID of the attachment to return. Attachment IDs are returned by the <a>DescribeCommunications</a> operation.</p>
--- Required parameter: attachmentId
-function M.DescribeAttachmentRequest(_attachmentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttachmentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attachmentId [AttachmentId] <p>The ID of the attachment to return. Attachment IDs are returned by the <a>DescribeCommunications</a> operation.</p>
+-- Required key: attachmentId
+-- @return DescribeAttachmentRequest structure as a key-value pair table
+function M.DescribeAttachmentRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAttachmentRequest")
 	local t = { 
-		["attachmentId"] = _attachmentId,
+		["attachmentId"] = args["attachmentId"],
 	}
 	asserts.AssertDescribeAttachmentRequest(t)
 	return t
@@ -146,24 +158,27 @@ end
 
 --- Create a structure of type TrustedAdvisorCheckDescription
 -- <p>The description and metadata for a Trusted Advisor check.</p>
--- @param _category [String] <p>The category of the Trusted Advisor check.</p>
--- @param _description [String] <p>The description of the Trusted Advisor check, which includes the alert criteria and recommended actions (contains HTML markup).</p>
--- @param _metadata [StringList] <p>The column headings for the data returned by the Trusted Advisor check. The order of the headings corresponds to the order of the data in the <b>Metadata</b> element of the <a>TrustedAdvisorResourceDetail</a> for the check. <b>Metadata</b> contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. </p>
--- @param _id [String] <p>The unique identifier for the Trusted Advisor check.</p>
--- @param _name [String] <p>The display name for the Trusted Advisor check.</p>
--- Required parameter: id
--- Required parameter: name
--- Required parameter: description
--- Required parameter: category
--- Required parameter: metadata
-function M.TrustedAdvisorCheckDescription(_category, _description, _metadata, _id, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCheckDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * category [String] <p>The category of the Trusted Advisor check.</p>
+-- * description [String] <p>The description of the Trusted Advisor check, which includes the alert criteria and recommended actions (contains HTML markup).</p>
+-- * metadata [StringList] <p>The column headings for the data returned by the Trusted Advisor check. The order of the headings corresponds to the order of the data in the <b>Metadata</b> element of the <a>TrustedAdvisorResourceDetail</a> for the check. <b>Metadata</b> contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. </p>
+-- * id [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- * name [String] <p>The display name for the Trusted Advisor check.</p>
+-- Required key: id
+-- Required key: name
+-- Required key: description
+-- Required key: category
+-- Required key: metadata
+-- @return TrustedAdvisorCheckDescription structure as a key-value pair table
+function M.TrustedAdvisorCheckDescription(args)
+	assert(args, "You must provdide an argument table when creating TrustedAdvisorCheckDescription")
 	local t = { 
-		["category"] = _category,
-		["description"] = _description,
-		["metadata"] = _metadata,
-		["id"] = _id,
-		["name"] = _name,
+		["category"] = args["category"],
+		["description"] = args["description"],
+		["metadata"] = args["metadata"],
+		["id"] = args["id"],
+		["name"] = args["name"],
 	}
 	asserts.AssertTrustedAdvisorCheckDescription(t)
 	return t
@@ -182,11 +197,14 @@ end
 
 --- Create a structure of type AttachmentSetIdNotFound
 -- <p>An attachment set with the specified ID could not be found.</p>
--- @param _message [ErrorMessage] <p>An attachment set with the specified ID could not be found.</p>
-function M.AttachmentSetIdNotFound(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentSetIdNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>An attachment set with the specified ID could not be found.</p>
+-- @return AttachmentSetIdNotFound structure as a key-value pair table
+function M.AttachmentSetIdNotFound(args)
+	assert(args, "You must provdide an argument table when creating AttachmentSetIdNotFound")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertAttachmentSetIdNotFound(t)
 	return t
@@ -205,11 +223,14 @@ end
 
 --- Create a structure of type InternalServerError
 -- <p>An internal server error occurred.</p>
--- @param _message [ErrorMessage] <p>An internal server error occurred.</p>
-function M.InternalServerError(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>An internal server error occurred.</p>
+-- @return InternalServerError structure as a key-value pair table
+function M.InternalServerError(args)
+	assert(args, "You must provdide an argument table when creating InternalServerError")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalServerError(t)
 	return t
@@ -228,11 +249,14 @@ end
 
 --- Create a structure of type DescribeAttachmentResponse
 -- <p>The content and file name of the attachment returned by the <a>DescribeAttachment</a> operation.</p>
--- @param _attachment [Attachment] <p>The attachment content and file name.</p>
-function M.DescribeAttachmentResponse(_attachment, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttachmentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attachment [Attachment] <p>The attachment content and file name.</p>
+-- @return DescribeAttachmentResponse structure as a key-value pair table
+function M.DescribeAttachmentResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAttachmentResponse")
 	local t = { 
-		["attachment"] = _attachment,
+		["attachment"] = args["attachment"],
 	}
 	asserts.AssertDescribeAttachmentResponse(t)
 	return t
@@ -256,18 +280,21 @@ end
 
 --- Create a structure of type TrustedAdvisorCheckRefreshStatus
 -- <p>The refresh status of a Trusted Advisor check.</p>
--- @param _checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
--- @param _status [String] <p>The status of the Trusted Advisor check for which a refresh has been requested: "none", "enqueued", "processing", "success", or "abandoned".</p>
--- @param _millisUntilNextRefreshable [Long] <p>The amount of time, in milliseconds, until the Trusted Advisor check is eligible for refresh.</p>
--- Required parameter: checkId
--- Required parameter: status
--- Required parameter: millisUntilNextRefreshable
-function M.TrustedAdvisorCheckRefreshStatus(_checkId, _status, _millisUntilNextRefreshable, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCheckRefreshStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- * status [String] <p>The status of the Trusted Advisor check for which a refresh has been requested: "none", "enqueued", "processing", "success", or "abandoned".</p>
+-- * millisUntilNextRefreshable [Long] <p>The amount of time, in milliseconds, until the Trusted Advisor check is eligible for refresh.</p>
+-- Required key: checkId
+-- Required key: status
+-- Required key: millisUntilNextRefreshable
+-- @return TrustedAdvisorCheckRefreshStatus structure as a key-value pair table
+function M.TrustedAdvisorCheckRefreshStatus(args)
+	assert(args, "You must provdide an argument table when creating TrustedAdvisorCheckRefreshStatus")
 	local t = { 
-		["checkId"] = _checkId,
-		["status"] = _status,
-		["millisUntilNextRefreshable"] = _millisUntilNextRefreshable,
+		["checkId"] = args["checkId"],
+		["status"] = args["status"],
+		["millisUntilNextRefreshable"] = args["millisUntilNextRefreshable"],
 	}
 	asserts.AssertTrustedAdvisorCheckRefreshStatus(t)
 	return t
@@ -287,12 +314,15 @@ end
 
 --- Create a structure of type RefreshTrustedAdvisorCheckRequest
 -- <p/>
--- @param _checkId [String] <p>The unique identifier for the Trusted Advisor check to refresh. <b>Note:</b> Specifying the check ID of a check that is automatically refreshed causes an <code>InvalidParameterValue</code> error.</p>
--- Required parameter: checkId
-function M.RefreshTrustedAdvisorCheckRequest(_checkId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RefreshTrustedAdvisorCheckRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checkId [String] <p>The unique identifier for the Trusted Advisor check to refresh. <b>Note:</b> Specifying the check ID of a check that is automatically refreshed causes an <code>InvalidParameterValue</code> error.</p>
+-- Required key: checkId
+-- @return RefreshTrustedAdvisorCheckRequest structure as a key-value pair table
+function M.RefreshTrustedAdvisorCheckRequest(args)
+	assert(args, "You must provdide an argument table when creating RefreshTrustedAdvisorCheckRequest")
 	local t = { 
-		["checkId"] = _checkId,
+		["checkId"] = args["checkId"],
 	}
 	asserts.AssertRefreshTrustedAdvisorCheckRequest(t)
 	return t
@@ -311,11 +341,14 @@ end
 
 --- Create a structure of type AttachmentIdNotFound
 -- <p>An attachment with the specified ID could not be found.</p>
--- @param _message [ErrorMessage] <p>An attachment with the specified ID could not be found.</p>
-function M.AttachmentIdNotFound(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentIdNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>An attachment with the specified ID could not be found.</p>
+-- @return AttachmentIdNotFound structure as a key-value pair table
+function M.AttachmentIdNotFound(args)
+	assert(args, "You must provdide an argument table when creating AttachmentIdNotFound")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertAttachmentIdNotFound(t)
 	return t
@@ -334,11 +367,14 @@ end
 
 --- Create a structure of type CaseIdNotFound
 -- <p>The requested <code>caseId</code> could not be located.</p>
--- @param _message [ErrorMessage] <p>The requested <code>CaseId</code> could not be located.</p>
-function M.CaseIdNotFound(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CaseIdNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The requested <code>CaseId</code> could not be located.</p>
+-- @return CaseIdNotFound structure as a key-value pair table
+function M.CaseIdNotFound(args)
+	assert(args, "You must provdide an argument table when creating CaseIdNotFound")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertCaseIdNotFound(t)
 	return t
@@ -367,29 +403,32 @@ end
 
 --- Create a structure of type CreateCaseRequest
 -- <p/>
--- @param _language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
--- @param _ccEmailAddresses [CcEmailAddressList] <p>A list of email addresses that AWS Support copies on case correspondence.</p>
--- @param _communicationBody [CommunicationBody] <p>The communication body text when you create an AWS Support case by calling <a>CreateCase</a>.</p>
--- @param _attachmentSetId [AttachmentSetId] <p>The ID of a set of one or more attachments for the case. Create the set by using <a>AddAttachmentsToSet</a>.</p>
--- @param _severityCode [SeverityCode] <p>The code for the severity level returned by the call to <a>DescribeSeverityLevels</a>.</p> <note> <p>The availability of severity levels depends on each customer's support subscription. In other words, your subscription may not necessarily require the urgent level of response time.</p> </note>
--- @param _categoryCode [CategoryCode] <p>The category of problem for the AWS Support case.</p>
--- @param _serviceCode [ServiceCode] <p>The code for the AWS service returned by the call to <a>DescribeServices</a>.</p>
--- @param _issueType [IssueType] <p>The type of issue for the case. You can specify either "customer-service" or "technical." If you do not indicate a value, the default is "technical."</p>
--- @param _subject [Subject] <p>The title of the AWS Support case.</p>
--- Required parameter: subject
--- Required parameter: communicationBody
-function M.CreateCaseRequest(_language, _ccEmailAddresses, _communicationBody, _attachmentSetId, _severityCode, _categoryCode, _serviceCode, _issueType, _subject, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCaseRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- * ccEmailAddresses [CcEmailAddressList] <p>A list of email addresses that AWS Support copies on case correspondence.</p>
+-- * communicationBody [CommunicationBody] <p>The communication body text when you create an AWS Support case by calling <a>CreateCase</a>.</p>
+-- * attachmentSetId [AttachmentSetId] <p>The ID of a set of one or more attachments for the case. Create the set by using <a>AddAttachmentsToSet</a>.</p>
+-- * severityCode [SeverityCode] <p>The code for the severity level returned by the call to <a>DescribeSeverityLevels</a>.</p> <note> <p>The availability of severity levels depends on each customer's support subscription. In other words, your subscription may not necessarily require the urgent level of response time.</p> </note>
+-- * categoryCode [CategoryCode] <p>The category of problem for the AWS Support case.</p>
+-- * serviceCode [ServiceCode] <p>The code for the AWS service returned by the call to <a>DescribeServices</a>.</p>
+-- * issueType [IssueType] <p>The type of issue for the case. You can specify either "customer-service" or "technical." If you do not indicate a value, the default is "technical."</p>
+-- * subject [Subject] <p>The title of the AWS Support case.</p>
+-- Required key: subject
+-- Required key: communicationBody
+-- @return CreateCaseRequest structure as a key-value pair table
+function M.CreateCaseRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateCaseRequest")
 	local t = { 
-		["language"] = _language,
-		["ccEmailAddresses"] = _ccEmailAddresses,
-		["communicationBody"] = _communicationBody,
-		["attachmentSetId"] = _attachmentSetId,
-		["severityCode"] = _severityCode,
-		["categoryCode"] = _categoryCode,
-		["serviceCode"] = _serviceCode,
-		["issueType"] = _issueType,
-		["subject"] = _subject,
+		["language"] = args["language"],
+		["ccEmailAddresses"] = args["ccEmailAddresses"],
+		["communicationBody"] = args["communicationBody"],
+		["attachmentSetId"] = args["attachmentSetId"],
+		["severityCode"] = args["severityCode"],
+		["categoryCode"] = args["categoryCode"],
+		["serviceCode"] = args["serviceCode"],
+		["issueType"] = args["issueType"],
+		["subject"] = args["subject"],
 	}
 	asserts.AssertCreateCaseRequest(t)
 	return t
@@ -409,12 +448,15 @@ end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckRefreshStatusesResponse
 -- <p>The statuses of the Trusted Advisor checks returned by the <a>DescribeTrustedAdvisorCheckRefreshStatuses</a> operation.</p>
--- @param _statuses [TrustedAdvisorCheckRefreshStatusList] <p>The refresh status of the specified Trusted Advisor checks.</p>
--- Required parameter: statuses
-function M.DescribeTrustedAdvisorCheckRefreshStatusesResponse(_statuses, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckRefreshStatusesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * statuses [TrustedAdvisorCheckRefreshStatusList] <p>The refresh status of the specified Trusted Advisor checks.</p>
+-- Required key: statuses
+-- @return DescribeTrustedAdvisorCheckRefreshStatusesResponse structure as a key-value pair table
+function M.DescribeTrustedAdvisorCheckRefreshStatusesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckRefreshStatusesResponse")
 	local t = { 
-		["statuses"] = _statuses,
+		["statuses"] = args["statuses"],
 	}
 	asserts.AssertDescribeTrustedAdvisorCheckRefreshStatusesResponse(t)
 	return t
@@ -440,22 +482,25 @@ end
 
 --- Create a structure of type TrustedAdvisorResourceDetail
 -- <p>Contains information about a resource identified by a Trusted Advisor check.</p>
--- @param _status [String] <p>The status code for the resource identified in the Trusted Advisor check.</p>
--- @param _resourceId [String] <p>The unique identifier for the identified resource.</p>
--- @param _region [String] <p>The AWS region in which the identified resource is located.</p>
--- @param _isSuppressed [Boolean] <p>Specifies whether the AWS resource was ignored by Trusted Advisor because it was marked as suppressed by the user.</p>
--- @param _metadata [StringList] <p>Additional information about the identified resource. The exact metadata and its order can be obtained by inspecting the <a>TrustedAdvisorCheckDescription</a> object returned by the call to <a>DescribeTrustedAdvisorChecks</a>. <b>Metadata</b> contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. </p>
--- Required parameter: status
--- Required parameter: resourceId
--- Required parameter: metadata
-function M.TrustedAdvisorResourceDetail(_status, _resourceId, _region, _isSuppressed, _metadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorResourceDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [String] <p>The status code for the resource identified in the Trusted Advisor check.</p>
+-- * resourceId [String] <p>The unique identifier for the identified resource.</p>
+-- * region [String] <p>The AWS region in which the identified resource is located.</p>
+-- * isSuppressed [Boolean] <p>Specifies whether the AWS resource was ignored by Trusted Advisor because it was marked as suppressed by the user.</p>
+-- * metadata [StringList] <p>Additional information about the identified resource. The exact metadata and its order can be obtained by inspecting the <a>TrustedAdvisorCheckDescription</a> object returned by the call to <a>DescribeTrustedAdvisorChecks</a>. <b>Metadata</b> contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. </p>
+-- Required key: status
+-- Required key: resourceId
+-- Required key: metadata
+-- @return TrustedAdvisorResourceDetail structure as a key-value pair table
+function M.TrustedAdvisorResourceDetail(args)
+	assert(args, "You must provdide an argument table when creating TrustedAdvisorResourceDetail")
 	local t = { 
-		["status"] = _status,
-		["resourceId"] = _resourceId,
-		["region"] = _region,
-		["isSuppressed"] = _isSuppressed,
-		["metadata"] = _metadata,
+		["status"] = args["status"],
+		["resourceId"] = args["resourceId"],
+		["region"] = args["region"],
+		["isSuppressed"] = args["isSuppressed"],
+		["metadata"] = args["metadata"],
 	}
 	asserts.AssertTrustedAdvisorResourceDetail(t)
 	return t
@@ -485,27 +530,30 @@ end
 
 --- Create a structure of type TrustedAdvisorCheckResult
 -- <p>The results of a Trusted Advisor check returned by <a>DescribeTrustedAdvisorCheckResult</a>.</p>
--- @param _checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
--- @param _status [String] <p>The alert status of the check: "ok" (green), "warning" (yellow), "error" (red), or "not_available".</p>
--- @param _flaggedResources [TrustedAdvisorResourceDetailList] <p>The details about each resource listed in the check result.</p>
--- @param _timestamp [String] <p>The time of the last refresh of the check.</p>
--- @param _resourcesSummary [TrustedAdvisorResourcesSummary] 
--- @param _categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] <p>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</p>
--- Required parameter: checkId
--- Required parameter: timestamp
--- Required parameter: status
--- Required parameter: resourcesSummary
--- Required parameter: categorySpecificSummary
--- Required parameter: flaggedResources
-function M.TrustedAdvisorCheckResult(_checkId, _status, _flaggedResources, _timestamp, _resourcesSummary, _categorySpecificSummary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCheckResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- * status [String] <p>The alert status of the check: "ok" (green), "warning" (yellow), "error" (red), or "not_available".</p>
+-- * flaggedResources [TrustedAdvisorResourceDetailList] <p>The details about each resource listed in the check result.</p>
+-- * timestamp [String] <p>The time of the last refresh of the check.</p>
+-- * resourcesSummary [TrustedAdvisorResourcesSummary] 
+-- * categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] <p>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</p>
+-- Required key: checkId
+-- Required key: timestamp
+-- Required key: status
+-- Required key: resourcesSummary
+-- Required key: categorySpecificSummary
+-- Required key: flaggedResources
+-- @return TrustedAdvisorCheckResult structure as a key-value pair table
+function M.TrustedAdvisorCheckResult(args)
+	assert(args, "You must provdide an argument table when creating TrustedAdvisorCheckResult")
 	local t = { 
-		["checkId"] = _checkId,
-		["status"] = _status,
-		["flaggedResources"] = _flaggedResources,
-		["timestamp"] = _timestamp,
-		["resourcesSummary"] = _resourcesSummary,
-		["categorySpecificSummary"] = _categorySpecificSummary,
+		["checkId"] = args["checkId"],
+		["status"] = args["status"],
+		["flaggedResources"] = args["flaggedResources"],
+		["timestamp"] = args["timestamp"],
+		["resourcesSummary"] = args["resourcesSummary"],
+		["categorySpecificSummary"] = args["categorySpecificSummary"],
 	}
 	asserts.AssertTrustedAdvisorCheckResult(t)
 	return t
@@ -525,12 +573,15 @@ end
 
 --- Create a structure of type DescribeTrustedAdvisorChecksRequest
 -- <p/>
--- @param _language [String] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
--- Required parameter: language
-function M.DescribeTrustedAdvisorChecksRequest(_language, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorChecksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * language [String] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- Required key: language
+-- @return DescribeTrustedAdvisorChecksRequest structure as a key-value pair table
+function M.DescribeTrustedAdvisorChecksRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorChecksRequest")
 	local t = { 
-		["language"] = _language,
+		["language"] = args["language"],
 	}
 	asserts.AssertDescribeTrustedAdvisorChecksRequest(t)
 	return t
@@ -551,14 +602,17 @@ end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckResultRequest
 -- <p/>
--- @param _checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
--- @param _language [String] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
--- Required parameter: checkId
-function M.DescribeTrustedAdvisorCheckResultRequest(_checkId, _language, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckResultRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- * language [String] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- Required key: checkId
+-- @return DescribeTrustedAdvisorCheckResultRequest structure as a key-value pair table
+function M.DescribeTrustedAdvisorCheckResultRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckResultRequest")
 	local t = { 
-		["checkId"] = _checkId,
-		["language"] = _language,
+		["checkId"] = args["checkId"],
+		["language"] = args["language"],
 	}
 	asserts.AssertDescribeTrustedAdvisorCheckResultRequest(t)
 	return t
@@ -577,11 +631,14 @@ end
 
 --- Create a structure of type CreateCaseResponse
 -- <p>The AWS Support case ID returned by a successful completion of the <a>CreateCase</a> operation. </p>
--- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
-function M.CreateCaseResponse(_caseId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCaseResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- @return CreateCaseResponse structure as a key-value pair table
+function M.CreateCaseResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateCaseResponse")
 	local t = { 
-		["caseId"] = _caseId,
+		["caseId"] = args["caseId"],
 	}
 	asserts.AssertCreateCaseResponse(t)
 	return t
@@ -601,13 +658,16 @@ end
 
 --- Create a structure of type DescribeServicesRequest
 -- <p/>
--- @param _serviceCodeList [ServiceCodeList] <p>A JSON-formatted list of service codes available for AWS services.</p>
--- @param _language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
-function M.DescribeServicesRequest(_serviceCodeList, _language, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServicesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * serviceCodeList [ServiceCodeList] <p>A JSON-formatted list of service codes available for AWS services.</p>
+-- * language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- @return DescribeServicesRequest structure as a key-value pair table
+function M.DescribeServicesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeServicesRequest")
 	local t = { 
-		["serviceCodeList"] = _serviceCodeList,
-		["language"] = _language,
+		["serviceCodeList"] = args["serviceCodeList"],
+		["language"] = args["language"],
 	}
 	asserts.AssertDescribeServicesRequest(t)
 	return t
@@ -627,12 +687,15 @@ end
 
 --- Create a structure of type RefreshTrustedAdvisorCheckResponse
 -- <p>The current refresh status of a Trusted Advisor check.</p>
--- @param _status [TrustedAdvisorCheckRefreshStatus] <p>The current refresh status for a check, including the amount of time until the check is eligible for refresh.</p>
--- Required parameter: status
-function M.RefreshTrustedAdvisorCheckResponse(_status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RefreshTrustedAdvisorCheckResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [TrustedAdvisorCheckRefreshStatus] <p>The current refresh status for a check, including the amount of time until the check is eligible for refresh.</p>
+-- Required key: status
+-- @return RefreshTrustedAdvisorCheckResponse structure as a key-value pair table
+function M.RefreshTrustedAdvisorCheckResponse(args)
+	assert(args, "You must provdide an argument table when creating RefreshTrustedAdvisorCheckResponse")
 	local t = { 
-		["status"] = _status,
+		["status"] = args["status"],
 	}
 	asserts.AssertRefreshTrustedAdvisorCheckResponse(t)
 	return t
@@ -652,13 +715,16 @@ end
 
 --- Create a structure of type DescribeCommunicationsResponse
 -- <p>The communications returned by the <a>DescribeCommunications</a> operation.</p>
--- @param _communications [CommunicationList] <p>The communications for the case.</p>
--- @param _nextToken [NextToken] <p>A resumption point for pagination.</p>
-function M.DescribeCommunicationsResponse(_communications, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommunicationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * communications [CommunicationList] <p>The communications for the case.</p>
+-- * nextToken [NextToken] <p>A resumption point for pagination.</p>
+-- @return DescribeCommunicationsResponse structure as a key-value pair table
+function M.DescribeCommunicationsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeCommunicationsResponse")
 	local t = { 
-		["communications"] = _communications,
-		["nextToken"] = _nextToken,
+		["communications"] = args["communications"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeCommunicationsResponse(t)
 	return t
@@ -681,19 +747,22 @@ end
 
 --- Create a structure of type Communication
 -- <p>A communication associated with an AWS Support case. The communication consists of the case ID, the message body, attachment information, the account email address, and the date and time of the communication.</p>
--- @param _body [CommunicationBody] <p>The text of the communication between the customer and AWS Support.</p>
--- @param _attachmentSet [AttachmentSet] <p>Information about the attachments to the case communication.</p>
--- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
--- @param _timeCreated [TimeCreated] <p>The time the communication was created.</p>
--- @param _submittedBy [SubmittedBy] <p>The email address of the account that submitted the AWS Support case.</p>
-function M.Communication(_body, _attachmentSet, _caseId, _timeCreated, _submittedBy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Communication")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * body [CommunicationBody] <p>The text of the communication between the customer and AWS Support.</p>
+-- * attachmentSet [AttachmentSet] <p>Information about the attachments to the case communication.</p>
+-- * caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- * timeCreated [TimeCreated] <p>The time the communication was created.</p>
+-- * submittedBy [SubmittedBy] <p>The email address of the account that submitted the AWS Support case.</p>
+-- @return Communication structure as a key-value pair table
+function M.Communication(args)
+	assert(args, "You must provdide an argument table when creating Communication")
 	local t = { 
-		["body"] = _body,
-		["attachmentSet"] = _attachmentSet,
-		["caseId"] = _caseId,
-		["timeCreated"] = _timeCreated,
-		["submittedBy"] = _submittedBy,
+		["body"] = args["body"],
+		["attachmentSet"] = args["attachmentSet"],
+		["caseId"] = args["caseId"],
+		["timeCreated"] = args["timeCreated"],
+		["submittedBy"] = args["submittedBy"],
 	}
 	asserts.AssertCommunication(t)
 	return t
@@ -712,11 +781,14 @@ end
 
 --- Create a structure of type AttachmentSetExpired
 -- <p>The expiration time of the attachment set has passed. The set expires 1 hour after it is created.</p>
--- @param _message [ErrorMessage] <p>The expiration time of the attachment set has passed. The set expires 1 hour after it is created.</p>
-function M.AttachmentSetExpired(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentSetExpired")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The expiration time of the attachment set has passed. The set expires 1 hour after it is created.</p>
+-- @return AttachmentSetExpired structure as a key-value pair table
+function M.AttachmentSetExpired(args)
+	assert(args, "You must provdide an argument table when creating AttachmentSetExpired")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertAttachmentSetExpired(t)
 	return t
@@ -735,11 +807,14 @@ end
 
 --- Create a structure of type AttachmentSetSizeLimitExceeded
 -- <p>A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.</p>
--- @param _message [ErrorMessage] <p>A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.</p>
-function M.AttachmentSetSizeLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentSetSizeLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.</p>
+-- @return AttachmentSetSizeLimitExceeded structure as a key-value pair table
+function M.AttachmentSetSizeLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating AttachmentSetSizeLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertAttachmentSetSizeLimitExceeded(t)
 	return t
@@ -768,26 +843,29 @@ end
 
 --- Create a structure of type TrustedAdvisorCheckSummary
 -- <p>A summary of a Trusted Advisor check result, including the alert status, last refresh, and number of resources examined.</p>
--- @param _checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
--- @param _status [String] <p>The alert status of the check: "ok" (green), "warning" (yellow), "error" (red), or "not_available".</p>
--- @param _timestamp [String] <p>The time of the last refresh of the check.</p>
--- @param _resourcesSummary [TrustedAdvisorResourcesSummary] 
--- @param _hasFlaggedResources [Boolean] <p>Specifies whether the Trusted Advisor check has flagged resources.</p>
--- @param _categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] <p>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</p>
--- Required parameter: checkId
--- Required parameter: timestamp
--- Required parameter: status
--- Required parameter: resourcesSummary
--- Required parameter: categorySpecificSummary
-function M.TrustedAdvisorCheckSummary(_checkId, _status, _timestamp, _resourcesSummary, _hasFlaggedResources, _categorySpecificSummary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCheckSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checkId [String] <p>The unique identifier for the Trusted Advisor check.</p>
+-- * status [String] <p>The alert status of the check: "ok" (green), "warning" (yellow), "error" (red), or "not_available".</p>
+-- * timestamp [String] <p>The time of the last refresh of the check.</p>
+-- * resourcesSummary [TrustedAdvisorResourcesSummary] 
+-- * hasFlaggedResources [Boolean] <p>Specifies whether the Trusted Advisor check has flagged resources.</p>
+-- * categorySpecificSummary [TrustedAdvisorCategorySpecificSummary] <p>Summary information that relates to the category of the check. Cost Optimizing is the only category that is currently supported.</p>
+-- Required key: checkId
+-- Required key: timestamp
+-- Required key: status
+-- Required key: resourcesSummary
+-- Required key: categorySpecificSummary
+-- @return TrustedAdvisorCheckSummary structure as a key-value pair table
+function M.TrustedAdvisorCheckSummary(args)
+	assert(args, "You must provdide an argument table when creating TrustedAdvisorCheckSummary")
 	local t = { 
-		["checkId"] = _checkId,
-		["status"] = _status,
-		["timestamp"] = _timestamp,
-		["resourcesSummary"] = _resourcesSummary,
-		["hasFlaggedResources"] = _hasFlaggedResources,
-		["categorySpecificSummary"] = _categorySpecificSummary,
+		["checkId"] = args["checkId"],
+		["status"] = args["status"],
+		["timestamp"] = args["timestamp"],
+		["resourcesSummary"] = args["resourcesSummary"],
+		["hasFlaggedResources"] = args["hasFlaggedResources"],
+		["categorySpecificSummary"] = args["categorySpecificSummary"],
 	}
 	asserts.AssertTrustedAdvisorCheckSummary(t)
 	return t
@@ -806,11 +884,14 @@ end
 
 --- Create a structure of type AddCommunicationToCaseResponse
 -- <p>The result of the <a>AddCommunicationToCase</a> operation.</p>
--- @param _result [Result] <p>True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an error.</p>
-function M.AddCommunicationToCaseResponse(_result, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddCommunicationToCaseResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * result [Result] <p>True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an error.</p>
+-- @return AddCommunicationToCaseResponse structure as a key-value pair table
+function M.AddCommunicationToCaseResponse(args)
+	assert(args, "You must provdide an argument table when creating AddCommunicationToCaseResponse")
 	local t = { 
-		["result"] = _result,
+		["result"] = args["result"],
 	}
 	asserts.AssertAddCommunicationToCaseResponse(t)
 	return t
@@ -830,13 +911,16 @@ end
 
 --- Create a structure of type Category
 -- <p>A JSON-formatted name/value pair that represents the category name and category code of the problem, selected from the <a>DescribeServices</a> response for each AWS service.</p>
--- @param _code [CategoryCode] <p>The category code for the support case.</p>
--- @param _name [CategoryName] <p>The category name for the support case.</p>
-function M.Category(_code, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Category")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * code [CategoryCode] <p>The category code for the support case.</p>
+-- * name [CategoryName] <p>The category name for the support case.</p>
+-- @return Category structure as a key-value pair table
+function M.Category(args)
+	assert(args, "You must provdide an argument table when creating Category")
 	local t = { 
-		["code"] = _code,
-		["name"] = _name,
+		["code"] = args["code"],
+		["name"] = args["name"],
 	}
 	asserts.AssertCategory(t)
 	return t
@@ -856,13 +940,16 @@ end
 
 --- Create a structure of type ResolveCaseResponse
 -- <p>The status of the case returned by the <a>ResolveCase</a> operation.</p>
--- @param _finalCaseStatus [CaseStatus] <p>The status of the case after the <a>ResolveCase</a> request was processed.</p>
--- @param _initialCaseStatus [CaseStatus] <p>The status of the case when the <a>ResolveCase</a> request was sent.</p>
-function M.ResolveCaseResponse(_finalCaseStatus, _initialCaseStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCaseResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * finalCaseStatus [CaseStatus] <p>The status of the case after the <a>ResolveCase</a> request was processed.</p>
+-- * initialCaseStatus [CaseStatus] <p>The status of the case when the <a>ResolveCase</a> request was sent.</p>
+-- @return ResolveCaseResponse structure as a key-value pair table
+function M.ResolveCaseResponse(args)
+	assert(args, "You must provdide an argument table when creating ResolveCaseResponse")
 	local t = { 
-		["finalCaseStatus"] = _finalCaseStatus,
-		["initialCaseStatus"] = _initialCaseStatus,
+		["finalCaseStatus"] = args["finalCaseStatus"],
+		["initialCaseStatus"] = args["initialCaseStatus"],
 	}
 	asserts.AssertResolveCaseResponse(t)
 	return t
@@ -881,11 +968,14 @@ end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckResultResponse
 -- <p>The result of the Trusted Advisor check returned by the <a>DescribeTrustedAdvisorCheckResult</a> operation.</p>
--- @param _result [TrustedAdvisorCheckResult] <p>The detailed results of the Trusted Advisor check.</p>
-function M.DescribeTrustedAdvisorCheckResultResponse(_result, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckResultResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * result [TrustedAdvisorCheckResult] <p>The detailed results of the Trusted Advisor check.</p>
+-- @return DescribeTrustedAdvisorCheckResultResponse structure as a key-value pair table
+function M.DescribeTrustedAdvisorCheckResultResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckResultResponse")
 	local t = { 
-		["result"] = _result,
+		["result"] = args["result"],
 	}
 	asserts.AssertDescribeTrustedAdvisorCheckResultResponse(t)
 	return t
@@ -912,27 +1002,30 @@ end
 
 --- Create a structure of type DescribeCasesRequest
 -- <p/>
--- @param _includeCommunications [IncludeCommunications] <p>Specifies whether communications should be included in the <a>DescribeCases</a> results. The default is <i>true</i>.</p>
--- @param _language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
--- @param _includeResolvedCases [IncludeResolvedCases] <p>Specifies whether resolved support cases should be included in the <a>DescribeCases</a> results. The default is <i>false</i>.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of results to return before paginating.</p>
--- @param _afterTime [AfterTime] <p>The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
--- @param _caseIdList [CaseIdList] <p>A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.</p>
--- @param _displayId [DisplayId] <p>The ID displayed for a case in the AWS Support Center user interface.</p>
--- @param _nextToken [NextToken] <p>A resumption point for pagination.</p>
--- @param _beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
-function M.DescribeCasesRequest(_includeCommunications, _language, _includeResolvedCases, _maxResults, _afterTime, _caseIdList, _displayId, _nextToken, _beforeTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCasesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * includeCommunications [IncludeCommunications] <p>Specifies whether communications should be included in the <a>DescribeCases</a> results. The default is <i>true</i>.</p>
+-- * language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- * includeResolvedCases [IncludeResolvedCases] <p>Specifies whether resolved support cases should be included in the <a>DescribeCases</a> results. The default is <i>false</i>.</p>
+-- * maxResults [MaxResults] <p>The maximum number of results to return before paginating.</p>
+-- * afterTime [AfterTime] <p>The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+-- * caseIdList [CaseIdList] <p>A list of ID numbers of the support cases you want returned. The maximum number of cases is 100.</p>
+-- * displayId [DisplayId] <p>The ID displayed for a case in the AWS Support Center user interface.</p>
+-- * nextToken [NextToken] <p>A resumption point for pagination.</p>
+-- * beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+-- @return DescribeCasesRequest structure as a key-value pair table
+function M.DescribeCasesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeCasesRequest")
 	local t = { 
-		["includeCommunications"] = _includeCommunications,
-		["language"] = _language,
-		["includeResolvedCases"] = _includeResolvedCases,
-		["maxResults"] = _maxResults,
-		["afterTime"] = _afterTime,
-		["caseIdList"] = _caseIdList,
-		["displayId"] = _displayId,
-		["nextToken"] = _nextToken,
-		["beforeTime"] = _beforeTime,
+		["includeCommunications"] = args["includeCommunications"],
+		["language"] = args["language"],
+		["includeResolvedCases"] = args["includeResolvedCases"],
+		["maxResults"] = args["maxResults"],
+		["afterTime"] = args["afterTime"],
+		["caseIdList"] = args["caseIdList"],
+		["displayId"] = args["displayId"],
+		["nextToken"] = args["nextToken"],
+		["beforeTime"] = args["beforeTime"],
 	}
 	asserts.AssertDescribeCasesRequest(t)
 	return t
@@ -952,12 +1045,15 @@ end
 
 --- Create a structure of type DescribeTrustedAdvisorChecksResponse
 -- <p>Information about the Trusted Advisor checks returned by the <a>DescribeTrustedAdvisorChecks</a> operation.</p>
--- @param _checks [TrustedAdvisorCheckList] <p>Information about all available Trusted Advisor checks.</p>
--- Required parameter: checks
-function M.DescribeTrustedAdvisorChecksResponse(_checks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorChecksResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checks [TrustedAdvisorCheckList] <p>Information about all available Trusted Advisor checks.</p>
+-- Required key: checks
+-- @return DescribeTrustedAdvisorChecksResponse structure as a key-value pair table
+function M.DescribeTrustedAdvisorChecksResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorChecksResponse")
 	local t = { 
-		["checks"] = _checks,
+		["checks"] = args["checks"],
 	}
 	asserts.AssertDescribeTrustedAdvisorChecksResponse(t)
 	return t
@@ -977,13 +1073,16 @@ end
 
 --- Create a structure of type Attachment
 -- <p>An attachment to a case communication. The attachment consists of the file name and the content of the file.</p>
--- @param _data [Data] <p>The content of the attachment file.</p>
--- @param _fileName [FileName] <p>The name of the attachment file.</p>
-function M.Attachment(_data, _fileName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Attachment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * data [Data] <p>The content of the attachment file.</p>
+-- * fileName [FileName] <p>The name of the attachment file.</p>
+-- @return Attachment structure as a key-value pair table
+function M.Attachment(args)
+	assert(args, "You must provdide an argument table when creating Attachment")
 	local t = { 
-		["data"] = _data,
-		["fileName"] = _fileName,
+		["data"] = args["data"],
+		["fileName"] = args["fileName"],
 	}
 	asserts.AssertAttachment(t)
 	return t
@@ -1003,12 +1102,15 @@ end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckRefreshStatusesRequest
 -- <p/>
--- @param _checkIds [StringList] <p>The IDs of the Trusted Advisor checks to get the status of. <b>Note:</b> Specifying the check ID of a check that is automatically refreshed causes an <code>InvalidParameterValue</code> error.</p>
--- Required parameter: checkIds
-function M.DescribeTrustedAdvisorCheckRefreshStatusesRequest(_checkIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckRefreshStatusesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checkIds [StringList] <p>The IDs of the Trusted Advisor checks to get the status of. <b>Note:</b> Specifying the check ID of a check that is automatically refreshed causes an <code>InvalidParameterValue</code> error.</p>
+-- Required key: checkIds
+-- @return DescribeTrustedAdvisorCheckRefreshStatusesRequest structure as a key-value pair table
+function M.DescribeTrustedAdvisorCheckRefreshStatusesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckRefreshStatusesRequest")
 	local t = { 
-		["checkIds"] = _checkIds,
+		["checkIds"] = args["checkIds"],
 	}
 	asserts.AssertDescribeTrustedAdvisorCheckRefreshStatusesRequest(t)
 	return t
@@ -1032,20 +1134,23 @@ end
 
 --- Create a structure of type DescribeCommunicationsRequest
 -- <p/>
--- @param _afterTime [AfterTime] <p>The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
--- @param _nextToken [NextToken] <p>A resumption point for pagination.</p>
--- @param _beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
--- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
--- @param _maxResults [MaxResults] <p>The maximum number of results to return before paginating.</p>
--- Required parameter: caseId
-function M.DescribeCommunicationsRequest(_afterTime, _nextToken, _beforeTime, _caseId, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommunicationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * afterTime [AfterTime] <p>The start date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+-- * nextToken [NextToken] <p>A resumption point for pagination.</p>
+-- * beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
+-- * caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- * maxResults [MaxResults] <p>The maximum number of results to return before paginating.</p>
+-- Required key: caseId
+-- @return DescribeCommunicationsRequest structure as a key-value pair table
+function M.DescribeCommunicationsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeCommunicationsRequest")
 	local t = { 
-		["afterTime"] = _afterTime,
-		["nextToken"] = _nextToken,
-		["beforeTime"] = _beforeTime,
-		["caseId"] = _caseId,
-		["maxResults"] = _maxResults,
+		["afterTime"] = args["afterTime"],
+		["nextToken"] = args["nextToken"],
+		["beforeTime"] = args["beforeTime"],
+		["caseId"] = args["caseId"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertDescribeCommunicationsRequest(t)
 	return t
@@ -1068,18 +1173,21 @@ end
 
 --- Create a structure of type AddCommunicationToCaseRequest
 -- <p>To be written.</p>
--- @param _communicationBody [CommunicationBody] <p>The body of an email communication to add to the support case.</p>
--- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
--- @param _ccEmailAddresses [CcEmailAddressList] <p>The email addresses in the CC line of an email to be added to the support case.</p>
--- @param _attachmentSetId [AttachmentSetId] <p>The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling <a>AddAttachmentsToSet</a> </p>
--- Required parameter: communicationBody
-function M.AddCommunicationToCaseRequest(_communicationBody, _caseId, _ccEmailAddresses, _attachmentSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddCommunicationToCaseRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * communicationBody [CommunicationBody] <p>The body of an email communication to add to the support case.</p>
+-- * caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- * ccEmailAddresses [CcEmailAddressList] <p>The email addresses in the CC line of an email to be added to the support case.</p>
+-- * attachmentSetId [AttachmentSetId] <p>The ID of a set of one or more attachments for the communication to add to the case. Create the set by calling <a>AddAttachmentsToSet</a> </p>
+-- Required key: communicationBody
+-- @return AddCommunicationToCaseRequest structure as a key-value pair table
+function M.AddCommunicationToCaseRequest(args)
+	assert(args, "You must provdide an argument table when creating AddCommunicationToCaseRequest")
 	local t = { 
-		["communicationBody"] = _communicationBody,
-		["caseId"] = _caseId,
-		["ccEmailAddresses"] = _ccEmailAddresses,
-		["attachmentSetId"] = _attachmentSetId,
+		["communicationBody"] = args["communicationBody"],
+		["caseId"] = args["caseId"],
+		["ccEmailAddresses"] = args["ccEmailAddresses"],
+		["attachmentSetId"] = args["attachmentSetId"],
 	}
 	asserts.AssertAddCommunicationToCaseRequest(t)
 	return t
@@ -1099,13 +1207,16 @@ end
 
 --- Create a structure of type AddAttachmentsToSetResponse
 -- <p>The ID and expiry time of the attachment set returned by the <a>AddAttachmentsToSet</a> operation.</p>
--- @param _expiryTime [ExpiryTime] <p>The time and date when the attachment set expires.</p>
--- @param _attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> was not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> was specified, the attachments are added to the specified set, if it exists.</p>
-function M.AddAttachmentsToSetResponse(_expiryTime, _attachmentSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddAttachmentsToSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * expiryTime [ExpiryTime] <p>The time and date when the attachment set expires.</p>
+-- * attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> was not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> was specified, the attachments are added to the specified set, if it exists.</p>
+-- @return AddAttachmentsToSetResponse structure as a key-value pair table
+function M.AddAttachmentsToSetResponse(args)
+	assert(args, "You must provdide an argument table when creating AddAttachmentsToSetResponse")
 	local t = { 
-		["expiryTime"] = _expiryTime,
-		["attachmentSetId"] = _attachmentSetId,
+		["expiryTime"] = args["expiryTime"],
+		["attachmentSetId"] = args["attachmentSetId"],
 	}
 	asserts.AssertAddAttachmentsToSetResponse(t)
 	return t
@@ -1131,21 +1242,24 @@ end
 
 --- Create a structure of type TrustedAdvisorResourcesSummary
 -- <p>Details about AWS resources that were analyzed in a call to Trusted Advisor <a>DescribeTrustedAdvisorCheckSummaries</a>. </p>
--- @param _resourcesFlagged [Long] <p>The number of AWS resources that were flagged (listed) by the Trusted Advisor check.</p>
--- @param _resourcesProcessed [Long] <p>The number of AWS resources that were analyzed by the Trusted Advisor check.</p>
--- @param _resourcesSuppressed [Long] <p>The number of AWS resources ignored by Trusted Advisor because they were marked as suppressed by the user.</p>
--- @param _resourcesIgnored [Long] <p>The number of AWS resources ignored by Trusted Advisor because information was unavailable.</p>
--- Required parameter: resourcesProcessed
--- Required parameter: resourcesFlagged
--- Required parameter: resourcesIgnored
--- Required parameter: resourcesSuppressed
-function M.TrustedAdvisorResourcesSummary(_resourcesFlagged, _resourcesProcessed, _resourcesSuppressed, _resourcesIgnored, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorResourcesSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourcesFlagged [Long] <p>The number of AWS resources that were flagged (listed) by the Trusted Advisor check.</p>
+-- * resourcesProcessed [Long] <p>The number of AWS resources that were analyzed by the Trusted Advisor check.</p>
+-- * resourcesSuppressed [Long] <p>The number of AWS resources ignored by Trusted Advisor because they were marked as suppressed by the user.</p>
+-- * resourcesIgnored [Long] <p>The number of AWS resources ignored by Trusted Advisor because information was unavailable.</p>
+-- Required key: resourcesProcessed
+-- Required key: resourcesFlagged
+-- Required key: resourcesIgnored
+-- Required key: resourcesSuppressed
+-- @return TrustedAdvisorResourcesSummary structure as a key-value pair table
+function M.TrustedAdvisorResourcesSummary(args)
+	assert(args, "You must provdide an argument table when creating TrustedAdvisorResourcesSummary")
 	local t = { 
-		["resourcesFlagged"] = _resourcesFlagged,
-		["resourcesProcessed"] = _resourcesProcessed,
-		["resourcesSuppressed"] = _resourcesSuppressed,
-		["resourcesIgnored"] = _resourcesIgnored,
+		["resourcesFlagged"] = args["resourcesFlagged"],
+		["resourcesProcessed"] = args["resourcesProcessed"],
+		["resourcesSuppressed"] = args["resourcesSuppressed"],
+		["resourcesIgnored"] = args["resourcesIgnored"],
 	}
 	asserts.AssertTrustedAdvisorResourcesSummary(t)
 	return t
@@ -1164,11 +1278,14 @@ end
 
 --- Create a structure of type ResolveCaseRequest
 -- <p/>
--- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
-function M.ResolveCaseRequest(_caseId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCaseRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- @return ResolveCaseRequest structure as a key-value pair table
+function M.ResolveCaseRequest(args)
+	assert(args, "You must provdide an argument table when creating ResolveCaseRequest")
 	local t = { 
-		["caseId"] = _caseId,
+		["caseId"] = args["caseId"],
 	}
 	asserts.AssertResolveCaseRequest(t)
 	return t
@@ -1190,15 +1307,18 @@ end
 
 --- Create a structure of type TrustedAdvisorCostOptimizingSummary
 -- <p>The estimated cost savings that might be realized if the recommended actions are taken.</p>
--- @param _estimatedMonthlySavings [Double] <p>The estimated monthly savings that might be realized if the recommended actions are taken.</p>
--- @param _estimatedPercentMonthlySavings [Double] <p>The estimated percentage of savings that might be realized if the recommended actions are taken.</p>
--- Required parameter: estimatedMonthlySavings
--- Required parameter: estimatedPercentMonthlySavings
-function M.TrustedAdvisorCostOptimizingSummary(_estimatedMonthlySavings, _estimatedPercentMonthlySavings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCostOptimizingSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * estimatedMonthlySavings [Double] <p>The estimated monthly savings that might be realized if the recommended actions are taken.</p>
+-- * estimatedPercentMonthlySavings [Double] <p>The estimated percentage of savings that might be realized if the recommended actions are taken.</p>
+-- Required key: estimatedMonthlySavings
+-- Required key: estimatedPercentMonthlySavings
+-- @return TrustedAdvisorCostOptimizingSummary structure as a key-value pair table
+function M.TrustedAdvisorCostOptimizingSummary(args)
+	assert(args, "You must provdide an argument table when creating TrustedAdvisorCostOptimizingSummary")
 	local t = { 
-		["estimatedMonthlySavings"] = _estimatedMonthlySavings,
-		["estimatedPercentMonthlySavings"] = _estimatedPercentMonthlySavings,
+		["estimatedMonthlySavings"] = args["estimatedMonthlySavings"],
+		["estimatedPercentMonthlySavings"] = args["estimatedPercentMonthlySavings"],
 	}
 	asserts.AssertTrustedAdvisorCostOptimizingSummary(t)
 	return t
@@ -1217,11 +1337,14 @@ end
 
 --- Create a structure of type DescribeSeverityLevelsResponse
 -- <p>The list of severity levels returned by the <a>DescribeSeverityLevels</a> operation.</p>
--- @param _severityLevels [SeverityLevelsList] <p>The available severity levels for the support case. Available severity levels are defined by your service level agreement with AWS.</p>
-function M.DescribeSeverityLevelsResponse(_severityLevels, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSeverityLevelsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * severityLevels [SeverityLevelsList] <p>The available severity levels for the support case. Available severity levels are defined by your service level agreement with AWS.</p>
+-- @return DescribeSeverityLevelsResponse structure as a key-value pair table
+function M.DescribeSeverityLevelsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeSeverityLevelsResponse")
 	local t = { 
-		["severityLevels"] = _severityLevels,
+		["severityLevels"] = args["severityLevels"],
 	}
 	asserts.AssertDescribeSeverityLevelsResponse(t)
 	return t
@@ -1240,11 +1363,14 @@ end
 
 --- Create a structure of type DescribeSeverityLevelsRequest
 -- <p/>
--- @param _language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
-function M.DescribeSeverityLevelsRequest(_language, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSeverityLevelsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- @return DescribeSeverityLevelsRequest structure as a key-value pair table
+function M.DescribeSeverityLevelsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeSeverityLevelsRequest")
 	local t = { 
-		["language"] = _language,
+		["language"] = args["language"],
 	}
 	asserts.AssertDescribeSeverityLevelsRequest(t)
 	return t
@@ -1263,11 +1389,14 @@ end
 
 --- Create a structure of type TrustedAdvisorCategorySpecificSummary
 -- <p>The container for summary information that relates to the category of the Trusted Advisor check.</p>
--- @param _costOptimizing [TrustedAdvisorCostOptimizingSummary] <p>The summary information about cost savings for a Trusted Advisor check that is in the Cost Optimizing category.</p>
-function M.TrustedAdvisorCategorySpecificSummary(_costOptimizing, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrustedAdvisorCategorySpecificSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * costOptimizing [TrustedAdvisorCostOptimizingSummary] <p>The summary information about cost savings for a Trusted Advisor check that is in the Cost Optimizing category.</p>
+-- @return TrustedAdvisorCategorySpecificSummary structure as a key-value pair table
+function M.TrustedAdvisorCategorySpecificSummary(args)
+	assert(args, "You must provdide an argument table when creating TrustedAdvisorCategorySpecificSummary")
 	local t = { 
-		["costOptimizing"] = _costOptimizing,
+		["costOptimizing"] = args["costOptimizing"],
 	}
 	asserts.AssertTrustedAdvisorCategorySpecificSummary(t)
 	return t
@@ -1288,14 +1417,17 @@ end
 
 --- Create a structure of type AddAttachmentsToSetRequest
 -- <p/>
--- @param _attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> is specified, the attachments are added to the specified set, if it exists.</p>
--- @param _attachments [Attachments] <p>One or more attachments to add to the set. The limit is 3 attachments per set, and the size limit is 5 MB per attachment.</p>
--- Required parameter: attachments
-function M.AddAttachmentsToSetRequest(_attachmentSetId, _attachments, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddAttachmentsToSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> is specified, the attachments are added to the specified set, if it exists.</p>
+-- * attachments [Attachments] <p>One or more attachments to add to the set. The limit is 3 attachments per set, and the size limit is 5 MB per attachment.</p>
+-- Required key: attachments
+-- @return AddAttachmentsToSetRequest structure as a key-value pair table
+function M.AddAttachmentsToSetRequest(args)
+	assert(args, "You must provdide an argument table when creating AddAttachmentsToSetRequest")
 	local t = { 
-		["attachmentSetId"] = _attachmentSetId,
-		["attachments"] = _attachments,
+		["attachmentSetId"] = args["attachmentSetId"],
+		["attachments"] = args["attachments"],
 	}
 	asserts.AssertAddAttachmentsToSetRequest(t)
 	return t
@@ -1314,11 +1446,14 @@ end
 
 --- Create a structure of type DescribeAttachmentLimitExceeded
 -- <p>The limit for the number of <a>DescribeAttachment</a> requests in a short period of time has been exceeded.</p>
--- @param _message [ErrorMessage] <p>The limit for the number of <a>DescribeAttachment</a> requests in a short period of time has been exceeded.</p>
-function M.DescribeAttachmentLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttachmentLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The limit for the number of <a>DescribeAttachment</a> requests in a short period of time has been exceeded.</p>
+-- @return DescribeAttachmentLimitExceeded structure as a key-value pair table
+function M.DescribeAttachmentLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating DescribeAttachmentLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDescribeAttachmentLimitExceeded(t)
 	return t
@@ -1338,13 +1473,16 @@ end
 
 --- Create a structure of type AttachmentDetails
 -- <p>The file name and ID of an attachment to a case communication. You can use the ID to retrieve the attachment with the <a>DescribeAttachment</a> operation.</p>
--- @param _attachmentId [AttachmentId] <p>The ID of the attachment.</p>
--- @param _fileName [FileName] <p>The file name of the attachment.</p>
-function M.AttachmentDetails(_attachmentId, _fileName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attachmentId [AttachmentId] <p>The ID of the attachment.</p>
+-- * fileName [FileName] <p>The file name of the attachment.</p>
+-- @return AttachmentDetails structure as a key-value pair table
+function M.AttachmentDetails(args)
+	assert(args, "You must provdide an argument table when creating AttachmentDetails")
 	local t = { 
-		["attachmentId"] = _attachmentId,
-		["fileName"] = _fileName,
+		["attachmentId"] = args["attachmentId"],
+		["fileName"] = args["fileName"],
 	}
 	asserts.AssertAttachmentDetails(t)
 	return t
@@ -1363,11 +1501,14 @@ end
 
 --- Create a structure of type DescribeServicesResponse
 -- <p>The list of AWS services returned by the <a>DescribeServices</a> operation.</p>
--- @param _services [ServiceList] <p>A JSON-formatted list of AWS services.</p>
-function M.DescribeServicesResponse(_services, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServicesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * services [ServiceList] <p>A JSON-formatted list of AWS services.</p>
+-- @return DescribeServicesResponse structure as a key-value pair table
+function M.DescribeServicesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeServicesResponse")
 	local t = { 
-		["services"] = _services,
+		["services"] = args["services"],
 	}
 	asserts.AssertDescribeServicesResponse(t)
 	return t
@@ -1387,12 +1528,15 @@ end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckSummariesResponse
 -- <p>The summaries of the Trusted Advisor checks returned by the <a>DescribeTrustedAdvisorCheckSummaries</a> operation.</p>
--- @param _summaries [TrustedAdvisorCheckSummaryList] <p>The summary information for the requested Trusted Advisor checks.</p>
--- Required parameter: summaries
-function M.DescribeTrustedAdvisorCheckSummariesResponse(_summaries, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckSummariesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * summaries [TrustedAdvisorCheckSummaryList] <p>The summary information for the requested Trusted Advisor checks.</p>
+-- Required key: summaries
+-- @return DescribeTrustedAdvisorCheckSummariesResponse structure as a key-value pair table
+function M.DescribeTrustedAdvisorCheckSummariesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckSummariesResponse")
 	local t = { 
-		["summaries"] = _summaries,
+		["summaries"] = args["summaries"],
 	}
 	asserts.AssertDescribeTrustedAdvisorCheckSummariesResponse(t)
 	return t
@@ -1412,13 +1556,16 @@ end
 
 --- Create a structure of type SeverityLevel
 -- <p>A code and name pair that represent a severity level that can be applied to a support case.</p>
--- @param _code [SeverityLevelCode] <p>One of four values: "low," "medium," "high," and "urgent". These values correspond to response times returned to the caller in <code>severityLevel.name</code>. </p>
--- @param _name [SeverityLevelName] <p>The name of the severity level that corresponds to the severity level code.</p>
-function M.SeverityLevel(_code, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SeverityLevel")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * code [SeverityLevelCode] <p>One of four values: "low," "medium," "high," and "urgent". These values correspond to response times returned to the caller in <code>severityLevel.name</code>. </p>
+-- * name [SeverityLevelName] <p>The name of the severity level that corresponds to the severity level code.</p>
+-- @return SeverityLevel structure as a key-value pair table
+function M.SeverityLevel(args)
+	assert(args, "You must provdide an argument table when creating SeverityLevel")
 	local t = { 
-		["code"] = _code,
-		["name"] = _name,
+		["code"] = args["code"],
+		["name"] = args["name"],
 	}
 	asserts.AssertSeverityLevel(t)
 	return t
@@ -1437,11 +1584,14 @@ end
 
 --- Create a structure of type AttachmentLimitExceeded
 -- <p>The limit for the number of attachment sets created in a short period of time has been exceeded.</p>
--- @param _message [ErrorMessage] <p>The limit for the number of attachment sets created in a short period of time has been exceeded.</p>
-function M.AttachmentLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachmentLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The limit for the number of attachment sets created in a short period of time has been exceeded.</p>
+-- @return AttachmentLimitExceeded structure as a key-value pair table
+function M.AttachmentLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating AttachmentLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertAttachmentLimitExceeded(t)
 	return t
@@ -1471,33 +1621,36 @@ end
 
 --- Create a structure of type CaseDetails
 -- <p>A JSON-formatted object that contains the metadata for a support case. It is contained the response from a <a>DescribeCases</a> request. <b>CaseDetails</b> contains the following fields:</p> <ul> <li> <p> <b>caseId.</b> The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i>.</p> </li> <li> <p> <b>categoryCode.</b> The category of problem for the AWS Support case. Corresponds to the CategoryCode values returned by a call to <a>DescribeServices</a>.</p> </li> <li> <p> <b>displayId.</b> The identifier for the case on pages in the AWS Support Center.</p> </li> <li> <p> <b>language.</b> The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p> </li> <li> <p> <b>recentCommunications.</b> One or more <a>Communication</a> objects. Fields of these objects are <code>attachments</code>, <code>body</code>, <code>caseId</code>, <code>submittedBy</code>, and <code>timeCreated</code>.</p> </li> <li> <p> <b>nextToken.</b> A resumption point for pagination.</p> </li> <li> <p> <b>serviceCode.</b> The identifier for the AWS service that corresponds to the service code defined in the call to <a>DescribeServices</a>.</p> </li> <li> <p> <b>severityCode. </b>The severity code assigned to the case. Contains one of the values returned by the call to <a>DescribeSeverityLevels</a>.</p> </li> <li> <p> <b>status.</b> The status of the case in the AWS Support Center.</p> </li> <li> <p> <b>subject.</b> The subject line of the case.</p> </li> <li> <p> <b>submittedBy.</b> The email address of the account that submitted the case.</p> </li> <li> <p> <b>timeCreated.</b> The time the case was created, in ISO-8601 format.</p> </li> </ul>
--- @param _status [Status] <p>The status of the case.</p>
--- @param _recentCommunications [RecentCaseCommunications] <p>The five most recent communications between you and AWS Support Center, including the IDs of any attachments to the communications. Also includes a <code>nextToken</code> that you can use to retrieve earlier communications.</p>
--- @param _ccEmailAddresses [CcEmailAddressList] <p>The email addresses that receive copies of communication about the case.</p>
--- @param _timeCreated [TimeCreated] <p>The time that the case was case created in the AWS Support Center.</p>
--- @param _caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
--- @param _severityCode [SeverityCode] <p>The code for the severity level returned by the call to <a>DescribeSeverityLevels</a>.</p>
--- @param _language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
--- @param _categoryCode [CategoryCode] <p>The category of problem for the AWS Support case.</p>
--- @param _serviceCode [ServiceCode] <p>The code for the AWS service returned by the call to <a>DescribeServices</a>.</p>
--- @param _submittedBy [SubmittedBy] <p>The email address of the account that submitted the case.</p>
--- @param _displayId [DisplayId] <p>The ID displayed for the case in the AWS Support Center. This is a numeric string.</p>
--- @param _subject [Subject] <p>The subject line for the case in the AWS Support Center.</p>
-function M.CaseDetails(_status, _recentCommunications, _ccEmailAddresses, _timeCreated, _caseId, _severityCode, _language, _categoryCode, _serviceCode, _submittedBy, _displayId, _subject, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CaseDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [Status] <p>The status of the case.</p>
+-- * recentCommunications [RecentCaseCommunications] <p>The five most recent communications between you and AWS Support Center, including the IDs of any attachments to the communications. Also includes a <code>nextToken</code> that you can use to retrieve earlier communications.</p>
+-- * ccEmailAddresses [CcEmailAddressList] <p>The email addresses that receive copies of communication about the case.</p>
+-- * timeCreated [TimeCreated] <p>The time that the case was case created in the AWS Support Center.</p>
+-- * caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
+-- * severityCode [SeverityCode] <p>The code for the severity level returned by the call to <a>DescribeSeverityLevels</a>.</p>
+-- * language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
+-- * categoryCode [CategoryCode] <p>The category of problem for the AWS Support case.</p>
+-- * serviceCode [ServiceCode] <p>The code for the AWS service returned by the call to <a>DescribeServices</a>.</p>
+-- * submittedBy [SubmittedBy] <p>The email address of the account that submitted the case.</p>
+-- * displayId [DisplayId] <p>The ID displayed for the case in the AWS Support Center. This is a numeric string.</p>
+-- * subject [Subject] <p>The subject line for the case in the AWS Support Center.</p>
+-- @return CaseDetails structure as a key-value pair table
+function M.CaseDetails(args)
+	assert(args, "You must provdide an argument table when creating CaseDetails")
 	local t = { 
-		["status"] = _status,
-		["recentCommunications"] = _recentCommunications,
-		["ccEmailAddresses"] = _ccEmailAddresses,
-		["timeCreated"] = _timeCreated,
-		["caseId"] = _caseId,
-		["severityCode"] = _severityCode,
-		["language"] = _language,
-		["categoryCode"] = _categoryCode,
-		["serviceCode"] = _serviceCode,
-		["submittedBy"] = _submittedBy,
-		["displayId"] = _displayId,
-		["subject"] = _subject,
+		["status"] = args["status"],
+		["recentCommunications"] = args["recentCommunications"],
+		["ccEmailAddresses"] = args["ccEmailAddresses"],
+		["timeCreated"] = args["timeCreated"],
+		["caseId"] = args["caseId"],
+		["severityCode"] = args["severityCode"],
+		["language"] = args["language"],
+		["categoryCode"] = args["categoryCode"],
+		["serviceCode"] = args["serviceCode"],
+		["submittedBy"] = args["submittedBy"],
+		["displayId"] = args["displayId"],
+		["subject"] = args["subject"],
 	}
 	asserts.AssertCaseDetails(t)
 	return t
@@ -1517,13 +1670,16 @@ end
 
 --- Create a structure of type DescribeCasesResponse
 -- <p>Returns an array of <a>CaseDetails</a> objects and a <code>nextToken</code> that defines a point for pagination in the result set.</p>
--- @param _cases [CaseList] <p>The details for the cases that match the request.</p>
--- @param _nextToken [NextToken] <p>A resumption point for pagination.</p>
-function M.DescribeCasesResponse(_cases, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCasesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cases [CaseList] <p>The details for the cases that match the request.</p>
+-- * nextToken [NextToken] <p>A resumption point for pagination.</p>
+-- @return DescribeCasesResponse structure as a key-value pair table
+function M.DescribeCasesResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeCasesResponse")
 	local t = { 
-		["cases"] = _cases,
-		["nextToken"] = _nextToken,
+		["cases"] = args["cases"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeCasesResponse(t)
 	return t
@@ -1543,12 +1699,15 @@ end
 
 --- Create a structure of type DescribeTrustedAdvisorCheckSummariesRequest
 -- <p/>
--- @param _checkIds [StringList] <p>The IDs of the Trusted Advisor checks.</p>
--- Required parameter: checkIds
-function M.DescribeTrustedAdvisorCheckSummariesRequest(_checkIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTrustedAdvisorCheckSummariesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checkIds [StringList] <p>The IDs of the Trusted Advisor checks.</p>
+-- Required key: checkIds
+-- @return DescribeTrustedAdvisorCheckSummariesRequest structure as a key-value pair table
+function M.DescribeTrustedAdvisorCheckSummariesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckSummariesRequest")
 	local t = { 
-		["checkIds"] = _checkIds,
+		["checkIds"] = args["checkIds"],
 	}
 	asserts.AssertDescribeTrustedAdvisorCheckSummariesRequest(t)
 	return t

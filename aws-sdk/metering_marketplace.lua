@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type ExpiredTokenException
 -- <p>The submitted registration token has expired. This can happen if the buyer's browser takes too long to redirect to your page, the buyer has resubmitted the registration token, or your application has held on to the registration token for too long. Your SaaS registration website should redeem this token as soon as it is submitted by the buyer's browser.</p>
--- @param _message [errorMessage] 
-function M.ExpiredTokenException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return ExpiredTokenException structure as a key-value pair table
+function M.ExpiredTokenException(args)
+	assert(args, "You must provdide an argument table when creating ExpiredTokenException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertExpiredTokenException(t)
 	return t
@@ -58,12 +61,15 @@ end
 
 --- Create a structure of type ResolveCustomerRequest
 -- <p>Contains input to the ResolveCustomer operation.</p>
--- @param _RegistrationToken [NonEmptyString] <p>When a buyer visits your website during the registration process, the buyer submits a registration token through the browser. The registration token is resolved to obtain a CustomerIdentifier and product code.</p>
--- Required parameter: RegistrationToken
-function M.ResolveCustomerRequest(_RegistrationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCustomerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegistrationToken [NonEmptyString] <p>When a buyer visits your website during the registration process, the buyer submits a registration token through the browser. The registration token is resolved to obtain a CustomerIdentifier and product code.</p>
+-- Required key: RegistrationToken
+-- @return ResolveCustomerRequest structure as a key-value pair table
+function M.ResolveCustomerRequest(args)
+	assert(args, "You must provdide an argument table when creating ResolveCustomerRequest")
 	local t = { 
-		["RegistrationToken"] = _RegistrationToken,
+		["RegistrationToken"] = args["RegistrationToken"],
 	}
 	asserts.AssertResolveCustomerRequest(t)
 	return t
@@ -83,13 +89,16 @@ end
 
 --- Create a structure of type ResolveCustomerResult
 -- <p>The result of the ResolveCustomer operation. Contains the CustomerIdentifier and product code.</p>
--- @param _ProductCode [ProductCode] <p>The product code is returned to confirm that the buyer is registering for your product. Subsequent BatchMeterUsage calls should be made using this product code.</p>
--- @param _CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is used to identify an individual customer in your application. Calls to BatchMeterUsage require CustomerIdentifiers for each UsageRecord.</p>
-function M.ResolveCustomerResult(_ProductCode, _CustomerIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResolveCustomerResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProductCode [ProductCode] <p>The product code is returned to confirm that the buyer is registering for your product. Subsequent BatchMeterUsage calls should be made using this product code.</p>
+-- * CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is used to identify an individual customer in your application. Calls to BatchMeterUsage require CustomerIdentifiers for each UsageRecord.</p>
+-- @return ResolveCustomerResult structure as a key-value pair table
+function M.ResolveCustomerResult(args)
+	assert(args, "You must provdide an argument table when creating ResolveCustomerResult")
 	local t = { 
-		["ProductCode"] = _ProductCode,
-		["CustomerIdentifier"] = _CustomerIdentifier,
+		["ProductCode"] = args["ProductCode"],
+		["CustomerIdentifier"] = args["CustomerIdentifier"],
 	}
 	asserts.AssertResolveCustomerResult(t)
 	return t
@@ -108,11 +117,14 @@ end
 
 --- Create a structure of type TimestampOutOfBoundsException
 -- <p>The timestamp value passed in the meterUsage() is out of allowed range.</p>
--- @param _message [errorMessage] 
-function M.TimestampOutOfBoundsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TimestampOutOfBoundsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return TimestampOutOfBoundsException structure as a key-value pair table
+function M.TimestampOutOfBoundsException(args)
+	assert(args, "You must provdide an argument table when creating TimestampOutOfBoundsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTimestampOutOfBoundsException(t)
 	return t
@@ -132,13 +144,16 @@ end
 
 --- Create a structure of type BatchMeterUsageResult
 -- <p>Contains the UsageRecords processed by BatchMeterUsage and any records that have failed due to transient error.</p>
--- @param _UnprocessedRecords [UsageRecordList] <p>Contains all UsageRecords that were not processed by BatchMeterUsage. This is a list of UsageRecords. You can retry the failed request by making another BatchMeterUsage call with this list as input in the BatchMeterUsageRequest.</p>
--- @param _Results [UsageRecordResultList] <p>Contains all UsageRecords processed by BatchMeterUsage. These records were either honored by AWS Marketplace Metering Service or were invalid.</p>
-function M.BatchMeterUsageResult(_UnprocessedRecords, _Results, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchMeterUsageResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UnprocessedRecords [UsageRecordList] <p>Contains all UsageRecords that were not processed by BatchMeterUsage. This is a list of UsageRecords. You can retry the failed request by making another BatchMeterUsage call with this list as input in the BatchMeterUsageRequest.</p>
+-- * Results [UsageRecordResultList] <p>Contains all UsageRecords processed by BatchMeterUsage. These records were either honored by AWS Marketplace Metering Service or were invalid.</p>
+-- @return BatchMeterUsageResult structure as a key-value pair table
+function M.BatchMeterUsageResult(args)
+	assert(args, "You must provdide an argument table when creating BatchMeterUsageResult")
 	local t = { 
-		["UnprocessedRecords"] = _UnprocessedRecords,
-		["Results"] = _Results,
+		["UnprocessedRecords"] = args["UnprocessedRecords"],
+		["Results"] = args["Results"],
 	}
 	asserts.AssertBatchMeterUsageResult(t)
 	return t
@@ -157,11 +172,14 @@ end
 
 --- Create a structure of type InvalidTokenException
 --  
--- @param _message [errorMessage] 
-function M.InvalidTokenException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return InvalidTokenException structure as a key-value pair table
+function M.InvalidTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidTokenException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidTokenException(t)
 	return t
@@ -180,11 +198,14 @@ end
 
 --- Create a structure of type InvalidCustomerIdentifierException
 -- <p>You have metered usage for a CustomerIdentifier that does not exist.</p>
--- @param _message [errorMessage] 
-function M.InvalidCustomerIdentifierException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCustomerIdentifierException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return InvalidCustomerIdentifierException structure as a key-value pair table
+function M.InvalidCustomerIdentifierException(args)
+	assert(args, "You must provdide an argument table when creating InvalidCustomerIdentifierException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidCustomerIdentifierException(t)
 	return t
@@ -212,24 +233,27 @@ end
 
 --- Create a structure of type MeterUsageRequest
 --  
--- @param _ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
--- @param _UsageQuantity [UsageQuantity] <p>Consumption value for the hour.</p>
--- @param _DryRun [Boolean] <p>Checks whether you have the permissions required for the action, but does not make the request. If you have the permissions, the request returns DryRunOperation; otherwise, it returns UnauthorizedException.</p>
--- @param _UsageDimension [UsageDimension] <p>It will be one of the fcp dimension name provided during the publishing of the product.</p>
--- @param _Timestamp [Timestamp] <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.</p>
--- Required parameter: ProductCode
--- Required parameter: Timestamp
--- Required parameter: UsageDimension
--- Required parameter: UsageQuantity
--- Required parameter: DryRun
-function M.MeterUsageRequest(_ProductCode, _UsageQuantity, _DryRun, _UsageDimension, _Timestamp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MeterUsageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
+-- * UsageQuantity [UsageQuantity] <p>Consumption value for the hour.</p>
+-- * DryRun [Boolean] <p>Checks whether you have the permissions required for the action, but does not make the request. If you have the permissions, the request returns DryRunOperation; otherwise, it returns UnauthorizedException.</p>
+-- * UsageDimension [UsageDimension] <p>It will be one of the fcp dimension name provided during the publishing of the product.</p>
+-- * Timestamp [Timestamp] <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.</p>
+-- Required key: ProductCode
+-- Required key: Timestamp
+-- Required key: UsageDimension
+-- Required key: UsageQuantity
+-- Required key: DryRun
+-- @return MeterUsageRequest structure as a key-value pair table
+function M.MeterUsageRequest(args)
+	assert(args, "You must provdide an argument table when creating MeterUsageRequest")
 	local t = { 
-		["ProductCode"] = _ProductCode,
-		["UsageQuantity"] = _UsageQuantity,
-		["DryRun"] = _DryRun,
-		["UsageDimension"] = _UsageDimension,
-		["Timestamp"] = _Timestamp,
+		["ProductCode"] = args["ProductCode"],
+		["UsageQuantity"] = args["UsageQuantity"],
+		["DryRun"] = args["DryRun"],
+		["UsageDimension"] = args["UsageDimension"],
+		["Timestamp"] = args["Timestamp"],
 	}
 	asserts.AssertMeterUsageRequest(t)
 	return t
@@ -248,11 +272,14 @@ end
 
 --- Create a structure of type MeterUsageResult
 --  
--- @param _MeteringRecordId [String] 
-function M.MeterUsageResult(_MeteringRecordId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MeterUsageResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MeteringRecordId [String] 
+-- @return MeterUsageResult structure as a key-value pair table
+function M.MeterUsageResult(args)
+	assert(args, "You must provdide an argument table when creating MeterUsageResult")
 	local t = { 
-		["MeteringRecordId"] = _MeteringRecordId,
+		["MeteringRecordId"] = args["MeteringRecordId"],
 	}
 	asserts.AssertMeterUsageResult(t)
 	return t
@@ -271,11 +298,14 @@ end
 
 --- Create a structure of type InvalidProductCodeException
 -- <p>The product code passed does not match the product code used for publishing the product.</p>
--- @param _message [errorMessage] 
-function M.InvalidProductCodeException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidProductCodeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return InvalidProductCodeException structure as a key-value pair table
+function M.InvalidProductCodeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidProductCodeException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidProductCodeException(t)
 	return t
@@ -294,11 +324,14 @@ end
 
 --- Create a structure of type InternalServiceErrorException
 -- <p>An internal error has occurred. Retry your request. If the problem persists, post a message with details on the AWS forums.</p>
--- @param _message [errorMessage] 
-function M.InternalServiceErrorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServiceErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return InternalServiceErrorException structure as a key-value pair table
+function M.InternalServiceErrorException(args)
+	assert(args, "You must provdide an argument table when creating InternalServiceErrorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalServiceErrorException(t)
 	return t
@@ -317,11 +350,14 @@ end
 
 --- Create a structure of type InvalidEndpointRegionException
 -- <p>The endpoint being called is in a region different from your EC2 instance. The region of the Metering service endpoint and the region of the EC2 instance must match.</p>
--- @param _message [errorMessage] 
-function M.InvalidEndpointRegionException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidEndpointRegionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return InvalidEndpointRegionException structure as a key-value pair table
+function M.InvalidEndpointRegionException(args)
+	assert(args, "You must provdide an argument table when creating InvalidEndpointRegionException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidEndpointRegionException(t)
 	return t
@@ -342,15 +378,18 @@ end
 
 --- Create a structure of type UsageRecordResult
 -- <p>A UsageRecordResult indicates the status of a given UsageRecord processed by BatchMeterUsage.</p>
--- @param _Status [UsageRecordResultStatus] <p>The UsageRecordResult Status indicates the status of an individual UsageRecord processed by BatchMeterUsage.</p> <ul> <li> <p> <i>Success</i>- The UsageRecord was accepted and honored by BatchMeterUsage.</p> </li> <li> <p> <i>CustomerNotSubscribed</i>- The CustomerIdentifier specified is not subscribed to your product. The UsageRecord was not honored. Future UsageRecords for this customer will fail until the customer subscribes to your product.</p> </li> <li> <p> <i>DuplicateRecord</i>- Indicates that the UsageRecord was invalid and not honored. A previously metered UsageRecord had the same customer, dimension, and time, but a different quantity.</p> </li> </ul>
--- @param _UsageRecord [UsageRecord] <p>The UsageRecord that was part of the BatchMeterUsage request.</p>
--- @param _MeteringRecordId [String] <p>The MeteringRecordId is a unique identifier for this metering event.</p>
-function M.UsageRecordResult(_Status, _UsageRecord, _MeteringRecordId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UsageRecordResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [UsageRecordResultStatus] <p>The UsageRecordResult Status indicates the status of an individual UsageRecord processed by BatchMeterUsage.</p> <ul> <li> <p> <i>Success</i>- The UsageRecord was accepted and honored by BatchMeterUsage.</p> </li> <li> <p> <i>CustomerNotSubscribed</i>- The CustomerIdentifier specified is not subscribed to your product. The UsageRecord was not honored. Future UsageRecords for this customer will fail until the customer subscribes to your product.</p> </li> <li> <p> <i>DuplicateRecord</i>- Indicates that the UsageRecord was invalid and not honored. A previously metered UsageRecord had the same customer, dimension, and time, but a different quantity.</p> </li> </ul>
+-- * UsageRecord [UsageRecord] <p>The UsageRecord that was part of the BatchMeterUsage request.</p>
+-- * MeteringRecordId [String] <p>The MeteringRecordId is a unique identifier for this metering event.</p>
+-- @return UsageRecordResult structure as a key-value pair table
+function M.UsageRecordResult(args)
+	assert(args, "You must provdide an argument table when creating UsageRecordResult")
 	local t = { 
-		["Status"] = _Status,
-		["UsageRecord"] = _UsageRecord,
-		["MeteringRecordId"] = _MeteringRecordId,
+		["Status"] = args["Status"],
+		["UsageRecord"] = args["UsageRecord"],
+		["MeteringRecordId"] = args["MeteringRecordId"],
 	}
 	asserts.AssertUsageRecordResult(t)
 	return t
@@ -372,15 +411,18 @@ end
 
 --- Create a structure of type BatchMeterUsageRequest
 -- <p>A BatchMeterUsageRequest contains UsageRecords, which indicate quantities of usage within your application.</p>
--- @param _UsageRecords [UsageRecordList] <p>The set of UsageRecords to submit. BatchMeterUsage accepts up to 25 UsageRecords at a time.</p>
--- @param _ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
--- Required parameter: UsageRecords
--- Required parameter: ProductCode
-function M.BatchMeterUsageRequest(_UsageRecords, _ProductCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchMeterUsageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UsageRecords [UsageRecordList] <p>The set of UsageRecords to submit. BatchMeterUsage accepts up to 25 UsageRecords at a time.</p>
+-- * ProductCode [ProductCode] <p>Product code is used to uniquely identify a product in AWS Marketplace. The product code should be the same as the one used during the publishing of a new product.</p>
+-- Required key: UsageRecords
+-- Required key: ProductCode
+-- @return BatchMeterUsageRequest structure as a key-value pair table
+function M.BatchMeterUsageRequest(args)
+	assert(args, "You must provdide an argument table when creating BatchMeterUsageRequest")
 	local t = { 
-		["UsageRecords"] = _UsageRecords,
-		["ProductCode"] = _ProductCode,
+		["UsageRecords"] = args["UsageRecords"],
+		["ProductCode"] = args["ProductCode"],
 	}
 	asserts.AssertBatchMeterUsageRequest(t)
 	return t
@@ -399,11 +441,14 @@ end
 
 --- Create a structure of type InvalidUsageDimensionException
 -- <p>The usage dimension does not match one of the UsageDimensions associated with products.</p>
--- @param _message [errorMessage] 
-function M.InvalidUsageDimensionException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidUsageDimensionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return InvalidUsageDimensionException structure as a key-value pair table
+function M.InvalidUsageDimensionException(args)
+	assert(args, "You must provdide an argument table when creating InvalidUsageDimensionException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidUsageDimensionException(t)
 	return t
@@ -429,21 +474,24 @@ end
 
 --- Create a structure of type UsageRecord
 -- <p>A UsageRecord indicates a quantity of usage for a given product, customer, dimension and time.</p> <p>Multiple requests with the same UsageRecords as input will be deduplicated to prevent double charges.</p>
--- @param _Timestamp [Timestamp] <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.</p> <p>Your application can meter usage for up to one hour in the past.</p>
--- @param _CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is obtained through the ResolveCustomer operation and represents an individual buyer in your application.</p>
--- @param _Dimension [UsageDimension] <p>During the process of registering a product on AWS Marketplace, up to eight dimensions are specified. These represent different units of value in your application.</p>
--- @param _Quantity [UsageQuantity] <p>The quantity of usage consumed by the customer for the given dimension and time.</p>
--- Required parameter: Timestamp
--- Required parameter: CustomerIdentifier
--- Required parameter: Dimension
--- Required parameter: Quantity
-function M.UsageRecord(_Timestamp, _CustomerIdentifier, _Dimension, _Quantity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UsageRecord")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Timestamp [Timestamp] <p>Timestamp of the hour, recorded in UTC. The seconds and milliseconds portions of the timestamp will be ignored.</p> <p>Your application can meter usage for up to one hour in the past.</p>
+-- * CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is obtained through the ResolveCustomer operation and represents an individual buyer in your application.</p>
+-- * Dimension [UsageDimension] <p>During the process of registering a product on AWS Marketplace, up to eight dimensions are specified. These represent different units of value in your application.</p>
+-- * Quantity [UsageQuantity] <p>The quantity of usage consumed by the customer for the given dimension and time.</p>
+-- Required key: Timestamp
+-- Required key: CustomerIdentifier
+-- Required key: Dimension
+-- Required key: Quantity
+-- @return UsageRecord structure as a key-value pair table
+function M.UsageRecord(args)
+	assert(args, "You must provdide an argument table when creating UsageRecord")
 	local t = { 
-		["Timestamp"] = _Timestamp,
-		["CustomerIdentifier"] = _CustomerIdentifier,
-		["Dimension"] = _Dimension,
-		["Quantity"] = _Quantity,
+		["Timestamp"] = args["Timestamp"],
+		["CustomerIdentifier"] = args["CustomerIdentifier"],
+		["Dimension"] = args["Dimension"],
+		["Quantity"] = args["Quantity"],
 	}
 	asserts.AssertUsageRecord(t)
 	return t
@@ -462,11 +510,14 @@ end
 
 --- Create a structure of type ThrottlingException
 -- <p>The calls to the MeterUsage API are throttled.</p>
--- @param _message [errorMessage] 
-function M.ThrottlingException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return ThrottlingException structure as a key-value pair table
+function M.ThrottlingException(args)
+	assert(args, "You must provdide an argument table when creating ThrottlingException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertThrottlingException(t)
 	return t
@@ -485,11 +536,14 @@ end
 
 --- Create a structure of type DuplicateRequestException
 -- <p>A metering record has already been emitted by the same EC2 instance for the given {usageDimension, timestamp} with a different usageQuantity.</p>
--- @param _message [errorMessage] 
-function M.DuplicateRequestException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return DuplicateRequestException structure as a key-value pair table
+function M.DuplicateRequestException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateRequestException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDuplicateRequestException(t)
 	return t

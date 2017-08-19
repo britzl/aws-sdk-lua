@@ -36,14 +36,17 @@ end
 
 --- Create a structure of type GetOpenIdTokenInput
 -- <p>Input to the GetOpenIdToken action.</p>
--- @param _Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito Identity Provider, or any other OpenId Connect provider, always include the <code>id_token</code>.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
--- Required parameter: IdentityId
-function M.GetOpenIdTokenInput(_Logins, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito Identity Provider, or any other OpenId Connect provider, always include the <code>id_token</code>.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- Required key: IdentityId
+-- @return GetOpenIdTokenInput structure as a key-value pair table
+function M.GetOpenIdTokenInput(args)
+	assert(args, "You must provdide an argument table when creating GetOpenIdTokenInput")
 	local t = { 
-		["Logins"] = _Logins,
-		["IdentityId"] = _IdentityId,
+		["Logins"] = args["Logins"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertGetOpenIdTokenInput(t)
 	return t
@@ -63,12 +66,15 @@ end
 
 --- Create a structure of type RulesConfigurationType
 -- <p>A container for rules.</p>
--- @param _Rules [MappingRulesList] <p>An array of rules. You can specify up to 25 rules per identity provider.</p> <p>Rules are evaluated in order. The first one to match specifies the role.</p>
--- Required parameter: Rules
-function M.RulesConfigurationType(_Rules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RulesConfigurationType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [MappingRulesList] <p>An array of rules. You can specify up to 25 rules per identity provider.</p> <p>Rules are evaluated in order. The first one to match specifies the role.</p>
+-- Required key: Rules
+-- @return RulesConfigurationType structure as a key-value pair table
+function M.RulesConfigurationType(args)
+	assert(args, "You must provdide an argument table when creating RulesConfigurationType")
 	local t = { 
-		["Rules"] = _Rules,
+		["Rules"] = args["Rules"],
 	}
 	asserts.AssertRulesConfigurationType(t)
 	return t
@@ -89,15 +95,18 @@ end
 
 --- Create a structure of type GetIdentityPoolRolesResponse
 -- <p>Returned in response to a successful <code>GetIdentityPoolRoles</code> operation.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _Roles [RolesMap] <p>The map of roles associated with this pool. Currently only authenticated and unauthenticated roles are supported.</p>
--- @param _RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a String-to-<a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p>
-function M.GetIdentityPoolRolesResponse(_IdentityPoolId, _Roles, _RoleMappings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolRolesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * Roles [RolesMap] <p>The map of roles associated with this pool. Currently only authenticated and unauthenticated roles are supported.</p>
+-- * RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a String-to-<a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p>
+-- @return GetIdentityPoolRolesResponse structure as a key-value pair table
+function M.GetIdentityPoolRolesResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityPoolRolesResponse")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["Roles"] = _Roles,
-		["RoleMappings"] = _RoleMappings,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["Roles"] = args["Roles"],
+		["RoleMappings"] = args["RoleMappings"],
 	}
 	asserts.AssertGetIdentityPoolRolesResponse(t)
 	return t
@@ -118,14 +127,17 @@ end
 
 --- Create a structure of type ListIdentityPoolsInput
 -- <p>Input to the ListIdentityPools action.</p>
--- @param _NextToken [PaginationKey] <p>A pagination token.</p>
--- @param _MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
--- Required parameter: MaxResults
-function M.ListIdentityPoolsInput(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoolsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationKey] <p>A pagination token.</p>
+-- * MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
+-- Required key: MaxResults
+-- @return ListIdentityPoolsInput structure as a key-value pair table
+function M.ListIdentityPoolsInput(args)
+	assert(args, "You must provdide an argument table when creating ListIdentityPoolsInput")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListIdentityPoolsInput(t)
 	return t
@@ -144,11 +156,14 @@ end
 
 --- Create a structure of type NotAuthorizedException
 -- <p>Thrown when a user is not authorized to access the requested resource.</p>
--- @param _message [String] <p>The message returned by a NotAuthorizedException</p>
-function M.NotAuthorizedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotAuthorizedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The message returned by a NotAuthorizedException</p>
+-- @return NotAuthorizedException structure as a key-value pair table
+function M.NotAuthorizedException(args)
+	assert(args, "You must provdide an argument table when creating NotAuthorizedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNotAuthorizedException(t)
 	return t
@@ -175,25 +190,28 @@ end
 
 --- Create a structure of type CreateIdentityPoolInput
 -- <p>Input to the CreateIdentityPool action.</p>
--- @param _DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (<code>.</code>), underscore (<code>_</code>), and dash (<code>-</code>).</p> <p>Once you have set a developer provider name, you cannot change it. Please take care in setting this parameter.</p>
--- @param _SamlProviderARNs [SAMLProviderList] <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
--- @param _SupportedLoginProviders [IdentityProviders] <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
--- @param _AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] <p>TRUE if the identity pool supports unauthenticated logins.</p>
--- @param _CognitoIdentityProviders [CognitoIdentityProviderList] <p>An array of Amazon Cognito Identity user pools and their client IDs.</p>
--- @param _IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
--- @param _OpenIdConnectProviderARNs [OIDCProviderList] <p>A list of OpendID Connect provider ARNs.</p>
--- Required parameter: IdentityPoolName
--- Required parameter: AllowUnauthenticatedIdentities
-function M.CreateIdentityPoolInput(_DeveloperProviderName, _SamlProviderARNs, _SupportedLoginProviders, _AllowUnauthenticatedIdentities, _CognitoIdentityProviders, _IdentityPoolName, _OpenIdConnectProviderARNs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateIdentityPoolInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (<code>.</code>), underscore (<code>_</code>), and dash (<code>-</code>).</p> <p>Once you have set a developer provider name, you cannot change it. Please take care in setting this parameter.</p>
+-- * SamlProviderARNs [SAMLProviderList] <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
+-- * SupportedLoginProviders [IdentityProviders] <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
+-- * AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] <p>TRUE if the identity pool supports unauthenticated logins.</p>
+-- * CognitoIdentityProviders [CognitoIdentityProviderList] <p>An array of Amazon Cognito Identity user pools and their client IDs.</p>
+-- * IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
+-- * OpenIdConnectProviderARNs [OIDCProviderList] <p>A list of OpendID Connect provider ARNs.</p>
+-- Required key: IdentityPoolName
+-- Required key: AllowUnauthenticatedIdentities
+-- @return CreateIdentityPoolInput structure as a key-value pair table
+function M.CreateIdentityPoolInput(args)
+	assert(args, "You must provdide an argument table when creating CreateIdentityPoolInput")
 	local t = { 
-		["DeveloperProviderName"] = _DeveloperProviderName,
-		["SamlProviderARNs"] = _SamlProviderARNs,
-		["SupportedLoginProviders"] = _SupportedLoginProviders,
-		["AllowUnauthenticatedIdentities"] = _AllowUnauthenticatedIdentities,
-		["CognitoIdentityProviders"] = _CognitoIdentityProviders,
-		["IdentityPoolName"] = _IdentityPoolName,
-		["OpenIdConnectProviderARNs"] = _OpenIdConnectProviderARNs,
+		["DeveloperProviderName"] = args["DeveloperProviderName"],
+		["SamlProviderARNs"] = args["SamlProviderARNs"],
+		["SupportedLoginProviders"] = args["SupportedLoginProviders"],
+		["AllowUnauthenticatedIdentities"] = args["AllowUnauthenticatedIdentities"],
+		["CognitoIdentityProviders"] = args["CognitoIdentityProviders"],
+		["IdentityPoolName"] = args["IdentityPoolName"],
+		["OpenIdConnectProviderARNs"] = args["OpenIdConnectProviderARNs"],
 	}
 	asserts.AssertCreateIdentityPoolInput(t)
 	return t
@@ -213,13 +231,16 @@ end
 
 --- Create a structure of type GetOpenIdTokenForDeveloperIdentityResponse
 -- <p>Returned in response to a successful <code>GetOpenIdTokenForDeveloperIdentity</code> request.</p>
--- @param _Token [OIDCToken] <p>An OpenID token.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.GetOpenIdTokenForDeveloperIdentityResponse(_Token, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenForDeveloperIdentityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Token [OIDCToken] <p>An OpenID token.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @return GetOpenIdTokenForDeveloperIdentityResponse structure as a key-value pair table
+function M.GetOpenIdTokenForDeveloperIdentityResponse(args)
+	assert(args, "You must provdide an argument table when creating GetOpenIdTokenForDeveloperIdentityResponse")
 	local t = { 
-		["Token"] = _Token,
-		["IdentityId"] = _IdentityId,
+		["Token"] = args["Token"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertGetOpenIdTokenForDeveloperIdentityResponse(t)
 	return t
@@ -238,11 +259,14 @@ end
 
 --- Create a structure of type GetIdResponse
 -- <p>Returned in response to a GetId request.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.GetIdResponse(_IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @return GetIdResponse structure as a key-value pair table
+function M.GetIdResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIdResponse")
 	local t = { 
-		["IdentityId"] = _IdentityId,
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertGetIdResponse(t)
 	return t
@@ -262,13 +286,16 @@ end
 
 --- Create a structure of type GetOpenIdTokenResponse
 -- <p>Returned in response to a successful GetOpenIdToken request.</p>
--- @param _Token [OIDCToken] <p>An OpenID token, valid for 15 minutes.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on input.</p>
-function M.GetOpenIdTokenResponse(_Token, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Token [OIDCToken] <p>An OpenID token, valid for 15 minutes.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on input.</p>
+-- @return GetOpenIdTokenResponse structure as a key-value pair table
+function M.GetOpenIdTokenResponse(args)
+	assert(args, "You must provdide an argument table when creating GetOpenIdTokenResponse")
 	local t = { 
-		["Token"] = _Token,
-		["IdentityId"] = _IdentityId,
+		["Token"] = args["Token"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertGetOpenIdTokenResponse(t)
 	return t
@@ -290,16 +317,19 @@ end
 
 --- Create a structure of type RoleMapping
 -- <p>A role mapping.</p>
--- @param _AmbiguousRoleResolution [AmbiguousRoleResolutionType] <p>If you specify Token or Rules as the <code>Type</code>, <code>AmbiguousRoleResolution</code> is required.</p> <p>Specifies the action to be taken if either no rules match the claim value for the <code>Rules</code> type, or there is no <code>cognito:preferred_role</code> claim and there are multiple <code>cognito:roles</code> matches for the <code>Token</code> type.</p>
--- @param _Type [RoleMappingType] <p>The role mapping type. Token will use <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims from the Cognito identity provider token to map groups to roles. Rules will attempt to match claims from the token to map to a role.</p>
--- @param _RulesConfiguration [RulesConfigurationType] <p>The rules to be used for mapping users to roles.</p> <p>If you specify Rules as the role mapping type, <code>RulesConfiguration</code> is required.</p>
--- Required parameter: Type
-function M.RoleMapping(_AmbiguousRoleResolution, _Type, _RulesConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RoleMapping")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmbiguousRoleResolution [AmbiguousRoleResolutionType] <p>If you specify Token or Rules as the <code>Type</code>, <code>AmbiguousRoleResolution</code> is required.</p> <p>Specifies the action to be taken if either no rules match the claim value for the <code>Rules</code> type, or there is no <code>cognito:preferred_role</code> claim and there are multiple <code>cognito:roles</code> matches for the <code>Token</code> type.</p>
+-- * Type [RoleMappingType] <p>The role mapping type. Token will use <code>cognito:roles</code> and <code>cognito:preferred_role</code> claims from the Cognito identity provider token to map groups to roles. Rules will attempt to match claims from the token to map to a role.</p>
+-- * RulesConfiguration [RulesConfigurationType] <p>The rules to be used for mapping users to roles.</p> <p>If you specify Rules as the role mapping type, <code>RulesConfiguration</code> is required.</p>
+-- Required key: Type
+-- @return RoleMapping structure as a key-value pair table
+function M.RoleMapping(args)
+	assert(args, "You must provdide an argument table when creating RoleMapping")
 	local t = { 
-		["AmbiguousRoleResolution"] = _AmbiguousRoleResolution,
-		["Type"] = _Type,
-		["RulesConfiguration"] = _RulesConfiguration,
+		["AmbiguousRoleResolution"] = args["AmbiguousRoleResolution"],
+		["Type"] = args["Type"],
+		["RulesConfiguration"] = args["RulesConfiguration"],
 	}
 	asserts.AssertRoleMapping(t)
 	return t
@@ -325,21 +355,24 @@ end
 
 --- Create a structure of type MappingRule
 -- <p>A rule that maps a claim name, a claim value, and a match type to a role ARN.</p>
--- @param _Claim [ClaimName] <p>The claim name that must be present in the token, for example, "isAdmin" or "paid".</p>
--- @param _MatchType [MappingRuleMatchType] <p>The match condition that specifies how closely the claim value in the IdP token must match <code>Value</code>.</p>
--- @param _RoleARN [ARNString] <p>The role ARN.</p>
--- @param _Value [ClaimValue] <p>A brief string that the claim must match, for example, "paid" or "yes".</p>
--- Required parameter: Claim
--- Required parameter: MatchType
--- Required parameter: Value
--- Required parameter: RoleARN
-function M.MappingRule(_Claim, _MatchType, _RoleARN, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MappingRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Claim [ClaimName] <p>The claim name that must be present in the token, for example, "isAdmin" or "paid".</p>
+-- * MatchType [MappingRuleMatchType] <p>The match condition that specifies how closely the claim value in the IdP token must match <code>Value</code>.</p>
+-- * RoleARN [ARNString] <p>The role ARN.</p>
+-- * Value [ClaimValue] <p>A brief string that the claim must match, for example, "paid" or "yes".</p>
+-- Required key: Claim
+-- Required key: MatchType
+-- Required key: Value
+-- Required key: RoleARN
+-- @return MappingRule structure as a key-value pair table
+function M.MappingRule(args)
+	assert(args, "You must provdide an argument table when creating MappingRule")
 	local t = { 
-		["Claim"] = _Claim,
-		["MatchType"] = _MatchType,
-		["RoleARN"] = _RoleARN,
-		["Value"] = _Value,
+		["Claim"] = args["Claim"],
+		["MatchType"] = args["MatchType"],
+		["RoleARN"] = args["RoleARN"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertMappingRule(t)
 	return t
@@ -358,11 +391,14 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- <p>Thrown for missing or bad input parameter(s).</p>
--- @param _message [String] <p>The message returned by an InvalidParameterException.</p>
-function M.InvalidParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The message returned by an InvalidParameterException.</p>
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterException(t)
 	return t
@@ -382,13 +418,16 @@ end
 
 --- Create a structure of type UnprocessedIdentityId
 -- <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
--- @param _ErrorCode [ErrorCode] <p>The error code indicating the type of error that occurred.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.UnprocessedIdentityId(_ErrorCode, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnprocessedIdentityId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] <p>The error code indicating the type of error that occurred.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @return UnprocessedIdentityId structure as a key-value pair table
+function M.UnprocessedIdentityId(args)
+	assert(args, "You must provdide an argument table when creating UnprocessedIdentityId")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["IdentityId"] = _IdentityId,
+		["ErrorCode"] = args["ErrorCode"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertUnprocessedIdentityId(t)
 	return t
@@ -408,12 +447,15 @@ end
 
 --- Create a structure of type GetIdentityPoolRolesInput
 -- <p>Input to the <code>GetIdentityPoolRoles</code> action.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- Required parameter: IdentityPoolId
-function M.GetIdentityPoolRolesInput(_IdentityPoolId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdentityPoolRolesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- Required key: IdentityPoolId
+-- @return GetIdentityPoolRolesInput structure as a key-value pair table
+function M.GetIdentityPoolRolesInput(args)
+	assert(args, "You must provdide an argument table when creating GetIdentityPoolRolesInput")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
 	asserts.AssertGetIdentityPoolRolesInput(t)
 	return t
@@ -437,19 +479,22 @@ end
 
 --- Create a structure of type ListIdentitiesInput
 -- <p>Input to the ListIdentities action.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _NextToken [PaginationKey] <p>A pagination token.</p>
--- @param _HideDisabled [HideDisabled] <p>An optional boolean parameter that allows you to hide disabled identities. If omitted, the ListIdentities API will include disabled identities in the response.</p>
--- @param _MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
--- Required parameter: IdentityPoolId
--- Required parameter: MaxResults
-function M.ListIdentitiesInput(_IdentityPoolId, _NextToken, _HideDisabled, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentitiesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * NextToken [PaginationKey] <p>A pagination token.</p>
+-- * HideDisabled [HideDisabled] <p>An optional boolean parameter that allows you to hide disabled identities. If omitted, the ListIdentities API will include disabled identities in the response.</p>
+-- * MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
+-- Required key: IdentityPoolId
+-- Required key: MaxResults
+-- @return ListIdentitiesInput structure as a key-value pair table
+function M.ListIdentitiesInput(args)
+	assert(args, "You must provdide an argument table when creating ListIdentitiesInput")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["NextToken"] = _NextToken,
-		["HideDisabled"] = _HideDisabled,
-		["MaxResults"] = _MaxResults,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["NextToken"] = args["NextToken"],
+		["HideDisabled"] = args["HideDisabled"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListIdentitiesInput(t)
 	return t
@@ -469,12 +514,15 @@ end
 
 --- Create a structure of type DeleteIdentityPoolInput
 -- <p>Input to the DeleteIdentityPool action.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- Required parameter: IdentityPoolId
-function M.DeleteIdentityPoolInput(_IdentityPoolId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentityPoolInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- Required key: IdentityPoolId
+-- @return DeleteIdentityPoolInput structure as a key-value pair table
+function M.DeleteIdentityPoolInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteIdentityPoolInput")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
 	asserts.AssertDeleteIdentityPoolInput(t)
 	return t
@@ -494,12 +542,15 @@ end
 
 --- Create a structure of type DeleteIdentitiesInput
 -- <p>Input to the <code>DeleteIdentities</code> action.</p>
--- @param _IdentityIdsToDelete [IdentityIdList] <p>A list of 1-60 identities that you want to delete.</p>
--- Required parameter: IdentityIdsToDelete
-function M.DeleteIdentitiesInput(_IdentityIdsToDelete, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentitiesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityIdsToDelete [IdentityIdList] <p>A list of 1-60 identities that you want to delete.</p>
+-- Required key: IdentityIdsToDelete
+-- @return DeleteIdentitiesInput structure as a key-value pair table
+function M.DeleteIdentitiesInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteIdentitiesInput")
 	local t = { 
-		["IdentityIdsToDelete"] = _IdentityIdsToDelete,
+		["IdentityIdsToDelete"] = args["IdentityIdsToDelete"],
 	}
 	asserts.AssertDeleteIdentitiesInput(t)
 	return t
@@ -518,11 +569,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>Thrown when the total number of user pools has exceeded a preset limit.</p>
--- @param _message [String] <p>The message returned by a LimitExceededException.</p>
-function M.LimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The message returned by a LimitExceededException.</p>
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -542,13 +596,16 @@ end
 
 --- Create a structure of type ListIdentityPoolsResponse
 -- <p>The result of a successful ListIdentityPools action.</p>
--- @param _NextToken [PaginationKey] <p>A pagination token.</p>
--- @param _IdentityPools [IdentityPoolsList] <p>The identity pools returned by the ListIdentityPools action.</p>
-function M.ListIdentityPoolsResponse(_NextToken, _IdentityPools, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentityPoolsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationKey] <p>A pagination token.</p>
+-- * IdentityPools [IdentityPoolsList] <p>The identity pools returned by the ListIdentityPools action.</p>
+-- @return ListIdentityPoolsResponse structure as a key-value pair table
+function M.ListIdentityPoolsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListIdentityPoolsResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["IdentityPools"] = _IdentityPools,
+		["NextToken"] = args["NextToken"],
+		["IdentityPools"] = args["IdentityPools"],
 	}
 	asserts.AssertListIdentityPoolsResponse(t)
 	return t
@@ -567,11 +624,14 @@ end
 
 --- Create a structure of type ConcurrentModificationException
 -- <p>Thrown if there are parallel requests to modify a resource.</p>
--- @param _message [String] <p>The message returned by a ConcurrentModificationException.</p>
-function M.ConcurrentModificationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModificationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The message returned by a ConcurrentModificationException.</p>
+-- @return ConcurrentModificationException structure as a key-value pair table
+function M.ConcurrentModificationException(args)
+	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertConcurrentModificationException(t)
 	return t
@@ -595,19 +655,22 @@ end
 
 --- Create a structure of type GetOpenIdTokenForDeveloperIdentityInput
 -- <p>Input to the <code>GetOpenIdTokenForDeveloperIdentity</code> action.</p>
--- @param _Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. Each name-value pair represents a user from a public provider or developer provider. If the user is from a developer provider, the name-value pair will follow the syntax <code>"developer_provider_name": "developer_user_identifier"</code>. The developer provider is the "domain" by which Cognito will refer to your users; you provided this domain while creating/updating the identity pool. The developer user identifier is an identifier from your backend that uniquely identifies a user. When you create an identity pool, you can specify the supported logins.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _TokenDuration [TokenDuration] <p>The expiration time of the token, in seconds. You can specify a custom expiration time for the token so that you can cache it. If you don't provide an expiration time, the token is valid for 15 minutes. You can exchange the token with Amazon STS for temporary AWS credentials, which are valid for a maximum of one hour. The maximum token duration you can set is 24 hours. You should take care in setting the expiration time for a token, as there are significant security implications: an attacker could use a leaked token to access your AWS resources for the token's duration.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
--- Required parameter: IdentityPoolId
--- Required parameter: Logins
-function M.GetOpenIdTokenForDeveloperIdentityInput(_Logins, _IdentityPoolId, _TokenDuration, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIdTokenForDeveloperIdentityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. Each name-value pair represents a user from a public provider or developer provider. If the user is from a developer provider, the name-value pair will follow the syntax <code>"developer_provider_name": "developer_user_identifier"</code>. The developer provider is the "domain" by which Cognito will refer to your users; you provided this domain while creating/updating the identity pool. The developer user identifier is an identifier from your backend that uniquely identifies a user. When you create an identity pool, you can specify the supported logins.</p>
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * TokenDuration [TokenDuration] <p>The expiration time of the token, in seconds. You can specify a custom expiration time for the token so that you can cache it. If you don't provide an expiration time, the token is valid for 15 minutes. You can exchange the token with Amazon STS for temporary AWS credentials, which are valid for a maximum of one hour. The maximum token duration you can set is 24 hours. You should take care in setting the expiration time for a token, as there are significant security implications: an attacker could use a leaked token to access your AWS resources for the token's duration.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- Required key: IdentityPoolId
+-- Required key: Logins
+-- @return GetOpenIdTokenForDeveloperIdentityInput structure as a key-value pair table
+function M.GetOpenIdTokenForDeveloperIdentityInput(args)
+	assert(args, "You must provdide an argument table when creating GetOpenIdTokenForDeveloperIdentityInput")
 	local t = { 
-		["Logins"] = _Logins,
-		["IdentityPoolId"] = _IdentityPoolId,
-		["TokenDuration"] = _TokenDuration,
-		["IdentityId"] = _IdentityId,
+		["Logins"] = args["Logins"],
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["TokenDuration"] = args["TokenDuration"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertGetOpenIdTokenForDeveloperIdentityInput(t)
 	return t
@@ -628,15 +691,18 @@ end
 
 --- Create a structure of type CognitoIdentityProvider
 -- <p>A provider representing an Amazon Cognito Identity User Pool and its client ID.</p>
--- @param _ServerSideTokenCheck [CognitoIdentityProviderTokenCheck] <p>TRUE if server-side token validation is enabled for the identity provider’s token.</p>
--- @param _ClientId [CognitoIdentityProviderClientId] <p>The client ID for the Amazon Cognito Identity User Pool.</p>
--- @param _ProviderName [CognitoIdentityProviderName] <p>The provider name for an Amazon Cognito Identity User Pool. For example, <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code>.</p>
-function M.CognitoIdentityProvider(_ServerSideTokenCheck, _ClientId, _ProviderName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CognitoIdentityProvider")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerSideTokenCheck [CognitoIdentityProviderTokenCheck] <p>TRUE if server-side token validation is enabled for the identity provider’s token.</p>
+-- * ClientId [CognitoIdentityProviderClientId] <p>The client ID for the Amazon Cognito Identity User Pool.</p>
+-- * ProviderName [CognitoIdentityProviderName] <p>The provider name for an Amazon Cognito Identity User Pool. For example, <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code>.</p>
+-- @return CognitoIdentityProvider structure as a key-value pair table
+function M.CognitoIdentityProvider(args)
+	assert(args, "You must provdide an argument table when creating CognitoIdentityProvider")
 	local t = { 
-		["ServerSideTokenCheck"] = _ServerSideTokenCheck,
-		["ClientId"] = _ClientId,
-		["ProviderName"] = _ProviderName,
+		["ServerSideTokenCheck"] = args["ServerSideTokenCheck"],
+		["ClientId"] = args["ClientId"],
+		["ProviderName"] = args["ProviderName"],
 	}
 	asserts.AssertCognitoIdentityProvider(t)
 	return t
@@ -655,11 +721,14 @@ end
 
 --- Create a structure of type TooManyRequestsException
 -- <p>Thrown when a request is throttled.</p>
--- @param _message [String] <p>Message returned by a TooManyRequestsException</p>
-function M.TooManyRequestsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyRequestsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>Message returned by a TooManyRequestsException</p>
+-- @return TooManyRequestsException structure as a key-value pair table
+function M.TooManyRequestsException(args)
+	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTooManyRequestsException(t)
 	return t
@@ -681,17 +750,20 @@ end
 
 --- Create a structure of type IdentityDescription
 -- <p>A description of the identity.</p>
--- @param _Logins [LoginsList] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
--- @param _LastModifiedDate [DateType] <p>Date on which the identity was last modified.</p>
--- @param _CreationDate [DateType] <p>Date on which the identity was created.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.IdentityDescription(_Logins, _LastModifiedDate, _CreationDate, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdentityDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Logins [LoginsList] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
+-- * LastModifiedDate [DateType] <p>Date on which the identity was last modified.</p>
+-- * CreationDate [DateType] <p>Date on which the identity was created.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @return IdentityDescription structure as a key-value pair table
+function M.IdentityDescription(args)
+	assert(args, "You must provdide an argument table when creating IdentityDescription")
 	local t = { 
-		["Logins"] = _Logins,
-		["LastModifiedDate"] = _LastModifiedDate,
-		["CreationDate"] = _CreationDate,
-		["IdentityId"] = _IdentityId,
+		["Logins"] = args["Logins"],
+		["LastModifiedDate"] = args["LastModifiedDate"],
+		["CreationDate"] = args["CreationDate"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertIdentityDescription(t)
 	return t
@@ -712,15 +784,18 @@ end
 
 --- Create a structure of type ListIdentitiesResponse
 -- <p>The response to a ListIdentities request.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _NextToken [PaginationKey] <p>A pagination token.</p>
--- @param _Identities [IdentitiesList] <p>An object containing a set of identities and associated mappings.</p>
-function M.ListIdentitiesResponse(_IdentityPoolId, _NextToken, _Identities, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIdentitiesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * NextToken [PaginationKey] <p>A pagination token.</p>
+-- * Identities [IdentitiesList] <p>An object containing a set of identities and associated mappings.</p>
+-- @return ListIdentitiesResponse structure as a key-value pair table
+function M.ListIdentitiesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListIdentitiesResponse")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["NextToken"] = _NextToken,
-		["Identities"] = _Identities,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["NextToken"] = args["NextToken"],
+		["Identities"] = args["Identities"],
 	}
 	asserts.AssertListIdentitiesResponse(t)
 	return t
@@ -740,13 +815,16 @@ end
 
 --- Create a structure of type IdentityPoolShortDescription
 -- <p>A description of the identity pool.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
-function M.IdentityPoolShortDescription(_IdentityPoolId, _IdentityPoolName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdentityPoolShortDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
+-- @return IdentityPoolShortDescription structure as a key-value pair table
+function M.IdentityPoolShortDescription(args)
+	assert(args, "You must provdide an argument table when creating IdentityPoolShortDescription")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["IdentityPoolName"] = _IdentityPoolName,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["IdentityPoolName"] = args["IdentityPoolName"],
 	}
 	asserts.AssertIdentityPoolShortDescription(t)
 	return t
@@ -765,11 +843,14 @@ end
 
 --- Create a structure of type InternalErrorException
 -- <p>Thrown when the service encounters an error during processing the request.</p>
--- @param _message [String] <p>The message returned by an InternalErrorException.</p>
-function M.InternalErrorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The message returned by an InternalErrorException.</p>
+-- @return InternalErrorException structure as a key-value pair table
+function M.InternalErrorException(args)
+	assert(args, "You must provdide an argument table when creating InternalErrorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalErrorException(t)
 	return t
@@ -788,11 +869,14 @@ end
 
 --- Create a structure of type InvalidIdentityPoolConfigurationException
 -- <p>Thrown if the identity pool has no role associated for the given auth type (auth/unauth) or if the AssumeRole fails.</p>
--- @param _message [String] <p>The message returned for an <code>InvalidIdentityPoolConfigurationException</code> </p>
-function M.InvalidIdentityPoolConfigurationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidIdentityPoolConfigurationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The message returned for an <code>InvalidIdentityPoolConfigurationException</code> </p>
+-- @return InvalidIdentityPoolConfigurationException structure as a key-value pair table
+function M.InvalidIdentityPoolConfigurationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidIdentityPoolConfigurationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidIdentityPoolConfigurationException(t)
 	return t
@@ -814,17 +898,20 @@ end
 
 --- Create a structure of type Credentials
 -- <p>Credentials for the provided identity ID.</p>
--- @param _SecretKey [SecretKeyString] <p>The Secret Access Key portion of the credentials</p>
--- @param _SessionToken [SessionTokenString] <p>The Session Token portion of the credentials</p>
--- @param _Expiration [DateType] <p>The date at which these credentials will expire.</p>
--- @param _AccessKeyId [AccessKeyString] <p>The Access Key portion of the credentials.</p>
-function M.Credentials(_SecretKey, _SessionToken, _Expiration, _AccessKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Credentials")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SecretKey [SecretKeyString] <p>The Secret Access Key portion of the credentials</p>
+-- * SessionToken [SessionTokenString] <p>The Session Token portion of the credentials</p>
+-- * Expiration [DateType] <p>The date at which these credentials will expire.</p>
+-- * AccessKeyId [AccessKeyString] <p>The Access Key portion of the credentials.</p>
+-- @return Credentials structure as a key-value pair table
+function M.Credentials(args)
+	assert(args, "You must provdide an argument table when creating Credentials")
 	local t = { 
-		["SecretKey"] = _SecretKey,
-		["SessionToken"] = _SessionToken,
-		["Expiration"] = _Expiration,
-		["AccessKeyId"] = _AccessKeyId,
+		["SecretKey"] = args["SecretKey"],
+		["SessionToken"] = args["SessionToken"],
+		["Expiration"] = args["Expiration"],
+		["AccessKeyId"] = args["AccessKeyId"],
 	}
 	asserts.AssertCredentials(t)
 	return t
@@ -847,17 +934,20 @@ end
 
 --- Create a structure of type SetIdentityPoolRolesInput
 -- <p>Input to the <code>SetIdentityPoolRoles</code> action.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _Roles [RolesMap] <p>The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.</p>
--- @param _RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a string to <a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p> <p>Up to 25 rules can be specified per identity provider.</p>
--- Required parameter: IdentityPoolId
--- Required parameter: Roles
-function M.SetIdentityPoolRolesInput(_IdentityPoolId, _Roles, _RoleMappings, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetIdentityPoolRolesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * Roles [RolesMap] <p>The map of roles associated with this pool. For a given role, the key will be either "authenticated" or "unauthenticated" and the value will be the Role ARN.</p>
+-- * RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a string to <a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p> <p>Up to 25 rules can be specified per identity provider.</p>
+-- Required key: IdentityPoolId
+-- Required key: Roles
+-- @return SetIdentityPoolRolesInput structure as a key-value pair table
+function M.SetIdentityPoolRolesInput(args)
+	assert(args, "You must provdide an argument table when creating SetIdentityPoolRolesInput")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["Roles"] = _Roles,
-		["RoleMappings"] = _RoleMappings,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["Roles"] = args["Roles"],
+		["RoleMappings"] = args["RoleMappings"],
 	}
 	asserts.AssertSetIdentityPoolRolesInput(t)
 	return t
@@ -879,16 +969,19 @@ end
 
 --- Create a structure of type GetIdInput
 -- <p>Input to the GetId action.</p>
--- @param _Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. The available provider names for <code>Logins</code> are as follows:</p> <ul> <li> <p>Facebook: <code>graph.facebook.com</code> </p> </li> <li> <p>Amazon Cognito Identity Provider: <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code> </p> </li> <li> <p>Google: <code>accounts.google.com</code> </p> </li> <li> <p>Amazon: <code>www.amazon.com</code> </p> </li> <li> <p>Twitter: <code>api.twitter.com</code> </p> </li> <li> <p>Digits: <code>www.digits.com</code> </p> </li> </ul>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _AccountId [AccountId] <p>A standard AWS account ID (9+ digits).</p>
--- Required parameter: IdentityPoolId
-function M.GetIdInput(_Logins, _IdentityPoolId, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIdInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens. The available provider names for <code>Logins</code> are as follows:</p> <ul> <li> <p>Facebook: <code>graph.facebook.com</code> </p> </li> <li> <p>Amazon Cognito Identity Provider: <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code> </p> </li> <li> <p>Google: <code>accounts.google.com</code> </p> </li> <li> <p>Amazon: <code>www.amazon.com</code> </p> </li> <li> <p>Twitter: <code>api.twitter.com</code> </p> </li> <li> <p>Digits: <code>www.digits.com</code> </p> </li> </ul>
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * AccountId [AccountId] <p>A standard AWS account ID (9+ digits).</p>
+-- Required key: IdentityPoolId
+-- @return GetIdInput structure as a key-value pair table
+function M.GetIdInput(args)
+	assert(args, "You must provdide an argument table when creating GetIdInput")
 	local t = { 
-		["Logins"] = _Logins,
-		["IdentityPoolId"] = _IdentityPoolId,
-		["AccountId"] = _AccountId,
+		["Logins"] = args["Logins"],
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertGetIdInput(t)
 	return t
@@ -908,12 +1001,15 @@ end
 
 --- Create a structure of type DescribeIdentityPoolInput
 -- <p>Input to the DescribeIdentityPool action.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- Required parameter: IdentityPoolId
-function M.DescribeIdentityPoolInput(_IdentityPoolId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityPoolInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- Required key: IdentityPoolId
+-- @return DescribeIdentityPoolInput structure as a key-value pair table
+function M.DescribeIdentityPoolInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeIdentityPoolInput")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
 	asserts.AssertDescribeIdentityPoolInput(t)
 	return t
@@ -939,21 +1035,24 @@ end
 
 --- Create a structure of type UnlinkDeveloperIdentityInput
 -- <p>Input to the <code>UnlinkDeveloperIdentity</code> action.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _DeveloperUserIdentifier [DeveloperUserIdentifier] <p>A unique ID used by your backend authentication process to identify a user.</p>
--- @param _DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
--- Required parameter: IdentityId
--- Required parameter: IdentityPoolId
--- Required parameter: DeveloperProviderName
--- Required parameter: DeveloperUserIdentifier
-function M.UnlinkDeveloperIdentityInput(_IdentityPoolId, _DeveloperUserIdentifier, _DeveloperProviderName, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnlinkDeveloperIdentityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * DeveloperUserIdentifier [DeveloperUserIdentifier] <p>A unique ID used by your backend authentication process to identify a user.</p>
+-- * DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- Required key: IdentityId
+-- Required key: IdentityPoolId
+-- Required key: DeveloperProviderName
+-- Required key: DeveloperUserIdentifier
+-- @return UnlinkDeveloperIdentityInput structure as a key-value pair table
+function M.UnlinkDeveloperIdentityInput(args)
+	assert(args, "You must provdide an argument table when creating UnlinkDeveloperIdentityInput")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["DeveloperUserIdentifier"] = _DeveloperUserIdentifier,
-		["DeveloperProviderName"] = _DeveloperProviderName,
-		["IdentityId"] = _IdentityId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["DeveloperUserIdentifier"] = args["DeveloperUserIdentifier"],
+		["DeveloperProviderName"] = args["DeveloperProviderName"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertUnlinkDeveloperIdentityInput(t)
 	return t
@@ -982,28 +1081,31 @@ end
 
 --- Create a structure of type IdentityPool
 -- <p>An object representing an Amazon Cognito identity pool.</p>
--- @param _DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users.</p>
--- @param _SamlProviderARNs [SAMLProviderList] <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
--- @param _SupportedLoginProviders [IdentityProviders] <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
--- @param _AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] <p>TRUE if the identity pool supports unauthenticated logins.</p>
--- @param _IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _CognitoIdentityProviders [CognitoIdentityProviderList] <p>A list representing an Amazon Cognito Identity User Pool and its client ID.</p>
--- @param _OpenIdConnectProviderARNs [OIDCProviderList] <p>A list of OpendID Connect provider ARNs.</p>
--- Required parameter: IdentityPoolId
--- Required parameter: IdentityPoolName
--- Required parameter: AllowUnauthenticatedIdentities
-function M.IdentityPool(_DeveloperProviderName, _SamlProviderARNs, _SupportedLoginProviders, _AllowUnauthenticatedIdentities, _IdentityPoolName, _IdentityPoolId, _CognitoIdentityProviders, _OpenIdConnectProviderARNs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IdentityPool")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users.</p>
+-- * SamlProviderARNs [SAMLProviderList] <p>An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.</p>
+-- * SupportedLoginProviders [IdentityProviders] <p>Optional key:value pairs mapping provider names to provider app IDs.</p>
+-- * AllowUnauthenticatedIdentities [IdentityPoolUnauthenticated] <p>TRUE if the identity pool supports unauthenticated logins.</p>
+-- * IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * CognitoIdentityProviders [CognitoIdentityProviderList] <p>A list representing an Amazon Cognito Identity User Pool and its client ID.</p>
+-- * OpenIdConnectProviderARNs [OIDCProviderList] <p>A list of OpendID Connect provider ARNs.</p>
+-- Required key: IdentityPoolId
+-- Required key: IdentityPoolName
+-- Required key: AllowUnauthenticatedIdentities
+-- @return IdentityPool structure as a key-value pair table
+function M.IdentityPool(args)
+	assert(args, "You must provdide an argument table when creating IdentityPool")
 	local t = { 
-		["DeveloperProviderName"] = _DeveloperProviderName,
-		["SamlProviderARNs"] = _SamlProviderARNs,
-		["SupportedLoginProviders"] = _SupportedLoginProviders,
-		["AllowUnauthenticatedIdentities"] = _AllowUnauthenticatedIdentities,
-		["IdentityPoolName"] = _IdentityPoolName,
-		["IdentityPoolId"] = _IdentityPoolId,
-		["CognitoIdentityProviders"] = _CognitoIdentityProviders,
-		["OpenIdConnectProviderARNs"] = _OpenIdConnectProviderARNs,
+		["DeveloperProviderName"] = args["DeveloperProviderName"],
+		["SamlProviderARNs"] = args["SamlProviderARNs"],
+		["SupportedLoginProviders"] = args["SupportedLoginProviders"],
+		["AllowUnauthenticatedIdentities"] = args["AllowUnauthenticatedIdentities"],
+		["IdentityPoolName"] = args["IdentityPoolName"],
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["CognitoIdentityProviders"] = args["CognitoIdentityProviders"],
+		["OpenIdConnectProviderARNs"] = args["OpenIdConnectProviderARNs"],
 	}
 	asserts.AssertIdentityPool(t)
 	return t
@@ -1022,11 +1124,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>Thrown when the requested resource (for example, a dataset or record) does not exist.</p>
--- @param _message [String] <p>The message returned by a ResourceNotFoundException.</p>
-function M.ResourceNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The message returned by a ResourceNotFoundException.</p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -1050,20 +1155,23 @@ end
 
 --- Create a structure of type LookupDeveloperIdentityInput
 -- <p>Input to the <code>LookupDeveloperIdentityInput</code> action.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _NextToken [PaginationKey] <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
--- @param _DeveloperUserIdentifier [DeveloperUserIdentifier] <p>A unique ID used by your backend authentication process to identify a user. Typically, a developer identity provider would issue many developer user identifiers, in keeping with the number of users.</p>
--- @param _MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
--- Required parameter: IdentityPoolId
-function M.LookupDeveloperIdentityInput(_IdentityPoolId, _NextToken, _DeveloperUserIdentifier, _MaxResults, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LookupDeveloperIdentityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * NextToken [PaginationKey] <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
+-- * DeveloperUserIdentifier [DeveloperUserIdentifier] <p>A unique ID used by your backend authentication process to identify a user. Typically, a developer identity provider would issue many developer user identifiers, in keeping with the number of users.</p>
+-- * MaxResults [QueryLimit] <p>The maximum number of identities to return.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- Required key: IdentityPoolId
+-- @return LookupDeveloperIdentityInput structure as a key-value pair table
+function M.LookupDeveloperIdentityInput(args)
+	assert(args, "You must provdide an argument table when creating LookupDeveloperIdentityInput")
 	local t = { 
-		["IdentityPoolId"] = _IdentityPoolId,
-		["NextToken"] = _NextToken,
-		["DeveloperUserIdentifier"] = _DeveloperUserIdentifier,
-		["MaxResults"] = _MaxResults,
-		["IdentityId"] = _IdentityId,
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["NextToken"] = args["NextToken"],
+		["DeveloperUserIdentifier"] = args["DeveloperUserIdentifier"],
+		["MaxResults"] = args["MaxResults"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertLookupDeveloperIdentityInput(t)
 	return t
@@ -1089,21 +1197,24 @@ end
 
 --- Create a structure of type MergeDeveloperIdentitiesInput
 -- <p>Input to the <code>MergeDeveloperIdentities</code> action.</p>
--- @param _DestinationUserIdentifier [DeveloperUserIdentifier] <p>User identifier for the destination user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
--- @param _IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
--- @param _DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users. This is a (pseudo) domain name that you provide while creating an identity pool. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (.), underscore (_), and dash (-).</p>
--- @param _SourceUserIdentifier [DeveloperUserIdentifier] <p>User identifier for the source user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
--- Required parameter: SourceUserIdentifier
--- Required parameter: DestinationUserIdentifier
--- Required parameter: DeveloperProviderName
--- Required parameter: IdentityPoolId
-function M.MergeDeveloperIdentitiesInput(_DestinationUserIdentifier, _IdentityPoolId, _DeveloperProviderName, _SourceUserIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MergeDeveloperIdentitiesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DestinationUserIdentifier [DeveloperUserIdentifier] <p>User identifier for the destination user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
+-- * IdentityPoolId [IdentityPoolId] <p>An identity pool ID in the format REGION:GUID.</p>
+-- * DeveloperProviderName [DeveloperProviderName] <p>The "domain" by which Cognito will refer to your users. This is a (pseudo) domain name that you provide while creating an identity pool. This name acts as a placeholder that allows your backend and the Cognito service to communicate about the developer provider. For the <code>DeveloperProviderName</code>, you can use letters as well as period (.), underscore (_), and dash (-).</p>
+-- * SourceUserIdentifier [DeveloperUserIdentifier] <p>User identifier for the source user. The value should be a <code>DeveloperUserIdentifier</code>.</p>
+-- Required key: SourceUserIdentifier
+-- Required key: DestinationUserIdentifier
+-- Required key: DeveloperProviderName
+-- Required key: IdentityPoolId
+-- @return MergeDeveloperIdentitiesInput structure as a key-value pair table
+function M.MergeDeveloperIdentitiesInput(args)
+	assert(args, "You must provdide an argument table when creating MergeDeveloperIdentitiesInput")
 	local t = { 
-		["DestinationUserIdentifier"] = _DestinationUserIdentifier,
-		["IdentityPoolId"] = _IdentityPoolId,
-		["DeveloperProviderName"] = _DeveloperProviderName,
-		["SourceUserIdentifier"] = _SourceUserIdentifier,
+		["DestinationUserIdentifier"] = args["DestinationUserIdentifier"],
+		["IdentityPoolId"] = args["IdentityPoolId"],
+		["DeveloperProviderName"] = args["DeveloperProviderName"],
+		["SourceUserIdentifier"] = args["SourceUserIdentifier"],
 	}
 	asserts.AssertMergeDeveloperIdentitiesInput(t)
 	return t
@@ -1122,11 +1233,14 @@ end
 
 --- Create a structure of type DeveloperUserAlreadyRegisteredException
 -- <p>The provided developer user identifier is already registered with Cognito under a different identity ID.</p>
--- @param _message [String] <p>This developer user identifier is already registered with Cognito.</p>
-function M.DeveloperUserAlreadyRegisteredException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeveloperUserAlreadyRegisteredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>This developer user identifier is already registered with Cognito.</p>
+-- @return DeveloperUserAlreadyRegisteredException structure as a key-value pair table
+function M.DeveloperUserAlreadyRegisteredException(args)
+	assert(args, "You must provdide an argument table when creating DeveloperUserAlreadyRegisteredException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDeveloperUserAlreadyRegisteredException(t)
 	return t
@@ -1150,18 +1264,21 @@ end
 
 --- Create a structure of type UnlinkIdentityInput
 -- <p>Input to the UnlinkIdentity action.</p>
--- @param _Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
--- @param _LoginsToRemove [LoginsList] <p>Provider names to unlink from this identity.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
--- Required parameter: IdentityId
--- Required parameter: Logins
--- Required parameter: LoginsToRemove
-function M.UnlinkIdentityInput(_Logins, _LoginsToRemove, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnlinkIdentityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
+-- * LoginsToRemove [LoginsList] <p>Provider names to unlink from this identity.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- Required key: IdentityId
+-- Required key: Logins
+-- Required key: LoginsToRemove
+-- @return UnlinkIdentityInput structure as a key-value pair table
+function M.UnlinkIdentityInput(args)
+	assert(args, "You must provdide an argument table when creating UnlinkIdentityInput")
 	local t = { 
-		["Logins"] = _Logins,
-		["LoginsToRemove"] = _LoginsToRemove,
-		["IdentityId"] = _IdentityId,
+		["Logins"] = args["Logins"],
+		["LoginsToRemove"] = args["LoginsToRemove"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertUnlinkIdentityInput(t)
 	return t
@@ -1180,11 +1297,14 @@ end
 
 --- Create a structure of type ExternalServiceException
 -- <p>An exception thrown when a dependent service such as Facebook or Twitter is not responding</p>
--- @param _message [String] <p>The message returned by an ExternalServiceException</p>
-function M.ExternalServiceException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExternalServiceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The message returned by an ExternalServiceException</p>
+-- @return ExternalServiceException structure as a key-value pair table
+function M.ExternalServiceException(args)
+	assert(args, "You must provdide an argument table when creating ExternalServiceException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertExternalServiceException(t)
 	return t
@@ -1204,13 +1324,16 @@ end
 
 --- Create a structure of type GetCredentialsForIdentityResponse
 -- <p>Returned in response to a successful <code>GetCredentialsForIdentity</code> operation.</p>
--- @param _Credentials [Credentials] <p>Credentials for the provided identity ID.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.GetCredentialsForIdentityResponse(_Credentials, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCredentialsForIdentityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Credentials [Credentials] <p>Credentials for the provided identity ID.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @return GetCredentialsForIdentityResponse structure as a key-value pair table
+function M.GetCredentialsForIdentityResponse(args)
+	assert(args, "You must provdide an argument table when creating GetCredentialsForIdentityResponse")
 	local t = { 
-		["Credentials"] = _Credentials,
-		["IdentityId"] = _IdentityId,
+		["Credentials"] = args["Credentials"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertGetCredentialsForIdentityResponse(t)
 	return t
@@ -1232,16 +1355,19 @@ end
 
 --- Create a structure of type GetCredentialsForIdentityInput
 -- <p>Input to the <code>GetCredentialsForIdentity</code> action.</p>
--- @param _Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
--- @param _CustomRoleArn [ARNString] <p>The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers that do not support role customization.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
--- Required parameter: IdentityId
-function M.GetCredentialsForIdentityInput(_Logins, _CustomRoleArn, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCredentialsForIdentityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Logins [LoginsMap] <p>A set of optional name-value pairs that map provider names to provider tokens.</p>
+-- * CustomRoleArn [ARNString] <p>The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers that do not support role customization.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- Required key: IdentityId
+-- @return GetCredentialsForIdentityInput structure as a key-value pair table
+function M.GetCredentialsForIdentityInput(args)
+	assert(args, "You must provdide an argument table when creating GetCredentialsForIdentityInput")
 	local t = { 
-		["Logins"] = _Logins,
-		["CustomRoleArn"] = _CustomRoleArn,
-		["IdentityId"] = _IdentityId,
+		["Logins"] = args["Logins"],
+		["CustomRoleArn"] = args["CustomRoleArn"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertGetCredentialsForIdentityInput(t)
 	return t
@@ -1261,12 +1387,15 @@ end
 
 --- Create a structure of type DescribeIdentityInput
 -- <p>Input to the <code>DescribeIdentity</code> action.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
--- Required parameter: IdentityId
-function M.DescribeIdentityInput(_IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeIdentityInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- Required key: IdentityId
+-- @return DescribeIdentityInput structure as a key-value pair table
+function M.DescribeIdentityInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeIdentityInput")
 	local t = { 
-		["IdentityId"] = _IdentityId,
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertDescribeIdentityInput(t)
 	return t
@@ -1285,11 +1414,14 @@ end
 
 --- Create a structure of type DeleteIdentitiesResponse
 -- <p>Returned in response to a successful <code>DeleteIdentities</code> operation.</p>
--- @param _UnprocessedIdentityIds [UnprocessedIdentityIdList] <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
-function M.DeleteIdentitiesResponse(_UnprocessedIdentityIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIdentitiesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UnprocessedIdentityIds [UnprocessedIdentityIdList] <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
+-- @return DeleteIdentitiesResponse structure as a key-value pair table
+function M.DeleteIdentitiesResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteIdentitiesResponse")
 	local t = { 
-		["UnprocessedIdentityIds"] = _UnprocessedIdentityIds,
+		["UnprocessedIdentityIds"] = args["UnprocessedIdentityIds"],
 	}
 	asserts.AssertDeleteIdentitiesResponse(t)
 	return t
@@ -1308,11 +1440,14 @@ end
 
 --- Create a structure of type ResourceConflictException
 -- <p>Thrown when a user tries to use a login which is already linked to another account.</p>
--- @param _message [String] <p>The message returned by a ResourceConflictException.</p>
-function M.ResourceConflictException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The message returned by a ResourceConflictException.</p>
+-- @return ResourceConflictException structure as a key-value pair table
+function M.ResourceConflictException(args)
+	assert(args, "You must provdide an argument table when creating ResourceConflictException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceConflictException(t)
 	return t
@@ -1331,11 +1466,14 @@ end
 
 --- Create a structure of type MergeDeveloperIdentitiesResponse
 -- <p>Returned in response to a successful <code>MergeDeveloperIdentities</code> action.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.MergeDeveloperIdentitiesResponse(_IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MergeDeveloperIdentitiesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @return MergeDeveloperIdentitiesResponse structure as a key-value pair table
+function M.MergeDeveloperIdentitiesResponse(args)
+	assert(args, "You must provdide an argument table when creating MergeDeveloperIdentitiesResponse")
 	local t = { 
-		["IdentityId"] = _IdentityId,
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertMergeDeveloperIdentitiesResponse(t)
 	return t
@@ -1356,15 +1494,18 @@ end
 
 --- Create a structure of type LookupDeveloperIdentityResponse
 -- <p>Returned in response to a successful <code>LookupDeveloperIdentity</code> action.</p>
--- @param _NextToken [PaginationKey] <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
--- @param _DeveloperUserIdentifierList [DeveloperUserIdentifierList] <p>This is the list of developer user identifiers associated with an identity ID. Cognito supports the association of multiple developer user identifiers with an identity ID.</p>
--- @param _IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
-function M.LookupDeveloperIdentityResponse(_NextToken, _DeveloperUserIdentifierList, _IdentityId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LookupDeveloperIdentityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [PaginationKey] <p>A pagination token. The first call you make will have <code>NextToken</code> set to null. After that the service will return <code>NextToken</code> values as needed. For example, let's say you make a request with <code>MaxResults</code> set to 10, and there are 20 matches in the database. The service will return a pagination token as a part of the response. This token can be used to call the API again and get results starting from the 11th match.</p>
+-- * DeveloperUserIdentifierList [DeveloperUserIdentifierList] <p>This is the list of developer user identifiers associated with an identity ID. Cognito supports the association of multiple developer user identifiers with an identity ID.</p>
+-- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
+-- @return LookupDeveloperIdentityResponse structure as a key-value pair table
+function M.LookupDeveloperIdentityResponse(args)
+	assert(args, "You must provdide an argument table when creating LookupDeveloperIdentityResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["DeveloperUserIdentifierList"] = _DeveloperUserIdentifierList,
-		["IdentityId"] = _IdentityId,
+		["NextToken"] = args["NextToken"],
+		["DeveloperUserIdentifierList"] = args["DeveloperUserIdentifierList"],
+		["IdentityId"] = args["IdentityId"],
 	}
 	asserts.AssertLookupDeveloperIdentityResponse(t)
 	return t

@@ -39,19 +39,22 @@ end
 
 --- Create a structure of type PutBucketVersioningRequest
 --  
--- @param _MFA [MFA] The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- @param _VersioningConfiguration [VersioningConfiguration] 
--- Required parameter: Bucket
--- Required parameter: VersioningConfiguration
-function M.PutBucketVersioningRequest(_MFA, _ContentMD5, _Bucket, _VersioningConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketVersioningRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MFA [MFA] The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- * VersioningConfiguration [VersioningConfiguration] 
+-- Required key: Bucket
+-- Required key: VersioningConfiguration
+-- @return PutBucketVersioningRequest structure as a key-value pair table
+function M.PutBucketVersioningRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketVersioningRequest")
 	local t = { 
-		["MFA"] = _MFA,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
-		["VersioningConfiguration"] = _VersioningConfiguration,
+		["MFA"] = args["MFA"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
+		["VersioningConfiguration"] = args["VersioningConfiguration"],
 	}
 	asserts.AssertPutBucketVersioningRequest(t)
 	return t
@@ -70,11 +73,14 @@ end
 
 --- Create a structure of type DeleteObjectTaggingOutput
 --  
--- @param _VersionId [ObjectVersionId] The versionId of the object the tag-set was removed from.
-function M.DeleteObjectTaggingOutput(_VersionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteObjectTaggingOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] The versionId of the object the tag-set was removed from.
+-- @return DeleteObjectTaggingOutput structure as a key-value pair table
+function M.DeleteObjectTaggingOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteObjectTaggingOutput")
 	local t = { 
-		["VersionId"] = _VersionId,
+		["VersionId"] = args["VersionId"],
 	}
 	asserts.AssertDeleteObjectTaggingOutput(t)
 	return t
@@ -97,17 +103,20 @@ end
 
 --- Create a structure of type PutBucketReplicationRequest
 --  
--- @param _ReplicationConfiguration [ReplicationConfiguration] 
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
--- Required parameter: ReplicationConfiguration
-function M.PutBucketReplicationRequest(_ReplicationConfiguration, _ContentMD5, _Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketReplicationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationConfiguration [ReplicationConfiguration] 
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- Required key: ReplicationConfiguration
+-- @return PutBucketReplicationRequest structure as a key-value pair table
+function M.PutBucketReplicationRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketReplicationRequest")
 	local t = { 
-		["ReplicationConfiguration"] = _ReplicationConfiguration,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
+		["ReplicationConfiguration"] = args["ReplicationConfiguration"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertPutBucketReplicationRequest(t)
 	return t
@@ -133,25 +142,28 @@ end
 
 --- Create a structure of type PutObjectOutput
 --  
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
--- @param _RequestCharged [RequestCharged] 
--- @param _VersionId [ObjectVersionId] Version of the object.
--- @param _ETag [ETag] Entity tag for the uploaded object.
--- @param _Expiration [Expiration] If the object expiration is configured, this will contain the expiration date (expiry-date) and rule ID (rule-id). The value of rule-id is URL encoded.
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
--- @param _SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-function M.PutObjectOutput(_SSECustomerAlgorithm, _RequestCharged, _VersionId, _ETag, _Expiration, _ServerSideEncryption, _SSECustomerKeyMD5, _SSEKMSKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutObjectOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
+-- * RequestCharged [RequestCharged] 
+-- * VersionId [ObjectVersionId] Version of the object.
+-- * ETag [ETag] Entity tag for the uploaded object.
+-- * Expiration [Expiration] If the object expiration is configured, this will contain the expiration date (expiry-date) and rule ID (rule-id). The value of rule-id is URL encoded.
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
+-- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
+-- @return PutObjectOutput structure as a key-value pair table
+function M.PutObjectOutput(args)
+	assert(args, "You must provdide an argument table when creating PutObjectOutput")
 	local t = { 
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["RequestCharged"] = _RequestCharged,
-		["VersionId"] = _VersionId,
-		["ETag"] = _ETag,
-		["Expiration"] = _Expiration,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["RequestCharged"] = args["RequestCharged"],
+		["VersionId"] = args["VersionId"],
+		["ETag"] = args["ETag"],
+		["Expiration"] = args["Expiration"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
 	}
 	asserts.AssertPutObjectOutput(t)
 	return t
@@ -176,20 +188,23 @@ end
 
 --- Create a structure of type ReplicationRule
 --  
--- @param _Status [ReplicationRuleStatus] The rule is ignored if status is not Enabled.
--- @param _Prefix [Prefix] Object keyname prefix identifying one or more objects to which the rule applies. Maximum prefix length can be up to 1,024 characters. Overlapping prefixes are not supported.
--- @param _Destination [Destination] 
--- @param _ID [ID] Unique identifier for the rule. The value cannot be longer than 255 characters.
--- Required parameter: Prefix
--- Required parameter: Status
--- Required parameter: Destination
-function M.ReplicationRule(_Status, _Prefix, _Destination, _ID, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ReplicationRuleStatus] The rule is ignored if status is not Enabled.
+-- * Prefix [Prefix] Object keyname prefix identifying one or more objects to which the rule applies. Maximum prefix length can be up to 1,024 characters. Overlapping prefixes are not supported.
+-- * Destination [Destination] 
+-- * ID [ID] Unique identifier for the rule. The value cannot be longer than 255 characters.
+-- Required key: Prefix
+-- Required key: Status
+-- Required key: Destination
+-- @return ReplicationRule structure as a key-value pair table
+function M.ReplicationRule(args)
+	assert(args, "You must provdide an argument table when creating ReplicationRule")
 	local t = { 
-		["Status"] = _Status,
-		["Prefix"] = _Prefix,
-		["Destination"] = _Destination,
-		["ID"] = _ID,
+		["Status"] = args["Status"],
+		["Prefix"] = args["Prefix"],
+		["Destination"] = args["Destination"],
+		["ID"] = args["ID"],
 	}
 	asserts.AssertReplicationRule(t)
 	return t
@@ -213,21 +228,24 @@ end
 
 --- Create a structure of type Object
 --  
--- @param _LastModified [LastModified] 
--- @param _ETag [ETag] 
--- @param _StorageClass [ObjectStorageClass] The class of storage used to store the object.
--- @param _Key [ObjectKey] 
--- @param _Owner [Owner] 
--- @param _Size [Size] 
-function M.Object(_LastModified, _ETag, _StorageClass, _Key, _Owner, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Object")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastModified [LastModified] 
+-- * ETag [ETag] 
+-- * StorageClass [ObjectStorageClass] The class of storage used to store the object.
+-- * Key [ObjectKey] 
+-- * Owner [Owner] 
+-- * Size [Size] 
+-- @return Object structure as a key-value pair table
+function M.Object(args)
+	assert(args, "You must provdide an argument table when creating Object")
 	local t = { 
-		["LastModified"] = _LastModified,
-		["ETag"] = _ETag,
-		["StorageClass"] = _StorageClass,
-		["Key"] = _Key,
-		["Owner"] = _Owner,
-		["Size"] = _Size,
+		["LastModified"] = args["LastModified"],
+		["ETag"] = args["ETag"],
+		["StorageClass"] = args["StorageClass"],
+		["Key"] = args["Key"],
+		["Owner"] = args["Owner"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertObject(t)
 	return t
@@ -250,19 +268,22 @@ end
 
 --- Create a structure of type DeleteMarkerEntry
 --  
--- @param _Owner [Owner] 
--- @param _IsLatest [IsLatest] Specifies whether the object is (true) or is not (false) the latest version of an object.
--- @param _VersionId [ObjectVersionId] Version ID of an object.
--- @param _Key [ObjectKey] The object key.
--- @param _LastModified [LastModified] Date and time the object was last modified.
-function M.DeleteMarkerEntry(_Owner, _IsLatest, _VersionId, _Key, _LastModified, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMarkerEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Owner [Owner] 
+-- * IsLatest [IsLatest] Specifies whether the object is (true) or is not (false) the latest version of an object.
+-- * VersionId [ObjectVersionId] Version ID of an object.
+-- * Key [ObjectKey] The object key.
+-- * LastModified [LastModified] Date and time the object was last modified.
+-- @return DeleteMarkerEntry structure as a key-value pair table
+function M.DeleteMarkerEntry(args)
+	assert(args, "You must provdide an argument table when creating DeleteMarkerEntry")
 	local t = { 
-		["Owner"] = _Owner,
-		["IsLatest"] = _IsLatest,
-		["VersionId"] = _VersionId,
-		["Key"] = _Key,
-		["LastModified"] = _LastModified,
+		["Owner"] = args["Owner"],
+		["IsLatest"] = args["IsLatest"],
+		["VersionId"] = args["VersionId"],
+		["Key"] = args["Key"],
+		["LastModified"] = args["LastModified"],
 	}
 	asserts.AssertDeleteMarkerEntry(t)
 	return t
@@ -284,15 +305,18 @@ end
 
 --- Create a structure of type DeleteBucketAnalyticsConfigurationRequest
 --  
--- @param _Bucket [BucketName] The name of the bucket from which an analytics configuration is deleted.
--- @param _Id [AnalyticsId] The identifier used to represent an analytics configuration.
--- Required parameter: Bucket
--- Required parameter: Id
-function M.DeleteBucketAnalyticsConfigurationRequest(_Bucket, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBucketAnalyticsConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] The name of the bucket from which an analytics configuration is deleted.
+-- * Id [AnalyticsId] The identifier used to represent an analytics configuration.
+-- Required key: Bucket
+-- Required key: Id
+-- @return DeleteBucketAnalyticsConfigurationRequest structure as a key-value pair table
+function M.DeleteBucketAnalyticsConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBucketAnalyticsConfigurationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["Id"] = _Id,
+		["Bucket"] = args["Bucket"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDeleteBucketAnalyticsConfigurationRequest(t)
 	return t
@@ -315,17 +339,20 @@ end
 
 --- Create a structure of type AnalyticsConfiguration
 --  
--- @param _Filter [AnalyticsFilter] The filter used to describe a set of objects for analyses. A filter must have exactly one prefix, one tag, or one conjunction (AnalyticsAndOperator). If no filter is provided, all objects will be considered in any analysis.
--- @param _StorageClassAnalysis [StorageClassAnalysis] If present, it indicates that data related to access patterns will be collected and made available to analyze the tradeoffs between different storage classes.
--- @param _Id [AnalyticsId] The identifier used to represent an analytics configuration.
--- Required parameter: Id
--- Required parameter: StorageClassAnalysis
-function M.AnalyticsConfiguration(_Filter, _StorageClassAnalysis, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AnalyticsConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Filter [AnalyticsFilter] The filter used to describe a set of objects for analyses. A filter must have exactly one prefix, one tag, or one conjunction (AnalyticsAndOperator). If no filter is provided, all objects will be considered in any analysis.
+-- * StorageClassAnalysis [StorageClassAnalysis] If present, it indicates that data related to access patterns will be collected and made available to analyze the tradeoffs between different storage classes.
+-- * Id [AnalyticsId] The identifier used to represent an analytics configuration.
+-- Required key: Id
+-- Required key: StorageClassAnalysis
+-- @return AnalyticsConfiguration structure as a key-value pair table
+function M.AnalyticsConfiguration(args)
+	assert(args, "You must provdide an argument table when creating AnalyticsConfiguration")
 	local t = { 
-		["Filter"] = _Filter,
-		["StorageClassAnalysis"] = _StorageClassAnalysis,
-		["Id"] = _Id,
+		["Filter"] = args["Filter"],
+		["StorageClassAnalysis"] = args["StorageClassAnalysis"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertAnalyticsConfiguration(t)
 	return t
@@ -345,12 +372,15 @@ end
 
 --- Create a structure of type DeleteBucketLifecycleRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.DeleteBucketLifecycleRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBucketLifecycleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return DeleteBucketLifecycleRequest structure as a key-value pair table
+function M.DeleteBucketLifecycleRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBucketLifecycleRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertDeleteBucketLifecycleRequest(t)
 	return t
@@ -370,12 +400,15 @@ end
 
 --- Create a structure of type InventoryDestination
 --  
--- @param _S3BucketDestination [InventoryS3BucketDestination] Contains the bucket name, file format, bucket owner (optional), and prefix (optional) where inventory results are published.
--- Required parameter: S3BucketDestination
-function M.InventoryDestination(_S3BucketDestination, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryDestination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * S3BucketDestination [InventoryS3BucketDestination] Contains the bucket name, file format, bucket owner (optional), and prefix (optional) where inventory results are published.
+-- Required key: S3BucketDestination
+-- @return InventoryDestination structure as a key-value pair table
+function M.InventoryDestination(args)
+	assert(args, "You must provdide an argument table when creating InventoryDestination")
 	local t = { 
-		["S3BucketDestination"] = _S3BucketDestination,
+		["S3BucketDestination"] = args["S3BucketDestination"],
 	}
 	asserts.AssertInventoryDestination(t)
 	return t
@@ -408,35 +441,38 @@ end
 
 --- Create a structure of type UploadPartRequest
 --  
--- @param _Body [Body] Object data.
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
--- @param _RequestPayer [RequestPayer] 
--- @param _ContentLength [ContentLength] Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.
--- @param _ContentMD5 [ContentMD5] The base64-encoded 128-bit MD5 digest of the part data.
--- @param _Bucket [BucketName] Name of the bucket to which the multipart upload was initiated.
--- @param _SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header. This must be the same encryption key specified in the initiate multipart upload request.
--- @param _UploadId [MultipartUploadId] Upload ID identifying the multipart upload whose part is being uploaded.
--- @param _Key [ObjectKey] Object key for which the multipart upload was initiated.
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
--- @param _PartNumber [PartNumber] Part number of part being uploaded. This is a positive integer between 1 and 10,000.
--- Required parameter: Bucket
--- Required parameter: Key
--- Required parameter: PartNumber
--- Required parameter: UploadId
-function M.UploadPartRequest(_Body, _SSECustomerAlgorithm, _RequestPayer, _ContentLength, _ContentMD5, _Bucket, _SSECustomerKey, _UploadId, _Key, _SSECustomerKeyMD5, _PartNumber, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadPartRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Body [Body] Object data.
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
+-- * RequestPayer [RequestPayer] 
+-- * ContentLength [ContentLength] Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.
+-- * ContentMD5 [ContentMD5] The base64-encoded 128-bit MD5 digest of the part data.
+-- * Bucket [BucketName] Name of the bucket to which the multipart upload was initiated.
+-- * SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header. This must be the same encryption key specified in the initiate multipart upload request.
+-- * UploadId [MultipartUploadId] Upload ID identifying the multipart upload whose part is being uploaded.
+-- * Key [ObjectKey] Object key for which the multipart upload was initiated.
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+-- * PartNumber [PartNumber] Part number of part being uploaded. This is a positive integer between 1 and 10,000.
+-- Required key: Bucket
+-- Required key: Key
+-- Required key: PartNumber
+-- Required key: UploadId
+-- @return UploadPartRequest structure as a key-value pair table
+function M.UploadPartRequest(args)
+	assert(args, "You must provdide an argument table when creating UploadPartRequest")
 	local t = { 
-		["Body"] = _Body,
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["RequestPayer"] = _RequestPayer,
-		["ContentLength"] = _ContentLength,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
-		["SSECustomerKey"] = _SSECustomerKey,
-		["UploadId"] = _UploadId,
-		["Key"] = _Key,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
-		["PartNumber"] = _PartNumber,
+		["Body"] = args["Body"],
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["RequestPayer"] = args["RequestPayer"],
+		["ContentLength"] = args["ContentLength"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
+		["SSECustomerKey"] = args["SSECustomerKey"],
+		["UploadId"] = args["UploadId"],
+		["Key"] = args["Key"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
+		["PartNumber"] = args["PartNumber"],
 	}
 	asserts.AssertUploadPartRequest(t)
 	return t
@@ -461,23 +497,26 @@ end
 
 --- Create a structure of type UploadPartCopyOutput
 --  
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
--- @param _CopySourceVersionId [CopySourceVersionId] The version of the source object that was copied, if you have enabled versioning on the source bucket.
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _RequestCharged [RequestCharged] 
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
--- @param _CopyPartResult [CopyPartResult] 
--- @param _SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-function M.UploadPartCopyOutput(_SSECustomerAlgorithm, _CopySourceVersionId, _ServerSideEncryption, _RequestCharged, _SSECustomerKeyMD5, _CopyPartResult, _SSEKMSKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadPartCopyOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
+-- * CopySourceVersionId [CopySourceVersionId] The version of the source object that was copied, if you have enabled versioning on the source bucket.
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * RequestCharged [RequestCharged] 
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
+-- * CopyPartResult [CopyPartResult] 
+-- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
+-- @return UploadPartCopyOutput structure as a key-value pair table
+function M.UploadPartCopyOutput(args)
+	assert(args, "You must provdide an argument table when creating UploadPartCopyOutput")
 	local t = { 
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["CopySourceVersionId"] = _CopySourceVersionId,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["RequestCharged"] = _RequestCharged,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
-		["CopyPartResult"] = _CopyPartResult,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["CopySourceVersionId"] = args["CopySourceVersionId"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["RequestCharged"] = args["RequestCharged"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
+		["CopyPartResult"] = args["CopyPartResult"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
 	}
 	asserts.AssertUploadPartCopyOutput(t)
 	return t
@@ -503,22 +542,25 @@ end
 
 --- Create a structure of type PutObjectTaggingRequest
 --  
--- @param _VersionId [ObjectVersionId] 
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- @param _Tagging [Tagging] 
--- @param _Key [ObjectKey] 
--- Required parameter: Bucket
--- Required parameter: Key
--- Required parameter: Tagging
-function M.PutObjectTaggingRequest(_VersionId, _ContentMD5, _Bucket, _Tagging, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutObjectTaggingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] 
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- * Tagging [Tagging] 
+-- * Key [ObjectKey] 
+-- Required key: Bucket
+-- Required key: Key
+-- Required key: Tagging
+-- @return PutObjectTaggingRequest structure as a key-value pair table
+function M.PutObjectTaggingRequest(args)
+	assert(args, "You must provdide an argument table when creating PutObjectTaggingRequest")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
-		["Tagging"] = _Tagging,
-		["Key"] = _Key,
+		["VersionId"] = args["VersionId"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
+		["Tagging"] = args["Tagging"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertPutObjectTaggingRequest(t)
 	return t
@@ -540,15 +582,18 @@ end
 
 --- Create a structure of type Tag
 --  
--- @param _Value [Value] Value of the tag.
--- @param _Key [ObjectKey] Name of the tag.
--- Required parameter: Key
--- Required parameter: Value
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [Value] Value of the tag.
+-- * Key [ObjectKey] Name of the tag.
+-- Required key: Key
+-- Required key: Value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -568,12 +613,15 @@ end
 
 --- Create a structure of type GetBucketNotificationConfigurationRequest
 --  
--- @param _Bucket [BucketName] Name of the bucket to get the notification configuration for.
--- Required parameter: Bucket
-function M.GetBucketNotificationConfigurationRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketNotificationConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] Name of the bucket to get the notification configuration for.
+-- Required key: Bucket
+-- @return GetBucketNotificationConfigurationRequest structure as a key-value pair table
+function M.GetBucketNotificationConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketNotificationConfigurationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketNotificationConfigurationRequest(t)
 	return t
@@ -597,18 +645,21 @@ end
 
 --- Create a structure of type PutBucketMetricsConfigurationRequest
 --  
--- @param _Bucket [BucketName] The name of the bucket for which the metrics configuration is set.
--- @param _Id [MetricsId] The ID used to identify the metrics configuration.
--- @param _MetricsConfiguration [MetricsConfiguration] Specifies the metrics configuration.
--- Required parameter: Bucket
--- Required parameter: Id
--- Required parameter: MetricsConfiguration
-function M.PutBucketMetricsConfigurationRequest(_Bucket, _Id, _MetricsConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketMetricsConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] The name of the bucket for which the metrics configuration is set.
+-- * Id [MetricsId] The ID used to identify the metrics configuration.
+-- * MetricsConfiguration [MetricsConfiguration] Specifies the metrics configuration.
+-- Required key: Bucket
+-- Required key: Id
+-- Required key: MetricsConfiguration
+-- @return PutBucketMetricsConfigurationRequest structure as a key-value pair table
+function M.PutBucketMetricsConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketMetricsConfigurationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["Id"] = _Id,
-		["MetricsConfiguration"] = _MetricsConfiguration,
+		["Bucket"] = args["Bucket"],
+		["Id"] = args["Id"],
+		["MetricsConfiguration"] = args["MetricsConfiguration"],
 	}
 	asserts.AssertPutBucketMetricsConfigurationRequest(t)
 	return t
@@ -634,24 +685,27 @@ end
 
 --- Create a structure of type ListObjectVersionsRequest
 --  
--- @param _Bucket [BucketName] 
--- @param _Prefix [Prefix] Limits the response to keys that begin with the specified prefix.
--- @param _MaxKeys [MaxKeys] Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
--- @param _Delimiter [Delimiter] A delimiter is a character you use to group keys.
--- @param _KeyMarker [KeyMarker] Specifies the key to start with when listing objects in a bucket.
--- @param _EncodingType [EncodingType] 
--- @param _VersionIdMarker [VersionIdMarker] Specifies the object version you want to start listing from.
--- Required parameter: Bucket
-function M.ListObjectVersionsRequest(_Bucket, _Prefix, _MaxKeys, _Delimiter, _KeyMarker, _EncodingType, _VersionIdMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- * Prefix [Prefix] Limits the response to keys that begin with the specified prefix.
+-- * MaxKeys [MaxKeys] Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
+-- * Delimiter [Delimiter] A delimiter is a character you use to group keys.
+-- * KeyMarker [KeyMarker] Specifies the key to start with when listing objects in a bucket.
+-- * EncodingType [EncodingType] 
+-- * VersionIdMarker [VersionIdMarker] Specifies the object version you want to start listing from.
+-- Required key: Bucket
+-- @return ListObjectVersionsRequest structure as a key-value pair table
+function M.ListObjectVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListObjectVersionsRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["Prefix"] = _Prefix,
-		["MaxKeys"] = _MaxKeys,
-		["Delimiter"] = _Delimiter,
-		["KeyMarker"] = _KeyMarker,
-		["EncodingType"] = _EncodingType,
-		["VersionIdMarker"] = _VersionIdMarker,
+		["Bucket"] = args["Bucket"],
+		["Prefix"] = args["Prefix"],
+		["MaxKeys"] = args["MaxKeys"],
+		["Delimiter"] = args["Delimiter"],
+		["KeyMarker"] = args["KeyMarker"],
+		["EncodingType"] = args["EncodingType"],
+		["VersionIdMarker"] = args["VersionIdMarker"],
 	}
 	asserts.AssertListObjectVersionsRequest(t)
 	return t
@@ -670,11 +724,14 @@ end
 
 --- Create a structure of type GetBucketLoggingOutput
 --  
--- @param _LoggingEnabled [LoggingEnabled] 
-function M.GetBucketLoggingOutput(_LoggingEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketLoggingOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggingEnabled [LoggingEnabled] 
+-- @return GetBucketLoggingOutput structure as a key-value pair table
+function M.GetBucketLoggingOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketLoggingOutput")
 	local t = { 
-		["LoggingEnabled"] = _LoggingEnabled,
+		["LoggingEnabled"] = args["LoggingEnabled"],
 	}
 	asserts.AssertGetBucketLoggingOutput(t)
 	return t
@@ -694,12 +751,15 @@ end
 
 --- Create a structure of type GlacierJobParameters
 --  
--- @param _Tier [Tier] Glacier retrieval tier at which the restore will be processed.
--- Required parameter: Tier
-function M.GlacierJobParameters(_Tier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GlacierJobParameters")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Tier [Tier] Glacier retrieval tier at which the restore will be processed.
+-- Required key: Tier
+-- @return GlacierJobParameters structure as a key-value pair table
+function M.GlacierJobParameters(args)
+	assert(args, "You must provdide an argument table when creating GlacierJobParameters")
 	local t = { 
-		["Tier"] = _Tier,
+		["Tier"] = args["Tier"],
 	}
 	asserts.AssertGlacierJobParameters(t)
 	return t
@@ -719,13 +779,16 @@ end
 
 --- Create a structure of type TargetGrant
 --  
--- @param _Grantee [Grantee] 
--- @param _Permission [BucketLogsPermission] Logging permissions assigned to the Grantee for the bucket.
-function M.TargetGrant(_Grantee, _Permission, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TargetGrant")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Grantee [Grantee] 
+-- * Permission [BucketLogsPermission] Logging permissions assigned to the Grantee for the bucket.
+-- @return TargetGrant structure as a key-value pair table
+function M.TargetGrant(args)
+	assert(args, "You must provdide an argument table when creating TargetGrant")
 	local t = { 
-		["Grantee"] = _Grantee,
-		["Permission"] = _Permission,
+		["Grantee"] = args["Grantee"],
+		["Permission"] = args["Permission"],
 	}
 	asserts.AssertTargetGrant(t)
 	return t
@@ -745,13 +808,16 @@ end
 
 --- Create a structure of type MetricsAndOperator
 --  
--- @param _Prefix [Prefix] The prefix used when evaluating an AND predicate.
--- @param _Tags [TagSet] The list of tags used when evaluating an AND predicate.
-function M.MetricsAndOperator(_Prefix, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MetricsAndOperator")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Prefix [Prefix] The prefix used when evaluating an AND predicate.
+-- * Tags [TagSet] The list of tags used when evaluating an AND predicate.
+-- @return MetricsAndOperator structure as a key-value pair table
+function M.MetricsAndOperator(args)
+	assert(args, "You must provdide an argument table when creating MetricsAndOperator")
 	local t = { 
-		["Prefix"] = _Prefix,
-		["Tags"] = _Tags,
+		["Prefix"] = args["Prefix"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertMetricsAndOperator(t)
 	return t
@@ -779,29 +845,32 @@ end
 
 --- Create a structure of type ListObjectsOutput
 --  
--- @param _Name [BucketName] 
--- @param _NextMarker [NextMarker] When response is truncated (the IsTruncated element value in the response is true), you can use the key name in this field as marker in the subsequent request to get next set of objects. Amazon S3 lists objects in alphabetical order Note: This element is returned only if you have delimiter request parameter specified. If response does not include the NextMaker and it is truncated, you can use the value of the last Key in the response as the marker in the subsequent request to get the next set of object keys.
--- @param _Delimiter [Delimiter] 
--- @param _MaxKeys [MaxKeys] 
--- @param _Prefix [Prefix] 
--- @param _Marker [Marker] 
--- @param _EncodingType [EncodingType] Encoding type used by Amazon S3 to encode object keys in the response.
--- @param _IsTruncated [IsTruncated] A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the search criteria.
--- @param _Contents [ObjectList] 
--- @param _CommonPrefixes [CommonPrefixList] 
-function M.ListObjectsOutput(_Name, _NextMarker, _Delimiter, _MaxKeys, _Prefix, _Marker, _EncodingType, _IsTruncated, _Contents, _CommonPrefixes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [BucketName] 
+-- * NextMarker [NextMarker] When response is truncated (the IsTruncated element value in the response is true), you can use the key name in this field as marker in the subsequent request to get next set of objects. Amazon S3 lists objects in alphabetical order Note: This element is returned only if you have delimiter request parameter specified. If response does not include the NextMaker and it is truncated, you can use the value of the last Key in the response as the marker in the subsequent request to get the next set of object keys.
+-- * Delimiter [Delimiter] 
+-- * MaxKeys [MaxKeys] 
+-- * Prefix [Prefix] 
+-- * Marker [Marker] 
+-- * EncodingType [EncodingType] Encoding type used by Amazon S3 to encode object keys in the response.
+-- * IsTruncated [IsTruncated] A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the search criteria.
+-- * Contents [ObjectList] 
+-- * CommonPrefixes [CommonPrefixList] 
+-- @return ListObjectsOutput structure as a key-value pair table
+function M.ListObjectsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListObjectsOutput")
 	local t = { 
-		["Name"] = _Name,
-		["NextMarker"] = _NextMarker,
-		["Delimiter"] = _Delimiter,
-		["MaxKeys"] = _MaxKeys,
-		["Prefix"] = _Prefix,
-		["Marker"] = _Marker,
-		["EncodingType"] = _EncodingType,
-		["IsTruncated"] = _IsTruncated,
-		["Contents"] = _Contents,
-		["CommonPrefixes"] = _CommonPrefixes,
+		["Name"] = args["Name"],
+		["NextMarker"] = args["NextMarker"],
+		["Delimiter"] = args["Delimiter"],
+		["MaxKeys"] = args["MaxKeys"],
+		["Prefix"] = args["Prefix"],
+		["Marker"] = args["Marker"],
+		["EncodingType"] = args["EncodingType"],
+		["IsTruncated"] = args["IsTruncated"],
+		["Contents"] = args["Contents"],
+		["CommonPrefixes"] = args["CommonPrefixes"],
 	}
 	asserts.AssertListObjectsOutput(t)
 	return t
@@ -826,21 +895,24 @@ end
 
 --- Create a structure of type DeleteObjectRequest
 --  
--- @param _MFA [MFA] The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
--- @param _VersionId [ObjectVersionId] VersionId used to reference a specific version of the object.
--- @param _Bucket [BucketName] 
--- @param _RequestPayer [RequestPayer] 
--- @param _Key [ObjectKey] 
--- Required parameter: Bucket
--- Required parameter: Key
-function M.DeleteObjectRequest(_MFA, _VersionId, _Bucket, _RequestPayer, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MFA [MFA] The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
+-- * VersionId [ObjectVersionId] VersionId used to reference a specific version of the object.
+-- * Bucket [BucketName] 
+-- * RequestPayer [RequestPayer] 
+-- * Key [ObjectKey] 
+-- Required key: Bucket
+-- Required key: Key
+-- @return DeleteObjectRequest structure as a key-value pair table
+function M.DeleteObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteObjectRequest")
 	local t = { 
-		["MFA"] = _MFA,
-		["VersionId"] = _VersionId,
-		["Bucket"] = _Bucket,
-		["RequestPayer"] = _RequestPayer,
-		["Key"] = _Key,
+		["MFA"] = args["MFA"],
+		["VersionId"] = args["VersionId"],
+		["Bucket"] = args["Bucket"],
+		["RequestPayer"] = args["RequestPayer"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertDeleteObjectRequest(t)
 	return t
@@ -860,13 +932,16 @@ end
 
 --- Create a structure of type LifecycleRuleAndOperator
 -- This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates. The Lifecycle Rule will apply to any object matching all of the predicates configured inside the And operator.
--- @param _Prefix [Prefix] 
--- @param _Tags [TagSet] All of these tags must exist in the object's tag set in order for the rule to apply.
-function M.LifecycleRuleAndOperator(_Prefix, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleRuleAndOperator")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Prefix [Prefix] 
+-- * Tags [TagSet] All of these tags must exist in the object's tag set in order for the rule to apply.
+-- @return LifecycleRuleAndOperator structure as a key-value pair table
+function M.LifecycleRuleAndOperator(args)
+	assert(args, "You must provdide an argument table when creating LifecycleRuleAndOperator")
 	local t = { 
-		["Prefix"] = _Prefix,
-		["Tags"] = _Tags,
+		["Prefix"] = args["Prefix"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertLifecycleRuleAndOperator(t)
 	return t
@@ -886,12 +961,15 @@ end
 
 --- Create a structure of type GetBucketWebsiteRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketWebsiteRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketWebsiteRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketWebsiteRequest structure as a key-value pair table
+function M.GetBucketWebsiteRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketWebsiteRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketWebsiteRequest(t)
 	return t
@@ -910,11 +988,14 @@ end
 
 --- Create a structure of type GetBucketRequestPaymentOutput
 --  
--- @param _Payer [Payer] Specifies who pays for the download and request fees.
-function M.GetBucketRequestPaymentOutput(_Payer, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketRequestPaymentOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Payer [Payer] Specifies who pays for the download and request fees.
+-- @return GetBucketRequestPaymentOutput structure as a key-value pair table
+function M.GetBucketRequestPaymentOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketRequestPaymentOutput")
 	local t = { 
-		["Payer"] = _Payer,
+		["Payer"] = args["Payer"],
 	}
 	asserts.AssertGetBucketRequestPaymentOutput(t)
 	return t
@@ -935,14 +1016,17 @@ end
 
 --- Create a structure of type ListBucketMetricsConfigurationsRequest
 --  
--- @param _Bucket [BucketName] The name of the bucket containing the metrics configurations to retrieve.
--- @param _ContinuationToken [Token] The marker that is used to continue a metrics configuration listing that has been truncated. Use the NextContinuationToken from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
--- Required parameter: Bucket
-function M.ListBucketMetricsConfigurationsRequest(_Bucket, _ContinuationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBucketMetricsConfigurationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] The name of the bucket containing the metrics configurations to retrieve.
+-- * ContinuationToken [Token] The marker that is used to continue a metrics configuration listing that has been truncated. Use the NextContinuationToken from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
+-- Required key: Bucket
+-- @return ListBucketMetricsConfigurationsRequest structure as a key-value pair table
+function M.ListBucketMetricsConfigurationsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListBucketMetricsConfigurationsRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["ContinuationToken"] = _ContinuationToken,
+		["Bucket"] = args["Bucket"],
+		["ContinuationToken"] = args["ContinuationToken"],
 	}
 	asserts.AssertListBucketMetricsConfigurationsRequest(t)
 	return t
@@ -962,13 +1046,16 @@ end
 
 --- Create a structure of type Owner
 --  
--- @param _DisplayName [DisplayName] 
--- @param _ID [ID] 
-function M.Owner(_DisplayName, _ID, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Owner")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisplayName [DisplayName] 
+-- * ID [ID] 
+-- @return Owner structure as a key-value pair table
+function M.Owner(args)
+	assert(args, "You must provdide an argument table when creating Owner")
 	local t = { 
-		["DisplayName"] = _DisplayName,
-		["ID"] = _ID,
+		["DisplayName"] = args["DisplayName"],
+		["ID"] = args["ID"],
 	}
 	asserts.AssertOwner(t)
 	return t
@@ -988,13 +1075,16 @@ end
 
 --- Create a structure of type CopyObjectResult
 --  
--- @param _LastModified [LastModified] 
--- @param _ETag [ETag] 
-function M.CopyObjectResult(_LastModified, _ETag, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CopyObjectResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastModified [LastModified] 
+-- * ETag [ETag] 
+-- @return CopyObjectResult structure as a key-value pair table
+function M.CopyObjectResult(args)
+	assert(args, "You must provdide an argument table when creating CopyObjectResult")
 	local t = { 
-		["LastModified"] = _LastModified,
-		["ETag"] = _ETag,
+		["LastModified"] = args["LastModified"],
+		["ETag"] = args["ETag"],
 	}
 	asserts.AssertCopyObjectResult(t)
 	return t
@@ -1022,28 +1112,31 @@ end
 
 --- Create a structure of type LifecycleRule
 --  
--- @param _Status [ExpirationStatus] If 'Enabled', the rule is currently being applied. If 'Disabled', the rule is not currently being applied.
--- @param _NoncurrentVersionExpiration [NoncurrentVersionExpiration] 
--- @param _NoncurrentVersionTransitions [NoncurrentVersionTransitionList] 
--- @param _Filter [LifecycleRuleFilter] 
--- @param _Prefix [Prefix] Prefix identifying one or more objects to which the rule applies. This is deprecated; use Filter instead.
--- @param _Expiration [LifecycleExpiration] 
--- @param _AbortIncompleteMultipartUpload [AbortIncompleteMultipartUpload] 
--- @param _Transitions [TransitionList] 
--- @param _ID [ID] Unique identifier for the rule. The value cannot be longer than 255 characters.
--- Required parameter: Status
-function M.LifecycleRule(_Status, _NoncurrentVersionExpiration, _NoncurrentVersionTransitions, _Filter, _Prefix, _Expiration, _AbortIncompleteMultipartUpload, _Transitions, _ID, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ExpirationStatus] If 'Enabled', the rule is currently being applied. If 'Disabled', the rule is not currently being applied.
+-- * NoncurrentVersionExpiration [NoncurrentVersionExpiration] 
+-- * NoncurrentVersionTransitions [NoncurrentVersionTransitionList] 
+-- * Filter [LifecycleRuleFilter] 
+-- * Prefix [Prefix] Prefix identifying one or more objects to which the rule applies. This is deprecated; use Filter instead.
+-- * Expiration [LifecycleExpiration] 
+-- * AbortIncompleteMultipartUpload [AbortIncompleteMultipartUpload] 
+-- * Transitions [TransitionList] 
+-- * ID [ID] Unique identifier for the rule. The value cannot be longer than 255 characters.
+-- Required key: Status
+-- @return LifecycleRule structure as a key-value pair table
+function M.LifecycleRule(args)
+	assert(args, "You must provdide an argument table when creating LifecycleRule")
 	local t = { 
-		["Status"] = _Status,
-		["NoncurrentVersionExpiration"] = _NoncurrentVersionExpiration,
-		["NoncurrentVersionTransitions"] = _NoncurrentVersionTransitions,
-		["Filter"] = _Filter,
-		["Prefix"] = _Prefix,
-		["Expiration"] = _Expiration,
-		["AbortIncompleteMultipartUpload"] = _AbortIncompleteMultipartUpload,
-		["Transitions"] = _Transitions,
-		["ID"] = _ID,
+		["Status"] = args["Status"],
+		["NoncurrentVersionExpiration"] = args["NoncurrentVersionExpiration"],
+		["NoncurrentVersionTransitions"] = args["NoncurrentVersionTransitions"],
+		["Filter"] = args["Filter"],
+		["Prefix"] = args["Prefix"],
+		["Expiration"] = args["Expiration"],
+		["AbortIncompleteMultipartUpload"] = args["AbortIncompleteMultipartUpload"],
+		["Transitions"] = args["Transitions"],
+		["ID"] = args["ID"],
 	}
 	asserts.AssertLifecycleRule(t)
 	return t
@@ -1062,11 +1155,14 @@ end
 
 --- Create a structure of type GetBucketLifecycleOutput
 --  
--- @param _Rules [Rules] 
-function M.GetBucketLifecycleOutput(_Rules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketLifecycleOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [Rules] 
+-- @return GetBucketLifecycleOutput structure as a key-value pair table
+function M.GetBucketLifecycleOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketLifecycleOutput")
 	local t = { 
-		["Rules"] = _Rules,
+		["Rules"] = args["Rules"],
 	}
 	asserts.AssertGetBucketLifecycleOutput(t)
 	return t
@@ -1089,17 +1185,20 @@ end
 
 --- Create a structure of type GetObjectTaggingRequest
 --  
--- @param _VersionId [ObjectVersionId] 
--- @param _Bucket [BucketName] 
--- @param _Key [ObjectKey] 
--- Required parameter: Bucket
--- Required parameter: Key
-function M.GetObjectTaggingRequest(_VersionId, _Bucket, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectTaggingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] 
+-- * Bucket [BucketName] 
+-- * Key [ObjectKey] 
+-- Required key: Bucket
+-- Required key: Key
+-- @return GetObjectTaggingRequest structure as a key-value pair table
+function M.GetObjectTaggingRequest(args)
+	assert(args, "You must provdide an argument table when creating GetObjectTaggingRequest")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["Bucket"] = _Bucket,
-		["Key"] = _Key,
+		["VersionId"] = args["VersionId"],
+		["Bucket"] = args["Bucket"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertGetObjectTaggingRequest(t)
 	return t
@@ -1126,27 +1225,30 @@ end
 
 --- Create a structure of type CompleteMultipartUploadOutput
 --  
--- @param _RequestCharged [RequestCharged] 
--- @param _Bucket [BucketName] 
--- @param _VersionId [ObjectVersionId] Version of the object.
--- @param _ETag [ETag] Entity tag of the object.
--- @param _Location [Location] 
--- @param _Key [ObjectKey] 
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
--- @param _Expiration [Expiration] If the object expiration is configured, this will contain the expiration date (expiry-date) and rule ID (rule-id). The value of rule-id is URL encoded.
-function M.CompleteMultipartUploadOutput(_RequestCharged, _Bucket, _VersionId, _ETag, _Location, _Key, _ServerSideEncryption, _SSEKMSKeyId, _Expiration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompleteMultipartUploadOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestCharged [RequestCharged] 
+-- * Bucket [BucketName] 
+-- * VersionId [ObjectVersionId] Version of the object.
+-- * ETag [ETag] Entity tag of the object.
+-- * Location [Location] 
+-- * Key [ObjectKey] 
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
+-- * Expiration [Expiration] If the object expiration is configured, this will contain the expiration date (expiry-date) and rule ID (rule-id). The value of rule-id is URL encoded.
+-- @return CompleteMultipartUploadOutput structure as a key-value pair table
+function M.CompleteMultipartUploadOutput(args)
+	assert(args, "You must provdide an argument table when creating CompleteMultipartUploadOutput")
 	local t = { 
-		["RequestCharged"] = _RequestCharged,
-		["Bucket"] = _Bucket,
-		["VersionId"] = _VersionId,
-		["ETag"] = _ETag,
-		["Location"] = _Location,
-		["Key"] = _Key,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
-		["Expiration"] = _Expiration,
+		["RequestCharged"] = args["RequestCharged"],
+		["Bucket"] = args["Bucket"],
+		["VersionId"] = args["VersionId"],
+		["ETag"] = args["ETag"],
+		["Location"] = args["Location"],
+		["Key"] = args["Key"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
+		["Expiration"] = args["Expiration"],
 	}
 	asserts.AssertCompleteMultipartUploadOutput(t)
 	return t
@@ -1164,8 +1266,11 @@ end
 
 --- Create a structure of type ObjectAlreadyInActiveTierError
 -- This operation is not allowed against this storage tier
-function M.ObjectAlreadyInActiveTierError(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ObjectAlreadyInActiveTierError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ObjectAlreadyInActiveTierError structure as a key-value pair table
+function M.ObjectAlreadyInActiveTierError(args)
+	assert(args, "You must provdide an argument table when creating ObjectAlreadyInActiveTierError")
 	local t = { 
 	}
 	asserts.AssertObjectAlreadyInActiveTierError(t)
@@ -1188,15 +1293,18 @@ end
 
 --- Create a structure of type DeleteBucketInventoryConfigurationRequest
 --  
--- @param _Bucket [BucketName] The name of the bucket containing the inventory configuration to delete.
--- @param _Id [InventoryId] The ID used to identify the inventory configuration.
--- Required parameter: Bucket
--- Required parameter: Id
-function M.DeleteBucketInventoryConfigurationRequest(_Bucket, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBucketInventoryConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] The name of the bucket containing the inventory configuration to delete.
+-- * Id [InventoryId] The ID used to identify the inventory configuration.
+-- Required key: Bucket
+-- Required key: Id
+-- @return DeleteBucketInventoryConfigurationRequest structure as a key-value pair table
+function M.DeleteBucketInventoryConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBucketInventoryConfigurationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["Id"] = _Id,
+		["Bucket"] = args["Bucket"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDeleteBucketInventoryConfigurationRequest(t)
 	return t
@@ -1220,20 +1328,23 @@ end
 
 --- Create a structure of type Grantee
 --  
--- @param _EmailAddress [EmailAddress] Email address of the grantee.
--- @param _Type [Type] Type of grantee
--- @param _DisplayName [DisplayName] Screen name of the grantee.
--- @param _ID [ID] The canonical user ID of the grantee.
--- @param _URI [URI] URI of the grantee group.
--- Required parameter: Type
-function M.Grantee(_EmailAddress, _Type, _DisplayName, _ID, _URI, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Grantee")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EmailAddress [EmailAddress] Email address of the grantee.
+-- * Type [Type] Type of grantee
+-- * DisplayName [DisplayName] Screen name of the grantee.
+-- * ID [ID] The canonical user ID of the grantee.
+-- * URI [URI] URI of the grantee group.
+-- Required key: Type
+-- @return Grantee structure as a key-value pair table
+function M.Grantee(args)
+	assert(args, "You must provdide an argument table when creating Grantee")
 	local t = { 
-		["EmailAddress"] = _EmailAddress,
-		["Type"] = _Type,
-		["DisplayName"] = _DisplayName,
-		["ID"] = _ID,
-		["URI"] = _URI,
+		["EmailAddress"] = args["EmailAddress"],
+		["Type"] = args["Type"],
+		["DisplayName"] = args["DisplayName"],
+		["ID"] = args["ID"],
+		["URI"] = args["URI"],
 	}
 	asserts.AssertGrantee(t)
 	return t
@@ -1255,16 +1366,19 @@ end
 
 --- Create a structure of type PutBucketLifecycleRequest
 --  
--- @param _LifecycleConfiguration [LifecycleConfiguration] 
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.PutBucketLifecycleRequest(_LifecycleConfiguration, _ContentMD5, _Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketLifecycleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LifecycleConfiguration [LifecycleConfiguration] 
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return PutBucketLifecycleRequest structure as a key-value pair table
+function M.PutBucketLifecycleRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketLifecycleRequest")
 	local t = { 
-		["LifecycleConfiguration"] = _LifecycleConfiguration,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
+		["LifecycleConfiguration"] = args["LifecycleConfiguration"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertPutBucketLifecycleRequest(t)
 	return t
@@ -1284,13 +1398,16 @@ end
 
 --- Create a structure of type GetObjectTorrentOutput
 --  
--- @param _Body [Body] 
--- @param _RequestCharged [RequestCharged] 
-function M.GetObjectTorrentOutput(_Body, _RequestCharged, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectTorrentOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Body [Body] 
+-- * RequestCharged [RequestCharged] 
+-- @return GetObjectTorrentOutput structure as a key-value pair table
+function M.GetObjectTorrentOutput(args)
+	assert(args, "You must provdide an argument table when creating GetObjectTorrentOutput")
 	local t = { 
-		["Body"] = _Body,
-		["RequestCharged"] = _RequestCharged,
+		["Body"] = args["Body"],
+		["RequestCharged"] = args["RequestCharged"],
 	}
 	asserts.AssertGetObjectTorrentOutput(t)
 	return t
@@ -1318,27 +1435,30 @@ end
 
 --- Create a structure of type Rule
 --  
--- @param _Status [ExpirationStatus] If 'Enabled', the rule is currently being applied. If 'Disabled', the rule is not currently being applied.
--- @param _NoncurrentVersionExpiration [NoncurrentVersionExpiration] 
--- @param _Transition [Transition] 
--- @param _Prefix [Prefix] Prefix identifying one or more objects to which the rule applies.
--- @param _Expiration [LifecycleExpiration] 
--- @param _AbortIncompleteMultipartUpload [AbortIncompleteMultipartUpload] 
--- @param _NoncurrentVersionTransition [NoncurrentVersionTransition] 
--- @param _ID [ID] Unique identifier for the rule. The value cannot be longer than 255 characters.
--- Required parameter: Prefix
--- Required parameter: Status
-function M.Rule(_Status, _NoncurrentVersionExpiration, _Transition, _Prefix, _Expiration, _AbortIncompleteMultipartUpload, _NoncurrentVersionTransition, _ID, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Rule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ExpirationStatus] If 'Enabled', the rule is currently being applied. If 'Disabled', the rule is not currently being applied.
+-- * NoncurrentVersionExpiration [NoncurrentVersionExpiration] 
+-- * Transition [Transition] 
+-- * Prefix [Prefix] Prefix identifying one or more objects to which the rule applies.
+-- * Expiration [LifecycleExpiration] 
+-- * AbortIncompleteMultipartUpload [AbortIncompleteMultipartUpload] 
+-- * NoncurrentVersionTransition [NoncurrentVersionTransition] 
+-- * ID [ID] Unique identifier for the rule. The value cannot be longer than 255 characters.
+-- Required key: Prefix
+-- Required key: Status
+-- @return Rule structure as a key-value pair table
+function M.Rule(args)
+	assert(args, "You must provdide an argument table when creating Rule")
 	local t = { 
-		["Status"] = _Status,
-		["NoncurrentVersionExpiration"] = _NoncurrentVersionExpiration,
-		["Transition"] = _Transition,
-		["Prefix"] = _Prefix,
-		["Expiration"] = _Expiration,
-		["AbortIncompleteMultipartUpload"] = _AbortIncompleteMultipartUpload,
-		["NoncurrentVersionTransition"] = _NoncurrentVersionTransition,
-		["ID"] = _ID,
+		["Status"] = args["Status"],
+		["NoncurrentVersionExpiration"] = args["NoncurrentVersionExpiration"],
+		["Transition"] = args["Transition"],
+		["Prefix"] = args["Prefix"],
+		["Expiration"] = args["Expiration"],
+		["AbortIncompleteMultipartUpload"] = args["AbortIncompleteMultipartUpload"],
+		["NoncurrentVersionTransition"] = args["NoncurrentVersionTransition"],
+		["ID"] = args["ID"],
 	}
 	asserts.AssertRule(t)
 	return t
@@ -1361,17 +1481,20 @@ end
 
 --- Create a structure of type DeleteObjectTaggingRequest
 --  
--- @param _VersionId [ObjectVersionId] The versionId of the object that the tag-set will be removed from.
--- @param _Bucket [BucketName] 
--- @param _Key [ObjectKey] 
--- Required parameter: Bucket
--- Required parameter: Key
-function M.DeleteObjectTaggingRequest(_VersionId, _Bucket, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteObjectTaggingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] The versionId of the object that the tag-set will be removed from.
+-- * Bucket [BucketName] 
+-- * Key [ObjectKey] 
+-- Required key: Bucket
+-- Required key: Key
+-- @return DeleteObjectTaggingRequest structure as a key-value pair table
+function M.DeleteObjectTaggingRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteObjectTaggingRequest")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["Bucket"] = _Bucket,
-		["Key"] = _Key,
+		["VersionId"] = args["VersionId"],
+		["Bucket"] = args["Bucket"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertDeleteObjectTaggingRequest(t)
 	return t
@@ -1404,37 +1527,40 @@ end
 
 --- Create a structure of type HeadObjectRequest
 --  
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
--- @param _SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
--- @param _IfUnmodifiedSince [IfUnmodifiedSince] Return the object only if it has not been modified since the specified time, otherwise return a 412 (precondition failed).
--- @param _VersionId [ObjectVersionId] VersionId used to reference a specific version of the object.
--- @param _RequestPayer [RequestPayer] 
--- @param _Bucket [BucketName] 
--- @param _IfNoneMatch [IfNoneMatch] Return the object only if its entity tag (ETag) is different from the one specified, otherwise return a 304 (not modified).
--- @param _Range [Range] Downloads the specified range bytes of an object. For more information about the HTTP Range header, go to http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
--- @param _Key [ObjectKey] 
--- @param _IfMatch [IfMatch] Return the object only if its entity tag (ETag) is the same as the one specified, otherwise return a 412 (precondition failed).
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
--- @param _PartNumber [PartNumber] Part number of the object being read. This is a positive integer between 1 and 10,000. Effectively performs a 'ranged' HEAD request for the part specified. Useful querying about the size of the part and the number of parts in this object.
--- @param _IfModifiedSince [IfModifiedSince] Return the object only if it has been modified since the specified time, otherwise return a 304 (not modified).
--- Required parameter: Bucket
--- Required parameter: Key
-function M.HeadObjectRequest(_SSECustomerAlgorithm, _SSECustomerKey, _IfUnmodifiedSince, _VersionId, _RequestPayer, _Bucket, _IfNoneMatch, _Range, _Key, _IfMatch, _SSECustomerKeyMD5, _PartNumber, _IfModifiedSince, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HeadObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
+-- * SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
+-- * IfUnmodifiedSince [IfUnmodifiedSince] Return the object only if it has not been modified since the specified time, otherwise return a 412 (precondition failed).
+-- * VersionId [ObjectVersionId] VersionId used to reference a specific version of the object.
+-- * RequestPayer [RequestPayer] 
+-- * Bucket [BucketName] 
+-- * IfNoneMatch [IfNoneMatch] Return the object only if its entity tag (ETag) is different from the one specified, otherwise return a 304 (not modified).
+-- * Range [Range] Downloads the specified range bytes of an object. For more information about the HTTP Range header, go to http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
+-- * Key [ObjectKey] 
+-- * IfMatch [IfMatch] Return the object only if its entity tag (ETag) is the same as the one specified, otherwise return a 412 (precondition failed).
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+-- * PartNumber [PartNumber] Part number of the object being read. This is a positive integer between 1 and 10,000. Effectively performs a 'ranged' HEAD request for the part specified. Useful querying about the size of the part and the number of parts in this object.
+-- * IfModifiedSince [IfModifiedSince] Return the object only if it has been modified since the specified time, otherwise return a 304 (not modified).
+-- Required key: Bucket
+-- Required key: Key
+-- @return HeadObjectRequest structure as a key-value pair table
+function M.HeadObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating HeadObjectRequest")
 	local t = { 
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["SSECustomerKey"] = _SSECustomerKey,
-		["IfUnmodifiedSince"] = _IfUnmodifiedSince,
-		["VersionId"] = _VersionId,
-		["RequestPayer"] = _RequestPayer,
-		["Bucket"] = _Bucket,
-		["IfNoneMatch"] = _IfNoneMatch,
-		["Range"] = _Range,
-		["Key"] = _Key,
-		["IfMatch"] = _IfMatch,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
-		["PartNumber"] = _PartNumber,
-		["IfModifiedSince"] = _IfModifiedSince,
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["SSECustomerKey"] = args["SSECustomerKey"],
+		["IfUnmodifiedSince"] = args["IfUnmodifiedSince"],
+		["VersionId"] = args["VersionId"],
+		["RequestPayer"] = args["RequestPayer"],
+		["Bucket"] = args["Bucket"],
+		["IfNoneMatch"] = args["IfNoneMatch"],
+		["Range"] = args["Range"],
+		["Key"] = args["Key"],
+		["IfMatch"] = args["IfMatch"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
+		["PartNumber"] = args["PartNumber"],
+		["IfModifiedSince"] = args["IfModifiedSince"],
 	}
 	asserts.AssertHeadObjectRequest(t)
 	return t
@@ -1452,8 +1578,11 @@ end
 
 --- Create a structure of type BucketAlreadyOwnedByYou
 --  
-function M.BucketAlreadyOwnedByYou(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BucketAlreadyOwnedByYou")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BucketAlreadyOwnedByYou structure as a key-value pair table
+function M.BucketAlreadyOwnedByYou(args)
+	assert(args, "You must provdide an argument table when creating BucketAlreadyOwnedByYou")
 	local t = { 
 	}
 	asserts.AssertBucketAlreadyOwnedByYou(t)
@@ -1486,37 +1615,40 @@ end
 
 --- Create a structure of type ListPartsOutput
 --  
--- @param _Initiator [Initiator] Identifies who initiated the multipart upload.
--- @param _AbortRuleId [AbortRuleId] Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
--- @param _AbortDate [AbortDate] Date when multipart upload will become eligible for abort operation by lifecycle.
--- @param _Bucket [BucketName] Name of the bucket to which the multipart upload was initiated.
--- @param _NextPartNumberMarker [NextPartNumberMarker] When a list is truncated, this element specifies the last part in the list, as well as the value to use for the part-number-marker request parameter in a subsequent request.
--- @param _Parts [Parts] 
--- @param _UploadId [MultipartUploadId] Upload ID identifying the multipart upload whose parts are being listed.
--- @param _StorageClass [StorageClass] The class of storage used to store the object.
--- @param _Key [ObjectKey] Object key for which the multipart upload was initiated.
--- @param _RequestCharged [RequestCharged] 
--- @param _Owner [Owner] 
--- @param _MaxParts [MaxParts] Maximum number of parts that were allowed in the response.
--- @param _IsTruncated [IsTruncated] Indicates whether the returned list of parts is truncated.
--- @param _PartNumberMarker [PartNumberMarker] Part number after which listing begins.
-function M.ListPartsOutput(_Initiator, _AbortRuleId, _AbortDate, _Bucket, _NextPartNumberMarker, _Parts, _UploadId, _StorageClass, _Key, _RequestCharged, _Owner, _MaxParts, _IsTruncated, _PartNumberMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPartsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Initiator [Initiator] Identifies who initiated the multipart upload.
+-- * AbortRuleId [AbortRuleId] Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
+-- * AbortDate [AbortDate] Date when multipart upload will become eligible for abort operation by lifecycle.
+-- * Bucket [BucketName] Name of the bucket to which the multipart upload was initiated.
+-- * NextPartNumberMarker [NextPartNumberMarker] When a list is truncated, this element specifies the last part in the list, as well as the value to use for the part-number-marker request parameter in a subsequent request.
+-- * Parts [Parts] 
+-- * UploadId [MultipartUploadId] Upload ID identifying the multipart upload whose parts are being listed.
+-- * StorageClass [StorageClass] The class of storage used to store the object.
+-- * Key [ObjectKey] Object key for which the multipart upload was initiated.
+-- * RequestCharged [RequestCharged] 
+-- * Owner [Owner] 
+-- * MaxParts [MaxParts] Maximum number of parts that were allowed in the response.
+-- * IsTruncated [IsTruncated] Indicates whether the returned list of parts is truncated.
+-- * PartNumberMarker [PartNumberMarker] Part number after which listing begins.
+-- @return ListPartsOutput structure as a key-value pair table
+function M.ListPartsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListPartsOutput")
 	local t = { 
-		["Initiator"] = _Initiator,
-		["AbortRuleId"] = _AbortRuleId,
-		["AbortDate"] = _AbortDate,
-		["Bucket"] = _Bucket,
-		["NextPartNumberMarker"] = _NextPartNumberMarker,
-		["Parts"] = _Parts,
-		["UploadId"] = _UploadId,
-		["StorageClass"] = _StorageClass,
-		["Key"] = _Key,
-		["RequestCharged"] = _RequestCharged,
-		["Owner"] = _Owner,
-		["MaxParts"] = _MaxParts,
-		["IsTruncated"] = _IsTruncated,
-		["PartNumberMarker"] = _PartNumberMarker,
+		["Initiator"] = args["Initiator"],
+		["AbortRuleId"] = args["AbortRuleId"],
+		["AbortDate"] = args["AbortDate"],
+		["Bucket"] = args["Bucket"],
+		["NextPartNumberMarker"] = args["NextPartNumberMarker"],
+		["Parts"] = args["Parts"],
+		["UploadId"] = args["UploadId"],
+		["StorageClass"] = args["StorageClass"],
+		["Key"] = args["Key"],
+		["RequestCharged"] = args["RequestCharged"],
+		["Owner"] = args["Owner"],
+		["MaxParts"] = args["MaxParts"],
+		["IsTruncated"] = args["IsTruncated"],
+		["PartNumberMarker"] = args["PartNumberMarker"],
 	}
 	asserts.AssertListPartsOutput(t)
 	return t
@@ -1536,13 +1668,16 @@ end
 
 --- Create a structure of type CompletedPart
 --  
--- @param _PartNumber [PartNumber] Part number that identifies the part. This is a positive integer between 1 and 10,000.
--- @param _ETag [ETag] Entity tag returned when the part was uploaded.
-function M.CompletedPart(_PartNumber, _ETag, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompletedPart")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PartNumber [PartNumber] Part number that identifies the part. This is a positive integer between 1 and 10,000.
+-- * ETag [ETag] Entity tag returned when the part was uploaded.
+-- @return CompletedPart structure as a key-value pair table
+function M.CompletedPart(args)
+	assert(args, "You must provdide an argument table when creating CompletedPart")
 	local t = { 
-		["PartNumber"] = _PartNumber,
-		["ETag"] = _ETag,
+		["PartNumber"] = args["PartNumber"],
+		["ETag"] = args["ETag"],
 	}
 	asserts.AssertCompletedPart(t)
 	return t
@@ -1566,18 +1701,21 @@ end
 
 --- Create a structure of type PutBucketAnalyticsConfigurationRequest
 --  
--- @param _AnalyticsConfiguration [AnalyticsConfiguration] The configuration and any analyses for the analytics filter.
--- @param _Bucket [BucketName] The name of the bucket to which an analytics configuration is stored.
--- @param _Id [AnalyticsId] The identifier used to represent an analytics configuration.
--- Required parameter: Bucket
--- Required parameter: Id
--- Required parameter: AnalyticsConfiguration
-function M.PutBucketAnalyticsConfigurationRequest(_AnalyticsConfiguration, _Bucket, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketAnalyticsConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalyticsConfiguration [AnalyticsConfiguration] The configuration and any analyses for the analytics filter.
+-- * Bucket [BucketName] The name of the bucket to which an analytics configuration is stored.
+-- * Id [AnalyticsId] The identifier used to represent an analytics configuration.
+-- Required key: Bucket
+-- Required key: Id
+-- Required key: AnalyticsConfiguration
+-- @return PutBucketAnalyticsConfigurationRequest structure as a key-value pair table
+function M.PutBucketAnalyticsConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketAnalyticsConfigurationRequest")
 	local t = { 
-		["AnalyticsConfiguration"] = _AnalyticsConfiguration,
-		["Bucket"] = _Bucket,
-		["Id"] = _Id,
+		["AnalyticsConfiguration"] = args["AnalyticsConfiguration"],
+		["Bucket"] = args["Bucket"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertPutBucketAnalyticsConfigurationRequest(t)
 	return t
@@ -1597,12 +1735,15 @@ end
 
 --- Create a structure of type CORSConfiguration
 --  
--- @param _CORSRules [CORSRules] 
--- Required parameter: CORSRules
-function M.CORSConfiguration(_CORSRules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CORSConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CORSRules [CORSRules] 
+-- Required key: CORSRules
+-- @return CORSConfiguration structure as a key-value pair table
+function M.CORSConfiguration(args)
+	assert(args, "You must provdide an argument table when creating CORSConfiguration")
 	local t = { 
-		["CORSRules"] = _CORSRules,
+		["CORSRules"] = args["CORSRules"],
 	}
 	asserts.AssertCORSConfiguration(t)
 	return t
@@ -1648,65 +1789,68 @@ end
 
 --- Create a structure of type GetObjectOutput
 --  
--- @param _LastModified [LastModified] Last modified date of the object
--- @param _ContentRange [ContentRange] The portion of the object returned in the response.
--- @param _RequestCharged [RequestCharged] 
--- @param _ContentEncoding [ContentEncoding] Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
--- @param _ReplicationStatus [ReplicationStatus] 
--- @param _StorageClass [StorageClass] 
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
--- @param _TagCount [TagCount] The number of tags, if any, on the object.
--- @param _ContentDisposition [ContentDisposition] Specifies presentational information for the object.
--- @param _Metadata [Metadata] A map of metadata to store with the object in S3.
--- @param _Body [Body] Object data.
--- @param _AcceptRanges [AcceptRanges] 
--- @param _WebsiteRedirectLocation [WebsiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
--- @param _Expires [Expires] The date and time at which the object is no longer cacheable.
--- @param _DeleteMarker [DeleteMarker] Specifies whether the object retrieved was (true) or was not (false) a Delete Marker. If false, this response header does not appear in the response.
--- @param _CacheControl [CacheControl] Specifies caching behavior along the request/reply chain.
--- @param _PartsCount [PartsCount] The count of parts this object has.
--- @param _ContentLength [ContentLength] Size of the body in bytes.
--- @param _Expiration [Expiration] If the object expiration is configured (see PUT Bucket lifecycle), the response includes this header. It includes the expiry-date and rule-id key value pairs providing object expiration information. The value of the rule-id is URL encoded.
--- @param _MissingMeta [MissingMeta] This is set to the number of metadata entries not returned in x-amz-meta headers. This can happen if you create metadata using an API like SOAP that supports more flexible metadata than the REST API. For example, using SOAP, you can create metadata whose values are not legal HTTP headers.
--- @param _Restore [Restore] Provides information about object restoration operation and expiration time of the restored object copy.
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
--- @param _ContentType [ContentType] A standard MIME type describing the format of the object data.
--- @param _ContentLanguage [ContentLanguage] The language the content is in.
--- @param _VersionId [ObjectVersionId] Version of the object.
--- @param _ETag [ETag] An ETag is an opaque identifier assigned by a web server to a specific version of a resource found at a URL
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
-function M.GetObjectOutput(_LastModified, _ContentRange, _RequestCharged, _ContentEncoding, _ReplicationStatus, _StorageClass, _ServerSideEncryption, _SSEKMSKeyId, _TagCount, _ContentDisposition, _Metadata, _Body, _AcceptRanges, _WebsiteRedirectLocation, _Expires, _DeleteMarker, _CacheControl, _PartsCount, _ContentLength, _Expiration, _MissingMeta, _Restore, _SSECustomerAlgorithm, _ContentType, _ContentLanguage, _VersionId, _ETag, _SSECustomerKeyMD5, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastModified [LastModified] Last modified date of the object
+-- * ContentRange [ContentRange] The portion of the object returned in the response.
+-- * RequestCharged [RequestCharged] 
+-- * ContentEncoding [ContentEncoding] Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
+-- * ReplicationStatus [ReplicationStatus] 
+-- * StorageClass [StorageClass] 
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
+-- * TagCount [TagCount] The number of tags, if any, on the object.
+-- * ContentDisposition [ContentDisposition] Specifies presentational information for the object.
+-- * Metadata [Metadata] A map of metadata to store with the object in S3.
+-- * Body [Body] Object data.
+-- * AcceptRanges [AcceptRanges] 
+-- * WebsiteRedirectLocation [WebsiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
+-- * Expires [Expires] The date and time at which the object is no longer cacheable.
+-- * DeleteMarker [DeleteMarker] Specifies whether the object retrieved was (true) or was not (false) a Delete Marker. If false, this response header does not appear in the response.
+-- * CacheControl [CacheControl] Specifies caching behavior along the request/reply chain.
+-- * PartsCount [PartsCount] The count of parts this object has.
+-- * ContentLength [ContentLength] Size of the body in bytes.
+-- * Expiration [Expiration] If the object expiration is configured (see PUT Bucket lifecycle), the response includes this header. It includes the expiry-date and rule-id key value pairs providing object expiration information. The value of the rule-id is URL encoded.
+-- * MissingMeta [MissingMeta] This is set to the number of metadata entries not returned in x-amz-meta headers. This can happen if you create metadata using an API like SOAP that supports more flexible metadata than the REST API. For example, using SOAP, you can create metadata whose values are not legal HTTP headers.
+-- * Restore [Restore] Provides information about object restoration operation and expiration time of the restored object copy.
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
+-- * ContentType [ContentType] A standard MIME type describing the format of the object data.
+-- * ContentLanguage [ContentLanguage] The language the content is in.
+-- * VersionId [ObjectVersionId] Version of the object.
+-- * ETag [ETag] An ETag is an opaque identifier assigned by a web server to a specific version of a resource found at a URL
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
+-- @return GetObjectOutput structure as a key-value pair table
+function M.GetObjectOutput(args)
+	assert(args, "You must provdide an argument table when creating GetObjectOutput")
 	local t = { 
-		["LastModified"] = _LastModified,
-		["ContentRange"] = _ContentRange,
-		["RequestCharged"] = _RequestCharged,
-		["ContentEncoding"] = _ContentEncoding,
-		["ReplicationStatus"] = _ReplicationStatus,
-		["StorageClass"] = _StorageClass,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
-		["TagCount"] = _TagCount,
-		["ContentDisposition"] = _ContentDisposition,
-		["Metadata"] = _Metadata,
-		["Body"] = _Body,
-		["AcceptRanges"] = _AcceptRanges,
-		["WebsiteRedirectLocation"] = _WebsiteRedirectLocation,
-		["Expires"] = _Expires,
-		["DeleteMarker"] = _DeleteMarker,
-		["CacheControl"] = _CacheControl,
-		["PartsCount"] = _PartsCount,
-		["ContentLength"] = _ContentLength,
-		["Expiration"] = _Expiration,
-		["MissingMeta"] = _MissingMeta,
-		["Restore"] = _Restore,
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["ContentType"] = _ContentType,
-		["ContentLanguage"] = _ContentLanguage,
-		["VersionId"] = _VersionId,
-		["ETag"] = _ETag,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
+		["LastModified"] = args["LastModified"],
+		["ContentRange"] = args["ContentRange"],
+		["RequestCharged"] = args["RequestCharged"],
+		["ContentEncoding"] = args["ContentEncoding"],
+		["ReplicationStatus"] = args["ReplicationStatus"],
+		["StorageClass"] = args["StorageClass"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
+		["TagCount"] = args["TagCount"],
+		["ContentDisposition"] = args["ContentDisposition"],
+		["Metadata"] = args["Metadata"],
+		["Body"] = args["Body"],
+		["AcceptRanges"] = args["AcceptRanges"],
+		["WebsiteRedirectLocation"] = args["WebsiteRedirectLocation"],
+		["Expires"] = args["Expires"],
+		["DeleteMarker"] = args["DeleteMarker"],
+		["CacheControl"] = args["CacheControl"],
+		["PartsCount"] = args["PartsCount"],
+		["ContentLength"] = args["ContentLength"],
+		["Expiration"] = args["Expiration"],
+		["MissingMeta"] = args["MissingMeta"],
+		["Restore"] = args["Restore"],
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["ContentType"] = args["ContentType"],
+		["ContentLanguage"] = args["ContentLanguage"],
+		["VersionId"] = args["VersionId"],
+		["ETag"] = args["ETag"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
 	asserts.AssertGetObjectOutput(t)
 	return t
@@ -1726,12 +1870,15 @@ end
 
 --- Create a structure of type GetBucketVersioningRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketVersioningRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketVersioningRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketVersioningRequest structure as a key-value pair table
+function M.GetBucketVersioningRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketVersioningRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketVersioningRequest(t)
 	return t
@@ -1753,15 +1900,18 @@ end
 
 --- Create a structure of type PutBucketAccelerateConfigurationRequest
 --  
--- @param _AccelerateConfiguration [AccelerateConfiguration] Specifies the Accelerate Configuration you want to set for the bucket.
--- @param _Bucket [BucketName] Name of the bucket for which the accelerate configuration is set.
--- Required parameter: Bucket
--- Required parameter: AccelerateConfiguration
-function M.PutBucketAccelerateConfigurationRequest(_AccelerateConfiguration, _Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketAccelerateConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccelerateConfiguration [AccelerateConfiguration] Specifies the Accelerate Configuration you want to set for the bucket.
+-- * Bucket [BucketName] Name of the bucket for which the accelerate configuration is set.
+-- Required key: Bucket
+-- Required key: AccelerateConfiguration
+-- @return PutBucketAccelerateConfigurationRequest structure as a key-value pair table
+function M.PutBucketAccelerateConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketAccelerateConfigurationRequest")
 	local t = { 
-		["AccelerateConfiguration"] = _AccelerateConfiguration,
-		["Bucket"] = _Bucket,
+		["AccelerateConfiguration"] = args["AccelerateConfiguration"],
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertPutBucketAccelerateConfigurationRequest(t)
 	return t
@@ -1784,17 +1934,20 @@ end
 
 --- Create a structure of type PutBucketRequestPaymentRequest
 --  
--- @param _RequestPaymentConfiguration [RequestPaymentConfiguration] 
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
--- Required parameter: RequestPaymentConfiguration
-function M.PutBucketRequestPaymentRequest(_RequestPaymentConfiguration, _ContentMD5, _Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketRequestPaymentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestPaymentConfiguration [RequestPaymentConfiguration] 
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- Required key: RequestPaymentConfiguration
+-- @return PutBucketRequestPaymentRequest structure as a key-value pair table
+function M.PutBucketRequestPaymentRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketRequestPaymentRequest")
 	local t = { 
-		["RequestPaymentConfiguration"] = _RequestPaymentConfiguration,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
+		["RequestPaymentConfiguration"] = args["RequestPaymentConfiguration"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertPutBucketRequestPaymentRequest(t)
 	return t
@@ -1813,11 +1966,14 @@ end
 
 --- Create a structure of type GetBucketLocationOutput
 --  
--- @param _LocationConstraint [BucketLocationConstraint] 
-function M.GetBucketLocationOutput(_LocationConstraint, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketLocationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LocationConstraint [BucketLocationConstraint] 
+-- @return GetBucketLocationOutput structure as a key-value pair table
+function M.GetBucketLocationOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketLocationOutput")
 	local t = { 
-		["LocationConstraint"] = _LocationConstraint,
+		["LocationConstraint"] = args["LocationConstraint"],
 	}
 	asserts.AssertGetBucketLocationOutput(t)
 	return t
@@ -1839,15 +1995,18 @@ end
 
 --- Create a structure of type GetBucketInventoryConfigurationRequest
 --  
--- @param _Bucket [BucketName] The name of the bucket containing the inventory configuration to retrieve.
--- @param _Id [InventoryId] The ID used to identify the inventory configuration.
--- Required parameter: Bucket
--- Required parameter: Id
-function M.GetBucketInventoryConfigurationRequest(_Bucket, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketInventoryConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] The name of the bucket containing the inventory configuration to retrieve.
+-- * Id [InventoryId] The ID used to identify the inventory configuration.
+-- Required key: Bucket
+-- Required key: Id
+-- @return GetBucketInventoryConfigurationRequest structure as a key-value pair table
+function M.GetBucketInventoryConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketInventoryConfigurationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["Id"] = _Id,
+		["Bucket"] = args["Bucket"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertGetBucketInventoryConfigurationRequest(t)
 	return t
@@ -1867,12 +2026,15 @@ end
 
 --- Create a structure of type GetBucketTaggingRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketTaggingRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketTaggingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketTaggingRequest structure as a key-value pair table
+function M.GetBucketTaggingRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketTaggingRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketTaggingRequest(t)
 	return t
@@ -1893,15 +2055,18 @@ end
 
 --- Create a structure of type AnalyticsFilter
 --  
--- @param _And [AnalyticsAndOperator] A conjunction (logical AND) of predicates, which is used in evaluating an analytics filter. The operator must have at least two predicates.
--- @param _Prefix [Prefix] The prefix to use when evaluating an analytics filter.
--- @param _Tag [Tag] The tag to use when evaluating an analytics filter.
-function M.AnalyticsFilter(_And, _Prefix, _Tag, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AnalyticsFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * And [AnalyticsAndOperator] A conjunction (logical AND) of predicates, which is used in evaluating an analytics filter. The operator must have at least two predicates.
+-- * Prefix [Prefix] The prefix to use when evaluating an analytics filter.
+-- * Tag [Tag] The tag to use when evaluating an analytics filter.
+-- @return AnalyticsFilter structure as a key-value pair table
+function M.AnalyticsFilter(args)
+	assert(args, "You must provdide an argument table when creating AnalyticsFilter")
 	local t = { 
-		["And"] = _And,
-		["Prefix"] = _Prefix,
-		["Tag"] = _Tag,
+		["And"] = args["And"],
+		["Prefix"] = args["Prefix"],
+		["Tag"] = args["Tag"],
 	}
 	asserts.AssertAnalyticsFilter(t)
 	return t
@@ -1920,11 +2085,14 @@ end
 
 --- Create a structure of type CommonPrefix
 --  
--- @param _Prefix [Prefix] 
-function M.CommonPrefix(_Prefix, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CommonPrefix")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Prefix [Prefix] 
+-- @return CommonPrefix structure as a key-value pair table
+function M.CommonPrefix(args)
+	assert(args, "You must provdide an argument table when creating CommonPrefix")
 	local t = { 
-		["Prefix"] = _Prefix,
+		["Prefix"] = args["Prefix"],
 	}
 	asserts.AssertCommonPrefix(t)
 	return t
@@ -1944,12 +2112,15 @@ end
 
 --- Create a structure of type LifecycleConfiguration
 --  
--- @param _Rules [Rules] 
--- Required parameter: Rules
-function M.LifecycleConfiguration(_Rules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [Rules] 
+-- Required key: Rules
+-- @return LifecycleConfiguration structure as a key-value pair table
+function M.LifecycleConfiguration(args)
+	assert(args, "You must provdide an argument table when creating LifecycleConfiguration")
 	local t = { 
-		["Rules"] = _Rules,
+		["Rules"] = args["Rules"],
 	}
 	asserts.AssertLifecycleConfiguration(t)
 	return t
@@ -1969,12 +2140,15 @@ end
 
 --- Create a structure of type DeleteBucketTaggingRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.DeleteBucketTaggingRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBucketTaggingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return DeleteBucketTaggingRequest structure as a key-value pair table
+function M.DeleteBucketTaggingRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBucketTaggingRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertDeleteBucketTaggingRequest(t)
 	return t
@@ -1996,17 +2170,20 @@ end
 
 --- Create a structure of type GetBucketWebsiteOutput
 --  
--- @param _RedirectAllRequestsTo [RedirectAllRequestsTo] 
--- @param _IndexDocument [IndexDocument] 
--- @param _ErrorDocument [ErrorDocument] 
--- @param _RoutingRules [RoutingRules] 
-function M.GetBucketWebsiteOutput(_RedirectAllRequestsTo, _IndexDocument, _ErrorDocument, _RoutingRules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketWebsiteOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RedirectAllRequestsTo [RedirectAllRequestsTo] 
+-- * IndexDocument [IndexDocument] 
+-- * ErrorDocument [ErrorDocument] 
+-- * RoutingRules [RoutingRules] 
+-- @return GetBucketWebsiteOutput structure as a key-value pair table
+function M.GetBucketWebsiteOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketWebsiteOutput")
 	local t = { 
-		["RedirectAllRequestsTo"] = _RedirectAllRequestsTo,
-		["IndexDocument"] = _IndexDocument,
-		["ErrorDocument"] = _ErrorDocument,
-		["RoutingRules"] = _RoutingRules,
+		["RedirectAllRequestsTo"] = args["RedirectAllRequestsTo"],
+		["IndexDocument"] = args["IndexDocument"],
+		["ErrorDocument"] = args["ErrorDocument"],
+		["RoutingRules"] = args["RoutingRules"],
 	}
 	asserts.AssertGetBucketWebsiteOutput(t)
 	return t
@@ -2025,11 +2202,14 @@ end
 
 --- Create a structure of type S3KeyFilter
 -- Container for object key name prefix and suffix filtering rules.
--- @param _FilterRules [FilterRuleList] 
-function M.S3KeyFilter(_FilterRules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3KeyFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FilterRules [FilterRuleList] 
+-- @return S3KeyFilter structure as a key-value pair table
+function M.S3KeyFilter(args)
+	assert(args, "You must provdide an argument table when creating S3KeyFilter")
 	local t = { 
-		["FilterRules"] = _FilterRules,
+		["FilterRules"] = args["FilterRules"],
 	}
 	asserts.AssertS3KeyFilter(t)
 	return t
@@ -2049,12 +2229,15 @@ end
 
 --- Create a structure of type GetBucketLocationRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketLocationRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketLocationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketLocationRequest structure as a key-value pair table
+function M.GetBucketLocationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketLocationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketLocationRequest(t)
 	return t
@@ -2075,14 +2258,17 @@ end
 
 --- Create a structure of type RedirectAllRequestsTo
 --  
--- @param _HostName [HostName] Name of the host where requests will be redirected.
--- @param _Protocol [Protocol] Protocol to use (http, https) when redirecting requests. The default is the protocol that is used in the original request.
--- Required parameter: HostName
-function M.RedirectAllRequestsTo(_HostName, _Protocol, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RedirectAllRequestsTo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostName [HostName] Name of the host where requests will be redirected.
+-- * Protocol [Protocol] Protocol to use (http, https) when redirecting requests. The default is the protocol that is used in the original request.
+-- Required key: HostName
+-- @return RedirectAllRequestsTo structure as a key-value pair table
+function M.RedirectAllRequestsTo(args)
+	assert(args, "You must provdide an argument table when creating RedirectAllRequestsTo")
 	local t = { 
-		["HostName"] = _HostName,
-		["Protocol"] = _Protocol,
+		["HostName"] = args["HostName"],
+		["Protocol"] = args["Protocol"],
 	}
 	asserts.AssertRedirectAllRequestsTo(t)
 	return t
@@ -2101,11 +2287,14 @@ end
 
 --- Create a structure of type CreateBucketOutput
 --  
--- @param _Location [Location] 
-function M.CreateBucketOutput(_Location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBucketOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Location [Location] 
+-- @return CreateBucketOutput structure as a key-value pair table
+function M.CreateBucketOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateBucketOutput")
 	local t = { 
-		["Location"] = _Location,
+		["Location"] = args["Location"],
 	}
 	asserts.AssertCreateBucketOutput(t)
 	return t
@@ -2133,28 +2322,31 @@ end
 
 --- Create a structure of type PutBucketAclRequest
 --  
--- @param _GrantFullControl [GrantFullControl] Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.
--- @param _GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable bucket.
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- @param _ACL [BucketCannedACL] The canned ACL to apply to the bucket.
--- @param _AccessControlPolicy [AccessControlPolicy] 
--- @param _GrantWrite [GrantWrite] Allows grantee to create, overwrite, and delete any object in the bucket.
--- @param _GrantRead [GrantRead] Allows grantee to list the objects in the bucket.
--- @param _GrantReadACP [GrantReadACP] Allows grantee to read the bucket ACL.
--- Required parameter: Bucket
-function M.PutBucketAclRequest(_GrantFullControl, _GrantWriteACP, _ContentMD5, _Bucket, _ACL, _AccessControlPolicy, _GrantWrite, _GrantRead, _GrantReadACP, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketAclRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GrantFullControl [GrantFullControl] Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.
+-- * GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable bucket.
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- * ACL [BucketCannedACL] The canned ACL to apply to the bucket.
+-- * AccessControlPolicy [AccessControlPolicy] 
+-- * GrantWrite [GrantWrite] Allows grantee to create, overwrite, and delete any object in the bucket.
+-- * GrantRead [GrantRead] Allows grantee to list the objects in the bucket.
+-- * GrantReadACP [GrantReadACP] Allows grantee to read the bucket ACL.
+-- Required key: Bucket
+-- @return PutBucketAclRequest structure as a key-value pair table
+function M.PutBucketAclRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketAclRequest")
 	local t = { 
-		["GrantFullControl"] = _GrantFullControl,
-		["GrantWriteACP"] = _GrantWriteACP,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
-		["ACL"] = _ACL,
-		["AccessControlPolicy"] = _AccessControlPolicy,
-		["GrantWrite"] = _GrantWrite,
-		["GrantRead"] = _GrantRead,
-		["GrantReadACP"] = _GrantReadACP,
+		["GrantFullControl"] = args["GrantFullControl"],
+		["GrantWriteACP"] = args["GrantWriteACP"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
+		["ACL"] = args["ACL"],
+		["AccessControlPolicy"] = args["AccessControlPolicy"],
+		["GrantWrite"] = args["GrantWrite"],
+		["GrantRead"] = args["GrantRead"],
+		["GrantReadACP"] = args["GrantReadACP"],
 	}
 	asserts.AssertPutBucketAclRequest(t)
 	return t
@@ -2177,17 +2369,20 @@ end
 
 --- Create a structure of type PutBucketPolicyRequest
 --  
--- @param _Policy [Policy] The bucket policy as a JSON document.
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
--- Required parameter: Policy
-function M.PutBucketPolicyRequest(_Policy, _ContentMD5, _Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [Policy] The bucket policy as a JSON document.
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- Required key: Policy
+-- @return PutBucketPolicyRequest structure as a key-value pair table
+function M.PutBucketPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketPolicyRequest")
 	local t = { 
-		["Policy"] = _Policy,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
+		["Policy"] = args["Policy"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertPutBucketPolicyRequest(t)
 	return t
@@ -2207,12 +2402,15 @@ end
 
 --- Create a structure of type GetBucketCorsRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketCorsRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketCorsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketCorsRequest structure as a key-value pair table
+function M.GetBucketCorsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketCorsRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketCorsRequest(t)
 	return t
@@ -2231,11 +2429,14 @@ end
 
 --- Create a structure of type StorageClassAnalysis
 --  
--- @param _DataExport [StorageClassAnalysisDataExport] A container used to describe how data related to the storage class analysis should be exported.
-function M.StorageClassAnalysis(_DataExport, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StorageClassAnalysis")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DataExport [StorageClassAnalysisDataExport] A container used to describe how data related to the storage class analysis should be exported.
+-- @return StorageClassAnalysis structure as a key-value pair table
+function M.StorageClassAnalysis(args)
+	assert(args, "You must provdide an argument table when creating StorageClassAnalysis")
 	local t = { 
-		["DataExport"] = _DataExport,
+		["DataExport"] = args["DataExport"],
 	}
 	asserts.AssertStorageClassAnalysis(t)
 	return t
@@ -2254,11 +2455,14 @@ end
 
 --- Create a structure of type AccelerateConfiguration
 --  
--- @param _Status [BucketAccelerateStatus] The accelerate configuration of the bucket.
-function M.AccelerateConfiguration(_Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccelerateConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [BucketAccelerateStatus] The accelerate configuration of the bucket.
+-- @return AccelerateConfiguration structure as a key-value pair table
+function M.AccelerateConfiguration(args)
+	assert(args, "You must provdide an argument table when creating AccelerateConfiguration")
 	local t = { 
-		["Status"] = _Status,
+		["Status"] = args["Status"],
 	}
 	asserts.AssertAccelerateConfiguration(t)
 	return t
@@ -2281,17 +2485,20 @@ end
 
 --- Create a structure of type PutBucketCorsRequest
 --  
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- @param _CORSConfiguration [CORSConfiguration] 
--- Required parameter: Bucket
--- Required parameter: CORSConfiguration
-function M.PutBucketCorsRequest(_ContentMD5, _Bucket, _CORSConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketCorsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- * CORSConfiguration [CORSConfiguration] 
+-- Required key: Bucket
+-- Required key: CORSConfiguration
+-- @return PutBucketCorsRequest structure as a key-value pair table
+function M.PutBucketCorsRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketCorsRequest")
 	local t = { 
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
-		["CORSConfiguration"] = _CORSConfiguration,
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
+		["CORSConfiguration"] = args["CORSConfiguration"],
 	}
 	asserts.AssertPutBucketCorsRequest(t)
 	return t
@@ -2314,17 +2521,20 @@ end
 
 --- Create a structure of type PutBucketWebsiteRequest
 --  
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- @param _WebsiteConfiguration [WebsiteConfiguration] 
--- Required parameter: Bucket
--- Required parameter: WebsiteConfiguration
-function M.PutBucketWebsiteRequest(_ContentMD5, _Bucket, _WebsiteConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketWebsiteRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- * WebsiteConfiguration [WebsiteConfiguration] 
+-- Required key: Bucket
+-- Required key: WebsiteConfiguration
+-- @return PutBucketWebsiteRequest structure as a key-value pair table
+function M.PutBucketWebsiteRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketWebsiteRequest")
 	local t = { 
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
-		["WebsiteConfiguration"] = _WebsiteConfiguration,
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
+		["WebsiteConfiguration"] = args["WebsiteConfiguration"],
 	}
 	asserts.AssertPutBucketWebsiteRequest(t)
 	return t
@@ -2346,17 +2556,20 @@ end
 
 --- Create a structure of type TopicConfigurationDeprecated
 --  
--- @param _Topic [TopicArn] Amazon SNS topic to which Amazon S3 will publish a message to report the specified events for the bucket.
--- @param _Id [NotificationId] 
--- @param _Event [Event] Bucket event for which to send notifications.
--- @param _Events [EventList] 
-function M.TopicConfigurationDeprecated(_Topic, _Id, _Event, _Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TopicConfigurationDeprecated")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Topic [TopicArn] Amazon SNS topic to which Amazon S3 will publish a message to report the specified events for the bucket.
+-- * Id [NotificationId] 
+-- * Event [Event] Bucket event for which to send notifications.
+-- * Events [EventList] 
+-- @return TopicConfigurationDeprecated structure as a key-value pair table
+function M.TopicConfigurationDeprecated(args)
+	assert(args, "You must provdide an argument table when creating TopicConfigurationDeprecated")
 	local t = { 
-		["Topic"] = _Topic,
-		["Id"] = _Id,
-		["Event"] = _Event,
-		["Events"] = _Events,
+		["Topic"] = args["Topic"],
+		["Id"] = args["Id"],
+		["Event"] = args["Event"],
+		["Events"] = args["Events"],
 	}
 	asserts.AssertTopicConfigurationDeprecated(t)
 	return t
@@ -2374,8 +2587,11 @@ end
 
 --- Create a structure of type BucketAlreadyExists
 -- The requested bucket name is not available. The bucket namespace is shared by all users of the system. Please select a different name and try again.
-function M.BucketAlreadyExists(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BucketAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BucketAlreadyExists structure as a key-value pair table
+function M.BucketAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating BucketAlreadyExists")
 	local t = { 
 	}
 	asserts.AssertBucketAlreadyExists(t)
@@ -2408,35 +2624,38 @@ end
 
 --- Create a structure of type PutObjectAclRequest
 --  
--- @param _GrantFullControl [GrantFullControl] Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.
--- @param _GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable bucket.
--- @param _Key [ObjectKey] 
--- @param _RequestPayer [RequestPayer] 
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- @param _ACL [ObjectCannedACL] The canned ACL to apply to the object.
--- @param _AccessControlPolicy [AccessControlPolicy] 
--- @param _GrantWrite [GrantWrite] Allows grantee to create, overwrite, and delete any object in the bucket.
--- @param _VersionId [ObjectVersionId] VersionId used to reference a specific version of the object.
--- @param _GrantRead [GrantRead] Allows grantee to list the objects in the bucket.
--- @param _GrantReadACP [GrantReadACP] Allows grantee to read the bucket ACL.
--- Required parameter: Bucket
--- Required parameter: Key
-function M.PutObjectAclRequest(_GrantFullControl, _GrantWriteACP, _Key, _RequestPayer, _ContentMD5, _Bucket, _ACL, _AccessControlPolicy, _GrantWrite, _VersionId, _GrantRead, _GrantReadACP, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutObjectAclRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GrantFullControl [GrantFullControl] Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.
+-- * GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable bucket.
+-- * Key [ObjectKey] 
+-- * RequestPayer [RequestPayer] 
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- * ACL [ObjectCannedACL] The canned ACL to apply to the object.
+-- * AccessControlPolicy [AccessControlPolicy] 
+-- * GrantWrite [GrantWrite] Allows grantee to create, overwrite, and delete any object in the bucket.
+-- * VersionId [ObjectVersionId] VersionId used to reference a specific version of the object.
+-- * GrantRead [GrantRead] Allows grantee to list the objects in the bucket.
+-- * GrantReadACP [GrantReadACP] Allows grantee to read the bucket ACL.
+-- Required key: Bucket
+-- Required key: Key
+-- @return PutObjectAclRequest structure as a key-value pair table
+function M.PutObjectAclRequest(args)
+	assert(args, "You must provdide an argument table when creating PutObjectAclRequest")
 	local t = { 
-		["GrantFullControl"] = _GrantFullControl,
-		["GrantWriteACP"] = _GrantWriteACP,
-		["Key"] = _Key,
-		["RequestPayer"] = _RequestPayer,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
-		["ACL"] = _ACL,
-		["AccessControlPolicy"] = _AccessControlPolicy,
-		["GrantWrite"] = _GrantWrite,
-		["VersionId"] = _VersionId,
-		["GrantRead"] = _GrantRead,
-		["GrantReadACP"] = _GrantReadACP,
+		["GrantFullControl"] = args["GrantFullControl"],
+		["GrantWriteACP"] = args["GrantWriteACP"],
+		["Key"] = args["Key"],
+		["RequestPayer"] = args["RequestPayer"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
+		["ACL"] = args["ACL"],
+		["AccessControlPolicy"] = args["AccessControlPolicy"],
+		["GrantWrite"] = args["GrantWrite"],
+		["VersionId"] = args["VersionId"],
+		["GrantRead"] = args["GrantRead"],
+		["GrantReadACP"] = args["GrantReadACP"],
 	}
 	asserts.AssertPutObjectAclRequest(t)
 	return t
@@ -2457,15 +2676,18 @@ end
 
 --- Create a structure of type DeleteObjectOutput
 --  
--- @param _VersionId [ObjectVersionId] Returns the version ID of the delete marker created as a result of the DELETE operation.
--- @param _RequestCharged [RequestCharged] 
--- @param _DeleteMarker [DeleteMarker] Specifies whether the versioned object that was permanently deleted was (true) or was not (false) a delete marker.
-function M.DeleteObjectOutput(_VersionId, _RequestCharged, _DeleteMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteObjectOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] Returns the version ID of the delete marker created as a result of the DELETE operation.
+-- * RequestCharged [RequestCharged] 
+-- * DeleteMarker [DeleteMarker] Specifies whether the versioned object that was permanently deleted was (true) or was not (false) a delete marker.
+-- @return DeleteObjectOutput structure as a key-value pair table
+function M.DeleteObjectOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteObjectOutput")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["RequestCharged"] = _RequestCharged,
-		["DeleteMarker"] = _DeleteMarker,
+		["VersionId"] = args["VersionId"],
+		["RequestCharged"] = args["RequestCharged"],
+		["DeleteMarker"] = args["DeleteMarker"],
 	}
 	asserts.AssertDeleteObjectOutput(t)
 	return t
@@ -2484,11 +2706,14 @@ end
 
 --- Create a structure of type CreateBucketConfiguration
 --  
--- @param _LocationConstraint [BucketLocationConstraint] Specifies the region where the bucket will be created. If you don't specify a region, the bucket will be created in US Standard.
-function M.CreateBucketConfiguration(_LocationConstraint, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBucketConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LocationConstraint [BucketLocationConstraint] Specifies the region where the bucket will be created. If you don't specify a region, the bucket will be created in US Standard.
+-- @return CreateBucketConfiguration structure as a key-value pair table
+function M.CreateBucketConfiguration(args)
+	assert(args, "You must provdide an argument table when creating CreateBucketConfiguration")
 	local t = { 
-		["LocationConstraint"] = _LocationConstraint,
+		["LocationConstraint"] = args["LocationConstraint"],
 	}
 	asserts.AssertCreateBucketConfiguration(t)
 	return t
@@ -2507,11 +2732,14 @@ end
 
 --- Create a structure of type GetBucketAccelerateConfigurationOutput
 --  
--- @param _Status [BucketAccelerateStatus] The accelerate configuration of the bucket.
-function M.GetBucketAccelerateConfigurationOutput(_Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketAccelerateConfigurationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [BucketAccelerateStatus] The accelerate configuration of the bucket.
+-- @return GetBucketAccelerateConfigurationOutput structure as a key-value pair table
+function M.GetBucketAccelerateConfigurationOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketAccelerateConfigurationOutput")
 	local t = { 
-		["Status"] = _Status,
+		["Status"] = args["Status"],
 	}
 	asserts.AssertGetBucketAccelerateConfigurationOutput(t)
 	return t
@@ -2537,24 +2765,27 @@ end
 
 --- Create a structure of type ListObjectsRequest
 --  
--- @param _RequestPayer [RequestPayer] Confirms that the requester knows that she or he will be charged for the list objects request. Bucket owners need not specify this parameter in their requests.
--- @param _Bucket [BucketName] 
--- @param _Prefix [Prefix] Limits the response to keys that begin with the specified prefix.
--- @param _MaxKeys [MaxKeys] Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
--- @param _Delimiter [Delimiter] A delimiter is a character you use to group keys.
--- @param _Marker [Marker] Specifies the key to start with when listing objects in a bucket.
--- @param _EncodingType [EncodingType] 
--- Required parameter: Bucket
-function M.ListObjectsRequest(_RequestPayer, _Bucket, _Prefix, _MaxKeys, _Delimiter, _Marker, _EncodingType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestPayer [RequestPayer] Confirms that the requester knows that she or he will be charged for the list objects request. Bucket owners need not specify this parameter in their requests.
+-- * Bucket [BucketName] 
+-- * Prefix [Prefix] Limits the response to keys that begin with the specified prefix.
+-- * MaxKeys [MaxKeys] Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
+-- * Delimiter [Delimiter] A delimiter is a character you use to group keys.
+-- * Marker [Marker] Specifies the key to start with when listing objects in a bucket.
+-- * EncodingType [EncodingType] 
+-- Required key: Bucket
+-- @return ListObjectsRequest structure as a key-value pair table
+function M.ListObjectsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListObjectsRequest")
 	local t = { 
-		["RequestPayer"] = _RequestPayer,
-		["Bucket"] = _Bucket,
-		["Prefix"] = _Prefix,
-		["MaxKeys"] = _MaxKeys,
-		["Delimiter"] = _Delimiter,
-		["Marker"] = _Marker,
-		["EncodingType"] = _EncodingType,
+		["RequestPayer"] = args["RequestPayer"],
+		["Bucket"] = args["Bucket"],
+		["Prefix"] = args["Prefix"],
+		["MaxKeys"] = args["MaxKeys"],
+		["Delimiter"] = args["Delimiter"],
+		["Marker"] = args["Marker"],
+		["EncodingType"] = args["EncodingType"],
 	}
 	asserts.AssertListObjectsRequest(t)
 	return t
@@ -2574,12 +2805,15 @@ end
 
 --- Create a structure of type DeleteBucketRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.DeleteBucketRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBucketRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return DeleteBucketRequest structure as a key-value pair table
+function M.DeleteBucketRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBucketRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertDeleteBucketRequest(t)
 	return t
@@ -2599,12 +2833,15 @@ end
 
 --- Create a structure of type DeleteBucketPolicyRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.DeleteBucketPolicyRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBucketPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return DeleteBucketPolicyRequest structure as a key-value pair table
+function M.DeleteBucketPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBucketPolicyRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertDeleteBucketPolicyRequest(t)
 	return t
@@ -2624,13 +2861,16 @@ end
 
 --- Create a structure of type VersioningConfiguration
 --  
--- @param _Status [BucketVersioningStatus] The versioning state of the bucket.
--- @param _MFADelete [MFADelete] Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is only returned if the bucket has been configured with MFA delete. If the bucket has never been so configured, this element is not returned.
-function M.VersioningConfiguration(_Status, _MFADelete, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VersioningConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [BucketVersioningStatus] The versioning state of the bucket.
+-- * MFADelete [MFADelete] Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is only returned if the bucket has been configured with MFA delete. If the bucket has never been so configured, this element is not returned.
+-- @return VersioningConfiguration structure as a key-value pair table
+function M.VersioningConfiguration(args)
+	assert(args, "You must provdide an argument table when creating VersioningConfiguration")
 	local t = { 
-		["Status"] = _Status,
-		["MFADelete"] = _MFADelete,
+		["Status"] = args["Status"],
+		["MFADelete"] = args["MFADelete"],
 	}
 	asserts.AssertVersioningConfiguration(t)
 	return t
@@ -2657,26 +2897,29 @@ end
 
 --- Create a structure of type CreateBucketRequest
 --  
--- @param _GrantFullControl [GrantFullControl] Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.
--- @param _CreateBucketConfiguration [CreateBucketConfiguration] 
--- @param _GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable bucket.
--- @param _Bucket [BucketName] 
--- @param _ACL [BucketCannedACL] The canned ACL to apply to the bucket.
--- @param _GrantWrite [GrantWrite] Allows grantee to create, overwrite, and delete any object in the bucket.
--- @param _GrantRead [GrantRead] Allows grantee to list the objects in the bucket.
--- @param _GrantReadACP [GrantReadACP] Allows grantee to read the bucket ACL.
--- Required parameter: Bucket
-function M.CreateBucketRequest(_GrantFullControl, _CreateBucketConfiguration, _GrantWriteACP, _Bucket, _ACL, _GrantWrite, _GrantRead, _GrantReadACP, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBucketRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GrantFullControl [GrantFullControl] Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.
+-- * CreateBucketConfiguration [CreateBucketConfiguration] 
+-- * GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable bucket.
+-- * Bucket [BucketName] 
+-- * ACL [BucketCannedACL] The canned ACL to apply to the bucket.
+-- * GrantWrite [GrantWrite] Allows grantee to create, overwrite, and delete any object in the bucket.
+-- * GrantRead [GrantRead] Allows grantee to list the objects in the bucket.
+-- * GrantReadACP [GrantReadACP] Allows grantee to read the bucket ACL.
+-- Required key: Bucket
+-- @return CreateBucketRequest structure as a key-value pair table
+function M.CreateBucketRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateBucketRequest")
 	local t = { 
-		["GrantFullControl"] = _GrantFullControl,
-		["CreateBucketConfiguration"] = _CreateBucketConfiguration,
-		["GrantWriteACP"] = _GrantWriteACP,
-		["Bucket"] = _Bucket,
-		["ACL"] = _ACL,
-		["GrantWrite"] = _GrantWrite,
-		["GrantRead"] = _GrantRead,
-		["GrantReadACP"] = _GrantReadACP,
+		["GrantFullControl"] = args["GrantFullControl"],
+		["CreateBucketConfiguration"] = args["CreateBucketConfiguration"],
+		["GrantWriteACP"] = args["GrantWriteACP"],
+		["Bucket"] = args["Bucket"],
+		["ACL"] = args["ACL"],
+		["GrantWrite"] = args["GrantWrite"],
+		["GrantRead"] = args["GrantRead"],
+		["GrantReadACP"] = args["GrantReadACP"],
 	}
 	asserts.AssertCreateBucketRequest(t)
 	return t
@@ -2695,11 +2938,14 @@ end
 
 --- Create a structure of type NotificationConfigurationFilter
 -- Container for object key name filtering rules. For information about key name filtering, go to <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring Event Notifications</a> in the Amazon Simple Storage Service Developer Guide.
--- @param _Key [S3KeyFilter] 
-function M.NotificationConfigurationFilter(_Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotificationConfigurationFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Key [S3KeyFilter] 
+-- @return NotificationConfigurationFilter structure as a key-value pair table
+function M.NotificationConfigurationFilter(args)
+	assert(args, "You must provdide an argument table when creating NotificationConfigurationFilter")
 	local t = { 
-		["Key"] = _Key,
+		["Key"] = args["Key"],
 	}
 	asserts.AssertNotificationConfigurationFilter(t)
 	return t
@@ -2718,11 +2964,14 @@ end
 
 --- Create a structure of type GetBucketInventoryConfigurationOutput
 --  
--- @param _InventoryConfiguration [InventoryConfiguration] Specifies the inventory configuration.
-function M.GetBucketInventoryConfigurationOutput(_InventoryConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketInventoryConfigurationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InventoryConfiguration [InventoryConfiguration] Specifies the inventory configuration.
+-- @return GetBucketInventoryConfigurationOutput structure as a key-value pair table
+function M.GetBucketInventoryConfigurationOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketInventoryConfigurationOutput")
 	local t = { 
-		["InventoryConfiguration"] = _InventoryConfiguration,
+		["InventoryConfiguration"] = args["InventoryConfiguration"],
 	}
 	asserts.AssertGetBucketInventoryConfigurationOutput(t)
 	return t
@@ -2742,13 +2991,16 @@ end
 
 --- Create a structure of type AccessControlPolicy
 --  
--- @param _Owner [Owner] 
--- @param _Grants [Grants] A list of grants.
-function M.AccessControlPolicy(_Owner, _Grants, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessControlPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Owner [Owner] 
+-- * Grants [Grants] A list of grants.
+-- @return AccessControlPolicy structure as a key-value pair table
+function M.AccessControlPolicy(args)
+	assert(args, "You must provdide an argument table when creating AccessControlPolicy")
 	local t = { 
-		["Owner"] = _Owner,
-		["Grants"] = _Grants,
+		["Owner"] = args["Owner"],
+		["Grants"] = args["Grants"],
 	}
 	asserts.AssertAccessControlPolicy(t)
 	return t
@@ -2769,14 +3021,17 @@ end
 
 --- Create a structure of type Delete
 --  
--- @param _Objects [ObjectIdentifierList] 
--- @param _Quiet [Quiet] Element to enable quiet mode for the request. When you add this element, you must set its value to true.
--- Required parameter: Objects
-function M.Delete(_Objects, _Quiet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Delete")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Objects [ObjectIdentifierList] 
+-- * Quiet [Quiet] Element to enable quiet mode for the request. When you add this element, you must set its value to true.
+-- Required key: Objects
+-- @return Delete structure as a key-value pair table
+function M.Delete(args)
+	assert(args, "You must provdide an argument table when creating Delete")
 	local t = { 
-		["Objects"] = _Objects,
-		["Quiet"] = _Quiet,
+		["Objects"] = args["Objects"],
+		["Quiet"] = args["Quiet"],
 	}
 	asserts.AssertDelete(t)
 	return t
@@ -2798,15 +3053,18 @@ end
 
 --- Create a structure of type PutBucketNotificationConfigurationRequest
 --  
--- @param _NotificationConfiguration [NotificationConfiguration] 
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
--- Required parameter: NotificationConfiguration
-function M.PutBucketNotificationConfigurationRequest(_NotificationConfiguration, _Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketNotificationConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NotificationConfiguration [NotificationConfiguration] 
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- Required key: NotificationConfiguration
+-- @return PutBucketNotificationConfigurationRequest structure as a key-value pair table
+function M.PutBucketNotificationConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketNotificationConfigurationRequest")
 	local t = { 
-		["NotificationConfiguration"] = _NotificationConfiguration,
-		["Bucket"] = _Bucket,
+		["NotificationConfiguration"] = args["NotificationConfiguration"],
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertPutBucketNotificationConfigurationRequest(t)
 	return t
@@ -2826,12 +3084,15 @@ end
 
 --- Create a structure of type AnalyticsExportDestination
 --  
--- @param _S3BucketDestination [AnalyticsS3BucketDestination] A destination signifying output to an S3 bucket.
--- Required parameter: S3BucketDestination
-function M.AnalyticsExportDestination(_S3BucketDestination, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AnalyticsExportDestination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * S3BucketDestination [AnalyticsS3BucketDestination] A destination signifying output to an S3 bucket.
+-- Required key: S3BucketDestination
+-- @return AnalyticsExportDestination structure as a key-value pair table
+function M.AnalyticsExportDestination(args)
+	assert(args, "You must provdide an argument table when creating AnalyticsExportDestination")
 	local t = { 
-		["S3BucketDestination"] = _S3BucketDestination,
+		["S3BucketDestination"] = args["S3BucketDestination"],
 	}
 	asserts.AssertAnalyticsExportDestination(t)
 	return t
@@ -2861,28 +3122,31 @@ end
 
 --- Create a structure of type InventoryConfiguration
 --  
--- @param _Schedule [InventorySchedule] Specifies the schedule for generating inventory results.
--- @param _IsEnabled [IsEnabled] Specifies whether the inventory is enabled or disabled.
--- @param _Destination [InventoryDestination] Contains information about where to publish the inventory results.
--- @param _OptionalFields [InventoryOptionalFields] Contains the optional fields that are included in the inventory results.
--- @param _Filter [InventoryFilter] Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria.
--- @param _IncludedObjectVersions [InventoryIncludedObjectVersions] Specifies which object version(s) to included in the inventory results.
--- @param _Id [InventoryId] The ID used to identify the inventory configuration.
--- Required parameter: Destination
--- Required parameter: IsEnabled
--- Required parameter: Id
--- Required parameter: IncludedObjectVersions
--- Required parameter: Schedule
-function M.InventoryConfiguration(_Schedule, _IsEnabled, _Destination, _OptionalFields, _Filter, _IncludedObjectVersions, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Schedule [InventorySchedule] Specifies the schedule for generating inventory results.
+-- * IsEnabled [IsEnabled] Specifies whether the inventory is enabled or disabled.
+-- * Destination [InventoryDestination] Contains information about where to publish the inventory results.
+-- * OptionalFields [InventoryOptionalFields] Contains the optional fields that are included in the inventory results.
+-- * Filter [InventoryFilter] Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria.
+-- * IncludedObjectVersions [InventoryIncludedObjectVersions] Specifies which object version(s) to included in the inventory results.
+-- * Id [InventoryId] The ID used to identify the inventory configuration.
+-- Required key: Destination
+-- Required key: IsEnabled
+-- Required key: Id
+-- Required key: IncludedObjectVersions
+-- Required key: Schedule
+-- @return InventoryConfiguration structure as a key-value pair table
+function M.InventoryConfiguration(args)
+	assert(args, "You must provdide an argument table when creating InventoryConfiguration")
 	local t = { 
-		["Schedule"] = _Schedule,
-		["IsEnabled"] = _IsEnabled,
-		["Destination"] = _Destination,
-		["OptionalFields"] = _OptionalFields,
-		["Filter"] = _Filter,
-		["IncludedObjectVersions"] = _IncludedObjectVersions,
-		["Id"] = _Id,
+		["Schedule"] = args["Schedule"],
+		["IsEnabled"] = args["IsEnabled"],
+		["Destination"] = args["Destination"],
+		["OptionalFields"] = args["OptionalFields"],
+		["Filter"] = args["Filter"],
+		["IncludedObjectVersions"] = args["IncludedObjectVersions"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertInventoryConfiguration(t)
 	return t
@@ -2906,19 +3170,22 @@ end
 
 --- Create a structure of type LambdaFunctionConfiguration
 -- Container for specifying the AWS Lambda notification configuration.
--- @param _Filter [NotificationConfigurationFilter] 
--- @param _LambdaFunctionArn [LambdaFunctionArn] Lambda cloud function ARN that Amazon S3 can invoke when it detects events of the specified type.
--- @param _Id [NotificationId] 
--- @param _Events [EventList] 
--- Required parameter: LambdaFunctionArn
--- Required parameter: Events
-function M.LambdaFunctionConfiguration(_Filter, _LambdaFunctionArn, _Id, _Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaFunctionConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Filter [NotificationConfigurationFilter] 
+-- * LambdaFunctionArn [LambdaFunctionArn] Lambda cloud function ARN that Amazon S3 can invoke when it detects events of the specified type.
+-- * Id [NotificationId] 
+-- * Events [EventList] 
+-- Required key: LambdaFunctionArn
+-- Required key: Events
+-- @return LambdaFunctionConfiguration structure as a key-value pair table
+function M.LambdaFunctionConfiguration(args)
+	assert(args, "You must provdide an argument table when creating LambdaFunctionConfiguration")
 	local t = { 
-		["Filter"] = _Filter,
-		["LambdaFunctionArn"] = _LambdaFunctionArn,
-		["Id"] = _Id,
-		["Events"] = _Events,
+		["Filter"] = args["Filter"],
+		["LambdaFunctionArn"] = args["LambdaFunctionArn"],
+		["Id"] = args["Id"],
+		["Events"] = args["Events"],
 	}
 	asserts.AssertLambdaFunctionConfiguration(t)
 	return t
@@ -2937,11 +3204,14 @@ end
 
 --- Create a structure of type GetBucketLifecycleConfigurationOutput
 --  
--- @param _Rules [LifecycleRules] 
-function M.GetBucketLifecycleConfigurationOutput(_Rules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketLifecycleConfigurationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [LifecycleRules] 
+-- @return GetBucketLifecycleConfigurationOutput structure as a key-value pair table
+function M.GetBucketLifecycleConfigurationOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketLifecycleConfigurationOutput")
 	local t = { 
-		["Rules"] = _Rules,
+		["Rules"] = args["Rules"],
 	}
 	asserts.AssertGetBucketLifecycleConfigurationOutput(t)
 	return t
@@ -2960,11 +3230,14 @@ end
 
 --- Create a structure of type NoncurrentVersionExpiration
 -- Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently deletes the noncurrent object versions. You set this lifecycle configuration action on a bucket that has versioning enabled (or suspended) to request that Amazon S3 delete noncurrent object versions at a specific period in the object's lifetime.
--- @param _NoncurrentDays [Days] Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">How Amazon S3 Calculates When an Object Became Noncurrent</a> in the Amazon Simple Storage Service Developer Guide.
-function M.NoncurrentVersionExpiration(_NoncurrentDays, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoncurrentVersionExpiration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NoncurrentDays [Days] Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">How Amazon S3 Calculates When an Object Became Noncurrent</a> in the Amazon Simple Storage Service Developer Guide.
+-- @return NoncurrentVersionExpiration structure as a key-value pair table
+function M.NoncurrentVersionExpiration(args)
+	assert(args, "You must provdide an argument table when creating NoncurrentVersionExpiration")
 	local t = { 
-		["NoncurrentDays"] = _NoncurrentDays,
+		["NoncurrentDays"] = args["NoncurrentDays"],
 	}
 	asserts.AssertNoncurrentVersionExpiration(t)
 	return t
@@ -2984,13 +3257,16 @@ end
 
 --- Create a structure of type FilterRule
 -- Container for key value pair that defines the criteria for the filter rule.
--- @param _Name [FilterRuleName] Object key name prefix or suffix identifying one or more objects to which the filtering rule applies. Maximum prefix length can be up to 1,024 characters. Overlapping prefixes and suffixes are not supported. For more information, go to <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring Event Notifications</a> in the Amazon Simple Storage Service Developer Guide.
--- @param _Value [FilterRuleValue] 
-function M.FilterRule(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FilterRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [FilterRuleName] Object key name prefix or suffix identifying one or more objects to which the filtering rule applies. Maximum prefix length can be up to 1,024 characters. Overlapping prefixes and suffixes are not supported. For more information, go to <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring Event Notifications</a> in the Amazon Simple Storage Service Developer Guide.
+-- * Value [FilterRuleValue] 
+-- @return FilterRule structure as a key-value pair table
+function M.FilterRule(args)
+	assert(args, "You must provdide an argument table when creating FilterRule")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertFilterRule(t)
 	return t
@@ -3033,59 +3309,62 @@ end
 
 --- Create a structure of type HeadObjectOutput
 --  
--- @param _LastModified [LastModified] Last modified date of the object
--- @param _RequestCharged [RequestCharged] 
--- @param _ContentEncoding [ContentEncoding] Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
--- @param _ReplicationStatus [ReplicationStatus] 
--- @param _StorageClass [StorageClass] 
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
--- @param _ContentDisposition [ContentDisposition] Specifies presentational information for the object.
--- @param _Metadata [Metadata] A map of metadata to store with the object in S3.
--- @param _AcceptRanges [AcceptRanges] 
--- @param _WebsiteRedirectLocation [WebsiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
--- @param _Expires [Expires] The date and time at which the object is no longer cacheable.
--- @param _DeleteMarker [DeleteMarker] Specifies whether the object retrieved was (true) or was not (false) a Delete Marker. If false, this response header does not appear in the response.
--- @param _CacheControl [CacheControl] Specifies caching behavior along the request/reply chain.
--- @param _PartsCount [PartsCount] The count of parts this object has.
--- @param _ContentLength [ContentLength] Size of the body in bytes.
--- @param _Expiration [Expiration] If the object expiration is configured (see PUT Bucket lifecycle), the response includes this header. It includes the expiry-date and rule-id key value pairs providing object expiration information. The value of the rule-id is URL encoded.
--- @param _MissingMeta [MissingMeta] This is set to the number of metadata entries not returned in x-amz-meta headers. This can happen if you create metadata using an API like SOAP that supports more flexible metadata than the REST API. For example, using SOAP, you can create metadata whose values are not legal HTTP headers.
--- @param _Restore [Restore] Provides information about object restoration operation and expiration time of the restored object copy.
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
--- @param _ContentType [ContentType] A standard MIME type describing the format of the object data.
--- @param _ContentLanguage [ContentLanguage] The language the content is in.
--- @param _VersionId [ObjectVersionId] Version of the object.
--- @param _ETag [ETag] An ETag is an opaque identifier assigned by a web server to a specific version of a resource found at a URL
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
-function M.HeadObjectOutput(_LastModified, _RequestCharged, _ContentEncoding, _ReplicationStatus, _StorageClass, _ServerSideEncryption, _SSEKMSKeyId, _ContentDisposition, _Metadata, _AcceptRanges, _WebsiteRedirectLocation, _Expires, _DeleteMarker, _CacheControl, _PartsCount, _ContentLength, _Expiration, _MissingMeta, _Restore, _SSECustomerAlgorithm, _ContentType, _ContentLanguage, _VersionId, _ETag, _SSECustomerKeyMD5, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HeadObjectOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastModified [LastModified] Last modified date of the object
+-- * RequestCharged [RequestCharged] 
+-- * ContentEncoding [ContentEncoding] Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
+-- * ReplicationStatus [ReplicationStatus] 
+-- * StorageClass [StorageClass] 
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
+-- * ContentDisposition [ContentDisposition] Specifies presentational information for the object.
+-- * Metadata [Metadata] A map of metadata to store with the object in S3.
+-- * AcceptRanges [AcceptRanges] 
+-- * WebsiteRedirectLocation [WebsiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
+-- * Expires [Expires] The date and time at which the object is no longer cacheable.
+-- * DeleteMarker [DeleteMarker] Specifies whether the object retrieved was (true) or was not (false) a Delete Marker. If false, this response header does not appear in the response.
+-- * CacheControl [CacheControl] Specifies caching behavior along the request/reply chain.
+-- * PartsCount [PartsCount] The count of parts this object has.
+-- * ContentLength [ContentLength] Size of the body in bytes.
+-- * Expiration [Expiration] If the object expiration is configured (see PUT Bucket lifecycle), the response includes this header. It includes the expiry-date and rule-id key value pairs providing object expiration information. The value of the rule-id is URL encoded.
+-- * MissingMeta [MissingMeta] This is set to the number of metadata entries not returned in x-amz-meta headers. This can happen if you create metadata using an API like SOAP that supports more flexible metadata than the REST API. For example, using SOAP, you can create metadata whose values are not legal HTTP headers.
+-- * Restore [Restore] Provides information about object restoration operation and expiration time of the restored object copy.
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
+-- * ContentType [ContentType] A standard MIME type describing the format of the object data.
+-- * ContentLanguage [ContentLanguage] The language the content is in.
+-- * VersionId [ObjectVersionId] Version of the object.
+-- * ETag [ETag] An ETag is an opaque identifier assigned by a web server to a specific version of a resource found at a URL
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
+-- @return HeadObjectOutput structure as a key-value pair table
+function M.HeadObjectOutput(args)
+	assert(args, "You must provdide an argument table when creating HeadObjectOutput")
 	local t = { 
-		["LastModified"] = _LastModified,
-		["RequestCharged"] = _RequestCharged,
-		["ContentEncoding"] = _ContentEncoding,
-		["ReplicationStatus"] = _ReplicationStatus,
-		["StorageClass"] = _StorageClass,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
-		["ContentDisposition"] = _ContentDisposition,
-		["Metadata"] = _Metadata,
-		["AcceptRanges"] = _AcceptRanges,
-		["WebsiteRedirectLocation"] = _WebsiteRedirectLocation,
-		["Expires"] = _Expires,
-		["DeleteMarker"] = _DeleteMarker,
-		["CacheControl"] = _CacheControl,
-		["PartsCount"] = _PartsCount,
-		["ContentLength"] = _ContentLength,
-		["Expiration"] = _Expiration,
-		["MissingMeta"] = _MissingMeta,
-		["Restore"] = _Restore,
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["ContentType"] = _ContentType,
-		["ContentLanguage"] = _ContentLanguage,
-		["VersionId"] = _VersionId,
-		["ETag"] = _ETag,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
+		["LastModified"] = args["LastModified"],
+		["RequestCharged"] = args["RequestCharged"],
+		["ContentEncoding"] = args["ContentEncoding"],
+		["ReplicationStatus"] = args["ReplicationStatus"],
+		["StorageClass"] = args["StorageClass"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
+		["ContentDisposition"] = args["ContentDisposition"],
+		["Metadata"] = args["Metadata"],
+		["AcceptRanges"] = args["AcceptRanges"],
+		["WebsiteRedirectLocation"] = args["WebsiteRedirectLocation"],
+		["Expires"] = args["Expires"],
+		["DeleteMarker"] = args["DeleteMarker"],
+		["CacheControl"] = args["CacheControl"],
+		["PartsCount"] = args["PartsCount"],
+		["ContentLength"] = args["ContentLength"],
+		["Expiration"] = args["Expiration"],
+		["MissingMeta"] = args["MissingMeta"],
+		["Restore"] = args["Restore"],
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["ContentType"] = args["ContentType"],
+		["ContentLanguage"] = args["ContentLanguage"],
+		["VersionId"] = args["VersionId"],
+		["ETag"] = args["ETag"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
 	asserts.AssertHeadObjectOutput(t)
 	return t
@@ -3104,11 +3383,14 @@ end
 
 --- Create a structure of type GetBucketAnalyticsConfigurationOutput
 --  
--- @param _AnalyticsConfiguration [AnalyticsConfiguration] The configuration and any analyses for the analytics filter.
-function M.GetBucketAnalyticsConfigurationOutput(_AnalyticsConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketAnalyticsConfigurationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalyticsConfiguration [AnalyticsConfiguration] The configuration and any analyses for the analytics filter.
+-- @return GetBucketAnalyticsConfigurationOutput structure as a key-value pair table
+function M.GetBucketAnalyticsConfigurationOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketAnalyticsConfigurationOutput")
 	local t = { 
-		["AnalyticsConfiguration"] = _AnalyticsConfiguration,
+		["AnalyticsConfiguration"] = args["AnalyticsConfiguration"],
 	}
 	asserts.AssertGetBucketAnalyticsConfigurationOutput(t)
 	return t
@@ -3128,13 +3410,16 @@ end
 
 --- Create a structure of type NoncurrentVersionTransition
 -- Container for the transition rule that describes when noncurrent objects transition to the STANDARD_IA or GLACIER storage class. If your bucket is versioning-enabled (or versioning is suspended), you can set this action to request that Amazon S3 transition noncurrent object versions to the STANDARD_IA or GLACIER storage class at a specific period in the object's lifetime.
--- @param _NoncurrentDays [Days] Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">How Amazon S3 Calculates When an Object Became Noncurrent</a> in the Amazon Simple Storage Service Developer Guide.
--- @param _StorageClass [TransitionStorageClass] The class of storage used to store the object.
-function M.NoncurrentVersionTransition(_NoncurrentDays, _StorageClass, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoncurrentVersionTransition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NoncurrentDays [Days] Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">How Amazon S3 Calculates When an Object Became Noncurrent</a> in the Amazon Simple Storage Service Developer Guide.
+-- * StorageClass [TransitionStorageClass] The class of storage used to store the object.
+-- @return NoncurrentVersionTransition structure as a key-value pair table
+function M.NoncurrentVersionTransition(args)
+	assert(args, "You must provdide an argument table when creating NoncurrentVersionTransition")
 	local t = { 
-		["NoncurrentDays"] = _NoncurrentDays,
-		["StorageClass"] = _StorageClass,
+		["NoncurrentDays"] = args["NoncurrentDays"],
+		["StorageClass"] = args["StorageClass"],
 	}
 	asserts.AssertNoncurrentVersionTransition(t)
 	return t
@@ -3157,17 +3442,20 @@ end
 
 --- Create a structure of type PutBucketNotificationRequest
 --  
--- @param _NotificationConfiguration [NotificationConfigurationDeprecated] 
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
--- Required parameter: NotificationConfiguration
-function M.PutBucketNotificationRequest(_NotificationConfiguration, _ContentMD5, _Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketNotificationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NotificationConfiguration [NotificationConfigurationDeprecated] 
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- Required key: NotificationConfiguration
+-- @return PutBucketNotificationRequest structure as a key-value pair table
+function M.PutBucketNotificationRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketNotificationRequest")
 	local t = { 
-		["NotificationConfiguration"] = _NotificationConfiguration,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
+		["NotificationConfiguration"] = args["NotificationConfiguration"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertPutBucketNotificationRequest(t)
 	return t
@@ -3191,19 +3479,22 @@ end
 
 --- Create a structure of type DeleteObjectsRequest
 --  
--- @param _MFA [MFA] The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
--- @param _Bucket [BucketName] 
--- @param _RequestPayer [RequestPayer] 
--- @param _Delete [Delete] 
--- Required parameter: Bucket
--- Required parameter: Delete
-function M.DeleteObjectsRequest(_MFA, _Bucket, _RequestPayer, _Delete, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteObjectsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MFA [MFA] The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
+-- * Bucket [BucketName] 
+-- * RequestPayer [RequestPayer] 
+-- * Delete [Delete] 
+-- Required key: Bucket
+-- Required key: Delete
+-- @return DeleteObjectsRequest structure as a key-value pair table
+function M.DeleteObjectsRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteObjectsRequest")
 	local t = { 
-		["MFA"] = _MFA,
-		["Bucket"] = _Bucket,
-		["RequestPayer"] = _RequestPayer,
-		["Delete"] = _Delete,
+		["MFA"] = args["MFA"],
+		["Bucket"] = args["Bucket"],
+		["RequestPayer"] = args["RequestPayer"],
+		["Delete"] = args["Delete"],
 	}
 	asserts.AssertDeleteObjectsRequest(t)
 	return t
@@ -3226,19 +3517,22 @@ end
 
 --- Create a structure of type Redirect
 --  
--- @param _ReplaceKeyWith [ReplaceKeyWith] The specific object key to use in the redirect request. For example, redirect request to error.html. Not required if one of the sibling is present. Can be present only if ReplaceKeyPrefixWith is not provided.
--- @param _HostName [HostName] The host name to use in the redirect request.
--- @param _Protocol [Protocol] Protocol to use (http, https) when redirecting requests. The default is the protocol that is used in the original request.
--- @param _ReplaceKeyPrefixWith [ReplaceKeyPrefixWith] The object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix docs/ (objects in the docs/ folder) to documents/, you can set a condition block with KeyPrefixEquals set to docs/ and in the Redirect set ReplaceKeyPrefixWith to /documents. Not required if one of the siblings is present. Can be present only if ReplaceKeyWith is not provided.
--- @param _HttpRedirectCode [HttpRedirectCode] The HTTP redirect code to use on the response. Not required if one of the siblings is present.
-function M.Redirect(_ReplaceKeyWith, _HostName, _Protocol, _ReplaceKeyPrefixWith, _HttpRedirectCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Redirect")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplaceKeyWith [ReplaceKeyWith] The specific object key to use in the redirect request. For example, redirect request to error.html. Not required if one of the sibling is present. Can be present only if ReplaceKeyPrefixWith is not provided.
+-- * HostName [HostName] The host name to use in the redirect request.
+-- * Protocol [Protocol] Protocol to use (http, https) when redirecting requests. The default is the protocol that is used in the original request.
+-- * ReplaceKeyPrefixWith [ReplaceKeyPrefixWith] The object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix docs/ (objects in the docs/ folder) to documents/, you can set a condition block with KeyPrefixEquals set to docs/ and in the Redirect set ReplaceKeyPrefixWith to /documents. Not required if one of the siblings is present. Can be present only if ReplaceKeyWith is not provided.
+-- * HttpRedirectCode [HttpRedirectCode] The HTTP redirect code to use on the response. Not required if one of the siblings is present.
+-- @return Redirect structure as a key-value pair table
+function M.Redirect(args)
+	assert(args, "You must provdide an argument table when creating Redirect")
 	local t = { 
-		["ReplaceKeyWith"] = _ReplaceKeyWith,
-		["HostName"] = _HostName,
-		["Protocol"] = _Protocol,
-		["ReplaceKeyPrefixWith"] = _ReplaceKeyPrefixWith,
-		["HttpRedirectCode"] = _HttpRedirectCode,
+		["ReplaceKeyWith"] = args["ReplaceKeyWith"],
+		["HostName"] = args["HostName"],
+		["Protocol"] = args["Protocol"],
+		["ReplaceKeyPrefixWith"] = args["ReplaceKeyPrefixWith"],
+		["HttpRedirectCode"] = args["HttpRedirectCode"],
 	}
 	asserts.AssertRedirect(t)
 	return t
@@ -3278,48 +3572,51 @@ end
 
 --- Create a structure of type UploadPartCopyRequest
 --  
--- @param _CopySourceIfMatch [CopySourceIfMatch] Copies the object if its entity tag (ETag) matches the specified tag.
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
--- @param _CopySourceSSECustomerKeyMD5 [CopySourceSSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
--- @param _RequestPayer [RequestPayer] 
--- @param _CopySourceSSECustomerKey [CopySourceSSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use to decrypt the source object. The encryption key provided in this header must be one that was used when the source object was created.
--- @param _CopySourceSSECustomerAlgorithm [CopySourceSSECustomerAlgorithm] Specifies the algorithm to use when decrypting the source object (e.g., AES256).
--- @param _CopySource [CopySource] The name of the source bucket and key name of the source object, separated by a slash (/). Must be URL-encoded.
--- @param _CopySourceIfModifiedSince [CopySourceIfModifiedSince] Copies the object if it has been modified since the specified time.
--- @param _Bucket [BucketName] 
--- @param _SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header. This must be the same encryption key specified in the initiate multipart upload request.
--- @param _CopySourceIfUnmodifiedSince [CopySourceIfUnmodifiedSince] Copies the object if it hasn't been modified since the specified time.
--- @param _CopySourceIfNoneMatch [CopySourceIfNoneMatch] Copies the object if its entity tag (ETag) is different than the specified ETag.
--- @param _UploadId [MultipartUploadId] Upload ID identifying the multipart upload whose part is being copied.
--- @param _Key [ObjectKey] 
--- @param _CopySourceRange [CopySourceRange] The range of bytes to copy from the source object. The range value must use the form bytes=first-last, where the first and last are the zero-based byte offsets to copy. For example, bytes=0-9 indicates that you want to copy the first ten bytes of the source. You can copy a range only if the source object is greater than 5 GB.
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
--- @param _PartNumber [PartNumber] Part number of part being copied. This is a positive integer between 1 and 10,000.
--- Required parameter: Bucket
--- Required parameter: CopySource
--- Required parameter: Key
--- Required parameter: PartNumber
--- Required parameter: UploadId
-function M.UploadPartCopyRequest(_CopySourceIfMatch, _SSECustomerAlgorithm, _CopySourceSSECustomerKeyMD5, _RequestPayer, _CopySourceSSECustomerKey, _CopySourceSSECustomerAlgorithm, _CopySource, _CopySourceIfModifiedSince, _Bucket, _SSECustomerKey, _CopySourceIfUnmodifiedSince, _CopySourceIfNoneMatch, _UploadId, _Key, _CopySourceRange, _SSECustomerKeyMD5, _PartNumber, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadPartCopyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CopySourceIfMatch [CopySourceIfMatch] Copies the object if its entity tag (ETag) matches the specified tag.
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
+-- * CopySourceSSECustomerKeyMD5 [CopySourceSSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+-- * RequestPayer [RequestPayer] 
+-- * CopySourceSSECustomerKey [CopySourceSSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use to decrypt the source object. The encryption key provided in this header must be one that was used when the source object was created.
+-- * CopySourceSSECustomerAlgorithm [CopySourceSSECustomerAlgorithm] Specifies the algorithm to use when decrypting the source object (e.g., AES256).
+-- * CopySource [CopySource] The name of the source bucket and key name of the source object, separated by a slash (/). Must be URL-encoded.
+-- * CopySourceIfModifiedSince [CopySourceIfModifiedSince] Copies the object if it has been modified since the specified time.
+-- * Bucket [BucketName] 
+-- * SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header. This must be the same encryption key specified in the initiate multipart upload request.
+-- * CopySourceIfUnmodifiedSince [CopySourceIfUnmodifiedSince] Copies the object if it hasn't been modified since the specified time.
+-- * CopySourceIfNoneMatch [CopySourceIfNoneMatch] Copies the object if its entity tag (ETag) is different than the specified ETag.
+-- * UploadId [MultipartUploadId] Upload ID identifying the multipart upload whose part is being copied.
+-- * Key [ObjectKey] 
+-- * CopySourceRange [CopySourceRange] The range of bytes to copy from the source object. The range value must use the form bytes=first-last, where the first and last are the zero-based byte offsets to copy. For example, bytes=0-9 indicates that you want to copy the first ten bytes of the source. You can copy a range only if the source object is greater than 5 GB.
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+-- * PartNumber [PartNumber] Part number of part being copied. This is a positive integer between 1 and 10,000.
+-- Required key: Bucket
+-- Required key: CopySource
+-- Required key: Key
+-- Required key: PartNumber
+-- Required key: UploadId
+-- @return UploadPartCopyRequest structure as a key-value pair table
+function M.UploadPartCopyRequest(args)
+	assert(args, "You must provdide an argument table when creating UploadPartCopyRequest")
 	local t = { 
-		["CopySourceIfMatch"] = _CopySourceIfMatch,
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["CopySourceSSECustomerKeyMD5"] = _CopySourceSSECustomerKeyMD5,
-		["RequestPayer"] = _RequestPayer,
-		["CopySourceSSECustomerKey"] = _CopySourceSSECustomerKey,
-		["CopySourceSSECustomerAlgorithm"] = _CopySourceSSECustomerAlgorithm,
-		["CopySource"] = _CopySource,
-		["CopySourceIfModifiedSince"] = _CopySourceIfModifiedSince,
-		["Bucket"] = _Bucket,
-		["SSECustomerKey"] = _SSECustomerKey,
-		["CopySourceIfUnmodifiedSince"] = _CopySourceIfUnmodifiedSince,
-		["CopySourceIfNoneMatch"] = _CopySourceIfNoneMatch,
-		["UploadId"] = _UploadId,
-		["Key"] = _Key,
-		["CopySourceRange"] = _CopySourceRange,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
-		["PartNumber"] = _PartNumber,
+		["CopySourceIfMatch"] = args["CopySourceIfMatch"],
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["CopySourceSSECustomerKeyMD5"] = args["CopySourceSSECustomerKeyMD5"],
+		["RequestPayer"] = args["RequestPayer"],
+		["CopySourceSSECustomerKey"] = args["CopySourceSSECustomerKey"],
+		["CopySourceSSECustomerAlgorithm"] = args["CopySourceSSECustomerAlgorithm"],
+		["CopySource"] = args["CopySource"],
+		["CopySourceIfModifiedSince"] = args["CopySourceIfModifiedSince"],
+		["Bucket"] = args["Bucket"],
+		["SSECustomerKey"] = args["SSECustomerKey"],
+		["CopySourceIfUnmodifiedSince"] = args["CopySourceIfUnmodifiedSince"],
+		["CopySourceIfNoneMatch"] = args["CopySourceIfNoneMatch"],
+		["UploadId"] = args["UploadId"],
+		["Key"] = args["Key"],
+		["CopySourceRange"] = args["CopySourceRange"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
+		["PartNumber"] = args["PartNumber"],
 	}
 	asserts.AssertUploadPartCopyRequest(t)
 	return t
@@ -3338,11 +3635,14 @@ end
 
 --- Create a structure of type CompletedMultipartUpload
 --  
--- @param _Parts [CompletedPartList] 
-function M.CompletedMultipartUpload(_Parts, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompletedMultipartUpload")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Parts [CompletedPartList] 
+-- @return CompletedMultipartUpload structure as a key-value pair table
+function M.CompletedMultipartUpload(args)
+	assert(args, "You must provdide an argument table when creating CompletedMultipartUpload")
 	local t = { 
-		["Parts"] = _Parts,
+		["Parts"] = args["Parts"],
 	}
 	asserts.AssertCompletedMultipartUpload(t)
 	return t
@@ -3362,12 +3662,15 @@ end
 
 --- Create a structure of type DeleteBucketReplicationRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.DeleteBucketReplicationRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBucketReplicationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return DeleteBucketReplicationRequest structure as a key-value pair table
+function M.DeleteBucketReplicationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBucketReplicationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertDeleteBucketReplicationRequest(t)
 	return t
@@ -3387,12 +3690,15 @@ end
 
 --- Create a structure of type Tagging
 --  
--- @param _TagSet [TagSet] 
--- Required parameter: TagSet
-function M.Tagging(_TagSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tagging")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagSet [TagSet] 
+-- Required key: TagSet
+-- @return Tagging structure as a key-value pair table
+function M.Tagging(args)
+	assert(args, "You must provdide an argument table when creating Tagging")
 	local t = { 
-		["TagSet"] = _TagSet,
+		["TagSet"] = args["TagSet"],
 	}
 	asserts.AssertTagging(t)
 	return t
@@ -3412,13 +3718,16 @@ end
 
 --- Create a structure of type AnalyticsAndOperator
 --  
--- @param _Prefix [Prefix] The prefix to use when evaluating an AND predicate.
--- @param _Tags [TagSet] The list of tags to use when evaluating an AND predicate.
-function M.AnalyticsAndOperator(_Prefix, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AnalyticsAndOperator")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Prefix [Prefix] The prefix to use when evaluating an AND predicate.
+-- * Tags [TagSet] The list of tags to use when evaluating an AND predicate.
+-- @return AnalyticsAndOperator structure as a key-value pair table
+function M.AnalyticsAndOperator(args)
+	assert(args, "You must provdide an argument table when creating AnalyticsAndOperator")
 	local t = { 
-		["Prefix"] = _Prefix,
-		["Tags"] = _Tags,
+		["Prefix"] = args["Prefix"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertAnalyticsAndOperator(t)
 	return t
@@ -3443,21 +3752,24 @@ end
 
 --- Create a structure of type RestoreObjectRequest
 --  
--- @param _VersionId [ObjectVersionId] 
--- @param _RestoreRequest [RestoreRequest] 
--- @param _Bucket [BucketName] 
--- @param _RequestPayer [RequestPayer] 
--- @param _Key [ObjectKey] 
--- Required parameter: Bucket
--- Required parameter: Key
-function M.RestoreObjectRequest(_VersionId, _RestoreRequest, _Bucket, _RequestPayer, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RestoreObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] 
+-- * RestoreRequest [RestoreRequest] 
+-- * Bucket [BucketName] 
+-- * RequestPayer [RequestPayer] 
+-- * Key [ObjectKey] 
+-- Required key: Bucket
+-- Required key: Key
+-- @return RestoreObjectRequest structure as a key-value pair table
+function M.RestoreObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating RestoreObjectRequest")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["RestoreRequest"] = _RestoreRequest,
-		["Bucket"] = _Bucket,
-		["RequestPayer"] = _RequestPayer,
-		["Key"] = _Key,
+		["VersionId"] = args["VersionId"],
+		["RestoreRequest"] = args["RestoreRequest"],
+		["Bucket"] = args["Bucket"],
+		["RequestPayer"] = args["RequestPayer"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertRestoreObjectRequest(t)
 	return t
@@ -3480,17 +3792,20 @@ end
 
 --- Create a structure of type GetObjectTorrentRequest
 --  
--- @param _Bucket [BucketName] 
--- @param _RequestPayer [RequestPayer] 
--- @param _Key [ObjectKey] 
--- Required parameter: Bucket
--- Required parameter: Key
-function M.GetObjectTorrentRequest(_Bucket, _RequestPayer, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectTorrentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- * RequestPayer [RequestPayer] 
+-- * Key [ObjectKey] 
+-- Required key: Bucket
+-- Required key: Key
+-- @return GetObjectTorrentRequest structure as a key-value pair table
+function M.GetObjectTorrentRequest(args)
+	assert(args, "You must provdide an argument table when creating GetObjectTorrentRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["RequestPayer"] = _RequestPayer,
-		["Key"] = _Key,
+		["Bucket"] = args["Bucket"],
+		["RequestPayer"] = args["RequestPayer"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertGetObjectTorrentRequest(t)
 	return t
@@ -3510,12 +3825,15 @@ end
 
 --- Create a structure of type GetBucketLifecycleConfigurationRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketLifecycleConfigurationRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketLifecycleConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketLifecycleConfigurationRequest structure as a key-value pair table
+function M.GetBucketLifecycleConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketLifecycleConfigurationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketLifecycleConfigurationRequest(t)
 	return t
@@ -3537,17 +3855,20 @@ end
 
 --- Create a structure of type ListBucketMetricsConfigurationsOutput
 --  
--- @param _MetricsConfigurationList [MetricsConfigurationList] The list of metrics configurations for a bucket.
--- @param _NextContinuationToken [NextToken] The marker used to continue a metrics configuration listing that has been truncated. Use the NextContinuationToken from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
--- @param _IsTruncated [IsTruncated] Indicates whether the returned list of metrics configurations is complete. A value of true indicates that the list is not complete and the NextContinuationToken will be provided for a subsequent request.
--- @param _ContinuationToken [Token] The marker that is used as a starting point for this metrics configuration list response. This value is present if it was sent in the request.
-function M.ListBucketMetricsConfigurationsOutput(_MetricsConfigurationList, _NextContinuationToken, _IsTruncated, _ContinuationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBucketMetricsConfigurationsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MetricsConfigurationList [MetricsConfigurationList] The list of metrics configurations for a bucket.
+-- * NextContinuationToken [NextToken] The marker used to continue a metrics configuration listing that has been truncated. Use the NextContinuationToken from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
+-- * IsTruncated [IsTruncated] Indicates whether the returned list of metrics configurations is complete. A value of true indicates that the list is not complete and the NextContinuationToken will be provided for a subsequent request.
+-- * ContinuationToken [Token] The marker that is used as a starting point for this metrics configuration list response. This value is present if it was sent in the request.
+-- @return ListBucketMetricsConfigurationsOutput structure as a key-value pair table
+function M.ListBucketMetricsConfigurationsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListBucketMetricsConfigurationsOutput")
 	local t = { 
-		["MetricsConfigurationList"] = _MetricsConfigurationList,
-		["NextContinuationToken"] = _NextContinuationToken,
-		["IsTruncated"] = _IsTruncated,
-		["ContinuationToken"] = _ContinuationToken,
+		["MetricsConfigurationList"] = args["MetricsConfigurationList"],
+		["NextContinuationToken"] = args["NextContinuationToken"],
+		["IsTruncated"] = args["IsTruncated"],
+		["ContinuationToken"] = args["ContinuationToken"],
 	}
 	asserts.AssertListBucketMetricsConfigurationsOutput(t)
 	return t
@@ -3577,33 +3898,36 @@ end
 
 --- Create a structure of type ListMultipartUploadsOutput
 --  
--- @param _UploadIdMarker [UploadIdMarker] Upload ID after which listing began.
--- @param _CommonPrefixes [CommonPrefixList] 
--- @param _NextKeyMarker [NextKeyMarker] When a list is truncated, this element specifies the value that should be used for the key-marker request parameter in a subsequent request.
--- @param _Bucket [BucketName] Name of the bucket to which the multipart upload was initiated.
--- @param _Delimiter [Delimiter] 
--- @param _NextUploadIdMarker [NextUploadIdMarker] When a list is truncated, this element specifies the value that should be used for the upload-id-marker request parameter in a subsequent request.
--- @param _Prefix [Prefix] When a prefix is provided in the request, this field contains the specified prefix. The result contains only keys starting with the specified prefix.
--- @param _Uploads [MultipartUploadList] 
--- @param _KeyMarker [KeyMarker] The key at or after which the listing began.
--- @param _MaxUploads [MaxUploads] Maximum number of multipart uploads that could have been included in the response.
--- @param _EncodingType [EncodingType] Encoding type used by Amazon S3 to encode object keys in the response.
--- @param _IsTruncated [IsTruncated] Indicates whether the returned list of multipart uploads is truncated. A value of true indicates that the list was truncated. The list can be truncated if the number of multipart uploads exceeds the limit allowed or specified by max uploads.
-function M.ListMultipartUploadsOutput(_UploadIdMarker, _CommonPrefixes, _NextKeyMarker, _Bucket, _Delimiter, _NextUploadIdMarker, _Prefix, _Uploads, _KeyMarker, _MaxUploads, _EncodingType, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListMultipartUploadsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UploadIdMarker [UploadIdMarker] Upload ID after which listing began.
+-- * CommonPrefixes [CommonPrefixList] 
+-- * NextKeyMarker [NextKeyMarker] When a list is truncated, this element specifies the value that should be used for the key-marker request parameter in a subsequent request.
+-- * Bucket [BucketName] Name of the bucket to which the multipart upload was initiated.
+-- * Delimiter [Delimiter] 
+-- * NextUploadIdMarker [NextUploadIdMarker] When a list is truncated, this element specifies the value that should be used for the upload-id-marker request parameter in a subsequent request.
+-- * Prefix [Prefix] When a prefix is provided in the request, this field contains the specified prefix. The result contains only keys starting with the specified prefix.
+-- * Uploads [MultipartUploadList] 
+-- * KeyMarker [KeyMarker] The key at or after which the listing began.
+-- * MaxUploads [MaxUploads] Maximum number of multipart uploads that could have been included in the response.
+-- * EncodingType [EncodingType] Encoding type used by Amazon S3 to encode object keys in the response.
+-- * IsTruncated [IsTruncated] Indicates whether the returned list of multipart uploads is truncated. A value of true indicates that the list was truncated. The list can be truncated if the number of multipart uploads exceeds the limit allowed or specified by max uploads.
+-- @return ListMultipartUploadsOutput structure as a key-value pair table
+function M.ListMultipartUploadsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListMultipartUploadsOutput")
 	local t = { 
-		["UploadIdMarker"] = _UploadIdMarker,
-		["CommonPrefixes"] = _CommonPrefixes,
-		["NextKeyMarker"] = _NextKeyMarker,
-		["Bucket"] = _Bucket,
-		["Delimiter"] = _Delimiter,
-		["NextUploadIdMarker"] = _NextUploadIdMarker,
-		["Prefix"] = _Prefix,
-		["Uploads"] = _Uploads,
-		["KeyMarker"] = _KeyMarker,
-		["MaxUploads"] = _MaxUploads,
-		["EncodingType"] = _EncodingType,
-		["IsTruncated"] = _IsTruncated,
+		["UploadIdMarker"] = args["UploadIdMarker"],
+		["CommonPrefixes"] = args["CommonPrefixes"],
+		["NextKeyMarker"] = args["NextKeyMarker"],
+		["Bucket"] = args["Bucket"],
+		["Delimiter"] = args["Delimiter"],
+		["NextUploadIdMarker"] = args["NextUploadIdMarker"],
+		["Prefix"] = args["Prefix"],
+		["Uploads"] = args["Uploads"],
+		["KeyMarker"] = args["KeyMarker"],
+		["MaxUploads"] = args["MaxUploads"],
+		["EncodingType"] = args["EncodingType"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListMultipartUploadsOutput(t)
 	return t
@@ -3623,12 +3947,15 @@ end
 
 --- Create a structure of type GetBucketLifecycleRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketLifecycleRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketLifecycleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketLifecycleRequest structure as a key-value pair table
+function M.GetBucketLifecycleRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketLifecycleRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketLifecycleRequest(t)
 	return t
@@ -3649,14 +3976,17 @@ end
 
 --- Create a structure of type PutBucketLifecycleConfigurationRequest
 --  
--- @param _LifecycleConfiguration [BucketLifecycleConfiguration] 
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.PutBucketLifecycleConfigurationRequest(_LifecycleConfiguration, _Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketLifecycleConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LifecycleConfiguration [BucketLifecycleConfiguration] 
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return PutBucketLifecycleConfigurationRequest structure as a key-value pair table
+function M.PutBucketLifecycleConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketLifecycleConfigurationRequest")
 	local t = { 
-		["LifecycleConfiguration"] = _LifecycleConfiguration,
-		["Bucket"] = _Bucket,
+		["LifecycleConfiguration"] = args["LifecycleConfiguration"],
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertPutBucketLifecycleConfigurationRequest(t)
 	return t
@@ -3679,17 +4009,20 @@ end
 
 --- Create a structure of type PutBucketLoggingRequest
 --  
--- @param _BucketLoggingStatus [BucketLoggingStatus] 
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
--- Required parameter: BucketLoggingStatus
-function M.PutBucketLoggingRequest(_BucketLoggingStatus, _ContentMD5, _Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketLoggingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BucketLoggingStatus [BucketLoggingStatus] 
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- Required key: BucketLoggingStatus
+-- @return PutBucketLoggingRequest structure as a key-value pair table
+function M.PutBucketLoggingRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketLoggingRequest")
 	local t = { 
-		["BucketLoggingStatus"] = _BucketLoggingStatus,
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
+		["BucketLoggingStatus"] = args["BucketLoggingStatus"],
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertPutBucketLoggingRequest(t)
 	return t
@@ -3709,12 +4042,15 @@ end
 
 --- Create a structure of type GetBucketAccelerateConfigurationRequest
 --  
--- @param _Bucket [BucketName] Name of the bucket for which the accelerate configuration is retrieved.
--- Required parameter: Bucket
-function M.GetBucketAccelerateConfigurationRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketAccelerateConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] Name of the bucket for which the accelerate configuration is retrieved.
+-- Required key: Bucket
+-- @return GetBucketAccelerateConfigurationRequest structure as a key-value pair table
+function M.GetBucketAccelerateConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketAccelerateConfigurationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketAccelerateConfigurationRequest(t)
 	return t
@@ -3733,11 +4069,14 @@ end
 
 --- Create a structure of type GetBucketMetricsConfigurationOutput
 --  
--- @param _MetricsConfiguration [MetricsConfiguration] Specifies the metrics configuration.
-function M.GetBucketMetricsConfigurationOutput(_MetricsConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketMetricsConfigurationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MetricsConfiguration [MetricsConfiguration] Specifies the metrics configuration.
+-- @return GetBucketMetricsConfigurationOutput structure as a key-value pair table
+function M.GetBucketMetricsConfigurationOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketMetricsConfigurationOutput")
 	local t = { 
-		["MetricsConfiguration"] = _MetricsConfiguration,
+		["MetricsConfiguration"] = args["MetricsConfiguration"],
 	}
 	asserts.AssertGetBucketMetricsConfigurationOutput(t)
 	return t
@@ -3756,11 +4095,14 @@ end
 
 --- Create a structure of type AbortIncompleteMultipartUpload
 -- Specifies the days since the initiation of an Incomplete Multipart Upload that Lifecycle will wait before permanently removing all parts of the upload.
--- @param _DaysAfterInitiation [DaysAfterInitiation] Indicates the number of days that must pass since initiation for Lifecycle to abort an Incomplete Multipart Upload.
-function M.AbortIncompleteMultipartUpload(_DaysAfterInitiation, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AbortIncompleteMultipartUpload")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DaysAfterInitiation [DaysAfterInitiation] Indicates the number of days that must pass since initiation for Lifecycle to abort an Incomplete Multipart Upload.
+-- @return AbortIncompleteMultipartUpload structure as a key-value pair table
+function M.AbortIncompleteMultipartUpload(args)
+	assert(args, "You must provdide an argument table when creating AbortIncompleteMultipartUpload")
 	local t = { 
-		["DaysAfterInitiation"] = _DaysAfterInitiation,
+		["DaysAfterInitiation"] = args["DaysAfterInitiation"],
 	}
 	asserts.AssertAbortIncompleteMultipartUpload(t)
 	return t
@@ -3780,12 +4122,15 @@ end
 
 --- Create a structure of type GetBucketReplicationRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketReplicationRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketReplicationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketReplicationRequest structure as a key-value pair table
+function M.GetBucketReplicationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketReplicationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketReplicationRequest(t)
 	return t
@@ -3804,11 +4149,14 @@ end
 
 --- Create a structure of type PutObjectAclOutput
 --  
--- @param _RequestCharged [RequestCharged] 
-function M.PutObjectAclOutput(_RequestCharged, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutObjectAclOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestCharged [RequestCharged] 
+-- @return PutObjectAclOutput structure as a key-value pair table
+function M.PutObjectAclOutput(args)
+	assert(args, "You must provdide an argument table when creating PutObjectAclOutput")
 	local t = { 
-		["RequestCharged"] = _RequestCharged,
+		["RequestCharged"] = args["RequestCharged"],
 	}
 	asserts.AssertPutObjectAclOutput(t)
 	return t
@@ -3828,12 +4176,15 @@ end
 
 --- Create a structure of type IndexDocument
 --  
--- @param _Suffix [Suffix] A suffix that is appended to a request that is for a directory on the website endpoint (e.g. if the suffix is index.html and you make a request to samplebucket/images/ the data that is returned will be for the object with the key name images/index.html) The suffix must not be empty and must not include a slash character.
--- Required parameter: Suffix
-function M.IndexDocument(_Suffix, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IndexDocument")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Suffix [Suffix] A suffix that is appended to a request that is for a directory on the website endpoint (e.g. if the suffix is index.html and you make a request to samplebucket/images/ the data that is returned will be for the object with the key name images/index.html) The suffix must not be empty and must not include a slash character.
+-- Required key: Suffix
+-- @return IndexDocument structure as a key-value pair table
+function M.IndexDocument(args)
+	assert(args, "You must provdide an argument table when creating IndexDocument")
 	local t = { 
-		["Suffix"] = _Suffix,
+		["Suffix"] = args["Suffix"],
 	}
 	asserts.AssertIndexDocument(t)
 	return t
@@ -3875,55 +4226,58 @@ end
 
 --- Create a structure of type CreateMultipartUploadRequest
 --  
--- @param _RequestPayer [RequestPayer] 
--- @param _ContentEncoding [ContentEncoding] Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
--- @param _StorageClass [StorageClass] The type of storage to use for the object. Defaults to 'STANDARD'.
--- @param _GrantReadACP [GrantReadACP] Allows grantee to read the object ACL.
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _SSEKMSKeyId [SSEKMSKeyId] Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
--- @param _ContentDisposition [ContentDisposition] Specifies presentational information for the object.
--- @param _Metadata [Metadata] A map of metadata to store with the object in S3.
--- @param _SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
--- @param _WebsiteRedirectLocation [WebsiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
--- @param _Expires [Expires] The date and time at which the object is no longer cacheable.
--- @param _Key [ObjectKey] 
--- @param _CacheControl [CacheControl] Specifies caching behavior along the request/reply chain.
--- @param _Bucket [BucketName] 
--- @param _GrantRead [GrantRead] Allows grantee to read the object data and its metadata.
--- @param _GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable object.
--- @param _ACL [ObjectCannedACL] The canned ACL to apply to the object.
--- @param _GrantFullControl [GrantFullControl] Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the object.
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
--- @param _ContentType [ContentType] A standard MIME type describing the format of the object data.
--- @param _ContentLanguage [ContentLanguage] The language the content is in.
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
--- Required parameter: Bucket
--- Required parameter: Key
-function M.CreateMultipartUploadRequest(_RequestPayer, _ContentEncoding, _StorageClass, _GrantReadACP, _ServerSideEncryption, _SSEKMSKeyId, _ContentDisposition, _Metadata, _SSECustomerKey, _WebsiteRedirectLocation, _Expires, _Key, _CacheControl, _Bucket, _GrantRead, _GrantWriteACP, _ACL, _GrantFullControl, _SSECustomerAlgorithm, _ContentType, _ContentLanguage, _SSECustomerKeyMD5, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateMultipartUploadRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestPayer [RequestPayer] 
+-- * ContentEncoding [ContentEncoding] Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
+-- * StorageClass [StorageClass] The type of storage to use for the object. Defaults to 'STANDARD'.
+-- * GrantReadACP [GrantReadACP] Allows grantee to read the object ACL.
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * SSEKMSKeyId [SSEKMSKeyId] Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+-- * ContentDisposition [ContentDisposition] Specifies presentational information for the object.
+-- * Metadata [Metadata] A map of metadata to store with the object in S3.
+-- * SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
+-- * WebsiteRedirectLocation [WebsiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
+-- * Expires [Expires] The date and time at which the object is no longer cacheable.
+-- * Key [ObjectKey] 
+-- * CacheControl [CacheControl] Specifies caching behavior along the request/reply chain.
+-- * Bucket [BucketName] 
+-- * GrantRead [GrantRead] Allows grantee to read the object data and its metadata.
+-- * GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable object.
+-- * ACL [ObjectCannedACL] The canned ACL to apply to the object.
+-- * GrantFullControl [GrantFullControl] Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the object.
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
+-- * ContentType [ContentType] A standard MIME type describing the format of the object data.
+-- * ContentLanguage [ContentLanguage] The language the content is in.
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+-- Required key: Bucket
+-- Required key: Key
+-- @return CreateMultipartUploadRequest structure as a key-value pair table
+function M.CreateMultipartUploadRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateMultipartUploadRequest")
 	local t = { 
-		["RequestPayer"] = _RequestPayer,
-		["ContentEncoding"] = _ContentEncoding,
-		["StorageClass"] = _StorageClass,
-		["GrantReadACP"] = _GrantReadACP,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
-		["ContentDisposition"] = _ContentDisposition,
-		["Metadata"] = _Metadata,
-		["SSECustomerKey"] = _SSECustomerKey,
-		["WebsiteRedirectLocation"] = _WebsiteRedirectLocation,
-		["Expires"] = _Expires,
-		["Key"] = _Key,
-		["CacheControl"] = _CacheControl,
-		["Bucket"] = _Bucket,
-		["GrantRead"] = _GrantRead,
-		["GrantWriteACP"] = _GrantWriteACP,
-		["ACL"] = _ACL,
-		["GrantFullControl"] = _GrantFullControl,
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["ContentType"] = _ContentType,
-		["ContentLanguage"] = _ContentLanguage,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
+		["RequestPayer"] = args["RequestPayer"],
+		["ContentEncoding"] = args["ContentEncoding"],
+		["StorageClass"] = args["StorageClass"],
+		["GrantReadACP"] = args["GrantReadACP"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
+		["ContentDisposition"] = args["ContentDisposition"],
+		["Metadata"] = args["Metadata"],
+		["SSECustomerKey"] = args["SSECustomerKey"],
+		["WebsiteRedirectLocation"] = args["WebsiteRedirectLocation"],
+		["Expires"] = args["Expires"],
+		["Key"] = args["Key"],
+		["CacheControl"] = args["CacheControl"],
+		["Bucket"] = args["Bucket"],
+		["GrantRead"] = args["GrantRead"],
+		["GrantWriteACP"] = args["GrantWriteACP"],
+		["ACL"] = args["ACL"],
+		["GrantFullControl"] = args["GrantFullControl"],
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["ContentType"] = args["ContentType"],
+		["ContentLanguage"] = args["ContentLanguage"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
 	asserts.AssertCreateMultipartUploadRequest(t)
 	return t
@@ -3945,15 +4299,18 @@ end
 
 --- Create a structure of type GetBucketMetricsConfigurationRequest
 --  
--- @param _Bucket [BucketName] The name of the bucket containing the metrics configuration to retrieve.
--- @param _Id [MetricsId] The ID used to identify the metrics configuration.
--- Required parameter: Bucket
--- Required parameter: Id
-function M.GetBucketMetricsConfigurationRequest(_Bucket, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketMetricsConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] The name of the bucket containing the metrics configuration to retrieve.
+-- * Id [MetricsId] The ID used to identify the metrics configuration.
+-- Required key: Bucket
+-- Required key: Id
+-- @return GetBucketMetricsConfigurationRequest structure as a key-value pair table
+function M.GetBucketMetricsConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketMetricsConfigurationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["Id"] = _Id,
+		["Bucket"] = args["Bucket"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertGetBucketMetricsConfigurationRequest(t)
 	return t
@@ -3972,11 +4329,14 @@ end
 
 --- Create a structure of type GetBucketCorsOutput
 --  
--- @param _CORSRules [CORSRules] 
-function M.GetBucketCorsOutput(_CORSRules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketCorsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CORSRules [CORSRules] 
+-- @return GetBucketCorsOutput structure as a key-value pair table
+function M.GetBucketCorsOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketCorsOutput")
 	local t = { 
-		["CORSRules"] = _CORSRules,
+		["CORSRules"] = args["CORSRules"],
 	}
 	asserts.AssertGetBucketCorsOutput(t)
 	return t
@@ -3996,12 +4356,15 @@ end
 
 --- Create a structure of type BucketLifecycleConfiguration
 --  
--- @param _Rules [LifecycleRules] 
--- Required parameter: Rules
-function M.BucketLifecycleConfiguration(_Rules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BucketLifecycleConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [LifecycleRules] 
+-- Required key: Rules
+-- @return BucketLifecycleConfiguration structure as a key-value pair table
+function M.BucketLifecycleConfiguration(args)
+	assert(args, "You must provdide an argument table when creating BucketLifecycleConfiguration")
 	local t = { 
-		["Rules"] = _Rules,
+		["Rules"] = args["Rules"],
 	}
 	asserts.AssertBucketLifecycleConfiguration(t)
 	return t
@@ -4023,15 +4386,18 @@ end
 
 --- Create a structure of type DeleteBucketMetricsConfigurationRequest
 --  
--- @param _Bucket [BucketName] The name of the bucket containing the metrics configuration to delete.
--- @param _Id [MetricsId] The ID used to identify the metrics configuration.
--- Required parameter: Bucket
--- Required parameter: Id
-function M.DeleteBucketMetricsConfigurationRequest(_Bucket, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBucketMetricsConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] The name of the bucket containing the metrics configuration to delete.
+-- * Id [MetricsId] The ID used to identify the metrics configuration.
+-- Required key: Bucket
+-- Required key: Id
+-- @return DeleteBucketMetricsConfigurationRequest structure as a key-value pair table
+function M.DeleteBucketMetricsConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBucketMetricsConfigurationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["Id"] = _Id,
+		["Bucket"] = args["Bucket"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDeleteBucketMetricsConfigurationRequest(t)
 	return t
@@ -4051,12 +4417,15 @@ end
 
 --- Create a structure of type HeadBucketRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.HeadBucketRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HeadBucketRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return HeadBucketRequest structure as a key-value pair table
+function M.HeadBucketRequest(args)
+	assert(args, "You must provdide an argument table when creating HeadBucketRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertHeadBucketRequest(t)
 	return t
@@ -4081,20 +4450,23 @@ end
 
 --- Create a structure of type AbortMultipartUploadRequest
 --  
--- @param _UploadId [MultipartUploadId] 
--- @param _Bucket [BucketName] 
--- @param _RequestPayer [RequestPayer] 
--- @param _Key [ObjectKey] 
--- Required parameter: Bucket
--- Required parameter: Key
--- Required parameter: UploadId
-function M.AbortMultipartUploadRequest(_UploadId, _Bucket, _RequestPayer, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AbortMultipartUploadRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UploadId [MultipartUploadId] 
+-- * Bucket [BucketName] 
+-- * RequestPayer [RequestPayer] 
+-- * Key [ObjectKey] 
+-- Required key: Bucket
+-- Required key: Key
+-- Required key: UploadId
+-- @return AbortMultipartUploadRequest structure as a key-value pair table
+function M.AbortMultipartUploadRequest(args)
+	assert(args, "You must provdide an argument table when creating AbortMultipartUploadRequest")
 	local t = { 
-		["UploadId"] = _UploadId,
-		["Bucket"] = _Bucket,
-		["RequestPayer"] = _RequestPayer,
-		["Key"] = _Key,
+		["UploadId"] = args["UploadId"],
+		["Bucket"] = args["Bucket"],
+		["RequestPayer"] = args["RequestPayer"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertAbortMultipartUploadRequest(t)
 	return t
@@ -4115,15 +4487,18 @@ end
 
 --- Create a structure of type LifecycleRuleFilter
 -- The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must have exactly one of Prefix, Tag, or And specified.
--- @param _And [LifecycleRuleAndOperator] 
--- @param _Prefix [Prefix] Prefix identifying one or more objects to which the rule applies.
--- @param _Tag [Tag] This tag must exist in the object's tag set in order for the rule to apply.
-function M.LifecycleRuleFilter(_And, _Prefix, _Tag, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleRuleFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * And [LifecycleRuleAndOperator] 
+-- * Prefix [Prefix] Prefix identifying one or more objects to which the rule applies.
+-- * Tag [Tag] This tag must exist in the object's tag set in order for the rule to apply.
+-- @return LifecycleRuleFilter structure as a key-value pair table
+function M.LifecycleRuleFilter(args)
+	assert(args, "You must provdide an argument table when creating LifecycleRuleFilter")
 	local t = { 
-		["And"] = _And,
-		["Prefix"] = _Prefix,
-		["Tag"] = _Tag,
+		["And"] = args["And"],
+		["Prefix"] = args["Prefix"],
+		["Tag"] = args["Tag"],
 	}
 	asserts.AssertLifecycleRuleFilter(t)
 	return t
@@ -4143,13 +4518,16 @@ end
 
 --- Create a structure of type Grant
 --  
--- @param _Grantee [Grantee] 
--- @param _Permission [Permission] Specifies the permission given to the grantee.
-function M.Grant(_Grantee, _Permission, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Grant")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Grantee [Grantee] 
+-- * Permission [Permission] Specifies the permission given to the grantee.
+-- @return Grant structure as a key-value pair table
+function M.Grant(args)
+	assert(args, "You must provdide an argument table when creating Grant")
 	local t = { 
-		["Grantee"] = _Grantee,
-		["Permission"] = _Permission,
+		["Grantee"] = args["Grantee"],
+		["Permission"] = args["Permission"],
 	}
 	asserts.AssertGrant(t)
 	return t
@@ -4169,12 +4547,15 @@ end
 
 --- Create a structure of type InventoryFilter
 --  
--- @param _Prefix [Prefix] The prefix that an object must have to be included in the inventory results.
--- Required parameter: Prefix
-function M.InventoryFilter(_Prefix, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Prefix [Prefix] The prefix that an object must have to be included in the inventory results.
+-- Required key: Prefix
+-- @return InventoryFilter structure as a key-value pair table
+function M.InventoryFilter(args)
+	assert(args, "You must provdide an argument table when creating InventoryFilter")
 	local t = { 
-		["Prefix"] = _Prefix,
+		["Prefix"] = args["Prefix"],
 	}
 	asserts.AssertInventoryFilter(t)
 	return t
@@ -4198,21 +4579,24 @@ end
 
 --- Create a structure of type MultipartUpload
 --  
--- @param _Initiator [Initiator] Identifies who initiated the multipart upload.
--- @param _Initiated [Initiated] Date and time at which the multipart upload was initiated.
--- @param _UploadId [MultipartUploadId] Upload ID that identifies the multipart upload.
--- @param _StorageClass [StorageClass] The class of storage used to store the object.
--- @param _Key [ObjectKey] Key of the object for which the multipart upload was initiated.
--- @param _Owner [Owner] 
-function M.MultipartUpload(_Initiator, _Initiated, _UploadId, _StorageClass, _Key, _Owner, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MultipartUpload")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Initiator [Initiator] Identifies who initiated the multipart upload.
+-- * Initiated [Initiated] Date and time at which the multipart upload was initiated.
+-- * UploadId [MultipartUploadId] Upload ID that identifies the multipart upload.
+-- * StorageClass [StorageClass] The class of storage used to store the object.
+-- * Key [ObjectKey] Key of the object for which the multipart upload was initiated.
+-- * Owner [Owner] 
+-- @return MultipartUpload structure as a key-value pair table
+function M.MultipartUpload(args)
+	assert(args, "You must provdide an argument table when creating MultipartUpload")
 	local t = { 
-		["Initiator"] = _Initiator,
-		["Initiated"] = _Initiated,
-		["UploadId"] = _UploadId,
-		["StorageClass"] = _StorageClass,
-		["Key"] = _Key,
-		["Owner"] = _Owner,
+		["Initiator"] = args["Initiator"],
+		["Initiated"] = args["Initiated"],
+		["UploadId"] = args["UploadId"],
+		["StorageClass"] = args["StorageClass"],
+		["Key"] = args["Key"],
+		["Owner"] = args["Owner"],
 	}
 	asserts.AssertMultipartUpload(t)
 	return t
@@ -4234,17 +4618,20 @@ end
 
 --- Create a structure of type Part
 --  
--- @param _LastModified [LastModified] Date and time at which the part was uploaded.
--- @param _PartNumber [PartNumber] Part number identifying the part. This is a positive integer between 1 and 10,000.
--- @param _ETag [ETag] Entity tag returned when the part was uploaded.
--- @param _Size [Size] Size of the uploaded part data.
-function M.Part(_LastModified, _PartNumber, _ETag, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Part")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastModified [LastModified] Date and time at which the part was uploaded.
+-- * PartNumber [PartNumber] Part number identifying the part. This is a positive integer between 1 and 10,000.
+-- * ETag [ETag] Entity tag returned when the part was uploaded.
+-- * Size [Size] Size of the uploaded part data.
+-- @return Part structure as a key-value pair table
+function M.Part(args)
+	assert(args, "You must provdide an argument table when creating Part")
 	local t = { 
-		["LastModified"] = _LastModified,
-		["PartNumber"] = _PartNumber,
-		["ETag"] = _ETag,
-		["Size"] = _Size,
+		["LastModified"] = args["LastModified"],
+		["PartNumber"] = args["PartNumber"],
+		["ETag"] = args["ETag"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertPart(t)
 	return t
@@ -4265,14 +4652,17 @@ end
 
 --- Create a structure of type ListBucketAnalyticsConfigurationsRequest
 --  
--- @param _Bucket [BucketName] The name of the bucket from which analytics configurations are retrieved.
--- @param _ContinuationToken [Token] The ContinuationToken that represents a placeholder from where this request should begin.
--- Required parameter: Bucket
-function M.ListBucketAnalyticsConfigurationsRequest(_Bucket, _ContinuationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBucketAnalyticsConfigurationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] The name of the bucket from which analytics configurations are retrieved.
+-- * ContinuationToken [Token] The ContinuationToken that represents a placeholder from where this request should begin.
+-- Required key: Bucket
+-- @return ListBucketAnalyticsConfigurationsRequest structure as a key-value pair table
+function M.ListBucketAnalyticsConfigurationsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListBucketAnalyticsConfigurationsRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["ContinuationToken"] = _ContinuationToken,
+		["Bucket"] = args["Bucket"],
+		["ContinuationToken"] = args["ContinuationToken"],
 	}
 	asserts.AssertListBucketAnalyticsConfigurationsRequest(t)
 	return t
@@ -4295,19 +4685,22 @@ end
 
 --- Create a structure of type CloudFunctionConfiguration
 --  
--- @param _InvocationRole [CloudFunctionInvocationRole] 
--- @param _CloudFunction [CloudFunction] 
--- @param _Events [EventList] 
--- @param _Id [NotificationId] 
--- @param _Event [Event] 
-function M.CloudFunctionConfiguration(_InvocationRole, _CloudFunction, _Events, _Id, _Event, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudFunctionConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InvocationRole [CloudFunctionInvocationRole] 
+-- * CloudFunction [CloudFunction] 
+-- * Events [EventList] 
+-- * Id [NotificationId] 
+-- * Event [Event] 
+-- @return CloudFunctionConfiguration structure as a key-value pair table
+function M.CloudFunctionConfiguration(args)
+	assert(args, "You must provdide an argument table when creating CloudFunctionConfiguration")
 	local t = { 
-		["InvocationRole"] = _InvocationRole,
-		["CloudFunction"] = _CloudFunction,
-		["Events"] = _Events,
-		["Id"] = _Id,
-		["Event"] = _Event,
+		["InvocationRole"] = args["InvocationRole"],
+		["CloudFunction"] = args["CloudFunction"],
+		["Events"] = args["Events"],
+		["Id"] = args["Id"],
+		["Event"] = args["Event"],
 	}
 	asserts.AssertCloudFunctionConfiguration(t)
 	return t
@@ -4361,78 +4754,81 @@ end
 
 --- Create a structure of type CopyObjectRequest
 --  
--- @param _RequestPayer [RequestPayer] 
--- @param _CopySourceIfModifiedSince [CopySourceIfModifiedSince] Copies the object if it has been modified since the specified time.
--- @param _CopySourceIfUnmodifiedSince [CopySourceIfUnmodifiedSince] Copies the object if it hasn't been modified since the specified time.
--- @param _ContentEncoding [ContentEncoding] Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
--- @param _CopySourceSSECustomerKey [CopySourceSSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use to decrypt the source object. The encryption key provided in this header must be one that was used when the source object was created.
--- @param _StorageClass [StorageClass] The type of storage to use for the object. Defaults to 'STANDARD'.
--- @param _GrantReadACP [GrantReadACP] Allows grantee to read the object ACL.
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _SSEKMSKeyId [SSEKMSKeyId] Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
--- @param _ContentDisposition [ContentDisposition] Specifies presentational information for the object.
--- @param _Metadata [Metadata] A map of metadata to store with the object in S3.
--- @param _SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
--- @param _WebsiteRedirectLocation [WebsiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
--- @param _CopySource [CopySource] The name of the source bucket and key name of the source object, separated by a slash (/). Must be URL-encoded.
--- @param _Expires [Expires] The date and time at which the object is no longer cacheable.
--- @param _Key [ObjectKey] 
--- @param _CacheControl [CacheControl] Specifies caching behavior along the request/reply chain.
--- @param _Tagging [TaggingHeader] The tag-set for the object destination object this value must be used in conjunction with the TaggingDirective. The tag-set must be encoded as URL Query parameters
--- @param _CopySourceSSECustomerAlgorithm [CopySourceSSECustomerAlgorithm] Specifies the algorithm to use when decrypting the source object (e.g., AES256).
--- @param _Bucket [BucketName] 
--- @param _GrantRead [GrantRead] Allows grantee to read the object data and its metadata.
--- @param _GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable object.
--- @param _CopySourceSSECustomerKeyMD5 [CopySourceSSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
--- @param _ACL [ObjectCannedACL] The canned ACL to apply to the object.
--- @param _GrantFullControl [GrantFullControl] Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the object.
--- @param _CopySourceIfMatch [CopySourceIfMatch] Copies the object if its entity tag (ETag) matches the specified tag.
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
--- @param _ContentType [ContentType] A standard MIME type describing the format of the object data.
--- @param _ContentLanguage [ContentLanguage] The language the content is in.
--- @param _TaggingDirective [TaggingDirective] Specifies whether the object tag-set are copied from the source object or replaced with tag-set provided in the request.
--- @param _MetadataDirective [MetadataDirective] Specifies whether the metadata is copied from the source object or replaced with metadata provided in the request.
--- @param _CopySourceIfNoneMatch [CopySourceIfNoneMatch] Copies the object if its entity tag (ETag) is different than the specified ETag.
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
--- Required parameter: Bucket
--- Required parameter: CopySource
--- Required parameter: Key
-function M.CopyObjectRequest(_RequestPayer, _CopySourceIfModifiedSince, _CopySourceIfUnmodifiedSince, _ContentEncoding, _CopySourceSSECustomerKey, _StorageClass, _GrantReadACP, _ServerSideEncryption, _SSEKMSKeyId, _ContentDisposition, _Metadata, _SSECustomerKey, _WebsiteRedirectLocation, _CopySource, _Expires, _Key, _CacheControl, _Tagging, _CopySourceSSECustomerAlgorithm, _Bucket, _GrantRead, _GrantWriteACP, _CopySourceSSECustomerKeyMD5, _ACL, _GrantFullControl, _CopySourceIfMatch, _SSECustomerAlgorithm, _ContentType, _ContentLanguage, _TaggingDirective, _MetadataDirective, _CopySourceIfNoneMatch, _SSECustomerKeyMD5, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CopyObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestPayer [RequestPayer] 
+-- * CopySourceIfModifiedSince [CopySourceIfModifiedSince] Copies the object if it has been modified since the specified time.
+-- * CopySourceIfUnmodifiedSince [CopySourceIfUnmodifiedSince] Copies the object if it hasn't been modified since the specified time.
+-- * ContentEncoding [ContentEncoding] Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
+-- * CopySourceSSECustomerKey [CopySourceSSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use to decrypt the source object. The encryption key provided in this header must be one that was used when the source object was created.
+-- * StorageClass [StorageClass] The type of storage to use for the object. Defaults to 'STANDARD'.
+-- * GrantReadACP [GrantReadACP] Allows grantee to read the object ACL.
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * SSEKMSKeyId [SSEKMSKeyId] Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+-- * ContentDisposition [ContentDisposition] Specifies presentational information for the object.
+-- * Metadata [Metadata] A map of metadata to store with the object in S3.
+-- * SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
+-- * WebsiteRedirectLocation [WebsiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
+-- * CopySource [CopySource] The name of the source bucket and key name of the source object, separated by a slash (/). Must be URL-encoded.
+-- * Expires [Expires] The date and time at which the object is no longer cacheable.
+-- * Key [ObjectKey] 
+-- * CacheControl [CacheControl] Specifies caching behavior along the request/reply chain.
+-- * Tagging [TaggingHeader] The tag-set for the object destination object this value must be used in conjunction with the TaggingDirective. The tag-set must be encoded as URL Query parameters
+-- * CopySourceSSECustomerAlgorithm [CopySourceSSECustomerAlgorithm] Specifies the algorithm to use when decrypting the source object (e.g., AES256).
+-- * Bucket [BucketName] 
+-- * GrantRead [GrantRead] Allows grantee to read the object data and its metadata.
+-- * GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable object.
+-- * CopySourceSSECustomerKeyMD5 [CopySourceSSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+-- * ACL [ObjectCannedACL] The canned ACL to apply to the object.
+-- * GrantFullControl [GrantFullControl] Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the object.
+-- * CopySourceIfMatch [CopySourceIfMatch] Copies the object if its entity tag (ETag) matches the specified tag.
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
+-- * ContentType [ContentType] A standard MIME type describing the format of the object data.
+-- * ContentLanguage [ContentLanguage] The language the content is in.
+-- * TaggingDirective [TaggingDirective] Specifies whether the object tag-set are copied from the source object or replaced with tag-set provided in the request.
+-- * MetadataDirective [MetadataDirective] Specifies whether the metadata is copied from the source object or replaced with metadata provided in the request.
+-- * CopySourceIfNoneMatch [CopySourceIfNoneMatch] Copies the object if its entity tag (ETag) is different than the specified ETag.
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+-- Required key: Bucket
+-- Required key: CopySource
+-- Required key: Key
+-- @return CopyObjectRequest structure as a key-value pair table
+function M.CopyObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating CopyObjectRequest")
 	local t = { 
-		["RequestPayer"] = _RequestPayer,
-		["CopySourceIfModifiedSince"] = _CopySourceIfModifiedSince,
-		["CopySourceIfUnmodifiedSince"] = _CopySourceIfUnmodifiedSince,
-		["ContentEncoding"] = _ContentEncoding,
-		["CopySourceSSECustomerKey"] = _CopySourceSSECustomerKey,
-		["StorageClass"] = _StorageClass,
-		["GrantReadACP"] = _GrantReadACP,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
-		["ContentDisposition"] = _ContentDisposition,
-		["Metadata"] = _Metadata,
-		["SSECustomerKey"] = _SSECustomerKey,
-		["WebsiteRedirectLocation"] = _WebsiteRedirectLocation,
-		["CopySource"] = _CopySource,
-		["Expires"] = _Expires,
-		["Key"] = _Key,
-		["CacheControl"] = _CacheControl,
-		["Tagging"] = _Tagging,
-		["CopySourceSSECustomerAlgorithm"] = _CopySourceSSECustomerAlgorithm,
-		["Bucket"] = _Bucket,
-		["GrantRead"] = _GrantRead,
-		["GrantWriteACP"] = _GrantWriteACP,
-		["CopySourceSSECustomerKeyMD5"] = _CopySourceSSECustomerKeyMD5,
-		["ACL"] = _ACL,
-		["GrantFullControl"] = _GrantFullControl,
-		["CopySourceIfMatch"] = _CopySourceIfMatch,
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["ContentType"] = _ContentType,
-		["ContentLanguage"] = _ContentLanguage,
-		["TaggingDirective"] = _TaggingDirective,
-		["MetadataDirective"] = _MetadataDirective,
-		["CopySourceIfNoneMatch"] = _CopySourceIfNoneMatch,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
+		["RequestPayer"] = args["RequestPayer"],
+		["CopySourceIfModifiedSince"] = args["CopySourceIfModifiedSince"],
+		["CopySourceIfUnmodifiedSince"] = args["CopySourceIfUnmodifiedSince"],
+		["ContentEncoding"] = args["ContentEncoding"],
+		["CopySourceSSECustomerKey"] = args["CopySourceSSECustomerKey"],
+		["StorageClass"] = args["StorageClass"],
+		["GrantReadACP"] = args["GrantReadACP"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
+		["ContentDisposition"] = args["ContentDisposition"],
+		["Metadata"] = args["Metadata"],
+		["SSECustomerKey"] = args["SSECustomerKey"],
+		["WebsiteRedirectLocation"] = args["WebsiteRedirectLocation"],
+		["CopySource"] = args["CopySource"],
+		["Expires"] = args["Expires"],
+		["Key"] = args["Key"],
+		["CacheControl"] = args["CacheControl"],
+		["Tagging"] = args["Tagging"],
+		["CopySourceSSECustomerAlgorithm"] = args["CopySourceSSECustomerAlgorithm"],
+		["Bucket"] = args["Bucket"],
+		["GrantRead"] = args["GrantRead"],
+		["GrantWriteACP"] = args["GrantWriteACP"],
+		["CopySourceSSECustomerKeyMD5"] = args["CopySourceSSECustomerKeyMD5"],
+		["ACL"] = args["ACL"],
+		["GrantFullControl"] = args["GrantFullControl"],
+		["CopySourceIfMatch"] = args["CopySourceIfMatch"],
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["ContentType"] = args["ContentType"],
+		["ContentLanguage"] = args["ContentLanguage"],
+		["TaggingDirective"] = args["TaggingDirective"],
+		["MetadataDirective"] = args["MetadataDirective"],
+		["CopySourceIfNoneMatch"] = args["CopySourceIfNoneMatch"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
 	asserts.AssertCopyObjectRequest(t)
 	return t
@@ -4460,29 +4856,32 @@ end
 
 --- Create a structure of type CreateMultipartUploadOutput
 --  
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
--- @param _AbortRuleId [AbortRuleId] Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
--- @param _AbortDate [AbortDate] Date when multipart upload will become eligible for abort operation by lifecycle.
--- @param _Bucket [BucketName] Name of the bucket to which the multipart upload was initiated.
--- @param _RequestCharged [RequestCharged] 
--- @param _UploadId [MultipartUploadId] ID for the initiated multipart upload.
--- @param _Key [ObjectKey] Object key for which the multipart upload was initiated.
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
--- @param _SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-function M.CreateMultipartUploadOutput(_SSECustomerAlgorithm, _AbortRuleId, _AbortDate, _Bucket, _RequestCharged, _UploadId, _Key, _ServerSideEncryption, _SSECustomerKeyMD5, _SSEKMSKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateMultipartUploadOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
+-- * AbortRuleId [AbortRuleId] Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
+-- * AbortDate [AbortDate] Date when multipart upload will become eligible for abort operation by lifecycle.
+-- * Bucket [BucketName] Name of the bucket to which the multipart upload was initiated.
+-- * RequestCharged [RequestCharged] 
+-- * UploadId [MultipartUploadId] ID for the initiated multipart upload.
+-- * Key [ObjectKey] Object key for which the multipart upload was initiated.
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
+-- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
+-- @return CreateMultipartUploadOutput structure as a key-value pair table
+function M.CreateMultipartUploadOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateMultipartUploadOutput")
 	local t = { 
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["AbortRuleId"] = _AbortRuleId,
-		["AbortDate"] = _AbortDate,
-		["Bucket"] = _Bucket,
-		["RequestCharged"] = _RequestCharged,
-		["UploadId"] = _UploadId,
-		["Key"] = _Key,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["AbortRuleId"] = args["AbortRuleId"],
+		["AbortDate"] = args["AbortDate"],
+		["Bucket"] = args["Bucket"],
+		["RequestCharged"] = args["RequestCharged"],
+		["UploadId"] = args["UploadId"],
+		["Key"] = args["Key"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
 	}
 	asserts.AssertCreateMultipartUploadOutput(t)
 	return t
@@ -4506,19 +4905,22 @@ end
 
 --- Create a structure of type AnalyticsS3BucketDestination
 --  
--- @param _Prefix [Prefix] The prefix to use when exporting data. The exported data begins with this prefix.
--- @param _BucketAccountId [AccountId] The account ID that owns the destination bucket. If no account ID is provided, the owner will not be validated prior to exporting data.
--- @param _Bucket [BucketName] The Amazon resource name (ARN) of the bucket to which data is exported.
--- @param _Format [AnalyticsS3ExportFileFormat] The file format used when exporting data to Amazon S3.
--- Required parameter: Format
--- Required parameter: Bucket
-function M.AnalyticsS3BucketDestination(_Prefix, _BucketAccountId, _Bucket, _Format, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AnalyticsS3BucketDestination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Prefix [Prefix] The prefix to use when exporting data. The exported data begins with this prefix.
+-- * BucketAccountId [AccountId] The account ID that owns the destination bucket. If no account ID is provided, the owner will not be validated prior to exporting data.
+-- * Bucket [BucketName] The Amazon resource name (ARN) of the bucket to which data is exported.
+-- * Format [AnalyticsS3ExportFileFormat] The file format used when exporting data to Amazon S3.
+-- Required key: Format
+-- Required key: Bucket
+-- @return AnalyticsS3BucketDestination structure as a key-value pair table
+function M.AnalyticsS3BucketDestination(args)
+	assert(args, "You must provdide an argument table when creating AnalyticsS3BucketDestination")
 	local t = { 
-		["Prefix"] = _Prefix,
-		["BucketAccountId"] = _BucketAccountId,
-		["Bucket"] = _Bucket,
-		["Format"] = _Format,
+		["Prefix"] = args["Prefix"],
+		["BucketAccountId"] = args["BucketAccountId"],
+		["Bucket"] = args["Bucket"],
+		["Format"] = args["Format"],
 	}
 	asserts.AssertAnalyticsS3BucketDestination(t)
 	return t
@@ -4540,15 +4942,18 @@ end
 
 --- Create a structure of type GetBucketAnalyticsConfigurationRequest
 --  
--- @param _Bucket [BucketName] The name of the bucket from which an analytics configuration is retrieved.
--- @param _Id [AnalyticsId] The identifier used to represent an analytics configuration.
--- Required parameter: Bucket
--- Required parameter: Id
-function M.GetBucketAnalyticsConfigurationRequest(_Bucket, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketAnalyticsConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] The name of the bucket from which an analytics configuration is retrieved.
+-- * Id [AnalyticsId] The identifier used to represent an analytics configuration.
+-- Required key: Bucket
+-- Required key: Id
+-- @return GetBucketAnalyticsConfigurationRequest structure as a key-value pair table
+function M.GetBucketAnalyticsConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketAnalyticsConfigurationRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["Id"] = _Id,
+		["Bucket"] = args["Bucket"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertGetBucketAnalyticsConfigurationRequest(t)
 	return t
@@ -4570,17 +4975,20 @@ end
 
 --- Create a structure of type DeletedObject
 --  
--- @param _VersionId [ObjectVersionId] 
--- @param _DeleteMarkerVersionId [DeleteMarkerVersionId] 
--- @param _Key [ObjectKey] 
--- @param _DeleteMarker [DeleteMarker] 
-function M.DeletedObject(_VersionId, _DeleteMarkerVersionId, _Key, _DeleteMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletedObject")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] 
+-- * DeleteMarkerVersionId [DeleteMarkerVersionId] 
+-- * Key [ObjectKey] 
+-- * DeleteMarker [DeleteMarker] 
+-- @return DeletedObject structure as a key-value pair table
+function M.DeletedObject(args)
+	assert(args, "You must provdide an argument table when creating DeletedObject")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["DeleteMarkerVersionId"] = _DeleteMarkerVersionId,
-		["Key"] = _Key,
-		["DeleteMarker"] = _DeleteMarker,
+		["VersionId"] = args["VersionId"],
+		["DeleteMarkerVersionId"] = args["DeleteMarkerVersionId"],
+		["Key"] = args["Key"],
+		["DeleteMarker"] = args["DeleteMarker"],
 	}
 	asserts.AssertDeletedObject(t)
 	return t
@@ -4606,22 +5014,25 @@ end
 
 --- Create a structure of type CompleteMultipartUploadRequest
 --  
--- @param _MultipartUpload [CompletedMultipartUpload] 
--- @param _UploadId [MultipartUploadId] 
--- @param _Bucket [BucketName] 
--- @param _RequestPayer [RequestPayer] 
--- @param _Key [ObjectKey] 
--- Required parameter: Bucket
--- Required parameter: Key
--- Required parameter: UploadId
-function M.CompleteMultipartUploadRequest(_MultipartUpload, _UploadId, _Bucket, _RequestPayer, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CompleteMultipartUploadRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MultipartUpload [CompletedMultipartUpload] 
+-- * UploadId [MultipartUploadId] 
+-- * Bucket [BucketName] 
+-- * RequestPayer [RequestPayer] 
+-- * Key [ObjectKey] 
+-- Required key: Bucket
+-- Required key: Key
+-- Required key: UploadId
+-- @return CompleteMultipartUploadRequest structure as a key-value pair table
+function M.CompleteMultipartUploadRequest(args)
+	assert(args, "You must provdide an argument table when creating CompleteMultipartUploadRequest")
 	local t = { 
-		["MultipartUpload"] = _MultipartUpload,
-		["UploadId"] = _UploadId,
-		["Bucket"] = _Bucket,
-		["RequestPayer"] = _RequestPayer,
-		["Key"] = _Key,
+		["MultipartUpload"] = args["MultipartUpload"],
+		["UploadId"] = args["UploadId"],
+		["Bucket"] = args["Bucket"],
+		["RequestPayer"] = args["RequestPayer"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertCompleteMultipartUploadRequest(t)
 	return t
@@ -4648,24 +5059,27 @@ end
 
 --- Create a structure of type ListPartsRequest
 --  
--- @param _RequestPayer [RequestPayer] 
--- @param _Bucket [BucketName] 
--- @param _UploadId [MultipartUploadId] Upload ID identifying the multipart upload whose parts are being listed.
--- @param _Key [ObjectKey] 
--- @param _MaxParts [MaxParts] Sets the maximum number of parts to return.
--- @param _PartNumberMarker [PartNumberMarker] Specifies the part after which listing should begin. Only parts with higher part numbers will be listed.
--- Required parameter: Bucket
--- Required parameter: Key
--- Required parameter: UploadId
-function M.ListPartsRequest(_RequestPayer, _Bucket, _UploadId, _Key, _MaxParts, _PartNumberMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPartsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestPayer [RequestPayer] 
+-- * Bucket [BucketName] 
+-- * UploadId [MultipartUploadId] Upload ID identifying the multipart upload whose parts are being listed.
+-- * Key [ObjectKey] 
+-- * MaxParts [MaxParts] Sets the maximum number of parts to return.
+-- * PartNumberMarker [PartNumberMarker] Specifies the part after which listing should begin. Only parts with higher part numbers will be listed.
+-- Required key: Bucket
+-- Required key: Key
+-- Required key: UploadId
+-- @return ListPartsRequest structure as a key-value pair table
+function M.ListPartsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPartsRequest")
 	local t = { 
-		["RequestPayer"] = _RequestPayer,
-		["Bucket"] = _Bucket,
-		["UploadId"] = _UploadId,
-		["Key"] = _Key,
-		["MaxParts"] = _MaxParts,
-		["PartNumberMarker"] = _PartNumberMarker,
+		["RequestPayer"] = args["RequestPayer"],
+		["Bucket"] = args["Bucket"],
+		["UploadId"] = args["UploadId"],
+		["Key"] = args["Key"],
+		["MaxParts"] = args["MaxParts"],
+		["PartNumberMarker"] = args["PartNumberMarker"],
 	}
 	asserts.AssertListPartsRequest(t)
 	return t
@@ -4689,19 +5103,22 @@ end
 
 --- Create a structure of type InventoryS3BucketDestination
 --  
--- @param _Prefix [Prefix] The prefix that is prepended to all inventory results.
--- @param _Format [InventoryFormat] Specifies the output format of the inventory results.
--- @param _Bucket [BucketName] The Amazon resource name (ARN) of the bucket where inventory results will be published.
--- @param _AccountId [AccountId] The ID of the account that owns the destination bucket.
--- Required parameter: Bucket
--- Required parameter: Format
-function M.InventoryS3BucketDestination(_Prefix, _Format, _Bucket, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventoryS3BucketDestination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Prefix [Prefix] The prefix that is prepended to all inventory results.
+-- * Format [InventoryFormat] Specifies the output format of the inventory results.
+-- * Bucket [BucketName] The Amazon resource name (ARN) of the bucket where inventory results will be published.
+-- * AccountId [AccountId] The ID of the account that owns the destination bucket.
+-- Required key: Bucket
+-- Required key: Format
+-- @return InventoryS3BucketDestination structure as a key-value pair table
+function M.InventoryS3BucketDestination(args)
+	assert(args, "You must provdide an argument table when creating InventoryS3BucketDestination")
 	local t = { 
-		["Prefix"] = _Prefix,
-		["Format"] = _Format,
-		["Bucket"] = _Bucket,
-		["AccountId"] = _AccountId,
+		["Prefix"] = args["Prefix"],
+		["Format"] = args["Format"],
+		["Bucket"] = args["Bucket"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertInventoryS3BucketDestination(t)
 	return t
@@ -4723,17 +5140,20 @@ end
 
 --- Create a structure of type WebsiteConfiguration
 --  
--- @param _RedirectAllRequestsTo [RedirectAllRequestsTo] 
--- @param _IndexDocument [IndexDocument] 
--- @param _ErrorDocument [ErrorDocument] 
--- @param _RoutingRules [RoutingRules] 
-function M.WebsiteConfiguration(_RedirectAllRequestsTo, _IndexDocument, _ErrorDocument, _RoutingRules, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WebsiteConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RedirectAllRequestsTo [RedirectAllRequestsTo] 
+-- * IndexDocument [IndexDocument] 
+-- * ErrorDocument [ErrorDocument] 
+-- * RoutingRules [RoutingRules] 
+-- @return WebsiteConfiguration structure as a key-value pair table
+function M.WebsiteConfiguration(args)
+	assert(args, "You must provdide an argument table when creating WebsiteConfiguration")
 	local t = { 
-		["RedirectAllRequestsTo"] = _RedirectAllRequestsTo,
-		["IndexDocument"] = _IndexDocument,
-		["ErrorDocument"] = _ErrorDocument,
-		["RoutingRules"] = _RoutingRules,
+		["RedirectAllRequestsTo"] = args["RedirectAllRequestsTo"],
+		["IndexDocument"] = args["IndexDocument"],
+		["ErrorDocument"] = args["ErrorDocument"],
+		["RoutingRules"] = args["RoutingRules"],
 	}
 	asserts.AssertWebsiteConfiguration(t)
 	return t
@@ -4757,21 +5177,24 @@ end
 
 --- Create a structure of type UploadPartOutput
 --  
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _ETag [ETag] Entity tag for the uploaded object.
--- @param _RequestCharged [RequestCharged] 
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
--- @param _SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
-function M.UploadPartOutput(_SSECustomerAlgorithm, _ServerSideEncryption, _ETag, _RequestCharged, _SSECustomerKeyMD5, _SSEKMSKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadPartOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * ETag [ETag] Entity tag for the uploaded object.
+-- * RequestCharged [RequestCharged] 
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
+-- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
+-- @return UploadPartOutput structure as a key-value pair table
+function M.UploadPartOutput(args)
+	assert(args, "You must provdide an argument table when creating UploadPartOutput")
 	local t = { 
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["ETag"] = _ETag,
-		["RequestCharged"] = _RequestCharged,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["ETag"] = args["ETag"],
+		["RequestCharged"] = args["RequestCharged"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
 	}
 	asserts.AssertUploadPartOutput(t)
 	return t
@@ -4791,12 +5214,15 @@ end
 
 --- Create a structure of type InventorySchedule
 --  
--- @param _Frequency [InventoryFrequency] Specifies how frequently inventory results are produced.
--- Required parameter: Frequency
-function M.InventorySchedule(_Frequency, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InventorySchedule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Frequency [InventoryFrequency] Specifies how frequently inventory results are produced.
+-- Required key: Frequency
+-- @return InventorySchedule structure as a key-value pair table
+function M.InventorySchedule(args)
+	assert(args, "You must provdide an argument table when creating InventorySchedule")
 	local t = { 
-		["Frequency"] = _Frequency,
+		["Frequency"] = args["Frequency"],
 	}
 	asserts.AssertInventorySchedule(t)
 	return t
@@ -4817,15 +5243,18 @@ end
 
 --- Create a structure of type DeleteObjectsOutput
 --  
--- @param _Deleted [DeletedObjects] 
--- @param _Errors [Errors] 
--- @param _RequestCharged [RequestCharged] 
-function M.DeleteObjectsOutput(_Deleted, _Errors, _RequestCharged, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteObjectsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Deleted [DeletedObjects] 
+-- * Errors [Errors] 
+-- * RequestCharged [RequestCharged] 
+-- @return DeleteObjectsOutput structure as a key-value pair table
+function M.DeleteObjectsOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteObjectsOutput")
 	local t = { 
-		["Deleted"] = _Deleted,
-		["Errors"] = _Errors,
-		["RequestCharged"] = _RequestCharged,
+		["Deleted"] = args["Deleted"],
+		["Errors"] = args["Errors"],
+		["RequestCharged"] = args["RequestCharged"],
 	}
 	asserts.AssertDeleteObjectsOutput(t)
 	return t
@@ -4847,15 +5276,18 @@ end
 
 --- Create a structure of type StorageClassAnalysisDataExport
 --  
--- @param _Destination [AnalyticsExportDestination] The place to store the data for an analysis.
--- @param _OutputSchemaVersion [StorageClassAnalysisSchemaVersion] The version of the output schema to use when exporting data. Must be V_1.
--- Required parameter: OutputSchemaVersion
--- Required parameter: Destination
-function M.StorageClassAnalysisDataExport(_Destination, _OutputSchemaVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StorageClassAnalysisDataExport")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Destination [AnalyticsExportDestination] The place to store the data for an analysis.
+-- * OutputSchemaVersion [StorageClassAnalysisSchemaVersion] The version of the output schema to use when exporting data. Must be V_1.
+-- Required key: OutputSchemaVersion
+-- Required key: Destination
+-- @return StorageClassAnalysisDataExport structure as a key-value pair table
+function M.StorageClassAnalysisDataExport(args)
+	assert(args, "You must provdide an argument table when creating StorageClassAnalysisDataExport")
 	local t = { 
-		["Destination"] = _Destination,
-		["OutputSchemaVersion"] = _OutputSchemaVersion,
+		["Destination"] = args["Destination"],
+		["OutputSchemaVersion"] = args["OutputSchemaVersion"],
 	}
 	asserts.AssertStorageClassAnalysisDataExport(t)
 	return t
@@ -4876,14 +5308,17 @@ end
 
 --- Create a structure of type RoutingRule
 --  
--- @param _Redirect [Redirect] Container for redirect information. You can redirect requests to another host, to another page, or with another protocol. In the event of an error, you can can specify a different error code to return.
--- @param _Condition [Condition] A container for describing a condition that must be met for the specified redirect to apply. For example, 1. If request is for pages in the /docs folder, redirect to the /documents folder. 2. If request results in HTTP error 4xx, redirect request to another host where you might process the error.
--- Required parameter: Redirect
-function M.RoutingRule(_Redirect, _Condition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RoutingRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Redirect [Redirect] Container for redirect information. You can redirect requests to another host, to another page, or with another protocol. In the event of an error, you can can specify a different error code to return.
+-- * Condition [Condition] A container for describing a condition that must be met for the specified redirect to apply. For example, 1. If request is for pages in the /docs folder, redirect to the /documents folder. 2. If request results in HTTP error 4xx, redirect request to another host where you might process the error.
+-- Required key: Redirect
+-- @return RoutingRule structure as a key-value pair table
+function M.RoutingRule(args)
+	assert(args, "You must provdide an argument table when creating RoutingRule")
 	local t = { 
-		["Redirect"] = _Redirect,
-		["Condition"] = _Condition,
+		["Redirect"] = args["Redirect"],
+		["Condition"] = args["Condition"],
 	}
 	asserts.AssertRoutingRule(t)
 	return t
@@ -4929,63 +5364,66 @@ end
 
 --- Create a structure of type PutObjectRequest
 --  
--- @param _RequestPayer [RequestPayer] 
--- @param _ContentEncoding [ContentEncoding] Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
--- @param _StorageClass [StorageClass] The type of storage to use for the object. Defaults to 'STANDARD'.
--- @param _GrantReadACP [GrantReadACP] Allows grantee to read the object ACL.
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _SSEKMSKeyId [SSEKMSKeyId] Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
--- @param _ContentDisposition [ContentDisposition] Specifies presentational information for the object.
--- @param _Metadata [Metadata] A map of metadata to store with the object in S3.
--- @param _Body [Body] Object data.
--- @param _SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
--- @param _WebsiteRedirectLocation [WebsiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
--- @param _Expires [Expires] The date and time at which the object is no longer cacheable.
--- @param _Key [ObjectKey] Object key for which the PUT operation was initiated.
--- @param _CacheControl [CacheControl] Specifies caching behavior along the request/reply chain.
--- @param _Tagging [TaggingHeader] The tag-set for the object. The tag-set must be encoded as URL Query parameters
--- @param _ContentLength [ContentLength] Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.
--- @param _Bucket [BucketName] Name of the bucket to which the PUT operation was initiated.
--- @param _GrantRead [GrantRead] Allows grantee to read the object data and its metadata.
--- @param _GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable object.
--- @param _ACL [ObjectCannedACL] The canned ACL to apply to the object.
--- @param _GrantFullControl [GrantFullControl] Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the object.
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
--- @param _ContentType [ContentType] A standard MIME type describing the format of the object data.
--- @param _ContentLanguage [ContentLanguage] The language the content is in.
--- @param _ContentMD5 [ContentMD5] The base64-encoded 128-bit MD5 digest of the part data.
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
--- Required parameter: Bucket
--- Required parameter: Key
-function M.PutObjectRequest(_RequestPayer, _ContentEncoding, _StorageClass, _GrantReadACP, _ServerSideEncryption, _SSEKMSKeyId, _ContentDisposition, _Metadata, _Body, _SSECustomerKey, _WebsiteRedirectLocation, _Expires, _Key, _CacheControl, _Tagging, _ContentLength, _Bucket, _GrantRead, _GrantWriteACP, _ACL, _GrantFullControl, _SSECustomerAlgorithm, _ContentType, _ContentLanguage, _ContentMD5, _SSECustomerKeyMD5, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestPayer [RequestPayer] 
+-- * ContentEncoding [ContentEncoding] Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field.
+-- * StorageClass [StorageClass] The type of storage to use for the object. Defaults to 'STANDARD'.
+-- * GrantReadACP [GrantReadACP] Allows grantee to read the object ACL.
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * SSEKMSKeyId [SSEKMSKeyId] Specifies the AWS KMS key ID to use for object encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not made via SSL or using SigV4. Documentation on configuring any of the officially supported AWS SDKs and CLI can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version
+-- * ContentDisposition [ContentDisposition] Specifies presentational information for the object.
+-- * Metadata [Metadata] A map of metadata to store with the object in S3.
+-- * Body [Body] Object data.
+-- * SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
+-- * WebsiteRedirectLocation [WebsiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
+-- * Expires [Expires] The date and time at which the object is no longer cacheable.
+-- * Key [ObjectKey] Object key for which the PUT operation was initiated.
+-- * CacheControl [CacheControl] Specifies caching behavior along the request/reply chain.
+-- * Tagging [TaggingHeader] The tag-set for the object. The tag-set must be encoded as URL Query parameters
+-- * ContentLength [ContentLength] Size of the body in bytes. This parameter is useful when the size of the body cannot be determined automatically.
+-- * Bucket [BucketName] Name of the bucket to which the PUT operation was initiated.
+-- * GrantRead [GrantRead] Allows grantee to read the object data and its metadata.
+-- * GrantWriteACP [GrantWriteACP] Allows grantee to write the ACL for the applicable object.
+-- * ACL [ObjectCannedACL] The canned ACL to apply to the object.
+-- * GrantFullControl [GrantFullControl] Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the object.
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
+-- * ContentType [ContentType] A standard MIME type describing the format of the object data.
+-- * ContentLanguage [ContentLanguage] The language the content is in.
+-- * ContentMD5 [ContentMD5] The base64-encoded 128-bit MD5 digest of the part data.
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+-- Required key: Bucket
+-- Required key: Key
+-- @return PutObjectRequest structure as a key-value pair table
+function M.PutObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating PutObjectRequest")
 	local t = { 
-		["RequestPayer"] = _RequestPayer,
-		["ContentEncoding"] = _ContentEncoding,
-		["StorageClass"] = _StorageClass,
-		["GrantReadACP"] = _GrantReadACP,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
-		["ContentDisposition"] = _ContentDisposition,
-		["Metadata"] = _Metadata,
-		["Body"] = _Body,
-		["SSECustomerKey"] = _SSECustomerKey,
-		["WebsiteRedirectLocation"] = _WebsiteRedirectLocation,
-		["Expires"] = _Expires,
-		["Key"] = _Key,
-		["CacheControl"] = _CacheControl,
-		["Tagging"] = _Tagging,
-		["ContentLength"] = _ContentLength,
-		["Bucket"] = _Bucket,
-		["GrantRead"] = _GrantRead,
-		["GrantWriteACP"] = _GrantWriteACP,
-		["ACL"] = _ACL,
-		["GrantFullControl"] = _GrantFullControl,
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["ContentType"] = _ContentType,
-		["ContentLanguage"] = _ContentLanguage,
-		["ContentMD5"] = _ContentMD5,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
+		["RequestPayer"] = args["RequestPayer"],
+		["ContentEncoding"] = args["ContentEncoding"],
+		["StorageClass"] = args["StorageClass"],
+		["GrantReadACP"] = args["GrantReadACP"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
+		["ContentDisposition"] = args["ContentDisposition"],
+		["Metadata"] = args["Metadata"],
+		["Body"] = args["Body"],
+		["SSECustomerKey"] = args["SSECustomerKey"],
+		["WebsiteRedirectLocation"] = args["WebsiteRedirectLocation"],
+		["Expires"] = args["Expires"],
+		["Key"] = args["Key"],
+		["CacheControl"] = args["CacheControl"],
+		["Tagging"] = args["Tagging"],
+		["ContentLength"] = args["ContentLength"],
+		["Bucket"] = args["Bucket"],
+		["GrantRead"] = args["GrantRead"],
+		["GrantWriteACP"] = args["GrantWriteACP"],
+		["ACL"] = args["ACL"],
+		["GrantFullControl"] = args["GrantFullControl"],
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["ContentType"] = args["ContentType"],
+		["ContentLanguage"] = args["ContentLanguage"],
+		["ContentMD5"] = args["ContentMD5"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
 	asserts.AssertPutObjectRequest(t)
 	return t
@@ -5011,25 +5449,28 @@ end
 
 --- Create a structure of type ObjectVersion
 --  
--- @param _LastModified [LastModified] Date and time the object was last modified.
--- @param _VersionId [ObjectVersionId] Version ID of an object.
--- @param _ETag [ETag] 
--- @param _StorageClass [ObjectVersionStorageClass] The class of storage used to store the object.
--- @param _Key [ObjectKey] The object key.
--- @param _Owner [Owner] 
--- @param _IsLatest [IsLatest] Specifies whether the object is (true) or is not (false) the latest version of an object.
--- @param _Size [Size] Size in bytes of the object.
-function M.ObjectVersion(_LastModified, _VersionId, _ETag, _StorageClass, _Key, _Owner, _IsLatest, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ObjectVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastModified [LastModified] Date and time the object was last modified.
+-- * VersionId [ObjectVersionId] Version ID of an object.
+-- * ETag [ETag] 
+-- * StorageClass [ObjectVersionStorageClass] The class of storage used to store the object.
+-- * Key [ObjectKey] The object key.
+-- * Owner [Owner] 
+-- * IsLatest [IsLatest] Specifies whether the object is (true) or is not (false) the latest version of an object.
+-- * Size [Size] Size in bytes of the object.
+-- @return ObjectVersion structure as a key-value pair table
+function M.ObjectVersion(args)
+	assert(args, "You must provdide an argument table when creating ObjectVersion")
 	local t = { 
-		["LastModified"] = _LastModified,
-		["VersionId"] = _VersionId,
-		["ETag"] = _ETag,
-		["StorageClass"] = _StorageClass,
-		["Key"] = _Key,
-		["Owner"] = _Owner,
-		["IsLatest"] = _IsLatest,
-		["Size"] = _Size,
+		["LastModified"] = args["LastModified"],
+		["VersionId"] = args["VersionId"],
+		["ETag"] = args["ETag"],
+		["StorageClass"] = args["StorageClass"],
+		["Key"] = args["Key"],
+		["Owner"] = args["Owner"],
+		["IsLatest"] = args["IsLatest"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertObjectVersion(t)
 	return t
@@ -5051,17 +5492,20 @@ end
 
 --- Create a structure of type ListBucketInventoryConfigurationsOutput
 --  
--- @param _NextContinuationToken [NextToken] The marker used to continue this inventory configuration listing. Use the NextContinuationToken from this response to continue the listing in a subsequent request. The continuation token is an opaque value that Amazon S3 understands.
--- @param _InventoryConfigurationList [InventoryConfigurationList] The list of inventory configurations for a bucket.
--- @param _ContinuationToken [Token] If sent in the request, the marker that is used as a starting point for this inventory configuration list response.
--- @param _IsTruncated [IsTruncated] Indicates whether the returned list of inventory configurations is truncated in this response. A value of true indicates that the list is truncated.
-function M.ListBucketInventoryConfigurationsOutput(_NextContinuationToken, _InventoryConfigurationList, _ContinuationToken, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBucketInventoryConfigurationsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextContinuationToken [NextToken] The marker used to continue this inventory configuration listing. Use the NextContinuationToken from this response to continue the listing in a subsequent request. The continuation token is an opaque value that Amazon S3 understands.
+-- * InventoryConfigurationList [InventoryConfigurationList] The list of inventory configurations for a bucket.
+-- * ContinuationToken [Token] If sent in the request, the marker that is used as a starting point for this inventory configuration list response.
+-- * IsTruncated [IsTruncated] Indicates whether the returned list of inventory configurations is truncated in this response. A value of true indicates that the list is truncated.
+-- @return ListBucketInventoryConfigurationsOutput structure as a key-value pair table
+function M.ListBucketInventoryConfigurationsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListBucketInventoryConfigurationsOutput")
 	local t = { 
-		["NextContinuationToken"] = _NextContinuationToken,
-		["InventoryConfigurationList"] = _InventoryConfigurationList,
-		["ContinuationToken"] = _ContinuationToken,
-		["IsTruncated"] = _IsTruncated,
+		["NextContinuationToken"] = args["NextContinuationToken"],
+		["InventoryConfigurationList"] = args["InventoryConfigurationList"],
+		["ContinuationToken"] = args["ContinuationToken"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListBucketInventoryConfigurationsOutput(t)
 	return t
@@ -5082,14 +5526,17 @@ end
 
 --- Create a structure of type GetObjectTaggingOutput
 --  
--- @param _VersionId [ObjectVersionId] 
--- @param _TagSet [TagSet] 
--- Required parameter: TagSet
-function M.GetObjectTaggingOutput(_VersionId, _TagSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectTaggingOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] 
+-- * TagSet [TagSet] 
+-- Required key: TagSet
+-- @return GetObjectTaggingOutput structure as a key-value pair table
+function M.GetObjectTaggingOutput(args)
+	assert(args, "You must provdide an argument table when creating GetObjectTaggingOutput")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["TagSet"] = _TagSet,
+		["VersionId"] = args["VersionId"],
+		["TagSet"] = args["TagSet"],
 	}
 	asserts.AssertGetObjectTaggingOutput(t)
 	return t
@@ -5108,11 +5555,14 @@ end
 
 --- Create a structure of type RestoreObjectOutput
 --  
--- @param _RequestCharged [RequestCharged] 
-function M.RestoreObjectOutput(_RequestCharged, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RestoreObjectOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestCharged [RequestCharged] 
+-- @return RestoreObjectOutput structure as a key-value pair table
+function M.RestoreObjectOutput(args)
+	assert(args, "You must provdide an argument table when creating RestoreObjectOutput")
 	local t = { 
-		["RequestCharged"] = _RequestCharged,
+		["RequestCharged"] = args["RequestCharged"],
 	}
 	asserts.AssertRestoreObjectOutput(t)
 	return t
@@ -5132,12 +5582,15 @@ end
 
 --- Create a structure of type GetBucketLoggingRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketLoggingRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketLoggingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketLoggingRequest structure as a key-value pair table
+function M.GetBucketLoggingRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketLoggingRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketLoggingRequest(t)
 	return t
@@ -5161,19 +5614,22 @@ end
 
 --- Create a structure of type TopicConfiguration
 -- Container for specifying the configuration when you want Amazon S3 to publish events to an Amazon Simple Notification Service (Amazon SNS) topic.
--- @param _Filter [NotificationConfigurationFilter] 
--- @param _Id [NotificationId] 
--- @param _TopicArn [TopicArn] Amazon SNS topic ARN to which Amazon S3 will publish a message when it detects events of specified type.
--- @param _Events [EventList] 
--- Required parameter: TopicArn
--- Required parameter: Events
-function M.TopicConfiguration(_Filter, _Id, _TopicArn, _Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TopicConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Filter [NotificationConfigurationFilter] 
+-- * Id [NotificationId] 
+-- * TopicArn [TopicArn] Amazon SNS topic ARN to which Amazon S3 will publish a message when it detects events of specified type.
+-- * Events [EventList] 
+-- Required key: TopicArn
+-- Required key: Events
+-- @return TopicConfiguration structure as a key-value pair table
+function M.TopicConfiguration(args)
+	assert(args, "You must provdide an argument table when creating TopicConfiguration")
 	local t = { 
-		["Filter"] = _Filter,
-		["Id"] = _Id,
-		["TopicArn"] = _TopicArn,
-		["Events"] = _Events,
+		["Filter"] = args["Filter"],
+		["Id"] = args["Id"],
+		["TopicArn"] = args["TopicArn"],
+		["Events"] = args["Events"],
 	}
 	asserts.AssertTopicConfiguration(t)
 	return t
@@ -5196,17 +5652,20 @@ end
 
 --- Create a structure of type PutBucketTaggingRequest
 --  
--- @param _ContentMD5 [ContentMD5] 
--- @param _Bucket [BucketName] 
--- @param _Tagging [Tagging] 
--- Required parameter: Bucket
--- Required parameter: Tagging
-function M.PutBucketTaggingRequest(_ContentMD5, _Bucket, _Tagging, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketTaggingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContentMD5 [ContentMD5] 
+-- * Bucket [BucketName] 
+-- * Tagging [Tagging] 
+-- Required key: Bucket
+-- Required key: Tagging
+-- @return PutBucketTaggingRequest structure as a key-value pair table
+function M.PutBucketTaggingRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketTaggingRequest")
 	local t = { 
-		["ContentMD5"] = _ContentMD5,
-		["Bucket"] = _Bucket,
-		["Tagging"] = _Tagging,
+		["ContentMD5"] = args["ContentMD5"],
+		["Bucket"] = args["Bucket"],
+		["Tagging"] = args["Tagging"],
 	}
 	asserts.AssertPutBucketTaggingRequest(t)
 	return t
@@ -5226,13 +5685,16 @@ end
 
 --- Create a structure of type Bucket
 --  
--- @param _CreationDate [CreationDate] Date the bucket was created.
--- @param _Name [BucketName] The name of the bucket.
-function M.Bucket(_CreationDate, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Bucket")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreationDate [CreationDate] Date the bucket was created.
+-- * Name [BucketName] The name of the bucket.
+-- @return Bucket structure as a key-value pair table
+function M.Bucket(args)
+	assert(args, "You must provdide an argument table when creating Bucket")
 	local t = { 
-		["CreationDate"] = _CreationDate,
-		["Name"] = _Name,
+		["CreationDate"] = args["CreationDate"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertBucket(t)
 	return t
@@ -5250,8 +5712,11 @@ end
 
 --- Create a structure of type NoSuchUpload
 -- The specified multipart upload does not exist.
-function M.NoSuchUpload(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchUpload")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoSuchUpload structure as a key-value pair table
+function M.NoSuchUpload(args)
+	assert(args, "You must provdide an argument table when creating NoSuchUpload")
 	local t = { 
 	}
 	asserts.AssertNoSuchUpload(t)
@@ -5273,15 +5738,18 @@ end
 
 --- Create a structure of type LifecycleExpiration
 --  
--- @param _Date [Date] Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601 Format.
--- @param _ExpiredObjectDeleteMarker [ExpiredObjectDeleteMarker] Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If set to true, the delete marker will be expired; if set to false the policy takes no action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
--- @param _Days [Days] Indicates the lifetime, in days, of the objects that are subject to the rule. The value must be a non-zero positive integer.
-function M.LifecycleExpiration(_Date, _ExpiredObjectDeleteMarker, _Days, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleExpiration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Date [Date] Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601 Format.
+-- * ExpiredObjectDeleteMarker [ExpiredObjectDeleteMarker] Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If set to true, the delete marker will be expired; if set to false the policy takes no action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+-- * Days [Days] Indicates the lifetime, in days, of the objects that are subject to the rule. The value must be a non-zero positive integer.
+-- @return LifecycleExpiration structure as a key-value pair table
+function M.LifecycleExpiration(args)
+	assert(args, "You must provdide an argument table when creating LifecycleExpiration")
 	local t = { 
-		["Date"] = _Date,
-		["ExpiredObjectDeleteMarker"] = _ExpiredObjectDeleteMarker,
-		["Days"] = _Days,
+		["Date"] = args["Date"],
+		["ExpiredObjectDeleteMarker"] = args["ExpiredObjectDeleteMarker"],
+		["Days"] = args["Days"],
 	}
 	asserts.AssertLifecycleExpiration(t)
 	return t
@@ -5302,14 +5770,17 @@ end
 
 --- Create a structure of type Destination
 --  
--- @param _Bucket [BucketName] Amazon resource name (ARN) of the bucket where you want Amazon S3 to store replicas of the object identified by the rule.
--- @param _StorageClass [StorageClass] The class of storage used to store the object.
--- Required parameter: Bucket
-function M.Destination(_Bucket, _StorageClass, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Destination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] Amazon resource name (ARN) of the bucket where you want Amazon S3 to store replicas of the object identified by the rule.
+-- * StorageClass [StorageClass] The class of storage used to store the object.
+-- Required key: Bucket
+-- @return Destination structure as a key-value pair table
+function M.Destination(args)
+	assert(args, "You must provdide an argument table when creating Destination")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["StorageClass"] = _StorageClass,
+		["Bucket"] = args["Bucket"],
+		["StorageClass"] = args["StorageClass"],
 	}
 	asserts.AssertDestination(t)
 	return t
@@ -5327,8 +5798,11 @@ end
 
 --- Create a structure of type NoSuchBucket
 -- The specified bucket does not exist.
-function M.NoSuchBucket(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchBucket")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoSuchBucket structure as a key-value pair table
+function M.NoSuchBucket(args)
+	assert(args, "You must provdide an argument table when creating NoSuchBucket")
 	local t = { 
 	}
 	asserts.AssertNoSuchBucket(t)
@@ -5349,12 +5823,15 @@ end
 
 --- Create a structure of type GetBucketTaggingOutput
 --  
--- @param _TagSet [TagSet] 
--- Required parameter: TagSet
-function M.GetBucketTaggingOutput(_TagSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketTaggingOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagSet [TagSet] 
+-- Required key: TagSet
+-- @return GetBucketTaggingOutput structure as a key-value pair table
+function M.GetBucketTaggingOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketTaggingOutput")
 	local t = { 
-		["TagSet"] = _TagSet,
+		["TagSet"] = args["TagSet"],
 	}
 	asserts.AssertGetBucketTaggingOutput(t)
 	return t
@@ -5375,15 +5852,18 @@ end
 
 --- Create a structure of type MetricsFilter
 --  
--- @param _And [MetricsAndOperator] A conjunction (logical AND) of predicates, which is used in evaluating a metrics filter. The operator must have at least two predicates, and an object must match all of the predicates in order for the filter to apply.
--- @param _Prefix [Prefix] The prefix used when evaluating a metrics filter.
--- @param _Tag [Tag] The tag used when evaluating a metrics filter.
-function M.MetricsFilter(_And, _Prefix, _Tag, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MetricsFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * And [MetricsAndOperator] A conjunction (logical AND) of predicates, which is used in evaluating a metrics filter. The operator must have at least two predicates, and an object must match all of the predicates in order for the filter to apply.
+-- * Prefix [Prefix] The prefix used when evaluating a metrics filter.
+-- * Tag [Tag] The tag used when evaluating a metrics filter.
+-- @return MetricsFilter structure as a key-value pair table
+function M.MetricsFilter(args)
+	assert(args, "You must provdide an argument table when creating MetricsFilter")
 	local t = { 
-		["And"] = _And,
-		["Prefix"] = _Prefix,
-		["Tag"] = _Tag,
+		["And"] = args["And"],
+		["Prefix"] = args["Prefix"],
+		["Tag"] = args["Tag"],
 	}
 	asserts.AssertMetricsFilter(t)
 	return t
@@ -5405,15 +5885,18 @@ end
 
 --- Create a structure of type ReplicationConfiguration
 -- Container for replication rules. You can add as many as 1,000 rules. Total replication configuration size can be up to 2 MB.
--- @param _Rules [ReplicationRules] Container for information about a particular replication rule. Replication configuration must have at least one rule and can contain up to 1,000 rules.
--- @param _Role [Role] Amazon Resource Name (ARN) of an IAM role for Amazon S3 to assume when replicating the objects.
--- Required parameter: Role
--- Required parameter: Rules
-function M.ReplicationConfiguration(_Rules, _Role, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplicationConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [ReplicationRules] Container for information about a particular replication rule. Replication configuration must have at least one rule and can contain up to 1,000 rules.
+-- * Role [Role] Amazon Resource Name (ARN) of an IAM role for Amazon S3 to assume when replicating the objects.
+-- Required key: Role
+-- Required key: Rules
+-- @return ReplicationConfiguration structure as a key-value pair table
+function M.ReplicationConfiguration(args)
+	assert(args, "You must provdide an argument table when creating ReplicationConfiguration")
 	local t = { 
-		["Rules"] = _Rules,
-		["Role"] = _Role,
+		["Rules"] = args["Rules"],
+		["Role"] = args["Role"],
 	}
 	asserts.AssertReplicationConfiguration(t)
 	return t
@@ -5439,24 +5922,27 @@ end
 
 --- Create a structure of type ListMultipartUploadsRequest
 --  
--- @param _UploadIdMarker [UploadIdMarker] Together with key-marker, specifies the multipart upload after which listing should begin. If key-marker is not specified, the upload-id-marker parameter is ignored.
--- @param _Bucket [BucketName] 
--- @param _Delimiter [Delimiter] Character you use to group keys.
--- @param _Prefix [Prefix] Lists in-progress uploads only for those keys that begin with the specified prefix.
--- @param _KeyMarker [KeyMarker] Together with upload-id-marker, this parameter specifies the multipart upload after which listing should begin.
--- @param _MaxUploads [MaxUploads] Sets the maximum number of multipart uploads, from 1 to 1,000, to return in the response body. 1,000 is the maximum number of uploads that can be returned in a response.
--- @param _EncodingType [EncodingType] 
--- Required parameter: Bucket
-function M.ListMultipartUploadsRequest(_UploadIdMarker, _Bucket, _Delimiter, _Prefix, _KeyMarker, _MaxUploads, _EncodingType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListMultipartUploadsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UploadIdMarker [UploadIdMarker] Together with key-marker, specifies the multipart upload after which listing should begin. If key-marker is not specified, the upload-id-marker parameter is ignored.
+-- * Bucket [BucketName] 
+-- * Delimiter [Delimiter] Character you use to group keys.
+-- * Prefix [Prefix] Lists in-progress uploads only for those keys that begin with the specified prefix.
+-- * KeyMarker [KeyMarker] Together with upload-id-marker, this parameter specifies the multipart upload after which listing should begin.
+-- * MaxUploads [MaxUploads] Sets the maximum number of multipart uploads, from 1 to 1,000, to return in the response body. 1,000 is the maximum number of uploads that can be returned in a response.
+-- * EncodingType [EncodingType] 
+-- Required key: Bucket
+-- @return ListMultipartUploadsRequest structure as a key-value pair table
+function M.ListMultipartUploadsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListMultipartUploadsRequest")
 	local t = { 
-		["UploadIdMarker"] = _UploadIdMarker,
-		["Bucket"] = _Bucket,
-		["Delimiter"] = _Delimiter,
-		["Prefix"] = _Prefix,
-		["KeyMarker"] = _KeyMarker,
-		["MaxUploads"] = _MaxUploads,
-		["EncodingType"] = _EncodingType,
+		["UploadIdMarker"] = args["UploadIdMarker"],
+		["Bucket"] = args["Bucket"],
+		["Delimiter"] = args["Delimiter"],
+		["Prefix"] = args["Prefix"],
+		["KeyMarker"] = args["KeyMarker"],
+		["MaxUploads"] = args["MaxUploads"],
+		["EncodingType"] = args["EncodingType"],
 	}
 	asserts.AssertListMultipartUploadsRequest(t)
 	return t
@@ -5476,12 +5962,15 @@ end
 
 --- Create a structure of type GetBucketPolicyRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketPolicyRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketPolicyRequest structure as a key-value pair table
+function M.GetBucketPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketPolicyRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketPolicyRequest(t)
 	return t
@@ -5501,12 +5990,15 @@ end
 
 --- Create a structure of type DeleteBucketWebsiteRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.DeleteBucketWebsiteRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBucketWebsiteRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return DeleteBucketWebsiteRequest structure as a key-value pair table
+function M.DeleteBucketWebsiteRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBucketWebsiteRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertDeleteBucketWebsiteRequest(t)
 	return t
@@ -5530,19 +6022,22 @@ end
 
 --- Create a structure of type GetObjectAclRequest
 --  
--- @param _VersionId [ObjectVersionId] VersionId used to reference a specific version of the object.
--- @param _Bucket [BucketName] 
--- @param _RequestPayer [RequestPayer] 
--- @param _Key [ObjectKey] 
--- Required parameter: Bucket
--- Required parameter: Key
-function M.GetObjectAclRequest(_VersionId, _Bucket, _RequestPayer, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectAclRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] VersionId used to reference a specific version of the object.
+-- * Bucket [BucketName] 
+-- * RequestPayer [RequestPayer] 
+-- * Key [ObjectKey] 
+-- Required key: Bucket
+-- Required key: Key
+-- @return GetObjectAclRequest structure as a key-value pair table
+function M.GetObjectAclRequest(args)
+	assert(args, "You must provdide an argument table when creating GetObjectAclRequest")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["Bucket"] = _Bucket,
-		["RequestPayer"] = _RequestPayer,
-		["Key"] = _Key,
+		["VersionId"] = args["VersionId"],
+		["Bucket"] = args["Bucket"],
+		["RequestPayer"] = args["RequestPayer"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertGetObjectAclRequest(t)
 	return t
@@ -5561,11 +6056,14 @@ end
 
 --- Create a structure of type AbortMultipartUploadOutput
 --  
--- @param _RequestCharged [RequestCharged] 
-function M.AbortMultipartUploadOutput(_RequestCharged, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AbortMultipartUploadOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestCharged [RequestCharged] 
+-- @return AbortMultipartUploadOutput structure as a key-value pair table
+function M.AbortMultipartUploadOutput(args)
+	assert(args, "You must provdide an argument table when creating AbortMultipartUploadOutput")
 	local t = { 
-		["RequestCharged"] = _RequestCharged,
+		["RequestCharged"] = args["RequestCharged"],
 	}
 	asserts.AssertAbortMultipartUploadOutput(t)
 	return t
@@ -5584,11 +6082,14 @@ end
 
 --- Create a structure of type PutObjectTaggingOutput
 --  
--- @param _VersionId [ObjectVersionId] 
-function M.PutObjectTaggingOutput(_VersionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutObjectTaggingOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] 
+-- @return PutObjectTaggingOutput structure as a key-value pair table
+function M.PutObjectTaggingOutput(args)
+	assert(args, "You must provdide an argument table when creating PutObjectTaggingOutput")
 	local t = { 
-		["VersionId"] = _VersionId,
+		["VersionId"] = args["VersionId"],
 	}
 	asserts.AssertPutObjectTaggingOutput(t)
 	return t
@@ -5612,19 +6113,22 @@ end
 
 --- Create a structure of type QueueConfiguration
 -- Container for specifying an configuration when you want Amazon S3 to publish events to an Amazon Simple Queue Service (Amazon SQS) queue.
--- @param _Filter [NotificationConfigurationFilter] 
--- @param _Id [NotificationId] 
--- @param _QueueArn [QueueArn] Amazon SQS queue ARN to which Amazon S3 will publish a message when it detects events of specified type.
--- @param _Events [EventList] 
--- Required parameter: QueueArn
--- Required parameter: Events
-function M.QueueConfiguration(_Filter, _Id, _QueueArn, _Events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating QueueConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Filter [NotificationConfigurationFilter] 
+-- * Id [NotificationId] 
+-- * QueueArn [QueueArn] Amazon SQS queue ARN to which Amazon S3 will publish a message when it detects events of specified type.
+-- * Events [EventList] 
+-- Required key: QueueArn
+-- Required key: Events
+-- @return QueueConfiguration structure as a key-value pair table
+function M.QueueConfiguration(args)
+	assert(args, "You must provdide an argument table when creating QueueConfiguration")
 	local t = { 
-		["Filter"] = _Filter,
-		["Id"] = _Id,
-		["QueueArn"] = _QueueArn,
-		["Events"] = _Events,
+		["Filter"] = args["Filter"],
+		["Id"] = args["Id"],
+		["QueueArn"] = args["QueueArn"],
+		["Events"] = args["Events"],
 	}
 	asserts.AssertQueueConfiguration(t)
 	return t
@@ -5654,33 +6158,36 @@ end
 
 --- Create a structure of type ListObjectsV2Output
 --  
--- @param _Name [BucketName] Name of the bucket to list.
--- @param _StartAfter [StartAfter] StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key. StartAfter can be any key in the bucket
--- @param _Prefix [Prefix] Limits the response to keys that begin with the specified prefix.
--- @param _ContinuationToken [Token] ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a token. ContinuationToken is obfuscated and is not a real key
--- @param _MaxKeys [MaxKeys] Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
--- @param _Delimiter [Delimiter] A delimiter is a character you use to group keys.
--- @param _KeyCount [KeyCount] KeyCount is the number of keys returned with this request. KeyCount will always be less than equals to MaxKeys field. Say you ask for 50 keys, your result will include less than equals 50 keys
--- @param _EncodingType [EncodingType] Encoding type used by Amazon S3 to encode object keys in the response.
--- @param _NextContinuationToken [NextToken] NextContinuationToken is sent when isTruncated is true which means there are more keys in the bucket that can be listed. The next list requests to Amazon S3 can be continued with this NextContinuationToken. NextContinuationToken is obfuscated and is not a real key
--- @param _IsTruncated [IsTruncated] A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the search criteria.
--- @param _Contents [ObjectList] Metadata about each object returned.
--- @param _CommonPrefixes [CommonPrefixList] CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of the string specified by delimiter
-function M.ListObjectsV2Output(_Name, _StartAfter, _Prefix, _ContinuationToken, _MaxKeys, _Delimiter, _KeyCount, _EncodingType, _NextContinuationToken, _IsTruncated, _Contents, _CommonPrefixes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectsV2Output")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [BucketName] Name of the bucket to list.
+-- * StartAfter [StartAfter] StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key. StartAfter can be any key in the bucket
+-- * Prefix [Prefix] Limits the response to keys that begin with the specified prefix.
+-- * ContinuationToken [Token] ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a token. ContinuationToken is obfuscated and is not a real key
+-- * MaxKeys [MaxKeys] Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
+-- * Delimiter [Delimiter] A delimiter is a character you use to group keys.
+-- * KeyCount [KeyCount] KeyCount is the number of keys returned with this request. KeyCount will always be less than equals to MaxKeys field. Say you ask for 50 keys, your result will include less than equals 50 keys
+-- * EncodingType [EncodingType] Encoding type used by Amazon S3 to encode object keys in the response.
+-- * NextContinuationToken [NextToken] NextContinuationToken is sent when isTruncated is true which means there are more keys in the bucket that can be listed. The next list requests to Amazon S3 can be continued with this NextContinuationToken. NextContinuationToken is obfuscated and is not a real key
+-- * IsTruncated [IsTruncated] A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the search criteria.
+-- * Contents [ObjectList] Metadata about each object returned.
+-- * CommonPrefixes [CommonPrefixList] CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of the string specified by delimiter
+-- @return ListObjectsV2Output structure as a key-value pair table
+function M.ListObjectsV2Output(args)
+	assert(args, "You must provdide an argument table when creating ListObjectsV2Output")
 	local t = { 
-		["Name"] = _Name,
-		["StartAfter"] = _StartAfter,
-		["Prefix"] = _Prefix,
-		["ContinuationToken"] = _ContinuationToken,
-		["MaxKeys"] = _MaxKeys,
-		["Delimiter"] = _Delimiter,
-		["KeyCount"] = _KeyCount,
-		["EncodingType"] = _EncodingType,
-		["NextContinuationToken"] = _NextContinuationToken,
-		["IsTruncated"] = _IsTruncated,
-		["Contents"] = _Contents,
-		["CommonPrefixes"] = _CommonPrefixes,
+		["Name"] = args["Name"],
+		["StartAfter"] = args["StartAfter"],
+		["Prefix"] = args["Prefix"],
+		["ContinuationToken"] = args["ContinuationToken"],
+		["MaxKeys"] = args["MaxKeys"],
+		["Delimiter"] = args["Delimiter"],
+		["KeyCount"] = args["KeyCount"],
+		["EncodingType"] = args["EncodingType"],
+		["NextContinuationToken"] = args["NextContinuationToken"],
+		["IsTruncated"] = args["IsTruncated"],
+		["Contents"] = args["Contents"],
+		["CommonPrefixes"] = args["CommonPrefixes"],
 	}
 	asserts.AssertListObjectsV2Output(t)
 	return t
@@ -5700,12 +6207,15 @@ end
 
 --- Create a structure of type DeleteBucketCorsRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.DeleteBucketCorsRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBucketCorsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return DeleteBucketCorsRequest structure as a key-value pair table
+function M.DeleteBucketCorsRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBucketCorsRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertDeleteBucketCorsRequest(t)
 	return t
@@ -5730,21 +6240,24 @@ end
 
 --- Create a structure of type CORSRule
 --  
--- @param _AllowedHeaders [AllowedHeaders] Specifies which headers are allowed in a pre-flight OPTIONS request.
--- @param _ExposeHeaders [ExposeHeaders] One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
--- @param _AllowedMethods [AllowedMethods] Identifies HTTP methods that the domain/origin specified in the rule is allowed to execute.
--- @param _MaxAgeSeconds [MaxAgeSeconds] The time in seconds that your browser is to cache the preflight response for the specified resource.
--- @param _AllowedOrigins [AllowedOrigins] One or more origins you want customers to be able to access the bucket from.
--- Required parameter: AllowedMethods
--- Required parameter: AllowedOrigins
-function M.CORSRule(_AllowedHeaders, _ExposeHeaders, _AllowedMethods, _MaxAgeSeconds, _AllowedOrigins, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CORSRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AllowedHeaders [AllowedHeaders] Specifies which headers are allowed in a pre-flight OPTIONS request.
+-- * ExposeHeaders [ExposeHeaders] One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+-- * AllowedMethods [AllowedMethods] Identifies HTTP methods that the domain/origin specified in the rule is allowed to execute.
+-- * MaxAgeSeconds [MaxAgeSeconds] The time in seconds that your browser is to cache the preflight response for the specified resource.
+-- * AllowedOrigins [AllowedOrigins] One or more origins you want customers to be able to access the bucket from.
+-- Required key: AllowedMethods
+-- Required key: AllowedOrigins
+-- @return CORSRule structure as a key-value pair table
+function M.CORSRule(args)
+	assert(args, "You must provdide an argument table when creating CORSRule")
 	local t = { 
-		["AllowedHeaders"] = _AllowedHeaders,
-		["ExposeHeaders"] = _ExposeHeaders,
-		["AllowedMethods"] = _AllowedMethods,
-		["MaxAgeSeconds"] = _MaxAgeSeconds,
-		["AllowedOrigins"] = _AllowedOrigins,
+		["AllowedHeaders"] = args["AllowedHeaders"],
+		["ExposeHeaders"] = args["ExposeHeaders"],
+		["AllowedMethods"] = args["AllowedMethods"],
+		["MaxAgeSeconds"] = args["MaxAgeSeconds"],
+		["AllowedOrigins"] = args["AllowedOrigins"],
 	}
 	asserts.AssertCORSRule(t)
 	return t
@@ -5764,12 +6277,15 @@ end
 
 --- Create a structure of type GetBucketRequestPaymentRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketRequestPaymentRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketRequestPaymentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketRequestPaymentRequest structure as a key-value pair table
+function M.GetBucketRequestPaymentRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketRequestPaymentRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketRequestPaymentRequest(t)
 	return t
@@ -5788,11 +6304,14 @@ end
 
 --- Create a structure of type GetBucketReplicationOutput
 --  
--- @param _ReplicationConfiguration [ReplicationConfiguration] 
-function M.GetBucketReplicationOutput(_ReplicationConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketReplicationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReplicationConfiguration [ReplicationConfiguration] 
+-- @return GetBucketReplicationOutput structure as a key-value pair table
+function M.GetBucketReplicationOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketReplicationOutput")
 	local t = { 
-		["ReplicationConfiguration"] = _ReplicationConfiguration,
+		["ReplicationConfiguration"] = args["ReplicationConfiguration"],
 	}
 	asserts.AssertGetBucketReplicationOutput(t)
 	return t
@@ -5812,13 +6331,16 @@ end
 
 --- Create a structure of type GetBucketAclOutput
 --  
--- @param _Owner [Owner] 
--- @param _Grants [Grants] A list of grants.
-function M.GetBucketAclOutput(_Owner, _Grants, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketAclOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Owner [Owner] 
+-- * Grants [Grants] A list of grants.
+-- @return GetBucketAclOutput structure as a key-value pair table
+function M.GetBucketAclOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketAclOutput")
 	local t = { 
-		["Owner"] = _Owner,
-		["Grants"] = _Grants,
+		["Owner"] = args["Owner"],
+		["Grants"] = args["Grants"],
 	}
 	asserts.AssertGetBucketAclOutput(t)
 	return t
@@ -5840,17 +6362,20 @@ end
 
 --- Create a structure of type ListBucketAnalyticsConfigurationsOutput
 --  
--- @param _AnalyticsConfigurationList [AnalyticsConfigurationList] The list of analytics configurations for a bucket.
--- @param _NextContinuationToken [NextToken] NextContinuationToken is sent when isTruncated is true, which indicates that there are more analytics configurations to list. The next request must include this NextContinuationToken. The token is obfuscated and is not a usable value.
--- @param _IsTruncated [IsTruncated] Indicates whether the returned list of analytics configurations is complete. A value of true indicates that the list is not complete and the NextContinuationToken will be provided for a subsequent request.
--- @param _ContinuationToken [Token] The ContinuationToken that represents where this request began.
-function M.ListBucketAnalyticsConfigurationsOutput(_AnalyticsConfigurationList, _NextContinuationToken, _IsTruncated, _ContinuationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBucketAnalyticsConfigurationsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AnalyticsConfigurationList [AnalyticsConfigurationList] The list of analytics configurations for a bucket.
+-- * NextContinuationToken [NextToken] NextContinuationToken is sent when isTruncated is true, which indicates that there are more analytics configurations to list. The next request must include this NextContinuationToken. The token is obfuscated and is not a usable value.
+-- * IsTruncated [IsTruncated] Indicates whether the returned list of analytics configurations is complete. A value of true indicates that the list is not complete and the NextContinuationToken will be provided for a subsequent request.
+-- * ContinuationToken [Token] The ContinuationToken that represents where this request began.
+-- @return ListBucketAnalyticsConfigurationsOutput structure as a key-value pair table
+function M.ListBucketAnalyticsConfigurationsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListBucketAnalyticsConfigurationsOutput")
 	local t = { 
-		["AnalyticsConfigurationList"] = _AnalyticsConfigurationList,
-		["NextContinuationToken"] = _NextContinuationToken,
-		["IsTruncated"] = _IsTruncated,
-		["ContinuationToken"] = _ContinuationToken,
+		["AnalyticsConfigurationList"] = args["AnalyticsConfigurationList"],
+		["NextContinuationToken"] = args["NextContinuationToken"],
+		["IsTruncated"] = args["IsTruncated"],
+		["ContinuationToken"] = args["ContinuationToken"],
 	}
 	asserts.AssertListBucketAnalyticsConfigurationsOutput(t)
 	return t
@@ -5870,13 +6395,16 @@ end
 
 --- Create a structure of type ListBucketsOutput
 --  
--- @param _Owner [Owner] 
--- @param _Buckets [Buckets] 
-function M.ListBucketsOutput(_Owner, _Buckets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBucketsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Owner [Owner] 
+-- * Buckets [Buckets] 
+-- @return ListBucketsOutput structure as a key-value pair table
+function M.ListBucketsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListBucketsOutput")
 	local t = { 
-		["Owner"] = _Owner,
-		["Buckets"] = _Buckets,
+		["Owner"] = args["Owner"],
+		["Buckets"] = args["Buckets"],
 	}
 	asserts.AssertListBucketsOutput(t)
 	return t
@@ -5897,15 +6425,18 @@ end
 
 --- Create a structure of type NotificationConfiguration
 -- Container for specifying the notification configuration of the bucket. If this element is empty, notifications are turned off on the bucket.
--- @param _QueueConfigurations [QueueConfigurationList] 
--- @param _LambdaFunctionConfigurations [LambdaFunctionConfigurationList] 
--- @param _TopicConfigurations [TopicConfigurationList] 
-function M.NotificationConfiguration(_QueueConfigurations, _LambdaFunctionConfigurations, _TopicConfigurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotificationConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * QueueConfigurations [QueueConfigurationList] 
+-- * LambdaFunctionConfigurations [LambdaFunctionConfigurationList] 
+-- * TopicConfigurations [TopicConfigurationList] 
+-- @return NotificationConfiguration structure as a key-value pair table
+function M.NotificationConfiguration(args)
+	assert(args, "You must provdide an argument table when creating NotificationConfiguration")
 	local t = { 
-		["QueueConfigurations"] = _QueueConfigurations,
-		["LambdaFunctionConfigurations"] = _LambdaFunctionConfigurations,
-		["TopicConfigurations"] = _TopicConfigurations,
+		["QueueConfigurations"] = args["QueueConfigurations"],
+		["LambdaFunctionConfigurations"] = args["LambdaFunctionConfigurations"],
+		["TopicConfigurations"] = args["TopicConfigurations"],
 	}
 	asserts.AssertNotificationConfiguration(t)
 	return t
@@ -5933,28 +6464,31 @@ end
 
 --- Create a structure of type ListObjectsV2Request
 --  
--- @param _RequestPayer [RequestPayer] Confirms that the requester knows that she or he will be charged for the list objects request in V2 style. Bucket owners need not specify this parameter in their requests.
--- @param _StartAfter [StartAfter] StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key. StartAfter can be any key in the bucket
--- @param _Bucket [BucketName] Name of the bucket to list.
--- @param _Prefix [Prefix] Limits the response to keys that begin with the specified prefix.
--- @param _FetchOwner [FetchOwner] The owner field is not present in listV2 by default, if you want to return owner field with each key in the result then set the fetch owner field to true
--- @param _MaxKeys [MaxKeys] Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
--- @param _Delimiter [Delimiter] A delimiter is a character you use to group keys.
--- @param _EncodingType [EncodingType] Encoding type used by Amazon S3 to encode object keys in the response.
--- @param _ContinuationToken [Token] ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a token. ContinuationToken is obfuscated and is not a real key
--- Required parameter: Bucket
-function M.ListObjectsV2Request(_RequestPayer, _StartAfter, _Bucket, _Prefix, _FetchOwner, _MaxKeys, _Delimiter, _EncodingType, _ContinuationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectsV2Request")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestPayer [RequestPayer] Confirms that the requester knows that she or he will be charged for the list objects request in V2 style. Bucket owners need not specify this parameter in their requests.
+-- * StartAfter [StartAfter] StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key. StartAfter can be any key in the bucket
+-- * Bucket [BucketName] Name of the bucket to list.
+-- * Prefix [Prefix] Limits the response to keys that begin with the specified prefix.
+-- * FetchOwner [FetchOwner] The owner field is not present in listV2 by default, if you want to return owner field with each key in the result then set the fetch owner field to true
+-- * MaxKeys [MaxKeys] Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
+-- * Delimiter [Delimiter] A delimiter is a character you use to group keys.
+-- * EncodingType [EncodingType] Encoding type used by Amazon S3 to encode object keys in the response.
+-- * ContinuationToken [Token] ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a token. ContinuationToken is obfuscated and is not a real key
+-- Required key: Bucket
+-- @return ListObjectsV2Request structure as a key-value pair table
+function M.ListObjectsV2Request(args)
+	assert(args, "You must provdide an argument table when creating ListObjectsV2Request")
 	local t = { 
-		["RequestPayer"] = _RequestPayer,
-		["StartAfter"] = _StartAfter,
-		["Bucket"] = _Bucket,
-		["Prefix"] = _Prefix,
-		["FetchOwner"] = _FetchOwner,
-		["MaxKeys"] = _MaxKeys,
-		["Delimiter"] = _Delimiter,
-		["EncodingType"] = _EncodingType,
-		["ContinuationToken"] = _ContinuationToken,
+		["RequestPayer"] = args["RequestPayer"],
+		["StartAfter"] = args["StartAfter"],
+		["Bucket"] = args["Bucket"],
+		["Prefix"] = args["Prefix"],
+		["FetchOwner"] = args["FetchOwner"],
+		["MaxKeys"] = args["MaxKeys"],
+		["Delimiter"] = args["Delimiter"],
+		["EncodingType"] = args["EncodingType"],
+		["ContinuationToken"] = args["ContinuationToken"],
 	}
 	asserts.AssertListObjectsV2Request(t)
 	return t
@@ -5975,14 +6509,17 @@ end
 
 --- Create a structure of type ListBucketInventoryConfigurationsRequest
 --  
--- @param _Bucket [BucketName] The name of the bucket containing the inventory configurations to retrieve.
--- @param _ContinuationToken [Token] The marker used to continue an inventory configuration listing that has been truncated. Use the NextContinuationToken from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
--- Required parameter: Bucket
-function M.ListBucketInventoryConfigurationsRequest(_Bucket, _ContinuationToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBucketInventoryConfigurationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] The name of the bucket containing the inventory configurations to retrieve.
+-- * ContinuationToken [Token] The marker used to continue an inventory configuration listing that has been truncated. Use the NextContinuationToken from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
+-- Required key: Bucket
+-- @return ListBucketInventoryConfigurationsRequest structure as a key-value pair table
+function M.ListBucketInventoryConfigurationsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListBucketInventoryConfigurationsRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
-		["ContinuationToken"] = _ContinuationToken,
+		["Bucket"] = args["Bucket"],
+		["ContinuationToken"] = args["ContinuationToken"],
 	}
 	asserts.AssertListBucketInventoryConfigurationsRequest(t)
 	return t
@@ -6002,13 +6539,16 @@ end
 
 --- Create a structure of type CopyPartResult
 --  
--- @param _LastModified [LastModified] Date and time at which the object was uploaded.
--- @param _ETag [ETag] Entity tag of the object.
-function M.CopyPartResult(_LastModified, _ETag, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CopyPartResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LastModified [LastModified] Date and time at which the object was uploaded.
+-- * ETag [ETag] Entity tag of the object.
+-- @return CopyPartResult structure as a key-value pair table
+function M.CopyPartResult(args)
+	assert(args, "You must provdide an argument table when creating CopyPartResult")
 	local t = { 
-		["LastModified"] = _LastModified,
-		["ETag"] = _ETag,
+		["LastModified"] = args["LastModified"],
+		["ETag"] = args["ETag"],
 	}
 	asserts.AssertCopyPartResult(t)
 	return t
@@ -6028,12 +6568,15 @@ end
 
 --- Create a structure of type GetBucketAclRequest
 --  
--- @param _Bucket [BucketName] 
--- Required parameter: Bucket
-function M.GetBucketAclRequest(_Bucket, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketAclRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Bucket [BucketName] 
+-- Required key: Bucket
+-- @return GetBucketAclRequest structure as a key-value pair table
+function M.GetBucketAclRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBucketAclRequest")
 	local t = { 
-		["Bucket"] = _Bucket,
+		["Bucket"] = args["Bucket"],
 	}
 	asserts.AssertGetBucketAclRequest(t)
 	return t
@@ -6060,27 +6603,30 @@ end
 
 --- Create a structure of type CopyObjectOutput
 --  
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
--- @param _CopySourceVersionId [CopySourceVersionId] 
--- @param _RequestCharged [RequestCharged] 
--- @param _VersionId [ObjectVersionId] Version ID of the newly created copy.
--- @param _Expiration [Expiration] If the object expiration is configured, the response includes this header.
--- @param _ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
--- @param _CopyObjectResult [CopyObjectResult] 
--- @param _SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
-function M.CopyObjectOutput(_SSECustomerAlgorithm, _CopySourceVersionId, _RequestCharged, _VersionId, _Expiration, _ServerSideEncryption, _CopyObjectResult, _SSEKMSKeyId, _SSECustomerKeyMD5, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CopyObjectOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] If server-side encryption with a customer-provided encryption key was requested, the response will include this header confirming the encryption algorithm used.
+-- * CopySourceVersionId [CopySourceVersionId] 
+-- * RequestCharged [RequestCharged] 
+-- * VersionId [ObjectVersionId] Version ID of the newly created copy.
+-- * Expiration [Expiration] If the object expiration is configured, the response includes this header.
+-- * ServerSideEncryption [ServerSideEncryption] The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * CopyObjectResult [CopyObjectResult] 
+-- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
+-- @return CopyObjectOutput structure as a key-value pair table
+function M.CopyObjectOutput(args)
+	assert(args, "You must provdide an argument table when creating CopyObjectOutput")
 	local t = { 
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["CopySourceVersionId"] = _CopySourceVersionId,
-		["RequestCharged"] = _RequestCharged,
-		["VersionId"] = _VersionId,
-		["Expiration"] = _Expiration,
-		["ServerSideEncryption"] = _ServerSideEncryption,
-		["CopyObjectResult"] = _CopyObjectResult,
-		["SSEKMSKeyId"] = _SSEKMSKeyId,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["CopySourceVersionId"] = args["CopySourceVersionId"],
+		["RequestCharged"] = args["RequestCharged"],
+		["VersionId"] = args["VersionId"],
+		["Expiration"] = args["Expiration"],
+		["ServerSideEncryption"] = args["ServerSideEncryption"],
+		["CopyObjectResult"] = args["CopyObjectResult"],
+		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
 	asserts.AssertCopyObjectOutput(t)
 	return t
@@ -6101,15 +6647,18 @@ end
 
 --- Create a structure of type GetObjectAclOutput
 --  
--- @param _Owner [Owner] 
--- @param _Grants [Grants] A list of grants.
--- @param _RequestCharged [RequestCharged] 
-function M.GetObjectAclOutput(_Owner, _Grants, _RequestCharged, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectAclOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Owner [Owner] 
+-- * Grants [Grants] A list of grants.
+-- * RequestCharged [RequestCharged] 
+-- @return GetObjectAclOutput structure as a key-value pair table
+function M.GetObjectAclOutput(args)
+	assert(args, "You must provdide an argument table when creating GetObjectAclOutput")
 	local t = { 
-		["Owner"] = _Owner,
-		["Grants"] = _Grants,
-		["RequestCharged"] = _RequestCharged,
+		["Owner"] = args["Owner"],
+		["Grants"] = args["Grants"],
+		["RequestCharged"] = args["RequestCharged"],
 	}
 	asserts.AssertGetObjectAclOutput(t)
 	return t
@@ -6127,8 +6676,11 @@ end
 
 --- Create a structure of type ObjectNotInActiveTierError
 -- The source object of the COPY operation is not in the active tier and is only stored in Amazon Glacier.
-function M.ObjectNotInActiveTierError(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ObjectNotInActiveTierError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ObjectNotInActiveTierError structure as a key-value pair table
+function M.ObjectNotInActiveTierError(args)
+	assert(args, "You must provdide an argument table when creating ObjectNotInActiveTierError")
 	local t = { 
 	}
 	asserts.AssertObjectNotInActiveTierError(t)
@@ -6160,35 +6712,38 @@ end
 
 --- Create a structure of type ListObjectVersionsOutput
 --  
--- @param _Name [BucketName] 
--- @param _Versions [ObjectVersionList] 
--- @param _DeleteMarkers [DeleteMarkers] 
--- @param _NextKeyMarker [NextKeyMarker] Use this value for the key marker request parameter in a subsequent request.
--- @param _Delimiter [Delimiter] 
--- @param _MaxKeys [MaxKeys] 
--- @param _Prefix [Prefix] 
--- @param _KeyMarker [KeyMarker] Marks the last Key returned in a truncated response.
--- @param _NextVersionIdMarker [NextVersionIdMarker] Use this value for the next version id marker parameter in a subsequent request.
--- @param _EncodingType [EncodingType] Encoding type used by Amazon S3 to encode object keys in the response.
--- @param _IsTruncated [IsTruncated] A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the search criteria. If your results were truncated, you can make a follow-up paginated request using the NextKeyMarker and NextVersionIdMarker response parameters as a starting place in another request to return the rest of the results.
--- @param _VersionIdMarker [VersionIdMarker] 
--- @param _CommonPrefixes [CommonPrefixList] 
-function M.ListObjectVersionsOutput(_Name, _Versions, _DeleteMarkers, _NextKeyMarker, _Delimiter, _MaxKeys, _Prefix, _KeyMarker, _NextVersionIdMarker, _EncodingType, _IsTruncated, _VersionIdMarker, _CommonPrefixes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListObjectVersionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [BucketName] 
+-- * Versions [ObjectVersionList] 
+-- * DeleteMarkers [DeleteMarkers] 
+-- * NextKeyMarker [NextKeyMarker] Use this value for the key marker request parameter in a subsequent request.
+-- * Delimiter [Delimiter] 
+-- * MaxKeys [MaxKeys] 
+-- * Prefix [Prefix] 
+-- * KeyMarker [KeyMarker] Marks the last Key returned in a truncated response.
+-- * NextVersionIdMarker [NextVersionIdMarker] Use this value for the next version id marker parameter in a subsequent request.
+-- * EncodingType [EncodingType] Encoding type used by Amazon S3 to encode object keys in the response.
+-- * IsTruncated [IsTruncated] A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the search criteria. If your results were truncated, you can make a follow-up paginated request using the NextKeyMarker and NextVersionIdMarker response parameters as a starting place in another request to return the rest of the results.
+-- * VersionIdMarker [VersionIdMarker] 
+-- * CommonPrefixes [CommonPrefixList] 
+-- @return ListObjectVersionsOutput structure as a key-value pair table
+function M.ListObjectVersionsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListObjectVersionsOutput")
 	local t = { 
-		["Name"] = _Name,
-		["Versions"] = _Versions,
-		["DeleteMarkers"] = _DeleteMarkers,
-		["NextKeyMarker"] = _NextKeyMarker,
-		["Delimiter"] = _Delimiter,
-		["MaxKeys"] = _MaxKeys,
-		["Prefix"] = _Prefix,
-		["KeyMarker"] = _KeyMarker,
-		["NextVersionIdMarker"] = _NextVersionIdMarker,
-		["EncodingType"] = _EncodingType,
-		["IsTruncated"] = _IsTruncated,
-		["VersionIdMarker"] = _VersionIdMarker,
-		["CommonPrefixes"] = _CommonPrefixes,
+		["Name"] = args["Name"],
+		["Versions"] = args["Versions"],
+		["DeleteMarkers"] = args["DeleteMarkers"],
+		["NextKeyMarker"] = args["NextKeyMarker"],
+		["Delimiter"] = args["Delimiter"],
+		["MaxKeys"] = args["MaxKeys"],
+		["Prefix"] = args["Prefix"],
+		["KeyMarker"] = args["KeyMarker"],
+		["NextVersionIdMarker"] = args["NextVersionIdMarker"],
+		["EncodingType"] = args["EncodingType"],
+		["IsTruncated"] = args["IsTruncated"],
+		["VersionIdMarker"] = args["VersionIdMarker"],
+		["CommonPrefixes"] = args["CommonPrefixes"],
 	}
 	asserts.AssertListObjectVersionsOutput(t)
 	return t
@@ -6208,13 +6763,16 @@ end
 
 --- Create a structure of type Condition
 --  
--- @param _HttpErrorCodeReturnedEquals [HttpErrorCodeReturnedEquals] The HTTP error code when the redirect is applied. In the event of an error, if the error code equals this value, then the specified redirect is applied. Required when parent element Condition is specified and sibling KeyPrefixEquals is not specified. If both are specified, then both must be true for the redirect to be applied.
--- @param _KeyPrefixEquals [KeyPrefixEquals] The object key name prefix when the redirect is applied. For example, to redirect requests for ExamplePage.html, the key prefix will be ExamplePage.html. To redirect request for all pages with the prefix docs/, the key prefix will be /docs, which identifies all objects in the docs/ folder. Required when the parent element Condition is specified and sibling HttpErrorCodeReturnedEquals is not specified. If both conditions are specified, both must be true for the redirect to be applied.
-function M.Condition(_HttpErrorCodeReturnedEquals, _KeyPrefixEquals, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Condition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HttpErrorCodeReturnedEquals [HttpErrorCodeReturnedEquals] The HTTP error code when the redirect is applied. In the event of an error, if the error code equals this value, then the specified redirect is applied. Required when parent element Condition is specified and sibling KeyPrefixEquals is not specified. If both are specified, then both must be true for the redirect to be applied.
+-- * KeyPrefixEquals [KeyPrefixEquals] The object key name prefix when the redirect is applied. For example, to redirect requests for ExamplePage.html, the key prefix will be ExamplePage.html. To redirect request for all pages with the prefix docs/, the key prefix will be /docs, which identifies all objects in the docs/ folder. Required when the parent element Condition is specified and sibling HttpErrorCodeReturnedEquals is not specified. If both conditions are specified, both must be true for the redirect to be applied.
+-- @return Condition structure as a key-value pair table
+function M.Condition(args)
+	assert(args, "You must provdide an argument table when creating Condition")
 	local t = { 
-		["HttpErrorCodeReturnedEquals"] = _HttpErrorCodeReturnedEquals,
-		["KeyPrefixEquals"] = _KeyPrefixEquals,
+		["HttpErrorCodeReturnedEquals"] = args["HttpErrorCodeReturnedEquals"],
+		["KeyPrefixEquals"] = args["KeyPrefixEquals"],
 	}
 	asserts.AssertCondition(t)
 	return t
@@ -6234,12 +6792,15 @@ end
 
 --- Create a structure of type ErrorDocument
 --  
--- @param _Key [ObjectKey] The object key name to use when a 4XX class error occurs.
--- Required parameter: Key
-function M.ErrorDocument(_Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ErrorDocument")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Key [ObjectKey] The object key name to use when a 4XX class error occurs.
+-- Required key: Key
+-- @return ErrorDocument structure as a key-value pair table
+function M.ErrorDocument(args)
+	assert(args, "You must provdide an argument table when creating ErrorDocument")
 	local t = { 
-		["Key"] = _Key,
+		["Key"] = args["Key"],
 	}
 	asserts.AssertErrorDocument(t)
 	return t
@@ -6260,14 +6821,17 @@ end
 
 --- Create a structure of type MetricsConfiguration
 --  
--- @param _Filter [MetricsFilter] Specifies a metrics configuration filter. The metrics configuration will only include objects that meet the filter's criteria. A filter must be a prefix, a tag, or a conjunction (MetricsAndOperator).
--- @param _Id [MetricsId] The ID used to identify the metrics configuration.
--- Required parameter: Id
-function M.MetricsConfiguration(_Filter, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MetricsConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Filter [MetricsFilter] Specifies a metrics configuration filter. The metrics configuration will only include objects that meet the filter's criteria. A filter must be a prefix, a tag, or a conjunction (MetricsAndOperator).
+-- * Id [MetricsId] The ID used to identify the metrics configuration.
+-- Required key: Id
+-- @return MetricsConfiguration structure as a key-value pair table
+function M.MetricsConfiguration(args)
+	assert(args, "You must provdide an argument table when creating MetricsConfiguration")
 	local t = { 
-		["Filter"] = _Filter,
-		["Id"] = _Id,
+		["Filter"] = args["Filter"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertMetricsConfiguration(t)
 	return t
@@ -6288,15 +6852,18 @@ end
 
 --- Create a structure of type LoggingEnabled
 --  
--- @param _TargetPrefix [TargetPrefix] This element lets you specify a prefix for the keys that the log files will be stored under.
--- @param _TargetBucket [TargetBucket] Specifies the bucket where you want Amazon S3 to store server access logs. You can have your logs delivered to any bucket that you own, including the same bucket that is being logged. You can also configure multiple buckets to deliver their logs to the same target bucket. In this case you should choose a different TargetPrefix for each source bucket so that the delivered log files can be distinguished by key.
--- @param _TargetGrants [TargetGrants] 
-function M.LoggingEnabled(_TargetPrefix, _TargetBucket, _TargetGrants, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoggingEnabled")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetPrefix [TargetPrefix] This element lets you specify a prefix for the keys that the log files will be stored under.
+-- * TargetBucket [TargetBucket] Specifies the bucket where you want Amazon S3 to store server access logs. You can have your logs delivered to any bucket that you own, including the same bucket that is being logged. You can also configure multiple buckets to deliver their logs to the same target bucket. In this case you should choose a different TargetPrefix for each source bucket so that the delivered log files can be distinguished by key.
+-- * TargetGrants [TargetGrants] 
+-- @return LoggingEnabled structure as a key-value pair table
+function M.LoggingEnabled(args)
+	assert(args, "You must provdide an argument table when creating LoggingEnabled")
 	local t = { 
-		["TargetPrefix"] = _TargetPrefix,
-		["TargetBucket"] = _TargetBucket,
-		["TargetGrants"] = _TargetGrants,
+		["TargetPrefix"] = args["TargetPrefix"],
+		["TargetBucket"] = args["TargetBucket"],
+		["TargetGrants"] = args["TargetGrants"],
 	}
 	asserts.AssertLoggingEnabled(t)
 	return t
@@ -6317,15 +6884,18 @@ end
 
 --- Create a structure of type Transition
 --  
--- @param _Date [Date] Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601 Format.
--- @param _Days [Days] Indicates the lifetime, in days, of the objects that are subject to the rule. The value must be a non-zero positive integer.
--- @param _StorageClass [TransitionStorageClass] The class of storage used to store the object.
-function M.Transition(_Date, _Days, _StorageClass, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Transition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Date [Date] Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601 Format.
+-- * Days [Days] Indicates the lifetime, in days, of the objects that are subject to the rule. The value must be a non-zero positive integer.
+-- * StorageClass [TransitionStorageClass] The class of storage used to store the object.
+-- @return Transition structure as a key-value pair table
+function M.Transition(args)
+	assert(args, "You must provdide an argument table when creating Transition")
 	local t = { 
-		["Date"] = _Date,
-		["Days"] = _Days,
-		["StorageClass"] = _StorageClass,
+		["Date"] = args["Date"],
+		["Days"] = args["Days"],
+		["StorageClass"] = args["StorageClass"],
 	}
 	asserts.AssertTransition(t)
 	return t
@@ -6347,17 +6917,20 @@ end
 
 --- Create a structure of type QueueConfigurationDeprecated
 --  
--- @param _Queue [QueueArn] 
--- @param _Events [EventList] 
--- @param _Id [NotificationId] 
--- @param _Event [Event] 
-function M.QueueConfigurationDeprecated(_Queue, _Events, _Id, _Event, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating QueueConfigurationDeprecated")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Queue [QueueArn] 
+-- * Events [EventList] 
+-- * Id [NotificationId] 
+-- * Event [Event] 
+-- @return QueueConfigurationDeprecated structure as a key-value pair table
+function M.QueueConfigurationDeprecated(args)
+	assert(args, "You must provdide an argument table when creating QueueConfigurationDeprecated")
 	local t = { 
-		["Queue"] = _Queue,
-		["Events"] = _Events,
-		["Id"] = _Id,
-		["Event"] = _Event,
+		["Queue"] = args["Queue"],
+		["Events"] = args["Events"],
+		["Id"] = args["Id"],
+		["Event"] = args["Event"],
 	}
 	asserts.AssertQueueConfigurationDeprecated(t)
 	return t
@@ -6379,17 +6952,20 @@ end
 
 --- Create a structure of type Error
 --  
--- @param _VersionId [ObjectVersionId] 
--- @param _Code [Code] 
--- @param _Message [Message] 
--- @param _Key [ObjectKey] 
-function M.Error(_VersionId, _Code, _Message, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Error")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] 
+-- * Code [Code] 
+-- * Message [Message] 
+-- * Key [ObjectKey] 
+-- @return Error structure as a key-value pair table
+function M.Error(args)
+	assert(args, "You must provdide an argument table when creating Error")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["Code"] = _Code,
-		["Message"] = _Message,
-		["Key"] = _Key,
+		["VersionId"] = args["VersionId"],
+		["Code"] = args["Code"],
+		["Message"] = args["Message"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertError(t)
 	return t
@@ -6408,11 +6984,14 @@ end
 
 --- Create a structure of type BucketLoggingStatus
 --  
--- @param _LoggingEnabled [LoggingEnabled] 
-function M.BucketLoggingStatus(_LoggingEnabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BucketLoggingStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoggingEnabled [LoggingEnabled] 
+-- @return BucketLoggingStatus structure as a key-value pair table
+function M.BucketLoggingStatus(args)
+	assert(args, "You must provdide an argument table when creating BucketLoggingStatus")
 	local t = { 
-		["LoggingEnabled"] = _LoggingEnabled,
+		["LoggingEnabled"] = args["LoggingEnabled"],
 	}
 	asserts.AssertBucketLoggingStatus(t)
 	return t
@@ -6436,18 +7015,21 @@ end
 
 --- Create a structure of type PutBucketInventoryConfigurationRequest
 --  
--- @param _InventoryConfiguration [InventoryConfiguration] Specifies the inventory configuration.
--- @param _Bucket [BucketName] The name of the bucket where the inventory configuration will be stored.
--- @param _Id [InventoryId] The ID used to identify the inventory configuration.
--- Required parameter: Bucket
--- Required parameter: Id
--- Required parameter: InventoryConfiguration
-function M.PutBucketInventoryConfigurationRequest(_InventoryConfiguration, _Bucket, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBucketInventoryConfigurationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InventoryConfiguration [InventoryConfiguration] Specifies the inventory configuration.
+-- * Bucket [BucketName] The name of the bucket where the inventory configuration will be stored.
+-- * Id [InventoryId] The ID used to identify the inventory configuration.
+-- Required key: Bucket
+-- Required key: Id
+-- Required key: InventoryConfiguration
+-- @return PutBucketInventoryConfigurationRequest structure as a key-value pair table
+function M.PutBucketInventoryConfigurationRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBucketInventoryConfigurationRequest")
 	local t = { 
-		["InventoryConfiguration"] = _InventoryConfiguration,
-		["Bucket"] = _Bucket,
-		["Id"] = _Id,
+		["InventoryConfiguration"] = args["InventoryConfiguration"],
+		["Bucket"] = args["Bucket"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertPutBucketInventoryConfigurationRequest(t)
 	return t
@@ -6468,14 +7050,17 @@ end
 
 --- Create a structure of type RestoreRequest
 --  
--- @param _GlacierJobParameters [GlacierJobParameters] Glacier related prameters pertaining to this job.
--- @param _Days [Days] Lifetime of the active copy in days
--- Required parameter: Days
-function M.RestoreRequest(_GlacierJobParameters, _Days, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RestoreRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlacierJobParameters [GlacierJobParameters] Glacier related prameters pertaining to this job.
+-- * Days [Days] Lifetime of the active copy in days
+-- Required key: Days
+-- @return RestoreRequest structure as a key-value pair table
+function M.RestoreRequest(args)
+	assert(args, "You must provdide an argument table when creating RestoreRequest")
 	local t = { 
-		["GlacierJobParameters"] = _GlacierJobParameters,
-		["Days"] = _Days,
+		["GlacierJobParameters"] = args["GlacierJobParameters"],
+		["Days"] = args["Days"],
 	}
 	asserts.AssertRestoreRequest(t)
 	return t
@@ -6496,15 +7081,18 @@ end
 
 --- Create a structure of type NotificationConfigurationDeprecated
 --  
--- @param _CloudFunctionConfiguration [CloudFunctionConfiguration] 
--- @param _QueueConfiguration [QueueConfigurationDeprecated] 
--- @param _TopicConfiguration [TopicConfigurationDeprecated] 
-function M.NotificationConfigurationDeprecated(_CloudFunctionConfiguration, _QueueConfiguration, _TopicConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotificationConfigurationDeprecated")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CloudFunctionConfiguration [CloudFunctionConfiguration] 
+-- * QueueConfiguration [QueueConfigurationDeprecated] 
+-- * TopicConfiguration [TopicConfigurationDeprecated] 
+-- @return NotificationConfigurationDeprecated structure as a key-value pair table
+function M.NotificationConfigurationDeprecated(args)
+	assert(args, "You must provdide an argument table when creating NotificationConfigurationDeprecated")
 	local t = { 
-		["CloudFunctionConfiguration"] = _CloudFunctionConfiguration,
-		["QueueConfiguration"] = _QueueConfiguration,
-		["TopicConfiguration"] = _TopicConfiguration,
+		["CloudFunctionConfiguration"] = args["CloudFunctionConfiguration"],
+		["QueueConfiguration"] = args["QueueConfiguration"],
+		["TopicConfiguration"] = args["TopicConfiguration"],
 	}
 	asserts.AssertNotificationConfigurationDeprecated(t)
 	return t
@@ -6524,13 +7112,16 @@ end
 
 --- Create a structure of type GetBucketVersioningOutput
 --  
--- @param _Status [BucketVersioningStatus] The versioning state of the bucket.
--- @param _MFADelete [MFADeleteStatus] Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is only returned if the bucket has been configured with MFA delete. If the bucket has never been so configured, this element is not returned.
-function M.GetBucketVersioningOutput(_Status, _MFADelete, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketVersioningOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [BucketVersioningStatus] The versioning state of the bucket.
+-- * MFADelete [MFADeleteStatus] Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is only returned if the bucket has been configured with MFA delete. If the bucket has never been so configured, this element is not returned.
+-- @return GetBucketVersioningOutput structure as a key-value pair table
+function M.GetBucketVersioningOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketVersioningOutput")
 	local t = { 
-		["Status"] = _Status,
-		["MFADelete"] = _MFADelete,
+		["Status"] = args["Status"],
+		["MFADelete"] = args["MFADelete"],
 	}
 	asserts.AssertGetBucketVersioningOutput(t)
 	return t
@@ -6569,49 +7160,52 @@ end
 
 --- Create a structure of type GetObjectRequest
 --  
--- @param _ResponseContentEncoding [ResponseContentEncoding] Sets the Content-Encoding header of the response.
--- @param _ResponseContentLanguage [ResponseContentLanguage] Sets the Content-Language header of the response.
--- @param _SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
--- @param _ResponseContentType [ResponseContentType] Sets the Content-Type header of the response.
--- @param _IfUnmodifiedSince [IfUnmodifiedSince] Return the object only if it has not been modified since the specified time, otherwise return a 412 (precondition failed).
--- @param _VersionId [ObjectVersionId] VersionId used to reference a specific version of the object.
--- @param _RequestPayer [RequestPayer] 
--- @param _ResponseCacheControl [ResponseCacheControl] Sets the Cache-Control header of the response.
--- @param _SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
--- @param _Bucket [BucketName] 
--- @param _IfNoneMatch [IfNoneMatch] Return the object only if its entity tag (ETag) is different from the one specified, otherwise return a 304 (not modified).
--- @param _ResponseContentDisposition [ResponseContentDisposition] Sets the Content-Disposition header of the response
--- @param _Range [Range] Downloads the specified range bytes of an object. For more information about the HTTP Range header, go to http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
--- @param _Key [ObjectKey] 
--- @param _IfMatch [IfMatch] Return the object only if its entity tag (ETag) is the same as the one specified, otherwise return a 412 (precondition failed).
--- @param _ResponseExpires [ResponseExpires] Sets the Expires header of the response.
--- @param _PartNumber [PartNumber] Part number of the object being read. This is a positive integer between 1 and 10,000. Effectively performs a 'ranged' GET request for the part specified. Useful for downloading just a part of an object.
--- @param _IfModifiedSince [IfModifiedSince] Return the object only if it has been modified since the specified time, otherwise return a 304 (not modified).
--- @param _SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
--- Required parameter: Bucket
--- Required parameter: Key
-function M.GetObjectRequest(_ResponseContentEncoding, _ResponseContentLanguage, _SSECustomerAlgorithm, _ResponseContentType, _IfUnmodifiedSince, _VersionId, _RequestPayer, _ResponseCacheControl, _SSECustomerKey, _Bucket, _IfNoneMatch, _ResponseContentDisposition, _Range, _Key, _IfMatch, _ResponseExpires, _PartNumber, _IfModifiedSince, _SSECustomerKeyMD5, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetObjectRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResponseContentEncoding [ResponseContentEncoding] Sets the Content-Encoding header of the response.
+-- * ResponseContentLanguage [ResponseContentLanguage] Sets the Content-Language header of the response.
+-- * SSECustomerAlgorithm [SSECustomerAlgorithm] Specifies the algorithm to use to when encrypting the object (e.g., AES256).
+-- * ResponseContentType [ResponseContentType] Sets the Content-Type header of the response.
+-- * IfUnmodifiedSince [IfUnmodifiedSince] Return the object only if it has not been modified since the specified time, otherwise return a 412 (precondition failed).
+-- * VersionId [ObjectVersionId] VersionId used to reference a specific version of the object.
+-- * RequestPayer [RequestPayer] 
+-- * ResponseCacheControl [ResponseCacheControl] Sets the Cache-Control header of the response.
+-- * SSECustomerKey [SSECustomerKey] Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side​-encryption​-customer-algorithm header.
+-- * Bucket [BucketName] 
+-- * IfNoneMatch [IfNoneMatch] Return the object only if its entity tag (ETag) is different from the one specified, otherwise return a 304 (not modified).
+-- * ResponseContentDisposition [ResponseContentDisposition] Sets the Content-Disposition header of the response
+-- * Range [Range] Downloads the specified range bytes of an object. For more information about the HTTP Range header, go to http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
+-- * Key [ObjectKey] 
+-- * IfMatch [IfMatch] Return the object only if its entity tag (ETag) is the same as the one specified, otherwise return a 412 (precondition failed).
+-- * ResponseExpires [ResponseExpires] Sets the Expires header of the response.
+-- * PartNumber [PartNumber] Part number of the object being read. This is a positive integer between 1 and 10,000. Effectively performs a 'ranged' GET request for the part specified. Useful for downloading just a part of an object.
+-- * IfModifiedSince [IfModifiedSince] Return the object only if it has been modified since the specified time, otherwise return a 304 (not modified).
+-- * SSECustomerKeyMD5 [SSECustomerKeyMD5] Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure the encryption key was transmitted without error.
+-- Required key: Bucket
+-- Required key: Key
+-- @return GetObjectRequest structure as a key-value pair table
+function M.GetObjectRequest(args)
+	assert(args, "You must provdide an argument table when creating GetObjectRequest")
 	local t = { 
-		["ResponseContentEncoding"] = _ResponseContentEncoding,
-		["ResponseContentLanguage"] = _ResponseContentLanguage,
-		["SSECustomerAlgorithm"] = _SSECustomerAlgorithm,
-		["ResponseContentType"] = _ResponseContentType,
-		["IfUnmodifiedSince"] = _IfUnmodifiedSince,
-		["VersionId"] = _VersionId,
-		["RequestPayer"] = _RequestPayer,
-		["ResponseCacheControl"] = _ResponseCacheControl,
-		["SSECustomerKey"] = _SSECustomerKey,
-		["Bucket"] = _Bucket,
-		["IfNoneMatch"] = _IfNoneMatch,
-		["ResponseContentDisposition"] = _ResponseContentDisposition,
-		["Range"] = _Range,
-		["Key"] = _Key,
-		["IfMatch"] = _IfMatch,
-		["ResponseExpires"] = _ResponseExpires,
-		["PartNumber"] = _PartNumber,
-		["IfModifiedSince"] = _IfModifiedSince,
-		["SSECustomerKeyMD5"] = _SSECustomerKeyMD5,
+		["ResponseContentEncoding"] = args["ResponseContentEncoding"],
+		["ResponseContentLanguage"] = args["ResponseContentLanguage"],
+		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
+		["ResponseContentType"] = args["ResponseContentType"],
+		["IfUnmodifiedSince"] = args["IfUnmodifiedSince"],
+		["VersionId"] = args["VersionId"],
+		["RequestPayer"] = args["RequestPayer"],
+		["ResponseCacheControl"] = args["ResponseCacheControl"],
+		["SSECustomerKey"] = args["SSECustomerKey"],
+		["Bucket"] = args["Bucket"],
+		["IfNoneMatch"] = args["IfNoneMatch"],
+		["ResponseContentDisposition"] = args["ResponseContentDisposition"],
+		["Range"] = args["Range"],
+		["Key"] = args["Key"],
+		["IfMatch"] = args["IfMatch"],
+		["ResponseExpires"] = args["ResponseExpires"],
+		["PartNumber"] = args["PartNumber"],
+		["IfModifiedSince"] = args["IfModifiedSince"],
+		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
 	asserts.AssertGetObjectRequest(t)
 	return t
@@ -6630,11 +7224,14 @@ end
 
 --- Create a structure of type GetBucketPolicyOutput
 --  
--- @param _Policy [Policy] The bucket policy as a JSON document.
-function M.GetBucketPolicyOutput(_Policy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBucketPolicyOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [Policy] The bucket policy as a JSON document.
+-- @return GetBucketPolicyOutput structure as a key-value pair table
+function M.GetBucketPolicyOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBucketPolicyOutput")
 	local t = { 
-		["Policy"] = _Policy,
+		["Policy"] = args["Policy"],
 	}
 	asserts.AssertGetBucketPolicyOutput(t)
 	return t
@@ -6655,14 +7252,17 @@ end
 
 --- Create a structure of type ObjectIdentifier
 --  
--- @param _VersionId [ObjectVersionId] VersionId for the specific version of the object to delete.
--- @param _Key [ObjectKey] Key name of the object to delete.
--- Required parameter: Key
-function M.ObjectIdentifier(_VersionId, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ObjectIdentifier")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [ObjectVersionId] VersionId for the specific version of the object to delete.
+-- * Key [ObjectKey] Key name of the object to delete.
+-- Required key: Key
+-- @return ObjectIdentifier structure as a key-value pair table
+function M.ObjectIdentifier(args)
+	assert(args, "You must provdide an argument table when creating ObjectIdentifier")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["Key"] = _Key,
+		["VersionId"] = args["VersionId"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertObjectIdentifier(t)
 	return t
@@ -6682,13 +7282,16 @@ end
 
 --- Create a structure of type Initiator
 --  
--- @param _DisplayName [DisplayName] Name of the Principal.
--- @param _ID [ID] If the principal is an AWS account, it provides the Canonical User ID. If the principal is an IAM User, it provides a user ARN value.
-function M.Initiator(_DisplayName, _ID, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Initiator")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisplayName [DisplayName] Name of the Principal.
+-- * ID [ID] If the principal is an AWS account, it provides the Canonical User ID. If the principal is an IAM User, it provides a user ARN value.
+-- @return Initiator structure as a key-value pair table
+function M.Initiator(args)
+	assert(args, "You must provdide an argument table when creating Initiator")
 	local t = { 
-		["DisplayName"] = _DisplayName,
-		["ID"] = _ID,
+		["DisplayName"] = args["DisplayName"],
+		["ID"] = args["ID"],
 	}
 	asserts.AssertInitiator(t)
 	return t
@@ -6706,8 +7309,11 @@ end
 
 --- Create a structure of type NoSuchKey
 -- The specified key does not exist.
-function M.NoSuchKey(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchKey")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return NoSuchKey structure as a key-value pair table
+function M.NoSuchKey(args)
+	assert(args, "You must provdide an argument table when creating NoSuchKey")
 	local t = { 
 	}
 	asserts.AssertNoSuchKey(t)
@@ -6728,12 +7334,15 @@ end
 
 --- Create a structure of type RequestPaymentConfiguration
 --  
--- @param _Payer [Payer] Specifies who pays for the download and request fees.
--- Required parameter: Payer
-function M.RequestPaymentConfiguration(_Payer, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RequestPaymentConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Payer [Payer] Specifies who pays for the download and request fees.
+-- Required key: Payer
+-- @return RequestPaymentConfiguration structure as a key-value pair table
+function M.RequestPaymentConfiguration(args)
+	assert(args, "You must provdide an argument table when creating RequestPaymentConfiguration")
 	local t = { 
-		["Payer"] = _Payer,
+		["Payer"] = args["Payer"],
 	}
 	asserts.AssertRequestPaymentConfiguration(t)
 	return t

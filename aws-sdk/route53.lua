@@ -38,17 +38,20 @@ end
 
 --- Create a structure of type ListVPCAssociationAuthorizationsResponse
 -- <p>A complex type that contains the response information for the request.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the hosted zone that you can associate the listed VPCs with.</p>
--- @param _VPCs [VPCs] <p>The list of VPCs that are authorized to be associated with the specified hosted zone.</p>
--- @param _NextToken [PaginationToken] <p>When the response includes a <code>NextToken</code> element, there are more VPCs that can be associated with the specified hosted zone. To get the next page of VPCs, submit another <code>ListVPCAssociationAuthorizations</code> request, and include the value of the <code>NextToken</code> element from the response in the <code>nexttoken</code> request parameter.</p>
--- Required parameter: HostedZoneId
--- Required parameter: VPCs
-function M.ListVPCAssociationAuthorizationsResponse(_HostedZoneId, _VPCs, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVPCAssociationAuthorizationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>The ID of the hosted zone that you can associate the listed VPCs with.</p>
+-- * VPCs [VPCs] <p>The list of VPCs that are authorized to be associated with the specified hosted zone.</p>
+-- * NextToken [PaginationToken] <p>When the response includes a <code>NextToken</code> element, there are more VPCs that can be associated with the specified hosted zone. To get the next page of VPCs, submit another <code>ListVPCAssociationAuthorizations</code> request, and include the value of the <code>NextToken</code> element from the response in the <code>nexttoken</code> request parameter.</p>
+-- Required key: HostedZoneId
+-- Required key: VPCs
+-- @return ListVPCAssociationAuthorizationsResponse structure as a key-value pair table
+function M.ListVPCAssociationAuthorizationsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListVPCAssociationAuthorizationsResponse")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["VPCs"] = _VPCs,
-		["NextToken"] = _NextToken,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["VPCs"] = args["VPCs"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListVPCAssociationAuthorizationsResponse(t)
 	return t
@@ -71,17 +74,20 @@ end
 
 --- Create a structure of type CreateTrafficPolicyRequest
 -- <p>A complex type that contains information about the traffic policy that you want to create.</p>
--- @param _Comment [TrafficPolicyComment] <p>(Optional) Any comments that you want to include about the traffic policy.</p>
--- @param _Document [TrafficPolicyDocument] <p>The definition of this traffic policy in JSON format. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html">Traffic Policy Document Format</a>.</p>
--- @param _Name [TrafficPolicyName] <p>The name of the traffic policy.</p>
--- Required parameter: Name
--- Required parameter: Document
-function M.CreateTrafficPolicyRequest(_Comment, _Document, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrafficPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [TrafficPolicyComment] <p>(Optional) Any comments that you want to include about the traffic policy.</p>
+-- * Document [TrafficPolicyDocument] <p>The definition of this traffic policy in JSON format. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html">Traffic Policy Document Format</a>.</p>
+-- * Name [TrafficPolicyName] <p>The name of the traffic policy.</p>
+-- Required key: Name
+-- Required key: Document
+-- @return CreateTrafficPolicyRequest structure as a key-value pair table
+function M.CreateTrafficPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyRequest")
 	local t = { 
-		["Comment"] = _Comment,
-		["Document"] = _Document,
-		["Name"] = _Name,
+		["Comment"] = args["Comment"],
+		["Document"] = args["Document"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateTrafficPolicyRequest(t)
 	return t
@@ -109,26 +115,29 @@ end
 
 --- Create a structure of type ListHostedZonesByNameResponse
 -- <p>A complex type that contains the response information for the request.</p>
--- @param _HostedZones [HostedZones] <p>A complex type that contains general information about the hosted zone.</p>
--- @param _NextHostedZoneId [ResourceId] <p>If <code>IsTruncated</code> is <code>true</code>, the value of <code>NextHostedZoneId</code> identifies the first hosted zone in the next group of <code>maxitems</code> hosted zones. Call <code>ListHostedZonesByName</code> again and specify the value of <code>NextDNSName</code> and <code>NextHostedZoneId</code> in the <code>dnsname</code> and <code>hostedzoneid</code> parameters, respectively.</p> <p>This element is present only if <code>IsTruncated</code> is <code>true</code>.</p>
--- @param _DNSName [DNSName] <p>For the second and subsequent calls to <code>ListHostedZonesByName</code>, <code>DNSName</code> is the value that you specified for the <code>dnsname</code> parameter in the request that produced the current response.</p>
--- @param _MaxItems [PageMaxItems] <p>The value that you specified for the <code>maxitems</code> parameter in the call to <code>ListHostedZonesByName</code> that produced the current response.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID that Amazon Route 53 assigned to the hosted zone when you created it.</p>
--- @param _NextDNSName [DNSName] <p>If <code>IsTruncated</code> is true, the value of <code>NextDNSName</code> is the name of the first hosted zone in the next group of <code>maxitems</code> hosted zones. Call <code>ListHostedZonesByName</code> again and specify the value of <code>NextDNSName</code> and <code>NextHostedZoneId</code> in the <code>dnsname</code> and <code>hostedzoneid</code> parameters, respectively.</p> <p>This element is present only if <code>IsTruncated</code> is <code>true</code>.</p>
--- @param _IsTruncated [PageTruncated] <p>A flag that indicates whether there are more hosted zones to be listed. If the response was truncated, you can get the next group of <code>maxitems</code> hosted zones by calling <code>ListHostedZonesByName</code> again and specifying the values of <code>NextDNSName</code> and <code>NextHostedZoneId</code> elements in the <code>dnsname</code> and <code>hostedzoneid</code> parameters.</p>
--- Required parameter: HostedZones
--- Required parameter: IsTruncated
--- Required parameter: MaxItems
-function M.ListHostedZonesByNameResponse(_HostedZones, _NextHostedZoneId, _DNSName, _MaxItems, _HostedZoneId, _NextDNSName, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListHostedZonesByNameResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZones [HostedZones] <p>A complex type that contains general information about the hosted zone.</p>
+-- * NextHostedZoneId [ResourceId] <p>If <code>IsTruncated</code> is <code>true</code>, the value of <code>NextHostedZoneId</code> identifies the first hosted zone in the next group of <code>maxitems</code> hosted zones. Call <code>ListHostedZonesByName</code> again and specify the value of <code>NextDNSName</code> and <code>NextHostedZoneId</code> in the <code>dnsname</code> and <code>hostedzoneid</code> parameters, respectively.</p> <p>This element is present only if <code>IsTruncated</code> is <code>true</code>.</p>
+-- * DNSName [DNSName] <p>For the second and subsequent calls to <code>ListHostedZonesByName</code>, <code>DNSName</code> is the value that you specified for the <code>dnsname</code> parameter in the request that produced the current response.</p>
+-- * MaxItems [PageMaxItems] <p>The value that you specified for the <code>maxitems</code> parameter in the call to <code>ListHostedZonesByName</code> that produced the current response.</p>
+-- * HostedZoneId [ResourceId] <p>The ID that Amazon Route 53 assigned to the hosted zone when you created it.</p>
+-- * NextDNSName [DNSName] <p>If <code>IsTruncated</code> is true, the value of <code>NextDNSName</code> is the name of the first hosted zone in the next group of <code>maxitems</code> hosted zones. Call <code>ListHostedZonesByName</code> again and specify the value of <code>NextDNSName</code> and <code>NextHostedZoneId</code> in the <code>dnsname</code> and <code>hostedzoneid</code> parameters, respectively.</p> <p>This element is present only if <code>IsTruncated</code> is <code>true</code>.</p>
+-- * IsTruncated [PageTruncated] <p>A flag that indicates whether there are more hosted zones to be listed. If the response was truncated, you can get the next group of <code>maxitems</code> hosted zones by calling <code>ListHostedZonesByName</code> again and specifying the values of <code>NextDNSName</code> and <code>NextHostedZoneId</code> elements in the <code>dnsname</code> and <code>hostedzoneid</code> parameters.</p>
+-- Required key: HostedZones
+-- Required key: IsTruncated
+-- Required key: MaxItems
+-- @return ListHostedZonesByNameResponse structure as a key-value pair table
+function M.ListHostedZonesByNameResponse(args)
+	assert(args, "You must provdide an argument table when creating ListHostedZonesByNameResponse")
 	local t = { 
-		["HostedZones"] = _HostedZones,
-		["NextHostedZoneId"] = _NextHostedZoneId,
-		["DNSName"] = _DNSName,
-		["MaxItems"] = _MaxItems,
-		["HostedZoneId"] = _HostedZoneId,
-		["NextDNSName"] = _NextDNSName,
-		["IsTruncated"] = _IsTruncated,
+		["HostedZones"] = args["HostedZones"],
+		["NextHostedZoneId"] = args["NextHostedZoneId"],
+		["DNSName"] = args["DNSName"],
+		["MaxItems"] = args["MaxItems"],
+		["HostedZoneId"] = args["HostedZoneId"],
+		["NextDNSName"] = args["NextDNSName"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListHostedZonesByNameResponse(t)
 	return t
@@ -150,15 +159,18 @@ end
 
 --- Create a structure of type CreateTrafficPolicyResponse
 -- <p>A complex type that contains the response information for the <code>CreateTrafficPolicy</code> request.</p>
--- @param _TrafficPolicy [TrafficPolicy] <p>A complex type that contains settings for the new traffic policy.</p>
--- @param _Location [ResourceURI] <p>A unique URL that represents a new traffic policy.</p>
--- Required parameter: TrafficPolicy
--- Required parameter: Location
-function M.CreateTrafficPolicyResponse(_TrafficPolicy, _Location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrafficPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicy [TrafficPolicy] <p>A complex type that contains settings for the new traffic policy.</p>
+-- * Location [ResourceURI] <p>A unique URL that represents a new traffic policy.</p>
+-- Required key: TrafficPolicy
+-- Required key: Location
+-- @return CreateTrafficPolicyResponse structure as a key-value pair table
+function M.CreateTrafficPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyResponse")
 	local t = { 
-		["TrafficPolicy"] = _TrafficPolicy,
-		["Location"] = _Location,
+		["TrafficPolicy"] = args["TrafficPolicy"],
+		["Location"] = args["Location"],
 	}
 	asserts.AssertCreateTrafficPolicyResponse(t)
 	return t
@@ -178,12 +190,15 @@ end
 
 --- Create a structure of type GetTrafficPolicyInstanceResponse
 -- <p>A complex type that contains information about the resource record sets that Amazon Route 53 created based on a specified traffic policy.</p>
--- @param _TrafficPolicyInstance [TrafficPolicyInstance] <p>A complex type that contains settings for the traffic policy instance.</p>
--- Required parameter: TrafficPolicyInstance
-function M.GetTrafficPolicyInstanceResponse(_TrafficPolicyInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTrafficPolicyInstanceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyInstance [TrafficPolicyInstance] <p>A complex type that contains settings for the traffic policy instance.</p>
+-- Required key: TrafficPolicyInstance
+-- @return GetTrafficPolicyInstanceResponse structure as a key-value pair table
+function M.GetTrafficPolicyInstanceResponse(args)
+	assert(args, "You must provdide an argument table when creating GetTrafficPolicyInstanceResponse")
 	local t = { 
-		["TrafficPolicyInstance"] = _TrafficPolicyInstance,
+		["TrafficPolicyInstance"] = args["TrafficPolicyInstance"],
 	}
 	asserts.AssertGetTrafficPolicyInstanceResponse(t)
 	return t
@@ -203,12 +218,15 @@ end
 
 --- Create a structure of type DeleteHostedZoneRequest
 -- <p>A request to delete a hosted zone.</p>
--- @param _Id [ResourceId] <p>The ID of the hosted zone you want to delete.</p>
--- Required parameter: Id
-function M.DeleteHostedZoneRequest(_Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHostedZoneRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [ResourceId] <p>The ID of the hosted zone you want to delete.</p>
+-- Required key: Id
+-- @return DeleteHostedZoneRequest structure as a key-value pair table
+function M.DeleteHostedZoneRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteHostedZoneRequest")
 	local t = { 
-		["Id"] = _Id,
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDeleteHostedZoneRequest(t)
 	return t
@@ -230,15 +248,18 @@ end
 
 --- Create a structure of type AlarmIdentifier
 -- <p>A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy.</p>
--- @param _Region [CloudWatchRegion] <p>A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy.</p> <p>For the current list of CloudWatch regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the <i>AWS Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.</p>
--- @param _Name [AlarmName] <p>The name of the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy.</p>
--- Required parameter: Region
--- Required parameter: Name
-function M.AlarmIdentifier(_Region, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AlarmIdentifier")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Region [CloudWatchRegion] <p>A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy.</p> <p>For the current list of CloudWatch regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in the <i>AWS Regions and Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.</p>
+-- * Name [AlarmName] <p>The name of the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy.</p>
+-- Required key: Region
+-- Required key: Name
+-- @return AlarmIdentifier structure as a key-value pair table
+function M.AlarmIdentifier(args)
+	assert(args, "You must provdide an argument table when creating AlarmIdentifier")
 	local t = { 
-		["Region"] = _Region,
-		["Name"] = _Name,
+		["Region"] = args["Region"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertAlarmIdentifier(t)
 	return t
@@ -260,15 +281,18 @@ end
 
 --- Create a structure of type CreateHealthCheckRequest
 -- <p>A complex type that contains the health check request information.</p>
--- @param _HealthCheckConfig [HealthCheckConfig] <p>A complex type that contains the response to a <code>CreateHealthCheck</code> request. </p>
--- @param _CallerReference [HealthCheckNonce] <p>A unique string that identifies the request and that allows you to retry a failed <code>CreateHealthCheck</code> request without the risk of creating two identical health checks:</p> <ul> <li> <p>If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> and settings as a previous request, and if the health check doesn't exist, Amazon Route 53 creates the health check. If the health check does exist, Amazon Route 53 returns the settings for the existing health check.</p> </li> <li> <p>If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as a deleted health check, regardless of the settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.</p> </li> <li> <p>If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as an existing health check but with different settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.</p> </li> <li> <p>If you send a <code>CreateHealthCheck</code> request with a unique <code>CallerReference</code> but settings identical to an existing health check, Amazon Route 53 creates the health check.</p> </li> </ul>
--- Required parameter: CallerReference
--- Required parameter: HealthCheckConfig
-function M.CreateHealthCheckRequest(_HealthCheckConfig, _CallerReference, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateHealthCheckRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckConfig [HealthCheckConfig] <p>A complex type that contains the response to a <code>CreateHealthCheck</code> request. </p>
+-- * CallerReference [HealthCheckNonce] <p>A unique string that identifies the request and that allows you to retry a failed <code>CreateHealthCheck</code> request without the risk of creating two identical health checks:</p> <ul> <li> <p>If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> and settings as a previous request, and if the health check doesn't exist, Amazon Route 53 creates the health check. If the health check does exist, Amazon Route 53 returns the settings for the existing health check.</p> </li> <li> <p>If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as a deleted health check, regardless of the settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.</p> </li> <li> <p>If you send a <code>CreateHealthCheck</code> request with the same <code>CallerReference</code> as an existing health check but with different settings, Amazon Route 53 returns a <code>HealthCheckAlreadyExists</code> error.</p> </li> <li> <p>If you send a <code>CreateHealthCheck</code> request with a unique <code>CallerReference</code> but settings identical to an existing health check, Amazon Route 53 creates the health check.</p> </li> </ul>
+-- Required key: CallerReference
+-- Required key: HealthCheckConfig
+-- @return CreateHealthCheckRequest structure as a key-value pair table
+function M.CreateHealthCheckRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateHealthCheckRequest")
 	local t = { 
-		["HealthCheckConfig"] = _HealthCheckConfig,
-		["CallerReference"] = _CallerReference,
+		["HealthCheckConfig"] = args["HealthCheckConfig"],
+		["CallerReference"] = args["CallerReference"],
 	}
 	asserts.AssertCreateHealthCheckRequest(t)
 	return t
@@ -288,12 +312,15 @@ end
 
 --- Create a structure of type ResourceRecord
 -- <p>Information specific to the resource record.</p> <note> <p>If you're creating an alias resource record set, omit <code>ResourceRecord</code>.</p> </note>
--- @param _Value [RData] <p>The current or new DNS record value, not to exceed 4,000 characters. In the case of a <code>DELETE</code> action, if the current value does not match the actual value, an error is returned. For descriptions about how to format <code>Value</code> for different record types, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html">Supported DNS Resource Record Types</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>You can specify more than one value for all record types except <code>CNAME</code> and <code>SOA</code>. </p> <note> <p>If you're creating an alias resource record set, omit <code>Value</code>.</p> </note>
--- Required parameter: Value
-function M.ResourceRecord(_Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceRecord")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [RData] <p>The current or new DNS record value, not to exceed 4,000 characters. In the case of a <code>DELETE</code> action, if the current value does not match the actual value, an error is returned. For descriptions about how to format <code>Value</code> for different record types, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html">Supported DNS Resource Record Types</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>You can specify more than one value for all record types except <code>CNAME</code> and <code>SOA</code>. </p> <note> <p>If you're creating an alias resource record set, omit <code>Value</code>.</p> </note>
+-- Required key: Value
+-- @return ResourceRecord structure as a key-value pair table
+function M.ResourceRecord(args)
+	assert(args, "You must provdide an argument table when creating ResourceRecord")
 	local t = { 
-		["Value"] = _Value,
+		["Value"] = args["Value"],
 	}
 	asserts.AssertResourceRecord(t)
 	return t
@@ -315,15 +342,18 @@ end
 
 --- Create a structure of type ListTagsForResourcesRequest
 -- <p>A complex type that contains information about the health checks or hosted zones for which you want to list tags.</p>
--- @param _ResourceType [TagResourceType] <p>The type of the resources.</p> <ul> <li> <p>The resource type for health checks is <code>healthcheck</code>.</p> </li> <li> <p>The resource type for hosted zones is <code>hostedzone</code>.</p> </li> </ul>
--- @param _ResourceIds [TagResourceIdList] <p>A complex type that contains the ResourceId element for each resource for which you want to get a list of tags.</p>
--- Required parameter: ResourceType
--- Required parameter: ResourceIds
-function M.ListTagsForResourcesRequest(_ResourceType, _ResourceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourcesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [TagResourceType] <p>The type of the resources.</p> <ul> <li> <p>The resource type for health checks is <code>healthcheck</code>.</p> </li> <li> <p>The resource type for hosted zones is <code>hostedzone</code>.</p> </li> </ul>
+-- * ResourceIds [TagResourceIdList] <p>A complex type that contains the ResourceId element for each resource for which you want to get a list of tags.</p>
+-- Required key: ResourceType
+-- Required key: ResourceIds
+-- @return ListTagsForResourcesRequest structure as a key-value pair table
+function M.ListTagsForResourcesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourcesRequest")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceIds"] = _ResourceIds,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceIds"] = args["ResourceIds"],
 	}
 	asserts.AssertListTagsForResourcesRequest(t)
 	return t
@@ -349,23 +379,26 @@ end
 
 --- Create a structure of type ListTrafficPolicyInstancesByPolicyRequest
 -- <p>A complex type that contains the information about the request to list your traffic policy instances.</p>
--- @param _TrafficPolicyInstanceNameMarker [DNSName] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code> request.</p> <p>For the value of <code>trafficpolicyinstancename</code>, specify the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous response, which is the name of the first traffic policy instance that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
--- @param _TrafficPolicyVersion [TrafficPolicyVersion] <p>The version of the traffic policy for which you want to list traffic policy instances. The version must be associated with the traffic policy that is specified by <code>TrafficPolicyId</code>.</p>
--- @param _HostedZoneIdMarker [ResourceId] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code> request. </p> <p>For the value of <code>hostedzoneid</code>, specify the value of <code>HostedZoneIdMarker</code> from the previous response, which is the hosted zone ID of the first traffic policy instance that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
--- @param _TrafficPolicyId [TrafficPolicyId] <p>The ID of the traffic policy for which you want to list traffic policy instances.</p>
--- @param _MaxItems [PageMaxItems] <p>The maximum number of traffic policy instances to be included in the response body for this request. If you have more than <code>MaxItems</code> traffic policy instances, the value of the <code>IsTruncated</code> element in the response is <code>true</code>, and the values of <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic policy instance that Amazon Route 53 will return if you submit another request.</p>
--- @param _TrafficPolicyInstanceTypeMarker [RRType] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code> request.</p> <p>For the value of <code>trafficpolicyinstancetype</code>, specify the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous response, which is the name of the first traffic policy instance that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
--- Required parameter: TrafficPolicyId
--- Required parameter: TrafficPolicyVersion
-function M.ListTrafficPolicyInstancesByPolicyRequest(_TrafficPolicyInstanceNameMarker, _TrafficPolicyVersion, _HostedZoneIdMarker, _TrafficPolicyId, _MaxItems, _TrafficPolicyInstanceTypeMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTrafficPolicyInstancesByPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyInstanceNameMarker [DNSName] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code> request.</p> <p>For the value of <code>trafficpolicyinstancename</code>, specify the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous response, which is the name of the first traffic policy instance that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
+-- * TrafficPolicyVersion [TrafficPolicyVersion] <p>The version of the traffic policy for which you want to list traffic policy instances. The version must be associated with the traffic policy that is specified by <code>TrafficPolicyId</code>.</p>
+-- * HostedZoneIdMarker [ResourceId] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code> request. </p> <p>For the value of <code>hostedzoneid</code>, specify the value of <code>HostedZoneIdMarker</code> from the previous response, which is the hosted zone ID of the first traffic policy instance that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
+-- * TrafficPolicyId [TrafficPolicyId] <p>The ID of the traffic policy for which you want to list traffic policy instances.</p>
+-- * MaxItems [PageMaxItems] <p>The maximum number of traffic policy instances to be included in the response body for this request. If you have more than <code>MaxItems</code> traffic policy instances, the value of the <code>IsTruncated</code> element in the response is <code>true</code>, and the values of <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic policy instance that Amazon Route 53 will return if you submit another request.</p>
+-- * TrafficPolicyInstanceTypeMarker [RRType] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstancesByPolicy</code> request.</p> <p>For the value of <code>trafficpolicyinstancetype</code>, specify the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous response, which is the name of the first traffic policy instance that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
+-- Required key: TrafficPolicyId
+-- Required key: TrafficPolicyVersion
+-- @return ListTrafficPolicyInstancesByPolicyRequest structure as a key-value pair table
+function M.ListTrafficPolicyInstancesByPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesByPolicyRequest")
 	local t = { 
-		["TrafficPolicyInstanceNameMarker"] = _TrafficPolicyInstanceNameMarker,
-		["TrafficPolicyVersion"] = _TrafficPolicyVersion,
-		["HostedZoneIdMarker"] = _HostedZoneIdMarker,
-		["TrafficPolicyId"] = _TrafficPolicyId,
-		["MaxItems"] = _MaxItems,
-		["TrafficPolicyInstanceTypeMarker"] = _TrafficPolicyInstanceTypeMarker,
+		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
+		["TrafficPolicyVersion"] = args["TrafficPolicyVersion"],
+		["HostedZoneIdMarker"] = args["HostedZoneIdMarker"],
+		["TrafficPolicyId"] = args["TrafficPolicyId"],
+		["MaxItems"] = args["MaxItems"],
+		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
 	}
 	asserts.AssertListTrafficPolicyInstancesByPolicyRequest(t)
 	return t
@@ -385,12 +418,15 @@ end
 
 --- Create a structure of type GetChangeResponse
 -- <p>A complex type that contains the <code>ChangeInfo</code> element.</p>
--- @param _ChangeInfo [ChangeInfo] <p>A complex type that contains information about the specified change batch.</p>
--- Required parameter: ChangeInfo
-function M.GetChangeResponse(_ChangeInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetChangeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeInfo [ChangeInfo] <p>A complex type that contains information about the specified change batch.</p>
+-- Required key: ChangeInfo
+-- @return GetChangeResponse structure as a key-value pair table
+function M.GetChangeResponse(args)
+	assert(args, "You must provdide an argument table when creating GetChangeResponse")
 	local t = { 
-		["ChangeInfo"] = _ChangeInfo,
+		["ChangeInfo"] = args["ChangeInfo"],
 	}
 	asserts.AssertGetChangeResponse(t)
 	return t
@@ -409,11 +445,14 @@ end
 
 --- Create a structure of type PublicZoneVPCAssociation
 -- <p>You're trying to associate a VPC with a public hosted zone. Amazon Route 53 doesn't support associating a VPC with a public hosted zone.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.PublicZoneVPCAssociation(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PublicZoneVPCAssociation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return PublicZoneVPCAssociation structure as a key-value pair table
+function M.PublicZoneVPCAssociation(args)
+	assert(args, "You must provdide an argument table when creating PublicZoneVPCAssociation")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertPublicZoneVPCAssociation(t)
 	return t
@@ -432,11 +471,14 @@ end
 
 --- Create a structure of type InvalidArgument
 -- <p>Parameter name is invalid.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.InvalidArgument(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidArgument")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return InvalidArgument structure as a key-value pair table
+function M.InvalidArgument(args)
+	assert(args, "You must provdide an argument table when creating InvalidArgument")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidArgument(t)
 	return t
@@ -463,24 +505,27 @@ end
 
 --- Create a structure of type ListTrafficPolicyInstancesByPolicyResponse
 -- <p>A complex type that contains the response information for the request.</p>
--- @param _TrafficPolicyInstanceNameMarker [DNSName] <p>If <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is the name of the first traffic policy instance in the next group of <code>MaxItems</code> traffic policy instances.</p>
--- @param _HostedZoneIdMarker [ResourceId] <p>If <code>IsTruncated</code> is <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the hosted zone of the first traffic policy instance in the next group of traffic policy instances.</p>
--- @param _TrafficPolicyInstances [TrafficPolicyInstances] <p>A list that contains one <code>TrafficPolicyInstance</code> element for each traffic policy instance that matches the elements in the request.</p>
--- @param _MaxItems [PageMaxItems] <p>The value that you specified for the <code>MaxItems</code> parameter in the call to <code>ListTrafficPolicyInstancesByPolicy</code> that produced the current response.</p>
--- @param _TrafficPolicyInstanceTypeMarker [RRType] <p>If <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyInstanceTypeMarker</code> is the DNS type of the resource record sets that are associated with the first traffic policy instance in the next group of <code>MaxItems</code> traffic policy instances.</p>
--- @param _IsTruncated [PageTruncated] <p>A flag that indicates whether there are more traffic policy instances to be listed. If the response was truncated, you can get the next group of traffic policy instances by calling <code>ListTrafficPolicyInstancesByPolicy</code> again and specifying the values of the <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> elements in the corresponding request parameters.</p>
--- Required parameter: TrafficPolicyInstances
--- Required parameter: IsTruncated
--- Required parameter: MaxItems
-function M.ListTrafficPolicyInstancesByPolicyResponse(_TrafficPolicyInstanceNameMarker, _HostedZoneIdMarker, _TrafficPolicyInstances, _MaxItems, _TrafficPolicyInstanceTypeMarker, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTrafficPolicyInstancesByPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyInstanceNameMarker [DNSName] <p>If <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is the name of the first traffic policy instance in the next group of <code>MaxItems</code> traffic policy instances.</p>
+-- * HostedZoneIdMarker [ResourceId] <p>If <code>IsTruncated</code> is <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the hosted zone of the first traffic policy instance in the next group of traffic policy instances.</p>
+-- * TrafficPolicyInstances [TrafficPolicyInstances] <p>A list that contains one <code>TrafficPolicyInstance</code> element for each traffic policy instance that matches the elements in the request.</p>
+-- * MaxItems [PageMaxItems] <p>The value that you specified for the <code>MaxItems</code> parameter in the call to <code>ListTrafficPolicyInstancesByPolicy</code> that produced the current response.</p>
+-- * TrafficPolicyInstanceTypeMarker [RRType] <p>If <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyInstanceTypeMarker</code> is the DNS type of the resource record sets that are associated with the first traffic policy instance in the next group of <code>MaxItems</code> traffic policy instances.</p>
+-- * IsTruncated [PageTruncated] <p>A flag that indicates whether there are more traffic policy instances to be listed. If the response was truncated, you can get the next group of traffic policy instances by calling <code>ListTrafficPolicyInstancesByPolicy</code> again and specifying the values of the <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> elements in the corresponding request parameters.</p>
+-- Required key: TrafficPolicyInstances
+-- Required key: IsTruncated
+-- Required key: MaxItems
+-- @return ListTrafficPolicyInstancesByPolicyResponse structure as a key-value pair table
+function M.ListTrafficPolicyInstancesByPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesByPolicyResponse")
 	local t = { 
-		["TrafficPolicyInstanceNameMarker"] = _TrafficPolicyInstanceNameMarker,
-		["HostedZoneIdMarker"] = _HostedZoneIdMarker,
-		["TrafficPolicyInstances"] = _TrafficPolicyInstances,
-		["MaxItems"] = _MaxItems,
-		["TrafficPolicyInstanceTypeMarker"] = _TrafficPolicyInstanceTypeMarker,
-		["IsTruncated"] = _IsTruncated,
+		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
+		["HostedZoneIdMarker"] = args["HostedZoneIdMarker"],
+		["TrafficPolicyInstances"] = args["TrafficPolicyInstances"],
+		["MaxItems"] = args["MaxItems"],
+		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListTrafficPolicyInstancesByPolicyResponse(t)
 	return t
@@ -500,12 +545,15 @@ end
 
 --- Create a structure of type GetGeoLocationResponse
 -- <p>A complex type that contains the response information for the specified geolocation code.</p>
--- @param _GeoLocationDetails [GeoLocationDetails] <p>A complex type that contains the codes and full continent, country, and subdivision names for the specified geolocation code.</p>
--- Required parameter: GeoLocationDetails
-function M.GetGeoLocationResponse(_GeoLocationDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGeoLocationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GeoLocationDetails [GeoLocationDetails] <p>A complex type that contains the codes and full continent, country, and subdivision names for the specified geolocation code.</p>
+-- Required key: GeoLocationDetails
+-- @return GetGeoLocationResponse structure as a key-value pair table
+function M.GetGeoLocationResponse(args)
+	assert(args, "You must provdide an argument table when creating GetGeoLocationResponse")
 	local t = { 
-		["GeoLocationDetails"] = _GeoLocationDetails,
+		["GeoLocationDetails"] = args["GeoLocationDetails"],
 	}
 	asserts.AssertGetGeoLocationResponse(t)
 	return t
@@ -531,21 +579,24 @@ end
 
 --- Create a structure of type UpdateTrafficPolicyInstanceRequest
 -- <p>A complex type that contains information about the resource record sets that you want to update based on a specified traffic policy instance.</p>
--- @param _TrafficPolicyId [TrafficPolicyId] <p>The ID of the traffic policy that you want Amazon Route 53 to use to update resource record sets for the specified traffic policy instance.</p>
--- @param _TrafficPolicyVersion [TrafficPolicyVersion] <p>The version of the traffic policy that you want Amazon Route 53 to use to update resource record sets for the specified traffic policy instance.</p>
--- @param _Id [TrafficPolicyInstanceId] <p>The ID of the traffic policy instance that you want to update.</p>
--- @param _TTL [TTL] <p>The TTL that you want Amazon Route 53 to assign to all of the updated resource record sets.</p>
--- Required parameter: Id
--- Required parameter: TTL
--- Required parameter: TrafficPolicyId
--- Required parameter: TrafficPolicyVersion
-function M.UpdateTrafficPolicyInstanceRequest(_TrafficPolicyId, _TrafficPolicyVersion, _Id, _TTL, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTrafficPolicyInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyId [TrafficPolicyId] <p>The ID of the traffic policy that you want Amazon Route 53 to use to update resource record sets for the specified traffic policy instance.</p>
+-- * TrafficPolicyVersion [TrafficPolicyVersion] <p>The version of the traffic policy that you want Amazon Route 53 to use to update resource record sets for the specified traffic policy instance.</p>
+-- * Id [TrafficPolicyInstanceId] <p>The ID of the traffic policy instance that you want to update.</p>
+-- * TTL [TTL] <p>The TTL that you want Amazon Route 53 to assign to all of the updated resource record sets.</p>
+-- Required key: Id
+-- Required key: TTL
+-- Required key: TrafficPolicyId
+-- Required key: TrafficPolicyVersion
+-- @return UpdateTrafficPolicyInstanceRequest structure as a key-value pair table
+function M.UpdateTrafficPolicyInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateTrafficPolicyInstanceRequest")
 	local t = { 
-		["TrafficPolicyId"] = _TrafficPolicyId,
-		["TrafficPolicyVersion"] = _TrafficPolicyVersion,
-		["Id"] = _Id,
-		["TTL"] = _TTL,
+		["TrafficPolicyId"] = args["TrafficPolicyId"],
+		["TrafficPolicyVersion"] = args["TrafficPolicyVersion"],
+		["Id"] = args["Id"],
+		["TTL"] = args["TTL"],
 	}
 	asserts.AssertUpdateTrafficPolicyInstanceRequest(t)
 	return t
@@ -565,13 +616,16 @@ end
 
 --- Create a structure of type ListTrafficPoliciesRequest
 -- <p>A complex type that contains the information about the request to list the traffic policies that are associated with the current AWS account.</p>
--- @param _TrafficPolicyIdMarker [TrafficPolicyId] <p>(Conditional) For your first request to <code>ListTrafficPolicies</code>, don't include the <code>TrafficPolicyIdMarker</code> parameter.</p> <p>If you have more traffic policies than the value of <code>MaxItems</code>, <code>ListTrafficPolicies</code> returns only the first <code>MaxItems</code> traffic policies. To get the next group of policies, submit another request to <code>ListTrafficPolicies</code>. For the value of <code>TrafficPolicyIdMarker</code>, specify the value of <code>TrafficPolicyIdMarker</code> that was returned in the previous response.</p>
--- @param _MaxItems [PageMaxItems] <p>(Optional) The maximum number of traffic policies that you want Amazon Route 53 to return in response to this request. If you have more than <code>MaxItems</code> traffic policies, the value of <code>IsTruncated</code> in the response is <code>true</code>, and the value of <code>TrafficPolicyIdMarker</code> is the ID of the first traffic policy that Amazon Route 53 will return if you submit another request.</p>
-function M.ListTrafficPoliciesRequest(_TrafficPolicyIdMarker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTrafficPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyIdMarker [TrafficPolicyId] <p>(Conditional) For your first request to <code>ListTrafficPolicies</code>, don't include the <code>TrafficPolicyIdMarker</code> parameter.</p> <p>If you have more traffic policies than the value of <code>MaxItems</code>, <code>ListTrafficPolicies</code> returns only the first <code>MaxItems</code> traffic policies. To get the next group of policies, submit another request to <code>ListTrafficPolicies</code>. For the value of <code>TrafficPolicyIdMarker</code>, specify the value of <code>TrafficPolicyIdMarker</code> that was returned in the previous response.</p>
+-- * MaxItems [PageMaxItems] <p>(Optional) The maximum number of traffic policies that you want Amazon Route 53 to return in response to this request. If you have more than <code>MaxItems</code> traffic policies, the value of <code>IsTruncated</code> in the response is <code>true</code>, and the value of <code>TrafficPolicyIdMarker</code> is the ID of the first traffic policy that Amazon Route 53 will return if you submit another request.</p>
+-- @return ListTrafficPoliciesRequest structure as a key-value pair table
+function M.ListTrafficPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTrafficPoliciesRequest")
 	local t = { 
-		["TrafficPolicyIdMarker"] = _TrafficPolicyIdMarker,
-		["MaxItems"] = _MaxItems,
+		["TrafficPolicyIdMarker"] = args["TrafficPolicyIdMarker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListTrafficPoliciesRequest(t)
 	return t
@@ -590,11 +644,14 @@ end
 
 --- Create a structure of type DelegationSetNotAvailable
 -- <p>You can create a hosted zone that has the same name as an existing hosted zone (example.com is common), but there is a limit to the number of hosted zones that have the same name. If you get this error, Amazon Route 53 has reached that limit. If you own the domain name and Amazon Route 53 generates this error, contact Customer Support.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.DelegationSetNotAvailable(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DelegationSetNotAvailable")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return DelegationSetNotAvailable structure as a key-value pair table
+function M.DelegationSetNotAvailable(args)
+	assert(args, "You must provdide an argument table when creating DelegationSetNotAvailable")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDelegationSetNotAvailable(t)
 	return t
@@ -614,12 +671,15 @@ end
 
 --- Create a structure of type DeleteHealthCheckRequest
 -- <p>This action deletes a health check.</p>
--- @param _HealthCheckId [HealthCheckId] <p>The ID of the health check that you want to delete.</p>
--- Required parameter: HealthCheckId
-function M.DeleteHealthCheckRequest(_HealthCheckId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHealthCheckRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckId [HealthCheckId] <p>The ID of the health check that you want to delete.</p>
+-- Required key: HealthCheckId
+-- @return DeleteHealthCheckRequest structure as a key-value pair table
+function M.DeleteHealthCheckRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteHealthCheckRequest")
 	local t = { 
-		["HealthCheckId"] = _HealthCheckId,
+		["HealthCheckId"] = args["HealthCheckId"],
 	}
 	asserts.AssertDeleteHealthCheckRequest(t)
 	return t
@@ -639,13 +699,16 @@ end
 
 --- Create a structure of type StatusReport
 -- <p>A complex type that contains the status that one Amazon Route 53 health checker reports and the time of the health check.</p>
--- @param _Status [Status] <p>A description of the status of the health check endpoint as reported by one of the Amazon Route 53 health checkers.</p>
--- @param _CheckedTime [TimeStamp] <p>The date and time that the health checker performed the health check in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a> and Coordinated Universal Time (UTC). For example, the value <code>2017-03-27T17:48:16.751Z</code> represents March 27, 2017 at 17:48:16.751 UTC.</p>
-function M.StatusReport(_Status, _CheckedTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StatusReport")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [Status] <p>A description of the status of the health check endpoint as reported by one of the Amazon Route 53 health checkers.</p>
+-- * CheckedTime [TimeStamp] <p>The date and time that the health checker performed the health check in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a> and Coordinated Universal Time (UTC). For example, the value <code>2017-03-27T17:48:16.751Z</code> represents March 27, 2017 at 17:48:16.751 UTC.</p>
+-- @return StatusReport structure as a key-value pair table
+function M.StatusReport(args)
+	assert(args, "You must provdide an argument table when creating StatusReport")
 	local t = { 
-		["Status"] = _Status,
-		["CheckedTime"] = _CheckedTime,
+		["Status"] = args["Status"],
+		["CheckedTime"] = args["CheckedTime"],
 	}
 	asserts.AssertStatusReport(t)
 	return t
@@ -665,12 +728,15 @@ end
 
 --- Create a structure of type GetHostedZoneRequest
 -- <p>A request to get information about a specified hosted zone. </p>
--- @param _Id [ResourceId] <p>The ID of the hosted zone that you want to get information about.</p>
--- Required parameter: Id
-function M.GetHostedZoneRequest(_Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHostedZoneRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [ResourceId] <p>The ID of the hosted zone that you want to get information about.</p>
+-- Required key: Id
+-- @return GetHostedZoneRequest structure as a key-value pair table
+function M.GetHostedZoneRequest(args)
+	assert(args, "You must provdide an argument table when creating GetHostedZoneRequest")
 	local t = { 
-		["Id"] = _Id,
+		["Id"] = args["Id"],
 	}
 	asserts.AssertGetHostedZoneRequest(t)
 	return t
@@ -688,8 +754,11 @@ end
 
 --- Create a structure of type DeleteTrafficPolicyResponse
 -- <p>An empty element.</p>
-function M.DeleteTrafficPolicyResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTrafficPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteTrafficPolicyResponse structure as a key-value pair table
+function M.DeleteTrafficPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteTrafficPolicyResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteTrafficPolicyResponse(t)
@@ -717,23 +786,26 @@ end
 
 --- Create a structure of type ListReusableDelegationSetsResponse
 -- <p>A complex type that contains information about the reusable delegation sets that are associated with the current AWS account.</p>
--- @param _Marker [PageMarker] <p>For the second and subsequent calls to <code>ListReusableDelegationSets</code>, <code>Marker</code> is the value that you specified for the <code>marker</code> parameter in the request that produced the current response.</p>
--- @param _DelegationSets [DelegationSets] <p>A complex type that contains one <code>DelegationSet</code> element for each reusable delegation set that was created by the current AWS account.</p>
--- @param _IsTruncated [PageTruncated] <p>A flag that indicates whether there are more reusable delegation sets to be listed.</p>
--- @param _MaxItems [PageMaxItems] <p>The value that you specified for the <code>maxitems</code> parameter in the call to <code>ListReusableDelegationSets</code> that produced the current response.</p>
--- @param _NextMarker [PageMarker] <p>If <code>IsTruncated</code> is <code>true</code>, the value of <code>NextMarker</code> identifies the next reusable delegation set that Amazon Route 53 will return if you submit another <code>ListReusableDelegationSets</code> request and specify the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
--- Required parameter: DelegationSets
--- Required parameter: Marker
--- Required parameter: IsTruncated
--- Required parameter: MaxItems
-function M.ListReusableDelegationSetsResponse(_Marker, _DelegationSets, _IsTruncated, _MaxItems, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListReusableDelegationSetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarker] <p>For the second and subsequent calls to <code>ListReusableDelegationSets</code>, <code>Marker</code> is the value that you specified for the <code>marker</code> parameter in the request that produced the current response.</p>
+-- * DelegationSets [DelegationSets] <p>A complex type that contains one <code>DelegationSet</code> element for each reusable delegation set that was created by the current AWS account.</p>
+-- * IsTruncated [PageTruncated] <p>A flag that indicates whether there are more reusable delegation sets to be listed.</p>
+-- * MaxItems [PageMaxItems] <p>The value that you specified for the <code>maxitems</code> parameter in the call to <code>ListReusableDelegationSets</code> that produced the current response.</p>
+-- * NextMarker [PageMarker] <p>If <code>IsTruncated</code> is <code>true</code>, the value of <code>NextMarker</code> identifies the next reusable delegation set that Amazon Route 53 will return if you submit another <code>ListReusableDelegationSets</code> request and specify the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
+-- Required key: DelegationSets
+-- Required key: Marker
+-- Required key: IsTruncated
+-- Required key: MaxItems
+-- @return ListReusableDelegationSetsResponse structure as a key-value pair table
+function M.ListReusableDelegationSetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListReusableDelegationSetsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["DelegationSets"] = _DelegationSets,
-		["IsTruncated"] = _IsTruncated,
-		["MaxItems"] = _MaxItems,
-		["NextMarker"] = _NextMarker,
+		["Marker"] = args["Marker"],
+		["DelegationSets"] = args["DelegationSets"],
+		["IsTruncated"] = args["IsTruncated"],
+		["MaxItems"] = args["MaxItems"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertListReusableDelegationSetsResponse(t)
 	return t
@@ -755,15 +827,18 @@ end
 
 --- Create a structure of type Change
 -- <p>The information for each resource record set that you want to change.</p>
--- @param _Action [ChangeAction] <p>The action to perform:</p> <ul> <li> <p> <code>CREATE</code>: Creates a resource record set that has the specified values.</p> </li> <li> <p> <code>DELETE</code>: Deletes a existing resource record set.</p> <important> <p>To delete the resource record set that is associated with a traffic policy instance, use <code> <a>DeleteTrafficPolicyInstance</a> </code>. Amazon Route 53 will delete the resource record set automatically. If you delete the resource record set by using <code>ChangeResourceRecordSets</code>, Amazon Route 53 doesn't automatically delete the traffic policy instance, and you'll continue to be charged for it even though it's no longer in use. </p> </important> </li> <li> <p> <code>UPSERT</code>: If a resource record set doesn't already exist, Amazon Route 53 creates it. If a resource record set does exist, Amazon Route 53 updates it with the values in the request.</p> </li> </ul> <p>The values that you need to include in the request depend on the type of resource record set that you're creating, deleting, or updating:</p> <p> <b>Basic resource record sets (excluding alias, failover, geolocation, latency, and weighted resource record sets)</b> </p> <ul> <li> <p> <code>Name</code> </p> </li> <li> <p> <code>Type</code> </p> </li> <li> <p> <code>TTL</code> </p> </li> </ul> <p> <b>Failover, geolocation, latency, or weighted resource record sets (excluding alias resource record sets)</b> </p> <ul> <li> <p> <code>Name</code> </p> </li> <li> <p> <code>Type</code> </p> </li> <li> <p> <code>TTL</code> </p> </li> <li> <p> <code>SetIdentifier</code> </p> </li> </ul> <p> <b>Alias resource record sets (including failover alias, geolocation alias, latency alias, and weighted alias resource record sets)</b> </p> <ul> <li> <p> <code>Name</code> </p> </li> <li> <p> <code>Type</code> </p> </li> <li> <p> <code>AliasTarget</code> (includes <code>DNSName</code>, <code>EvaluateTargetHealth</code>, and <code>HostedZoneId</code>)</p> </li> <li> <p> <code>SetIdentifier</code> (for failover, geolocation, latency, and weighted resource record sets)</p> </li> </ul>
--- @param _ResourceRecordSet [ResourceRecordSet] <p>Information about the resource record set to create, delete, or update.</p>
--- Required parameter: Action
--- Required parameter: ResourceRecordSet
-function M.Change(_Action, _ResourceRecordSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Change")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>The action to perform:</p> <ul> <li> <p> <code>CREATE</code>: Creates a resource record set that has the specified values.</p> </li> <li> <p> <code>DELETE</code>: Deletes a existing resource record set.</p> <important> <p>To delete the resource record set that is associated with a traffic policy instance, use <code> <a>DeleteTrafficPolicyInstance</a> </code>. Amazon Route 53 will delete the resource record set automatically. If you delete the resource record set by using <code>ChangeResourceRecordSets</code>, Amazon Route 53 doesn't automatically delete the traffic policy instance, and you'll continue to be charged for it even though it's no longer in use. </p> </important> </li> <li> <p> <code>UPSERT</code>: If a resource record set doesn't already exist, Amazon Route 53 creates it. If a resource record set does exist, Amazon Route 53 updates it with the values in the request.</p> </li> </ul> <p>The values that you need to include in the request depend on the type of resource record set that you're creating, deleting, or updating:</p> <p> <b>Basic resource record sets (excluding alias, failover, geolocation, latency, and weighted resource record sets)</b> </p> <ul> <li> <p> <code>Name</code> </p> </li> <li> <p> <code>Type</code> </p> </li> <li> <p> <code>TTL</code> </p> </li> </ul> <p> <b>Failover, geolocation, latency, or weighted resource record sets (excluding alias resource record sets)</b> </p> <ul> <li> <p> <code>Name</code> </p> </li> <li> <p> <code>Type</code> </p> </li> <li> <p> <code>TTL</code> </p> </li> <li> <p> <code>SetIdentifier</code> </p> </li> </ul> <p> <b>Alias resource record sets (including failover alias, geolocation alias, latency alias, and weighted alias resource record sets)</b> </p> <ul> <li> <p> <code>Name</code> </p> </li> <li> <p> <code>Type</code> </p> </li> <li> <p> <code>AliasTarget</code> (includes <code>DNSName</code>, <code>EvaluateTargetHealth</code>, and <code>HostedZoneId</code>)</p> </li> <li> <p> <code>SetIdentifier</code> (for failover, geolocation, latency, and weighted resource record sets)</p> </li> </ul>
+-- * ResourceRecordSet [ResourceRecordSet] <p>Information about the resource record set to create, delete, or update.</p>
+-- Required key: Action
+-- Required key: ResourceRecordSet
+-- @return Change structure as a key-value pair table
+function M.Change(args)
+	assert(args, "You must provdide an argument table when creating Change")
 	local t = { 
-		["Action"] = _Action,
-		["ResourceRecordSet"] = _ResourceRecordSet,
+		["Action"] = args["Action"],
+		["ResourceRecordSet"] = args["ResourceRecordSet"],
 	}
 	asserts.AssertChange(t)
 	return t
@@ -784,14 +859,17 @@ end
 
 --- Create a structure of type CreateReusableDelegationSetRequest
 --  
--- @param _HostedZoneId [ResourceId] <p>If you want to mark the delegation set for an existing hosted zone as reusable, the ID for that hosted zone.</p>
--- @param _CallerReference [Nonce] <p>A unique string that identifies the request, and that allows you to retry failed <code>CreateReusableDelegationSet</code> requests without the risk of executing the operation twice. You must use a unique <code>CallerReference</code> string every time you submit a <code>CreateReusableDelegationSet</code> request. <code>CallerReference</code> can be any unique string, for example a date/time stamp.</p>
--- Required parameter: CallerReference
-function M.CreateReusableDelegationSetRequest(_HostedZoneId, _CallerReference, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReusableDelegationSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>If you want to mark the delegation set for an existing hosted zone as reusable, the ID for that hosted zone.</p>
+-- * CallerReference [Nonce] <p>A unique string that identifies the request, and that allows you to retry failed <code>CreateReusableDelegationSet</code> requests without the risk of executing the operation twice. You must use a unique <code>CallerReference</code> string every time you submit a <code>CreateReusableDelegationSet</code> request. <code>CallerReference</code> can be any unique string, for example a date/time stamp.</p>
+-- Required key: CallerReference
+-- @return CreateReusableDelegationSetRequest structure as a key-value pair table
+function M.CreateReusableDelegationSetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateReusableDelegationSetRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["CallerReference"] = _CallerReference,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["CallerReference"] = args["CallerReference"],
 	}
 	asserts.AssertCreateReusableDelegationSetRequest(t)
 	return t
@@ -816,21 +894,24 @@ end
 
 --- Create a structure of type CreateHostedZoneRequest
 -- <p>A complex type that contains information about the request to create a hosted zone.</p>
--- @param _DelegationSetId [ResourceId] <p>If you want to associate a reusable delegation set with this hosted zone, the ID that Amazon Route 53 assigned to the reusable delegation set when you created it. For more information about reusable delegation sets, see <a>CreateReusableDelegationSet</a>.</p>
--- @param _HostedZoneConfig [HostedZoneConfig] <p>(Optional) A complex type that contains the following optional values:</p> <ul> <li> <p>For public and private hosted zones, an optional comment</p> </li> <li> <p>For private hosted zones, an optional <code>PrivateZone</code> element</p> </li> </ul> <p>If you don't specify a comment or the <code>PrivateZone</code> element, omit <code>HostedZoneConfig</code> and the other elements.</p>
--- @param _CallerReference [Nonce] <p>A unique string that identifies the request and that allows failed <code>CreateHostedZone</code> requests to be retried without the risk of executing the operation twice. You must use a unique <code>CallerReference</code> string every time you submit a <code>CreateHostedZone</code> request. <code>CallerReference</code> can be any unique string, for example, a date/time stamp.</p>
--- @param _Name [DNSName] <p>The name of the domain. For resource record types that include a domain name, specify a fully qualified domain name, for example, <i>www.example.com</i>. The trailing dot is optional; Amazon Route 53 assumes that the domain name is fully qualified. This means that Amazon Route 53 treats <i>www.example.com</i> (without a trailing dot) and <i>www.example.com.</i> (with a trailing dot) as identical.</p> <p>If you're creating a public hosted zone, this is the name you have registered with your DNS registrar. If your domain name is registered with a registrar other than Amazon Route 53, change the name servers for your domain to the set of <code>NameServers</code> that <code>CreateHostedZone</code> returns in <code>DelegationSet</code>.</p>
--- @param _VPC [VPC] <p>(Private hosted zones only) A complex type that contains information about the Amazon VPC that you're associating with this hosted zone.</p> <p>You can specify only one Amazon VPC when you create a private hosted zone. To associate additional Amazon VPCs with the hosted zone, use <a>AssociateVPCWithHostedZone</a> after you create a hosted zone.</p>
--- Required parameter: Name
--- Required parameter: CallerReference
-function M.CreateHostedZoneRequest(_DelegationSetId, _HostedZoneConfig, _CallerReference, _Name, _VPC, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateHostedZoneRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DelegationSetId [ResourceId] <p>If you want to associate a reusable delegation set with this hosted zone, the ID that Amazon Route 53 assigned to the reusable delegation set when you created it. For more information about reusable delegation sets, see <a>CreateReusableDelegationSet</a>.</p>
+-- * HostedZoneConfig [HostedZoneConfig] <p>(Optional) A complex type that contains the following optional values:</p> <ul> <li> <p>For public and private hosted zones, an optional comment</p> </li> <li> <p>For private hosted zones, an optional <code>PrivateZone</code> element</p> </li> </ul> <p>If you don't specify a comment or the <code>PrivateZone</code> element, omit <code>HostedZoneConfig</code> and the other elements.</p>
+-- * CallerReference [Nonce] <p>A unique string that identifies the request and that allows failed <code>CreateHostedZone</code> requests to be retried without the risk of executing the operation twice. You must use a unique <code>CallerReference</code> string every time you submit a <code>CreateHostedZone</code> request. <code>CallerReference</code> can be any unique string, for example, a date/time stamp.</p>
+-- * Name [DNSName] <p>The name of the domain. For resource record types that include a domain name, specify a fully qualified domain name, for example, <i>www.example.com</i>. The trailing dot is optional; Amazon Route 53 assumes that the domain name is fully qualified. This means that Amazon Route 53 treats <i>www.example.com</i> (without a trailing dot) and <i>www.example.com.</i> (with a trailing dot) as identical.</p> <p>If you're creating a public hosted zone, this is the name you have registered with your DNS registrar. If your domain name is registered with a registrar other than Amazon Route 53, change the name servers for your domain to the set of <code>NameServers</code> that <code>CreateHostedZone</code> returns in <code>DelegationSet</code>.</p>
+-- * VPC [VPC] <p>(Private hosted zones only) A complex type that contains information about the Amazon VPC that you're associating with this hosted zone.</p> <p>You can specify only one Amazon VPC when you create a private hosted zone. To associate additional Amazon VPCs with the hosted zone, use <a>AssociateVPCWithHostedZone</a> after you create a hosted zone.</p>
+-- Required key: Name
+-- Required key: CallerReference
+-- @return CreateHostedZoneRequest structure as a key-value pair table
+function M.CreateHostedZoneRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateHostedZoneRequest")
 	local t = { 
-		["DelegationSetId"] = _DelegationSetId,
-		["HostedZoneConfig"] = _HostedZoneConfig,
-		["CallerReference"] = _CallerReference,
-		["Name"] = _Name,
-		["VPC"] = _VPC,
+		["DelegationSetId"] = args["DelegationSetId"],
+		["HostedZoneConfig"] = args["HostedZoneConfig"],
+		["CallerReference"] = args["CallerReference"],
+		["Name"] = args["Name"],
+		["VPC"] = args["VPC"],
 	}
 	asserts.AssertCreateHostedZoneRequest(t)
 	return t
@@ -849,11 +930,14 @@ end
 
 --- Create a structure of type DelegationSetInUse
 -- <p>The specified delegation contains associated hosted zones which must be deleted before the reusable delegation set can be deleted.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.DelegationSetInUse(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DelegationSetInUse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return DelegationSetInUse structure as a key-value pair table
+function M.DelegationSetInUse(args)
+	assert(args, "You must provdide an argument table when creating DelegationSetInUse")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDelegationSetInUse(t)
 	return t
@@ -873,12 +957,15 @@ end
 
 --- Create a structure of type GetHealthCheckCountResponse
 -- <p>A complex type that contains the response to a <code>GetHealthCheckCount</code> request.</p>
--- @param _HealthCheckCount [HealthCheckCount] <p>The number of health checks associated with the current AWS account.</p>
--- Required parameter: HealthCheckCount
-function M.GetHealthCheckCountResponse(_HealthCheckCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHealthCheckCountResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckCount [HealthCheckCount] <p>The number of health checks associated with the current AWS account.</p>
+-- Required key: HealthCheckCount
+-- @return GetHealthCheckCountResponse structure as a key-value pair table
+function M.GetHealthCheckCountResponse(args)
+	assert(args, "You must provdide an argument table when creating GetHealthCheckCountResponse")
 	local t = { 
-		["HealthCheckCount"] = _HealthCheckCount,
+		["HealthCheckCount"] = args["HealthCheckCount"],
 	}
 	asserts.AssertGetHealthCheckCountResponse(t)
 	return t
@@ -897,11 +984,14 @@ end
 
 --- Create a structure of type InvalidChangeBatch
 -- <p>This exception contains a list of messages that might contain one or more error messages. Each error message indicates one error in the change batch.</p>
--- @param _messages [ErrorMessages] <p>Descriptive message for the error response.</p>
-function M.InvalidChangeBatch(_messages, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidChangeBatch")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * messages [ErrorMessages] <p>Descriptive message for the error response.</p>
+-- @return InvalidChangeBatch structure as a key-value pair table
+function M.InvalidChangeBatch(args)
+	assert(args, "You must provdide an argument table when creating InvalidChangeBatch")
 	local t = { 
-		["messages"] = _messages,
+		["messages"] = args["messages"],
 	}
 	asserts.AssertInvalidChangeBatch(t)
 	return t
@@ -923,15 +1013,18 @@ end
 
 --- Create a structure of type DeleteTrafficPolicyRequest
 -- <p>A request to delete a specified traffic policy version.</p>
--- @param _Version [TrafficPolicyVersion] <p>The version number of the traffic policy that you want to delete.</p>
--- @param _Id [TrafficPolicyId] <p>The ID of the traffic policy that you want to delete.</p>
--- Required parameter: Id
--- Required parameter: Version
-function M.DeleteTrafficPolicyRequest(_Version, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTrafficPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [TrafficPolicyVersion] <p>The version number of the traffic policy that you want to delete.</p>
+-- * Id [TrafficPolicyId] <p>The ID of the traffic policy that you want to delete.</p>
+-- Required key: Id
+-- Required key: Version
+-- @return DeleteTrafficPolicyRequest structure as a key-value pair table
+function M.DeleteTrafficPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteTrafficPolicyRequest")
 	local t = { 
-		["Version"] = _Version,
-		["Id"] = _Id,
+		["Version"] = args["Version"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDeleteTrafficPolicyRequest(t)
 	return t
@@ -952,14 +1045,17 @@ end
 
 --- Create a structure of type UpdateHostedZoneCommentRequest
 -- <p>A request to update the comment for a hosted zone.</p>
--- @param _Comment [ResourceDescription] <p>The new comment for the hosted zone. If you don't specify a value for <code>Comment</code>, Amazon Route 53 deletes the existing value of the <code>Comment</code> element, if any.</p>
--- @param _Id [ResourceId] <p>The ID for the hosted zone that you want to update the comment for.</p>
--- Required parameter: Id
-function M.UpdateHostedZoneCommentRequest(_Comment, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateHostedZoneCommentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [ResourceDescription] <p>The new comment for the hosted zone. If you don't specify a value for <code>Comment</code>, Amazon Route 53 deletes the existing value of the <code>Comment</code> element, if any.</p>
+-- * Id [ResourceId] <p>The ID for the hosted zone that you want to update the comment for.</p>
+-- Required key: Id
+-- @return UpdateHostedZoneCommentRequest structure as a key-value pair table
+function M.UpdateHostedZoneCommentRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateHostedZoneCommentRequest")
 	local t = { 
-		["Comment"] = _Comment,
-		["Id"] = _Id,
+		["Comment"] = args["Comment"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertUpdateHostedZoneCommentRequest(t)
 	return t
@@ -978,11 +1074,14 @@ end
 
 --- Create a structure of type ConcurrentModification
 -- <p>Another user submitted a request to update the object at the same time that you did. Retry the request. </p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.ConcurrentModification(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConcurrentModification")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return ConcurrentModification structure as a key-value pair table
+function M.ConcurrentModification(args)
+	assert(args, "You must provdide an argument table when creating ConcurrentModification")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertConcurrentModification(t)
 	return t
@@ -1002,12 +1101,15 @@ end
 
 --- Create a structure of type GetHealthCheckStatusResponse
 -- <p>A complex type that contains the response to a <code>GetHealthCheck</code> request.</p>
--- @param _HealthCheckObservations [HealthCheckObservations] <p>A list that contains one <code>HealthCheckObservation</code> element for each Amazon Route 53 health checker that is reporting a status about the health check endpoint.</p>
--- Required parameter: HealthCheckObservations
-function M.GetHealthCheckStatusResponse(_HealthCheckObservations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHealthCheckStatusResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckObservations [HealthCheckObservations] <p>A list that contains one <code>HealthCheckObservation</code> element for each Amazon Route 53 health checker that is reporting a status about the health check endpoint.</p>
+-- Required key: HealthCheckObservations
+-- @return GetHealthCheckStatusResponse structure as a key-value pair table
+function M.GetHealthCheckStatusResponse(args)
+	assert(args, "You must provdide an argument table when creating GetHealthCheckStatusResponse")
 	local t = { 
-		["HealthCheckObservations"] = _HealthCheckObservations,
+		["HealthCheckObservations"] = args["HealthCheckObservations"],
 	}
 	asserts.AssertGetHealthCheckStatusResponse(t)
 	return t
@@ -1028,15 +1130,18 @@ end
 
 --- Create a structure of type GetGeoLocationRequest
 -- <p>A request for information about whether a specified geographic location is supported for Amazon Route 53 geolocation resource record sets.</p>
--- @param _SubdivisionCode [GeoLocationSubdivisionCode] <p>Amazon Route 53 uses the one- to three-letter subdivision codes that are specified in <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO standard 3166-1 alpha-2</a>. Amazon Route 53 doesn't support subdivision codes for all countries. If you specify <code>SubdivisionCode</code>, you must also specify <code>CountryCode</code>. </p>
--- @param _CountryCode [GeoLocationCountryCode] <p>Amazon Route 53 uses the two-letter country codes that are specified in <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO standard 3166-1 alpha-2</a>.</p>
--- @param _ContinentCode [GeoLocationContinentCode] <p>Amazon Route 53 supports the following continent codes:</p> <ul> <li> <p> <b>AF</b>: Africa</p> </li> <li> <p> <b>AN</b>: Antarctica</p> </li> <li> <p> <b>AS</b>: Asia</p> </li> <li> <p> <b>EU</b>: Europe</p> </li> <li> <p> <b>OC</b>: Oceania</p> </li> <li> <p> <b>NA</b>: North America</p> </li> <li> <p> <b>SA</b>: South America</p> </li> </ul>
-function M.GetGeoLocationRequest(_SubdivisionCode, _CountryCode, _ContinentCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGeoLocationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubdivisionCode [GeoLocationSubdivisionCode] <p>Amazon Route 53 uses the one- to three-letter subdivision codes that are specified in <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO standard 3166-1 alpha-2</a>. Amazon Route 53 doesn't support subdivision codes for all countries. If you specify <code>SubdivisionCode</code>, you must also specify <code>CountryCode</code>. </p>
+-- * CountryCode [GeoLocationCountryCode] <p>Amazon Route 53 uses the two-letter country codes that are specified in <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO standard 3166-1 alpha-2</a>.</p>
+-- * ContinentCode [GeoLocationContinentCode] <p>Amazon Route 53 supports the following continent codes:</p> <ul> <li> <p> <b>AF</b>: Africa</p> </li> <li> <p> <b>AN</b>: Antarctica</p> </li> <li> <p> <b>AS</b>: Asia</p> </li> <li> <p> <b>EU</b>: Europe</p> </li> <li> <p> <b>OC</b>: Oceania</p> </li> <li> <p> <b>NA</b>: North America</p> </li> <li> <p> <b>SA</b>: South America</p> </li> </ul>
+-- @return GetGeoLocationRequest structure as a key-value pair table
+function M.GetGeoLocationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetGeoLocationRequest")
 	local t = { 
-		["SubdivisionCode"] = _SubdivisionCode,
-		["CountryCode"] = _CountryCode,
-		["ContinentCode"] = _ContinentCode,
+		["SubdivisionCode"] = args["SubdivisionCode"],
+		["CountryCode"] = args["CountryCode"],
+		["ContinentCode"] = args["ContinentCode"],
 	}
 	asserts.AssertGetGeoLocationRequest(t)
 	return t
@@ -1056,12 +1161,15 @@ end
 
 --- Create a structure of type GetTrafficPolicyInstanceCountResponse
 -- <p>A complex type that contains information about the resource record sets that Amazon Route 53 created based on a specified traffic policy.</p>
--- @param _TrafficPolicyInstanceCount [TrafficPolicyInstanceCount] <p>The number of traffic policy instances that are associated with the current AWS account.</p>
--- Required parameter: TrafficPolicyInstanceCount
-function M.GetTrafficPolicyInstanceCountResponse(_TrafficPolicyInstanceCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTrafficPolicyInstanceCountResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyInstanceCount [TrafficPolicyInstanceCount] <p>The number of traffic policy instances that are associated with the current AWS account.</p>
+-- Required key: TrafficPolicyInstanceCount
+-- @return GetTrafficPolicyInstanceCountResponse structure as a key-value pair table
+function M.GetTrafficPolicyInstanceCountResponse(args)
+	assert(args, "You must provdide an argument table when creating GetTrafficPolicyInstanceCountResponse")
 	local t = { 
-		["TrafficPolicyInstanceCount"] = _TrafficPolicyInstanceCount,
+		["TrafficPolicyInstanceCount"] = args["TrafficPolicyInstanceCount"],
 	}
 	asserts.AssertGetTrafficPolicyInstanceCountResponse(t)
 	return t
@@ -1089,24 +1197,27 @@ end
 
 --- Create a structure of type CreateTrafficPolicyInstanceRequest
 -- <p>A complex type that contains information about the resource record sets that you want to create based on a specified traffic policy.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the hosted zone in which you want Amazon Route 53 to create resource record sets by using the configuration in a traffic policy.</p>
--- @param _TrafficPolicyVersion [TrafficPolicyVersion] <p>The version of the traffic policy that you want to use to create resource record sets in the specified hosted zone.</p>
--- @param _TrafficPolicyId [TrafficPolicyId] <p>The ID of the traffic policy that you want to use to create resource record sets in the specified hosted zone.</p>
--- @param _Name [DNSName] <p>The domain name (such as example.com) or subdomain name (such as www.example.com) for which Amazon Route 53 responds to DNS queries by using the resource record sets that Amazon Route 53 creates for this traffic policy instance.</p>
--- @param _TTL [TTL] <p>(Optional) The TTL that you want Amazon Route 53 to assign to all of the resource record sets that it creates in the specified hosted zone.</p>
--- Required parameter: HostedZoneId
--- Required parameter: Name
--- Required parameter: TTL
--- Required parameter: TrafficPolicyId
--- Required parameter: TrafficPolicyVersion
-function M.CreateTrafficPolicyInstanceRequest(_HostedZoneId, _TrafficPolicyVersion, _TrafficPolicyId, _Name, _TTL, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrafficPolicyInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>The ID of the hosted zone in which you want Amazon Route 53 to create resource record sets by using the configuration in a traffic policy.</p>
+-- * TrafficPolicyVersion [TrafficPolicyVersion] <p>The version of the traffic policy that you want to use to create resource record sets in the specified hosted zone.</p>
+-- * TrafficPolicyId [TrafficPolicyId] <p>The ID of the traffic policy that you want to use to create resource record sets in the specified hosted zone.</p>
+-- * Name [DNSName] <p>The domain name (such as example.com) or subdomain name (such as www.example.com) for which Amazon Route 53 responds to DNS queries by using the resource record sets that Amazon Route 53 creates for this traffic policy instance.</p>
+-- * TTL [TTL] <p>(Optional) The TTL that you want Amazon Route 53 to assign to all of the resource record sets that it creates in the specified hosted zone.</p>
+-- Required key: HostedZoneId
+-- Required key: Name
+-- Required key: TTL
+-- Required key: TrafficPolicyId
+-- Required key: TrafficPolicyVersion
+-- @return CreateTrafficPolicyInstanceRequest structure as a key-value pair table
+function M.CreateTrafficPolicyInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyInstanceRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["TrafficPolicyVersion"] = _TrafficPolicyVersion,
-		["TrafficPolicyId"] = _TrafficPolicyId,
-		["Name"] = _Name,
-		["TTL"] = _TTL,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["TrafficPolicyVersion"] = args["TrafficPolicyVersion"],
+		["TrafficPolicyId"] = args["TrafficPolicyId"],
+		["Name"] = args["Name"],
+		["TTL"] = args["TTL"],
 	}
 	asserts.AssertCreateTrafficPolicyInstanceRequest(t)
 	return t
@@ -1124,8 +1235,11 @@ end
 
 --- Create a structure of type GetTrafficPolicyInstanceCountRequest
 -- <p>Request to get the number of traffic policy instances that are associated with the current AWS account.</p>
-function M.GetTrafficPolicyInstanceCountRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTrafficPolicyInstanceCountRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetTrafficPolicyInstanceCountRequest structure as a key-value pair table
+function M.GetTrafficPolicyInstanceCountRequest(args)
+	assert(args, "You must provdide an argument table when creating GetTrafficPolicyInstanceCountRequest")
 	local t = { 
 	}
 	asserts.AssertGetTrafficPolicyInstanceCountRequest(t)
@@ -1153,23 +1267,26 @@ end
 
 --- Create a structure of type ListHealthChecksResponse
 -- <p>A complex type that contains the response to a <code>ListHealthChecks</code> request.</p>
--- @param _Marker [PageMarker] <p>For the second and subsequent calls to <code>ListHealthChecks</code>, <code>Marker</code> is the value that you specified for the <code>marker</code> parameter in the previous request.</p>
--- @param _HealthChecks [HealthChecks] <p>A complex type that contains one <code>HealthCheck</code> element for each health check that is associated with the current AWS account.</p>
--- @param _NextMarker [PageMarker] <p>If <code>IsTruncated</code> is <code>true</code>, the value of <code>NextMarker</code> identifies the first health check that Amazon Route 53 returns if you submit another <code>ListHealthChecks</code> request and specify the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
--- @param _IsTruncated [PageTruncated] <p>A flag that indicates whether there are more health checks to be listed. If the response was truncated, you can get the next group of health checks by submitting another <code>ListHealthChecks</code> request and specifying the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
--- @param _MaxItems [PageMaxItems] <p>The value that you specified for the <code>maxitems</code> parameter in the call to <code>ListHealthChecks</code> that produced the current response.</p>
--- Required parameter: HealthChecks
--- Required parameter: Marker
--- Required parameter: IsTruncated
--- Required parameter: MaxItems
-function M.ListHealthChecksResponse(_Marker, _HealthChecks, _NextMarker, _IsTruncated, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListHealthChecksResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarker] <p>For the second and subsequent calls to <code>ListHealthChecks</code>, <code>Marker</code> is the value that you specified for the <code>marker</code> parameter in the previous request.</p>
+-- * HealthChecks [HealthChecks] <p>A complex type that contains one <code>HealthCheck</code> element for each health check that is associated with the current AWS account.</p>
+-- * NextMarker [PageMarker] <p>If <code>IsTruncated</code> is <code>true</code>, the value of <code>NextMarker</code> identifies the first health check that Amazon Route 53 returns if you submit another <code>ListHealthChecks</code> request and specify the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
+-- * IsTruncated [PageTruncated] <p>A flag that indicates whether there are more health checks to be listed. If the response was truncated, you can get the next group of health checks by submitting another <code>ListHealthChecks</code> request and specifying the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
+-- * MaxItems [PageMaxItems] <p>The value that you specified for the <code>maxitems</code> parameter in the call to <code>ListHealthChecks</code> that produced the current response.</p>
+-- Required key: HealthChecks
+-- Required key: Marker
+-- Required key: IsTruncated
+-- Required key: MaxItems
+-- @return ListHealthChecksResponse structure as a key-value pair table
+function M.ListHealthChecksResponse(args)
+	assert(args, "You must provdide an argument table when creating ListHealthChecksResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["HealthChecks"] = _HealthChecks,
-		["NextMarker"] = _NextMarker,
-		["IsTruncated"] = _IsTruncated,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["HealthChecks"] = args["HealthChecks"],
+		["NextMarker"] = args["NextMarker"],
+		["IsTruncated"] = args["IsTruncated"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListHealthChecksResponse(t)
 	return t
@@ -1188,11 +1305,14 @@ end
 
 --- Create a structure of type TrafficPolicyInstanceAlreadyExists
 -- <p>Traffic policy instance with given Id already exists.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.TrafficPolicyInstanceAlreadyExists(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrafficPolicyInstanceAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return TrafficPolicyInstanceAlreadyExists structure as a key-value pair table
+function M.TrafficPolicyInstanceAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating TrafficPolicyInstanceAlreadyExists")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTrafficPolicyInstanceAlreadyExists(t)
 	return t
@@ -1211,11 +1331,14 @@ end
 
 --- Create a structure of type HostedZoneNotFound
 -- <p>The specified HostedZone can't be found.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.HostedZoneNotFound(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HostedZoneNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return HostedZoneNotFound structure as a key-value pair table
+function M.HostedZoneNotFound(args)
+	assert(args, "You must provdide an argument table when creating HostedZoneNotFound")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertHostedZoneNotFound(t)
 	return t
@@ -1235,13 +1358,16 @@ end
 
 --- Create a structure of type ListReusableDelegationSetsRequest
 -- <p>A request to get a list of the reusable delegation sets that are associated with the current AWS account.</p>
--- @param _Marker [PageMarker] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more reusable delegation sets. To get another group, submit another <code>ListReusableDelegationSets</code> request. </p> <p>For the value of <code>marker</code>, specify the value of <code>NextMarker</code> from the previous response, which is the ID of the first reusable delegation set that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more reusable delegation sets to get.</p>
--- @param _MaxItems [PageMaxItems] <p>The number of reusable delegation sets that you want Amazon Route 53 to return in the response to this request. If you specify a value greater than 100, Amazon Route 53 returns only the first 100 reusable delegation sets.</p>
-function M.ListReusableDelegationSetsRequest(_Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListReusableDelegationSetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarker] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more reusable delegation sets. To get another group, submit another <code>ListReusableDelegationSets</code> request. </p> <p>For the value of <code>marker</code>, specify the value of <code>NextMarker</code> from the previous response, which is the ID of the first reusable delegation set that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more reusable delegation sets to get.</p>
+-- * MaxItems [PageMaxItems] <p>The number of reusable delegation sets that you want Amazon Route 53 to return in the response to this request. If you specify a value greater than 100, Amazon Route 53 returns only the first 100 reusable delegation sets.</p>
+-- @return ListReusableDelegationSetsRequest structure as a key-value pair table
+function M.ListReusableDelegationSetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListReusableDelegationSetsRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListReusableDelegationSetsRequest(t)
 	return t
@@ -1259,8 +1385,11 @@ end
 
 --- Create a structure of type GetCheckerIpRangesRequest
 --  
-function M.GetCheckerIpRangesRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCheckerIpRangesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetCheckerIpRangesRequest structure as a key-value pair table
+function M.GetCheckerIpRangesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetCheckerIpRangesRequest")
 	local t = { 
 	}
 	asserts.AssertGetCheckerIpRangesRequest(t)
@@ -1280,11 +1409,14 @@ end
 
 --- Create a structure of type TooManyTrafficPolicyInstances
 -- <p>You've created the maximum number of traffic policy instances that can be created for the current AWS account. You can request an increase to the limit on the <a href="http://aws.amazon.com/route53-request/">Contact Us</a> page.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.TooManyTrafficPolicyInstances(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTrafficPolicyInstances")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return TooManyTrafficPolicyInstances structure as a key-value pair table
+function M.TooManyTrafficPolicyInstances(args)
+	assert(args, "You must provdide an argument table when creating TooManyTrafficPolicyInstances")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTooManyTrafficPolicyInstances(t)
 	return t
@@ -1303,11 +1435,14 @@ end
 
 --- Create a structure of type VPCAssociationNotFound
 -- <p>The specified VPC and hosted zone are not currently associated.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.VPCAssociationNotFound(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VPCAssociationNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return VPCAssociationNotFound structure as a key-value pair table
+function M.VPCAssociationNotFound(args)
+	assert(args, "You must provdide an argument table when creating VPCAssociationNotFound")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertVPCAssociationNotFound(t)
 	return t
@@ -1328,15 +1463,18 @@ end
 
 --- Create a structure of type GeoLocation
 -- <p>A complex type that contains information about a geo location.</p>
--- @param _SubdivisionCode [GeoLocationSubdivisionCode] <p>The code for the subdivision, for example, a state in the United States or a province in Canada.</p>
--- @param _CountryCode [GeoLocationCountryCode] <p>The two-letter code for the country.</p>
--- @param _ContinentCode [GeoLocationContinentCode] <p>The two-letter code for the continent.</p> <p>Valid values: <code>AF</code> | <code>AN</code> | <code>AS</code> | <code>EU</code> | <code>OC</code> | <code>NA</code> | <code>SA</code> </p> <p>Constraint: Specifying <code>ContinentCode</code> with either <code>CountryCode</code> or <code>SubdivisionCode</code> returns an <code>InvalidInput</code> error.</p>
-function M.GeoLocation(_SubdivisionCode, _CountryCode, _ContinentCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GeoLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SubdivisionCode [GeoLocationSubdivisionCode] <p>The code for the subdivision, for example, a state in the United States or a province in Canada.</p>
+-- * CountryCode [GeoLocationCountryCode] <p>The two-letter code for the country.</p>
+-- * ContinentCode [GeoLocationContinentCode] <p>The two-letter code for the continent.</p> <p>Valid values: <code>AF</code> | <code>AN</code> | <code>AS</code> | <code>EU</code> | <code>OC</code> | <code>NA</code> | <code>SA</code> </p> <p>Constraint: Specifying <code>ContinentCode</code> with either <code>CountryCode</code> or <code>SubdivisionCode</code> returns an <code>InvalidInput</code> error.</p>
+-- @return GeoLocation structure as a key-value pair table
+function M.GeoLocation(args)
+	assert(args, "You must provdide an argument table when creating GeoLocation")
 	local t = { 
-		["SubdivisionCode"] = _SubdivisionCode,
-		["CountryCode"] = _CountryCode,
-		["ContinentCode"] = _ContinentCode,
+		["SubdivisionCode"] = args["SubdivisionCode"],
+		["CountryCode"] = args["CountryCode"],
+		["ContinentCode"] = args["ContinentCode"],
 	}
 	asserts.AssertGeoLocation(t)
 	return t
@@ -1354,8 +1492,11 @@ end
 
 --- Create a structure of type DeleteVPCAssociationAuthorizationResponse
 -- <p>Empty response for the request.</p>
-function M.DeleteVPCAssociationAuthorizationResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVPCAssociationAuthorizationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteVPCAssociationAuthorizationResponse structure as a key-value pair table
+function M.DeleteVPCAssociationAuthorizationResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteVPCAssociationAuthorizationResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteVPCAssociationAuthorizationResponse(t)
@@ -1377,14 +1518,17 @@ end
 
 --- Create a structure of type ChangeBatch
 -- <p>The information for a change request.</p>
--- @param _Comment [ResourceDescription] <p> <i>Optional:</i> Any comments you want to include about a change batch request.</p>
--- @param _Changes [Changes] <p>Information about the changes to make to the record sets.</p>
--- Required parameter: Changes
-function M.ChangeBatch(_Comment, _Changes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChangeBatch")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [ResourceDescription] <p> <i>Optional:</i> Any comments you want to include about a change batch request.</p>
+-- * Changes [Changes] <p>Information about the changes to make to the record sets.</p>
+-- Required key: Changes
+-- @return ChangeBatch structure as a key-value pair table
+function M.ChangeBatch(args)
+	assert(args, "You must provdide an argument table when creating ChangeBatch")
 	local t = { 
-		["Comment"] = _Comment,
-		["Changes"] = _Changes,
+		["Comment"] = args["Comment"],
+		["Changes"] = args["Changes"],
 	}
 	asserts.AssertChangeBatch(t)
 	return t
@@ -1406,17 +1550,20 @@ end
 
 --- Create a structure of type ListGeoLocationsRequest
 -- <p>A request to get a list of geographic locations that Amazon Route 53 supports for geolocation resource record sets. </p>
--- @param _StartCountryCode [GeoLocationCountryCode] <p>The code for the country with which you want to start listing locations that Amazon Route 53 supports for geolocation. If Amazon Route 53 has already returned a page or more of results, if <code>IsTruncated</code> is <code>true</code>, and if <code>NextCountryCode</code> from the previous response has a value, enter that value in <code>StartCountryCode</code> to return the next page of results.</p> <p>Amazon Route 53 uses the two-letter country codes that are specified in <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO standard 3166-1 alpha-2</a>.</p>
--- @param _StartSubdivisionCode [GeoLocationSubdivisionCode] <p>The code for the subdivision (for example, state or province) with which you want to start listing locations that Amazon Route 53 supports for geolocation. If Amazon Route 53 has already returned a page or more of results, if <code>IsTruncated</code> is <code>true</code>, and if <code>NextSubdivisionCode</code> from the previous response has a value, enter that value in <code>StartSubdivisionCode</code> to return the next page of results.</p> <p>To list subdivisions of a country, you must include both <code>StartCountryCode</code> and <code>StartSubdivisionCode</code>.</p>
--- @param _StartContinentCode [GeoLocationContinentCode] <p>The code for the continent with which you want to start listing locations that Amazon Route 53 supports for geolocation. If Amazon Route 53 has already returned a page or more of results, if <code>IsTruncated</code> is true, and if <code>NextContinentCode</code> from the previous response has a value, enter that value in <code>StartContinentCode</code> to return the next page of results.</p> <p>Include <code>StartContinentCode</code> only if you want to list continents. Don't include <code>StartContinentCode</code> when you're listing countries or countries with their subdivisions.</p>
--- @param _MaxItems [PageMaxItems] <p>(Optional) The maximum number of geolocations to be included in the response body for this request. If more than <code>MaxItems</code> geolocations remain to be listed, then the value of the <code>IsTruncated</code> element in the response is <code>true</code>.</p>
-function M.ListGeoLocationsRequest(_StartCountryCode, _StartSubdivisionCode, _StartContinentCode, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGeoLocationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StartCountryCode [GeoLocationCountryCode] <p>The code for the country with which you want to start listing locations that Amazon Route 53 supports for geolocation. If Amazon Route 53 has already returned a page or more of results, if <code>IsTruncated</code> is <code>true</code>, and if <code>NextCountryCode</code> from the previous response has a value, enter that value in <code>StartCountryCode</code> to return the next page of results.</p> <p>Amazon Route 53 uses the two-letter country codes that are specified in <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO standard 3166-1 alpha-2</a>.</p>
+-- * StartSubdivisionCode [GeoLocationSubdivisionCode] <p>The code for the subdivision (for example, state or province) with which you want to start listing locations that Amazon Route 53 supports for geolocation. If Amazon Route 53 has already returned a page or more of results, if <code>IsTruncated</code> is <code>true</code>, and if <code>NextSubdivisionCode</code> from the previous response has a value, enter that value in <code>StartSubdivisionCode</code> to return the next page of results.</p> <p>To list subdivisions of a country, you must include both <code>StartCountryCode</code> and <code>StartSubdivisionCode</code>.</p>
+-- * StartContinentCode [GeoLocationContinentCode] <p>The code for the continent with which you want to start listing locations that Amazon Route 53 supports for geolocation. If Amazon Route 53 has already returned a page or more of results, if <code>IsTruncated</code> is true, and if <code>NextContinentCode</code> from the previous response has a value, enter that value in <code>StartContinentCode</code> to return the next page of results.</p> <p>Include <code>StartContinentCode</code> only if you want to list continents. Don't include <code>StartContinentCode</code> when you're listing countries or countries with their subdivisions.</p>
+-- * MaxItems [PageMaxItems] <p>(Optional) The maximum number of geolocations to be included in the response body for this request. If more than <code>MaxItems</code> geolocations remain to be listed, then the value of the <code>IsTruncated</code> element in the response is <code>true</code>.</p>
+-- @return ListGeoLocationsRequest structure as a key-value pair table
+function M.ListGeoLocationsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListGeoLocationsRequest")
 	local t = { 
-		["StartCountryCode"] = _StartCountryCode,
-		["StartSubdivisionCode"] = _StartSubdivisionCode,
-		["StartContinentCode"] = _StartContinentCode,
-		["MaxItems"] = _MaxItems,
+		["StartCountryCode"] = args["StartCountryCode"],
+		["StartSubdivisionCode"] = args["StartSubdivisionCode"],
+		["StartContinentCode"] = args["StartContinentCode"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListGeoLocationsRequest(t)
 	return t
@@ -1434,8 +1581,11 @@ end
 
 --- Create a structure of type GetHealthCheckCountRequest
 -- <p>A request for the number of health checks that are associated with the current AWS account.</p>
-function M.GetHealthCheckCountRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHealthCheckCountRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetHealthCheckCountRequest structure as a key-value pair table
+function M.GetHealthCheckCountRequest(args)
+	assert(args, "You must provdide an argument table when creating GetHealthCheckCountRequest")
 	local t = { 
 	}
 	asserts.AssertGetHealthCheckCountRequest(t)
@@ -1465,26 +1615,29 @@ end
 
 --- Create a structure of type TrafficPolicy
 -- <p>A complex type that contains settings for a traffic policy.</p>
--- @param _Comment [TrafficPolicyComment] <p>The comment that you specify in the <code>CreateTrafficPolicy</code> request, if any.</p>
--- @param _Name [TrafficPolicyName] <p>The name that you specified when you created the traffic policy.</p>
--- @param _Version [TrafficPolicyVersion] <p>The version number that Amazon Route 53 assigns to a traffic policy. For a new traffic policy, the value of <code>Version</code> is always 1.</p>
--- @param _Document [TrafficPolicyDocument] <p>The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy in the <code>CreateTrafficPolicy</code> request. For more information about the JSON format, see <a href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html">Traffic Policy Document Format</a>.</p>
--- @param _Type [RRType] <p>The DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.</p>
--- @param _Id [TrafficPolicyId] <p>The ID that Amazon Route 53 assigned to a traffic policy when you created it.</p>
--- Required parameter: Id
--- Required parameter: Version
--- Required parameter: Name
--- Required parameter: Type
--- Required parameter: Document
-function M.TrafficPolicy(_Comment, _Name, _Version, _Document, _Type, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrafficPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [TrafficPolicyComment] <p>The comment that you specify in the <code>CreateTrafficPolicy</code> request, if any.</p>
+-- * Name [TrafficPolicyName] <p>The name that you specified when you created the traffic policy.</p>
+-- * Version [TrafficPolicyVersion] <p>The version number that Amazon Route 53 assigns to a traffic policy. For a new traffic policy, the value of <code>Version</code> is always 1.</p>
+-- * Document [TrafficPolicyDocument] <p>The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy in the <code>CreateTrafficPolicy</code> request. For more information about the JSON format, see <a href="http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html">Traffic Policy Document Format</a>.</p>
+-- * Type [RRType] <p>The DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.</p>
+-- * Id [TrafficPolicyId] <p>The ID that Amazon Route 53 assigned to a traffic policy when you created it.</p>
+-- Required key: Id
+-- Required key: Version
+-- Required key: Name
+-- Required key: Type
+-- Required key: Document
+-- @return TrafficPolicy structure as a key-value pair table
+function M.TrafficPolicy(args)
+	assert(args, "You must provdide an argument table when creating TrafficPolicy")
 	local t = { 
-		["Comment"] = _Comment,
-		["Name"] = _Name,
-		["Version"] = _Version,
-		["Document"] = _Document,
-		["Type"] = _Type,
-		["Id"] = _Id,
+		["Comment"] = args["Comment"],
+		["Name"] = args["Name"],
+		["Version"] = args["Version"],
+		["Document"] = args["Document"],
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertTrafficPolicy(t)
 	return t
@@ -1506,15 +1659,18 @@ end
 
 --- Create a structure of type ListTagsForResourceRequest
 -- <p>A complex type containing information about a request for a list of the tags that are associated with an individual resource.</p>
--- @param _ResourceType [TagResourceType] <p>The type of the resource.</p> <ul> <li> <p>The resource type for health checks is <code>healthcheck</code>.</p> </li> <li> <p>The resource type for hosted zones is <code>hostedzone</code>.</p> </li> </ul>
--- @param _ResourceId [TagResourceId] <p>The ID of the resource for which you want to retrieve tags.</p>
--- Required parameter: ResourceType
--- Required parameter: ResourceId
-function M.ListTagsForResourceRequest(_ResourceType, _ResourceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [TagResourceType] <p>The type of the resource.</p> <ul> <li> <p>The resource type for health checks is <code>healthcheck</code>.</p> </li> <li> <p>The resource type for hosted zones is <code>hostedzone</code>.</p> </li> </ul>
+-- * ResourceId [TagResourceId] <p>The ID of the resource for which you want to retrieve tags.</p>
+-- Required key: ResourceType
+-- Required key: ResourceId
+-- @return ListTagsForResourceRequest structure as a key-value pair table
+function M.ListTagsForResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceId"] = _ResourceId,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceId"] = args["ResourceId"],
 	}
 	asserts.AssertListTagsForResourceRequest(t)
 	return t
@@ -1534,13 +1690,16 @@ end
 
 --- Create a structure of type VPC
 -- <p>(Private hosted zones only) A complex type that contains information about an Amazon VPC.</p>
--- @param _VPCId [VPCId] 
--- @param _VPCRegion [VPCRegion] <p>(Private hosted zones only) The region in which you created an Amazon VPC.</p>
-function M.VPC(_VPCId, _VPCRegion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VPC")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VPCId [VPCId] 
+-- * VPCRegion [VPCRegion] <p>(Private hosted zones only) The region in which you created an Amazon VPC.</p>
+-- @return VPC structure as a key-value pair table
+function M.VPC(args)
+	assert(args, "You must provdide an argument table when creating VPC")
 	local t = { 
-		["VPCId"] = _VPCId,
-		["VPCRegion"] = _VPCRegion,
+		["VPCId"] = args["VPCId"],
+		["VPCRegion"] = args["VPCRegion"],
 	}
 	asserts.AssertVPC(t)
 	return t
@@ -1568,24 +1727,27 @@ end
 
 --- Create a structure of type TrafficPolicySummary
 -- <p>A complex type that contains information about the latest version of one traffic policy that is associated with the current AWS account.</p>
--- @param _TrafficPolicyCount [TrafficPolicyVersion] <p>The number of traffic policies that are associated with the current AWS account.</p>
--- @param _LatestVersion [TrafficPolicyVersion] <p>The version number of the latest version of the traffic policy.</p>
--- @param _Type [RRType] <p>The DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.</p>
--- @param _Id [TrafficPolicyId] <p>The ID that Amazon Route 53 assigned to the traffic policy when you created it.</p>
--- @param _Name [TrafficPolicyName] <p>The name that you specified for the traffic policy when you created it.</p>
--- Required parameter: Id
--- Required parameter: Name
--- Required parameter: Type
--- Required parameter: LatestVersion
--- Required parameter: TrafficPolicyCount
-function M.TrafficPolicySummary(_TrafficPolicyCount, _LatestVersion, _Type, _Id, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrafficPolicySummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyCount [TrafficPolicyVersion] <p>The number of traffic policies that are associated with the current AWS account.</p>
+-- * LatestVersion [TrafficPolicyVersion] <p>The version number of the latest version of the traffic policy.</p>
+-- * Type [RRType] <p>The DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.</p>
+-- * Id [TrafficPolicyId] <p>The ID that Amazon Route 53 assigned to the traffic policy when you created it.</p>
+-- * Name [TrafficPolicyName] <p>The name that you specified for the traffic policy when you created it.</p>
+-- Required key: Id
+-- Required key: Name
+-- Required key: Type
+-- Required key: LatestVersion
+-- Required key: TrafficPolicyCount
+-- @return TrafficPolicySummary structure as a key-value pair table
+function M.TrafficPolicySummary(args)
+	assert(args, "You must provdide an argument table when creating TrafficPolicySummary")
 	local t = { 
-		["TrafficPolicyCount"] = _TrafficPolicyCount,
-		["LatestVersion"] = _LatestVersion,
-		["Type"] = _Type,
-		["Id"] = _Id,
-		["Name"] = _Name,
+		["TrafficPolicyCount"] = args["TrafficPolicyCount"],
+		["LatestVersion"] = args["LatestVersion"],
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertTrafficPolicySummary(t)
 	return t
@@ -1612,23 +1774,26 @@ end
 
 --- Create a structure of type ListHostedZonesResponse
 --  
--- @param _Marker [PageMarker] <p>For the second and subsequent calls to <code>ListHostedZones</code>, <code>Marker</code> is the value that you specified for the <code>marker</code> parameter in the request that produced the current response.</p>
--- @param _HostedZones [HostedZones] <p>A complex type that contains general information about the hosted zone.</p>
--- @param _NextMarker [PageMarker] <p>If <code>IsTruncated</code> is <code>true</code>, the value of <code>NextMarker</code> identifies the first hosted zone in the next group of hosted zones. Submit another <code>ListHostedZones</code> request, and specify the value of <code>NextMarker</code> from the response in the <code>marker</code> parameter.</p> <p>This element is present only if <code>IsTruncated</code> is <code>true</code>.</p>
--- @param _IsTruncated [PageTruncated] <p>A flag indicating whether there are more hosted zones to be listed. If the response was truncated, you can get more hosted zones by submitting another <code>ListHostedZones</code> request and specifying the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
--- @param _MaxItems [PageMaxItems] <p>The value that you specified for the <code>maxitems</code> parameter in the call to <code>ListHostedZones</code> that produced the current response.</p>
--- Required parameter: HostedZones
--- Required parameter: Marker
--- Required parameter: IsTruncated
--- Required parameter: MaxItems
-function M.ListHostedZonesResponse(_Marker, _HostedZones, _NextMarker, _IsTruncated, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListHostedZonesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarker] <p>For the second and subsequent calls to <code>ListHostedZones</code>, <code>Marker</code> is the value that you specified for the <code>marker</code> parameter in the request that produced the current response.</p>
+-- * HostedZones [HostedZones] <p>A complex type that contains general information about the hosted zone.</p>
+-- * NextMarker [PageMarker] <p>If <code>IsTruncated</code> is <code>true</code>, the value of <code>NextMarker</code> identifies the first hosted zone in the next group of hosted zones. Submit another <code>ListHostedZones</code> request, and specify the value of <code>NextMarker</code> from the response in the <code>marker</code> parameter.</p> <p>This element is present only if <code>IsTruncated</code> is <code>true</code>.</p>
+-- * IsTruncated [PageTruncated] <p>A flag indicating whether there are more hosted zones to be listed. If the response was truncated, you can get more hosted zones by submitting another <code>ListHostedZones</code> request and specifying the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
+-- * MaxItems [PageMaxItems] <p>The value that you specified for the <code>maxitems</code> parameter in the call to <code>ListHostedZones</code> that produced the current response.</p>
+-- Required key: HostedZones
+-- Required key: Marker
+-- Required key: IsTruncated
+-- Required key: MaxItems
+-- @return ListHostedZonesResponse structure as a key-value pair table
+function M.ListHostedZonesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListHostedZonesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["HostedZones"] = _HostedZones,
-		["NextMarker"] = _NextMarker,
-		["IsTruncated"] = _IsTruncated,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["HostedZones"] = args["HostedZones"],
+		["NextMarker"] = args["NextMarker"],
+		["IsTruncated"] = args["IsTruncated"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListHostedZonesResponse(t)
 	return t
@@ -1648,12 +1813,15 @@ end
 
 --- Create a structure of type GetHealthCheckRequest
 -- <p>A request to get information about a specified health check. </p>
--- @param _HealthCheckId [HealthCheckId] <p>The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a resource record set, you use this value to specify which health check to use. The value can be up to 64 characters long.</p>
--- Required parameter: HealthCheckId
-function M.GetHealthCheckRequest(_HealthCheckId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHealthCheckRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckId [HealthCheckId] <p>The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a resource record set, you use this value to specify which health check to use. The value can be up to 64 characters long.</p>
+-- Required key: HealthCheckId
+-- @return GetHealthCheckRequest structure as a key-value pair table
+function M.GetHealthCheckRequest(args)
+	assert(args, "You must provdide an argument table when creating GetHealthCheckRequest")
 	local t = { 
-		["HealthCheckId"] = _HealthCheckId,
+		["HealthCheckId"] = args["HealthCheckId"],
 	}
 	asserts.AssertGetHealthCheckRequest(t)
 	return t
@@ -1672,11 +1840,14 @@ end
 
 --- Create a structure of type DelegationSetNotReusable
 -- <p>A reusable delegation set with the specified ID does not exist.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.DelegationSetNotReusable(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DelegationSetNotReusable")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return DelegationSetNotReusable structure as a key-value pair table
+function M.DelegationSetNotReusable(args)
+	assert(args, "You must provdide an argument table when creating DelegationSetNotReusable")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDelegationSetNotReusable(t)
 	return t
@@ -1696,12 +1867,15 @@ end
 
 --- Create a structure of type UpdateTrafficPolicyInstanceResponse
 -- <p>A complex type that contains information about the resource record sets that Amazon Route 53 created based on a specified traffic policy.</p>
--- @param _TrafficPolicyInstance [TrafficPolicyInstance] <p>A complex type that contains settings for the updated traffic policy instance.</p>
--- Required parameter: TrafficPolicyInstance
-function M.UpdateTrafficPolicyInstanceResponse(_TrafficPolicyInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTrafficPolicyInstanceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyInstance [TrafficPolicyInstance] <p>A complex type that contains settings for the updated traffic policy instance.</p>
+-- Required key: TrafficPolicyInstance
+-- @return UpdateTrafficPolicyInstanceResponse structure as a key-value pair table
+function M.UpdateTrafficPolicyInstanceResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateTrafficPolicyInstanceResponse")
 	local t = { 
-		["TrafficPolicyInstance"] = _TrafficPolicyInstance,
+		["TrafficPolicyInstance"] = args["TrafficPolicyInstance"],
 	}
 	asserts.AssertUpdateTrafficPolicyInstanceResponse(t)
 	return t
@@ -1728,23 +1902,26 @@ end
 
 --- Create a structure of type CreateHostedZoneResponse
 -- <p>A complex type containing the response information for the hosted zone.</p>
--- @param _Location [ResourceURI] <p>The unique URL representing the new hosted zone.</p>
--- @param _HostedZone [HostedZone] <p>A complex type that contains general information about the hosted zone.</p>
--- @param _VPC [VPC] <p>A complex type that contains information about an Amazon VPC that you associated with this hosted zone.</p>
--- @param _ChangeInfo [ChangeInfo] <p>A complex type that contains information about the <code>CreateHostedZone</code> request.</p>
--- @param _DelegationSet [DelegationSet] <p>A complex type that describes the name servers for this hosted zone.</p>
--- Required parameter: HostedZone
--- Required parameter: ChangeInfo
--- Required parameter: DelegationSet
--- Required parameter: Location
-function M.CreateHostedZoneResponse(_Location, _HostedZone, _VPC, _ChangeInfo, _DelegationSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateHostedZoneResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Location [ResourceURI] <p>The unique URL representing the new hosted zone.</p>
+-- * HostedZone [HostedZone] <p>A complex type that contains general information about the hosted zone.</p>
+-- * VPC [VPC] <p>A complex type that contains information about an Amazon VPC that you associated with this hosted zone.</p>
+-- * ChangeInfo [ChangeInfo] <p>A complex type that contains information about the <code>CreateHostedZone</code> request.</p>
+-- * DelegationSet [DelegationSet] <p>A complex type that describes the name servers for this hosted zone.</p>
+-- Required key: HostedZone
+-- Required key: ChangeInfo
+-- Required key: DelegationSet
+-- Required key: Location
+-- @return CreateHostedZoneResponse structure as a key-value pair table
+function M.CreateHostedZoneResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateHostedZoneResponse")
 	local t = { 
-		["Location"] = _Location,
-		["HostedZone"] = _HostedZone,
-		["VPC"] = _VPC,
-		["ChangeInfo"] = _ChangeInfo,
-		["DelegationSet"] = _DelegationSet,
+		["Location"] = args["Location"],
+		["HostedZone"] = args["HostedZone"],
+		["VPC"] = args["VPC"],
+		["ChangeInfo"] = args["ChangeInfo"],
+		["DelegationSet"] = args["DelegationSet"],
 	}
 	asserts.AssertCreateHostedZoneResponse(t)
 	return t
@@ -1764,12 +1941,15 @@ end
 
 --- Create a structure of type GetReusableDelegationSetRequest
 -- <p>A request to get information about a specified reusable delegation set.</p>
--- @param _Id [ResourceId] <p>The ID of the reusable delegation set that you want to get a list of name servers for.</p>
--- Required parameter: Id
-function M.GetReusableDelegationSetRequest(_Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetReusableDelegationSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [ResourceId] <p>The ID of the reusable delegation set that you want to get a list of name servers for.</p>
+-- Required key: Id
+-- @return GetReusableDelegationSetRequest structure as a key-value pair table
+function M.GetReusableDelegationSetRequest(args)
+	assert(args, "You must provdide an argument table when creating GetReusableDelegationSetRequest")
 	local t = { 
-		["Id"] = _Id,
+		["Id"] = args["Id"],
 	}
 	asserts.AssertGetReusableDelegationSetRequest(t)
 	return t
@@ -1789,12 +1969,15 @@ end
 
 --- Create a structure of type DeleteHostedZoneResponse
 -- <p>A complex type that contains the response to a <code>DeleteHostedZone</code> request.</p>
--- @param _ChangeInfo [ChangeInfo] <p>A complex type that contains the ID, the status, and the date and time of a request to delete a hosted zone.</p>
--- Required parameter: ChangeInfo
-function M.DeleteHostedZoneResponse(_ChangeInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHostedZoneResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeInfo [ChangeInfo] <p>A complex type that contains the ID, the status, and the date and time of a request to delete a hosted zone.</p>
+-- Required key: ChangeInfo
+-- @return DeleteHostedZoneResponse structure as a key-value pair table
+function M.DeleteHostedZoneResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteHostedZoneResponse")
 	local t = { 
-		["ChangeInfo"] = _ChangeInfo,
+		["ChangeInfo"] = args["ChangeInfo"],
 	}
 	asserts.AssertDeleteHostedZoneResponse(t)
 	return t
@@ -1813,11 +1996,14 @@ end
 
 --- Create a structure of type ConflictingTypes
 -- <p>You tried to update a traffic policy instance by using a traffic policy version that has a different DNS type than the current type for the instance. You specified the type in the JSON document in the <code>CreateTrafficPolicy</code> or <code>CreateTrafficPolicyVersion</code>request. </p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.ConflictingTypes(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConflictingTypes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return ConflictingTypes structure as a key-value pair table
+function M.ConflictingTypes(args)
+	assert(args, "You must provdide an argument table when creating ConflictingTypes")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertConflictingTypes(t)
 	return t
@@ -1836,11 +2022,14 @@ end
 
 --- Create a structure of type HealthCheckInUse
 -- <p>This error code is not in use.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.HealthCheckInUse(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HealthCheckInUse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return HealthCheckInUse structure as a key-value pair table
+function M.HealthCheckInUse(args)
+	assert(args, "You must provdide an argument table when creating HealthCheckInUse")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertHealthCheckInUse(t)
 	return t
@@ -1860,12 +2049,15 @@ end
 
 --- Create a structure of type DeleteReusableDelegationSetRequest
 -- <p>A request to delete a reusable delegation set.</p>
--- @param _Id [ResourceId] <p>The ID of the reusable delegation set that you want to delete.</p>
--- Required parameter: Id
-function M.DeleteReusableDelegationSetRequest(_Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReusableDelegationSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [ResourceId] <p>The ID of the reusable delegation set that you want to delete.</p>
+-- Required key: Id
+-- @return DeleteReusableDelegationSetRequest structure as a key-value pair table
+function M.DeleteReusableDelegationSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteReusableDelegationSetRequest")
 	local t = { 
-		["Id"] = _Id,
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDeleteReusableDelegationSetRequest(t)
 	return t
@@ -1884,11 +2076,14 @@ end
 
 --- Create a structure of type HostedZoneNotEmpty
 -- <p>The hosted zone contains resource records that are not SOA or NS records.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.HostedZoneNotEmpty(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HostedZoneNotEmpty")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return HostedZoneNotEmpty structure as a key-value pair table
+function M.HostedZoneNotEmpty(args)
+	assert(args, "You must provdide an argument table when creating HostedZoneNotEmpty")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertHostedZoneNotEmpty(t)
 	return t
@@ -1910,16 +2105,19 @@ end
 
 --- Create a structure of type GetHostedZoneResponse
 -- <p>A complex type that contain the response to a <code>GetHostedZone</code> request.</p>
--- @param _VPCs [VPCs] <p>A complex type that contains information about the VPCs that are associated with the specified hosted zone.</p>
--- @param _HostedZone [HostedZone] <p>A complex type that contains general information about the specified hosted zone.</p>
--- @param _DelegationSet [DelegationSet] <p>A complex type that lists the Amazon Route 53 name servers for the specified hosted zone.</p>
--- Required parameter: HostedZone
-function M.GetHostedZoneResponse(_VPCs, _HostedZone, _DelegationSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHostedZoneResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VPCs [VPCs] <p>A complex type that contains information about the VPCs that are associated with the specified hosted zone.</p>
+-- * HostedZone [HostedZone] <p>A complex type that contains general information about the specified hosted zone.</p>
+-- * DelegationSet [DelegationSet] <p>A complex type that lists the Amazon Route 53 name servers for the specified hosted zone.</p>
+-- Required key: HostedZone
+-- @return GetHostedZoneResponse structure as a key-value pair table
+function M.GetHostedZoneResponse(args)
+	assert(args, "You must provdide an argument table when creating GetHostedZoneResponse")
 	local t = { 
-		["VPCs"] = _VPCs,
-		["HostedZone"] = _HostedZone,
-		["DelegationSet"] = _DelegationSet,
+		["VPCs"] = args["VPCs"],
+		["HostedZone"] = args["HostedZone"],
+		["DelegationSet"] = args["DelegationSet"],
 	}
 	asserts.AssertGetHostedZoneResponse(t)
 	return t
@@ -1938,11 +2136,14 @@ end
 
 --- Create a structure of type DelegationSetAlreadyCreated
 -- <p>A delegation set with the same owner and caller reference combination has already been created.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.DelegationSetAlreadyCreated(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DelegationSetAlreadyCreated")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return DelegationSetAlreadyCreated structure as a key-value pair table
+function M.DelegationSetAlreadyCreated(args)
+	assert(args, "You must provdide an argument table when creating DelegationSetAlreadyCreated")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDelegationSetAlreadyCreated(t)
 	return t
@@ -1962,12 +2163,15 @@ end
 
 --- Create a structure of type GetTrafficPolicyResponse
 -- <p>A complex type that contains the response information for the request.</p>
--- @param _TrafficPolicy [TrafficPolicy] <p>A complex type that contains settings for the specified traffic policy.</p>
--- Required parameter: TrafficPolicy
-function M.GetTrafficPolicyResponse(_TrafficPolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTrafficPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicy [TrafficPolicy] <p>A complex type that contains settings for the specified traffic policy.</p>
+-- Required key: TrafficPolicy
+-- @return GetTrafficPolicyResponse structure as a key-value pair table
+function M.GetTrafficPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetTrafficPolicyResponse")
 	local t = { 
-		["TrafficPolicy"] = _TrafficPolicy,
+		["TrafficPolicy"] = args["TrafficPolicy"],
 	}
 	asserts.AssertGetTrafficPolicyResponse(t)
 	return t
@@ -1989,15 +2193,18 @@ end
 
 --- Create a structure of type CreateHealthCheckResponse
 -- <p>A complex type containing the response information for the new health check.</p>
--- @param _HealthCheck [HealthCheck] <p>A complex type that contains identifying information about the health check.</p>
--- @param _Location [ResourceURI] <p>The unique URL representing the new health check.</p>
--- Required parameter: HealthCheck
--- Required parameter: Location
-function M.CreateHealthCheckResponse(_HealthCheck, _Location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateHealthCheckResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheck [HealthCheck] <p>A complex type that contains identifying information about the health check.</p>
+-- * Location [ResourceURI] <p>The unique URL representing the new health check.</p>
+-- Required key: HealthCheck
+-- Required key: Location
+-- @return CreateHealthCheckResponse structure as a key-value pair table
+function M.CreateHealthCheckResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateHealthCheckResponse")
 	local t = { 
-		["HealthCheck"] = _HealthCheck,
-		["Location"] = _Location,
+		["HealthCheck"] = args["HealthCheck"],
+		["Location"] = args["Location"],
 	}
 	asserts.AssertCreateHealthCheckResponse(t)
 	return t
@@ -2019,16 +2226,19 @@ end
 
 --- Create a structure of type ListTrafficPolicyVersionsRequest
 -- <p>A complex type that contains the information about the request to list your traffic policies.</p>
--- @param _Id [TrafficPolicyId] <p>Specify the value of <code>Id</code> of the traffic policy for which you want to list all versions.</p>
--- @param _MaxItems [PageMaxItems] <p>The maximum number of traffic policy versions that you want Amazon Route 53 to include in the response body for this request. If the specified traffic policy has more than <code>MaxItems</code> versions, the value of <code>IsTruncated</code> in the response is <code>true</code>, and the value of the <code>TrafficPolicyVersionMarker</code> element is the ID of the first version that Amazon Route 53 will return if you submit another request.</p>
--- @param _TrafficPolicyVersionMarker [TrafficPolicyVersionMarker] <p>For your first request to <code>ListTrafficPolicyVersions</code>, don't include the <code>TrafficPolicyVersionMarker</code> parameter.</p> <p>If you have more traffic policy versions than the value of <code>MaxItems</code>, <code>ListTrafficPolicyVersions</code> returns only the first group of <code>MaxItems</code> versions. To get more traffic policy versions, submit another <code>ListTrafficPolicyVersions</code> request. For the value of <code>TrafficPolicyVersionMarker</code>, specify the value of <code>TrafficPolicyVersionMarker</code> in the previous response.</p>
--- Required parameter: Id
-function M.ListTrafficPolicyVersionsRequest(_Id, _MaxItems, _TrafficPolicyVersionMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTrafficPolicyVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [TrafficPolicyId] <p>Specify the value of <code>Id</code> of the traffic policy for which you want to list all versions.</p>
+-- * MaxItems [PageMaxItems] <p>The maximum number of traffic policy versions that you want Amazon Route 53 to include in the response body for this request. If the specified traffic policy has more than <code>MaxItems</code> versions, the value of <code>IsTruncated</code> in the response is <code>true</code>, and the value of the <code>TrafficPolicyVersionMarker</code> element is the ID of the first version that Amazon Route 53 will return if you submit another request.</p>
+-- * TrafficPolicyVersionMarker [TrafficPolicyVersionMarker] <p>For your first request to <code>ListTrafficPolicyVersions</code>, don't include the <code>TrafficPolicyVersionMarker</code> parameter.</p> <p>If you have more traffic policy versions than the value of <code>MaxItems</code>, <code>ListTrafficPolicyVersions</code> returns only the first group of <code>MaxItems</code> versions. To get more traffic policy versions, submit another <code>ListTrafficPolicyVersions</code> request. For the value of <code>TrafficPolicyVersionMarker</code>, specify the value of <code>TrafficPolicyVersionMarker</code> in the previous response.</p>
+-- Required key: Id
+-- @return ListTrafficPolicyVersionsRequest structure as a key-value pair table
+function M.ListTrafficPolicyVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTrafficPolicyVersionsRequest")
 	local t = { 
-		["Id"] = _Id,
-		["MaxItems"] = _MaxItems,
-		["TrafficPolicyVersionMarker"] = _TrafficPolicyVersionMarker,
+		["Id"] = args["Id"],
+		["MaxItems"] = args["MaxItems"],
+		["TrafficPolicyVersionMarker"] = args["TrafficPolicyVersionMarker"],
 	}
 	asserts.AssertListTrafficPolicyVersionsRequest(t)
 	return t
@@ -2054,21 +2264,24 @@ end
 
 --- Create a structure of type ListTrafficPoliciesResponse
 -- <p>A complex type that contains the response information for the request.</p>
--- @param _TrafficPolicyIdMarker [TrafficPolicyId] <p>If the value of <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyIdMarker</code> is the ID of the first traffic policy in the next group of <code>MaxItems</code> traffic policies.</p>
--- @param _TrafficPolicySummaries [TrafficPolicySummaries] <p>A list that contains one <code>TrafficPolicySummary</code> element for each traffic policy that was created by the current AWS account.</p>
--- @param _MaxItems [PageMaxItems] <p>The value that you specified for the <code>MaxItems</code> parameter in the <code>ListTrafficPolicies</code> request that produced the current response.</p>
--- @param _IsTruncated [PageTruncated] <p>A flag that indicates whether there are more traffic policies to be listed. If the response was truncated, you can get the next group of traffic policies by submitting another <code>ListTrafficPolicies</code> request and specifying the value of <code>TrafficPolicyIdMarker</code> in the <code>TrafficPolicyIdMarker</code> request parameter.</p>
--- Required parameter: TrafficPolicySummaries
--- Required parameter: IsTruncated
--- Required parameter: TrafficPolicyIdMarker
--- Required parameter: MaxItems
-function M.ListTrafficPoliciesResponse(_TrafficPolicyIdMarker, _TrafficPolicySummaries, _MaxItems, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTrafficPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyIdMarker [TrafficPolicyId] <p>If the value of <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyIdMarker</code> is the ID of the first traffic policy in the next group of <code>MaxItems</code> traffic policies.</p>
+-- * TrafficPolicySummaries [TrafficPolicySummaries] <p>A list that contains one <code>TrafficPolicySummary</code> element for each traffic policy that was created by the current AWS account.</p>
+-- * MaxItems [PageMaxItems] <p>The value that you specified for the <code>MaxItems</code> parameter in the <code>ListTrafficPolicies</code> request that produced the current response.</p>
+-- * IsTruncated [PageTruncated] <p>A flag that indicates whether there are more traffic policies to be listed. If the response was truncated, you can get the next group of traffic policies by submitting another <code>ListTrafficPolicies</code> request and specifying the value of <code>TrafficPolicyIdMarker</code> in the <code>TrafficPolicyIdMarker</code> request parameter.</p>
+-- Required key: TrafficPolicySummaries
+-- Required key: IsTruncated
+-- Required key: TrafficPolicyIdMarker
+-- Required key: MaxItems
+-- @return ListTrafficPoliciesResponse structure as a key-value pair table
+function M.ListTrafficPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTrafficPoliciesResponse")
 	local t = { 
-		["TrafficPolicyIdMarker"] = _TrafficPolicyIdMarker,
-		["TrafficPolicySummaries"] = _TrafficPolicySummaries,
-		["MaxItems"] = _MaxItems,
-		["IsTruncated"] = _IsTruncated,
+		["TrafficPolicyIdMarker"] = args["TrafficPolicyIdMarker"],
+		["TrafficPolicySummaries"] = args["TrafficPolicySummaries"],
+		["MaxItems"] = args["MaxItems"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListTrafficPoliciesResponse(t)
 	return t
@@ -2094,22 +2307,25 @@ end
 
 --- Create a structure of type HostedZone
 -- <p>A complex type that contains general information about the hosted zone.</p>
--- @param _ResourceRecordSetCount [HostedZoneRRSetCount] <p>The number of resource record sets in the hosted zone.</p>
--- @param _CallerReference [Nonce] <p>The value that you specified for <code>CallerReference</code> when you created the hosted zone.</p>
--- @param _Config [HostedZoneConfig] <p>A complex type that includes the <code>Comment</code> and <code>PrivateZone</code> elements. If you omitted the <code>HostedZoneConfig</code> and <code>Comment</code> elements from the request, the <code>Config</code> and <code>Comment</code> elements don't appear in the response.</p>
--- @param _Id [ResourceId] <p>The ID that Amazon Route 53 assigned to the hosted zone when you created it.</p>
--- @param _Name [DNSName] <p>The name of the domain. For public hosted zones, this is the name that you have registered with your DNS registrar.</p> <p>For information about how to specify characters other than <code>a-z</code>, <code>0-9</code>, and <code>-</code> (hyphen) and how to specify internationalized domain names, see <a>CreateHostedZone</a>.</p>
--- Required parameter: Id
--- Required parameter: Name
--- Required parameter: CallerReference
-function M.HostedZone(_ResourceRecordSetCount, _CallerReference, _Config, _Id, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HostedZone")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceRecordSetCount [HostedZoneRRSetCount] <p>The number of resource record sets in the hosted zone.</p>
+-- * CallerReference [Nonce] <p>The value that you specified for <code>CallerReference</code> when you created the hosted zone.</p>
+-- * Config [HostedZoneConfig] <p>A complex type that includes the <code>Comment</code> and <code>PrivateZone</code> elements. If you omitted the <code>HostedZoneConfig</code> and <code>Comment</code> elements from the request, the <code>Config</code> and <code>Comment</code> elements don't appear in the response.</p>
+-- * Id [ResourceId] <p>The ID that Amazon Route 53 assigned to the hosted zone when you created it.</p>
+-- * Name [DNSName] <p>The name of the domain. For public hosted zones, this is the name that you have registered with your DNS registrar.</p> <p>For information about how to specify characters other than <code>a-z</code>, <code>0-9</code>, and <code>-</code> (hyphen) and how to specify internationalized domain names, see <a>CreateHostedZone</a>.</p>
+-- Required key: Id
+-- Required key: Name
+-- Required key: CallerReference
+-- @return HostedZone structure as a key-value pair table
+function M.HostedZone(args)
+	assert(args, "You must provdide an argument table when creating HostedZone")
 	local t = { 
-		["ResourceRecordSetCount"] = _ResourceRecordSetCount,
-		["CallerReference"] = _CallerReference,
-		["Config"] = _Config,
-		["Id"] = _Id,
-		["Name"] = _Name,
+		["ResourceRecordSetCount"] = args["ResourceRecordSetCount"],
+		["CallerReference"] = args["CallerReference"],
+		["Config"] = args["Config"],
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertHostedZone(t)
 	return t
@@ -2129,12 +2345,15 @@ end
 
 --- Create a structure of type GetHealthCheckResponse
 -- <p>A complex type that contains the response to a <code>GetHealthCheck</code> request.</p>
--- @param _HealthCheck [HealthCheck] <p>A complex type that contains information about one health check that is associated with the current AWS account.</p>
--- Required parameter: HealthCheck
-function M.GetHealthCheckResponse(_HealthCheck, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHealthCheckResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheck [HealthCheck] <p>A complex type that contains information about one health check that is associated with the current AWS account.</p>
+-- Required key: HealthCheck
+-- @return GetHealthCheckResponse structure as a key-value pair table
+function M.GetHealthCheckResponse(args)
+	assert(args, "You must provdide an argument table when creating GetHealthCheckResponse")
 	local t = { 
-		["HealthCheck"] = _HealthCheck,
+		["HealthCheck"] = args["HealthCheck"],
 	}
 	asserts.AssertGetHealthCheckResponse(t)
 	return t
@@ -2153,11 +2372,14 @@ end
 
 --- Create a structure of type NoSuchTrafficPolicy
 -- <p>No traffic policy exists with the specified ID.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.NoSuchTrafficPolicy(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchTrafficPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return NoSuchTrafficPolicy structure as a key-value pair table
+function M.NoSuchTrafficPolicy(args)
+	assert(args, "You must provdide an argument table when creating NoSuchTrafficPolicy")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNoSuchTrafficPolicy(t)
 	return t
@@ -2179,15 +2401,18 @@ end
 
 --- Create a structure of type Dimension
 -- <p>For the metric that the CloudWatch alarm is associated with, a complex type that contains information about one dimension.</p>
--- @param _Name [DimensionField] <p>For the metric that the CloudWatch alarm is associated with, the name of one dimension.</p>
--- @param _Value [DimensionField] <p>For the metric that the CloudWatch alarm is associated with, the value of one dimension.</p>
--- Required parameter: Name
--- Required parameter: Value
-function M.Dimension(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Dimension")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DimensionField] <p>For the metric that the CloudWatch alarm is associated with, the name of one dimension.</p>
+-- * Value [DimensionField] <p>For the metric that the CloudWatch alarm is associated with, the value of one dimension.</p>
+-- Required key: Name
+-- Required key: Value
+-- @return Dimension structure as a key-value pair table
+function M.Dimension(args)
+	assert(args, "You must provdide an argument table when creating Dimension")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertDimension(t)
 	return t
@@ -2207,12 +2432,15 @@ end
 
 --- Create a structure of type UpdateTrafficPolicyCommentResponse
 -- <p>A complex type that contains the response information for the traffic policy.</p>
--- @param _TrafficPolicy [TrafficPolicy] <p>A complex type that contains settings for the specified traffic policy.</p>
--- Required parameter: TrafficPolicy
-function M.UpdateTrafficPolicyCommentResponse(_TrafficPolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTrafficPolicyCommentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicy [TrafficPolicy] <p>A complex type that contains settings for the specified traffic policy.</p>
+-- Required key: TrafficPolicy
+-- @return UpdateTrafficPolicyCommentResponse structure as a key-value pair table
+function M.UpdateTrafficPolicyCommentResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateTrafficPolicyCommentResponse")
 	local t = { 
-		["TrafficPolicy"] = _TrafficPolicy,
+		["TrafficPolicy"] = args["TrafficPolicy"],
 	}
 	asserts.AssertUpdateTrafficPolicyCommentResponse(t)
 	return t
@@ -2231,11 +2459,14 @@ end
 
 --- Create a structure of type InvalidTrafficPolicyDocument
 -- <p>The format of the traffic policy document that you specified in the <code>Document</code> element is invalid.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.InvalidTrafficPolicyDocument(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidTrafficPolicyDocument")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return InvalidTrafficPolicyDocument structure as a key-value pair table
+function M.InvalidTrafficPolicyDocument(args)
+	assert(args, "You must provdide an argument table when creating InvalidTrafficPolicyDocument")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidTrafficPolicyDocument(t)
 	return t
@@ -2254,11 +2485,14 @@ end
 
 --- Create a structure of type NoSuchChange
 -- <p>A change with the specified change ID does not exist.</p>
--- @param _message [ErrorMessage] 
-function M.NoSuchChange(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchChange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return NoSuchChange structure as a key-value pair table
+function M.NoSuchChange(args)
+	assert(args, "You must provdide an argument table when creating NoSuchChange")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNoSuchChange(t)
 	return t
@@ -2282,19 +2516,22 @@ end
 
 --- Create a structure of type ChangeTagsForResourceRequest
 -- <p>A complex type that contains information about the tags that you want to add, edit, or delete.</p>
--- @param _ResourceType [TagResourceType] <p>The type of the resource.</p> <ul> <li> <p>The resource type for health checks is <code>healthcheck</code>.</p> </li> <li> <p>The resource type for hosted zones is <code>hostedzone</code>.</p> </li> </ul>
--- @param _ResourceId [TagResourceId] <p>The ID of the resource for which you want to add, change, or delete tags.</p>
--- @param _AddTags [TagList] <p>A complex type that contains a list of the tags that you want to add to the specified health check or hosted zone and/or the tags that you want to edit <code>Value</code> for.</p> <p>You can add a maximum of 10 tags to a health check or a hosted zone.</p>
--- @param _RemoveTagKeys [TagKeyList] <p>A complex type that contains a list of the tags that you want to delete from the specified health check or hosted zone. You can specify up to 10 keys.</p>
--- Required parameter: ResourceType
--- Required parameter: ResourceId
-function M.ChangeTagsForResourceRequest(_ResourceType, _ResourceId, _AddTags, _RemoveTagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChangeTagsForResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [TagResourceType] <p>The type of the resource.</p> <ul> <li> <p>The resource type for health checks is <code>healthcheck</code>.</p> </li> <li> <p>The resource type for hosted zones is <code>hostedzone</code>.</p> </li> </ul>
+-- * ResourceId [TagResourceId] <p>The ID of the resource for which you want to add, change, or delete tags.</p>
+-- * AddTags [TagList] <p>A complex type that contains a list of the tags that you want to add to the specified health check or hosted zone and/or the tags that you want to edit <code>Value</code> for.</p> <p>You can add a maximum of 10 tags to a health check or a hosted zone.</p>
+-- * RemoveTagKeys [TagKeyList] <p>A complex type that contains a list of the tags that you want to delete from the specified health check or hosted zone. You can specify up to 10 keys.</p>
+-- Required key: ResourceType
+-- Required key: ResourceId
+-- @return ChangeTagsForResourceRequest structure as a key-value pair table
+function M.ChangeTagsForResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating ChangeTagsForResourceRequest")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceId"] = _ResourceId,
-		["AddTags"] = _AddTags,
-		["RemoveTagKeys"] = _RemoveTagKeys,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceId"] = args["ResourceId"],
+		["AddTags"] = args["AddTags"],
+		["RemoveTagKeys"] = args["RemoveTagKeys"],
 	}
 	asserts.AssertChangeTagsForResourceRequest(t)
 	return t
@@ -2316,15 +2553,18 @@ end
 
 --- Create a structure of type CreateVPCAssociationAuthorizationRequest
 -- <p>A complex type that contains information about the request to authorize associating a VPC with your private hosted zone. Authorization is only required when a private hosted zone and a VPC were created by using different accounts.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the private hosted zone that you want to authorize associating a VPC with.</p>
--- @param _VPC [VPC] <p>A complex type that contains the VPC ID and region for the VPC that you want to authorize associating with your hosted zone.</p>
--- Required parameter: HostedZoneId
--- Required parameter: VPC
-function M.CreateVPCAssociationAuthorizationRequest(_HostedZoneId, _VPC, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateVPCAssociationAuthorizationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>The ID of the private hosted zone that you want to authorize associating a VPC with.</p>
+-- * VPC [VPC] <p>A complex type that contains the VPC ID and region for the VPC that you want to authorize associating with your hosted zone.</p>
+-- Required key: HostedZoneId
+-- Required key: VPC
+-- @return CreateVPCAssociationAuthorizationRequest structure as a key-value pair table
+function M.CreateVPCAssociationAuthorizationRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateVPCAssociationAuthorizationRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["VPC"] = _VPC,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["VPC"] = args["VPC"],
 	}
 	asserts.AssertCreateVPCAssociationAuthorizationRequest(t)
 	return t
@@ -2351,24 +2591,27 @@ end
 
 --- Create a structure of type ListResourceRecordSetsResponse
 -- <p>A complex type that contains list information for the resource record set.</p>
--- @param _NextRecordIdentifier [ResourceRecordSetIdentifier] <p> <i>Weighted, latency, geolocation, and failover resource record sets only</i>: If results were truncated for a given DNS name and type, the value of <code>SetIdentifier</code> for the next resource record set that has the current DNS name and type.</p>
--- @param _NextRecordType [RRType] <p>If the results were truncated, the type of the next record in the list.</p> <p>This element is present only if <code>IsTruncated</code> is true. </p>
--- @param _NextRecordName [DNSName] <p>If the results were truncated, the name of the next record in the list.</p> <p>This element is present only if <code>IsTruncated</code> is true. </p>
--- @param _ResourceRecordSets [ResourceRecordSets] <p>Information about multiple resource record sets.</p>
--- @param _MaxItems [PageMaxItems] <p>The maximum number of records you requested.</p>
--- @param _IsTruncated [PageTruncated] <p>A flag that indicates whether more resource record sets remain to be listed. If your results were truncated, you can make a follow-up pagination request by using the <code>NextRecordName</code> element.</p>
--- Required parameter: ResourceRecordSets
--- Required parameter: IsTruncated
--- Required parameter: MaxItems
-function M.ListResourceRecordSetsResponse(_NextRecordIdentifier, _NextRecordType, _NextRecordName, _ResourceRecordSets, _MaxItems, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListResourceRecordSetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextRecordIdentifier [ResourceRecordSetIdentifier] <p> <i>Weighted, latency, geolocation, and failover resource record sets only</i>: If results were truncated for a given DNS name and type, the value of <code>SetIdentifier</code> for the next resource record set that has the current DNS name and type.</p>
+-- * NextRecordType [RRType] <p>If the results were truncated, the type of the next record in the list.</p> <p>This element is present only if <code>IsTruncated</code> is true. </p>
+-- * NextRecordName [DNSName] <p>If the results were truncated, the name of the next record in the list.</p> <p>This element is present only if <code>IsTruncated</code> is true. </p>
+-- * ResourceRecordSets [ResourceRecordSets] <p>Information about multiple resource record sets.</p>
+-- * MaxItems [PageMaxItems] <p>The maximum number of records you requested.</p>
+-- * IsTruncated [PageTruncated] <p>A flag that indicates whether more resource record sets remain to be listed. If your results were truncated, you can make a follow-up pagination request by using the <code>NextRecordName</code> element.</p>
+-- Required key: ResourceRecordSets
+-- Required key: IsTruncated
+-- Required key: MaxItems
+-- @return ListResourceRecordSetsResponse structure as a key-value pair table
+function M.ListResourceRecordSetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListResourceRecordSetsResponse")
 	local t = { 
-		["NextRecordIdentifier"] = _NextRecordIdentifier,
-		["NextRecordType"] = _NextRecordType,
-		["NextRecordName"] = _NextRecordName,
-		["ResourceRecordSets"] = _ResourceRecordSets,
-		["MaxItems"] = _MaxItems,
-		["IsTruncated"] = _IsTruncated,
+		["NextRecordIdentifier"] = args["NextRecordIdentifier"],
+		["NextRecordType"] = args["NextRecordType"],
+		["NextRecordName"] = args["NextRecordName"],
+		["ResourceRecordSets"] = args["ResourceRecordSets"],
+		["MaxItems"] = args["MaxItems"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListResourceRecordSetsResponse(t)
 	return t
@@ -2388,12 +2631,15 @@ end
 
 --- Create a structure of type DeleteTrafficPolicyInstanceRequest
 -- <p>A request to delete a specified traffic policy instance.</p>
--- @param _Id [TrafficPolicyInstanceId] <p>The ID of the traffic policy instance that you want to delete. </p> <important> <p>When you delete a traffic policy instance, Amazon Route 53 also deletes all of the resource record sets that were created when you created the traffic policy instance.</p> </important>
--- Required parameter: Id
-function M.DeleteTrafficPolicyInstanceRequest(_Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTrafficPolicyInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [TrafficPolicyInstanceId] <p>The ID of the traffic policy instance that you want to delete. </p> <important> <p>When you delete a traffic policy instance, Amazon Route 53 also deletes all of the resource record sets that were created when you created the traffic policy instance.</p> </important>
+-- Required key: Id
+-- @return DeleteTrafficPolicyInstanceRequest structure as a key-value pair table
+function M.DeleteTrafficPolicyInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteTrafficPolicyInstanceRequest")
 	local t = { 
-		["Id"] = _Id,
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDeleteTrafficPolicyInstanceRequest(t)
 	return t
@@ -2413,12 +2659,15 @@ end
 
 --- Create a structure of type UpdateHostedZoneCommentResponse
 -- <p>A complex type that contains the response to the <code>UpdateHostedZoneComment</code> request.</p>
--- @param _HostedZone [HostedZone] 
--- Required parameter: HostedZone
-function M.UpdateHostedZoneCommentResponse(_HostedZone, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateHostedZoneCommentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZone [HostedZone] 
+-- Required key: HostedZone
+-- @return UpdateHostedZoneCommentResponse structure as a key-value pair table
+function M.UpdateHostedZoneCommentResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateHostedZoneCommentResponse")
 	local t = { 
-		["HostedZone"] = _HostedZone,
+		["HostedZone"] = args["HostedZone"],
 	}
 	asserts.AssertUpdateHostedZoneCommentResponse(t)
 	return t
@@ -2437,11 +2686,14 @@ end
 
 --- Create a structure of type HealthCheckVersionMismatch
 -- <p>The value of <code>HealthCheckVersion</code> in the request doesn't match the value of <code>HealthCheckVersion</code> in the health check.</p>
--- @param _message [ErrorMessage] 
-function M.HealthCheckVersionMismatch(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HealthCheckVersionMismatch")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return HealthCheckVersionMismatch structure as a key-value pair table
+function M.HealthCheckVersionMismatch(args)
+	assert(args, "You must provdide an argument table when creating HealthCheckVersionMismatch")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertHealthCheckVersionMismatch(t)
 	return t
@@ -2460,11 +2712,14 @@ end
 
 --- Create a structure of type IncompatibleVersion
 -- <p>The resource you're trying to access is unsupported on this Amazon Route 53 endpoint.</p>
--- @param _message [ErrorMessage] 
-function M.IncompatibleVersion(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IncompatibleVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return IncompatibleVersion structure as a key-value pair table
+function M.IncompatibleVersion(args)
+	assert(args, "You must provdide an argument table when creating IncompatibleVersion")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertIncompatibleVersion(t)
 	return t
@@ -2483,11 +2738,14 @@ end
 
 --- Create a structure of type TooManyVPCAssociationAuthorizations
 -- <p>You've created the maximum number of authorizations that can be created for the specified hosted zone. To authorize another VPC to be associated with the hosted zone, submit a <code>DeleteVPCAssociationAuthorization</code> request to remove an existing authorization. To get a list of existing authorizations, submit a <code>ListVPCAssociationAuthorizations</code> request.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.TooManyVPCAssociationAuthorizations(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyVPCAssociationAuthorizations")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return TooManyVPCAssociationAuthorizations structure as a key-value pair table
+function M.TooManyVPCAssociationAuthorizations(args)
+	assert(args, "You must provdide an argument table when creating TooManyVPCAssociationAuthorizations")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTooManyVPCAssociationAuthorizations(t)
 	return t
@@ -2506,11 +2764,14 @@ end
 
 --- Create a structure of type TooManyHealthChecks
 -- <p>You have reached the maximum number of active health checks for an AWS account. The default limit is 100. To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.</p>
--- @param _message [ErrorMessage] 
-function M.TooManyHealthChecks(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyHealthChecks")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return TooManyHealthChecks structure as a key-value pair table
+function M.TooManyHealthChecks(args)
+	assert(args, "You must provdide an argument table when creating TooManyHealthChecks")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTooManyHealthChecks(t)
 	return t
@@ -2544,40 +2805,43 @@ end
 
 --- Create a structure of type UpdateHealthCheckRequest
 -- <p>A complex type that contains information about a request to update a health check.</p>
--- @param _SearchString [SearchString] <p>If the value of <code>Type</code> is <code>HTTP_STR_MATCH</code> or <code>HTTP_STR_MATCH</code>, the string that you want Amazon Route 53 to search for in the response body from the specified resource. If the string appears in the response body, Amazon Route 53 considers the resource healthy. (You can't change the value of <code>Type</code> when you update a health check.)</p>
--- @param _HealthCheckId [HealthCheckId] <p>The ID for the health check for which you want detailed information. When you created the health check, <code>CreateHealthCheck</code> returned the ID in the response, in the <code>HealthCheckId</code> element.</p>
--- @param _AlarmIdentifier [AlarmIdentifier] 
--- @param _HealthCheckVersion [HealthCheckVersion] <p>A sequential counter that Amazon Route 53 sets to <code>1</code> when you create a health check and increments by 1 each time you update settings for the health check.</p> <p>We recommend that you use <code>GetHealthCheck</code> or <code>ListHealthChecks</code> to get the current value of <code>HealthCheckVersion</code> for the health check that you want to update, and that you include that value in your <code>UpdateHealthCheck</code> request. This prevents Amazon Route 53 from overwriting an intervening update:</p> <ul> <li> <p>If the value in the <code>UpdateHealthCheck</code> request matches the value of <code>HealthCheckVersion</code> in the health check, Amazon Route 53 updates the health check with the new settings.</p> </li> <li> <p>If the value of <code>HealthCheckVersion</code> in the health check is greater, the health check was changed after you got the version number. Amazon Route 53 does not update the health check, and it returns a <code>HealthCheckVersionMismatch</code> error.</p> </li> </ul>
--- @param _ResourcePath [ResourcePath] <p>The path that you want Amazon Route 53 to request when performing health checks. The path can be any value for which your endpoint will return an HTTP status code of 2xx or 3xx when the endpoint is healthy, for example the file /docs/route53-health-check.html. </p> <p>Specify this value only if you want to change it.</p>
--- @param _ChildHealthChecks [ChildHealthCheckList] <p>A complex type that contains one <code>ChildHealthCheck</code> element for each health check that you want to associate with a <code>CALCULATED</code> health check.</p>
--- @param _Inverted [Inverted] <p>Specify whether you want Amazon Route 53 to invert the status of a health check, for example, to consider a health check unhealthy when it otherwise would be considered healthy.</p>
--- @param _Regions [HealthCheckRegionList] <p>A complex type that contains one <code>Region</code> element for each region that you want Amazon Route 53 health checkers to check the specified endpoint from.</p>
--- @param _InsufficientDataHealthStatus [InsufficientDataHealthStatus] <p>When CloudWatch has insufficient data about the metric to determine the alarm state, the status that you want Amazon Route 53 to assign to the health check:</p> <ul> <li> <p> <code>Healthy</code>: Amazon Route 53 considers the health check to be healthy.</p> </li> <li> <p> <code>Unhealthy</code>: Amazon Route 53 considers the health check to be unhealthy.</p> </li> <li> <p> <code>LastKnownStatus</code>: Amazon Route 53 uses the status of the health check from the last time CloudWatch had sufficient data to determine the alarm state. For new health checks that have no last known status, the default status for the health check is healthy.</p> </li> </ul>
--- @param _HealthThreshold [HealthThreshold] <p>The number of child health checks that are associated with a <code>CALCULATED</code> health that Amazon Route 53 must consider healthy for the <code>CALCULATED</code> health check to be considered healthy. To specify the child health checks that you want to associate with a <code>CALCULATED</code> health check, use the <code>ChildHealthChecks</code> and <code>ChildHealthCheck</code> elements.</p> <p>Note the following:</p> <ul> <li> <p>If you specify a number greater than the number of child health checks, Amazon Route 53 always considers this health check to be unhealthy.</p> </li> <li> <p>If you specify <code>0</code>, Amazon Route 53 always considers this health check to be healthy.</p> </li> </ul>
--- @param _EnableSNI [EnableSNI] <p>Specify whether you want Amazon Route 53 to send the value of <code>FullyQualifiedDomainName</code> to the endpoint in the <code>client_hello</code> message during <code>TLS</code> negotiation. This allows the endpoint to respond to <code>HTTPS</code> health check requests with the applicable SSL/TLS certificate.</p> <p>Some endpoints require that HTTPS requests include the host name in the <code>client_hello</code> message. If you don't enable SNI, the status of the health check will be SSL alert <code>handshake_failure</code>. A health check can also have that status for other reasons. If SNI is enabled and you're still getting the error, check the SSL/TLS configuration on your endpoint and confirm that your certificate is valid.</p> <p>The SSL/TLS certificate on your endpoint includes a domain name in the <code>Common Name</code> field and possibly several more in the <code>Subject Alternative Names</code> field. One of the domain names in the certificate should match the value that you specify for <code>FullyQualifiedDomainName</code>. If the endpoint responds to the <code>client_hello</code> message with a certificate that does not include the domain name that you specified in <code>FullyQualifiedDomainName</code>, a health checker will retry the handshake. In the second attempt, the health checker will omit <code>FullyQualifiedDomainName</code> from the <code>client_hello</code> message.</p>
--- @param _FailureThreshold [FailureThreshold] <p>The number of consecutive health checks that an endpoint must pass or fail for Amazon Route 53 to change the current status of the endpoint from unhealthy to healthy or vice versa. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.</p>
--- @param _IPAddress [IPAddress] <p>The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name that you specify in <code>FullyQualifiedDomainName</code> at the interval that you specify in <code>RequestInterval</code>. Using an IP address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint.</p> <p>Use one of the following formats for the value of <code>IPAddress</code>: </p> <ul> <li> <p> <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example, <code>192.0.2.44</code>.</p> </li> <li> <p> <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example, <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in RFC 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.</p> </li> </ul> <p>If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP address of your instance never changes. For more information, see the applicable documentation:</p> <ul> <li> <p>Linux: <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses (EIP)</a> in the <i>Amazon EC2 User Guide for Linux Instances</i> </p> </li> <li> <p>Windows: <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses (EIP)</a> in the <i>Amazon EC2 User Guide for Windows Instances</i> </p> </li> </ul> <note> <p>If a health check already has a value for <code>IPAddress</code>, you can change the value. However, you can't update an existing health check to add or remove the value of <code>IPAddress</code>. </p> </note> <p>For more information, see <a>UpdateHealthCheckRequest$FullyQualifiedDomainName</a>.</p> <p>Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private, non-routable, or multicast ranges. For more information about IP addresses for which you can't create health checks, see the following documents:</p> <ul> <li> <p> <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a> </p> </li> <li> <p> <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space</a> </p> </li> <li> <p> <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a> </p> </li> </ul>
--- @param _Port [Port] <p>The port on the endpoint on which you want Amazon Route 53 to perform health checks.</p>
--- @param _FullyQualifiedDomainName [FullyQualifiedDomainName] <p>Amazon Route 53 behavior depends on whether you specify a value for <code>IPAddress</code>.</p> <note> <p>If a health check already has a value for <code>IPAddress</code>, you can change the value. However, you can't update an existing health check to add or remove the value of <code>IPAddress</code>. </p> </note> <p> <b>If you specify a value for</b> <code>IPAddress</code>:</p> <p>Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53 to perform health checks.</p> <p>When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code> header:</p> <ul> <li> <p>If you specify a value of <code>80</code> for <code>Port</code> and <code>HTTP</code> or <code>HTTP_STR_MATCH</code> for <code>Type</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> to the endpoint in the <code>Host</code> header.</p> </li> <li> <p>If you specify a value of <code>443</code> for <code>Port</code> and <code>HTTPS</code> or <code>HTTPS_STR_MATCH</code> for <code>Type</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> to the endpoint in the <code>Host</code> header.</p> </li> <li> <p>If you specify another value for <code>Port</code> and any value except <code>TCP</code> for <code>Type</code>, Amazon Route 53 passes <i> <code>FullyQualifiedDomainName</code>:<code>Port</code> </i> to the endpoint in the <code>Host</code> header.</p> </li> </ul> <p>If you don't specify a value for <code>FullyQualifiedDomainName</code>, Amazon Route 53 substitutes the value of <code>IPAddress</code> in the <code>Host</code> header in each of the above cases.</p> <p> <b>If you don't specify a value for</b> <code>IPAddress</code>:</p> <p>If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to the domain that you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in <code>RequestInterval</code>. Using an IPv4 address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint.</p> <note> <p>If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health checks to the endpoint. If there's no resource record set with a type of A for the name that you specify for <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.</p> </note> <p>If you want to check the health of weighted, latency, or failover resource record sets and you choose to specify the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a separate health check for each endpoint. For example, create a health check for each HTTP server that is serving content for www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server (such as <code>us-east-2-www.example.com</code>), not the name of the resource record sets (www.example.com).</p> <important> <p>In this configuration, if the value of <code>FullyQualifiedDomainName</code> matches the name of the resource record sets and you then associate the health check with those resource record sets, health check results will be unpredictable.</p> </important> <p>In addition, if the value of <code>Type</code> is <code>HTTP</code>, <code>HTTPS</code>, <code>HTTP_STR_MATCH</code>, or <code>HTTPS_STR_MATCH</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> in the <code>Host</code> header, as it does when you specify a value for <code>IPAddress</code>. If the value of <code>Type</code> is <code>TCP</code>, Amazon Route 53 doesn't pass a <code>Host</code> header.</p>
--- Required parameter: HealthCheckId
-function M.UpdateHealthCheckRequest(_SearchString, _HealthCheckId, _AlarmIdentifier, _HealthCheckVersion, _ResourcePath, _ChildHealthChecks, _Inverted, _Regions, _InsufficientDataHealthStatus, _HealthThreshold, _EnableSNI, _FailureThreshold, _IPAddress, _Port, _FullyQualifiedDomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateHealthCheckRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SearchString [SearchString] <p>If the value of <code>Type</code> is <code>HTTP_STR_MATCH</code> or <code>HTTP_STR_MATCH</code>, the string that you want Amazon Route 53 to search for in the response body from the specified resource. If the string appears in the response body, Amazon Route 53 considers the resource healthy. (You can't change the value of <code>Type</code> when you update a health check.)</p>
+-- * HealthCheckId [HealthCheckId] <p>The ID for the health check for which you want detailed information. When you created the health check, <code>CreateHealthCheck</code> returned the ID in the response, in the <code>HealthCheckId</code> element.</p>
+-- * AlarmIdentifier [AlarmIdentifier] 
+-- * HealthCheckVersion [HealthCheckVersion] <p>A sequential counter that Amazon Route 53 sets to <code>1</code> when you create a health check and increments by 1 each time you update settings for the health check.</p> <p>We recommend that you use <code>GetHealthCheck</code> or <code>ListHealthChecks</code> to get the current value of <code>HealthCheckVersion</code> for the health check that you want to update, and that you include that value in your <code>UpdateHealthCheck</code> request. This prevents Amazon Route 53 from overwriting an intervening update:</p> <ul> <li> <p>If the value in the <code>UpdateHealthCheck</code> request matches the value of <code>HealthCheckVersion</code> in the health check, Amazon Route 53 updates the health check with the new settings.</p> </li> <li> <p>If the value of <code>HealthCheckVersion</code> in the health check is greater, the health check was changed after you got the version number. Amazon Route 53 does not update the health check, and it returns a <code>HealthCheckVersionMismatch</code> error.</p> </li> </ul>
+-- * ResourcePath [ResourcePath] <p>The path that you want Amazon Route 53 to request when performing health checks. The path can be any value for which your endpoint will return an HTTP status code of 2xx or 3xx when the endpoint is healthy, for example the file /docs/route53-health-check.html. </p> <p>Specify this value only if you want to change it.</p>
+-- * ChildHealthChecks [ChildHealthCheckList] <p>A complex type that contains one <code>ChildHealthCheck</code> element for each health check that you want to associate with a <code>CALCULATED</code> health check.</p>
+-- * Inverted [Inverted] <p>Specify whether you want Amazon Route 53 to invert the status of a health check, for example, to consider a health check unhealthy when it otherwise would be considered healthy.</p>
+-- * Regions [HealthCheckRegionList] <p>A complex type that contains one <code>Region</code> element for each region that you want Amazon Route 53 health checkers to check the specified endpoint from.</p>
+-- * InsufficientDataHealthStatus [InsufficientDataHealthStatus] <p>When CloudWatch has insufficient data about the metric to determine the alarm state, the status that you want Amazon Route 53 to assign to the health check:</p> <ul> <li> <p> <code>Healthy</code>: Amazon Route 53 considers the health check to be healthy.</p> </li> <li> <p> <code>Unhealthy</code>: Amazon Route 53 considers the health check to be unhealthy.</p> </li> <li> <p> <code>LastKnownStatus</code>: Amazon Route 53 uses the status of the health check from the last time CloudWatch had sufficient data to determine the alarm state. For new health checks that have no last known status, the default status for the health check is healthy.</p> </li> </ul>
+-- * HealthThreshold [HealthThreshold] <p>The number of child health checks that are associated with a <code>CALCULATED</code> health that Amazon Route 53 must consider healthy for the <code>CALCULATED</code> health check to be considered healthy. To specify the child health checks that you want to associate with a <code>CALCULATED</code> health check, use the <code>ChildHealthChecks</code> and <code>ChildHealthCheck</code> elements.</p> <p>Note the following:</p> <ul> <li> <p>If you specify a number greater than the number of child health checks, Amazon Route 53 always considers this health check to be unhealthy.</p> </li> <li> <p>If you specify <code>0</code>, Amazon Route 53 always considers this health check to be healthy.</p> </li> </ul>
+-- * EnableSNI [EnableSNI] <p>Specify whether you want Amazon Route 53 to send the value of <code>FullyQualifiedDomainName</code> to the endpoint in the <code>client_hello</code> message during <code>TLS</code> negotiation. This allows the endpoint to respond to <code>HTTPS</code> health check requests with the applicable SSL/TLS certificate.</p> <p>Some endpoints require that HTTPS requests include the host name in the <code>client_hello</code> message. If you don't enable SNI, the status of the health check will be SSL alert <code>handshake_failure</code>. A health check can also have that status for other reasons. If SNI is enabled and you're still getting the error, check the SSL/TLS configuration on your endpoint and confirm that your certificate is valid.</p> <p>The SSL/TLS certificate on your endpoint includes a domain name in the <code>Common Name</code> field and possibly several more in the <code>Subject Alternative Names</code> field. One of the domain names in the certificate should match the value that you specify for <code>FullyQualifiedDomainName</code>. If the endpoint responds to the <code>client_hello</code> message with a certificate that does not include the domain name that you specified in <code>FullyQualifiedDomainName</code>, a health checker will retry the handshake. In the second attempt, the health checker will omit <code>FullyQualifiedDomainName</code> from the <code>client_hello</code> message.</p>
+-- * FailureThreshold [FailureThreshold] <p>The number of consecutive health checks that an endpoint must pass or fail for Amazon Route 53 to change the current status of the endpoint from unhealthy to healthy or vice versa. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.</p>
+-- * IPAddress [IPAddress] <p>The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name that you specify in <code>FullyQualifiedDomainName</code> at the interval that you specify in <code>RequestInterval</code>. Using an IP address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint.</p> <p>Use one of the following formats for the value of <code>IPAddress</code>: </p> <ul> <li> <p> <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example, <code>192.0.2.44</code>.</p> </li> <li> <p> <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example, <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in RFC 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.</p> </li> </ul> <p>If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP address of your instance never changes. For more information, see the applicable documentation:</p> <ul> <li> <p>Linux: <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses (EIP)</a> in the <i>Amazon EC2 User Guide for Linux Instances</i> </p> </li> <li> <p>Windows: <a href="http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses (EIP)</a> in the <i>Amazon EC2 User Guide for Windows Instances</i> </p> </li> </ul> <note> <p>If a health check already has a value for <code>IPAddress</code>, you can change the value. However, you can't update an existing health check to add or remove the value of <code>IPAddress</code>. </p> </note> <p>For more information, see <a>UpdateHealthCheckRequest$FullyQualifiedDomainName</a>.</p> <p>Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private, non-routable, or multicast ranges. For more information about IP addresses for which you can't create health checks, see the following documents:</p> <ul> <li> <p> <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a> </p> </li> <li> <p> <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space</a> </p> </li> <li> <p> <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a> </p> </li> </ul>
+-- * Port [Port] <p>The port on the endpoint on which you want Amazon Route 53 to perform health checks.</p>
+-- * FullyQualifiedDomainName [FullyQualifiedDomainName] <p>Amazon Route 53 behavior depends on whether you specify a value for <code>IPAddress</code>.</p> <note> <p>If a health check already has a value for <code>IPAddress</code>, you can change the value. However, you can't update an existing health check to add or remove the value of <code>IPAddress</code>. </p> </note> <p> <b>If you specify a value for</b> <code>IPAddress</code>:</p> <p>Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53 to perform health checks.</p> <p>When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code> header:</p> <ul> <li> <p>If you specify a value of <code>80</code> for <code>Port</code> and <code>HTTP</code> or <code>HTTP_STR_MATCH</code> for <code>Type</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> to the endpoint in the <code>Host</code> header.</p> </li> <li> <p>If you specify a value of <code>443</code> for <code>Port</code> and <code>HTTPS</code> or <code>HTTPS_STR_MATCH</code> for <code>Type</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> to the endpoint in the <code>Host</code> header.</p> </li> <li> <p>If you specify another value for <code>Port</code> and any value except <code>TCP</code> for <code>Type</code>, Amazon Route 53 passes <i> <code>FullyQualifiedDomainName</code>:<code>Port</code> </i> to the endpoint in the <code>Host</code> header.</p> </li> </ul> <p>If you don't specify a value for <code>FullyQualifiedDomainName</code>, Amazon Route 53 substitutes the value of <code>IPAddress</code> in the <code>Host</code> header in each of the above cases.</p> <p> <b>If you don't specify a value for</b> <code>IPAddress</code>:</p> <p>If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to the domain that you specify in <code>FullyQualifiedDomainName</code> at the interval you specify in <code>RequestInterval</code>. Using an IPv4 address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint.</p> <note> <p>If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health checks to the endpoint. If there's no resource record set with a type of A for the name that you specify for <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.</p> </note> <p>If you want to check the health of weighted, latency, or failover resource record sets and you choose to specify the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a separate health check for each endpoint. For example, create a health check for each HTTP server that is serving content for www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server (such as <code>us-east-2-www.example.com</code>), not the name of the resource record sets (www.example.com).</p> <important> <p>In this configuration, if the value of <code>FullyQualifiedDomainName</code> matches the name of the resource record sets and you then associate the health check with those resource record sets, health check results will be unpredictable.</p> </important> <p>In addition, if the value of <code>Type</code> is <code>HTTP</code>, <code>HTTPS</code>, <code>HTTP_STR_MATCH</code>, or <code>HTTPS_STR_MATCH</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> in the <code>Host</code> header, as it does when you specify a value for <code>IPAddress</code>. If the value of <code>Type</code> is <code>TCP</code>, Amazon Route 53 doesn't pass a <code>Host</code> header.</p>
+-- Required key: HealthCheckId
+-- @return UpdateHealthCheckRequest structure as a key-value pair table
+function M.UpdateHealthCheckRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateHealthCheckRequest")
 	local t = { 
-		["SearchString"] = _SearchString,
-		["HealthCheckId"] = _HealthCheckId,
-		["AlarmIdentifier"] = _AlarmIdentifier,
-		["HealthCheckVersion"] = _HealthCheckVersion,
-		["ResourcePath"] = _ResourcePath,
-		["ChildHealthChecks"] = _ChildHealthChecks,
-		["Inverted"] = _Inverted,
-		["Regions"] = _Regions,
-		["InsufficientDataHealthStatus"] = _InsufficientDataHealthStatus,
-		["HealthThreshold"] = _HealthThreshold,
-		["EnableSNI"] = _EnableSNI,
-		["FailureThreshold"] = _FailureThreshold,
-		["IPAddress"] = _IPAddress,
-		["Port"] = _Port,
-		["FullyQualifiedDomainName"] = _FullyQualifiedDomainName,
+		["SearchString"] = args["SearchString"],
+		["HealthCheckId"] = args["HealthCheckId"],
+		["AlarmIdentifier"] = args["AlarmIdentifier"],
+		["HealthCheckVersion"] = args["HealthCheckVersion"],
+		["ResourcePath"] = args["ResourcePath"],
+		["ChildHealthChecks"] = args["ChildHealthChecks"],
+		["Inverted"] = args["Inverted"],
+		["Regions"] = args["Regions"],
+		["InsufficientDataHealthStatus"] = args["InsufficientDataHealthStatus"],
+		["HealthThreshold"] = args["HealthThreshold"],
+		["EnableSNI"] = args["EnableSNI"],
+		["FailureThreshold"] = args["FailureThreshold"],
+		["IPAddress"] = args["IPAddress"],
+		["Port"] = args["Port"],
+		["FullyQualifiedDomainName"] = args["FullyQualifiedDomainName"],
 	}
 	asserts.AssertUpdateHealthCheckRequest(t)
 	return t
@@ -2596,11 +2860,14 @@ end
 
 --- Create a structure of type InvalidVPCId
 -- <p>The VPC ID that you specified either isn't a valid ID or the current account is not authorized to access this VPC.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.InvalidVPCId(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidVPCId")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return InvalidVPCId structure as a key-value pair table
+function M.InvalidVPCId(args)
+	assert(args, "You must provdide an argument table when creating InvalidVPCId")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidVPCId(t)
 	return t
@@ -2619,11 +2886,14 @@ end
 
 --- Create a structure of type NoSuchHostedZone
 -- <p>No hosted zone exists with the ID that you specified.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.NoSuchHostedZone(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchHostedZone")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return NoSuchHostedZone structure as a key-value pair table
+function M.NoSuchHostedZone(args)
+	assert(args, "You must provdide an argument table when creating NoSuchHostedZone")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNoSuchHostedZone(t)
 	return t
@@ -2647,21 +2917,24 @@ end
 
 --- Create a structure of type GeoLocationDetails
 -- <p>A complex type that contains the codes and full continent, country, and subdivision names for the specified <code>geolocation</code> code.</p>
--- @param _CountryName [GeoLocationCountryName] <p>The name of the country.</p>
--- @param _CountryCode [GeoLocationCountryCode] <p>The two-letter code for the country.</p>
--- @param _SubdivisionCode [GeoLocationSubdivisionCode] <p>The code for the subdivision, for example, a state in the United States or a province in Canada.</p>
--- @param _ContinentName [GeoLocationContinentName] <p>The full name of the continent.</p>
--- @param _SubdivisionName [GeoLocationSubdivisionName] <p>The full name of the subdivision, for example, a state in the United States or a province in Canada.</p>
--- @param _ContinentCode [GeoLocationContinentCode] <p>The two-letter code for the continent.</p>
-function M.GeoLocationDetails(_CountryName, _CountryCode, _SubdivisionCode, _ContinentName, _SubdivisionName, _ContinentCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GeoLocationDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CountryName [GeoLocationCountryName] <p>The name of the country.</p>
+-- * CountryCode [GeoLocationCountryCode] <p>The two-letter code for the country.</p>
+-- * SubdivisionCode [GeoLocationSubdivisionCode] <p>The code for the subdivision, for example, a state in the United States or a province in Canada.</p>
+-- * ContinentName [GeoLocationContinentName] <p>The full name of the continent.</p>
+-- * SubdivisionName [GeoLocationSubdivisionName] <p>The full name of the subdivision, for example, a state in the United States or a province in Canada.</p>
+-- * ContinentCode [GeoLocationContinentCode] <p>The two-letter code for the continent.</p>
+-- @return GeoLocationDetails structure as a key-value pair table
+function M.GeoLocationDetails(args)
+	assert(args, "You must provdide an argument table when creating GeoLocationDetails")
 	local t = { 
-		["CountryName"] = _CountryName,
-		["CountryCode"] = _CountryCode,
-		["SubdivisionCode"] = _SubdivisionCode,
-		["ContinentName"] = _ContinentName,
-		["SubdivisionName"] = _SubdivisionName,
-		["ContinentCode"] = _ContinentCode,
+		["CountryName"] = args["CountryName"],
+		["CountryCode"] = args["CountryCode"],
+		["SubdivisionCode"] = args["SubdivisionCode"],
+		["ContinentName"] = args["ContinentName"],
+		["SubdivisionName"] = args["SubdivisionName"],
+		["ContinentCode"] = args["ContinentCode"],
 	}
 	asserts.AssertGeoLocationDetails(t)
 	return t
@@ -2685,20 +2958,23 @@ end
 
 --- Create a structure of type ListResourceRecordSetsRequest
 -- <p>A request for the resource record sets that are associated with a specified hosted zone.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the hosted zone that contains the resource record sets that you want to list.</p>
--- @param _StartRecordName [DNSName] <p>The first name in the lexicographic ordering of resource record sets that you want to list.</p>
--- @param _StartRecordIdentifier [ResourceRecordSetIdentifier] <p> <i>Weighted resource record sets only:</i> If results were truncated for a given DNS name and type, specify the value of <code>NextRecordIdentifier</code> from the previous response to get the next resource record set that has the current DNS name and type.</p>
--- @param _StartRecordType [RRType] <p>The type of resource record set to begin the record listing from.</p> <p>Valid values for basic resource record sets: <code>A</code> | <code>AAAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>NS</code> | <code>PTR</code> | <code>SOA</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code> </p> <p>Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code> </p> <p>Values for alias resource record sets: </p> <ul> <li> <p> <b>CloudFront distribution</b>: A or AAAA</p> </li> <li> <p> <b>Elastic Beanstalk environment that has a regionalized subdomain</b>: A</p> </li> <li> <p> <b>ELB load balancer</b>: A | AAAA</p> </li> <li> <p> <b>Amazon S3 bucket</b>: A</p> </li> </ul> <p>Constraint: Specifying <code>type</code> without specifying <code>name</code> returns an <code>InvalidInput</code> error.</p>
--- @param _MaxItems [PageMaxItems] <p>(Optional) The maximum number of resource records sets to include in the response body for this request. If the response includes more than <code>maxitems</code> resource record sets, the value of the <code>IsTruncated</code> element in the response is <code>true</code>, and the values of the <code>NextRecordName</code> and <code>NextRecordType</code> elements in the response identify the first resource record set in the next group of <code>maxitems</code> resource record sets.</p>
--- Required parameter: HostedZoneId
-function M.ListResourceRecordSetsRequest(_HostedZoneId, _StartRecordName, _StartRecordIdentifier, _StartRecordType, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListResourceRecordSetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>The ID of the hosted zone that contains the resource record sets that you want to list.</p>
+-- * StartRecordName [DNSName] <p>The first name in the lexicographic ordering of resource record sets that you want to list.</p>
+-- * StartRecordIdentifier [ResourceRecordSetIdentifier] <p> <i>Weighted resource record sets only:</i> If results were truncated for a given DNS name and type, specify the value of <code>NextRecordIdentifier</code> from the previous response to get the next resource record set that has the current DNS name and type.</p>
+-- * StartRecordType [RRType] <p>The type of resource record set to begin the record listing from.</p> <p>Valid values for basic resource record sets: <code>A</code> | <code>AAAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>NS</code> | <code>PTR</code> | <code>SOA</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code> </p> <p>Values for weighted, latency, geo, and failover resource record sets: <code>A</code> | <code>AAAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code> </p> <p>Values for alias resource record sets: </p> <ul> <li> <p> <b>CloudFront distribution</b>: A or AAAA</p> </li> <li> <p> <b>Elastic Beanstalk environment that has a regionalized subdomain</b>: A</p> </li> <li> <p> <b>ELB load balancer</b>: A | AAAA</p> </li> <li> <p> <b>Amazon S3 bucket</b>: A</p> </li> </ul> <p>Constraint: Specifying <code>type</code> without specifying <code>name</code> returns an <code>InvalidInput</code> error.</p>
+-- * MaxItems [PageMaxItems] <p>(Optional) The maximum number of resource records sets to include in the response body for this request. If the response includes more than <code>maxitems</code> resource record sets, the value of the <code>IsTruncated</code> element in the response is <code>true</code>, and the values of the <code>NextRecordName</code> and <code>NextRecordType</code> elements in the response identify the first resource record set in the next group of <code>maxitems</code> resource record sets.</p>
+-- Required key: HostedZoneId
+-- @return ListResourceRecordSetsRequest structure as a key-value pair table
+function M.ListResourceRecordSetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListResourceRecordSetsRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["StartRecordName"] = _StartRecordName,
-		["StartRecordIdentifier"] = _StartRecordIdentifier,
-		["StartRecordType"] = _StartRecordType,
-		["MaxItems"] = _MaxItems,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["StartRecordName"] = args["StartRecordName"],
+		["StartRecordIdentifier"] = args["StartRecordIdentifier"],
+		["StartRecordType"] = args["StartRecordType"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListResourceRecordSetsRequest(t)
 	return t
@@ -2718,12 +2994,15 @@ end
 
 --- Create a structure of type GetReusableDelegationSetResponse
 -- <p>A complex type that contains the response to the <code>GetReusableDelegationSet</code> request.</p>
--- @param _DelegationSet [DelegationSet] <p>A complex type that contains information about the reusable delegation set.</p>
--- Required parameter: DelegationSet
-function M.GetReusableDelegationSetResponse(_DelegationSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetReusableDelegationSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DelegationSet [DelegationSet] <p>A complex type that contains information about the reusable delegation set.</p>
+-- Required key: DelegationSet
+-- @return GetReusableDelegationSetResponse structure as a key-value pair table
+function M.GetReusableDelegationSetResponse(args)
+	assert(args, "You must provdide an argument table when creating GetReusableDelegationSetResponse")
 	local t = { 
-		["DelegationSet"] = _DelegationSet,
+		["DelegationSet"] = args["DelegationSet"],
 	}
 	asserts.AssertGetReusableDelegationSetResponse(t)
 	return t
@@ -2750,24 +3029,27 @@ end
 
 --- Create a structure of type ListTrafficPolicyInstancesResponse
 -- <p>A complex type that contains the response information for the request.</p>
--- @param _TrafficPolicyInstanceNameMarker [DNSName] <p>If <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is the name of the first traffic policy instance that Amazon Route 53 will return if you submit another <code>ListTrafficPolicyInstances</code> request. </p>
--- @param _HostedZoneIdMarker [ResourceId] <p>If <code>IsTruncated</code> is <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the hosted zone of the first traffic policy instance that Amazon Route 53 will return if you submit another <code>ListTrafficPolicyInstances</code> request. </p>
--- @param _TrafficPolicyInstances [TrafficPolicyInstances] <p>A list that contains one <code>TrafficPolicyInstance</code> element for each traffic policy instance that matches the elements in the request.</p>
--- @param _MaxItems [PageMaxItems] <p>The value that you specified for the <code>MaxItems</code> parameter in the call to <code>ListTrafficPolicyInstances</code> that produced the current response.</p>
--- @param _TrafficPolicyInstanceTypeMarker [RRType] <p>If <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyInstanceTypeMarker</code> is the DNS type of the resource record sets that are associated with the first traffic policy instance that Amazon Route 53 will return if you submit another <code>ListTrafficPolicyInstances</code> request. </p>
--- @param _IsTruncated [PageTruncated] <p>A flag that indicates whether there are more traffic policy instances to be listed. If the response was truncated, you can get more traffic policy instances by calling <code>ListTrafficPolicyInstances</code> again and specifying the values of the <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> in the corresponding request parameters.</p>
--- Required parameter: TrafficPolicyInstances
--- Required parameter: IsTruncated
--- Required parameter: MaxItems
-function M.ListTrafficPolicyInstancesResponse(_TrafficPolicyInstanceNameMarker, _HostedZoneIdMarker, _TrafficPolicyInstances, _MaxItems, _TrafficPolicyInstanceTypeMarker, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTrafficPolicyInstancesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyInstanceNameMarker [DNSName] <p>If <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is the name of the first traffic policy instance that Amazon Route 53 will return if you submit another <code>ListTrafficPolicyInstances</code> request. </p>
+-- * HostedZoneIdMarker [ResourceId] <p>If <code>IsTruncated</code> is <code>true</code>, <code>HostedZoneIdMarker</code> is the ID of the hosted zone of the first traffic policy instance that Amazon Route 53 will return if you submit another <code>ListTrafficPolicyInstances</code> request. </p>
+-- * TrafficPolicyInstances [TrafficPolicyInstances] <p>A list that contains one <code>TrafficPolicyInstance</code> element for each traffic policy instance that matches the elements in the request.</p>
+-- * MaxItems [PageMaxItems] <p>The value that you specified for the <code>MaxItems</code> parameter in the call to <code>ListTrafficPolicyInstances</code> that produced the current response.</p>
+-- * TrafficPolicyInstanceTypeMarker [RRType] <p>If <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyInstanceTypeMarker</code> is the DNS type of the resource record sets that are associated with the first traffic policy instance that Amazon Route 53 will return if you submit another <code>ListTrafficPolicyInstances</code> request. </p>
+-- * IsTruncated [PageTruncated] <p>A flag that indicates whether there are more traffic policy instances to be listed. If the response was truncated, you can get more traffic policy instances by calling <code>ListTrafficPolicyInstances</code> again and specifying the values of the <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> in the corresponding request parameters.</p>
+-- Required key: TrafficPolicyInstances
+-- Required key: IsTruncated
+-- Required key: MaxItems
+-- @return ListTrafficPolicyInstancesResponse structure as a key-value pair table
+function M.ListTrafficPolicyInstancesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesResponse")
 	local t = { 
-		["TrafficPolicyInstanceNameMarker"] = _TrafficPolicyInstanceNameMarker,
-		["HostedZoneIdMarker"] = _HostedZoneIdMarker,
-		["TrafficPolicyInstances"] = _TrafficPolicyInstances,
-		["MaxItems"] = _MaxItems,
-		["TrafficPolicyInstanceTypeMarker"] = _TrafficPolicyInstanceTypeMarker,
-		["IsTruncated"] = _IsTruncated,
+		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
+		["HostedZoneIdMarker"] = args["HostedZoneIdMarker"],
+		["TrafficPolicyInstances"] = args["TrafficPolicyInstances"],
+		["MaxItems"] = args["MaxItems"],
+		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListTrafficPolicyInstancesResponse(t)
 	return t
@@ -2787,12 +3069,15 @@ end
 
 --- Create a structure of type GetTrafficPolicyInstanceRequest
 -- <p>Gets information about a specified traffic policy instance.</p>
--- @param _Id [TrafficPolicyInstanceId] <p>The ID of the traffic policy instance that you want to get information about.</p>
--- Required parameter: Id
-function M.GetTrafficPolicyInstanceRequest(_Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTrafficPolicyInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [TrafficPolicyInstanceId] <p>The ID of the traffic policy instance that you want to get information about.</p>
+-- Required key: Id
+-- @return GetTrafficPolicyInstanceRequest structure as a key-value pair table
+function M.GetTrafficPolicyInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating GetTrafficPolicyInstanceRequest")
 	local t = { 
-		["Id"] = _Id,
+		["Id"] = args["Id"],
 	}
 	asserts.AssertGetTrafficPolicyInstanceRequest(t)
 	return t
@@ -2815,17 +3100,20 @@ end
 
 --- Create a structure of type CreateTrafficPolicyVersionRequest
 -- <p>A complex type that contains information about the traffic policy that you want to create a new version for.</p>
--- @param _Comment [TrafficPolicyComment] <p>The comment that you specified in the <code>CreateTrafficPolicyVersion</code> request, if any.</p>
--- @param _Document [TrafficPolicyDocument] <p>The definition of this version of the traffic policy, in JSON format. You specified the JSON in the <code>CreateTrafficPolicyVersion</code> request. For more information about the JSON format, see <a>CreateTrafficPolicy</a>.</p>
--- @param _Id [TrafficPolicyId] <p>The ID of the traffic policy for which you want to create a new version.</p>
--- Required parameter: Id
--- Required parameter: Document
-function M.CreateTrafficPolicyVersionRequest(_Comment, _Document, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrafficPolicyVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [TrafficPolicyComment] <p>The comment that you specified in the <code>CreateTrafficPolicyVersion</code> request, if any.</p>
+-- * Document [TrafficPolicyDocument] <p>The definition of this version of the traffic policy, in JSON format. You specified the JSON in the <code>CreateTrafficPolicyVersion</code> request. For more information about the JSON format, see <a>CreateTrafficPolicy</a>.</p>
+-- * Id [TrafficPolicyId] <p>The ID of the traffic policy for which you want to create a new version.</p>
+-- Required key: Id
+-- Required key: Document
+-- @return CreateTrafficPolicyVersionRequest structure as a key-value pair table
+function M.CreateTrafficPolicyVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyVersionRequest")
 	local t = { 
-		["Comment"] = _Comment,
-		["Document"] = _Document,
-		["Id"] = _Id,
+		["Comment"] = args["Comment"],
+		["Document"] = args["Document"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertCreateTrafficPolicyVersionRequest(t)
 	return t
@@ -2845,13 +3133,16 @@ end
 
 --- Create a structure of type HostedZoneConfig
 -- <p>A complex type that contains an optional comment about your hosted zone. If you don't want to specify a comment, omit both the <code>HostedZoneConfig</code> and <code>Comment</code> elements.</p>
--- @param _Comment [ResourceDescription] <p>Any comments that you want to include about the hosted zone.</p>
--- @param _PrivateZone [IsPrivateZone] <p>A value that indicates whether this is a private hosted zone.</p>
-function M.HostedZoneConfig(_Comment, _PrivateZone, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HostedZoneConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [ResourceDescription] <p>Any comments that you want to include about the hosted zone.</p>
+-- * PrivateZone [IsPrivateZone] <p>A value that indicates whether this is a private hosted zone.</p>
+-- @return HostedZoneConfig structure as a key-value pair table
+function M.HostedZoneConfig(args)
+	assert(args, "You must provdide an argument table when creating HostedZoneConfig")
 	local t = { 
-		["Comment"] = _Comment,
-		["PrivateZone"] = _PrivateZone,
+		["Comment"] = args["Comment"],
+		["PrivateZone"] = args["PrivateZone"],
 	}
 	asserts.AssertHostedZoneConfig(t)
 	return t
@@ -2869,8 +3160,11 @@ end
 
 --- Create a structure of type DeleteHealthCheckResponse
 -- <p>An empty element.</p>
-function M.DeleteHealthCheckResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteHealthCheckResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteHealthCheckResponse structure as a key-value pair table
+function M.DeleteHealthCheckResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteHealthCheckResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteHealthCheckResponse(t)
@@ -2894,17 +3188,20 @@ end
 
 --- Create a structure of type AssociateVPCWithHostedZoneRequest
 -- <p>A complex type that contains information about the request to associate a VPC with a private hosted zone.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the private hosted zone that you want to associate an Amazon VPC with.</p> <p>Note that you can't associate a VPC with a hosted zone that doesn't have an existing VPC association.</p>
--- @param _Comment [AssociateVPCComment] <p> <i>Optional:</i> A comment about the association request.</p>
--- @param _VPC [VPC] <p>A complex type that contains information about the VPC that you want to associate with a private hosted zone.</p>
--- Required parameter: HostedZoneId
--- Required parameter: VPC
-function M.AssociateVPCWithHostedZoneRequest(_HostedZoneId, _Comment, _VPC, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateVPCWithHostedZoneRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>The ID of the private hosted zone that you want to associate an Amazon VPC with.</p> <p>Note that you can't associate a VPC with a hosted zone that doesn't have an existing VPC association.</p>
+-- * Comment [AssociateVPCComment] <p> <i>Optional:</i> A comment about the association request.</p>
+-- * VPC [VPC] <p>A complex type that contains information about the VPC that you want to associate with a private hosted zone.</p>
+-- Required key: HostedZoneId
+-- Required key: VPC
+-- @return AssociateVPCWithHostedZoneRequest structure as a key-value pair table
+function M.AssociateVPCWithHostedZoneRequest(args)
+	assert(args, "You must provdide an argument table when creating AssociateVPCWithHostedZoneRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["Comment"] = _Comment,
-		["VPC"] = _VPC,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["Comment"] = args["Comment"],
+		["VPC"] = args["VPC"],
 	}
 	asserts.AssertAssociateVPCWithHostedZoneRequest(t)
 	return t
@@ -2922,8 +3219,11 @@ end
 
 --- Create a structure of type ChangeTagsForResourceResponse
 -- <p>Empty response for the request.</p>
-function M.ChangeTagsForResourceResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChangeTagsForResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ChangeTagsForResourceResponse structure as a key-value pair table
+function M.ChangeTagsForResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating ChangeTagsForResourceResponse")
 	local t = { 
 	}
 	asserts.AssertChangeTagsForResourceResponse(t)
@@ -2957,32 +3257,35 @@ end
 
 --- Create a structure of type CloudWatchAlarmConfiguration
 -- <p>A complex type that contains information about the CloudWatch alarm that Amazon Route 53 is monitoring for this health check.</p>
--- @param _EvaluationPeriods [EvaluationPeriods] <p>For the metric that the CloudWatch alarm is associated with, the number of periods that the metric is compared to the threshold.</p>
--- @param _Dimensions [DimensionList] <p>For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the dimensions for the metric. For information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.</p>
--- @param _Namespace [Namespace] <p>The namespace of the metric that the alarm is associated with. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.</p>
--- @param _Period [Period] <p>For the metric that the CloudWatch alarm is associated with, the duration of one evaluation period in seconds.</p>
--- @param _ComparisonOperator [ComparisonOperator] <p>For the metric that the CloudWatch alarm is associated with, the arithmetic operation that is used for the comparison.</p>
--- @param _Statistic [Statistic] <p>For the metric that the CloudWatch alarm is associated with, the statistic that is applied to the metric.</p>
--- @param _Threshold [Threshold] <p>For the metric that the CloudWatch alarm is associated with, the value the metric is compared with.</p>
--- @param _MetricName [MetricName] <p>The name of the CloudWatch metric that the alarm is associated with.</p>
--- Required parameter: EvaluationPeriods
--- Required parameter: Threshold
--- Required parameter: ComparisonOperator
--- Required parameter: Period
--- Required parameter: MetricName
--- Required parameter: Namespace
--- Required parameter: Statistic
-function M.CloudWatchAlarmConfiguration(_EvaluationPeriods, _Dimensions, _Namespace, _Period, _ComparisonOperator, _Statistic, _Threshold, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchAlarmConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EvaluationPeriods [EvaluationPeriods] <p>For the metric that the CloudWatch alarm is associated with, the number of periods that the metric is compared to the threshold.</p>
+-- * Dimensions [DimensionList] <p>For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the dimensions for the metric. For information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.</p>
+-- * Namespace [Namespace] <p>The namespace of the metric that the alarm is associated with. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html">Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference</a> in the <i>Amazon CloudWatch User Guide</i>.</p>
+-- * Period [Period] <p>For the metric that the CloudWatch alarm is associated with, the duration of one evaluation period in seconds.</p>
+-- * ComparisonOperator [ComparisonOperator] <p>For the metric that the CloudWatch alarm is associated with, the arithmetic operation that is used for the comparison.</p>
+-- * Statistic [Statistic] <p>For the metric that the CloudWatch alarm is associated with, the statistic that is applied to the metric.</p>
+-- * Threshold [Threshold] <p>For the metric that the CloudWatch alarm is associated with, the value the metric is compared with.</p>
+-- * MetricName [MetricName] <p>The name of the CloudWatch metric that the alarm is associated with.</p>
+-- Required key: EvaluationPeriods
+-- Required key: Threshold
+-- Required key: ComparisonOperator
+-- Required key: Period
+-- Required key: MetricName
+-- Required key: Namespace
+-- Required key: Statistic
+-- @return CloudWatchAlarmConfiguration structure as a key-value pair table
+function M.CloudWatchAlarmConfiguration(args)
+	assert(args, "You must provdide an argument table when creating CloudWatchAlarmConfiguration")
 	local t = { 
-		["EvaluationPeriods"] = _EvaluationPeriods,
-		["Dimensions"] = _Dimensions,
-		["Namespace"] = _Namespace,
-		["Period"] = _Period,
-		["ComparisonOperator"] = _ComparisonOperator,
-		["Statistic"] = _Statistic,
-		["Threshold"] = _Threshold,
-		["MetricName"] = _MetricName,
+		["EvaluationPeriods"] = args["EvaluationPeriods"],
+		["Dimensions"] = args["Dimensions"],
+		["Namespace"] = args["Namespace"],
+		["Period"] = args["Period"],
+		["ComparisonOperator"] = args["ComparisonOperator"],
+		["Statistic"] = args["Statistic"],
+		["Threshold"] = args["Threshold"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertCloudWatchAlarmConfiguration(t)
 	return t
@@ -3008,21 +3311,24 @@ end
 
 --- Create a structure of type ListTrafficPolicyVersionsResponse
 -- <p>A complex type that contains the response information for the request.</p>
--- @param _MaxItems [PageMaxItems] <p>The value that you specified for the <code>maxitems</code> parameter in the <code>ListTrafficPolicyVersions</code> request that produced the current response.</p>
--- @param _IsTruncated [PageTruncated] <p>A flag that indicates whether there are more traffic policies to be listed. If the response was truncated, you can get the next group of traffic policies by submitting another <code>ListTrafficPolicyVersions</code> request and specifying the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
--- @param _TrafficPolicies [TrafficPolicies] <p>A list that contains one <code>TrafficPolicy</code> element for each traffic policy version that is associated with the specified traffic policy.</p>
--- @param _TrafficPolicyVersionMarker [TrafficPolicyVersionMarker] <p>If <code>IsTruncated</code> is <code>true</code>, the value of <code>TrafficPolicyVersionMarker</code> identifies the first traffic policy that Amazon Route 53 will return if you submit another request. Call <code>ListTrafficPolicyVersions</code> again and specify the value of <code>TrafficPolicyVersionMarker</code> in the <code>TrafficPolicyVersionMarker</code> request parameter.</p> <p>This element is present only if <code>IsTruncated</code> is <code>true</code>.</p>
--- Required parameter: TrafficPolicies
--- Required parameter: IsTruncated
--- Required parameter: TrafficPolicyVersionMarker
--- Required parameter: MaxItems
-function M.ListTrafficPolicyVersionsResponse(_MaxItems, _IsTruncated, _TrafficPolicies, _TrafficPolicyVersionMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTrafficPolicyVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MaxItems [PageMaxItems] <p>The value that you specified for the <code>maxitems</code> parameter in the <code>ListTrafficPolicyVersions</code> request that produced the current response.</p>
+-- * IsTruncated [PageTruncated] <p>A flag that indicates whether there are more traffic policies to be listed. If the response was truncated, you can get the next group of traffic policies by submitting another <code>ListTrafficPolicyVersions</code> request and specifying the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
+-- * TrafficPolicies [TrafficPolicies] <p>A list that contains one <code>TrafficPolicy</code> element for each traffic policy version that is associated with the specified traffic policy.</p>
+-- * TrafficPolicyVersionMarker [TrafficPolicyVersionMarker] <p>If <code>IsTruncated</code> is <code>true</code>, the value of <code>TrafficPolicyVersionMarker</code> identifies the first traffic policy that Amazon Route 53 will return if you submit another request. Call <code>ListTrafficPolicyVersions</code> again and specify the value of <code>TrafficPolicyVersionMarker</code> in the <code>TrafficPolicyVersionMarker</code> request parameter.</p> <p>This element is present only if <code>IsTruncated</code> is <code>true</code>.</p>
+-- Required key: TrafficPolicies
+-- Required key: IsTruncated
+-- Required key: TrafficPolicyVersionMarker
+-- Required key: MaxItems
+-- @return ListTrafficPolicyVersionsResponse structure as a key-value pair table
+function M.ListTrafficPolicyVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTrafficPolicyVersionsResponse")
 	local t = { 
-		["MaxItems"] = _MaxItems,
-		["IsTruncated"] = _IsTruncated,
-		["TrafficPolicies"] = _TrafficPolicies,
-		["TrafficPolicyVersionMarker"] = _TrafficPolicyVersionMarker,
+		["MaxItems"] = args["MaxItems"],
+		["IsTruncated"] = args["IsTruncated"],
+		["TrafficPolicies"] = args["TrafficPolicies"],
+		["TrafficPolicyVersionMarker"] = args["TrafficPolicyVersionMarker"],
 	}
 	asserts.AssertListTrafficPolicyVersionsResponse(t)
 	return t
@@ -3041,11 +3347,14 @@ end
 
 --- Create a structure of type ConflictingDomainExists
 -- <p>The cause of this error depends on whether you're trying to create a public or a private hosted zone:</p> <ul> <li> <p> <b>Public hosted zone:</b> Two hosted zones that have the same name or that have a parent/child relationship (example.com and test.example.com) can't have any common name servers. You tried to create a hosted zone that has the same name as an existing hosted zone or that's the parent or child of an existing hosted zone, and you specified a delegation set that shares one or more name servers with the existing hosted zone. </p> </li> <li> <p> <b>Private hosted zone:</b> You specified an Amazon VPC that you're already using for another hosted zone, and the domain that you specified for one of the hosted zones is a subdomain of the domain that you specified for the other hosted zone. For example, you can't use the same Amazon VPC for the hosted zones for example.com and test.example.com.</p> </li> </ul>
--- @param _message [ErrorMessage] 
-function M.ConflictingDomainExists(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConflictingDomainExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ConflictingDomainExists structure as a key-value pair table
+function M.ConflictingDomainExists(args)
+	assert(args, "You must provdide an argument table when creating ConflictingDomainExists")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertConflictingDomainExists(t)
 	return t
@@ -3066,15 +3375,18 @@ end
 
 --- Create a structure of type ListHostedZonesByNameRequest
 -- <p>Retrieves a list of the public and private hosted zones that are associated with the current AWS account in ASCII order by domain name. </p>
--- @param _HostedZoneId [ResourceId] <p>(Optional) For your first request to <code>ListHostedZonesByName</code>, do not include the <code>hostedzoneid</code> parameter.</p> <p>If you have more hosted zones than the value of <code>maxitems</code>, <code>ListHostedZonesByName</code> returns only the first <code>maxitems</code> hosted zones. To get the next group of <code>maxitems</code> hosted zones, submit another request to <code>ListHostedZonesByName</code> and include both <code>dnsname</code> and <code>hostedzoneid</code> parameters. For the value of <code>hostedzoneid</code>, specify the value of the <code>NextHostedZoneId</code> element from the previous response.</p>
--- @param _DNSName [DNSName] <p>(Optional) For your first request to <code>ListHostedZonesByName</code>, include the <code>dnsname</code> parameter only if you want to specify the name of the first hosted zone in the response. If you don't include the <code>dnsname</code> parameter, Amazon Route 53 returns all of the hosted zones that were created by the current AWS account, in ASCII order. For subsequent requests, include both <code>dnsname</code> and <code>hostedzoneid</code> parameters. For <code>dnsname</code>, specify the value of <code>NextDNSName</code> from the previous response.</p>
--- @param _MaxItems [PageMaxItems] <p>The maximum number of hosted zones to be included in the response body for this request. If you have more than <code>maxitems</code> hosted zones, then the value of the <code>IsTruncated</code> element in the response is true, and the values of <code>NextDNSName</code> and <code>NextHostedZoneId</code> specify the first hosted zone in the next group of <code>maxitems</code> hosted zones. </p>
-function M.ListHostedZonesByNameRequest(_HostedZoneId, _DNSName, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListHostedZonesByNameRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>(Optional) For your first request to <code>ListHostedZonesByName</code>, do not include the <code>hostedzoneid</code> parameter.</p> <p>If you have more hosted zones than the value of <code>maxitems</code>, <code>ListHostedZonesByName</code> returns only the first <code>maxitems</code> hosted zones. To get the next group of <code>maxitems</code> hosted zones, submit another request to <code>ListHostedZonesByName</code> and include both <code>dnsname</code> and <code>hostedzoneid</code> parameters. For the value of <code>hostedzoneid</code>, specify the value of the <code>NextHostedZoneId</code> element from the previous response.</p>
+-- * DNSName [DNSName] <p>(Optional) For your first request to <code>ListHostedZonesByName</code>, include the <code>dnsname</code> parameter only if you want to specify the name of the first hosted zone in the response. If you don't include the <code>dnsname</code> parameter, Amazon Route 53 returns all of the hosted zones that were created by the current AWS account, in ASCII order. For subsequent requests, include both <code>dnsname</code> and <code>hostedzoneid</code> parameters. For <code>dnsname</code>, specify the value of <code>NextDNSName</code> from the previous response.</p>
+-- * MaxItems [PageMaxItems] <p>The maximum number of hosted zones to be included in the response body for this request. If you have more than <code>maxitems</code> hosted zones, then the value of the <code>IsTruncated</code> element in the response is true, and the values of <code>NextDNSName</code> and <code>NextHostedZoneId</code> specify the first hosted zone in the next group of <code>maxitems</code> hosted zones. </p>
+-- @return ListHostedZonesByNameRequest structure as a key-value pair table
+function M.ListHostedZonesByNameRequest(args)
+	assert(args, "You must provdide an argument table when creating ListHostedZonesByNameRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["DNSName"] = _DNSName,
-		["MaxItems"] = _MaxItems,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["DNSName"] = args["DNSName"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListHostedZonesByNameRequest(t)
 	return t
@@ -3098,18 +3410,21 @@ end
 
 --- Create a structure of type UpdateTrafficPolicyCommentRequest
 -- <p>A complex type that contains information about the traffic policy that you want to update the comment for.</p>
--- @param _Comment [TrafficPolicyComment] <p>The new comment for the specified traffic policy and version.</p>
--- @param _Version [TrafficPolicyVersion] <p>The value of <code>Version</code> for the traffic policy that you want to update the comment for.</p>
--- @param _Id [TrafficPolicyId] <p>The value of <code>Id</code> for the traffic policy that you want to update the comment for.</p>
--- Required parameter: Id
--- Required parameter: Version
--- Required parameter: Comment
-function M.UpdateTrafficPolicyCommentRequest(_Comment, _Version, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTrafficPolicyCommentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Comment [TrafficPolicyComment] <p>The new comment for the specified traffic policy and version.</p>
+-- * Version [TrafficPolicyVersion] <p>The value of <code>Version</code> for the traffic policy that you want to update the comment for.</p>
+-- * Id [TrafficPolicyId] <p>The value of <code>Id</code> for the traffic policy that you want to update the comment for.</p>
+-- Required key: Id
+-- Required key: Version
+-- Required key: Comment
+-- @return UpdateTrafficPolicyCommentRequest structure as a key-value pair table
+function M.UpdateTrafficPolicyCommentRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateTrafficPolicyCommentRequest")
 	local t = { 
-		["Comment"] = _Comment,
-		["Version"] = _Version,
-		["Id"] = _Id,
+		["Comment"] = args["Comment"],
+		["Version"] = args["Version"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertUpdateTrafficPolicyCommentRequest(t)
 	return t
@@ -3127,8 +3442,11 @@ end
 
 --- Create a structure of type DeleteReusableDelegationSetResponse
 -- <p>An empty element.</p>
-function M.DeleteReusableDelegationSetResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteReusableDelegationSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteReusableDelegationSetResponse structure as a key-value pair table
+function M.DeleteReusableDelegationSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteReusableDelegationSetResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteReusableDelegationSetResponse(t)
@@ -3150,15 +3468,18 @@ end
 
 --- Create a structure of type ResourceTagSet
 -- <p>A complex type containing a resource and its associated tags.</p>
--- @param _ResourceType [TagResourceType] <p>The type of the resource.</p> <ul> <li> <p>The resource type for health checks is <code>healthcheck</code>.</p> </li> <li> <p>The resource type for hosted zones is <code>hostedzone</code>.</p> </li> </ul>
--- @param _ResourceId [TagResourceId] <p>The ID for the specified resource.</p>
--- @param _Tags [TagList] <p>The tags associated with the specified resource.</p>
-function M.ResourceTagSet(_ResourceType, _ResourceId, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceTagSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [TagResourceType] <p>The type of the resource.</p> <ul> <li> <p>The resource type for health checks is <code>healthcheck</code>.</p> </li> <li> <p>The resource type for hosted zones is <code>hostedzone</code>.</p> </li> </ul>
+-- * ResourceId [TagResourceId] <p>The ID for the specified resource.</p>
+-- * Tags [TagList] <p>The tags associated with the specified resource.</p>
+-- @return ResourceTagSet structure as a key-value pair table
+function M.ResourceTagSet(args)
+	assert(args, "You must provdide an argument table when creating ResourceTagSet")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["ResourceId"] = _ResourceId,
-		["Tags"] = _Tags,
+		["ResourceType"] = args["ResourceType"],
+		["ResourceId"] = args["ResourceId"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertResourceTagSet(t)
 	return t
@@ -3177,11 +3498,14 @@ end
 
 --- Create a structure of type HostedZoneAlreadyExists
 -- <p>The hosted zone you're trying to create already exists. Amazon Route 53 returns this error when a hosted zone has already been created with the specified <code>CallerReference</code>.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.HostedZoneAlreadyExists(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HostedZoneAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return HostedZoneAlreadyExists structure as a key-value pair table
+function M.HostedZoneAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating HostedZoneAlreadyExists")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertHostedZoneAlreadyExists(t)
 	return t
@@ -3203,16 +3527,19 @@ end
 
 --- Create a structure of type DelegationSet
 -- <p>A complex type that lists the name servers in a delegation set, as well as the <code>CallerReference</code> and the <code>ID</code> for the delegation set.</p>
--- @param _NameServers [DelegationSetNameServers] <p>A complex type that contains a list of the authoritative name servers for a hosted zone or for a reusable delegation set.</p>
--- @param _CallerReference [Nonce] <p>The value that you specified for <code>CallerReference</code> when you created the reusable delegation set.</p>
--- @param _Id [ResourceId] <p>The ID that Amazon Route 53 assigns to a reusable delegation set.</p>
--- Required parameter: NameServers
-function M.DelegationSet(_NameServers, _CallerReference, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DelegationSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NameServers [DelegationSetNameServers] <p>A complex type that contains a list of the authoritative name servers for a hosted zone or for a reusable delegation set.</p>
+-- * CallerReference [Nonce] <p>The value that you specified for <code>CallerReference</code> when you created the reusable delegation set.</p>
+-- * Id [ResourceId] <p>The ID that Amazon Route 53 assigns to a reusable delegation set.</p>
+-- Required key: NameServers
+-- @return DelegationSet structure as a key-value pair table
+function M.DelegationSet(args)
+	assert(args, "You must provdide an argument table when creating DelegationSet")
 	local t = { 
-		["NameServers"] = _NameServers,
-		["CallerReference"] = _CallerReference,
-		["Id"] = _Id,
+		["NameServers"] = args["NameServers"],
+		["CallerReference"] = args["CallerReference"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDelegationSet(t)
 	return t
@@ -3231,11 +3558,14 @@ end
 
 --- Create a structure of type NoSuchTrafficPolicyInstance
 -- <p>No traffic policy instance exists with the specified ID.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.NoSuchTrafficPolicyInstance(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchTrafficPolicyInstance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return NoSuchTrafficPolicyInstance structure as a key-value pair table
+function M.NoSuchTrafficPolicyInstance(args)
+	assert(args, "You must provdide an argument table when creating NoSuchTrafficPolicyInstance")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNoSuchTrafficPolicyInstance(t)
 	return t
@@ -3256,15 +3586,18 @@ end
 
 --- Create a structure of type HealthCheckObservation
 -- <p>A complex type that contains the last failure reason as reported by one Amazon Route 53 health checker.</p>
--- @param _StatusReport [StatusReport] <p>A complex type that contains the last failure reason as reported by one Amazon Route 53 health checker and the time of the failed health check.</p>
--- @param _Region [HealthCheckRegion] <p>The region of the Amazon Route 53 health checker that provided the status in <code>StatusReport</code>.</p>
--- @param _IPAddress [IPAddress] <p>The IP address of the Amazon Route 53 health checker that provided the failure reason in <code>StatusReport</code>.</p>
-function M.HealthCheckObservation(_StatusReport, _Region, _IPAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HealthCheckObservation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StatusReport [StatusReport] <p>A complex type that contains the last failure reason as reported by one Amazon Route 53 health checker and the time of the failed health check.</p>
+-- * Region [HealthCheckRegion] <p>The region of the Amazon Route 53 health checker that provided the status in <code>StatusReport</code>.</p>
+-- * IPAddress [IPAddress] <p>The IP address of the Amazon Route 53 health checker that provided the failure reason in <code>StatusReport</code>.</p>
+-- @return HealthCheckObservation structure as a key-value pair table
+function M.HealthCheckObservation(args)
+	assert(args, "You must provdide an argument table when creating HealthCheckObservation")
 	local t = { 
-		["StatusReport"] = _StatusReport,
-		["Region"] = _Region,
-		["IPAddress"] = _IPAddress,
+		["StatusReport"] = args["StatusReport"],
+		["Region"] = args["Region"],
+		["IPAddress"] = args["IPAddress"],
 	}
 	asserts.AssertHealthCheckObservation(t)
 	return t
@@ -3286,15 +3619,18 @@ end
 
 --- Create a structure of type GetTrafficPolicyRequest
 -- <p>Gets information about a specific traffic policy version.</p>
--- @param _Version [TrafficPolicyVersion] <p>The version number of the traffic policy that you want to get information about.</p>
--- @param _Id [TrafficPolicyId] <p>The ID of the traffic policy that you want to get information about.</p>
--- Required parameter: Id
--- Required parameter: Version
-function M.GetTrafficPolicyRequest(_Version, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTrafficPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [TrafficPolicyVersion] <p>The version number of the traffic policy that you want to get information about.</p>
+-- * Id [TrafficPolicyId] <p>The ID of the traffic policy that you want to get information about.</p>
+-- Required key: Id
+-- Required key: Version
+-- @return GetTrafficPolicyRequest structure as a key-value pair table
+function M.GetTrafficPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetTrafficPolicyRequest")
 	local t = { 
-		["Version"] = _Version,
-		["Id"] = _Id,
+		["Version"] = args["Version"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertGetTrafficPolicyRequest(t)
 	return t
@@ -3313,11 +3649,14 @@ end
 
 --- Create a structure of type TrafficPolicyAlreadyExists
 -- <p>A traffic policy that has the same value for <code>Name</code> already exists.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.TrafficPolicyAlreadyExists(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrafficPolicyAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return TrafficPolicyAlreadyExists structure as a key-value pair table
+function M.TrafficPolicyAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating TrafficPolicyAlreadyExists")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTrafficPolicyAlreadyExists(t)
 	return t
@@ -3335,8 +3674,11 @@ end
 
 --- Create a structure of type DeleteTrafficPolicyInstanceResponse
 -- <p>An empty element.</p>
-function M.DeleteTrafficPolicyInstanceResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTrafficPolicyInstanceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteTrafficPolicyInstanceResponse structure as a key-value pair table
+function M.DeleteTrafficPolicyInstanceResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteTrafficPolicyInstanceResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteTrafficPolicyInstanceResponse(t)
@@ -3359,17 +3701,20 @@ end
 
 --- Create a structure of type ListTrafficPolicyInstancesRequest
 -- <p>A request to get information about the traffic policy instances that you created by using the current AWS account.</p>
--- @param _HostedZoneIdMarker [ResourceId] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>HostedZoneId</code>, specify the value of <code>HostedZoneIdMarker</code> from the previous response, which is the hosted zone ID of the first traffic policy instance in the next group of traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
--- @param _TrafficPolicyInstanceTypeMarker [RRType] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>trafficpolicyinstancetype</code>, specify the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous response, which is the type of the first traffic policy instance in the next group of traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
--- @param _TrafficPolicyInstanceNameMarker [DNSName] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>trafficpolicyinstancename</code>, specify the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous response, which is the name of the first traffic policy instance in the next group of traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
--- @param _MaxItems [PageMaxItems] <p>The maximum number of traffic policy instances that you want Amazon Route 53 to return in response to a <code>ListTrafficPolicyInstances</code> request. If you have more than <code>MaxItems</code> traffic policy instances, the value of the <code>IsTruncated</code> element in the response is <code>true</code>, and the values of <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic policy instance in the next group of <code>MaxItems</code> traffic policy instances.</p>
-function M.ListTrafficPolicyInstancesRequest(_HostedZoneIdMarker, _TrafficPolicyInstanceTypeMarker, _TrafficPolicyInstanceNameMarker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTrafficPolicyInstancesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneIdMarker [ResourceId] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>HostedZoneId</code>, specify the value of <code>HostedZoneIdMarker</code> from the previous response, which is the hosted zone ID of the first traffic policy instance in the next group of traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
+-- * TrafficPolicyInstanceTypeMarker [RRType] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>trafficpolicyinstancetype</code>, specify the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous response, which is the type of the first traffic policy instance in the next group of traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
+-- * TrafficPolicyInstanceNameMarker [DNSName] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>trafficpolicyinstancename</code>, specify the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous response, which is the name of the first traffic policy instance in the next group of traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
+-- * MaxItems [PageMaxItems] <p>The maximum number of traffic policy instances that you want Amazon Route 53 to return in response to a <code>ListTrafficPolicyInstances</code> request. If you have more than <code>MaxItems</code> traffic policy instances, the value of the <code>IsTruncated</code> element in the response is <code>true</code>, and the values of <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic policy instance in the next group of <code>MaxItems</code> traffic policy instances.</p>
+-- @return ListTrafficPolicyInstancesRequest structure as a key-value pair table
+function M.ListTrafficPolicyInstancesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesRequest")
 	local t = { 
-		["HostedZoneIdMarker"] = _HostedZoneIdMarker,
-		["TrafficPolicyInstanceTypeMarker"] = _TrafficPolicyInstanceTypeMarker,
-		["TrafficPolicyInstanceNameMarker"] = _TrafficPolicyInstanceNameMarker,
-		["MaxItems"] = _MaxItems,
+		["HostedZoneIdMarker"] = args["HostedZoneIdMarker"],
+		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
+		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListTrafficPolicyInstancesRequest(t)
 	return t
@@ -3404,42 +3749,45 @@ end
 
 --- Create a structure of type HealthCheckConfig
 -- <p>A complex type that contains information about the health check.</p>
--- @param _FailureThreshold [FailureThreshold] <p>The number of consecutive health checks that an endpoint must pass or fail for Amazon Route 53 to change the current status of the endpoint from unhealthy to healthy or vice versa. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.</p>
--- @param _SearchString [SearchString] <p>If the value of Type is <code>HTTP_STR_MATCH</code> or <code>HTTP_STR_MATCH</code>, the string that you want Amazon Route 53 to search for in the response body from the specified resource. If the string appears in the response body, Amazon Route 53 considers the resource healthy.</p> <p>Amazon Route 53 considers case when searching for <code>SearchString</code> in the response body. </p>
--- @param _AlarmIdentifier [AlarmIdentifier] <p>A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy.</p>
--- @param _IPAddress [IPAddress] <p>The IPv4 or IPv6 IP address of the endpoint that you want Amazon Route 53 to perform health checks on. If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name that you specify in <code>FullyQualifiedDomainName</code> at the interval that you specify in <code>RequestInterval</code>. Using an IP address returned by DNS, Amazon Route 53 then checks the health of the endpoint.</p> <p>Use one of the following formats for the value of <code>IPAddress</code>: </p> <ul> <li> <p> <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example, <code>192.0.2.44</code>.</p> </li> <li> <p> <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example, <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in RFC 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.</p> </li> </ul> <p>If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP address of your instance will never change.</p> <p>For more information, see <a>HealthCheckConfig$FullyQualifiedDomainName</a>.</p> <p>Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private, non-routable, or multicast ranges. For more information about IP addresses for which you can't create health checks, see the following documents:</p> <ul> <li> <p> <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a> </p> </li> <li> <p> <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space</a> </p> </li> <li> <p> <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a> </p> </li> </ul> <p>When the value of <code>Type</code> is <code>CALCULATED</code> or <code>CLOUDWATCH_METRIC</code>, omit <code>IPAddress</code>.</p>
--- @param _ResourcePath [ResourcePath] <p>The path, if any, that you want Amazon Route 53 to request when performing health checks. The path can be any value for which your endpoint will return an HTTP status code of 2xx or 3xx when the endpoint is healthy, for example, the file /docs/route53-health-check.html. </p>
--- @param _ChildHealthChecks [ChildHealthCheckList] <p>(CALCULATED Health Checks Only) A complex type that contains one <code>ChildHealthCheck</code> element for each health check that you want to associate with a <code>CALCULATED</code> health check.</p>
--- @param _Inverted [Inverted] <p>Specify whether you want Amazon Route 53 to invert the status of a health check, for example, to consider a health check unhealthy when it otherwise would be considered healthy.</p>
--- @param _Regions [HealthCheckRegionList] <p>A complex type that contains one <code>Region</code> element for each region from which you want Amazon Route 53 health checkers to check the specified endpoint.</p> <p>If you don't specify any regions, Amazon Route 53 health checkers automatically performs checks from all of the regions that are listed under <b>Valid Values</b>.</p> <p>If you update a health check to remove a region that has been performing health checks, Amazon Route 53 will briefly continue to perform checks from that region to ensure that some health checkers are always checking the endpoint (for example, if you replace three regions with four different regions). </p>
--- @param _InsufficientDataHealthStatus [InsufficientDataHealthStatus] <p>When CloudWatch has insufficient data about the metric to determine the alarm state, the status that you want Amazon Route 53 to assign to the health check:</p> <ul> <li> <p> <code>Healthy</code>: Amazon Route 53 considers the health check to be healthy.</p> </li> <li> <p> <code>Unhealthy</code>: Amazon Route 53 considers the health check to be unhealthy.</p> </li> <li> <p> <code>LastKnownStatus</code>: Amazon Route 53 uses the status of the health check from the last time that CloudWatch had sufficient data to determine the alarm state. For new health checks that have no last known status, the default status for the health check is healthy.</p> </li> </ul>
--- @param _HealthThreshold [HealthThreshold] <p>The number of child health checks that are associated with a <code>CALCULATED</code> health that Amazon Route 53 must consider healthy for the <code>CALCULATED</code> health check to be considered healthy. To specify the child health checks that you want to associate with a <code>CALCULATED</code> health check, use the <a>HealthCheckConfig$ChildHealthChecks</a> and <a>HealthCheckConfig$ChildHealthChecks</a> elements.</p> <p>Note the following:</p> <ul> <li> <p>If you specify a number greater than the number of child health checks, Amazon Route 53 always considers this health check to be unhealthy.</p> </li> <li> <p>If you specify <code>0</code>, Amazon Route 53 always considers this health check to be healthy.</p> </li> </ul>
--- @param _EnableSNI [EnableSNI] <p>Specify whether you want Amazon Route 53 to send the value of <code>FullyQualifiedDomainName</code> to the endpoint in the <code>client_hello</code> message during TLS negotiation. This allows the endpoint to respond to <code>HTTPS</code> health check requests with the applicable SSL/TLS certificate.</p> <p>Some endpoints require that <code>HTTPS</code> requests include the host name in the <code>client_hello</code> message. If you don't enable SNI, the status of the health check will be <code>SSL alert handshake_failure</code>. A health check can also have that status for other reasons. If SNI is enabled and you're still getting the error, check the SSL/TLS configuration on your endpoint and confirm that your certificate is valid.</p> <p>The SSL/TLS certificate on your endpoint includes a domain name in the <code>Common Name</code> field and possibly several more in the <code>Subject Alternative Names</code> field. One of the domain names in the certificate should match the value that you specify for <code>FullyQualifiedDomainName</code>. If the endpoint responds to the <code>client_hello</code> message with a certificate that does not include the domain name that you specified in <code>FullyQualifiedDomainName</code>, a health checker will retry the handshake. In the second attempt, the health checker will omit <code>FullyQualifiedDomainName</code> from the <code>client_hello</code> message.</p>
--- @param _MeasureLatency [MeasureLatency] <p>Specify whether you want Amazon Route 53 to measure the latency between health checkers in multiple AWS regions and your endpoint, and to display CloudWatch latency graphs on the <b>Health Checks</b> page in the Amazon Route 53 console.</p> <important> <p>You can't change the value of <code>MeasureLatency</code> after you create a health check.</p> </important>
--- @param _RequestInterval [RequestInterval] <p>The number of seconds between the time that Amazon Route 53 gets a response from your endpoint and the time that it sends the next health check request. Each Amazon Route 53 health checker makes requests at this interval.</p> <important> <p>You can't change the value of <code>RequestInterval</code> after you create a health check.</p> </important> <p>If you don't specify a value for <code>RequestInterval</code>, the default value is <code>30</code> seconds.</p>
--- @param _Type [HealthCheckType] <p>The type of health check that you want to create, which indicates how Amazon Route 53 determines whether an endpoint is healthy.</p> <important> <p>You can't change the value of <code>Type</code> after you create a health check.</p> </important> <p>You can create the following types of health checks:</p> <ul> <li> <p> <b>HTTP</b>: Amazon Route 53 tries to establish a TCP connection. If successful, Amazon Route 53 submits an HTTP request and waits for an HTTP status code of 200 or greater and less than 400.</p> </li> <li> <p> <b>HTTPS</b>: Amazon Route 53 tries to establish a TCP connection. If successful, Amazon Route 53 submits an HTTPS request and waits for an HTTP status code of 200 or greater and less than 400.</p> <important> <p>If you specify <code>HTTPS</code> for the value of <code>Type</code>, the endpoint must support TLS v1.0 or later.</p> </important> </li> <li> <p> <b>HTTP_STR_MATCH</b>: Amazon Route 53 tries to establish a TCP connection. If successful, Amazon Route 53 submits an HTTP request and searches the first 5,120 bytes of the response body for the string that you specify in <code>SearchString</code>.</p> </li> <li> <p> <b>HTTPS_STR_MATCH</b>: Amazon Route 53 tries to establish a TCP connection. If successful, Amazon Route 53 submits an <code>HTTPS</code> request and searches the first 5,120 bytes of the response body for the string that you specify in <code>SearchString</code>.</p> </li> <li> <p> <b>TCP</b>: Amazon Route 53 tries to establish a TCP connection.</p> </li> <li> <p> <b>CLOUDWATCH_METRIC</b>: The health check is associated with a CloudWatch alarm. If the state of the alarm is <code>OK</code>, the health check is considered healthy. If the state is <code>ALARM</code>, the health check is considered unhealthy. If CloudWatch doesn't have sufficient data to determine whether the state is <code>OK</code> or <code>ALARM</code>, the health check status depends on the setting for <code>InsufficientDataHealthStatus</code>: <code>Healthy</code>, <code>Unhealthy</code>, or <code>LastKnownStatus</code>. </p> </li> <li> <p> <b>CALCULATED</b>: For health checks that monitor the status of other health checks, Amazon Route 53 adds up the number of health checks that Amazon Route 53 health checkers consider to be healthy and compares that number with the value of <code>HealthThreshold</code>. </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer Guide</i>.</p>
--- @param _Port [Port] <p>The port on the endpoint on which you want Amazon Route 53 to perform health checks. Specify a value for <code>Port</code> only when you specify a value for <code>IPAddress</code>.</p>
--- @param _FullyQualifiedDomainName [FullyQualifiedDomainName] <p>Amazon Route 53 behavior depends on whether you specify a value for <code>IPAddress</code>.</p> <p> <b>If you specify a value for</b> <code>IPAddress</code>:</p> <p>Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53 to perform health checks.</p> <p>When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code> header:</p> <ul> <li> <p>If you specify a value of <code>80</code> for <code>Port</code> and <code>HTTP</code> or <code>HTTP_STR_MATCH</code> for <code>Type</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> to the endpoint in the Host header. </p> </li> <li> <p>If you specify a value of <code>443</code> for <code>Port</code> and <code>HTTPS</code> or <code>HTTPS_STR_MATCH</code> for <code>Type</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> to the endpoint in the <code>Host</code> header.</p> </li> <li> <p>If you specify another value for <code>Port</code> and any value except <code>TCP</code> for <code>Type</code>, Amazon Route 53 passes <code>FullyQualifiedDomainName:Port</code> to the endpoint in the <code>Host</code> header.</p> </li> </ul> <p>If you don't specify a value for <code>FullyQualifiedDomainName</code>, Amazon Route 53 substitutes the value of <code>IPAddress</code> in the <code>Host</code> header in each of the preceding cases.</p> <p> <b>If you don't specify a value for <code>IPAddress</code> </b>:</p> <p>Amazon Route 53 sends a DNS request to the domain that you specify for <code>FullyQualifiedDomainName</code> at the interval that you specify for <code>RequestInterval</code>. Using an IPv4 address that DNS returns, Amazon Route 53 then checks the health of the endpoint.</p> <note> <p>If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health checks to the endpoint. If there's no resource record set with a type of A for the name that you specify for <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.</p> </note> <p>If you want to check the health of weighted, latency, or failover resource record sets and you choose to specify the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a separate health check for each endpoint. For example, create a health check for each HTTP server that is serving content for www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server (such as us-east-2-www.example.com), not the name of the resource record sets (www.example.com).</p> <important> <p>In this configuration, if you create a health check for which the value of <code>FullyQualifiedDomainName</code> matches the name of the resource record sets and you then associate the health check with those resource record sets, health check results will be unpredictable.</p> </important> <p>In addition, if the value that you specify for <code>Type</code> is <code>HTTP</code>, <code>HTTPS</code>, <code>HTTP_STR_MATCH</code>, or <code>HTTPS_STR_MATCH</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> in the <code>Host</code> header, as it does when you specify a value for <code>IPAddress</code>. If the value of <code>Type</code> is <code>TCP</code>, Amazon Route 53 doesn't pass a <code>Host</code> header.</p>
--- Required parameter: Type
-function M.HealthCheckConfig(_FailureThreshold, _SearchString, _AlarmIdentifier, _IPAddress, _ResourcePath, _ChildHealthChecks, _Inverted, _Regions, _InsufficientDataHealthStatus, _HealthThreshold, _EnableSNI, _MeasureLatency, _RequestInterval, _Type, _Port, _FullyQualifiedDomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HealthCheckConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FailureThreshold [FailureThreshold] <p>The number of consecutive health checks that an endpoint must pass or fail for Amazon Route 53 to change the current status of the endpoint from unhealthy to healthy or vice versa. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>If you don't specify a value for <code>FailureThreshold</code>, the default value is three health checks.</p>
+-- * SearchString [SearchString] <p>If the value of Type is <code>HTTP_STR_MATCH</code> or <code>HTTP_STR_MATCH</code>, the string that you want Amazon Route 53 to search for in the response body from the specified resource. If the string appears in the response body, Amazon Route 53 considers the resource healthy.</p> <p>Amazon Route 53 considers case when searching for <code>SearchString</code> in the response body. </p>
+-- * AlarmIdentifier [AlarmIdentifier] <p>A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy.</p>
+-- * IPAddress [IPAddress] <p>The IPv4 or IPv6 IP address of the endpoint that you want Amazon Route 53 to perform health checks on. If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 sends a DNS request to resolve the domain name that you specify in <code>FullyQualifiedDomainName</code> at the interval that you specify in <code>RequestInterval</code>. Using an IP address returned by DNS, Amazon Route 53 then checks the health of the endpoint.</p> <p>Use one of the following formats for the value of <code>IPAddress</code>: </p> <ul> <li> <p> <b>IPv4 address</b>: four values between 0 and 255, separated by periods (.), for example, <code>192.0.2.44</code>.</p> </li> <li> <p> <b>IPv6 address</b>: eight groups of four hexadecimal values, separated by colons (:), for example, <code>2001:0db8:85a3:0000:0000:abcd:0001:2345</code>. You can also shorten IPv6 addresses as described in RFC 5952, for example, <code>2001:db8:85a3::abcd:1:2345</code>.</p> </li> </ul> <p>If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your EC2 instance, and specify the Elastic IP address for <code>IPAddress</code>. This ensures that the IP address of your instance will never change.</p> <p>For more information, see <a>HealthCheckConfig$FullyQualifiedDomainName</a>.</p> <p>Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private, non-routable, or multicast ranges. For more information about IP addresses for which you can't create health checks, see the following documents:</p> <ul> <li> <p> <a href="https://tools.ietf.org/html/rfc5735">RFC 5735, Special Use IPv4 Addresses</a> </p> </li> <li> <p> <a href="https://tools.ietf.org/html/rfc6598">RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space</a> </p> </li> <li> <p> <a href="https://tools.ietf.org/html/rfc5156">RFC 5156, Special-Use IPv6 Addresses</a> </p> </li> </ul> <p>When the value of <code>Type</code> is <code>CALCULATED</code> or <code>CLOUDWATCH_METRIC</code>, omit <code>IPAddress</code>.</p>
+-- * ResourcePath [ResourcePath] <p>The path, if any, that you want Amazon Route 53 to request when performing health checks. The path can be any value for which your endpoint will return an HTTP status code of 2xx or 3xx when the endpoint is healthy, for example, the file /docs/route53-health-check.html. </p>
+-- * ChildHealthChecks [ChildHealthCheckList] <p>(CALCULATED Health Checks Only) A complex type that contains one <code>ChildHealthCheck</code> element for each health check that you want to associate with a <code>CALCULATED</code> health check.</p>
+-- * Inverted [Inverted] <p>Specify whether you want Amazon Route 53 to invert the status of a health check, for example, to consider a health check unhealthy when it otherwise would be considered healthy.</p>
+-- * Regions [HealthCheckRegionList] <p>A complex type that contains one <code>Region</code> element for each region from which you want Amazon Route 53 health checkers to check the specified endpoint.</p> <p>If you don't specify any regions, Amazon Route 53 health checkers automatically performs checks from all of the regions that are listed under <b>Valid Values</b>.</p> <p>If you update a health check to remove a region that has been performing health checks, Amazon Route 53 will briefly continue to perform checks from that region to ensure that some health checkers are always checking the endpoint (for example, if you replace three regions with four different regions). </p>
+-- * InsufficientDataHealthStatus [InsufficientDataHealthStatus] <p>When CloudWatch has insufficient data about the metric to determine the alarm state, the status that you want Amazon Route 53 to assign to the health check:</p> <ul> <li> <p> <code>Healthy</code>: Amazon Route 53 considers the health check to be healthy.</p> </li> <li> <p> <code>Unhealthy</code>: Amazon Route 53 considers the health check to be unhealthy.</p> </li> <li> <p> <code>LastKnownStatus</code>: Amazon Route 53 uses the status of the health check from the last time that CloudWatch had sufficient data to determine the alarm state. For new health checks that have no last known status, the default status for the health check is healthy.</p> </li> </ul>
+-- * HealthThreshold [HealthThreshold] <p>The number of child health checks that are associated with a <code>CALCULATED</code> health that Amazon Route 53 must consider healthy for the <code>CALCULATED</code> health check to be considered healthy. To specify the child health checks that you want to associate with a <code>CALCULATED</code> health check, use the <a>HealthCheckConfig$ChildHealthChecks</a> and <a>HealthCheckConfig$ChildHealthChecks</a> elements.</p> <p>Note the following:</p> <ul> <li> <p>If you specify a number greater than the number of child health checks, Amazon Route 53 always considers this health check to be unhealthy.</p> </li> <li> <p>If you specify <code>0</code>, Amazon Route 53 always considers this health check to be healthy.</p> </li> </ul>
+-- * EnableSNI [EnableSNI] <p>Specify whether you want Amazon Route 53 to send the value of <code>FullyQualifiedDomainName</code> to the endpoint in the <code>client_hello</code> message during TLS negotiation. This allows the endpoint to respond to <code>HTTPS</code> health check requests with the applicable SSL/TLS certificate.</p> <p>Some endpoints require that <code>HTTPS</code> requests include the host name in the <code>client_hello</code> message. If you don't enable SNI, the status of the health check will be <code>SSL alert handshake_failure</code>. A health check can also have that status for other reasons. If SNI is enabled and you're still getting the error, check the SSL/TLS configuration on your endpoint and confirm that your certificate is valid.</p> <p>The SSL/TLS certificate on your endpoint includes a domain name in the <code>Common Name</code> field and possibly several more in the <code>Subject Alternative Names</code> field. One of the domain names in the certificate should match the value that you specify for <code>FullyQualifiedDomainName</code>. If the endpoint responds to the <code>client_hello</code> message with a certificate that does not include the domain name that you specified in <code>FullyQualifiedDomainName</code>, a health checker will retry the handshake. In the second attempt, the health checker will omit <code>FullyQualifiedDomainName</code> from the <code>client_hello</code> message.</p>
+-- * MeasureLatency [MeasureLatency] <p>Specify whether you want Amazon Route 53 to measure the latency between health checkers in multiple AWS regions and your endpoint, and to display CloudWatch latency graphs on the <b>Health Checks</b> page in the Amazon Route 53 console.</p> <important> <p>You can't change the value of <code>MeasureLatency</code> after you create a health check.</p> </important>
+-- * RequestInterval [RequestInterval] <p>The number of seconds between the time that Amazon Route 53 gets a response from your endpoint and the time that it sends the next health check request. Each Amazon Route 53 health checker makes requests at this interval.</p> <important> <p>You can't change the value of <code>RequestInterval</code> after you create a health check.</p> </important> <p>If you don't specify a value for <code>RequestInterval</code>, the default value is <code>30</code> seconds.</p>
+-- * Type [HealthCheckType] <p>The type of health check that you want to create, which indicates how Amazon Route 53 determines whether an endpoint is healthy.</p> <important> <p>You can't change the value of <code>Type</code> after you create a health check.</p> </important> <p>You can create the following types of health checks:</p> <ul> <li> <p> <b>HTTP</b>: Amazon Route 53 tries to establish a TCP connection. If successful, Amazon Route 53 submits an HTTP request and waits for an HTTP status code of 200 or greater and less than 400.</p> </li> <li> <p> <b>HTTPS</b>: Amazon Route 53 tries to establish a TCP connection. If successful, Amazon Route 53 submits an HTTPS request and waits for an HTTP status code of 200 or greater and less than 400.</p> <important> <p>If you specify <code>HTTPS</code> for the value of <code>Type</code>, the endpoint must support TLS v1.0 or later.</p> </important> </li> <li> <p> <b>HTTP_STR_MATCH</b>: Amazon Route 53 tries to establish a TCP connection. If successful, Amazon Route 53 submits an HTTP request and searches the first 5,120 bytes of the response body for the string that you specify in <code>SearchString</code>.</p> </li> <li> <p> <b>HTTPS_STR_MATCH</b>: Amazon Route 53 tries to establish a TCP connection. If successful, Amazon Route 53 submits an <code>HTTPS</code> request and searches the first 5,120 bytes of the response body for the string that you specify in <code>SearchString</code>.</p> </li> <li> <p> <b>TCP</b>: Amazon Route 53 tries to establish a TCP connection.</p> </li> <li> <p> <b>CLOUDWATCH_METRIC</b>: The health check is associated with a CloudWatch alarm. If the state of the alarm is <code>OK</code>, the health check is considered healthy. If the state is <code>ALARM</code>, the health check is considered unhealthy. If CloudWatch doesn't have sufficient data to determine whether the state is <code>OK</code> or <code>ALARM</code>, the health check status depends on the setting for <code>InsufficientDataHealthStatus</code>: <code>Healthy</code>, <code>Unhealthy</code>, or <code>LastKnownStatus</code>. </p> </li> <li> <p> <b>CALCULATED</b>: For health checks that monitor the status of other health checks, Amazon Route 53 adds up the number of health checks that Amazon Route 53 health checkers consider to be healthy and compares that number with the value of <code>HealthThreshold</code>. </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a> in the <i>Amazon Route 53 Developer Guide</i>.</p>
+-- * Port [Port] <p>The port on the endpoint on which you want Amazon Route 53 to perform health checks. Specify a value for <code>Port</code> only when you specify a value for <code>IPAddress</code>.</p>
+-- * FullyQualifiedDomainName [FullyQualifiedDomainName] <p>Amazon Route 53 behavior depends on whether you specify a value for <code>IPAddress</code>.</p> <p> <b>If you specify a value for</b> <code>IPAddress</code>:</p> <p>Amazon Route 53 sends health check requests to the specified IPv4 or IPv6 address and passes the value of <code>FullyQualifiedDomainName</code> in the <code>Host</code> header for all health checks except TCP health checks. This is typically the fully qualified DNS name of the endpoint on which you want Amazon Route 53 to perform health checks.</p> <p>When Amazon Route 53 checks the health of an endpoint, here is how it constructs the <code>Host</code> header:</p> <ul> <li> <p>If you specify a value of <code>80</code> for <code>Port</code> and <code>HTTP</code> or <code>HTTP_STR_MATCH</code> for <code>Type</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> to the endpoint in the Host header. </p> </li> <li> <p>If you specify a value of <code>443</code> for <code>Port</code> and <code>HTTPS</code> or <code>HTTPS_STR_MATCH</code> for <code>Type</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> to the endpoint in the <code>Host</code> header.</p> </li> <li> <p>If you specify another value for <code>Port</code> and any value except <code>TCP</code> for <code>Type</code>, Amazon Route 53 passes <code>FullyQualifiedDomainName:Port</code> to the endpoint in the <code>Host</code> header.</p> </li> </ul> <p>If you don't specify a value for <code>FullyQualifiedDomainName</code>, Amazon Route 53 substitutes the value of <code>IPAddress</code> in the <code>Host</code> header in each of the preceding cases.</p> <p> <b>If you don't specify a value for <code>IPAddress</code> </b>:</p> <p>Amazon Route 53 sends a DNS request to the domain that you specify for <code>FullyQualifiedDomainName</code> at the interval that you specify for <code>RequestInterval</code>. Using an IPv4 address that DNS returns, Amazon Route 53 then checks the health of the endpoint.</p> <note> <p>If you don't specify a value for <code>IPAddress</code>, Amazon Route 53 uses only IPv4 to send health checks to the endpoint. If there's no resource record set with a type of A for the name that you specify for <code>FullyQualifiedDomainName</code>, the health check fails with a "DNS resolution failed" error.</p> </note> <p>If you want to check the health of weighted, latency, or failover resource record sets and you choose to specify the endpoint only by <code>FullyQualifiedDomainName</code>, we recommend that you create a separate health check for each endpoint. For example, create a health check for each HTTP server that is serving content for www.example.com. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server (such as us-east-2-www.example.com), not the name of the resource record sets (www.example.com).</p> <important> <p>In this configuration, if you create a health check for which the value of <code>FullyQualifiedDomainName</code> matches the name of the resource record sets and you then associate the health check with those resource record sets, health check results will be unpredictable.</p> </important> <p>In addition, if the value that you specify for <code>Type</code> is <code>HTTP</code>, <code>HTTPS</code>, <code>HTTP_STR_MATCH</code>, or <code>HTTPS_STR_MATCH</code>, Amazon Route 53 passes the value of <code>FullyQualifiedDomainName</code> in the <code>Host</code> header, as it does when you specify a value for <code>IPAddress</code>. If the value of <code>Type</code> is <code>TCP</code>, Amazon Route 53 doesn't pass a <code>Host</code> header.</p>
+-- Required key: Type
+-- @return HealthCheckConfig structure as a key-value pair table
+function M.HealthCheckConfig(args)
+	assert(args, "You must provdide an argument table when creating HealthCheckConfig")
 	local t = { 
-		["FailureThreshold"] = _FailureThreshold,
-		["SearchString"] = _SearchString,
-		["AlarmIdentifier"] = _AlarmIdentifier,
-		["IPAddress"] = _IPAddress,
-		["ResourcePath"] = _ResourcePath,
-		["ChildHealthChecks"] = _ChildHealthChecks,
-		["Inverted"] = _Inverted,
-		["Regions"] = _Regions,
-		["InsufficientDataHealthStatus"] = _InsufficientDataHealthStatus,
-		["HealthThreshold"] = _HealthThreshold,
-		["EnableSNI"] = _EnableSNI,
-		["MeasureLatency"] = _MeasureLatency,
-		["RequestInterval"] = _RequestInterval,
-		["Type"] = _Type,
-		["Port"] = _Port,
-		["FullyQualifiedDomainName"] = _FullyQualifiedDomainName,
+		["FailureThreshold"] = args["FailureThreshold"],
+		["SearchString"] = args["SearchString"],
+		["AlarmIdentifier"] = args["AlarmIdentifier"],
+		["IPAddress"] = args["IPAddress"],
+		["ResourcePath"] = args["ResourcePath"],
+		["ChildHealthChecks"] = args["ChildHealthChecks"],
+		["Inverted"] = args["Inverted"],
+		["Regions"] = args["Regions"],
+		["InsufficientDataHealthStatus"] = args["InsufficientDataHealthStatus"],
+		["HealthThreshold"] = args["HealthThreshold"],
+		["EnableSNI"] = args["EnableSNI"],
+		["MeasureLatency"] = args["MeasureLatency"],
+		["RequestInterval"] = args["RequestInterval"],
+		["Type"] = args["Type"],
+		["Port"] = args["Port"],
+		["FullyQualifiedDomainName"] = args["FullyQualifiedDomainName"],
 	}
 	asserts.AssertHealthCheckConfig(t)
 	return t
@@ -3458,11 +3806,14 @@ end
 
 --- Create a structure of type NotAuthorizedException
 -- <p>Associating the specified VPC with the specified hosted zone has not been authorized.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.NotAuthorizedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotAuthorizedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return NotAuthorizedException structure as a key-value pair table
+function M.NotAuthorizedException(args)
+	assert(args, "You must provdide an argument table when creating NotAuthorizedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNotAuthorizedException(t)
 	return t
@@ -3482,12 +3833,15 @@ end
 
 --- Create a structure of type GetCheckerIpRangesResponse
 --  
--- @param _CheckerIpRanges [CheckerIpRanges] 
--- Required parameter: CheckerIpRanges
-function M.GetCheckerIpRangesResponse(_CheckerIpRanges, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCheckerIpRangesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CheckerIpRanges [CheckerIpRanges] 
+-- Required key: CheckerIpRanges
+-- @return GetCheckerIpRangesResponse structure as a key-value pair table
+function M.GetCheckerIpRangesResponse(args)
+	assert(args, "You must provdide an argument table when creating GetCheckerIpRangesResponse")
 	local t = { 
-		["CheckerIpRanges"] = _CheckerIpRanges,
+		["CheckerIpRanges"] = args["CheckerIpRanges"],
 	}
 	asserts.AssertGetCheckerIpRangesResponse(t)
 	return t
@@ -3506,11 +3860,14 @@ end
 
 --- Create a structure of type InvalidDomainName
 -- <p>The specified domain name is not valid.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.InvalidDomainName(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidDomainName")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return InvalidDomainName structure as a key-value pair table
+function M.InvalidDomainName(args)
+	assert(args, "You must provdide an argument table when creating InvalidDomainName")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidDomainName(t)
 	return t
@@ -3532,15 +3889,18 @@ end
 
 --- Create a structure of type DeleteVPCAssociationAuthorizationRequest
 -- <p>A complex type that contains information about the request to remove authorization to associate a VPC that was created by one AWS account with a hosted zone that was created with a different AWS account. </p>
--- @param _HostedZoneId [ResourceId] <p>When removing authorization to associate a VPC that was created by one AWS account with a hosted zone that was created with a different AWS account, the ID of the hosted zone.</p>
--- @param _VPC [VPC] <p>When removing authorization to associate a VPC that was created by one AWS account with a hosted zone that was created with a different AWS account, a complex type that includes the ID and region of the VPC.</p>
--- Required parameter: HostedZoneId
--- Required parameter: VPC
-function M.DeleteVPCAssociationAuthorizationRequest(_HostedZoneId, _VPC, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVPCAssociationAuthorizationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>When removing authorization to associate a VPC that was created by one AWS account with a hosted zone that was created with a different AWS account, the ID of the hosted zone.</p>
+-- * VPC [VPC] <p>When removing authorization to associate a VPC that was created by one AWS account with a hosted zone that was created with a different AWS account, a complex type that includes the ID and region of the VPC.</p>
+-- Required key: HostedZoneId
+-- Required key: VPC
+-- @return DeleteVPCAssociationAuthorizationRequest structure as a key-value pair table
+function M.DeleteVPCAssociationAuthorizationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteVPCAssociationAuthorizationRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["VPC"] = _VPC,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["VPC"] = args["VPC"],
 	}
 	asserts.AssertDeleteVPCAssociationAuthorizationRequest(t)
 	return t
@@ -3559,11 +3919,14 @@ end
 
 --- Create a structure of type ThrottlingException
 -- <p>The limit on the number of requests per second was exceeded.</p>
--- @param _message [ErrorMessage] 
-function M.ThrottlingException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ThrottlingException structure as a key-value pair table
+function M.ThrottlingException(args)
+	assert(args, "You must provdide an argument table when creating ThrottlingException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertThrottlingException(t)
 	return t
@@ -3590,24 +3953,27 @@ end
 
 --- Create a structure of type ListGeoLocationsResponse
 -- <p>A complex type containing the response information for the request.</p>
--- @param _GeoLocationDetailsList [GeoLocationDetailsList] <p>A complex type that contains one <code>GeoLocationDetails</code> element for each location that Amazon Route 53 supports for geolocation.</p>
--- @param _NextSubdivisionCode [GeoLocationSubdivisionCode] <p>If <code>IsTruncated</code> is <code>true</code>, you can make a follow-up request to display more locations. Enter the value of <code>NextSubdivisionCode</code> in the <code>StartSubdivisionCode</code> parameter in another <code>ListGeoLocations</code> request.</p>
--- @param _NextCountryCode [GeoLocationCountryCode] <p>If <code>IsTruncated</code> is <code>true</code>, you can make a follow-up request to display more locations. Enter the value of <code>NextCountryCode</code> in the <code>StartCountryCode</code> parameter in another <code>ListGeoLocations</code> request.</p>
--- @param _MaxItems [PageMaxItems] <p>The value that you specified for <code>MaxItems</code> in the request.</p>
--- @param _NextContinentCode [GeoLocationContinentCode] <p>If <code>IsTruncated</code> is <code>true</code>, you can make a follow-up request to display more locations. Enter the value of <code>NextContinentCode</code> in the <code>StartContinentCode</code> parameter in another <code>ListGeoLocations</code> request.</p>
--- @param _IsTruncated [PageTruncated] <p>A value that indicates whether more locations remain to be listed after the last location in this response. If so, the value of <code>IsTruncated</code> is <code>true</code>. To get more values, submit another request and include the values of <code>NextContinentCode</code>, <code>NextCountryCode</code>, and <code>NextSubdivisionCode</code> in the <code>StartContinentCode</code>, <code>StartCountryCode</code>, and <code>StartSubdivisionCode</code>, as applicable.</p>
--- Required parameter: GeoLocationDetailsList
--- Required parameter: IsTruncated
--- Required parameter: MaxItems
-function M.ListGeoLocationsResponse(_GeoLocationDetailsList, _NextSubdivisionCode, _NextCountryCode, _MaxItems, _NextContinentCode, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGeoLocationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GeoLocationDetailsList [GeoLocationDetailsList] <p>A complex type that contains one <code>GeoLocationDetails</code> element for each location that Amazon Route 53 supports for geolocation.</p>
+-- * NextSubdivisionCode [GeoLocationSubdivisionCode] <p>If <code>IsTruncated</code> is <code>true</code>, you can make a follow-up request to display more locations. Enter the value of <code>NextSubdivisionCode</code> in the <code>StartSubdivisionCode</code> parameter in another <code>ListGeoLocations</code> request.</p>
+-- * NextCountryCode [GeoLocationCountryCode] <p>If <code>IsTruncated</code> is <code>true</code>, you can make a follow-up request to display more locations. Enter the value of <code>NextCountryCode</code> in the <code>StartCountryCode</code> parameter in another <code>ListGeoLocations</code> request.</p>
+-- * MaxItems [PageMaxItems] <p>The value that you specified for <code>MaxItems</code> in the request.</p>
+-- * NextContinentCode [GeoLocationContinentCode] <p>If <code>IsTruncated</code> is <code>true</code>, you can make a follow-up request to display more locations. Enter the value of <code>NextContinentCode</code> in the <code>StartContinentCode</code> parameter in another <code>ListGeoLocations</code> request.</p>
+-- * IsTruncated [PageTruncated] <p>A value that indicates whether more locations remain to be listed after the last location in this response. If so, the value of <code>IsTruncated</code> is <code>true</code>. To get more values, submit another request and include the values of <code>NextContinentCode</code>, <code>NextCountryCode</code>, and <code>NextSubdivisionCode</code> in the <code>StartContinentCode</code>, <code>StartCountryCode</code>, and <code>StartSubdivisionCode</code>, as applicable.</p>
+-- Required key: GeoLocationDetailsList
+-- Required key: IsTruncated
+-- Required key: MaxItems
+-- @return ListGeoLocationsResponse structure as a key-value pair table
+function M.ListGeoLocationsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListGeoLocationsResponse")
 	local t = { 
-		["GeoLocationDetailsList"] = _GeoLocationDetailsList,
-		["NextSubdivisionCode"] = _NextSubdivisionCode,
-		["NextCountryCode"] = _NextCountryCode,
-		["MaxItems"] = _MaxItems,
-		["NextContinentCode"] = _NextContinentCode,
-		["IsTruncated"] = _IsTruncated,
+		["GeoLocationDetailsList"] = args["GeoLocationDetailsList"],
+		["NextSubdivisionCode"] = args["NextSubdivisionCode"],
+		["NextCountryCode"] = args["NextCountryCode"],
+		["MaxItems"] = args["MaxItems"],
+		["NextContinentCode"] = args["NextContinentCode"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListGeoLocationsResponse(t)
 	return t
@@ -3629,15 +3995,18 @@ end
 
 --- Create a structure of type CreateTrafficPolicyInstanceResponse
 -- <p>A complex type that contains the response information for the <code>CreateTrafficPolicyInstance</code> request.</p>
--- @param _TrafficPolicyInstance [TrafficPolicyInstance] <p>A complex type that contains settings for the new traffic policy instance.</p>
--- @param _Location [ResourceURI] <p>A unique URL that represents a new traffic policy instance.</p>
--- Required parameter: TrafficPolicyInstance
--- Required parameter: Location
-function M.CreateTrafficPolicyInstanceResponse(_TrafficPolicyInstance, _Location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrafficPolicyInstanceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyInstance [TrafficPolicyInstance] <p>A complex type that contains settings for the new traffic policy instance.</p>
+-- * Location [ResourceURI] <p>A unique URL that represents a new traffic policy instance.</p>
+-- Required key: TrafficPolicyInstance
+-- Required key: Location
+-- @return CreateTrafficPolicyInstanceResponse structure as a key-value pair table
+function M.CreateTrafficPolicyInstanceResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyInstanceResponse")
 	local t = { 
-		["TrafficPolicyInstance"] = _TrafficPolicyInstance,
-		["Location"] = _Location,
+		["TrafficPolicyInstance"] = args["TrafficPolicyInstance"],
+		["Location"] = args["Location"],
 	}
 	asserts.AssertCreateTrafficPolicyInstanceResponse(t)
 	return t
@@ -3657,12 +4026,15 @@ end
 
 --- Create a structure of type GetHostedZoneCountResponse
 -- <p>A complex type that contains the response to a <code>GetHostedZoneCount</code> request.</p>
--- @param _HostedZoneCount [HostedZoneCount] <p>The total number of public and private hosted zones that are associated with the current AWS account.</p>
--- Required parameter: HostedZoneCount
-function M.GetHostedZoneCountResponse(_HostedZoneCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHostedZoneCountResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneCount [HostedZoneCount] <p>The total number of public and private hosted zones that are associated with the current AWS account.</p>
+-- Required key: HostedZoneCount
+-- @return GetHostedZoneCountResponse structure as a key-value pair table
+function M.GetHostedZoneCountResponse(args)
+	assert(args, "You must provdide an argument table when creating GetHostedZoneCountResponse")
 	local t = { 
-		["HostedZoneCount"] = _HostedZoneCount,
+		["HostedZoneCount"] = args["HostedZoneCount"],
 	}
 	asserts.AssertGetHostedZoneCountResponse(t)
 	return t
@@ -3684,16 +4056,19 @@ end
 
 --- Create a structure of type ListVPCAssociationAuthorizationsRequest
 -- <p>A complex type that contains information about that can be associated with your hosted zone.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the hosted zone for which you want a list of VPCs that can be associated with the hosted zone.</p>
--- @param _NextToken [PaginationToken] <p> <i>Optional</i>: If a response includes a <code>NextToken</code> element, there are more VPCs that can be associated with the specified hosted zone. To get the next page of results, submit another request, and include the value of <code>NextToken</code> from the response in the <code>nexttoken</code> parameter in another <code>ListVPCAssociationAuthorizations</code> request.</p>
--- @param _MaxResults [MaxResults] <p> <i>Optional</i>: An integer that specifies the maximum number of VPCs that you want Amazon Route 53 to return. If you don't specify a value for <code>MaxResults</code>, Amazon Route 53 returns up to 50 VPCs per page.</p>
--- Required parameter: HostedZoneId
-function M.ListVPCAssociationAuthorizationsRequest(_HostedZoneId, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVPCAssociationAuthorizationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>The ID of the hosted zone for which you want a list of VPCs that can be associated with the hosted zone.</p>
+-- * NextToken [PaginationToken] <p> <i>Optional</i>: If a response includes a <code>NextToken</code> element, there are more VPCs that can be associated with the specified hosted zone. To get the next page of results, submit another request, and include the value of <code>NextToken</code> from the response in the <code>nexttoken</code> parameter in another <code>ListVPCAssociationAuthorizations</code> request.</p>
+-- * MaxResults [MaxResults] <p> <i>Optional</i>: An integer that specifies the maximum number of VPCs that you want Amazon Route 53 to return. If you don't specify a value for <code>MaxResults</code>, Amazon Route 53 returns up to 50 VPCs per page.</p>
+-- Required key: HostedZoneId
+-- @return ListVPCAssociationAuthorizationsRequest structure as a key-value pair table
+function M.ListVPCAssociationAuthorizationsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListVPCAssociationAuthorizationsRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListVPCAssociationAuthorizationsRequest(t)
 	return t
@@ -3720,23 +4095,26 @@ end
 
 --- Create a structure of type HealthCheck
 -- <p>A complex type that contains information about one health check that is associated with the current AWS account.</p>
--- @param _HealthCheckConfig [HealthCheckConfig] <p>A complex type that contains detailed information about one health check.</p>
--- @param _CallerReference [HealthCheckNonce] <p>A unique string that you specified when you created the health check.</p>
--- @param _HealthCheckVersion [HealthCheckVersion] <p>The version of the health check. You can optionally pass this value in a call to <code>UpdateHealthCheck</code> to prevent overwriting another change to the health check.</p>
--- @param _Id [HealthCheckId] <p>The identifier that Amazon Route 53assigned to the health check when you created it. When you add or update a resource record set, you use this value to specify which health check to use. The value can be up to 64 characters long. </p>
--- @param _CloudWatchAlarmConfiguration [CloudWatchAlarmConfiguration] <p>A complex type that contains information about the CloudWatch alarm that Amazon Route 53 is monitoring for this health check.</p>
--- Required parameter: Id
--- Required parameter: CallerReference
--- Required parameter: HealthCheckConfig
--- Required parameter: HealthCheckVersion
-function M.HealthCheck(_HealthCheckConfig, _CallerReference, _HealthCheckVersion, _Id, _CloudWatchAlarmConfiguration, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HealthCheck")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckConfig [HealthCheckConfig] <p>A complex type that contains detailed information about one health check.</p>
+-- * CallerReference [HealthCheckNonce] <p>A unique string that you specified when you created the health check.</p>
+-- * HealthCheckVersion [HealthCheckVersion] <p>The version of the health check. You can optionally pass this value in a call to <code>UpdateHealthCheck</code> to prevent overwriting another change to the health check.</p>
+-- * Id [HealthCheckId] <p>The identifier that Amazon Route 53assigned to the health check when you created it. When you add or update a resource record set, you use this value to specify which health check to use. The value can be up to 64 characters long. </p>
+-- * CloudWatchAlarmConfiguration [CloudWatchAlarmConfiguration] <p>A complex type that contains information about the CloudWatch alarm that Amazon Route 53 is monitoring for this health check.</p>
+-- Required key: Id
+-- Required key: CallerReference
+-- Required key: HealthCheckConfig
+-- Required key: HealthCheckVersion
+-- @return HealthCheck structure as a key-value pair table
+function M.HealthCheck(args)
+	assert(args, "You must provdide an argument table when creating HealthCheck")
 	local t = { 
-		["HealthCheckConfig"] = _HealthCheckConfig,
-		["CallerReference"] = _CallerReference,
-		["HealthCheckVersion"] = _HealthCheckVersion,
-		["Id"] = _Id,
-		["CloudWatchAlarmConfiguration"] = _CloudWatchAlarmConfiguration,
+		["HealthCheckConfig"] = args["HealthCheckConfig"],
+		["CallerReference"] = args["CallerReference"],
+		["HealthCheckVersion"] = args["HealthCheckVersion"],
+		["Id"] = args["Id"],
+		["CloudWatchAlarmConfiguration"] = args["CloudWatchAlarmConfiguration"],
 	}
 	asserts.AssertHealthCheck(t)
 	return t
@@ -3756,12 +4134,15 @@ end
 
 --- Create a structure of type DisassociateVPCFromHostedZoneResponse
 -- <p>A complex type that contains the response information for the disassociate request.</p>
--- @param _ChangeInfo [ChangeInfo] <p>A complex type that describes the changes made to the specified private hosted zone.</p>
--- Required parameter: ChangeInfo
-function M.DisassociateVPCFromHostedZoneResponse(_ChangeInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateVPCFromHostedZoneResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeInfo [ChangeInfo] <p>A complex type that describes the changes made to the specified private hosted zone.</p>
+-- Required key: ChangeInfo
+-- @return DisassociateVPCFromHostedZoneResponse structure as a key-value pair table
+function M.DisassociateVPCFromHostedZoneResponse(args)
+	assert(args, "You must provdide an argument table when creating DisassociateVPCFromHostedZoneResponse")
 	local t = { 
-		["ChangeInfo"] = _ChangeInfo,
+		["ChangeInfo"] = args["ChangeInfo"],
 	}
 	asserts.AssertDisassociateVPCFromHostedZoneResponse(t)
 	return t
@@ -3783,15 +4164,18 @@ end
 
 --- Create a structure of type CreateReusableDelegationSetResponse
 --  
--- @param _Location [ResourceURI] <p>The unique URL representing the new reusable delegation set.</p>
--- @param _DelegationSet [DelegationSet] <p>A complex type that contains name server information.</p>
--- Required parameter: DelegationSet
--- Required parameter: Location
-function M.CreateReusableDelegationSetResponse(_Location, _DelegationSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateReusableDelegationSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Location [ResourceURI] <p>The unique URL representing the new reusable delegation set.</p>
+-- * DelegationSet [DelegationSet] <p>A complex type that contains name server information.</p>
+-- Required key: DelegationSet
+-- Required key: Location
+-- @return CreateReusableDelegationSetResponse structure as a key-value pair table
+function M.CreateReusableDelegationSetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateReusableDelegationSetResponse")
 	local t = { 
-		["Location"] = _Location,
-		["DelegationSet"] = _DelegationSet,
+		["Location"] = args["Location"],
+		["DelegationSet"] = args["DelegationSet"],
 	}
 	asserts.AssertCreateReusableDelegationSetResponse(t)
 	return t
@@ -3811,13 +4195,16 @@ end
 
 --- Create a structure of type ListHealthChecksRequest
 -- <p>A request to retrieve a list of the health checks that are associated with the current AWS account.</p>
--- @param _Marker [PageMarker] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more health checks. To get another group, submit another <code>ListHealthChecks</code> request. </p> <p>For the value of <code>marker</code>, specify the value of <code>NextMarker</code> from the previous response, which is the ID of the first health check that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more health checks to get.</p>
--- @param _MaxItems [PageMaxItems] <p>The maximum number of health checks that you want <code>ListHealthChecks</code> to return in response to the current request. Amazon Route 53 returns a maximum of 100 items. If you set <code>MaxItems</code> to a value greater than 100, Amazon Route 53 returns only the first 100 health checks. </p>
-function M.ListHealthChecksRequest(_Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListHealthChecksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarker] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more health checks. To get another group, submit another <code>ListHealthChecks</code> request. </p> <p>For the value of <code>marker</code>, specify the value of <code>NextMarker</code> from the previous response, which is the ID of the first health check that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more health checks to get.</p>
+-- * MaxItems [PageMaxItems] <p>The maximum number of health checks that you want <code>ListHealthChecks</code> to return in response to the current request. Amazon Route 53 returns a maximum of 100 items. If you set <code>MaxItems</code> to a value greater than 100, Amazon Route 53 returns only the first 100 health checks. </p>
+-- @return ListHealthChecksRequest structure as a key-value pair table
+function M.ListHealthChecksRequest(args)
+	assert(args, "You must provdide an argument table when creating ListHealthChecksRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListHealthChecksRequest(t)
 	return t
@@ -3837,12 +4224,15 @@ end
 
 --- Create a structure of type ChangeResourceRecordSetsResponse
 -- <p>A complex type containing the response for the request.</p>
--- @param _ChangeInfo [ChangeInfo] <p>A complex type that contains information about changes made to your hosted zone.</p> <p>This element contains an ID that you use when performing a <a>GetChange</a> action to get detailed information about the change.</p>
--- Required parameter: ChangeInfo
-function M.ChangeResourceRecordSetsResponse(_ChangeInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChangeResourceRecordSetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeInfo [ChangeInfo] <p>A complex type that contains information about changes made to your hosted zone.</p> <p>This element contains an ID that you use when performing a <a>GetChange</a> action to get detailed information about the change.</p>
+-- Required key: ChangeInfo
+-- @return ChangeResourceRecordSetsResponse structure as a key-value pair table
+function M.ChangeResourceRecordSetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ChangeResourceRecordSetsResponse")
 	local t = { 
-		["ChangeInfo"] = _ChangeInfo,
+		["ChangeInfo"] = args["ChangeInfo"],
 	}
 	asserts.AssertChangeResourceRecordSetsResponse(t)
 	return t
@@ -3865,17 +4255,20 @@ end
 
 --- Create a structure of type DisassociateVPCFromHostedZoneRequest
 -- <p>A complex type that contains information about the VPC that you want to disassociate from a specified private hosted zone.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the private hosted zone that you want to disassociate a VPC from.</p>
--- @param _Comment [DisassociateVPCComment] <p> <i>Optional:</i> A comment about the disassociation request.</p>
--- @param _VPC [VPC] <p>A complex type that contains information about the VPC that you're disassociating from the specified hosted zone.</p>
--- Required parameter: HostedZoneId
--- Required parameter: VPC
-function M.DisassociateVPCFromHostedZoneRequest(_HostedZoneId, _Comment, _VPC, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateVPCFromHostedZoneRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>The ID of the private hosted zone that you want to disassociate a VPC from.</p>
+-- * Comment [DisassociateVPCComment] <p> <i>Optional:</i> A comment about the disassociation request.</p>
+-- * VPC [VPC] <p>A complex type that contains information about the VPC that you're disassociating from the specified hosted zone.</p>
+-- Required key: HostedZoneId
+-- Required key: VPC
+-- @return DisassociateVPCFromHostedZoneRequest structure as a key-value pair table
+function M.DisassociateVPCFromHostedZoneRequest(args)
+	assert(args, "You must provdide an argument table when creating DisassociateVPCFromHostedZoneRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["Comment"] = _Comment,
-		["VPC"] = _VPC,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["Comment"] = args["Comment"],
+		["VPC"] = args["VPC"],
 	}
 	asserts.AssertDisassociateVPCFromHostedZoneRequest(t)
 	return t
@@ -3902,24 +4295,27 @@ end
 
 --- Create a structure of type TestDNSAnswerRequest
 -- <p>Gets the value that Amazon Route 53 returns in response to a DNS request for a specified record name and type. You can optionally specify the IP address of a DNS resolver, an EDNS0 client subnet IP address, and a subnet mask. </p>
--- @param _ResolverIP [IPAddress] <p>If you want to simulate a request from a specific DNS resolver, specify the IP address for that resolver. If you omit this value, <code>TestDnsAnswer</code> uses the IP address of a DNS resolver in the AWS US East (N. Virginia) Region (<code>us-east-1</code>).</p>
--- @param _RecordType [RRType] <p>The type of the resource record set.</p>
--- @param _RecordName [DNSName] <p>The name of the resource record set that you want Amazon Route 53 to simulate a query for.</p>
--- @param _EDNS0ClientSubnetMask [SubnetMask] <p>If you specify an IP address for <code>edns0clientsubnetip</code>, you can optionally specify the number of bits of the IP address that you want the checking tool to include in the DNS query. For example, if you specify <code>192.0.2.44</code> for <code>edns0clientsubnetip</code> and <code>24</code> for <code>edns0clientsubnetmask</code>, the checking tool will simulate a request from 192.0.2.0/24. The default value is 24 bits for IPv4 addresses and 64 bits for IPv6 addresses.</p>
--- @param _EDNS0ClientSubnetIP [IPAddress] <p>If the resolver that you specified for resolverip supports EDNS0, specify the IPv4 or IPv6 address of a client in the applicable location, for example, <code>192.0.2.44</code> or <code>2001:db8:85a3::8a2e:370:7334</code>.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the hosted zone that you want Amazon Route 53 to simulate a query for.</p>
--- Required parameter: HostedZoneId
--- Required parameter: RecordName
--- Required parameter: RecordType
-function M.TestDNSAnswerRequest(_ResolverIP, _RecordType, _RecordName, _EDNS0ClientSubnetMask, _EDNS0ClientSubnetIP, _HostedZoneId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TestDNSAnswerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResolverIP [IPAddress] <p>If you want to simulate a request from a specific DNS resolver, specify the IP address for that resolver. If you omit this value, <code>TestDnsAnswer</code> uses the IP address of a DNS resolver in the AWS US East (N. Virginia) Region (<code>us-east-1</code>).</p>
+-- * RecordType [RRType] <p>The type of the resource record set.</p>
+-- * RecordName [DNSName] <p>The name of the resource record set that you want Amazon Route 53 to simulate a query for.</p>
+-- * EDNS0ClientSubnetMask [SubnetMask] <p>If you specify an IP address for <code>edns0clientsubnetip</code>, you can optionally specify the number of bits of the IP address that you want the checking tool to include in the DNS query. For example, if you specify <code>192.0.2.44</code> for <code>edns0clientsubnetip</code> and <code>24</code> for <code>edns0clientsubnetmask</code>, the checking tool will simulate a request from 192.0.2.0/24. The default value is 24 bits for IPv4 addresses and 64 bits for IPv6 addresses.</p>
+-- * EDNS0ClientSubnetIP [IPAddress] <p>If the resolver that you specified for resolverip supports EDNS0, specify the IPv4 or IPv6 address of a client in the applicable location, for example, <code>192.0.2.44</code> or <code>2001:db8:85a3::8a2e:370:7334</code>.</p>
+-- * HostedZoneId [ResourceId] <p>The ID of the hosted zone that you want Amazon Route 53 to simulate a query for.</p>
+-- Required key: HostedZoneId
+-- Required key: RecordName
+-- Required key: RecordType
+-- @return TestDNSAnswerRequest structure as a key-value pair table
+function M.TestDNSAnswerRequest(args)
+	assert(args, "You must provdide an argument table when creating TestDNSAnswerRequest")
 	local t = { 
-		["ResolverIP"] = _ResolverIP,
-		["RecordType"] = _RecordType,
-		["RecordName"] = _RecordName,
-		["EDNS0ClientSubnetMask"] = _EDNS0ClientSubnetMask,
-		["EDNS0ClientSubnetIP"] = _EDNS0ClientSubnetIP,
-		["HostedZoneId"] = _HostedZoneId,
+		["ResolverIP"] = args["ResolverIP"],
+		["RecordType"] = args["RecordType"],
+		["RecordName"] = args["RecordName"],
+		["EDNS0ClientSubnetMask"] = args["EDNS0ClientSubnetMask"],
+		["EDNS0ClientSubnetIP"] = args["EDNS0ClientSubnetIP"],
+		["HostedZoneId"] = args["HostedZoneId"],
 	}
 	asserts.AssertTestDNSAnswerRequest(t)
 	return t
@@ -3955,36 +4351,39 @@ end
 
 --- Create a structure of type TrafficPolicyInstance
 -- <p>A complex type that contains settings for the new traffic policy instance.</p>
--- @param _Name [DNSName] <p>The DNS name, such as www.example.com, for which Amazon Route 53 responds to queries by using the resource record sets that are associated with this traffic policy instance. </p>
--- @param _TrafficPolicyVersion [TrafficPolicyVersion] <p>The version of the traffic policy that Amazon Route 53 used to create resource record sets in the specified hosted zone.</p>
--- @param _TrafficPolicyType [RRType] <p>The DNS type that Amazon Route 53 assigned to all of the resource record sets that it created for this traffic policy instance. </p>
--- @param _State [TrafficPolicyInstanceState] <p>The value of <code>State</code> is one of the following values:</p> <dl> <dt>Applied</dt> <dd> <p>Amazon Route 53 has finished creating resource record sets, and changes have propagated to all Amazon Route 53 edge locations.</p> </dd> <dt>Creating</dt> <dd> <p>Amazon Route 53 is creating the resource record sets. Use <code>GetTrafficPolicyInstance</code> to confirm that the <code>CreateTrafficPolicyInstance</code> request completed successfully.</p> </dd> <dt>Failed</dt> <dd> <p>Amazon Route 53 wasn't able to create or update the resource record sets. When the value of <code>State</code> is <code>Failed</code>, see <code>Message</code> for an explanation of what caused the request to fail.</p> </dd> </dl>
--- @param _TrafficPolicyId [TrafficPolicyId] <p>The ID of the traffic policy that Amazon Route 53 used to create resource record sets in the specified hosted zone.</p>
--- @param _TTL [TTL] <p>The TTL that Amazon Route 53 assigned to all of the resource record sets that it created in the specified hosted zone.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the hosted zone that Amazon Route 53 created resource record sets in.</p>
--- @param _Message [Message] <p>If <code>State</code> is <code>Failed</code>, an explanation of the reason for the failure. If <code>State</code> is another value, <code>Message</code> is empty.</p>
--- @param _Id [TrafficPolicyInstanceId] <p>The ID that Amazon Route 53 assigned to the new traffic policy instance.</p>
--- Required parameter: Id
--- Required parameter: HostedZoneId
--- Required parameter: Name
--- Required parameter: TTL
--- Required parameter: State
--- Required parameter: Message
--- Required parameter: TrafficPolicyId
--- Required parameter: TrafficPolicyVersion
--- Required parameter: TrafficPolicyType
-function M.TrafficPolicyInstance(_Name, _TrafficPolicyVersion, _TrafficPolicyType, _State, _TrafficPolicyId, _TTL, _HostedZoneId, _Message, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrafficPolicyInstance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [DNSName] <p>The DNS name, such as www.example.com, for which Amazon Route 53 responds to queries by using the resource record sets that are associated with this traffic policy instance. </p>
+-- * TrafficPolicyVersion [TrafficPolicyVersion] <p>The version of the traffic policy that Amazon Route 53 used to create resource record sets in the specified hosted zone.</p>
+-- * TrafficPolicyType [RRType] <p>The DNS type that Amazon Route 53 assigned to all of the resource record sets that it created for this traffic policy instance. </p>
+-- * State [TrafficPolicyInstanceState] <p>The value of <code>State</code> is one of the following values:</p> <dl> <dt>Applied</dt> <dd> <p>Amazon Route 53 has finished creating resource record sets, and changes have propagated to all Amazon Route 53 edge locations.</p> </dd> <dt>Creating</dt> <dd> <p>Amazon Route 53 is creating the resource record sets. Use <code>GetTrafficPolicyInstance</code> to confirm that the <code>CreateTrafficPolicyInstance</code> request completed successfully.</p> </dd> <dt>Failed</dt> <dd> <p>Amazon Route 53 wasn't able to create or update the resource record sets. When the value of <code>State</code> is <code>Failed</code>, see <code>Message</code> for an explanation of what caused the request to fail.</p> </dd> </dl>
+-- * TrafficPolicyId [TrafficPolicyId] <p>The ID of the traffic policy that Amazon Route 53 used to create resource record sets in the specified hosted zone.</p>
+-- * TTL [TTL] <p>The TTL that Amazon Route 53 assigned to all of the resource record sets that it created in the specified hosted zone.</p>
+-- * HostedZoneId [ResourceId] <p>The ID of the hosted zone that Amazon Route 53 created resource record sets in.</p>
+-- * Message [Message] <p>If <code>State</code> is <code>Failed</code>, an explanation of the reason for the failure. If <code>State</code> is another value, <code>Message</code> is empty.</p>
+-- * Id [TrafficPolicyInstanceId] <p>The ID that Amazon Route 53 assigned to the new traffic policy instance.</p>
+-- Required key: Id
+-- Required key: HostedZoneId
+-- Required key: Name
+-- Required key: TTL
+-- Required key: State
+-- Required key: Message
+-- Required key: TrafficPolicyId
+-- Required key: TrafficPolicyVersion
+-- Required key: TrafficPolicyType
+-- @return TrafficPolicyInstance structure as a key-value pair table
+function M.TrafficPolicyInstance(args)
+	assert(args, "You must provdide an argument table when creating TrafficPolicyInstance")
 	local t = { 
-		["Name"] = _Name,
-		["TrafficPolicyVersion"] = _TrafficPolicyVersion,
-		["TrafficPolicyType"] = _TrafficPolicyType,
-		["State"] = _State,
-		["TrafficPolicyId"] = _TrafficPolicyId,
-		["TTL"] = _TTL,
-		["HostedZoneId"] = _HostedZoneId,
-		["Message"] = _Message,
-		["Id"] = _Id,
+		["Name"] = args["Name"],
+		["TrafficPolicyVersion"] = args["TrafficPolicyVersion"],
+		["TrafficPolicyType"] = args["TrafficPolicyType"],
+		["State"] = args["State"],
+		["TrafficPolicyId"] = args["TrafficPolicyId"],
+		["TTL"] = args["TTL"],
+		["HostedZoneId"] = args["HostedZoneId"],
+		["Message"] = args["Message"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertTrafficPolicyInstance(t)
 	return t
@@ -4003,11 +4402,14 @@ end
 
 --- Create a structure of type TrafficPolicyInUse
 -- <p>One or more traffic policy instances were created by using the specified traffic policy.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.TrafficPolicyInUse(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TrafficPolicyInUse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return TrafficPolicyInUse structure as a key-value pair table
+function M.TrafficPolicyInUse(args)
+	assert(args, "You must provdide an argument table when creating TrafficPolicyInUse")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTrafficPolicyInUse(t)
 	return t
@@ -4032,20 +4434,23 @@ end
 
 --- Create a structure of type ChangeInfo
 -- <p>A complex type that describes change information about changes made to your hosted zone.</p>
--- @param _Status [ChangeStatus] <p>The current state of the request. <code>PENDING</code> indicates that this request has not yet been applied to all Amazon Route 53 DNS servers.</p>
--- @param _Comment [ResourceDescription] <p>A complex type that describes change information about changes made to your hosted zone.</p> <p>This element contains an ID that you use when performing a <a>GetChange</a> action to get detailed information about the change.</p>
--- @param _SubmittedAt [TimeStamp] <p>The date and time that the change request was submitted in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a> and Coordinated Universal Time (UTC). For example, the value <code>2017-03-27T17:48:16.751Z</code> represents March 27, 2017 at 17:48:16.751 UTC.</p>
--- @param _Id [ResourceId] <p>The ID of the request.</p>
--- Required parameter: Id
--- Required parameter: Status
--- Required parameter: SubmittedAt
-function M.ChangeInfo(_Status, _Comment, _SubmittedAt, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChangeInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ChangeStatus] <p>The current state of the request. <code>PENDING</code> indicates that this request has not yet been applied to all Amazon Route 53 DNS servers.</p>
+-- * Comment [ResourceDescription] <p>A complex type that describes change information about changes made to your hosted zone.</p> <p>This element contains an ID that you use when performing a <a>GetChange</a> action to get detailed information about the change.</p>
+-- * SubmittedAt [TimeStamp] <p>The date and time that the change request was submitted in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a> and Coordinated Universal Time (UTC). For example, the value <code>2017-03-27T17:48:16.751Z</code> represents March 27, 2017 at 17:48:16.751 UTC.</p>
+-- * Id [ResourceId] <p>The ID of the request.</p>
+-- Required key: Id
+-- Required key: Status
+-- Required key: SubmittedAt
+-- @return ChangeInfo structure as a key-value pair table
+function M.ChangeInfo(args)
+	assert(args, "You must provdide an argument table when creating ChangeInfo")
 	local t = { 
-		["Status"] = _Status,
-		["Comment"] = _Comment,
-		["SubmittedAt"] = _SubmittedAt,
-		["Id"] = _Id,
+		["Status"] = args["Status"],
+		["Comment"] = args["Comment"],
+		["SubmittedAt"] = args["SubmittedAt"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertChangeInfo(t)
 	return t
@@ -4071,22 +4476,25 @@ end
 
 --- Create a structure of type ListTrafficPolicyInstancesByHostedZoneResponse
 -- <p>A complex type that contains the response information for the request.</p>
--- @param _TrafficPolicyInstanceTypeMarker [RRType] <p>If <code>IsTruncated</code> is true, <code>TrafficPolicyInstanceTypeMarker</code> is the DNS type of the resource record sets that are associated with the first traffic policy instance in the next group of traffic policy instances.</p>
--- @param _TrafficPolicyInstanceNameMarker [DNSName] <p>If <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is the name of the first traffic policy instance in the next group of traffic policy instances.</p>
--- @param _TrafficPolicyInstances [TrafficPolicyInstances] <p>A list that contains one <code>TrafficPolicyInstance</code> element for each traffic policy instance that matches the elements in the request. </p>
--- @param _MaxItems [PageMaxItems] <p>The value that you specified for the <code>MaxItems</code> parameter in the <code>ListTrafficPolicyInstancesByHostedZone</code> request that produced the current response.</p>
--- @param _IsTruncated [PageTruncated] <p>A flag that indicates whether there are more traffic policy instances to be listed. If the response was truncated, you can get the next group of traffic policy instances by submitting another <code>ListTrafficPolicyInstancesByHostedZone</code> request and specifying the values of <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> in the corresponding request parameters.</p>
--- Required parameter: TrafficPolicyInstances
--- Required parameter: IsTruncated
--- Required parameter: MaxItems
-function M.ListTrafficPolicyInstancesByHostedZoneResponse(_TrafficPolicyInstanceTypeMarker, _TrafficPolicyInstanceNameMarker, _TrafficPolicyInstances, _MaxItems, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTrafficPolicyInstancesByHostedZoneResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicyInstanceTypeMarker [RRType] <p>If <code>IsTruncated</code> is true, <code>TrafficPolicyInstanceTypeMarker</code> is the DNS type of the resource record sets that are associated with the first traffic policy instance in the next group of traffic policy instances.</p>
+-- * TrafficPolicyInstanceNameMarker [DNSName] <p>If <code>IsTruncated</code> is <code>true</code>, <code>TrafficPolicyInstanceNameMarker</code> is the name of the first traffic policy instance in the next group of traffic policy instances.</p>
+-- * TrafficPolicyInstances [TrafficPolicyInstances] <p>A list that contains one <code>TrafficPolicyInstance</code> element for each traffic policy instance that matches the elements in the request. </p>
+-- * MaxItems [PageMaxItems] <p>The value that you specified for the <code>MaxItems</code> parameter in the <code>ListTrafficPolicyInstancesByHostedZone</code> request that produced the current response.</p>
+-- * IsTruncated [PageTruncated] <p>A flag that indicates whether there are more traffic policy instances to be listed. If the response was truncated, you can get the next group of traffic policy instances by submitting another <code>ListTrafficPolicyInstancesByHostedZone</code> request and specifying the values of <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> in the corresponding request parameters.</p>
+-- Required key: TrafficPolicyInstances
+-- Required key: IsTruncated
+-- Required key: MaxItems
+-- @return ListTrafficPolicyInstancesByHostedZoneResponse structure as a key-value pair table
+function M.ListTrafficPolicyInstancesByHostedZoneResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesByHostedZoneResponse")
 	local t = { 
-		["TrafficPolicyInstanceTypeMarker"] = _TrafficPolicyInstanceTypeMarker,
-		["TrafficPolicyInstanceNameMarker"] = _TrafficPolicyInstanceNameMarker,
-		["TrafficPolicyInstances"] = _TrafficPolicyInstances,
-		["MaxItems"] = _MaxItems,
-		["IsTruncated"] = _IsTruncated,
+		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
+		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
+		["TrafficPolicyInstances"] = args["TrafficPolicyInstances"],
+		["MaxItems"] = args["MaxItems"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListTrafficPolicyInstancesByHostedZoneResponse(t)
 	return t
@@ -4106,12 +4514,15 @@ end
 
 --- Create a structure of type GetHealthCheckLastFailureReasonResponse
 -- <p>A complex type that contains the response to a <code>GetHealthCheckLastFailureReason</code> request.</p>
--- @param _HealthCheckObservations [HealthCheckObservations] <p>A list that contains one <code>Observation</code> element for each Amazon Route 53 health checker that is reporting a last failure reason. </p>
--- Required parameter: HealthCheckObservations
-function M.GetHealthCheckLastFailureReasonResponse(_HealthCheckObservations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHealthCheckLastFailureReasonResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckObservations [HealthCheckObservations] <p>A list that contains one <code>Observation</code> element for each Amazon Route 53 health checker that is reporting a last failure reason. </p>
+-- Required key: HealthCheckObservations
+-- @return GetHealthCheckLastFailureReasonResponse structure as a key-value pair table
+function M.GetHealthCheckLastFailureReasonResponse(args)
+	assert(args, "You must provdide an argument table when creating GetHealthCheckLastFailureReasonResponse")
 	local t = { 
-		["HealthCheckObservations"] = _HealthCheckObservations,
+		["HealthCheckObservations"] = args["HealthCheckObservations"],
 	}
 	asserts.AssertGetHealthCheckLastFailureReasonResponse(t)
 	return t
@@ -4130,11 +4541,14 @@ end
 
 --- Create a structure of type DelegationSetAlreadyReusable
 -- <p>The specified delegation set has already been marked as reusable.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.DelegationSetAlreadyReusable(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DelegationSetAlreadyReusable")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return DelegationSetAlreadyReusable structure as a key-value pair table
+function M.DelegationSetAlreadyReusable(args)
+	assert(args, "You must provdide an argument table when creating DelegationSetAlreadyReusable")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDelegationSetAlreadyReusable(t)
 	return t
@@ -4153,11 +4567,14 @@ end
 
 --- Create a structure of type LimitsExceeded
 -- <p>The limits specified for a resource have been exceeded.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.LimitsExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitsExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return LimitsExceeded structure as a key-value pair table
+function M.LimitsExceeded(args)
+	assert(args, "You must provdide an argument table when creating LimitsExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitsExceeded(t)
 	return t
@@ -4177,12 +4594,15 @@ end
 
 --- Create a structure of type GetHealthCheckStatusRequest
 -- <p>A request to get the status for a health check.</p>
--- @param _HealthCheckId [HealthCheckId] <p>The ID for the health check that you want the current status for. When you created the health check, <code>CreateHealthCheck</code> returned the ID in the response, in the <code>HealthCheckId</code> element.</p> <note> <p>If you want to check the status of a calculated health check, you must use the Amazon Route 53 console or the CloudWatch console. You can't use <code>GetHealthCheckStatus</code> to get the status of a calculated health check.</p> </note>
--- Required parameter: HealthCheckId
-function M.GetHealthCheckStatusRequest(_HealthCheckId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHealthCheckStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckId [HealthCheckId] <p>The ID for the health check that you want the current status for. When you created the health check, <code>CreateHealthCheck</code> returned the ID in the response, in the <code>HealthCheckId</code> element.</p> <note> <p>If you want to check the status of a calculated health check, you must use the Amazon Route 53 console or the CloudWatch console. You can't use <code>GetHealthCheckStatus</code> to get the status of a calculated health check.</p> </note>
+-- Required key: HealthCheckId
+-- @return GetHealthCheckStatusRequest structure as a key-value pair table
+function M.GetHealthCheckStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating GetHealthCheckStatusRequest")
 	local t = { 
-		["HealthCheckId"] = _HealthCheckId,
+		["HealthCheckId"] = args["HealthCheckId"],
 	}
 	asserts.AssertGetHealthCheckStatusRequest(t)
 	return t
@@ -4202,12 +4622,15 @@ end
 
 --- Create a structure of type ListTagsForResourceResponse
 -- <p>A complex type that contains information about the health checks or hosted zones for which you want to list tags.</p>
--- @param _ResourceTagSet [ResourceTagSet] <p>A <code>ResourceTagSet</code> containing tags associated with the specified resource.</p>
--- Required parameter: ResourceTagSet
-function M.ListTagsForResourceResponse(_ResourceTagSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceTagSet [ResourceTagSet] <p>A <code>ResourceTagSet</code> containing tags associated with the specified resource.</p>
+-- Required key: ResourceTagSet
+-- @return ListTagsForResourceResponse structure as a key-value pair table
+function M.ListTagsForResourceResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourceResponse")
 	local t = { 
-		["ResourceTagSet"] = _ResourceTagSet,
+		["ResourceTagSet"] = args["ResourceTagSet"],
 	}
 	asserts.AssertListTagsForResourceResponse(t)
 	return t
@@ -4231,18 +4654,21 @@ end
 
 --- Create a structure of type AliasTarget
 -- <p> <i>Alias resource record sets only:</i> Information about the CloudFront distribution, Elastic Beanstalk environment, ELB load balancer, Amazon S3 bucket, or Amazon Route 53 resource record set that you're redirecting queries to. An Elastic Beanstalk environment must have a regionalized subdomain.</p> <p>When creating resource record sets for a private hosted zone, note the following:</p> <ul> <li> <p>Resource record sets can't be created for CloudFront distributions in a private hosted zone.</p> </li> <li> <p>Creating geolocation alias resource record sets or latency alias resource record sets in a private hosted zone is unsupported.</p> </li> <li> <p>For information about creating failover resource record sets in a private hosted zone, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html">Configuring Failover in a Private Hosted Zone</a>.</p> </li> </ul>
--- @param _HostedZoneId [ResourceId] <p> <i>Alias resource records sets only</i>: The value used depends on where you want to route traffic:</p> <dl> <dt>CloudFront distribution</dt> <dd> <p>Specify <code>Z2FDTNDATAQYW2</code>.</p> <note> <p>Alias resource record sets for CloudFront can't be created in a private zone.</p> </note> </dd> <dt>Elastic Beanstalk environment</dt> <dd> <p>Specify the hosted zone ID for the region in which you created the environment. The environment must have a regionalized subdomain. For a list of regions and the corresponding hosted zone IDs, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region">AWS Elastic Beanstalk</a> in the "AWS Regions and Endpoints" chapter of the <i>Amazon Web Services General Reference</i>.</p> </dd> <dt>ELB load balancer</dt> <dd> <p>Specify the value of the hosted zone ID for the load balancer. Use the following methods to get the hosted zone ID:</p> <ul> <li> <p> <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elb_region">Elastic Load Balancing</a> table in the "AWS Regions and Endpoints" chapter of the <i>Amazon Web Services General Reference</i>: Use the value in the "Amazon Route 53 Hosted Zone ID" column that corresponds with the region that you created your load balancer in.</p> </li> <li> <p> <b>AWS Management Console</b>: Go to the Amazon EC2 page, click <b>Load Balancers</b> in the navigation pane, select the load balancer, and get the value of the <b>Hosted zone</b> field on the <b>Description</b> tab.</p> </li> <li> <p> <b>Elastic Load Balancing API</b>: Use <code>DescribeLoadBalancers</code> to get the value of <code>CanonicalHostedZoneNameId</code>. For more information, see the applicable guide:</p> <ul> <li> <p>Classic Load Balancer: <a href="http://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DescribeLoadBalancers.html">DescribeLoadBalancers</a> </p> </li> <li> <p>Application Load Balancer: <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html">DescribeLoadBalancers</a> </p> </li> </ul> </li> <li> <p> <b>AWS CLI</b>: Use <code> <a href="http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html">describe-load-balancers</a> </code> to get the value of <code>CanonicalHostedZoneNameID</code>.</p> </li> </ul> </dd> <dt>An Amazon S3 bucket configured as a static website</dt> <dd> <p>Specify the hosted zone ID for the region that you created the bucket in. For more information about valid values, see the <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">Amazon Simple Storage Service Website Endpoints</a> table in the "AWS Regions and Endpoints" chapter of the <i>Amazon Web Services General Reference</i>.</p> </dd> <dt>Another Amazon Route 53 resource record set in your hosted zone</dt> <dd> <p>Specify the hosted zone ID of your hosted zone. (An alias resource record set can't reference a resource record set in a different hosted zone.)</p> </dd> </dl>
--- @param _EvaluateTargetHealth [AliasHealthEnabled] <p> <i>Applies only to alias, failover alias, geolocation alias, latency alias, and weighted alias resource record sets:</i> When <code>EvaluateTargetHealth</code> is <code>true</code>, an alias resource record set inherits the health of the referenced AWS resource, such as an ELB load balancer, or the referenced resource record set.</p> <p>Note the following:</p> <ul> <li> <p>You can't set <code>EvaluateTargetHealth</code> to <code>true</code> when the alias target is a CloudFront distribution.</p> </li> <li> <p>If the AWS resource that you specify in <code>AliasTarget</code> is a resource record set or a group of resource record sets (for example, a group of weighted resource record sets), but it is not another alias resource record set, we recommend that you associate a health check with all of the resource record sets in the alias target. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-complex-configs.html#dns-failover-complex-configs-hc-omitting">What Happens When You Omit Health Checks?</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> </li> <li> <p>If you specify an Elastic Beanstalk environment in <code>HostedZoneId</code> and <code>DNSName</code>, and if the environment contains an ELB load balancer, Elastic Load Balancing routes queries only to the healthy Amazon EC2 instances that are registered with the load balancer. (An environment automatically contains an ELB load balancer if it includes more than one EC2 instance.) If you set <code>EvaluateTargetHealth</code> to <code>true</code> and either no EC2 instances are healthy or the load balancer itself is unhealthy, Amazon Route 53 routes queries to other available resources that are healthy, if any.</p> <p>If the environment contains a single EC2 instance, there are no special requirements.</p> </li> <li> <p>If you specify an ELB load balancer in <code> <a>AliasTarget</a> </code>, ELB routes queries only to the healthy EC2 instances that are registered with the load balancer. If no EC2 instances are healthy or if the load balancer itself is unhealthy, and if <code>EvaluateTargetHealth</code> is true for the corresponding alias resource record set, Amazon Route 53 routes queries to other resources. When you create a load balancer, you configure settings for ELB health checks; they're not Amazon Route 53 health checks, but they perform a similar function. Do not create Amazon Route 53 health checks for the EC2 instances that you register with an ELB load balancer.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-complex-configs.html">How Health Checks Work in More Complex Amazon Route 53 Configurations</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> </li> <li> <p>We recommend that you set <code>EvaluateTargetHealth</code> to true only when you have enough idle capacity to handle the failure of one or more endpoints.</p> </li> </ul> <p>For more information and examples, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html">Amazon Route 53 Health Checks and DNS Failover</a> in the <i>Amazon Route 53 Developer Guide</i>.</p>
--- @param _DNSName [DNSName] <p> <i>Alias resource record sets only:</i> The value that you specify depends on where you want to route queries:</p> <dl> <dt>CloudFront distribution</dt> <dd> <p>Specify the domain name that CloudFront assigned when you created your distribution.</p> <p>Your CloudFront distribution must include an alternate domain name that matches the name of the resource record set. For example, if the name of the resource record set is <i>acme.example.com</i>, your CloudFront distribution must include <i>acme.example.com</i> as one of the alternate domain names. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html">Using Alternate Domain Names (CNAMEs)</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> </dd> <dt>Elastic Beanstalk environment</dt> <dd> <p>Specify the <code>CNAME</code> attribute for the environment. (The environment must have a regionalized domain name.) You can use the following methods to get the value of the CNAME attribute:</p> <ul> <li> <p> <i>AWS Management Console</i>: For information about how to get the value by using the console, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html">Using Custom Domains with AWS Elastic Beanstalk</a> in the <i>AWS Elastic Beanstalk Developer Guide</i>.</p> </li> <li> <p> <i>Elastic Beanstalk API</i>: Use the <code>DescribeEnvironments</code> action to get the value of the <code>CNAME</code> attribute. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_DescribeEnvironments.html">DescribeEnvironments</a> in the <i>AWS Elastic Beanstalk API Reference</i>.</p> </li> <li> <p> <i>AWS CLI</i>: Use the <code>describe-environments</code> command to get the value of the <code>CNAME</code> attribute. For more information, see <a href="http://docs.aws.amazon.com/cli/latest/reference/elasticbeanstalk/describe-environments.html">describe-environments</a> in the <i>AWS Command Line Interface Reference</i>.</p> </li> </ul> </dd> <dt>ELB load balancer</dt> <dd> <p>Specify the DNS name that is associated with the load balancer. Get the DNS name by using the AWS Management Console, the ELB API, or the AWS CLI. </p> <ul> <li> <p> <b>AWS Management Console</b>: Go to the EC2 page, choose <b>Load Balancers</b> in the navigation pane, choose the load balancer, choose the <b>Description</b> tab, and get the value of the <b>DNS name</b> field. (If you're routing traffic to a Classic Load Balancer, get the value that begins with <b>dualstack</b>.) </p> </li> <li> <p> <b>Elastic Load Balancing API</b>: Use <code>DescribeLoadBalancers</code> to get the value of <code>DNSName</code>. For more information, see the applicable guide:</p> <ul> <li> <p>Classic Load Balancer: <a href="http://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DescribeLoadBalancers.html">DescribeLoadBalancers</a> </p> </li> <li> <p>Application Load Balancer: <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html">DescribeLoadBalancers</a> </p> </li> </ul> </li> <li> <p> <b>AWS CLI</b>: Use <code> <a href="http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html">describe-load-balancers</a> </code> to get the value of <code>DNSName</code>.</p> </li> </ul> </dd> <dt>Amazon S3 bucket that is configured as a static website</dt> <dd> <p>Specify the domain name of the Amazon S3 website endpoint in which you created the bucket, for example, <code>s3-website-us-east-2.amazonaws.com</code>. For more information about valid values, see the table <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">Amazon Simple Storage Service (S3) Website Endpoints</a> in the <i>Amazon Web Services General Reference</i>. For more information about using S3 buckets for websites, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/getting-started.html">Getting Started with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide.</i> </p> </dd> <dt>Another Amazon Route 53 resource record set</dt> <dd> <p>Specify the value of the <code>Name</code> element for a resource record set in the current hosted zone.</p> </dd> </dl>
--- Required parameter: HostedZoneId
--- Required parameter: DNSName
--- Required parameter: EvaluateTargetHealth
-function M.AliasTarget(_HostedZoneId, _EvaluateTargetHealth, _DNSName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AliasTarget")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p> <i>Alias resource records sets only</i>: The value used depends on where you want to route traffic:</p> <dl> <dt>CloudFront distribution</dt> <dd> <p>Specify <code>Z2FDTNDATAQYW2</code>.</p> <note> <p>Alias resource record sets for CloudFront can't be created in a private zone.</p> </note> </dd> <dt>Elastic Beanstalk environment</dt> <dd> <p>Specify the hosted zone ID for the region in which you created the environment. The environment must have a regionalized subdomain. For a list of regions and the corresponding hosted zone IDs, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region">AWS Elastic Beanstalk</a> in the "AWS Regions and Endpoints" chapter of the <i>Amazon Web Services General Reference</i>.</p> </dd> <dt>ELB load balancer</dt> <dd> <p>Specify the value of the hosted zone ID for the load balancer. Use the following methods to get the hosted zone ID:</p> <ul> <li> <p> <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#elb_region">Elastic Load Balancing</a> table in the "AWS Regions and Endpoints" chapter of the <i>Amazon Web Services General Reference</i>: Use the value in the "Amazon Route 53 Hosted Zone ID" column that corresponds with the region that you created your load balancer in.</p> </li> <li> <p> <b>AWS Management Console</b>: Go to the Amazon EC2 page, click <b>Load Balancers</b> in the navigation pane, select the load balancer, and get the value of the <b>Hosted zone</b> field on the <b>Description</b> tab.</p> </li> <li> <p> <b>Elastic Load Balancing API</b>: Use <code>DescribeLoadBalancers</code> to get the value of <code>CanonicalHostedZoneNameId</code>. For more information, see the applicable guide:</p> <ul> <li> <p>Classic Load Balancer: <a href="http://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DescribeLoadBalancers.html">DescribeLoadBalancers</a> </p> </li> <li> <p>Application Load Balancer: <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html">DescribeLoadBalancers</a> </p> </li> </ul> </li> <li> <p> <b>AWS CLI</b>: Use <code> <a href="http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html">describe-load-balancers</a> </code> to get the value of <code>CanonicalHostedZoneNameID</code>.</p> </li> </ul> </dd> <dt>An Amazon S3 bucket configured as a static website</dt> <dd> <p>Specify the hosted zone ID for the region that you created the bucket in. For more information about valid values, see the <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">Amazon Simple Storage Service Website Endpoints</a> table in the "AWS Regions and Endpoints" chapter of the <i>Amazon Web Services General Reference</i>.</p> </dd> <dt>Another Amazon Route 53 resource record set in your hosted zone</dt> <dd> <p>Specify the hosted zone ID of your hosted zone. (An alias resource record set can't reference a resource record set in a different hosted zone.)</p> </dd> </dl>
+-- * EvaluateTargetHealth [AliasHealthEnabled] <p> <i>Applies only to alias, failover alias, geolocation alias, latency alias, and weighted alias resource record sets:</i> When <code>EvaluateTargetHealth</code> is <code>true</code>, an alias resource record set inherits the health of the referenced AWS resource, such as an ELB load balancer, or the referenced resource record set.</p> <p>Note the following:</p> <ul> <li> <p>You can't set <code>EvaluateTargetHealth</code> to <code>true</code> when the alias target is a CloudFront distribution.</p> </li> <li> <p>If the AWS resource that you specify in <code>AliasTarget</code> is a resource record set or a group of resource record sets (for example, a group of weighted resource record sets), but it is not another alias resource record set, we recommend that you associate a health check with all of the resource record sets in the alias target. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-complex-configs.html#dns-failover-complex-configs-hc-omitting">What Happens When You Omit Health Checks?</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> </li> <li> <p>If you specify an Elastic Beanstalk environment in <code>HostedZoneId</code> and <code>DNSName</code>, and if the environment contains an ELB load balancer, Elastic Load Balancing routes queries only to the healthy Amazon EC2 instances that are registered with the load balancer. (An environment automatically contains an ELB load balancer if it includes more than one EC2 instance.) If you set <code>EvaluateTargetHealth</code> to <code>true</code> and either no EC2 instances are healthy or the load balancer itself is unhealthy, Amazon Route 53 routes queries to other available resources that are healthy, if any.</p> <p>If the environment contains a single EC2 instance, there are no special requirements.</p> </li> <li> <p>If you specify an ELB load balancer in <code> <a>AliasTarget</a> </code>, ELB routes queries only to the healthy EC2 instances that are registered with the load balancer. If no EC2 instances are healthy or if the load balancer itself is unhealthy, and if <code>EvaluateTargetHealth</code> is true for the corresponding alias resource record set, Amazon Route 53 routes queries to other resources. When you create a load balancer, you configure settings for ELB health checks; they're not Amazon Route 53 health checks, but they perform a similar function. Do not create Amazon Route 53 health checks for the EC2 instances that you register with an ELB load balancer.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-complex-configs.html">How Health Checks Work in More Complex Amazon Route 53 Configurations</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> </li> <li> <p>We recommend that you set <code>EvaluateTargetHealth</code> to true only when you have enough idle capacity to handle the failure of one or more endpoints.</p> </li> </ul> <p>For more information and examples, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html">Amazon Route 53 Health Checks and DNS Failover</a> in the <i>Amazon Route 53 Developer Guide</i>.</p>
+-- * DNSName [DNSName] <p> <i>Alias resource record sets only:</i> The value that you specify depends on where you want to route queries:</p> <dl> <dt>CloudFront distribution</dt> <dd> <p>Specify the domain name that CloudFront assigned when you created your distribution.</p> <p>Your CloudFront distribution must include an alternate domain name that matches the name of the resource record set. For example, if the name of the resource record set is <i>acme.example.com</i>, your CloudFront distribution must include <i>acme.example.com</i> as one of the alternate domain names. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html">Using Alternate Domain Names (CNAMEs)</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> </dd> <dt>Elastic Beanstalk environment</dt> <dd> <p>Specify the <code>CNAME</code> attribute for the environment. (The environment must have a regionalized domain name.) You can use the following methods to get the value of the CNAME attribute:</p> <ul> <li> <p> <i>AWS Management Console</i>: For information about how to get the value by using the console, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html">Using Custom Domains with AWS Elastic Beanstalk</a> in the <i>AWS Elastic Beanstalk Developer Guide</i>.</p> </li> <li> <p> <i>Elastic Beanstalk API</i>: Use the <code>DescribeEnvironments</code> action to get the value of the <code>CNAME</code> attribute. For more information, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_DescribeEnvironments.html">DescribeEnvironments</a> in the <i>AWS Elastic Beanstalk API Reference</i>.</p> </li> <li> <p> <i>AWS CLI</i>: Use the <code>describe-environments</code> command to get the value of the <code>CNAME</code> attribute. For more information, see <a href="http://docs.aws.amazon.com/cli/latest/reference/elasticbeanstalk/describe-environments.html">describe-environments</a> in the <i>AWS Command Line Interface Reference</i>.</p> </li> </ul> </dd> <dt>ELB load balancer</dt> <dd> <p>Specify the DNS name that is associated with the load balancer. Get the DNS name by using the AWS Management Console, the ELB API, or the AWS CLI. </p> <ul> <li> <p> <b>AWS Management Console</b>: Go to the EC2 page, choose <b>Load Balancers</b> in the navigation pane, choose the load balancer, choose the <b>Description</b> tab, and get the value of the <b>DNS name</b> field. (If you're routing traffic to a Classic Load Balancer, get the value that begins with <b>dualstack</b>.) </p> </li> <li> <p> <b>Elastic Load Balancing API</b>: Use <code>DescribeLoadBalancers</code> to get the value of <code>DNSName</code>. For more information, see the applicable guide:</p> <ul> <li> <p>Classic Load Balancer: <a href="http://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DescribeLoadBalancers.html">DescribeLoadBalancers</a> </p> </li> <li> <p>Application Load Balancer: <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html">DescribeLoadBalancers</a> </p> </li> </ul> </li> <li> <p> <b>AWS CLI</b>: Use <code> <a href="http://docs.aws.amazon.com/cli/latest/reference/elb/describe-load-balancers.html">describe-load-balancers</a> </code> to get the value of <code>DNSName</code>.</p> </li> </ul> </dd> <dt>Amazon S3 bucket that is configured as a static website</dt> <dd> <p>Specify the domain name of the Amazon S3 website endpoint in which you created the bucket, for example, <code>s3-website-us-east-2.amazonaws.com</code>. For more information about valid values, see the table <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">Amazon Simple Storage Service (S3) Website Endpoints</a> in the <i>Amazon Web Services General Reference</i>. For more information about using S3 buckets for websites, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/getting-started.html">Getting Started with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide.</i> </p> </dd> <dt>Another Amazon Route 53 resource record set</dt> <dd> <p>Specify the value of the <code>Name</code> element for a resource record set in the current hosted zone.</p> </dd> </dl>
+-- Required key: HostedZoneId
+-- Required key: DNSName
+-- Required key: EvaluateTargetHealth
+-- @return AliasTarget structure as a key-value pair table
+function M.AliasTarget(args)
+	assert(args, "You must provdide an argument table when creating AliasTarget")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["EvaluateTargetHealth"] = _EvaluateTargetHealth,
-		["DNSName"] = _DNSName,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["EvaluateTargetHealth"] = args["EvaluateTargetHealth"],
+		["DNSName"] = args["DNSName"],
 	}
 	asserts.AssertAliasTarget(t)
 	return t
@@ -4260,8 +4686,11 @@ end
 
 --- Create a structure of type GetHostedZoneCountRequest
 -- <p>A request to retrieve a count of all the hosted zones that are associated with the current AWS account.</p>
-function M.GetHostedZoneCountRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHostedZoneCountRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetHostedZoneCountRequest structure as a key-value pair table
+function M.GetHostedZoneCountRequest(args)
+	assert(args, "You must provdide an argument table when creating GetHostedZoneCountRequest")
 	local t = { 
 	}
 	asserts.AssertGetHostedZoneCountRequest(t)
@@ -4282,12 +4711,15 @@ end
 
 --- Create a structure of type GetHealthCheckLastFailureReasonRequest
 -- <p>A request for the reason that a health check failed most recently.</p>
--- @param _HealthCheckId [HealthCheckId] <p>The ID for the health check for which you want the last failure reason. When you created the health check, <code>CreateHealthCheck</code> returned the ID in the response, in the <code>HealthCheckId</code> element.</p>
--- Required parameter: HealthCheckId
-function M.GetHealthCheckLastFailureReasonRequest(_HealthCheckId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHealthCheckLastFailureReasonRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheckId [HealthCheckId] <p>The ID for the health check for which you want the last failure reason. When you created the health check, <code>CreateHealthCheck</code> returned the ID in the response, in the <code>HealthCheckId</code> element.</p>
+-- Required key: HealthCheckId
+-- @return GetHealthCheckLastFailureReasonRequest structure as a key-value pair table
+function M.GetHealthCheckLastFailureReasonRequest(args)
+	assert(args, "You must provdide an argument table when creating GetHealthCheckLastFailureReasonRequest")
 	local t = { 
-		["HealthCheckId"] = _HealthCheckId,
+		["HealthCheckId"] = args["HealthCheckId"],
 	}
 	asserts.AssertGetHealthCheckLastFailureReasonRequest(t)
 	return t
@@ -4307,12 +4739,15 @@ end
 
 --- Create a structure of type UpdateHealthCheckResponse
 --  
--- @param _HealthCheck [HealthCheck] 
--- Required parameter: HealthCheck
-function M.UpdateHealthCheckResponse(_HealthCheck, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateHealthCheckResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HealthCheck [HealthCheck] 
+-- Required key: HealthCheck
+-- @return UpdateHealthCheckResponse structure as a key-value pair table
+function M.UpdateHealthCheckResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateHealthCheckResponse")
 	local t = { 
-		["HealthCheck"] = _HealthCheck,
+		["HealthCheck"] = args["HealthCheck"],
 	}
 	asserts.AssertUpdateHealthCheckResponse(t)
 	return t
@@ -4331,11 +4766,14 @@ end
 
 --- Create a structure of type TooManyHostedZones
 -- <p>This hosted zone can't be created because the hosted zone limit is exceeded. To request a limit increase, go to the Amazon Route 53 <a href="http://aws.amazon.com/route53-request/">Contact Us</a> page.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.TooManyHostedZones(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyHostedZones")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return TooManyHostedZones structure as a key-value pair table
+function M.TooManyHostedZones(args)
+	assert(args, "You must provdide an argument table when creating TooManyHostedZones")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTooManyHostedZones(t)
 	return t
@@ -4355,13 +4793,16 @@ end
 
 --- Create a structure of type Tag
 -- <p>A complex type that contains information about a tag that you want to add or edit for the specified health check or hosted zone.</p>
--- @param _Value [TagValue] <p>The value of <code>Value</code> depends on the operation that you want to perform:</p> <ul> <li> <p> <b>Add a tag to a health check or hosted zone</b>: <code>Value</code> is the value that you want to give the new tag.</p> </li> <li> <p> <b>Edit a tag</b>: <code>Value</code> is the new value that you want to assign the tag.</p> </li> </ul>
--- @param _Key [TagKey] <p>The value of <code>Key</code> depends on the operation that you want to perform:</p> <ul> <li> <p> <b>Add a tag to a health check or hosted zone</b>: <code>Key</code> is the name that you want to give the new tag.</p> </li> <li> <p> <b>Edit a tag</b>: <code>Key</code> is the name of the tag that you want to change the <code>Value</code> for.</p> </li> <li> <p> <b> Delete a key</b>: <code>Key</code> is the name of the tag you want to remove.</p> </li> <li> <p> <b>Give a name to a health check</b>: Edit the default <code>Name</code> tag. In the Amazon Route 53 console, the list of your health checks includes a <b>Name</b> column that lets you see the name that you've given to each health check.</p> </li> </ul>
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The value of <code>Value</code> depends on the operation that you want to perform:</p> <ul> <li> <p> <b>Add a tag to a health check or hosted zone</b>: <code>Value</code> is the value that you want to give the new tag.</p> </li> <li> <p> <b>Edit a tag</b>: <code>Value</code> is the new value that you want to assign the tag.</p> </li> </ul>
+-- * Key [TagKey] <p>The value of <code>Key</code> depends on the operation that you want to perform:</p> <ul> <li> <p> <b>Add a tag to a health check or hosted zone</b>: <code>Key</code> is the name that you want to give the new tag.</p> </li> <li> <p> <b>Edit a tag</b>: <code>Key</code> is the name of the tag that you want to change the <code>Value</code> for.</p> </li> <li> <p> <b> Delete a key</b>: <code>Key</code> is the name of the tag you want to remove.</p> </li> <li> <p> <b>Give a name to a health check</b>: Edit the default <code>Name</code> tag. In the Amazon Route 53 console, the list of your health checks includes a <b>Name</b> column that lets you see the name that you've given to each health check.</p> </li> </ul>
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -4383,15 +4824,18 @@ end
 
 --- Create a structure of type CreateTrafficPolicyVersionResponse
 -- <p>A complex type that contains the response information for the <code>CreateTrafficPolicyVersion</code> request.</p>
--- @param _TrafficPolicy [TrafficPolicy] <p>A complex type that contains settings for the new version of the traffic policy.</p>
--- @param _Location [ResourceURI] <p>A unique URL that represents a new traffic policy version.</p>
--- Required parameter: TrafficPolicy
--- Required parameter: Location
-function M.CreateTrafficPolicyVersionResponse(_TrafficPolicy, _Location, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTrafficPolicyVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TrafficPolicy [TrafficPolicy] <p>A complex type that contains settings for the new version of the traffic policy.</p>
+-- * Location [ResourceURI] <p>A unique URL that represents a new traffic policy version.</p>
+-- Required key: TrafficPolicy
+-- Required key: Location
+-- @return CreateTrafficPolicyVersionResponse structure as a key-value pair table
+function M.CreateTrafficPolicyVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyVersionResponse")
 	local t = { 
-		["TrafficPolicy"] = _TrafficPolicy,
-		["Location"] = _Location,
+		["TrafficPolicy"] = args["TrafficPolicy"],
+		["Location"] = args["Location"],
 	}
 	asserts.AssertCreateTrafficPolicyVersionResponse(t)
 	return t
@@ -4424,37 +4868,40 @@ end
 
 --- Create a structure of type ResourceRecordSet
 -- <p>Information about the resource record set to create or delete.</p>
--- @param _GeoLocation [GeoLocation] <p> <i>Geo location resource record sets only:</i> A complex type that lets you control how Amazon Route 53 responds to DNS queries based on the geographic origin of the query. For example, if you want all queries from Africa to be routed to a web server with an IP address of <code>192.0.2.111</code>, create a resource record set with a <code>Type</code> of <code>A</code> and a <code>ContinentCode</code> of <code>AF</code>.</p> <note> <p>Creating geolocation and geolocation alias resource record sets in private hosted zones is not supported.</p> </note> <p>If you create separate resource record sets for overlapping geographic regions (for example, one resource record set for a continent and one for a country on the same continent), priority goes to the smallest geographic region. This allows you to route most queries for a continent to one resource and to route queries for a country on that continent to a different resource.</p> <p>You can't create two geolocation resource record sets that specify the same geographic location.</p> <p>The value <code>*</code> in the <code>CountryCode</code> element matches all geographic locations that aren't specified in other geolocation resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements.</p> <important> <p>Geolocation works by mapping IP addresses to locations. However, some IP addresses aren't mapped to geographic locations, so even if you create geolocation resource record sets that cover all seven continents, Amazon Route 53 will receive some DNS queries from locations that it can't identify. We recommend that you create a resource record set for which the value of <code>CountryCode</code> is <code>*</code>, which handles both queries that come from locations for which you haven't created geolocation resource record sets and queries from IP addresses that aren't mapped to a location. If you don't create a <code>*</code> resource record set, Amazon Route 53 returns a "no answer" response for queries from those locations.</p> </important> <p>You can't create non-geolocation resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements as geolocation resource record sets.</p>
--- @param _HealthCheckId [HealthCheckId] <p>If you want Amazon Route 53 to return this resource record set in response to a DNS query only when a health check is passing, include the <code>HealthCheckId</code> element and specify the ID of the applicable health check.</p> <p>Amazon Route 53 determines whether a resource record set is healthy based on one of the following:</p> <ul> <li> <p>By periodically sending a request to the endpoint that is specified in the health check</p> </li> <li> <p>By aggregating the status of a specified group of health checks (calculated health checks)</p> </li> <li> <p>By determining the current state of a CloudWatch alarm (CloudWatch metric health checks)</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a>.</p> <p>The <code>HealthCheckId</code> element is only useful when Amazon Route 53 is choosing between two or more resource record sets to respond to a DNS query, and you want Amazon Route 53 to base the choice in part on the status of a health check. Configuring health checks only makes sense in the following configurations:</p> <ul> <li> <p>You're checking the health of the resource record sets in a group of weighted, latency, geolocation, or failover resource record sets, and you specify health check IDs for all of the resource record sets. If the health check for one resource record set specifies an endpoint that is not healthy, Amazon Route 53 stops responding to queries using the value for that resource record set.</p> </li> <li> <p>You set <code>EvaluateTargetHealth</code> to true for the resource record sets in a group of alias, weighted alias, latency alias, geolocation alias, or failover alias resource record sets, and you specify health check IDs for all of the resource record sets that are referenced by the alias resource record sets.</p> </li> </ul> <important> <p>Amazon Route 53 doesn't check the health of the endpoint specified in the resource record set, for example, the endpoint specified by the IP address in the <code>Value</code> element. When you add a <code>HealthCheckId</code> element to a resource record set, Amazon Route 53 checks the health of the endpoint that you specified in the health check. </p> </important> <p>For geolocation resource record sets, if an endpoint is unhealthy, Amazon Route 53 looks for a resource record set for the larger, associated geographic region. For example, suppose you have resource record sets for a state in the United States, for the United States, for North America, and for all locations. If the endpoint for the state resource record set is unhealthy, Amazon Route 53 checks the resource record sets for the United States, for North America, and for all locations (a resource record set for which the value of <code>CountryCode</code> is <code>*</code>), in that order, until it finds a resource record set for which the endpoint is healthy. </p> <p>If your health checks specify the endpoint only by domain name, we recommend that you create a separate health check for each endpoint. For example, create a health check for each <code>HTTP</code> server that is serving content for <code>www.example.com</code>. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server (such as <code>us-east-2-www.example.com</code>), not the name of the resource record sets (example.com).</p> <important> <p>n this configuration, if you create a health check for which the value of <code>FullyQualifiedDomainName</code> matches the name of the resource record sets and then associate the health check with those resource record sets, health check results will be unpredictable.</p> </important> <p>For more information, see the following topics in the <i>Amazon Route 53 Developer Guide</i>:</p> <ul> <li> <p> <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html">Amazon Route 53 Health Checks and DNS Failover</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html">Configuring Failover in a Private Hosted Zone</a> </p> </li> </ul>
--- @param _Name [DNSName] <p>The name of the domain you want to perform the action on.</p> <p>Enter a fully qualified domain name, for example, <code>www.example.com</code>. You can optionally include a trailing dot. If you omit the trailing dot, Amazon Route 53 still assumes that the domain name that you specify is fully qualified. This means that Amazon Route 53 treats <code>www.example.com</code> (without a trailing dot) and <code>www.example.com.</code> (with a trailing dot) as identical.</p> <p>For information about how to specify characters other than <code>a-z</code>, <code>0-9</code>, and <code>-</code> (hyphen) and how to specify internationalized domain names, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html">DNS Domain Name Format</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>You can use the asterisk (*) wildcard to replace the leftmost label in a domain name, for example, <code>*.example.com</code>. Note the following:</p> <ul> <li> <p>The * must replace the entire label. For example, you can't specify <code>*prod.example.com</code> or <code>prod*.example.com</code>.</p> </li> <li> <p>The * can't replace any of the middle labels, for example, marketing.*.example.com.</p> </li> <li> <p>If you include * in any position other than the leftmost label in a domain name, DNS treats it as an * character (ASCII 42), not as a wildcard.</p> <important> <p>You can't use the * wildcard for resource records sets that have a type of NS.</p> </important> </li> </ul> <p>You can use the * wildcard as the leftmost label in a domain name, for example, <code>*.example.com</code>. You can't use an * for one of the middle labels, for example, <code>marketing.*.example.com</code>. In addition, the * must replace the entire label; for example, you can't specify <code>prod*.example.com</code>.</p>
--- @param _Weight [ResourceRecordSetWeight] <p> <i>Weighted resource record sets only:</i> Among resource record sets that have the same combination of DNS name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the current resource record set. Amazon Route 53 calculates the sum of the weights for the resource record sets that have the same combination of DNS name and type. Amazon Route 53 then responds to queries based on the ratio of a resource's weight to the total. Note the following:</p> <ul> <li> <p>You must specify a value for the <code>Weight</code> element for every weighted resource record set.</p> </li> <li> <p>You can only specify one <code>ResourceRecord</code> per weighted resource record set.</p> </li> <li> <p>You can't create latency, failover, or geolocation resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements as weighted resource record sets.</p> </li> <li> <p>You can create a maximum of 100 weighted resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements.</p> </li> <li> <p>For weighted (but not weighted alias) resource record sets, if you set <code>Weight</code> to <code>0</code> for a resource record set, Amazon Route 53 never responds to queries with the applicable value for that resource record set. However, if you set <code>Weight</code> to <code>0</code> for all resource record sets that have the same combination of DNS name and type, traffic is routed to all resources with equal probability.</p> <p>The effect of setting <code>Weight</code> to <code>0</code> is different when you associate health checks with weighted resource record sets. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html">Options for Configuring Amazon Route 53 Active-Active and Active-Passive Failover</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> </li> </ul>
--- @param _Type [RRType] <p>The DNS record type. For information about different record types and how data is encoded for them, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html">Supported DNS Resource Record Types</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>Valid values for basic resource record sets: <code>A</code> | <code>AAAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>NS</code> | <code>PTR</code> | <code>SOA</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code> </p> <p>Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> | <code>AAAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>. When creating a group of weighted, latency, geolocation, or failover resource record sets, specify the same value for all of the resource record sets in the group.</p> <p>Valid values for multivalue answer resource record sets: <code>A</code> | <code>AAAA</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code> </p> <note> <p>SPF records were formerly used to verify the identity of the sender of email messages. However, we no longer recommend that you create resource record sets for which the value of <code>Type</code> is <code>SPF</code>. RFC 7208, <i>Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1</i>, has been updated to say, "...[I]ts existence and mechanism defined in [RFC4408] have led to some interoperability issues. Accordingly, its use is no longer appropriate for SPF version 1; implementations are not to use it." In RFC 7208, see section 14.1, <a href="http://tools.ietf.org/html/rfc7208#section-14.1">The SPF DNS Record Type</a>.</p> </note> <p>Values for alias resource record sets:</p> <ul> <li> <p> <b>CloudFront distributions:</b> <code>A</code> </p> <p>If IPv6 is enabled for the distribution, create two resource record sets to route traffic to your distribution, one with a value of <code>A</code> and one with a value of <code>AAAA</code>. </p> </li> <li> <p> <b>AWS Elastic Beanstalk environment that has a regionalized subdomain</b>: <code>A</code> </p> </li> <li> <p> <b>ELB load balancers:</b> <code>A</code> | <code>AAAA</code> </p> </li> <li> <p> <b>Amazon S3 buckets:</b> <code>A</code> </p> </li> <li> <p> <b>Another resource record set in this hosted zone:</b> Specify the type of the resource record set that you're creating the alias for. All values are supported except <code>NS</code> and <code>SOA</code>.</p> </li> </ul>
--- @param _Region [ResourceRecordSetRegion] <p> <i>Latency-based resource record sets only:</i> The Amazon EC2 Region where you created the resource that this resource record set refers to. The resource typically is an AWS resource, such as an EC2 instance or an ELB load balancer, and is referred to by an IP address or a DNS domain name, depending on the record type.</p> <note> <p>Creating latency and latency alias resource record sets in private hosted zones is not supported.</p> </note> <p>When Amazon Route 53 receives a DNS query for a domain name and type for which you have created latency resource record sets, Amazon Route 53 selects the latency resource record set that has the lowest latency between the end user and the associated Amazon EC2 Region. Amazon Route 53 then returns the value that is associated with the selected resource record set.</p> <p>Note the following:</p> <ul> <li> <p>You can only specify one <code>ResourceRecord</code> per latency resource record set.</p> </li> <li> <p>You can only create one latency resource record set for each Amazon EC2 Region.</p> </li> <li> <p>You aren't required to create latency resource record sets for all Amazon EC2 Regions. Amazon Route 53 will choose the region with the best latency from among the regions that you create latency resource record sets for.</p> </li> <li> <p>You can't create non-latency resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements as latency resource record sets.</p> </li> </ul>
--- @param _AliasTarget [AliasTarget] <p> <i>Alias resource record sets only:</i> Information about the CloudFront distribution, AWS Elastic Beanstalk environment, ELB load balancer, Amazon S3 bucket, or Amazon Route 53 resource record set to which you're redirecting queries. The AWS Elastic Beanstalk environment must have a regionalized subdomain.</p> <p>If you're creating resource records sets for a private hosted zone, note the following:</p> <ul> <li> <p>You can't create alias resource record sets for CloudFront distributions in a private hosted zone.</p> </li> <li> <p>Creating geolocation alias resource record sets or latency alias resource record sets in a private hosted zone is unsupported.</p> </li> <li> <p>For information about creating failover resource record sets in a private hosted zone, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html">Configuring Failover in a Private Hosted Zone</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> </li> </ul>
--- @param _ResourceRecords [ResourceRecords] <p>Information about the resource records to act upon.</p> <note> <p>If you're creating an alias resource record set, omit <code>ResourceRecords</code>.</p> </note>
--- @param _MultiValueAnswer [ResourceRecordSetMultiValueAnswer] <p> <i>Multivalue answer resource record sets only</i>: To route traffic approximately randomly to multiple resources, such as web servers, create one multivalue answer record for each resource and specify <code>true</code> for <code>MultiValueAnswer</code>. Note the following:</p> <ul> <li> <p>If you associate a health check with a multivalue answer resource record set, Amazon Route 53 responds to DNS queries with the corresponding IP address only when the health check is healthy.</p> </li> <li> <p>If you don't associate a health check with a multivalue answer record, Amazon Route 53 always considers the record to be healthy.</p> </li> <li> <p>Amazon Route 53 responds to DNS queries with up to eight healthy records; if you have eight or fewer healthy records, Amazon Route 53 responds to all DNS queries with all the healthy records.</p> </li> <li> <p>If you have more than eight healthy records, Amazon Route 53 responds to different DNS resolvers with different combinations of healthy records.</p> </li> <li> <p>When all records are unhealthy, Amazon Route 53 responds to DNS queries with up to eight unhealthy records.</p> </li> <li> <p>If a resource becomes unavailable after a resolver caches a response, client software typically tries another of the IP addresses in the response.</p> </li> </ul> <p>You can't create multivalue answer alias records.</p>
--- @param _TTL [TTL] <p>The resource record cache time to live (TTL), in seconds. Note the following:</p> <ul> <li> <p>If you're creating or updating an alias resource record set, omit <code>TTL</code>. Amazon Route 53 uses the value of <code>TTL</code> for the alias target. </p> </li> <li> <p>If you're associating this resource record set with a health check (if you're adding a <code>HealthCheckId</code> element), we recommend that you specify a <code>TTL</code> of 60 seconds or less so clients respond quickly to changes in health status.</p> </li> <li> <p>All of the resource record sets in a group of weighted resource record sets must have the same value for <code>TTL</code>.</p> </li> <li> <p>If a group of weighted resource record sets includes one or more weighted alias resource record sets for which the alias target is an ELB load balancer, we recommend that you specify a <code>TTL</code> of 60 seconds for all of the non-alias weighted resource record sets that have the same name and type. Values other than 60 seconds (the TTL for load balancers) will change the effect of the values that you specify for <code>Weight</code>.</p> </li> </ul>
--- @param _TrafficPolicyInstanceId [TrafficPolicyInstanceId] <p>When you create a traffic policy instance, Amazon Route 53 automatically creates a resource record set. <code>TrafficPolicyInstanceId</code> is the ID of the traffic policy instance that Amazon Route 53 created this resource record set for.</p> <important> <p>To delete the resource record set that is associated with a traffic policy instance, use <code>DeleteTrafficPolicyInstance</code>. Amazon Route 53 will delete the resource record set automatically. If you delete the resource record set by using <code>ChangeResourceRecordSets</code>, Amazon Route 53 doesn't automatically delete the traffic policy instance, and you'll continue to be charged for it even though it's no longer in use. </p> </important>
--- @param _SetIdentifier [ResourceRecordSetIdentifier] <p> <i>Weighted, Latency, Geo, and Failover resource record sets only:</i> An identifier that differentiates among multiple resource record sets that have the same combination of DNS name and type. The value of <code>SetIdentifier</code> must be unique for each resource record set that has the same combination of DNS name and type. Omit <code>SetIdentifier</code> for any other types of record sets.</p>
--- @param _Failover [ResourceRecordSetFailover] <p> <i>Failover resource record sets only:</i> To configure failover, you add the <code>Failover</code> element to two resource record sets. For one resource record set, you specify <code>PRIMARY</code> as the value for <code>Failover</code>; for the other resource record set, you specify <code>SECONDARY</code>. In addition, you include the <code>HealthCheckId</code> element and specify the health check that you want Amazon Route 53 to perform for each resource record set.</p> <p>Except where noted, the following failover behaviors assume that you have included the <code>HealthCheckId</code> element in both resource record sets:</p> <ul> <li> <p>When the primary resource record set is healthy, Amazon Route 53 responds to DNS queries with the applicable value from the primary resource record set regardless of the health of the secondary resource record set.</p> </li> <li> <p>When the primary resource record set is unhealthy and the secondary resource record set is healthy, Amazon Route 53 responds to DNS queries with the applicable value from the secondary resource record set.</p> </li> <li> <p>When the secondary resource record set is unhealthy, Amazon Route 53 responds to DNS queries with the applicable value from the primary resource record set regardless of the health of the primary resource record set.</p> </li> <li> <p>If you omit the <code>HealthCheckId</code> element for the secondary resource record set, and if the primary resource record set is unhealthy, Amazon Route 53 always responds to DNS queries with the applicable value from the secondary resource record set. This is true regardless of the health of the associated endpoint.</p> </li> </ul> <p>You can't create non-failover resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements as failover resource record sets.</p> <p>For failover alias resource record sets, you must also include the <code>EvaluateTargetHealth</code> element and set the value to true.</p> <p>For more information about configuring failover for Amazon Route 53, see the following topics in the <i>Amazon Route 53 Developer Guide</i>: </p> <ul> <li> <p> <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html">Amazon Route 53 Health Checks and DNS Failover</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html">Configuring Failover in a Private Hosted Zone</a> </p> </li> </ul>
--- Required parameter: Name
--- Required parameter: Type
-function M.ResourceRecordSet(_GeoLocation, _HealthCheckId, _Name, _Weight, _Type, _Region, _AliasTarget, _ResourceRecords, _MultiValueAnswer, _TTL, _TrafficPolicyInstanceId, _SetIdentifier, _Failover, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceRecordSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GeoLocation [GeoLocation] <p> <i>Geo location resource record sets only:</i> A complex type that lets you control how Amazon Route 53 responds to DNS queries based on the geographic origin of the query. For example, if you want all queries from Africa to be routed to a web server with an IP address of <code>192.0.2.111</code>, create a resource record set with a <code>Type</code> of <code>A</code> and a <code>ContinentCode</code> of <code>AF</code>.</p> <note> <p>Creating geolocation and geolocation alias resource record sets in private hosted zones is not supported.</p> </note> <p>If you create separate resource record sets for overlapping geographic regions (for example, one resource record set for a continent and one for a country on the same continent), priority goes to the smallest geographic region. This allows you to route most queries for a continent to one resource and to route queries for a country on that continent to a different resource.</p> <p>You can't create two geolocation resource record sets that specify the same geographic location.</p> <p>The value <code>*</code> in the <code>CountryCode</code> element matches all geographic locations that aren't specified in other geolocation resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements.</p> <important> <p>Geolocation works by mapping IP addresses to locations. However, some IP addresses aren't mapped to geographic locations, so even if you create geolocation resource record sets that cover all seven continents, Amazon Route 53 will receive some DNS queries from locations that it can't identify. We recommend that you create a resource record set for which the value of <code>CountryCode</code> is <code>*</code>, which handles both queries that come from locations for which you haven't created geolocation resource record sets and queries from IP addresses that aren't mapped to a location. If you don't create a <code>*</code> resource record set, Amazon Route 53 returns a "no answer" response for queries from those locations.</p> </important> <p>You can't create non-geolocation resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements as geolocation resource record sets.</p>
+-- * HealthCheckId [HealthCheckId] <p>If you want Amazon Route 53 to return this resource record set in response to a DNS query only when a health check is passing, include the <code>HealthCheckId</code> element and specify the ID of the applicable health check.</p> <p>Amazon Route 53 determines whether a resource record set is healthy based on one of the following:</p> <ul> <li> <p>By periodically sending a request to the endpoint that is specified in the health check</p> </li> <li> <p>By aggregating the status of a specified group of health checks (calculated health checks)</p> </li> <li> <p>By determining the current state of a CloudWatch alarm (CloudWatch metric health checks)</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html">How Amazon Route 53 Determines Whether an Endpoint Is Healthy</a>.</p> <p>The <code>HealthCheckId</code> element is only useful when Amazon Route 53 is choosing between two or more resource record sets to respond to a DNS query, and you want Amazon Route 53 to base the choice in part on the status of a health check. Configuring health checks only makes sense in the following configurations:</p> <ul> <li> <p>You're checking the health of the resource record sets in a group of weighted, latency, geolocation, or failover resource record sets, and you specify health check IDs for all of the resource record sets. If the health check for one resource record set specifies an endpoint that is not healthy, Amazon Route 53 stops responding to queries using the value for that resource record set.</p> </li> <li> <p>You set <code>EvaluateTargetHealth</code> to true for the resource record sets in a group of alias, weighted alias, latency alias, geolocation alias, or failover alias resource record sets, and you specify health check IDs for all of the resource record sets that are referenced by the alias resource record sets.</p> </li> </ul> <important> <p>Amazon Route 53 doesn't check the health of the endpoint specified in the resource record set, for example, the endpoint specified by the IP address in the <code>Value</code> element. When you add a <code>HealthCheckId</code> element to a resource record set, Amazon Route 53 checks the health of the endpoint that you specified in the health check. </p> </important> <p>For geolocation resource record sets, if an endpoint is unhealthy, Amazon Route 53 looks for a resource record set for the larger, associated geographic region. For example, suppose you have resource record sets for a state in the United States, for the United States, for North America, and for all locations. If the endpoint for the state resource record set is unhealthy, Amazon Route 53 checks the resource record sets for the United States, for North America, and for all locations (a resource record set for which the value of <code>CountryCode</code> is <code>*</code>), in that order, until it finds a resource record set for which the endpoint is healthy. </p> <p>If your health checks specify the endpoint only by domain name, we recommend that you create a separate health check for each endpoint. For example, create a health check for each <code>HTTP</code> server that is serving content for <code>www.example.com</code>. For the value of <code>FullyQualifiedDomainName</code>, specify the domain name of the server (such as <code>us-east-2-www.example.com</code>), not the name of the resource record sets (example.com).</p> <important> <p>n this configuration, if you create a health check for which the value of <code>FullyQualifiedDomainName</code> matches the name of the resource record sets and then associate the health check with those resource record sets, health check results will be unpredictable.</p> </important> <p>For more information, see the following topics in the <i>Amazon Route 53 Developer Guide</i>:</p> <ul> <li> <p> <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html">Amazon Route 53 Health Checks and DNS Failover</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html">Configuring Failover in a Private Hosted Zone</a> </p> </li> </ul>
+-- * Name [DNSName] <p>The name of the domain you want to perform the action on.</p> <p>Enter a fully qualified domain name, for example, <code>www.example.com</code>. You can optionally include a trailing dot. If you omit the trailing dot, Amazon Route 53 still assumes that the domain name that you specify is fully qualified. This means that Amazon Route 53 treats <code>www.example.com</code> (without a trailing dot) and <code>www.example.com.</code> (with a trailing dot) as identical.</p> <p>For information about how to specify characters other than <code>a-z</code>, <code>0-9</code>, and <code>-</code> (hyphen) and how to specify internationalized domain names, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html">DNS Domain Name Format</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>You can use the asterisk (*) wildcard to replace the leftmost label in a domain name, for example, <code>*.example.com</code>. Note the following:</p> <ul> <li> <p>The * must replace the entire label. For example, you can't specify <code>*prod.example.com</code> or <code>prod*.example.com</code>.</p> </li> <li> <p>The * can't replace any of the middle labels, for example, marketing.*.example.com.</p> </li> <li> <p>If you include * in any position other than the leftmost label in a domain name, DNS treats it as an * character (ASCII 42), not as a wildcard.</p> <important> <p>You can't use the * wildcard for resource records sets that have a type of NS.</p> </important> </li> </ul> <p>You can use the * wildcard as the leftmost label in a domain name, for example, <code>*.example.com</code>. You can't use an * for one of the middle labels, for example, <code>marketing.*.example.com</code>. In addition, the * must replace the entire label; for example, you can't specify <code>prod*.example.com</code>.</p>
+-- * Weight [ResourceRecordSetWeight] <p> <i>Weighted resource record sets only:</i> Among resource record sets that have the same combination of DNS name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the current resource record set. Amazon Route 53 calculates the sum of the weights for the resource record sets that have the same combination of DNS name and type. Amazon Route 53 then responds to queries based on the ratio of a resource's weight to the total. Note the following:</p> <ul> <li> <p>You must specify a value for the <code>Weight</code> element for every weighted resource record set.</p> </li> <li> <p>You can only specify one <code>ResourceRecord</code> per weighted resource record set.</p> </li> <li> <p>You can't create latency, failover, or geolocation resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements as weighted resource record sets.</p> </li> <li> <p>You can create a maximum of 100 weighted resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements.</p> </li> <li> <p>For weighted (but not weighted alias) resource record sets, if you set <code>Weight</code> to <code>0</code> for a resource record set, Amazon Route 53 never responds to queries with the applicable value for that resource record set. However, if you set <code>Weight</code> to <code>0</code> for all resource record sets that have the same combination of DNS name and type, traffic is routed to all resources with equal probability.</p> <p>The effect of setting <code>Weight</code> to <code>0</code> is different when you associate health checks with weighted resource record sets. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring-options.html">Options for Configuring Amazon Route 53 Active-Active and Active-Passive Failover</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> </li> </ul>
+-- * Type [RRType] <p>The DNS record type. For information about different record types and how data is encoded for them, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html">Supported DNS Resource Record Types</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>Valid values for basic resource record sets: <code>A</code> | <code>AAAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>NS</code> | <code>PTR</code> | <code>SOA</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code> </p> <p>Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> | <code>AAAA</code> | <code>CNAME</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>. When creating a group of weighted, latency, geolocation, or failover resource record sets, specify the same value for all of the resource record sets in the group.</p> <p>Valid values for multivalue answer resource record sets: <code>A</code> | <code>AAAA</code> | <code>MX</code> | <code>NAPTR</code> | <code>PTR</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code> </p> <note> <p>SPF records were formerly used to verify the identity of the sender of email messages. However, we no longer recommend that you create resource record sets for which the value of <code>Type</code> is <code>SPF</code>. RFC 7208, <i>Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1</i>, has been updated to say, "...[I]ts existence and mechanism defined in [RFC4408] have led to some interoperability issues. Accordingly, its use is no longer appropriate for SPF version 1; implementations are not to use it." In RFC 7208, see section 14.1, <a href="http://tools.ietf.org/html/rfc7208#section-14.1">The SPF DNS Record Type</a>.</p> </note> <p>Values for alias resource record sets:</p> <ul> <li> <p> <b>CloudFront distributions:</b> <code>A</code> </p> <p>If IPv6 is enabled for the distribution, create two resource record sets to route traffic to your distribution, one with a value of <code>A</code> and one with a value of <code>AAAA</code>. </p> </li> <li> <p> <b>AWS Elastic Beanstalk environment that has a regionalized subdomain</b>: <code>A</code> </p> </li> <li> <p> <b>ELB load balancers:</b> <code>A</code> | <code>AAAA</code> </p> </li> <li> <p> <b>Amazon S3 buckets:</b> <code>A</code> </p> </li> <li> <p> <b>Another resource record set in this hosted zone:</b> Specify the type of the resource record set that you're creating the alias for. All values are supported except <code>NS</code> and <code>SOA</code>.</p> </li> </ul>
+-- * Region [ResourceRecordSetRegion] <p> <i>Latency-based resource record sets only:</i> The Amazon EC2 Region where you created the resource that this resource record set refers to. The resource typically is an AWS resource, such as an EC2 instance or an ELB load balancer, and is referred to by an IP address or a DNS domain name, depending on the record type.</p> <note> <p>Creating latency and latency alias resource record sets in private hosted zones is not supported.</p> </note> <p>When Amazon Route 53 receives a DNS query for a domain name and type for which you have created latency resource record sets, Amazon Route 53 selects the latency resource record set that has the lowest latency between the end user and the associated Amazon EC2 Region. Amazon Route 53 then returns the value that is associated with the selected resource record set.</p> <p>Note the following:</p> <ul> <li> <p>You can only specify one <code>ResourceRecord</code> per latency resource record set.</p> </li> <li> <p>You can only create one latency resource record set for each Amazon EC2 Region.</p> </li> <li> <p>You aren't required to create latency resource record sets for all Amazon EC2 Regions. Amazon Route 53 will choose the region with the best latency from among the regions that you create latency resource record sets for.</p> </li> <li> <p>You can't create non-latency resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements as latency resource record sets.</p> </li> </ul>
+-- * AliasTarget [AliasTarget] <p> <i>Alias resource record sets only:</i> Information about the CloudFront distribution, AWS Elastic Beanstalk environment, ELB load balancer, Amazon S3 bucket, or Amazon Route 53 resource record set to which you're redirecting queries. The AWS Elastic Beanstalk environment must have a regionalized subdomain.</p> <p>If you're creating resource records sets for a private hosted zone, note the following:</p> <ul> <li> <p>You can't create alias resource record sets for CloudFront distributions in a private hosted zone.</p> </li> <li> <p>Creating geolocation alias resource record sets or latency alias resource record sets in a private hosted zone is unsupported.</p> </li> <li> <p>For information about creating failover resource record sets in a private hosted zone, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html">Configuring Failover in a Private Hosted Zone</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> </li> </ul>
+-- * ResourceRecords [ResourceRecords] <p>Information about the resource records to act upon.</p> <note> <p>If you're creating an alias resource record set, omit <code>ResourceRecords</code>.</p> </note>
+-- * MultiValueAnswer [ResourceRecordSetMultiValueAnswer] <p> <i>Multivalue answer resource record sets only</i>: To route traffic approximately randomly to multiple resources, such as web servers, create one multivalue answer record for each resource and specify <code>true</code> for <code>MultiValueAnswer</code>. Note the following:</p> <ul> <li> <p>If you associate a health check with a multivalue answer resource record set, Amazon Route 53 responds to DNS queries with the corresponding IP address only when the health check is healthy.</p> </li> <li> <p>If you don't associate a health check with a multivalue answer record, Amazon Route 53 always considers the record to be healthy.</p> </li> <li> <p>Amazon Route 53 responds to DNS queries with up to eight healthy records; if you have eight or fewer healthy records, Amazon Route 53 responds to all DNS queries with all the healthy records.</p> </li> <li> <p>If you have more than eight healthy records, Amazon Route 53 responds to different DNS resolvers with different combinations of healthy records.</p> </li> <li> <p>When all records are unhealthy, Amazon Route 53 responds to DNS queries with up to eight unhealthy records.</p> </li> <li> <p>If a resource becomes unavailable after a resolver caches a response, client software typically tries another of the IP addresses in the response.</p> </li> </ul> <p>You can't create multivalue answer alias records.</p>
+-- * TTL [TTL] <p>The resource record cache time to live (TTL), in seconds. Note the following:</p> <ul> <li> <p>If you're creating or updating an alias resource record set, omit <code>TTL</code>. Amazon Route 53 uses the value of <code>TTL</code> for the alias target. </p> </li> <li> <p>If you're associating this resource record set with a health check (if you're adding a <code>HealthCheckId</code> element), we recommend that you specify a <code>TTL</code> of 60 seconds or less so clients respond quickly to changes in health status.</p> </li> <li> <p>All of the resource record sets in a group of weighted resource record sets must have the same value for <code>TTL</code>.</p> </li> <li> <p>If a group of weighted resource record sets includes one or more weighted alias resource record sets for which the alias target is an ELB load balancer, we recommend that you specify a <code>TTL</code> of 60 seconds for all of the non-alias weighted resource record sets that have the same name and type. Values other than 60 seconds (the TTL for load balancers) will change the effect of the values that you specify for <code>Weight</code>.</p> </li> </ul>
+-- * TrafficPolicyInstanceId [TrafficPolicyInstanceId] <p>When you create a traffic policy instance, Amazon Route 53 automatically creates a resource record set. <code>TrafficPolicyInstanceId</code> is the ID of the traffic policy instance that Amazon Route 53 created this resource record set for.</p> <important> <p>To delete the resource record set that is associated with a traffic policy instance, use <code>DeleteTrafficPolicyInstance</code>. Amazon Route 53 will delete the resource record set automatically. If you delete the resource record set by using <code>ChangeResourceRecordSets</code>, Amazon Route 53 doesn't automatically delete the traffic policy instance, and you'll continue to be charged for it even though it's no longer in use. </p> </important>
+-- * SetIdentifier [ResourceRecordSetIdentifier] <p> <i>Weighted, Latency, Geo, and Failover resource record sets only:</i> An identifier that differentiates among multiple resource record sets that have the same combination of DNS name and type. The value of <code>SetIdentifier</code> must be unique for each resource record set that has the same combination of DNS name and type. Omit <code>SetIdentifier</code> for any other types of record sets.</p>
+-- * Failover [ResourceRecordSetFailover] <p> <i>Failover resource record sets only:</i> To configure failover, you add the <code>Failover</code> element to two resource record sets. For one resource record set, you specify <code>PRIMARY</code> as the value for <code>Failover</code>; for the other resource record set, you specify <code>SECONDARY</code>. In addition, you include the <code>HealthCheckId</code> element and specify the health check that you want Amazon Route 53 to perform for each resource record set.</p> <p>Except where noted, the following failover behaviors assume that you have included the <code>HealthCheckId</code> element in both resource record sets:</p> <ul> <li> <p>When the primary resource record set is healthy, Amazon Route 53 responds to DNS queries with the applicable value from the primary resource record set regardless of the health of the secondary resource record set.</p> </li> <li> <p>When the primary resource record set is unhealthy and the secondary resource record set is healthy, Amazon Route 53 responds to DNS queries with the applicable value from the secondary resource record set.</p> </li> <li> <p>When the secondary resource record set is unhealthy, Amazon Route 53 responds to DNS queries with the applicable value from the primary resource record set regardless of the health of the primary resource record set.</p> </li> <li> <p>If you omit the <code>HealthCheckId</code> element for the secondary resource record set, and if the primary resource record set is unhealthy, Amazon Route 53 always responds to DNS queries with the applicable value from the secondary resource record set. This is true regardless of the health of the associated endpoint.</p> </li> </ul> <p>You can't create non-failover resource record sets that have the same values for the <code>Name</code> and <code>Type</code> elements as failover resource record sets.</p> <p>For failover alias resource record sets, you must also include the <code>EvaluateTargetHealth</code> element and set the value to true.</p> <p>For more information about configuring failover for Amazon Route 53, see the following topics in the <i>Amazon Route 53 Developer Guide</i>: </p> <ul> <li> <p> <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html">Amazon Route 53 Health Checks and DNS Failover</a> </p> </li> <li> <p> <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html">Configuring Failover in a Private Hosted Zone</a> </p> </li> </ul>
+-- Required key: Name
+-- Required key: Type
+-- @return ResourceRecordSet structure as a key-value pair table
+function M.ResourceRecordSet(args)
+	assert(args, "You must provdide an argument table when creating ResourceRecordSet")
 	local t = { 
-		["GeoLocation"] = _GeoLocation,
-		["HealthCheckId"] = _HealthCheckId,
-		["Name"] = _Name,
-		["Weight"] = _Weight,
-		["Type"] = _Type,
-		["Region"] = _Region,
-		["AliasTarget"] = _AliasTarget,
-		["ResourceRecords"] = _ResourceRecords,
-		["MultiValueAnswer"] = _MultiValueAnswer,
-		["TTL"] = _TTL,
-		["TrafficPolicyInstanceId"] = _TrafficPolicyInstanceId,
-		["SetIdentifier"] = _SetIdentifier,
-		["Failover"] = _Failover,
+		["GeoLocation"] = args["GeoLocation"],
+		["HealthCheckId"] = args["HealthCheckId"],
+		["Name"] = args["Name"],
+		["Weight"] = args["Weight"],
+		["Type"] = args["Type"],
+		["Region"] = args["Region"],
+		["AliasTarget"] = args["AliasTarget"],
+		["ResourceRecords"] = args["ResourceRecords"],
+		["MultiValueAnswer"] = args["MultiValueAnswer"],
+		["TTL"] = args["TTL"],
+		["TrafficPolicyInstanceId"] = args["TrafficPolicyInstanceId"],
+		["SetIdentifier"] = args["SetIdentifier"],
+		["Failover"] = args["Failover"],
 	}
 	asserts.AssertResourceRecordSet(t)
 	return t
@@ -4473,11 +4920,14 @@ end
 
 --- Create a structure of type InvalidPaginationToken
 --  
--- @param _message [ErrorMessage] 
-function M.InvalidPaginationToken(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPaginationToken")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidPaginationToken structure as a key-value pair table
+function M.InvalidPaginationToken(args)
+	assert(args, "You must provdide an argument table when creating InvalidPaginationToken")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidPaginationToken(t)
 	return t
@@ -4496,11 +4946,14 @@ end
 
 --- Create a structure of type NoSuchGeoLocation
 -- <p>Amazon Route 53 doesn't support the specified geolocation.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.NoSuchGeoLocation(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchGeoLocation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return NoSuchGeoLocation structure as a key-value pair table
+function M.NoSuchGeoLocation(args)
+	assert(args, "You must provdide an argument table when creating NoSuchGeoLocation")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNoSuchGeoLocation(t)
 	return t
@@ -4519,11 +4972,14 @@ end
 
 --- Create a structure of type TooManyTrafficPolicies
 -- <p>You've created the maximum number of traffic policies that can be created for the current AWS account. You can request an increase to the limit on the <a href="http://aws.amazon.com/route53-request/">Contact Us</a> page.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.TooManyTrafficPolicies(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TooManyTrafficPolicies")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return TooManyTrafficPolicies structure as a key-value pair table
+function M.TooManyTrafficPolicies(args)
+	assert(args, "You must provdide an argument table when creating TooManyTrafficPolicies")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTooManyTrafficPolicies(t)
 	return t
@@ -4545,15 +5001,18 @@ end
 
 --- Create a structure of type ChangeResourceRecordSetsRequest
 -- <p>A complex type that contains change information for the resource record set.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the hosted zone that contains the resource record sets that you want to change.</p>
--- @param _ChangeBatch [ChangeBatch] <p>A complex type that contains an optional comment and the <code>Changes</code> element.</p>
--- Required parameter: HostedZoneId
--- Required parameter: ChangeBatch
-function M.ChangeResourceRecordSetsRequest(_HostedZoneId, _ChangeBatch, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChangeResourceRecordSetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>The ID of the hosted zone that contains the resource record sets that you want to change.</p>
+-- * ChangeBatch [ChangeBatch] <p>A complex type that contains an optional comment and the <code>Changes</code> element.</p>
+-- Required key: HostedZoneId
+-- Required key: ChangeBatch
+-- @return ChangeResourceRecordSetsRequest structure as a key-value pair table
+function M.ChangeResourceRecordSetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ChangeResourceRecordSetsRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["ChangeBatch"] = _ChangeBatch,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["ChangeBatch"] = args["ChangeBatch"],
 	}
 	asserts.AssertChangeResourceRecordSetsRequest(t)
 	return t
@@ -4573,12 +5032,15 @@ end
 
 --- Create a structure of type ListTagsForResourcesResponse
 -- <p>A complex type containing tags for the specified resources.</p>
--- @param _ResourceTagSets [ResourceTagSetList] <p>A list of <code>ResourceTagSet</code>s containing tags associated with the specified resources.</p>
--- Required parameter: ResourceTagSets
-function M.ListTagsForResourcesResponse(_ResourceTagSets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForResourcesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceTagSets [ResourceTagSetList] <p>A list of <code>ResourceTagSet</code>s containing tags associated with the specified resources.</p>
+-- Required key: ResourceTagSets
+-- @return ListTagsForResourcesResponse structure as a key-value pair table
+function M.ListTagsForResourcesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForResourcesResponse")
 	local t = { 
-		["ResourceTagSets"] = _ResourceTagSets,
+		["ResourceTagSets"] = args["ResourceTagSets"],
 	}
 	asserts.AssertListTagsForResourcesResponse(t)
 	return t
@@ -4598,12 +5060,15 @@ end
 
 --- Create a structure of type AssociateVPCWithHostedZoneResponse
 -- <p>A complex type that contains the response information for the <code>AssociateVPCWithHostedZone</code> request.</p>
--- @param _ChangeInfo [ChangeInfo] <p>A complex type that describes the changes made to your hosted zone.</p>
--- Required parameter: ChangeInfo
-function M.AssociateVPCWithHostedZoneResponse(_ChangeInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateVPCWithHostedZoneResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeInfo [ChangeInfo] <p>A complex type that describes the changes made to your hosted zone.</p>
+-- Required key: ChangeInfo
+-- @return AssociateVPCWithHostedZoneResponse structure as a key-value pair table
+function M.AssociateVPCWithHostedZoneResponse(args)
+	assert(args, "You must provdide an argument table when creating AssociateVPCWithHostedZoneResponse")
 	local t = { 
-		["ChangeInfo"] = _ChangeInfo,
+		["ChangeInfo"] = args["ChangeInfo"],
 	}
 	asserts.AssertAssociateVPCWithHostedZoneResponse(t)
 	return t
@@ -4623,12 +5088,15 @@ end
 
 --- Create a structure of type GetChangeRequest
 -- <p>The input for a GetChange request.</p>
--- @param _Id [ResourceId] <p>The ID of the change batch request. The value that you specify here is the value that <code>ChangeResourceRecordSets</code> returned in the <code>Id</code> element when you submitted the request.</p>
--- Required parameter: Id
-function M.GetChangeRequest(_Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetChangeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [ResourceId] <p>The ID of the change batch request. The value that you specify here is the value that <code>ChangeResourceRecordSets</code> returned in the <code>Id</code> element when you submitted the request.</p>
+-- Required key: Id
+-- @return GetChangeRequest structure as a key-value pair table
+function M.GetChangeRequest(args)
+	assert(args, "You must provdide an argument table when creating GetChangeRequest")
 	local t = { 
-		["Id"] = _Id,
+		["Id"] = args["Id"],
 	}
 	asserts.AssertGetChangeRequest(t)
 	return t
@@ -4651,18 +5119,21 @@ end
 
 --- Create a structure of type ListTrafficPolicyInstancesByHostedZoneRequest
 -- <p>A request for the traffic policy instances that you created in a specified hosted zone.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the hosted zone that you want to list traffic policy instances for.</p>
--- @param _TrafficPolicyInstanceTypeMarker [RRType] <p>If the value of <code>IsTruncated</code> in the previous response is true, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>trafficpolicyinstancetype</code>, specify the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous response, which is the type of the first traffic policy instance in the next group of traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
--- @param _TrafficPolicyInstanceNameMarker [DNSName] <p>If the value of <code>IsTruncated</code> in the previous response is true, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>trafficpolicyinstancename</code>, specify the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous response, which is the name of the first traffic policy instance in the next group of traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
--- @param _MaxItems [PageMaxItems] <p>The maximum number of traffic policy instances to be included in the response body for this request. If you have more than <code>MaxItems</code> traffic policy instances, the value of the <code>IsTruncated</code> element in the response is <code>true</code>, and the values of <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic policy instance that Amazon Route 53 will return if you submit another request.</p>
--- Required parameter: HostedZoneId
-function M.ListTrafficPolicyInstancesByHostedZoneRequest(_HostedZoneId, _TrafficPolicyInstanceTypeMarker, _TrafficPolicyInstanceNameMarker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTrafficPolicyInstancesByHostedZoneRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>The ID of the hosted zone that you want to list traffic policy instances for.</p>
+-- * TrafficPolicyInstanceTypeMarker [RRType] <p>If the value of <code>IsTruncated</code> in the previous response is true, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>trafficpolicyinstancetype</code>, specify the value of <code>TrafficPolicyInstanceTypeMarker</code> from the previous response, which is the type of the first traffic policy instance in the next group of traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
+-- * TrafficPolicyInstanceNameMarker [DNSName] <p>If the value of <code>IsTruncated</code> in the previous response is true, you have more traffic policy instances. To get more traffic policy instances, submit another <code>ListTrafficPolicyInstances</code> request. For the value of <code>trafficpolicyinstancename</code>, specify the value of <code>TrafficPolicyInstanceNameMarker</code> from the previous response, which is the name of the first traffic policy instance in the next group of traffic policy instances.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more traffic policy instances to get.</p>
+-- * MaxItems [PageMaxItems] <p>The maximum number of traffic policy instances to be included in the response body for this request. If you have more than <code>MaxItems</code> traffic policy instances, the value of the <code>IsTruncated</code> element in the response is <code>true</code>, and the values of <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic policy instance that Amazon Route 53 will return if you submit another request.</p>
+-- Required key: HostedZoneId
+-- @return ListTrafficPolicyInstancesByHostedZoneRequest structure as a key-value pair table
+function M.ListTrafficPolicyInstancesByHostedZoneRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesByHostedZoneRequest")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["TrafficPolicyInstanceTypeMarker"] = _TrafficPolicyInstanceTypeMarker,
-		["TrafficPolicyInstanceNameMarker"] = _TrafficPolicyInstanceNameMarker,
-		["MaxItems"] = _MaxItems,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
+		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListTrafficPolicyInstancesByHostedZoneRequest(t)
 	return t
@@ -4681,11 +5152,14 @@ end
 
 --- Create a structure of type PriorRequestNotComplete
 -- <p>If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent requests for the same hosted zone and return an <code>HTTP 400 error</code> (<code>Bad request</code>). If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals of increasing duration, before you try the request again.</p>
--- @param _message [ErrorMessage] 
-function M.PriorRequestNotComplete(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PriorRequestNotComplete")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return PriorRequestNotComplete structure as a key-value pair table
+function M.PriorRequestNotComplete(args)
+	assert(args, "You must provdide an argument table when creating PriorRequestNotComplete")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertPriorRequestNotComplete(t)
 	return t
@@ -4704,11 +5178,14 @@ end
 
 --- Create a structure of type NoSuchHealthCheck
 -- <p>No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.NoSuchHealthCheck(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchHealthCheck")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return NoSuchHealthCheck structure as a key-value pair table
+function M.NoSuchHealthCheck(args)
+	assert(args, "You must provdide an argument table when creating NoSuchHealthCheck")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNoSuchHealthCheck(t)
 	return t
@@ -4727,11 +5204,14 @@ end
 
 --- Create a structure of type NoSuchDelegationSet
 -- <p>A reusable delegation set with the specified ID does not exist.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.NoSuchDelegationSet(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchDelegationSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return NoSuchDelegationSet structure as a key-value pair table
+function M.NoSuchDelegationSet(args)
+	assert(args, "You must provdide an argument table when creating NoSuchDelegationSet")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNoSuchDelegationSet(t)
 	return t
@@ -4761,27 +5241,30 @@ end
 
 --- Create a structure of type TestDNSAnswerResponse
 -- <p>A complex type that contains the response to a <code>TestDNSAnswer</code> request. </p>
--- @param _Protocol [TransportProtocol] <p>The protocol that Amazon Route 53 used to respond to the request, either <code>UDP</code> or <code>TCP</code>. </p>
--- @param _RecordType [RRType] <p>The type of the resource record set that you submitted a request for.</p>
--- @param _RecordName [DNSName] <p>The name of the resource record set that you submitted a request for.</p>
--- @param _ResponseCode [DNSRCode] <p>A code that indicates whether the request is valid or not. The most common response code is <code>NOERROR</code>, meaning that the request is valid. If the response is not valid, Amazon Route 53 returns a response code that describes the error. For a list of possible response codes, see <a href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS RCODES</a> on the IANA website. </p>
--- @param _Nameserver [Nameserver] <p>The Amazon Route 53 name server used to respond to the request.</p>
--- @param _RecordData [RecordData] <p>A list that contains values that Amazon Route 53 returned for this resource record set.</p>
--- Required parameter: Nameserver
--- Required parameter: RecordName
--- Required parameter: RecordType
--- Required parameter: RecordData
--- Required parameter: ResponseCode
--- Required parameter: Protocol
-function M.TestDNSAnswerResponse(_Protocol, _RecordType, _RecordName, _ResponseCode, _Nameserver, _RecordData, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TestDNSAnswerResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Protocol [TransportProtocol] <p>The protocol that Amazon Route 53 used to respond to the request, either <code>UDP</code> or <code>TCP</code>. </p>
+-- * RecordType [RRType] <p>The type of the resource record set that you submitted a request for.</p>
+-- * RecordName [DNSName] <p>The name of the resource record set that you submitted a request for.</p>
+-- * ResponseCode [DNSRCode] <p>A code that indicates whether the request is valid or not. The most common response code is <code>NOERROR</code>, meaning that the request is valid. If the response is not valid, Amazon Route 53 returns a response code that describes the error. For a list of possible response codes, see <a href="http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6">DNS RCODES</a> on the IANA website. </p>
+-- * Nameserver [Nameserver] <p>The Amazon Route 53 name server used to respond to the request.</p>
+-- * RecordData [RecordData] <p>A list that contains values that Amazon Route 53 returned for this resource record set.</p>
+-- Required key: Nameserver
+-- Required key: RecordName
+-- Required key: RecordType
+-- Required key: RecordData
+-- Required key: ResponseCode
+-- Required key: Protocol
+-- @return TestDNSAnswerResponse structure as a key-value pair table
+function M.TestDNSAnswerResponse(args)
+	assert(args, "You must provdide an argument table when creating TestDNSAnswerResponse")
 	local t = { 
-		["Protocol"] = _Protocol,
-		["RecordType"] = _RecordType,
-		["RecordName"] = _RecordName,
-		["ResponseCode"] = _ResponseCode,
-		["Nameserver"] = _Nameserver,
-		["RecordData"] = _RecordData,
+		["Protocol"] = args["Protocol"],
+		["RecordType"] = args["RecordType"],
+		["RecordName"] = args["RecordName"],
+		["ResponseCode"] = args["ResponseCode"],
+		["Nameserver"] = args["Nameserver"],
+		["RecordData"] = args["RecordData"],
 	}
 	asserts.AssertTestDNSAnswerResponse(t)
 	return t
@@ -4800,11 +5283,14 @@ end
 
 --- Create a structure of type VPCAssociationAuthorizationNotFound
 -- <p>The VPC that you specified is not authorized to be associated with the hosted zone.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.VPCAssociationAuthorizationNotFound(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VPCAssociationAuthorizationNotFound")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return VPCAssociationAuthorizationNotFound structure as a key-value pair table
+function M.VPCAssociationAuthorizationNotFound(args)
+	assert(args, "You must provdide an argument table when creating VPCAssociationAuthorizationNotFound")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertVPCAssociationAuthorizationNotFound(t)
 	return t
@@ -4823,11 +5309,14 @@ end
 
 --- Create a structure of type InvalidInput
 -- <p>The input is not valid.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.InvalidInput(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return InvalidInput structure as a key-value pair table
+function M.InvalidInput(args)
+	assert(args, "You must provdide an argument table when creating InvalidInput")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidInput(t)
 	return t
@@ -4849,15 +5338,18 @@ end
 
 --- Create a structure of type CreateVPCAssociationAuthorizationResponse
 -- <p>A complex type that contains the response information from a <code>CreateVPCAssociationAuthorization</code> request.</p>
--- @param _HostedZoneId [ResourceId] <p>The ID of the hosted zone that you authorized associating a VPC with.</p>
--- @param _VPC [VPC] <p>The VPC that you authorized associating with a hosted zone.</p>
--- Required parameter: HostedZoneId
--- Required parameter: VPC
-function M.CreateVPCAssociationAuthorizationResponse(_HostedZoneId, _VPC, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateVPCAssociationAuthorizationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostedZoneId [ResourceId] <p>The ID of the hosted zone that you authorized associating a VPC with.</p>
+-- * VPC [VPC] <p>The VPC that you authorized associating with a hosted zone.</p>
+-- Required key: HostedZoneId
+-- Required key: VPC
+-- @return CreateVPCAssociationAuthorizationResponse structure as a key-value pair table
+function M.CreateVPCAssociationAuthorizationResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateVPCAssociationAuthorizationResponse")
 	local t = { 
-		["HostedZoneId"] = _HostedZoneId,
-		["VPC"] = _VPC,
+		["HostedZoneId"] = args["HostedZoneId"],
+		["VPC"] = args["VPC"],
 	}
 	asserts.AssertCreateVPCAssociationAuthorizationResponse(t)
 	return t
@@ -4876,11 +5368,14 @@ end
 
 --- Create a structure of type HealthCheckAlreadyExists
 -- <p> The health check you're attempting to create already exists. Amazon Route 53 returns this error when you submit a request that has the following values:</p> <ul> <li> <p>The same value for <code>CallerReference</code> as an existing health check, and one or more values that differ from the existing health check that has the same caller reference.</p> </li> <li> <p>The same value for <code>CallerReference</code> as a health check that you created and later deleted, regardless of the other settings in the request.</p> </li> </ul>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.HealthCheckAlreadyExists(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HealthCheckAlreadyExists")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return HealthCheckAlreadyExists structure as a key-value pair table
+function M.HealthCheckAlreadyExists(args)
+	assert(args, "You must provdide an argument table when creating HealthCheckAlreadyExists")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertHealthCheckAlreadyExists(t)
 	return t
@@ -4899,11 +5394,14 @@ end
 
 --- Create a structure of type LastVPCAssociation
 -- <p>The VPC that you're trying to disassociate from the private hosted zone is the last VPC that is associated with the hosted zone. Amazon Route 53 doesn't support disassociating the last VPC from a hosted zone.</p>
--- @param _message [ErrorMessage] <p>Descriptive message for the error response.</p>
-function M.LastVPCAssociation(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LastVPCAssociation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
+-- @return LastVPCAssociation structure as a key-value pair table
+function M.LastVPCAssociation(args)
+	assert(args, "You must provdide an argument table when creating LastVPCAssociation")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLastVPCAssociation(t)
 	return t
@@ -4924,15 +5422,18 @@ end
 
 --- Create a structure of type ListHostedZonesRequest
 -- <p>A request to retrieve a list of the public and private hosted zones that are associated with the current AWS account.</p>
--- @param _Marker [PageMarker] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more hosted zones. To get more hosted zones, submit another <code>ListHostedZones</code> request. </p> <p>For the value of <code>marker</code>, specify the value of <code>NextMarker</code> from the previous response, which is the ID of the first hosted zone that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more hosted zones to get.</p>
--- @param _DelegationSetId [ResourceId] <p>If you're using reusable delegation sets and you want to list all of the hosted zones that are associated with a reusable delegation set, specify the ID of that reusable delegation set. </p>
--- @param _MaxItems [PageMaxItems] <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53 to return. If you have more than <code>maxitems</code> hosted zones, the value of <code>IsTruncated</code> in the response is <code>true</code>, and the value of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that Amazon Route 53 will return if you submit another request.</p>
-function M.ListHostedZonesRequest(_Marker, _DelegationSetId, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListHostedZonesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarker] <p>If the value of <code>IsTruncated</code> in the previous response was <code>true</code>, you have more hosted zones. To get more hosted zones, submit another <code>ListHostedZones</code> request. </p> <p>For the value of <code>marker</code>, specify the value of <code>NextMarker</code> from the previous response, which is the ID of the first hosted zone that Amazon Route 53 will return if you submit another request.</p> <p>If the value of <code>IsTruncated</code> in the previous response was <code>false</code>, there are no more hosted zones to get.</p>
+-- * DelegationSetId [ResourceId] <p>If you're using reusable delegation sets and you want to list all of the hosted zones that are associated with a reusable delegation set, specify the ID of that reusable delegation set. </p>
+-- * MaxItems [PageMaxItems] <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53 to return. If you have more than <code>maxitems</code> hosted zones, the value of <code>IsTruncated</code> in the response is <code>true</code>, and the value of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that Amazon Route 53 will return if you submit another request.</p>
+-- @return ListHostedZonesRequest structure as a key-value pair table
+function M.ListHostedZonesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListHostedZonesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["DelegationSetId"] = _DelegationSetId,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["DelegationSetId"] = args["DelegationSetId"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListHostedZonesRequest(t)
 	return t

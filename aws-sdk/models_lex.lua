@@ -39,18 +39,21 @@ end
 
 --- Create a structure of type GetBotChannelAssociationRequest
 --  
--- @param _botAlias [AliasName] <p>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made.</p>
--- @param _name [BotChannelName] <p>The name of the association between the bot and the channel. The name is case sensitive. </p>
--- @param _botName [BotName] <p>The name of the Amazon Lex bot.</p>
--- Required parameter: name
--- Required parameter: botName
--- Required parameter: botAlias
-function M.GetBotChannelAssociationRequest(_botAlias, _name, _botName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotChannelAssociationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * botAlias [AliasName] <p>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made.</p>
+-- * name [BotChannelName] <p>The name of the association between the bot and the channel. The name is case sensitive. </p>
+-- * botName [BotName] <p>The name of the Amazon Lex bot.</p>
+-- Required key: name
+-- Required key: botName
+-- Required key: botAlias
+-- @return GetBotChannelAssociationRequest structure as a key-value pair table
+function M.GetBotChannelAssociationRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBotChannelAssociationRequest")
 	local t = { 
-		["botAlias"] = _botAlias,
-		["name"] = _name,
-		["botName"] = _botName,
+		["botAlias"] = args["botAlias"],
+		["name"] = args["name"],
+		["botName"] = args["botName"],
 	}
 	asserts.AssertGetBotChannelAssociationRequest(t)
 	return t
@@ -69,11 +72,14 @@ end
 
 --- Create a structure of type BadRequestException
 -- <p>The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and try again.</p>
--- @param _message [String] 
-function M.BadRequestException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BadRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return BadRequestException structure as a key-value pair table
+function M.BadRequestException(args)
+	assert(args, "You must provdide an argument table when creating BadRequestException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertBadRequestException(t)
 	return t
@@ -93,13 +99,16 @@ end
 
 --- Create a structure of type GetBuiltinSlotTypesResponse
 --  
--- @param _nextToken [NextToken] <p>If the response is truncated, the response includes a pagination token that you can use in your next request to fetch the next page of slot types.</p>
--- @param _slotTypes [BuiltinSlotTypeMetadataList] <p>An array of <code>BuiltInSlotTypeMetadata</code> objects, one entry for each slot type returned.</p>
-function M.GetBuiltinSlotTypesResponse(_nextToken, _slotTypes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBuiltinSlotTypesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>If the response is truncated, the response includes a pagination token that you can use in your next request to fetch the next page of slot types.</p>
+-- * slotTypes [BuiltinSlotTypeMetadataList] <p>An array of <code>BuiltInSlotTypeMetadata</code> objects, one entry for each slot type returned.</p>
+-- @return GetBuiltinSlotTypesResponse structure as a key-value pair table
+function M.GetBuiltinSlotTypesResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBuiltinSlotTypesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["slotTypes"] = _slotTypes,
+		["nextToken"] = args["nextToken"],
+		["slotTypes"] = args["slotTypes"],
 	}
 	asserts.AssertGetBuiltinSlotTypesResponse(t)
 	return t
@@ -120,14 +129,17 @@ end
 
 --- Create a structure of type Statement
 -- <p>A collection of messages that convey information to the user. At runtime, Amazon Lex selects the message to convey. </p>
--- @param _messages [MessageList] <p>A collection of message objects.</p>
--- @param _responseCard [ResponseCard] <p> At runtime, if the client is using the API, Amazon Lex includes the response card in the response. It substitutes all of the session attributes and slot values for placeholders in the response card. </p>
--- Required parameter: messages
-function M.Statement(_messages, _responseCard, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Statement")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * messages [MessageList] <p>A collection of message objects.</p>
+-- * responseCard [ResponseCard] <p> At runtime, if the client is using the API, Amazon Lex includes the response card in the response. It substitutes all of the session attributes and slot values for placeholders in the response card. </p>
+-- Required key: messages
+-- @return Statement structure as a key-value pair table
+function M.Statement(args)
+	assert(args, "You must provdide an argument table when creating Statement")
 	local t = { 
-		["messages"] = _messages,
-		["responseCard"] = _responseCard,
+		["messages"] = args["messages"],
+		["responseCard"] = args["responseCard"],
 	}
 	asserts.AssertStatement(t)
 	return t
@@ -152,21 +164,24 @@ end
 
 --- Create a structure of type GetBotChannelAssociationsRequest
 --  
--- @param _nameContains [BotChannelName] <p>Substring to match in channel association names. An association will be returned if any part of its name matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz." To return all bot channel associations, use a hyphen ("-") as the <code>nameContains</code> parameter.</p>
--- @param _nextToken [NextToken] <p>A pagination token for fetching the next page of associations. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of associations, specify the pagination token in the next request. </p>
--- @param _botName [BotName] <p>The name of the Amazon Lex bot in the association.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of associations to return in the response. The default is 50. </p>
--- @param _botAlias [AliasNameOrListAll] <p>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made.</p>
--- Required parameter: botName
--- Required parameter: botAlias
-function M.GetBotChannelAssociationsRequest(_nameContains, _nextToken, _botName, _maxResults, _botAlias, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotChannelAssociationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nameContains [BotChannelName] <p>Substring to match in channel association names. An association will be returned if any part of its name matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz." To return all bot channel associations, use a hyphen ("-") as the <code>nameContains</code> parameter.</p>
+-- * nextToken [NextToken] <p>A pagination token for fetching the next page of associations. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of associations, specify the pagination token in the next request. </p>
+-- * botName [BotName] <p>The name of the Amazon Lex bot in the association.</p>
+-- * maxResults [MaxResults] <p>The maximum number of associations to return in the response. The default is 50. </p>
+-- * botAlias [AliasNameOrListAll] <p>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made.</p>
+-- Required key: botName
+-- Required key: botAlias
+-- @return GetBotChannelAssociationsRequest structure as a key-value pair table
+function M.GetBotChannelAssociationsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBotChannelAssociationsRequest")
 	local t = { 
-		["nameContains"] = _nameContains,
-		["nextToken"] = _nextToken,
-		["botName"] = _botName,
-		["maxResults"] = _maxResults,
-		["botAlias"] = _botAlias,
+		["nameContains"] = args["nameContains"],
+		["nextToken"] = args["nextToken"],
+		["botName"] = args["botName"],
+		["maxResults"] = args["maxResults"],
+		["botAlias"] = args["botAlias"],
 	}
 	asserts.AssertGetBotChannelAssociationsRequest(t)
 	return t
@@ -187,14 +202,17 @@ end
 
 --- Create a structure of type CreateIntentVersionRequest
 --  
--- @param _checksum [String] <p>Checksum of the <code>$LATEST</code> version of the intent that should be used to create the new version. If you specify a checksum and the <code>$LATEST</code> version of the intent has a different checksum, Amazon Lex returns a <code>PreconditionFailedException</code> exception and doesn't publish a new version. If you don't specify a checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
--- @param _name [IntentName] <p>The name of the intent that you want to create a new version of. The name is case sensitive. </p>
--- Required parameter: name
-function M.CreateIntentVersionRequest(_checksum, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateIntentVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checksum [String] <p>Checksum of the <code>$LATEST</code> version of the intent that should be used to create the new version. If you specify a checksum and the <code>$LATEST</code> version of the intent has a different checksum, Amazon Lex returns a <code>PreconditionFailedException</code> exception and doesn't publish a new version. If you don't specify a checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
+-- * name [IntentName] <p>The name of the intent that you want to create a new version of. The name is case sensitive. </p>
+-- Required key: name
+-- @return CreateIntentVersionRequest structure as a key-value pair table
+function M.CreateIntentVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateIntentVersionRequest")
 	local t = { 
-		["checksum"] = _checksum,
-		["name"] = _name,
+		["checksum"] = args["checksum"],
+		["name"] = args["name"],
 	}
 	asserts.AssertCreateIntentVersionRequest(t)
 	return t
@@ -214,13 +232,16 @@ end
 
 --- Create a structure of type GetBotsResponse
 --  
--- @param _bots [BotMetadataList] <p>An array of <code>botMetadata</code> objects, with one entry for each bot. </p>
--- @param _nextToken [NextToken] <p>If the response is truncated, it includes a pagination token that you can specify in your next request to fetch the next page of bots. </p>
-function M.GetBotsResponse(_bots, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * bots [BotMetadataList] <p>An array of <code>botMetadata</code> objects, with one entry for each bot. </p>
+-- * nextToken [NextToken] <p>If the response is truncated, it includes a pagination token that you can specify in your next request to fetch the next page of bots. </p>
+-- @return GetBotsResponse structure as a key-value pair table
+function M.GetBotsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBotsResponse")
 	local t = { 
-		["bots"] = _bots,
-		["nextToken"] = _nextToken,
+		["bots"] = args["bots"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertGetBotsResponse(t)
 	return t
@@ -240,13 +261,16 @@ end
 
 --- Create a structure of type GetSlotTypeVersionsResponse
 --  
--- @param _nextToken [NextToken] <p>A pagination token for fetching the next page of slot type versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
--- @param _slotTypes [SlotTypeMetadataList] <p>An array of <code>SlotTypeMetadata</code> objects, one for each numbered version of the slot type plus one for the <code>$LATEST</code> version.</p>
-function M.GetSlotTypeVersionsResponse(_nextToken, _slotTypes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSlotTypeVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>A pagination token for fetching the next page of slot type versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
+-- * slotTypes [SlotTypeMetadataList] <p>An array of <code>SlotTypeMetadata</code> objects, one for each numbered version of the slot type plus one for the <code>$LATEST</code> version.</p>
+-- @return GetSlotTypeVersionsResponse structure as a key-value pair table
+function M.GetSlotTypeVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSlotTypeVersionsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["slotTypes"] = _slotTypes,
+		["nextToken"] = args["nextToken"],
+		["slotTypes"] = args["slotTypes"],
 	}
 	asserts.AssertGetSlotTypeVersionsResponse(t)
 	return t
@@ -268,15 +292,18 @@ end
 
 --- Create a structure of type Intent
 -- <p>Identifies the specific version of an intent.</p>
--- @param _intentVersion [Version] <p>The version of the intent.</p>
--- @param _intentName [IntentName] <p>The name of the intent.</p>
--- Required parameter: intentName
--- Required parameter: intentVersion
-function M.Intent(_intentVersion, _intentName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Intent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * intentVersion [Version] <p>The version of the intent.</p>
+-- * intentName [IntentName] <p>The name of the intent.</p>
+-- Required key: intentName
+-- Required key: intentVersion
+-- @return Intent structure as a key-value pair table
+function M.Intent(args)
+	assert(args, "You must provdide an argument table when creating Intent")
 	local t = { 
-		["intentVersion"] = _intentVersion,
-		["intentName"] = _intentName,
+		["intentVersion"] = args["intentVersion"],
+		["intentName"] = args["intentName"],
 	}
 	asserts.AssertIntent(t)
 	return t
@@ -301,23 +328,26 @@ end
 
 --- Create a structure of type GetBotChannelAssociationResponse
 --  
--- @param _name [BotChannelName] <p>The name of the association between the bot and the channel.</p>
--- @param _botConfiguration [ChannelConfigurationMap] <p>Provides information that the messaging platform needs to communicate with the Amazon Lex bot.</p>
--- @param _botAlias [AliasName] <p>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made.</p>
--- @param _createdDate [Timestamp] <p>The date that the association between the bot and the channel was created.</p>
--- @param _type [ChannelType] <p>The type of the messaging platform.</p>
--- @param _botName [BotName] <p>The name of the Amazon Lex bot.</p>
--- @param _description [Description] <p>A description of the association between the bot and the channel.</p>
-function M.GetBotChannelAssociationResponse(_name, _botConfiguration, _botAlias, _createdDate, _type, _botName, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotChannelAssociationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [BotChannelName] <p>The name of the association between the bot and the channel.</p>
+-- * botConfiguration [ChannelConfigurationMap] <p>Provides information that the messaging platform needs to communicate with the Amazon Lex bot.</p>
+-- * botAlias [AliasName] <p>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made.</p>
+-- * createdDate [Timestamp] <p>The date that the association between the bot and the channel was created.</p>
+-- * type [ChannelType] <p>The type of the messaging platform.</p>
+-- * botName [BotName] <p>The name of the Amazon Lex bot.</p>
+-- * description [Description] <p>A description of the association between the bot and the channel.</p>
+-- @return GetBotChannelAssociationResponse structure as a key-value pair table
+function M.GetBotChannelAssociationResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBotChannelAssociationResponse")
 	local t = { 
-		["name"] = _name,
-		["botConfiguration"] = _botConfiguration,
-		["botAlias"] = _botAlias,
-		["createdDate"] = _createdDate,
-		["type"] = _type,
-		["botName"] = _botName,
-		["description"] = _description,
+		["name"] = args["name"],
+		["botConfiguration"] = args["botConfiguration"],
+		["botAlias"] = args["botAlias"],
+		["createdDate"] = args["createdDate"],
+		["type"] = args["type"],
+		["botName"] = args["botName"],
+		["description"] = args["description"],
 	}
 	asserts.AssertGetBotChannelAssociationResponse(t)
 	return t
@@ -339,17 +369,20 @@ end
 
 --- Create a structure of type GetBuiltinSlotTypesRequest
 --  
--- @param _locale [Locale] <p>A list of locales that the slot type supports.</p>
--- @param _nextToken [NextToken] <p>A pagination token that fetches the next page of slot types. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of slot types, specify the pagination token in the next request.</p>
--- @param _signatureContains [String] <p>Substring to match in built-in slot type signatures. A slot type will be returned if any part of its signature matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz."</p>
--- @param _maxResults [MaxResults] <p>The maximum number of slot types to return in the response. The default is 10.</p>
-function M.GetBuiltinSlotTypesRequest(_locale, _nextToken, _signatureContains, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBuiltinSlotTypesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * locale [Locale] <p>A list of locales that the slot type supports.</p>
+-- * nextToken [NextToken] <p>A pagination token that fetches the next page of slot types. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of slot types, specify the pagination token in the next request.</p>
+-- * signatureContains [String] <p>Substring to match in built-in slot type signatures. A slot type will be returned if any part of its signature matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz."</p>
+-- * maxResults [MaxResults] <p>The maximum number of slot types to return in the response. The default is 10.</p>
+-- @return GetBuiltinSlotTypesRequest structure as a key-value pair table
+function M.GetBuiltinSlotTypesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBuiltinSlotTypesRequest")
 	local t = { 
-		["locale"] = _locale,
-		["nextToken"] = _nextToken,
-		["signatureContains"] = _signatureContains,
-		["maxResults"] = _maxResults,
+		["locale"] = args["locale"],
+		["nextToken"] = args["nextToken"],
+		["signatureContains"] = args["signatureContains"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetBuiltinSlotTypesRequest(t)
 	return t
@@ -369,13 +402,16 @@ end
 
 --- Create a structure of type BuiltinIntentMetadata
 -- <p>Provides metadata for a built-in intent.</p>
--- @param _supportedLocales [LocaleList] <p>A list of identifiers for the locales that the intent supports.</p>
--- @param _signature [BuiltinIntentSignature] <p>A unique identifier for the built-in intent. To find the signature for an intent, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
-function M.BuiltinIntentMetadata(_supportedLocales, _signature, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BuiltinIntentMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * supportedLocales [LocaleList] <p>A list of identifiers for the locales that the intent supports.</p>
+-- * signature [BuiltinIntentSignature] <p>A unique identifier for the built-in intent. To find the signature for an intent, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
+-- @return BuiltinIntentMetadata structure as a key-value pair table
+function M.BuiltinIntentMetadata(args)
+	assert(args, "You must provdide an argument table when creating BuiltinIntentMetadata")
 	local t = { 
-		["supportedLocales"] = _supportedLocales,
-		["signature"] = _signature,
+		["supportedLocales"] = args["supportedLocales"],
+		["signature"] = args["signature"],
 	}
 	asserts.AssertBuiltinIntentMetadata(t)
 	return t
@@ -400,23 +436,26 @@ end
 
 --- Create a structure of type PutBotAliasResponse
 --  
--- @param _name [AliasName] <p>The name of the alias.</p>
--- @param _checksum [String] <p>The checksum for the current version of the alias.</p>
--- @param _description [Description] <p>A description of the alias.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.</p>
--- @param _createdDate [Timestamp] <p>The date that the bot alias was created.</p>
--- @param _botName [BotName] <p>The name of the bot that the alias points to.</p>
--- @param _botVersion [Version] <p>The version of the bot that the alias points to.</p>
-function M.PutBotAliasResponse(_name, _checksum, _description, _lastUpdatedDate, _createdDate, _botName, _botVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBotAliasResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [AliasName] <p>The name of the alias.</p>
+-- * checksum [String] <p>The checksum for the current version of the alias.</p>
+-- * description [Description] <p>A description of the alias.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.</p>
+-- * createdDate [Timestamp] <p>The date that the bot alias was created.</p>
+-- * botName [BotName] <p>The name of the bot that the alias points to.</p>
+-- * botVersion [Version] <p>The version of the bot that the alias points to.</p>
+-- @return PutBotAliasResponse structure as a key-value pair table
+function M.PutBotAliasResponse(args)
+	assert(args, "You must provdide an argument table when creating PutBotAliasResponse")
 	local t = { 
-		["name"] = _name,
-		["checksum"] = _checksum,
-		["description"] = _description,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["createdDate"] = _createdDate,
-		["botName"] = _botName,
-		["botVersion"] = _botVersion,
+		["name"] = args["name"],
+		["checksum"] = args["checksum"],
+		["description"] = args["description"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["createdDate"] = args["createdDate"],
+		["botName"] = args["botName"],
+		["botVersion"] = args["botVersion"],
 	}
 	asserts.AssertPutBotAliasResponse(t)
 	return t
@@ -441,23 +480,26 @@ end
 
 --- Create a structure of type BotChannelAssociation
 -- <p>Represents an association between an Amazon Lex bot and an external messaging platform.</p>
--- @param _name [BotChannelName] <p>The name of the association between the bot and the channel. </p>
--- @param _botConfiguration [ChannelConfigurationMap] <p>Provides information necessary to communicate with the messaging platform. </p>
--- @param _botAlias [AliasName] <p>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made. </p>
--- @param _createdDate [Timestamp] <p>The date that the association between the Amazon Lex bot and the channel was created. </p>
--- @param _type [ChannelType] <p>Specifies the type of association by indicating the type of channel being established between the Amazon Lex bot and the external messaging platform.</p>
--- @param _botName [BotName] <p>The name of the Amazon Lex bot to which this association is being made. </p> <note> <p>Currently, Amazon Lex supports associations with Facebook and Slack, and Twilio.</p> </note>
--- @param _description [Description] <p>A text description of the association you are creating. </p>
-function M.BotChannelAssociation(_name, _botConfiguration, _botAlias, _createdDate, _type, _botName, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BotChannelAssociation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [BotChannelName] <p>The name of the association between the bot and the channel. </p>
+-- * botConfiguration [ChannelConfigurationMap] <p>Provides information necessary to communicate with the messaging platform. </p>
+-- * botAlias [AliasName] <p>An alias pointing to the specific version of the Amazon Lex bot to which this association is being made. </p>
+-- * createdDate [Timestamp] <p>The date that the association between the Amazon Lex bot and the channel was created. </p>
+-- * type [ChannelType] <p>Specifies the type of association by indicating the type of channel being established between the Amazon Lex bot and the external messaging platform.</p>
+-- * botName [BotName] <p>The name of the Amazon Lex bot to which this association is being made. </p> <note> <p>Currently, Amazon Lex supports associations with Facebook and Slack, and Twilio.</p> </note>
+-- * description [Description] <p>A text description of the association you are creating. </p>
+-- @return BotChannelAssociation structure as a key-value pair table
+function M.BotChannelAssociation(args)
+	assert(args, "You must provdide an argument table when creating BotChannelAssociation")
 	local t = { 
-		["name"] = _name,
-		["botConfiguration"] = _botConfiguration,
-		["botAlias"] = _botAlias,
-		["createdDate"] = _createdDate,
-		["type"] = _type,
-		["botName"] = _botName,
-		["description"] = _description,
+		["name"] = args["name"],
+		["botConfiguration"] = args["botConfiguration"],
+		["botAlias"] = args["botAlias"],
+		["createdDate"] = args["createdDate"],
+		["type"] = args["type"],
+		["botName"] = args["botName"],
+		["description"] = args["description"],
 	}
 	asserts.AssertBotChannelAssociation(t)
 	return t
@@ -479,15 +521,18 @@ end
 
 --- Create a structure of type CodeHook
 -- <p>Specifies a Lambda function that verifies requests to a bot or fulfills the user's request to a bot..</p>
--- @param _uri [LambdaARN] <p>The Amazon Resource Name (ARN) of the Lambda function.</p>
--- @param _messageVersion [MessageVersion] <p>The version of the request-response that you want Amazon Lex to use to invoke your Lambda function. For more information, see <a>using-lambda</a>.</p>
--- Required parameter: uri
--- Required parameter: messageVersion
-function M.CodeHook(_uri, _messageVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CodeHook")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * uri [LambdaARN] <p>The Amazon Resource Name (ARN) of the Lambda function.</p>
+-- * messageVersion [MessageVersion] <p>The version of the request-response that you want Amazon Lex to use to invoke your Lambda function. For more information, see <a>using-lambda</a>.</p>
+-- Required key: uri
+-- Required key: messageVersion
+-- @return CodeHook structure as a key-value pair table
+function M.CodeHook(args)
+	assert(args, "You must provdide an argument table when creating CodeHook")
 	local t = { 
-		["uri"] = _uri,
-		["messageVersion"] = _messageVersion,
+		["uri"] = args["uri"],
+		["messageVersion"] = args["messageVersion"],
 	}
 	asserts.AssertCodeHook(t)
 	return t
@@ -509,15 +554,18 @@ end
 
 --- Create a structure of type DeleteUtterancesRequest
 --  
--- @param _userId [UserId] <p> The unique identifier for the user that made the utterances. This is the user ID that was sent in the or operation request that contained the utterance.</p>
--- @param _botName [BotName] <p>The name of the bot that stored the utterances.</p>
--- Required parameter: botName
--- Required parameter: userId
-function M.DeleteUtterancesRequest(_userId, _botName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUtterancesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * userId [UserId] <p> The unique identifier for the user that made the utterances. This is the user ID that was sent in the or operation request that contained the utterance.</p>
+-- * botName [BotName] <p>The name of the bot that stored the utterances.</p>
+-- Required key: botName
+-- Required key: userId
+-- @return DeleteUtterancesRequest structure as a key-value pair table
+function M.DeleteUtterancesRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteUtterancesRequest")
 	local t = { 
-		["userId"] = _userId,
-		["botName"] = _botName,
+		["userId"] = args["userId"],
+		["botName"] = args["botName"],
 	}
 	asserts.AssertDeleteUtterancesRequest(t)
 	return t
@@ -540,19 +588,22 @@ end
 
 --- Create a structure of type UtteranceData
 -- <p>Provides information about a single utterance that was made to your bot. </p>
--- @param _count [Count] <p>The number of times that the utterance was processed.</p>
--- @param _utteranceString [UtteranceString] <p>The text that was entered by the user or the text representation of an audio clip.</p>
--- @param _lastUtteredDate [Timestamp] <p>The date that the utterance was last recorded.</p>
--- @param _distinctUsers [Count] <p>The total number of individuals that used the utterance.</p>
--- @param _firstUtteredDate [Timestamp] <p>The date that the utterance was first recorded.</p>
-function M.UtteranceData(_count, _utteranceString, _lastUtteredDate, _distinctUsers, _firstUtteredDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UtteranceData")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * count [Count] <p>The number of times that the utterance was processed.</p>
+-- * utteranceString [UtteranceString] <p>The text that was entered by the user or the text representation of an audio clip.</p>
+-- * lastUtteredDate [Timestamp] <p>The date that the utterance was last recorded.</p>
+-- * distinctUsers [Count] <p>The total number of individuals that used the utterance.</p>
+-- * firstUtteredDate [Timestamp] <p>The date that the utterance was first recorded.</p>
+-- @return UtteranceData structure as a key-value pair table
+function M.UtteranceData(args)
+	assert(args, "You must provdide an argument table when creating UtteranceData")
 	local t = { 
-		["count"] = _count,
-		["utteranceString"] = _utteranceString,
-		["lastUtteredDate"] = _lastUtteredDate,
-		["distinctUsers"] = _distinctUsers,
-		["firstUtteredDate"] = _firstUtteredDate,
+		["count"] = args["count"],
+		["utteranceString"] = args["utteranceString"],
+		["lastUtteredDate"] = args["lastUtteredDate"],
+		["distinctUsers"] = args["distinctUsers"],
+		["firstUtteredDate"] = args["firstUtteredDate"],
 	}
 	asserts.AssertUtteranceData(t)
 	return t
@@ -585,39 +636,42 @@ end
 
 --- Create a structure of type GetBotResponse
 --  
--- @param _status [Status] <p>The status of the bot. If the bot is ready to run, the status is <code>READY</code>. If there was a problem with building the bot, the status is <code>FAILED</code> and the <code>failureReason</code> explains why the bot did not build. If the bot was saved but not built, the status is <code>NOT BUILT</code>.</p>
--- @param _intents [IntentList] <p>An array of <code>intent</code> objects. For more information, see .</p>
--- @param _name [BotName] <p>The name of the bot.</p>
--- @param _locale [Locale] <p> The target locale for the bot. </p>
--- @param _checksum [String] <p>Checksum of the bot used to identify a specific revision of the bot's <code>$LATEST</code> version.</p>
--- @param _createdDate [Timestamp] <p>The date that the bot was created.</p>
--- @param _version [Version] <p>The version of the bot. For a new bot, the version is always <code>$LATEST</code>.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the bot was updated. When you create a resource, the creation date and last updated date are the same. </p>
--- @param _abortStatement [Statement] <p>The message that Amazon Lex returns when the user elects to end the conversation without completing it. For more information, see .</p>
--- @param _clarificationPrompt [Prompt] <p>The message Amazon Lex uses when it doesn't understand the user's request. For more information, see . </p>
--- @param _voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see .</p>
--- @param _failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex explains why it failed to build the bot.</p>
--- @param _childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
--- @param _idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. For more information, see .</p>
--- @param _description [Description] <p>A description of the bot.</p>
-function M.GetBotResponse(_status, _intents, _name, _locale, _checksum, _createdDate, _version, _lastUpdatedDate, _abortStatement, _clarificationPrompt, _voiceId, _failureReason, _childDirected, _idleSessionTTLInSeconds, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [Status] <p>The status of the bot. If the bot is ready to run, the status is <code>READY</code>. If there was a problem with building the bot, the status is <code>FAILED</code> and the <code>failureReason</code> explains why the bot did not build. If the bot was saved but not built, the status is <code>NOT BUILT</code>.</p>
+-- * intents [IntentList] <p>An array of <code>intent</code> objects. For more information, see .</p>
+-- * name [BotName] <p>The name of the bot.</p>
+-- * locale [Locale] <p> The target locale for the bot. </p>
+-- * checksum [String] <p>Checksum of the bot used to identify a specific revision of the bot's <code>$LATEST</code> version.</p>
+-- * createdDate [Timestamp] <p>The date that the bot was created.</p>
+-- * version [Version] <p>The version of the bot. For a new bot, the version is always <code>$LATEST</code>.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the bot was updated. When you create a resource, the creation date and last updated date are the same. </p>
+-- * abortStatement [Statement] <p>The message that Amazon Lex returns when the user elects to end the conversation without completing it. For more information, see .</p>
+-- * clarificationPrompt [Prompt] <p>The message Amazon Lex uses when it doesn't understand the user's request. For more information, see . </p>
+-- * voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see .</p>
+-- * failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex explains why it failed to build the bot.</p>
+-- * childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
+-- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. For more information, see .</p>
+-- * description [Description] <p>A description of the bot.</p>
+-- @return GetBotResponse structure as a key-value pair table
+function M.GetBotResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBotResponse")
 	local t = { 
-		["status"] = _status,
-		["intents"] = _intents,
-		["name"] = _name,
-		["locale"] = _locale,
-		["checksum"] = _checksum,
-		["createdDate"] = _createdDate,
-		["version"] = _version,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["abortStatement"] = _abortStatement,
-		["clarificationPrompt"] = _clarificationPrompt,
-		["voiceId"] = _voiceId,
-		["failureReason"] = _failureReason,
-		["childDirected"] = _childDirected,
-		["idleSessionTTLInSeconds"] = _idleSessionTTLInSeconds,
-		["description"] = _description,
+		["status"] = args["status"],
+		["intents"] = args["intents"],
+		["name"] = args["name"],
+		["locale"] = args["locale"],
+		["checksum"] = args["checksum"],
+		["createdDate"] = args["createdDate"],
+		["version"] = args["version"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["abortStatement"] = args["abortStatement"],
+		["clarificationPrompt"] = args["clarificationPrompt"],
+		["voiceId"] = args["voiceId"],
+		["failureReason"] = args["failureReason"],
+		["childDirected"] = args["childDirected"],
+		["idleSessionTTLInSeconds"] = args["idleSessionTTLInSeconds"],
+		["description"] = args["description"],
 	}
 	asserts.AssertGetBotResponse(t)
 	return t
@@ -637,13 +691,16 @@ end
 
 --- Create a structure of type GetIntentsResponse
 --  
--- @param _intents [IntentMetadataList] <p>An array of <code>Intent</code> objects. For more information, see .</p>
--- @param _nextToken [NextToken] <p>If the response is truncated, the response includes a pagination token that you can specify in your next request to fetch the next page of intents. </p>
-function M.GetIntentsResponse(_intents, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIntentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * intents [IntentMetadataList] <p>An array of <code>Intent</code> objects. For more information, see .</p>
+-- * nextToken [NextToken] <p>If the response is truncated, the response includes a pagination token that you can specify in your next request to fetch the next page of intents. </p>
+-- @return GetIntentsResponse structure as a key-value pair table
+function M.GetIntentsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIntentsResponse")
 	local t = { 
-		["intents"] = _intents,
-		["nextToken"] = _nextToken,
+		["intents"] = args["intents"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertGetIntentsResponse(t)
 	return t
@@ -667,18 +724,21 @@ end
 
 --- Create a structure of type DeleteBotChannelAssociationRequest
 --  
--- @param _botAlias [AliasName] <p>An alias that points to the specific version of the Amazon Lex bot to which this association is being made.</p>
--- @param _name [BotChannelName] <p>The name of the association. The name is case sensitive. </p>
--- @param _botName [BotName] <p>The name of the Amazon Lex bot.</p>
--- Required parameter: name
--- Required parameter: botName
--- Required parameter: botAlias
-function M.DeleteBotChannelAssociationRequest(_botAlias, _name, _botName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBotChannelAssociationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * botAlias [AliasName] <p>An alias that points to the specific version of the Amazon Lex bot to which this association is being made.</p>
+-- * name [BotChannelName] <p>The name of the association. The name is case sensitive. </p>
+-- * botName [BotName] <p>The name of the Amazon Lex bot.</p>
+-- Required key: name
+-- Required key: botName
+-- Required key: botAlias
+-- @return DeleteBotChannelAssociationRequest structure as a key-value pair table
+function M.DeleteBotChannelAssociationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBotChannelAssociationRequest")
 	local t = { 
-		["botAlias"] = _botAlias,
-		["name"] = _name,
-		["botName"] = _botName,
+		["botAlias"] = args["botAlias"],
+		["name"] = args["name"],
+		["botName"] = args["botName"],
 	}
 	asserts.AssertDeleteBotChannelAssociationRequest(t)
 	return t
@@ -707,29 +767,32 @@ end
 
 --- Create a structure of type Slot
 -- <p>Identifies the version of a specific slot.</p>
--- @param _slotType [CustomOrBuiltinSlotTypeName] <p>The type of the slot, either a custom slot type that you defined or one of the built-in slot types.</p>
--- @param _name [SlotName] <p>The name of the slot.</p>
--- @param _slotConstraint [SlotConstraint] <p>Specifies whether the slot is required or optional. </p>
--- @param _valueElicitationPrompt [Prompt] <p>The prompt that Amazon Lex uses to elicit the slot value from the user.</p>
--- @param _responseCard [ResponseCard] <p> A set of possible responses for the slot type used by text-based clients. A user chooses an option from the response card, instead of using text to reply. </p>
--- @param _priority [Priority] <p> Directs Lex the order in which to elicit this slot value from the user. For example, if the intent has two slots with priorities 1 and 2, AWS Lex first elicits a value for the slot with priority 1.</p> <p>If multiple slots share the same priority, the order in which Lex elicits values is arbitrary.</p>
--- @param _slotTypeVersion [Version] <p>The version of the slot type.</p>
--- @param _sampleUtterances [SlotUtteranceList] <p> If you know a specific pattern with which users might respond to an Amazon Lex request for a slot value, you can provide those utterances to improve accuracy. This is optional. In most cases, Amazon Lex is capable of understanding user utterances. </p>
--- @param _description [Description] <p>A description of the slot.</p>
--- Required parameter: name
--- Required parameter: slotConstraint
-function M.Slot(_slotType, _name, _slotConstraint, _valueElicitationPrompt, _responseCard, _priority, _slotTypeVersion, _sampleUtterances, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Slot")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * slotType [CustomOrBuiltinSlotTypeName] <p>The type of the slot, either a custom slot type that you defined or one of the built-in slot types.</p>
+-- * name [SlotName] <p>The name of the slot.</p>
+-- * slotConstraint [SlotConstraint] <p>Specifies whether the slot is required or optional. </p>
+-- * valueElicitationPrompt [Prompt] <p>The prompt that Amazon Lex uses to elicit the slot value from the user.</p>
+-- * responseCard [ResponseCard] <p> A set of possible responses for the slot type used by text-based clients. A user chooses an option from the response card, instead of using text to reply. </p>
+-- * priority [Priority] <p> Directs Lex the order in which to elicit this slot value from the user. For example, if the intent has two slots with priorities 1 and 2, AWS Lex first elicits a value for the slot with priority 1.</p> <p>If multiple slots share the same priority, the order in which Lex elicits values is arbitrary.</p>
+-- * slotTypeVersion [Version] <p>The version of the slot type.</p>
+-- * sampleUtterances [SlotUtteranceList] <p> If you know a specific pattern with which users might respond to an Amazon Lex request for a slot value, you can provide those utterances to improve accuracy. This is optional. In most cases, Amazon Lex is capable of understanding user utterances. </p>
+-- * description [Description] <p>A description of the slot.</p>
+-- Required key: name
+-- Required key: slotConstraint
+-- @return Slot structure as a key-value pair table
+function M.Slot(args)
+	assert(args, "You must provdide an argument table when creating Slot")
 	local t = { 
-		["slotType"] = _slotType,
-		["name"] = _name,
-		["slotConstraint"] = _slotConstraint,
-		["valueElicitationPrompt"] = _valueElicitationPrompt,
-		["responseCard"] = _responseCard,
-		["priority"] = _priority,
-		["slotTypeVersion"] = _slotTypeVersion,
-		["sampleUtterances"] = _sampleUtterances,
-		["description"] = _description,
+		["slotType"] = args["slotType"],
+		["name"] = args["name"],
+		["slotConstraint"] = args["slotConstraint"],
+		["valueElicitationPrompt"] = args["valueElicitationPrompt"],
+		["responseCard"] = args["responseCard"],
+		["priority"] = args["priority"],
+		["slotTypeVersion"] = args["slotTypeVersion"],
+		["sampleUtterances"] = args["sampleUtterances"],
+		["description"] = args["description"],
 	}
 	asserts.AssertSlot(t)
 	return t
@@ -762,39 +825,42 @@ end
 
 --- Create a structure of type PutIntentResponse
 --  
--- @param _dialogCodeHook [CodeHook] <p>If defined in the intent, Amazon Lex invokes this Lambda function for each user input.</p>
--- @param _confirmationPrompt [Prompt] <p>If defined in the intent, Amazon Lex prompts the user to confirm the intent before fulfilling it.</p>
--- @param _followUpPrompt [FollowUpPrompt] <p>If defined in the intent, Amazon Lex uses this prompt to solicit additional user activity after the intent is fulfilled.</p>
--- @param _name [IntentName] <p>The name of the intent.</p>
--- @param _checksum [String] <p>Checksum of the <code>$LATEST</code>version of the intent created or updated.</p>
--- @param _conclusionStatement [Statement] <p>After the Lambda function specified in the<code>fulfillmentActivity</code>intent fulfills the intent, Amazon Lex conveys this statement to the user.</p>
--- @param _parentIntentSignature [BuiltinIntentSignature] <p>A unique identifier for the built-in intent that this intent is based on.</p>
--- @param _version [Version] <p>The version of the intent. For a new intent, the version is always <code>$LATEST</code>.</p>
--- @param _rejectionStatement [Statement] <p>If the user answers "no" to the question defined in <code>confirmationPrompt</code> Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
--- @param _createdDate [Timestamp] <p>The date that the intent was created.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the intent was updated. When you create a resource, the creation date and last update dates are the same.</p>
--- @param _sampleUtterances [IntentUtteranceList] <p> An array of sample utterances that are configured for the intent. </p>
--- @param _slots [SlotList] <p>An array of intent slots that are configured for the intent.</p>
--- @param _fulfillmentActivity [FulfillmentActivity] <p>If defined in the intent, Amazon Lex invokes this Lambda function to fulfill the intent after the user provides all of the information required by the intent.</p>
--- @param _description [Description] <p>A description of the intent.</p>
-function M.PutIntentResponse(_dialogCodeHook, _confirmationPrompt, _followUpPrompt, _name, _checksum, _conclusionStatement, _parentIntentSignature, _version, _rejectionStatement, _createdDate, _lastUpdatedDate, _sampleUtterances, _slots, _fulfillmentActivity, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutIntentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * dialogCodeHook [CodeHook] <p>If defined in the intent, Amazon Lex invokes this Lambda function for each user input.</p>
+-- * confirmationPrompt [Prompt] <p>If defined in the intent, Amazon Lex prompts the user to confirm the intent before fulfilling it.</p>
+-- * followUpPrompt [FollowUpPrompt] <p>If defined in the intent, Amazon Lex uses this prompt to solicit additional user activity after the intent is fulfilled.</p>
+-- * name [IntentName] <p>The name of the intent.</p>
+-- * checksum [String] <p>Checksum of the <code>$LATEST</code>version of the intent created or updated.</p>
+-- * conclusionStatement [Statement] <p>After the Lambda function specified in the<code>fulfillmentActivity</code>intent fulfills the intent, Amazon Lex conveys this statement to the user.</p>
+-- * parentIntentSignature [BuiltinIntentSignature] <p>A unique identifier for the built-in intent that this intent is based on.</p>
+-- * version [Version] <p>The version of the intent. For a new intent, the version is always <code>$LATEST</code>.</p>
+-- * rejectionStatement [Statement] <p>If the user answers "no" to the question defined in <code>confirmationPrompt</code> Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
+-- * createdDate [Timestamp] <p>The date that the intent was created.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the intent was updated. When you create a resource, the creation date and last update dates are the same.</p>
+-- * sampleUtterances [IntentUtteranceList] <p> An array of sample utterances that are configured for the intent. </p>
+-- * slots [SlotList] <p>An array of intent slots that are configured for the intent.</p>
+-- * fulfillmentActivity [FulfillmentActivity] <p>If defined in the intent, Amazon Lex invokes this Lambda function to fulfill the intent after the user provides all of the information required by the intent.</p>
+-- * description [Description] <p>A description of the intent.</p>
+-- @return PutIntentResponse structure as a key-value pair table
+function M.PutIntentResponse(args)
+	assert(args, "You must provdide an argument table when creating PutIntentResponse")
 	local t = { 
-		["dialogCodeHook"] = _dialogCodeHook,
-		["confirmationPrompt"] = _confirmationPrompt,
-		["followUpPrompt"] = _followUpPrompt,
-		["name"] = _name,
-		["checksum"] = _checksum,
-		["conclusionStatement"] = _conclusionStatement,
-		["parentIntentSignature"] = _parentIntentSignature,
-		["version"] = _version,
-		["rejectionStatement"] = _rejectionStatement,
-		["createdDate"] = _createdDate,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["sampleUtterances"] = _sampleUtterances,
-		["slots"] = _slots,
-		["fulfillmentActivity"] = _fulfillmentActivity,
-		["description"] = _description,
+		["dialogCodeHook"] = args["dialogCodeHook"],
+		["confirmationPrompt"] = args["confirmationPrompt"],
+		["followUpPrompt"] = args["followUpPrompt"],
+		["name"] = args["name"],
+		["checksum"] = args["checksum"],
+		["conclusionStatement"] = args["conclusionStatement"],
+		["parentIntentSignature"] = args["parentIntentSignature"],
+		["version"] = args["version"],
+		["rejectionStatement"] = args["rejectionStatement"],
+		["createdDate"] = args["createdDate"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["sampleUtterances"] = args["sampleUtterances"],
+		["slots"] = args["slots"],
+		["fulfillmentActivity"] = args["fulfillmentActivity"],
+		["description"] = args["description"],
 	}
 	asserts.AssertPutIntentResponse(t)
 	return t
@@ -816,16 +882,19 @@ end
 
 --- Create a structure of type GetIntentVersionsRequest
 --  
--- @param _nextToken [NextToken] <p>A pagination token for fetching the next page of intent versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
--- @param _name [IntentName] <p>The name of the intent for which versions should be returned.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of intent versions to return in the response. The default is 10.</p>
--- Required parameter: name
-function M.GetIntentVersionsRequest(_nextToken, _name, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIntentVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>A pagination token for fetching the next page of intent versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
+-- * name [IntentName] <p>The name of the intent for which versions should be returned.</p>
+-- * maxResults [MaxResults] <p>The maximum number of intent versions to return in the response. The default is 10.</p>
+-- Required key: name
+-- @return GetIntentVersionsRequest structure as a key-value pair table
+function M.GetIntentVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetIntentVersionsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["name"] = _name,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["name"] = args["name"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetIntentVersionsRequest(t)
 	return t
@@ -845,13 +914,16 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The request exceeded a limit. Try your request again.</p>
--- @param _message [String] 
--- @param _retryAfterSeconds [String] 
-function M.LimitExceededException(_message, _retryAfterSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- * retryAfterSeconds [String] 
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["message"] = _message,
-		["retryAfterSeconds"] = _retryAfterSeconds,
+		["message"] = args["message"],
+		["retryAfterSeconds"] = args["retryAfterSeconds"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -875,21 +947,24 @@ end
 
 --- Create a structure of type BotMetadata
 -- <p>Provides information about a bot. .</p>
--- @param _status [Status] <p>The status of the bot.</p>
--- @param _name [BotName] <p>The name of the bot. </p>
--- @param _version [Version] <p>The version of the bot. For a new bot, the version is always <code>$LATEST</code>.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the bot was updated. When you create a bot, the creation date and last updated date are the same. </p>
--- @param _createdDate [Timestamp] <p>The date that the bot was created.</p>
--- @param _description [Description] <p>A description of the bot.</p>
-function M.BotMetadata(_status, _name, _version, _lastUpdatedDate, _createdDate, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BotMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [Status] <p>The status of the bot.</p>
+-- * name [BotName] <p>The name of the bot. </p>
+-- * version [Version] <p>The version of the bot. For a new bot, the version is always <code>$LATEST</code>.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the bot was updated. When you create a bot, the creation date and last updated date are the same. </p>
+-- * createdDate [Timestamp] <p>The date that the bot was created.</p>
+-- * description [Description] <p>A description of the bot.</p>
+-- @return BotMetadata structure as a key-value pair table
+function M.BotMetadata(args)
+	assert(args, "You must provdide an argument table when creating BotMetadata")
 	local t = { 
-		["status"] = _status,
-		["name"] = _name,
-		["version"] = _version,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["createdDate"] = _createdDate,
-		["description"] = _description,
+		["status"] = args["status"],
+		["name"] = args["name"],
+		["version"] = args["version"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["createdDate"] = args["createdDate"],
+		["description"] = args["description"],
 	}
 	asserts.AssertBotMetadata(t)
 	return t
@@ -911,15 +986,18 @@ end
 
 --- Create a structure of type DeleteBotAliasRequest
 --  
--- @param _name [AliasName] <p>The name of the alias to delete. The name is case sensitive. </p>
--- @param _botName [BotName] <p>The name of the bot that the alias points to.</p>
--- Required parameter: name
--- Required parameter: botName
-function M.DeleteBotAliasRequest(_name, _botName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBotAliasRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [AliasName] <p>The name of the alias to delete. The name is case sensitive. </p>
+-- * botName [BotName] <p>The name of the bot that the alias points to.</p>
+-- Required key: name
+-- Required key: botName
+-- @return DeleteBotAliasRequest structure as a key-value pair table
+function M.DeleteBotAliasRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBotAliasRequest")
 	local t = { 
-		["name"] = _name,
-		["botName"] = _botName,
+		["name"] = args["name"],
+		["botName"] = args["botName"],
 	}
 	asserts.AssertDeleteBotAliasRequest(t)
 	return t
@@ -941,15 +1019,18 @@ end
 
 --- Create a structure of type GetSlotTypeRequest
 --  
--- @param _version [Version] <p>The version of the slot type. </p>
--- @param _name [SlotTypeName] <p>The name of the slot type. The name is case sensitive. </p>
--- Required parameter: name
--- Required parameter: version
-function M.GetSlotTypeRequest(_version, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSlotTypeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [Version] <p>The version of the slot type. </p>
+-- * name [SlotTypeName] <p>The name of the slot type. The name is case sensitive. </p>
+-- Required key: name
+-- Required key: version
+-- @return GetSlotTypeRequest structure as a key-value pair table
+function M.GetSlotTypeRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSlotTypeRequest")
 	local t = { 
-		["version"] = _version,
-		["name"] = _name,
+		["version"] = args["version"],
+		["name"] = args["name"],
 	}
 	asserts.AssertGetSlotTypeRequest(t)
 	return t
@@ -971,15 +1052,18 @@ end
 
 --- Create a structure of type DeleteBotVersionRequest
 --  
--- @param _version [NumericalVersion] <p>The version of the bot to delete. You cannot delete the <code>$LATEST</code> version of the bot. To delete the <code>$LATEST</code> version, use the operation.</p>
--- @param _name [BotName] <p>The name of the bot.</p>
--- Required parameter: name
--- Required parameter: version
-function M.DeleteBotVersionRequest(_version, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBotVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [NumericalVersion] <p>The version of the bot to delete. You cannot delete the <code>$LATEST</code> version of the bot. To delete the <code>$LATEST</code> version, use the operation.</p>
+-- * name [BotName] <p>The name of the bot.</p>
+-- Required key: name
+-- Required key: version
+-- @return DeleteBotVersionRequest structure as a key-value pair table
+function M.DeleteBotVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBotVersionRequest")
 	local t = { 
-		["version"] = _version,
-		["name"] = _name,
+		["version"] = args["version"],
+		["name"] = args["name"],
 	}
 	asserts.AssertDeleteBotVersionRequest(t)
 	return t
@@ -998,11 +1082,14 @@ end
 
 --- Create a structure of type NotFoundException
 -- <p>The resource specified in the request was not found. Check the resource and try again.</p>
--- @param _message [String] 
-function M.NotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return NotFoundException structure as a key-value pair table
+function M.NotFoundException(args)
+	assert(args, "You must provdide an argument table when creating NotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNotFoundException(t)
 	return t
@@ -1025,19 +1112,22 @@ end
 
 --- Create a structure of type IntentMetadata
 -- <p>Provides information about an intent.</p>
--- @param _version [Version] <p>The version of the intent.</p>
--- @param _createdDate [Timestamp] <p>The date that the intent was created.</p>
--- @param _name [IntentName] <p>The name of the intent.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the intent was updated. When you create an intent, the creation date and last updated date are the same.</p>
--- @param _description [Description] <p>A description of the intent.</p>
-function M.IntentMetadata(_version, _createdDate, _name, _lastUpdatedDate, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IntentMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [Version] <p>The version of the intent.</p>
+-- * createdDate [Timestamp] <p>The date that the intent was created.</p>
+-- * name [IntentName] <p>The name of the intent.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the intent was updated. When you create an intent, the creation date and last updated date are the same.</p>
+-- * description [Description] <p>A description of the intent.</p>
+-- @return IntentMetadata structure as a key-value pair table
+function M.IntentMetadata(args)
+	assert(args, "You must provdide an argument table when creating IntentMetadata")
 	local t = { 
-		["version"] = _version,
-		["createdDate"] = _createdDate,
-		["name"] = _name,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["description"] = _description,
+		["version"] = args["version"],
+		["createdDate"] = args["createdDate"],
+		["name"] = args["name"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["description"] = args["description"],
 	}
 	asserts.AssertIntentMetadata(t)
 	return t
@@ -1058,15 +1148,18 @@ end
 
 --- Create a structure of type GetSlotTypesRequest
 --  
--- @param _nameContains [SlotTypeName] <p>Substring to match in slot type names. A slot type will be returned if any part of its name matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz."</p>
--- @param _nextToken [NextToken] <p>A pagination token that fetches the next page of slot types. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch next page of slot types, specify the pagination token in the next request.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of slot types to return in the response. The default is 10.</p>
-function M.GetSlotTypesRequest(_nameContains, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSlotTypesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nameContains [SlotTypeName] <p>Substring to match in slot type names. A slot type will be returned if any part of its name matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz."</p>
+-- * nextToken [NextToken] <p>A pagination token that fetches the next page of slot types. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch next page of slot types, specify the pagination token in the next request.</p>
+-- * maxResults [MaxResults] <p>The maximum number of slot types to return in the response. The default is 10.</p>
+-- @return GetSlotTypesRequest structure as a key-value pair table
+function M.GetSlotTypesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSlotTypesRequest")
 	local t = { 
-		["nameContains"] = _nameContains,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["nameContains"] = args["nameContains"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetSlotTypesRequest(t)
 	return t
@@ -1087,14 +1180,17 @@ end
 
 --- Create a structure of type CreateBotVersionRequest
 --  
--- @param _checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version of the bot. If you specify a checksum and the <code>$LATEST</code> version of the bot has a different checksum, a <code>PreconditionFailedException</code> exception is returned and Amazon Lex doesn't publish a new version. If you don't specify a checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
--- @param _name [BotName] <p>The name of the bot that you want to create a new version of. The name is case sensitive. </p>
--- Required parameter: name
-function M.CreateBotVersionRequest(_checksum, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBotVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version of the bot. If you specify a checksum and the <code>$LATEST</code> version of the bot has a different checksum, a <code>PreconditionFailedException</code> exception is returned and Amazon Lex doesn't publish a new version. If you don't specify a checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
+-- * name [BotName] <p>The name of the bot that you want to create a new version of. The name is case sensitive. </p>
+-- Required key: name
+-- @return CreateBotVersionRequest structure as a key-value pair table
+function M.CreateBotVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateBotVersionRequest")
 	local t = { 
-		["checksum"] = _checksum,
-		["name"] = _name,
+		["checksum"] = args["checksum"],
+		["name"] = args["name"],
 	}
 	asserts.AssertCreateBotVersionRequest(t)
 	return t
@@ -1116,16 +1212,19 @@ end
 
 --- Create a structure of type GetSlotTypeVersionsRequest
 --  
--- @param _nextToken [NextToken] <p>A pagination token for fetching the next page of slot type versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
--- @param _name [SlotTypeName] <p>The name of the slot type for which versions should be returned.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of slot type versions to return in the response. The default is 10.</p>
--- Required parameter: name
-function M.GetSlotTypeVersionsRequest(_nextToken, _name, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSlotTypeVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>A pagination token for fetching the next page of slot type versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
+-- * name [SlotTypeName] <p>The name of the slot type for which versions should be returned.</p>
+-- * maxResults [MaxResults] <p>The maximum number of slot type versions to return in the response. The default is 10.</p>
+-- Required key: name
+-- @return GetSlotTypeVersionsRequest structure as a key-value pair table
+function M.GetSlotTypeVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSlotTypeVersionsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["name"] = _name,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["name"] = args["name"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetSlotTypeVersionsRequest(t)
 	return t
@@ -1150,23 +1249,26 @@ end
 
 --- Create a structure of type GetSlotTypeResponse
 --  
--- @param _name [SlotTypeName] <p>The name of the slot type.</p>
--- @param _enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take.</p>
--- @param _checksum [String] <p>Checksum of the <code>$LATEST</code> version of the slot type.</p>
--- @param _version [Version] <p>The version of the slot type.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a resource, the creation date and last update date are the same.</p>
--- @param _createdDate [Timestamp] <p>The date that the slot type was created.</p>
--- @param _description [Description] <p>A description of the slot type.</p>
-function M.GetSlotTypeResponse(_name, _enumerationValues, _checksum, _version, _lastUpdatedDate, _createdDate, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSlotTypeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [SlotTypeName] <p>The name of the slot type.</p>
+-- * enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take.</p>
+-- * checksum [String] <p>Checksum of the <code>$LATEST</code> version of the slot type.</p>
+-- * version [Version] <p>The version of the slot type.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a resource, the creation date and last update date are the same.</p>
+-- * createdDate [Timestamp] <p>The date that the slot type was created.</p>
+-- * description [Description] <p>A description of the slot type.</p>
+-- @return GetSlotTypeResponse structure as a key-value pair table
+function M.GetSlotTypeResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSlotTypeResponse")
 	local t = { 
-		["name"] = _name,
-		["enumerationValues"] = _enumerationValues,
-		["checksum"] = _checksum,
-		["version"] = _version,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["createdDate"] = _createdDate,
-		["description"] = _description,
+		["name"] = args["name"],
+		["enumerationValues"] = args["enumerationValues"],
+		["checksum"] = args["checksum"],
+		["version"] = args["version"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["createdDate"] = args["createdDate"],
+		["description"] = args["description"],
 	}
 	asserts.AssertGetSlotTypeResponse(t)
 	return t
@@ -1189,17 +1291,20 @@ end
 
 --- Create a structure of type Prompt
 -- <p>Obtains information from the user. To define a prompt, provide one or more messages and specify the number of attempts to get information from the user. If you provide more than one message, Amazon Lex chooses one of the messages to use to prompt the user. For more information, see <a>how-it-works</a>.</p>
--- @param _maxAttempts [PromptMaxAttempts] <p>The number of times to prompt the user for information.</p>
--- @param _messages [MessageList] <p>An array of objects, each of which provides a message string and its type. You can specify the message string in plain text or in Speech Synthesis Markup Language (SSML).</p>
--- @param _responseCard [ResponseCard] <p>A response card. Amazon Lex uses this prompt at runtime, in the <code>PostText</code> API response. It substitutes session attributes and slot values for placeholders in the response card. For more information, see <a>ex-resp-card</a>. </p>
--- Required parameter: messages
--- Required parameter: maxAttempts
-function M.Prompt(_maxAttempts, _messages, _responseCard, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Prompt")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * maxAttempts [PromptMaxAttempts] <p>The number of times to prompt the user for information.</p>
+-- * messages [MessageList] <p>An array of objects, each of which provides a message string and its type. You can specify the message string in plain text or in Speech Synthesis Markup Language (SSML).</p>
+-- * responseCard [ResponseCard] <p>A response card. Amazon Lex uses this prompt at runtime, in the <code>PostText</code> API response. It substitutes session attributes and slot values for placeholders in the response card. For more information, see <a>ex-resp-card</a>. </p>
+-- Required key: messages
+-- Required key: maxAttempts
+-- @return Prompt structure as a key-value pair table
+function M.Prompt(args)
+	assert(args, "You must provdide an argument table when creating Prompt")
 	local t = { 
-		["maxAttempts"] = _maxAttempts,
-		["messages"] = _messages,
-		["responseCard"] = _responseCard,
+		["maxAttempts"] = args["maxAttempts"],
+		["messages"] = args["messages"],
+		["responseCard"] = args["responseCard"],
 	}
 	asserts.AssertPrompt(t)
 	return t
@@ -1219,12 +1324,15 @@ end
 
 --- Create a structure of type DeleteIntentRequest
 --  
--- @param _name [IntentName] <p>The name of the intent. The name is case sensitive. </p>
--- Required parameter: name
-function M.DeleteIntentRequest(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIntentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [IntentName] <p>The name of the intent. The name is case sensitive. </p>
+-- Required key: name
+-- @return DeleteIntentRequest structure as a key-value pair table
+function M.DeleteIntentRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteIntentRequest")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertDeleteIntentRequest(t)
 	return t
@@ -1244,13 +1352,16 @@ end
 
 --- Create a structure of type ResourceInUseException
 -- <p>The resource that you are attempting to delete is referred to by another resource. Use this information to remove references to the resource that you are trying to delete.</p> <p>The body of the exception contains a JSON object that describes the resource.</p> <p> <code>{ "resourceType": BOT | BOTALIAS | BOTCHANNEL | INTENT,</code> </p> <p> <code>"resourceReference": {</code> </p> <p> <code>"name": <i>string</i>, "version": <i>string</i> } }</code> </p>
--- @param _exampleReference [ResourceReference] 
--- @param _referenceType [ReferenceType] 
-function M.ResourceInUseException(_exampleReference, _referenceType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * exampleReference [ResourceReference] 
+-- * referenceType [ReferenceType] 
+-- @return ResourceInUseException structure as a key-value pair table
+function M.ResourceInUseException(args)
+	assert(args, "You must provdide an argument table when creating ResourceInUseException")
 	local t = { 
-		["exampleReference"] = _exampleReference,
-		["referenceType"] = _referenceType,
+		["exampleReference"] = args["exampleReference"],
+		["referenceType"] = args["referenceType"],
 	}
 	asserts.AssertResourceInUseException(t)
 	return t
@@ -1270,12 +1381,15 @@ end
 
 --- Create a structure of type GetBuiltinIntentRequest
 --  
--- @param _signature [BuiltinIntentSignature] <p>The unique identifier for a built-in intent. To find the signature for an intent, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
--- Required parameter: signature
-function M.GetBuiltinIntentRequest(_signature, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBuiltinIntentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * signature [BuiltinIntentSignature] <p>The unique identifier for a built-in intent. To find the signature for an intent, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
+-- Required key: signature
+-- @return GetBuiltinIntentRequest structure as a key-value pair table
+function M.GetBuiltinIntentRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBuiltinIntentRequest")
 	local t = { 
-		["signature"] = _signature,
+		["signature"] = args["signature"],
 	}
 	asserts.AssertGetBuiltinIntentRequest(t)
 	return t
@@ -1297,15 +1411,18 @@ end
 
 --- Create a structure of type Message
 -- <p>The message object that provides the message text and its type.</p>
--- @param _content [ContentString] <p>The text of the message.</p>
--- @param _contentType [ContentType] <p>The content type of the message string.</p>
--- Required parameter: contentType
--- Required parameter: content
-function M.Message(_content, _contentType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Message")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * content [ContentString] <p>The text of the message.</p>
+-- * contentType [ContentType] <p>The content type of the message string.</p>
+-- Required key: contentType
+-- Required key: content
+-- @return Message structure as a key-value pair table
+function M.Message(args)
+	assert(args, "You must provdide an argument table when creating Message")
 	local t = { 
-		["content"] = _content,
-		["contentType"] = _contentType,
+		["content"] = args["content"],
+		["contentType"] = args["contentType"],
 	}
 	asserts.AssertMessage(t)
 	return t
@@ -1338,39 +1455,42 @@ end
 
 --- Create a structure of type GetIntentResponse
 --  
--- @param _dialogCodeHook [CodeHook] <p>If defined in the bot, Amazon Amazon Lex invokes this Lambda function for each user input. For more information, see . </p>
--- @param _confirmationPrompt [Prompt] <p>If defined in the bot, Amazon Lex uses prompt to confirm the intent before fulfilling the user's request. For more information, see . </p>
--- @param _followUpPrompt [FollowUpPrompt] <p>If defined in the bot, Amazon Lex uses this prompt to solicit additional user activity after the intent is fulfilled. For more information, see .</p>
--- @param _name [IntentName] <p>The name of the intent.</p>
--- @param _checksum [String] <p>Checksum of the intent.</p>
--- @param _conclusionStatement [Statement] <p>After the Lambda function specified in the <code>fulfillmentActivity</code> element fulfills the intent, Amazon Lex conveys this statement to the user.</p>
--- @param _parentIntentSignature [BuiltinIntentSignature] <p>A unique identifier for a built-in intent.</p>
--- @param _version [Version] <p>The version of the intent.</p>
--- @param _rejectionStatement [Statement] <p>If the user answers "no" to the question defined in <code>confirmationPrompt</code>, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
--- @param _createdDate [Timestamp] <p>The date that the intent was created.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the intent was updated. When you create a resource, the creation date and the last updated date are the same. </p>
--- @param _sampleUtterances [IntentUtteranceList] <p>An array of sample utterances configured for the intent.</p>
--- @param _slots [SlotList] <p>An array of intent slots configured for the intent.</p>
--- @param _fulfillmentActivity [FulfillmentActivity] <p>Describes how the intent is fulfilled. For more information, see . </p>
--- @param _description [Description] <p>A description of the intent.</p>
-function M.GetIntentResponse(_dialogCodeHook, _confirmationPrompt, _followUpPrompt, _name, _checksum, _conclusionStatement, _parentIntentSignature, _version, _rejectionStatement, _createdDate, _lastUpdatedDate, _sampleUtterances, _slots, _fulfillmentActivity, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIntentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * dialogCodeHook [CodeHook] <p>If defined in the bot, Amazon Amazon Lex invokes this Lambda function for each user input. For more information, see . </p>
+-- * confirmationPrompt [Prompt] <p>If defined in the bot, Amazon Lex uses prompt to confirm the intent before fulfilling the user's request. For more information, see . </p>
+-- * followUpPrompt [FollowUpPrompt] <p>If defined in the bot, Amazon Lex uses this prompt to solicit additional user activity after the intent is fulfilled. For more information, see .</p>
+-- * name [IntentName] <p>The name of the intent.</p>
+-- * checksum [String] <p>Checksum of the intent.</p>
+-- * conclusionStatement [Statement] <p>After the Lambda function specified in the <code>fulfillmentActivity</code> element fulfills the intent, Amazon Lex conveys this statement to the user.</p>
+-- * parentIntentSignature [BuiltinIntentSignature] <p>A unique identifier for a built-in intent.</p>
+-- * version [Version] <p>The version of the intent.</p>
+-- * rejectionStatement [Statement] <p>If the user answers "no" to the question defined in <code>confirmationPrompt</code>, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
+-- * createdDate [Timestamp] <p>The date that the intent was created.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the intent was updated. When you create a resource, the creation date and the last updated date are the same. </p>
+-- * sampleUtterances [IntentUtteranceList] <p>An array of sample utterances configured for the intent.</p>
+-- * slots [SlotList] <p>An array of intent slots configured for the intent.</p>
+-- * fulfillmentActivity [FulfillmentActivity] <p>Describes how the intent is fulfilled. For more information, see . </p>
+-- * description [Description] <p>A description of the intent.</p>
+-- @return GetIntentResponse structure as a key-value pair table
+function M.GetIntentResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIntentResponse")
 	local t = { 
-		["dialogCodeHook"] = _dialogCodeHook,
-		["confirmationPrompt"] = _confirmationPrompt,
-		["followUpPrompt"] = _followUpPrompt,
-		["name"] = _name,
-		["checksum"] = _checksum,
-		["conclusionStatement"] = _conclusionStatement,
-		["parentIntentSignature"] = _parentIntentSignature,
-		["version"] = _version,
-		["rejectionStatement"] = _rejectionStatement,
-		["createdDate"] = _createdDate,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["sampleUtterances"] = _sampleUtterances,
-		["slots"] = _slots,
-		["fulfillmentActivity"] = _fulfillmentActivity,
-		["description"] = _description,
+		["dialogCodeHook"] = args["dialogCodeHook"],
+		["confirmationPrompt"] = args["confirmationPrompt"],
+		["followUpPrompt"] = args["followUpPrompt"],
+		["name"] = args["name"],
+		["checksum"] = args["checksum"],
+		["conclusionStatement"] = args["conclusionStatement"],
+		["parentIntentSignature"] = args["parentIntentSignature"],
+		["version"] = args["version"],
+		["rejectionStatement"] = args["rejectionStatement"],
+		["createdDate"] = args["createdDate"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["sampleUtterances"] = args["sampleUtterances"],
+		["slots"] = args["slots"],
+		["fulfillmentActivity"] = args["fulfillmentActivity"],
+		["description"] = args["description"],
 	}
 	asserts.AssertGetIntentResponse(t)
 	return t
@@ -1401,34 +1521,37 @@ end
 
 --- Create a structure of type PutIntentRequest
 --  
--- @param _dialogCodeHook [CodeHook] <p> Specifies a Lambda function to invoke for each user input. You can invoke this Lambda function to personalize user interaction. </p> <p>For example, suppose your bot determines that the user is John. Your Lambda function might retrieve John's information from a backend database and prepopulate some of the values. For example, if you find that John is gluten intolerant, you might set the corresponding intent slot, <code>GlutenIntolerant</code>, to true. You might find John's phone number and set the corresponding session attribute. </p>
--- @param _confirmationPrompt [Prompt] <p>Prompts the user to confirm the intent. This question should have a yes or no answer.</p> <p>Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. For example, with the <code>OrderPizza</code> intent, you might want to confirm that the order is correct before placing it. For other intents, such as intents that simply respond to user questions, you might not need to ask the user for confirmation before providing the information. </p> <note> <p>You you must provide both the <code>rejectionStatement</code> and the <code>confirmationPrompt</code>, or neither.</p> </note>
--- @param _followUpPrompt [FollowUpPrompt] <p>A user prompt for additional activity after an intent is fulfilled. For example, after the <code>OrderPizza</code> intent is fulfilled (your Lambda function placed an order with a pizzeria), you might prompt the user to find if they want to order a drink (assuming that you have defined an <code>OrderDrink</code> intent in your bot).</p> <note> <p>The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can specify only one. For example, your bot may not solicit both the following: </p> <p> Follow up prompt - "<code>$session.FirstName</code>, your pizza order has been placed. Would you like to order a drink or a dessert?" </p> <p> Conclusion statement - "<code>$session.FirstName</code>, your pizza order has been placed." </p> </note>
--- @param _name [IntentName] <p>The name of the intent. The name is <i>not</i> case sensitive. </p> <p>The name can't match a built-in intent name, or a built-in intent name with "AMAZON." removed. For example, because there is a built-in intent called <code>AMAZON.HelpIntent</code>, you can't create a custom intent called <code>HelpIntent</code>.</p> <p>For a list of built-in intents, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
--- @param _checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new intent, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a intent, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
--- @param _conclusionStatement [Statement] <p> The statement that you want Amazon Lex to convey to the user after the intent is successfully fulfilled by the Lambda function. </p> <p>This element is relevant only if you provide a Lambda function in the <code>fulfillmentActivity</code>. If you return the intent to the client application, you can't specify this element.</p> <note> <p>The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can specify only one.</p> </note>
--- @param _parentIntentSignature [BuiltinIntentSignature] <p>A unique identifier for the built-in intent to base this intent on. To find the signature for an intent, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
--- @param _rejectionStatement [Statement] <p>When the user answers "no" to the question defined in <code>confirmationPrompt</code>, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p> <note> <p>You must provide both the <code>rejectionStatement</code> and the <code>confirmationPrompt</code>, or neither.</p> </note>
--- @param _sampleUtterances [IntentUtteranceList] <p>An array of utterances (strings) that a user might say to signal the intent. For example, "I want {PizzaSize} pizza", "Order {Quantity} {PizzaSize} pizzas". </p> <p>In each utterance, a slot name is enclosed in curly braces. </p>
--- @param _slots [SlotList] <p>An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;. </p>
--- @param _fulfillmentActivity [FulfillmentActivity] <p> Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store. </p> <p> You might configure Amazon Lex to return all of the intent information to the client application, or direct it to invoke a Lambda function that can process the intent (for example, place an order with a pizzeria). </p>
--- @param _description [Description] <p>A description of the intent.</p>
--- Required parameter: name
-function M.PutIntentRequest(_dialogCodeHook, _confirmationPrompt, _followUpPrompt, _name, _checksum, _conclusionStatement, _parentIntentSignature, _rejectionStatement, _sampleUtterances, _slots, _fulfillmentActivity, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutIntentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * dialogCodeHook [CodeHook] <p> Specifies a Lambda function to invoke for each user input. You can invoke this Lambda function to personalize user interaction. </p> <p>For example, suppose your bot determines that the user is John. Your Lambda function might retrieve John's information from a backend database and prepopulate some of the values. For example, if you find that John is gluten intolerant, you might set the corresponding intent slot, <code>GlutenIntolerant</code>, to true. You might find John's phone number and set the corresponding session attribute. </p>
+-- * confirmationPrompt [Prompt] <p>Prompts the user to confirm the intent. This question should have a yes or no answer.</p> <p>Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. For example, with the <code>OrderPizza</code> intent, you might want to confirm that the order is correct before placing it. For other intents, such as intents that simply respond to user questions, you might not need to ask the user for confirmation before providing the information. </p> <note> <p>You you must provide both the <code>rejectionStatement</code> and the <code>confirmationPrompt</code>, or neither.</p> </note>
+-- * followUpPrompt [FollowUpPrompt] <p>A user prompt for additional activity after an intent is fulfilled. For example, after the <code>OrderPizza</code> intent is fulfilled (your Lambda function placed an order with a pizzeria), you might prompt the user to find if they want to order a drink (assuming that you have defined an <code>OrderDrink</code> intent in your bot).</p> <note> <p>The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can specify only one. For example, your bot may not solicit both the following: </p> <p> Follow up prompt - "<code>$session.FirstName</code>, your pizza order has been placed. Would you like to order a drink or a dessert?" </p> <p> Conclusion statement - "<code>$session.FirstName</code>, your pizza order has been placed." </p> </note>
+-- * name [IntentName] <p>The name of the intent. The name is <i>not</i> case sensitive. </p> <p>The name can't match a built-in intent name, or a built-in intent name with "AMAZON." removed. For example, because there is a built-in intent called <code>AMAZON.HelpIntent</code>, you can't create a custom intent called <code>HelpIntent</code>.</p> <p>For a list of built-in intents, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
+-- * checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new intent, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a intent, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
+-- * conclusionStatement [Statement] <p> The statement that you want Amazon Lex to convey to the user after the intent is successfully fulfilled by the Lambda function. </p> <p>This element is relevant only if you provide a Lambda function in the <code>fulfillmentActivity</code>. If you return the intent to the client application, you can't specify this element.</p> <note> <p>The <code>followUpPrompt</code> and <code>conclusionStatement</code> are mutually exclusive. You can specify only one.</p> </note>
+-- * parentIntentSignature [BuiltinIntentSignature] <p>A unique identifier for the built-in intent to base this intent on. To find the signature for an intent, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
+-- * rejectionStatement [Statement] <p>When the user answers "no" to the question defined in <code>confirmationPrompt</code>, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p> <note> <p>You must provide both the <code>rejectionStatement</code> and the <code>confirmationPrompt</code>, or neither.</p> </note>
+-- * sampleUtterances [IntentUtteranceList] <p>An array of utterances (strings) that a user might say to signal the intent. For example, "I want {PizzaSize} pizza", "Order {Quantity} {PizzaSize} pizzas". </p> <p>In each utterance, a slot name is enclosed in curly braces. </p>
+-- * slots [SlotList] <p>An array of intent slots. At runtime, Amazon Lex elicits required slot values from the user using prompts defined in the slots. For more information, see &lt;xref linkend="how-it-works"/&gt;. </p>
+-- * fulfillmentActivity [FulfillmentActivity] <p> Describes how the intent is fulfilled. For example, after a user provides all of the information for a pizza order, <code>fulfillmentActivity</code> defines how the bot places an order with a local pizza store. </p> <p> You might configure Amazon Lex to return all of the intent information to the client application, or direct it to invoke a Lambda function that can process the intent (for example, place an order with a pizzeria). </p>
+-- * description [Description] <p>A description of the intent.</p>
+-- Required key: name
+-- @return PutIntentRequest structure as a key-value pair table
+function M.PutIntentRequest(args)
+	assert(args, "You must provdide an argument table when creating PutIntentRequest")
 	local t = { 
-		["dialogCodeHook"] = _dialogCodeHook,
-		["confirmationPrompt"] = _confirmationPrompt,
-		["followUpPrompt"] = _followUpPrompt,
-		["name"] = _name,
-		["checksum"] = _checksum,
-		["conclusionStatement"] = _conclusionStatement,
-		["parentIntentSignature"] = _parentIntentSignature,
-		["rejectionStatement"] = _rejectionStatement,
-		["sampleUtterances"] = _sampleUtterances,
-		["slots"] = _slots,
-		["fulfillmentActivity"] = _fulfillmentActivity,
-		["description"] = _description,
+		["dialogCodeHook"] = args["dialogCodeHook"],
+		["confirmationPrompt"] = args["confirmationPrompt"],
+		["followUpPrompt"] = args["followUpPrompt"],
+		["name"] = args["name"],
+		["checksum"] = args["checksum"],
+		["conclusionStatement"] = args["conclusionStatement"],
+		["parentIntentSignature"] = args["parentIntentSignature"],
+		["rejectionStatement"] = args["rejectionStatement"],
+		["sampleUtterances"] = args["sampleUtterances"],
+		["slots"] = args["slots"],
+		["fulfillmentActivity"] = args["fulfillmentActivity"],
+		["description"] = args["description"],
 	}
 	asserts.AssertPutIntentRequest(t)
 	return t
@@ -1448,13 +1571,16 @@ end
 
 --- Create a structure of type GetBotChannelAssociationsResponse
 --  
--- @param _nextToken [NextToken] <p>A pagination token that fetches the next page of associations. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of associations, specify the pagination token in the next request. </p>
--- @param _botChannelAssociations [BotChannelAssociationList] <p>An array of objects, one for each association, that provides information about the Amazon Lex bot and its association with the channel. </p>
-function M.GetBotChannelAssociationsResponse(_nextToken, _botChannelAssociations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotChannelAssociationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>A pagination token that fetches the next page of associations. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of associations, specify the pagination token in the next request. </p>
+-- * botChannelAssociations [BotChannelAssociationList] <p>An array of objects, one for each association, that provides information about the Amazon Lex bot and its association with the channel. </p>
+-- @return GetBotChannelAssociationsResponse structure as a key-value pair table
+function M.GetBotChannelAssociationsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBotChannelAssociationsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["botChannelAssociations"] = _botChannelAssociations,
+		["nextToken"] = args["nextToken"],
+		["botChannelAssociations"] = args["botChannelAssociations"],
 	}
 	asserts.AssertGetBotChannelAssociationsResponse(t)
 	return t
@@ -1487,39 +1613,42 @@ end
 
 --- Create a structure of type PutBotResponse
 --  
--- @param _status [Status] <p> When you send a request to create a bot with <code>processBehavior</code> set to <code>BUILD</code>, Amazon Lex sets the <code>status</code> response element to <code>BUILDING</code>. After Amazon Lex builds the bot, it sets <code>status</code> to <code>READY</code>. If Amazon Lex can't build the bot, Amazon Lex sets <code>status</code> to <code>FAILED</code>. Amazon Lex returns the reason for the failure in the <code>failureReason</code> response element. </p> <p>When you set <code>processBehavior</code>to <code>SAVE</code>, Amazon Lex sets the status code to <code>NOT BUILT</code>.</p>
--- @param _intents [IntentList] <p>An array of <code>Intent</code> objects. For more information, see .</p>
--- @param _name [BotName] <p>The name of the bot.</p>
--- @param _locale [Locale] <p> The target locale for the bot. </p>
--- @param _checksum [String] <p>Checksum of the bot that you created.</p>
--- @param _createdDate [Timestamp] <p>The date that the bot was created.</p>
--- @param _version [Version] <p>The version of the bot. For a new bot, the version is always <code>$LATEST</code>.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the bot was updated. When you create a resource, the creation date and last updated date are the same.</p>
--- @param _abortStatement [Statement] <p>The message that Amazon Lex uses to abort a conversation. For more information, see .</p>
--- @param _clarificationPrompt [Prompt] <p> The prompts that Amazon Lex uses when it doesn't understand the user's intent. For more information, see . </p>
--- @param _voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see .</p>
--- @param _failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex provides the reason that it failed to build the bot.</p>
--- @param _childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
--- @param _idleSessionTTLInSeconds [SessionTTL] <p>The maximum length of time that Amazon Lex retains the data gathered in a conversation. For more information, see .</p>
--- @param _description [Description] <p>A description of the bot.</p>
-function M.PutBotResponse(_status, _intents, _name, _locale, _checksum, _createdDate, _version, _lastUpdatedDate, _abortStatement, _clarificationPrompt, _voiceId, _failureReason, _childDirected, _idleSessionTTLInSeconds, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBotResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [Status] <p> When you send a request to create a bot with <code>processBehavior</code> set to <code>BUILD</code>, Amazon Lex sets the <code>status</code> response element to <code>BUILDING</code>. After Amazon Lex builds the bot, it sets <code>status</code> to <code>READY</code>. If Amazon Lex can't build the bot, Amazon Lex sets <code>status</code> to <code>FAILED</code>. Amazon Lex returns the reason for the failure in the <code>failureReason</code> response element. </p> <p>When you set <code>processBehavior</code>to <code>SAVE</code>, Amazon Lex sets the status code to <code>NOT BUILT</code>.</p>
+-- * intents [IntentList] <p>An array of <code>Intent</code> objects. For more information, see .</p>
+-- * name [BotName] <p>The name of the bot.</p>
+-- * locale [Locale] <p> The target locale for the bot. </p>
+-- * checksum [String] <p>Checksum of the bot that you created.</p>
+-- * createdDate [Timestamp] <p>The date that the bot was created.</p>
+-- * version [Version] <p>The version of the bot. For a new bot, the version is always <code>$LATEST</code>.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the bot was updated. When you create a resource, the creation date and last updated date are the same.</p>
+-- * abortStatement [Statement] <p>The message that Amazon Lex uses to abort a conversation. For more information, see .</p>
+-- * clarificationPrompt [Prompt] <p> The prompts that Amazon Lex uses when it doesn't understand the user's intent. For more information, see . </p>
+-- * voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see .</p>
+-- * failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex provides the reason that it failed to build the bot.</p>
+-- * childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
+-- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum length of time that Amazon Lex retains the data gathered in a conversation. For more information, see .</p>
+-- * description [Description] <p>A description of the bot.</p>
+-- @return PutBotResponse structure as a key-value pair table
+function M.PutBotResponse(args)
+	assert(args, "You must provdide an argument table when creating PutBotResponse")
 	local t = { 
-		["status"] = _status,
-		["intents"] = _intents,
-		["name"] = _name,
-		["locale"] = _locale,
-		["checksum"] = _checksum,
-		["createdDate"] = _createdDate,
-		["version"] = _version,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["abortStatement"] = _abortStatement,
-		["clarificationPrompt"] = _clarificationPrompt,
-		["voiceId"] = _voiceId,
-		["failureReason"] = _failureReason,
-		["childDirected"] = _childDirected,
-		["idleSessionTTLInSeconds"] = _idleSessionTTLInSeconds,
-		["description"] = _description,
+		["status"] = args["status"],
+		["intents"] = args["intents"],
+		["name"] = args["name"],
+		["locale"] = args["locale"],
+		["checksum"] = args["checksum"],
+		["createdDate"] = args["createdDate"],
+		["version"] = args["version"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["abortStatement"] = args["abortStatement"],
+		["clarificationPrompt"] = args["clarificationPrompt"],
+		["voiceId"] = args["voiceId"],
+		["failureReason"] = args["failureReason"],
+		["childDirected"] = args["childDirected"],
+		["idleSessionTTLInSeconds"] = args["idleSessionTTLInSeconds"],
+		["description"] = args["description"],
 	}
 	asserts.AssertPutBotResponse(t)
 	return t
@@ -1540,15 +1669,18 @@ end
 
 --- Create a structure of type GetIntentsRequest
 --  
--- @param _nameContains [IntentName] <p>Substring to match in intent names. An intent will be returned if any part of its name matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz."</p>
--- @param _nextToken [NextToken] <p>A pagination token that fetches the next page of intents. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of intents, specify the pagination token in the next request. </p>
--- @param _maxResults [MaxResults] <p>The maximum number of intents to return in the response. The default is 10.</p>
-function M.GetIntentsRequest(_nameContains, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIntentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nameContains [IntentName] <p>Substring to match in intent names. An intent will be returned if any part of its name matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz."</p>
+-- * nextToken [NextToken] <p>A pagination token that fetches the next page of intents. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of intents, specify the pagination token in the next request. </p>
+-- * maxResults [MaxResults] <p>The maximum number of intents to return in the response. The default is 10.</p>
+-- @return GetIntentsRequest structure as a key-value pair table
+function M.GetIntentsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetIntentsRequest")
 	local t = { 
-		["nameContains"] = _nameContains,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["nameContains"] = args["nameContains"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetIntentsRequest(t)
 	return t
@@ -1568,12 +1700,15 @@ end
 
 --- Create a structure of type DeleteBotRequest
 --  
--- @param _name [BotName] <p>The name of the bot. The name is case sensitive. </p>
--- Required parameter: name
-function M.DeleteBotRequest(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteBotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [BotName] <p>The name of the bot. The name is case sensitive. </p>
+-- Required key: name
+-- @return DeleteBotRequest structure as a key-value pair table
+function M.DeleteBotRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteBotRequest")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertDeleteBotRequest(t)
 	return t
@@ -1593,13 +1728,16 @@ end
 
 --- Create a structure of type GetUtterancesViewResponse
 --  
--- @param _botName [BotName] <p>The name of the bot for which utterance information was returned.</p>
--- @param _utterances [ListsOfUtterances] <p>An array of objects, each containing a list of objects describing the utterances that were processed by your bot. The response contains a maximum of 100 <code>UtteranceData</code> objects for each version.</p>
-function M.GetUtterancesViewResponse(_botName, _utterances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetUtterancesViewResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * botName [BotName] <p>The name of the bot for which utterance information was returned.</p>
+-- * utterances [ListsOfUtterances] <p>An array of objects, each containing a list of objects describing the utterances that were processed by your bot. The response contains a maximum of 100 <code>UtteranceData</code> objects for each version.</p>
+-- @return GetUtterancesViewResponse structure as a key-value pair table
+function M.GetUtterancesViewResponse(args)
+	assert(args, "You must provdide an argument table when creating GetUtterancesViewResponse")
 	local t = { 
-		["botName"] = _botName,
-		["utterances"] = _utterances,
+		["botName"] = args["botName"],
+		["utterances"] = args["utterances"],
 	}
 	asserts.AssertGetUtterancesViewResponse(t)
 	return t
@@ -1621,15 +1759,18 @@ end
 
 --- Create a structure of type GetBotAliasRequest
 --  
--- @param _name [AliasName] <p>The name of the bot alias. The name is case sensitive.</p>
--- @param _botName [BotName] <p>The name of the bot.</p>
--- Required parameter: name
--- Required parameter: botName
-function M.GetBotAliasRequest(_name, _botName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotAliasRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [AliasName] <p>The name of the bot alias. The name is case sensitive.</p>
+-- * botName [BotName] <p>The name of the bot.</p>
+-- Required key: name
+-- Required key: botName
+-- @return GetBotAliasRequest structure as a key-value pair table
+function M.GetBotAliasRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBotAliasRequest")
 	local t = { 
-		["name"] = _name,
-		["botName"] = _botName,
+		["name"] = args["name"],
+		["botName"] = args["botName"],
 	}
 	asserts.AssertGetBotAliasRequest(t)
 	return t
@@ -1654,23 +1795,26 @@ end
 
 --- Create a structure of type BotAliasMetadata
 -- <p>Provides information about a bot alias.</p>
--- @param _name [AliasName] <p>The name of the bot alias.</p>
--- @param _checksum [String] <p>Checksum of the bot alias.</p>
--- @param _description [Description] <p>A description of the bot alias.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the bot alias was updated. When you create a resource, the creation date and last updated date are the same.</p>
--- @param _createdDate [Timestamp] <p>The date that the bot alias was created.</p>
--- @param _botName [BotName] <p>The name of the bot to which the alias points.</p>
--- @param _botVersion [Version] <p>The version of the Amazon Lex bot to which the alias points.</p>
-function M.BotAliasMetadata(_name, _checksum, _description, _lastUpdatedDate, _createdDate, _botName, _botVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BotAliasMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [AliasName] <p>The name of the bot alias.</p>
+-- * checksum [String] <p>Checksum of the bot alias.</p>
+-- * description [Description] <p>A description of the bot alias.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the bot alias was updated. When you create a resource, the creation date and last updated date are the same.</p>
+-- * createdDate [Timestamp] <p>The date that the bot alias was created.</p>
+-- * botName [BotName] <p>The name of the bot to which the alias points.</p>
+-- * botVersion [Version] <p>The version of the Amazon Lex bot to which the alias points.</p>
+-- @return BotAliasMetadata structure as a key-value pair table
+function M.BotAliasMetadata(args)
+	assert(args, "You must provdide an argument table when creating BotAliasMetadata")
 	local t = { 
-		["name"] = _name,
-		["checksum"] = _checksum,
-		["description"] = _description,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["createdDate"] = _createdDate,
-		["botName"] = _botName,
-		["botVersion"] = _botVersion,
+		["name"] = args["name"],
+		["checksum"] = args["checksum"],
+		["description"] = args["description"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["createdDate"] = args["createdDate"],
+		["botName"] = args["botName"],
+		["botVersion"] = args["botVersion"],
 	}
 	asserts.AssertBotAliasMetadata(t)
 	return t
@@ -1690,12 +1834,15 @@ end
 
 --- Create a structure of type EnumerationValue
 -- <p>Each slot type can have a set of values. Each enumeration value represents a value the slot type can take. </p> <p>For example, a pizza ordering bot could have a slot type that specifies the type of crust that the pizza should have. The slot type could include the values </p> <ul> <li> <p>thick</p> </li> <li> <p>thin</p> </li> <li> <p>stuffed</p> </li> </ul>
--- @param _value [Value] <p>The value of the slot type.</p>
--- Required parameter: value
-function M.EnumerationValue(_value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnumerationValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * value [Value] <p>The value of the slot type.</p>
+-- Required key: value
+-- @return EnumerationValue structure as a key-value pair table
+function M.EnumerationValue(args)
+	assert(args, "You must provdide an argument table when creating EnumerationValue")
 	local t = { 
-		["value"] = _value,
+		["value"] = args["value"],
 	}
 	asserts.AssertEnumerationValue(t)
 	return t
@@ -1715,13 +1862,16 @@ end
 
 --- Create a structure of type GetSlotTypesResponse
 --  
--- @param _nextToken [NextToken] <p>If the response is truncated, it includes a pagination token that you can specify in your next request to fetch the next page of slot types.</p>
--- @param _slotTypes [SlotTypeMetadataList] <p>An array of objects, one for each slot type, that provides information such as the name of the slot type, the version, and a description.</p>
-function M.GetSlotTypesResponse(_nextToken, _slotTypes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSlotTypesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>If the response is truncated, it includes a pagination token that you can specify in your next request to fetch the next page of slot types.</p>
+-- * slotTypes [SlotTypeMetadataList] <p>An array of objects, one for each slot type, that provides information such as the name of the slot type, the version, and a description.</p>
+-- @return GetSlotTypesResponse structure as a key-value pair table
+function M.GetSlotTypesResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSlotTypesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["slotTypes"] = _slotTypes,
+		["nextToken"] = args["nextToken"],
+		["slotTypes"] = args["slotTypes"],
 	}
 	asserts.AssertGetSlotTypesResponse(t)
 	return t
@@ -1746,23 +1896,26 @@ end
 
 --- Create a structure of type PutSlotTypeResponse
 --  
--- @param _name [SlotTypeName] <p>The name of the slot type.</p>
--- @param _enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take.</p>
--- @param _checksum [String] <p>Checksum of the <code>$LATEST</code> version of the slot type.</p>
--- @param _version [Version] <p>The version of the slot type. For a new slot type, the version is always <code>$LATEST</code>. </p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a slot type, the creation date and last update date are the same.</p>
--- @param _createdDate [Timestamp] <p>The date that the slot type was created.</p>
--- @param _description [Description] <p>A description of the slot type.</p>
-function M.PutSlotTypeResponse(_name, _enumerationValues, _checksum, _version, _lastUpdatedDate, _createdDate, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutSlotTypeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [SlotTypeName] <p>The name of the slot type.</p>
+-- * enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take.</p>
+-- * checksum [String] <p>Checksum of the <code>$LATEST</code> version of the slot type.</p>
+-- * version [Version] <p>The version of the slot type. For a new slot type, the version is always <code>$LATEST</code>. </p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a slot type, the creation date and last update date are the same.</p>
+-- * createdDate [Timestamp] <p>The date that the slot type was created.</p>
+-- * description [Description] <p>A description of the slot type.</p>
+-- @return PutSlotTypeResponse structure as a key-value pair table
+function M.PutSlotTypeResponse(args)
+	assert(args, "You must provdide an argument table when creating PutSlotTypeResponse")
 	local t = { 
-		["name"] = _name,
-		["enumerationValues"] = _enumerationValues,
-		["checksum"] = _checksum,
-		["version"] = _version,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["createdDate"] = _createdDate,
-		["description"] = _description,
+		["name"] = args["name"],
+		["enumerationValues"] = args["enumerationValues"],
+		["checksum"] = args["checksum"],
+		["version"] = args["version"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["createdDate"] = args["createdDate"],
+		["description"] = args["description"],
 	}
 	asserts.AssertPutSlotTypeResponse(t)
 	return t
@@ -1783,15 +1936,18 @@ end
 
 --- Create a structure of type GetBuiltinIntentResponse
 --  
--- @param _slots [BuiltinIntentSlotList] <p>An array of <code>BuiltinIntentSlot</code> objects, one entry for each slot type in the intent.</p>
--- @param _supportedLocales [LocaleList] <p>A list of locales that the intent supports.</p>
--- @param _signature [BuiltinIntentSignature] <p>The unique identifier for a built-in intent.</p>
-function M.GetBuiltinIntentResponse(_slots, _supportedLocales, _signature, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBuiltinIntentResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * slots [BuiltinIntentSlotList] <p>An array of <code>BuiltinIntentSlot</code> objects, one entry for each slot type in the intent.</p>
+-- * supportedLocales [LocaleList] <p>A list of locales that the intent supports.</p>
+-- * signature [BuiltinIntentSignature] <p>The unique identifier for a built-in intent.</p>
+-- @return GetBuiltinIntentResponse structure as a key-value pair table
+function M.GetBuiltinIntentResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBuiltinIntentResponse")
 	local t = { 
-		["slots"] = _slots,
-		["supportedLocales"] = _supportedLocales,
-		["signature"] = _signature,
+		["slots"] = args["slots"],
+		["supportedLocales"] = args["supportedLocales"],
+		["signature"] = args["signature"],
 	}
 	asserts.AssertGetBuiltinIntentResponse(t)
 	return t
@@ -1813,15 +1969,18 @@ end
 
 --- Create a structure of type FollowUpPrompt
 -- <p>After an intent is fulfilled, you might prompt the user for additional activity. For example, after the <code>OrderPizza</code> intent is fulfilled (the pizza order is placed with a pizzeria), you might prompt the user to find out whether the user wants to order drinks (another intent you defined in your bot).</p>
--- @param _prompt [Prompt] <p>Obtains information from the user. </p>
--- @param _rejectionStatement [Statement] <p>If the user answers "no" to the question defined in <code>confirmationPrompt</code>, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
--- Required parameter: prompt
--- Required parameter: rejectionStatement
-function M.FollowUpPrompt(_prompt, _rejectionStatement, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FollowUpPrompt")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * prompt [Prompt] <p>Obtains information from the user. </p>
+-- * rejectionStatement [Statement] <p>If the user answers "no" to the question defined in <code>confirmationPrompt</code>, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
+-- Required key: prompt
+-- Required key: rejectionStatement
+-- @return FollowUpPrompt structure as a key-value pair table
+function M.FollowUpPrompt(args)
+	assert(args, "You must provdide an argument table when creating FollowUpPrompt")
 	local t = { 
-		["prompt"] = _prompt,
-		["rejectionStatement"] = _rejectionStatement,
+		["prompt"] = args["prompt"],
+		["rejectionStatement"] = args["rejectionStatement"],
 	}
 	asserts.AssertFollowUpPrompt(t)
 	return t
@@ -1841,13 +2000,16 @@ end
 
 --- Create a structure of type BuiltinSlotTypeMetadata
 -- <p>Provides information about a built in slot type.</p>
--- @param _supportedLocales [LocaleList] <p>A list of target locales for the slot. </p>
--- @param _signature [BuiltinSlotTypeSignature] <p>A unique identifier for the built-in slot type. To find the signature for a slot type, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference">Slot Type Reference</a> in the <i>Alexa Skills Kit</i>.</p>
-function M.BuiltinSlotTypeMetadata(_supportedLocales, _signature, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BuiltinSlotTypeMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * supportedLocales [LocaleList] <p>A list of target locales for the slot. </p>
+-- * signature [BuiltinSlotTypeSignature] <p>A unique identifier for the built-in slot type. To find the signature for a slot type, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference">Slot Type Reference</a> in the <i>Alexa Skills Kit</i>.</p>
+-- @return BuiltinSlotTypeMetadata structure as a key-value pair table
+function M.BuiltinSlotTypeMetadata(args)
+	assert(args, "You must provdide an argument table when creating BuiltinSlotTypeMetadata")
 	local t = { 
-		["supportedLocales"] = _supportedLocales,
-		["signature"] = _signature,
+		["supportedLocales"] = args["supportedLocales"],
+		["signature"] = args["signature"],
 	}
 	asserts.AssertBuiltinSlotTypeMetadata(t)
 	return t
@@ -1866,11 +2028,14 @@ end
 
 --- Create a structure of type InternalFailureException
 -- <p>An internal Amazon Lex error occurred. Try your request again.</p>
--- @param _message [String] 
-function M.InternalFailureException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalFailureException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return InternalFailureException structure as a key-value pair table
+function M.InternalFailureException(args)
+	assert(args, "You must provdide an argument table when creating InternalFailureException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalFailureException(t)
 	return t
@@ -1892,15 +2057,18 @@ end
 
 --- Create a structure of type GetIntentRequest
 --  
--- @param _version [Version] <p>The version of the intent.</p>
--- @param _name [IntentName] <p>The name of the intent. The name is case sensitive. </p>
--- Required parameter: name
--- Required parameter: version
-function M.GetIntentRequest(_version, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIntentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [Version] <p>The version of the intent.</p>
+-- * name [IntentName] <p>The name of the intent. The name is case sensitive. </p>
+-- Required key: name
+-- Required key: version
+-- @return GetIntentRequest structure as a key-value pair table
+function M.GetIntentRequest(args)
+	assert(args, "You must provdide an argument table when creating GetIntentRequest")
 	local t = { 
-		["version"] = _version,
-		["name"] = _name,
+		["version"] = args["version"],
+		["name"] = args["name"],
 	}
 	asserts.AssertGetIntentRequest(t)
 	return t
@@ -1920,13 +2088,16 @@ end
 
 --- Create a structure of type GetBotAliasesResponse
 --  
--- @param _nextToken [NextToken] <p>A pagination token for fetching next page of aliases. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of aliases, specify the pagination token in the next request. </p>
--- @param _BotAliases [BotAliasMetadataList] <p>An array of <code>BotAliasMetadata</code> objects, each describing a bot alias.</p>
-function M.GetBotAliasesResponse(_nextToken, _BotAliases, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotAliasesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>A pagination token for fetching next page of aliases. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of aliases, specify the pagination token in the next request. </p>
+-- * BotAliases [BotAliasMetadataList] <p>An array of <code>BotAliasMetadata</code> objects, each describing a bot alias.</p>
+-- @return GetBotAliasesResponse structure as a key-value pair table
+function M.GetBotAliasesResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBotAliasesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["BotAliases"] = _BotAliases,
+		["nextToken"] = args["nextToken"],
+		["BotAliases"] = args["BotAliases"],
 	}
 	asserts.AssertGetBotAliasesResponse(t)
 	return t
@@ -1947,15 +2118,18 @@ end
 
 --- Create a structure of type GetBotsRequest
 --  
--- @param _nameContains [BotName] <p>Substring to match in bot names. A bot will be returned if any part of its name matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz."</p>
--- @param _nextToken [NextToken] <p>A pagination token that fetches the next page of bots. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of bots, specify the pagination token in the next request. </p>
--- @param _maxResults [MaxResults] <p>The maximum number of bots to return in the response that the request will return. The default is 10.</p>
-function M.GetBotsRequest(_nameContains, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nameContains [BotName] <p>Substring to match in bot names. A bot will be returned if any part of its name matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz."</p>
+-- * nextToken [NextToken] <p>A pagination token that fetches the next page of bots. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of bots, specify the pagination token in the next request. </p>
+-- * maxResults [MaxResults] <p>The maximum number of bots to return in the response that the request will return. The default is 10.</p>
+-- @return GetBotsRequest structure as a key-value pair table
+function M.GetBotsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBotsRequest")
 	local t = { 
-		["nameContains"] = _nameContains,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["nameContains"] = args["nameContains"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetBotsRequest(t)
 	return t
@@ -1974,11 +2148,14 @@ end
 
 --- Create a structure of type ConflictException
 -- <p> There was a conflict processing the request. Try your request again. </p>
--- @param _message [String] 
-function M.ConflictException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return ConflictException structure as a key-value pair table
+function M.ConflictException(args)
+	assert(args, "You must provdide an argument table when creating ConflictException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertConflictException(t)
 	return t
@@ -2002,18 +2179,21 @@ end
 
 --- Create a structure of type GetUtterancesViewRequest
 --  
--- @param _statusType [StatusType] <p>To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that were not recognized, use <code>Missed</code>.</p>
--- @param _botName [BotName] <p>The name of the bot for which utterance information should be returned.</p>
--- @param _botVersions [BotVersions] <p>An array of bot versions for which utterance information should be returned. The limit is 5 versions per request.</p>
--- Required parameter: botName
--- Required parameter: botVersions
--- Required parameter: statusType
-function M.GetUtterancesViewRequest(_statusType, _botName, _botVersions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetUtterancesViewRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * statusType [StatusType] <p>To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that were not recognized, use <code>Missed</code>.</p>
+-- * botName [BotName] <p>The name of the bot for which utterance information should be returned.</p>
+-- * botVersions [BotVersions] <p>An array of bot versions for which utterance information should be returned. The limit is 5 versions per request.</p>
+-- Required key: botName
+-- Required key: botVersions
+-- Required key: statusType
+-- @return GetUtterancesViewRequest structure as a key-value pair table
+function M.GetUtterancesViewRequest(args)
+	assert(args, "You must provdide an argument table when creating GetUtterancesViewRequest")
 	local t = { 
-		["statusType"] = _statusType,
-		["botName"] = _botName,
-		["botVersions"] = _botVersions,
+		["statusType"] = args["statusType"],
+		["botName"] = args["botName"],
+		["botVersions"] = args["botVersions"],
 	}
 	asserts.AssertGetUtterancesViewRequest(t)
 	return t
@@ -2035,15 +2215,18 @@ end
 
 --- Create a structure of type GetBotRequest
 --  
--- @param _name [BotName] <p>The name of the bot. The name is case sensitive. </p>
--- @param _versionOrAlias [String] <p>The version or alias of the bot.</p>
--- Required parameter: name
--- Required parameter: versionOrAlias
-function M.GetBotRequest(_name, _versionOrAlias, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [BotName] <p>The name of the bot. The name is case sensitive. </p>
+-- * versionOrAlias [String] <p>The version or alias of the bot.</p>
+-- Required key: name
+-- Required key: versionOrAlias
+-- @return GetBotRequest structure as a key-value pair table
+function M.GetBotRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBotRequest")
 	local t = { 
-		["name"] = _name,
-		["versionOrAlias"] = _versionOrAlias,
+		["name"] = args["name"],
+		["versionOrAlias"] = args["versionOrAlias"],
 	}
 	asserts.AssertGetBotRequest(t)
 	return t
@@ -2066,19 +2249,22 @@ end
 
 --- Create a structure of type SlotTypeMetadata
 -- <p>Provides information about a slot type..</p>
--- @param _version [Version] <p>The version of the slot type.</p>
--- @param _createdDate [Timestamp] <p>The date that the slot type was created.</p>
--- @param _name [SlotTypeName] <p>The name of the slot type.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a resource, the creation date and last updated date are the same. </p>
--- @param _description [Description] <p>A description of the slot type.</p>
-function M.SlotTypeMetadata(_version, _createdDate, _name, _lastUpdatedDate, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SlotTypeMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [Version] <p>The version of the slot type.</p>
+-- * createdDate [Timestamp] <p>The date that the slot type was created.</p>
+-- * name [SlotTypeName] <p>The name of the slot type.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a resource, the creation date and last updated date are the same. </p>
+-- * description [Description] <p>A description of the slot type.</p>
+-- @return SlotTypeMetadata structure as a key-value pair table
+function M.SlotTypeMetadata(args)
+	assert(args, "You must provdide an argument table when creating SlotTypeMetadata")
 	local t = { 
-		["version"] = _version,
-		["createdDate"] = _createdDate,
-		["name"] = _name,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["description"] = _description,
+		["version"] = args["version"],
+		["createdDate"] = args["createdDate"],
+		["name"] = args["name"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["description"] = args["description"],
 	}
 	asserts.AssertSlotTypeMetadata(t)
 	return t
@@ -2098,13 +2284,16 @@ end
 
 --- Create a structure of type GetIntentVersionsResponse
 --  
--- @param _intents [IntentMetadataList] <p>An array of <code>IntentMetadata</code> objects, one for each numbered version of the intent plus one for the <code>$LATEST</code> version.</p>
--- @param _nextToken [NextToken] <p>A pagination token for fetching the next page of intent versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
-function M.GetIntentVersionsResponse(_intents, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIntentVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * intents [IntentMetadataList] <p>An array of <code>IntentMetadata</code> objects, one for each numbered version of the intent plus one for the <code>$LATEST</code> version.</p>
+-- * nextToken [NextToken] <p>A pagination token for fetching the next page of intent versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
+-- @return GetIntentVersionsResponse structure as a key-value pair table
+function M.GetIntentVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIntentVersionsResponse")
 	local t = { 
-		["intents"] = _intents,
-		["nextToken"] = _nextToken,
+		["intents"] = args["intents"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertGetIntentVersionsResponse(t)
 	return t
@@ -2129,23 +2318,26 @@ end
 
 --- Create a structure of type GetBotAliasResponse
 --  
--- @param _name [AliasName] <p>The name of the bot alias.</p>
--- @param _checksum [String] <p>Checksum of the bot alias.</p>
--- @param _description [Description] <p>A description of the bot alias.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.</p>
--- @param _createdDate [Timestamp] <p>The date that the bot alias was created.</p>
--- @param _botName [BotName] <p>The name of the bot that the alias points to.</p>
--- @param _botVersion [Version] <p>The version of the bot that the alias points to.</p>
-function M.GetBotAliasResponse(_name, _checksum, _description, _lastUpdatedDate, _createdDate, _botName, _botVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotAliasResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [AliasName] <p>The name of the bot alias.</p>
+-- * checksum [String] <p>Checksum of the bot alias.</p>
+-- * description [Description] <p>A description of the bot alias.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.</p>
+-- * createdDate [Timestamp] <p>The date that the bot alias was created.</p>
+-- * botName [BotName] <p>The name of the bot that the alias points to.</p>
+-- * botVersion [Version] <p>The version of the bot that the alias points to.</p>
+-- @return GetBotAliasResponse structure as a key-value pair table
+function M.GetBotAliasResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBotAliasResponse")
 	local t = { 
-		["name"] = _name,
-		["checksum"] = _checksum,
-		["description"] = _description,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["createdDate"] = _createdDate,
-		["botName"] = _botName,
-		["botVersion"] = _botVersion,
+		["name"] = args["name"],
+		["checksum"] = args["checksum"],
+		["description"] = args["description"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["createdDate"] = args["createdDate"],
+		["botName"] = args["botName"],
+		["botVersion"] = args["botVersion"],
 	}
 	asserts.AssertGetBotAliasResponse(t)
 	return t
@@ -2167,15 +2359,18 @@ end
 
 --- Create a structure of type DeleteIntentVersionRequest
 --  
--- @param _version [NumericalVersion] <p>The version of the intent to delete. You cannot delete the <code>$LATEST</code> version of the intent. To delete the <code>$LATEST</code> version, use the operation.</p>
--- @param _name [IntentName] <p>The name of the intent.</p>
--- Required parameter: name
--- Required parameter: version
-function M.DeleteIntentVersionRequest(_version, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIntentVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [NumericalVersion] <p>The version of the intent to delete. You cannot delete the <code>$LATEST</code> version of the intent. To delete the <code>$LATEST</code> version, use the operation.</p>
+-- * name [IntentName] <p>The name of the intent.</p>
+-- Required key: name
+-- Required key: version
+-- @return DeleteIntentVersionRequest structure as a key-value pair table
+function M.DeleteIntentVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteIntentVersionRequest")
 	local t = { 
-		["version"] = _version,
-		["name"] = _name,
+		["version"] = args["version"],
+		["name"] = args["name"],
 	}
 	asserts.AssertDeleteIntentVersionRequest(t)
 	return t
@@ -2198,18 +2393,21 @@ end
 
 --- Create a structure of type GetBotAliasesRequest
 --  
--- @param _nameContains [AliasName] <p>Substring to match in bot alias names. An alias will be returned if any part of its name matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz."</p>
--- @param _nextToken [NextToken] <p>A pagination token for fetching the next page of aliases. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of aliases, specify the pagination token in the next request. </p>
--- @param _botName [BotName] <p>The name of the bot.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of aliases to return in the response. The default is 50. . </p>
--- Required parameter: botName
-function M.GetBotAliasesRequest(_nameContains, _nextToken, _botName, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotAliasesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nameContains [AliasName] <p>Substring to match in bot alias names. An alias will be returned if any part of its name matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz."</p>
+-- * nextToken [NextToken] <p>A pagination token for fetching the next page of aliases. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of aliases, specify the pagination token in the next request. </p>
+-- * botName [BotName] <p>The name of the bot.</p>
+-- * maxResults [MaxResults] <p>The maximum number of aliases to return in the response. The default is 50. . </p>
+-- Required key: botName
+-- @return GetBotAliasesRequest structure as a key-value pair table
+function M.GetBotAliasesRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBotAliasesRequest")
 	local t = { 
-		["nameContains"] = _nameContains,
-		["nextToken"] = _nextToken,
-		["botName"] = _botName,
-		["maxResults"] = _maxResults,
+		["nameContains"] = args["nameContains"],
+		["nextToken"] = args["nextToken"],
+		["botName"] = args["botName"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetBotAliasesRequest(t)
 	return t
@@ -2234,23 +2432,26 @@ end
 
 --- Create a structure of type CreateSlotTypeVersionResponse
 --  
--- @param _name [SlotTypeName] <p>The name of the slot type.</p>
--- @param _enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take.</p>
--- @param _checksum [String] <p>Checksum of the <code>$LATEST</code> version of the slot type.</p>
--- @param _version [Version] <p>The version assigned to the new slot type version. </p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a resource, the creation date and last update date are the same.</p>
--- @param _createdDate [Timestamp] <p>The date that the slot type was created.</p>
--- @param _description [Description] <p>A description of the slot type.</p>
-function M.CreateSlotTypeVersionResponse(_name, _enumerationValues, _checksum, _version, _lastUpdatedDate, _createdDate, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSlotTypeVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [SlotTypeName] <p>The name of the slot type.</p>
+-- * enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take.</p>
+-- * checksum [String] <p>Checksum of the <code>$LATEST</code> version of the slot type.</p>
+-- * version [Version] <p>The version assigned to the new slot type version. </p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the slot type was updated. When you create a resource, the creation date and last update date are the same.</p>
+-- * createdDate [Timestamp] <p>The date that the slot type was created.</p>
+-- * description [Description] <p>A description of the slot type.</p>
+-- @return CreateSlotTypeVersionResponse structure as a key-value pair table
+function M.CreateSlotTypeVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateSlotTypeVersionResponse")
 	local t = { 
-		["name"] = _name,
-		["enumerationValues"] = _enumerationValues,
-		["checksum"] = _checksum,
-		["version"] = _version,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["createdDate"] = _createdDate,
-		["description"] = _description,
+		["name"] = args["name"],
+		["enumerationValues"] = args["enumerationValues"],
+		["checksum"] = args["checksum"],
+		["version"] = args["version"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["createdDate"] = args["createdDate"],
+		["description"] = args["description"],
 	}
 	asserts.AssertCreateSlotTypeVersionResponse(t)
 	return t
@@ -2269,11 +2470,14 @@ end
 
 --- Create a structure of type PreconditionFailedException
 -- <p> The checksum of the resource that you are trying to change does not match the checksum in the request. Check the resource's checksum and try again.</p>
--- @param _message [String] 
-function M.PreconditionFailedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PreconditionFailedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] 
+-- @return PreconditionFailedException structure as a key-value pair table
+function M.PreconditionFailedException(args)
+	assert(args, "You must provdide an argument table when creating PreconditionFailedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertPreconditionFailedException(t)
 	return t
@@ -2299,22 +2503,25 @@ end
 
 --- Create a structure of type PutBotAliasRequest
 --  
--- @param _checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new bot alias, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a bot alias, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
--- @param _botVersion [Version] <p>The version of the bot.</p>
--- @param _name [AliasName] <p>The name of the alias. The name is <i>not</i> case sensitive.</p>
--- @param _botName [BotName] <p>The name of the bot.</p>
--- @param _description [Description] <p>A description of the alias.</p>
--- Required parameter: name
--- Required parameter: botVersion
--- Required parameter: botName
-function M.PutBotAliasRequest(_checksum, _botVersion, _name, _botName, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBotAliasRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new bot alias, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a bot alias, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
+-- * botVersion [Version] <p>The version of the bot.</p>
+-- * name [AliasName] <p>The name of the alias. The name is <i>not</i> case sensitive.</p>
+-- * botName [BotName] <p>The name of the bot.</p>
+-- * description [Description] <p>A description of the alias.</p>
+-- Required key: name
+-- Required key: botVersion
+-- Required key: botName
+-- @return PutBotAliasRequest structure as a key-value pair table
+function M.PutBotAliasRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBotAliasRequest")
 	local t = { 
-		["checksum"] = _checksum,
-		["botVersion"] = _botVersion,
-		["name"] = _name,
-		["botName"] = _botName,
-		["description"] = _description,
+		["checksum"] = args["checksum"],
+		["botVersion"] = args["botVersion"],
+		["name"] = args["name"],
+		["botName"] = args["botName"],
+		["description"] = args["description"],
 	}
 	asserts.AssertPutBotAliasRequest(t)
 	return t
@@ -2334,12 +2541,15 @@ end
 
 --- Create a structure of type DeleteSlotTypeRequest
 --  
--- @param _name [SlotTypeName] <p>The name of the slot type. The name is case sensitive. </p>
--- Required parameter: name
-function M.DeleteSlotTypeRequest(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSlotTypeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [SlotTypeName] <p>The name of the slot type. The name is case sensitive. </p>
+-- Required key: name
+-- @return DeleteSlotTypeRequest structure as a key-value pair table
+function M.DeleteSlotTypeRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSlotTypeRequest")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertDeleteSlotTypeRequest(t)
 	return t
@@ -2372,39 +2582,42 @@ end
 
 --- Create a structure of type CreateBotVersionResponse
 --  
--- @param _status [Status] <p> When you send a request to create or update a bot, Amazon Lex sets the <code>status</code> response element to <code>BUILDING</code>. After Amazon Lex builds the bot, it sets <code>status</code> to <code>READY</code>. If Amazon Lex can't build the bot, it sets <code>status</code> to <code>FAILED</code>. Amazon Lex returns the reason for the failure in the <code>failureReason</code> response element. </p>
--- @param _intents [IntentList] <p>An array of <code>Intent</code> objects. For more information, see .</p>
--- @param _name [BotName] <p>The name of the bot.</p>
--- @param _locale [Locale] <p> Specifies the target locale for the bot. </p>
--- @param _checksum [String] <p>Checksum identifying the version of the bot that was created.</p>
--- @param _createdDate [Timestamp] <p>The date when the bot version was created.</p>
--- @param _version [Version] <p>The version of the bot. </p>
--- @param _lastUpdatedDate [Timestamp] <p>The date when the <code>$LATEST</code> version of this bot was updated. </p>
--- @param _abortStatement [Statement] <p>The message that Amazon Lex uses to abort a conversation. For more information, see .</p>
--- @param _clarificationPrompt [Prompt] <p>The message that Amazon Lex uses when it doesn't understand the user's request. For more information, see . </p>
--- @param _voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interactions with the user.</p>
--- @param _failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex provides the reason that it failed to build the bot.</p>
--- @param _childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
--- @param _idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. For more information, see .</p>
--- @param _description [Description] <p>A description of the bot.</p>
-function M.CreateBotVersionResponse(_status, _intents, _name, _locale, _checksum, _createdDate, _version, _lastUpdatedDate, _abortStatement, _clarificationPrompt, _voiceId, _failureReason, _childDirected, _idleSessionTTLInSeconds, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBotVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [Status] <p> When you send a request to create or update a bot, Amazon Lex sets the <code>status</code> response element to <code>BUILDING</code>. After Amazon Lex builds the bot, it sets <code>status</code> to <code>READY</code>. If Amazon Lex can't build the bot, it sets <code>status</code> to <code>FAILED</code>. Amazon Lex returns the reason for the failure in the <code>failureReason</code> response element. </p>
+-- * intents [IntentList] <p>An array of <code>Intent</code> objects. For more information, see .</p>
+-- * name [BotName] <p>The name of the bot.</p>
+-- * locale [Locale] <p> Specifies the target locale for the bot. </p>
+-- * checksum [String] <p>Checksum identifying the version of the bot that was created.</p>
+-- * createdDate [Timestamp] <p>The date when the bot version was created.</p>
+-- * version [Version] <p>The version of the bot. </p>
+-- * lastUpdatedDate [Timestamp] <p>The date when the <code>$LATEST</code> version of this bot was updated. </p>
+-- * abortStatement [Statement] <p>The message that Amazon Lex uses to abort a conversation. For more information, see .</p>
+-- * clarificationPrompt [Prompt] <p>The message that Amazon Lex uses when it doesn't understand the user's request. For more information, see . </p>
+-- * voiceId [String] <p>The Amazon Polly voice ID that Amazon Lex uses for voice interactions with the user.</p>
+-- * failureReason [String] <p>If <code>status</code> is <code>FAILED</code>, Amazon Lex provides the reason that it failed to build the bot.</p>
+-- * childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
+-- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. For more information, see .</p>
+-- * description [Description] <p>A description of the bot.</p>
+-- @return CreateBotVersionResponse structure as a key-value pair table
+function M.CreateBotVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateBotVersionResponse")
 	local t = { 
-		["status"] = _status,
-		["intents"] = _intents,
-		["name"] = _name,
-		["locale"] = _locale,
-		["checksum"] = _checksum,
-		["createdDate"] = _createdDate,
-		["version"] = _version,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["abortStatement"] = _abortStatement,
-		["clarificationPrompt"] = _clarificationPrompt,
-		["voiceId"] = _voiceId,
-		["failureReason"] = _failureReason,
-		["childDirected"] = _childDirected,
-		["idleSessionTTLInSeconds"] = _idleSessionTTLInSeconds,
-		["description"] = _description,
+		["status"] = args["status"],
+		["intents"] = args["intents"],
+		["name"] = args["name"],
+		["locale"] = args["locale"],
+		["checksum"] = args["checksum"],
+		["createdDate"] = args["createdDate"],
+		["version"] = args["version"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["abortStatement"] = args["abortStatement"],
+		["clarificationPrompt"] = args["clarificationPrompt"],
+		["voiceId"] = args["voiceId"],
+		["failureReason"] = args["failureReason"],
+		["childDirected"] = args["childDirected"],
+		["idleSessionTTLInSeconds"] = args["idleSessionTTLInSeconds"],
+		["description"] = args["description"],
 	}
 	asserts.AssertCreateBotVersionResponse(t)
 	return t
@@ -2437,39 +2650,42 @@ end
 
 --- Create a structure of type CreateIntentVersionResponse
 --  
--- @param _dialogCodeHook [CodeHook] <p>If defined, Amazon Lex invokes this Lambda function for each user input.</p>
--- @param _confirmationPrompt [Prompt] <p>If defined, the prompt that Amazon Lex uses to confirm the user's intent before fulfilling it. </p>
--- @param _followUpPrompt [FollowUpPrompt] <p>If defined, Amazon Lex uses this prompt to solicit additional user activity after the intent is fulfilled. </p>
--- @param _name [IntentName] <p>The name of the intent.</p>
--- @param _checksum [String] <p>Checksum of the intent version created.</p>
--- @param _conclusionStatement [Statement] <p>After the Lambda function specified in the <code>fulfillmentActivity</code> field fulfills the intent, Amazon Lex conveys this statement to the user. </p>
--- @param _parentIntentSignature [BuiltinIntentSignature] <p>A unique identifier for a built-in intent.</p>
--- @param _version [Version] <p>The version number assigned to the new version of the intent.</p>
--- @param _rejectionStatement [Statement] <p>If the user answers "no" to the question defined in <code>confirmationPrompt</code>, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
--- @param _createdDate [Timestamp] <p>The date that the intent was created.</p>
--- @param _lastUpdatedDate [Timestamp] <p>The date that the intent was updated. </p>
--- @param _sampleUtterances [IntentUtteranceList] <p>An array of sample utterances configured for the intent. </p>
--- @param _slots [SlotList] <p>An array of slot types that defines the information required to fulfill the intent.</p>
--- @param _fulfillmentActivity [FulfillmentActivity] <p> Describes how the intent is fulfilled. </p>
--- @param _description [Description] <p>A description of the intent.</p>
-function M.CreateIntentVersionResponse(_dialogCodeHook, _confirmationPrompt, _followUpPrompt, _name, _checksum, _conclusionStatement, _parentIntentSignature, _version, _rejectionStatement, _createdDate, _lastUpdatedDate, _sampleUtterances, _slots, _fulfillmentActivity, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateIntentVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * dialogCodeHook [CodeHook] <p>If defined, Amazon Lex invokes this Lambda function for each user input.</p>
+-- * confirmationPrompt [Prompt] <p>If defined, the prompt that Amazon Lex uses to confirm the user's intent before fulfilling it. </p>
+-- * followUpPrompt [FollowUpPrompt] <p>If defined, Amazon Lex uses this prompt to solicit additional user activity after the intent is fulfilled. </p>
+-- * name [IntentName] <p>The name of the intent.</p>
+-- * checksum [String] <p>Checksum of the intent version created.</p>
+-- * conclusionStatement [Statement] <p>After the Lambda function specified in the <code>fulfillmentActivity</code> field fulfills the intent, Amazon Lex conveys this statement to the user. </p>
+-- * parentIntentSignature [BuiltinIntentSignature] <p>A unique identifier for a built-in intent.</p>
+-- * version [Version] <p>The version number assigned to the new version of the intent.</p>
+-- * rejectionStatement [Statement] <p>If the user answers "no" to the question defined in <code>confirmationPrompt</code>, Amazon Lex responds with this statement to acknowledge that the intent was canceled. </p>
+-- * createdDate [Timestamp] <p>The date that the intent was created.</p>
+-- * lastUpdatedDate [Timestamp] <p>The date that the intent was updated. </p>
+-- * sampleUtterances [IntentUtteranceList] <p>An array of sample utterances configured for the intent. </p>
+-- * slots [SlotList] <p>An array of slot types that defines the information required to fulfill the intent.</p>
+-- * fulfillmentActivity [FulfillmentActivity] <p> Describes how the intent is fulfilled. </p>
+-- * description [Description] <p>A description of the intent.</p>
+-- @return CreateIntentVersionResponse structure as a key-value pair table
+function M.CreateIntentVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateIntentVersionResponse")
 	local t = { 
-		["dialogCodeHook"] = _dialogCodeHook,
-		["confirmationPrompt"] = _confirmationPrompt,
-		["followUpPrompt"] = _followUpPrompt,
-		["name"] = _name,
-		["checksum"] = _checksum,
-		["conclusionStatement"] = _conclusionStatement,
-		["parentIntentSignature"] = _parentIntentSignature,
-		["version"] = _version,
-		["rejectionStatement"] = _rejectionStatement,
-		["createdDate"] = _createdDate,
-		["lastUpdatedDate"] = _lastUpdatedDate,
-		["sampleUtterances"] = _sampleUtterances,
-		["slots"] = _slots,
-		["fulfillmentActivity"] = _fulfillmentActivity,
-		["description"] = _description,
+		["dialogCodeHook"] = args["dialogCodeHook"],
+		["confirmationPrompt"] = args["confirmationPrompt"],
+		["followUpPrompt"] = args["followUpPrompt"],
+		["name"] = args["name"],
+		["checksum"] = args["checksum"],
+		["conclusionStatement"] = args["conclusionStatement"],
+		["parentIntentSignature"] = args["parentIntentSignature"],
+		["version"] = args["version"],
+		["rejectionStatement"] = args["rejectionStatement"],
+		["createdDate"] = args["createdDate"],
+		["lastUpdatedDate"] = args["lastUpdatedDate"],
+		["sampleUtterances"] = args["sampleUtterances"],
+		["slots"] = args["slots"],
+		["fulfillmentActivity"] = args["fulfillmentActivity"],
+		["description"] = args["description"],
 	}
 	asserts.AssertCreateIntentVersionResponse(t)
 	return t
@@ -2501,34 +2717,37 @@ end
 
 --- Create a structure of type PutBotRequest
 --  
--- @param _intents [IntentList] <p>An array of <code>Intent</code> objects. Each intent represents a command that a user can express. For example, a pizza ordering bot might support an OrderPizza intent. For more information, see <a>how-it-works</a>.</p>
--- @param _name [BotName] <p>The name of the bot. The name is <i>not</i> case sensitive. </p>
--- @param _locale [Locale] <p> Specifies the target locale for the bot. Any intent used in the bot must be compatible with the locale of the bot. </p> <p>The default is <code>en-US</code>.</p>
--- @param _checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new bot, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a bot, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
--- @param _processBehavior [ProcessBehavior] <p>If you set the <code>processBehavior</code> element to <code>Build</code>, Amazon Lex builds the bot so that it can be run. If you set the element to <code>Save</code>Amazon Lex saves the bot, but doesn't build it. </p> <p>If you don't specify this value, the default value is <code>Save</code>.</p>
--- @param _childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
--- @param _abortStatement [Statement] <p>When Amazon Lex can't understand the user's input in context, it tries to elicit the information a few times. After that, Amazon Lex sends the message defined in <code>abortStatement</code> to the user, and then aborts the conversation. To set the number of retries, use the <code>valueElicitationPrompt</code> field for the slot type. </p> <p>For example, in a pizza ordering bot, Amazon Lex might ask a user "What type of crust would you like?" If the user's response is not one of the expected responses (for example, "thin crust, "deep dish," etc.), Amazon Lex tries to elicit a correct response a few more times. </p> <p>For example, in a pizza ordering application, <code>OrderPizza</code> might be one of the intents. This intent might require the <code>CrustType</code> slot. You specify the <code>valueElicitationPrompt</code> field when you create the <code>CrustType</code> slot.</p>
--- @param _clarificationPrompt [Prompt] <p>When Amazon Lex doesn't understand the user's intent, it uses one of these messages to get clarification. For example, "Sorry, I didn't understand. Please repeat." Amazon Lex repeats the clarification prompt the number of times specified in <code>maxAttempts</code>. If Amazon Lex still can't understand, it sends the message specified in <code>abortStatement</code>. </p>
--- @param _voiceId [String] <p>The Amazon Polly voice ID that you want Amazon Lex to use for voice interactions with the user. The locale configured for the voice must match the locale of the bot. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_Voice.html">Voice</a> in the <i>Amazon Polly Developer Guide</i>.</p>
--- @param _idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation.</p> <p>A user interaction session remains active for the amount of time specified. If no conversation occurs during this time, the session expires and Amazon Lex deletes any data provided before the timeout.</p> <p>For example, suppose that a user chooses the OrderPizza intent, but gets sidetracked halfway through placing an order. If the user doesn't complete the order within the specified time, Amazon Lex discards the slot information that it gathered, and the user must start over.</p> <p>If you don't include the <code>idleSessionTTLInSeconds</code> element in a <code>PutBot</code> operation request, Amazon Lex uses the default value. This is also true if the request replaces an existing bot.</p> <p>The default is 300 seconds (5 minutes).</p>
--- @param _description [Description] <p>A description of the bot.</p>
--- Required parameter: name
--- Required parameter: locale
--- Required parameter: childDirected
-function M.PutBotRequest(_intents, _name, _locale, _checksum, _processBehavior, _childDirected, _abortStatement, _clarificationPrompt, _voiceId, _idleSessionTTLInSeconds, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutBotRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * intents [IntentList] <p>An array of <code>Intent</code> objects. Each intent represents a command that a user can express. For example, a pizza ordering bot might support an OrderPizza intent. For more information, see <a>how-it-works</a>.</p>
+-- * name [BotName] <p>The name of the bot. The name is <i>not</i> case sensitive. </p>
+-- * locale [Locale] <p> Specifies the target locale for the bot. Any intent used in the bot must be compatible with the locale of the bot. </p> <p>The default is <code>en-US</code>.</p>
+-- * checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new bot, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a bot, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
+-- * processBehavior [ProcessBehavior] <p>If you set the <code>processBehavior</code> element to <code>Build</code>, Amazon Lex builds the bot so that it can be run. If you set the element to <code>Save</code>Amazon Lex saves the bot, but doesn't build it. </p> <p>If you don't specify this value, the default value is <code>Save</code>.</p>
+-- * childDirected [Boolean] <p>For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying <code>true</code> or <code>false</code> in the <code>childDirected</code> field. By specifying <code>true</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying <code>false</code> in the <code>childDirected</code> field, you confirm that your use of Amazon Lex <b>is not</b> related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the <code>childDirected</code> field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA.</p> <p>If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <a href="https://aws.amazon.com/lex/faqs#data-security">Amazon Lex FAQ.</a> </p>
+-- * abortStatement [Statement] <p>When Amazon Lex can't understand the user's input in context, it tries to elicit the information a few times. After that, Amazon Lex sends the message defined in <code>abortStatement</code> to the user, and then aborts the conversation. To set the number of retries, use the <code>valueElicitationPrompt</code> field for the slot type. </p> <p>For example, in a pizza ordering bot, Amazon Lex might ask a user "What type of crust would you like?" If the user's response is not one of the expected responses (for example, "thin crust, "deep dish," etc.), Amazon Lex tries to elicit a correct response a few more times. </p> <p>For example, in a pizza ordering application, <code>OrderPizza</code> might be one of the intents. This intent might require the <code>CrustType</code> slot. You specify the <code>valueElicitationPrompt</code> field when you create the <code>CrustType</code> slot.</p>
+-- * clarificationPrompt [Prompt] <p>When Amazon Lex doesn't understand the user's intent, it uses one of these messages to get clarification. For example, "Sorry, I didn't understand. Please repeat." Amazon Lex repeats the clarification prompt the number of times specified in <code>maxAttempts</code>. If Amazon Lex still can't understand, it sends the message specified in <code>abortStatement</code>. </p>
+-- * voiceId [String] <p>The Amazon Polly voice ID that you want Amazon Lex to use for voice interactions with the user. The locale configured for the voice must match the locale of the bot. For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/API_Voice.html">Voice</a> in the <i>Amazon Polly Developer Guide</i>.</p>
+-- * idleSessionTTLInSeconds [SessionTTL] <p>The maximum time in seconds that Amazon Lex retains the data gathered in a conversation.</p> <p>A user interaction session remains active for the amount of time specified. If no conversation occurs during this time, the session expires and Amazon Lex deletes any data provided before the timeout.</p> <p>For example, suppose that a user chooses the OrderPizza intent, but gets sidetracked halfway through placing an order. If the user doesn't complete the order within the specified time, Amazon Lex discards the slot information that it gathered, and the user must start over.</p> <p>If you don't include the <code>idleSessionTTLInSeconds</code> element in a <code>PutBot</code> operation request, Amazon Lex uses the default value. This is also true if the request replaces an existing bot.</p> <p>The default is 300 seconds (5 minutes).</p>
+-- * description [Description] <p>A description of the bot.</p>
+-- Required key: name
+-- Required key: locale
+-- Required key: childDirected
+-- @return PutBotRequest structure as a key-value pair table
+function M.PutBotRequest(args)
+	assert(args, "You must provdide an argument table when creating PutBotRequest")
 	local t = { 
-		["intents"] = _intents,
-		["name"] = _name,
-		["locale"] = _locale,
-		["checksum"] = _checksum,
-		["processBehavior"] = _processBehavior,
-		["childDirected"] = _childDirected,
-		["abortStatement"] = _abortStatement,
-		["clarificationPrompt"] = _clarificationPrompt,
-		["voiceId"] = _voiceId,
-		["idleSessionTTLInSeconds"] = _idleSessionTTLInSeconds,
-		["description"] = _description,
+		["intents"] = args["intents"],
+		["name"] = args["name"],
+		["locale"] = args["locale"],
+		["checksum"] = args["checksum"],
+		["processBehavior"] = args["processBehavior"],
+		["childDirected"] = args["childDirected"],
+		["abortStatement"] = args["abortStatement"],
+		["clarificationPrompt"] = args["clarificationPrompt"],
+		["voiceId"] = args["voiceId"],
+		["idleSessionTTLInSeconds"] = args["idleSessionTTLInSeconds"],
+		["description"] = args["description"],
 	}
 	asserts.AssertPutBotRequest(t)
 	return t
@@ -2548,13 +2767,16 @@ end
 
 --- Create a structure of type ResourceReference
 -- <p>Describes the resource that refers to the resource that you are attempting to delete. This object is returned as part of the <code>ResourceInUseException</code> exception. </p>
--- @param _version [Version] <p>The version of the resource that is using the resource that you are trying to delete.</p>
--- @param _name [Name] <p>The name of the resource that is using the resource that you are trying to delete.</p>
-function M.ResourceReference(_version, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceReference")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [Version] <p>The version of the resource that is using the resource that you are trying to delete.</p>
+-- * name [Name] <p>The name of the resource that is using the resource that you are trying to delete.</p>
+-- @return ResourceReference structure as a key-value pair table
+function M.ResourceReference(args)
+	assert(args, "You must provdide an argument table when creating ResourceReference")
 	local t = { 
-		["version"] = _version,
-		["name"] = _name,
+		["version"] = args["version"],
+		["name"] = args["name"],
 	}
 	asserts.AssertResourceReference(t)
 	return t
@@ -2576,16 +2798,19 @@ end
 
 --- Create a structure of type GetBotVersionsRequest
 --  
--- @param _nextToken [NextToken] <p>A pagination token for fetching the next page of bot versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
--- @param _name [BotName] <p>The name of the bot for which versions should be returned.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of bot versions to return in the response. The default is 10.</p>
--- Required parameter: name
-function M.GetBotVersionsRequest(_nextToken, _name, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>A pagination token for fetching the next page of bot versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
+-- * name [BotName] <p>The name of the bot for which versions should be returned.</p>
+-- * maxResults [MaxResults] <p>The maximum number of bot versions to return in the response. The default is 10.</p>
+-- Required key: name
+-- @return GetBotVersionsRequest structure as a key-value pair table
+function M.GetBotVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBotVersionsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["name"] = _name,
-		["maxResults"] = _maxResults,
+		["nextToken"] = args["nextToken"],
+		["name"] = args["name"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetBotVersionsRequest(t)
 	return t
@@ -2606,14 +2831,17 @@ end
 
 --- Create a structure of type CreateSlotTypeVersionRequest
 --  
--- @param _checksum [String] <p>Checksum for the <code>$LATEST</code> version of the slot type that you want to publish. If you specify a checksum and the <code>$LATEST</code> version of the slot type has a different checksum, Amazon Lex returns a <code>PreconditionFailedException</code> exception and doesn't publish the new version. If you don't specify a checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
--- @param _name [SlotTypeName] <p>The name of the slot type that you want to create a new version for. The name is case sensitive. </p>
--- Required parameter: name
-function M.CreateSlotTypeVersionRequest(_checksum, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSlotTypeVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checksum [String] <p>Checksum for the <code>$LATEST</code> version of the slot type that you want to publish. If you specify a checksum and the <code>$LATEST</code> version of the slot type has a different checksum, Amazon Lex returns a <code>PreconditionFailedException</code> exception and doesn't publish the new version. If you don't specify a checksum, Amazon Lex publishes the <code>$LATEST</code> version.</p>
+-- * name [SlotTypeName] <p>The name of the slot type that you want to create a new version for. The name is case sensitive. </p>
+-- Required key: name
+-- @return CreateSlotTypeVersionRequest structure as a key-value pair table
+function M.CreateSlotTypeVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSlotTypeVersionRequest")
 	local t = { 
-		["checksum"] = _checksum,
-		["name"] = _name,
+		["checksum"] = args["checksum"],
+		["name"] = args["name"],
 	}
 	asserts.AssertCreateSlotTypeVersionRequest(t)
 	return t
@@ -2636,18 +2864,21 @@ end
 
 --- Create a structure of type PutSlotTypeRequest
 --  
--- @param _checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new slot type, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a slot type, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
--- @param _name [SlotTypeName] <p>The name of the slot type. The name is <i>not</i> case sensitive. </p> <p>The name can't match a built-in slot type name, or a built-in slot type name with "AMAZON." removed. For example, because there is a built-in slot type called <code>AMAZON.DATE</code>, you can't create a custom slot type called <code>DATE</code>.</p> <p>For a list of built-in slot types, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference">Slot Type Reference</a> in the <i>Alexa Skills Kit</i>.</p>
--- @param _enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take.</p>
--- @param _description [Description] <p>A description of the slot type.</p>
--- Required parameter: name
-function M.PutSlotTypeRequest(_checksum, _name, _enumerationValues, _description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutSlotTypeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * checksum [String] <p>Identifies a specific revision of the <code>$LATEST</code> version.</p> <p>When you create a new slot type, leave the <code>checksum</code> field blank. If you specify a checksum you get a <code>BadRequestException</code> exception.</p> <p>When you want to update a slot type, set the <code>checksum</code> field to the checksum of the most recent revision of the <code>$LATEST</code> version. If you don't specify the <code> checksum</code> field, or if the checksum does not match the <code>$LATEST</code> version, you get a <code>PreconditionFailedException</code> exception.</p>
+-- * name [SlotTypeName] <p>The name of the slot type. The name is <i>not</i> case sensitive. </p> <p>The name can't match a built-in slot type name, or a built-in slot type name with "AMAZON." removed. For example, because there is a built-in slot type called <code>AMAZON.DATE</code>, you can't create a custom slot type called <code>DATE</code>.</p> <p>For a list of built-in slot types, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference">Slot Type Reference</a> in the <i>Alexa Skills Kit</i>.</p>
+-- * enumerationValues [EnumerationValues] <p>A list of <code>EnumerationValue</code> objects that defines the values that the slot type can take.</p>
+-- * description [Description] <p>A description of the slot type.</p>
+-- Required key: name
+-- @return PutSlotTypeRequest structure as a key-value pair table
+function M.PutSlotTypeRequest(args)
+	assert(args, "You must provdide an argument table when creating PutSlotTypeRequest")
 	local t = { 
-		["checksum"] = _checksum,
-		["name"] = _name,
-		["enumerationValues"] = _enumerationValues,
-		["description"] = _description,
+		["checksum"] = args["checksum"],
+		["name"] = args["name"],
+		["enumerationValues"] = args["enumerationValues"],
+		["description"] = args["description"],
 	}
 	asserts.AssertPutSlotTypeRequest(t)
 	return t
@@ -2669,17 +2900,20 @@ end
 
 --- Create a structure of type GetBuiltinIntentsRequest
 --  
--- @param _locale [Locale] <p>A list of locales that the intent supports.</p>
--- @param _nextToken [NextToken] <p>A pagination token that fetches the next page of intents. If this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of intents, use the pagination token in the next request.</p>
--- @param _signatureContains [String] <p>Substring to match in built-in intent signatures. An intent will be returned if any part of its signature matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz." To find the signature for an intent, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of intents to return in the response. The default is 10.</p>
-function M.GetBuiltinIntentsRequest(_locale, _nextToken, _signatureContains, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBuiltinIntentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * locale [Locale] <p>A list of locales that the intent supports.</p>
+-- * nextToken [NextToken] <p>A pagination token that fetches the next page of intents. If this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of intents, use the pagination token in the next request.</p>
+-- * signatureContains [String] <p>Substring to match in built-in intent signatures. An intent will be returned if any part of its signature matches the substring. For example, "xyz" matches both "xyzabc" and "abcxyz." To find the signature for an intent, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
+-- * maxResults [MaxResults] <p>The maximum number of intents to return in the response. The default is 10.</p>
+-- @return GetBuiltinIntentsRequest structure as a key-value pair table
+function M.GetBuiltinIntentsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetBuiltinIntentsRequest")
 	local t = { 
-		["locale"] = _locale,
-		["nextToken"] = _nextToken,
-		["signatureContains"] = _signatureContains,
-		["maxResults"] = _maxResults,
+		["locale"] = args["locale"],
+		["nextToken"] = args["nextToken"],
+		["signatureContains"] = args["signatureContains"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertGetBuiltinIntentsRequest(t)
 	return t
@@ -2699,13 +2933,16 @@ end
 
 --- Create a structure of type GetBotVersionsResponse
 --  
--- @param _bots [BotMetadataList] <p>An array of <code>BotMetadata</code> objects, one for each numbered version of the bot plus one for the <code>$LATEST</code> version.</p>
--- @param _nextToken [NextToken] <p>A pagination token for fetching the next page of bot versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
-function M.GetBotVersionsResponse(_bots, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBotVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * bots [BotMetadataList] <p>An array of <code>BotMetadata</code> objects, one for each numbered version of the bot plus one for the <code>$LATEST</code> version.</p>
+-- * nextToken [NextToken] <p>A pagination token for fetching the next page of bot versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
+-- @return GetBotVersionsResponse structure as a key-value pair table
+function M.GetBotVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBotVersionsResponse")
 	local t = { 
-		["bots"] = _bots,
-		["nextToken"] = _nextToken,
+		["bots"] = args["bots"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertGetBotVersionsResponse(t)
 	return t
@@ -2727,15 +2964,18 @@ end
 
 --- Create a structure of type DeleteSlotTypeVersionRequest
 --  
--- @param _version [NumericalVersion] <p>The version of the slot type to delete. You cannot delete the <code>$LATEST</code> version of the slot type. To delete the <code>$LATEST</code> version, use the operation.</p>
--- @param _name [SlotTypeName] <p>The name of the slot type.</p>
--- Required parameter: name
--- Required parameter: version
-function M.DeleteSlotTypeVersionRequest(_version, _name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSlotTypeVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * version [NumericalVersion] <p>The version of the slot type to delete. You cannot delete the <code>$LATEST</code> version of the slot type. To delete the <code>$LATEST</code> version, use the operation.</p>
+-- * name [SlotTypeName] <p>The name of the slot type.</p>
+-- Required key: name
+-- Required key: version
+-- @return DeleteSlotTypeVersionRequest structure as a key-value pair table
+function M.DeleteSlotTypeVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSlotTypeVersionRequest")
 	local t = { 
-		["version"] = _version,
-		["name"] = _name,
+		["version"] = args["version"],
+		["name"] = args["name"],
 	}
 	asserts.AssertDeleteSlotTypeVersionRequest(t)
 	return t
@@ -2755,13 +2995,16 @@ end
 
 --- Create a structure of type UtteranceList
 -- <p>Provides a list of utterances that have been made to a specific version of your bot. The list contains a maximum of 100 utterances.</p>
--- @param _utterances [ListOfUtterance] <p>One or more objects that contain information about the utterances that have been made to a bot. The maximum number of object is 100.</p>
--- @param _botVersion [Version] <p>The version of the bot that processed the list.</p>
-function M.UtteranceList(_utterances, _botVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UtteranceList")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * utterances [ListOfUtterance] <p>One or more objects that contain information about the utterances that have been made to a bot. The maximum number of object is 100.</p>
+-- * botVersion [Version] <p>The version of the bot that processed the list.</p>
+-- @return UtteranceList structure as a key-value pair table
+function M.UtteranceList(args)
+	assert(args, "You must provdide an argument table when creating UtteranceList")
 	local t = { 
-		["utterances"] = _utterances,
-		["botVersion"] = _botVersion,
+		["utterances"] = args["utterances"],
+		["botVersion"] = args["botVersion"],
 	}
 	asserts.AssertUtteranceList(t)
 	return t
@@ -2780,11 +3023,14 @@ end
 
 --- Create a structure of type BuiltinIntentSlot
 -- <p>Provides information about a slot used in a built-in intent.</p>
--- @param _name [String] <p>A list of the slots defined for the intent.</p>
-function M.BuiltinIntentSlot(_name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BuiltinIntentSlot")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * name [String] <p>A list of the slots defined for the intent.</p>
+-- @return BuiltinIntentSlot structure as a key-value pair table
+function M.BuiltinIntentSlot(args)
+	assert(args, "You must provdide an argument table when creating BuiltinIntentSlot")
 	local t = { 
-		["name"] = _name,
+		["name"] = args["name"],
 	}
 	asserts.AssertBuiltinIntentSlot(t)
 	return t
@@ -2805,14 +3051,17 @@ end
 
 --- Create a structure of type FulfillmentActivity
 -- <p> Describes how the intent is fulfilled after the user provides all of the information required for the intent. You can provide a Lambda function to process the intent, or you can return the intent information to the client application. We recommend that you use a Lambda function so that the relevant logic lives in the Cloud and limit the client-side code primarily to presentation. If you need to update the logic, you only update the Lambda function; you don't need to upgrade your client application. </p> <p>Consider the following examples:</p> <ul> <li> <p>In a pizza ordering application, after the user provides all of the information for placing an order, you use a Lambda function to place an order with a pizzeria. </p> </li> <li> <p>In a gaming application, when a user says "pick up a rock," this information must go back to the client application so that it can perform the operation and update the graphics. In this case, you want Amazon Lex to return the intent data to the client. </p> </li> </ul>
--- @param _type [FulfillmentActivityType] <p> How the intent should be fulfilled, either by running a Lambda function or by returning the slot data to the client application. </p>
--- @param _codeHook [CodeHook] <p> A description of the Lambda function that is run to fulfill the intent. </p>
--- Required parameter: type
-function M.FulfillmentActivity(_type, _codeHook, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FulfillmentActivity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * type [FulfillmentActivityType] <p> How the intent should be fulfilled, either by running a Lambda function or by returning the slot data to the client application. </p>
+-- * codeHook [CodeHook] <p> A description of the Lambda function that is run to fulfill the intent. </p>
+-- Required key: type
+-- @return FulfillmentActivity structure as a key-value pair table
+function M.FulfillmentActivity(args)
+	assert(args, "You must provdide an argument table when creating FulfillmentActivity")
 	local t = { 
-		["type"] = _type,
-		["codeHook"] = _codeHook,
+		["type"] = args["type"],
+		["codeHook"] = args["codeHook"],
 	}
 	asserts.AssertFulfillmentActivity(t)
 	return t
@@ -2832,13 +3081,16 @@ end
 
 --- Create a structure of type GetBuiltinIntentsResponse
 --  
--- @param _intents [BuiltinIntentMetadataList] <p>An array of <code>builtinIntentMetadata</code> objects, one for each intent in the response.</p>
--- @param _nextToken [NextToken] <p>A pagination token that fetches the next page of intents. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of intents, specify the pagination token in the next request.</p>
-function M.GetBuiltinIntentsResponse(_intents, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBuiltinIntentsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * intents [BuiltinIntentMetadataList] <p>An array of <code>builtinIntentMetadata</code> objects, one for each intent in the response.</p>
+-- * nextToken [NextToken] <p>A pagination token that fetches the next page of intents. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of intents, specify the pagination token in the next request.</p>
+-- @return GetBuiltinIntentsResponse structure as a key-value pair table
+function M.GetBuiltinIntentsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetBuiltinIntentsResponse")
 	local t = { 
-		["intents"] = _intents,
-		["nextToken"] = _nextToken,
+		["intents"] = args["intents"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertGetBuiltinIntentsResponse(t)
 	return t

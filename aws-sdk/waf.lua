@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type GetIPSetRequest
 --  
--- @param _IPSetId [ResourceId] <p>The <code>IPSetId</code> of the <a>IPSet</a> that you want to get. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
--- Required parameter: IPSetId
-function M.GetIPSetRequest(_IPSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIPSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IPSetId [ResourceId] <p>The <code>IPSetId</code> of the <a>IPSet</a> that you want to get. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
+-- Required key: IPSetId
+-- @return GetIPSetRequest structure as a key-value pair table
+function M.GetIPSetRequest(args)
+	assert(args, "You must provdide an argument table when creating GetIPSetRequest")
 	local t = { 
-		["IPSetId"] = _IPSetId,
+		["IPSetId"] = args["IPSetId"],
 	}
 	asserts.AssertGetIPSetRequest(t)
 	return t
@@ -60,13 +63,16 @@ end
 
 --- Create a structure of type ListRateBasedRulesRequest
 --  
--- @param _NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>Rules</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>Rules</code>. For the second and subsequent <code>ListRateBasedRules</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>Rules</code>.</p>
--- @param _Limit [PaginationLimit] <p>Specifies the number of <code>Rules</code> that you want AWS WAF to return for this request. If you have more <code>Rules</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
-function M.ListRateBasedRulesRequest(_NextMarker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRateBasedRulesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>Rules</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>Rules</code>. For the second and subsequent <code>ListRateBasedRules</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>Rules</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>Rules</code> that you want AWS WAF to return for this request. If you have more <code>Rules</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
+-- @return ListRateBasedRulesRequest structure as a key-value pair table
+function M.ListRateBasedRulesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListRateBasedRulesRequest")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Limit"] = _Limit,
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListRateBasedRulesRequest(t)
 	return t
@@ -88,15 +94,18 @@ end
 
 --- Create a structure of type TimeWindow
 -- <p>In a <a>GetSampledRequests</a> request, the <code>StartTime</code> and <code>EndTime</code> objects specify the time range for which you want AWS WAF to return a sample of web requests.</p> <p>In a <a>GetSampledRequests</a> response, the <code>StartTime</code> and <code>EndTime</code> objects specify the time range for which AWS WAF actually returned a sample of web requests. AWS WAF gets the specified number of requests from among the first 5,000 requests that your AWS resource receives during the specified time period. If your resource receives more than 5,000 requests during that period, AWS WAF stops sampling after the 5,000th request. In that case, <code>EndTime</code> is the time that AWS WAF received the 5,000th request. </p>
--- @param _EndTime [Timestamp] <p>The end of the time range from which you want <code>GetSampledRequests</code> to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.</p>
--- @param _StartTime [Timestamp] <p>The beginning of the time range from which you want <code>GetSampledRequests</code> to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.</p>
--- Required parameter: StartTime
--- Required parameter: EndTime
-function M.TimeWindow(_EndTime, _StartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TimeWindow")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndTime [Timestamp] <p>The end of the time range from which you want <code>GetSampledRequests</code> to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.</p>
+-- * StartTime [Timestamp] <p>The beginning of the time range from which you want <code>GetSampledRequests</code> to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.</p>
+-- Required key: StartTime
+-- Required key: EndTime
+-- @return TimeWindow structure as a key-value pair table
+function M.TimeWindow(args)
+	assert(args, "You must provdide an argument table when creating TimeWindow")
 	local t = { 
-		["EndTime"] = _EndTime,
-		["StartTime"] = _StartTime,
+		["EndTime"] = args["EndTime"],
+		["StartTime"] = args["StartTime"],
 	}
 	asserts.AssertTimeWindow(t)
 	return t
@@ -118,15 +127,18 @@ end
 
 --- Create a structure of type XssMatchTuple
 -- <p>Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.</p>
--- @param _TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
--- @param _FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for cross-site scripting attacks.</p>
--- Required parameter: FieldToMatch
--- Required parameter: TextTransformation
-function M.XssMatchTuple(_TextTransformation, _FieldToMatch, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating XssMatchTuple")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
+-- * FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for cross-site scripting attacks.</p>
+-- Required key: FieldToMatch
+-- Required key: TextTransformation
+-- @return XssMatchTuple structure as a key-value pair table
+function M.XssMatchTuple(args)
+	assert(args, "You must provdide an argument table when creating XssMatchTuple")
 	local t = { 
-		["TextTransformation"] = _TextTransformation,
-		["FieldToMatch"] = _FieldToMatch,
+		["TextTransformation"] = args["TextTransformation"],
+		["FieldToMatch"] = args["FieldToMatch"],
 	}
 	asserts.AssertXssMatchTuple(t)
 	return t
@@ -145,11 +157,14 @@ end
 
 --- Create a structure of type GetChangeTokenStatusResponse
 --  
--- @param _ChangeTokenStatus [ChangeTokenStatus] <p>The status of the change token.</p>
-function M.GetChangeTokenStatusResponse(_ChangeTokenStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetChangeTokenStatusResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeTokenStatus [ChangeTokenStatus] <p>The status of the change token.</p>
+-- @return GetChangeTokenStatusResponse structure as a key-value pair table
+function M.GetChangeTokenStatusResponse(args)
+	assert(args, "You must provdide an argument table when creating GetChangeTokenStatusResponse")
 	local t = { 
-		["ChangeTokenStatus"] = _ChangeTokenStatus,
+		["ChangeTokenStatus"] = args["ChangeTokenStatus"],
 	}
 	asserts.AssertGetChangeTokenStatusResponse(t)
 	return t
@@ -169,12 +184,15 @@ end
 
 --- Create a structure of type WafAction
 -- <p>For the action that is associated with a rule in a <code>WebACL</code>, specifies the action that you want AWS WAF to perform when a web request matches all of the conditions in a rule. For the default action in a <code>WebACL</code>, specifies the action that you want AWS WAF to take when a web request doesn't match all of the conditions in any of the rules in a <code>WebACL</code>. </p>
--- @param _Type [WafActionType] <p>Specifies how you want AWS WAF to respond to requests that match the settings in a <code>Rule</code>. Valid settings include the following:</p> <ul> <li> <p> <code>ALLOW</code>: AWS WAF allows requests</p> </li> <li> <p> <code>BLOCK</code>: AWS WAF blocks requests</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of the requests that match all of the conditions in the rule. AWS WAF then continues to inspect the web request based on the remaining rules in the web ACL. You can't specify <code>COUNT</code> for the default action for a <code>WebACL</code>.</p> </li> </ul>
--- Required parameter: Type
-function M.WafAction(_Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WafAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [WafActionType] <p>Specifies how you want AWS WAF to respond to requests that match the settings in a <code>Rule</code>. Valid settings include the following:</p> <ul> <li> <p> <code>ALLOW</code>: AWS WAF allows requests</p> </li> <li> <p> <code>BLOCK</code>: AWS WAF blocks requests</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of the requests that match all of the conditions in the rule. AWS WAF then continues to inspect the web request based on the remaining rules in the web ACL. You can't specify <code>COUNT</code> for the default action for a <code>WebACL</code>.</p> </li> </ul>
+-- Required key: Type
+-- @return WafAction structure as a key-value pair table
+function M.WafAction(args)
+	assert(args, "You must provdide an argument table when creating WafAction")
 	local t = { 
-		["Type"] = _Type,
+		["Type"] = args["Type"],
 	}
 	asserts.AssertWafAction(t)
 	return t
@@ -196,15 +214,18 @@ end
 
 --- Create a structure of type DeleteRuleRequest
 --  
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>Rule</a> that you want to delete. <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
--- Required parameter: RuleId
--- Required parameter: ChangeToken
-function M.DeleteRuleRequest(_ChangeToken, _RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>Rule</a> that you want to delete. <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
+-- Required key: RuleId
+-- Required key: ChangeToken
+-- @return DeleteRuleRequest structure as a key-value pair table
+function M.DeleteRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteRuleRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["RuleId"] = _RuleId,
+		["ChangeToken"] = args["ChangeToken"],
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertDeleteRuleRequest(t)
 	return t
@@ -228,18 +249,21 @@ end
 
 --- Create a structure of type UpdateRuleRequest
 --  
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Updates [RuleUpdates] <p>An array of <code>RuleUpdate</code> objects that you want to insert into or delete from a <a>Rule</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>RuleUpdate</a>: Contains <code>Action</code> and <code>Predicate</code> </p> </li> <li> <p> <a>Predicate</a>: Contains <code>DataId</code>, <code>Negated</code>, and <code>Type</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
--- @param _RuleId [ResourceId] <p>The <code>RuleId</code> of the <code>Rule</code> that you want to update. <code>RuleId</code> is returned by <code>CreateRule</code> and by <a>ListRules</a>.</p>
--- Required parameter: RuleId
--- Required parameter: ChangeToken
--- Required parameter: Updates
-function M.UpdateRuleRequest(_ChangeToken, _Updates, _RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Updates [RuleUpdates] <p>An array of <code>RuleUpdate</code> objects that you want to insert into or delete from a <a>Rule</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>RuleUpdate</a>: Contains <code>Action</code> and <code>Predicate</code> </p> </li> <li> <p> <a>Predicate</a>: Contains <code>DataId</code>, <code>Negated</code>, and <code>Type</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- * RuleId [ResourceId] <p>The <code>RuleId</code> of the <code>Rule</code> that you want to update. <code>RuleId</code> is returned by <code>CreateRule</code> and by <a>ListRules</a>.</p>
+-- Required key: RuleId
+-- Required key: ChangeToken
+-- Required key: Updates
+-- @return UpdateRuleRequest structure as a key-value pair table
+function M.UpdateRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateRuleRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["Updates"] = _Updates,
-		["RuleId"] = _RuleId,
+		["ChangeToken"] = args["ChangeToken"],
+		["Updates"] = args["Updates"],
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertUpdateRuleRequest(t)
 	return t
@@ -259,13 +283,16 @@ end
 
 --- Create a structure of type ListByteMatchSetsResponse
 --  
--- @param _NextMarker [NextMarker] <p>If you have more <code>ByteMatchSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>ByteMatchSet</code> objects, submit another <code>ListByteMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
--- @param _ByteMatchSets [ByteMatchSetSummaries] <p>An array of <a>ByteMatchSetSummary</a> objects.</p>
-function M.ListByteMatchSetsResponse(_NextMarker, _ByteMatchSets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListByteMatchSetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you have more <code>ByteMatchSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>ByteMatchSet</code> objects, submit another <code>ListByteMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- * ByteMatchSets [ByteMatchSetSummaries] <p>An array of <a>ByteMatchSetSummary</a> objects.</p>
+-- @return ListByteMatchSetsResponse structure as a key-value pair table
+function M.ListByteMatchSetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListByteMatchSetsResponse")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["ByteMatchSets"] = _ByteMatchSets,
+		["NextMarker"] = args["NextMarker"],
+		["ByteMatchSets"] = args["ByteMatchSets"],
 	}
 	asserts.AssertListByteMatchSetsResponse(t)
 	return t
@@ -289,18 +316,21 @@ end
 
 --- Create a structure of type Predicate
 -- <p>Specifies the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, and <a>SizeConstraintSet</a> objects that you want to add to a <code>Rule</code> and, for each object, indicates whether you want to negate the settings, for example, requests that do NOT originate from the IP address 192.0.2.44. </p>
--- @param _Negated [Negated] <p>Set <code>Negated</code> to <code>False</code> if you want AWS WAF to allow, block, or count requests based on the settings in the specified <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow or block requests based on that IP address.</p> <p>Set <code>Negated</code> to <code>True</code> if you want AWS WAF to allow or block a request based on the negation of the settings in the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow, block, or count requests based on all IP addresses <i>except</i> <code>192.0.2.44</code>.</p>
--- @param _Type [PredicateType] <p>The type of predicate in a <code>Rule</code>, such as <code>ByteMatchSet</code> or <code>IPSet</code>.</p>
--- @param _DataId [ResourceId] <p>A unique identifier for a predicate in a <code>Rule</code>, such as <code>ByteMatchSetId</code> or <code>IPSetId</code>. The ID is returned by the corresponding <code>Create</code> or <code>List</code> command.</p>
--- Required parameter: Negated
--- Required parameter: Type
--- Required parameter: DataId
-function M.Predicate(_Negated, _Type, _DataId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Predicate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Negated [Negated] <p>Set <code>Negated</code> to <code>False</code> if you want AWS WAF to allow, block, or count requests based on the settings in the specified <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow or block requests based on that IP address.</p> <p>Set <code>Negated</code> to <code>True</code> if you want AWS WAF to allow or block a request based on the negation of the settings in the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, or <a>SizeConstraintSet</a>. For example, if an <code>IPSet</code> includes the IP address <code>192.0.2.44</code>, AWS WAF will allow, block, or count requests based on all IP addresses <i>except</i> <code>192.0.2.44</code>.</p>
+-- * Type [PredicateType] <p>The type of predicate in a <code>Rule</code>, such as <code>ByteMatchSet</code> or <code>IPSet</code>.</p>
+-- * DataId [ResourceId] <p>A unique identifier for a predicate in a <code>Rule</code>, such as <code>ByteMatchSetId</code> or <code>IPSetId</code>. The ID is returned by the corresponding <code>Create</code> or <code>List</code> command.</p>
+-- Required key: Negated
+-- Required key: Type
+-- Required key: DataId
+-- @return Predicate structure as a key-value pair table
+function M.Predicate(args)
+	assert(args, "You must provdide an argument table when creating Predicate")
 	local t = { 
-		["Negated"] = _Negated,
-		["Type"] = _Type,
-		["DataId"] = _DataId,
+		["Negated"] = args["Negated"],
+		["Type"] = args["Type"],
+		["DataId"] = args["DataId"],
 	}
 	asserts.AssertPredicate(t)
 	return t
@@ -324,18 +354,21 @@ end
 
 --- Create a structure of type UpdateIPSetRequest
 --  
--- @param _IPSetId [ResourceId] <p>The <code>IPSetId</code> of the <a>IPSet</a> that you want to update. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Updates [IPSetUpdates] <p>An array of <code>IPSetUpdate</code> objects that you want to insert into or delete from an <a>IPSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>IPSetUpdate</a>: Contains <code>Action</code> and <code>IPSetDescriptor</code> </p> </li> <li> <p> <a>IPSetDescriptor</a>: Contains <code>Type</code> and <code>Value</code> </p> </li> </ul>
--- Required parameter: IPSetId
--- Required parameter: ChangeToken
--- Required parameter: Updates
-function M.UpdateIPSetRequest(_IPSetId, _ChangeToken, _Updates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateIPSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IPSetId [ResourceId] <p>The <code>IPSetId</code> of the <a>IPSet</a> that you want to update. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Updates [IPSetUpdates] <p>An array of <code>IPSetUpdate</code> objects that you want to insert into or delete from an <a>IPSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>IPSetUpdate</a>: Contains <code>Action</code> and <code>IPSetDescriptor</code> </p> </li> <li> <p> <a>IPSetDescriptor</a>: Contains <code>Type</code> and <code>Value</code> </p> </li> </ul>
+-- Required key: IPSetId
+-- Required key: ChangeToken
+-- Required key: Updates
+-- @return UpdateIPSetRequest structure as a key-value pair table
+function M.UpdateIPSetRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateIPSetRequest")
 	local t = { 
-		["IPSetId"] = _IPSetId,
-		["ChangeToken"] = _ChangeToken,
-		["Updates"] = _Updates,
+		["IPSetId"] = args["IPSetId"],
+		["ChangeToken"] = args["ChangeToken"],
+		["Updates"] = args["Updates"],
 	}
 	asserts.AssertUpdateIPSetRequest(t)
 	return t
@@ -357,15 +390,18 @@ end
 
 --- Create a structure of type DeleteByteMatchSetRequest
 --  
--- @param _ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- Required parameter: ByteMatchSetId
--- Required parameter: ChangeToken
-function M.DeleteByteMatchSetRequest(_ByteMatchSetId, _ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteByteMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to delete. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- Required key: ByteMatchSetId
+-- Required key: ChangeToken
+-- @return DeleteByteMatchSetRequest structure as a key-value pair table
+function M.DeleteByteMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteByteMatchSetRequest")
 	local t = { 
-		["ByteMatchSetId"] = _ByteMatchSetId,
-		["ChangeToken"] = _ChangeToken,
+		["ByteMatchSetId"] = args["ByteMatchSetId"],
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteByteMatchSetRequest(t)
 	return t
@@ -384,11 +420,14 @@ end
 
 --- Create a structure of type DeleteSqlInjectionMatchSetResponse
 -- <p>The response to a request to delete a <a>SqlInjectionMatchSet</a> from AWS WAF.</p>
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.DeleteSqlInjectionMatchSetResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSqlInjectionMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteSqlInjectionMatchSetResponse structure as a key-value pair table
+function M.DeleteSqlInjectionMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteSqlInjectionMatchSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteSqlInjectionMatchSetResponse(t)
 	return t
@@ -407,11 +446,14 @@ end
 
 --- Create a structure of type UpdateIPSetResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.UpdateIPSetResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateIPSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateIPSetResponse structure as a key-value pair table
+function M.UpdateIPSetResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateIPSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertUpdateIPSetResponse(t)
 	return t
@@ -430,11 +472,14 @@ end
 
 --- Create a structure of type WAFNonexistentContainerException
 -- <p>The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:</p> <ul> <li> <p>You tried to add a <code>Rule</code> to or delete a <code>Rule</code> from a <code>WebACL</code> that doesn't exist.</p> </li> <li> <p>You tried to add a <code>ByteMatchSet</code> to or delete a <code>ByteMatchSet</code> from a <code>Rule</code> that doesn't exist.</p> </li> <li> <p>You tried to add an IP address to or delete an IP address from an <code>IPSet</code> that doesn't exist.</p> </li> <li> <p>You tried to add a <code>ByteMatchTuple</code> to or delete a <code>ByteMatchTuple</code> from a <code>ByteMatchSet</code> that doesn't exist.</p> </li> </ul>
--- @param _message [errorMessage] 
-function M.WAFNonexistentContainerException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFNonexistentContainerException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return WAFNonexistentContainerException structure as a key-value pair table
+function M.WAFNonexistentContainerException(args)
+	assert(args, "You must provdide an argument table when creating WAFNonexistentContainerException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertWAFNonexistentContainerException(t)
 	return t
@@ -452,8 +497,11 @@ end
 
 --- Create a structure of type WAFInvalidAccountException
 -- <p>The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.</p>
-function M.WAFInvalidAccountException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFInvalidAccountException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return WAFInvalidAccountException structure as a key-value pair table
+function M.WAFInvalidAccountException(args)
+	assert(args, "You must provdide an argument table when creating WAFInvalidAccountException")
 	local t = { 
 	}
 	asserts.AssertWAFInvalidAccountException(t)
@@ -476,15 +524,18 @@ end
 
 --- Create a structure of type WebACLSummary
 -- <p>Contains the identifier and the name or description of the <a>WebACL</a>.</p>
--- @param _WebACLId [ResourceId] <p>A unique identifier for a <code>WebACL</code>. You use <code>WebACLId</code> to get information about a <code>WebACL</code> (see <a>GetWebACL</a>), update a <code>WebACL</code> (see <a>UpdateWebACL</a>), and delete a <code>WebACL</code> from AWS WAF (see <a>DeleteWebACL</a>).</p> <p> <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>WebACL</a>. You can't change the name of a <code>WebACL</code> after you create it.</p>
--- Required parameter: WebACLId
--- Required parameter: Name
-function M.WebACLSummary(_WebACLId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WebACLSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WebACLId [ResourceId] <p>A unique identifier for a <code>WebACL</code>. You use <code>WebACLId</code> to get information about a <code>WebACL</code> (see <a>GetWebACL</a>), update a <code>WebACL</code> (see <a>UpdateWebACL</a>), and delete a <code>WebACL</code> from AWS WAF (see <a>DeleteWebACL</a>).</p> <p> <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>WebACL</a>. You can't change the name of a <code>WebACL</code> after you create it.</p>
+-- Required key: WebACLId
+-- Required key: Name
+-- @return WebACLSummary structure as a key-value pair table
+function M.WebACLSummary(args)
+	assert(args, "You must provdide an argument table when creating WebACLSummary")
 	local t = { 
-		["WebACLId"] = _WebACLId,
-		["Name"] = _Name,
+		["WebACLId"] = args["WebACLId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertWebACLSummary(t)
 	return t
@@ -504,12 +555,15 @@ end
 
 --- Create a structure of type GetByteMatchSetRequest
 --  
--- @param _ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to get. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
--- Required parameter: ByteMatchSetId
-function M.GetByteMatchSetRequest(_ByteMatchSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetByteMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to get. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
+-- Required key: ByteMatchSetId
+-- @return GetByteMatchSetRequest structure as a key-value pair table
+function M.GetByteMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating GetByteMatchSetRequest")
 	local t = { 
-		["ByteMatchSetId"] = _ByteMatchSetId,
+		["ByteMatchSetId"] = args["ByteMatchSetId"],
 	}
 	asserts.AssertGetByteMatchSetRequest(t)
 	return t
@@ -537,24 +591,27 @@ end
 
 --- Create a structure of type CreateRateBasedRuleRequest
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @param _RateLimit [RateLimit] <p>The maximum number of requests, which have an identical value in the field that is specified by <code>RateKey</code>, allowed in a five-minute period. If the number of requests exceeds the <code>RateLimit</code> and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.</p>
--- @param _RateKey [RateKey] <p>The field that AWS WAF uses to determine if requests are likely arriving from a single source and thus subject to rate monitoring. The only valid value for <code>RateKey</code> is <code>IP</code>. <code>IP</code> indicates that requests that arrive from the same IP address are subject to the <code>RateLimit</code> that is specified in the <code>RateBasedRule</code>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>RateBasedRule</a>. You can't change the name of a <code>RateBasedRule</code> after you create it.</p>
--- @param _MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>RateBasedRule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>RateBasedRule</code>.</p>
--- Required parameter: Name
--- Required parameter: MetricName
--- Required parameter: RateKey
--- Required parameter: RateLimit
--- Required parameter: ChangeToken
-function M.CreateRateBasedRuleRequest(_ChangeToken, _RateLimit, _RateKey, _Name, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRateBasedRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- * RateLimit [RateLimit] <p>The maximum number of requests, which have an identical value in the field that is specified by <code>RateKey</code>, allowed in a five-minute period. If the number of requests exceeds the <code>RateLimit</code> and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.</p>
+-- * RateKey [RateKey] <p>The field that AWS WAF uses to determine if requests are likely arriving from a single source and thus subject to rate monitoring. The only valid value for <code>RateKey</code> is <code>IP</code>. <code>IP</code> indicates that requests that arrive from the same IP address are subject to the <code>RateLimit</code> that is specified in the <code>RateBasedRule</code>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>RateBasedRule</a>. You can't change the name of a <code>RateBasedRule</code> after you create it.</p>
+-- * MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>RateBasedRule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>RateBasedRule</code>.</p>
+-- Required key: Name
+-- Required key: MetricName
+-- Required key: RateKey
+-- Required key: RateLimit
+-- Required key: ChangeToken
+-- @return CreateRateBasedRuleRequest structure as a key-value pair table
+function M.CreateRateBasedRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateRateBasedRuleRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["RateLimit"] = _RateLimit,
-		["RateKey"] = _RateKey,
-		["Name"] = _Name,
-		["MetricName"] = _MetricName,
+		["ChangeToken"] = args["ChangeToken"],
+		["RateLimit"] = args["RateLimit"],
+		["RateKey"] = args["RateKey"],
+		["Name"] = args["Name"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertCreateRateBasedRuleRequest(t)
 	return t
@@ -573,11 +630,14 @@ end
 
 --- Create a structure of type DeleteRateBasedRuleResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.DeleteRateBasedRuleResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRateBasedRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteRateBasedRuleResponse structure as a key-value pair table
+function M.DeleteRateBasedRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteRateBasedRuleResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteRateBasedRuleResponse(t)
 	return t
@@ -599,15 +659,18 @@ end
 
 --- Create a structure of type DeleteWebACLRequest
 --  
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _WebACLId [ResourceId] <p>The <code>WebACLId</code> of the <a>WebACL</a> that you want to delete. <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
--- Required parameter: WebACLId
--- Required parameter: ChangeToken
-function M.DeleteWebACLRequest(_ChangeToken, _WebACLId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteWebACLRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * WebACLId [ResourceId] <p>The <code>WebACLId</code> of the <a>WebACL</a> that you want to delete. <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
+-- Required key: WebACLId
+-- Required key: ChangeToken
+-- @return DeleteWebACLRequest structure as a key-value pair table
+function M.DeleteWebACLRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteWebACLRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["WebACLId"] = _WebACLId,
+		["ChangeToken"] = args["ChangeToken"],
+		["WebACLId"] = args["WebACLId"],
 	}
 	asserts.AssertDeleteWebACLRequest(t)
 	return t
@@ -627,13 +690,16 @@ end
 
 --- Create a structure of type ListIPSetsResponse
 --  
--- @param _IPSets [IPSetSummaries] <p>An array of <a>IPSetSummary</a> objects.</p>
--- @param _NextMarker [NextMarker] <p>If you have more <code>IPSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>IPSet</code> objects, submit another <code>ListIPSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
-function M.ListIPSetsResponse(_IPSets, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIPSetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IPSets [IPSetSummaries] <p>An array of <a>IPSetSummary</a> objects.</p>
+-- * NextMarker [NextMarker] <p>If you have more <code>IPSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>IPSet</code> objects, submit another <code>ListIPSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @return ListIPSetsResponse structure as a key-value pair table
+function M.ListIPSetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListIPSetsResponse")
 	local t = { 
-		["IPSets"] = _IPSets,
-		["NextMarker"] = _NextMarker,
+		["IPSets"] = args["IPSets"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertListIPSetsResponse(t)
 	return t
@@ -659,21 +725,24 @@ end
 
 --- Create a structure of type SizeConstraint
 -- <p>Specifies a constraint on the size of a part of the web request. AWS WAF uses the <code>Size</code>, <code>ComparisonOperator</code>, and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p>
--- @param _ComparisonOperator [ComparisonOperator] <p>The type of comparison you want AWS WAF to perform. AWS WAF uses this in combination with the provided <code>Size</code> and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p> <p> <b>EQ</b>: Used to test if the <code>Size</code> is equal to the size of the <code>FieldToMatch</code> </p> <p> <b>NE</b>: Used to test if the <code>Size</code> is not equal to the size of the <code>FieldToMatch</code> </p> <p> <b>LE</b>: Used to test if the <code>Size</code> is less than or equal to the size of the <code>FieldToMatch</code> </p> <p> <b>LT</b>: Used to test if the <code>Size</code> is strictly less than the size of the <code>FieldToMatch</code> </p> <p> <b>GE</b>: Used to test if the <code>Size</code> is greater than or equal to the size of the <code>FieldToMatch</code> </p> <p> <b>GT</b>: Used to test if the <code>Size</code> is strictly greater than the size of the <code>FieldToMatch</code> </p>
--- @param _TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p>Note that if you choose <code>BODY</code> for the value of <code>Type</code>, you must choose <code>NONE</code> for <code>TextTransformation</code> because CloudFront forwards only the first 8192 bytes for inspection. </p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system command line command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p>
--- @param _FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for the size constraint.</p>
--- @param _Size [Size] <p>The size in bytes that you want AWS WAF to compare against the size of the specified <code>FieldToMatch</code>. AWS WAF uses this in combination with <code>ComparisonOperator</code> and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p> <p>Valid values for size are 0 - 21474836480 bytes (0 - 20 GB).</p> <p>If you specify <code>URI</code> for the value of <code>Type</code>, the / in the URI counts as one character. For example, the URI <code>/logo.jpg</code> is nine characters long.</p>
--- Required parameter: FieldToMatch
--- Required parameter: TextTransformation
--- Required parameter: ComparisonOperator
--- Required parameter: Size
-function M.SizeConstraint(_ComparisonOperator, _TextTransformation, _FieldToMatch, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SizeConstraint")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ComparisonOperator [ComparisonOperator] <p>The type of comparison you want AWS WAF to perform. AWS WAF uses this in combination with the provided <code>Size</code> and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p> <p> <b>EQ</b>: Used to test if the <code>Size</code> is equal to the size of the <code>FieldToMatch</code> </p> <p> <b>NE</b>: Used to test if the <code>Size</code> is not equal to the size of the <code>FieldToMatch</code> </p> <p> <b>LE</b>: Used to test if the <code>Size</code> is less than or equal to the size of the <code>FieldToMatch</code> </p> <p> <b>LT</b>: Used to test if the <code>Size</code> is strictly less than the size of the <code>FieldToMatch</code> </p> <p> <b>GE</b>: Used to test if the <code>Size</code> is greater than or equal to the size of the <code>FieldToMatch</code> </p> <p> <b>GT</b>: Used to test if the <code>Size</code> is strictly greater than the size of the <code>FieldToMatch</code> </p>
+-- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p>Note that if you choose <code>BODY</code> for the value of <code>Type</code>, you must choose <code>NONE</code> for <code>TextTransformation</code> because CloudFront forwards only the first 8192 bytes for inspection. </p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system command line command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p>
+-- * FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for the size constraint.</p>
+-- * Size [Size] <p>The size in bytes that you want AWS WAF to compare against the size of the specified <code>FieldToMatch</code>. AWS WAF uses this in combination with <code>ComparisonOperator</code> and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p> <p>Valid values for size are 0 - 21474836480 bytes (0 - 20 GB).</p> <p>If you specify <code>URI</code> for the value of <code>Type</code>, the / in the URI counts as one character. For example, the URI <code>/logo.jpg</code> is nine characters long.</p>
+-- Required key: FieldToMatch
+-- Required key: TextTransformation
+-- Required key: ComparisonOperator
+-- Required key: Size
+-- @return SizeConstraint structure as a key-value pair table
+function M.SizeConstraint(args)
+	assert(args, "You must provdide an argument table when creating SizeConstraint")
 	local t = { 
-		["ComparisonOperator"] = _ComparisonOperator,
-		["TextTransformation"] = _TextTransformation,
-		["FieldToMatch"] = _FieldToMatch,
-		["Size"] = _Size,
+		["ComparisonOperator"] = args["ComparisonOperator"],
+		["TextTransformation"] = args["TextTransformation"],
+		["FieldToMatch"] = args["FieldToMatch"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertSizeConstraint(t)
 	return t
@@ -693,13 +762,16 @@ end
 
 --- Create a structure of type CreateRuleResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @param _Rule [Rule] <p>The <a>Rule</a> returned in the <code>CreateRule</code> response.</p>
-function M.CreateRuleResponse(_ChangeToken, _Rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- * Rule [Rule] <p>The <a>Rule</a> returned in the <code>CreateRule</code> response.</p>
+-- @return CreateRuleResponse structure as a key-value pair table
+function M.CreateRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateRuleResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["Rule"] = _Rule,
+		["ChangeToken"] = args["ChangeToken"],
+		["Rule"] = args["Rule"],
 	}
 	asserts.AssertCreateRuleResponse(t)
 	return t
@@ -720,14 +792,17 @@ end
 
 --- Create a structure of type FieldToMatch
 -- <p>Specifies where in a web request to look for <code>TargetString</code>.</p>
--- @param _Data [MatchFieldData] <p>When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS WAF to search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of <code>Type</code> is any other value, omit <code>Data</code>.</p> <p>The name of the header is not case sensitive.</p>
--- @param _Type [MatchFieldType] <p>The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:</p> <ul> <li> <p> <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in <code>Data</code>.</p> </li> <li> <p> <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</p> </li> <li> <p> <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code> character, if any.</p> </li> <li> <p> <code>URI</code>: The part of a web request that identifies a resource, for example, <code>/images/daily-ad.jpg</code>.</p> </li> <li> <p> <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see <a>CreateSizeConstraintSet</a>. </p> </li> </ul>
--- Required parameter: Type
-function M.FieldToMatch(_Data, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FieldToMatch")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Data [MatchFieldData] <p>When the value of <code>Type</code> is <code>HEADER</code>, enter the name of the header that you want AWS WAF to search, for example, <code>User-Agent</code> or <code>Referer</code>. If the value of <code>Type</code> is any other value, omit <code>Data</code>.</p> <p>The name of the header is not case sensitive.</p>
+-- * Type [MatchFieldType] <p>The part of the web request that you want AWS WAF to search for a specified string. Parts of a request that you can search include the following:</p> <ul> <li> <p> <code>HEADER</code>: A specified request header, for example, the value of the <code>User-Agent</code> or <code>Referer</code> header. If you choose <code>HEADER</code> for the type, specify the name of the header in <code>Data</code>.</p> </li> <li> <p> <code>METHOD</code>: The HTTP method, which indicated the type of operation that the request is asking the origin to perform. Amazon CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</p> </li> <li> <p> <code>QUERY_STRING</code>: A query string, which is the part of a URL that appears after a <code>?</code> character, if any.</p> </li> <li> <p> <code>URI</code>: The part of a web request that identifies a resource, for example, <code>/images/daily-ad.jpg</code>.</p> </li> <li> <p> <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see <a>CreateSizeConstraintSet</a>. </p> </li> </ul>
+-- Required key: Type
+-- @return FieldToMatch structure as a key-value pair table
+function M.FieldToMatch(args)
+	assert(args, "You must provdide an argument table when creating FieldToMatch")
 	local t = { 
-		["Data"] = _Data,
-		["Type"] = _Type,
+		["Data"] = args["Data"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertFieldToMatch(t)
 	return t
@@ -749,15 +824,18 @@ end
 
 --- Create a structure of type DeleteSqlInjectionMatchSetRequest
 -- <p>A request to delete a <a>SqlInjectionMatchSet</a> from AWS WAF.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _SqlInjectionMatchSetId [ResourceId] <p>The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to delete. <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
--- Required parameter: SqlInjectionMatchSetId
--- Required parameter: ChangeToken
-function M.DeleteSqlInjectionMatchSetRequest(_ChangeToken, _SqlInjectionMatchSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSqlInjectionMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * SqlInjectionMatchSetId [ResourceId] <p>The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to delete. <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
+-- Required key: SqlInjectionMatchSetId
+-- Required key: ChangeToken
+-- @return DeleteSqlInjectionMatchSetRequest structure as a key-value pair table
+function M.DeleteSqlInjectionMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSqlInjectionMatchSetRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["SqlInjectionMatchSetId"] = _SqlInjectionMatchSetId,
+		["ChangeToken"] = args["ChangeToken"],
+		["SqlInjectionMatchSetId"] = args["SqlInjectionMatchSetId"],
 	}
 	asserts.AssertDeleteSqlInjectionMatchSetRequest(t)
 	return t
@@ -777,12 +855,15 @@ end
 
 --- Create a structure of type GetSizeConstraintSetRequest
 --  
--- @param _SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to get. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
--- Required parameter: SizeConstraintSetId
-function M.GetSizeConstraintSetRequest(_SizeConstraintSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSizeConstraintSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to get. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- Required key: SizeConstraintSetId
+-- @return GetSizeConstraintSetRequest structure as a key-value pair table
+function M.GetSizeConstraintSetRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSizeConstraintSetRequest")
 	local t = { 
-		["SizeConstraintSetId"] = _SizeConstraintSetId,
+		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
 	}
 	asserts.AssertGetSizeConstraintSetRequest(t)
 	return t
@@ -808,21 +889,24 @@ end
 
 --- Create a structure of type ByteMatchTuple
 -- <p>The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.</p>
--- @param _TargetString [ByteMatchTargetString] <p>The value that you want AWS WAF to search for. AWS WAF searches for the specified string in the part of web requests that you specified in <code>FieldToMatch</code>. The maximum length of the value is 50 bytes.</p> <p>Valid values depend on the values that you specified for <code>FieldToMatch</code>:</p> <ul> <li> <p> <code>HEADER</code>: The value that you want AWS WAF to search for in the request header that you specified in <a>FieldToMatch</a>, for example, the value of the <code>User-Agent</code> or <code>Referer</code> header.</p> </li> <li> <p> <code>METHOD</code>: The HTTP method, which indicates the type of operation specified in the request. CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</p> </li> <li> <p> <code>QUERY_STRING</code>: The value that you want AWS WAF to search for in the query string, which is the part of a URL that appears after a <code>?</code> character.</p> </li> <li> <p> <code>URI</code>: The value that you want AWS WAF to search for in the part of a URL that identifies a resource, for example, <code>/images/daily-ad.jpg</code>.</p> </li> <li> <p> <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see <a>CreateSizeConstraintSet</a>. </p> </li> </ul> <p>If <code>TargetString</code> includes alphabetic characters A-Z and a-z, note that the value is case sensitive.</p> <p> <b>If you're using the AWS WAF API</b> </p> <p>Specify a base64-encoded version of the value. The maximum length of the value before you base64-encode it is 50 bytes.</p> <p>For example, suppose the value of <code>Type</code> is <code>HEADER</code> and the value of <code>Data</code> is <code>User-Agent</code>. If you want to search the <code>User-Agent</code> header for the value <code>BadBot</code>, you base64-encode <code>BadBot</code> using MIME base64 encoding and include the resulting value, <code>QmFkQm90</code>, in the value of <code>TargetString</code>.</p> <p> <b>If you're using the AWS CLI or one of the AWS SDKs</b> </p> <p>The value that you want AWS WAF to search for. The SDK automatically base64 encodes the value.</p>
--- @param _PositionalConstraint [PositionalConstraint] <p>Within the portion of a web request that you want to search (for example, in the query string, if any), specify where you want AWS WAF to search. Valid values include the following:</p> <p> <b>CONTAINS</b> </p> <p>The specified part of the web request must include the value of <code>TargetString</code>, but the location doesn't matter.</p> <p> <b>CONTAINS_WORD</b> </p> <p>The specified part of the web request must include the value of <code>TargetString</code>, and <code>TargetString</code> must contain only alphanumeric characters or underscore (A-Z, a-z, 0-9, or _). In addition, <code>TargetString</code> must be a word, which means one of the following:</p> <ul> <li> <p> <code>TargetString</code> exactly matches the value of the specified part of the web request, such as the value of a header.</p> </li> <li> <p> <code>TargetString</code> is at the beginning of the specified part of the web request and is followed by a character other than an alphanumeric character or underscore (_), for example, <code>BadBot;</code>.</p> </li> <li> <p> <code>TargetString</code> is at the end of the specified part of the web request and is preceded by a character other than an alphanumeric character or underscore (_), for example, <code>;BadBot</code>.</p> </li> <li> <p> <code>TargetString</code> is in the middle of the specified part of the web request and is preceded and followed by characters other than alphanumeric characters or underscore (_), for example, <code>-BadBot;</code>.</p> </li> </ul> <p> <b>EXACTLY</b> </p> <p>The value of the specified part of the web request must exactly match the value of <code>TargetString</code>.</p> <p> <b>STARTS_WITH</b> </p> <p>The value of <code>TargetString</code> must appear at the beginning of the specified part of the web request.</p> <p> <b>ENDS_WITH</b> </p> <p>The value of <code>TargetString</code> must appear at the end of the specified part of the web request.</p>
--- @param _TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>TargetString</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
--- @param _FieldToMatch [FieldToMatch] <p>The part of a web request that you want AWS WAF to search, such as a specified header or a query string. For more information, see <a>FieldToMatch</a>.</p>
--- Required parameter: FieldToMatch
--- Required parameter: TargetString
--- Required parameter: TextTransformation
--- Required parameter: PositionalConstraint
-function M.ByteMatchTuple(_TargetString, _PositionalConstraint, _TextTransformation, _FieldToMatch, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ByteMatchTuple")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetString [ByteMatchTargetString] <p>The value that you want AWS WAF to search for. AWS WAF searches for the specified string in the part of web requests that you specified in <code>FieldToMatch</code>. The maximum length of the value is 50 bytes.</p> <p>Valid values depend on the values that you specified for <code>FieldToMatch</code>:</p> <ul> <li> <p> <code>HEADER</code>: The value that you want AWS WAF to search for in the request header that you specified in <a>FieldToMatch</a>, for example, the value of the <code>User-Agent</code> or <code>Referer</code> header.</p> </li> <li> <p> <code>METHOD</code>: The HTTP method, which indicates the type of operation specified in the request. CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>.</p> </li> <li> <p> <code>QUERY_STRING</code>: The value that you want AWS WAF to search for in the query string, which is the part of a URL that appears after a <code>?</code> character.</p> </li> <li> <p> <code>URI</code>: The value that you want AWS WAF to search for in the part of a URL that identifies a resource, for example, <code>/images/daily-ad.jpg</code>.</p> </li> <li> <p> <code>BODY</code>: The part of a request that contains any additional data that you want to send to your web server as the HTTP request body, such as data from a form. The request body immediately follows the request headers. Note that only the first <code>8192</code> bytes of the request body are forwarded to AWS WAF for inspection. To allow or block requests based on the length of the body, you can create a size constraint set. For more information, see <a>CreateSizeConstraintSet</a>. </p> </li> </ul> <p>If <code>TargetString</code> includes alphabetic characters A-Z and a-z, note that the value is case sensitive.</p> <p> <b>If you're using the AWS WAF API</b> </p> <p>Specify a base64-encoded version of the value. The maximum length of the value before you base64-encode it is 50 bytes.</p> <p>For example, suppose the value of <code>Type</code> is <code>HEADER</code> and the value of <code>Data</code> is <code>User-Agent</code>. If you want to search the <code>User-Agent</code> header for the value <code>BadBot</code>, you base64-encode <code>BadBot</code> using MIME base64 encoding and include the resulting value, <code>QmFkQm90</code>, in the value of <code>TargetString</code>.</p> <p> <b>If you're using the AWS CLI or one of the AWS SDKs</b> </p> <p>The value that you want AWS WAF to search for. The SDK automatically base64 encodes the value.</p>
+-- * PositionalConstraint [PositionalConstraint] <p>Within the portion of a web request that you want to search (for example, in the query string, if any), specify where you want AWS WAF to search. Valid values include the following:</p> <p> <b>CONTAINS</b> </p> <p>The specified part of the web request must include the value of <code>TargetString</code>, but the location doesn't matter.</p> <p> <b>CONTAINS_WORD</b> </p> <p>The specified part of the web request must include the value of <code>TargetString</code>, and <code>TargetString</code> must contain only alphanumeric characters or underscore (A-Z, a-z, 0-9, or _). In addition, <code>TargetString</code> must be a word, which means one of the following:</p> <ul> <li> <p> <code>TargetString</code> exactly matches the value of the specified part of the web request, such as the value of a header.</p> </li> <li> <p> <code>TargetString</code> is at the beginning of the specified part of the web request and is followed by a character other than an alphanumeric character or underscore (_), for example, <code>BadBot;</code>.</p> </li> <li> <p> <code>TargetString</code> is at the end of the specified part of the web request and is preceded by a character other than an alphanumeric character or underscore (_), for example, <code>;BadBot</code>.</p> </li> <li> <p> <code>TargetString</code> is in the middle of the specified part of the web request and is preceded and followed by characters other than alphanumeric characters or underscore (_), for example, <code>-BadBot;</code>.</p> </li> </ul> <p> <b>EXACTLY</b> </p> <p>The value of the specified part of the web request must exactly match the value of <code>TargetString</code>.</p> <p> <b>STARTS_WITH</b> </p> <p>The value of <code>TargetString</code> must appear at the beginning of the specified part of the web request.</p> <p> <b>ENDS_WITH</b> </p> <p>The value of <code>TargetString</code> must appear at the end of the specified part of the web request.</p>
+-- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>TargetString</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
+-- * FieldToMatch [FieldToMatch] <p>The part of a web request that you want AWS WAF to search, such as a specified header or a query string. For more information, see <a>FieldToMatch</a>.</p>
+-- Required key: FieldToMatch
+-- Required key: TargetString
+-- Required key: TextTransformation
+-- Required key: PositionalConstraint
+-- @return ByteMatchTuple structure as a key-value pair table
+function M.ByteMatchTuple(args)
+	assert(args, "You must provdide an argument table when creating ByteMatchTuple")
 	local t = { 
-		["TargetString"] = _TargetString,
-		["PositionalConstraint"] = _PositionalConstraint,
-		["TextTransformation"] = _TextTransformation,
-		["FieldToMatch"] = _FieldToMatch,
+		["TargetString"] = args["TargetString"],
+		["PositionalConstraint"] = args["PositionalConstraint"],
+		["TextTransformation"] = args["TextTransformation"],
+		["FieldToMatch"] = args["FieldToMatch"],
 	}
 	asserts.AssertByteMatchTuple(t)
 	return t
@@ -843,15 +927,18 @@ end
 
 --- Create a structure of type GetSampledRequestsResponse
 --  
--- @param _TimeWindow [TimeWindow] <p>Usually, <code>TimeWindow</code> is the time range that you specified in the <code>GetSampledRequests</code> request. However, if your AWS resource received more than 5,000 requests during the time range that you specified in the request, <code>GetSampledRequests</code> returns the time range for the first 5,000 requests.</p>
--- @param _SampledRequests [SampledHTTPRequests] <p>A complex type that contains detailed information about each of the requests in the sample.</p>
--- @param _PopulationSize [PopulationSize] <p>The total number of requests from which <code>GetSampledRequests</code> got a sample of <code>MaxItems</code> requests. If <code>PopulationSize</code> is less than <code>MaxItems</code>, the sample includes every request that your AWS resource received during the specified time range.</p>
-function M.GetSampledRequestsResponse(_TimeWindow, _SampledRequests, _PopulationSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSampledRequestsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TimeWindow [TimeWindow] <p>Usually, <code>TimeWindow</code> is the time range that you specified in the <code>GetSampledRequests</code> request. However, if your AWS resource received more than 5,000 requests during the time range that you specified in the request, <code>GetSampledRequests</code> returns the time range for the first 5,000 requests.</p>
+-- * SampledRequests [SampledHTTPRequests] <p>A complex type that contains detailed information about each of the requests in the sample.</p>
+-- * PopulationSize [PopulationSize] <p>The total number of requests from which <code>GetSampledRequests</code> got a sample of <code>MaxItems</code> requests. If <code>PopulationSize</code> is less than <code>MaxItems</code>, the sample includes every request that your AWS resource received during the specified time range.</p>
+-- @return GetSampledRequestsResponse structure as a key-value pair table
+function M.GetSampledRequestsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSampledRequestsResponse")
 	local t = { 
-		["TimeWindow"] = _TimeWindow,
-		["SampledRequests"] = _SampledRequests,
-		["PopulationSize"] = _PopulationSize,
+		["TimeWindow"] = args["TimeWindow"],
+		["SampledRequests"] = args["SampledRequests"],
+		["PopulationSize"] = args["PopulationSize"],
 	}
 	asserts.AssertGetSampledRequestsResponse(t)
 	return t
@@ -873,15 +960,18 @@ end
 
 --- Create a structure of type IPSetDescriptor
 -- <p>Specifies the IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR format) that web requests originate from.</p>
--- @param _Type [IPSetDescriptorType] <p>Specify <code>IPV4</code> or <code>IPV6</code>.</p>
--- @param _Value [IPSetDescriptorValue] <p>Specify an IPv4 address by using CIDR notation. For example:</p> <ul> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> </ul> <p>For more information about CIDR notation, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-Domain Routing</a>.</p> <p>Specify an IPv6 address by using CIDR notation. For example:</p> <ul> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul>
--- Required parameter: Type
--- Required parameter: Value
-function M.IPSetDescriptor(_Type, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IPSetDescriptor")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [IPSetDescriptorType] <p>Specify <code>IPV4</code> or <code>IPV6</code>.</p>
+-- * Value [IPSetDescriptorValue] <p>Specify an IPv4 address by using CIDR notation. For example:</p> <ul> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from the IP address 192.0.2.44, specify <code>192.0.2.44/32</code>.</p> </li> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify <code>192.0.2.0/24</code>.</p> </li> </ul> <p>For more information about CIDR notation, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-Domain Routing</a>.</p> <p>Specify an IPv6 address by using CIDR notation. For example:</p> <ul> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify <code>1111:0000:0000:0000:0000:0000:0000:0111/128</code>.</p> </li> <li> <p>To configure AWS WAF to allow, block, or count requests that originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify <code>1111:0000:0000:0000:0000:0000:0000:0000/64</code>.</p> </li> </ul>
+-- Required key: Type
+-- Required key: Value
+-- @return IPSetDescriptor structure as a key-value pair table
+function M.IPSetDescriptor(args)
+	assert(args, "You must provdide an argument table when creating IPSetDescriptor")
 	local t = { 
-		["Type"] = _Type,
-		["Value"] = _Value,
+		["Type"] = args["Type"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertIPSetDescriptor(t)
 	return t
@@ -900,11 +990,14 @@ end
 
 --- Create a structure of type WAFDisallowedNameException
 -- <p>The name specified is invalid.</p>
--- @param _message [errorMessage] 
-function M.WAFDisallowedNameException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFDisallowedNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return WAFDisallowedNameException structure as a key-value pair table
+function M.WAFDisallowedNameException(args)
+	assert(args, "You must provdide an argument table when creating WAFDisallowedNameException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertWAFDisallowedNameException(t)
 	return t
@@ -924,12 +1017,15 @@ end
 
 --- Create a structure of type GetSqlInjectionMatchSetRequest
 -- <p>A request to get a <a>SqlInjectionMatchSet</a>.</p>
--- @param _SqlInjectionMatchSetId [ResourceId] <p>The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to get. <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
--- Required parameter: SqlInjectionMatchSetId
-function M.GetSqlInjectionMatchSetRequest(_SqlInjectionMatchSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSqlInjectionMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SqlInjectionMatchSetId [ResourceId] <p>The <code>SqlInjectionMatchSetId</code> of the <a>SqlInjectionMatchSet</a> that you want to get. <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
+-- Required key: SqlInjectionMatchSetId
+-- @return GetSqlInjectionMatchSetRequest structure as a key-value pair table
+function M.GetSqlInjectionMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSqlInjectionMatchSetRequest")
 	local t = { 
-		["SqlInjectionMatchSetId"] = _SqlInjectionMatchSetId,
+		["SqlInjectionMatchSetId"] = args["SqlInjectionMatchSetId"],
 	}
 	asserts.AssertGetSqlInjectionMatchSetRequest(t)
 	return t
@@ -949,13 +1045,16 @@ end
 
 --- Create a structure of type CreateXssMatchSetResponse
 -- <p>The response to a <code>CreateXssMatchSet</code> request.</p>
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @param _XssMatchSet [XssMatchSet] <p>An <a>XssMatchSet</a>.</p>
-function M.CreateXssMatchSetResponse(_ChangeToken, _XssMatchSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateXssMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- * XssMatchSet [XssMatchSet] <p>An <a>XssMatchSet</a>.</p>
+-- @return CreateXssMatchSetResponse structure as a key-value pair table
+function M.CreateXssMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateXssMatchSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["XssMatchSet"] = _XssMatchSet,
+		["ChangeToken"] = args["ChangeToken"],
+		["XssMatchSet"] = args["XssMatchSet"],
 	}
 	asserts.AssertCreateXssMatchSetResponse(t)
 	return t
@@ -975,12 +1074,15 @@ end
 
 --- Create a structure of type GetRuleRequest
 --  
--- @param _RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>Rule</a> that you want to get. <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
--- Required parameter: RuleId
-function M.GetRuleRequest(_RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>Rule</a> that you want to get. <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
+-- Required key: RuleId
+-- @return GetRuleRequest structure as a key-value pair table
+function M.GetRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating GetRuleRequest")
 	local t = { 
-		["RuleId"] = _RuleId,
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertGetRuleRequest(t)
 	return t
@@ -999,11 +1101,14 @@ end
 
 --- Create a structure of type GetSqlInjectionMatchSetResponse
 -- <p>The response to a <a>GetSqlInjectionMatchSet</a> request.</p>
--- @param _SqlInjectionMatchSet [SqlInjectionMatchSet] <p>Information about the <a>SqlInjectionMatchSet</a> that you specified in the <code>GetSqlInjectionMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>SqlInjectionMatchSet</a>: Contains <code>Name</code>, <code>SqlInjectionMatchSetId</code>, and an array of <code>SqlInjectionMatchTuple</code> objects</p> </li> <li> <p> <a>SqlInjectionMatchTuple</a>: Each <code>SqlInjectionMatchTuple</code> object contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
-function M.GetSqlInjectionMatchSetResponse(_SqlInjectionMatchSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSqlInjectionMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SqlInjectionMatchSet [SqlInjectionMatchSet] <p>Information about the <a>SqlInjectionMatchSet</a> that you specified in the <code>GetSqlInjectionMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>SqlInjectionMatchSet</a>: Contains <code>Name</code>, <code>SqlInjectionMatchSetId</code>, and an array of <code>SqlInjectionMatchTuple</code> objects</p> </li> <li> <p> <a>SqlInjectionMatchTuple</a>: Each <code>SqlInjectionMatchTuple</code> object contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- @return GetSqlInjectionMatchSetResponse structure as a key-value pair table
+function M.GetSqlInjectionMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSqlInjectionMatchSetResponse")
 	local t = { 
-		["SqlInjectionMatchSet"] = _SqlInjectionMatchSet,
+		["SqlInjectionMatchSet"] = args["SqlInjectionMatchSet"],
 	}
 	asserts.AssertGetSqlInjectionMatchSetResponse(t)
 	return t
@@ -1022,11 +1127,14 @@ end
 
 --- Create a structure of type UpdateXssMatchSetResponse
 -- <p>The response to an <a>UpdateXssMatchSets</a> request.</p>
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.UpdateXssMatchSetResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateXssMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateXssMatchSetResponse structure as a key-value pair table
+function M.UpdateXssMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateXssMatchSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertUpdateXssMatchSetResponse(t)
 	return t
@@ -1048,15 +1156,18 @@ end
 
 --- Create a structure of type XssMatchSetSummary
 -- <p>The <code>Id</code> and <code>Name</code> of an <code>XssMatchSet</code>.</p>
--- @param _XssMatchSetId [ResourceId] <p>A unique identifier for an <code>XssMatchSet</code>. You use <code>XssMatchSetId</code> to get information about a <code>XssMatchSet</code> (see <a>GetXssMatchSet</a>), update an <code>XssMatchSet</code> (see <a>UpdateXssMatchSet</a>), insert an <code>XssMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>XssMatchSet</code> from AWS WAF (see <a>DeleteXssMatchSet</a>).</p> <p> <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
--- @param _Name [ResourceName] <p>The name of the <code>XssMatchSet</code>, if any, specified by <code>Id</code>.</p>
--- Required parameter: XssMatchSetId
--- Required parameter: Name
-function M.XssMatchSetSummary(_XssMatchSetId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating XssMatchSetSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * XssMatchSetId [ResourceId] <p>A unique identifier for an <code>XssMatchSet</code>. You use <code>XssMatchSetId</code> to get information about a <code>XssMatchSet</code> (see <a>GetXssMatchSet</a>), update an <code>XssMatchSet</code> (see <a>UpdateXssMatchSet</a>), insert an <code>XssMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>XssMatchSet</code> from AWS WAF (see <a>DeleteXssMatchSet</a>).</p> <p> <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
+-- * Name [ResourceName] <p>The name of the <code>XssMatchSet</code>, if any, specified by <code>Id</code>.</p>
+-- Required key: XssMatchSetId
+-- Required key: Name
+-- @return XssMatchSetSummary structure as a key-value pair table
+function M.XssMatchSetSummary(args)
+	assert(args, "You must provdide an argument table when creating XssMatchSetSummary")
 	local t = { 
-		["XssMatchSetId"] = _XssMatchSetId,
-		["Name"] = _Name,
+		["XssMatchSetId"] = args["XssMatchSetId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertXssMatchSetSummary(t)
 	return t
@@ -1076,13 +1187,16 @@ end
 
 --- Create a structure of type ListXssMatchSetsResponse
 -- <p>The response to a <a>ListXssMatchSets</a> request.</p>
--- @param _XssMatchSets [XssMatchSetSummaries] <p>An array of <a>XssMatchSetSummary</a> objects.</p>
--- @param _NextMarker [NextMarker] <p>If you have more <a>XssMatchSet</a> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>XssMatchSet</code> objects, submit another <code>ListXssMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
-function M.ListXssMatchSetsResponse(_XssMatchSets, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListXssMatchSetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * XssMatchSets [XssMatchSetSummaries] <p>An array of <a>XssMatchSetSummary</a> objects.</p>
+-- * NextMarker [NextMarker] <p>If you have more <a>XssMatchSet</a> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>XssMatchSet</code> objects, submit another <code>ListXssMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @return ListXssMatchSetsResponse structure as a key-value pair table
+function M.ListXssMatchSetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListXssMatchSetsResponse")
 	local t = { 
-		["XssMatchSets"] = _XssMatchSets,
-		["NextMarker"] = _NextMarker,
+		["XssMatchSets"] = args["XssMatchSets"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertListXssMatchSetsResponse(t)
 	return t
@@ -1105,17 +1219,20 @@ end
 
 --- Create a structure of type ByteMatchSet
 -- <p>In a <a>GetByteMatchSet</a> request, <code>ByteMatchSet</code> is a complex type that contains the <code>ByteMatchSetId</code> and <code>Name</code> of a <code>ByteMatchSet</code>, and the values that you specified when you updated the <code>ByteMatchSet</code>. </p> <p>A complex type that contains <code>ByteMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect and the values that you want AWS WAF to search for. If a <code>ByteMatchSet</code> contains more than one <code>ByteMatchTuple</code> object, a request needs to match the settings in only one <code>ByteMatchTuple</code> to be considered a match.</p>
--- @param _ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> for a <code>ByteMatchSet</code>. You use <code>ByteMatchSetId</code> to get information about a <code>ByteMatchSet</code> (see <a>GetByteMatchSet</a>), update a <code>ByteMatchSet</code> (see <a>UpdateByteMatchSet</a>), insert a <code>ByteMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>ByteMatchSet</code> from AWS WAF (see <a>DeleteByteMatchSet</a>).</p> <p> <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a <code>ByteMatchSet</code>.</p>
--- @param _ByteMatchTuples [ByteMatchTuples] <p>Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.</p>
--- Required parameter: ByteMatchSetId
--- Required parameter: ByteMatchTuples
-function M.ByteMatchSet(_ByteMatchSetId, _Name, _ByteMatchTuples, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ByteMatchSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> for a <code>ByteMatchSet</code>. You use <code>ByteMatchSetId</code> to get information about a <code>ByteMatchSet</code> (see <a>GetByteMatchSet</a>), update a <code>ByteMatchSet</code> (see <a>UpdateByteMatchSet</a>), insert a <code>ByteMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>ByteMatchSet</code> from AWS WAF (see <a>DeleteByteMatchSet</a>).</p> <p> <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a <code>ByteMatchSet</code>.</p>
+-- * ByteMatchTuples [ByteMatchTuples] <p>Specifies the bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.</p>
+-- Required key: ByteMatchSetId
+-- Required key: ByteMatchTuples
+-- @return ByteMatchSet structure as a key-value pair table
+function M.ByteMatchSet(args)
+	assert(args, "You must provdide an argument table when creating ByteMatchSet")
 	local t = { 
-		["ByteMatchSetId"] = _ByteMatchSetId,
-		["Name"] = _Name,
-		["ByteMatchTuples"] = _ByteMatchTuples,
+		["ByteMatchSetId"] = args["ByteMatchSetId"],
+		["Name"] = args["Name"],
+		["ByteMatchTuples"] = args["ByteMatchTuples"],
 	}
 	asserts.AssertByteMatchSet(t)
 	return t
@@ -1135,12 +1252,15 @@ end
 
 --- Create a structure of type GetRateBasedRuleRequest
 --  
--- @param _RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>RateBasedRule</a> that you want to get. <code>RuleId</code> is returned by <a>CreateRateBasedRule</a> and by <a>ListRateBasedRules</a>.</p>
--- Required parameter: RuleId
-function M.GetRateBasedRuleRequest(_RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRateBasedRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>RateBasedRule</a> that you want to get. <code>RuleId</code> is returned by <a>CreateRateBasedRule</a> and by <a>ListRateBasedRules</a>.</p>
+-- Required key: RuleId
+-- @return GetRateBasedRuleRequest structure as a key-value pair table
+function M.GetRateBasedRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating GetRateBasedRuleRequest")
 	local t = { 
-		["RuleId"] = _RuleId,
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertGetRateBasedRuleRequest(t)
 	return t
@@ -1164,19 +1284,22 @@ end
 
 --- Create a structure of type SampledHTTPRequest
 -- <p>The response from a <a>GetSampledRequests</a> request includes a <code>SampledHTTPRequests</code> complex type that appears as <code>SampledRequests</code> in the response syntax. <code>SampledHTTPRequests</code> contains one <code>SampledHTTPRequest</code> object for each web request that is returned by <code>GetSampledRequests</code>.</p>
--- @param _Action [Action] <p>The action for the <code>Rule</code> that the request matched: <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p>
--- @param _Timestamp [Timestamp] <p>The time at which AWS WAF received the request from your AWS resource, in Unix time format (in seconds).</p>
--- @param _Request [HTTPRequest] <p>A complex type that contains detailed information about the request.</p>
--- @param _Weight [SampleWeight] <p>A value that indicates how one result in the response relates proportionally to other results in the response. A result that has a weight of <code>2</code> represents roughly twice as many CloudFront web requests as a result that has a weight of <code>1</code>.</p>
--- Required parameter: Request
--- Required parameter: Weight
-function M.SampledHTTPRequest(_Action, _Timestamp, _Request, _Weight, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SampledHTTPRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [Action] <p>The action for the <code>Rule</code> that the request matched: <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p>
+-- * Timestamp [Timestamp] <p>The time at which AWS WAF received the request from your AWS resource, in Unix time format (in seconds).</p>
+-- * Request [HTTPRequest] <p>A complex type that contains detailed information about the request.</p>
+-- * Weight [SampleWeight] <p>A value that indicates how one result in the response relates proportionally to other results in the response. A result that has a weight of <code>2</code> represents roughly twice as many CloudFront web requests as a result that has a weight of <code>1</code>.</p>
+-- Required key: Request
+-- Required key: Weight
+-- @return SampledHTTPRequest structure as a key-value pair table
+function M.SampledHTTPRequest(args)
+	assert(args, "You must provdide an argument table when creating SampledHTTPRequest")
 	local t = { 
-		["Action"] = _Action,
-		["Timestamp"] = _Timestamp,
-		["Request"] = _Request,
-		["Weight"] = _Weight,
+		["Action"] = args["Action"],
+		["Timestamp"] = args["Timestamp"],
+		["Request"] = args["Request"],
+		["Weight"] = args["Weight"],
 	}
 	asserts.AssertSampledHTTPRequest(t)
 	return t
@@ -1195,11 +1318,14 @@ end
 
 --- Create a structure of type WAFInternalErrorException
 -- <p>The operation failed because of a system problem, even though the request was valid. Retry your request.</p>
--- @param _message [errorMessage] 
-function M.WAFInternalErrorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFInternalErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return WAFInternalErrorException structure as a key-value pair table
+function M.WAFInternalErrorException(args)
+	assert(args, "You must provdide an argument table when creating WAFInternalErrorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertWAFInternalErrorException(t)
 	return t
@@ -1221,15 +1347,18 @@ end
 
 --- Create a structure of type SqlInjectionMatchTuple
 -- <p>Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.</p>
--- @param _TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
--- @param _FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for snippets of malicious SQL code.</p>
--- Required parameter: FieldToMatch
--- Required parameter: TextTransformation
-function M.SqlInjectionMatchTuple(_TextTransformation, _FieldToMatch, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SqlInjectionMatchTuple")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TextTransformation [TextTransformation] <p>Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF. If you specify a transformation, AWS WAF performs the transformation on <code>FieldToMatch</code> before inspecting a request for a match.</p> <p> <b>CMD_LINE</b> </p> <p>When you're concerned that attackers are injecting an operating system commandline command and using unusual formatting to disguise some or all of the command, use this option to perform the following transformations:</p> <ul> <li> <p>Delete the following characters: \ " ' ^</p> </li> <li> <p>Delete spaces before the following characters: / (</p> </li> <li> <p>Replace the following characters with a space: , ;</p> </li> <li> <p>Replace multiple spaces with one space</p> </li> <li> <p>Convert uppercase letters (A-Z) to lowercase (a-z)</p> </li> </ul> <p> <b>COMPRESS_WHITE_SPACE</b> </p> <p>Use this option to replace the following characters with a space character (decimal 32):</p> <ul> <li> <p>\f, formfeed, decimal 12</p> </li> <li> <p>\t, tab, decimal 9</p> </li> <li> <p>\n, newline, decimal 10</p> </li> <li> <p>\r, carriage return, decimal 13</p> </li> <li> <p>\v, vertical tab, decimal 11</p> </li> <li> <p>non-breaking space, decimal 160</p> </li> </ul> <p> <code>COMPRESS_WHITE_SPACE</code> also replaces multiple spaces with one space.</p> <p> <b>HTML_ENTITY_DECODE</b> </p> <p>Use this option to replace HTML-encoded characters with unencoded characters. <code>HTML_ENTITY_DECODE</code> performs the following operations:</p> <ul> <li> <p>Replaces <code>(ampersand)quot;</code> with <code>"</code> </p> </li> <li> <p>Replaces <code>(ampersand)nbsp;</code> with a non-breaking space, decimal 160</p> </li> <li> <p>Replaces <code>(ampersand)lt;</code> with a "less than" symbol</p> </li> <li> <p>Replaces <code>(ampersand)gt;</code> with <code>&gt;</code> </p> </li> <li> <p>Replaces characters that are represented in hexadecimal format, <code>(ampersand)#xhhhh;</code>, with the corresponding characters</p> </li> <li> <p>Replaces characters that are represented in decimal format, <code>(ampersand)#nnnn;</code>, with the corresponding characters</p> </li> </ul> <p> <b>LOWERCASE</b> </p> <p>Use this option to convert uppercase letters (A-Z) to lowercase (a-z).</p> <p> <b>URL_DECODE</b> </p> <p>Use this option to decode a URL-encoded value.</p> <p> <b>NONE</b> </p> <p>Specify <code>NONE</code> if you don't want to perform any text transformations.</p>
+-- * FieldToMatch [FieldToMatch] <p>Specifies where in a web request to look for snippets of malicious SQL code.</p>
+-- Required key: FieldToMatch
+-- Required key: TextTransformation
+-- @return SqlInjectionMatchTuple structure as a key-value pair table
+function M.SqlInjectionMatchTuple(args)
+	assert(args, "You must provdide an argument table when creating SqlInjectionMatchTuple")
 	local t = { 
-		["TextTransformation"] = _TextTransformation,
-		["FieldToMatch"] = _FieldToMatch,
+		["TextTransformation"] = args["TextTransformation"],
+		["FieldToMatch"] = args["FieldToMatch"],
 	}
 	asserts.AssertSqlInjectionMatchTuple(t)
 	return t
@@ -1248,11 +1377,14 @@ end
 
 --- Create a structure of type GetRateBasedRuleResponse
 --  
--- @param _Rule [RateBasedRule] <p>Information about the <a>RateBasedRule</a> that you specified in the <code>GetRateBasedRule</code> request.</p>
-function M.GetRateBasedRuleResponse(_Rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRateBasedRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rule [RateBasedRule] <p>Information about the <a>RateBasedRule</a> that you specified in the <code>GetRateBasedRule</code> request.</p>
+-- @return GetRateBasedRuleResponse structure as a key-value pair table
+function M.GetRateBasedRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating GetRateBasedRuleResponse")
 	local t = { 
-		["Rule"] = _Rule,
+		["Rule"] = args["Rule"],
 	}
 	asserts.AssertGetRateBasedRuleResponse(t)
 	return t
@@ -1276,18 +1408,21 @@ end
 
 --- Create a structure of type UpdateSqlInjectionMatchSetRequest
 -- <p>A request to update a <a>SqlInjectionMatchSet</a>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Updates [SqlInjectionMatchSetUpdates] <p>An array of <code>SqlInjectionMatchSetUpdate</code> objects that you want to insert into or delete from a <a>SqlInjectionMatchSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>SqlInjectionMatchSetUpdate</a>: Contains <code>Action</code> and <code>SqlInjectionMatchTuple</code> </p> </li> <li> <p> <a>SqlInjectionMatchTuple</a>: Contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
--- @param _SqlInjectionMatchSetId [ResourceId] <p>The <code>SqlInjectionMatchSetId</code> of the <code>SqlInjectionMatchSet</code> that you want to update. <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
--- Required parameter: SqlInjectionMatchSetId
--- Required parameter: ChangeToken
--- Required parameter: Updates
-function M.UpdateSqlInjectionMatchSetRequest(_ChangeToken, _Updates, _SqlInjectionMatchSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSqlInjectionMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Updates [SqlInjectionMatchSetUpdates] <p>An array of <code>SqlInjectionMatchSetUpdate</code> objects that you want to insert into or delete from a <a>SqlInjectionMatchSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>SqlInjectionMatchSetUpdate</a>: Contains <code>Action</code> and <code>SqlInjectionMatchTuple</code> </p> </li> <li> <p> <a>SqlInjectionMatchTuple</a>: Contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- * SqlInjectionMatchSetId [ResourceId] <p>The <code>SqlInjectionMatchSetId</code> of the <code>SqlInjectionMatchSet</code> that you want to update. <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
+-- Required key: SqlInjectionMatchSetId
+-- Required key: ChangeToken
+-- Required key: Updates
+-- @return UpdateSqlInjectionMatchSetRequest structure as a key-value pair table
+function M.UpdateSqlInjectionMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateSqlInjectionMatchSetRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["Updates"] = _Updates,
-		["SqlInjectionMatchSetId"] = _SqlInjectionMatchSetId,
+		["ChangeToken"] = args["ChangeToken"],
+		["Updates"] = args["Updates"],
+		["SqlInjectionMatchSetId"] = args["SqlInjectionMatchSetId"],
 	}
 	asserts.AssertUpdateSqlInjectionMatchSetRequest(t)
 	return t
@@ -1306,11 +1441,14 @@ end
 
 --- Create a structure of type WAFInvalidOperationException
 -- <p>The operation failed because there was nothing to do. For example:</p> <ul> <li> <p>You tried to remove a <code>Rule</code> from a <code>WebACL</code>, but the <code>Rule</code> isn't in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to remove an IP address from an <code>IPSet</code>, but the IP address isn't in the specified <code>IPSet</code>.</p> </li> <li> <p>You tried to remove a <code>ByteMatchTuple</code> from a <code>ByteMatchSet</code>, but the <code>ByteMatchTuple</code> isn't in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to add a <code>Rule</code> to a <code>WebACL</code>, but the <code>Rule</code> already exists in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to add an IP address to an <code>IPSet</code>, but the IP address already exists in the specified <code>IPSet</code>.</p> </li> <li> <p>You tried to add a <code>ByteMatchTuple</code> to a <code>ByteMatchSet</code>, but the <code>ByteMatchTuple</code> already exists in the specified <code>WebACL</code>.</p> </li> </ul>
--- @param _message [errorMessage] 
-function M.WAFInvalidOperationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFInvalidOperationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return WAFInvalidOperationException structure as a key-value pair table
+function M.WAFInvalidOperationException(args)
+	assert(args, "You must provdide an argument table when creating WAFInvalidOperationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertWAFInvalidOperationException(t)
 	return t
@@ -1330,13 +1468,16 @@ end
 
 --- Create a structure of type CreateByteMatchSetResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @param _ByteMatchSet [ByteMatchSet] <p>A <a>ByteMatchSet</a> that contains no <code>ByteMatchTuple</code> objects.</p>
-function M.CreateByteMatchSetResponse(_ChangeToken, _ByteMatchSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateByteMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- * ByteMatchSet [ByteMatchSet] <p>A <a>ByteMatchSet</a> that contains no <code>ByteMatchTuple</code> objects.</p>
+-- @return CreateByteMatchSetResponse structure as a key-value pair table
+function M.CreateByteMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateByteMatchSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["ByteMatchSet"] = _ByteMatchSet,
+		["ChangeToken"] = args["ChangeToken"],
+		["ByteMatchSet"] = args["ByteMatchSet"],
 	}
 	asserts.AssertCreateByteMatchSetResponse(t)
 	return t
@@ -1355,11 +1496,14 @@ end
 
 --- Create a structure of type GetByteMatchSetResponse
 --  
--- @param _ByteMatchSet [ByteMatchSet] <p>Information about the <a>ByteMatchSet</a> that you specified in the <code>GetByteMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>ByteMatchSet</a>: Contains <code>ByteMatchSetId</code>, <code>ByteMatchTuples</code>, and <code>Name</code> </p> </li> <li> <p> <code>ByteMatchTuples</code>: Contains an array of <a>ByteMatchTuple</a> objects. Each <code>ByteMatchTuple</code> object contains <a>FieldToMatch</a>, <code>PositionalConstraint</code>, <code>TargetString</code>, and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
-function M.GetByteMatchSetResponse(_ByteMatchSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetByteMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ByteMatchSet [ByteMatchSet] <p>Information about the <a>ByteMatchSet</a> that you specified in the <code>GetByteMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>ByteMatchSet</a>: Contains <code>ByteMatchSetId</code>, <code>ByteMatchTuples</code>, and <code>Name</code> </p> </li> <li> <p> <code>ByteMatchTuples</code>: Contains an array of <a>ByteMatchTuple</a> objects. Each <code>ByteMatchTuple</code> object contains <a>FieldToMatch</a>, <code>PositionalConstraint</code>, <code>TargetString</code>, and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- @return GetByteMatchSetResponse structure as a key-value pair table
+function M.GetByteMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating GetByteMatchSetResponse")
 	local t = { 
-		["ByteMatchSet"] = _ByteMatchSet,
+		["ByteMatchSet"] = args["ByteMatchSet"],
 	}
 	asserts.AssertGetByteMatchSetResponse(t)
 	return t
@@ -1378,11 +1522,14 @@ end
 
 --- Create a structure of type GetChangeTokenResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used in the request. Use this value in a <code>GetChangeTokenStatus</code> request to get the current status of the request. </p>
-function M.GetChangeTokenResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetChangeTokenResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used in the request. Use this value in a <code>GetChangeTokenStatus</code> request to get the current status of the request. </p>
+-- @return GetChangeTokenResponse structure as a key-value pair table
+function M.GetChangeTokenResponse(args)
+	assert(args, "You must provdide an argument table when creating GetChangeTokenResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertGetChangeTokenResponse(t)
 	return t
@@ -1401,11 +1548,14 @@ end
 
 --- Create a structure of type WAFReferencedItemException
 -- <p>The operation failed because you tried to delete an object that is still in use. For example:</p> <ul> <li> <p>You tried to delete a <code>ByteMatchSet</code> that is still referenced by a <code>Rule</code>.</p> </li> <li> <p>You tried to delete a <code>Rule</code> that is still referenced by a <code>WebACL</code>.</p> </li> </ul>
--- @param _message [errorMessage] 
-function M.WAFReferencedItemException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFReferencedItemException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return WAFReferencedItemException structure as a key-value pair table
+function M.WAFReferencedItemException(args)
+	assert(args, "You must provdide an argument table when creating WAFReferencedItemException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertWAFReferencedItemException(t)
 	return t
@@ -1431,22 +1581,25 @@ end
 
 --- Create a structure of type WebACL
 -- <p>Contains the <code>Rules</code> that identify the requests that you want to allow, block, or count. In a <code>WebACL</code>, you also specify a default action (<code>ALLOW</code> or <code>BLOCK</code>), and the action for each <code>Rule</code> that you add to a <code>WebACL</code>, for example, block requests from specified IP addresses or block requests from specified referrers. You also associate the <code>WebACL</code> with a CloudFront distribution to identify the requests that you want AWS WAF to filter. If you add more than one <code>Rule</code> to a <code>WebACL</code>, a request needs to match only one of the specifications to be allowed, blocked, or counted. For more information, see <a>UpdateWebACL</a>.</p>
--- @param _DefaultAction [WafAction] <p>The action to perform if none of the <code>Rules</code> contained in the <code>WebACL</code> match. The action is specified by the <a>WafAction</a> object.</p>
--- @param _Rules [ActivatedRules] <p>An array that contains the action for each <code>Rule</code> in a <code>WebACL</code>, the priority of the <code>Rule</code>, and the ID of the <code>Rule</code>.</p>
--- @param _MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you create the <code>WebACL</code>.</p>
--- @param _WebACLId [ResourceId] <p>A unique identifier for a <code>WebACL</code>. You use <code>WebACLId</code> to get information about a <code>WebACL</code> (see <a>GetWebACL</a>), update a <code>WebACL</code> (see <a>UpdateWebACL</a>), and delete a <code>WebACL</code> from AWS WAF (see <a>DeleteWebACL</a>).</p> <p> <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <code>WebACL</code>. You can't change the name of a <code>WebACL</code> after you create it.</p>
--- Required parameter: WebACLId
--- Required parameter: DefaultAction
--- Required parameter: Rules
-function M.WebACL(_DefaultAction, _Rules, _MetricName, _WebACLId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WebACL")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DefaultAction [WafAction] <p>The action to perform if none of the <code>Rules</code> contained in the <code>WebACL</code> match. The action is specified by the <a>WafAction</a> object.</p>
+-- * Rules [ActivatedRules] <p>An array that contains the action for each <code>Rule</code> in a <code>WebACL</code>, the priority of the <code>Rule</code>, and the ID of the <code>Rule</code>.</p>
+-- * MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you create the <code>WebACL</code>.</p>
+-- * WebACLId [ResourceId] <p>A unique identifier for a <code>WebACL</code>. You use <code>WebACLId</code> to get information about a <code>WebACL</code> (see <a>GetWebACL</a>), update a <code>WebACL</code> (see <a>UpdateWebACL</a>), and delete a <code>WebACL</code> from AWS WAF (see <a>DeleteWebACL</a>).</p> <p> <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <code>WebACL</code>. You can't change the name of a <code>WebACL</code> after you create it.</p>
+-- Required key: WebACLId
+-- Required key: DefaultAction
+-- Required key: Rules
+-- @return WebACL structure as a key-value pair table
+function M.WebACL(args)
+	assert(args, "You must provdide an argument table when creating WebACL")
 	local t = { 
-		["DefaultAction"] = _DefaultAction,
-		["Rules"] = _Rules,
-		["MetricName"] = _MetricName,
-		["WebACLId"] = _WebACLId,
-		["Name"] = _Name,
+		["DefaultAction"] = args["DefaultAction"],
+		["Rules"] = args["Rules"],
+		["MetricName"] = args["MetricName"],
+		["WebACLId"] = args["WebACLId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertWebACL(t)
 	return t
@@ -1466,13 +1619,16 @@ end
 
 --- Create a structure of type ListWebACLsResponse
 --  
--- @param _NextMarker [NextMarker] <p>If you have more <code>WebACL</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>WebACL</code> objects, submit another <code>ListWebACLs</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
--- @param _WebACLs [WebACLSummaries] <p>An array of <a>WebACLSummary</a> objects.</p>
-function M.ListWebACLsResponse(_NextMarker, _WebACLs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListWebACLsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you have more <code>WebACL</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>WebACL</code> objects, submit another <code>ListWebACLs</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- * WebACLs [WebACLSummaries] <p>An array of <a>WebACLSummary</a> objects.</p>
+-- @return ListWebACLsResponse structure as a key-value pair table
+function M.ListWebACLsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListWebACLsResponse")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["WebACLs"] = _WebACLs,
+		["NextMarker"] = args["NextMarker"],
+		["WebACLs"] = args["WebACLs"],
 	}
 	asserts.AssertListWebACLsResponse(t)
 	return t
@@ -1492,13 +1648,16 @@ end
 
 --- Create a structure of type CreateSqlInjectionMatchSetResponse
 -- <p>The response to a <code>CreateSqlInjectionMatchSet</code> request.</p>
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @param _SqlInjectionMatchSet [SqlInjectionMatchSet] <p>A <a>SqlInjectionMatchSet</a>.</p>
-function M.CreateSqlInjectionMatchSetResponse(_ChangeToken, _SqlInjectionMatchSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSqlInjectionMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- * SqlInjectionMatchSet [SqlInjectionMatchSet] <p>A <a>SqlInjectionMatchSet</a>.</p>
+-- @return CreateSqlInjectionMatchSetResponse structure as a key-value pair table
+function M.CreateSqlInjectionMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateSqlInjectionMatchSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["SqlInjectionMatchSet"] = _SqlInjectionMatchSet,
+		["ChangeToken"] = args["ChangeToken"],
+		["SqlInjectionMatchSet"] = args["SqlInjectionMatchSet"],
 	}
 	asserts.AssertCreateSqlInjectionMatchSetResponse(t)
 	return t
@@ -1518,13 +1677,16 @@ end
 
 --- Create a structure of type CreateSizeConstraintSetResponse
 --  
--- @param _SizeConstraintSet [SizeConstraintSet] <p>A <a>SizeConstraintSet</a> that contains no <code>SizeConstraint</code> objects.</p>
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.CreateSizeConstraintSetResponse(_SizeConstraintSet, _ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSizeConstraintSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeConstraintSet [SizeConstraintSet] <p>A <a>SizeConstraintSet</a> that contains no <code>SizeConstraint</code> objects.</p>
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return CreateSizeConstraintSetResponse structure as a key-value pair table
+function M.CreateSizeConstraintSetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateSizeConstraintSetResponse")
 	local t = { 
-		["SizeConstraintSet"] = _SizeConstraintSet,
-		["ChangeToken"] = _ChangeToken,
+		["SizeConstraintSet"] = args["SizeConstraintSet"],
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertCreateSizeConstraintSetResponse(t)
 	return t
@@ -1550,21 +1712,24 @@ end
 
 --- Create a structure of type GetSampledRequestsRequest
 --  
--- @param _TimeWindow [TimeWindow] <p>The start date and time and the end date and time of the range for which you want <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.</p>
--- @param _WebAclId [ResourceId] <p>The <code>WebACLId</code> of the <code>WebACL</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.</p>
--- @param _MaxItems [GetSampledRequestsMaxItems] <p>The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of <code>MaxItems</code>, <code>GetSampledRequests</code> returns information about all of them. </p>
--- @param _RuleId [ResourceId] <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The <code>RuleId</code> of the <code>Rule</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li> <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to return a sample of the requests that didn't match any of the rules in the specified <code>WebACL</code>.</p> </li> </ul>
--- Required parameter: WebAclId
--- Required parameter: RuleId
--- Required parameter: TimeWindow
--- Required parameter: MaxItems
-function M.GetSampledRequestsRequest(_TimeWindow, _WebAclId, _MaxItems, _RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSampledRequestsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TimeWindow [TimeWindow] <p>The start date and time and the end date and time of the range for which you want <code>GetSampledRequests</code> to return a sample of requests. Specify the date and time in the following format: <code>"2016-09-27T14:50Z"</code>. You can specify any time range in the previous three hours.</p>
+-- * WebAclId [ResourceId] <p>The <code>WebACLId</code> of the <code>WebACL</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.</p>
+-- * MaxItems [GetSampledRequestsMaxItems] <p>The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of <code>MaxItems</code>, <code>GetSampledRequests</code> returns information about all of them. </p>
+-- * RuleId [ResourceId] <p> <code>RuleId</code> is one of two values:</p> <ul> <li> <p>The <code>RuleId</code> of the <code>Rule</code> for which you want <code>GetSampledRequests</code> to return a sample of requests.</p> </li> <li> <p> <code>Default_Action</code>, which causes <code>GetSampledRequests</code> to return a sample of the requests that didn't match any of the rules in the specified <code>WebACL</code>.</p> </li> </ul>
+-- Required key: WebAclId
+-- Required key: RuleId
+-- Required key: TimeWindow
+-- Required key: MaxItems
+-- @return GetSampledRequestsRequest structure as a key-value pair table
+function M.GetSampledRequestsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSampledRequestsRequest")
 	local t = { 
-		["TimeWindow"] = _TimeWindow,
-		["WebAclId"] = _WebAclId,
-		["MaxItems"] = _MaxItems,
-		["RuleId"] = _RuleId,
+		["TimeWindow"] = args["TimeWindow"],
+		["WebAclId"] = args["WebAclId"],
+		["MaxItems"] = args["MaxItems"],
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertGetSampledRequestsRequest(t)
 	return t
@@ -1584,13 +1749,16 @@ end
 
 --- Create a structure of type GetRateBasedRuleManagedKeysResponse
 --  
--- @param _ManagedKeys [ManagedKeys] <p>An array of IP addresses that currently are blocked by the specified <a>RateBasedRule</a>. </p>
--- @param _NextMarker [NextMarker] <p>A null value and not currently used.</p>
-function M.GetRateBasedRuleManagedKeysResponse(_ManagedKeys, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRateBasedRuleManagedKeysResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ManagedKeys [ManagedKeys] <p>An array of IP addresses that currently are blocked by the specified <a>RateBasedRule</a>. </p>
+-- * NextMarker [NextMarker] <p>A null value and not currently used.</p>
+-- @return GetRateBasedRuleManagedKeysResponse structure as a key-value pair table
+function M.GetRateBasedRuleManagedKeysResponse(args)
+	assert(args, "You must provdide an argument table when creating GetRateBasedRuleManagedKeysResponse")
 	local t = { 
-		["ManagedKeys"] = _ManagedKeys,
-		["NextMarker"] = _NextMarker,
+		["ManagedKeys"] = args["ManagedKeys"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertGetRateBasedRuleManagedKeysResponse(t)
 	return t
@@ -1609,11 +1777,14 @@ end
 
 --- Create a structure of type DeleteSizeConstraintSetResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.DeleteSizeConstraintSetResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSizeConstraintSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteSizeConstraintSetResponse structure as a key-value pair table
+function M.DeleteSizeConstraintSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteSizeConstraintSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteSizeConstraintSetResponse(t)
 	return t
@@ -1637,18 +1808,21 @@ end
 
 --- Create a structure of type UpdateXssMatchSetRequest
 -- <p>A request to update an <a>XssMatchSet</a>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _XssMatchSetId [ResourceId] <p>The <code>XssMatchSetId</code> of the <code>XssMatchSet</code> that you want to update. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
--- @param _Updates [XssMatchSetUpdates] <p>An array of <code>XssMatchSetUpdate</code> objects that you want to insert into or delete from a <a>XssMatchSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>XssMatchSetUpdate</a>: Contains <code>Action</code> and <code>XssMatchTuple</code> </p> </li> <li> <p> <a>XssMatchTuple</a>: Contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
--- Required parameter: XssMatchSetId
--- Required parameter: ChangeToken
--- Required parameter: Updates
-function M.UpdateXssMatchSetRequest(_ChangeToken, _XssMatchSetId, _Updates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateXssMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * XssMatchSetId [ResourceId] <p>The <code>XssMatchSetId</code> of the <code>XssMatchSet</code> that you want to update. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
+-- * Updates [XssMatchSetUpdates] <p>An array of <code>XssMatchSetUpdate</code> objects that you want to insert into or delete from a <a>XssMatchSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>XssMatchSetUpdate</a>: Contains <code>Action</code> and <code>XssMatchTuple</code> </p> </li> <li> <p> <a>XssMatchTuple</a>: Contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- Required key: XssMatchSetId
+-- Required key: ChangeToken
+-- Required key: Updates
+-- @return UpdateXssMatchSetRequest structure as a key-value pair table
+function M.UpdateXssMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateXssMatchSetRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["XssMatchSetId"] = _XssMatchSetId,
-		["Updates"] = _Updates,
+		["ChangeToken"] = args["ChangeToken"],
+		["XssMatchSetId"] = args["XssMatchSetId"],
+		["Updates"] = args["Updates"],
 	}
 	asserts.AssertUpdateXssMatchSetRequest(t)
 	return t
@@ -1672,18 +1846,21 @@ end
 
 --- Create a structure of type UpdateByteMatchSetRequest
 --  
--- @param _ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to update. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Updates [ByteMatchSetUpdates] <p>An array of <code>ByteMatchSetUpdate</code> objects that you want to insert into or delete from a <a>ByteMatchSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>ByteMatchSetUpdate</a>: Contains <code>Action</code> and <code>ByteMatchTuple</code> </p> </li> <li> <p> <a>ByteMatchTuple</a>: Contains <code>FieldToMatch</code>, <code>PositionalConstraint</code>, <code>TargetString</code>, and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
--- Required parameter: ByteMatchSetId
--- Required parameter: ChangeToken
--- Required parameter: Updates
-function M.UpdateByteMatchSetRequest(_ByteMatchSetId, _ChangeToken, _Updates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateByteMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> of the <a>ByteMatchSet</a> that you want to update. <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Updates [ByteMatchSetUpdates] <p>An array of <code>ByteMatchSetUpdate</code> objects that you want to insert into or delete from a <a>ByteMatchSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>ByteMatchSetUpdate</a>: Contains <code>Action</code> and <code>ByteMatchTuple</code> </p> </li> <li> <p> <a>ByteMatchTuple</a>: Contains <code>FieldToMatch</code>, <code>PositionalConstraint</code>, <code>TargetString</code>, and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- Required key: ByteMatchSetId
+-- Required key: ChangeToken
+-- Required key: Updates
+-- @return UpdateByteMatchSetRequest structure as a key-value pair table
+function M.UpdateByteMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateByteMatchSetRequest")
 	local t = { 
-		["ByteMatchSetId"] = _ByteMatchSetId,
-		["ChangeToken"] = _ChangeToken,
-		["Updates"] = _Updates,
+		["ByteMatchSetId"] = args["ByteMatchSetId"],
+		["ChangeToken"] = args["ChangeToken"],
+		["Updates"] = args["Updates"],
 	}
 	asserts.AssertUpdateByteMatchSetRequest(t)
 	return t
@@ -1703,12 +1880,15 @@ end
 
 --- Create a structure of type GetWebACLRequest
 --  
--- @param _WebACLId [ResourceId] <p>The <code>WebACLId</code> of the <a>WebACL</a> that you want to get. <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
--- Required parameter: WebACLId
-function M.GetWebACLRequest(_WebACLId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetWebACLRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WebACLId [ResourceId] <p>The <code>WebACLId</code> of the <a>WebACL</a> that you want to get. <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
+-- Required key: WebACLId
+-- @return GetWebACLRequest structure as a key-value pair table
+function M.GetWebACLRequest(args)
+	assert(args, "You must provdide an argument table when creating GetWebACLRequest")
 	local t = { 
-		["WebACLId"] = _WebACLId,
+		["WebACLId"] = args["WebACLId"],
 	}
 	asserts.AssertGetWebACLRequest(t)
 	return t
@@ -1730,15 +1910,18 @@ end
 
 --- Create a structure of type IPSetSummary
 -- <p>Contains the identifier and the name of the <code>IPSet</code>.</p>
--- @param _IPSetId [ResourceId] <p>The <code>IPSetId</code> for an <a>IPSet</a>. You can use <code>IPSetId</code> in a <a>GetIPSet</a> request to get detailed information about an <a>IPSet</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>IPSet</a>. You can't change the name of an <code>IPSet</code> after you create it.</p>
--- Required parameter: IPSetId
--- Required parameter: Name
-function M.IPSetSummary(_IPSetId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IPSetSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IPSetId [ResourceId] <p>The <code>IPSetId</code> for an <a>IPSet</a>. You can use <code>IPSetId</code> in a <a>GetIPSet</a> request to get detailed information about an <a>IPSet</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>IPSet</a>. You can't change the name of an <code>IPSet</code> after you create it.</p>
+-- Required key: IPSetId
+-- Required key: Name
+-- @return IPSetSummary structure as a key-value pair table
+function M.IPSetSummary(args)
+	assert(args, "You must provdide an argument table when creating IPSetSummary")
 	local t = { 
-		["IPSetId"] = _IPSetId,
-		["Name"] = _Name,
+		["IPSetId"] = args["IPSetId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertIPSetSummary(t)
 	return t
@@ -1757,11 +1940,14 @@ end
 
 --- Create a structure of type GetIPSetResponse
 --  
--- @param _IPSet [IPSet] <p>Information about the <a>IPSet</a> that you specified in the <code>GetIPSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>IPSet</a>: Contains <code>IPSetDescriptors</code>, <code>IPSetId</code>, and <code>Name</code> </p> </li> <li> <p> <code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a> objects. Each <code>IPSetDescriptor</code> object contains <code>Type</code> and <code>Value</code> </p> </li> </ul>
-function M.GetIPSetResponse(_IPSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetIPSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IPSet [IPSet] <p>Information about the <a>IPSet</a> that you specified in the <code>GetIPSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>IPSet</a>: Contains <code>IPSetDescriptors</code>, <code>IPSetId</code>, and <code>Name</code> </p> </li> <li> <p> <code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a> objects. Each <code>IPSetDescriptor</code> object contains <code>Type</code> and <code>Value</code> </p> </li> </ul>
+-- @return GetIPSetResponse structure as a key-value pair table
+function M.GetIPSetResponse(args)
+	assert(args, "You must provdide an argument table when creating GetIPSetResponse")
 	local t = { 
-		["IPSet"] = _IPSet,
+		["IPSet"] = args["IPSet"],
 	}
 	asserts.AssertGetIPSetResponse(t)
 	return t
@@ -1780,11 +1966,14 @@ end
 
 --- Create a structure of type GetWebACLResponse
 --  
--- @param _WebACL [WebACL] <p>Information about the <a>WebACL</a> that you specified in the <code>GetWebACL</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>WebACL</a>: Contains <code>DefaultAction</code>, <code>MetricName</code>, <code>Name</code>, an array of <code>Rule</code> objects, and <code>WebACLId</code> </p> </li> <li> <p> <code>DefaultAction</code> (Data type is <a>WafAction</a>): Contains <code>Type</code> </p> </li> <li> <p> <code>Rules</code>: Contains an array of <code>ActivatedRule</code> objects, which contain <code>Action</code>, <code>Priority</code>, and <code>RuleId</code> </p> </li> <li> <p> <code>Action</code>: Contains <code>Type</code> </p> </li> </ul>
-function M.GetWebACLResponse(_WebACL, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetWebACLResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WebACL [WebACL] <p>Information about the <a>WebACL</a> that you specified in the <code>GetWebACL</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>WebACL</a>: Contains <code>DefaultAction</code>, <code>MetricName</code>, <code>Name</code>, an array of <code>Rule</code> objects, and <code>WebACLId</code> </p> </li> <li> <p> <code>DefaultAction</code> (Data type is <a>WafAction</a>): Contains <code>Type</code> </p> </li> <li> <p> <code>Rules</code>: Contains an array of <code>ActivatedRule</code> objects, which contain <code>Action</code>, <code>Priority</code>, and <code>RuleId</code> </p> </li> <li> <p> <code>Action</code>: Contains <code>Type</code> </p> </li> </ul>
+-- @return GetWebACLResponse structure as a key-value pair table
+function M.GetWebACLResponse(args)
+	assert(args, "You must provdide an argument table when creating GetWebACLResponse")
 	local t = { 
-		["WebACL"] = _WebACL,
+		["WebACL"] = args["WebACL"],
 	}
 	asserts.AssertGetWebACLResponse(t)
 	return t
@@ -1808,18 +1997,21 @@ end
 
 --- Create a structure of type UpdateSizeConstraintSetRequest
 --  
--- @param _SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to update. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Updates [SizeConstraintSetUpdates] <p>An array of <code>SizeConstraintSetUpdate</code> objects that you want to insert into or delete from a <a>SizeConstraintSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>SizeConstraintSetUpdate</a>: Contains <code>Action</code> and <code>SizeConstraint</code> </p> </li> <li> <p> <a>SizeConstraint</a>: Contains <code>FieldToMatch</code>, <code>TextTransformation</code>, <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
--- Required parameter: SizeConstraintSetId
--- Required parameter: ChangeToken
--- Required parameter: Updates
-function M.UpdateSizeConstraintSetRequest(_SizeConstraintSetId, _ChangeToken, _Updates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSizeConstraintSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to update. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Updates [SizeConstraintSetUpdates] <p>An array of <code>SizeConstraintSetUpdate</code> objects that you want to insert into or delete from a <a>SizeConstraintSet</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>SizeConstraintSetUpdate</a>: Contains <code>Action</code> and <code>SizeConstraint</code> </p> </li> <li> <p> <a>SizeConstraint</a>: Contains <code>FieldToMatch</code>, <code>TextTransformation</code>, <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- Required key: SizeConstraintSetId
+-- Required key: ChangeToken
+-- Required key: Updates
+-- @return UpdateSizeConstraintSetRequest structure as a key-value pair table
+function M.UpdateSizeConstraintSetRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateSizeConstraintSetRequest")
 	local t = { 
-		["SizeConstraintSetId"] = _SizeConstraintSetId,
-		["ChangeToken"] = _ChangeToken,
-		["Updates"] = _Updates,
+		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
+		["ChangeToken"] = args["ChangeToken"],
+		["Updates"] = args["Updates"],
 	}
 	asserts.AssertUpdateSizeConstraintSetRequest(t)
 	return t
@@ -1838,11 +2030,14 @@ end
 
 --- Create a structure of type DeleteXssMatchSetResponse
 -- <p>The response to a request to delete an <a>XssMatchSet</a> from AWS WAF.</p>
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.DeleteXssMatchSetResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteXssMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteXssMatchSetResponse structure as a key-value pair table
+function M.DeleteXssMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteXssMatchSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteXssMatchSetResponse(t)
 	return t
@@ -1864,15 +2059,18 @@ end
 
 --- Create a structure of type DeleteRateBasedRuleRequest
 --  
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>RateBasedRule</a> that you want to delete. <code>RuleId</code> is returned by <a>CreateRateBasedRule</a> and by <a>ListRateBasedRules</a>.</p>
--- Required parameter: RuleId
--- Required parameter: ChangeToken
-function M.DeleteRateBasedRuleRequest(_ChangeToken, _RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRateBasedRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>RateBasedRule</a> that you want to delete. <code>RuleId</code> is returned by <a>CreateRateBasedRule</a> and by <a>ListRateBasedRules</a>.</p>
+-- Required key: RuleId
+-- Required key: ChangeToken
+-- @return DeleteRateBasedRuleRequest structure as a key-value pair table
+function M.DeleteRateBasedRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteRateBasedRuleRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["RuleId"] = _RuleId,
+		["ChangeToken"] = args["ChangeToken"],
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertDeleteRateBasedRuleRequest(t)
 	return t
@@ -1894,15 +2092,18 @@ end
 
 --- Create a structure of type DeleteIPSetRequest
 --  
--- @param _IPSetId [ResourceId] <p>The <code>IPSetId</code> of the <a>IPSet</a> that you want to delete. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- Required parameter: IPSetId
--- Required parameter: ChangeToken
-function M.DeleteIPSetRequest(_IPSetId, _ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIPSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IPSetId [ResourceId] <p>The <code>IPSetId</code> of the <a>IPSet</a> that you want to delete. <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- Required key: IPSetId
+-- Required key: ChangeToken
+-- @return DeleteIPSetRequest structure as a key-value pair table
+function M.DeleteIPSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteIPSetRequest")
 	local t = { 
-		["IPSetId"] = _IPSetId,
-		["ChangeToken"] = _ChangeToken,
+		["IPSetId"] = args["IPSetId"],
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteIPSetRequest(t)
 	return t
@@ -1921,11 +2122,14 @@ end
 
 --- Create a structure of type UpdateWebACLResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.UpdateWebACLResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateWebACLResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateWebACLResponse structure as a key-value pair table
+function M.UpdateWebACLResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateWebACLResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertUpdateWebACLResponse(t)
 	return t
@@ -1948,17 +2152,20 @@ end
 
 --- Create a structure of type XssMatchSet
 -- <p>A complex type that contains <code>XssMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header. If a <code>XssMatchSet</code> contains more than one <code>XssMatchTuple</code> object, a request needs to include cross-site scripting attacks in only one of the specified parts of the request to be considered a match.</p>
--- @param _XssMatchTuples [XssMatchTuples] <p>Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.</p>
--- @param _XssMatchSetId [ResourceId] <p>A unique identifier for an <code>XssMatchSet</code>. You use <code>XssMatchSetId</code> to get information about an <code>XssMatchSet</code> (see <a>GetXssMatchSet</a>), update an <code>XssMatchSet</code> (see <a>UpdateXssMatchSet</a>), insert an <code>XssMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>XssMatchSet</code> from AWS WAF (see <a>DeleteXssMatchSet</a>).</p> <p> <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
--- @param _Name [ResourceName] <p>The name, if any, of the <code>XssMatchSet</code>.</p>
--- Required parameter: XssMatchSetId
--- Required parameter: XssMatchTuples
-function M.XssMatchSet(_XssMatchTuples, _XssMatchSetId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating XssMatchSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * XssMatchTuples [XssMatchTuples] <p>Specifies the parts of web requests that you want to inspect for cross-site scripting attacks.</p>
+-- * XssMatchSetId [ResourceId] <p>A unique identifier for an <code>XssMatchSet</code>. You use <code>XssMatchSetId</code> to get information about an <code>XssMatchSet</code> (see <a>GetXssMatchSet</a>), update an <code>XssMatchSet</code> (see <a>UpdateXssMatchSet</a>), insert an <code>XssMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>XssMatchSet</code> from AWS WAF (see <a>DeleteXssMatchSet</a>).</p> <p> <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
+-- * Name [ResourceName] <p>The name, if any, of the <code>XssMatchSet</code>.</p>
+-- Required key: XssMatchSetId
+-- Required key: XssMatchTuples
+-- @return XssMatchSet structure as a key-value pair table
+function M.XssMatchSet(args)
+	assert(args, "You must provdide an argument table when creating XssMatchSet")
 	local t = { 
-		["XssMatchTuples"] = _XssMatchTuples,
-		["XssMatchSetId"] = _XssMatchSetId,
-		["Name"] = _Name,
+		["XssMatchTuples"] = args["XssMatchTuples"],
+		["XssMatchSetId"] = args["XssMatchSetId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertXssMatchSet(t)
 	return t
@@ -1977,11 +2184,14 @@ end
 
 --- Create a structure of type UpdateSizeConstraintSetResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.UpdateSizeConstraintSetResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSizeConstraintSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateSizeConstraintSetResponse structure as a key-value pair table
+function M.UpdateSizeConstraintSetResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateSizeConstraintSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertUpdateSizeConstraintSetResponse(t)
 	return t
@@ -2003,15 +2213,18 @@ end
 
 --- Create a structure of type SizeConstraintSetUpdate
 -- <p>Specifies the part of a web request that you want to inspect the size of and indicates whether you want to add the specification to a <a>SizeConstraintSet</a> or delete it from a <code>SizeConstraintSet</code>.</p>
--- @param _Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>SizeConstraintSetUpdate</a> to a <a>SizeConstraintSet</a>. Use <code>DELETE</code> to remove a <code>SizeConstraintSetUpdate</code> from a <code>SizeConstraintSet</code>.</p>
--- @param _SizeConstraint [SizeConstraint] <p>Specifies a constraint on the size of a part of the web request. AWS WAF uses the <code>Size</code>, <code>ComparisonOperator</code>, and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p>
--- Required parameter: Action
--- Required parameter: SizeConstraint
-function M.SizeConstraintSetUpdate(_Action, _SizeConstraint, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SizeConstraintSetUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>SizeConstraintSetUpdate</a> to a <a>SizeConstraintSet</a>. Use <code>DELETE</code> to remove a <code>SizeConstraintSetUpdate</code> from a <code>SizeConstraintSet</code>.</p>
+-- * SizeConstraint [SizeConstraint] <p>Specifies a constraint on the size of a part of the web request. AWS WAF uses the <code>Size</code>, <code>ComparisonOperator</code>, and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p>
+-- Required key: Action
+-- Required key: SizeConstraint
+-- @return SizeConstraintSetUpdate structure as a key-value pair table
+function M.SizeConstraintSetUpdate(args)
+	assert(args, "You must provdide an argument table when creating SizeConstraintSetUpdate")
 	local t = { 
-		["Action"] = _Action,
-		["SizeConstraint"] = _SizeConstraint,
+		["Action"] = args["Action"],
+		["SizeConstraint"] = args["SizeConstraint"],
 	}
 	asserts.AssertSizeConstraintSetUpdate(t)
 	return t
@@ -2031,12 +2244,15 @@ end
 
 --- Create a structure of type GetXssMatchSetRequest
 -- <p>A request to get an <a>XssMatchSet</a>.</p>
--- @param _XssMatchSetId [ResourceId] <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
--- Required parameter: XssMatchSetId
-function M.GetXssMatchSetRequest(_XssMatchSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetXssMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * XssMatchSetId [ResourceId] <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
+-- Required key: XssMatchSetId
+-- @return GetXssMatchSetRequest structure as a key-value pair table
+function M.GetXssMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating GetXssMatchSetRequest")
 	local t = { 
-		["XssMatchSetId"] = _XssMatchSetId,
+		["XssMatchSetId"] = args["XssMatchSetId"],
 	}
 	asserts.AssertGetXssMatchSetRequest(t)
 	return t
@@ -2056,13 +2272,16 @@ end
 
 --- Create a structure of type ListRulesRequest
 --  
--- @param _NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>Rules</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>Rules</code>. For the second and subsequent <code>ListRules</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>Rules</code>.</p>
--- @param _Limit [PaginationLimit] <p>Specifies the number of <code>Rules</code> that you want AWS WAF to return for this request. If you have more <code>Rules</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
-function M.ListRulesRequest(_NextMarker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>Rules</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>Rules</code>. For the second and subsequent <code>ListRules</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>Rules</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>Rules</code> that you want AWS WAF to return for this request. If you have more <code>Rules</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
+-- @return ListRulesRequest structure as a key-value pair table
+function M.ListRulesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListRulesRequest")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Limit"] = _Limit,
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListRulesRequest(t)
 	return t
@@ -2081,11 +2300,14 @@ end
 
 --- Create a structure of type DeleteWebACLResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.DeleteWebACLResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteWebACLResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteWebACLResponse structure as a key-value pair table
+function M.DeleteWebACLResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteWebACLResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteWebACLResponse(t)
 	return t
@@ -2109,21 +2331,24 @@ end
 
 --- Create a structure of type HTTPRequest
 -- <p>The response from a <a>GetSampledRequests</a> request includes an <code>HTTPRequest</code> complex type that appears as <code>Request</code> in the response syntax. <code>HTTPRequest</code> contains information about one of the web requests that were returned by <code>GetSampledRequests</code>. </p>
--- @param _Country [Country] <p>The two-letter country code for the country that the request originated from. For a current list of country codes, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.</p>
--- @param _URI [URIString] <p>The part of a web request that identifies the resource, for example, <code>/images/daily-ad.jpg</code>.</p>
--- @param _Headers [HTTPHeaders] <p>A complex type that contains two values for each header in the sampled web request: the name of the header and the value of the header.</p>
--- @param _ClientIP [IPString] <p>The IP address that the request originated from. If the <code>WebACL</code> is associated with a CloudFront distribution, this is the value of one of the following fields in CloudFront access logs:</p> <ul> <li> <p> <code>c-ip</code>, if the viewer did not use an HTTP proxy or a load balancer to send the request</p> </li> <li> <p> <code>x-forwarded-for</code>, if the viewer did use an HTTP proxy or a load balancer to send the request</p> </li> </ul>
--- @param _Method [HTTPMethod] <p>The HTTP method specified in the sampled web request. CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>. </p>
--- @param _HTTPVersion [HTTPVersion] <p>The HTTP version specified in the sampled web request, for example, <code>HTTP/1.1</code>.</p>
-function M.HTTPRequest(_Country, _URI, _Headers, _ClientIP, _Method, _HTTPVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HTTPRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Country [Country] <p>The two-letter country code for the country that the request originated from. For a current list of country codes, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.</p>
+-- * URI [URIString] <p>The part of a web request that identifies the resource, for example, <code>/images/daily-ad.jpg</code>.</p>
+-- * Headers [HTTPHeaders] <p>A complex type that contains two values for each header in the sampled web request: the name of the header and the value of the header.</p>
+-- * ClientIP [IPString] <p>The IP address that the request originated from. If the <code>WebACL</code> is associated with a CloudFront distribution, this is the value of one of the following fields in CloudFront access logs:</p> <ul> <li> <p> <code>c-ip</code>, if the viewer did not use an HTTP proxy or a load balancer to send the request</p> </li> <li> <p> <code>x-forwarded-for</code>, if the viewer did use an HTTP proxy or a load balancer to send the request</p> </li> </ul>
+-- * Method [HTTPMethod] <p>The HTTP method specified in the sampled web request. CloudFront supports the following methods: <code>DELETE</code>, <code>GET</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, and <code>PUT</code>. </p>
+-- * HTTPVersion [HTTPVersion] <p>The HTTP version specified in the sampled web request, for example, <code>HTTP/1.1</code>.</p>
+-- @return HTTPRequest structure as a key-value pair table
+function M.HTTPRequest(args)
+	assert(args, "You must provdide an argument table when creating HTTPRequest")
 	local t = { 
-		["Country"] = _Country,
-		["URI"] = _URI,
-		["Headers"] = _Headers,
-		["ClientIP"] = _ClientIP,
-		["Method"] = _Method,
-		["HTTPVersion"] = _HTTPVersion,
+		["Country"] = args["Country"],
+		["URI"] = args["URI"],
+		["Headers"] = args["Headers"],
+		["ClientIP"] = args["ClientIP"],
+		["Method"] = args["Method"],
+		["HTTPVersion"] = args["HTTPVersion"],
 	}
 	asserts.AssertHTTPRequest(t)
 	return t
@@ -2145,15 +2370,18 @@ end
 
 --- Create a structure of type ByteMatchSetUpdate
 -- <p>In an <a>UpdateByteMatchSet</a> request, <code>ByteMatchSetUpdate</code> specifies whether to insert or delete a <a>ByteMatchTuple</a> and includes the settings for the <code>ByteMatchTuple</code>.</p>
--- @param _Action [ChangeAction] <p>Specifies whether to insert or delete a <a>ByteMatchTuple</a>.</p>
--- @param _ByteMatchTuple [ByteMatchTuple] <p>Information about the part of a web request that you want AWS WAF to inspect and the value that you want AWS WAF to search for. If you specify <code>DELETE</code> for the value of <code>Action</code>, the <code>ByteMatchTuple</code> values must exactly match the values in the <code>ByteMatchTuple</code> that you want to delete from the <code>ByteMatchSet</code>.</p>
--- Required parameter: Action
--- Required parameter: ByteMatchTuple
-function M.ByteMatchSetUpdate(_Action, _ByteMatchTuple, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ByteMatchSetUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specifies whether to insert or delete a <a>ByteMatchTuple</a>.</p>
+-- * ByteMatchTuple [ByteMatchTuple] <p>Information about the part of a web request that you want AWS WAF to inspect and the value that you want AWS WAF to search for. If you specify <code>DELETE</code> for the value of <code>Action</code>, the <code>ByteMatchTuple</code> values must exactly match the values in the <code>ByteMatchTuple</code> that you want to delete from the <code>ByteMatchSet</code>.</p>
+-- Required key: Action
+-- Required key: ByteMatchTuple
+-- @return ByteMatchSetUpdate structure as a key-value pair table
+function M.ByteMatchSetUpdate(args)
+	assert(args, "You must provdide an argument table when creating ByteMatchSetUpdate")
 	local t = { 
-		["Action"] = _Action,
-		["ByteMatchTuple"] = _ByteMatchTuple,
+		["Action"] = args["Action"],
+		["ByteMatchTuple"] = args["ByteMatchTuple"],
 	}
 	asserts.AssertByteMatchSetUpdate(t)
 	return t
@@ -2177,18 +2405,21 @@ end
 
 --- Create a structure of type CreateRuleRequest
 --  
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>Rule</a>. You can't change the name of a <code>Rule</code> after you create it.</p>
--- @param _MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>Rule</code>.</p>
--- Required parameter: Name
--- Required parameter: MetricName
--- Required parameter: ChangeToken
-function M.CreateRuleRequest(_ChangeToken, _Name, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>Rule</a>. You can't change the name of a <code>Rule</code> after you create it.</p>
+-- * MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>Rule</code>.</p>
+-- Required key: Name
+-- Required key: MetricName
+-- Required key: ChangeToken
+-- @return CreateRuleRequest structure as a key-value pair table
+function M.CreateRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateRuleRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["Name"] = _Name,
-		["MetricName"] = _MetricName,
+		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertCreateRuleRequest(t)
 	return t
@@ -2210,15 +2441,18 @@ end
 
 --- Create a structure of type DeleteXssMatchSetRequest
 -- <p>A request to delete an <a>XssMatchSet</a> from AWS WAF.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _XssMatchSetId [ResourceId] <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to delete. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
--- Required parameter: XssMatchSetId
--- Required parameter: ChangeToken
-function M.DeleteXssMatchSetRequest(_ChangeToken, _XssMatchSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteXssMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * XssMatchSetId [ResourceId] <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to delete. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by <a>ListXssMatchSets</a>.</p>
+-- Required key: XssMatchSetId
+-- Required key: ChangeToken
+-- @return DeleteXssMatchSetRequest structure as a key-value pair table
+function M.DeleteXssMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteXssMatchSetRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["XssMatchSetId"] = _XssMatchSetId,
+		["ChangeToken"] = args["ChangeToken"],
+		["XssMatchSetId"] = args["XssMatchSetId"],
 	}
 	asserts.AssertDeleteXssMatchSetRequest(t)
 	return t
@@ -2237,11 +2471,14 @@ end
 
 --- Create a structure of type WAFLimitsExceededException
 -- <p>The operation exceeds a resource limit, for example, the maximum number of <code>WebACL</code> objects that you can create for an AWS account. For more information, see <a href="http://docs.aws.amazon.com/waf/latest/developerguide/limits.html">Limits</a> in the <i>AWS WAF Developer Guide</i>.</p>
--- @param _message [errorMessage] 
-function M.WAFLimitsExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFLimitsExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return WAFLimitsExceededException structure as a key-value pair table
+function M.WAFLimitsExceededException(args)
+	assert(args, "You must provdide an argument table when creating WAFLimitsExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertWAFLimitsExceededException(t)
 	return t
@@ -2263,15 +2500,18 @@ end
 
 --- Create a structure of type CreateXssMatchSetRequest
 -- <p>A request to create an <a>XssMatchSet</a>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description for the <a>XssMatchSet</a> that you're creating. You can't change <code>Name</code> after you create the <code>XssMatchSet</code>.</p>
--- Required parameter: Name
--- Required parameter: ChangeToken
-function M.CreateXssMatchSetRequest(_ChangeToken, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateXssMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description for the <a>XssMatchSet</a> that you're creating. You can't change <code>Name</code> after you create the <code>XssMatchSet</code>.</p>
+-- Required key: Name
+-- Required key: ChangeToken
+-- @return CreateXssMatchSetRequest structure as a key-value pair table
+function M.CreateXssMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateXssMatchSetRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["Name"] = _Name,
+		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateXssMatchSetRequest(t)
 	return t
@@ -2290,11 +2530,14 @@ end
 
 --- Create a structure of type UpdateByteMatchSetResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.UpdateByteMatchSetResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateByteMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateByteMatchSetResponse structure as a key-value pair table
+function M.UpdateByteMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateByteMatchSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertUpdateByteMatchSetResponse(t)
 	return t
@@ -2313,11 +2556,14 @@ end
 
 --- Create a structure of type DeleteByteMatchSetResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.DeleteByteMatchSetResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteByteMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteByteMatchSetResponse structure as a key-value pair table
+function M.DeleteByteMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteByteMatchSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteByteMatchSetResponse(t)
 	return t
@@ -2338,14 +2584,17 @@ end
 
 --- Create a structure of type GetRateBasedRuleManagedKeysRequest
 --  
--- @param _NextMarker [NextMarker] <p>A null value and not currently used. Do not include this in your request.</p>
--- @param _RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>RateBasedRule</a> for which you want to get a list of <code>ManagedKeys</code>. <code>RuleId</code> is returned by <a>CreateRateBasedRule</a> and by <a>ListRateBasedRules</a>.</p>
--- Required parameter: RuleId
-function M.GetRateBasedRuleManagedKeysRequest(_NextMarker, _RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRateBasedRuleManagedKeysRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>A null value and not currently used. Do not include this in your request.</p>
+-- * RuleId [ResourceId] <p>The <code>RuleId</code> of the <a>RateBasedRule</a> for which you want to get a list of <code>ManagedKeys</code>. <code>RuleId</code> is returned by <a>CreateRateBasedRule</a> and by <a>ListRateBasedRules</a>.</p>
+-- Required key: RuleId
+-- @return GetRateBasedRuleManagedKeysRequest structure as a key-value pair table
+function M.GetRateBasedRuleManagedKeysRequest(args)
+	assert(args, "You must provdide an argument table when creating GetRateBasedRuleManagedKeysRequest")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["RuleId"] = _RuleId,
+		["NextMarker"] = args["NextMarker"],
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertGetRateBasedRuleManagedKeysRequest(t)
 	return t
@@ -2371,21 +2620,24 @@ end
 
 --- Create a structure of type UpdateRateBasedRuleRequest
 --  
--- @param _RateLimit [RateLimit] <p>The maximum number of requests, which have an identical value in the field specified by the <code>RateKey</code>, allowed in a five-minute period. If the number of requests exceeds the <code>RateLimit</code> and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Updates [RuleUpdates] <p>An array of <code>RuleUpdate</code> objects that you want to insert into or delete from a <a>RateBasedRule</a>. </p>
--- @param _RuleId [ResourceId] <p>The <code>RuleId</code> of the <code>RateBasedRule</code> that you want to update. <code>RuleId</code> is returned by <code>CreateRateBasedRule</code> and by <a>ListRateBasedRules</a>.</p>
--- Required parameter: RuleId
--- Required parameter: ChangeToken
--- Required parameter: Updates
--- Required parameter: RateLimit
-function M.UpdateRateBasedRuleRequest(_RateLimit, _ChangeToken, _Updates, _RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRateBasedRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RateLimit [RateLimit] <p>The maximum number of requests, which have an identical value in the field specified by the <code>RateKey</code>, allowed in a five-minute period. If the number of requests exceeds the <code>RateLimit</code> and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Updates [RuleUpdates] <p>An array of <code>RuleUpdate</code> objects that you want to insert into or delete from a <a>RateBasedRule</a>. </p>
+-- * RuleId [ResourceId] <p>The <code>RuleId</code> of the <code>RateBasedRule</code> that you want to update. <code>RuleId</code> is returned by <code>CreateRateBasedRule</code> and by <a>ListRateBasedRules</a>.</p>
+-- Required key: RuleId
+-- Required key: ChangeToken
+-- Required key: Updates
+-- Required key: RateLimit
+-- @return UpdateRateBasedRuleRequest structure as a key-value pair table
+function M.UpdateRateBasedRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateRateBasedRuleRequest")
 	local t = { 
-		["RateLimit"] = _RateLimit,
-		["ChangeToken"] = _ChangeToken,
-		["Updates"] = _Updates,
-		["RuleId"] = _RuleId,
+		["RateLimit"] = args["RateLimit"],
+		["ChangeToken"] = args["ChangeToken"],
+		["Updates"] = args["Updates"],
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertUpdateRateBasedRuleRequest(t)
 	return t
@@ -2407,15 +2659,18 @@ end
 
 --- Create a structure of type WebACLUpdate
 -- <p>Specifies whether to insert a <code>Rule</code> into or delete a <code>Rule</code> from a <code>WebACL</code>.</p>
--- @param _Action [ChangeAction] <p>Specifies whether to insert a <code>Rule</code> into or delete a <code>Rule</code> from a <code>WebACL</code>.</p>
--- @param _ActivatedRule [ActivatedRule] <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request specifies a <code>Rule</code> that you want to insert or delete, the priority of the <code>Rule</code> in the <code>WebACL</code>, and the action that you want AWS WAF to take when a web request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p>
--- Required parameter: Action
--- Required parameter: ActivatedRule
-function M.WebACLUpdate(_Action, _ActivatedRule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WebACLUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specifies whether to insert a <code>Rule</code> into or delete a <code>Rule</code> from a <code>WebACL</code>.</p>
+-- * ActivatedRule [ActivatedRule] <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request specifies a <code>Rule</code> that you want to insert or delete, the priority of the <code>Rule</code> in the <code>WebACL</code>, and the action that you want AWS WAF to take when a web request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p>
+-- Required key: Action
+-- Required key: ActivatedRule
+-- @return WebACLUpdate structure as a key-value pair table
+function M.WebACLUpdate(args)
+	assert(args, "You must provdide an argument table when creating WebACLUpdate")
 	local t = { 
-		["Action"] = _Action,
-		["ActivatedRule"] = _ActivatedRule,
+		["Action"] = args["Action"],
+		["ActivatedRule"] = args["ActivatedRule"],
 	}
 	asserts.AssertWebACLUpdate(t)
 	return t
@@ -2439,19 +2694,22 @@ end
 
 --- Create a structure of type Rule
 -- <p>A combination of <a>ByteMatchSet</a>, <a>IPSet</a>, and/or <a>SqlInjectionMatchSet</a> objects that identify the web requests that you want to allow, block, or count. For example, you might create a <code>Rule</code> that includes the following predicates:</p> <ul> <li> <p>An <code>IPSet</code> that causes AWS WAF to search for web requests that originate from the IP address <code>192.0.2.44</code> </p> </li> <li> <p>A <code>ByteMatchSet</code> that causes AWS WAF to search for web requests for which the value of the <code>User-Agent</code> header is <code>BadBot</code>.</p> </li> </ul> <p>To match the settings in this <code>Rule</code>, a request must originate from <code>192.0.2.44</code> AND include a <code>User-Agent</code> header for which the value is <code>BadBot</code>.</p>
--- @param _Predicates [Predicates] <p>The <code>Predicates</code> object contains one <code>Predicate</code> element for each <a>ByteMatchSet</a>, <a>IPSet</a>, or <a>SqlInjectionMatchSet</a> object that you want to include in a <code>Rule</code>.</p>
--- @param _MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you create the <code>Rule</code>.</p>
--- @param _Name [ResourceName] <p>The friendly name or description for the <code>Rule</code>. You can't change the name of a <code>Rule</code> after you create it.</p>
--- @param _RuleId [ResourceId] <p>A unique identifier for a <code>Rule</code>. You use <code>RuleId</code> to get more information about a <code>Rule</code> (see <a>GetRule</a>), update a <code>Rule</code> (see <a>UpdateRule</a>), insert a <code>Rule</code> into a <code>WebACL</code> or delete a one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>Rule</code> from AWS WAF (see <a>DeleteRule</a>).</p> <p> <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
--- Required parameter: RuleId
--- Required parameter: Predicates
-function M.Rule(_Predicates, _MetricName, _Name, _RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Rule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Predicates [Predicates] <p>The <code>Predicates</code> object contains one <code>Predicate</code> element for each <a>ByteMatchSet</a>, <a>IPSet</a>, or <a>SqlInjectionMatchSet</a> object that you want to include in a <code>Rule</code>.</p>
+-- * MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>Rule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you create the <code>Rule</code>.</p>
+-- * Name [ResourceName] <p>The friendly name or description for the <code>Rule</code>. You can't change the name of a <code>Rule</code> after you create it.</p>
+-- * RuleId [ResourceId] <p>A unique identifier for a <code>Rule</code>. You use <code>RuleId</code> to get more information about a <code>Rule</code> (see <a>GetRule</a>), update a <code>Rule</code> (see <a>UpdateRule</a>), insert a <code>Rule</code> into a <code>WebACL</code> or delete a one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>Rule</code> from AWS WAF (see <a>DeleteRule</a>).</p> <p> <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
+-- Required key: RuleId
+-- Required key: Predicates
+-- @return Rule structure as a key-value pair table
+function M.Rule(args)
+	assert(args, "You must provdide an argument table when creating Rule")
 	local t = { 
-		["Predicates"] = _Predicates,
-		["MetricName"] = _MetricName,
-		["Name"] = _Name,
-		["RuleId"] = _RuleId,
+		["Predicates"] = args["Predicates"],
+		["MetricName"] = args["MetricName"],
+		["Name"] = args["Name"],
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertRule(t)
 	return t
@@ -2471,13 +2729,16 @@ end
 
 --- Create a structure of type ListIPSetsRequest
 --  
--- @param _NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>ByteMatchSets</code>.</p>
--- @param _Limit [PaginationLimit] <p>Specifies the number of <code>IPSet</code> objects that you want AWS WAF to return for this request. If you have more <code>IPSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>IPSet</code> objects.</p>
-function M.ListIPSetsRequest(_NextMarker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListIPSetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>ByteMatchSets</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>IPSet</code> objects that you want AWS WAF to return for this request. If you have more <code>IPSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>IPSet</code> objects.</p>
+-- @return ListIPSetsRequest structure as a key-value pair table
+function M.ListIPSetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListIPSetsRequest")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Limit"] = _Limit,
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListIPSetsRequest(t)
 	return t
@@ -2502,20 +2763,23 @@ end
 
 --- Create a structure of type ActivatedRule
 -- <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request specifies a <code>Rule</code> that you want to insert or delete, the priority of the <code>Rule</code> in the <code>WebACL</code>, and the action that you want AWS WAF to take when a web request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p> <p>To specify whether to insert or delete a <code>Rule</code>, use the <code>Action</code> parameter in the <a>WebACLUpdate</a> data type.</p>
--- @param _Priority [RulePriority] <p>Specifies the order in which the <code>Rules</code> in a <code>WebACL</code> are evaluated. Rules with a lower value for <code>Priority</code> are evaluated before <code>Rules</code> with a higher value. The value must be a unique integer. If you add multiple <code>Rules</code> to a <code>WebACL</code>, the values don't need to be consecutive.</p>
--- @param _Action [WafAction] <p>Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the <code>Rule</code>. Valid values for <code>Action</code> include the following:</p> <ul> <li> <p> <code>ALLOW</code>: CloudFront responds with the requested object.</p> </li> <li> <p> <code>BLOCK</code>: CloudFront responds with an HTTP 403 (Forbidden) status code.</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of requests that match the conditions in the rule and then continues to inspect the web request based on the remaining rules in the web ACL. </p> </li> </ul>
--- @param _Type [WafRuleType] <p>The rule type, either <code>REGULAR</code>, as defined by <a>Rule</a>, or <code>RATE_BASED</code>, as defined by <a>RateBasedRule</a>. The default is REGULAR. Although this field is optional, be aware that if you try to add a RATE_BASED rule to a web ACL without setting the type, the <a>UpdateWebACL</a> request will fail because the request tries to add a REGULAR rule with the specified ID, which does not exist. </p>
--- @param _RuleId [ResourceId] <p>The <code>RuleId</code> for a <code>Rule</code>. You use <code>RuleId</code> to get more information about a <code>Rule</code> (see <a>GetRule</a>), update a <code>Rule</code> (see <a>UpdateRule</a>), insert a <code>Rule</code> into a <code>WebACL</code> or delete a one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>Rule</code> from AWS WAF (see <a>DeleteRule</a>).</p> <p> <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
--- Required parameter: Priority
--- Required parameter: RuleId
--- Required parameter: Action
-function M.ActivatedRule(_Priority, _Action, _Type, _RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ActivatedRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Priority [RulePriority] <p>Specifies the order in which the <code>Rules</code> in a <code>WebACL</code> are evaluated. Rules with a lower value for <code>Priority</code> are evaluated before <code>Rules</code> with a higher value. The value must be a unique integer. If you add multiple <code>Rules</code> to a <code>WebACL</code>, the values don't need to be consecutive.</p>
+-- * Action [WafAction] <p>Specifies the action that CloudFront or AWS WAF takes when a web request matches the conditions in the <code>Rule</code>. Valid values for <code>Action</code> include the following:</p> <ul> <li> <p> <code>ALLOW</code>: CloudFront responds with the requested object.</p> </li> <li> <p> <code>BLOCK</code>: CloudFront responds with an HTTP 403 (Forbidden) status code.</p> </li> <li> <p> <code>COUNT</code>: AWS WAF increments a counter of requests that match the conditions in the rule and then continues to inspect the web request based on the remaining rules in the web ACL. </p> </li> </ul>
+-- * Type [WafRuleType] <p>The rule type, either <code>REGULAR</code>, as defined by <a>Rule</a>, or <code>RATE_BASED</code>, as defined by <a>RateBasedRule</a>. The default is REGULAR. Although this field is optional, be aware that if you try to add a RATE_BASED rule to a web ACL without setting the type, the <a>UpdateWebACL</a> request will fail because the request tries to add a REGULAR rule with the specified ID, which does not exist. </p>
+-- * RuleId [ResourceId] <p>The <code>RuleId</code> for a <code>Rule</code>. You use <code>RuleId</code> to get more information about a <code>Rule</code> (see <a>GetRule</a>), update a <code>Rule</code> (see <a>UpdateRule</a>), insert a <code>Rule</code> into a <code>WebACL</code> or delete a one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>Rule</code> from AWS WAF (see <a>DeleteRule</a>).</p> <p> <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
+-- Required key: Priority
+-- Required key: RuleId
+-- Required key: Action
+-- @return ActivatedRule structure as a key-value pair table
+function M.ActivatedRule(args)
+	assert(args, "You must provdide an argument table when creating ActivatedRule")
 	local t = { 
-		["Priority"] = _Priority,
-		["Action"] = _Action,
-		["Type"] = _Type,
-		["RuleId"] = _RuleId,
+		["Priority"] = args["Priority"],
+		["Action"] = args["Action"],
+		["Type"] = args["Type"],
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertActivatedRule(t)
 	return t
@@ -2541,21 +2805,24 @@ end
 
 --- Create a structure of type CreateWebACLRequest
 --  
--- @param _DefaultAction [WafAction] <p>The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the <code>Rule</code> objects that are associated with the <code>WebACL</code>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>WebACL</a>. You can't change <code>Name</code> after you create the <code>WebACL</code>.</p>
--- @param _MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you create the <code>WebACL</code>.</p>
--- Required parameter: Name
--- Required parameter: MetricName
--- Required parameter: DefaultAction
--- Required parameter: ChangeToken
-function M.CreateWebACLRequest(_DefaultAction, _ChangeToken, _Name, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateWebACLRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DefaultAction [WafAction] <p>The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the <code>Rule</code> objects that are associated with the <code>WebACL</code>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>WebACL</a>. You can't change <code>Name</code> after you create the <code>WebACL</code>.</p>
+-- * MetricName [MetricName] <p>A friendly name or description for the metrics for this <code>WebACL</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change <code>MetricName</code> after you create the <code>WebACL</code>.</p>
+-- Required key: Name
+-- Required key: MetricName
+-- Required key: DefaultAction
+-- Required key: ChangeToken
+-- @return CreateWebACLRequest structure as a key-value pair table
+function M.CreateWebACLRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateWebACLRequest")
 	local t = { 
-		["DefaultAction"] = _DefaultAction,
-		["ChangeToken"] = _ChangeToken,
-		["Name"] = _Name,
-		["MetricName"] = _MetricName,
+		["DefaultAction"] = args["DefaultAction"],
+		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertCreateWebACLRequest(t)
 	return t
@@ -2574,11 +2841,14 @@ end
 
 --- Create a structure of type UpdateRuleResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.UpdateRuleResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateRuleResponse structure as a key-value pair table
+function M.UpdateRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateRuleResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertUpdateRuleResponse(t)
 	return t
@@ -2598,13 +2868,16 @@ end
 
 --- Create a structure of type ListSizeConstraintSetsRequest
 --  
--- @param _NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>SizeConstraintSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>SizeConstraintSets</code>. For the second and subsequent <code>ListSizeConstraintSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>SizeConstraintSets</code>.</p>
--- @param _Limit [PaginationLimit] <p>Specifies the number of <code>SizeConstraintSet</code> objects that you want AWS WAF to return for this request. If you have more <code>SizeConstraintSets</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>SizeConstraintSet</code> objects.</p>
-function M.ListSizeConstraintSetsRequest(_NextMarker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSizeConstraintSetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>SizeConstraintSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>SizeConstraintSets</code>. For the second and subsequent <code>ListSizeConstraintSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>SizeConstraintSets</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>SizeConstraintSet</code> objects that you want AWS WAF to return for this request. If you have more <code>SizeConstraintSets</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>SizeConstraintSet</code> objects.</p>
+-- @return ListSizeConstraintSetsRequest structure as a key-value pair table
+function M.ListSizeConstraintSetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListSizeConstraintSetsRequest")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Limit"] = _Limit,
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListSizeConstraintSetsRequest(t)
 	return t
@@ -2626,15 +2899,18 @@ end
 
 --- Create a structure of type SqlInjectionMatchSetUpdate
 -- <p>Specifies the part of a web request that you want to inspect for snippets of malicious SQL code and indicates whether you want to add the specification to a <a>SqlInjectionMatchSet</a> or delete it from a <code>SqlInjectionMatchSet</code>.</p>
--- @param _Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>SqlInjectionMatchSetUpdate</a> to a <a>SqlInjectionMatchSet</a>. Use <code>DELETE</code> to remove a <code>SqlInjectionMatchSetUpdate</code> from a <code>SqlInjectionMatchSet</code>.</p>
--- @param _SqlInjectionMatchTuple [SqlInjectionMatchTuple] <p>Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.</p>
--- Required parameter: Action
--- Required parameter: SqlInjectionMatchTuple
-function M.SqlInjectionMatchSetUpdate(_Action, _SqlInjectionMatchTuple, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SqlInjectionMatchSetUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>SqlInjectionMatchSetUpdate</a> to a <a>SqlInjectionMatchSet</a>. Use <code>DELETE</code> to remove a <code>SqlInjectionMatchSetUpdate</code> from a <code>SqlInjectionMatchSet</code>.</p>
+-- * SqlInjectionMatchTuple [SqlInjectionMatchTuple] <p>Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.</p>
+-- Required key: Action
+-- Required key: SqlInjectionMatchTuple
+-- @return SqlInjectionMatchSetUpdate structure as a key-value pair table
+function M.SqlInjectionMatchSetUpdate(args)
+	assert(args, "You must provdide an argument table when creating SqlInjectionMatchSetUpdate")
 	local t = { 
-		["Action"] = _Action,
-		["SqlInjectionMatchTuple"] = _SqlInjectionMatchTuple,
+		["Action"] = args["Action"],
+		["SqlInjectionMatchTuple"] = args["SqlInjectionMatchTuple"],
 	}
 	asserts.AssertSqlInjectionMatchSetUpdate(t)
 	return t
@@ -2652,8 +2928,11 @@ end
 
 --- Create a structure of type GetChangeTokenRequest
 --  
-function M.GetChangeTokenRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetChangeTokenRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetChangeTokenRequest structure as a key-value pair table
+function M.GetChangeTokenRequest(args)
+	assert(args, "You must provdide an argument table when creating GetChangeTokenRequest")
 	local t = { 
 	}
 	asserts.AssertGetChangeTokenRequest(t)
@@ -2676,15 +2955,18 @@ end
 
 --- Create a structure of type CreateSqlInjectionMatchSetRequest
 -- <p>A request to create a <a>SqlInjectionMatchSet</a>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description for the <a>SqlInjectionMatchSet</a> that you're creating. You can't change <code>Name</code> after you create the <code>SqlInjectionMatchSet</code>.</p>
--- Required parameter: Name
--- Required parameter: ChangeToken
-function M.CreateSqlInjectionMatchSetRequest(_ChangeToken, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSqlInjectionMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description for the <a>SqlInjectionMatchSet</a> that you're creating. You can't change <code>Name</code> after you create the <code>SqlInjectionMatchSet</code>.</p>
+-- Required key: Name
+-- Required key: ChangeToken
+-- @return CreateSqlInjectionMatchSetRequest structure as a key-value pair table
+function M.CreateSqlInjectionMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSqlInjectionMatchSetRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["Name"] = _Name,
+		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateSqlInjectionMatchSetRequest(t)
 	return t
@@ -2706,15 +2988,18 @@ end
 
 --- Create a structure of type CreateSizeConstraintSetRequest
 --  
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>SizeConstraintSet</a>. You can't change <code>Name</code> after you create a <code>SizeConstraintSet</code>.</p>
--- Required parameter: Name
--- Required parameter: ChangeToken
-function M.CreateSizeConstraintSetRequest(_ChangeToken, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSizeConstraintSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>SizeConstraintSet</a>. You can't change <code>Name</code> after you create a <code>SizeConstraintSet</code>.</p>
+-- Required key: Name
+-- Required key: ChangeToken
+-- @return CreateSizeConstraintSetRequest structure as a key-value pair table
+function M.CreateSizeConstraintSetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSizeConstraintSetRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["Name"] = _Name,
+		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateSizeConstraintSetRequest(t)
 	return t
@@ -2736,15 +3021,18 @@ end
 
 --- Create a structure of type SizeConstraintSetSummary
 -- <p>The <code>Id</code> and <code>Name</code> of a <code>SizeConstraintSet</code>.</p>
--- @param _SizeConstraintSetId [ResourceId] <p>A unique identifier for a <code>SizeConstraintSet</code>. You use <code>SizeConstraintSetId</code> to get information about a <code>SizeConstraintSet</code> (see <a>GetSizeConstraintSet</a>), update a <code>SizeConstraintSet</code> (see <a>UpdateSizeConstraintSet</a>), insert a <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SizeConstraintSet</code> from AWS WAF (see <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
--- @param _Name [ResourceName] <p>The name of the <code>SizeConstraintSet</code>, if any.</p>
--- Required parameter: SizeConstraintSetId
--- Required parameter: Name
-function M.SizeConstraintSetSummary(_SizeConstraintSetId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SizeConstraintSetSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeConstraintSetId [ResourceId] <p>A unique identifier for a <code>SizeConstraintSet</code>. You use <code>SizeConstraintSetId</code> to get information about a <code>SizeConstraintSet</code> (see <a>GetSizeConstraintSet</a>), update a <code>SizeConstraintSet</code> (see <a>UpdateSizeConstraintSet</a>), insert a <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SizeConstraintSet</code> from AWS WAF (see <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- * Name [ResourceName] <p>The name of the <code>SizeConstraintSet</code>, if any.</p>
+-- Required key: SizeConstraintSetId
+-- Required key: Name
+-- @return SizeConstraintSetSummary structure as a key-value pair table
+function M.SizeConstraintSetSummary(args)
+	assert(args, "You must provdide an argument table when creating SizeConstraintSetSummary")
 	local t = { 
-		["SizeConstraintSetId"] = _SizeConstraintSetId,
-		["Name"] = _Name,
+		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertSizeConstraintSetSummary(t)
 	return t
@@ -2764,13 +3052,16 @@ end
 
 --- Create a structure of type ListSqlInjectionMatchSetsResponse
 -- <p>The response to a <a>ListSqlInjectionMatchSets</a> request.</p>
--- @param _SqlInjectionMatchSets [SqlInjectionMatchSetSummaries] <p>An array of <a>SqlInjectionMatchSetSummary</a> objects.</p>
--- @param _NextMarker [NextMarker] <p>If you have more <a>SqlInjectionMatchSet</a> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>SqlInjectionMatchSet</code> objects, submit another <code>ListSqlInjectionMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
-function M.ListSqlInjectionMatchSetsResponse(_SqlInjectionMatchSets, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSqlInjectionMatchSetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SqlInjectionMatchSets [SqlInjectionMatchSetSummaries] <p>An array of <a>SqlInjectionMatchSetSummary</a> objects.</p>
+-- * NextMarker [NextMarker] <p>If you have more <a>SqlInjectionMatchSet</a> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>SqlInjectionMatchSet</code> objects, submit another <code>ListSqlInjectionMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @return ListSqlInjectionMatchSetsResponse structure as a key-value pair table
+function M.ListSqlInjectionMatchSetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListSqlInjectionMatchSetsResponse")
 	local t = { 
-		["SqlInjectionMatchSets"] = _SqlInjectionMatchSets,
-		["NextMarker"] = _NextMarker,
+		["SqlInjectionMatchSets"] = args["SqlInjectionMatchSets"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertListSqlInjectionMatchSetsResponse(t)
 	return t
@@ -2790,13 +3081,16 @@ end
 
 --- Create a structure of type ListSqlInjectionMatchSetsRequest
 -- <p>A request to list the <a>SqlInjectionMatchSet</a> objects created by the current AWS account.</p>
--- @param _NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>SqlInjectionMatchSets</code>. For the second and subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>SqlInjectionMatchSets</code>.</p>
--- @param _Limit [PaginationLimit] <p>Specifies the number of <a>SqlInjectionMatchSet</a> objects that you want AWS WAF to return for this request. If you have more <code>SqlInjectionMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
-function M.ListSqlInjectionMatchSetsRequest(_NextMarker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSqlInjectionMatchSetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <a>SqlInjectionMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>SqlInjectionMatchSets</code>. For the second and subsequent <code>ListSqlInjectionMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>SqlInjectionMatchSets</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <a>SqlInjectionMatchSet</a> objects that you want AWS WAF to return for this request. If you have more <code>SqlInjectionMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
+-- @return ListSqlInjectionMatchSetsRequest structure as a key-value pair table
+function M.ListSqlInjectionMatchSetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListSqlInjectionMatchSetsRequest")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Limit"] = _Limit,
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListSqlInjectionMatchSetsRequest(t)
 	return t
@@ -2816,13 +3110,16 @@ end
 
 --- Create a structure of type ListWebACLsRequest
 --  
--- @param _NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>WebACL</code> objects than the number that you specify for <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>WebACL</code> objects. For the second and subsequent <code>ListWebACLs</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>WebACL</code> objects.</p>
--- @param _Limit [PaginationLimit] <p>Specifies the number of <code>WebACL</code> objects that you want AWS WAF to return for this request. If you have more <code>WebACL</code> objects than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>WebACL</code> objects.</p>
-function M.ListWebACLsRequest(_NextMarker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListWebACLsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>WebACL</code> objects than the number that you specify for <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>WebACL</code> objects. For the second and subsequent <code>ListWebACLs</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>WebACL</code> objects.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>WebACL</code> objects that you want AWS WAF to return for this request. If you have more <code>WebACL</code> objects than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>WebACL</code> objects.</p>
+-- @return ListWebACLsRequest structure as a key-value pair table
+function M.ListWebACLsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListWebACLsRequest")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Limit"] = _Limit,
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListWebACLsRequest(t)
 	return t
@@ -2842,13 +3139,16 @@ end
 
 --- Create a structure of type CreateWebACLResponse
 --  
--- @param _WebACL [WebACL] <p>The <a>WebACL</a> returned in the <code>CreateWebACL</code> response.</p>
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.CreateWebACLResponse(_WebACL, _ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateWebACLResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WebACL [WebACL] <p>The <a>WebACL</a> returned in the <code>CreateWebACL</code> response.</p>
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return CreateWebACLResponse structure as a key-value pair table
+function M.CreateWebACLResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateWebACLResponse")
 	local t = { 
-		["WebACL"] = _WebACL,
-		["ChangeToken"] = _ChangeToken,
+		["WebACL"] = args["WebACL"],
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertCreateWebACLResponse(t)
 	return t
@@ -2867,11 +3167,14 @@ end
 
 --- Create a structure of type DeleteRuleResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.DeleteRuleResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteRuleResponse structure as a key-value pair table
+function M.DeleteRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteRuleResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteRuleResponse(t)
 	return t
@@ -2893,15 +3196,18 @@ end
 
 --- Create a structure of type DeleteSizeConstraintSetRequest
 --  
--- @param _SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to delete. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- Required parameter: SizeConstraintSetId
--- Required parameter: ChangeToken
-function M.DeleteSizeConstraintSetRequest(_SizeConstraintSetId, _ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSizeConstraintSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeConstraintSetId [ResourceId] <p>The <code>SizeConstraintSetId</code> of the <a>SizeConstraintSet</a> that you want to delete. <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- Required key: SizeConstraintSetId
+-- Required key: ChangeToken
+-- @return DeleteSizeConstraintSetRequest structure as a key-value pair table
+function M.DeleteSizeConstraintSetRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSizeConstraintSetRequest")
 	local t = { 
-		["SizeConstraintSetId"] = _SizeConstraintSetId,
-		["ChangeToken"] = _ChangeToken,
+		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteSizeConstraintSetRequest(t)
 	return t
@@ -2920,11 +3226,14 @@ end
 
 --- Create a structure of type UpdateRateBasedRuleResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.UpdateRateBasedRuleResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRateBasedRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateRateBasedRuleResponse structure as a key-value pair table
+function M.UpdateRateBasedRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateRateBasedRuleResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertUpdateRateBasedRuleResponse(t)
 	return t
@@ -2943,11 +3252,14 @@ end
 
 --- Create a structure of type GetSizeConstraintSetResponse
 --  
--- @param _SizeConstraintSet [SizeConstraintSet] <p>Information about the <a>SizeConstraintSet</a> that you specified in the <code>GetSizeConstraintSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>SizeConstraintSet</a>: Contains <code>SizeConstraintSetId</code>, <code>SizeConstraints</code>, and <code>Name</code> </p> </li> <li> <p> <code>SizeConstraints</code>: Contains an array of <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object contains <a>FieldToMatch</a>, <code>TextTransformation</code>, <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
-function M.GetSizeConstraintSetResponse(_SizeConstraintSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSizeConstraintSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeConstraintSet [SizeConstraintSet] <p>Information about the <a>SizeConstraintSet</a> that you specified in the <code>GetSizeConstraintSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>SizeConstraintSet</a>: Contains <code>SizeConstraintSetId</code>, <code>SizeConstraints</code>, and <code>Name</code> </p> </li> <li> <p> <code>SizeConstraints</code>: Contains an array of <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object contains <a>FieldToMatch</a>, <code>TextTransformation</code>, <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- @return GetSizeConstraintSetResponse structure as a key-value pair table
+function M.GetSizeConstraintSetResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSizeConstraintSetResponse")
 	local t = { 
-		["SizeConstraintSet"] = _SizeConstraintSet,
+		["SizeConstraintSet"] = args["SizeConstraintSet"],
 	}
 	asserts.AssertGetSizeConstraintSetResponse(t)
 	return t
@@ -2967,13 +3279,16 @@ end
 
 --- Create a structure of type ListRulesResponse
 --  
--- @param _Rules [RuleSummaries] <p>An array of <a>RuleSummary</a> objects.</p>
--- @param _NextMarker [NextMarker] <p>If you have more <code>Rules</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>Rules</code>, submit another <code>ListRules</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
-function M.ListRulesResponse(_Rules, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRulesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [RuleSummaries] <p>An array of <a>RuleSummary</a> objects.</p>
+-- * NextMarker [NextMarker] <p>If you have more <code>Rules</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>Rules</code>, submit another <code>ListRules</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @return ListRulesResponse structure as a key-value pair table
+function M.ListRulesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListRulesResponse")
 	local t = { 
-		["Rules"] = _Rules,
-		["NextMarker"] = _NextMarker,
+		["Rules"] = args["Rules"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertListRulesResponse(t)
 	return t
@@ -2995,15 +3310,18 @@ end
 
 --- Create a structure of type CreateIPSetRequest
 --  
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>IPSet</a>. You can't change <code>Name</code> after you create the <code>IPSet</code>.</p>
--- Required parameter: Name
--- Required parameter: ChangeToken
-function M.CreateIPSetRequest(_ChangeToken, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateIPSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>IPSet</a>. You can't change <code>Name</code> after you create the <code>IPSet</code>.</p>
+-- Required key: Name
+-- Required key: ChangeToken
+-- @return CreateIPSetRequest structure as a key-value pair table
+function M.CreateIPSetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateIPSetRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["Name"] = _Name,
+		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateIPSetRequest(t)
 	return t
@@ -3022,11 +3340,14 @@ end
 
 --- Create a structure of type GetRuleResponse
 --  
--- @param _Rule [Rule] <p>Information about the <a>Rule</a> that you specified in the <code>GetRule</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>Rule</a>: Contains <code>MetricName</code>, <code>Name</code>, an array of <code>Predicate</code> objects, and <code>RuleId</code> </p> </li> <li> <p> <a>Predicate</a>: Each <code>Predicate</code> object contains <code>DataId</code>, <code>Negated</code>, and <code>Type</code> </p> </li> </ul>
-function M.GetRuleResponse(_Rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rule [Rule] <p>Information about the <a>Rule</a> that you specified in the <code>GetRule</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>Rule</a>: Contains <code>MetricName</code>, <code>Name</code>, an array of <code>Predicate</code> objects, and <code>RuleId</code> </p> </li> <li> <p> <a>Predicate</a>: Each <code>Predicate</code> object contains <code>DataId</code>, <code>Negated</code>, and <code>Type</code> </p> </li> </ul>
+-- @return GetRuleResponse structure as a key-value pair table
+function M.GetRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating GetRuleResponse")
 	local t = { 
-		["Rule"] = _Rule,
+		["Rule"] = args["Rule"],
 	}
 	asserts.AssertGetRuleResponse(t)
 	return t
@@ -3046,13 +3367,16 @@ end
 
 --- Create a structure of type ListByteMatchSetsRequest
 --  
--- @param _NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>ByteMatchSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>ByteMatchSets</code>. For the second and subsequent <code>ListByteMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>ByteMatchSets</code>.</p>
--- @param _Limit [PaginationLimit] <p>Specifies the number of <code>ByteMatchSet</code> objects that you want AWS WAF to return for this request. If you have more <code>ByteMatchSets</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>ByteMatchSet</code> objects.</p>
-function M.ListByteMatchSetsRequest(_NextMarker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListByteMatchSetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <code>ByteMatchSets</code> than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>ByteMatchSets</code>. For the second and subsequent <code>ListByteMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>ByteMatchSets</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <code>ByteMatchSet</code> objects that you want AWS WAF to return for this request. If you have more <code>ByteMatchSets</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>ByteMatchSet</code> objects.</p>
+-- @return ListByteMatchSetsRequest structure as a key-value pair table
+function M.ListByteMatchSetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListByteMatchSetsRequest")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Limit"] = _Limit,
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListByteMatchSetsRequest(t)
 	return t
@@ -3072,13 +3396,16 @@ end
 
 --- Create a structure of type CreateRateBasedRuleResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
--- @param _Rule [RateBasedRule] <p>The <a>RateBasedRule</a> that is returned in the <code>CreateRateBasedRule</code> response.</p>
-function M.CreateRateBasedRuleResponse(_ChangeToken, _Rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRateBasedRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- * Rule [RateBasedRule] <p>The <a>RateBasedRule</a> that is returned in the <code>CreateRateBasedRule</code> response.</p>
+-- @return CreateRateBasedRuleResponse structure as a key-value pair table
+function M.CreateRateBasedRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateRateBasedRuleResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["Rule"] = _Rule,
+		["ChangeToken"] = args["ChangeToken"],
+		["Rule"] = args["Rule"],
 	}
 	asserts.AssertCreateRateBasedRuleResponse(t)
 	return t
@@ -3100,15 +3427,18 @@ end
 
 --- Create a structure of type CreateByteMatchSetRequest
 --  
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a <code>ByteMatchSet</code>.</p>
--- Required parameter: Name
--- Required parameter: ChangeToken
-function M.CreateByteMatchSetRequest(_ChangeToken, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateByteMatchSetRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a <code>ByteMatchSet</code>.</p>
+-- Required key: Name
+-- Required key: ChangeToken
+-- @return CreateByteMatchSetRequest structure as a key-value pair table
+function M.CreateByteMatchSetRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateByteMatchSetRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
-		["Name"] = _Name,
+		["ChangeToken"] = args["ChangeToken"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateByteMatchSetRequest(t)
 	return t
@@ -3131,17 +3461,20 @@ end
 
 --- Create a structure of type IPSet
 -- <p>Contains one or more IP addresses or blocks of IP addresses specified in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and /24, /32, /48, /56, /64 and /128 for IPv6.</p> <p>To specify an individual IP address, you specify the four-part IP address followed by a <code>/32</code>, for example, 192.0.2.0/31. To block a range of IP addresses, you can specify a <code>/128</code>, <code>/64</code>, <code>/56</code>, <code>/48</code>, <code>/32</code>, <code>/24</code>, <code>/16</code>, or <code>/8</code> CIDR. For more information about CIDR notation, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-Domain Routing</a>. </p>
--- @param _IPSetId [ResourceId] <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use <code>IPSetId</code> to get information about an <code>IPSet</code> (see <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert an <code>IPSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>IPSet</a>. You can't change the name of an <code>IPSet</code> after you create it.</p>
--- @param _IPSetDescriptors [IPSetDescriptors] <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web requests originate from. If the <code>WebACL</code> is associated with a CloudFront distribution and the viewer did not use an HTTP proxy or a load balancer to send the request, this is the value of the c-ip field in the CloudFront access logs.</p>
--- Required parameter: IPSetId
--- Required parameter: IPSetDescriptors
-function M.IPSet(_IPSetId, _Name, _IPSetDescriptors, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IPSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IPSetId [ResourceId] <p>The <code>IPSetId</code> for an <code>IPSet</code>. You use <code>IPSetId</code> to get information about an <code>IPSet</code> (see <a>GetIPSet</a>), update an <code>IPSet</code> (see <a>UpdateIPSet</a>), insert an <code>IPSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete an <code>IPSet</code> from AWS WAF (see <a>DeleteIPSet</a>).</p> <p> <code>IPSetId</code> is returned by <a>CreateIPSet</a> and by <a>ListIPSets</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>IPSet</a>. You can't change the name of an <code>IPSet</code> after you create it.</p>
+-- * IPSetDescriptors [IPSetDescriptors] <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web requests originate from. If the <code>WebACL</code> is associated with a CloudFront distribution and the viewer did not use an HTTP proxy or a load balancer to send the request, this is the value of the c-ip field in the CloudFront access logs.</p>
+-- Required key: IPSetId
+-- Required key: IPSetDescriptors
+-- @return IPSet structure as a key-value pair table
+function M.IPSet(args)
+	assert(args, "You must provdide an argument table when creating IPSet")
 	local t = { 
-		["IPSetId"] = _IPSetId,
-		["Name"] = _Name,
-		["IPSetDescriptors"] = _IPSetDescriptors,
+		["IPSetId"] = args["IPSetId"],
+		["Name"] = args["Name"],
+		["IPSetDescriptors"] = args["IPSetDescriptors"],
 	}
 	asserts.AssertIPSet(t)
 	return t
@@ -3163,15 +3496,18 @@ end
 
 --- Create a structure of type ByteMatchSetSummary
 -- <p>Returned by <a>ListByteMatchSets</a>. Each <code>ByteMatchSetSummary</code> object includes the <code>Name</code> and <code>ByteMatchSetId</code> for one <a>ByteMatchSet</a>.</p>
--- @param _ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> for a <code>ByteMatchSet</code>. You use <code>ByteMatchSetId</code> to get information about a <code>ByteMatchSet</code>, update a <code>ByteMatchSet</code>, remove a <code>ByteMatchSet</code> from a <code>Rule</code>, and delete a <code>ByteMatchSet</code> from AWS WAF.</p> <p> <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a <code>ByteMatchSet</code>.</p>
--- Required parameter: ByteMatchSetId
--- Required parameter: Name
-function M.ByteMatchSetSummary(_ByteMatchSetId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ByteMatchSetSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ByteMatchSetId [ResourceId] <p>The <code>ByteMatchSetId</code> for a <code>ByteMatchSet</code>. You use <code>ByteMatchSetId</code> to get information about a <code>ByteMatchSet</code>, update a <code>ByteMatchSet</code>, remove a <code>ByteMatchSet</code> from a <code>Rule</code>, and delete a <code>ByteMatchSet</code> from AWS WAF.</p> <p> <code>ByteMatchSetId</code> is returned by <a>CreateByteMatchSet</a> and by <a>ListByteMatchSets</a>.</p>
+-- * Name [ResourceName] <p>A friendly name or description of the <a>ByteMatchSet</a>. You can't change <code>Name</code> after you create a <code>ByteMatchSet</code>.</p>
+-- Required key: ByteMatchSetId
+-- Required key: Name
+-- @return ByteMatchSetSummary structure as a key-value pair table
+function M.ByteMatchSetSummary(args)
+	assert(args, "You must provdide an argument table when creating ByteMatchSetSummary")
 	local t = { 
-		["ByteMatchSetId"] = _ByteMatchSetId,
-		["Name"] = _Name,
+		["ByteMatchSetId"] = args["ByteMatchSetId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertByteMatchSetSummary(t)
 	return t
@@ -3192,15 +3528,18 @@ end
 
 --- Create a structure of type WAFInvalidParameterException
 -- <p>The operation failed because AWS WAF didn't recognize a parameter in the request. For example:</p> <ul> <li> <p>You specified an invalid parameter name.</p> </li> <li> <p>You specified an invalid value.</p> </li> <li> <p>You tried to update an object (<code>ByteMatchSet</code>, <code>IPSet</code>, <code>Rule</code>, or <code>WebACL</code>) using an action other than <code>INSERT</code> or <code>DELETE</code>.</p> </li> <li> <p>You tried to create a <code>WebACL</code> with a <code>DefaultAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to create a <code>RateBasedRule</code> with a <code>RateKey</code> value other than <code>IP</code>.</p> </li> <li> <p>You tried to update a <code>WebACL</code> with a <code>WafAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other than HEADER, QUERY_STRING, or URI.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>Field</code> of <code>HEADER</code> but no value for <code>Data</code>.</p> </li> <li> <p>Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.</p> </li> </ul>
--- @param _field [ParameterExceptionField] 
--- @param _reason [ParameterExceptionReason] 
--- @param _parameter [ParameterExceptionParameter] 
-function M.WAFInvalidParameterException(_field, _reason, _parameter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFInvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * field [ParameterExceptionField] 
+-- * reason [ParameterExceptionReason] 
+-- * parameter [ParameterExceptionParameter] 
+-- @return WAFInvalidParameterException structure as a key-value pair table
+function M.WAFInvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating WAFInvalidParameterException")
 	local t = { 
-		["field"] = _field,
-		["reason"] = _reason,
-		["parameter"] = _parameter,
+		["field"] = args["field"],
+		["reason"] = args["reason"],
+		["parameter"] = args["parameter"],
 	}
 	asserts.AssertWAFInvalidParameterException(t)
 	return t
@@ -3222,15 +3561,18 @@ end
 
 --- Create a structure of type SqlInjectionMatchSetSummary
 -- <p>The <code>Id</code> and <code>Name</code> of a <code>SqlInjectionMatchSet</code>.</p>
--- @param _Name [ResourceName] <p>The name of the <code>SqlInjectionMatchSet</code>, if any, specified by <code>Id</code>.</p>
--- @param _SqlInjectionMatchSetId [ResourceId] <p>A unique identifier for a <code>SqlInjectionMatchSet</code>. You use <code>SqlInjectionMatchSetId</code> to get information about a <code>SqlInjectionMatchSet</code> (see <a>GetSqlInjectionMatchSet</a>), update a <code>SqlInjectionMatchSet</code> (see <a>UpdateSqlInjectionMatchSet</a>), insert a <code>SqlInjectionMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SqlInjectionMatchSet</code> from AWS WAF (see <a>DeleteSqlInjectionMatchSet</a>).</p> <p> <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
--- Required parameter: SqlInjectionMatchSetId
--- Required parameter: Name
-function M.SqlInjectionMatchSetSummary(_Name, _SqlInjectionMatchSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SqlInjectionMatchSetSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ResourceName] <p>The name of the <code>SqlInjectionMatchSet</code>, if any, specified by <code>Id</code>.</p>
+-- * SqlInjectionMatchSetId [ResourceId] <p>A unique identifier for a <code>SqlInjectionMatchSet</code>. You use <code>SqlInjectionMatchSetId</code> to get information about a <code>SqlInjectionMatchSet</code> (see <a>GetSqlInjectionMatchSet</a>), update a <code>SqlInjectionMatchSet</code> (see <a>UpdateSqlInjectionMatchSet</a>), insert a <code>SqlInjectionMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SqlInjectionMatchSet</code> from AWS WAF (see <a>DeleteSqlInjectionMatchSet</a>).</p> <p> <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
+-- Required key: SqlInjectionMatchSetId
+-- Required key: Name
+-- @return SqlInjectionMatchSetSummary structure as a key-value pair table
+function M.SqlInjectionMatchSetSummary(args)
+	assert(args, "You must provdide an argument table when creating SqlInjectionMatchSetSummary")
 	local t = { 
-		["Name"] = _Name,
-		["SqlInjectionMatchSetId"] = _SqlInjectionMatchSetId,
+		["Name"] = args["Name"],
+		["SqlInjectionMatchSetId"] = args["SqlInjectionMatchSetId"],
 	}
 	asserts.AssertSqlInjectionMatchSetSummary(t)
 	return t
@@ -3250,12 +3592,15 @@ end
 
 --- Create a structure of type GetChangeTokenStatusRequest
 --  
--- @param _ChangeToken [ChangeToken] <p>The change token for which you want to get the status. This change token was previously returned in the <code>GetChangeToken</code> response.</p>
--- Required parameter: ChangeToken
-function M.GetChangeTokenStatusRequest(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetChangeTokenStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The change token for which you want to get the status. This change token was previously returned in the <code>GetChangeToken</code> response.</p>
+-- Required key: ChangeToken
+-- @return GetChangeTokenStatusRequest structure as a key-value pair table
+function M.GetChangeTokenStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating GetChangeTokenStatusRequest")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertGetChangeTokenStatusRequest(t)
 	return t
@@ -3274,11 +3619,14 @@ end
 
 --- Create a structure of type UpdateSqlInjectionMatchSetResponse
 -- <p>The response to an <a>UpdateSqlInjectionMatchSets</a> request.</p>
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.UpdateSqlInjectionMatchSetResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSqlInjectionMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return UpdateSqlInjectionMatchSetResponse structure as a key-value pair table
+function M.UpdateSqlInjectionMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateSqlInjectionMatchSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertUpdateSqlInjectionMatchSetResponse(t)
 	return t
@@ -3297,11 +3645,14 @@ end
 
 --- Create a structure of type WAFNonEmptyEntityException
 -- <p>The operation failed because you tried to delete an object that isn't empty. For example:</p> <ul> <li> <p>You tried to delete a <code>WebACL</code> that still contains one or more <code>Rule</code> objects.</p> </li> <li> <p>You tried to delete a <code>Rule</code> that still contains one or more <code>ByteMatchSet</code> objects or other predicates.</p> </li> <li> <p>You tried to delete a <code>ByteMatchSet</code> that contains one or more <code>ByteMatchTuple</code> objects.</p> </li> <li> <p>You tried to delete an <code>IPSet</code> that references one or more IP addresses.</p> </li> </ul>
--- @param _message [errorMessage] 
-function M.WAFNonEmptyEntityException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFNonEmptyEntityException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return WAFNonEmptyEntityException structure as a key-value pair table
+function M.WAFNonEmptyEntityException(args)
+	assert(args, "You must provdide an argument table when creating WAFNonEmptyEntityException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertWAFNonEmptyEntityException(t)
 	return t
@@ -3320,11 +3671,14 @@ end
 
 --- Create a structure of type WAFStaleDataException
 -- <p>The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.</p>
--- @param _message [errorMessage] 
-function M.WAFStaleDataException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFStaleDataException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return WAFStaleDataException structure as a key-value pair table
+function M.WAFStaleDataException(args)
+	assert(args, "You must provdide an argument table when creating WAFStaleDataException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertWAFStaleDataException(t)
 	return t
@@ -3347,17 +3701,20 @@ end
 
 --- Create a structure of type SizeConstraintSet
 -- <p>A complex type that contains <code>SizeConstraint</code> objects, which specify the parts of web requests that you want AWS WAF to inspect the size of. If a <code>SizeConstraintSet</code> contains more than one <code>SizeConstraint</code> object, a request only needs to match one constraint to be considered a match.</p>
--- @param _SizeConstraints [SizeConstraints] <p>Specifies the parts of web requests that you want to inspect the size of.</p>
--- @param _SizeConstraintSetId [ResourceId] <p>A unique identifier for a <code>SizeConstraintSet</code>. You use <code>SizeConstraintSetId</code> to get information about a <code>SizeConstraintSet</code> (see <a>GetSizeConstraintSet</a>), update a <code>SizeConstraintSet</code> (see <a>UpdateSizeConstraintSet</a>), insert a <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SizeConstraintSet</code> from AWS WAF (see <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
--- @param _Name [ResourceName] <p>The name, if any, of the <code>SizeConstraintSet</code>.</p>
--- Required parameter: SizeConstraintSetId
--- Required parameter: SizeConstraints
-function M.SizeConstraintSet(_SizeConstraints, _SizeConstraintSetId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SizeConstraintSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SizeConstraints [SizeConstraints] <p>Specifies the parts of web requests that you want to inspect the size of.</p>
+-- * SizeConstraintSetId [ResourceId] <p>A unique identifier for a <code>SizeConstraintSet</code>. You use <code>SizeConstraintSetId</code> to get information about a <code>SizeConstraintSet</code> (see <a>GetSizeConstraintSet</a>), update a <code>SizeConstraintSet</code> (see <a>UpdateSizeConstraintSet</a>), insert a <code>SizeConstraintSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SizeConstraintSet</code> from AWS WAF (see <a>DeleteSizeConstraintSet</a>).</p> <p> <code>SizeConstraintSetId</code> is returned by <a>CreateSizeConstraintSet</a> and by <a>ListSizeConstraintSets</a>.</p>
+-- * Name [ResourceName] <p>The name, if any, of the <code>SizeConstraintSet</code>.</p>
+-- Required key: SizeConstraintSetId
+-- Required key: SizeConstraints
+-- @return SizeConstraintSet structure as a key-value pair table
+function M.SizeConstraintSet(args)
+	assert(args, "You must provdide an argument table when creating SizeConstraintSet")
 	local t = { 
-		["SizeConstraints"] = _SizeConstraints,
-		["SizeConstraintSetId"] = _SizeConstraintSetId,
-		["Name"] = _Name,
+		["SizeConstraints"] = args["SizeConstraints"],
+		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertSizeConstraintSet(t)
 	return t
@@ -3381,19 +3738,22 @@ end
 
 --- Create a structure of type UpdateWebACLRequest
 --  
--- @param _DefaultAction [WafAction] <p>A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn't match the criteria in any of the rules in a web ACL.</p>
--- @param _ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
--- @param _WebACLId [ResourceId] <p>The <code>WebACLId</code> of the <a>WebACL</a> that you want to update. <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
--- @param _Updates [WebACLUpdates] <p>An array of updates to make to the <a>WebACL</a>.</p> <p>An array of <code>WebACLUpdate</code> objects that you want to insert into or delete from a <a>WebACL</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>WebACLUpdate</a>: Contains <code>Action</code> and <code>ActivatedRule</code> </p> </li> <li> <p> <a>ActivatedRule</a>: Contains <code>Action</code>, <code>Priority</code>, <code>RuleId</code>, and <code>Type</code> </p> </li> <li> <p> <a>WafAction</a>: Contains <code>Type</code> </p> </li> </ul>
--- Required parameter: WebACLId
--- Required parameter: ChangeToken
-function M.UpdateWebACLRequest(_DefaultAction, _ChangeToken, _WebACLId, _Updates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateWebACLRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DefaultAction [WafAction] <p>A default action for the web ACL, either ALLOW or BLOCK. AWS WAF performs the default action if a request doesn't match the criteria in any of the rules in a web ACL.</p>
+-- * ChangeToken [ChangeToken] <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
+-- * WebACLId [ResourceId] <p>The <code>WebACLId</code> of the <a>WebACL</a> that you want to update. <code>WebACLId</code> is returned by <a>CreateWebACL</a> and by <a>ListWebACLs</a>.</p>
+-- * Updates [WebACLUpdates] <p>An array of updates to make to the <a>WebACL</a>.</p> <p>An array of <code>WebACLUpdate</code> objects that you want to insert into or delete from a <a>WebACL</a>. For more information, see the applicable data types:</p> <ul> <li> <p> <a>WebACLUpdate</a>: Contains <code>Action</code> and <code>ActivatedRule</code> </p> </li> <li> <p> <a>ActivatedRule</a>: Contains <code>Action</code>, <code>Priority</code>, <code>RuleId</code>, and <code>Type</code> </p> </li> <li> <p> <a>WafAction</a>: Contains <code>Type</code> </p> </li> </ul>
+-- Required key: WebACLId
+-- Required key: ChangeToken
+-- @return UpdateWebACLRequest structure as a key-value pair table
+function M.UpdateWebACLRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateWebACLRequest")
 	local t = { 
-		["DefaultAction"] = _DefaultAction,
-		["ChangeToken"] = _ChangeToken,
-		["WebACLId"] = _WebACLId,
-		["Updates"] = _Updates,
+		["DefaultAction"] = args["DefaultAction"],
+		["ChangeToken"] = args["ChangeToken"],
+		["WebACLId"] = args["WebACLId"],
+		["Updates"] = args["Updates"],
 	}
 	asserts.AssertUpdateWebACLRequest(t)
 	return t
@@ -3415,15 +3775,18 @@ end
 
 --- Create a structure of type XssMatchSetUpdate
 -- <p>Specifies the part of a web request that you want to inspect for cross-site scripting attacks and indicates whether you want to add the specification to an <a>XssMatchSet</a> or delete it from an <code>XssMatchSet</code>.</p>
--- @param _Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>XssMatchSetUpdate</a> to an <a>XssMatchSet</a>. Use <code>DELETE</code> to remove a <code>XssMatchSetUpdate</code> from an <code>XssMatchSet</code>.</p>
--- @param _XssMatchTuple [XssMatchTuple] <p>Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.</p>
--- Required parameter: Action
--- Required parameter: XssMatchTuple
-function M.XssMatchSetUpdate(_Action, _XssMatchTuple, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating XssMatchSetUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <a>XssMatchSetUpdate</a> to an <a>XssMatchSet</a>. Use <code>DELETE</code> to remove a <code>XssMatchSetUpdate</code> from an <code>XssMatchSet</code>.</p>
+-- * XssMatchTuple [XssMatchTuple] <p>Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.</p>
+-- Required key: Action
+-- Required key: XssMatchTuple
+-- @return XssMatchSetUpdate structure as a key-value pair table
+function M.XssMatchSetUpdate(args)
+	assert(args, "You must provdide an argument table when creating XssMatchSetUpdate")
 	local t = { 
-		["Action"] = _Action,
-		["XssMatchTuple"] = _XssMatchTuple,
+		["Action"] = args["Action"],
+		["XssMatchTuple"] = args["XssMatchTuple"],
 	}
 	asserts.AssertXssMatchSetUpdate(t)
 	return t
@@ -3443,13 +3806,16 @@ end
 
 --- Create a structure of type CreateIPSetResponse
 --  
--- @param _IPSet [IPSet] <p>The <a>IPSet</a> returned in the <code>CreateIPSet</code> response.</p>
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.CreateIPSetResponse(_IPSet, _ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateIPSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IPSet [IPSet] <p>The <a>IPSet</a> returned in the <code>CreateIPSet</code> response.</p>
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return CreateIPSetResponse structure as a key-value pair table
+function M.CreateIPSetResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateIPSetResponse")
 	local t = { 
-		["IPSet"] = _IPSet,
-		["ChangeToken"] = _ChangeToken,
+		["IPSet"] = args["IPSet"],
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertCreateIPSetResponse(t)
 	return t
@@ -3471,15 +3837,18 @@ end
 
 --- Create a structure of type RuleSummary
 -- <p>Contains the identifier and the friendly name or description of the <code>Rule</code>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description of the <a>Rule</a>. You can't change the name of a <code>Rule</code> after you create it.</p>
--- @param _RuleId [ResourceId] <p>A unique identifier for a <code>Rule</code>. You use <code>RuleId</code> to get more information about a <code>Rule</code> (see <a>GetRule</a>), update a <code>Rule</code> (see <a>UpdateRule</a>), insert a <code>Rule</code> into a <code>WebACL</code> or delete one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>Rule</code> from AWS WAF (see <a>DeleteRule</a>).</p> <p> <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
--- Required parameter: RuleId
--- Required parameter: Name
-function M.RuleSummary(_Name, _RuleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RuleSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ResourceName] <p>A friendly name or description of the <a>Rule</a>. You can't change the name of a <code>Rule</code> after you create it.</p>
+-- * RuleId [ResourceId] <p>A unique identifier for a <code>Rule</code>. You use <code>RuleId</code> to get more information about a <code>Rule</code> (see <a>GetRule</a>), update a <code>Rule</code> (see <a>UpdateRule</a>), insert a <code>Rule</code> into a <code>WebACL</code> or delete one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>Rule</code> from AWS WAF (see <a>DeleteRule</a>).</p> <p> <code>RuleId</code> is returned by <a>CreateRule</a> and by <a>ListRules</a>.</p>
+-- Required key: RuleId
+-- Required key: Name
+-- @return RuleSummary structure as a key-value pair table
+function M.RuleSummary(args)
+	assert(args, "You must provdide an argument table when creating RuleSummary")
 	local t = { 
-		["Name"] = _Name,
-		["RuleId"] = _RuleId,
+		["Name"] = args["Name"],
+		["RuleId"] = args["RuleId"],
 	}
 	asserts.AssertRuleSummary(t)
 	return t
@@ -3501,15 +3870,18 @@ end
 
 --- Create a structure of type IPSetUpdate
 -- <p>Specifies the type of update to perform to an <a>IPSet</a> with <a>UpdateIPSet</a>.</p>
--- @param _Action [ChangeAction] <p>Specifies whether to insert or delete an IP address with <a>UpdateIPSet</a>.</p>
--- @param _IPSetDescriptor [IPSetDescriptor] <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web requests originate from.</p>
--- Required parameter: Action
--- Required parameter: IPSetDescriptor
-function M.IPSetUpdate(_Action, _IPSetDescriptor, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IPSetUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specifies whether to insert or delete an IP address with <a>UpdateIPSet</a>.</p>
+-- * IPSetDescriptor [IPSetDescriptor] <p>The IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR notation) that web requests originate from.</p>
+-- Required key: Action
+-- Required key: IPSetDescriptor
+-- @return IPSetUpdate structure as a key-value pair table
+function M.IPSetUpdate(args)
+	assert(args, "You must provdide an argument table when creating IPSetUpdate")
 	local t = { 
-		["Action"] = _Action,
-		["IPSetDescriptor"] = _IPSetDescriptor,
+		["Action"] = args["Action"],
+		["IPSetDescriptor"] = args["IPSetDescriptor"],
 	}
 	asserts.AssertIPSetUpdate(t)
 	return t
@@ -3529,13 +3901,16 @@ end
 
 --- Create a structure of type ListXssMatchSetsRequest
 -- <p>A request to list the <a>XssMatchSet</a> objects created by the current AWS account.</p>
--- @param _NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <a>XssMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>XssMatchSets</code>. For the second and subsequent <code>ListXssMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>XssMatchSets</code>.</p>
--- @param _Limit [PaginationLimit] <p>Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If you have more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
-function M.ListXssMatchSetsRequest(_NextMarker, _Limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListXssMatchSetsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you specify a value for <code>Limit</code> and you have more <a>XssMatchSet</a> objects than the value of <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of <code>XssMatchSets</code>. For the second and subsequent <code>ListXssMatchSets</code> requests, specify the value of <code>NextMarker</code> from the previous response to get information about another batch of <code>XssMatchSets</code>.</p>
+-- * Limit [PaginationLimit] <p>Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If you have more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
+-- @return ListXssMatchSetsRequest structure as a key-value pair table
+function M.ListXssMatchSetsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListXssMatchSetsRequest")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["Limit"] = _Limit,
+		["NextMarker"] = args["NextMarker"],
+		["Limit"] = args["Limit"],
 	}
 	asserts.AssertListXssMatchSetsRequest(t)
 	return t
@@ -3555,13 +3930,16 @@ end
 
 --- Create a structure of type ListRateBasedRulesResponse
 --  
--- @param _Rules [RuleSummaries] <p>An array of <a>RuleSummary</a> objects.</p>
--- @param _NextMarker [NextMarker] <p>If you have more <code>Rules</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>Rules</code>, submit another <code>ListRateBasedRules</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
-function M.ListRateBasedRulesResponse(_Rules, _NextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRateBasedRulesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [RuleSummaries] <p>An array of <a>RuleSummary</a> objects.</p>
+-- * NextMarker [NextMarker] <p>If you have more <code>Rules</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>Rules</code>, submit another <code>ListRateBasedRules</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- @return ListRateBasedRulesResponse structure as a key-value pair table
+function M.ListRateBasedRulesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListRateBasedRulesResponse")
 	local t = { 
-		["Rules"] = _Rules,
-		["NextMarker"] = _NextMarker,
+		["Rules"] = args["Rules"],
+		["NextMarker"] = args["NextMarker"],
 	}
 	asserts.AssertListRateBasedRulesResponse(t)
 	return t
@@ -3581,13 +3959,16 @@ end
 
 --- Create a structure of type ListSizeConstraintSetsResponse
 --  
--- @param _NextMarker [NextMarker] <p>If you have more <code>SizeConstraintSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>SizeConstraintSet</code> objects, submit another <code>ListSizeConstraintSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
--- @param _SizeConstraintSets [SizeConstraintSetSummaries] <p>An array of <a>SizeConstraintSetSummary</a> objects.</p>
-function M.ListSizeConstraintSetsResponse(_NextMarker, _SizeConstraintSets, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSizeConstraintSetsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextMarker [NextMarker] <p>If you have more <code>SizeConstraintSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>SizeConstraintSet</code> objects, submit another <code>ListSizeConstraintSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
+-- * SizeConstraintSets [SizeConstraintSetSummaries] <p>An array of <a>SizeConstraintSetSummary</a> objects.</p>
+-- @return ListSizeConstraintSetsResponse structure as a key-value pair table
+function M.ListSizeConstraintSetsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListSizeConstraintSetsResponse")
 	local t = { 
-		["NextMarker"] = _NextMarker,
-		["SizeConstraintSets"] = _SizeConstraintSets,
+		["NextMarker"] = args["NextMarker"],
+		["SizeConstraintSets"] = args["SizeConstraintSets"],
 	}
 	asserts.AssertListSizeConstraintSetsResponse(t)
 	return t
@@ -3606,11 +3987,14 @@ end
 
 --- Create a structure of type WAFNonexistentItemException
 -- <p>The operation failed because the referenced object doesn't exist.</p>
--- @param _message [errorMessage] 
-function M.WAFNonexistentItemException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WAFNonexistentItemException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return WAFNonexistentItemException structure as a key-value pair table
+function M.WAFNonexistentItemException(args)
+	assert(args, "You must provdide an argument table when creating WAFNonexistentItemException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertWAFNonexistentItemException(t)
 	return t
@@ -3632,15 +4016,18 @@ end
 
 --- Create a structure of type RuleUpdate
 -- <p>Specifies a <code>Predicate</code> (such as an <code>IPSet</code>) and indicates whether you want to add it to a <code>Rule</code> or delete it from a <code>Rule</code>.</p>
--- @param _Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code> from a <code>Rule</code>.</p>
--- @param _Predicate [Predicate] <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you want to add to a <code>Rule</code>.</p>
--- Required parameter: Action
--- Required parameter: Predicate
-function M.RuleUpdate(_Action, _Predicate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RuleUpdate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ChangeAction] <p>Specify <code>INSERT</code> to add a <code>Predicate</code> to a <code>Rule</code>. Use <code>DELETE</code> to remove a <code>Predicate</code> from a <code>Rule</code>.</p>
+-- * Predicate [Predicate] <p>The ID of the <code>Predicate</code> (such as an <code>IPSet</code>) that you want to add to a <code>Rule</code>.</p>
+-- Required key: Action
+-- Required key: Predicate
+-- @return RuleUpdate structure as a key-value pair table
+function M.RuleUpdate(args)
+	assert(args, "You must provdide an argument table when creating RuleUpdate")
 	local t = { 
-		["Action"] = _Action,
-		["Predicate"] = _Predicate,
+		["Action"] = args["Action"],
+		["Predicate"] = args["Predicate"],
 	}
 	asserts.AssertRuleUpdate(t)
 	return t
@@ -3668,25 +4055,28 @@ end
 
 --- Create a structure of type RateBasedRule
 -- <p>A <code>RateBasedRule</code> is identical to a regular <a>Rule</a>, with one addition: a <code>RateBasedRule</code> counts the number of requests that arrive from a specified IP address every five minutes. For example, based on recent requests that you've seen from an attacker, you might create a <code>RateBasedRule</code> that includes the following conditions: </p> <ul> <li> <p>The requests come from 192.0.2.44.</p> </li> <li> <p>They contain the value <code>BadBot</code> in the <code>User-Agent</code> header.</p> </li> </ul> <p>In the rule, you also define the rate limit as 15,000.</p> <p>Requests that meet both of these conditions and exceed 15,000 requests every five minutes trigger the rule's action (block or count), which is defined in the web ACL.</p>
--- @param _RateKey [RateKey] <p>The field that AWS WAF uses to determine if requests are likely arriving from single source and thus subject to rate monitoring. The only valid value for <code>RateKey</code> is <code>IP</code>. <code>IP</code> indicates that requests arriving from the same IP address are subject to the <code>RateLimit</code> that is specified in the <code>RateBasedRule</code>.</p>
--- @param _Name [ResourceName] <p>A friendly name or description for a <code>RateBasedRule</code>. You can't change the name of a <code>RateBasedRule</code> after you create it.</p>
--- @param _RuleId [ResourceId] <p>A unique identifier for a <code>RateBasedRule</code>. You use <code>RuleId</code> to get more information about a <code>RateBasedRule</code> (see <a>GetRateBasedRule</a>), update a <code>RateBasedRule</code> (see <a>UpdateRateBasedRule</a>), insert a <code>RateBasedRule</code> into a <code>WebACL</code> or delete one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>RateBasedRule</code> from AWS WAF (see <a>DeleteRateBasedRule</a>).</p>
--- @param _RateLimit [RateLimit] <p>The maximum number of requests, which have an identical value in the field specified by the <code>RateKey</code>, allowed in a five-minute period. If the number of requests exceeds the <code>RateLimit</code> and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.</p>
--- @param _MatchPredicates [Predicates] <p>The <code>Predicates</code> object contains one <code>Predicate</code> element for each <a>ByteMatchSet</a>, <a>IPSet</a>, or <a>SqlInjectionMatchSet</a> object that you want to include in a <code>RateBasedRule</code>.</p>
--- @param _MetricName [MetricName] <p>A friendly name or description for the metrics for a <code>RateBasedRule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>RateBasedRule</code>.</p>
--- Required parameter: RuleId
--- Required parameter: MatchPredicates
--- Required parameter: RateKey
--- Required parameter: RateLimit
-function M.RateBasedRule(_RateKey, _Name, _RuleId, _RateLimit, _MatchPredicates, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RateBasedRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RateKey [RateKey] <p>The field that AWS WAF uses to determine if requests are likely arriving from single source and thus subject to rate monitoring. The only valid value for <code>RateKey</code> is <code>IP</code>. <code>IP</code> indicates that requests arriving from the same IP address are subject to the <code>RateLimit</code> that is specified in the <code>RateBasedRule</code>.</p>
+-- * Name [ResourceName] <p>A friendly name or description for a <code>RateBasedRule</code>. You can't change the name of a <code>RateBasedRule</code> after you create it.</p>
+-- * RuleId [ResourceId] <p>A unique identifier for a <code>RateBasedRule</code>. You use <code>RuleId</code> to get more information about a <code>RateBasedRule</code> (see <a>GetRateBasedRule</a>), update a <code>RateBasedRule</code> (see <a>UpdateRateBasedRule</a>), insert a <code>RateBasedRule</code> into a <code>WebACL</code> or delete one from a <code>WebACL</code> (see <a>UpdateWebACL</a>), or delete a <code>RateBasedRule</code> from AWS WAF (see <a>DeleteRateBasedRule</a>).</p>
+-- * RateLimit [RateLimit] <p>The maximum number of requests, which have an identical value in the field specified by the <code>RateKey</code>, allowed in a five-minute period. If the number of requests exceeds the <code>RateLimit</code> and the other predicates specified in the rule are also met, AWS WAF triggers the action that is specified for this rule.</p>
+-- * MatchPredicates [Predicates] <p>The <code>Predicates</code> object contains one <code>Predicate</code> element for each <a>ByteMatchSet</a>, <a>IPSet</a>, or <a>SqlInjectionMatchSet</a> object that you want to include in a <code>RateBasedRule</code>.</p>
+-- * MetricName [MetricName] <p>A friendly name or description for the metrics for a <code>RateBasedRule</code>. The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the <code>RateBasedRule</code>.</p>
+-- Required key: RuleId
+-- Required key: MatchPredicates
+-- Required key: RateKey
+-- Required key: RateLimit
+-- @return RateBasedRule structure as a key-value pair table
+function M.RateBasedRule(args)
+	assert(args, "You must provdide an argument table when creating RateBasedRule")
 	local t = { 
-		["RateKey"] = _RateKey,
-		["Name"] = _Name,
-		["RuleId"] = _RuleId,
-		["RateLimit"] = _RateLimit,
-		["MatchPredicates"] = _MatchPredicates,
-		["MetricName"] = _MetricName,
+		["RateKey"] = args["RateKey"],
+		["Name"] = args["Name"],
+		["RuleId"] = args["RuleId"],
+		["RateLimit"] = args["RateLimit"],
+		["MatchPredicates"] = args["MatchPredicates"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertRateBasedRule(t)
 	return t
@@ -3709,17 +4099,20 @@ end
 
 --- Create a structure of type SqlInjectionMatchSet
 -- <p>A complex type that contains <code>SqlInjectionMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header. If a <code>SqlInjectionMatchSet</code> contains more than one <code>SqlInjectionMatchTuple</code> object, a request needs to include snippets of SQL code in only one of the specified parts of the request to be considered a match.</p>
--- @param _SqlInjectionMatchTuples [SqlInjectionMatchTuples] <p>Specifies the parts of web requests that you want to inspect for snippets of malicious SQL code.</p>
--- @param _Name [ResourceName] <p>The name, if any, of the <code>SqlInjectionMatchSet</code>.</p>
--- @param _SqlInjectionMatchSetId [ResourceId] <p>A unique identifier for a <code>SqlInjectionMatchSet</code>. You use <code>SqlInjectionMatchSetId</code> to get information about a <code>SqlInjectionMatchSet</code> (see <a>GetSqlInjectionMatchSet</a>), update a <code>SqlInjectionMatchSet</code> (see <a>UpdateSqlInjectionMatchSet</a>), insert a <code>SqlInjectionMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SqlInjectionMatchSet</code> from AWS WAF (see <a>DeleteSqlInjectionMatchSet</a>).</p> <p> <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
--- Required parameter: SqlInjectionMatchSetId
--- Required parameter: SqlInjectionMatchTuples
-function M.SqlInjectionMatchSet(_SqlInjectionMatchTuples, _Name, _SqlInjectionMatchSetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SqlInjectionMatchSet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SqlInjectionMatchTuples [SqlInjectionMatchTuples] <p>Specifies the parts of web requests that you want to inspect for snippets of malicious SQL code.</p>
+-- * Name [ResourceName] <p>The name, if any, of the <code>SqlInjectionMatchSet</code>.</p>
+-- * SqlInjectionMatchSetId [ResourceId] <p>A unique identifier for a <code>SqlInjectionMatchSet</code>. You use <code>SqlInjectionMatchSetId</code> to get information about a <code>SqlInjectionMatchSet</code> (see <a>GetSqlInjectionMatchSet</a>), update a <code>SqlInjectionMatchSet</code> (see <a>UpdateSqlInjectionMatchSet</a>), insert a <code>SqlInjectionMatchSet</code> into a <code>Rule</code> or delete one from a <code>Rule</code> (see <a>UpdateRule</a>), and delete a <code>SqlInjectionMatchSet</code> from AWS WAF (see <a>DeleteSqlInjectionMatchSet</a>).</p> <p> <code>SqlInjectionMatchSetId</code> is returned by <a>CreateSqlInjectionMatchSet</a> and by <a>ListSqlInjectionMatchSets</a>.</p>
+-- Required key: SqlInjectionMatchSetId
+-- Required key: SqlInjectionMatchTuples
+-- @return SqlInjectionMatchSet structure as a key-value pair table
+function M.SqlInjectionMatchSet(args)
+	assert(args, "You must provdide an argument table when creating SqlInjectionMatchSet")
 	local t = { 
-		["SqlInjectionMatchTuples"] = _SqlInjectionMatchTuples,
-		["Name"] = _Name,
-		["SqlInjectionMatchSetId"] = _SqlInjectionMatchSetId,
+		["SqlInjectionMatchTuples"] = args["SqlInjectionMatchTuples"],
+		["Name"] = args["Name"],
+		["SqlInjectionMatchSetId"] = args["SqlInjectionMatchSetId"],
 	}
 	asserts.AssertSqlInjectionMatchSet(t)
 	return t
@@ -3738,11 +4131,14 @@ end
 
 --- Create a structure of type GetXssMatchSetResponse
 -- <p>The response to a <a>GetXssMatchSet</a> request.</p>
--- @param _XssMatchSet [XssMatchSet] <p>Information about the <a>XssMatchSet</a> that you specified in the <code>GetXssMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>XssMatchSet</a>: Contains <code>Name</code>, <code>XssMatchSetId</code>, and an array of <code>XssMatchTuple</code> objects</p> </li> <li> <p> <a>XssMatchTuple</a>: Each <code>XssMatchTuple</code> object contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
-function M.GetXssMatchSetResponse(_XssMatchSet, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetXssMatchSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * XssMatchSet [XssMatchSet] <p>Information about the <a>XssMatchSet</a> that you specified in the <code>GetXssMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>XssMatchSet</a>: Contains <code>Name</code>, <code>XssMatchSetId</code>, and an array of <code>XssMatchTuple</code> objects</p> </li> <li> <p> <a>XssMatchTuple</a>: Each <code>XssMatchTuple</code> object contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
+-- @return GetXssMatchSetResponse structure as a key-value pair table
+function M.GetXssMatchSetResponse(args)
+	assert(args, "You must provdide an argument table when creating GetXssMatchSetResponse")
 	local t = { 
-		["XssMatchSet"] = _XssMatchSet,
+		["XssMatchSet"] = args["XssMatchSet"],
 	}
 	asserts.AssertGetXssMatchSetResponse(t)
 	return t
@@ -3761,11 +4157,14 @@ end
 
 --- Create a structure of type DeleteIPSetResponse
 --  
--- @param _ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
-function M.DeleteIPSetResponse(_ChangeToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteIPSetResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
+-- @return DeleteIPSetResponse structure as a key-value pair table
+function M.DeleteIPSetResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteIPSetResponse")
 	local t = { 
-		["ChangeToken"] = _ChangeToken,
+		["ChangeToken"] = args["ChangeToken"],
 	}
 	asserts.AssertDeleteIPSetResponse(t)
 	return t
@@ -3785,13 +4184,16 @@ end
 
 --- Create a structure of type HTTPHeader
 -- <p>The response from a <a>GetSampledRequests</a> request includes an <code>HTTPHeader</code> complex type that appears as <code>Headers</code> in the response syntax. <code>HTTPHeader</code> contains the names and values of all of the headers that appear in one of the web requests that were returned by <code>GetSampledRequests</code>. </p>
--- @param _Name [HeaderName] <p>The name of one of the headers in the sampled web request.</p>
--- @param _Value [HeaderValue] <p>The value of one of the headers in the sampled web request.</p>
-function M.HTTPHeader(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HTTPHeader")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [HeaderName] <p>The name of one of the headers in the sampled web request.</p>
+-- * Value [HeaderValue] <p>The value of one of the headers in the sampled web request.</p>
+-- @return HTTPHeader structure as a key-value pair table
+function M.HTTPHeader(args)
+	assert(args, "You must provdide an argument table when creating HTTPHeader")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertHTTPHeader(t)
 	return t

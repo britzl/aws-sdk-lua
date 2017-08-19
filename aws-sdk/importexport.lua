@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type NoSuchBucketException
 -- The specified bucket does not exist. Create the specified bucket or change the manifest's bucket, exportBucket, or logBucket field to a bucket that the account, as specified by the manifest's Access Key ID, has write permissions to.
--- @param _message [ErrorMessage] 
-function M.NoSuchBucketException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchBucketException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return NoSuchBucketException structure as a key-value pair table
+function M.NoSuchBucketException(args)
+	assert(args, "You must provdide an argument table when creating NoSuchBucketException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNoSuchBucketException(t)
 	return t
@@ -57,11 +60,14 @@ end
 
 --- Create a structure of type InvalidCustomsException
 -- One or more customs parameters was invalid. Please correct and resubmit.
--- @param _message [ErrorMessage] 
-function M.InvalidCustomsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCustomsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidCustomsException structure as a key-value pair table
+function M.InvalidCustomsException(args)
+	assert(args, "You must provdide an argument table when creating InvalidCustomsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidCustomsException(t)
 	return t
@@ -80,11 +86,14 @@ end
 
 --- Create a structure of type MissingParameterException
 -- One or more required parameters was missing from the request.
--- @param _message [ErrorMessage] 
-function M.MissingParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MissingParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return MissingParameterException structure as a key-value pair table
+function M.MissingParameterException(args)
+	assert(args, "You must provdide an argument table when creating MissingParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMissingParameterException(t)
 	return t
@@ -103,11 +112,14 @@ end
 
 --- Create a structure of type UnableToUpdateJobIdException
 -- AWS Import/Export cannot update the job
--- @param _message [ErrorMessage] 
-function M.UnableToUpdateJobIdException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnableToUpdateJobIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return UnableToUpdateJobIdException structure as a key-value pair table
+function M.UnableToUpdateJobIdException(args)
+	assert(args, "You must provdide an argument table when creating UnableToUpdateJobIdException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnableToUpdateJobIdException(t)
 	return t
@@ -128,14 +140,17 @@ end
 
 --- Create a structure of type CancelJobInput
 -- Input structure for the CancelJob operation.
--- @param _APIVersion [APIVersion] 
--- @param _JobId [JobId] 
--- Required parameter: JobId
-function M.CancelJobInput(_APIVersion, _JobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelJobInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * APIVersion [APIVersion] 
+-- * JobId [JobId] 
+-- Required key: JobId
+-- @return CancelJobInput structure as a key-value pair table
+function M.CancelJobInput(args)
+	assert(args, "You must provdide an argument table when creating CancelJobInput")
 	local t = { 
-		["APIVersion"] = _APIVersion,
-		["JobId"] = _JobId,
+		["APIVersion"] = args["APIVersion"],
+		["JobId"] = args["JobId"],
 	}
 	asserts.AssertCancelJobInput(t)
 	return t
@@ -154,11 +169,14 @@ end
 
 --- Create a structure of type InvalidFileSystemException
 -- File system specified in export manifest is invalid.
--- @param _message [ErrorMessage] 
-function M.InvalidFileSystemException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidFileSystemException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidFileSystemException structure as a key-value pair table
+function M.InvalidFileSystemException(args)
+	assert(args, "You must provdide an argument table when creating InvalidFileSystemException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidFileSystemException(t)
 	return t
@@ -177,11 +195,14 @@ end
 
 --- Create a structure of type ExpiredJobIdException
 -- Indicates that the specified job has expired out of the system.
--- @param _message [ErrorMessage] 
-function M.ExpiredJobIdException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredJobIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return ExpiredJobIdException structure as a key-value pair table
+function M.ExpiredJobIdException(args)
+	assert(args, "You must provdide an argument table when creating ExpiredJobIdException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertExpiredJobIdException(t)
 	return t
@@ -200,11 +221,14 @@ end
 
 --- Create a structure of type UnableToCancelJobIdException
 -- AWS Import/Export cannot cancel the job
--- @param _message [ErrorMessage] 
-function M.UnableToCancelJobIdException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnableToCancelJobIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return UnableToCancelJobIdException structure as a key-value pair table
+function M.UnableToCancelJobIdException(args)
+	assert(args, "You must provdide an argument table when creating UnableToCancelJobIdException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnableToCancelJobIdException(t)
 	return t
@@ -235,34 +259,37 @@ end
 
 --- Create a structure of type GetShippingLabelInput
 --  
--- @param _city [city] 
--- @param _street3 [street3] 
--- @param _name [name] 
--- @param _country [country] 
--- @param _company [company] 
--- @param _jobIds [JobIdList] 
--- @param _APIVersion [APIVersion] 
--- @param _phoneNumber [phoneNumber] 
--- @param _street1 [street1] 
--- @param _postalCode [postalCode] 
--- @param _stateOrProvince [stateOrProvince] 
--- @param _street2 [street2] 
--- Required parameter: jobIds
-function M.GetShippingLabelInput(_city, _street3, _name, _country, _company, _jobIds, _APIVersion, _phoneNumber, _street1, _postalCode, _stateOrProvince, _street2, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetShippingLabelInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * city [city] 
+-- * street3 [street3] 
+-- * name [name] 
+-- * country [country] 
+-- * company [company] 
+-- * jobIds [JobIdList] 
+-- * APIVersion [APIVersion] 
+-- * phoneNumber [phoneNumber] 
+-- * street1 [street1] 
+-- * postalCode [postalCode] 
+-- * stateOrProvince [stateOrProvince] 
+-- * street2 [street2] 
+-- Required key: jobIds
+-- @return GetShippingLabelInput structure as a key-value pair table
+function M.GetShippingLabelInput(args)
+	assert(args, "You must provdide an argument table when creating GetShippingLabelInput")
 	local t = { 
-		["city"] = _city,
-		["street3"] = _street3,
-		["name"] = _name,
-		["country"] = _country,
-		["company"] = _company,
-		["jobIds"] = _jobIds,
-		["APIVersion"] = _APIVersion,
-		["phoneNumber"] = _phoneNumber,
-		["street1"] = _street1,
-		["postalCode"] = _postalCode,
-		["stateOrProvince"] = _stateOrProvince,
-		["street2"] = _street2,
+		["city"] = args["city"],
+		["street3"] = args["street3"],
+		["name"] = args["name"],
+		["country"] = args["country"],
+		["company"] = args["company"],
+		["jobIds"] = args["jobIds"],
+		["APIVersion"] = args["APIVersion"],
+		["phoneNumber"] = args["phoneNumber"],
+		["street1"] = args["street1"],
+		["postalCode"] = args["postalCode"],
+		["stateOrProvince"] = args["stateOrProvince"],
+		["street2"] = args["street2"],
 	}
 	asserts.AssertGetShippingLabelInput(t)
 	return t
@@ -283,14 +310,17 @@ end
 
 --- Create a structure of type GetStatusInput
 -- Input structure for the GetStatus operation.
--- @param _APIVersion [APIVersion] 
--- @param _JobId [JobId] 
--- Required parameter: JobId
-function M.GetStatusInput(_APIVersion, _JobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetStatusInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * APIVersion [APIVersion] 
+-- * JobId [JobId] 
+-- Required key: JobId
+-- @return GetStatusInput structure as a key-value pair table
+function M.GetStatusInput(args)
+	assert(args, "You must provdide an argument table when creating GetStatusInput")
 	local t = { 
-		["APIVersion"] = _APIVersion,
-		["JobId"] = _JobId,
+		["APIVersion"] = args["APIVersion"],
+		["JobId"] = args["JobId"],
 	}
 	asserts.AssertGetStatusInput(t)
 	return t
@@ -309,11 +339,14 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- One or more parameters had an invalid value.
--- @param _message [ErrorMessage] 
-function M.InvalidParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterException(t)
 	return t
@@ -332,11 +365,14 @@ end
 
 --- Create a structure of type InvalidAccessKeyIdException
 -- The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.
--- @param _message [ErrorMessage] 
-function M.InvalidAccessKeyIdException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAccessKeyIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidAccessKeyIdException structure as a key-value pair table
+function M.InvalidAccessKeyIdException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAccessKeyIdException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidAccessKeyIdException(t)
 	return t
@@ -356,13 +392,16 @@ end
 
 --- Create a structure of type Artifact
 -- A discrete item that contains the description and URL of an artifact (such as a PDF).
--- @param _URL [URL] 
--- @param _Description [Description] 
-function M.Artifact(_URL, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Artifact")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * URL [URL] 
+-- * Description [Description] 
+-- @return Artifact structure as a key-value pair table
+function M.Artifact(args)
+	assert(args, "You must provdide an argument table when creating Artifact")
 	local t = { 
-		["URL"] = _URL,
-		["Description"] = _Description,
+		["URL"] = args["URL"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertArtifact(t)
 	return t
@@ -381,11 +420,14 @@ end
 
 --- Create a structure of type InvalidJobIdException
 -- The JOBID was missing, not found, or not associated with the AWS account.
--- @param _message [ErrorMessage] 
-function M.InvalidJobIdException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidJobIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidJobIdException structure as a key-value pair table
+function M.InvalidJobIdException(args)
+	assert(args, "You must provdide an argument table when creating InvalidJobIdException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidJobIdException(t)
 	return t
@@ -404,11 +446,14 @@ end
 
 --- Create a structure of type CreateJobQuotaExceededException
 -- Each account can create only a certain number of jobs per day. If you need to create more than this, please contact awsimportexport@amazon.com to explain your particular use case.
--- @param _message [ErrorMessage] 
-function M.CreateJobQuotaExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobQuotaExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return CreateJobQuotaExceededException structure as a key-value pair table
+function M.CreateJobQuotaExceededException(args)
+	assert(args, "You must provdide an argument table when creating CreateJobQuotaExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertCreateJobQuotaExceededException(t)
 	return t
@@ -432,21 +477,24 @@ end
 
 --- Create a structure of type CreateJobOutput
 -- Output structure for the CreateJob operation.
--- @param _ArtifactList [ArtifactList] 
--- @param _WarningMessage [WarningMessage] 
--- @param _SignatureFileContents [SignatureFileContents] 
--- @param _Signature [Signature] 
--- @param _JobId [JobId] 
--- @param _JobType [JobType] 
-function M.CreateJobOutput(_ArtifactList, _WarningMessage, _SignatureFileContents, _Signature, _JobId, _JobType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ArtifactList [ArtifactList] 
+-- * WarningMessage [WarningMessage] 
+-- * SignatureFileContents [SignatureFileContents] 
+-- * Signature [Signature] 
+-- * JobId [JobId] 
+-- * JobType [JobType] 
+-- @return CreateJobOutput structure as a key-value pair table
+function M.CreateJobOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateJobOutput")
 	local t = { 
-		["ArtifactList"] = _ArtifactList,
-		["WarningMessage"] = _WarningMessage,
-		["SignatureFileContents"] = _SignatureFileContents,
-		["Signature"] = _Signature,
-		["JobId"] = _JobId,
-		["JobType"] = _JobType,
+		["ArtifactList"] = args["ArtifactList"],
+		["WarningMessage"] = args["WarningMessage"],
+		["SignatureFileContents"] = args["SignatureFileContents"],
+		["Signature"] = args["Signature"],
+		["JobId"] = args["JobId"],
+		["JobType"] = args["JobType"],
 	}
 	asserts.AssertCreateJobOutput(t)
 	return t
@@ -468,17 +516,20 @@ end
 
 --- Create a structure of type Job
 -- Representation of a job returned by the ListJobs operation.
--- @param _CreationDate [CreationDate] 
--- @param _IsCanceled [IsCanceled] 
--- @param _JobType [JobType] 
--- @param _JobId [JobId] 
-function M.Job(_CreationDate, _IsCanceled, _JobType, _JobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Job")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreationDate [CreationDate] 
+-- * IsCanceled [IsCanceled] 
+-- * JobType [JobType] 
+-- * JobId [JobId] 
+-- @return Job structure as a key-value pair table
+function M.Job(args)
+	assert(args, "You must provdide an argument table when creating Job")
 	local t = { 
-		["CreationDate"] = _CreationDate,
-		["IsCanceled"] = _IsCanceled,
-		["JobType"] = _JobType,
-		["JobId"] = _JobId,
+		["CreationDate"] = args["CreationDate"],
+		["IsCanceled"] = args["IsCanceled"],
+		["JobType"] = args["JobType"],
+		["JobId"] = args["JobId"],
 	}
 	asserts.AssertJob(t)
 	return t
@@ -497,11 +548,14 @@ end
 
 --- Create a structure of type CanceledJobIdException
 -- The specified job ID has been canceled and is no longer valid.
--- @param _message [ErrorMessage] 
-function M.CanceledJobIdException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CanceledJobIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return CanceledJobIdException structure as a key-value pair table
+function M.CanceledJobIdException(args)
+	assert(args, "You must provdide an argument table when creating CanceledJobIdException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertCanceledJobIdException(t)
 	return t
@@ -520,11 +574,14 @@ end
 
 --- Create a structure of type BucketPermissionException
 -- The account specified does not have the appropriate bucket permissions.
--- @param _message [ErrorMessage] 
-function M.BucketPermissionException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BucketPermissionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return BucketPermissionException structure as a key-value pair table
+function M.BucketPermissionException(args)
+	assert(args, "You must provdide an argument table when creating BucketPermissionException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertBucketPermissionException(t)
 	return t
@@ -543,11 +600,14 @@ end
 
 --- Create a structure of type MissingCustomsException
 -- One or more required customs parameters was missing from the manifest.
--- @param _message [ErrorMessage] 
-function M.MissingCustomsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MissingCustomsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return MissingCustomsException structure as a key-value pair table
+function M.MissingCustomsException(args)
+	assert(args, "You must provdide an argument table when creating MissingCustomsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMissingCustomsException(t)
 	return t
@@ -566,11 +626,14 @@ end
 
 --- Create a structure of type MultipleRegionsException
 -- Your manifest file contained buckets from multiple regions. A job is restricted to buckets from one region. Please correct and resubmit.
--- @param _message [ErrorMessage] 
-function M.MultipleRegionsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MultipleRegionsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return MultipleRegionsException structure as a key-value pair table
+function M.MultipleRegionsException(args)
+	assert(args, "You must provdide an argument table when creating MultipleRegionsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMultipleRegionsException(t)
 	return t
@@ -590,13 +653,16 @@ end
 
 --- Create a structure of type ListJobsOutput
 -- Output structure for the ListJobs operation.
--- @param _Jobs [JobsList] 
--- @param _IsTruncated [IsTruncated] 
-function M.ListJobsOutput(_Jobs, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Jobs [JobsList] 
+-- * IsTruncated [IsTruncated] 
+-- @return ListJobsOutput structure as a key-value pair table
+function M.ListJobsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListJobsOutput")
 	local t = { 
-		["Jobs"] = _Jobs,
-		["IsTruncated"] = _IsTruncated,
+		["Jobs"] = args["Jobs"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListJobsOutput(t)
 	return t
@@ -617,15 +683,18 @@ end
 
 --- Create a structure of type UpdateJobOutput
 -- Output structure for the UpateJob operation.
--- @param _ArtifactList [ArtifactList] 
--- @param _Success [Success] 
--- @param _WarningMessage [WarningMessage] 
-function M.UpdateJobOutput(_ArtifactList, _Success, _WarningMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ArtifactList [ArtifactList] 
+-- * Success [Success] 
+-- * WarningMessage [WarningMessage] 
+-- @return UpdateJobOutput structure as a key-value pair table
+function M.UpdateJobOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateJobOutput")
 	local t = { 
-		["ArtifactList"] = _ArtifactList,
-		["Success"] = _Success,
-		["WarningMessage"] = _WarningMessage,
+		["ArtifactList"] = args["ArtifactList"],
+		["Success"] = args["Success"],
+		["WarningMessage"] = args["WarningMessage"],
 	}
 	asserts.AssertUpdateJobOutput(t)
 	return t
@@ -651,22 +720,25 @@ end
 
 --- Create a structure of type CreateJobInput
 -- Input structure for the CreateJob operation.
--- @param _ManifestAddendum [ManifestAddendum] 
--- @param _ValidateOnly [ValidateOnly] 
--- @param _APIVersion [APIVersion] 
--- @param _JobType [JobType] 
--- @param _Manifest [Manifest] 
--- Required parameter: JobType
--- Required parameter: Manifest
--- Required parameter: ValidateOnly
-function M.CreateJobInput(_ManifestAddendum, _ValidateOnly, _APIVersion, _JobType, _Manifest, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ManifestAddendum [ManifestAddendum] 
+-- * ValidateOnly [ValidateOnly] 
+-- * APIVersion [APIVersion] 
+-- * JobType [JobType] 
+-- * Manifest [Manifest] 
+-- Required key: JobType
+-- Required key: Manifest
+-- Required key: ValidateOnly
+-- @return CreateJobInput structure as a key-value pair table
+function M.CreateJobInput(args)
+	assert(args, "You must provdide an argument table when creating CreateJobInput")
 	local t = { 
-		["ManifestAddendum"] = _ManifestAddendum,
-		["ValidateOnly"] = _ValidateOnly,
-		["APIVersion"] = _APIVersion,
-		["JobType"] = _JobType,
-		["Manifest"] = _Manifest,
+		["ManifestAddendum"] = args["ManifestAddendum"],
+		["ValidateOnly"] = args["ValidateOnly"],
+		["APIVersion"] = args["APIVersion"],
+		["JobType"] = args["JobType"],
+		["Manifest"] = args["Manifest"],
 	}
 	asserts.AssertCreateJobInput(t)
 	return t
@@ -685,11 +757,14 @@ end
 
 --- Create a structure of type CancelJobOutput
 -- Output structure for the CancelJob operation.
--- @param _Success [Success] 
-function M.CancelJobOutput(_Success, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelJobOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Success [Success] 
+-- @return CancelJobOutput structure as a key-value pair table
+function M.CancelJobOutput(args)
+	assert(args, "You must provdide an argument table when creating CancelJobOutput")
 	local t = { 
-		["Success"] = _Success,
+		["Success"] = args["Success"],
 	}
 	asserts.AssertCancelJobOutput(t)
 	return t
@@ -709,13 +784,16 @@ end
 
 --- Create a structure of type GetShippingLabelOutput
 --  
--- @param _ShippingLabelURL [GenericString] 
--- @param _Warning [GenericString] 
-function M.GetShippingLabelOutput(_ShippingLabelURL, _Warning, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetShippingLabelOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ShippingLabelURL [GenericString] 
+-- * Warning [GenericString] 
+-- @return GetShippingLabelOutput structure as a key-value pair table
+function M.GetShippingLabelOutput(args)
+	assert(args, "You must provdide an argument table when creating GetShippingLabelOutput")
 	local t = { 
-		["ShippingLabelURL"] = _ShippingLabelURL,
-		["Warning"] = _Warning,
+		["ShippingLabelURL"] = args["ShippingLabelURL"],
+		["Warning"] = args["Warning"],
 	}
 	asserts.AssertGetShippingLabelOutput(t)
 	return t
@@ -734,11 +812,14 @@ end
 
 --- Create a structure of type MalformedManifestException
 -- Your manifest is not well-formed.
--- @param _message [ErrorMessage] 
-function M.MalformedManifestException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MalformedManifestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return MalformedManifestException structure as a key-value pair table
+function M.MalformedManifestException(args)
+	assert(args, "You must provdide an argument table when creating MalformedManifestException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMalformedManifestException(t)
 	return t
@@ -757,11 +838,14 @@ end
 
 --- Create a structure of type MissingManifestFieldException
 -- One or more required fields were missing from the manifest file. Please correct and resubmit.
--- @param _message [ErrorMessage] 
-function M.MissingManifestFieldException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MissingManifestFieldException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return MissingManifestFieldException structure as a key-value pair table
+function M.MissingManifestFieldException(args)
+	assert(args, "You must provdide an argument table when creating MissingManifestFieldException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMissingManifestFieldException(t)
 	return t
@@ -780,11 +864,14 @@ end
 
 --- Create a structure of type InvalidVersionException
 -- The client tool version is invalid.
--- @param _message [ErrorMessage] 
-function M.InvalidVersionException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidVersionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidVersionException structure as a key-value pair table
+function M.InvalidVersionException(args)
+	assert(args, "You must provdide an argument table when creating InvalidVersionException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidVersionException(t)
 	return t
@@ -803,11 +890,14 @@ end
 
 --- Create a structure of type InvalidAddressException
 -- The address specified in the manifest is invalid.
--- @param _message [ErrorMessage] 
-function M.InvalidAddressException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAddressException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidAddressException structure as a key-value pair table
+function M.InvalidAddressException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAddressException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidAddressException(t)
 	return t
@@ -828,15 +918,18 @@ end
 
 --- Create a structure of type ListJobsInput
 -- Input structure for the ListJobs operation.
--- @param _Marker [Marker] 
--- @param _MaxJobs [MaxJobs] 
--- @param _APIVersion [APIVersion] 
-function M.ListJobsInput(_Marker, _MaxJobs, _APIVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] 
+-- * MaxJobs [MaxJobs] 
+-- * APIVersion [APIVersion] 
+-- @return ListJobsInput structure as a key-value pair table
+function M.ListJobsInput(args)
+	assert(args, "You must provdide an argument table when creating ListJobsInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxJobs"] = _MaxJobs,
-		["APIVersion"] = _APIVersion,
+		["Marker"] = args["Marker"],
+		["MaxJobs"] = args["MaxJobs"],
+		["APIVersion"] = args["APIVersion"],
 	}
 	asserts.AssertListJobsInput(t)
 	return t
@@ -870,41 +963,44 @@ end
 
 --- Create a structure of type GetStatusOutput
 -- Output structure for the GetStatus operation.
--- @param _ProgressMessage [ProgressMessage] 
--- @param _ProgressCode [ProgressCode] 
--- @param _CreationDate [CreationDate] 
--- @param _LogBucket [LogBucket] 
--- @param _ArtifactList [ArtifactList] 
--- @param _LocationMessage [LocationMessage] 
--- @param _CurrentManifest [CurrentManifest] 
--- @param _JobId [JobId] 
--- @param _Carrier [Carrier] 
--- @param _JobType [JobType] 
--- @param _Signature [Signature] 
--- @param _TrackingNumber [TrackingNumber] 
--- @param _SignatureFileContents [Signature] 
--- @param _ErrorCount [ErrorCount] 
--- @param _LocationCode [LocationCode] 
--- @param _LogKey [LogKey] 
-function M.GetStatusOutput(_ProgressMessage, _ProgressCode, _CreationDate, _LogBucket, _ArtifactList, _LocationMessage, _CurrentManifest, _JobId, _Carrier, _JobType, _Signature, _TrackingNumber, _SignatureFileContents, _ErrorCount, _LocationCode, _LogKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetStatusOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProgressMessage [ProgressMessage] 
+-- * ProgressCode [ProgressCode] 
+-- * CreationDate [CreationDate] 
+-- * LogBucket [LogBucket] 
+-- * ArtifactList [ArtifactList] 
+-- * LocationMessage [LocationMessage] 
+-- * CurrentManifest [CurrentManifest] 
+-- * JobId [JobId] 
+-- * Carrier [Carrier] 
+-- * JobType [JobType] 
+-- * Signature [Signature] 
+-- * TrackingNumber [TrackingNumber] 
+-- * SignatureFileContents [Signature] 
+-- * ErrorCount [ErrorCount] 
+-- * LocationCode [LocationCode] 
+-- * LogKey [LogKey] 
+-- @return GetStatusOutput structure as a key-value pair table
+function M.GetStatusOutput(args)
+	assert(args, "You must provdide an argument table when creating GetStatusOutput")
 	local t = { 
-		["ProgressMessage"] = _ProgressMessage,
-		["ProgressCode"] = _ProgressCode,
-		["CreationDate"] = _CreationDate,
-		["LogBucket"] = _LogBucket,
-		["ArtifactList"] = _ArtifactList,
-		["LocationMessage"] = _LocationMessage,
-		["CurrentManifest"] = _CurrentManifest,
-		["JobId"] = _JobId,
-		["Carrier"] = _Carrier,
-		["JobType"] = _JobType,
-		["Signature"] = _Signature,
-		["TrackingNumber"] = _TrackingNumber,
-		["SignatureFileContents"] = _SignatureFileContents,
-		["ErrorCount"] = _ErrorCount,
-		["LocationCode"] = _LocationCode,
-		["LogKey"] = _LogKey,
+		["ProgressMessage"] = args["ProgressMessage"],
+		["ProgressCode"] = args["ProgressCode"],
+		["CreationDate"] = args["CreationDate"],
+		["LogBucket"] = args["LogBucket"],
+		["ArtifactList"] = args["ArtifactList"],
+		["LocationMessage"] = args["LocationMessage"],
+		["CurrentManifest"] = args["CurrentManifest"],
+		["JobId"] = args["JobId"],
+		["Carrier"] = args["Carrier"],
+		["JobType"] = args["JobType"],
+		["Signature"] = args["Signature"],
+		["TrackingNumber"] = args["TrackingNumber"],
+		["SignatureFileContents"] = args["SignatureFileContents"],
+		["ErrorCount"] = args["ErrorCount"],
+		["LocationCode"] = args["LocationCode"],
+		["LogKey"] = args["LogKey"],
 	}
 	asserts.AssertGetStatusOutput(t)
 	return t
@@ -923,11 +1019,14 @@ end
 
 --- Create a structure of type InvalidManifestFieldException
 -- One or more manifest fields was invalid. Please correct and resubmit.
--- @param _message [ErrorMessage] 
-function M.InvalidManifestFieldException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidManifestFieldException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] 
+-- @return InvalidManifestFieldException structure as a key-value pair table
+function M.InvalidManifestFieldException(args)
+	assert(args, "You must provdide an argument table when creating InvalidManifestFieldException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidManifestFieldException(t)
 	return t
@@ -954,23 +1053,26 @@ end
 
 --- Create a structure of type UpdateJobInput
 -- Input structure for the UpateJob operation.
--- @param _Manifest [Manifest] 
--- @param _ValidateOnly [ValidateOnly] 
--- @param _APIVersion [APIVersion] 
--- @param _JobType [JobType] 
--- @param _JobId [JobId] 
--- Required parameter: JobId
--- Required parameter: Manifest
--- Required parameter: JobType
--- Required parameter: ValidateOnly
-function M.UpdateJobInput(_Manifest, _ValidateOnly, _APIVersion, _JobType, _JobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Manifest [Manifest] 
+-- * ValidateOnly [ValidateOnly] 
+-- * APIVersion [APIVersion] 
+-- * JobType [JobType] 
+-- * JobId [JobId] 
+-- Required key: JobId
+-- Required key: Manifest
+-- Required key: JobType
+-- Required key: ValidateOnly
+-- @return UpdateJobInput structure as a key-value pair table
+function M.UpdateJobInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateJobInput")
 	local t = { 
-		["Manifest"] = _Manifest,
-		["ValidateOnly"] = _ValidateOnly,
-		["APIVersion"] = _APIVersion,
-		["JobType"] = _JobType,
-		["JobId"] = _JobId,
+		["Manifest"] = args["Manifest"],
+		["ValidateOnly"] = args["ValidateOnly"],
+		["APIVersion"] = args["APIVersion"],
+		["JobType"] = args["JobType"],
+		["JobId"] = args["JobId"],
 	}
 	asserts.AssertUpdateJobInput(t)
 	return t

@@ -37,15 +37,18 @@ end
 
 --- Create a structure of type SalesforceAction
 -- <p>Describes an action to write a message to a Salesforce IoT Cloud Input Stream.</p>
--- @param _url [SalesforceEndpoint] <p>The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is available from the Salesforce IoT Cloud platform after creation of the Input Stream.</p>
--- @param _token [SalesforceToken] <p>The token used to authenticate access to the Salesforce IoT Cloud Input Stream. The token is available from the Salesforce IoT Cloud platform after creation of the Input Stream.</p>
--- Required parameter: token
--- Required parameter: url
-function M.SalesforceAction(_url, _token, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SalesforceAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * url [SalesforceEndpoint] <p>The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is available from the Salesforce IoT Cloud platform after creation of the Input Stream.</p>
+-- * token [SalesforceToken] <p>The token used to authenticate access to the Salesforce IoT Cloud Input Stream. The token is available from the Salesforce IoT Cloud platform after creation of the Input Stream.</p>
+-- Required key: token
+-- Required key: url
+-- @return SalesforceAction structure as a key-value pair table
+function M.SalesforceAction(args)
+	assert(args, "You must provdide an argument table when creating SalesforceAction")
 	local t = { 
-		["url"] = _url,
-		["token"] = _token,
+		["url"] = args["url"],
+		["token"] = args["token"],
 	}
 	asserts.AssertSalesforceAction(t)
 	return t
@@ -64,11 +67,14 @@ end
 
 --- Create a structure of type VersionsLimitExceededException
 -- <p>The number of policy versions exceeds the limit.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.VersionsLimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VersionsLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return VersionsLimitExceededException structure as a key-value pair table
+function M.VersionsLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating VersionsLimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertVersionsLimitExceededException(t)
 	return t
@@ -86,8 +92,11 @@ end
 
 --- Create a structure of type DetachThingPrincipalResponse
 -- <p>The output from the DetachThingPrincipal operation.</p>
-function M.DetachThingPrincipalResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachThingPrincipalResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DetachThingPrincipalResponse structure as a key-value pair table
+function M.DetachThingPrincipalResponse(args)
+	assert(args, "You must provdide an argument table when creating DetachThingPrincipalResponse")
 	local t = { 
 	}
 	asserts.AssertDetachThingPrincipalResponse(t)
@@ -107,11 +116,14 @@ end
 
 --- Create a structure of type ServiceUnavailableException
 -- <p>The service is temporarily unavailable.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.ServiceUnavailableException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return ServiceUnavailableException structure as a key-value pair table
+function M.ServiceUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServiceUnavailableException(t)
 	return t
@@ -130,11 +142,14 @@ end
 
 --- Create a structure of type UnauthorizedException
 -- <p>You are not authorized to perform this operation.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.UnauthorizedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnauthorizedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return UnauthorizedException structure as a key-value pair table
+function M.UnauthorizedException(args)
+	assert(args, "You must provdide an argument table when creating UnauthorizedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnauthorizedException(t)
 	return t
@@ -154,13 +169,16 @@ end
 
 --- Create a structure of type ListThingTypesResponse
 -- <p>The output for the ListThingTypes operation.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
--- @param _thingTypes [ThingTypeList] <p>The thing types.</p>
-function M.ListThingTypesResponse(_nextToken, _thingTypes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListThingTypesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+-- * thingTypes [ThingTypeList] <p>The thing types.</p>
+-- @return ListThingTypesResponse structure as a key-value pair table
+function M.ListThingTypesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListThingTypesResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["thingTypes"] = _thingTypes,
+		["nextToken"] = args["nextToken"],
+		["thingTypes"] = args["thingTypes"],
 	}
 	asserts.AssertListThingTypesResponse(t)
 	return t
@@ -183,17 +201,20 @@ end
 
 --- Create a structure of type SnsAction
 -- <p>Describes an action to publish to an Amazon SNS topic.</p>
--- @param _targetArn [AwsArn] <p>The ARN of the SNS topic.</p>
--- @param _roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
--- @param _messageFormat [MessageFormat] <p>The message format of the message to publish. Optional. Accepted values are "JSON" and "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if the payload should be parsed and relevant platform-specific bits of the payload should be extracted. To read more about SNS message formats, see <a href="http://docs.aws.amazon.com/sns/latest/dg/json-formats.html">http://docs.aws.amazon.com/sns/latest/dg/json-formats.html</a> refer to their official documentation.</p>
--- Required parameter: targetArn
--- Required parameter: roleArn
-function M.SnsAction(_targetArn, _roleArn, _messageFormat, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SnsAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * targetArn [AwsArn] <p>The ARN of the SNS topic.</p>
+-- * roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
+-- * messageFormat [MessageFormat] <p>The message format of the message to publish. Optional. Accepted values are "JSON" and "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if the payload should be parsed and relevant platform-specific bits of the payload should be extracted. To read more about SNS message formats, see <a href="http://docs.aws.amazon.com/sns/latest/dg/json-formats.html">http://docs.aws.amazon.com/sns/latest/dg/json-formats.html</a> refer to their official documentation.</p>
+-- Required key: targetArn
+-- Required key: roleArn
+-- @return SnsAction structure as a key-value pair table
+function M.SnsAction(args)
+	assert(args, "You must provdide an argument table when creating SnsAction")
 	local t = { 
-		["targetArn"] = _targetArn,
-		["roleArn"] = _roleArn,
-		["messageFormat"] = _messageFormat,
+		["targetArn"] = args["targetArn"],
+		["roleArn"] = args["roleArn"],
+		["messageFormat"] = args["messageFormat"],
 	}
 	asserts.AssertSnsAction(t)
 	return t
@@ -214,15 +235,18 @@ end
 
 --- Create a structure of type ThingTypeMetadata
 -- <p>The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when time was deprecated.</p>
--- @param _deprecated [Boolean] <p>Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.</p>
--- @param _creationDate [CreationDate] <p>The date and time when the thing type was created.</p>
--- @param _deprecationDate [DeprecationDate] <p>The date and time when the thing type was deprecated.</p>
-function M.ThingTypeMetadata(_deprecated, _creationDate, _deprecationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThingTypeMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * deprecated [Boolean] <p>Whether the thing type is deprecated. If <b>true</b>, no new things could be associated with this type.</p>
+-- * creationDate [CreationDate] <p>The date and time when the thing type was created.</p>
+-- * deprecationDate [DeprecationDate] <p>The date and time when the thing type was deprecated.</p>
+-- @return ThingTypeMetadata structure as a key-value pair table
+function M.ThingTypeMetadata(args)
+	assert(args, "You must provdide an argument table when creating ThingTypeMetadata")
 	local t = { 
-		["deprecated"] = _deprecated,
-		["creationDate"] = _creationDate,
-		["deprecationDate"] = _deprecationDate,
+		["deprecated"] = args["deprecated"],
+		["creationDate"] = args["creationDate"],
+		["deprecationDate"] = args["deprecationDate"],
 	}
 	asserts.AssertThingTypeMetadata(t)
 	return t
@@ -241,11 +265,14 @@ end
 
 --- Create a structure of type TransferCertificateResponse
 -- <p>The output from the TransferCertificate operation.</p>
--- @param _transferredCertificateArn [CertificateArn] <p>The ARN of the certificate.</p>
-function M.TransferCertificateResponse(_transferredCertificateArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TransferCertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * transferredCertificateArn [CertificateArn] <p>The ARN of the certificate.</p>
+-- @return TransferCertificateResponse structure as a key-value pair table
+function M.TransferCertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating TransferCertificateResponse")
 	local t = { 
-		["transferredCertificateArn"] = _transferredCertificateArn,
+		["transferredCertificateArn"] = args["transferredCertificateArn"],
 	}
 	asserts.AssertTransferCertificateResponse(t)
 	return t
@@ -265,13 +292,16 @@ end
 
 --- Create a structure of type ListPrincipalThingsResponse
 -- <p>The output from the ListPrincipalThings operation.</p>
--- @param _things [ThingNameList] <p>The things.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
-function M.ListPrincipalThingsResponse(_things, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalThingsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * things [ThingNameList] <p>The things.</p>
+-- * nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+-- @return ListPrincipalThingsResponse structure as a key-value pair table
+function M.ListPrincipalThingsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListPrincipalThingsResponse")
 	local t = { 
-		["things"] = _things,
-		["nextToken"] = _nextToken,
+		["things"] = args["things"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListPrincipalThingsResponse(t)
 	return t
@@ -291,13 +321,16 @@ end
 
 --- Create a structure of type ListPolicyPrincipalsResponse
 -- <p>The output from the ListPolicyPrincipals operation.</p>
--- @param _nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
--- @param _principals [Principals] <p>The descriptions of the principals.</p>
-function M.ListPolicyPrincipalsResponse(_nextMarker, _principals, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyPrincipalsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
+-- * principals [Principals] <p>The descriptions of the principals.</p>
+-- @return ListPolicyPrincipalsResponse structure as a key-value pair table
+function M.ListPolicyPrincipalsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListPolicyPrincipalsResponse")
 	local t = { 
-		["nextMarker"] = _nextMarker,
-		["principals"] = _principals,
+		["nextMarker"] = args["nextMarker"],
+		["principals"] = args["principals"],
 	}
 	asserts.AssertListPolicyPrincipalsResponse(t)
 	return t
@@ -329,33 +362,36 @@ end
 
 --- Create a structure of type DynamoDBAction
 -- <p>Describes an action to write to a DynamoDB table.</p> <p>The <code>tableName</code>, <code>hashKeyField</code>, and <code>rangeKeyField</code> values must match the values used when you created the table.</p> <p>The <code>hashKeyValue</code> and <code>rangeKeyvalue</code> fields use a substitution template syntax. These templates provide data at runtime. The syntax is as follows: ${<i>sql-expression</i>}.</p> <p>You can specify any valid expression in a WHERE or SELECT clause, including JSON properties, comparisons, calculations, and functions. For example, the following field uses the third level of the topic:</p> <p> <code>"hashKeyValue": "${topic(3)}"</code> </p> <p>The following field uses the timestamp:</p> <p> <code>"rangeKeyValue": "${timestamp()}"</code> </p>
--- @param _rangeKeyType [DynamoKeyType] <p>The range key type. Valid values are "STRING" or "NUMBER"</p>
--- @param _payloadField [PayloadField] <p>The action payload. This name can be customized.</p>
--- @param _hashKeyType [DynamoKeyType] <p>The hash key type. Valid values are "STRING" or "NUMBER"</p>
--- @param _hashKeyField [HashKeyField] <p>The hash key name.</p>
--- @param _roleArn [AwsArn] <p>The ARN of the IAM role that grants access to the DynamoDB table.</p>
--- @param _tableName [TableName] <p>The name of the DynamoDB table.</p>
--- @param _hashKeyValue [HashKeyValue] <p>The hash key value.</p>
--- @param _rangeKeyValue [RangeKeyValue] <p>The range key value.</p>
--- @param _operation [DynamoOperation] <p>The type of operation to be performed. This follows the substitution template, so it can be <code>${operation}</code>, but the substitution must result in one of the following: <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code>.</p>
--- @param _rangeKeyField [RangeKeyField] <p>The range key name.</p>
--- Required parameter: tableName
--- Required parameter: roleArn
--- Required parameter: hashKeyField
--- Required parameter: hashKeyValue
-function M.DynamoDBAction(_rangeKeyType, _payloadField, _hashKeyType, _hashKeyField, _roleArn, _tableName, _hashKeyValue, _rangeKeyValue, _operation, _rangeKeyField, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DynamoDBAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * rangeKeyType [DynamoKeyType] <p>The range key type. Valid values are "STRING" or "NUMBER"</p>
+-- * payloadField [PayloadField] <p>The action payload. This name can be customized.</p>
+-- * hashKeyType [DynamoKeyType] <p>The hash key type. Valid values are "STRING" or "NUMBER"</p>
+-- * hashKeyField [HashKeyField] <p>The hash key name.</p>
+-- * roleArn [AwsArn] <p>The ARN of the IAM role that grants access to the DynamoDB table.</p>
+-- * tableName [TableName] <p>The name of the DynamoDB table.</p>
+-- * hashKeyValue [HashKeyValue] <p>The hash key value.</p>
+-- * rangeKeyValue [RangeKeyValue] <p>The range key value.</p>
+-- * operation [DynamoOperation] <p>The type of operation to be performed. This follows the substitution template, so it can be <code>${operation}</code>, but the substitution must result in one of the following: <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code>.</p>
+-- * rangeKeyField [RangeKeyField] <p>The range key name.</p>
+-- Required key: tableName
+-- Required key: roleArn
+-- Required key: hashKeyField
+-- Required key: hashKeyValue
+-- @return DynamoDBAction structure as a key-value pair table
+function M.DynamoDBAction(args)
+	assert(args, "You must provdide an argument table when creating DynamoDBAction")
 	local t = { 
-		["rangeKeyType"] = _rangeKeyType,
-		["payloadField"] = _payloadField,
-		["hashKeyType"] = _hashKeyType,
-		["hashKeyField"] = _hashKeyField,
-		["roleArn"] = _roleArn,
-		["tableName"] = _tableName,
-		["hashKeyValue"] = _hashKeyValue,
-		["rangeKeyValue"] = _rangeKeyValue,
-		["operation"] = _operation,
-		["rangeKeyField"] = _rangeKeyField,
+		["rangeKeyType"] = args["rangeKeyType"],
+		["payloadField"] = args["payloadField"],
+		["hashKeyType"] = args["hashKeyType"],
+		["hashKeyField"] = args["hashKeyField"],
+		["roleArn"] = args["roleArn"],
+		["tableName"] = args["tableName"],
+		["hashKeyValue"] = args["hashKeyValue"],
+		["rangeKeyValue"] = args["rangeKeyValue"],
+		["operation"] = args["operation"],
+		["rangeKeyField"] = args["rangeKeyField"],
 	}
 	asserts.AssertDynamoDBAction(t)
 	return t
@@ -373,8 +409,11 @@ end
 
 --- Create a structure of type DeleteCACertificateResponse
 -- <p>The output for the DeleteCACertificate operation.</p>
-function M.DeleteCACertificateResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCACertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteCACertificateResponse structure as a key-value pair table
+function M.DeleteCACertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteCACertificateResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteCACertificateResponse(t)
@@ -394,11 +433,14 @@ end
 
 --- Create a structure of type DescribeEndpointResponse
 -- <p>The output from the DescribeEndpoint operation.</p>
--- @param _endpointAddress [EndpointAddress] <p>The endpoint. The format of the endpoint is as follows: <i>identifier</i>.iot.<i>region</i>.amazonaws.com.</p>
-function M.DescribeEndpointResponse(_endpointAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * endpointAddress [EndpointAddress] <p>The endpoint. The format of the endpoint is as follows: <i>identifier</i>.iot.<i>region</i>.amazonaws.com.</p>
+-- @return DescribeEndpointResponse structure as a key-value pair table
+function M.DescribeEndpointResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeEndpointResponse")
 	local t = { 
-		["endpointAddress"] = _endpointAddress,
+		["endpointAddress"] = args["endpointAddress"],
 	}
 	asserts.AssertDescribeEndpointResponse(t)
 	return t
@@ -422,19 +464,22 @@ end
 
 --- Create a structure of type RegisterCACertificateRequest
 -- <p>The input to the RegisterCACertificate operation.</p>
--- @param _caCertificate [CertificatePem] <p>The CA certificate.</p>
--- @param _verificationCertificate [CertificatePem] <p>The private key verification certificate.</p>
--- @param _allowAutoRegistration [AllowAutoRegistration] <p>Allows this CA certificate to be used for auto registration of device certificates.</p>
--- @param _setAsActive [SetAsActive] <p>A boolean value that specifies if the CA certificate is set to active.</p>
--- Required parameter: caCertificate
--- Required parameter: verificationCertificate
-function M.RegisterCACertificateRequest(_caCertificate, _verificationCertificate, _allowAutoRegistration, _setAsActive, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterCACertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * caCertificate [CertificatePem] <p>The CA certificate.</p>
+-- * verificationCertificate [CertificatePem] <p>The private key verification certificate.</p>
+-- * allowAutoRegistration [AllowAutoRegistration] <p>Allows this CA certificate to be used for auto registration of device certificates.</p>
+-- * setAsActive [SetAsActive] <p>A boolean value that specifies if the CA certificate is set to active.</p>
+-- Required key: caCertificate
+-- Required key: verificationCertificate
+-- @return RegisterCACertificateRequest structure as a key-value pair table
+function M.RegisterCACertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterCACertificateRequest")
 	local t = { 
-		["caCertificate"] = _caCertificate,
-		["verificationCertificate"] = _verificationCertificate,
-		["allowAutoRegistration"] = _allowAutoRegistration,
-		["setAsActive"] = _setAsActive,
+		["caCertificate"] = args["caCertificate"],
+		["verificationCertificate"] = args["verificationCertificate"],
+		["allowAutoRegistration"] = args["allowAutoRegistration"],
+		["setAsActive"] = args["setAsActive"],
 	}
 	asserts.AssertRegisterCACertificateRequest(t)
 	return t
@@ -452,8 +497,11 @@ end
 
 --- Create a structure of type DeleteRegistrationCodeRequest
 -- <p>The input for the DeleteRegistrationCode operation.</p>
-function M.DeleteRegistrationCodeRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRegistrationCodeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteRegistrationCodeRequest structure as a key-value pair table
+function M.DeleteRegistrationCodeRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteRegistrationCodeRequest")
 	local t = { 
 	}
 	asserts.AssertDeleteRegistrationCodeRequest(t)
@@ -473,11 +521,14 @@ end
 
 --- Create a structure of type GetRegistrationCodeResponse
 -- <p>The output from the GetRegistrationCode operation.</p>
--- @param _registrationCode [RegistrationCode] <p>The CA certificate registration code.</p>
-function M.GetRegistrationCodeResponse(_registrationCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRegistrationCodeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * registrationCode [RegistrationCode] <p>The CA certificate registration code.</p>
+-- @return GetRegistrationCodeResponse structure as a key-value pair table
+function M.GetRegistrationCodeResponse(args)
+	assert(args, "You must provdide an argument table when creating GetRegistrationCodeResponse")
 	local t = { 
-		["registrationCode"] = _registrationCode,
+		["registrationCode"] = args["registrationCode"],
 	}
 	asserts.AssertGetRegistrationCodeResponse(t)
 	return t
@@ -497,12 +548,15 @@ end
 
 --- Create a structure of type ListPolicyVersionsRequest
 -- <p>The input for the ListPolicyVersions operation.</p>
--- @param _policyName [PolicyName] <p>The policy name.</p>
--- Required parameter: policyName
-function M.ListPolicyVersionsRequest(_policyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The policy name.</p>
+-- Required key: policyName
+-- @return ListPolicyVersionsRequest structure as a key-value pair table
+function M.ListPolicyVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPolicyVersionsRequest")
 	local t = { 
-		["policyName"] = _policyName,
+		["policyName"] = args["policyName"],
 	}
 	asserts.AssertListPolicyVersionsRequest(t)
 	return t
@@ -523,15 +577,18 @@ end
 
 --- Create a structure of type ListCertificatesRequest
 -- <p>The input for the ListCertificates operation.</p>
--- @param _marker [Marker] <p>The marker for the next set of results.</p>
--- @param _ascendingOrder [AscendingOrder] <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
--- @param _pageSize [PageSize] <p>The result page size.</p>
-function M.ListCertificatesRequest(_marker, _ascendingOrder, _pageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCertificatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [Marker] <p>The marker for the next set of results.</p>
+-- * ascendingOrder [AscendingOrder] <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
+-- * pageSize [PageSize] <p>The result page size.</p>
+-- @return ListCertificatesRequest structure as a key-value pair table
+function M.ListCertificatesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListCertificatesRequest")
 	local t = { 
-		["marker"] = _marker,
-		["ascendingOrder"] = _ascendingOrder,
-		["pageSize"] = _pageSize,
+		["marker"] = args["marker"],
+		["ascendingOrder"] = args["ascendingOrder"],
+		["pageSize"] = args["pageSize"],
 	}
 	asserts.AssertListCertificatesRequest(t)
 	return t
@@ -553,17 +610,20 @@ end
 
 --- Create a structure of type ThingAttribute
 -- <p>The properties of the thing, including thing name, thing type name, and a list of thing attributes.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type, if the thing has been associated with a type.</p>
--- @param _attributes [Attributes] <p>A list of thing attributes which are name-value pairs.</p>
--- @param _version [Version] <p>The version of the thing record in the registry.</p>
--- @param _thingName [ThingName] <p>The name of the thing.</p>
-function M.ThingAttribute(_thingTypeName, _attributes, _version, _thingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThingAttribute")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type, if the thing has been associated with a type.</p>
+-- * attributes [Attributes] <p>A list of thing attributes which are name-value pairs.</p>
+-- * version [Version] <p>The version of the thing record in the registry.</p>
+-- * thingName [ThingName] <p>The name of the thing.</p>
+-- @return ThingAttribute structure as a key-value pair table
+function M.ThingAttribute(args)
+	assert(args, "You must provdide an argument table when creating ThingAttribute")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["attributes"] = _attributes,
-		["version"] = _version,
-		["thingName"] = _thingName,
+		["thingTypeName"] = args["thingTypeName"],
+		["attributes"] = args["attributes"],
+		["version"] = args["version"],
+		["thingName"] = args["thingName"],
 	}
 	asserts.AssertThingAttribute(t)
 	return t
@@ -583,12 +643,15 @@ end
 
 --- Create a structure of type DescribeThingRequest
 -- <p>The input for the DescribeThing operation.</p>
--- @param _thingName [ThingName] <p>The name of the thing.</p>
--- Required parameter: thingName
-function M.DescribeThingRequest(_thingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeThingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingName [ThingName] <p>The name of the thing.</p>
+-- Required key: thingName
+-- @return DescribeThingRequest structure as a key-value pair table
+function M.DescribeThingRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeThingRequest")
 	local t = { 
-		["thingName"] = _thingName,
+		["thingName"] = args["thingName"],
 	}
 	asserts.AssertDescribeThingRequest(t)
 	return t
@@ -607,11 +670,14 @@ end
 
 --- Create a structure of type ListThingPrincipalsResponse
 -- <p>The output from the ListThingPrincipals operation.</p>
--- @param _principals [Principals] <p>The principals associated with the thing.</p>
-function M.ListThingPrincipalsResponse(_principals, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListThingPrincipalsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * principals [Principals] <p>The principals associated with the thing.</p>
+-- @return ListThingPrincipalsResponse structure as a key-value pair table
+function M.ListThingPrincipalsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListThingPrincipalsResponse")
 	local t = { 
-		["principals"] = _principals,
+		["principals"] = args["principals"],
 	}
 	asserts.AssertListThingPrincipalsResponse(t)
 	return t
@@ -630,11 +696,14 @@ end
 
 --- Create a structure of type CertificateValidationException
 -- <p>The certificate is invalid.</p>
--- @param _message [errorMessage] <p>Additional information about the exception.</p>
-function M.CertificateValidationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CertificateValidationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>Additional information about the exception.</p>
+-- @return CertificateValidationException structure as a key-value pair table
+function M.CertificateValidationException(args)
+	assert(args, "You must provdide an argument table when creating CertificateValidationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertCertificateValidationException(t)
 	return t
@@ -652,8 +721,11 @@ end
 
 --- Create a structure of type DeleteThingResponse
 -- <p>The output of the DeleteThing operation.</p>
-function M.DeleteThingResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteThingResponse structure as a key-value pair table
+function M.DeleteThingResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteThingResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteThingResponse(t)
@@ -676,16 +748,19 @@ end
 
 --- Create a structure of type CreateThingRequest
 -- <p>The input for the CreateThing operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type associated with the new thing.</p>
--- @param _attributePayload [AttributePayload] <p>The attribute payload, which consists of up to three name/value pairs in a JSON document. For example:</p> <p> <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
--- @param _thingName [ThingName] <p>The name of the thing to create.</p>
--- Required parameter: thingName
-function M.CreateThingRequest(_thingTypeName, _attributePayload, _thingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateThingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type associated with the new thing.</p>
+-- * attributePayload [AttributePayload] <p>The attribute payload, which consists of up to three name/value pairs in a JSON document. For example:</p> <p> <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
+-- * thingName [ThingName] <p>The name of the thing to create.</p>
+-- Required key: thingName
+-- @return CreateThingRequest structure as a key-value pair table
+function M.CreateThingRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateThingRequest")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["attributePayload"] = _attributePayload,
-		["thingName"] = _thingName,
+		["thingTypeName"] = args["thingTypeName"],
+		["attributePayload"] = args["attributePayload"],
+		["thingName"] = args["thingName"],
 	}
 	asserts.AssertCreateThingRequest(t)
 	return t
@@ -705,13 +780,16 @@ end
 
 --- Create a structure of type RegisterCertificateResponse
 -- <p>The output from the RegisterCertificate operation.</p>
--- @param _certificateArn [CertificateArn] <p>The certificate ARN.</p>
--- @param _certificateId [CertificateId] <p>The certificate identifier.</p>
-function M.RegisterCertificateResponse(_certificateArn, _certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterCertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateArn [CertificateArn] <p>The certificate ARN.</p>
+-- * certificateId [CertificateId] <p>The certificate identifier.</p>
+-- @return RegisterCertificateResponse structure as a key-value pair table
+function M.RegisterCertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating RegisterCertificateResponse")
 	local t = { 
-		["certificateArn"] = _certificateArn,
-		["certificateId"] = _certificateId,
+		["certificateArn"] = args["certificateArn"],
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertRegisterCertificateResponse(t)
 	return t
@@ -732,15 +810,18 @@ end
 
 --- Create a structure of type PolicyVersion
 -- <p>Describes a policy version.</p>
--- @param _versionId [PolicyVersionId] <p>The policy version ID.</p>
--- @param _createDate [DateType] <p>The date and time the policy was created.</p>
--- @param _isDefaultVersion [IsDefaultVersion] <p>Specifies whether the policy version is the default.</p>
-function M.PolicyVersion(_versionId, _createDate, _isDefaultVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * versionId [PolicyVersionId] <p>The policy version ID.</p>
+-- * createDate [DateType] <p>The date and time the policy was created.</p>
+-- * isDefaultVersion [IsDefaultVersion] <p>Specifies whether the policy version is the default.</p>
+-- @return PolicyVersion structure as a key-value pair table
+function M.PolicyVersion(args)
+	assert(args, "You must provdide an argument table when creating PolicyVersion")
 	local t = { 
-		["versionId"] = _versionId,
-		["createDate"] = _createDate,
-		["isDefaultVersion"] = _isDefaultVersion,
+		["versionId"] = args["versionId"],
+		["createDate"] = args["createDate"],
+		["isDefaultVersion"] = args["isDefaultVersion"],
 	}
 	asserts.AssertPolicyVersion(t)
 	return t
@@ -762,17 +843,20 @@ end
 
 --- Create a structure of type CreatePolicyVersionResponse
 -- <p>The output of the CreatePolicyVersion operation.</p>
--- @param _policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
--- @param _policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
--- @param _policyArn [PolicyArn] <p>The policy ARN.</p>
--- @param _isDefaultVersion [IsDefaultVersion] <p>Specifies whether the policy version is the default.</p>
-function M.CreatePolicyVersionResponse(_policyDocument, _policyVersionId, _policyArn, _isDefaultVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
+-- * policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
+-- * policyArn [PolicyArn] <p>The policy ARN.</p>
+-- * isDefaultVersion [IsDefaultVersion] <p>Specifies whether the policy version is the default.</p>
+-- @return CreatePolicyVersionResponse structure as a key-value pair table
+function M.CreatePolicyVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreatePolicyVersionResponse")
 	local t = { 
-		["policyDocument"] = _policyDocument,
-		["policyVersionId"] = _policyVersionId,
-		["policyArn"] = _policyArn,
-		["isDefaultVersion"] = _isDefaultVersion,
+		["policyDocument"] = args["policyDocument"],
+		["policyVersionId"] = args["policyVersionId"],
+		["policyArn"] = args["policyArn"],
+		["isDefaultVersion"] = args["isDefaultVersion"],
 	}
 	asserts.AssertCreatePolicyVersionResponse(t)
 	return t
@@ -790,8 +874,11 @@ end
 
 --- Create a structure of type GetRegistrationCodeRequest
 -- <p>The input to the GetRegistrationCode operation.</p>
-function M.GetRegistrationCodeRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRegistrationCodeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetRegistrationCodeRequest structure as a key-value pair table
+function M.GetRegistrationCodeRequest(args)
+	assert(args, "You must provdide an argument table when creating GetRegistrationCodeRequest")
 	local t = { 
 	}
 	asserts.AssertGetRegistrationCodeRequest(t)
@@ -814,15 +901,18 @@ end
 
 --- Create a structure of type UpdateCertificateRequest
 -- <p>The input for the UpdateCertificate operation.</p>
--- @param _newStatus [CertificateStatus] <p>The new status.</p> <p> <b>Note:</b> Setting the status to PENDING_TRANSFER will result in an exception being thrown. PENDING_TRANSFER is a status used internally by AWS IoT. It is not intended for developer use.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate.</p>
--- Required parameter: certificateId
--- Required parameter: newStatus
-function M.UpdateCertificateRequest(_newStatus, _certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * newStatus [CertificateStatus] <p>The new status.</p> <p> <b>Note:</b> Setting the status to PENDING_TRANSFER will result in an exception being thrown. PENDING_TRANSFER is a status used internally by AWS IoT. It is not intended for developer use.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+-- * certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- Required key: certificateId
+-- Required key: newStatus
+-- @return UpdateCertificateRequest structure as a key-value pair table
+function M.UpdateCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateCertificateRequest")
 	local t = { 
-		["newStatus"] = _newStatus,
-		["certificateId"] = _certificateId,
+		["newStatus"] = args["newStatus"],
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertUpdateCertificateRequest(t)
 	return t
@@ -842,13 +932,16 @@ end
 
 --- Create a structure of type ListPrincipalPoliciesResponse
 -- <p>The output from the ListPrincipalPolicies operation.</p>
--- @param _nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
--- @param _policies [Policies] <p>The policies.</p>
-function M.ListPrincipalPoliciesResponse(_nextMarker, _policies, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
+-- * policies [Policies] <p>The policies.</p>
+-- @return ListPrincipalPoliciesResponse structure as a key-value pair table
+function M.ListPrincipalPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListPrincipalPoliciesResponse")
 	local t = { 
-		["nextMarker"] = _nextMarker,
-		["policies"] = _policies,
+		["nextMarker"] = args["nextMarker"],
+		["policies"] = args["policies"],
 	}
 	asserts.AssertListPrincipalPoliciesResponse(t)
 	return t
@@ -867,11 +960,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The number of attached entities exceeds the limit.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.LimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -892,15 +988,18 @@ end
 
 --- Create a structure of type ListOutgoingCertificatesRequest
 -- <p>The input to the ListOutgoingCertificates operation.</p>
--- @param _marker [Marker] <p>The marker for the next set of results.</p>
--- @param _ascendingOrder [AscendingOrder] <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
--- @param _pageSize [PageSize] <p>The result page size.</p>
-function M.ListOutgoingCertificatesRequest(_marker, _ascendingOrder, _pageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOutgoingCertificatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [Marker] <p>The marker for the next set of results.</p>
+-- * ascendingOrder [AscendingOrder] <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
+-- * pageSize [PageSize] <p>The result page size.</p>
+-- @return ListOutgoingCertificatesRequest structure as a key-value pair table
+function M.ListOutgoingCertificatesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListOutgoingCertificatesRequest")
 	local t = { 
-		["marker"] = _marker,
-		["ascendingOrder"] = _ascendingOrder,
-		["pageSize"] = _pageSize,
+		["marker"] = args["marker"],
+		["ascendingOrder"] = args["ascendingOrder"],
+		["pageSize"] = args["pageSize"],
 	}
 	asserts.AssertListOutgoingCertificatesRequest(t)
 	return t
@@ -920,12 +1019,15 @@ end
 
 --- Create a structure of type DeleteCACertificateRequest
 -- <p>Input for the DeleteCACertificate operation.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate to delete.</p>
--- Required parameter: certificateId
-function M.DeleteCACertificateRequest(_certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCACertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateId [CertificateId] <p>The ID of the certificate to delete.</p>
+-- Required key: certificateId
+-- @return DeleteCACertificateRequest structure as a key-value pair table
+function M.DeleteCACertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteCACertificateRequest")
 	local t = { 
-		["certificateId"] = _certificateId,
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertDeleteCACertificateRequest(t)
 	return t
@@ -944,11 +1046,14 @@ end
 
 --- Create a structure of type CertificateStateException
 -- <p>The certificate operation is not allowed.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.CertificateStateException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CertificateStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return CertificateStateException structure as a key-value pair table
+function M.CertificateStateException(args)
+	assert(args, "You must provdide an argument table when creating CertificateStateException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertCertificateStateException(t)
 	return t
@@ -968,12 +1073,15 @@ end
 
 --- Create a structure of type GetTopicRuleRequest
 -- <p>The input for the GetTopicRule operation.</p>
--- @param _ruleName [RuleName] <p>The name of the rule.</p>
--- Required parameter: ruleName
-function M.GetTopicRuleRequest(_ruleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTopicRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ruleName [RuleName] <p>The name of the rule.</p>
+-- Required key: ruleName
+-- @return GetTopicRuleRequest structure as a key-value pair table
+function M.GetTopicRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating GetTopicRuleRequest")
 	local t = { 
-		["ruleName"] = _ruleName,
+		["ruleName"] = args["ruleName"],
 	}
 	asserts.AssertGetTopicRuleRequest(t)
 	return t
@@ -992,11 +1100,14 @@ end
 
 --- Create a structure of type CertificateConflictException
 -- <p>Unable to verify the CA certificate used to sign the device certificate you are attempting to register. This is happens when you have registered more than one CA certificate that has the same subject field and public key.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.CertificateConflictException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CertificateConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return CertificateConflictException structure as a key-value pair table
+function M.CertificateConflictException(args)
+	assert(args, "You must provdide an argument table when creating CertificateConflictException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertCertificateConflictException(t)
 	return t
@@ -1019,19 +1130,22 @@ end
 
 --- Create a structure of type TransferData
 -- <p>Data used to transfer a certificate to an AWS account.</p>
--- @param _transferMessage [Message] <p>The transfer message.</p>
--- @param _rejectDate [DateType] <p>The date the transfer was rejected.</p>
--- @param _acceptDate [DateType] <p>The date the transfer was accepted.</p>
--- @param _transferDate [DateType] <p>The date the transfer took place.</p>
--- @param _rejectReason [Message] <p>The reason why the transfer was rejected.</p>
-function M.TransferData(_transferMessage, _rejectDate, _acceptDate, _transferDate, _rejectReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TransferData")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * transferMessage [Message] <p>The transfer message.</p>
+-- * rejectDate [DateType] <p>The date the transfer was rejected.</p>
+-- * acceptDate [DateType] <p>The date the transfer was accepted.</p>
+-- * transferDate [DateType] <p>The date the transfer took place.</p>
+-- * rejectReason [Message] <p>The reason why the transfer was rejected.</p>
+-- @return TransferData structure as a key-value pair table
+function M.TransferData(args)
+	assert(args, "You must provdide an argument table when creating TransferData")
 	local t = { 
-		["transferMessage"] = _transferMessage,
-		["rejectDate"] = _rejectDate,
-		["acceptDate"] = _acceptDate,
-		["transferDate"] = _transferDate,
-		["rejectReason"] = _rejectReason,
+		["transferMessage"] = args["transferMessage"],
+		["rejectDate"] = args["rejectDate"],
+		["acceptDate"] = args["acceptDate"],
+		["transferDate"] = args["transferDate"],
+		["rejectReason"] = args["rejectReason"],
 	}
 	asserts.AssertTransferData(t)
 	return t
@@ -1052,14 +1166,17 @@ end
 
 --- Create a structure of type DeleteThingRequest
 -- <p>The input for the DeleteThing operation.</p>
--- @param _expectedVersion [OptionalVersion] <p>The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the <code>DeleteThing</code> request is rejected with a <code>VersionConflictException</code>.</p>
--- @param _thingName [ThingName] <p>The name of the thing to delete.</p>
--- Required parameter: thingName
-function M.DeleteThingRequest(_expectedVersion, _thingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * expectedVersion [OptionalVersion] <p>The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the <code>DeleteThing</code> request is rejected with a <code>VersionConflictException</code>.</p>
+-- * thingName [ThingName] <p>The name of the thing to delete.</p>
+-- Required key: thingName
+-- @return DeleteThingRequest structure as a key-value pair table
+function M.DeleteThingRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteThingRequest")
 	local t = { 
-		["expectedVersion"] = _expectedVersion,
-		["thingName"] = _thingName,
+		["expectedVersion"] = args["expectedVersion"],
+		["thingName"] = args["thingName"],
 	}
 	asserts.AssertDeleteThingRequest(t)
 	return t
@@ -1081,17 +1198,20 @@ end
 
 --- Create a structure of type ListTopicRulesRequest
 -- <p>The input for the ListTopicRules operation.</p>
--- @param _topic [Topic] <p>The topic.</p>
--- @param _nextToken [NextToken] <p>A token used to retrieve the next value.</p>
--- @param _ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
--- @param _maxResults [MaxResults] <p>The maximum number of results to return.</p>
-function M.ListTopicRulesRequest(_topic, _nextToken, _ruleDisabled, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTopicRulesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * topic [Topic] <p>The topic.</p>
+-- * nextToken [NextToken] <p>A token used to retrieve the next value.</p>
+-- * ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
+-- * maxResults [MaxResults] <p>The maximum number of results to return.</p>
+-- @return ListTopicRulesRequest structure as a key-value pair table
+function M.ListTopicRulesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTopicRulesRequest")
 	local t = { 
-		["topic"] = _topic,
-		["nextToken"] = _nextToken,
-		["ruleDisabled"] = _ruleDisabled,
-		["maxResults"] = _maxResults,
+		["topic"] = args["topic"],
+		["nextToken"] = args["nextToken"],
+		["ruleDisabled"] = args["ruleDisabled"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListTopicRulesRequest(t)
 	return t
@@ -1111,13 +1231,16 @@ end
 
 --- Create a structure of type CreateThingTypeResponse
 -- <p>The output of the CreateThingType operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
--- @param _thingTypeArn [ThingTypeArn] <p>The Amazon Resource Name (ARN) of the thing type.</p>
-function M.CreateThingTypeResponse(_thingTypeName, _thingTypeArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateThingTypeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- * thingTypeArn [ThingTypeArn] <p>The Amazon Resource Name (ARN) of the thing type.</p>
+-- @return CreateThingTypeResponse structure as a key-value pair table
+function M.CreateThingTypeResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateThingTypeResponse")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["thingTypeArn"] = _thingTypeArn,
+		["thingTypeName"] = args["thingTypeName"],
+		["thingTypeArn"] = args["thingTypeArn"],
 	}
 	asserts.AssertCreateThingTypeResponse(t)
 	return t
@@ -1140,18 +1263,21 @@ end
 
 --- Create a structure of type ListPolicyPrincipalsRequest
 -- <p>The input for the ListPolicyPrincipals operation.</p>
--- @param _marker [Marker] <p>The marker for the next set of results.</p>
--- @param _policyName [PolicyName] <p>The policy name.</p>
--- @param _ascendingOrder [AscendingOrder] <p>Specifies the order for results. If true, the results are returned in ascending creation order.</p>
--- @param _pageSize [PageSize] <p>The result page size.</p>
--- Required parameter: policyName
-function M.ListPolicyPrincipalsRequest(_marker, _policyName, _ascendingOrder, _pageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyPrincipalsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [Marker] <p>The marker for the next set of results.</p>
+-- * policyName [PolicyName] <p>The policy name.</p>
+-- * ascendingOrder [AscendingOrder] <p>Specifies the order for results. If true, the results are returned in ascending creation order.</p>
+-- * pageSize [PageSize] <p>The result page size.</p>
+-- Required key: policyName
+-- @return ListPolicyPrincipalsRequest structure as a key-value pair table
+function M.ListPolicyPrincipalsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPolicyPrincipalsRequest")
 	local t = { 
-		["marker"] = _marker,
-		["policyName"] = _policyName,
-		["ascendingOrder"] = _ascendingOrder,
-		["pageSize"] = _pageSize,
+		["marker"] = args["marker"],
+		["policyName"] = args["policyName"],
+		["ascendingOrder"] = args["ascendingOrder"],
+		["pageSize"] = args["pageSize"],
 	}
 	asserts.AssertListPolicyPrincipalsRequest(t)
 	return t
@@ -1174,17 +1300,20 @@ end
 
 --- Create a structure of type CreatePolicyVersionRequest
 -- <p>The input for the CreatePolicyVersion operation.</p>
--- @param _policyName [PolicyName] <p>The policy name.</p>
--- @param _policyDocument [PolicyDocument] <p>The JSON document that describes the policy. Minimum length of 1. Maximum length of 2048, excluding whitespaces</p>
--- @param _setAsDefault [SetAsDefault] <p>Specifies whether the policy version is set as the default. When this parameter is true, the new policy version becomes the operative version (that is, the version that is in effect for the certificates to which the policy is attached).</p>
--- Required parameter: policyName
--- Required parameter: policyDocument
-function M.CreatePolicyVersionRequest(_policyName, _policyDocument, _setAsDefault, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The policy name.</p>
+-- * policyDocument [PolicyDocument] <p>The JSON document that describes the policy. Minimum length of 1. Maximum length of 2048, excluding whitespaces</p>
+-- * setAsDefault [SetAsDefault] <p>Specifies whether the policy version is set as the default. When this parameter is true, the new policy version becomes the operative version (that is, the version that is in effect for the certificates to which the policy is attached).</p>
+-- Required key: policyName
+-- Required key: policyDocument
+-- @return CreatePolicyVersionRequest structure as a key-value pair table
+function M.CreatePolicyVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreatePolicyVersionRequest")
 	local t = { 
-		["policyName"] = _policyName,
-		["policyDocument"] = _policyDocument,
-		["setAsDefault"] = _setAsDefault,
+		["policyName"] = args["policyName"],
+		["policyDocument"] = args["policyDocument"],
+		["setAsDefault"] = args["setAsDefault"],
 	}
 	asserts.AssertCreatePolicyVersionRequest(t)
 	return t
@@ -1206,15 +1335,18 @@ end
 
 --- Create a structure of type DetachThingPrincipalRequest
 -- <p>The input for the DetachThingPrincipal operation.</p>
--- @param _thingName [ThingName] <p>The name of the thing.</p>
--- @param _principal [Principal] <p>If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.</p>
--- Required parameter: thingName
--- Required parameter: principal
-function M.DetachThingPrincipalRequest(_thingName, _principal, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachThingPrincipalRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingName [ThingName] <p>The name of the thing.</p>
+-- * principal [Principal] <p>If the principal is a certificate, this value must be ARN of the certificate. If the principal is an Amazon Cognito identity, this value must be the ID of the Amazon Cognito identity.</p>
+-- Required key: thingName
+-- Required key: principal
+-- @return DetachThingPrincipalRequest structure as a key-value pair table
+function M.DetachThingPrincipalRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachThingPrincipalRequest")
 	local t = { 
-		["thingName"] = _thingName,
-		["principal"] = _principal,
+		["thingName"] = args["thingName"],
+		["principal"] = args["principal"],
 	}
 	asserts.AssertDetachThingPrincipalRequest(t)
 	return t
@@ -1233,11 +1365,14 @@ end
 
 --- Create a structure of type VersionConflictException
 -- <p>An exception thrown when the version of a thing passed to a command is different than the version specified with the --version parameter.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.VersionConflictException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VersionConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return VersionConflictException structure as a key-value pair table
+function M.VersionConflictException(args)
+	assert(args, "You must provdide an argument table when creating VersionConflictException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertVersionConflictException(t)
 	return t
@@ -1259,17 +1394,20 @@ end
 
 --- Create a structure of type CreatePolicyResponse
 -- <p>The output from the CreatePolicy operation.</p>
--- @param _policyName [PolicyName] <p>The policy name.</p>
--- @param _policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
--- @param _policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
--- @param _policyArn [PolicyArn] <p>The policy ARN.</p>
-function M.CreatePolicyResponse(_policyName, _policyDocument, _policyVersionId, _policyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The policy name.</p>
+-- * policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
+-- * policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
+-- * policyArn [PolicyArn] <p>The policy ARN.</p>
+-- @return CreatePolicyResponse structure as a key-value pair table
+function M.CreatePolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating CreatePolicyResponse")
 	local t = { 
-		["policyName"] = _policyName,
-		["policyDocument"] = _policyDocument,
-		["policyVersionId"] = _policyVersionId,
-		["policyArn"] = _policyArn,
+		["policyName"] = args["policyName"],
+		["policyDocument"] = args["policyDocument"],
+		["policyVersionId"] = args["policyVersionId"],
+		["policyArn"] = args["policyArn"],
 	}
 	asserts.AssertCreatePolicyResponse(t)
 	return t
@@ -1288,11 +1426,14 @@ end
 
 --- Create a structure of type CreateKeysAndCertificateRequest
 -- <p>The input for the CreateKeysAndCertificate operation.</p>
--- @param _setAsActive [SetAsActive] <p>Specifies whether the certificate is active.</p>
-function M.CreateKeysAndCertificateRequest(_setAsActive, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateKeysAndCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * setAsActive [SetAsActive] <p>Specifies whether the certificate is active.</p>
+-- @return CreateKeysAndCertificateRequest structure as a key-value pair table
+function M.CreateKeysAndCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateKeysAndCertificateRequest")
 	local t = { 
-		["setAsActive"] = _setAsActive,
+		["setAsActive"] = args["setAsActive"],
 	}
 	asserts.AssertCreateKeysAndCertificateRequest(t)
 	return t
@@ -1314,15 +1455,18 @@ end
 
 --- Create a structure of type AttachPrincipalPolicyRequest
 -- <p>The input for the AttachPrincipalPolicy operation.</p>
--- @param _policyName [PolicyName] <p>The policy name.</p>
--- @param _principal [Principal] <p>The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.</p>
--- Required parameter: policyName
--- Required parameter: principal
-function M.AttachPrincipalPolicyRequest(_policyName, _principal, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachPrincipalPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The policy name.</p>
+-- * principal [Principal] <p>The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.</p>
+-- Required key: policyName
+-- Required key: principal
+-- @return AttachPrincipalPolicyRequest structure as a key-value pair table
+function M.AttachPrincipalPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachPrincipalPolicyRequest")
 	local t = { 
-		["policyName"] = _policyName,
-		["principal"] = _principal,
+		["policyName"] = args["policyName"],
+		["principal"] = args["principal"],
 	}
 	asserts.AssertAttachPrincipalPolicyRequest(t)
 	return t
@@ -1342,12 +1486,15 @@ end
 
 --- Create a structure of type DeletePolicyRequest
 -- <p>The input for the DeletePolicy operation.</p>
--- @param _policyName [PolicyName] <p>The name of the policy to delete.</p>
--- Required parameter: policyName
-function M.DeletePolicyRequest(_policyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The name of the policy to delete.</p>
+-- Required key: policyName
+-- @return DeletePolicyRequest structure as a key-value pair table
+function M.DeletePolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeletePolicyRequest")
 	local t = { 
-		["policyName"] = _policyName,
+		["policyName"] = args["policyName"],
 	}
 	asserts.AssertDeletePolicyRequest(t)
 	return t
@@ -1371,20 +1518,23 @@ end
 
 --- Create a structure of type UpdateThingRequest
 -- <p>The input for the UpdateThing operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
--- @param _removeThingType [RemoveThingType] <p>Remove a thing type association. If <b>true</b>, the assocation is removed.</p>
--- @param _attributePayload [AttributePayload] <p>A list of thing attributes, a JSON string containing name-value pairs. For example:</p> <p> <code>{\"attributes\":{\"name1\":\"value2\"}}</code> </p> <p>This data is used to add new attributes or update existing attributes.</p>
--- @param _expectedVersion [OptionalVersion] <p>The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the <code>UpdateThing</code> request is rejected with a <code>VersionConflictException</code>.</p>
--- @param _thingName [ThingName] <p>The name of the thing to update.</p>
--- Required parameter: thingName
-function M.UpdateThingRequest(_thingTypeName, _removeThingType, _attributePayload, _expectedVersion, _thingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateThingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- * removeThingType [RemoveThingType] <p>Remove a thing type association. If <b>true</b>, the assocation is removed.</p>
+-- * attributePayload [AttributePayload] <p>A list of thing attributes, a JSON string containing name-value pairs. For example:</p> <p> <code>{\"attributes\":{\"name1\":\"value2\"}}</code> </p> <p>This data is used to add new attributes or update existing attributes.</p>
+-- * expectedVersion [OptionalVersion] <p>The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the <code>UpdateThing</code> request is rejected with a <code>VersionConflictException</code>.</p>
+-- * thingName [ThingName] <p>The name of the thing to update.</p>
+-- Required key: thingName
+-- @return UpdateThingRequest structure as a key-value pair table
+function M.UpdateThingRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateThingRequest")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["removeThingType"] = _removeThingType,
-		["attributePayload"] = _attributePayload,
-		["expectedVersion"] = _expectedVersion,
-		["thingName"] = _thingName,
+		["thingTypeName"] = args["thingTypeName"],
+		["removeThingType"] = args["removeThingType"],
+		["attributePayload"] = args["attributePayload"],
+		["expectedVersion"] = args["expectedVersion"],
+		["thingName"] = args["thingName"],
 	}
 	asserts.AssertUpdateThingRequest(t)
 	return t
@@ -1403,11 +1553,14 @@ end
 
 --- Create a structure of type TransferAlreadyCompletedException
 -- <p>You can't revert the certificate transfer because the transfer is already complete.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.TransferAlreadyCompletedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TransferAlreadyCompletedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return TransferAlreadyCompletedException structure as a key-value pair table
+function M.TransferAlreadyCompletedException(args)
+	assert(args, "You must provdide an argument table when creating TransferAlreadyCompletedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTransferAlreadyCompletedException(t)
 	return t
@@ -1425,8 +1578,11 @@ end
 
 --- Create a structure of type AttachThingPrincipalResponse
 -- <p>The output from the AttachThingPrincipal operation.</p>
-function M.AttachThingPrincipalResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachThingPrincipalResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AttachThingPrincipalResponse structure as a key-value pair table
+function M.AttachThingPrincipalResponse(args)
+	assert(args, "You must provdide an argument table when creating AttachThingPrincipalResponse")
 	local t = { 
 	}
 	asserts.AssertAttachThingPrincipalResponse(t)
@@ -1448,14 +1604,17 @@ end
 
 --- Create a structure of type CreateThingTypeRequest
 -- <p>The input for the CreateThingType operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
--- @param _thingTypeProperties [ThingTypeProperties] <p>The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.</p>
--- Required parameter: thingTypeName
-function M.CreateThingTypeRequest(_thingTypeName, _thingTypeProperties, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateThingTypeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- * thingTypeProperties [ThingTypeProperties] <p>The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.</p>
+-- Required key: thingTypeName
+-- @return CreateThingTypeRequest structure as a key-value pair table
+function M.CreateThingTypeRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateThingTypeRequest")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["thingTypeProperties"] = _thingTypeProperties,
+		["thingTypeName"] = args["thingTypeName"],
+		["thingTypeProperties"] = args["thingTypeProperties"],
 	}
 	asserts.AssertCreateThingTypeRequest(t)
 	return t
@@ -1473,8 +1632,11 @@ end
 
 --- Create a structure of type GetLoggingOptionsRequest
 -- <p>The input for the GetLoggingOptions operation.</p>
-function M.GetLoggingOptionsRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggingOptionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetLoggingOptionsRequest structure as a key-value pair table
+function M.GetLoggingOptionsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetLoggingOptionsRequest")
 	local t = { 
 	}
 	asserts.AssertGetLoggingOptionsRequest(t)
@@ -1494,11 +1656,14 @@ end
 
 --- Create a structure of type TransferConflictException
 -- <p>You can't transfer the certificate because authorization policies are still attached.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.TransferConflictException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TransferConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return TransferConflictException structure as a key-value pair table
+function M.TransferConflictException(args)
+	assert(args, "You must provdide an argument table when creating TransferConflictException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTransferConflictException(t)
 	return t
@@ -1523,23 +1688,26 @@ end
 
 --- Create a structure of type TopicRule
 -- <p>Describes a rule.</p>
--- @param _description [Description] <p>The description of the rule.</p>
--- @param _ruleName [RuleName] <p>The name of the rule.</p>
--- @param _actions [ActionList] <p>The actions associated with the rule.</p>
--- @param _createdAt [CreatedAtDate] <p>The date and time the rule was created.</p>
--- @param _sql [SQL] <p>The SQL statement used to query the topic. When using a SQL query with multiple lines, be sure to escape the newline characters.</p>
--- @param _awsIotSqlVersion [AwsIotSqlVersion] <p>The version of the SQL rules engine to use when evaluating the rule.</p>
--- @param _ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
-function M.TopicRule(_description, _ruleName, _actions, _createdAt, _sql, _awsIotSqlVersion, _ruleDisabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TopicRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * description [Description] <p>The description of the rule.</p>
+-- * ruleName [RuleName] <p>The name of the rule.</p>
+-- * actions [ActionList] <p>The actions associated with the rule.</p>
+-- * createdAt [CreatedAtDate] <p>The date and time the rule was created.</p>
+-- * sql [SQL] <p>The SQL statement used to query the topic. When using a SQL query with multiple lines, be sure to escape the newline characters.</p>
+-- * awsIotSqlVersion [AwsIotSqlVersion] <p>The version of the SQL rules engine to use when evaluating the rule.</p>
+-- * ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
+-- @return TopicRule structure as a key-value pair table
+function M.TopicRule(args)
+	assert(args, "You must provdide an argument table when creating TopicRule")
 	local t = { 
-		["description"] = _description,
-		["ruleName"] = _ruleName,
-		["actions"] = _actions,
-		["createdAt"] = _createdAt,
-		["sql"] = _sql,
-		["awsIotSqlVersion"] = _awsIotSqlVersion,
-		["ruleDisabled"] = _ruleDisabled,
+		["description"] = args["description"],
+		["ruleName"] = args["ruleName"],
+		["actions"] = args["actions"],
+		["createdAt"] = args["createdAt"],
+		["sql"] = args["sql"],
+		["awsIotSqlVersion"] = args["awsIotSqlVersion"],
+		["ruleDisabled"] = args["ruleDisabled"],
 	}
 	asserts.AssertTopicRule(t)
 	return t
@@ -1560,14 +1728,17 @@ end
 
 --- Create a structure of type LoggingOptionsPayload
 -- <p>Describes the logging options payload.</p>
--- @param _logLevel [LogLevel] <p>The logging level.</p>
--- @param _roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
--- Required parameter: roleArn
-function M.LoggingOptionsPayload(_logLevel, _roleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoggingOptionsPayload")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logLevel [LogLevel] <p>The logging level.</p>
+-- * roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
+-- Required key: roleArn
+-- @return LoggingOptionsPayload structure as a key-value pair table
+function M.LoggingOptionsPayload(args)
+	assert(args, "You must provdide an argument table when creating LoggingOptionsPayload")
 	local t = { 
-		["logLevel"] = _logLevel,
-		["roleArn"] = _roleArn,
+		["logLevel"] = args["logLevel"],
+		["roleArn"] = args["roleArn"],
 	}
 	asserts.AssertLoggingOptionsPayload(t)
 	return t
@@ -1588,15 +1759,18 @@ end
 
 --- Create a structure of type CreateCertificateFromCsrResponse
 -- <p>The output from the CreateCertificateFromCsr operation.</p>
--- @param _certificateArn [CertificateArn] <p>The Amazon Resource Name (ARN) of the certificate. You can use the ARN as a principal for policy operations.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate. Certificate management operations only take a certificateId.</p>
--- @param _certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
-function M.CreateCertificateFromCsrResponse(_certificateArn, _certificateId, _certificatePem, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCertificateFromCsrResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateArn [CertificateArn] <p>The Amazon Resource Name (ARN) of the certificate. You can use the ARN as a principal for policy operations.</p>
+-- * certificateId [CertificateId] <p>The ID of the certificate. Certificate management operations only take a certificateId.</p>
+-- * certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
+-- @return CreateCertificateFromCsrResponse structure as a key-value pair table
+function M.CreateCertificateFromCsrResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateCertificateFromCsrResponse")
 	local t = { 
-		["certificateArn"] = _certificateArn,
-		["certificateId"] = _certificateId,
-		["certificatePem"] = _certificatePem,
+		["certificateArn"] = args["certificateArn"],
+		["certificateId"] = args["certificateId"],
+		["certificatePem"] = args["certificatePem"],
 	}
 	asserts.AssertCreateCertificateFromCsrResponse(t)
 	return t
@@ -1617,15 +1791,18 @@ end
 
 --- Create a structure of type ResourceAlreadyExistsException
 -- <p>The resource already exists.</p>
--- @param _resourceId [resourceId] <p>The ID of the resource that caused the exception.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
--- @param _resourceArn [resourceArn] <p>The ARN of the resource that caused the exception.</p>
-function M.ResourceAlreadyExistsException(_resourceId, _message, _resourceArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * resourceId [resourceId] <p>The ID of the resource that caused the exception.</p>
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- * resourceArn [resourceArn] <p>The ARN of the resource that caused the exception.</p>
+-- @return ResourceAlreadyExistsException structure as a key-value pair table
+function M.ResourceAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
 	local t = { 
-		["resourceId"] = _resourceId,
-		["message"] = _message,
-		["resourceArn"] = _resourceArn,
+		["resourceId"] = args["resourceId"],
+		["message"] = args["message"],
+		["resourceArn"] = args["resourceArn"],
 	}
 	asserts.AssertResourceAlreadyExistsException(t)
 	return t
@@ -1647,15 +1824,18 @@ end
 
 --- Create a structure of type GetPolicyVersionRequest
 -- <p>The input for the GetPolicyVersion operation.</p>
--- @param _policyName [PolicyName] <p>The name of the policy.</p>
--- @param _policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
--- Required parameter: policyName
--- Required parameter: policyVersionId
-function M.GetPolicyVersionRequest(_policyName, _policyVersionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The name of the policy.</p>
+-- * policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
+-- Required key: policyName
+-- Required key: policyVersionId
+-- @return GetPolicyVersionRequest structure as a key-value pair table
+function M.GetPolicyVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetPolicyVersionRequest")
 	local t = { 
-		["policyName"] = _policyName,
-		["policyVersionId"] = _policyVersionId,
+		["policyName"] = args["policyName"],
+		["policyVersionId"] = args["policyVersionId"],
 	}
 	asserts.AssertGetPolicyVersionRequest(t)
 	return t
@@ -1680,21 +1860,24 @@ end
 
 --- Create a structure of type TopicRulePayload
 -- <p>Describes a rule.</p>
--- @param _awsIotSqlVersion [AwsIotSqlVersion] <p>The version of the SQL rules engine to use when evaluating the rule.</p>
--- @param _ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
--- @param _description [Description] <p>The description of the rule.</p>
--- @param _actions [ActionList] <p>The actions associated with the rule.</p>
--- @param _sql [SQL] <p>The SQL statement used to query the topic. For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference">AWS IoT SQL Reference</a> in the <i>AWS IoT Developer Guide</i>.</p>
--- Required parameter: sql
--- Required parameter: actions
-function M.TopicRulePayload(_awsIotSqlVersion, _ruleDisabled, _description, _actions, _sql, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TopicRulePayload")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * awsIotSqlVersion [AwsIotSqlVersion] <p>The version of the SQL rules engine to use when evaluating the rule.</p>
+-- * ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
+-- * description [Description] <p>The description of the rule.</p>
+-- * actions [ActionList] <p>The actions associated with the rule.</p>
+-- * sql [SQL] <p>The SQL statement used to query the topic. For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference">AWS IoT SQL Reference</a> in the <i>AWS IoT Developer Guide</i>.</p>
+-- Required key: sql
+-- Required key: actions
+-- @return TopicRulePayload structure as a key-value pair table
+function M.TopicRulePayload(args)
+	assert(args, "You must provdide an argument table when creating TopicRulePayload")
 	local t = { 
-		["awsIotSqlVersion"] = _awsIotSqlVersion,
-		["ruleDisabled"] = _ruleDisabled,
-		["description"] = _description,
-		["actions"] = _actions,
-		["sql"] = _sql,
+		["awsIotSqlVersion"] = args["awsIotSqlVersion"],
+		["ruleDisabled"] = args["ruleDisabled"],
+		["description"] = args["description"],
+		["actions"] = args["actions"],
+		["sql"] = args["sql"],
 	}
 	asserts.AssertTopicRulePayload(t)
 	return t
@@ -1717,18 +1900,21 @@ end
 
 --- Create a structure of type RegisterCertificateRequest
 -- <p>The input to the RegisterCertificate operation.</p>
--- @param _status [CertificateStatus] <p>The status of the register certificate request.</p>
--- @param _certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
--- @param _caCertificatePem [CertificatePem] <p>The CA certificate used to sign the device certificate being registered.</p>
--- @param _setAsActive [SetAsActiveFlag] <p>A boolean value that specifies if the CA certificate is set to active.</p>
--- Required parameter: certificatePem
-function M.RegisterCertificateRequest(_status, _certificatePem, _caCertificatePem, _setAsActive, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [CertificateStatus] <p>The status of the register certificate request.</p>
+-- * certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
+-- * caCertificatePem [CertificatePem] <p>The CA certificate used to sign the device certificate being registered.</p>
+-- * setAsActive [SetAsActiveFlag] <p>A boolean value that specifies if the CA certificate is set to active.</p>
+-- Required key: certificatePem
+-- @return RegisterCertificateRequest structure as a key-value pair table
+function M.RegisterCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterCertificateRequest")
 	local t = { 
-		["status"] = _status,
-		["certificatePem"] = _certificatePem,
-		["caCertificatePem"] = _caCertificatePem,
-		["setAsActive"] = _setAsActive,
+		["status"] = args["status"],
+		["certificatePem"] = args["certificatePem"],
+		["caCertificatePem"] = args["caCertificatePem"],
+		["setAsActive"] = args["setAsActive"],
 	}
 	asserts.AssertRegisterCertificateRequest(t)
 	return t
@@ -1756,24 +1942,27 @@ end
 
 --- Create a structure of type ElasticsearchAction
 -- <p>Describes an action that writes data to an Amazon Elasticsearch Service domain.</p>
--- @param _index [ElasticsearchIndex] <p>The Elasticsearch index where you want to store your data.</p>
--- @param _roleArn [AwsArn] <p>The IAM role ARN that has access to Elasticsearch.</p>
--- @param _endpoint [ElasticsearchEndpoint] <p>The endpoint of your Elasticsearch domain.</p>
--- @param _type [ElasticsearchType] <p>The type of document you are storing.</p>
--- @param _id [ElasticsearchId] <p>The unique identifier for the document you are storing.</p>
--- Required parameter: roleArn
--- Required parameter: endpoint
--- Required parameter: index
--- Required parameter: type
--- Required parameter: id
-function M.ElasticsearchAction(_index, _roleArn, _endpoint, _type, _id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ElasticsearchAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * index [ElasticsearchIndex] <p>The Elasticsearch index where you want to store your data.</p>
+-- * roleArn [AwsArn] <p>The IAM role ARN that has access to Elasticsearch.</p>
+-- * endpoint [ElasticsearchEndpoint] <p>The endpoint of your Elasticsearch domain.</p>
+-- * type [ElasticsearchType] <p>The type of document you are storing.</p>
+-- * id [ElasticsearchId] <p>The unique identifier for the document you are storing.</p>
+-- Required key: roleArn
+-- Required key: endpoint
+-- Required key: index
+-- Required key: type
+-- Required key: id
+-- @return ElasticsearchAction structure as a key-value pair table
+function M.ElasticsearchAction(args)
+	assert(args, "You must provdide an argument table when creating ElasticsearchAction")
 	local t = { 
-		["index"] = _index,
-		["roleArn"] = _roleArn,
-		["endpoint"] = _endpoint,
-		["type"] = _type,
-		["id"] = _id,
+		["index"] = args["index"],
+		["roleArn"] = args["roleArn"],
+		["endpoint"] = args["endpoint"],
+		["type"] = args["type"],
+		["id"] = args["id"],
 	}
 	asserts.AssertElasticsearchAction(t)
 	return t
@@ -1793,12 +1982,15 @@ end
 
 --- Create a structure of type ListThingPrincipalsRequest
 -- <p>The input for the ListThingPrincipal operation.</p>
--- @param _thingName [ThingName] <p>The name of the thing.</p>
--- Required parameter: thingName
-function M.ListThingPrincipalsRequest(_thingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListThingPrincipalsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingName [ThingName] <p>The name of the thing.</p>
+-- Required key: thingName
+-- @return ListThingPrincipalsRequest structure as a key-value pair table
+function M.ListThingPrincipalsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListThingPrincipalsRequest")
 	local t = { 
-		["thingName"] = _thingName,
+		["thingName"] = args["thingName"],
 	}
 	asserts.AssertListThingPrincipalsRequest(t)
 	return t
@@ -1818,13 +2010,16 @@ end
 
 --- Create a structure of type DynamoDBv2Action
 -- <p>Describes an action to write to a DynamoDB table.</p> <p>This DynamoDB action writes each attribute in the message payload into it's own column in the DynamoDB table.</p>
--- @param _putItem [PutItemInput] <p>Specifies the DynamoDB table to which the message data will be written. For example:</p> <p> <code>{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName": "my-table" } } }</code> </p> <p>Each attribute in the message payload will be written to a separate column in the DynamoDB database.</p>
--- @param _roleArn [AwsArn] <p>The ARN of the IAM role that grants access to the DynamoDB table.</p>
-function M.DynamoDBv2Action(_putItem, _roleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DynamoDBv2Action")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * putItem [PutItemInput] <p>Specifies the DynamoDB table to which the message data will be written. For example:</p> <p> <code>{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName": "my-table" } } }</code> </p> <p>Each attribute in the message payload will be written to a separate column in the DynamoDB database.</p>
+-- * roleArn [AwsArn] <p>The ARN of the IAM role that grants access to the DynamoDB table.</p>
+-- @return DynamoDBv2Action structure as a key-value pair table
+function M.DynamoDBv2Action(args)
+	assert(args, "You must provdide an argument table when creating DynamoDBv2Action")
 	local t = { 
-		["putItem"] = _putItem,
-		["roleArn"] = _roleArn,
+		["putItem"] = args["putItem"],
+		["roleArn"] = args["roleArn"],
 	}
 	asserts.AssertDynamoDBv2Action(t)
 	return t
@@ -1846,15 +2041,18 @@ end
 
 --- Create a structure of type AttachThingPrincipalRequest
 -- <p>The input for the AttachThingPrincipal operation.</p>
--- @param _thingName [ThingName] <p>The name of the thing.</p>
--- @param _principal [Principal] <p>The principal, such as a certificate or other credential.</p>
--- Required parameter: thingName
--- Required parameter: principal
-function M.AttachThingPrincipalRequest(_thingName, _principal, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachThingPrincipalRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingName [ThingName] <p>The name of the thing.</p>
+-- * principal [Principal] <p>The principal, such as a certificate or other credential.</p>
+-- Required key: thingName
+-- Required key: principal
+-- @return AttachThingPrincipalRequest structure as a key-value pair table
+function M.AttachThingPrincipalRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachThingPrincipalRequest")
 	local t = { 
-		["thingName"] = _thingName,
-		["principal"] = _principal,
+		["thingName"] = args["thingName"],
+		["principal"] = args["principal"],
 	}
 	asserts.AssertAttachThingPrincipalRequest(t)
 	return t
@@ -1879,23 +2077,26 @@ end
 
 --- Create a structure of type CACertificateDescription
 -- <p>Describes a CA certificate.</p>
--- @param _certificateArn [CertificateArn] <p>The CA certificate ARN.</p>
--- @param _status [CACertificateStatus] <p>The status of a CA certificate.</p>
--- @param _autoRegistrationStatus [AutoRegistrationStatus] <p>Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and "DISABLE"</p>
--- @param _certificateId [CertificateId] <p>The CA certificate ID.</p>
--- @param _certificatePem [CertificatePem] <p>The CA certificate data, in PEM format.</p>
--- @param _ownedBy [AwsAccountId] <p>The owner of the CA certificate.</p>
--- @param _creationDate [DateType] <p>The date the CA certificate was created.</p>
-function M.CACertificateDescription(_certificateArn, _status, _autoRegistrationStatus, _certificateId, _certificatePem, _ownedBy, _creationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CACertificateDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateArn [CertificateArn] <p>The CA certificate ARN.</p>
+-- * status [CACertificateStatus] <p>The status of a CA certificate.</p>
+-- * autoRegistrationStatus [AutoRegistrationStatus] <p>Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and "DISABLE"</p>
+-- * certificateId [CertificateId] <p>The CA certificate ID.</p>
+-- * certificatePem [CertificatePem] <p>The CA certificate data, in PEM format.</p>
+-- * ownedBy [AwsAccountId] <p>The owner of the CA certificate.</p>
+-- * creationDate [DateType] <p>The date the CA certificate was created.</p>
+-- @return CACertificateDescription structure as a key-value pair table
+function M.CACertificateDescription(args)
+	assert(args, "You must provdide an argument table when creating CACertificateDescription")
 	local t = { 
-		["certificateArn"] = _certificateArn,
-		["status"] = _status,
-		["autoRegistrationStatus"] = _autoRegistrationStatus,
-		["certificateId"] = _certificateId,
-		["certificatePem"] = _certificatePem,
-		["ownedBy"] = _ownedBy,
-		["creationDate"] = _creationDate,
+		["certificateArn"] = args["certificateArn"],
+		["status"] = args["status"],
+		["autoRegistrationStatus"] = args["autoRegistrationStatus"],
+		["certificateId"] = args["certificateId"],
+		["certificatePem"] = args["certificatePem"],
+		["ownedBy"] = args["ownedBy"],
+		["creationDate"] = args["creationDate"],
 	}
 	asserts.AssertCACertificateDescription(t)
 	return t
@@ -1917,15 +2118,18 @@ end
 
 --- Create a structure of type ReplaceTopicRuleRequest
 -- <p>The input for the ReplaceTopicRule operation.</p>
--- @param _topicRulePayload [TopicRulePayload] <p>The rule payload.</p>
--- @param _ruleName [RuleName] <p>The name of the rule.</p>
--- Required parameter: ruleName
--- Required parameter: topicRulePayload
-function M.ReplaceTopicRuleRequest(_topicRulePayload, _ruleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReplaceTopicRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * topicRulePayload [TopicRulePayload] <p>The rule payload.</p>
+-- * ruleName [RuleName] <p>The name of the rule.</p>
+-- Required key: ruleName
+-- Required key: topicRulePayload
+-- @return ReplaceTopicRuleRequest structure as a key-value pair table
+function M.ReplaceTopicRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating ReplaceTopicRuleRequest")
 	local t = { 
-		["topicRulePayload"] = _topicRulePayload,
-		["ruleName"] = _ruleName,
+		["topicRulePayload"] = args["topicRulePayload"],
+		["ruleName"] = args["ruleName"],
 	}
 	asserts.AssertReplaceTopicRuleRequest(t)
 	return t
@@ -1944,11 +2148,14 @@ end
 
 --- Create a structure of type InvalidRequestException
 -- <p>The request is not valid.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.InvalidRequestException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return InvalidRequestException structure as a key-value pair table
+function M.InvalidRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRequestException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidRequestException(t)
 	return t
@@ -1967,11 +2174,14 @@ end
 
 --- Create a structure of type DeleteConflictException
 -- <p>You can't delete the resource because it is attached to one or more resources.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.DeleteConflictException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return DeleteConflictException structure as a key-value pair table
+function M.DeleteConflictException(args)
+	assert(args, "You must provdide an argument table when creating DeleteConflictException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDeleteConflictException(t)
 	return t
@@ -1993,17 +2203,20 @@ end
 
 --- Create a structure of type Certificate
 -- <p>Information about a certificate.</p>
--- @param _certificateArn [CertificateArn] <p>The ARN of the certificate.</p>
--- @param _status [CertificateStatus] <p>The status of the certificate.</p> <p>The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
--- @param _creationDate [DateType] <p>The date and time the certificate was created.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate.</p>
-function M.Certificate(_certificateArn, _status, _creationDate, _certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Certificate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateArn [CertificateArn] <p>The ARN of the certificate.</p>
+-- * status [CertificateStatus] <p>The status of the certificate.</p> <p>The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+-- * creationDate [DateType] <p>The date and time the certificate was created.</p>
+-- * certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- @return Certificate structure as a key-value pair table
+function M.Certificate(args)
+	assert(args, "You must provdide an argument table when creating Certificate")
 	local t = { 
-		["certificateArn"] = _certificateArn,
-		["status"] = _status,
-		["creationDate"] = _creationDate,
-		["certificateId"] = _certificateId,
+		["certificateArn"] = args["certificateArn"],
+		["status"] = args["status"],
+		["creationDate"] = args["creationDate"],
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertCertificate(t)
 	return t
@@ -2026,17 +2239,20 @@ end
 
 --- Create a structure of type FirehoseAction
 -- <p>Describes an action that writes data to an Amazon Kinesis Firehose stream.</p>
--- @param _roleArn [AwsArn] <p>The IAM role that grants access to the Amazon Kinesis Firehost stream.</p>
--- @param _deliveryStreamName [DeliveryStreamName] <p>The delivery stream name.</p>
--- @param _separator [FirehoseSeparator] <p>A character separator that will be used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).</p>
--- Required parameter: roleArn
--- Required parameter: deliveryStreamName
-function M.FirehoseAction(_roleArn, _deliveryStreamName, _separator, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FirehoseAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * roleArn [AwsArn] <p>The IAM role that grants access to the Amazon Kinesis Firehost stream.</p>
+-- * deliveryStreamName [DeliveryStreamName] <p>The delivery stream name.</p>
+-- * separator [FirehoseSeparator] <p>A character separator that will be used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).</p>
+-- Required key: roleArn
+-- Required key: deliveryStreamName
+-- @return FirehoseAction structure as a key-value pair table
+function M.FirehoseAction(args)
+	assert(args, "You must provdide an argument table when creating FirehoseAction")
 	local t = { 
-		["roleArn"] = _roleArn,
-		["deliveryStreamName"] = _deliveryStreamName,
-		["separator"] = _separator,
+		["roleArn"] = args["roleArn"],
+		["deliveryStreamName"] = args["deliveryStreamName"],
+		["separator"] = args["separator"],
 	}
 	asserts.AssertFirehoseAction(t)
 	return t
@@ -2054,8 +2270,11 @@ end
 
 --- Create a structure of type UpdateThingResponse
 -- <p>The output from the UpdateThing operation.</p>
-function M.UpdateThingResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateThingResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateThingResponse structure as a key-value pair table
+function M.UpdateThingResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateThingResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateThingResponse(t)
@@ -2076,13 +2295,16 @@ end
 
 --- Create a structure of type AttributePayload
 -- <p>The attribute payload.</p>
--- @param _attributes [Attributes] <p>A JSON string containing up to three key-value pair in JSON format. For example:</p> <p> <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
--- @param _merge [Flag] <p>Specifies whether the list of attributes provided in the <code>AttributePayload</code> is merged with the attributes stored in the registry, instead of overwriting them.</p> <p>To remove an attribute, call <code>UpdateThing</code> with an empty attribute value.</p> <note> <p>The <code>merge</code> attribute is only valid when calling <code>UpdateThing</code>.</p> </note>
-function M.AttributePayload(_attributes, _merge, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttributePayload")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * attributes [Attributes] <p>A JSON string containing up to three key-value pair in JSON format. For example:</p> <p> <code>{\"attributes\":{\"string1\":\"string2\"}}</code> </p>
+-- * merge [Flag] <p>Specifies whether the list of attributes provided in the <code>AttributePayload</code> is merged with the attributes stored in the registry, instead of overwriting them.</p> <p>To remove an attribute, call <code>UpdateThing</code> with an empty attribute value.</p> <note> <p>The <code>merge</code> attribute is only valid when calling <code>UpdateThing</code>.</p> </note>
+-- @return AttributePayload structure as a key-value pair table
+function M.AttributePayload(args)
+	assert(args, "You must provdide an argument table when creating AttributePayload")
 	local t = { 
-		["attributes"] = _attributes,
-		["merge"] = _merge,
+		["attributes"] = args["attributes"],
+		["merge"] = args["merge"],
 	}
 	asserts.AssertAttributePayload(t)
 	return t
@@ -2103,14 +2325,17 @@ end
 
 --- Create a structure of type AcceptCertificateTransferRequest
 -- <p>The input for the AcceptCertificateTransfer operation.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate.</p>
--- @param _setAsActive [SetAsActive] <p>Specifies whether the certificate is active.</p>
--- Required parameter: certificateId
-function M.AcceptCertificateTransferRequest(_certificateId, _setAsActive, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AcceptCertificateTransferRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- * setAsActive [SetAsActive] <p>Specifies whether the certificate is active.</p>
+-- Required key: certificateId
+-- @return AcceptCertificateTransferRequest structure as a key-value pair table
+function M.AcceptCertificateTransferRequest(args)
+	assert(args, "You must provdide an argument table when creating AcceptCertificateTransferRequest")
 	local t = { 
-		["certificateId"] = _certificateId,
-		["setAsActive"] = _setAsActive,
+		["certificateId"] = args["certificateId"],
+		["setAsActive"] = args["setAsActive"],
 	}
 	asserts.AssertAcceptCertificateTransferRequest(t)
 	return t
@@ -2130,13 +2355,16 @@ end
 
 --- Create a structure of type ListPoliciesResponse
 -- <p>The output from the ListPolicies operation.</p>
--- @param _nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
--- @param _policies [Policies] <p>The descriptions of the policies.</p>
-function M.ListPoliciesResponse(_nextMarker, _policies, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
+-- * policies [Policies] <p>The descriptions of the policies.</p>
+-- @return ListPoliciesResponse structure as a key-value pair table
+function M.ListPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListPoliciesResponse")
 	local t = { 
-		["nextMarker"] = _nextMarker,
-		["policies"] = _policies,
+		["nextMarker"] = args["nextMarker"],
+		["policies"] = args["policies"],
 	}
 	asserts.AssertListPoliciesResponse(t)
 	return t
@@ -2156,13 +2384,16 @@ end
 
 --- Create a structure of type GetTopicRuleResponse
 -- <p>The output from the GetTopicRule operation.</p>
--- @param _ruleArn [RuleArn] <p>The rule ARN.</p>
--- @param _rule [TopicRule] <p>The rule.</p>
-function M.GetTopicRuleResponse(_ruleArn, _rule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetTopicRuleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ruleArn [RuleArn] <p>The rule ARN.</p>
+-- * rule [TopicRule] <p>The rule.</p>
+-- @return GetTopicRuleResponse structure as a key-value pair table
+function M.GetTopicRuleResponse(args)
+	assert(args, "You must provdide an argument table when creating GetTopicRuleResponse")
 	local t = { 
-		["ruleArn"] = _ruleArn,
-		["rule"] = _rule,
+		["ruleArn"] = args["ruleArn"],
+		["rule"] = args["rule"],
 	}
 	asserts.AssertGetTopicRuleResponse(t)
 	return t
@@ -2182,12 +2413,15 @@ end
 
 --- Create a structure of type DisableTopicRuleRequest
 -- <p>The input for the DisableTopicRuleRequest operation.</p>
--- @param _ruleName [RuleName] <p>The name of the rule to disable.</p>
--- Required parameter: ruleName
-function M.DisableTopicRuleRequest(_ruleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableTopicRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ruleName [RuleName] <p>The name of the rule to disable.</p>
+-- Required key: ruleName
+-- @return DisableTopicRuleRequest structure as a key-value pair table
+function M.DisableTopicRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DisableTopicRuleRequest")
 	local t = { 
-		["ruleName"] = _ruleName,
+		["ruleName"] = args["ruleName"],
 	}
 	asserts.AssertDisableTopicRuleRequest(t)
 	return t
@@ -2210,17 +2444,20 @@ end
 
 --- Create a structure of type SqsAction
 -- <p>Describes an action to publish data to an Amazon SQS queue.</p>
--- @param _queueUrl [QueueUrl] <p>The URL of the Amazon SQS queue.</p>
--- @param _roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
--- @param _useBase64 [UseBase64] <p>Specifies whether to use Base64 encoding.</p>
--- Required parameter: roleArn
--- Required parameter: queueUrl
-function M.SqsAction(_queueUrl, _roleArn, _useBase64, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SqsAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * queueUrl [QueueUrl] <p>The URL of the Amazon SQS queue.</p>
+-- * roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
+-- * useBase64 [UseBase64] <p>Specifies whether to use Base64 encoding.</p>
+-- Required key: roleArn
+-- Required key: queueUrl
+-- @return SqsAction structure as a key-value pair table
+function M.SqsAction(args)
+	assert(args, "You must provdide an argument table when creating SqsAction")
 	local t = { 
-		["queueUrl"] = _queueUrl,
-		["roleArn"] = _roleArn,
-		["useBase64"] = _useBase64,
+		["queueUrl"] = args["queueUrl"],
+		["roleArn"] = args["roleArn"],
+		["useBase64"] = args["useBase64"],
 	}
 	asserts.AssertSqsAction(t)
 	return t
@@ -2238,8 +2475,11 @@ end
 
 --- Create a structure of type DeleteThingTypeResponse
 -- <p>The output for the DeleteThingType operation.</p>
-function M.DeleteThingTypeResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingTypeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteThingTypeResponse structure as a key-value pair table
+function M.DeleteThingTypeResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteThingTypeResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteThingTypeResponse(t)
@@ -2259,11 +2499,14 @@ end
 
 --- Create a structure of type DescribeCertificateResponse
 -- <p>The output of the DescribeCertificate operation.</p>
--- @param _certificateDescription [CertificateDescription] <p>The description of the certificate.</p>
-function M.DescribeCertificateResponse(_certificateDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateDescription [CertificateDescription] <p>The description of the certificate.</p>
+-- @return DescribeCertificateResponse structure as a key-value pair table
+function M.DescribeCertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeCertificateResponse")
 	local t = { 
-		["certificateDescription"] = _certificateDescription,
+		["certificateDescription"] = args["certificateDescription"],
 	}
 	asserts.AssertDescribeCertificateResponse(t)
 	return t
@@ -2284,14 +2527,17 @@ end
 
 --- Create a structure of type RejectCertificateTransferRequest
 -- <p>The input for the RejectCertificateTransfer operation.</p>
--- @param _rejectReason [Message] <p>The reason the certificate transfer was rejected.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate.</p>
--- Required parameter: certificateId
-function M.RejectCertificateTransferRequest(_rejectReason, _certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RejectCertificateTransferRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * rejectReason [Message] <p>The reason the certificate transfer was rejected.</p>
+-- * certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- Required key: certificateId
+-- @return RejectCertificateTransferRequest structure as a key-value pair table
+function M.RejectCertificateTransferRequest(args)
+	assert(args, "You must provdide an argument table when creating RejectCertificateTransferRequest")
 	local t = { 
-		["rejectReason"] = _rejectReason,
-		["certificateId"] = _certificateId,
+		["rejectReason"] = args["rejectReason"],
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertRejectCertificateTransferRequest(t)
 	return t
@@ -2312,15 +2558,18 @@ end
 
 --- Create a structure of type ListCACertificatesRequest
 -- <p>Input for the ListCACertificates operation.</p>
--- @param _marker [Marker] <p>The marker for the next set of results.</p>
--- @param _ascendingOrder [AscendingOrder] <p>Determines the order of the results.</p>
--- @param _pageSize [PageSize] <p>The result page size.</p>
-function M.ListCACertificatesRequest(_marker, _ascendingOrder, _pageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCACertificatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [Marker] <p>The marker for the next set of results.</p>
+-- * ascendingOrder [AscendingOrder] <p>Determines the order of the results.</p>
+-- * pageSize [PageSize] <p>The result page size.</p>
+-- @return ListCACertificatesRequest structure as a key-value pair table
+function M.ListCACertificatesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListCACertificatesRequest")
 	local t = { 
-		["marker"] = _marker,
-		["ascendingOrder"] = _ascendingOrder,
-		["pageSize"] = _pageSize,
+		["marker"] = args["marker"],
+		["ascendingOrder"] = args["ascendingOrder"],
+		["pageSize"] = args["pageSize"],
 	}
 	asserts.AssertListCACertificatesRequest(t)
 	return t
@@ -2340,12 +2589,15 @@ end
 
 --- Create a structure of type SetLoggingOptionsRequest
 -- <p>The input for the SetLoggingOptions operation.</p>
--- @param _loggingOptionsPayload [LoggingOptionsPayload] <p>The logging options payload.</p>
--- Required parameter: loggingOptionsPayload
-function M.SetLoggingOptionsRequest(_loggingOptionsPayload, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetLoggingOptionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * loggingOptionsPayload [LoggingOptionsPayload] <p>The logging options payload.</p>
+-- Required key: loggingOptionsPayload
+-- @return SetLoggingOptionsRequest structure as a key-value pair table
+function M.SetLoggingOptionsRequest(args)
+	assert(args, "You must provdide an argument table when creating SetLoggingOptionsRequest")
 	local t = { 
-		["loggingOptionsPayload"] = _loggingOptionsPayload,
+		["loggingOptionsPayload"] = args["loggingOptionsPayload"],
 	}
 	asserts.AssertSetLoggingOptionsRequest(t)
 	return t
@@ -2367,17 +2619,20 @@ end
 
 --- Create a structure of type CreateKeysAndCertificateResponse
 -- <p>The output of the CreateKeysAndCertificate operation.</p>
--- @param _certificateArn [CertificateArn] <p>The ARN of the certificate.</p>
--- @param _keyPair [KeyPair] <p>The generated key pair.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate. AWS IoT issues a default subject name for the certificate (for example, AWS IoT Certificate).</p>
--- @param _certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
-function M.CreateKeysAndCertificateResponse(_certificateArn, _keyPair, _certificateId, _certificatePem, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateKeysAndCertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateArn [CertificateArn] <p>The ARN of the certificate.</p>
+-- * keyPair [KeyPair] <p>The generated key pair.</p>
+-- * certificateId [CertificateId] <p>The ID of the certificate. AWS IoT issues a default subject name for the certificate (for example, AWS IoT Certificate).</p>
+-- * certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
+-- @return CreateKeysAndCertificateResponse structure as a key-value pair table
+function M.CreateKeysAndCertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateKeysAndCertificateResponse")
 	local t = { 
-		["certificateArn"] = _certificateArn,
-		["keyPair"] = _keyPair,
-		["certificateId"] = _certificateId,
-		["certificatePem"] = _certificatePem,
+		["certificateArn"] = args["certificateArn"],
+		["keyPair"] = args["keyPair"],
+		["certificateId"] = args["certificateId"],
+		["certificatePem"] = args["certificatePem"],
 	}
 	asserts.AssertCreateKeysAndCertificateResponse(t)
 	return t
@@ -2397,13 +2652,16 @@ end
 
 --- Create a structure of type ListCertificatesResponse
 -- <p>The output of the ListCertificates operation.</p>
--- @param _certificates [Certificates] <p>The descriptions of the certificates.</p>
--- @param _nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
-function M.ListCertificatesResponse(_certificates, _nextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCertificatesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificates [Certificates] <p>The descriptions of the certificates.</p>
+-- * nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
+-- @return ListCertificatesResponse structure as a key-value pair table
+function M.ListCertificatesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListCertificatesResponse")
 	local t = { 
-		["certificates"] = _certificates,
-		["nextMarker"] = _nextMarker,
+		["certificates"] = args["certificates"],
+		["nextMarker"] = args["nextMarker"],
 	}
 	asserts.AssertListCertificatesResponse(t)
 	return t
@@ -2426,19 +2684,22 @@ end
 
 --- Create a structure of type TopicRuleListItem
 -- <p>Describes a rule.</p>
--- @param _topicPattern [TopicPattern] <p>The pattern for the topic names that apply.</p>
--- @param _ruleArn [RuleArn] <p>The rule ARN.</p>
--- @param _ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
--- @param _createdAt [CreatedAtDate] <p>The date and time the rule was created.</p>
--- @param _ruleName [RuleName] <p>The name of the rule.</p>
-function M.TopicRuleListItem(_topicPattern, _ruleArn, _ruleDisabled, _createdAt, _ruleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TopicRuleListItem")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * topicPattern [TopicPattern] <p>The pattern for the topic names that apply.</p>
+-- * ruleArn [RuleArn] <p>The rule ARN.</p>
+-- * ruleDisabled [IsDisabled] <p>Specifies whether the rule is disabled.</p>
+-- * createdAt [CreatedAtDate] <p>The date and time the rule was created.</p>
+-- * ruleName [RuleName] <p>The name of the rule.</p>
+-- @return TopicRuleListItem structure as a key-value pair table
+function M.TopicRuleListItem(args)
+	assert(args, "You must provdide an argument table when creating TopicRuleListItem")
 	local t = { 
-		["topicPattern"] = _topicPattern,
-		["ruleArn"] = _ruleArn,
-		["ruleDisabled"] = _ruleDisabled,
-		["createdAt"] = _createdAt,
-		["ruleName"] = _ruleName,
+		["topicPattern"] = args["topicPattern"],
+		["ruleArn"] = args["ruleArn"],
+		["ruleDisabled"] = args["ruleDisabled"],
+		["createdAt"] = args["createdAt"],
+		["ruleName"] = args["ruleName"],
 	}
 	asserts.AssertTopicRuleListItem(t)
 	return t
@@ -2459,15 +2720,18 @@ end
 
 --- Create a structure of type DescribeThingTypeResponse
 -- <p>The output for the DescribeThingType operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
--- @param _thingTypeProperties [ThingTypeProperties] <p>The ThingTypeProperties contains information about the thing type including description, and a list of searchable thing attribute names.</p>
--- @param _thingTypeMetadata [ThingTypeMetadata] <p>The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.</p>
-function M.DescribeThingTypeResponse(_thingTypeName, _thingTypeProperties, _thingTypeMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeThingTypeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- * thingTypeProperties [ThingTypeProperties] <p>The ThingTypeProperties contains information about the thing type including description, and a list of searchable thing attribute names.</p>
+-- * thingTypeMetadata [ThingTypeMetadata] <p>The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.</p>
+-- @return DescribeThingTypeResponse structure as a key-value pair table
+function M.DescribeThingTypeResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeThingTypeResponse")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["thingTypeProperties"] = _thingTypeProperties,
-		["thingTypeMetadata"] = _thingTypeMetadata,
+		["thingTypeName"] = args["thingTypeName"],
+		["thingTypeProperties"] = args["thingTypeProperties"],
+		["thingTypeMetadata"] = args["thingTypeMetadata"],
 	}
 	asserts.AssertDescribeThingTypeResponse(t)
 	return t
@@ -2487,12 +2751,15 @@ end
 
 --- Create a structure of type EnableTopicRuleRequest
 -- <p>The input for the EnableTopicRuleRequest operation.</p>
--- @param _ruleName [RuleName] <p>The name of the topic rule to enable.</p>
--- Required parameter: ruleName
-function M.EnableTopicRuleRequest(_ruleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableTopicRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ruleName [RuleName] <p>The name of the topic rule to enable.</p>
+-- Required key: ruleName
+-- @return EnableTopicRuleRequest structure as a key-value pair table
+function M.EnableTopicRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating EnableTopicRuleRequest")
 	local t = { 
-		["ruleName"] = _ruleName,
+		["ruleName"] = args["ruleName"],
 	}
 	asserts.AssertEnableTopicRuleRequest(t)
 	return t
@@ -2512,13 +2779,16 @@ end
 
 --- Create a structure of type ListCertificatesByCAResponse
 -- <p>The output of the ListCertificatesByCA operation.</p>
--- @param _certificates [Certificates] <p>The device certificates signed by the specified CA certificate.</p>
--- @param _nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
-function M.ListCertificatesByCAResponse(_certificates, _nextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCertificatesByCAResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificates [Certificates] <p>The device certificates signed by the specified CA certificate.</p>
+-- * nextMarker [Marker] <p>The marker for the next set of results, or null if there are no additional results.</p>
+-- @return ListCertificatesByCAResponse structure as a key-value pair table
+function M.ListCertificatesByCAResponse(args)
+	assert(args, "You must provdide an argument table when creating ListCertificatesByCAResponse")
 	local t = { 
-		["certificates"] = _certificates,
-		["nextMarker"] = _nextMarker,
+		["certificates"] = args["certificates"],
+		["nextMarker"] = args["nextMarker"],
 	}
 	asserts.AssertListCertificatesByCAResponse(t)
 	return t
@@ -2538,13 +2808,16 @@ end
 
 --- Create a structure of type ListTopicRulesResponse
 -- <p>The output from the ListTopicRules operation.</p>
--- @param _rules [TopicRuleList] <p>The rules.</p>
--- @param _nextToken [NextToken] <p>A token used to retrieve the next value.</p>
-function M.ListTopicRulesResponse(_rules, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTopicRulesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * rules [TopicRuleList] <p>The rules.</p>
+-- * nextToken [NextToken] <p>A token used to retrieve the next value.</p>
+-- @return ListTopicRulesResponse structure as a key-value pair table
+function M.ListTopicRulesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTopicRulesResponse")
 	local t = { 
-		["rules"] = _rules,
-		["nextToken"] = _nextToken,
+		["rules"] = args["rules"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListTopicRulesResponse(t)
 	return t
@@ -2564,13 +2837,16 @@ end
 
 --- Create a structure of type RegisterCACertificateResponse
 -- <p>The output from the RegisterCACertificateResponse operation.</p>
--- @param _certificateArn [CertificateArn] <p>The CA certificate ARN.</p>
--- @param _certificateId [CertificateId] <p>The CA certificate identifier.</p>
-function M.RegisterCACertificateResponse(_certificateArn, _certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterCACertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateArn [CertificateArn] <p>The CA certificate ARN.</p>
+-- * certificateId [CertificateId] <p>The CA certificate identifier.</p>
+-- @return RegisterCACertificateResponse structure as a key-value pair table
+function M.RegisterCACertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating RegisterCACertificateResponse")
 	local t = { 
-		["certificateArn"] = _certificateArn,
-		["certificateId"] = _certificateId,
+		["certificateArn"] = args["certificateArn"],
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertRegisterCACertificateResponse(t)
 	return t
@@ -2590,13 +2866,16 @@ end
 
 --- Create a structure of type ListOutgoingCertificatesResponse
 -- <p>The output from the ListOutgoingCertificates operation.</p>
--- @param _nextMarker [Marker] <p>The marker for the next set of results.</p>
--- @param _outgoingCertificates [OutgoingCertificates] <p>The certificates that are being transfered but not yet accepted.</p>
-function M.ListOutgoingCertificatesResponse(_nextMarker, _outgoingCertificates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOutgoingCertificatesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextMarker [Marker] <p>The marker for the next set of results.</p>
+-- * outgoingCertificates [OutgoingCertificates] <p>The certificates that are being transfered but not yet accepted.</p>
+-- @return ListOutgoingCertificatesResponse structure as a key-value pair table
+function M.ListOutgoingCertificatesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListOutgoingCertificatesResponse")
 	local t = { 
-		["nextMarker"] = _nextMarker,
-		["outgoingCertificates"] = _outgoingCertificates,
+		["nextMarker"] = args["nextMarker"],
+		["outgoingCertificates"] = args["outgoingCertificates"],
 	}
 	asserts.AssertListOutgoingCertificatesResponse(t)
 	return t
@@ -2616,12 +2895,15 @@ end
 
 --- Create a structure of type DescribeCertificateRequest
 -- <p>The input for the DescribeCertificate operation.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate.</p>
--- Required parameter: certificateId
-function M.DescribeCertificateRequest(_certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- Required key: certificateId
+-- @return DescribeCertificateRequest structure as a key-value pair table
+function M.DescribeCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeCertificateRequest")
 	local t = { 
-		["certificateId"] = _certificateId,
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertDescribeCertificateRequest(t)
 	return t
@@ -2641,13 +2923,16 @@ end
 
 --- Create a structure of type CreateThingResponse
 -- <p>The output of the CreateThing operation.</p>
--- @param _thingArn [ThingArn] <p>The ARN of the new thing.</p>
--- @param _thingName [ThingName] <p>The name of the new thing.</p>
-function M.CreateThingResponse(_thingArn, _thingName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateThingResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingArn [ThingArn] <p>The ARN of the new thing.</p>
+-- * thingName [ThingName] <p>The name of the new thing.</p>
+-- @return CreateThingResponse structure as a key-value pair table
+function M.CreateThingResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateThingResponse")
 	local t = { 
-		["thingArn"] = _thingArn,
-		["thingName"] = _thingName,
+		["thingArn"] = args["thingArn"],
+		["thingName"] = args["thingName"],
 	}
 	asserts.AssertCreateThingResponse(t)
 	return t
@@ -2666,11 +2951,14 @@ end
 
 --- Create a structure of type InternalException
 -- <p>An unexpected error has occurred.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.InternalException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return InternalException structure as a key-value pair table
+function M.InternalException(args)
+	assert(args, "You must provdide an argument table when creating InternalException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalException(t)
 	return t
@@ -2688,8 +2976,11 @@ end
 
 --- Create a structure of type DeprecateThingTypeResponse
 -- <p>The output for the DeprecateThingType operation.</p>
-function M.DeprecateThingTypeResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeprecateThingTypeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeprecateThingTypeResponse structure as a key-value pair table
+function M.DeprecateThingTypeResponse(args)
+	assert(args, "You must provdide an argument table when creating DeprecateThingTypeResponse")
 	local t = { 
 	}
 	asserts.AssertDeprecateThingTypeResponse(t)
@@ -2709,11 +3000,14 @@ end
 
 --- Create a structure of type InternalFailureException
 -- <p>An unexpected error has occurred.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.InternalFailureException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalFailureException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return InternalFailureException structure as a key-value pair table
+function M.InternalFailureException(args)
+	assert(args, "You must provdide an argument table when creating InternalFailureException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalFailureException(t)
 	return t
@@ -2742,26 +3036,29 @@ end
 
 --- Create a structure of type CloudwatchMetricAction
 -- <p>Describes an action that captures a CloudWatch metric.</p>
--- @param _metricUnit [MetricUnit] <p>The <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit">metric unit</a> supported by CloudWatch.</p>
--- @param _roleArn [AwsArn] <p>The IAM role that allows access to the CloudWatch metric.</p>
--- @param _metricTimestamp [MetricTimestamp] <p>An optional <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp">Unix timestamp</a>.</p>
--- @param _metricNamespace [MetricNamespace] <p>The CloudWatch metric namespace name.</p>
--- @param _metricValue [MetricValue] <p>The CloudWatch metric value.</p>
--- @param _metricName [MetricName] <p>The CloudWatch metric name.</p>
--- Required parameter: roleArn
--- Required parameter: metricNamespace
--- Required parameter: metricName
--- Required parameter: metricValue
--- Required parameter: metricUnit
-function M.CloudwatchMetricAction(_metricUnit, _roleArn, _metricTimestamp, _metricNamespace, _metricValue, _metricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudwatchMetricAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * metricUnit [MetricUnit] <p>The <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit">metric unit</a> supported by CloudWatch.</p>
+-- * roleArn [AwsArn] <p>The IAM role that allows access to the CloudWatch metric.</p>
+-- * metricTimestamp [MetricTimestamp] <p>An optional <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp">Unix timestamp</a>.</p>
+-- * metricNamespace [MetricNamespace] <p>The CloudWatch metric namespace name.</p>
+-- * metricValue [MetricValue] <p>The CloudWatch metric value.</p>
+-- * metricName [MetricName] <p>The CloudWatch metric name.</p>
+-- Required key: roleArn
+-- Required key: metricNamespace
+-- Required key: metricName
+-- Required key: metricValue
+-- Required key: metricUnit
+-- @return CloudwatchMetricAction structure as a key-value pair table
+function M.CloudwatchMetricAction(args)
+	assert(args, "You must provdide an argument table when creating CloudwatchMetricAction")
 	local t = { 
-		["metricUnit"] = _metricUnit,
-		["roleArn"] = _roleArn,
-		["metricTimestamp"] = _metricTimestamp,
-		["metricNamespace"] = _metricNamespace,
-		["metricValue"] = _metricValue,
-		["metricName"] = _metricName,
+		["metricUnit"] = args["metricUnit"],
+		["roleArn"] = args["roleArn"],
+		["metricTimestamp"] = args["metricTimestamp"],
+		["metricNamespace"] = args["metricNamespace"],
+		["metricValue"] = args["metricValue"],
+		["metricName"] = args["metricName"],
 	}
 	asserts.AssertCloudwatchMetricAction(t)
 	return t
@@ -2780,11 +3077,14 @@ end
 
 --- Create a structure of type MalformedPolicyException
 -- <p>The policy documentation is not valid.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.MalformedPolicyException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MalformedPolicyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return MalformedPolicyException structure as a key-value pair table
+function M.MalformedPolicyException(args)
+	assert(args, "You must provdide an argument table when creating MalformedPolicyException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMalformedPolicyException(t)
 	return t
@@ -2804,12 +3104,15 @@ end
 
 --- Create a structure of type DescribeThingTypeRequest
 -- <p>The input for the DescribeThingType operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
--- Required parameter: thingTypeName
-function M.DescribeThingTypeRequest(_thingTypeName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeThingTypeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- Required key: thingTypeName
+-- @return DescribeThingTypeRequest structure as a key-value pair table
+function M.DescribeThingTypeRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeThingTypeRequest")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
+		["thingTypeName"] = args["thingTypeName"],
 	}
 	asserts.AssertDescribeThingTypeRequest(t)
 	return t
@@ -2840,35 +3143,38 @@ end
 
 --- Create a structure of type Action
 -- <p>Describes the actions associated with a rule.</p>
--- @param _dynamoDBv2 [DynamoDBv2Action] <p>Write to a DynamoDB table. This is a new version of the DynamoDB action. It allows you to write each attribute in an MQTT message payload into a separate DynamoDB column.</p>
--- @param _salesforce [SalesforceAction] <p>Send a message to a Salesforce IoT Cloud Input Stream.</p>
--- @param _kinesis [KinesisAction] <p>Write data to an Amazon Kinesis stream.</p>
--- @param _sqs [SqsAction] <p>Publish to an Amazon SQS queue.</p>
--- @param _republish [RepublishAction] <p>Publish to another MQTT topic.</p>
--- @param _dynamoDB [DynamoDBAction] <p>Write to a DynamoDB table.</p>
--- @param _s3 [S3Action] <p>Write to an Amazon S3 bucket.</p>
--- @param _cloudwatchAlarm [CloudwatchAlarmAction] <p>Change the state of a CloudWatch alarm.</p>
--- @param _sns [SnsAction] <p>Publish to an Amazon SNS topic.</p>
--- @param _elasticsearch [ElasticsearchAction] <p>Write data to an Amazon Elasticsearch Service domain.</p>
--- @param _cloudwatchMetric [CloudwatchMetricAction] <p>Capture a CloudWatch metric.</p>
--- @param _firehose [FirehoseAction] <p>Write to an Amazon Kinesis Firehose stream.</p>
--- @param _lambda [LambdaAction] <p>Invoke a Lambda function.</p>
-function M.Action(_dynamoDBv2, _salesforce, _kinesis, _sqs, _republish, _dynamoDB, _s3, _cloudwatchAlarm, _sns, _elasticsearch, _cloudwatchMetric, _firehose, _lambda, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Action")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * dynamoDBv2 [DynamoDBv2Action] <p>Write to a DynamoDB table. This is a new version of the DynamoDB action. It allows you to write each attribute in an MQTT message payload into a separate DynamoDB column.</p>
+-- * salesforce [SalesforceAction] <p>Send a message to a Salesforce IoT Cloud Input Stream.</p>
+-- * kinesis [KinesisAction] <p>Write data to an Amazon Kinesis stream.</p>
+-- * sqs [SqsAction] <p>Publish to an Amazon SQS queue.</p>
+-- * republish [RepublishAction] <p>Publish to another MQTT topic.</p>
+-- * dynamoDB [DynamoDBAction] <p>Write to a DynamoDB table.</p>
+-- * s3 [S3Action] <p>Write to an Amazon S3 bucket.</p>
+-- * cloudwatchAlarm [CloudwatchAlarmAction] <p>Change the state of a CloudWatch alarm.</p>
+-- * sns [SnsAction] <p>Publish to an Amazon SNS topic.</p>
+-- * elasticsearch [ElasticsearchAction] <p>Write data to an Amazon Elasticsearch Service domain.</p>
+-- * cloudwatchMetric [CloudwatchMetricAction] <p>Capture a CloudWatch metric.</p>
+-- * firehose [FirehoseAction] <p>Write to an Amazon Kinesis Firehose stream.</p>
+-- * lambda [LambdaAction] <p>Invoke a Lambda function.</p>
+-- @return Action structure as a key-value pair table
+function M.Action(args)
+	assert(args, "You must provdide an argument table when creating Action")
 	local t = { 
-		["dynamoDBv2"] = _dynamoDBv2,
-		["salesforce"] = _salesforce,
-		["kinesis"] = _kinesis,
-		["sqs"] = _sqs,
-		["republish"] = _republish,
-		["dynamoDB"] = _dynamoDB,
-		["s3"] = _s3,
-		["cloudwatchAlarm"] = _cloudwatchAlarm,
-		["sns"] = _sns,
-		["elasticsearch"] = _elasticsearch,
-		["cloudwatchMetric"] = _cloudwatchMetric,
-		["firehose"] = _firehose,
-		["lambda"] = _lambda,
+		["dynamoDBv2"] = args["dynamoDBv2"],
+		["salesforce"] = args["salesforce"],
+		["kinesis"] = args["kinesis"],
+		["sqs"] = args["sqs"],
+		["republish"] = args["republish"],
+		["dynamoDB"] = args["dynamoDB"],
+		["s3"] = args["s3"],
+		["cloudwatchAlarm"] = args["cloudwatchAlarm"],
+		["sns"] = args["sns"],
+		["elasticsearch"] = args["elasticsearch"],
+		["cloudwatchMetric"] = args["cloudwatchMetric"],
+		["firehose"] = args["firehose"],
+		["lambda"] = args["lambda"],
 	}
 	asserts.AssertAction(t)
 	return t
@@ -2888,13 +3194,16 @@ end
 
 --- Create a structure of type GetLoggingOptionsResponse
 -- <p>The output from the GetLoggingOptions operation.</p>
--- @param _logLevel [LogLevel] <p>The logging level.</p>
--- @param _roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
-function M.GetLoggingOptionsResponse(_logLevel, _roleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLoggingOptionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logLevel [LogLevel] <p>The logging level.</p>
+-- * roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
+-- @return GetLoggingOptionsResponse structure as a key-value pair table
+function M.GetLoggingOptionsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetLoggingOptionsResponse")
 	local t = { 
-		["logLevel"] = _logLevel,
-		["roleArn"] = _roleArn,
+		["logLevel"] = args["logLevel"],
+		["roleArn"] = args["roleArn"],
 	}
 	asserts.AssertGetLoggingOptionsResponse(t)
 	return t
@@ -2919,20 +3228,23 @@ end
 
 --- Create a structure of type S3Action
 -- <p>Describes an action to write data to an Amazon S3 bucket.</p>
--- @param _cannedAcl [CannedAccessControlList] <p>The Amazon S3 canned ACL that controls access to the object identified by the object key. For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl">S3 canned ACLs</a>.</p>
--- @param _roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
--- @param _bucketName [BucketName] <p>The Amazon S3 bucket.</p>
--- @param _key [Key] <p>The object key.</p>
--- Required parameter: roleArn
--- Required parameter: bucketName
--- Required parameter: key
-function M.S3Action(_cannedAcl, _roleArn, _bucketName, _key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3Action")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * cannedAcl [CannedAccessControlList] <p>The Amazon S3 canned ACL that controls access to the object identified by the object key. For more information, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl">S3 canned ACLs</a>.</p>
+-- * roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
+-- * bucketName [BucketName] <p>The Amazon S3 bucket.</p>
+-- * key [Key] <p>The object key.</p>
+-- Required key: roleArn
+-- Required key: bucketName
+-- Required key: key
+-- @return S3Action structure as a key-value pair table
+function M.S3Action(args)
+	assert(args, "You must provdide an argument table when creating S3Action")
 	local t = { 
-		["cannedAcl"] = _cannedAcl,
-		["roleArn"] = _roleArn,
-		["bucketName"] = _bucketName,
-		["key"] = _key,
+		["cannedAcl"] = args["cannedAcl"],
+		["roleArn"] = args["roleArn"],
+		["bucketName"] = args["bucketName"],
+		["key"] = args["key"],
 	}
 	asserts.AssertS3Action(t)
 	return t
@@ -2951,11 +3263,14 @@ end
 
 --- Create a structure of type DescribeCACertificateResponse
 -- <p>The output from the DescribeCACertificate operation.</p>
--- @param _certificateDescription [CACertificateDescription] <p>The CA certificate description.</p>
-function M.DescribeCACertificateResponse(_certificateDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCACertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateDescription [CACertificateDescription] <p>The CA certificate description.</p>
+-- @return DescribeCACertificateResponse structure as a key-value pair table
+function M.DescribeCACertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeCACertificateResponse")
 	local t = { 
-		["certificateDescription"] = _certificateDescription,
+		["certificateDescription"] = args["certificateDescription"],
 	}
 	asserts.AssertDescribeCACertificateResponse(t)
 	return t
@@ -2975,13 +3290,16 @@ end
 
 --- Create a structure of type ListCACertificatesResponse
 -- <p>The output from the ListCACertificates operation.</p>
--- @param _certificates [CACertificates] <p>The CA certificates registered in your AWS account.</p>
--- @param _nextMarker [Marker] <p>The current position within the list of CA certificates.</p>
-function M.ListCACertificatesResponse(_certificates, _nextMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCACertificatesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificates [CACertificates] <p>The CA certificates registered in your AWS account.</p>
+-- * nextMarker [Marker] <p>The current position within the list of CA certificates.</p>
+-- @return ListCACertificatesResponse structure as a key-value pair table
+function M.ListCACertificatesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListCACertificatesResponse")
 	local t = { 
-		["certificates"] = _certificates,
-		["nextMarker"] = _nextMarker,
+		["certificates"] = args["certificates"],
+		["nextMarker"] = args["nextMarker"],
 	}
 	asserts.AssertListCACertificatesResponse(t)
 	return t
@@ -3002,15 +3320,18 @@ end
 
 --- Create a structure of type ListPoliciesRequest
 -- <p>The input for the ListPolicies operation.</p>
--- @param _marker [Marker] <p>The marker for the next set of results.</p>
--- @param _ascendingOrder [AscendingOrder] <p>Specifies the order for results. If true, the results are returned in ascending creation order.</p>
--- @param _pageSize [PageSize] <p>The result page size.</p>
-function M.ListPoliciesRequest(_marker, _ascendingOrder, _pageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [Marker] <p>The marker for the next set of results.</p>
+-- * ascendingOrder [AscendingOrder] <p>Specifies the order for results. If true, the results are returned in ascending creation order.</p>
+-- * pageSize [PageSize] <p>The result page size.</p>
+-- @return ListPoliciesRequest structure as a key-value pair table
+function M.ListPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPoliciesRequest")
 	local t = { 
-		["marker"] = _marker,
-		["ascendingOrder"] = _ascendingOrder,
-		["pageSize"] = _pageSize,
+		["marker"] = args["marker"],
+		["ascendingOrder"] = args["ascendingOrder"],
+		["pageSize"] = args["pageSize"],
 	}
 	asserts.AssertListPoliciesRequest(t)
 	return t
@@ -3032,16 +3353,19 @@ end
 
 --- Create a structure of type UpdateCACertificateRequest
 -- <p>The input to the UpdateCACertificate operation.</p>
--- @param _newStatus [CACertificateStatus] <p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
--- @param _certificateId [CertificateId] <p>The CA certificate identifier.</p>
--- @param _newAutoRegistrationStatus [AutoRegistrationStatus] <p>The new value for the auto registration status. Valid values are: "ENABLE" or "DISABLE".</p>
--- Required parameter: certificateId
-function M.UpdateCACertificateRequest(_newStatus, _certificateId, _newAutoRegistrationStatus, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateCACertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * newStatus [CACertificateStatus] <p>The updated status of the CA certificate.</p> <p> <b>Note:</b> The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+-- * certificateId [CertificateId] <p>The CA certificate identifier.</p>
+-- * newAutoRegistrationStatus [AutoRegistrationStatus] <p>The new value for the auto registration status. Valid values are: "ENABLE" or "DISABLE".</p>
+-- Required key: certificateId
+-- @return UpdateCACertificateRequest structure as a key-value pair table
+function M.UpdateCACertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateCACertificateRequest")
 	local t = { 
-		["newStatus"] = _newStatus,
-		["certificateId"] = _certificateId,
-		["newAutoRegistrationStatus"] = _newAutoRegistrationStatus,
+		["newStatus"] = args["newStatus"],
+		["certificateId"] = args["certificateId"],
+		["newAutoRegistrationStatus"] = args["newAutoRegistrationStatus"],
 	}
 	asserts.AssertUpdateCACertificateRequest(t)
 	return t
@@ -3061,13 +3385,16 @@ end
 
 --- Create a structure of type ListThingsResponse
 -- <p>The output from the ListThings operation.</p>
--- @param _things [ThingAttributeList] <p>The things.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
-function M.ListThingsResponse(_things, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListThingsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * things [ThingAttributeList] <p>The things.</p>
+-- * nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+-- @return ListThingsResponse structure as a key-value pair table
+function M.ListThingsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListThingsResponse")
 	local t = { 
-		["things"] = _things,
-		["nextToken"] = _nextToken,
+		["things"] = args["things"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertListThingsResponse(t)
 	return t
@@ -3085,8 +3412,11 @@ end
 
 --- Create a structure of type DescribeEndpointRequest
 -- <p>The input for the DescribeEndpoint operation.</p>
-function M.DescribeEndpointRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEndpointRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DescribeEndpointRequest structure as a key-value pair table
+function M.DescribeEndpointRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEndpointRequest")
 	local t = { 
 	}
 	asserts.AssertDescribeEndpointRequest(t)
@@ -3107,12 +3437,15 @@ end
 
 --- Create a structure of type DeleteTopicRuleRequest
 -- <p>The input for the DeleteTopicRule operation.</p>
--- @param _ruleName [RuleName] <p>The name of the rule.</p>
--- Required parameter: ruleName
-function M.DeleteTopicRuleRequest(_ruleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTopicRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ruleName [RuleName] <p>The name of the rule.</p>
+-- Required key: ruleName
+-- @return DeleteTopicRuleRequest structure as a key-value pair table
+function M.DeleteTopicRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteTopicRuleRequest")
 	local t = { 
-		["ruleName"] = _ruleName,
+		["ruleName"] = args["ruleName"],
 	}
 	asserts.AssertDeleteTopicRuleRequest(t)
 	return t
@@ -3131,11 +3464,14 @@ end
 
 --- Create a structure of type SqlParseException
 -- <p>The Rule-SQL expression can't be parsed correctly.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.SqlParseException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SqlParseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return SqlParseException structure as a key-value pair table
+function M.SqlParseException(args)
+	assert(args, "You must provdide an argument table when creating SqlParseException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertSqlParseException(t)
 	return t
@@ -3154,11 +3490,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified resource does not exist.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.ResourceNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -3180,15 +3519,18 @@ end
 
 --- Create a structure of type CreatePolicyRequest
 -- <p>The input for the CreatePolicy operation.</p>
--- @param _policyName [PolicyName] <p>The policy name.</p>
--- @param _policyDocument [PolicyDocument] <p>The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a maximum length of 2048, excluding whitespace.</p>
--- Required parameter: policyName
--- Required parameter: policyDocument
-function M.CreatePolicyRequest(_policyName, _policyDocument, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The policy name.</p>
+-- * policyDocument [PolicyDocument] <p>The JSON document that describes the policy. <b>policyDocument</b> must have a minimum length of 1, with a maximum length of 2048, excluding whitespace.</p>
+-- Required key: policyName
+-- Required key: policyDocument
+-- @return CreatePolicyRequest structure as a key-value pair table
+function M.CreatePolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating CreatePolicyRequest")
 	local t = { 
-		["policyName"] = _policyName,
-		["policyDocument"] = _policyDocument,
+		["policyName"] = args["policyName"],
+		["policyDocument"] = args["policyDocument"],
 	}
 	asserts.AssertCreatePolicyRequest(t)
 	return t
@@ -3211,19 +3553,22 @@ end
 
 --- Create a structure of type ListThingsRequest
 -- <p>The input for the ListThings operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type used to search for things.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
--- @param _attributeName [AttributeName] <p>The attribute name used to search for things.</p>
--- @param _attributeValue [AttributeValue] <p>The attribute value used to search for things.</p>
--- @param _maxResults [RegistryMaxResults] <p>The maximum number of results to return in this operation.</p>
-function M.ListThingsRequest(_thingTypeName, _nextToken, _attributeName, _attributeValue, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListThingsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type used to search for things.</p>
+-- * nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+-- * attributeName [AttributeName] <p>The attribute name used to search for things.</p>
+-- * attributeValue [AttributeValue] <p>The attribute value used to search for things.</p>
+-- * maxResults [RegistryMaxResults] <p>The maximum number of results to return in this operation.</p>
+-- @return ListThingsRequest structure as a key-value pair table
+function M.ListThingsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListThingsRequest")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["nextToken"] = _nextToken,
-		["attributeName"] = _attributeName,
-		["attributeValue"] = _attributeValue,
-		["maxResults"] = _maxResults,
+		["thingTypeName"] = args["thingTypeName"],
+		["nextToken"] = args["nextToken"],
+		["attributeName"] = args["attributeName"],
+		["attributeValue"] = args["attributeValue"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListThingsRequest(t)
 	return t
@@ -3245,15 +3590,18 @@ end
 
 --- Create a structure of type DeletePolicyVersionRequest
 -- <p>The input for the DeletePolicyVersion operation.</p>
--- @param _policyName [PolicyName] <p>The name of the policy.</p>
--- @param _policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
--- Required parameter: policyName
--- Required parameter: policyVersionId
-function M.DeletePolicyVersionRequest(_policyName, _policyVersionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePolicyVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The name of the policy.</p>
+-- * policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
+-- Required key: policyName
+-- Required key: policyVersionId
+-- @return DeletePolicyVersionRequest structure as a key-value pair table
+function M.DeletePolicyVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeletePolicyVersionRequest")
 	local t = { 
-		["policyName"] = _policyName,
-		["policyVersionId"] = _policyVersionId,
+		["policyName"] = args["policyName"],
+		["policyVersionId"] = args["policyVersionId"],
 	}
 	asserts.AssertDeletePolicyVersionRequest(t)
 	return t
@@ -3272,11 +3620,14 @@ end
 
 --- Create a structure of type ThrottlingException
 -- <p>The rate exceeds the limit.</p>
--- @param _message [errorMessage] <p>The message for the exception.</p>
-function M.ThrottlingException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThrottlingException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>The message for the exception.</p>
+-- @return ThrottlingException structure as a key-value pair table
+function M.ThrottlingException(args)
+	assert(args, "You must provdide an argument table when creating ThrottlingException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertThrottlingException(t)
 	return t
@@ -3299,18 +3650,21 @@ end
 
 --- Create a structure of type ListPrincipalPoliciesRequest
 -- <p>The input for the ListPrincipalPolicies operation.</p>
--- @param _marker [Marker] <p>The marker for the next set of results.</p>
--- @param _ascendingOrder [AscendingOrder] <p>Specifies the order for results. If true, results are returned in ascending creation order.</p>
--- @param _pageSize [PageSize] <p>The result page size.</p>
--- @param _principal [Principal] <p>The principal.</p>
--- Required parameter: principal
-function M.ListPrincipalPoliciesRequest(_marker, _ascendingOrder, _pageSize, _principal, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [Marker] <p>The marker for the next set of results.</p>
+-- * ascendingOrder [AscendingOrder] <p>Specifies the order for results. If true, results are returned in ascending creation order.</p>
+-- * pageSize [PageSize] <p>The result page size.</p>
+-- * principal [Principal] <p>The principal.</p>
+-- Required key: principal
+-- @return ListPrincipalPoliciesRequest structure as a key-value pair table
+function M.ListPrincipalPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPrincipalPoliciesRequest")
 	local t = { 
-		["marker"] = _marker,
-		["ascendingOrder"] = _ascendingOrder,
-		["pageSize"] = _pageSize,
-		["principal"] = _principal,
+		["marker"] = args["marker"],
+		["ascendingOrder"] = args["ascendingOrder"],
+		["pageSize"] = args["pageSize"],
+		["principal"] = args["principal"],
 	}
 	asserts.AssertListPrincipalPoliciesRequest(t)
 	return t
@@ -3330,13 +3684,16 @@ end
 
 --- Create a structure of type ThingTypeProperties
 -- <p>The ThingTypeProperties contains information about the thing type including: a thing type description, and a list of searchable thing attribute names.</p>
--- @param _searchableAttributes [SearchableAttributes] <p>A list of searchable thing attribute names.</p>
--- @param _thingTypeDescription [ThingTypeDescription] <p>The description of the thing type.</p>
-function M.ThingTypeProperties(_searchableAttributes, _thingTypeDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThingTypeProperties")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * searchableAttributes [SearchableAttributes] <p>A list of searchable thing attribute names.</p>
+-- * thingTypeDescription [ThingTypeDescription] <p>The description of the thing type.</p>
+-- @return ThingTypeProperties structure as a key-value pair table
+function M.ThingTypeProperties(args)
+	assert(args, "You must provdide an argument table when creating ThingTypeProperties")
 	local t = { 
-		["searchableAttributes"] = _searchableAttributes,
-		["thingTypeDescription"] = _thingTypeDescription,
+		["searchableAttributes"] = args["searchableAttributes"],
+		["thingTypeDescription"] = args["thingTypeDescription"],
 	}
 	asserts.AssertThingTypeProperties(t)
 	return t
@@ -3356,12 +3713,15 @@ end
 
 --- Create a structure of type DeleteCertificateRequest
 -- <p>The input for the DeleteCertificate operation.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate.</p>
--- Required parameter: certificateId
-function M.DeleteCertificateRequest(_certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- Required key: certificateId
+-- @return DeleteCertificateRequest structure as a key-value pair table
+function M.DeleteCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteCertificateRequest")
 	local t = { 
-		["certificateId"] = _certificateId,
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertDeleteCertificateRequest(t)
 	return t
@@ -3384,19 +3744,22 @@ end
 
 --- Create a structure of type GetPolicyVersionResponse
 -- <p>The output from the GetPolicyVersion operation.</p>
--- @param _policyName [PolicyName] <p>The policy name.</p>
--- @param _policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
--- @param _policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
--- @param _policyArn [PolicyArn] <p>The policy ARN.</p>
--- @param _isDefaultVersion [IsDefaultVersion] <p>Specifies whether the policy version is the default.</p>
-function M.GetPolicyVersionResponse(_policyName, _policyDocument, _policyVersionId, _policyArn, _isDefaultVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The policy name.</p>
+-- * policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
+-- * policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
+-- * policyArn [PolicyArn] <p>The policy ARN.</p>
+-- * isDefaultVersion [IsDefaultVersion] <p>Specifies whether the policy version is the default.</p>
+-- @return GetPolicyVersionResponse structure as a key-value pair table
+function M.GetPolicyVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetPolicyVersionResponse")
 	local t = { 
-		["policyName"] = _policyName,
-		["policyDocument"] = _policyDocument,
-		["policyVersionId"] = _policyVersionId,
-		["policyArn"] = _policyArn,
-		["isDefaultVersion"] = _isDefaultVersion,
+		["policyName"] = args["policyName"],
+		["policyDocument"] = args["policyDocument"],
+		["policyVersionId"] = args["policyVersionId"],
+		["policyArn"] = args["policyArn"],
+		["isDefaultVersion"] = args["isDefaultVersion"],
 	}
 	asserts.AssertGetPolicyVersionResponse(t)
 	return t
@@ -3418,17 +3781,20 @@ end
 
 --- Create a structure of type CACertificate
 -- <p>A CA certificate.</p>
--- @param _certificateArn [CertificateArn] <p>The ARN of the CA certificate.</p>
--- @param _status [CACertificateStatus] <p>The status of the CA certificate.</p> <p>The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
--- @param _creationDate [DateType] <p>The date the CA certificate was created.</p>
--- @param _certificateId [CertificateId] <p>The ID of the CA certificate.</p>
-function M.CACertificate(_certificateArn, _status, _creationDate, _certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CACertificate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateArn [CertificateArn] <p>The ARN of the CA certificate.</p>
+-- * status [CACertificateStatus] <p>The status of the CA certificate.</p> <p>The status value REGISTER_INACTIVE is deprecated and should not be used.</p>
+-- * creationDate [DateType] <p>The date the CA certificate was created.</p>
+-- * certificateId [CertificateId] <p>The ID of the CA certificate.</p>
+-- @return CACertificate structure as a key-value pair table
+function M.CACertificate(args)
+	assert(args, "You must provdide an argument table when creating CACertificate")
 	local t = { 
-		["certificateArn"] = _certificateArn,
-		["status"] = _status,
-		["creationDate"] = _creationDate,
-		["certificateId"] = _certificateId,
+		["certificateArn"] = args["certificateArn"],
+		["status"] = args["status"],
+		["creationDate"] = args["creationDate"],
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertCACertificate(t)
 	return t
@@ -3449,15 +3815,18 @@ end
 
 --- Create a structure of type ThingTypeDefinition
 -- <p>The definition of the thing type, including thing type name and description.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
--- @param _thingTypeProperties [ThingTypeProperties] <p>The ThingTypeProperties for the thing type.</p>
--- @param _thingTypeMetadata [ThingTypeMetadata] <p>The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.</p>
-function M.ThingTypeDefinition(_thingTypeName, _thingTypeProperties, _thingTypeMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ThingTypeDefinition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- * thingTypeProperties [ThingTypeProperties] <p>The ThingTypeProperties for the thing type.</p>
+-- * thingTypeMetadata [ThingTypeMetadata] <p>The ThingTypeMetadata contains additional information about the thing type including: creation date and time, a value indicating whether the thing type is deprecated, and a date and time when it was deprecated.</p>
+-- @return ThingTypeDefinition structure as a key-value pair table
+function M.ThingTypeDefinition(args)
+	assert(args, "You must provdide an argument table when creating ThingTypeDefinition")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["thingTypeProperties"] = _thingTypeProperties,
-		["thingTypeMetadata"] = _thingTypeMetadata,
+		["thingTypeName"] = args["thingTypeName"],
+		["thingTypeProperties"] = args["thingTypeProperties"],
+		["thingTypeMetadata"] = args["thingTypeMetadata"],
 	}
 	asserts.AssertThingTypeDefinition(t)
 	return t
@@ -3478,15 +3847,18 @@ end
 
 --- Create a structure of type ListThingTypesRequest
 -- <p>The input for the ListThingTypes operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
--- @param _maxResults [RegistryMaxResults] <p>The maximum number of results to return in this operation.</p>
-function M.ListThingTypesRequest(_thingTypeName, _nextToken, _maxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListThingTypesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- * nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+-- * maxResults [RegistryMaxResults] <p>The maximum number of results to return in this operation.</p>
+-- @return ListThingTypesRequest structure as a key-value pair table
+function M.ListThingTypesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListThingTypesRequest")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
+		["thingTypeName"] = args["thingTypeName"],
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
 	}
 	asserts.AssertListThingTypesRequest(t)
 	return t
@@ -3508,15 +3880,18 @@ end
 
 --- Create a structure of type RepublishAction
 -- <p>Describes an action to republish to another topic.</p>
--- @param _topic [TopicPattern] <p>The name of the MQTT topic.</p>
--- @param _roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
--- Required parameter: roleArn
--- Required parameter: topic
-function M.RepublishAction(_topic, _roleArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepublishAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * topic [TopicPattern] <p>The name of the MQTT topic.</p>
+-- * roleArn [AwsArn] <p>The ARN of the IAM role that grants access.</p>
+-- Required key: roleArn
+-- Required key: topic
+-- @return RepublishAction structure as a key-value pair table
+function M.RepublishAction(args)
+	assert(args, "You must provdide an argument table when creating RepublishAction")
 	local t = { 
-		["topic"] = _topic,
-		["roleArn"] = _roleArn,
+		["topic"] = args["topic"],
+		["roleArn"] = args["roleArn"],
 	}
 	asserts.AssertRepublishAction(t)
 	return t
@@ -3540,21 +3915,24 @@ end
 
 --- Create a structure of type OutgoingCertificate
 -- <p>A certificate that has been transfered but not yet accepted.</p>
--- @param _certificateArn [CertificateArn] <p>The certificate ARN.</p>
--- @param _certificateId [CertificateId] <p>The certificate ID.</p>
--- @param _transferDate [DateType] <p>The date the transfer was initiated.</p>
--- @param _transferredTo [AwsAccountId] <p>The AWS account to which the transfer was made.</p>
--- @param _transferMessage [Message] <p>The transfer message.</p>
--- @param _creationDate [DateType] <p>The certificate creation date.</p>
-function M.OutgoingCertificate(_certificateArn, _certificateId, _transferDate, _transferredTo, _transferMessage, _creationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OutgoingCertificate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateArn [CertificateArn] <p>The certificate ARN.</p>
+-- * certificateId [CertificateId] <p>The certificate ID.</p>
+-- * transferDate [DateType] <p>The date the transfer was initiated.</p>
+-- * transferredTo [AwsAccountId] <p>The AWS account to which the transfer was made.</p>
+-- * transferMessage [Message] <p>The transfer message.</p>
+-- * creationDate [DateType] <p>The certificate creation date.</p>
+-- @return OutgoingCertificate structure as a key-value pair table
+function M.OutgoingCertificate(args)
+	assert(args, "You must provdide an argument table when creating OutgoingCertificate")
 	local t = { 
-		["certificateArn"] = _certificateArn,
-		["certificateId"] = _certificateId,
-		["transferDate"] = _transferDate,
-		["transferredTo"] = _transferredTo,
-		["transferMessage"] = _transferMessage,
-		["creationDate"] = _creationDate,
+		["certificateArn"] = args["certificateArn"],
+		["certificateId"] = args["certificateId"],
+		["transferDate"] = args["transferDate"],
+		["transferredTo"] = args["transferredTo"],
+		["transferMessage"] = args["transferMessage"],
+		["creationDate"] = args["creationDate"],
 	}
 	asserts.AssertOutgoingCertificate(t)
 	return t
@@ -3580,21 +3958,24 @@ end
 
 --- Create a structure of type CloudwatchAlarmAction
 -- <p>Describes an action that updates a CloudWatch alarm.</p>
--- @param _stateReason [StateReason] <p>The reason for the alarm change.</p>
--- @param _roleArn [AwsArn] <p>The IAM role that allows access to the CloudWatch alarm.</p>
--- @param _alarmName [AlarmName] <p>The CloudWatch alarm name.</p>
--- @param _stateValue [StateValue] <p>The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.</p>
--- Required parameter: roleArn
--- Required parameter: alarmName
--- Required parameter: stateReason
--- Required parameter: stateValue
-function M.CloudwatchAlarmAction(_stateReason, _roleArn, _alarmName, _stateValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudwatchAlarmAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * stateReason [StateReason] <p>The reason for the alarm change.</p>
+-- * roleArn [AwsArn] <p>The IAM role that allows access to the CloudWatch alarm.</p>
+-- * alarmName [AlarmName] <p>The CloudWatch alarm name.</p>
+-- * stateValue [StateValue] <p>The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.</p>
+-- Required key: roleArn
+-- Required key: alarmName
+-- Required key: stateReason
+-- Required key: stateValue
+-- @return CloudwatchAlarmAction structure as a key-value pair table
+function M.CloudwatchAlarmAction(args)
+	assert(args, "You must provdide an argument table when creating CloudwatchAlarmAction")
 	local t = { 
-		["stateReason"] = _stateReason,
-		["roleArn"] = _roleArn,
-		["alarmName"] = _alarmName,
-		["stateValue"] = _stateValue,
+		["stateReason"] = args["stateReason"],
+		["roleArn"] = args["roleArn"],
+		["alarmName"] = args["alarmName"],
+		["stateValue"] = args["stateValue"],
 	}
 	asserts.AssertCloudwatchAlarmAction(t)
 	return t
@@ -3613,11 +3994,14 @@ end
 
 --- Create a structure of type ListPolicyVersionsResponse
 -- <p>The output from the ListPolicyVersions operation.</p>
--- @param _policyVersions [PolicyVersions] <p>The policy versions.</p>
-function M.ListPolicyVersionsResponse(_policyVersions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyVersions [PolicyVersions] <p>The policy versions.</p>
+-- @return ListPolicyVersionsResponse structure as a key-value pair table
+function M.ListPolicyVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListPolicyVersionsResponse")
 	local t = { 
-		["policyVersions"] = _policyVersions,
+		["policyVersions"] = args["policyVersions"],
 	}
 	asserts.AssertListPolicyVersionsResponse(t)
 	return t
@@ -3637,13 +4021,16 @@ end
 
 --- Create a structure of type Policy
 -- <p>Describes an AWS IoT policy.</p>
--- @param _policyName [PolicyName] <p>The policy name.</p>
--- @param _policyArn [PolicyArn] <p>The policy ARN.</p>
-function M.Policy(_policyName, _policyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Policy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The policy name.</p>
+-- * policyArn [PolicyArn] <p>The policy ARN.</p>
+-- @return Policy structure as a key-value pair table
+function M.Policy(args)
+	assert(args, "You must provdide an argument table when creating Policy")
 	local t = { 
-		["policyName"] = _policyName,
-		["policyArn"] = _policyArn,
+		["policyName"] = args["policyName"],
+		["policyArn"] = args["policyArn"],
 	}
 	asserts.AssertPolicy(t)
 	return t
@@ -3663,12 +4050,15 @@ end
 
 --- Create a structure of type GetPolicyRequest
 -- <p>The input for the GetPolicy operation.</p>
--- @param _policyName [PolicyName] <p>The name of the policy.</p>
--- Required parameter: policyName
-function M.GetPolicyRequest(_policyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The name of the policy.</p>
+-- Required key: policyName
+-- @return GetPolicyRequest structure as a key-value pair table
+function M.GetPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetPolicyRequest")
 	local t = { 
-		["policyName"] = _policyName,
+		["policyName"] = args["policyName"],
 	}
 	asserts.AssertGetPolicyRequest(t)
 	return t
@@ -3686,8 +4076,11 @@ end
 
 --- Create a structure of type DeleteRegistrationCodeResponse
 -- <p>The output for the DeleteRegistrationCode operation.</p>
-function M.DeleteRegistrationCodeResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRegistrationCodeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteRegistrationCodeResponse structure as a key-value pair table
+function M.DeleteRegistrationCodeResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteRegistrationCodeResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteRegistrationCodeResponse(t)
@@ -3711,19 +4104,22 @@ end
 
 --- Create a structure of type DescribeThingResponse
 -- <p>The output from the DescribeThing operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The thing type name.</p>
--- @param _attributes [Attributes] <p>The thing attributes.</p>
--- @param _version [Version] <p>The current version of the thing record in the registry.</p> <note> <p>To avoid unintentional changes to the information in the registry, you can pass the version information in the <code>expectedVersion</code> parameter of the <code>UpdateThing</code> and <code>DeleteThing</code> calls.</p> </note>
--- @param _thingName [ThingName] <p>The name of the thing.</p>
--- @param _defaultClientId [ClientId] <p>The default client ID.</p>
-function M.DescribeThingResponse(_thingTypeName, _attributes, _version, _thingName, _defaultClientId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeThingResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The thing type name.</p>
+-- * attributes [Attributes] <p>The thing attributes.</p>
+-- * version [Version] <p>The current version of the thing record in the registry.</p> <note> <p>To avoid unintentional changes to the information in the registry, you can pass the version information in the <code>expectedVersion</code> parameter of the <code>UpdateThing</code> and <code>DeleteThing</code> calls.</p> </note>
+-- * thingName [ThingName] <p>The name of the thing.</p>
+-- * defaultClientId [ClientId] <p>The default client ID.</p>
+-- @return DescribeThingResponse structure as a key-value pair table
+function M.DescribeThingResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeThingResponse")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["attributes"] = _attributes,
-		["version"] = _version,
-		["thingName"] = _thingName,
-		["defaultClientId"] = _defaultClientId,
+		["thingTypeName"] = args["thingTypeName"],
+		["attributes"] = args["attributes"],
+		["version"] = args["version"],
+		["thingName"] = args["thingName"],
+		["defaultClientId"] = args["defaultClientId"],
 	}
 	asserts.AssertDescribeThingResponse(t)
 	return t
@@ -3744,14 +4140,17 @@ end
 
 --- Create a structure of type DeprecateThingTypeRequest
 -- <p>The input for the DeprecateThingType operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type to deprecate.</p>
--- @param _undoDeprecate [UndoDeprecate] <p>Whether to undeprecate a deprecated thing type. If <b>true</b>, the thing type will not be deprecated anymore and you can associate it with things.</p>
--- Required parameter: thingTypeName
-function M.DeprecateThingTypeRequest(_thingTypeName, _undoDeprecate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeprecateThingTypeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type to deprecate.</p>
+-- * undoDeprecate [UndoDeprecate] <p>Whether to undeprecate a deprecated thing type. If <b>true</b>, the thing type will not be deprecated anymore and you can associate it with things.</p>
+-- Required key: thingTypeName
+-- @return DeprecateThingTypeRequest structure as a key-value pair table
+function M.DeprecateThingTypeRequest(args)
+	assert(args, "You must provdide an argument table when creating DeprecateThingTypeRequest")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
-		["undoDeprecate"] = _undoDeprecate,
+		["thingTypeName"] = args["thingTypeName"],
+		["undoDeprecate"] = args["undoDeprecate"],
 	}
 	asserts.AssertDeprecateThingTypeRequest(t)
 	return t
@@ -3773,17 +4172,20 @@ end
 
 --- Create a structure of type GetPolicyResponse
 -- <p>The output from the GetPolicy operation.</p>
--- @param _policyName [PolicyName] <p>The policy name.</p>
--- @param _policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
--- @param _defaultVersionId [PolicyVersionId] <p>The default policy version ID.</p>
--- @param _policyArn [PolicyArn] <p>The policy ARN.</p>
-function M.GetPolicyResponse(_policyName, _policyDocument, _defaultVersionId, _policyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The policy name.</p>
+-- * policyDocument [PolicyDocument] <p>The JSON document that describes the policy.</p>
+-- * defaultVersionId [PolicyVersionId] <p>The default policy version ID.</p>
+-- * policyArn [PolicyArn] <p>The policy ARN.</p>
+-- @return GetPolicyResponse structure as a key-value pair table
+function M.GetPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetPolicyResponse")
 	local t = { 
-		["policyName"] = _policyName,
-		["policyDocument"] = _policyDocument,
-		["defaultVersionId"] = _defaultVersionId,
-		["policyArn"] = _policyArn,
+		["policyName"] = args["policyName"],
+		["policyDocument"] = args["policyDocument"],
+		["defaultVersionId"] = args["defaultVersionId"],
+		["policyArn"] = args["policyArn"],
 	}
 	asserts.AssertGetPolicyResponse(t)
 	return t
@@ -3805,15 +4207,18 @@ end
 
 --- Create a structure of type SetDefaultPolicyVersionRequest
 -- <p>The input for the SetDefaultPolicyVersion operation.</p>
--- @param _policyName [PolicyName] <p>The policy name.</p>
--- @param _policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
--- Required parameter: policyName
--- Required parameter: policyVersionId
-function M.SetDefaultPolicyVersionRequest(_policyName, _policyVersionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetDefaultPolicyVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The policy name.</p>
+-- * policyVersionId [PolicyVersionId] <p>The policy version ID.</p>
+-- Required key: policyName
+-- Required key: policyVersionId
+-- @return SetDefaultPolicyVersionRequest structure as a key-value pair table
+function M.SetDefaultPolicyVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating SetDefaultPolicyVersionRequest")
 	local t = { 
-		["policyName"] = _policyName,
-		["policyVersionId"] = _policyVersionId,
+		["policyName"] = args["policyName"],
+		["policyVersionId"] = args["policyVersionId"],
 	}
 	asserts.AssertSetDefaultPolicyVersionRequest(t)
 	return t
@@ -3835,16 +4240,19 @@ end
 
 --- Create a structure of type ListPrincipalThingsRequest
 -- <p>The input for the ListPrincipalThings operation.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
--- @param _maxResults [RegistryMaxResults] <p>The maximum number of results to return in this operation.</p>
--- @param _principal [Principal] <p>The principal.</p>
--- Required parameter: principal
-function M.ListPrincipalThingsRequest(_nextToken, _maxResults, _principal, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalThingsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The token for the next set of results, or <b>null</b> if there are no additional results.</p>
+-- * maxResults [RegistryMaxResults] <p>The maximum number of results to return in this operation.</p>
+-- * principal [Principal] <p>The principal.</p>
+-- Required key: principal
+-- @return ListPrincipalThingsRequest structure as a key-value pair table
+function M.ListPrincipalThingsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPrincipalThingsRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["maxResults"] = _maxResults,
-		["principal"] = _principal,
+		["nextToken"] = args["nextToken"],
+		["maxResults"] = args["maxResults"],
+		["principal"] = args["principal"],
 	}
 	asserts.AssertListPrincipalThingsRequest(t)
 	return t
@@ -3867,17 +4275,20 @@ end
 
 --- Create a structure of type KinesisAction
 -- <p>Describes an action to write data to an Amazon Kinesis stream.</p>
--- @param _roleArn [AwsArn] <p>The ARN of the IAM role that grants access to the Amazon Kinesis stream.</p>
--- @param _streamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
--- @param _partitionKey [PartitionKey] <p>The partition key.</p>
--- Required parameter: roleArn
--- Required parameter: streamName
-function M.KinesisAction(_roleArn, _streamName, _partitionKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KinesisAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * roleArn [AwsArn] <p>The ARN of the IAM role that grants access to the Amazon Kinesis stream.</p>
+-- * streamName [StreamName] <p>The name of the Amazon Kinesis stream.</p>
+-- * partitionKey [PartitionKey] <p>The partition key.</p>
+-- Required key: roleArn
+-- Required key: streamName
+-- @return KinesisAction structure as a key-value pair table
+function M.KinesisAction(args)
+	assert(args, "You must provdide an argument table when creating KinesisAction")
 	local t = { 
-		["roleArn"] = _roleArn,
-		["streamName"] = _streamName,
-		["partitionKey"] = _partitionKey,
+		["roleArn"] = args["roleArn"],
+		["streamName"] = args["streamName"],
+		["partitionKey"] = args["partitionKey"],
 	}
 	asserts.AssertKinesisAction(t)
 	return t
@@ -3900,18 +4311,21 @@ end
 
 --- Create a structure of type ListCertificatesByCARequest
 -- <p>The input to the ListCertificatesByCA operation.</p>
--- @param _marker [Marker] <p>The marker for the next set of results.</p>
--- @param _caCertificateId [CertificateId] <p>The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate.</p>
--- @param _ascendingOrder [AscendingOrder] <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
--- @param _pageSize [PageSize] <p>The result page size.</p>
--- Required parameter: caCertificateId
-function M.ListCertificatesByCARequest(_marker, _caCertificateId, _ascendingOrder, _pageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListCertificatesByCARequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * marker [Marker] <p>The marker for the next set of results.</p>
+-- * caCertificateId [CertificateId] <p>The ID of the CA certificate. This operation will list all registered device certificate that were signed by this CA certificate.</p>
+-- * ascendingOrder [AscendingOrder] <p>Specifies the order for results. If True, the results are returned in ascending order, based on the creation date.</p>
+-- * pageSize [PageSize] <p>The result page size.</p>
+-- Required key: caCertificateId
+-- @return ListCertificatesByCARequest structure as a key-value pair table
+function M.ListCertificatesByCARequest(args)
+	assert(args, "You must provdide an argument table when creating ListCertificatesByCARequest")
 	local t = { 
-		["marker"] = _marker,
-		["caCertificateId"] = _caCertificateId,
-		["ascendingOrder"] = _ascendingOrder,
-		["pageSize"] = _pageSize,
+		["marker"] = args["marker"],
+		["caCertificateId"] = args["caCertificateId"],
+		["ascendingOrder"] = args["ascendingOrder"],
+		["pageSize"] = args["pageSize"],
 	}
 	asserts.AssertListCertificatesByCARequest(t)
 	return t
@@ -3930,11 +4344,14 @@ end
 
 --- Create a structure of type RegistrationCodeValidationException
 -- <p>The registration code is invalid.</p>
--- @param _message [errorMessage] <p>Additional information about the exception.</p>
-function M.RegistrationCodeValidationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegistrationCodeValidationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] <p>Additional information about the exception.</p>
+-- @return RegistrationCodeValidationException structure as a key-value pair table
+function M.RegistrationCodeValidationException(args)
+	assert(args, "You must provdide an argument table when creating RegistrationCodeValidationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertRegistrationCodeValidationException(t)
 	return t
@@ -3955,14 +4372,17 @@ end
 
 --- Create a structure of type CreateCertificateFromCsrRequest
 -- <p>The input for the CreateCertificateFromCsr operation.</p>
--- @param _certificateSigningRequest [CertificateSigningRequest] <p>The certificate signing request (CSR).</p>
--- @param _setAsActive [SetAsActive] <p>Specifies whether the certificate is active.</p>
--- Required parameter: certificateSigningRequest
-function M.CreateCertificateFromCsrRequest(_certificateSigningRequest, _setAsActive, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateCertificateFromCsrRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateSigningRequest [CertificateSigningRequest] <p>The certificate signing request (CSR).</p>
+-- * setAsActive [SetAsActive] <p>Specifies whether the certificate is active.</p>
+-- Required key: certificateSigningRequest
+-- @return CreateCertificateFromCsrRequest structure as a key-value pair table
+function M.CreateCertificateFromCsrRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateCertificateFromCsrRequest")
 	local t = { 
-		["certificateSigningRequest"] = _certificateSigningRequest,
-		["setAsActive"] = _setAsActive,
+		["certificateSigningRequest"] = args["certificateSigningRequest"],
+		["setAsActive"] = args["setAsActive"],
 	}
 	asserts.AssertCreateCertificateFromCsrRequest(t)
 	return t
@@ -3982,13 +4402,16 @@ end
 
 --- Create a structure of type KeyPair
 -- <p>Describes a key pair.</p>
--- @param _PublicKey [PublicKey] <p>The public key.</p>
--- @param _PrivateKey [PrivateKey] <p>The private key.</p>
-function M.KeyPair(_PublicKey, _PrivateKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KeyPair")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PublicKey [PublicKey] <p>The public key.</p>
+-- * PrivateKey [PrivateKey] <p>The private key.</p>
+-- @return KeyPair structure as a key-value pair table
+function M.KeyPair(args)
+	assert(args, "You must provdide an argument table when creating KeyPair")
 	local t = { 
-		["PublicKey"] = _PublicKey,
-		["PrivateKey"] = _PrivateKey,
+		["PublicKey"] = args["PublicKey"],
+		["PrivateKey"] = args["PrivateKey"],
 	}
 	asserts.AssertKeyPair(t)
 	return t
@@ -4008,12 +4431,15 @@ end
 
 --- Create a structure of type CancelCertificateTransferRequest
 -- <p>The input for the CancelCertificateTransfer operation.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate.</p>
--- Required parameter: certificateId
-function M.CancelCertificateTransferRequest(_certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelCertificateTransferRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- Required key: certificateId
+-- @return CancelCertificateTransferRequest structure as a key-value pair table
+function M.CancelCertificateTransferRequest(args)
+	assert(args, "You must provdide an argument table when creating CancelCertificateTransferRequest")
 	local t = { 
-		["certificateId"] = _certificateId,
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertCancelCertificateTransferRequest(t)
 	return t
@@ -4035,15 +4461,18 @@ end
 
 --- Create a structure of type DetachPrincipalPolicyRequest
 -- <p>The input for the DetachPrincipalPolicy operation.</p>
--- @param _policyName [PolicyName] <p>The name of the policy to detach.</p>
--- @param _principal [Principal] <p>The principal.</p> <p>If the principal is a certificate, specify the certificate ARN. If the principal is an Amazon Cognito identity, specify the identity ID.</p>
--- Required parameter: policyName
--- Required parameter: principal
-function M.DetachPrincipalPolicyRequest(_policyName, _principal, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachPrincipalPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * policyName [PolicyName] <p>The name of the policy to detach.</p>
+-- * principal [Principal] <p>The principal.</p> <p>If the principal is a certificate, specify the certificate ARN. If the principal is an Amazon Cognito identity, specify the identity ID.</p>
+-- Required key: policyName
+-- Required key: principal
+-- @return DetachPrincipalPolicyRequest structure as a key-value pair table
+function M.DetachPrincipalPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachPrincipalPolicyRequest")
 	local t = { 
-		["policyName"] = _policyName,
-		["principal"] = _principal,
+		["policyName"] = args["policyName"],
+		["principal"] = args["principal"],
 	}
 	asserts.AssertDetachPrincipalPolicyRequest(t)
 	return t
@@ -4063,12 +4492,15 @@ end
 
 --- Create a structure of type LambdaAction
 -- <p>Describes an action to invoke a Lambda function.</p>
--- @param _functionArn [FunctionArn] <p>The ARN of the Lambda function.</p>
--- Required parameter: functionArn
-function M.LambdaAction(_functionArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * functionArn [FunctionArn] <p>The ARN of the Lambda function.</p>
+-- Required key: functionArn
+-- @return LambdaAction structure as a key-value pair table
+function M.LambdaAction(args)
+	assert(args, "You must provdide an argument table when creating LambdaAction")
 	local t = { 
-		["functionArn"] = _functionArn,
+		["functionArn"] = args["functionArn"],
 	}
 	asserts.AssertLambdaAction(t)
 	return t
@@ -4088,12 +4520,15 @@ end
 
 --- Create a structure of type DescribeCACertificateRequest
 -- <p>The input for the DescribeCACertificate operation.</p>
--- @param _certificateId [CertificateId] <p>The CA certificate identifier.</p>
--- Required parameter: certificateId
-function M.DescribeCACertificateRequest(_certificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCACertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateId [CertificateId] <p>The CA certificate identifier.</p>
+-- Required key: certificateId
+-- @return DescribeCACertificateRequest structure as a key-value pair table
+function M.DescribeCACertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeCACertificateRequest")
 	local t = { 
-		["certificateId"] = _certificateId,
+		["certificateId"] = args["certificateId"],
 	}
 	asserts.AssertDescribeCACertificateRequest(t)
 	return t
@@ -4115,15 +4550,18 @@ end
 
 --- Create a structure of type CreateTopicRuleRequest
 -- <p>The input for the CreateTopicRule operation.</p>
--- @param _topicRulePayload [TopicRulePayload] <p>The rule payload.</p>
--- @param _ruleName [RuleName] <p>The name of the rule.</p>
--- Required parameter: ruleName
--- Required parameter: topicRulePayload
-function M.CreateTopicRuleRequest(_topicRulePayload, _ruleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTopicRuleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * topicRulePayload [TopicRulePayload] <p>The rule payload.</p>
+-- * ruleName [RuleName] <p>The name of the rule.</p>
+-- Required key: ruleName
+-- Required key: topicRulePayload
+-- @return CreateTopicRuleRequest structure as a key-value pair table
+function M.CreateTopicRuleRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateTopicRuleRequest")
 	local t = { 
-		["topicRulePayload"] = _topicRulePayload,
-		["ruleName"] = _ruleName,
+		["topicRulePayload"] = args["topicRulePayload"],
+		["ruleName"] = args["ruleName"],
 	}
 	asserts.AssertCreateTopicRuleRequest(t)
 	return t
@@ -4143,12 +4581,15 @@ end
 
 --- Create a structure of type PutItemInput
 -- <p>The input for the DynamoActionVS action that specifies the DynamoDB table to which the message data will be written.</p>
--- @param _tableName [TableName] <p>The table where the message data will be written</p>
--- Required parameter: tableName
-function M.PutItemInput(_tableName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutItemInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tableName [TableName] <p>The table where the message data will be written</p>
+-- Required key: tableName
+-- @return PutItemInput structure as a key-value pair table
+function M.PutItemInput(args)
+	assert(args, "You must provdide an argument table when creating PutItemInput")
 	local t = { 
-		["tableName"] = _tableName,
+		["tableName"] = args["tableName"],
 	}
 	asserts.AssertPutItemInput(t)
 	return t
@@ -4171,17 +4612,20 @@ end
 
 --- Create a structure of type TransferCertificateRequest
 -- <p>The input for the TransferCertificate operation.</p>
--- @param _transferMessage [Message] <p>The transfer message.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate.</p>
--- @param _targetAwsAccount [AwsAccountId] <p>The AWS account.</p>
--- Required parameter: certificateId
--- Required parameter: targetAwsAccount
-function M.TransferCertificateRequest(_transferMessage, _certificateId, _targetAwsAccount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TransferCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * transferMessage [Message] <p>The transfer message.</p>
+-- * certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- * targetAwsAccount [AwsAccountId] <p>The AWS account.</p>
+-- Required key: certificateId
+-- Required key: targetAwsAccount
+-- @return TransferCertificateRequest structure as a key-value pair table
+function M.TransferCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating TransferCertificateRequest")
 	local t = { 
-		["transferMessage"] = _transferMessage,
-		["certificateId"] = _certificateId,
-		["targetAwsAccount"] = _targetAwsAccount,
+		["transferMessage"] = args["transferMessage"],
+		["certificateId"] = args["certificateId"],
+		["targetAwsAccount"] = args["targetAwsAccount"],
 	}
 	asserts.AssertTransferCertificateRequest(t)
 	return t
@@ -4201,12 +4645,15 @@ end
 
 --- Create a structure of type DeleteThingTypeRequest
 -- <p>The input for the DeleteThingType operation.</p>
--- @param _thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
--- Required parameter: thingTypeName
-function M.DeleteThingTypeRequest(_thingTypeName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteThingTypeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * thingTypeName [ThingTypeName] <p>The name of the thing type.</p>
+-- Required key: thingTypeName
+-- @return DeleteThingTypeRequest structure as a key-value pair table
+function M.DeleteThingTypeRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteThingTypeRequest")
 	local t = { 
-		["thingTypeName"] = _thingTypeName,
+		["thingTypeName"] = args["thingTypeName"],
 	}
 	asserts.AssertDeleteThingTypeRequest(t)
 	return t
@@ -4234,29 +4681,32 @@ end
 
 --- Create a structure of type CertificateDescription
 -- <p>Describes a certificate.</p>
--- @param _certificateArn [CertificateArn] <p>The ARN of the certificate.</p>
--- @param _status [CertificateStatus] <p>The status of the certificate.</p>
--- @param _previousOwnedBy [AwsAccountId] <p>The ID of the AWS account of the previous owner of the certificate.</p>
--- @param _certificateId [CertificateId] <p>The ID of the certificate.</p>
--- @param _lastModifiedDate [DateType] <p>The date and time the certificate was last modified.</p>
--- @param _certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
--- @param _transferData [TransferData] <p>The transfer data.</p>
--- @param _ownedBy [AwsAccountId] <p>The ID of the AWS account that owns the certificate.</p>
--- @param _caCertificateId [CertificateId] <p>The certificate ID of the CA certificate used to sign this certificate.</p>
--- @param _creationDate [DateType] <p>The date and time the certificate was created.</p>
-function M.CertificateDescription(_certificateArn, _status, _previousOwnedBy, _certificateId, _lastModifiedDate, _certificatePem, _transferData, _ownedBy, _caCertificateId, _creationDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CertificateDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * certificateArn [CertificateArn] <p>The ARN of the certificate.</p>
+-- * status [CertificateStatus] <p>The status of the certificate.</p>
+-- * previousOwnedBy [AwsAccountId] <p>The ID of the AWS account of the previous owner of the certificate.</p>
+-- * certificateId [CertificateId] <p>The ID of the certificate.</p>
+-- * lastModifiedDate [DateType] <p>The date and time the certificate was last modified.</p>
+-- * certificatePem [CertificatePem] <p>The certificate data, in PEM format.</p>
+-- * transferData [TransferData] <p>The transfer data.</p>
+-- * ownedBy [AwsAccountId] <p>The ID of the AWS account that owns the certificate.</p>
+-- * caCertificateId [CertificateId] <p>The certificate ID of the CA certificate used to sign this certificate.</p>
+-- * creationDate [DateType] <p>The date and time the certificate was created.</p>
+-- @return CertificateDescription structure as a key-value pair table
+function M.CertificateDescription(args)
+	assert(args, "You must provdide an argument table when creating CertificateDescription")
 	local t = { 
-		["certificateArn"] = _certificateArn,
-		["status"] = _status,
-		["previousOwnedBy"] = _previousOwnedBy,
-		["certificateId"] = _certificateId,
-		["lastModifiedDate"] = _lastModifiedDate,
-		["certificatePem"] = _certificatePem,
-		["transferData"] = _transferData,
-		["ownedBy"] = _ownedBy,
-		["caCertificateId"] = _caCertificateId,
-		["creationDate"] = _creationDate,
+		["certificateArn"] = args["certificateArn"],
+		["status"] = args["status"],
+		["previousOwnedBy"] = args["previousOwnedBy"],
+		["certificateId"] = args["certificateId"],
+		["lastModifiedDate"] = args["lastModifiedDate"],
+		["certificatePem"] = args["certificatePem"],
+		["transferData"] = args["transferData"],
+		["ownedBy"] = args["ownedBy"],
+		["caCertificateId"] = args["caCertificateId"],
+		["creationDate"] = args["creationDate"],
 	}
 	asserts.AssertCertificateDescription(t)
 	return t

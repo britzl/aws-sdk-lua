@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type DeleteProtectionRequest
 --  
--- @param _ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object to be deleted.</p>
--- Required parameter: ProtectionId
-function M.DeleteProtectionRequest(_ProtectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProtectionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object to be deleted.</p>
+-- Required key: ProtectionId
+-- @return DeleteProtectionRequest structure as a key-value pair table
+function M.DeleteProtectionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteProtectionRequest")
 	local t = { 
-		["ProtectionId"] = _ProtectionId,
+		["ProtectionId"] = args["ProtectionId"],
 	}
 	asserts.AssertDeleteProtectionRequest(t)
 	return t
@@ -60,13 +63,16 @@ end
 
 --- Create a structure of type ListProtectionsResponse
 --  
--- @param _Protections [Protections] <p>The array of enabled <a>Protection</a> objects.</p>
--- @param _NextToken [Token] <p>If you specify a value for <code>MaxResults</code> and you have more Protections than the value of MaxResults, AWS Shield Advanced returns a NextToken value in the response that allows you to list another group of Protections. For the second and subsequent ListProtections requests, specify the value of NextToken from the previous response to get information about another batch of Protections.</p>
-function M.ListProtectionsResponse(_Protections, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListProtectionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Protections [Protections] <p>The array of enabled <a>Protection</a> objects.</p>
+-- * NextToken [Token] <p>If you specify a value for <code>MaxResults</code> and you have more Protections than the value of MaxResults, AWS Shield Advanced returns a NextToken value in the response that allows you to list another group of Protections. For the second and subsequent ListProtections requests, specify the value of NextToken from the previous response to get information about another batch of Protections.</p>
+-- @return ListProtectionsResponse structure as a key-value pair table
+function M.ListProtectionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListProtectionsResponse")
 	local t = { 
-		["Protections"] = _Protections,
-		["NextToken"] = _NextToken,
+		["Protections"] = args["Protections"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListProtectionsResponse(t)
 	return t
@@ -86,12 +92,15 @@ end
 
 --- Create a structure of type DescribeAttackRequest
 --  
--- @param _AttackId [AttackId] <p>The unique identifier (ID) for the attack that to be described.</p>
--- Required parameter: AttackId
-function M.DescribeAttackRequest(_AttackId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttackRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AttackId [AttackId] <p>The unique identifier (ID) for the attack that to be described.</p>
+-- Required key: AttackId
+-- @return DescribeAttackRequest structure as a key-value pair table
+function M.DescribeAttackRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAttackRequest")
 	local t = { 
-		["AttackId"] = _AttackId,
+		["AttackId"] = args["AttackId"],
 	}
 	asserts.AssertDescribeAttackRequest(t)
 	return t
@@ -111,13 +120,16 @@ end
 
 --- Create a structure of type TimeRange
 -- <p>The time range.</p>
--- @param _FromInclusive [AttackTimestamp] <p>The start time, in the format 2016-12-16T13:50Z.</p>
--- @param _ToExclusive [AttackTimestamp] <p>The end time, in the format 2016-12-16T15:50Z.</p>
-function M.TimeRange(_FromInclusive, _ToExclusive, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TimeRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FromInclusive [AttackTimestamp] <p>The start time, in the format 2016-12-16T13:50Z.</p>
+-- * ToExclusive [AttackTimestamp] <p>The end time, in the format 2016-12-16T15:50Z.</p>
+-- @return TimeRange structure as a key-value pair table
+function M.TimeRange(args)
+	assert(args, "You must provdide an argument table when creating TimeRange")
 	local t = { 
-		["FromInclusive"] = _FromInclusive,
-		["ToExclusive"] = _ToExclusive,
+		["FromInclusive"] = args["FromInclusive"],
+		["ToExclusive"] = args["ToExclusive"],
 	}
 	asserts.AssertTimeRange(t)
 	return t
@@ -136,11 +148,14 @@ end
 
 --- Create a structure of type DescribeSubscriptionResponse
 --  
--- @param _Subscription [Subscription] <p>The AWS Shield Advanced subscription details for an account.</p>
-function M.DescribeSubscriptionResponse(_Subscription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubscriptionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Subscription [Subscription] <p>The AWS Shield Advanced subscription details for an account.</p>
+-- @return DescribeSubscriptionResponse structure as a key-value pair table
+function M.DescribeSubscriptionResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeSubscriptionResponse")
 	local t = { 
-		["Subscription"] = _Subscription,
+		["Subscription"] = args["Subscription"],
 	}
 	asserts.AssertDescribeSubscriptionResponse(t)
 	return t
@@ -159,11 +174,14 @@ end
 
 --- Create a structure of type Mitigation
 -- <p>The mitigation applied to a DDoS attack.</p>
--- @param _MitigationName [String] <p>The name of the mitigation taken for this attack.</p>
-function M.Mitigation(_MitigationName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Mitigation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MitigationName [String] <p>The name of the mitigation taken for this attack.</p>
+-- @return Mitigation structure as a key-value pair table
+function M.Mitigation(args)
+	assert(args, "You must provdide an argument table when creating Mitigation")
 	local t = { 
-		["MitigationName"] = _MitigationName,
+		["MitigationName"] = args["MitigationName"],
 	}
 	asserts.AssertMitigation(t)
 	return t
@@ -182,11 +200,14 @@ end
 
 --- Create a structure of type InternalErrorException
 -- <p>Exception that indicates that a problem occurred with the service infrastructure. You can retry the request.</p>
--- @param _message [errorMessage] 
-function M.InternalErrorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return InternalErrorException structure as a key-value pair table
+function M.InternalErrorException(args)
+	assert(args, "You must provdide an argument table when creating InternalErrorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInternalErrorException(t)
 	return t
@@ -206,13 +227,16 @@ end
 
 --- Create a structure of type ListAttacksResponse
 --  
--- @param _NextToken [Token] <p>The token returned by a previous call to indicate that there is more data available. If not null, more results are available. Pass this value for the <code>NextMarker</code> parameter in a subsequent call to <code>ListAttacks</code> to retrieve the next set of items.</p>
--- @param _AttackSummaries [AttackSummaries] <p>The attack information for the specified time range.</p>
-function M.ListAttacksResponse(_NextToken, _AttackSummaries, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttacksResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [Token] <p>The token returned by a previous call to indicate that there is more data available. If not null, more results are available. Pass this value for the <code>NextMarker</code> parameter in a subsequent call to <code>ListAttacks</code> to retrieve the next set of items.</p>
+-- * AttackSummaries [AttackSummaries] <p>The attack information for the specified time range.</p>
+-- @return ListAttacksResponse structure as a key-value pair table
+function M.ListAttacksResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAttacksResponse")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["AttackSummaries"] = _AttackSummaries,
+		["NextToken"] = args["NextToken"],
+		["AttackSummaries"] = args["AttackSummaries"],
 	}
 	asserts.AssertListAttacksResponse(t)
 	return t
@@ -235,19 +259,22 @@ end
 
 --- Create a structure of type ListAttacksRequest
 --  
--- @param _NextToken [Token] <p>The <code>ListAttacksRequest.NextMarker</code> value from a previous call to <code>ListAttacksRequest</code>. Pass null if this is the first call.</p>
--- @param _EndTime [TimeRange] <p>The end of the time period for the attacks.</p>
--- @param _ResourceArns [ResourceArnFilterList] <p>The ARN (Amazon Resource Name) of the resource that was attacked. If this is left blank, all applicable resources for this account will be included.</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of <a>AttackSummary</a> objects to be returned. If this is left blank, the first 20 results will be returned.</p>
--- @param _StartTime [TimeRange] <p>The time period for the attacks.</p>
-function M.ListAttacksRequest(_NextToken, _EndTime, _ResourceArns, _MaxResults, _StartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttacksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [Token] <p>The <code>ListAttacksRequest.NextMarker</code> value from a previous call to <code>ListAttacksRequest</code>. Pass null if this is the first call.</p>
+-- * EndTime [TimeRange] <p>The end of the time period for the attacks.</p>
+-- * ResourceArns [ResourceArnFilterList] <p>The ARN (Amazon Resource Name) of the resource that was attacked. If this is left blank, all applicable resources for this account will be included.</p>
+-- * MaxResults [MaxResults] <p>The maximum number of <a>AttackSummary</a> objects to be returned. If this is left blank, the first 20 results will be returned.</p>
+-- * StartTime [TimeRange] <p>The time period for the attacks.</p>
+-- @return ListAttacksRequest structure as a key-value pair table
+function M.ListAttacksRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAttacksRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["EndTime"] = _EndTime,
-		["ResourceArns"] = _ResourceArns,
-		["MaxResults"] = _MaxResults,
-		["StartTime"] = _StartTime,
+		["NextToken"] = args["NextToken"],
+		["EndTime"] = args["EndTime"],
+		["ResourceArns"] = args["ResourceArns"],
+		["MaxResults"] = args["MaxResults"],
+		["StartTime"] = args["StartTime"],
 	}
 	asserts.AssertListAttacksRequest(t)
 	return t
@@ -266,11 +293,14 @@ end
 
 --- Create a structure of type LockedSubscriptionException
 -- <p>Exception that indicates that the subscription has been modified by another client. You can retry the request.</p>
--- @param _message [errorMessage] 
-function M.LockedSubscriptionException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LockedSubscriptionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return LockedSubscriptionException structure as a key-value pair table
+function M.LockedSubscriptionException(args)
+	assert(args, "You must provdide an argument table when creating LockedSubscriptionException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLockedSubscriptionException(t)
 	return t
@@ -288,8 +318,11 @@ end
 
 --- Create a structure of type DeleteSubscriptionRequest
 --  
-function M.DeleteSubscriptionRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubscriptionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteSubscriptionRequest structure as a key-value pair table
+function M.DeleteSubscriptionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSubscriptionRequest")
 	local t = { 
 	}
 	asserts.AssertDeleteSubscriptionRequest(t)
@@ -309,11 +342,14 @@ end
 
 --- Create a structure of type CreateProtectionResponse
 --  
--- @param _ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object that is created.</p>
-function M.CreateProtectionResponse(_ProtectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateProtectionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object that is created.</p>
+-- @return CreateProtectionResponse structure as a key-value pair table
+function M.CreateProtectionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateProtectionResponse")
 	local t = { 
-		["ProtectionId"] = _ProtectionId,
+		["ProtectionId"] = args["ProtectionId"],
 	}
 	asserts.AssertCreateProtectionResponse(t)
 	return t
@@ -333,13 +369,16 @@ end
 
 --- Create a structure of type ListProtectionsRequest
 --  
--- @param _NextToken [Token] <p>The <code>ListProtectionsRequest.NextToken</code> value from a previous call to <code>ListProtections</code>. Pass null if this is the first call.</p>
--- @param _MaxResults [MaxResults] <p>The maximum number of <a>Protection</a> objects to be returned. If this is left blank the first 20 results will be returned.</p>
-function M.ListProtectionsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListProtectionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [Token] <p>The <code>ListProtectionsRequest.NextToken</code> value from a previous call to <code>ListProtections</code>. Pass null if this is the first call.</p>
+-- * MaxResults [MaxResults] <p>The maximum number of <a>Protection</a> objects to be returned. If this is left blank the first 20 results will be returned.</p>
+-- @return ListProtectionsRequest structure as a key-value pair table
+function M.ListProtectionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListProtectionsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListProtectionsRequest(t)
 	return t
@@ -360,15 +399,18 @@ end
 
 --- Create a structure of type LimitsExceededException
 -- <p>Exception that indicates that the operation would exceed a limit.</p>
--- @param _Limit [LimitNumber] 
--- @param _message [errorMessage] 
--- @param _Type [LimitType] 
-function M.LimitsExceededException(_Limit, _message, _Type, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitsExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Limit [LimitNumber] 
+-- * message [errorMessage] 
+-- * Type [LimitType] 
+-- @return LimitsExceededException structure as a key-value pair table
+function M.LimitsExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitsExceededException")
 	local t = { 
-		["Limit"] = _Limit,
-		["message"] = _message,
-		["Type"] = _Type,
+		["Limit"] = args["Limit"],
+		["message"] = args["message"],
+		["Type"] = args["Type"],
 	}
 	asserts.AssertLimitsExceededException(t)
 	return t
@@ -387,11 +429,14 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- <p>Exception that indicates that the parameters passed to the API are invalid. </p>
--- @param _message [errorMessage] 
-function M.InvalidParameterException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidParameterException(t)
 	return t
@@ -409,8 +454,11 @@ end
 
 --- Create a structure of type DescribeSubscriptionRequest
 --  
-function M.DescribeSubscriptionRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubscriptionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DescribeSubscriptionRequest structure as a key-value pair table
+function M.DescribeSubscriptionRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeSubscriptionRequest")
 	local t = { 
 	}
 	asserts.AssertDescribeSubscriptionRequest(t)
@@ -432,15 +480,18 @@ end
 
 --- Create a structure of type Protection
 -- <p>An object that represents a resource that is under DDoS protection.</p>
--- @param _ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the AWS resource that is protected.</p>
--- @param _Id [ProtectionId] <p>The unique identifier (ID) of the protection.</p>
--- @param _Name [ProtectionName] <p>The friendly name of the protection. For example, <code>My CloudFront distributions</code>.</p>
-function M.Protection(_ResourceArn, _Id, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Protection")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the AWS resource that is protected.</p>
+-- * Id [ProtectionId] <p>The unique identifier (ID) of the protection.</p>
+-- * Name [ProtectionName] <p>The friendly name of the protection. For example, <code>My CloudFront distributions</code>.</p>
+-- @return Protection structure as a key-value pair table
+function M.Protection(args)
+	assert(args, "You must provdide an argument table when creating Protection")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["Id"] = _Id,
-		["Name"] = _Name,
+		["ResourceArn"] = args["ResourceArn"],
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertProtection(t)
 	return t
@@ -458,8 +509,11 @@ end
 
 --- Create a structure of type DeleteSubscriptionResponse
 --  
-function M.DeleteSubscriptionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubscriptionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteSubscriptionResponse structure as a key-value pair table
+function M.DeleteSubscriptionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteSubscriptionResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteSubscriptionResponse(t)
@@ -482,15 +536,18 @@ end
 
 --- Create a structure of type CreateProtectionRequest
 --  
--- @param _ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource to be protected.</p>
--- @param _Name [ProtectionName] <p>Friendly name for the <code>Protection</code> you are creating.</p>
--- Required parameter: Name
--- Required parameter: ResourceArn
-function M.CreateProtectionRequest(_ResourceArn, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateProtectionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource to be protected.</p>
+-- * Name [ProtectionName] <p>Friendly name for the <code>Protection</code> you are creating.</p>
+-- Required key: Name
+-- Required key: ResourceArn
+-- @return CreateProtectionRequest structure as a key-value pair table
+function M.CreateProtectionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateProtectionRequest")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["Name"] = _Name,
+		["ResourceArn"] = args["ResourceArn"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateProtectionRequest(t)
 	return t
@@ -509,11 +566,14 @@ end
 
 --- Create a structure of type InvalidOperationException
 -- <p>Exception that indicates that the operation would not cause any change to occur.</p>
--- @param _message [errorMessage] 
-function M.InvalidOperationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOperationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return InvalidOperationException structure as a key-value pair table
+function M.InvalidOperationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidOperationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidOperationException(t)
 	return t
@@ -532,11 +592,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>Exception indicating the specified resource does not exist.</p>
--- @param _message [errorMessage] 
-function M.ResourceNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -556,13 +619,16 @@ end
 
 --- Create a structure of type Subscription
 -- <p>Information about the AWS Shield Advanced subscription for an account.</p>
--- @param _StartTime [Timestamp] <p>The start time of the subscription, in the format "2016-12-16T13:50Z".</p>
--- @param _TimeCommitmentInSeconds [DurationInSeconds] <p>The length, in seconds, of the AWS Shield Advanced subscription for the account.</p>
-function M.Subscription(_StartTime, _TimeCommitmentInSeconds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Subscription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StartTime [Timestamp] <p>The start time of the subscription, in the format "2016-12-16T13:50Z".</p>
+-- * TimeCommitmentInSeconds [DurationInSeconds] <p>The length, in seconds, of the AWS Shield Advanced subscription for the account.</p>
+-- @return Subscription structure as a key-value pair table
+function M.Subscription(args)
+	assert(args, "You must provdide an argument table when creating Subscription")
 	local t = { 
-		["StartTime"] = _StartTime,
-		["TimeCommitmentInSeconds"] = _TimeCommitmentInSeconds,
+		["StartTime"] = args["StartTime"],
+		["TimeCommitmentInSeconds"] = args["TimeCommitmentInSeconds"],
 	}
 	asserts.AssertSubscription(t)
 	return t
@@ -584,17 +650,20 @@ end
 
 --- Create a structure of type SubResourceSummary
 -- <p>The attack information for the specified SubResource.</p>
--- @param _Counters [SummarizedCounterList] <p>The counters that describe the details of the attack.</p>
--- @param _Type [SubResourceType] <p>The <code>SubResource</code> type.</p>
--- @param _Id [String] <p>The unique identifier (ID) of the <code>SubResource</code>.</p>
--- @param _AttackVectors [SummarizedAttackVectorList] <p>The list of attack types and associated counters.</p>
-function M.SubResourceSummary(_Counters, _Type, _Id, _AttackVectors, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubResourceSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Counters [SummarizedCounterList] <p>The counters that describe the details of the attack.</p>
+-- * Type [SubResourceType] <p>The <code>SubResource</code> type.</p>
+-- * Id [String] <p>The unique identifier (ID) of the <code>SubResource</code>.</p>
+-- * AttackVectors [SummarizedAttackVectorList] <p>The list of attack types and associated counters.</p>
+-- @return SubResourceSummary structure as a key-value pair table
+function M.SubResourceSummary(args)
+	assert(args, "You must provdide an argument table when creating SubResourceSummary")
 	local t = { 
-		["Counters"] = _Counters,
-		["Type"] = _Type,
-		["Id"] = _Id,
-		["AttackVectors"] = _AttackVectors,
+		["Counters"] = args["Counters"],
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
+		["AttackVectors"] = args["AttackVectors"],
 	}
 	asserts.AssertSubResourceSummary(t)
 	return t
@@ -617,19 +686,22 @@ end
 
 --- Create a structure of type AttackSummary
 -- <p>Summarizes all DDoS attacks for a specified time period.</p>
--- @param _EndTime [AttackTimestamp] <p>The end time of the attack, in the format 2016-12-16T13:50Z.</p>
--- @param _ResourceArn [String] <p>The ARN (Amazon Resource Name) of the resource that was attacked.</p>
--- @param _AttackId [String] <p>The unique identifier (ID) of the attack.</p>
--- @param _AttackVectors [AttackVectorDescriptionList] <p>The list of attacks for a specified time period.</p>
--- @param _StartTime [AttackTimestamp] <p>The start time of the attack, in the format 2016-12-16T13:50Z.</p>
-function M.AttackSummary(_EndTime, _ResourceArn, _AttackId, _AttackVectors, _StartTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttackSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndTime [AttackTimestamp] <p>The end time of the attack, in the format 2016-12-16T13:50Z.</p>
+-- * ResourceArn [String] <p>The ARN (Amazon Resource Name) of the resource that was attacked.</p>
+-- * AttackId [String] <p>The unique identifier (ID) of the attack.</p>
+-- * AttackVectors [AttackVectorDescriptionList] <p>The list of attacks for a specified time period.</p>
+-- * StartTime [AttackTimestamp] <p>The start time of the attack, in the format 2016-12-16T13:50Z.</p>
+-- @return AttackSummary structure as a key-value pair table
+function M.AttackSummary(args)
+	assert(args, "You must provdide an argument table when creating AttackSummary")
 	local t = { 
-		["EndTime"] = _EndTime,
-		["ResourceArn"] = _ResourceArn,
-		["AttackId"] = _AttackId,
-		["AttackVectors"] = _AttackVectors,
-		["StartTime"] = _StartTime,
+		["EndTime"] = args["EndTime"],
+		["ResourceArn"] = args["ResourceArn"],
+		["AttackId"] = args["AttackId"],
+		["AttackVectors"] = args["AttackVectors"],
+		["StartTime"] = args["StartTime"],
 	}
 	asserts.AssertAttackSummary(t)
 	return t
@@ -654,23 +726,26 @@ end
 
 --- Create a structure of type AttackDetail
 -- <p>The details of a DDoS attack.</p>
--- @param _Mitigations [MitigationList] <p>List of mitigation actions taken for the attack.</p>
--- @param _ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource that was attacked.</p>
--- @param _AttackId [AttackId] <p>The unique identifier (ID) of the attack.</p>
--- @param _SubResources [SubResourceSummaryList] <p>If applicable, additional detail about the resource being attacked, for example, IP address or URL.</p>
--- @param _StartTime [AttackTimestamp] <p>The time the attack started, in the format 2016-12-16T13:50Z.</p>
--- @param _EndTime [AttackTimestamp] <p>The time the attack ended, in the format 2016-12-16T13:50Z.</p>
--- @param _AttackCounters [SummarizedCounterList] <p>List of counters that describe the attack for the specified time period.</p>
-function M.AttackDetail(_Mitigations, _ResourceArn, _AttackId, _SubResources, _StartTime, _EndTime, _AttackCounters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttackDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Mitigations [MitigationList] <p>List of mitigation actions taken for the attack.</p>
+-- * ResourceArn [ResourceArn] <p>The ARN (Amazon Resource Name) of the resource that was attacked.</p>
+-- * AttackId [AttackId] <p>The unique identifier (ID) of the attack.</p>
+-- * SubResources [SubResourceSummaryList] <p>If applicable, additional detail about the resource being attacked, for example, IP address or URL.</p>
+-- * StartTime [AttackTimestamp] <p>The time the attack started, in the format 2016-12-16T13:50Z.</p>
+-- * EndTime [AttackTimestamp] <p>The time the attack ended, in the format 2016-12-16T13:50Z.</p>
+-- * AttackCounters [SummarizedCounterList] <p>List of counters that describe the attack for the specified time period.</p>
+-- @return AttackDetail structure as a key-value pair table
+function M.AttackDetail(args)
+	assert(args, "You must provdide an argument table when creating AttackDetail")
 	local t = { 
-		["Mitigations"] = _Mitigations,
-		["ResourceArn"] = _ResourceArn,
-		["AttackId"] = _AttackId,
-		["SubResources"] = _SubResources,
-		["StartTime"] = _StartTime,
-		["EndTime"] = _EndTime,
-		["AttackCounters"] = _AttackCounters,
+		["Mitigations"] = args["Mitigations"],
+		["ResourceArn"] = args["ResourceArn"],
+		["AttackId"] = args["AttackId"],
+		["SubResources"] = args["SubResources"],
+		["StartTime"] = args["StartTime"],
+		["EndTime"] = args["EndTime"],
+		["AttackCounters"] = args["AttackCounters"],
 	}
 	asserts.AssertAttackDetail(t)
 	return t
@@ -689,11 +764,14 @@ end
 
 --- Create a structure of type OptimisticLockException
 -- <p>Exception that indicates that the protection state has been modified by another client. You can retry the request.</p>
--- @param _message [errorMessage] 
-function M.OptimisticLockException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OptimisticLockException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return OptimisticLockException structure as a key-value pair table
+function M.OptimisticLockException(args)
+	assert(args, "You must provdide an argument table when creating OptimisticLockException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertOptimisticLockException(t)
 	return t
@@ -712,11 +790,14 @@ end
 
 --- Create a structure of type DescribeAttackResponse
 --  
--- @param _Attack [AttackDetail] <p>The attack that is described.</p>
-function M.DescribeAttackResponse(_Attack, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAttackResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Attack [AttackDetail] <p>The attack that is described.</p>
+-- @return DescribeAttackResponse structure as a key-value pair table
+function M.DescribeAttackResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeAttackResponse")
 	local t = { 
-		["Attack"] = _Attack,
+		["Attack"] = args["Attack"],
 	}
 	asserts.AssertDescribeAttackResponse(t)
 	return t
@@ -737,14 +818,17 @@ end
 
 --- Create a structure of type SummarizedAttackVector
 -- <p>A summary of information about the attack.</p>
--- @param _VectorCounters [SummarizedCounterList] <p>The list of counters that describe the details of the attack.</p>
--- @param _VectorType [String] <p>The attack type, for example, SNMP reflection or SYN flood.</p>
--- Required parameter: VectorType
-function M.SummarizedAttackVector(_VectorCounters, _VectorType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SummarizedAttackVector")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VectorCounters [SummarizedCounterList] <p>The list of counters that describe the details of the attack.</p>
+-- * VectorType [String] <p>The attack type, for example, SNMP reflection or SYN flood.</p>
+-- Required key: VectorType
+-- @return SummarizedAttackVector structure as a key-value pair table
+function M.SummarizedAttackVector(args)
+	assert(args, "You must provdide an argument table when creating SummarizedAttackVector")
 	local t = { 
-		["VectorCounters"] = _VectorCounters,
-		["VectorType"] = _VectorType,
+		["VectorCounters"] = args["VectorCounters"],
+		["VectorType"] = args["VectorType"],
 	}
 	asserts.AssertSummarizedAttackVector(t)
 	return t
@@ -763,11 +847,14 @@ end
 
 --- Create a structure of type DescribeProtectionResponse
 --  
--- @param _Protection [Protection] <p>The <a>Protection</a> object that is described.</p>
-function M.DescribeProtectionResponse(_Protection, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProtectionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Protection [Protection] <p>The <a>Protection</a> object that is described.</p>
+-- @return DescribeProtectionResponse structure as a key-value pair table
+function M.DescribeProtectionResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeProtectionResponse")
 	local t = { 
-		["Protection"] = _Protection,
+		["Protection"] = args["Protection"],
 	}
 	asserts.AssertDescribeProtectionResponse(t)
 	return t
@@ -791,21 +878,24 @@ end
 
 --- Create a structure of type SummarizedCounter
 -- <p>The counter that describes a DDoS attack.</p>
--- @param _Name [String] <p>The counter name.</p>
--- @param _Max [Double] <p>The maximum value of the counter for a specified time period.</p>
--- @param _Average [Double] <p>The average value of the counter for a specified time period.</p>
--- @param _N [Integer] <p>The number of counters for a specified time period.</p>
--- @param _Sum [Double] <p>The total of counter values for a specified time period.</p>
--- @param _Unit [String] <p>The unit of the counters.</p>
-function M.SummarizedCounter(_Name, _Max, _Average, _N, _Sum, _Unit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SummarizedCounter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>The counter name.</p>
+-- * Max [Double] <p>The maximum value of the counter for a specified time period.</p>
+-- * Average [Double] <p>The average value of the counter for a specified time period.</p>
+-- * N [Integer] <p>The number of counters for a specified time period.</p>
+-- * Sum [Double] <p>The total of counter values for a specified time period.</p>
+-- * Unit [String] <p>The unit of the counters.</p>
+-- @return SummarizedCounter structure as a key-value pair table
+function M.SummarizedCounter(args)
+	assert(args, "You must provdide an argument table when creating SummarizedCounter")
 	local t = { 
-		["Name"] = _Name,
-		["Max"] = _Max,
-		["Average"] = _Average,
-		["N"] = _N,
-		["Sum"] = _Sum,
-		["Unit"] = _Unit,
+		["Name"] = args["Name"],
+		["Max"] = args["Max"],
+		["Average"] = args["Average"],
+		["N"] = args["N"],
+		["Sum"] = args["Sum"],
+		["Unit"] = args["Unit"],
 	}
 	asserts.AssertSummarizedCounter(t)
 	return t
@@ -823,8 +913,11 @@ end
 
 --- Create a structure of type CreateSubscriptionRequest
 --  
-function M.CreateSubscriptionRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriptionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateSubscriptionRequest structure as a key-value pair table
+function M.CreateSubscriptionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSubscriptionRequest")
 	local t = { 
 	}
 	asserts.AssertCreateSubscriptionRequest(t)
@@ -844,11 +937,14 @@ end
 
 --- Create a structure of type InvalidResourceException
 -- <p>Exception that indicates that the resource is invalid. You might not have access to the resource, or the resource might not exist.</p>
--- @param _message [errorMessage] 
-function M.InvalidResourceException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return InvalidResourceException structure as a key-value pair table
+function M.InvalidResourceException(args)
+	assert(args, "You must provdide an argument table when creating InvalidResourceException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidResourceException(t)
 	return t
@@ -866,8 +962,11 @@ end
 
 --- Create a structure of type DeleteProtectionResponse
 --  
-function M.DeleteProtectionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProtectionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteProtectionResponse structure as a key-value pair table
+function M.DeleteProtectionResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteProtectionResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteProtectionResponse(t)
@@ -886,8 +985,11 @@ end
 
 --- Create a structure of type CreateSubscriptionResponse
 --  
-function M.CreateSubscriptionResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSubscriptionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreateSubscriptionResponse structure as a key-value pair table
+function M.CreateSubscriptionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateSubscriptionResponse")
 	local t = { 
 	}
 	asserts.AssertCreateSubscriptionResponse(t)
@@ -908,12 +1010,15 @@ end
 
 --- Create a structure of type DescribeProtectionRequest
 --  
--- @param _ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object that is described.</p>
--- Required parameter: ProtectionId
-function M.DescribeProtectionRequest(_ProtectionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProtectionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object that is described.</p>
+-- Required key: ProtectionId
+-- @return DescribeProtectionRequest structure as a key-value pair table
+function M.DescribeProtectionRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeProtectionRequest")
 	local t = { 
-		["ProtectionId"] = _ProtectionId,
+		["ProtectionId"] = args["ProtectionId"],
 	}
 	asserts.AssertDescribeProtectionRequest(t)
 	return t
@@ -933,12 +1038,15 @@ end
 
 --- Create a structure of type AttackVectorDescription
 -- <p>Describes the attack.</p>
--- @param _VectorType [String] <p>The attack type, for example, SNMP reflection or SYN flood.</p>
--- Required parameter: VectorType
-function M.AttackVectorDescription(_VectorType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttackVectorDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VectorType [String] <p>The attack type, for example, SNMP reflection or SYN flood.</p>
+-- Required key: VectorType
+-- @return AttackVectorDescription structure as a key-value pair table
+function M.AttackVectorDescription(args)
+	assert(args, "You must provdide an argument table when creating AttackVectorDescription")
 	local t = { 
-		["VectorType"] = _VectorType,
+		["VectorType"] = args["VectorType"],
 	}
 	asserts.AssertAttackVectorDescription(t)
 	return t
@@ -957,11 +1065,14 @@ end
 
 --- Create a structure of type ResourceAlreadyExistsException
 -- <p>Exception indicating the specified resource already exists.</p>
--- @param _message [errorMessage] 
-function M.ResourceAlreadyExistsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [errorMessage] 
+-- @return ResourceAlreadyExistsException structure as a key-value pair table
+function M.ResourceAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceAlreadyExistsException(t)
 	return t

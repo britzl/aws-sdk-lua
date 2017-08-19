@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type ExpiredTokenException
 -- <p>The web identity token that was passed is expired or is not valid. Get a new identity token from the identity provider and then retry the request.</p>
--- @param _message [expiredIdentityTokenMessage] 
-function M.ExpiredTokenException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExpiredTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [expiredIdentityTokenMessage] 
+-- @return ExpiredTokenException structure as a key-value pair table
+function M.ExpiredTokenException(args)
+	assert(args, "You must provdide an argument table when creating ExpiredTokenException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertExpiredTokenException(t)
 	return t
@@ -64,22 +67,25 @@ end
 
 --- Create a structure of type AssumeRoleWithSAMLRequest
 --  
--- @param _Policy [sessionPolicyDocumentType] <p>An IAM policy in JSON format.</p> <p>The policy parameter is optional. If you pass a policy, the temporary security credentials that are returned by the operation have the permissions that are allowed by both the access policy of the role that is being assumed, <i> <b>and</b> </i> the policy that you pass. This gives you a way to further restrict the permissions for the resulting temporary security credentials. You cannot use the passed policy to grant permissions that are in excess of those allowed by the access policy of the role that is being assumed. For more information, <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html">Permissions for AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity</a> in the <i>IAM User Guide</i>. </p> <p>The format for this parameter, as described by its regex pattern, is a string of characters up to 2048 characters in length. The characters can be any ASCII character from the space character to the end of the valid character list (\u0020-\u00FF). It can also include the tab (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.</p> <note> <p>The policy plain text must be 2048 bytes or shorter. However, an internal conversion compresses it into a packed binary format with a separate limit. The PackedPolicySize response element indicates by percentage how close to the upper size limit the policy is, with 100% equaling the maximum allowed size.</p> </note>
--- @param _DurationSeconds [roleDurationSecondsType] <p>The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the SAML authentication response's <code>SessionNotOnOrAfter</code> value. The actual expiration time is whichever value is shorter. </p> <note> <p>This is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a <code>SessionDuration</code> parameter that specifies the maximum length of the console session, separately from the <code>DurationSeconds</code> parameter on this API. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-saml.html">Enabling SAML 2.0 Federated Users to Access the AWS Management Console</a> in the <i>IAM User Guide</i>.</p> </note>
--- @param _RoleArn [arnType] <p>The Amazon Resource Name (ARN) of the role that the caller is assuming.</p>
--- @param _PrincipalArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider in IAM that describes the IdP.</p>
--- @param _SAMLAssertion [SAMLAssertionType] <p>The base-64 encoded SAML authentication response provided by the IdP.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/create-role-saml-IdP-tasks.html">Configuring a Relying Party and Adding Claims</a> in the <i>Using IAM</i> guide. </p>
--- Required parameter: RoleArn
--- Required parameter: PrincipalArn
--- Required parameter: SAMLAssertion
-function M.AssumeRoleWithSAMLRequest(_Policy, _DurationSeconds, _RoleArn, _PrincipalArn, _SAMLAssertion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssumeRoleWithSAMLRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [sessionPolicyDocumentType] <p>An IAM policy in JSON format.</p> <p>The policy parameter is optional. If you pass a policy, the temporary security credentials that are returned by the operation have the permissions that are allowed by both the access policy of the role that is being assumed, <i> <b>and</b> </i> the policy that you pass. This gives you a way to further restrict the permissions for the resulting temporary security credentials. You cannot use the passed policy to grant permissions that are in excess of those allowed by the access policy of the role that is being assumed. For more information, <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html">Permissions for AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity</a> in the <i>IAM User Guide</i>. </p> <p>The format for this parameter, as described by its regex pattern, is a string of characters up to 2048 characters in length. The characters can be any ASCII character from the space character to the end of the valid character list (\u0020-\u00FF). It can also include the tab (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.</p> <note> <p>The policy plain text must be 2048 bytes or shorter. However, an internal conversion compresses it into a packed binary format with a separate limit. The PackedPolicySize response element indicates by percentage how close to the upper size limit the policy is, with 100% equaling the maximum allowed size.</p> </note>
+-- * DurationSeconds [roleDurationSecondsType] <p>The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds. An expiration can also be specified in the SAML authentication response's <code>SessionNotOnOrAfter</code> value. The actual expiration time is whichever value is shorter. </p> <note> <p>This is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a <code>SessionDuration</code> parameter that specifies the maximum length of the console session, separately from the <code>DurationSeconds</code> parameter on this API. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-saml.html">Enabling SAML 2.0 Federated Users to Access the AWS Management Console</a> in the <i>IAM User Guide</i>.</p> </note>
+-- * RoleArn [arnType] <p>The Amazon Resource Name (ARN) of the role that the caller is assuming.</p>
+-- * PrincipalArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider in IAM that describes the IdP.</p>
+-- * SAMLAssertion [SAMLAssertionType] <p>The base-64 encoded SAML authentication response provided by the IdP.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/create-role-saml-IdP-tasks.html">Configuring a Relying Party and Adding Claims</a> in the <i>Using IAM</i> guide. </p>
+-- Required key: RoleArn
+-- Required key: PrincipalArn
+-- Required key: SAMLAssertion
+-- @return AssumeRoleWithSAMLRequest structure as a key-value pair table
+function M.AssumeRoleWithSAMLRequest(args)
+	assert(args, "You must provdide an argument table when creating AssumeRoleWithSAMLRequest")
 	local t = { 
-		["Policy"] = _Policy,
-		["DurationSeconds"] = _DurationSeconds,
-		["RoleArn"] = _RoleArn,
-		["PrincipalArn"] = _PrincipalArn,
-		["SAMLAssertion"] = _SAMLAssertion,
+		["Policy"] = args["Policy"],
+		["DurationSeconds"] = args["DurationSeconds"],
+		["RoleArn"] = args["RoleArn"],
+		["PrincipalArn"] = args["PrincipalArn"],
+		["SAMLAssertion"] = args["SAMLAssertion"],
 	}
 	asserts.AssertAssumeRoleWithSAMLRequest(t)
 	return t
@@ -103,21 +109,24 @@ end
 
 --- Create a structure of type AssumeRoleWithWebIdentityResponse
 -- <p>Contains the response to a successful <a>AssumeRoleWithWebIdentity</a> request, including temporary AWS credentials that can be used to make AWS requests. </p>
--- @param _PackedPolicySize [nonNegativeIntegerType] <p>A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a packed size greater than 100 percent, which means the policy exceeded the allowed space.</p>
--- @param _AssumedRoleUser [AssumedRoleUser] <p>The Amazon Resource Name (ARN) and the assumed role ID, which are identifiers that you can use to refer to the resulting temporary security credentials. For example, you can reference these credentials as a principal in a resource-based policy by using the ARN or assumed role ID. The ARN and ID include the <code>RoleSessionName</code> that you specified when you called <code>AssumeRole</code>. </p>
--- @param _Audience [Audience] <p>The intended audience (also known as client ID) of the web identity token. This is traditionally the client identifier issued to the application that requested the web identity token.</p>
--- @param _Provider [Issuer] <p> The issuing authority of the web identity token presented. For OpenID Connect ID Tokens this contains the value of the <code>iss</code> field. For OAuth 2.0 access tokens, this contains the value of the <code>ProviderId</code> parameter that was passed in the <code>AssumeRoleWithWebIdentity</code> request.</p>
--- @param _SubjectFromWebIdentityToken [webIdentitySubjectType] <p>The unique user identifier that is returned by the identity provider. This identifier is associated with the <code>WebIdentityToken</code> that was submitted with the <code>AssumeRoleWithWebIdentity</code> call. The identifier is typically unique to the user and the application that acquired the <code>WebIdentityToken</code> (pairwise identifier). For OpenID Connect ID tokens, this field contains the value returned by the identity provider as the token's <code>sub</code> (Subject) claim. </p>
--- @param _Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
-function M.AssumeRoleWithWebIdentityResponse(_PackedPolicySize, _AssumedRoleUser, _Audience, _Provider, _SubjectFromWebIdentityToken, _Credentials, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssumeRoleWithWebIdentityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PackedPolicySize [nonNegativeIntegerType] <p>A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a packed size greater than 100 percent, which means the policy exceeded the allowed space.</p>
+-- * AssumedRoleUser [AssumedRoleUser] <p>The Amazon Resource Name (ARN) and the assumed role ID, which are identifiers that you can use to refer to the resulting temporary security credentials. For example, you can reference these credentials as a principal in a resource-based policy by using the ARN or assumed role ID. The ARN and ID include the <code>RoleSessionName</code> that you specified when you called <code>AssumeRole</code>. </p>
+-- * Audience [Audience] <p>The intended audience (also known as client ID) of the web identity token. This is traditionally the client identifier issued to the application that requested the web identity token.</p>
+-- * Provider [Issuer] <p> The issuing authority of the web identity token presented. For OpenID Connect ID Tokens this contains the value of the <code>iss</code> field. For OAuth 2.0 access tokens, this contains the value of the <code>ProviderId</code> parameter that was passed in the <code>AssumeRoleWithWebIdentity</code> request.</p>
+-- * SubjectFromWebIdentityToken [webIdentitySubjectType] <p>The unique user identifier that is returned by the identity provider. This identifier is associated with the <code>WebIdentityToken</code> that was submitted with the <code>AssumeRoleWithWebIdentity</code> call. The identifier is typically unique to the user and the application that acquired the <code>WebIdentityToken</code> (pairwise identifier). For OpenID Connect ID tokens, this field contains the value returned by the identity provider as the token's <code>sub</code> (Subject) claim. </p>
+-- * Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
+-- @return AssumeRoleWithWebIdentityResponse structure as a key-value pair table
+function M.AssumeRoleWithWebIdentityResponse(args)
+	assert(args, "You must provdide an argument table when creating AssumeRoleWithWebIdentityResponse")
 	local t = { 
-		["PackedPolicySize"] = _PackedPolicySize,
-		["AssumedRoleUser"] = _AssumedRoleUser,
-		["Audience"] = _Audience,
-		["Provider"] = _Provider,
-		["SubjectFromWebIdentityToken"] = _SubjectFromWebIdentityToken,
-		["Credentials"] = _Credentials,
+		["PackedPolicySize"] = args["PackedPolicySize"],
+		["AssumedRoleUser"] = args["AssumedRoleUser"],
+		["Audience"] = args["Audience"],
+		["Provider"] = args["Provider"],
+		["SubjectFromWebIdentityToken"] = args["SubjectFromWebIdentityToken"],
+		["Credentials"] = args["Credentials"],
 	}
 	asserts.AssertAssumeRoleWithWebIdentityResponse(t)
 	return t
@@ -136,11 +145,14 @@ end
 
 --- Create a structure of type PackedPolicyTooLargeException
 -- <p>The request was rejected because the policy document was too large. The error message describes how big the policy document is, in packed form, as a percentage of what the API allows.</p>
--- @param _message [packedPolicyTooLargeMessage] 
-function M.PackedPolicyTooLargeException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PackedPolicyTooLargeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [packedPolicyTooLargeMessage] 
+-- @return PackedPolicyTooLargeException structure as a key-value pair table
+function M.PackedPolicyTooLargeException(args)
+	assert(args, "You must provdide an argument table when creating PackedPolicyTooLargeException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertPackedPolicyTooLargeException(t)
 	return t
@@ -162,15 +174,18 @@ end
 
 --- Create a structure of type AssumedRoleUser
 -- <p>The identifiers for the temporary security credentials that the operation returns.</p>
--- @param _AssumedRoleId [assumedRoleIdType] <p>A unique identifier that contains the role ID and the role session name of the role that is being assumed. The role ID is generated by AWS when the role is created.</p>
--- @param _Arn [arnType] <p>The ARN of the temporary security credentials that are returned from the <a>AssumeRole</a> action. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in <i>Using IAM</i>. </p>
--- Required parameter: AssumedRoleId
--- Required parameter: Arn
-function M.AssumedRoleUser(_AssumedRoleId, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssumedRoleUser")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssumedRoleId [assumedRoleIdType] <p>A unique identifier that contains the role ID and the role session name of the role that is being assumed. The role ID is generated by AWS when the role is created.</p>
+-- * Arn [arnType] <p>The ARN of the temporary security credentials that are returned from the <a>AssumeRole</a> action. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in <i>Using IAM</i>. </p>
+-- Required key: AssumedRoleId
+-- Required key: Arn
+-- @return AssumedRoleUser structure as a key-value pair table
+function M.AssumedRoleUser(args)
+	assert(args, "You must provdide an argument table when creating AssumedRoleUser")
 	local t = { 
-		["AssumedRoleId"] = _AssumedRoleId,
-		["Arn"] = _Arn,
+		["AssumedRoleId"] = args["AssumedRoleId"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertAssumedRoleUser(t)
 	return t
@@ -192,15 +207,18 @@ end
 
 --- Create a structure of type FederatedUser
 -- <p>Identifiers for the federated user that is associated with the credentials.</p>
--- @param _FederatedUserId [federatedIdType] <p>The string that identifies the federated user associated with the credentials, similar to the unique ID of an IAM user.</p>
--- @param _Arn [arnType] <p>The ARN that specifies the federated user that is associated with the credentials. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in <i>Using IAM</i>. </p>
--- Required parameter: FederatedUserId
--- Required parameter: Arn
-function M.FederatedUser(_FederatedUserId, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FederatedUser")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FederatedUserId [federatedIdType] <p>The string that identifies the federated user associated with the credentials, similar to the unique ID of an IAM user.</p>
+-- * Arn [arnType] <p>The ARN that specifies the federated user that is associated with the credentials. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in <i>Using IAM</i>. </p>
+-- Required key: FederatedUserId
+-- Required key: Arn
+-- @return FederatedUser structure as a key-value pair table
+function M.FederatedUser(args)
+	assert(args, "You must provdide an argument table when creating FederatedUser")
 	local t = { 
-		["FederatedUserId"] = _FederatedUserId,
-		["Arn"] = _Arn,
+		["FederatedUserId"] = args["FederatedUserId"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertFederatedUser(t)
 	return t
@@ -219,11 +237,14 @@ end
 
 --- Create a structure of type MalformedPolicyDocumentException
 -- <p>The request was rejected because the policy document was malformed. The error message describes the specific error.</p>
--- @param _message [malformedPolicyDocumentMessage] 
-function M.MalformedPolicyDocumentException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MalformedPolicyDocumentException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [malformedPolicyDocumentMessage] 
+-- @return MalformedPolicyDocumentException structure as a key-value pair table
+function M.MalformedPolicyDocumentException(args)
+	assert(args, "You must provdide an argument table when creating MalformedPolicyDocumentException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMalformedPolicyDocumentException(t)
 	return t
@@ -242,11 +263,14 @@ end
 
 --- Create a structure of type InvalidIdentityTokenException
 -- <p>The web identity token that was passed could not be validated by AWS. Get a new identity token from the identity provider and then retry the request.</p>
--- @param _message [invalidIdentityTokenMessage] 
-function M.InvalidIdentityTokenException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidIdentityTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [invalidIdentityTokenMessage] 
+-- @return InvalidIdentityTokenException structure as a key-value pair table
+function M.InvalidIdentityTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidIdentityTokenException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidIdentityTokenException(t)
 	return t
@@ -267,15 +291,18 @@ end
 
 --- Create a structure of type GetFederationTokenResponse
 -- <p>Contains the response to a successful <a>GetFederationToken</a> request, including temporary AWS credentials that can be used to make AWS requests. </p>
--- @param _FederatedUser [FederatedUser] <p>Identifiers for the federated user associated with the credentials (such as <code>arn:aws:sts::123456789012:federated-user/Bob</code> or <code>123456789012:Bob</code>). You can use the federated user's ARN in your resource-based policies, such as an Amazon S3 bucket policy. </p>
--- @param _Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
--- @param _PackedPolicySize [nonNegativeIntegerType] <p>A percentage value indicating the size of the policy in packed form. The service rejects policies for which the packed size is greater than 100 percent of the allowed value.</p>
-function M.GetFederationTokenResponse(_FederatedUser, _Credentials, _PackedPolicySize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFederationTokenResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * FederatedUser [FederatedUser] <p>Identifiers for the federated user associated with the credentials (such as <code>arn:aws:sts::123456789012:federated-user/Bob</code> or <code>123456789012:Bob</code>). You can use the federated user's ARN in your resource-based policies, such as an Amazon S3 bucket policy. </p>
+-- * Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
+-- * PackedPolicySize [nonNegativeIntegerType] <p>A percentage value indicating the size of the policy in packed form. The service rejects policies for which the packed size is greater than 100 percent of the allowed value.</p>
+-- @return GetFederationTokenResponse structure as a key-value pair table
+function M.GetFederationTokenResponse(args)
+	assert(args, "You must provdide an argument table when creating GetFederationTokenResponse")
 	local t = { 
-		["FederatedUser"] = _FederatedUser,
-		["Credentials"] = _Credentials,
-		["PackedPolicySize"] = _PackedPolicySize,
+		["FederatedUser"] = args["FederatedUser"],
+		["Credentials"] = args["Credentials"],
+		["PackedPolicySize"] = args["PackedPolicySize"],
 	}
 	asserts.AssertGetFederationTokenResponse(t)
 	return t
@@ -294,11 +321,14 @@ end
 
 --- Create a structure of type IDPRejectedClaimException
 -- <p>The identity provider (IdP) reported that authentication failed. This might be because the claim is invalid.</p> <p>If this error is returned for the <code>AssumeRoleWithWebIdentity</code> operation, it can also mean that the claim has expired or has been explicitly revoked. </p>
--- @param _message [idpRejectedClaimMessage] 
-function M.IDPRejectedClaimException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IDPRejectedClaimException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [idpRejectedClaimMessage] 
+-- @return IDPRejectedClaimException structure as a key-value pair table
+function M.IDPRejectedClaimException(args)
+	assert(args, "You must provdide an argument table when creating IDPRejectedClaimException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertIDPRejectedClaimException(t)
 	return t
@@ -317,11 +347,14 @@ end
 
 --- Create a structure of type IDPCommunicationErrorException
 -- <p>The request could not be fulfilled because the non-AWS identity provider (IDP) that was asked to verify the incoming identity token could not be reached. This is often a transient error caused by network conditions. Retry the request a limited number of times so that you don't exceed the request rate. If the error persists, the non-AWS identity provider might be down or not responding.</p>
--- @param _message [idpCommunicationErrorMessage] 
-function M.IDPCommunicationErrorException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating IDPCommunicationErrorException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [idpCommunicationErrorMessage] 
+-- @return IDPCommunicationErrorException structure as a key-value pair table
+function M.IDPCommunicationErrorException(args)
+	assert(args, "You must provdide an argument table when creating IDPCommunicationErrorException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertIDPCommunicationErrorException(t)
 	return t
@@ -342,15 +375,18 @@ end
 
 --- Create a structure of type GetSessionTokenRequest
 --  
--- @param _DurationSeconds [durationSecondsType] <p>The duration, in seconds, that the credentials should remain valid. Acceptable durations for IAM user sessions range from 900 seconds (15 minutes) to 129600 seconds (36 hours), with 43200 seconds (12 hours) as the default. Sessions for AWS account owners are restricted to a maximum of 3600 seconds (one hour). If the duration is longer than one hour, the session for AWS account owners defaults to one hour.</p>
--- @param _SerialNumber [serialNumberType] <p>The identification number of the MFA device that is associated with the IAM user who is making the <code>GetSessionToken</code> call. Specify this value if the IAM user has a policy that requires MFA authentication. The value is either the serial number for a hardware device (such as <code>GAHT12345678</code>) or an Amazon Resource Name (ARN) for a virtual device (such as <code>arn:aws:iam::123456789012:mfa/user</code>). You can find the device for an IAM user by going to the AWS Management Console and viewing the user's security credentials. </p> <p>The regex used to validated this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@:/-</p>
--- @param _TokenCode [tokenCodeType] <p>The value provided by the MFA device, if MFA is required. If any policy requires the IAM user to submit an MFA code, specify this value. If MFA authentication is required, and the user does not provide a code when requesting a set of temporary security credentials, the user will receive an "access denied" response when requesting resources that require MFA authentication.</p> <p>The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.</p>
-function M.GetSessionTokenRequest(_DurationSeconds, _SerialNumber, _TokenCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSessionTokenRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DurationSeconds [durationSecondsType] <p>The duration, in seconds, that the credentials should remain valid. Acceptable durations for IAM user sessions range from 900 seconds (15 minutes) to 129600 seconds (36 hours), with 43200 seconds (12 hours) as the default. Sessions for AWS account owners are restricted to a maximum of 3600 seconds (one hour). If the duration is longer than one hour, the session for AWS account owners defaults to one hour.</p>
+-- * SerialNumber [serialNumberType] <p>The identification number of the MFA device that is associated with the IAM user who is making the <code>GetSessionToken</code> call. Specify this value if the IAM user has a policy that requires MFA authentication. The value is either the serial number for a hardware device (such as <code>GAHT12345678</code>) or an Amazon Resource Name (ARN) for a virtual device (such as <code>arn:aws:iam::123456789012:mfa/user</code>). You can find the device for an IAM user by going to the AWS Management Console and viewing the user's security credentials. </p> <p>The regex used to validated this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@:/-</p>
+-- * TokenCode [tokenCodeType] <p>The value provided by the MFA device, if MFA is required. If any policy requires the IAM user to submit an MFA code, specify this value. If MFA authentication is required, and the user does not provide a code when requesting a set of temporary security credentials, the user will receive an "access denied" response when requesting resources that require MFA authentication.</p> <p>The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.</p>
+-- @return GetSessionTokenRequest structure as a key-value pair table
+function M.GetSessionTokenRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSessionTokenRequest")
 	local t = { 
-		["DurationSeconds"] = _DurationSeconds,
-		["SerialNumber"] = _SerialNumber,
-		["TokenCode"] = _TokenCode,
+		["DurationSeconds"] = args["DurationSeconds"],
+		["SerialNumber"] = args["SerialNumber"],
+		["TokenCode"] = args["TokenCode"],
 	}
 	asserts.AssertGetSessionTokenRequest(t)
 	return t
@@ -376,21 +412,24 @@ end
 
 --- Create a structure of type Credentials
 -- <p>AWS credentials for API authentication.</p>
--- @param _SecretAccessKey [accessKeySecretType] <p>The secret access key that can be used to sign requests.</p>
--- @param _SessionToken [tokenType] <p>The token that users must pass to the service API to use the temporary credentials.</p>
--- @param _Expiration [dateType] <p>The date on which the current credentials expire.</p>
--- @param _AccessKeyId [accessKeyIdType] <p>The access key ID that identifies the temporary security credentials.</p>
--- Required parameter: AccessKeyId
--- Required parameter: SecretAccessKey
--- Required parameter: SessionToken
--- Required parameter: Expiration
-function M.Credentials(_SecretAccessKey, _SessionToken, _Expiration, _AccessKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Credentials")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SecretAccessKey [accessKeySecretType] <p>The secret access key that can be used to sign requests.</p>
+-- * SessionToken [tokenType] <p>The token that users must pass to the service API to use the temporary credentials.</p>
+-- * Expiration [dateType] <p>The date on which the current credentials expire.</p>
+-- * AccessKeyId [accessKeyIdType] <p>The access key ID that identifies the temporary security credentials.</p>
+-- Required key: AccessKeyId
+-- Required key: SecretAccessKey
+-- Required key: SessionToken
+-- Required key: Expiration
+-- @return Credentials structure as a key-value pair table
+function M.Credentials(args)
+	assert(args, "You must provdide an argument table when creating Credentials")
 	local t = { 
-		["SecretAccessKey"] = _SecretAccessKey,
-		["SessionToken"] = _SessionToken,
-		["Expiration"] = _Expiration,
-		["AccessKeyId"] = _AccessKeyId,
+		["SecretAccessKey"] = args["SecretAccessKey"],
+		["SessionToken"] = args["SessionToken"],
+		["Expiration"] = args["Expiration"],
+		["AccessKeyId"] = args["AccessKeyId"],
 	}
 	asserts.AssertCredentials(t)
 	return t
@@ -417,25 +456,28 @@ end
 
 --- Create a structure of type AssumeRoleRequest
 --  
--- @param _RoleSessionName [roleSessionNameType] <p>An identifier for the assumed role session.</p> <p>Use the role session name to uniquely identify a session when the same role is assumed by different principals or for different reasons. In cross-account scenarios, the role session name is visible to, and can be logged by the account that owns the role. The role session name is also used in the ARN of the assumed role principal. This means that subsequent cross-account API requests using the temporary security credentials will expose the role session name to the external account in their CloudTrail logs.</p> <p>The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-</p>
--- @param _RoleArn [arnType] <p>The Amazon Resource Name (ARN) of the role to assume.</p>
--- @param _SerialNumber [serialNumberType] <p>The identification number of the MFA device that is associated with the user who is making the <code>AssumeRole</code> call. Specify this value if the trust policy of the role being assumed includes a condition that requires MFA authentication. The value is either the serial number for a hardware device (such as <code>GAHT12345678</code>) or an Amazon Resource Name (ARN) for a virtual device (such as <code>arn:aws:iam::123456789012:mfa/user</code>).</p> <p>The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-</p>
--- @param _DurationSeconds [roleDurationSecondsType] <p>The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds.</p> <note> <p>This is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a <code>SessionDuration</code> parameter that specifies the maximum length of the console session, separately from the <code>DurationSeconds</code> parameter on this API. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html">Creating a URL that Enables Federated Users to Access the AWS Management Console</a> in the <i>IAM User Guide</i>.</p> </note>
--- @param _ExternalId [externalIdType] <p>A unique identifier that is used by third parties when assuming roles in their customers' accounts. For each role that the third party can assume, they should instruct their customers to ensure the role's trust policy checks for the external ID that the third party generated. Each time the third party assumes the role, they should pass the customer's external ID. The external ID is useful in order to help third parties bind a role to the customer who created it. For more information about the external ID, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID When Granting Access to Your AWS Resources to a Third Party</a> in the <i>IAM User Guide</i>.</p> <p>The regex used to validated this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@:/-</p>
--- @param _TokenCode [tokenCodeType] <p>The value provided by the MFA device, if the trust policy of the role being assumed requires MFA (that is, if the policy includes a condition that tests for MFA). If the role being assumed requires MFA and if the <code>TokenCode</code> value is missing or expired, the <code>AssumeRole</code> call returns an "access denied" error.</p> <p>The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.</p>
--- @param _Policy [sessionPolicyDocumentType] <p>An IAM policy in JSON format.</p> <p>This parameter is optional. If you pass a policy, the temporary security credentials that are returned by the operation have the permissions that are allowed by both (the intersection of) the access policy of the role that is being assumed, <i>and</i> the policy that you pass. This gives you a way to further restrict the permissions for the resulting temporary security credentials. You cannot use the passed policy to grant permissions that are in excess of those allowed by the access policy of the role that is being assumed. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html">Permissions for AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity</a> in the <i>IAM User Guide</i>.</p> <p>The format for this parameter, as described by its regex pattern, is a string of characters up to 2048 characters in length. The characters can be any ASCII character from the space character to the end of the valid character list (\u0020-\u00FF). It can also include the tab (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.</p> <note> <p>The policy plain text must be 2048 bytes or shorter. However, an internal conversion compresses it into a packed binary format with a separate limit. The PackedPolicySize response element indicates by percentage how close to the upper size limit the policy is, with 100% equaling the maximum allowed size.</p> </note>
--- Required parameter: RoleArn
--- Required parameter: RoleSessionName
-function M.AssumeRoleRequest(_RoleSessionName, _RoleArn, _SerialNumber, _DurationSeconds, _ExternalId, _TokenCode, _Policy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssumeRoleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleSessionName [roleSessionNameType] <p>An identifier for the assumed role session.</p> <p>Use the role session name to uniquely identify a session when the same role is assumed by different principals or for different reasons. In cross-account scenarios, the role session name is visible to, and can be logged by the account that owns the role. The role session name is also used in the ARN of the assumed role principal. This means that subsequent cross-account API requests using the temporary security credentials will expose the role session name to the external account in their CloudTrail logs.</p> <p>The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-</p>
+-- * RoleArn [arnType] <p>The Amazon Resource Name (ARN) of the role to assume.</p>
+-- * SerialNumber [serialNumberType] <p>The identification number of the MFA device that is associated with the user who is making the <code>AssumeRole</code> call. Specify this value if the trust policy of the role being assumed includes a condition that requires MFA authentication. The value is either the serial number for a hardware device (such as <code>GAHT12345678</code>) or an Amazon Resource Name (ARN) for a virtual device (such as <code>arn:aws:iam::123456789012:mfa/user</code>).</p> <p>The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-</p>
+-- * DurationSeconds [roleDurationSecondsType] <p>The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds.</p> <note> <p>This is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a <code>SessionDuration</code> parameter that specifies the maximum length of the console session, separately from the <code>DurationSeconds</code> parameter on this API. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html">Creating a URL that Enables Federated Users to Access the AWS Management Console</a> in the <i>IAM User Guide</i>.</p> </note>
+-- * ExternalId [externalIdType] <p>A unique identifier that is used by third parties when assuming roles in their customers' accounts. For each role that the third party can assume, they should instruct their customers to ensure the role's trust policy checks for the external ID that the third party generated. Each time the third party assumes the role, they should pass the customer's external ID. The external ID is useful in order to help third parties bind a role to the customer who created it. For more information about the external ID, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">How to Use an External ID When Granting Access to Your AWS Resources to a Third Party</a> in the <i>IAM User Guide</i>.</p> <p>The regex used to validated this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@:/-</p>
+-- * TokenCode [tokenCodeType] <p>The value provided by the MFA device, if the trust policy of the role being assumed requires MFA (that is, if the policy includes a condition that tests for MFA). If the role being assumed requires MFA and if the <code>TokenCode</code> value is missing or expired, the <code>AssumeRole</code> call returns an "access denied" error.</p> <p>The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.</p>
+-- * Policy [sessionPolicyDocumentType] <p>An IAM policy in JSON format.</p> <p>This parameter is optional. If you pass a policy, the temporary security credentials that are returned by the operation have the permissions that are allowed by both (the intersection of) the access policy of the role that is being assumed, <i>and</i> the policy that you pass. This gives you a way to further restrict the permissions for the resulting temporary security credentials. You cannot use the passed policy to grant permissions that are in excess of those allowed by the access policy of the role that is being assumed. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html">Permissions for AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity</a> in the <i>IAM User Guide</i>.</p> <p>The format for this parameter, as described by its regex pattern, is a string of characters up to 2048 characters in length. The characters can be any ASCII character from the space character to the end of the valid character list (\u0020-\u00FF). It can also include the tab (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.</p> <note> <p>The policy plain text must be 2048 bytes or shorter. However, an internal conversion compresses it into a packed binary format with a separate limit. The PackedPolicySize response element indicates by percentage how close to the upper size limit the policy is, with 100% equaling the maximum allowed size.</p> </note>
+-- Required key: RoleArn
+-- Required key: RoleSessionName
+-- @return AssumeRoleRequest structure as a key-value pair table
+function M.AssumeRoleRequest(args)
+	assert(args, "You must provdide an argument table when creating AssumeRoleRequest")
 	local t = { 
-		["RoleSessionName"] = _RoleSessionName,
-		["RoleArn"] = _RoleArn,
-		["SerialNumber"] = _SerialNumber,
-		["DurationSeconds"] = _DurationSeconds,
-		["ExternalId"] = _ExternalId,
-		["TokenCode"] = _TokenCode,
-		["Policy"] = _Policy,
+		["RoleSessionName"] = args["RoleSessionName"],
+		["RoleArn"] = args["RoleArn"],
+		["SerialNumber"] = args["SerialNumber"],
+		["DurationSeconds"] = args["DurationSeconds"],
+		["ExternalId"] = args["ExternalId"],
+		["TokenCode"] = args["TokenCode"],
+		["Policy"] = args["Policy"],
 	}
 	asserts.AssertAssumeRoleRequest(t)
 	return t
@@ -455,12 +497,15 @@ end
 
 --- Create a structure of type DecodeAuthorizationMessageRequest
 --  
--- @param _EncodedMessage [encodedMessageType] <p>The encoded message that was returned with the response.</p>
--- Required parameter: EncodedMessage
-function M.DecodeAuthorizationMessageRequest(_EncodedMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DecodeAuthorizationMessageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EncodedMessage [encodedMessageType] <p>The encoded message that was returned with the response.</p>
+-- Required key: EncodedMessage
+-- @return DecodeAuthorizationMessageRequest structure as a key-value pair table
+function M.DecodeAuthorizationMessageRequest(args)
+	assert(args, "You must provdide an argument table when creating DecodeAuthorizationMessageRequest")
 	local t = { 
-		["EncodedMessage"] = _EncodedMessage,
+		["EncodedMessage"] = args["EncodedMessage"],
 	}
 	asserts.AssertDecodeAuthorizationMessageRequest(t)
 	return t
@@ -479,11 +524,14 @@ end
 
 --- Create a structure of type GetSessionTokenResponse
 -- <p>Contains the response to a successful <a>GetSessionToken</a> request, including temporary AWS credentials that can be used to make AWS requests. </p>
--- @param _Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
-function M.GetSessionTokenResponse(_Credentials, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSessionTokenResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
+-- @return GetSessionTokenResponse structure as a key-value pair table
+function M.GetSessionTokenResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSessionTokenResponse")
 	local t = { 
-		["Credentials"] = _Credentials,
+		["Credentials"] = args["Credentials"],
 	}
 	asserts.AssertGetSessionTokenResponse(t)
 	return t
@@ -502,11 +550,14 @@ end
 
 --- Create a structure of type RegionDisabledException
 -- <p>STS is not activated in the requested region for the account that is being asked to generate credentials. The account administrator must use the IAM console to activate STS in that region. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.</p>
--- @param _message [regionDisabledMessage] 
-function M.RegionDisabledException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegionDisabledException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [regionDisabledMessage] 
+-- @return RegionDisabledException structure as a key-value pair table
+function M.RegionDisabledException(args)
+	assert(args, "You must provdide an argument table when creating RegionDisabledException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertRegionDisabledException(t)
 	return t
@@ -525,11 +576,14 @@ end
 
 --- Create a structure of type DecodeAuthorizationMessageResponse
 -- <p>A document that contains additional information about the authorization status of a request from an encoded message that is returned in response to an AWS request.</p>
--- @param _DecodedMessage [decodedMessageType] <p>An XML document that contains the decoded message.</p>
-function M.DecodeAuthorizationMessageResponse(_DecodedMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DecodeAuthorizationMessageResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DecodedMessage [decodedMessageType] <p>An XML document that contains the decoded message.</p>
+-- @return DecodeAuthorizationMessageResponse structure as a key-value pair table
+function M.DecodeAuthorizationMessageResponse(args)
+	assert(args, "You must provdide an argument table when creating DecodeAuthorizationMessageResponse")
 	local t = { 
-		["DecodedMessage"] = _DecodedMessage,
+		["DecodedMessage"] = args["DecodedMessage"],
 	}
 	asserts.AssertDecodeAuthorizationMessageResponse(t)
 	return t
@@ -555,25 +609,28 @@ end
 
 --- Create a structure of type AssumeRoleWithSAMLResponse
 -- <p>Contains the response to a successful <a>AssumeRoleWithSAML</a> request, including temporary AWS credentials that can be used to make AWS requests. </p>
--- @param _PackedPolicySize [nonNegativeIntegerType] <p>A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a packed size greater than 100 percent, which means the policy exceeded the allowed space.</p>
--- @param _SubjectType [SubjectType] <p> The format of the name ID, as defined by the <code>Format</code> attribute in the <code>NameID</code> element of the SAML assertion. Typical examples of the format are <code>transient</code> or <code>persistent</code>. </p> <p> If the format includes the prefix <code>urn:oasis:names:tc:SAML:2.0:nameid-format</code>, that prefix is removed. For example, <code>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</code> is returned as <code>transient</code>. If the format includes any other prefix, the format is returned with no modifications.</p>
--- @param _AssumedRoleUser [AssumedRoleUser] <p>The identifiers for the temporary security credentials that the operation returns.</p>
--- @param _Audience [Audience] <p> The value of the <code>Recipient</code> attribute of the <code>SubjectConfirmationData</code> element of the SAML assertion. </p>
--- @param _NameQualifier [NameQualifier] <p>A hash value based on the concatenation of the <code>Issuer</code> response value, the AWS account ID, and the friendly name (the last part of the ARN) of the SAML provider in IAM. The combination of <code>NameQualifier</code> and <code>Subject</code> can be used to uniquely identify a federated user. </p> <p>The following pseudocode shows how the hash value is calculated:</p> <p> <code>BASE64 ( SHA1 ( "https://example.com/saml" + "123456789012" + "/MySAMLIdP" ) )</code> </p>
--- @param _Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
--- @param _Issuer [Issuer] <p>The value of the <code>Issuer</code> element of the SAML assertion.</p>
--- @param _Subject [Subject] <p>The value of the <code>NameID</code> element in the <code>Subject</code> element of the SAML assertion.</p>
-function M.AssumeRoleWithSAMLResponse(_PackedPolicySize, _SubjectType, _AssumedRoleUser, _Audience, _NameQualifier, _Credentials, _Issuer, _Subject, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssumeRoleWithSAMLResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PackedPolicySize [nonNegativeIntegerType] <p>A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a packed size greater than 100 percent, which means the policy exceeded the allowed space.</p>
+-- * SubjectType [SubjectType] <p> The format of the name ID, as defined by the <code>Format</code> attribute in the <code>NameID</code> element of the SAML assertion. Typical examples of the format are <code>transient</code> or <code>persistent</code>. </p> <p> If the format includes the prefix <code>urn:oasis:names:tc:SAML:2.0:nameid-format</code>, that prefix is removed. For example, <code>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</code> is returned as <code>transient</code>. If the format includes any other prefix, the format is returned with no modifications.</p>
+-- * AssumedRoleUser [AssumedRoleUser] <p>The identifiers for the temporary security credentials that the operation returns.</p>
+-- * Audience [Audience] <p> The value of the <code>Recipient</code> attribute of the <code>SubjectConfirmationData</code> element of the SAML assertion. </p>
+-- * NameQualifier [NameQualifier] <p>A hash value based on the concatenation of the <code>Issuer</code> response value, the AWS account ID, and the friendly name (the last part of the ARN) of the SAML provider in IAM. The combination of <code>NameQualifier</code> and <code>Subject</code> can be used to uniquely identify a federated user. </p> <p>The following pseudocode shows how the hash value is calculated:</p> <p> <code>BASE64 ( SHA1 ( "https://example.com/saml" + "123456789012" + "/MySAMLIdP" ) )</code> </p>
+-- * Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
+-- * Issuer [Issuer] <p>The value of the <code>Issuer</code> element of the SAML assertion.</p>
+-- * Subject [Subject] <p>The value of the <code>NameID</code> element in the <code>Subject</code> element of the SAML assertion.</p>
+-- @return AssumeRoleWithSAMLResponse structure as a key-value pair table
+function M.AssumeRoleWithSAMLResponse(args)
+	assert(args, "You must provdide an argument table when creating AssumeRoleWithSAMLResponse")
 	local t = { 
-		["PackedPolicySize"] = _PackedPolicySize,
-		["SubjectType"] = _SubjectType,
-		["AssumedRoleUser"] = _AssumedRoleUser,
-		["Audience"] = _Audience,
-		["NameQualifier"] = _NameQualifier,
-		["Credentials"] = _Credentials,
-		["Issuer"] = _Issuer,
-		["Subject"] = _Subject,
+		["PackedPolicySize"] = args["PackedPolicySize"],
+		["SubjectType"] = args["SubjectType"],
+		["AssumedRoleUser"] = args["AssumedRoleUser"],
+		["Audience"] = args["Audience"],
+		["NameQualifier"] = args["NameQualifier"],
+		["Credentials"] = args["Credentials"],
+		["Issuer"] = args["Issuer"],
+		["Subject"] = args["Subject"],
 	}
 	asserts.AssertAssumeRoleWithSAMLResponse(t)
 	return t
@@ -594,15 +651,18 @@ end
 
 --- Create a structure of type GetCallerIdentityResponse
 -- <p>Contains the response to a successful <a>GetCallerIdentity</a> request, including information about the entity making the request.</p>
--- @param _Account [accountType] <p>The AWS account ID number of the account that owns or contains the calling entity.</p>
--- @param _UserId [userIdType] <p>The unique identifier of the calling entity. The exact value depends on the type of entity making the call. The values returned are those listed in the <b>aws:userid</b> column in the <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_variables.html#principaltable">Principal table</a> found on the <b>Policy Variables</b> reference page in the <i>IAM User Guide</i>.</p>
--- @param _Arn [arnType] <p>The AWS ARN associated with the calling entity.</p>
-function M.GetCallerIdentityResponse(_Account, _UserId, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCallerIdentityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Account [accountType] <p>The AWS account ID number of the account that owns or contains the calling entity.</p>
+-- * UserId [userIdType] <p>The unique identifier of the calling entity. The exact value depends on the type of entity making the call. The values returned are those listed in the <b>aws:userid</b> column in the <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_variables.html#principaltable">Principal table</a> found on the <b>Policy Variables</b> reference page in the <i>IAM User Guide</i>.</p>
+-- * Arn [arnType] <p>The AWS ARN associated with the calling entity.</p>
+-- @return GetCallerIdentityResponse structure as a key-value pair table
+function M.GetCallerIdentityResponse(args)
+	assert(args, "You must provdide an argument table when creating GetCallerIdentityResponse")
 	local t = { 
-		["Account"] = _Account,
-		["UserId"] = _UserId,
-		["Arn"] = _Arn,
+		["Account"] = args["Account"],
+		["UserId"] = args["UserId"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGetCallerIdentityResponse(t)
 	return t
@@ -629,24 +689,27 @@ end
 
 --- Create a structure of type AssumeRoleWithWebIdentityRequest
 --  
--- @param _RoleSessionName [roleSessionNameType] <p>An identifier for the assumed role session. Typically, you pass the name or identifier that is associated with the user who is using your application. That way, the temporary security credentials that your application will use are associated with that user. This session name is included as part of the ARN and assumed role ID in the <code>AssumedRoleUser</code> response element.</p> <p>The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-</p>
--- @param _RoleArn [arnType] <p>The Amazon Resource Name (ARN) of the role that the caller is assuming.</p>
--- @param _WebIdentityToken [clientTokenType] <p>The OAuth 2.0 access token or OpenID Connect ID token that is provided by the identity provider. Your application must get this token by authenticating the user who is using your application with a web identity provider before the application makes an <code>AssumeRoleWithWebIdentity</code> call. </p>
--- @param _DurationSeconds [roleDurationSecondsType] <p>The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds.</p> <note> <p>This is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a <code>SessionDuration</code> parameter that specifies the maximum length of the console session, separately from the <code>DurationSeconds</code> parameter on this API. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html">Creating a URL that Enables Federated Users to Access the AWS Management Console</a> in the <i>IAM User Guide</i>.</p> </note>
--- @param _ProviderId [urlType] <p>The fully qualified host component of the domain name of the identity provider.</p> <p>Specify this value only for OAuth 2.0 access tokens. Currently <code>www.amazon.com</code> and <code>graph.facebook.com</code> are the only supported identity providers for OAuth 2.0 access tokens. Do not include URL schemes and port numbers.</p> <p>Do not specify this value for OpenID Connect ID tokens.</p>
--- @param _Policy [sessionPolicyDocumentType] <p>An IAM policy in JSON format.</p> <p>The policy parameter is optional. If you pass a policy, the temporary security credentials that are returned by the operation have the permissions that are allowed by both the access policy of the role that is being assumed, <i> <b>and</b> </i> the policy that you pass. This gives you a way to further restrict the permissions for the resulting temporary security credentials. You cannot use the passed policy to grant permissions that are in excess of those allowed by the access policy of the role that is being assumed. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html">Permissions for AssumeRoleWithWebIdentity</a> in the <i>IAM User Guide</i>. </p> <p>The format for this parameter, as described by its regex pattern, is a string of characters up to 2048 characters in length. The characters can be any ASCII character from the space character to the end of the valid character list (\u0020-\u00FF). It can also include the tab (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.</p> <note> <p>The policy plain text must be 2048 bytes or shorter. However, an internal conversion compresses it into a packed binary format with a separate limit. The PackedPolicySize response element indicates by percentage how close to the upper size limit the policy is, with 100% equaling the maximum allowed size.</p> </note>
--- Required parameter: RoleArn
--- Required parameter: RoleSessionName
--- Required parameter: WebIdentityToken
-function M.AssumeRoleWithWebIdentityRequest(_RoleSessionName, _RoleArn, _WebIdentityToken, _DurationSeconds, _ProviderId, _Policy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssumeRoleWithWebIdentityRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleSessionName [roleSessionNameType] <p>An identifier for the assumed role session. Typically, you pass the name or identifier that is associated with the user who is using your application. That way, the temporary security credentials that your application will use are associated with that user. This session name is included as part of the ARN and assumed role ID in the <code>AssumedRoleUser</code> response element.</p> <p>The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-</p>
+-- * RoleArn [arnType] <p>The Amazon Resource Name (ARN) of the role that the caller is assuming.</p>
+-- * WebIdentityToken [clientTokenType] <p>The OAuth 2.0 access token or OpenID Connect ID token that is provided by the identity provider. Your application must get this token by authenticating the user who is using your application with a web identity provider before the application makes an <code>AssumeRoleWithWebIdentity</code> call. </p>
+-- * DurationSeconds [roleDurationSecondsType] <p>The duration, in seconds, of the role session. The value can range from 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the value is set to 3600 seconds.</p> <note> <p>This is separate from the duration of a console session that you might request using the returned credentials. The request to the federation endpoint for a console sign-in token takes a <code>SessionDuration</code> parameter that specifies the maximum length of the console session, separately from the <code>DurationSeconds</code> parameter on this API. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_enable-console-custom-url.html">Creating a URL that Enables Federated Users to Access the AWS Management Console</a> in the <i>IAM User Guide</i>.</p> </note>
+-- * ProviderId [urlType] <p>The fully qualified host component of the domain name of the identity provider.</p> <p>Specify this value only for OAuth 2.0 access tokens. Currently <code>www.amazon.com</code> and <code>graph.facebook.com</code> are the only supported identity providers for OAuth 2.0 access tokens. Do not include URL schemes and port numbers.</p> <p>Do not specify this value for OpenID Connect ID tokens.</p>
+-- * Policy [sessionPolicyDocumentType] <p>An IAM policy in JSON format.</p> <p>The policy parameter is optional. If you pass a policy, the temporary security credentials that are returned by the operation have the permissions that are allowed by both the access policy of the role that is being assumed, <i> <b>and</b> </i> the policy that you pass. This gives you a way to further restrict the permissions for the resulting temporary security credentials. You cannot use the passed policy to grant permissions that are in excess of those allowed by the access policy of the role that is being assumed. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_assumerole.html">Permissions for AssumeRoleWithWebIdentity</a> in the <i>IAM User Guide</i>. </p> <p>The format for this parameter, as described by its regex pattern, is a string of characters up to 2048 characters in length. The characters can be any ASCII character from the space character to the end of the valid character list (\u0020-\u00FF). It can also include the tab (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.</p> <note> <p>The policy plain text must be 2048 bytes or shorter. However, an internal conversion compresses it into a packed binary format with a separate limit. The PackedPolicySize response element indicates by percentage how close to the upper size limit the policy is, with 100% equaling the maximum allowed size.</p> </note>
+-- Required key: RoleArn
+-- Required key: RoleSessionName
+-- Required key: WebIdentityToken
+-- @return AssumeRoleWithWebIdentityRequest structure as a key-value pair table
+function M.AssumeRoleWithWebIdentityRequest(args)
+	assert(args, "You must provdide an argument table when creating AssumeRoleWithWebIdentityRequest")
 	local t = { 
-		["RoleSessionName"] = _RoleSessionName,
-		["RoleArn"] = _RoleArn,
-		["WebIdentityToken"] = _WebIdentityToken,
-		["DurationSeconds"] = _DurationSeconds,
-		["ProviderId"] = _ProviderId,
-		["Policy"] = _Policy,
+		["RoleSessionName"] = args["RoleSessionName"],
+		["RoleArn"] = args["RoleArn"],
+		["WebIdentityToken"] = args["WebIdentityToken"],
+		["DurationSeconds"] = args["DurationSeconds"],
+		["ProviderId"] = args["ProviderId"],
+		["Policy"] = args["Policy"],
 	}
 	asserts.AssertAssumeRoleWithWebIdentityRequest(t)
 	return t
@@ -665,11 +728,14 @@ end
 
 --- Create a structure of type InvalidAuthorizationMessageException
 -- <p>The error returned if the message passed to <code>DecodeAuthorizationMessage</code> was invalid. This can happen if the token contains invalid characters, such as linebreaks. </p>
--- @param _message [invalidAuthorizationMessage] 
-function M.InvalidAuthorizationMessageException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAuthorizationMessageException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [invalidAuthorizationMessage] 
+-- @return InvalidAuthorizationMessageException structure as a key-value pair table
+function M.InvalidAuthorizationMessageException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAuthorizationMessageException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidAuthorizationMessageException(t)
 	return t
@@ -690,15 +756,18 @@ end
 
 --- Create a structure of type AssumeRoleResponse
 -- <p>Contains the response to a successful <a>AssumeRole</a> request, including temporary AWS credentials that can be used to make AWS requests. </p>
--- @param _AssumedRoleUser [AssumedRoleUser] <p>The Amazon Resource Name (ARN) and the assumed role ID, which are identifiers that you can use to refer to the resulting temporary security credentials. For example, you can reference these credentials as a principal in a resource-based policy by using the ARN or assumed role ID. The ARN and ID include the <code>RoleSessionName</code> that you specified when you called <code>AssumeRole</code>. </p>
--- @param _Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
--- @param _PackedPolicySize [nonNegativeIntegerType] <p>A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a packed size greater than 100 percent, which means the policy exceeded the allowed space.</p>
-function M.AssumeRoleResponse(_AssumedRoleUser, _Credentials, _PackedPolicySize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssumeRoleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssumedRoleUser [AssumedRoleUser] <p>The Amazon Resource Name (ARN) and the assumed role ID, which are identifiers that you can use to refer to the resulting temporary security credentials. For example, you can reference these credentials as a principal in a resource-based policy by using the ARN or assumed role ID. The ARN and ID include the <code>RoleSessionName</code> that you specified when you called <code>AssumeRole</code>. </p>
+-- * Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
+-- * PackedPolicySize [nonNegativeIntegerType] <p>A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a packed size greater than 100 percent, which means the policy exceeded the allowed space.</p>
+-- @return AssumeRoleResponse structure as a key-value pair table
+function M.AssumeRoleResponse(args)
+	assert(args, "You must provdide an argument table when creating AssumeRoleResponse")
 	local t = { 
-		["AssumedRoleUser"] = _AssumedRoleUser,
-		["Credentials"] = _Credentials,
-		["PackedPolicySize"] = _PackedPolicySize,
+		["AssumedRoleUser"] = args["AssumedRoleUser"],
+		["Credentials"] = args["Credentials"],
+		["PackedPolicySize"] = args["PackedPolicySize"],
 	}
 	asserts.AssertAssumeRoleResponse(t)
 	return t
@@ -720,16 +789,19 @@ end
 
 --- Create a structure of type GetFederationTokenRequest
 --  
--- @param _Policy [sessionPolicyDocumentType] <p>An IAM policy in JSON format that is passed with the <code>GetFederationToken</code> call and evaluated along with the policy or policies that are attached to the IAM user whose credentials are used to call <code>GetFederationToken</code>. The passed policy is used to scope down the permissions that are available to the IAM user, by allowing only a subset of the permissions that are granted to the IAM user. The passed policy cannot grant more permissions than those granted to the IAM user. The final permissions for the federated user are the most restrictive set based on the intersection of the passed policy and the IAM user policy.</p> <p>If you do not pass a policy, the resulting temporary security credentials have no effective permissions. The only exception is when the temporary security credentials are used to access a resource that has a resource-based policy that specifically allows the federated user to access the resource.</p> <p>The format for this parameter, as described by its regex pattern, is a string of characters up to 2048 characters in length. The characters can be any ASCII character from the space character to the end of the valid character list (\u0020-\u00FF). It can also include the tab (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.</p> <note> <p>The policy plain text must be 2048 bytes or shorter. However, an internal conversion compresses it into a packed binary format with a separate limit. The PackedPolicySize response element indicates by percentage how close to the upper size limit the policy is, with 100% equaling the maximum allowed size.</p> </note> <p>For more information about how permissions work, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_getfederationtoken.html">Permissions for GetFederationToken</a>.</p>
--- @param _DurationSeconds [durationSecondsType] <p>The duration, in seconds, that the session should last. Acceptable durations for federation sessions range from 900 seconds (15 minutes) to 129600 seconds (36 hours), with 43200 seconds (12 hours) as the default. Sessions obtained using AWS account (root) credentials are restricted to a maximum of 3600 seconds (one hour). If the specified duration is longer than one hour, the session obtained by using AWS account (root) credentials defaults to one hour.</p>
--- @param _Name [userNameType] <p>The name of the federated user. The name is used as an identifier for the temporary security credentials (such as <code>Bob</code>). For example, you can reference the federated user name in a resource-based policy, such as in an Amazon S3 bucket policy.</p> <p>The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-</p>
--- Required parameter: Name
-function M.GetFederationTokenRequest(_Policy, _DurationSeconds, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetFederationTokenRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [sessionPolicyDocumentType] <p>An IAM policy in JSON format that is passed with the <code>GetFederationToken</code> call and evaluated along with the policy or policies that are attached to the IAM user whose credentials are used to call <code>GetFederationToken</code>. The passed policy is used to scope down the permissions that are available to the IAM user, by allowing only a subset of the permissions that are granted to the IAM user. The passed policy cannot grant more permissions than those granted to the IAM user. The final permissions for the federated user are the most restrictive set based on the intersection of the passed policy and the IAM user policy.</p> <p>If you do not pass a policy, the resulting temporary security credentials have no effective permissions. The only exception is when the temporary security credentials are used to access a resource that has a resource-based policy that specifically allows the federated user to access the resource.</p> <p>The format for this parameter, as described by its regex pattern, is a string of characters up to 2048 characters in length. The characters can be any ASCII character from the space character to the end of the valid character list (\u0020-\u00FF). It can also include the tab (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.</p> <note> <p>The policy plain text must be 2048 bytes or shorter. However, an internal conversion compresses it into a packed binary format with a separate limit. The PackedPolicySize response element indicates by percentage how close to the upper size limit the policy is, with 100% equaling the maximum allowed size.</p> </note> <p>For more information about how permissions work, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_getfederationtoken.html">Permissions for GetFederationToken</a>.</p>
+-- * DurationSeconds [durationSecondsType] <p>The duration, in seconds, that the session should last. Acceptable durations for federation sessions range from 900 seconds (15 minutes) to 129600 seconds (36 hours), with 43200 seconds (12 hours) as the default. Sessions obtained using AWS account (root) credentials are restricted to a maximum of 3600 seconds (one hour). If the specified duration is longer than one hour, the session obtained by using AWS account (root) credentials defaults to one hour.</p>
+-- * Name [userNameType] <p>The name of the federated user. The name is used as an identifier for the temporary security credentials (such as <code>Bob</code>). For example, you can reference the federated user name in a resource-based policy, such as in an Amazon S3 bucket policy.</p> <p>The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: =,.@-</p>
+-- Required key: Name
+-- @return GetFederationTokenRequest structure as a key-value pair table
+function M.GetFederationTokenRequest(args)
+	assert(args, "You must provdide an argument table when creating GetFederationTokenRequest")
 	local t = { 
-		["Policy"] = _Policy,
-		["DurationSeconds"] = _DurationSeconds,
-		["Name"] = _Name,
+		["Policy"] = args["Policy"],
+		["DurationSeconds"] = args["DurationSeconds"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertGetFederationTokenRequest(t)
 	return t
@@ -747,8 +819,11 @@ end
 
 --- Create a structure of type GetCallerIdentityRequest
 --  
-function M.GetCallerIdentityRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCallerIdentityRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetCallerIdentityRequest structure as a key-value pair table
+function M.GetCallerIdentityRequest(args)
+	assert(args, "You must provdide an argument table when creating GetCallerIdentityRequest")
 	local t = { 
 	}
 	asserts.AssertGetCallerIdentityRequest(t)

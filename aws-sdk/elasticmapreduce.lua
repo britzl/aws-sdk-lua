@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type InternalServerException
 -- <p>This exception occurs when there is an internal failure in the EMR service.</p>
--- @param _Message [ErrorMessage] <p>The message associated with the exception.</p>
-function M.InternalServerException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [ErrorMessage] <p>The message associated with the exception.</p>
+-- @return InternalServerException structure as a key-value pair table
+function M.InternalServerException(args)
+	assert(args, "You must provdide an argument table when creating InternalServerException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInternalServerException(t)
 	return t
@@ -59,15 +62,18 @@ end
 
 --- Create a structure of type CancelStepsInfo
 -- <p>Specification of the status of a CancelSteps request. Available only in Amazon EMR version 4.8.0 and later, excluding version 5.0.0.</p>
--- @param _Status [CancelStepsRequestStatus] <p>The status of a CancelSteps Request. The value may be SUBMITTED or FAILED.</p>
--- @param _Reason [String] <p>The reason for the failure if the CancelSteps request fails.</p>
--- @param _StepId [StepId] <p>The encrypted StepId of a step.</p>
-function M.CancelStepsInfo(_Status, _Reason, _StepId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelStepsInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [CancelStepsRequestStatus] <p>The status of a CancelSteps Request. The value may be SUBMITTED or FAILED.</p>
+-- * Reason [String] <p>The reason for the failure if the CancelSteps request fails.</p>
+-- * StepId [StepId] <p>The encrypted StepId of a step.</p>
+-- @return CancelStepsInfo structure as a key-value pair table
+function M.CancelStepsInfo(args)
+	assert(args, "You must provdide an argument table when creating CancelStepsInfo")
 	local t = { 
-		["Status"] = _Status,
-		["Reason"] = _Reason,
-		["StepId"] = _StepId,
+		["Status"] = args["Status"],
+		["Reason"] = args["Reason"],
+		["StepId"] = args["StepId"],
 	}
 	asserts.AssertCancelStepsInfo(t)
 	return t
@@ -88,15 +94,18 @@ end
 
 --- Create a structure of type InstanceFleetTimeline
 -- <p>Provides historical timestamps for the instance fleet, including the time of creation, the time it became ready to run jobs, and the time of termination.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _ReadyDateTime [Date] <p>The time and date the instance fleet was ready to run jobs.</p>
--- @param _CreationDateTime [Date] <p>The time and date the instance fleet was created.</p>
--- @param _EndDateTime [Date] <p>The time and date the instance fleet terminated.</p>
-function M.InstanceFleetTimeline(_ReadyDateTime, _CreationDateTime, _EndDateTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetTimeline")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReadyDateTime [Date] <p>The time and date the instance fleet was ready to run jobs.</p>
+-- * CreationDateTime [Date] <p>The time and date the instance fleet was created.</p>
+-- * EndDateTime [Date] <p>The time and date the instance fleet terminated.</p>
+-- @return InstanceFleetTimeline structure as a key-value pair table
+function M.InstanceFleetTimeline(args)
+	assert(args, "You must provdide an argument table when creating InstanceFleetTimeline")
 	local t = { 
-		["ReadyDateTime"] = _ReadyDateTime,
-		["CreationDateTime"] = _CreationDateTime,
-		["EndDateTime"] = _EndDateTime,
+		["ReadyDateTime"] = args["ReadyDateTime"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["EndDateTime"] = args["EndDateTime"],
 	}
 	asserts.AssertInstanceFleetTimeline(t)
 	return t
@@ -119,18 +128,21 @@ end
 
 --- Create a structure of type ListStepsInput
 -- <p>This input determines which steps to list.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _StepIds [XmlStringList] <p>The filter to limit the step list based on the identifier of the steps.</p>
--- @param _ClusterId [ClusterId] <p>The identifier of the cluster for which to list the steps.</p>
--- @param _StepStates [StepStateList] <p>The filter to limit the step list based on certain states.</p>
--- Required parameter: ClusterId
-function M.ListStepsInput(_Marker, _StepIds, _ClusterId, _StepStates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListStepsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * StepIds [XmlStringList] <p>The filter to limit the step list based on the identifier of the steps.</p>
+-- * ClusterId [ClusterId] <p>The identifier of the cluster for which to list the steps.</p>
+-- * StepStates [StepStateList] <p>The filter to limit the step list based on certain states.</p>
+-- Required key: ClusterId
+-- @return ListStepsInput structure as a key-value pair table
+function M.ListStepsInput(args)
+	assert(args, "You must provdide an argument table when creating ListStepsInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["StepIds"] = _StepIds,
-		["ClusterId"] = _ClusterId,
-		["StepStates"] = _StepStates,
+		["Marker"] = args["Marker"],
+		["StepIds"] = args["StepIds"],
+		["ClusterId"] = args["ClusterId"],
+		["StepStates"] = args["StepStates"],
 	}
 	asserts.AssertListStepsInput(t)
 	return t
@@ -164,38 +176,41 @@ end
 
 --- Create a structure of type JobFlowInstancesDetail
 -- <p>Specify the type of Amazon EC2 instances that the cluster (job flow) runs on.</p>
--- @param _InstanceCount [Integer] <p>The number of Amazon EC2 instances in the cluster. If the value is 1, the same instance serves as both the master and slave node. If the value is greater than 1, one instance is the master node and all others are slave nodes.</p>
--- @param _Placement [PlacementType] <p>The Amazon EC2 Availability Zone for the cluster.</p>
--- @param _MasterPublicDnsName [XmlString] <p>The DNS name of the master node.</p>
--- @param _NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour that an m1.small runs. Larger instances are weighted more, so an Amazon EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
--- @param _MasterInstanceId [XmlString] <p>The Amazon EC2 instance identifier of the master node.</p>
--- @param _InstanceGroups [InstanceGroupDetailList] <p>Details about the instance groups in a cluster.</p>
--- @param _MasterInstanceType [InstanceType] <p>The Amazon EC2 master node instance type.</p>
--- @param _TerminationProtected [Boolean] <p>Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.</p>
--- @param _HadoopVersion [XmlStringMaxLen256] <p>The Hadoop version for the cluster.</p>
--- @param _Ec2SubnetId [XmlStringMaxLen256] <p>For clusters launched within Amazon Virtual Private Cloud, this is the identifier of the subnet where the cluster was launched.</p>
--- @param _KeepJobFlowAliveWhenNoSteps [Boolean] <p>Specifies whether the cluster should remain available after completing all steps.</p>
--- @param _SlaveInstanceType [InstanceType] <p>The Amazon EC2 slave node instance type.</p>
--- @param _Ec2KeyName [XmlStringMaxLen256] <p>The name of an Amazon EC2 key pair that can be used to ssh to the master node.</p>
--- Required parameter: MasterInstanceType
--- Required parameter: SlaveInstanceType
--- Required parameter: InstanceCount
-function M.JobFlowInstancesDetail(_InstanceCount, _Placement, _MasterPublicDnsName, _NormalizedInstanceHours, _MasterInstanceId, _InstanceGroups, _MasterInstanceType, _TerminationProtected, _HadoopVersion, _Ec2SubnetId, _KeepJobFlowAliveWhenNoSteps, _SlaveInstanceType, _Ec2KeyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobFlowInstancesDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceCount [Integer] <p>The number of Amazon EC2 instances in the cluster. If the value is 1, the same instance serves as both the master and slave node. If the value is greater than 1, one instance is the master node and all others are slave nodes.</p>
+-- * Placement [PlacementType] <p>The Amazon EC2 Availability Zone for the cluster.</p>
+-- * MasterPublicDnsName [XmlString] <p>The DNS name of the master node.</p>
+-- * NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour that an m1.small runs. Larger instances are weighted more, so an Amazon EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
+-- * MasterInstanceId [XmlString] <p>The Amazon EC2 instance identifier of the master node.</p>
+-- * InstanceGroups [InstanceGroupDetailList] <p>Details about the instance groups in a cluster.</p>
+-- * MasterInstanceType [InstanceType] <p>The Amazon EC2 master node instance type.</p>
+-- * TerminationProtected [Boolean] <p>Specifies whether the Amazon EC2 instances in the cluster are protected from termination by API calls, user intervention, or in the event of a job-flow error.</p>
+-- * HadoopVersion [XmlStringMaxLen256] <p>The Hadoop version for the cluster.</p>
+-- * Ec2SubnetId [XmlStringMaxLen256] <p>For clusters launched within Amazon Virtual Private Cloud, this is the identifier of the subnet where the cluster was launched.</p>
+-- * KeepJobFlowAliveWhenNoSteps [Boolean] <p>Specifies whether the cluster should remain available after completing all steps.</p>
+-- * SlaveInstanceType [InstanceType] <p>The Amazon EC2 slave node instance type.</p>
+-- * Ec2KeyName [XmlStringMaxLen256] <p>The name of an Amazon EC2 key pair that can be used to ssh to the master node.</p>
+-- Required key: MasterInstanceType
+-- Required key: SlaveInstanceType
+-- Required key: InstanceCount
+-- @return JobFlowInstancesDetail structure as a key-value pair table
+function M.JobFlowInstancesDetail(args)
+	assert(args, "You must provdide an argument table when creating JobFlowInstancesDetail")
 	local t = { 
-		["InstanceCount"] = _InstanceCount,
-		["Placement"] = _Placement,
-		["MasterPublicDnsName"] = _MasterPublicDnsName,
-		["NormalizedInstanceHours"] = _NormalizedInstanceHours,
-		["MasterInstanceId"] = _MasterInstanceId,
-		["InstanceGroups"] = _InstanceGroups,
-		["MasterInstanceType"] = _MasterInstanceType,
-		["TerminationProtected"] = _TerminationProtected,
-		["HadoopVersion"] = _HadoopVersion,
-		["Ec2SubnetId"] = _Ec2SubnetId,
-		["KeepJobFlowAliveWhenNoSteps"] = _KeepJobFlowAliveWhenNoSteps,
-		["SlaveInstanceType"] = _SlaveInstanceType,
-		["Ec2KeyName"] = _Ec2KeyName,
+		["InstanceCount"] = args["InstanceCount"],
+		["Placement"] = args["Placement"],
+		["MasterPublicDnsName"] = args["MasterPublicDnsName"],
+		["NormalizedInstanceHours"] = args["NormalizedInstanceHours"],
+		["MasterInstanceId"] = args["MasterInstanceId"],
+		["InstanceGroups"] = args["InstanceGroups"],
+		["MasterInstanceType"] = args["MasterInstanceType"],
+		["TerminationProtected"] = args["TerminationProtected"],
+		["HadoopVersion"] = args["HadoopVersion"],
+		["Ec2SubnetId"] = args["Ec2SubnetId"],
+		["KeepJobFlowAliveWhenNoSteps"] = args["KeepJobFlowAliveWhenNoSteps"],
+		["SlaveInstanceType"] = args["SlaveInstanceType"],
+		["Ec2KeyName"] = args["Ec2KeyName"],
 	}
 	asserts.AssertJobFlowInstancesDetail(t)
 	return t
@@ -230,43 +245,46 @@ end
 
 --- Create a structure of type JobFlowInstancesConfig
 -- <p>A description of the Amazon EC2 instance on which the cluster (job flow) runs. A valid JobFlowInstancesConfig must contain either InstanceGroups or InstanceFleets, which is the recommended configuration. They cannot be used together. You may also have MasterInstanceType, SlaveInstanceType, and InstanceCount (all three must be present), but we don't recommend this configuration.</p>
--- @param _ServiceAccessSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
--- @param _InstanceCount [Integer] <p>The number of EC2 instances in the cluster.</p>
--- @param _Placement [PlacementType] <p>The Availability Zone in which the cluster runs.</p>
--- @param _TerminationProtected [Boolean] <p>Specifies whether to lock the cluster to prevent the Amazon EC2 instances from being terminated by API call, user intervention, or in the event of a job-flow error.</p>
--- @param _Ec2SubnetIds [XmlStringMaxLen256List] <p>Applies to clusters that use the instance fleet configuration. When multiple EC2 subnet IDs are specified, Amazon EMR evaluates them and launches instances in the optimal subnet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _InstanceGroups [InstanceGroupConfigList] <p>Configuration for the instance groups in a cluster.</p>
--- @param _InstanceFleets [InstanceFleetConfigList] <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note> <p>Describes the EC2 instances and instance configurations for clusters that use the instance fleet configuration.</p>
--- @param _MasterInstanceType [InstanceType] <p>The EC2 instance type of the master node.</p>
--- @param _AdditionalSlaveSecurityGroups [SecurityGroupsList] <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
--- @param _HadoopVersion [XmlStringMaxLen256] <p>The Hadoop version for the cluster. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the AmiVersion parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.</p>
--- @param _AdditionalMasterSecurityGroups [SecurityGroupsList] <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
--- @param _Ec2SubnetId [XmlStringMaxLen256] <p>Applies to clusters that use the uniform instance group configuration. To launch the cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster launches in the normal Amazon Web Services cloud, outside of an Amazon VPC, if the account launching the cluster supports EC2 Classic networks in the region where the cluster launches.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus you cannot specify the cc1.4xlarge instance type for clusters launched in an Amazon VPC.</p>
--- @param _KeepJobFlowAliveWhenNoSteps [Boolean] <p>Specifies whether the cluster should remain available after completing all steps.</p>
--- @param _SlaveInstanceType [InstanceType] <p>The EC2 instance type of the slave nodes.</p>
--- @param _EmrManagedMasterSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the master node.</p>
--- @param _Ec2KeyName [XmlStringMaxLen256] <p>The name of the EC2 key pair that can be used to ssh to the master node as the user called "hadoop."</p>
--- @param _EmrManagedSlaveSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
-function M.JobFlowInstancesConfig(_ServiceAccessSecurityGroup, _InstanceCount, _Placement, _TerminationProtected, _Ec2SubnetIds, _InstanceGroups, _InstanceFleets, _MasterInstanceType, _AdditionalSlaveSecurityGroups, _HadoopVersion, _AdditionalMasterSecurityGroups, _Ec2SubnetId, _KeepJobFlowAliveWhenNoSteps, _SlaveInstanceType, _EmrManagedMasterSecurityGroup, _Ec2KeyName, _EmrManagedSlaveSecurityGroup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobFlowInstancesConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServiceAccessSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
+-- * InstanceCount [Integer] <p>The number of EC2 instances in the cluster.</p>
+-- * Placement [PlacementType] <p>The Availability Zone in which the cluster runs.</p>
+-- * TerminationProtected [Boolean] <p>Specifies whether to lock the cluster to prevent the Amazon EC2 instances from being terminated by API call, user intervention, or in the event of a job-flow error.</p>
+-- * Ec2SubnetIds [XmlStringMaxLen256List] <p>Applies to clusters that use the instance fleet configuration. When multiple EC2 subnet IDs are specified, Amazon EMR evaluates them and launches instances in the optimal subnet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
+-- * InstanceGroups [InstanceGroupConfigList] <p>Configuration for the instance groups in a cluster.</p>
+-- * InstanceFleets [InstanceFleetConfigList] <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note> <p>Describes the EC2 instances and instance configurations for clusters that use the instance fleet configuration.</p>
+-- * MasterInstanceType [InstanceType] <p>The EC2 instance type of the master node.</p>
+-- * AdditionalSlaveSecurityGroups [SecurityGroupsList] <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
+-- * HadoopVersion [XmlStringMaxLen256] <p>The Hadoop version for the cluster. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the AmiVersion parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.</p>
+-- * AdditionalMasterSecurityGroups [SecurityGroupsList] <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
+-- * Ec2SubnetId [XmlStringMaxLen256] <p>Applies to clusters that use the uniform instance group configuration. To launch the cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster launches in the normal Amazon Web Services cloud, outside of an Amazon VPC, if the account launching the cluster supports EC2 Classic networks in the region where the cluster launches.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus you cannot specify the cc1.4xlarge instance type for clusters launched in an Amazon VPC.</p>
+-- * KeepJobFlowAliveWhenNoSteps [Boolean] <p>Specifies whether the cluster should remain available after completing all steps.</p>
+-- * SlaveInstanceType [InstanceType] <p>The EC2 instance type of the slave nodes.</p>
+-- * EmrManagedMasterSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the master node.</p>
+-- * Ec2KeyName [XmlStringMaxLen256] <p>The name of the EC2 key pair that can be used to ssh to the master node as the user called "hadoop."</p>
+-- * EmrManagedSlaveSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
+-- @return JobFlowInstancesConfig structure as a key-value pair table
+function M.JobFlowInstancesConfig(args)
+	assert(args, "You must provdide an argument table when creating JobFlowInstancesConfig")
 	local t = { 
-		["ServiceAccessSecurityGroup"] = _ServiceAccessSecurityGroup,
-		["InstanceCount"] = _InstanceCount,
-		["Placement"] = _Placement,
-		["TerminationProtected"] = _TerminationProtected,
-		["Ec2SubnetIds"] = _Ec2SubnetIds,
-		["InstanceGroups"] = _InstanceGroups,
-		["InstanceFleets"] = _InstanceFleets,
-		["MasterInstanceType"] = _MasterInstanceType,
-		["AdditionalSlaveSecurityGroups"] = _AdditionalSlaveSecurityGroups,
-		["HadoopVersion"] = _HadoopVersion,
-		["AdditionalMasterSecurityGroups"] = _AdditionalMasterSecurityGroups,
-		["Ec2SubnetId"] = _Ec2SubnetId,
-		["KeepJobFlowAliveWhenNoSteps"] = _KeepJobFlowAliveWhenNoSteps,
-		["SlaveInstanceType"] = _SlaveInstanceType,
-		["EmrManagedMasterSecurityGroup"] = _EmrManagedMasterSecurityGroup,
-		["Ec2KeyName"] = _Ec2KeyName,
-		["EmrManagedSlaveSecurityGroup"] = _EmrManagedSlaveSecurityGroup,
+		["ServiceAccessSecurityGroup"] = args["ServiceAccessSecurityGroup"],
+		["InstanceCount"] = args["InstanceCount"],
+		["Placement"] = args["Placement"],
+		["TerminationProtected"] = args["TerminationProtected"],
+		["Ec2SubnetIds"] = args["Ec2SubnetIds"],
+		["InstanceGroups"] = args["InstanceGroups"],
+		["InstanceFleets"] = args["InstanceFleets"],
+		["MasterInstanceType"] = args["MasterInstanceType"],
+		["AdditionalSlaveSecurityGroups"] = args["AdditionalSlaveSecurityGroups"],
+		["HadoopVersion"] = args["HadoopVersion"],
+		["AdditionalMasterSecurityGroups"] = args["AdditionalMasterSecurityGroups"],
+		["Ec2SubnetId"] = args["Ec2SubnetId"],
+		["KeepJobFlowAliveWhenNoSteps"] = args["KeepJobFlowAliveWhenNoSteps"],
+		["SlaveInstanceType"] = args["SlaveInstanceType"],
+		["EmrManagedMasterSecurityGroup"] = args["EmrManagedMasterSecurityGroup"],
+		["Ec2KeyName"] = args["Ec2KeyName"],
+		["EmrManagedSlaveSecurityGroup"] = args["EmrManagedSlaveSecurityGroup"],
 	}
 	asserts.AssertJobFlowInstancesConfig(t)
 	return t
@@ -286,13 +304,16 @@ end
 
 --- Create a structure of type InstanceFleetStateChangeReason
 -- <p>Provides status change reason details for the instance fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _Message [String] <p>An explanatory message.</p>
--- @param _Code [InstanceFleetStateChangeReasonCode] <p>A code corresponding to the reason the state change occurred.</p>
-function M.InstanceFleetStateChangeReason(_Message, _Code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetStateChangeReason")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>An explanatory message.</p>
+-- * Code [InstanceFleetStateChangeReasonCode] <p>A code corresponding to the reason the state change occurred.</p>
+-- @return InstanceFleetStateChangeReason structure as a key-value pair table
+function M.InstanceFleetStateChangeReason(args)
+	assert(args, "You must provdide an argument table when creating InstanceFleetStateChangeReason")
 	local t = { 
-		["Message"] = _Message,
-		["Code"] = _Code,
+		["Message"] = args["Message"],
+		["Code"] = args["Code"],
 	}
 	asserts.AssertInstanceFleetStateChangeReason(t)
 	return t
@@ -312,13 +333,16 @@ end
 
 --- Create a structure of type StepStateChangeReason
 -- <p>The details of the step state change reason.</p>
--- @param _Message [String] <p>The descriptive message for the state change reason.</p>
--- @param _Code [StepStateChangeReasonCode] <p>The programmable code for the state change reason. Note: Currently, the service provides no code for the state change.</p>
-function M.StepStateChangeReason(_Message, _Code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StepStateChangeReason")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>The descriptive message for the state change reason.</p>
+-- * Code [StepStateChangeReasonCode] <p>The programmable code for the state change reason. Note: Currently, the service provides no code for the state change.</p>
+-- @return StepStateChangeReason structure as a key-value pair table
+function M.StepStateChangeReason(args)
+	assert(args, "You must provdide an argument table when creating StepStateChangeReason")
 	local t = { 
-		["Message"] = _Message,
-		["Code"] = _Code,
+		["Message"] = args["Message"],
+		["Code"] = args["Code"],
 	}
 	asserts.AssertStepStateChangeReason(t)
 	return t
@@ -338,13 +362,16 @@ end
 
 --- Create a structure of type PlacementType
 -- <p>The Amazon EC2 Availability Zone configuration of the cluster (job flow).</p>
--- @param _AvailabilityZone [XmlString] <p>The Amazon EC2 Availability Zone for the cluster. <code>AvailabilityZone</code> is used for uniform instance groups, while <code>AvailabilityZones</code> (plural) is used for instance fleets.</p>
--- @param _AvailabilityZones [XmlStringMaxLen256List] <p>When multiple Availability Zones are specified, Amazon EMR evaluates them and launches instances in the optimal Availability Zone. <code>AvailabilityZones</code> is used for instance fleets, while <code>AvailabilityZone</code> (singular) is used for uniform instance groups.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
-function M.PlacementType(_AvailabilityZone, _AvailabilityZones, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PlacementType")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AvailabilityZone [XmlString] <p>The Amazon EC2 Availability Zone for the cluster. <code>AvailabilityZone</code> is used for uniform instance groups, while <code>AvailabilityZones</code> (plural) is used for instance fleets.</p>
+-- * AvailabilityZones [XmlStringMaxLen256List] <p>When multiple Availability Zones are specified, Amazon EMR evaluates them and launches instances in the optimal Availability Zone. <code>AvailabilityZones</code> is used for instance fleets, while <code>AvailabilityZone</code> (singular) is used for uniform instance groups.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
+-- @return PlacementType structure as a key-value pair table
+function M.PlacementType(args)
+	assert(args, "You must provdide an argument table when creating PlacementType")
 	local t = { 
-		["AvailabilityZone"] = _AvailabilityZone,
-		["AvailabilityZones"] = _AvailabilityZones,
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
 	}
 	asserts.AssertPlacementType(t)
 	return t
@@ -364,13 +391,16 @@ end
 
 --- Create a structure of type ListInstanceFleetsOutput
 --  
--- @param _InstanceFleets [InstanceFleetList] <p>The list of instance fleets for the cluster and given filters.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
-function M.ListInstanceFleetsOutput(_InstanceFleets, _Marker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceFleetsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceFleets [InstanceFleetList] <p>The list of instance fleets for the cluster and given filters.</p>
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- @return ListInstanceFleetsOutput structure as a key-value pair table
+function M.ListInstanceFleetsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListInstanceFleetsOutput")
 	local t = { 
-		["InstanceFleets"] = _InstanceFleets,
-		["Marker"] = _Marker,
+		["InstanceFleets"] = args["InstanceFleets"],
+		["Marker"] = args["Marker"],
 	}
 	asserts.AssertListInstanceFleetsOutput(t)
 	return t
@@ -390,13 +420,16 @@ end
 
 --- Create a structure of type ListBootstrapActionsOutput
 -- <p>This output contains the bootstrap actions detail.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _BootstrapActions [CommandList] <p>The bootstrap actions associated with the cluster.</p>
-function M.ListBootstrapActionsOutput(_Marker, _BootstrapActions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBootstrapActionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * BootstrapActions [CommandList] <p>The bootstrap actions associated with the cluster.</p>
+-- @return ListBootstrapActionsOutput structure as a key-value pair table
+function M.ListBootstrapActionsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListBootstrapActionsOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["BootstrapActions"] = _BootstrapActions,
+		["Marker"] = args["Marker"],
+		["BootstrapActions"] = args["BootstrapActions"],
 	}
 	asserts.AssertListBootstrapActionsOutput(t)
 	return t
@@ -418,15 +451,18 @@ end
 
 --- Create a structure of type DescribeStepInput
 -- <p>This input determines which step to describe.</p>
--- @param _StepId [StepId] <p>The identifier of the step to describe.</p>
--- @param _ClusterId [ClusterId] <p>The identifier of the cluster with steps to describe.</p>
--- Required parameter: ClusterId
--- Required parameter: StepId
-function M.DescribeStepInput(_StepId, _ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStepInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StepId [StepId] <p>The identifier of the step to describe.</p>
+-- * ClusterId [ClusterId] <p>The identifier of the cluster with steps to describe.</p>
+-- Required key: ClusterId
+-- Required key: StepId
+-- @return DescribeStepInput structure as a key-value pair table
+function M.DescribeStepInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeStepInput")
 	local t = { 
-		["StepId"] = _StepId,
-		["ClusterId"] = _ClusterId,
+		["StepId"] = args["StepId"],
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertDescribeStepInput(t)
 	return t
@@ -446,13 +482,16 @@ end
 
 --- Create a structure of type ModifyInstanceGroupsInput
 -- <p>Change the size of some instance groups.</p>
--- @param _ClusterId [ClusterId] <p>The ID of the cluster to which the instance group belongs.</p>
--- @param _InstanceGroups [InstanceGroupModifyConfigList] <p>Instance groups to change.</p>
-function M.ModifyInstanceGroupsInput(_ClusterId, _InstanceGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyInstanceGroupsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterId [ClusterId] <p>The ID of the cluster to which the instance group belongs.</p>
+-- * InstanceGroups [InstanceGroupModifyConfigList] <p>Instance groups to change.</p>
+-- @return ModifyInstanceGroupsInput structure as a key-value pair table
+function M.ModifyInstanceGroupsInput(args)
+	assert(args, "You must provdide an argument table when creating ModifyInstanceGroupsInput")
 	local t = { 
-		["ClusterId"] = _ClusterId,
-		["InstanceGroups"] = _InstanceGroups,
+		["ClusterId"] = args["ClusterId"],
+		["InstanceGroups"] = args["InstanceGroups"],
 	}
 	asserts.AssertModifyInstanceGroupsInput(t)
 	return t
@@ -471,11 +510,14 @@ end
 
 --- Create a structure of type DescribeJobFlowsOutput
 -- <p> The output for the <a>DescribeJobFlows</a> operation. </p>
--- @param _JobFlows [JobFlowDetailList] <p>A list of job flows matching the parameters supplied.</p>
-function M.DescribeJobFlowsOutput(_JobFlows, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobFlowsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobFlows [JobFlowDetailList] <p>A list of job flows matching the parameters supplied.</p>
+-- @return DescribeJobFlowsOutput structure as a key-value pair table
+function M.DescribeJobFlowsOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobFlowsOutput")
 	local t = { 
-		["JobFlows"] = _JobFlows,
+		["JobFlows"] = args["JobFlows"],
 	}
 	asserts.AssertDescribeJobFlowsOutput(t)
 	return t
@@ -496,15 +538,18 @@ end
 
 --- Create a structure of type StepTimeline
 -- <p>The timeline of the cluster step lifecycle.</p>
--- @param _EndDateTime [Date] <p>The date and time when the cluster step execution completed or failed.</p>
--- @param _CreationDateTime [Date] <p>The date and time when the cluster step was created.</p>
--- @param _StartDateTime [Date] <p>The date and time when the cluster step execution started.</p>
-function M.StepTimeline(_EndDateTime, _CreationDateTime, _StartDateTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StepTimeline")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndDateTime [Date] <p>The date and time when the cluster step execution completed or failed.</p>
+-- * CreationDateTime [Date] <p>The date and time when the cluster step was created.</p>
+-- * StartDateTime [Date] <p>The date and time when the cluster step execution started.</p>
+-- @return StepTimeline structure as a key-value pair table
+function M.StepTimeline(args)
+	assert(args, "You must provdide an argument table when creating StepTimeline")
 	local t = { 
-		["EndDateTime"] = _EndDateTime,
-		["CreationDateTime"] = _CreationDateTime,
-		["StartDateTime"] = _StartDateTime,
+		["EndDateTime"] = args["EndDateTime"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["StartDateTime"] = args["StartDateTime"],
 	}
 	asserts.AssertStepTimeline(t)
 	return t
@@ -527,19 +572,22 @@ end
 
 --- Create a structure of type Step
 -- <p>This represents a step in a cluster.</p>
--- @param _Status [StepStatus] <p>The current execution status details of the cluster step.</p>
--- @param _Config [HadoopStepConfig] <p>The Hadoop job configuration of the cluster step.</p>
--- @param _Id [StepId] <p>The identifier of the cluster step.</p>
--- @param _ActionOnFailure [ActionOnFailure] <p>This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
--- @param _Name [String] <p>The name of the cluster step.</p>
-function M.Step(_Status, _Config, _Id, _ActionOnFailure, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Step")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [StepStatus] <p>The current execution status details of the cluster step.</p>
+-- * Config [HadoopStepConfig] <p>The Hadoop job configuration of the cluster step.</p>
+-- * Id [StepId] <p>The identifier of the cluster step.</p>
+-- * ActionOnFailure [ActionOnFailure] <p>This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
+-- * Name [String] <p>The name of the cluster step.</p>
+-- @return Step structure as a key-value pair table
+function M.Step(args)
+	assert(args, "You must provdide an argument table when creating Step")
 	local t = { 
-		["Status"] = _Status,
-		["Config"] = _Config,
-		["Id"] = _Id,
-		["ActionOnFailure"] = _ActionOnFailure,
-		["Name"] = _Name,
+		["Status"] = args["Status"],
+		["Config"] = args["Config"],
+		["Id"] = args["Id"],
+		["ActionOnFailure"] = args["ActionOnFailure"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertStep(t)
 	return t
@@ -559,13 +607,16 @@ end
 
 --- Create a structure of type KeyValue
 -- <p>A key value pair.</p>
--- @param _Value [XmlString] <p>The value part of the identified key.</p>
--- @param _Key [XmlString] <p>The unique identifier of a key value pair.</p>
-function M.KeyValue(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KeyValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [XmlString] <p>The value part of the identified key.</p>
+-- * Key [XmlString] <p>The unique identifier of a key value pair.</p>
+-- @return KeyValue structure as a key-value pair table
+function M.KeyValue(args)
+	assert(args, "You must provdide an argument table when creating KeyValue")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertKeyValue(t)
 	return t
@@ -585,13 +636,16 @@ end
 
 --- Create a structure of type ClusterStateChangeReason
 -- <p>The reason that the cluster changed to its current state.</p>
--- @param _Message [String] <p>The descriptive message for the state change reason.</p>
--- @param _Code [ClusterStateChangeReasonCode] <p>The programmatic code for the state change reason.</p>
-function M.ClusterStateChangeReason(_Message, _Code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterStateChangeReason")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>The descriptive message for the state change reason.</p>
+-- * Code [ClusterStateChangeReasonCode] <p>The programmatic code for the state change reason.</p>
+-- @return ClusterStateChangeReason structure as a key-value pair table
+function M.ClusterStateChangeReason(args)
+	assert(args, "You must provdide an argument table when creating ClusterStateChangeReason")
 	local t = { 
-		["Message"] = _Message,
-		["Code"] = _Code,
+		["Message"] = args["Message"],
+		["Code"] = args["Code"],
 	}
 	asserts.AssertClusterStateChangeReason(t)
 	return t
@@ -611,13 +665,16 @@ end
 
 --- Create a structure of type InstanceStateChangeReason
 -- <p>The details of the status change reason for the instance.</p>
--- @param _Message [String] <p>The status change reason description.</p>
--- @param _Code [InstanceStateChangeReasonCode] <p>The programmable code for the state change reason.</p>
-function M.InstanceStateChangeReason(_Message, _Code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceStateChangeReason")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>The status change reason description.</p>
+-- * Code [InstanceStateChangeReasonCode] <p>The programmable code for the state change reason.</p>
+-- @return InstanceStateChangeReason structure as a key-value pair table
+function M.InstanceStateChangeReason(args)
+	assert(args, "You must provdide an argument table when creating InstanceStateChangeReason")
 	local t = { 
-		["Message"] = _Message,
-		["Code"] = _Code,
+		["Message"] = args["Message"],
+		["Code"] = args["Code"],
 	}
 	asserts.AssertInstanceStateChangeReason(t)
 	return t
@@ -646,31 +703,34 @@ end
 
 --- Create a structure of type Ec2InstanceAttributes
 -- <p>Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.</p>
--- @param _ServiceAccessSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
--- @param _EmrManagedMasterSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the master node.</p>
--- @param _RequestedEc2AvailabilityZones [XmlStringMaxLen256List] <p>Applies to clusters configured with the The list of availability zones to choose from. The service will choose the availability zone with the best mix of available capacity and lowest cost to launch the cluster. If you do not specify this value, the cluster is launched in any availability zone that the customer account has access to.</p>
--- @param _AdditionalSlaveSecurityGroups [StringList] <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
--- @param _AdditionalMasterSecurityGroups [StringList] <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
--- @param _RequestedEc2SubnetIds [XmlStringMaxLen256List] <p>Applies to clusters configured with the instance fleets option. Specifies the unique identifier of one or more Amazon EC2 subnets in which to launch EC2 cluster instances. Amazon EMR chooses the EC2 subnet with the best performance and cost characteristics from among the list of RequestedEc2SubnetIds and launches all cluster instances within that subnet. If this value is not specified, and the account supports EC2-Classic networks, the cluster launches instances in the EC2-Classic network and uses Requested</p>
--- @param _Ec2SubnetId [String] <p>To launch the cluster in Amazon VPC, set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster is launched in the normal AWS cloud, outside of a VPC.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus, you cannot specify the cc1.4xlarge instance type for nodes of a cluster launched in a VPC.</p>
--- @param _IamInstanceProfile [String] <p>The IAM role that was specified when the cluster was launched. The EC2 instances of the cluster assume this role.</p>
--- @param _Ec2KeyName [String] <p>The name of the Amazon EC2 key pair to use when connecting with SSH into the master node as a user named "hadoop".</p>
--- @param _Ec2AvailabilityZone [String] <p>The Availability Zone in which the cluster will run. </p>
--- @param _EmrManagedSlaveSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
-function M.Ec2InstanceAttributes(_ServiceAccessSecurityGroup, _EmrManagedMasterSecurityGroup, _RequestedEc2AvailabilityZones, _AdditionalSlaveSecurityGroups, _AdditionalMasterSecurityGroups, _RequestedEc2SubnetIds, _Ec2SubnetId, _IamInstanceProfile, _Ec2KeyName, _Ec2AvailabilityZone, _EmrManagedSlaveSecurityGroup, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Ec2InstanceAttributes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServiceAccessSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the Amazon EMR service to access clusters in VPC private subnets.</p>
+-- * EmrManagedMasterSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the master node.</p>
+-- * RequestedEc2AvailabilityZones [XmlStringMaxLen256List] <p>Applies to clusters configured with the The list of availability zones to choose from. The service will choose the availability zone with the best mix of available capacity and lowest cost to launch the cluster. If you do not specify this value, the cluster is launched in any availability zone that the customer account has access to.</p>
+-- * AdditionalSlaveSecurityGroups [StringList] <p>A list of additional Amazon EC2 security group IDs for the slave nodes.</p>
+-- * AdditionalMasterSecurityGroups [StringList] <p>A list of additional Amazon EC2 security group IDs for the master node.</p>
+-- * RequestedEc2SubnetIds [XmlStringMaxLen256List] <p>Applies to clusters configured with the instance fleets option. Specifies the unique identifier of one or more Amazon EC2 subnets in which to launch EC2 cluster instances. Amazon EMR chooses the EC2 subnet with the best performance and cost characteristics from among the list of RequestedEc2SubnetIds and launches all cluster instances within that subnet. If this value is not specified, and the account supports EC2-Classic networks, the cluster launches instances in the EC2-Classic network and uses Requested</p>
+-- * Ec2SubnetId [String] <p>To launch the cluster in Amazon VPC, set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster is launched in the normal AWS cloud, outside of a VPC.</p> <p>Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus, you cannot specify the cc1.4xlarge instance type for nodes of a cluster launched in a VPC.</p>
+-- * IamInstanceProfile [String] <p>The IAM role that was specified when the cluster was launched. The EC2 instances of the cluster assume this role.</p>
+-- * Ec2KeyName [String] <p>The name of the Amazon EC2 key pair to use when connecting with SSH into the master node as a user named "hadoop".</p>
+-- * Ec2AvailabilityZone [String] <p>The Availability Zone in which the cluster will run. </p>
+-- * EmrManagedSlaveSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
+-- @return Ec2InstanceAttributes structure as a key-value pair table
+function M.Ec2InstanceAttributes(args)
+	assert(args, "You must provdide an argument table when creating Ec2InstanceAttributes")
 	local t = { 
-		["ServiceAccessSecurityGroup"] = _ServiceAccessSecurityGroup,
-		["EmrManagedMasterSecurityGroup"] = _EmrManagedMasterSecurityGroup,
-		["RequestedEc2AvailabilityZones"] = _RequestedEc2AvailabilityZones,
-		["AdditionalSlaveSecurityGroups"] = _AdditionalSlaveSecurityGroups,
-		["AdditionalMasterSecurityGroups"] = _AdditionalMasterSecurityGroups,
-		["RequestedEc2SubnetIds"] = _RequestedEc2SubnetIds,
-		["Ec2SubnetId"] = _Ec2SubnetId,
-		["IamInstanceProfile"] = _IamInstanceProfile,
-		["Ec2KeyName"] = _Ec2KeyName,
-		["Ec2AvailabilityZone"] = _Ec2AvailabilityZone,
-		["EmrManagedSlaveSecurityGroup"] = _EmrManagedSlaveSecurityGroup,
+		["ServiceAccessSecurityGroup"] = args["ServiceAccessSecurityGroup"],
+		["EmrManagedMasterSecurityGroup"] = args["EmrManagedMasterSecurityGroup"],
+		["RequestedEc2AvailabilityZones"] = args["RequestedEc2AvailabilityZones"],
+		["AdditionalSlaveSecurityGroups"] = args["AdditionalSlaveSecurityGroups"],
+		["AdditionalMasterSecurityGroups"] = args["AdditionalMasterSecurityGroups"],
+		["RequestedEc2SubnetIds"] = args["RequestedEc2SubnetIds"],
+		["Ec2SubnetId"] = args["Ec2SubnetId"],
+		["IamInstanceProfile"] = args["IamInstanceProfile"],
+		["Ec2KeyName"] = args["Ec2KeyName"],
+		["Ec2AvailabilityZone"] = args["Ec2AvailabilityZone"],
+		["EmrManagedSlaveSecurityGroup"] = args["EmrManagedSlaveSecurityGroup"],
 	}
 	asserts.AssertEc2InstanceAttributes(t)
 	return t
@@ -698,29 +758,32 @@ end
 
 --- Create a structure of type InstanceFleet
 -- <p>Describes an instance fleet, which is a group of EC2 instances that host a particular node type (master, core, or task) in an Amazon EMR cluster. Instance fleets can consist of a mix of instance types and On-Demand and Spot instances, which are provisioned to meet a defined target capacity. </p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _Status [InstanceFleetStatus] <p>The current status of the instance fleet. </p>
--- @param _ProvisionedSpotCapacity [WholeNumber] <p>The number of Spot units that have been provisioned for this instance fleet to fulfill <code>TargetSpotCapacity</code>. This provisioned capacity might be less than or greater than <code>TargetSpotCapacity</code>.</p>
--- @param _Name [XmlStringMaxLen256] <p>A friendly name for the instance fleet.</p>
--- @param _InstanceFleetType [InstanceFleetType] <p>The node type that the instance fleet hosts. Valid values are MASTER, CORE, or TASK. </p>
--- @param _LaunchSpecifications [InstanceFleetProvisioningSpecifications] <p>Describes the launch specification for an instance fleet. </p>
--- @param _TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When a Spot instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use <a>InstanceFleet$ProvisionedSpotCapacity</a> to determine the Spot capacity units that have been provisioned for the instance fleet.</p> <note> <p>If not specified or set to 0, only On-Demand instances are provisioned for the instance fleet. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
--- @param _ProvisionedOnDemandCapacity [WholeNumber] <p>The number of On-Demand units that have been provisioned for the instance fleet to fulfill <code>TargetOnDemandCapacity</code>. This provisioned capacity might be less than or greater than <code>TargetOnDemandCapacity</code>.</p>
--- @param _InstanceTypeSpecifications [InstanceTypeSpecificationList] <p>The specification for the instance types that comprise an instance fleet. Up to five unique instance specifications may be defined for each instance fleet. </p>
--- @param _Id [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
--- @param _TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When an On-Demand instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use <a>InstanceFleet$ProvisionedOnDemandCapacity</a> to determine the Spot capacity units that have been provisioned for the instance fleet.</p> <note> <p>If not specified or set to 0, only Spot instances are provisioned for the instance fleet using <code>TargetSpotCapacity</code>. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
-function M.InstanceFleet(_Status, _ProvisionedSpotCapacity, _Name, _InstanceFleetType, _LaunchSpecifications, _TargetSpotCapacity, _ProvisionedOnDemandCapacity, _InstanceTypeSpecifications, _Id, _TargetOnDemandCapacity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleet")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [InstanceFleetStatus] <p>The current status of the instance fleet. </p>
+-- * ProvisionedSpotCapacity [WholeNumber] <p>The number of Spot units that have been provisioned for this instance fleet to fulfill <code>TargetSpotCapacity</code>. This provisioned capacity might be less than or greater than <code>TargetSpotCapacity</code>.</p>
+-- * Name [XmlStringMaxLen256] <p>A friendly name for the instance fleet.</p>
+-- * InstanceFleetType [InstanceFleetType] <p>The node type that the instance fleet hosts. Valid values are MASTER, CORE, or TASK. </p>
+-- * LaunchSpecifications [InstanceFleetProvisioningSpecifications] <p>Describes the launch specification for an instance fleet. </p>
+-- * TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When a Spot instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use <a>InstanceFleet$ProvisionedSpotCapacity</a> to determine the Spot capacity units that have been provisioned for the instance fleet.</p> <note> <p>If not specified or set to 0, only On-Demand instances are provisioned for the instance fleet. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
+-- * ProvisionedOnDemandCapacity [WholeNumber] <p>The number of On-Demand units that have been provisioned for the instance fleet to fulfill <code>TargetOnDemandCapacity</code>. This provisioned capacity might be less than or greater than <code>TargetOnDemandCapacity</code>.</p>
+-- * InstanceTypeSpecifications [InstanceTypeSpecificationList] <p>The specification for the instance types that comprise an instance fleet. Up to five unique instance specifications may be defined for each instance fleet. </p>
+-- * Id [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
+-- * TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When an On-Demand instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use <a>InstanceFleet$ProvisionedOnDemandCapacity</a> to determine the Spot capacity units that have been provisioned for the instance fleet.</p> <note> <p>If not specified or set to 0, only Spot instances are provisioned for the instance fleet using <code>TargetSpotCapacity</code>. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
+-- @return InstanceFleet structure as a key-value pair table
+function M.InstanceFleet(args)
+	assert(args, "You must provdide an argument table when creating InstanceFleet")
 	local t = { 
-		["Status"] = _Status,
-		["ProvisionedSpotCapacity"] = _ProvisionedSpotCapacity,
-		["Name"] = _Name,
-		["InstanceFleetType"] = _InstanceFleetType,
-		["LaunchSpecifications"] = _LaunchSpecifications,
-		["TargetSpotCapacity"] = _TargetSpotCapacity,
-		["ProvisionedOnDemandCapacity"] = _ProvisionedOnDemandCapacity,
-		["InstanceTypeSpecifications"] = _InstanceTypeSpecifications,
-		["Id"] = _Id,
-		["TargetOnDemandCapacity"] = _TargetOnDemandCapacity,
+		["Status"] = args["Status"],
+		["ProvisionedSpotCapacity"] = args["ProvisionedSpotCapacity"],
+		["Name"] = args["Name"],
+		["InstanceFleetType"] = args["InstanceFleetType"],
+		["LaunchSpecifications"] = args["LaunchSpecifications"],
+		["TargetSpotCapacity"] = args["TargetSpotCapacity"],
+		["ProvisionedOnDemandCapacity"] = args["ProvisionedOnDemandCapacity"],
+		["InstanceTypeSpecifications"] = args["InstanceTypeSpecifications"],
+		["Id"] = args["Id"],
+		["TargetOnDemandCapacity"] = args["TargetOnDemandCapacity"],
 	}
 	asserts.AssertInstanceFleet(t)
 	return t
@@ -740,13 +803,16 @@ end
 
 --- Create a structure of type InstanceGroupStateChangeReason
 -- <p>The status change reason details for the instance group.</p>
--- @param _Message [String] <p>The status change reason description.</p>
--- @param _Code [InstanceGroupStateChangeReasonCode] <p>The programmable code for the state change reason.</p>
-function M.InstanceGroupStateChangeReason(_Message, _Code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupStateChangeReason")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>The status change reason description.</p>
+-- * Code [InstanceGroupStateChangeReasonCode] <p>The programmable code for the state change reason.</p>
+-- @return InstanceGroupStateChangeReason structure as a key-value pair table
+function M.InstanceGroupStateChangeReason(args)
+	assert(args, "You must provdide an argument table when creating InstanceGroupStateChangeReason")
 	local t = { 
-		["Message"] = _Message,
-		["Code"] = _Code,
+		["Message"] = args["Message"],
+		["Code"] = args["Code"],
 	}
 	asserts.AssertInstanceGroupStateChangeReason(t)
 	return t
@@ -766,13 +832,16 @@ end
 
 --- Create a structure of type ShrinkPolicy
 -- <p>Policy for customizing shrink operations. Allows configuration of decommissioning timeout and targeted instance shrinking.</p>
--- @param _DecommissionTimeout [Integer] <p>The desired timeout for decommissioning an instance. Overrides the default YARN decommissioning timeout.</p>
--- @param _InstanceResizePolicy [InstanceResizePolicy] <p>Custom policy for requesting termination protection or termination of specific instances when shrinking an instance group.</p>
-function M.ShrinkPolicy(_DecommissionTimeout, _InstanceResizePolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ShrinkPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DecommissionTimeout [Integer] <p>The desired timeout for decommissioning an instance. Overrides the default YARN decommissioning timeout.</p>
+-- * InstanceResizePolicy [InstanceResizePolicy] <p>Custom policy for requesting termination protection or termination of specific instances when shrinking an instance group.</p>
+-- @return ShrinkPolicy structure as a key-value pair table
+function M.ShrinkPolicy(args)
+	assert(args, "You must provdide an argument table when creating ShrinkPolicy")
 	local t = { 
-		["DecommissionTimeout"] = _DecommissionTimeout,
-		["InstanceResizePolicy"] = _InstanceResizePolicy,
+		["DecommissionTimeout"] = args["DecommissionTimeout"],
+		["InstanceResizePolicy"] = args["InstanceResizePolicy"],
 	}
 	asserts.AssertShrinkPolicy(t)
 	return t
@@ -797,22 +866,25 @@ end
 
 --- Create a structure of type InstanceTypeConfig
 -- <p>An instance type configuration for each instance type in an instance fleet, which determines the EC2 instances Amazon EMR attempts to provision to fulfill On-Demand and Spot target capacities. There can be a maximum of 5 instance type configurations in a fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _WeightedCapacity [WholeNumber] <p>The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in <a>InstanceFleetConfig</a>. This value is 1 for a master instance fleet, and must be greater than 0 for core and task instance fleets. </p>
--- @param _EbsConfiguration [EbsConfiguration] <p>The configuration of Amazon Elastic Block Storage (EBS) attached to each instance as defined by <code>InstanceType</code>. </p>
--- @param _BidPrice [XmlStringMaxLen256] <p>The bid price for each EC2 Spot instance type as defined by <code>InstanceType</code>. Expressed in USD. If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%. </p>
--- @param _BidPriceAsPercentageOfOnDemandPrice [NonNegativeDouble] <p>The bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by <code>InstanceType</code>. Expressed as a number between 0 and 1000 (for example, 20 specifies 20%). If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%.</p>
--- @param _InstanceType [InstanceType] <p>An EC2 instance type, such as <code>m3.xlarge</code>. </p>
--- @param _Configurations [ConfigurationList] <p>A configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software that run on the cluster.</p>
--- Required parameter: InstanceType
-function M.InstanceTypeConfig(_WeightedCapacity, _EbsConfiguration, _BidPrice, _BidPriceAsPercentageOfOnDemandPrice, _InstanceType, _Configurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceTypeConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * WeightedCapacity [WholeNumber] <p>The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in <a>InstanceFleetConfig</a>. This value is 1 for a master instance fleet, and must be greater than 0 for core and task instance fleets. </p>
+-- * EbsConfiguration [EbsConfiguration] <p>The configuration of Amazon Elastic Block Storage (EBS) attached to each instance as defined by <code>InstanceType</code>. </p>
+-- * BidPrice [XmlStringMaxLen256] <p>The bid price for each EC2 Spot instance type as defined by <code>InstanceType</code>. Expressed in USD. If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%. </p>
+-- * BidPriceAsPercentageOfOnDemandPrice [NonNegativeDouble] <p>The bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by <code>InstanceType</code>. Expressed as a number between 0 and 1000 (for example, 20 specifies 20%). If neither <code>BidPrice</code> nor <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided, <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%.</p>
+-- * InstanceType [InstanceType] <p>An EC2 instance type, such as <code>m3.xlarge</code>. </p>
+-- * Configurations [ConfigurationList] <p>A configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software that run on the cluster.</p>
+-- Required key: InstanceType
+-- @return InstanceTypeConfig structure as a key-value pair table
+function M.InstanceTypeConfig(args)
+	assert(args, "You must provdide an argument table when creating InstanceTypeConfig")
 	local t = { 
-		["WeightedCapacity"] = _WeightedCapacity,
-		["EbsConfiguration"] = _EbsConfiguration,
-		["BidPrice"] = _BidPrice,
-		["BidPriceAsPercentageOfOnDemandPrice"] = _BidPriceAsPercentageOfOnDemandPrice,
-		["InstanceType"] = _InstanceType,
-		["Configurations"] = _Configurations,
+		["WeightedCapacity"] = args["WeightedCapacity"],
+		["EbsConfiguration"] = args["EbsConfiguration"],
+		["BidPrice"] = args["BidPrice"],
+		["BidPriceAsPercentageOfOnDemandPrice"] = args["BidPriceAsPercentageOfOnDemandPrice"],
+		["InstanceType"] = args["InstanceType"],
+		["Configurations"] = args["Configurations"],
 	}
 	asserts.AssertInstanceTypeConfig(t)
 	return t
@@ -832,13 +904,16 @@ end
 
 --- Create a structure of type AutoScalingPolicyStatus
 -- <p>The status of an automatic scaling policy. </p>
--- @param _State [AutoScalingPolicyState] <p>Indicates the status of the automatic scaling policy.</p>
--- @param _StateChangeReason [AutoScalingPolicyStateChangeReason] <p>The reason for a change in status.</p>
-function M.AutoScalingPolicyStatus(_State, _StateChangeReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingPolicyStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * State [AutoScalingPolicyState] <p>Indicates the status of the automatic scaling policy.</p>
+-- * StateChangeReason [AutoScalingPolicyStateChangeReason] <p>The reason for a change in status.</p>
+-- @return AutoScalingPolicyStatus structure as a key-value pair table
+function M.AutoScalingPolicyStatus(args)
+	assert(args, "You must provdide an argument table when creating AutoScalingPolicyStatus")
 	local t = { 
-		["State"] = _State,
-		["StateChangeReason"] = _StateChangeReason,
+		["State"] = args["State"],
+		["StateChangeReason"] = args["StateChangeReason"],
 	}
 	asserts.AssertAutoScalingPolicyStatus(t)
 	return t
@@ -860,15 +935,18 @@ end
 
 --- Create a structure of type CreateSecurityConfigurationOutput
 --  
--- @param _CreationDateTime [Date] <p>The date and time the security configuration was created.</p>
--- @param _Name [XmlString] <p>The name of the security configuration.</p>
--- Required parameter: Name
--- Required parameter: CreationDateTime
-function M.CreateSecurityConfigurationOutput(_CreationDateTime, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSecurityConfigurationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreationDateTime [Date] <p>The date and time the security configuration was created.</p>
+-- * Name [XmlString] <p>The name of the security configuration.</p>
+-- Required key: Name
+-- Required key: CreationDateTime
+-- @return CreateSecurityConfigurationOutput structure as a key-value pair table
+function M.CreateSecurityConfigurationOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateSecurityConfigurationOutput")
 	local t = { 
-		["CreationDateTime"] = _CreationDateTime,
-		["Name"] = _Name,
+		["CreationDateTime"] = args["CreationDateTime"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateSecurityConfigurationOutput(t)
 	return t
@@ -886,8 +964,11 @@ end
 
 --- Create a structure of type InternalServerError
 -- <p>Indicates that an error occurred while processing the request and that the request was not completed.</p>
-function M.InternalServerError(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InternalServerError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InternalServerError structure as a key-value pair table
+function M.InternalServerError(args)
+	assert(args, "You must provdide an argument table when creating InternalServerError")
 	local t = { 
 	}
 	asserts.AssertInternalServerError(t)
@@ -907,11 +988,14 @@ end
 
 --- Create a structure of type DescribeStepOutput
 -- <p>This output contains the description of the cluster step.</p>
--- @param _Step [Step] <p>The step details for the requested step identifier.</p>
-function M.DescribeStepOutput(_Step, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStepOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Step [Step] <p>The step details for the requested step identifier.</p>
+-- @return DescribeStepOutput structure as a key-value pair table
+function M.DescribeStepOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeStepOutput")
 	local t = { 
-		["Step"] = _Step,
+		["Step"] = args["Step"],
 	}
 	asserts.AssertDescribeStepOutput(t)
 	return t
@@ -930,11 +1014,14 @@ end
 
 --- Create a structure of type ListSecurityConfigurationsInput
 --  
--- @param _Marker [Marker] <p>The pagination token that indicates the set of results to retrieve.</p>
-function M.ListSecurityConfigurationsInput(_Marker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSecurityConfigurationsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the set of results to retrieve.</p>
+-- @return ListSecurityConfigurationsInput structure as a key-value pair table
+function M.ListSecurityConfigurationsInput(args)
+	assert(args, "You must provdide an argument table when creating ListSecurityConfigurationsInput")
 	local t = { 
-		["Marker"] = _Marker,
+		["Marker"] = args["Marker"],
 	}
 	asserts.AssertListSecurityConfigurationsInput(t)
 	return t
@@ -955,15 +1042,18 @@ end
 
 --- Create a structure of type ClusterTimeline
 -- <p>Represents the timeline of the cluster's lifecycle.</p>
--- @param _ReadyDateTime [Date] <p>The date and time when the cluster was ready to execute steps.</p>
--- @param _CreationDateTime [Date] <p>The creation date and time of the cluster.</p>
--- @param _EndDateTime [Date] <p>The date and time when the cluster was terminated.</p>
-function M.ClusterTimeline(_ReadyDateTime, _CreationDateTime, _EndDateTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterTimeline")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReadyDateTime [Date] <p>The date and time when the cluster was ready to execute steps.</p>
+-- * CreationDateTime [Date] <p>The creation date and time of the cluster.</p>
+-- * EndDateTime [Date] <p>The date and time when the cluster was terminated.</p>
+-- @return ClusterTimeline structure as a key-value pair table
+function M.ClusterTimeline(args)
+	assert(args, "You must provdide an argument table when creating ClusterTimeline")
 	local t = { 
-		["ReadyDateTime"] = _ReadyDateTime,
-		["CreationDateTime"] = _CreationDateTime,
-		["EndDateTime"] = _EndDateTime,
+		["ReadyDateTime"] = args["ReadyDateTime"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["EndDateTime"] = args["EndDateTime"],
 	}
 	asserts.AssertClusterTimeline(t)
 	return t
@@ -983,13 +1073,16 @@ end
 
 --- Create a structure of type Tag
 -- <p>A key/value pair containing user-defined metadata that you can associate with an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
--- @param _Value [String] <p>A user-defined value, which is optional in a tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
--- @param _Key [String] <p>A user-defined key, which is the minimum required information for a valid tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [String] <p>A user-defined value, which is optional in a tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
+-- * Key [String] <p>A user-defined key, which is the minimum required information for a valid tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -1010,14 +1103,17 @@ end
 
 --- Create a structure of type ListInstanceGroupsInput
 -- <p>This input determines which instance groups to retrieve.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _ClusterId [ClusterId] <p>The identifier of the cluster for which to list the instance groups.</p>
--- Required parameter: ClusterId
-function M.ListInstanceGroupsInput(_Marker, _ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceGroupsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * ClusterId [ClusterId] <p>The identifier of the cluster for which to list the instance groups.</p>
+-- Required key: ClusterId
+-- @return ListInstanceGroupsInput structure as a key-value pair table
+function M.ListInstanceGroupsInput(args)
+	assert(args, "You must provdide an argument table when creating ListInstanceGroupsInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["ClusterId"] = _ClusterId,
+		["Marker"] = args["Marker"],
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertListInstanceGroupsInput(t)
 	return t
@@ -1039,16 +1135,19 @@ end
 
 --- Create a structure of type InstanceFleetModifyConfig
 -- <p>Configuration parameters for an instance fleet modification request.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet. For more information see <a>InstanceFleetConfig$TargetOnDemandCapacity</a>.</p>
--- @param _TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet. For more information, see <a>InstanceFleetConfig$TargetSpotCapacity</a>.</p>
--- @param _InstanceFleetId [InstanceFleetId] <p>A unique identifier for the instance fleet.</p>
--- Required parameter: InstanceFleetId
-function M.InstanceFleetModifyConfig(_TargetOnDemandCapacity, _TargetSpotCapacity, _InstanceFleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetModifyConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet. For more information see <a>InstanceFleetConfig$TargetOnDemandCapacity</a>.</p>
+-- * TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet. For more information, see <a>InstanceFleetConfig$TargetSpotCapacity</a>.</p>
+-- * InstanceFleetId [InstanceFleetId] <p>A unique identifier for the instance fleet.</p>
+-- Required key: InstanceFleetId
+-- @return InstanceFleetModifyConfig structure as a key-value pair table
+function M.InstanceFleetModifyConfig(args)
+	assert(args, "You must provdide an argument table when creating InstanceFleetModifyConfig")
 	local t = { 
-		["TargetOnDemandCapacity"] = _TargetOnDemandCapacity,
-		["TargetSpotCapacity"] = _TargetSpotCapacity,
-		["InstanceFleetId"] = _InstanceFleetId,
+		["TargetOnDemandCapacity"] = args["TargetOnDemandCapacity"],
+		["TargetSpotCapacity"] = args["TargetSpotCapacity"],
+		["InstanceFleetId"] = args["InstanceFleetId"],
 	}
 	asserts.AssertInstanceFleetModifyConfig(t)
 	return t
@@ -1068,13 +1167,16 @@ end
 
 --- Create a structure of type EbsBlockDevice
 -- <p>Configuration of requested EBS block device associated with the instance group.</p>
--- @param _Device [String] <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
--- @param _VolumeSpecification [VolumeSpecification] <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
-function M.EbsBlockDevice(_Device, _VolumeSpecification, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EbsBlockDevice")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Device [String] <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
+-- * VolumeSpecification [VolumeSpecification] <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
+-- @return EbsBlockDevice structure as a key-value pair table
+function M.EbsBlockDevice(args)
+	assert(args, "You must provdide an argument table when creating EbsBlockDevice")
 	local t = { 
-		["Device"] = _Device,
-		["VolumeSpecification"] = _VolumeSpecification,
+		["Device"] = args["Device"],
+		["VolumeSpecification"] = args["VolumeSpecification"],
 	}
 	asserts.AssertEbsBlockDevice(t)
 	return t
@@ -1104,30 +1206,33 @@ end
 
 --- Create a structure of type InstanceGroupConfig
 -- <p>Configuration defining a new instance group.</p>
--- @param _InstanceCount [Integer] <p>Target number of instances for the instance group.</p>
--- @param _Name [XmlStringMaxLen256] <p>Friendly name given to the instance group.</p>
--- @param _InstanceRole [InstanceRoleType] <p>The role of the instance group in the cluster.</p>
--- @param _AutoScalingPolicy [AutoScalingPolicy] <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See <a>PutAutoScalingPolicy</a>.</p>
--- @param _EbsConfiguration [EbsConfiguration] <p>EBS configurations that will be attached to each EC2 instance in the instance group.</p>
--- @param _BidPrice [XmlStringMaxLen256] <p>Bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
--- @param _InstanceType [InstanceType] <p>The EC2 instance type for all instances in the instance group.</p>
--- @param _Market [MarketType] <p>Market type of the EC2 instances used to create a cluster node.</p>
--- @param _Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
--- Required parameter: InstanceRole
--- Required parameter: InstanceType
--- Required parameter: InstanceCount
-function M.InstanceGroupConfig(_InstanceCount, _Name, _InstanceRole, _AutoScalingPolicy, _EbsConfiguration, _BidPrice, _InstanceType, _Market, _Configurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceCount [Integer] <p>Target number of instances for the instance group.</p>
+-- * Name [XmlStringMaxLen256] <p>Friendly name given to the instance group.</p>
+-- * InstanceRole [InstanceRoleType] <p>The role of the instance group in the cluster.</p>
+-- * AutoScalingPolicy [AutoScalingPolicy] <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See <a>PutAutoScalingPolicy</a>.</p>
+-- * EbsConfiguration [EbsConfiguration] <p>EBS configurations that will be attached to each EC2 instance in the instance group.</p>
+-- * BidPrice [XmlStringMaxLen256] <p>Bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
+-- * InstanceType [InstanceType] <p>The EC2 instance type for all instances in the instance group.</p>
+-- * Market [MarketType] <p>Market type of the EC2 instances used to create a cluster node.</p>
+-- * Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
+-- Required key: InstanceRole
+-- Required key: InstanceType
+-- Required key: InstanceCount
+-- @return InstanceGroupConfig structure as a key-value pair table
+function M.InstanceGroupConfig(args)
+	assert(args, "You must provdide an argument table when creating InstanceGroupConfig")
 	local t = { 
-		["InstanceCount"] = _InstanceCount,
-		["Name"] = _Name,
-		["InstanceRole"] = _InstanceRole,
-		["AutoScalingPolicy"] = _AutoScalingPolicy,
-		["EbsConfiguration"] = _EbsConfiguration,
-		["BidPrice"] = _BidPrice,
-		["InstanceType"] = _InstanceType,
-		["Market"] = _Market,
-		["Configurations"] = _Configurations,
+		["InstanceCount"] = args["InstanceCount"],
+		["Name"] = args["Name"],
+		["InstanceRole"] = args["InstanceRole"],
+		["AutoScalingPolicy"] = args["AutoScalingPolicy"],
+		["EbsConfiguration"] = args["EbsConfiguration"],
+		["BidPrice"] = args["BidPrice"],
+		["InstanceType"] = args["InstanceType"],
+		["Market"] = args["Market"],
+		["Configurations"] = args["Configurations"],
 	}
 	asserts.AssertInstanceGroupConfig(t)
 	return t
@@ -1148,15 +1253,18 @@ end
 
 --- Create a structure of type AutoScalingPolicyDescription
 -- <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See <a>PutAutoScalingPolicy</a>.</p>
--- @param _Status [AutoScalingPolicyStatus] <p>The status of an automatic scaling policy. </p>
--- @param _Rules [ScalingRuleList] <p>The scale-in and scale-out rules that comprise the automatic scaling policy.</p>
--- @param _Constraints [ScalingConstraints] <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activity will not cause an instance group to grow above or below these limits.</p>
-function M.AutoScalingPolicyDescription(_Status, _Rules, _Constraints, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingPolicyDescription")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [AutoScalingPolicyStatus] <p>The status of an automatic scaling policy. </p>
+-- * Rules [ScalingRuleList] <p>The scale-in and scale-out rules that comprise the automatic scaling policy.</p>
+-- * Constraints [ScalingConstraints] <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activity will not cause an instance group to grow above or below these limits.</p>
+-- @return AutoScalingPolicyDescription structure as a key-value pair table
+function M.AutoScalingPolicyDescription(args)
+	assert(args, "You must provdide an argument table when creating AutoScalingPolicyDescription")
 	local t = { 
-		["Status"] = _Status,
-		["Rules"] = _Rules,
-		["Constraints"] = _Constraints,
+		["Status"] = args["Status"],
+		["Rules"] = args["Rules"],
+		["Constraints"] = args["Constraints"],
 	}
 	asserts.AssertAutoScalingPolicyDescription(t)
 	return t
@@ -1182,23 +1290,26 @@ end
 
 --- Create a structure of type JobFlowExecutionStatusDetail
 -- <p>Describes the status of the cluster (job flow).</p>
--- @param _ReadyDateTime [Date] <p>The date and time when the job flow was ready to start running bootstrap actions.</p>
--- @param _EndDateTime [Date] <p>The completion date and time of the job flow.</p>
--- @param _State [JobFlowExecutionState] <p>The state of the job flow.</p>
--- @param _StartDateTime [Date] <p>The start date and time of the job flow.</p>
--- @param _CreationDateTime [Date] <p>The creation date and time of the job flow.</p>
--- @param _LastStateChangeReason [XmlString] <p>Description of the job flow last changed state.</p>
--- Required parameter: State
--- Required parameter: CreationDateTime
-function M.JobFlowExecutionStatusDetail(_ReadyDateTime, _EndDateTime, _State, _StartDateTime, _CreationDateTime, _LastStateChangeReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobFlowExecutionStatusDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReadyDateTime [Date] <p>The date and time when the job flow was ready to start running bootstrap actions.</p>
+-- * EndDateTime [Date] <p>The completion date and time of the job flow.</p>
+-- * State [JobFlowExecutionState] <p>The state of the job flow.</p>
+-- * StartDateTime [Date] <p>The start date and time of the job flow.</p>
+-- * CreationDateTime [Date] <p>The creation date and time of the job flow.</p>
+-- * LastStateChangeReason [XmlString] <p>Description of the job flow last changed state.</p>
+-- Required key: State
+-- Required key: CreationDateTime
+-- @return JobFlowExecutionStatusDetail structure as a key-value pair table
+function M.JobFlowExecutionStatusDetail(args)
+	assert(args, "You must provdide an argument table when creating JobFlowExecutionStatusDetail")
 	local t = { 
-		["ReadyDateTime"] = _ReadyDateTime,
-		["EndDateTime"] = _EndDateTime,
-		["State"] = _State,
-		["StartDateTime"] = _StartDateTime,
-		["CreationDateTime"] = _CreationDateTime,
-		["LastStateChangeReason"] = _LastStateChangeReason,
+		["ReadyDateTime"] = args["ReadyDateTime"],
+		["EndDateTime"] = args["EndDateTime"],
+		["State"] = args["State"],
+		["StartDateTime"] = args["StartDateTime"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["LastStateChangeReason"] = args["LastStateChangeReason"],
 	}
 	asserts.AssertJobFlowExecutionStatusDetail(t)
 	return t
@@ -1220,17 +1331,20 @@ end
 
 --- Create a structure of type Application
 -- <p>An application is any Amazon or third-party software that you can add to the cluster. This structure contains a list of strings that indicates the software to use with the cluster and accepts a user argument list. Amazon EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action argument. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/ManagementGuide/emr-mapr.html">Using the MapR Distribution for Hadoop</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the cluster using MapR M3 or M5 Edition, respectively.</p> </li> </ul> <note> <p>In Amazon EMR releases 4.0 and greater, the only accepted parameter is the application name. To pass arguments to applications, you supply a configuration for each application.</p> </note>
--- @param _Args [StringList] <p>Arguments for Amazon EMR to pass to the application.</p>
--- @param _Version [String] <p>The version of the application.</p>
--- @param _Name [String] <p>The name of the application.</p>
--- @param _AdditionalInfo [StringMap] <p>This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.</p>
-function M.Application(_Args, _Version, _Name, _AdditionalInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Application")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Args [StringList] <p>Arguments for Amazon EMR to pass to the application.</p>
+-- * Version [String] <p>The version of the application.</p>
+-- * Name [String] <p>The name of the application.</p>
+-- * AdditionalInfo [StringMap] <p>This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.</p>
+-- @return Application structure as a key-value pair table
+function M.Application(args)
+	assert(args, "You must provdide an argument table when creating Application")
 	local t = { 
-		["Args"] = _Args,
-		["Version"] = _Version,
-		["Name"] = _Name,
-		["AdditionalInfo"] = _AdditionalInfo,
+		["Args"] = args["Args"],
+		["Version"] = args["Version"],
+		["Name"] = args["Name"],
+		["AdditionalInfo"] = args["AdditionalInfo"],
 	}
 	asserts.AssertApplication(t)
 	return t
@@ -1250,13 +1364,16 @@ end
 
 --- Create a structure of type EbsConfiguration
 -- <p>The Amazon EBS configuration of a cluster instance.</p>
--- @param _EbsOptimized [BooleanObject] <p>Indicates whether an Amazon EBS volume is EBS-optimized.</p>
--- @param _EbsBlockDeviceConfigs [EbsBlockDeviceConfigList] <p>An array of Amazon EBS volume specifications attached to a cluster instance.</p>
-function M.EbsConfiguration(_EbsOptimized, _EbsBlockDeviceConfigs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EbsConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EbsOptimized [BooleanObject] <p>Indicates whether an Amazon EBS volume is EBS-optimized.</p>
+-- * EbsBlockDeviceConfigs [EbsBlockDeviceConfigList] <p>An array of Amazon EBS volume specifications attached to a cluster instance.</p>
+-- @return EbsConfiguration structure as a key-value pair table
+function M.EbsConfiguration(args)
+	assert(args, "You must provdide an argument table when creating EbsConfiguration")
 	local t = { 
-		["EbsOptimized"] = _EbsOptimized,
-		["EbsBlockDeviceConfigs"] = _EbsBlockDeviceConfigs,
+		["EbsOptimized"] = args["EbsOptimized"],
+		["EbsBlockDeviceConfigs"] = args["EbsBlockDeviceConfigs"],
 	}
 	asserts.AssertEbsConfiguration(t)
 	return t
@@ -1295,49 +1412,52 @@ end
 
 --- Create a structure of type RunJobFlowInput
 -- <p> Input to the <a>RunJobFlow</a> operation. </p>
--- @param _AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
--- @param _AdditionalInfo [XmlString] <p>A JSON string for selecting additional features.</p>
--- @param _SecurityConfiguration [XmlString] <p>The name of a security configuration to apply to the cluster.</p>
--- @param _Name [XmlStringMaxLen256] <p>The name of the job flow.</p>
--- @param _ServiceRole [XmlString] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
--- @param _Applications [ApplicationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>A list of applications for the cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and "Spark." They are case insensitive.</p>
--- @param _ReleaseLabel [XmlStringMaxLen256] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
--- @param _Tags [TagList] <p>A list of tags to associate with a cluster and propagate to Amazon EC2 instances.</p>
--- @param _BootstrapActions [BootstrapActionConfigList] <p>A list of bootstrap actions to run before Hadoop starts on the cluster nodes.</p>
--- @param _Instances [JobFlowInstancesConfig] <p>A specification of the number and type of Amazon EC2 instances.</p>
--- @param _JobFlowRole [XmlString] <p>Also called instance profile and EC2 role. An IAM role for an EMR cluster. The EC2 instances of the cluster assume this role. The default role is <code>EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the CLI or console.</p>
--- @param _Steps [StepConfigList] <p>A list of steps to run.</p>
--- @param _ScaleDownBehavior [ScaleDownBehavior] <p>Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
--- @param _Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for the EMR cluster you are creating.</p>
--- @param _VisibleToAllUsers [Boolean] <p>Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the cluster can view and manage it.</p>
--- @param _LogUri [XmlString] <p>The location in Amazon S3 to write the log files of the job flow. If a value is not provided, logs are not created.</p>
--- @param _AmiVersion [XmlStringMaxLen256] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use ReleaseLabel.</p> </note> <p>The version of the Amazon Machine Image (AMI) to use when launching Amazon EC2 instances in the job flow. The following values are valid:</p> <ul> <li> <p>The version number of the AMI to use, for example, "2.0."</p> </li> </ul> <p>If the AMI supports multiple versions of Hadoop (for example, AMI 1.0 supports both Hadoop 0.18 and 0.20) you can use the <a>JobFlowInstancesConfig</a> <code>HadoopVersion</code> parameter to modify the version of Hadoop from the defaults shown above.</p> <p>For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i> </p> <note> <p>Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version rather than specify a numerical value. Some regions no longer support this deprecated option as they only have a newer release label version of EMR, which requires you to specify an EMR release label release (EMR 4.x or later).</p> </note>
--- @param _NewSupportedProducts [NewSupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use with the job flow that accepts a user argument list. EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the job flow using MapR M3 or M5 Edition respectively.</p> </li> <li> <p>"mapr-m7" - launch the cluster using MapR M7 Edition.</p> </li> <li> <p>"hunk" - launch the cluster with the Hunk Big Data Analtics Platform.</p> </li> <li> <p>"hue"- launch the cluster with Hue installed.</p> </li> <li> <p>"spark" - launch the cluster with Apache Spark installed.</p> </li> <li> <p>"ganglia" - launch the cluster with the Ganglia Monitoring System installed.</p> </li> </ul>
--- @param _SupportedProducts [SupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third Party Applications with Amazon EMR</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the job flow using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the job flow using MapR M5 Edition.</p> </li> </ul>
--- Required parameter: Name
--- Required parameter: Instances
-function M.RunJobFlowInput(_AutoScalingRole, _AdditionalInfo, _SecurityConfiguration, _Name, _ServiceRole, _Applications, _ReleaseLabel, _Tags, _BootstrapActions, _Instances, _JobFlowRole, _Steps, _ScaleDownBehavior, _Configurations, _VisibleToAllUsers, _LogUri, _AmiVersion, _NewSupportedProducts, _SupportedProducts, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RunJobFlowInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
+-- * AdditionalInfo [XmlString] <p>A JSON string for selecting additional features.</p>
+-- * SecurityConfiguration [XmlString] <p>The name of a security configuration to apply to the cluster.</p>
+-- * Name [XmlStringMaxLen256] <p>The name of the job flow.</p>
+-- * ServiceRole [XmlString] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
+-- * Applications [ApplicationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>A list of applications for the cluster. Valid values are: "Hadoop", "Hive", "Mahout", "Pig", and "Spark." They are case insensitive.</p>
+-- * ReleaseLabel [XmlStringMaxLen256] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
+-- * Tags [TagList] <p>A list of tags to associate with a cluster and propagate to Amazon EC2 instances.</p>
+-- * BootstrapActions [BootstrapActionConfigList] <p>A list of bootstrap actions to run before Hadoop starts on the cluster nodes.</p>
+-- * Instances [JobFlowInstancesConfig] <p>A specification of the number and type of Amazon EC2 instances.</p>
+-- * JobFlowRole [XmlString] <p>Also called instance profile and EC2 role. An IAM role for an EMR cluster. The EC2 instances of the cluster assume this role. The default role is <code>EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the CLI or console.</p>
+-- * Steps [StepConfigList] <p>A list of steps to run.</p>
+-- * ScaleDownBehavior [ScaleDownBehavior] <p>Specifies the way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
+-- * Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for the EMR cluster you are creating.</p>
+-- * VisibleToAllUsers [Boolean] <p>Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the cluster can view and manage it.</p>
+-- * LogUri [XmlString] <p>The location in Amazon S3 to write the log files of the job flow. If a value is not provided, logs are not created.</p>
+-- * AmiVersion [XmlStringMaxLen256] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use ReleaseLabel.</p> </note> <p>The version of the Amazon Machine Image (AMI) to use when launching Amazon EC2 instances in the job flow. The following values are valid:</p> <ul> <li> <p>The version number of the AMI to use, for example, "2.0."</p> </li> </ul> <p>If the AMI supports multiple versions of Hadoop (for example, AMI 1.0 supports both Hadoop 0.18 and 0.20) you can use the <a>JobFlowInstancesConfig</a> <code>HadoopVersion</code> parameter to modify the version of Hadoop from the defaults shown above.</p> <p>For details about the AMI versions currently supported by Amazon Elastic MapReduce, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in Elastic MapReduce</a> in the <i>Amazon Elastic MapReduce Developer Guide.</i> </p> <note> <p>Previously, the EMR AMI version API parameter options allowed you to use latest for the latest AMI version rather than specify a numerical value. Some regions no longer support this deprecated option as they only have a newer release label version of EMR, which requires you to specify an EMR release label release (EMR 4.x or later).</p> </note>
+-- * NewSupportedProducts [NewSupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use with the job flow that accepts a user argument list. EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a href="http://docs.aws.amazon.com/http:/docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the cluster using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the cluster using MapR M5 Edition.</p> </li> <li> <p>"mapr" with the user arguments specifying "--edition,m3" or "--edition,m5" - launch the job flow using MapR M3 or M5 Edition respectively.</p> </li> <li> <p>"mapr-m7" - launch the cluster using MapR M7 Edition.</p> </li> <li> <p>"hunk" - launch the cluster with the Hunk Big Data Analtics Platform.</p> </li> <li> <p>"hue"- launch the cluster with Hue installed.</p> </li> <li> <p>"spark" - launch the cluster with Apache Spark installed.</p> </li> <li> <p>"ganglia" - launch the cluster with the Ganglia Monitoring System installed.</p> </li> </ul>
+-- * SupportedProducts [SupportedProductsList] <note> <p>For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and greater, use Applications.</p> </note> <p>A list of strings that indicates third-party software to use. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-supported-products.html">Use Third Party Applications with Amazon EMR</a>. Currently supported values are:</p> <ul> <li> <p>"mapr-m3" - launch the job flow using MapR M3 Edition.</p> </li> <li> <p>"mapr-m5" - launch the job flow using MapR M5 Edition.</p> </li> </ul>
+-- Required key: Name
+-- Required key: Instances
+-- @return RunJobFlowInput structure as a key-value pair table
+function M.RunJobFlowInput(args)
+	assert(args, "You must provdide an argument table when creating RunJobFlowInput")
 	local t = { 
-		["AutoScalingRole"] = _AutoScalingRole,
-		["AdditionalInfo"] = _AdditionalInfo,
-		["SecurityConfiguration"] = _SecurityConfiguration,
-		["Name"] = _Name,
-		["ServiceRole"] = _ServiceRole,
-		["Applications"] = _Applications,
-		["ReleaseLabel"] = _ReleaseLabel,
-		["Tags"] = _Tags,
-		["BootstrapActions"] = _BootstrapActions,
-		["Instances"] = _Instances,
-		["JobFlowRole"] = _JobFlowRole,
-		["Steps"] = _Steps,
-		["ScaleDownBehavior"] = _ScaleDownBehavior,
-		["Configurations"] = _Configurations,
-		["VisibleToAllUsers"] = _VisibleToAllUsers,
-		["LogUri"] = _LogUri,
-		["AmiVersion"] = _AmiVersion,
-		["NewSupportedProducts"] = _NewSupportedProducts,
-		["SupportedProducts"] = _SupportedProducts,
+		["AutoScalingRole"] = args["AutoScalingRole"],
+		["AdditionalInfo"] = args["AdditionalInfo"],
+		["SecurityConfiguration"] = args["SecurityConfiguration"],
+		["Name"] = args["Name"],
+		["ServiceRole"] = args["ServiceRole"],
+		["Applications"] = args["Applications"],
+		["ReleaseLabel"] = args["ReleaseLabel"],
+		["Tags"] = args["Tags"],
+		["BootstrapActions"] = args["BootstrapActions"],
+		["Instances"] = args["Instances"],
+		["JobFlowRole"] = args["JobFlowRole"],
+		["Steps"] = args["Steps"],
+		["ScaleDownBehavior"] = args["ScaleDownBehavior"],
+		["Configurations"] = args["Configurations"],
+		["VisibleToAllUsers"] = args["VisibleToAllUsers"],
+		["LogUri"] = args["LogUri"],
+		["AmiVersion"] = args["AmiVersion"],
+		["NewSupportedProducts"] = args["NewSupportedProducts"],
+		["SupportedProducts"] = args["SupportedProducts"],
 	}
 	asserts.AssertRunJobFlowInput(t)
 	return t
@@ -1359,15 +1479,18 @@ end
 
 --- Create a structure of type SetVisibleToAllUsersInput
 -- <p>The input to the SetVisibleToAllUsers action.</p>
--- @param _JobFlowIds [XmlStringList] <p>Identifiers of the job flows to receive the new visibility setting.</p>
--- @param _VisibleToAllUsers [Boolean] <p>Whether the specified clusters are visible to all IAM users of the AWS account associated with the cluster. If this value is set to True, all IAM users of that AWS account can view and, if they have the proper IAM policy permissions set, manage the clusters. If it is set to False, only the IAM user that created a cluster can view and manage it.</p>
--- Required parameter: JobFlowIds
--- Required parameter: VisibleToAllUsers
-function M.SetVisibleToAllUsersInput(_JobFlowIds, _VisibleToAllUsers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetVisibleToAllUsersInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobFlowIds [XmlStringList] <p>Identifiers of the job flows to receive the new visibility setting.</p>
+-- * VisibleToAllUsers [Boolean] <p>Whether the specified clusters are visible to all IAM users of the AWS account associated with the cluster. If this value is set to True, all IAM users of that AWS account can view and, if they have the proper IAM policy permissions set, manage the clusters. If it is set to False, only the IAM user that created a cluster can view and manage it.</p>
+-- Required key: JobFlowIds
+-- Required key: VisibleToAllUsers
+-- @return SetVisibleToAllUsersInput structure as a key-value pair table
+function M.SetVisibleToAllUsersInput(args)
+	assert(args, "You must provdide an argument table when creating SetVisibleToAllUsersInput")
 	local t = { 
-		["JobFlowIds"] = _JobFlowIds,
-		["VisibleToAllUsers"] = _VisibleToAllUsers,
+		["JobFlowIds"] = args["JobFlowIds"],
+		["VisibleToAllUsers"] = args["VisibleToAllUsers"],
 	}
 	asserts.AssertSetVisibleToAllUsersInput(t)
 	return t
@@ -1390,18 +1513,21 @@ end
 
 --- Create a structure of type HadoopJarStepConfig
 -- <p>A job flow step consisting of a JAR file whose main function will be executed. The main function submits a job for Hadoop to execute and waits for the job to finish or fail.</p>
--- @param _MainClass [XmlString] <p>The name of the main class in the specified Java file. If not specified, the JAR file should specify a Main-Class in its manifest file.</p>
--- @param _Args [XmlStringList] <p>A list of command line arguments passed to the JAR file's main function when executed.</p>
--- @param _Jar [XmlString] <p>A path to a JAR file run during the step.</p>
--- @param _Properties [KeyValueList] <p>A list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
--- Required parameter: Jar
-function M.HadoopJarStepConfig(_MainClass, _Args, _Jar, _Properties, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HadoopJarStepConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MainClass [XmlString] <p>The name of the main class in the specified Java file. If not specified, the JAR file should specify a Main-Class in its manifest file.</p>
+-- * Args [XmlStringList] <p>A list of command line arguments passed to the JAR file's main function when executed.</p>
+-- * Jar [XmlString] <p>A path to a JAR file run during the step.</p>
+-- * Properties [KeyValueList] <p>A list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
+-- Required key: Jar
+-- @return HadoopJarStepConfig structure as a key-value pair table
+function M.HadoopJarStepConfig(args)
+	assert(args, "You must provdide an argument table when creating HadoopJarStepConfig")
 	local t = { 
-		["MainClass"] = _MainClass,
-		["Args"] = _Args,
-		["Jar"] = _Jar,
-		["Properties"] = _Properties,
+		["MainClass"] = args["MainClass"],
+		["Args"] = args["Args"],
+		["Jar"] = args["Jar"],
+		["Properties"] = args["Properties"],
 	}
 	asserts.AssertHadoopJarStepConfig(t)
 	return t
@@ -1422,15 +1548,18 @@ end
 
 --- Create a structure of type InstanceGroupTimeline
 -- <p>The timeline of the instance group lifecycle.</p>
--- @param _ReadyDateTime [Date] <p>The date and time when the instance group became ready to perform tasks.</p>
--- @param _CreationDateTime [Date] <p>The creation date and time of the instance group.</p>
--- @param _EndDateTime [Date] <p>The date and time when the instance group terminated.</p>
-function M.InstanceGroupTimeline(_ReadyDateTime, _CreationDateTime, _EndDateTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupTimeline")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReadyDateTime [Date] <p>The date and time when the instance group became ready to perform tasks.</p>
+-- * CreationDateTime [Date] <p>The creation date and time of the instance group.</p>
+-- * EndDateTime [Date] <p>The date and time when the instance group terminated.</p>
+-- @return InstanceGroupTimeline structure as a key-value pair table
+function M.InstanceGroupTimeline(args)
+	assert(args, "You must provdide an argument table when creating InstanceGroupTimeline")
 	local t = { 
-		["ReadyDateTime"] = _ReadyDateTime,
-		["CreationDateTime"] = _CreationDateTime,
-		["EndDateTime"] = _EndDateTime,
+		["ReadyDateTime"] = args["ReadyDateTime"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["EndDateTime"] = args["EndDateTime"],
 	}
 	asserts.AssertInstanceGroupTimeline(t)
 	return t
@@ -1469,51 +1598,54 @@ end
 
 --- Create a structure of type Cluster
 -- <p>The detailed description of the cluster.</p>
--- @param _Status [ClusterStatus] <p>The current status details about the cluster.</p>
--- @param _Ec2InstanceAttributes [Ec2InstanceAttributes] <p>Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.</p>
--- @param _Name [String] <p>The name of the cluster.</p>
--- @param _ServiceRole [String] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
--- @param _Tags [TagList] <p>A list of tags associated with a cluster.</p>
--- @param _TerminationProtected [Boolean] <p>Indicates whether Amazon EMR will lock the cluster to prevent the EC2 instances from being terminated by an API call or user intervention, or in the event of a cluster error.</p>
--- @param _RunningAmiVersion [String] <p>The AMI version running on this cluster.</p>
--- @param _ReleaseLabel [String] <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
--- @param _NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
--- @param _InstanceCollectionType [InstanceCollectionType] <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note> <p>The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.</p>
--- @param _Applications [ApplicationList] <p>The applications installed on this cluster.</p>
--- @param _MasterPublicDnsName [String] <p>The public DNS name of the master EC2 instance.</p>
--- @param _AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
--- @param _SecurityConfiguration [XmlString] <p>The name of the security configuration applied to the cluster.</p>
--- @param _VisibleToAllUsers [Boolean] <p>Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
--- @param _RequestedAmiVersion [String] <p>The AMI version requested for this cluster.</p>
--- @param _LogUri [String] <p>The path to the Amazon S3 location where logs for this cluster are stored.</p>
--- @param _AutoTerminate [Boolean] <p>Specifies whether the cluster should terminate after completing all steps.</p>
--- @param _Id [ClusterId] <p>The unique identifier for the cluster.</p>
--- @param _ScaleDownBehavior [ScaleDownBehavior] <p>The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
--- @param _Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of Configurations supplied to the EMR cluster.</p>
-function M.Cluster(_Status, _Ec2InstanceAttributes, _Name, _ServiceRole, _Tags, _TerminationProtected, _RunningAmiVersion, _ReleaseLabel, _NormalizedInstanceHours, _InstanceCollectionType, _Applications, _MasterPublicDnsName, _AutoScalingRole, _SecurityConfiguration, _VisibleToAllUsers, _RequestedAmiVersion, _LogUri, _AutoTerminate, _Id, _ScaleDownBehavior, _Configurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Cluster")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ClusterStatus] <p>The current status details about the cluster.</p>
+-- * Ec2InstanceAttributes [Ec2InstanceAttributes] <p>Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.</p>
+-- * Name [String] <p>The name of the cluster.</p>
+-- * ServiceRole [String] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
+-- * Tags [TagList] <p>A list of tags associated with a cluster.</p>
+-- * TerminationProtected [Boolean] <p>Indicates whether Amazon EMR will lock the cluster to prevent the EC2 instances from being terminated by an API call or user intervention, or in the event of a cluster error.</p>
+-- * RunningAmiVersion [String] <p>The AMI version running on this cluster.</p>
+-- * ReleaseLabel [String] <p>The release label for the Amazon EMR release. For Amazon EMR 3.x and 2.x AMIs, use amiVersion instead instead of ReleaseLabel.</p>
+-- * NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
+-- * InstanceCollectionType [InstanceCollectionType] <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note> <p>The instance group configuration of the cluster. A value of <code>INSTANCE_GROUP</code> indicates a uniform instance group configuration. A value of <code>INSTANCE_FLEET</code> indicates an instance fleets configuration.</p>
+-- * Applications [ApplicationList] <p>The applications installed on this cluster.</p>
+-- * MasterPublicDnsName [String] <p>The public DNS name of the master EC2 instance.</p>
+-- * AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate EC2 instances in an instance group.</p>
+-- * SecurityConfiguration [XmlString] <p>The name of the security configuration applied to the cluster.</p>
+-- * VisibleToAllUsers [Boolean] <p>Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and manage the cluster if they have the proper policy permissions set. If this value is <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
+-- * RequestedAmiVersion [String] <p>The AMI version requested for this cluster.</p>
+-- * LogUri [String] <p>The path to the Amazon S3 location where logs for this cluster are stored.</p>
+-- * AutoTerminate [Boolean] <p>Specifies whether the cluster should terminate after completing all steps.</p>
+-- * Id [ClusterId] <p>The unique identifier for the cluster.</p>
+-- * ScaleDownBehavior [ScaleDownBehavior] <p>The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> is available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
+-- * Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of Configurations supplied to the EMR cluster.</p>
+-- @return Cluster structure as a key-value pair table
+function M.Cluster(args)
+	assert(args, "You must provdide an argument table when creating Cluster")
 	local t = { 
-		["Status"] = _Status,
-		["Ec2InstanceAttributes"] = _Ec2InstanceAttributes,
-		["Name"] = _Name,
-		["ServiceRole"] = _ServiceRole,
-		["Tags"] = _Tags,
-		["TerminationProtected"] = _TerminationProtected,
-		["RunningAmiVersion"] = _RunningAmiVersion,
-		["ReleaseLabel"] = _ReleaseLabel,
-		["NormalizedInstanceHours"] = _NormalizedInstanceHours,
-		["InstanceCollectionType"] = _InstanceCollectionType,
-		["Applications"] = _Applications,
-		["MasterPublicDnsName"] = _MasterPublicDnsName,
-		["AutoScalingRole"] = _AutoScalingRole,
-		["SecurityConfiguration"] = _SecurityConfiguration,
-		["VisibleToAllUsers"] = _VisibleToAllUsers,
-		["RequestedAmiVersion"] = _RequestedAmiVersion,
-		["LogUri"] = _LogUri,
-		["AutoTerminate"] = _AutoTerminate,
-		["Id"] = _Id,
-		["ScaleDownBehavior"] = _ScaleDownBehavior,
-		["Configurations"] = _Configurations,
+		["Status"] = args["Status"],
+		["Ec2InstanceAttributes"] = args["Ec2InstanceAttributes"],
+		["Name"] = args["Name"],
+		["ServiceRole"] = args["ServiceRole"],
+		["Tags"] = args["Tags"],
+		["TerminationProtected"] = args["TerminationProtected"],
+		["RunningAmiVersion"] = args["RunningAmiVersion"],
+		["ReleaseLabel"] = args["ReleaseLabel"],
+		["NormalizedInstanceHours"] = args["NormalizedInstanceHours"],
+		["InstanceCollectionType"] = args["InstanceCollectionType"],
+		["Applications"] = args["Applications"],
+		["MasterPublicDnsName"] = args["MasterPublicDnsName"],
+		["AutoScalingRole"] = args["AutoScalingRole"],
+		["SecurityConfiguration"] = args["SecurityConfiguration"],
+		["VisibleToAllUsers"] = args["VisibleToAllUsers"],
+		["RequestedAmiVersion"] = args["RequestedAmiVersion"],
+		["LogUri"] = args["LogUri"],
+		["AutoTerminate"] = args["AutoTerminate"],
+		["Id"] = args["Id"],
+		["ScaleDownBehavior"] = args["ScaleDownBehavior"],
+		["Configurations"] = args["Configurations"],
 	}
 	asserts.AssertCluster(t)
 	return t
@@ -1549,41 +1681,44 @@ end
 
 --- Create a structure of type JobFlowDetail
 -- <p>A description of a cluster (job flow).</p>
--- @param _AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides a way for the automatic scaling feature to get the required permissions it needs to launch and terminate EC2 instances in an instance group.</p>
--- @param _Name [XmlStringMaxLen256] <p>The name of the job flow.</p>
--- @param _ServiceRole [XmlString] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
--- @param _JobFlowId [XmlStringMaxLen256] <p>The job flow identifier.</p>
--- @param _Instances [JobFlowInstancesDetail] <p>Describes the Amazon EC2 instances of the job flow.</p>
--- @param _JobFlowRole [XmlString] <p>The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.</p>
--- @param _Steps [StepDetailList] <p>A list of steps run by the job flow.</p>
--- @param _ScaleDownBehavior [ScaleDownBehavior] <p>The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
--- @param _ExecutionStatusDetail [JobFlowExecutionStatusDetail] <p>Describes the execution status of the job flow.</p>
--- @param _VisibleToAllUsers [Boolean] <p>Specifies whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
--- @param _BootstrapActions [BootstrapActionDetailList] <p>A list of the bootstrap actions run by the job flow.</p>
--- @param _LogUri [XmlString] <p>The location in Amazon S3 where log files for the job are stored.</p>
--- @param _AmiVersion [XmlStringMaxLen256] <p>The version of the AMI used to initialize Amazon EC2 instances in the job flow. For a list of AMI versions currently supported by Amazon EMR, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in EMR</a> in the <i>Amazon EMR Developer Guide.</i> </p>
--- @param _SupportedProducts [SupportedProductsList] <p>A list of strings set by third party software when the job flow is launched. If you are not using third party software to manage the job flow this value is empty.</p>
--- Required parameter: JobFlowId
--- Required parameter: Name
--- Required parameter: ExecutionStatusDetail
--- Required parameter: Instances
-function M.JobFlowDetail(_AutoScalingRole, _Name, _ServiceRole, _JobFlowId, _Instances, _JobFlowRole, _Steps, _ScaleDownBehavior, _ExecutionStatusDetail, _VisibleToAllUsers, _BootstrapActions, _LogUri, _AmiVersion, _SupportedProducts, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobFlowDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AutoScalingRole [XmlString] <p>An IAM role for automatic scaling policies. The default role is <code>EMR_AutoScaling_DefaultRole</code>. The IAM role provides a way for the automatic scaling feature to get the required permissions it needs to launch and terminate EC2 instances in an instance group.</p>
+-- * Name [XmlStringMaxLen256] <p>The name of the job flow.</p>
+-- * ServiceRole [XmlString] <p>The IAM role that will be assumed by the Amazon EMR service to access AWS resources on your behalf.</p>
+-- * JobFlowId [XmlStringMaxLen256] <p>The job flow identifier.</p>
+-- * Instances [JobFlowInstancesDetail] <p>Describes the Amazon EC2 instances of the job flow.</p>
+-- * JobFlowRole [XmlString] <p>The IAM role that was specified when the job flow was launched. The EC2 instances of the job flow assume this role.</p>
+-- * Steps [StepDetailList] <p>A list of steps run by the job flow.</p>
+-- * ScaleDownBehavior [ScaleDownBehavior] <p>The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. <code>TERMINATE_AT_INSTANCE_HOUR</code> indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. <code>TERMINATE_AT_TASK_COMPLETION</code> indicates that Amazon EMR blacklists and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. <code>TERMINATE_AT_TASK_COMPLETION</code> available only in Amazon EMR version 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.</p>
+-- * ExecutionStatusDetail [JobFlowExecutionStatusDetail] <p>Describes the execution status of the job flow.</p>
+-- * VisibleToAllUsers [Boolean] <p>Specifies whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the cluster can view and manage it. This value can be changed using the <a>SetVisibleToAllUsers</a> action.</p>
+-- * BootstrapActions [BootstrapActionDetailList] <p>A list of the bootstrap actions run by the job flow.</p>
+-- * LogUri [XmlString] <p>The location in Amazon S3 where log files for the job are stored.</p>
+-- * AmiVersion [XmlStringMaxLen256] <p>The version of the AMI used to initialize Amazon EC2 instances in the job flow. For a list of AMI versions currently supported by Amazon EMR, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/EnvironmentConfig_AMIVersion.html#ami-versions-supported">AMI Versions Supported in EMR</a> in the <i>Amazon EMR Developer Guide.</i> </p>
+-- * SupportedProducts [SupportedProductsList] <p>A list of strings set by third party software when the job flow is launched. If you are not using third party software to manage the job flow this value is empty.</p>
+-- Required key: JobFlowId
+-- Required key: Name
+-- Required key: ExecutionStatusDetail
+-- Required key: Instances
+-- @return JobFlowDetail structure as a key-value pair table
+function M.JobFlowDetail(args)
+	assert(args, "You must provdide an argument table when creating JobFlowDetail")
 	local t = { 
-		["AutoScalingRole"] = _AutoScalingRole,
-		["Name"] = _Name,
-		["ServiceRole"] = _ServiceRole,
-		["JobFlowId"] = _JobFlowId,
-		["Instances"] = _Instances,
-		["JobFlowRole"] = _JobFlowRole,
-		["Steps"] = _Steps,
-		["ScaleDownBehavior"] = _ScaleDownBehavior,
-		["ExecutionStatusDetail"] = _ExecutionStatusDetail,
-		["VisibleToAllUsers"] = _VisibleToAllUsers,
-		["BootstrapActions"] = _BootstrapActions,
-		["LogUri"] = _LogUri,
-		["AmiVersion"] = _AmiVersion,
-		["SupportedProducts"] = _SupportedProducts,
+		["AutoScalingRole"] = args["AutoScalingRole"],
+		["Name"] = args["Name"],
+		["ServiceRole"] = args["ServiceRole"],
+		["JobFlowId"] = args["JobFlowId"],
+		["Instances"] = args["Instances"],
+		["JobFlowRole"] = args["JobFlowRole"],
+		["Steps"] = args["Steps"],
+		["ScaleDownBehavior"] = args["ScaleDownBehavior"],
+		["ExecutionStatusDetail"] = args["ExecutionStatusDetail"],
+		["VisibleToAllUsers"] = args["VisibleToAllUsers"],
+		["BootstrapActions"] = args["BootstrapActions"],
+		["LogUri"] = args["LogUri"],
+		["AmiVersion"] = args["AmiVersion"],
+		["SupportedProducts"] = args["SupportedProducts"],
 	}
 	asserts.AssertJobFlowDetail(t)
 	return t
@@ -1603,12 +1738,15 @@ end
 
 --- Create a structure of type TerminateJobFlowsInput
 -- <p> Input to the <a>TerminateJobFlows</a> operation. </p>
--- @param _JobFlowIds [XmlStringList] <p>A list of job flows to be shutdown.</p>
--- Required parameter: JobFlowIds
-function M.TerminateJobFlowsInput(_JobFlowIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminateJobFlowsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobFlowIds [XmlStringList] <p>A list of job flows to be shutdown.</p>
+-- Required key: JobFlowIds
+-- @return TerminateJobFlowsInput structure as a key-value pair table
+function M.TerminateJobFlowsInput(args)
+	assert(args, "You must provdide an argument table when creating TerminateJobFlowsInput")
 	local t = { 
-		["JobFlowIds"] = _JobFlowIds,
+		["JobFlowIds"] = args["JobFlowIds"],
 	}
 	asserts.AssertTerminateJobFlowsInput(t)
 	return t
@@ -1628,13 +1766,16 @@ end
 
 --- Create a structure of type AddInstanceFleetOutput
 --  
--- @param _ClusterId [XmlStringMaxLen256] <p>The unique identifier of the cluster.</p>
--- @param _InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
-function M.AddInstanceFleetOutput(_ClusterId, _InstanceFleetId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddInstanceFleetOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterId [XmlStringMaxLen256] <p>The unique identifier of the cluster.</p>
+-- * InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
+-- @return AddInstanceFleetOutput structure as a key-value pair table
+function M.AddInstanceFleetOutput(args)
+	assert(args, "You must provdide an argument table when creating AddInstanceFleetOutput")
 	local t = { 
-		["ClusterId"] = _ClusterId,
-		["InstanceFleetId"] = _InstanceFleetId,
+		["ClusterId"] = args["ClusterId"],
+		["InstanceFleetId"] = args["InstanceFleetId"],
 	}
 	asserts.AssertAddInstanceFleetOutput(t)
 	return t
@@ -1656,15 +1797,18 @@ end
 
 --- Create a structure of type ModifyInstanceFleetInput
 --  
--- @param _InstanceFleet [InstanceFleetModifyConfig] <p>The unique identifier of the instance fleet.</p>
--- @param _ClusterId [ClusterId] <p>The unique identifier of the cluster.</p>
--- Required parameter: ClusterId
--- Required parameter: InstanceFleet
-function M.ModifyInstanceFleetInput(_InstanceFleet, _ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ModifyInstanceFleetInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceFleet [InstanceFleetModifyConfig] <p>The unique identifier of the instance fleet.</p>
+-- * ClusterId [ClusterId] <p>The unique identifier of the cluster.</p>
+-- Required key: ClusterId
+-- Required key: InstanceFleet
+-- @return ModifyInstanceFleetInput structure as a key-value pair table
+function M.ModifyInstanceFleetInput(args)
+	assert(args, "You must provdide an argument table when creating ModifyInstanceFleetInput")
 	local t = { 
-		["InstanceFleet"] = _InstanceFleet,
-		["ClusterId"] = _ClusterId,
+		["InstanceFleet"] = args["InstanceFleet"],
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertModifyInstanceFleetInput(t)
 	return t
@@ -1684,13 +1828,16 @@ end
 
 --- Create a structure of type AddInstanceGroupsOutput
 -- <p>Output from an AddInstanceGroups call.</p>
--- @param _InstanceGroupIds [InstanceGroupIdsList] <p>Instance group IDs of the newly created instance groups.</p>
--- @param _JobFlowId [XmlStringMaxLen256] <p>The job flow ID in which the instance groups are added.</p>
-function M.AddInstanceGroupsOutput(_InstanceGroupIds, _JobFlowId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddInstanceGroupsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceGroupIds [InstanceGroupIdsList] <p>Instance group IDs of the newly created instance groups.</p>
+-- * JobFlowId [XmlStringMaxLen256] <p>The job flow ID in which the instance groups are added.</p>
+-- @return AddInstanceGroupsOutput structure as a key-value pair table
+function M.AddInstanceGroupsOutput(args)
+	assert(args, "You must provdide an argument table when creating AddInstanceGroupsOutput")
 	local t = { 
-		["InstanceGroupIds"] = _InstanceGroupIds,
-		["JobFlowId"] = _JobFlowId,
+		["InstanceGroupIds"] = args["InstanceGroupIds"],
+		["JobFlowId"] = args["JobFlowId"],
 	}
 	asserts.AssertAddInstanceGroupsOutput(t)
 	return t
@@ -1709,11 +1856,14 @@ end
 
 --- Create a structure of type CancelStepsOutput
 -- <p> The output for the <a>CancelSteps</a> operation. </p>
--- @param _CancelStepsInfoList [CancelStepsInfoList] <p>A list of <a>CancelStepsInfo</a>, which shows the status of specified cancel requests for each <code>StepID</code> specified.</p>
-function M.CancelStepsOutput(_CancelStepsInfoList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelStepsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CancelStepsInfoList [CancelStepsInfoList] <p>A list of <a>CancelStepsInfo</a>, which shows the status of specified cancel requests for each <code>StepID</code> specified.</p>
+-- @return CancelStepsOutput structure as a key-value pair table
+function M.CancelStepsOutput(args)
+	assert(args, "You must provdide an argument table when creating CancelStepsOutput")
 	local t = { 
-		["CancelStepsInfoList"] = _CancelStepsInfoList,
+		["CancelStepsInfoList"] = args["CancelStepsInfoList"],
 	}
 	asserts.AssertCancelStepsOutput(t)
 	return t
@@ -1734,15 +1884,18 @@ end
 
 --- Create a structure of type Configuration
 -- <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>An optional configuration specification to be used when provisioning cluster instances, which can include configurations for applications and software bundled with Amazon EMR. A configuration consists of a classification, properties, and optional nested configurations. A classification refers to an application-specific configuration file. Properties are the settings you want to change in that file. For more information, see <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html">Configuring Applications</a>.</p>
--- @param _Properties [StringMap] <p>A set of properties specified within a configuration classification.</p>
--- @param _Classification [String] <p>The classification within a configuration.</p>
--- @param _Configurations [ConfigurationList] <p>A list of additional configurations to apply within a configuration object.</p>
-function M.Configuration(_Properties, _Classification, _Configurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Configuration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Properties [StringMap] <p>A set of properties specified within a configuration classification.</p>
+-- * Classification [String] <p>The classification within a configuration.</p>
+-- * Configurations [ConfigurationList] <p>A list of additional configurations to apply within a configuration object.</p>
+-- @return Configuration structure as a key-value pair table
+function M.Configuration(args)
+	assert(args, "You must provdide an argument table when creating Configuration")
 	local t = { 
-		["Properties"] = _Properties,
-		["Classification"] = _Classification,
-		["Configurations"] = _Configurations,
+		["Properties"] = args["Properties"],
+		["Classification"] = args["Classification"],
+		["Configurations"] = args["Configurations"],
 	}
 	asserts.AssertConfiguration(t)
 	return t
@@ -1762,13 +1915,16 @@ end
 
 --- Create a structure of type SecurityConfigurationSummary
 -- <p>The creation date and time, and name, of a security configuration.</p>
--- @param _CreationDateTime [Date] <p>The date and time the security configuration was created.</p>
--- @param _Name [XmlString] <p>The name of the security configuration.</p>
-function M.SecurityConfigurationSummary(_CreationDateTime, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SecurityConfigurationSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreationDateTime [Date] <p>The date and time the security configuration was created.</p>
+-- * Name [XmlString] <p>The name of the security configuration.</p>
+-- @return SecurityConfigurationSummary structure as a key-value pair table
+function M.SecurityConfigurationSummary(args)
+	assert(args, "You must provdide an argument table when creating SecurityConfigurationSummary")
 	local t = { 
-		["CreationDateTime"] = _CreationDateTime,
-		["Name"] = _Name,
+		["CreationDateTime"] = args["CreationDateTime"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertSecurityConfigurationSummary(t)
 	return t
@@ -1799,31 +1955,34 @@ end
 
 --- Create a structure of type CloudWatchAlarmDefinition
 -- <p>The definition of a CloudWatch metric alarm, which determines when an automatic scaling activity is triggered. When the defined alarm conditions are satisfied, scaling activity begins.</p>
--- @param _EvaluationPeriods [Integer] <p>The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition must exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.</p>
--- @param _Dimensions [MetricDimensionList] <p>A CloudWatch metric dimension.</p>
--- @param _Namespace [String] <p>The namespace for the CloudWatch metric. The default is <code>AWS/ElasticMapReduce</code>.</p>
--- @param _Period [Integer] <p>The period, in seconds, over which the statistic is applied. EMR CloudWatch metrics are emitted every five minutes (300 seconds), so if an EMR CloudWatch metric is specified, specify <code>300</code>.</p>
--- @param _ComparisonOperator [ComparisonOperator] <p>Determines how the metric specified by <code>MetricName</code> is compared to the value specified by <code>Threshold</code>.</p>
--- @param _Statistic [Statistic] <p>The statistic to apply to the metric associated with the alarm. The default is <code>AVERAGE</code>.</p>
--- @param _Threshold [NonNegativeDouble] <p>The value against which the specified statistic is compared.</p>
--- @param _Unit [Unit] <p>The unit of measure associated with the CloudWatch metric being watched. The value specified for <code>Unit</code> must correspond to the units specified in the CloudWatch metric.</p>
--- @param _MetricName [String] <p>The name of the CloudWatch metric that is watched to determine an alarm condition.</p>
--- Required parameter: ComparisonOperator
--- Required parameter: MetricName
--- Required parameter: Period
--- Required parameter: Threshold
-function M.CloudWatchAlarmDefinition(_EvaluationPeriods, _Dimensions, _Namespace, _Period, _ComparisonOperator, _Statistic, _Threshold, _Unit, _MetricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchAlarmDefinition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EvaluationPeriods [Integer] <p>The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition must exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.</p>
+-- * Dimensions [MetricDimensionList] <p>A CloudWatch metric dimension.</p>
+-- * Namespace [String] <p>The namespace for the CloudWatch metric. The default is <code>AWS/ElasticMapReduce</code>.</p>
+-- * Period [Integer] <p>The period, in seconds, over which the statistic is applied. EMR CloudWatch metrics are emitted every five minutes (300 seconds), so if an EMR CloudWatch metric is specified, specify <code>300</code>.</p>
+-- * ComparisonOperator [ComparisonOperator] <p>Determines how the metric specified by <code>MetricName</code> is compared to the value specified by <code>Threshold</code>.</p>
+-- * Statistic [Statistic] <p>The statistic to apply to the metric associated with the alarm. The default is <code>AVERAGE</code>.</p>
+-- * Threshold [NonNegativeDouble] <p>The value against which the specified statistic is compared.</p>
+-- * Unit [Unit] <p>The unit of measure associated with the CloudWatch metric being watched. The value specified for <code>Unit</code> must correspond to the units specified in the CloudWatch metric.</p>
+-- * MetricName [String] <p>The name of the CloudWatch metric that is watched to determine an alarm condition.</p>
+-- Required key: ComparisonOperator
+-- Required key: MetricName
+-- Required key: Period
+-- Required key: Threshold
+-- @return CloudWatchAlarmDefinition structure as a key-value pair table
+function M.CloudWatchAlarmDefinition(args)
+	assert(args, "You must provdide an argument table when creating CloudWatchAlarmDefinition")
 	local t = { 
-		["EvaluationPeriods"] = _EvaluationPeriods,
-		["Dimensions"] = _Dimensions,
-		["Namespace"] = _Namespace,
-		["Period"] = _Period,
-		["ComparisonOperator"] = _ComparisonOperator,
-		["Statistic"] = _Statistic,
-		["Threshold"] = _Threshold,
-		["Unit"] = _Unit,
-		["MetricName"] = _MetricName,
+		["EvaluationPeriods"] = args["EvaluationPeriods"],
+		["Dimensions"] = args["Dimensions"],
+		["Namespace"] = args["Namespace"],
+		["Period"] = args["Period"],
+		["ComparisonOperator"] = args["ComparisonOperator"],
+		["Statistic"] = args["Statistic"],
+		["Threshold"] = args["Threshold"],
+		["Unit"] = args["Unit"],
+		["MetricName"] = args["MetricName"],
 	}
 	asserts.AssertCloudWatchAlarmDefinition(t)
 	return t
@@ -1844,15 +2003,18 @@ end
 
 --- Create a structure of type FailureDetails
 -- <p>The details of the step failure. The service attempts to detect the root cause for many common failures.</p>
--- @param _Reason [String] <p>The reason for the step failure. In the case where the service cannot successfully determine the root cause of the failure, it returns "Unknown Error" as a reason.</p>
--- @param _LogFile [String] <p>The path to the log file where the step failure root cause was originally recorded.</p>
--- @param _Message [String] <p>The descriptive message including the error the EMR service has identified as the cause of step failure. This is text from an error log that describes the root cause of the failure.</p>
-function M.FailureDetails(_Reason, _LogFile, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FailureDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Reason [String] <p>The reason for the step failure. In the case where the service cannot successfully determine the root cause of the failure, it returns "Unknown Error" as a reason.</p>
+-- * LogFile [String] <p>The path to the log file where the step failure root cause was originally recorded.</p>
+-- * Message [String] <p>The descriptive message including the error the EMR service has identified as the cause of step failure. This is text from an error log that describes the root cause of the failure.</p>
+-- @return FailureDetails structure as a key-value pair table
+function M.FailureDetails(args)
+	assert(args, "You must provdide an argument table when creating FailureDetails")
 	local t = { 
-		["Reason"] = _Reason,
-		["LogFile"] = _LogFile,
-		["Message"] = _Message,
+		["Reason"] = args["Reason"],
+		["LogFile"] = args["LogFile"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertFailureDetails(t)
 	return t
@@ -1874,17 +2036,20 @@ end
 
 --- Create a structure of type ListClustersInput
 -- <p>This input determines how the ListClusters action filters the list of clusters that it returns.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _ClusterStates [ClusterStateList] <p>The cluster state filters to apply when listing clusters.</p>
--- @param _CreatedAfter [Date] <p>The creation date and time beginning value filter for listing clusters.</p>
--- @param _CreatedBefore [Date] <p>The creation date and time end value filter for listing clusters.</p>
-function M.ListClustersInput(_Marker, _ClusterStates, _CreatedAfter, _CreatedBefore, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListClustersInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * ClusterStates [ClusterStateList] <p>The cluster state filters to apply when listing clusters.</p>
+-- * CreatedAfter [Date] <p>The creation date and time beginning value filter for listing clusters.</p>
+-- * CreatedBefore [Date] <p>The creation date and time end value filter for listing clusters.</p>
+-- @return ListClustersInput structure as a key-value pair table
+function M.ListClustersInput(args)
+	assert(args, "You must provdide an argument table when creating ListClustersInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["ClusterStates"] = _ClusterStates,
-		["CreatedAfter"] = _CreatedAfter,
-		["CreatedBefore"] = _CreatedBefore,
+		["Marker"] = args["Marker"],
+		["ClusterStates"] = args["ClusterStates"],
+		["CreatedAfter"] = args["CreatedAfter"],
+		["CreatedBefore"] = args["CreatedBefore"],
 	}
 	asserts.AssertListClustersInput(t)
 	return t
@@ -1905,15 +2070,18 @@ end
 
 --- Create a structure of type Command
 -- <p>An entity describing an executable that runs on a cluster.</p>
--- @param _Args [StringList] <p>Arguments for Amazon EMR to pass to the command for execution.</p>
--- @param _Name [String] <p>The name of the command.</p>
--- @param _ScriptPath [String] <p>The Amazon S3 location of the command script.</p>
-function M.Command(_Args, _Name, _ScriptPath, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Command")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Args [StringList] <p>Arguments for Amazon EMR to pass to the command for execution.</p>
+-- * Name [String] <p>The name of the command.</p>
+-- * ScriptPath [String] <p>The Amazon S3 location of the command script.</p>
+-- @return Command structure as a key-value pair table
+function M.Command(args)
+	assert(args, "You must provdide an argument table when creating Command")
 	local t = { 
-		["Args"] = _Args,
-		["Name"] = _Name,
-		["ScriptPath"] = _ScriptPath,
+		["Args"] = args["Args"],
+		["Name"] = args["Name"],
+		["ScriptPath"] = args["ScriptPath"],
 	}
 	asserts.AssertCommand(t)
 	return t
@@ -1931,8 +2099,11 @@ end
 
 --- Create a structure of type DeleteSecurityConfigurationOutput
 --  
-function M.DeleteSecurityConfigurationOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSecurityConfigurationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteSecurityConfigurationOutput structure as a key-value pair table
+function M.DeleteSecurityConfigurationOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteSecurityConfigurationOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteSecurityConfigurationOutput(t)
@@ -1955,15 +2126,18 @@ end
 
 --- Create a structure of type StepDetail
 -- <p>Combines the execution state and configuration of a step.</p>
--- @param _ExecutionStatusDetail [StepExecutionStatusDetail] <p>The description of the step status.</p>
--- @param _StepConfig [StepConfig] <p>The step configuration.</p>
--- Required parameter: StepConfig
--- Required parameter: ExecutionStatusDetail
-function M.StepDetail(_ExecutionStatusDetail, _StepConfig, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StepDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ExecutionStatusDetail [StepExecutionStatusDetail] <p>The description of the step status.</p>
+-- * StepConfig [StepConfig] <p>The step configuration.</p>
+-- Required key: StepConfig
+-- Required key: ExecutionStatusDetail
+-- @return StepDetail structure as a key-value pair table
+function M.StepDetail(args)
+	assert(args, "You must provdide an argument table when creating StepDetail")
 	local t = { 
-		["ExecutionStatusDetail"] = _ExecutionStatusDetail,
-		["StepConfig"] = _StepConfig,
+		["ExecutionStatusDetail"] = args["ExecutionStatusDetail"],
+		["StepConfig"] = args["StepConfig"],
 	}
 	asserts.AssertStepDetail(t)
 	return t
@@ -1985,17 +2159,20 @@ end
 
 --- Create a structure of type HadoopStepConfig
 -- <p>A cluster step consisting of a JAR file whose main function will be executed. The main function submits a job for Hadoop to execute and waits for the job to finish or fail.</p>
--- @param _MainClass [String] <p>The name of the main class in the specified Java file. If not specified, the JAR file should specify a main class in its manifest file.</p>
--- @param _Args [StringList] <p>The list of command line arguments to pass to the JAR file's main function for execution.</p>
--- @param _Jar [String] <p>The path to the JAR file that runs during the step.</p>
--- @param _Properties [StringMap] <p>The list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
-function M.HadoopStepConfig(_MainClass, _Args, _Jar, _Properties, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating HadoopStepConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MainClass [String] <p>The name of the main class in the specified Java file. If not specified, the JAR file should specify a main class in its manifest file.</p>
+-- * Args [StringList] <p>The list of command line arguments to pass to the JAR file's main function for execution.</p>
+-- * Jar [String] <p>The path to the JAR file that runs during the step.</p>
+-- * Properties [StringMap] <p>The list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
+-- @return HadoopStepConfig structure as a key-value pair table
+function M.HadoopStepConfig(args)
+	assert(args, "You must provdide an argument table when creating HadoopStepConfig")
 	local t = { 
-		["MainClass"] = _MainClass,
-		["Args"] = _Args,
-		["Jar"] = _Jar,
-		["Properties"] = _Properties,
+		["MainClass"] = args["MainClass"],
+		["Args"] = args["Args"],
+		["Jar"] = args["Jar"],
+		["Properties"] = args["Properties"],
 	}
 	asserts.AssertHadoopStepConfig(t)
 	return t
@@ -2013,8 +2190,11 @@ end
 
 --- Create a structure of type RemoveTagsOutput
 -- <p>This output indicates the result of removing tags from a resource.</p>
-function M.RemoveTagsOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RemoveTagsOutput structure as a key-value pair table
+function M.RemoveTagsOutput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsOutput")
 	local t = { 
 	}
 	asserts.AssertRemoveTagsOutput(t)
@@ -2035,12 +2215,15 @@ end
 
 --- Create a structure of type ScalingTrigger
 -- <p>The conditions that trigger an automatic scaling activity.</p>
--- @param _CloudWatchAlarmDefinition [CloudWatchAlarmDefinition] <p>The definition of a CloudWatch metric alarm. When the defined alarm conditions are met along with other trigger parameters, scaling activity begins.</p>
--- Required parameter: CloudWatchAlarmDefinition
-function M.ScalingTrigger(_CloudWatchAlarmDefinition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScalingTrigger")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CloudWatchAlarmDefinition [CloudWatchAlarmDefinition] <p>The definition of a CloudWatch metric alarm. When the defined alarm conditions are met along with other trigger parameters, scaling activity begins.</p>
+-- Required key: CloudWatchAlarmDefinition
+-- @return ScalingTrigger structure as a key-value pair table
+function M.ScalingTrigger(args)
+	assert(args, "You must provdide an argument table when creating ScalingTrigger")
 	local t = { 
-		["CloudWatchAlarmDefinition"] = _CloudWatchAlarmDefinition,
+		["CloudWatchAlarmDefinition"] = args["CloudWatchAlarmDefinition"],
 	}
 	asserts.AssertScalingTrigger(t)
 	return t
@@ -2061,15 +2244,18 @@ end
 
 --- Create a structure of type InstanceTimeline
 -- <p>The timeline of the instance lifecycle.</p>
--- @param _ReadyDateTime [Date] <p>The date and time when the instance was ready to perform tasks.</p>
--- @param _CreationDateTime [Date] <p>The creation date and time of the instance.</p>
--- @param _EndDateTime [Date] <p>The date and time when the instance was terminated.</p>
-function M.InstanceTimeline(_ReadyDateTime, _CreationDateTime, _EndDateTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceTimeline")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReadyDateTime [Date] <p>The date and time when the instance was ready to perform tasks.</p>
+-- * CreationDateTime [Date] <p>The creation date and time of the instance.</p>
+-- * EndDateTime [Date] <p>The date and time when the instance was terminated.</p>
+-- @return InstanceTimeline structure as a key-value pair table
+function M.InstanceTimeline(args)
+	assert(args, "You must provdide an argument table when creating InstanceTimeline")
 	local t = { 
-		["ReadyDateTime"] = _ReadyDateTime,
-		["CreationDateTime"] = _CreationDateTime,
-		["EndDateTime"] = _EndDateTime,
+		["ReadyDateTime"] = args["ReadyDateTime"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["EndDateTime"] = args["EndDateTime"],
 	}
 	asserts.AssertInstanceTimeline(t)
 	return t
@@ -2089,12 +2275,15 @@ end
 
 --- Create a structure of type InstanceFleetProvisioningSpecifications
 -- <p>The launch specification for Spot instances in the fleet, which determines the defined duration and provisioning timeout behavior.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _SpotSpecification [SpotProvisioningSpecification] <p>The launch specification for Spot instances in the fleet, which determines the defined duration and provisioning timeout behavior.</p>
--- Required parameter: SpotSpecification
-function M.InstanceFleetProvisioningSpecifications(_SpotSpecification, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetProvisioningSpecifications")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SpotSpecification [SpotProvisioningSpecification] <p>The launch specification for Spot instances in the fleet, which determines the defined duration and provisioning timeout behavior.</p>
+-- Required key: SpotSpecification
+-- @return InstanceFleetProvisioningSpecifications structure as a key-value pair table
+function M.InstanceFleetProvisioningSpecifications(args)
+	assert(args, "You must provdide an argument table when creating InstanceFleetProvisioningSpecifications")
 	local t = { 
-		["SpotSpecification"] = _SpotSpecification,
+		["SpotSpecification"] = args["SpotSpecification"],
 	}
 	asserts.AssertInstanceFleetProvisioningSpecifications(t)
 	return t
@@ -2112,8 +2301,11 @@ end
 
 --- Create a structure of type RemoveAutoScalingPolicyOutput
 --  
-function M.RemoveAutoScalingPolicyOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAutoScalingPolicyOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RemoveAutoScalingPolicyOutput structure as a key-value pair table
+function M.RemoveAutoScalingPolicyOutput(args)
+	assert(args, "You must provdide an argument table when creating RemoveAutoScalingPolicyOutput")
 	local t = { 
 	}
 	asserts.AssertRemoveAutoScalingPolicyOutput(t)
@@ -2136,15 +2328,18 @@ end
 
 --- Create a structure of type ScalingConstraints
 -- <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activities triggered by automatic scaling rules will not cause an instance group to grow above or below these limits.</p>
--- @param _MinCapacity [Integer] <p>The lower boundary of EC2 instances in an instance group below which scaling activities are not allowed to shrink. Scale-in activities will not terminate instances below this boundary.</p>
--- @param _MaxCapacity [Integer] <p>The upper boundary of EC2 instances in an instance group beyond which scaling activities are not allowed to grow. Scale-out activities will not add instances beyond this boundary.</p>
--- Required parameter: MinCapacity
--- Required parameter: MaxCapacity
-function M.ScalingConstraints(_MinCapacity, _MaxCapacity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScalingConstraints")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MinCapacity [Integer] <p>The lower boundary of EC2 instances in an instance group below which scaling activities are not allowed to shrink. Scale-in activities will not terminate instances below this boundary.</p>
+-- * MaxCapacity [Integer] <p>The upper boundary of EC2 instances in an instance group beyond which scaling activities are not allowed to grow. Scale-out activities will not add instances beyond this boundary.</p>
+-- Required key: MinCapacity
+-- Required key: MaxCapacity
+-- @return ScalingConstraints structure as a key-value pair table
+function M.ScalingConstraints(args)
+	assert(args, "You must provdide an argument table when creating ScalingConstraints")
 	local t = { 
-		["MinCapacity"] = _MinCapacity,
-		["MaxCapacity"] = _MaxCapacity,
+		["MinCapacity"] = args["MinCapacity"],
+		["MaxCapacity"] = args["MaxCapacity"],
 	}
 	asserts.AssertScalingConstraints(t)
 	return t
@@ -2169,23 +2364,26 @@ end
 
 --- Create a structure of type InstanceTypeSpecification
 -- <p>The configuration specification for each instance type in an instance fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _EbsBlockDevices [EbsBlockDeviceList] <p>The configuration of Amazon Elastic Block Storage (EBS) attached to each instance as defined by <code>InstanceType</code>.</p>
--- @param _EbsOptimized [BooleanObject] <p>Evaluates to <code>TRUE</code> when the specified <code>InstanceType</code> is EBS-optimized.</p>
--- @param _BidPrice [XmlStringMaxLen256] <p>The bid price for each EC2 Spot instance type as defined by <code>InstanceType</code>. Expressed in USD.</p>
--- @param _BidPriceAsPercentageOfOnDemandPrice [NonNegativeDouble] <p>The bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by <code>InstanceType</code>. Expressed as a number (for example, 20 specifies 20%).</p>
--- @param _WeightedCapacity [WholeNumber] <p>The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in <a>InstanceFleetConfig</a>. Capacity values represent performance characteristics such as vCPUs, memory, or I/O. If not specified, the default value is 1.</p>
--- @param _InstanceType [InstanceType] <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
--- @param _Configurations [ConfigurationList] <p>A configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software bundled with Amazon EMR.</p>
-function M.InstanceTypeSpecification(_EbsBlockDevices, _EbsOptimized, _BidPrice, _BidPriceAsPercentageOfOnDemandPrice, _WeightedCapacity, _InstanceType, _Configurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceTypeSpecification")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EbsBlockDevices [EbsBlockDeviceList] <p>The configuration of Amazon Elastic Block Storage (EBS) attached to each instance as defined by <code>InstanceType</code>.</p>
+-- * EbsOptimized [BooleanObject] <p>Evaluates to <code>TRUE</code> when the specified <code>InstanceType</code> is EBS-optimized.</p>
+-- * BidPrice [XmlStringMaxLen256] <p>The bid price for each EC2 Spot instance type as defined by <code>InstanceType</code>. Expressed in USD.</p>
+-- * BidPriceAsPercentageOfOnDemandPrice [NonNegativeDouble] <p>The bid price, as a percentage of On-Demand price, for each EC2 Spot instance as defined by <code>InstanceType</code>. Expressed as a number (for example, 20 specifies 20%).</p>
+-- * WeightedCapacity [WholeNumber] <p>The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in <a>InstanceFleetConfig</a>. Capacity values represent performance characteristics such as vCPUs, memory, or I/O. If not specified, the default value is 1.</p>
+-- * InstanceType [InstanceType] <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+-- * Configurations [ConfigurationList] <p>A configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software bundled with Amazon EMR.</p>
+-- @return InstanceTypeSpecification structure as a key-value pair table
+function M.InstanceTypeSpecification(args)
+	assert(args, "You must provdide an argument table when creating InstanceTypeSpecification")
 	local t = { 
-		["EbsBlockDevices"] = _EbsBlockDevices,
-		["EbsOptimized"] = _EbsOptimized,
-		["BidPrice"] = _BidPrice,
-		["BidPriceAsPercentageOfOnDemandPrice"] = _BidPriceAsPercentageOfOnDemandPrice,
-		["WeightedCapacity"] = _WeightedCapacity,
-		["InstanceType"] = _InstanceType,
-		["Configurations"] = _Configurations,
+		["EbsBlockDevices"] = args["EbsBlockDevices"],
+		["EbsOptimized"] = args["EbsOptimized"],
+		["BidPrice"] = args["BidPrice"],
+		["BidPriceAsPercentageOfOnDemandPrice"] = args["BidPriceAsPercentageOfOnDemandPrice"],
+		["WeightedCapacity"] = args["WeightedCapacity"],
+		["InstanceType"] = args["InstanceType"],
+		["Configurations"] = args["Configurations"],
 	}
 	asserts.AssertInstanceTypeSpecification(t)
 	return t
@@ -2204,11 +2402,14 @@ end
 
 --- Create a structure of type RunJobFlowOutput
 -- <p> The result of the <a>RunJobFlow</a> operation. </p>
--- @param _JobFlowId [XmlStringMaxLen256] <p>An unique identifier for the job flow.</p>
-function M.RunJobFlowOutput(_JobFlowId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RunJobFlowOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobFlowId [XmlStringMaxLen256] <p>An unique identifier for the job flow.</p>
+-- @return RunJobFlowOutput structure as a key-value pair table
+function M.RunJobFlowOutput(args)
+	assert(args, "You must provdide an argument table when creating RunJobFlowOutput")
 	local t = { 
-		["JobFlowId"] = _JobFlowId,
+		["JobFlowId"] = args["JobFlowId"],
 	}
 	asserts.AssertRunJobFlowOutput(t)
 	return t
@@ -2238,33 +2439,36 @@ end
 
 --- Create a structure of type Instance
 -- <p>Represents an EC2 instance provisioned as part of cluster.</p>
--- @param _Status [InstanceStatus] <p>The current status of the instance.</p>
--- @param _Ec2InstanceId [InstanceId] <p>The unique identifier of the instance in Amazon EC2.</p>
--- @param _InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet to which an EC2 instance belongs.</p>
--- @param _EbsVolumes [EbsVolumeList] <p>The list of EBS volumes that are attached to this instance.</p>
--- @param _PublicDnsName [String] <p>The public DNS name of the instance.</p>
--- @param _InstanceType [InstanceType] <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
--- @param _PrivateDnsName [String] <p>The private DNS name of the instance.</p>
--- @param _Market [MarketType] <p>The instance purchasing option. Valid values are <code>ON_DEMAND</code> or <code>SPOT</code>. </p>
--- @param _PublicIpAddress [String] <p>The public IP address of the instance.</p>
--- @param _InstanceGroupId [String] <p>The identifier of the instance group to which this instance belongs.</p>
--- @param _Id [InstanceId] <p>The unique identifier for the instance in Amazon EMR.</p>
--- @param _PrivateIpAddress [String] <p>The private IP address of the instance.</p>
-function M.Instance(_Status, _Ec2InstanceId, _InstanceFleetId, _EbsVolumes, _PublicDnsName, _InstanceType, _PrivateDnsName, _Market, _PublicIpAddress, _InstanceGroupId, _Id, _PrivateIpAddress, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [InstanceStatus] <p>The current status of the instance.</p>
+-- * Ec2InstanceId [InstanceId] <p>The unique identifier of the instance in Amazon EC2.</p>
+-- * InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet to which an EC2 instance belongs.</p>
+-- * EbsVolumes [EbsVolumeList] <p>The list of EBS volumes that are attached to this instance.</p>
+-- * PublicDnsName [String] <p>The public DNS name of the instance.</p>
+-- * InstanceType [InstanceType] <p>The EC2 instance type, for example <code>m3.xlarge</code>.</p>
+-- * PrivateDnsName [String] <p>The private DNS name of the instance.</p>
+-- * Market [MarketType] <p>The instance purchasing option. Valid values are <code>ON_DEMAND</code> or <code>SPOT</code>. </p>
+-- * PublicIpAddress [String] <p>The public IP address of the instance.</p>
+-- * InstanceGroupId [String] <p>The identifier of the instance group to which this instance belongs.</p>
+-- * Id [InstanceId] <p>The unique identifier for the instance in Amazon EMR.</p>
+-- * PrivateIpAddress [String] <p>The private IP address of the instance.</p>
+-- @return Instance structure as a key-value pair table
+function M.Instance(args)
+	assert(args, "You must provdide an argument table when creating Instance")
 	local t = { 
-		["Status"] = _Status,
-		["Ec2InstanceId"] = _Ec2InstanceId,
-		["InstanceFleetId"] = _InstanceFleetId,
-		["EbsVolumes"] = _EbsVolumes,
-		["PublicDnsName"] = _PublicDnsName,
-		["InstanceType"] = _InstanceType,
-		["PrivateDnsName"] = _PrivateDnsName,
-		["Market"] = _Market,
-		["PublicIpAddress"] = _PublicIpAddress,
-		["InstanceGroupId"] = _InstanceGroupId,
-		["Id"] = _Id,
-		["PrivateIpAddress"] = _PrivateIpAddress,
+		["Status"] = args["Status"],
+		["Ec2InstanceId"] = args["Ec2InstanceId"],
+		["InstanceFleetId"] = args["InstanceFleetId"],
+		["EbsVolumes"] = args["EbsVolumes"],
+		["PublicDnsName"] = args["PublicDnsName"],
+		["InstanceType"] = args["InstanceType"],
+		["PrivateDnsName"] = args["PrivateDnsName"],
+		["Market"] = args["Market"],
+		["PublicIpAddress"] = args["PublicIpAddress"],
+		["InstanceGroupId"] = args["InstanceGroupId"],
+		["Id"] = args["Id"],
+		["PrivateIpAddress"] = args["PrivateIpAddress"],
 	}
 	asserts.AssertInstance(t)
 	return t
@@ -2284,13 +2488,16 @@ end
 
 --- Create a structure of type SupportedProductConfig
 -- <p>The list of supported product configurations which allow user-supplied arguments. EMR accepts these arguments and forwards them to the corresponding installation script as bootstrap action arguments.</p>
--- @param _Args [XmlStringList] <p>The list of user-supplied arguments.</p>
--- @param _Name [XmlStringMaxLen256] <p>The name of the product configuration.</p>
-function M.SupportedProductConfig(_Args, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SupportedProductConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Args [XmlStringList] <p>The list of user-supplied arguments.</p>
+-- * Name [XmlStringMaxLen256] <p>The name of the product configuration.</p>
+-- @return SupportedProductConfig structure as a key-value pair table
+function M.SupportedProductConfig(args)
+	assert(args, "You must provdide an argument table when creating SupportedProductConfig")
 	local t = { 
-		["Args"] = _Args,
-		["Name"] = _Name,
+		["Args"] = args["Args"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertSupportedProductConfig(t)
 	return t
@@ -2311,14 +2518,17 @@ end
 
 --- Create a structure of type ListInstanceFleetsInput
 --  
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _ClusterId [ClusterId] <p>The unique identifier of the cluster.</p>
--- Required parameter: ClusterId
-function M.ListInstanceFleetsInput(_Marker, _ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceFleetsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * ClusterId [ClusterId] <p>The unique identifier of the cluster.</p>
+-- Required key: ClusterId
+-- @return ListInstanceFleetsInput structure as a key-value pair table
+function M.ListInstanceFleetsInput(args)
+	assert(args, "You must provdide an argument table when creating ListInstanceFleetsInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["ClusterId"] = _ClusterId,
+		["Marker"] = args["Marker"],
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertListInstanceFleetsInput(t)
 	return t
@@ -2342,18 +2552,21 @@ end
 
 --- Create a structure of type PutAutoScalingPolicyInput
 --  
--- @param _InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the automatic scaling policy is applied.</p>
--- @param _ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
--- @param _AutoScalingPolicy [AutoScalingPolicy] <p>Specifies the definition of the automatic scaling policy.</p>
--- Required parameter: ClusterId
--- Required parameter: InstanceGroupId
--- Required parameter: AutoScalingPolicy
-function M.PutAutoScalingPolicyInput(_InstanceGroupId, _ClusterId, _AutoScalingPolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutAutoScalingPolicyInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the automatic scaling policy is applied.</p>
+-- * ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
+-- * AutoScalingPolicy [AutoScalingPolicy] <p>Specifies the definition of the automatic scaling policy.</p>
+-- Required key: ClusterId
+-- Required key: InstanceGroupId
+-- Required key: AutoScalingPolicy
+-- @return PutAutoScalingPolicyInput structure as a key-value pair table
+function M.PutAutoScalingPolicyInput(args)
+	assert(args, "You must provdide an argument table when creating PutAutoScalingPolicyInput")
 	local t = { 
-		["InstanceGroupId"] = _InstanceGroupId,
-		["ClusterId"] = _ClusterId,
-		["AutoScalingPolicy"] = _AutoScalingPolicy,
+		["InstanceGroupId"] = args["InstanceGroupId"],
+		["ClusterId"] = args["ClusterId"],
+		["AutoScalingPolicy"] = args["AutoScalingPolicy"],
 	}
 	asserts.AssertPutAutoScalingPolicyInput(t)
 	return t
@@ -2373,13 +2586,16 @@ end
 
 --- Create a structure of type ListClustersOutput
 -- <p>This contains a ClusterSummaryList with the cluster details; for example, the cluster IDs, names, and status.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _Clusters [ClusterSummaryList] <p>The list of clusters for the account based on the given filters.</p>
-function M.ListClustersOutput(_Marker, _Clusters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListClustersOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * Clusters [ClusterSummaryList] <p>The list of clusters for the account based on the given filters.</p>
+-- @return ListClustersOutput structure as a key-value pair table
+function M.ListClustersOutput(args)
+	assert(args, "You must provdide an argument table when creating ListClustersOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["Clusters"] = _Clusters,
+		["Marker"] = args["Marker"],
+		["Clusters"] = args["Clusters"],
 	}
 	asserts.AssertListClustersOutput(t)
 	return t
@@ -2399,13 +2615,16 @@ end
 
 --- Create a structure of type ListInstancesOutput
 -- <p>This output contains the list of instances.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _Instances [InstanceList] <p>The list of instances for the cluster and given filters.</p>
-function M.ListInstancesOutput(_Marker, _Instances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInstancesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * Instances [InstanceList] <p>The list of instances for the cluster and given filters.</p>
+-- @return ListInstancesOutput structure as a key-value pair table
+function M.ListInstancesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListInstancesOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["Instances"] = _Instances,
+		["Marker"] = args["Marker"],
+		["Instances"] = args["Instances"],
 	}
 	asserts.AssertListInstancesOutput(t)
 	return t
@@ -2426,15 +2645,18 @@ end
 
 --- Create a structure of type InstanceResizePolicy
 -- <p>Custom policy for requesting termination protection or termination of specific instances when shrinking an instance group.</p>
--- @param _InstanceTerminationTimeout [Integer] <p>Decommissioning timeout override for the specific list of instances to be terminated.</p>
--- @param _InstancesToProtect [EC2InstanceIdsList] <p>Specific list of instances to be protected when shrinking an instance group.</p>
--- @param _InstancesToTerminate [EC2InstanceIdsList] <p>Specific list of instances to be terminated when shrinking an instance group.</p>
-function M.InstanceResizePolicy(_InstanceTerminationTimeout, _InstancesToProtect, _InstancesToTerminate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceResizePolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceTerminationTimeout [Integer] <p>Decommissioning timeout override for the specific list of instances to be terminated.</p>
+-- * InstancesToProtect [EC2InstanceIdsList] <p>Specific list of instances to be protected when shrinking an instance group.</p>
+-- * InstancesToTerminate [EC2InstanceIdsList] <p>Specific list of instances to be terminated when shrinking an instance group.</p>
+-- @return InstanceResizePolicy structure as a key-value pair table
+function M.InstanceResizePolicy(args)
+	assert(args, "You must provdide an argument table when creating InstanceResizePolicy")
 	local t = { 
-		["InstanceTerminationTimeout"] = _InstanceTerminationTimeout,
-		["InstancesToProtect"] = _InstancesToProtect,
-		["InstancesToTerminate"] = _InstancesToTerminate,
+		["InstanceTerminationTimeout"] = args["InstanceTerminationTimeout"],
+		["InstancesToProtect"] = args["InstancesToProtect"],
+		["InstancesToTerminate"] = args["InstancesToTerminate"],
 	}
 	asserts.AssertInstanceResizePolicy(t)
 	return t
@@ -2473,44 +2695,47 @@ end
 
 --- Create a structure of type InstanceGroupDetail
 -- <p>Detailed information about an instance group.</p>
--- @param _ReadyDateTime [Date] <p>The date/time the instance group was available to the cluster.</p>
--- @param _Name [XmlStringMaxLen256] <p>Friendly name for the instance group.</p>
--- @param _InstanceRole [InstanceRoleType] <p>Instance group role in the cluster</p>
--- @param _EndDateTime [Date] <p>The date/time the instance group was terminated.</p>
--- @param _InstanceRequestCount [Integer] <p>Target number of instances to run in the instance group.</p>
--- @param _State [InstanceGroupState] <p>State of instance group. The following values are deprecated: STARTING, TERMINATED, and FAILED.</p>
--- @param _BidPrice [XmlStringMaxLen256] <p>Bid price for EC2 Instances when launching nodes as Spot Instances, expressed in USD.</p>
--- @param _LastStateChangeReason [XmlString] <p>Details regarding the state of the instance group.</p>
--- @param _StartDateTime [Date] <p>The date/time the instance group was started.</p>
--- @param _InstanceGroupId [XmlStringMaxLen256] <p>Unique identifier for the instance group.</p>
--- @param _InstanceRunningCount [Integer] <p>Actual count of running instances.</p>
--- @param _CreationDateTime [Date] <p>The date/time the instance group was created.</p>
--- @param _InstanceType [InstanceType] <p>EC2 instance type.</p>
--- @param _Market [MarketType] <p>Market type of the EC2 instances used to create a cluster node.</p>
--- Required parameter: Market
--- Required parameter: InstanceRole
--- Required parameter: InstanceType
--- Required parameter: InstanceRequestCount
--- Required parameter: InstanceRunningCount
--- Required parameter: State
--- Required parameter: CreationDateTime
-function M.InstanceGroupDetail(_ReadyDateTime, _Name, _InstanceRole, _EndDateTime, _InstanceRequestCount, _State, _BidPrice, _LastStateChangeReason, _StartDateTime, _InstanceGroupId, _InstanceRunningCount, _CreationDateTime, _InstanceType, _Market, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ReadyDateTime [Date] <p>The date/time the instance group was available to the cluster.</p>
+-- * Name [XmlStringMaxLen256] <p>Friendly name for the instance group.</p>
+-- * InstanceRole [InstanceRoleType] <p>Instance group role in the cluster</p>
+-- * EndDateTime [Date] <p>The date/time the instance group was terminated.</p>
+-- * InstanceRequestCount [Integer] <p>Target number of instances to run in the instance group.</p>
+-- * State [InstanceGroupState] <p>State of instance group. The following values are deprecated: STARTING, TERMINATED, and FAILED.</p>
+-- * BidPrice [XmlStringMaxLen256] <p>Bid price for EC2 Instances when launching nodes as Spot Instances, expressed in USD.</p>
+-- * LastStateChangeReason [XmlString] <p>Details regarding the state of the instance group.</p>
+-- * StartDateTime [Date] <p>The date/time the instance group was started.</p>
+-- * InstanceGroupId [XmlStringMaxLen256] <p>Unique identifier for the instance group.</p>
+-- * InstanceRunningCount [Integer] <p>Actual count of running instances.</p>
+-- * CreationDateTime [Date] <p>The date/time the instance group was created.</p>
+-- * InstanceType [InstanceType] <p>EC2 instance type.</p>
+-- * Market [MarketType] <p>Market type of the EC2 instances used to create a cluster node.</p>
+-- Required key: Market
+-- Required key: InstanceRole
+-- Required key: InstanceType
+-- Required key: InstanceRequestCount
+-- Required key: InstanceRunningCount
+-- Required key: State
+-- Required key: CreationDateTime
+-- @return InstanceGroupDetail structure as a key-value pair table
+function M.InstanceGroupDetail(args)
+	assert(args, "You must provdide an argument table when creating InstanceGroupDetail")
 	local t = { 
-		["ReadyDateTime"] = _ReadyDateTime,
-		["Name"] = _Name,
-		["InstanceRole"] = _InstanceRole,
-		["EndDateTime"] = _EndDateTime,
-		["InstanceRequestCount"] = _InstanceRequestCount,
-		["State"] = _State,
-		["BidPrice"] = _BidPrice,
-		["LastStateChangeReason"] = _LastStateChangeReason,
-		["StartDateTime"] = _StartDateTime,
-		["InstanceGroupId"] = _InstanceGroupId,
-		["InstanceRunningCount"] = _InstanceRunningCount,
-		["CreationDateTime"] = _CreationDateTime,
-		["InstanceType"] = _InstanceType,
-		["Market"] = _Market,
+		["ReadyDateTime"] = args["ReadyDateTime"],
+		["Name"] = args["Name"],
+		["InstanceRole"] = args["InstanceRole"],
+		["EndDateTime"] = args["EndDateTime"],
+		["InstanceRequestCount"] = args["InstanceRequestCount"],
+		["State"] = args["State"],
+		["BidPrice"] = args["BidPrice"],
+		["LastStateChangeReason"] = args["LastStateChangeReason"],
+		["StartDateTime"] = args["StartDateTime"],
+		["InstanceGroupId"] = args["InstanceGroupId"],
+		["InstanceRunningCount"] = args["InstanceRunningCount"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["InstanceType"] = args["InstanceType"],
+		["Market"] = args["Market"],
 	}
 	asserts.AssertInstanceGroupDetail(t)
 	return t
@@ -2530,13 +2755,16 @@ end
 
 --- Create a structure of type EbsVolume
 -- <p>EBS block device that's attached to an EC2 instance.</p>
--- @param _Device [String] <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
--- @param _VolumeId [String] <p>The volume identifier of the EBS volume.</p>
-function M.EbsVolume(_Device, _VolumeId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EbsVolume")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Device [String] <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
+-- * VolumeId [String] <p>The volume identifier of the EBS volume.</p>
+-- @return EbsVolume structure as a key-value pair table
+function M.EbsVolume(args)
+	assert(args, "You must provdide an argument table when creating EbsVolume")
 	local t = { 
-		["Device"] = _Device,
-		["VolumeId"] = _VolumeId,
+		["Device"] = args["Device"],
+		["VolumeId"] = args["VolumeId"],
 	}
 	asserts.AssertEbsVolume(t)
 	return t
@@ -2556,12 +2784,15 @@ end
 
 --- Create a structure of type DescribeSecurityConfigurationInput
 --  
--- @param _Name [XmlString] <p>The name of the security configuration.</p>
--- Required parameter: Name
-function M.DescribeSecurityConfigurationInput(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSecurityConfigurationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [XmlString] <p>The name of the security configuration.</p>
+-- Required key: Name
+-- @return DescribeSecurityConfigurationInput structure as a key-value pair table
+function M.DescribeSecurityConfigurationInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeSecurityConfigurationInput")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDescribeSecurityConfigurationInput(t)
 	return t
@@ -2583,15 +2814,18 @@ end
 
 --- Create a structure of type AddJobFlowStepsInput
 -- <p> The input argument to the <a>AddJobFlowSteps</a> operation. </p>
--- @param _Steps [StepConfigList] <p> A list of <a>StepConfig</a> to be executed by the job flow. </p>
--- @param _JobFlowId [XmlStringMaxLen256] <p>A string that uniquely identifies the job flow. This identifier is returned by <a>RunJobFlow</a> and can also be obtained from <a>ListClusters</a>. </p>
--- Required parameter: JobFlowId
--- Required parameter: Steps
-function M.AddJobFlowStepsInput(_Steps, _JobFlowId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddJobFlowStepsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Steps [StepConfigList] <p> A list of <a>StepConfig</a> to be executed by the job flow. </p>
+-- * JobFlowId [XmlStringMaxLen256] <p>A string that uniquely identifies the job flow. This identifier is returned by <a>RunJobFlow</a> and can also be obtained from <a>ListClusters</a>. </p>
+-- Required key: JobFlowId
+-- Required key: Steps
+-- @return AddJobFlowStepsInput structure as a key-value pair table
+function M.AddJobFlowStepsInput(args)
+	assert(args, "You must provdide an argument table when creating AddJobFlowStepsInput")
 	local t = { 
-		["Steps"] = _Steps,
-		["JobFlowId"] = _JobFlowId,
+		["Steps"] = args["Steps"],
+		["JobFlowId"] = args["JobFlowId"],
 	}
 	asserts.AssertAddJobFlowStepsInput(t)
 	return t
@@ -2612,15 +2846,18 @@ end
 
 --- Create a structure of type InstanceFleetStatus
 -- <p>The status of the instance fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _Timeline [InstanceFleetTimeline] <p>Provides historical timestamps for the instance fleet, including the time of creation, the time it became ready to run jobs, and the time of termination.</p>
--- @param _State [InstanceFleetState] <p>A code representing the instance fleet status.</p>
--- @param _StateChangeReason [InstanceFleetStateChangeReason] <p>Provides status change reason details for the instance fleet.</p>
-function M.InstanceFleetStatus(_Timeline, _State, _StateChangeReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Timeline [InstanceFleetTimeline] <p>Provides historical timestamps for the instance fleet, including the time of creation, the time it became ready to run jobs, and the time of termination.</p>
+-- * State [InstanceFleetState] <p>A code representing the instance fleet status.</p>
+-- * StateChangeReason [InstanceFleetStateChangeReason] <p>Provides status change reason details for the instance fleet.</p>
+-- @return InstanceFleetStatus structure as a key-value pair table
+function M.InstanceFleetStatus(args)
+	assert(args, "You must provdide an argument table when creating InstanceFleetStatus")
 	local t = { 
-		["Timeline"] = _Timeline,
-		["State"] = _State,
-		["StateChangeReason"] = _StateChangeReason,
+		["Timeline"] = args["Timeline"],
+		["State"] = args["State"],
+		["StateChangeReason"] = args["StateChangeReason"],
 	}
 	asserts.AssertInstanceFleetStatus(t)
 	return t
@@ -2640,12 +2877,15 @@ end
 
 --- Create a structure of type DescribeClusterInput
 -- <p>This input determines which cluster to describe.</p>
--- @param _ClusterId [ClusterId] <p>The identifier of the cluster to describe.</p>
--- Required parameter: ClusterId
-function M.DescribeClusterInput(_ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterId [ClusterId] <p>The identifier of the cluster to describe.</p>
+-- Required key: ClusterId
+-- @return DescribeClusterInput structure as a key-value pair table
+function M.DescribeClusterInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeClusterInput")
 	local t = { 
-		["ClusterId"] = _ClusterId,
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertDescribeClusterInput(t)
 	return t
@@ -2665,13 +2905,16 @@ end
 
 --- Create a structure of type ListStepsOutput
 -- <p>This output contains the list of steps returned in reverse order. This means that the last step is the first element in the list.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _Steps [StepSummaryList] <p>The filtered list of steps for the cluster.</p>
-function M.ListStepsOutput(_Marker, _Steps, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListStepsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * Steps [StepSummaryList] <p>The filtered list of steps for the cluster.</p>
+-- @return ListStepsOutput structure as a key-value pair table
+function M.ListStepsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListStepsOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["Steps"] = _Steps,
+		["Marker"] = args["Marker"],
+		["Steps"] = args["Steps"],
 	}
 	asserts.AssertListStepsOutput(t)
 	return t
@@ -2692,14 +2935,17 @@ end
 
 --- Create a structure of type ScriptBootstrapActionConfig
 -- <p>Configuration of the script to run during a bootstrap action.</p>
--- @param _Path [XmlString] <p>Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file system.</p>
--- @param _Args [XmlStringList] <p>A list of command line arguments to pass to the bootstrap action script.</p>
--- Required parameter: Path
-function M.ScriptBootstrapActionConfig(_Path, _Args, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScriptBootstrapActionConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [XmlString] <p>Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file system.</p>
+-- * Args [XmlStringList] <p>A list of command line arguments to pass to the bootstrap action script.</p>
+-- Required key: Path
+-- @return ScriptBootstrapActionConfig structure as a key-value pair table
+function M.ScriptBootstrapActionConfig(args)
+	assert(args, "You must provdide an argument table when creating ScriptBootstrapActionConfig")
 	local t = { 
-		["Path"] = _Path,
-		["Args"] = _Args,
+		["Path"] = args["Path"],
+		["Args"] = args["Args"],
 	}
 	asserts.AssertScriptBootstrapActionConfig(t)
 	return t
@@ -2721,15 +2967,18 @@ end
 
 --- Create a structure of type AddInstanceFleetInput
 --  
--- @param _InstanceFleet [InstanceFleetConfig] <p>Specifies the configuration of the instance fleet.</p>
--- @param _ClusterId [XmlStringMaxLen256] <p>The unique identifier of the cluster.</p>
--- Required parameter: ClusterId
--- Required parameter: InstanceFleet
-function M.AddInstanceFleetInput(_InstanceFleet, _ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddInstanceFleetInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceFleet [InstanceFleetConfig] <p>Specifies the configuration of the instance fleet.</p>
+-- * ClusterId [XmlStringMaxLen256] <p>The unique identifier of the cluster.</p>
+-- Required key: ClusterId
+-- Required key: InstanceFleet
+-- @return AddInstanceFleetInput structure as a key-value pair table
+function M.AddInstanceFleetInput(args)
+	assert(args, "You must provdide an argument table when creating AddInstanceFleetInput")
 	local t = { 
-		["InstanceFleet"] = _InstanceFleet,
-		["ClusterId"] = _ClusterId,
+		["InstanceFleet"] = args["InstanceFleet"],
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertAddInstanceFleetInput(t)
 	return t
@@ -2751,15 +3000,18 @@ end
 
 --- Create a structure of type RemoveAutoScalingPolicyInput
 --  
--- @param _InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the scaling policy is applied.</p>
--- @param _ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
--- Required parameter: ClusterId
--- Required parameter: InstanceGroupId
-function M.RemoveAutoScalingPolicyInput(_InstanceGroupId, _ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveAutoScalingPolicyInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the scaling policy is applied.</p>
+-- * ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
+-- Required key: ClusterId
+-- Required key: InstanceGroupId
+-- @return RemoveAutoScalingPolicyInput structure as a key-value pair table
+function M.RemoveAutoScalingPolicyInput(args)
+	assert(args, "You must provdide an argument table when creating RemoveAutoScalingPolicyInput")
 	local t = { 
-		["InstanceGroupId"] = _InstanceGroupId,
-		["ClusterId"] = _ClusterId,
+		["InstanceGroupId"] = args["InstanceGroupId"],
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertRemoveAutoScalingPolicyInput(t)
 	return t
@@ -2780,15 +3032,18 @@ end
 
 --- Create a structure of type InstanceGroupStatus
 -- <p>The details of the instance group status.</p>
--- @param _Timeline [InstanceGroupTimeline] <p>The timeline of the instance group status over time.</p>
--- @param _State [InstanceGroupState] <p>The current state of the instance group.</p>
--- @param _StateChangeReason [InstanceGroupStateChangeReason] <p>The status change reason details for the instance group.</p>
-function M.InstanceGroupStatus(_Timeline, _State, _StateChangeReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Timeline [InstanceGroupTimeline] <p>The timeline of the instance group status over time.</p>
+-- * State [InstanceGroupState] <p>The current state of the instance group.</p>
+-- * StateChangeReason [InstanceGroupStateChangeReason] <p>The status change reason details for the instance group.</p>
+-- @return InstanceGroupStatus structure as a key-value pair table
+function M.InstanceGroupStatus(args)
+	assert(args, "You must provdide an argument table when creating InstanceGroupStatus")
 	local t = { 
-		["Timeline"] = _Timeline,
-		["State"] = _State,
-		["StateChangeReason"] = _StateChangeReason,
+		["Timeline"] = args["Timeline"],
+		["State"] = args["State"],
+		["StateChangeReason"] = args["StateChangeReason"],
 	}
 	asserts.AssertInstanceGroupStatus(t)
 	return t
@@ -2806,8 +3061,11 @@ end
 
 --- Create a structure of type AddTagsOutput
 -- <p>This output indicates the result of adding tags to a resource.</p>
-function M.AddTagsOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AddTagsOutput structure as a key-value pair table
+function M.AddTagsOutput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsOutput")
 	local t = { 
 	}
 	asserts.AssertAddTagsOutput(t)
@@ -2829,14 +3087,17 @@ end
 
 --- Create a structure of type EbsBlockDeviceConfig
 -- <p>Configuration of requested EBS block device associated with the instance group with count of volumes that will be associated to every instance.</p>
--- @param _VolumeSpecification [VolumeSpecification] <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
--- @param _VolumesPerInstance [Integer] <p>Number of EBS volumes with a specific volume configuration that will be associated with every instance in the instance group</p>
--- Required parameter: VolumeSpecification
-function M.EbsBlockDeviceConfig(_VolumeSpecification, _VolumesPerInstance, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EbsBlockDeviceConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeSpecification [VolumeSpecification] <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
+-- * VolumesPerInstance [Integer] <p>Number of EBS volumes with a specific volume configuration that will be associated with every instance in the instance group</p>
+-- Required key: VolumeSpecification
+-- @return EbsBlockDeviceConfig structure as a key-value pair table
+function M.EbsBlockDeviceConfig(args)
+	assert(args, "You must provdide an argument table when creating EbsBlockDeviceConfig")
 	local t = { 
-		["VolumeSpecification"] = _VolumeSpecification,
-		["VolumesPerInstance"] = _VolumesPerInstance,
+		["VolumeSpecification"] = args["VolumeSpecification"],
+		["VolumesPerInstance"] = args["VolumesPerInstance"],
 	}
 	asserts.AssertEbsBlockDeviceConfig(t)
 	return t
@@ -2858,15 +3119,18 @@ end
 
 --- Create a structure of type SetTerminationProtectionInput
 -- <p> The input argument to the <a>TerminationProtection</a> operation. </p>
--- @param _TerminationProtected [Boolean] <p>A Boolean that indicates whether to protect the cluster and prevent the Amazon EC2 instances in the cluster from shutting down due to API calls, user intervention, or job-flow error.</p>
--- @param _JobFlowIds [XmlStringList] <p> A list of strings that uniquely identify the clusters to protect. This identifier is returned by <a>RunJobFlow</a> and can also be obtained from <a>DescribeJobFlows</a> . </p>
--- Required parameter: JobFlowIds
--- Required parameter: TerminationProtected
-function M.SetTerminationProtectionInput(_TerminationProtected, _JobFlowIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetTerminationProtectionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TerminationProtected [Boolean] <p>A Boolean that indicates whether to protect the cluster and prevent the Amazon EC2 instances in the cluster from shutting down due to API calls, user intervention, or job-flow error.</p>
+-- * JobFlowIds [XmlStringList] <p> A list of strings that uniquely identify the clusters to protect. This identifier is returned by <a>RunJobFlow</a> and can also be obtained from <a>DescribeJobFlows</a> . </p>
+-- Required key: JobFlowIds
+-- Required key: TerminationProtected
+-- @return SetTerminationProtectionInput structure as a key-value pair table
+function M.SetTerminationProtectionInput(args)
+	assert(args, "You must provdide an argument table when creating SetTerminationProtectionInput")
 	local t = { 
-		["TerminationProtected"] = _TerminationProtected,
-		["JobFlowIds"] = _JobFlowIds,
+		["TerminationProtected"] = args["TerminationProtected"],
+		["JobFlowIds"] = args["JobFlowIds"],
 	}
 	asserts.AssertSetTerminationProtectionInput(t)
 	return t
@@ -2891,22 +3155,25 @@ end
 
 --- Create a structure of type InstanceFleetConfig
 -- <p>The configuration that defines an instance fleet.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _Name [XmlStringMaxLen256] <p>The friendly name of the instance fleet.</p>
--- @param _InstanceFleetType [InstanceFleetType] <p>The node type that the instance fleet hosts. Valid values are MASTER,CORE,and TASK.</p>
--- @param _LaunchSpecifications [InstanceFleetProvisioningSpecifications] <p>The launch specification for the instance fleet.</p>
--- @param _TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When a Spot instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.</p> <note> <p>If not specified or set to 0, only On-Demand instances are provisioned for the instance fleet. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
--- @param _InstanceTypeConfigs [InstanceTypeConfigList] <p>The instance type configurations that define the EC2 instances in the instance fleet.</p>
--- @param _TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When an On-Demand instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.</p> <note> <p>If not specified or set to 0, only Spot instances are provisioned for the instance fleet using <code>TargetSpotCapacity</code>. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
--- Required parameter: InstanceFleetType
-function M.InstanceFleetConfig(_Name, _InstanceFleetType, _LaunchSpecifications, _TargetSpotCapacity, _InstanceTypeConfigs, _TargetOnDemandCapacity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceFleetConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [XmlStringMaxLen256] <p>The friendly name of the instance fleet.</p>
+-- * InstanceFleetType [InstanceFleetType] <p>The node type that the instance fleet hosts. Valid values are MASTER,CORE,and TASK.</p>
+-- * LaunchSpecifications [InstanceFleetProvisioningSpecifications] <p>The launch specification for the instance fleet.</p>
+-- * TargetSpotCapacity [WholeNumber] <p>The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision. When the instance fleet launches, Amazon EMR tries to provision Spot instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When a Spot instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.</p> <note> <p>If not specified or set to 0, only On-Demand instances are provisioned for the instance fleet. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
+-- * InstanceTypeConfigs [InstanceTypeConfigList] <p>The instance type configurations that define the EC2 instances in the instance fleet.</p>
+-- * TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When an On-Demand instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units.</p> <note> <p>If not specified or set to 0, only Spot instances are provisioned for the instance fleet using <code>TargetSpotCapacity</code>. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
+-- Required key: InstanceFleetType
+-- @return InstanceFleetConfig structure as a key-value pair table
+function M.InstanceFleetConfig(args)
+	assert(args, "You must provdide an argument table when creating InstanceFleetConfig")
 	local t = { 
-		["Name"] = _Name,
-		["InstanceFleetType"] = _InstanceFleetType,
-		["LaunchSpecifications"] = _LaunchSpecifications,
-		["TargetSpotCapacity"] = _TargetSpotCapacity,
-		["InstanceTypeConfigs"] = _InstanceTypeConfigs,
-		["TargetOnDemandCapacity"] = _TargetOnDemandCapacity,
+		["Name"] = args["Name"],
+		["InstanceFleetType"] = args["InstanceFleetType"],
+		["LaunchSpecifications"] = args["LaunchSpecifications"],
+		["TargetSpotCapacity"] = args["TargetSpotCapacity"],
+		["InstanceTypeConfigs"] = args["InstanceTypeConfigs"],
+		["TargetOnDemandCapacity"] = args["TargetOnDemandCapacity"],
 	}
 	asserts.AssertInstanceFleetConfig(t)
 	return t
@@ -2926,13 +3193,16 @@ end
 
 --- Create a structure of type MetricDimension
 -- <p>A CloudWatch dimension, which is specified using a <code>Key</code> (known as a <code>Name</code> in CloudWatch), <code>Value</code> pair. By default, Amazon EMR uses one dimension whose <code>Key</code> is <code>JobFlowID</code> and <code>Value</code> is a variable representing the cluster ID, which is <code>${emr.clusterId}</code>. This enables the rule to bootstrap when the cluster ID becomes available.</p>
--- @param _Value [String] <p>The dimension value.</p>
--- @param _Key [String] <p>The dimension name.</p>
-function M.MetricDimension(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MetricDimension")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [String] <p>The dimension value.</p>
+-- * Key [String] <p>The dimension name.</p>
+-- @return MetricDimension structure as a key-value pair table
+function M.MetricDimension(args)
+	assert(args, "You must provdide an argument table when creating MetricDimension")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertMetricDimension(t)
 	return t
@@ -2951,11 +3221,14 @@ end
 
 --- Create a structure of type AddJobFlowStepsOutput
 -- <p> The output for the <a>AddJobFlowSteps</a> operation. </p>
--- @param _StepIds [StepIdsList] <p>The identifiers of the list of steps added to the job flow.</p>
-function M.AddJobFlowStepsOutput(_StepIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddJobFlowStepsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StepIds [StepIdsList] <p>The identifiers of the list of steps added to the job flow.</p>
+-- @return AddJobFlowStepsOutput structure as a key-value pair table
+function M.AddJobFlowStepsOutput(args)
+	assert(args, "You must provdide an argument table when creating AddJobFlowStepsOutput")
 	local t = { 
-		["StepIds"] = _StepIds,
+		["StepIds"] = args["StepIds"],
 	}
 	asserts.AssertAddJobFlowStepsOutput(t)
 	return t
@@ -2987,37 +3260,40 @@ end
 
 --- Create a structure of type InstanceGroup
 -- <p>This entity represents an instance group, which is a group of instances that have common purpose. For example, CORE instance group is used for HDFS.</p>
--- @param _RequestedInstanceCount [Integer] <p>The target number of instances for the instance group.</p>
--- @param _Status [InstanceGroupStatus] <p>The current status of the instance group.</p>
--- @param _Name [String] <p>The name of the instance group.</p>
--- @param _InstanceGroupType [InstanceGroupType] <p>The type of the instance group. Valid values are MASTER, CORE or TASK.</p>
--- @param _EbsBlockDevices [EbsBlockDeviceList] <p>The EBS block devices that are mapped to this instance group.</p>
--- @param _AutoScalingPolicy [AutoScalingPolicyDescription] <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See PutAutoScalingPolicy.</p>
--- @param _ShrinkPolicy [ShrinkPolicy] <p>Policy for customizing shrink operations.</p>
--- @param _Id [InstanceGroupId] <p>The identifier of the instance group.</p>
--- @param _EbsOptimized [BooleanObject] <p>If the instance group is EBS-optimized. An Amazon EBS-optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O.</p>
--- @param _BidPrice [String] <p>The bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
--- @param _Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
--- @param _InstanceType [InstanceType] <p>The EC2 instance type for all instances in the instance group.</p>
--- @param _Market [MarketType] <p>The marketplace to provision instances for this group. Valid values are ON_DEMAND or SPOT.</p>
--- @param _RunningInstanceCount [Integer] <p>The number of instances currently running in this instance group.</p>
-function M.InstanceGroup(_RequestedInstanceCount, _Status, _Name, _InstanceGroupType, _EbsBlockDevices, _AutoScalingPolicy, _ShrinkPolicy, _Id, _EbsOptimized, _BidPrice, _Configurations, _InstanceType, _Market, _RunningInstanceCount, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RequestedInstanceCount [Integer] <p>The target number of instances for the instance group.</p>
+-- * Status [InstanceGroupStatus] <p>The current status of the instance group.</p>
+-- * Name [String] <p>The name of the instance group.</p>
+-- * InstanceGroupType [InstanceGroupType] <p>The type of the instance group. Valid values are MASTER, CORE or TASK.</p>
+-- * EbsBlockDevices [EbsBlockDeviceList] <p>The EBS block devices that are mapped to this instance group.</p>
+-- * AutoScalingPolicy [AutoScalingPolicyDescription] <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See PutAutoScalingPolicy.</p>
+-- * ShrinkPolicy [ShrinkPolicy] <p>Policy for customizing shrink operations.</p>
+-- * Id [InstanceGroupId] <p>The identifier of the instance group.</p>
+-- * EbsOptimized [BooleanObject] <p>If the instance group is EBS-optimized. An Amazon EBS-optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O.</p>
+-- * BidPrice [String] <p>The bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.</p>
+-- * Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).</p>
+-- * InstanceType [InstanceType] <p>The EC2 instance type for all instances in the instance group.</p>
+-- * Market [MarketType] <p>The marketplace to provision instances for this group. Valid values are ON_DEMAND or SPOT.</p>
+-- * RunningInstanceCount [Integer] <p>The number of instances currently running in this instance group.</p>
+-- @return InstanceGroup structure as a key-value pair table
+function M.InstanceGroup(args)
+	assert(args, "You must provdide an argument table when creating InstanceGroup")
 	local t = { 
-		["RequestedInstanceCount"] = _RequestedInstanceCount,
-		["Status"] = _Status,
-		["Name"] = _Name,
-		["InstanceGroupType"] = _InstanceGroupType,
-		["EbsBlockDevices"] = _EbsBlockDevices,
-		["AutoScalingPolicy"] = _AutoScalingPolicy,
-		["ShrinkPolicy"] = _ShrinkPolicy,
-		["Id"] = _Id,
-		["EbsOptimized"] = _EbsOptimized,
-		["BidPrice"] = _BidPrice,
-		["Configurations"] = _Configurations,
-		["InstanceType"] = _InstanceType,
-		["Market"] = _Market,
-		["RunningInstanceCount"] = _RunningInstanceCount,
+		["RequestedInstanceCount"] = args["RequestedInstanceCount"],
+		["Status"] = args["Status"],
+		["Name"] = args["Name"],
+		["InstanceGroupType"] = args["InstanceGroupType"],
+		["EbsBlockDevices"] = args["EbsBlockDevices"],
+		["AutoScalingPolicy"] = args["AutoScalingPolicy"],
+		["ShrinkPolicy"] = args["ShrinkPolicy"],
+		["Id"] = args["Id"],
+		["EbsOptimized"] = args["EbsOptimized"],
+		["BidPrice"] = args["BidPrice"],
+		["Configurations"] = args["Configurations"],
+		["InstanceType"] = args["InstanceType"],
+		["Market"] = args["Market"],
+		["RunningInstanceCount"] = args["RunningInstanceCount"],
 	}
 	asserts.AssertInstanceGroup(t)
 	return t
@@ -3039,15 +3315,18 @@ end
 
 --- Create a structure of type CreateSecurityConfigurationInput
 --  
--- @param _SecurityConfiguration [String] <p>The security configuration details in JSON format.</p>
--- @param _Name [XmlString] <p>The name of the security configuration.</p>
--- Required parameter: Name
--- Required parameter: SecurityConfiguration
-function M.CreateSecurityConfigurationInput(_SecurityConfiguration, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSecurityConfigurationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SecurityConfiguration [String] <p>The security configuration details in JSON format.</p>
+-- * Name [XmlString] <p>The name of the security configuration.</p>
+-- Required key: Name
+-- Required key: SecurityConfiguration
+-- @return CreateSecurityConfigurationInput structure as a key-value pair table
+function M.CreateSecurityConfigurationInput(args)
+	assert(args, "You must provdide an argument table when creating CreateSecurityConfigurationInput")
 	local t = { 
-		["SecurityConfiguration"] = _SecurityConfiguration,
-		["Name"] = _Name,
+		["SecurityConfiguration"] = args["SecurityConfiguration"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateSecurityConfigurationInput(t)
 	return t
@@ -3073,24 +3352,27 @@ end
 
 --- Create a structure of type ListInstancesInput
 -- <p>This input determines which instances to list.</p>
--- @param _InstanceGroupTypes [InstanceGroupTypeList] <p>The type of instance group for which to list the instances.</p>
--- @param _InstanceFleetType [InstanceFleetType] <p>The node type of the instance fleet. For example MASTER, CORE, or TASK.</p>
--- @param _InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
--- @param _ClusterId [ClusterId] <p>The identifier of the cluster for which to list the instances.</p>
--- @param _InstanceStates [InstanceStateList] <p>A list of instance states that will filter the instances returned with this request.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _InstanceGroupId [InstanceGroupId] <p>The identifier of the instance group for which to list the instances.</p>
--- Required parameter: ClusterId
-function M.ListInstancesInput(_InstanceGroupTypes, _InstanceFleetType, _InstanceFleetId, _ClusterId, _InstanceStates, _Marker, _InstanceGroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInstancesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceGroupTypes [InstanceGroupTypeList] <p>The type of instance group for which to list the instances.</p>
+-- * InstanceFleetType [InstanceFleetType] <p>The node type of the instance fleet. For example MASTER, CORE, or TASK.</p>
+-- * InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
+-- * ClusterId [ClusterId] <p>The identifier of the cluster for which to list the instances.</p>
+-- * InstanceStates [InstanceStateList] <p>A list of instance states that will filter the instances returned with this request.</p>
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * InstanceGroupId [InstanceGroupId] <p>The identifier of the instance group for which to list the instances.</p>
+-- Required key: ClusterId
+-- @return ListInstancesInput structure as a key-value pair table
+function M.ListInstancesInput(args)
+	assert(args, "You must provdide an argument table when creating ListInstancesInput")
 	local t = { 
-		["InstanceGroupTypes"] = _InstanceGroupTypes,
-		["InstanceFleetType"] = _InstanceFleetType,
-		["InstanceFleetId"] = _InstanceFleetId,
-		["ClusterId"] = _ClusterId,
-		["InstanceStates"] = _InstanceStates,
-		["Marker"] = _Marker,
-		["InstanceGroupId"] = _InstanceGroupId,
+		["InstanceGroupTypes"] = args["InstanceGroupTypes"],
+		["InstanceFleetType"] = args["InstanceFleetType"],
+		["InstanceFleetId"] = args["InstanceFleetId"],
+		["ClusterId"] = args["ClusterId"],
+		["InstanceStates"] = args["InstanceStates"],
+		["Marker"] = args["Marker"],
+		["InstanceGroupId"] = args["InstanceGroupId"],
 	}
 	asserts.AssertListInstancesInput(t)
 	return t
@@ -3112,17 +3394,20 @@ end
 
 --- Create a structure of type StepStatus
 -- <p>The execution status details of the cluster step.</p>
--- @param _Timeline [StepTimeline] <p>The timeline of the cluster step status over time.</p>
--- @param _State [StepState] <p>The execution state of the cluster step.</p>
--- @param _StateChangeReason [StepStateChangeReason] <p>The reason for the step execution status change.</p>
--- @param _FailureDetails [FailureDetails] <p>The details for the step failure including reason, message, and log file path where the root cause was identified.</p>
-function M.StepStatus(_Timeline, _State, _StateChangeReason, _FailureDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StepStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Timeline [StepTimeline] <p>The timeline of the cluster step status over time.</p>
+-- * State [StepState] <p>The execution state of the cluster step.</p>
+-- * StateChangeReason [StepStateChangeReason] <p>The reason for the step execution status change.</p>
+-- * FailureDetails [FailureDetails] <p>The details for the step failure including reason, message, and log file path where the root cause was identified.</p>
+-- @return StepStatus structure as a key-value pair table
+function M.StepStatus(args)
+	assert(args, "You must provdide an argument table when creating StepStatus")
 	local t = { 
-		["Timeline"] = _Timeline,
-		["State"] = _State,
-		["StateChangeReason"] = _StateChangeReason,
-		["FailureDetails"] = _FailureDetails,
+		["Timeline"] = args["Timeline"],
+		["State"] = args["State"],
+		["StateChangeReason"] = args["StateChangeReason"],
+		["FailureDetails"] = args["FailureDetails"],
 	}
 	asserts.AssertStepStatus(t)
 	return t
@@ -3145,17 +3430,20 @@ end
 
 --- Create a structure of type SpotProvisioningSpecification
 -- <p>The launch specification for Spot instances in the instance fleet, which determines the defined duration and provisioning timeout behavior.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
--- @param _TimeoutDurationMinutes [WholeNumber] <p>The spot provisioning timeout period in minutes. If Spot instances are not provisioned within this time period, the <code>TimeOutAction</code> is taken. Minimum value is 5 and maximum value is 1440. The timeout applies only during initial provisioning, when the cluster is first created.</p>
--- @param _BlockDurationMinutes [WholeNumber] <p>The defined duration for Spot instances (also known as Spot blocks) in minutes. When specified, the Spot instance does not terminate before the defined duration expires, and defined duration pricing for Spot instances applies. Valid values are 60, 120, 180, 240, 300, or 360. The duration period starts as soon as a Spot instance receives its instance ID. At the end of the duration, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates. </p>
--- @param _TimeoutAction [SpotProvisioningTimeoutAction] <p>The action to take when <code>TargetSpotCapacity</code> has not been fulfilled when the <code>TimeoutDurationMinutes</code> has expired. Spot instances are not uprovisioned within the Spot provisioining timeout. Valid values are <code>TERMINATE_CLUSTER</code> and <code>SWITCH_TO_ON_DEMAND</code> to fulfill the remaining capacity.</p>
--- Required parameter: TimeoutDurationMinutes
--- Required parameter: TimeoutAction
-function M.SpotProvisioningSpecification(_TimeoutDurationMinutes, _BlockDurationMinutes, _TimeoutAction, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SpotProvisioningSpecification")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TimeoutDurationMinutes [WholeNumber] <p>The spot provisioning timeout period in minutes. If Spot instances are not provisioned within this time period, the <code>TimeOutAction</code> is taken. Minimum value is 5 and maximum value is 1440. The timeout applies only during initial provisioning, when the cluster is first created.</p>
+-- * BlockDurationMinutes [WholeNumber] <p>The defined duration for Spot instances (also known as Spot blocks) in minutes. When specified, the Spot instance does not terminate before the defined duration expires, and defined duration pricing for Spot instances applies. Valid values are 60, 120, 180, 240, 300, or 360. The duration period starts as soon as a Spot instance receives its instance ID. At the end of the duration, Amazon EC2 marks the Spot instance for termination and provides a Spot instance termination notice, which gives the instance a two-minute warning before it terminates. </p>
+-- * TimeoutAction [SpotProvisioningTimeoutAction] <p>The action to take when <code>TargetSpotCapacity</code> has not been fulfilled when the <code>TimeoutDurationMinutes</code> has expired. Spot instances are not uprovisioned within the Spot provisioining timeout. Valid values are <code>TERMINATE_CLUSTER</code> and <code>SWITCH_TO_ON_DEMAND</code> to fulfill the remaining capacity.</p>
+-- Required key: TimeoutDurationMinutes
+-- Required key: TimeoutAction
+-- @return SpotProvisioningSpecification structure as a key-value pair table
+function M.SpotProvisioningSpecification(args)
+	assert(args, "You must provdide an argument table when creating SpotProvisioningSpecification")
 	local t = { 
-		["TimeoutDurationMinutes"] = _TimeoutDurationMinutes,
-		["BlockDurationMinutes"] = _BlockDurationMinutes,
-		["TimeoutAction"] = _TimeoutAction,
+		["TimeoutDurationMinutes"] = args["TimeoutDurationMinutes"],
+		["BlockDurationMinutes"] = args["BlockDurationMinutes"],
+		["TimeoutAction"] = args["TimeoutAction"],
 	}
 	asserts.AssertSpotProvisioningSpecification(t)
 	return t
@@ -3176,15 +3464,18 @@ end
 
 --- Create a structure of type ClusterStatus
 -- <p>The detailed status of the cluster.</p>
--- @param _Timeline [ClusterTimeline] <p>A timeline that represents the status of a cluster over the lifetime of the cluster.</p>
--- @param _State [ClusterState] <p>The current state of the cluster.</p>
--- @param _StateChangeReason [ClusterStateChangeReason] <p>The reason for the cluster status change.</p>
-function M.ClusterStatus(_Timeline, _State, _StateChangeReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Timeline [ClusterTimeline] <p>A timeline that represents the status of a cluster over the lifetime of the cluster.</p>
+-- * State [ClusterState] <p>The current state of the cluster.</p>
+-- * StateChangeReason [ClusterStateChangeReason] <p>The reason for the cluster status change.</p>
+-- @return ClusterStatus structure as a key-value pair table
+function M.ClusterStatus(args)
+	assert(args, "You must provdide an argument table when creating ClusterStatus")
 	local t = { 
-		["Timeline"] = _Timeline,
-		["State"] = _State,
-		["StateChangeReason"] = _StateChangeReason,
+		["Timeline"] = args["Timeline"],
+		["State"] = args["State"],
+		["StateChangeReason"] = args["StateChangeReason"],
 	}
 	asserts.AssertClusterStatus(t)
 	return t
@@ -3209,20 +3500,23 @@ end
 
 --- Create a structure of type ScalingRule
 -- <p>A scale-in or scale-out rule that defines scaling activity, including the CloudWatch metric alarm that triggers activity, how EC2 instances are added or removed, and the periodicity of adjustments. The automatic scaling policy for an instance group can comprise one or more automatic scaling rules.</p>
--- @param _Action [ScalingAction] <p>The conditions that trigger an automatic scaling activity.</p>
--- @param _Trigger [ScalingTrigger] <p>The CloudWatch alarm definition that determines when automatic scaling activity is triggered.</p>
--- @param _Name [String] <p>The name used to identify an automatic scaling rule. Rule names must be unique within a scaling policy.</p>
--- @param _Description [String] <p>A friendly, more verbose description of the automatic scaling rule.</p>
--- Required parameter: Name
--- Required parameter: Action
--- Required parameter: Trigger
-function M.ScalingRule(_Action, _Trigger, _Name, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScalingRule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Action [ScalingAction] <p>The conditions that trigger an automatic scaling activity.</p>
+-- * Trigger [ScalingTrigger] <p>The CloudWatch alarm definition that determines when automatic scaling activity is triggered.</p>
+-- * Name [String] <p>The name used to identify an automatic scaling rule. Rule names must be unique within a scaling policy.</p>
+-- * Description [String] <p>A friendly, more verbose description of the automatic scaling rule.</p>
+-- Required key: Name
+-- Required key: Action
+-- Required key: Trigger
+-- @return ScalingRule structure as a key-value pair table
+function M.ScalingRule(args)
+	assert(args, "You must provdide an argument table when creating ScalingRule")
 	local t = { 
-		["Action"] = _Action,
-		["Trigger"] = _Trigger,
-		["Name"] = _Name,
-		["Description"] = _Description,
+		["Action"] = args["Action"],
+		["Trigger"] = args["Trigger"],
+		["Name"] = args["Name"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertScalingRule(t)
 	return t
@@ -3247,21 +3541,24 @@ end
 
 --- Create a structure of type StepExecutionStatusDetail
 -- <p>The execution state of a step.</p>
--- @param _State [StepExecutionState] <p>The state of the step.</p>
--- @param _EndDateTime [Date] <p>The completion date and time of the step.</p>
--- @param _CreationDateTime [Date] <p>The creation date and time of the step.</p>
--- @param _LastStateChangeReason [XmlString] <p>A description of the step's current state.</p>
--- @param _StartDateTime [Date] <p>The start date and time of the step.</p>
--- Required parameter: State
--- Required parameter: CreationDateTime
-function M.StepExecutionStatusDetail(_State, _EndDateTime, _CreationDateTime, _LastStateChangeReason, _StartDateTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StepExecutionStatusDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * State [StepExecutionState] <p>The state of the step.</p>
+-- * EndDateTime [Date] <p>The completion date and time of the step.</p>
+-- * CreationDateTime [Date] <p>The creation date and time of the step.</p>
+-- * LastStateChangeReason [XmlString] <p>A description of the step's current state.</p>
+-- * StartDateTime [Date] <p>The start date and time of the step.</p>
+-- Required key: State
+-- Required key: CreationDateTime
+-- @return StepExecutionStatusDetail structure as a key-value pair table
+function M.StepExecutionStatusDetail(args)
+	assert(args, "You must provdide an argument table when creating StepExecutionStatusDetail")
 	local t = { 
-		["State"] = _State,
-		["EndDateTime"] = _EndDateTime,
-		["CreationDateTime"] = _CreationDateTime,
-		["LastStateChangeReason"] = _LastStateChangeReason,
-		["StartDateTime"] = _StartDateTime,
+		["State"] = args["State"],
+		["EndDateTime"] = args["EndDateTime"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["LastStateChangeReason"] = args["LastStateChangeReason"],
+		["StartDateTime"] = args["StartDateTime"],
 	}
 	asserts.AssertStepExecutionStatusDetail(t)
 	return t
@@ -3283,16 +3580,19 @@ end
 
 --- Create a structure of type SimpleScalingPolicyConfiguration
 -- <p>An automatic scaling configuration, which describes how the policy adds or removes instances, the cooldown period, and the number of EC2 instances that will be added each time the CloudWatch metric alarm condition is satisfied.</p>
--- @param _CoolDown [Integer] <p>The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. The default value is 0.</p>
--- @param _ScalingAdjustment [Integer] <p>The amount by which to scale in or scale out, based on the specified <code>AdjustmentType</code>. A positive value adds to the instance group's EC2 instance count while a negative number removes instances. If <code>AdjustmentType</code> is set to <code>EXACT_CAPACITY</code>, the number should only be a positive integer. If <code>AdjustmentType</code> is set to <code>PERCENT_CHANGE_IN_CAPACITY</code>, the value should express the percentage as a decimal. For example, -0.20 indicates a decrease in 20% increments of cluster capacity.</p>
--- @param _AdjustmentType [AdjustmentType] <p>The way in which EC2 instances are added (if <code>ScalingAdjustment</code> is a positive number) or terminated (if <code>ScalingAdjustment</code> is a negative number) each time the scaling activity is triggered. <code>CHANGE_IN_CAPACITY</code> is the default. <code>CHANGE_IN_CAPACITY</code> indicates that the EC2 instance count increments or decrements by <code>ScalingAdjustment</code>, which should be expressed as an integer. <code>PERCENT_CHANGE_IN_CAPACITY</code> indicates the instance count increments or decrements by the percentage specified by <code>ScalingAdjustment</code>, which should be expressed as a decimal. For example, 0.20 indicates an increase in 20% increments of cluster capacity. <code>EXACT_CAPACITY</code> indicates the scaling activity results in an instance group with the number of EC2 instances specified by <code>ScalingAdjustment</code>, which should be expressed as a positive integer.</p>
--- Required parameter: ScalingAdjustment
-function M.SimpleScalingPolicyConfiguration(_CoolDown, _ScalingAdjustment, _AdjustmentType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SimpleScalingPolicyConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CoolDown [Integer] <p>The amount of time, in seconds, after a scaling activity completes before any further trigger-related scaling activities can start. The default value is 0.</p>
+-- * ScalingAdjustment [Integer] <p>The amount by which to scale in or scale out, based on the specified <code>AdjustmentType</code>. A positive value adds to the instance group's EC2 instance count while a negative number removes instances. If <code>AdjustmentType</code> is set to <code>EXACT_CAPACITY</code>, the number should only be a positive integer. If <code>AdjustmentType</code> is set to <code>PERCENT_CHANGE_IN_CAPACITY</code>, the value should express the percentage as a decimal. For example, -0.20 indicates a decrease in 20% increments of cluster capacity.</p>
+-- * AdjustmentType [AdjustmentType] <p>The way in which EC2 instances are added (if <code>ScalingAdjustment</code> is a positive number) or terminated (if <code>ScalingAdjustment</code> is a negative number) each time the scaling activity is triggered. <code>CHANGE_IN_CAPACITY</code> is the default. <code>CHANGE_IN_CAPACITY</code> indicates that the EC2 instance count increments or decrements by <code>ScalingAdjustment</code>, which should be expressed as an integer. <code>PERCENT_CHANGE_IN_CAPACITY</code> indicates the instance count increments or decrements by the percentage specified by <code>ScalingAdjustment</code>, which should be expressed as a decimal. For example, 0.20 indicates an increase in 20% increments of cluster capacity. <code>EXACT_CAPACITY</code> indicates the scaling activity results in an instance group with the number of EC2 instances specified by <code>ScalingAdjustment</code>, which should be expressed as a positive integer.</p>
+-- Required key: ScalingAdjustment
+-- @return SimpleScalingPolicyConfiguration structure as a key-value pair table
+function M.SimpleScalingPolicyConfiguration(args)
+	assert(args, "You must provdide an argument table when creating SimpleScalingPolicyConfiguration")
 	local t = { 
-		["CoolDown"] = _CoolDown,
-		["ScalingAdjustment"] = _ScalingAdjustment,
-		["AdjustmentType"] = _AdjustmentType,
+		["CoolDown"] = args["CoolDown"],
+		["ScalingAdjustment"] = args["ScalingAdjustment"],
+		["AdjustmentType"] = args["AdjustmentType"],
 	}
 	asserts.AssertSimpleScalingPolicyConfiguration(t)
 	return t
@@ -3314,15 +3614,18 @@ end
 
 --- Create a structure of type AddTagsInput
 -- <p>This input identifies a cluster and a list of tags to attach.</p>
--- @param _ResourceId [ResourceId] <p>The Amazon EMR resource identifier to which tags will be added. This value must be a cluster identifier.</p>
--- @param _Tags [TagList] <p>A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a maximum of 256 characters.</p>
--- Required parameter: ResourceId
--- Required parameter: Tags
-function M.AddTagsInput(_ResourceId, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddTagsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [ResourceId] <p>The Amazon EMR resource identifier to which tags will be added. This value must be a cluster identifier.</p>
+-- * Tags [TagList] <p>A list of tags to associate with a cluster and propagate to EC2 instances. Tags are user-defined key/value pairs that consist of a required key string with a maximum of 128 characters, and an optional value string with a maximum of 256 characters.</p>
+-- Required key: ResourceId
+-- Required key: Tags
+-- @return AddTagsInput structure as a key-value pair table
+function M.AddTagsInput(args)
+	assert(args, "You must provdide an argument table when creating AddTagsInput")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["Tags"] = _Tags,
+		["ResourceId"] = args["ResourceId"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertAddTagsInput(t)
 	return t
@@ -3343,15 +3646,18 @@ end
 
 --- Create a structure of type InstanceStatus
 -- <p>The instance status details.</p>
--- @param _Timeline [InstanceTimeline] <p>The timeline of the instance status over time.</p>
--- @param _State [InstanceState] <p>The current state of the instance.</p>
--- @param _StateChangeReason [InstanceStateChangeReason] <p>The details of the status change reason for the instance.</p>
-function M.InstanceStatus(_Timeline, _State, _StateChangeReason, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Timeline [InstanceTimeline] <p>The timeline of the instance status over time.</p>
+-- * State [InstanceState] <p>The current state of the instance.</p>
+-- * StateChangeReason [InstanceStateChangeReason] <p>The details of the status change reason for the instance.</p>
+-- @return InstanceStatus structure as a key-value pair table
+function M.InstanceStatus(args)
+	assert(args, "You must provdide an argument table when creating InstanceStatus")
 	local t = { 
-		["Timeline"] = _Timeline,
-		["State"] = _State,
-		["StateChangeReason"] = _StateChangeReason,
+		["Timeline"] = args["Timeline"],
+		["State"] = args["State"],
+		["StateChangeReason"] = args["StateChangeReason"],
 	}
 	asserts.AssertInstanceStatus(t)
 	return t
@@ -3374,19 +3680,22 @@ end
 
 --- Create a structure of type StepSummary
 -- <p>The summary of the cluster step.</p>
--- @param _Status [StepStatus] <p>The current execution status details of the cluster step.</p>
--- @param _Config [HadoopStepConfig] <p>The Hadoop job configuration of the cluster step.</p>
--- @param _Id [StepId] <p>The identifier of the cluster step.</p>
--- @param _ActionOnFailure [ActionOnFailure] <p>This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
--- @param _Name [String] <p>The name of the cluster step.</p>
-function M.StepSummary(_Status, _Config, _Id, _ActionOnFailure, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StepSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [StepStatus] <p>The current execution status details of the cluster step.</p>
+-- * Config [HadoopStepConfig] <p>The Hadoop job configuration of the cluster step.</p>
+-- * Id [StepId] <p>The identifier of the cluster step.</p>
+-- * ActionOnFailure [ActionOnFailure] <p>This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.</p>
+-- * Name [String] <p>The name of the cluster step.</p>
+-- @return StepSummary structure as a key-value pair table
+function M.StepSummary(args)
+	assert(args, "You must provdide an argument table when creating StepSummary")
 	local t = { 
-		["Status"] = _Status,
-		["Config"] = _Config,
-		["Id"] = _Id,
-		["ActionOnFailure"] = _ActionOnFailure,
-		["Name"] = _Name,
+		["Status"] = args["Status"],
+		["Config"] = args["Config"],
+		["Id"] = args["Id"],
+		["ActionOnFailure"] = args["ActionOnFailure"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertStepSummary(t)
 	return t
@@ -3409,17 +3718,20 @@ end
 
 --- Create a structure of type VolumeSpecification
 -- <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
--- @param _Iops [Integer] <p>The number of I/O operations per second (IOPS) that the volume supports.</p>
--- @param _VolumeType [String] <p>The volume type. Volume types supported are gp2, io1, standard.</p>
--- @param _SizeInGB [Integer] <p>The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.</p>
--- Required parameter: VolumeType
--- Required parameter: SizeInGB
-function M.VolumeSpecification(_Iops, _VolumeType, _SizeInGB, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VolumeSpecification")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Iops [Integer] <p>The number of I/O operations per second (IOPS) that the volume supports.</p>
+-- * VolumeType [String] <p>The volume type. Volume types supported are gp2, io1, standard.</p>
+-- * SizeInGB [Integer] <p>The volume size, in gibibytes (GiB). This can be a number from 1 - 1024. If the volume type is EBS-optimized, the minimum value is 10.</p>
+-- Required key: VolumeType
+-- Required key: SizeInGB
+-- @return VolumeSpecification structure as a key-value pair table
+function M.VolumeSpecification(args)
+	assert(args, "You must provdide an argument table when creating VolumeSpecification")
 	local t = { 
-		["Iops"] = _Iops,
-		["VolumeType"] = _VolumeType,
-		["SizeInGB"] = _SizeInGB,
+		["Iops"] = args["Iops"],
+		["VolumeType"] = args["VolumeType"],
+		["SizeInGB"] = args["SizeInGB"],
 	}
 	asserts.AssertVolumeSpecification(t)
 	return t
@@ -3441,15 +3753,18 @@ end
 
 --- Create a structure of type BootstrapActionConfig
 -- <p>Configuration of a bootstrap action.</p>
--- @param _ScriptBootstrapAction [ScriptBootstrapActionConfig] <p>The script run by the bootstrap action.</p>
--- @param _Name [XmlStringMaxLen256] <p>The name of the bootstrap action.</p>
--- Required parameter: Name
--- Required parameter: ScriptBootstrapAction
-function M.BootstrapActionConfig(_ScriptBootstrapAction, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BootstrapActionConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ScriptBootstrapAction [ScriptBootstrapActionConfig] <p>The script run by the bootstrap action.</p>
+-- * Name [XmlStringMaxLen256] <p>The name of the bootstrap action.</p>
+-- Required key: Name
+-- Required key: ScriptBootstrapAction
+-- @return BootstrapActionConfig structure as a key-value pair table
+function M.BootstrapActionConfig(args)
+	assert(args, "You must provdide an argument table when creating BootstrapActionConfig")
 	local t = { 
-		["ScriptBootstrapAction"] = _ScriptBootstrapAction,
-		["Name"] = _Name,
+		["ScriptBootstrapAction"] = args["ScriptBootstrapAction"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertBootstrapActionConfig(t)
 	return t
@@ -3469,13 +3784,16 @@ end
 
 --- Create a structure of type CancelStepsInput
 -- <p>The input argument to the <a>CancelSteps</a> operation.</p>
--- @param _StepIds [StepIdsList] <p>The list of <code>StepIDs</code> to cancel. Use <a>ListSteps</a> to get steps and their states for the specified cluster.</p>
--- @param _ClusterId [XmlStringMaxLen256] <p>The <code>ClusterID</code> for which specified steps will be canceled. Use <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
-function M.CancelStepsInput(_StepIds, _ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelStepsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StepIds [StepIdsList] <p>The list of <code>StepIDs</code> to cancel. Use <a>ListSteps</a> to get steps and their states for the specified cluster.</p>
+-- * ClusterId [XmlStringMaxLen256] <p>The <code>ClusterID</code> for which specified steps will be canceled. Use <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
+-- @return CancelStepsInput structure as a key-value pair table
+function M.CancelStepsInput(args)
+	assert(args, "You must provdide an argument table when creating CancelStepsInput")
 	local t = { 
-		["StepIds"] = _StepIds,
-		["ClusterId"] = _ClusterId,
+		["StepIds"] = args["StepIds"],
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertCancelStepsInput(t)
 	return t
@@ -3497,15 +3815,18 @@ end
 
 --- Create a structure of type AutoScalingPolicy
 -- <p>An automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. An automatic scaling policy defines how an instance group dynamically adds and terminates EC2 instances in response to the value of a CloudWatch metric. See <a>PutAutoScalingPolicy</a>.</p>
--- @param _Rules [ScalingRuleList] <p>The scale-in and scale-out rules that comprise the automatic scaling policy.</p>
--- @param _Constraints [ScalingConstraints] <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activity will not cause an instance group to grow above or below these limits.</p>
--- Required parameter: Constraints
--- Required parameter: Rules
-function M.AutoScalingPolicy(_Rules, _Constraints, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Rules [ScalingRuleList] <p>The scale-in and scale-out rules that comprise the automatic scaling policy.</p>
+-- * Constraints [ScalingConstraints] <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activity will not cause an instance group to grow above or below these limits.</p>
+-- Required key: Constraints
+-- Required key: Rules
+-- @return AutoScalingPolicy structure as a key-value pair table
+function M.AutoScalingPolicy(args)
+	assert(args, "You must provdide an argument table when creating AutoScalingPolicy")
 	local t = { 
-		["Rules"] = _Rules,
-		["Constraints"] = _Constraints,
+		["Rules"] = args["Rules"],
+		["Constraints"] = args["Constraints"],
 	}
 	asserts.AssertAutoScalingPolicy(t)
 	return t
@@ -3527,15 +3848,18 @@ end
 
 --- Create a structure of type AddInstanceGroupsInput
 -- <p>Input to an AddInstanceGroups call.</p>
--- @param _JobFlowId [XmlStringMaxLen256] <p>Job flow in which to add the instance groups.</p>
--- @param _InstanceGroups [InstanceGroupConfigList] <p>Instance groups to add.</p>
--- Required parameter: InstanceGroups
--- Required parameter: JobFlowId
-function M.AddInstanceGroupsInput(_JobFlowId, _InstanceGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddInstanceGroupsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobFlowId [XmlStringMaxLen256] <p>Job flow in which to add the instance groups.</p>
+-- * InstanceGroups [InstanceGroupConfigList] <p>Instance groups to add.</p>
+-- Required key: InstanceGroups
+-- Required key: JobFlowId
+-- @return AddInstanceGroupsInput structure as a key-value pair table
+function M.AddInstanceGroupsInput(args)
+	assert(args, "You must provdide an argument table when creating AddInstanceGroupsInput")
 	local t = { 
-		["JobFlowId"] = _JobFlowId,
-		["InstanceGroups"] = _InstanceGroups,
+		["JobFlowId"] = args["JobFlowId"],
+		["InstanceGroups"] = args["InstanceGroups"],
 	}
 	asserts.AssertAddInstanceGroupsInput(t)
 	return t
@@ -3555,13 +3879,16 @@ end
 
 --- Create a structure of type InvalidRequestException
 -- <p>This exception occurs when there is something wrong with user input.</p>
--- @param _ErrorCode [ErrorCode] <p>The error code associated with the exception.</p>
--- @param _Message [ErrorMessage] <p>The message associated with the exception.</p>
-function M.InvalidRequestException(_ErrorCode, _Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRequestException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ErrorCode [ErrorCode] <p>The error code associated with the exception.</p>
+-- * Message [ErrorMessage] <p>The message associated with the exception.</p>
+-- @return InvalidRequestException structure as a key-value pair table
+function M.InvalidRequestException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRequestException")
 	local t = { 
-		["ErrorCode"] = _ErrorCode,
-		["Message"] = _Message,
+		["ErrorCode"] = args["ErrorCode"],
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidRequestException(t)
 	return t
@@ -3581,13 +3908,16 @@ end
 
 --- Create a structure of type AutoScalingPolicyStateChangeReason
 -- <p>The reason for an <a>AutoScalingPolicyStatus</a> change.</p>
--- @param _Message [String] <p>A friendly, more verbose message that accompanies an automatic scaling policy state change.</p>
--- @param _Code [AutoScalingPolicyStateChangeReasonCode] <p>The code indicating the reason for the change in status.<code>USER_REQUEST</code> indicates that the scaling policy status was changed by a user. <code>PROVISION_FAILURE</code> indicates that the status change was because the policy failed to provision. <code>CLEANUP_FAILURE</code> indicates an error.</p>
-function M.AutoScalingPolicyStateChangeReason(_Message, _Code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingPolicyStateChangeReason")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] <p>A friendly, more verbose message that accompanies an automatic scaling policy state change.</p>
+-- * Code [AutoScalingPolicyStateChangeReasonCode] <p>The code indicating the reason for the change in status.<code>USER_REQUEST</code> indicates that the scaling policy status was changed by a user. <code>PROVISION_FAILURE</code> indicates that the status change was because the policy failed to provision. <code>CLEANUP_FAILURE</code> indicates an error.</p>
+-- @return AutoScalingPolicyStateChangeReason structure as a key-value pair table
+function M.AutoScalingPolicyStateChangeReason(args)
+	assert(args, "You must provdide an argument table when creating AutoScalingPolicyStateChangeReason")
 	local t = { 
-		["Message"] = _Message,
-		["Code"] = _Code,
+		["Message"] = args["Message"],
+		["Code"] = args["Code"],
 	}
 	asserts.AssertAutoScalingPolicyStateChangeReason(t)
 	return t
@@ -3607,12 +3937,15 @@ end
 
 --- Create a structure of type DeleteSecurityConfigurationInput
 --  
--- @param _Name [XmlString] <p>The name of the security configuration.</p>
--- Required parameter: Name
-function M.DeleteSecurityConfigurationInput(_Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSecurityConfigurationInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [XmlString] <p>The name of the security configuration.</p>
+-- Required key: Name
+-- @return DeleteSecurityConfigurationInput structure as a key-value pair table
+function M.DeleteSecurityConfigurationInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteSecurityConfigurationInput")
 	local t = { 
-		["Name"] = _Name,
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeleteSecurityConfigurationInput(t)
 	return t
@@ -3635,18 +3968,21 @@ end
 
 --- Create a structure of type InstanceGroupModifyConfig
 -- <p>Modify an instance group size.</p>
--- @param _InstanceGroupId [XmlStringMaxLen256] <p>Unique ID of the instance group to expand or shrink.</p>
--- @param _InstanceCount [Integer] <p>Target size for the instance group.</p>
--- @param _EC2InstanceIdsToTerminate [EC2InstanceIdsToTerminateList] <p>The EC2 InstanceIds to terminate. After you terminate the instances, the instance group will not return to its original requested size.</p>
--- @param _ShrinkPolicy [ShrinkPolicy] <p>Policy for customizing shrink operations.</p>
--- Required parameter: InstanceGroupId
-function M.InstanceGroupModifyConfig(_InstanceGroupId, _InstanceCount, _EC2InstanceIdsToTerminate, _ShrinkPolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceGroupModifyConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceGroupId [XmlStringMaxLen256] <p>Unique ID of the instance group to expand or shrink.</p>
+-- * InstanceCount [Integer] <p>Target size for the instance group.</p>
+-- * EC2InstanceIdsToTerminate [EC2InstanceIdsToTerminateList] <p>The EC2 InstanceIds to terminate. After you terminate the instances, the instance group will not return to its original requested size.</p>
+-- * ShrinkPolicy [ShrinkPolicy] <p>Policy for customizing shrink operations.</p>
+-- Required key: InstanceGroupId
+-- @return InstanceGroupModifyConfig structure as a key-value pair table
+function M.InstanceGroupModifyConfig(args)
+	assert(args, "You must provdide an argument table when creating InstanceGroupModifyConfig")
 	local t = { 
-		["InstanceGroupId"] = _InstanceGroupId,
-		["InstanceCount"] = _InstanceCount,
-		["EC2InstanceIdsToTerminate"] = _EC2InstanceIdsToTerminate,
-		["ShrinkPolicy"] = _ShrinkPolicy,
+		["InstanceGroupId"] = args["InstanceGroupId"],
+		["InstanceCount"] = args["InstanceCount"],
+		["EC2InstanceIdsToTerminate"] = args["EC2InstanceIdsToTerminate"],
+		["ShrinkPolicy"] = args["ShrinkPolicy"],
 	}
 	asserts.AssertInstanceGroupModifyConfig(t)
 	return t
@@ -3666,13 +4002,16 @@ end
 
 --- Create a structure of type ListSecurityConfigurationsOutput
 --  
--- @param _Marker [Marker] <p>A pagination token that indicates the next set of results to retrieve. Include the marker in the next ListSecurityConfiguration call to retrieve the next page of results, if required.</p>
--- @param _SecurityConfigurations [SecurityConfigurationList] <p>The creation date and time, and name, of each security configuration.</p>
-function M.ListSecurityConfigurationsOutput(_Marker, _SecurityConfigurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSecurityConfigurationsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>A pagination token that indicates the next set of results to retrieve. Include the marker in the next ListSecurityConfiguration call to retrieve the next page of results, if required.</p>
+-- * SecurityConfigurations [SecurityConfigurationList] <p>The creation date and time, and name, of each security configuration.</p>
+-- @return ListSecurityConfigurationsOutput structure as a key-value pair table
+function M.ListSecurityConfigurationsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListSecurityConfigurationsOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["SecurityConfigurations"] = _SecurityConfigurations,
+		["Marker"] = args["Marker"],
+		["SecurityConfigurations"] = args["SecurityConfigurations"],
 	}
 	asserts.AssertListSecurityConfigurationsOutput(t)
 	return t
@@ -3692,13 +4031,16 @@ end
 
 --- Create a structure of type ListInstanceGroupsOutput
 -- <p>This input determines which instance groups to retrieve.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _InstanceGroups [InstanceGroupList] <p>The list of instance groups for the cluster and given filters.</p>
-function M.ListInstanceGroupsOutput(_Marker, _InstanceGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceGroupsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * InstanceGroups [InstanceGroupList] <p>The list of instance groups for the cluster and given filters.</p>
+-- @return ListInstanceGroupsOutput structure as a key-value pair table
+function M.ListInstanceGroupsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListInstanceGroupsOutput")
 	local t = { 
-		["Marker"] = _Marker,
-		["InstanceGroups"] = _InstanceGroups,
+		["Marker"] = args["Marker"],
+		["InstanceGroups"] = args["InstanceGroups"],
 	}
 	asserts.AssertListInstanceGroupsOutput(t)
 	return t
@@ -3719,14 +4061,17 @@ end
 
 --- Create a structure of type ScalingAction
 -- <p>The type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.</p>
--- @param _SimpleScalingPolicyConfiguration [SimpleScalingPolicyConfiguration] <p>The type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.</p>
--- @param _Market [MarketType] <p>Not available for instance groups. Instance groups use the market type specified for the group.</p>
--- Required parameter: SimpleScalingPolicyConfiguration
-function M.ScalingAction(_SimpleScalingPolicyConfiguration, _Market, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScalingAction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SimpleScalingPolicyConfiguration [SimpleScalingPolicyConfiguration] <p>The type of adjustment the automatic scaling activity makes when triggered, and the periodicity of the adjustment.</p>
+-- * Market [MarketType] <p>Not available for instance groups. Instance groups use the market type specified for the group.</p>
+-- Required key: SimpleScalingPolicyConfiguration
+-- @return ScalingAction structure as a key-value pair table
+function M.ScalingAction(args)
+	assert(args, "You must provdide an argument table when creating ScalingAction")
 	local t = { 
-		["SimpleScalingPolicyConfiguration"] = _SimpleScalingPolicyConfiguration,
-		["Market"] = _Market,
+		["SimpleScalingPolicyConfiguration"] = args["SimpleScalingPolicyConfiguration"],
+		["Market"] = args["Market"],
 	}
 	asserts.AssertScalingAction(t)
 	return t
@@ -3748,15 +4093,18 @@ end
 
 --- Create a structure of type RemoveTagsInput
 -- <p>This input identifies a cluster and a list of tags to remove.</p>
--- @param _ResourceId [ResourceId] <p>The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.</p>
--- @param _TagKeys [StringList] <p>A list of tag keys to remove from a resource.</p>
--- Required parameter: ResourceId
--- Required parameter: TagKeys
-function M.RemoveTagsInput(_ResourceId, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveTagsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [ResourceId] <p>The Amazon EMR resource identifier from which tags will be removed. This value must be a cluster identifier.</p>
+-- * TagKeys [StringList] <p>A list of tag keys to remove from a resource.</p>
+-- Required key: ResourceId
+-- Required key: TagKeys
+-- @return RemoveTagsInput structure as a key-value pair table
+function M.RemoveTagsInput(args)
+	assert(args, "You must provdide an argument table when creating RemoveTagsInput")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["TagKeys"] = _TagKeys,
+		["ResourceId"] = args["ResourceId"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertRemoveTagsInput(t)
 	return t
@@ -3778,17 +4126,20 @@ end
 
 --- Create a structure of type ClusterSummary
 -- <p>The summary description of the cluster.</p>
--- @param _Status [ClusterStatus] <p>The details about the current status of the cluster.</p>
--- @param _NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
--- @param _Id [ClusterId] <p>The unique identifier for the cluster.</p>
--- @param _Name [String] <p>The name of the cluster.</p>
-function M.ClusterSummary(_Status, _NormalizedInstanceHours, _Id, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ClusterStatus] <p>The details about the current status of the cluster.</p>
+-- * NormalizedInstanceHours [Integer] <p>An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.</p>
+-- * Id [ClusterId] <p>The unique identifier for the cluster.</p>
+-- * Name [String] <p>The name of the cluster.</p>
+-- @return ClusterSummary structure as a key-value pair table
+function M.ClusterSummary(args)
+	assert(args, "You must provdide an argument table when creating ClusterSummary")
 	local t = { 
-		["Status"] = _Status,
-		["NormalizedInstanceHours"] = _NormalizedInstanceHours,
-		["Id"] = _Id,
-		["Name"] = _Name,
+		["Status"] = args["Status"],
+		["NormalizedInstanceHours"] = args["NormalizedInstanceHours"],
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertClusterSummary(t)
 	return t
@@ -3809,15 +4160,18 @@ end
 
 --- Create a structure of type PutAutoScalingPolicyOutput
 --  
--- @param _InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the scaling policy is applied.</p>
--- @param _ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
--- @param _AutoScalingPolicy [AutoScalingPolicyDescription] <p>The automatic scaling policy definition.</p>
-function M.PutAutoScalingPolicyOutput(_InstanceGroupId, _ClusterId, _AutoScalingPolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutAutoScalingPolicyOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceGroupId [InstanceGroupId] <p>Specifies the ID of the instance group to which the scaling policy is applied.</p>
+-- * ClusterId [ClusterId] <p>Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.</p>
+-- * AutoScalingPolicy [AutoScalingPolicyDescription] <p>The automatic scaling policy definition.</p>
+-- @return PutAutoScalingPolicyOutput structure as a key-value pair table
+function M.PutAutoScalingPolicyOutput(args)
+	assert(args, "You must provdide an argument table when creating PutAutoScalingPolicyOutput")
 	local t = { 
-		["InstanceGroupId"] = _InstanceGroupId,
-		["ClusterId"] = _ClusterId,
-		["AutoScalingPolicy"] = _AutoScalingPolicy,
+		["InstanceGroupId"] = args["InstanceGroupId"],
+		["ClusterId"] = args["ClusterId"],
+		["AutoScalingPolicy"] = args["AutoScalingPolicy"],
 	}
 	asserts.AssertPutAutoScalingPolicyOutput(t)
 	return t
@@ -3839,17 +4193,20 @@ end
 
 --- Create a structure of type DescribeJobFlowsInput
 -- <p> The input for the <a>DescribeJobFlows</a> operation. </p>
--- @param _CreatedAfter [Date] <p>Return only job flows created after this date and time.</p>
--- @param _JobFlowIds [XmlStringList] <p>Return only job flows whose job flow ID is contained in this list.</p>
--- @param _CreatedBefore [Date] <p>Return only job flows created before this date and time.</p>
--- @param _JobFlowStates [JobFlowExecutionStateList] <p>Return only job flows whose state is contained in this list.</p>
-function M.DescribeJobFlowsInput(_CreatedAfter, _JobFlowIds, _CreatedBefore, _JobFlowStates, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobFlowsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreatedAfter [Date] <p>Return only job flows created after this date and time.</p>
+-- * JobFlowIds [XmlStringList] <p>Return only job flows whose job flow ID is contained in this list.</p>
+-- * CreatedBefore [Date] <p>Return only job flows created before this date and time.</p>
+-- * JobFlowStates [JobFlowExecutionStateList] <p>Return only job flows whose state is contained in this list.</p>
+-- @return DescribeJobFlowsInput structure as a key-value pair table
+function M.DescribeJobFlowsInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobFlowsInput")
 	local t = { 
-		["CreatedAfter"] = _CreatedAfter,
-		["JobFlowIds"] = _JobFlowIds,
-		["CreatedBefore"] = _CreatedBefore,
-		["JobFlowStates"] = _JobFlowStates,
+		["CreatedAfter"] = args["CreatedAfter"],
+		["JobFlowIds"] = args["JobFlowIds"],
+		["CreatedBefore"] = args["CreatedBefore"],
+		["JobFlowStates"] = args["JobFlowStates"],
 	}
 	asserts.AssertDescribeJobFlowsInput(t)
 	return t
@@ -3870,15 +4227,18 @@ end
 
 --- Create a structure of type DescribeSecurityConfigurationOutput
 --  
--- @param _SecurityConfiguration [String] <p>The security configuration details in JSON format.</p>
--- @param _CreationDateTime [Date] <p>The date and time the security configuration was created</p>
--- @param _Name [XmlString] <p>The name of the security configuration.</p>
-function M.DescribeSecurityConfigurationOutput(_SecurityConfiguration, _CreationDateTime, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSecurityConfigurationOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SecurityConfiguration [String] <p>The security configuration details in JSON format.</p>
+-- * CreationDateTime [Date] <p>The date and time the security configuration was created</p>
+-- * Name [XmlString] <p>The name of the security configuration.</p>
+-- @return DescribeSecurityConfigurationOutput structure as a key-value pair table
+function M.DescribeSecurityConfigurationOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeSecurityConfigurationOutput")
 	local t = { 
-		["SecurityConfiguration"] = _SecurityConfiguration,
-		["CreationDateTime"] = _CreationDateTime,
-		["Name"] = _Name,
+		["SecurityConfiguration"] = args["SecurityConfiguration"],
+		["CreationDateTime"] = args["CreationDateTime"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDescribeSecurityConfigurationOutput(t)
 	return t
@@ -3897,11 +4257,14 @@ end
 
 --- Create a structure of type BootstrapActionDetail
 -- <p>Reports the configuration of a bootstrap action in a cluster (job flow).</p>
--- @param _BootstrapActionConfig [BootstrapActionConfig] <p>A description of the bootstrap action.</p>
-function M.BootstrapActionDetail(_BootstrapActionConfig, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BootstrapActionDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BootstrapActionConfig [BootstrapActionConfig] <p>A description of the bootstrap action.</p>
+-- @return BootstrapActionDetail structure as a key-value pair table
+function M.BootstrapActionDetail(args)
+	assert(args, "You must provdide an argument table when creating BootstrapActionDetail")
 	local t = { 
-		["BootstrapActionConfig"] = _BootstrapActionConfig,
+		["BootstrapActionConfig"] = args["BootstrapActionConfig"],
 	}
 	asserts.AssertBootstrapActionDetail(t)
 	return t
@@ -3924,17 +4287,20 @@ end
 
 --- Create a structure of type StepConfig
 -- <p>Specification of a cluster (job flow) step.</p>
--- @param _HadoopJarStep [HadoopJarStepConfig] <p>The JAR file used for the step.</p>
--- @param _Name [XmlStringMaxLen256] <p>The name of the step.</p>
--- @param _ActionOnFailure [ActionOnFailure] <p>The action to take if the step fails.</p>
--- Required parameter: Name
--- Required parameter: HadoopJarStep
-function M.StepConfig(_HadoopJarStep, _Name, _ActionOnFailure, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StepConfig")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HadoopJarStep [HadoopJarStepConfig] <p>The JAR file used for the step.</p>
+-- * Name [XmlStringMaxLen256] <p>The name of the step.</p>
+-- * ActionOnFailure [ActionOnFailure] <p>The action to take if the step fails.</p>
+-- Required key: Name
+-- Required key: HadoopJarStep
+-- @return StepConfig structure as a key-value pair table
+function M.StepConfig(args)
+	assert(args, "You must provdide an argument table when creating StepConfig")
 	local t = { 
-		["HadoopJarStep"] = _HadoopJarStep,
-		["Name"] = _Name,
-		["ActionOnFailure"] = _ActionOnFailure,
+		["HadoopJarStep"] = args["HadoopJarStep"],
+		["Name"] = args["Name"],
+		["ActionOnFailure"] = args["ActionOnFailure"],
 	}
 	asserts.AssertStepConfig(t)
 	return t
@@ -3955,14 +4321,17 @@ end
 
 --- Create a structure of type ListBootstrapActionsInput
 -- <p>This input determines which bootstrap actions to retrieve.</p>
--- @param _Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
--- @param _ClusterId [ClusterId] <p>The cluster identifier for the bootstrap actions to list.</p>
--- Required parameter: ClusterId
-function M.ListBootstrapActionsInput(_Marker, _ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBootstrapActionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
+-- * ClusterId [ClusterId] <p>The cluster identifier for the bootstrap actions to list.</p>
+-- Required key: ClusterId
+-- @return ListBootstrapActionsInput structure as a key-value pair table
+function M.ListBootstrapActionsInput(args)
+	assert(args, "You must provdide an argument table when creating ListBootstrapActionsInput")
 	local t = { 
-		["Marker"] = _Marker,
-		["ClusterId"] = _ClusterId,
+		["Marker"] = args["Marker"],
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertListBootstrapActionsInput(t)
 	return t
@@ -3981,11 +4350,14 @@ end
 
 --- Create a structure of type DescribeClusterOutput
 -- <p>This output contains the description of the cluster.</p>
--- @param _Cluster [Cluster] <p>This output contains the details for the requested cluster.</p>
-function M.DescribeClusterOutput(_Cluster, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Cluster [Cluster] <p>This output contains the details for the requested cluster.</p>
+-- @return DescribeClusterOutput structure as a key-value pair table
+function M.DescribeClusterOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeClusterOutput")
 	local t = { 
-		["Cluster"] = _Cluster,
+		["Cluster"] = args["Cluster"],
 	}
 	asserts.AssertDescribeClusterOutput(t)
 	return t

@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type CancelClusterRequest
 --  
--- @param _ClusterId [ClusterId] <p>The 39-character ID for the cluster that you want to cancel, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- Required parameter: ClusterId
-function M.CancelClusterRequest(_ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterId [ClusterId] <p>The 39-character ID for the cluster that you want to cancel, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- Required key: ClusterId
+-- @return CancelClusterRequest structure as a key-value pair table
+function M.CancelClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating CancelClusterRequest")
 	local t = { 
-		["ClusterId"] = _ClusterId,
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertCancelClusterRequest(t)
 	return t
@@ -58,8 +61,11 @@ end
 
 --- Create a structure of type CancelClusterResult
 --  
-function M.CancelClusterResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelClusterResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CancelClusterResult structure as a key-value pair table
+function M.CancelClusterResult(args)
+	assert(args, "You must provdide an argument table when creating CancelClusterResult")
 	local t = { 
 	}
 	asserts.AssertCancelClusterResult(t)
@@ -88,28 +94,31 @@ end
 
 --- Create a structure of type UpdateJobRequest
 --  
--- @param _Description [String] <p>The updated description of this job's <a>JobMetadata</a> object.</p>
--- @param _AddressId [AddressId] <p>The ID of the updated <a>Address</a> object.</p>
--- @param _Notification [Notification] <p>The new or updated <a>Notification</a> object.</p>
--- @param _RoleARN [RoleARN] <p>The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and Access Management (IAM) API action.</p>
--- @param _JobId [JobId] <p>The job ID of the job that you want to update, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- @param _ShippingOption [ShippingOption] <p>The updated shipping option value of this job's <a>ShippingDetails</a> object.</p>
--- @param _ForwardingAddressId [AddressId] <p>The updated ID for the forwarding address for a job. This field is not supported in most regions.</p>
--- @param _SnowballCapacityPreference [SnowballCapacity] <p>The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB Snowballs are only available in the US regions.</p>
--- @param _Resources [JobResource] <p>The updated <a>S3Resource</a> object (for a single Amazon S3 bucket or key range), or the updated <a>JobResource</a> object (for multiple buckets or key ranges). </p>
--- Required parameter: JobId
-function M.UpdateJobRequest(_Description, _AddressId, _Notification, _RoleARN, _JobId, _ShippingOption, _ForwardingAddressId, _SnowballCapacityPreference, _Resources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [String] <p>The updated description of this job's <a>JobMetadata</a> object.</p>
+-- * AddressId [AddressId] <p>The ID of the updated <a>Address</a> object.</p>
+-- * Notification [Notification] <p>The new or updated <a>Notification</a> object.</p>
+-- * RoleARN [RoleARN] <p>The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and Access Management (IAM) API action.</p>
+-- * JobId [JobId] <p>The job ID of the job that you want to update, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- * ShippingOption [ShippingOption] <p>The updated shipping option value of this job's <a>ShippingDetails</a> object.</p>
+-- * ForwardingAddressId [AddressId] <p>The updated ID for the forwarding address for a job. This field is not supported in most regions.</p>
+-- * SnowballCapacityPreference [SnowballCapacity] <p>The updated <code>SnowballCapacityPreference</code> of this job's <a>JobMetadata</a> object. The 50 TB Snowballs are only available in the US regions.</p>
+-- * Resources [JobResource] <p>The updated <a>S3Resource</a> object (for a single Amazon S3 bucket or key range), or the updated <a>JobResource</a> object (for multiple buckets or key ranges). </p>
+-- Required key: JobId
+-- @return UpdateJobRequest structure as a key-value pair table
+function M.UpdateJobRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateJobRequest")
 	local t = { 
-		["Description"] = _Description,
-		["AddressId"] = _AddressId,
-		["Notification"] = _Notification,
-		["RoleARN"] = _RoleARN,
-		["JobId"] = _JobId,
-		["ShippingOption"] = _ShippingOption,
-		["ForwardingAddressId"] = _ForwardingAddressId,
-		["SnowballCapacityPreference"] = _SnowballCapacityPreference,
-		["Resources"] = _Resources,
+		["Description"] = args["Description"],
+		["AddressId"] = args["AddressId"],
+		["Notification"] = args["Notification"],
+		["RoleARN"] = args["RoleARN"],
+		["JobId"] = args["JobId"],
+		["ShippingOption"] = args["ShippingOption"],
+		["ForwardingAddressId"] = args["ForwardingAddressId"],
+		["SnowballCapacityPreference"] = args["SnowballCapacityPreference"],
+		["Resources"] = args["Resources"],
 	}
 	asserts.AssertUpdateJobRequest(t)
 	return t
@@ -128,11 +137,14 @@ end
 
 --- Create a structure of type UnsupportedAddressException
 -- <p>The address is either outside the serviceable area for your region, or an error occurred. Check the address with your region's carrier and try again. If the issue persists, contact AWS Support.</p>
--- @param _Message [String] 
-function M.UnsupportedAddressException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedAddressException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return UnsupportedAddressException structure as a key-value pair table
+function M.UnsupportedAddressException(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedAddressException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertUnsupportedAddressException(t)
 	return t
@@ -162,33 +174,36 @@ end
 
 --- Create a structure of type CreateJobRequest
 --  
--- @param _Description [String] <p>Defines an optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.</p>
--- @param _AddressId [AddressId] <p>The ID for the address that you want the Snowball shipped to.</p>
--- @param _KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> that you want to associate with this job. <code>KmsKeyARN</code>s are created using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> AWS Key Management Service (KMS) API action.</p>
--- @param _Notification [Notification] <p>Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.</p>
--- @param _RoleARN [RoleARN] <p>The <code>RoleARN</code> that you want to associate with this job. <code>RoleArn</code>s are created using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> AWS Identity and Access Management (IAM) API action.</p>
--- @param _ClusterId [ClusterId] <p>The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this <code>clusterId</code> value. The other job attributes are inherited from the cluster.</p>
--- @param _ForwardingAddressId [AddressId] <p>The forwarding address ID for a job. This field is not supported in most regions.</p>
--- @param _ShippingOption [ShippingOption] <p>The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowballs are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
--- @param _JobType [JobType] <p>Defines the type of job that you're creating. </p>
--- @param _SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
--- @param _SnowballCapacityPreference [SnowballCapacity] <p>If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.</p>
--- @param _Resources [JobResource] <p>Defines the Amazon S3 buckets associated with this job.</p> <p>With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be imported into.</p> <p>With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be exported from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a range, you define the length of the range by providing either an inclusive <code>BeginMarker</code> value, an inclusive <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.</p>
-function M.CreateJobRequest(_Description, _AddressId, _KmsKeyARN, _Notification, _RoleARN, _ClusterId, _ForwardingAddressId, _ShippingOption, _JobType, _SnowballType, _SnowballCapacityPreference, _Resources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [String] <p>Defines an optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.</p>
+-- * AddressId [AddressId] <p>The ID for the address that you want the Snowball shipped to.</p>
+-- * KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> that you want to associate with this job. <code>KmsKeyARN</code>s are created using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> AWS Key Management Service (KMS) API action.</p>
+-- * Notification [Notification] <p>Defines the Amazon Simple Notification Service (Amazon SNS) notification settings for this job.</p>
+-- * RoleARN [RoleARN] <p>The <code>RoleARN</code> that you want to associate with this job. <code>RoleArn</code>s are created using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> AWS Identity and Access Management (IAM) API action.</p>
+-- * ClusterId [ClusterId] <p>The ID of a cluster. If you're creating a job for a node in a cluster, you need to provide only this <code>clusterId</code> value. The other job attributes are inherited from the cluster.</p>
+-- * ForwardingAddressId [AddressId] <p>The forwarding address ID for a job. This field is not supported in most regions.</p>
+-- * ShippingOption [ShippingOption] <p>The shipping speed for this job. This speed doesn't dictate how soon you'll get the Snowball, rather it represents how quickly the Snowball moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowballs are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
+-- * JobType [JobType] <p>Defines the type of job that you're creating. </p>
+-- * SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this job. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
+-- * SnowballCapacityPreference [SnowballCapacity] <p>If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.</p>
+-- * Resources [JobResource] <p>Defines the Amazon S3 buckets associated with this job.</p> <p>With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be imported into.</p> <p>With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be exported from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a range, you define the length of the range by providing either an inclusive <code>BeginMarker</code> value, an inclusive <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.</p>
+-- @return CreateJobRequest structure as a key-value pair table
+function M.CreateJobRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateJobRequest")
 	local t = { 
-		["Description"] = _Description,
-		["AddressId"] = _AddressId,
-		["KmsKeyARN"] = _KmsKeyARN,
-		["Notification"] = _Notification,
-		["RoleARN"] = _RoleARN,
-		["ClusterId"] = _ClusterId,
-		["ForwardingAddressId"] = _ForwardingAddressId,
-		["ShippingOption"] = _ShippingOption,
-		["JobType"] = _JobType,
-		["SnowballType"] = _SnowballType,
-		["SnowballCapacityPreference"] = _SnowballCapacityPreference,
-		["Resources"] = _Resources,
+		["Description"] = args["Description"],
+		["AddressId"] = args["AddressId"],
+		["KmsKeyARN"] = args["KmsKeyARN"],
+		["Notification"] = args["Notification"],
+		["RoleARN"] = args["RoleARN"],
+		["ClusterId"] = args["ClusterId"],
+		["ForwardingAddressId"] = args["ForwardingAddressId"],
+		["ShippingOption"] = args["ShippingOption"],
+		["JobType"] = args["JobType"],
+		["SnowballType"] = args["SnowballType"],
+		["SnowballCapacityPreference"] = args["SnowballCapacityPreference"],
+		["Resources"] = args["Resources"],
 	}
 	asserts.AssertCreateJobRequest(t)
 	return t
@@ -208,13 +223,16 @@ end
 
 --- Create a structure of type ListJobsRequest
 --  
--- @param _NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>JobListEntry</code> objects, you have the option of specifying <code>NextToken</code> as the starting point for your returned list.</p>
--- @param _MaxResults [ListLimit] <p>The number of <code>JobListEntry</code> objects to return.</p>
-function M.ListJobsRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>JobListEntry</code> objects, you have the option of specifying <code>NextToken</code> as the starting point for your returned list.</p>
+-- * MaxResults [ListLimit] <p>The number of <code>JobListEntry</code> objects to return.</p>
+-- @return ListJobsRequest structure as a key-value pair table
+function M.ListJobsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListJobsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListJobsRequest(t)
 	return t
@@ -233,11 +251,14 @@ end
 
 --- Create a structure of type KMSRequestFailedException
 -- <p>The provided AWS Key Management Service key lacks the permissions to perform the specified <a>CreateJob</a> or <a>UpdateJob</a> action.</p>
--- @param _Message [String] 
-function M.KMSRequestFailedException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KMSRequestFailedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return KMSRequestFailedException structure as a key-value pair table
+function M.KMSRequestFailedException(args)
+	assert(args, "You must provdide an argument table when creating KMSRequestFailedException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertKMSRequestFailedException(t)
 	return t
@@ -256,11 +277,14 @@ end
 
 --- Create a structure of type InvalidResourceException
 -- <p>The specified resource can't be found. Check the information you provided in your last request, and try again.</p>
--- @param _Message [String] 
-function M.InvalidResourceException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidResourceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidResourceException structure as a key-value pair table
+function M.InvalidResourceException(args)
+	assert(args, "You must provdide an argument table when creating InvalidResourceException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidResourceException(t)
 	return t
@@ -291,35 +315,38 @@ end
 
 --- Create a structure of type ClusterMetadata
 -- <p>Contains metadata about a specific cluster.</p>
--- @param _Description [String] <p>The optional description of the cluster.</p>
--- @param _AddressId [AddressId] <p>The automatically generated ID for a specific address.</p>
--- @param _KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> Amazon Resource Name (ARN) associated with this cluster. This ARN was created using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS Key Management Service (AWS KMS).</p>
--- @param _Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.</p>
--- @param _RoleARN [RoleARN] <p>The role ARN associated with this cluster. This ARN was created using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
--- @param _ClusterId [String] <p>The automatically generated ID for a cluster.</p>
--- @param _ForwardingAddressId [AddressId] <p>The ID of the address that you want a cluster shipped to, after it will be shipped to its primary address. This field is not supported in most regions.</p>
--- @param _ClusterState [ClusterState] <p>The current status of the cluster.</p>
--- @param _ShippingOption [ShippingOption] <p>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowball Edges are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
--- @param _Resources [JobResource] <p>The arrays of <a>JobResource</a> objects that can include updated <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
--- @param _SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
--- @param _CreationDate [Timestamp] <p>The creation date for this cluster.</p>
--- @param _JobType [JobType] <p>The type of job for this cluster. Currently, the only job type supported for clusters is <code>LOCAL_USE</code>.</p>
-function M.ClusterMetadata(_Description, _AddressId, _KmsKeyARN, _Notification, _RoleARN, _ClusterId, _ForwardingAddressId, _ClusterState, _ShippingOption, _Resources, _SnowballType, _CreationDate, _JobType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [String] <p>The optional description of the cluster.</p>
+-- * AddressId [AddressId] <p>The automatically generated ID for a specific address.</p>
+-- * KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> Amazon Resource Name (ARN) associated with this cluster. This ARN was created using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS Key Management Service (AWS KMS).</p>
+-- * Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.</p>
+-- * RoleARN [RoleARN] <p>The role ARN associated with this cluster. This ARN was created using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
+-- * ClusterId [String] <p>The automatically generated ID for a cluster.</p>
+-- * ForwardingAddressId [AddressId] <p>The ID of the address that you want a cluster shipped to, after it will be shipped to its primary address. This field is not supported in most regions.</p>
+-- * ClusterState [ClusterState] <p>The current status of the cluster.</p>
+-- * ShippingOption [ShippingOption] <p>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowball Edges are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
+-- * Resources [JobResource] <p>The arrays of <a>JobResource</a> objects that can include updated <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
+-- * SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
+-- * CreationDate [Timestamp] <p>The creation date for this cluster.</p>
+-- * JobType [JobType] <p>The type of job for this cluster. Currently, the only job type supported for clusters is <code>LOCAL_USE</code>.</p>
+-- @return ClusterMetadata structure as a key-value pair table
+function M.ClusterMetadata(args)
+	assert(args, "You must provdide an argument table when creating ClusterMetadata")
 	local t = { 
-		["Description"] = _Description,
-		["AddressId"] = _AddressId,
-		["KmsKeyARN"] = _KmsKeyARN,
-		["Notification"] = _Notification,
-		["RoleARN"] = _RoleARN,
-		["ClusterId"] = _ClusterId,
-		["ForwardingAddressId"] = _ForwardingAddressId,
-		["ClusterState"] = _ClusterState,
-		["ShippingOption"] = _ShippingOption,
-		["Resources"] = _Resources,
-		["SnowballType"] = _SnowballType,
-		["CreationDate"] = _CreationDate,
-		["JobType"] = _JobType,
+		["Description"] = args["Description"],
+		["AddressId"] = args["AddressId"],
+		["KmsKeyARN"] = args["KmsKeyARN"],
+		["Notification"] = args["Notification"],
+		["RoleARN"] = args["RoleARN"],
+		["ClusterId"] = args["ClusterId"],
+		["ForwardingAddressId"] = args["ForwardingAddressId"],
+		["ClusterState"] = args["ClusterState"],
+		["ShippingOption"] = args["ShippingOption"],
+		["Resources"] = args["Resources"],
+		["SnowballType"] = args["SnowballType"],
+		["CreationDate"] = args["CreationDate"],
+		["JobType"] = args["JobType"],
 	}
 	asserts.AssertClusterMetadata(t)
 	return t
@@ -338,11 +365,14 @@ end
 
 --- Create a structure of type GetJobUnlockCodeResult
 --  
--- @param _UnlockCode [String] <p>The <code>UnlockCode</code> value for the specified job. The <code>UnlockCode</code> value can be accessed for up to 90 days after the job has been created.</p>
-function M.GetJobUnlockCodeResult(_UnlockCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetJobUnlockCodeResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UnlockCode [String] <p>The <code>UnlockCode</code> value for the specified job. The <code>UnlockCode</code> value can be accessed for up to 90 days after the job has been created.</p>
+-- @return GetJobUnlockCodeResult structure as a key-value pair table
+function M.GetJobUnlockCodeResult(args)
+	assert(args, "You must provdide an argument table when creating GetJobUnlockCodeResult")
 	local t = { 
-		["UnlockCode"] = _UnlockCode,
+		["UnlockCode"] = args["UnlockCode"],
 	}
 	asserts.AssertGetJobUnlockCodeResult(t)
 	return t
@@ -362,13 +392,16 @@ end
 
 --- Create a structure of type KeyRange
 -- <p>Contains a key range. For export jobs, a <code>S3Resource</code> object can have an optional <code>KeyRange</code> value. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
--- @param _EndMarker [String] <p>The key that ends an optional key range for an export job. Ranges are inclusive and UTF-8 binary sorted.</p>
--- @param _BeginMarker [String] <p>The key that starts an optional key range for an export job. Ranges are inclusive and UTF-8 binary sorted.</p>
-function M.KeyRange(_EndMarker, _BeginMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KeyRange")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EndMarker [String] <p>The key that ends an optional key range for an export job. Ranges are inclusive and UTF-8 binary sorted.</p>
+-- * BeginMarker [String] <p>The key that starts an optional key range for an export job. Ranges are inclusive and UTF-8 binary sorted.</p>
+-- @return KeyRange structure as a key-value pair table
+function M.KeyRange(args)
+	assert(args, "You must provdide an argument table when creating KeyRange")
 	local t = { 
-		["EndMarker"] = _EndMarker,
-		["BeginMarker"] = _BeginMarker,
+		["EndMarker"] = args["EndMarker"],
+		["BeginMarker"] = args["BeginMarker"],
 	}
 	asserts.AssertKeyRange(t)
 	return t
@@ -388,13 +421,16 @@ end
 
 --- Create a structure of type Shipment
 -- <p>The <code>Status</code> and <code>TrackingNumber</code> information for an inbound or outbound shipment.</p>
--- @param _Status [String] <p>Status information for a shipment.</p>
--- @param _TrackingNumber [String] <p>The tracking number for this job. Using this tracking number with your region's carrier's website, you can track a Snowball as the carrier transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other regions, UPS is the carrier.</p>
-function M.Shipment(_Status, _TrackingNumber, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Shipment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>Status information for a shipment.</p>
+-- * TrackingNumber [String] <p>The tracking number for this job. Using this tracking number with your region's carrier's website, you can track a Snowball as the carrier transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other regions, UPS is the carrier.</p>
+-- @return Shipment structure as a key-value pair table
+function M.Shipment(args)
+	assert(args, "You must provdide an argument table when creating Shipment")
 	local t = { 
-		["Status"] = _Status,
-		["TrackingNumber"] = _TrackingNumber,
+		["Status"] = args["Status"],
+		["TrackingNumber"] = args["TrackingNumber"],
 	}
 	asserts.AssertShipment(t)
 	return t
@@ -413,11 +449,14 @@ end
 
 --- Create a structure of type InvalidNextTokenException
 -- <p>The <code>NextToken</code> string was altered unexpectedly, and the operation has stopped. Run the operation without changing the <code>NextToken</code> string, and try again.</p>
--- @param _Message [String] 
-function M.InvalidNextTokenException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidNextTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidNextTokenException structure as a key-value pair table
+function M.InvalidNextTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidNextTokenException(t)
 	return t
@@ -436,11 +475,14 @@ end
 
 --- Create a structure of type EventTriggerDefinition
 -- <p>The container for the <a>EventTriggerDefinition$EventResourceARN</a>.</p>
--- @param _EventResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) for any local Amazon S3 resource that is an AWS Lambda function's event trigger associated with this job.</p>
-function M.EventTriggerDefinition(_EventResourceARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EventTriggerDefinition")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) for any local Amazon S3 resource that is an AWS Lambda function's event trigger associated with this job.</p>
+-- @return EventTriggerDefinition structure as a key-value pair table
+function M.EventTriggerDefinition(args)
+	assert(args, "You must provdide an argument table when creating EventTriggerDefinition")
 	local t = { 
-		["EventResourceARN"] = _EventResourceARN,
+		["EventResourceARN"] = args["EventResourceARN"],
 	}
 	asserts.AssertEventTriggerDefinition(t)
 	return t
@@ -460,12 +502,15 @@ end
 
 --- Create a structure of type CreateAddressRequest
 --  
--- @param _Address [Address] <p>The address that you want the Snowball shipped to.</p>
--- Required parameter: Address
-function M.CreateAddressRequest(_Address, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAddressRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Address [Address] <p>The address that you want the Snowball shipped to.</p>
+-- Required key: Address
+-- @return CreateAddressRequest structure as a key-value pair table
+function M.CreateAddressRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateAddressRequest")
 	local t = { 
-		["Address"] = _Address,
+		["Address"] = args["Address"],
 	}
 	asserts.AssertCreateAddressRequest(t)
 	return t
@@ -484,11 +529,14 @@ end
 
 --- Create a structure of type CreateAddressResult
 --  
--- @param _AddressId [String] <p>The automatically generated ID for a specific address. You'll use this ID when you create a job to specify which address you want the Snowball for that job shipped to.</p>
-function M.CreateAddressResult(_AddressId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAddressResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AddressId [String] <p>The automatically generated ID for a specific address. You'll use this ID when you create a job to specify which address you want the Snowball for that job shipped to.</p>
+-- @return CreateAddressResult structure as a key-value pair table
+function M.CreateAddressResult(args)
+	assert(args, "You must provdide an argument table when creating CreateAddressResult")
 	local t = { 
-		["AddressId"] = _AddressId,
+		["AddressId"] = args["AddressId"],
 	}
 	asserts.AssertCreateAddressResult(t)
 	return t
@@ -508,13 +556,16 @@ end
 
 --- Create a structure of type ListJobsResult
 --  
--- @param _NextToken [String] <p>HTTP requests are stateless. If you use this automatically generated <code>NextToken</code> value in your next <code>ListJobs</code> call, your returned <code>JobListEntry</code> objects will start from this point in the array.</p>
--- @param _JobListEntries [JobListEntryList] <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. </p>
-function M.ListJobsResult(_NextToken, _JobListEntries, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListJobsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>HTTP requests are stateless. If you use this automatically generated <code>NextToken</code> value in your next <code>ListJobs</code> call, your returned <code>JobListEntry</code> objects will start from this point in the array.</p>
+-- * JobListEntries [JobListEntryList] <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. </p>
+-- @return ListJobsResult structure as a key-value pair table
+function M.ListJobsResult(args)
+	assert(args, "You must provdide an argument table when creating ListJobsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["JobListEntries"] = _JobListEntries,
+		["NextToken"] = args["NextToken"],
+		["JobListEntries"] = args["JobListEntries"],
 	}
 	asserts.AssertListJobsResult(t)
 	return t
@@ -536,17 +587,20 @@ end
 
 --- Create a structure of type ClusterListEntry
 -- <p>Contains a cluster's state, a cluster's ID, and other important information.</p>
--- @param _ClusterState [ClusterState] <p>The current state of this cluster. For information about the state of a specific node, see <a>JobListEntry$JobState</a>.</p>
--- @param _CreationDate [Timestamp] <p>The creation date for this cluster.</p>
--- @param _ClusterId [String] <p>The 39-character ID for the cluster that you want to list, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- @param _Description [String] <p>Defines an optional description of the cluster, for example <code>Environmental Data Cluster-01</code>.</p>
-function M.ClusterListEntry(_ClusterState, _CreationDate, _ClusterId, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterListEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterState [ClusterState] <p>The current state of this cluster. For information about the state of a specific node, see <a>JobListEntry$JobState</a>.</p>
+-- * CreationDate [Timestamp] <p>The creation date for this cluster.</p>
+-- * ClusterId [String] <p>The 39-character ID for the cluster that you want to list, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- * Description [String] <p>Defines an optional description of the cluster, for example <code>Environmental Data Cluster-01</code>.</p>
+-- @return ClusterListEntry structure as a key-value pair table
+function M.ClusterListEntry(args)
+	assert(args, "You must provdide an argument table when creating ClusterListEntry")
 	local t = { 
-		["ClusterState"] = _ClusterState,
-		["CreationDate"] = _CreationDate,
-		["ClusterId"] = _ClusterId,
-		["Description"] = _Description,
+		["ClusterState"] = args["ClusterState"],
+		["CreationDate"] = args["CreationDate"],
+		["ClusterId"] = args["ClusterId"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertClusterListEntry(t)
 	return t
@@ -565,11 +619,14 @@ end
 
 --- Create a structure of type CreateJobResult
 --  
--- @param _JobId [JobId] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
-function M.CreateJobResult(_JobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateJobResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobId [JobId] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- @return CreateJobResult structure as a key-value pair table
+function M.CreateJobResult(args)
+	assert(args, "You must provdide an argument table when creating CreateJobResult")
 	local t = { 
-		["JobId"] = _JobId,
+		["JobId"] = args["JobId"],
 	}
 	asserts.AssertCreateJobResult(t)
 	return t
@@ -590,15 +647,18 @@ end
 
 --- Create a structure of type JobLogs
 -- <p>Contains job logs. Whenever Snowball is used to import data into or export data out of Amazon S3, you'll have the option of downloading a PDF job report. Job logs are returned as a part of the response syntax of the <code>DescribeJob</code> action in the <code>JobMetadata</code> data type. The job logs can be accessed for up to 60 minutes after this request has been made. To access any of the job logs after 60 minutes have passed, you'll have to make another call to the <code>DescribeJob</code> action.</p> <p>For import jobs, the PDF job report becomes available at the end of the import process. For export jobs, your job report typically becomes available while the Snowball for your job part is being delivered to you.</p> <p>The job report provides you insight into the state of your Amazon S3 data transfer. The report includes details about your job or job part for your records.</p> <p>For deeper visibility into the status of your transferred objects, you can look at the two associated logs: a success log and a failure log. The logs are saved in comma-separated value (CSV) format, and the name of each log includes the ID of the job or job part that the log describes.</p>
--- @param _JobFailureLogURI [String] <p>A link to an Amazon S3 presigned URL where the job failure log is located.</p>
--- @param _JobSuccessLogURI [String] <p>A link to an Amazon S3 presigned URL where the job success log is located.</p>
--- @param _JobCompletionReportURI [String] <p>A link to an Amazon S3 presigned URL where the job completion report is located.</p>
-function M.JobLogs(_JobFailureLogURI, _JobSuccessLogURI, _JobCompletionReportURI, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobLogs")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobFailureLogURI [String] <p>A link to an Amazon S3 presigned URL where the job failure log is located.</p>
+-- * JobSuccessLogURI [String] <p>A link to an Amazon S3 presigned URL where the job success log is located.</p>
+-- * JobCompletionReportURI [String] <p>A link to an Amazon S3 presigned URL where the job completion report is located.</p>
+-- @return JobLogs structure as a key-value pair table
+function M.JobLogs(args)
+	assert(args, "You must provdide an argument table when creating JobLogs")
 	local t = { 
-		["JobFailureLogURI"] = _JobFailureLogURI,
-		["JobSuccessLogURI"] = _JobSuccessLogURI,
-		["JobCompletionReportURI"] = _JobCompletionReportURI,
+		["JobFailureLogURI"] = args["JobFailureLogURI"],
+		["JobSuccessLogURI"] = args["JobSuccessLogURI"],
+		["JobCompletionReportURI"] = args["JobCompletionReportURI"],
 	}
 	asserts.AssertJobLogs(t)
 	return t
@@ -618,12 +678,15 @@ end
 
 --- Create a structure of type GetJobManifestRequest
 --  
--- @param _JobId [JobId] <p>The ID for a job that you want to get the manifest file for, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- Required parameter: JobId
-function M.GetJobManifestRequest(_JobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetJobManifestRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobId [JobId] <p>The ID for a job that you want to get the manifest file for, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- Required key: JobId
+-- @return GetJobManifestRequest structure as a key-value pair table
+function M.GetJobManifestRequest(args)
+	assert(args, "You must provdide an argument table when creating GetJobManifestRequest")
 	local t = { 
-		["JobId"] = _JobId,
+		["JobId"] = args["JobId"],
 	}
 	asserts.AssertGetJobManifestRequest(t)
 	return t
@@ -643,12 +706,15 @@ end
 
 --- Create a structure of type DescribeJobRequest
 --  
--- @param _JobId [JobId] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- Required parameter: JobId
-function M.DescribeJobRequest(_JobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobId [JobId] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- Required key: JobId
+-- @return DescribeJobRequest structure as a key-value pair table
+function M.DescribeJobRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobRequest")
 	local t = { 
-		["JobId"] = _JobId,
+		["JobId"] = args["JobId"],
 	}
 	asserts.AssertDescribeJobRequest(t)
 	return t
@@ -668,13 +734,16 @@ end
 
 --- Create a structure of type GetSnowballUsageResult
 --  
--- @param _SnowballLimit [Integer] <p>The service limit for number of Snowballs this account can have at once. The default service limit is 1 (one).</p>
--- @param _SnowballsInUse [Integer] <p>The number of Snowballs that this account is currently using.</p>
-function M.GetSnowballUsageResult(_SnowballLimit, _SnowballsInUse, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSnowballUsageResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnowballLimit [Integer] <p>The service limit for number of Snowballs this account can have at once. The default service limit is 1 (one).</p>
+-- * SnowballsInUse [Integer] <p>The number of Snowballs that this account is currently using.</p>
+-- @return GetSnowballUsageResult structure as a key-value pair table
+function M.GetSnowballUsageResult(args)
+	assert(args, "You must provdide an argument table when creating GetSnowballUsageResult")
 	local t = { 
-		["SnowballLimit"] = _SnowballLimit,
-		["SnowballsInUse"] = _SnowballsInUse,
+		["SnowballLimit"] = args["SnowballLimit"],
+		["SnowballsInUse"] = args["SnowballsInUse"],
 	}
 	asserts.AssertGetSnowballUsageResult(t)
 	return t
@@ -693,11 +762,14 @@ end
 
 --- Create a structure of type CreateClusterResult
 --  
--- @param _ClusterId [ClusterId] <p>The automatically generated ID for a cluster.</p>
-function M.CreateClusterResult(_ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateClusterResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterId [ClusterId] <p>The automatically generated ID for a cluster.</p>
+-- @return CreateClusterResult structure as a key-value pair table
+function M.CreateClusterResult(args)
+	assert(args, "You must provdide an argument table when creating CreateClusterResult")
 	local t = { 
-		["ClusterId"] = _ClusterId,
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertCreateClusterResult(t)
 	return t
@@ -716,11 +788,14 @@ end
 
 --- Create a structure of type DescribeAddressResult
 --  
--- @param _Address [Address] <p>The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.</p>
-function M.DescribeAddressResult(_Address, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAddressResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Address [Address] <p>The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.</p>
+-- @return DescribeAddressResult structure as a key-value pair table
+function M.DescribeAddressResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeAddressResult")
 	local t = { 
-		["Address"] = _Address,
+		["Address"] = args["Address"],
 	}
 	asserts.AssertDescribeAddressResult(t)
 	return t
@@ -755,43 +830,46 @@ end
 
 --- Create a structure of type JobMetadata
 -- <p>Contains information about a specific job including shipping information, job status, and other important metadata. This information is returned as a part of the response syntax of the <code>DescribeJob</code> action.</p>
--- @param _SnowballCapacityPreference [SnowballCapacity] <p>The Snowball capacity preference for this job, specified at job creation. In US regions, you can choose between 50 TB and 80 TB Snowballs. All other regions use 80 TB capacity Snowballs.</p>
--- @param _JobState [JobState] <p>The current status of the jobs.</p>
--- @param _Description [String] <p>The description of the job, provided at job creation.</p>
--- @param _AddressId [AddressId] <p>The ID for the address that you want the Snowball shipped to.</p>
--- @param _ForwardingAddressId [AddressId] <p>The ID of the address that you want a job shipped to, after it will be shipped to its primary address. This field is not supported in most regions.</p>
--- @param _KmsKeyARN [KmsKeyARN] <p>The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This ARN was created using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS KMS.</p>
--- @param _Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings associated with a specific job. The <code>Notification</code> object is returned as a part of the response syntax of the <code>DescribeJob</code> action in the <code>JobMetadata</code> data type.</p>
--- @param _RoleARN [RoleARN] <p>The role ARN associated with this job. This ARN was created using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
--- @param _ClusterId [String] <p>The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- @param _JobId [String] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- @param _DataTransferProgress [DataTransfer] <p>A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.</p>
--- @param _JobType [JobType] <p>The type of job.</p>
--- @param _SnowballType [SnowballType] <p>The type of appliance used with this job.</p>
--- @param _JobLogInfo [JobLogs] <p>Links to Amazon S3 presigned URLs for the job report and logs. For import jobs, the PDF job report becomes available at the end of the import process. For export jobs, your job report typically becomes available while the Snowball for your job part is being delivered to you.</p>
--- @param _CreationDate [Timestamp] <p>The creation date for this job.</p>
--- @param _Resources [JobResource] <p>An array of <code>S3Resource</code> objects. Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.</p>
--- @param _ShippingDetails [ShippingDetails] <p>A job's shipping information, including inbound and outbound tracking numbers and shipping speed options.</p>
-function M.JobMetadata(_SnowballCapacityPreference, _JobState, _Description, _AddressId, _ForwardingAddressId, _KmsKeyARN, _Notification, _RoleARN, _ClusterId, _JobId, _DataTransferProgress, _JobType, _SnowballType, _JobLogInfo, _CreationDate, _Resources, _ShippingDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SnowballCapacityPreference [SnowballCapacity] <p>The Snowball capacity preference for this job, specified at job creation. In US regions, you can choose between 50 TB and 80 TB Snowballs. All other regions use 80 TB capacity Snowballs.</p>
+-- * JobState [JobState] <p>The current status of the jobs.</p>
+-- * Description [String] <p>The description of the job, provided at job creation.</p>
+-- * AddressId [AddressId] <p>The ID for the address that you want the Snowball shipped to.</p>
+-- * ForwardingAddressId [AddressId] <p>The ID of the address that you want a job shipped to, after it will be shipped to its primary address. This field is not supported in most regions.</p>
+-- * KmsKeyARN [KmsKeyARN] <p>The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This ARN was created using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS KMS.</p>
+-- * Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings associated with a specific job. The <code>Notification</code> object is returned as a part of the response syntax of the <code>DescribeJob</code> action in the <code>JobMetadata</code> data type.</p>
+-- * RoleARN [RoleARN] <p>The role ARN associated with this job. This ARN was created using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
+-- * ClusterId [String] <p>The 39-character ID for the cluster, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- * JobId [String] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- * DataTransferProgress [DataTransfer] <p>A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.</p>
+-- * JobType [JobType] <p>The type of job.</p>
+-- * SnowballType [SnowballType] <p>The type of appliance used with this job.</p>
+-- * JobLogInfo [JobLogs] <p>Links to Amazon S3 presigned URLs for the job report and logs. For import jobs, the PDF job report becomes available at the end of the import process. For export jobs, your job report typically becomes available while the Snowball for your job part is being delivered to you.</p>
+-- * CreationDate [Timestamp] <p>The creation date for this job.</p>
+-- * Resources [JobResource] <p>An array of <code>S3Resource</code> objects. Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.</p>
+-- * ShippingDetails [ShippingDetails] <p>A job's shipping information, including inbound and outbound tracking numbers and shipping speed options.</p>
+-- @return JobMetadata structure as a key-value pair table
+function M.JobMetadata(args)
+	assert(args, "You must provdide an argument table when creating JobMetadata")
 	local t = { 
-		["SnowballCapacityPreference"] = _SnowballCapacityPreference,
-		["JobState"] = _JobState,
-		["Description"] = _Description,
-		["AddressId"] = _AddressId,
-		["ForwardingAddressId"] = _ForwardingAddressId,
-		["KmsKeyARN"] = _KmsKeyARN,
-		["Notification"] = _Notification,
-		["RoleARN"] = _RoleARN,
-		["ClusterId"] = _ClusterId,
-		["JobId"] = _JobId,
-		["DataTransferProgress"] = _DataTransferProgress,
-		["JobType"] = _JobType,
-		["SnowballType"] = _SnowballType,
-		["JobLogInfo"] = _JobLogInfo,
-		["CreationDate"] = _CreationDate,
-		["Resources"] = _Resources,
-		["ShippingDetails"] = _ShippingDetails,
+		["SnowballCapacityPreference"] = args["SnowballCapacityPreference"],
+		["JobState"] = args["JobState"],
+		["Description"] = args["Description"],
+		["AddressId"] = args["AddressId"],
+		["ForwardingAddressId"] = args["ForwardingAddressId"],
+		["KmsKeyARN"] = args["KmsKeyARN"],
+		["Notification"] = args["Notification"],
+		["RoleARN"] = args["RoleARN"],
+		["ClusterId"] = args["ClusterId"],
+		["JobId"] = args["JobId"],
+		["DataTransferProgress"] = args["DataTransferProgress"],
+		["JobType"] = args["JobType"],
+		["SnowballType"] = args["SnowballType"],
+		["JobLogInfo"] = args["JobLogInfo"],
+		["CreationDate"] = args["CreationDate"],
+		["Resources"] = args["Resources"],
+		["ShippingDetails"] = args["ShippingDetails"],
 	}
 	asserts.AssertJobMetadata(t)
 	return t
@@ -811,13 +889,16 @@ end
 
 --- Create a structure of type DescribeJobResult
 --  
--- @param _JobMetadata [JobMetadata] <p>Information about a specific job, including shipping information, job status, and other important metadata.</p>
--- @param _SubJobMetadata [JobMetadataList] <p>Information about a specific job part (in the case of an export job), including shipping information, job status, and other important metadata.</p>
-function M.DescribeJobResult(_JobMetadata, _SubJobMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeJobResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobMetadata [JobMetadata] <p>Information about a specific job, including shipping information, job status, and other important metadata.</p>
+-- * SubJobMetadata [JobMetadataList] <p>Information about a specific job part (in the case of an export job), including shipping information, job status, and other important metadata.</p>
+-- @return DescribeJobResult structure as a key-value pair table
+function M.DescribeJobResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeJobResult")
 	local t = { 
-		["JobMetadata"] = _JobMetadata,
-		["SubJobMetadata"] = _SubJobMetadata,
+		["JobMetadata"] = args["JobMetadata"],
+		["SubJobMetadata"] = args["SubJobMetadata"],
 	}
 	asserts.AssertDescribeJobResult(t)
 	return t
@@ -836,11 +917,14 @@ end
 
 --- Create a structure of type GetJobManifestResult
 --  
--- @param _ManifestURI [String] <p>The Amazon S3 presigned URL for the manifest file associated with the specified <code>JobId</code> value.</p>
-function M.GetJobManifestResult(_ManifestURI, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetJobManifestResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ManifestURI [String] <p>The Amazon S3 presigned URL for the manifest file associated with the specified <code>JobId</code> value.</p>
+-- @return GetJobManifestResult structure as a key-value pair table
+function M.GetJobManifestResult(args)
+	assert(args, "You must provdide an argument table when creating GetJobManifestResult")
 	local t = { 
-		["ManifestURI"] = _ManifestURI,
+		["ManifestURI"] = args["ManifestURI"],
 	}
 	asserts.AssertGetJobManifestResult(t)
 	return t
@@ -872,37 +956,40 @@ end
 
 --- Create a structure of type Address
 -- <p>The address that you want the Snowball or Snowballs associated with a specific job to be shipped to. Addresses are validated at the time of creation. The address you provide must be located within the serviceable area of your region. Although no individual elements of the <code>Address</code> are required, if the address is invalid or unsupported, then an exception is thrown.</p>
--- @param _City [String] <p>The city in an address that a Snowball is to be delivered to.</p>
--- @param _Name [String] <p>The name of a person to receive a Snowball at an address.</p>
--- @param _AddressId [AddressId] <p>The unique ID for an address.</p>
--- @param _Street1 [String] <p>The first line in a street address that a Snowball is to be delivered to.</p>
--- @param _Company [String] <p>The name of the company to receive a Snowball at an address.</p>
--- @param _Street3 [String] <p>The third line in a street address that a Snowball is to be delivered to.</p>
--- @param _PostalCode [String] <p>The postal code in an address that a Snowball is to be delivered to.</p>
--- @param _PrefectureOrDistrict [String] <p>This field is no longer used and the value is ignored.</p>
--- @param _Country [String] <p>The country in an address that a Snowball is to be delivered to.</p>
--- @param _Landmark [String] <p>This field is no longer used and the value is ignored.</p>
--- @param _PhoneNumber [String] <p>The phone number associated with an address that a Snowball is to be delivered to.</p>
--- @param _IsRestricted [Boolean] <p>If the address you are creating is a primary address, then set this option to true. This field is not supported in most regions.</p>
--- @param _StateOrProvince [String] <p>The state or province in an address that a Snowball is to be delivered to.</p>
--- @param _Street2 [String] <p>The second line in a street address that a Snowball is to be delivered to.</p>
-function M.Address(_City, _Name, _AddressId, _Street1, _Company, _Street3, _PostalCode, _PrefectureOrDistrict, _Country, _Landmark, _PhoneNumber, _IsRestricted, _StateOrProvince, _Street2, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Address")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * City [String] <p>The city in an address that a Snowball is to be delivered to.</p>
+-- * Name [String] <p>The name of a person to receive a Snowball at an address.</p>
+-- * AddressId [AddressId] <p>The unique ID for an address.</p>
+-- * Street1 [String] <p>The first line in a street address that a Snowball is to be delivered to.</p>
+-- * Company [String] <p>The name of the company to receive a Snowball at an address.</p>
+-- * Street3 [String] <p>The third line in a street address that a Snowball is to be delivered to.</p>
+-- * PostalCode [String] <p>The postal code in an address that a Snowball is to be delivered to.</p>
+-- * PrefectureOrDistrict [String] <p>This field is no longer used and the value is ignored.</p>
+-- * Country [String] <p>The country in an address that a Snowball is to be delivered to.</p>
+-- * Landmark [String] <p>This field is no longer used and the value is ignored.</p>
+-- * PhoneNumber [String] <p>The phone number associated with an address that a Snowball is to be delivered to.</p>
+-- * IsRestricted [Boolean] <p>If the address you are creating is a primary address, then set this option to true. This field is not supported in most regions.</p>
+-- * StateOrProvince [String] <p>The state or province in an address that a Snowball is to be delivered to.</p>
+-- * Street2 [String] <p>The second line in a street address that a Snowball is to be delivered to.</p>
+-- @return Address structure as a key-value pair table
+function M.Address(args)
+	assert(args, "You must provdide an argument table when creating Address")
 	local t = { 
-		["City"] = _City,
-		["Name"] = _Name,
-		["AddressId"] = _AddressId,
-		["Street1"] = _Street1,
-		["Company"] = _Company,
-		["Street3"] = _Street3,
-		["PostalCode"] = _PostalCode,
-		["PrefectureOrDistrict"] = _PrefectureOrDistrict,
-		["Country"] = _Country,
-		["Landmark"] = _Landmark,
-		["PhoneNumber"] = _PhoneNumber,
-		["IsRestricted"] = _IsRestricted,
-		["StateOrProvince"] = _StateOrProvince,
-		["Street2"] = _Street2,
+		["City"] = args["City"],
+		["Name"] = args["Name"],
+		["AddressId"] = args["AddressId"],
+		["Street1"] = args["Street1"],
+		["Company"] = args["Company"],
+		["Street3"] = args["Street3"],
+		["PostalCode"] = args["PostalCode"],
+		["PrefectureOrDistrict"] = args["PrefectureOrDistrict"],
+		["Country"] = args["Country"],
+		["Landmark"] = args["Landmark"],
+		["PhoneNumber"] = args["PhoneNumber"],
+		["IsRestricted"] = args["IsRestricted"],
+		["StateOrProvince"] = args["StateOrProvince"],
+		["Street2"] = args["Street2"],
 	}
 	asserts.AssertAddress(t)
 	return t
@@ -920,8 +1007,11 @@ end
 
 --- Create a structure of type GetSnowballUsageRequest
 --  
-function M.GetSnowballUsageRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSnowballUsageRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return GetSnowballUsageRequest structure as a key-value pair table
+function M.GetSnowballUsageRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSnowballUsageRequest")
 	local t = { 
 	}
 	asserts.AssertGetSnowballUsageRequest(t)
@@ -941,11 +1031,14 @@ end
 
 --- Create a structure of type InvalidInputCombinationException
 -- <p>Job or cluster creation failed. One ore more inputs were invalid. Confirm that the <a>CreateClusterRequest$SnowballType</a> value supports your <a>CreateJobRequest$JobType</a>, and try again.</p>
--- @param _Message [String] 
-function M.InvalidInputCombinationException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputCombinationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidInputCombinationException structure as a key-value pair table
+function M.InvalidInputCombinationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidInputCombinationException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidInputCombinationException(t)
 	return t
@@ -965,12 +1058,15 @@ end
 
 --- Create a structure of type DescribeAddressRequest
 --  
--- @param _AddressId [AddressId] <p>The automatically generated ID for a specific address.</p>
--- Required parameter: AddressId
-function M.DescribeAddressRequest(_AddressId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAddressRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AddressId [AddressId] <p>The automatically generated ID for a specific address.</p>
+-- Required key: AddressId
+-- @return DescribeAddressRequest structure as a key-value pair table
+function M.DescribeAddressRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAddressRequest")
 	local t = { 
-		["AddressId"] = _AddressId,
+		["AddressId"] = args["AddressId"],
 	}
 	asserts.AssertDescribeAddressRequest(t)
 	return t
@@ -990,13 +1086,16 @@ end
 
 --- Create a structure of type LambdaResource
 -- <p>Identifies </p>
--- @param _EventTriggers [EventTriggerDefinitionList] <p>The array of ARNs for <a>S3Resource</a> objects to trigger the <a>LambdaResource</a> objects associated with this job.</p>
--- @param _LambdaArn [ResourceARN] <p>An Amazon Resource Name (ARN) that represents an AWS Lambda function to be triggered by PUT object actions on the associated local Amazon S3 resource.</p>
-function M.LambdaResource(_EventTriggers, _LambdaArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LambdaResource")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EventTriggers [EventTriggerDefinitionList] <p>The array of ARNs for <a>S3Resource</a> objects to trigger the <a>LambdaResource</a> objects associated with this job.</p>
+-- * LambdaArn [ResourceARN] <p>An Amazon Resource Name (ARN) that represents an AWS Lambda function to be triggered by PUT object actions on the associated local Amazon S3 resource.</p>
+-- @return LambdaResource structure as a key-value pair table
+function M.LambdaResource(args)
+	assert(args, "You must provdide an argument table when creating LambdaResource")
 	local t = { 
-		["EventTriggers"] = _EventTriggers,
-		["LambdaArn"] = _LambdaArn,
+		["EventTriggers"] = args["EventTriggers"],
+		["LambdaArn"] = args["LambdaArn"],
 	}
 	asserts.AssertLambdaResource(t)
 	return t
@@ -1016,13 +1115,16 @@ end
 
 --- Create a structure of type ListClusterJobsResult
 --  
--- @param _NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>ListClusterJobsResult</code> call, your list of returned jobs will start from this point in the array.</p>
--- @param _JobListEntries [JobListEntryList] <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. </p>
-function M.ListClusterJobsResult(_NextToken, _JobListEntries, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListClusterJobsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>ListClusterJobsResult</code> call, your list of returned jobs will start from this point in the array.</p>
+-- * JobListEntries [JobListEntryList] <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. </p>
+-- @return ListClusterJobsResult structure as a key-value pair table
+function M.ListClusterJobsResult(args)
+	assert(args, "You must provdide an argument table when creating ListClusterJobsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["JobListEntries"] = _JobListEntries,
+		["NextToken"] = args["NextToken"],
+		["JobListEntries"] = args["JobListEntries"],
 	}
 	asserts.AssertListClusterJobsResult(t)
 	return t
@@ -1041,11 +1143,14 @@ end
 
 --- Create a structure of type ClusterLimitExceededException
 -- <p>Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster has exactly five notes.</p>
--- @param _Message [String] 
-function M.ClusterLimitExceededException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ClusterLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return ClusterLimitExceededException structure as a key-value pair table
+function M.ClusterLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating ClusterLimitExceededException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertClusterLimitExceededException(t)
 	return t
@@ -1065,13 +1170,16 @@ end
 
 --- Create a structure of type DescribeAddressesResult
 --  
--- @param _NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>DescribeAddresses</code> call, your list of returned addresses will start from this point in the array.</p>
--- @param _Addresses [AddressList] <p>The Snowball shipping addresses that were created for this account.</p>
-function M.DescribeAddressesResult(_NextToken, _Addresses, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAddressesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>DescribeAddresses</code> call, your list of returned addresses will start from this point in the array.</p>
+-- * Addresses [AddressList] <p>The Snowball shipping addresses that were created for this account.</p>
+-- @return DescribeAddressesResult structure as a key-value pair table
+function M.DescribeAddressesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeAddressesResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Addresses"] = _Addresses,
+		["NextToken"] = args["NextToken"],
+		["Addresses"] = args["Addresses"],
 	}
 	asserts.AssertDescribeAddressesResult(t)
 	return t
@@ -1092,15 +1200,18 @@ end
 
 --- Create a structure of type Notification
 -- <p>The Amazon Simple Notification Service (Amazon SNS) notification settings associated with a specific job. The <code>Notification</code> object is returned as a part of the response syntax of the <code>DescribeJob</code> action in the <code>JobMetadata</code> data type.</p> <p>When the notification settings are defined during job creation, you can choose to notify based on a specific set of job states using the <code>JobStatesToNotify</code> array of strings, or you can specify that you want to have Amazon SNS notifications sent out for all job states with <code>NotifyAll</code> set to true.</p>
--- @param _NotifyAll [Boolean] <p>Any change in job state will trigger a notification for this job.</p>
--- @param _JobStatesToNotify [JobStateList] <p>The list of job states that will trigger a notification for this job.</p>
--- @param _SnsTopicARN [SnsTopicARN] <p>The new SNS <code>TopicArn</code> that you want to associate with this job. You can create Amazon Resource Names (ARNs) for topics by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API action.</p> <p>You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple Notification Service (SNS) API action.</p>
-function M.Notification(_NotifyAll, _JobStatesToNotify, _SnsTopicARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Notification")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NotifyAll [Boolean] <p>Any change in job state will trigger a notification for this job.</p>
+-- * JobStatesToNotify [JobStateList] <p>The list of job states that will trigger a notification for this job.</p>
+-- * SnsTopicARN [SnsTopicARN] <p>The new SNS <code>TopicArn</code> that you want to associate with this job. You can create Amazon Resource Names (ARNs) for topics by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API action.</p> <p>You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple Notification Service (SNS) API action.</p>
+-- @return Notification structure as a key-value pair table
+function M.Notification(args)
+	assert(args, "You must provdide an argument table when creating Notification")
 	local t = { 
-		["NotifyAll"] = _NotifyAll,
-		["JobStatesToNotify"] = _JobStatesToNotify,
-		["SnsTopicARN"] = _SnsTopicARN,
+		["NotifyAll"] = args["NotifyAll"],
+		["JobStatesToNotify"] = args["JobStatesToNotify"],
+		["SnsTopicARN"] = args["SnsTopicARN"],
 	}
 	asserts.AssertNotification(t)
 	return t
@@ -1120,13 +1231,16 @@ end
 
 --- Create a structure of type DescribeAddressesRequest
 --  
--- @param _NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>ADDRESS</code> objects, you have the option of specifying a value for <code>NextToken</code> as the starting point for your list of returned addresses.</p>
--- @param _MaxResults [ListLimit] <p>The number of <code>ADDRESS</code> objects to return.</p>
-function M.DescribeAddressesRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAddressesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>ADDRESS</code> objects, you have the option of specifying a value for <code>NextToken</code> as the starting point for your list of returned addresses.</p>
+-- * MaxResults [ListLimit] <p>The number of <code>ADDRESS</code> objects to return.</p>
+-- @return DescribeAddressesRequest structure as a key-value pair table
+function M.DescribeAddressesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAddressesRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeAddressesRequest(t)
 	return t
@@ -1144,8 +1258,11 @@ end
 
 --- Create a structure of type UpdateJobResult
 --  
-function M.UpdateJobResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateJobResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateJobResult structure as a key-value pair table
+function M.UpdateJobResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateJobResult")
 	local t = { 
 	}
 	asserts.AssertUpdateJobResult(t)
@@ -1166,12 +1283,15 @@ end
 
 --- Create a structure of type GetJobUnlockCodeRequest
 --  
--- @param _JobId [JobId] <p>The ID for the job that you want to get the <code>UnlockCode</code> value for, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- Required parameter: JobId
-function M.GetJobUnlockCodeRequest(_JobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetJobUnlockCodeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobId [JobId] <p>The ID for the job that you want to get the <code>UnlockCode</code> value for, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- Required key: JobId
+-- @return GetJobUnlockCodeRequest structure as a key-value pair table
+function M.GetJobUnlockCodeRequest(args)
+	assert(args, "You must provdide an argument table when creating GetJobUnlockCodeRequest")
 	local t = { 
-		["JobId"] = _JobId,
+		["JobId"] = args["JobId"],
 	}
 	asserts.AssertGetJobUnlockCodeRequest(t)
 	return t
@@ -1204,34 +1324,37 @@ end
 
 --- Create a structure of type CreateClusterRequest
 --  
--- @param _Description [String] <p>An optional description of this specific cluster, for example <code>Environmental Data Cluster-01</code>.</p>
--- @param _AddressId [AddressId] <p>The ID for the address that you want the cluster shipped to.&gt;</p>
--- @param _KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> value that you want to associate with this cluster. <code>KmsKeyARN</code> values are created by using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS Key Management Service (AWS KMS). </p>
--- @param _Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.</p>
--- @param _RoleARN [RoleARN] <p>The <code>RoleARN</code> that you want to associate with this cluster. <code>RoleArn</code> values are created by using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
--- @param _ForwardingAddressId [AddressId] <p>The forwarding address ID for a cluster. This field is not supported in most regions.</p>
--- @param _ShippingOption [ShippingOption] <p>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowball Edges are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
--- @param _JobType [JobType] <p>The type of job for this cluster. Currently, the only job type supported for clusters is <code>LOCAL_USE</code>.</p>
--- @param _SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
--- @param _Resources [JobResource] <p>The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language. </p>
--- Required parameter: JobType
--- Required parameter: Resources
--- Required parameter: AddressId
--- Required parameter: RoleARN
--- Required parameter: ShippingOption
-function M.CreateClusterRequest(_Description, _AddressId, _KmsKeyARN, _Notification, _RoleARN, _ForwardingAddressId, _ShippingOption, _JobType, _SnowballType, _Resources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [String] <p>An optional description of this specific cluster, for example <code>Environmental Data Cluster-01</code>.</p>
+-- * AddressId [AddressId] <p>The ID for the address that you want the cluster shipped to.&gt;</p>
+-- * KmsKeyARN [KmsKeyARN] <p>The <code>KmsKeyARN</code> value that you want to associate with this cluster. <code>KmsKeyARN</code> values are created by using the <a href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS Key Management Service (AWS KMS). </p>
+-- * Notification [Notification] <p>The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.</p>
+-- * RoleARN [RoleARN] <p>The <code>RoleARN</code> that you want to associate with this cluster. <code>RoleArn</code> values are created by using the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
+-- * ForwardingAddressId [AddressId] <p>The forwarding address ID for a cluster. This field is not supported in most regions.</p>
+-- * ShippingOption [ShippingOption] <p>The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowball Edges are delivered in one to seven days.</p> </li> <li> <p>In the US, you have access to one-day shipping and two-day shipping.</p> </li> </ul>
+-- * JobType [JobType] <p>The type of job for this cluster. Currently, the only job type supported for clusters is <code>LOCAL_USE</code>.</p>
+-- * SnowballType [SnowballType] <p>The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is <code>EDGE</code>.</p>
+-- * Resources [JobResource] <p>The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language. </p>
+-- Required key: JobType
+-- Required key: Resources
+-- Required key: AddressId
+-- Required key: RoleARN
+-- Required key: ShippingOption
+-- @return CreateClusterRequest structure as a key-value pair table
+function M.CreateClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateClusterRequest")
 	local t = { 
-		["Description"] = _Description,
-		["AddressId"] = _AddressId,
-		["KmsKeyARN"] = _KmsKeyARN,
-		["Notification"] = _Notification,
-		["RoleARN"] = _RoleARN,
-		["ForwardingAddressId"] = _ForwardingAddressId,
-		["ShippingOption"] = _ShippingOption,
-		["JobType"] = _JobType,
-		["SnowballType"] = _SnowballType,
-		["Resources"] = _Resources,
+		["Description"] = args["Description"],
+		["AddressId"] = args["AddressId"],
+		["KmsKeyARN"] = args["KmsKeyARN"],
+		["Notification"] = args["Notification"],
+		["RoleARN"] = args["RoleARN"],
+		["ForwardingAddressId"] = args["ForwardingAddressId"],
+		["ShippingOption"] = args["ShippingOption"],
+		["JobType"] = args["JobType"],
+		["SnowballType"] = args["SnowballType"],
+		["Resources"] = args["Resources"],
 	}
 	asserts.AssertCreateClusterRequest(t)
 	return t
@@ -1256,23 +1379,26 @@ end
 
 --- Create a structure of type JobListEntry
 -- <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of an export job.</p>
--- @param _IsMaster [Boolean] <p>A value that indicates that this job is a master job. A master job represents a successful request to create an export job. Master jobs aren't associated with any Snowballs. Instead, each master job will have at least one job part, and each job part is associated with a Snowball. It might take some time before the job parts associated with a particular master job are listed, because they are created after the master job is created.</p>
--- @param _JobState [JobState] <p>The current state of this job.</p>
--- @param _Description [String] <p>The optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.</p>
--- @param _JobId [String] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- @param _SnowballType [SnowballType] <p>The type of appliance used with this job.</p>
--- @param _CreationDate [Timestamp] <p>The creation date for this job.</p>
--- @param _JobType [JobType] <p>The type of job.</p>
-function M.JobListEntry(_IsMaster, _JobState, _Description, _JobId, _SnowballType, _CreationDate, _JobType, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobListEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IsMaster [Boolean] <p>A value that indicates that this job is a master job. A master job represents a successful request to create an export job. Master jobs aren't associated with any Snowballs. Instead, each master job will have at least one job part, and each job part is associated with a Snowball. It might take some time before the job parts associated with a particular master job are listed, because they are created after the master job is created.</p>
+-- * JobState [JobState] <p>The current state of this job.</p>
+-- * Description [String] <p>The optional description of this specific job, for example <code>Important Photos 2016-08-11</code>.</p>
+-- * JobId [String] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- * SnowballType [SnowballType] <p>The type of appliance used with this job.</p>
+-- * CreationDate [Timestamp] <p>The creation date for this job.</p>
+-- * JobType [JobType] <p>The type of job.</p>
+-- @return JobListEntry structure as a key-value pair table
+function M.JobListEntry(args)
+	assert(args, "You must provdide an argument table when creating JobListEntry")
 	local t = { 
-		["IsMaster"] = _IsMaster,
-		["JobState"] = _JobState,
-		["Description"] = _Description,
-		["JobId"] = _JobId,
-		["SnowballType"] = _SnowballType,
-		["CreationDate"] = _CreationDate,
-		["JobType"] = _JobType,
+		["IsMaster"] = args["IsMaster"],
+		["JobState"] = args["JobState"],
+		["Description"] = args["Description"],
+		["JobId"] = args["JobId"],
+		["SnowballType"] = args["SnowballType"],
+		["CreationDate"] = args["CreationDate"],
+		["JobType"] = args["JobType"],
 	}
 	asserts.AssertJobListEntry(t)
 	return t
@@ -1294,17 +1420,20 @@ end
 
 --- Create a structure of type DataTransfer
 -- <p>Defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.</p>
--- @param _ObjectsTransferred [Long] <p>The number of objects transferred between a Snowball and Amazon S3.</p>
--- @param _TotalBytes [Long] <p>The total bytes of data for a transfer between a Snowball and Amazon S3. This value is set to 0 (zero) until all the keys that will be transferred have been listed.</p>
--- @param _BytesTransferred [Long] <p>The number of bytes transferred between a Snowball and Amazon S3.</p>
--- @param _TotalObjects [Long] <p>The total number of objects for a transfer between a Snowball and Amazon S3. This value is set to 0 (zero) until all the keys that will be transferred have been listed.</p>
-function M.DataTransfer(_ObjectsTransferred, _TotalBytes, _BytesTransferred, _TotalObjects, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DataTransfer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ObjectsTransferred [Long] <p>The number of objects transferred between a Snowball and Amazon S3.</p>
+-- * TotalBytes [Long] <p>The total bytes of data for a transfer between a Snowball and Amazon S3. This value is set to 0 (zero) until all the keys that will be transferred have been listed.</p>
+-- * BytesTransferred [Long] <p>The number of bytes transferred between a Snowball and Amazon S3.</p>
+-- * TotalObjects [Long] <p>The total number of objects for a transfer between a Snowball and Amazon S3. This value is set to 0 (zero) until all the keys that will be transferred have been listed.</p>
+-- @return DataTransfer structure as a key-value pair table
+function M.DataTransfer(args)
+	assert(args, "You must provdide an argument table when creating DataTransfer")
 	local t = { 
-		["ObjectsTransferred"] = _ObjectsTransferred,
-		["TotalBytes"] = _TotalBytes,
-		["BytesTransferred"] = _BytesTransferred,
-		["TotalObjects"] = _TotalObjects,
+		["ObjectsTransferred"] = args["ObjectsTransferred"],
+		["TotalBytes"] = args["TotalBytes"],
+		["BytesTransferred"] = args["BytesTransferred"],
+		["TotalObjects"] = args["TotalObjects"],
 	}
 	asserts.AssertDataTransfer(t)
 	return t
@@ -1323,11 +1452,14 @@ end
 
 --- Create a structure of type InvalidAddressException
 -- <p>The address provided was invalid. Check the address with your region's carrier, and try again.</p>
--- @param _Message [String] 
-function M.InvalidAddressException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAddressException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidAddressException structure as a key-value pair table
+function M.InvalidAddressException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAddressException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidAddressException(t)
 	return t
@@ -1345,8 +1477,11 @@ end
 
 --- Create a structure of type UpdateClusterResult
 --  
-function M.UpdateClusterResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateClusterResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateClusterResult structure as a key-value pair table
+function M.UpdateClusterResult(args)
+	assert(args, "You must provdide an argument table when creating UpdateClusterResult")
 	local t = { 
 	}
 	asserts.AssertUpdateClusterResult(t)
@@ -1366,11 +1501,14 @@ end
 
 --- Create a structure of type InvalidJobStateException
 -- <p>The action can't be performed because the job's current state doesn't allow that action to be performed.</p>
--- @param _Message [String] 
-function M.InvalidJobStateException(_Message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidJobStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Message [String] 
+-- @return InvalidJobStateException structure as a key-value pair table
+function M.InvalidJobStateException(args)
+	assert(args, "You must provdide an argument table when creating InvalidJobStateException")
 	local t = { 
-		["Message"] = _Message,
+		["Message"] = args["Message"],
 	}
 	asserts.AssertInvalidJobStateException(t)
 	return t
@@ -1388,8 +1526,11 @@ end
 
 --- Create a structure of type CancelJobResult
 --  
-function M.CancelJobResult(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelJobResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CancelJobResult structure as a key-value pair table
+function M.CancelJobResult(args)
+	assert(args, "You must provdide an argument table when creating CancelJobResult")
 	local t = { 
 	}
 	asserts.AssertCancelJobResult(t)
@@ -1410,12 +1551,15 @@ end
 
 --- Create a structure of type DescribeClusterRequest
 --  
--- @param _ClusterId [ClusterId] <p>The automatically generated ID for a cluster.</p>
--- Required parameter: ClusterId
-function M.DescribeClusterRequest(_ClusterId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterId [ClusterId] <p>The automatically generated ID for a cluster.</p>
+-- Required key: ClusterId
+-- @return DescribeClusterRequest structure as a key-value pair table
+function M.DescribeClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeClusterRequest")
 	local t = { 
-		["ClusterId"] = _ClusterId,
+		["ClusterId"] = args["ClusterId"],
 	}
 	asserts.AssertDescribeClusterRequest(t)
 	return t
@@ -1435,13 +1579,16 @@ end
 
 --- Create a structure of type JobResource
 -- <p>Contains an array of <code>S3Resource</code> objects. Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.</p>
--- @param _LambdaResources [LambdaResourceList] <p>The Python-language Lambda functions for this job.</p>
--- @param _S3Resources [S3ResourceList] <p>An array of <code>S3Resource</code> objects.</p>
-function M.JobResource(_LambdaResources, _S3Resources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating JobResource")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LambdaResources [LambdaResourceList] <p>The Python-language Lambda functions for this job.</p>
+-- * S3Resources [S3ResourceList] <p>An array of <code>S3Resource</code> objects.</p>
+-- @return JobResource structure as a key-value pair table
+function M.JobResource(args)
+	assert(args, "You must provdide an argument table when creating JobResource")
 	local t = { 
-		["LambdaResources"] = _LambdaResources,
-		["S3Resources"] = _S3Resources,
+		["LambdaResources"] = args["LambdaResources"],
+		["S3Resources"] = args["S3Resources"],
 	}
 	asserts.AssertJobResource(t)
 	return t
@@ -1461,13 +1608,16 @@ end
 
 --- Create a structure of type ListClustersRequest
 --  
--- @param _NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>ClusterListEntry</code> objects, you have the option of specifying <code>NextToken</code> as the starting point for your returned list.</p>
--- @param _MaxResults [ListLimit] <p>The number of <code>ClusterListEntry</code> objects to return.</p>
-function M.ListClustersRequest(_NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListClustersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>ClusterListEntry</code> objects, you have the option of specifying <code>NextToken</code> as the starting point for your returned list.</p>
+-- * MaxResults [ListLimit] <p>The number of <code>ClusterListEntry</code> objects to return.</p>
+-- @return ListClustersRequest structure as a key-value pair table
+function M.ListClustersRequest(args)
+	assert(args, "You must provdide an argument table when creating ListClustersRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListClustersRequest(t)
 	return t
@@ -1494,26 +1644,29 @@ end
 
 --- Create a structure of type UpdateClusterRequest
 --  
--- @param _Description [String] <p>The updated description of this cluster.</p>
--- @param _AddressId [AddressId] <p>The ID of the updated <a>Address</a> object.</p>
--- @param _Notification [Notification] <p>The new or updated <a>Notification</a> object.</p>
--- @param _RoleARN [RoleARN] <p>The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
--- @param _ClusterId [ClusterId] <p>The cluster ID of the cluster that you want to update, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- @param _ForwardingAddressId [AddressId] <p>The updated ID for the forwarding address for a cluster. This field is not supported in most regions.</p>
--- @param _ShippingOption [ShippingOption] <p>The updated shipping option value of this cluster's <a>ShippingDetails</a> object.</p>
--- @param _Resources [JobResource] <p>The updated arrays of <a>JobResource</a> objects that can include updated <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
--- Required parameter: ClusterId
-function M.UpdateClusterRequest(_Description, _AddressId, _Notification, _RoleARN, _ClusterId, _ForwardingAddressId, _ShippingOption, _Resources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [String] <p>The updated description of this cluster.</p>
+-- * AddressId [AddressId] <p>The ID of the updated <a>Address</a> object.</p>
+-- * Notification [Notification] <p>The new or updated <a>Notification</a> object.</p>
+-- * RoleARN [RoleARN] <p>The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS Identity and Access Management (IAM).</p>
+-- * ClusterId [ClusterId] <p>The cluster ID of the cluster that you want to update, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- * ForwardingAddressId [AddressId] <p>The updated ID for the forwarding address for a cluster. This field is not supported in most regions.</p>
+-- * ShippingOption [ShippingOption] <p>The updated shipping option value of this cluster's <a>ShippingDetails</a> object.</p>
+-- * Resources [JobResource] <p>The updated arrays of <a>JobResource</a> objects that can include updated <a>S3Resource</a> objects or <a>LambdaResource</a> objects.</p>
+-- Required key: ClusterId
+-- @return UpdateClusterRequest structure as a key-value pair table
+function M.UpdateClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateClusterRequest")
 	local t = { 
-		["Description"] = _Description,
-		["AddressId"] = _AddressId,
-		["Notification"] = _Notification,
-		["RoleARN"] = _RoleARN,
-		["ClusterId"] = _ClusterId,
-		["ForwardingAddressId"] = _ForwardingAddressId,
-		["ShippingOption"] = _ShippingOption,
-		["Resources"] = _Resources,
+		["Description"] = args["Description"],
+		["AddressId"] = args["AddressId"],
+		["Notification"] = args["Notification"],
+		["RoleARN"] = args["RoleARN"],
+		["ClusterId"] = args["ClusterId"],
+		["ForwardingAddressId"] = args["ForwardingAddressId"],
+		["ShippingOption"] = args["ShippingOption"],
+		["Resources"] = args["Resources"],
 	}
 	asserts.AssertUpdateClusterRequest(t)
 	return t
@@ -1533,13 +1686,16 @@ end
 
 --- Create a structure of type ListClustersResult
 --  
--- @param _ClusterListEntries [ClusterListEntryList] <p>Each <code>ClusterListEntry</code> object contains a cluster's state, a cluster's ID, and other important status information.</p>
--- @param _NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>ClusterListEntry</code> call, your list of returned clusters will start from this point in the array.</p>
-function M.ListClustersResult(_ClusterListEntries, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListClustersResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterListEntries [ClusterListEntryList] <p>Each <code>ClusterListEntry</code> object contains a cluster's state, a cluster's ID, and other important status information.</p>
+-- * NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>ClusterListEntry</code> call, your list of returned clusters will start from this point in the array.</p>
+-- @return ListClustersResult structure as a key-value pair table
+function M.ListClustersResult(args)
+	assert(args, "You must provdide an argument table when creating ListClustersResult")
 	local t = { 
-		["ClusterListEntries"] = _ClusterListEntries,
-		["NextToken"] = _NextToken,
+		["ClusterListEntries"] = args["ClusterListEntries"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertListClustersResult(t)
 	return t
@@ -1559,13 +1715,16 @@ end
 
 --- Create a structure of type S3Resource
 -- <p>Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into. For export jobs, this object can have an optional <code>KeyRange</code> value. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
--- @param _BucketArn [ResourceARN] <p>The Amazon Resource Name (ARN) of an Amazon S3 bucket.</p>
--- @param _KeyRange [KeyRange] <p>For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
-function M.S3Resource(_BucketArn, _KeyRange, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating S3Resource")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BucketArn [ResourceARN] <p>The Amazon Resource Name (ARN) of an Amazon S3 bucket.</p>
+-- * KeyRange [KeyRange] <p>For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
+-- @return S3Resource structure as a key-value pair table
+function M.S3Resource(args)
+	assert(args, "You must provdide an argument table when creating S3Resource")
 	local t = { 
-		["BucketArn"] = _BucketArn,
-		["KeyRange"] = _KeyRange,
+		["BucketArn"] = args["BucketArn"],
+		["KeyRange"] = args["KeyRange"],
 	}
 	asserts.AssertS3Resource(t)
 	return t
@@ -1587,16 +1746,19 @@ end
 
 --- Create a structure of type ListClusterJobsRequest
 --  
--- @param _NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>JobListEntry</code> objects, you have the option of specifying <code>NextToken</code> as the starting point for your returned list.</p>
--- @param _ClusterId [ClusterId] <p>The 39-character ID for the cluster that you want to list, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- @param _MaxResults [ListLimit] <p>The number of <code>JobListEntry</code> objects to return.</p>
--- Required parameter: ClusterId
-function M.ListClusterJobsRequest(_NextToken, _ClusterId, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListClusterJobsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>HTTP requests are stateless. To identify what object comes "next" in the list of <code>JobListEntry</code> objects, you have the option of specifying <code>NextToken</code> as the starting point for your returned list.</p>
+-- * ClusterId [ClusterId] <p>The 39-character ID for the cluster that you want to list, for example <code>CID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- * MaxResults [ListLimit] <p>The number of <code>JobListEntry</code> objects to return.</p>
+-- Required key: ClusterId
+-- @return ListClusterJobsRequest structure as a key-value pair table
+function M.ListClusterJobsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListClusterJobsRequest")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["ClusterId"] = _ClusterId,
-		["MaxResults"] = _MaxResults,
+		["NextToken"] = args["NextToken"],
+		["ClusterId"] = args["ClusterId"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListClusterJobsRequest(t)
 	return t
@@ -1615,11 +1777,14 @@ end
 
 --- Create a structure of type DescribeClusterResult
 --  
--- @param _ClusterMetadata [ClusterMetadata] <p>Information about a specific cluster, including shipping information, cluster status, and other important metadata.</p>
-function M.DescribeClusterResult(_ClusterMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeClusterResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ClusterMetadata [ClusterMetadata] <p>Information about a specific cluster, including shipping information, cluster status, and other important metadata.</p>
+-- @return DescribeClusterResult structure as a key-value pair table
+function M.DescribeClusterResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeClusterResult")
 	local t = { 
-		["ClusterMetadata"] = _ClusterMetadata,
+		["ClusterMetadata"] = args["ClusterMetadata"],
 	}
 	asserts.AssertDescribeClusterResult(t)
 	return t
@@ -1639,12 +1804,15 @@ end
 
 --- Create a structure of type CancelJobRequest
 --  
--- @param _JobId [JobId] <p>The 39-character job ID for the job that you want to cancel, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
--- Required parameter: JobId
-function M.CancelJobRequest(_JobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelJobRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * JobId [JobId] <p>The 39-character job ID for the job that you want to cancel, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
+-- Required key: JobId
+-- @return CancelJobRequest structure as a key-value pair table
+function M.CancelJobRequest(args)
+	assert(args, "You must provdide an argument table when creating CancelJobRequest")
 	local t = { 
-		["JobId"] = _JobId,
+		["JobId"] = args["JobId"],
 	}
 	asserts.AssertCancelJobRequest(t)
 	return t
@@ -1665,15 +1833,18 @@ end
 
 --- Create a structure of type ShippingDetails
 -- <p>A job's shipping information, including inbound and outbound tracking numbers and shipping speed options.</p>
--- @param _OutboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being returned to AWS for a particular job.</p>
--- @param _ShippingOption [ShippingOption] <p>The shipping speed for a particular job. This speed doesn't dictate how soon you'll get the Snowball from the job's creation date. This speed represents how quickly it moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowballs are delivered in one to seven days.</p> </li> <li> <p>In the United States of America (US), you have access to one-day shipping and two-day shipping.</p> </li> </ul>
--- @param _InboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being delivered to the address that you specified for a particular job.</p>
-function M.ShippingDetails(_OutboundShipment, _ShippingOption, _InboundShipment, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ShippingDetails")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OutboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being returned to AWS for a particular job.</p>
+-- * ShippingOption [ShippingOption] <p>The shipping speed for a particular job. This speed doesn't dictate how soon you'll get the Snowball from the job's creation date. This speed represents how quickly it moves to its destination while in transit. Regional shipping speeds are as follows:</p> <ul> <li> <p>In Australia, you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day.</p> </li> <li> <p>In the European Union (EU), you have access to express shipping. Typically, Snowballs shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.</p> </li> <li> <p>In India, Snowballs are delivered in one to seven days.</p> </li> <li> <p>In the United States of America (US), you have access to one-day shipping and two-day shipping.</p> </li> </ul>
+-- * InboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being delivered to the address that you specified for a particular job.</p>
+-- @return ShippingDetails structure as a key-value pair table
+function M.ShippingDetails(args)
+	assert(args, "You must provdide an argument table when creating ShippingDetails")
 	local t = { 
-		["OutboundShipment"] = _OutboundShipment,
-		["ShippingOption"] = _ShippingOption,
-		["InboundShipment"] = _InboundShipment,
+		["OutboundShipment"] = args["OutboundShipment"],
+		["ShippingOption"] = args["ShippingOption"],
+		["InboundShipment"] = args["InboundShipment"],
 	}
 	asserts.AssertShippingDetails(t)
 	return t

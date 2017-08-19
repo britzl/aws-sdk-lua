@@ -36,14 +36,17 @@ end
 
 --- Create a structure of type UpdateTagsForDomainRequest
 -- <p>The UpdateTagsForDomainRequest includes the following elements.</p>
--- @param _TagsToUpdate [TagList] <p>A list of the tag keys and values that you want to add or update. If you specify a key that already exists, the corresponding value will be replaced.</p>
--- @param _DomainName [DomainName] <p>The domain for which you want to add or update tags.</p>
--- Required parameter: DomainName
-function M.UpdateTagsForDomainRequest(_TagsToUpdate, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTagsForDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagsToUpdate [TagList] <p>A list of the tag keys and values that you want to add or update. If you specify a key that already exists, the corresponding value will be replaced.</p>
+-- * DomainName [DomainName] <p>The domain for which you want to add or update tags.</p>
+-- Required key: DomainName
+-- @return UpdateTagsForDomainRequest structure as a key-value pair table
+function M.UpdateTagsForDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateTagsForDomainRequest")
 	local t = { 
-		["TagsToUpdate"] = _TagsToUpdate,
-		["DomainName"] = _DomainName,
+		["TagsToUpdate"] = args["TagsToUpdate"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertUpdateTagsForDomainRequest(t)
 	return t
@@ -63,12 +66,15 @@ end
 
 --- Create a structure of type DisableDomainAutoRenewRequest
 --  
--- @param _DomainName [DomainName] <p>The name of the domain that you want to disable automatic renewal for.</p>
--- Required parameter: DomainName
-function M.DisableDomainAutoRenewRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableDomainAutoRenewRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] <p>The name of the domain that you want to disable automatic renewal for.</p>
+-- Required key: DomainName
+-- @return DisableDomainAutoRenewRequest structure as a key-value pair table
+function M.DisableDomainAutoRenewRequest(args)
+	assert(args, "You must provdide an argument table when creating DisableDomainAutoRenewRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDisableDomainAutoRenewRequest(t)
 	return t
@@ -91,19 +97,22 @@ end
 
 --- Create a structure of type BillingRecord
 -- <p>Information for one billing record.</p>
--- @param _Operation [OperationType] <p>The operation that you were charged for.</p>
--- @param _InvoiceId [InvoiceId] <p>The ID of the invoice that is associated with the billing record.</p>
--- @param _Price [Price] <p>The price that you were charged for the operation, in US dollars.</p> <p>Example value: 12.0</p>
--- @param _BillDate [Timestamp] <p>The date that the operation was billed, in Unix format.</p>
--- @param _DomainName [DomainName] <p>The name of the domain that the billing record applies to. If the domain name contains characters other than a-z, 0-9, and - (hyphen), such as an internationalized domain name, then this value is in Punycode. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html">DNS Domain Name Format</a> in the <i>Amazon Route 53 Developer Guidezzz</i>.</p>
-function M.BillingRecord(_Operation, _InvoiceId, _Price, _BillDate, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BillingRecord")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Operation [OperationType] <p>The operation that you were charged for.</p>
+-- * InvoiceId [InvoiceId] <p>The ID of the invoice that is associated with the billing record.</p>
+-- * Price [Price] <p>The price that you were charged for the operation, in US dollars.</p> <p>Example value: 12.0</p>
+-- * BillDate [Timestamp] <p>The date that the operation was billed, in Unix format.</p>
+-- * DomainName [DomainName] <p>The name of the domain that the billing record applies to. If the domain name contains characters other than a-z, 0-9, and - (hyphen), such as an internationalized domain name, then this value is in Punycode. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html">DNS Domain Name Format</a> in the <i>Amazon Route 53 Developer Guidezzz</i>.</p>
+-- @return BillingRecord structure as a key-value pair table
+function M.BillingRecord(args)
+	assert(args, "You must provdide an argument table when creating BillingRecord")
 	local t = { 
-		["Operation"] = _Operation,
-		["InvoiceId"] = _InvoiceId,
-		["Price"] = _Price,
-		["BillDate"] = _BillDate,
-		["DomainName"] = _DomainName,
+		["Operation"] = args["Operation"],
+		["InvoiceId"] = args["InvoiceId"],
+		["Price"] = args["Price"],
+		["BillDate"] = args["BillDate"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertBillingRecord(t)
 	return t
@@ -126,18 +135,21 @@ end
 
 --- Create a structure of type DomainSummary
 -- <p>Summary information about one domain.</p>
--- @param _TransferLock [Boolean] <p>Indicates whether a domain is locked from unauthorized transfer to another party.</p>
--- @param _AutoRenew [Boolean] <p>Indicates whether the domain is automatically renewed upon expiration.</p>
--- @param _Expiry [Timestamp] <p>Expiration date of the domain in Coordinated Universal Time (UTC).</p>
--- @param _DomainName [DomainName] <p>The name of the domain that the summary information applies to.</p>
--- Required parameter: DomainName
-function M.DomainSummary(_TransferLock, _AutoRenew, _Expiry, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TransferLock [Boolean] <p>Indicates whether a domain is locked from unauthorized transfer to another party.</p>
+-- * AutoRenew [Boolean] <p>Indicates whether the domain is automatically renewed upon expiration.</p>
+-- * Expiry [Timestamp] <p>Expiration date of the domain in Coordinated Universal Time (UTC).</p>
+-- * DomainName [DomainName] <p>The name of the domain that the summary information applies to.</p>
+-- Required key: DomainName
+-- @return DomainSummary structure as a key-value pair table
+function M.DomainSummary(args)
+	assert(args, "You must provdide an argument table when creating DomainSummary")
 	local t = { 
-		["TransferLock"] = _TransferLock,
-		["AutoRenew"] = _AutoRenew,
-		["Expiry"] = _Expiry,
-		["DomainName"] = _DomainName,
+		["TransferLock"] = args["TransferLock"],
+		["AutoRenew"] = args["AutoRenew"],
+		["Expiry"] = args["Expiry"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDomainSummary(t)
 	return t
@@ -157,13 +169,16 @@ end
 
 --- Create a structure of type ListOperationsRequest
 -- <p>The ListOperations request includes the following elements.</p>
--- @param _Marker [PageMarker] <p>For an initial request for a list of operations, omit this element. If the number of operations that are not yet complete is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional operations. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element.</p>
--- @param _MaxItems [PageMaxItems] <p>Number of domains to be returned.</p> <p>Default: 20</p>
-function M.ListOperationsRequest(_Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOperationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarker] <p>For an initial request for a list of operations, omit this element. If the number of operations that are not yet complete is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional operations. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element.</p>
+-- * MaxItems [PageMaxItems] <p>Number of domains to be returned.</p> <p>Default: 20</p>
+-- @return ListOperationsRequest structure as a key-value pair table
+function M.ListOperationsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListOperationsRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListOperationsRequest(t)
 	return t
@@ -182,11 +197,14 @@ end
 
 --- Create a structure of type UnsupportedTLD
 -- <p>Amazon Route 53 does not support this top-level domain.</p>
--- @param _message [ErrorMessage] <p>Amazon Route 53 does not support this top-level domain.</p>
-function M.UnsupportedTLD(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnsupportedTLD")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>Amazon Route 53 does not support this top-level domain.</p>
+-- @return UnsupportedTLD structure as a key-value pair table
+function M.UnsupportedTLD(args)
+	assert(args, "You must provdide an argument table when creating UnsupportedTLD")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnsupportedTLD(t)
 	return t
@@ -206,12 +224,15 @@ end
 
 --- Create a structure of type ListTagsForDomainResponse
 -- <p>The ListTagsForDomain response includes the following elements.</p>
--- @param _TagList [TagList] <p>A list of the tags that are associated with the specified domain.</p>
--- Required parameter: TagList
-function M.ListTagsForDomainResponse(_TagList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForDomainResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagList [TagList] <p>A list of the tags that are associated with the specified domain.</p>
+-- Required key: TagList
+-- @return ListTagsForDomainResponse structure as a key-value pair table
+function M.ListTagsForDomainResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForDomainResponse")
 	local t = { 
-		["TagList"] = _TagList,
+		["TagList"] = args["TagList"],
 	}
 	asserts.AssertListTagsForDomainResponse(t)
 	return t
@@ -231,12 +252,15 @@ end
 
 --- Create a structure of type RenewDomainResponse
 --  
--- @param _OperationId [OperationId] <p>The identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
--- Required parameter: OperationId
-function M.RenewDomainResponse(_OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RenewDomainResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OperationId [OperationId] <p>The identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
+-- Required key: OperationId
+-- @return RenewDomainResponse structure as a key-value pair table
+function M.RenewDomainResponse(args)
+	assert(args, "You must provdide an argument table when creating RenewDomainResponse")
 	local t = { 
-		["OperationId"] = _OperationId,
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertRenewDomainResponse(t)
 	return t
@@ -258,15 +282,18 @@ end
 
 --- Create a structure of type ExtraParam
 -- <p>ExtraParam includes the following elements.</p>
--- @param _Name [ExtraParamName] <p>Name of the additional parameter required by the top-level domain.</p>
--- @param _Value [ExtraParamValue] <p>Values corresponding to the additional parameter names required by some top-level domains.</p>
--- Required parameter: Name
--- Required parameter: Value
-function M.ExtraParam(_Name, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExtraParam")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [ExtraParamName] <p>Name of the additional parameter required by the top-level domain.</p>
+-- * Value [ExtraParamValue] <p>Values corresponding to the additional parameter names required by some top-level domains.</p>
+-- Required key: Name
+-- Required key: Value
+-- @return ExtraParam structure as a key-value pair table
+function M.ExtraParam(args)
+	assert(args, "You must provdide an argument table when creating ExtraParam")
 	local t = { 
-		["Name"] = _Name,
-		["Value"] = _Value,
+		["Name"] = args["Name"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertExtraParam(t)
 	return t
@@ -290,21 +317,24 @@ end
 
 --- Create a structure of type GetOperationDetailResponse
 -- <p>The GetOperationDetail response includes the following elements.</p>
--- @param _Status [OperationStatus] <p>The current status of the requested operation in the system.</p>
--- @param _DomainName [DomainName] <p>The name of a domain.</p>
--- @param _SubmittedDate [Timestamp] <p>The date when the request was submitted.</p>
--- @param _Message [ErrorMessage] <p>Detailed information on the status including possible errors.</p>
--- @param _Type [OperationType] <p>The type of operation that was requested.</p>
--- @param _OperationId [OperationId] <p>The identifier for the operation.</p>
-function M.GetOperationDetailResponse(_Status, _DomainName, _SubmittedDate, _Message, _Type, _OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationDetailResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [OperationStatus] <p>The current status of the requested operation in the system.</p>
+-- * DomainName [DomainName] <p>The name of a domain.</p>
+-- * SubmittedDate [Timestamp] <p>The date when the request was submitted.</p>
+-- * Message [ErrorMessage] <p>Detailed information on the status including possible errors.</p>
+-- * Type [OperationType] <p>The type of operation that was requested.</p>
+-- * OperationId [OperationId] <p>The identifier for the operation.</p>
+-- @return GetOperationDetailResponse structure as a key-value pair table
+function M.GetOperationDetailResponse(args)
+	assert(args, "You must provdide an argument table when creating GetOperationDetailResponse")
 	local t = { 
-		["Status"] = _Status,
-		["DomainName"] = _DomainName,
-		["SubmittedDate"] = _SubmittedDate,
-		["Message"] = _Message,
-		["Type"] = _Type,
-		["OperationId"] = _OperationId,
+		["Status"] = args["Status"],
+		["DomainName"] = args["DomainName"],
+		["SubmittedDate"] = args["SubmittedDate"],
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertGetOperationDetailResponse(t)
 	return t
@@ -324,12 +354,15 @@ end
 
 --- Create a structure of type GetOperationDetailRequest
 -- <p>The <a>GetOperationDetail</a> request includes the following element.</p>
--- @param _OperationId [OperationId] <p>The identifier for the operation for which you want to get the status. Amazon Route 53 returned the identifier in the response to the original request.</p>
--- Required parameter: OperationId
-function M.GetOperationDetailRequest(_OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOperationDetailRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OperationId [OperationId] <p>The identifier for the operation for which you want to get the status. Amazon Route 53 returned the identifier in the response to the original request.</p>
+-- Required key: OperationId
+-- @return GetOperationDetailRequest structure as a key-value pair table
+function M.GetOperationDetailRequest(args)
+	assert(args, "You must provdide an argument table when creating GetOperationDetailRequest")
 	local t = { 
-		["OperationId"] = _OperationId,
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertGetOperationDetailRequest(t)
 	return t
@@ -349,12 +382,15 @@ end
 
 --- Create a structure of type DisableDomainTransferLockRequest
 -- <p>The DisableDomainTransferLock request includes the following element.</p>
--- @param _DomainName [DomainName] <p>The name of the domain that you want to remove the transfer lock for.</p>
--- Required parameter: DomainName
-function M.DisableDomainTransferLockRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableDomainTransferLockRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] <p>The name of the domain that you want to remove the transfer lock for.</p>
+-- Required key: DomainName
+-- @return DisableDomainTransferLockRequest structure as a key-value pair table
+function M.DisableDomainTransferLockRequest(args)
+	assert(args, "You must provdide an argument table when creating DisableDomainTransferLockRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDisableDomainTransferLockRequest(t)
 	return t
@@ -374,13 +410,16 @@ end
 
 --- Create a structure of type Tag
 -- <p>Each tag includes the following elements.</p>
--- @param _Value [TagValue] <p>The value of a tag.</p> <p>Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"</p> <p>Constraints: Each value can be 0-256 characters long.</p>
--- @param _Key [TagKey] <p>The key (name) of a tag.</p> <p>Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"</p> <p>Constraints: Each key can be 1-128 characters long.</p>
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The value of a tag.</p> <p>Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"</p> <p>Constraints: Each value can be 0-256 characters long.</p>
+-- * Key [TagKey] <p>The key (name) of a tag.</p> <p>Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"</p> <p>Constraints: Each key can be 1-128 characters long.</p>
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -403,17 +442,20 @@ end
 
 --- Create a structure of type RenewDomainRequest
 -- <p>A <code>RenewDomain</code> request includes the number of years that you want to renew for and the current expiration year.</p>
--- @param _CurrentExpiryYear [CurrentExpiryYear] <p>The year when the registration for the domain is set to expire. This value must match the current expiration date for the domain.</p>
--- @param _DurationInYears [DurationInYears] <p>The number of years that you want to renew the domain for. The maximum number of years depends on the top-level domain. For the range of valid values for your domain, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html">Domains that You Can Register with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>Default: 1</p>
--- @param _DomainName [DomainName] <p>The name of the domain that you want to renew.</p>
--- Required parameter: DomainName
--- Required parameter: CurrentExpiryYear
-function M.RenewDomainRequest(_CurrentExpiryYear, _DurationInYears, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RenewDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CurrentExpiryYear [CurrentExpiryYear] <p>The year when the registration for the domain is set to expire. This value must match the current expiration date for the domain.</p>
+-- * DurationInYears [DurationInYears] <p>The number of years that you want to renew the domain for. The maximum number of years depends on the top-level domain. For the range of valid values for your domain, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html">Domains that You Can Register with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>Default: 1</p>
+-- * DomainName [DomainName] <p>The name of the domain that you want to renew.</p>
+-- Required key: DomainName
+-- Required key: CurrentExpiryYear
+-- @return RenewDomainRequest structure as a key-value pair table
+function M.RenewDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating RenewDomainRequest")
 	local t = { 
-		["CurrentExpiryYear"] = _CurrentExpiryYear,
-		["DurationInYears"] = _DurationInYears,
-		["DomainName"] = _DomainName,
+		["CurrentExpiryYear"] = args["CurrentExpiryYear"],
+		["DurationInYears"] = args["DurationInYears"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertRenewDomainRequest(t)
 	return t
@@ -431,8 +473,11 @@ end
 
 --- Create a structure of type DisableDomainAutoRenewResponse
 --  
-function M.DisableDomainAutoRenewResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableDomainAutoRenewResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisableDomainAutoRenewResponse structure as a key-value pair table
+function M.DisableDomainAutoRenewResponse(args)
+	assert(args, "You must provdide an argument table when creating DisableDomainAutoRenewResponse")
 	local t = { 
 	}
 	asserts.AssertDisableDomainAutoRenewResponse(t)
@@ -453,13 +498,16 @@ end
 
 --- Create a structure of type GetContactReachabilityStatusResponse
 --  
--- @param _status [ReachabilityStatus] <p>Whether the registrant contact has responded. Values include the following:</p> <dl> <dt>PENDING</dt> <dd> <p>We sent the confirmation email and haven't received a response yet.</p> </dd> <dt>DONE</dt> <dd> <p>We sent the email and got confirmation from the registrant contact.</p> </dd> <dt>EXPIRED</dt> <dd> <p>The time limit expired before the registrant contact responded.</p> </dd> </dl>
--- @param _domainName [DomainName] <p>The domain name for which you requested the reachability status.</p>
-function M.GetContactReachabilityStatusResponse(_status, _domainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetContactReachabilityStatusResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [ReachabilityStatus] <p>Whether the registrant contact has responded. Values include the following:</p> <dl> <dt>PENDING</dt> <dd> <p>We sent the confirmation email and haven't received a response yet.</p> </dd> <dt>DONE</dt> <dd> <p>We sent the email and got confirmation from the registrant contact.</p> </dd> <dt>EXPIRED</dt> <dd> <p>The time limit expired before the registrant contact responded.</p> </dd> </dl>
+-- * domainName [DomainName] <p>The domain name for which you requested the reachability status.</p>
+-- @return GetContactReachabilityStatusResponse structure as a key-value pair table
+function M.GetContactReachabilityStatusResponse(args)
+	assert(args, "You must provdide an argument table when creating GetContactReachabilityStatusResponse")
 	local t = { 
-		["status"] = _status,
-		["domainName"] = _domainName,
+		["status"] = args["status"],
+		["domainName"] = args["domainName"],
 	}
 	asserts.AssertGetContactReachabilityStatusResponse(t)
 	return t
@@ -481,15 +529,18 @@ end
 
 --- Create a structure of type DeleteTagsForDomainRequest
 -- <p>The DeleteTagsForDomainRequest includes the following elements.</p>
--- @param _TagsToDelete [TagKeyList] <p>A list of tag keys to delete.</p>
--- @param _DomainName [DomainName] <p>The domain for which you want to delete one or more tags.</p>
--- Required parameter: DomainName
--- Required parameter: TagsToDelete
-function M.DeleteTagsForDomainRequest(_TagsToDelete, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsForDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagsToDelete [TagKeyList] <p>A list of tag keys to delete.</p>
+-- * DomainName [DomainName] <p>The domain for which you want to delete one or more tags.</p>
+-- Required key: DomainName
+-- Required key: TagsToDelete
+-- @return DeleteTagsForDomainRequest structure as a key-value pair table
+function M.DeleteTagsForDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteTagsForDomainRequest")
 	local t = { 
-		["TagsToDelete"] = _TagsToDelete,
-		["DomainName"] = _DomainName,
+		["TagsToDelete"] = args["TagsToDelete"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDeleteTagsForDomainRequest(t)
 	return t
@@ -513,18 +564,21 @@ end
 
 --- Create a structure of type GetDomainSuggestionsRequest
 --  
--- @param _OnlyAvailable [Boolean] <p>If <code>OnlyAvailable</code> is <code>true</code>, Amazon Route 53 returns only domain names that are available. If <code>OnlyAvailable</code> is <code>false</code>, Amazon Route 53 returns domain names without checking whether they're available to be registered. To determine whether the domain is available, you can call <code>checkDomainAvailability</code> for each suggestion.</p>
--- @param _SuggestionCount [Integer] <p>The number of suggested domain names that you want Amazon Route 53 to return.</p>
--- @param _DomainName [DomainName] <p>A domain name that you want to use as the basis for a list of possible domain names. The domain name must contain a top-level domain (TLD), such as .com, that Amazon Route 53 supports. For a list of TLDs, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html">Domains that You Can Register with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.</p>
--- Required parameter: DomainName
--- Required parameter: SuggestionCount
--- Required parameter: OnlyAvailable
-function M.GetDomainSuggestionsRequest(_OnlyAvailable, _SuggestionCount, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainSuggestionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OnlyAvailable [Boolean] <p>If <code>OnlyAvailable</code> is <code>true</code>, Amazon Route 53 returns only domain names that are available. If <code>OnlyAvailable</code> is <code>false</code>, Amazon Route 53 returns domain names without checking whether they're available to be registered. To determine whether the domain is available, you can call <code>checkDomainAvailability</code> for each suggestion.</p>
+-- * SuggestionCount [Integer] <p>The number of suggested domain names that you want Amazon Route 53 to return.</p>
+-- * DomainName [DomainName] <p>A domain name that you want to use as the basis for a list of possible domain names. The domain name must contain a top-level domain (TLD), such as .com, that Amazon Route 53 supports. For a list of TLDs, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html">Domains that You Can Register with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.</p>
+-- Required key: DomainName
+-- Required key: SuggestionCount
+-- Required key: OnlyAvailable
+-- @return GetDomainSuggestionsRequest structure as a key-value pair table
+function M.GetDomainSuggestionsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDomainSuggestionsRequest")
 	local t = { 
-		["OnlyAvailable"] = _OnlyAvailable,
-		["SuggestionCount"] = _SuggestionCount,
-		["DomainName"] = _DomainName,
+		["OnlyAvailable"] = args["OnlyAvailable"],
+		["SuggestionCount"] = args["SuggestionCount"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertGetDomainSuggestionsRequest(t)
 	return t
@@ -544,12 +598,15 @@ end
 
 --- Create a structure of type RetrieveDomainAuthCodeRequest
 -- <p>A request for the authorization code for the specified domain. To transfer a domain to another registrar, you provide this value to the new registrar.</p>
--- @param _DomainName [DomainName] <p>The name of the domain that you want to get an authorization code for.</p>
--- Required parameter: DomainName
-function M.RetrieveDomainAuthCodeRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveDomainAuthCodeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] <p>The name of the domain that you want to get an authorization code for.</p>
+-- Required key: DomainName
+-- @return RetrieveDomainAuthCodeRequest structure as a key-value pair table
+function M.RetrieveDomainAuthCodeRequest(args)
+	assert(args, "You must provdide an argument table when creating RetrieveDomainAuthCodeRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertRetrieveDomainAuthCodeRequest(t)
 	return t
@@ -568,11 +625,14 @@ end
 
 --- Create a structure of type OperationLimitExceeded
 -- <p>The number of operations or jobs running exceeded the allowed threshold for the account.</p>
--- @param _message [ErrorMessage] <p>The number of operations or jobs running exceeded the allowed threshold for the account.</p>
-function M.OperationLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The number of operations or jobs running exceeded the allowed threshold for the account.</p>
+-- @return OperationLimitExceeded structure as a key-value pair table
+function M.OperationLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating OperationLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertOperationLimitExceeded(t)
 	return t
@@ -595,18 +655,21 @@ end
 
 --- Create a structure of type UpdateDomainContactRequest
 -- <p>The UpdateDomainContact request includes the following elements.</p>
--- @param _RegistrantContact [ContactDetail] <p>Provides detailed contact information.</p>
--- @param _AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
--- @param _TechContact [ContactDetail] <p>Provides detailed contact information.</p>
--- @param _DomainName [DomainName] <p>The name of the domain that you want to update contact information for.</p>
--- Required parameter: DomainName
-function M.UpdateDomainContactRequest(_RegistrantContact, _AdminContact, _TechContact, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainContactRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegistrantContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- * AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- * TechContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- * DomainName [DomainName] <p>The name of the domain that you want to update contact information for.</p>
+-- Required key: DomainName
+-- @return UpdateDomainContactRequest structure as a key-value pair table
+function M.UpdateDomainContactRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateDomainContactRequest")
 	local t = { 
-		["RegistrantContact"] = _RegistrantContact,
-		["AdminContact"] = _AdminContact,
-		["TechContact"] = _TechContact,
-		["DomainName"] = _DomainName,
+		["RegistrantContact"] = args["RegistrantContact"],
+		["AdminContact"] = args["AdminContact"],
+		["TechContact"] = args["TechContact"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertUpdateDomainContactRequest(t)
 	return t
@@ -626,13 +689,16 @@ end
 
 --- Create a structure of type DomainSuggestion
 -- <p>Information about one suggested domain name.</p>
--- @param _Availability [String] <p>Whether the domain name is available for registering.</p> <note> <p>You can register only the domains that are designated as <code>AVAILABLE</code>.</p> </note> <p>Valid values:</p> <dl> <dt>AVAILABLE</dt> <dd> <p>The domain name is available.</p> </dd> <dt>AVAILABLE_RESERVED</dt> <dd> <p>The domain name is reserved under specific conditions.</p> </dd> <dt>AVAILABLE_PREORDER</dt> <dd> <p>The domain name is available and can be preordered.</p> </dd> <dt>DONT_KNOW</dt> <dd> <p>The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try again later.</p> </dd> <dt>PENDING</dt> <dd> <p>The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it usually takes just a few extra seconds. You can resubmit the request immediately.</p> </dd> <dt>RESERVED</dt> <dd> <p>The domain name has been reserved for another person or organization.</p> </dd> <dt>UNAVAILABLE</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_PREMIUM</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_RESTRICTED</dt> <dd> <p>The domain name is forbidden.</p> </dd> </dl>
--- @param _DomainName [DomainName] <p>A suggested domain name.</p>
-function M.DomainSuggestion(_Availability, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainSuggestion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Availability [String] <p>Whether the domain name is available for registering.</p> <note> <p>You can register only the domains that are designated as <code>AVAILABLE</code>.</p> </note> <p>Valid values:</p> <dl> <dt>AVAILABLE</dt> <dd> <p>The domain name is available.</p> </dd> <dt>AVAILABLE_RESERVED</dt> <dd> <p>The domain name is reserved under specific conditions.</p> </dd> <dt>AVAILABLE_PREORDER</dt> <dd> <p>The domain name is available and can be preordered.</p> </dd> <dt>DONT_KNOW</dt> <dd> <p>The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try again later.</p> </dd> <dt>PENDING</dt> <dd> <p>The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it usually takes just a few extra seconds. You can resubmit the request immediately.</p> </dd> <dt>RESERVED</dt> <dd> <p>The domain name has been reserved for another person or organization.</p> </dd> <dt>UNAVAILABLE</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_PREMIUM</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_RESTRICTED</dt> <dd> <p>The domain name is forbidden.</p> </dd> </dl>
+-- * DomainName [DomainName] <p>A suggested domain name.</p>
+-- @return DomainSuggestion structure as a key-value pair table
+function M.DomainSuggestion(args)
+	assert(args, "You must provdide an argument table when creating DomainSuggestion")
 	local t = { 
-		["Availability"] = _Availability,
-		["DomainName"] = _DomainName,
+		["Availability"] = args["Availability"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertDomainSuggestion(t)
 	return t
@@ -654,17 +720,20 @@ end
 
 --- Create a structure of type ViewBillingRequest
 -- <p>The ViewBilling request includes the following elements.</p>
--- @param _Marker [PageMarker] <p>For an initial request for a list of billing records, omit this element. If the number of billing records that are associated with the current AWS account during the specified period is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional billing records. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Constraints: The marker must match the value of <code>NextPageMarker</code> that was returned in the previous response.</p>
--- @param _Start [Timestamp] <p>The beginning date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.</p>
--- @param _End [Timestamp] <p>The end date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.</p>
--- @param _MaxItems [PageMaxItems] <p>The number of billing records to be returned.</p> <p>Default: 20</p>
-function M.ViewBillingRequest(_Marker, _Start, _End, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ViewBillingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarker] <p>For an initial request for a list of billing records, omit this element. If the number of billing records that are associated with the current AWS account during the specified period is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional billing records. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Constraints: The marker must match the value of <code>NextPageMarker</code> that was returned in the previous response.</p>
+-- * Start [Timestamp] <p>The beginning date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.</p>
+-- * End [Timestamp] <p>The end date and time for the time period for which you want a list of billing records. Specify the date in Unix time format.</p>
+-- * MaxItems [PageMaxItems] <p>The number of billing records to be returned.</p> <p>Default: 20</p>
+-- @return ViewBillingRequest structure as a key-value pair table
+function M.ViewBillingRequest(args)
+	assert(args, "You must provdide an argument table when creating ViewBillingRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["Start"] = _Start,
-		["End"] = _End,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["Start"] = args["Start"],
+		["End"] = args["End"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertViewBillingRequest(t)
 	return t
@@ -684,12 +753,15 @@ end
 
 --- Create a structure of type TransferDomainResponse
 -- <p>The TranserDomain response includes the following element.</p>
--- @param _OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
--- Required parameter: OperationId
-function M.TransferDomainResponse(_OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TransferDomainResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
+-- Required key: OperationId
+-- @return TransferDomainResponse structure as a key-value pair table
+function M.TransferDomainResponse(args)
+	assert(args, "You must provdide an argument table when creating TransferDomainResponse")
 	local t = { 
-		["OperationId"] = _OperationId,
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertTransferDomainResponse(t)
 	return t
@@ -708,11 +780,14 @@ end
 
 --- Create a structure of type TLDRulesViolation
 -- <p>The top-level domain does not support this operation.</p>
--- @param _message [ErrorMessage] <p>The top-level domain does not support this operation.</p>
-function M.TLDRulesViolation(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TLDRulesViolation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The top-level domain does not support this operation.</p>
+-- @return TLDRulesViolation structure as a key-value pair table
+function M.TLDRulesViolation(args)
+	assert(args, "You must provdide an argument table when creating TLDRulesViolation")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertTLDRulesViolation(t)
 	return t
@@ -731,11 +806,14 @@ end
 
 --- Create a structure of type ResendContactReachabilityEmailRequest
 --  
--- @param _domainName [DomainName] <p>The name of the domain for which you want Amazon Route 53 to resend a confirmation email to the registrant contact.</p>
-function M.ResendContactReachabilityEmailRequest(_domainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResendContactReachabilityEmailRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainName [DomainName] <p>The name of the domain for which you want Amazon Route 53 to resend a confirmation email to the registrant contact.</p>
+-- @return ResendContactReachabilityEmailRequest structure as a key-value pair table
+function M.ResendContactReachabilityEmailRequest(args)
+	assert(args, "You must provdide an argument table when creating ResendContactReachabilityEmailRequest")
 	local t = { 
-		["domainName"] = _domainName,
+		["domainName"] = args["domainName"],
 	}
 	asserts.AssertResendContactReachabilityEmailRequest(t)
 	return t
@@ -768,34 +846,37 @@ end
 
 --- Create a structure of type RegisterDomainRequest
 -- <p>The RegisterDomain request includes the following elements.</p>
--- @param _RegistrantContact [ContactDetail] <p>Provides detailed contact information.</p>
--- @param _IdnLangCode [LangCode] <p>Reserved for future use.</p>
--- @param _DomainName [DomainName] <p>The domain name that you want to register.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
--- @param _PrivacyProtectRegistrantContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
--- @param _PrivacyProtectTechContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
--- @param _TechContact [ContactDetail] <p>Provides detailed contact information.</p>
--- @param _PrivacyProtectAdminContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
--- @param _AutoRenew [Boolean] <p>Indicates whether the domain will be automatically renewed (<code>true</code>) or not (<code>false</code>). Autorenewal only takes effect after the account is charged.</p> <p>Default: <code>true</code> </p>
--- @param _DurationInYears [DurationInYears] <p>The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain. For the range of valid values for your domain, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html">Domains that You Can Register with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>Default: 1</p>
--- @param _AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
--- Required parameter: DomainName
--- Required parameter: DurationInYears
--- Required parameter: AdminContact
--- Required parameter: RegistrantContact
--- Required parameter: TechContact
-function M.RegisterDomainRequest(_RegistrantContact, _IdnLangCode, _DomainName, _PrivacyProtectRegistrantContact, _PrivacyProtectTechContact, _TechContact, _PrivacyProtectAdminContact, _AutoRenew, _DurationInYears, _AdminContact, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegistrantContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- * IdnLangCode [LangCode] <p>Reserved for future use.</p>
+-- * DomainName [DomainName] <p>The domain name that you want to register.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
+-- * PrivacyProtectRegistrantContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- * PrivacyProtectTechContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- * TechContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- * PrivacyProtectAdminContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- * AutoRenew [Boolean] <p>Indicates whether the domain will be automatically renewed (<code>true</code>) or not (<code>false</code>). Autorenewal only takes effect after the account is charged.</p> <p>Default: <code>true</code> </p>
+-- * DurationInYears [DurationInYears] <p>The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain. For the range of valid values for your domain, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html">Domains that You Can Register with Amazon Route 53</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>Default: 1</p>
+-- * AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- Required key: DomainName
+-- Required key: DurationInYears
+-- Required key: AdminContact
+-- Required key: RegistrantContact
+-- Required key: TechContact
+-- @return RegisterDomainRequest structure as a key-value pair table
+function M.RegisterDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterDomainRequest")
 	local t = { 
-		["RegistrantContact"] = _RegistrantContact,
-		["IdnLangCode"] = _IdnLangCode,
-		["DomainName"] = _DomainName,
-		["PrivacyProtectRegistrantContact"] = _PrivacyProtectRegistrantContact,
-		["PrivacyProtectTechContact"] = _PrivacyProtectTechContact,
-		["TechContact"] = _TechContact,
-		["PrivacyProtectAdminContact"] = _PrivacyProtectAdminContact,
-		["AutoRenew"] = _AutoRenew,
-		["DurationInYears"] = _DurationInYears,
-		["AdminContact"] = _AdminContact,
+		["RegistrantContact"] = args["RegistrantContact"],
+		["IdnLangCode"] = args["IdnLangCode"],
+		["DomainName"] = args["DomainName"],
+		["PrivacyProtectRegistrantContact"] = args["PrivacyProtectRegistrantContact"],
+		["PrivacyProtectTechContact"] = args["PrivacyProtectTechContact"],
+		["TechContact"] = args["TechContact"],
+		["PrivacyProtectAdminContact"] = args["PrivacyProtectAdminContact"],
+		["AutoRenew"] = args["AutoRenew"],
+		["DurationInYears"] = args["DurationInYears"],
+		["AdminContact"] = args["AdminContact"],
 	}
 	asserts.AssertRegisterDomainRequest(t)
 	return t
@@ -821,21 +902,24 @@ end
 
 --- Create a structure of type OperationSummary
 -- <p>OperationSummary includes the following elements.</p>
--- @param _Status [OperationStatus] <p>The current status of the requested operation in the system.</p>
--- @param _Type [OperationType] <p>Type of the action requested.</p>
--- @param _SubmittedDate [Timestamp] <p>The date when the request was submitted.</p>
--- @param _OperationId [OperationId] <p>Identifier returned to track the requested action.</p>
--- Required parameter: OperationId
--- Required parameter: Status
--- Required parameter: Type
--- Required parameter: SubmittedDate
-function M.OperationSummary(_Status, _Type, _SubmittedDate, _OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [OperationStatus] <p>The current status of the requested operation in the system.</p>
+-- * Type [OperationType] <p>Type of the action requested.</p>
+-- * SubmittedDate [Timestamp] <p>The date when the request was submitted.</p>
+-- * OperationId [OperationId] <p>Identifier returned to track the requested action.</p>
+-- Required key: OperationId
+-- Required key: Status
+-- Required key: Type
+-- Required key: SubmittedDate
+-- @return OperationSummary structure as a key-value pair table
+function M.OperationSummary(args)
+	assert(args, "You must provdide an argument table when creating OperationSummary")
 	local t = { 
-		["Status"] = _Status,
-		["Type"] = _Type,
-		["SubmittedDate"] = _SubmittedDate,
-		["OperationId"] = _OperationId,
+		["Status"] = args["Status"],
+		["Type"] = args["Type"],
+		["SubmittedDate"] = args["SubmittedDate"],
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertOperationSummary(t)
 	return t
@@ -855,12 +939,15 @@ end
 
 --- Create a structure of type UpdateDomainNameserversResponse
 -- <p>The UpdateDomainNameservers response includes the following element.</p>
--- @param _OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
--- Required parameter: OperationId
-function M.UpdateDomainNameserversResponse(_OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainNameserversResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
+-- Required key: OperationId
+-- @return UpdateDomainNameserversResponse structure as a key-value pair table
+function M.UpdateDomainNameserversResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateDomainNameserversResponse")
 	local t = { 
-		["OperationId"] = _OperationId,
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertUpdateDomainNameserversResponse(t)
 	return t
@@ -895,38 +982,41 @@ end
 
 --- Create a structure of type TransferDomainRequest
 -- <p>The TransferDomain request includes the following elements.</p>
--- @param _RegistrantContact [ContactDetail] <p>Provides detailed contact information.</p>
--- @param _IdnLangCode [LangCode] <p>Reserved for future use.</p>
--- @param _DomainName [DomainName] <p>The name of the domain that you want to transfer to Amazon Route 53.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
--- @param _Nameservers [NameserverList] <p>Contains details for the host and glue IP addresses.</p>
--- @param _AuthCode [DomainAuthCode] <p>The authorization code for the domain. You get this value from the current registrar.</p>
--- @param _PrivacyProtectRegistrantContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
--- @param _TechContact [ContactDetail] <p>Provides detailed contact information.</p>
--- @param _PrivacyProtectAdminContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
--- @param _AutoRenew [Boolean] <p>Indicates whether the domain will be automatically renewed (true) or not (false). Autorenewal only takes effect after the account is charged.</p> <p>Default: true</p>
--- @param _DurationInYears [DurationInYears] <p>The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain.</p> <p>Default: 1</p>
--- @param _AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
--- @param _PrivacyProtectTechContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
--- Required parameter: DomainName
--- Required parameter: DurationInYears
--- Required parameter: AdminContact
--- Required parameter: RegistrantContact
--- Required parameter: TechContact
-function M.TransferDomainRequest(_RegistrantContact, _IdnLangCode, _DomainName, _Nameservers, _AuthCode, _PrivacyProtectRegistrantContact, _TechContact, _PrivacyProtectAdminContact, _AutoRenew, _DurationInYears, _AdminContact, _PrivacyProtectTechContact, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TransferDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegistrantContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- * IdnLangCode [LangCode] <p>Reserved for future use.</p>
+-- * DomainName [DomainName] <p>The name of the domain that you want to transfer to Amazon Route 53.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
+-- * Nameservers [NameserverList] <p>Contains details for the host and glue IP addresses.</p>
+-- * AuthCode [DomainAuthCode] <p>The authorization code for the domain. You get this value from the current registrar.</p>
+-- * PrivacyProtectRegistrantContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- * TechContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- * PrivacyProtectAdminContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- * AutoRenew [Boolean] <p>Indicates whether the domain will be automatically renewed (true) or not (false). Autorenewal only takes effect after the account is charged.</p> <p>Default: true</p>
+-- * DurationInYears [DurationInYears] <p>The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain.</p> <p>Default: 1</p>
+-- * AdminContact [ContactDetail] <p>Provides detailed contact information.</p>
+-- * PrivacyProtectTechContact [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p> <p>Default: <code>true</code> </p>
+-- Required key: DomainName
+-- Required key: DurationInYears
+-- Required key: AdminContact
+-- Required key: RegistrantContact
+-- Required key: TechContact
+-- @return TransferDomainRequest structure as a key-value pair table
+function M.TransferDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating TransferDomainRequest")
 	local t = { 
-		["RegistrantContact"] = _RegistrantContact,
-		["IdnLangCode"] = _IdnLangCode,
-		["DomainName"] = _DomainName,
-		["Nameservers"] = _Nameservers,
-		["AuthCode"] = _AuthCode,
-		["PrivacyProtectRegistrantContact"] = _PrivacyProtectRegistrantContact,
-		["TechContact"] = _TechContact,
-		["PrivacyProtectAdminContact"] = _PrivacyProtectAdminContact,
-		["AutoRenew"] = _AutoRenew,
-		["DurationInYears"] = _DurationInYears,
-		["AdminContact"] = _AdminContact,
-		["PrivacyProtectTechContact"] = _PrivacyProtectTechContact,
+		["RegistrantContact"] = args["RegistrantContact"],
+		["IdnLangCode"] = args["IdnLangCode"],
+		["DomainName"] = args["DomainName"],
+		["Nameservers"] = args["Nameservers"],
+		["AuthCode"] = args["AuthCode"],
+		["PrivacyProtectRegistrantContact"] = args["PrivacyProtectRegistrantContact"],
+		["TechContact"] = args["TechContact"],
+		["PrivacyProtectAdminContact"] = args["PrivacyProtectAdminContact"],
+		["AutoRenew"] = args["AutoRenew"],
+		["DurationInYears"] = args["DurationInYears"],
+		["AdminContact"] = args["AdminContact"],
+		["PrivacyProtectTechContact"] = args["PrivacyProtectTechContact"],
 	}
 	asserts.AssertTransferDomainRequest(t)
 	return t
@@ -958,37 +1048,40 @@ end
 
 --- Create a structure of type ContactDetail
 -- <p>ContactDetail includes the following elements.</p>
--- @param _City [City] <p>The city of the contact's address.</p>
--- @param _Fax [ContactNumber] <p>Fax number of the contact.</p> <p>Constraints: Phone number must be specified in the format "+[country dialing code].[number including any area code]". For example, a US phone number might appear as <code>"+1.1234567890"</code>.</p>
--- @param _OrganizationName [ContactName] <p>Name of the organization for contact types other than <code>PERSON</code>.</p>
--- @param _CountryCode [CountryCode] <p>Code for the country of the contact's address.</p>
--- @param _FirstName [ContactName] <p>First name of contact.</p>
--- @param _LastName [ContactName] <p>Last name of contact.</p>
--- @param _ContactType [ContactType] <p>Indicates whether the contact is a person, company, association, or public organization. If you choose an option other than <code>PERSON</code>, you must enter an organization name, and you can't enable privacy protection for the contact.</p>
--- @param _ZipCode [ZipCode] <p>The zip or postal code of the contact's address.</p>
--- @param _ExtraParams [ExtraParamList] <p>A list of name-value pairs for parameters required by certain top-level domains.</p>
--- @param _State [State] <p>The state or province of the contact's city.</p>
--- @param _AddressLine2 [AddressLine] <p>Second line of contact's address, if any.</p>
--- @param _AddressLine1 [AddressLine] <p>First line of the contact's address.</p>
--- @param _PhoneNumber [ContactNumber] <p>The phone number of the contact.</p> <p>Constraints: Phone number must be specified in the format "+[country dialing code].[number including any area code&gt;]". For example, a US phone number might appear as <code>"+1.1234567890"</code>.</p>
--- @param _Email [Email] <p>Email address of the contact.</p>
-function M.ContactDetail(_City, _Fax, _OrganizationName, _CountryCode, _FirstName, _LastName, _ContactType, _ZipCode, _ExtraParams, _State, _AddressLine2, _AddressLine1, _PhoneNumber, _Email, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContactDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * City [City] <p>The city of the contact's address.</p>
+-- * Fax [ContactNumber] <p>Fax number of the contact.</p> <p>Constraints: Phone number must be specified in the format "+[country dialing code].[number including any area code]". For example, a US phone number might appear as <code>"+1.1234567890"</code>.</p>
+-- * OrganizationName [ContactName] <p>Name of the organization for contact types other than <code>PERSON</code>.</p>
+-- * CountryCode [CountryCode] <p>Code for the country of the contact's address.</p>
+-- * FirstName [ContactName] <p>First name of contact.</p>
+-- * LastName [ContactName] <p>Last name of contact.</p>
+-- * ContactType [ContactType] <p>Indicates whether the contact is a person, company, association, or public organization. If you choose an option other than <code>PERSON</code>, you must enter an organization name, and you can't enable privacy protection for the contact.</p>
+-- * ZipCode [ZipCode] <p>The zip or postal code of the contact's address.</p>
+-- * ExtraParams [ExtraParamList] <p>A list of name-value pairs for parameters required by certain top-level domains.</p>
+-- * State [State] <p>The state or province of the contact's city.</p>
+-- * AddressLine2 [AddressLine] <p>Second line of contact's address, if any.</p>
+-- * AddressLine1 [AddressLine] <p>First line of the contact's address.</p>
+-- * PhoneNumber [ContactNumber] <p>The phone number of the contact.</p> <p>Constraints: Phone number must be specified in the format "+[country dialing code].[number including any area code&gt;]". For example, a US phone number might appear as <code>"+1.1234567890"</code>.</p>
+-- * Email [Email] <p>Email address of the contact.</p>
+-- @return ContactDetail structure as a key-value pair table
+function M.ContactDetail(args)
+	assert(args, "You must provdide an argument table when creating ContactDetail")
 	local t = { 
-		["City"] = _City,
-		["Fax"] = _Fax,
-		["OrganizationName"] = _OrganizationName,
-		["CountryCode"] = _CountryCode,
-		["FirstName"] = _FirstName,
-		["LastName"] = _LastName,
-		["ContactType"] = _ContactType,
-		["ZipCode"] = _ZipCode,
-		["ExtraParams"] = _ExtraParams,
-		["State"] = _State,
-		["AddressLine2"] = _AddressLine2,
-		["AddressLine1"] = _AddressLine1,
-		["PhoneNumber"] = _PhoneNumber,
-		["Email"] = _Email,
+		["City"] = args["City"],
+		["Fax"] = args["Fax"],
+		["OrganizationName"] = args["OrganizationName"],
+		["CountryCode"] = args["CountryCode"],
+		["FirstName"] = args["FirstName"],
+		["LastName"] = args["LastName"],
+		["ContactType"] = args["ContactType"],
+		["ZipCode"] = args["ZipCode"],
+		["ExtraParams"] = args["ExtraParams"],
+		["State"] = args["State"],
+		["AddressLine2"] = args["AddressLine2"],
+		["AddressLine1"] = args["AddressLine1"],
+		["PhoneNumber"] = args["PhoneNumber"],
+		["Email"] = args["Email"],
 	}
 	asserts.AssertContactDetail(t)
 	return t
@@ -1008,12 +1101,15 @@ end
 
 --- Create a structure of type DisableDomainTransferLockResponse
 -- <p>The DisableDomainTransferLock response includes the following element.</p>
--- @param _OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
--- Required parameter: OperationId
-function M.DisableDomainTransferLockResponse(_OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisableDomainTransferLockResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
+-- Required key: OperationId
+-- @return DisableDomainTransferLockResponse structure as a key-value pair table
+function M.DisableDomainTransferLockResponse(args)
+	assert(args, "You must provdide an argument table when creating DisableDomainTransferLockResponse")
 	local t = { 
-		["OperationId"] = _OperationId,
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertDisableDomainTransferLockResponse(t)
 	return t
@@ -1033,12 +1129,15 @@ end
 
 --- Create a structure of type UpdateDomainContactResponse
 -- <p>The UpdateDomainContact response includes the following element.</p>
--- @param _OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
--- Required parameter: OperationId
-function M.UpdateDomainContactResponse(_OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainContactResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
+-- Required key: OperationId
+-- @return UpdateDomainContactResponse structure as a key-value pair table
+function M.UpdateDomainContactResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateDomainContactResponse")
 	local t = { 
-		["OperationId"] = _OperationId,
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertUpdateDomainContactResponse(t)
 	return t
@@ -1058,12 +1157,15 @@ end
 
 --- Create a structure of type RegisterDomainResponse
 -- <p>The RegisterDomain response includes the following element.</p>
--- @param _OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
--- Required parameter: OperationId
-function M.RegisterDomainResponse(_OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterDomainResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use <a>GetOperationDetail</a>.</p>
+-- Required key: OperationId
+-- @return RegisterDomainResponse structure as a key-value pair table
+function M.RegisterDomainResponse(args)
+	assert(args, "You must provdide an argument table when creating RegisterDomainResponse")
 	local t = { 
-		["OperationId"] = _OperationId,
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertRegisterDomainResponse(t)
 	return t
@@ -1107,56 +1209,59 @@ end
 
 --- Create a structure of type GetDomainDetailResponse
 -- <p>The GetDomainDetail response includes the following elements.</p>
--- @param _RegistrantContact [ContactDetail] <p>Provides details about the domain registrant.</p>
--- @param _StatusList [DomainStatusList] <p>An array of domain name status codes, also known as Extensible Provisioning Protocol (EPP) status codes.</p> <p>ICANN, the organization that maintains a central database of domain names, has developed a set of domain name status codes that tell you the status of a variety of operations on a domain name, for example, registering a domain name, transferring a domain name to another registrar, renewing the registration for a domain name, and so on. All registrars use this same set of status codes.</p> <p>For a current list of domain name status codes and an explanation of what each code means, go to the <a href="https://www.icann.org/">ICANN website</a> and search for <code>epp status codes</code>. (Search on the ICANN website; web searches sometimes return an old version of the document.)</p>
--- @param _WhoIsServer [RegistrarWhoIsServer] <p>The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.</p>
--- @param _AbuseContactEmail [Email] <p>Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.</p>
--- @param _Reseller [Reseller] <p>Reseller of the domain. Domains registered or transferred using Amazon Route 53 domains will have <code>"Amazon"</code> as the reseller. </p>
--- @param _RegistrarName [RegistrarName] <p>Name of the registrar of the domain as identified in the registry. Amazon Route 53 domains are registered by registrar Gandi. The value is <code>"GANDI SAS"</code>. </p>
--- @param _DomainName [DomainName] <p>The name of a domain.</p>
--- @param _Nameservers [NameserverList] <p>The name of the domain.</p>
--- @param _RegistrarUrl [RegistrarUrl] <p>Web address of the registrar.</p>
--- @param _AdminPrivacy [Boolean] <p>Specifies whether contact information for the admin contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
--- @param _RegistryDomainId [RegistryDomainId] <p>Reserved for future use.</p>
--- @param _TechContact [ContactDetail] <p>Provides details about the domain technical contact.</p>
--- @param _CreationDate [Timestamp] <p>The date when the domain was created as found in the response to a WHOIS query. The date format is Unix time.</p>
--- @param _AutoRenew [Boolean] <p>Specifies whether the domain registration is set to renew automatically.</p>
--- @param _UpdatedDate [Timestamp] <p>The last updated date of the domain as found in the response to a WHOIS query. The date format is Unix time.</p>
--- @param _ExpirationDate [Timestamp] <p>The date when the registration for the domain is set to expire. The date format is Unix time.</p>
--- @param _DnsSec [DNSSec] <p>Reserved for future use.</p>
--- @param _AdminContact [ContactDetail] <p>Provides details about the domain administrative contact.</p>
--- @param _TechPrivacy [Boolean] <p>Specifies whether contact information for the tech contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
--- @param _RegistrantPrivacy [Boolean] <p>Specifies whether contact information for the registrant contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
--- @param _AbuseContactPhone [ContactNumber] <p>Phone number for reporting abuse.</p>
--- Required parameter: DomainName
--- Required parameter: Nameservers
--- Required parameter: AdminContact
--- Required parameter: RegistrantContact
--- Required parameter: TechContact
-function M.GetDomainDetailResponse(_RegistrantContact, _StatusList, _WhoIsServer, _AbuseContactEmail, _Reseller, _RegistrarName, _DomainName, _Nameservers, _RegistrarUrl, _AdminPrivacy, _RegistryDomainId, _TechContact, _CreationDate, _AutoRenew, _UpdatedDate, _ExpirationDate, _DnsSec, _AdminContact, _TechPrivacy, _RegistrantPrivacy, _AbuseContactPhone, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainDetailResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RegistrantContact [ContactDetail] <p>Provides details about the domain registrant.</p>
+-- * StatusList [DomainStatusList] <p>An array of domain name status codes, also known as Extensible Provisioning Protocol (EPP) status codes.</p> <p>ICANN, the organization that maintains a central database of domain names, has developed a set of domain name status codes that tell you the status of a variety of operations on a domain name, for example, registering a domain name, transferring a domain name to another registrar, renewing the registration for a domain name, and so on. All registrars use this same set of status codes.</p> <p>For a current list of domain name status codes and an explanation of what each code means, go to the <a href="https://www.icann.org/">ICANN website</a> and search for <code>epp status codes</code>. (Search on the ICANN website; web searches sometimes return an old version of the document.)</p>
+-- * WhoIsServer [RegistrarWhoIsServer] <p>The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.</p>
+-- * AbuseContactEmail [Email] <p>Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.</p>
+-- * Reseller [Reseller] <p>Reseller of the domain. Domains registered or transferred using Amazon Route 53 domains will have <code>"Amazon"</code> as the reseller. </p>
+-- * RegistrarName [RegistrarName] <p>Name of the registrar of the domain as identified in the registry. Amazon Route 53 domains are registered by registrar Gandi. The value is <code>"GANDI SAS"</code>. </p>
+-- * DomainName [DomainName] <p>The name of a domain.</p>
+-- * Nameservers [NameserverList] <p>The name of the domain.</p>
+-- * RegistrarUrl [RegistrarUrl] <p>Web address of the registrar.</p>
+-- * AdminPrivacy [Boolean] <p>Specifies whether contact information for the admin contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- * RegistryDomainId [RegistryDomainId] <p>Reserved for future use.</p>
+-- * TechContact [ContactDetail] <p>Provides details about the domain technical contact.</p>
+-- * CreationDate [Timestamp] <p>The date when the domain was created as found in the response to a WHOIS query. The date format is Unix time.</p>
+-- * AutoRenew [Boolean] <p>Specifies whether the domain registration is set to renew automatically.</p>
+-- * UpdatedDate [Timestamp] <p>The last updated date of the domain as found in the response to a WHOIS query. The date format is Unix time.</p>
+-- * ExpirationDate [Timestamp] <p>The date when the registration for the domain is set to expire. The date format is Unix time.</p>
+-- * DnsSec [DNSSec] <p>Reserved for future use.</p>
+-- * AdminContact [ContactDetail] <p>Provides details about the domain administrative contact.</p>
+-- * TechPrivacy [Boolean] <p>Specifies whether contact information for the tech contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- * RegistrantPrivacy [Boolean] <p>Specifies whether contact information for the registrant contact is concealed from WHOIS queries. If the value is <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- * AbuseContactPhone [ContactNumber] <p>Phone number for reporting abuse.</p>
+-- Required key: DomainName
+-- Required key: Nameservers
+-- Required key: AdminContact
+-- Required key: RegistrantContact
+-- Required key: TechContact
+-- @return GetDomainDetailResponse structure as a key-value pair table
+function M.GetDomainDetailResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDomainDetailResponse")
 	local t = { 
-		["RegistrantContact"] = _RegistrantContact,
-		["StatusList"] = _StatusList,
-		["WhoIsServer"] = _WhoIsServer,
-		["AbuseContactEmail"] = _AbuseContactEmail,
-		["Reseller"] = _Reseller,
-		["RegistrarName"] = _RegistrarName,
-		["DomainName"] = _DomainName,
-		["Nameservers"] = _Nameservers,
-		["RegistrarUrl"] = _RegistrarUrl,
-		["AdminPrivacy"] = _AdminPrivacy,
-		["RegistryDomainId"] = _RegistryDomainId,
-		["TechContact"] = _TechContact,
-		["CreationDate"] = _CreationDate,
-		["AutoRenew"] = _AutoRenew,
-		["UpdatedDate"] = _UpdatedDate,
-		["ExpirationDate"] = _ExpirationDate,
-		["DnsSec"] = _DnsSec,
-		["AdminContact"] = _AdminContact,
-		["TechPrivacy"] = _TechPrivacy,
-		["RegistrantPrivacy"] = _RegistrantPrivacy,
-		["AbuseContactPhone"] = _AbuseContactPhone,
+		["RegistrantContact"] = args["RegistrantContact"],
+		["StatusList"] = args["StatusList"],
+		["WhoIsServer"] = args["WhoIsServer"],
+		["AbuseContactEmail"] = args["AbuseContactEmail"],
+		["Reseller"] = args["Reseller"],
+		["RegistrarName"] = args["RegistrarName"],
+		["DomainName"] = args["DomainName"],
+		["Nameservers"] = args["Nameservers"],
+		["RegistrarUrl"] = args["RegistrarUrl"],
+		["AdminPrivacy"] = args["AdminPrivacy"],
+		["RegistryDomainId"] = args["RegistryDomainId"],
+		["TechContact"] = args["TechContact"],
+		["CreationDate"] = args["CreationDate"],
+		["AutoRenew"] = args["AutoRenew"],
+		["UpdatedDate"] = args["UpdatedDate"],
+		["ExpirationDate"] = args["ExpirationDate"],
+		["DnsSec"] = args["DnsSec"],
+		["AdminContact"] = args["AdminContact"],
+		["TechPrivacy"] = args["TechPrivacy"],
+		["RegistrantPrivacy"] = args["RegistrantPrivacy"],
+		["AbuseContactPhone"] = args["AbuseContactPhone"],
 	}
 	asserts.AssertGetDomainDetailResponse(t)
 	return t
@@ -1176,12 +1281,15 @@ end
 
 --- Create a structure of type EnableDomainAutoRenewRequest
 --  
--- @param _DomainName [DomainName] <p>The name of the domain that you want to enable automatic renewal for.</p>
--- Required parameter: DomainName
-function M.EnableDomainAutoRenewRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableDomainAutoRenewRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] <p>The name of the domain that you want to enable automatic renewal for.</p>
+-- Required key: DomainName
+-- @return EnableDomainAutoRenewRequest structure as a key-value pair table
+function M.EnableDomainAutoRenewRequest(args)
+	assert(args, "You must provdide an argument table when creating EnableDomainAutoRenewRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertEnableDomainAutoRenewRequest(t)
 	return t
@@ -1201,12 +1309,15 @@ end
 
 --- Create a structure of type CheckDomainAvailabilityResponse
 -- <p>The CheckDomainAvailability response includes the following elements.</p>
--- @param _Availability [DomainAvailability] <p>Whether the domain name is available for registering.</p> <note> <p>You can only register domains designated as <code>AVAILABLE</code>.</p> </note> <p>Valid values:</p> <dl> <dt>AVAILABLE</dt> <dd> <p>The domain name is available.</p> </dd> <dt>AVAILABLE_RESERVED</dt> <dd> <p>The domain name is reserved under specific conditions.</p> </dd> <dt>AVAILABLE_PREORDER</dt> <dd> <p>The domain name is available and can be preordered.</p> </dd> <dt>DONT_KNOW</dt> <dd> <p>The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try again later.</p> </dd> <dt>PENDING</dt> <dd> <p>The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it usually takes just a few extra seconds. You can resubmit the request immediately.</p> </dd> <dt>RESERVED</dt> <dd> <p>The domain name has been reserved for another person or organization.</p> </dd> <dt>UNAVAILABLE</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_PREMIUM</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_RESTRICTED</dt> <dd> <p>The domain name is forbidden.</p> </dd> </dl>
--- Required parameter: Availability
-function M.CheckDomainAvailabilityResponse(_Availability, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CheckDomainAvailabilityResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Availability [DomainAvailability] <p>Whether the domain name is available for registering.</p> <note> <p>You can only register domains designated as <code>AVAILABLE</code>.</p> </note> <p>Valid values:</p> <dl> <dt>AVAILABLE</dt> <dd> <p>The domain name is available.</p> </dd> <dt>AVAILABLE_RESERVED</dt> <dd> <p>The domain name is reserved under specific conditions.</p> </dd> <dt>AVAILABLE_PREORDER</dt> <dd> <p>The domain name is available and can be preordered.</p> </dd> <dt>DONT_KNOW</dt> <dd> <p>The TLD registry didn't reply with a definitive answer about whether the domain name is available. Amazon Route 53 can return this response for a variety of reasons, for example, the registry is performing maintenance. Try again later.</p> </dd> <dt>PENDING</dt> <dd> <p>The TLD registry didn't return a response in the expected amount of time. When the response is delayed, it usually takes just a few extra seconds. You can resubmit the request immediately.</p> </dd> <dt>RESERVED</dt> <dd> <p>The domain name has been reserved for another person or organization.</p> </dd> <dt>UNAVAILABLE</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_PREMIUM</dt> <dd> <p>The domain name is not available.</p> </dd> <dt>UNAVAILABLE_RESTRICTED</dt> <dd> <p>The domain name is forbidden.</p> </dd> </dl>
+-- Required key: Availability
+-- @return CheckDomainAvailabilityResponse structure as a key-value pair table
+function M.CheckDomainAvailabilityResponse(args)
+	assert(args, "You must provdide an argument table when creating CheckDomainAvailabilityResponse")
 	local t = { 
-		["Availability"] = _Availability,
+		["Availability"] = args["Availability"],
 	}
 	asserts.AssertCheckDomainAvailabilityResponse(t)
 	return t
@@ -1226,12 +1337,15 @@ end
 
 --- Create a structure of type EnableDomainTransferLockResponse
 -- <p>The EnableDomainTransferLock response includes the following elements.</p>
--- @param _OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use GetOperationDetail.</p>
--- Required parameter: OperationId
-function M.EnableDomainTransferLockResponse(_OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableDomainTransferLockResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use GetOperationDetail.</p>
+-- Required key: OperationId
+-- @return EnableDomainTransferLockResponse structure as a key-value pair table
+function M.EnableDomainTransferLockResponse(args)
+	assert(args, "You must provdide an argument table when creating EnableDomainTransferLockResponse")
 	local t = { 
-		["OperationId"] = _OperationId,
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertEnableDomainTransferLockResponse(t)
 	return t
@@ -1249,8 +1363,11 @@ end
 
 --- Create a structure of type EnableDomainAutoRenewResponse
 --  
-function M.EnableDomainAutoRenewResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableDomainAutoRenewResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return EnableDomainAutoRenewResponse structure as a key-value pair table
+function M.EnableDomainAutoRenewResponse(args)
+	assert(args, "You must provdide an argument table when creating EnableDomainAutoRenewResponse")
 	local t = { 
 	}
 	asserts.AssertEnableDomainAutoRenewResponse(t)
@@ -1270,11 +1387,14 @@ end
 
 --- Create a structure of type DomainLimitExceeded
 -- <p>The number of domains has exceeded the allowed threshold for the account.</p>
--- @param _message [ErrorMessage] <p>The number of domains has exceeded the allowed threshold for the account.</p>
-function M.DomainLimitExceeded(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DomainLimitExceeded")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The number of domains has exceeded the allowed threshold for the account.</p>
+-- @return DomainLimitExceeded structure as a key-value pair table
+function M.DomainLimitExceeded(args)
+	assert(args, "You must provdide an argument table when creating DomainLimitExceeded")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDomainLimitExceeded(t)
 	return t
@@ -1294,12 +1414,15 @@ end
 
 --- Create a structure of type UpdateDomainContactPrivacyResponse
 -- <p>The UpdateDomainContactPrivacy response includes the following element.</p>
--- @param _OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use GetOperationDetail.</p>
--- Required parameter: OperationId
-function M.UpdateDomainContactPrivacyResponse(_OperationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainContactPrivacyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OperationId [OperationId] <p>Identifier for tracking the progress of the request. To use this ID to query the operation status, use GetOperationDetail.</p>
+-- Required key: OperationId
+-- @return UpdateDomainContactPrivacyResponse structure as a key-value pair table
+function M.UpdateDomainContactPrivacyResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateDomainContactPrivacyResponse")
 	local t = { 
-		["OperationId"] = _OperationId,
+		["OperationId"] = args["OperationId"],
 	}
 	asserts.AssertUpdateDomainContactPrivacyResponse(t)
 	return t
@@ -1322,18 +1445,21 @@ end
 
 --- Create a structure of type UpdateDomainContactPrivacyRequest
 -- <p>The UpdateDomainContactPrivacy request includes the following elements.</p>
--- @param _TechPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
--- @param _AdminPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
--- @param _RegistrantPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
--- @param _DomainName [DomainName] <p>The name of the domain that you want to update the privacy setting for.</p>
--- Required parameter: DomainName
-function M.UpdateDomainContactPrivacyRequest(_TechPrivacy, _AdminPrivacy, _RegistrantPrivacy, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainContactPrivacyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TechPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- * AdminPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- * RegistrantPrivacy [Boolean] <p>Whether you want to conceal contact information from WHOIS queries. If you specify <code>true</code>, WHOIS ("who is") queries will return contact information for our registrar partner, Gandi, instead of the contact information that you enter.</p>
+-- * DomainName [DomainName] <p>The name of the domain that you want to update the privacy setting for.</p>
+-- Required key: DomainName
+-- @return UpdateDomainContactPrivacyRequest structure as a key-value pair table
+function M.UpdateDomainContactPrivacyRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateDomainContactPrivacyRequest")
 	local t = { 
-		["TechPrivacy"] = _TechPrivacy,
-		["AdminPrivacy"] = _AdminPrivacy,
-		["RegistrantPrivacy"] = _RegistrantPrivacy,
-		["DomainName"] = _DomainName,
+		["TechPrivacy"] = args["TechPrivacy"],
+		["AdminPrivacy"] = args["AdminPrivacy"],
+		["RegistrantPrivacy"] = args["RegistrantPrivacy"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertUpdateDomainContactPrivacyRequest(t)
 	return t
@@ -1351,8 +1477,11 @@ end
 
 --- Create a structure of type DeleteTagsForDomainResponse
 --  
-function M.DeleteTagsForDomainResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteTagsForDomainResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteTagsForDomainResponse structure as a key-value pair table
+function M.DeleteTagsForDomainResponse(args)
+	assert(args, "You must provdide an argument table when creating DeleteTagsForDomainResponse")
 	local t = { 
 	}
 	asserts.AssertDeleteTagsForDomainResponse(t)
@@ -1374,14 +1503,17 @@ end
 
 --- Create a structure of type Nameserver
 -- <p>Nameserver includes the following elements.</p>
--- @param _GlueIps [GlueIpList] <p>Glue IP address of a name server entry. Glue IP addresses are required only when the name of the name server is a subdomain of the domain. For example, if your domain is example.com and the name server for the domain is ns.example.com, you need to specify the IP address for ns.example.com.</p> <p>Constraints: The list can contain only one IPv4 and one IPv6 address.</p>
--- @param _Name [HostName] <p>The fully qualified host name of the name server.</p> <p>Constraint: Maximum 255 characters</p>
--- Required parameter: Name
-function M.Nameserver(_GlueIps, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Nameserver")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GlueIps [GlueIpList] <p>Glue IP address of a name server entry. Glue IP addresses are required only when the name of the name server is a subdomain of the domain. For example, if your domain is example.com and the name server for the domain is ns.example.com, you need to specify the IP address for ns.example.com.</p> <p>Constraints: The list can contain only one IPv4 and one IPv6 address.</p>
+-- * Name [HostName] <p>The fully qualified host name of the name server.</p> <p>Constraint: Maximum 255 characters</p>
+-- Required key: Name
+-- @return Nameserver structure as a key-value pair table
+function M.Nameserver(args)
+	assert(args, "You must provdide an argument table when creating Nameserver")
 	local t = { 
-		["GlueIps"] = _GlueIps,
-		["Name"] = _Name,
+		["GlueIps"] = args["GlueIps"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertNameserver(t)
 	return t
@@ -1402,15 +1534,18 @@ end
 
 --- Create a structure of type ResendContactReachabilityEmailResponse
 --  
--- @param _isAlreadyVerified [Boolean] <p> <code>True</code> if the email address for the registrant contact has already been verified, and <code>false</code> otherwise. If the email address has already been verified, we don't send another confirmation email.</p>
--- @param _emailAddress [Email] <p>The email address for the registrant contact at the time that we sent the verification email.</p>
--- @param _domainName [DomainName] <p>The domain name for which you requested a confirmation email.</p>
-function M.ResendContactReachabilityEmailResponse(_isAlreadyVerified, _emailAddress, _domainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResendContactReachabilityEmailResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * isAlreadyVerified [Boolean] <p> <code>True</code> if the email address for the registrant contact has already been verified, and <code>false</code> otherwise. If the email address has already been verified, we don't send another confirmation email.</p>
+-- * emailAddress [Email] <p>The email address for the registrant contact at the time that we sent the verification email.</p>
+-- * domainName [DomainName] <p>The domain name for which you requested a confirmation email.</p>
+-- @return ResendContactReachabilityEmailResponse structure as a key-value pair table
+function M.ResendContactReachabilityEmailResponse(args)
+	assert(args, "You must provdide an argument table when creating ResendContactReachabilityEmailResponse")
 	local t = { 
-		["isAlreadyVerified"] = _isAlreadyVerified,
-		["emailAddress"] = _emailAddress,
-		["domainName"] = _domainName,
+		["isAlreadyVerified"] = args["isAlreadyVerified"],
+		["emailAddress"] = args["emailAddress"],
+		["domainName"] = args["domainName"],
 	}
 	asserts.AssertResendContactReachabilityEmailResponse(t)
 	return t
@@ -1428,8 +1563,11 @@ end
 
 --- Create a structure of type UpdateTagsForDomainResponse
 --  
-function M.UpdateTagsForDomainResponse(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTagsForDomainResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return UpdateTagsForDomainResponse structure as a key-value pair table
+function M.UpdateTagsForDomainResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateTagsForDomainResponse")
 	local t = { 
 	}
 	asserts.AssertUpdateTagsForDomainResponse(t)
@@ -1450,12 +1588,15 @@ end
 
 --- Create a structure of type ListTagsForDomainRequest
 -- <p>The ListTagsForDomainRequest includes the following elements.</p>
--- @param _DomainName [DomainName] <p>The domain for which you want to get a list of tags.</p>
--- Required parameter: DomainName
-function M.ListTagsForDomainRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsForDomainRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] <p>The domain for which you want to get a list of tags.</p>
+-- Required key: DomainName
+-- @return ListTagsForDomainRequest structure as a key-value pair table
+function M.ListTagsForDomainRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsForDomainRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertListTagsForDomainRequest(t)
 	return t
@@ -1475,13 +1616,16 @@ end
 
 --- Create a structure of type ViewBillingResponse
 -- <p>The ViewBilling response includes the following elements.</p>
--- @param _NextPageMarker [PageMarker] <p>If there are more billing records than you specified for <code>MaxItems</code> in the request, submit another request and include the value of <code>NextPageMarker</code> in the value of <code>Marker</code>.</p>
--- @param _BillingRecords [BillingRecords] <p>A summary of billing records.</p>
-function M.ViewBillingResponse(_NextPageMarker, _BillingRecords, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ViewBillingResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageMarker [PageMarker] <p>If there are more billing records than you specified for <code>MaxItems</code> in the request, submit another request and include the value of <code>NextPageMarker</code> in the value of <code>Marker</code>.</p>
+-- * BillingRecords [BillingRecords] <p>A summary of billing records.</p>
+-- @return ViewBillingResponse structure as a key-value pair table
+function M.ViewBillingResponse(args)
+	assert(args, "You must provdide an argument table when creating ViewBillingResponse")
 	local t = { 
-		["NextPageMarker"] = _NextPageMarker,
-		["BillingRecords"] = _BillingRecords,
+		["NextPageMarker"] = args["NextPageMarker"],
+		["BillingRecords"] = args["BillingRecords"],
 	}
 	asserts.AssertViewBillingResponse(t)
 	return t
@@ -1500,11 +1644,14 @@ end
 
 --- Create a structure of type GetContactReachabilityStatusRequest
 --  
--- @param _domainName [DomainName] <p>The name of the domain for which you want to know whether the registrant contact has confirmed that the email address is valid.</p>
-function M.GetContactReachabilityStatusRequest(_domainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetContactReachabilityStatusRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * domainName [DomainName] <p>The name of the domain for which you want to know whether the registrant contact has confirmed that the email address is valid.</p>
+-- @return GetContactReachabilityStatusRequest structure as a key-value pair table
+function M.GetContactReachabilityStatusRequest(args)
+	assert(args, "You must provdide an argument table when creating GetContactReachabilityStatusRequest")
 	local t = { 
-		["domainName"] = _domainName,
+		["domainName"] = args["domainName"],
 	}
 	asserts.AssertGetContactReachabilityStatusRequest(t)
 	return t
@@ -1523,11 +1670,14 @@ end
 
 --- Create a structure of type DuplicateRequest
 -- <p>The request is already in progress for the domain.</p>
--- @param _message [ErrorMessage] <p>The request is already in progress for the domain.</p>
-function M.DuplicateRequest(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The request is already in progress for the domain.</p>
+-- @return DuplicateRequest structure as a key-value pair table
+function M.DuplicateRequest(args)
+	assert(args, "You must provdide an argument table when creating DuplicateRequest")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDuplicateRequest(t)
 	return t
@@ -1548,14 +1698,17 @@ end
 
 --- Create a structure of type CheckDomainAvailabilityRequest
 -- <p>The CheckDomainAvailability request contains the following elements.</p>
--- @param _IdnLangCode [LangCode] <p>Reserved for future use.</p>
--- @param _DomainName [DomainName] <p>The name of the domain that you want to get availability for.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
--- Required parameter: DomainName
-function M.CheckDomainAvailabilityRequest(_IdnLangCode, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CheckDomainAvailabilityRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IdnLangCode [LangCode] <p>Reserved for future use.</p>
+-- * DomainName [DomainName] <p>The name of the domain that you want to get availability for.</p> <p>Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.</p>
+-- Required key: DomainName
+-- @return CheckDomainAvailabilityRequest structure as a key-value pair table
+function M.CheckDomainAvailabilityRequest(args)
+	assert(args, "You must provdide an argument table when creating CheckDomainAvailabilityRequest")
 	local t = { 
-		["IdnLangCode"] = _IdnLangCode,
-		["DomainName"] = _DomainName,
+		["IdnLangCode"] = args["IdnLangCode"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertCheckDomainAvailabilityRequest(t)
 	return t
@@ -1575,12 +1728,15 @@ end
 
 --- Create a structure of type EnableDomainTransferLockRequest
 -- <p>A request to set the transfer lock for the specified domain.</p>
--- @param _DomainName [DomainName] <p>The name of the domain that you want to set the transfer lock for.</p>
--- Required parameter: DomainName
-function M.EnableDomainTransferLockRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableDomainTransferLockRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] <p>The name of the domain that you want to set the transfer lock for.</p>
+-- Required key: DomainName
+-- @return EnableDomainTransferLockRequest structure as a key-value pair table
+function M.EnableDomainTransferLockRequest(args)
+	assert(args, "You must provdide an argument table when creating EnableDomainTransferLockRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertEnableDomainTransferLockRequest(t)
 	return t
@@ -1599,11 +1755,14 @@ end
 
 --- Create a structure of type GetDomainSuggestionsResponse
 --  
--- @param _SuggestionsList [DomainSuggestionsList] <p>A list of possible domain names. If you specified <code>true</code> for <code>OnlyAvailable</code> in the request, the list contains only domains that are available for registration.</p>
-function M.GetDomainSuggestionsResponse(_SuggestionsList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainSuggestionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SuggestionsList [DomainSuggestionsList] <p>A list of possible domain names. If you specified <code>true</code> for <code>OnlyAvailable</code> in the request, the list contains only domains that are available for registration.</p>
+-- @return GetDomainSuggestionsResponse structure as a key-value pair table
+function M.GetDomainSuggestionsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetDomainSuggestionsResponse")
 	local t = { 
-		["SuggestionsList"] = _SuggestionsList,
+		["SuggestionsList"] = args["SuggestionsList"],
 	}
 	asserts.AssertGetDomainSuggestionsResponse(t)
 	return t
@@ -1626,17 +1785,20 @@ end
 
 --- Create a structure of type UpdateDomainNameserversRequest
 -- <p>Replaces the current set of name servers for the domain with the specified set of name servers. If you use Amazon Route 53 as your DNS service, specify the four name servers in the delegation set for the hosted zone for the domain.</p> <p>If successful, this operation returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email. </p>
--- @param _Nameservers [NameserverList] <p>A list of new name servers for the domain.</p>
--- @param _FIAuthKey [FIAuthKey] <p>The authorization key for .fi domains</p>
--- @param _DomainName [DomainName] <p>The name of the domain that you want to change name servers for.</p>
--- Required parameter: DomainName
--- Required parameter: Nameservers
-function M.UpdateDomainNameserversRequest(_Nameservers, _FIAuthKey, _DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDomainNameserversRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Nameservers [NameserverList] <p>A list of new name servers for the domain.</p>
+-- * FIAuthKey [FIAuthKey] <p>The authorization key for .fi domains</p>
+-- * DomainName [DomainName] <p>The name of the domain that you want to change name servers for.</p>
+-- Required key: DomainName
+-- Required key: Nameservers
+-- @return UpdateDomainNameserversRequest structure as a key-value pair table
+function M.UpdateDomainNameserversRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateDomainNameserversRequest")
 	local t = { 
-		["Nameservers"] = _Nameservers,
-		["FIAuthKey"] = _FIAuthKey,
-		["DomainName"] = _DomainName,
+		["Nameservers"] = args["Nameservers"],
+		["FIAuthKey"] = args["FIAuthKey"],
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertUpdateDomainNameserversRequest(t)
 	return t
@@ -1656,12 +1818,15 @@ end
 
 --- Create a structure of type GetDomainDetailRequest
 -- <p>The GetDomainDetail request includes the following element.</p>
--- @param _DomainName [DomainName] <p>The name of the domain that you want to get detailed information about.</p>
--- Required parameter: DomainName
-function M.GetDomainDetailRequest(_DomainName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDomainDetailRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DomainName [DomainName] <p>The name of the domain that you want to get detailed information about.</p>
+-- Required key: DomainName
+-- @return GetDomainDetailRequest structure as a key-value pair table
+function M.GetDomainDetailRequest(args)
+	assert(args, "You must provdide an argument table when creating GetDomainDetailRequest")
 	local t = { 
-		["DomainName"] = _DomainName,
+		["DomainName"] = args["DomainName"],
 	}
 	asserts.AssertGetDomainDetailRequest(t)
 	return t
@@ -1682,14 +1847,17 @@ end
 
 --- Create a structure of type ListDomainsResponse
 -- <p>The ListDomains response includes the following elements.</p>
--- @param _Domains [DomainSummaryList] <p>A summary of domains.</p>
--- @param _NextPageMarker [PageMarker] <p>If there are more domains than you specified for <code>MaxItems</code> in the request, submit another request and include the value of <code>NextPageMarker</code> in the value of <code>Marker</code>.</p>
--- Required parameter: Domains
-function M.ListDomainsResponse(_Domains, _NextPageMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Domains [DomainSummaryList] <p>A summary of domains.</p>
+-- * NextPageMarker [PageMarker] <p>If there are more domains than you specified for <code>MaxItems</code> in the request, submit another request and include the value of <code>NextPageMarker</code> in the value of <code>Marker</code>.</p>
+-- Required key: Domains
+-- @return ListDomainsResponse structure as a key-value pair table
+function M.ListDomainsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListDomainsResponse")
 	local t = { 
-		["Domains"] = _Domains,
-		["NextPageMarker"] = _NextPageMarker,
+		["Domains"] = args["Domains"],
+		["NextPageMarker"] = args["NextPageMarker"],
 	}
 	asserts.AssertListDomainsResponse(t)
 	return t
@@ -1709,13 +1877,16 @@ end
 
 --- Create a structure of type ListDomainsRequest
 -- <p>The ListDomains request includes the following elements.</p>
--- @param _Marker [PageMarker] <p>For an initial request for a list of domains, omit this element. If the number of domains that are associated with the current AWS account is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional domains. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element.</p> <p>Constraints: The marker must match the value specified in the previous request.</p>
--- @param _MaxItems [PageMaxItems] <p>Number of domains to be returned.</p> <p>Default: 20</p>
-function M.ListDomainsRequest(_Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListDomainsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [PageMarker] <p>For an initial request for a list of domains, omit this element. If the number of domains that are associated with the current AWS account is greater than the value that you specified for <code>MaxItems</code>, you can use <code>Marker</code> to return additional domains. Get the value of <code>NextPageMarker</code> from the previous response, and submit another request that includes the value of <code>NextPageMarker</code> in the <code>Marker</code> element.</p> <p>Constraints: The marker must match the value specified in the previous request.</p>
+-- * MaxItems [PageMaxItems] <p>Number of domains to be returned.</p> <p>Default: 20</p>
+-- @return ListDomainsRequest structure as a key-value pair table
+function M.ListDomainsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListDomainsRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListDomainsRequest(t)
 	return t
@@ -1736,14 +1907,17 @@ end
 
 --- Create a structure of type ListOperationsResponse
 -- <p>The ListOperations response includes the following elements.</p>
--- @param _Operations [OperationSummaryList] <p>Lists summaries of the operations.</p>
--- @param _NextPageMarker [PageMarker] <p>If there are more operations than you specified for <code>MaxItems</code> in the request, submit another request and include the value of <code>NextPageMarker</code> in the value of <code>Marker</code>.</p>
--- Required parameter: Operations
-function M.ListOperationsResponse(_Operations, _NextPageMarker, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOperationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Operations [OperationSummaryList] <p>Lists summaries of the operations.</p>
+-- * NextPageMarker [PageMarker] <p>If there are more operations than you specified for <code>MaxItems</code> in the request, submit another request and include the value of <code>NextPageMarker</code> in the value of <code>Marker</code>.</p>
+-- Required key: Operations
+-- @return ListOperationsResponse structure as a key-value pair table
+function M.ListOperationsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListOperationsResponse")
 	local t = { 
-		["Operations"] = _Operations,
-		["NextPageMarker"] = _NextPageMarker,
+		["Operations"] = args["Operations"],
+		["NextPageMarker"] = args["NextPageMarker"],
 	}
 	asserts.AssertListOperationsResponse(t)
 	return t
@@ -1762,11 +1936,14 @@ end
 
 --- Create a structure of type InvalidInput
 -- <p>The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.</p>
--- @param _message [ErrorMessage] <p>The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.</p>
-function M.InvalidInput(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ErrorMessage] <p>The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.</p>
+-- @return InvalidInput structure as a key-value pair table
+function M.InvalidInput(args)
+	assert(args, "You must provdide an argument table when creating InvalidInput")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidInput(t)
 	return t
@@ -1786,12 +1963,15 @@ end
 
 --- Create a structure of type RetrieveDomainAuthCodeResponse
 -- <p>The RetrieveDomainAuthCode response includes the following element.</p>
--- @param _AuthCode [DomainAuthCode] <p>The authorization code for the domain.</p>
--- Required parameter: AuthCode
-function M.RetrieveDomainAuthCodeResponse(_AuthCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RetrieveDomainAuthCodeResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AuthCode [DomainAuthCode] <p>The authorization code for the domain.</p>
+-- Required key: AuthCode
+-- @return RetrieveDomainAuthCodeResponse structure as a key-value pair table
+function M.RetrieveDomainAuthCodeResponse(args)
+	assert(args, "You must provdide an argument table when creating RetrieveDomainAuthCodeResponse")
 	local t = { 
-		["AuthCode"] = _AuthCode,
+		["AuthCode"] = args["AuthCode"],
 	}
 	asserts.AssertRetrieveDomainAuthCodeResponse(t)
 	return t

@@ -35,12 +35,15 @@ end
 
 --- Create a structure of type DeregisterInstanceRequest
 --  
--- @param _InstanceId [String] <p>The instance ID.</p>
--- Required parameter: InstanceId
-function M.DeregisterInstanceRequest(_InstanceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- Required key: InstanceId
+-- @return DeregisterInstanceRequest structure as a key-value pair table
+function M.DeregisterInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterInstanceRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
+		["InstanceId"] = args["InstanceId"],
 	}
 	asserts.AssertDeregisterInstanceRequest(t)
 	return t
@@ -60,12 +63,15 @@ end
 
 --- Create a structure of type StopInstanceRequest
 --  
--- @param _InstanceId [String] <p>The instance ID.</p>
--- Required parameter: InstanceId
-function M.StopInstanceRequest(_InstanceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- Required key: InstanceId
+-- @return StopInstanceRequest structure as a key-value pair table
+function M.StopInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating StopInstanceRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
+		["InstanceId"] = args["InstanceId"],
 	}
 	asserts.AssertStopInstanceRequest(t)
 	return t
@@ -89,21 +95,24 @@ end
 
 --- Create a structure of type StackSummary
 -- <p>Summarizes the number of layers, instances, and apps in a stack.</p>
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _InstancesCount [InstancesCount] <p>An <code>InstancesCount</code> object with the number of instances in each status.</p>
--- @param _Name [String] <p>The stack name.</p>
--- @param _AppsCount [Integer] <p>The number of apps.</p>
--- @param _LayersCount [Integer] <p>The number of layers.</p>
--- @param _Arn [String] <p>The stack's ARN.</p>
-function M.StackSummary(_StackId, _InstancesCount, _Name, _AppsCount, _LayersCount, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StackSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * InstancesCount [InstancesCount] <p>An <code>InstancesCount</code> object with the number of instances in each status.</p>
+-- * Name [String] <p>The stack name.</p>
+-- * AppsCount [Integer] <p>The number of apps.</p>
+-- * LayersCount [Integer] <p>The number of layers.</p>
+-- * Arn [String] <p>The stack's ARN.</p>
+-- @return StackSummary structure as a key-value pair table
+function M.StackSummary(args)
+	assert(args, "You must provdide an argument table when creating StackSummary")
 	local t = { 
-		["StackId"] = _StackId,
-		["InstancesCount"] = _InstancesCount,
-		["Name"] = _Name,
-		["AppsCount"] = _AppsCount,
-		["LayersCount"] = _LayersCount,
-		["Arn"] = _Arn,
+		["StackId"] = args["StackId"],
+		["InstancesCount"] = args["InstancesCount"],
+		["Name"] = args["Name"],
+		["AppsCount"] = args["AppsCount"],
+		["LayersCount"] = args["LayersCount"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertStackSummary(t)
 	return t
@@ -125,16 +134,19 @@ end
 
 --- Create a structure of type ListTagsRequest
 --  
--- @param _ResourceArn [ResourceArn] <p>The stack or layer's Amazon Resource Number (ARN).</p>
--- @param _NextToken [NextToken] <p>Do not use. A validation exception occurs if you add a <code>NextToken</code> parameter to a <code>ListTagsRequest</code> call. </p>
--- @param _MaxResults [MaxResults] <p>Do not use. A validation exception occurs if you add a <code>MaxResults</code> parameter to a <code>ListTagsRequest</code> call. </p>
--- Required parameter: ResourceArn
-function M.ListTagsRequest(_ResourceArn, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The stack or layer's Amazon Resource Number (ARN).</p>
+-- * NextToken [NextToken] <p>Do not use. A validation exception occurs if you add a <code>NextToken</code> parameter to a <code>ListTagsRequest</code> call. </p>
+-- * MaxResults [MaxResults] <p>Do not use. A validation exception occurs if you add a <code>MaxResults</code> parameter to a <code>ListTagsRequest</code> call. </p>
+-- Required key: ResourceArn
+-- @return ListTagsRequest structure as a key-value pair table
+function M.ListTagsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsRequest")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["ResourceArn"] = args["ResourceArn"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertListTagsRequest(t)
 	return t
@@ -153,11 +165,14 @@ end
 
 --- Create a structure of type CreateDeploymentResult
 -- <p>Contains the response to a <code>CreateDeployment</code> request.</p>
--- @param _DeploymentId [String] <p>The deployment ID, which can be used with other requests to identify the deployment.</p>
-function M.CreateDeploymentResult(_DeploymentId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeploymentId [String] <p>The deployment ID, which can be used with other requests to identify the deployment.</p>
+-- @return CreateDeploymentResult structure as a key-value pair table
+function M.CreateDeploymentResult(args)
+	assert(args, "You must provdide an argument table when creating CreateDeploymentResult")
 	local t = { 
-		["DeploymentId"] = _DeploymentId,
+		["DeploymentId"] = args["DeploymentId"],
 	}
 	asserts.AssertCreateDeploymentResult(t)
 	return t
@@ -177,13 +192,16 @@ end
 
 --- Create a structure of type DescribeAppsRequest
 --  
--- @param _StackId [String] <p>The app stack ID. If you use this parameter, <code>DescribeApps</code> returns a description of the apps in the specified stack.</p>
--- @param _AppIds [Strings] <p>An array of app IDs for the apps to be described. If you use this parameter, <code>DescribeApps</code> returns a description of the specified apps. Otherwise, it returns a description of every app.</p>
-function M.DescribeAppsRequest(_StackId, _AppIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAppsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The app stack ID. If you use this parameter, <code>DescribeApps</code> returns a description of the apps in the specified stack.</p>
+-- * AppIds [Strings] <p>An array of app IDs for the apps to be described. If you use this parameter, <code>DescribeApps</code> returns a description of the specified apps. Otherwise, it returns a description of every app.</p>
+-- @return DescribeAppsRequest structure as a key-value pair table
+function M.DescribeAppsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAppsRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["AppIds"] = _AppIds,
+		["StackId"] = args["StackId"],
+		["AppIds"] = args["AppIds"],
 	}
 	asserts.AssertDescribeAppsRequest(t)
 	return t
@@ -202,11 +220,14 @@ end
 
 --- Create a structure of type DescribeUserProfilesRequest
 --  
--- @param _IamUserArns [Strings] <p>An array of IAM or federated user ARNs that identify the users to be described.</p>
-function M.DescribeUserProfilesRequest(_IamUserArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserProfilesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IamUserArns [Strings] <p>An array of IAM or federated user ARNs that identify the users to be described.</p>
+-- @return DescribeUserProfilesRequest structure as a key-value pair table
+function M.DescribeUserProfilesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeUserProfilesRequest")
 	local t = { 
-		["IamUserArns"] = _IamUserArns,
+		["IamUserArns"] = args["IamUserArns"],
 	}
 	asserts.AssertDescribeUserProfilesRequest(t)
 	return t
@@ -226,12 +247,15 @@ end
 
 --- Create a structure of type DeregisterRdsDbInstanceRequest
 --  
--- @param _RdsDbInstanceArn [String] <p>The Amazon RDS instance's ARN.</p>
--- Required parameter: RdsDbInstanceArn
-function M.DeregisterRdsDbInstanceRequest(_RdsDbInstanceArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterRdsDbInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RdsDbInstanceArn [String] <p>The Amazon RDS instance's ARN.</p>
+-- Required key: RdsDbInstanceArn
+-- @return DeregisterRdsDbInstanceRequest structure as a key-value pair table
+function M.DeregisterRdsDbInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterRdsDbInstanceRequest")
 	local t = { 
-		["RdsDbInstanceArn"] = _RdsDbInstanceArn,
+		["RdsDbInstanceArn"] = args["RdsDbInstanceArn"],
 	}
 	asserts.AssertDeregisterRdsDbInstanceRequest(t)
 	return t
@@ -251,12 +275,15 @@ end
 
 --- Create a structure of type StartInstanceRequest
 --  
--- @param _InstanceId [String] <p>The instance ID.</p>
--- Required parameter: InstanceId
-function M.StartInstanceRequest(_InstanceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- Required key: InstanceId
+-- @return StartInstanceRequest structure as a key-value pair table
+function M.StartInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating StartInstanceRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
+		["InstanceId"] = args["InstanceId"],
 	}
 	asserts.AssertStartInstanceRequest(t)
 	return t
@@ -276,12 +303,15 @@ end
 
 --- Create a structure of type DescribeStackSummaryRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- Required parameter: StackId
-function M.DescribeStackSummaryRequest(_StackId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackSummaryRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- Required key: StackId
+-- @return DescribeStackSummaryRequest structure as a key-value pair table
+function M.DescribeStackSummaryRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeStackSummaryRequest")
 	local t = { 
-		["StackId"] = _StackId,
+		["StackId"] = args["StackId"],
 	}
 	asserts.AssertDescribeStackSummaryRequest(t)
 	return t
@@ -300,11 +330,14 @@ end
 
 --- Create a structure of type DescribeVolumesResult
 -- <p>Contains the response to a <code>DescribeVolumes</code> request.</p>
--- @param _Volumes [Volumes] <p>An array of volume IDs.</p>
-function M.DescribeVolumesResult(_Volumes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVolumesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Volumes [Volumes] <p>An array of volume IDs.</p>
+-- @return DescribeVolumesResult structure as a key-value pair table
+function M.DescribeVolumesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeVolumesResult")
 	local t = { 
-		["Volumes"] = _Volumes,
+		["Volumes"] = args["Volumes"],
 	}
 	asserts.AssertDescribeVolumesResult(t)
 	return t
@@ -326,15 +359,18 @@ end
 
 --- Create a structure of type AttachElasticLoadBalancerRequest
 --  
--- @param _ElasticLoadBalancerName [String] <p>The Elastic Load Balancing instance's name.</p>
--- @param _LayerId [String] <p>The ID of the layer that the Elastic Load Balancing instance is to be attached to.</p>
--- Required parameter: ElasticLoadBalancerName
--- Required parameter: LayerId
-function M.AttachElasticLoadBalancerRequest(_ElasticLoadBalancerName, _LayerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachElasticLoadBalancerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ElasticLoadBalancerName [String] <p>The Elastic Load Balancing instance's name.</p>
+-- * LayerId [String] <p>The ID of the layer that the Elastic Load Balancing instance is to be attached to.</p>
+-- Required key: ElasticLoadBalancerName
+-- Required key: LayerId
+-- @return AttachElasticLoadBalancerRequest structure as a key-value pair table
+function M.AttachElasticLoadBalancerRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachElasticLoadBalancerRequest")
 	local t = { 
-		["ElasticLoadBalancerName"] = _ElasticLoadBalancerName,
-		["LayerId"] = _LayerId,
+		["ElasticLoadBalancerName"] = args["ElasticLoadBalancerName"],
+		["LayerId"] = args["LayerId"],
 	}
 	asserts.AssertAttachElasticLoadBalancerRequest(t)
 	return t
@@ -353,11 +389,14 @@ end
 
 --- Create a structure of type UpdateMyUserProfileRequest
 --  
--- @param _SshPublicKey [String] <p>The user's SSH public key.</p>
-function M.UpdateMyUserProfileRequest(_SshPublicKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateMyUserProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SshPublicKey [String] <p>The user's SSH public key.</p>
+-- @return UpdateMyUserProfileRequest structure as a key-value pair table
+function M.UpdateMyUserProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateMyUserProfileRequest")
 	local t = { 
-		["SshPublicKey"] = _SshPublicKey,
+		["SshPublicKey"] = args["SshPublicKey"],
 	}
 	asserts.AssertUpdateMyUserProfileRequest(t)
 	return t
@@ -377,12 +416,15 @@ end
 
 --- Create a structure of type DeleteLayerRequest
 --  
--- @param _LayerId [String] <p>The layer ID.</p>
--- Required parameter: LayerId
-function M.DeleteLayerRequest(_LayerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLayerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LayerId [String] <p>The layer ID.</p>
+-- Required key: LayerId
+-- @return DeleteLayerRequest structure as a key-value pair table
+function M.DeleteLayerRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteLayerRequest")
 	local t = { 
-		["LayerId"] = _LayerId,
+		["LayerId"] = args["LayerId"],
 	}
 	asserts.AssertDeleteLayerRequest(t)
 	return t
@@ -402,13 +444,16 @@ end
 
 --- Create a structure of type ShutdownEventConfiguration
 -- <p>The Shutdown event configuration.</p>
--- @param _DelayUntilElbConnectionsDrained [Boolean] <p>Whether to enable Elastic Load Balancing connection draining. For more information, see <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain">Connection Draining</a> </p>
--- @param _ExecutionTimeout [Integer] <p>The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting down an instance.</p>
-function M.ShutdownEventConfiguration(_DelayUntilElbConnectionsDrained, _ExecutionTimeout, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ShutdownEventConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DelayUntilElbConnectionsDrained [Boolean] <p>Whether to enable Elastic Load Balancing connection draining. For more information, see <a href="http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain">Connection Draining</a> </p>
+-- * ExecutionTimeout [Integer] <p>The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting down an instance.</p>
+-- @return ShutdownEventConfiguration structure as a key-value pair table
+function M.ShutdownEventConfiguration(args)
+	assert(args, "You must provdide an argument table when creating ShutdownEventConfiguration")
 	local t = { 
-		["DelayUntilElbConnectionsDrained"] = _DelayUntilElbConnectionsDrained,
-		["ExecutionTimeout"] = _ExecutionTimeout,
+		["DelayUntilElbConnectionsDrained"] = args["DelayUntilElbConnectionsDrained"],
+		["ExecutionTimeout"] = args["ExecutionTimeout"],
 	}
 	asserts.AssertShutdownEventConfiguration(t)
 	return t
@@ -430,17 +475,20 @@ end
 
 --- Create a structure of type EcsCluster
 -- <p>Describes a registered Amazon ECS cluster.</p>
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _EcsClusterArn [String] <p>The cluster's ARN.</p>
--- @param _RegisteredAt [DateTime] <p>The time and date that the cluster was registered with the stack.</p>
--- @param _EcsClusterName [String] <p>The cluster name.</p>
-function M.EcsCluster(_StackId, _EcsClusterArn, _RegisteredAt, _EcsClusterName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EcsCluster")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * EcsClusterArn [String] <p>The cluster's ARN.</p>
+-- * RegisteredAt [DateTime] <p>The time and date that the cluster was registered with the stack.</p>
+-- * EcsClusterName [String] <p>The cluster name.</p>
+-- @return EcsCluster structure as a key-value pair table
+function M.EcsCluster(args)
+	assert(args, "You must provdide an argument table when creating EcsCluster")
 	local t = { 
-		["StackId"] = _StackId,
-		["EcsClusterArn"] = _EcsClusterArn,
-		["RegisteredAt"] = _RegisteredAt,
-		["EcsClusterName"] = _EcsClusterName,
+		["StackId"] = args["StackId"],
+		["EcsClusterArn"] = args["EcsClusterArn"],
+		["RegisteredAt"] = args["RegisteredAt"],
+		["EcsClusterName"] = args["EcsClusterName"],
 	}
 	asserts.AssertEcsCluster(t)
 	return t
@@ -459,11 +507,14 @@ end
 
 --- Create a structure of type DescribeAppsResult
 -- <p>Contains the response to a <code>DescribeApps</code> request.</p>
--- @param _Apps [Apps] <p>An array of <code>App</code> objects that describe the specified apps. </p>
-function M.DescribeAppsResult(_Apps, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAppsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Apps [Apps] <p>An array of <code>App</code> objects that describe the specified apps. </p>
+-- @return DescribeAppsResult structure as a key-value pair table
+function M.DescribeAppsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeAppsResult")
 	local t = { 
-		["Apps"] = _Apps,
+		["Apps"] = args["Apps"],
 	}
 	asserts.AssertDescribeAppsResult(t)
 	return t
@@ -493,32 +544,35 @@ end
 
 --- Create a structure of type UpdateAppRequest
 --  
--- @param _Environment [EnvironmentVariables] <p>An array of <code>EnvironmentVariable</code> objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances.For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment"> Environment Variables</a>.</p> <p>There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, "Environment: is too large (maximum is 10KB)."</p> <note> <p>This parameter is supported only by Chef 11.10 stacks. If you have specified one or more environment variables, you cannot modify the stack's Chef version.</p> </note>
--- @param _AppSource [Source] <p>A <code>Source</code> object that specifies the app repository.</p>
--- @param _Description [String] <p>A description of the app.</p>
--- @param _EnableSsl [Boolean] <p>Whether SSL is enabled for the app.</p>
--- @param _SslConfiguration [SslConfiguration] <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
--- @param _AppId [String] <p>The app ID.</p>
--- @param _Domains [Strings] <p>The app's virtual host settings, with multiple domains separated by commas. For example: <code>'www.example.com, example.com'</code> </p>
--- @param _Attributes [AppAttributes] <p>One or more user-defined key/value pairs to be added to the stack attributes.</p>
--- @param _Name [String] <p>The app name.</p>
--- @param _Type [AppType] <p>The app type.</p>
--- @param _DataSources [DataSources] <p>The app's data sources.</p>
--- Required parameter: AppId
-function M.UpdateAppRequest(_Environment, _AppSource, _Description, _EnableSsl, _SslConfiguration, _AppId, _Domains, _Attributes, _Name, _Type, _DataSources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAppRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Environment [EnvironmentVariables] <p>An array of <code>EnvironmentVariable</code> objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances.For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment"> Environment Variables</a>.</p> <p>There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, "Environment: is too large (maximum is 10KB)."</p> <note> <p>This parameter is supported only by Chef 11.10 stacks. If you have specified one or more environment variables, you cannot modify the stack's Chef version.</p> </note>
+-- * AppSource [Source] <p>A <code>Source</code> object that specifies the app repository.</p>
+-- * Description [String] <p>A description of the app.</p>
+-- * EnableSsl [Boolean] <p>Whether SSL is enabled for the app.</p>
+-- * SslConfiguration [SslConfiguration] <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
+-- * AppId [String] <p>The app ID.</p>
+-- * Domains [Strings] <p>The app's virtual host settings, with multiple domains separated by commas. For example: <code>'www.example.com, example.com'</code> </p>
+-- * Attributes [AppAttributes] <p>One or more user-defined key/value pairs to be added to the stack attributes.</p>
+-- * Name [String] <p>The app name.</p>
+-- * Type [AppType] <p>The app type.</p>
+-- * DataSources [DataSources] <p>The app's data sources.</p>
+-- Required key: AppId
+-- @return UpdateAppRequest structure as a key-value pair table
+function M.UpdateAppRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateAppRequest")
 	local t = { 
-		["Environment"] = _Environment,
-		["AppSource"] = _AppSource,
-		["Description"] = _Description,
-		["EnableSsl"] = _EnableSsl,
-		["SslConfiguration"] = _SslConfiguration,
-		["AppId"] = _AppId,
-		["Domains"] = _Domains,
-		["Attributes"] = _Attributes,
-		["Name"] = _Name,
-		["Type"] = _Type,
-		["DataSources"] = _DataSources,
+		["Environment"] = args["Environment"],
+		["AppSource"] = args["AppSource"],
+		["Description"] = args["Description"],
+		["EnableSsl"] = args["EnableSsl"],
+		["SslConfiguration"] = args["SslConfiguration"],
+		["AppId"] = args["AppId"],
+		["Domains"] = args["Domains"],
+		["Attributes"] = args["Attributes"],
+		["Name"] = args["Name"],
+		["Type"] = args["Type"],
+		["DataSources"] = args["DataSources"],
 	}
 	asserts.AssertUpdateAppRequest(t)
 	return t
@@ -540,15 +594,18 @@ end
 
 --- Create a structure of type RegisterElasticIpRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _ElasticIp [String] <p>The Elastic IP address.</p>
--- Required parameter: ElasticIp
--- Required parameter: StackId
-function M.RegisterElasticIpRequest(_StackId, _ElasticIp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterElasticIpRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * ElasticIp [String] <p>The Elastic IP address.</p>
+-- Required key: ElasticIp
+-- Required key: StackId
+-- @return RegisterElasticIpRequest structure as a key-value pair table
+function M.RegisterElasticIpRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterElasticIpRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["ElasticIp"] = _ElasticIp,
+		["StackId"] = args["StackId"],
+		["ElasticIp"] = args["ElasticIp"],
 	}
 	asserts.AssertRegisterElasticIpRequest(t)
 	return t
@@ -569,15 +626,18 @@ end
 
 --- Create a structure of type DescribeCommandsRequest
 --  
--- @param _InstanceId [String] <p>The instance ID. If you include this parameter, <code>DescribeCommands</code> returns a description of the commands associated with the specified instance.</p>
--- @param _DeploymentId [String] <p>The deployment ID. If you include this parameter, <code>DescribeCommands</code> returns a description of the commands associated with the specified deployment.</p>
--- @param _CommandIds [Strings] <p>An array of command IDs. If you include this parameter, <code>DescribeCommands</code> returns a description of the specified commands. Otherwise, it returns a description of every command.</p>
-function M.DescribeCommandsRequest(_InstanceId, _DeploymentId, _CommandIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommandsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID. If you include this parameter, <code>DescribeCommands</code> returns a description of the commands associated with the specified instance.</p>
+-- * DeploymentId [String] <p>The deployment ID. If you include this parameter, <code>DescribeCommands</code> returns a description of the commands associated with the specified deployment.</p>
+-- * CommandIds [Strings] <p>An array of command IDs. If you include this parameter, <code>DescribeCommands</code> returns a description of the specified commands. Otherwise, it returns a description of every command.</p>
+-- @return DescribeCommandsRequest structure as a key-value pair table
+function M.DescribeCommandsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeCommandsRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["DeploymentId"] = _DeploymentId,
-		["CommandIds"] = _CommandIds,
+		["InstanceId"] = args["InstanceId"],
+		["DeploymentId"] = args["DeploymentId"],
+		["CommandIds"] = args["CommandIds"],
 	}
 	asserts.AssertDescribeCommandsRequest(t)
 	return t
@@ -597,13 +657,16 @@ end
 
 --- Create a structure of type DescribeElasticLoadBalancersRequest
 --  
--- @param _StackId [String] <p>A stack ID. The action describes the stack's Elastic Load Balancing instances.</p>
--- @param _LayerIds [Strings] <p>A list of layer IDs. The action describes the Elastic Load Balancing instances for the specified layers.</p>
-function M.DescribeElasticLoadBalancersRequest(_StackId, _LayerIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticLoadBalancersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>A stack ID. The action describes the stack's Elastic Load Balancing instances.</p>
+-- * LayerIds [Strings] <p>A list of layer IDs. The action describes the Elastic Load Balancing instances for the specified layers.</p>
+-- @return DescribeElasticLoadBalancersRequest structure as a key-value pair table
+function M.DescribeElasticLoadBalancersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeElasticLoadBalancersRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["LayerIds"] = _LayerIds,
+		["StackId"] = args["StackId"],
+		["LayerIds"] = args["LayerIds"],
 	}
 	asserts.AssertDescribeElasticLoadBalancersRequest(t)
 	return t
@@ -623,12 +686,15 @@ end
 
 --- Create a structure of type UnassignVolumeRequest
 --  
--- @param _VolumeId [String] <p>The volume ID.</p>
--- Required parameter: VolumeId
-function M.UnassignVolumeRequest(_VolumeId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnassignVolumeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeId [String] <p>The volume ID.</p>
+-- Required key: VolumeId
+-- @return UnassignVolumeRequest structure as a key-value pair table
+function M.UnassignVolumeRequest(args)
+	assert(args, "You must provdide an argument table when creating UnassignVolumeRequest")
 	local t = { 
-		["VolumeId"] = _VolumeId,
+		["VolumeId"] = args["VolumeId"],
 	}
 	asserts.AssertUnassignVolumeRequest(t)
 	return t
@@ -647,11 +713,14 @@ end
 
 --- Create a structure of type DescribePermissionsResult
 -- <p>Contains the response to a <code>DescribePermissions</code> request.</p>
--- @param _Permissions [Permissions] <p>An array of <code>Permission</code> objects that describe the stack permissions.</p> <ul> <li> <p>If the request object contains only a stack ID, the array contains a <code>Permission</code> object with permissions for each of the stack IAM ARNs.</p> </li> <li> <p>If the request object contains only an IAM ARN, the array contains a <code>Permission</code> object with permissions for each of the user's stack IDs.</p> </li> <li> <p>If the request contains a stack ID and an IAM ARN, the array contains a single <code>Permission</code> object with permissions for the specified stack and IAM ARN.</p> </li> </ul>
-function M.DescribePermissionsResult(_Permissions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePermissionsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Permissions [Permissions] <p>An array of <code>Permission</code> objects that describe the stack permissions.</p> <ul> <li> <p>If the request object contains only a stack ID, the array contains a <code>Permission</code> object with permissions for each of the stack IAM ARNs.</p> </li> <li> <p>If the request object contains only an IAM ARN, the array contains a <code>Permission</code> object with permissions for each of the user's stack IDs.</p> </li> <li> <p>If the request contains a stack ID and an IAM ARN, the array contains a single <code>Permission</code> object with permissions for the specified stack and IAM ARN.</p> </li> </ul>
+-- @return DescribePermissionsResult structure as a key-value pair table
+function M.DescribePermissionsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribePermissionsResult")
 	local t = { 
-		["Permissions"] = _Permissions,
+		["Permissions"] = args["Permissions"],
 	}
 	asserts.AssertDescribePermissionsResult(t)
 	return t
@@ -671,13 +740,16 @@ end
 
 --- Create a structure of type ListTagsResult
 -- <p>Contains the response to a <code>ListTags</code> request.</p>
--- @param _NextToken [NextToken] <p>If a paginated request does not return all of the remaining results, this parameter is set to a token that you can assign to the request object's <code>NextToken</code> parameter to get the next set of results. If the previous paginated request returned all of the remaining results, this parameter is set to <code>null</code>. </p>
--- @param _Tags [Tags] <p>A set of key-value pairs that contain tag keys and tag values that are attached to a stack or layer.</p>
-function M.ListTagsResult(_NextToken, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [NextToken] <p>If a paginated request does not return all of the remaining results, this parameter is set to a token that you can assign to the request object's <code>NextToken</code> parameter to get the next set of results. If the previous paginated request returned all of the remaining results, this parameter is set to <code>null</code>. </p>
+-- * Tags [Tags] <p>A set of key-value pairs that contain tag keys and tag values that are attached to a stack or layer.</p>
+-- @return ListTagsResult structure as a key-value pair table
+function M.ListTagsResult(args)
+	assert(args, "You must provdide an argument table when creating ListTagsResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["Tags"] = _Tags,
+		["NextToken"] = args["NextToken"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertListTagsResult(t)
 	return t
@@ -700,19 +772,22 @@ end
 
 --- Create a structure of type Recipes
 -- <p>AWS OpsWorks Stacks supports five lifecycle events: <b>setup</b>, <b>configuration</b>, <b>deploy</b>, <b>undeploy</b>, and <b>shutdown</b>. For each layer, AWS OpsWorks Stacks runs a set of standard recipes for each event. In addition, you can provide custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom event recipes after the standard recipes. <code>LayerCustomRecipes</code> specifies the custom recipes for a particular layer to be run in response to each of the five events. </p> <p>To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name, which is the recipe's file name without the .rb extension. For example: phpapp2::dbsetup specifies the dbsetup.rb recipe in the repository's phpapp2 folder.</p>
--- @param _Undeploy [Strings] <p>An array of custom recipe names to be run following a <code>undeploy</code> event.</p>
--- @param _Setup [Strings] <p>An array of custom recipe names to be run following a <code>setup</code> event.</p>
--- @param _Configure [Strings] <p>An array of custom recipe names to be run following a <code>configure</code> event.</p>
--- @param _Shutdown [Strings] <p>An array of custom recipe names to be run following a <code>shutdown</code> event.</p>
--- @param _Deploy [Strings] <p>An array of custom recipe names to be run following a <code>deploy</code> event.</p>
-function M.Recipes(_Undeploy, _Setup, _Configure, _Shutdown, _Deploy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Recipes")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Undeploy [Strings] <p>An array of custom recipe names to be run following a <code>undeploy</code> event.</p>
+-- * Setup [Strings] <p>An array of custom recipe names to be run following a <code>setup</code> event.</p>
+-- * Configure [Strings] <p>An array of custom recipe names to be run following a <code>configure</code> event.</p>
+-- * Shutdown [Strings] <p>An array of custom recipe names to be run following a <code>shutdown</code> event.</p>
+-- * Deploy [Strings] <p>An array of custom recipe names to be run following a <code>deploy</code> event.</p>
+-- @return Recipes structure as a key-value pair table
+function M.Recipes(args)
+	assert(args, "You must provdide an argument table when creating Recipes")
 	local t = { 
-		["Undeploy"] = _Undeploy,
-		["Setup"] = _Setup,
-		["Configure"] = _Configure,
-		["Shutdown"] = _Shutdown,
-		["Deploy"] = _Deploy,
+		["Undeploy"] = args["Undeploy"],
+		["Setup"] = args["Setup"],
+		["Configure"] = args["Configure"],
+		["Shutdown"] = args["Shutdown"],
+		["Deploy"] = args["Deploy"],
 	}
 	asserts.AssertRecipes(t)
 	return t
@@ -753,55 +828,58 @@ end
 
 --- Create a structure of type Layer
 -- <p>Describes a layer.</p>
--- @param _StackId [String] <p>The layer stack ID.</p>
--- @param _DefaultRecipes [Recipes] 
--- @param _LayerId [String] <p>The layer ID.</p>
--- @param _AutoAssignPublicIps [Boolean] <p>For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
--- @param _Shortname [String] <p>The layer short name.</p>
--- @param _CustomSecurityGroupIds [Strings] <p>An array containing the layer's custom security group IDs.</p>
--- @param _LifecycleEventConfiguration [LifecycleEventConfiguration] <p>A <code>LifeCycleEventConfiguration</code> object that specifies the Shutdown event configuration.</p>
--- @param _Type [LayerType] <p>The layer type.</p>
--- @param _CustomInstanceProfileArn [String] <p>The ARN of the default IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
--- @param _UseEbsOptimizedInstances [Boolean] <p>Whether the layer uses Amazon EBS-optimized instances.</p>
--- @param _Packages [Strings] <p>An array of <code>Package</code> objects that describe the layer's packages.</p>
--- @param _CreatedAt [DateTime] <p>Date when the layer was created.</p>
--- @param _Name [String] <p>The layer name.</p>
--- @param _CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] <p>The Amazon CloudWatch Logs configuration settings for the layer.</p>
--- @param _CustomRecipes [Recipes] <p>A <code>LayerCustomRecipes</code> object that specifies the layer's custom recipes.</p>
--- @param _VolumeConfigurations [VolumeConfigurations] <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon EBS volumes.</p>
--- @param _Attributes [LayerAttributes] <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>, <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
--- @param _InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. If this value is set to <code>false</code>, you must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
--- @param _AutoAssignElasticIps [Boolean] <p>Whether to automatically assign an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address</a> to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
--- @param _DefaultSecurityGroupNames [Strings] <p>An array containing the layer's security group names.</p>
--- @param _CustomJson [String] <p>A JSON formatted string containing the layer's custom stack configuration and deployment attributes.</p>
--- @param _EnableAutoHealing [Boolean] <p>Whether auto healing is disabled for the layer.</p>
--- @param _Arn [String] 
-function M.Layer(_StackId, _DefaultRecipes, _LayerId, _AutoAssignPublicIps, _Shortname, _CustomSecurityGroupIds, _LifecycleEventConfiguration, _Type, _CustomInstanceProfileArn, _UseEbsOptimizedInstances, _Packages, _CreatedAt, _Name, _CloudWatchLogsConfiguration, _CustomRecipes, _VolumeConfigurations, _Attributes, _InstallUpdatesOnBoot, _AutoAssignElasticIps, _DefaultSecurityGroupNames, _CustomJson, _EnableAutoHealing, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Layer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The layer stack ID.</p>
+-- * DefaultRecipes [Recipes] 
+-- * LayerId [String] <p>The layer ID.</p>
+-- * AutoAssignPublicIps [Boolean] <p>For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- * Shortname [String] <p>The layer short name.</p>
+-- * CustomSecurityGroupIds [Strings] <p>An array containing the layer's custom security group IDs.</p>
+-- * LifecycleEventConfiguration [LifecycleEventConfiguration] <p>A <code>LifeCycleEventConfiguration</code> object that specifies the Shutdown event configuration.</p>
+-- * Type [LayerType] <p>The layer type.</p>
+-- * CustomInstanceProfileArn [String] <p>The ARN of the default IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- * UseEbsOptimizedInstances [Boolean] <p>Whether the layer uses Amazon EBS-optimized instances.</p>
+-- * Packages [Strings] <p>An array of <code>Package</code> objects that describe the layer's packages.</p>
+-- * CreatedAt [DateTime] <p>Date when the layer was created.</p>
+-- * Name [String] <p>The layer name.</p>
+-- * CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] <p>The Amazon CloudWatch Logs configuration settings for the layer.</p>
+-- * CustomRecipes [Recipes] <p>A <code>LayerCustomRecipes</code> object that specifies the layer's custom recipes.</p>
+-- * VolumeConfigurations [VolumeConfigurations] <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon EBS volumes.</p>
+-- * Attributes [LayerAttributes] <p>The layer attributes.</p> <p>For the <code>HaproxyStatsPassword</code>, <code>MysqlRootPassword</code>, and <code>GangliaPassword</code> attributes, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value</p> <p>For an ECS Cluster layer, AWS OpsWorks Stacks the <code>EcsClusterArn</code> attribute is set to the cluster's ARN.</p>
+-- * InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. If this value is set to <code>false</code>, you must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
+-- * AutoAssignElasticIps [Boolean] <p>Whether to automatically assign an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address</a> to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- * DefaultSecurityGroupNames [Strings] <p>An array containing the layer's security group names.</p>
+-- * CustomJson [String] <p>A JSON formatted string containing the layer's custom stack configuration and deployment attributes.</p>
+-- * EnableAutoHealing [Boolean] <p>Whether auto healing is disabled for the layer.</p>
+-- * Arn [String] 
+-- @return Layer structure as a key-value pair table
+function M.Layer(args)
+	assert(args, "You must provdide an argument table when creating Layer")
 	local t = { 
-		["StackId"] = _StackId,
-		["DefaultRecipes"] = _DefaultRecipes,
-		["LayerId"] = _LayerId,
-		["AutoAssignPublicIps"] = _AutoAssignPublicIps,
-		["Shortname"] = _Shortname,
-		["CustomSecurityGroupIds"] = _CustomSecurityGroupIds,
-		["LifecycleEventConfiguration"] = _LifecycleEventConfiguration,
-		["Type"] = _Type,
-		["CustomInstanceProfileArn"] = _CustomInstanceProfileArn,
-		["UseEbsOptimizedInstances"] = _UseEbsOptimizedInstances,
-		["Packages"] = _Packages,
-		["CreatedAt"] = _CreatedAt,
-		["Name"] = _Name,
-		["CloudWatchLogsConfiguration"] = _CloudWatchLogsConfiguration,
-		["CustomRecipes"] = _CustomRecipes,
-		["VolumeConfigurations"] = _VolumeConfigurations,
-		["Attributes"] = _Attributes,
-		["InstallUpdatesOnBoot"] = _InstallUpdatesOnBoot,
-		["AutoAssignElasticIps"] = _AutoAssignElasticIps,
-		["DefaultSecurityGroupNames"] = _DefaultSecurityGroupNames,
-		["CustomJson"] = _CustomJson,
-		["EnableAutoHealing"] = _EnableAutoHealing,
-		["Arn"] = _Arn,
+		["StackId"] = args["StackId"],
+		["DefaultRecipes"] = args["DefaultRecipes"],
+		["LayerId"] = args["LayerId"],
+		["AutoAssignPublicIps"] = args["AutoAssignPublicIps"],
+		["Shortname"] = args["Shortname"],
+		["CustomSecurityGroupIds"] = args["CustomSecurityGroupIds"],
+		["LifecycleEventConfiguration"] = args["LifecycleEventConfiguration"],
+		["Type"] = args["Type"],
+		["CustomInstanceProfileArn"] = args["CustomInstanceProfileArn"],
+		["UseEbsOptimizedInstances"] = args["UseEbsOptimizedInstances"],
+		["Packages"] = args["Packages"],
+		["CreatedAt"] = args["CreatedAt"],
+		["Name"] = args["Name"],
+		["CloudWatchLogsConfiguration"] = args["CloudWatchLogsConfiguration"],
+		["CustomRecipes"] = args["CustomRecipes"],
+		["VolumeConfigurations"] = args["VolumeConfigurations"],
+		["Attributes"] = args["Attributes"],
+		["InstallUpdatesOnBoot"] = args["InstallUpdatesOnBoot"],
+		["AutoAssignElasticIps"] = args["AutoAssignElasticIps"],
+		["DefaultSecurityGroupNames"] = args["DefaultSecurityGroupNames"],
+		["CustomJson"] = args["CustomJson"],
+		["EnableAutoHealing"] = args["EnableAutoHealing"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertLayer(t)
 	return t
@@ -842,51 +920,54 @@ end
 
 --- Create a structure of type CreateStackRequest
 --  
--- @param _ServiceRoleArn [String] <p>The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
--- @param _DefaultSubnetId [String] <p>The stack's default VPC subnet ID. This parameter is required if you specify a value for the <code>VpcId</code> parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for <code>DefaultAvailabilityZone</code>, the subnet must be in that zone. For information on default values and when this parameter is required, see the <code>VpcId</code> parameter description. </p>
--- @param _VpcId [String] <p>The ID of the VPC that the stack is to be launched into. The VPC must be in the stack's region. All instances are launched into this VPC. You cannot change the ID later.</p> <ul> <li> <p>If your account supports EC2-Classic, the default value is <code>no VPC</code>.</p> </li> <li> <p>If your account does not support EC2-Classic, the default value is the default VPC for the specified region.</p> </li> </ul> <p>If the VPC ID corresponds to a default VPC and you have specified either the <code>DefaultAvailabilityZone</code> or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively.</p> <p>If you specify a nondefault VPC ID, note the following:</p> <ul> <li> <p>It must belong to a VPC in your account that is in the specified region.</p> </li> <li> <p>You must specify a value for <code>DefaultSubnetId</code>.</p> </li> </ul> <p>For more information on how to use AWS OpsWorks Stacks with a VPC, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>. For more information on default VPC and EC2-Classic, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>. </p>
--- @param _DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is the default for all instances in the stack, but you can override it when you create an instance. The default option is <code>instance-store</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
--- @param _Name [String] <p>The stack name.</p>
--- @param _HostnameTheme [String] <p>The stack's host name theme, with spaces replaced by underscores. The theme is used to generate host names for the stack's instances. By default, <code>HostnameTheme</code> is set to <code>Layer_Dependent</code>, which creates host names by appending integers to the layer's short name. The other themes are:</p> <ul> <li> <p> <code>Baked_Goods</code> </p> </li> <li> <p> <code>Clouds</code> </p> </li> <li> <p> <code>Europe_Cities</code> </p> </li> <li> <p> <code>Fruits</code> </p> </li> <li> <p> <code>Greek_Deities</code> </p> </li> <li> <p> <code>Legendary_creatures_from_Japan</code> </p> </li> <li> <p> <code>Planets_and_Moons</code> </p> </li> <li> <p> <code>Roman_Deities</code> </p> </li> <li> <p> <code>Scottish_Islands</code> </p> </li> <li> <p> <code>US_Cities</code> </p> </li> <li> <p> <code>Wild_Cats</code> </p> </li> </ul> <p>To obtain a generated host name, call <code>GetHostNameSuggestion</code>, which returns a host name based on the current theme.</p>
--- @param _UseCustomCookbooks [Boolean] <p>Whether the stack uses custom cookbooks.</p>
--- @param _CustomJson [String] <p>A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration attribute values or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
--- @param _Region [String] <p>The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
--- @param _DefaultAvailabilityZone [String] <p>The stack's default Availability Zone, which must be in the specified region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see the <code>VpcId</code> parameter description. </p>
--- @param _UseOpsworksSecurityGroups [Boolean] <p>Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p> <p>AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings: </p> <ul> <li> <p>True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot delete the built-in security group.</p> </li> <li> <p>False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on creation; custom security groups are required only for those layers that need custom settings.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
--- @param _CustomCookbooksSource [Source] 
--- @param _ConfigurationManager [StackConfigurationManager] <p>The configuration manager. When you create a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.</p>
--- @param _ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
--- @param _AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p>Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.</p> </li> <li> <p>Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.</p> </li> </ul> <p>The default setting is the most recent release of the agent. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p> <note> <p>You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.</p> </note>
--- @param _DefaultSshKeyName [String] <p>A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>. </p>
--- @param _DefaultInstanceProfileArn [String] <p>The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
--- @param _Attributes [StackAttributes] <p>One or more user-defined key-value pairs to be added to the stack attributes.</p>
--- @param _DefaultOs [String] <p>The stack's default operating system, which is installed on every instance unless you specify a different operating system when you create the instance. You can specify one of the following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using Custom AMIs</a>.</p> </li> </ul> <p>The default option is the current Amazon Linux version. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p>
--- Required parameter: Name
--- Required parameter: Region
--- Required parameter: ServiceRoleArn
--- Required parameter: DefaultInstanceProfileArn
-function M.CreateStackRequest(_ServiceRoleArn, _DefaultSubnetId, _VpcId, _DefaultRootDeviceType, _Name, _HostnameTheme, _UseCustomCookbooks, _CustomJson, _Region, _DefaultAvailabilityZone, _UseOpsworksSecurityGroups, _CustomCookbooksSource, _ConfigurationManager, _ChefConfiguration, _AgentVersion, _DefaultSshKeyName, _DefaultInstanceProfileArn, _Attributes, _DefaultOs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServiceRoleArn [String] <p>The stack's AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- * DefaultSubnetId [String] <p>The stack's default VPC subnet ID. This parameter is required if you specify a value for the <code>VpcId</code> parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for <code>DefaultAvailabilityZone</code>, the subnet must be in that zone. For information on default values and when this parameter is required, see the <code>VpcId</code> parameter description. </p>
+-- * VpcId [String] <p>The ID of the VPC that the stack is to be launched into. The VPC must be in the stack's region. All instances are launched into this VPC. You cannot change the ID later.</p> <ul> <li> <p>If your account supports EC2-Classic, the default value is <code>no VPC</code>.</p> </li> <li> <p>If your account does not support EC2-Classic, the default value is the default VPC for the specified region.</p> </li> </ul> <p>If the VPC ID corresponds to a default VPC and you have specified either the <code>DefaultAvailabilityZone</code> or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively.</p> <p>If you specify a nondefault VPC ID, note the following:</p> <ul> <li> <p>It must belong to a VPC in your account that is in the specified region.</p> </li> <li> <p>You must specify a value for <code>DefaultSubnetId</code>.</p> </li> </ul> <p>For more information on how to use AWS OpsWorks Stacks with a VPC, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>. For more information on default VPC and EC2-Classic, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>. </p>
+-- * DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is the default for all instances in the stack, but you can override it when you create an instance. The default option is <code>instance-store</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- * Name [String] <p>The stack name.</p>
+-- * HostnameTheme [String] <p>The stack's host name theme, with spaces replaced by underscores. The theme is used to generate host names for the stack's instances. By default, <code>HostnameTheme</code> is set to <code>Layer_Dependent</code>, which creates host names by appending integers to the layer's short name. The other themes are:</p> <ul> <li> <p> <code>Baked_Goods</code> </p> </li> <li> <p> <code>Clouds</code> </p> </li> <li> <p> <code>Europe_Cities</code> </p> </li> <li> <p> <code>Fruits</code> </p> </li> <li> <p> <code>Greek_Deities</code> </p> </li> <li> <p> <code>Legendary_creatures_from_Japan</code> </p> </li> <li> <p> <code>Planets_and_Moons</code> </p> </li> <li> <p> <code>Roman_Deities</code> </p> </li> <li> <p> <code>Scottish_Islands</code> </p> </li> <li> <p> <code>US_Cities</code> </p> </li> <li> <p> <code>Wild_Cats</code> </p> </li> </ul> <p>To obtain a generated host name, call <code>GetHostNameSuggestion</code>, which returns a host name based on the current theme.</p>
+-- * UseCustomCookbooks [Boolean] <p>Whether the stack uses custom cookbooks.</p>
+-- * CustomJson [String] <p>A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration attribute values or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
+-- * Region [String] <p>The stack's AWS region, such as "ap-south-1". For more information about Amazon regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- * DefaultAvailabilityZone [String] <p>The stack's default Availability Zone, which must be in the specified region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see the <code>VpcId</code> parameter description. </p>
+-- * UseOpsworksSecurityGroups [Boolean] <p>Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p> <p>AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings: </p> <ul> <li> <p>True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot delete the built-in security group.</p> </li> <li> <p>False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on creation; custom security groups are required only for those layers that need custom settings.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- * CustomCookbooksSource [Source] 
+-- * ConfigurationManager [StackConfigurationManager] <p>The configuration manager. When you create a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.</p>
+-- * ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- * AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p>Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.</p> </li> <li> <p>Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.</p> </li> </ul> <p>The default setting is the most recent release of the agent. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p> <note> <p>You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.</p> </note>
+-- * DefaultSshKeyName [String] <p>A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>. </p>
+-- * DefaultInstanceProfileArn [String] <p>The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- * Attributes [StackAttributes] <p>One or more user-defined key-value pairs to be added to the stack attributes.</p>
+-- * DefaultOs [String] <p>The stack's default operating system, which is installed on every instance unless you specify a different operating system when you create the instance. You can specify one of the following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html"> Using Custom AMIs</a>.</p> </li> </ul> <p>The default option is the current Amazon Linux version. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p>
+-- Required key: Name
+-- Required key: Region
+-- Required key: ServiceRoleArn
+-- Required key: DefaultInstanceProfileArn
+-- @return CreateStackRequest structure as a key-value pair table
+function M.CreateStackRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateStackRequest")
 	local t = { 
-		["ServiceRoleArn"] = _ServiceRoleArn,
-		["DefaultSubnetId"] = _DefaultSubnetId,
-		["VpcId"] = _VpcId,
-		["DefaultRootDeviceType"] = _DefaultRootDeviceType,
-		["Name"] = _Name,
-		["HostnameTheme"] = _HostnameTheme,
-		["UseCustomCookbooks"] = _UseCustomCookbooks,
-		["CustomJson"] = _CustomJson,
-		["Region"] = _Region,
-		["DefaultAvailabilityZone"] = _DefaultAvailabilityZone,
-		["UseOpsworksSecurityGroups"] = _UseOpsworksSecurityGroups,
-		["CustomCookbooksSource"] = _CustomCookbooksSource,
-		["ConfigurationManager"] = _ConfigurationManager,
-		["ChefConfiguration"] = _ChefConfiguration,
-		["AgentVersion"] = _AgentVersion,
-		["DefaultSshKeyName"] = _DefaultSshKeyName,
-		["DefaultInstanceProfileArn"] = _DefaultInstanceProfileArn,
-		["Attributes"] = _Attributes,
-		["DefaultOs"] = _DefaultOs,
+		["ServiceRoleArn"] = args["ServiceRoleArn"],
+		["DefaultSubnetId"] = args["DefaultSubnetId"],
+		["VpcId"] = args["VpcId"],
+		["DefaultRootDeviceType"] = args["DefaultRootDeviceType"],
+		["Name"] = args["Name"],
+		["HostnameTheme"] = args["HostnameTheme"],
+		["UseCustomCookbooks"] = args["UseCustomCookbooks"],
+		["CustomJson"] = args["CustomJson"],
+		["Region"] = args["Region"],
+		["DefaultAvailabilityZone"] = args["DefaultAvailabilityZone"],
+		["UseOpsworksSecurityGroups"] = args["UseOpsworksSecurityGroups"],
+		["CustomCookbooksSource"] = args["CustomCookbooksSource"],
+		["ConfigurationManager"] = args["ConfigurationManager"],
+		["ChefConfiguration"] = args["ChefConfiguration"],
+		["AgentVersion"] = args["AgentVersion"],
+		["DefaultSshKeyName"] = args["DefaultSshKeyName"],
+		["DefaultInstanceProfileArn"] = args["DefaultInstanceProfileArn"],
+		["Attributes"] = args["Attributes"],
+		["DefaultOs"] = args["DefaultOs"],
 	}
 	asserts.AssertCreateStackRequest(t)
 	return t
@@ -945,91 +1026,94 @@ end
 
 --- Create a structure of type Instance
 -- <p>Describes an instance.</p>
--- @param _PrivateDns [String] <p>The instance's private DNS name.</p>
--- @param _SshHostRsaKeyFingerprint [String] <p>The SSH key's RSA fingerprint.</p>
--- @param _SubnetId [String] <p>The instance's subnet ID; applicable only if the stack is running in a VPC.</p>
--- @param _Hostname [String] <p>The instance host name.</p>
--- @param _LastServiceErrorId [String] <p>The ID of the last service error. For more information, call <a>DescribeServiceErrors</a>.</p>
--- @param _Platform [String] <p>The instance's platform.</p>
--- @param _EbsOptimized [Boolean] <p>Whether this is an Amazon EBS-optimized instance.</p>
--- @param _ReportedOs [ReportedOs] <p>For registered instances, the reported operating system.</p>
--- @param _AutoScalingType [AutoScalingType] <p>For load-based or time-based instances, the type.</p>
--- @param _Status [String] <p>The instance status:</p> <ul> <li> <p> <code>booting</code> </p> </li> <li> <p> <code>connection_lost</code> </p> </li> <li> <p> <code>online</code> </p> </li> <li> <p> <code>pending</code> </p> </li> <li> <p> <code>rebooting</code> </p> </li> <li> <p> <code>requested</code> </p> </li> <li> <p> <code>running_setup</code> </p> </li> <li> <p> <code>setup_failed</code> </p> </li> <li> <p> <code>shutting_down</code> </p> </li> <li> <p> <code>start_failed</code> </p> </li> <li> <p> <code>stop_failed</code> </p> </li> <li> <p> <code>stopped</code> </p> </li> <li> <p> <code>stopping</code> </p> </li> <li> <p> <code>terminated</code> </p> </li> <li> <p> <code>terminating</code> </p> </li> </ul>
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _SshKeyName [String] <p>The instance's Amazon EC2 key-pair name.</p>
--- @param _InfrastructureClass [String] <p>For registered instances, the infrastructure class: <code>ec2</code> or <code>on-premises</code>.</p>
--- @param _RootDeviceVolumeId [String] <p>The root device volume ID.</p>
--- @param _Tenancy [String] <p>The instance's tenancy option, such as <code>dedicated</code> or <code>host</code>.</p>
--- @param _AgentVersion [String] <p>The agent version. This parameter is set to <code>INHERIT</code> if the instance inherits the default stack setting or to a a version number for a fixed agent version.</p>
--- @param _SshHostDsaKeyFingerprint [String] <p>The SSH key's Deep Security Agent (DSA) fingerprint.</p>
--- @param _InstanceProfileArn [String] <p>The ARN of the instance's IAM profile. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
--- @param _InstanceType [String] <p>The instance type, such as <code>t2.micro</code>.</p>
--- @param _CreatedAt [DateTime] <p>The time that the instance was created.</p>
--- @param _AmiId [String] <p>A custom AMI ID to be used to create the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Instances</a> </p>
--- @param _LayerIds [Strings] <p>An array containing the instance layer IDs.</p>
--- @param _Ec2InstanceId [String] <p>The ID of the associated Amazon EC2 instance.</p>
--- @param _PublicDns [String] <p>The instance public DNS name.</p>
--- @param _SecurityGroupIds [Strings] <p>An array containing the instance security group IDs.</p>
--- @param _EcsClusterArn [String] <p>For container instances, the Amazon ECS cluster's ARN.</p>
--- @param _BlockDeviceMappings [BlockDeviceMappings] <p>An array of <code>BlockDeviceMapping</code> objects that specify the instance's block device mappings.</p>
--- @param _Architecture [Architecture] <p>The instance architecture: "i386" or "x86_64".</p>
--- @param _ReportedAgentVersion [String] <p>The instance's reported AWS OpsWorks Stacks agent version.</p>
--- @param _InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. If this value is set to <code>false</code>, you must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
--- @param _Os [String] <p>The instance's operating system.</p>
--- @param _VirtualizationType [VirtualizationType] <p>The instance's virtualization type: <code>paravirtual</code> or <code>hvm</code>.</p>
--- @param _AvailabilityZone [String] <p>The instance Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
--- @param _EcsContainerInstanceArn [String] <p>For container instances, the instance's ARN.</p>
--- @param _ElasticIp [String] <p>The instance <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address </a>.</p>
--- @param _RootDeviceType [RootDeviceType] <p>The instance's root device type. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
--- @param _PrivateIp [String] <p>The instance's private IP address.</p>
--- @param _PublicIp [String] <p>The instance public IP address.</p>
--- @param _RegisteredBy [String] <p>For registered instances, who performed the registration.</p>
--- @param _Arn [String] 
-function M.Instance(_PrivateDns, _SshHostRsaKeyFingerprint, _SubnetId, _Hostname, _LastServiceErrorId, _Platform, _EbsOptimized, _ReportedOs, _AutoScalingType, _Status, _StackId, _InstanceId, _SshKeyName, _InfrastructureClass, _RootDeviceVolumeId, _Tenancy, _AgentVersion, _SshHostDsaKeyFingerprint, _InstanceProfileArn, _InstanceType, _CreatedAt, _AmiId, _LayerIds, _Ec2InstanceId, _PublicDns, _SecurityGroupIds, _EcsClusterArn, _BlockDeviceMappings, _Architecture, _ReportedAgentVersion, _InstallUpdatesOnBoot, _Os, _VirtualizationType, _AvailabilityZone, _EcsContainerInstanceArn, _ElasticIp, _RootDeviceType, _PrivateIp, _PublicIp, _RegisteredBy, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Instance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PrivateDns [String] <p>The instance's private DNS name.</p>
+-- * SshHostRsaKeyFingerprint [String] <p>The SSH key's RSA fingerprint.</p>
+-- * SubnetId [String] <p>The instance's subnet ID; applicable only if the stack is running in a VPC.</p>
+-- * Hostname [String] <p>The instance host name.</p>
+-- * LastServiceErrorId [String] <p>The ID of the last service error. For more information, call <a>DescribeServiceErrors</a>.</p>
+-- * Platform [String] <p>The instance's platform.</p>
+-- * EbsOptimized [Boolean] <p>Whether this is an Amazon EBS-optimized instance.</p>
+-- * ReportedOs [ReportedOs] <p>For registered instances, the reported operating system.</p>
+-- * AutoScalingType [AutoScalingType] <p>For load-based or time-based instances, the type.</p>
+-- * Status [String] <p>The instance status:</p> <ul> <li> <p> <code>booting</code> </p> </li> <li> <p> <code>connection_lost</code> </p> </li> <li> <p> <code>online</code> </p> </li> <li> <p> <code>pending</code> </p> </li> <li> <p> <code>rebooting</code> </p> </li> <li> <p> <code>requested</code> </p> </li> <li> <p> <code>running_setup</code> </p> </li> <li> <p> <code>setup_failed</code> </p> </li> <li> <p> <code>shutting_down</code> </p> </li> <li> <p> <code>start_failed</code> </p> </li> <li> <p> <code>stop_failed</code> </p> </li> <li> <p> <code>stopped</code> </p> </li> <li> <p> <code>stopping</code> </p> </li> <li> <p> <code>terminated</code> </p> </li> <li> <p> <code>terminating</code> </p> </li> </ul>
+-- * StackId [String] <p>The stack ID.</p>
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * SshKeyName [String] <p>The instance's Amazon EC2 key-pair name.</p>
+-- * InfrastructureClass [String] <p>For registered instances, the infrastructure class: <code>ec2</code> or <code>on-premises</code>.</p>
+-- * RootDeviceVolumeId [String] <p>The root device volume ID.</p>
+-- * Tenancy [String] <p>The instance's tenancy option, such as <code>dedicated</code> or <code>host</code>.</p>
+-- * AgentVersion [String] <p>The agent version. This parameter is set to <code>INHERIT</code> if the instance inherits the default stack setting or to a a version number for a fixed agent version.</p>
+-- * SshHostDsaKeyFingerprint [String] <p>The SSH key's Deep Security Agent (DSA) fingerprint.</p>
+-- * InstanceProfileArn [String] <p>The ARN of the instance's IAM profile. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- * InstanceType [String] <p>The instance type, such as <code>t2.micro</code>.</p>
+-- * CreatedAt [DateTime] <p>The time that the instance was created.</p>
+-- * AmiId [String] <p>A custom AMI ID to be used to create the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Instances</a> </p>
+-- * LayerIds [Strings] <p>An array containing the instance layer IDs.</p>
+-- * Ec2InstanceId [String] <p>The ID of the associated Amazon EC2 instance.</p>
+-- * PublicDns [String] <p>The instance public DNS name.</p>
+-- * SecurityGroupIds [Strings] <p>An array containing the instance security group IDs.</p>
+-- * EcsClusterArn [String] <p>For container instances, the Amazon ECS cluster's ARN.</p>
+-- * BlockDeviceMappings [BlockDeviceMappings] <p>An array of <code>BlockDeviceMapping</code> objects that specify the instance's block device mappings.</p>
+-- * Architecture [Architecture] <p>The instance architecture: "i386" or "x86_64".</p>
+-- * ReportedAgentVersion [String] <p>The instance's reported AWS OpsWorks Stacks agent version.</p>
+-- * InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. If this value is set to <code>false</code>, you must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
+-- * Os [String] <p>The instance's operating system.</p>
+-- * VirtualizationType [VirtualizationType] <p>The instance's virtualization type: <code>paravirtual</code> or <code>hvm</code>.</p>
+-- * AvailabilityZone [String] <p>The instance Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- * EcsContainerInstanceArn [String] <p>For container instances, the instance's ARN.</p>
+-- * ElasticIp [String] <p>The instance <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address </a>.</p>
+-- * RootDeviceType [RootDeviceType] <p>The instance's root device type. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- * PrivateIp [String] <p>The instance's private IP address.</p>
+-- * PublicIp [String] <p>The instance public IP address.</p>
+-- * RegisteredBy [String] <p>For registered instances, who performed the registration.</p>
+-- * Arn [String] 
+-- @return Instance structure as a key-value pair table
+function M.Instance(args)
+	assert(args, "You must provdide an argument table when creating Instance")
 	local t = { 
-		["PrivateDns"] = _PrivateDns,
-		["SshHostRsaKeyFingerprint"] = _SshHostRsaKeyFingerprint,
-		["SubnetId"] = _SubnetId,
-		["Hostname"] = _Hostname,
-		["LastServiceErrorId"] = _LastServiceErrorId,
-		["Platform"] = _Platform,
-		["EbsOptimized"] = _EbsOptimized,
-		["ReportedOs"] = _ReportedOs,
-		["AutoScalingType"] = _AutoScalingType,
-		["Status"] = _Status,
-		["StackId"] = _StackId,
-		["InstanceId"] = _InstanceId,
-		["SshKeyName"] = _SshKeyName,
-		["InfrastructureClass"] = _InfrastructureClass,
-		["RootDeviceVolumeId"] = _RootDeviceVolumeId,
-		["Tenancy"] = _Tenancy,
-		["AgentVersion"] = _AgentVersion,
-		["SshHostDsaKeyFingerprint"] = _SshHostDsaKeyFingerprint,
-		["InstanceProfileArn"] = _InstanceProfileArn,
-		["InstanceType"] = _InstanceType,
-		["CreatedAt"] = _CreatedAt,
-		["AmiId"] = _AmiId,
-		["LayerIds"] = _LayerIds,
-		["Ec2InstanceId"] = _Ec2InstanceId,
-		["PublicDns"] = _PublicDns,
-		["SecurityGroupIds"] = _SecurityGroupIds,
-		["EcsClusterArn"] = _EcsClusterArn,
-		["BlockDeviceMappings"] = _BlockDeviceMappings,
-		["Architecture"] = _Architecture,
-		["ReportedAgentVersion"] = _ReportedAgentVersion,
-		["InstallUpdatesOnBoot"] = _InstallUpdatesOnBoot,
-		["Os"] = _Os,
-		["VirtualizationType"] = _VirtualizationType,
-		["AvailabilityZone"] = _AvailabilityZone,
-		["EcsContainerInstanceArn"] = _EcsContainerInstanceArn,
-		["ElasticIp"] = _ElasticIp,
-		["RootDeviceType"] = _RootDeviceType,
-		["PrivateIp"] = _PrivateIp,
-		["PublicIp"] = _PublicIp,
-		["RegisteredBy"] = _RegisteredBy,
-		["Arn"] = _Arn,
+		["PrivateDns"] = args["PrivateDns"],
+		["SshHostRsaKeyFingerprint"] = args["SshHostRsaKeyFingerprint"],
+		["SubnetId"] = args["SubnetId"],
+		["Hostname"] = args["Hostname"],
+		["LastServiceErrorId"] = args["LastServiceErrorId"],
+		["Platform"] = args["Platform"],
+		["EbsOptimized"] = args["EbsOptimized"],
+		["ReportedOs"] = args["ReportedOs"],
+		["AutoScalingType"] = args["AutoScalingType"],
+		["Status"] = args["Status"],
+		["StackId"] = args["StackId"],
+		["InstanceId"] = args["InstanceId"],
+		["SshKeyName"] = args["SshKeyName"],
+		["InfrastructureClass"] = args["InfrastructureClass"],
+		["RootDeviceVolumeId"] = args["RootDeviceVolumeId"],
+		["Tenancy"] = args["Tenancy"],
+		["AgentVersion"] = args["AgentVersion"],
+		["SshHostDsaKeyFingerprint"] = args["SshHostDsaKeyFingerprint"],
+		["InstanceProfileArn"] = args["InstanceProfileArn"],
+		["InstanceType"] = args["InstanceType"],
+		["CreatedAt"] = args["CreatedAt"],
+		["AmiId"] = args["AmiId"],
+		["LayerIds"] = args["LayerIds"],
+		["Ec2InstanceId"] = args["Ec2InstanceId"],
+		["PublicDns"] = args["PublicDns"],
+		["SecurityGroupIds"] = args["SecurityGroupIds"],
+		["EcsClusterArn"] = args["EcsClusterArn"],
+		["BlockDeviceMappings"] = args["BlockDeviceMappings"],
+		["Architecture"] = args["Architecture"],
+		["ReportedAgentVersion"] = args["ReportedAgentVersion"],
+		["InstallUpdatesOnBoot"] = args["InstallUpdatesOnBoot"],
+		["Os"] = args["Os"],
+		["VirtualizationType"] = args["VirtualizationType"],
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["EcsContainerInstanceArn"] = args["EcsContainerInstanceArn"],
+		["ElasticIp"] = args["ElasticIp"],
+		["RootDeviceType"] = args["RootDeviceType"],
+		["PrivateIp"] = args["PrivateIp"],
+		["PublicIp"] = args["PublicIp"],
+		["RegisteredBy"] = args["RegisteredBy"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertInstance(t)
 	return t
@@ -1054,23 +1138,26 @@ end
 
 --- Create a structure of type WeeklyAutoScalingSchedule
 -- <p>Describes a time-based instance's auto scaling schedule. The schedule consists of a set of key-value pairs.</p> <ul> <li> <p>The key is the time period (a UTC hour) and must be an integer from 0 - 23.</p> </li> <li> <p>The value indicates whether the instance should be online or offline for the specified period, and must be set to "on" or "off"</p> </li> </ul> <p>The default setting for all time periods is off, so you use the following parameters primarily to specify the online periods. You don't have to explicitly specify offline periods unless you want to change an online period to an offline period.</p> <p>The following example specifies that the instance should be online for four hours, from UTC 1200 - 1600. It will be off for the remainder of the day.</p> <p> <code> { "12":"on", "13":"on", "14":"on", "15":"on" } </code> </p>
--- @param _Monday [DailyAutoScalingSchedule] <p>The schedule for Monday.</p>
--- @param _Tuesday [DailyAutoScalingSchedule] <p>The schedule for Tuesday.</p>
--- @param _Friday [DailyAutoScalingSchedule] <p>The schedule for Friday.</p>
--- @param _Wednesday [DailyAutoScalingSchedule] <p>The schedule for Wednesday.</p>
--- @param _Thursday [DailyAutoScalingSchedule] <p>The schedule for Thursday.</p>
--- @param _Sunday [DailyAutoScalingSchedule] <p>The schedule for Sunday.</p>
--- @param _Saturday [DailyAutoScalingSchedule] <p>The schedule for Saturday.</p>
-function M.WeeklyAutoScalingSchedule(_Monday, _Tuesday, _Friday, _Wednesday, _Thursday, _Sunday, _Saturday, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating WeeklyAutoScalingSchedule")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Monday [DailyAutoScalingSchedule] <p>The schedule for Monday.</p>
+-- * Tuesday [DailyAutoScalingSchedule] <p>The schedule for Tuesday.</p>
+-- * Friday [DailyAutoScalingSchedule] <p>The schedule for Friday.</p>
+-- * Wednesday [DailyAutoScalingSchedule] <p>The schedule for Wednesday.</p>
+-- * Thursday [DailyAutoScalingSchedule] <p>The schedule for Thursday.</p>
+-- * Sunday [DailyAutoScalingSchedule] <p>The schedule for Sunday.</p>
+-- * Saturday [DailyAutoScalingSchedule] <p>The schedule for Saturday.</p>
+-- @return WeeklyAutoScalingSchedule structure as a key-value pair table
+function M.WeeklyAutoScalingSchedule(args)
+	assert(args, "You must provdide an argument table when creating WeeklyAutoScalingSchedule")
 	local t = { 
-		["Monday"] = _Monday,
-		["Tuesday"] = _Tuesday,
-		["Friday"] = _Friday,
-		["Wednesday"] = _Wednesday,
-		["Thursday"] = _Thursday,
-		["Sunday"] = _Sunday,
-		["Saturday"] = _Saturday,
+		["Monday"] = args["Monday"],
+		["Tuesday"] = args["Tuesday"],
+		["Friday"] = args["Friday"],
+		["Wednesday"] = args["Wednesday"],
+		["Thursday"] = args["Thursday"],
+		["Sunday"] = args["Sunday"],
+		["Saturday"] = args["Saturday"],
 	}
 	asserts.AssertWeeklyAutoScalingSchedule(t)
 	return t
@@ -1093,17 +1180,20 @@ end
 
 --- Create a structure of type EnvironmentVariable
 -- <p>Represents an app's environment variable.</p>
--- @param _Value [String] <p>(Optional) The environment variable's value, which can be left empty. If you specify a value, it can contain up to 256 characters, which must all be printable.</p>
--- @param _Key [String] <p>(Required) The environment variable's name, which can consist of up to 64 characters and must be specified. The name can contain upper- and lowercase letters, numbers, and underscores (_), but it must start with a letter or underscore.</p>
--- @param _Secure [Boolean] <p>(Optional) Whether the variable's value will be returned by the <a>DescribeApps</a> action. To conceal an environment variable's value, set <code>Secure</code> to <code>true</code>. <code>DescribeApps</code> then returns <code>*****FILTERED*****</code> instead of the actual value. The default value for <code>Secure</code> is <code>false</code>. </p>
--- Required parameter: Key
--- Required parameter: Value
-function M.EnvironmentVariable(_Value, _Key, _Secure, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnvironmentVariable")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [String] <p>(Optional) The environment variable's value, which can be left empty. If you specify a value, it can contain up to 256 characters, which must all be printable.</p>
+-- * Key [String] <p>(Required) The environment variable's name, which can consist of up to 64 characters and must be specified. The name can contain upper- and lowercase letters, numbers, and underscores (_), but it must start with a letter or underscore.</p>
+-- * Secure [Boolean] <p>(Optional) Whether the variable's value will be returned by the <a>DescribeApps</a> action. To conceal an environment variable's value, set <code>Secure</code> to <code>true</code>. <code>DescribeApps</code> then returns <code>*****FILTERED*****</code> instead of the actual value. The default value for <code>Secure</code> is <code>false</code>. </p>
+-- Required key: Key
+-- Required key: Value
+-- @return EnvironmentVariable structure as a key-value pair table
+function M.EnvironmentVariable(args)
+	assert(args, "You must provdide an argument table when creating EnvironmentVariable")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
-		["Secure"] = _Secure,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
+		["Secure"] = args["Secure"],
 	}
 	asserts.AssertEnvironmentVariable(t)
 	return t
@@ -1122,11 +1212,14 @@ end
 
 --- Create a structure of type RegisterInstanceResult
 -- <p>Contains the response to a <code>RegisterInstanceResult</code> request.</p>
--- @param _InstanceId [String] <p>The registered instance's AWS OpsWorks Stacks ID.</p>
-function M.RegisterInstanceResult(_InstanceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterInstanceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The registered instance's AWS OpsWorks Stacks ID.</p>
+-- @return RegisterInstanceResult structure as a key-value pair table
+function M.RegisterInstanceResult(args)
+	assert(args, "You must provdide an argument table when creating RegisterInstanceResult")
 	local t = { 
-		["InstanceId"] = _InstanceId,
+		["InstanceId"] = args["InstanceId"],
 	}
 	asserts.AssertRegisterInstanceResult(t)
 	return t
@@ -1151,23 +1244,26 @@ end
 
 --- Create a structure of type AutoScalingThresholds
 -- <p>Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or stops load-based instances.</p>
--- @param _InstanceCount [Integer] <p>The number of instances to add or remove when the load exceeds a threshold.</p>
--- @param _LoadThreshold [Double] <p>The load threshold. A value of -1 disables the threshold. For more information about how load is computed, see <a href="http://en.wikipedia.org/wiki/Load_%28computing%29">Load (computing)</a>.</p>
--- @param _ThresholdsWaitTime [Minute] <p>The amount of time, in minutes, that the load must exceed a threshold before more instances are added or removed.</p>
--- @param _IgnoreMetricsTime [Minute] <p>The amount of time (in minutes) after a scaling event occurs that AWS OpsWorks Stacks should ignore metrics and suppress additional scaling events. For example, AWS OpsWorks Stacks adds new instances following an upscaling event but the instances won't start reducing the load until they have been booted and configured. There is no point in raising additional scaling events during that operation, which typically takes several minutes. <code>IgnoreMetricsTime</code> allows you to direct AWS OpsWorks Stacks to suppress scaling events long enough to get the new instances online.</p>
--- @param _MemoryThreshold [Double] <p>The memory utilization threshold, as a percent of the available memory. A value of -1 disables the threshold.</p>
--- @param _Alarms [Strings] <p>Custom Cloudwatch auto scaling alarms, to be used as thresholds. This parameter takes a list of up to five alarm names, which are case sensitive and must be in the same region as the stack.</p> <note> <p>To use custom alarms, you must update your service role to allow <code>cloudwatch:DescribeAlarms</code>. You can either have AWS OpsWorks Stacks update the role for you when you first use this feature or you can edit the role manually. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-servicerole.html">Allowing AWS OpsWorks Stacks to Act on Your Behalf</a>.</p> </note>
--- @param _CpuThreshold [Double] <p>The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the threshold.</p>
-function M.AutoScalingThresholds(_InstanceCount, _LoadThreshold, _ThresholdsWaitTime, _IgnoreMetricsTime, _MemoryThreshold, _Alarms, _CpuThreshold, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AutoScalingThresholds")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceCount [Integer] <p>The number of instances to add or remove when the load exceeds a threshold.</p>
+-- * LoadThreshold [Double] <p>The load threshold. A value of -1 disables the threshold. For more information about how load is computed, see <a href="http://en.wikipedia.org/wiki/Load_%28computing%29">Load (computing)</a>.</p>
+-- * ThresholdsWaitTime [Minute] <p>The amount of time, in minutes, that the load must exceed a threshold before more instances are added or removed.</p>
+-- * IgnoreMetricsTime [Minute] <p>The amount of time (in minutes) after a scaling event occurs that AWS OpsWorks Stacks should ignore metrics and suppress additional scaling events. For example, AWS OpsWorks Stacks adds new instances following an upscaling event but the instances won't start reducing the load until they have been booted and configured. There is no point in raising additional scaling events during that operation, which typically takes several minutes. <code>IgnoreMetricsTime</code> allows you to direct AWS OpsWorks Stacks to suppress scaling events long enough to get the new instances online.</p>
+-- * MemoryThreshold [Double] <p>The memory utilization threshold, as a percent of the available memory. A value of -1 disables the threshold.</p>
+-- * Alarms [Strings] <p>Custom Cloudwatch auto scaling alarms, to be used as thresholds. This parameter takes a list of up to five alarm names, which are case sensitive and must be in the same region as the stack.</p> <note> <p>To use custom alarms, you must update your service role to allow <code>cloudwatch:DescribeAlarms</code>. You can either have AWS OpsWorks Stacks update the role for you when you first use this feature or you can edit the role manually. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-servicerole.html">Allowing AWS OpsWorks Stacks to Act on Your Behalf</a>.</p> </note>
+-- * CpuThreshold [Double] <p>The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the threshold.</p>
+-- @return AutoScalingThresholds structure as a key-value pair table
+function M.AutoScalingThresholds(args)
+	assert(args, "You must provdide an argument table when creating AutoScalingThresholds")
 	local t = { 
-		["InstanceCount"] = _InstanceCount,
-		["LoadThreshold"] = _LoadThreshold,
-		["ThresholdsWaitTime"] = _ThresholdsWaitTime,
-		["IgnoreMetricsTime"] = _IgnoreMetricsTime,
-		["MemoryThreshold"] = _MemoryThreshold,
-		["Alarms"] = _Alarms,
-		["CpuThreshold"] = _CpuThreshold,
+		["InstanceCount"] = args["InstanceCount"],
+		["LoadThreshold"] = args["LoadThreshold"],
+		["ThresholdsWaitTime"] = args["ThresholdsWaitTime"],
+		["IgnoreMetricsTime"] = args["IgnoreMetricsTime"],
+		["MemoryThreshold"] = args["MemoryThreshold"],
+		["Alarms"] = args["Alarms"],
+		["CpuThreshold"] = args["CpuThreshold"],
 	}
 	asserts.AssertAutoScalingThresholds(t)
 	return t
@@ -1187,12 +1283,15 @@ end
 
 --- Create a structure of type RebootInstanceRequest
 --  
--- @param _InstanceId [String] <p>The instance ID.</p>
--- Required parameter: InstanceId
-function M.RebootInstanceRequest(_InstanceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RebootInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- Required key: InstanceId
+-- @return RebootInstanceRequest structure as a key-value pair table
+function M.RebootInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating RebootInstanceRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
+		["InstanceId"] = args["InstanceId"],
 	}
 	asserts.AssertRebootInstanceRequest(t)
 	return t
@@ -1215,19 +1314,22 @@ end
 
 --- Create a structure of type EbsBlockDevice
 -- <p>Describes an Amazon EBS volume. This data type maps directly to the Amazon EC2 <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a> data type.</p>
--- @param _DeleteOnTermination [Boolean] <p>Whether the volume is deleted on instance termination.</p>
--- @param _SnapshotId [String] <p>The snapshot ID.</p>
--- @param _Iops [Integer] <p>The number of I/O operations per second (IOPS) that the volume supports. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a>.</p>
--- @param _VolumeType [VolumeType] <p>The volume type. <code>gp2</code> for General Purpose (SSD) volumes, <code>io1</code> for Provisioned IOPS (SSD) volumes, and <code>standard</code> for Magnetic volumes.</p>
--- @param _VolumeSize [Integer] <p>The volume size, in GiB. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a>.</p>
-function M.EbsBlockDevice(_DeleteOnTermination, _SnapshotId, _Iops, _VolumeType, _VolumeSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EbsBlockDevice")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DeleteOnTermination [Boolean] <p>Whether the volume is deleted on instance termination.</p>
+-- * SnapshotId [String] <p>The snapshot ID.</p>
+-- * Iops [Integer] <p>The number of I/O operations per second (IOPS) that the volume supports. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a>.</p>
+-- * VolumeType [VolumeType] <p>The volume type. <code>gp2</code> for General Purpose (SSD) volumes, <code>io1</code> for Provisioned IOPS (SSD) volumes, and <code>standard</code> for Magnetic volumes.</p>
+-- * VolumeSize [Integer] <p>The volume size, in GiB. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a>.</p>
+-- @return EbsBlockDevice structure as a key-value pair table
+function M.EbsBlockDevice(args)
+	assert(args, "You must provdide an argument table when creating EbsBlockDevice")
 	local t = { 
-		["DeleteOnTermination"] = _DeleteOnTermination,
-		["SnapshotId"] = _SnapshotId,
-		["Iops"] = _Iops,
-		["VolumeType"] = _VolumeType,
-		["VolumeSize"] = _VolumeSize,
+		["DeleteOnTermination"] = args["DeleteOnTermination"],
+		["SnapshotId"] = args["SnapshotId"],
+		["Iops"] = args["Iops"],
+		["VolumeType"] = args["VolumeType"],
+		["VolumeSize"] = args["VolumeSize"],
 	}
 	asserts.AssertEbsBlockDevice(t)
 	return t
@@ -1249,17 +1351,20 @@ end
 
 --- Create a structure of type LoadBasedAutoScalingConfiguration
 -- <p>Describes a layer's load-based auto scaling configuration.</p>
--- @param _DownScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object that describes the downscaling configuration, which defines how and when AWS OpsWorks Stacks reduces the number of instances.</p>
--- @param _Enable [Boolean] <p>Whether load-based auto scaling is enabled for the layer.</p>
--- @param _UpScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object that describes the upscaling configuration, which defines how and when AWS OpsWorks Stacks increases the number of instances.</p>
--- @param _LayerId [String] <p>The layer ID.</p>
-function M.LoadBasedAutoScalingConfiguration(_DownScaling, _Enable, _UpScaling, _LayerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoadBasedAutoScalingConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DownScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object that describes the downscaling configuration, which defines how and when AWS OpsWorks Stacks reduces the number of instances.</p>
+-- * Enable [Boolean] <p>Whether load-based auto scaling is enabled for the layer.</p>
+-- * UpScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object that describes the upscaling configuration, which defines how and when AWS OpsWorks Stacks increases the number of instances.</p>
+-- * LayerId [String] <p>The layer ID.</p>
+-- @return LoadBasedAutoScalingConfiguration structure as a key-value pair table
+function M.LoadBasedAutoScalingConfiguration(args)
+	assert(args, "You must provdide an argument table when creating LoadBasedAutoScalingConfiguration")
 	local t = { 
-		["DownScaling"] = _DownScaling,
-		["Enable"] = _Enable,
-		["UpScaling"] = _UpScaling,
-		["LayerId"] = _LayerId,
+		["DownScaling"] = args["DownScaling"],
+		["Enable"] = args["Enable"],
+		["UpScaling"] = args["UpScaling"],
+		["LayerId"] = args["LayerId"],
 	}
 	asserts.AssertLoadBasedAutoScalingConfiguration(t)
 	return t
@@ -1278,11 +1383,14 @@ end
 
 --- Create a structure of type CreateAppResult
 -- <p>Contains the response to a <code>CreateApp</code> request.</p>
--- @param _AppId [String] <p>The app ID.</p>
-function M.CreateAppResult(_AppId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAppResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AppId [String] <p>The app ID.</p>
+-- @return CreateAppResult structure as a key-value pair table
+function M.CreateAppResult(args)
+	assert(args, "You must provdide an argument table when creating CreateAppResult")
 	local t = { 
-		["AppId"] = _AppId,
+		["AppId"] = args["AppId"],
 	}
 	asserts.AssertCreateAppResult(t)
 	return t
@@ -1303,14 +1411,17 @@ end
 
 --- Create a structure of type SetTimeBasedAutoScalingRequest
 --  
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _AutoScalingSchedule [WeeklyAutoScalingSchedule] <p>An <code>AutoScalingSchedule</code> with the instance schedule.</p>
--- Required parameter: InstanceId
-function M.SetTimeBasedAutoScalingRequest(_InstanceId, _AutoScalingSchedule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetTimeBasedAutoScalingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * AutoScalingSchedule [WeeklyAutoScalingSchedule] <p>An <code>AutoScalingSchedule</code> with the instance schedule.</p>
+-- Required key: InstanceId
+-- @return SetTimeBasedAutoScalingRequest structure as a key-value pair table
+function M.SetTimeBasedAutoScalingRequest(args)
+	assert(args, "You must provdide an argument table when creating SetTimeBasedAutoScalingRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["AutoScalingSchedule"] = _AutoScalingSchedule,
+		["InstanceId"] = args["InstanceId"],
+		["AutoScalingSchedule"] = args["AutoScalingSchedule"],
 	}
 	asserts.AssertSetTimeBasedAutoScalingRequest(t)
 	return t
@@ -1352,55 +1463,58 @@ end
 
 --- Create a structure of type CloneStackRequest
 --  
--- @param _HostnameTheme [String] <p>The stack's host name theme, with spaces are replaced by underscores. The theme is used to generate host names for the stack's instances. By default, <code>HostnameTheme</code> is set to <code>Layer_Dependent</code>, which creates host names by appending integers to the layer's short name. The other themes are:</p> <ul> <li> <p> <code>Baked_Goods</code> </p> </li> <li> <p> <code>Clouds</code> </p> </li> <li> <p> <code>Europe_Cities</code> </p> </li> <li> <p> <code>Fruits</code> </p> </li> <li> <p> <code>Greek_Deities</code> </p> </li> <li> <p> <code>Legendary_creatures_from_Japan</code> </p> </li> <li> <p> <code>Planets_and_Moons</code> </p> </li> <li> <p> <code>Roman_Deities</code> </p> </li> <li> <p> <code>Scottish_Islands</code> </p> </li> <li> <p> <code>US_Cities</code> </p> </li> <li> <p> <code>Wild_Cats</code> </p> </li> </ul> <p>To obtain a generated host name, call <code>GetHostNameSuggestion</code>, which returns a host name based on the current theme.</p>
--- @param _UseCustomCookbooks [Boolean] <p>Whether to use custom cookbooks.</p>
--- @param _DefaultSshKeyName [String] <p>A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>. </p>
--- @param _CloneAppIds [Strings] <p>A list of source stack app IDs to be included in the cloned stack.</p>
--- @param _ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
--- @param _UseOpsworksSecurityGroups [Boolean] <p>Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p> <p>AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings: </p> <ul> <li> <p>True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it but you cannot delete the built-in security group.</p> </li> <li> <p>False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate Amazon Elastic Compute Cloud (Amazon EC2) security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on creation; custom security groups are required only for those layers that need custom settings.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
--- @param _ServiceRoleArn [String] <p>The stack AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. If you create a stack by using the AWS OpsWorks Stacks console, it creates the role for you. You can obtain an existing stack's IAM ARN programmatically by calling <a>DescribePermissions</a>. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p> <note> <p>You must set this parameter to a valid service role ARN or the action will fail; there is no default value. You can specify the source stack's service role ARN, if you prefer, but you must do so explicitly.</p> </note>
--- @param _VpcId [String] <p>The ID of the VPC that the cloned stack is to be launched into. It must be in the specified region. All instances are launched into this VPC, and you cannot change the ID later.</p> <ul> <li> <p>If your account supports EC2 Classic, the default value is no VPC.</p> </li> <li> <p>If your account does not support EC2 Classic, the default value is the default VPC for the specified region.</p> </li> </ul> <p>If the VPC ID corresponds to a default VPC and you have specified either the <code>DefaultAvailabilityZone</code> or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively. </p> <p>If you specify a nondefault VPC ID, note the following:</p> <ul> <li> <p>It must belong to a VPC in your account that is in the specified region.</p> </li> <li> <p>You must specify a value for <code>DefaultSubnetId</code>.</p> </li> </ul> <p>For more information on how to use AWS OpsWorks Stacks with a VPC, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>. For more information on default VPC and EC2 Classic, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>. </p>
--- @param _ConfigurationManager [StackConfigurationManager] <p>The configuration manager. When you clone a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 12.</p>
--- @param _CustomCookbooksSource [Source] 
--- @param _AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p>Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.</p> </li> <li> <p>Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.</p> </li> </ul> <p>The default setting is <code>LATEST</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p> <note> <p>You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.</p> </note>
--- @param _DefaultAvailabilityZone [String] <p>The cloned stack's default Availability Zone, which must be in the specified region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see the <code>VpcId</code> parameter description. </p>
--- @param _ClonePermissions [Boolean] <p>Whether to clone the source stack's permissions.</p>
--- @param _Name [String] <p>The cloned stack name.</p>
--- @param _Region [String] <p>The cloned stack AWS region, such as "ap-northeast-2". For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
--- @param _SourceStackId [String] <p>The source stack ID.</p>
--- @param _DefaultInstanceProfileArn [String] <p>The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
--- @param _Attributes [StackAttributes] <p>A list of stack attributes and values as key/value pairs to be added to the cloned stack.</p>
--- @param _DefaultOs [String] <p>The stack's operating system, which must be set to one of the following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p> <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more information on how to use custom AMIs with OpsWorks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> </li> </ul> <p>The default option is the parent stack's operating system. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p> <note> <p>You can specify a different Linux operating system for the cloned stack, but you cannot change from Linux to Windows or Windows to Linux.</p> </note>
--- @param _DefaultSubnetId [String] <p>The stack's default VPC subnet ID. This parameter is required if you specify a value for the <code>VpcId</code> parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for <code>DefaultAvailabilityZone</code>, the subnet must be in that zone. For information on default values and when this parameter is required, see the <code>VpcId</code> parameter description. </p>
--- @param _DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is used by default for all instances in the cloned stack, but you can override it when you create an instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
--- @param _CustomJson [String] <p>A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a> </p>
--- Required parameter: SourceStackId
--- Required parameter: ServiceRoleArn
-function M.CloneStackRequest(_HostnameTheme, _UseCustomCookbooks, _DefaultSshKeyName, _CloneAppIds, _ChefConfiguration, _UseOpsworksSecurityGroups, _ServiceRoleArn, _VpcId, _ConfigurationManager, _CustomCookbooksSource, _AgentVersion, _DefaultAvailabilityZone, _ClonePermissions, _Name, _Region, _SourceStackId, _DefaultInstanceProfileArn, _Attributes, _DefaultOs, _DefaultSubnetId, _DefaultRootDeviceType, _CustomJson, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloneStackRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * HostnameTheme [String] <p>The stack's host name theme, with spaces are replaced by underscores. The theme is used to generate host names for the stack's instances. By default, <code>HostnameTheme</code> is set to <code>Layer_Dependent</code>, which creates host names by appending integers to the layer's short name. The other themes are:</p> <ul> <li> <p> <code>Baked_Goods</code> </p> </li> <li> <p> <code>Clouds</code> </p> </li> <li> <p> <code>Europe_Cities</code> </p> </li> <li> <p> <code>Fruits</code> </p> </li> <li> <p> <code>Greek_Deities</code> </p> </li> <li> <p> <code>Legendary_creatures_from_Japan</code> </p> </li> <li> <p> <code>Planets_and_Moons</code> </p> </li> <li> <p> <code>Roman_Deities</code> </p> </li> <li> <p> <code>Scottish_Islands</code> </p> </li> <li> <p> <code>US_Cities</code> </p> </li> <li> <p> <code>Wild_Cats</code> </p> </li> </ul> <p>To obtain a generated host name, call <code>GetHostNameSuggestion</code>, which returns a host name based on the current theme.</p>
+-- * UseCustomCookbooks [Boolean] <p>Whether to use custom cookbooks.</p>
+-- * DefaultSshKeyName [String] <p>A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>. </p>
+-- * CloneAppIds [Strings] <p>A list of source stack app IDs to be included in the cloned stack.</p>
+-- * ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- * UseOpsworksSecurityGroups [Boolean] <p>Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p> <p>AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. With <code>UseOpsworksSecurityGroups</code> you can instead provide your own custom security groups. <code>UseOpsworksSecurityGroups</code> has the following settings: </p> <ul> <li> <p>True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it but you cannot delete the built-in security group.</p> </li> <li> <p>False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate Amazon Elastic Compute Cloud (Amazon EC2) security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on creation; custom security groups are required only for those layers that need custom settings.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- * ServiceRoleArn [String] <p>The stack AWS Identity and Access Management (IAM) role, which allows AWS OpsWorks Stacks to work with AWS resources on your behalf. You must set this parameter to the Amazon Resource Name (ARN) for an existing IAM role. If you create a stack by using the AWS OpsWorks Stacks console, it creates the role for you. You can obtain an existing stack's IAM ARN programmatically by calling <a>DescribePermissions</a>. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p> <note> <p>You must set this parameter to a valid service role ARN or the action will fail; there is no default value. You can specify the source stack's service role ARN, if you prefer, but you must do so explicitly.</p> </note>
+-- * VpcId [String] <p>The ID of the VPC that the cloned stack is to be launched into. It must be in the specified region. All instances are launched into this VPC, and you cannot change the ID later.</p> <ul> <li> <p>If your account supports EC2 Classic, the default value is no VPC.</p> </li> <li> <p>If your account does not support EC2 Classic, the default value is the default VPC for the specified region.</p> </li> </ul> <p>If the VPC ID corresponds to a default VPC and you have specified either the <code>DefaultAvailabilityZone</code> or the <code>DefaultSubnetId</code> parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively. </p> <p>If you specify a nondefault VPC ID, note the following:</p> <ul> <li> <p>It must belong to a VPC in your account that is in the specified region.</p> </li> <li> <p>You must specify a value for <code>DefaultSubnetId</code>.</p> </li> </ul> <p>For more information on how to use AWS OpsWorks Stacks with a VPC, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html">Running a Stack in a VPC</a>. For more information on default VPC and EC2 Classic, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>. </p>
+-- * ConfigurationManager [StackConfigurationManager] <p>The configuration manager. When you clone a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 12.</p>
+-- * CustomCookbooksSource [Source] 
+-- * AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p>Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.</p> </li> <li> <p>Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.</p> </li> </ul> <p>The default setting is <code>LATEST</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p> <note> <p>You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.</p> </note>
+-- * DefaultAvailabilityZone [String] <p>The cloned stack's default Availability Zone, which must be in the specified region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see the <code>VpcId</code> parameter description. </p>
+-- * ClonePermissions [Boolean] <p>Whether to clone the source stack's permissions.</p>
+-- * Name [String] <p>The cloned stack name.</p>
+-- * Region [String] <p>The cloned stack AWS region, such as "ap-northeast-2". For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- * SourceStackId [String] <p>The source stack ID.</p>
+-- * DefaultInstanceProfileArn [String] <p>The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- * Attributes [StackAttributes] <p>A list of stack attributes and values as key/value pairs to be added to the cloned stack.</p>
+-- * DefaultOs [String] <p>The stack's operating system, which must be set to one of the following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p> <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more information on how to use custom AMIs with OpsWorks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> </li> </ul> <p>The default option is the parent stack's operating system. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p> <note> <p>You can specify a different Linux operating system for the cloned stack, but you cannot change from Linux to Windows or Windows to Linux.</p> </note>
+-- * DefaultSubnetId [String] <p>The stack's default VPC subnet ID. This parameter is required if you specify a value for the <code>VpcId</code> parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for <code>DefaultAvailabilityZone</code>, the subnet must be in that zone. For information on default values and when this parameter is required, see the <code>VpcId</code> parameter description. </p>
+-- * DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is used by default for all instances in the cloned stack, but you can override it when you create an instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- * CustomJson [String] <p>A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a> </p>
+-- Required key: SourceStackId
+-- Required key: ServiceRoleArn
+-- @return CloneStackRequest structure as a key-value pair table
+function M.CloneStackRequest(args)
+	assert(args, "You must provdide an argument table when creating CloneStackRequest")
 	local t = { 
-		["HostnameTheme"] = _HostnameTheme,
-		["UseCustomCookbooks"] = _UseCustomCookbooks,
-		["DefaultSshKeyName"] = _DefaultSshKeyName,
-		["CloneAppIds"] = _CloneAppIds,
-		["ChefConfiguration"] = _ChefConfiguration,
-		["UseOpsworksSecurityGroups"] = _UseOpsworksSecurityGroups,
-		["ServiceRoleArn"] = _ServiceRoleArn,
-		["VpcId"] = _VpcId,
-		["ConfigurationManager"] = _ConfigurationManager,
-		["CustomCookbooksSource"] = _CustomCookbooksSource,
-		["AgentVersion"] = _AgentVersion,
-		["DefaultAvailabilityZone"] = _DefaultAvailabilityZone,
-		["ClonePermissions"] = _ClonePermissions,
-		["Name"] = _Name,
-		["Region"] = _Region,
-		["SourceStackId"] = _SourceStackId,
-		["DefaultInstanceProfileArn"] = _DefaultInstanceProfileArn,
-		["Attributes"] = _Attributes,
-		["DefaultOs"] = _DefaultOs,
-		["DefaultSubnetId"] = _DefaultSubnetId,
-		["DefaultRootDeviceType"] = _DefaultRootDeviceType,
-		["CustomJson"] = _CustomJson,
+		["HostnameTheme"] = args["HostnameTheme"],
+		["UseCustomCookbooks"] = args["UseCustomCookbooks"],
+		["DefaultSshKeyName"] = args["DefaultSshKeyName"],
+		["CloneAppIds"] = args["CloneAppIds"],
+		["ChefConfiguration"] = args["ChefConfiguration"],
+		["UseOpsworksSecurityGroups"] = args["UseOpsworksSecurityGroups"],
+		["ServiceRoleArn"] = args["ServiceRoleArn"],
+		["VpcId"] = args["VpcId"],
+		["ConfigurationManager"] = args["ConfigurationManager"],
+		["CustomCookbooksSource"] = args["CustomCookbooksSource"],
+		["AgentVersion"] = args["AgentVersion"],
+		["DefaultAvailabilityZone"] = args["DefaultAvailabilityZone"],
+		["ClonePermissions"] = args["ClonePermissions"],
+		["Name"] = args["Name"],
+		["Region"] = args["Region"],
+		["SourceStackId"] = args["SourceStackId"],
+		["DefaultInstanceProfileArn"] = args["DefaultInstanceProfileArn"],
+		["Attributes"] = args["Attributes"],
+		["DefaultOs"] = args["DefaultOs"],
+		["DefaultSubnetId"] = args["DefaultSubnetId"],
+		["DefaultRootDeviceType"] = args["DefaultRootDeviceType"],
+		["CustomJson"] = args["CustomJson"],
 	}
 	asserts.AssertCloneStackRequest(t)
 	return t
@@ -1427,25 +1541,28 @@ end
 
 --- Create a structure of type CreateDeploymentRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _Comment [String] <p>A user-defined comment.</p>
--- @param _CustomJson [String] <p>A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
--- @param _LayerIds [Strings] <p>The layer IDs for the deployment targets.</p>
--- @param _Command [DeploymentCommand] <p>A <code>DeploymentCommand</code> object that specifies the deployment command and any associated arguments.</p>
--- @param _AppId [String] <p>The app ID. This parameter is required for app deployments, but not for other deployment commands.</p>
--- @param _InstanceIds [Strings] <p>The instance IDs for the deployment targets.</p>
--- Required parameter: StackId
--- Required parameter: Command
-function M.CreateDeploymentRequest(_StackId, _Comment, _CustomJson, _LayerIds, _Command, _AppId, _InstanceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateDeploymentRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * Comment [String] <p>A user-defined comment.</p>
+-- * CustomJson [String] <p>A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
+-- * LayerIds [Strings] <p>The layer IDs for the deployment targets.</p>
+-- * Command [DeploymentCommand] <p>A <code>DeploymentCommand</code> object that specifies the deployment command and any associated arguments.</p>
+-- * AppId [String] <p>The app ID. This parameter is required for app deployments, but not for other deployment commands.</p>
+-- * InstanceIds [Strings] <p>The instance IDs for the deployment targets.</p>
+-- Required key: StackId
+-- Required key: Command
+-- @return CreateDeploymentRequest structure as a key-value pair table
+function M.CreateDeploymentRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateDeploymentRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["Comment"] = _Comment,
-		["CustomJson"] = _CustomJson,
-		["LayerIds"] = _LayerIds,
-		["Command"] = _Command,
-		["AppId"] = _AppId,
-		["InstanceIds"] = _InstanceIds,
+		["StackId"] = args["StackId"],
+		["Comment"] = args["Comment"],
+		["CustomJson"] = args["CustomJson"],
+		["LayerIds"] = args["LayerIds"],
+		["Command"] = args["Command"],
+		["AppId"] = args["AppId"],
+		["InstanceIds"] = args["InstanceIds"],
 	}
 	asserts.AssertCreateDeploymentRequest(t)
 	return t
@@ -1464,11 +1581,14 @@ end
 
 --- Create a structure of type DescribeStacksRequest
 --  
--- @param _StackIds [Strings] <p>An array of stack IDs that specify the stacks to be described. If you omit this parameter, <code>DescribeStacks</code> returns a description of every stack.</p>
-function M.DescribeStacksRequest(_StackIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackIds [Strings] <p>An array of stack IDs that specify the stacks to be described. If you omit this parameter, <code>DescribeStacks</code> returns a description of every stack.</p>
+-- @return DescribeStacksRequest structure as a key-value pair table
+function M.DescribeStacksRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeStacksRequest")
 	local t = { 
-		["StackIds"] = _StackIds,
+		["StackIds"] = args["StackIds"],
 	}
 	asserts.AssertDescribeStacksRequest(t)
 	return t
@@ -1492,21 +1612,24 @@ end
 
 --- Create a structure of type Source
 -- <p>Contains the information required to retrieve an app or cookbook from a repository. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Creating Apps</a> or <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Custom Recipes and Cookbooks</a>.</p>
--- @param _Username [String] <p>This parameter depends on the repository type.</p> <ul> <li> <p>For Amazon S3 bundles, set <code>Username</code> to the appropriate IAM access key ID.</p> </li> <li> <p>For HTTP bundles, Git repositories, and Subversion repositories, set <code>Username</code> to the user name.</p> </li> </ul>
--- @param _SshKey [String] <p>In requests, the repository's SSH key.</p> <p>In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.</p>
--- @param _Url [String] <p>The source URL. The following is an example of an Amazon S3 source URL: <code>https://s3.amazonaws.com/opsworks-demo-bucket/opsworks_cookbook_demo.tar.gz</code>.</p>
--- @param _Password [String] <p>When included in a request, the parameter depends on the repository type.</p> <ul> <li> <p>For Amazon S3 bundles, set <code>Password</code> to the appropriate IAM secret access key.</p> </li> <li> <p>For HTTP bundles and Subversion repositories, set <code>Password</code> to the password.</p> </li> </ul> <p>For more information on how to safely handle IAM credentials, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html">http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html</a>.</p> <p>In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.</p>
--- @param _Type [SourceType] <p>The repository type.</p>
--- @param _Revision [String] <p>The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application. One of the simplest approaches is to have branches or revisions in your repository that represent different versions that can potentially be deployed.</p>
-function M.Source(_Username, _SshKey, _Url, _Password, _Type, _Revision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Source")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [String] <p>This parameter depends on the repository type.</p> <ul> <li> <p>For Amazon S3 bundles, set <code>Username</code> to the appropriate IAM access key ID.</p> </li> <li> <p>For HTTP bundles, Git repositories, and Subversion repositories, set <code>Username</code> to the user name.</p> </li> </ul>
+-- * SshKey [String] <p>In requests, the repository's SSH key.</p> <p>In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.</p>
+-- * Url [String] <p>The source URL. The following is an example of an Amazon S3 source URL: <code>https://s3.amazonaws.com/opsworks-demo-bucket/opsworks_cookbook_demo.tar.gz</code>.</p>
+-- * Password [String] <p>When included in a request, the parameter depends on the repository type.</p> <ul> <li> <p>For Amazon S3 bundles, set <code>Password</code> to the appropriate IAM secret access key.</p> </li> <li> <p>For HTTP bundles and Subversion repositories, set <code>Password</code> to the password.</p> </li> </ul> <p>For more information on how to safely handle IAM credentials, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html">http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html</a>.</p> <p>In responses, AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.</p>
+-- * Type [SourceType] <p>The repository type.</p>
+-- * Revision [String] <p>The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application. One of the simplest approaches is to have branches or revisions in your repository that represent different versions that can potentially be deployed.</p>
+-- @return Source structure as a key-value pair table
+function M.Source(args)
+	assert(args, "You must provdide an argument table when creating Source")
 	local t = { 
-		["Username"] = _Username,
-		["SshKey"] = _SshKey,
-		["Url"] = _Url,
-		["Password"] = _Password,
-		["Type"] = _Type,
-		["Revision"] = _Revision,
+		["Username"] = args["Username"],
+		["SshKey"] = args["SshKey"],
+		["Url"] = args["Url"],
+		["Password"] = args["Password"],
+		["Type"] = args["Type"],
+		["Revision"] = args["Revision"],
 	}
 	asserts.AssertSource(t)
 	return t
@@ -1525,11 +1648,14 @@ end
 
 --- Create a structure of type DescribeInstancesResult
 -- <p>Contains the response to a <code>DescribeInstances</code> request.</p>
--- @param _Instances [Instances] <p>An array of <code>Instance</code> objects that describe the instances.</p>
-function M.DescribeInstancesResult(_Instances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Instances [Instances] <p>An array of <code>Instance</code> objects that describe the instances.</p>
+-- @return DescribeInstancesResult structure as a key-value pair table
+function M.DescribeInstancesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancesResult")
 	local t = { 
-		["Instances"] = _Instances,
+		["Instances"] = args["Instances"],
 	}
 	asserts.AssertDescribeInstancesResult(t)
 	return t
@@ -1548,11 +1674,14 @@ end
 
 --- Create a structure of type DescribeElasticIpsResult
 -- <p>Contains the response to a <code>DescribeElasticIps</code> request.</p>
--- @param _ElasticIps [ElasticIps] <p>An <code>ElasticIps</code> object that describes the specified Elastic IP addresses.</p>
-function M.DescribeElasticIpsResult(_ElasticIps, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticIpsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ElasticIps [ElasticIps] <p>An <code>ElasticIps</code> object that describes the specified Elastic IP addresses.</p>
+-- @return DescribeElasticIpsResult structure as a key-value pair table
+function M.DescribeElasticIpsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeElasticIpsResult")
 	local t = { 
-		["ElasticIps"] = _ElasticIps,
+		["ElasticIps"] = args["ElasticIps"],
 	}
 	asserts.AssertDescribeElasticIpsResult(t)
 	return t
@@ -1573,14 +1702,17 @@ end
 
 --- Create a structure of type UpdateElasticIpRequest
 --  
--- @param _Name [String] <p>The new name.</p>
--- @param _ElasticIp [String] <p>The address.</p>
--- Required parameter: ElasticIp
-function M.UpdateElasticIpRequest(_Name, _ElasticIp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateElasticIpRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [String] <p>The new name.</p>
+-- * ElasticIp [String] <p>The address.</p>
+-- Required key: ElasticIp
+-- @return UpdateElasticIpRequest structure as a key-value pair table
+function M.UpdateElasticIpRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateElasticIpRequest")
 	local t = { 
-		["Name"] = _Name,
-		["ElasticIp"] = _ElasticIp,
+		["Name"] = args["Name"],
+		["ElasticIp"] = args["ElasticIp"],
 	}
 	asserts.AssertUpdateElasticIpRequest(t)
 	return t
@@ -1603,19 +1735,22 @@ end
 
 --- Create a structure of type Permission
 -- <p>Describes stack or user permissions.</p>
--- @param _StackId [String] <p>A stack ID.</p>
--- @param _IamUserArn [String] <p>The Amazon Resource Name (ARN) for an AWS Identity and Access Management (IAM) role. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
--- @param _Level [String] <p>The user's permission level, which must be the following:</p> <ul> <li> <p> <code>deny</code> </p> </li> <li> <p> <code>show</code> </p> </li> <li> <p> <code>deploy</code> </p> </li> <li> <p> <code>manage</code> </p> </li> <li> <p> <code>iam_only</code> </p> </li> </ul> <p>For more information on the permissions associated with these levels, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User Permissions</a> </p>
--- @param _AllowSudo [Boolean] <p>Whether the user can use <b>sudo</b>.</p>
--- @param _AllowSsh [Boolean] <p>Whether the user can use SSH.</p>
-function M.Permission(_StackId, _IamUserArn, _Level, _AllowSudo, _AllowSsh, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Permission")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>A stack ID.</p>
+-- * IamUserArn [String] <p>The Amazon Resource Name (ARN) for an AWS Identity and Access Management (IAM) role. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- * Level [String] <p>The user's permission level, which must be the following:</p> <ul> <li> <p> <code>deny</code> </p> </li> <li> <p> <code>show</code> </p> </li> <li> <p> <code>deploy</code> </p> </li> <li> <p> <code>manage</code> </p> </li> <li> <p> <code>iam_only</code> </p> </li> </ul> <p>For more information on the permissions associated with these levels, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User Permissions</a> </p>
+-- * AllowSudo [Boolean] <p>Whether the user can use <b>sudo</b>.</p>
+-- * AllowSsh [Boolean] <p>Whether the user can use SSH.</p>
+-- @return Permission structure as a key-value pair table
+function M.Permission(args)
+	assert(args, "You must provdide an argument table when creating Permission")
 	local t = { 
-		["StackId"] = _StackId,
-		["IamUserArn"] = _IamUserArn,
-		["Level"] = _Level,
-		["AllowSudo"] = _AllowSudo,
-		["AllowSsh"] = _AllowSsh,
+		["StackId"] = args["StackId"],
+		["IamUserArn"] = args["IamUserArn"],
+		["Level"] = args["Level"],
+		["AllowSudo"] = args["AllowSudo"],
+		["AllowSsh"] = args["AllowSsh"],
 	}
 	asserts.AssertPermission(t)
 	return t
@@ -1636,14 +1771,17 @@ end
 
 --- Create a structure of type AssociateElasticIpRequest
 --  
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _ElasticIp [String] <p>The Elastic IP address.</p>
--- Required parameter: ElasticIp
-function M.AssociateElasticIpRequest(_InstanceId, _ElasticIp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateElasticIpRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * ElasticIp [String] <p>The Elastic IP address.</p>
+-- Required key: ElasticIp
+-- @return AssociateElasticIpRequest structure as a key-value pair table
+function M.AssociateElasticIpRequest(args)
+	assert(args, "You must provdide an argument table when creating AssociateElasticIpRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["ElasticIp"] = _ElasticIp,
+		["InstanceId"] = args["InstanceId"],
+		["ElasticIp"] = args["ElasticIp"],
 	}
 	asserts.AssertAssociateElasticIpRequest(t)
 	return t
@@ -1665,15 +1803,18 @@ end
 
 --- Create a structure of type DetachElasticLoadBalancerRequest
 --  
--- @param _ElasticLoadBalancerName [String] <p>The Elastic Load Balancing instance's name.</p>
--- @param _LayerId [String] <p>The ID of the layer that the Elastic Load Balancing instance is attached to.</p>
--- Required parameter: ElasticLoadBalancerName
--- Required parameter: LayerId
-function M.DetachElasticLoadBalancerRequest(_ElasticLoadBalancerName, _LayerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachElasticLoadBalancerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ElasticLoadBalancerName [String] <p>The Elastic Load Balancing instance's name.</p>
+-- * LayerId [String] <p>The ID of the layer that the Elastic Load Balancing instance is attached to.</p>
+-- Required key: ElasticLoadBalancerName
+-- Required key: LayerId
+-- @return DetachElasticLoadBalancerRequest structure as a key-value pair table
+function M.DetachElasticLoadBalancerRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachElasticLoadBalancerRequest")
 	local t = { 
-		["ElasticLoadBalancerName"] = _ElasticLoadBalancerName,
-		["LayerId"] = _LayerId,
+		["ElasticLoadBalancerName"] = args["ElasticLoadBalancerName"],
+		["LayerId"] = args["LayerId"],
 	}
 	asserts.AssertDetachElasticLoadBalancerRequest(t)
 	return t
@@ -1692,11 +1833,14 @@ end
 
 --- Create a structure of type CreateUserProfileResult
 -- <p>Contains the response to a <code>CreateUserProfile</code> request.</p>
--- @param _IamUserArn [String] <p>The user's IAM ARN.</p>
-function M.CreateUserProfileResult(_IamUserArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserProfileResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IamUserArn [String] <p>The user's IAM ARN.</p>
+-- @return CreateUserProfileResult structure as a key-value pair table
+function M.CreateUserProfileResult(args)
+	assert(args, "You must provdide an argument table when creating CreateUserProfileResult")
 	local t = { 
-		["IamUserArn"] = _IamUserArn,
+		["IamUserArn"] = args["IamUserArn"],
 	}
 	asserts.AssertCreateUserProfileResult(t)
 	return t
@@ -1718,17 +1862,20 @@ end
 
 --- Create a structure of type SelfUserProfile
 -- <p>Describes a user's SSH information.</p>
--- @param _IamUserArn [String] <p>The user's IAM ARN.</p>
--- @param _SshPublicKey [String] <p>The user's SSH public key.</p>
--- @param _Name [String] <p>The user's name.</p>
--- @param _SshUsername [String] <p>The user's SSH user name.</p>
-function M.SelfUserProfile(_IamUserArn, _SshPublicKey, _Name, _SshUsername, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SelfUserProfile")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IamUserArn [String] <p>The user's IAM ARN.</p>
+-- * SshPublicKey [String] <p>The user's SSH public key.</p>
+-- * Name [String] <p>The user's name.</p>
+-- * SshUsername [String] <p>The user's SSH user name.</p>
+-- @return SelfUserProfile structure as a key-value pair table
+function M.SelfUserProfile(args)
+	assert(args, "You must provdide an argument table when creating SelfUserProfile")
 	local t = { 
-		["IamUserArn"] = _IamUserArn,
-		["SshPublicKey"] = _SshPublicKey,
-		["Name"] = _Name,
-		["SshUsername"] = _SshUsername,
+		["IamUserArn"] = args["IamUserArn"],
+		["SshPublicKey"] = args["SshPublicKey"],
+		["Name"] = args["Name"],
+		["SshUsername"] = args["SshUsername"],
 	}
 	asserts.AssertSelfUserProfile(t)
 	return t
@@ -1765,46 +1912,49 @@ end
 
 --- Create a structure of type UpdateStackRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _ServiceRoleArn [String] <p>Do not use this parameter. You cannot update a stack's service role.</p>
--- @param _DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is used by default for all instances in the stack, but you can override it when you create an instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
--- @param _Name [String] <p>The stack's new name.</p>
--- @param _HostnameTheme [String] <p>The stack's new host name theme, with spaces replaced by underscores. The theme is used to generate host names for the stack's instances. By default, <code>HostnameTheme</code> is set to <code>Layer_Dependent</code>, which creates host names by appending integers to the layer's short name. The other themes are:</p> <ul> <li> <p> <code>Baked_Goods</code> </p> </li> <li> <p> <code>Clouds</code> </p> </li> <li> <p> <code>Europe_Cities</code> </p> </li> <li> <p> <code>Fruits</code> </p> </li> <li> <p> <code>Greek_Deities</code> </p> </li> <li> <p> <code>Legendary_creatures_from_Japan</code> </p> </li> <li> <p> <code>Planets_and_Moons</code> </p> </li> <li> <p> <code>Roman_Deities</code> </p> </li> <li> <p> <code>Scottish_Islands</code> </p> </li> <li> <p> <code>US_Cities</code> </p> </li> <li> <p> <code>Wild_Cats</code> </p> </li> </ul> <p>To obtain a generated host name, call <code>GetHostNameSuggestion</code>, which returns a host name based on the current theme.</p>
--- @param _UseCustomCookbooks [Boolean] <p>Whether the stack uses custom cookbooks.</p>
--- @param _CustomJson [String] <p>A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration JSON values or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
--- @param _DefaultAvailabilityZone [String] <p>The stack's default Availability Zone, which must be in the stack's region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see <a>CreateStack</a>. </p>
--- @param _UseOpsworksSecurityGroups [Boolean] <p>Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p> <p>AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. <code>UseOpsworksSecurityGroups</code> allows you to provide your own custom security groups instead of using the built-in groups. <code>UseOpsworksSecurityGroups</code> has the following settings: </p> <ul> <li> <p>True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot delete the built-in security group.</p> </li> <li> <p>False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on. Custom security groups are required only for those layers that need custom settings.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
--- @param _CustomCookbooksSource [Source] 
--- @param _ConfigurationManager [StackConfigurationManager] <p>The configuration manager. When you update a stack, we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.</p>
--- @param _ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
--- @param _DefaultSubnetId [String] <p>The stack's default VPC subnet ID. This parameter is required if you specify a value for the <code>VpcId</code> parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for <code>DefaultAvailabilityZone</code>, the subnet must be in that zone. For information on default values and when this parameter is required, see the <code>VpcId</code> parameter description. </p>
--- @param _DefaultSshKeyName [String] <p>A default Amazon EC2 key-pair name. The default value is <code>none</code>. If you specify a key-pair name, AWS OpsWorks Stacks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>. </p>
--- @param _DefaultInstanceProfileArn [String] <p>The ARN of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
--- @param _Attributes [StackAttributes] <p>One or more user-defined key-value pairs to be added to the stack attributes.</p>
--- @param _DefaultOs [String] <p>The stack's operating system, which must be set to one of the following:</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more information on how to use custom AMIs with OpsWorks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> </li> </ul> <p>The default option is the stack's current operating system. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p>
--- @param _AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p>Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.</p> </li> <li> <p>Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.</p> </li> </ul> <p>The default setting is <code>LATEST</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p> <note> <p>You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.</p> </note>
--- Required parameter: StackId
-function M.UpdateStackRequest(_StackId, _ServiceRoleArn, _DefaultRootDeviceType, _Name, _HostnameTheme, _UseCustomCookbooks, _CustomJson, _DefaultAvailabilityZone, _UseOpsworksSecurityGroups, _CustomCookbooksSource, _ConfigurationManager, _ChefConfiguration, _DefaultSubnetId, _DefaultSshKeyName, _DefaultInstanceProfileArn, _Attributes, _DefaultOs, _AgentVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateStackRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * ServiceRoleArn [String] <p>Do not use this parameter. You cannot update a stack's service role.</p>
+-- * DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is used by default for all instances in the stack, but you can override it when you create an instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- * Name [String] <p>The stack's new name.</p>
+-- * HostnameTheme [String] <p>The stack's new host name theme, with spaces replaced by underscores. The theme is used to generate host names for the stack's instances. By default, <code>HostnameTheme</code> is set to <code>Layer_Dependent</code>, which creates host names by appending integers to the layer's short name. The other themes are:</p> <ul> <li> <p> <code>Baked_Goods</code> </p> </li> <li> <p> <code>Clouds</code> </p> </li> <li> <p> <code>Europe_Cities</code> </p> </li> <li> <p> <code>Fruits</code> </p> </li> <li> <p> <code>Greek_Deities</code> </p> </li> <li> <p> <code>Legendary_creatures_from_Japan</code> </p> </li> <li> <p> <code>Planets_and_Moons</code> </p> </li> <li> <p> <code>Roman_Deities</code> </p> </li> <li> <p> <code>Scottish_Islands</code> </p> </li> <li> <p> <code>US_Cities</code> </p> </li> <li> <p> <code>Wild_Cats</code> </p> </li> </ul> <p>To obtain a generated host name, call <code>GetHostNameSuggestion</code>, which returns a host name based on the current theme.</p>
+-- * UseCustomCookbooks [Boolean] <p>Whether the stack uses custom cookbooks.</p>
+-- * CustomJson [String] <p>A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration JSON values or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
+-- * DefaultAvailabilityZone [String] <p>The stack's default Availability Zone, which must be in the stack's region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>. If you also specify a value for <code>DefaultSubnetId</code>, the subnet must be in the same zone. For more information, see <a>CreateStack</a>. </p>
+-- * UseOpsworksSecurityGroups [Boolean] <p>Whether to associate the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p> <p>AWS OpsWorks Stacks provides a standard set of built-in security groups, one for each layer, which are associated with layers by default. <code>UseOpsworksSecurityGroups</code> allows you to provide your own custom security groups instead of using the built-in groups. <code>UseOpsworksSecurityGroups</code> has the following settings: </p> <ul> <li> <p>True - AWS OpsWorks Stacks automatically associates the appropriate built-in security group with each layer (default setting). You can associate additional security groups with a layer after you create it, but you cannot delete the built-in security group.</p> </li> <li> <p>False - AWS OpsWorks Stacks does not associate built-in security groups with layers. You must create appropriate EC2 security groups and associate a security group with each layer that you create. However, you can still manually associate a built-in security group with a layer on. Custom security groups are required only for those layers that need custom settings.</p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- * CustomCookbooksSource [Source] 
+-- * ConfigurationManager [StackConfigurationManager] <p>The configuration manager. When you update a stack, we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.</p>
+-- * ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- * DefaultSubnetId [String] <p>The stack's default VPC subnet ID. This parameter is required if you specify a value for the <code>VpcId</code> parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for <code>DefaultAvailabilityZone</code>, the subnet must be in that zone. For information on default values and when this parameter is required, see the <code>VpcId</code> parameter description. </p>
+-- * DefaultSshKeyName [String] <p>A default Amazon EC2 key-pair name. The default value is <code>none</code>. If you specify a key-pair name, AWS OpsWorks Stacks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html"> Using SSH to Communicate with an Instance</a> and <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html"> Managing SSH Access</a>. You can override this setting by specifying a different key pair, or no key pair, when you <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html"> create an instance</a>. </p>
+-- * DefaultInstanceProfileArn [String] <p>The ARN of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- * Attributes [StackAttributes] <p>One or more user-defined key-value pairs to be added to the stack attributes.</p>
+-- * DefaultOs [String] <p>The stack's operating system, which must be set to one of the following:</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>. You specify the custom AMI you want to use when you create instances. For more information on how to use custom AMIs with OpsWorks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> </li> </ul> <p>The default option is the stack's current operating system. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p>
+-- * AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p>Auto-update - Set this parameter to <code>LATEST</code>. AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.</p> </li> <li> <p>Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances.</p> </li> </ul> <p>The default setting is <code>LATEST</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p> <note> <p>You can also specify an agent version when you create or update an instance, which overrides the stack's default setting.</p> </note>
+-- Required key: StackId
+-- @return UpdateStackRequest structure as a key-value pair table
+function M.UpdateStackRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateStackRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["ServiceRoleArn"] = _ServiceRoleArn,
-		["DefaultRootDeviceType"] = _DefaultRootDeviceType,
-		["Name"] = _Name,
-		["HostnameTheme"] = _HostnameTheme,
-		["UseCustomCookbooks"] = _UseCustomCookbooks,
-		["CustomJson"] = _CustomJson,
-		["DefaultAvailabilityZone"] = _DefaultAvailabilityZone,
-		["UseOpsworksSecurityGroups"] = _UseOpsworksSecurityGroups,
-		["CustomCookbooksSource"] = _CustomCookbooksSource,
-		["ConfigurationManager"] = _ConfigurationManager,
-		["ChefConfiguration"] = _ChefConfiguration,
-		["DefaultSubnetId"] = _DefaultSubnetId,
-		["DefaultSshKeyName"] = _DefaultSshKeyName,
-		["DefaultInstanceProfileArn"] = _DefaultInstanceProfileArn,
-		["Attributes"] = _Attributes,
-		["DefaultOs"] = _DefaultOs,
-		["AgentVersion"] = _AgentVersion,
+		["StackId"] = args["StackId"],
+		["ServiceRoleArn"] = args["ServiceRoleArn"],
+		["DefaultRootDeviceType"] = args["DefaultRootDeviceType"],
+		["Name"] = args["Name"],
+		["HostnameTheme"] = args["HostnameTheme"],
+		["UseCustomCookbooks"] = args["UseCustomCookbooks"],
+		["CustomJson"] = args["CustomJson"],
+		["DefaultAvailabilityZone"] = args["DefaultAvailabilityZone"],
+		["UseOpsworksSecurityGroups"] = args["UseOpsworksSecurityGroups"],
+		["CustomCookbooksSource"] = args["CustomCookbooksSource"],
+		["ConfigurationManager"] = args["ConfigurationManager"],
+		["ChefConfiguration"] = args["ChefConfiguration"],
+		["DefaultSubnetId"] = args["DefaultSubnetId"],
+		["DefaultSshKeyName"] = args["DefaultSshKeyName"],
+		["DefaultInstanceProfileArn"] = args["DefaultInstanceProfileArn"],
+		["Attributes"] = args["Attributes"],
+		["DefaultOs"] = args["DefaultOs"],
+		["AgentVersion"] = args["AgentVersion"],
 	}
 	asserts.AssertUpdateStackRequest(t)
 	return t
@@ -1824,13 +1974,16 @@ end
 
 --- Create a structure of type AgentVersion
 -- <p>Describes an agent version.</p>
--- @param _Version [String] <p>The agent version.</p>
--- @param _ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
-function M.AgentVersion(_Version, _ConfigurationManager, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AgentVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [String] <p>The agent version.</p>
+-- * ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
+-- @return AgentVersion structure as a key-value pair table
+function M.AgentVersion(args)
+	assert(args, "You must provdide an argument table when creating AgentVersion")
 	local t = { 
-		["Version"] = _Version,
-		["ConfigurationManager"] = _ConfigurationManager,
+		["Version"] = args["Version"],
+		["ConfigurationManager"] = args["ConfigurationManager"],
 	}
 	asserts.AssertAgentVersion(t)
 	return t
@@ -1849,11 +2002,14 @@ end
 
 --- Create a structure of type CloneStackResult
 -- <p>Contains the response to a <code>CloneStack</code> request.</p>
--- @param _StackId [String] <p>The cloned stack ID.</p>
-function M.CloneStackResult(_StackId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloneStackResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The cloned stack ID.</p>
+-- @return CloneStackResult structure as a key-value pair table
+function M.CloneStackResult(args)
+	assert(args, "You must provdide an argument table when creating CloneStackResult")
 	local t = { 
-		["StackId"] = _StackId,
+		["StackId"] = args["StackId"],
 	}
 	asserts.AssertCloneStackResult(t)
 	return t
@@ -1873,12 +2029,15 @@ end
 
 --- Create a structure of type StopStackRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- Required parameter: StackId
-function M.StopStackRequest(_StackId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StopStackRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- Required key: StackId
+-- @return StopStackRequest structure as a key-value pair table
+function M.StopStackRequest(args)
+	assert(args, "You must provdide an argument table when creating StopStackRequest")
 	local t = { 
-		["StackId"] = _StackId,
+		["StackId"] = args["StackId"],
 	}
 	asserts.AssertStopStackRequest(t)
 	return t
@@ -1898,12 +2057,15 @@ end
 
 --- Create a structure of type GetHostnameSuggestionRequest
 --  
--- @param _LayerId [String] <p>The layer ID.</p>
--- Required parameter: LayerId
-function M.GetHostnameSuggestionRequest(_LayerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHostnameSuggestionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LayerId [String] <p>The layer ID.</p>
+-- Required key: LayerId
+-- @return GetHostnameSuggestionRequest structure as a key-value pair table
+function M.GetHostnameSuggestionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetHostnameSuggestionRequest")
 	local t = { 
-		["LayerId"] = _LayerId,
+		["LayerId"] = args["LayerId"],
 	}
 	asserts.AssertGetHostnameSuggestionRequest(t)
 	return t
@@ -1923,12 +2085,15 @@ end
 
 --- Create a structure of type DescribeStackProvisioningParametersRequest
 --  
--- @param _StackId [String] <p>The stack ID</p>
--- Required parameter: StackId
-function M.DescribeStackProvisioningParametersRequest(_StackId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackProvisioningParametersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID</p>
+-- Required key: StackId
+-- @return DescribeStackProvisioningParametersRequest structure as a key-value pair table
+function M.DescribeStackProvisioningParametersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeStackProvisioningParametersRequest")
 	local t = { 
-		["StackId"] = _StackId,
+		["StackId"] = args["StackId"],
 	}
 	asserts.AssertDescribeStackProvisioningParametersRequest(t)
 	return t
@@ -1951,18 +2116,21 @@ end
 
 --- Create a structure of type UpdateUserProfileRequest
 --  
--- @param _IamUserArn [String] <p>The user IAM ARN. This can also be a federated user's ARN.</p>
--- @param _SshPublicKey [String] <p>The user's new SSH public key.</p>
--- @param _AllowSelfManagement [Boolean] <p>Whether users can specify their own SSH public key through the My Settings page. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Managing User Permissions</a>.</p>
--- @param _SshUsername [String] <p>The user's SSH user name. The allowable characters are [a-z], [A-Z], [0-9], '-', and '_'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, <code>my.name</code> will be changed to <code>myname</code>. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name. </p>
--- Required parameter: IamUserArn
-function M.UpdateUserProfileRequest(_IamUserArn, _SshPublicKey, _AllowSelfManagement, _SshUsername, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IamUserArn [String] <p>The user IAM ARN. This can also be a federated user's ARN.</p>
+-- * SshPublicKey [String] <p>The user's new SSH public key.</p>
+-- * AllowSelfManagement [Boolean] <p>Whether users can specify their own SSH public key through the My Settings page. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Managing User Permissions</a>.</p>
+-- * SshUsername [String] <p>The user's SSH user name. The allowable characters are [a-z], [A-Z], [0-9], '-', and '_'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, <code>my.name</code> will be changed to <code>myname</code>. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name. </p>
+-- Required key: IamUserArn
+-- @return UpdateUserProfileRequest structure as a key-value pair table
+function M.UpdateUserProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateUserProfileRequest")
 	local t = { 
-		["IamUserArn"] = _IamUserArn,
-		["SshPublicKey"] = _SshPublicKey,
-		["AllowSelfManagement"] = _AllowSelfManagement,
-		["SshUsername"] = _SshUsername,
+		["IamUserArn"] = args["IamUserArn"],
+		["SshPublicKey"] = args["SshPublicKey"],
+		["AllowSelfManagement"] = args["AllowSelfManagement"],
+		["SshUsername"] = args["SshUsername"],
 	}
 	asserts.AssertUpdateUserProfileRequest(t)
 	return t
@@ -1988,21 +2156,24 @@ end
 
 --- Create a structure of type RegisterRdsDbInstanceRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _DbUser [String] <p>The database's master user name.</p>
--- @param _RdsDbInstanceArn [String] <p>The Amazon RDS instance's ARN.</p>
--- @param _DbPassword [String] <p>The database password.</p>
--- Required parameter: StackId
--- Required parameter: RdsDbInstanceArn
--- Required parameter: DbUser
--- Required parameter: DbPassword
-function M.RegisterRdsDbInstanceRequest(_StackId, _DbUser, _RdsDbInstanceArn, _DbPassword, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterRdsDbInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * DbUser [String] <p>The database's master user name.</p>
+-- * RdsDbInstanceArn [String] <p>The Amazon RDS instance's ARN.</p>
+-- * DbPassword [String] <p>The database password.</p>
+-- Required key: StackId
+-- Required key: RdsDbInstanceArn
+-- Required key: DbUser
+-- Required key: DbPassword
+-- @return RegisterRdsDbInstanceRequest structure as a key-value pair table
+function M.RegisterRdsDbInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterRdsDbInstanceRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["DbUser"] = _DbUser,
-		["RdsDbInstanceArn"] = _RdsDbInstanceArn,
-		["DbPassword"] = _DbPassword,
+		["StackId"] = args["StackId"],
+		["DbUser"] = args["DbUser"],
+		["RdsDbInstanceArn"] = args["RdsDbInstanceArn"],
+		["DbPassword"] = args["DbPassword"],
 	}
 	asserts.AssertRegisterRdsDbInstanceRequest(t)
 	return t
@@ -2022,13 +2193,16 @@ end
 
 --- Create a structure of type DescribeLayersRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _LayerIds [Strings] <p>An array of layer IDs that specify the layers to be described. If you omit this parameter, <code>DescribeLayers</code> returns a description of every layer in the specified stack.</p>
-function M.DescribeLayersRequest(_StackId, _LayerIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLayersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * LayerIds [Strings] <p>An array of layer IDs that specify the layers to be described. If you omit this parameter, <code>DescribeLayers</code> returns a description of every layer in the specified stack.</p>
+-- @return DescribeLayersRequest structure as a key-value pair table
+function M.DescribeLayersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeLayersRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["LayerIds"] = _LayerIds,
+		["StackId"] = args["StackId"],
+		["LayerIds"] = args["LayerIds"],
 	}
 	asserts.AssertDescribeLayersRequest(t)
 	return t
@@ -2056,29 +2230,32 @@ end
 
 --- Create a structure of type Command
 -- <p>Describes a command.</p>
--- @param _Status [String] <p>The command status:</p> <ul> <li> <p>failed</p> </li> <li> <p>successful</p> </li> <li> <p>skipped</p> </li> <li> <p>pending</p> </li> </ul>
--- @param _CompletedAt [DateTime] <p>Date when the command completed.</p>
--- @param _InstanceId [String] <p>The ID of the instance where the command was executed.</p>
--- @param _DeploymentId [String] <p>The command deployment ID.</p>
--- @param _AcknowledgedAt [DateTime] <p>Date and time when the command was acknowledged.</p>
--- @param _LogUrl [String] <p>The URL of the command log.</p>
--- @param _Type [String] <p>The command type:</p> <ul> <li> <p> <code>configure</code> </p> </li> <li> <p> <code>deploy</code> </p> </li> <li> <p> <code>execute_recipes</code> </p> </li> <li> <p> <code>install_dependencies</code> </p> </li> <li> <p> <code>restart</code> </p> </li> <li> <p> <code>rollback</code> </p> </li> <li> <p> <code>setup</code> </p> </li> <li> <p> <code>start</code> </p> </li> <li> <p> <code>stop</code> </p> </li> <li> <p> <code>undeploy</code> </p> </li> <li> <p> <code>update_custom_cookbooks</code> </p> </li> <li> <p> <code>update_dependencies</code> </p> </li> </ul>
--- @param _CommandId [String] <p>The command ID.</p>
--- @param _CreatedAt [DateTime] <p>Date and time when the command was run.</p>
--- @param _ExitCode [Integer] <p>The command exit code.</p>
-function M.Command(_Status, _CompletedAt, _InstanceId, _DeploymentId, _AcknowledgedAt, _LogUrl, _Type, _CommandId, _CreatedAt, _ExitCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Command")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The command status:</p> <ul> <li> <p>failed</p> </li> <li> <p>successful</p> </li> <li> <p>skipped</p> </li> <li> <p>pending</p> </li> </ul>
+-- * CompletedAt [DateTime] <p>Date when the command completed.</p>
+-- * InstanceId [String] <p>The ID of the instance where the command was executed.</p>
+-- * DeploymentId [String] <p>The command deployment ID.</p>
+-- * AcknowledgedAt [DateTime] <p>Date and time when the command was acknowledged.</p>
+-- * LogUrl [String] <p>The URL of the command log.</p>
+-- * Type [String] <p>The command type:</p> <ul> <li> <p> <code>configure</code> </p> </li> <li> <p> <code>deploy</code> </p> </li> <li> <p> <code>execute_recipes</code> </p> </li> <li> <p> <code>install_dependencies</code> </p> </li> <li> <p> <code>restart</code> </p> </li> <li> <p> <code>rollback</code> </p> </li> <li> <p> <code>setup</code> </p> </li> <li> <p> <code>start</code> </p> </li> <li> <p> <code>stop</code> </p> </li> <li> <p> <code>undeploy</code> </p> </li> <li> <p> <code>update_custom_cookbooks</code> </p> </li> <li> <p> <code>update_dependencies</code> </p> </li> </ul>
+-- * CommandId [String] <p>The command ID.</p>
+-- * CreatedAt [DateTime] <p>Date and time when the command was run.</p>
+-- * ExitCode [Integer] <p>The command exit code.</p>
+-- @return Command structure as a key-value pair table
+function M.Command(args)
+	assert(args, "You must provdide an argument table when creating Command")
 	local t = { 
-		["Status"] = _Status,
-		["CompletedAt"] = _CompletedAt,
-		["InstanceId"] = _InstanceId,
-		["DeploymentId"] = _DeploymentId,
-		["AcknowledgedAt"] = _AcknowledgedAt,
-		["LogUrl"] = _LogUrl,
-		["Type"] = _Type,
-		["CommandId"] = _CommandId,
-		["CreatedAt"] = _CreatedAt,
-		["ExitCode"] = _ExitCode,
+		["Status"] = args["Status"],
+		["CompletedAt"] = args["CompletedAt"],
+		["InstanceId"] = args["InstanceId"],
+		["DeploymentId"] = args["DeploymentId"],
+		["AcknowledgedAt"] = args["AcknowledgedAt"],
+		["LogUrl"] = args["LogUrl"],
+		["Type"] = args["Type"],
+		["CommandId"] = args["CommandId"],
+		["CreatedAt"] = args["CreatedAt"],
+		["ExitCode"] = args["ExitCode"],
 	}
 	asserts.AssertCommand(t)
 	return t
@@ -2098,12 +2275,15 @@ end
 
 --- Create a structure of type DeleteStackRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- Required parameter: StackId
-function M.DeleteStackRequest(_StackId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteStackRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- Required key: StackId
+-- @return DeleteStackRequest structure as a key-value pair table
+function M.DeleteStackRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteStackRequest")
 	local t = { 
-		["StackId"] = _StackId,
+		["StackId"] = args["StackId"],
 	}
 	asserts.AssertDeleteStackRequest(t)
 	return t
@@ -2124,14 +2304,17 @@ end
 
 --- Create a structure of type DescribeRdsDbInstancesRequest
 --  
--- @param _StackId [String] <p>The stack ID that the instances are registered with. The operation returns descriptions of all registered Amazon RDS instances.</p>
--- @param _RdsDbInstanceArns [Strings] <p>An array containing the ARNs of the instances to be described.</p>
--- Required parameter: StackId
-function M.DescribeRdsDbInstancesRequest(_StackId, _RdsDbInstanceArns, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRdsDbInstancesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID that the instances are registered with. The operation returns descriptions of all registered Amazon RDS instances.</p>
+-- * RdsDbInstanceArns [Strings] <p>An array containing the ARNs of the instances to be described.</p>
+-- Required key: StackId
+-- @return DescribeRdsDbInstancesRequest structure as a key-value pair table
+function M.DescribeRdsDbInstancesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeRdsDbInstancesRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["RdsDbInstanceArns"] = _RdsDbInstanceArns,
+		["StackId"] = args["StackId"],
+		["RdsDbInstanceArns"] = args["RdsDbInstanceArns"],
 	}
 	asserts.AssertDescribeRdsDbInstancesRequest(t)
 	return t
@@ -2150,11 +2333,14 @@ end
 
 --- Create a structure of type CreateStackResult
 -- <p>Contains the response to a <code>CreateStack</code> request.</p>
--- @param _StackId [String] <p>The stack ID, which is an opaque string that you use to identify the stack when performing actions such as <code>DescribeStacks</code>.</p>
-function M.CreateStackResult(_StackId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateStackResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID, which is an opaque string that you use to identify the stack when performing actions such as <code>DescribeStacks</code>.</p>
+-- @return CreateStackResult structure as a key-value pair table
+function M.CreateStackResult(args)
+	assert(args, "You must provdide an argument table when creating CreateStackResult")
 	local t = { 
-		["StackId"] = _StackId,
+		["StackId"] = args["StackId"],
 	}
 	asserts.AssertCreateStackResult(t)
 	return t
@@ -2187,36 +2373,39 @@ end
 
 --- Create a structure of type CreateAppRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _Environment [EnvironmentVariables] <p>An array of <code>EnvironmentVariable</code> objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment"> Environment Variables</a>.</p> <p>There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, "Environment: is too large (maximum is 10KB)."</p> <note> <p>This parameter is supported only by Chef 11.10 stacks. If you have specified one or more environment variables, you cannot modify the stack's Chef version.</p> </note>
--- @param _AppSource [Source] <p>A <code>Source</code> object that specifies the app repository.</p>
--- @param _DataSources [DataSources] <p>The app's data source.</p>
--- @param _EnableSsl [Boolean] <p>Whether to enable SSL for the app.</p>
--- @param _SslConfiguration [SslConfiguration] <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
--- @param _Attributes [AppAttributes] <p>One or more user-defined key/value pairs to be added to the stack attributes.</p>
--- @param _Domains [Strings] <p>The app virtual host settings, with multiple domains separated by commas. For example: <code>'www.example.com, example.com'</code> </p>
--- @param _Description [String] <p>A description of the app.</p>
--- @param _Shortname [String] <p>The app's short name.</p>
--- @param _Type [AppType] <p>The app type. Each supported type is associated with a particular layer. For example, PHP applications are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy recipes, specify <code>other</code>.</p>
--- @param _Name [String] <p>The app name.</p>
--- Required parameter: StackId
--- Required parameter: Name
--- Required parameter: Type
-function M.CreateAppRequest(_StackId, _Environment, _AppSource, _DataSources, _EnableSsl, _SslConfiguration, _Attributes, _Domains, _Description, _Shortname, _Type, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAppRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * Environment [EnvironmentVariables] <p>An array of <code>EnvironmentVariable</code> objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instance. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment"> Environment Variables</a>.</p> <p>There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variables' names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases. Exceeding it will cause an exception with the message, "Environment: is too large (maximum is 10KB)."</p> <note> <p>This parameter is supported only by Chef 11.10 stacks. If you have specified one or more environment variables, you cannot modify the stack's Chef version.</p> </note>
+-- * AppSource [Source] <p>A <code>Source</code> object that specifies the app repository.</p>
+-- * DataSources [DataSources] <p>The app's data source.</p>
+-- * EnableSsl [Boolean] <p>Whether to enable SSL for the app.</p>
+-- * SslConfiguration [SslConfiguration] <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
+-- * Attributes [AppAttributes] <p>One or more user-defined key/value pairs to be added to the stack attributes.</p>
+-- * Domains [Strings] <p>The app virtual host settings, with multiple domains separated by commas. For example: <code>'www.example.com, example.com'</code> </p>
+-- * Description [String] <p>A description of the app.</p>
+-- * Shortname [String] <p>The app's short name.</p>
+-- * Type [AppType] <p>The app type. Each supported type is associated with a particular layer. For example, PHP applications are associated with a PHP layer. AWS OpsWorks Stacks deploys an application to those instances that are members of the corresponding layer. If your app isn't one of the standard types, or you prefer to implement your own Deploy recipes, specify <code>other</code>.</p>
+-- * Name [String] <p>The app name.</p>
+-- Required key: StackId
+-- Required key: Name
+-- Required key: Type
+-- @return CreateAppRequest structure as a key-value pair table
+function M.CreateAppRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateAppRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["Environment"] = _Environment,
-		["AppSource"] = _AppSource,
-		["DataSources"] = _DataSources,
-		["EnableSsl"] = _EnableSsl,
-		["SslConfiguration"] = _SslConfiguration,
-		["Attributes"] = _Attributes,
-		["Domains"] = _Domains,
-		["Description"] = _Description,
-		["Shortname"] = _Shortname,
-		["Type"] = _Type,
-		["Name"] = _Name,
+		["StackId"] = args["StackId"],
+		["Environment"] = args["Environment"],
+		["AppSource"] = args["AppSource"],
+		["DataSources"] = args["DataSources"],
+		["EnableSsl"] = args["EnableSsl"],
+		["SslConfiguration"] = args["SslConfiguration"],
+		["Attributes"] = args["Attributes"],
+		["Domains"] = args["Domains"],
+		["Description"] = args["Description"],
+		["Shortname"] = args["Shortname"],
+		["Type"] = args["Type"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateAppRequest(t)
 	return t
@@ -2248,37 +2437,40 @@ end
 
 --- Create a structure of type App
 -- <p>A description of the app.</p>
--- @param _StackId [String] <p>The app stack ID.</p>
--- @param _Environment [EnvironmentVariables] <p>An array of <code>EnvironmentVariable</code> objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment"> Environment Variables</a>. </p> <note> <p>There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variable names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases, but if you do exceed it, you will cause an exception (API) with an "Environment: is too large (maximum is 10KB)" message.</p> </note>
--- @param _AppSource [Source] <p>A <code>Source</code> object that describes the app repository.</p>
--- @param _Description [String] <p>A description of the app.</p>
--- @param _EnableSsl [Boolean] <p>Whether to enable SSL for the app.</p>
--- @param _SslConfiguration [SslConfiguration] <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
--- @param _Name [String] <p>The app name.</p>
--- @param _AppId [String] <p>The app ID.</p>
--- @param _Domains [Strings] <p>The app vhost settings with multiple domains separated by commas. For example: <code>'www.example.com, example.com'</code> </p>
--- @param _Attributes [AppAttributes] <p>The stack attributes.</p>
--- @param _Shortname [String] <p>The app's short name.</p>
--- @param _Type [AppType] <p>The app type.</p>
--- @param _CreatedAt [String] <p>When the app was created.</p>
--- @param _DataSources [DataSources] <p>The app's data sources.</p>
-function M.App(_StackId, _Environment, _AppSource, _Description, _EnableSsl, _SslConfiguration, _Name, _AppId, _Domains, _Attributes, _Shortname, _Type, _CreatedAt, _DataSources, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating App")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The app stack ID.</p>
+-- * Environment [EnvironmentVariables] <p>An array of <code>EnvironmentVariable</code> objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment"> Environment Variables</a>. </p> <note> <p>There is no specific limit on the number of environment variables. However, the size of the associated data structure - which includes the variable names, values, and protected flag values - cannot exceed 10 KB (10240 Bytes). This limit should accommodate most if not all use cases, but if you do exceed it, you will cause an exception (API) with an "Environment: is too large (maximum is 10KB)" message.</p> </note>
+-- * AppSource [Source] <p>A <code>Source</code> object that describes the app repository.</p>
+-- * Description [String] <p>A description of the app.</p>
+-- * EnableSsl [Boolean] <p>Whether to enable SSL for the app.</p>
+-- * SslConfiguration [SslConfiguration] <p>An <code>SslConfiguration</code> object with the SSL configuration.</p>
+-- * Name [String] <p>The app name.</p>
+-- * AppId [String] <p>The app ID.</p>
+-- * Domains [Strings] <p>The app vhost settings with multiple domains separated by commas. For example: <code>'www.example.com, example.com'</code> </p>
+-- * Attributes [AppAttributes] <p>The stack attributes.</p>
+-- * Shortname [String] <p>The app's short name.</p>
+-- * Type [AppType] <p>The app type.</p>
+-- * CreatedAt [String] <p>When the app was created.</p>
+-- * DataSources [DataSources] <p>The app's data sources.</p>
+-- @return App structure as a key-value pair table
+function M.App(args)
+	assert(args, "You must provdide an argument table when creating App")
 	local t = { 
-		["StackId"] = _StackId,
-		["Environment"] = _Environment,
-		["AppSource"] = _AppSource,
-		["Description"] = _Description,
-		["EnableSsl"] = _EnableSsl,
-		["SslConfiguration"] = _SslConfiguration,
-		["Name"] = _Name,
-		["AppId"] = _AppId,
-		["Domains"] = _Domains,
-		["Attributes"] = _Attributes,
-		["Shortname"] = _Shortname,
-		["Type"] = _Type,
-		["CreatedAt"] = _CreatedAt,
-		["DataSources"] = _DataSources,
+		["StackId"] = args["StackId"],
+		["Environment"] = args["Environment"],
+		["AppSource"] = args["AppSource"],
+		["Description"] = args["Description"],
+		["EnableSsl"] = args["EnableSsl"],
+		["SslConfiguration"] = args["SslConfiguration"],
+		["Name"] = args["Name"],
+		["AppId"] = args["AppId"],
+		["Domains"] = args["Domains"],
+		["Attributes"] = args["Attributes"],
+		["Shortname"] = args["Shortname"],
+		["Type"] = args["Type"],
+		["CreatedAt"] = args["CreatedAt"],
+		["DataSources"] = args["DataSources"],
 	}
 	asserts.AssertApp(t)
 	return t
@@ -2305,27 +2497,30 @@ end
 
 --- Create a structure of type RdsDbInstance
 -- <p>Describes an Amazon RDS instance.</p>
--- @param _Engine [String] <p>The instance's database engine.</p>
--- @param _StackId [String] <p>The ID of the stack with which the instance is registered.</p>
--- @param _MissingOnRds [Boolean] <p>Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS OpsWorks Stacks attempts to discover the instance only once. If this value is set to <code>true</code>, you must deregister the instance, and then register it again.</p>
--- @param _Region [String] <p>The instance's AWS region.</p>
--- @param _RdsDbInstanceArn [String] <p>The instance's ARN.</p>
--- @param _DbPassword [String] <p>AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.</p>
--- @param _Address [String] <p>The instance's address.</p>
--- @param _DbUser [String] <p>The master user name.</p>
--- @param _DbInstanceIdentifier [String] <p>The DB instance identifier.</p>
-function M.RdsDbInstance(_Engine, _StackId, _MissingOnRds, _Region, _RdsDbInstanceArn, _DbPassword, _Address, _DbUser, _DbInstanceIdentifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RdsDbInstance")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Engine [String] <p>The instance's database engine.</p>
+-- * StackId [String] <p>The ID of the stack with which the instance is registered.</p>
+-- * MissingOnRds [Boolean] <p>Set to <code>true</code> if AWS OpsWorks Stacks is unable to discover the Amazon RDS instance. AWS OpsWorks Stacks attempts to discover the instance only once. If this value is set to <code>true</code>, you must deregister the instance, and then register it again.</p>
+-- * Region [String] <p>The instance's AWS region.</p>
+-- * RdsDbInstanceArn [String] <p>The instance's ARN.</p>
+-- * DbPassword [String] <p>AWS OpsWorks Stacks returns <code>*****FILTERED*****</code> instead of the actual value.</p>
+-- * Address [String] <p>The instance's address.</p>
+-- * DbUser [String] <p>The master user name.</p>
+-- * DbInstanceIdentifier [String] <p>The DB instance identifier.</p>
+-- @return RdsDbInstance structure as a key-value pair table
+function M.RdsDbInstance(args)
+	assert(args, "You must provdide an argument table when creating RdsDbInstance")
 	local t = { 
-		["Engine"] = _Engine,
-		["StackId"] = _StackId,
-		["MissingOnRds"] = _MissingOnRds,
-		["Region"] = _Region,
-		["RdsDbInstanceArn"] = _RdsDbInstanceArn,
-		["DbPassword"] = _DbPassword,
-		["Address"] = _Address,
-		["DbUser"] = _DbUser,
-		["DbInstanceIdentifier"] = _DbInstanceIdentifier,
+		["Engine"] = args["Engine"],
+		["StackId"] = args["StackId"],
+		["MissingOnRds"] = args["MissingOnRds"],
+		["Region"] = args["Region"],
+		["RdsDbInstanceArn"] = args["RdsDbInstanceArn"],
+		["DbPassword"] = args["DbPassword"],
+		["Address"] = args["Address"],
+		["DbUser"] = args["DbUser"],
+		["DbInstanceIdentifier"] = args["DbInstanceIdentifier"],
 	}
 	asserts.AssertRdsDbInstance(t)
 	return t
@@ -2346,15 +2541,18 @@ end
 
 --- Create a structure of type DataSource
 -- <p>Describes an app's data source.</p>
--- @param _Type [String] <p>The data source's type, <code>AutoSelectOpsworksMysqlInstance</code>, <code>OpsworksMysqlInstance</code>, or <code>RdsDbInstance</code>.</p>
--- @param _DatabaseName [String] <p>The database name.</p>
--- @param _Arn [String] <p>The data source's ARN.</p>
-function M.DataSource(_Type, _DatabaseName, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DataSource")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [String] <p>The data source's type, <code>AutoSelectOpsworksMysqlInstance</code>, <code>OpsworksMysqlInstance</code>, or <code>RdsDbInstance</code>.</p>
+-- * DatabaseName [String] <p>The database name.</p>
+-- * Arn [String] <p>The data source's ARN.</p>
+-- @return DataSource structure as a key-value pair table
+function M.DataSource(args)
+	assert(args, "You must provdide an argument table when creating DataSource")
 	local t = { 
-		["Type"] = _Type,
-		["DatabaseName"] = _DatabaseName,
-		["Arn"] = _Arn,
+		["Type"] = args["Type"],
+		["DatabaseName"] = args["DatabaseName"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertDataSource(t)
 	return t
@@ -2376,15 +2574,18 @@ end
 
 --- Create a structure of type UntagResourceRequest
 --  
--- @param _ResourceArn [ResourceArn] <p>The stack or layer's Amazon Resource Number (ARN).</p>
--- @param _TagKeys [TagKeys] <p>A list of the keys of tags to be removed from a stack or layer.</p>
--- Required parameter: ResourceArn
--- Required parameter: TagKeys
-function M.UntagResourceRequest(_ResourceArn, _TagKeys, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UntagResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The stack or layer's Amazon Resource Number (ARN).</p>
+-- * TagKeys [TagKeys] <p>A list of the keys of tags to be removed from a stack or layer.</p>
+-- Required key: ResourceArn
+-- Required key: TagKeys
+-- @return UntagResourceRequest structure as a key-value pair table
+function M.UntagResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["TagKeys"] = _TagKeys,
+		["ResourceArn"] = args["ResourceArn"],
+		["TagKeys"] = args["TagKeys"],
 	}
 	asserts.AssertUntagResourceRequest(t)
 	return t
@@ -2403,11 +2604,14 @@ end
 
 --- Create a structure of type RegisterEcsClusterResult
 -- <p>Contains the response to a <code>RegisterEcsCluster</code> request.</p>
--- @param _EcsClusterArn [String] <p>The cluster's ARN.</p>
-function M.RegisterEcsClusterResult(_EcsClusterArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterEcsClusterResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EcsClusterArn [String] <p>The cluster's ARN.</p>
+-- @return RegisterEcsClusterResult structure as a key-value pair table
+function M.RegisterEcsClusterResult(args)
+	assert(args, "You must provdide an argument table when creating RegisterEcsClusterResult")
 	local t = { 
-		["EcsClusterArn"] = _EcsClusterArn,
+		["EcsClusterArn"] = args["EcsClusterArn"],
 	}
 	asserts.AssertRegisterEcsClusterResult(t)
 	return t
@@ -2429,17 +2633,20 @@ end
 
 --- Create a structure of type DescribeEcsClustersRequest
 --  
--- @param _StackId [String] <p>A stack ID. <code>DescribeEcsClusters</code> returns a description of the cluster that is registered with the stack.</p>
--- @param _EcsClusterArns [Strings] <p>A list of ARNs, one for each cluster to be described.</p>
--- @param _NextToken [String] <p>If the previous paginated request did not return all of the remaining results, the response object's<code>NextToken</code> parameter value is set to a token. To retrieve the next set of results, call <code>DescribeEcsClusters</code> again and assign that token to the request object's <code>NextToken</code> parameter. If there are no remaining results, the previous response object's <code>NextToken</code> parameter is set to <code>null</code>.</p>
--- @param _MaxResults [Integer] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results.</p>
-function M.DescribeEcsClustersRequest(_StackId, _EcsClusterArns, _NextToken, _MaxResults, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEcsClustersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>A stack ID. <code>DescribeEcsClusters</code> returns a description of the cluster that is registered with the stack.</p>
+-- * EcsClusterArns [Strings] <p>A list of ARNs, one for each cluster to be described.</p>
+-- * NextToken [String] <p>If the previous paginated request did not return all of the remaining results, the response object's<code>NextToken</code> parameter value is set to a token. To retrieve the next set of results, call <code>DescribeEcsClusters</code> again and assign that token to the request object's <code>NextToken</code> parameter. If there are no remaining results, the previous response object's <code>NextToken</code> parameter is set to <code>null</code>.</p>
+-- * MaxResults [Integer] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results.</p>
+-- @return DescribeEcsClustersRequest structure as a key-value pair table
+function M.DescribeEcsClustersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeEcsClustersRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["EcsClusterArns"] = _EcsClusterArns,
-		["NextToken"] = _NextToken,
-		["MaxResults"] = _MaxResults,
+		["StackId"] = args["StackId"],
+		["EcsClusterArns"] = args["EcsClusterArns"],
+		["NextToken"] = args["NextToken"],
+		["MaxResults"] = args["MaxResults"],
 	}
 	asserts.AssertDescribeEcsClustersRequest(t)
 	return t
@@ -2458,11 +2665,14 @@ end
 
 --- Create a structure of type DescribeAgentVersionsResult
 -- <p>Contains the response to a <code>DescribeAgentVersions</code> request.</p>
--- @param _AgentVersions [AgentVersions] <p>The agent versions for the specified stack or configuration manager. Note that this value is the complete version number, not the abbreviated number used by the console.</p>
-function M.DescribeAgentVersionsResult(_AgentVersions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAgentVersionsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AgentVersions [AgentVersions] <p>The agent versions for the specified stack or configuration manager. Note that this value is the complete version number, not the abbreviated number used by the console.</p>
+-- @return DescribeAgentVersionsResult structure as a key-value pair table
+function M.DescribeAgentVersionsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeAgentVersionsResult")
 	local t = { 
-		["AgentVersions"] = _AgentVersions,
+		["AgentVersions"] = args["AgentVersions"],
 	}
 	asserts.AssertDescribeAgentVersionsResult(t)
 	return t
@@ -2485,18 +2695,21 @@ end
 
 --- Create a structure of type SetLoadBasedAutoScalingRequest
 --  
--- @param _DownScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object with the downscaling threshold configuration. If the load falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.</p>
--- @param _Enable [Boolean] <p>Enables load-based auto scaling for the layer.</p>
--- @param _UpScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object with the upscaling threshold configuration. If the load exceeds these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.</p>
--- @param _LayerId [String] <p>The layer ID.</p>
--- Required parameter: LayerId
-function M.SetLoadBasedAutoScalingRequest(_DownScaling, _Enable, _UpScaling, _LayerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetLoadBasedAutoScalingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DownScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object with the downscaling threshold configuration. If the load falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a specified number of instances.</p>
+-- * Enable [Boolean] <p>Enables load-based auto scaling for the layer.</p>
+-- * UpScaling [AutoScalingThresholds] <p>An <code>AutoScalingThresholds</code> object with the upscaling threshold configuration. If the load exceeds these thresholds for a specified amount of time, AWS OpsWorks Stacks starts a specified number of instances.</p>
+-- * LayerId [String] <p>The layer ID.</p>
+-- Required key: LayerId
+-- @return SetLoadBasedAutoScalingRequest structure as a key-value pair table
+function M.SetLoadBasedAutoScalingRequest(args)
+	assert(args, "You must provdide an argument table when creating SetLoadBasedAutoScalingRequest")
 	local t = { 
-		["DownScaling"] = _DownScaling,
-		["Enable"] = _Enable,
-		["UpScaling"] = _UpScaling,
-		["LayerId"] = _LayerId,
+		["DownScaling"] = args["DownScaling"],
+		["Enable"] = args["Enable"],
+		["UpScaling"] = args["UpScaling"],
+		["LayerId"] = args["LayerId"],
 	}
 	asserts.AssertSetLoadBasedAutoScalingRequest(t)
 	return t
@@ -2515,11 +2728,14 @@ end
 
 --- Create a structure of type DescribeLoadBasedAutoScalingResult
 -- <p>Contains the response to a <code>DescribeLoadBasedAutoScaling</code> request.</p>
--- @param _LoadBasedAutoScalingConfigurations [LoadBasedAutoScalingConfigurations] <p>An array of <code>LoadBasedAutoScalingConfiguration</code> objects that describe each layer's configuration.</p>
-function M.DescribeLoadBasedAutoScalingResult(_LoadBasedAutoScalingConfigurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBasedAutoScalingResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoadBasedAutoScalingConfigurations [LoadBasedAutoScalingConfigurations] <p>An array of <code>LoadBasedAutoScalingConfiguration</code> objects that describe each layer's configuration.</p>
+-- @return DescribeLoadBasedAutoScalingResult structure as a key-value pair table
+function M.DescribeLoadBasedAutoScalingResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeLoadBasedAutoScalingResult")
 	local t = { 
-		["LoadBasedAutoScalingConfigurations"] = _LoadBasedAutoScalingConfigurations,
+		["LoadBasedAutoScalingConfigurations"] = args["LoadBasedAutoScalingConfigurations"],
 	}
 	asserts.AssertDescribeLoadBasedAutoScalingResult(t)
 	return t
@@ -2538,11 +2754,14 @@ end
 
 --- Create a structure of type DescribeTimeBasedAutoScalingResult
 -- <p>Contains the response to a <code>DescribeTimeBasedAutoScaling</code> request.</p>
--- @param _TimeBasedAutoScalingConfigurations [TimeBasedAutoScalingConfigurations] <p>An array of <code>TimeBasedAutoScalingConfiguration</code> objects that describe the configuration for the specified instances.</p>
-function M.DescribeTimeBasedAutoScalingResult(_TimeBasedAutoScalingConfigurations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTimeBasedAutoScalingResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TimeBasedAutoScalingConfigurations [TimeBasedAutoScalingConfigurations] <p>An array of <code>TimeBasedAutoScalingConfiguration</code> objects that describe the configuration for the specified instances.</p>
+-- @return DescribeTimeBasedAutoScalingResult structure as a key-value pair table
+function M.DescribeTimeBasedAutoScalingResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeTimeBasedAutoScalingResult")
 	local t = { 
-		["TimeBasedAutoScalingConfigurations"] = _TimeBasedAutoScalingConfigurations,
+		["TimeBasedAutoScalingConfigurations"] = args["TimeBasedAutoScalingConfigurations"],
 	}
 	asserts.AssertDescribeTimeBasedAutoScalingResult(t)
 	return t
@@ -2562,13 +2781,16 @@ end
 
 --- Create a structure of type DescribePermissionsRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _IamUserArn [String] <p>The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
-function M.DescribePermissionsRequest(_StackId, _IamUserArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePermissionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * IamUserArn [String] <p>The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- @return DescribePermissionsRequest structure as a key-value pair table
+function M.DescribePermissionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribePermissionsRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["IamUserArn"] = _IamUserArn,
+		["StackId"] = args["StackId"],
+		["IamUserArn"] = args["IamUserArn"],
 	}
 	asserts.AssertDescribePermissionsRequest(t)
 	return t
@@ -2593,21 +2815,24 @@ end
 
 --- Create a structure of type SetPermissionRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _IamUserArn [String] <p>The user's IAM ARN. This can also be a federated user's ARN.</p>
--- @param _Level [String] <p>The user's permission level, which must be set to one of the following strings. You cannot set your own permissions level.</p> <ul> <li> <p> <code>deny</code> </p> </li> <li> <p> <code>show</code> </p> </li> <li> <p> <code>deploy</code> </p> </li> <li> <p> <code>manage</code> </p> </li> <li> <p> <code>iam_only</code> </p> </li> </ul> <p>For more information on the permissions associated with these levels, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User Permissions</a>.</p>
--- @param _AllowSudo [Boolean] <p>The user is allowed to use <b>sudo</b> to elevate privileges.</p>
--- @param _AllowSsh [Boolean] <p>The user is allowed to use SSH to communicate with the instance.</p>
--- Required parameter: StackId
--- Required parameter: IamUserArn
-function M.SetPermissionRequest(_StackId, _IamUserArn, _Level, _AllowSudo, _AllowSsh, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetPermissionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * IamUserArn [String] <p>The user's IAM ARN. This can also be a federated user's ARN.</p>
+-- * Level [String] <p>The user's permission level, which must be set to one of the following strings. You cannot set your own permissions level.</p> <ul> <li> <p> <code>deny</code> </p> </li> <li> <p> <code>show</code> </p> </li> <li> <p> <code>deploy</code> </p> </li> <li> <p> <code>manage</code> </p> </li> <li> <p> <code>iam_only</code> </p> </li> </ul> <p>For more information on the permissions associated with these levels, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User Permissions</a>.</p>
+-- * AllowSudo [Boolean] <p>The user is allowed to use <b>sudo</b> to elevate privileges.</p>
+-- * AllowSsh [Boolean] <p>The user is allowed to use SSH to communicate with the instance.</p>
+-- Required key: StackId
+-- Required key: IamUserArn
+-- @return SetPermissionRequest structure as a key-value pair table
+function M.SetPermissionRequest(args)
+	assert(args, "You must provdide an argument table when creating SetPermissionRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["IamUserArn"] = _IamUserArn,
-		["Level"] = _Level,
-		["AllowSudo"] = _AllowSudo,
-		["AllowSsh"] = _AllowSsh,
+		["StackId"] = args["StackId"],
+		["IamUserArn"] = args["IamUserArn"],
+		["Level"] = args["Level"],
+		["AllowSudo"] = args["AllowSudo"],
+		["AllowSsh"] = args["AllowSsh"],
 	}
 	asserts.AssertSetPermissionRequest(t)
 	return t
@@ -2627,12 +2852,15 @@ end
 
 --- Create a structure of type DescribeTimeBasedAutoScalingRequest
 --  
--- @param _InstanceIds [Strings] <p>An array of instance IDs.</p>
--- Required parameter: InstanceIds
-function M.DescribeTimeBasedAutoScalingRequest(_InstanceIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTimeBasedAutoScalingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceIds [Strings] <p>An array of instance IDs.</p>
+-- Required key: InstanceIds
+-- @return DescribeTimeBasedAutoScalingRequest structure as a key-value pair table
+function M.DescribeTimeBasedAutoScalingRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeTimeBasedAutoScalingRequest")
 	local t = { 
-		["InstanceIds"] = _InstanceIds,
+		["InstanceIds"] = args["InstanceIds"],
 	}
 	asserts.AssertDescribeTimeBasedAutoScalingRequest(t)
 	return t
@@ -2653,15 +2881,18 @@ end
 
 --- Create a structure of type DescribeDeploymentsRequest
 --  
--- @param _StackId [String] <p>The stack ID. If you include this parameter, <code>DescribeDeployments</code> returns a description of the commands associated with the specified stack.</p>
--- @param _DeploymentIds [Strings] <p>An array of deployment IDs to be described. If you include this parameter, <code>DescribeDeployments</code> returns a description of the specified deployments. Otherwise, it returns a description of every deployment.</p>
--- @param _AppId [String] <p>The app ID. If you include this parameter, <code>DescribeDeployments</code> returns a description of the commands associated with the specified app.</p>
-function M.DescribeDeploymentsRequest(_StackId, _DeploymentIds, _AppId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeploymentsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID. If you include this parameter, <code>DescribeDeployments</code> returns a description of the commands associated with the specified stack.</p>
+-- * DeploymentIds [Strings] <p>An array of deployment IDs to be described. If you include this parameter, <code>DescribeDeployments</code> returns a description of the specified deployments. Otherwise, it returns a description of every deployment.</p>
+-- * AppId [String] <p>The app ID. If you include this parameter, <code>DescribeDeployments</code> returns a description of the commands associated with the specified app.</p>
+-- @return DescribeDeploymentsRequest structure as a key-value pair table
+function M.DescribeDeploymentsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDeploymentsRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["DeploymentIds"] = _DeploymentIds,
-		["AppId"] = _AppId,
+		["StackId"] = args["StackId"],
+		["DeploymentIds"] = args["DeploymentIds"],
+		["AppId"] = args["AppId"],
 	}
 	asserts.AssertDescribeDeploymentsRequest(t)
 	return t
@@ -2680,11 +2911,14 @@ end
 
 --- Create a structure of type DescribeUserProfilesResult
 -- <p>Contains the response to a <code>DescribeUserProfiles</code> request.</p>
--- @param _UserProfiles [UserProfiles] <p>A <code>Users</code> object that describes the specified users.</p>
-function M.DescribeUserProfilesResult(_UserProfiles, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeUserProfilesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserProfiles [UserProfiles] <p>A <code>Users</code> object that describes the specified users.</p>
+-- @return DescribeUserProfilesResult structure as a key-value pair table
+function M.DescribeUserProfilesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeUserProfilesResult")
 	local t = { 
-		["UserProfiles"] = _UserProfiles,
+		["UserProfiles"] = args["UserProfiles"],
 	}
 	asserts.AssertDescribeUserProfilesResult(t)
 	return t
@@ -2704,13 +2938,16 @@ end
 
 --- Create a structure of type ChefConfiguration
 -- <p>Describes the Chef configuration.</p>
--- @param _BerkshelfVersion [String] <p>The Berkshelf version.</p>
--- @param _ManageBerkshelf [Boolean] <p>Whether to enable Berkshelf.</p>
-function M.ChefConfiguration(_BerkshelfVersion, _ManageBerkshelf, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChefConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * BerkshelfVersion [String] <p>The Berkshelf version.</p>
+-- * ManageBerkshelf [Boolean] <p>Whether to enable Berkshelf.</p>
+-- @return ChefConfiguration structure as a key-value pair table
+function M.ChefConfiguration(args)
+	assert(args, "You must provdide an argument table when creating ChefConfiguration")
 	local t = { 
-		["BerkshelfVersion"] = _BerkshelfVersion,
-		["ManageBerkshelf"] = _ManageBerkshelf,
+		["BerkshelfVersion"] = args["BerkshelfVersion"],
+		["ManageBerkshelf"] = args["ManageBerkshelf"],
 	}
 	asserts.AssertChefConfiguration(t)
 	return t
@@ -2730,13 +2967,16 @@ end
 
 --- Create a structure of type DescribeAgentVersionsRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
-function M.DescribeAgentVersionsRequest(_StackId, _ConfigurationManager, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeAgentVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
+-- @return DescribeAgentVersionsRequest structure as a key-value pair table
+function M.DescribeAgentVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeAgentVersionsRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["ConfigurationManager"] = _ConfigurationManager,
+		["StackId"] = args["StackId"],
+		["ConfigurationManager"] = args["ConfigurationManager"],
 	}
 	asserts.AssertDescribeAgentVersionsRequest(t)
 	return t
@@ -2755,11 +2995,14 @@ end
 
 --- Create a structure of type DescribeStacksResult
 -- <p>Contains the response to a <code>DescribeStacks</code> request.</p>
--- @param _Stacks [Stacks] <p>An array of <code>Stack</code> objects that describe the stacks.</p>
-function M.DescribeStacksResult(_Stacks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStacksResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Stacks [Stacks] <p>An array of <code>Stack</code> objects that describe the stacks.</p>
+-- @return DescribeStacksResult structure as a key-value pair table
+function M.DescribeStacksResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeStacksResult")
 	local t = { 
-		["Stacks"] = _Stacks,
+		["Stacks"] = args["Stacks"],
 	}
 	asserts.AssertDescribeStacksResult(t)
 	return t
@@ -2778,11 +3021,14 @@ end
 
 --- Create a structure of type DescribeRdsDbInstancesResult
 -- <p>Contains the response to a <code>DescribeRdsDbInstances</code> request.</p>
--- @param _RdsDbInstances [RdsDbInstances] <p>An a array of <code>RdsDbInstance</code> objects that describe the instances.</p>
-function M.DescribeRdsDbInstancesResult(_RdsDbInstances, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRdsDbInstancesResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RdsDbInstances [RdsDbInstances] <p>An a array of <code>RdsDbInstance</code> objects that describe the instances.</p>
+-- @return DescribeRdsDbInstancesResult structure as a key-value pair table
+function M.DescribeRdsDbInstancesResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeRdsDbInstancesResult")
 	local t = { 
-		["RdsDbInstances"] = _RdsDbInstances,
+		["RdsDbInstances"] = args["RdsDbInstances"],
 	}
 	asserts.AssertDescribeRdsDbInstancesResult(t)
 	return t
@@ -2803,14 +3049,17 @@ end
 
 --- Create a structure of type DeploymentCommand
 -- <p>Used to specify a stack or deployment command.</p>
--- @param _Args [DeploymentCommandArgs] <p>The arguments of those commands that take arguments. It should be set to a JSON object with the following format:</p> <p> <code>{"arg_name1" : ["value1", "value2", ...], "arg_name2" : ["value1", "value2", ...], ...}</code> </p> <p>The <code>update_dependencies</code> command takes two arguments:</p> <ul> <li> <p> <code>upgrade_os_to</code> - Specifies the desired Amazon Linux version for instances whose OS you want to upgrade, such as <code>Amazon Linux 2016.09</code>. You must also set the <code>allow_reboot</code> argument to true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if necessary, after installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade an instance to Amazon Linux 2016.09, set <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon Linux 2016.09"], "allow_reboot":["true"] } </code> </p>
--- @param _Name [DeploymentCommandName] <p>Specifies the operation. You can specify only one command.</p> <p>For stacks, the following commands are available:</p> <ul> <li> <p> <code>execute_recipes</code>: Execute one or more recipes. To specify the recipes, set an <code>Args</code> parameter named <code>recipes</code> to the list of recipes to be executed. For example, to execute <code>phpapp::appsetup</code>, set <code>Args</code> to <code>{"recipes":["phpapp::appsetup"]}</code>.</p> </li> <li> <p> <code>install_dependencies</code>: Install the stack's dependencies.</p> </li> <li> <p> <code>update_custom_cookbooks</code>: Update the stack's custom cookbooks.</p> </li> <li> <p> <code>update_dependencies</code>: Update the stack's dependencies.</p> </li> </ul> <note> <p>The update_dependencies and install_dependencies commands are supported only for Linux instances. You can run the commands successfully on Windows instances, but they do nothing.</p> </note> <p>For apps, the following commands are available:</p> <ul> <li> <p> <code>deploy</code>: Deploy an app. Ruby on Rails apps have an optional <code>Args</code> parameter named <code>migrate</code>. Set <code>Args</code> to {"migrate":["true"]} to migrate the database. The default setting is {"migrate":["false"]}.</p> </li> <li> <p> <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks Stacks stores the previous version, up to a maximum of five versions. You can use this command to roll an app back as many as four versions.</p> </li> <li> <p> <code>start</code>: Start the app's web or application server.</p> </li> <li> <p> <code>stop</code>: Stop the app's web or application server.</p> </li> <li> <p> <code>restart</code>: Restart the app's web or application server.</p> </li> <li> <p> <code>undeploy</code>: Undeploy the app.</p> </li> </ul>
--- Required parameter: Name
-function M.DeploymentCommand(_Args, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeploymentCommand")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Args [DeploymentCommandArgs] <p>The arguments of those commands that take arguments. It should be set to a JSON object with the following format:</p> <p> <code>{"arg_name1" : ["value1", "value2", ...], "arg_name2" : ["value1", "value2", ...], ...}</code> </p> <p>The <code>update_dependencies</code> command takes two arguments:</p> <ul> <li> <p> <code>upgrade_os_to</code> - Specifies the desired Amazon Linux version for instances whose OS you want to upgrade, such as <code>Amazon Linux 2016.09</code>. You must also set the <code>allow_reboot</code> argument to true.</p> </li> <li> <p> <code>allow_reboot</code> - Specifies whether to allow AWS OpsWorks Stacks to reboot the instances if necessary, after installing the updates. This argument can be set to either <code>true</code> or <code>false</code>. The default value is <code>false</code>.</p> </li> </ul> <p>For example, to upgrade an instance to Amazon Linux 2016.09, set <code>Args</code> to the following.</p> <p> <code> { "upgrade_os_to":["Amazon Linux 2016.09"], "allow_reboot":["true"] } </code> </p>
+-- * Name [DeploymentCommandName] <p>Specifies the operation. You can specify only one command.</p> <p>For stacks, the following commands are available:</p> <ul> <li> <p> <code>execute_recipes</code>: Execute one or more recipes. To specify the recipes, set an <code>Args</code> parameter named <code>recipes</code> to the list of recipes to be executed. For example, to execute <code>phpapp::appsetup</code>, set <code>Args</code> to <code>{"recipes":["phpapp::appsetup"]}</code>.</p> </li> <li> <p> <code>install_dependencies</code>: Install the stack's dependencies.</p> </li> <li> <p> <code>update_custom_cookbooks</code>: Update the stack's custom cookbooks.</p> </li> <li> <p> <code>update_dependencies</code>: Update the stack's dependencies.</p> </li> </ul> <note> <p>The update_dependencies and install_dependencies commands are supported only for Linux instances. You can run the commands successfully on Windows instances, but they do nothing.</p> </note> <p>For apps, the following commands are available:</p> <ul> <li> <p> <code>deploy</code>: Deploy an app. Ruby on Rails apps have an optional <code>Args</code> parameter named <code>migrate</code>. Set <code>Args</code> to {"migrate":["true"]} to migrate the database. The default setting is {"migrate":["false"]}.</p> </li> <li> <p> <code>rollback</code> Roll the app back to the previous version. When you update an app, AWS OpsWorks Stacks stores the previous version, up to a maximum of five versions. You can use this command to roll an app back as many as four versions.</p> </li> <li> <p> <code>start</code>: Start the app's web or application server.</p> </li> <li> <p> <code>stop</code>: Stop the app's web or application server.</p> </li> <li> <p> <code>restart</code>: Restart the app's web or application server.</p> </li> <li> <p> <code>undeploy</code>: Undeploy the app.</p> </li> </ul>
+-- Required key: Name
+-- @return DeploymentCommand structure as a key-value pair table
+function M.DeploymentCommand(args)
+	assert(args, "You must provdide an argument table when creating DeploymentCommand")
 	local t = { 
-		["Args"] = _Args,
-		["Name"] = _Name,
+		["Args"] = args["Args"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertDeploymentCommand(t)
 	return t
@@ -2830,13 +3079,16 @@ end
 
 --- Create a structure of type DescribeEcsClustersResult
 -- <p>Contains the response to a <code>DescribeEcsClusters</code> request.</p>
--- @param _NextToken [String] <p>If a paginated request does not return all of the remaining results, this parameter is set to a token that you can assign to the request object's <code>NextToken</code> parameter to retrieve the next set of results. If the previous paginated request returned all of the remaining results, this parameter is set to <code>null</code>.</p>
--- @param _EcsClusters [EcsClusters] <p>A list of <code>EcsCluster</code> objects containing the cluster descriptions.</p>
-function M.DescribeEcsClustersResult(_NextToken, _EcsClusters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeEcsClustersResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextToken [String] <p>If a paginated request does not return all of the remaining results, this parameter is set to a token that you can assign to the request object's <code>NextToken</code> parameter to retrieve the next set of results. If the previous paginated request returned all of the remaining results, this parameter is set to <code>null</code>.</p>
+-- * EcsClusters [EcsClusters] <p>A list of <code>EcsCluster</code> objects containing the cluster descriptions.</p>
+-- @return DescribeEcsClustersResult structure as a key-value pair table
+function M.DescribeEcsClustersResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeEcsClustersResult")
 	local t = { 
-		["NextToken"] = _NextToken,
-		["EcsClusters"] = _EcsClusters,
+		["NextToken"] = args["NextToken"],
+		["EcsClusters"] = args["EcsClusters"],
 	}
 	asserts.AssertDescribeEcsClustersResult(t)
 	return t
@@ -2855,11 +3107,14 @@ end
 
 --- Create a structure of type ValidationException
 -- <p>Indicates that a request was not valid.</p>
--- @param _message [String] <p>The exception message.</p>
-function M.ValidationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ValidationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The exception message.</p>
+-- @return ValidationException structure as a key-value pair table
+function M.ValidationException(args)
+	assert(args, "You must provdide an argument table when creating ValidationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertValidationException(t)
 	return t
@@ -2881,16 +3136,19 @@ end
 
 --- Create a structure of type UpdateRdsDbInstanceRequest
 --  
--- @param _DbUser [String] <p>The master user name.</p>
--- @param _RdsDbInstanceArn [String] <p>The Amazon RDS instance's ARN.</p>
--- @param _DbPassword [String] <p>The database password.</p>
--- Required parameter: RdsDbInstanceArn
-function M.UpdateRdsDbInstanceRequest(_DbUser, _RdsDbInstanceArn, _DbPassword, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRdsDbInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DbUser [String] <p>The master user name.</p>
+-- * RdsDbInstanceArn [String] <p>The Amazon RDS instance's ARN.</p>
+-- * DbPassword [String] <p>The database password.</p>
+-- Required key: RdsDbInstanceArn
+-- @return UpdateRdsDbInstanceRequest structure as a key-value pair table
+function M.UpdateRdsDbInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateRdsDbInstanceRequest")
 	local t = { 
-		["DbUser"] = _DbUser,
-		["RdsDbInstanceArn"] = _RdsDbInstanceArn,
-		["DbPassword"] = _DbPassword,
+		["DbUser"] = args["DbUser"],
+		["RdsDbInstanceArn"] = args["RdsDbInstanceArn"],
+		["DbPassword"] = args["DbPassword"],
 	}
 	asserts.AssertUpdateRdsDbInstanceRequest(t)
 	return t
@@ -2913,19 +3171,22 @@ end
 
 --- Create a structure of type UserProfile
 -- <p>Describes a user's SSH information.</p>
--- @param _IamUserArn [String] <p>The user's IAM ARN.</p>
--- @param _SshPublicKey [String] <p>The user's SSH public key.</p>
--- @param _AllowSelfManagement [Boolean] <p>Whether users can specify their own SSH public key through the My Settings page. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Managing User Permissions</a>.</p>
--- @param _Name [String] <p>The user's name.</p>
--- @param _SshUsername [String] <p>The user's SSH user name.</p>
-function M.UserProfile(_IamUserArn, _SshPublicKey, _AllowSelfManagement, _Name, _SshUsername, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UserProfile")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IamUserArn [String] <p>The user's IAM ARN.</p>
+-- * SshPublicKey [String] <p>The user's SSH public key.</p>
+-- * AllowSelfManagement [Boolean] <p>Whether users can specify their own SSH public key through the My Settings page. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Managing User Permissions</a>.</p>
+-- * Name [String] <p>The user's name.</p>
+-- * SshUsername [String] <p>The user's SSH user name.</p>
+-- @return UserProfile structure as a key-value pair table
+function M.UserProfile(args)
+	assert(args, "You must provdide an argument table when creating UserProfile")
 	local t = { 
-		["IamUserArn"] = _IamUserArn,
-		["SshPublicKey"] = _SshPublicKey,
-		["AllowSelfManagement"] = _AllowSelfManagement,
-		["Name"] = _Name,
-		["SshUsername"] = _SshUsername,
+		["IamUserArn"] = args["IamUserArn"],
+		["SshPublicKey"] = args["SshPublicKey"],
+		["AllowSelfManagement"] = args["AllowSelfManagement"],
+		["Name"] = args["Name"],
+		["SshUsername"] = args["SshUsername"],
 	}
 	asserts.AssertUserProfile(t)
 	return t
@@ -2964,48 +3225,51 @@ end
 
 --- Create a structure of type CreateInstanceRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _AmiId [String] <p>A custom AMI ID to be used to create the instance. The AMI should be based on one of the supported operating systems. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> <note> <p>If you specify a custom AMI, you must set <code>Os</code> to <code>Custom</code>.</p> </note>
--- @param _LayerIds [Strings] <p>An array that contains the instance's layer IDs.</p>
--- @param _VirtualizationType [String] <p>The instance's virtualization type, <code>paravirtual</code> or <code>hvm</code>.</p>
--- @param _EbsOptimized [Boolean] <p>Whether to create an Amazon EBS-optimized instance.</p>
--- @param _SshKeyName [String] <p>The instance's Amazon EC2 key-pair name.</p>
--- @param _Hostname [String] <p>The instance host name.</p>
--- @param _RootDeviceType [RootDeviceType] <p>The instance root device type. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
--- @param _BlockDeviceMappings [BlockDeviceMappings] <p>An array of <code>BlockDeviceMapping</code> objects that specify the instance's block devices. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block Device Mapping</a>. Note that block device mappings are not supported for custom AMIs.</p>
--- @param _AvailabilityZone [String] <p>The instance Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
--- @param _Architecture [Architecture] <p>The instance architecture. The default option is <code>x86_64</code>. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.</p>
--- @param _AutoScalingType [AutoScalingType] <p>For load-based or time-based instances, the type. Windows stacks can use only time-based instances.</p>
--- @param _SubnetId [String] <p>The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.</p>
--- @param _Tenancy [String] <p>The instance's tenancy option. The default option is no tenancy, or if the instance is running in a VPC, inherit tenancy settings from the VPC. The following are valid values for this parameter: <code>dedicated</code>, <code>default</code>, or <code>host</code>. Because there are costs associated with changes in tenancy options, we recommend that you research tenancy options before choosing them for your instances. For more information about dedicated hosts, see <a href="http://aws.amazon.com/ec2/dedicated-hosts/">Dedicated Hosts Overview</a> and <a href="http://aws.amazon.com/ec2/dedicated-hosts/">Amazon EC2 Dedicated Hosts</a>. For more information about dedicated instances, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html">Dedicated Instances</a> and <a href="http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/">Amazon EC2 Dedicated Instances</a>.</p>
--- @param _InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code> to ensure that your instances have the latest security updates.</p> </note>
--- @param _Os [String] <p>The instance's operating system, which must be set to one of the following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>.</p> </li> </ul> <p>For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you must use the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI that you want to use. Block device mappings are not supported if the value is <code>Custom</code>. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>For more information on how to use custom AMIs with AWS OpsWorks Stacks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p>
--- @param _InstanceType [String] <p>The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack in the console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the currently supported types. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>. The parameter values that you use to specify the various types are in the <b>API Name</b> column of the <b>Available Instance Types</b> table.</p>
--- @param _AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting. To update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the instance.</p> </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p>
--- Required parameter: StackId
--- Required parameter: LayerIds
--- Required parameter: InstanceType
-function M.CreateInstanceRequest(_StackId, _AmiId, _LayerIds, _VirtualizationType, _EbsOptimized, _SshKeyName, _Hostname, _RootDeviceType, _BlockDeviceMappings, _AvailabilityZone, _Architecture, _AutoScalingType, _SubnetId, _Tenancy, _InstallUpdatesOnBoot, _Os, _InstanceType, _AgentVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * AmiId [String] <p>A custom AMI ID to be used to create the instance. The AMI should be based on one of the supported operating systems. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> <note> <p>If you specify a custom AMI, you must set <code>Os</code> to <code>Custom</code>.</p> </note>
+-- * LayerIds [Strings] <p>An array that contains the instance's layer IDs.</p>
+-- * VirtualizationType [String] <p>The instance's virtualization type, <code>paravirtual</code> or <code>hvm</code>.</p>
+-- * EbsOptimized [Boolean] <p>Whether to create an Amazon EBS-optimized instance.</p>
+-- * SshKeyName [String] <p>The instance's Amazon EC2 key-pair name.</p>
+-- * Hostname [String] <p>The instance host name.</p>
+-- * RootDeviceType [RootDeviceType] <p>The instance root device type. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- * BlockDeviceMappings [BlockDeviceMappings] <p>An array of <code>BlockDeviceMapping</code> objects that specify the instance's block devices. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block Device Mapping</a>. Note that block device mappings are not supported for custom AMIs.</p>
+-- * AvailabilityZone [String] <p>The instance Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- * Architecture [Architecture] <p>The instance architecture. The default option is <code>x86_64</code>. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.</p>
+-- * AutoScalingType [AutoScalingType] <p>For load-based or time-based instances, the type. Windows stacks can use only time-based instances.</p>
+-- * SubnetId [String] <p>The ID of the instance's subnet. If the stack is running in a VPC, you can use this parameter to override the stack's default subnet ID value and direct AWS OpsWorks Stacks to launch the instance in a different subnet.</p>
+-- * Tenancy [String] <p>The instance's tenancy option. The default option is no tenancy, or if the instance is running in a VPC, inherit tenancy settings from the VPC. The following are valid values for this parameter: <code>dedicated</code>, <code>default</code>, or <code>host</code>. Because there are costs associated with changes in tenancy options, we recommend that you research tenancy options before choosing them for your instances. For more information about dedicated hosts, see <a href="http://aws.amazon.com/ec2/dedicated-hosts/">Dedicated Hosts Overview</a> and <a href="http://aws.amazon.com/ec2/dedicated-hosts/">Amazon EC2 Dedicated Hosts</a>. For more information about dedicated instances, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html">Dedicated Instances</a> and <a href="http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/">Amazon EC2 Dedicated Instances</a>.</p>
+-- * InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code> to ensure that your instances have the latest security updates.</p> </note>
+-- * Os [String] <p>The instance's operating system, which must be set to one of the following.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> <li> <p>A custom AMI: <code>Custom</code>.</p> </li> </ul> <p>For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you must use the <a>CreateInstance</a> action's AmiId parameter to specify the custom AMI that you want to use. Block device mappings are not supported if the value is <code>Custom</code>. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>For more information on how to use custom AMIs with AWS OpsWorks Stacks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p>
+-- * InstanceType [String] <p>The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack in the console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the currently supported types. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>. The parameter values that you use to specify the various types are in the <b>API Name</b> column of the <b>Available Instance Types</b> table.</p>
+-- * AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting. To update the agent version, edit the instance configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the instance.</p> </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>. AgentVersion cannot be set to Chef 12.2.</p>
+-- Required key: StackId
+-- Required key: LayerIds
+-- Required key: InstanceType
+-- @return CreateInstanceRequest structure as a key-value pair table
+function M.CreateInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateInstanceRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["AmiId"] = _AmiId,
-		["LayerIds"] = _LayerIds,
-		["VirtualizationType"] = _VirtualizationType,
-		["EbsOptimized"] = _EbsOptimized,
-		["SshKeyName"] = _SshKeyName,
-		["Hostname"] = _Hostname,
-		["RootDeviceType"] = _RootDeviceType,
-		["BlockDeviceMappings"] = _BlockDeviceMappings,
-		["AvailabilityZone"] = _AvailabilityZone,
-		["Architecture"] = _Architecture,
-		["AutoScalingType"] = _AutoScalingType,
-		["SubnetId"] = _SubnetId,
-		["Tenancy"] = _Tenancy,
-		["InstallUpdatesOnBoot"] = _InstallUpdatesOnBoot,
-		["Os"] = _Os,
-		["InstanceType"] = _InstanceType,
-		["AgentVersion"] = _AgentVersion,
+		["StackId"] = args["StackId"],
+		["AmiId"] = args["AmiId"],
+		["LayerIds"] = args["LayerIds"],
+		["VirtualizationType"] = args["VirtualizationType"],
+		["EbsOptimized"] = args["EbsOptimized"],
+		["SshKeyName"] = args["SshKeyName"],
+		["Hostname"] = args["Hostname"],
+		["RootDeviceType"] = args["RootDeviceType"],
+		["BlockDeviceMappings"] = args["BlockDeviceMappings"],
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["Architecture"] = args["Architecture"],
+		["AutoScalingType"] = args["AutoScalingType"],
+		["SubnetId"] = args["SubnetId"],
+		["Tenancy"] = args["Tenancy"],
+		["InstallUpdatesOnBoot"] = args["InstallUpdatesOnBoot"],
+		["Os"] = args["Os"],
+		["InstanceType"] = args["InstanceType"],
+		["AgentVersion"] = args["AgentVersion"],
 	}
 	asserts.AssertCreateInstanceRequest(t)
 	return t
@@ -3026,15 +3290,18 @@ end
 
 --- Create a structure of type DescribeRaidArraysRequest
 --  
--- @param _InstanceId [String] <p>The instance ID. If you use this parameter, <code>DescribeRaidArrays</code> returns descriptions of the RAID arrays associated with the specified instance. </p>
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _RaidArrayIds [Strings] <p>An array of RAID array IDs. If you use this parameter, <code>DescribeRaidArrays</code> returns descriptions of the specified arrays. Otherwise, it returns a description of every array.</p>
-function M.DescribeRaidArraysRequest(_InstanceId, _StackId, _RaidArrayIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRaidArraysRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID. If you use this parameter, <code>DescribeRaidArrays</code> returns descriptions of the RAID arrays associated with the specified instance. </p>
+-- * StackId [String] <p>The stack ID.</p>
+-- * RaidArrayIds [Strings] <p>An array of RAID array IDs. If you use this parameter, <code>DescribeRaidArrays</code> returns descriptions of the specified arrays. Otherwise, it returns a description of every array.</p>
+-- @return DescribeRaidArraysRequest structure as a key-value pair table
+function M.DescribeRaidArraysRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeRaidArraysRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["StackId"] = _StackId,
-		["RaidArrayIds"] = _RaidArrayIds,
+		["InstanceId"] = args["InstanceId"],
+		["StackId"] = args["StackId"],
+		["RaidArrayIds"] = args["RaidArrayIds"],
 	}
 	asserts.AssertDescribeRaidArraysRequest(t)
 	return t
@@ -3056,17 +3323,20 @@ end
 
 --- Create a structure of type BlockDeviceMapping
 -- <p>Describes a block device mapping. This data type maps directly to the Amazon EC2 <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html">BlockDeviceMapping</a> data type. </p>
--- @param _Ebs [EbsBlockDevice] <p>An <code>EBSBlockDevice</code> that defines how to configure an Amazon EBS volume when the instance is launched.</p>
--- @param _DeviceName [String] <p>The device name that is exposed to the instance, such as <code>/dev/sdh</code>. For the root device, you can use the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks Stacks will provide the correct device name.</p>
--- @param _VirtualName [String] <p>The virtual device name. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html">BlockDeviceMapping</a>.</p>
--- @param _NoDevice [String] <p>Suppresses the specified device included in the AMI's block device mapping.</p>
-function M.BlockDeviceMapping(_Ebs, _DeviceName, _VirtualName, _NoDevice, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BlockDeviceMapping")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Ebs [EbsBlockDevice] <p>An <code>EBSBlockDevice</code> that defines how to configure an Amazon EBS volume when the instance is launched.</p>
+-- * DeviceName [String] <p>The device name that is exposed to the instance, such as <code>/dev/sdh</code>. For the root device, you can use the explicit device name or you can set this parameter to <code>ROOT_DEVICE</code> and AWS OpsWorks Stacks will provide the correct device name.</p>
+-- * VirtualName [String] <p>The virtual device name. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html">BlockDeviceMapping</a>.</p>
+-- * NoDevice [String] <p>Suppresses the specified device included in the AMI's block device mapping.</p>
+-- @return BlockDeviceMapping structure as a key-value pair table
+function M.BlockDeviceMapping(args)
+	assert(args, "You must provdide an argument table when creating BlockDeviceMapping")
 	local t = { 
-		["Ebs"] = _Ebs,
-		["DeviceName"] = _DeviceName,
-		["VirtualName"] = _VirtualName,
-		["NoDevice"] = _NoDevice,
+		["Ebs"] = args["Ebs"],
+		["DeviceName"] = args["DeviceName"],
+		["VirtualName"] = args["VirtualName"],
+		["NoDevice"] = args["NoDevice"],
 	}
 	asserts.AssertBlockDeviceMapping(t)
 	return t
@@ -3086,12 +3356,15 @@ end
 
 --- Create a structure of type DeleteUserProfileRequest
 --  
--- @param _IamUserArn [String] <p>The user's IAM ARN. This can also be a federated user's ARN.</p>
--- Required parameter: IamUserArn
-function M.DeleteUserProfileRequest(_IamUserArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IamUserArn [String] <p>The user's IAM ARN. This can also be a federated user's ARN.</p>
+-- Required key: IamUserArn
+-- @return DeleteUserProfileRequest structure as a key-value pair table
+function M.DeleteUserProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteUserProfileRequest")
 	local t = { 
-		["IamUserArn"] = _IamUserArn,
+		["IamUserArn"] = args["IamUserArn"],
 	}
 	asserts.AssertDeleteUserProfileRequest(t)
 	return t
@@ -3112,15 +3385,18 @@ end
 
 --- Create a structure of type DescribeInstancesRequest
 --  
--- @param _StackId [String] <p>A stack ID. If you use this parameter, <code>DescribeInstances</code> returns descriptions of the instances associated with the specified stack.</p>
--- @param _InstanceIds [Strings] <p>An array of instance IDs to be described. If you use this parameter, <code>DescribeInstances</code> returns a description of the specified instances. Otherwise, it returns a description of every instance.</p>
--- @param _LayerId [String] <p>A layer ID. If you use this parameter, <code>DescribeInstances</code> returns descriptions of the instances associated with the specified layer.</p>
-function M.DescribeInstancesRequest(_StackId, _InstanceIds, _LayerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeInstancesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>A stack ID. If you use this parameter, <code>DescribeInstances</code> returns descriptions of the instances associated with the specified stack.</p>
+-- * InstanceIds [Strings] <p>An array of instance IDs to be described. If you use this parameter, <code>DescribeInstances</code> returns a description of the specified instances. Otherwise, it returns a description of every instance.</p>
+-- * LayerId [String] <p>A layer ID. If you use this parameter, <code>DescribeInstances</code> returns descriptions of the instances associated with the specified layer.</p>
+-- @return DescribeInstancesRequest structure as a key-value pair table
+function M.DescribeInstancesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeInstancesRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["InstanceIds"] = _InstanceIds,
-		["LayerId"] = _LayerId,
+		["StackId"] = args["StackId"],
+		["InstanceIds"] = args["InstanceIds"],
+		["LayerId"] = args["LayerId"],
 	}
 	asserts.AssertDescribeInstancesRequest(t)
 	return t
@@ -3140,13 +3416,16 @@ end
 
 --- Create a structure of type InstanceIdentity
 -- <p>Contains a description of an Amazon EC2 instance from the Amazon EC2 metadata service. For more information, see <a href="http://docs.aws.amazon.com/sdkfornet/latest/apidocs/Index.html">Instance Metadata and User Data</a>.</p>
--- @param _Document [String] <p>A JSON document that contains the metadata.</p>
--- @param _Signature [String] <p>A signature that can be used to verify the document's accuracy and authenticity.</p>
-function M.InstanceIdentity(_Document, _Signature, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceIdentity")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Document [String] <p>A JSON document that contains the metadata.</p>
+-- * Signature [String] <p>A signature that can be used to verify the document's accuracy and authenticity.</p>
+-- @return InstanceIdentity structure as a key-value pair table
+function M.InstanceIdentity(args)
+	assert(args, "You must provdide an argument table when creating InstanceIdentity")
 	local t = { 
-		["Document"] = _Document,
-		["Signature"] = _Signature,
+		["Document"] = args["Document"],
+		["Signature"] = args["Signature"],
 	}
 	asserts.AssertInstanceIdentity(t)
 	return t
@@ -3166,12 +3445,15 @@ end
 
 --- Create a structure of type DeregisterElasticIpRequest
 --  
--- @param _ElasticIp [String] <p>The Elastic IP address.</p>
--- Required parameter: ElasticIp
-function M.DeregisterElasticIpRequest(_ElasticIp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterElasticIpRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ElasticIp [String] <p>The Elastic IP address.</p>
+-- Required key: ElasticIp
+-- @return DeregisterElasticIpRequest structure as a key-value pair table
+function M.DeregisterElasticIpRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterElasticIpRequest")
 	local t = { 
-		["ElasticIp"] = _ElasticIp,
+		["ElasticIp"] = args["ElasticIp"],
 	}
 	asserts.AssertDeregisterElasticIpRequest(t)
 	return t
@@ -3202,35 +3484,38 @@ end
 
 --- Create a structure of type RaidArray
 -- <p>Describes an instance's RAID array.</p>
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _AvailabilityZone [String] <p>The array's Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
--- @param _Name [String] <p>The array name.</p>
--- @param _NumberOfDisks [Integer] <p>The number of disks in the array.</p>
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _RaidLevel [Integer] <p>The <a href="http://en.wikipedia.org/wiki/Standard_RAID_levels">RAID level</a>.</p>
--- @param _VolumeType [String] <p>The volume type, standard or PIOPS.</p>
--- @param _RaidArrayId [String] <p>The array ID.</p>
--- @param _Device [String] <p>The array's Linux device. For example /dev/mdadm0.</p>
--- @param _MountPoint [String] <p>The array's mount point.</p>
--- @param _Iops [Integer] <p>For PIOPS volumes, the IOPS per disk.</p>
--- @param _CreatedAt [DateTime] <p>When the RAID array was created.</p>
--- @param _Size [Integer] <p>The array's size.</p>
-function M.RaidArray(_StackId, _AvailabilityZone, _Name, _NumberOfDisks, _InstanceId, _RaidLevel, _VolumeType, _RaidArrayId, _Device, _MountPoint, _Iops, _CreatedAt, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RaidArray")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * AvailabilityZone [String] <p>The array's Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- * Name [String] <p>The array name.</p>
+-- * NumberOfDisks [Integer] <p>The number of disks in the array.</p>
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * RaidLevel [Integer] <p>The <a href="http://en.wikipedia.org/wiki/Standard_RAID_levels">RAID level</a>.</p>
+-- * VolumeType [String] <p>The volume type, standard or PIOPS.</p>
+-- * RaidArrayId [String] <p>The array ID.</p>
+-- * Device [String] <p>The array's Linux device. For example /dev/mdadm0.</p>
+-- * MountPoint [String] <p>The array's mount point.</p>
+-- * Iops [Integer] <p>For PIOPS volumes, the IOPS per disk.</p>
+-- * CreatedAt [DateTime] <p>When the RAID array was created.</p>
+-- * Size [Integer] <p>The array's size.</p>
+-- @return RaidArray structure as a key-value pair table
+function M.RaidArray(args)
+	assert(args, "You must provdide an argument table when creating RaidArray")
 	local t = { 
-		["StackId"] = _StackId,
-		["AvailabilityZone"] = _AvailabilityZone,
-		["Name"] = _Name,
-		["NumberOfDisks"] = _NumberOfDisks,
-		["InstanceId"] = _InstanceId,
-		["RaidLevel"] = _RaidLevel,
-		["VolumeType"] = _VolumeType,
-		["RaidArrayId"] = _RaidArrayId,
-		["Device"] = _Device,
-		["MountPoint"] = _MountPoint,
-		["Iops"] = _Iops,
-		["CreatedAt"] = _CreatedAt,
-		["Size"] = _Size,
+		["StackId"] = args["StackId"],
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["Name"] = args["Name"],
+		["NumberOfDisks"] = args["NumberOfDisks"],
+		["InstanceId"] = args["InstanceId"],
+		["RaidLevel"] = args["RaidLevel"],
+		["VolumeType"] = args["VolumeType"],
+		["RaidArrayId"] = args["RaidArrayId"],
+		["Device"] = args["Device"],
+		["MountPoint"] = args["MountPoint"],
+		["Iops"] = args["Iops"],
+		["CreatedAt"] = args["CreatedAt"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertRaidArray(t)
 	return t
@@ -3253,19 +3538,22 @@ end
 
 --- Create a structure of type ElasticIp
 -- <p>Describes an Elastic IP address.</p>
--- @param _InstanceId [String] <p>The ID of the instance that the address is attached to.</p>
--- @param _Ip [String] <p>The IP address.</p>
--- @param _Domain [String] <p>The domain.</p>
--- @param _Region [String] <p>The AWS region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
--- @param _Name [String] <p>The name.</p>
-function M.ElasticIp(_InstanceId, _Ip, _Domain, _Region, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ElasticIp")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The ID of the instance that the address is attached to.</p>
+-- * Ip [String] <p>The IP address.</p>
+-- * Domain [String] <p>The domain.</p>
+-- * Region [String] <p>The AWS region. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- * Name [String] <p>The name.</p>
+-- @return ElasticIp structure as a key-value pair table
+function M.ElasticIp(args)
+	assert(args, "You must provdide an argument table when creating ElasticIp")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["Ip"] = _Ip,
-		["Domain"] = _Domain,
-		["Region"] = _Region,
-		["Name"] = _Name,
+		["InstanceId"] = args["InstanceId"],
+		["Ip"] = args["Ip"],
+		["Domain"] = args["Domain"],
+		["Region"] = args["Region"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertElasticIp(t)
 	return t
@@ -3284,11 +3572,14 @@ end
 
 --- Create a structure of type DescribeElasticLoadBalancersResult
 -- <p>Contains the response to a <code>DescribeElasticLoadBalancers</code> request.</p>
--- @param _ElasticLoadBalancers [ElasticLoadBalancers] <p>A list of <code>ElasticLoadBalancer</code> objects that describe the specified Elastic Load Balancing instances.</p>
-function M.DescribeElasticLoadBalancersResult(_ElasticLoadBalancers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticLoadBalancersResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ElasticLoadBalancers [ElasticLoadBalancers] <p>A list of <code>ElasticLoadBalancer</code> objects that describe the specified Elastic Load Balancing instances.</p>
+-- @return DescribeElasticLoadBalancersResult structure as a key-value pair table
+function M.DescribeElasticLoadBalancersResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeElasticLoadBalancersResult")
 	local t = { 
-		["ElasticLoadBalancers"] = _ElasticLoadBalancers,
+		["ElasticLoadBalancers"] = args["ElasticLoadBalancers"],
 	}
 	asserts.AssertDescribeElasticLoadBalancersResult(t)
 	return t
@@ -3310,16 +3601,19 @@ end
 
 --- Create a structure of type DeleteInstanceRequest
 --  
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _DeleteVolumes [Boolean] <p>Whether to delete the instance's Amazon EBS volumes.</p>
--- @param _DeleteElasticIp [Boolean] <p>Whether to delete the instance Elastic IP address.</p>
--- Required parameter: InstanceId
-function M.DeleteInstanceRequest(_InstanceId, _DeleteVolumes, _DeleteElasticIp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * DeleteVolumes [Boolean] <p>Whether to delete the instance's Amazon EBS volumes.</p>
+-- * DeleteElasticIp [Boolean] <p>Whether to delete the instance Elastic IP address.</p>
+-- Required key: InstanceId
+-- @return DeleteInstanceRequest structure as a key-value pair table
+function M.DeleteInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteInstanceRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["DeleteVolumes"] = _DeleteVolumes,
-		["DeleteElasticIp"] = _DeleteElasticIp,
+		["InstanceId"] = args["InstanceId"],
+		["DeleteVolumes"] = args["DeleteVolumes"],
+		["DeleteElasticIp"] = args["DeleteElasticIp"],
 	}
 	asserts.AssertDeleteInstanceRequest(t)
 	return t
@@ -3339,12 +3633,15 @@ end
 
 --- Create a structure of type DisassociateElasticIpRequest
 --  
--- @param _ElasticIp [String] <p>The Elastic IP address.</p>
--- Required parameter: ElasticIp
-function M.DisassociateElasticIpRequest(_ElasticIp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateElasticIpRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ElasticIp [String] <p>The Elastic IP address.</p>
+-- Required key: ElasticIp
+-- @return DisassociateElasticIpRequest structure as a key-value pair table
+function M.DisassociateElasticIpRequest(args)
+	assert(args, "You must provdide an argument table when creating DisassociateElasticIpRequest")
 	local t = { 
-		["ElasticIp"] = _ElasticIp,
+		["ElasticIp"] = args["ElasticIp"],
 	}
 	asserts.AssertDisassociateElasticIpRequest(t)
 	return t
@@ -3371,27 +3668,30 @@ end
 
 --- Create a structure of type ElasticLoadBalancer
 -- <p>Describes an Elastic Load Balancing instance.</p>
--- @param _StackId [String] <p>The ID of the stack that the instance is associated with.</p>
--- @param _ElasticLoadBalancerName [String] <p>The Elastic Load Balancing instance's name.</p>
--- @param _VpcId [String] <p>The VPC ID.</p>
--- @param _Ec2InstanceIds [Strings] <p>A list of the EC2 instances that the Elastic Load Balancing instance is managing traffic for.</p>
--- @param _Region [String] <p>The instance's AWS region.</p>
--- @param _DnsName [String] <p>The instance's public DNS name.</p>
--- @param _LayerId [String] <p>The ID of the layer that the instance is attached to.</p>
--- @param _AvailabilityZones [Strings] <p>A list of Availability Zones.</p>
--- @param _SubnetIds [Strings] <p>A list of subnet IDs, if the stack is running in a VPC.</p>
-function M.ElasticLoadBalancer(_StackId, _ElasticLoadBalancerName, _VpcId, _Ec2InstanceIds, _Region, _DnsName, _LayerId, _AvailabilityZones, _SubnetIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ElasticLoadBalancer")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The ID of the stack that the instance is associated with.</p>
+-- * ElasticLoadBalancerName [String] <p>The Elastic Load Balancing instance's name.</p>
+-- * VpcId [String] <p>The VPC ID.</p>
+-- * Ec2InstanceIds [Strings] <p>A list of the EC2 instances that the Elastic Load Balancing instance is managing traffic for.</p>
+-- * Region [String] <p>The instance's AWS region.</p>
+-- * DnsName [String] <p>The instance's public DNS name.</p>
+-- * LayerId [String] <p>The ID of the layer that the instance is attached to.</p>
+-- * AvailabilityZones [Strings] <p>A list of Availability Zones.</p>
+-- * SubnetIds [Strings] <p>A list of subnet IDs, if the stack is running in a VPC.</p>
+-- @return ElasticLoadBalancer structure as a key-value pair table
+function M.ElasticLoadBalancer(args)
+	assert(args, "You must provdide an argument table when creating ElasticLoadBalancer")
 	local t = { 
-		["StackId"] = _StackId,
-		["ElasticLoadBalancerName"] = _ElasticLoadBalancerName,
-		["VpcId"] = _VpcId,
-		["Ec2InstanceIds"] = _Ec2InstanceIds,
-		["Region"] = _Region,
-		["DnsName"] = _DnsName,
-		["LayerId"] = _LayerId,
-		["AvailabilityZones"] = _AvailabilityZones,
-		["SubnetIds"] = _SubnetIds,
+		["StackId"] = args["StackId"],
+		["ElasticLoadBalancerName"] = args["ElasticLoadBalancerName"],
+		["VpcId"] = args["VpcId"],
+		["Ec2InstanceIds"] = args["Ec2InstanceIds"],
+		["Region"] = args["Region"],
+		["DnsName"] = args["DnsName"],
+		["LayerId"] = args["LayerId"],
+		["AvailabilityZones"] = args["AvailabilityZones"],
+		["SubnetIds"] = args["SubnetIds"],
 	}
 	asserts.AssertElasticLoadBalancer(t)
 	return t
@@ -3410,11 +3710,14 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>Indicates that a resource was not found.</p>
--- @param _message [String] <p>The exception message.</p>
-function M.ResourceNotFoundException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [String] <p>The exception message.</p>
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertResourceNotFoundException(t)
 	return t
@@ -3433,11 +3736,14 @@ end
 
 --- Create a structure of type DescribeRaidArraysResult
 -- <p>Contains the response to a <code>DescribeRaidArrays</code> request.</p>
--- @param _RaidArrays [RaidArrays] <p>A <code>RaidArrays</code> object that describes the specified RAID arrays.</p>
-function M.DescribeRaidArraysResult(_RaidArrays, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRaidArraysResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RaidArrays [RaidArrays] <p>A <code>RaidArrays</code> object that describes the specified RAID arrays.</p>
+-- @return DescribeRaidArraysResult structure as a key-value pair table
+function M.DescribeRaidArraysResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeRaidArraysResult")
 	local t = { 
-		["RaidArrays"] = _RaidArrays,
+		["RaidArrays"] = args["RaidArrays"],
 	}
 	asserts.AssertDescribeRaidArraysResult(t)
 	return t
@@ -3458,15 +3764,18 @@ end
 
 --- Create a structure of type DescribeServiceErrorsRequest
 --  
--- @param _StackId [String] <p>The stack ID. If you use this parameter, <code>DescribeServiceErrors</code> returns descriptions of the errors associated with the specified stack.</p>
--- @param _InstanceId [String] <p>The instance ID. If you use this parameter, <code>DescribeServiceErrors</code> returns descriptions of the errors associated with the specified instance.</p>
--- @param _ServiceErrorIds [Strings] <p>An array of service error IDs. If you use this parameter, <code>DescribeServiceErrors</code> returns descriptions of the specified errors. Otherwise, it returns a description of every error.</p>
-function M.DescribeServiceErrorsRequest(_StackId, _InstanceId, _ServiceErrorIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServiceErrorsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID. If you use this parameter, <code>DescribeServiceErrors</code> returns descriptions of the errors associated with the specified stack.</p>
+-- * InstanceId [String] <p>The instance ID. If you use this parameter, <code>DescribeServiceErrors</code> returns descriptions of the errors associated with the specified instance.</p>
+-- * ServiceErrorIds [Strings] <p>An array of service error IDs. If you use this parameter, <code>DescribeServiceErrors</code> returns descriptions of the specified errors. Otherwise, it returns a description of every error.</p>
+-- @return DescribeServiceErrorsRequest structure as a key-value pair table
+function M.DescribeServiceErrorsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeServiceErrorsRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["InstanceId"] = _InstanceId,
-		["ServiceErrorIds"] = _ServiceErrorIds,
+		["StackId"] = args["StackId"],
+		["InstanceId"] = args["InstanceId"],
+		["ServiceErrorIds"] = args["ServiceErrorIds"],
 	}
 	asserts.AssertDescribeServiceErrorsRequest(t)
 	return t
@@ -3490,21 +3799,24 @@ end
 
 --- Create a structure of type ServiceError
 -- <p>Describes an AWS OpsWorks Stacks service error.</p>
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _ServiceErrorId [String] <p>The error ID.</p>
--- @param _Message [String] <p>A message that describes the error.</p>
--- @param _Type [String] <p>The error type.</p>
--- @param _CreatedAt [DateTime] <p>When the error occurred.</p>
-function M.ServiceError(_StackId, _InstanceId, _ServiceErrorId, _Message, _Type, _CreatedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * ServiceErrorId [String] <p>The error ID.</p>
+-- * Message [String] <p>A message that describes the error.</p>
+-- * Type [String] <p>The error type.</p>
+-- * CreatedAt [DateTime] <p>When the error occurred.</p>
+-- @return ServiceError structure as a key-value pair table
+function M.ServiceError(args)
+	assert(args, "You must provdide an argument table when creating ServiceError")
 	local t = { 
-		["StackId"] = _StackId,
-		["InstanceId"] = _InstanceId,
-		["ServiceErrorId"] = _ServiceErrorId,
-		["Message"] = _Message,
-		["Type"] = _Type,
-		["CreatedAt"] = _CreatedAt,
+		["StackId"] = args["StackId"],
+		["InstanceId"] = args["InstanceId"],
+		["ServiceErrorId"] = args["ServiceErrorId"],
+		["Message"] = args["Message"],
+		["Type"] = args["Type"],
+		["CreatedAt"] = args["CreatedAt"],
 	}
 	asserts.AssertServiceError(t)
 	return t
@@ -3526,17 +3838,20 @@ end
 
 --- Create a structure of type DescribeVolumesRequest
 --  
--- @param _InstanceId [String] <p>The instance ID. If you use this parameter, <code>DescribeVolumes</code> returns descriptions of the volumes associated with the specified instance.</p>
--- @param _StackId [String] <p>A stack ID. The action describes the stack's registered Amazon EBS volumes.</p>
--- @param _RaidArrayId [String] <p>The RAID array ID. If you use this parameter, <code>DescribeVolumes</code> returns descriptions of the volumes associated with the specified RAID array.</p>
--- @param _VolumeIds [Strings] <p>Am array of volume IDs. If you use this parameter, <code>DescribeVolumes</code> returns descriptions of the specified volumes. Otherwise, it returns a description of every volume.</p>
-function M.DescribeVolumesRequest(_InstanceId, _StackId, _RaidArrayId, _VolumeIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeVolumesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID. If you use this parameter, <code>DescribeVolumes</code> returns descriptions of the volumes associated with the specified instance.</p>
+-- * StackId [String] <p>A stack ID. The action describes the stack's registered Amazon EBS volumes.</p>
+-- * RaidArrayId [String] <p>The RAID array ID. If you use this parameter, <code>DescribeVolumes</code> returns descriptions of the volumes associated with the specified RAID array.</p>
+-- * VolumeIds [Strings] <p>Am array of volume IDs. If you use this parameter, <code>DescribeVolumes</code> returns descriptions of the specified volumes. Otherwise, it returns a description of every volume.</p>
+-- @return DescribeVolumesRequest structure as a key-value pair table
+function M.DescribeVolumesRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeVolumesRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["StackId"] = _StackId,
-		["RaidArrayId"] = _RaidArrayId,
-		["VolumeIds"] = _VolumeIds,
+		["InstanceId"] = args["InstanceId"],
+		["StackId"] = args["StackId"],
+		["RaidArrayId"] = args["RaidArrayId"],
+		["VolumeIds"] = args["VolumeIds"],
 	}
 	asserts.AssertDescribeVolumesRequest(t)
 	return t
@@ -3556,12 +3871,15 @@ end
 
 --- Create a structure of type StartStackRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- Required parameter: StackId
-function M.StartStackRequest(_StackId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StartStackRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- Required key: StackId
+-- @return StartStackRequest structure as a key-value pair table
+function M.StartStackRequest(args)
+	assert(args, "You must provdide an argument table when creating StartStackRequest")
 	local t = { 
-		["StackId"] = _StackId,
+		["StackId"] = args["StackId"],
 	}
 	asserts.AssertStartStackRequest(t)
 	return t
@@ -3588,24 +3906,27 @@ end
 
 --- Create a structure of type VolumeConfiguration
 -- <p>Describes an Amazon EBS volume configuration.</p>
--- @param _NumberOfDisks [Integer] <p>The number of disks in the volume.</p>
--- @param _RaidLevel [Integer] <p>The volume <a href="http://en.wikipedia.org/wiki/Standard_RAID_levels">RAID level</a>.</p>
--- @param _VolumeType [String] <p>The volume type:</p> <ul> <li> <p> <code>standard</code> - Magnetic</p> </li> <li> <p> <code>io1</code> - Provisioned IOPS (SSD)</p> </li> <li> <p> <code>gp2</code> - General Purpose (SSD)</p> </li> </ul>
--- @param _Iops [Integer] <p>For PIOPS volumes, the IOPS per disk.</p>
--- @param _MountPoint [String] <p>The volume mount point. For example "/dev/sdh".</p>
--- @param _Size [Integer] <p>The volume size.</p>
--- Required parameter: MountPoint
--- Required parameter: NumberOfDisks
--- Required parameter: Size
-function M.VolumeConfiguration(_NumberOfDisks, _RaidLevel, _VolumeType, _Iops, _MountPoint, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VolumeConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NumberOfDisks [Integer] <p>The number of disks in the volume.</p>
+-- * RaidLevel [Integer] <p>The volume <a href="http://en.wikipedia.org/wiki/Standard_RAID_levels">RAID level</a>.</p>
+-- * VolumeType [String] <p>The volume type:</p> <ul> <li> <p> <code>standard</code> - Magnetic</p> </li> <li> <p> <code>io1</code> - Provisioned IOPS (SSD)</p> </li> <li> <p> <code>gp2</code> - General Purpose (SSD)</p> </li> </ul>
+-- * Iops [Integer] <p>For PIOPS volumes, the IOPS per disk.</p>
+-- * MountPoint [String] <p>The volume mount point. For example "/dev/sdh".</p>
+-- * Size [Integer] <p>The volume size.</p>
+-- Required key: MountPoint
+-- Required key: NumberOfDisks
+-- Required key: Size
+-- @return VolumeConfiguration structure as a key-value pair table
+function M.VolumeConfiguration(args)
+	assert(args, "You must provdide an argument table when creating VolumeConfiguration")
 	local t = { 
-		["NumberOfDisks"] = _NumberOfDisks,
-		["RaidLevel"] = _RaidLevel,
-		["VolumeType"] = _VolumeType,
-		["Iops"] = _Iops,
-		["MountPoint"] = _MountPoint,
-		["Size"] = _Size,
+		["NumberOfDisks"] = args["NumberOfDisks"],
+		["RaidLevel"] = args["RaidLevel"],
+		["VolumeType"] = args["VolumeType"],
+		["Iops"] = args["Iops"],
+		["MountPoint"] = args["MountPoint"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertVolumeConfiguration(t)
 	return t
@@ -3626,15 +3947,18 @@ end
 
 --- Create a structure of type DescribeElasticIpsRequest
 --  
--- @param _InstanceId [String] <p>The instance ID. If you include this parameter, <code>DescribeElasticIps</code> returns a description of the Elastic IP addresses associated with the specified instance.</p>
--- @param _StackId [String] <p>A stack ID. If you include this parameter, <code>DescribeElasticIps</code> returns a description of the Elastic IP addresses that are registered with the specified stack.</p>
--- @param _Ips [Strings] <p>An array of Elastic IP addresses to be described. If you include this parameter, <code>DescribeElasticIps</code> returns a description of the specified Elastic IP addresses. Otherwise, it returns a description of every Elastic IP address.</p>
-function M.DescribeElasticIpsRequest(_InstanceId, _StackId, _Ips, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeElasticIpsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID. If you include this parameter, <code>DescribeElasticIps</code> returns a description of the Elastic IP addresses associated with the specified instance.</p>
+-- * StackId [String] <p>A stack ID. If you include this parameter, <code>DescribeElasticIps</code> returns a description of the Elastic IP addresses that are registered with the specified stack.</p>
+-- * Ips [Strings] <p>An array of Elastic IP addresses to be described. If you include this parameter, <code>DescribeElasticIps</code> returns a description of the specified Elastic IP addresses. Otherwise, it returns a description of every Elastic IP address.</p>
+-- @return DescribeElasticIpsRequest structure as a key-value pair table
+function M.DescribeElasticIpsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeElasticIpsRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["StackId"] = _StackId,
-		["Ips"] = _Ips,
+		["InstanceId"] = args["InstanceId"],
+		["StackId"] = args["StackId"],
+		["Ips"] = args["Ips"],
 	}
 	asserts.AssertDescribeElasticIpsRequest(t)
 	return t
@@ -3653,11 +3977,14 @@ end
 
 --- Create a structure of type CreateInstanceResult
 -- <p>Contains the response to a <code>CreateInstance</code> request.</p>
--- @param _InstanceId [String] <p>The instance ID.</p>
-function M.CreateInstanceResult(_InstanceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstanceResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- @return CreateInstanceResult structure as a key-value pair table
+function M.CreateInstanceResult(args)
+	assert(args, "You must provdide an argument table when creating CreateInstanceResult")
 	local t = { 
-		["InstanceId"] = _InstanceId,
+		["InstanceId"] = args["InstanceId"],
 	}
 	asserts.AssertCreateInstanceResult(t)
 	return t
@@ -3676,11 +4003,14 @@ end
 
 --- Create a structure of type DescribeStackSummaryResult
 -- <p>Contains the response to a <code>DescribeStackSummary</code> request.</p>
--- @param _StackSummary [StackSummary] <p>A <code>StackSummary</code> object that contains the results.</p>
-function M.DescribeStackSummaryResult(_StackSummary, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackSummaryResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackSummary [StackSummary] <p>A <code>StackSummary</code> object that contains the results.</p>
+-- @return DescribeStackSummaryResult structure as a key-value pair table
+function M.DescribeStackSummaryResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeStackSummaryResult")
 	local t = { 
-		["StackSummary"] = _StackSummary,
+		["StackSummary"] = args["StackSummary"],
 	}
 	asserts.AssertDescribeStackSummaryResult(t)
 	return t
@@ -3702,16 +4032,19 @@ end
 
 --- Create a structure of type UpdateVolumeRequest
 --  
--- @param _MountPoint [String] <p>The new mount point.</p>
--- @param _VolumeId [String] <p>The volume ID.</p>
--- @param _Name [String] <p>The new name.</p>
--- Required parameter: VolumeId
-function M.UpdateVolumeRequest(_MountPoint, _VolumeId, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateVolumeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * MountPoint [String] <p>The new mount point.</p>
+-- * VolumeId [String] <p>The volume ID.</p>
+-- * Name [String] <p>The new name.</p>
+-- Required key: VolumeId
+-- @return UpdateVolumeRequest structure as a key-value pair table
+function M.UpdateVolumeRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateVolumeRequest")
 	local t = { 
-		["MountPoint"] = _MountPoint,
-		["VolumeId"] = _VolumeId,
-		["Name"] = _Name,
+		["MountPoint"] = args["MountPoint"],
+		["VolumeId"] = args["VolumeId"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateVolumeRequest(t)
 	return t
@@ -3731,13 +4064,16 @@ end
 
 --- Create a structure of type StackConfigurationManager
 -- <p>Describes the configuration manager.</p>
--- @param _Version [String] <p>The Chef version. This parameter must be set to 12, 11.10, or 11.4 for Linux stacks, and to 12.2 for Windows stacks. The default value for Linux stacks is 11.4.</p>
--- @param _Name [String] <p>The name. This parameter must be set to "Chef".</p>
-function M.StackConfigurationManager(_Version, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating StackConfigurationManager")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [String] <p>The Chef version. This parameter must be set to 12, 11.10, or 11.4 for Linux stacks, and to 12.2 for Windows stacks. The default value for Linux stacks is 11.4.</p>
+-- * Name [String] <p>The name. This parameter must be set to "Chef".</p>
+-- @return StackConfigurationManager structure as a key-value pair table
+function M.StackConfigurationManager(args)
+	assert(args, "You must provdide an argument table when creating StackConfigurationManager")
 	local t = { 
-		["Version"] = _Version,
-		["Name"] = _Name,
+		["Version"] = args["Version"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertStackConfigurationManager(t)
 	return t
@@ -3774,47 +4110,50 @@ end
 
 --- Create a structure of type InstancesCount
 -- <p>Describes how many instances a stack has for each status.</p>
--- @param _StartFailed [Integer] <p>The number of instances with <code>start_failed</code> status.</p>
--- @param _Requested [Integer] <p>The number of instances with <code>requested</code> status.</p>
--- @param _Registering [Integer] <p>The number of instances in the Registering state.</p>
--- @param _Terminated [Integer] <p>The number of instances with <code>terminated</code> status.</p>
--- @param _RunningSetup [Integer] <p>The number of instances with <code>running_setup</code> status.</p>
--- @param _Booting [Integer] <p>The number of instances with <code>booting</code> status.</p>
--- @param _Deregistering [Integer] <p>The number of instances in the Deregistering state.</p>
--- @param _Rebooting [Integer] <p>The number of instances with <code>rebooting</code> status.</p>
--- @param _Unassigning [Integer] <p>The number of instances in the Unassigning state.</p>
--- @param _ShuttingDown [Integer] <p>The number of instances with <code>shutting_down</code> status.</p>
--- @param _SetupFailed [Integer] <p>The number of instances with <code>setup_failed</code> status.</p>
--- @param _Terminating [Integer] <p>The number of instances with <code>terminating</code> status.</p>
--- @param _ConnectionLost [Integer] <p>The number of instances with <code>connection_lost</code> status.</p>
--- @param _Online [Integer] <p>The number of instances with <code>online</code> status.</p>
--- @param _Stopping [Integer] <p>The number of instances with <code>stopping</code> status.</p>
--- @param _Stopped [Integer] <p>The number of instances with <code>stopped</code> status.</p>
--- @param _Assigning [Integer] <p>The number of instances in the Assigning state.</p>
--- @param _Registered [Integer] <p>The number of instances in the Registered state.</p>
--- @param _Pending [Integer] <p>The number of instances with <code>pending</code> status.</p>
-function M.InstancesCount(_StartFailed, _Requested, _Registering, _Terminated, _RunningSetup, _Booting, _Deregistering, _Rebooting, _Unassigning, _ShuttingDown, _SetupFailed, _Terminating, _ConnectionLost, _Online, _Stopping, _Stopped, _Assigning, _Registered, _Pending, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstancesCount")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StartFailed [Integer] <p>The number of instances with <code>start_failed</code> status.</p>
+-- * Requested [Integer] <p>The number of instances with <code>requested</code> status.</p>
+-- * Registering [Integer] <p>The number of instances in the Registering state.</p>
+-- * Terminated [Integer] <p>The number of instances with <code>terminated</code> status.</p>
+-- * RunningSetup [Integer] <p>The number of instances with <code>running_setup</code> status.</p>
+-- * Booting [Integer] <p>The number of instances with <code>booting</code> status.</p>
+-- * Deregistering [Integer] <p>The number of instances in the Deregistering state.</p>
+-- * Rebooting [Integer] <p>The number of instances with <code>rebooting</code> status.</p>
+-- * Unassigning [Integer] <p>The number of instances in the Unassigning state.</p>
+-- * ShuttingDown [Integer] <p>The number of instances with <code>shutting_down</code> status.</p>
+-- * SetupFailed [Integer] <p>The number of instances with <code>setup_failed</code> status.</p>
+-- * Terminating [Integer] <p>The number of instances with <code>terminating</code> status.</p>
+-- * ConnectionLost [Integer] <p>The number of instances with <code>connection_lost</code> status.</p>
+-- * Online [Integer] <p>The number of instances with <code>online</code> status.</p>
+-- * Stopping [Integer] <p>The number of instances with <code>stopping</code> status.</p>
+-- * Stopped [Integer] <p>The number of instances with <code>stopped</code> status.</p>
+-- * Assigning [Integer] <p>The number of instances in the Assigning state.</p>
+-- * Registered [Integer] <p>The number of instances in the Registered state.</p>
+-- * Pending [Integer] <p>The number of instances with <code>pending</code> status.</p>
+-- @return InstancesCount structure as a key-value pair table
+function M.InstancesCount(args)
+	assert(args, "You must provdide an argument table when creating InstancesCount")
 	local t = { 
-		["StartFailed"] = _StartFailed,
-		["Requested"] = _Requested,
-		["Registering"] = _Registering,
-		["Terminated"] = _Terminated,
-		["RunningSetup"] = _RunningSetup,
-		["Booting"] = _Booting,
-		["Deregistering"] = _Deregistering,
-		["Rebooting"] = _Rebooting,
-		["Unassigning"] = _Unassigning,
-		["ShuttingDown"] = _ShuttingDown,
-		["SetupFailed"] = _SetupFailed,
-		["Terminating"] = _Terminating,
-		["ConnectionLost"] = _ConnectionLost,
-		["Online"] = _Online,
-		["Stopping"] = _Stopping,
-		["Stopped"] = _Stopped,
-		["Assigning"] = _Assigning,
-		["Registered"] = _Registered,
-		["Pending"] = _Pending,
+		["StartFailed"] = args["StartFailed"],
+		["Requested"] = args["Requested"],
+		["Registering"] = args["Registering"],
+		["Terminated"] = args["Terminated"],
+		["RunningSetup"] = args["RunningSetup"],
+		["Booting"] = args["Booting"],
+		["Deregistering"] = args["Deregistering"],
+		["Rebooting"] = args["Rebooting"],
+		["Unassigning"] = args["Unassigning"],
+		["ShuttingDown"] = args["ShuttingDown"],
+		["SetupFailed"] = args["SetupFailed"],
+		["Terminating"] = args["Terminating"],
+		["ConnectionLost"] = args["ConnectionLost"],
+		["Online"] = args["Online"],
+		["Stopping"] = args["Stopping"],
+		["Stopped"] = args["Stopped"],
+		["Assigning"] = args["Assigning"],
+		["Registered"] = args["Registered"],
+		["Pending"] = args["Pending"],
 	}
 	asserts.AssertInstancesCount(t)
 	return t
@@ -3833,11 +4172,14 @@ end
 
 --- Create a structure of type DescribeCommandsResult
 -- <p>Contains the response to a <code>DescribeCommands</code> request.</p>
--- @param _Commands [Commands] <p>An array of <code>Command</code> objects that describe each of the specified commands.</p>
-function M.DescribeCommandsResult(_Commands, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeCommandsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Commands [Commands] <p>An array of <code>Command</code> objects that describe each of the specified commands.</p>
+-- @return DescribeCommandsResult structure as a key-value pair table
+function M.DescribeCommandsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeCommandsResult")
 	local t = { 
-		["Commands"] = _Commands,
+		["Commands"] = args["Commands"],
 	}
 	asserts.AssertDescribeCommandsResult(t)
 	return t
@@ -3858,15 +4200,18 @@ end
 
 --- Create a structure of type ReportedOs
 -- <p>A registered instance's reported operating system.</p>
--- @param _Version [String] <p>The operating system version.</p>
--- @param _Name [String] <p>The operating system name.</p>
--- @param _Family [String] <p>The operating system family.</p>
-function M.ReportedOs(_Version, _Name, _Family, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ReportedOs")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Version [String] <p>The operating system version.</p>
+-- * Name [String] <p>The operating system name.</p>
+-- * Family [String] <p>The operating system family.</p>
+-- @return ReportedOs structure as a key-value pair table
+function M.ReportedOs(args)
+	assert(args, "You must provdide an argument table when creating ReportedOs")
 	local t = { 
-		["Version"] = _Version,
-		["Name"] = _Name,
-		["Family"] = _Family,
+		["Version"] = args["Version"],
+		["Name"] = args["Name"],
+		["Family"] = args["Family"],
 	}
 	asserts.AssertReportedOs(t)
 	return t
@@ -3888,17 +4233,20 @@ end
 
 --- Create a structure of type TemporaryCredential
 -- <p>Contains the data needed by RDP clients such as the Microsoft Remote Desktop Connection to log in to the instance.</p>
--- @param _Username [String] <p>The user name.</p>
--- @param _InstanceId [String] <p>The instance's AWS OpsWorks Stacks ID.</p>
--- @param _Password [String] <p>The password.</p>
--- @param _ValidForInMinutes [Integer] <p>The length of time (in minutes) that the grant is valid. When the grant expires, at the end of this period, the user will no longer be able to use the credentials to log in. If they are logged in at the time, they will be automatically logged out.</p>
-function M.TemporaryCredential(_Username, _InstanceId, _Password, _ValidForInMinutes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TemporaryCredential")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Username [String] <p>The user name.</p>
+-- * InstanceId [String] <p>The instance's AWS OpsWorks Stacks ID.</p>
+-- * Password [String] <p>The password.</p>
+-- * ValidForInMinutes [Integer] <p>The length of time (in minutes) that the grant is valid. When the grant expires, at the end of this period, the user will no longer be able to use the credentials to log in. If they are logged in at the time, they will be automatically logged out.</p>
+-- @return TemporaryCredential structure as a key-value pair table
+function M.TemporaryCredential(args)
+	assert(args, "You must provdide an argument table when creating TemporaryCredential")
 	local t = { 
-		["Username"] = _Username,
-		["InstanceId"] = _InstanceId,
-		["Password"] = _Password,
-		["ValidForInMinutes"] = _ValidForInMinutes,
+		["Username"] = args["Username"],
+		["InstanceId"] = args["InstanceId"],
+		["Password"] = args["Password"],
+		["ValidForInMinutes"] = args["ValidForInMinutes"],
 	}
 	asserts.AssertTemporaryCredential(t)
 	return t
@@ -3934,44 +4282,47 @@ end
 
 --- Create a structure of type UpdateLayerRequest
 --  
--- @param _LifecycleEventConfiguration [LifecycleEventConfiguration] <p/>
--- @param _CustomRecipes [Recipes] <p>A <code>LayerCustomRecipes</code> object that specifies the layer's custom recipes.</p>
--- @param _AutoAssignElasticIps [Boolean] <p>Whether to automatically assign an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address</a> to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
--- @param _Name [String] <p>The layer name, which is used by the console.</p>
--- @param _CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] <p>Specifies CloudWatch Logs configuration options for the layer. For more information, see <a>CloudWatchLogsLogStream</a>.</p>
--- @param _CustomJson [String] <p>A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html"> Using Custom JSON</a>. </p>
--- @param _VolumeConfigurations [VolumeConfigurations] <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon EBS volumes.</p>
--- @param _AutoAssignPublicIps [Boolean] <p>For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
--- @param _EnableAutoHealing [Boolean] <p>Whether to disable auto healing for the layer.</p>
--- @param _CustomInstanceProfileArn [String] <p>The ARN of an IAM profile to be used for all of the layer's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
--- @param _UseEbsOptimizedInstances [Boolean] <p>Whether to use Amazon EBS-optimized instances.</p>
--- @param _LayerId [String] <p>The layer ID.</p>
--- @param _Attributes [LayerAttributes] <p>One or more user-defined key/value pairs to be added to the stack attributes.</p>
--- @param _Shortname [String] <p>For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\A[a-z0-9\-\_\.]+\Z/.</p> <p>The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html">Layer Reference</a> </p>
--- @param _Packages [Strings] <p>An array of <code>Package</code> objects that describe the layer's packages.</p>
--- @param _CustomSecurityGroupIds [Strings] <p>An array containing the layer's custom security group IDs.</p>
--- @param _InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
--- Required parameter: LayerId
-function M.UpdateLayerRequest(_LifecycleEventConfiguration, _CustomRecipes, _AutoAssignElasticIps, _Name, _CloudWatchLogsConfiguration, _CustomJson, _VolumeConfigurations, _AutoAssignPublicIps, _EnableAutoHealing, _CustomInstanceProfileArn, _UseEbsOptimizedInstances, _LayerId, _Attributes, _Shortname, _Packages, _CustomSecurityGroupIds, _InstallUpdatesOnBoot, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateLayerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LifecycleEventConfiguration [LifecycleEventConfiguration] <p/>
+-- * CustomRecipes [Recipes] <p>A <code>LayerCustomRecipes</code> object that specifies the layer's custom recipes.</p>
+-- * AutoAssignElasticIps [Boolean] <p>Whether to automatically assign an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address</a> to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- * Name [String] <p>The layer name, which is used by the console.</p>
+-- * CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] <p>Specifies CloudWatch Logs configuration options for the layer. For more information, see <a>CloudWatchLogsLogStream</a>.</p>
+-- * CustomJson [String] <p>A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html"> Using Custom JSON</a>. </p>
+-- * VolumeConfigurations [VolumeConfigurations] <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon EBS volumes.</p>
+-- * AutoAssignPublicIps [Boolean] <p>For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- * EnableAutoHealing [Boolean] <p>Whether to disable auto healing for the layer.</p>
+-- * CustomInstanceProfileArn [String] <p>The ARN of an IAM profile to be used for all of the layer's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- * UseEbsOptimizedInstances [Boolean] <p>Whether to use Amazon EBS-optimized instances.</p>
+-- * LayerId [String] <p>The layer ID.</p>
+-- * Attributes [LayerAttributes] <p>One or more user-defined key/value pairs to be added to the stack attributes.</p>
+-- * Shortname [String] <p>For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\A[a-z0-9\-\_\.]+\Z/.</p> <p>The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html">Layer Reference</a> </p>
+-- * Packages [Strings] <p>An array of <code>Package</code> objects that describe the layer's packages.</p>
+-- * CustomSecurityGroupIds [Strings] <p>An array containing the layer's custom security group IDs.</p>
+-- * InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
+-- Required key: LayerId
+-- @return UpdateLayerRequest structure as a key-value pair table
+function M.UpdateLayerRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateLayerRequest")
 	local t = { 
-		["LifecycleEventConfiguration"] = _LifecycleEventConfiguration,
-		["CustomRecipes"] = _CustomRecipes,
-		["AutoAssignElasticIps"] = _AutoAssignElasticIps,
-		["Name"] = _Name,
-		["CloudWatchLogsConfiguration"] = _CloudWatchLogsConfiguration,
-		["CustomJson"] = _CustomJson,
-		["VolumeConfigurations"] = _VolumeConfigurations,
-		["AutoAssignPublicIps"] = _AutoAssignPublicIps,
-		["EnableAutoHealing"] = _EnableAutoHealing,
-		["CustomInstanceProfileArn"] = _CustomInstanceProfileArn,
-		["UseEbsOptimizedInstances"] = _UseEbsOptimizedInstances,
-		["LayerId"] = _LayerId,
-		["Attributes"] = _Attributes,
-		["Shortname"] = _Shortname,
-		["Packages"] = _Packages,
-		["CustomSecurityGroupIds"] = _CustomSecurityGroupIds,
-		["InstallUpdatesOnBoot"] = _InstallUpdatesOnBoot,
+		["LifecycleEventConfiguration"] = args["LifecycleEventConfiguration"],
+		["CustomRecipes"] = args["CustomRecipes"],
+		["AutoAssignElasticIps"] = args["AutoAssignElasticIps"],
+		["Name"] = args["Name"],
+		["CloudWatchLogsConfiguration"] = args["CloudWatchLogsConfiguration"],
+		["CustomJson"] = args["CustomJson"],
+		["VolumeConfigurations"] = args["VolumeConfigurations"],
+		["AutoAssignPublicIps"] = args["AutoAssignPublicIps"],
+		["EnableAutoHealing"] = args["EnableAutoHealing"],
+		["CustomInstanceProfileArn"] = args["CustomInstanceProfileArn"],
+		["UseEbsOptimizedInstances"] = args["UseEbsOptimizedInstances"],
+		["LayerId"] = args["LayerId"],
+		["Attributes"] = args["Attributes"],
+		["Shortname"] = args["Shortname"],
+		["Packages"] = args["Packages"],
+		["CustomSecurityGroupIds"] = args["CustomSecurityGroupIds"],
+		["InstallUpdatesOnBoot"] = args["InstallUpdatesOnBoot"],
 	}
 	asserts.AssertUpdateLayerRequest(t)
 	return t
@@ -3991,12 +4342,15 @@ end
 
 --- Create a structure of type UnassignInstanceRequest
 --  
--- @param _InstanceId [String] <p>The instance ID.</p>
--- Required parameter: InstanceId
-function M.UnassignInstanceRequest(_InstanceId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnassignInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- Required key: InstanceId
+-- @return UnassignInstanceRequest structure as a key-value pair table
+function M.UnassignInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating UnassignInstanceRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
+		["InstanceId"] = args["InstanceId"],
 	}
 	asserts.AssertUnassignInstanceRequest(t)
 	return t
@@ -4015,11 +4369,14 @@ end
 
 --- Create a structure of type CreateLayerResult
 -- <p>Contains the response to a <code>CreateLayer</code> request.</p>
--- @param _LayerId [String] <p>The layer ID.</p>
-function M.CreateLayerResult(_LayerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLayerResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LayerId [String] <p>The layer ID.</p>
+-- @return CreateLayerResult structure as a key-value pair table
+function M.CreateLayerResult(args)
+	assert(args, "You must provdide an argument table when creating CreateLayerResult")
 	local t = { 
-		["LayerId"] = _LayerId,
+		["LayerId"] = args["LayerId"],
 	}
 	asserts.AssertCreateLayerResult(t)
 	return t
@@ -4039,13 +4396,16 @@ end
 
 --- Create a structure of type CloudWatchLogsConfiguration
 -- <p>Describes the Amazon CloudWatch logs configuration for a layer.</p>
--- @param _LogStreams [CloudWatchLogsLogStreams] <p>A list of configuration options for CloudWatch Logs.</p>
--- @param _Enabled [Boolean] <p>Whether CloudWatch Logs is enabled for a layer.</p>
-function M.CloudWatchLogsConfiguration(_LogStreams, _Enabled, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchLogsConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LogStreams [CloudWatchLogsLogStreams] <p>A list of configuration options for CloudWatch Logs.</p>
+-- * Enabled [Boolean] <p>Whether CloudWatch Logs is enabled for a layer.</p>
+-- @return CloudWatchLogsConfiguration structure as a key-value pair table
+function M.CloudWatchLogsConfiguration(args)
+	assert(args, "You must provdide an argument table when creating CloudWatchLogsConfiguration")
 	local t = { 
-		["LogStreams"] = _LogStreams,
-		["Enabled"] = _Enabled,
+		["LogStreams"] = args["LogStreams"],
+		["Enabled"] = args["Enabled"],
 	}
 	asserts.AssertCloudWatchLogsConfiguration(t)
 	return t
@@ -4066,14 +4426,17 @@ end
 
 --- Create a structure of type GrantAccessRequest
 --  
--- @param _InstanceId [String] <p>The instance's AWS OpsWorks Stacks ID.</p>
--- @param _ValidForInMinutes [ValidForInMinutes] <p>The length of time (in minutes) that the grant is valid. When the grant expires at the end of this period, the user will no longer be able to use the credentials to log in. If the user is logged in at the time, he or she automatically will be logged out.</p>
--- Required parameter: InstanceId
-function M.GrantAccessRequest(_InstanceId, _ValidForInMinutes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GrantAccessRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance's AWS OpsWorks Stacks ID.</p>
+-- * ValidForInMinutes [ValidForInMinutes] <p>The length of time (in minutes) that the grant is valid. When the grant expires at the end of this period, the user will no longer be able to use the credentials to log in. If the user is logged in at the time, he or she automatically will be logged out.</p>
+-- Required key: InstanceId
+-- @return GrantAccessRequest structure as a key-value pair table
+function M.GrantAccessRequest(args)
+	assert(args, "You must provdide an argument table when creating GrantAccessRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["ValidForInMinutes"] = _ValidForInMinutes,
+		["InstanceId"] = args["InstanceId"],
+		["ValidForInMinutes"] = args["ValidForInMinutes"],
 	}
 	asserts.AssertGrantAccessRequest(t)
 	return t
@@ -4092,11 +4455,14 @@ end
 
 --- Create a structure of type RegisterVolumeResult
 -- <p>Contains the response to a <code>RegisterVolume</code> request.</p>
--- @param _VolumeId [String] <p>The volume ID.</p>
-function M.RegisterVolumeResult(_VolumeId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterVolumeResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeId [String] <p>The volume ID.</p>
+-- @return RegisterVolumeResult structure as a key-value pair table
+function M.RegisterVolumeResult(args)
+	assert(args, "You must provdide an argument table when creating RegisterVolumeResult")
 	local t = { 
-		["VolumeId"] = _VolumeId,
+		["VolumeId"] = args["VolumeId"],
 	}
 	asserts.AssertRegisterVolumeResult(t)
 	return t
@@ -4127,35 +4493,38 @@ end
 
 --- Create a structure of type Volume
 -- <p>Describes an instance's Amazon EBS volume.</p>
--- @param _Status [String] <p>The value returned by <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html">DescribeVolumes</a>.</p>
--- @param _AvailabilityZone [String] <p>The volume Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
--- @param _Name [String] <p>The volume name.</p>
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _Region [String] <p>The AWS region. For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
--- @param _VolumeType [String] <p>The volume type, standard or PIOPS.</p>
--- @param _VolumeId [String] <p>The volume ID.</p>
--- @param _Device [String] <p>The device name.</p>
--- @param _RaidArrayId [String] <p>The RAID array ID.</p>
--- @param _Ec2VolumeId [String] <p>The Amazon EC2 volume ID.</p>
--- @param _MountPoint [String] <p>The volume mount point. For example, "/mnt/disk1".</p>
--- @param _Iops [Integer] <p>For PIOPS volumes, the IOPS per disk.</p>
--- @param _Size [Integer] <p>The volume size.</p>
-function M.Volume(_Status, _AvailabilityZone, _Name, _InstanceId, _Region, _VolumeType, _VolumeId, _Device, _RaidArrayId, _Ec2VolumeId, _MountPoint, _Iops, _Size, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Volume")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [String] <p>The value returned by <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html">DescribeVolumes</a>.</p>
+-- * AvailabilityZone [String] <p>The volume Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- * Name [String] <p>The volume name.</p>
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * Region [String] <p>The AWS region. For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- * VolumeType [String] <p>The volume type, standard or PIOPS.</p>
+-- * VolumeId [String] <p>The volume ID.</p>
+-- * Device [String] <p>The device name.</p>
+-- * RaidArrayId [String] <p>The RAID array ID.</p>
+-- * Ec2VolumeId [String] <p>The Amazon EC2 volume ID.</p>
+-- * MountPoint [String] <p>The volume mount point. For example, "/mnt/disk1".</p>
+-- * Iops [Integer] <p>For PIOPS volumes, the IOPS per disk.</p>
+-- * Size [Integer] <p>The volume size.</p>
+-- @return Volume structure as a key-value pair table
+function M.Volume(args)
+	assert(args, "You must provdide an argument table when creating Volume")
 	local t = { 
-		["Status"] = _Status,
-		["AvailabilityZone"] = _AvailabilityZone,
-		["Name"] = _Name,
-		["InstanceId"] = _InstanceId,
-		["Region"] = _Region,
-		["VolumeType"] = _VolumeType,
-		["VolumeId"] = _VolumeId,
-		["Device"] = _Device,
-		["RaidArrayId"] = _RaidArrayId,
-		["Ec2VolumeId"] = _Ec2VolumeId,
-		["MountPoint"] = _MountPoint,
-		["Iops"] = _Iops,
-		["Size"] = _Size,
+		["Status"] = args["Status"],
+		["AvailabilityZone"] = args["AvailabilityZone"],
+		["Name"] = args["Name"],
+		["InstanceId"] = args["InstanceId"],
+		["Region"] = args["Region"],
+		["VolumeType"] = args["VolumeType"],
+		["VolumeId"] = args["VolumeId"],
+		["Device"] = args["Device"],
+		["RaidArrayId"] = args["RaidArrayId"],
+		["Ec2VolumeId"] = args["Ec2VolumeId"],
+		["MountPoint"] = args["MountPoint"],
+		["Iops"] = args["Iops"],
+		["Size"] = args["Size"],
 	}
 	asserts.AssertVolume(t)
 	return t
@@ -4175,12 +4544,15 @@ end
 
 --- Create a structure of type DeleteAppRequest
 --  
--- @param _AppId [String] <p>The app ID.</p>
--- Required parameter: AppId
-function M.DeleteAppRequest(_AppId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAppRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AppId [String] <p>The app ID.</p>
+-- Required key: AppId
+-- @return DeleteAppRequest structure as a key-value pair table
+function M.DeleteAppRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAppRequest")
 	local t = { 
-		["AppId"] = _AppId,
+		["AppId"] = args["AppId"],
 	}
 	asserts.AssertDeleteAppRequest(t)
 	return t
@@ -4199,11 +4571,14 @@ end
 
 --- Create a structure of type GrantAccessResult
 -- <p>Contains the response to a <code>GrantAccess</code> request.</p>
--- @param _TemporaryCredential [TemporaryCredential] <p>A <code>TemporaryCredential</code> object that contains the data needed to log in to the instance by RDP clients, such as the Microsoft Remote Desktop Connection.</p>
-function M.GrantAccessResult(_TemporaryCredential, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GrantAccessResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TemporaryCredential [TemporaryCredential] <p>A <code>TemporaryCredential</code> object that contains the data needed to log in to the instance by RDP clients, such as the Microsoft Remote Desktop Connection.</p>
+-- @return GrantAccessResult structure as a key-value pair table
+function M.GrantAccessResult(args)
+	assert(args, "You must provdide an argument table when creating GrantAccessResult")
 	local t = { 
-		["TemporaryCredential"] = _TemporaryCredential,
+		["TemporaryCredential"] = args["TemporaryCredential"],
 	}
 	asserts.AssertGrantAccessResult(t)
 	return t
@@ -4234,34 +4609,37 @@ end
 
 --- Create a structure of type UpdateInstanceRequest
 --  
--- @param _AmiId [String] <p>The ID of the AMI that was used to create the instance. The value of this parameter must be the same AMI ID that the instance is already using. You cannot apply a new AMI to an instance by running UpdateInstance. UpdateInstance does not work on instances that are using custom AMIs. </p>
--- @param _LayerIds [Strings] <p>The instance's layer IDs.</p>
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _SshKeyName [String] <p>The instance's Amazon EC2 key name.</p>
--- @param _Hostname [String] <p>The instance host name.</p>
--- @param _EbsOptimized [Boolean] <p>This property cannot be updated.</p>
--- @param _Architecture [Architecture] <p>The instance architecture. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.</p>
--- @param _AutoScalingType [AutoScalingType] <p>For load-based or time-based instances, the type. Windows stacks can use only time-based instances.</p>
--- @param _InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
--- @param _Os [String] <p>The instance's operating system, which must be set to one of the following. You cannot update an instance that is using a custom AMI.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> </ul> <p>For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you must use the AmiId parameter to specify the custom AMI that you want to use. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For more information on how to use custom AMIs with OpsWorks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> <note> <p>You can specify a different Linux operating system for the updated stack, but you cannot change from Linux to Windows or Windows to Linux.</p> </note>
--- @param _InstanceType [String] <p>The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack in the console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the currently supported types. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>. The parameter values that you use to specify the various types are in the <b>API Name</b> column of the <b>Available Instance Types</b> table.</p>
--- @param _AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting. To update the agent version, you must edit the instance configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the instance.</p> </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>.</p> <p>AgentVersion cannot be set to Chef 12.2.</p>
--- Required parameter: InstanceId
-function M.UpdateInstanceRequest(_AmiId, _LayerIds, _InstanceId, _SshKeyName, _Hostname, _EbsOptimized, _Architecture, _AutoScalingType, _InstallUpdatesOnBoot, _Os, _InstanceType, _AgentVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AmiId [String] <p>The ID of the AMI that was used to create the instance. The value of this parameter must be the same AMI ID that the instance is already using. You cannot apply a new AMI to an instance by running UpdateInstance. UpdateInstance does not work on instances that are using custom AMIs. </p>
+-- * LayerIds [Strings] <p>The instance's layer IDs.</p>
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * SshKeyName [String] <p>The instance's Amazon EC2 key name.</p>
+-- * Hostname [String] <p>The instance host name.</p>
+-- * EbsOptimized [Boolean] <p>This property cannot be updated.</p>
+-- * Architecture [Architecture] <p>The instance architecture. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>.</p>
+-- * AutoScalingType [AutoScalingType] <p>For load-based or time-based instances, the type. Windows stacks can use only time-based instances.</p>
+-- * InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>We strongly recommend using the default value of <code>true</code>, to ensure that your instances have the latest security updates.</p> </note>
+-- * Os [String] <p>The instance's operating system, which must be set to one of the following. You cannot update an instance that is using a custom AMI.</p> <ul> <li> <p>A supported Linux operating system: An Amazon Linux version, such as <code>Amazon Linux 2017.03</code>, <code>Amazon Linux 2016.09</code>, <code>Amazon Linux 2016.03</code>, <code>Amazon Linux 2015.09</code>, or <code>Amazon Linux 2015.03</code>.</p> </li> <li> <p>A supported Ubuntu operating system, such as <code>Ubuntu 16.04 LTS</code>, <code>Ubuntu 14.04 LTS</code>, or <code>Ubuntu 12.04 LTS</code>.</p> </li> <li> <p> <code>CentOS Linux 7</code> </p> </li> <li> <p> <code>Red Hat Enterprise Linux 7</code> </p> </li> <li> <p>A supported Windows operating system, such as <code>Microsoft Windows Server 2012 R2 Base</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Express</code>, <code>Microsoft Windows Server 2012 R2 with SQL Server Standard</code>, or <code>Microsoft Windows Server 2012 R2 with SQL Server Web</code>.</p> </li> </ul> <p>For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">AWS OpsWorks Stacks Operating Systems</a>.</p> <p>The default option is the current Amazon Linux version. If you set this parameter to <code>Custom</code>, you must use the AmiId parameter to specify the custom AMI that you want to use. For more information on the supported operating systems, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-os.html">Operating Systems</a>. For more information on how to use custom AMIs with OpsWorks, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html">Using Custom AMIs</a>.</p> <note> <p>You can specify a different Linux operating system for the updated stack, but you cannot change from Linux to Windows or Windows to Linux.</p> </note>
+-- * InstanceType [String] <p>The instance type, such as <code>t2.micro</code>. For a list of supported instance types, open the stack in the console, choose <b>Instances</b>, and choose <b>+ Instance</b>. The <b>Size</b> list contains the currently supported types. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">Instance Families and Types</a>. The parameter values that you use to specify the various types are in the <b>API Name</b> column of the <b>Available Instance Types</b> table.</p>
+-- * AgentVersion [String] <p>The default AWS OpsWorks Stacks agent version. You have the following options:</p> <ul> <li> <p> <code>INHERIT</code> - Use the stack's default agent version setting.</p> </li> <li> <p> <i>version_number</i> - Use the specified agent version. This value overrides the stack's default setting. To update the agent version, you must edit the instance configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the instance.</p> </li> </ul> <p>The default setting is <code>INHERIT</code>. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call <a>DescribeAgentVersions</a>.</p> <p>AgentVersion cannot be set to Chef 12.2.</p>
+-- Required key: InstanceId
+-- @return UpdateInstanceRequest structure as a key-value pair table
+function M.UpdateInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateInstanceRequest")
 	local t = { 
-		["AmiId"] = _AmiId,
-		["LayerIds"] = _LayerIds,
-		["InstanceId"] = _InstanceId,
-		["SshKeyName"] = _SshKeyName,
-		["Hostname"] = _Hostname,
-		["EbsOptimized"] = _EbsOptimized,
-		["Architecture"] = _Architecture,
-		["AutoScalingType"] = _AutoScalingType,
-		["InstallUpdatesOnBoot"] = _InstallUpdatesOnBoot,
-		["Os"] = _Os,
-		["InstanceType"] = _InstanceType,
-		["AgentVersion"] = _AgentVersion,
+		["AmiId"] = args["AmiId"],
+		["LayerIds"] = args["LayerIds"],
+		["InstanceId"] = args["InstanceId"],
+		["SshKeyName"] = args["SshKeyName"],
+		["Hostname"] = args["Hostname"],
+		["EbsOptimized"] = args["EbsOptimized"],
+		["Architecture"] = args["Architecture"],
+		["AutoScalingType"] = args["AutoScalingType"],
+		["InstallUpdatesOnBoot"] = args["InstallUpdatesOnBoot"],
+		["Os"] = args["Os"],
+		["InstanceType"] = args["InstanceType"],
+		["AgentVersion"] = args["AgentVersion"],
 	}
 	asserts.AssertUpdateInstanceRequest(t)
 	return t
@@ -4291,33 +4669,36 @@ end
 
 --- Create a structure of type Deployment
 -- <p>Describes a deployment of a stack or app.</p>
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _Comment [String] <p>A user-defined comment.</p>
--- @param _CompletedAt [DateTime] <p>Date when the deployment completed.</p>
--- @param _CustomJson [String] <p>A string that contains user-defined custom JSON. It can be used to override the corresponding default stack configuration attribute values for stack or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
--- @param _Status [String] <p>The deployment status:</p> <ul> <li> <p>running</p> </li> <li> <p>successful</p> </li> <li> <p>failed</p> </li> </ul>
--- @param _IamUserArn [String] <p>The user's IAM ARN.</p>
--- @param _DeploymentId [String] <p>The deployment ID.</p>
--- @param _Command [DeploymentCommand] 
--- @param _InstanceIds [Strings] <p>The IDs of the target instances.</p>
--- @param _AppId [String] <p>The app ID.</p>
--- @param _Duration [Integer] <p>The deployment duration.</p>
--- @param _CreatedAt [DateTime] <p>Date when the deployment was created.</p>
-function M.Deployment(_StackId, _Comment, _CompletedAt, _CustomJson, _Status, _IamUserArn, _DeploymentId, _Command, _InstanceIds, _AppId, _Duration, _CreatedAt, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Deployment")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * Comment [String] <p>A user-defined comment.</p>
+-- * CompletedAt [DateTime] <p>Date when the deployment completed.</p>
+-- * CustomJson [String] <p>A string that contains user-defined custom JSON. It can be used to override the corresponding default stack configuration attribute values for stack or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
+-- * Status [String] <p>The deployment status:</p> <ul> <li> <p>running</p> </li> <li> <p>successful</p> </li> <li> <p>failed</p> </li> </ul>
+-- * IamUserArn [String] <p>The user's IAM ARN.</p>
+-- * DeploymentId [String] <p>The deployment ID.</p>
+-- * Command [DeploymentCommand] 
+-- * InstanceIds [Strings] <p>The IDs of the target instances.</p>
+-- * AppId [String] <p>The app ID.</p>
+-- * Duration [Integer] <p>The deployment duration.</p>
+-- * CreatedAt [DateTime] <p>Date when the deployment was created.</p>
+-- @return Deployment structure as a key-value pair table
+function M.Deployment(args)
+	assert(args, "You must provdide an argument table when creating Deployment")
 	local t = { 
-		["StackId"] = _StackId,
-		["Comment"] = _Comment,
-		["CompletedAt"] = _CompletedAt,
-		["CustomJson"] = _CustomJson,
-		["Status"] = _Status,
-		["IamUserArn"] = _IamUserArn,
-		["DeploymentId"] = _DeploymentId,
-		["Command"] = _Command,
-		["InstanceIds"] = _InstanceIds,
-		["AppId"] = _AppId,
-		["Duration"] = _Duration,
-		["CreatedAt"] = _CreatedAt,
+		["StackId"] = args["StackId"],
+		["Comment"] = args["Comment"],
+		["CompletedAt"] = args["CompletedAt"],
+		["CustomJson"] = args["CustomJson"],
+		["Status"] = args["Status"],
+		["IamUserArn"] = args["IamUserArn"],
+		["DeploymentId"] = args["DeploymentId"],
+		["Command"] = args["Command"],
+		["InstanceIds"] = args["InstanceIds"],
+		["AppId"] = args["AppId"],
+		["Duration"] = args["Duration"],
+		["CreatedAt"] = args["CreatedAt"],
 	}
 	asserts.AssertDeployment(t)
 	return t
@@ -4336,11 +4717,14 @@ end
 
 --- Create a structure of type DescribeLayersResult
 -- <p>Contains the response to a <code>DescribeLayers</code> request.</p>
--- @param _Layers [Layers] <p>An array of <code>Layer</code> objects that describe the layers.</p>
-function M.DescribeLayersResult(_Layers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLayersResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Layers [Layers] <p>An array of <code>Layer</code> objects that describe the layers.</p>
+-- @return DescribeLayersResult structure as a key-value pair table
+function M.DescribeLayersResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeLayersResult")
 	local t = { 
-		["Layers"] = _Layers,
+		["Layers"] = args["Layers"],
 	}
 	asserts.AssertDescribeLayersResult(t)
 	return t
@@ -4360,12 +4744,15 @@ end
 
 --- Create a structure of type DeregisterEcsClusterRequest
 --  
--- @param _EcsClusterArn [String] <p>The cluster's ARN.</p>
--- Required parameter: EcsClusterArn
-function M.DeregisterEcsClusterRequest(_EcsClusterArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterEcsClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EcsClusterArn [String] <p>The cluster's ARN.</p>
+-- Required key: EcsClusterArn
+-- @return DeregisterEcsClusterRequest structure as a key-value pair table
+function M.DeregisterEcsClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterEcsClusterRequest")
 	local t = { 
-		["EcsClusterArn"] = _EcsClusterArn,
+		["EcsClusterArn"] = args["EcsClusterArn"],
 	}
 	asserts.AssertDeregisterEcsClusterRequest(t)
 	return t
@@ -4385,13 +4772,16 @@ end
 
 --- Create a structure of type DescribeStackProvisioningParametersResult
 -- <p>Contains the response to a <code>DescribeStackProvisioningParameters</code> request.</p>
--- @param _AgentInstallerUrl [String] <p>The AWS OpsWorks Stacks agent installer's URL.</p>
--- @param _Parameters [Parameters] <p>An embedded object that contains the provisioning parameters.</p>
-function M.DescribeStackProvisioningParametersResult(_AgentInstallerUrl, _Parameters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeStackProvisioningParametersResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AgentInstallerUrl [String] <p>The AWS OpsWorks Stacks agent installer's URL.</p>
+-- * Parameters [Parameters] <p>An embedded object that contains the provisioning parameters.</p>
+-- @return DescribeStackProvisioningParametersResult structure as a key-value pair table
+function M.DescribeStackProvisioningParametersResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeStackProvisioningParametersResult")
 	local t = { 
-		["AgentInstallerUrl"] = _AgentInstallerUrl,
-		["Parameters"] = _Parameters,
+		["AgentInstallerUrl"] = args["AgentInstallerUrl"],
+		["Parameters"] = args["Parameters"],
 	}
 	asserts.AssertDescribeStackProvisioningParametersResult(t)
 	return t
@@ -4431,53 +4821,56 @@ end
 
 --- Create a structure of type Stack
 -- <p>Describes a stack.</p>
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _HostnameTheme [String] <p>The stack host name theme, with spaces replaced by underscores.</p>
--- @param _UseCustomCookbooks [Boolean] <p>Whether the stack uses custom cookbooks.</p>
--- @param _DefaultSshKeyName [String] <p>A default Amazon EC2 key pair for the stack's instances. You can override this value when you create or update an instance.</p>
--- @param _ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
--- @param _UseOpsworksSecurityGroups [Boolean] <p>Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p>
--- @param _ServiceRoleArn [String] <p>The stack AWS Identity and Access Management (IAM) role.</p>
--- @param _VpcId [String] <p>The VPC ID; applicable only if the stack is running in a VPC.</p>
--- @param _ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
--- @param _CustomCookbooksSource [Source] 
--- @param _AgentVersion [String] <p>The agent version. This parameter is set to <code>LATEST</code> for auto-update. or a version number for a fixed agent version.</p>
--- @param _DefaultAvailabilityZone [String] <p>The stack's default Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
--- @param _CreatedAt [DateTime] <p>The date when the stack was created.</p>
--- @param _Name [String] <p>The stack name.</p>
--- @param _Region [String] <p>The stack AWS region, such as "ap-northeast-2". For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
--- @param _DefaultInstanceProfileArn [String] <p>The ARN of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
--- @param _Attributes [StackAttributes] <p>The stack's attributes.</p>
--- @param _DefaultOs [String] <p>The stack's default operating system.</p>
--- @param _DefaultSubnetId [String] <p>The default subnet ID; applicable only if the stack is running in a VPC.</p>
--- @param _DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is used by default for all instances in the stack, but you can override it when you create an instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
--- @param _CustomJson [String] <p>A JSON object that contains user-defined attributes to be added to the stack configuration and deployment attributes. You can use custom JSON to override the corresponding default stack configuration attribute values or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
--- @param _Arn [String] <p>The stack's ARN.</p>
-function M.Stack(_StackId, _HostnameTheme, _UseCustomCookbooks, _DefaultSshKeyName, _ChefConfiguration, _UseOpsworksSecurityGroups, _ServiceRoleArn, _VpcId, _ConfigurationManager, _CustomCookbooksSource, _AgentVersion, _DefaultAvailabilityZone, _CreatedAt, _Name, _Region, _DefaultInstanceProfileArn, _Attributes, _DefaultOs, _DefaultSubnetId, _DefaultRootDeviceType, _CustomJson, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Stack")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * HostnameTheme [String] <p>The stack host name theme, with spaces replaced by underscores.</p>
+-- * UseCustomCookbooks [Boolean] <p>Whether the stack uses custom cookbooks.</p>
+-- * DefaultSshKeyName [String] <p>A default Amazon EC2 key pair for the stack's instances. You can override this value when you create or update an instance.</p>
+-- * ChefConfiguration [ChefConfiguration] <p>A <code>ChefConfiguration</code> object that specifies whether to enable Berkshelf and the Berkshelf version. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html">Create a New Stack</a>.</p>
+-- * UseOpsworksSecurityGroups [Boolean] <p>Whether the stack automatically associates the AWS OpsWorks Stacks built-in security groups with the stack's layers.</p>
+-- * ServiceRoleArn [String] <p>The stack AWS Identity and Access Management (IAM) role.</p>
+-- * VpcId [String] <p>The VPC ID; applicable only if the stack is running in a VPC.</p>
+-- * ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
+-- * CustomCookbooksSource [Source] 
+-- * AgentVersion [String] <p>The agent version. This parameter is set to <code>LATEST</code> for auto-update. or a version number for a fixed agent version.</p>
+-- * DefaultAvailabilityZone [String] <p>The stack's default Availability Zone. For more information, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- * CreatedAt [DateTime] <p>The date when the stack was created.</p>
+-- * Name [String] <p>The stack name.</p>
+-- * Region [String] <p>The stack AWS region, such as "ap-northeast-2". For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a>.</p>
+-- * DefaultInstanceProfileArn [String] <p>The ARN of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- * Attributes [StackAttributes] <p>The stack's attributes.</p>
+-- * DefaultOs [String] <p>The stack's default operating system.</p>
+-- * DefaultSubnetId [String] <p>The default subnet ID; applicable only if the stack is running in a VPC.</p>
+-- * DefaultRootDeviceType [RootDeviceType] <p>The default root device type. This value is used by default for all instances in the stack, but you can override it when you create an instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">Storage for the Root Device</a>.</p>
+-- * CustomJson [String] <p>A JSON object that contains user-defined attributes to be added to the stack configuration and deployment attributes. You can use custom JSON to override the corresponding default stack configuration attribute values or to pass data to recipes. The string should be in the following format:</p> <p> <code>"{\"key1\": \"value1\", \"key2\": \"value2\",...}"</code> </p> <p>For more information on custom JSON, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html">Use Custom JSON to Modify the Stack Configuration Attributes</a>.</p>
+-- * Arn [String] <p>The stack's ARN.</p>
+-- @return Stack structure as a key-value pair table
+function M.Stack(args)
+	assert(args, "You must provdide an argument table when creating Stack")
 	local t = { 
-		["StackId"] = _StackId,
-		["HostnameTheme"] = _HostnameTheme,
-		["UseCustomCookbooks"] = _UseCustomCookbooks,
-		["DefaultSshKeyName"] = _DefaultSshKeyName,
-		["ChefConfiguration"] = _ChefConfiguration,
-		["UseOpsworksSecurityGroups"] = _UseOpsworksSecurityGroups,
-		["ServiceRoleArn"] = _ServiceRoleArn,
-		["VpcId"] = _VpcId,
-		["ConfigurationManager"] = _ConfigurationManager,
-		["CustomCookbooksSource"] = _CustomCookbooksSource,
-		["AgentVersion"] = _AgentVersion,
-		["DefaultAvailabilityZone"] = _DefaultAvailabilityZone,
-		["CreatedAt"] = _CreatedAt,
-		["Name"] = _Name,
-		["Region"] = _Region,
-		["DefaultInstanceProfileArn"] = _DefaultInstanceProfileArn,
-		["Attributes"] = _Attributes,
-		["DefaultOs"] = _DefaultOs,
-		["DefaultSubnetId"] = _DefaultSubnetId,
-		["DefaultRootDeviceType"] = _DefaultRootDeviceType,
-		["CustomJson"] = _CustomJson,
-		["Arn"] = _Arn,
+		["StackId"] = args["StackId"],
+		["HostnameTheme"] = args["HostnameTheme"],
+		["UseCustomCookbooks"] = args["UseCustomCookbooks"],
+		["DefaultSshKeyName"] = args["DefaultSshKeyName"],
+		["ChefConfiguration"] = args["ChefConfiguration"],
+		["UseOpsworksSecurityGroups"] = args["UseOpsworksSecurityGroups"],
+		["ServiceRoleArn"] = args["ServiceRoleArn"],
+		["VpcId"] = args["VpcId"],
+		["ConfigurationManager"] = args["ConfigurationManager"],
+		["CustomCookbooksSource"] = args["CustomCookbooksSource"],
+		["AgentVersion"] = args["AgentVersion"],
+		["DefaultAvailabilityZone"] = args["DefaultAvailabilityZone"],
+		["CreatedAt"] = args["CreatedAt"],
+		["Name"] = args["Name"],
+		["Region"] = args["Region"],
+		["DefaultInstanceProfileArn"] = args["DefaultInstanceProfileArn"],
+		["Attributes"] = args["Attributes"],
+		["DefaultOs"] = args["DefaultOs"],
+		["DefaultSubnetId"] = args["DefaultSubnetId"],
+		["DefaultRootDeviceType"] = args["DefaultRootDeviceType"],
+		["CustomJson"] = args["CustomJson"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertStack(t)
 	return t
@@ -4498,14 +4891,17 @@ end
 
 --- Create a structure of type RegisterVolumeRequest
 --  
--- @param _Ec2VolumeId [String] <p>The Amazon EBS volume ID.</p>
--- @param _StackId [String] <p>The stack ID.</p>
--- Required parameter: StackId
-function M.RegisterVolumeRequest(_Ec2VolumeId, _StackId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterVolumeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Ec2VolumeId [String] <p>The Amazon EBS volume ID.</p>
+-- * StackId [String] <p>The stack ID.</p>
+-- Required key: StackId
+-- @return RegisterVolumeRequest structure as a key-value pair table
+function M.RegisterVolumeRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterVolumeRequest")
 	local t = { 
-		["Ec2VolumeId"] = _Ec2VolumeId,
-		["StackId"] = _StackId,
+		["Ec2VolumeId"] = args["Ec2VolumeId"],
+		["StackId"] = args["StackId"],
 	}
 	asserts.AssertRegisterVolumeRequest(t)
 	return t
@@ -4524,11 +4920,14 @@ end
 
 --- Create a structure of type RegisterElasticIpResult
 -- <p>Contains the response to a <code>RegisterElasticIp</code> request.</p>
--- @param _ElasticIp [String] <p>The Elastic IP address.</p>
-function M.RegisterElasticIpResult(_ElasticIp, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterElasticIpResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ElasticIp [String] <p>The Elastic IP address.</p>
+-- @return RegisterElasticIpResult structure as a key-value pair table
+function M.RegisterElasticIpResult(args)
+	assert(args, "You must provdide an argument table when creating RegisterElasticIpResult")
 	local t = { 
-		["ElasticIp"] = _ElasticIp,
+		["ElasticIp"] = args["ElasticIp"],
 	}
 	asserts.AssertRegisterElasticIpResult(t)
 	return t
@@ -4548,12 +4947,15 @@ end
 
 --- Create a structure of type DescribeLoadBasedAutoScalingRequest
 --  
--- @param _LayerIds [Strings] <p>An array of layer IDs.</p>
--- Required parameter: LayerIds
-function M.DescribeLoadBasedAutoScalingRequest(_LayerIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLoadBasedAutoScalingRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LayerIds [Strings] <p>An array of layer IDs.</p>
+-- Required key: LayerIds
+-- @return DescribeLoadBasedAutoScalingRequest structure as a key-value pair table
+function M.DescribeLoadBasedAutoScalingRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeLoadBasedAutoScalingRequest")
 	local t = { 
-		["LayerIds"] = _LayerIds,
+		["LayerIds"] = args["LayerIds"],
 	}
 	asserts.AssertDescribeLoadBasedAutoScalingRequest(t)
 	return t
@@ -4572,11 +4974,14 @@ end
 
 --- Create a structure of type LifecycleEventConfiguration
 -- <p>Specifies the lifecycle event configuration</p>
--- @param _Shutdown [ShutdownEventConfiguration] <p>A <code>ShutdownEventConfiguration</code> object that specifies the Shutdown event configuration.</p>
-function M.LifecycleEventConfiguration(_Shutdown, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LifecycleEventConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Shutdown [ShutdownEventConfiguration] <p>A <code>ShutdownEventConfiguration</code> object that specifies the Shutdown event configuration.</p>
+-- @return LifecycleEventConfiguration structure as a key-value pair table
+function M.LifecycleEventConfiguration(args)
+	assert(args, "You must provdide an argument table when creating LifecycleEventConfiguration")
 	local t = { 
-		["Shutdown"] = _Shutdown,
+		["Shutdown"] = args["Shutdown"],
 	}
 	asserts.AssertLifecycleEventConfiguration(t)
 	return t
@@ -4605,31 +5010,34 @@ end
 
 --- Create a structure of type CloudWatchLogsLogStream
 -- <p>Describes the Amazon CloudWatch logs configuration for a layer. For detailed information about members of this data type, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html">CloudWatch Logs Agent Reference</a>.</p>
--- @param _InitialPosition [CloudWatchLogsInitialPosition] <p>Specifies where to start to read data (start_of_file or end_of_file). The default is start_of_file. This setting is only used if there is no state persisted for that log stream.</p>
--- @param _Encoding [CloudWatchLogsEncoding] <p>Specifies the encoding of the log file so that the file can be read correctly. The default is <code>utf_8</code>. Encodings supported by Python <code>codecs.decode()</code> can be used here.</p>
--- @param _BatchSize [Integer] <p>Specifies the maximum size of log events in a batch, in bytes, up to 1048576 bytes. The default value is 32768 bytes. This size is calculated as the sum of all event messages in UTF-8, plus 26 bytes for each log event.</p>
--- @param _BufferDuration [Integer] <p>Specifies the time duration for the batching of log events. The minimum value is 5000ms and default value is 5000ms.</p>
--- @param _MultiLineStartPattern [String] <p>Specifies the pattern for identifying the start of a log message.</p>
--- @param _LogGroupName [String] <p>Specifies the destination log group. A log group is created automatically if it doesn't already exist. Log group names can be between 1 and 512 characters long. Allowed characters include a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), and '.' (period).</p>
--- @param _File [String] <p>Specifies log files that you want to push to CloudWatch Logs.</p> <p> <code>File</code> can point to a specific file or multiple files (by using wild card characters such as <code>/var/log/system.log*</code>). Only the latest file is pushed to CloudWatch Logs, based on file modification time. We recommend that you use wild card characters to specify a series of files of the same type, such as <code>access_log.2014-06-01-01</code>, <code>access_log.2014-06-01-02</code>, and so on by using a pattern like <code>access_log.*</code>. Don't use a wildcard to match multiple file types, such as <code>access_log_80</code> and <code>access_log_443</code>. To specify multiple, different file types, add another log stream entry to the configuration file, so that each log file type is stored in a different log group.</p> <p>Zipped files are not supported.</p>
--- @param _BatchCount [Integer] <p>Specifies the max number of log events in a batch, up to 10000. The default value is 1000.</p>
--- @param _DatetimeFormat [String] <p>Specifies how the time stamp is extracted from logs. For more information, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html">CloudWatch Logs Agent Reference</a>.</p>
--- @param _TimeZone [CloudWatchLogsTimeZone] <p>Specifies the time zone of log event time stamps.</p>
--- @param _FileFingerprintLines [String] <p>Specifies the range of lines for identifying a file. The valid values are one number, or two dash-delimited numbers, such as '1', '2-5'. The default value is '1', meaning the first line is used to calculate the fingerprint. Fingerprint lines are not sent to CloudWatch Logs unless all specified lines are available.</p>
-function M.CloudWatchLogsLogStream(_InitialPosition, _Encoding, _BatchSize, _BufferDuration, _MultiLineStartPattern, _LogGroupName, _File, _BatchCount, _DatetimeFormat, _TimeZone, _FileFingerprintLines, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CloudWatchLogsLogStream")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InitialPosition [CloudWatchLogsInitialPosition] <p>Specifies where to start to read data (start_of_file or end_of_file). The default is start_of_file. This setting is only used if there is no state persisted for that log stream.</p>
+-- * Encoding [CloudWatchLogsEncoding] <p>Specifies the encoding of the log file so that the file can be read correctly. The default is <code>utf_8</code>. Encodings supported by Python <code>codecs.decode()</code> can be used here.</p>
+-- * BatchSize [Integer] <p>Specifies the maximum size of log events in a batch, in bytes, up to 1048576 bytes. The default value is 32768 bytes. This size is calculated as the sum of all event messages in UTF-8, plus 26 bytes for each log event.</p>
+-- * BufferDuration [Integer] <p>Specifies the time duration for the batching of log events. The minimum value is 5000ms and default value is 5000ms.</p>
+-- * MultiLineStartPattern [String] <p>Specifies the pattern for identifying the start of a log message.</p>
+-- * LogGroupName [String] <p>Specifies the destination log group. A log group is created automatically if it doesn't already exist. Log group names can be between 1 and 512 characters long. Allowed characters include a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), and '.' (period).</p>
+-- * File [String] <p>Specifies log files that you want to push to CloudWatch Logs.</p> <p> <code>File</code> can point to a specific file or multiple files (by using wild card characters such as <code>/var/log/system.log*</code>). Only the latest file is pushed to CloudWatch Logs, based on file modification time. We recommend that you use wild card characters to specify a series of files of the same type, such as <code>access_log.2014-06-01-01</code>, <code>access_log.2014-06-01-02</code>, and so on by using a pattern like <code>access_log.*</code>. Don't use a wildcard to match multiple file types, such as <code>access_log_80</code> and <code>access_log_443</code>. To specify multiple, different file types, add another log stream entry to the configuration file, so that each log file type is stored in a different log group.</p> <p>Zipped files are not supported.</p>
+-- * BatchCount [Integer] <p>Specifies the max number of log events in a batch, up to 10000. The default value is 1000.</p>
+-- * DatetimeFormat [String] <p>Specifies how the time stamp is extracted from logs. For more information, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html">CloudWatch Logs Agent Reference</a>.</p>
+-- * TimeZone [CloudWatchLogsTimeZone] <p>Specifies the time zone of log event time stamps.</p>
+-- * FileFingerprintLines [String] <p>Specifies the range of lines for identifying a file. The valid values are one number, or two dash-delimited numbers, such as '1', '2-5'. The default value is '1', meaning the first line is used to calculate the fingerprint. Fingerprint lines are not sent to CloudWatch Logs unless all specified lines are available.</p>
+-- @return CloudWatchLogsLogStream structure as a key-value pair table
+function M.CloudWatchLogsLogStream(args)
+	assert(args, "You must provdide an argument table when creating CloudWatchLogsLogStream")
 	local t = { 
-		["InitialPosition"] = _InitialPosition,
-		["Encoding"] = _Encoding,
-		["BatchSize"] = _BatchSize,
-		["BufferDuration"] = _BufferDuration,
-		["MultiLineStartPattern"] = _MultiLineStartPattern,
-		["LogGroupName"] = _LogGroupName,
-		["File"] = _File,
-		["BatchCount"] = _BatchCount,
-		["DatetimeFormat"] = _DatetimeFormat,
-		["TimeZone"] = _TimeZone,
-		["FileFingerprintLines"] = _FileFingerprintLines,
+		["InitialPosition"] = args["InitialPosition"],
+		["Encoding"] = args["Encoding"],
+		["BatchSize"] = args["BatchSize"],
+		["BufferDuration"] = args["BufferDuration"],
+		["MultiLineStartPattern"] = args["MultiLineStartPattern"],
+		["LogGroupName"] = args["LogGroupName"],
+		["File"] = args["File"],
+		["BatchCount"] = args["BatchCount"],
+		["DatetimeFormat"] = args["DatetimeFormat"],
+		["TimeZone"] = args["TimeZone"],
+		["FileFingerprintLines"] = args["FileFingerprintLines"],
 	}
 	asserts.AssertCloudWatchLogsLogStream(t)
 	return t
@@ -4649,13 +5057,16 @@ end
 
 --- Create a structure of type TimeBasedAutoScalingConfiguration
 -- <p>Describes an instance's time-based auto scaling configuration.</p>
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _AutoScalingSchedule [WeeklyAutoScalingSchedule] <p>A <code>WeeklyAutoScalingSchedule</code> object with the instance schedule.</p>
-function M.TimeBasedAutoScalingConfiguration(_InstanceId, _AutoScalingSchedule, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TimeBasedAutoScalingConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * AutoScalingSchedule [WeeklyAutoScalingSchedule] <p>A <code>WeeklyAutoScalingSchedule</code> object with the instance schedule.</p>
+-- @return TimeBasedAutoScalingConfiguration structure as a key-value pair table
+function M.TimeBasedAutoScalingConfiguration(args)
+	assert(args, "You must provdide an argument table when creating TimeBasedAutoScalingConfiguration")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["AutoScalingSchedule"] = _AutoScalingSchedule,
+		["InstanceId"] = args["InstanceId"],
+		["AutoScalingSchedule"] = args["AutoScalingSchedule"],
 	}
 	asserts.AssertTimeBasedAutoScalingConfiguration(t)
 	return t
@@ -4675,12 +5086,15 @@ end
 
 --- Create a structure of type DeregisterVolumeRequest
 --  
--- @param _VolumeId [String] <p>The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks Stacks assigned to the instance when you registered the volume with the stack, not the Amazon EC2 volume ID.</p>
--- Required parameter: VolumeId
-function M.DeregisterVolumeRequest(_VolumeId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeregisterVolumeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VolumeId [String] <p>The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks Stacks assigned to the instance when you registered the volume with the stack, not the Amazon EC2 volume ID.</p>
+-- Required key: VolumeId
+-- @return DeregisterVolumeRequest structure as a key-value pair table
+function M.DeregisterVolumeRequest(args)
+	assert(args, "You must provdide an argument table when creating DeregisterVolumeRequest")
 	local t = { 
-		["VolumeId"] = _VolumeId,
+		["VolumeId"] = args["VolumeId"],
 	}
 	asserts.AssertDeregisterVolumeRequest(t)
 	return t
@@ -4706,24 +5120,27 @@ end
 
 --- Create a structure of type RegisterInstanceRequest
 --  
--- @param _StackId [String] <p>The ID of the stack that the instance is to be registered with.</p>
--- @param _RsaPublicKeyFingerprint [String] <p>The instances public RSA key fingerprint.</p>
--- @param _RsaPublicKey [String] <p>The instances public RSA key. This key is used to encrypt communication between the instance and the service.</p>
--- @param _Hostname [String] <p>The instance's hostname.</p>
--- @param _PrivateIp [String] <p>The instance's private IP address.</p>
--- @param _PublicIp [String] <p>The instance's public IP address.</p>
--- @param _InstanceIdentity [InstanceIdentity] <p>An InstanceIdentity object that contains the instance's identity.</p>
--- Required parameter: StackId
-function M.RegisterInstanceRequest(_StackId, _RsaPublicKeyFingerprint, _RsaPublicKey, _Hostname, _PrivateIp, _PublicIp, _InstanceIdentity, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The ID of the stack that the instance is to be registered with.</p>
+-- * RsaPublicKeyFingerprint [String] <p>The instances public RSA key fingerprint.</p>
+-- * RsaPublicKey [String] <p>The instances public RSA key. This key is used to encrypt communication between the instance and the service.</p>
+-- * Hostname [String] <p>The instance's hostname.</p>
+-- * PrivateIp [String] <p>The instance's private IP address.</p>
+-- * PublicIp [String] <p>The instance's public IP address.</p>
+-- * InstanceIdentity [InstanceIdentity] <p>An InstanceIdentity object that contains the instance's identity.</p>
+-- Required key: StackId
+-- @return RegisterInstanceRequest structure as a key-value pair table
+function M.RegisterInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterInstanceRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["RsaPublicKeyFingerprint"] = _RsaPublicKeyFingerprint,
-		["RsaPublicKey"] = _RsaPublicKey,
-		["Hostname"] = _Hostname,
-		["PrivateIp"] = _PrivateIp,
-		["PublicIp"] = _PublicIp,
-		["InstanceIdentity"] = _InstanceIdentity,
+		["StackId"] = args["StackId"],
+		["RsaPublicKeyFingerprint"] = args["RsaPublicKeyFingerprint"],
+		["RsaPublicKey"] = args["RsaPublicKey"],
+		["Hostname"] = args["Hostname"],
+		["PrivateIp"] = args["PrivateIp"],
+		["PublicIp"] = args["PublicIp"],
+		["InstanceIdentity"] = args["InstanceIdentity"],
 	}
 	asserts.AssertRegisterInstanceRequest(t)
 	return t
@@ -4743,13 +5160,16 @@ end
 
 --- Create a structure of type GetHostnameSuggestionResult
 -- <p>Contains the response to a <code>GetHostnameSuggestion</code> request.</p>
--- @param _Hostname [String] <p>The generated host name.</p>
--- @param _LayerId [String] <p>The layer ID.</p>
-function M.GetHostnameSuggestionResult(_Hostname, _LayerId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetHostnameSuggestionResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Hostname [String] <p>The generated host name.</p>
+-- * LayerId [String] <p>The layer ID.</p>
+-- @return GetHostnameSuggestionResult structure as a key-value pair table
+function M.GetHostnameSuggestionResult(args)
+	assert(args, "You must provdide an argument table when creating GetHostnameSuggestionResult")
 	local t = { 
-		["Hostname"] = _Hostname,
-		["LayerId"] = _LayerId,
+		["Hostname"] = args["Hostname"],
+		["LayerId"] = args["LayerId"],
 	}
 	asserts.AssertGetHostnameSuggestionResult(t)
 	return t
@@ -4771,15 +5191,18 @@ end
 
 --- Create a structure of type AssignInstanceRequest
 --  
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _LayerIds [Strings] <p>The layer ID, which must correspond to a custom layer. You cannot assign a registered instance to a built-in layer.</p>
--- Required parameter: InstanceId
--- Required parameter: LayerIds
-function M.AssignInstanceRequest(_InstanceId, _LayerIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssignInstanceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * LayerIds [Strings] <p>The layer ID, which must correspond to a custom layer. You cannot assign a registered instance to a built-in layer.</p>
+-- Required key: InstanceId
+-- Required key: LayerIds
+-- @return AssignInstanceRequest structure as a key-value pair table
+function M.AssignInstanceRequest(args)
+	assert(args, "You must provdide an argument table when creating AssignInstanceRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["LayerIds"] = _LayerIds,
+		["InstanceId"] = args["InstanceId"],
+		["LayerIds"] = args["LayerIds"],
 	}
 	asserts.AssertAssignInstanceRequest(t)
 	return t
@@ -4801,15 +5224,18 @@ end
 
 --- Create a structure of type TagResourceRequest
 --  
--- @param _ResourceArn [ResourceArn] <p>The stack or layer's Amazon Resource Number (ARN).</p>
--- @param _Tags [Tags] <p>A map that contains tag keys and tag values that are attached to a stack or layer.</p> <ul> <li> <p>The key cannot be empty.</p> </li> <li> <p>The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> </p> </li> <li> <p>The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> </p> </li> <li> <p>Leading and trailing white spaces are trimmed from both the key and value.</p> </li> <li> <p>A maximum of 40 tags is allowed for any resource.</p> </li> </ul>
--- Required parameter: ResourceArn
--- Required parameter: Tags
-function M.TagResourceRequest(_ResourceArn, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagResourceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceArn [ResourceArn] <p>The stack or layer's Amazon Resource Number (ARN).</p>
+-- * Tags [Tags] <p>A map that contains tag keys and tag values that are attached to a stack or layer.</p> <ul> <li> <p>The key cannot be empty.</p> </li> <li> <p>The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> </p> </li> <li> <p>The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: <code>+ - = . _ : /</code> </p> </li> <li> <p>Leading and trailing white spaces are trimmed from both the key and value.</p> </li> <li> <p>A maximum of 40 tags is allowed for any resource.</p> </li> </ul>
+-- Required key: ResourceArn
+-- Required key: Tags
+-- @return TagResourceRequest structure as a key-value pair table
+function M.TagResourceRequest(args)
+	assert(args, "You must provdide an argument table when creating TagResourceRequest")
 	local t = { 
-		["ResourceArn"] = _ResourceArn,
-		["Tags"] = _Tags,
+		["ResourceArn"] = args["ResourceArn"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertTagResourceRequest(t)
 	return t
@@ -4830,14 +5256,17 @@ end
 
 --- Create a structure of type AssignVolumeRequest
 --  
--- @param _InstanceId [String] <p>The instance ID.</p>
--- @param _VolumeId [String] <p>The volume ID.</p>
--- Required parameter: VolumeId
-function M.AssignVolumeRequest(_InstanceId, _VolumeId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssignVolumeRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceId [String] <p>The instance ID.</p>
+-- * VolumeId [String] <p>The volume ID.</p>
+-- Required key: VolumeId
+-- @return AssignVolumeRequest structure as a key-value pair table
+function M.AssignVolumeRequest(args)
+	assert(args, "You must provdide an argument table when creating AssignVolumeRequest")
 	local t = { 
-		["InstanceId"] = _InstanceId,
-		["VolumeId"] = _VolumeId,
+		["InstanceId"] = args["InstanceId"],
+		["VolumeId"] = args["VolumeId"],
 	}
 	asserts.AssertAssignVolumeRequest(t)
 	return t
@@ -4856,11 +5285,14 @@ end
 
 --- Create a structure of type DescribeServiceErrorsResult
 -- <p>Contains the response to a <code>DescribeServiceErrors</code> request.</p>
--- @param _ServiceErrors [ServiceErrors] <p>An array of <code>ServiceError</code> objects that describe the specified service errors.</p>
-function M.DescribeServiceErrorsResult(_ServiceErrors, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeServiceErrorsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServiceErrors [ServiceErrors] <p>An array of <code>ServiceError</code> objects that describe the specified service errors.</p>
+-- @return DescribeServiceErrorsResult structure as a key-value pair table
+function M.DescribeServiceErrorsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeServiceErrorsResult")
 	local t = { 
-		["ServiceErrors"] = _ServiceErrors,
+		["ServiceErrors"] = args["ServiceErrors"],
 	}
 	asserts.AssertDescribeServiceErrorsResult(t)
 	return t
@@ -4879,11 +5311,14 @@ end
 
 --- Create a structure of type DescribeDeploymentsResult
 -- <p>Contains the response to a <code>DescribeDeployments</code> request.</p>
--- @param _Deployments [Deployments] <p>An array of <code>Deployment</code> objects that describe the deployments.</p>
-function M.DescribeDeploymentsResult(_Deployments, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDeploymentsResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Deployments [Deployments] <p>An array of <code>Deployment</code> objects that describe the deployments.</p>
+-- @return DescribeDeploymentsResult structure as a key-value pair table
+function M.DescribeDeploymentsResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeDeploymentsResult")
 	local t = { 
-		["Deployments"] = _Deployments,
+		["Deployments"] = args["Deployments"],
 	}
 	asserts.AssertDescribeDeploymentsResult(t)
 	return t
@@ -4906,18 +5341,21 @@ end
 
 --- Create a structure of type CreateUserProfileRequest
 --  
--- @param _IamUserArn [String] <p>The user's IAM ARN; this can also be a federated user's ARN.</p>
--- @param _SshPublicKey [String] <p>The user's public SSH key.</p>
--- @param _AllowSelfManagement [Boolean] <p>Whether users can specify their own SSH public key through the My Settings page. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's Public SSH Key</a>.</p>
--- @param _SshUsername [String] <p>The user's SSH user name. The allowable characters are [a-z], [A-Z], [0-9], '-', and '_'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, <code>my.name</code> will be changed to <code>myname</code>. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name. </p>
--- Required parameter: IamUserArn
-function M.CreateUserProfileRequest(_IamUserArn, _SshPublicKey, _AllowSelfManagement, _SshUsername, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * IamUserArn [String] <p>The user's IAM ARN; this can also be a federated user's ARN.</p>
+-- * SshPublicKey [String] <p>The user's public SSH key.</p>
+-- * AllowSelfManagement [Boolean] <p>Whether users can specify their own SSH public key through the My Settings page. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html">Setting an IAM User's Public SSH Key</a>.</p>
+-- * SshUsername [String] <p>The user's SSH user name. The allowable characters are [a-z], [A-Z], [0-9], '-', and '_'. If the specified name includes other punctuation marks, AWS OpsWorks Stacks removes them. For example, <code>my.name</code> will be changed to <code>myname</code>. If you do not specify an SSH user name, AWS OpsWorks Stacks generates one from the IAM user name. </p>
+-- Required key: IamUserArn
+-- @return CreateUserProfileRequest structure as a key-value pair table
+function M.CreateUserProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateUserProfileRequest")
 	local t = { 
-		["IamUserArn"] = _IamUserArn,
-		["SshPublicKey"] = _SshPublicKey,
-		["AllowSelfManagement"] = _AllowSelfManagement,
-		["SshUsername"] = _SshUsername,
+		["IamUserArn"] = args["IamUserArn"],
+		["SshPublicKey"] = args["SshPublicKey"],
+		["AllowSelfManagement"] = args["AllowSelfManagement"],
+		["SshUsername"] = args["SshUsername"],
 	}
 	asserts.AssertCreateUserProfileRequest(t)
 	return t
@@ -4957,49 +5395,52 @@ end
 
 --- Create a structure of type CreateLayerRequest
 --  
--- @param _StackId [String] <p>The layer stack ID.</p>
--- @param _LifecycleEventConfiguration [LifecycleEventConfiguration] <p>A <code>LifeCycleEventConfiguration</code> object that you can use to configure the Shutdown event to specify an execution timeout and enable or disable Elastic Load Balancer connection draining.</p>
--- @param _AutoAssignElasticIps [Boolean] <p>Whether to automatically assign an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address</a> to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
--- @param _Name [String] <p>The layer name, which is used by the console.</p>
--- @param _CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] <p>Specifies CloudWatch Logs configuration options for the layer. For more information, see <a>CloudWatchLogsLogStream</a>.</p>
--- @param _CustomJson [String] <p>A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html"> Using Custom JSON</a>. This feature is supported as of version 1.7.42 of the AWS CLI. </p>
--- @param _CustomRecipes [Recipes] <p>A <code>LayerCustomRecipes</code> object that specifies the layer custom recipes.</p>
--- @param _CustomSecurityGroupIds [Strings] <p>An array containing the layer custom security group IDs.</p>
--- @param _AutoAssignPublicIps [Boolean] <p>For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
--- @param _EnableAutoHealing [Boolean] <p>Whether to disable auto healing for the layer.</p>
--- @param _CustomInstanceProfileArn [String] <p>The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
--- @param _UseEbsOptimizedInstances [Boolean] <p>Whether to use Amazon EBS-optimized instances.</p>
--- @param _VolumeConfigurations [VolumeConfigurations] <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon EBS volumes.</p>
--- @param _Attributes [LayerAttributes] <p>One or more user-defined key-value pairs to be added to the stack attributes.</p> <p>To create a cluster layer, set the <code>EcsClusterArn</code> attribute to the cluster's ARN.</p>
--- @param _Shortname [String] <p>For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, '-', '_', and '.'.</p> <p>The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html">Layer Reference</a>.</p>
--- @param _Packages [Strings] <p>An array of <code>Package</code> objects that describes the layer packages.</p>
--- @param _Type [LayerType] <p>The layer type. A stack cannot have more than one built-in layer of the same type. It can have any number of custom layers. Built-in layers are not available in Chef 12 stacks.</p>
--- @param _InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>To ensure that your instances have the latest security updates, we strongly recommend using the default value of <code>true</code>.</p> </note>
--- Required parameter: StackId
--- Required parameter: Type
--- Required parameter: Name
--- Required parameter: Shortname
-function M.CreateLayerRequest(_StackId, _LifecycleEventConfiguration, _AutoAssignElasticIps, _Name, _CloudWatchLogsConfiguration, _CustomJson, _CustomRecipes, _CustomSecurityGroupIds, _AutoAssignPublicIps, _EnableAutoHealing, _CustomInstanceProfileArn, _UseEbsOptimizedInstances, _VolumeConfigurations, _Attributes, _Shortname, _Packages, _Type, _InstallUpdatesOnBoot, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLayerRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The layer stack ID.</p>
+-- * LifecycleEventConfiguration [LifecycleEventConfiguration] <p>A <code>LifeCycleEventConfiguration</code> object that you can use to configure the Shutdown event to specify an execution timeout and enable or disable Elastic Load Balancer connection draining.</p>
+-- * AutoAssignElasticIps [Boolean] <p>Whether to automatically assign an <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP address</a> to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- * Name [String] <p>The layer name, which is used by the console.</p>
+-- * CloudWatchLogsConfiguration [CloudWatchLogsConfiguration] <p>Specifies CloudWatch Logs configuration options for the layer. For more information, see <a>CloudWatchLogsLogStream</a>.</p>
+-- * CustomJson [String] <p>A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html"> Using Custom JSON</a>. This feature is supported as of version 1.7.42 of the AWS CLI. </p>
+-- * CustomRecipes [Recipes] <p>A <code>LayerCustomRecipes</code> object that specifies the layer custom recipes.</p>
+-- * CustomSecurityGroupIds [Strings] <p>An array containing the layer custom security group IDs.</p>
+-- * AutoAssignPublicIps [Boolean] <p>For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html">How to Edit a Layer</a>.</p>
+-- * EnableAutoHealing [Boolean] <p>Whether to disable auto healing for the layer.</p>
+-- * CustomInstanceProfileArn [String] <p>The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
+-- * UseEbsOptimizedInstances [Boolean] <p>Whether to use Amazon EBS-optimized instances.</p>
+-- * VolumeConfigurations [VolumeConfigurations] <p>A <code>VolumeConfigurations</code> object that describes the layer's Amazon EBS volumes.</p>
+-- * Attributes [LayerAttributes] <p>One or more user-defined key-value pairs to be added to the stack attributes.</p> <p>To create a cluster layer, set the <code>EcsClusterArn</code> attribute to the cluster's ARN.</p>
+-- * Shortname [String] <p>For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, '-', '_', and '.'.</p> <p>The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html">Layer Reference</a>.</p>
+-- * Packages [Strings] <p>An array of <code>Package</code> objects that describes the layer packages.</p>
+-- * Type [LayerType] <p>The layer type. A stack cannot have more than one built-in layer of the same type. It can have any number of custom layers. Built-in layers are not available in Chef 12 stacks.</p>
+-- * InstallUpdatesOnBoot [Boolean] <p>Whether to install operating system and package updates when the instance boots. The default value is <code>true</code>. To control when updates are installed, set this value to <code>false</code>. You must then update your instances manually by using <a>CreateDeployment</a> to run the <code>update_dependencies</code> stack command or by manually running <code>yum</code> (Amazon Linux) or <code>apt-get</code> (Ubuntu) on the instances. </p> <note> <p>To ensure that your instances have the latest security updates, we strongly recommend using the default value of <code>true</code>.</p> </note>
+-- Required key: StackId
+-- Required key: Type
+-- Required key: Name
+-- Required key: Shortname
+-- @return CreateLayerRequest structure as a key-value pair table
+function M.CreateLayerRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateLayerRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["LifecycleEventConfiguration"] = _LifecycleEventConfiguration,
-		["AutoAssignElasticIps"] = _AutoAssignElasticIps,
-		["Name"] = _Name,
-		["CloudWatchLogsConfiguration"] = _CloudWatchLogsConfiguration,
-		["CustomJson"] = _CustomJson,
-		["CustomRecipes"] = _CustomRecipes,
-		["CustomSecurityGroupIds"] = _CustomSecurityGroupIds,
-		["AutoAssignPublicIps"] = _AutoAssignPublicIps,
-		["EnableAutoHealing"] = _EnableAutoHealing,
-		["CustomInstanceProfileArn"] = _CustomInstanceProfileArn,
-		["UseEbsOptimizedInstances"] = _UseEbsOptimizedInstances,
-		["VolumeConfigurations"] = _VolumeConfigurations,
-		["Attributes"] = _Attributes,
-		["Shortname"] = _Shortname,
-		["Packages"] = _Packages,
-		["Type"] = _Type,
-		["InstallUpdatesOnBoot"] = _InstallUpdatesOnBoot,
+		["StackId"] = args["StackId"],
+		["LifecycleEventConfiguration"] = args["LifecycleEventConfiguration"],
+		["AutoAssignElasticIps"] = args["AutoAssignElasticIps"],
+		["Name"] = args["Name"],
+		["CloudWatchLogsConfiguration"] = args["CloudWatchLogsConfiguration"],
+		["CustomJson"] = args["CustomJson"],
+		["CustomRecipes"] = args["CustomRecipes"],
+		["CustomSecurityGroupIds"] = args["CustomSecurityGroupIds"],
+		["AutoAssignPublicIps"] = args["AutoAssignPublicIps"],
+		["EnableAutoHealing"] = args["EnableAutoHealing"],
+		["CustomInstanceProfileArn"] = args["CustomInstanceProfileArn"],
+		["UseEbsOptimizedInstances"] = args["UseEbsOptimizedInstances"],
+		["VolumeConfigurations"] = args["VolumeConfigurations"],
+		["Attributes"] = args["Attributes"],
+		["Shortname"] = args["Shortname"],
+		["Packages"] = args["Packages"],
+		["Type"] = args["Type"],
+		["InstallUpdatesOnBoot"] = args["InstallUpdatesOnBoot"],
 	}
 	asserts.AssertCreateLayerRequest(t)
 	return t
@@ -5018,11 +5459,14 @@ end
 
 --- Create a structure of type DescribeMyUserProfileResult
 -- <p>Contains the response to a <code>DescribeMyUserProfile</code> request.</p>
--- @param _UserProfile [SelfUserProfile] <p>A <code>UserProfile</code> object that describes the user's SSH information.</p>
-function M.DescribeMyUserProfileResult(_UserProfile, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMyUserProfileResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserProfile [SelfUserProfile] <p>A <code>UserProfile</code> object that describes the user's SSH information.</p>
+-- @return DescribeMyUserProfileResult structure as a key-value pair table
+function M.DescribeMyUserProfileResult(args)
+	assert(args, "You must provdide an argument table when creating DescribeMyUserProfileResult")
 	local t = { 
-		["UserProfile"] = _UserProfile,
+		["UserProfile"] = args["UserProfile"],
 	}
 	asserts.AssertDescribeMyUserProfileResult(t)
 	return t
@@ -5045,17 +5489,20 @@ end
 
 --- Create a structure of type SslConfiguration
 -- <p>Describes an app's SSL configuration.</p>
--- @param _PrivateKey [String] <p>The private key; the contents of the certificate's domain.kex file.</p>
--- @param _Chain [String] <p>Optional. Can be used to specify an intermediate certificate authority key or client authentication.</p>
--- @param _Certificate [String] <p>The contents of the certificate's domain.crt file.</p>
--- Required parameter: Certificate
--- Required parameter: PrivateKey
-function M.SslConfiguration(_PrivateKey, _Chain, _Certificate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SslConfiguration")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PrivateKey [String] <p>The private key; the contents of the certificate's domain.kex file.</p>
+-- * Chain [String] <p>Optional. Can be used to specify an intermediate certificate authority key or client authentication.</p>
+-- * Certificate [String] <p>The contents of the certificate's domain.crt file.</p>
+-- Required key: Certificate
+-- Required key: PrivateKey
+-- @return SslConfiguration structure as a key-value pair table
+function M.SslConfiguration(args)
+	assert(args, "You must provdide an argument table when creating SslConfiguration")
 	local t = { 
-		["PrivateKey"] = _PrivateKey,
-		["Chain"] = _Chain,
-		["Certificate"] = _Certificate,
+		["PrivateKey"] = args["PrivateKey"],
+		["Chain"] = args["Chain"],
+		["Certificate"] = args["Certificate"],
 	}
 	asserts.AssertSslConfiguration(t)
 	return t
@@ -5077,15 +5524,18 @@ end
 
 --- Create a structure of type RegisterEcsClusterRequest
 --  
--- @param _StackId [String] <p>The stack ID.</p>
--- @param _EcsClusterArn [String] <p>The cluster's ARN.</p>
--- Required parameter: EcsClusterArn
--- Required parameter: StackId
-function M.RegisterEcsClusterRequest(_StackId, _EcsClusterArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RegisterEcsClusterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * StackId [String] <p>The stack ID.</p>
+-- * EcsClusterArn [String] <p>The cluster's ARN.</p>
+-- Required key: EcsClusterArn
+-- Required key: StackId
+-- @return RegisterEcsClusterRequest structure as a key-value pair table
+function M.RegisterEcsClusterRequest(args)
+	assert(args, "You must provdide an argument table when creating RegisterEcsClusterRequest")
 	local t = { 
-		["StackId"] = _StackId,
-		["EcsClusterArn"] = _EcsClusterArn,
+		["StackId"] = args["StackId"],
+		["EcsClusterArn"] = args["EcsClusterArn"],
 	}
 	asserts.AssertRegisterEcsClusterRequest(t)
 	return t

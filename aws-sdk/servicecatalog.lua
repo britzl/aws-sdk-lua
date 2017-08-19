@@ -37,15 +37,18 @@ end
 
 --- Create a structure of type DisassociateTagOptionFromResourceInput
 --  
--- @param _ResourceId [ResourceId] <p>Identifier of the resource from which to disassociate the TagOption.</p>
--- @param _TagOptionId [TagOptionId] <p>Identifier of the TagOption to disassociate from the resource.</p>
--- Required parameter: ResourceId
--- Required parameter: TagOptionId
-function M.DisassociateTagOptionFromResourceInput(_ResourceId, _TagOptionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateTagOptionFromResourceInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [ResourceId] <p>Identifier of the resource from which to disassociate the TagOption.</p>
+-- * TagOptionId [TagOptionId] <p>Identifier of the TagOption to disassociate from the resource.</p>
+-- Required key: ResourceId
+-- Required key: TagOptionId
+-- @return DisassociateTagOptionFromResourceInput structure as a key-value pair table
+function M.DisassociateTagOptionFromResourceInput(args)
+	assert(args, "You must provdide an argument table when creating DisassociateTagOptionFromResourceInput")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["TagOptionId"] = _TagOptionId,
+		["ResourceId"] = args["ResourceId"],
+		["TagOptionId"] = args["TagOptionId"],
 	}
 	asserts.AssertDisassociateTagOptionFromResourceInput(t)
 	return t
@@ -67,15 +70,18 @@ end
 
 --- Create a structure of type CreateTagOptionInput
 --  
--- @param _Value [TagOptionValue] <p>The TagOption value.</p>
--- @param _Key [TagOptionKey] <p>The TagOption key.</p>
--- Required parameter: Key
--- Required parameter: Value
-function M.CreateTagOptionInput(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagOptionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagOptionValue] <p>The TagOption value.</p>
+-- * Key [TagOptionKey] <p>The TagOption key.</p>
+-- Required key: Key
+-- Required key: Value
+-- @return CreateTagOptionInput structure as a key-value pair table
+function M.CreateTagOptionInput(args)
+	assert(args, "You must provdide an argument table when creating CreateTagOptionInput")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertCreateTagOptionInput(t)
 	return t
@@ -94,11 +100,14 @@ end
 
 --- Create a structure of type DescribeTagOptionOutput
 --  
--- @param _TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
-function M.DescribeTagOptionOutput(_TagOptionDetail, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagOptionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
+-- @return DescribeTagOptionOutput structure as a key-value pair table
+function M.DescribeTagOptionOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagOptionOutput")
 	local t = { 
-		["TagOptionDetail"] = _TagOptionDetail,
+		["TagOptionDetail"] = args["TagOptionDetail"],
 	}
 	asserts.AssertDescribeTagOptionOutput(t)
 	return t
@@ -119,15 +128,18 @@ end
 
 --- Create a structure of type DescribePortfolioOutput
 --  
--- @param _TagOptions [TagOptionDetails] <p>TagOptions associated with the portfolio.</p>
--- @param _PortfolioDetail [PortfolioDetail] <p>Detailed portfolio information.</p>
--- @param _Tags [Tags] <p>Tags associated with the portfolio.</p>
-function M.DescribePortfolioOutput(_TagOptions, _PortfolioDetail, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePortfolioOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagOptions [TagOptionDetails] <p>TagOptions associated with the portfolio.</p>
+-- * PortfolioDetail [PortfolioDetail] <p>Detailed portfolio information.</p>
+-- * Tags [Tags] <p>Tags associated with the portfolio.</p>
+-- @return DescribePortfolioOutput structure as a key-value pair table
+function M.DescribePortfolioOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribePortfolioOutput")
 	local t = { 
-		["TagOptions"] = _TagOptions,
-		["PortfolioDetail"] = _PortfolioDetail,
-		["Tags"] = _Tags,
+		["TagOptions"] = args["TagOptions"],
+		["PortfolioDetail"] = args["PortfolioDetail"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertDescribePortfolioOutput(t)
 	return t
@@ -145,8 +157,11 @@ end
 
 --- Create a structure of type RejectPortfolioShareOutput
 --  
-function M.RejectPortfolioShareOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RejectPortfolioShareOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RejectPortfolioShareOutput structure as a key-value pair table
+function M.RejectPortfolioShareOutput(args)
+	assert(args, "You must provdide an argument table when creating RejectPortfolioShareOutput")
 	local t = { 
 	}
 	asserts.AssertRejectPortfolioShareOutput(t)
@@ -168,14 +183,17 @@ end
 
 --- Create a structure of type RejectPortfolioShareInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- Required parameter: PortfolioId
-function M.RejectPortfolioShareInput(_AcceptLanguage, _PortfolioId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RejectPortfolioShareInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- Required key: PortfolioId
+-- @return RejectPortfolioShareInput structure as a key-value pair table
+function M.RejectPortfolioShareInput(args)
+	assert(args, "You must provdide an argument table when creating RejectPortfolioShareInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PortfolioId"] = _PortfolioId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PortfolioId"] = args["PortfolioId"],
 	}
 	asserts.AssertRejectPortfolioShareInput(t)
 	return t
@@ -195,13 +213,16 @@ end
 
 --- Create a structure of type UsageInstruction
 -- <p>Additional information provided by the administrator.</p>
--- @param _Type [InstructionType] <p>The usage instruction type for the value.</p>
--- @param _Value [InstructionValue] <p>The usage instruction value for this type.</p>
-function M.UsageInstruction(_Type, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UsageInstruction")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [InstructionType] <p>The usage instruction type for the value.</p>
+-- * Value [InstructionValue] <p>The usage instruction value for this type.</p>
+-- @return UsageInstruction structure as a key-value pair table
+function M.UsageInstruction(args)
+	assert(args, "You must provdide an argument table when creating UsageInstruction")
 	local t = { 
-		["Type"] = _Type,
-		["Value"] = _Value,
+		["Type"] = args["Type"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertUsageInstruction(t)
 	return t
@@ -228,26 +249,29 @@ end
 
 --- Create a structure of type UpdateProvisionedProductInput
 --  
--- @param _ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
--- @param _ProvisionedProductId [Id] <p>The identifier of the ProvisionedProduct object to update. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
--- @param _ProvisioningParameters [UpdateProvisioningParameters] <p>A list of <code>ProvisioningParameter</code> objects used to update the ProvisionedProduct object.</p>
--- @param _PathId [Id] <p>The identifier of the path to use in the updated ProvisionedProduct object. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
--- @param _UpdateToken [IdempotencyToken] <p>The idempotency token that uniquely identifies the provisioning update request.</p>
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _ProvisionedProductName [ProvisionedProductNameOrArn] <p>The updated name of the ProvisionedProduct object. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
--- @param _ProductId [Id] <p>The identifier of the ProvisionedProduct object.</p>
--- Required parameter: UpdateToken
-function M.UpdateProvisionedProductInput(_ProvisioningArtifactId, _ProvisionedProductId, _ProvisioningParameters, _PathId, _UpdateToken, _AcceptLanguage, _ProvisionedProductName, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProvisionedProductInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
+-- * ProvisionedProductId [Id] <p>The identifier of the ProvisionedProduct object to update. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+-- * ProvisioningParameters [UpdateProvisioningParameters] <p>A list of <code>ProvisioningParameter</code> objects used to update the ProvisionedProduct object.</p>
+-- * PathId [Id] <p>The identifier of the path to use in the updated ProvisionedProduct object. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
+-- * UpdateToken [IdempotencyToken] <p>The idempotency token that uniquely identifies the provisioning update request.</p>
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * ProvisionedProductName [ProvisionedProductNameOrArn] <p>The updated name of the ProvisionedProduct object. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+-- * ProductId [Id] <p>The identifier of the ProvisionedProduct object.</p>
+-- Required key: UpdateToken
+-- @return UpdateProvisionedProductInput structure as a key-value pair table
+function M.UpdateProvisionedProductInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateProvisionedProductInput")
 	local t = { 
-		["ProvisioningArtifactId"] = _ProvisioningArtifactId,
-		["ProvisionedProductId"] = _ProvisionedProductId,
-		["ProvisioningParameters"] = _ProvisioningParameters,
-		["PathId"] = _PathId,
-		["UpdateToken"] = _UpdateToken,
-		["AcceptLanguage"] = _AcceptLanguage,
-		["ProvisionedProductName"] = _ProvisionedProductName,
-		["ProductId"] = _ProductId,
+		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
+		["ProvisionedProductId"] = args["ProvisionedProductId"],
+		["ProvisioningParameters"] = args["ProvisioningParameters"],
+		["PathId"] = args["PathId"],
+		["UpdateToken"] = args["UpdateToken"],
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["ProvisionedProductName"] = args["ProvisionedProductName"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertUpdateProvisionedProductInput(t)
 	return t
@@ -278,31 +302,34 @@ end
 
 --- Create a structure of type ProvisionProductInput
 --  
--- @param _ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
--- @param _ProvisionedProductName [ProvisionedProductName] <p>A user-friendly name to identify the ProvisionedProduct object. This value must be unique for the AWS account and cannot be updated after the product is provisioned.</p>
--- @param _Tags [Tags] <p>A list of tags to use as provisioning options.</p>
--- @param _ProvisioningParameters [ProvisioningParameters] <p>Parameters specified by the administrator that are required for provisioning the product.</p>
--- @param _PathId [Id] <p>The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
--- @param _ProvisionToken [IdempotencyToken] <p>An idempotency token that uniquely identifies the provisioning request. </p>
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _NotificationArns [NotificationArns] <p>Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: ProductId
--- Required parameter: ProvisioningArtifactId
--- Required parameter: ProvisionedProductName
--- Required parameter: ProvisionToken
-function M.ProvisionProductInput(_ProvisioningArtifactId, _ProvisionedProductName, _Tags, _ProvisioningParameters, _PathId, _ProvisionToken, _AcceptLanguage, _NotificationArns, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionProductInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
+-- * ProvisionedProductName [ProvisionedProductName] <p>A user-friendly name to identify the ProvisionedProduct object. This value must be unique for the AWS account and cannot be updated after the product is provisioned.</p>
+-- * Tags [Tags] <p>A list of tags to use as provisioning options.</p>
+-- * ProvisioningParameters [ProvisioningParameters] <p>Parameters specified by the administrator that are required for provisioning the product.</p>
+-- * PathId [Id] <p>The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
+-- * ProvisionToken [IdempotencyToken] <p>An idempotency token that uniquely identifies the provisioning request. </p>
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * NotificationArns [NotificationArns] <p>Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: ProductId
+-- Required key: ProvisioningArtifactId
+-- Required key: ProvisionedProductName
+-- Required key: ProvisionToken
+-- @return ProvisionProductInput structure as a key-value pair table
+function M.ProvisionProductInput(args)
+	assert(args, "You must provdide an argument table when creating ProvisionProductInput")
 	local t = { 
-		["ProvisioningArtifactId"] = _ProvisioningArtifactId,
-		["ProvisionedProductName"] = _ProvisionedProductName,
-		["Tags"] = _Tags,
-		["ProvisioningParameters"] = _ProvisioningParameters,
-		["PathId"] = _PathId,
-		["ProvisionToken"] = _ProvisionToken,
-		["AcceptLanguage"] = _AcceptLanguage,
-		["NotificationArns"] = _NotificationArns,
-		["ProductId"] = _ProductId,
+		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
+		["ProvisionedProductName"] = args["ProvisionedProductName"],
+		["Tags"] = args["Tags"],
+		["ProvisioningParameters"] = args["ProvisioningParameters"],
+		["PathId"] = args["PathId"],
+		["ProvisionToken"] = args["ProvisionToken"],
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["NotificationArns"] = args["NotificationArns"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertProvisionProductInput(t)
 	return t
@@ -326,21 +353,24 @@ end
 
 --- Create a structure of type SearchProductsInput
 --  
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _SortOrder [SortOrder] <p>The sort order specifier. If no value is specified, results are not sorted.</p>
--- @param _Filters [ProductViewFilters] <p>The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the calling user has access. </p>
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _SortBy [ProductViewSortBy] <p>The sort field specifier. If no value is specified, results are not sorted.</p>
-function M.SearchProductsInput(_PageSize, _PageToken, _SortOrder, _Filters, _AcceptLanguage, _SortBy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchProductsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * SortOrder [SortOrder] <p>The sort order specifier. If no value is specified, results are not sorted.</p>
+-- * Filters [ProductViewFilters] <p>The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the calling user has access. </p>
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * SortBy [ProductViewSortBy] <p>The sort field specifier. If no value is specified, results are not sorted.</p>
+-- @return SearchProductsInput structure as a key-value pair table
+function M.SearchProductsInput(args)
+	assert(args, "You must provdide an argument table when creating SearchProductsInput")
 	local t = { 
-		["PageSize"] = _PageSize,
-		["PageToken"] = _PageToken,
-		["SortOrder"] = _SortOrder,
-		["Filters"] = _Filters,
-		["AcceptLanguage"] = _AcceptLanguage,
-		["SortBy"] = _SortBy,
+		["PageSize"] = args["PageSize"],
+		["PageToken"] = args["PageToken"],
+		["SortOrder"] = args["SortOrder"],
+		["Filters"] = args["Filters"],
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["SortBy"] = args["SortBy"],
 	}
 	asserts.AssertSearchProductsInput(t)
 	return t
@@ -361,15 +391,18 @@ end
 
 --- Create a structure of type CreateConstraintOutput
 --  
--- @param _Status [Status] <p>The status of the current request.</p>
--- @param _ConstraintParameters [ConstraintParameters] <p>The resulting constraint parameters.</p>
--- @param _ConstraintDetail [ConstraintDetail] <p>The resulting detailed constraint information.</p>
-function M.CreateConstraintOutput(_Status, _ConstraintParameters, _ConstraintDetail, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateConstraintOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [Status] <p>The status of the current request.</p>
+-- * ConstraintParameters [ConstraintParameters] <p>The resulting constraint parameters.</p>
+-- * ConstraintDetail [ConstraintDetail] <p>The resulting detailed constraint information.</p>
+-- @return CreateConstraintOutput structure as a key-value pair table
+function M.CreateConstraintOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateConstraintOutput")
 	local t = { 
-		["Status"] = _Status,
-		["ConstraintParameters"] = _ConstraintParameters,
-		["ConstraintDetail"] = _ConstraintDetail,
+		["Status"] = args["Status"],
+		["ConstraintParameters"] = args["ConstraintParameters"],
+		["ConstraintDetail"] = args["ConstraintDetail"],
 	}
 	asserts.AssertCreateConstraintOutput(t)
 	return t
@@ -390,15 +423,18 @@ end
 
 --- Create a structure of type ListPortfoliosInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
-function M.ListPortfoliosInput(_AcceptLanguage, _PageToken, _PageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfoliosInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @return ListPortfoliosInput structure as a key-value pair table
+function M.ListPortfoliosInput(args)
+	assert(args, "You must provdide an argument table when creating ListPortfoliosInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PageToken"] = _PageToken,
-		["PageSize"] = _PageSize,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PageToken"] = args["PageToken"],
+		["PageSize"] = args["PageSize"],
 	}
 	asserts.AssertListPortfoliosInput(t)
 	return t
@@ -418,13 +454,16 @@ end
 
 --- Create a structure of type ProductViewAggregationValue
 -- <p>A single product view aggregation value/count pair, containing metadata about each product to which the calling user has access.</p>
--- @param _ApproximateCount [ApproximateCount] <p>An approximate count of the products that match the value.</p>
--- @param _Value [AttributeValue] <p>The value of the product view aggregation.</p>
-function M.ProductViewAggregationValue(_ApproximateCount, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProductViewAggregationValue")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ApproximateCount [ApproximateCount] <p>An approximate count of the products that match the value.</p>
+-- * Value [AttributeValue] <p>The value of the product view aggregation.</p>
+-- @return ProductViewAggregationValue structure as a key-value pair table
+function M.ProductViewAggregationValue(args)
+	assert(args, "You must provdide an argument table when creating ProductViewAggregationValue")
 	local t = { 
-		["ApproximateCount"] = _ApproximateCount,
-		["Value"] = _Value,
+		["ApproximateCount"] = args["ApproximateCount"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertProductViewAggregationValue(t)
 	return t
@@ -445,14 +484,17 @@ end
 
 --- Create a structure of type DeletePortfolioInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The identifier of the portfolio for the delete request.</p>
--- Required parameter: Id
-function M.DeletePortfolioInput(_AcceptLanguage, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePortfolioInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The identifier of the portfolio for the delete request.</p>
+-- Required key: Id
+-- @return DeletePortfolioInput structure as a key-value pair table
+function M.DeletePortfolioInput(args)
+	assert(args, "You must provdide an argument table when creating DeletePortfolioInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDeletePortfolioInput(t)
 	return t
@@ -472,13 +514,16 @@ end
 
 --- Create a structure of type ConstraintSummary
 -- <p>An administrator-specified constraint to apply when provisioning a product.</p>
--- @param _Type [ConstraintType] <p>The type of the constraint. </p>
--- @param _Description [ConstraintDescription] <p>The text description of the constraint.</p>
-function M.ConstraintSummary(_Type, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConstraintSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Type [ConstraintType] <p>The type of the constraint. </p>
+-- * Description [ConstraintDescription] <p>The text description of the constraint.</p>
+-- @return ConstraintSummary structure as a key-value pair table
+function M.ConstraintSummary(args)
+	assert(args, "You must provdide an argument table when creating ConstraintSummary")
 	local t = { 
-		["Type"] = _Type,
-		["Description"] = _Description,
+		["Type"] = args["Type"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertConstraintSummary(t)
 	return t
@@ -501,17 +546,20 @@ end
 
 --- Create a structure of type CreatePortfolioShareInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- @param _AccountId [AccountId] <p>The account ID with which to share the portfolio.</p>
--- Required parameter: PortfolioId
--- Required parameter: AccountId
-function M.CreatePortfolioShareInput(_AcceptLanguage, _PortfolioId, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePortfolioShareInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- * AccountId [AccountId] <p>The account ID with which to share the portfolio.</p>
+-- Required key: PortfolioId
+-- Required key: AccountId
+-- @return CreatePortfolioShareInput structure as a key-value pair table
+function M.CreatePortfolioShareInput(args)
+	assert(args, "You must provdide an argument table when creating CreatePortfolioShareInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PortfolioId"] = _PortfolioId,
-		["AccountId"] = _AccountId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PortfolioId"] = args["PortfolioId"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertCreatePortfolioShareInput(t)
 	return t
@@ -531,13 +579,16 @@ end
 
 --- Create a structure of type AccessLevelFilter
 -- <p>The access level to limit results.</p>
--- @param _Value [AccessLevelFilterValue] <p>Specifies the user to which the access level applies. A value of <code>Self</code> is currently supported.</p>
--- @param _Key [AccessLevelFilterKey] <p>Specifies the access level.</p> <p> <code>Account</code> allows results at the account level. </p> <p> <code>Role</code> allows results based on the federated role of the specified user.</p> <p> <code>User</code> allows results limited to the specified user. </p>
-function M.AccessLevelFilter(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessLevelFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [AccessLevelFilterValue] <p>Specifies the user to which the access level applies. A value of <code>Self</code> is currently supported.</p>
+-- * Key [AccessLevelFilterKey] <p>Specifies the access level.</p> <p> <code>Account</code> allows results at the account level. </p> <p> <code>Role</code> allows results based on the federated role of the specified user.</p> <p> <code>User</code> allows results limited to the specified user. </p>
+-- @return AccessLevelFilter structure as a key-value pair table
+function M.AccessLevelFilter(args)
+	assert(args, "You must provdide an argument table when creating AccessLevelFilter")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertAccessLevelFilter(t)
 	return t
@@ -559,17 +610,20 @@ end
 
 --- Create a structure of type DescribeProvisioningParametersOutput
 --  
--- @param _TagOptions [TagOptionSummaries] <p>List of TagOptions associated with the provisioned provisioning parameters.</p>
--- @param _ProvisioningArtifactParameters [ProvisioningArtifactParameters] <p>The list of parameters used to successfully provision the product. Each parameter includes a list of allowable values and additional metadata about each parameter.</p>
--- @param _ConstraintSummaries [ConstraintSummaries] <p>The list of constraint summaries that apply to provisioning this product.</p>
--- @param _UsageInstructions [UsageInstructions] <p>Any additional metadata specifically related to the provisioning of the product. For example, see the <code>Version</code> field of the CloudFormation template.</p>
-function M.DescribeProvisioningParametersOutput(_TagOptions, _ProvisioningArtifactParameters, _ConstraintSummaries, _UsageInstructions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProvisioningParametersOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagOptions [TagOptionSummaries] <p>List of TagOptions associated with the provisioned provisioning parameters.</p>
+-- * ProvisioningArtifactParameters [ProvisioningArtifactParameters] <p>The list of parameters used to successfully provision the product. Each parameter includes a list of allowable values and additional metadata about each parameter.</p>
+-- * ConstraintSummaries [ConstraintSummaries] <p>The list of constraint summaries that apply to provisioning this product.</p>
+-- * UsageInstructions [UsageInstructions] <p>Any additional metadata specifically related to the provisioning of the product. For example, see the <code>Version</code> field of the CloudFormation template.</p>
+-- @return DescribeProvisioningParametersOutput structure as a key-value pair table
+function M.DescribeProvisioningParametersOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProvisioningParametersOutput")
 	local t = { 
-		["TagOptions"] = _TagOptions,
-		["ProvisioningArtifactParameters"] = _ProvisioningArtifactParameters,
-		["ConstraintSummaries"] = _ConstraintSummaries,
-		["UsageInstructions"] = _UsageInstructions,
+		["TagOptions"] = args["TagOptions"],
+		["ProvisioningArtifactParameters"] = args["ProvisioningArtifactParameters"],
+		["ConstraintSummaries"] = args["ConstraintSummaries"],
+		["UsageInstructions"] = args["UsageInstructions"],
 	}
 	asserts.AssertDescribeProvisioningParametersOutput(t)
 	return t
@@ -588,11 +642,14 @@ end
 
 --- Create a structure of type UpdateTagOptionOutput
 --  
--- @param _TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
-function M.UpdateTagOptionOutput(_TagOptionDetail, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTagOptionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
+-- @return UpdateTagOptionOutput structure as a key-value pair table
+function M.UpdateTagOptionOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateTagOptionOutput")
 	local t = { 
-		["TagOptionDetail"] = _TagOptionDetail,
+		["TagOptionDetail"] = args["TagOptionDetail"],
 	}
 	asserts.AssertUpdateTagOptionOutput(t)
 	return t
@@ -616,20 +673,23 @@ end
 
 --- Create a structure of type TerminateProvisionedProductInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _ProvisionedProductId [Id] <p>The identifier of the ProvisionedProduct object to terminate. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
--- @param _TerminateToken [IdempotencyToken] <p>An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the ProvisionedProduct object is terminated, further requests to terminate the same ProvisionedProduct object always return <b>ResourceNotFound</b> regardless of the value of <code>TerminateToken</code>.</p>
--- @param _IgnoreErrors [IgnoreErrors] <p>If set to true, AWS Service Catalog stops managing the specified ProvisionedProduct object even if it cannot delete the underlying resources.</p>
--- @param _ProvisionedProductName [ProvisionedProductNameOrArn] <p>The name of the ProvisionedProduct object to terminate. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
--- Required parameter: TerminateToken
-function M.TerminateProvisionedProductInput(_AcceptLanguage, _ProvisionedProductId, _TerminateToken, _IgnoreErrors, _ProvisionedProductName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminateProvisionedProductInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * ProvisionedProductId [Id] <p>The identifier of the ProvisionedProduct object to terminate. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+-- * TerminateToken [IdempotencyToken] <p>An idempotency token that uniquely identifies the termination request. This token is only valid during the termination process. After the ProvisionedProduct object is terminated, further requests to terminate the same ProvisionedProduct object always return <b>ResourceNotFound</b> regardless of the value of <code>TerminateToken</code>.</p>
+-- * IgnoreErrors [IgnoreErrors] <p>If set to true, AWS Service Catalog stops managing the specified ProvisionedProduct object even if it cannot delete the underlying resources.</p>
+-- * ProvisionedProductName [ProvisionedProductNameOrArn] <p>The name of the ProvisionedProduct object to terminate. Specify either <code>ProvisionedProductName</code> or <code>ProvisionedProductId</code>, but not both.</p>
+-- Required key: TerminateToken
+-- @return TerminateProvisionedProductInput structure as a key-value pair table
+function M.TerminateProvisionedProductInput(args)
+	assert(args, "You must provdide an argument table when creating TerminateProvisionedProductInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["ProvisionedProductId"] = _ProvisionedProductId,
-		["TerminateToken"] = _TerminateToken,
-		["IgnoreErrors"] = _IgnoreErrors,
-		["ProvisionedProductName"] = _ProvisionedProductName,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["ProvisionedProductId"] = args["ProvisionedProductId"],
+		["TerminateToken"] = args["TerminateToken"],
+		["IgnoreErrors"] = args["IgnoreErrors"],
+		["ProvisionedProductName"] = args["ProvisionedProductName"],
 	}
 	asserts.AssertTerminateProvisionedProductInput(t)
 	return t
@@ -652,18 +712,21 @@ end
 
 --- Create a structure of type DescribeRecordInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _Id [Id] <p>The record identifier of the ProvisionedProduct object for which to retrieve output information. This is the <code>RecordDetail.RecordId</code> obtained from the request operation's response.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- Required parameter: Id
-function M.DescribeRecordInput(_AcceptLanguage, _PageToken, _Id, _PageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRecordInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * Id [Id] <p>The record identifier of the ProvisionedProduct object for which to retrieve output information. This is the <code>RecordDetail.RecordId</code> obtained from the request operation's response.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- Required key: Id
+-- @return DescribeRecordInput structure as a key-value pair table
+function M.DescribeRecordInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeRecordInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PageToken"] = _PageToken,
-		["Id"] = _Id,
-		["PageSize"] = _PageSize,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PageToken"] = args["PageToken"],
+		["Id"] = args["Id"],
+		["PageSize"] = args["PageSize"],
 	}
 	asserts.AssertDescribeRecordInput(t)
 	return t
@@ -684,14 +747,17 @@ end
 
 --- Create a structure of type DescribeConstraintInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The identifier of the constraint.</p>
--- Required parameter: Id
-function M.DescribeConstraintInput(_AcceptLanguage, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConstraintInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The identifier of the constraint.</p>
+-- Required key: Id
+-- @return DescribeConstraintInput structure as a key-value pair table
+function M.DescribeConstraintInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeConstraintInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDescribeConstraintInput(t)
 	return t
@@ -709,8 +775,11 @@ end
 
 --- Create a structure of type InvalidStateException
 -- <p>An attempt was made to modify a resource that is in an invalid state. Inspect the resource you are using for this operation to ensure that all resource states are valid before retrying the operation.</p>
-function M.InvalidStateException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidStateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidStateException structure as a key-value pair table
+function M.InvalidStateException(args)
+	assert(args, "You must provdide an argument table when creating InvalidStateException")
 	local t = { 
 	}
 	asserts.AssertInvalidStateException(t)
@@ -731,13 +800,16 @@ end
 
 --- Create a structure of type TagOptionSummary
 -- <p>The TagOption summary key-value pair.</p>
--- @param _Values [TagOptionValues] <p>The TagOptionSummary value.</p>
--- @param _Key [TagOptionKey] <p>The TagOptionSummary key.</p>
-function M.TagOptionSummary(_Values, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagOptionSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Values [TagOptionValues] <p>The TagOptionSummary value.</p>
+-- * Key [TagOptionKey] <p>The TagOptionSummary key.</p>
+-- @return TagOptionSummary structure as a key-value pair table
+function M.TagOptionSummary(args)
+	assert(args, "You must provdide an argument table when creating TagOptionSummary")
 	local t = { 
-		["Values"] = _Values,
-		["Key"] = _Key,
+		["Values"] = args["Values"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTagOptionSummary(t)
 	return t
@@ -757,13 +829,16 @@ end
 
 --- Create a structure of type UpdateProductOutput
 --  
--- @param _ProductViewDetail [ProductViewDetail] <p>The resulting detailed product view information.</p>
--- @param _Tags [Tags] <p>Tags associated with the product.</p>
-function M.UpdateProductOutput(_ProductViewDetail, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProductOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProductViewDetail [ProductViewDetail] <p>The resulting detailed product view information.</p>
+-- * Tags [Tags] <p>Tags associated with the product.</p>
+-- @return UpdateProductOutput structure as a key-value pair table
+function M.UpdateProductOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateProductOutput")
 	local t = { 
-		["ProductViewDetail"] = _ProductViewDetail,
-		["Tags"] = _Tags,
+		["ProductViewDetail"] = args["ProductViewDetail"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertUpdateProductOutput(t)
 	return t
@@ -781,8 +856,11 @@ end
 
 --- Create a structure of type DeletePortfolioOutput
 --  
-function M.DeletePortfolioOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePortfolioOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeletePortfolioOutput structure as a key-value pair table
+function M.DeletePortfolioOutput(args)
+	assert(args, "You must provdide an argument table when creating DeletePortfolioOutput")
 	local t = { 
 	}
 	asserts.AssertDeletePortfolioOutput(t)
@@ -807,19 +885,22 @@ end
 
 --- Create a structure of type DescribeProvisioningArtifactInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _ProvisioningArtifactId [Id] <p>The identifier of the provisioning artifact. This is sometimes referred to as the product version.</p>
--- @param _Verbose [Verbose] <p>Enable a verbose level of details for the provisioning artifact.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: ProvisioningArtifactId
--- Required parameter: ProductId
-function M.DescribeProvisioningArtifactInput(_AcceptLanguage, _ProvisioningArtifactId, _Verbose, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProvisioningArtifactInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * ProvisioningArtifactId [Id] <p>The identifier of the provisioning artifact. This is sometimes referred to as the product version.</p>
+-- * Verbose [Verbose] <p>Enable a verbose level of details for the provisioning artifact.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: ProvisioningArtifactId
+-- Required key: ProductId
+-- @return DescribeProvisioningArtifactInput structure as a key-value pair table
+function M.DescribeProvisioningArtifactInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProvisioningArtifactInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["ProvisioningArtifactId"] = _ProvisioningArtifactId,
-		["Verbose"] = _Verbose,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
+		["Verbose"] = args["Verbose"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertDescribeProvisioningArtifactInput(t)
 	return t
@@ -840,15 +921,18 @@ end
 
 --- Create a structure of type CreateProductOutput
 --  
--- @param _ProductViewDetail [ProductViewDetail] <p>The resulting detailed product view information.</p>
--- @param _ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>The resulting detailed provisioning artifact information.</p>
--- @param _Tags [Tags] <p>Tags successfully associated with the new product.</p>
-function M.CreateProductOutput(_ProductViewDetail, _ProvisioningArtifactDetail, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateProductOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProductViewDetail [ProductViewDetail] <p>The resulting detailed product view information.</p>
+-- * ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>The resulting detailed provisioning artifact information.</p>
+-- * Tags [Tags] <p>Tags successfully associated with the new product.</p>
+-- @return CreateProductOutput structure as a key-value pair table
+function M.CreateProductOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateProductOutput")
 	local t = { 
-		["ProductViewDetail"] = _ProductViewDetail,
-		["ProvisioningArtifactDetail"] = _ProvisioningArtifactDetail,
-		["Tags"] = _Tags,
+		["ProductViewDetail"] = args["ProductViewDetail"],
+		["ProvisioningArtifactDetail"] = args["ProvisioningArtifactDetail"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertCreateProductOutput(t)
 	return t
@@ -868,13 +952,16 @@ end
 
 --- Create a structure of type ProvisioningParameter
 -- <p>The parameter key-value pairs used to provision a product.</p>
--- @param _Value [ParameterValue] <p>The value to use for provisioning. Any constraints on this value can be found in <code>ProvisioningArtifactParameter</code> for <code>Key</code>.</p>
--- @param _Key [ParameterKey] <p>The <code>ProvisioningArtifactParameter.ParameterKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
-function M.ProvisioningParameter(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningParameter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [ParameterValue] <p>The value to use for provisioning. Any constraints on this value can be found in <code>ProvisioningArtifactParameter</code> for <code>Key</code>.</p>
+-- * Key [ParameterKey] <p>The <code>ProvisioningArtifactParameter.ParameterKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
+-- @return ProvisioningParameter structure as a key-value pair table
+function M.ProvisioningParameter(args)
+	assert(args, "You must provdide an argument table when creating ProvisioningParameter")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertProvisioningParameter(t)
 	return t
@@ -894,13 +981,16 @@ end
 
 --- Create a structure of type ListPortfoliosForProductOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
-function M.ListPortfoliosForProductOutput(_NextPageToken, _PortfolioDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfoliosForProductOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
+-- @return ListPortfoliosForProductOutput structure as a key-value pair table
+function M.ListPortfoliosForProductOutput(args)
+	assert(args, "You must provdide an argument table when creating ListPortfoliosForProductOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["PortfolioDetails"] = _PortfolioDetails,
+		["NextPageToken"] = args["NextPageToken"],
+		["PortfolioDetails"] = args["PortfolioDetails"],
 	}
 	asserts.AssertListPortfoliosForProductOutput(t)
 	return t
@@ -921,14 +1011,17 @@ end
 
 --- Create a structure of type DeleteProductInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The identifier of the product for the delete request.</p>
--- Required parameter: Id
-function M.DeleteProductInput(_AcceptLanguage, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProductInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The identifier of the product for the delete request.</p>
+-- Required key: Id
+-- @return DeleteProductInput structure as a key-value pair table
+function M.DeleteProductInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteProductInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDeleteProductInput(t)
 	return t
@@ -946,8 +1039,11 @@ end
 
 --- Create a structure of type DeleteProductOutput
 --  
-function M.DeleteProductOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProductOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteProductOutput structure as a key-value pair table
+function M.DeleteProductOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteProductOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteProductOutput(t)
@@ -974,24 +1070,27 @@ end
 
 --- Create a structure of type UpdatePortfolioInput
 --  
--- @param _RemoveTags [TagKeys] <p>Tags to remove from the existing list of tags associated with the portfolio.</p>
--- @param _DisplayName [PortfolioDisplayName] <p>The name to use for display purposes.</p>
--- @param _AddTags [AddTags] <p>Tags to add to the existing list of tags associated with the portfolio.</p>
--- @param _ProviderName [ProviderName] <p>The updated name of the portfolio provider.</p>
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The identifier of the portfolio for the update request.</p>
--- @param _Description [PortfolioDescription] <p>The updated text description of the portfolio.</p>
--- Required parameter: Id
-function M.UpdatePortfolioInput(_RemoveTags, _DisplayName, _AddTags, _ProviderName, _AcceptLanguage, _Id, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePortfolioInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RemoveTags [TagKeys] <p>Tags to remove from the existing list of tags associated with the portfolio.</p>
+-- * DisplayName [PortfolioDisplayName] <p>The name to use for display purposes.</p>
+-- * AddTags [AddTags] <p>Tags to add to the existing list of tags associated with the portfolio.</p>
+-- * ProviderName [ProviderName] <p>The updated name of the portfolio provider.</p>
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The identifier of the portfolio for the update request.</p>
+-- * Description [PortfolioDescription] <p>The updated text description of the portfolio.</p>
+-- Required key: Id
+-- @return UpdatePortfolioInput structure as a key-value pair table
+function M.UpdatePortfolioInput(args)
+	assert(args, "You must provdide an argument table when creating UpdatePortfolioInput")
 	local t = { 
-		["RemoveTags"] = _RemoveTags,
-		["DisplayName"] = _DisplayName,
-		["AddTags"] = _AddTags,
-		["ProviderName"] = _ProviderName,
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
-		["Description"] = _Description,
+		["RemoveTags"] = args["RemoveTags"],
+		["DisplayName"] = args["DisplayName"],
+		["AddTags"] = args["AddTags"],
+		["ProviderName"] = args["ProviderName"],
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdatePortfolioInput(t)
 	return t
@@ -1010,11 +1109,14 @@ end
 
 --- Create a structure of type ProvisionProductOutput
 --  
--- @param _RecordDetail [RecordDetail] <p>The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors that the request encountered. </p>
-function M.ProvisionProductOutput(_RecordDetail, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionProductOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RecordDetail [RecordDetail] <p>The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors that the request encountered. </p>
+-- @return ProvisionProductOutput structure as a key-value pair table
+function M.ProvisionProductOutput(args)
+	assert(args, "You must provdide an argument table when creating ProvisionProductOutput")
 	local t = { 
-		["RecordDetail"] = _RecordDetail,
+		["RecordDetail"] = args["RecordDetail"],
 	}
 	asserts.AssertProvisionProductOutput(t)
 	return t
@@ -1032,8 +1134,11 @@ end
 
 --- Create a structure of type DuplicateResourceException
 -- <p>The specified resource is a duplicate.</p>
-function M.DuplicateResourceException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateResourceException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DuplicateResourceException structure as a key-value pair table
+function M.DuplicateResourceException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateResourceException")
 	local t = { 
 	}
 	asserts.AssertDuplicateResourceException(t)
@@ -1052,8 +1157,11 @@ end
 
 --- Create a structure of type InvalidParametersException
 -- <p>One or more parameters provided to the operation are invalid.</p>
-function M.InvalidParametersException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParametersException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidParametersException structure as a key-value pair table
+function M.InvalidParametersException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParametersException")
 	local t = { 
 	}
 	asserts.AssertInvalidParametersException(t)
@@ -1074,13 +1182,16 @@ end
 
 --- Create a structure of type ListLaunchPathsOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _LaunchPathSummaries [LaunchPathSummaries] <p>List of launch path information summaries for the specified <code>PageToken</code>.</p>
-function M.ListLaunchPathsOutput(_NextPageToken, _LaunchPathSummaries, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLaunchPathsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * LaunchPathSummaries [LaunchPathSummaries] <p>List of launch path information summaries for the specified <code>PageToken</code>.</p>
+-- @return ListLaunchPathsOutput structure as a key-value pair table
+function M.ListLaunchPathsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListLaunchPathsOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["LaunchPathSummaries"] = _LaunchPathSummaries,
+		["NextPageToken"] = args["NextPageToken"],
+		["LaunchPathSummaries"] = args["LaunchPathSummaries"],
 	}
 	asserts.AssertListLaunchPathsOutput(t)
 	return t
@@ -1109,31 +1220,34 @@ end
 
 --- Create a structure of type ProductViewSummary
 -- <p>The summary metadata about the specified product.</p>
--- @param _SupportDescription [SupportDescription] <p>The description of the support for this Product.</p>
--- @param _Name [ProductViewName] <p>The name of the product.</p>
--- @param _HasDefaultPath [HasDefaultPath] <p>A value of <code>false</code> indicates that the product does not have a default path, while a value of <code>true</code> indicates that it does. If it's false, call <a>ListLaunchPaths</a> to disambiguate between paths. If true, <a>ListLaunchPaths</a> is not required, and the output of the <a>ProductViewSummary</a> operation can be used directly with <a>DescribeProvisioningParameters</a>.</p>
--- @param _ShortDescription [ProductViewShortDescription] <p>Short description of the product.</p>
--- @param _SupportUrl [SupportUrl] <p>The URL information to obtain support for this Product.</p>
--- @param _Distributor [ProductViewDistributor] <p>The distributor of the product. Contact the product administrator for the significance of this value.</p>
--- @param _Owner [ProductViewOwner] <p>The owner of the product. Contact the product administrator for the significance of this value.</p>
--- @param _SupportEmail [SupportEmail] <p>The email contact information to obtain support for this Product.</p>
--- @param _Type [ProductType] <p>The product type. Contact the product administrator for the significance of this value. If this value is <code>MARKETPLACE</code>, the product was created by AWS Marketplace.</p>
--- @param _Id [Id] <p>The product view identifier.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
-function M.ProductViewSummary(_SupportDescription, _Name, _HasDefaultPath, _ShortDescription, _SupportUrl, _Distributor, _Owner, _SupportEmail, _Type, _Id, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProductViewSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SupportDescription [SupportDescription] <p>The description of the support for this Product.</p>
+-- * Name [ProductViewName] <p>The name of the product.</p>
+-- * HasDefaultPath [HasDefaultPath] <p>A value of <code>false</code> indicates that the product does not have a default path, while a value of <code>true</code> indicates that it does. If it's false, call <a>ListLaunchPaths</a> to disambiguate between paths. If true, <a>ListLaunchPaths</a> is not required, and the output of the <a>ProductViewSummary</a> operation can be used directly with <a>DescribeProvisioningParameters</a>.</p>
+-- * ShortDescription [ProductViewShortDescription] <p>Short description of the product.</p>
+-- * SupportUrl [SupportUrl] <p>The URL information to obtain support for this Product.</p>
+-- * Distributor [ProductViewDistributor] <p>The distributor of the product. Contact the product administrator for the significance of this value.</p>
+-- * Owner [ProductViewOwner] <p>The owner of the product. Contact the product administrator for the significance of this value.</p>
+-- * SupportEmail [SupportEmail] <p>The email contact information to obtain support for this Product.</p>
+-- * Type [ProductType] <p>The product type. Contact the product administrator for the significance of this value. If this value is <code>MARKETPLACE</code>, the product was created by AWS Marketplace.</p>
+-- * Id [Id] <p>The product view identifier.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- @return ProductViewSummary structure as a key-value pair table
+function M.ProductViewSummary(args)
+	assert(args, "You must provdide an argument table when creating ProductViewSummary")
 	local t = { 
-		["SupportDescription"] = _SupportDescription,
-		["Name"] = _Name,
-		["HasDefaultPath"] = _HasDefaultPath,
-		["ShortDescription"] = _ShortDescription,
-		["SupportUrl"] = _SupportUrl,
-		["Distributor"] = _Distributor,
-		["Owner"] = _Owner,
-		["SupportEmail"] = _SupportEmail,
-		["Type"] = _Type,
-		["Id"] = _Id,
-		["ProductId"] = _ProductId,
+		["SupportDescription"] = args["SupportDescription"],
+		["Name"] = args["Name"],
+		["HasDefaultPath"] = args["HasDefaultPath"],
+		["ShortDescription"] = args["ShortDescription"],
+		["SupportUrl"] = args["SupportUrl"],
+		["Distributor"] = args["Distributor"],
+		["Owner"] = args["Owner"],
+		["SupportEmail"] = args["SupportEmail"],
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertProductViewSummary(t)
 	return t
@@ -1155,17 +1269,20 @@ end
 
 --- Create a structure of type ConstraintDetail
 -- <p>Detailed constraint information.</p>
--- @param _Owner [AccountId] <p>The owner of the constraint.</p>
--- @param _ConstraintId [Id] <p>The identifier of the constraint.</p>
--- @param _Type [ConstraintType] <p>The type of the constraint.</p>
--- @param _Description [ConstraintDescription] <p>The text description of the constraint.</p>
-function M.ConstraintDetail(_Owner, _ConstraintId, _Type, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ConstraintDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Owner [AccountId] <p>The owner of the constraint.</p>
+-- * ConstraintId [Id] <p>The identifier of the constraint.</p>
+-- * Type [ConstraintType] <p>The type of the constraint.</p>
+-- * Description [ConstraintDescription] <p>The text description of the constraint.</p>
+-- @return ConstraintDetail structure as a key-value pair table
+function M.ConstraintDetail(args)
+	assert(args, "You must provdide an argument table when creating ConstraintDetail")
 	local t = { 
-		["Owner"] = _Owner,
-		["ConstraintId"] = _ConstraintId,
-		["Type"] = _Type,
-		["Description"] = _Description,
+		["Owner"] = args["Owner"],
+		["ConstraintId"] = args["ConstraintId"],
+		["Type"] = args["Type"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertConstraintDetail(t)
 	return t
@@ -1187,15 +1304,18 @@ end
 
 --- Create a structure of type Tag
 -- <p>Key-value pairs to associate with this provisioning. These tags are entirely discretionary and are propagated to the resources created in the provisioning.</p>
--- @param _Value [TagValue] <p>The desired value for this key.</p>
--- @param _Key [TagKey] <p>The <code>ProvisioningArtifactParameter.TagKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
--- Required parameter: Key
--- Required parameter: Value
-function M.Tag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Tag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [TagValue] <p>The desired value for this key.</p>
+-- * Key [TagKey] <p>The <code>ProvisioningArtifactParameter.TagKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
+-- Required key: Key
+-- Required key: Value
+-- @return Tag structure as a key-value pair table
+function M.Tag(args)
+	assert(args, "You must provdide an argument table when creating Tag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertTag(t)
 	return t
@@ -1216,14 +1336,17 @@ end
 
 --- Create a structure of type ListProvisioningArtifactsInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: ProductId
-function M.ListProvisioningArtifactsInput(_AcceptLanguage, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListProvisioningArtifactsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: ProductId
+-- @return ListProvisioningArtifactsInput structure as a key-value pair table
+function M.ListProvisioningArtifactsInput(args)
+	assert(args, "You must provdide an argument table when creating ListProvisioningArtifactsInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertListProvisioningArtifactsInput(t)
 	return t
@@ -1246,17 +1369,20 @@ end
 
 --- Create a structure of type DisassociateProductFromPortfolioInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: ProductId
--- Required parameter: PortfolioId
-function M.DisassociateProductFromPortfolioInput(_AcceptLanguage, _PortfolioId, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateProductFromPortfolioInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: ProductId
+-- Required key: PortfolioId
+-- @return DisassociateProductFromPortfolioInput structure as a key-value pair table
+function M.DisassociateProductFromPortfolioInput(args)
+	assert(args, "You must provdide an argument table when creating DisassociateProductFromPortfolioInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PortfolioId"] = _PortfolioId,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PortfolioId"] = args["PortfolioId"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertDisassociateProductFromPortfolioInput(t)
 	return t
@@ -1277,15 +1403,18 @@ end
 
 --- Create a structure of type DescribeRecordOutput
 --  
--- @param _RecordDetail [RecordDetail] <p>Detailed record information for the specified product. </p>
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _RecordOutputs [RecordOutputs] <p>A list of outputs for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.</p>
-function M.DescribeRecordOutput(_RecordDetail, _NextPageToken, _RecordOutputs, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeRecordOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RecordDetail [RecordDetail] <p>Detailed record information for the specified product. </p>
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * RecordOutputs [RecordOutputs] <p>A list of outputs for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.</p>
+-- @return DescribeRecordOutput structure as a key-value pair table
+function M.DescribeRecordOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeRecordOutput")
 	local t = { 
-		["RecordDetail"] = _RecordDetail,
-		["NextPageToken"] = _NextPageToken,
-		["RecordOutputs"] = _RecordOutputs,
+		["RecordDetail"] = args["RecordDetail"],
+		["NextPageToken"] = args["NextPageToken"],
+		["RecordOutputs"] = args["RecordOutputs"],
 	}
 	asserts.AssertDescribeRecordOutput(t)
 	return t
@@ -1308,19 +1437,22 @@ end
 
 --- Create a structure of type ProvisioningArtifactSummary
 -- <p>Stores summary information about a provisioning artifact.</p>
--- @param _CreatedTime [ProvisioningArtifactCreatedTime] <p>The UTC timestamp of the creation time.</p>
--- @param _Description [ProvisioningArtifactDescription] <p>The description of the provisioning artifact.</p>
--- @param _ProvisioningArtifactMetadata [ProvisioningArtifactInfo] <p>The provisioning artifact metadata. This data is used with products created by AWS Marketplace.</p>
--- @param _Id [Id] <p>The identifier of the provisioning artifact.</p>
--- @param _Name [ProvisioningArtifactName] <p>The name of the provisioning artifact.</p>
-function M.ProvisioningArtifactSummary(_CreatedTime, _Description, _ProvisioningArtifactMetadata, _Id, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningArtifactSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreatedTime [ProvisioningArtifactCreatedTime] <p>The UTC timestamp of the creation time.</p>
+-- * Description [ProvisioningArtifactDescription] <p>The description of the provisioning artifact.</p>
+-- * ProvisioningArtifactMetadata [ProvisioningArtifactInfo] <p>The provisioning artifact metadata. This data is used with products created by AWS Marketplace.</p>
+-- * Id [Id] <p>The identifier of the provisioning artifact.</p>
+-- * Name [ProvisioningArtifactName] <p>The name of the provisioning artifact.</p>
+-- @return ProvisioningArtifactSummary structure as a key-value pair table
+function M.ProvisioningArtifactSummary(args)
+	assert(args, "You must provdide an argument table when creating ProvisioningArtifactSummary")
 	local t = { 
-		["CreatedTime"] = _CreatedTime,
-		["Description"] = _Description,
-		["ProvisioningArtifactMetadata"] = _ProvisioningArtifactMetadata,
-		["Id"] = _Id,
-		["Name"] = _Name,
+		["CreatedTime"] = args["CreatedTime"],
+		["Description"] = args["Description"],
+		["ProvisioningArtifactMetadata"] = args["ProvisioningArtifactMetadata"],
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertProvisioningArtifactSummary(t)
 	return t
@@ -1346,25 +1478,28 @@ end
 
 --- Create a structure of type SearchProductsAsAdminInput
 --  
--- @param _ProductSource [ProductSource] <p>Access level of the source of the product.</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _SortBy [ProductViewSortBy] <p>The sort field specifier. If no value is specified, results are not sorted.</p>
--- @param _Filters [ProductViewFilters] <p>The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the administrator has access.</p>
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _SortOrder [SortOrder] <p>The sort order specifier. If no value is specified, results are not sorted.</p>
-function M.SearchProductsAsAdminInput(_ProductSource, _PortfolioId, _PageSize, _PageToken, _SortBy, _Filters, _AcceptLanguage, _SortOrder, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchProductsAsAdminInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProductSource [ProductSource] <p>Access level of the source of the product.</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * SortBy [ProductViewSortBy] <p>The sort field specifier. If no value is specified, results are not sorted.</p>
+-- * Filters [ProductViewFilters] <p>The list of filters with which to limit search results. If no search filters are specified, the output is all the products to which the administrator has access.</p>
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * SortOrder [SortOrder] <p>The sort order specifier. If no value is specified, results are not sorted.</p>
+-- @return SearchProductsAsAdminInput structure as a key-value pair table
+function M.SearchProductsAsAdminInput(args)
+	assert(args, "You must provdide an argument table when creating SearchProductsAsAdminInput")
 	local t = { 
-		["ProductSource"] = _ProductSource,
-		["PortfolioId"] = _PortfolioId,
-		["PageSize"] = _PageSize,
-		["PageToken"] = _PageToken,
-		["SortBy"] = _SortBy,
-		["Filters"] = _Filters,
-		["AcceptLanguage"] = _AcceptLanguage,
-		["SortOrder"] = _SortOrder,
+		["ProductSource"] = args["ProductSource"],
+		["PortfolioId"] = args["PortfolioId"],
+		["PageSize"] = args["PageSize"],
+		["PageToken"] = args["PageToken"],
+		["SortBy"] = args["SortBy"],
+		["Filters"] = args["Filters"],
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["SortOrder"] = args["SortOrder"],
 	}
 	asserts.AssertSearchProductsAsAdminInput(t)
 	return t
@@ -1385,15 +1520,18 @@ end
 
 --- Create a structure of type UpdateProvisioningArtifactOutput
 --  
--- @param _ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>The resulting detailed provisioning artifact information.</p>
--- @param _Info [ProvisioningArtifactInfo] <p>Additional information about the provisioning artifact update request.</p>
--- @param _Status [Status] <p>The status of the current request.</p>
-function M.UpdateProvisioningArtifactOutput(_ProvisioningArtifactDetail, _Info, _Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProvisioningArtifactOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>The resulting detailed provisioning artifact information.</p>
+-- * Info [ProvisioningArtifactInfo] <p>Additional information about the provisioning artifact update request.</p>
+-- * Status [Status] <p>The status of the current request.</p>
+-- @return UpdateProvisioningArtifactOutput structure as a key-value pair table
+function M.UpdateProvisioningArtifactOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateProvisioningArtifactOutput")
 	local t = { 
-		["ProvisioningArtifactDetail"] = _ProvisioningArtifactDetail,
-		["Info"] = _Info,
-		["Status"] = _Status,
+		["ProvisioningArtifactDetail"] = args["ProvisioningArtifactDetail"],
+		["Info"] = args["Info"],
+		["Status"] = args["Status"],
 	}
 	asserts.AssertUpdateProvisioningArtifactOutput(t)
 	return t
@@ -1417,19 +1555,22 @@ end
 
 --- Create a structure of type AssociateProductWithPortfolioInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _SourcePortfolioId [Id] <p>The identifier of the source portfolio to use with this association.</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: ProductId
--- Required parameter: PortfolioId
-function M.AssociateProductWithPortfolioInput(_AcceptLanguage, _SourcePortfolioId, _PortfolioId, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateProductWithPortfolioInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * SourcePortfolioId [Id] <p>The identifier of the source portfolio to use with this association.</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: ProductId
+-- Required key: PortfolioId
+-- @return AssociateProductWithPortfolioInput structure as a key-value pair table
+function M.AssociateProductWithPortfolioInput(args)
+	assert(args, "You must provdide an argument table when creating AssociateProductWithPortfolioInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["SourcePortfolioId"] = _SourcePortfolioId,
-		["PortfolioId"] = _PortfolioId,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["SourcePortfolioId"] = args["SourcePortfolioId"],
+		["PortfolioId"] = args["PortfolioId"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertAssociateProductWithPortfolioInput(t)
 	return t
@@ -1448,11 +1589,14 @@ end
 
 --- Create a structure of type ParameterConstraints
 -- <p>The constraints that the administrator has put on the parameter.</p>
--- @param _AllowedValues [AllowedValues] <p>The values that the administrator has allowed for the parameter.</p>
-function M.ParameterConstraints(_AllowedValues, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ParameterConstraints")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AllowedValues [AllowedValues] <p>The values that the administrator has allowed for the parameter.</p>
+-- @return ParameterConstraints structure as a key-value pair table
+function M.ParameterConstraints(args)
+	assert(args, "You must provdide an argument table when creating ParameterConstraints")
 	local t = { 
-		["AllowedValues"] = _AllowedValues,
+		["AllowedValues"] = args["AllowedValues"],
 	}
 	asserts.AssertParameterConstraints(t)
 	return t
@@ -1475,18 +1619,21 @@ end
 
 --- Create a structure of type ListResourcesForTagOptionInput
 --  
--- @param _ResourceType [ResourceType] <p>Resource type.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- @param _TagOptionId [TagOptionId] <p>Identifier of the TagOption.</p>
--- Required parameter: TagOptionId
-function M.ListResourcesForTagOptionInput(_ResourceType, _PageToken, _PageSize, _TagOptionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListResourcesForTagOptionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceType [ResourceType] <p>Resource type.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- * TagOptionId [TagOptionId] <p>Identifier of the TagOption.</p>
+-- Required key: TagOptionId
+-- @return ListResourcesForTagOptionInput structure as a key-value pair table
+function M.ListResourcesForTagOptionInput(args)
+	assert(args, "You must provdide an argument table when creating ListResourcesForTagOptionInput")
 	local t = { 
-		["ResourceType"] = _ResourceType,
-		["PageToken"] = _PageToken,
-		["PageSize"] = _PageSize,
-		["TagOptionId"] = _TagOptionId,
+		["ResourceType"] = args["ResourceType"],
+		["PageToken"] = args["PageToken"],
+		["PageSize"] = args["PageSize"],
+		["TagOptionId"] = args["TagOptionId"],
 	}
 	asserts.AssertListResourcesForTagOptionInput(t)
 	return t
@@ -1508,16 +1655,19 @@ end
 
 --- Create a structure of type UpdateTagOptionInput
 --  
--- @param _Active [TagOptionActive] <p>The updated active state.</p>
--- @param _Id [TagOptionId] <p>The identifier of the constraint to update.</p>
--- @param _Value [TagOptionValue] <p>The updated value.</p>
--- Required parameter: Id
-function M.UpdateTagOptionInput(_Active, _Id, _Value, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateTagOptionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Active [TagOptionActive] <p>The updated active state.</p>
+-- * Id [TagOptionId] <p>The identifier of the constraint to update.</p>
+-- * Value [TagOptionValue] <p>The updated value.</p>
+-- Required key: Id
+-- @return UpdateTagOptionInput structure as a key-value pair table
+function M.UpdateTagOptionInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateTagOptionInput")
 	local t = { 
-		["Active"] = _Active,
-		["Id"] = _Id,
-		["Value"] = _Value,
+		["Active"] = args["Active"],
+		["Id"] = args["Id"],
+		["Value"] = args["Value"],
 	}
 	asserts.AssertUpdateTagOptionInput(t)
 	return t
@@ -1537,13 +1687,16 @@ end
 
 --- Create a structure of type RecordTag
 -- <p>A tag associated with the record, stored as a key-value pair.</p>
--- @param _Value [RecordTagValue] <p>The value for this tag.</p>
--- @param _Key [RecordTagKey] <p>The key for this tag.</p>
-function M.RecordTag(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecordTag")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [RecordTagValue] <p>The value for this tag.</p>
+-- * Key [RecordTagKey] <p>The key for this tag.</p>
+-- @return RecordTag structure as a key-value pair table
+function M.RecordTag(args)
+	assert(args, "You must provdide an argument table when creating RecordTag")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertRecordTag(t)
 	return t
@@ -1561,8 +1714,11 @@ end
 
 --- Create a structure of type TagOptionNotMigratedException
 -- <p>An operation requiring TagOptions failed because the TagOptions migration process has not been performed for this account. Please use the AWS console to perform the migration process before retrying the operation.</p>
-function M.TagOptionNotMigratedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagOptionNotMigratedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return TagOptionNotMigratedException structure as a key-value pair table
+function M.TagOptionNotMigratedException(args)
+	assert(args, "You must provdide an argument table when creating TagOptionNotMigratedException")
 	local t = { 
 	}
 	asserts.AssertTagOptionNotMigratedException(t)
@@ -1586,18 +1742,21 @@ end
 
 --- Create a structure of type ListPortfoliosForProductInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: ProductId
-function M.ListPortfoliosForProductInput(_AcceptLanguage, _PageToken, _PageSize, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfoliosForProductInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: ProductId
+-- @return ListPortfoliosForProductInput structure as a key-value pair table
+function M.ListPortfoliosForProductInput(args)
+	assert(args, "You must provdide an argument table when creating ListPortfoliosForProductInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PageToken"] = _PageToken,
-		["PageSize"] = _PageSize,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PageToken"] = args["PageToken"],
+		["PageSize"] = args["PageSize"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertListPortfoliosForProductInput(t)
 	return t
@@ -1617,13 +1776,16 @@ end
 
 --- Create a structure of type ScanProvisionedProductsOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _ProvisionedProducts [ProvisionedProductDetails] <p>A list of ProvisionedProduct detail objects.</p>
-function M.ScanProvisionedProductsOutput(_NextPageToken, _ProvisionedProducts, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScanProvisionedProductsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * ProvisionedProducts [ProvisionedProductDetails] <p>A list of ProvisionedProduct detail objects.</p>
+-- @return ScanProvisionedProductsOutput structure as a key-value pair table
+function M.ScanProvisionedProductsOutput(args)
+	assert(args, "You must provdide an argument table when creating ScanProvisionedProductsOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["ProvisionedProducts"] = _ProvisionedProducts,
+		["NextPageToken"] = args["NextPageToken"],
+		["ProvisionedProducts"] = args["ProvisionedProducts"],
 	}
 	asserts.AssertScanProvisionedProductsOutput(t)
 	return t
@@ -1641,8 +1803,11 @@ end
 
 --- Create a structure of type CreatePortfolioShareOutput
 --  
-function M.CreatePortfolioShareOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePortfolioShareOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CreatePortfolioShareOutput structure as a key-value pair table
+function M.CreatePortfolioShareOutput(args)
+	assert(args, "You must provdide an argument table when creating CreatePortfolioShareOutput")
 	local t = { 
 	}
 	asserts.AssertCreatePortfolioShareOutput(t)
@@ -1678,38 +1843,41 @@ end
 
 --- Create a structure of type CreateProductInput
 --  
--- @param _SupportEmail [SupportEmail] <p>Contact email for product support.</p>
--- @param _Name [ProductViewName] <p>The name of the product.</p>
--- @param _Tags [AddTags] <p>Tags to associate with the new product.</p>
--- @param _SupportUrl [SupportUrl] <p>Contact URL for product support.</p>
--- @param _Owner [ProductViewOwner] <p>The owner of the product.</p>
--- @param _IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
--- @param _ProvisioningArtifactParameters [ProvisioningArtifactProperties] <p>Parameters for the provisioning artifact.</p>
--- @param _ProductType [ProductType] <p>The type of the product to create.</p>
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Distributor [ProductViewOwner] <p>The distributor of the product.</p>
--- @param _SupportDescription [SupportDescription] <p>Support information about the product.</p>
--- @param _Description [ProductViewShortDescription] <p>The text description of the product.</p>
--- Required parameter: Name
--- Required parameter: Owner
--- Required parameter: ProductType
--- Required parameter: ProvisioningArtifactParameters
--- Required parameter: IdempotencyToken
-function M.CreateProductInput(_SupportEmail, _Name, _Tags, _SupportUrl, _Owner, _IdempotencyToken, _ProvisioningArtifactParameters, _ProductType, _AcceptLanguage, _Distributor, _SupportDescription, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateProductInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SupportEmail [SupportEmail] <p>Contact email for product support.</p>
+-- * Name [ProductViewName] <p>The name of the product.</p>
+-- * Tags [AddTags] <p>Tags to associate with the new product.</p>
+-- * SupportUrl [SupportUrl] <p>Contact URL for product support.</p>
+-- * Owner [ProductViewOwner] <p>The owner of the product.</p>
+-- * IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
+-- * ProvisioningArtifactParameters [ProvisioningArtifactProperties] <p>Parameters for the provisioning artifact.</p>
+-- * ProductType [ProductType] <p>The type of the product to create.</p>
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Distributor [ProductViewOwner] <p>The distributor of the product.</p>
+-- * SupportDescription [SupportDescription] <p>Support information about the product.</p>
+-- * Description [ProductViewShortDescription] <p>The text description of the product.</p>
+-- Required key: Name
+-- Required key: Owner
+-- Required key: ProductType
+-- Required key: ProvisioningArtifactParameters
+-- Required key: IdempotencyToken
+-- @return CreateProductInput structure as a key-value pair table
+function M.CreateProductInput(args)
+	assert(args, "You must provdide an argument table when creating CreateProductInput")
 	local t = { 
-		["SupportEmail"] = _SupportEmail,
-		["Name"] = _Name,
-		["Tags"] = _Tags,
-		["SupportUrl"] = _SupportUrl,
-		["Owner"] = _Owner,
-		["IdempotencyToken"] = _IdempotencyToken,
-		["ProvisioningArtifactParameters"] = _ProvisioningArtifactParameters,
-		["ProductType"] = _ProductType,
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Distributor"] = _Distributor,
-		["SupportDescription"] = _SupportDescription,
-		["Description"] = _Description,
+		["SupportEmail"] = args["SupportEmail"],
+		["Name"] = args["Name"],
+		["Tags"] = args["Tags"],
+		["SupportUrl"] = args["SupportUrl"],
+		["Owner"] = args["Owner"],
+		["IdempotencyToken"] = args["IdempotencyToken"],
+		["ProvisioningArtifactParameters"] = args["ProvisioningArtifactParameters"],
+		["ProductType"] = args["ProductType"],
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Distributor"] = args["Distributor"],
+		["SupportDescription"] = args["SupportDescription"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertCreateProductInput(t)
 	return t
@@ -1731,17 +1899,20 @@ end
 
 --- Create a structure of type ProvisioningArtifact
 -- <p>Contains information indicating the ways in which a product can be provisioned.</p>
--- @param _CreatedTime [ProvisioningArtifactCreatedTime] <p>The UTC timestamp of the creation time.</p>
--- @param _Description [ProvisioningArtifactDescription] <p>The text description of the artifact.</p>
--- @param _Id [Id] <p>The identifier for the artifact. This is sometimes referred to as the product version.</p>
--- @param _Name [ProvisioningArtifactName] <p>The name of the artifact.</p>
-function M.ProvisioningArtifact(_CreatedTime, _Description, _Id, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningArtifact")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreatedTime [ProvisioningArtifactCreatedTime] <p>The UTC timestamp of the creation time.</p>
+-- * Description [ProvisioningArtifactDescription] <p>The text description of the artifact.</p>
+-- * Id [Id] <p>The identifier for the artifact. This is sometimes referred to as the product version.</p>
+-- * Name [ProvisioningArtifactName] <p>The name of the artifact.</p>
+-- @return ProvisioningArtifact structure as a key-value pair table
+function M.ProvisioningArtifact(args)
+	assert(args, "You must provdide an argument table when creating ProvisioningArtifact")
 	local t = { 
-		["CreatedTime"] = _CreatedTime,
-		["Description"] = _Description,
-		["Id"] = _Id,
-		["Name"] = _Name,
+		["CreatedTime"] = args["CreatedTime"],
+		["Description"] = args["Description"],
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertProvisioningArtifact(t)
 	return t
@@ -1762,14 +1933,17 @@ end
 
 --- Create a structure of type DescribeProductAsAdminInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The identifier of the product for which to retrieve information.</p>
--- Required parameter: Id
-function M.DescribeProductAsAdminInput(_AcceptLanguage, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductAsAdminInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The identifier of the product for which to retrieve information.</p>
+-- Required key: Id
+-- @return DescribeProductAsAdminInput structure as a key-value pair table
+function M.DescribeProductAsAdminInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProductAsAdminInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDescribeProductAsAdminInput(t)
 	return t
@@ -1792,19 +1966,22 @@ end
 
 --- Create a structure of type ResourceDetail
 -- <p>Detailed resource information.</p>
--- @param _CreatedTime [ResourceDetailCreatedTime] <p>Creation time of the resource.</p>
--- @param _Description [ResourceDetailDescription] <p>Description of the resource.</p>
--- @param _Id [ResourceDetailId] <p>Identifier of the resource.</p>
--- @param _ARN [ResourceDetailARN] <p>ARN of the resource.</p>
--- @param _Name [ResourceDetailName] <p>Name of the resource.</p>
-function M.ResourceDetail(_CreatedTime, _Description, _Id, _ARN, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreatedTime [ResourceDetailCreatedTime] <p>Creation time of the resource.</p>
+-- * Description [ResourceDetailDescription] <p>Description of the resource.</p>
+-- * Id [ResourceDetailId] <p>Identifier of the resource.</p>
+-- * ARN [ResourceDetailARN] <p>ARN of the resource.</p>
+-- * Name [ResourceDetailName] <p>Name of the resource.</p>
+-- @return ResourceDetail structure as a key-value pair table
+function M.ResourceDetail(args)
+	assert(args, "You must provdide an argument table when creating ResourceDetail")
 	local t = { 
-		["CreatedTime"] = _CreatedTime,
-		["Description"] = _Description,
-		["Id"] = _Id,
-		["ARN"] = _ARN,
-		["Name"] = _Name,
+		["CreatedTime"] = args["CreatedTime"],
+		["Description"] = args["Description"],
+		["Id"] = args["Id"],
+		["ARN"] = args["ARN"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertResourceDetail(t)
 	return t
@@ -1824,13 +2001,16 @@ end
 
 --- Create a structure of type ListConstraintsForPortfolioOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _ConstraintDetails [ConstraintDetails] <p>List of detailed constraint information objects.</p>
-function M.ListConstraintsForPortfolioOutput(_NextPageToken, _ConstraintDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListConstraintsForPortfolioOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * ConstraintDetails [ConstraintDetails] <p>List of detailed constraint information objects.</p>
+-- @return ListConstraintsForPortfolioOutput structure as a key-value pair table
+function M.ListConstraintsForPortfolioOutput(args)
+	assert(args, "You must provdide an argument table when creating ListConstraintsForPortfolioOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["ConstraintDetails"] = _ConstraintDetails,
+		["NextPageToken"] = args["NextPageToken"],
+		["ConstraintDetails"] = args["ConstraintDetails"],
 	}
 	asserts.AssertListConstraintsForPortfolioOutput(t)
 	return t
@@ -1851,14 +2031,17 @@ end
 
 --- Create a structure of type DescribeProductViewInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The <code>ProductViewId</code> of the product to describe.</p>
--- Required parameter: Id
-function M.DescribeProductViewInput(_AcceptLanguage, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductViewInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The <code>ProductViewId</code> of the product to describe.</p>
+-- Required key: Id
+-- @return DescribeProductViewInput structure as a key-value pair table
+function M.DescribeProductViewInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProductViewInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDescribeProductViewInput(t)
 	return t
@@ -1878,13 +2061,16 @@ end
 
 --- Create a structure of type RecordError
 -- <p>The error code and description resulting from an operation.</p>
--- @param _Code [ErrorCode] <p>The numeric value of the error.</p>
--- @param _Description [ErrorDescription] <p>The text description of the error.</p>
-function M.RecordError(_Code, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecordError")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Code [ErrorCode] <p>The numeric value of the error.</p>
+-- * Description [ErrorDescription] <p>The text description of the error.</p>
+-- @return RecordError structure as a key-value pair table
+function M.RecordError(args)
+	assert(args, "You must provdide an argument table when creating RecordError")
 	local t = { 
-		["Code"] = _Code,
-		["Description"] = _Description,
+		["Code"] = args["Code"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertRecordError(t)
 	return t
@@ -1907,19 +2093,22 @@ end
 
 --- Create a structure of type ProvisioningArtifactDetail
 -- <p>Detailed provisioning artifact information.</p>
--- @param _CreatedTime [CreationTime] <p>The UTC timestamp of the creation time.</p>
--- @param _Description [ProvisioningArtifactName] <p>The text description of the provisioning artifact.</p>
--- @param _Type [ProvisioningArtifactType] <p>The type of the provisioning artifact. The following provisioning artifact types are used by AWS Marketplace products:</p> <p> <code>MARKETPLACE_AMI</code> - AMI products.</p> <p> <code>MARKETPLACE_CAR</code> - CAR (Cluster and AWS Resources) products.</p>
--- @param _Id [Id] <p>The identifier of the provisioning artifact. This is sometimes referred to as the product version.</p>
--- @param _Name [ProvisioningArtifactName] <p>The name assigned to the provisioning artifact.</p>
-function M.ProvisioningArtifactDetail(_CreatedTime, _Description, _Type, _Id, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningArtifactDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreatedTime [CreationTime] <p>The UTC timestamp of the creation time.</p>
+-- * Description [ProvisioningArtifactName] <p>The text description of the provisioning artifact.</p>
+-- * Type [ProvisioningArtifactType] <p>The type of the provisioning artifact. The following provisioning artifact types are used by AWS Marketplace products:</p> <p> <code>MARKETPLACE_AMI</code> - AMI products.</p> <p> <code>MARKETPLACE_CAR</code> - CAR (Cluster and AWS Resources) products.</p>
+-- * Id [Id] <p>The identifier of the provisioning artifact. This is sometimes referred to as the product version.</p>
+-- * Name [ProvisioningArtifactName] <p>The name assigned to the provisioning artifact.</p>
+-- @return ProvisioningArtifactDetail structure as a key-value pair table
+function M.ProvisioningArtifactDetail(args)
+	assert(args, "You must provdide an argument table when creating ProvisioningArtifactDetail")
 	local t = { 
-		["CreatedTime"] = _CreatedTime,
-		["Description"] = _Description,
-		["Type"] = _Type,
-		["Id"] = _Id,
-		["Name"] = _Name,
+		["CreatedTime"] = args["CreatedTime"],
+		["Description"] = args["Description"],
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertProvisioningArtifactDetail(t)
 	return t
@@ -1937,8 +2126,11 @@ end
 
 --- Create a structure of type AssociateProductWithPortfolioOutput
 --  
-function M.AssociateProductWithPortfolioOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateProductWithPortfolioOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AssociateProductWithPortfolioOutput structure as a key-value pair table
+function M.AssociateProductWithPortfolioOutput(args)
+	assert(args, "You must provdide an argument table when creating AssociateProductWithPortfolioOutput")
 	local t = { 
 	}
 	asserts.AssertAssociateProductWithPortfolioOutput(t)
@@ -1964,20 +2156,23 @@ end
 
 --- Create a structure of type AssociatePrincipalWithPortfolioInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PrincipalType [PrincipalType] <p>The principal type. Must be <code>IAM</code> </p>
--- @param _PrincipalARN [PrincipalARN] <p>The ARN representing the principal (IAM user, role, or group).</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- Required parameter: PortfolioId
--- Required parameter: PrincipalARN
--- Required parameter: PrincipalType
-function M.AssociatePrincipalWithPortfolioInput(_AcceptLanguage, _PrincipalType, _PrincipalARN, _PortfolioId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociatePrincipalWithPortfolioInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PrincipalType [PrincipalType] <p>The principal type. Must be <code>IAM</code> </p>
+-- * PrincipalARN [PrincipalARN] <p>The ARN representing the principal (IAM user, role, or group).</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- Required key: PortfolioId
+-- Required key: PrincipalARN
+-- Required key: PrincipalType
+-- @return AssociatePrincipalWithPortfolioInput structure as a key-value pair table
+function M.AssociatePrincipalWithPortfolioInput(args)
+	assert(args, "You must provdide an argument table when creating AssociatePrincipalWithPortfolioInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PrincipalType"] = _PrincipalType,
-		["PrincipalARN"] = _PrincipalARN,
-		["PortfolioId"] = _PortfolioId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PrincipalType"] = args["PrincipalType"],
+		["PrincipalARN"] = args["PrincipalARN"],
+		["PortfolioId"] = args["PortfolioId"],
 	}
 	asserts.AssertAssociatePrincipalWithPortfolioInput(t)
 	return t
@@ -2002,21 +2197,24 @@ end
 
 --- Create a structure of type UpdateProvisioningArtifactInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _ProvisioningArtifactId [Id] <p>The identifier of the provisioning artifact for the update request. This is sometimes referred to as the product version.</p>
--- @param _Description [ProvisioningArtifactDescription] <p>The updated text description of the provisioning artifact.</p>
--- @param _Name [ProvisioningArtifactName] <p>The updated name of the provisioning artifact.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: ProductId
--- Required parameter: ProvisioningArtifactId
-function M.UpdateProvisioningArtifactInput(_AcceptLanguage, _ProvisioningArtifactId, _Description, _Name, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProvisioningArtifactInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * ProvisioningArtifactId [Id] <p>The identifier of the provisioning artifact for the update request. This is sometimes referred to as the product version.</p>
+-- * Description [ProvisioningArtifactDescription] <p>The updated text description of the provisioning artifact.</p>
+-- * Name [ProvisioningArtifactName] <p>The updated name of the provisioning artifact.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: ProductId
+-- Required key: ProvisioningArtifactId
+-- @return UpdateProvisioningArtifactInput structure as a key-value pair table
+function M.UpdateProvisioningArtifactInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateProvisioningArtifactInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["ProvisioningArtifactId"] = _ProvisioningArtifactId,
-		["Description"] = _Description,
-		["Name"] = _Name,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
+		["Description"] = args["Description"],
+		["Name"] = args["Name"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertUpdateProvisioningArtifactInput(t)
 	return t
@@ -2034,8 +2232,11 @@ end
 
 --- Create a structure of type DisassociateProductFromPortfolioOutput
 --  
-function M.DisassociateProductFromPortfolioOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateProductFromPortfolioOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisassociateProductFromPortfolioOutput structure as a key-value pair table
+function M.DisassociateProductFromPortfolioOutput(args)
+	assert(args, "You must provdide an argument table when creating DisassociateProductFromPortfolioOutput")
 	local t = { 
 	}
 	asserts.AssertDisassociateProductFromPortfolioOutput(t)
@@ -2057,15 +2258,18 @@ end
 
 --- Create a structure of type RecordOutput
 -- <p>An output for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.</p>
--- @param _Description [Description] <p>The text description of the output.</p>
--- @param _OutputKey [OutputKey] <p>The output key.</p>
--- @param _OutputValue [OutputValue] <p>The output value.</p>
-function M.RecordOutput(_Description, _OutputKey, _OutputValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecordOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [Description] <p>The text description of the output.</p>
+-- * OutputKey [OutputKey] <p>The output key.</p>
+-- * OutputValue [OutputValue] <p>The output value.</p>
+-- @return RecordOutput structure as a key-value pair table
+function M.RecordOutput(args)
+	assert(args, "You must provdide an argument table when creating RecordOutput")
 	local t = { 
-		["Description"] = _Description,
-		["OutputKey"] = _OutputKey,
-		["OutputValue"] = _OutputValue,
+		["Description"] = args["Description"],
+		["OutputKey"] = args["OutputKey"],
+		["OutputValue"] = args["OutputValue"],
 	}
 	asserts.AssertRecordOutput(t)
 	return t
@@ -2085,13 +2289,16 @@ end
 
 --- Create a structure of type DescribeProductOutput
 --  
--- @param _ProductViewSummary [ProductViewSummary] <p>The summary metadata about the specified product.</p>
--- @param _ProvisioningArtifacts [ProvisioningArtifacts] <p>A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code> parameter represent the ways the specified product can be provisioned.</p>
-function M.DescribeProductOutput(_ProductViewSummary, _ProvisioningArtifacts, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProductViewSummary [ProductViewSummary] <p>The summary metadata about the specified product.</p>
+-- * ProvisioningArtifacts [ProvisioningArtifacts] <p>A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code> parameter represent the ways the specified product can be provisioned.</p>
+-- @return DescribeProductOutput structure as a key-value pair table
+function M.DescribeProductOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProductOutput")
 	local t = { 
-		["ProductViewSummary"] = _ProductViewSummary,
-		["ProvisioningArtifacts"] = _ProvisioningArtifacts,
+		["ProductViewSummary"] = args["ProductViewSummary"],
+		["ProvisioningArtifacts"] = args["ProvisioningArtifacts"],
 	}
 	asserts.AssertDescribeProductOutput(t)
 	return t
@@ -2109,8 +2316,11 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The current limits of the service would have been exceeded by this operation. Reduce the resource use or increase the service limits and retry the operation.</p>
-function M.LimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
 	}
 	asserts.AssertLimitExceededException(t)
@@ -2135,21 +2345,24 @@ end
 
 --- Create a structure of type PortfolioDetail
 -- <p>Detailed portfolio information.</p>
--- @param _DisplayName [PortfolioDisplayName] <p>The name to use for display purposes.</p>
--- @param _Description [PortfolioDescription] <p>The text description of the portfolio.</p>
--- @param _ProviderName [ProviderName] <p>The name of the portfolio provider.</p>
--- @param _CreatedTime [CreationTime] <p>The UTC timestamp of the creation time.</p>
--- @param _Id [Id] <p>The identifier for the portfolio.</p>
--- @param _ARN [ResourceARN] <p>The ARN assigned to the portfolio.</p>
-function M.PortfolioDetail(_DisplayName, _Description, _ProviderName, _CreatedTime, _Id, _ARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PortfolioDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisplayName [PortfolioDisplayName] <p>The name to use for display purposes.</p>
+-- * Description [PortfolioDescription] <p>The text description of the portfolio.</p>
+-- * ProviderName [ProviderName] <p>The name of the portfolio provider.</p>
+-- * CreatedTime [CreationTime] <p>The UTC timestamp of the creation time.</p>
+-- * Id [Id] <p>The identifier for the portfolio.</p>
+-- * ARN [ResourceARN] <p>The ARN assigned to the portfolio.</p>
+-- @return PortfolioDetail structure as a key-value pair table
+function M.PortfolioDetail(args)
+	assert(args, "You must provdide an argument table when creating PortfolioDetail")
 	local t = { 
-		["DisplayName"] = _DisplayName,
-		["Description"] = _Description,
-		["ProviderName"] = _ProviderName,
-		["CreatedTime"] = _CreatedTime,
-		["Id"] = _Id,
-		["ARN"] = _ARN,
+		["DisplayName"] = args["DisplayName"],
+		["Description"] = args["Description"],
+		["ProviderName"] = args["ProviderName"],
+		["CreatedTime"] = args["CreatedTime"],
+		["Id"] = args["Id"],
+		["ARN"] = args["ARN"],
 	}
 	asserts.AssertPortfolioDetail(t)
 	return t
@@ -2179,32 +2392,35 @@ end
 
 --- Create a structure of type UpdateProductInput
 --  
--- @param _RemoveTags [TagKeys] <p>Tags to remove from the existing list of tags associated with the product.</p>
--- @param _SupportEmail [SupportEmail] <p>The updated support email for the product.</p>
--- @param _Description [ProductViewShortDescription] <p>The updated text description of the product.</p>
--- @param _SupportUrl [SupportUrl] <p>The updated support URL for the product.</p>
--- @param _Owner [ProductViewOwner] <p>The updated owner of the product.</p>
--- @param _AddTags [AddTags] <p>Tags to add to the existing list of tags associated with the product.</p>
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Distributor [ProductViewOwner] <p>The updated distributor of the product.</p>
--- @param _SupportDescription [SupportDescription] <p>The updated support description for the product.</p>
--- @param _Id [Id] <p>The identifier of the product for the update request.</p>
--- @param _Name [ProductViewName] <p>The updated product name.</p>
--- Required parameter: Id
-function M.UpdateProductInput(_RemoveTags, _SupportEmail, _Description, _SupportUrl, _Owner, _AddTags, _AcceptLanguage, _Distributor, _SupportDescription, _Id, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProductInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RemoveTags [TagKeys] <p>Tags to remove from the existing list of tags associated with the product.</p>
+-- * SupportEmail [SupportEmail] <p>The updated support email for the product.</p>
+-- * Description [ProductViewShortDescription] <p>The updated text description of the product.</p>
+-- * SupportUrl [SupportUrl] <p>The updated support URL for the product.</p>
+-- * Owner [ProductViewOwner] <p>The updated owner of the product.</p>
+-- * AddTags [AddTags] <p>Tags to add to the existing list of tags associated with the product.</p>
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Distributor [ProductViewOwner] <p>The updated distributor of the product.</p>
+-- * SupportDescription [SupportDescription] <p>The updated support description for the product.</p>
+-- * Id [Id] <p>The identifier of the product for the update request.</p>
+-- * Name [ProductViewName] <p>The updated product name.</p>
+-- Required key: Id
+-- @return UpdateProductInput structure as a key-value pair table
+function M.UpdateProductInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateProductInput")
 	local t = { 
-		["RemoveTags"] = _RemoveTags,
-		["SupportEmail"] = _SupportEmail,
-		["Description"] = _Description,
-		["SupportUrl"] = _SupportUrl,
-		["Owner"] = _Owner,
-		["AddTags"] = _AddTags,
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Distributor"] = _Distributor,
-		["SupportDescription"] = _SupportDescription,
-		["Id"] = _Id,
-		["Name"] = _Name,
+		["RemoveTags"] = args["RemoveTags"],
+		["SupportEmail"] = args["SupportEmail"],
+		["Description"] = args["Description"],
+		["SupportUrl"] = args["SupportUrl"],
+		["Owner"] = args["Owner"],
+		["AddTags"] = args["AddTags"],
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Distributor"] = args["Distributor"],
+		["SupportDescription"] = args["SupportDescription"],
+		["Id"] = args["Id"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertUpdateProductInput(t)
 	return t
@@ -2222,8 +2438,11 @@ end
 
 --- Create a structure of type DeleteProvisioningArtifactOutput
 --  
-function M.DeleteProvisioningArtifactOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProvisioningArtifactOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteProvisioningArtifactOutput structure as a key-value pair table
+function M.DeleteProvisioningArtifactOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteProvisioningArtifactOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteProvisioningArtifactOutput(t)
@@ -2243,11 +2462,14 @@ end
 
 --- Create a structure of type TerminateProvisionedProductOutput
 --  
--- @param _RecordDetail [RecordDetail] <p>The detailed result of the <a>TerminateProvisionedProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.</p>
-function M.TerminateProvisionedProductOutput(_RecordDetail, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TerminateProvisionedProductOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RecordDetail [RecordDetail] <p>The detailed result of the <a>TerminateProvisionedProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.</p>
+-- @return TerminateProvisionedProductOutput structure as a key-value pair table
+function M.TerminateProvisionedProductOutput(args)
+	assert(args, "You must provdide an argument table when creating TerminateProvisionedProductOutput")
 	local t = { 
-		["RecordDetail"] = _RecordDetail,
+		["RecordDetail"] = args["RecordDetail"],
 	}
 	asserts.AssertTerminateProvisionedProductOutput(t)
 	return t
@@ -2267,13 +2489,16 @@ end
 
 --- Create a structure of type ListPortfoliosOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
-function M.ListPortfoliosOutput(_NextPageToken, _PortfolioDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfoliosOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
+-- @return ListPortfoliosOutput structure as a key-value pair table
+function M.ListPortfoliosOutput(args)
+	assert(args, "You must provdide an argument table when creating ListPortfoliosOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["PortfolioDetails"] = _PortfolioDetails,
+		["NextPageToken"] = args["NextPageToken"],
+		["PortfolioDetails"] = args["PortfolioDetails"],
 	}
 	asserts.AssertListPortfoliosOutput(t)
 	return t
@@ -2297,19 +2522,22 @@ end
 
 --- Create a structure of type DescribeProvisioningParametersInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
--- @param _PathId [Id] <p>The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: ProductId
--- Required parameter: ProvisioningArtifactId
-function M.DescribeProvisioningParametersInput(_AcceptLanguage, _ProvisioningArtifactId, _PathId, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProvisioningParametersInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
+-- * PathId [Id] <p>The identifier of the path for this product's provisioning. This value is optional if the product has a default path, and is required if there is more than one path for the specified product.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: ProductId
+-- Required key: ProvisioningArtifactId
+-- @return DescribeProvisioningParametersInput structure as a key-value pair table
+function M.DescribeProvisioningParametersInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProvisioningParametersInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["ProvisioningArtifactId"] = _ProvisioningArtifactId,
-		["PathId"] = _PathId,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
+		["PathId"] = args["PathId"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertDescribeProvisioningParametersInput(t)
 	return t
@@ -2340,35 +2568,38 @@ end
 
 --- Create a structure of type RecordDetail
 -- <p>The full details of a specific ProvisionedProduct object.</p>
--- @param _Status [RecordStatus] <p>The status of the ProvisionedProduct object.</p> <p> <code>CREATED</code> - Request created but the operation has not yet started.</p> <p> <code>IN_PROGRESS</code> - The requested operation is in-progress.</p> <p> <code>IN_PROGRESS_IN_ERROR</code> - The provisioned product is under change but the requested operation failed and some remediation is occurring. For example, a rollback.</p> <p> <code>SUCCEEDED</code> - The requested operation has successfully completed.</p> <p> <code>FAILED</code> - The requested operation has completed but has failed. Investigate using the error messages returned.</p>
--- @param _UpdatedTime [UpdatedTime] <p>The time when the record for the ProvisionedProduct object was last updated.</p>
--- @param _ProvisionedProductName [ProvisionedProductName] <p>The user-friendly name of the ProvisionedProduct object.</p>
--- @param _RecordType [RecordType] <p>The record type for this record.</p>
--- @param _ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
--- @param _RecordId [Id] <p>The identifier of the ProvisionedProduct object record.</p>
--- @param _ProvisionedProductType [ProvisionedProductType] <p>The type of the ProvisionedProduct object.</p>
--- @param _RecordTags [RecordTags] <p>List of tags associated with this record.</p>
--- @param _RecordErrors [RecordErrors] <p>A list of errors that occurred while processing the request.</p>
--- @param _PathId [Id] <p>The identifier of the path for this product's provisioning.</p>
--- @param _CreatedTime [CreatedTime] <p>The UTC timestamp of the creation time.</p>
--- @param _ProvisionedProductId [Id] <p>The identifier of the ProvisionedProduct object.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
-function M.RecordDetail(_Status, _UpdatedTime, _ProvisionedProductName, _RecordType, _ProvisioningArtifactId, _RecordId, _ProvisionedProductType, _RecordTags, _RecordErrors, _PathId, _CreatedTime, _ProvisionedProductId, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RecordDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [RecordStatus] <p>The status of the ProvisionedProduct object.</p> <p> <code>CREATED</code> - Request created but the operation has not yet started.</p> <p> <code>IN_PROGRESS</code> - The requested operation is in-progress.</p> <p> <code>IN_PROGRESS_IN_ERROR</code> - The provisioned product is under change but the requested operation failed and some remediation is occurring. For example, a rollback.</p> <p> <code>SUCCEEDED</code> - The requested operation has successfully completed.</p> <p> <code>FAILED</code> - The requested operation has completed but has failed. Investigate using the error messages returned.</p>
+-- * UpdatedTime [UpdatedTime] <p>The time when the record for the ProvisionedProduct object was last updated.</p>
+-- * ProvisionedProductName [ProvisionedProductName] <p>The user-friendly name of the ProvisionedProduct object.</p>
+-- * RecordType [RecordType] <p>The record type for this record.</p>
+-- * ProvisioningArtifactId [Id] <p>The provisioning artifact identifier for this product. This is sometimes referred to as the product version.</p>
+-- * RecordId [Id] <p>The identifier of the ProvisionedProduct object record.</p>
+-- * ProvisionedProductType [ProvisionedProductType] <p>The type of the ProvisionedProduct object.</p>
+-- * RecordTags [RecordTags] <p>List of tags associated with this record.</p>
+-- * RecordErrors [RecordErrors] <p>A list of errors that occurred while processing the request.</p>
+-- * PathId [Id] <p>The identifier of the path for this product's provisioning.</p>
+-- * CreatedTime [CreatedTime] <p>The UTC timestamp of the creation time.</p>
+-- * ProvisionedProductId [Id] <p>The identifier of the ProvisionedProduct object.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- @return RecordDetail structure as a key-value pair table
+function M.RecordDetail(args)
+	assert(args, "You must provdide an argument table when creating RecordDetail")
 	local t = { 
-		["Status"] = _Status,
-		["UpdatedTime"] = _UpdatedTime,
-		["ProvisionedProductName"] = _ProvisionedProductName,
-		["RecordType"] = _RecordType,
-		["ProvisioningArtifactId"] = _ProvisioningArtifactId,
-		["RecordId"] = _RecordId,
-		["ProvisionedProductType"] = _ProvisionedProductType,
-		["RecordTags"] = _RecordTags,
-		["RecordErrors"] = _RecordErrors,
-		["PathId"] = _PathId,
-		["CreatedTime"] = _CreatedTime,
-		["ProvisionedProductId"] = _ProvisionedProductId,
-		["ProductId"] = _ProductId,
+		["Status"] = args["Status"],
+		["UpdatedTime"] = args["UpdatedTime"],
+		["ProvisionedProductName"] = args["ProvisionedProductName"],
+		["RecordType"] = args["RecordType"],
+		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
+		["RecordId"] = args["RecordId"],
+		["ProvisionedProductType"] = args["ProvisionedProductType"],
+		["RecordTags"] = args["RecordTags"],
+		["RecordErrors"] = args["RecordErrors"],
+		["PathId"] = args["PathId"],
+		["CreatedTime"] = args["CreatedTime"],
+		["ProvisionedProductId"] = args["ProvisionedProductId"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertRecordDetail(t)
 	return t
@@ -2389,15 +2620,18 @@ end
 
 --- Create a structure of type ListTagOptionsFilters
 -- <p>The ListTagOptions filters.</p>
--- @param _Active [TagOptionActive] <p>The ListTagOptionsFilters active state.</p>
--- @param _Value [TagOptionValue] <p>The ListTagOptionsFilters value.</p>
--- @param _Key [TagOptionKey] <p>The ListTagOptionsFilters key.</p>
-function M.ListTagOptionsFilters(_Active, _Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagOptionsFilters")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Active [TagOptionActive] <p>The ListTagOptionsFilters active state.</p>
+-- * Value [TagOptionValue] <p>The ListTagOptionsFilters value.</p>
+-- * Key [TagOptionKey] <p>The ListTagOptionsFilters key.</p>
+-- @return ListTagOptionsFilters structure as a key-value pair table
+function M.ListTagOptionsFilters(args)
+	assert(args, "You must provdide an argument table when creating ListTagOptionsFilters")
 	local t = { 
-		["Active"] = _Active,
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Active"] = args["Active"],
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertListTagOptionsFilters(t)
 	return t
@@ -2415,8 +2649,11 @@ end
 
 --- Create a structure of type ResourceInUseException
 -- <p>The operation was requested against a resource that is currently in use. Free the resource from use and retry the operation.</p>
-function M.ResourceInUseException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceInUseException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceInUseException structure as a key-value pair table
+function M.ResourceInUseException(args)
+	assert(args, "You must provdide an argument table when creating ResourceInUseException")
 	local t = { 
 	}
 	asserts.AssertResourceInUseException(t)
@@ -2435,8 +2672,11 @@ end
 
 --- Create a structure of type DeletePortfolioShareOutput
 --  
-function M.DeletePortfolioShareOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePortfolioShareOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeletePortfolioShareOutput structure as a key-value pair table
+function M.DeletePortfolioShareOutput(args)
+	assert(args, "You must provdide an argument table when creating DeletePortfolioShareOutput")
 	local t = { 
 	}
 	asserts.AssertDeletePortfolioShareOutput(t)
@@ -2459,17 +2699,20 @@ end
 
 --- Create a structure of type DescribeProductAsAdminOutput
 --  
--- @param _ProductViewDetail [ProductViewDetail] <p>Detailed product view information.</p>
--- @param _TagOptions [TagOptionDetails] <p>List of TagOptions associated with the product.</p>
--- @param _ProvisioningArtifactSummaries [ProvisioningArtifactSummaries] <p>A list of provisioning artifact summaries for the product.</p>
--- @param _Tags [Tags] <p>Tags associated with the product.</p>
-function M.DescribeProductAsAdminOutput(_ProductViewDetail, _TagOptions, _ProvisioningArtifactSummaries, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductAsAdminOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProductViewDetail [ProductViewDetail] <p>Detailed product view information.</p>
+-- * TagOptions [TagOptionDetails] <p>List of TagOptions associated with the product.</p>
+-- * ProvisioningArtifactSummaries [ProvisioningArtifactSummaries] <p>A list of provisioning artifact summaries for the product.</p>
+-- * Tags [Tags] <p>Tags associated with the product.</p>
+-- @return DescribeProductAsAdminOutput structure as a key-value pair table
+function M.DescribeProductAsAdminOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProductAsAdminOutput")
 	local t = { 
-		["ProductViewDetail"] = _ProductViewDetail,
-		["TagOptions"] = _TagOptions,
-		["ProvisioningArtifactSummaries"] = _ProvisioningArtifactSummaries,
-		["Tags"] = _Tags,
+		["ProductViewDetail"] = args["ProductViewDetail"],
+		["TagOptions"] = args["TagOptions"],
+		["ProvisioningArtifactSummaries"] = args["ProvisioningArtifactSummaries"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertDescribeProductAsAdminOutput(t)
 	return t
@@ -2490,15 +2733,18 @@ end
 
 --- Create a structure of type ListTagOptionsInput
 --  
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- @param _Filters [ListTagOptionsFilters] <p>The list of filters with which to limit search results. If no search filters are specified, the output is all TagOptions. </p>
-function M.ListTagOptionsInput(_PageToken, _PageSize, _Filters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagOptionsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- * Filters [ListTagOptionsFilters] <p>The list of filters with which to limit search results. If no search filters are specified, the output is all TagOptions. </p>
+-- @return ListTagOptionsInput structure as a key-value pair table
+function M.ListTagOptionsInput(args)
+	assert(args, "You must provdide an argument table when creating ListTagOptionsInput")
 	local t = { 
-		["PageToken"] = _PageToken,
-		["PageSize"] = _PageSize,
-		["Filters"] = _Filters,
+		["PageToken"] = args["PageToken"],
+		["PageSize"] = args["PageSize"],
+		["Filters"] = args["Filters"],
 	}
 	asserts.AssertListTagOptionsInput(t)
 	return t
@@ -2518,13 +2764,16 @@ end
 
 --- Create a structure of type ListTagOptionsOutput
 --  
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _TagOptionDetails [TagOptionDetails] <p>The resulting detailed TagOption information.</p>
-function M.ListTagOptionsOutput(_PageToken, _TagOptionDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagOptionsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * TagOptionDetails [TagOptionDetails] <p>The resulting detailed TagOption information.</p>
+-- @return ListTagOptionsOutput structure as a key-value pair table
+function M.ListTagOptionsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListTagOptionsOutput")
 	local t = { 
-		["PageToken"] = _PageToken,
-		["TagOptionDetails"] = _TagOptionDetails,
+		["PageToken"] = args["PageToken"],
+		["TagOptionDetails"] = args["TagOptionDetails"],
 	}
 	asserts.AssertListTagOptionsOutput(t)
 	return t
@@ -2545,14 +2794,17 @@ end
 
 --- Create a structure of type DescribeProvisionedProductInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The provisioned product identifier.</p>
--- Required parameter: Id
-function M.DescribeProvisionedProductInput(_AcceptLanguage, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProvisionedProductInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The provisioned product identifier.</p>
+-- Required key: Id
+-- @return DescribeProvisionedProductInput structure as a key-value pair table
+function M.DescribeProvisionedProductInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProvisionedProductInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDescribeProvisionedProductInput(t)
 	return t
@@ -2575,18 +2827,21 @@ end
 
 --- Create a structure of type ListPrincipalsForPortfolioInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- Required parameter: PortfolioId
-function M.ListPrincipalsForPortfolioInput(_AcceptLanguage, _PageToken, _PortfolioId, _PageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalsForPortfolioInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- Required key: PortfolioId
+-- @return ListPrincipalsForPortfolioInput structure as a key-value pair table
+function M.ListPrincipalsForPortfolioInput(args)
+	assert(args, "You must provdide an argument table when creating ListPrincipalsForPortfolioInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PageToken"] = _PageToken,
-		["PortfolioId"] = _PortfolioId,
-		["PageSize"] = _PageSize,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PageToken"] = args["PageToken"],
+		["PortfolioId"] = args["PortfolioId"],
+		["PageSize"] = args["PageSize"],
 	}
 	asserts.AssertListPrincipalsForPortfolioInput(t)
 	return t
@@ -2606,13 +2861,16 @@ end
 
 --- Create a structure of type ListPortfolioAccessOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _AccountIds [AccountIds] <p>List of account IDs associated with access to the portfolio.</p>
-function M.ListPortfolioAccessOutput(_NextPageToken, _AccountIds, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfolioAccessOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * AccountIds [AccountIds] <p>List of account IDs associated with access to the portfolio.</p>
+-- @return ListPortfolioAccessOutput structure as a key-value pair table
+function M.ListPortfolioAccessOutput(args)
+	assert(args, "You must provdide an argument table when creating ListPortfolioAccessOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["AccountIds"] = _AccountIds,
+		["NextPageToken"] = args["NextPageToken"],
+		["AccountIds"] = args["AccountIds"],
 	}
 	asserts.AssertListPortfolioAccessOutput(t)
 	return t
@@ -2634,17 +2892,20 @@ end
 
 --- Create a structure of type LaunchPathSummary
 -- <p>Summary information about a path for a user to have access to a specified product.</p>
--- @param _Name [PortfolioName] <p>Corresponds to the name of the portfolio to which the user was assigned.</p>
--- @param _ConstraintSummaries [ConstraintSummaries] <p>List of constraints on the portfolio-product relationship.</p>
--- @param _Id [Id] <p>The unique identifier of the product path.</p>
--- @param _Tags [Tags] <p>List of tags used by this launch path.</p>
-function M.LaunchPathSummary(_Name, _ConstraintSummaries, _Id, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LaunchPathSummary")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Name [PortfolioName] <p>Corresponds to the name of the portfolio to which the user was assigned.</p>
+-- * ConstraintSummaries [ConstraintSummaries] <p>List of constraints on the portfolio-product relationship.</p>
+-- * Id [Id] <p>The unique identifier of the product path.</p>
+-- * Tags [Tags] <p>List of tags used by this launch path.</p>
+-- @return LaunchPathSummary structure as a key-value pair table
+function M.LaunchPathSummary(args)
+	assert(args, "You must provdide an argument table when creating LaunchPathSummary")
 	local t = { 
-		["Name"] = _Name,
-		["ConstraintSummaries"] = _ConstraintSummaries,
-		["Id"] = _Id,
-		["Tags"] = _Tags,
+		["Name"] = args["Name"],
+		["ConstraintSummaries"] = args["ConstraintSummaries"],
+		["Id"] = args["Id"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertLaunchPathSummary(t)
 	return t
@@ -2662,8 +2923,11 @@ end
 
 --- Create a structure of type DisassociateTagOptionFromResourceOutput
 --  
-function M.DisassociateTagOptionFromResourceOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociateTagOptionFromResourceOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisassociateTagOptionFromResourceOutput structure as a key-value pair table
+function M.DisassociateTagOptionFromResourceOutput(args)
+	assert(args, "You must provdide an argument table when creating DisassociateTagOptionFromResourceOutput")
 	local t = { 
 	}
 	asserts.AssertDisassociateTagOptionFromResourceOutput(t)
@@ -2682,8 +2946,11 @@ end
 
 --- Create a structure of type DisassociatePrincipalFromPortfolioOutput
 --  
-function M.DisassociatePrincipalFromPortfolioOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociatePrincipalFromPortfolioOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DisassociatePrincipalFromPortfolioOutput structure as a key-value pair table
+function M.DisassociatePrincipalFromPortfolioOutput(args)
+	assert(args, "You must provdide an argument table when creating DisassociatePrincipalFromPortfolioOutput")
 	local t = { 
 	}
 	asserts.AssertDisassociatePrincipalFromPortfolioOutput(t)
@@ -2705,15 +2972,18 @@ end
 
 --- Create a structure of type ListAcceptedPortfolioSharesInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
-function M.ListAcceptedPortfolioSharesInput(_AcceptLanguage, _PageToken, _PageSize, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAcceptedPortfolioSharesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- @return ListAcceptedPortfolioSharesInput structure as a key-value pair table
+function M.ListAcceptedPortfolioSharesInput(args)
+	assert(args, "You must provdide an argument table when creating ListAcceptedPortfolioSharesInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PageToken"] = _PageToken,
-		["PageSize"] = _PageSize,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PageToken"] = args["PageToken"],
+		["PageSize"] = args["PageSize"],
 	}
 	asserts.AssertListAcceptedPortfolioSharesInput(t)
 	return t
@@ -2734,15 +3004,18 @@ end
 
 --- Create a structure of type DescribeProvisioningArtifactOutput
 --  
--- @param _ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>Detailed provisioning artifact information.</p>
--- @param _Info [ProvisioningArtifactInfo] <p>Additional information about the provisioning artifact.</p>
--- @param _Status [Status] <p>The status of the current request.</p>
-function M.DescribeProvisioningArtifactOutput(_ProvisioningArtifactDetail, _Info, _Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProvisioningArtifactOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>Detailed provisioning artifact information.</p>
+-- * Info [ProvisioningArtifactInfo] <p>Additional information about the provisioning artifact.</p>
+-- * Status [Status] <p>The status of the current request.</p>
+-- @return DescribeProvisioningArtifactOutput structure as a key-value pair table
+function M.DescribeProvisioningArtifactOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProvisioningArtifactOutput")
 	local t = { 
-		["ProvisioningArtifactDetail"] = _ProvisioningArtifactDetail,
-		["Info"] = _Info,
-		["Status"] = _Status,
+		["ProvisioningArtifactDetail"] = args["ProvisioningArtifactDetail"],
+		["Info"] = args["Info"],
+		["Status"] = args["Status"],
 	}
 	asserts.AssertDescribeProvisioningArtifactOutput(t)
 	return t
@@ -2760,8 +3033,11 @@ end
 
 --- Create a structure of type AssociatePrincipalWithPortfolioOutput
 --  
-function M.AssociatePrincipalWithPortfolioOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociatePrincipalWithPortfolioOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AssociatePrincipalWithPortfolioOutput structure as a key-value pair table
+function M.AssociatePrincipalWithPortfolioOutput(args)
+	assert(args, "You must provdide an argument table when creating AssociatePrincipalWithPortfolioOutput")
 	local t = { 
 	}
 	asserts.AssertAssociatePrincipalWithPortfolioOutput(t)
@@ -2782,13 +3058,16 @@ end
 
 --- Create a structure of type ListAcceptedPortfolioSharesOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
-function M.ListAcceptedPortfolioSharesOutput(_NextPageToken, _PortfolioDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAcceptedPortfolioSharesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
+-- @return ListAcceptedPortfolioSharesOutput structure as a key-value pair table
+function M.ListAcceptedPortfolioSharesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListAcceptedPortfolioSharesOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["PortfolioDetails"] = _PortfolioDetails,
+		["NextPageToken"] = args["NextPageToken"],
+		["PortfolioDetails"] = args["PortfolioDetails"],
 	}
 	asserts.AssertListAcceptedPortfolioSharesOutput(t)
 	return t
@@ -2806,8 +3085,11 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified resource was not found.</p>
-function M.ResourceNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
 	}
 	asserts.AssertResourceNotFoundException(t)
@@ -2829,14 +3111,17 @@ end
 
 --- Create a structure of type AcceptPortfolioShareInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- Required parameter: PortfolioId
-function M.AcceptPortfolioShareInput(_AcceptLanguage, _PortfolioId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AcceptPortfolioShareInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- Required key: PortfolioId
+-- @return AcceptPortfolioShareInput structure as a key-value pair table
+function M.AcceptPortfolioShareInput(args)
+	assert(args, "You must provdide an argument table when creating AcceptPortfolioShareInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PortfolioId"] = _PortfolioId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PortfolioId"] = args["PortfolioId"],
 	}
 	asserts.AssertAcceptPortfolioShareInput(t)
 	return t
@@ -2855,11 +3140,14 @@ end
 
 --- Create a structure of type DescribeProvisionedProductOutput
 --  
--- @param _ProvisionedProductDetail [ProvisionedProductDetail] <p>Detailed provisioned product information.</p>
-function M.DescribeProvisionedProductOutput(_ProvisionedProductDetail, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProvisionedProductOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProvisionedProductDetail [ProvisionedProductDetail] <p>Detailed provisioned product information.</p>
+-- @return DescribeProvisionedProductOutput structure as a key-value pair table
+function M.DescribeProvisionedProductOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProvisionedProductOutput")
 	local t = { 
-		["ProvisionedProductDetail"] = _ProvisionedProductDetail,
+		["ProvisionedProductDetail"] = args["ProvisionedProductDetail"],
 	}
 	asserts.AssertDescribeProvisionedProductOutput(t)
 	return t
@@ -2881,17 +3169,20 @@ end
 
 --- Create a structure of type TagOptionDetail
 -- <p>The TagOption details.</p>
--- @param _Active [TagOptionActive] <p>The TagOptionDetail active state.</p>
--- @param _Value [TagOptionValue] <p>The TagOptionDetail value.</p>
--- @param _Key [TagOptionKey] <p>The TagOptionDetail key.</p>
--- @param _Id [TagOptionId] <p>The TagOptionDetail identifier.</p>
-function M.TagOptionDetail(_Active, _Value, _Key, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagOptionDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Active [TagOptionActive] <p>The TagOptionDetail active state.</p>
+-- * Value [TagOptionValue] <p>The TagOptionDetail value.</p>
+-- * Key [TagOptionKey] <p>The TagOptionDetail key.</p>
+-- * Id [TagOptionId] <p>The TagOptionDetail identifier.</p>
+-- @return TagOptionDetail structure as a key-value pair table
+function M.TagOptionDetail(args)
+	assert(args, "You must provdide an argument table when creating TagOptionDetail")
 	local t = { 
-		["Active"] = _Active,
-		["Value"] = _Value,
-		["Key"] = _Key,
-		["Id"] = _Id,
+		["Active"] = args["Active"],
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertTagOptionDetail(t)
 	return t
@@ -2911,13 +3202,16 @@ end
 
 --- Create a structure of type ListRecordHistoryOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _RecordDetails [RecordDetails] <p>A list of record detail objects, listed in reverse chronological order.</p>
-function M.ListRecordHistoryOutput(_NextPageToken, _RecordDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRecordHistoryOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * RecordDetails [RecordDetails] <p>A list of record detail objects, listed in reverse chronological order.</p>
+-- @return ListRecordHistoryOutput structure as a key-value pair table
+function M.ListRecordHistoryOutput(args)
+	assert(args, "You must provdide an argument table when creating ListRecordHistoryOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["RecordDetails"] = _RecordDetails,
+		["NextPageToken"] = args["NextPageToken"],
+		["RecordDetails"] = args["RecordDetails"],
 	}
 	asserts.AssertListRecordHistoryOutput(t)
 	return t
@@ -2938,15 +3232,18 @@ end
 
 --- Create a structure of type SearchProductsOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _ProductViewAggregations [ProductViewAggregations] <p>A list of the product view aggregation value objects.</p>
--- @param _ProductViewSummaries [ProductViewSummaries] <p>A list of the product view summary objects.</p>
-function M.SearchProductsOutput(_NextPageToken, _ProductViewAggregations, _ProductViewSummaries, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchProductsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * ProductViewAggregations [ProductViewAggregations] <p>A list of the product view aggregation value objects.</p>
+-- * ProductViewSummaries [ProductViewSummaries] <p>A list of the product view summary objects.</p>
+-- @return SearchProductsOutput structure as a key-value pair table
+function M.SearchProductsOutput(args)
+	assert(args, "You must provdide an argument table when creating SearchProductsOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["ProductViewAggregations"] = _ProductViewAggregations,
-		["ProductViewSummaries"] = _ProductViewSummaries,
+		["NextPageToken"] = args["NextPageToken"],
+		["ProductViewAggregations"] = args["ProductViewAggregations"],
+		["ProductViewSummaries"] = args["ProductViewSummaries"],
 	}
 	asserts.AssertSearchProductsOutput(t)
 	return t
@@ -2971,20 +3268,23 @@ end
 
 --- Create a structure of type CreateProvisioningArtifactInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
--- @param _Parameters [ProvisioningArtifactProperties] <p>The parameters to use when creating the new provisioning artifact.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: ProductId
--- Required parameter: Parameters
--- Required parameter: IdempotencyToken
-function M.CreateProvisioningArtifactInput(_AcceptLanguage, _IdempotencyToken, _Parameters, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateProvisioningArtifactInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
+-- * Parameters [ProvisioningArtifactProperties] <p>The parameters to use when creating the new provisioning artifact.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: ProductId
+-- Required key: Parameters
+-- Required key: IdempotencyToken
+-- @return CreateProvisioningArtifactInput structure as a key-value pair table
+function M.CreateProvisioningArtifactInput(args)
+	assert(args, "You must provdide an argument table when creating CreateProvisioningArtifactInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["IdempotencyToken"] = _IdempotencyToken,
-		["Parameters"] = _Parameters,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["IdempotencyToken"] = args["IdempotencyToken"],
+		["Parameters"] = args["Parameters"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertCreateProvisioningArtifactInput(t)
 	return t
@@ -3005,15 +3305,18 @@ end
 
 --- Create a structure of type DescribeConstraintOutput
 --  
--- @param _Status [Status] <p>The status of the current request.</p>
--- @param _ConstraintParameters [ConstraintParameters] <p>The current parameters associated with the specified constraint.</p>
--- @param _ConstraintDetail [ConstraintDetail] <p>Detailed constraint information.</p>
-function M.DescribeConstraintOutput(_Status, _ConstraintParameters, _ConstraintDetail, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeConstraintOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [Status] <p>The status of the current request.</p>
+-- * ConstraintParameters [ConstraintParameters] <p>The current parameters associated with the specified constraint.</p>
+-- * ConstraintDetail [ConstraintDetail] <p>Detailed constraint information.</p>
+-- @return DescribeConstraintOutput structure as a key-value pair table
+function M.DescribeConstraintOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeConstraintOutput")
 	local t = { 
-		["Status"] = _Status,
-		["ConstraintParameters"] = _ConstraintParameters,
-		["ConstraintDetail"] = _ConstraintDetail,
+		["Status"] = args["Status"],
+		["ConstraintParameters"] = args["ConstraintParameters"],
+		["ConstraintDetail"] = args["ConstraintDetail"],
 	}
 	asserts.AssertDescribeConstraintOutput(t)
 	return t
@@ -3033,13 +3336,16 @@ end
 
 --- Create a structure of type CreatePortfolioOutput
 --  
--- @param _PortfolioDetail [PortfolioDetail] <p>The resulting detailed portfolio information.</p>
--- @param _Tags [Tags] <p>Tags successfully associated with the new portfolio.</p>
-function M.CreatePortfolioOutput(_PortfolioDetail, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePortfolioOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PortfolioDetail [PortfolioDetail] <p>The resulting detailed portfolio information.</p>
+-- * Tags [Tags] <p>Tags successfully associated with the new portfolio.</p>
+-- @return CreatePortfolioOutput structure as a key-value pair table
+function M.CreatePortfolioOutput(args)
+	assert(args, "You must provdide an argument table when creating CreatePortfolioOutput")
 	local t = { 
-		["PortfolioDetail"] = _PortfolioDetail,
-		["Tags"] = _Tags,
+		["PortfolioDetail"] = args["PortfolioDetail"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertCreatePortfolioOutput(t)
 	return t
@@ -3057,8 +3363,11 @@ end
 
 --- Create a structure of type AcceptPortfolioShareOutput
 --  
-function M.AcceptPortfolioShareOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AcceptPortfolioShareOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AcceptPortfolioShareOutput structure as a key-value pair table
+function M.AcceptPortfolioShareOutput(args)
+	assert(args, "You must provdide an argument table when creating AcceptPortfolioShareOutput")
 	local t = { 
 	}
 	asserts.AssertAcceptPortfolioShareOutput(t)
@@ -3081,16 +3390,19 @@ end
 
 --- Create a structure of type UpdateConstraintInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The identifier of the constraint to update.</p>
--- @param _Description [ConstraintDescription] <p>The updated text description of the constraint.</p>
--- Required parameter: Id
-function M.UpdateConstraintInput(_AcceptLanguage, _Id, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConstraintInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The identifier of the constraint to update.</p>
+-- * Description [ConstraintDescription] <p>The updated text description of the constraint.</p>
+-- Required key: Id
+-- @return UpdateConstraintInput structure as a key-value pair table
+function M.UpdateConstraintInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateConstraintInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
-		["Description"] = _Description,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdateConstraintInput(t)
 	return t
@@ -3110,13 +3422,16 @@ end
 
 --- Create a structure of type ListRecordHistorySearchFilter
 -- <p>The search filter to limit results when listing request history records.</p>
--- @param _Value [SearchFilterValue] <p>The filter value for <code>Key</code>.</p>
--- @param _Key [SearchFilterKey] <p>The filter key.</p>
-function M.ListRecordHistorySearchFilter(_Value, _Key, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRecordHistorySearchFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [SearchFilterValue] <p>The filter value for <code>Key</code>.</p>
+-- * Key [SearchFilterKey] <p>The filter key.</p>
+-- @return ListRecordHistorySearchFilter structure as a key-value pair table
+function M.ListRecordHistorySearchFilter(args)
+	assert(args, "You must provdide an argument table when creating ListRecordHistorySearchFilter")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
 	}
 	asserts.AssertListRecordHistorySearchFilter(t)
 	return t
@@ -3137,14 +3452,17 @@ end
 
 --- Create a structure of type DescribePortfolioInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The identifier of the portfolio for which to retrieve information.</p>
--- Required parameter: Id
-function M.DescribePortfolioInput(_AcceptLanguage, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribePortfolioInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The identifier of the portfolio for which to retrieve information.</p>
+-- Required key: Id
+-- @return DescribePortfolioInput structure as a key-value pair table
+function M.DescribePortfolioInput(args)
+	assert(args, "You must provdide an argument table when creating DescribePortfolioInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDescribePortfolioInput(t)
 	return t
@@ -3164,12 +3482,15 @@ end
 
 --- Create a structure of type DescribeTagOptionInput
 --  
--- @param _Id [TagOptionId] <p>The identifier of the TagOption.</p>
--- Required parameter: Id
-function M.DescribeTagOptionInput(_Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeTagOptionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Id [TagOptionId] <p>The identifier of the TagOption.</p>
+-- Required key: Id
+-- @return DescribeTagOptionInput structure as a key-value pair table
+function M.DescribeTagOptionInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeTagOptionInput")
 	local t = { 
-		["Id"] = _Id,
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDescribeTagOptionInput(t)
 	return t
@@ -3199,28 +3520,31 @@ end
 
 --- Create a structure of type CreateConstraintInput
 --  
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- @param _Description [ConstraintDescription] <p>The text description of the constraint.</p>
--- @param _Parameters [ConstraintParameters] <p>The constraint parameters. Expected values vary depending on which <b>Type</b> is specified. For examples, see the bottom of this topic.</p> <p>For Type <code>LAUNCH</code>, the <code>RoleArn</code> property is required. </p> <p>For Type <code>NOTIFICATION</code>, the <code>NotificationArns</code> property is required.</p> <p>For Type <code>TEMPLATE</code>, the <code>Rules</code> property is required.</p>
--- @param _IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Type [ConstraintType] <p>The type of the constraint. Case-sensitive valid values are: <code>LAUNCH</code>, <code>NOTIFICATION</code>, or <code>TEMPLATE</code>. </p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: PortfolioId
--- Required parameter: ProductId
--- Required parameter: Parameters
--- Required parameter: Type
--- Required parameter: IdempotencyToken
-function M.CreateConstraintInput(_PortfolioId, _Description, _Parameters, _IdempotencyToken, _AcceptLanguage, _Type, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateConstraintInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- * Description [ConstraintDescription] <p>The text description of the constraint.</p>
+-- * Parameters [ConstraintParameters] <p>The constraint parameters. Expected values vary depending on which <b>Type</b> is specified. For examples, see the bottom of this topic.</p> <p>For Type <code>LAUNCH</code>, the <code>RoleArn</code> property is required. </p> <p>For Type <code>NOTIFICATION</code>, the <code>NotificationArns</code> property is required.</p> <p>For Type <code>TEMPLATE</code>, the <code>Rules</code> property is required.</p>
+-- * IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Type [ConstraintType] <p>The type of the constraint. Case-sensitive valid values are: <code>LAUNCH</code>, <code>NOTIFICATION</code>, or <code>TEMPLATE</code>. </p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: PortfolioId
+-- Required key: ProductId
+-- Required key: Parameters
+-- Required key: Type
+-- Required key: IdempotencyToken
+-- @return CreateConstraintInput structure as a key-value pair table
+function M.CreateConstraintInput(args)
+	assert(args, "You must provdide an argument table when creating CreateConstraintInput")
 	local t = { 
-		["PortfolioId"] = _PortfolioId,
-		["Description"] = _Description,
-		["Parameters"] = _Parameters,
-		["IdempotencyToken"] = _IdempotencyToken,
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Type"] = _Type,
-		["ProductId"] = _ProductId,
+		["PortfolioId"] = args["PortfolioId"],
+		["Description"] = args["Description"],
+		["Parameters"] = args["Parameters"],
+		["IdempotencyToken"] = args["IdempotencyToken"],
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Type"] = args["Type"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertCreateConstraintInput(t)
 	return t
@@ -3242,15 +3566,18 @@ end
 
 --- Create a structure of type AssociateTagOptionWithResourceInput
 --  
--- @param _ResourceId [ResourceId] <p>The resource identifier.</p>
--- @param _TagOptionId [TagOptionId] <p>The TagOption identifier.</p>
--- Required parameter: ResourceId
--- Required parameter: TagOptionId
-function M.AssociateTagOptionWithResourceInput(_ResourceId, _TagOptionId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateTagOptionWithResourceInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceId [ResourceId] <p>The resource identifier.</p>
+-- * TagOptionId [TagOptionId] <p>The TagOption identifier.</p>
+-- Required key: ResourceId
+-- Required key: TagOptionId
+-- @return AssociateTagOptionWithResourceInput structure as a key-value pair table
+function M.AssociateTagOptionWithResourceInput(args)
+	assert(args, "You must provdide an argument table when creating AssociateTagOptionWithResourceInput")
 	local t = { 
-		["ResourceId"] = _ResourceId,
-		["TagOptionId"] = _TagOptionId,
+		["ResourceId"] = args["ResourceId"],
+		["TagOptionId"] = args["TagOptionId"],
 	}
 	asserts.AssertAssociateTagOptionWithResourceInput(t)
 	return t
@@ -3273,17 +3600,20 @@ end
 
 --- Create a structure of type DeletePortfolioShareInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- @param _AccountId [AccountId] <p>The account ID associated with the share to delete.</p>
--- Required parameter: PortfolioId
--- Required parameter: AccountId
-function M.DeletePortfolioShareInput(_AcceptLanguage, _PortfolioId, _AccountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePortfolioShareInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- * AccountId [AccountId] <p>The account ID associated with the share to delete.</p>
+-- Required key: PortfolioId
+-- Required key: AccountId
+-- @return DeletePortfolioShareInput structure as a key-value pair table
+function M.DeletePortfolioShareInput(args)
+	assert(args, "You must provdide an argument table when creating DeletePortfolioShareInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PortfolioId"] = _PortfolioId,
-		["AccountId"] = _AccountId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PortfolioId"] = args["PortfolioId"],
+		["AccountId"] = args["AccountId"],
 	}
 	asserts.AssertDeletePortfolioShareInput(t)
 	return t
@@ -3304,15 +3634,18 @@ end
 
 --- Create a structure of type CreateProvisioningArtifactOutput
 --  
--- @param _ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>The resulting detailed provisioning artifact information.</p>
--- @param _Info [ProvisioningArtifactInfo] <p>Additional information about the creation request for the provisioning artifact.</p>
--- @param _Status [Status] <p>The status of the current request.</p>
-function M.CreateProvisioningArtifactOutput(_ProvisioningArtifactDetail, _Info, _Status, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateProvisioningArtifactOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProvisioningArtifactDetail [ProvisioningArtifactDetail] <p>The resulting detailed provisioning artifact information.</p>
+-- * Info [ProvisioningArtifactInfo] <p>Additional information about the creation request for the provisioning artifact.</p>
+-- * Status [Status] <p>The status of the current request.</p>
+-- @return CreateProvisioningArtifactOutput structure as a key-value pair table
+function M.CreateProvisioningArtifactOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateProvisioningArtifactOutput")
 	local t = { 
-		["ProvisioningArtifactDetail"] = _ProvisioningArtifactDetail,
-		["Info"] = _Info,
-		["Status"] = _Status,
+		["ProvisioningArtifactDetail"] = args["ProvisioningArtifactDetail"],
+		["Info"] = args["Info"],
+		["Status"] = args["Status"],
 	}
 	asserts.AssertCreateProvisioningArtifactOutput(t)
 	return t
@@ -3331,11 +3664,14 @@ end
 
 --- Create a structure of type CreateTagOptionOutput
 --  
--- @param _TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
-function M.CreateTagOptionOutput(_TagOptionDetail, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateTagOptionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
+-- @return CreateTagOptionOutput structure as a key-value pair table
+function M.CreateTagOptionOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateTagOptionOutput")
 	local t = { 
-		["TagOptionDetail"] = _TagOptionDetail,
+		["TagOptionDetail"] = args["TagOptionDetail"],
 	}
 	asserts.AssertCreateTagOptionOutput(t)
 	return t
@@ -3353,8 +3689,11 @@ end
 
 --- Create a structure of type DeleteConstraintOutput
 --  
-function M.DeleteConstraintOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConstraintOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return DeleteConstraintOutput structure as a key-value pair table
+function M.DeleteConstraintOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteConstraintOutput")
 	local t = { 
 	}
 	asserts.AssertDeleteConstraintOutput(t)
@@ -3378,19 +3717,22 @@ end
 
 --- Create a structure of type ListRecordHistoryInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- @param _SearchFilter [ListRecordHistorySearchFilter] <p>The filter to limit search results. </p>
--- @param _AccessLevelFilter [AccessLevelFilter] <p>The access level for obtaining results. If left unspecified, <code>User</code> level access is used.</p>
-function M.ListRecordHistoryInput(_AcceptLanguage, _PageToken, _PageSize, _SearchFilter, _AccessLevelFilter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRecordHistoryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- * SearchFilter [ListRecordHistorySearchFilter] <p>The filter to limit search results. </p>
+-- * AccessLevelFilter [AccessLevelFilter] <p>The access level for obtaining results. If left unspecified, <code>User</code> level access is used.</p>
+-- @return ListRecordHistoryInput structure as a key-value pair table
+function M.ListRecordHistoryInput(args)
+	assert(args, "You must provdide an argument table when creating ListRecordHistoryInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PageToken"] = _PageToken,
-		["PageSize"] = _PageSize,
-		["SearchFilter"] = _SearchFilter,
-		["AccessLevelFilter"] = _AccessLevelFilter,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PageToken"] = args["PageToken"],
+		["PageSize"] = args["PageSize"],
+		["SearchFilter"] = args["SearchFilter"],
+		["AccessLevelFilter"] = args["AccessLevelFilter"],
 	}
 	asserts.AssertListRecordHistoryInput(t)
 	return t
@@ -3412,17 +3754,20 @@ end
 
 --- Create a structure of type ProductViewDetail
 -- <p>Detailed product view information.</p>
--- @param _ProductViewSummary [ProductViewSummary] <p>The summary metadata about the specified product view.</p>
--- @param _Status [Status] <p>Current status of the product.</p> <p> <code>AVAILABLE</code> - Product is available for use.</p> <p> <code>CREATING</code> - Creation of product started, not ready for use.</p> <p> <code>FAILED</code> - Action on product failed.</p>
--- @param _ProductARN [ResourceARN] <p>The ARN associated with the product.</p>
--- @param _CreatedTime [CreatedTime] <p>The UTC timestamp of the creation time.</p>
-function M.ProductViewDetail(_ProductViewSummary, _Status, _ProductARN, _CreatedTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProductViewDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProductViewSummary [ProductViewSummary] <p>The summary metadata about the specified product view.</p>
+-- * Status [Status] <p>Current status of the product.</p> <p> <code>AVAILABLE</code> - Product is available for use.</p> <p> <code>CREATING</code> - Creation of product started, not ready for use.</p> <p> <code>FAILED</code> - Action on product failed.</p>
+-- * ProductARN [ResourceARN] <p>The ARN associated with the product.</p>
+-- * CreatedTime [CreatedTime] <p>The UTC timestamp of the creation time.</p>
+-- @return ProductViewDetail structure as a key-value pair table
+function M.ProductViewDetail(args)
+	assert(args, "You must provdide an argument table when creating ProductViewDetail")
 	local t = { 
-		["ProductViewSummary"] = _ProductViewSummary,
-		["Status"] = _Status,
-		["ProductARN"] = _ProductARN,
-		["CreatedTime"] = _CreatedTime,
+		["ProductViewSummary"] = args["ProductViewSummary"],
+		["Status"] = args["Status"],
+		["ProductARN"] = args["ProductARN"],
+		["CreatedTime"] = args["CreatedTime"],
 	}
 	asserts.AssertProductViewDetail(t)
 	return t
@@ -3442,13 +3787,16 @@ end
 
 --- Create a structure of type DescribeProductViewOutput
 --  
--- @param _ProductViewSummary [ProductViewSummary] <p>The summary metadata about the specified product.</p>
--- @param _ProvisioningArtifacts [ProvisioningArtifacts] <p>A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code> represent the ways in which the specified product can be provisioned.</p>
-function M.DescribeProductViewOutput(_ProductViewSummary, _ProvisioningArtifacts, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductViewOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ProductViewSummary [ProductViewSummary] <p>The summary metadata about the specified product.</p>
+-- * ProvisioningArtifacts [ProvisioningArtifacts] <p>A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code> represent the ways in which the specified product can be provisioned.</p>
+-- @return DescribeProductViewOutput structure as a key-value pair table
+function M.DescribeProductViewOutput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProductViewOutput")
 	local t = { 
-		["ProductViewSummary"] = _ProductViewSummary,
-		["ProvisioningArtifacts"] = _ProvisioningArtifacts,
+		["ProductViewSummary"] = args["ProductViewSummary"],
+		["ProvisioningArtifacts"] = args["ProvisioningArtifacts"],
 	}
 	asserts.AssertDescribeProductViewOutput(t)
 	return t
@@ -3468,13 +3816,16 @@ end
 
 --- Create a structure of type UpdatePortfolioOutput
 --  
--- @param _PortfolioDetail [PortfolioDetail] <p>The resulting detailed portfolio information.</p>
--- @param _Tags [Tags] <p>Tags associated with the portfolio.</p>
-function M.UpdatePortfolioOutput(_PortfolioDetail, _Tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdatePortfolioOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PortfolioDetail [PortfolioDetail] <p>The resulting detailed portfolio information.</p>
+-- * Tags [Tags] <p>Tags associated with the portfolio.</p>
+-- @return UpdatePortfolioOutput structure as a key-value pair table
+function M.UpdatePortfolioOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdatePortfolioOutput")
 	local t = { 
-		["PortfolioDetail"] = _PortfolioDetail,
-		["Tags"] = _Tags,
+		["PortfolioDetail"] = args["PortfolioDetail"],
+		["Tags"] = args["Tags"],
 	}
 	asserts.AssertUpdatePortfolioOutput(t)
 	return t
@@ -3494,13 +3845,16 @@ end
 
 --- Create a structure of type ListPrincipalsForPortfolioOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _Principals [Principals] <p>The IAM principals (users or roles) associated with the portfolio.</p>
-function M.ListPrincipalsForPortfolioOutput(_NextPageToken, _Principals, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPrincipalsForPortfolioOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * Principals [Principals] <p>The IAM principals (users or roles) associated with the portfolio.</p>
+-- @return ListPrincipalsForPortfolioOutput structure as a key-value pair table
+function M.ListPrincipalsForPortfolioOutput(args)
+	assert(args, "You must provdide an argument table when creating ListPrincipalsForPortfolioOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["Principals"] = _Principals,
+		["NextPageToken"] = args["NextPageToken"],
+		["Principals"] = args["Principals"],
 	}
 	asserts.AssertListPrincipalsForPortfolioOutput(t)
 	return t
@@ -3521,15 +3875,18 @@ end
 
 --- Create a structure of type UpdateProvisioningParameter
 -- <p>The parameter key-value pair used to update a ProvisionedProduct object. If <code>UsePreviousValue</code> is set to true, <code>Value</code> is ignored and the value for <code>Key</code> is kept as previously set (current value).</p>
--- @param _Value [ParameterValue] <p>The value to use for updating the product provisioning. Any constraints on this value can be found in the <code>ProvisioningArtifactParameter</code> parameter for <code>Key</code>.</p>
--- @param _Key [ParameterKey] <p>The <code>ProvisioningArtifactParameter.ParameterKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
--- @param _UsePreviousValue [UsePreviousValue] <p>If true, uses the currently set value for <code>Key</code>, ignoring <code>UpdateProvisioningParameter.Value</code>.</p>
-function M.UpdateProvisioningParameter(_Value, _Key, _UsePreviousValue, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProvisioningParameter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Value [ParameterValue] <p>The value to use for updating the product provisioning. Any constraints on this value can be found in the <code>ProvisioningArtifactParameter</code> parameter for <code>Key</code>.</p>
+-- * Key [ParameterKey] <p>The <code>ProvisioningArtifactParameter.ParameterKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
+-- * UsePreviousValue [UsePreviousValue] <p>If true, uses the currently set value for <code>Key</code>, ignoring <code>UpdateProvisioningParameter.Value</code>.</p>
+-- @return UpdateProvisioningParameter structure as a key-value pair table
+function M.UpdateProvisioningParameter(args)
+	assert(args, "You must provdide an argument table when creating UpdateProvisioningParameter")
 	local t = { 
-		["Value"] = _Value,
-		["Key"] = _Key,
-		["UsePreviousValue"] = _UsePreviousValue,
+		["Value"] = args["Value"],
+		["Key"] = args["Key"],
+		["UsePreviousValue"] = args["UsePreviousValue"],
 	}
 	asserts.AssertUpdateProvisioningParameter(t)
 	return t
@@ -3552,17 +3909,20 @@ end
 
 --- Create a structure of type DisassociatePrincipalFromPortfolioInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PrincipalARN [PrincipalARN] <p>The ARN representing the principal (IAM user, role, or group).</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- Required parameter: PortfolioId
--- Required parameter: PrincipalARN
-function M.DisassociatePrincipalFromPortfolioInput(_AcceptLanguage, _PrincipalARN, _PortfolioId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DisassociatePrincipalFromPortfolioInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PrincipalARN [PrincipalARN] <p>The ARN representing the principal (IAM user, role, or group).</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- Required key: PortfolioId
+-- Required key: PrincipalARN
+-- @return DisassociatePrincipalFromPortfolioInput structure as a key-value pair table
+function M.DisassociatePrincipalFromPortfolioInput(args)
+	assert(args, "You must provdide an argument table when creating DisassociatePrincipalFromPortfolioInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PrincipalARN"] = _PrincipalARN,
-		["PortfolioId"] = _PortfolioId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PrincipalARN"] = args["PrincipalARN"],
+		["PortfolioId"] = args["PortfolioId"],
 	}
 	asserts.AssertDisassociatePrincipalFromPortfolioInput(t)
 	return t
@@ -3582,13 +3942,16 @@ end
 
 --- Create a structure of type ListProvisioningArtifactsOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _ProvisioningArtifactDetails [ProvisioningArtifactDetails] <p>List of detailed provisioning artifact information objects.</p>
-function M.ListProvisioningArtifactsOutput(_NextPageToken, _ProvisioningArtifactDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListProvisioningArtifactsOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * ProvisioningArtifactDetails [ProvisioningArtifactDetails] <p>List of detailed provisioning artifact information objects.</p>
+-- @return ListProvisioningArtifactsOutput structure as a key-value pair table
+function M.ListProvisioningArtifactsOutput(args)
+	assert(args, "You must provdide an argument table when creating ListProvisioningArtifactsOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["ProvisioningArtifactDetails"] = _ProvisioningArtifactDetails,
+		["NextPageToken"] = args["NextPageToken"],
+		["ProvisioningArtifactDetails"] = args["ProvisioningArtifactDetails"],
 	}
 	asserts.AssertListProvisioningArtifactsOutput(t)
 	return t
@@ -3610,17 +3973,20 @@ end
 
 --- Create a structure of type ScanProvisionedProductsInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- @param _AccessLevelFilter [AccessLevelFilter] <p>The access level for obtaining results. If left unspecified, <code>User</code> level access is used.</p>
-function M.ScanProvisionedProductsInput(_AcceptLanguage, _PageToken, _PageSize, _AccessLevelFilter, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ScanProvisionedProductsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- * AccessLevelFilter [AccessLevelFilter] <p>The access level for obtaining results. If left unspecified, <code>User</code> level access is used.</p>
+-- @return ScanProvisionedProductsInput structure as a key-value pair table
+function M.ScanProvisionedProductsInput(args)
+	assert(args, "You must provdide an argument table when creating ScanProvisionedProductsInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PageToken"] = _PageToken,
-		["PageSize"] = _PageSize,
-		["AccessLevelFilter"] = _AccessLevelFilter,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PageToken"] = args["PageToken"],
+		["PageSize"] = args["PageSize"],
+		["AccessLevelFilter"] = args["AccessLevelFilter"],
 	}
 	asserts.AssertScanProvisionedProductsInput(t)
 	return t
@@ -3640,13 +4006,16 @@ end
 
 --- Create a structure of type ListResourcesForTagOptionOutput
 --  
--- @param _ResourceDetails [ResourceDetails] <p>The resulting detailed resource information.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
-function M.ListResourcesForTagOptionOutput(_ResourceDetails, _PageToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListResourcesForTagOptionOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceDetails [ResourceDetails] <p>The resulting detailed resource information.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- @return ListResourcesForTagOptionOutput structure as a key-value pair table
+function M.ListResourcesForTagOptionOutput(args)
+	assert(args, "You must provdide an argument table when creating ListResourcesForTagOptionOutput")
 	local t = { 
-		["ResourceDetails"] = _ResourceDetails,
-		["PageToken"] = _PageToken,
+		["ResourceDetails"] = args["ResourceDetails"],
+		["PageToken"] = args["PageToken"],
 	}
 	asserts.AssertListResourcesForTagOptionOutput(t)
 	return t
@@ -3673,27 +4042,30 @@ end
 
 --- Create a structure of type ProvisionedProductDetail
 -- <p>Detailed information about a ProvisionedProduct object.</p>
--- @param _Status [ProvisionedProductStatus] <p>The current status of the ProvisionedProduct.</p> <p> <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request succeeded and completed.</p> <p> <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait for an <code>AVAILABLE</code> status before performing operations.</p> <p> <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version. </p> <p> <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack is not running. For example, CloudFormation received an invalid parameter value and could not launch the stack.</p>
--- @param _Name [ProvisionedProductNameOrArn] <p>The user-friendly name of the ProvisionedProduct object.</p>
--- @param _LastRecordId [LastRequestId] <p>The record identifier of the last request performed on this ProvisionedProduct object.</p>
--- @param _IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
--- @param _Arn [ProvisionedProductNameOrArn] <p>The ARN associated with the ProvisionedProduct object.</p>
--- @param _CreatedTime [CreatedTime] <p>The UTC timestamp of the creation time.</p>
--- @param _Type [ProvisionedProductType] <p>The type of the ProvisionedProduct object.</p>
--- @param _Id [ProvisionedProductId] <p>The identifier of the ProvisionedProduct object.</p>
--- @param _StatusMessage [ProvisionedProductStatusMessage] <p>The current status message of the ProvisionedProduct.</p>
-function M.ProvisionedProductDetail(_Status, _Name, _LastRecordId, _IdempotencyToken, _Arn, _CreatedTime, _Type, _Id, _StatusMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisionedProductDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [ProvisionedProductStatus] <p>The current status of the ProvisionedProduct.</p> <p> <code>AVAILABLE</code> - Stable state, ready to perform any operation. The most recent action request succeeded and completed.</p> <p> <code>UNDER_CHANGE</code> - Transitive state, operations performed may or may not have valid results. Wait for an <code>AVAILABLE</code> status before performing operations.</p> <p> <code>TAINTED</code> - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version. </p> <p> <code>ERROR</code> - Something unexpected happened such that the provisioned product exists but the stack is not running. For example, CloudFormation received an invalid parameter value and could not launch the stack.</p>
+-- * Name [ProvisionedProductNameOrArn] <p>The user-friendly name of the ProvisionedProduct object.</p>
+-- * LastRecordId [LastRequestId] <p>The record identifier of the last request performed on this ProvisionedProduct object.</p>
+-- * IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
+-- * Arn [ProvisionedProductNameOrArn] <p>The ARN associated with the ProvisionedProduct object.</p>
+-- * CreatedTime [CreatedTime] <p>The UTC timestamp of the creation time.</p>
+-- * Type [ProvisionedProductType] <p>The type of the ProvisionedProduct object.</p>
+-- * Id [ProvisionedProductId] <p>The identifier of the ProvisionedProduct object.</p>
+-- * StatusMessage [ProvisionedProductStatusMessage] <p>The current status message of the ProvisionedProduct.</p>
+-- @return ProvisionedProductDetail structure as a key-value pair table
+function M.ProvisionedProductDetail(args)
+	assert(args, "You must provdide an argument table when creating ProvisionedProductDetail")
 	local t = { 
-		["Status"] = _Status,
-		["Name"] = _Name,
-		["LastRecordId"] = _LastRecordId,
-		["IdempotencyToken"] = _IdempotencyToken,
-		["Arn"] = _Arn,
-		["CreatedTime"] = _CreatedTime,
-		["Type"] = _Type,
-		["Id"] = _Id,
-		["StatusMessage"] = _StatusMessage,
+		["Status"] = args["Status"],
+		["Name"] = args["Name"],
+		["LastRecordId"] = args["LastRecordId"],
+		["IdempotencyToken"] = args["IdempotencyToken"],
+		["Arn"] = args["Arn"],
+		["CreatedTime"] = args["CreatedTime"],
+		["Type"] = args["Type"],
+		["Id"] = args["Id"],
+		["StatusMessage"] = args["StatusMessage"],
 	}
 	asserts.AssertProvisionedProductDetail(t)
 	return t
@@ -3716,18 +4088,21 @@ end
 
 --- Create a structure of type ProvisioningArtifactProperties
 -- <p>Provisioning artifact properties. For example request JSON, see <a>CreateProvisioningArtifact</a>.</p>
--- @param _Info [ProvisioningArtifactInfo] <p>Additional information about the provisioning artifact properties. When using this element in a request, you must specify <code>LoadTemplateFromURL</code>. For more information, see <a>CreateProvisioningArtifact</a>.</p>
--- @param _Type [ProvisioningArtifactType] <p>The type of the provisioning artifact properties. The following provisioning artifact property types are used by AWS Marketplace products:</p> <p> <code>MARKETPLACE_AMI</code> - AMI products.</p> <p> <code>MARKETPLACE_CAR</code> - CAR (Cluster and AWS Resources) products.</p>
--- @param _Name [ProvisioningArtifactName] <p>The name assigned to the provisioning artifact properties.</p>
--- @param _Description [ProvisioningArtifactDescription] <p>The text description of the provisioning artifact properties.</p>
--- Required parameter: Info
-function M.ProvisioningArtifactProperties(_Info, _Type, _Name, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningArtifactProperties")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Info [ProvisioningArtifactInfo] <p>Additional information about the provisioning artifact properties. When using this element in a request, you must specify <code>LoadTemplateFromURL</code>. For more information, see <a>CreateProvisioningArtifact</a>.</p>
+-- * Type [ProvisioningArtifactType] <p>The type of the provisioning artifact properties. The following provisioning artifact property types are used by AWS Marketplace products:</p> <p> <code>MARKETPLACE_AMI</code> - AMI products.</p> <p> <code>MARKETPLACE_CAR</code> - CAR (Cluster and AWS Resources) products.</p>
+-- * Name [ProvisioningArtifactName] <p>The name assigned to the provisioning artifact properties.</p>
+-- * Description [ProvisioningArtifactDescription] <p>The text description of the provisioning artifact properties.</p>
+-- Required key: Info
+-- @return ProvisioningArtifactProperties structure as a key-value pair table
+function M.ProvisioningArtifactProperties(args)
+	assert(args, "You must provdide an argument table when creating ProvisioningArtifactProperties")
 	local t = { 
-		["Info"] = _Info,
-		["Type"] = _Type,
-		["Name"] = _Name,
-		["Description"] = _Description,
+		["Info"] = args["Info"],
+		["Type"] = args["Type"],
+		["Name"] = args["Name"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertProvisioningArtifactProperties(t)
 	return t
@@ -3746,11 +4121,14 @@ end
 
 --- Create a structure of type UpdateProvisionedProductOutput
 --  
--- @param _RecordDetail [RecordDetail] <p>The detailed result of the <a>UpdateProvisionedProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.</p>
-function M.UpdateProvisionedProductOutput(_RecordDetail, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateProvisionedProductOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RecordDetail [RecordDetail] <p>The detailed result of the <a>UpdateProvisionedProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.</p>
+-- @return UpdateProvisionedProductOutput structure as a key-value pair table
+function M.UpdateProvisionedProductOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateProvisionedProductOutput")
 	local t = { 
-		["RecordDetail"] = _RecordDetail,
+		["RecordDetail"] = args["RecordDetail"],
 	}
 	asserts.AssertUpdateProvisionedProductOutput(t)
 	return t
@@ -3771,15 +4149,18 @@ end
 
 --- Create a structure of type UpdateConstraintOutput
 --  
--- @param _Status [Status] <p>The status of the current request.</p>
--- @param _ConstraintParameters [ConstraintParameters] <p>The resulting updated constraint parameters.</p>
--- @param _ConstraintDetail [ConstraintDetail] <p>The resulting detailed constraint information.</p>
-function M.UpdateConstraintOutput(_Status, _ConstraintParameters, _ConstraintDetail, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateConstraintOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Status [Status] <p>The status of the current request.</p>
+-- * ConstraintParameters [ConstraintParameters] <p>The resulting updated constraint parameters.</p>
+-- * ConstraintDetail [ConstraintDetail] <p>The resulting detailed constraint information.</p>
+-- @return UpdateConstraintOutput structure as a key-value pair table
+function M.UpdateConstraintOutput(args)
+	assert(args, "You must provdide an argument table when creating UpdateConstraintOutput")
 	local t = { 
-		["Status"] = _Status,
-		["ConstraintParameters"] = _ConstraintParameters,
-		["ConstraintDetail"] = _ConstraintDetail,
+		["Status"] = args["Status"],
+		["ConstraintParameters"] = args["ConstraintParameters"],
+		["ConstraintDetail"] = args["ConstraintDetail"],
 	}
 	asserts.AssertUpdateConstraintOutput(t)
 	return t
@@ -3800,14 +4181,17 @@ end
 
 --- Create a structure of type DeleteConstraintInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The identifier of the constraint to delete.</p>
--- Required parameter: Id
-function M.DeleteConstraintInput(_AcceptLanguage, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConstraintInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The identifier of the constraint to delete.</p>
+-- Required key: Id
+-- @return DeleteConstraintInput structure as a key-value pair table
+function M.DeleteConstraintInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteConstraintInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDeleteConstraintInput(t)
 	return t
@@ -3828,14 +4212,17 @@ end
 
 --- Create a structure of type ListPortfolioAccessInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- Required parameter: PortfolioId
-function M.ListPortfolioAccessInput(_AcceptLanguage, _PortfolioId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPortfolioAccessInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- Required key: PortfolioId
+-- @return ListPortfolioAccessInput structure as a key-value pair table
+function M.ListPortfolioAccessInput(args)
+	assert(args, "You must provdide an argument table when creating ListPortfolioAccessInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PortfolioId"] = _PortfolioId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PortfolioId"] = args["PortfolioId"],
 	}
 	asserts.AssertListPortfolioAccessInput(t)
 	return t
@@ -3853,8 +4240,11 @@ end
 
 --- Create a structure of type AssociateTagOptionWithResourceOutput
 --  
-function M.AssociateTagOptionWithResourceOutput(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AssociateTagOptionWithResourceOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return AssociateTagOptionWithResourceOutput structure as a key-value pair table
+function M.AssociateTagOptionWithResourceOutput(args)
+	assert(args, "You must provdide an argument table when creating AssociateTagOptionWithResourceOutput")
 	local t = { 
 	}
 	asserts.AssertAssociateTagOptionWithResourceOutput(t)
@@ -3879,20 +4269,23 @@ end
 
 --- Create a structure of type ListConstraintsForPortfolioInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _PortfolioId [Id] <p>The portfolio identifier.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: PortfolioId
-function M.ListConstraintsForPortfolioInput(_AcceptLanguage, _PageToken, _PortfolioId, _PageSize, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListConstraintsForPortfolioInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * PortfolioId [Id] <p>The portfolio identifier.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: PortfolioId
+-- @return ListConstraintsForPortfolioInput structure as a key-value pair table
+function M.ListConstraintsForPortfolioInput(args)
+	assert(args, "You must provdide an argument table when creating ListConstraintsForPortfolioInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PageToken"] = _PageToken,
-		["PortfolioId"] = _PortfolioId,
-		["PageSize"] = _PageSize,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PageToken"] = args["PageToken"],
+		["PortfolioId"] = args["PortfolioId"],
+		["PageSize"] = args["PageSize"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertListConstraintsForPortfolioInput(t)
 	return t
@@ -3913,14 +4306,17 @@ end
 
 --- Create a structure of type DescribeProductInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _Id [Id] <p>The <code>ProductId</code> of the product to describe.</p>
--- Required parameter: Id
-function M.DescribeProductInput(_AcceptLanguage, _Id, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeProductInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * Id [Id] <p>The <code>ProductId</code> of the product to describe.</p>
+-- Required key: Id
+-- @return DescribeProductInput structure as a key-value pair table
+function M.DescribeProductInput(args)
+	assert(args, "You must provdide an argument table when creating DescribeProductInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["Id"] = _Id,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["Id"] = args["Id"],
 	}
 	asserts.AssertDescribeProductInput(t)
 	return t
@@ -3947,24 +4343,27 @@ end
 
 --- Create a structure of type CreatePortfolioInput
 --  
--- @param _DisplayName [PortfolioDisplayName] <p>The name to use for display purposes.</p>
--- @param _Description [PortfolioDescription] <p>The text description of the portfolio.</p>
--- @param _ProviderName [ProviderName] <p>The name of the portfolio provider.</p>
--- @param _Tags [AddTags] <p>Tags to associate with the new portfolio.</p>
--- @param _IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- Required parameter: DisplayName
--- Required parameter: ProviderName
--- Required parameter: IdempotencyToken
-function M.CreatePortfolioInput(_DisplayName, _Description, _ProviderName, _Tags, _IdempotencyToken, _AcceptLanguage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePortfolioInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DisplayName [PortfolioDisplayName] <p>The name to use for display purposes.</p>
+-- * Description [PortfolioDescription] <p>The text description of the portfolio.</p>
+-- * ProviderName [ProviderName] <p>The name of the portfolio provider.</p>
+-- * Tags [AddTags] <p>Tags to associate with the new portfolio.</p>
+-- * IdempotencyToken [IdempotencyToken] <p>A token to disambiguate duplicate requests. You can create multiple resources using the same input in multiple requests, provided that you also specify a different idempotency token for each request.</p>
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- Required key: DisplayName
+-- Required key: ProviderName
+-- Required key: IdempotencyToken
+-- @return CreatePortfolioInput structure as a key-value pair table
+function M.CreatePortfolioInput(args)
+	assert(args, "You must provdide an argument table when creating CreatePortfolioInput")
 	local t = { 
-		["DisplayName"] = _DisplayName,
-		["Description"] = _Description,
-		["ProviderName"] = _ProviderName,
-		["Tags"] = _Tags,
-		["IdempotencyToken"] = _IdempotencyToken,
-		["AcceptLanguage"] = _AcceptLanguage,
+		["DisplayName"] = args["DisplayName"],
+		["Description"] = args["Description"],
+		["ProviderName"] = args["ProviderName"],
+		["Tags"] = args["Tags"],
+		["IdempotencyToken"] = args["IdempotencyToken"],
+		["AcceptLanguage"] = args["AcceptLanguage"],
 	}
 	asserts.AssertCreatePortfolioInput(t)
 	return t
@@ -3984,13 +4383,16 @@ end
 
 --- Create a structure of type SearchProductsAsAdminOutput
 --  
--- @param _NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
--- @param _ProductViewDetails [ProductViewDetails] <p>List of detailed product view information objects.</p>
-function M.SearchProductsAsAdminOutput(_NextPageToken, _ProductViewDetails, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchProductsAsAdminOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NextPageToken [PageToken] <p>The page token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
+-- * ProductViewDetails [ProductViewDetails] <p>List of detailed product view information objects.</p>
+-- @return SearchProductsAsAdminOutput structure as a key-value pair table
+function M.SearchProductsAsAdminOutput(args)
+	assert(args, "You must provdide an argument table when creating SearchProductsAsAdminOutput")
 	local t = { 
-		["NextPageToken"] = _NextPageToken,
-		["ProductViewDetails"] = _ProductViewDetails,
+		["NextPageToken"] = args["NextPageToken"],
+		["ProductViewDetails"] = args["ProductViewDetails"],
 	}
 	asserts.AssertSearchProductsAsAdminOutput(t)
 	return t
@@ -4014,21 +4416,24 @@ end
 
 --- Create a structure of type ProvisioningArtifactParameter
 -- <p>A parameter used to successfully provision the product. This value includes a list of allowable values and additional metadata. </p>
--- @param _ParameterType [ParameterType] <p>The parameter type.</p>
--- @param _ParameterConstraints [ParameterConstraints] <p>The list of constraints that the administrator has put on the parameter.</p>
--- @param _Description [Description] <p>The text description of the parameter.</p>
--- @param _DefaultValue [DefaultValue] <p>The default value for this parameter.</p>
--- @param _IsNoEcho [NoEcho] <p>If this value is true, the value for this parameter is obfuscated from view when the parameter is retrieved. This parameter is used to hide sensitive information.</p>
--- @param _ParameterKey [ParameterKey] <p>The parameter key. </p>
-function M.ProvisioningArtifactParameter(_ParameterType, _ParameterConstraints, _Description, _DefaultValue, _IsNoEcho, _ParameterKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ProvisioningArtifactParameter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ParameterType [ParameterType] <p>The parameter type.</p>
+-- * ParameterConstraints [ParameterConstraints] <p>The list of constraints that the administrator has put on the parameter.</p>
+-- * Description [Description] <p>The text description of the parameter.</p>
+-- * DefaultValue [DefaultValue] <p>The default value for this parameter.</p>
+-- * IsNoEcho [NoEcho] <p>If this value is true, the value for this parameter is obfuscated from view when the parameter is retrieved. This parameter is used to hide sensitive information.</p>
+-- * ParameterKey [ParameterKey] <p>The parameter key. </p>
+-- @return ProvisioningArtifactParameter structure as a key-value pair table
+function M.ProvisioningArtifactParameter(args)
+	assert(args, "You must provdide an argument table when creating ProvisioningArtifactParameter")
 	local t = { 
-		["ParameterType"] = _ParameterType,
-		["ParameterConstraints"] = _ParameterConstraints,
-		["Description"] = _Description,
-		["DefaultValue"] = _DefaultValue,
-		["IsNoEcho"] = _IsNoEcho,
-		["ParameterKey"] = _ParameterKey,
+		["ParameterType"] = args["ParameterType"],
+		["ParameterConstraints"] = args["ParameterConstraints"],
+		["Description"] = args["Description"],
+		["DefaultValue"] = args["DefaultValue"],
+		["IsNoEcho"] = args["IsNoEcho"],
+		["ParameterKey"] = args["ParameterKey"],
 	}
 	asserts.AssertProvisioningArtifactParameter(t)
 	return t
@@ -4051,17 +4456,20 @@ end
 
 --- Create a structure of type DeleteProvisioningArtifactInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _ProvisioningArtifactId [Id] <p>The identifier of the provisioning artifact for the delete request. This is sometimes referred to as the product version.</p>
--- @param _ProductId [Id] <p>The product identifier.</p>
--- Required parameter: ProductId
--- Required parameter: ProvisioningArtifactId
-function M.DeleteProvisioningArtifactInput(_AcceptLanguage, _ProvisioningArtifactId, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteProvisioningArtifactInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * ProvisioningArtifactId [Id] <p>The identifier of the provisioning artifact for the delete request. This is sometimes referred to as the product version.</p>
+-- * ProductId [Id] <p>The product identifier.</p>
+-- Required key: ProductId
+-- Required key: ProvisioningArtifactId
+-- @return DeleteProvisioningArtifactInput structure as a key-value pair table
+function M.DeleteProvisioningArtifactInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteProvisioningArtifactInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["ProvisioningArtifactId"] = _ProvisioningArtifactId,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertDeleteProvisioningArtifactInput(t)
 	return t
@@ -4084,18 +4492,21 @@ end
 
 --- Create a structure of type ListLaunchPathsInput
 --  
--- @param _AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
--- @param _PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
--- @param _PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
--- @param _ProductId [Id] <p>The product identifier. Identifies the product for which to retrieve <code>LaunchPathSummaries</code> information.</p>
--- Required parameter: ProductId
-function M.ListLaunchPathsInput(_AcceptLanguage, _PageToken, _PageSize, _ProductId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListLaunchPathsInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AcceptLanguage [AcceptLanguage] <p>The language code to use for this operation. Supported language codes are as follows:</p> <p>"en" (English)</p> <p>"jp" (Japanese)</p> <p>"zh" (Chinese)</p> <p>If no code is specified, "en" is used as the default.</p>
+-- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
+-- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
+-- * ProductId [Id] <p>The product identifier. Identifies the product for which to retrieve <code>LaunchPathSummaries</code> information.</p>
+-- Required key: ProductId
+-- @return ListLaunchPathsInput structure as a key-value pair table
+function M.ListLaunchPathsInput(args)
+	assert(args, "You must provdide an argument table when creating ListLaunchPathsInput")
 	local t = { 
-		["AcceptLanguage"] = _AcceptLanguage,
-		["PageToken"] = _PageToken,
-		["PageSize"] = _PageSize,
-		["ProductId"] = _ProductId,
+		["AcceptLanguage"] = args["AcceptLanguage"],
+		["PageToken"] = args["PageToken"],
+		["PageSize"] = args["PageSize"],
+		["ProductId"] = args["ProductId"],
 	}
 	asserts.AssertListLaunchPathsInput(t)
 	return t
@@ -4115,13 +4526,16 @@ end
 
 --- Create a structure of type Principal
 -- <p>A principal's ARN and type.</p>
--- @param _PrincipalType [PrincipalType] <p>The principal type. Must be <code>IAM</code> </p>
--- @param _PrincipalARN [PrincipalARN] <p>The ARN representing the principal (IAM user, role, or group).</p>
-function M.Principal(_PrincipalType, _PrincipalARN, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Principal")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PrincipalType [PrincipalType] <p>The principal type. Must be <code>IAM</code> </p>
+-- * PrincipalARN [PrincipalARN] <p>The ARN representing the principal (IAM user, role, or group).</p>
+-- @return Principal structure as a key-value pair table
+function M.Principal(args)
+	assert(args, "You must provdide an argument table when creating Principal")
 	local t = { 
-		["PrincipalType"] = _PrincipalType,
-		["PrincipalARN"] = _PrincipalARN,
+		["PrincipalType"] = args["PrincipalType"],
+		["PrincipalARN"] = args["PrincipalARN"],
 	}
 	asserts.AssertPrincipal(t)
 	return t

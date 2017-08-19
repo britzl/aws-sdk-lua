@@ -35,13 +35,16 @@ end
 
 --- Create a structure of type DescribeLogGroupsResponse
 --  
--- @param _nextToken [NextToken] 
--- @param _logGroups [LogGroups] <p>The log groups.</p>
-function M.DescribeLogGroupsResponse(_nextToken, _logGroups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLogGroupsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * logGroups [LogGroups] <p>The log groups.</p>
+-- @return DescribeLogGroupsResponse structure as a key-value pair table
+function M.DescribeLogGroupsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeLogGroupsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["logGroups"] = _logGroups,
+		["nextToken"] = args["nextToken"],
+		["logGroups"] = args["logGroups"],
 	}
 	asserts.AssertDescribeLogGroupsResponse(t)
 	return t
@@ -61,13 +64,16 @@ end
 
 --- Create a structure of type DescribeDestinationsResponse
 --  
--- @param _nextToken [NextToken] 
--- @param _destinations [Destinations] <p>The destinations.</p>
-function M.DescribeDestinationsResponse(_nextToken, _destinations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDestinationsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * destinations [Destinations] <p>The destinations.</p>
+-- @return DescribeDestinationsResponse structure as a key-value pair table
+function M.DescribeDestinationsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeDestinationsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["destinations"] = _destinations,
+		["nextToken"] = args["nextToken"],
+		["destinations"] = args["destinations"],
 	}
 	asserts.AssertDescribeDestinationsResponse(t)
 	return t
@@ -91,21 +97,24 @@ end
 
 --- Create a structure of type Destination
 -- <p>Represents a cross-account destination that receives subscription log events.</p>
--- @param _roleArn [RoleArn] <p>A role for impersonation, used when delivering log events to the target.</p>
--- @param _creationTime [Timestamp] <p>The creation time of the destination, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _destinationName [DestinationName] <p>The name of the destination.</p>
--- @param _accessPolicy [AccessPolicy] <p>An IAM policy document that governs which AWS accounts can create subscription filters against this destination.</p>
--- @param _targetArn [TargetArn] <p>The Amazon Resource Name (ARN) of the physical target where the log events will be delivered (for example, a Kinesis stream).</p>
--- @param _arn [Arn] <p>The ARN of this destination.</p>
-function M.Destination(_roleArn, _creationTime, _destinationName, _accessPolicy, _targetArn, _arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Destination")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * roleArn [RoleArn] <p>A role for impersonation, used when delivering log events to the target.</p>
+-- * creationTime [Timestamp] <p>The creation time of the destination, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * destinationName [DestinationName] <p>The name of the destination.</p>
+-- * accessPolicy [AccessPolicy] <p>An IAM policy document that governs which AWS accounts can create subscription filters against this destination.</p>
+-- * targetArn [TargetArn] <p>The Amazon Resource Name (ARN) of the physical target where the log events will be delivered (for example, a Kinesis stream).</p>
+-- * arn [Arn] <p>The ARN of this destination.</p>
+-- @return Destination structure as a key-value pair table
+function M.Destination(args)
+	assert(args, "You must provdide an argument table when creating Destination")
 	local t = { 
-		["roleArn"] = _roleArn,
-		["creationTime"] = _creationTime,
-		["destinationName"] = _destinationName,
-		["accessPolicy"] = _accessPolicy,
-		["targetArn"] = _targetArn,
-		["arn"] = _arn,
+		["roleArn"] = args["roleArn"],
+		["creationTime"] = args["creationTime"],
+		["destinationName"] = args["destinationName"],
+		["accessPolicy"] = args["accessPolicy"],
+		["targetArn"] = args["targetArn"],
+		["arn"] = args["arn"],
 	}
 	asserts.AssertDestination(t)
 	return t
@@ -132,26 +141,29 @@ end
 
 --- Create a structure of type FilterLogEventsRequest
 --  
--- @param _endTime [Timestamp] <p>The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not returned.</p>
--- @param _filterPattern [FilterPattern] <p>The filter pattern to use. If not provided, all the events are matched.</p>
--- @param _logStreamNames [InputLogStreamNames] <p>Optional list of log stream names.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _limit [EventsLimit] <p>The maximum number of events to return. The default is 10,000 events.</p>
--- @param _startTime [Timestamp] <p>The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not returned.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of events to return. (You received this token from a previous call.)</p>
--- @param _interleaved [Interleaved] <p>If the value is true, the operation makes a best effort to provide responses that contain events from multiple log streams within the log group interleaved in a single response. If the value is false all the matched log events in the first log stream are searched first, then those in the next log stream, and so on. The default is false.</p>
--- Required parameter: logGroupName
-function M.FilterLogEventsRequest(_endTime, _filterPattern, _logStreamNames, _logGroupName, _limit, _startTime, _nextToken, _interleaved, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FilterLogEventsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * endTime [Timestamp] <p>The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not returned.</p>
+-- * filterPattern [FilterPattern] <p>The filter pattern to use. If not provided, all the events are matched.</p>
+-- * logStreamNames [InputLogStreamNames] <p>Optional list of log stream names.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * limit [EventsLimit] <p>The maximum number of events to return. The default is 10,000 events.</p>
+-- * startTime [Timestamp] <p>The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not returned.</p>
+-- * nextToken [NextToken] <p>The token for the next set of events to return. (You received this token from a previous call.)</p>
+-- * interleaved [Interleaved] <p>If the value is true, the operation makes a best effort to provide responses that contain events from multiple log streams within the log group interleaved in a single response. If the value is false all the matched log events in the first log stream are searched first, then those in the next log stream, and so on. The default is false.</p>
+-- Required key: logGroupName
+-- @return FilterLogEventsRequest structure as a key-value pair table
+function M.FilterLogEventsRequest(args)
+	assert(args, "You must provdide an argument table when creating FilterLogEventsRequest")
 	local t = { 
-		["endTime"] = _endTime,
-		["filterPattern"] = _filterPattern,
-		["logStreamNames"] = _logStreamNames,
-		["logGroupName"] = _logGroupName,
-		["limit"] = _limit,
-		["startTime"] = _startTime,
-		["nextToken"] = _nextToken,
-		["interleaved"] = _interleaved,
+		["endTime"] = args["endTime"],
+		["filterPattern"] = args["filterPattern"],
+		["logStreamNames"] = args["logStreamNames"],
+		["logGroupName"] = args["logGroupName"],
+		["limit"] = args["limit"],
+		["startTime"] = args["startTime"],
+		["nextToken"] = args["nextToken"],
+		["interleaved"] = args["interleaved"],
 	}
 	asserts.AssertFilterLogEventsRequest(t)
 	return t
@@ -177,25 +189,28 @@ end
 
 --- Create a structure of type LogStream
 -- <p>Represents a log stream, which is a sequence of log events from a single emitter of logs.</p>
--- @param _firstEventTimestamp [Timestamp] <p>The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _lastEventTimestamp [Timestamp] <p> the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTime updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.</p>
--- @param _creationTime [Timestamp] <p>The creation time of the stream, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _uploadSequenceToken [SequenceToken] <p>The sequence token.</p>
--- @param _logStreamName [LogStreamName] <p>The name of the log stream.</p>
--- @param _lastIngestionTime [Timestamp] <p>The ingestion time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _arn [Arn] <p>The Amazon Resource Name (ARN) of the log stream.</p>
--- @param _storedBytes [StoredBytes] <p>The number of bytes stored.</p>
-function M.LogStream(_firstEventTimestamp, _lastEventTimestamp, _creationTime, _uploadSequenceToken, _logStreamName, _lastIngestionTime, _arn, _storedBytes, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LogStream")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * firstEventTimestamp [Timestamp] <p>The time of the first event, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * lastEventTimestamp [Timestamp] <p> the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTime updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.</p>
+-- * creationTime [Timestamp] <p>The creation time of the stream, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * uploadSequenceToken [SequenceToken] <p>The sequence token.</p>
+-- * logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- * lastIngestionTime [Timestamp] <p>The ingestion time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * arn [Arn] <p>The Amazon Resource Name (ARN) of the log stream.</p>
+-- * storedBytes [StoredBytes] <p>The number of bytes stored.</p>
+-- @return LogStream structure as a key-value pair table
+function M.LogStream(args)
+	assert(args, "You must provdide an argument table when creating LogStream")
 	local t = { 
-		["firstEventTimestamp"] = _firstEventTimestamp,
-		["lastEventTimestamp"] = _lastEventTimestamp,
-		["creationTime"] = _creationTime,
-		["uploadSequenceToken"] = _uploadSequenceToken,
-		["logStreamName"] = _logStreamName,
-		["lastIngestionTime"] = _lastIngestionTime,
-		["arn"] = _arn,
-		["storedBytes"] = _storedBytes,
+		["firstEventTimestamp"] = args["firstEventTimestamp"],
+		["lastEventTimestamp"] = args["lastEventTimestamp"],
+		["creationTime"] = args["creationTime"],
+		["uploadSequenceToken"] = args["uploadSequenceToken"],
+		["logStreamName"] = args["logStreamName"],
+		["lastIngestionTime"] = args["lastIngestionTime"],
+		["arn"] = args["arn"],
+		["storedBytes"] = args["storedBytes"],
 	}
 	asserts.AssertLogStream(t)
 	return t
@@ -216,15 +231,18 @@ end
 
 --- Create a structure of type DescribeDestinationsRequest
 --  
--- @param _DestinationNamePrefix [DestinationName] <p>The prefix to match. If you don't specify a value, no prefix filter is applied.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
-function M.DescribeDestinationsRequest(_DestinationNamePrefix, _nextToken, _limit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeDestinationsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * DestinationNamePrefix [DestinationName] <p>The prefix to match. If you don't specify a value, no prefix filter is applied.</p>
+-- * nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- @return DescribeDestinationsRequest structure as a key-value pair table
+function M.DescribeDestinationsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeDestinationsRequest")
 	local t = { 
-		["DestinationNamePrefix"] = _DestinationNamePrefix,
-		["nextToken"] = _nextToken,
-		["limit"] = _limit,
+		["DestinationNamePrefix"] = args["DestinationNamePrefix"],
+		["nextToken"] = args["nextToken"],
+		["limit"] = args["limit"],
 	}
 	asserts.AssertDescribeDestinationsRequest(t)
 	return t
@@ -246,15 +264,18 @@ end
 
 --- Create a structure of type TestMetricFilterRequest
 --  
--- @param _filterPattern [FilterPattern] 
--- @param _logEventMessages [TestEventMessages] <p>The log event messages to test.</p>
--- Required parameter: filterPattern
--- Required parameter: logEventMessages
-function M.TestMetricFilterRequest(_filterPattern, _logEventMessages, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TestMetricFilterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filterPattern [FilterPattern] 
+-- * logEventMessages [TestEventMessages] <p>The log event messages to test.</p>
+-- Required key: filterPattern
+-- Required key: logEventMessages
+-- @return TestMetricFilterRequest structure as a key-value pair table
+function M.TestMetricFilterRequest(args)
+	assert(args, "You must provdide an argument table when creating TestMetricFilterRequest")
 	local t = { 
-		["filterPattern"] = _filterPattern,
-		["logEventMessages"] = _logEventMessages,
+		["filterPattern"] = args["filterPattern"],
+		["logEventMessages"] = args["logEventMessages"],
 	}
 	asserts.AssertTestMetricFilterRequest(t)
 	return t
@@ -272,8 +293,11 @@ end
 
 --- Create a structure of type ServiceUnavailableException
 -- <p>The service cannot complete the request.</p>
-function M.ServiceUnavailableException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ServiceUnavailableException structure as a key-value pair table
+function M.ServiceUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
 	local t = { 
 	}
 	asserts.AssertServiceUnavailableException(t)
@@ -296,15 +320,18 @@ end
 
 --- Create a structure of type DeleteSubscriptionFilterRequest
 --  
--- @param _filterName [FilterName] <p>The name of the subscription filter.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- Required parameter: logGroupName
--- Required parameter: filterName
-function M.DeleteSubscriptionFilterRequest(_filterName, _logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSubscriptionFilterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filterName [FilterName] <p>The name of the subscription filter.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- Required key: filterName
+-- @return DeleteSubscriptionFilterRequest structure as a key-value pair table
+function M.DeleteSubscriptionFilterRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSubscriptionFilterRequest")
 	local t = { 
-		["filterName"] = _filterName,
-		["logGroupName"] = _logGroupName,
+		["filterName"] = args["filterName"],
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertDeleteSubscriptionFilterRequest(t)
 	return t
@@ -325,15 +352,18 @@ end
 
 --- Create a structure of type OutputLogEvent
 -- <p>Represents a log event.</p>
--- @param _ingestionTime [Timestamp] <p>The time the event was ingested, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _message [EventMessage] <p>The data contained in the log event.</p>
-function M.OutputLogEvent(_ingestionTime, _timestamp, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OutputLogEvent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ingestionTime [Timestamp] <p>The time the event was ingested, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * message [EventMessage] <p>The data contained in the log event.</p>
+-- @return OutputLogEvent structure as a key-value pair table
+function M.OutputLogEvent(args)
+	assert(args, "You must provdide an argument table when creating OutputLogEvent")
 	local t = { 
-		["ingestionTime"] = _ingestionTime,
-		["timestamp"] = _timestamp,
-		["message"] = _message,
+		["ingestionTime"] = args["ingestionTime"],
+		["timestamp"] = args["timestamp"],
+		["message"] = args["message"],
 	}
 	asserts.AssertOutputLogEvent(t)
 	return t
@@ -352,11 +382,14 @@ end
 
 --- Create a structure of type InvalidSequenceTokenException
 -- <p>The sequence token is not valid.</p>
--- @param _expectedSequenceToken [SequenceToken] 
-function M.InvalidSequenceTokenException(_expectedSequenceToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSequenceTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * expectedSequenceToken [SequenceToken] 
+-- @return InvalidSequenceTokenException structure as a key-value pair table
+function M.InvalidSequenceTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSequenceTokenException")
 	local t = { 
-		["expectedSequenceToken"] = _expectedSequenceToken,
+		["expectedSequenceToken"] = args["expectedSequenceToken"],
 	}
 	asserts.AssertInvalidSequenceTokenException(t)
 	return t
@@ -379,19 +412,22 @@ end
 
 --- Create a structure of type MetricFilter
 -- <p>Metric filters express how CloudWatch Logs would extract metric observations from ingested log events and transform them into metric data in a CloudWatch metric.</p>
--- @param _filterName [FilterName] <p>The name of the metric filter.</p>
--- @param _metricTransformations [MetricTransformations] <p>The metric transformations.</p>
--- @param _creationTime [Timestamp] <p>The creation time of the metric filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _filterPattern [FilterPattern] 
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
-function M.MetricFilter(_filterName, _metricTransformations, _creationTime, _filterPattern, _logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MetricFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filterName [FilterName] <p>The name of the metric filter.</p>
+-- * metricTransformations [MetricTransformations] <p>The metric transformations.</p>
+-- * creationTime [Timestamp] <p>The creation time of the metric filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * filterPattern [FilterPattern] 
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- @return MetricFilter structure as a key-value pair table
+function M.MetricFilter(args)
+	assert(args, "You must provdide an argument table when creating MetricFilter")
 	local t = { 
-		["filterName"] = _filterName,
-		["metricTransformations"] = _metricTransformations,
-		["creationTime"] = _creationTime,
-		["filterPattern"] = _filterPattern,
-		["logGroupName"] = _logGroupName,
+		["filterName"] = args["filterName"],
+		["metricTransformations"] = args["metricTransformations"],
+		["creationTime"] = args["creationTime"],
+		["filterPattern"] = args["filterPattern"],
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertMetricFilter(t)
 	return t
@@ -411,13 +447,16 @@ end
 
 --- Create a structure of type DescribeLogStreamsResponse
 --  
--- @param _nextToken [NextToken] 
--- @param _logStreams [LogStreams] <p>The log streams.</p>
-function M.DescribeLogStreamsResponse(_nextToken, _logStreams, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLogStreamsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * logStreams [LogStreams] <p>The log streams.</p>
+-- @return DescribeLogStreamsResponse structure as a key-value pair table
+function M.DescribeLogStreamsResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeLogStreamsResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["logStreams"] = _logStreams,
+		["nextToken"] = args["nextToken"],
+		["logStreams"] = args["logStreams"],
 	}
 	asserts.AssertDescribeLogStreamsResponse(t)
 	return t
@@ -436,11 +475,14 @@ end
 
 --- Create a structure of type PutDestinationResponse
 --  
--- @param _destination [Destination] <p>The destination.</p>
-function M.PutDestinationResponse(_destination, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutDestinationResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * destination [Destination] <p>The destination.</p>
+-- @return PutDestinationResponse structure as a key-value pair table
+function M.PutDestinationResponse(args)
+	assert(args, "You must provdide an argument table when creating PutDestinationResponse")
 	local t = { 
-		["destination"] = _destination,
+		["destination"] = args["destination"],
 	}
 	asserts.AssertPutDestinationResponse(t)
 	return t
@@ -460,12 +502,15 @@ end
 
 --- Create a structure of type ListTagsLogGroupRequest
 --  
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- Required parameter: logGroupName
-function M.ListTagsLogGroupRequest(_logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsLogGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- @return ListTagsLogGroupRequest structure as a key-value pair table
+function M.ListTagsLogGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating ListTagsLogGroupRequest")
 	local t = { 
-		["logGroupName"] = _logGroupName,
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertListTagsLogGroupRequest(t)
 	return t
@@ -485,13 +530,16 @@ end
 
 --- Create a structure of type ExportTaskStatus
 -- <p>Represents the status of an export task.</p>
--- @param _message [ExportTaskStatusMessage] <p>The status message related to the status code.</p>
--- @param _code [ExportTaskStatusCode] <p>The status code of the export task.</p>
-function M.ExportTaskStatus(_message, _code, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExportTaskStatus")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [ExportTaskStatusMessage] <p>The status message related to the status code.</p>
+-- * code [ExportTaskStatusCode] <p>The status code of the export task.</p>
+-- @return ExportTaskStatus structure as a key-value pair table
+function M.ExportTaskStatus(args)
+	assert(args, "You must provdide an argument table when creating ExportTaskStatus")
 	local t = { 
-		["message"] = _message,
-		["code"] = _code,
+		["message"] = args["message"],
+		["code"] = args["code"],
 	}
 	asserts.AssertExportTaskStatus(t)
 	return t
@@ -509,8 +557,11 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>You have reached the maximum number of resources that can be created.</p>
-function M.LimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
 	}
 	asserts.AssertLimitExceededException(t)
@@ -533,15 +584,18 @@ end
 
 --- Create a structure of type PutDestinationPolicyRequest
 --  
--- @param _accessPolicy [AccessPolicy] <p>An IAM policy document that authorizes cross-account users to deliver their log events to the associated destination.</p>
--- @param _destinationName [DestinationName] <p>A name for an existing destination.</p>
--- Required parameter: destinationName
--- Required parameter: accessPolicy
-function M.PutDestinationPolicyRequest(_accessPolicy, _destinationName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutDestinationPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * accessPolicy [AccessPolicy] <p>An IAM policy document that authorizes cross-account users to deliver their log events to the associated destination.</p>
+-- * destinationName [DestinationName] <p>A name for an existing destination.</p>
+-- Required key: destinationName
+-- Required key: accessPolicy
+-- @return PutDestinationPolicyRequest structure as a key-value pair table
+function M.PutDestinationPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating PutDestinationPolicyRequest")
 	local t = { 
-		["accessPolicy"] = _accessPolicy,
-		["destinationName"] = _destinationName,
+		["accessPolicy"] = args["accessPolicy"],
+		["destinationName"] = args["destinationName"],
 	}
 	asserts.AssertPutDestinationPolicyRequest(t)
 	return t
@@ -561,12 +615,15 @@ end
 
 --- Create a structure of type CancelExportTaskRequest
 --  
--- @param _taskId [ExportTaskId] <p>The ID of the export task.</p>
--- Required parameter: taskId
-function M.CancelExportTaskRequest(_taskId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CancelExportTaskRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskId [ExportTaskId] <p>The ID of the export task.</p>
+-- Required key: taskId
+-- @return CancelExportTaskRequest structure as a key-value pair table
+function M.CancelExportTaskRequest(args)
+	assert(args, "You must provdide an argument table when creating CancelExportTaskRequest")
 	local t = { 
-		["taskId"] = _taskId,
+		["taskId"] = args["taskId"],
 	}
 	asserts.AssertCancelExportTaskRequest(t)
 	return t
@@ -587,14 +644,17 @@ end
 
 --- Create a structure of type CreateLogGroupRequest
 --  
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _tags [Tags] <p>The key-value pairs to use for the tags.</p>
--- Required parameter: logGroupName
-function M.CreateLogGroupRequest(_logGroupName, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLogGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * tags [Tags] <p>The key-value pairs to use for the tags.</p>
+-- Required key: logGroupName
+-- @return CreateLogGroupRequest structure as a key-value pair table
+function M.CreateLogGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateLogGroupRequest")
 	local t = { 
-		["logGroupName"] = _logGroupName,
-		["tags"] = _tags,
+		["logGroupName"] = args["logGroupName"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertCreateLogGroupRequest(t)
 	return t
@@ -616,15 +676,18 @@ end
 
 --- Create a structure of type DeleteMetricFilterRequest
 --  
--- @param _filterName [FilterName] <p>The name of the metric filter.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- Required parameter: logGroupName
--- Required parameter: filterName
-function M.DeleteMetricFilterRequest(_filterName, _logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteMetricFilterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filterName [FilterName] <p>The name of the metric filter.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- Required key: filterName
+-- @return DeleteMetricFilterRequest structure as a key-value pair table
+function M.DeleteMetricFilterRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteMetricFilterRequest")
 	local t = { 
-		["filterName"] = _filterName,
-		["logGroupName"] = _logGroupName,
+		["filterName"] = args["filterName"],
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertDeleteMetricFilterRequest(t)
 	return t
@@ -645,15 +708,18 @@ end
 
 --- Create a structure of type RejectedLogEventsInfo
 -- <p>Represents the rejected events.</p>
--- @param _tooNewLogEventStartIndex [LogEventIndex] <p>The log events that are too new.</p>
--- @param _tooOldLogEventEndIndex [LogEventIndex] <p>The log events that are too old.</p>
--- @param _expiredLogEventEndIndex [LogEventIndex] <p>The expired log events.</p>
-function M.RejectedLogEventsInfo(_tooNewLogEventStartIndex, _tooOldLogEventEndIndex, _expiredLogEventEndIndex, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RejectedLogEventsInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tooNewLogEventStartIndex [LogEventIndex] <p>The log events that are too new.</p>
+-- * tooOldLogEventEndIndex [LogEventIndex] <p>The log events that are too old.</p>
+-- * expiredLogEventEndIndex [LogEventIndex] <p>The expired log events.</p>
+-- @return RejectedLogEventsInfo structure as a key-value pair table
+function M.RejectedLogEventsInfo(args)
+	assert(args, "You must provdide an argument table when creating RejectedLogEventsInfo")
 	local t = { 
-		["tooNewLogEventStartIndex"] = _tooNewLogEventStartIndex,
-		["tooOldLogEventEndIndex"] = _tooOldLogEventEndIndex,
-		["expiredLogEventEndIndex"] = _expiredLogEventEndIndex,
+		["tooNewLogEventStartIndex"] = args["tooNewLogEventStartIndex"],
+		["tooOldLogEventEndIndex"] = args["tooOldLogEventEndIndex"],
+		["expiredLogEventEndIndex"] = args["expiredLogEventEndIndex"],
 	}
 	asserts.AssertRejectedLogEventsInfo(t)
 	return t
@@ -675,15 +741,18 @@ end
 
 --- Create a structure of type PutRetentionPolicyRequest
 --  
--- @param _retentionInDays [Days] 
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- Required parameter: logGroupName
--- Required parameter: retentionInDays
-function M.PutRetentionPolicyRequest(_retentionInDays, _logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRetentionPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * retentionInDays [Days] 
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- Required key: retentionInDays
+-- @return PutRetentionPolicyRequest structure as a key-value pair table
+function M.PutRetentionPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating PutRetentionPolicyRequest")
 	local t = { 
-		["retentionInDays"] = _retentionInDays,
-		["logGroupName"] = _logGroupName,
+		["retentionInDays"] = args["retentionInDays"],
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertPutRetentionPolicyRequest(t)
 	return t
@@ -708,20 +777,23 @@ end
 
 --- Create a structure of type MetricTransformation
 -- <p>Indicates how to transform ingested log events into metric data in a CloudWatch metric.</p>
--- @param _defaultValue [DefaultValue] <p>(Optional) The value to emit when a filter pattern does not match a log event. This value can be null.</p>
--- @param _metricValue [MetricValue] <p>The value to publish to the CloudWatch metric when a filter pattern matches a log event.</p>
--- @param _metricNamespace [MetricNamespace] <p>The namespace of the CloudWatch metric.</p>
--- @param _metricName [MetricName] <p>The name of the CloudWatch metric.</p>
--- Required parameter: metricName
--- Required parameter: metricNamespace
--- Required parameter: metricValue
-function M.MetricTransformation(_defaultValue, _metricValue, _metricNamespace, _metricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MetricTransformation")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * defaultValue [DefaultValue] <p>(Optional) The value to emit when a filter pattern does not match a log event. This value can be null.</p>
+-- * metricValue [MetricValue] <p>The value to publish to the CloudWatch metric when a filter pattern matches a log event.</p>
+-- * metricNamespace [MetricNamespace] <p>The namespace of the CloudWatch metric.</p>
+-- * metricName [MetricName] <p>The name of the CloudWatch metric.</p>
+-- Required key: metricName
+-- Required key: metricNamespace
+-- Required key: metricValue
+-- @return MetricTransformation structure as a key-value pair table
+function M.MetricTransformation(args)
+	assert(args, "You must provdide an argument table when creating MetricTransformation")
 	local t = { 
-		["defaultValue"] = _defaultValue,
-		["metricValue"] = _metricValue,
-		["metricNamespace"] = _metricNamespace,
-		["metricName"] = _metricName,
+		["defaultValue"] = args["defaultValue"],
+		["metricValue"] = args["metricValue"],
+		["metricNamespace"] = args["metricNamespace"],
+		["metricName"] = args["metricName"],
 	}
 	asserts.AssertMetricTransformation(t)
 	return t
@@ -743,15 +815,18 @@ end
 
 --- Create a structure of type DeleteLogStreamRequest
 --  
--- @param _logStreamName [LogStreamName] <p>The name of the log stream.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- Required parameter: logGroupName
--- Required parameter: logStreamName
-function M.DeleteLogStreamRequest(_logStreamName, _logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLogStreamRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- Required key: logStreamName
+-- @return DeleteLogStreamRequest structure as a key-value pair table
+function M.DeleteLogStreamRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteLogStreamRequest")
 	local t = { 
-		["logStreamName"] = _logStreamName,
-		["logGroupName"] = _logGroupName,
+		["logStreamName"] = args["logStreamName"],
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertDeleteLogStreamRequest(t)
 	return t
@@ -777,21 +852,24 @@ end
 
 --- Create a structure of type PutMetricFilterRequest
 --  
--- @param _filterName [FilterName] <p>A name for the metric filter.</p>
--- @param _metricTransformations [MetricTransformations] <p>A collection of information needed to define how metric data gets emitted.</p>
--- @param _filterPattern [FilterPattern] <p>A filter pattern for extracting metric data out of ingested log events.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- Required parameter: logGroupName
--- Required parameter: filterName
--- Required parameter: filterPattern
--- Required parameter: metricTransformations
-function M.PutMetricFilterRequest(_filterName, _metricTransformations, _filterPattern, _logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutMetricFilterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filterName [FilterName] <p>A name for the metric filter.</p>
+-- * metricTransformations [MetricTransformations] <p>A collection of information needed to define how metric data gets emitted.</p>
+-- * filterPattern [FilterPattern] <p>A filter pattern for extracting metric data out of ingested log events.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- Required key: filterName
+-- Required key: filterPattern
+-- Required key: metricTransformations
+-- @return PutMetricFilterRequest structure as a key-value pair table
+function M.PutMetricFilterRequest(args)
+	assert(args, "You must provdide an argument table when creating PutMetricFilterRequest")
 	local t = { 
-		["filterName"] = _filterName,
-		["metricTransformations"] = _metricTransformations,
-		["filterPattern"] = _filterPattern,
-		["logGroupName"] = _logGroupName,
+		["filterName"] = args["filterName"],
+		["metricTransformations"] = args["metricTransformations"],
+		["filterPattern"] = args["filterPattern"],
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertPutMetricFilterRequest(t)
 	return t
@@ -813,15 +891,18 @@ end
 
 --- Create a structure of type TagLogGroupRequest
 --  
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _tags [Tags] <p>The key-value pairs to use for the tags.</p>
--- Required parameter: logGroupName
--- Required parameter: tags
-function M.TagLogGroupRequest(_logGroupName, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TagLogGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * tags [Tags] <p>The key-value pairs to use for the tags.</p>
+-- Required key: logGroupName
+-- Required key: tags
+-- @return TagLogGroupRequest structure as a key-value pair table
+function M.TagLogGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating TagLogGroupRequest")
 	local t = { 
-		["logGroupName"] = _logGroupName,
-		["tags"] = _tags,
+		["logGroupName"] = args["logGroupName"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertTagLogGroupRequest(t)
 	return t
@@ -842,15 +923,18 @@ end
 
 --- Create a structure of type MetricFilterMatchRecord
 -- <p>Represents a matched event.</p>
--- @param _eventNumber [EventNumber] <p>The event number.</p>
--- @param _eventMessage [EventMessage] <p>The raw event data.</p>
--- @param _extractedValues [ExtractedValues] <p>The values extracted from the event data by the filter.</p>
-function M.MetricFilterMatchRecord(_eventNumber, _eventMessage, _extractedValues, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MetricFilterMatchRecord")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * eventNumber [EventNumber] <p>The event number.</p>
+-- * eventMessage [EventMessage] <p>The raw event data.</p>
+-- * extractedValues [ExtractedValues] <p>The values extracted from the event data by the filter.</p>
+-- @return MetricFilterMatchRecord structure as a key-value pair table
+function M.MetricFilterMatchRecord(args)
+	assert(args, "You must provdide an argument table when creating MetricFilterMatchRecord")
 	local t = { 
-		["eventNumber"] = _eventNumber,
-		["eventMessage"] = _eventMessage,
-		["extractedValues"] = _extractedValues,
+		["eventNumber"] = args["eventNumber"],
+		["eventMessage"] = args["eventMessage"],
+		["extractedValues"] = args["extractedValues"],
 	}
 	asserts.AssertMetricFilterMatchRecord(t)
 	return t
@@ -871,15 +955,18 @@ end
 
 --- Create a structure of type GetLogEventsResponse
 --  
--- @param _nextForwardToken [NextToken] <p>The token for the next set of items in the forward direction. The token expires after 24 hours.</p>
--- @param _events [OutputLogEvents] <p>The events.</p>
--- @param _nextBackwardToken [NextToken] <p>The token for the next set of items in the backward direction. The token expires after 24 hours.</p>
-function M.GetLogEventsResponse(_nextForwardToken, _events, _nextBackwardToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLogEventsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextForwardToken [NextToken] <p>The token for the next set of items in the forward direction. The token expires after 24 hours.</p>
+-- * events [OutputLogEvents] <p>The events.</p>
+-- * nextBackwardToken [NextToken] <p>The token for the next set of items in the backward direction. The token expires after 24 hours.</p>
+-- @return GetLogEventsResponse structure as a key-value pair table
+function M.GetLogEventsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetLogEventsResponse")
 	local t = { 
-		["nextForwardToken"] = _nextForwardToken,
-		["events"] = _events,
-		["nextBackwardToken"] = _nextBackwardToken,
+		["nextForwardToken"] = args["nextForwardToken"],
+		["events"] = args["events"],
+		["nextBackwardToken"] = args["nextBackwardToken"],
 	}
 	asserts.AssertGetLogEventsResponse(t)
 	return t
@@ -898,11 +985,14 @@ end
 
 --- Create a structure of type DataAlreadyAcceptedException
 -- <p>The event was already logged.</p>
--- @param _expectedSequenceToken [SequenceToken] 
-function M.DataAlreadyAcceptedException(_expectedSequenceToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DataAlreadyAcceptedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * expectedSequenceToken [SequenceToken] 
+-- @return DataAlreadyAcceptedException structure as a key-value pair table
+function M.DataAlreadyAcceptedException(args)
+	assert(args, "You must provdide an argument table when creating DataAlreadyAcceptedException")
 	local t = { 
-		["expectedSequenceToken"] = _expectedSequenceToken,
+		["expectedSequenceToken"] = args["expectedSequenceToken"],
 	}
 	asserts.AssertDataAlreadyAcceptedException(t)
 	return t
@@ -925,19 +1015,22 @@ end
 
 --- Create a structure of type FilteredLogEvent
 -- <p>Represents a matched event.</p>
--- @param _ingestionTime [Timestamp] <p>The time the event was ingested, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _message [EventMessage] <p>The data contained in the log event.</p>
--- @param _eventId [EventId] <p>The ID of the event.</p>
--- @param _logStreamName [LogStreamName] <p>The name of the log stream this event belongs to.</p>
-function M.FilteredLogEvent(_ingestionTime, _timestamp, _message, _eventId, _logStreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FilteredLogEvent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ingestionTime [Timestamp] <p>The time the event was ingested, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * message [EventMessage] <p>The data contained in the log event.</p>
+-- * eventId [EventId] <p>The ID of the event.</p>
+-- * logStreamName [LogStreamName] <p>The name of the log stream this event belongs to.</p>
+-- @return FilteredLogEvent structure as a key-value pair table
+function M.FilteredLogEvent(args)
+	assert(args, "You must provdide an argument table when creating FilteredLogEvent")
 	local t = { 
-		["ingestionTime"] = _ingestionTime,
-		["timestamp"] = _timestamp,
-		["message"] = _message,
-		["eventId"] = _eventId,
-		["logStreamName"] = _logStreamName,
+		["ingestionTime"] = args["ingestionTime"],
+		["timestamp"] = args["timestamp"],
+		["message"] = args["message"],
+		["eventId"] = args["eventId"],
+		["logStreamName"] = args["logStreamName"],
 	}
 	asserts.AssertFilteredLogEvent(t)
 	return t
@@ -955,8 +1048,11 @@ end
 
 --- Create a structure of type ResourceAlreadyExistsException
 -- <p>The specified resource already exists.</p>
-function M.ResourceAlreadyExistsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceAlreadyExistsException structure as a key-value pair table
+function M.ResourceAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
 	local t = { 
 	}
 	asserts.AssertResourceAlreadyExistsException(t)
@@ -977,13 +1073,16 @@ end
 
 --- Create a structure of type DescribeMetricFiltersResponse
 --  
--- @param _metricFilters [MetricFilters] <p>The metric filters.</p>
--- @param _nextToken [NextToken] 
-function M.DescribeMetricFiltersResponse(_metricFilters, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMetricFiltersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * metricFilters [MetricFilters] <p>The metric filters.</p>
+-- * nextToken [NextToken] 
+-- @return DescribeMetricFiltersResponse structure as a key-value pair table
+function M.DescribeMetricFiltersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeMetricFiltersResponse")
 	local t = { 
-		["metricFilters"] = _metricFilters,
-		["nextToken"] = _nextToken,
+		["metricFilters"] = args["metricFilters"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeMetricFiltersResponse(t)
 	return t
@@ -1005,15 +1104,18 @@ end
 
 --- Create a structure of type CreateLogStreamRequest
 --  
--- @param _logStreamName [LogStreamName] <p>The name of the log stream.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- Required parameter: logGroupName
--- Required parameter: logStreamName
-function M.CreateLogStreamRequest(_logStreamName, _logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLogStreamRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- Required key: logStreamName
+-- @return CreateLogStreamRequest structure as a key-value pair table
+function M.CreateLogStreamRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateLogStreamRequest")
 	local t = { 
-		["logStreamName"] = _logStreamName,
-		["logGroupName"] = _logGroupName,
+		["logStreamName"] = args["logStreamName"],
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertCreateLogStreamRequest(t)
 	return t
@@ -1031,8 +1133,11 @@ end
 
 --- Create a structure of type OperationAbortedException
 -- <p>Multiple requests to update the same resource were in conflict.</p>
-function M.OperationAbortedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OperationAbortedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return OperationAbortedException structure as a key-value pair table
+function M.OperationAbortedException(args)
+	assert(args, "You must provdide an argument table when creating OperationAbortedException")
 	local t = { 
 	}
 	asserts.AssertOperationAbortedException(t)
@@ -1058,23 +1163,26 @@ end
 
 --- Create a structure of type SubscriptionFilter
 -- <p>Represents a subscription filter.</p>
--- @param _filterPattern [FilterPattern] 
--- @param _filterName [FilterName] <p>The name of the subscription filter.</p>
--- @param _roleArn [RoleArn] <p/>
--- @param _creationTime [Timestamp] <p>The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _destinationArn [DestinationArn] <p>The Amazon Resource Name (ARN) of the destination.</p>
--- @param _distribution [Distribution] <p>The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.</p>
-function M.SubscriptionFilter(_filterPattern, _filterName, _roleArn, _creationTime, _logGroupName, _destinationArn, _distribution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SubscriptionFilter")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filterPattern [FilterPattern] 
+-- * filterName [FilterName] <p>The name of the subscription filter.</p>
+-- * roleArn [RoleArn] <p/>
+-- * creationTime [Timestamp] <p>The creation time of the subscription filter, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * destinationArn [DestinationArn] <p>The Amazon Resource Name (ARN) of the destination.</p>
+-- * distribution [Distribution] <p>The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.</p>
+-- @return SubscriptionFilter structure as a key-value pair table
+function M.SubscriptionFilter(args)
+	assert(args, "You must provdide an argument table when creating SubscriptionFilter")
 	local t = { 
-		["filterPattern"] = _filterPattern,
-		["filterName"] = _filterName,
-		["roleArn"] = _roleArn,
-		["creationTime"] = _creationTime,
-		["logGroupName"] = _logGroupName,
-		["destinationArn"] = _destinationArn,
-		["distribution"] = _distribution,
+		["filterPattern"] = args["filterPattern"],
+		["filterName"] = args["filterName"],
+		["roleArn"] = args["roleArn"],
+		["creationTime"] = args["creationTime"],
+		["logGroupName"] = args["logGroupName"],
+		["destinationArn"] = args["destinationArn"],
+		["distribution"] = args["distribution"],
 	}
 	asserts.AssertSubscriptionFilter(t)
 	return t
@@ -1093,11 +1201,14 @@ end
 
 --- Create a structure of type CreateExportTaskResponse
 --  
--- @param _taskId [ExportTaskId] <p>The ID of the export task.</p>
-function M.CreateExportTaskResponse(_taskId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateExportTaskResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * taskId [ExportTaskId] <p>The ID of the export task.</p>
+-- @return CreateExportTaskResponse structure as a key-value pair table
+function M.CreateExportTaskResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateExportTaskResponse")
 	local t = { 
-		["taskId"] = _taskId,
+		["taskId"] = args["taskId"],
 	}
 	asserts.AssertCreateExportTaskResponse(t)
 	return t
@@ -1117,13 +1228,16 @@ end
 
 --- Create a structure of type PutLogEventsResponse
 --  
--- @param _nextSequenceToken [SequenceToken] <p>The next sequence token.</p>
--- @param _rejectedLogEventsInfo [RejectedLogEventsInfo] <p>The rejected events.</p>
-function M.PutLogEventsResponse(_nextSequenceToken, _rejectedLogEventsInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutLogEventsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextSequenceToken [SequenceToken] <p>The next sequence token.</p>
+-- * rejectedLogEventsInfo [RejectedLogEventsInfo] <p>The rejected events.</p>
+-- @return PutLogEventsResponse structure as a key-value pair table
+function M.PutLogEventsResponse(args)
+	assert(args, "You must provdide an argument table when creating PutLogEventsResponse")
 	local t = { 
-		["nextSequenceToken"] = _nextSequenceToken,
-		["rejectedLogEventsInfo"] = _rejectedLogEventsInfo,
+		["nextSequenceToken"] = args["nextSequenceToken"],
+		["rejectedLogEventsInfo"] = args["rejectedLogEventsInfo"],
 	}
 	asserts.AssertPutLogEventsResponse(t)
 	return t
@@ -1152,27 +1266,30 @@ end
 
 --- Create a structure of type CreateExportTaskRequest
 --  
--- @param _from [Timestamp] <p>The start time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not exported.</p>
--- @param _destinationPrefix [ExportDestinationPrefix] <p>The prefix used as the start of the key for every object exported. If you don't specify a value, the default is <code>exportedlogs</code>.</p>
--- @param _destination [ExportDestinationBucket] <p>The name of S3 bucket for the exported log data. The bucket must be in the same AWS region.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _to [Timestamp] <p>The end time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.</p>
--- @param _logStreamNamePrefix [LogStreamName] <p>Export only log streams that match the provided prefix. If you don't specify a value, no prefix filter is applied.</p>
--- @param _taskName [ExportTaskName] <p>The name of the export task.</p>
--- Required parameter: logGroupName
--- Required parameter: from
--- Required parameter: to
--- Required parameter: destination
-function M.CreateExportTaskRequest(_from, _destinationPrefix, _destination, _logGroupName, _to, _logStreamNamePrefix, _taskName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateExportTaskRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * from [Timestamp] <p>The start time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not exported.</p>
+-- * destinationPrefix [ExportDestinationPrefix] <p>The prefix used as the start of the key for every object exported. If you don't specify a value, the default is <code>exportedlogs</code>.</p>
+-- * destination [ExportDestinationBucket] <p>The name of S3 bucket for the exported log data. The bucket must be in the same AWS region.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * to [Timestamp] <p>The end time of the range for the request, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.</p>
+-- * logStreamNamePrefix [LogStreamName] <p>Export only log streams that match the provided prefix. If you don't specify a value, no prefix filter is applied.</p>
+-- * taskName [ExportTaskName] <p>The name of the export task.</p>
+-- Required key: logGroupName
+-- Required key: from
+-- Required key: to
+-- Required key: destination
+-- @return CreateExportTaskRequest structure as a key-value pair table
+function M.CreateExportTaskRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateExportTaskRequest")
 	local t = { 
-		["from"] = _from,
-		["destinationPrefix"] = _destinationPrefix,
-		["destination"] = _destination,
-		["logGroupName"] = _logGroupName,
-		["to"] = _to,
-		["logStreamNamePrefix"] = _logStreamNamePrefix,
-		["taskName"] = _taskName,
+		["from"] = args["from"],
+		["destinationPrefix"] = args["destinationPrefix"],
+		["destination"] = args["destination"],
+		["logGroupName"] = args["logGroupName"],
+		["to"] = args["to"],
+		["logStreamNamePrefix"] = args["logStreamNamePrefix"],
+		["taskName"] = args["taskName"],
 	}
 	asserts.AssertCreateExportTaskRequest(t)
 	return t
@@ -1196,21 +1313,24 @@ end
 
 --- Create a structure of type DescribeMetricFiltersRequest
 --  
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _filterNamePrefix [FilterName] <p>The prefix to match.</p>
--- @param _limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
--- @param _metricNamespace [MetricNamespace] <p>The namespace of the CloudWatch metric.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _metricName [MetricName] <p>The name of the CloudWatch metric.</p>
-function M.DescribeMetricFiltersRequest(_logGroupName, _filterNamePrefix, _limit, _metricNamespace, _nextToken, _metricName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeMetricFiltersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * filterNamePrefix [FilterName] <p>The prefix to match.</p>
+-- * limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- * metricNamespace [MetricNamespace] <p>The namespace of the CloudWatch metric.</p>
+-- * nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * metricName [MetricName] <p>The name of the CloudWatch metric.</p>
+-- @return DescribeMetricFiltersRequest structure as a key-value pair table
+function M.DescribeMetricFiltersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeMetricFiltersRequest")
 	local t = { 
-		["logGroupName"] = _logGroupName,
-		["filterNamePrefix"] = _filterNamePrefix,
-		["limit"] = _limit,
-		["metricNamespace"] = _metricNamespace,
-		["nextToken"] = _nextToken,
-		["metricName"] = _metricName,
+		["logGroupName"] = args["logGroupName"],
+		["filterNamePrefix"] = args["filterNamePrefix"],
+		["limit"] = args["limit"],
+		["metricNamespace"] = args["metricNamespace"],
+		["nextToken"] = args["nextToken"],
+		["metricName"] = args["metricName"],
 	}
 	asserts.AssertDescribeMetricFiltersRequest(t)
 	return t
@@ -1234,18 +1354,21 @@ end
 
 --- Create a structure of type PutDestinationRequest
 --  
--- @param _targetArn [TargetArn] <p>The ARN of an Amazon Kinesis stream to deliver matching log events to.</p>
--- @param _roleArn [RoleArn] <p>The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the destination stream.</p>
--- @param _destinationName [DestinationName] <p>A name for the destination.</p>
--- Required parameter: destinationName
--- Required parameter: targetArn
--- Required parameter: roleArn
-function M.PutDestinationRequest(_targetArn, _roleArn, _destinationName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutDestinationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * targetArn [TargetArn] <p>The ARN of an Amazon Kinesis stream to deliver matching log events to.</p>
+-- * roleArn [RoleArn] <p>The ARN of an IAM role that grants CloudWatch Logs permissions to call Amazon Kinesis PutRecord on the destination stream.</p>
+-- * destinationName [DestinationName] <p>A name for the destination.</p>
+-- Required key: destinationName
+-- Required key: targetArn
+-- Required key: roleArn
+-- @return PutDestinationRequest structure as a key-value pair table
+function M.PutDestinationRequest(args)
+	assert(args, "You must provdide an argument table when creating PutDestinationRequest")
 	local t = { 
-		["targetArn"] = _targetArn,
-		["roleArn"] = _roleArn,
-		["destinationName"] = _destinationName,
+		["targetArn"] = args["targetArn"],
+		["roleArn"] = args["roleArn"],
+		["destinationName"] = args["destinationName"],
 	}
 	asserts.AssertPutDestinationRequest(t)
 	return t
@@ -1267,15 +1390,18 @@ end
 
 --- Create a structure of type UntagLogGroupRequest
 --  
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _tags [TagList] <p>The tag keys. The corresponding tags are removed from the log group.</p>
--- Required parameter: logGroupName
--- Required parameter: tags
-function M.UntagLogGroupRequest(_logGroupName, _tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UntagLogGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * tags [TagList] <p>The tag keys. The corresponding tags are removed from the log group.</p>
+-- Required key: logGroupName
+-- Required key: tags
+-- @return UntagLogGroupRequest structure as a key-value pair table
+function M.UntagLogGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating UntagLogGroupRequest")
 	local t = { 
-		["logGroupName"] = _logGroupName,
-		["tags"] = _tags,
+		["logGroupName"] = args["logGroupName"],
+		["tags"] = args["tags"],
 	}
 	asserts.AssertUntagLogGroupRequest(t)
 	return t
@@ -1295,13 +1421,16 @@ end
 
 --- Create a structure of type DescribeExportTasksResponse
 --  
--- @param _nextToken [NextToken] 
--- @param _exportTasks [ExportTasks] <p>The export tasks.</p>
-function M.DescribeExportTasksResponse(_nextToken, _exportTasks, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportTasksResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * exportTasks [ExportTasks] <p>The export tasks.</p>
+-- @return DescribeExportTasksResponse structure as a key-value pair table
+function M.DescribeExportTasksResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeExportTasksResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["exportTasks"] = _exportTasks,
+		["nextToken"] = args["nextToken"],
+		["exportTasks"] = args["exportTasks"],
 	}
 	asserts.AssertDescribeExportTasksResponse(t)
 	return t
@@ -1329,25 +1458,28 @@ end
 
 --- Create a structure of type PutSubscriptionFilterRequest
 --  
--- @param _filterPattern [FilterPattern] <p>A filter pattern for subscribing to a filtered stream of log events.</p>
--- @param _filterName [FilterName] <p>A name for the subscription filter. If you are updating an existing filter, you must specify the correct name in <code>filterName</code>. Otherwise, the call will fail because you cannot associate a second filter with a log group. To find the name of the filter currently associated with a log group, use <a>DescribeSubscriptionFilters</a>.</p>
--- @param _roleArn [RoleArn] <p>The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _destinationArn [DestinationArn] <p>The ARN of the destination to deliver matching log events to. Currently, the supported destinations are:</p> <ul> <li> <p>An Amazon Kinesis stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.</p> </li> <li> <p>An Amazon Kinesis Firehose stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>An AWS Lambda function belonging to the same account as the subscription filter, for same-account delivery.</p> </li> </ul>
--- @param _distribution [Distribution] <p>The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.</p>
--- Required parameter: logGroupName
--- Required parameter: filterName
--- Required parameter: filterPattern
--- Required parameter: destinationArn
-function M.PutSubscriptionFilterRequest(_filterPattern, _filterName, _roleArn, _logGroupName, _destinationArn, _distribution, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutSubscriptionFilterRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * filterPattern [FilterPattern] <p>A filter pattern for subscribing to a filtered stream of log events.</p>
+-- * filterName [FilterName] <p>A name for the subscription filter. If you are updating an existing filter, you must specify the correct name in <code>filterName</code>. Otherwise, the call will fail because you cannot associate a second filter with a log group. To find the name of the filter currently associated with a log group, use <a>DescribeSubscriptionFilters</a>.</p>
+-- * roleArn [RoleArn] <p>The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * destinationArn [DestinationArn] <p>The ARN of the destination to deliver matching log events to. Currently, the supported destinations are:</p> <ul> <li> <p>An Amazon Kinesis stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>A logical destination (specified using an ARN) belonging to a different account, for cross-account delivery.</p> </li> <li> <p>An Amazon Kinesis Firehose stream belonging to the same account as the subscription filter, for same-account delivery.</p> </li> <li> <p>An AWS Lambda function belonging to the same account as the subscription filter, for same-account delivery.</p> </li> </ul>
+-- * distribution [Distribution] <p>The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream. By default, log data is grouped by log stream. For a more even distribution, you can group log data randomly.</p>
+-- Required key: logGroupName
+-- Required key: filterName
+-- Required key: filterPattern
+-- Required key: destinationArn
+-- @return PutSubscriptionFilterRequest structure as a key-value pair table
+function M.PutSubscriptionFilterRequest(args)
+	assert(args, "You must provdide an argument table when creating PutSubscriptionFilterRequest")
 	local t = { 
-		["filterPattern"] = _filterPattern,
-		["filterName"] = _filterName,
-		["roleArn"] = _roleArn,
-		["logGroupName"] = _logGroupName,
-		["destinationArn"] = _destinationArn,
-		["distribution"] = _distribution,
+		["filterPattern"] = args["filterPattern"],
+		["filterName"] = args["filterName"],
+		["roleArn"] = args["roleArn"],
+		["logGroupName"] = args["logGroupName"],
+		["destinationArn"] = args["destinationArn"],
+		["distribution"] = args["distribution"],
 	}
 	asserts.AssertPutSubscriptionFilterRequest(t)
 	return t
@@ -1365,8 +1497,11 @@ end
 
 --- Create a structure of type InvalidOperationException
 -- <p>The operation is not valid on the specified resource.</p>
-function M.InvalidOperationException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOperationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidOperationException structure as a key-value pair table
+function M.InvalidOperationException(args)
+	assert(args, "You must provdide an argument table when creating InvalidOperationException")
 	local t = { 
 	}
 	asserts.AssertInvalidOperationException(t)
@@ -1390,18 +1525,21 @@ end
 
 --- Create a structure of type DescribeSubscriptionFiltersRequest
 --  
--- @param _nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _filterNamePrefix [FilterName] <p>The prefix to match. If you don't specify a value, no prefix filter is applied.</p>
--- Required parameter: logGroupName
-function M.DescribeSubscriptionFiltersRequest(_nextToken, _limit, _logGroupName, _filterNamePrefix, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubscriptionFiltersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * filterNamePrefix [FilterName] <p>The prefix to match. If you don't specify a value, no prefix filter is applied.</p>
+-- Required key: logGroupName
+-- @return DescribeSubscriptionFiltersRequest structure as a key-value pair table
+function M.DescribeSubscriptionFiltersRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeSubscriptionFiltersRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["limit"] = _limit,
-		["logGroupName"] = _logGroupName,
-		["filterNamePrefix"] = _filterNamePrefix,
+		["nextToken"] = args["nextToken"],
+		["limit"] = args["limit"],
+		["logGroupName"] = args["logGroupName"],
+		["filterNamePrefix"] = args["filterNamePrefix"],
 	}
 	asserts.AssertDescribeSubscriptionFiltersRequest(t)
 	return t
@@ -1421,13 +1559,16 @@ end
 
 --- Create a structure of type ExportTaskExecutionInfo
 -- <p>Represents the status of an export task.</p>
--- @param _completionTime [Timestamp] <p>The completion time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _creationTime [Timestamp] <p>The creation time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
-function M.ExportTaskExecutionInfo(_completionTime, _creationTime, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExportTaskExecutionInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * completionTime [Timestamp] <p>The completion time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * creationTime [Timestamp] <p>The creation time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- @return ExportTaskExecutionInfo structure as a key-value pair table
+function M.ExportTaskExecutionInfo(args)
+	assert(args, "You must provdide an argument table when creating ExportTaskExecutionInfo")
 	local t = { 
-		["completionTime"] = _completionTime,
-		["creationTime"] = _creationTime,
+		["completionTime"] = args["completionTime"],
+		["creationTime"] = args["creationTime"],
 	}
 	asserts.AssertExportTaskExecutionInfo(t)
 	return t
@@ -1445,8 +1586,11 @@ end
 
 --- Create a structure of type ResourceNotFoundException
 -- <p>The specified resource does not exist.</p>
-function M.ResourceNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ResourceNotFoundException structure as a key-value pair table
+function M.ResourceNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
 	local t = { 
 	}
 	asserts.AssertResourceNotFoundException(t)
@@ -1472,20 +1616,23 @@ end
 
 --- Create a structure of type PutLogEventsRequest
 --  
--- @param _sequenceToken [SequenceToken] <p>The sequence token.</p>
--- @param _logEvents [InputLogEvents] <p>The log events.</p>
--- @param _logStreamName [LogStreamName] <p>The name of the log stream.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- Required parameter: logGroupName
--- Required parameter: logStreamName
--- Required parameter: logEvents
-function M.PutLogEventsRequest(_sequenceToken, _logEvents, _logStreamName, _logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutLogEventsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * sequenceToken [SequenceToken] <p>The sequence token.</p>
+-- * logEvents [InputLogEvents] <p>The log events.</p>
+-- * logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- Required key: logStreamName
+-- Required key: logEvents
+-- @return PutLogEventsRequest structure as a key-value pair table
+function M.PutLogEventsRequest(args)
+	assert(args, "You must provdide an argument table when creating PutLogEventsRequest")
 	local t = { 
-		["sequenceToken"] = _sequenceToken,
-		["logEvents"] = _logEvents,
-		["logStreamName"] = _logStreamName,
-		["logGroupName"] = _logGroupName,
+		["sequenceToken"] = args["sequenceToken"],
+		["logEvents"] = args["logEvents"],
+		["logStreamName"] = args["logStreamName"],
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertPutLogEventsRequest(t)
 	return t
@@ -1506,15 +1653,18 @@ end
 
 --- Create a structure of type DescribeLogGroupsRequest
 --  
--- @param _limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _logGroupNamePrefix [LogGroupName] <p>The prefix to match.</p>
-function M.DescribeLogGroupsRequest(_limit, _nextToken, _logGroupNamePrefix, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLogGroupsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- * nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * logGroupNamePrefix [LogGroupName] <p>The prefix to match.</p>
+-- @return DescribeLogGroupsRequest structure as a key-value pair table
+function M.DescribeLogGroupsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeLogGroupsRequest")
 	local t = { 
-		["limit"] = _limit,
-		["nextToken"] = _nextToken,
-		["logGroupNamePrefix"] = _logGroupNamePrefix,
+		["limit"] = args["limit"],
+		["nextToken"] = args["nextToken"],
+		["logGroupNamePrefix"] = args["logGroupNamePrefix"],
 	}
 	asserts.AssertDescribeLogGroupsRequest(t)
 	return t
@@ -1534,13 +1684,16 @@ end
 
 --- Create a structure of type SearchedLogStream
 -- <p>Represents the search status of a log stream.</p>
--- @param _searchedCompletely [LogStreamSearchedCompletely] <p>Indicates whether all the events in this log stream were searched.</p>
--- @param _logStreamName [LogStreamName] <p>The name of the log stream.</p>
-function M.SearchedLogStream(_searchedCompletely, _logStreamName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SearchedLogStream")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * searchedCompletely [LogStreamSearchedCompletely] <p>Indicates whether all the events in this log stream were searched.</p>
+-- * logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- @return SearchedLogStream structure as a key-value pair table
+function M.SearchedLogStream(args)
+	assert(args, "You must provdide an argument table when creating SearchedLogStream")
 	local t = { 
-		["searchedCompletely"] = _searchedCompletely,
-		["logStreamName"] = _logStreamName,
+		["searchedCompletely"] = args["searchedCompletely"],
+		["logStreamName"] = args["logStreamName"],
 	}
 	asserts.AssertSearchedLogStream(t)
 	return t
@@ -1562,17 +1715,20 @@ end
 
 --- Create a structure of type DescribeExportTasksRequest
 --  
--- @param _nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
--- @param _taskId [ExportTaskId] <p>The ID of the export task. Specifying a task ID filters the results to zero or one export tasks.</p>
--- @param _statusCode [ExportTaskStatusCode] <p>The status code of the export task. Specifying a status code filters the results to zero or more export tasks.</p>
-function M.DescribeExportTasksRequest(_nextToken, _limit, _taskId, _statusCode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeExportTasksRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- * taskId [ExportTaskId] <p>The ID of the export task. Specifying a task ID filters the results to zero or one export tasks.</p>
+-- * statusCode [ExportTaskStatusCode] <p>The status code of the export task. Specifying a status code filters the results to zero or more export tasks.</p>
+-- @return DescribeExportTasksRequest structure as a key-value pair table
+function M.DescribeExportTasksRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeExportTasksRequest")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["limit"] = _limit,
-		["taskId"] = _taskId,
-		["statusCode"] = _statusCode,
+		["nextToken"] = args["nextToken"],
+		["limit"] = args["limit"],
+		["taskId"] = args["taskId"],
+		["statusCode"] = args["statusCode"],
 	}
 	asserts.AssertDescribeExportTasksRequest(t)
 	return t
@@ -1590,8 +1746,11 @@ end
 
 --- Create a structure of type InvalidParameterException
 -- <p>A parameter is specified incorrectly.</p>
-function M.InvalidParameterException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidParameterException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidParameterException structure as a key-value pair table
+function M.InvalidParameterException(args)
+	assert(args, "You must provdide an argument table when creating InvalidParameterException")
 	local t = { 
 	}
 	asserts.AssertInvalidParameterException(t)
@@ -1614,15 +1773,18 @@ end
 
 --- Create a structure of type InputLogEvent
 -- <p>Represents a log event, which is a record of activity that was recorded by the application or resource being monitored.</p>
--- @param _timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _message [EventMessage] <p>The raw event message.</p>
--- Required parameter: timestamp
--- Required parameter: message
-function M.InputLogEvent(_timestamp, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InputLogEvent")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * timestamp [Timestamp] <p>The time the event occurred, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * message [EventMessage] <p>The raw event message.</p>
+-- Required key: timestamp
+-- Required key: message
+-- @return InputLogEvent structure as a key-value pair table
+function M.InputLogEvent(args)
+	assert(args, "You must provdide an argument table when creating InputLogEvent")
 	local t = { 
-		["timestamp"] = _timestamp,
-		["message"] = _message,
+		["timestamp"] = args["timestamp"],
+		["message"] = args["message"],
 	}
 	asserts.AssertInputLogEvent(t)
 	return t
@@ -1646,21 +1808,24 @@ end
 
 --- Create a structure of type LogGroup
 -- <p>Represents a log group.</p>
--- @param _storedBytes [StoredBytes] <p>The number of bytes stored.</p>
--- @param _metricFilterCount [FilterCount] <p>The number of metric filters.</p>
--- @param _creationTime [Timestamp] <p>The creation time of the log group, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _retentionInDays [Days] 
--- @param _arn [Arn] <p>The Amazon Resource Name (ARN) of the log group.</p>
-function M.LogGroup(_storedBytes, _metricFilterCount, _creationTime, _logGroupName, _retentionInDays, _arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LogGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * storedBytes [StoredBytes] <p>The number of bytes stored.</p>
+-- * metricFilterCount [FilterCount] <p>The number of metric filters.</p>
+-- * creationTime [Timestamp] <p>The creation time of the log group, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * retentionInDays [Days] 
+-- * arn [Arn] <p>The Amazon Resource Name (ARN) of the log group.</p>
+-- @return LogGroup structure as a key-value pair table
+function M.LogGroup(args)
+	assert(args, "You must provdide an argument table when creating LogGroup")
 	local t = { 
-		["storedBytes"] = _storedBytes,
-		["metricFilterCount"] = _metricFilterCount,
-		["creationTime"] = _creationTime,
-		["logGroupName"] = _logGroupName,
-		["retentionInDays"] = _retentionInDays,
-		["arn"] = _arn,
+		["storedBytes"] = args["storedBytes"],
+		["metricFilterCount"] = args["metricFilterCount"],
+		["creationTime"] = args["creationTime"],
+		["logGroupName"] = args["logGroupName"],
+		["retentionInDays"] = args["retentionInDays"],
+		["arn"] = args["arn"],
 	}
 	asserts.AssertLogGroup(t)
 	return t
@@ -1679,11 +1844,14 @@ end
 
 --- Create a structure of type ListTagsLogGroupResponse
 --  
--- @param _tags [Tags] <p>The tags.</p>
-function M.ListTagsLogGroupResponse(_tags, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListTagsLogGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * tags [Tags] <p>The tags.</p>
+-- @return ListTagsLogGroupResponse structure as a key-value pair table
+function M.ListTagsLogGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating ListTagsLogGroupResponse")
 	local t = { 
-		["tags"] = _tags,
+		["tags"] = args["tags"],
 	}
 	asserts.AssertListTagsLogGroupResponse(t)
 	return t
@@ -1703,12 +1871,15 @@ end
 
 --- Create a structure of type DeleteDestinationRequest
 --  
--- @param _destinationName [DestinationName] <p>The name of the destination.</p>
--- Required parameter: destinationName
-function M.DeleteDestinationRequest(_destinationName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteDestinationRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * destinationName [DestinationName] <p>The name of the destination.</p>
+-- Required key: destinationName
+-- @return DeleteDestinationRequest structure as a key-value pair table
+function M.DeleteDestinationRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteDestinationRequest")
 	local t = { 
-		["destinationName"] = _destinationName,
+		["destinationName"] = args["destinationName"],
 	}
 	asserts.AssertDeleteDestinationRequest(t)
 	return t
@@ -1733,22 +1904,25 @@ end
 
 --- Create a structure of type DescribeLogStreamsRequest
 --  
--- @param _orderBy [OrderBy] <p>If the value is <code>LogStreamName</code>, the results are ordered by log stream name. If the value is <code>LastEventTime</code>, the results are ordered by the event time. The default value is <code>LogStreamName</code>.</p> <p>If you order the results by event time, you cannot specify the <code>logStreamNamePrefix</code> parameter.</p> <p>lastEventTimestamp represents the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTimeStamp updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.</p>
--- @param _logStreamNamePrefix [LogStreamName] <p>The prefix to match.</p> <p>You cannot specify this parameter if <code>orderBy</code> is <code>LastEventTime</code>.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _descending [Descending] <p>If the value is true, results are returned in descending order. If the value is to false, results are returned in ascending order. The default value is false.</p>
--- @param _limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- Required parameter: logGroupName
-function M.DescribeLogStreamsRequest(_orderBy, _logStreamNamePrefix, _logGroupName, _descending, _limit, _nextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeLogStreamsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * orderBy [OrderBy] <p>If the value is <code>LogStreamName</code>, the results are ordered by log stream name. If the value is <code>LastEventTime</code>, the results are ordered by the event time. The default value is <code>LogStreamName</code>.</p> <p>If you order the results by event time, you cannot specify the <code>logStreamNamePrefix</code> parameter.</p> <p>lastEventTimestamp represents the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. lastEventTimeStamp updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.</p>
+-- * logStreamNamePrefix [LogStreamName] <p>The prefix to match.</p> <p>You cannot specify this parameter if <code>orderBy</code> is <code>LastEventTime</code>.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * descending [Descending] <p>If the value is true, results are returned in descending order. If the value is to false, results are returned in ascending order. The default value is false.</p>
+-- * limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
+-- * nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- Required key: logGroupName
+-- @return DescribeLogStreamsRequest structure as a key-value pair table
+function M.DescribeLogStreamsRequest(args)
+	assert(args, "You must provdide an argument table when creating DescribeLogStreamsRequest")
 	local t = { 
-		["orderBy"] = _orderBy,
-		["logStreamNamePrefix"] = _logStreamNamePrefix,
-		["logGroupName"] = _logGroupName,
-		["descending"] = _descending,
-		["limit"] = _limit,
-		["nextToken"] = _nextToken,
+		["orderBy"] = args["orderBy"],
+		["logStreamNamePrefix"] = args["logStreamNamePrefix"],
+		["logGroupName"] = args["logGroupName"],
+		["descending"] = args["descending"],
+		["limit"] = args["limit"],
+		["nextToken"] = args["nextToken"],
 	}
 	asserts.AssertDescribeLogStreamsRequest(t)
 	return t
@@ -1768,12 +1942,15 @@ end
 
 --- Create a structure of type DeleteRetentionPolicyRequest
 --  
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- Required parameter: logGroupName
-function M.DeleteRetentionPolicyRequest(_logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRetentionPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- @return DeleteRetentionPolicyRequest structure as a key-value pair table
+function M.DeleteRetentionPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteRetentionPolicyRequest")
 	local t = { 
-		["logGroupName"] = _logGroupName,
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertDeleteRetentionPolicyRequest(t)
 	return t
@@ -1800,25 +1977,28 @@ end
 
 --- Create a structure of type GetLogEventsRequest
 --  
--- @param _endTime [Timestamp] <p>The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not included.</p>
--- @param _logStreamName [LogStreamName] <p>The name of the log stream.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- @param _limit [EventsLimit] <p>The maximum number of log events returned. If you don't specify a value, the maximum is as many log events as can fit in a response size of 1MB, up to 10,000 log events.</p>
--- @param _startTime [Timestamp] <p>The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not included.</p>
--- @param _nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
--- @param _startFromHead [StartFromHead] <p>If the value is true, the earliest log events are returned first. If the value is false, the latest log events are returned first. The default value is false.</p>
--- Required parameter: logGroupName
--- Required parameter: logStreamName
-function M.GetLogEventsRequest(_endTime, _logStreamName, _logGroupName, _limit, _startTime, _nextToken, _startFromHead, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLogEventsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * endTime [Timestamp] <p>The end of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not included.</p>
+-- * logStreamName [LogStreamName] <p>The name of the log stream.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- * limit [EventsLimit] <p>The maximum number of log events returned. If you don't specify a value, the maximum is as many log events as can fit in a response size of 1MB, up to 10,000 log events.</p>
+-- * startTime [Timestamp] <p>The start of the time range, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp earlier than this time are not included.</p>
+-- * nextToken [NextToken] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
+-- * startFromHead [StartFromHead] <p>If the value is true, the earliest log events are returned first. If the value is false, the latest log events are returned first. The default value is false.</p>
+-- Required key: logGroupName
+-- Required key: logStreamName
+-- @return GetLogEventsRequest structure as a key-value pair table
+function M.GetLogEventsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetLogEventsRequest")
 	local t = { 
-		["endTime"] = _endTime,
-		["logStreamName"] = _logStreamName,
-		["logGroupName"] = _logGroupName,
-		["limit"] = _limit,
-		["startTime"] = _startTime,
-		["nextToken"] = _nextToken,
-		["startFromHead"] = _startFromHead,
+		["endTime"] = args["endTime"],
+		["logStreamName"] = args["logStreamName"],
+		["logGroupName"] = args["logGroupName"],
+		["limit"] = args["limit"],
+		["startTime"] = args["startTime"],
+		["nextToken"] = args["nextToken"],
+		["startFromHead"] = args["startFromHead"],
 	}
 	asserts.AssertGetLogEventsRequest(t)
 	return t
@@ -1839,15 +2019,18 @@ end
 
 --- Create a structure of type FilterLogEventsResponse
 --  
--- @param _searchedLogStreams [SearchedLogStreams] <p>Indicates which log streams have been searched and whether each has been searched completely.</p>
--- @param _nextToken [NextToken] <p>The token to use when requesting the next set of items. The token expires after 24 hours.</p>
--- @param _events [FilteredLogEvents] <p>The matched events.</p>
-function M.FilterLogEventsResponse(_searchedLogStreams, _nextToken, _events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FilterLogEventsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * searchedLogStreams [SearchedLogStreams] <p>Indicates which log streams have been searched and whether each has been searched completely.</p>
+-- * nextToken [NextToken] <p>The token to use when requesting the next set of items. The token expires after 24 hours.</p>
+-- * events [FilteredLogEvents] <p>The matched events.</p>
+-- @return FilterLogEventsResponse structure as a key-value pair table
+function M.FilterLogEventsResponse(args)
+	assert(args, "You must provdide an argument table when creating FilterLogEventsResponse")
 	local t = { 
-		["searchedLogStreams"] = _searchedLogStreams,
-		["nextToken"] = _nextToken,
-		["events"] = _events,
+		["searchedLogStreams"] = args["searchedLogStreams"],
+		["nextToken"] = args["nextToken"],
+		["events"] = args["events"],
 	}
 	asserts.AssertFilterLogEventsResponse(t)
 	return t
@@ -1867,13 +2050,16 @@ end
 
 --- Create a structure of type DescribeSubscriptionFiltersResponse
 --  
--- @param _nextToken [NextToken] 
--- @param _subscriptionFilters [SubscriptionFilters] <p>The subscription filters.</p>
-function M.DescribeSubscriptionFiltersResponse(_nextToken, _subscriptionFilters, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DescribeSubscriptionFiltersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] 
+-- * subscriptionFilters [SubscriptionFilters] <p>The subscription filters.</p>
+-- @return DescribeSubscriptionFiltersResponse structure as a key-value pair table
+function M.DescribeSubscriptionFiltersResponse(args)
+	assert(args, "You must provdide an argument table when creating DescribeSubscriptionFiltersResponse")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["subscriptionFilters"] = _subscriptionFilters,
+		["nextToken"] = args["nextToken"],
+		["subscriptionFilters"] = args["subscriptionFilters"],
 	}
 	asserts.AssertDescribeSubscriptionFiltersResponse(t)
 	return t
@@ -1892,11 +2078,14 @@ end
 
 --- Create a structure of type TestMetricFilterResponse
 --  
--- @param _matches [MetricFilterMatches] <p>The matched events.</p>
-function M.TestMetricFilterResponse(_matches, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TestMetricFilterResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * matches [MetricFilterMatches] <p>The matched events.</p>
+-- @return TestMetricFilterResponse structure as a key-value pair table
+function M.TestMetricFilterResponse(args)
+	assert(args, "You must provdide an argument table when creating TestMetricFilterResponse")
 	local t = { 
-		["matches"] = _matches,
+		["matches"] = args["matches"],
 	}
 	asserts.AssertTestMetricFilterResponse(t)
 	return t
@@ -1916,12 +2105,15 @@ end
 
 --- Create a structure of type DeleteLogGroupRequest
 --  
--- @param _logGroupName [LogGroupName] <p>The name of the log group.</p>
--- Required parameter: logGroupName
-function M.DeleteLogGroupRequest(_logGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLogGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * logGroupName [LogGroupName] <p>The name of the log group.</p>
+-- Required key: logGroupName
+-- @return DeleteLogGroupRequest structure as a key-value pair table
+function M.DeleteLogGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteLogGroupRequest")
 	local t = { 
-		["logGroupName"] = _logGroupName,
+		["logGroupName"] = args["logGroupName"],
 	}
 	asserts.AssertDeleteLogGroupRequest(t)
 	return t
@@ -1948,27 +2140,30 @@ end
 
 --- Create a structure of type ExportTask
 -- <p>Represents an export task.</p>
--- @param _status [ExportTaskStatus] <p>The status of the export task.</p>
--- @param _from [Timestamp] <p>The start time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not exported.</p>
--- @param _destinationPrefix [ExportDestinationPrefix] <p>The prefix that was used as the start of Amazon S3 key for every object exported.</p>
--- @param _destination [ExportDestinationBucket] <p>The name of Amazon S3 bucket to which the log data was exported.</p>
--- @param _logGroupName [LogGroupName] <p>The name of the log group from which logs data was exported.</p>
--- @param _to [Timestamp] <p>The end time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.</p>
--- @param _taskId [ExportTaskId] <p>The ID of the export task.</p>
--- @param _taskName [ExportTaskName] <p>The name of the export task.</p>
--- @param _executionInfo [ExportTaskExecutionInfo] <p>Execution info about the export task.</p>
-function M.ExportTask(_status, _from, _destinationPrefix, _destination, _logGroupName, _to, _taskId, _taskName, _executionInfo, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ExportTask")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * status [ExportTaskStatus] <p>The status of the export task.</p>
+-- * from [Timestamp] <p>The start time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp prior to this time are not exported.</p>
+-- * destinationPrefix [ExportDestinationPrefix] <p>The prefix that was used as the start of Amazon S3 key for every object exported.</p>
+-- * destination [ExportDestinationBucket] <p>The name of Amazon S3 bucket to which the log data was exported.</p>
+-- * logGroupName [LogGroupName] <p>The name of the log group from which logs data was exported.</p>
+-- * to [Timestamp] <p>The end time, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.</p>
+-- * taskId [ExportTaskId] <p>The ID of the export task.</p>
+-- * taskName [ExportTaskName] <p>The name of the export task.</p>
+-- * executionInfo [ExportTaskExecutionInfo] <p>Execution info about the export task.</p>
+-- @return ExportTask structure as a key-value pair table
+function M.ExportTask(args)
+	assert(args, "You must provdide an argument table when creating ExportTask")
 	local t = { 
-		["status"] = _status,
-		["from"] = _from,
-		["destinationPrefix"] = _destinationPrefix,
-		["destination"] = _destination,
-		["logGroupName"] = _logGroupName,
-		["to"] = _to,
-		["taskId"] = _taskId,
-		["taskName"] = _taskName,
-		["executionInfo"] = _executionInfo,
+		["status"] = args["status"],
+		["from"] = args["from"],
+		["destinationPrefix"] = args["destinationPrefix"],
+		["destination"] = args["destination"],
+		["logGroupName"] = args["logGroupName"],
+		["to"] = args["to"],
+		["taskId"] = args["taskId"],
+		["taskName"] = args["taskName"],
+		["executionInfo"] = args["executionInfo"],
 	}
 	asserts.AssertExportTask(t)
 	return t

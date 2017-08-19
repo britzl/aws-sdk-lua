@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type OrganizationsDecisionDetail
 -- <p>Contains information about AWS Organizations's affect on a policy simulation.</p>
--- @param _AllowedByOrganizations [booleanType] <p>Specifies whether the simulated action is allowed by the AWS Organizations service control policies that impact the simulated user's account.</p>
-function M.OrganizationsDecisionDetail(_AllowedByOrganizations, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OrganizationsDecisionDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AllowedByOrganizations [booleanType] <p>Specifies whether the simulated action is allowed by the AWS Organizations service control policies that impact the simulated user's account.</p>
+-- @return OrganizationsDecisionDetail structure as a key-value pair table
+function M.OrganizationsDecisionDetail(args)
+	assert(args, "You must provdide an argument table when creating OrganizationsDecisionDetail")
 	local t = { 
-		["AllowedByOrganizations"] = _AllowedByOrganizations,
+		["AllowedByOrganizations"] = args["AllowedByOrganizations"],
 	}
 	asserts.AssertOrganizationsDecisionDetail(t)
 	return t
@@ -58,12 +61,15 @@ end
 
 --- Create a structure of type UploadSigningCertificateResponse
 -- <p>Contains the response to a successful <a>UploadSigningCertificate</a> request. </p>
--- @param _Certificate [SigningCertificate] <p>Information about the certificate.</p>
--- Required parameter: Certificate
-function M.UploadSigningCertificateResponse(_Certificate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadSigningCertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Certificate [SigningCertificate] <p>Information about the certificate.</p>
+-- Required key: Certificate
+-- @return UploadSigningCertificateResponse structure as a key-value pair table
+function M.UploadSigningCertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating UploadSigningCertificateResponse")
 	local t = { 
-		["Certificate"] = _Certificate,
+		["Certificate"] = args["Certificate"],
 	}
 	asserts.AssertUploadSigningCertificateResponse(t)
 	return t
@@ -93,27 +99,30 @@ end
 
 --- Create a structure of type ServiceSpecificCredentialMetadata
 -- <p>Contains additional details about a service-specific credential.</p>
--- @param _UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential.</p>
--- @param _Status [statusType] <p>The status of the service-specific credential. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the service-specific credential were created.</p>
--- @param _ServiceName [serviceName] <p>The name of the service associated with the service-specific credential.</p>
--- @param _ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier for the service-specific credential.</p>
--- @param _ServiceUserName [serviceUserName] <p>The generated user name for the service-specific credential.</p>
--- Required parameter: UserName
--- Required parameter: Status
--- Required parameter: ServiceUserName
--- Required parameter: CreateDate
--- Required parameter: ServiceSpecificCredentialId
--- Required parameter: ServiceName
-function M.ServiceSpecificCredentialMetadata(_UserName, _Status, _CreateDate, _ServiceName, _ServiceSpecificCredentialId, _ServiceUserName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceSpecificCredentialMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential.</p>
+-- * Status [statusType] <p>The status of the service-specific credential. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the service-specific credential were created.</p>
+-- * ServiceName [serviceName] <p>The name of the service associated with the service-specific credential.</p>
+-- * ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier for the service-specific credential.</p>
+-- * ServiceUserName [serviceUserName] <p>The generated user name for the service-specific credential.</p>
+-- Required key: UserName
+-- Required key: Status
+-- Required key: ServiceUserName
+-- Required key: CreateDate
+-- Required key: ServiceSpecificCredentialId
+-- Required key: ServiceName
+-- @return ServiceSpecificCredentialMetadata structure as a key-value pair table
+function M.ServiceSpecificCredentialMetadata(args)
+	assert(args, "You must provdide an argument table when creating ServiceSpecificCredentialMetadata")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["CreateDate"] = _CreateDate,
-		["ServiceName"] = _ServiceName,
-		["ServiceSpecificCredentialId"] = _ServiceSpecificCredentialId,
-		["ServiceUserName"] = _ServiceUserName,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["CreateDate"] = args["CreateDate"],
+		["ServiceName"] = args["ServiceName"],
+		["ServiceSpecificCredentialId"] = args["ServiceSpecificCredentialId"],
+		["ServiceUserName"] = args["ServiceUserName"],
 	}
 	asserts.AssertServiceSpecificCredentialMetadata(t)
 	return t
@@ -137,18 +146,21 @@ end
 
 --- Create a structure of type PutRolePolicyRequest
 --  
--- @param _RoleName [roleNameType] <p>The name of the role to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: RoleName
--- Required parameter: PolicyName
--- Required parameter: PolicyDocument
-function M.PutRolePolicyRequest(_RoleName, _PolicyDocument, _PolicyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRolePolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name of the role to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: RoleName
+-- Required key: PolicyName
+-- Required key: PolicyDocument
+-- @return PutRolePolicyRequest structure as a key-value pair table
+function M.PutRolePolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating PutRolePolicyRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["PolicyDocument"] = _PolicyDocument,
-		["PolicyName"] = _PolicyName,
+		["RoleName"] = args["RoleName"],
+		["PolicyDocument"] = args["PolicyDocument"],
+		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertPutRolePolicyRequest(t)
 	return t
@@ -168,12 +180,15 @@ end
 
 --- Create a structure of type GetLoginProfileResponse
 -- <p>Contains the response to a successful <a>GetLoginProfile</a> request. </p>
--- @param _LoginProfile [LoginProfile] <p>A structure containing the user name and password create date for the user.</p>
--- Required parameter: LoginProfile
-function M.GetLoginProfileResponse(_LoginProfile, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLoginProfileResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoginProfile [LoginProfile] <p>A structure containing the user name and password create date for the user.</p>
+-- Required key: LoginProfile
+-- @return GetLoginProfileResponse structure as a key-value pair table
+function M.GetLoginProfileResponse(args)
+	assert(args, "You must provdide an argument table when creating GetLoginProfileResponse")
 	local t = { 
-		["LoginProfile"] = _LoginProfile,
+		["LoginProfile"] = args["LoginProfile"],
 	}
 	asserts.AssertGetLoginProfileResponse(t)
 	return t
@@ -195,16 +210,19 @@ end
 
 --- Create a structure of type ListGroupsForUserRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user to list groups for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- Required parameter: UserName
-function M.ListGroupsForUserRequest(_UserName, _Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsForUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user to list groups for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- Required key: UserName
+-- @return ListGroupsForUserRequest structure as a key-value pair table
+function M.ListGroupsForUserRequest(args)
+	assert(args, "You must provdide an argument table when creating ListGroupsForUserRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["UserName"] = args["UserName"],
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListGroupsForUserRequest(t)
 	return t
@@ -226,15 +244,18 @@ end
 
 --- Create a structure of type RemoveClientIDFromOpenIDConnectProviderRequest
 --  
--- @param _OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- @param _ClientID [clientIDType] <p>The client ID (also known as audience) to remove from the IAM OIDC provider resource. For more information about client IDs, see <a>CreateOpenIDConnectProvider</a>.</p>
--- Required parameter: OpenIDConnectProviderArn
--- Required parameter: ClientID
-function M.RemoveClientIDFromOpenIDConnectProviderRequest(_OpenIDConnectProviderArn, _ClientID, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveClientIDFromOpenIDConnectProviderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * ClientID [clientIDType] <p>The client ID (also known as audience) to remove from the IAM OIDC provider resource. For more information about client IDs, see <a>CreateOpenIDConnectProvider</a>.</p>
+-- Required key: OpenIDConnectProviderArn
+-- Required key: ClientID
+-- @return RemoveClientIDFromOpenIDConnectProviderRequest structure as a key-value pair table
+function M.RemoveClientIDFromOpenIDConnectProviderRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveClientIDFromOpenIDConnectProviderRequest")
 	local t = { 
-		["OpenIDConnectProviderArn"] = _OpenIDConnectProviderArn,
-		["ClientID"] = _ClientID,
+		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
+		["ClientID"] = args["ClientID"],
 	}
 	asserts.AssertRemoveClientIDFromOpenIDConnectProviderRequest(t)
 	return t
@@ -255,15 +276,18 @@ end
 
 --- Create a structure of type GetAccountAuthorizationDetailsRequest
 --  
--- @param _Filter [entityListType] <p>A list of entity types used to filter the results. Only the entities that match the types you specify are included in the output. Use the value <code>LocalManagedPolicy</code> to include customer managed policies.</p> <p>The format for this parameter is a comma-separated (if more than one) list of strings. Each string value in the list must be one of the valid values listed below.</p>
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.GetAccountAuthorizationDetailsRequest(_Filter, _Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAccountAuthorizationDetailsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Filter [entityListType] <p>A list of entity types used to filter the results. Only the entities that match the types you specify are included in the output. Use the value <code>LocalManagedPolicy</code> to include customer managed policies.</p> <p>The format for this parameter is a comma-separated (if more than one) list of strings. Each string value in the list must be one of the valid values listed below.</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return GetAccountAuthorizationDetailsRequest structure as a key-value pair table
+function M.GetAccountAuthorizationDetailsRequest(args)
+	assert(args, "You must provdide an argument table when creating GetAccountAuthorizationDetailsRequest")
 	local t = { 
-		["Filter"] = _Filter,
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["Filter"] = args["Filter"],
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertGetAccountAuthorizationDetailsRequest(t)
 	return t
@@ -285,15 +309,18 @@ end
 
 --- Create a structure of type DeleteRolePolicyRequest
 --  
--- @param _RoleName [roleNameType] <p>The name (friendly name, not ARN) identifying the role that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _PolicyName [policyNameType] <p>The name of the inline policy to delete from the specified IAM role.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: RoleName
--- Required parameter: PolicyName
-function M.DeleteRolePolicyRequest(_RoleName, _PolicyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRolePolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name (friendly name, not ARN) identifying the role that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyName [policyNameType] <p>The name of the inline policy to delete from the specified IAM role.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: RoleName
+-- Required key: PolicyName
+-- @return DeleteRolePolicyRequest structure as a key-value pair table
+function M.DeleteRolePolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteRolePolicyRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["PolicyName"] = _PolicyName,
+		["RoleName"] = args["RoleName"],
+		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertDeleteRolePolicyRequest(t)
 	return t
@@ -314,15 +341,18 @@ end
 
 --- Create a structure of type ListVirtualMFADevicesRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _AssignmentStatus [assignmentStatusType] <p> The status (<code>Unassigned</code> or <code>Assigned</code>) of the devices to list. If you do not specify an <code>AssignmentStatus</code>, the action defaults to <code>Any</code> which lists both assigned and unassigned virtual MFA devices.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListVirtualMFADevicesRequest(_Marker, _AssignmentStatus, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVirtualMFADevicesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * AssignmentStatus [assignmentStatusType] <p> The status (<code>Unassigned</code> or <code>Assigned</code>) of the devices to list. If you do not specify an <code>AssignmentStatus</code>, the action defaults to <code>Any</code> which lists both assigned and unassigned virtual MFA devices.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListVirtualMFADevicesRequest structure as a key-value pair table
+function M.ListVirtualMFADevicesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListVirtualMFADevicesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["AssignmentStatus"] = _AssignmentStatus,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["AssignmentStatus"] = args["AssignmentStatus"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListVirtualMFADevicesRequest(t)
 	return t
@@ -342,12 +372,15 @@ end
 
 --- Create a structure of type CreateAccessKeyResponse
 -- <p>Contains the response to a successful <a>CreateAccessKey</a> request. </p>
--- @param _AccessKey [AccessKey] <p>A structure with details about the access key.</p>
--- Required parameter: AccessKey
-function M.CreateAccessKeyResponse(_AccessKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAccessKeyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccessKey [AccessKey] <p>A structure with details about the access key.</p>
+-- Required key: AccessKey
+-- @return CreateAccessKeyResponse structure as a key-value pair table
+function M.CreateAccessKeyResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateAccessKeyResponse")
 	local t = { 
-		["AccessKey"] = _AccessKey,
+		["AccessKey"] = args["AccessKey"],
 	}
 	asserts.AssertCreateAccessKeyResponse(t)
 	return t
@@ -377,27 +410,30 @@ end
 
 --- Create a structure of type InstanceProfile
 -- <p>Contains information about an instance profile.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateInstanceProfile</a> </p> </li> <li> <p> <a>GetInstanceProfile</a> </p> </li> <li> <p> <a>ListInstanceProfiles</a> </p> </li> <li> <p> <a>ListInstanceProfilesForRole</a> </p> </li> </ul>
--- @param _InstanceProfileId [idType] <p> The stable and unique string identifying the instance profile. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- @param _Roles [roleListType] <p>The role associated with the instance profile.</p>
--- @param _CreateDate [dateType] <p>The date when the instance profile was created.</p>
--- @param _InstanceProfileName [instanceProfileNameType] <p>The name identifying the instance profile.</p>
--- @param _Path [pathType] <p> The path to the instance profile. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- @param _Arn [arnType] <p> The Amazon Resource Name (ARN) specifying the instance profile. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- Required parameter: Path
--- Required parameter: InstanceProfileName
--- Required parameter: InstanceProfileId
--- Required parameter: Arn
--- Required parameter: CreateDate
--- Required parameter: Roles
-function M.InstanceProfile(_InstanceProfileId, _Roles, _CreateDate, _InstanceProfileName, _Path, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InstanceProfile")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceProfileId [idType] <p> The stable and unique string identifying the instance profile. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- * Roles [roleListType] <p>The role associated with the instance profile.</p>
+-- * CreateDate [dateType] <p>The date when the instance profile was created.</p>
+-- * InstanceProfileName [instanceProfileNameType] <p>The name identifying the instance profile.</p>
+-- * Path [pathType] <p> The path to the instance profile. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- * Arn [arnType] <p> The Amazon Resource Name (ARN) specifying the instance profile. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- Required key: Path
+-- Required key: InstanceProfileName
+-- Required key: InstanceProfileId
+-- Required key: Arn
+-- Required key: CreateDate
+-- Required key: Roles
+-- @return InstanceProfile structure as a key-value pair table
+function M.InstanceProfile(args)
+	assert(args, "You must provdide an argument table when creating InstanceProfile")
 	local t = { 
-		["InstanceProfileId"] = _InstanceProfileId,
-		["Roles"] = _Roles,
-		["CreateDate"] = _CreateDate,
-		["InstanceProfileName"] = _InstanceProfileName,
-		["Path"] = _Path,
-		["Arn"] = _Arn,
+		["InstanceProfileId"] = args["InstanceProfileId"],
+		["Roles"] = args["Roles"],
+		["CreateDate"] = args["CreateDate"],
+		["InstanceProfileName"] = args["InstanceProfileName"],
+		["Path"] = args["Path"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertInstanceProfile(t)
 	return t
@@ -419,16 +455,19 @@ end
 
 --- Create a structure of type ListGroupsForUserResponse
 -- <p>Contains the response to a successful <a>ListGroupsForUser</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- @param _Groups [groupListType] <p>A list of groups.</p>
--- Required parameter: Groups
-function M.ListGroupsForUserResponse(_Marker, _IsTruncated, _Groups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsForUserResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- * Groups [groupListType] <p>A list of groups.</p>
+-- Required key: Groups
+-- @return ListGroupsForUserResponse structure as a key-value pair table
+function M.ListGroupsForUserResponse(args)
+	assert(args, "You must provdide an argument table when creating ListGroupsForUserResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
-		["Groups"] = _Groups,
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
+		["Groups"] = args["Groups"],
 	}
 	asserts.AssertListGroupsForUserResponse(t)
 	return t
@@ -447,11 +486,14 @@ end
 
 --- Create a structure of type InvalidInputException
 -- <p>The request was rejected because an invalid or out-of-range value was supplied for an input parameter.</p>
--- @param _message [invalidInputMessage] 
-function M.InvalidInputException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidInputException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [invalidInputMessage] 
+-- @return InvalidInputException structure as a key-value pair table
+function M.InvalidInputException(args)
+	assert(args, "You must provdide an argument table when creating InvalidInputException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidInputException(t)
 	return t
@@ -471,13 +513,16 @@ end
 
 --- Create a structure of type GenerateCredentialReportResponse
 -- <p>Contains the response to a successful <a>GenerateCredentialReport</a> request. </p>
--- @param _State [ReportStateType] <p>Information about the state of the credential report.</p>
--- @param _Description [ReportStateDescriptionType] <p>Information about the credential report.</p>
-function M.GenerateCredentialReportResponse(_State, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GenerateCredentialReportResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * State [ReportStateType] <p>Information about the state of the credential report.</p>
+-- * Description [ReportStateDescriptionType] <p>Information about the credential report.</p>
+-- @return GenerateCredentialReportResponse structure as a key-value pair table
+function M.GenerateCredentialReportResponse(args)
+	assert(args, "You must provdide an argument table when creating GenerateCredentialReportResponse")
 	local t = { 
-		["State"] = _State,
-		["Description"] = _Description,
+		["State"] = args["State"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertGenerateCredentialReportResponse(t)
 	return t
@@ -498,14 +543,17 @@ end
 
 --- Create a structure of type DeleteAccessKeyRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user whose access key pair you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _AccessKeyId [accessKeyIdType] <p>The access key ID for the access key ID and secret access key you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
--- Required parameter: AccessKeyId
-function M.DeleteAccessKeyRequest(_UserName, _AccessKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAccessKeyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user whose access key pair you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * AccessKeyId [accessKeyIdType] <p>The access key ID for the access key ID and secret access key you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
+-- Required key: AccessKeyId
+-- @return DeleteAccessKeyRequest structure as a key-value pair table
+function M.DeleteAccessKeyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAccessKeyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["AccessKeyId"] = _AccessKeyId,
+		["UserName"] = args["UserName"],
+		["AccessKeyId"] = args["AccessKeyId"],
 	}
 	asserts.AssertDeleteAccessKeyRequest(t)
 	return t
@@ -525,12 +573,15 @@ end
 
 --- Create a structure of type GetContextKeysForCustomPolicyRequest
 --  
--- @param _PolicyInputList [SimulationPolicyListType] <p>A list of policies for which you want the list of context keys referenced in those policies. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- Required parameter: PolicyInputList
-function M.GetContextKeysForCustomPolicyRequest(_PolicyInputList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetContextKeysForCustomPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyInputList [SimulationPolicyListType] <p>A list of policies for which you want the list of context keys referenced in those policies. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- Required key: PolicyInputList
+-- @return GetContextKeysForCustomPolicyRequest structure as a key-value pair table
+function M.GetContextKeysForCustomPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetContextKeysForCustomPolicyRequest")
 	local t = { 
-		["PolicyInputList"] = _PolicyInputList,
+		["PolicyInputList"] = args["PolicyInputList"],
 	}
 	asserts.AssertGetContextKeysForCustomPolicyRequest(t)
 	return t
@@ -552,16 +603,19 @@ end
 
 --- Create a structure of type ListServerCertificatesResponse
 -- <p>Contains the response to a successful <a>ListServerCertificates</a> request. </p>
--- @param _ServerCertificateMetadataList [serverCertificateMetadataListType] <p>A list of server certificates.</p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- Required parameter: ServerCertificateMetadataList
-function M.ListServerCertificatesResponse(_ServerCertificateMetadataList, _Marker, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListServerCertificatesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerCertificateMetadataList [serverCertificateMetadataListType] <p>A list of server certificates.</p>
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- Required key: ServerCertificateMetadataList
+-- @return ListServerCertificatesResponse structure as a key-value pair table
+function M.ListServerCertificatesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListServerCertificatesResponse")
 	local t = { 
-		["ServerCertificateMetadataList"] = _ServerCertificateMetadataList,
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
+		["ServerCertificateMetadataList"] = args["ServerCertificateMetadataList"],
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListServerCertificatesResponse(t)
 	return t
@@ -580,11 +634,14 @@ end
 
 --- Create a structure of type MalformedPolicyDocumentException
 -- <p>The request was rejected because the policy document was malformed. The error message describes the specific error.</p>
--- @param _message [malformedPolicyDocumentMessage] 
-function M.MalformedPolicyDocumentException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MalformedPolicyDocumentException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [malformedPolicyDocumentMessage] 
+-- @return MalformedPolicyDocumentException structure as a key-value pair table
+function M.MalformedPolicyDocumentException(args)
+	assert(args, "You must provdide an argument table when creating MalformedPolicyDocumentException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMalformedPolicyDocumentException(t)
 	return t
@@ -606,15 +663,18 @@ end
 
 --- Create a structure of type DeactivateMFADeviceRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user whose MFA device you want to deactivate.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _SerialNumber [serialNumberType] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-</p>
--- Required parameter: UserName
--- Required parameter: SerialNumber
-function M.DeactivateMFADeviceRequest(_UserName, _SerialNumber, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeactivateMFADeviceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user whose MFA device you want to deactivate.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * SerialNumber [serialNumberType] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-</p>
+-- Required key: UserName
+-- Required key: SerialNumber
+-- @return DeactivateMFADeviceRequest structure as a key-value pair table
+function M.DeactivateMFADeviceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeactivateMFADeviceRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["SerialNumber"] = _SerialNumber,
+		["UserName"] = args["UserName"],
+		["SerialNumber"] = args["SerialNumber"],
 	}
 	asserts.AssertDeactivateMFADeviceRequest(t)
 	return t
@@ -636,15 +696,18 @@ end
 
 --- Create a structure of type ChangePasswordRequest
 --  
--- @param _NewPassword [passwordType] <p>The new password. The new password must conform to the AWS account's password policy, if one exists.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of almost any printable ASCII character from the space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Although any of these characters are valid in a password, note that many tools, such as the AWS Management Console, might restrict the ability to enter certain characters because they have special meaning within that tool.</p>
--- @param _OldPassword [passwordType] <p>The IAM user's current password.</p>
--- Required parameter: OldPassword
--- Required parameter: NewPassword
-function M.ChangePasswordRequest(_NewPassword, _OldPassword, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ChangePasswordRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NewPassword [passwordType] <p>The new password. The new password must conform to the AWS account's password policy, if one exists.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of almost any printable ASCII character from the space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Although any of these characters are valid in a password, note that many tools, such as the AWS Management Console, might restrict the ability to enter certain characters because they have special meaning within that tool.</p>
+-- * OldPassword [passwordType] <p>The IAM user's current password.</p>
+-- Required key: OldPassword
+-- Required key: NewPassword
+-- @return ChangePasswordRequest structure as a key-value pair table
+function M.ChangePasswordRequest(args)
+	assert(args, "You must provdide an argument table when creating ChangePasswordRequest")
 	local t = { 
-		["NewPassword"] = _NewPassword,
-		["OldPassword"] = _OldPassword,
+		["NewPassword"] = args["NewPassword"],
+		["OldPassword"] = args["OldPassword"],
 	}
 	asserts.AssertChangePasswordRequest(t)
 	return t
@@ -666,16 +729,19 @@ end
 
 --- Create a structure of type ListAccountAliasesResponse
 -- <p>Contains the response to a successful <a>ListAccountAliases</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _AccountAliases [accountAliasListType] <p>A list of aliases associated with the account. AWS supports only one alias per account.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- Required parameter: AccountAliases
-function M.ListAccountAliasesResponse(_Marker, _AccountAliases, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAccountAliasesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * AccountAliases [accountAliasListType] <p>A list of aliases associated with the account. AWS supports only one alias per account.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- Required key: AccountAliases
+-- @return ListAccountAliasesResponse structure as a key-value pair table
+function M.ListAccountAliasesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAccountAliasesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["AccountAliases"] = _AccountAliases,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["AccountAliases"] = args["AccountAliases"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListAccountAliasesResponse(t)
 	return t
@@ -697,16 +763,19 @@ end
 
 --- Create a structure of type ListGroupsResponse
 -- <p>Contains the response to a successful <a>ListGroups</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- @param _Groups [groupListType] <p>A list of groups.</p>
--- Required parameter: Groups
-function M.ListGroupsResponse(_Marker, _IsTruncated, _Groups, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- * Groups [groupListType] <p>A list of groups.</p>
+-- Required key: Groups
+-- @return ListGroupsResponse structure as a key-value pair table
+function M.ListGroupsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListGroupsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
-		["Groups"] = _Groups,
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
+		["Groups"] = args["Groups"],
 	}
 	asserts.AssertListGroupsResponse(t)
 	return t
@@ -725,11 +794,14 @@ end
 
 --- Create a structure of type UnrecognizedPublicKeyEncodingException
 -- <p>The request was rejected because the public key encoding format is unsupported or unrecognized.</p>
--- @param _message [unrecognizedPublicKeyEncodingMessage] 
-function M.UnrecognizedPublicKeyEncodingException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnrecognizedPublicKeyEncodingException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [unrecognizedPublicKeyEncodingMessage] 
+-- @return UnrecognizedPublicKeyEncodingException structure as a key-value pair table
+function M.UnrecognizedPublicKeyEncodingException(args)
+	assert(args, "You must provdide an argument table when creating UnrecognizedPublicKeyEncodingException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnrecognizedPublicKeyEncodingException(t)
 	return t
@@ -749,12 +821,15 @@ end
 
 --- Create a structure of type DeletePolicyRequest
 --  
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to delete.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: PolicyArn
-function M.DeletePolicyRequest(_PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to delete.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: PolicyArn
+-- @return DeletePolicyRequest structure as a key-value pair table
+function M.DeletePolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeletePolicyRequest")
 	local t = { 
-		["PolicyArn"] = _PolicyArn,
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertDeletePolicyRequest(t)
 	return t
@@ -774,12 +849,15 @@ end
 
 --- Create a structure of type DeleteRoleRequest
 --  
--- @param _RoleName [roleNameType] <p>The name of the role to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- Required parameter: RoleName
-function M.DeleteRoleRequest(_RoleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRoleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name of the role to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- Required key: RoleName
+-- @return DeleteRoleRequest structure as a key-value pair table
+function M.DeleteRoleRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteRoleRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
+		["RoleName"] = args["RoleName"],
 	}
 	asserts.AssertDeleteRoleRequest(t)
 	return t
@@ -798,11 +876,14 @@ end
 
 --- Create a structure of type EntityTemporarilyUnmodifiableException
 -- <p>The request was rejected because it referenced an entity that is temporarily unmodifiable, such as a user name that was deleted and then recreated. The error indicates that the request is likely to succeed if you try again after waiting several minutes. The error message describes the entity.</p>
--- @param _message [entityTemporarilyUnmodifiableMessage] 
-function M.EntityTemporarilyUnmodifiableException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EntityTemporarilyUnmodifiableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [entityTemporarilyUnmodifiableMessage] 
+-- @return EntityTemporarilyUnmodifiableException structure as a key-value pair table
+function M.EntityTemporarilyUnmodifiableException(args)
+	assert(args, "You must provdide an argument table when creating EntityTemporarilyUnmodifiableException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertEntityTemporarilyUnmodifiableException(t)
 	return t
@@ -825,17 +906,20 @@ end
 
 --- Create a structure of type UpdateSigningCertificateRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the IAM user the signing certificate belongs to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Status [statusType] <p> The status you want to assign to the certificate. <code>Active</code> means the certificate can be used for API calls to AWS, while <code>Inactive</code> means the certificate cannot be used.</p>
--- @param _CertificateId [certificateIdType] <p>The ID of the signing certificate you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
--- Required parameter: CertificateId
--- Required parameter: Status
-function M.UpdateSigningCertificateRequest(_UserName, _Status, _CertificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSigningCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the IAM user the signing certificate belongs to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Status [statusType] <p> The status you want to assign to the certificate. <code>Active</code> means the certificate can be used for API calls to AWS, while <code>Inactive</code> means the certificate cannot be used.</p>
+-- * CertificateId [certificateIdType] <p>The ID of the signing certificate you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
+-- Required key: CertificateId
+-- Required key: Status
+-- @return UpdateSigningCertificateRequest structure as a key-value pair table
+function M.UpdateSigningCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateSigningCertificateRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["CertificateId"] = _CertificateId,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["CertificateId"] = args["CertificateId"],
 	}
 	asserts.AssertUpdateSigningCertificateRequest(t)
 	return t
@@ -856,14 +940,17 @@ end
 
 --- Create a structure of type DeleteServiceSpecificCredentialRequest
 --  
--- @param _UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier of the service-specific credential. You can get this value by calling <a>ListServiceSpecificCredentials</a>.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
--- Required parameter: ServiceSpecificCredentialId
-function M.DeleteServiceSpecificCredentialRequest(_UserName, _ServiceSpecificCredentialId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteServiceSpecificCredentialRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier of the service-specific credential. You can get this value by calling <a>ListServiceSpecificCredentials</a>.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
+-- Required key: ServiceSpecificCredentialId
+-- @return DeleteServiceSpecificCredentialRequest structure as a key-value pair table
+function M.DeleteServiceSpecificCredentialRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteServiceSpecificCredentialRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["ServiceSpecificCredentialId"] = _ServiceSpecificCredentialId,
+		["UserName"] = args["UserName"],
+		["ServiceSpecificCredentialId"] = args["ServiceSpecificCredentialId"],
 	}
 	asserts.AssertDeleteServiceSpecificCredentialRequest(t)
 	return t
@@ -891,24 +978,27 @@ end
 
 --- Create a structure of type Group
 -- <p>Contains information about an IAM group entity.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateGroup</a> </p> </li> <li> <p> <a>GetGroup</a> </p> </li> <li> <p> <a>ListGroups</a> </p> </li> </ul>
--- @param _Path [pathType] <p>The path to the group. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the group was created.</p>
--- @param _GroupId [idType] <p> The stable and unique string identifying the group. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- @param _Arn [arnType] <p> The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- @param _GroupName [groupNameType] <p>The friendly name that identifies the group.</p>
--- Required parameter: Path
--- Required parameter: GroupName
--- Required parameter: GroupId
--- Required parameter: Arn
--- Required parameter: CreateDate
-function M.Group(_Path, _CreateDate, _GroupId, _Arn, _GroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Group")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [pathType] <p>The path to the group. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the group was created.</p>
+-- * GroupId [idType] <p> The stable and unique string identifying the group. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- * Arn [arnType] <p> The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- * GroupName [groupNameType] <p>The friendly name that identifies the group.</p>
+-- Required key: Path
+-- Required key: GroupName
+-- Required key: GroupId
+-- Required key: Arn
+-- Required key: CreateDate
+-- @return Group structure as a key-value pair table
+function M.Group(args)
+	assert(args, "You must provdide an argument table when creating Group")
 	local t = { 
-		["Path"] = _Path,
-		["CreateDate"] = _CreateDate,
-		["GroupId"] = _GroupId,
-		["Arn"] = _Arn,
-		["GroupName"] = _GroupName,
+		["Path"] = args["Path"],
+		["CreateDate"] = args["CreateDate"],
+		["GroupId"] = args["GroupId"],
+		["Arn"] = args["Arn"],
+		["GroupName"] = args["GroupName"],
 	}
 	asserts.AssertGroup(t)
 	return t
@@ -934,21 +1024,24 @@ end
 
 --- Create a structure of type EnableMFADeviceRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the IAM user for whom you want to enable the MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _AuthenticationCode1 [authenticationCodeType] <p>An authentication code emitted by the device. </p> <p>The format for this parameter is a string of 6 digits.</p> <important> <p>Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the device</a>.</p> </important>
--- @param _SerialNumber [serialNumberType] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-</p>
--- @param _AuthenticationCode2 [authenticationCodeType] <p>A subsequent authentication code emitted by the device.</p> <p>The format for this parameter is a string of 6 digits.</p> <important> <p>Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the device</a>.</p> </important>
--- Required parameter: UserName
--- Required parameter: SerialNumber
--- Required parameter: AuthenticationCode1
--- Required parameter: AuthenticationCode2
-function M.EnableMFADeviceRequest(_UserName, _AuthenticationCode1, _SerialNumber, _AuthenticationCode2, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EnableMFADeviceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the IAM user for whom you want to enable the MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * AuthenticationCode1 [authenticationCodeType] <p>An authentication code emitted by the device. </p> <p>The format for this parameter is a string of 6 digits.</p> <important> <p>Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the device</a>.</p> </important>
+-- * SerialNumber [serialNumberType] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-</p>
+-- * AuthenticationCode2 [authenticationCodeType] <p>A subsequent authentication code emitted by the device.</p> <p>The format for this parameter is a string of 6 digits.</p> <important> <p>Submit your request immediately after generating the authentication codes. If you generate the codes and then wait too long to submit the request, the MFA device successfully associates with the user but the MFA device becomes out of sync. This happens because time-based one-time passwords (TOTP) expire after a short period of time. If this happens, you can <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the device</a>.</p> </important>
+-- Required key: UserName
+-- Required key: SerialNumber
+-- Required key: AuthenticationCode1
+-- Required key: AuthenticationCode2
+-- @return EnableMFADeviceRequest structure as a key-value pair table
+function M.EnableMFADeviceRequest(args)
+	assert(args, "You must provdide an argument table when creating EnableMFADeviceRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["AuthenticationCode1"] = _AuthenticationCode1,
-		["SerialNumber"] = _SerialNumber,
-		["AuthenticationCode2"] = _AuthenticationCode2,
+		["UserName"] = args["UserName"],
+		["AuthenticationCode1"] = args["AuthenticationCode1"],
+		["SerialNumber"] = args["SerialNumber"],
+		["AuthenticationCode2"] = args["AuthenticationCode2"],
 	}
 	asserts.AssertEnableMFADeviceRequest(t)
 	return t
@@ -969,15 +1062,18 @@ end
 
 --- Create a structure of type ListAttachedGroupPoliciesResponse
 -- <p>Contains the response to a successful <a>ListAttachedGroupPolicies</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _AttachedPolicies [attachedPoliciesListType] <p>A list of the attached policies.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
-function M.ListAttachedGroupPoliciesResponse(_Marker, _AttachedPolicies, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttachedGroupPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * AttachedPolicies [attachedPoliciesListType] <p>A list of the attached policies.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- @return ListAttachedGroupPoliciesResponse structure as a key-value pair table
+function M.ListAttachedGroupPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAttachedGroupPoliciesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["AttachedPolicies"] = _AttachedPolicies,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["AttachedPolicies"] = args["AttachedPolicies"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListAttachedGroupPoliciesResponse(t)
 	return t
@@ -1004,27 +1100,30 @@ end
 
 --- Create a structure of type UpdateAccountPasswordPolicyRequest
 --  
--- @param _AllowUsersToChangePassword [booleanType] <p> Allows all IAM users in your account to use the AWS Management Console to change their own passwords. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html">Letting IAM Users Change Their Own Passwords</a> in the <i>IAM User Guide</i>.</p> <p>Default value: false</p>
--- @param _RequireLowercaseCharacters [booleanType] <p>Specifies whether IAM user passwords must contain at least one lowercase character from the ISO basic Latin alphabet (a to z).</p> <p>Default value: false</p>
--- @param _RequireUppercaseCharacters [booleanType] <p>Specifies whether IAM user passwords must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z).</p> <p>Default value: false</p>
--- @param _MinimumPasswordLength [minimumPasswordLengthType] <p>The minimum number of characters allowed in an IAM user password.</p> <p>Default value: 6</p>
--- @param _RequireNumbers [booleanType] <p>Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).</p> <p>Default value: false</p>
--- @param _PasswordReusePrevention [passwordReusePreventionType] <p>Specifies the number of previous passwords that IAM users are prevented from reusing. The default value of 0 means IAM users are not prevented from reusing previous passwords.</p> <p>Default value: 0</p>
--- @param _HardExpiry [booleanObjectType] <p>Prevents IAM users from setting a new password after their password has expired.</p> <p>Default value: false</p>
--- @param _RequireSymbols [booleanType] <p>Specifies whether IAM user passwords must contain at least one of the following non-alphanumeric characters:</p> <p>! @ # $ % ^ &amp;amp; * ( ) _ + - = [ ] { } | '</p> <p>Default value: false</p>
--- @param _MaxPasswordAge [maxPasswordAgeType] <p>The number of days that an IAM user password is valid. The default value of 0 means IAM user passwords never expire.</p> <p>Default value: 0</p>
-function M.UpdateAccountPasswordPolicyRequest(_AllowUsersToChangePassword, _RequireLowercaseCharacters, _RequireUppercaseCharacters, _MinimumPasswordLength, _RequireNumbers, _PasswordReusePrevention, _HardExpiry, _RequireSymbols, _MaxPasswordAge, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAccountPasswordPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AllowUsersToChangePassword [booleanType] <p> Allows all IAM users in your account to use the AWS Management Console to change their own passwords. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html">Letting IAM Users Change Their Own Passwords</a> in the <i>IAM User Guide</i>.</p> <p>Default value: false</p>
+-- * RequireLowercaseCharacters [booleanType] <p>Specifies whether IAM user passwords must contain at least one lowercase character from the ISO basic Latin alphabet (a to z).</p> <p>Default value: false</p>
+-- * RequireUppercaseCharacters [booleanType] <p>Specifies whether IAM user passwords must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z).</p> <p>Default value: false</p>
+-- * MinimumPasswordLength [minimumPasswordLengthType] <p>The minimum number of characters allowed in an IAM user password.</p> <p>Default value: 6</p>
+-- * RequireNumbers [booleanType] <p>Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).</p> <p>Default value: false</p>
+-- * PasswordReusePrevention [passwordReusePreventionType] <p>Specifies the number of previous passwords that IAM users are prevented from reusing. The default value of 0 means IAM users are not prevented from reusing previous passwords.</p> <p>Default value: 0</p>
+-- * HardExpiry [booleanObjectType] <p>Prevents IAM users from setting a new password after their password has expired.</p> <p>Default value: false</p>
+-- * RequireSymbols [booleanType] <p>Specifies whether IAM user passwords must contain at least one of the following non-alphanumeric characters:</p> <p>! @ # $ % ^ &amp;amp; * ( ) _ + - = [ ] { } | '</p> <p>Default value: false</p>
+-- * MaxPasswordAge [maxPasswordAgeType] <p>The number of days that an IAM user password is valid. The default value of 0 means IAM user passwords never expire.</p> <p>Default value: 0</p>
+-- @return UpdateAccountPasswordPolicyRequest structure as a key-value pair table
+function M.UpdateAccountPasswordPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateAccountPasswordPolicyRequest")
 	local t = { 
-		["AllowUsersToChangePassword"] = _AllowUsersToChangePassword,
-		["RequireLowercaseCharacters"] = _RequireLowercaseCharacters,
-		["RequireUppercaseCharacters"] = _RequireUppercaseCharacters,
-		["MinimumPasswordLength"] = _MinimumPasswordLength,
-		["RequireNumbers"] = _RequireNumbers,
-		["PasswordReusePrevention"] = _PasswordReusePrevention,
-		["HardExpiry"] = _HardExpiry,
-		["RequireSymbols"] = _RequireSymbols,
-		["MaxPasswordAge"] = _MaxPasswordAge,
+		["AllowUsersToChangePassword"] = args["AllowUsersToChangePassword"],
+		["RequireLowercaseCharacters"] = args["RequireLowercaseCharacters"],
+		["RequireUppercaseCharacters"] = args["RequireUppercaseCharacters"],
+		["MinimumPasswordLength"] = args["MinimumPasswordLength"],
+		["RequireNumbers"] = args["RequireNumbers"],
+		["PasswordReusePrevention"] = args["PasswordReusePrevention"],
+		["HardExpiry"] = args["HardExpiry"],
+		["RequireSymbols"] = args["RequireSymbols"],
+		["MaxPasswordAge"] = args["MaxPasswordAge"],
 	}
 	asserts.AssertUpdateAccountPasswordPolicyRequest(t)
 	return t
@@ -1048,19 +1147,22 @@ end
 
 --- Create a structure of type GetGroupResponse
 -- <p>Contains the response to a successful <a>GetGroup</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _Group [Group] <p>A structure that contains details about the group.</p>
--- @param _Users [userListType] <p>A list of users in the group.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- Required parameter: Group
--- Required parameter: Users
-function M.GetGroupResponse(_Marker, _Group, _Users, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * Group [Group] <p>A structure that contains details about the group.</p>
+-- * Users [userListType] <p>A list of users in the group.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- Required key: Group
+-- Required key: Users
+-- @return GetGroupResponse structure as a key-value pair table
+function M.GetGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating GetGroupResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["Group"] = _Group,
-		["Users"] = _Users,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["Group"] = args["Group"],
+		["Users"] = args["Users"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertGetGroupResponse(t)
 	return t
@@ -1084,18 +1186,21 @@ end
 
 --- Create a structure of type GetRolePolicyResponse
 -- <p>Contains the response to a successful <a>GetRolePolicy</a> request. </p>
--- @param _RoleName [roleNameType] <p>The role the policy is associated with.</p>
--- @param _PolicyDocument [policyDocumentType] <p>The policy document.</p>
--- @param _PolicyName [policyNameType] <p>The name of the policy.</p>
--- Required parameter: RoleName
--- Required parameter: PolicyName
--- Required parameter: PolicyDocument
-function M.GetRolePolicyResponse(_RoleName, _PolicyDocument, _PolicyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRolePolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The role the policy is associated with.</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy document.</p>
+-- * PolicyName [policyNameType] <p>The name of the policy.</p>
+-- Required key: RoleName
+-- Required key: PolicyName
+-- Required key: PolicyDocument
+-- @return GetRolePolicyResponse structure as a key-value pair table
+function M.GetRolePolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetRolePolicyResponse")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["PolicyDocument"] = _PolicyDocument,
-		["PolicyName"] = _PolicyName,
+		["RoleName"] = args["RoleName"],
+		["PolicyDocument"] = args["PolicyDocument"],
+		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertGetRolePolicyResponse(t)
 	return t
@@ -1115,12 +1220,15 @@ end
 
 --- Create a structure of type DeleteSAMLProviderRequest
 --  
--- @param _SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider to delete.</p>
--- Required parameter: SAMLProviderArn
-function M.DeleteSAMLProviderRequest(_SAMLProviderArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSAMLProviderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider to delete.</p>
+-- Required key: SAMLProviderArn
+-- @return DeleteSAMLProviderRequest structure as a key-value pair table
+function M.DeleteSAMLProviderRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSAMLProviderRequest")
 	local t = { 
-		["SAMLProviderArn"] = _SAMLProviderArn,
+		["SAMLProviderArn"] = args["SAMLProviderArn"],
 	}
 	asserts.AssertDeleteSAMLProviderRequest(t)
 	return t
@@ -1140,12 +1248,15 @@ end
 
 --- Create a structure of type CreateInstanceProfileResponse
 -- <p>Contains the response to a successful <a>CreateInstanceProfile</a> request. </p>
--- @param _InstanceProfile [InstanceProfile] <p>A structure containing details about the new instance profile.</p>
--- Required parameter: InstanceProfile
-function M.CreateInstanceProfileResponse(_InstanceProfile, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstanceProfileResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceProfile [InstanceProfile] <p>A structure containing details about the new instance profile.</p>
+-- Required key: InstanceProfile
+-- @return CreateInstanceProfileResponse structure as a key-value pair table
+function M.CreateInstanceProfileResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateInstanceProfileResponse")
 	local t = { 
-		["InstanceProfile"] = _InstanceProfile,
+		["InstanceProfile"] = args["InstanceProfile"],
 	}
 	asserts.AssertCreateInstanceProfileResponse(t)
 	return t
@@ -1166,14 +1277,17 @@ end
 
 --- Create a structure of type UploadSigningCertificateRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user the signing certificate is for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _CertificateBody [certificateBodyType] <p>The contents of the signing certificate.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- Required parameter: CertificateBody
-function M.UploadSigningCertificateRequest(_UserName, _CertificateBody, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadSigningCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user the signing certificate is for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * CertificateBody [certificateBodyType] <p>The contents of the signing certificate.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- Required key: CertificateBody
+-- @return UploadSigningCertificateRequest structure as a key-value pair table
+function M.UploadSigningCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating UploadSigningCertificateRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["CertificateBody"] = _CertificateBody,
+		["UserName"] = args["UserName"],
+		["CertificateBody"] = args["CertificateBody"],
 	}
 	asserts.AssertUploadSigningCertificateRequest(t)
 	return t
@@ -1195,16 +1309,19 @@ end
 
 --- Create a structure of type ListRolePoliciesRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _RoleName [roleNameType] <p>The name of the role to list policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- Required parameter: RoleName
-function M.ListRolePoliciesRequest(_Marker, _RoleName, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRolePoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * RoleName [roleNameType] <p>The name of the role to list policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- Required key: RoleName
+-- @return ListRolePoliciesRequest structure as a key-value pair table
+function M.ListRolePoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListRolePoliciesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["RoleName"] = _RoleName,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["RoleName"] = args["RoleName"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListRolePoliciesRequest(t)
 	return t
@@ -1223,11 +1340,14 @@ end
 
 --- Create a structure of type UnmodifiableEntityException
 -- <p>The request was rejected because only the service that depends on the service-linked role can modify or delete the role on your behalf. The error message includes the name of the service that depends on this service-linked role. You must request the change through that service.</p>
--- @param _message [unmodifiableEntityMessage] 
-function M.UnmodifiableEntityException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UnmodifiableEntityException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [unmodifiableEntityMessage] 
+-- @return UnmodifiableEntityException structure as a key-value pair table
+function M.UnmodifiableEntityException(args)
+	assert(args, "You must provdide an argument table when creating UnmodifiableEntityException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertUnmodifiableEntityException(t)
 	return t
@@ -1246,11 +1366,14 @@ end
 
 --- Create a structure of type PolicyEvaluationException
 -- <p>The request failed because a provided policy could not be successfully evaluated. An additional detail message indicates the source of the failure.</p>
--- @param _message [policyEvaluationErrorMessage] 
-function M.PolicyEvaluationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyEvaluationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [policyEvaluationErrorMessage] 
+-- @return PolicyEvaluationException structure as a key-value pair table
+function M.PolicyEvaluationException(args)
+	assert(args, "You must provdide an argument table when creating PolicyEvaluationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertPolicyEvaluationException(t)
 	return t
@@ -1269,11 +1392,14 @@ end
 
 --- Create a structure of type CredentialReportNotReadyException
 -- <p>The request was rejected because the credential report is still being generated.</p>
--- @param _message [credentialReportNotReadyExceptionMessage] 
-function M.CredentialReportNotReadyException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CredentialReportNotReadyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [credentialReportNotReadyExceptionMessage] 
+-- @return CredentialReportNotReadyException structure as a key-value pair table
+function M.CredentialReportNotReadyException(args)
+	assert(args, "You must provdide an argument table when creating CredentialReportNotReadyException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertCredentialReportNotReadyException(t)
 	return t
@@ -1301,27 +1427,30 @@ end
 
 --- Create a structure of type EvaluationResult
 -- <p>Contains the results of a simulation.</p> <p>This data type is used by the return parameter of <code> <a>SimulateCustomPolicy</a> </code> and <code> <a>SimulatePrincipalPolicy</a> </code>.</p>
--- @param _OrganizationsDecisionDetail [OrganizationsDecisionDetail] <p>A structure that details how AWS Organizations and its service control policies affect the results of the simulation. Only applies if the simulated user's account is part of an organization.</p>
--- @param _MatchedStatements [StatementListType] <p>A list of the statements in the input policies that determine the result for this scenario. Remember that even if multiple statements allow the action on the resource, if only one statement denies that action, then the explicit deny overrides any allow, and the deny statement is the only entry included in the result.</p>
--- @param _EvalDecisionDetails [EvalDecisionDetailsType] <p>Additional details about the results of the evaluation decision. When there are both IAM policies and resource policies, this parameter explains how each set of policies contributes to the final evaluation decision. When simulating cross-account access to a resource, both the resource-based policy and the caller's IAM policy must grant access. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How IAM Roles Differ from Resource-based Policies</a> </p>
--- @param _EvalResourceName [ResourceNameType] <p>The ARN of the resource that the indicated API action was tested on.</p>
--- @param _ResourceSpecificResults [ResourceSpecificResultListType] <p>The individual results of the simulation of the API action specified in EvalActionName on each resource.</p>
--- @param _EvalActionName [ActionNameType] <p>The name of the API action tested on the indicated resource.</p>
--- @param _MissingContextValues [ContextKeyNamesResultListType] <p>A list of context keys that are required by the included input policies but that were not provided by one of the input parameters. This list is used when the resource in a simulation is "*", either explicitly, or when the <code>ResourceArns</code> parameter blank. If you include a list of resources, then any missing context values are instead included under the <code>ResourceSpecificResults</code> section. To discover the context keys used by a set of policies, you can call <a>GetContextKeysForCustomPolicy</a> or <a>GetContextKeysForPrincipalPolicy</a>.</p>
--- @param _EvalDecision [PolicyEvaluationDecisionType] <p>The result of the simulation.</p>
--- Required parameter: EvalActionName
--- Required parameter: EvalDecision
-function M.EvaluationResult(_OrganizationsDecisionDetail, _MatchedStatements, _EvalDecisionDetails, _EvalResourceName, _ResourceSpecificResults, _EvalActionName, _MissingContextValues, _EvalDecision, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EvaluationResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OrganizationsDecisionDetail [OrganizationsDecisionDetail] <p>A structure that details how AWS Organizations and its service control policies affect the results of the simulation. Only applies if the simulated user's account is part of an organization.</p>
+-- * MatchedStatements [StatementListType] <p>A list of the statements in the input policies that determine the result for this scenario. Remember that even if multiple statements allow the action on the resource, if only one statement denies that action, then the explicit deny overrides any allow, and the deny statement is the only entry included in the result.</p>
+-- * EvalDecisionDetails [EvalDecisionDetailsType] <p>Additional details about the results of the evaluation decision. When there are both IAM policies and resource policies, this parameter explains how each set of policies contributes to the final evaluation decision. When simulating cross-account access to a resource, both the resource-based policy and the caller's IAM policy must grant access. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_compare-resource-policies.html">How IAM Roles Differ from Resource-based Policies</a> </p>
+-- * EvalResourceName [ResourceNameType] <p>The ARN of the resource that the indicated API action was tested on.</p>
+-- * ResourceSpecificResults [ResourceSpecificResultListType] <p>The individual results of the simulation of the API action specified in EvalActionName on each resource.</p>
+-- * EvalActionName [ActionNameType] <p>The name of the API action tested on the indicated resource.</p>
+-- * MissingContextValues [ContextKeyNamesResultListType] <p>A list of context keys that are required by the included input policies but that were not provided by one of the input parameters. This list is used when the resource in a simulation is "*", either explicitly, or when the <code>ResourceArns</code> parameter blank. If you include a list of resources, then any missing context values are instead included under the <code>ResourceSpecificResults</code> section. To discover the context keys used by a set of policies, you can call <a>GetContextKeysForCustomPolicy</a> or <a>GetContextKeysForPrincipalPolicy</a>.</p>
+-- * EvalDecision [PolicyEvaluationDecisionType] <p>The result of the simulation.</p>
+-- Required key: EvalActionName
+-- Required key: EvalDecision
+-- @return EvaluationResult structure as a key-value pair table
+function M.EvaluationResult(args)
+	assert(args, "You must provdide an argument table when creating EvaluationResult")
 	local t = { 
-		["OrganizationsDecisionDetail"] = _OrganizationsDecisionDetail,
-		["MatchedStatements"] = _MatchedStatements,
-		["EvalDecisionDetails"] = _EvalDecisionDetails,
-		["EvalResourceName"] = _EvalResourceName,
-		["ResourceSpecificResults"] = _ResourceSpecificResults,
-		["EvalActionName"] = _EvalActionName,
-		["MissingContextValues"] = _MissingContextValues,
-		["EvalDecision"] = _EvalDecision,
+		["OrganizationsDecisionDetail"] = args["OrganizationsDecisionDetail"],
+		["MatchedStatements"] = args["MatchedStatements"],
+		["EvalDecisionDetails"] = args["EvalDecisionDetails"],
+		["EvalResourceName"] = args["EvalResourceName"],
+		["ResourceSpecificResults"] = args["ResourceSpecificResults"],
+		["EvalActionName"] = args["EvalActionName"],
+		["MissingContextValues"] = args["MissingContextValues"],
+		["EvalDecision"] = args["EvalDecision"],
 	}
 	asserts.AssertEvaluationResult(t)
 	return t
@@ -1343,16 +1472,19 @@ end
 
 --- Create a structure of type UpdateGroupRequest
 --  
--- @param _NewPath [pathType] <p>New path for the IAM group. Only include this if changing the group's path.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _GroupName [groupNameType] <p>Name of the IAM group to update. If you're changing the name of the group, this is the original name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _NewGroupName [groupNameType] <p>New name for the IAM group. Only include this if changing the group's name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: GroupName
-function M.UpdateGroupRequest(_NewPath, _GroupName, _NewGroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NewPath [pathType] <p>New path for the IAM group. Only include this if changing the group's path.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * GroupName [groupNameType] <p>Name of the IAM group to update. If you're changing the name of the group, this is the original name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * NewGroupName [groupNameType] <p>New name for the IAM group. Only include this if changing the group's name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: GroupName
+-- @return UpdateGroupRequest structure as a key-value pair table
+function M.UpdateGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateGroupRequest")
 	local t = { 
-		["NewPath"] = _NewPath,
-		["GroupName"] = _GroupName,
-		["NewGroupName"] = _NewGroupName,
+		["NewPath"] = args["NewPath"],
+		["GroupName"] = args["GroupName"],
+		["NewGroupName"] = args["NewGroupName"],
 	}
 	asserts.AssertUpdateGroupRequest(t)
 	return t
@@ -1372,12 +1504,15 @@ end
 
 --- Create a structure of type DeleteAccountAliasRequest
 --  
--- @param _AccountAlias [accountAliasType] <p>The name of the account alias to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.</p>
--- Required parameter: AccountAlias
-function M.DeleteAccountAliasRequest(_AccountAlias, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteAccountAliasRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccountAlias [accountAliasType] <p>The name of the account alias to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.</p>
+-- Required key: AccountAlias
+-- @return DeleteAccountAliasRequest structure as a key-value pair table
+function M.DeleteAccountAliasRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteAccountAliasRequest")
 	local t = { 
-		["AccountAlias"] = _AccountAlias,
+		["AccountAlias"] = args["AccountAlias"],
 	}
 	asserts.AssertDeleteAccountAliasRequest(t)
 	return t
@@ -1398,15 +1533,18 @@ end
 
 --- Create a structure of type ListPolicyVersionsResponse
 -- <p>Contains the response to a successful <a>ListPolicyVersions</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- @param _Versions [policyDocumentVersionListType] <p>A list of policy versions.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
-function M.ListPolicyVersionsResponse(_Marker, _IsTruncated, _Versions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyVersionsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- * Versions [policyDocumentVersionListType] <p>A list of policy versions.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
+-- @return ListPolicyVersionsResponse structure as a key-value pair table
+function M.ListPolicyVersionsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListPolicyVersionsResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
-		["Versions"] = _Versions,
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
+		["Versions"] = args["Versions"],
 	}
 	asserts.AssertListPolicyVersionsResponse(t)
 	return t
@@ -1434,29 +1572,32 @@ end
 
 --- Create a structure of type Policy
 -- <p>Contains information about a managed policy.</p> <p>This data type is used as a response element in the <a>CreatePolicy</a>, <a>GetPolicy</a>, and <a>ListPolicies</a> actions. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
--- @param _PolicyName [policyNameType] <p>The friendly name (not ARN) identifying the policy.</p>
--- @param _Description [policyDescriptionType] <p>A friendly description of the policy.</p> <p>This element is included in the response to the <a>GetPolicy</a> operation. It is not included in the response to the <a>ListPolicies</a> operation. </p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was created.</p>
--- @param _AttachmentCount [attachmentCountType] <p>The number of entities (users, groups, and roles) that the policy is attached to.</p>
--- @param _IsAttachable [booleanType] <p>Specifies whether the policy can be attached to an IAM user, group, or role.</p>
--- @param _PolicyId [idType] <p>The stable and unique string identifying the policy.</p> <p>For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _DefaultVersionId [policyVersionIdType] <p>The identifier for the version of the policy that is set as the default version.</p>
--- @param _Path [policyPathType] <p>The path to the policy.</p> <p>For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _Arn [arnType] 
--- @param _UpdateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was last updated.</p> <p>When a policy has only one version, this field contains the date and time when the policy was created. When a policy has more than one version, this field contains the date and time when the most recent policy version was created.</p>
-function M.Policy(_PolicyName, _Description, _CreateDate, _AttachmentCount, _IsAttachable, _PolicyId, _DefaultVersionId, _Path, _Arn, _UpdateDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Policy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [policyNameType] <p>The friendly name (not ARN) identifying the policy.</p>
+-- * Description [policyDescriptionType] <p>A friendly description of the policy.</p> <p>This element is included in the response to the <a>GetPolicy</a> operation. It is not included in the response to the <a>ListPolicies</a> operation. </p>
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was created.</p>
+-- * AttachmentCount [attachmentCountType] <p>The number of entities (users, groups, and roles) that the policy is attached to.</p>
+-- * IsAttachable [booleanType] <p>Specifies whether the policy can be attached to an IAM user, group, or role.</p>
+-- * PolicyId [idType] <p>The stable and unique string identifying the policy.</p> <p>For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * DefaultVersionId [policyVersionIdType] <p>The identifier for the version of the policy that is set as the default version.</p>
+-- * Path [policyPathType] <p>The path to the policy.</p> <p>For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * Arn [arnType] 
+-- * UpdateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was last updated.</p> <p>When a policy has only one version, this field contains the date and time when the policy was created. When a policy has more than one version, this field contains the date and time when the most recent policy version was created.</p>
+-- @return Policy structure as a key-value pair table
+function M.Policy(args)
+	assert(args, "You must provdide an argument table when creating Policy")
 	local t = { 
-		["PolicyName"] = _PolicyName,
-		["Description"] = _Description,
-		["CreateDate"] = _CreateDate,
-		["AttachmentCount"] = _AttachmentCount,
-		["IsAttachable"] = _IsAttachable,
-		["PolicyId"] = _PolicyId,
-		["DefaultVersionId"] = _DefaultVersionId,
-		["Path"] = _Path,
-		["Arn"] = _Arn,
-		["UpdateDate"] = _UpdateDate,
+		["PolicyName"] = args["PolicyName"],
+		["Description"] = args["Description"],
+		["CreateDate"] = args["CreateDate"],
+		["AttachmentCount"] = args["AttachmentCount"],
+		["IsAttachable"] = args["IsAttachable"],
+		["PolicyId"] = args["PolicyId"],
+		["DefaultVersionId"] = args["DefaultVersionId"],
+		["Path"] = args["Path"],
+		["Arn"] = args["Arn"],
+		["UpdateDate"] = args["UpdateDate"],
 	}
 	asserts.AssertPolicy(t)
 	return t
@@ -1477,15 +1618,18 @@ end
 
 --- Create a structure of type GetCredentialReportResponse
 -- <p>Contains the response to a successful <a>GetCredentialReport</a> request. </p>
--- @param _Content [ReportContentType] <p>Contains the credential report. The report is Base64-encoded.</p>
--- @param _GeneratedTime [dateType] <p> The date and time when the credential report was created, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>.</p>
--- @param _ReportFormat [ReportFormatType] <p>The format (MIME type) of the credential report.</p>
-function M.GetCredentialReportResponse(_Content, _GeneratedTime, _ReportFormat, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCredentialReportResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Content [ReportContentType] <p>Contains the credential report. The report is Base64-encoded.</p>
+-- * GeneratedTime [dateType] <p> The date and time when the credential report was created, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>.</p>
+-- * ReportFormat [ReportFormatType] <p>The format (MIME type) of the credential report.</p>
+-- @return GetCredentialReportResponse structure as a key-value pair table
+function M.GetCredentialReportResponse(args)
+	assert(args, "You must provdide an argument table when creating GetCredentialReportResponse")
 	local t = { 
-		["Content"] = _Content,
-		["GeneratedTime"] = _GeneratedTime,
-		["ReportFormat"] = _ReportFormat,
+		["Content"] = args["Content"],
+		["GeneratedTime"] = args["GeneratedTime"],
+		["ReportFormat"] = args["ReportFormat"],
 	}
 	asserts.AssertGetCredentialReportResponse(t)
 	return t
@@ -1509,18 +1653,21 @@ end
 
 --- Create a structure of type GetUserPolicyResponse
 -- <p>Contains the response to a successful <a>GetUserPolicy</a> request. </p>
--- @param _UserName [existingUserNameType] <p>The user the policy is associated with.</p>
--- @param _PolicyName [policyNameType] <p>The name of the policy.</p>
--- @param _PolicyDocument [policyDocumentType] <p>The policy document.</p>
--- Required parameter: UserName
--- Required parameter: PolicyName
--- Required parameter: PolicyDocument
-function M.GetUserPolicyResponse(_UserName, _PolicyName, _PolicyDocument, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetUserPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The user the policy is associated with.</p>
+-- * PolicyName [policyNameType] <p>The name of the policy.</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy document.</p>
+-- Required key: UserName
+-- Required key: PolicyName
+-- Required key: PolicyDocument
+-- @return GetUserPolicyResponse structure as a key-value pair table
+function M.GetUserPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetUserPolicyResponse")
 	local t = { 
-		["UserName"] = _UserName,
-		["PolicyName"] = _PolicyName,
-		["PolicyDocument"] = _PolicyDocument,
+		["UserName"] = args["UserName"],
+		["PolicyName"] = args["PolicyName"],
+		["PolicyDocument"] = args["PolicyDocument"],
 	}
 	asserts.AssertGetUserPolicyResponse(t)
 	return t
@@ -1540,12 +1687,15 @@ end
 
 --- Create a structure of type GetSAMLProviderRequest
 --  
--- @param _SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider resource object in IAM to get information about.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: SAMLProviderArn
-function M.GetSAMLProviderRequest(_SAMLProviderArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSAMLProviderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider resource object in IAM to get information about.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: SAMLProviderArn
+-- @return GetSAMLProviderRequest structure as a key-value pair table
+function M.GetSAMLProviderRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSAMLProviderRequest")
 	local t = { 
-		["SAMLProviderArn"] = _SAMLProviderArn,
+		["SAMLProviderArn"] = args["SAMLProviderArn"],
 	}
 	asserts.AssertGetSAMLProviderRequest(t)
 	return t
@@ -1565,12 +1715,15 @@ end
 
 --- Create a structure of type DeleteInstanceProfileRequest
 --  
--- @param _InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: InstanceProfileName
-function M.DeleteInstanceProfileRequest(_InstanceProfileName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteInstanceProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: InstanceProfileName
+-- @return DeleteInstanceProfileRequest structure as a key-value pair table
+function M.DeleteInstanceProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteInstanceProfileRequest")
 	local t = { 
-		["InstanceProfileName"] = _InstanceProfileName,
+		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
 	asserts.AssertDeleteInstanceProfileRequest(t)
 	return t
@@ -1592,16 +1745,19 @@ end
 
 --- Create a structure of type ListInstanceProfilesForRoleResponse
 -- <p>Contains the response to a successful <a>ListInstanceProfilesForRole</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- @param _InstanceProfiles [instanceProfileListType] <p>A list of instance profiles.</p>
--- Required parameter: InstanceProfiles
-function M.ListInstanceProfilesForRoleResponse(_Marker, _IsTruncated, _InstanceProfiles, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceProfilesForRoleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- * InstanceProfiles [instanceProfileListType] <p>A list of instance profiles.</p>
+-- Required key: InstanceProfiles
+-- @return ListInstanceProfilesForRoleResponse structure as a key-value pair table
+function M.ListInstanceProfilesForRoleResponse(args)
+	assert(args, "You must provdide an argument table when creating ListInstanceProfilesForRoleResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
-		["InstanceProfiles"] = _InstanceProfiles,
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
+		["InstanceProfiles"] = args["InstanceProfiles"],
 	}
 	asserts.AssertListInstanceProfilesForRoleResponse(t)
 	return t
@@ -1624,19 +1780,22 @@ end
 
 --- Create a structure of type ListEntitiesForPolicyResponse
 -- <p>Contains the response to a successful <a>ListEntitiesForPolicy</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _PolicyGroups [PolicyGroupListType] <p>A list of IAM groups that the policy is attached to.</p>
--- @param _PolicyUsers [PolicyUserListType] <p>A list of IAM users that the policy is attached to.</p>
--- @param _PolicyRoles [PolicyRoleListType] <p>A list of IAM roles that the policy is attached to.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
-function M.ListEntitiesForPolicyResponse(_Marker, _PolicyGroups, _PolicyUsers, _PolicyRoles, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListEntitiesForPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * PolicyGroups [PolicyGroupListType] <p>A list of IAM groups that the policy is attached to.</p>
+-- * PolicyUsers [PolicyUserListType] <p>A list of IAM users that the policy is attached to.</p>
+-- * PolicyRoles [PolicyRoleListType] <p>A list of IAM roles that the policy is attached to.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- @return ListEntitiesForPolicyResponse structure as a key-value pair table
+function M.ListEntitiesForPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating ListEntitiesForPolicyResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["PolicyGroups"] = _PolicyGroups,
-		["PolicyUsers"] = _PolicyUsers,
-		["PolicyRoles"] = _PolicyRoles,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["PolicyGroups"] = args["PolicyGroups"],
+		["PolicyUsers"] = args["PolicyUsers"],
+		["PolicyRoles"] = args["PolicyRoles"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListEntitiesForPolicyResponse(t)
 	return t
@@ -1660,21 +1819,24 @@ end
 
 --- Create a structure of type GetAccountAuthorizationDetailsResponse
 -- <p>Contains the response to a successful <a>GetAccountAuthorizationDetails</a> request. </p>
--- @param _RoleDetailList [roleDetailListType] <p>A list containing information about IAM roles.</p>
--- @param _GroupDetailList [groupDetailListType] <p>A list containing information about IAM groups.</p>
--- @param _UserDetailList [userDetailListType] <p>A list containing information about IAM users.</p>
--- @param _Policies [ManagedPolicyDetailListType] <p>A list containing information about managed policies.</p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
-function M.GetAccountAuthorizationDetailsResponse(_RoleDetailList, _GroupDetailList, _UserDetailList, _Policies, _Marker, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAccountAuthorizationDetailsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleDetailList [roleDetailListType] <p>A list containing information about IAM roles.</p>
+-- * GroupDetailList [groupDetailListType] <p>A list containing information about IAM groups.</p>
+-- * UserDetailList [userDetailListType] <p>A list containing information about IAM users.</p>
+-- * Policies [ManagedPolicyDetailListType] <p>A list containing information about managed policies.</p>
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- @return GetAccountAuthorizationDetailsResponse structure as a key-value pair table
+function M.GetAccountAuthorizationDetailsResponse(args)
+	assert(args, "You must provdide an argument table when creating GetAccountAuthorizationDetailsResponse")
 	local t = { 
-		["RoleDetailList"] = _RoleDetailList,
-		["GroupDetailList"] = _GroupDetailList,
-		["UserDetailList"] = _UserDetailList,
-		["Policies"] = _Policies,
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
+		["RoleDetailList"] = args["RoleDetailList"],
+		["GroupDetailList"] = args["GroupDetailList"],
+		["UserDetailList"] = args["UserDetailList"],
+		["Policies"] = args["Policies"],
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertGetAccountAuthorizationDetailsResponse(t)
 	return t
@@ -1699,21 +1861,24 @@ end
 
 --- Create a structure of type ResourceSpecificResult
 -- <p>Contains the result of the simulation of a single API action call on a single resource.</p> <p>This data type is used by a member of the <a>EvaluationResult</a> data type.</p>
--- @param _EvalResourceDecision [PolicyEvaluationDecisionType] <p>The result of the simulation of the simulated API action on the resource specified in <code>EvalResourceName</code>.</p>
--- @param _MissingContextValues [ContextKeyNamesResultListType] <p>A list of context keys that are required by the included input policies but that were not provided by one of the input parameters. This list is used when a list of ARNs is included in the <code>ResourceArns</code> parameter instead of "*". If you do not specify individual resources, by setting <code>ResourceArns</code> to "*" or by not including the <code>ResourceArns</code> parameter, then any missing context values are instead included under the <code>EvaluationResults</code> section. To discover the context keys used by a set of policies, you can call <a>GetContextKeysForCustomPolicy</a> or <a>GetContextKeysForPrincipalPolicy</a>.</p>
--- @param _MatchedStatements [StatementListType] <p>A list of the statements in the input policies that determine the result for this part of the simulation. Remember that even if multiple statements allow the action on the resource, if <i>any</i> statement denies that action, then the explicit deny overrides any allow, and the deny statement is the only entry included in the result.</p>
--- @param _EvalDecisionDetails [EvalDecisionDetailsType] <p>Additional details about the results of the evaluation decision. When there are both IAM policies and resource policies, this parameter explains how each set of policies contributes to the final evaluation decision. When simulating cross-account access to a resource, both the resource-based policy and the caller's IAM policy must grant access.</p>
--- @param _EvalResourceName [ResourceNameType] <p>The name of the simulated resource, in Amazon Resource Name (ARN) format.</p>
--- Required parameter: EvalResourceName
--- Required parameter: EvalResourceDecision
-function M.ResourceSpecificResult(_EvalResourceDecision, _MissingContextValues, _MatchedStatements, _EvalDecisionDetails, _EvalResourceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResourceSpecificResult")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * EvalResourceDecision [PolicyEvaluationDecisionType] <p>The result of the simulation of the simulated API action on the resource specified in <code>EvalResourceName</code>.</p>
+-- * MissingContextValues [ContextKeyNamesResultListType] <p>A list of context keys that are required by the included input policies but that were not provided by one of the input parameters. This list is used when a list of ARNs is included in the <code>ResourceArns</code> parameter instead of "*". If you do not specify individual resources, by setting <code>ResourceArns</code> to "*" or by not including the <code>ResourceArns</code> parameter, then any missing context values are instead included under the <code>EvaluationResults</code> section. To discover the context keys used by a set of policies, you can call <a>GetContextKeysForCustomPolicy</a> or <a>GetContextKeysForPrincipalPolicy</a>.</p>
+-- * MatchedStatements [StatementListType] <p>A list of the statements in the input policies that determine the result for this part of the simulation. Remember that even if multiple statements allow the action on the resource, if <i>any</i> statement denies that action, then the explicit deny overrides any allow, and the deny statement is the only entry included in the result.</p>
+-- * EvalDecisionDetails [EvalDecisionDetailsType] <p>Additional details about the results of the evaluation decision. When there are both IAM policies and resource policies, this parameter explains how each set of policies contributes to the final evaluation decision. When simulating cross-account access to a resource, both the resource-based policy and the caller's IAM policy must grant access.</p>
+-- * EvalResourceName [ResourceNameType] <p>The name of the simulated resource, in Amazon Resource Name (ARN) format.</p>
+-- Required key: EvalResourceName
+-- Required key: EvalResourceDecision
+-- @return ResourceSpecificResult structure as a key-value pair table
+function M.ResourceSpecificResult(args)
+	assert(args, "You must provdide an argument table when creating ResourceSpecificResult")
 	local t = { 
-		["EvalResourceDecision"] = _EvalResourceDecision,
-		["MissingContextValues"] = _MissingContextValues,
-		["MatchedStatements"] = _MatchedStatements,
-		["EvalDecisionDetails"] = _EvalDecisionDetails,
-		["EvalResourceName"] = _EvalResourceName,
+		["EvalResourceDecision"] = args["EvalResourceDecision"],
+		["MissingContextValues"] = args["MissingContextValues"],
+		["MatchedStatements"] = args["MatchedStatements"],
+		["EvalDecisionDetails"] = args["EvalDecisionDetails"],
+		["EvalResourceName"] = args["EvalResourceName"],
 	}
 	asserts.AssertResourceSpecificResult(t)
 	return t
@@ -1734,14 +1899,17 @@ end
 
 --- Create a structure of type DeleteSigningCertificateRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user the signing certificate belongs to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _CertificateId [certificateIdType] <p>The ID of the signing certificate to delete.</p> <p>The format of this parameter, as described by its <a href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of characters that can be upper- or lower-cased letters or digits.</p>
--- Required parameter: CertificateId
-function M.DeleteSigningCertificateRequest(_UserName, _CertificateId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSigningCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user the signing certificate belongs to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * CertificateId [certificateIdType] <p>The ID of the signing certificate to delete.</p> <p>The format of this parameter, as described by its <a href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of characters that can be upper- or lower-cased letters or digits.</p>
+-- Required key: CertificateId
+-- @return DeleteSigningCertificateRequest structure as a key-value pair table
+function M.DeleteSigningCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSigningCertificateRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["CertificateId"] = _CertificateId,
+		["UserName"] = args["UserName"],
+		["CertificateId"] = args["CertificateId"],
 	}
 	asserts.AssertDeleteSigningCertificateRequest(t)
 	return t
@@ -1762,15 +1930,18 @@ end
 
 --- Create a structure of type ListInstanceProfilesRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/application_abc/component_xyz/</code> gets all instance profiles whose path starts with <code>/application_abc/component_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all instance profiles. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListInstanceProfilesRequest(_Marker, _PathPrefix, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceProfilesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/application_abc/component_xyz/</code> gets all instance profiles whose path starts with <code>/application_abc/component_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all instance profiles. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListInstanceProfilesRequest structure as a key-value pair table
+function M.ListInstanceProfilesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListInstanceProfilesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["PathPrefix"] = _PathPrefix,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["PathPrefix"] = args["PathPrefix"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListInstanceProfilesRequest(t)
 	return t
@@ -1789,11 +1960,14 @@ end
 
 --- Create a structure of type OpenIDConnectProviderListEntry
 -- <p>Contains the Amazon Resource Name (ARN) for an IAM OpenID Connect provider.</p>
--- @param _Arn [arnType] 
-function M.OpenIDConnectProviderListEntry(_Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating OpenIDConnectProviderListEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Arn [arnType] 
+-- @return OpenIDConnectProviderListEntry structure as a key-value pair table
+function M.OpenIDConnectProviderListEntry(args)
+	assert(args, "You must provdide an argument table when creating OpenIDConnectProviderListEntry")
 	local t = { 
-		["Arn"] = _Arn,
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertOpenIDConnectProviderListEntry(t)
 	return t
@@ -1814,15 +1988,18 @@ end
 
 --- Create a structure of type ListAccessKeysRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListAccessKeysRequest(_UserName, _Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAccessKeysRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListAccessKeysRequest structure as a key-value pair table
+function M.ListAccessKeysRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAccessKeysRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["UserName"] = args["UserName"],
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListAccessKeysRequest(t)
 	return t
@@ -1846,18 +2023,21 @@ end
 
 --- Create a structure of type GetSSHPublicKeyRequest
 --  
--- @param _UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
--- @param _Encoding [encodingType] <p>Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use <code>SSH</code>. To retrieve the public key in PEM format, use <code>PEM</code>.</p>
--- Required parameter: UserName
--- Required parameter: SSHPublicKeyId
--- Required parameter: Encoding
-function M.GetSSHPublicKeyRequest(_UserName, _SSHPublicKeyId, _Encoding, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSSHPublicKeyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
+-- * Encoding [encodingType] <p>Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use <code>SSH</code>. To retrieve the public key in PEM format, use <code>PEM</code>.</p>
+-- Required key: UserName
+-- Required key: SSHPublicKeyId
+-- Required key: Encoding
+-- @return GetSSHPublicKeyRequest structure as a key-value pair table
+function M.GetSSHPublicKeyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetSSHPublicKeyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["SSHPublicKeyId"] = _SSHPublicKeyId,
-		["Encoding"] = _Encoding,
+		["UserName"] = args["UserName"],
+		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
+		["Encoding"] = args["Encoding"],
 	}
 	asserts.AssertGetSSHPublicKeyRequest(t)
 	return t
@@ -1879,15 +2059,18 @@ end
 
 --- Create a structure of type UpdateSAMLProviderRequest
 --  
--- @param _SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider to update.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- @param _SAMLMetadataDocument [SAMLMetadataDocumentType] <p>An XML document generated by an identity provider (IdP) that supports SAML 2.0. The document includes the issuer's name, expiration information, and keys that can be used to validate the SAML authentication response (assertions) that are received from the IdP. You must generate the metadata document using the identity management software that is used as your organization's IdP.</p>
--- Required parameter: SAMLMetadataDocument
--- Required parameter: SAMLProviderArn
-function M.UpdateSAMLProviderRequest(_SAMLProviderArn, _SAMLMetadataDocument, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSAMLProviderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider to update.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * SAMLMetadataDocument [SAMLMetadataDocumentType] <p>An XML document generated by an identity provider (IdP) that supports SAML 2.0. The document includes the issuer's name, expiration information, and keys that can be used to validate the SAML authentication response (assertions) that are received from the IdP. You must generate the metadata document using the identity management software that is used as your organization's IdP.</p>
+-- Required key: SAMLMetadataDocument
+-- Required key: SAMLProviderArn
+-- @return UpdateSAMLProviderRequest structure as a key-value pair table
+function M.UpdateSAMLProviderRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateSAMLProviderRequest")
 	local t = { 
-		["SAMLProviderArn"] = _SAMLProviderArn,
-		["SAMLMetadataDocument"] = _SAMLMetadataDocument,
+		["SAMLProviderArn"] = args["SAMLProviderArn"],
+		["SAMLMetadataDocument"] = args["SAMLMetadataDocument"],
 	}
 	asserts.AssertUpdateSAMLProviderRequest(t)
 	return t
@@ -1911,18 +2094,21 @@ end
 
 --- Create a structure of type GetGroupPolicyResponse
 -- <p>Contains the response to a successful <a>GetGroupPolicy</a> request. </p>
--- @param _GroupName [groupNameType] <p>The group the policy is associated with.</p>
--- @param _PolicyDocument [policyDocumentType] <p>The policy document.</p>
--- @param _PolicyName [policyNameType] <p>The name of the policy.</p>
--- Required parameter: GroupName
--- Required parameter: PolicyName
--- Required parameter: PolicyDocument
-function M.GetGroupPolicyResponse(_GroupName, _PolicyDocument, _PolicyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupName [groupNameType] <p>The group the policy is associated with.</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy document.</p>
+-- * PolicyName [policyNameType] <p>The name of the policy.</p>
+-- Required key: GroupName
+-- Required key: PolicyName
+-- Required key: PolicyDocument
+-- @return GetGroupPolicyResponse structure as a key-value pair table
+function M.GetGroupPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetGroupPolicyResponse")
 	local t = { 
-		["GroupName"] = _GroupName,
-		["PolicyDocument"] = _PolicyDocument,
-		["PolicyName"] = _PolicyName,
+		["GroupName"] = args["GroupName"],
+		["PolicyDocument"] = args["PolicyDocument"],
+		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertGetGroupPolicyResponse(t)
 	return t
@@ -1950,25 +2136,28 @@ end
 
 --- Create a structure of type ServerCertificateMetadata
 -- <p>Contains information about a server certificate without its certificate body, certificate chain, and private key.</p> <p> This data type is used as a response element in the <a>UploadServerCertificate</a> and <a>ListServerCertificates</a> actions. </p>
--- @param _ServerCertificateId [idType] <p> The stable and unique string identifying the server certificate. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- @param _ServerCertificateName [serverCertificateNameType] <p>The name that identifies the server certificate.</p>
--- @param _Expiration [dateType] <p>The date on which the certificate is set to expire.</p>
--- @param _Path [pathType] <p> The path to the server certificate. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- @param _Arn [arnType] <p> The Amazon Resource Name (ARN) specifying the server certificate. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- @param _UploadDate [dateType] <p>The date when the server certificate was uploaded.</p>
--- Required parameter: Path
--- Required parameter: ServerCertificateName
--- Required parameter: ServerCertificateId
--- Required parameter: Arn
-function M.ServerCertificateMetadata(_ServerCertificateId, _ServerCertificateName, _Expiration, _Path, _Arn, _UploadDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServerCertificateMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerCertificateId [idType] <p> The stable and unique string identifying the server certificate. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- * ServerCertificateName [serverCertificateNameType] <p>The name that identifies the server certificate.</p>
+-- * Expiration [dateType] <p>The date on which the certificate is set to expire.</p>
+-- * Path [pathType] <p> The path to the server certificate. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- * Arn [arnType] <p> The Amazon Resource Name (ARN) specifying the server certificate. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- * UploadDate [dateType] <p>The date when the server certificate was uploaded.</p>
+-- Required key: Path
+-- Required key: ServerCertificateName
+-- Required key: ServerCertificateId
+-- Required key: Arn
+-- @return ServerCertificateMetadata structure as a key-value pair table
+function M.ServerCertificateMetadata(args)
+	assert(args, "You must provdide an argument table when creating ServerCertificateMetadata")
 	local t = { 
-		["ServerCertificateId"] = _ServerCertificateId,
-		["ServerCertificateName"] = _ServerCertificateName,
-		["Expiration"] = _Expiration,
-		["Path"] = _Path,
-		["Arn"] = _Arn,
-		["UploadDate"] = _UploadDate,
+		["ServerCertificateId"] = args["ServerCertificateId"],
+		["ServerCertificateName"] = args["ServerCertificateName"],
+		["Expiration"] = args["Expiration"],
+		["Path"] = args["Path"],
+		["Arn"] = args["Arn"],
+		["UploadDate"] = args["UploadDate"],
 	}
 	asserts.AssertServerCertificateMetadata(t)
 	return t
@@ -1988,12 +2177,15 @@ end
 
 --- Create a structure of type DeleteServerCertificateRequest
 --  
--- @param _ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: ServerCertificateName
-function M.DeleteServerCertificateRequest(_ServerCertificateName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteServerCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: ServerCertificateName
+-- @return DeleteServerCertificateRequest structure as a key-value pair table
+function M.DeleteServerCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteServerCertificateRequest")
 	local t = { 
-		["ServerCertificateName"] = _ServerCertificateName,
+		["ServerCertificateName"] = args["ServerCertificateName"],
 	}
 	asserts.AssertDeleteServerCertificateRequest(t)
 	return t
@@ -2014,14 +2206,17 @@ end
 
 --- Create a structure of type CreateGroupRequest
 --  
--- @param _Path [pathType] <p> The path to the group. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _GroupName [groupNameType] <p>The name of the group to create. Do not include the path in this value.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-. The group name must be unique within the account. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".</p>
--- Required parameter: GroupName
-function M.CreateGroupRequest(_Path, _GroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [pathType] <p> The path to the group. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * GroupName [groupNameType] <p>The name of the group to create. Do not include the path in this value.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-. The group name must be unique within the account. Group names are not distinguished by case. For example, you cannot create groups named both "ADMINS" and "admins".</p>
+-- Required key: GroupName
+-- @return CreateGroupRequest structure as a key-value pair table
+function M.CreateGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateGroupRequest")
 	local t = { 
-		["Path"] = _Path,
-		["GroupName"] = _GroupName,
+		["Path"] = args["Path"],
+		["GroupName"] = args["GroupName"],
 	}
 	asserts.AssertCreateGroupRequest(t)
 	return t
@@ -2043,17 +2238,20 @@ end
 
 --- Create a structure of type PolicyVersion
 -- <p>Contains information about a version of a managed policy.</p> <p>This data type is used as a response element in the <a>CreatePolicyVersion</a>, <a>GetPolicyVersion</a>, <a>ListPolicyVersions</a>, and <a>GetAccountAuthorizationDetails</a> actions. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy version was created.</p>
--- @param _VersionId [policyVersionIdType] <p>The identifier for the policy version.</p> <p>Policy version identifiers always begin with <code>v</code> (always lowercase). When a policy is created, the first policy version is <code>v1</code>. </p>
--- @param _Document [policyDocumentType] <p>The policy document.</p> <p>The policy document is returned in the response to the <a>GetPolicyVersion</a> and <a>GetAccountAuthorizationDetails</a> operations. It is not returned in the response to the <a>CreatePolicyVersion</a> or <a>ListPolicyVersions</a> operations. </p>
--- @param _IsDefaultVersion [booleanType] <p>Specifies whether the policy version is set as the policy's default version.</p>
-function M.PolicyVersion(_CreateDate, _VersionId, _Document, _IsDefaultVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyVersion")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy version was created.</p>
+-- * VersionId [policyVersionIdType] <p>The identifier for the policy version.</p> <p>Policy version identifiers always begin with <code>v</code> (always lowercase). When a policy is created, the first policy version is <code>v1</code>. </p>
+-- * Document [policyDocumentType] <p>The policy document.</p> <p>The policy document is returned in the response to the <a>GetPolicyVersion</a> and <a>GetAccountAuthorizationDetails</a> operations. It is not returned in the response to the <a>CreatePolicyVersion</a> or <a>ListPolicyVersions</a> operations. </p>
+-- * IsDefaultVersion [booleanType] <p>Specifies whether the policy version is set as the policy's default version.</p>
+-- @return PolicyVersion structure as a key-value pair table
+function M.PolicyVersion(args)
+	assert(args, "You must provdide an argument table when creating PolicyVersion")
 	local t = { 
-		["CreateDate"] = _CreateDate,
-		["VersionId"] = _VersionId,
-		["Document"] = _Document,
-		["IsDefaultVersion"] = _IsDefaultVersion,
+		["CreateDate"] = args["CreateDate"],
+		["VersionId"] = args["VersionId"],
+		["Document"] = args["Document"],
+		["IsDefaultVersion"] = args["IsDefaultVersion"],
 	}
 	asserts.AssertPolicyVersion(t)
 	return t
@@ -2074,14 +2272,17 @@ end
 
 --- Create a structure of type GetContextKeysForPrincipalPolicyRequest
 --  
--- @param _PolicySourceArn [arnType] <p>The ARN of a user, group, or role whose policies contain the context keys that you want listed. If you specify a user, the list includes context keys that are found in all policies attached to the user as well as to all groups that the user is a member of. If you pick a group or a role, then it includes only those context keys that are found in policies attached to that entity. Note that all parameters are shown in unencoded form here for clarity, but must be URL encoded to be included as a part of a real HTML request.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- @param _PolicyInputList [SimulationPolicyListType] <p>An optional list of additional policies for which you want the list of context keys that are referenced.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- Required parameter: PolicySourceArn
-function M.GetContextKeysForPrincipalPolicyRequest(_PolicySourceArn, _PolicyInputList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetContextKeysForPrincipalPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicySourceArn [arnType] <p>The ARN of a user, group, or role whose policies contain the context keys that you want listed. If you specify a user, the list includes context keys that are found in all policies attached to the user as well as to all groups that the user is a member of. If you pick a group or a role, then it includes only those context keys that are found in policies attached to that entity. Note that all parameters are shown in unencoded form here for clarity, but must be URL encoded to be included as a part of a real HTML request.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * PolicyInputList [SimulationPolicyListType] <p>An optional list of additional policies for which you want the list of context keys that are referenced.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- Required key: PolicySourceArn
+-- @return GetContextKeysForPrincipalPolicyRequest structure as a key-value pair table
+function M.GetContextKeysForPrincipalPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetContextKeysForPrincipalPolicyRequest")
 	local t = { 
-		["PolicySourceArn"] = _PolicySourceArn,
-		["PolicyInputList"] = _PolicyInputList,
+		["PolicySourceArn"] = args["PolicySourceArn"],
+		["PolicyInputList"] = args["PolicyInputList"],
 	}
 	asserts.AssertGetContextKeysForPrincipalPolicyRequest(t)
 	return t
@@ -2103,16 +2304,19 @@ end
 
 --- Create a structure of type ListUserPoliciesRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user to list policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- Required parameter: UserName
-function M.ListUserPoliciesRequest(_UserName, _Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListUserPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user to list policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- Required key: UserName
+-- @return ListUserPoliciesRequest structure as a key-value pair table
+function M.ListUserPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListUserPoliciesRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["UserName"] = args["UserName"],
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListUserPoliciesRequest(t)
 	return t
@@ -2132,13 +2336,16 @@ end
 
 --- Create a structure of type ListServiceSpecificCredentialsRequest
 --  
--- @param _UserName [userNameType] <p>The name of the user whose service-specific credentials you want information about. If this value is not specified then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _ServiceName [serviceName] <p>Filters the returned results to only those for the specified AWS service. If not specified, then AWS returns service-specific credentials for all services.</p>
-function M.ListServiceSpecificCredentialsRequest(_UserName, _ServiceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListServiceSpecificCredentialsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the user whose service-specific credentials you want information about. If this value is not specified then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * ServiceName [serviceName] <p>Filters the returned results to only those for the specified AWS service. If not specified, then AWS returns service-specific credentials for all services.</p>
+-- @return ListServiceSpecificCredentialsRequest structure as a key-value pair table
+function M.ListServiceSpecificCredentialsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListServiceSpecificCredentialsRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["ServiceName"] = _ServiceName,
+		["UserName"] = args["UserName"],
+		["ServiceName"] = args["ServiceName"],
 	}
 	asserts.AssertListServiceSpecificCredentialsRequest(t)
 	return t
@@ -2159,15 +2366,18 @@ end
 
 --- Create a structure of type ListSSHPublicKeysRequest
 --  
--- @param _UserName [userNameType] <p>The name of the IAM user to list SSH public keys for. If none is specified, the UserName field is determined implicitly based on the AWS access key used to sign the request.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListSSHPublicKeysRequest(_UserName, _Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSSHPublicKeysRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user to list SSH public keys for. If none is specified, the UserName field is determined implicitly based on the AWS access key used to sign the request.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListSSHPublicKeysRequest structure as a key-value pair table
+function M.ListSSHPublicKeysRequest(args)
+	assert(args, "You must provdide an argument table when creating ListSSHPublicKeysRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["UserName"] = args["UserName"],
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListSSHPublicKeysRequest(t)
 	return t
@@ -2185,8 +2395,11 @@ end
 
 --- Create a structure of type ListSAMLProvidersRequest
 --  
-function M.ListSAMLProvidersRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSAMLProvidersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ListSAMLProvidersRequest structure as a key-value pair table
+function M.ListSAMLProvidersRequest(args)
+	assert(args, "You must provdide an argument table when creating ListSAMLProvidersRequest")
 	local t = { 
 	}
 	asserts.AssertListSAMLProvidersRequest(t)
@@ -2209,15 +2422,18 @@ end
 
 --- Create a structure of type UpdateAssumeRolePolicyRequest
 --  
--- @param _RoleName [roleNameType] <p>The name of the role to update with the new policy.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _PolicyDocument [policyDocumentType] <p>The policy that grants an entity permission to assume the role.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- Required parameter: RoleName
--- Required parameter: PolicyDocument
-function M.UpdateAssumeRolePolicyRequest(_RoleName, _PolicyDocument, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAssumeRolePolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name of the role to update with the new policy.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy that grants an entity permission to assume the role.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- Required key: RoleName
+-- Required key: PolicyDocument
+-- @return UpdateAssumeRolePolicyRequest structure as a key-value pair table
+function M.UpdateAssumeRolePolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateAssumeRolePolicyRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["PolicyDocument"] = _PolicyDocument,
+		["RoleName"] = args["RoleName"],
+		["PolicyDocument"] = args["PolicyDocument"],
 	}
 	asserts.AssertUpdateAssumeRolePolicyRequest(t)
 	return t
@@ -2239,15 +2455,18 @@ end
 
 --- Create a structure of type RemoveUserFromGroupRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user to remove.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _GroupName [groupNameType] <p>The name of the group to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: GroupName
--- Required parameter: UserName
-function M.RemoveUserFromGroupRequest(_UserName, _GroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveUserFromGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user to remove.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * GroupName [groupNameType] <p>The name of the group to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: GroupName
+-- Required key: UserName
+-- @return RemoveUserFromGroupRequest structure as a key-value pair table
+function M.RemoveUserFromGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveUserFromGroupRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["GroupName"] = _GroupName,
+		["UserName"] = args["UserName"],
+		["GroupName"] = args["GroupName"],
 	}
 	asserts.AssertRemoveUserFromGroupRequest(t)
 	return t
@@ -2274,23 +2493,26 @@ end
 
 --- Create a structure of type SigningCertificate
 -- <p>Contains information about an X.509 signing certificate.</p> <p>This data type is used as a response element in the <a>UploadSigningCertificate</a> and <a>ListSigningCertificates</a> actions. </p>
--- @param _UserName [userNameType] <p>The name of the user the signing certificate is associated with.</p>
--- @param _Status [statusType] <p>The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
--- @param _CertificateBody [certificateBodyType] <p>The contents of the signing certificate.</p>
--- @param _CertificateId [certificateIdType] <p>The ID for the signing certificate.</p>
--- @param _UploadDate [dateType] <p>The date when the signing certificate was uploaded.</p>
--- Required parameter: UserName
--- Required parameter: CertificateId
--- Required parameter: CertificateBody
--- Required parameter: Status
-function M.SigningCertificate(_UserName, _Status, _CertificateBody, _CertificateId, _UploadDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SigningCertificate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the user the signing certificate is associated with.</p>
+-- * Status [statusType] <p>The status of the signing certificate. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
+-- * CertificateBody [certificateBodyType] <p>The contents of the signing certificate.</p>
+-- * CertificateId [certificateIdType] <p>The ID for the signing certificate.</p>
+-- * UploadDate [dateType] <p>The date when the signing certificate was uploaded.</p>
+-- Required key: UserName
+-- Required key: CertificateId
+-- Required key: CertificateBody
+-- Required key: Status
+-- @return SigningCertificate structure as a key-value pair table
+function M.SigningCertificate(args)
+	assert(args, "You must provdide an argument table when creating SigningCertificate")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["CertificateBody"] = _CertificateBody,
-		["CertificateId"] = _CertificateId,
-		["UploadDate"] = _UploadDate,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["CertificateBody"] = args["CertificateBody"],
+		["CertificateId"] = args["CertificateId"],
+		["UploadDate"] = args["UploadDate"],
 	}
 	asserts.AssertSigningCertificate(t)
 	return t
@@ -2319,31 +2541,34 @@ end
 
 --- Create a structure of type ManagedPolicyDetail
 -- <p>Contains information about a managed policy, including the policy's ARN, versions, and the number of principal entities (users, groups, and roles) that the policy is attached to.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p> <p>For more information about managed policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
--- @param _PolicyName [policyNameType] <p>The friendly name (not ARN) identifying the policy.</p>
--- @param _Description [policyDescriptionType] <p>A friendly description of the policy.</p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was created.</p>
--- @param _AttachmentCount [attachmentCountType] <p>The number of principal entities (users, groups, and roles) that the policy is attached to.</p>
--- @param _IsAttachable [booleanType] <p>Specifies whether the policy can be attached to an IAM user, group, or role.</p>
--- @param _PolicyId [idType] <p>The stable and unique string identifying the policy.</p> <p>For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _DefaultVersionId [policyVersionIdType] <p>The identifier for the version of the policy that is set as the default (operative) version.</p> <p>For more information about policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>Using IAM</i> guide. </p>
--- @param _PolicyVersionList [policyDocumentVersionListType] <p>A list containing information about the versions of the policy.</p>
--- @param _Path [policyPathType] <p>The path to the policy.</p> <p>For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _Arn [arnType] 
--- @param _UpdateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was last updated.</p> <p>When a policy has only one version, this field contains the date and time when the policy was created. When a policy has more than one version, this field contains the date and time when the most recent policy version was created.</p>
-function M.ManagedPolicyDetail(_PolicyName, _Description, _CreateDate, _AttachmentCount, _IsAttachable, _PolicyId, _DefaultVersionId, _PolicyVersionList, _Path, _Arn, _UpdateDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ManagedPolicyDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [policyNameType] <p>The friendly name (not ARN) identifying the policy.</p>
+-- * Description [policyDescriptionType] <p>A friendly description of the policy.</p>
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was created.</p>
+-- * AttachmentCount [attachmentCountType] <p>The number of principal entities (users, groups, and roles) that the policy is attached to.</p>
+-- * IsAttachable [booleanType] <p>Specifies whether the policy can be attached to an IAM user, group, or role.</p>
+-- * PolicyId [idType] <p>The stable and unique string identifying the policy.</p> <p>For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * DefaultVersionId [policyVersionIdType] <p>The identifier for the version of the policy that is set as the default (operative) version.</p> <p>For more information about policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>Using IAM</i> guide. </p>
+-- * PolicyVersionList [policyDocumentVersionListType] <p>A list containing information about the versions of the policy.</p>
+-- * Path [policyPathType] <p>The path to the policy.</p> <p>For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * Arn [arnType] 
+-- * UpdateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was last updated.</p> <p>When a policy has only one version, this field contains the date and time when the policy was created. When a policy has more than one version, this field contains the date and time when the most recent policy version was created.</p>
+-- @return ManagedPolicyDetail structure as a key-value pair table
+function M.ManagedPolicyDetail(args)
+	assert(args, "You must provdide an argument table when creating ManagedPolicyDetail")
 	local t = { 
-		["PolicyName"] = _PolicyName,
-		["Description"] = _Description,
-		["CreateDate"] = _CreateDate,
-		["AttachmentCount"] = _AttachmentCount,
-		["IsAttachable"] = _IsAttachable,
-		["PolicyId"] = _PolicyId,
-		["DefaultVersionId"] = _DefaultVersionId,
-		["PolicyVersionList"] = _PolicyVersionList,
-		["Path"] = _Path,
-		["Arn"] = _Arn,
-		["UpdateDate"] = _UpdateDate,
+		["PolicyName"] = args["PolicyName"],
+		["Description"] = args["Description"],
+		["CreateDate"] = args["CreateDate"],
+		["AttachmentCount"] = args["AttachmentCount"],
+		["IsAttachable"] = args["IsAttachable"],
+		["PolicyId"] = args["PolicyId"],
+		["DefaultVersionId"] = args["DefaultVersionId"],
+		["PolicyVersionList"] = args["PolicyVersionList"],
+		["Path"] = args["Path"],
+		["Arn"] = args["Arn"],
+		["UpdateDate"] = args["UpdateDate"],
 	}
 	asserts.AssertManagedPolicyDetail(t)
 	return t
@@ -2364,15 +2589,18 @@ end
 
 --- Create a structure of type ListAttachedRolePoliciesResponse
 -- <p>Contains the response to a successful <a>ListAttachedRolePolicies</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _AttachedPolicies [attachedPoliciesListType] <p>A list of the attached policies.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
-function M.ListAttachedRolePoliciesResponse(_Marker, _AttachedPolicies, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttachedRolePoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * AttachedPolicies [attachedPoliciesListType] <p>A list of the attached policies.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- @return ListAttachedRolePoliciesResponse structure as a key-value pair table
+function M.ListAttachedRolePoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAttachedRolePoliciesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["AttachedPolicies"] = _AttachedPolicies,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["AttachedPolicies"] = args["AttachedPolicies"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListAttachedRolePoliciesResponse(t)
 	return t
@@ -2392,12 +2620,15 @@ end
 
 --- Create a structure of type GetAccessKeyLastUsedRequest
 --  
--- @param _AccessKeyId [accessKeyIdType] <p>The identifier of an access key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
--- Required parameter: AccessKeyId
-function M.GetAccessKeyLastUsedRequest(_AccessKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAccessKeyLastUsedRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccessKeyId [accessKeyIdType] <p>The identifier of an access key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
+-- Required key: AccessKeyId
+-- @return GetAccessKeyLastUsedRequest structure as a key-value pair table
+function M.GetAccessKeyLastUsedRequest(args)
+	assert(args, "You must provdide an argument table when creating GetAccessKeyLastUsedRequest")
 	local t = { 
-		["AccessKeyId"] = _AccessKeyId,
+		["AccessKeyId"] = args["AccessKeyId"],
 	}
 	asserts.AssertGetAccessKeyLastUsedRequest(t)
 	return t
@@ -2419,15 +2650,18 @@ end
 
 --- Create a structure of type DeleteUserPolicyRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name (friendly name, not ARN) identifying the user that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyName [policyNameType] <p>The name identifying the policy document to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: UserName
--- Required parameter: PolicyName
-function M.DeleteUserPolicyRequest(_UserName, _PolicyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name (friendly name, not ARN) identifying the user that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyName [policyNameType] <p>The name identifying the policy document to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: UserName
+-- Required key: PolicyName
+-- @return DeleteUserPolicyRequest structure as a key-value pair table
+function M.DeleteUserPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteUserPolicyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["PolicyName"] = _PolicyName,
+		["UserName"] = args["UserName"],
+		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertDeleteUserPolicyRequest(t)
 	return t
@@ -2447,12 +2681,15 @@ end
 
 --- Create a structure of type GetServerCertificateResponse
 -- <p>Contains the response to a successful <a>GetServerCertificate</a> request. </p>
--- @param _ServerCertificate [ServerCertificate] <p>A structure containing details about the server certificate.</p>
--- Required parameter: ServerCertificate
-function M.GetServerCertificateResponse(_ServerCertificate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetServerCertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerCertificate [ServerCertificate] <p>A structure containing details about the server certificate.</p>
+-- Required key: ServerCertificate
+-- @return GetServerCertificateResponse structure as a key-value pair table
+function M.GetServerCertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating GetServerCertificateResponse")
 	local t = { 
-		["ServerCertificate"] = _ServerCertificate,
+		["ServerCertificate"] = args["ServerCertificate"],
 	}
 	asserts.AssertGetServerCertificateResponse(t)
 	return t
@@ -2472,12 +2709,15 @@ end
 
 --- Create a structure of type GetOpenIDConnectProviderRequest
 --  
--- @param _OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: OpenIDConnectProviderArn
-function M.GetOpenIDConnectProviderRequest(_OpenIDConnectProviderArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIDConnectProviderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: OpenIDConnectProviderArn
+-- @return GetOpenIDConnectProviderRequest structure as a key-value pair table
+function M.GetOpenIDConnectProviderRequest(args)
+	assert(args, "You must provdide an argument table when creating GetOpenIDConnectProviderRequest")
 	local t = { 
-		["OpenIDConnectProviderArn"] = _OpenIDConnectProviderArn,
+		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 	}
 	asserts.AssertGetOpenIDConnectProviderRequest(t)
 	return t
@@ -2496,11 +2736,14 @@ end
 
 --- Create a structure of type ListOpenIDConnectProvidersResponse
 -- <p>Contains the response to a successful <a>ListOpenIDConnectProviders</a> request. </p>
--- @param _OpenIDConnectProviderList [OpenIDConnectProviderListType] <p>The list of IAM OIDC provider resource objects defined in the AWS account.</p>
-function M.ListOpenIDConnectProvidersResponse(_OpenIDConnectProviderList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOpenIDConnectProvidersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OpenIDConnectProviderList [OpenIDConnectProviderListType] <p>The list of IAM OIDC provider resource objects defined in the AWS account.</p>
+-- @return ListOpenIDConnectProvidersResponse structure as a key-value pair table
+function M.ListOpenIDConnectProvidersResponse(args)
+	assert(args, "You must provdide an argument table when creating ListOpenIDConnectProvidersResponse")
 	local t = { 
-		["OpenIDConnectProviderList"] = _OpenIDConnectProviderList,
+		["OpenIDConnectProviderList"] = args["OpenIDConnectProviderList"],
 	}
 	asserts.AssertListOpenIDConnectProvidersResponse(t)
 	return t
@@ -2519,11 +2762,14 @@ end
 
 --- Create a structure of type GetUserRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user to get information about.</p> <p>This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
-function M.GetUserRequest(_UserName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user to get information about.</p> <p>This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- @return GetUserRequest structure as a key-value pair table
+function M.GetUserRequest(args)
+	assert(args, "You must provdide an argument table when creating GetUserRequest")
 	local t = { 
-		["UserName"] = _UserName,
+		["UserName"] = args["UserName"],
 	}
 	asserts.AssertGetUserRequest(t)
 	return t
@@ -2542,11 +2788,14 @@ end
 
 --- Create a structure of type CreateServiceSpecificCredentialResponse
 --  
--- @param _ServiceSpecificCredential [ServiceSpecificCredential] <p>A structure that contains information about the newly created service-specific credential.</p> <important> <p>This is the only time that the password for this credential set is available. It cannot be recovered later. Instead, you will have to reset the password with <a>ResetServiceSpecificCredential</a>.</p> </important>
-function M.CreateServiceSpecificCredentialResponse(_ServiceSpecificCredential, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateServiceSpecificCredentialResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServiceSpecificCredential [ServiceSpecificCredential] <p>A structure that contains information about the newly created service-specific credential.</p> <important> <p>This is the only time that the password for this credential set is available. It cannot be recovered later. Instead, you will have to reset the password with <a>ResetServiceSpecificCredential</a>.</p> </important>
+-- @return CreateServiceSpecificCredentialResponse structure as a key-value pair table
+function M.CreateServiceSpecificCredentialResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateServiceSpecificCredentialResponse")
 	local t = { 
-		["ServiceSpecificCredential"] = _ServiceSpecificCredential,
+		["ServiceSpecificCredential"] = args["ServiceSpecificCredential"],
 	}
 	asserts.AssertCreateServiceSpecificCredentialResponse(t)
 	return t
@@ -2566,13 +2815,16 @@ end
 
 --- Create a structure of type AttachedPolicy
 -- <p>Contains information about an attached policy.</p> <p>An attached policy is a managed policy that has been attached to a user, group, or role. This data type is used as a response element in the <a>ListAttachedGroupPolicies</a>, <a>ListAttachedRolePolicies</a>, <a>ListAttachedUserPolicies</a>, and <a>GetAccountAuthorizationDetails</a> actions. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
--- @param _PolicyName [policyNameType] <p>The friendly name of the attached policy.</p>
--- @param _PolicyArn [arnType] 
-function M.AttachedPolicy(_PolicyName, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachedPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [policyNameType] <p>The friendly name of the attached policy.</p>
+-- * PolicyArn [arnType] 
+-- @return AttachedPolicy structure as a key-value pair table
+function M.AttachedPolicy(args)
+	assert(args, "You must provdide an argument table when creating AttachedPolicy")
 	local t = { 
-		["PolicyName"] = _PolicyName,
-		["PolicyArn"] = _PolicyArn,
+		["PolicyName"] = args["PolicyName"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertAttachedPolicy(t)
 	return t
@@ -2595,17 +2847,20 @@ end
 
 --- Create a structure of type UpdateAccessKeyRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user whose key you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Status [statusType] <p> The status you want to assign to the secret access key. <code>Active</code> means the key can be used for API calls to AWS, while <code>Inactive</code> means the key cannot be used.</p>
--- @param _AccessKeyId [accessKeyIdType] <p>The access key ID of the secret access key you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
--- Required parameter: AccessKeyId
--- Required parameter: Status
-function M.UpdateAccessKeyRequest(_UserName, _Status, _AccessKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateAccessKeyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user whose key you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Status [statusType] <p> The status you want to assign to the secret access key. <code>Active</code> means the key can be used for API calls to AWS, while <code>Inactive</code> means the key cannot be used.</p>
+-- * AccessKeyId [accessKeyIdType] <p>The access key ID of the secret access key you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
+-- Required key: AccessKeyId
+-- Required key: Status
+-- @return UpdateAccessKeyRequest structure as a key-value pair table
+function M.UpdateAccessKeyRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateAccessKeyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["AccessKeyId"] = _AccessKeyId,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["AccessKeyId"] = args["AccessKeyId"],
 	}
 	asserts.AssertUpdateAccessKeyRequest(t)
 	return t
@@ -2627,16 +2882,19 @@ end
 
 --- Create a structure of type UpdateUserRequest
 --  
--- @param _UserName [existingUserNameType] <p>Name of the user to update. If you're changing the name of the user, this is the original user name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _NewPath [pathType] <p>New path for the IAM user. Include this parameter only if you're changing the user's path.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _NewUserName [userNameType] <p>New name for the user. Include this parameter only if you're changing the user's name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: UserName
-function M.UpdateUserRequest(_UserName, _NewPath, _NewUserName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>Name of the user to update. If you're changing the name of the user, this is the original user name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * NewPath [pathType] <p>New path for the IAM user. Include this parameter only if you're changing the user's path.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * NewUserName [userNameType] <p>New name for the user. Include this parameter only if you're changing the user's name.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: UserName
+-- @return UpdateUserRequest structure as a key-value pair table
+function M.UpdateUserRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateUserRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["NewPath"] = _NewPath,
-		["NewUserName"] = _NewUserName,
+		["UserName"] = args["UserName"],
+		["NewPath"] = args["NewPath"],
+		["NewUserName"] = args["NewUserName"],
 	}
 	asserts.AssertUpdateUserRequest(t)
 	return t
@@ -2659,18 +2917,21 @@ end
 
 --- Create a structure of type ListAttachedGroupPoliciesRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _GroupName [groupNameType] <p>The name (friendly name, not ARN) of the group to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- Required parameter: GroupName
-function M.ListAttachedGroupPoliciesRequest(_Marker, _GroupName, _PathPrefix, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttachedGroupPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * GroupName [groupNameType] <p>The name (friendly name, not ARN) of the group to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- Required key: GroupName
+-- @return ListAttachedGroupPoliciesRequest structure as a key-value pair table
+function M.ListAttachedGroupPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAttachedGroupPoliciesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["GroupName"] = _GroupName,
-		["PathPrefix"] = _PathPrefix,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["GroupName"] = args["GroupName"],
+		["PathPrefix"] = args["PathPrefix"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListAttachedGroupPoliciesRequest(t)
 	return t
@@ -2699,26 +2960,29 @@ end
 
 --- Create a structure of type SSHPublicKey
 -- <p>Contains information about an SSH public key.</p> <p>This data type is used as a response element in the <a>GetSSHPublicKey</a> and <a>UploadSSHPublicKey</a> actions. </p>
--- @param _UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p>
--- @param _Status [statusType] <p>The status of the SSH public key. <code>Active</code> means the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means the key cannot be used.</p>
--- @param _SSHPublicKeyBody [publicKeyMaterialType] <p>The SSH public key.</p>
--- @param _UploadDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the SSH public key was uploaded.</p>
--- @param _Fingerprint [publicKeyFingerprintType] <p>The MD5 message digest of the SSH public key.</p>
--- @param _SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p>
--- Required parameter: UserName
--- Required parameter: SSHPublicKeyId
--- Required parameter: Fingerprint
--- Required parameter: SSHPublicKeyBody
--- Required parameter: Status
-function M.SSHPublicKey(_UserName, _Status, _SSHPublicKeyBody, _UploadDate, _Fingerprint, _SSHPublicKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SSHPublicKey")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p>
+-- * Status [statusType] <p>The status of the SSH public key. <code>Active</code> means the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means the key cannot be used.</p>
+-- * SSHPublicKeyBody [publicKeyMaterialType] <p>The SSH public key.</p>
+-- * UploadDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the SSH public key was uploaded.</p>
+-- * Fingerprint [publicKeyFingerprintType] <p>The MD5 message digest of the SSH public key.</p>
+-- * SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p>
+-- Required key: UserName
+-- Required key: SSHPublicKeyId
+-- Required key: Fingerprint
+-- Required key: SSHPublicKeyBody
+-- Required key: Status
+-- @return SSHPublicKey structure as a key-value pair table
+function M.SSHPublicKey(args)
+	assert(args, "You must provdide an argument table when creating SSHPublicKey")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["SSHPublicKeyBody"] = _SSHPublicKeyBody,
-		["UploadDate"] = _UploadDate,
-		["Fingerprint"] = _Fingerprint,
-		["SSHPublicKeyId"] = _SSHPublicKeyId,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["SSHPublicKeyBody"] = args["SSHPublicKeyBody"],
+		["UploadDate"] = args["UploadDate"],
+		["Fingerprint"] = args["Fingerprint"],
+		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
 	}
 	asserts.AssertSSHPublicKey(t)
 	return t
@@ -2739,15 +3003,18 @@ end
 
 --- Create a structure of type ListPoliciesResponse
 -- <p>Contains the response to a successful <a>ListPolicies</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- @param _Policies [policyListType] <p>A list of policies.</p>
-function M.ListPoliciesResponse(_Marker, _IsTruncated, _Policies, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- * Policies [policyListType] <p>A list of policies.</p>
+-- @return ListPoliciesResponse structure as a key-value pair table
+function M.ListPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListPoliciesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
-		["Policies"] = _Policies,
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
+		["Policies"] = args["Policies"],
 	}
 	asserts.AssertListPoliciesResponse(t)
 	return t
@@ -2769,15 +3036,18 @@ end
 
 --- Create a structure of type AttachUserPolicyRequest
 --  
--- @param _UserName [userNameType] <p>The name (friendly name, not ARN) of the IAM user to attach the policy to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: UserName
--- Required parameter: PolicyArn
-function M.AttachUserPolicyRequest(_UserName, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachUserPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name (friendly name, not ARN) of the IAM user to attach the policy to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: UserName
+-- Required key: PolicyArn
+-- @return AttachUserPolicyRequest structure as a key-value pair table
+function M.AttachUserPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachUserPolicyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["PolicyArn"] = _PolicyArn,
+		["UserName"] = args["UserName"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertAttachUserPolicyRequest(t)
 	return t
@@ -2796,11 +3066,14 @@ end
 
 --- Create a structure of type ResetServiceSpecificCredentialResponse
 --  
--- @param _ServiceSpecificCredential [ServiceSpecificCredential] <p>A structure with details about the updated service-specific credential, including the new password.</p> <important> <p>This is the <b>only</b> time that you can access the password. You cannot recover the password later, but you can reset it again.</p> </important>
-function M.ResetServiceSpecificCredentialResponse(_ServiceSpecificCredential, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResetServiceSpecificCredentialResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServiceSpecificCredential [ServiceSpecificCredential] <p>A structure with details about the updated service-specific credential, including the new password.</p> <important> <p>This is the <b>only</b> time that you can access the password. You cannot recover the password later, but you can reset it again.</p> </important>
+-- @return ResetServiceSpecificCredentialResponse structure as a key-value pair table
+function M.ResetServiceSpecificCredentialResponse(args)
+	assert(args, "You must provdide an argument table when creating ResetServiceSpecificCredentialResponse")
 	local t = { 
-		["ServiceSpecificCredential"] = _ServiceSpecificCredential,
+		["ServiceSpecificCredential"] = args["ServiceSpecificCredential"],
 	}
 	asserts.AssertResetServiceSpecificCredentialResponse(t)
 	return t
@@ -2822,16 +3095,19 @@ end
 
 --- Create a structure of type ListRolePoliciesResponse
 -- <p>Contains the response to a successful <a>ListRolePolicies</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _PolicyNames [policyNameListType] <p>A list of policy names.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- Required parameter: PolicyNames
-function M.ListRolePoliciesResponse(_Marker, _PolicyNames, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRolePoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * PolicyNames [policyNameListType] <p>A list of policy names.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- Required key: PolicyNames
+-- @return ListRolePoliciesResponse structure as a key-value pair table
+function M.ListRolePoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListRolePoliciesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["PolicyNames"] = _PolicyNames,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["PolicyNames"] = args["PolicyNames"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListRolePoliciesResponse(t)
 	return t
@@ -2853,15 +3129,18 @@ end
 
 --- Create a structure of type CreateServiceSpecificCredentialRequest
 --  
--- @param _UserName [userNameType] <p>The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _ServiceName [serviceName] <p>The name of the AWS service that is to be associated with the credentials. The service you specify here is the only service that can be accessed using these credentials.</p>
--- Required parameter: UserName
--- Required parameter: ServiceName
-function M.CreateServiceSpecificCredentialRequest(_UserName, _ServiceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateServiceSpecificCredentialRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * ServiceName [serviceName] <p>The name of the AWS service that is to be associated with the credentials. The service you specify here is the only service that can be accessed using these credentials.</p>
+-- Required key: UserName
+-- Required key: ServiceName
+-- @return CreateServiceSpecificCredentialRequest structure as a key-value pair table
+function M.CreateServiceSpecificCredentialRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateServiceSpecificCredentialRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["ServiceName"] = _ServiceName,
+		["UserName"] = args["UserName"],
+		["ServiceName"] = args["ServiceName"],
 	}
 	asserts.AssertCreateServiceSpecificCredentialRequest(t)
 	return t
@@ -2880,11 +3159,14 @@ end
 
 --- Create a structure of type GetContextKeysForPolicyResponse
 -- <p>Contains the response to a successful <a>GetContextKeysForPrincipalPolicy</a> or <a>GetContextKeysForCustomPolicy</a> request. </p>
--- @param _ContextKeyNames [ContextKeyNamesResultListType] <p>The list of context keys that are referenced in the input policies.</p>
-function M.GetContextKeysForPolicyResponse(_ContextKeyNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetContextKeysForPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContextKeyNames [ContextKeyNamesResultListType] <p>The list of context keys that are referenced in the input policies.</p>
+-- @return GetContextKeysForPolicyResponse structure as a key-value pair table
+function M.GetContextKeysForPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetContextKeysForPolicyResponse")
 	local t = { 
-		["ContextKeyNames"] = _ContextKeyNames,
+		["ContextKeyNames"] = args["ContextKeyNames"],
 	}
 	asserts.AssertGetContextKeysForPolicyResponse(t)
 	return t
@@ -2906,16 +3188,19 @@ end
 
 --- Create a structure of type ListGroupPoliciesRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _GroupName [groupNameType] <p>The name of the group to list policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- Required parameter: GroupName
-function M.ListGroupPoliciesRequest(_Marker, _GroupName, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * GroupName [groupNameType] <p>The name of the group to list policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- Required key: GroupName
+-- @return ListGroupPoliciesRequest structure as a key-value pair table
+function M.ListGroupPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListGroupPoliciesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["GroupName"] = _GroupName,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["GroupName"] = args["GroupName"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListGroupPoliciesRequest(t)
 	return t
@@ -2936,15 +3221,18 @@ end
 
 --- Create a structure of type ListUsersRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example: <code>/division_abc/subdivision_xyz/</code>, which would get all user names whose path starts with <code>/division_abc/subdivision_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all user names. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListUsersRequest(_Marker, _PathPrefix, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListUsersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example: <code>/division_abc/subdivision_xyz/</code>, which would get all user names whose path starts with <code>/division_abc/subdivision_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all user names. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListUsersRequest structure as a key-value pair table
+function M.ListUsersRequest(args)
+	assert(args, "You must provdide an argument table when creating ListUsersRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["PathPrefix"] = _PathPrefix,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["PathPrefix"] = args["PathPrefix"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListUsersRequest(t)
 	return t
@@ -2966,15 +3254,18 @@ end
 
 --- Create a structure of type UpdateRoleDescriptionRequest
 --  
--- @param _RoleName [roleNameType] <p>The name of the role that you want to modify.</p>
--- @param _Description [roleDescriptionType] <p>The new description that you want to apply to the specified role.</p>
--- Required parameter: RoleName
--- Required parameter: Description
-function M.UpdateRoleDescriptionRequest(_RoleName, _Description, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRoleDescriptionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name of the role that you want to modify.</p>
+-- * Description [roleDescriptionType] <p>The new description that you want to apply to the specified role.</p>
+-- Required key: RoleName
+-- Required key: Description
+-- @return UpdateRoleDescriptionRequest structure as a key-value pair table
+function M.UpdateRoleDescriptionRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateRoleDescriptionRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["Description"] = _Description,
+		["RoleName"] = args["RoleName"],
+		["Description"] = args["Description"],
 	}
 	asserts.AssertUpdateRoleDescriptionRequest(t)
 	return t
@@ -2996,15 +3287,18 @@ end
 
 --- Create a structure of type UploadSSHPublicKeyRequest
 --  
--- @param _UserName [userNameType] <p>The name of the IAM user to associate the SSH public key with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _SSHPublicKeyBody [publicKeyMaterialType] <p>The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- Required parameter: UserName
--- Required parameter: SSHPublicKeyBody
-function M.UploadSSHPublicKeyRequest(_UserName, _SSHPublicKeyBody, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadSSHPublicKeyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user to associate the SSH public key with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * SSHPublicKeyBody [publicKeyMaterialType] <p>The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- Required key: UserName
+-- Required key: SSHPublicKeyBody
+-- @return UploadSSHPublicKeyRequest structure as a key-value pair table
+function M.UploadSSHPublicKeyRequest(args)
+	assert(args, "You must provdide an argument table when creating UploadSSHPublicKeyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["SSHPublicKeyBody"] = _SSHPublicKeyBody,
+		["UserName"] = args["UserName"],
+		["SSHPublicKeyBody"] = args["SSHPublicKeyBody"],
 	}
 	asserts.AssertUploadSSHPublicKeyRequest(t)
 	return t
@@ -3031,27 +3325,30 @@ end
 
 --- Create a structure of type RoleDetail
 -- <p>Contains information about an IAM role, including all of the role's policies.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
--- @param _AssumeRolePolicyDocument [policyDocumentType] <p>The trust policy that grants permission to assume the role.</p>
--- @param _RoleId [idType] <p>The stable and unique string identifying the role. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the role was created.</p>
--- @param _InstanceProfileList [instanceProfileListType] <p>A list of instance profiles that contain this role.</p>
--- @param _RoleName [roleNameType] <p>The friendly name that identifies the role.</p>
--- @param _Path [pathType] <p>The path to the role. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _AttachedManagedPolicies [attachedPoliciesListType] <p>A list of managed policies attached to the role. These policies are the role's access (permissions) policies.</p>
--- @param _RolePolicyList [policyDetailListType] <p>A list of inline policies embedded in the role. These policies are the role's access (permissions) policies.</p>
--- @param _Arn [arnType] 
-function M.RoleDetail(_AssumeRolePolicyDocument, _RoleId, _CreateDate, _InstanceProfileList, _RoleName, _Path, _AttachedManagedPolicies, _RolePolicyList, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RoleDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AssumeRolePolicyDocument [policyDocumentType] <p>The trust policy that grants permission to assume the role.</p>
+-- * RoleId [idType] <p>The stable and unique string identifying the role. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the role was created.</p>
+-- * InstanceProfileList [instanceProfileListType] <p>A list of instance profiles that contain this role.</p>
+-- * RoleName [roleNameType] <p>The friendly name that identifies the role.</p>
+-- * Path [pathType] <p>The path to the role. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * AttachedManagedPolicies [attachedPoliciesListType] <p>A list of managed policies attached to the role. These policies are the role's access (permissions) policies.</p>
+-- * RolePolicyList [policyDetailListType] <p>A list of inline policies embedded in the role. These policies are the role's access (permissions) policies.</p>
+-- * Arn [arnType] 
+-- @return RoleDetail structure as a key-value pair table
+function M.RoleDetail(args)
+	assert(args, "You must provdide an argument table when creating RoleDetail")
 	local t = { 
-		["AssumeRolePolicyDocument"] = _AssumeRolePolicyDocument,
-		["RoleId"] = _RoleId,
-		["CreateDate"] = _CreateDate,
-		["InstanceProfileList"] = _InstanceProfileList,
-		["RoleName"] = _RoleName,
-		["Path"] = _Path,
-		["AttachedManagedPolicies"] = _AttachedManagedPolicies,
-		["RolePolicyList"] = _RolePolicyList,
-		["Arn"] = _Arn,
+		["AssumeRolePolicyDocument"] = args["AssumeRolePolicyDocument"],
+		["RoleId"] = args["RoleId"],
+		["CreateDate"] = args["CreateDate"],
+		["InstanceProfileList"] = args["InstanceProfileList"],
+		["RoleName"] = args["RoleName"],
+		["Path"] = args["Path"],
+		["AttachedManagedPolicies"] = args["AttachedManagedPolicies"],
+		["RolePolicyList"] = args["RolePolicyList"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertRoleDetail(t)
 	return t
@@ -3071,13 +3368,16 @@ end
 
 --- Create a structure of type PolicyDetail
 -- <p>Contains information about an IAM policy, including the policy document.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
--- @param _PolicyName [policyNameType] <p>The name of the policy.</p>
--- @param _PolicyDocument [policyDocumentType] <p>The policy document.</p>
-function M.PolicyDetail(_PolicyName, _PolicyDocument, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [policyNameType] <p>The name of the policy.</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy document.</p>
+-- @return PolicyDetail structure as a key-value pair table
+function M.PolicyDetail(args)
+	assert(args, "You must provdide an argument table when creating PolicyDetail")
 	local t = { 
-		["PolicyName"] = _PolicyName,
-		["PolicyDocument"] = _PolicyDocument,
+		["PolicyName"] = args["PolicyName"],
+		["PolicyDocument"] = args["PolicyDocument"],
 	}
 	asserts.AssertPolicyDetail(t)
 	return t
@@ -3099,15 +3399,18 @@ end
 
 --- Create a structure of type DeletePolicyVersionRequest
 --  
--- @param _VersionId [policyVersionIdType] <p>The policy version to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy from which you want to delete a version.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: PolicyArn
--- Required parameter: VersionId
-function M.DeletePolicyVersionRequest(_VersionId, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeletePolicyVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [policyVersionIdType] <p>The policy version to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy from which you want to delete a version.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: PolicyArn
+-- Required key: VersionId
+-- @return DeletePolicyVersionRequest structure as a key-value pair table
+function M.DeletePolicyVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating DeletePolicyVersionRequest")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["PolicyArn"] = _PolicyArn,
+		["VersionId"] = args["VersionId"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertDeletePolicyVersionRequest(t)
 	return t
@@ -3127,12 +3430,15 @@ end
 
 --- Create a structure of type GetLoginProfileRequest
 --  
--- @param _UserName [userNameType] <p>The name of the user whose login profile you want to retrieve.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: UserName
-function M.GetLoginProfileRequest(_UserName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetLoginProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the user whose login profile you want to retrieve.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: UserName
+-- @return GetLoginProfileRequest structure as a key-value pair table
+function M.GetLoginProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating GetLoginProfileRequest")
 	local t = { 
-		["UserName"] = _UserName,
+		["UserName"] = args["UserName"],
 	}
 	asserts.AssertGetLoginProfileRequest(t)
 	return t
@@ -3152,12 +3458,15 @@ end
 
 --- Create a structure of type GetPolicyRequest
 --  
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the managed policy that you want information about.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: PolicyArn
-function M.GetPolicyRequest(_PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the managed policy that you want information about.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: PolicyArn
+-- @return GetPolicyRequest structure as a key-value pair table
+function M.GetPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetPolicyRequest")
 	local t = { 
-		["PolicyArn"] = _PolicyArn,
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertGetPolicyRequest(t)
 	return t
@@ -3178,15 +3487,18 @@ end
 
 --- Create a structure of type ListSigningCertificatesRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the IAM user whose signing certificates you want to examine.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListSigningCertificatesRequest(_UserName, _Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSigningCertificatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the IAM user whose signing certificates you want to examine.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListSigningCertificatesRequest structure as a key-value pair table
+function M.ListSigningCertificatesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListSigningCertificatesRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["UserName"] = args["UserName"],
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListSigningCertificatesRequest(t)
 	return t
@@ -3205,11 +3517,14 @@ end
 
 --- Create a structure of type UploadServerCertificateResponse
 -- <p>Contains the response to a successful <a>UploadServerCertificate</a> request. </p>
--- @param _ServerCertificateMetadata [ServerCertificateMetadata] <p>The meta information of the uploaded server certificate without its certificate body, certificate chain, and private key.</p>
-function M.UploadServerCertificateResponse(_ServerCertificateMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadServerCertificateResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerCertificateMetadata [ServerCertificateMetadata] <p>The meta information of the uploaded server certificate without its certificate body, certificate chain, and private key.</p>
+-- @return UploadServerCertificateResponse structure as a key-value pair table
+function M.UploadServerCertificateResponse(args)
+	assert(args, "You must provdide an argument table when creating UploadServerCertificateResponse")
 	local t = { 
-		["ServerCertificateMetadata"] = _ServerCertificateMetadata,
+		["ServerCertificateMetadata"] = args["ServerCertificateMetadata"],
 	}
 	asserts.AssertUploadServerCertificateResponse(t)
 	return t
@@ -3231,15 +3546,18 @@ end
 
 --- Create a structure of type DeleteGroupPolicyRequest
 --  
--- @param _GroupName [groupNameType] <p>The name (friendly name, not ARN) identifying the group that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyName [policyNameType] <p>The name identifying the policy document to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: GroupName
--- Required parameter: PolicyName
-function M.DeleteGroupPolicyRequest(_GroupName, _PolicyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGroupPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupName [groupNameType] <p>The name (friendly name, not ARN) identifying the group that the policy is embedded in.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyName [policyNameType] <p>The name identifying the policy document to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: GroupName
+-- Required key: PolicyName
+-- @return DeleteGroupPolicyRequest structure as a key-value pair table
+function M.DeleteGroupPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteGroupPolicyRequest")
 	local t = { 
-		["GroupName"] = _GroupName,
-		["PolicyName"] = _PolicyName,
+		["GroupName"] = args["GroupName"],
+		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertDeleteGroupPolicyRequest(t)
 	return t
@@ -3263,19 +3581,22 @@ end
 
 --- Create a structure of type CreateRoleRequest
 --  
--- @param _Path [pathType] <p> The path to the role. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _AssumeRolePolicyDocument [policyDocumentType] <p>The trust relationship policy document that grants an entity permission to assume the role.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _Description [roleDescriptionType] <p>A customer-provided description of the role.</p>
--- @param _RoleName [roleNameType] <p>The name of the role to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p> <p>Role names are not distinguished by case. For example, you cannot create roles named both "PRODROLE" and "prodrole".</p>
--- Required parameter: RoleName
--- Required parameter: AssumeRolePolicyDocument
-function M.CreateRoleRequest(_Path, _AssumeRolePolicyDocument, _Description, _RoleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRoleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [pathType] <p> The path to the role. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * AssumeRolePolicyDocument [policyDocumentType] <p>The trust relationship policy document that grants an entity permission to assume the role.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * Description [roleDescriptionType] <p>A customer-provided description of the role.</p>
+-- * RoleName [roleNameType] <p>The name of the role to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p> <p>Role names are not distinguished by case. For example, you cannot create roles named both "PRODROLE" and "prodrole".</p>
+-- Required key: RoleName
+-- Required key: AssumeRolePolicyDocument
+-- @return CreateRoleRequest structure as a key-value pair table
+function M.CreateRoleRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateRoleRequest")
 	local t = { 
-		["Path"] = _Path,
-		["AssumeRolePolicyDocument"] = _AssumeRolePolicyDocument,
-		["Description"] = _Description,
-		["RoleName"] = _RoleName,
+		["Path"] = args["Path"],
+		["AssumeRolePolicyDocument"] = args["AssumeRolePolicyDocument"],
+		["Description"] = args["Description"],
+		["RoleName"] = args["RoleName"],
 	}
 	asserts.AssertCreateRoleRequest(t)
 	return t
@@ -3297,15 +3618,18 @@ end
 
 --- Create a structure of type SetDefaultPolicyVersionRequest
 --  
--- @param _VersionId [policyVersionIdType] <p>The version of the policy to set as the default (operative) version.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy whose default version you want to set.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: PolicyArn
--- Required parameter: VersionId
-function M.SetDefaultPolicyVersionRequest(_VersionId, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SetDefaultPolicyVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [policyVersionIdType] <p>The version of the policy to set as the default (operative) version.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy whose default version you want to set.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: PolicyArn
+-- Required key: VersionId
+-- @return SetDefaultPolicyVersionRequest structure as a key-value pair table
+function M.SetDefaultPolicyVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating SetDefaultPolicyVersionRequest")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["PolicyArn"] = _PolicyArn,
+		["VersionId"] = args["VersionId"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertSetDefaultPolicyVersionRequest(t)
 	return t
@@ -3325,12 +3649,15 @@ end
 
 --- Create a structure of type CreateLoginProfileResponse
 -- <p>Contains the response to a successful <a>CreateLoginProfile</a> request. </p>
--- @param _LoginProfile [LoginProfile] <p>A structure containing the user name and password create date.</p>
--- Required parameter: LoginProfile
-function M.CreateLoginProfileResponse(_LoginProfile, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoginProfileResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * LoginProfile [LoginProfile] <p>A structure containing the user name and password create date.</p>
+-- Required key: LoginProfile
+-- @return CreateLoginProfileResponse structure as a key-value pair table
+function M.CreateLoginProfileResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateLoginProfileResponse")
 	local t = { 
-		["LoginProfile"] = _LoginProfile,
+		["LoginProfile"] = args["LoginProfile"],
 	}
 	asserts.AssertCreateLoginProfileResponse(t)
 	return t
@@ -3350,12 +3677,15 @@ end
 
 --- Create a structure of type DeleteOpenIDConnectProviderRequest
 --  
--- @param _OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource object to delete. You can get a list of OpenID Connect provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p>
--- Required parameter: OpenIDConnectProviderArn
-function M.DeleteOpenIDConnectProviderRequest(_OpenIDConnectProviderArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteOpenIDConnectProviderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource object to delete. You can get a list of OpenID Connect provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p>
+-- Required key: OpenIDConnectProviderArn
+-- @return DeleteOpenIDConnectProviderRequest structure as a key-value pair table
+function M.DeleteOpenIDConnectProviderRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteOpenIDConnectProviderRequest")
 	local t = { 
-		["OpenIDConnectProviderArn"] = _OpenIDConnectProviderArn,
+		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 	}
 	asserts.AssertDeleteOpenIDConnectProviderRequest(t)
 	return t
@@ -3374,11 +3704,14 @@ end
 
 --- Create a structure of type ListServiceSpecificCredentialsResponse
 --  
--- @param _ServiceSpecificCredentials [ServiceSpecificCredentialsListType] <p>A list of structures that each contain details about a service-specific credential.</p>
-function M.ListServiceSpecificCredentialsResponse(_ServiceSpecificCredentials, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListServiceSpecificCredentialsResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServiceSpecificCredentials [ServiceSpecificCredentialsListType] <p>A list of structures that each contain details about a service-specific credential.</p>
+-- @return ListServiceSpecificCredentialsResponse structure as a key-value pair table
+function M.ListServiceSpecificCredentialsResponse(args)
+	assert(args, "You must provdide an argument table when creating ListServiceSpecificCredentialsResponse")
 	local t = { 
-		["ServiceSpecificCredentials"] = _ServiceSpecificCredentials,
+		["ServiceSpecificCredentials"] = args["ServiceSpecificCredentials"],
 	}
 	asserts.AssertListServiceSpecificCredentialsResponse(t)
 	return t
@@ -3397,11 +3730,14 @@ end
 
 --- Create a structure of type EntityAlreadyExistsException
 -- <p>The request was rejected because it attempted to create a resource that already exists.</p>
--- @param _message [entityAlreadyExistsMessage] 
-function M.EntityAlreadyExistsException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EntityAlreadyExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [entityAlreadyExistsMessage] 
+-- @return EntityAlreadyExistsException structure as a key-value pair table
+function M.EntityAlreadyExistsException(args)
+	assert(args, "You must provdide an argument table when creating EntityAlreadyExistsException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertEntityAlreadyExistsException(t)
 	return t
@@ -3423,16 +3759,19 @@ end
 
 --- Create a structure of type ListGroupPoliciesResponse
 -- <p>Contains the response to a successful <a>ListGroupPolicies</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _PolicyNames [policyNameListType] <p>A list of policy names.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- Required parameter: PolicyNames
-function M.ListGroupPoliciesResponse(_Marker, _PolicyNames, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * PolicyNames [policyNameListType] <p>A list of policy names.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- Required key: PolicyNames
+-- @return ListGroupPoliciesResponse structure as a key-value pair table
+function M.ListGroupPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListGroupPoliciesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["PolicyNames"] = _PolicyNames,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["PolicyNames"] = args["PolicyNames"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListGroupPoliciesResponse(t)
 	return t
@@ -3451,11 +3790,14 @@ end
 
 --- Create a structure of type InvalidCertificateException
 -- <p>The request was rejected because the certificate is invalid.</p>
--- @param _message [invalidCertificateMessage] 
-function M.InvalidCertificateException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCertificateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [invalidCertificateMessage] 
+-- @return InvalidCertificateException structure as a key-value pair table
+function M.InvalidCertificateException(args)
+	assert(args, "You must provdide an argument table when creating InvalidCertificateException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidCertificateException(t)
 	return t
@@ -3477,16 +3819,19 @@ end
 
 --- Create a structure of type ListSigningCertificatesResponse
 -- <p>Contains the response to a successful <a>ListSigningCertificates</a> request. </p>
--- @param _Certificates [certificateListType] <p>A list of the user's signing certificate information.</p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- Required parameter: Certificates
-function M.ListSigningCertificatesResponse(_Certificates, _Marker, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSigningCertificatesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Certificates [certificateListType] <p>A list of the user's signing certificate information.</p>
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- Required key: Certificates
+-- @return ListSigningCertificatesResponse structure as a key-value pair table
+function M.ListSigningCertificatesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListSigningCertificatesResponse")
 	local t = { 
-		["Certificates"] = _Certificates,
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
+		["Certificates"] = args["Certificates"],
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListSigningCertificatesResponse(t)
 	return t
@@ -3511,23 +3856,26 @@ end
 
 --- Create a structure of type GroupDetail
 -- <p>Contains information about an IAM group, including all of the group's policies.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
--- @param _GroupPolicyList [policyDetailListType] <p>A list of the inline policies embedded in the group.</p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the group was created.</p>
--- @param _GroupName [groupNameType] <p>The friendly name that identifies the group.</p>
--- @param _Path [pathType] <p>The path to the group. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _AttachedManagedPolicies [attachedPoliciesListType] <p>A list of the managed policies attached to the group.</p>
--- @param _GroupId [idType] <p>The stable and unique string identifying the group. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _Arn [arnType] 
-function M.GroupDetail(_GroupPolicyList, _CreateDate, _GroupName, _Path, _AttachedManagedPolicies, _GroupId, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GroupDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupPolicyList [policyDetailListType] <p>A list of the inline policies embedded in the group.</p>
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the group was created.</p>
+-- * GroupName [groupNameType] <p>The friendly name that identifies the group.</p>
+-- * Path [pathType] <p>The path to the group. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * AttachedManagedPolicies [attachedPoliciesListType] <p>A list of the managed policies attached to the group.</p>
+-- * GroupId [idType] <p>The stable and unique string identifying the group. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * Arn [arnType] 
+-- @return GroupDetail structure as a key-value pair table
+function M.GroupDetail(args)
+	assert(args, "You must provdide an argument table when creating GroupDetail")
 	local t = { 
-		["GroupPolicyList"] = _GroupPolicyList,
-		["CreateDate"] = _CreateDate,
-		["GroupName"] = _GroupName,
-		["Path"] = _Path,
-		["AttachedManagedPolicies"] = _AttachedManagedPolicies,
-		["GroupId"] = _GroupId,
-		["Arn"] = _Arn,
+		["GroupPolicyList"] = args["GroupPolicyList"],
+		["CreateDate"] = args["CreateDate"],
+		["GroupName"] = args["GroupName"],
+		["Path"] = args["Path"],
+		["AttachedManagedPolicies"] = args["AttachedManagedPolicies"],
+		["GroupId"] = args["GroupId"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertGroupDetail(t)
 	return t
@@ -3551,20 +3899,23 @@ end
 
 --- Create a structure of type VirtualMFADevice
 -- <p>Contains information about a virtual MFA device.</p>
--- @param _Base32StringSeed [BootstrapDatum] <p> The Base32 seed defined as specified in <a href="https://tools.ietf.org/html/rfc3548.txt">RFC3548</a>. The <code>Base32StringSeed</code> is Base64-encoded. </p>
--- @param _SerialNumber [serialNumberType] <p>The serial number associated with <code>VirtualMFADevice</code>.</p>
--- @param _EnableDate [dateType] <p>The date and time on which the virtual MFA device was enabled.</p>
--- @param _User [User] <p>The IAM user associated with this virtual MFA device.</p>
--- @param _QRCodePNG [BootstrapDatum] <p> A QR code PNG image that encodes <code>otpauth://totp/$virtualMFADeviceName@$AccountName?secret=$Base32String</code> where <code>$virtualMFADeviceName</code> is one of the create call arguments, <code>AccountName</code> is the user name if set (otherwise, the account ID otherwise), and <code>Base32String</code> is the seed in Base32 format. The <code>Base32String</code> value is Base64-encoded. </p>
--- Required parameter: SerialNumber
-function M.VirtualMFADevice(_Base32StringSeed, _SerialNumber, _EnableDate, _User, _QRCodePNG, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating VirtualMFADevice")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Base32StringSeed [BootstrapDatum] <p> The Base32 seed defined as specified in <a href="https://tools.ietf.org/html/rfc3548.txt">RFC3548</a>. The <code>Base32StringSeed</code> is Base64-encoded. </p>
+-- * SerialNumber [serialNumberType] <p>The serial number associated with <code>VirtualMFADevice</code>.</p>
+-- * EnableDate [dateType] <p>The date and time on which the virtual MFA device was enabled.</p>
+-- * User [User] <p>The IAM user associated with this virtual MFA device.</p>
+-- * QRCodePNG [BootstrapDatum] <p> A QR code PNG image that encodes <code>otpauth://totp/$virtualMFADeviceName@$AccountName?secret=$Base32String</code> where <code>$virtualMFADeviceName</code> is one of the create call arguments, <code>AccountName</code> is the user name if set (otherwise, the account ID otherwise), and <code>Base32String</code> is the seed in Base32 format. The <code>Base32String</code> value is Base64-encoded. </p>
+-- Required key: SerialNumber
+-- @return VirtualMFADevice structure as a key-value pair table
+function M.VirtualMFADevice(args)
+	assert(args, "You must provdide an argument table when creating VirtualMFADevice")
 	local t = { 
-		["Base32StringSeed"] = _Base32StringSeed,
-		["SerialNumber"] = _SerialNumber,
-		["EnableDate"] = _EnableDate,
-		["User"] = _User,
-		["QRCodePNG"] = _QRCodePNG,
+		["Base32StringSeed"] = args["Base32StringSeed"],
+		["SerialNumber"] = args["SerialNumber"],
+		["EnableDate"] = args["EnableDate"],
+		["User"] = args["User"],
+		["QRCodePNG"] = args["QRCodePNG"],
 	}
 	asserts.AssertVirtualMFADevice(t)
 	return t
@@ -3584,12 +3935,15 @@ end
 
 --- Create a structure of type DeleteUserRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: UserName
-function M.DeleteUserRequest(_UserName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: UserName
+-- @return DeleteUserRequest structure as a key-value pair table
+function M.DeleteUserRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteUserRequest")
 	local t = { 
-		["UserName"] = _UserName,
+		["UserName"] = args["UserName"],
 	}
 	asserts.AssertDeleteUserRequest(t)
 	return t
@@ -3619,28 +3973,31 @@ end
 
 --- Create a structure of type Role
 -- <p>Contains information about an IAM role. This structure is returned as a response element in several APIs that interact with roles.</p>
--- @param _Description [roleDescriptionType] <p>A description of the role that you provide.</p>
--- @param _AssumeRolePolicyDocument [policyDocumentType] <p>The policy that grants an entity permission to assume the role.</p>
--- @param _RoleId [idType] <p> The stable and unique string identifying the role. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the role was created.</p>
--- @param _RoleName [roleNameType] <p>The friendly name that identifies the role.</p>
--- @param _Path [pathType] <p> The path to the role. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- @param _Arn [arnType] <p> The Amazon Resource Name (ARN) specifying the role. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i> guide. </p>
--- Required parameter: Path
--- Required parameter: RoleName
--- Required parameter: RoleId
--- Required parameter: Arn
--- Required parameter: CreateDate
-function M.Role(_Description, _AssumeRolePolicyDocument, _RoleId, _CreateDate, _RoleName, _Path, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Role")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Description [roleDescriptionType] <p>A description of the role that you provide.</p>
+-- * AssumeRolePolicyDocument [policyDocumentType] <p>The policy that grants an entity permission to assume the role.</p>
+-- * RoleId [idType] <p> The stable and unique string identifying the role. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the role was created.</p>
+-- * RoleName [roleNameType] <p>The friendly name that identifies the role.</p>
+-- * Path [pathType] <p> The path to the role. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- * Arn [arnType] <p> The Amazon Resource Name (ARN) specifying the role. For more information about ARNs and how to use them in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i> guide. </p>
+-- Required key: Path
+-- Required key: RoleName
+-- Required key: RoleId
+-- Required key: Arn
+-- Required key: CreateDate
+-- @return Role structure as a key-value pair table
+function M.Role(args)
+	assert(args, "You must provdide an argument table when creating Role")
 	local t = { 
-		["Description"] = _Description,
-		["AssumeRolePolicyDocument"] = _AssumeRolePolicyDocument,
-		["RoleId"] = _RoleId,
-		["CreateDate"] = _CreateDate,
-		["RoleName"] = _RoleName,
-		["Path"] = _Path,
-		["Arn"] = _Arn,
+		["Description"] = args["Description"],
+		["AssumeRolePolicyDocument"] = args["AssumeRolePolicyDocument"],
+		["RoleId"] = args["RoleId"],
+		["CreateDate"] = args["CreateDate"],
+		["RoleName"] = args["RoleName"],
+		["Path"] = args["Path"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertRole(t)
 	return t
@@ -3662,16 +4019,19 @@ end
 
 --- Create a structure of type ListUserPoliciesResponse
 -- <p>Contains the response to a successful <a>ListUserPolicies</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _PolicyNames [policyNameListType] <p>A list of policy names.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- Required parameter: PolicyNames
-function M.ListUserPoliciesResponse(_Marker, _PolicyNames, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListUserPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * PolicyNames [policyNameListType] <p>A list of policy names.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- Required key: PolicyNames
+-- @return ListUserPoliciesResponse structure as a key-value pair table
+function M.ListUserPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListUserPoliciesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["PolicyNames"] = _PolicyNames,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["PolicyNames"] = args["PolicyNames"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListUserPoliciesResponse(t)
 	return t
@@ -3691,12 +4051,15 @@ end
 
 --- Create a structure of type GetServerCertificateRequest
 --  
--- @param _ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate you want to retrieve information about.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: ServerCertificateName
-function M.GetServerCertificateRequest(_ServerCertificateName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetServerCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate you want to retrieve information about.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: ServerCertificateName
+-- @return GetServerCertificateRequest structure as a key-value pair table
+function M.GetServerCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating GetServerCertificateRequest")
 	local t = { 
-		["ServerCertificateName"] = _ServerCertificateName,
+		["ServerCertificateName"] = args["ServerCertificateName"],
 	}
 	asserts.AssertGetServerCertificateRequest(t)
 	return t
@@ -3722,25 +4085,28 @@ end
 
 --- Create a structure of type UserDetail
 -- <p>Contains information about an IAM user, including all the user's policies and all the IAM groups the user is in.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
--- @param _UserName [userNameType] <p>The friendly name identifying the user.</p>
--- @param _GroupList [groupNameListType] <p>A list of IAM groups that the user is in.</p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the user was created.</p>
--- @param _UserId [idType] <p>The stable and unique string identifying the user. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _UserPolicyList [policyDetailListType] <p>A list of the inline policies embedded in the user.</p>
--- @param _Path [pathType] <p>The path to the user. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _AttachedManagedPolicies [attachedPoliciesListType] <p>A list of the managed policies attached to the user.</p>
--- @param _Arn [arnType] 
-function M.UserDetail(_UserName, _GroupList, _CreateDate, _UserId, _UserPolicyList, _Path, _AttachedManagedPolicies, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UserDetail")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The friendly name identifying the user.</p>
+-- * GroupList [groupNameListType] <p>A list of IAM groups that the user is in.</p>
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the user was created.</p>
+-- * UserId [idType] <p>The stable and unique string identifying the user. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * UserPolicyList [policyDetailListType] <p>A list of the inline policies embedded in the user.</p>
+-- * Path [pathType] <p>The path to the user. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * AttachedManagedPolicies [attachedPoliciesListType] <p>A list of the managed policies attached to the user.</p>
+-- * Arn [arnType] 
+-- @return UserDetail structure as a key-value pair table
+function M.UserDetail(args)
+	assert(args, "You must provdide an argument table when creating UserDetail")
 	local t = { 
-		["UserName"] = _UserName,
-		["GroupList"] = _GroupList,
-		["CreateDate"] = _CreateDate,
-		["UserId"] = _UserId,
-		["UserPolicyList"] = _UserPolicyList,
-		["Path"] = _Path,
-		["AttachedManagedPolicies"] = _AttachedManagedPolicies,
-		["Arn"] = _Arn,
+		["UserName"] = args["UserName"],
+		["GroupList"] = args["GroupList"],
+		["CreateDate"] = args["CreateDate"],
+		["UserId"] = args["UserId"],
+		["UserPolicyList"] = args["UserPolicyList"],
+		["Path"] = args["Path"],
+		["AttachedManagedPolicies"] = args["AttachedManagedPolicies"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertUserDetail(t)
 	return t
@@ -3763,17 +4129,20 @@ end
 
 --- Create a structure of type CreateOpenIDConnectProviderRequest
 --  
--- @param _Url [OpenIDConnectProviderUrlType] <p>The URL of the identity provider. The URL must begin with "https://" and should correspond to the <code>iss</code> claim in the provider's OpenID Connect ID tokens. Per the OIDC standard, path components are allowed but query parameters are not. Typically the URL consists of only a host name, like "https://server.example.org" or "https://example.com".</p> <p>You cannot register the same provider multiple times in a single AWS account. If you try to submit a URL that has already been used for an OpenID Connect provider in the AWS account, you will get an error.</p>
--- @param _ThumbprintList [thumbprintListType] <p>A list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s). Typically this list includes only one entry. However, IAM lets you have up to five thumbprints for an OIDC provider. This lets you maintain multiple thumbprints if the identity provider is rotating certificates.</p> <p>The server certificate thumbprint is the hex-encoded SHA-1 hash value of the X.509 certificate used by the domain where the OpenID Connect provider makes its keys available. It is always a 40-character string.</p> <p>You must provide at least one thumbprint when creating an IAM OIDC provider. For example, if the OIDC provider is <code>server.example.com</code> and the provider stores its keys at "https://keys.server.example.com/openid-connect", the thumbprint string would be the hex-encoded SHA-1 hash value of the certificate used by https://keys.server.example.com.</p> <p>For more information about obtaining the OIDC provider's thumbprint, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html">Obtaining the Thumbprint for an OpenID Connect Provider</a> in the <i>IAM User Guide</i>.</p>
--- @param _ClientIDList [clientIDListType] <p>A list of client IDs (also known as audiences). When a mobile or web app registers with an OpenID Connect provider, they establish a value that identifies the application. (This is the value that's sent as the <code>client_id</code> parameter on OAuth requests.)</p> <p>You can register multiple client IDs with the same provider. For example, you might have multiple applications that use the same OIDC provider. You cannot register more than 100 client IDs with a single IAM OIDC provider.</p> <p>There is no defined format for a client ID. The <code>CreateOpenIDConnectProviderRequest</code> action accepts client IDs up to 255 characters long.</p>
--- Required parameter: Url
--- Required parameter: ThumbprintList
-function M.CreateOpenIDConnectProviderRequest(_Url, _ThumbprintList, _ClientIDList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateOpenIDConnectProviderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Url [OpenIDConnectProviderUrlType] <p>The URL of the identity provider. The URL must begin with "https://" and should correspond to the <code>iss</code> claim in the provider's OpenID Connect ID tokens. Per the OIDC standard, path components are allowed but query parameters are not. Typically the URL consists of only a host name, like "https://server.example.org" or "https://example.com".</p> <p>You cannot register the same provider multiple times in a single AWS account. If you try to submit a URL that has already been used for an OpenID Connect provider in the AWS account, you will get an error.</p>
+-- * ThumbprintList [thumbprintListType] <p>A list of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s). Typically this list includes only one entry. However, IAM lets you have up to five thumbprints for an OIDC provider. This lets you maintain multiple thumbprints if the identity provider is rotating certificates.</p> <p>The server certificate thumbprint is the hex-encoded SHA-1 hash value of the X.509 certificate used by the domain where the OpenID Connect provider makes its keys available. It is always a 40-character string.</p> <p>You must provide at least one thumbprint when creating an IAM OIDC provider. For example, if the OIDC provider is <code>server.example.com</code> and the provider stores its keys at "https://keys.server.example.com/openid-connect", the thumbprint string would be the hex-encoded SHA-1 hash value of the certificate used by https://keys.server.example.com.</p> <p>For more information about obtaining the OIDC provider's thumbprint, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html">Obtaining the Thumbprint for an OpenID Connect Provider</a> in the <i>IAM User Guide</i>.</p>
+-- * ClientIDList [clientIDListType] <p>A list of client IDs (also known as audiences). When a mobile or web app registers with an OpenID Connect provider, they establish a value that identifies the application. (This is the value that's sent as the <code>client_id</code> parameter on OAuth requests.)</p> <p>You can register multiple client IDs with the same provider. For example, you might have multiple applications that use the same OIDC provider. You cannot register more than 100 client IDs with a single IAM OIDC provider.</p> <p>There is no defined format for a client ID. The <code>CreateOpenIDConnectProviderRequest</code> action accepts client IDs up to 255 characters long.</p>
+-- Required key: Url
+-- Required key: ThumbprintList
+-- @return CreateOpenIDConnectProviderRequest structure as a key-value pair table
+function M.CreateOpenIDConnectProviderRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateOpenIDConnectProviderRequest")
 	local t = { 
-		["Url"] = _Url,
-		["ThumbprintList"] = _ThumbprintList,
-		["ClientIDList"] = _ClientIDList,
+		["Url"] = args["Url"],
+		["ThumbprintList"] = args["ThumbprintList"],
+		["ClientIDList"] = args["ClientIDList"],
 	}
 	asserts.AssertCreateOpenIDConnectProviderRequest(t)
 	return t
@@ -3795,16 +4164,19 @@ end
 
 --- Create a structure of type ListUsersResponse
 -- <p>Contains the response to a successful <a>ListUsers</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _Users [userListType] <p>A list of users.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- Required parameter: Users
-function M.ListUsersResponse(_Marker, _Users, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListUsersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * Users [userListType] <p>A list of users.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- Required key: Users
+-- @return ListUsersResponse structure as a key-value pair table
+function M.ListUsersResponse(args)
+	assert(args, "You must provdide an argument table when creating ListUsersResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["Users"] = _Users,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["Users"] = args["Users"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListUsersResponse(t)
 	return t
@@ -3830,21 +4202,24 @@ end
 
 --- Create a structure of type ResyncMFADeviceRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user whose MFA device you want to resynchronize.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _AuthenticationCode1 [authenticationCodeType] <p>An authentication code emitted by the device.</p> <p>The format for this parameter is a sequence of six digits.</p>
--- @param _SerialNumber [serialNumberType] <p>Serial number that uniquely identifies the MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _AuthenticationCode2 [authenticationCodeType] <p>A subsequent authentication code emitted by the device.</p> <p>The format for this parameter is a sequence of six digits.</p>
--- Required parameter: UserName
--- Required parameter: SerialNumber
--- Required parameter: AuthenticationCode1
--- Required parameter: AuthenticationCode2
-function M.ResyncMFADeviceRequest(_UserName, _AuthenticationCode1, _SerialNumber, _AuthenticationCode2, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResyncMFADeviceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user whose MFA device you want to resynchronize.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * AuthenticationCode1 [authenticationCodeType] <p>An authentication code emitted by the device.</p> <p>The format for this parameter is a sequence of six digits.</p>
+-- * SerialNumber [serialNumberType] <p>Serial number that uniquely identifies the MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * AuthenticationCode2 [authenticationCodeType] <p>A subsequent authentication code emitted by the device.</p> <p>The format for this parameter is a sequence of six digits.</p>
+-- Required key: UserName
+-- Required key: SerialNumber
+-- Required key: AuthenticationCode1
+-- Required key: AuthenticationCode2
+-- @return ResyncMFADeviceRequest structure as a key-value pair table
+function M.ResyncMFADeviceRequest(args)
+	assert(args, "You must provdide an argument table when creating ResyncMFADeviceRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["AuthenticationCode1"] = _AuthenticationCode1,
-		["SerialNumber"] = _SerialNumber,
-		["AuthenticationCode2"] = _AuthenticationCode2,
+		["UserName"] = args["UserName"],
+		["AuthenticationCode1"] = args["AuthenticationCode1"],
+		["SerialNumber"] = args["SerialNumber"],
+		["AuthenticationCode2"] = args["AuthenticationCode2"],
 	}
 	asserts.AssertResyncMFADeviceRequest(t)
 	return t
@@ -3863,11 +4238,14 @@ end
 
 --- Create a structure of type CreateOpenIDConnectProviderResponse
 -- <p>Contains the response to a successful <a>CreateOpenIDConnectProvider</a> request. </p>
--- @param _OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the new IAM OpenID Connect provider that is created. For more information, see <a>OpenIDConnectProviderListEntry</a>. </p>
-function M.CreateOpenIDConnectProviderResponse(_OpenIDConnectProviderArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateOpenIDConnectProviderResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the new IAM OpenID Connect provider that is created. For more information, see <a>OpenIDConnectProviderListEntry</a>. </p>
+-- @return CreateOpenIDConnectProviderResponse structure as a key-value pair table
+function M.CreateOpenIDConnectProviderResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateOpenIDConnectProviderResponse")
 	local t = { 
-		["OpenIDConnectProviderArn"] = _OpenIDConnectProviderArn,
+		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 	}
 	asserts.AssertCreateOpenIDConnectProviderResponse(t)
 	return t
@@ -3886,11 +4264,14 @@ end
 
 --- Create a structure of type UpdateRoleDescriptionResponse
 --  
--- @param _Role [Role] <p>A structure that contains details about the modified role.</p>
-function M.UpdateRoleDescriptionResponse(_Role, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRoleDescriptionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Role [Role] <p>A structure that contains details about the modified role.</p>
+-- @return UpdateRoleDescriptionResponse structure as a key-value pair table
+function M.UpdateRoleDescriptionResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateRoleDescriptionResponse")
 	local t = { 
-		["Role"] = _Role,
+		["Role"] = args["Role"],
 	}
 	asserts.AssertUpdateRoleDescriptionResponse(t)
 	return t
@@ -3910,12 +4291,15 @@ end
 
 --- Create a structure of type GetInstanceProfileResponse
 -- <p>Contains the response to a successful <a>GetInstanceProfile</a> request. </p>
--- @param _InstanceProfile [InstanceProfile] <p>A structure containing details about the instance profile.</p>
--- Required parameter: InstanceProfile
-function M.GetInstanceProfileResponse(_InstanceProfile, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceProfileResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceProfile [InstanceProfile] <p>A structure containing details about the instance profile.</p>
+-- Required key: InstanceProfile
+-- @return GetInstanceProfileResponse structure as a key-value pair table
+function M.GetInstanceProfileResponse(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceProfileResponse")
 	local t = { 
-		["InstanceProfile"] = _InstanceProfile,
+		["InstanceProfile"] = args["InstanceProfile"],
 	}
 	asserts.AssertGetInstanceProfileResponse(t)
 	return t
@@ -3937,16 +4321,19 @@ end
 
 --- Create a structure of type ListPolicyVersionsRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the versions.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: PolicyArn
-function M.ListPolicyVersionsRequest(_Marker, _MaxItems, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPolicyVersionsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the versions.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: PolicyArn
+-- @return ListPolicyVersionsRequest structure as a key-value pair table
+function M.ListPolicyVersionsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPolicyVersionsRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
-		["PolicyArn"] = _PolicyArn,
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertListPolicyVersionsRequest(t)
 	return t
@@ -3968,15 +4355,18 @@ end
 
 --- Create a structure of type GetGroupPolicyRequest
 --  
--- @param _GroupName [groupNameType] <p>The name of the group the policy is associated with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: GroupName
--- Required parameter: PolicyName
-function M.GetGroupPolicyRequest(_GroupName, _PolicyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupName [groupNameType] <p>The name of the group the policy is associated with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: GroupName
+-- Required key: PolicyName
+-- @return GetGroupPolicyRequest structure as a key-value pair table
+function M.GetGroupPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetGroupPolicyRequest")
 	local t = { 
-		["GroupName"] = _GroupName,
-		["PolicyName"] = _PolicyName,
+		["GroupName"] = args["GroupName"],
+		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertGetGroupPolicyRequest(t)
 	return t
@@ -3998,16 +4388,19 @@ end
 
 --- Create a structure of type GetGroupRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _GroupName [groupNameType] <p>The name of the group.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- Required parameter: GroupName
-function M.GetGroupRequest(_Marker, _GroupName, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * GroupName [groupNameType] <p>The name of the group.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- Required key: GroupName
+-- @return GetGroupRequest structure as a key-value pair table
+function M.GetGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating GetGroupRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["GroupName"] = _GroupName,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["GroupName"] = args["GroupName"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertGetGroupRequest(t)
 	return t
@@ -4028,15 +4421,18 @@ end
 
 --- Create a structure of type ListRolesRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/application_abc/component_xyz/</code> gets all roles whose path starts with <code>/application_abc/component_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all roles. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListRolesRequest(_Marker, _PathPrefix, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRolesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/application_abc/component_xyz/</code> gets all roles whose path starts with <code>/application_abc/component_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all roles. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListRolesRequest structure as a key-value pair table
+function M.ListRolesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListRolesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["PathPrefix"] = _PathPrefix,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["PathPrefix"] = args["PathPrefix"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListRolesRequest(t)
 	return t
@@ -4058,16 +4454,19 @@ end
 
 --- Create a structure of type UpdateLoginProfileRequest
 --  
--- @param _UserName [userNameType] <p>The name of the user whose password you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PasswordResetRequired [booleanObjectType] <p>Allows this new password to be used only once by requiring the specified IAM user to set a new password on next sign-in.</p>
--- @param _Password [passwordType] <p>The new password for the specified IAM user.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D). However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see <a>UpdateAccountPasswordPolicy</a>.</p>
--- Required parameter: UserName
-function M.UpdateLoginProfileRequest(_UserName, _PasswordResetRequired, _Password, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateLoginProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the user whose password you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PasswordResetRequired [booleanObjectType] <p>Allows this new password to be used only once by requiring the specified IAM user to set a new password on next sign-in.</p>
+-- * Password [passwordType] <p>The new password for the specified IAM user.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D). However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see <a>UpdateAccountPasswordPolicy</a>.</p>
+-- Required key: UserName
+-- @return UpdateLoginProfileRequest structure as a key-value pair table
+function M.UpdateLoginProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateLoginProfileRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["PasswordResetRequired"] = _PasswordResetRequired,
-		["Password"] = _Password,
+		["UserName"] = args["UserName"],
+		["PasswordResetRequired"] = args["PasswordResetRequired"],
+		["Password"] = args["Password"],
 	}
 	asserts.AssertUpdateLoginProfileRequest(t)
 	return t
@@ -4089,15 +4488,18 @@ end
 
 --- Create a structure of type UpdateOpenIDConnectProviderThumbprintRequest
 --  
--- @param _ThumbprintList [thumbprintListType] <p>A list of certificate thumbprints that are associated with the specified IAM OpenID Connect provider. For more information, see <a>CreateOpenIDConnectProvider</a>. </p>
--- @param _OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for which you want to update the thumbprint. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: OpenIDConnectProviderArn
--- Required parameter: ThumbprintList
-function M.UpdateOpenIDConnectProviderThumbprintRequest(_ThumbprintList, _OpenIDConnectProviderArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateOpenIDConnectProviderThumbprintRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ThumbprintList [thumbprintListType] <p>A list of certificate thumbprints that are associated with the specified IAM OpenID Connect provider. For more information, see <a>CreateOpenIDConnectProvider</a>. </p>
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for which you want to update the thumbprint. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: OpenIDConnectProviderArn
+-- Required key: ThumbprintList
+-- @return UpdateOpenIDConnectProviderThumbprintRequest structure as a key-value pair table
+function M.UpdateOpenIDConnectProviderThumbprintRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateOpenIDConnectProviderThumbprintRequest")
 	local t = { 
-		["ThumbprintList"] = _ThumbprintList,
-		["OpenIDConnectProviderArn"] = _OpenIDConnectProviderArn,
+		["ThumbprintList"] = args["ThumbprintList"],
+		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 	}
 	asserts.AssertUpdateOpenIDConnectProviderThumbprintRequest(t)
 	return t
@@ -4116,11 +4518,14 @@ end
 
 --- Create a structure of type CreatePolicyVersionResponse
 -- <p>Contains the response to a successful <a>CreatePolicyVersion</a> request. </p>
--- @param _PolicyVersion [PolicyVersion] <p>A structure containing details about the new policy version.</p>
-function M.CreatePolicyVersionResponse(_PolicyVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyVersion [PolicyVersion] <p>A structure containing details about the new policy version.</p>
+-- @return CreatePolicyVersionResponse structure as a key-value pair table
+function M.CreatePolicyVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating CreatePolicyVersionResponse")
 	local t = { 
-		["PolicyVersion"] = _PolicyVersion,
+		["PolicyVersion"] = args["PolicyVersion"],
 	}
 	asserts.AssertCreatePolicyVersionResponse(t)
 	return t
@@ -4144,18 +4549,21 @@ end
 
 --- Create a structure of type PutUserPolicyRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- Required parameter: UserName
--- Required parameter: PolicyName
--- Required parameter: PolicyDocument
-function M.PutUserPolicyRequest(_UserName, _PolicyName, _PolicyDocument, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutUserPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- Required key: UserName
+-- Required key: PolicyName
+-- Required key: PolicyDocument
+-- @return PutUserPolicyRequest structure as a key-value pair table
+function M.PutUserPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating PutUserPolicyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["PolicyName"] = _PolicyName,
-		["PolicyDocument"] = _PolicyDocument,
+		["UserName"] = args["UserName"],
+		["PolicyName"] = args["PolicyName"],
+		["PolicyDocument"] = args["PolicyDocument"],
 	}
 	asserts.AssertPutUserPolicyRequest(t)
 	return t
@@ -4174,11 +4582,14 @@ end
 
 --- Create a structure of type LimitExceededException
 -- <p>The request was rejected because it attempted to create resources beyond the current AWS account limits. The error message describes the limit exceeded.</p>
--- @param _message [limitExceededMessage] 
-function M.LimitExceededException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [limitExceededMessage] 
+-- @return LimitExceededException structure as a key-value pair table
+function M.LimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating LimitExceededException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertLimitExceededException(t)
 	return t
@@ -4197,11 +4608,14 @@ end
 
 --- Create a structure of type InvalidPublicKeyException
 -- <p>The request was rejected because the public key is malformed or otherwise invalid.</p>
--- @param _message [invalidPublicKeyMessage] 
-function M.InvalidPublicKeyException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPublicKeyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [invalidPublicKeyMessage] 
+-- @return InvalidPublicKeyException structure as a key-value pair table
+function M.InvalidPublicKeyException(args)
+	assert(args, "You must provdide an argument table when creating InvalidPublicKeyException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidPublicKeyException(t)
 	return t
@@ -4225,18 +4639,21 @@ end
 
 --- Create a structure of type AccessKeyLastUsed
 -- <p>Contains information about the last time an AWS access key was used.</p> <p>This data type is used as a response element in the <a>GetAccessKeyLastUsed</a> action.</p>
--- @param _Region [stringType] <p>The AWS region where this access key was most recently used. This field is displays "N/A" when:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul> <p>For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web Services General Reference.</p>
--- @param _ServiceName [stringType] <p>The name of the AWS service with which this access key was most recently used. This field displays "N/A" when:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul>
--- @param _LastUsedDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the access key was most recently used. This field is null when:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul>
--- Required parameter: LastUsedDate
--- Required parameter: ServiceName
--- Required parameter: Region
-function M.AccessKeyLastUsed(_Region, _ServiceName, _LastUsedDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessKeyLastUsed")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Region [stringType] <p>The AWS region where this access key was most recently used. This field is displays "N/A" when:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul> <p>For more information about AWS regions, see <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web Services General Reference.</p>
+-- * ServiceName [stringType] <p>The name of the AWS service with which this access key was most recently used. This field displays "N/A" when:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul>
+-- * LastUsedDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the access key was most recently used. This field is null when:</p> <ul> <li> <p>The user does not have an access key.</p> </li> <li> <p>An access key exists but has never been used, at least not since IAM started tracking this information on April 22nd, 2015.</p> </li> <li> <p>There is no sign-in data associated with the user</p> </li> </ul>
+-- Required key: LastUsedDate
+-- Required key: ServiceName
+-- Required key: Region
+-- @return AccessKeyLastUsed structure as a key-value pair table
+function M.AccessKeyLastUsed(args)
+	assert(args, "You must provdide an argument table when creating AccessKeyLastUsed")
 	local t = { 
-		["Region"] = _Region,
-		["ServiceName"] = _ServiceName,
-		["LastUsedDate"] = _LastUsedDate,
+		["Region"] = args["Region"],
+		["ServiceName"] = args["ServiceName"],
+		["LastUsedDate"] = args["LastUsedDate"],
 	}
 	asserts.AssertAccessKeyLastUsed(t)
 	return t
@@ -4255,11 +4672,14 @@ end
 
 --- Create a structure of type CreateUserResponse
 -- <p>Contains the response to a successful <a>CreateUser</a> request. </p>
--- @param _User [User] <p>A structure with details about the new IAM user.</p>
-function M.CreateUserResponse(_User, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * User [User] <p>A structure with details about the new IAM user.</p>
+-- @return CreateUserResponse structure as a key-value pair table
+function M.CreateUserResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateUserResponse")
 	local t = { 
-		["User"] = _User,
+		["User"] = args["User"],
 	}
 	asserts.AssertCreateUserResponse(t)
 	return t
@@ -4282,17 +4702,20 @@ end
 
 --- Create a structure of type CreatePolicyVersionRequest
 --  
--- @param _SetAsDefault [booleanType] <p>Specifies whether to set this version as the policy's default version.</p> <p>When this parameter is <code>true</code>, the new policy version becomes the operative version; that is, the version that is in effect for the IAM users, groups, and roles that the policy is attached to.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
--- @param _PolicyDocument [policyDocumentType] <p>The JSON policy document that you want to use as the content for this new version of the policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy to which you want to add a new version.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: PolicyArn
--- Required parameter: PolicyDocument
-function M.CreatePolicyVersionRequest(_SetAsDefault, _PolicyDocument, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SetAsDefault [booleanType] <p>Specifies whether to set this version as the policy's default version.</p> <p>When this parameter is <code>true</code>, the new policy version becomes the operative version; that is, the version that is in effect for the IAM users, groups, and roles that the policy is attached to.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
+-- * PolicyDocument [policyDocumentType] <p>The JSON policy document that you want to use as the content for this new version of the policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy to which you want to add a new version.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: PolicyArn
+-- Required key: PolicyDocument
+-- @return CreatePolicyVersionRequest structure as a key-value pair table
+function M.CreatePolicyVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating CreatePolicyVersionRequest")
 	local t = { 
-		["SetAsDefault"] = _SetAsDefault,
-		["PolicyDocument"] = _PolicyDocument,
-		["PolicyArn"] = _PolicyArn,
+		["SetAsDefault"] = args["SetAsDefault"],
+		["PolicyDocument"] = args["PolicyDocument"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertCreatePolicyVersionRequest(t)
 	return t
@@ -4312,12 +4735,15 @@ end
 
 --- Create a structure of type GetUserResponse
 -- <p>Contains the response to a successful <a>GetUser</a> request. </p>
--- @param _User [User] <p>A structure containing details about the IAM user.</p>
--- Required parameter: User
-function M.GetUserResponse(_User, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetUserResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * User [User] <p>A structure containing details about the IAM user.</p>
+-- Required key: User
+-- @return GetUserResponse structure as a key-value pair table
+function M.GetUserResponse(args)
+	assert(args, "You must provdide an argument table when creating GetUserResponse")
 	local t = { 
-		["User"] = _User,
+		["User"] = args["User"],
 	}
 	asserts.AssertGetUserResponse(t)
 	return t
@@ -4347,31 +4773,34 @@ end
 
 --- Create a structure of type SimulateCustomPolicyRequest
 --  
--- @param _ResourceHandlingOption [ResourceHandlingOptionType] <p>Specifies the type of simulation to run. Different APIs that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.</p> <p>Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>AWS EC2 User Guide</i>.</p> <ul> <li> <p> <b>EC2-Classic-InstanceStore</b> </p> <p>instance, image, security-group</p> </li> <li> <p> <b>EC2-Classic-EBS</b> </p> <p>instance, image, security-group, volume</p> </li> <li> <p> <b>EC2-VPC-InstanceStore</b> </p> <p>instance, image, security-group, network-interface</p> </li> <li> <p> <b>EC2-VPC-InstanceStore-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet</p> </li> <li> <p> <b>EC2-VPC-EBS</b> </p> <p>instance, image, security-group, network-interface, volume</p> </li> <li> <p> <b>EC2-VPC-EBS-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet, volume</p> </li> </ul>
--- @param _ContextEntries [ContextEntryListType] <p>A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permission policies, the corresponding value is supplied.</p>
--- @param _CallerArn [ResourceNameType] <p>The ARN of the IAM user that you want to use as the simulated caller of the APIs. <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code> so that the policy's <code>Principal</code> element has a value to use in evaluating the policy.</p> <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.</p>
--- @param _PolicyInputList [SimulationPolicyListType] <p>A list of policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy. Do not include any resource-based policies in this parameter. Any resource-based policy must be submitted with the <code>ResourcePolicy</code> parameter. The policies cannot be "scope-down" policies, such as you could include in a call to <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html">GetFederationToken</a> or one of the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html">AssumeRole</a> APIs to restrict what a user can do while using the temporary credentials.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _ResourcePolicy [policyDocumentType] <p>A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- @param _ActionNames [ActionNameListType] <p>A list of names of API actions to evaluate in the simulation. Each action is evaluated against each resource. Each action must include the service identifier, such as <code>iam:CreateUser</code>.</p>
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _ResourceArns [ResourceNameListType] <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided then the value defaults to <code>*</code> (all resources). Each API in the <code>ActionNames</code> parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.</p> <p>The simulation does not automatically retrieve policies for the specified resources. If you want to include a resource policy in the simulation, then you must include the policy as a string in the <code>ResourcePolicy</code> parameter.</p> <p>If you include a <code>ResourcePolicy</code>, then it must be applicable to all of the resources included in the simulation or you receive an invalid input error.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- @param _ResourceOwner [ResourceNameType] <p>An AWS account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN, such as an S3 bucket or object. If <code>ResourceOwner</code> is specified, it is also used as the account owner of any <code>ResourcePolicy</code> included in the simulation. If the <code>ResourceOwner</code> parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in <code>CallerArn</code>. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user <code>CallerArn</code>.</p>
--- Required parameter: PolicyInputList
--- Required parameter: ActionNames
-function M.SimulateCustomPolicyRequest(_ResourceHandlingOption, _ContextEntries, _CallerArn, _PolicyInputList, _ResourcePolicy, _MaxItems, _ActionNames, _Marker, _ResourceArns, _ResourceOwner, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SimulateCustomPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ResourceHandlingOption [ResourceHandlingOptionType] <p>Specifies the type of simulation to run. Different APIs that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.</p> <p>Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>AWS EC2 User Guide</i>.</p> <ul> <li> <p> <b>EC2-Classic-InstanceStore</b> </p> <p>instance, image, security-group</p> </li> <li> <p> <b>EC2-Classic-EBS</b> </p> <p>instance, image, security-group, volume</p> </li> <li> <p> <b>EC2-VPC-InstanceStore</b> </p> <p>instance, image, security-group, network-interface</p> </li> <li> <p> <b>EC2-VPC-InstanceStore-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet</p> </li> <li> <p> <b>EC2-VPC-EBS</b> </p> <p>instance, image, security-group, network-interface, volume</p> </li> <li> <p> <b>EC2-VPC-EBS-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet, volume</p> </li> </ul>
+-- * ContextEntries [ContextEntryListType] <p>A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permission policies, the corresponding value is supplied.</p>
+-- * CallerArn [ResourceNameType] <p>The ARN of the IAM user that you want to use as the simulated caller of the APIs. <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code> so that the policy's <code>Principal</code> element has a value to use in evaluating the policy.</p> <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.</p>
+-- * PolicyInputList [SimulationPolicyListType] <p>A list of policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy. Do not include any resource-based policies in this parameter. Any resource-based policy must be submitted with the <code>ResourcePolicy</code> parameter. The policies cannot be "scope-down" policies, such as you could include in a call to <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html">GetFederationToken</a> or one of the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html">AssumeRole</a> APIs to restrict what a user can do while using the temporary credentials.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * ResourcePolicy [policyDocumentType] <p>A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- * ActionNames [ActionNameListType] <p>A list of names of API actions to evaluate in the simulation. Each action is evaluated against each resource. Each action must include the service identifier, such as <code>iam:CreateUser</code>.</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * ResourceArns [ResourceNameListType] <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided then the value defaults to <code>*</code> (all resources). Each API in the <code>ActionNames</code> parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.</p> <p>The simulation does not automatically retrieve policies for the specified resources. If you want to include a resource policy in the simulation, then you must include the policy as a string in the <code>ResourcePolicy</code> parameter.</p> <p>If you include a <code>ResourcePolicy</code>, then it must be applicable to all of the resources included in the simulation or you receive an invalid input error.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * ResourceOwner [ResourceNameType] <p>An AWS account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN, such as an S3 bucket or object. If <code>ResourceOwner</code> is specified, it is also used as the account owner of any <code>ResourcePolicy</code> included in the simulation. If the <code>ResourceOwner</code> parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in <code>CallerArn</code>. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user <code>CallerArn</code>.</p>
+-- Required key: PolicyInputList
+-- Required key: ActionNames
+-- @return SimulateCustomPolicyRequest structure as a key-value pair table
+function M.SimulateCustomPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating SimulateCustomPolicyRequest")
 	local t = { 
-		["ResourceHandlingOption"] = _ResourceHandlingOption,
-		["ContextEntries"] = _ContextEntries,
-		["CallerArn"] = _CallerArn,
-		["PolicyInputList"] = _PolicyInputList,
-		["ResourcePolicy"] = _ResourcePolicy,
-		["MaxItems"] = _MaxItems,
-		["ActionNames"] = _ActionNames,
-		["Marker"] = _Marker,
-		["ResourceArns"] = _ResourceArns,
-		["ResourceOwner"] = _ResourceOwner,
+		["ResourceHandlingOption"] = args["ResourceHandlingOption"],
+		["ContextEntries"] = args["ContextEntries"],
+		["CallerArn"] = args["CallerArn"],
+		["PolicyInputList"] = args["PolicyInputList"],
+		["ResourcePolicy"] = args["ResourcePolicy"],
+		["MaxItems"] = args["MaxItems"],
+		["ActionNames"] = args["ActionNames"],
+		["Marker"] = args["Marker"],
+		["ResourceArns"] = args["ResourceArns"],
+		["ResourceOwner"] = args["ResourceOwner"],
 	}
 	asserts.AssertSimulateCustomPolicyRequest(t)
 	return t
@@ -4393,17 +4822,20 @@ end
 
 --- Create a structure of type AccessKeyMetadata
 -- <p>Contains information about an AWS access key, without its secret key.</p> <p>This data type is used as a response element in the <a>ListAccessKeys</a> action.</p>
--- @param _UserName [userNameType] <p>The name of the IAM user that the key is associated with.</p>
--- @param _Status [statusType] <p>The status of the access key. <code>Active</code> means the key is valid for API calls; <code>Inactive</code> means it is not.</p>
--- @param _CreateDate [dateType] <p>The date when the access key was created.</p>
--- @param _AccessKeyId [accessKeyIdType] <p>The ID for this access key.</p>
-function M.AccessKeyMetadata(_UserName, _Status, _CreateDate, _AccessKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessKeyMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user that the key is associated with.</p>
+-- * Status [statusType] <p>The status of the access key. <code>Active</code> means the key is valid for API calls; <code>Inactive</code> means it is not.</p>
+-- * CreateDate [dateType] <p>The date when the access key was created.</p>
+-- * AccessKeyId [accessKeyIdType] <p>The ID for this access key.</p>
+-- @return AccessKeyMetadata structure as a key-value pair table
+function M.AccessKeyMetadata(args)
+	assert(args, "You must provdide an argument table when creating AccessKeyMetadata")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["CreateDate"] = _CreateDate,
-		["AccessKeyId"] = _AccessKeyId,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["CreateDate"] = args["CreateDate"],
+		["AccessKeyId"] = args["AccessKeyId"],
 	}
 	asserts.AssertAccessKeyMetadata(t)
 	return t
@@ -4423,12 +4855,15 @@ end
 
 --- Create a structure of type GetAccountPasswordPolicyResponse
 -- <p>Contains the response to a successful <a>GetAccountPasswordPolicy</a> request. </p>
--- @param _PasswordPolicy [PasswordPolicy] <p>A structure that contains details about the account's password policy.</p>
--- Required parameter: PasswordPolicy
-function M.GetAccountPasswordPolicyResponse(_PasswordPolicy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAccountPasswordPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PasswordPolicy [PasswordPolicy] <p>A structure that contains details about the account's password policy.</p>
+-- Required key: PasswordPolicy
+-- @return GetAccountPasswordPolicyResponse structure as a key-value pair table
+function M.GetAccountPasswordPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetAccountPasswordPolicyResponse")
 	local t = { 
-		["PasswordPolicy"] = _PasswordPolicy,
+		["PasswordPolicy"] = args["PasswordPolicy"],
 	}
 	asserts.AssertGetAccountPasswordPolicyResponse(t)
 	return t
@@ -4447,11 +4882,14 @@ end
 
 --- Create a structure of type UploadSSHPublicKeyResponse
 -- <p>Contains the response to a successful <a>UploadSSHPublicKey</a> request.</p>
--- @param _SSHPublicKey [SSHPublicKey] <p>Contains information about the SSH public key.</p>
-function M.UploadSSHPublicKeyResponse(_SSHPublicKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadSSHPublicKeyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SSHPublicKey [SSHPublicKey] <p>Contains information about the SSH public key.</p>
+-- @return UploadSSHPublicKeyResponse structure as a key-value pair table
+function M.UploadSSHPublicKeyResponse(args)
+	assert(args, "You must provdide an argument table when creating UploadSSHPublicKeyResponse")
 	local t = { 
-		["SSHPublicKey"] = _SSHPublicKey,
+		["SSHPublicKey"] = args["SSHPublicKey"],
 	}
 	asserts.AssertUploadSSHPublicKeyResponse(t)
 	return t
@@ -4473,15 +4911,18 @@ end
 
 --- Create a structure of type GetPolicyVersionRequest
 --  
--- @param _VersionId [policyVersionIdType] <p>Identifies the policy version to retrieve.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the managed policy that you want information about.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: PolicyArn
--- Required parameter: VersionId
-function M.GetPolicyVersionRequest(_VersionId, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyVersionRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VersionId [policyVersionIdType] <p>Identifies the policy version to retrieve.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the managed policy that you want information about.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: PolicyArn
+-- Required key: VersionId
+-- @return GetPolicyVersionRequest structure as a key-value pair table
+function M.GetPolicyVersionRequest(args)
+	assert(args, "You must provdide an argument table when creating GetPolicyVersionRequest")
 	local t = { 
-		["VersionId"] = _VersionId,
-		["PolicyArn"] = _PolicyArn,
+		["VersionId"] = args["VersionId"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertGetPolicyVersionRequest(t)
 	return t
@@ -4500,11 +4941,14 @@ end
 
 --- Create a structure of type CreateSAMLProviderResponse
 -- <p>Contains the response to a successful <a>CreateSAMLProvider</a> request. </p>
--- @param _SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the new SAML provider resource in IAM.</p>
-function M.CreateSAMLProviderResponse(_SAMLProviderArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSAMLProviderResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the new SAML provider resource in IAM.</p>
+-- @return CreateSAMLProviderResponse structure as a key-value pair table
+function M.CreateSAMLProviderResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateSAMLProviderResponse")
 	local t = { 
-		["SAMLProviderArn"] = _SAMLProviderArn,
+		["SAMLProviderArn"] = args["SAMLProviderArn"],
 	}
 	asserts.AssertCreateSAMLProviderResponse(t)
 	return t
@@ -4523,11 +4967,14 @@ end
 
 --- Create a structure of type KeyPairMismatchException
 -- <p>The request was rejected because the public key certificate and the private key do not match.</p>
--- @param _message [keyPairMismatchMessage] 
-function M.KeyPairMismatchException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating KeyPairMismatchException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [keyPairMismatchMessage] 
+-- @return KeyPairMismatchException structure as a key-value pair table
+function M.KeyPairMismatchException(args)
+	assert(args, "You must provdide an argument table when creating KeyPairMismatchException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertKeyPairMismatchException(t)
 	return t
@@ -4546,11 +4993,14 @@ end
 
 --- Create a structure of type CredentialReportNotPresentException
 -- <p>The request was rejected because the credential report does not exist. To generate a credential report, use <a>GenerateCredentialReport</a>.</p>
--- @param _message [credentialReportNotPresentExceptionMessage] 
-function M.CredentialReportNotPresentException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CredentialReportNotPresentException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [credentialReportNotPresentExceptionMessage] 
+-- @return CredentialReportNotPresentException structure as a key-value pair table
+function M.CredentialReportNotPresentException(args)
+	assert(args, "You must provdide an argument table when creating CredentialReportNotPresentException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertCredentialReportNotPresentException(t)
 	return t
@@ -4571,15 +5021,18 @@ end
 
 --- Create a structure of type SAMLProviderListEntry
 -- <p>Contains the list of SAML providers for this account.</p>
--- @param _CreateDate [dateType] <p>The date and time when the SAML provider was created.</p>
--- @param _ValidUntil [dateType] <p>The expiration date and time for the SAML provider.</p>
--- @param _Arn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider.</p>
-function M.SAMLProviderListEntry(_CreateDate, _ValidUntil, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SAMLProviderListEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreateDate [dateType] <p>The date and time when the SAML provider was created.</p>
+-- * ValidUntil [dateType] <p>The expiration date and time for the SAML provider.</p>
+-- * Arn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider.</p>
+-- @return SAMLProviderListEntry structure as a key-value pair table
+function M.SAMLProviderListEntry(args)
+	assert(args, "You must provdide an argument table when creating SAMLProviderListEntry")
 	local t = { 
-		["CreateDate"] = _CreateDate,
-		["ValidUntil"] = _ValidUntil,
-		["Arn"] = _Arn,
+		["CreateDate"] = args["CreateDate"],
+		["ValidUntil"] = args["ValidUntil"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertSAMLProviderListEntry(t)
 	return t
@@ -4598,11 +5051,14 @@ end
 
 --- Create a structure of type ServiceFailureException
 -- <p>The request processing has failed because of an unknown error, exception or failure.</p>
--- @param _message [serviceFailureExceptionMessage] 
-function M.ServiceFailureException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceFailureException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [serviceFailureExceptionMessage] 
+-- @return ServiceFailureException structure as a key-value pair table
+function M.ServiceFailureException(args)
+	assert(args, "You must provdide an argument table when creating ServiceFailureException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServiceFailureException(t)
 	return t
@@ -4623,15 +5079,18 @@ end
 
 --- Create a structure of type ListServerCertificatesRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example: <code>/company/servercerts</code> would get all server certificates for which the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all server certificates. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListServerCertificatesRequest(_Marker, _PathPrefix, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListServerCertificatesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example: <code>/company/servercerts</code> would get all server certificates for which the path starts with <code>/company/servercerts</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all server certificates. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListServerCertificatesRequest structure as a key-value pair table
+function M.ListServerCertificatesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListServerCertificatesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["PathPrefix"] = _PathPrefix,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["PathPrefix"] = args["PathPrefix"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListServerCertificatesRequest(t)
 	return t
@@ -4650,11 +5109,14 @@ end
 
 --- Create a structure of type InvalidAuthenticationCodeException
 -- <p>The request was rejected because the authentication code was not recognized. The error message describes the specific error.</p>
--- @param _message [invalidAuthenticationCodeMessage] 
-function M.InvalidAuthenticationCodeException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidAuthenticationCodeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [invalidAuthenticationCodeMessage] 
+-- @return InvalidAuthenticationCodeException structure as a key-value pair table
+function M.InvalidAuthenticationCodeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidAuthenticationCodeException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidAuthenticationCodeException(t)
 	return t
@@ -4676,15 +5138,18 @@ end
 
 --- Create a structure of type AttachRolePolicyRequest
 --  
--- @param _RoleName [roleNameType] <p>The name (friendly name, not ARN) of the role to attach the policy to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: RoleName
--- Required parameter: PolicyArn
-function M.AttachRolePolicyRequest(_RoleName, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachRolePolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name (friendly name, not ARN) of the role to attach the policy to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: RoleName
+-- Required key: PolicyArn
+-- @return AttachRolePolicyRequest structure as a key-value pair table
+function M.AttachRolePolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachRolePolicyRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["PolicyArn"] = _PolicyArn,
+		["RoleName"] = args["RoleName"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertAttachRolePolicyRequest(t)
 	return t
@@ -4705,15 +5170,18 @@ end
 
 --- Create a structure of type ListAttachedUserPoliciesResponse
 -- <p>Contains the response to a successful <a>ListAttachedUserPolicies</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _AttachedPolicies [attachedPoliciesListType] <p>A list of the attached policies.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
-function M.ListAttachedUserPoliciesResponse(_Marker, _AttachedPolicies, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttachedUserPoliciesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * AttachedPolicies [attachedPoliciesListType] <p>A list of the attached policies.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- @return ListAttachedUserPoliciesResponse structure as a key-value pair table
+function M.ListAttachedUserPoliciesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAttachedUserPoliciesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["AttachedPolicies"] = _AttachedPolicies,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["AttachedPolicies"] = args["AttachedPolicies"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListAttachedUserPoliciesResponse(t)
 	return t
@@ -4734,15 +5202,18 @@ end
 
 --- Create a structure of type ListMFADevicesRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user whose MFA devices you want to list.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListMFADevicesRequest(_UserName, _Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListMFADevicesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user whose MFA devices you want to list.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListMFADevicesRequest structure as a key-value pair table
+function M.ListMFADevicesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListMFADevicesRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["UserName"] = args["UserName"],
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListMFADevicesRequest(t)
 	return t
@@ -4761,11 +5232,14 @@ end
 
 --- Create a structure of type DuplicateCertificateException
 -- <p>The request was rejected because the same certificate is associated with an IAM user in the account.</p>
--- @param _message [duplicateCertificateMessage] 
-function M.DuplicateCertificateException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateCertificateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [duplicateCertificateMessage] 
+-- @return DuplicateCertificateException structure as a key-value pair table
+function M.DuplicateCertificateException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateCertificateException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDuplicateCertificateException(t)
 	return t
@@ -4784,11 +5258,14 @@ end
 
 --- Create a structure of type CredentialReportExpiredException
 -- <p>The request was rejected because the most recent credential report has expired. To generate a new credential report, use <a>GenerateCredentialReport</a>. For more information about credential report expiration, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html">Getting Credential Reports</a> in the <i>IAM User Guide</i>.</p>
--- @param _message [credentialReportExpiredExceptionMessage] 
-function M.CredentialReportExpiredException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CredentialReportExpiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [credentialReportExpiredExceptionMessage] 
+-- @return CredentialReportExpiredException structure as a key-value pair table
+function M.CredentialReportExpiredException(args)
+	assert(args, "You must provdide an argument table when creating CredentialReportExpiredException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertCredentialReportExpiredException(t)
 	return t
@@ -4809,14 +5286,17 @@ end
 
 --- Create a structure of type ResetServiceSpecificCredentialRequest
 --  
--- @param _UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier of the service-specific credential.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
--- Required parameter: ServiceSpecificCredentialId
-function M.ResetServiceSpecificCredentialRequest(_UserName, _ServiceSpecificCredentialId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ResetServiceSpecificCredentialRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier of the service-specific credential.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
+-- Required key: ServiceSpecificCredentialId
+-- @return ResetServiceSpecificCredentialRequest structure as a key-value pair table
+function M.ResetServiceSpecificCredentialRequest(args)
+	assert(args, "You must provdide an argument table when creating ResetServiceSpecificCredentialRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["ServiceSpecificCredentialId"] = _ServiceSpecificCredentialId,
+		["UserName"] = args["UserName"],
+		["ServiceSpecificCredentialId"] = args["ServiceSpecificCredentialId"],
 	}
 	asserts.AssertResetServiceSpecificCredentialRequest(t)
 	return t
@@ -4837,15 +5317,18 @@ end
 
 --- Create a structure of type ListSSHPublicKeysResponse
 -- <p>Contains the response to a successful <a>ListSSHPublicKeys</a> request.</p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _SSHPublicKeys [SSHPublicKeyListType] <p>A list of the SSH public keys assigned to IAM user.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
-function M.ListSSHPublicKeysResponse(_Marker, _SSHPublicKeys, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSSHPublicKeysResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * SSHPublicKeys [SSHPublicKeyListType] <p>A list of the SSH public keys assigned to IAM user.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- @return ListSSHPublicKeysResponse structure as a key-value pair table
+function M.ListSSHPublicKeysResponse(args)
+	assert(args, "You must provdide an argument table when creating ListSSHPublicKeysResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["SSHPublicKeys"] = _SSHPublicKeys,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["SSHPublicKeys"] = args["SSHPublicKeys"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListSSHPublicKeysResponse(t)
 	return t
@@ -4864,11 +5347,14 @@ end
 
 --- Create a structure of type GetAccountSummaryResponse
 -- <p>Contains the response to a successful <a>GetAccountSummary</a> request. </p>
--- @param _SummaryMap [summaryMapType] <p>A set of key value pairs containing information about IAM entity usage and IAM quotas.</p>
-function M.GetAccountSummaryResponse(_SummaryMap, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAccountSummaryResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SummaryMap [summaryMapType] <p>A set of key value pairs containing information about IAM entity usage and IAM quotas.</p>
+-- @return GetAccountSummaryResponse structure as a key-value pair table
+function M.GetAccountSummaryResponse(args)
+	assert(args, "You must provdide an argument table when creating GetAccountSummaryResponse")
 	local t = { 
-		["SummaryMap"] = _SummaryMap,
+		["SummaryMap"] = args["SummaryMap"],
 	}
 	asserts.AssertGetAccountSummaryResponse(t)
 	return t
@@ -4889,14 +5375,17 @@ end
 
 --- Create a structure of type CreateUserRequest
 --  
--- @param _UserName [userNameType] <p>The name of the user to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".</p>
--- @param _Path [pathType] <p> The path for the user name. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- Required parameter: UserName
-function M.CreateUserRequest(_UserName, _Path, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateUserRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the user to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-. User names are not distinguished by case. For example, you cannot create users named both "TESTUSER" and "testuser".</p>
+-- * Path [pathType] <p> The path for the user name. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- Required key: UserName
+-- @return CreateUserRequest structure as a key-value pair table
+function M.CreateUserRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateUserRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Path"] = _Path,
+		["UserName"] = args["UserName"],
+		["Path"] = args["Path"],
 	}
 	asserts.AssertCreateUserRequest(t)
 	return t
@@ -4916,13 +5405,16 @@ end
 
 --- Create a structure of type PolicyGroup
 -- <p>Contains information about a group that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
--- @param _GroupName [groupNameType] <p>The name (friendly name, not ARN) identifying the group.</p>
--- @param _GroupId [idType] <p>The stable and unique string identifying the group. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p>
-function M.PolicyGroup(_GroupName, _GroupId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyGroup")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupName [groupNameType] <p>The name (friendly name, not ARN) identifying the group.</p>
+-- * GroupId [idType] <p>The stable and unique string identifying the group. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p>
+-- @return PolicyGroup structure as a key-value pair table
+function M.PolicyGroup(args)
+	assert(args, "You must provdide an argument table when creating PolicyGroup")
 	local t = { 
-		["GroupName"] = _GroupName,
-		["GroupId"] = _GroupId,
+		["GroupName"] = args["GroupName"],
+		["GroupId"] = args["GroupId"],
 	}
 	asserts.AssertPolicyGroup(t)
 	return t
@@ -4945,19 +5437,22 @@ end
 
 --- Create a structure of type ListPoliciesRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _Scope [policyScopeType] <p>The scope to use for filtering the results.</p> <p>To list only AWS managed policies, set <code>Scope</code> to <code>AWS</code>. To list only the customer managed policies in your AWS account, set <code>Scope</code> to <code>Local</code>.</p> <p>This parameter is optional. If it is not included, or if it is set to <code>All</code>, all policies are returned.</p>
--- @param _OnlyAttached [booleanType] <p>A flag to filter the results to only the attached policies.</p> <p>When <code>OnlyAttached</code> is <code>true</code>, the returned list contains only the policies that are attached to an IAM user, group, or role. When <code>OnlyAttached</code> is <code>false</code>, or when the parameter is not included, all policies are returned.</p>
--- @param _PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListPoliciesRequest(_Marker, _Scope, _OnlyAttached, _PathPrefix, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * Scope [policyScopeType] <p>The scope to use for filtering the results.</p> <p>To list only AWS managed policies, set <code>Scope</code> to <code>AWS</code>. To list only the customer managed policies in your AWS account, set <code>Scope</code> to <code>Local</code>.</p> <p>This parameter is optional. If it is not included, or if it is set to <code>All</code>, all policies are returned.</p>
+-- * OnlyAttached [booleanType] <p>A flag to filter the results to only the attached policies.</p> <p>When <code>OnlyAttached</code> is <code>true</code>, the returned list contains only the policies that are attached to an IAM user, group, or role. When <code>OnlyAttached</code> is <code>false</code>, or when the parameter is not included, all policies are returned.</p>
+-- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListPoliciesRequest structure as a key-value pair table
+function M.ListPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListPoliciesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["Scope"] = _Scope,
-		["OnlyAttached"] = _OnlyAttached,
-		["PathPrefix"] = _PathPrefix,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["Scope"] = args["Scope"],
+		["OnlyAttached"] = args["OnlyAttached"],
+		["PathPrefix"] = args["PathPrefix"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListPoliciesRequest(t)
 	return t
@@ -4977,12 +5472,15 @@ end
 
 --- Create a structure of type CreateAccountAliasRequest
 --  
--- @param _AccountAlias [accountAliasType] <p>The account alias to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.</p>
--- Required parameter: AccountAlias
-function M.CreateAccountAliasRequest(_AccountAlias, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAccountAliasRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AccountAlias [accountAliasType] <p>The account alias to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.</p>
+-- Required key: AccountAlias
+-- @return CreateAccountAliasRequest structure as a key-value pair table
+function M.CreateAccountAliasRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateAccountAliasRequest")
 	local t = { 
-		["AccountAlias"] = _AccountAlias,
+		["AccountAlias"] = args["AccountAlias"],
 	}
 	asserts.AssertCreateAccountAliasRequest(t)
 	return t
@@ -5006,19 +5504,22 @@ end
 
 --- Create a structure of type CreatePolicyRequest
 --  
--- @param _PolicyName [policyNameType] <p>The friendly name of the policy.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyDocument [policyDocumentType] <p>The JSON policy document that you want to use as the content for the new policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _Description [policyDescriptionType] <p>A friendly description of the policy.</p> <p>Typically used to store information about the permissions defined in the policy. For example, "Grants access to production DynamoDB tables."</p> <p>The policy description is immutable. After a value is assigned, it cannot be changed.</p>
--- @param _Path [policyPathType] <p>The path for the policy.</p> <p>For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- Required parameter: PolicyName
--- Required parameter: PolicyDocument
-function M.CreatePolicyRequest(_PolicyName, _PolicyDocument, _Description, _Path, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyName [policyNameType] <p>The friendly name of the policy.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyDocument [policyDocumentType] <p>The JSON policy document that you want to use as the content for the new policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * Description [policyDescriptionType] <p>A friendly description of the policy.</p> <p>Typically used to store information about the permissions defined in the policy. For example, "Grants access to production DynamoDB tables."</p> <p>The policy description is immutable. After a value is assigned, it cannot be changed.</p>
+-- * Path [policyPathType] <p>The path for the policy.</p> <p>For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- Required key: PolicyName
+-- Required key: PolicyDocument
+-- @return CreatePolicyRequest structure as a key-value pair table
+function M.CreatePolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating CreatePolicyRequest")
 	local t = { 
-		["PolicyName"] = _PolicyName,
-		["PolicyDocument"] = _PolicyDocument,
-		["Description"] = _Description,
-		["Path"] = _Path,
+		["PolicyName"] = args["PolicyName"],
+		["PolicyDocument"] = args["PolicyDocument"],
+		["Description"] = args["Description"],
+		["Path"] = args["Path"],
 	}
 	asserts.AssertCreatePolicyRequest(t)
 	return t
@@ -5040,16 +5541,19 @@ end
 
 --- Create a structure of type ListVirtualMFADevicesResponse
 -- <p>Contains the response to a successful <a>ListVirtualMFADevices</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- @param _VirtualMFADevices [virtualMFADeviceListType] <p> The list of virtual MFA devices in the current account that match the <code>AssignmentStatus</code> value that was passed in the request.</p>
--- Required parameter: VirtualMFADevices
-function M.ListVirtualMFADevicesResponse(_Marker, _IsTruncated, _VirtualMFADevices, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListVirtualMFADevicesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- * VirtualMFADevices [virtualMFADeviceListType] <p> The list of virtual MFA devices in the current account that match the <code>AssignmentStatus</code> value that was passed in the request.</p>
+-- Required key: VirtualMFADevices
+-- @return ListVirtualMFADevicesResponse structure as a key-value pair table
+function M.ListVirtualMFADevicesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListVirtualMFADevicesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
-		["VirtualMFADevices"] = _VirtualMFADevices,
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
+		["VirtualMFADevices"] = args["VirtualMFADevices"],
 	}
 	asserts.AssertListVirtualMFADevicesResponse(t)
 	return t
@@ -5069,12 +5573,15 @@ end
 
 --- Create a structure of type CreateRoleResponse
 -- <p>Contains the response to a successful <a>CreateRole</a> request. </p>
--- @param _Role [Role] <p>A structure containing details about the new role.</p>
--- Required parameter: Role
-function M.CreateRoleResponse(_Role, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRoleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Role [Role] <p>A structure containing details about the new role.</p>
+-- Required key: Role
+-- @return CreateRoleResponse structure as a key-value pair table
+function M.CreateRoleResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateRoleResponse")
 	local t = { 
-		["Role"] = _Role,
+		["Role"] = args["Role"],
 	}
 	asserts.AssertCreateRoleResponse(t)
 	return t
@@ -5096,16 +5603,19 @@ end
 
 --- Create a structure of type UpdateServerCertificateRequest
 --  
--- @param _NewPath [pathType] <p>The new path for the server certificate. Include this only if you are updating the server certificate's path.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _NewServerCertificateName [serverCertificateNameType] <p>The new name for the server certificate. Include this only if you are updating the server certificate's name. The name of the certificate cannot contain any spaces.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate that you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: ServerCertificateName
-function M.UpdateServerCertificateRequest(_NewPath, _NewServerCertificateName, _ServerCertificateName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServerCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * NewPath [pathType] <p>The new path for the server certificate. Include this only if you are updating the server certificate's path.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * NewServerCertificateName [serverCertificateNameType] <p>The new name for the server certificate. Include this only if you are updating the server certificate's name. The name of the certificate cannot contain any spaces.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * ServerCertificateName [serverCertificateNameType] <p>The name of the server certificate that you want to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: ServerCertificateName
+-- @return UpdateServerCertificateRequest structure as a key-value pair table
+function M.UpdateServerCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateServerCertificateRequest")
 	local t = { 
-		["NewPath"] = _NewPath,
-		["NewServerCertificateName"] = _NewServerCertificateName,
-		["ServerCertificateName"] = _ServerCertificateName,
+		["NewPath"] = args["NewPath"],
+		["NewServerCertificateName"] = args["NewServerCertificateName"],
+		["ServerCertificateName"] = args["ServerCertificateName"],
 	}
 	asserts.AssertUpdateServerCertificateRequest(t)
 	return t
@@ -5127,15 +5637,18 @@ end
 
 --- Create a structure of type AttachGroupPolicyRequest
 --  
--- @param _GroupName [groupNameType] <p>The name (friendly name, not ARN) of the group to attach the policy to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: GroupName
--- Required parameter: PolicyArn
-function M.AttachGroupPolicyRequest(_GroupName, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AttachGroupPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupName [groupNameType] <p>The name (friendly name, not ARN) of the group to attach the policy to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: GroupName
+-- Required key: PolicyArn
+-- @return AttachGroupPolicyRequest structure as a key-value pair table
+function M.AttachGroupPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating AttachGroupPolicyRequest")
 	local t = { 
-		["GroupName"] = _GroupName,
-		["PolicyArn"] = _PolicyArn,
+		["GroupName"] = args["GroupName"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertAttachGroupPolicyRequest(t)
 	return t
@@ -5155,13 +5668,16 @@ end
 
 --- Create a structure of type ListAccountAliasesRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListAccountAliasesRequest(_Marker, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAccountAliasesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListAccountAliasesRequest structure as a key-value pair table
+function M.ListAccountAliasesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAccountAliasesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListAccountAliasesRequest(t)
 	return t
@@ -5183,15 +5699,18 @@ end
 
 --- Create a structure of type AddUserToGroupRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user to add.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _GroupName [groupNameType] <p>The name of the group to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: GroupName
--- Required parameter: UserName
-function M.AddUserToGroupRequest(_UserName, _GroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddUserToGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user to add.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * GroupName [groupNameType] <p>The name of the group to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: GroupName
+-- Required key: UserName
+-- @return AddUserToGroupRequest structure as a key-value pair table
+function M.AddUserToGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating AddUserToGroupRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["GroupName"] = _GroupName,
+		["UserName"] = args["UserName"],
+		["GroupName"] = args["GroupName"],
 	}
 	asserts.AssertAddUserToGroupRequest(t)
 	return t
@@ -5213,15 +5732,18 @@ end
 
 --- Create a structure of type DetachUserPolicyRequest
 --  
--- @param _UserName [userNameType] <p>The name (friendly name, not ARN) of the IAM user to detach the policy from.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: UserName
--- Required parameter: PolicyArn
-function M.DetachUserPolicyRequest(_UserName, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachUserPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name (friendly name, not ARN) of the IAM user to detach the policy from.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: UserName
+-- Required key: PolicyArn
+-- @return DetachUserPolicyRequest structure as a key-value pair table
+function M.DetachUserPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachUserPolicyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["PolicyArn"] = _PolicyArn,
+		["UserName"] = args["UserName"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertDetachUserPolicyRequest(t)
 	return t
@@ -5243,16 +5765,19 @@ end
 
 --- Create a structure of type ListRolesResponse
 -- <p>Contains the response to a successful <a>ListRoles</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- @param _Roles [roleListType] <p>A list of roles.</p>
--- Required parameter: Roles
-function M.ListRolesResponse(_Marker, _IsTruncated, _Roles, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRolesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- * Roles [roleListType] <p>A list of roles.</p>
+-- Required key: Roles
+-- @return ListRolesResponse structure as a key-value pair table
+function M.ListRolesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListRolesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
-		["Roles"] = _Roles,
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
+		["Roles"] = args["Roles"],
 	}
 	asserts.AssertListRolesResponse(t)
 	return t
@@ -5276,18 +5801,21 @@ end
 
 --- Create a structure of type MFADevice
 -- <p>Contains information about an MFA device.</p> <p>This data type is used as a response element in the <a>ListMFADevices</a> action.</p>
--- @param _UserName [userNameType] <p>The user with whom the MFA device is associated.</p>
--- @param _SerialNumber [serialNumberType] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p>
--- @param _EnableDate [dateType] <p>The date when the MFA device was enabled for the user.</p>
--- Required parameter: UserName
--- Required parameter: SerialNumber
--- Required parameter: EnableDate
-function M.MFADevice(_UserName, _SerialNumber, _EnableDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MFADevice")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The user with whom the MFA device is associated.</p>
+-- * SerialNumber [serialNumberType] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.</p>
+-- * EnableDate [dateType] <p>The date when the MFA device was enabled for the user.</p>
+-- Required key: UserName
+-- Required key: SerialNumber
+-- Required key: EnableDate
+-- @return MFADevice structure as a key-value pair table
+function M.MFADevice(args)
+	assert(args, "You must provdide an argument table when creating MFADevice")
 	local t = { 
-		["UserName"] = _UserName,
-		["SerialNumber"] = _SerialNumber,
-		["EnableDate"] = _EnableDate,
+		["UserName"] = args["UserName"],
+		["SerialNumber"] = args["SerialNumber"],
+		["EnableDate"] = args["EnableDate"],
 	}
 	asserts.AssertMFADevice(t)
 	return t
@@ -5306,11 +5834,14 @@ end
 
 --- Create a structure of type InvalidUserTypeException
 -- <p>The request was rejected because the type of user for the transaction was incorrect.</p>
--- @param _message [invalidUserTypeMessage] 
-function M.InvalidUserTypeException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidUserTypeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [invalidUserTypeMessage] 
+-- @return InvalidUserTypeException structure as a key-value pair table
+function M.InvalidUserTypeException(args)
+	assert(args, "You must provdide an argument table when creating InvalidUserTypeException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertInvalidUserTypeException(t)
 	return t
@@ -5330,12 +5861,15 @@ end
 
 --- Create a structure of type GetRoleResponse
 -- <p>Contains the response to a successful <a>GetRole</a> request. </p>
--- @param _Role [Role] <p>A structure containing details about the IAM role.</p>
--- Required parameter: Role
-function M.GetRoleResponse(_Role, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRoleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Role [Role] <p>A structure containing details about the IAM role.</p>
+-- Required key: Role
+-- @return GetRoleResponse structure as a key-value pair table
+function M.GetRoleResponse(args)
+	assert(args, "You must provdide an argument table when creating GetRoleResponse")
 	local t = { 
-		["Role"] = _Role,
+		["Role"] = args["Role"],
 	}
 	asserts.AssertGetRoleResponse(t)
 	return t
@@ -5367,30 +5901,33 @@ end
 
 --- Create a structure of type ServiceSpecificCredential
 -- <p>Contains the details of a service specific credential.</p>
--- @param _UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential.</p>
--- @param _Status [statusType] <p>The status of the service-specific credential. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the service-specific credential were created.</p>
--- @param _ServiceName [serviceName] <p>The name of the service associated with the service-specific credential.</p>
--- @param _ServicePassword [servicePassword] <p>The generated password for the service-specific credential.</p>
--- @param _ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier for the service-specific credential.</p>
--- @param _ServiceUserName [serviceUserName] <p>The generated user name for the service-specific credential. This value is generated by combining the IAM user's name combined with the ID number of the AWS account, as in <code>jane-at-123456789012</code>, for example. This value cannot be configured by the user.</p>
--- Required parameter: CreateDate
--- Required parameter: ServiceName
--- Required parameter: ServiceUserName
--- Required parameter: ServicePassword
--- Required parameter: ServiceSpecificCredentialId
--- Required parameter: UserName
--- Required parameter: Status
-function M.ServiceSpecificCredential(_UserName, _Status, _CreateDate, _ServiceName, _ServicePassword, _ServiceSpecificCredentialId, _ServiceUserName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceSpecificCredential")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential.</p>
+-- * Status [statusType] <p>The status of the service-specific credential. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not.</p>
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the service-specific credential were created.</p>
+-- * ServiceName [serviceName] <p>The name of the service associated with the service-specific credential.</p>
+-- * ServicePassword [servicePassword] <p>The generated password for the service-specific credential.</p>
+-- * ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier for the service-specific credential.</p>
+-- * ServiceUserName [serviceUserName] <p>The generated user name for the service-specific credential. This value is generated by combining the IAM user's name combined with the ID number of the AWS account, as in <code>jane-at-123456789012</code>, for example. This value cannot be configured by the user.</p>
+-- Required key: CreateDate
+-- Required key: ServiceName
+-- Required key: ServiceUserName
+-- Required key: ServicePassword
+-- Required key: ServiceSpecificCredentialId
+-- Required key: UserName
+-- Required key: Status
+-- @return ServiceSpecificCredential structure as a key-value pair table
+function M.ServiceSpecificCredential(args)
+	assert(args, "You must provdide an argument table when creating ServiceSpecificCredential")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["CreateDate"] = _CreateDate,
-		["ServiceName"] = _ServiceName,
-		["ServicePassword"] = _ServicePassword,
-		["ServiceSpecificCredentialId"] = _ServiceSpecificCredentialId,
-		["ServiceUserName"] = _ServiceUserName,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["CreateDate"] = args["CreateDate"],
+		["ServiceName"] = args["ServiceName"],
+		["ServicePassword"] = args["ServicePassword"],
+		["ServiceSpecificCredentialId"] = args["ServiceSpecificCredentialId"],
+		["ServiceUserName"] = args["ServiceUserName"],
 	}
 	asserts.AssertServiceSpecificCredential(t)
 	return t
@@ -5409,11 +5946,14 @@ end
 
 --- Create a structure of type UpdateSAMLProviderResponse
 -- <p>Contains the response to a successful <a>UpdateSAMLProvider</a> request. </p>
--- @param _SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider that was updated.</p>
-function M.UpdateSAMLProviderResponse(_SAMLProviderArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSAMLProviderResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider that was updated.</p>
+-- @return UpdateSAMLProviderResponse structure as a key-value pair table
+function M.UpdateSAMLProviderResponse(args)
+	assert(args, "You must provdide an argument table when creating UpdateSAMLProviderResponse")
 	local t = { 
-		["SAMLProviderArn"] = _SAMLProviderArn,
+		["SAMLProviderArn"] = args["SAMLProviderArn"],
 	}
 	asserts.AssertUpdateSAMLProviderResponse(t)
 	return t
@@ -5432,11 +5972,14 @@ end
 
 --- Create a structure of type ServiceNotSupportedException
 -- <p>The specified service does not support service-specific credentials.</p>
--- @param _message [serviceNotSupportedMessage] 
-function M.ServiceNotSupportedException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServiceNotSupportedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [serviceNotSupportedMessage] 
+-- @return ServiceNotSupportedException structure as a key-value pair table
+function M.ServiceNotSupportedException(args)
+	assert(args, "You must provdide an argument table when creating ServiceNotSupportedException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertServiceNotSupportedException(t)
 	return t
@@ -5464,29 +6007,32 @@ end
 
 --- Create a structure of type PasswordPolicy
 -- <p>Contains information about the account password policy.</p> <p> This data type is used as a response element in the <a>GetAccountPasswordPolicy</a> action. </p>
--- @param _AllowUsersToChangePassword [booleanType] <p>Specifies whether IAM users are allowed to change their own password.</p>
--- @param _RequireLowercaseCharacters [booleanType] <p>Specifies whether to require lowercase characters for IAM user passwords.</p>
--- @param _RequireUppercaseCharacters [booleanType] <p>Specifies whether to require uppercase characters for IAM user passwords.</p>
--- @param _MinimumPasswordLength [minimumPasswordLengthType] <p>Minimum length to require for IAM user passwords.</p>
--- @param _RequireNumbers [booleanType] <p>Specifies whether to require numbers for IAM user passwords.</p>
--- @param _PasswordReusePrevention [passwordReusePreventionType] <p>Specifies the number of previous passwords that IAM users are prevented from reusing.</p>
--- @param _HardExpiry [booleanObjectType] <p>Specifies whether IAM users are prevented from setting a new password after their password has expired.</p>
--- @param _RequireSymbols [booleanType] <p>Specifies whether to require symbols for IAM user passwords.</p>
--- @param _MaxPasswordAge [maxPasswordAgeType] <p>The number of days that an IAM user password is valid.</p>
--- @param _ExpirePasswords [booleanType] <p>Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value greater than 0. Returns false if MaxPasswordAge is 0 or not present.</p>
-function M.PasswordPolicy(_AllowUsersToChangePassword, _RequireLowercaseCharacters, _RequireUppercaseCharacters, _MinimumPasswordLength, _RequireNumbers, _PasswordReusePrevention, _HardExpiry, _RequireSymbols, _MaxPasswordAge, _ExpirePasswords, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PasswordPolicy")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AllowUsersToChangePassword [booleanType] <p>Specifies whether IAM users are allowed to change their own password.</p>
+-- * RequireLowercaseCharacters [booleanType] <p>Specifies whether to require lowercase characters for IAM user passwords.</p>
+-- * RequireUppercaseCharacters [booleanType] <p>Specifies whether to require uppercase characters for IAM user passwords.</p>
+-- * MinimumPasswordLength [minimumPasswordLengthType] <p>Minimum length to require for IAM user passwords.</p>
+-- * RequireNumbers [booleanType] <p>Specifies whether to require numbers for IAM user passwords.</p>
+-- * PasswordReusePrevention [passwordReusePreventionType] <p>Specifies the number of previous passwords that IAM users are prevented from reusing.</p>
+-- * HardExpiry [booleanObjectType] <p>Specifies whether IAM users are prevented from setting a new password after their password has expired.</p>
+-- * RequireSymbols [booleanType] <p>Specifies whether to require symbols for IAM user passwords.</p>
+-- * MaxPasswordAge [maxPasswordAgeType] <p>The number of days that an IAM user password is valid.</p>
+-- * ExpirePasswords [booleanType] <p>Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value greater than 0. Returns false if MaxPasswordAge is 0 or not present.</p>
+-- @return PasswordPolicy structure as a key-value pair table
+function M.PasswordPolicy(args)
+	assert(args, "You must provdide an argument table when creating PasswordPolicy")
 	local t = { 
-		["AllowUsersToChangePassword"] = _AllowUsersToChangePassword,
-		["RequireLowercaseCharacters"] = _RequireLowercaseCharacters,
-		["RequireUppercaseCharacters"] = _RequireUppercaseCharacters,
-		["MinimumPasswordLength"] = _MinimumPasswordLength,
-		["RequireNumbers"] = _RequireNumbers,
-		["PasswordReusePrevention"] = _PasswordReusePrevention,
-		["HardExpiry"] = _HardExpiry,
-		["RequireSymbols"] = _RequireSymbols,
-		["MaxPasswordAge"] = _MaxPasswordAge,
-		["ExpirePasswords"] = _ExpirePasswords,
+		["AllowUsersToChangePassword"] = args["AllowUsersToChangePassword"],
+		["RequireLowercaseCharacters"] = args["RequireLowercaseCharacters"],
+		["RequireUppercaseCharacters"] = args["RequireUppercaseCharacters"],
+		["MinimumPasswordLength"] = args["MinimumPasswordLength"],
+		["RequireNumbers"] = args["RequireNumbers"],
+		["PasswordReusePrevention"] = args["PasswordReusePrevention"],
+		["HardExpiry"] = args["HardExpiry"],
+		["RequireSymbols"] = args["RequireSymbols"],
+		["MaxPasswordAge"] = args["MaxPasswordAge"],
+		["ExpirePasswords"] = args["ExpirePasswords"],
 	}
 	asserts.AssertPasswordPolicy(t)
 	return t
@@ -5508,16 +6054,19 @@ end
 
 --- Create a structure of type ListMFADevicesResponse
 -- <p>Contains the response to a successful <a>ListMFADevices</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _MFADevices [mfaDeviceListType] <p>A list of MFA devices.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- Required parameter: MFADevices
-function M.ListMFADevicesResponse(_Marker, _MFADevices, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListMFADevicesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * MFADevices [mfaDeviceListType] <p>A list of MFA devices.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- Required key: MFADevices
+-- @return ListMFADevicesResponse structure as a key-value pair table
+function M.ListMFADevicesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListMFADevicesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["MFADevices"] = _MFADevices,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["MFADevices"] = args["MFADevices"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListMFADevicesResponse(t)
 	return t
@@ -5536,11 +6085,14 @@ end
 
 --- Create a structure of type GetSSHPublicKeyResponse
 -- <p>Contains the response to a successful <a>GetSSHPublicKey</a> request.</p>
--- @param _SSHPublicKey [SSHPublicKey] <p>A structure containing details about the SSH public key.</p>
-function M.GetSSHPublicKeyResponse(_SSHPublicKey, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSSHPublicKeyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SSHPublicKey [SSHPublicKey] <p>A structure containing details about the SSH public key.</p>
+-- @return GetSSHPublicKeyResponse structure as a key-value pair table
+function M.GetSSHPublicKeyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSSHPublicKeyResponse")
 	local t = { 
-		["SSHPublicKey"] = _SSHPublicKey,
+		["SSHPublicKey"] = args["SSHPublicKey"],
 	}
 	asserts.AssertGetSSHPublicKeyResponse(t)
 	return t
@@ -5562,16 +6114,19 @@ end
 
 --- Create a structure of type ListAccessKeysResponse
 -- <p>Contains the response to a successful <a>ListAccessKeys</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _AccessKeyMetadata [accessKeyMetadataListType] <p>A list of objects containing metadata about the access keys.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- Required parameter: AccessKeyMetadata
-function M.ListAccessKeysResponse(_Marker, _AccessKeyMetadata, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAccessKeysResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * AccessKeyMetadata [accessKeyMetadataListType] <p>A list of objects containing metadata about the access keys.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- Required key: AccessKeyMetadata
+-- @return ListAccessKeysResponse structure as a key-value pair table
+function M.ListAccessKeysResponse(args)
+	assert(args, "You must provdide an argument table when creating ListAccessKeysResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["AccessKeyMetadata"] = _AccessKeyMetadata,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["AccessKeyMetadata"] = args["AccessKeyMetadata"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertListAccessKeysResponse(t)
 	return t
@@ -5590,11 +6145,14 @@ end
 
 --- Create a structure of type PasswordPolicyViolationException
 -- <p>The request was rejected because the provided password did not meet the requirements imposed by the account password policy.</p>
--- @param _message [passwordPolicyViolationMessage] 
-function M.PasswordPolicyViolationException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PasswordPolicyViolationException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [passwordPolicyViolationMessage] 
+-- @return PasswordPolicyViolationException structure as a key-value pair table
+function M.PasswordPolicyViolationException(args)
+	assert(args, "You must provdide an argument table when creating PasswordPolicyViolationException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertPasswordPolicyViolationException(t)
 	return t
@@ -5614,13 +6172,16 @@ end
 
 --- Create a structure of type PolicyUser
 -- <p>Contains information about a user that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
--- @param _UserName [userNameType] <p>The name (friendly name, not ARN) identifying the user.</p>
--- @param _UserId [idType] <p>The stable and unique string identifying the user. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p>
-function M.PolicyUser(_UserName, _UserId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyUser")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name (friendly name, not ARN) identifying the user.</p>
+-- * UserId [idType] <p>The stable and unique string identifying the user. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p>
+-- @return PolicyUser structure as a key-value pair table
+function M.PolicyUser(args)
+	assert(args, "You must provdide an argument table when creating PolicyUser")
 	local t = { 
-		["UserName"] = _UserName,
-		["UserId"] = _UserId,
+		["UserName"] = args["UserName"],
+		["UserId"] = args["UserId"],
 	}
 	asserts.AssertPolicyUser(t)
 	return t
@@ -5641,15 +6202,18 @@ end
 
 --- Create a structure of type ListGroupsRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/division_abc/subdivision_xyz/</code> gets all groups whose path starts with <code>/division_abc/subdivision_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all groups. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
-function M.ListGroupsRequest(_Marker, _PathPrefix, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListGroupsRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * PathPrefix [pathPrefixType] <p> The path prefix for filtering the results. For example, the prefix <code>/division_abc/subdivision_xyz/</code> gets all groups whose path starts with <code>/division_abc/subdivision_xyz/</code>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing all groups. This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- @return ListGroupsRequest structure as a key-value pair table
+function M.ListGroupsRequest(args)
+	assert(args, "You must provdide an argument table when creating ListGroupsRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["PathPrefix"] = _PathPrefix,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["PathPrefix"] = args["PathPrefix"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListGroupsRequest(t)
 	return t
@@ -5671,15 +6235,18 @@ end
 
 --- Create a structure of type DetachGroupPolicyRequest
 --  
--- @param _GroupName [groupNameType] <p>The name (friendly name, not ARN) of the IAM group to detach the policy from.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: GroupName
--- Required parameter: PolicyArn
-function M.DetachGroupPolicyRequest(_GroupName, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachGroupPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupName [groupNameType] <p>The name (friendly name, not ARN) of the IAM group to detach the policy from.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: GroupName
+-- Required key: PolicyArn
+-- @return DetachGroupPolicyRequest structure as a key-value pair table
+function M.DetachGroupPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachGroupPolicyRequest")
 	local t = { 
-		["GroupName"] = _GroupName,
-		["PolicyArn"] = _PolicyArn,
+		["GroupName"] = args["GroupName"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertDetachGroupPolicyRequest(t)
 	return t
@@ -5701,17 +6268,20 @@ end
 
 --- Create a structure of type Statement
 -- <p>Contains a reference to a <code>Statement</code> element in a policy document that determines the result of the simulation.</p> <p>This data type is used by the <code>MatchedStatements</code> member of the <code> <a>EvaluationResult</a> </code> type.</p>
--- @param _SourcePolicyId [PolicyIdentifierType] <p>The identifier of the policy that was provided as an input.</p>
--- @param _StartPosition [Position] <p>The row and column of the beginning of the <code>Statement</code> in an IAM policy.</p>
--- @param _SourcePolicyType [PolicySourceType] <p>The type of the policy.</p>
--- @param _EndPosition [Position] <p>The row and column of the end of a <code>Statement</code> in an IAM policy.</p>
-function M.Statement(_SourcePolicyId, _StartPosition, _SourcePolicyType, _EndPosition, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Statement")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SourcePolicyId [PolicyIdentifierType] <p>The identifier of the policy that was provided as an input.</p>
+-- * StartPosition [Position] <p>The row and column of the beginning of the <code>Statement</code> in an IAM policy.</p>
+-- * SourcePolicyType [PolicySourceType] <p>The type of the policy.</p>
+-- * EndPosition [Position] <p>The row and column of the end of a <code>Statement</code> in an IAM policy.</p>
+-- @return Statement structure as a key-value pair table
+function M.Statement(args)
+	assert(args, "You must provdide an argument table when creating Statement")
 	local t = { 
-		["SourcePolicyId"] = _SourcePolicyId,
-		["StartPosition"] = _StartPosition,
-		["SourcePolicyType"] = _SourcePolicyType,
-		["EndPosition"] = _EndPosition,
+		["SourcePolicyId"] = args["SourcePolicyId"],
+		["StartPosition"] = args["StartPosition"],
+		["SourcePolicyType"] = args["SourcePolicyType"],
+		["EndPosition"] = args["EndPosition"],
 	}
 	asserts.AssertStatement(t)
 	return t
@@ -5735,18 +6305,21 @@ end
 
 --- Create a structure of type PutGroupPolicyRequest
 --  
--- @param _GroupName [groupNameType] <p>The name of the group to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: GroupName
--- Required parameter: PolicyName
--- Required parameter: PolicyDocument
-function M.PutGroupPolicyRequest(_GroupName, _PolicyDocument, _PolicyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutGroupPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupName [groupNameType] <p>The name of the group to associate the policy with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyDocument [policyDocumentType] <p>The policy document.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * PolicyName [policyNameType] <p>The name of the policy document.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: GroupName
+-- Required key: PolicyName
+-- Required key: PolicyDocument
+-- @return PutGroupPolicyRequest structure as a key-value pair table
+function M.PutGroupPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating PutGroupPolicyRequest")
 	local t = { 
-		["GroupName"] = _GroupName,
-		["PolicyDocument"] = _PolicyDocument,
-		["PolicyName"] = _PolicyName,
+		["GroupName"] = args["GroupName"],
+		["PolicyDocument"] = args["PolicyDocument"],
+		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertPutGroupPolicyRequest(t)
 	return t
@@ -5766,12 +6339,15 @@ end
 
 --- Create a structure of type GetRoleRequest
 --  
--- @param _RoleName [roleNameType] <p>The name of the IAM role to get information about.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- Required parameter: RoleName
-function M.GetRoleRequest(_RoleName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRoleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name of the IAM role to get information about.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- Required key: RoleName
+-- @return GetRoleRequest structure as a key-value pair table
+function M.GetRoleRequest(args)
+	assert(args, "You must provdide an argument table when creating GetRoleRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
+		["RoleName"] = args["RoleName"],
 	}
 	asserts.AssertGetRoleRequest(t)
 	return t
@@ -5793,16 +6369,19 @@ end
 
 --- Create a structure of type CreateServiceLinkedRoleRequest
 --  
--- @param _AWSServiceName [groupNameType] <p>The AWS service to which this role is attached. You use a string similar to a URL but without the http:// in front. For example: <code>elasticbeanstalk.amazonaws.com</code> </p>
--- @param _Description [roleDescriptionType] <p>The description of the role.</p>
--- @param _CustomSuffix [customSuffixType] <p>A string that you provide, which is combined with the service name to form the complete role name. If you make multiple requests for the same service, then you must supply a different <code>CustomSuffix</code> for each request. Otherwise the request fails with a duplicate role name error. For example, you could add <code>-1</code> or <code>-debug</code> to the suffix.</p>
--- Required parameter: AWSServiceName
-function M.CreateServiceLinkedRoleRequest(_AWSServiceName, _Description, _CustomSuffix, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateServiceLinkedRoleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * AWSServiceName [groupNameType] <p>The AWS service to which this role is attached. You use a string similar to a URL but without the http:// in front. For example: <code>elasticbeanstalk.amazonaws.com</code> </p>
+-- * Description [roleDescriptionType] <p>The description of the role.</p>
+-- * CustomSuffix [customSuffixType] <p>A string that you provide, which is combined with the service name to form the complete role name. If you make multiple requests for the same service, then you must supply a different <code>CustomSuffix</code> for each request. Otherwise the request fails with a duplicate role name error. For example, you could add <code>-1</code> or <code>-debug</code> to the suffix.</p>
+-- Required key: AWSServiceName
+-- @return CreateServiceLinkedRoleRequest structure as a key-value pair table
+function M.CreateServiceLinkedRoleRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateServiceLinkedRoleRequest")
 	local t = { 
-		["AWSServiceName"] = _AWSServiceName,
-		["Description"] = _Description,
-		["CustomSuffix"] = _CustomSuffix,
+		["AWSServiceName"] = args["AWSServiceName"],
+		["Description"] = args["Description"],
+		["CustomSuffix"] = args["CustomSuffix"],
 	}
 	asserts.AssertCreateServiceLinkedRoleRequest(t)
 	return t
@@ -5822,12 +6401,15 @@ end
 
 --- Create a structure of type DeleteVirtualMFADeviceRequest
 --  
--- @param _SerialNumber [serialNumberType] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the same as the ARN.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-</p>
--- Required parameter: SerialNumber
-function M.DeleteVirtualMFADeviceRequest(_SerialNumber, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteVirtualMFADeviceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SerialNumber [serialNumberType] <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the same as the ARN.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@:/-</p>
+-- Required key: SerialNumber
+-- @return DeleteVirtualMFADeviceRequest structure as a key-value pair table
+function M.DeleteVirtualMFADeviceRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteVirtualMFADeviceRequest")
 	local t = { 
-		["SerialNumber"] = _SerialNumber,
+		["SerialNumber"] = args["SerialNumber"],
 	}
 	asserts.AssertDeleteVirtualMFADeviceRequest(t)
 	return t
@@ -5849,15 +6431,18 @@ end
 
 --- Create a structure of type AddRoleToInstanceProfileRequest
 --  
--- @param _RoleName [roleNameType] <p>The name of the role to add.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: InstanceProfileName
--- Required parameter: RoleName
-function M.AddRoleToInstanceProfileRequest(_RoleName, _InstanceProfileName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddRoleToInstanceProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name of the role to add.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: InstanceProfileName
+-- Required key: RoleName
+-- @return AddRoleToInstanceProfileRequest structure as a key-value pair table
+function M.AddRoleToInstanceProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating AddRoleToInstanceProfileRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["InstanceProfileName"] = _InstanceProfileName,
+		["RoleName"] = args["RoleName"],
+		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
 	asserts.AssertAddRoleToInstanceProfileRequest(t)
 	return t
@@ -5877,13 +6462,16 @@ end
 
 --- Create a structure of type GetAccessKeyLastUsedResponse
 -- <p>Contains the response to a successful <a>GetAccessKeyLastUsed</a> request. It is also returned as a member of the <a>AccessKeyMetaData</a> structure returned by the <a>ListAccessKeys</a> action.</p>
--- @param _UserName [existingUserNameType] <p>The name of the AWS IAM user that owns this access key.</p> <p/>
--- @param _AccessKeyLastUsed [AccessKeyLastUsed] <p>Contains information about the last time the access key was used.</p>
-function M.GetAccessKeyLastUsedResponse(_UserName, _AccessKeyLastUsed, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetAccessKeyLastUsedResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the AWS IAM user that owns this access key.</p> <p/>
+-- * AccessKeyLastUsed [AccessKeyLastUsed] <p>Contains information about the last time the access key was used.</p>
+-- @return GetAccessKeyLastUsedResponse structure as a key-value pair table
+function M.GetAccessKeyLastUsedResponse(args)
+	assert(args, "You must provdide an argument table when creating GetAccessKeyLastUsedResponse")
 	local t = { 
-		["UserName"] = _UserName,
-		["AccessKeyLastUsed"] = _AccessKeyLastUsed,
+		["UserName"] = args["UserName"],
+		["AccessKeyLastUsed"] = args["AccessKeyLastUsed"],
 	}
 	asserts.AssertGetAccessKeyLastUsedResponse(t)
 	return t
@@ -5903,13 +6491,16 @@ end
 
 --- Create a structure of type Position
 -- <p>Contains the row and column of a location of a <code>Statement</code> element in a policy document.</p> <p>This data type is used as a member of the <code> <a>Statement</a> </code> type.</p>
--- @param _Column [ColumnNumber] <p>The column in the line containing the specified position in the document.</p>
--- @param _Line [LineNumber] <p>The line containing the specified position in the document.</p>
-function M.Position(_Column, _Line, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Position")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Column [ColumnNumber] <p>The column in the line containing the specified position in the document.</p>
+-- * Line [LineNumber] <p>The line containing the specified position in the document.</p>
+-- @return Position structure as a key-value pair table
+function M.Position(args)
+	assert(args, "You must provdide an argument table when creating Position")
 	local t = { 
-		["Column"] = _Column,
-		["Line"] = _Line,
+		["Column"] = args["Column"],
+		["Line"] = args["Line"],
 	}
 	asserts.AssertPosition(t)
 	return t
@@ -5935,22 +6526,25 @@ end
 
 --- Create a structure of type UploadServerCertificateRequest
 --  
--- @param _Path [pathType] <p>The path for the server certificate. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/). This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p> <note> <p> If you are uploading a server certificate specifically for use with Amazon CloudFront distributions, you must specify a path using the <code>--path</code> option. The path must begin with <code>/cloudfront</code> and must include a trailing slash (for example, <code>/cloudfront/test/</code>).</p> </note>
--- @param _CertificateBody [certificateBodyType] <p>The contents of the public key certificate in PEM-encoded format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _PrivateKey [privateKeyType] <p>The contents of the private key in PEM-encoded format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _ServerCertificateName [serverCertificateNameType] <p>The name for the server certificate. Do not include the path in this value. The name of the certificate cannot contain any spaces.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _CertificateChain [certificateChainType] <p>The contents of the certificate chain. This is typically a concatenation of the PEM-encoded public key certificates of the chain.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- Required parameter: ServerCertificateName
--- Required parameter: CertificateBody
--- Required parameter: PrivateKey
-function M.UploadServerCertificateRequest(_Path, _CertificateBody, _PrivateKey, _ServerCertificateName, _CertificateChain, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UploadServerCertificateRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [pathType] <p>The path for the server certificate. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/). This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p> <note> <p> If you are uploading a server certificate specifically for use with Amazon CloudFront distributions, you must specify a path using the <code>--path</code> option. The path must begin with <code>/cloudfront</code> and must include a trailing slash (for example, <code>/cloudfront/test/</code>).</p> </note>
+-- * CertificateBody [certificateBodyType] <p>The contents of the public key certificate in PEM-encoded format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * PrivateKey [privateKeyType] <p>The contents of the private key in PEM-encoded format.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * ServerCertificateName [serverCertificateNameType] <p>The name for the server certificate. Do not include the path in this value. The name of the certificate cannot contain any spaces.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * CertificateChain [certificateChainType] <p>The contents of the certificate chain. This is typically a concatenation of the PEM-encoded public key certificates of the chain.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- Required key: ServerCertificateName
+-- Required key: CertificateBody
+-- Required key: PrivateKey
+-- @return UploadServerCertificateRequest structure as a key-value pair table
+function M.UploadServerCertificateRequest(args)
+	assert(args, "You must provdide an argument table when creating UploadServerCertificateRequest")
 	local t = { 
-		["Path"] = _Path,
-		["CertificateBody"] = _CertificateBody,
-		["PrivateKey"] = _PrivateKey,
-		["ServerCertificateName"] = _ServerCertificateName,
-		["CertificateChain"] = _CertificateChain,
+		["Path"] = args["Path"],
+		["CertificateBody"] = args["CertificateBody"],
+		["PrivateKey"] = args["PrivateKey"],
+		["ServerCertificateName"] = args["ServerCertificateName"],
+		["CertificateChain"] = args["CertificateChain"],
 	}
 	asserts.AssertUploadServerCertificateRequest(t)
 	return t
@@ -5973,17 +6567,20 @@ end
 
 --- Create a structure of type LoginProfile
 -- <p>Contains the user name and password create date for a user.</p> <p> This data type is used as a response element in the <a>CreateLoginProfile</a> and <a>GetLoginProfile</a> actions. </p>
--- @param _UserName [userNameType] <p>The name of the user, which can be used for signing in to the AWS Management Console.</p>
--- @param _CreateDate [dateType] <p>The date when the password for the user was created.</p>
--- @param _PasswordResetRequired [booleanType] <p>Specifies whether the user is required to set a new password on next sign-in.</p>
--- Required parameter: UserName
--- Required parameter: CreateDate
-function M.LoginProfile(_UserName, _CreateDate, _PasswordResetRequired, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating LoginProfile")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the user, which can be used for signing in to the AWS Management Console.</p>
+-- * CreateDate [dateType] <p>The date when the password for the user was created.</p>
+-- * PasswordResetRequired [booleanType] <p>Specifies whether the user is required to set a new password on next sign-in.</p>
+-- Required key: UserName
+-- Required key: CreateDate
+-- @return LoginProfile structure as a key-value pair table
+function M.LoginProfile(args)
+	assert(args, "You must provdide an argument table when creating LoginProfile")
 	local t = { 
-		["UserName"] = _UserName,
-		["CreateDate"] = _CreateDate,
-		["PasswordResetRequired"] = _PasswordResetRequired,
+		["UserName"] = args["UserName"],
+		["CreateDate"] = args["CreateDate"],
+		["PasswordResetRequired"] = args["PasswordResetRequired"],
 	}
 	asserts.AssertLoginProfile(t)
 	return t
@@ -6002,11 +6599,14 @@ end
 
 --- Create a structure of type CreateAccessKeyRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the IAM user that the new key will belong to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
-function M.CreateAccessKeyRequest(_UserName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateAccessKeyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the IAM user that the new key will belong to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- @return CreateAccessKeyRequest structure as a key-value pair table
+function M.CreateAccessKeyRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateAccessKeyRequest")
 	local t = { 
-		["UserName"] = _UserName,
+		["UserName"] = args["UserName"],
 	}
 	asserts.AssertCreateAccessKeyRequest(t)
 	return t
@@ -6027,15 +6627,18 @@ end
 
 --- Create a structure of type ContextEntry
 -- <p>Contains information about a condition context key. It includes the name of the key and specifies the value (or values, if the context key supports multiple values) to use in the simulation. This information is used when evaluating the <code>Condition</code> elements of the input policies.</p> <p>This data type is used as an input parameter to <code> <a>SimulateCustomPolicy</a> </code> and <code> <a>SimulateCustomPolicy</a> </code>.</p>
--- @param _ContextKeyValues [ContextKeyValueListType] <p>The value (or values, if the condition context key supports multiple values) to provide to the simulation for use when the key is referenced by a <code>Condition</code> element in an input policy.</p>
--- @param _ContextKeyType [ContextKeyTypeEnum] <p>The data type of the value (or values) specified in the <code>ContextKeyValues</code> parameter.</p>
--- @param _ContextKeyName [ContextKeyNameType] <p>The full name of a condition context key, including the service prefix. For example, <code>aws:SourceIp</code> or <code>s3:VersionId</code>.</p>
-function M.ContextEntry(_ContextKeyValues, _ContextKeyType, _ContextKeyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ContextEntry")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * ContextKeyValues [ContextKeyValueListType] <p>The value (or values, if the condition context key supports multiple values) to provide to the simulation for use when the key is referenced by a <code>Condition</code> element in an input policy.</p>
+-- * ContextKeyType [ContextKeyTypeEnum] <p>The data type of the value (or values) specified in the <code>ContextKeyValues</code> parameter.</p>
+-- * ContextKeyName [ContextKeyNameType] <p>The full name of a condition context key, including the service prefix. For example, <code>aws:SourceIp</code> or <code>s3:VersionId</code>.</p>
+-- @return ContextEntry structure as a key-value pair table
+function M.ContextEntry(args)
+	assert(args, "You must provdide an argument table when creating ContextEntry")
 	local t = { 
-		["ContextKeyValues"] = _ContextKeyValues,
-		["ContextKeyType"] = _ContextKeyType,
-		["ContextKeyName"] = _ContextKeyName,
+		["ContextKeyValues"] = args["ContextKeyValues"],
+		["ContextKeyType"] = args["ContextKeyType"],
+		["ContextKeyName"] = args["ContextKeyName"],
 	}
 	asserts.AssertContextEntry(t)
 	return t
@@ -6055,13 +6658,16 @@ end
 
 --- Create a structure of type PolicyRole
 -- <p>Contains information about a role that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
--- @param _RoleName [roleNameType] <p>The name (friendly name, not ARN) identifying the role.</p>
--- @param _RoleId [idType] <p>The stable and unique string identifying the role. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p>
-function M.PolicyRole(_RoleName, _RoleId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PolicyRole")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name (friendly name, not ARN) identifying the role.</p>
+-- * RoleId [idType] <p>The stable and unique string identifying the role. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p>
+-- @return PolicyRole structure as a key-value pair table
+function M.PolicyRole(args)
+	assert(args, "You must provdide an argument table when creating PolicyRole")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["RoleId"] = _RoleId,
+		["RoleName"] = args["RoleName"],
+		["RoleId"] = args["RoleId"],
 	}
 	asserts.AssertPolicyRole(t)
 	return t
@@ -6082,14 +6688,17 @@ end
 
 --- Create a structure of type CreateInstanceProfileRequest
 --  
--- @param _Path [pathType] <p> The path to the instance profile. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: InstanceProfileName
-function M.CreateInstanceProfileRequest(_Path, _InstanceProfileName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateInstanceProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [pathType] <p> The path to the instance profile. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: InstanceProfileName
+-- @return CreateInstanceProfileRequest structure as a key-value pair table
+function M.CreateInstanceProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateInstanceProfileRequest")
 	local t = { 
-		["Path"] = _Path,
-		["InstanceProfileName"] = _InstanceProfileName,
+		["Path"] = args["Path"],
+		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
 	asserts.AssertCreateInstanceProfileRequest(t)
 	return t
@@ -6111,15 +6720,18 @@ end
 
 --- Create a structure of type DeleteSSHPublicKeyRequest
 --  
--- @param _UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
--- Required parameter: UserName
--- Required parameter: SSHPublicKeyId
-function M.DeleteSSHPublicKeyRequest(_UserName, _SSHPublicKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteSSHPublicKeyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
+-- Required key: UserName
+-- Required key: SSHPublicKeyId
+-- @return DeleteSSHPublicKeyRequest structure as a key-value pair table
+function M.DeleteSSHPublicKeyRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteSSHPublicKeyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["SSHPublicKeyId"] = _SSHPublicKeyId,
+		["UserName"] = args["UserName"],
+		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
 	}
 	asserts.AssertDeleteSSHPublicKeyRequest(t)
 	return t
@@ -6139,12 +6751,15 @@ end
 
 --- Create a structure of type DeleteGroupRequest
 --  
--- @param _GroupName [groupNameType] <p>The name of the IAM group to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: GroupName
-function M.DeleteGroupRequest(_GroupName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteGroupRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * GroupName [groupNameType] <p>The name of the IAM group to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: GroupName
+-- @return DeleteGroupRequest structure as a key-value pair table
+function M.DeleteGroupRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteGroupRequest")
 	local t = { 
-		["GroupName"] = _GroupName,
+		["GroupName"] = args["GroupName"],
 	}
 	asserts.AssertDeleteGroupRequest(t)
 	return t
@@ -6163,11 +6778,14 @@ end
 
 --- Create a structure of type CreatePolicyResponse
 -- <p>Contains the response to a successful <a>CreatePolicy</a> request. </p>
--- @param _Policy [Policy] <p>A structure containing details about the new policy.</p>
-function M.CreatePolicyResponse(_Policy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreatePolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [Policy] <p>A structure containing details about the new policy.</p>
+-- @return CreatePolicyResponse structure as a key-value pair table
+function M.CreatePolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating CreatePolicyResponse")
 	local t = { 
-		["Policy"] = _Policy,
+		["Policy"] = args["Policy"],
 	}
 	asserts.AssertCreatePolicyResponse(t)
 	return t
@@ -6189,15 +6807,18 @@ end
 
 --- Create a structure of type DetachRolePolicyRequest
 --  
--- @param _RoleName [roleNameType] <p>The name (friendly name, not ARN) of the IAM role to detach the policy from.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- Required parameter: RoleName
--- Required parameter: PolicyArn
-function M.DetachRolePolicyRequest(_RoleName, _PolicyArn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DetachRolePolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name (friendly name, not ARN) of the IAM role to detach the policy from.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- Required key: RoleName
+-- Required key: PolicyArn
+-- @return DetachRolePolicyRequest structure as a key-value pair table
+function M.DetachRolePolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating DetachRolePolicyRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["PolicyArn"] = _PolicyArn,
+		["RoleName"] = args["RoleName"],
+		["PolicyArn"] = args["PolicyArn"],
 	}
 	asserts.AssertDetachRolePolicyRequest(t)
 	return t
@@ -6221,18 +6842,21 @@ end
 
 --- Create a structure of type UpdateSSHPublicKeyRequest
 --  
--- @param _UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Status [statusType] <p>The status to assign to the SSH public key. <code>Active</code> means the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means the key cannot be used.</p>
--- @param _SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
--- Required parameter: UserName
--- Required parameter: SSHPublicKeyId
--- Required parameter: Status
-function M.UpdateSSHPublicKeyRequest(_UserName, _Status, _SSHPublicKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateSSHPublicKeyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Status [statusType] <p>The status to assign to the SSH public key. <code>Active</code> means the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means the key cannot be used.</p>
+-- * SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
+-- Required key: UserName
+-- Required key: SSHPublicKeyId
+-- Required key: Status
+-- @return UpdateSSHPublicKeyRequest structure as a key-value pair table
+function M.UpdateSSHPublicKeyRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateSSHPublicKeyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["SSHPublicKeyId"] = _SSHPublicKeyId,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
 	}
 	asserts.AssertUpdateSSHPublicKeyRequest(t)
 	return t
@@ -6251,11 +6875,14 @@ end
 
 --- Create a structure of type NoSuchEntityException
 -- <p>The request was rejected because it referenced an entity that does not exist. The error message describes the entity.</p>
--- @param _message [noSuchEntityMessage] 
-function M.NoSuchEntityException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating NoSuchEntityException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [noSuchEntityMessage] 
+-- @return NoSuchEntityException structure as a key-value pair table
+function M.NoSuchEntityException(args)
+	assert(args, "You must provdide an argument table when creating NoSuchEntityException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertNoSuchEntityException(t)
 	return t
@@ -6277,15 +6904,18 @@ end
 
 --- Create a structure of type RemoveRoleFromInstanceProfileRequest
 --  
--- @param _RoleName [roleNameType] <p>The name of the role to remove.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: InstanceProfileName
--- Required parameter: RoleName
-function M.RemoveRoleFromInstanceProfileRequest(_RoleName, _InstanceProfileName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RemoveRoleFromInstanceProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name of the role to remove.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to update.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: InstanceProfileName
+-- Required key: RoleName
+-- @return RemoveRoleFromInstanceProfileRequest structure as a key-value pair table
+function M.RemoveRoleFromInstanceProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating RemoveRoleFromInstanceProfileRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["InstanceProfileName"] = _InstanceProfileName,
+		["RoleName"] = args["RoleName"],
+		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
 	asserts.AssertRemoveRoleFromInstanceProfileRequest(t)
 	return t
@@ -6316,33 +6946,36 @@ end
 
 --- Create a structure of type SimulatePrincipalPolicyRequest
 --  
--- @param _PolicySourceArn [arnType] <p>The Amazon Resource Name (ARN) of a user, group, or role whose policies you want to include in the simulation. If you specify a user, group, or role, the simulation includes all policies that are associated with that entity. If you specify a user, the simulation also includes all policies that are attached to any groups the user belongs to.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- @param _ResourceHandlingOption [ResourceHandlingOptionType] <p>Specifies the type of simulation to run. Different APIs that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.</p> <p>Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>AWS EC2 User Guide</i>.</p> <ul> <li> <p> <b>EC2-Classic-InstanceStore</b> </p> <p>instance, image, security-group</p> </li> <li> <p> <b>EC2-Classic-EBS</b> </p> <p>instance, image, security-group, volume</p> </li> <li> <p> <b>EC2-VPC-InstanceStore</b> </p> <p>instance, image, security-group, network-interface</p> </li> <li> <p> <b>EC2-VPC-InstanceStore-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet</p> </li> <li> <p> <b>EC2-VPC-EBS</b> </p> <p>instance, image, security-group, network-interface, volume</p> </li> <li> <p> <b>EC2-VPC-EBS-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet, volume</p> </li> </ul>
--- @param _ContextEntries [ContextEntryListType] <p>A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permission policies, the corresponding value is supplied.</p>
--- @param _CallerArn [ResourceNameType] <p>The ARN of the IAM user that you want to specify as the simulated caller of the APIs. If you do not specify a <code>CallerArn</code>, it defaults to the ARN of the user that you specify in <code>PolicySourceArn</code>, if you specified a user. If you include both a <code>PolicySourceArn</code> (for example, <code>arn:aws:iam::123456789012:user/David</code>) and a <code>CallerArn</code> (for example, <code>arn:aws:iam::123456789012:user/Bob</code>), the result is that you simulate calling the APIs as Bob, as if Bob had David's policies.</p> <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.</p> <p> <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code> and the <code>PolicySourceArn</code> is not the ARN for an IAM user. This is required so that the resource-based policy's <code>Principal</code> element has a value to use in evaluating the policy.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- @param _ResourceArns [ResourceNameListType] <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided then the value defaults to <code>*</code> (all resources). Each API in the <code>ActionNames</code> parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.</p> <p>The simulation does not automatically retrieve policies for the specified resources. If you want to include a resource policy in the simulation, then you must include the policy as a string in the <code>ResourcePolicy</code> parameter.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- @param _PolicyInputList [SimulationPolicyListType] <p>An optional list of additional policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _ResourcePolicy [policyDocumentType] <p>A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _ActionNames [ActionNameListType] <p>A list of names of API actions to evaluate in the simulation. Each action is evaluated for each resource. Each action must include the service identifier, such as <code>iam:CreateUser</code>.</p>
--- @param _ResourceOwner [ResourceNameType] <p>An AWS account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN, such as an S3 bucket or object. If <code>ResourceOwner</code> is specified, it is also used as the account owner of any <code>ResourcePolicy</code> included in the simulation. If the <code>ResourceOwner</code> parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in <code>CallerArn</code>. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user <code>CallerArn</code>.</p>
--- Required parameter: PolicySourceArn
--- Required parameter: ActionNames
-function M.SimulatePrincipalPolicyRequest(_PolicySourceArn, _ResourceHandlingOption, _ContextEntries, _CallerArn, _ResourceArns, _PolicyInputList, _ResourcePolicy, _MaxItems, _Marker, _ActionNames, _ResourceOwner, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SimulatePrincipalPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicySourceArn [arnType] <p>The Amazon Resource Name (ARN) of a user, group, or role whose policies you want to include in the simulation. If you specify a user, group, or role, the simulation includes all policies that are associated with that entity. If you specify a user, the simulation also includes all policies that are attached to any groups the user belongs to.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * ResourceHandlingOption [ResourceHandlingOptionType] <p>Specifies the type of simulation to run. Different APIs that support resource-based policies require different combinations of resources. By specifying the type of simulation to run, you enable the policy simulator to enforce the presence of the required resources to ensure reliable simulation results. If your simulation does not match one of the following scenarios, then you can omit this parameter. The following list shows each of the supported scenario values and the resources that you must define to run the simulation.</p> <p>Each of the EC2 scenarios requires that you specify instance, image, and security-group resources. If your scenario includes an EBS volume, then you must specify that volume as a resource. If the EC2 scenario includes VPC, then you must supply the network-interface resource. If it includes an IP subnet, then you must specify the subnet resource. For more information on the EC2 scenario options, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a> in the <i>AWS EC2 User Guide</i>.</p> <ul> <li> <p> <b>EC2-Classic-InstanceStore</b> </p> <p>instance, image, security-group</p> </li> <li> <p> <b>EC2-Classic-EBS</b> </p> <p>instance, image, security-group, volume</p> </li> <li> <p> <b>EC2-VPC-InstanceStore</b> </p> <p>instance, image, security-group, network-interface</p> </li> <li> <p> <b>EC2-VPC-InstanceStore-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet</p> </li> <li> <p> <b>EC2-VPC-EBS</b> </p> <p>instance, image, security-group, network-interface, volume</p> </li> <li> <p> <b>EC2-VPC-EBS-Subnet</b> </p> <p>instance, image, security-group, network-interface, subnet, volume</p> </li> </ul>
+-- * ContextEntries [ContextEntryListType] <p>A list of context keys and corresponding values for the simulation to use. Whenever a context key is evaluated in one of the simulated IAM permission policies, the corresponding value is supplied.</p>
+-- * CallerArn [ResourceNameType] <p>The ARN of the IAM user that you want to specify as the simulated caller of the APIs. If you do not specify a <code>CallerArn</code>, it defaults to the ARN of the user that you specify in <code>PolicySourceArn</code>, if you specified a user. If you include both a <code>PolicySourceArn</code> (for example, <code>arn:aws:iam::123456789012:user/David</code>) and a <code>CallerArn</code> (for example, <code>arn:aws:iam::123456789012:user/Bob</code>), the result is that you simulate calling the APIs as Bob, as if Bob had David's policies.</p> <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed role, federated user, or a service principal.</p> <p> <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code> and the <code>PolicySourceArn</code> is not the ARN for an IAM user. This is required so that the resource-based policy's <code>Principal</code> element has a value to use in evaluating the policy.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * ResourceArns [ResourceNameListType] <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is not provided then the value defaults to <code>*</code> (all resources). Each API in the <code>ActionNames</code> parameter is evaluated for each resource in this list. The simulation determines the access result (allowed or denied) of each combination and reports it in the response.</p> <p>The simulation does not automatically retrieve policies for the specified resources. If you want to include a resource policy in the simulation, then you must include the policy as a string in the <code>ResourcePolicy</code> parameter.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * PolicyInputList [SimulationPolicyListType] <p>An optional list of additional policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * ResourcePolicy [policyDocumentType] <p>A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of any printable ASCII character ranging from the space character (\u0020) through end of the ASCII character range as well as the printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF). It also includes the special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D).</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * ActionNames [ActionNameListType] <p>A list of names of API actions to evaluate in the simulation. Each action is evaluated for each resource. Each action must include the service identifier, such as <code>iam:CreateUser</code>.</p>
+-- * ResourceOwner [ResourceNameType] <p>An AWS account ID that specifies the owner of any simulated resource that does not identify its owner in the resource ARN, such as an S3 bucket or object. If <code>ResourceOwner</code> is specified, it is also used as the account owner of any <code>ResourcePolicy</code> included in the simulation. If the <code>ResourceOwner</code> parameter is not specified, then the owner of the resources and the resource policy defaults to the account of the identity provided in <code>CallerArn</code>. This parameter is required only if you specify a resource-based policy and account that owns the resource is different from the account that owns the simulated calling user <code>CallerArn</code>.</p>
+-- Required key: PolicySourceArn
+-- Required key: ActionNames
+-- @return SimulatePrincipalPolicyRequest structure as a key-value pair table
+function M.SimulatePrincipalPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating SimulatePrincipalPolicyRequest")
 	local t = { 
-		["PolicySourceArn"] = _PolicySourceArn,
-		["ResourceHandlingOption"] = _ResourceHandlingOption,
-		["ContextEntries"] = _ContextEntries,
-		["CallerArn"] = _CallerArn,
-		["ResourceArns"] = _ResourceArns,
-		["PolicyInputList"] = _PolicyInputList,
-		["ResourcePolicy"] = _ResourcePolicy,
-		["MaxItems"] = _MaxItems,
-		["Marker"] = _Marker,
-		["ActionNames"] = _ActionNames,
-		["ResourceOwner"] = _ResourceOwner,
+		["PolicySourceArn"] = args["PolicySourceArn"],
+		["ResourceHandlingOption"] = args["ResourceHandlingOption"],
+		["ContextEntries"] = args["ContextEntries"],
+		["CallerArn"] = args["CallerArn"],
+		["ResourceArns"] = args["ResourceArns"],
+		["PolicyInputList"] = args["PolicyInputList"],
+		["ResourcePolicy"] = args["ResourcePolicy"],
+		["MaxItems"] = args["MaxItems"],
+		["Marker"] = args["Marker"],
+		["ActionNames"] = args["ActionNames"],
+		["ResourceOwner"] = args["ResourceOwner"],
 	}
 	asserts.AssertSimulatePrincipalPolicyRequest(t)
 	return t
@@ -6364,15 +6997,18 @@ end
 
 --- Create a structure of type GetUserPolicyRequest
 --  
--- @param _UserName [existingUserNameType] <p>The name of the user who the policy is associated with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: UserName
--- Required parameter: PolicyName
-function M.GetUserPolicyRequest(_UserName, _PolicyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetUserPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [existingUserNameType] <p>The name of the user who the policy is associated with.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: UserName
+-- Required key: PolicyName
+-- @return GetUserPolicyRequest structure as a key-value pair table
+function M.GetUserPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetUserPolicyRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["PolicyName"] = _PolicyName,
+		["UserName"] = args["UserName"],
+		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertGetUserPolicyRequest(t)
 	return t
@@ -6394,15 +7030,18 @@ end
 
 --- Create a structure of type GetRolePolicyRequest
 --  
--- @param _RoleName [roleNameType] <p>The name of the role associated with the policy.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: RoleName
--- Required parameter: PolicyName
-function M.GetRolePolicyRequest(_RoleName, _PolicyName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRolePolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * RoleName [roleNameType] <p>The name of the role associated with the policy.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PolicyName [policyNameType] <p>The name of the policy document to get.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: RoleName
+-- Required key: PolicyName
+-- @return GetRolePolicyRequest structure as a key-value pair table
+function M.GetRolePolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating GetRolePolicyRequest")
 	local t = { 
-		["RoleName"] = _RoleName,
-		["PolicyName"] = _PolicyName,
+		["RoleName"] = args["RoleName"],
+		["PolicyName"] = args["PolicyName"],
 	}
 	asserts.AssertGetRolePolicyRequest(t)
 	return t
@@ -6421,11 +7060,14 @@ end
 
 --- Create a structure of type DeleteConflictException
 -- <p>The request was rejected because it attempted to delete a resource that has attached subordinate entities. The error message describes these entities.</p>
--- @param _message [deleteConflictMessage] 
-function M.DeleteConflictException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteConflictException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [deleteConflictMessage] 
+-- @return DeleteConflictException structure as a key-value pair table
+function M.DeleteConflictException(args)
+	assert(args, "You must provdide an argument table when creating DeleteConflictException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDeleteConflictException(t)
 	return t
@@ -6447,15 +7089,18 @@ end
 
 --- Create a structure of type CreateSAMLProviderRequest
 --  
--- @param _SAMLMetadataDocument [SAMLMetadataDocumentType] <p>An XML document generated by an identity provider (IdP) that supports SAML 2.0. The document includes the issuer's name, expiration information, and keys that can be used to validate the SAML authentication response (assertions) that are received from the IdP. You must generate the metadata document using the identity management software that is used as your organization's IdP.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html">About SAML 2.0-based Federation</a> in the <i>IAM User Guide</i> </p>
--- @param _Name [SAMLProviderNameType] <p>The name of the provider to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: SAMLMetadataDocument
--- Required parameter: Name
-function M.CreateSAMLProviderRequest(_SAMLMetadataDocument, _Name, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateSAMLProviderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SAMLMetadataDocument [SAMLMetadataDocumentType] <p>An XML document generated by an identity provider (IdP) that supports SAML 2.0. The document includes the issuer's name, expiration information, and keys that can be used to validate the SAML authentication response (assertions) that are received from the IdP. You must generate the metadata document using the identity management software that is used as your organization's IdP.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html">About SAML 2.0-based Federation</a> in the <i>IAM User Guide</i> </p>
+-- * Name [SAMLProviderNameType] <p>The name of the provider to create.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: SAMLMetadataDocument
+-- Required key: Name
+-- @return CreateSAMLProviderRequest structure as a key-value pair table
+function M.CreateSAMLProviderRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateSAMLProviderRequest")
 	local t = { 
-		["SAMLMetadataDocument"] = _SAMLMetadataDocument,
-		["Name"] = _Name,
+		["SAMLMetadataDocument"] = args["SAMLMetadataDocument"],
+		["Name"] = args["Name"],
 	}
 	asserts.AssertCreateSAMLProviderRequest(t)
 	return t
@@ -6475,12 +7120,15 @@ end
 
 --- Create a structure of type DeleteLoginProfileRequest
 --  
--- @param _UserName [userNameType] <p>The name of the user whose password you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: UserName
-function M.DeleteLoginProfileRequest(_UserName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteLoginProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the user whose password you want to delete.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: UserName
+-- @return DeleteLoginProfileRequest structure as a key-value pair table
+function M.DeleteLoginProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating DeleteLoginProfileRequest")
 	local t = { 
-		["UserName"] = _UserName,
+		["UserName"] = args["UserName"],
 	}
 	asserts.AssertDeleteLoginProfileRequest(t)
 	return t
@@ -6501,14 +7149,17 @@ end
 
 --- Create a structure of type CreateVirtualMFADeviceRequest
 --  
--- @param _Path [pathType] <p> The path for the virtual MFA device. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _VirtualMFADeviceName [virtualMFADeviceName] <p>The name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: VirtualMFADeviceName
-function M.CreateVirtualMFADeviceRequest(_Path, _VirtualMFADeviceName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateVirtualMFADeviceRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Path [pathType] <p> The path for the virtual MFA device. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p> <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * VirtualMFADeviceName [virtualMFADeviceName] <p>The name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: VirtualMFADeviceName
+-- @return CreateVirtualMFADeviceRequest structure as a key-value pair table
+function M.CreateVirtualMFADeviceRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateVirtualMFADeviceRequest")
 	local t = { 
-		["Path"] = _Path,
-		["VirtualMFADeviceName"] = _VirtualMFADeviceName,
+		["Path"] = args["Path"],
+		["VirtualMFADeviceName"] = args["VirtualMFADeviceName"],
 	}
 	asserts.AssertCreateVirtualMFADeviceRequest(t)
 	return t
@@ -6537,26 +7188,29 @@ end
 
 --- Create a structure of type User
 -- <p>Contains information about an IAM user entity.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateUser</a> </p> </li> <li> <p> <a>GetUser</a> </p> </li> <li> <p> <a>ListUsers</a> </p> </li> </ul>
--- @param _UserName [userNameType] <p>The friendly name identifying the user.</p>
--- @param _PasswordLastUsed [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the user's password was last used to sign in to an AWS website. For a list of AWS websites that capture a user's last sign-in time, see the <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html">Credential Reports</a> topic in the <i>Using IAM</i> guide. If a password is used more than once in a five-minute span, only the first use is returned in this field. This field is null (not present) when:</p> <ul> <li> <p>The user does not have a password</p> </li> <li> <p>The password exists but has never been used (at least not since IAM started tracking this information on October 20th, 2014</p> </li> <li> <p>there is no sign-in data associated with the user</p> </li> </ul> <p>This value is returned only in the <a>GetUser</a> and <a>ListUsers</a> actions. </p>
--- @param _CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the user was created.</p>
--- @param _UserId [idType] <p>The stable and unique string identifying the user. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _Path [pathType] <p>The path to the user. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
--- @param _Arn [arnType] <p>The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs and how to use ARNs in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
--- Required parameter: Path
--- Required parameter: UserName
--- Required parameter: UserId
--- Required parameter: Arn
--- Required parameter: CreateDate
-function M.User(_UserName, _PasswordLastUsed, _CreateDate, _UserId, _Path, _Arn, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating User")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The friendly name identifying the user.</p>
+-- * PasswordLastUsed [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the user's password was last used to sign in to an AWS website. For a list of AWS websites that capture a user's last sign-in time, see the <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html">Credential Reports</a> topic in the <i>Using IAM</i> guide. If a password is used more than once in a five-minute span, only the first use is returned in this field. This field is null (not present) when:</p> <ul> <li> <p>The user does not have a password</p> </li> <li> <p>The password exists but has never been used (at least not since IAM started tracking this information on October 20th, 2014</p> </li> <li> <p>there is no sign-in data associated with the user</p> </li> </ul> <p>This value is returned only in the <a>GetUser</a> and <a>ListUsers</a> actions. </p>
+-- * CreateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the user was created.</p>
+-- * UserId [idType] <p>The stable and unique string identifying the user. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * Path [pathType] <p>The path to the user. For more information about paths, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide.</p>
+-- * Arn [arnType] <p>The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs and how to use ARNs in policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>Using IAM</i> guide. </p>
+-- Required key: Path
+-- Required key: UserName
+-- Required key: UserId
+-- Required key: Arn
+-- Required key: CreateDate
+-- @return User structure as a key-value pair table
+function M.User(args)
+	assert(args, "You must provdide an argument table when creating User")
 	local t = { 
-		["UserName"] = _UserName,
-		["PasswordLastUsed"] = _PasswordLastUsed,
-		["CreateDate"] = _CreateDate,
-		["UserId"] = _UserId,
-		["Path"] = _Path,
-		["Arn"] = _Arn,
+		["UserName"] = args["UserName"],
+		["PasswordLastUsed"] = args["PasswordLastUsed"],
+		["CreateDate"] = args["CreateDate"],
+		["UserId"] = args["UserId"],
+		["Path"] = args["Path"],
+		["Arn"] = args["Arn"],
 	}
 	asserts.AssertUser(t)
 	return t
@@ -6576,12 +7230,15 @@ end
 
 --- Create a structure of type GetInstanceProfileRequest
 --  
--- @param _InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to get information about.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- Required parameter: InstanceProfileName
-function M.GetInstanceProfileRequest(_InstanceProfileName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetInstanceProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * InstanceProfileName [instanceProfileNameType] <p>The name of the instance profile to get information about.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- Required key: InstanceProfileName
+-- @return GetInstanceProfileRequest structure as a key-value pair table
+function M.GetInstanceProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating GetInstanceProfileRequest")
 	local t = { 
-		["InstanceProfileName"] = _InstanceProfileName,
+		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
 	asserts.AssertGetInstanceProfileRequest(t)
 	return t
@@ -6602,15 +7259,18 @@ end
 
 --- Create a structure of type SimulatePolicyResponse
 -- <p>Contains the response to a successful <a>SimulatePrincipalPolicy</a> or <a>SimulateCustomPolicy</a> request.</p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _EvaluationResults [EvaluationResultsListType] <p>The results of the simulation.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
-function M.SimulatePolicyResponse(_Marker, _EvaluationResults, _IsTruncated, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SimulatePolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * EvaluationResults [EvaluationResultsListType] <p>The results of the simulation.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- @return SimulatePolicyResponse structure as a key-value pair table
+function M.SimulatePolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating SimulatePolicyResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["EvaluationResults"] = _EvaluationResults,
-		["IsTruncated"] = _IsTruncated,
+		["Marker"] = args["Marker"],
+		["EvaluationResults"] = args["EvaluationResults"],
+		["IsTruncated"] = args["IsTruncated"],
 	}
 	asserts.AssertSimulatePolicyResponse(t)
 	return t
@@ -6629,11 +7289,14 @@ end
 
 --- Create a structure of type CreateServiceLinkedRoleResponse
 --  
--- @param _Role [Role] <p>A <a>Role</a> object that contains details about the newly created role.</p>
-function M.CreateServiceLinkedRoleResponse(_Role, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateServiceLinkedRoleResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Role [Role] <p>A <a>Role</a> object that contains details about the newly created role.</p>
+-- @return CreateServiceLinkedRoleResponse structure as a key-value pair table
+function M.CreateServiceLinkedRoleResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateServiceLinkedRoleResponse")
 	local t = { 
-		["Role"] = _Role,
+		["Role"] = args["Role"],
 	}
 	asserts.AssertCreateServiceLinkedRoleResponse(t)
 	return t
@@ -6657,20 +7320,23 @@ end
 
 --- Create a structure of type ListEntitiesForPolicyRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _EntityFilter [EntityType] <p>The entity type to use for filtering the results.</p> <p>For example, when <code>EntityFilter</code> is <code>Role</code>, only the roles that are attached to the specified policy are returned. This parameter is optional. If it is not included, all attached entities (users, groups, and roles) are returned. The argument for this parameter must be one of the valid values listed below.</p>
--- @param _PathPrefix [pathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the versions.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- Required parameter: PolicyArn
-function M.ListEntitiesForPolicyRequest(_Marker, _EntityFilter, _PathPrefix, _PolicyArn, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListEntitiesForPolicyRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * EntityFilter [EntityType] <p>The entity type to use for filtering the results.</p> <p>For example, when <code>EntityFilter</code> is <code>Role</code>, only the roles that are attached to the specified policy are returned. This parameter is optional. If it is not included, all attached entities (users, groups, and roles) are returned. The argument for this parameter must be one of the valid values listed below.</p>
+-- * PathPrefix [pathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * PolicyArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the versions.</p> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- Required key: PolicyArn
+-- @return ListEntitiesForPolicyRequest structure as a key-value pair table
+function M.ListEntitiesForPolicyRequest(args)
+	assert(args, "You must provdide an argument table when creating ListEntitiesForPolicyRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["EntityFilter"] = _EntityFilter,
-		["PathPrefix"] = _PathPrefix,
-		["PolicyArn"] = _PolicyArn,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["EntityFilter"] = args["EntityFilter"],
+		["PathPrefix"] = args["PathPrefix"],
+		["PolicyArn"] = args["PolicyArn"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListEntitiesForPolicyRequest(t)
 	return t
@@ -6692,16 +7358,19 @@ end
 
 --- Create a structure of type ListInstanceProfilesForRoleRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _RoleName [roleNameType] <p>The name of the role to list instance profiles for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- Required parameter: RoleName
-function M.ListInstanceProfilesForRoleRequest(_Marker, _RoleName, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceProfilesForRoleRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * RoleName [roleNameType] <p>The name of the role to list instance profiles for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- Required key: RoleName
+-- @return ListInstanceProfilesForRoleRequest structure as a key-value pair table
+function M.ListInstanceProfilesForRoleRequest(args)
+	assert(args, "You must provdide an argument table when creating ListInstanceProfilesForRoleRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["RoleName"] = _RoleName,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["RoleName"] = args["RoleName"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListInstanceProfilesForRoleRequest(t)
 	return t
@@ -6723,17 +7392,20 @@ end
 
 --- Create a structure of type GetOpenIDConnectProviderResponse
 -- <p>Contains the response to a successful <a>GetOpenIDConnectProvider</a> request. </p>
--- @param _Url [OpenIDConnectProviderUrlType] <p>The URL that the IAM OIDC provider resource object is associated with. For more information, see <a>CreateOpenIDConnectProvider</a>.</p>
--- @param _CreateDate [dateType] <p>The date and time when the IAM OIDC provider resource object was created in the AWS account.</p>
--- @param _ThumbprintList [thumbprintListType] <p>A list of certificate thumbprints that are associated with the specified IAM OIDC provider resource object. For more information, see <a>CreateOpenIDConnectProvider</a>. </p>
--- @param _ClientIDList [clientIDListType] <p>A list of client IDs (also known as audiences) that are associated with the specified IAM OIDC provider resource object. For more information, see <a>CreateOpenIDConnectProvider</a>.</p>
-function M.GetOpenIDConnectProviderResponse(_Url, _CreateDate, _ThumbprintList, _ClientIDList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetOpenIDConnectProviderResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Url [OpenIDConnectProviderUrlType] <p>The URL that the IAM OIDC provider resource object is associated with. For more information, see <a>CreateOpenIDConnectProvider</a>.</p>
+-- * CreateDate [dateType] <p>The date and time when the IAM OIDC provider resource object was created in the AWS account.</p>
+-- * ThumbprintList [thumbprintListType] <p>A list of certificate thumbprints that are associated with the specified IAM OIDC provider resource object. For more information, see <a>CreateOpenIDConnectProvider</a>. </p>
+-- * ClientIDList [clientIDListType] <p>A list of client IDs (also known as audiences) that are associated with the specified IAM OIDC provider resource object. For more information, see <a>CreateOpenIDConnectProvider</a>.</p>
+-- @return GetOpenIDConnectProviderResponse structure as a key-value pair table
+function M.GetOpenIDConnectProviderResponse(args)
+	assert(args, "You must provdide an argument table when creating GetOpenIDConnectProviderResponse")
 	local t = { 
-		["Url"] = _Url,
-		["CreateDate"] = _CreateDate,
-		["ThumbprintList"] = _ThumbprintList,
-		["ClientIDList"] = _ClientIDList,
+		["Url"] = args["Url"],
+		["CreateDate"] = args["CreateDate"],
+		["ThumbprintList"] = args["ThumbprintList"],
+		["ClientIDList"] = args["ClientIDList"],
 	}
 	asserts.AssertGetOpenIDConnectProviderResponse(t)
 	return t
@@ -6755,15 +7427,18 @@ end
 
 --- Create a structure of type AddClientIDToOpenIDConnectProviderRequest
 --  
--- @param _OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider resource to add the client ID to. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p>
--- @param _ClientID [clientIDType] <p>The client ID (also known as audience) to add to the IAM OpenID Connect provider resource.</p>
--- Required parameter: OpenIDConnectProviderArn
--- Required parameter: ClientID
-function M.AddClientIDToOpenIDConnectProviderRequest(_OpenIDConnectProviderArn, _ClientID, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AddClientIDToOpenIDConnectProviderRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider resource to add the client ID to. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> action.</p>
+-- * ClientID [clientIDType] <p>The client ID (also known as audience) to add to the IAM OpenID Connect provider resource.</p>
+-- Required key: OpenIDConnectProviderArn
+-- Required key: ClientID
+-- @return AddClientIDToOpenIDConnectProviderRequest structure as a key-value pair table
+function M.AddClientIDToOpenIDConnectProviderRequest(args)
+	assert(args, "You must provdide an argument table when creating AddClientIDToOpenIDConnectProviderRequest")
 	local t = { 
-		["OpenIDConnectProviderArn"] = _OpenIDConnectProviderArn,
-		["ClientID"] = _ClientID,
+		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
+		["ClientID"] = args["ClientID"],
 	}
 	asserts.AssertAddClientIDToOpenIDConnectProviderRequest(t)
 	return t
@@ -6782,11 +7457,14 @@ end
 
 --- Create a structure of type MalformedCertificateException
 -- <p>The request was rejected because the certificate was malformed or expired. The error message describes the specific error.</p>
--- @param _message [malformedCertificateMessage] 
-function M.MalformedCertificateException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MalformedCertificateException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [malformedCertificateMessage] 
+-- @return MalformedCertificateException structure as a key-value pair table
+function M.MalformedCertificateException(args)
+	assert(args, "You must provdide an argument table when creating MalformedCertificateException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertMalformedCertificateException(t)
 	return t
@@ -6805,11 +7483,14 @@ end
 
 --- Create a structure of type GetPolicyVersionResponse
 -- <p>Contains the response to a successful <a>GetPolicyVersion</a> request. </p>
--- @param _PolicyVersion [PolicyVersion] <p>A structure containing details about the policy version.</p>
-function M.GetPolicyVersionResponse(_PolicyVersion, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyVersionResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * PolicyVersion [PolicyVersion] <p>A structure containing details about the policy version.</p>
+-- @return GetPolicyVersionResponse structure as a key-value pair table
+function M.GetPolicyVersionResponse(args)
+	assert(args, "You must provdide an argument table when creating GetPolicyVersionResponse")
 	local t = { 
-		["PolicyVersion"] = _PolicyVersion,
+		["PolicyVersion"] = args["PolicyVersion"],
 	}
 	asserts.AssertGetPolicyVersionResponse(t)
 	return t
@@ -6830,15 +7511,18 @@ end
 
 --- Create a structure of type GetSAMLProviderResponse
 -- <p>Contains the response to a successful <a>GetSAMLProvider</a> request. </p>
--- @param _CreateDate [dateType] <p>The date and time when the SAML provider was created.</p>
--- @param _SAMLMetadataDocument [SAMLMetadataDocumentType] <p>The XML metadata document that includes information about an identity provider.</p>
--- @param _ValidUntil [dateType] <p>The expiration date and time for the SAML provider.</p>
-function M.GetSAMLProviderResponse(_CreateDate, _SAMLMetadataDocument, _ValidUntil, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetSAMLProviderResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CreateDate [dateType] <p>The date and time when the SAML provider was created.</p>
+-- * SAMLMetadataDocument [SAMLMetadataDocumentType] <p>The XML metadata document that includes information about an identity provider.</p>
+-- * ValidUntil [dateType] <p>The expiration date and time for the SAML provider.</p>
+-- @return GetSAMLProviderResponse structure as a key-value pair table
+function M.GetSAMLProviderResponse(args)
+	assert(args, "You must provdide an argument table when creating GetSAMLProviderResponse")
 	local t = { 
-		["CreateDate"] = _CreateDate,
-		["SAMLMetadataDocument"] = _SAMLMetadataDocument,
-		["ValidUntil"] = _ValidUntil,
+		["CreateDate"] = args["CreateDate"],
+		["SAMLMetadataDocument"] = args["SAMLMetadataDocument"],
+		["ValidUntil"] = args["ValidUntil"],
 	}
 	asserts.AssertGetSAMLProviderResponse(t)
 	return t
@@ -6856,8 +7540,11 @@ end
 
 --- Create a structure of type ListOpenIDConnectProvidersRequest
 --  
-function M.ListOpenIDConnectProvidersRequest(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListOpenIDConnectProvidersRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return ListOpenIDConnectProvidersRequest structure as a key-value pair table
+function M.ListOpenIDConnectProvidersRequest(args)
+	assert(args, "You must provdide an argument table when creating ListOpenIDConnectProvidersRequest")
 	local t = { 
 	}
 	asserts.AssertListOpenIDConnectProvidersRequest(t)
@@ -6880,16 +7567,19 @@ end
 
 --- Create a structure of type ListInstanceProfilesResponse
 -- <p>Contains the response to a successful <a>ListInstanceProfiles</a> request. </p>
--- @param _Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
--- @param _IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
--- @param _InstanceProfiles [instanceProfileListType] <p>A list of instance profiles.</p>
--- Required parameter: InstanceProfiles
-function M.ListInstanceProfilesResponse(_Marker, _IsTruncated, _InstanceProfiles, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListInstanceProfilesResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains the value to use for the <code>Marker</code> parameter in a subsequent pagination request.</p>
+-- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
+-- * InstanceProfiles [instanceProfileListType] <p>A list of instance profiles.</p>
+-- Required key: InstanceProfiles
+-- @return ListInstanceProfilesResponse structure as a key-value pair table
+function M.ListInstanceProfilesResponse(args)
+	assert(args, "You must provdide an argument table when creating ListInstanceProfilesResponse")
 	local t = { 
-		["Marker"] = _Marker,
-		["IsTruncated"] = _IsTruncated,
-		["InstanceProfiles"] = _InstanceProfiles,
+		["Marker"] = args["Marker"],
+		["IsTruncated"] = args["IsTruncated"],
+		["InstanceProfiles"] = args["InstanceProfiles"],
 	}
 	asserts.AssertListInstanceProfilesResponse(t)
 	return t
@@ -6912,17 +7602,20 @@ end
 
 --- Create a structure of type CreateLoginProfileRequest
 --  
--- @param _UserName [userNameType] <p>The name of the IAM user to create a password for. The user must already exist.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _PasswordResetRequired [booleanType] <p>Specifies whether the user is required to set a new password on next sign-in.</p>
--- @param _Password [passwordType] <p>The new password for the user.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of almost any printable ASCII character from the space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Although any of these characters are valid in a password, note that many tools, such as the AWS Management Console, might restrict the ability to enter certain characters because they have special meaning within that tool.</p>
--- Required parameter: UserName
--- Required parameter: Password
-function M.CreateLoginProfileRequest(_UserName, _PasswordResetRequired, _Password, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateLoginProfileRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user to create a password for. The user must already exist.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * PasswordResetRequired [booleanType] <p>Specifies whether the user is required to set a new password on next sign-in.</p>
+-- * Password [passwordType] <p>The new password for the user.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> used to validate this parameter is a string of characters consisting of almost any printable ASCII character from the space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Although any of these characters are valid in a password, note that many tools, such as the AWS Management Console, might restrict the ability to enter certain characters because they have special meaning within that tool.</p>
+-- Required key: UserName
+-- Required key: Password
+-- @return CreateLoginProfileRequest structure as a key-value pair table
+function M.CreateLoginProfileRequest(args)
+	assert(args, "You must provdide an argument table when creating CreateLoginProfileRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["PasswordResetRequired"] = _PasswordResetRequired,
-		["Password"] = _Password,
+		["UserName"] = args["UserName"],
+		["PasswordResetRequired"] = args["PasswordResetRequired"],
+		["Password"] = args["Password"],
 	}
 	asserts.AssertCreateLoginProfileRequest(t)
 	return t
@@ -6941,11 +7634,14 @@ end
 
 --- Create a structure of type ListSAMLProvidersResponse
 -- <p>Contains the response to a successful <a>ListSAMLProviders</a> request. </p>
--- @param _SAMLProviderList [SAMLProviderListType] <p>The list of SAML provider resource objects defined in IAM for this AWS account.</p>
-function M.ListSAMLProvidersResponse(_SAMLProviderList, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListSAMLProvidersResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * SAMLProviderList [SAMLProviderListType] <p>The list of SAML provider resource objects defined in IAM for this AWS account.</p>
+-- @return ListSAMLProvidersResponse structure as a key-value pair table
+function M.ListSAMLProvidersResponse(args)
+	assert(args, "You must provdide an argument table when creating ListSAMLProvidersResponse")
 	local t = { 
-		["SAMLProviderList"] = _SAMLProviderList,
+		["SAMLProviderList"] = args["SAMLProviderList"],
 	}
 	asserts.AssertListSAMLProvidersResponse(t)
 	return t
@@ -6968,17 +7664,20 @@ end
 
 --- Create a structure of type UpdateServiceSpecificCredentialRequest
 --  
--- @param _UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If you do not specify this value, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Status [statusType] <p>The status to be assigned to the service-specific credential.</p>
--- @param _ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier of the service-specific credential.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
--- Required parameter: ServiceSpecificCredentialId
--- Required parameter: Status
-function M.UpdateServiceSpecificCredentialRequest(_UserName, _Status, _ServiceSpecificCredentialId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateServiceSpecificCredentialRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the service-specific credential. If you do not specify this value, then the operation assumes the user whose credentials are used to call the operation.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Status [statusType] <p>The status to be assigned to the service-specific credential.</p>
+-- * ServiceSpecificCredentialId [serviceSpecificCredentialId] <p>The unique identifier of the service-specific credential.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can consist of any upper or lowercased letter or digit.</p>
+-- Required key: ServiceSpecificCredentialId
+-- Required key: Status
+-- @return UpdateServiceSpecificCredentialRequest structure as a key-value pair table
+function M.UpdateServiceSpecificCredentialRequest(args)
+	assert(args, "You must provdide an argument table when creating UpdateServiceSpecificCredentialRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["ServiceSpecificCredentialId"] = _ServiceSpecificCredentialId,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["ServiceSpecificCredentialId"] = args["ServiceSpecificCredentialId"],
 	}
 	asserts.AssertUpdateServiceSpecificCredentialRequest(t)
 	return t
@@ -7001,18 +7700,21 @@ end
 
 --- Create a structure of type ListAttachedRolePoliciesRequest
 --  
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _RoleName [roleNameType] <p>The name (friendly name, not ARN) of the role to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
--- @param _PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- Required parameter: RoleName
-function M.ListAttachedRolePoliciesRequest(_Marker, _RoleName, _PathPrefix, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttachedRolePoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * RoleName [roleNameType] <p>The name (friendly name, not ARN) of the role to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+-- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- Required key: RoleName
+-- @return ListAttachedRolePoliciesRequest structure as a key-value pair table
+function M.ListAttachedRolePoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAttachedRolePoliciesRequest")
 	local t = { 
-		["Marker"] = _Marker,
-		["RoleName"] = _RoleName,
-		["PathPrefix"] = _PathPrefix,
-		["MaxItems"] = _MaxItems,
+		["Marker"] = args["Marker"],
+		["RoleName"] = args["RoleName"],
+		["PathPrefix"] = args["PathPrefix"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListAttachedRolePoliciesRequest(t)
 	return t
@@ -7032,12 +7734,15 @@ end
 
 --- Create a structure of type CreateVirtualMFADeviceResponse
 -- <p>Contains the response to a successful <a>CreateVirtualMFADevice</a> request. </p>
--- @param _VirtualMFADevice [VirtualMFADevice] <p>A structure containing details about the new virtual MFA device.</p>
--- Required parameter: VirtualMFADevice
-function M.CreateVirtualMFADeviceResponse(_VirtualMFADevice, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateVirtualMFADeviceResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * VirtualMFADevice [VirtualMFADevice] <p>A structure containing details about the new virtual MFA device.</p>
+-- Required key: VirtualMFADevice
+-- @return CreateVirtualMFADeviceResponse structure as a key-value pair table
+function M.CreateVirtualMFADeviceResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateVirtualMFADeviceResponse")
 	local t = { 
-		["VirtualMFADevice"] = _VirtualMFADevice,
+		["VirtualMFADevice"] = args["VirtualMFADevice"],
 	}
 	asserts.AssertCreateVirtualMFADeviceResponse(t)
 	return t
@@ -7056,11 +7761,14 @@ end
 
 --- Create a structure of type GetPolicyResponse
 -- <p>Contains the response to a successful <a>GetPolicy</a> request. </p>
--- @param _Policy [Policy] <p>A structure containing details about the policy.</p>
-function M.GetPolicyResponse(_Policy, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetPolicyResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Policy [Policy] <p>A structure containing details about the policy.</p>
+-- @return GetPolicyResponse structure as a key-value pair table
+function M.GetPolicyResponse(args)
+	assert(args, "You must provdide an argument table when creating GetPolicyResponse")
 	local t = { 
-		["Policy"] = _Policy,
+		["Policy"] = args["Policy"],
 	}
 	asserts.AssertGetPolicyResponse(t)
 	return t
@@ -7087,23 +7795,26 @@ end
 
 --- Create a structure of type AccessKey
 -- <p>Contains information about an AWS access key.</p> <p> This data type is used as a response element in the <a>CreateAccessKey</a> and <a>ListAccessKeys</a> actions. </p> <note> <p>The <code>SecretAccessKey</code> value is returned only in response to <a>CreateAccessKey</a>. You can get a secret access key only when you first create an access key; you cannot recover the secret access key later. If you lose a secret access key, you must create a new access key.</p> </note>
--- @param _UserName [userNameType] <p>The name of the IAM user that the access key is associated with.</p>
--- @param _Status [statusType] <p>The status of the access key. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not. </p>
--- @param _CreateDate [dateType] <p>The date when the access key was created.</p>
--- @param _SecretAccessKey [accessKeySecretType] <p>The secret key used to sign requests.</p>
--- @param _AccessKeyId [accessKeyIdType] <p>The ID for this access key.</p>
--- Required parameter: UserName
--- Required parameter: AccessKeyId
--- Required parameter: Status
--- Required parameter: SecretAccessKey
-function M.AccessKey(_UserName, _Status, _CreateDate, _SecretAccessKey, _AccessKeyId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating AccessKey")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user that the access key is associated with.</p>
+-- * Status [statusType] <p>The status of the access key. <code>Active</code> means the key is valid for API calls, while <code>Inactive</code> means it is not. </p>
+-- * CreateDate [dateType] <p>The date when the access key was created.</p>
+-- * SecretAccessKey [accessKeySecretType] <p>The secret key used to sign requests.</p>
+-- * AccessKeyId [accessKeyIdType] <p>The ID for this access key.</p>
+-- Required key: UserName
+-- Required key: AccessKeyId
+-- Required key: Status
+-- Required key: SecretAccessKey
+-- @return AccessKey structure as a key-value pair table
+function M.AccessKey(args)
+	assert(args, "You must provdide an argument table when creating AccessKey")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["CreateDate"] = _CreateDate,
-		["SecretAccessKey"] = _SecretAccessKey,
-		["AccessKeyId"] = _AccessKeyId,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["CreateDate"] = args["CreateDate"],
+		["SecretAccessKey"] = args["SecretAccessKey"],
+		["AccessKeyId"] = args["AccessKeyId"],
 	}
 	asserts.AssertAccessKey(t)
 	return t
@@ -7129,21 +7840,24 @@ end
 
 --- Create a structure of type SSHPublicKeyMetadata
 -- <p>Contains information about an SSH public key, without the key's body or fingerprint.</p> <p>This data type is used as a response element in the <a>ListSSHPublicKeys</a> action.</p>
--- @param _UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p>
--- @param _Status [statusType] <p>The status of the SSH public key. <code>Active</code> means the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means the key cannot be used.</p>
--- @param _SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p>
--- @param _UploadDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the SSH public key was uploaded.</p>
--- Required parameter: UserName
--- Required parameter: SSHPublicKeyId
--- Required parameter: Status
--- Required parameter: UploadDate
-function M.SSHPublicKeyMetadata(_UserName, _Status, _SSHPublicKeyId, _UploadDate, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating SSHPublicKeyMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name of the IAM user associated with the SSH public key.</p>
+-- * Status [statusType] <p>The status of the SSH public key. <code>Active</code> means the key can be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means the key cannot be used.</p>
+-- * SSHPublicKeyId [publicKeyIdType] <p>The unique identifier for the SSH public key.</p>
+-- * UploadDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the SSH public key was uploaded.</p>
+-- Required key: UserName
+-- Required key: SSHPublicKeyId
+-- Required key: Status
+-- Required key: UploadDate
+-- @return SSHPublicKeyMetadata structure as a key-value pair table
+function M.SSHPublicKeyMetadata(args)
+	assert(args, "You must provdide an argument table when creating SSHPublicKeyMetadata")
 	local t = { 
-		["UserName"] = _UserName,
-		["Status"] = _Status,
-		["SSHPublicKeyId"] = _SSHPublicKeyId,
-		["UploadDate"] = _UploadDate,
+		["UserName"] = args["UserName"],
+		["Status"] = args["Status"],
+		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
+		["UploadDate"] = args["UploadDate"],
 	}
 	asserts.AssertSSHPublicKeyMetadata(t)
 	return t
@@ -7162,11 +7876,14 @@ end
 
 --- Create a structure of type DuplicateSSHPublicKeyException
 -- <p>The request was rejected because the SSH public key is already associated with the specified IAM user.</p>
--- @param _message [duplicateSSHPublicKeyMessage] 
-function M.DuplicateSSHPublicKeyException(_message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DuplicateSSHPublicKeyException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * message [duplicateSSHPublicKeyMessage] 
+-- @return DuplicateSSHPublicKeyException structure as a key-value pair table
+function M.DuplicateSSHPublicKeyException(args)
+	assert(args, "You must provdide an argument table when creating DuplicateSSHPublicKeyException")
 	local t = { 
-		["message"] = _message,
+		["message"] = args["message"],
 	}
 	asserts.AssertDuplicateSSHPublicKeyException(t)
 	return t
@@ -7189,18 +7906,21 @@ end
 
 --- Create a structure of type ListAttachedUserPoliciesRequest
 --  
--- @param _UserName [userNameType] <p>The name (friendly name, not ARN) of the user to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
--- @param _Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
--- @param _PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
--- @param _MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
--- Required parameter: UserName
-function M.ListAttachedUserPoliciesRequest(_UserName, _Marker, _PathPrefix, _MaxItems, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListAttachedUserPoliciesRequest")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * UserName [userNameType] <p>The name (friendly name, not ARN) of the user to list attached policies for.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
+-- * Marker [markerType] <p>Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the <code>Marker</code> element in the response that you received to indicate where the next call should start.</p>
+-- * PathPrefix [policyPathType] <p>The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies.</p> <p>This paramater allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes, containing any ASCII character from the ! (\u0021) thru the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.</p>
+-- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
+-- Required key: UserName
+-- @return ListAttachedUserPoliciesRequest structure as a key-value pair table
+function M.ListAttachedUserPoliciesRequest(args)
+	assert(args, "You must provdide an argument table when creating ListAttachedUserPoliciesRequest")
 	local t = { 
-		["UserName"] = _UserName,
-		["Marker"] = _Marker,
-		["PathPrefix"] = _PathPrefix,
-		["MaxItems"] = _MaxItems,
+		["UserName"] = args["UserName"],
+		["Marker"] = args["Marker"],
+		["PathPrefix"] = args["PathPrefix"],
+		["MaxItems"] = args["MaxItems"],
 	}
 	asserts.AssertListAttachedUserPoliciesRequest(t)
 	return t
@@ -7220,12 +7940,15 @@ end
 
 --- Create a structure of type CreateGroupResponse
 -- <p>Contains the response to a successful <a>CreateGroup</a> request. </p>
--- @param _Group [Group] <p>A structure containing details about the new group.</p>
--- Required parameter: Group
-function M.CreateGroupResponse(_Group, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateGroupResponse")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * Group [Group] <p>A structure containing details about the new group.</p>
+-- Required key: Group
+-- @return CreateGroupResponse structure as a key-value pair table
+function M.CreateGroupResponse(args)
+	assert(args, "You must provdide an argument table when creating CreateGroupResponse")
 	local t = { 
-		["Group"] = _Group,
+		["Group"] = args["Group"],
 	}
 	asserts.AssertCreateGroupResponse(t)
 	return t
@@ -7248,17 +7971,20 @@ end
 
 --- Create a structure of type ServerCertificate
 -- <p>Contains information about a server certificate.</p> <p> This data type is used as a response element in the <a>GetServerCertificate</a> action. </p>
--- @param _CertificateChain [certificateChainType] <p>The contents of the public key certificate chain.</p>
--- @param _CertificateBody [certificateBodyType] <p>The contents of the public key certificate.</p>
--- @param _ServerCertificateMetadata [ServerCertificateMetadata] <p>The meta information of the server certificate, such as its name, path, ID, and ARN.</p>
--- Required parameter: ServerCertificateMetadata
--- Required parameter: CertificateBody
-function M.ServerCertificate(_CertificateChain, _CertificateBody, _ServerCertificateMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ServerCertificate")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * CertificateChain [certificateChainType] <p>The contents of the public key certificate chain.</p>
+-- * CertificateBody [certificateBodyType] <p>The contents of the public key certificate.</p>
+-- * ServerCertificateMetadata [ServerCertificateMetadata] <p>The meta information of the server certificate, such as its name, path, ID, and ARN.</p>
+-- Required key: ServerCertificateMetadata
+-- Required key: CertificateBody
+-- @return ServerCertificate structure as a key-value pair table
+function M.ServerCertificate(args)
+	assert(args, "You must provdide an argument table when creating ServerCertificate")
 	local t = { 
-		["CertificateChain"] = _CertificateChain,
-		["CertificateBody"] = _CertificateBody,
-		["ServerCertificateMetadata"] = _ServerCertificateMetadata,
+		["CertificateChain"] = args["CertificateChain"],
+		["CertificateBody"] = args["CertificateBody"],
+		["ServerCertificateMetadata"] = args["ServerCertificateMetadata"],
 	}
 	asserts.AssertServerCertificate(t)
 	return t

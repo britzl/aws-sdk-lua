@@ -34,11 +34,14 @@ end
 
 --- Create a structure of type PutRepositoryTriggersOutput
 -- <p>Represents the output of a put repository triggers operation.</p>
--- @param _configurationId [RepositoryTriggersConfigurationId] <p>The system-generated unique ID for the create or update operation.</p>
-function M.PutRepositoryTriggersOutput(_configurationId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRepositoryTriggersOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurationId [RepositoryTriggersConfigurationId] <p>The system-generated unique ID for the create or update operation.</p>
+-- @return PutRepositoryTriggersOutput structure as a key-value pair table
+function M.PutRepositoryTriggersOutput(args)
+	assert(args, "You must provdide an argument table when creating PutRepositoryTriggersOutput")
 	local t = { 
-		["configurationId"] = _configurationId,
+		["configurationId"] = args["configurationId"],
 	}
 	asserts.AssertPutRepositoryTriggersOutput(t)
 	return t
@@ -56,8 +59,11 @@ end
 
 --- Create a structure of type InvalidRepositoryDescriptionException
 -- <p>The specified repository description is not valid.</p>
-function M.InvalidRepositoryDescriptionException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryDescriptionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRepositoryDescriptionException structure as a key-value pair table
+function M.InvalidRepositoryDescriptionException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRepositoryDescriptionException")
 	local t = { 
 	}
 	asserts.AssertInvalidRepositoryDescriptionException(t)
@@ -76,8 +82,11 @@ end
 
 --- Create a structure of type EncryptionKeyAccessDeniedException
 -- <p>An encryption key could not be accessed.</p>
-function M.EncryptionKeyAccessDeniedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionKeyAccessDeniedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return EncryptionKeyAccessDeniedException structure as a key-value pair table
+function M.EncryptionKeyAccessDeniedException(args)
+	assert(args, "You must provdide an argument table when creating EncryptionKeyAccessDeniedException")
 	local t = { 
 	}
 	asserts.AssertEncryptionKeyAccessDeniedException(t)
@@ -99,14 +108,17 @@ end
 
 --- Create a structure of type ListBranchesInput
 -- <p>Represents the input of a list branches operation.</p>
--- @param _nextToken [NextToken] <p>An enumeration token that allows the operation to batch the results.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository that contains the branches.</p>
--- Required parameter: repositoryName
-function M.ListBranchesInput(_nextToken, _repositoryName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBranchesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>An enumeration token that allows the operation to batch the results.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository that contains the branches.</p>
+-- Required key: repositoryName
+-- @return ListBranchesInput structure as a key-value pair table
+function M.ListBranchesInput(args)
+	assert(args, "You must provdide an argument table when creating ListBranchesInput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["repositoryName"] = _repositoryName,
+		["nextToken"] = args["nextToken"],
+		["repositoryName"] = args["repositoryName"],
 	}
 	asserts.AssertListBranchesInput(t)
 	return t
@@ -128,15 +140,18 @@ end
 
 --- Create a structure of type TestRepositoryTriggersInput
 -- <p>Represents the input of a test repository triggers operation.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository in which to test the triggers.</p>
--- @param _triggers [RepositoryTriggersList] <p>The list of triggers to test.</p>
--- Required parameter: repositoryName
--- Required parameter: triggers
-function M.TestRepositoryTriggersInput(_repositoryName, _triggers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TestRepositoryTriggersInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository in which to test the triggers.</p>
+-- * triggers [RepositoryTriggersList] <p>The list of triggers to test.</p>
+-- Required key: repositoryName
+-- Required key: triggers
+-- @return TestRepositoryTriggersInput structure as a key-value pair table
+function M.TestRepositoryTriggersInput(args)
+	assert(args, "You must provdide an argument table when creating TestRepositoryTriggersInput")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["triggers"] = _triggers,
+		["repositoryName"] = args["repositoryName"],
+		["triggers"] = args["triggers"],
 	}
 	asserts.AssertTestRepositoryTriggersInput(t)
 	return t
@@ -154,8 +169,11 @@ end
 
 --- Create a structure of type CommitDoesNotExistException
 -- <p>The specified commit does not exist or no commit was specified, and the specified repository has no default branch.</p>
-function M.CommitDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CommitDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CommitDoesNotExistException structure as a key-value pair table
+function M.CommitDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating CommitDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertCommitDoesNotExistException(t)
@@ -174,8 +192,11 @@ end
 
 --- Create a structure of type InvalidBranchNameException
 -- <p>The specified branch name is not valid.</p>
-function M.InvalidBranchNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidBranchNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidBranchNameException structure as a key-value pair table
+function M.InvalidBranchNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidBranchNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidBranchNameException(t)
@@ -194,8 +215,11 @@ end
 
 --- Create a structure of type InvalidSortByException
 -- <p>The specified sort by value is not valid.</p>
-function M.InvalidSortByException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidSortByException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidSortByException structure as a key-value pair table
+function M.InvalidSortByException(args)
+	assert(args, "You must provdide an argument table when creating InvalidSortByException")
 	local t = { 
 	}
 	asserts.AssertInvalidSortByException(t)
@@ -214,8 +238,11 @@ end
 
 --- Create a structure of type PathDoesNotExistException
 -- <p>The specified path does not exist.</p>
-function M.PathDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PathDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return PathDoesNotExistException structure as a key-value pair table
+function M.PathDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating PathDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertPathDoesNotExistException(t)
@@ -234,8 +261,11 @@ end
 
 --- Create a structure of type BlobIdRequiredException
 -- <p>A blob ID is required but was not specified.</p>
-function M.BlobIdRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BlobIdRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BlobIdRequiredException structure as a key-value pair table
+function M.BlobIdRequiredException(args)
+	assert(args, "You must provdide an argument table when creating BlobIdRequiredException")
 	local t = { 
 	}
 	asserts.AssertBlobIdRequiredException(t)
@@ -257,14 +287,17 @@ end
 
 --- Create a structure of type UpdateRepositoryDescriptionInput
 -- <p>Represents the input of an update repository description operation.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository to set or change the comment or description for.</p>
--- @param _repositoryDescription [RepositoryDescription] <p>The new comment or description for the specified repository. Repository descriptions are limited to 1,000 characters.</p>
--- Required parameter: repositoryName
-function M.UpdateRepositoryDescriptionInput(_repositoryName, _repositoryDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRepositoryDescriptionInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository to set or change the comment or description for.</p>
+-- * repositoryDescription [RepositoryDescription] <p>The new comment or description for the specified repository. Repository descriptions are limited to 1,000 characters.</p>
+-- Required key: repositoryName
+-- @return UpdateRepositoryDescriptionInput structure as a key-value pair table
+function M.UpdateRepositoryDescriptionInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateRepositoryDescriptionInput")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["repositoryDescription"] = _repositoryDescription,
+		["repositoryName"] = args["repositoryName"],
+		["repositoryDescription"] = args["repositoryDescription"],
 	}
 	asserts.AssertUpdateRepositoryDescriptionInput(t)
 	return t
@@ -283,11 +316,14 @@ end
 
 --- Create a structure of type GetRepositoryOutput
 -- <p>Represents the output of a get repository operation.</p>
--- @param _repositoryMetadata [RepositoryMetadata] <p>Information about the repository.</p>
-function M.GetRepositoryOutput(_repositoryMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryMetadata [RepositoryMetadata] <p>Information about the repository.</p>
+-- @return GetRepositoryOutput structure as a key-value pair table
+function M.GetRepositoryOutput(args)
+	assert(args, "You must provdide an argument table when creating GetRepositoryOutput")
 	local t = { 
-		["repositoryMetadata"] = _repositoryMetadata,
+		["repositoryMetadata"] = args["repositoryMetadata"],
 	}
 	asserts.AssertGetRepositoryOutput(t)
 	return t
@@ -305,8 +341,11 @@ end
 
 --- Create a structure of type EncryptionKeyUnavailableException
 -- <p>The encryption key is not available.</p>
-function M.EncryptionKeyUnavailableException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionKeyUnavailableException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return EncryptionKeyUnavailableException structure as a key-value pair table
+function M.EncryptionKeyUnavailableException(args)
+	assert(args, "You must provdide an argument table when creating EncryptionKeyUnavailableException")
 	local t = { 
 	}
 	asserts.AssertEncryptionKeyUnavailableException(t)
@@ -327,13 +366,16 @@ end
 
 --- Create a structure of type BatchGetRepositoriesOutput
 -- <p>Represents the output of a batch get repositories operation.</p>
--- @param _repositories [RepositoryMetadataList] <p>A list of repositories returned by the batch get repositories operation.</p>
--- @param _repositoriesNotFound [RepositoryNotFoundList] <p>Returns a list of repository names for which information could not be found.</p>
-function M.BatchGetRepositoriesOutput(_repositories, _repositoriesNotFound, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetRepositoriesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositories [RepositoryMetadataList] <p>A list of repositories returned by the batch get repositories operation.</p>
+-- * repositoriesNotFound [RepositoryNotFoundList] <p>Returns a list of repository names for which information could not be found.</p>
+-- @return BatchGetRepositoriesOutput structure as a key-value pair table
+function M.BatchGetRepositoriesOutput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetRepositoriesOutput")
 	local t = { 
-		["repositories"] = _repositories,
-		["repositoriesNotFound"] = _repositoriesNotFound,
+		["repositories"] = args["repositories"],
+		["repositoriesNotFound"] = args["repositoriesNotFound"],
 	}
 	asserts.AssertBatchGetRepositoriesOutput(t)
 	return t
@@ -351,8 +393,11 @@ end
 
 --- Create a structure of type InvalidRepositoryTriggerDestinationArnException
 -- <p>The Amazon Resource Name (ARN) for the trigger is not valid for the specified destination. The most common reason for this error is that the ARN does not meet the requirements for the service type.</p>
-function M.InvalidRepositoryTriggerDestinationArnException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerDestinationArnException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRepositoryTriggerDestinationArnException structure as a key-value pair table
+function M.InvalidRepositoryTriggerDestinationArnException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerDestinationArnException")
 	local t = { 
 	}
 	asserts.AssertInvalidRepositoryTriggerDestinationArnException(t)
@@ -371,8 +416,11 @@ end
 
 --- Create a structure of type RepositoryDoesNotExistException
 -- <p>The specified repository does not exist.</p>
-function M.RepositoryDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RepositoryDoesNotExistException structure as a key-value pair table
+function M.RepositoryDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertRepositoryDoesNotExistException(t)
@@ -391,8 +439,11 @@ end
 
 --- Create a structure of type RepositoryLimitExceededException
 -- <p>A repository resource limit was exceeded.</p>
-function M.RepositoryLimitExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryLimitExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RepositoryLimitExceededException structure as a key-value pair table
+function M.RepositoryLimitExceededException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryLimitExceededException")
 	local t = { 
 	}
 	asserts.AssertRepositoryLimitExceededException(t)
@@ -417,21 +468,24 @@ end
 
 --- Create a structure of type Commit
 -- <p>Returns information about a specific commit.</p>
--- @param _additionalData [AdditionalData] <p>Any additional data associated with the specified commit.</p>
--- @param _committer [UserInfo] <p>Information about the person who committed the specified commit, also known as the committer. Information includes the date in timestamp format with GMT offset, the name of the committer, and the email address for the committer, as configured in Git.</p> <p>For more information about the difference between an author and a committer in Git, see <a href="http://git-scm.com/book/ch2-3.html">Viewing the Commit History</a> in Pro Git by Scott Chacon and Ben Straub.</p>
--- @param _author [UserInfo] <p>Information about the author of the specified commit. Information includes the date in timestamp format with GMT offset, the name of the author, and the email address for the author, as configured in Git.</p>
--- @param _treeId [ObjectId] <p>Tree information for the specified commit.</p>
--- @param _parents [ParentList] <p>The parent list for the specified commit.</p>
--- @param _message [Message] <p>The commit message associated with the specified commit.</p>
-function M.Commit(_additionalData, _committer, _author, _treeId, _parents, _message, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Commit")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * additionalData [AdditionalData] <p>Any additional data associated with the specified commit.</p>
+-- * committer [UserInfo] <p>Information about the person who committed the specified commit, also known as the committer. Information includes the date in timestamp format with GMT offset, the name of the committer, and the email address for the committer, as configured in Git.</p> <p>For more information about the difference between an author and a committer in Git, see <a href="http://git-scm.com/book/ch2-3.html">Viewing the Commit History</a> in Pro Git by Scott Chacon and Ben Straub.</p>
+-- * author [UserInfo] <p>Information about the author of the specified commit. Information includes the date in timestamp format with GMT offset, the name of the author, and the email address for the author, as configured in Git.</p>
+-- * treeId [ObjectId] <p>Tree information for the specified commit.</p>
+-- * parents [ParentList] <p>The parent list for the specified commit.</p>
+-- * message [Message] <p>The commit message associated with the specified commit.</p>
+-- @return Commit structure as a key-value pair table
+function M.Commit(args)
+	assert(args, "You must provdide an argument table when creating Commit")
 	local t = { 
-		["additionalData"] = _additionalData,
-		["committer"] = _committer,
-		["author"] = _author,
-		["treeId"] = _treeId,
-		["parents"] = _parents,
-		["message"] = _message,
+		["additionalData"] = args["additionalData"],
+		["committer"] = args["committer"],
+		["author"] = args["author"],
+		["treeId"] = args["treeId"],
+		["parents"] = args["parents"],
+		["message"] = args["message"],
 	}
 	asserts.AssertCommit(t)
 	return t
@@ -453,15 +507,18 @@ end
 
 --- Create a structure of type GetCommitInput
 -- <p>Represents the input of a get commit operation.</p>
--- @param _commitId [ObjectId] <p>The commit ID.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository to which the commit was made.</p>
--- Required parameter: repositoryName
--- Required parameter: commitId
-function M.GetCommitInput(_commitId, _repositoryName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCommitInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * commitId [ObjectId] <p>The commit ID.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository to which the commit was made.</p>
+-- Required key: repositoryName
+-- Required key: commitId
+-- @return GetCommitInput structure as a key-value pair table
+function M.GetCommitInput(args)
+	assert(args, "You must provdide an argument table when creating GetCommitInput")
 	local t = { 
-		["commitId"] = _commitId,
-		["repositoryName"] = _repositoryName,
+		["commitId"] = args["commitId"],
+		["repositoryName"] = args["repositoryName"],
 	}
 	asserts.AssertGetCommitInput(t)
 	return t
@@ -479,8 +536,11 @@ end
 
 --- Create a structure of type InvalidRepositoryTriggerNameException
 -- <p>The name of the trigger is not valid.</p>
-function M.InvalidRepositoryTriggerNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRepositoryTriggerNameException structure as a key-value pair table
+function M.InvalidRepositoryTriggerNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidRepositoryTriggerNameException(t)
@@ -499,8 +559,11 @@ end
 
 --- Create a structure of type RepositoryNameExistsException
 -- <p>The specified repository name already exists.</p>
-function M.RepositoryNameExistsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNameExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RepositoryNameExistsException structure as a key-value pair table
+function M.RepositoryNameExistsException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryNameExistsException")
 	local t = { 
 	}
 	asserts.AssertRepositoryNameExistsException(t)
@@ -527,22 +590,25 @@ end
 
 --- Create a structure of type RepositoryTrigger
 -- <p>Information about a trigger for a repository.</p>
--- @param _destinationArn [Arn] <p>The ARN of the resource that is the target for a trigger. For example, the ARN of a topic in Amazon Simple Notification Service (SNS).</p>
--- @param _branches [BranchNameList] <p>The branches that will be included in the trigger configuration. If no branches are specified, the trigger will apply to all branches.</p>
--- @param _name [RepositoryTriggerName] <p>The name of the trigger.</p>
--- @param _customData [RepositoryTriggerCustomData] <p>Any custom data associated with the trigger that will be included in the information sent to the target of the trigger.</p>
--- @param _events [RepositoryTriggerEventList] <p>The repository events that will cause the trigger to run actions in another service, such as sending a notification through Amazon Simple Notification Service (SNS). </p> <note> <p>The valid value "all" cannot be used with any other values.</p> </note>
--- Required parameter: name
--- Required parameter: destinationArn
--- Required parameter: events
-function M.RepositoryTrigger(_destinationArn, _branches, _name, _customData, _events, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTrigger")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * destinationArn [Arn] <p>The ARN of the resource that is the target for a trigger. For example, the ARN of a topic in Amazon Simple Notification Service (SNS).</p>
+-- * branches [BranchNameList] <p>The branches that will be included in the trigger configuration. If no branches are specified, the trigger will apply to all branches.</p>
+-- * name [RepositoryTriggerName] <p>The name of the trigger.</p>
+-- * customData [RepositoryTriggerCustomData] <p>Any custom data associated with the trigger that will be included in the information sent to the target of the trigger.</p>
+-- * events [RepositoryTriggerEventList] <p>The repository events that will cause the trigger to run actions in another service, such as sending a notification through Amazon Simple Notification Service (SNS). </p> <note> <p>The valid value "all" cannot be used with any other values.</p> </note>
+-- Required key: name
+-- Required key: destinationArn
+-- Required key: events
+-- @return RepositoryTrigger structure as a key-value pair table
+function M.RepositoryTrigger(args)
+	assert(args, "You must provdide an argument table when creating RepositoryTrigger")
 	local t = { 
-		["destinationArn"] = _destinationArn,
-		["branches"] = _branches,
-		["name"] = _name,
-		["customData"] = _customData,
-		["events"] = _events,
+		["destinationArn"] = args["destinationArn"],
+		["branches"] = args["branches"],
+		["name"] = args["name"],
+		["customData"] = args["customData"],
+		["events"] = args["events"],
 	}
 	asserts.AssertRepositoryTrigger(t)
 	return t
@@ -560,8 +626,11 @@ end
 
 --- Create a structure of type InvalidOrderException
 -- <p>The specified sort order is not valid.</p>
-function M.InvalidOrderException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidOrderException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidOrderException structure as a key-value pair table
+function M.InvalidOrderException(args)
+	assert(args, "You must provdide an argument table when creating InvalidOrderException")
 	local t = { 
 	}
 	asserts.AssertInvalidOrderException(t)
@@ -580,8 +649,11 @@ end
 
 --- Create a structure of type BranchNameRequiredException
 -- <p>A branch name is required but was not specified.</p>
-function M.BranchNameRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BranchNameRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BranchNameRequiredException structure as a key-value pair table
+function M.BranchNameRequiredException(args)
+	assert(args, "You must provdide an argument table when creating BranchNameRequiredException")
 	local t = { 
 	}
 	asserts.AssertBranchNameRequiredException(t)
@@ -604,15 +676,18 @@ end
 
 --- Create a structure of type PutRepositoryTriggersInput
 -- <p>Represents the input ofa put repository triggers operation.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository where you want to create or update the trigger.</p>
--- @param _triggers [RepositoryTriggersList] <p>The JSON block of configuration information for each trigger.</p>
--- Required parameter: repositoryName
--- Required parameter: triggers
-function M.PutRepositoryTriggersInput(_repositoryName, _triggers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating PutRepositoryTriggersInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository where you want to create or update the trigger.</p>
+-- * triggers [RepositoryTriggersList] <p>The JSON block of configuration information for each trigger.</p>
+-- Required key: repositoryName
+-- Required key: triggers
+-- @return PutRepositoryTriggersInput structure as a key-value pair table
+function M.PutRepositoryTriggersInput(args)
+	assert(args, "You must provdide an argument table when creating PutRepositoryTriggersInput")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["triggers"] = _triggers,
+		["repositoryName"] = args["repositoryName"],
+		["triggers"] = args["triggers"],
 	}
 	asserts.AssertPutRepositoryTriggersInput(t)
 	return t
@@ -632,13 +707,16 @@ end
 
 --- Create a structure of type BranchInfo
 -- <p>Returns information about a branch.</p>
--- @param _commitId [CommitId] <p>The ID of the last commit made to the branch.</p>
--- @param _branchName [BranchName] <p>The name of the branch.</p>
-function M.BranchInfo(_commitId, _branchName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BranchInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * commitId [CommitId] <p>The ID of the last commit made to the branch.</p>
+-- * branchName [BranchName] <p>The name of the branch.</p>
+-- @return BranchInfo structure as a key-value pair table
+function M.BranchInfo(args)
+	assert(args, "You must provdide an argument table when creating BranchInfo")
 	local t = { 
-		["commitId"] = _commitId,
-		["branchName"] = _branchName,
+		["commitId"] = args["commitId"],
+		["branchName"] = args["branchName"],
 	}
 	asserts.AssertBranchInfo(t)
 	return t
@@ -658,13 +736,16 @@ end
 
 --- Create a structure of type GetRepositoryTriggersOutput
 -- <p>Represents the output of a get repository triggers operation.</p>
--- @param _configurationId [RepositoryTriggersConfigurationId] <p>The system-generated unique ID for the trigger.</p>
--- @param _triggers [RepositoryTriggersList] <p>The JSON block of configuration information for each trigger.</p>
-function M.GetRepositoryTriggersOutput(_configurationId, _triggers, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryTriggersOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * configurationId [RepositoryTriggersConfigurationId] <p>The system-generated unique ID for the trigger.</p>
+-- * triggers [RepositoryTriggersList] <p>The JSON block of configuration information for each trigger.</p>
+-- @return GetRepositoryTriggersOutput structure as a key-value pair table
+function M.GetRepositoryTriggersOutput(args)
+	assert(args, "You must provdide an argument table when creating GetRepositoryTriggersOutput")
 	local t = { 
-		["configurationId"] = _configurationId,
-		["triggers"] = _triggers,
+		["configurationId"] = args["configurationId"],
+		["triggers"] = args["triggers"],
 	}
 	asserts.AssertGetRepositoryTriggersOutput(t)
 	return t
@@ -683,11 +764,14 @@ end
 
 --- Create a structure of type DeleteRepositoryOutput
 -- <p>Represents the output of a delete repository operation.</p>
--- @param _repositoryId [RepositoryId] <p>The ID of the repository that was deleted.</p>
-function M.DeleteRepositoryOutput(_repositoryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryId [RepositoryId] <p>The ID of the repository that was deleted.</p>
+-- @return DeleteRepositoryOutput structure as a key-value pair table
+function M.DeleteRepositoryOutput(args)
+	assert(args, "You must provdide an argument table when creating DeleteRepositoryOutput")
 	local t = { 
-		["repositoryId"] = _repositoryId,
+		["repositoryId"] = args["repositoryId"],
 	}
 	asserts.AssertDeleteRepositoryOutput(t)
 	return t
@@ -707,13 +791,16 @@ end
 
 --- Create a structure of type ListRepositoriesOutput
 -- <p>Represents the output of a list repositories operation.</p>
--- @param _nextToken [NextToken] <p>An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.</p>
--- @param _repositories [RepositoryNameIdPairList] <p>Lists the repositories called by the list repositories operation.</p>
-function M.ListRepositoriesOutput(_nextToken, _repositories, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRepositoriesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.</p>
+-- * repositories [RepositoryNameIdPairList] <p>Lists the repositories called by the list repositories operation.</p>
+-- @return ListRepositoriesOutput structure as a key-value pair table
+function M.ListRepositoriesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListRepositoriesOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["repositories"] = _repositories,
+		["nextToken"] = args["nextToken"],
+		["repositories"] = args["repositories"],
 	}
 	asserts.AssertListRepositoriesOutput(t)
 	return t
@@ -731,8 +818,11 @@ end
 
 --- Create a structure of type RepositoryTriggerNameRequiredException
 -- <p>A name for the trigger is required but was not specified.</p>
-function M.RepositoryTriggerNameRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggerNameRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RepositoryTriggerNameRequiredException structure as a key-value pair table
+function M.RepositoryTriggerNameRequiredException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryTriggerNameRequiredException")
 	local t = { 
 	}
 	asserts.AssertRepositoryTriggerNameRequiredException(t)
@@ -751,8 +841,11 @@ end
 
 --- Create a structure of type RepositoryTriggerBranchNameListRequiredException
 -- <p>At least one branch name is required but was not specified in the trigger configuration.</p>
-function M.RepositoryTriggerBranchNameListRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggerBranchNameListRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RepositoryTriggerBranchNameListRequiredException structure as a key-value pair table
+function M.RepositoryTriggerBranchNameListRequiredException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryTriggerBranchNameListRequiredException")
 	local t = { 
 	}
 	asserts.AssertRepositoryTriggerBranchNameListRequiredException(t)
@@ -771,8 +864,11 @@ end
 
 --- Create a structure of type EncryptionIntegrityChecksFailedException
 -- <p>An encryption integrity check failed.</p>
-function M.EncryptionIntegrityChecksFailedException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionIntegrityChecksFailedException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return EncryptionIntegrityChecksFailedException structure as a key-value pair table
+function M.EncryptionIntegrityChecksFailedException(args)
+	assert(args, "You must provdide an argument table when creating EncryptionIntegrityChecksFailedException")
 	local t = { 
 	}
 	asserts.AssertEncryptionIntegrityChecksFailedException(t)
@@ -801,29 +897,32 @@ end
 
 --- Create a structure of type RepositoryMetadata
 -- <p>Information about a repository.</p>
--- @param _creationDate [CreationDate] <p>The date and time the repository was created, in timestamp format.</p>
--- @param _defaultBranch [BranchName] <p>The repository's default branch name.</p>
--- @param _repositoryName [RepositoryName] <p>The repository's name.</p>
--- @param _cloneUrlSsh [CloneUrlSsh] <p>The URL to use for cloning the repository over SSH.</p>
--- @param _lastModifiedDate [LastModifiedDate] <p>The date and time the repository was last modified, in timestamp format.</p>
--- @param _repositoryDescription [RepositoryDescription] <p>A comment or description about the repository.</p>
--- @param _cloneUrlHttp [CloneUrlHttp] <p>The URL to use for cloning the repository over HTTPS.</p>
--- @param _repositoryId [RepositoryId] <p>The ID of the repository.</p>
--- @param _Arn [Arn] <p>The Amazon Resource Name (ARN) of the repository.</p>
--- @param _accountId [AccountId] <p>The ID of the AWS account associated with the repository.</p>
-function M.RepositoryMetadata(_creationDate, _defaultBranch, _repositoryName, _cloneUrlSsh, _lastModifiedDate, _repositoryDescription, _cloneUrlHttp, _repositoryId, _Arn, _accountId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * creationDate [CreationDate] <p>The date and time the repository was created, in timestamp format.</p>
+-- * defaultBranch [BranchName] <p>The repository's default branch name.</p>
+-- * repositoryName [RepositoryName] <p>The repository's name.</p>
+-- * cloneUrlSsh [CloneUrlSsh] <p>The URL to use for cloning the repository over SSH.</p>
+-- * lastModifiedDate [LastModifiedDate] <p>The date and time the repository was last modified, in timestamp format.</p>
+-- * repositoryDescription [RepositoryDescription] <p>A comment or description about the repository.</p>
+-- * cloneUrlHttp [CloneUrlHttp] <p>The URL to use for cloning the repository over HTTPS.</p>
+-- * repositoryId [RepositoryId] <p>The ID of the repository.</p>
+-- * Arn [Arn] <p>The Amazon Resource Name (ARN) of the repository.</p>
+-- * accountId [AccountId] <p>The ID of the AWS account associated with the repository.</p>
+-- @return RepositoryMetadata structure as a key-value pair table
+function M.RepositoryMetadata(args)
+	assert(args, "You must provdide an argument table when creating RepositoryMetadata")
 	local t = { 
-		["creationDate"] = _creationDate,
-		["defaultBranch"] = _defaultBranch,
-		["repositoryName"] = _repositoryName,
-		["cloneUrlSsh"] = _cloneUrlSsh,
-		["lastModifiedDate"] = _lastModifiedDate,
-		["repositoryDescription"] = _repositoryDescription,
-		["cloneUrlHttp"] = _cloneUrlHttp,
-		["repositoryId"] = _repositoryId,
-		["Arn"] = _Arn,
-		["accountId"] = _accountId,
+		["creationDate"] = args["creationDate"],
+		["defaultBranch"] = args["defaultBranch"],
+		["repositoryName"] = args["repositoryName"],
+		["cloneUrlSsh"] = args["cloneUrlSsh"],
+		["lastModifiedDate"] = args["lastModifiedDate"],
+		["repositoryDescription"] = args["repositoryDescription"],
+		["cloneUrlHttp"] = args["cloneUrlHttp"],
+		["repositoryId"] = args["repositoryId"],
+		["Arn"] = args["Arn"],
+		["accountId"] = args["accountId"],
 	}
 	asserts.AssertRepositoryMetadata(t)
 	return t
@@ -843,13 +942,16 @@ end
 
 --- Create a structure of type ListBranchesOutput
 -- <p>Represents the output of a list branches operation.</p>
--- @param _nextToken [NextToken] <p>An enumeration token that returns the batch of the results.</p>
--- @param _branches [BranchNameList] <p>The list of branch names.</p>
-function M.ListBranchesOutput(_nextToken, _branches, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListBranchesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>An enumeration token that returns the batch of the results.</p>
+-- * branches [BranchNameList] <p>The list of branch names.</p>
+-- @return ListBranchesOutput structure as a key-value pair table
+function M.ListBranchesOutput(args)
+	assert(args, "You must provdide an argument table when creating ListBranchesOutput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["branches"] = _branches,
+		["nextToken"] = args["nextToken"],
+		["branches"] = args["branches"],
 	}
 	asserts.AssertListBranchesOutput(t)
 	return t
@@ -869,13 +971,16 @@ end
 
 --- Create a structure of type TestRepositoryTriggersOutput
 -- <p>Represents the output of a test repository triggers operation.</p>
--- @param _successfulExecutions [RepositoryTriggerNameList] <p>The list of triggers that were successfully tested. This list provides the names of the triggers that were successfully tested, separated by commas.</p>
--- @param _failedExecutions [RepositoryTriggerExecutionFailureList] <p>The list of triggers that were not able to be tested. This list provides the names of the triggers that could not be tested, separated by commas.</p>
-function M.TestRepositoryTriggersOutput(_successfulExecutions, _failedExecutions, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating TestRepositoryTriggersOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * successfulExecutions [RepositoryTriggerNameList] <p>The list of triggers that were successfully tested. This list provides the names of the triggers that were successfully tested, separated by commas.</p>
+-- * failedExecutions [RepositoryTriggerExecutionFailureList] <p>The list of triggers that were not able to be tested. This list provides the names of the triggers that could not be tested, separated by commas.</p>
+-- @return TestRepositoryTriggersOutput structure as a key-value pair table
+function M.TestRepositoryTriggersOutput(args)
+	assert(args, "You must provdide an argument table when creating TestRepositoryTriggersOutput")
 	local t = { 
-		["successfulExecutions"] = _successfulExecutions,
-		["failedExecutions"] = _failedExecutions,
+		["successfulExecutions"] = args["successfulExecutions"],
+		["failedExecutions"] = args["failedExecutions"],
 	}
 	asserts.AssertTestRepositoryTriggersOutput(t)
 	return t
@@ -896,15 +1001,18 @@ end
 
 --- Create a structure of type ListRepositoriesInput
 -- <p>Represents the input of a list repositories operation.</p>
--- @param _nextToken [NextToken] <p>An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.</p>
--- @param _sortBy [SortByEnum] <p>The criteria used to sort the results of a list repositories operation.</p>
--- @param _order [OrderEnum] <p>The order in which to sort the results of a list repositories operation.</p>
-function M.ListRepositoriesInput(_nextToken, _sortBy, _order, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating ListRepositoriesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * nextToken [NextToken] <p>An enumeration token that allows the operation to batch the results of the operation. Batch sizes are 1,000 for list repository operations. When the client sends the token back to AWS CodeCommit, another page of 1,000 records is retrieved.</p>
+-- * sortBy [SortByEnum] <p>The criteria used to sort the results of a list repositories operation.</p>
+-- * order [OrderEnum] <p>The order in which to sort the results of a list repositories operation.</p>
+-- @return ListRepositoriesInput structure as a key-value pair table
+function M.ListRepositoriesInput(args)
+	assert(args, "You must provdide an argument table when creating ListRepositoriesInput")
 	local t = { 
-		["nextToken"] = _nextToken,
-		["sortBy"] = _sortBy,
-		["order"] = _order,
+		["nextToken"] = args["nextToken"],
+		["sortBy"] = args["sortBy"],
+		["order"] = args["order"],
 	}
 	asserts.AssertListRepositoriesInput(t)
 	return t
@@ -926,15 +1034,18 @@ end
 
 --- Create a structure of type GetBlobInput
 -- <p>Represents the input of a get blob operation.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository that contains the blob.</p>
--- @param _blobId [ObjectId] <p>The ID of the blob, which is its SHA-1 pointer.</p>
--- Required parameter: repositoryName
--- Required parameter: blobId
-function M.GetBlobInput(_repositoryName, _blobId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBlobInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository that contains the blob.</p>
+-- * blobId [ObjectId] <p>The ID of the blob, which is its SHA-1 pointer.</p>
+-- Required key: repositoryName
+-- Required key: blobId
+-- @return GetBlobInput structure as a key-value pair table
+function M.GetBlobInput(args)
+	assert(args, "You must provdide an argument table when creating GetBlobInput")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["blobId"] = _blobId,
+		["repositoryName"] = args["repositoryName"],
+		["blobId"] = args["blobId"],
 	}
 	asserts.AssertGetBlobInput(t)
 	return t
@@ -952,8 +1063,11 @@ end
 
 --- Create a structure of type RepositoryNameRequiredException
 -- <p>A repository name is required but was not specified.</p>
-function M.RepositoryNameRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNameRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RepositoryNameRequiredException structure as a key-value pair table
+function M.RepositoryNameRequiredException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryNameRequiredException")
 	local t = { 
 	}
 	asserts.AssertRepositoryNameRequiredException(t)
@@ -974,13 +1088,16 @@ end
 
 --- Create a structure of type GetBranchInput
 -- <p>Represents the input of a get branch operation.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository that contains the branch for which you want to retrieve information.</p>
--- @param _branchName [BranchName] <p>The name of the branch for which you want to retrieve information.</p>
-function M.GetBranchInput(_repositoryName, _branchName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBranchInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository that contains the branch for which you want to retrieve information.</p>
+-- * branchName [BranchName] <p>The name of the branch for which you want to retrieve information.</p>
+-- @return GetBranchInput structure as a key-value pair table
+function M.GetBranchInput(args)
+	assert(args, "You must provdide an argument table when creating GetBranchInput")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["branchName"] = _branchName,
+		["repositoryName"] = args["repositoryName"],
+		["branchName"] = args["branchName"],
 	}
 	asserts.AssertGetBranchInput(t)
 	return t
@@ -998,8 +1115,11 @@ end
 
 --- Create a structure of type BranchDoesNotExistException
 -- <p>The specified branch does not exist.</p>
-function M.BranchDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BranchDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BranchDoesNotExistException structure as a key-value pair table
+function M.BranchDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating BranchDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertBranchDoesNotExistException(t)
@@ -1020,12 +1140,15 @@ end
 
 --- Create a structure of type DeleteRepositoryInput
 -- <p>Represents the input of a delete repository operation.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository to delete.</p>
--- Required parameter: repositoryName
-function M.DeleteRepositoryInput(_repositoryName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating DeleteRepositoryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository to delete.</p>
+-- Required key: repositoryName
+-- @return DeleteRepositoryInput structure as a key-value pair table
+function M.DeleteRepositoryInput(args)
+	assert(args, "You must provdide an argument table when creating DeleteRepositoryInput")
 	local t = { 
-		["repositoryName"] = _repositoryName,
+		["repositoryName"] = args["repositoryName"],
 	}
 	asserts.AssertDeleteRepositoryInput(t)
 	return t
@@ -1043,8 +1166,11 @@ end
 
 --- Create a structure of type InvalidCommitIdException
 -- <p>The specified commit ID is not valid.</p>
-function M.InvalidCommitIdException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCommitIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidCommitIdException structure as a key-value pair table
+function M.InvalidCommitIdException(args)
+	assert(args, "You must provdide an argument table when creating InvalidCommitIdException")
 	local t = { 
 	}
 	asserts.AssertInvalidCommitIdException(t)
@@ -1063,8 +1189,11 @@ end
 
 --- Create a structure of type InvalidRepositoryTriggerBranchNameException
 -- <p>One or more branch names specified for the trigger is not valid.</p>
-function M.InvalidRepositoryTriggerBranchNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerBranchNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRepositoryTriggerBranchNameException structure as a key-value pair table
+function M.InvalidRepositoryTriggerBranchNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerBranchNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidRepositoryTriggerBranchNameException(t)
@@ -1083,8 +1212,11 @@ end
 
 --- Create a structure of type MaximumBranchesExceededException
 -- <p>The number of branches for the trigger was exceeded.</p>
-function M.MaximumBranchesExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaximumBranchesExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MaximumBranchesExceededException structure as a key-value pair table
+function M.MaximumBranchesExceededException(args)
+	assert(args, "You must provdide an argument table when creating MaximumBranchesExceededException")
 	local t = { 
 	}
 	asserts.AssertMaximumBranchesExceededException(t)
@@ -1103,8 +1235,11 @@ end
 
 --- Create a structure of type InvalidPathException
 -- <p>The specified path is not valid.</p>
-function M.InvalidPathException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidPathException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidPathException structure as a key-value pair table
+function M.InvalidPathException(args)
+	assert(args, "You must provdide an argument table when creating InvalidPathException")
 	local t = { 
 	}
 	asserts.AssertInvalidPathException(t)
@@ -1123,8 +1258,11 @@ end
 
 --- Create a structure of type BranchNameExistsException
 -- <p>The specified branch name already exists.</p>
-function M.BranchNameExistsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BranchNameExistsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BranchNameExistsException structure as a key-value pair table
+function M.BranchNameExistsException(args)
+	assert(args, "You must provdide an argument table when creating BranchNameExistsException")
 	local t = { 
 	}
 	asserts.AssertBranchNameExistsException(t)
@@ -1145,12 +1283,15 @@ end
 
 --- Create a structure of type GetRepositoryInput
 -- <p>Represents the input of a get repository operation.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository to get information about.</p>
--- Required parameter: repositoryName
-function M.GetRepositoryInput(_repositoryName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository to get information about.</p>
+-- Required key: repositoryName
+-- @return GetRepositoryInput structure as a key-value pair table
+function M.GetRepositoryInput(args)
+	assert(args, "You must provdide an argument table when creating GetRepositoryInput")
 	local t = { 
-		["repositoryName"] = _repositoryName,
+		["repositoryName"] = args["repositoryName"],
 	}
 	asserts.AssertGetRepositoryInput(t)
 	return t
@@ -1170,13 +1311,16 @@ end
 
 --- Create a structure of type RepositoryNameIdPair
 -- <p>Information about a repository name and ID.</p>
--- @param _repositoryName [RepositoryName] <p>The name associated with the repository.</p>
--- @param _repositoryId [RepositoryId] <p>The ID associated with the repository.</p>
-function M.RepositoryNameIdPair(_repositoryName, _repositoryId, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNameIdPair")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name associated with the repository.</p>
+-- * repositoryId [RepositoryId] <p>The ID associated with the repository.</p>
+-- @return RepositoryNameIdPair structure as a key-value pair table
+function M.RepositoryNameIdPair(args)
+	assert(args, "You must provdide an argument table when creating RepositoryNameIdPair")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["repositoryId"] = _repositoryId,
+		["repositoryName"] = args["repositoryName"],
+		["repositoryId"] = args["repositoryId"],
 	}
 	asserts.AssertRepositoryNameIdPair(t)
 	return t
@@ -1197,15 +1341,18 @@ end
 
 --- Create a structure of type UserInfo
 -- <p>Information about the user who made a specified commit.</p>
--- @param _date [Date] <p>The date when the specified commit was pushed to the repository.</p>
--- @param _name [Name] <p>The name of the user who made the specified commit.</p>
--- @param _email [Email] <p>The email address associated with the user who made the commit, if any.</p>
-function M.UserInfo(_date, _name, _email, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UserInfo")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * date [Date] <p>The date when the specified commit was pushed to the repository.</p>
+-- * name [Name] <p>The name of the user who made the specified commit.</p>
+-- * email [Email] <p>The email address associated with the user who made the commit, if any.</p>
+-- @return UserInfo structure as a key-value pair table
+function M.UserInfo(args)
+	assert(args, "You must provdide an argument table when creating UserInfo")
 	local t = { 
-		["date"] = _date,
-		["name"] = _name,
-		["email"] = _email,
+		["date"] = args["date"],
+		["name"] = args["name"],
+		["email"] = args["email"],
 	}
 	asserts.AssertUserInfo(t)
 	return t
@@ -1223,8 +1370,11 @@ end
 
 --- Create a structure of type FileTooLargeException
 -- <p>The specified file exceeds the file size limit for AWS CodeCommit. For more information about limits in AWS CodeCommit, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">AWS CodeCommit User Guide</a>.</p>
-function M.FileTooLargeException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating FileTooLargeException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return FileTooLargeException structure as a key-value pair table
+function M.FileTooLargeException(args)
+	assert(args, "You must provdide an argument table when creating FileTooLargeException")
 	local t = { 
 	}
 	asserts.AssertFileTooLargeException(t)
@@ -1243,8 +1393,11 @@ end
 
 --- Create a structure of type CommitIdRequiredException
 -- <p>A commit ID was not specified.</p>
-function M.CommitIdRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CommitIdRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CommitIdRequiredException structure as a key-value pair table
+function M.CommitIdRequiredException(args)
+	assert(args, "You must provdide an argument table when creating CommitIdRequiredException")
 	local t = { 
 	}
 	asserts.AssertCommitIdRequiredException(t)
@@ -1263,8 +1416,11 @@ end
 
 --- Create a structure of type MaximumRepositoryTriggersExceededException
 -- <p>The number of triggers allowed for the repository was exceeded.</p>
-function M.MaximumRepositoryTriggersExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaximumRepositoryTriggersExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MaximumRepositoryTriggersExceededException structure as a key-value pair table
+function M.MaximumRepositoryTriggersExceededException(args)
+	assert(args, "You must provdide an argument table when creating MaximumRepositoryTriggersExceededException")
 	local t = { 
 	}
 	asserts.AssertMaximumRepositoryTriggersExceededException(t)
@@ -1283,8 +1439,11 @@ end
 
 --- Create a structure of type RepositoryTriggersListRequiredException
 -- <p>The list of triggers for the repository is required but was not specified.</p>
-function M.RepositoryTriggersListRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggersListRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RepositoryTriggersListRequiredException structure as a key-value pair table
+function M.RepositoryTriggersListRequiredException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryTriggersListRequiredException")
 	local t = { 
 	}
 	asserts.AssertRepositoryTriggersListRequiredException(t)
@@ -1303,8 +1462,11 @@ end
 
 --- Create a structure of type RepositoryTriggerDestinationArnRequiredException
 -- <p>A destination ARN for the target service for the trigger is required but was not specified.</p>
-function M.RepositoryTriggerDestinationArnRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggerDestinationArnRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RepositoryTriggerDestinationArnRequiredException structure as a key-value pair table
+function M.RepositoryTriggerDestinationArnRequiredException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryTriggerDestinationArnRequiredException")
 	local t = { 
 	}
 	asserts.AssertRepositoryTriggerDestinationArnRequiredException(t)
@@ -1323,8 +1485,11 @@ end
 
 --- Create a structure of type InvalidCommitException
 -- <p>The specified commit is not valid.</p>
-function M.InvalidCommitException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidCommitException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidCommitException structure as a key-value pair table
+function M.InvalidCommitException(args)
+	assert(args, "You must provdide an argument table when creating InvalidCommitException")
 	local t = { 
 	}
 	asserts.AssertInvalidCommitException(t)
@@ -1347,15 +1512,18 @@ end
 
 --- Create a structure of type UpdateDefaultBranchInput
 -- <p>Represents the input of an update default branch operation.</p>
--- @param _defaultBranchName [BranchName] <p>The name of the branch to set as the default.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository to set or change the default branch for.</p>
--- Required parameter: repositoryName
--- Required parameter: defaultBranchName
-function M.UpdateDefaultBranchInput(_defaultBranchName, _repositoryName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateDefaultBranchInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * defaultBranchName [BranchName] <p>The name of the branch to set as the default.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository to set or change the default branch for.</p>
+-- Required key: repositoryName
+-- Required key: defaultBranchName
+-- @return UpdateDefaultBranchInput structure as a key-value pair table
+function M.UpdateDefaultBranchInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateDefaultBranchInput")
 	local t = { 
-		["defaultBranchName"] = _defaultBranchName,
-		["repositoryName"] = _repositoryName,
+		["defaultBranchName"] = args["defaultBranchName"],
+		["repositoryName"] = args["repositoryName"],
 	}
 	asserts.AssertUpdateDefaultBranchInput(t)
 	return t
@@ -1379,18 +1547,21 @@ end
 
 --- Create a structure of type CreateBranchInput
 -- <p>Represents the input of a create branch operation.</p>
--- @param _commitId [CommitId] <p>The ID of the commit to point the new branch to.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository in which you want to create the new branch.</p>
--- @param _branchName [BranchName] <p>The name of the new branch to create.</p>
--- Required parameter: repositoryName
--- Required parameter: branchName
--- Required parameter: commitId
-function M.CreateBranchInput(_commitId, _repositoryName, _branchName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateBranchInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * commitId [CommitId] <p>The ID of the commit to point the new branch to.</p>
+-- * repositoryName [RepositoryName] <p>The name of the repository in which you want to create the new branch.</p>
+-- * branchName [BranchName] <p>The name of the new branch to create.</p>
+-- Required key: repositoryName
+-- Required key: branchName
+-- Required key: commitId
+-- @return CreateBranchInput structure as a key-value pair table
+function M.CreateBranchInput(args)
+	assert(args, "You must provdide an argument table when creating CreateBranchInput")
 	local t = { 
-		["commitId"] = _commitId,
-		["repositoryName"] = _repositoryName,
-		["branchName"] = _branchName,
+		["commitId"] = args["commitId"],
+		["repositoryName"] = args["repositoryName"],
+		["branchName"] = args["branchName"],
 	}
 	asserts.AssertCreateBranchInput(t)
 	return t
@@ -1409,11 +1580,14 @@ end
 
 --- Create a structure of type GetBranchOutput
 -- <p>Represents the output of a get branch operation.</p>
--- @param _branch [BranchInfo] <p>The name of the branch.</p>
-function M.GetBranchOutput(_branch, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBranchOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * branch [BranchInfo] <p>The name of the branch.</p>
+-- @return GetBranchOutput structure as a key-value pair table
+function M.GetBranchOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBranchOutput")
 	local t = { 
-		["branch"] = _branch,
+		["branch"] = args["branch"],
 	}
 	asserts.AssertGetBranchOutput(t)
 	return t
@@ -1433,12 +1607,15 @@ end
 
 --- Create a structure of type GetCommitOutput
 -- <p>Represents the output of a get commit operation.</p>
--- @param _commit [Commit] <p>A commit data type object that contains information about the specified commit.</p>
--- Required parameter: commit
-function M.GetCommitOutput(_commit, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetCommitOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * commit [Commit] <p>A commit data type object that contains information about the specified commit.</p>
+-- Required key: commit
+-- @return GetCommitOutput structure as a key-value pair table
+function M.GetCommitOutput(args)
+	assert(args, "You must provdide an argument table when creating GetCommitOutput")
 	local t = { 
-		["commit"] = _commit,
+		["commit"] = args["commit"],
 	}
 	asserts.AssertGetCommitOutput(t)
 	return t
@@ -1465,25 +1642,28 @@ end
 
 --- Create a structure of type GetDifferencesInput
 --  
--- @param _repositoryName [RepositoryName] <p>The name of the repository where you want to get differences.</p>
--- @param _NextToken [NextToken] <p>An enumeration token that when provided in a request, returns the next batch of the results.</p>
--- @param _afterPath [Path] <p>The file path in which to check differences. Limits the results to this path. Can also be used to specify the changed name of a directory or folder, if it has changed. If not specified, differences will be shown for all paths.</p>
--- @param _MaxResults [Limit] <p>A non-negative integer used to limit the number of returned results.</p>
--- @param _beforeCommitSpecifier [CommitName] <p>The branch, tag, HEAD, or other fully qualified reference used to identify a commit. For example, the full commit ID. Optional. If not specified, all changes prior to the <code>afterCommitSpecifier</code> value will be shown. If you do not use <code>beforeCommitSpecifier</code> in your request, consider limiting the results with <code>maxResults</code>.</p>
--- @param _beforePath [Path] <p>The file path in which to check for differences. Limits the results to this path. Can also be used to specify the previous name of a directory or folder. If <code>beforePath</code> and <code>afterPath</code> are not specified, differences will be shown for all paths.</p>
--- @param _afterCommitSpecifier [CommitName] <p>The branch, tag, HEAD, or other fully qualified reference used to identify a commit.</p>
--- Required parameter: repositoryName
--- Required parameter: afterCommitSpecifier
-function M.GetDifferencesInput(_repositoryName, _NextToken, _afterPath, _MaxResults, _beforeCommitSpecifier, _beforePath, _afterCommitSpecifier, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDifferencesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository where you want to get differences.</p>
+-- * NextToken [NextToken] <p>An enumeration token that when provided in a request, returns the next batch of the results.</p>
+-- * afterPath [Path] <p>The file path in which to check differences. Limits the results to this path. Can also be used to specify the changed name of a directory or folder, if it has changed. If not specified, differences will be shown for all paths.</p>
+-- * MaxResults [Limit] <p>A non-negative integer used to limit the number of returned results.</p>
+-- * beforeCommitSpecifier [CommitName] <p>The branch, tag, HEAD, or other fully qualified reference used to identify a commit. For example, the full commit ID. Optional. If not specified, all changes prior to the <code>afterCommitSpecifier</code> value will be shown. If you do not use <code>beforeCommitSpecifier</code> in your request, consider limiting the results with <code>maxResults</code>.</p>
+-- * beforePath [Path] <p>The file path in which to check for differences. Limits the results to this path. Can also be used to specify the previous name of a directory or folder. If <code>beforePath</code> and <code>afterPath</code> are not specified, differences will be shown for all paths.</p>
+-- * afterCommitSpecifier [CommitName] <p>The branch, tag, HEAD, or other fully qualified reference used to identify a commit.</p>
+-- Required key: repositoryName
+-- Required key: afterCommitSpecifier
+-- @return GetDifferencesInput structure as a key-value pair table
+function M.GetDifferencesInput(args)
+	assert(args, "You must provdide an argument table when creating GetDifferencesInput")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["NextToken"] = _NextToken,
-		["afterPath"] = _afterPath,
-		["MaxResults"] = _MaxResults,
-		["beforeCommitSpecifier"] = _beforeCommitSpecifier,
-		["beforePath"] = _beforePath,
-		["afterCommitSpecifier"] = _afterCommitSpecifier,
+		["repositoryName"] = args["repositoryName"],
+		["NextToken"] = args["NextToken"],
+		["afterPath"] = args["afterPath"],
+		["MaxResults"] = args["MaxResults"],
+		["beforeCommitSpecifier"] = args["beforeCommitSpecifier"],
+		["beforePath"] = args["beforePath"],
+		["afterCommitSpecifier"] = args["afterCommitSpecifier"],
 	}
 	asserts.AssertGetDifferencesInput(t)
 	return t
@@ -1503,12 +1683,15 @@ end
 
 --- Create a structure of type GetRepositoryTriggersInput
 -- <p>Represents the input of a get repository triggers operation.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the repository for which the trigger is configured.</p>
--- Required parameter: repositoryName
-function M.GetRepositoryTriggersInput(_repositoryName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetRepositoryTriggersInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the repository for which the trigger is configured.</p>
+-- Required key: repositoryName
+-- @return GetRepositoryTriggersInput structure as a key-value pair table
+function M.GetRepositoryTriggersInput(args)
+	assert(args, "You must provdide an argument table when creating GetRepositoryTriggersInput")
 	local t = { 
-		["repositoryName"] = _repositoryName,
+		["repositoryName"] = args["repositoryName"],
 	}
 	asserts.AssertGetRepositoryTriggersInput(t)
 	return t
@@ -1530,15 +1713,18 @@ end
 
 --- Create a structure of type UpdateRepositoryNameInput
 -- <p>Represents the input of an update repository description operation.</p>
--- @param _newName [RepositoryName] <p>The new name for the repository.</p>
--- @param _oldName [RepositoryName] <p>The existing name of the repository.</p>
--- Required parameter: oldName
--- Required parameter: newName
-function M.UpdateRepositoryNameInput(_newName, _oldName, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating UpdateRepositoryNameInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * newName [RepositoryName] <p>The new name for the repository.</p>
+-- * oldName [RepositoryName] <p>The existing name of the repository.</p>
+-- Required key: oldName
+-- Required key: newName
+-- @return UpdateRepositoryNameInput structure as a key-value pair table
+function M.UpdateRepositoryNameInput(args)
+	assert(args, "You must provdide an argument table when creating UpdateRepositoryNameInput")
 	local t = { 
-		["newName"] = _newName,
-		["oldName"] = _oldName,
+		["newName"] = args["newName"],
+		["oldName"] = args["oldName"],
 	}
 	asserts.AssertUpdateRepositoryNameInput(t)
 	return t
@@ -1556,8 +1742,11 @@ end
 
 --- Create a structure of type MaximumRepositoryNamesExceededException
 -- <p>The maximum number of allowed repository names was exceeded. Currently, this number is 25.</p>
-function M.MaximumRepositoryNamesExceededException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating MaximumRepositoryNamesExceededException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return MaximumRepositoryNamesExceededException structure as a key-value pair table
+function M.MaximumRepositoryNamesExceededException(args)
+	assert(args, "You must provdide an argument table when creating MaximumRepositoryNamesExceededException")
 	local t = { 
 	}
 	asserts.AssertMaximumRepositoryNamesExceededException(t)
@@ -1576,8 +1765,11 @@ end
 
 --- Create a structure of type RepositoryNamesRequiredException
 -- <p>A repository names object is required but was not specified.</p>
-function M.RepositoryNamesRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryNamesRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RepositoryNamesRequiredException structure as a key-value pair table
+function M.RepositoryNamesRequiredException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryNamesRequiredException")
 	local t = { 
 	}
 	asserts.AssertRepositoryNamesRequiredException(t)
@@ -1598,13 +1790,16 @@ end
 
 --- Create a structure of type GetDifferencesOutput
 --  
--- @param _differences [DifferenceList] <p>A differences data type object that contains information about the differences, including whether the difference is added, modified, or deleted (A, D, M).</p>
--- @param _NextToken [NextToken] <p>An enumeration token that can be used in a request to return the next batch of the results.</p>
-function M.GetDifferencesOutput(_differences, _NextToken, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetDifferencesOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * differences [DifferenceList] <p>A differences data type object that contains information about the differences, including whether the difference is added, modified, or deleted (A, D, M).</p>
+-- * NextToken [NextToken] <p>An enumeration token that can be used in a request to return the next batch of the results.</p>
+-- @return GetDifferencesOutput structure as a key-value pair table
+function M.GetDifferencesOutput(args)
+	assert(args, "You must provdide an argument table when creating GetDifferencesOutput")
 	local t = { 
-		["differences"] = _differences,
-		["NextToken"] = _NextToken,
+		["differences"] = args["differences"],
+		["NextToken"] = args["NextToken"],
 	}
 	asserts.AssertGetDifferencesOutput(t)
 	return t
@@ -1625,14 +1820,17 @@ end
 
 --- Create a structure of type CreateRepositoryInput
 -- <p>Represents the input of a create repository operation.</p>
--- @param _repositoryName [RepositoryName] <p>The name of the new repository to be created.</p> <note> <p>The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. For a full description of the limits on repository names, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User Guide. The suffix ".git" is prohibited.</p> </note>
--- @param _repositoryDescription [RepositoryDescription] <p>A comment or description about the new repository.</p> <note> <p>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</p> </note>
--- Required parameter: repositoryName
-function M.CreateRepositoryInput(_repositoryName, _repositoryDescription, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRepositoryInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryName [RepositoryName] <p>The name of the new repository to be created.</p> <note> <p>The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. For a full description of the limits on repository names, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User Guide. The suffix ".git" is prohibited.</p> </note>
+-- * repositoryDescription [RepositoryDescription] <p>A comment or description about the new repository.</p> <note> <p>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</p> </note>
+-- Required key: repositoryName
+-- @return CreateRepositoryInput structure as a key-value pair table
+function M.CreateRepositoryInput(args)
+	assert(args, "You must provdide an argument table when creating CreateRepositoryInput")
 	local t = { 
-		["repositoryName"] = _repositoryName,
-		["repositoryDescription"] = _repositoryDescription,
+		["repositoryName"] = args["repositoryName"],
+		["repositoryDescription"] = args["repositoryDescription"],
 	}
 	asserts.AssertCreateRepositoryInput(t)
 	return t
@@ -1650,8 +1848,11 @@ end
 
 --- Create a structure of type InvalidRepositoryTriggerCustomDataException
 -- <p>The custom data provided for the trigger is not valid.</p>
-function M.InvalidRepositoryTriggerCustomDataException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerCustomDataException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRepositoryTriggerCustomDataException structure as a key-value pair table
+function M.InvalidRepositoryTriggerCustomDataException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerCustomDataException")
 	local t = { 
 	}
 	asserts.AssertInvalidRepositoryTriggerCustomDataException(t)
@@ -1670,8 +1871,11 @@ end
 
 --- Create a structure of type EncryptionKeyDisabledException
 -- <p>The encryption key is disabled.</p>
-function M.EncryptionKeyDisabledException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionKeyDisabledException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return EncryptionKeyDisabledException structure as a key-value pair table
+function M.EncryptionKeyDisabledException(args)
+	assert(args, "You must provdide an argument table when creating EncryptionKeyDisabledException")
 	local t = { 
 	}
 	asserts.AssertEncryptionKeyDisabledException(t)
@@ -1690,8 +1894,11 @@ end
 
 --- Create a structure of type CommitRequiredException
 -- <p>A commit was not specified.</p>
-function M.CommitRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CommitRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CommitRequiredException structure as a key-value pair table
+function M.CommitRequiredException(args)
+	assert(args, "You must provdide an argument table when creating CommitRequiredException")
 	local t = { 
 	}
 	asserts.AssertCommitRequiredException(t)
@@ -1710,8 +1917,11 @@ end
 
 --- Create a structure of type InvalidMaxResultsException
 -- <p>The specified number of maximum results is not valid.</p>
-function M.InvalidMaxResultsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidMaxResultsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidMaxResultsException structure as a key-value pair table
+function M.InvalidMaxResultsException(args)
+	assert(args, "You must provdide an argument table when creating InvalidMaxResultsException")
 	local t = { 
 	}
 	asserts.AssertInvalidMaxResultsException(t)
@@ -1730,8 +1940,11 @@ end
 
 --- Create a structure of type InvalidBlobIdException
 -- <p>The specified blob is not valid.</p>
-function M.InvalidBlobIdException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidBlobIdException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidBlobIdException structure as a key-value pair table
+function M.InvalidBlobIdException(args)
+	assert(args, "You must provdide an argument table when creating InvalidBlobIdException")
 	local t = { 
 	}
 	asserts.AssertInvalidBlobIdException(t)
@@ -1750,8 +1963,11 @@ end
 
 --- Create a structure of type InvalidContinuationTokenException
 -- <p>The specified continuation token is not valid.</p>
-function M.InvalidContinuationTokenException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidContinuationTokenException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidContinuationTokenException structure as a key-value pair table
+function M.InvalidContinuationTokenException(args)
+	assert(args, "You must provdide an argument table when creating InvalidContinuationTokenException")
 	local t = { 
 	}
 	asserts.AssertInvalidContinuationTokenException(t)
@@ -1770,8 +1986,11 @@ end
 
 --- Create a structure of type EncryptionKeyNotFoundException
 -- <p>No encryption key was found.</p>
-function M.EncryptionKeyNotFoundException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating EncryptionKeyNotFoundException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return EncryptionKeyNotFoundException structure as a key-value pair table
+function M.EncryptionKeyNotFoundException(args)
+	assert(args, "You must provdide an argument table when creating EncryptionKeyNotFoundException")
 	local t = { 
 	}
 	asserts.AssertEncryptionKeyNotFoundException(t)
@@ -1792,12 +2011,15 @@ end
 
 --- Create a structure of type GetBlobOutput
 -- <p>Represents the output of a get blob operation.</p>
--- @param _content [blob] <p>The content of the blob, usually a file.</p>
--- Required parameter: content
-function M.GetBlobOutput(_content, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating GetBlobOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * content [blob] <p>The content of the blob, usually a file.</p>
+-- Required key: content
+-- @return GetBlobOutput structure as a key-value pair table
+function M.GetBlobOutput(args)
+	assert(args, "You must provdide an argument table when creating GetBlobOutput")
 	local t = { 
-		["content"] = _content,
+		["content"] = args["content"],
 	}
 	asserts.AssertGetBlobOutput(t)
 	return t
@@ -1815,8 +2037,11 @@ end
 
 --- Create a structure of type RepositoryTriggerEventsListRequiredException
 -- <p>At least one event for the trigger is required but was not specified.</p>
-function M.RepositoryTriggerEventsListRequiredException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggerEventsListRequiredException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return RepositoryTriggerEventsListRequiredException structure as a key-value pair table
+function M.RepositoryTriggerEventsListRequiredException(args)
+	assert(args, "You must provdide an argument table when creating RepositoryTriggerEventsListRequiredException")
 	local t = { 
 	}
 	asserts.AssertRepositoryTriggerEventsListRequiredException(t)
@@ -1837,13 +2062,16 @@ end
 
 --- Create a structure of type RepositoryTriggerExecutionFailure
 -- <p>A trigger failed to run.</p>
--- @param _trigger [RepositoryTriggerName] <p>The name of the trigger that did not run.</p>
--- @param _failureMessage [RepositoryTriggerExecutionFailureMessage] <p>Additional message information about the trigger that did not run.</p>
-function M.RepositoryTriggerExecutionFailure(_trigger, _failureMessage, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating RepositoryTriggerExecutionFailure")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * trigger [RepositoryTriggerName] <p>The name of the trigger that did not run.</p>
+-- * failureMessage [RepositoryTriggerExecutionFailureMessage] <p>Additional message information about the trigger that did not run.</p>
+-- @return RepositoryTriggerExecutionFailure structure as a key-value pair table
+function M.RepositoryTriggerExecutionFailure(args)
+	assert(args, "You must provdide an argument table when creating RepositoryTriggerExecutionFailure")
 	local t = { 
-		["trigger"] = _trigger,
-		["failureMessage"] = _failureMessage,
+		["trigger"] = args["trigger"],
+		["failureMessage"] = args["failureMessage"],
 	}
 	asserts.AssertRepositoryTriggerExecutionFailure(t)
 	return t
@@ -1861,8 +2089,11 @@ end
 
 --- Create a structure of type InvalidRepositoryTriggerEventsException
 -- <p>One or more events specified for the trigger is not valid. Check to make sure that all events specified match the requirements for allowed events.</p>
-function M.InvalidRepositoryTriggerEventsException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerEventsException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRepositoryTriggerEventsException structure as a key-value pair table
+function M.InvalidRepositoryTriggerEventsException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerEventsException")
 	local t = { 
 	}
 	asserts.AssertInvalidRepositoryTriggerEventsException(t)
@@ -1884,15 +2115,18 @@ end
 
 --- Create a structure of type Difference
 -- <p>Returns information about a set of differences for a commit specifier.</p>
--- @param _afterBlob [BlobMetadata] <p>Information about an <code>afterBlob</code> data type object, including the ID, the file mode permission code, and the path.</p>
--- @param _changeType [ChangeTypeEnum] <p>Whether the change type of the difference is an addition (A), deletion (D), or modification (M).</p>
--- @param _beforeBlob [BlobMetadata] <p>Information about a <code>beforeBlob</code> data type object, including the ID, the file mode permission code, and the path.</p>
-function M.Difference(_afterBlob, _changeType, _beforeBlob, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating Difference")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * afterBlob [BlobMetadata] <p>Information about an <code>afterBlob</code> data type object, including the ID, the file mode permission code, and the path.</p>
+-- * changeType [ChangeTypeEnum] <p>Whether the change type of the difference is an addition (A), deletion (D), or modification (M).</p>
+-- * beforeBlob [BlobMetadata] <p>Information about a <code>beforeBlob</code> data type object, including the ID, the file mode permission code, and the path.</p>
+-- @return Difference structure as a key-value pair table
+function M.Difference(args)
+	assert(args, "You must provdide an argument table when creating Difference")
 	local t = { 
-		["afterBlob"] = _afterBlob,
-		["changeType"] = _changeType,
-		["beforeBlob"] = _beforeBlob,
+		["afterBlob"] = args["afterBlob"],
+		["changeType"] = args["changeType"],
+		["beforeBlob"] = args["beforeBlob"],
 	}
 	asserts.AssertDifference(t)
 	return t
@@ -1911,11 +2145,14 @@ end
 
 --- Create a structure of type CreateRepositoryOutput
 -- <p>Represents the output of a create repository operation.</p>
--- @param _repositoryMetadata [RepositoryMetadata] <p>Information about the newly created repository.</p>
-function M.CreateRepositoryOutput(_repositoryMetadata, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CreateRepositoryOutput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryMetadata [RepositoryMetadata] <p>Information about the newly created repository.</p>
+-- @return CreateRepositoryOutput structure as a key-value pair table
+function M.CreateRepositoryOutput(args)
+	assert(args, "You must provdide an argument table when creating CreateRepositoryOutput")
 	local t = { 
-		["repositoryMetadata"] = _repositoryMetadata,
+		["repositoryMetadata"] = args["repositoryMetadata"],
 	}
 	asserts.AssertCreateRepositoryOutput(t)
 	return t
@@ -1935,12 +2172,15 @@ end
 
 --- Create a structure of type BatchGetRepositoriesInput
 -- <p>Represents the input of a batch get repositories operation.</p>
--- @param _repositoryNames [RepositoryNameList] <p>The names of the repositories to get information about.</p>
--- Required parameter: repositoryNames
-function M.BatchGetRepositoriesInput(_repositoryNames, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BatchGetRepositoriesInput")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * repositoryNames [RepositoryNameList] <p>The names of the repositories to get information about.</p>
+-- Required key: repositoryNames
+-- @return BatchGetRepositoriesInput structure as a key-value pair table
+function M.BatchGetRepositoriesInput(args)
+	assert(args, "You must provdide an argument table when creating BatchGetRepositoriesInput")
 	local t = { 
-		["repositoryNames"] = _repositoryNames,
+		["repositoryNames"] = args["repositoryNames"],
 	}
 	asserts.AssertBatchGetRepositoriesInput(t)
 	return t
@@ -1958,8 +2198,11 @@ end
 
 --- Create a structure of type InvalidRepositoryNameException
 -- <p>At least one specified repository name is not valid.</p> <note> <p>This exception only occurs when a specified repository name is not valid. Other exceptions occur when a required repository parameter is missing, or when a specified repository does not exist.</p> </note>
-function M.InvalidRepositoryNameException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryNameException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRepositoryNameException structure as a key-value pair table
+function M.InvalidRepositoryNameException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRepositoryNameException")
 	local t = { 
 	}
 	asserts.AssertInvalidRepositoryNameException(t)
@@ -1978,8 +2221,11 @@ end
 
 --- Create a structure of type BlobIdDoesNotExistException
 -- <p>The specified blob does not exist.</p>
-function M.BlobIdDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BlobIdDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return BlobIdDoesNotExistException structure as a key-value pair table
+function M.BlobIdDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating BlobIdDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertBlobIdDoesNotExistException(t)
@@ -2001,15 +2247,18 @@ end
 
 --- Create a structure of type BlobMetadata
 -- <p>Returns information about a specific Git blob object.</p>
--- @param _path [Path] <p>The path to the blob and any associated file name, if any.</p>
--- @param _blobId [ObjectId] <p>The full ID of the blob.</p>
--- @param _mode [Mode] <p>The file mode permissions of the blob. File mode permission codes include:</p> <ul> <li> <p> <code>100644</code> indicates read/write</p> </li> <li> <p> <code>100755</code> indicates read/write/execute</p> </li> <li> <p> <code>160000</code> indicates a submodule</p> </li> <li> <p> <code>120000</code> indicates a symlink</p> </li> </ul>
-function M.BlobMetadata(_path, _blobId, _mode, ...)
-	assert(select("#", ...) == 0, "Too many arguments when creating BlobMetadata")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- * path [Path] <p>The path to the blob and any associated file name, if any.</p>
+-- * blobId [ObjectId] <p>The full ID of the blob.</p>
+-- * mode [Mode] <p>The file mode permissions of the blob. File mode permission codes include:</p> <ul> <li> <p> <code>100644</code> indicates read/write</p> </li> <li> <p> <code>100755</code> indicates read/write/execute</p> </li> <li> <p> <code>160000</code> indicates a submodule</p> </li> <li> <p> <code>120000</code> indicates a symlink</p> </li> </ul>
+-- @return BlobMetadata structure as a key-value pair table
+function M.BlobMetadata(args)
+	assert(args, "You must provdide an argument table when creating BlobMetadata")
 	local t = { 
-		["path"] = _path,
-		["blobId"] = _blobId,
-		["mode"] = _mode,
+		["path"] = args["path"],
+		["blobId"] = args["blobId"],
+		["mode"] = args["mode"],
 	}
 	asserts.AssertBlobMetadata(t)
 	return t
@@ -2027,8 +2276,11 @@ end
 
 --- Create a structure of type InvalidRepositoryTriggerRegionException
 -- <p>The region for the trigger target does not match the region for the repository. Triggers must be created in the same region as the target for the trigger.</p>
-function M.InvalidRepositoryTriggerRegionException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating InvalidRepositoryTriggerRegionException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return InvalidRepositoryTriggerRegionException structure as a key-value pair table
+function M.InvalidRepositoryTriggerRegionException(args)
+	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerRegionException")
 	local t = { 
 	}
 	asserts.AssertInvalidRepositoryTriggerRegionException(t)
@@ -2047,8 +2299,11 @@ end
 
 --- Create a structure of type CommitIdDoesNotExistException
 -- <p>The specified commit ID does not exist.</p>
-function M.CommitIdDoesNotExistException(...)
-	assert(select("#", ...) == 0, "Too many arguments when creating CommitIdDoesNotExistException")
+-- @param args Table with arguments in key-value form.
+-- Valid keys:
+-- @return CommitIdDoesNotExistException structure as a key-value pair table
+function M.CommitIdDoesNotExistException(args)
+	assert(args, "You must provdide an argument table when creating CommitIdDoesNotExistException")
 	local t = { 
 	}
 	asserts.AssertCommitIdDoesNotExistException(t)
